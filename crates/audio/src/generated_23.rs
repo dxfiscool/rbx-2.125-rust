@@ -15,7 +15,7 @@ const _: () = {
 // 0x294e3c — __GLOBAL__I_a_71
 #[doc(alias = "global constructor keyed to_a_71")]
 pub fn stub_294e3c() -> ! {
-    todo!("0x294e3c `global constructor keyed to_a_71")
+    todo!("0x294e3c global constructor keyed to_a_71")
 }
 
 // 0x29f0fc — __ZL12cleanTimeoutRd
@@ -303,13 +303,13 @@ pub fn stub_2c1f30() -> ! {
 // 0x2c2008 — __ZThn36_N3RBX5Stats4ItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::Item::~Item()")]
 pub fn stub_2c2008() -> ! {
-    todo!("0x2c2008 `non-virtual thunk to'RBX::Stats::Item::~Item()")
+    todo!("0x2c2008 non-virtual thunk toRBX::Stats::Item::~Item()")
 }
 
 // 0x2c2048 — __ZThn36_N3RBX5Stats4ItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::Item::~Item()")]
 pub fn stub_2c2048() -> ! {
-    todo!("0x2c2048 `non-virtual thunk to'RBX::Stats::Item::~Item()")
+    todo!("0x2c2048 non-virtual thunk toRBX::Stats::Item::~Item()")
 }
 
 // 0x2c26b0 — __ZN3RBX9ContentIdC2EPKc
@@ -345,13 +345,13 @@ pub fn stub_2c48a4() -> ! {
 // 0x2c4a80 — __GLOBAL__I_a_72
 #[doc(alias = "global constructor keyed to_a_72")]
 pub fn stub_2c4a80() -> ! {
-    todo!("0x2c4a80 `global constructor keyed to_a_72")
+    todo!("0x2c4a80 global constructor keyed to_a_72")
 }
 
 // 0x2c68dc — __GLOBAL__I_a_73
 #[doc(alias = "global constructor keyed to_a_73")]
 pub fn stub_2c68dc() -> ! {
-    todo!("0x2c68dc `global constructor keyed to_a_73")
+    todo!("0x2c68dc global constructor keyed to_a_73")
 }
 
 // 0x2c73b8 — __ZN3RBX5Stats4Item20createBoundChildItemIbEEPS1_PKcRKT_
@@ -369,7 +369,7 @@ pub fn stub_2c7790() -> ! {
 // 0x2c7928 — __ZThn32_N3RBX5Stats4ItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::Item::~Item()")]
 pub fn stub_2c7928() -> ! {
-    todo!("0x2c7928 `non-virtual thunk to'RBX::Stats::Item::~Item()")
+    todo!("0x2c7928 non-virtual thunk toRBX::Stats::Item::~Item()")
 }
 
 // 0x2c7b48 — __ZN3RBX5Stats14TypedStatsItemIbED1Ev
@@ -387,13 +387,13 @@ pub fn stub_2c7c90() -> ! {
 // 0x2c7df0 — __ZThn36_N3RBX5Stats14TypedStatsItemIbED1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
 pub fn stub_2c7df0() -> ! {
-    todo!("0x2c7df0 `non-virtual thunk to'RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")
+    todo!("0x2c7df0 non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")
 }
 
 // 0x2c7f38 — __ZThn36_N3RBX5Stats14TypedStatsItemIbED0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
 pub fn stub_2c7f38() -> ! {
-    todo!("0x2c7f38 `non-virtual thunk to'RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")
+    todo!("0x2c7f38 non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")
 }
 
 // 0x2c8270 — __ZNSt5dequeISsSaISsEE8pop_backEv
@@ -465,13 +465,13 @@ pub fn stub_2c9178() -> ! {
 // 0x2c9314 — __GLOBAL__I_a_74
 #[doc(alias = "global constructor keyed to_a_74")]
 pub fn stub_2c9314() -> ! {
-    todo!("0x2c9314 `global constructor keyed to_a_74")
+    todo!("0x2c9314 global constructor keyed to_a_74")
 }
 
 // 0x2cde88 — __GLOBAL__I_a_75
 #[doc(alias = "global constructor keyed to_a_75")]
 pub fn stub_2cde88() -> ! {
-    todo!("0x2cde88 `global constructor keyed to_a_75")
+    todo!("0x2cde88 global constructor keyed to_a_75")
 }
 
 // 0x2ce130 — __ZN3RBX8Security7Context8isInRoleENS0_10IdentitiesENS0_11PermissionsE
@@ -483,13 +483,13 @@ pub fn stub_2ce130() -> ! {
 // 0x2ce1fc — __GLOBAL__I_a_76
 #[doc(alias = "global constructor keyed to_a_76")]
 pub fn stub_2ce1fc() -> ! {
-    todo!("0x2ce1fc `global constructor keyed to_a_76")
+    todo!("0x2ce1fc global constructor keyed to_a_76")
 }
 
 // 0x2ceadc — __GLOBAL__I_a_77
 #[doc(alias = "global constructor keyed to_a_77")]
 pub fn stub_2ceadc() -> ! {
-    todo!("0x2ceadc `global constructor keyed to_a_77")
+    todo!("0x2ceadc global constructor keyed to_a_77")
 }
 
 // 0x2d072c — __ZNSt8auto_ptrIN3RBX13AdvRunDraggerEE5resetEPS1_
@@ -507,13 +507,13 @@ pub fn stub_2d11b8() -> ! {
 // 0x2d145c — __GLOBAL__I_a_78
 #[doc(alias = "global constructor keyed to_a_78")]
 pub fn stub_2d145c() -> ! {
-    todo!("0x2d145c `global constructor keyed to_a_78")
+    todo!("0x2d145c global constructor keyed to_a_78")
 }
 
 // 0x2d2634 — __GLOBAL__I_a_79
 #[doc(alias = "global constructor keyed to_a_79")]
 pub fn stub_2d2634() -> ! {
-    todo!("0x2d2634 `global constructor keyed to_a_79")
+    todo!("0x2d2634 global constructor keyed to_a_79")
 }
 
 // 0x2d2a94 — __ZN3RBX15AdvMoveToolBase12onMouseHoverERKNS_7UIEventE
@@ -579,7 +579,7 @@ pub fn stub_2d496c() -> ! {
 // 0x2d55f8 — __GLOBAL__I_a_80
 #[doc(alias = "global constructor keyed to_a_80")]
 pub fn stub_2d55f8() -> ! {
-    todo!("0x2d55f8 `global constructor keyed to_a_80")
+    todo!("0x2d55f8 global constructor keyed to_a_80")
 }
 
 // 0x2d5fd0 — __ZN3RBX13AdvRotateToolD1Ev
@@ -597,17 +597,17 @@ pub fn stub_2d5fd4() -> ! {
 // 0x2d6074 — __ZThn36_N3RBX13AdvRotateToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")]
 pub fn stub_2d6074() -> ! {
-    todo!("0x2d6074 `non-virtual thunk to'RBX::AdvRotateTool::~AdvRotateTool()")
+    todo!("0x2d6074 non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")
 }
 
 // 0x2d607c — __ZThn36_N3RBX13AdvRotateToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")]
 pub fn stub_2d607c() -> ! {
-    todo!("0x2d607c `non-virtual thunk to'RBX::AdvRotateTool::~AdvRotateTool()")
+    todo!("0x2d607c non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")
 }
 
 // 0x2d6120 — __GLOBAL__I_a_81
 #[doc(alias = "global constructor keyed to_a_81")]
 pub fn stub_2d6120() -> ! {
-    todo!("0x2d6120 `global constructor keyed to_a_81")
+    todo!("0x2d6120 global constructor keyed to_a_81")
 }

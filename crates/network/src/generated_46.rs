@@ -74,7 +74,7 @@ pub fn stub_3f2938() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_171")]
 pub fn stub_3f2ab4() -> ! {
-    todo!("0x3f2ab4 `global constructor keyed to'_a_171")
+    todo!("0x3f2ab4 global constructor keyed to_a_171")
 }
 
 // 0x3f2f00 — __ZN3RBX17CollectionService13getCollectionESs
@@ -165,14 +165,14 @@ pub fn stub_3f386c() -> ! {
 // type: void __fastcall(RBX::CollectionService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CollectionService::~CollectionService()")]
 pub fn stub_3f3894() -> ! {
-    todo!("0x3f3894 `non-virtual thunk to'RBX::CollectionService::~CollectionService()")
+    todo!("0x3f3894 non-virtual thunk toRBX::CollectionService::~CollectionService()")
 }
 
 // 0x3f389c — __ZThn32_N3RBX17CollectionServiceD0Ev
 // type: void __fastcall(RBX::CollectionService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CollectionService::~CollectionService()")]
 pub fn stub_3f389c() -> ! {
-    todo!("0x3f389c `non-virtual thunk to'RBX::CollectionService::~CollectionService()")
+    todo!("0x3f389c non-virtual thunk toRBX::CollectionService::~CollectionService()")
 }
 
 // 0x3f3940 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_18sCollectionServiceEEE12getClassNameEv
@@ -186,14 +186,14 @@ pub fn stub_3f3940() -> ! {
 // type: void __fastcall(RBX::CollectionService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CollectionService::~CollectionService()")]
 pub fn stub_3f3968() -> ! {
-    todo!("0x3f3968 `non-virtual thunk to'RBX::CollectionService::~CollectionService()")
+    todo!("0x3f3968 non-virtual thunk toRBX::CollectionService::~CollectionService()")
 }
 
 // 0x3f3970 — __ZThn36_N3RBX17CollectionServiceD0Ev
 // type: void __fastcall(RBX::CollectionService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CollectionService::~CollectionService()")]
 pub fn stub_3f3970() -> ! {
-    todo!("0x3f3970 `non-virtual thunk to'RBX::CollectionService::~CollectionService()")
+    todo!("0x3f3970 non-virtual thunk toRBX::CollectionService::~CollectionService()")
 }
 
 // 0x3f3a14 — __ZN3RBX17CollectionServiceD2Ev
@@ -431,7 +431,7 @@ pub fn stub_3f4e2c() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_172")]
 pub fn stub_3f4fac() -> ! {
-    todo!("0x3f4fac `global constructor keyed to'_a_172")
+    todo!("0x3f4fac global constructor keyed to_a_172")
 }
 
 // 0x3f5208 — __ZN3RBX16BoolPropertyVerbC2ERKSsPNS_9DataModelEPKc

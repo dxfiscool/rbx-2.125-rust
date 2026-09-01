@@ -165,19 +165,19 @@ pub fn stub_82de88() -> ! {
 // 0x82deb0 — __GLOBAL__I_a_413
 #[doc(alias = "global constructor keyed to_a_413")]
 pub fn stub_82deb0() -> ! {
-    todo!("0x82deb0 `global constructor keyed to'_a_413")
+    todo!("0x82deb0 global constructor keyed to_a_413")
 }
 
 // 0x82ea2c — __GLOBAL__I_a_414
 #[doc(alias = "global constructor keyed to_a_414")]
 pub fn stub_82ea2c() -> ! {
-    todo!("0x82ea2c `global constructor keyed to'_a_414")
+    todo!("0x82ea2c global constructor keyed to_a_414")
 }
 
 // 0x82ed04 — __GLOBAL__I_a_415
 #[doc(alias = "global constructor keyed to_a_415")]
 pub fn stub_82ed04() -> ! {
-    todo!("0x82ed04 `global constructor keyed to'_a_415")
+    todo!("0x82ed04 global constructor keyed to_a_415")
 }
 
 // 0x82fc18 — __ZL5matchP10MatchStatePKcS2_
@@ -237,7 +237,7 @@ pub fn stub_830194() -> ! {
 // 0x830410 — __GLOBAL__I_a_416
 #[doc(alias = "global constructor keyed to_a_416")]
 pub fn stub_830410() -> ! {
-    todo!("0x830410 `global constructor keyed to'_a_416")
+    todo!("0x830410 global constructor keyed to_a_416")
 }
 
 // 0x830970 — __ZL7hashnumPK5Tabled
@@ -249,19 +249,19 @@ pub fn stub_830970() -> ! {
 // 0x830f18 — __GLOBAL__I_a_417
 #[doc(alias = "global constructor keyed to_a_417")]
 pub fn stub_830f18() -> ! {
-    todo!("0x830f18 `global constructor keyed to'_a_417")
+    todo!("0x830f18 global constructor keyed to_a_417")
 }
 
 // 0x831738 — __GLOBAL__I_a_418
 #[doc(alias = "global constructor keyed to_a_418")]
 pub fn stub_831738() -> ! {
-    todo!("0x831738 `global constructor keyed to'_a_418")
+    todo!("0x831738 global constructor keyed to_a_418")
 }
 
 // 0x8318bc — __GLOBAL__I_a_419
 #[doc(alias = "global constructor keyed to_a_419")]
 pub fn stub_8318bc() -> ! {
-    todo!("0x8318bc `global constructor keyed to'_a_419")
+    todo!("0x8318bc global constructor keyed to_a_419")
 }
 
 // 0x831a60 — __ZL12LoadFunctionP9LoadStateP7TString
@@ -291,7 +291,7 @@ pub fn stub_831ef0() -> ! {
 // 0x831f2c — __GLOBAL__I_a_420
 #[doc(alias = "global constructor keyed to_a_420")]
 pub fn stub_831f2c() -> ! {
-    todo!("0x831f2c `global constructor keyed to'_a_420")
+    todo!("0x831f2c global constructor keyed to_a_420")
 }
 
 // 0x8323ac — __ZL8l_strcmpPK7TStringS1_
@@ -303,13 +303,13 @@ pub fn stub_8323ac() -> ! {
 // 0x833800 — __GLOBAL__I_a_421
 #[doc(alias = "global constructor keyed to_a_421")]
 pub fn stub_833800() -> ! {
-    todo!("0x833800 `global constructor keyed to'_a_421")
+    todo!("0x833800 global constructor keyed to_a_421")
 }
 
 // 0x8339d4 — __GLOBAL__I_a_422
 #[doc(alias = "global constructor keyed to_a_422")]
 pub fn stub_8339d4() -> ! {
-    todo!("0x8339d4 `global constructor keyed to'_a_422")
+    todo!("0x8339d4 global constructor keyed to_a_422")
 }
 
 // 0x8340c0 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_13sTweenServiceEEE12getClassNameEv
@@ -327,7 +327,7 @@ pub fn stub_834324() -> ! {
 // 0x834c1c — __GLOBAL__I_a_423
 #[doc(alias = "global constructor keyed to_a_423")]
 pub fn stub_834c1c() -> ! {
-    todo!("0x834c1c `global constructor keyed to'_a_423")
+    todo!("0x834c1c global constructor keyed to_a_423")
 }
 
 // 0x8357e4 — __ZNK3RBX14FactoryProductINS_15NotificationBoxENS_9GuiObjectELZNS_16sNotificationBoxEENS_8InstanceEE12getClassNameEv
@@ -393,7 +393,7 @@ pub fn stub_8364b4() -> ! {
 // 0x8368a0 — __GLOBAL__I_a_424
 #[doc(alias = "global constructor keyed to_a_424")]
 pub fn stub_8368a0() -> ! {
-    todo!("0x8368a0 `global constructor keyed to'_a_424")
+    todo!("0x8368a0 global constructor keyed to_a_424")
 }
 
 // 0x837694 — __ZNK3RBX14FactoryProductINS_18NotificationObjectENS_5FrameELZNS_19sNotificationObjectEENS_8InstanceEE12getClassNameEv
@@ -525,7 +525,7 @@ pub fn stub_838fd8() -> ! {
 // 0x8392b8 — __GLOBAL__I_a_425
 #[doc(alias = "global constructor keyed to_a_425")]
 pub fn stub_8392b8() -> ! {
-    todo!("0x8392b8 `global constructor keyed to'_a_425")
+    todo!("0x8392b8 global constructor keyed to_a_425")
 }
 
 // 0x83e33c — __ZNK3RBX14FactoryProductINS_13FriendServiceENS_8InstanceELZNS_14sFriendServiceEES2_E12getClassNameEv
@@ -567,7 +567,7 @@ pub fn stub_840d34() -> ! {
 // 0x848c3c — __GLOBAL__I_a_426
 #[doc(alias = "global constructor keyed to_a_426")]
 pub fn stub_848c3c() -> ! {
-    todo!("0x848c3c `global constructor keyed to'_a_426")
+    todo!("0x848c3c global constructor keyed to_a_426")
 }
 
 // 0x84a824 — __ZN3RBX23GlobalBasicSettingsItemINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEEEC2Ev

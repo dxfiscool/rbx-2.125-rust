@@ -99,19 +99,19 @@ pub fn stub_25d5cc() -> ! {
 // 0x25f04c — __GLOBAL__I_a_56
 #[doc(alias = "global constructor keyed to_a_56")]
 pub fn stub_25f04c() -> ! {
-    todo!("0x25f04c `global constructor keyed to'_a_56")
+    todo!("0x25f04c global constructor keyed to_a_56")
 }
 
 // 0x260144 — __GLOBAL__I_a_57
 #[doc(alias = "global constructor keyed to_a_57")]
 pub fn stub_260144() -> ! {
-    todo!("0x260144 `global constructor keyed to'_a_57")
+    todo!("0x260144 global constructor keyed to_a_57")
 }
 
 // 0x260f7c — __GLOBAL__I_a_58
 #[doc(alias = "global constructor keyed to_a_58")]
 pub fn stub_260f7c() -> ! {
-    todo!("0x260f7c `global constructor keyed to'_a_58")
+    todo!("0x260f7c global constructor keyed to_a_58")
 }
 
 // 0x2610d8 — __ZL15initStaticData2v
@@ -212,7 +212,7 @@ pub fn stub_264a84() -> ! {
 // 0x2657a4 — __GLOBAL__I_a_59
 #[doc(alias = "global constructor keyed to_a_59")]
 pub fn stub_2657a4() -> ! {
-    todo!("0x2657a4 `global constructor keyed to'_a_59")
+    todo!("0x2657a4 global constructor keyed to_a_59")
 }
 
 // 0x2658f8 — __ZN3RBX10Reflection4Type12getSingletonIPKNS0_18PropertyDescriptorEEERKS1_v
@@ -343,7 +343,7 @@ pub fn stub_267420() -> ! {
 // 0x2674b0 — __GLOBAL__I_a_60
 #[doc(alias = "global constructor keyed to_a_60")]
 pub fn stub_2674b0() -> ! {
-    todo!("0x2674b0 `global constructor keyed to'_a_60")
+    todo!("0x2674b0 global constructor keyed to_a_60")
 }
 
 // 0x2676c4 — __ZN3RBX10Reflection4Type12getSingletonINS0_7VariantEEERKS1_v
@@ -391,13 +391,13 @@ pub fn stub_2682e8() -> ! {
 // 0x268bf0 — __GLOBAL__I_a_61
 #[doc(alias = "global constructor keyed to_a_61")]
 pub fn stub_268bf0() -> ! {
-    todo!("0x268bf0 `global constructor keyed to'_a_61")
+    todo!("0x268bf0 global constructor keyed to_a_61")
 }
 
 // 0x26b1f4 — __GLOBAL__I_a_62
 #[doc(alias = "global constructor keyed to_a_62")]
 pub fn stub_26b1f4() -> ! {
-    todo!("0x26b1f4 `global constructor keyed to'_a_62")
+    todo!("0x26b1f4 global constructor keyed to_a_62")
 }
 
 // 0x26e228 — __ZN3rbx8any_castIRKN3RBX9ContentIdENS1_7Region3EEET_RNS_13placement_anyIT0_EE
@@ -550,13 +550,13 @@ pub fn stub_26fa70() -> ! {
 // 0x270078 — __GLOBAL__I_a_63
 #[doc(alias = "global constructor keyed to_a_63")]
 pub fn stub_270078() -> ! {
-    todo!("0x270078 `global constructor keyed to'_a_63")
+    todo!("0x270078 global constructor keyed to_a_63")
 }
 
 // 0x278164 — __GLOBAL__I_a_64
 #[doc(alias = "global constructor keyed to_a_64")]
 pub fn stub_278164() -> ! {
-    todo!("0x278164 `global constructor keyed to'_a_64")
+    todo!("0x278164 global constructor keyed to_a_64")
 }
 
 // 0x27b438 — __ZNK3RBX6RbxRayeqERKS0_
@@ -576,13 +576,13 @@ pub fn stub_27b4b4() -> ! {
 // 0x27b50c — __GLOBAL__I_a_65
 #[doc(alias = "global constructor keyed to_a_65")]
 pub fn stub_27b50c() -> ! {
-    todo!("0x27b50c `global constructor keyed to'_a_65")
+    todo!("0x27b50c global constructor keyed to_a_65")
 }
 
 // 0x27bef0 — __GLOBAL__I_a_66
 #[doc(alias = "global constructor keyed to_a_66")]
 pub fn stub_27bef0() -> ! {
-    todo!("0x27bef0 `global constructor keyed to'_a_66")
+    todo!("0x27bef0 global constructor keyed to_a_66")
 }
 
 // 0x285774 — __ZNK3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE14findDescriptorEPKc
@@ -616,25 +616,25 @@ pub fn stub_285870() -> ! {
 // 0x2858c0 — __GLOBAL__I_a_67
 #[doc(alias = "global constructor keyed to_a_67")]
 pub fn stub_2858c0() -> ! {
-    todo!("0x2858c0 `global constructor keyed to'_a_67")
+    todo!("0x2858c0 global constructor keyed to_a_67")
 }
 
 // 0x286268 — __GLOBAL__I_a_68
 #[doc(alias = "global constructor keyed to_a_68")]
 pub fn stub_286268() -> ! {
-    todo!("0x286268 `global constructor keyed to'_a_68")
+    todo!("0x286268 global constructor keyed to_a_68")
 }
 
 // 0x287738 — __GLOBAL__I_a_69
 #[doc(alias = "global constructor keyed to_a_69")]
 pub fn stub_287738() -> ! {
-    todo!("0x287738 `global constructor keyed to'_a_69")
+    todo!("0x287738 global constructor keyed to_a_69")
 }
 
 // 0x28aa88 — __GLOBAL__I_a_70
 #[doc(alias = "global constructor keyed to_a_70")]
 pub fn stub_28aa88() -> ! {
-    todo!("0x28aa88 `global constructor keyed to'_a_70")
+    todo!("0x28aa88 global constructor keyed to_a_70")
 }
 
 // 0x293594 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_9ContentIdEEC2ERNS0_15ClassDescriptorEPKcS7_St8auto_ptrINS3_6GetSetEENS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE

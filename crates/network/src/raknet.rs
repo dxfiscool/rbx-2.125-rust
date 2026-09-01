@@ -16019,7 +16019,7 @@ pub fn stub_a500c8() -> ! {
     alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const"
 )]
 pub fn stub_a50340() -> ! {
-    todo!("0xa50340 `non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0xa50340 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 // 0xa503b8 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEPNS_8InstanceEE7GetImplIMS3_KFS5_vEE10isReadOnlyEv
@@ -16650,14 +16650,14 @@ pub fn stub_a86d98() -> ! {
 // type: void __fastcall(RBX::Network::Player *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Player::~Player()")]
 pub fn stub_a86da4() -> ! {
-    todo!("0xa86da4 `non-virtual thunk toRBX::Network::Player::~Player()")
+    todo!("0xa86da4 non-virtual thunk toRBX::Network::Player::~Player()")
 }
 
 // 0xa86e48 — __ZThn36_N3RBX7Network6PlayerD0Ev
 // type: void __fastcall(RBX::Network::Player *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Player::~Player()")]
 pub fn stub_a86e48() -> ! {
-    todo!("0xa86e48 `non-virtual thunk toRBX::Network::Player::~Player()")
+    todo!("0xa86e48 non-virtual thunk toRBX::Network::Player::~Player()")
 }
 
 // 0xa86eec — __ZN3RBX7Network6PlayerD2Ev
@@ -16671,14 +16671,14 @@ pub fn stub_a86eec() -> ! {
 // type: void __fastcall(RBX::Network::Player *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Player::~Player()")]
 pub fn stub_a87d2c() -> ! {
-    todo!("0xa87d2c `non-virtual thunk toRBX::Network::Player::~Player()")
+    todo!("0xa87d2c non-virtual thunk toRBX::Network::Player::~Player()")
 }
 
 // 0xa87d38 — __ZThn36_N3RBX7Network6PlayerD1Ev
 // type: void __fastcall(RBX::Network::Player *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Player::~Player()")]
 pub fn stub_a87d38() -> ! {
-    todo!("0xa87d38 `non-virtual thunk toRBX::Network::Player::~Player()")
+    todo!("0xa87d38 non-virtual thunk toRBX::Network::Player::~Player()")
 }
 
 // 0xa87d44 — __ZN3RBX7Network6Player27physicsOutBandwidthExceededEPKNS_8InstanceE
@@ -17817,7 +17817,7 @@ pub fn stub_aa2e6c() -> ! {
     alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)"
 )]
 pub fn stub_aa2f88() -> ! {
-    todo!("0xaa2f88 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+    todo!("0xaa2f88 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0xaa31f4 — __ZNK5boost4_mfi3mf1IvN3RBX7Network6PlayerENS_10shared_ptrINS2_8InstanceEEEEclEPS4_S7_
@@ -17862,7 +17862,7 @@ pub fn stub_aa4cb0() -> ! {
     alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)"
 )]
 pub fn stub_aa4cc0() -> ! {
-    todo!("0xaa4cc0 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+    todo!("0xaa4cc0 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
 }
 
 // 0xaa4cd0 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvRNSB_8weak_ptrINS3_7Network6PlayerEEEPKNS3_15ServiceProviderEENSC_5list2INSC_5valueISH_EENSP_ISL_EEEEEELi1ES8_ED2Ev
@@ -19926,7 +19926,7 @@ pub fn stub_ac0518() -> ! {
 // type: void __fastcall(int, int, _DWORD *)
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Network::Player,RBX::ModelInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 pub fn stub_ac0790() -> ! {
-    todo!("0xac0790 `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::Network::Player,RBX::ModelInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0xac0790 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Network::Player,RBX::ModelInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 // 0xac079c — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEPNS_13ModelInstanceEE10GetSetImplIMS3_KFS5_vEMS3_FvS5_EE10isReadOnlyEv
@@ -20822,28 +20822,28 @@ pub fn stub_ad14a4() -> ! {
 // type: void __fastcall(RBX::Network::Marker *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Marker::~Marker()")]
 pub fn stub_ad1640() -> ! {
-    todo!("0xad1640 `non-virtual thunk to'RBX::Network::Marker::~Marker()")
+    todo!("0xad1640 non-virtual thunk toRBX::Network::Marker::~Marker()")
 }
 
 // 0xad164c — __ZThn32_N3RBX7Network6MarkerD0Ev
 // type: void __fastcall(RBX::Network::Marker *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Marker::~Marker()")]
 pub fn stub_ad164c() -> ! {
-    todo!("0xad164c `non-virtual thunk to'RBX::Network::Marker::~Marker()")
+    todo!("0xad164c non-virtual thunk toRBX::Network::Marker::~Marker()")
 }
 
 // 0xad17ec — __ZThn36_N3RBX7Network6MarkerD1Ev
 // type: void __fastcall(RBX::Network::Marker *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Marker::~Marker()")]
 pub fn stub_ad17ec() -> ! {
-    todo!("0xad17ec `non-virtual thunk to'RBX::Network::Marker::~Marker()")
+    todo!("0xad17ec non-virtual thunk toRBX::Network::Marker::~Marker()")
 }
 
 // 0xad17f8 — __ZThn36_N3RBX7Network6MarkerD0Ev
 // type: void __fastcall(RBX::Network::Marker *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Marker::~Marker()")]
 pub fn stub_ad17f8() -> ! {
-    todo!("0xad17f8 `non-virtual thunk to'RBX::Network::Marker::~Marker()")
+    todo!("0xad17f8 non-virtual thunk toRBX::Network::Marker::~Marker()")
 }
 
 // 0xf621f4 — j___ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_EC2ESC_PKcSF_SF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE

@@ -276,7 +276,7 @@ pub fn stub_b6afd8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::FastClusterShadowRenderable::~FastClusterShadowRenderable()")]
 // was: `non-virtual thunk to'RBX::FastClusterShadowRenderable::~FastClusterShadowRenderable()
 pub fn stub_b6afdc() -> ! {
-    todo!("0xb6afdc `non-virtual thunk to'RBX::FastClusterShadowRenderable::~FastClusterShadowRenderable()")
+    todo!("0xb6afdc non-virtual thunk toRBX::FastClusterShadowRenderable::~FastClusterShadowRenderable()")
 }
 
 // 0xb6b094 — __ZN3RBX27FastClusterShadowRenderableD2Ev
@@ -290,7 +290,7 @@ pub fn stub_b6b094() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::FastClusterShadowRenderable::~FastClusterShadowRenderable()")]
 // was: `non-virtual thunk to'RBX::FastClusterShadowRenderable::~FastClusterShadowRenderable()
 pub fn stub_b6b1e0() -> ! {
-    todo!("0xb6b1e0 `non-virtual thunk to'RBX::FastClusterShadowRenderable::~FastClusterShadowRenderable()")
+    todo!("0xb6b1e0 non-virtual thunk toRBX::FastClusterShadowRenderable::~FastClusterShadowRenderable()")
 }
 
 // 0xb6b628 — __ZNK3RBX27FastClusterShadowRenderable21getNumWorldTransformsEv
@@ -311,7 +311,7 @@ pub fn stub_b6b638() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::FastClusterShadowRenderable::getCastShadows(void)const")]
 // was: `non-virtual thunk to'RBX::FastClusterShadowRenderable::getCastShadows(void)const
 pub fn stub_b6b63c() -> ! {
-    todo!("0xb6b63c `non-virtual thunk to'RBX::FastClusterShadowRenderable::getCastShadows(void)const")
+    todo!("0xb6b63c non-virtual thunk toRBX::FastClusterShadowRenderable::getCastShadows(void)const")
 }
 
 // 0xb6b640 — __ZN3RBX27FastClusterShadowRenderable11getEdgeListEv
@@ -325,7 +325,7 @@ pub fn stub_b6b640() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::FastClusterShadowRenderable::getEdgeList(void)")]
 // was: `non-virtual thunk to'RBX::FastClusterShadowRenderable::getEdgeList(void)
 pub fn stub_b6b644() -> ! {
-    todo!("0xb6b644 `non-virtual thunk to'RBX::FastClusterShadowRenderable::getEdgeList(void)")
+    todo!("0xb6b644 non-virtual thunk toRBX::FastClusterShadowRenderable::getEdgeList(void)")
 }
 
 // 0xb6b648 — __ZN3RBX27FastClusterShadowRenderable11hasEdgeListEv
@@ -339,7 +339,7 @@ pub fn stub_b6b648() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::FastClusterShadowRenderable::hasEdgeList(void)")]
 // was: `non-virtual thunk to'RBX::FastClusterShadowRenderable::hasEdgeList(void)
 pub fn stub_b6b64c() -> ! {
-    todo!("0xb6b64c `non-virtual thunk to'RBX::FastClusterShadowRenderable::hasEdgeList(void)")
+    todo!("0xb6b64c non-virtual thunk toRBX::FastClusterShadowRenderable::hasEdgeList(void)")
 }
 
 // 0xb6b650 — __ZNK3RBX27FastClusterShadowRenderable19getWorldBoundingBoxEb
@@ -353,7 +353,7 @@ pub fn stub_b6b650() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::FastClusterShadowRenderable::getWorldBoundingBox(bool)const")]
 // was: `non-virtual thunk to'RBX::FastClusterShadowRenderable::getWorldBoundingBox(bool)const
 pub fn stub_b6b65c() -> ! {
-    todo!("0xb6b65c `non-virtual thunk to'RBX::FastClusterShadowRenderable::getWorldBoundingBox(bool)const")
+    todo!("0xb6b65c non-virtual thunk toRBX::FastClusterShadowRenderable::getWorldBoundingBox(bool)const")
 }
 
 // 0xb6b668 — __ZNK3RBX27FastClusterShadowRenderable17getLightCapBoundsEv
@@ -367,7 +367,7 @@ pub fn stub_b6b668() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::FastClusterShadowRenderable::getLightCapBounds(void)const")]
 // was: `non-virtual thunk to'RBX::FastClusterShadowRenderable::getLightCapBounds(void)const
 pub fn stub_b6b674() -> ! {
-    todo!("0xb6b674 `non-virtual thunk to'RBX::FastClusterShadowRenderable::getLightCapBounds(void)const")
+    todo!("0xb6b674 non-virtual thunk toRBX::FastClusterShadowRenderable::getLightCapBounds(void)const")
 }
 
 // 0xb71010 — __ZN3RBX10GfxBinding11updateChunkERKNS_13SpatialRegion2IdEb
@@ -549,7 +549,7 @@ pub fn stub_be75bc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::enableAdorns(bool)")]
 // was: `non-virtual thunk to'RBX::ViewRbxGfx::enableAdorns(bool)
 pub fn stub_be75c4() -> ! {
-    todo!("0xbe75c4 `non-virtual thunk to'RBX::ViewRbxGfx::enableAdorns(bool)")
+    todo!("0xbe75c4 non-virtual thunk toRBX::ViewRbxGfx::enableAdorns(bool)")
 }
 
 // 0xbe75cc — __ZN3RBX10ViewRbxGfx13initResourcesEv
@@ -619,7 +619,7 @@ pub fn stub_be8794() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::~ViewRbxGfx()")]
 // was: `non-virtual thunk to'RBX::ViewRbxGfx::~ViewRbxGfx()
 pub fn stub_be8798() -> ! {
-    todo!("0xbe8798 `non-virtual thunk to'RBX::ViewRbxGfx::~ViewRbxGfx()")
+    todo!("0xbe8798 non-virtual thunk toRBX::ViewRbxGfx::~ViewRbxGfx()")
 }
 
 // 0xbe883c — __ZN3RBX10ViewRbxGfxD2Ev
@@ -633,7 +633,7 @@ pub fn stub_be883c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::~ViewRbxGfx()")]
 // was: `non-virtual thunk to'RBX::ViewRbxGfx::~ViewRbxGfx()
 pub fn stub_be8e20() -> ! {
-    todo!("0xbe8e20 `non-virtual thunk to'RBX::ViewRbxGfx::~ViewRbxGfx()")
+    todo!("0xbe8e20 non-virtual thunk toRBX::ViewRbxGfx::~ViewRbxGfx()")
 }
 
 // 0xbe8e28 — __ZN3RBX10ViewRbxGfx8onResizeEii
@@ -705,4 +705,3 @@ pub fn stub_beb548() -> ! {
 pub fn stub_beb9a0() -> ! {
     todo!("0xbeb9a0 RBX::ViewRbxGfx::isPreRenderNeeded(void)")
 }
-

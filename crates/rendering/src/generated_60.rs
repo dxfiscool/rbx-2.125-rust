@@ -80,7 +80,7 @@ pub fn stub_bd5064() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::getWorldBoundingBox(bool)const")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::getWorldBoundingBox(bool)const
 pub fn stub_bd5188() -> ! {
-    todo!("0xbd5188 `non-virtual thunk to'Ogre::RbxSubEntity::getWorldBoundingBox(bool)const")
+    todo!("0xbd5188 non-virtual thunk toOgre::RbxSubEntity::getWorldBoundingBox(bool)const")
 }
 
 // 0xbd51a4 — __ZNK4Ogre12RbxSubEntity17getLightCapBoundsEv
@@ -94,7 +94,7 @@ pub fn stub_bd51a4() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::getLightCapBounds(void)const")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::getLightCapBounds(void)const
 pub fn stub_bd51b0() -> ! {
-    todo!("0xbd51b0 `non-virtual thunk to'Ogre::RbxSubEntity::getLightCapBounds(void)const")
+    todo!("0xbd51b0 non-virtual thunk toOgre::RbxSubEntity::getLightCapBounds(void)const")
 }
 
 // 0xbd51c8 — __ZNK4Ogre12RbxSubEntity16getDarkCapBoundsERKNS_5LightEf
@@ -108,7 +108,7 @@ pub fn stub_bd51c8() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::getDarkCapBounds(Ogre::Light const&,float)const")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::getDarkCapBounds(Ogre::Light const&,float)const
 pub fn stub_bd5300() -> ! {
-    todo!("0xbd5300 `non-virtual thunk to'Ogre::RbxSubEntity::getDarkCapBounds(Ogre::Light const&,float)const")
+    todo!("0xbd5300 non-virtual thunk toOgre::RbxSubEntity::getDarkCapBounds(Ogre::Light const&,float)const")
 }
 
 // 0xbd5318 — __ZNK4Ogre12RbxSubEntity25getPointExtrusionDistanceEPKNS_5LightE
@@ -122,7 +122,7 @@ pub fn stub_bd5318() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::getPointExtrusionDistance(Ogre::Light const*)const")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::getPointExtrusionDistance(Ogre::Light const*)const
 pub fn stub_bd534c() -> ! {
-    todo!("0xbd534c `non-virtual thunk to'Ogre::RbxSubEntity::getPointExtrusionDistance(Ogre::Light const*)const")
+    todo!("0xbd534c non-virtual thunk toOgre::RbxSubEntity::getPointExtrusionDistance(Ogre::Light const*)const")
 }
 
 // 0xbd537c — __ZN4Ogre12RbxSubEntity11getEdgeListEv
@@ -136,7 +136,7 @@ pub fn stub_bd537c() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::getEdgeList(void)")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::getEdgeList(void)
 pub fn stub_bd549c() -> ! {
-    todo!("0xbd549c `non-virtual thunk to'Ogre::RbxSubEntity::getEdgeList(void)")
+    todo!("0xbd549c non-virtual thunk toOgre::RbxSubEntity::getEdgeList(void)")
 }
 
 // 0xbd54a4 — __ZN4Ogre12RbxSubEntity11hasEdgeListEv
@@ -150,7 +150,7 @@ pub fn stub_bd54a4() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::hasEdgeList(void)")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::hasEdgeList(void)
 pub fn stub_bd55c4() -> ! {
-    todo!("0xbd55c4 `non-virtual thunk to'Ogre::RbxSubEntity::hasEdgeList(void)")
+    todo!("0xbd55c4 non-virtual thunk toOgre::RbxSubEntity::hasEdgeList(void)")
 }
 
 // 0xbd55cc — __ZN4Ogre12RbxSubEntity33getShadowVolumeRenderableIteratorENS_15ShadowTechniqueEPKNS_5LightEPNS_28HardwareIndexBufferSharedPtrEbfm
@@ -164,7 +164,7 @@ pub fn stub_bd55cc() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)
 pub fn stub_bd59e8() -> ! {
-    todo!("0xbd59e8 `non-virtual thunk to'Ogre::RbxSubEntity::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)")
+    todo!("0xbd59e8 non-virtual thunk toOgre::RbxSubEntity::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)")
 }
 
 // 0xbd5a18 — __ZN4Ogre12RbxSubEntityD0Ev
@@ -185,7 +185,7 @@ pub fn stub_bd5acc() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::~RbxSubEntity()")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::~RbxSubEntity()
 pub fn stub_bd5ad0() -> ! {
-    todo!("0xbd5ad0 `non-virtual thunk to'Ogre::RbxSubEntity::~RbxSubEntity()")
+    todo!("0xbd5ad0 non-virtual thunk toOgre::RbxSubEntity::~RbxSubEntity()")
 }
 
 // 0xbd5b88 — __ZN4Ogre12RbxSubEntityD2Ev
@@ -199,7 +199,7 @@ pub fn stub_bd5b88() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::~RbxSubEntity()")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::~RbxSubEntity()
 pub fn stub_bd5cbc() -> ! {
-    todo!("0xbd5cbc `non-virtual thunk to'Ogre::RbxSubEntity::~RbxSubEntity()")
+    todo!("0xbd5cbc non-virtual thunk toOgre::RbxSubEntity::~RbxSubEntity()")
 }
 
 // 0xbd5cc4 — __ZN4Ogre12RbxSubEntity28RbxSubEntityShadowRenderableC2EPNS_6EntityEPNS_28HardwareIndexBufferSharedPtrEPKNS_10VertexDataEbPNS_9SubEntityEb
@@ -283,7 +283,7 @@ pub fn stub_bd6788() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::getCastShadows(void)const")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::getCastShadows(void)const
 pub fn stub_bd6790() -> ! {
-    todo!("0xbd6790 `non-virtual thunk to'Ogre::RbxSubEntity::getCastShadows(void)const")
+    todo!("0xbd6790 non-virtual thunk toOgre::RbxSubEntity::getCastShadows(void)const")
 }
 
 // 0xbd6e1c — __ZN4Ogre10RbxSubMesh22prepareForShadowVolumeEv
@@ -395,7 +395,7 @@ pub fn stub_bdd9d4() -> ! {
 #[doc(alias = "anonymous namespace::replaceMaterialTextures(unsigned long long const&,Ogre::TexturePtr)")]
 // was: `anonymous namespace'::replaceMaterialTextures(unsigned long long const&,Ogre::TexturePtr)
 pub fn stub_bde2d4() -> ! {
-    todo!("0xbde2d4 `anonymous namespace'::replaceMaterialTextures(unsigned long long const&,Ogre::TexturePtr)")
+    todo!("0xbde2d4 anonymous namespace::replaceMaterialTextures(unsigned long long const&,Ogre::TexturePtr)")
 }
 
 // 0xbdee88 — __ZN3RBX17TextureCompositor13eventOccurredERKSsPKSt3mapISsSsSt4lessISsEN4Ogre12STLAllocatorISt4pairIS1_SsENS6_22CategorisedAllocPolicyILNS6_14MemoryCategoryE0EEEEEE
@@ -528,7 +528,7 @@ pub fn stub_bef0f8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
 // was: `non-virtual thunk to'RBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)
 pub fn stub_bef138() -> ! {
-    todo!("0xbef138 `non-virtual thunk to'RBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+    todo!("0xbef138 non-virtual thunk toRBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
 }
 
 // 0xbef328 — __ZN4Ogre9SharedPtrINS_8ResourceEED1Ev

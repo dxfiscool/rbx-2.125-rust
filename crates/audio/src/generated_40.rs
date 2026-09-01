@@ -308,13 +308,13 @@ pub fn stub_418f70() -> ! {
 // 0x419024 — __GLOBAL__I_a_176
 #[doc(alias = "global constructor keyed to_a_176")]
 pub fn stub_419024() -> ! {
-    todo!("0x419024 `global constructor keyed to_a_176")
+    todo!("0x419024 global constructor keyed to_a_176")
 }
 
 // 0x419344 — __GLOBAL__I_a_177
 #[doc(alias = "global constructor keyed to_a_177")]
 pub fn stub_419344() -> ! {
-    todo!("0x419344 `global constructor keyed to_a_177")
+    todo!("0x419344 global constructor keyed to_a_177")
 }
 
 // 0x419518 — __ZN3RBXL11dummyLoaderEPNS_9DataModelE
@@ -699,7 +699,7 @@ pub fn stub_41e84c() -> ! {
 // type: char *__fastcall(RBX::DataModel *this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::getSyncronizationArbiter(void)")]
 pub fn stub_41e860() -> ! {
-    todo!("0x41e860 `non-virtual thunk toRBX::DataModel::getSyncronizationArbiter(void)")
+    todo!("0x41e860 non-virtual thunk toRBX::DataModel::getSyncronizationArbiter(void)")
 }
 
 // 0x41e878 — __ZN3RBX9DataModel16doDataModelSetupEN5boost10shared_ptrIS0_EEb

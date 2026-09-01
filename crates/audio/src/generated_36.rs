@@ -345,7 +345,7 @@ pub fn stub_3e7ed0() -> ! {
 // 0x3e7f44 — __GLOBAL__I_a_168
 #[doc(alias = "global constructor keyed to_a_168")]
 pub fn stub_3e7f44() -> ! {
-    todo!("0x3e7f44 `global constructor keyed to_a_168")
+    todo!("0x3e7f44 global constructor keyed to_a_168")
 }
 
 // 0x3e8668 — __ZN3RBX13CharacterMesh11setBodyPartENS0_8BodyPartE
@@ -457,14 +457,14 @@ pub fn stub_3e9354() -> ! {
 // type: void __fastcall(RBX::CharacterMesh *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")]
 pub fn stub_3e9364() -> ! {
-    todo!("0x3e9364 `non-virtual thunk to'RBX::CharacterMesh::~CharacterMesh()")
+    todo!("0x3e9364 non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")
 }
 
 // 0x3e936c — __ZThn32_N3RBX13CharacterMeshD0Ev
 // type: void __fastcall(RBX::CharacterMesh *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")]
 pub fn stub_3e936c() -> ! {
-    todo!("0x3e936c `non-virtual thunk to'RBX::CharacterMesh::~CharacterMesh()")
+    todo!("0x3e936c non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")
 }
 
 // 0x3e9410 — __ZThn32_NK3RBX14FactoryProductINS_13CharacterMeshENS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEE12getClassNameEv
@@ -478,28 +478,28 @@ pub fn stub_3e9410() -> ! {
 // type: void __fastcall(RBX::CharacterMesh *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")]
 pub fn stub_3e9420() -> ! {
-    todo!("0x3e9420 `non-virtual thunk to'RBX::CharacterMesh::~CharacterMesh()")
+    todo!("0x3e9420 non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")
 }
 
 // 0x3e9428 — __ZThn36_N3RBX13CharacterMeshD0Ev
 // type: void __fastcall(RBX::CharacterMesh *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")]
 pub fn stub_3e9428() -> ! {
-    todo!("0x3e9428 `non-virtual thunk to'RBX::CharacterMesh::~CharacterMesh()")
+    todo!("0x3e9428 non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")
 }
 
 // 0x3e94cc — __ZThn92_N3RBX13CharacterMeshD1Ev
 // type: void __fastcall(RBX::CharacterMesh *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")]
 pub fn stub_3e94cc() -> ! {
-    todo!("0x3e94cc `non-virtual thunk to'RBX::CharacterMesh::~CharacterMesh()")
+    todo!("0x3e94cc non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")
 }
 
 // 0x3e94d4 — __ZThn92_N3RBX13CharacterMeshD0Ev
 // type: void __fastcall(RBX::CharacterMesh *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")]
 pub fn stub_3e94d4() -> ! {
-    todo!("0x3e94d4 `non-virtual thunk to'RBX::CharacterMesh::~CharacterMesh()")
+    todo!("0x3e94d4 non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")
 }
 
 // 0x3e9578 — __ZN3RBX14FactoryProductINS_13CharacterMeshENS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEE7CreatorD1Ev

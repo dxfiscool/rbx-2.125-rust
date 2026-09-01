@@ -457,7 +457,7 @@ pub fn stub_a87d5c() -> ! {
 // type: void __fastcall(RBX::Network::Player *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Player::~Player()")]
 pub fn stub_a87d38() -> ! {
-    todo!("0xa87d38 `non-virtual thunk to'RBX::Network::Player::~Player()")
+    todo!("0xa87d38 non-virtual thunk toRBX::Network::Player::~Player()")
 }
 
 // 0xa87d2c — `non-virtual thunk to'RBX::Network::Player::~Player()
@@ -465,7 +465,7 @@ pub fn stub_a87d38() -> ! {
 // type: void __fastcall(RBX::Network::Player *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Player::~Player()")]
 pub fn stub_a87d2c() -> ! {
-    todo!("0xa87d2c `non-virtual thunk to'RBX::Network::Player::~Player()")
+    todo!("0xa87d2c non-virtual thunk toRBX::Network::Player::~Player()")
 }
 
 // 0xa86eec — RBX::Network::Player::~Player()
@@ -481,7 +481,7 @@ pub fn stub_a86eec() -> ! {
 // type: void __fastcall(RBX::Network::Player *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Player::~Player()")]
 pub fn stub_a86e48() -> ! {
-    todo!("0xa86e48 `non-virtual thunk to'RBX::Network::Player::~Player()")
+    todo!("0xa86e48 non-virtual thunk toRBX::Network::Player::~Player()")
 }
 
 // 0xa86da4 — `non-virtual thunk to'RBX::Network::Player::~Player()
@@ -489,7 +489,7 @@ pub fn stub_a86e48() -> ! {
 // type: void __fastcall(RBX::Network::Player *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Player::~Player()")]
 pub fn stub_a86da4() -> ! {
-    todo!("0xa86da4 `non-virtual thunk to'RBX::Network::Player::~Player()")
+    todo!("0xa86da4 non-virtual thunk toRBX::Network::Player::~Player()")
 }
 
 // 0xa86d98 — RBX::Network::Player::~Player()

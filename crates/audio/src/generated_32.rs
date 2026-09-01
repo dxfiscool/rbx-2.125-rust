@@ -260,7 +260,7 @@ pub fn stub_3d199c() -> ! {
 // 0x3d19c4 — __GLOBAL__I_a_166
 #[doc(alias = "global constructor keyed to_a_166")]
 pub fn stub_3d19c4() -> ! {
-    todo!("0x3d19c4 `global constructor keyed to_a_166")
+    todo!("0x3d19c4 global constructor keyed to_a_166")
 }
 
 // 0x3d249c — __ZN3RBX20ChangeHistoryService10setEnabledEb
@@ -351,14 +351,14 @@ pub fn stub_3d3a6c() -> ! {
 // type: void __fastcall(RBX::ChangeHistoryService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")]
 pub fn stub_3d3a70() -> ! {
-    todo!("0x3d3a70 `non-virtual thunk to'RBX::ChangeHistoryService::~ChangeHistoryService()")
+    todo!("0x3d3a70 non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")
 }
 
 // 0x3d3a78 — __ZThn36_N3RBX20ChangeHistoryServiceD0Ev
 // type: void __fastcall(RBX::ChangeHistoryService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")]
 pub fn stub_3d3a78() -> ! {
-    todo!("0x3d3a78 `non-virtual thunk to'RBX::ChangeHistoryService::~ChangeHistoryService()")
+    todo!("0x3d3a78 non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")
 }
 
 // 0x3d3a80 — __ZN3RBX20ChangeHistoryServiceD2Ev
@@ -372,14 +372,14 @@ pub fn stub_3d3a80() -> ! {
 // type: void __fastcall(RBX::ChangeHistoryService *this, int, int, int)
 #[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")]
 pub fn stub_3d3f08() -> ! {
-    todo!("0x3d3f08 `non-virtual thunk to'RBX::ChangeHistoryService::~ChangeHistoryService()")
+    todo!("0x3d3f08 non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")
 }
 
 // 0x3d3f10 — __ZThn36_N3RBX20ChangeHistoryServiceD1Ev
 // type: void __fastcall(RBX::ChangeHistoryService *this, int, int, int)
 #[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")]
 pub fn stub_3d3f10() -> ! {
-    todo!("0x3d3f10 `non-virtual thunk to'RBX::ChangeHistoryService::~ChangeHistoryService()")
+    todo!("0x3d3f10 non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")
 }
 
 // 0x3d3f18 — __ZN3RBX20ChangeHistoryService6attachEv
@@ -477,7 +477,7 @@ pub fn stub_3d582c() -> ! {
 // type: void __fastcall(int, __int16 *, int, int, int, int, int, struct _Unwind_Exception *, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)")]
 pub fn stub_3d59b8() -> ! {
-    todo!("0x3d59b8 `non-virtual thunk to'RBX::ChangeHistoryService::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)")
+    todo!("0x3d59b8 non-virtual thunk toRBX::ChangeHistoryService::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)")
 }
 
 // 0x3d5fc0 — __ZN3RBX20ChangeHistoryService8Waypoint4playEv

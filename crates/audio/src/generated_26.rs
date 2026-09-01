@@ -453,7 +453,7 @@ pub fn stub_2e998c() -> ! {
 // 0x2e9b08 — __GLOBAL__I_a_95
 #[doc(alias = "global constructor keyed to_a_95")]
 pub fn stub_2e9b08() -> ! {
-    todo!("0x2e9b08 `global constructor keyed to_a_95")
+    todo!("0x2e9b08 global constructor keyed to_a_95")
 }
 
 // 0x2e9f50 — __ZNK3RBX11LuaDragTool13getCursorNameEv
@@ -491,7 +491,7 @@ pub fn stub_2ea2ac() -> ! {
 // 0x2ea2b0 — __ZThn36_N3RBX11LuaDragToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")]
 pub fn stub_2ea2b0() -> ! {
-    todo!("0x2ea2b0 `non-virtual thunk to'RBX::LuaDragTool::~LuaDragTool()")
+    todo!("0x2ea2b0 non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")
 }
 
 // 0x2ea2b8 — __ZN3RBX11LuaDragToolD2Ev
@@ -503,7 +503,7 @@ pub fn stub_2ea2b8() -> ! {
 // 0x2ea3f8 — __ZThn36_N3RBX11LuaDragToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")]
 pub fn stub_2ea3f8() -> ! {
-    todo!("0x2ea3f8 `non-virtual thunk to'RBX::LuaDragTool::~LuaDragTool()")
+    todo!("0x2ea3f8 non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")
 }
 
 // 0x2ea400 — __ZN3RBX11LuaDragTool11onMouseDownERKNS_7UIEventE
@@ -571,7 +571,7 @@ pub fn stub_2eab50() -> ! {
 // 0x2eac30 — __GLOBAL__I_a_96
 #[doc(alias = "global constructor keyed to_a_96")]
 pub fn stub_2eac30() -> ! {
-    todo!("0x2eac30 `global constructor keyed to_a_96")
+    todo!("0x2eac30 global constructor keyed to_a_96")
 }
 
 // 0x2eaea0 — __ZN3RBX11MegaDraggerC1EPNS_12PartInstanceERKSt6vectorIPNS_10PVInstanceESaIS5_EEPNS_12RootInstanceENS_4DRAG8JoinTypeE
@@ -705,7 +705,7 @@ pub fn stub_2ebf7c() -> ! {
 // 0x2ebf88 — __GLOBAL__I_a_97
 #[doc(alias = "global constructor keyed to_a_97")]
 pub fn stub_2ebf88() -> ! {
-    todo!("0x2ebf88 `global constructor keyed to_a_97")
+    todo!("0x2ebf88 global constructor keyed to_a_97")
 }
 
 // 0x2ec2fc — __ZN3RBX18MoveResizeJoinTool12findTargetPVERKNS_7UIEventE
@@ -723,7 +723,7 @@ pub fn stub_2ec558() -> ! {
 // 0x2ec7e4 — __ZThn4_N3RBX18MoveResizeJoinTool13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::MoveResizeJoinTool::render3dAdorn(RBX::Adorn *)")]
 pub fn stub_2ec7e4() -> ! {
-    todo!("0x2ec7e4 `non-virtual thunk to'RBX::MoveResizeJoinTool::render3dAdorn(RBX::Adorn *)")
+    todo!("0x2ec7e4 non-virtual thunk toRBX::MoveResizeJoinTool::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x2ec7ec — __ZN3RBX18MoveResizeJoinTool8render2dEPNS_5AdornE
@@ -735,7 +735,7 @@ pub fn stub_2ec7ec() -> ! {
 // 0x2ed9d4 — __ZThn4_N3RBX18MoveResizeJoinTool8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::MoveResizeJoinTool::render2d(RBX::Adorn *)")]
 pub fn stub_2ed9d4() -> ! {
-    todo!("0x2ed9d4 `non-virtual thunk to'RBX::MoveResizeJoinTool::render2d(RBX::Adorn *)")
+    todo!("0x2ed9d4 non-virtual thunk toRBX::MoveResizeJoinTool::render2d(RBX::Adorn *)")
 }
 
 // 0x2ed9dc — __ZN3RBX18MoveResizeJoinTool12onMouseHoverERKNS_7UIEventE
@@ -808,19 +808,19 @@ pub fn stub_2ee900() -> ! {
 // 0x2ee9f8 — __ZThn36_N3RBX18MoveResizeJoinToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::MoveResizeJoinTool::~MoveResizeJoinTool()")]
 pub fn stub_2ee9f8() -> ! {
-    todo!("0x2ee9f8 `non-virtual thunk to'RBX::MoveResizeJoinTool::~MoveResizeJoinTool()")
+    todo!("0x2ee9f8 non-virtual thunk toRBX::MoveResizeJoinTool::~MoveResizeJoinTool()")
 }
 
 // 0x2eeadc — __ZThn36_N3RBX18MoveResizeJoinToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::MoveResizeJoinTool::~MoveResizeJoinTool()")]
 pub fn stub_2eeadc() -> ! {
-    todo!("0x2eeadc `non-virtual thunk to'RBX::MoveResizeJoinTool::~MoveResizeJoinTool()")
+    todo!("0x2eeadc non-virtual thunk toRBX::MoveResizeJoinTool::~MoveResizeJoinTool()")
 }
 
 // 0x2eebd8 — __GLOBAL__I_a_98
 #[doc(alias = "global constructor keyed to_a_98")]
 pub fn stub_2eebd8() -> ! {
-    todo!("0x2eebd8 `global constructor keyed to_a_98")
+    todo!("0x2eebd8 global constructor keyed to_a_98")
 }
 
 // 0x2eee88 — __ZN3RBX8NullToolC1EPNS_9WorkspaceE
@@ -850,7 +850,7 @@ pub fn stub_2ef024() -> ! {
 // 0x2ef028 — __ZThn36_N3RBX8NullToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::NullTool::~NullTool()")]
 pub fn stub_2ef028() -> ! {
-    todo!("0x2ef028 `non-virtual thunk to'RBX::NullTool::~NullTool()")
+    todo!("0x2ef028 non-virtual thunk toRBX::NullTool::~NullTool()")
 }
 
 // 0x2ef030 — __ZN3RBX8NullToolD2Ev
@@ -862,7 +862,7 @@ pub fn stub_2ef030() -> ! {
 // 0x2ef124 — __ZThn36_N3RBX8NullToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::NullTool::~NullTool()")]
 pub fn stub_2ef124() -> ! {
-    todo!("0x2ef124 `non-virtual thunk to'RBX::NullTool::~NullTool()")
+    todo!("0x2ef124 non-virtual thunk toRBX::NullTool::~NullTool()")
 }
 
 // 0x2ef12c — __ZN3RBX11NewNullToolC1EPNS_9WorkspaceE
@@ -892,13 +892,13 @@ pub fn stub_2ef2f4() -> ! {
 // 0x2ef328 — __ZThn36_N3RBX11NewNullToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::NewNullTool::~NewNullTool()")]
 pub fn stub_2ef328() -> ! {
-    todo!("0x2ef328 `non-virtual thunk to'RBX::NewNullTool::~NewNullTool()")
+    todo!("0x2ef328 non-virtual thunk toRBX::NewNullTool::~NewNullTool()")
 }
 
 // 0x2ef330 — __ZThn36_N3RBX11NewNullToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::NewNullTool::~NewNullTool()")]
 pub fn stub_2ef330() -> ! {
-    todo!("0x2ef330 `non-virtual thunk to'RBX::NewNullTool::~NewNullTool()")
+    todo!("0x2ef330 non-virtual thunk toRBX::NewNullTool::~NewNullTool()")
 }
 
 // 0x2ef364 — __ZN3RBX11NewNullTool16getIndicatedPartERKNS_7UIEventERKbPPNS_12PartInstanceEPbPN3G3D7Vector3E

@@ -142,7 +142,7 @@ pub fn stub_c78cb4() -> ! {
 // 0xc78cc0 — __GLOBAL__I_a_669
 #[doc(alias = "global constructor keyed to_a_669")]
 pub fn stub_c78cc0() -> ! {
-    todo!("0xc78cc0 `global constructor keyed to'_a_669")
+    todo!("0xc78cc0 global constructor keyed to_a_669")
 }
 
 // 0xc78cf4 — __ZN4Ogre17ControllerManager12getSingletonEv
@@ -356,7 +356,7 @@ pub fn stub_c7b0d0() -> ! {
 // 0xc7b0dc — __GLOBAL__I_a_670
 #[doc(alias = "global constructor keyed to_a_670")]
 pub fn stub_c7b0dc() -> ! {
-    todo!("0xc7b0dc `global constructor keyed to'_a_670")
+    todo!("0xc7b0dc global constructor keyed to_a_670")
 }
 
 // 0xc7b110 — __ZN4Ogre10ConvexBody15_initialisePoolEv
@@ -401,7 +401,7 @@ pub fn stub_c7b3e0() -> ! {
 // 0xc7b3ec — __GLOBAL__I_a_671
 #[doc(alias = "global constructor keyed to_a_671")]
 pub fn stub_c7b3ec() -> ! {
-    todo!("0xc7b3ec `global constructor keyed to'_a_671")
+    todo!("0xc7b3ec global constructor keyed to_a_671")
 }
 
 // 0xc7b458 — __ZN4Ogre10DataStream7getLineEb
@@ -666,5 +666,5 @@ pub fn stub_c7cd04() -> ! {
 // 0xc7cd90 — __GLOBAL__I_a_672
 #[doc(alias = "global constructor keyed to_a_672")]
 pub fn stub_c7cd90() -> ! {
-    todo!("0xc7cd90 `global constructor keyed to'_a_672")
+    todo!("0xc7cd90 global constructor keyed to_a_672")
 }

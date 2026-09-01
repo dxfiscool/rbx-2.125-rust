@@ -95,7 +95,7 @@ pub fn stub_c642dc() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const")]
 // was: `non-virtual thunk to'Ogre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const
 pub fn stub_c642ec() -> ! {
-    todo!("0xc642ec `non-virtual thunk to'Ogre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const")
+    todo!("0xc642ec non-virtual thunk toOgre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const")
 }
 
 // 0xc64300 — __ZNK4Ogre12BillboardSet17getBoundingRadiusEv
@@ -116,7 +116,7 @@ pub fn stub_c64308() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::getLights(void)const")]
 // was: `non-virtual thunk to'Ogre::BillboardSet::getLights(void)const
 pub fn stub_c64318() -> ! {
-    todo!("0xc64318 `non-virtual thunk to'Ogre::BillboardSet::getLights(void)const")
+    todo!("0xc64318 non-virtual thunk toOgre::BillboardSet::getLights(void)const")
 }
 
 // 0xc64328 — __ZN4Ogre12BillboardSet16visitRenderablesEPNS_10Renderable7VisitorEb
@@ -452,7 +452,7 @@ pub fn stub_c662a8() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")]
 // was: `non-virtual thunk to'Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()
 pub fn stub_c662b4() -> ! {
-    todo!("0xc662b4 `non-virtual thunk to'Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")
+    todo!("0xc662b4 non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")
 }
 
 // 0xc66348 — __ZN4Ogre25BorderPanelOverlayElementD2Ev
@@ -466,7 +466,7 @@ pub fn stub_c66348() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")]
 // was: `non-virtual thunk to'Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()
 pub fn stub_c664ec() -> ! {
-    todo!("0xc664ec `non-virtual thunk to'Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")
+    todo!("0xc664ec non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")
 }
 
 // 0xc664f8 — __ZN4Ogre25BorderPanelOverlayElement10initialiseEv

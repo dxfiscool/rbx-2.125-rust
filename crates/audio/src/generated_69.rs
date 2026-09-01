@@ -171,7 +171,7 @@ pub fn stub_69b7dc() -> ! {
 // 0x69b7e4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX10Controller6ButtonEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot,boost::function<void ()(RBX::Controller::Button)>,1,void ()(RBX::Controller::Button)>::call(RBX::Controller::Button)")]
 pub fn stub_69b7e4() -> ! {
-    todo!("0x69b7e4 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot,boost::function<void ()(RBX::Controller::Button)>,1,void ()(RBX::Controller::Button)>::call(RBX::Controller::Button)")
+    todo!("0x69b7e4 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot,boost::function<void ()(RBX::Controller::Button)>,1,void ()(RBX::Controller::Button)>::call(RBX::Controller::Button)")
 }
 
 // 0x69b7ec — __ZNK5boost9function1IvN3RBX10Controller6ButtonEEclES3_
@@ -369,7 +369,7 @@ pub fn stub_69cf58() -> ! {
 // 0x69cf80 — __GLOBAL__I_a_280
 #[doc(alias = "global constructor keyed to_a_280")]
 pub fn stub_69cf80() -> ! {
-    todo!("0x69cf80 `global constructor keyed to'_a_280")
+    todo!("0x69cf80 global constructor keyed to_a_280")
 }
 
 // 0x69d4a4 — __ZNK3RBX11ObjectValue8getValueEv

@@ -737,7 +737,7 @@ pub fn stub_6b1f80() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Color3)>::slot,boost::function<void ()(G3D::Color3)>,1,void ()(G3D::Color3)>::call(G3D::Color3)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Color3)>::slot,boost::function<void ()(G3D::Color3)>,1,void ()(G3D::Color3)>::call(G3D::Color3)
 pub fn stub_6b1fa0() -> ! {
-    todo!("0x6b1fa0 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Color3)>::slot,boost::function<void ()(G3D::Color3)>,1,void ()(G3D::Color3)>::call(G3D::Color3)")
+    todo!("0x6b1fa0 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Color3)>::slot,boost::function<void ()(G3D::Color3)>,1,void ()(G3D::Color3)>::call(G3D::Color3)")
 }
 
 // 0x6b1fc0 — __ZNK5boost9function1IvN3G3D6Color3EEclES2_
@@ -761,4 +761,3 @@ pub fn stub_6b2098() -> ! {
 pub fn stub_6b2188() -> ! {
     todo!("0x6b2188 rbx::signals::signal<void ()(G3D::Color3)>::slot::safe_static_init_mutex(void)")
 }
-

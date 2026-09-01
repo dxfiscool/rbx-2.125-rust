@@ -570,9 +570,9 @@ pub fn stub_1050ac() -> ! {
 }
 
 // 0x105118 — __GLOBAL__I__ZN4FMOD13dspdelay_descE
-#[doc(alias = "`global constructor keyed toFMOD::dspdelay_desc")]
+#[doc(alias = "global constructor keyed toFMOD::dspdelay_desc")]
 pub fn stub_105118() -> ! {
-    todo!("0x105118 `global constructor keyed toFMOD::dspdelay_desc")
+    todo!("0x105118 global constructor keyed toFMOD::dspdelay_desc")
 }
 
 // 0x105124 — __ZN4FMOD10DSPTremolo12readLFOTableEibPf

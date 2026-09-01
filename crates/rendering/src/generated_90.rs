@@ -514,14 +514,14 @@ pub fn stub_e634b8() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::InstanceBatch::~InstanceBatch()")]
 // was: `non-virtual thunk to'Ogre::InstanceBatch::~InstanceBatch()
 pub fn stub_e634c4() -> ! {
-    todo!("0xe634c4 `non-virtual thunk toOgre::InstanceBatch::~InstanceBatch()")
+    todo!("0xe634c4 non-virtual thunk toOgre::InstanceBatch::~InstanceBatch()")
 }
 
 // 0xe63558 — __ZThn52_N4Ogre13InstanceBatchD0Ev
 #[doc(alias = "non-virtual thunk toOgre::InstanceBatch::~InstanceBatch()")]
 // was: `non-virtual thunk to'Ogre::InstanceBatch::~InstanceBatch()
 pub fn stub_e63558() -> ! {
-    todo!("0xe63558 `non-virtual thunk toOgre::InstanceBatch::~InstanceBatch()")
+    todo!("0xe63558 non-virtual thunk toOgre::InstanceBatch::~InstanceBatch()")
 }
 
 // 0xe635ec — __ZN4Ogre13InstanceBatchD2Ev
@@ -535,14 +535,14 @@ pub fn stub_e635ec() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::InstanceBatch::~InstanceBatch()")]
 // was: `non-virtual thunk to'Ogre::InstanceBatch::~InstanceBatch()
 pub fn stub_e63a70() -> ! {
-    todo!("0xe63a70 `non-virtual thunk toOgre::InstanceBatch::~InstanceBatch()")
+    todo!("0xe63a70 non-virtual thunk toOgre::InstanceBatch::~InstanceBatch()")
 }
 
 // 0xe63a7c — __ZThn52_N4Ogre13InstanceBatchD1Ev
 #[doc(alias = "non-virtual thunk toOgre::InstanceBatch::~InstanceBatch()")]
 // was: `non-virtual thunk to'Ogre::InstanceBatch::~InstanceBatch()
 pub fn stub_e63a7c() -> ! {
-    todo!("0xe63a7c `non-virtual thunk toOgre::InstanceBatch::~InstanceBatch()")
+    todo!("0xe63a7c non-virtual thunk toOgre::InstanceBatch::~InstanceBatch()")
 }
 
 // 0xe63a88 — __ZN4Ogre13InstanceBatch21_setInstancesPerBatchEm
@@ -647,7 +647,7 @@ pub fn stub_e6455c() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::InstanceBatch::getMovableType(void)const")]
 // was: `non-virtual thunk to'Ogre::InstanceBatch::getMovableType(void)const
 pub fn stub_e64650() -> ! {
-    todo!("0xe64650 `non-virtual thunk toOgre::InstanceBatch::getMovableType(void)const")
+    todo!("0xe64650 non-virtual thunk toOgre::InstanceBatch::getMovableType(void)const")
 }
 
 // 0xe64744 — __ZN4Ogre13InstanceBatch20_notifyCurrentCameraEPNS_6CameraE
@@ -661,7 +661,7 @@ pub fn stub_e64744() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::InstanceBatch::_notifyCurrentCamera(Ogre::Camera *)")]
 // was: `non-virtual thunk to'Ogre::InstanceBatch::_notifyCurrentCamera(Ogre::Camera *)
 pub fn stub_e647b4() -> ! {
-    todo!("0xe647b4 `non-virtual thunk toOgre::InstanceBatch::_notifyCurrentCamera(Ogre::Camera *)")
+    todo!("0xe647b4 non-virtual thunk toOgre::InstanceBatch::_notifyCurrentCamera(Ogre::Camera *)")
 }
 
 // 0xe64824 — __ZNK4Ogre13InstanceBatch14getBoundingBoxEv
@@ -675,7 +675,7 @@ pub fn stub_e64824() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::InstanceBatch::getBoundingBox(void)const")]
 // was: `non-virtual thunk to'Ogre::InstanceBatch::getBoundingBox(void)const
 pub fn stub_e6482c() -> ! {
-    todo!("0xe6482c `non-virtual thunk toOgre::InstanceBatch::getBoundingBox(void)const")
+    todo!("0xe6482c non-virtual thunk toOgre::InstanceBatch::getBoundingBox(void)const")
 }
 
 // 0xe64834 — __ZNK4Ogre13InstanceBatch17getBoundingRadiusEv
@@ -689,7 +689,7 @@ pub fn stub_e64834() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::InstanceBatch::getBoundingRadius(void)const")]
 // was: `non-virtual thunk to'Ogre::InstanceBatch::getBoundingRadius(void)const
 pub fn stub_e6483c() -> ! {
-    todo!("0xe6483c `non-virtual thunk toOgre::InstanceBatch::getBoundingRadius(void)const")
+    todo!("0xe6483c non-virtual thunk toOgre::InstanceBatch::getBoundingRadius(void)const")
 }
 
 // 0xe64844 — __ZNK4Ogre13InstanceBatch19getSquaredViewDepthEPKNS_6CameraE

@@ -526,7 +526,7 @@ pub fn stub_85d5b4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::CustomEventReceiver,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_19CustomEventReceiverENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 pub fn stub_85d694() -> ! {
-    todo!("0x85d694 'non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::CustomEventReceiver,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0x85d694 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::CustomEventReceiver,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 // 0x85d69c — __ZNK3RBX10Reflection14PropDescriptorINS_19CustomEventReceiverEPNS_8InstanceEE10GetSetImplIMS2_KFKS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -866,7 +866,7 @@ pub fn stub_860708() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::TextureTrail,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_12TextureTrailENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 pub fn stub_8607e8() -> ! {
-    todo!("0x8607e8 'non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::TextureTrail,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0x8607e8 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::TextureTrail,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 // 0x8607f0 — __ZNK3RBX10Reflection14PropDescriptorINS_12TextureTrailEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv

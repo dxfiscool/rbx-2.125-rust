@@ -79,14 +79,14 @@ pub fn stub_6092d8() -> ! {
 // was: `non-virtual thunk to'RBX::PVInstance::~PVInstance()
 #[doc(alias = "non-virtual thunk toRBX::PVInstance::~PVInstance()")]
 pub fn stub_6092dc() -> ! {
-    todo!("0x6092dc `non-virtual thunk toRBX::PVInstance::~PVInstance()")
+    todo!("0x6092dc non-virtual thunk toRBX::PVInstance::~PVInstance()")
 }
 
 // 0x6092e4 — __ZThn36_N3RBX10PVInstanceD0Ev
 // was: `non-virtual thunk to'RBX::PVInstance::~PVInstance()
 #[doc(alias = "non-virtual thunk toRBX::PVInstance::~PVInstance()")]
 pub fn stub_6092e4() -> ! {
-    todo!("0x6092e4 `non-virtual thunk toRBX::PVInstance::~PVInstance()")
+    todo!("0x6092e4 non-virtual thunk toRBX::PVInstance::~PVInstance()")
 }
 
 // 0x6092ec — __ZN3RBX10PVInstanceD2Ev
@@ -99,14 +99,14 @@ pub fn stub_6092ec() -> ! {
 // was: `non-virtual thunk to'RBX::PVInstance::~PVInstance()
 #[doc(alias = "non-virtual thunk toRBX::PVInstance::~PVInstance()")]
 pub fn stub_6092f0() -> ! {
-    todo!("0x6092f0 `non-virtual thunk toRBX::PVInstance::~PVInstance()")
+    todo!("0x6092f0 non-virtual thunk toRBX::PVInstance::~PVInstance()")
 }
 
 // 0x6092f8 — __ZThn36_N3RBX10PVInstanceD1Ev
 // was: `non-virtual thunk to'RBX::PVInstance::~PVInstance()
 #[doc(alias = "non-virtual thunk toRBX::PVInstance::~PVInstance()")]
 pub fn stub_6092f8() -> ! {
-    todo!("0x6092f8 `non-virtual thunk toRBX::PVInstance::~PVInstance()")
+    todo!("0x6092f8 non-virtual thunk toRBX::PVInstance::~PVInstance()")
 }
 
 // 0x609300 — __ZN3RBX10PVInstance15hasLegacyOffsetEv
@@ -383,28 +383,28 @@ pub fn stub_60b468() -> ! {
 // was: `non-virtual thunk to'RBX::RootInstance::~RootInstance()
 #[doc(alias = "non-virtual thunk toRBX::RootInstance::~RootInstance()")]
 pub fn stub_60b478() -> ! {
-    todo!("0x60b478 `non-virtual thunk toRBX::RootInstance::~RootInstance()")
+    todo!("0x60b478 non-virtual thunk toRBX::RootInstance::~RootInstance()")
 }
 
 // 0x60b480 — __ZThn36_N3RBX12RootInstanceD0Ev
 // was: `non-virtual thunk to'RBX::RootInstance::~RootInstance()
 #[doc(alias = "non-virtual thunk toRBX::RootInstance::~RootInstance()")]
 pub fn stub_60b480() -> ! {
-    todo!("0x60b480 `non-virtual thunk toRBX::RootInstance::~RootInstance()")
+    todo!("0x60b480 non-virtual thunk toRBX::RootInstance::~RootInstance()")
 }
 
 // 0x60b488 — __ZThn120_N3RBX12RootInstanceD0Ev
 // was: `non-virtual thunk to'RBX::RootInstance::~RootInstance()
 #[doc(alias = "non-virtual thunk toRBX::RootInstance::~RootInstance()")]
 pub fn stub_60b488() -> ! {
-    todo!("0x60b488 `non-virtual thunk toRBX::RootInstance::~RootInstance()")
+    todo!("0x60b488 non-virtual thunk toRBX::RootInstance::~RootInstance()")
 }
 
 // 0x60b490 — __ZThn280_N3RBX12RootInstanceD0Ev
 // was: `non-virtual thunk to'RBX::RootInstance::~RootInstance()
 #[doc(alias = "non-virtual thunk toRBX::RootInstance::~RootInstance()")]
 pub fn stub_60b490() -> ! {
-    todo!("0x60b490 `non-virtual thunk toRBX::RootInstance::~RootInstance()")
+    todo!("0x60b490 non-virtual thunk toRBX::RootInstance::~RootInstance()")
 }
 
 // 0x60b498 — __ZN3RBX12RootInstanceD2Ev
@@ -417,28 +417,28 @@ pub fn stub_60b498() -> ! {
 // was: `non-virtual thunk to'RBX::RootInstance::~RootInstance()
 #[doc(alias = "non-virtual thunk toRBX::RootInstance::~RootInstance()")]
 pub fn stub_60b5c0() -> ! {
-    todo!("0x60b5c0 `non-virtual thunk toRBX::RootInstance::~RootInstance()")
+    todo!("0x60b5c0 non-virtual thunk toRBX::RootInstance::~RootInstance()")
 }
 
 // 0x60b5d0 — __ZThn36_N3RBX12RootInstanceD1Ev
 // was: `non-virtual thunk to'RBX::RootInstance::~RootInstance()
 #[doc(alias = "non-virtual thunk toRBX::RootInstance::~RootInstance()")]
 pub fn stub_60b5d0() -> ! {
-    todo!("0x60b5d0 `non-virtual thunk toRBX::RootInstance::~RootInstance()")
+    todo!("0x60b5d0 non-virtual thunk toRBX::RootInstance::~RootInstance()")
 }
 
 // 0x60b5e0 — __ZThn120_N3RBX12RootInstanceD1Ev
 // was: `non-virtual thunk to'RBX::RootInstance::~RootInstance()
 #[doc(alias = "non-virtual thunk toRBX::RootInstance::~RootInstance()")]
 pub fn stub_60b5e0() -> ! {
-    todo!("0x60b5e0 `non-virtual thunk toRBX::RootInstance::~RootInstance()")
+    todo!("0x60b5e0 non-virtual thunk toRBX::RootInstance::~RootInstance()")
 }
 
 // 0x60b5f0 — __ZThn280_N3RBX12RootInstanceD1Ev
 // was: `non-virtual thunk to'RBX::RootInstance::~RootInstance()
 #[doc(alias = "non-virtual thunk toRBX::RootInstance::~RootInstance()")]
 pub fn stub_60b5f0() -> ! {
-    todo!("0x60b5f0 `non-virtual thunk toRBX::RootInstance::~RootInstance()")
+    todo!("0x60b5f0 non-virtual thunk toRBX::RootInstance::~RootInstance()")
 }
 
 // 0x60b604 — __ZN3RBX12RootInstance14setInsertPointERKN3G3D7Vector3E
@@ -585,14 +585,14 @@ pub fn stub_6163dc() -> ! {
 // was: `non-virtual thunk to'RBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
 #[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")]
 pub fn stub_616488() -> ! {
-    todo!("0x616488 `non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")
+    todo!("0x616488 non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")
 }
 
 // 0x61649c — __ZThn132_N3RBX8SeatImplINS_17BasicPartInstanceEED0Ev
 // was: `non-virtual thunk to'RBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
 #[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")]
 pub fn stub_61649c() -> ! {
-    todo!("0x61649c `non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")
+    todo!("0x61649c non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")
 }
 
 // 0x616598 — __ZN3RBX8SeatImplINS_17BasicPartInstanceEE16humanoidFromWeldEPNS_4WeldE

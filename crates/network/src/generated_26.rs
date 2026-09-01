@@ -74,7 +74,7 @@ pub fn stub_927504() -> ! {
 // 0x927528 — __ZThn4_N3rbx8callableINS_7signals6signalIFviSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX14RemoteFunctionEiSsEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_E4callEiSs // was: boost
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RemoteFunction,int,std::string>,boost::_bi::list3<boost::_bi::value<RBX::RemoteFunction*>,boost::arg<1>,boost::arg<2>>>,2,void ()(int,std::string)>::call(int,std::string)")]
 pub fn stub_927528() -> ! {
-    todo!("0x927528 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(int,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RemoteFunction,int,std::string>,boost::_bi::list3<boost::_bi::value<RBX::RemoteFunction*>,boost::arg<1>,boost::arg<2>>>,2,void ()(int,std::string)>::call(int,std::string)")
+    todo!("0x927528 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RemoteFunction,int,std::string>,boost::_bi::list3<boost::_bi::value<RBX::RemoteFunction*>,boost::arg<1>,boost::arg<2>>>,2,void ()(int,std::string)>::call(int,std::string)")
 }
 
 // 0x92754c — __ZN5boost3_bi5list3INS0_5valueIPN3RBX14RemoteFunctionEEENS_3argILi1EEENS7_ILi2EEEEclINS_4_mfi3mf2IvS4_iSsEENS0_5list2IRiRSsEEEEvNS0_4typeIvEERT_RT0_i // was: boost
@@ -130,7 +130,7 @@ pub fn stub_928170() -> ! {
 // 0x928194 — __ZThn4_N3rbx8callableINS_7signals6signalIFviN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_14RemoteFunctionEiS9_EENSD_5list3INSD_5valueIPSH_EENS3_3argILi1EEENSN_ILi2EEEEEEELi2ESA_E4callEiS9_ // was: boost::shared_ptr
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RemoteFunction,int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,boost::_bi::list3<boost::_bi::value<RBX::RemoteFunction*>,boost::arg<1>,boost::arg<2>>>,2,void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::call(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")]
 pub fn stub_928194() -> ! {
-    todo!("0x928194 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RemoteFunction,int,boost::shared_ptr<RBX::Reflection::Tuple const>>,boost::_bi::list3<boost::_bi::value<RBX::RemoteFunction*>,boost::arg<1>,boost::arg<2>>>,2,void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::call(int,boost::shared_ptr<RBX::Reflection::Tuple const>)")
+    todo!("0x928194 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RemoteFunction,int,boost::shared_ptr<RBX::Reflection::Tuple const>>,boost::_bi::list3<boost::_bi::value<RBX::RemoteFunction*>,boost::arg<1>,boost::arg<2>>>,2,void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::call(int,boost::shared_ptr<RBX::Reflection::Tuple const>)")
 }
 
 // 0x9281b8 — __ZN5boost3_bi5list3INS0_5valueIPN3RBX14RemoteFunctionEEENS_3argILi1EEENS7_ILi2EEEEclINS_4_mfi3mf2IvS4_iNS_10shared_ptrIKNS3_10Reflection5TupleEEEEENS0_5list2IRiRSI_EEEEvNS0_4typeIvEERT_RT0_i // was: boost::shared_ptr

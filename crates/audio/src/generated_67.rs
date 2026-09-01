@@ -30,7 +30,7 @@ pub fn stub_67ccf8() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed to_a_272")]
 pub fn stub_67cd9c() -> ! {
-    todo!("0x67cd9c `global constructor keyed to'_a_272")
+    todo!("0x67cd9c global constructor keyed to_a_272")
 }
 
 // 0x67dc10 — __ZNK3RBX14FactoryProductINS_12TimerServiceENS_8InstanceELZNS_13sTimerServiceEES2_E12getClassNameEv
@@ -91,7 +91,7 @@ pub fn stub_67e500() -> ! {
 // 0x67e5cc — __GLOBAL__I_a_273
 #[doc(alias = "global constructor keyed to_a_273")]
 pub fn stub_67e5cc() -> ! {
-    todo!("0x67e5cc `global constructor keyed to'_a_273")
+    todo!("0x67e5cc global constructor keyed to_a_273")
 }
 
 // 0x683010 — __ZNK3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE12getClassNameEv
@@ -248,7 +248,7 @@ pub fn stub_68691c() -> ! {
 // 0x688388 — __GLOBAL__I_a_274
 #[doc(alias = "global constructor keyed to_a_274")]
 pub fn stub_688388() -> ! {
-    todo!("0x688388 `global constructor keyed to'_a_274")
+    todo!("0x688388 global constructor keyed to_a_274")
 }
 
 // 0x68933c — __ZN3RBX4Name13callDoDeclareILZNS_17sToolMouseCommandEEEEvv
@@ -266,25 +266,25 @@ pub fn stub_689340() -> ! {
 // 0x689778 — __GLOBAL__I_a_275
 #[doc(alias = "global constructor keyed to_a_275")]
 pub fn stub_689778() -> ! {
-    todo!("0x689778 `global constructor keyed to'_a_275")
+    todo!("0x689778 global constructor keyed to_a_275")
 }
 
 // 0x68a9ec — __GLOBAL__I_a_276
 #[doc(alias = "global constructor keyed to_a_276")]
 pub fn stub_68a9ec() -> ! {
-    todo!("0x68a9ec `global constructor keyed to'_a_276")
+    todo!("0x68a9ec global constructor keyed to_a_276")
 }
 
 // 0x68b808 — __GLOBAL__I_a_277
 #[doc(alias = "global constructor keyed to_a_277")]
 pub fn stub_68b808() -> ! {
-    todo!("0x68b808 `global constructor keyed to'_a_277")
+    todo!("0x68b808 global constructor keyed to_a_277")
 }
 
 // 0x68d950 — __GLOBAL__I_a_278
 #[doc(alias = "global constructor keyed to_a_278")]
 pub fn stub_68d950() -> ! {
-    todo!("0x68d950 `global constructor keyed to'_a_278")
+    todo!("0x68d950 global constructor keyed to_a_278")
 }
 
 // 0x68e310 — __ZNK3RBX14FactoryProductINS_16TouchTransmitterENS_8InstanceELZNS_17sTouchTransmitterEES2_E12getClassNameEv
@@ -425,7 +425,7 @@ pub fn stub_68ee00() -> ! {
 // 0x690050 — __GLOBAL__I_a_279
 #[doc(alias = "global constructor keyed to_a_279")]
 pub fn stub_690050() -> ! {
-    todo!("0x690050 `global constructor keyed to'_a_279")
+    todo!("0x690050 global constructor keyed to_a_279")
 }
 
 // 0x693c00 — __ZN3RBX23GlobalBasicSettingsItemINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEEE9singletonEv

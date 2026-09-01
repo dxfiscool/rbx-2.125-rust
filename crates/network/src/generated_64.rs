@@ -96,7 +96,7 @@ pub fn stub_56b308() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_210")]
 pub fn stub_56f3f0() -> ! {
-    todo!("0x56f3f0 `global constructor keyed to'_a_210")
+    todo!("0x56f3f0 global constructor keyed to_a_210")
 }
 
 // 0x5707dc — __ZN3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -145,7 +145,7 @@ pub fn stub_570db0() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_211")]
 pub fn stub_570f0c() -> ! {
-    todo!("0x570f0c `global constructor keyed to'_a_211")
+    todo!("0x570f0c global constructor keyed to_a_211")
 }
 
 // 0x573b00 — __ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv
@@ -502,21 +502,21 @@ pub fn stub_5773f8() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_212")]
 pub fn stub_5799c4() -> ! {
-    todo!("0x5799c4 `global constructor keyed to'_a_212")
+    todo!("0x5799c4 global constructor keyed to_a_212")
 }
 
 // 0x57bd94 — __GLOBAL__I_a_213
 // type: 
 #[doc(alias = "global constructor keyed to_a_213")]
 pub fn stub_57bd94() -> ! {
-    todo!("0x57bd94 `global constructor keyed to'_a_213")
+    todo!("0x57bd94 global constructor keyed to_a_213")
 }
 
 // 0x57c3d4 — __GLOBAL__I_a_214
 // type: 
 #[doc(alias = "global constructor keyed to_a_214")]
 pub fn stub_57c3d4() -> ! {
-    todo!("0x57c3d4 `global constructor keyed to'_a_214")
+    todo!("0x57c3d4 global constructor keyed to_a_214")
 }
 
 // 0x57cf64 — __ZNK3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE12getClassNameEv
@@ -677,7 +677,7 @@ pub fn stub_57e064() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_215")]
 pub fn stub_57e108() -> ! {
-    todo!("0x57e108 `global constructor keyed to'_a_215")
+    todo!("0x57e108 global constructor keyed to_a_215")
 }
 
 // 0x57ea30 — __ZNK3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE12getClassNameEv

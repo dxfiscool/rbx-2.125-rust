@@ -116,7 +116,7 @@ pub fn stub_5de570() -> ! {
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "__ZThn96_N3RBX12PartInstance26onNetworkIsSleepingChangedEv")]
 pub fn stub_5de59c() -> ! {
-    todo!("0x5de59c `non-virtual thunk toRBX::PartInstance::onNetworkIsSleepingChanged(void)")
+    todo!("0x5de59c non-virtual thunk toRBX::PartInstance::onNetworkIsSleepingChanged(void)")
 }
 
 // 0x6d0358 — __ZNK3RBX9Workspace26getNetworkStreamingEnabledEv

@@ -106,7 +106,7 @@ pub fn stub_399600() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::AnimationTrack,std::string>,boost::_bi::list2<boost::_bi::value<RBX::AnimationTrack*>,boost::arg<1>>>,1,void ()(std::string)>::call(std::string)")]
 pub fn stub_39961c() -> ! {
-    todo!("0x39961c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::AnimationTrack,std::string>,boost::_bi::list2<boost::_bi::value<RBX::AnimationTrack*>,boost::arg<1>>>,1,void ()(std::string)>::call(std::string)")
+    todo!("0x39961c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::AnimationTrack,std::string>,boost::_bi::list2<boost::_bi::value<RBX::AnimationTrack*>,boost::arg<1>>>,1,void ()(std::string)>::call(std::string)")
 }
 
 // 0x399638 — __ZN5boost3_bi5list2INS0_5valueIPN3RBX14AnimationTrackEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_SsEENS0_5list1IRSsEEEEvNS0_4typeIvEERT_RT0_i
@@ -336,7 +336,7 @@ pub fn stub_39b088() -> ! {
 // 0x39b100 — __GLOBAL__I_a_156
 #[doc(alias = "global constructor keyed to_a_156")]
 pub fn stub_39b100() -> ! {
-    todo!("0x39b100 `global constructor keyed to'_a_156")
+    todo!("0x39b100 global constructor keyed to_a_156")
 }
 
 // 0x39b490 — __ZN3RBX19AnimationTrackStateC1EN5boost10shared_ptrIKNS_16KeyframeSequenceEEENS1_8weak_ptrIKNS_8AnimatorEEE
@@ -468,14 +468,14 @@ pub fn stub_39c414() -> ! {
 // type: void __fastcall(RBX::AnimationTrackState *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
 pub fn stub_39c43c() -> ! {
-    todo!("0x39c43c `non-virtual thunk to'RBX::AnimationTrackState::~AnimationTrackState()")
+    todo!("0x39c43c non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")
 }
 
 // 0x39c444 — __ZThn32_N3RBX19AnimationTrackStateD0Ev
 // type: void __fastcall(RBX::AnimationTrackState *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
 pub fn stub_39c444() -> ! {
-    todo!("0x39c444 `non-virtual thunk to'RBX::AnimationTrackState::~AnimationTrackState()")
+    todo!("0x39c444 non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")
 }
 
 // 0x39c44c — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEE12getClassNameEv
@@ -488,14 +488,14 @@ pub fn stub_39c44c() -> ! {
 // type: void __fastcall(RBX::AnimationTrackState *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
 pub fn stub_39c474() -> ! {
-    todo!("0x39c474 `non-virtual thunk to'RBX::AnimationTrackState::~AnimationTrackState()")
+    todo!("0x39c474 non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")
 }
 
 // 0x39c47c — __ZThn36_N3RBX19AnimationTrackStateD0Ev
 // type: void __fastcall(RBX::AnimationTrackState *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
 pub fn stub_39c47c() -> ! {
-    todo!("0x39c47c `non-virtual thunk to'RBX::AnimationTrackState::~AnimationTrackState()")
+    todo!("0x39c47c non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")
 }
 
 // 0x39c484 — __ZN3RBX19AnimationTrackStateD2Ev
@@ -668,7 +668,7 @@ pub fn stub_39dbc0() -> ! {
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::AnimationTrackState,float,float,float>,boost::_bi::list4<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(float,float,float)>::call(float,float,float)")]
 pub fn stub_39dbec() -> ! {
-    todo!("0x39dbec `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::AnimationTrackState,float,float,float>,boost::_bi::list4<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(float,float,float)>::call(float,float,float)")
+    todo!("0x39dbec non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::AnimationTrackState,float,float,float>,boost::_bi::list4<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(float,float,float)>::call(float,float,float)")
 }
 
 // 0x39dc18 — __ZN5boost3_bi5list4INS0_5valueIPN3RBX19AnimationTrackStateEEENS_3argILi1EEENS7_ILi2EEENS7_ILi3EEEEclINS_4_mfi3mf3IvS4_fffEENS0_5list3IRfSH_SH_EEEEvNS0_4typeIvEERT_RT0_i
@@ -758,7 +758,7 @@ pub fn stub_39e1ac() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::AnimationTrackState,float,float>,boost::_bi::list3<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>>>,2,void ()(float,float)>::call(float,float)")]
 pub fn stub_39e1d4() -> ! {
-    todo!("0x39e1d4 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::AnimationTrackState,float,float>,boost::_bi::list3<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>>>,2,void ()(float,float)>::call(float,float)")
+    todo!("0x39e1d4 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::AnimationTrackState,float,float>,boost::_bi::list3<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>>>,2,void ()(float,float)>::call(float,float)")
 }
 
 // 0x39e1fc — __ZN5boost3_bi5list3INS0_5valueIPN3RBX19AnimationTrackStateEEENS_3argILi1EEENS7_ILi2EEEEclINS_4_mfi3mf2IvS4_ffEENS0_5list2IRfSG_EEEEvNS0_4typeIvEERT_RT0_i
@@ -837,4 +837,3 @@ pub fn stub_39e7dc() -> ! {
 pub fn stub_39e7e8() -> ! {
     todo!("0x39e7e8 rbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(float,float,float,float)>::call(float,float,float,float)")
 }
-

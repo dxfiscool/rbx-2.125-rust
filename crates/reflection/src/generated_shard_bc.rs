@@ -449,7 +449,7 @@ pub fn stub_ac0518() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Network::Player,RBX::ModelInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_7Network6PlayerENS_13ModelInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 pub fn stub_ac0790() -> ! {
-    todo!("0xac0790 `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::Network::Player,RBX::ModelInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0xac0790 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Network::Player,RBX::ModelInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 // 0xac079c — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEPNS_13ModelInstanceEE10GetSetImplIMS3_KFS5_vEMS3_FvS5_EE10isReadOnlyEv

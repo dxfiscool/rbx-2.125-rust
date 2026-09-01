@@ -27,7 +27,7 @@ pub fn stub_56f2c0() -> ! {
 // 0x56f3f0 — __GLOBAL__I_a_210
 #[doc(alias = "global constructor keyed to_a_210")]
 pub fn stub_56f3f0() -> ! {
-    todo!("0x56f3f0 `global constructor keyed to_a_210")
+    todo!("0x56f3f0 global constructor keyed to_a_210")
 }
 
 // 0x56f9fc — __ZN3RBX11HandlesBaseC2EPKc
@@ -75,7 +75,7 @@ pub fn stub_5704c4() -> ! {
 // 0x570614 — __ZThn96_N3RBX11HandlesBase8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::render2d(RBX::Adorn *)")]
 pub fn stub_570614() -> ! {
-    todo!("0x570614 `non-virtual thunk to'RBX::HandlesBase::render2d(RBX::Adorn *)")
+    todo!("0x570614 non-virtual thunk toRBX::HandlesBase::render2d(RBX::Adorn *)")
 }
 
 // 0x57061c — __ZN3RBX11HandlesBase13render3dAdornEPNS_5AdornE
@@ -87,7 +87,7 @@ pub fn stub_57061c() -> ! {
 // 0x57079c — __ZThn96_N3RBX11HandlesBase13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::render3dAdorn(RBX::Adorn *)")]
 pub fn stub_57079c() -> ! {
-    todo!("0x57079c `non-virtual thunk to'RBX::HandlesBase::render3dAdorn(RBX::Adorn *)")
+    todo!("0x57079c non-virtual thunk toRBX::HandlesBase::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x5707a4 — __ZN3RBX11HandlesBase18setServerGuiObjectEv
@@ -141,7 +141,7 @@ pub fn stub_570db0() -> ! {
 // 0x570f0c — __GLOBAL__I_a_211
 #[doc(alias = "global constructor keyed to_a_211")]
 pub fn stub_570f0c() -> ! {
-    todo!("0x570f0c `global constructor keyed to_a_211")
+    todo!("0x570f0c global constructor keyed to_a_211")
 }
 
 // 0x57117c — __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEEC1Ev
@@ -471,13 +471,13 @@ pub fn stub_573b20() -> ! {
 // 0x573b28 — __ZThn32_N3RBX9HopperBinD1Ev
 #[doc(alias = "non-virtual thunk toRBX::HopperBin::~HopperBin()")]
 pub fn stub_573b28() -> ! {
-    todo!("0x573b28 `non-virtual thunk to'RBX::HopperBin::~HopperBin()")
+    todo!("0x573b28 non-virtual thunk toRBX::HopperBin::~HopperBin()")
 }
 
 // 0x573b30 — __ZThn32_N3RBX9HopperBinD0Ev
 #[doc(alias = "non-virtual thunk toRBX::HopperBin::~HopperBin()")]
 pub fn stub_573b30() -> ! {
-    todo!("0x573b30 `non-virtual thunk to'RBX::HopperBin::~HopperBin()")
+    todo!("0x573b30 non-virtual thunk toRBX::HopperBin::~HopperBin()")
 }
 
 // 0x573bd4 — __ZThn32_NK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv
@@ -489,13 +489,13 @@ pub fn stub_573bd4() -> ! {
 // 0x573be4 — __ZThn36_N3RBX9HopperBinD1Ev
 #[doc(alias = "non-virtual thunk toRBX::HopperBin::~HopperBin()")]
 pub fn stub_573be4() -> ! {
-    todo!("0x573be4 `non-virtual thunk to'RBX::HopperBin::~HopperBin()")
+    todo!("0x573be4 non-virtual thunk toRBX::HopperBin::~HopperBin()")
 }
 
 // 0x573bec — __ZThn36_N3RBX9HopperBinD0Ev
 #[doc(alias = "non-virtual thunk toRBX::HopperBin::~HopperBin()")]
 pub fn stub_573bec() -> ! {
-    todo!("0x573bec `non-virtual thunk to'RBX::HopperBin::~HopperBin()")
+    todo!("0x573bec non-virtual thunk toRBX::HopperBin::~HopperBin()")
 }
 
 // 0x573c90 — __ZN3RBX11StarterGearD1Ev
@@ -525,13 +525,13 @@ pub fn stub_573d38() -> ! {
 // 0x573d48 — __ZThn32_N3RBX11StarterGearD1Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterGear::~StarterGear()")]
 pub fn stub_573d48() -> ! {
-    todo!("0x573d48 `non-virtual thunk to'RBX::StarterGear::~StarterGear()")
+    todo!("0x573d48 non-virtual thunk toRBX::StarterGear::~StarterGear()")
 }
 
 // 0x573d50 — __ZThn32_N3RBX11StarterGearD0Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterGear::~StarterGear()")]
 pub fn stub_573d50() -> ! {
-    todo!("0x573d50 `non-virtual thunk to'RBX::StarterGear::~StarterGear()")
+    todo!("0x573d50 non-virtual thunk toRBX::StarterGear::~StarterGear()")
 }
 
 // 0x573df4 — __ZThn32_NK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E12getClassNameEv
@@ -543,13 +543,13 @@ pub fn stub_573df4() -> ! {
 // 0x573e04 — __ZThn36_N3RBX11StarterGearD1Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterGear::~StarterGear()")]
 pub fn stub_573e04() -> ! {
-    todo!("0x573e04 `non-virtual thunk to'RBX::StarterGear::~StarterGear()")
+    todo!("0x573e04 non-virtual thunk toRBX::StarterGear::~StarterGear()")
 }
 
 // 0x573e0c — __ZThn36_N3RBX11StarterGearD0Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterGear::~StarterGear()")]
 pub fn stub_573e0c() -> ! {
-    todo!("0x573e0c `non-virtual thunk to'RBX::StarterGear::~StarterGear()")
+    todo!("0x573e0c non-virtual thunk toRBX::StarterGear::~StarterGear()")
 }
 
 // 0x573eb0 — __ZN3RBX12BackpackItemD1Ev
@@ -591,13 +591,13 @@ pub fn stub_574158() -> ! {
 // 0x57415c — __ZThn32_N3RBX12BackpackItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::BackpackItem::~BackpackItem()")]
 pub fn stub_57415c() -> ! {
-    todo!("0x57415c `non-virtual thunk to'RBX::BackpackItem::~BackpackItem()")
+    todo!("0x57415c non-virtual thunk toRBX::BackpackItem::~BackpackItem()")
 }
 
 // 0x57428c — __ZThn32_N3RBX12BackpackItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::BackpackItem::~BackpackItem()")]
 pub fn stub_57428c() -> ! {
-    todo!("0x57428c `non-virtual thunk to'RBX::BackpackItem::~BackpackItem()")
+    todo!("0x57428c non-virtual thunk toRBX::BackpackItem::~BackpackItem()")
 }
 
 // 0x5743d0 — __ZThn32_NK3RBX17NonFactoryProductINS_6WidgetELZNS_13sBackpackItemEEE12getClassNameEv
@@ -609,5 +609,5 @@ pub fn stub_5743d0() -> ! {
 // 0x5743f8 — __ZThn36_N3RBX12BackpackItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::BackpackItem::~BackpackItem()")]
 pub fn stub_5743f8() -> ! {
-    todo!("0x5743f8 `non-virtual thunk to'RBX::BackpackItem::~BackpackItem()")
+    todo!("0x5743f8 non-virtual thunk toRBX::BackpackItem::~BackpackItem()")
 }

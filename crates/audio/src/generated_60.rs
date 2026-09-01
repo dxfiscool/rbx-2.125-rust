@@ -417,7 +417,7 @@ pub fn stub_579878() -> ! {
 // 0x5799c4 — __GLOBAL__I_a_212
 #[doc(alias = "global constructor keyed to_a_212")]
 pub fn stub_5799c4() -> ! {
-    todo!("0x5799c4 `global constructor keyed to_a_212")
+    todo!("0x5799c4 global constructor keyed to_a_212")
 }
 
 // 0x579f70 — __ZN3RBX17ICharacterSubjectC2Ev
@@ -495,7 +495,7 @@ pub fn stub_57bd7c() -> ! {
 // 0x57bd94 — __GLOBAL__I_a_213
 #[doc(alias = "global constructor keyed to_a_213")]
 pub fn stub_57bd94() -> ! {
-    todo!("0x57bd94 `global constructor keyed to_a_213")
+    todo!("0x57bd94 global constructor keyed to_a_213")
 }
 
 // 0x57bf9c — __ZN3RBX10IEquipableC2Ev
@@ -537,7 +537,7 @@ pub fn stub_57c39c() -> ! {
 // 0x57c3d4 — __GLOBAL__I_a_214
 #[doc(alias = "global constructor keyed to_a_214")]
 pub fn stub_57c3d4() -> ! {
-    todo!("0x57c3d4 `global constructor keyed to_a_214")
+    todo!("0x57c3d4 global constructor keyed to_a_214")
 }
 
 // 0x57c644 — __ZN3RBX14GuiImageButtonC2Ev
@@ -567,7 +567,7 @@ pub fn stub_57caf4() -> ! {
 // 0x57cb34 — __ZThn800_N3RBX14GuiImageButton8setImageENS_9TextureIdE
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::setImage(RBX::TextureId)")]
 pub fn stub_57cb34() -> ! {
-    todo!("0x57cb34 `non-virtual thunk to'RBX::GuiImageButton::setImage(RBX::TextureId)")
+    todo!("0x57cb34 non-virtual thunk toRBX::GuiImageButton::setImage(RBX::TextureId)")
 }
 
 // 0x57cb3c — __ZN3RBX14GuiImageButton18setImageRectOffsetEN3G3D7Vector2E
@@ -579,7 +579,7 @@ pub fn stub_57cb3c() -> ! {
 // 0x57cb88 — __ZThn800_N3RBX14GuiImageButton18setImageRectOffsetEN3G3D7Vector2E
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")]
 pub fn stub_57cb88() -> ! {
-    todo!("0x57cb88 `non-virtual thunk to'RBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")
+    todo!("0x57cb88 non-virtual thunk toRBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")
 }
 
 // 0x57cb90 — __ZN3RBX14GuiImageButton16setImageRectSizeEN3G3D7Vector2E
@@ -591,7 +591,7 @@ pub fn stub_57cb90() -> ! {
 // 0x57cbdc — __ZThn800_N3RBX14GuiImageButton16setImageRectSizeEN3G3D7Vector2E
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::setImageRectSize(G3D::Vector2)")]
 pub fn stub_57cbdc() -> ! {
-    todo!("0x57cbdc `non-virtual thunk to'RBX::GuiImageButton::setImageRectSize(G3D::Vector2)")
+    todo!("0x57cbdc non-virtual thunk toRBX::GuiImageButton::setImageRectSize(G3D::Vector2)")
 }
 
 // 0x57cbe4 — __ZN3RBX14GuiImageButton8render2dEPNS_5AdornE
@@ -603,7 +603,7 @@ pub fn stub_57cbe4() -> ! {
 // 0x57cd38 — __ZThn96_N3RBX14GuiImageButton8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::render2d(RBX::Adorn *)")]
 pub fn stub_57cd38() -> ! {
-    todo!("0x57cd38 `non-virtual thunk to'RBX::GuiImageButton::render2d(RBX::Adorn *)")
+    todo!("0x57cd38 non-virtual thunk toRBX::GuiImageButton::render2d(RBX::Adorn *)")
 }
 
 // 0x57cd40 — __ZN3RBX10Reflection14PropDescriptorINS_14GuiImageButtonENS_9TextureIdEED1Ev

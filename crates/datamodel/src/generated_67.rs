@@ -283,7 +283,7 @@ pub fn stub_4a50e4() -> ! {
 // 0x4a51bc — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotENS3_8functionIS8_EELi2ES8_E4callES7_f
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::call(rbx_core::SharedPtr<RBX::Instance>,float)")]
 pub fn stub_4a51bc() -> ! {
-    todo!("0x4a51bc `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::call(boost::shared_ptr<RBX::Instance>,float)")
+    todo!("0x4a51bc non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::call(boost::shared_ptr<RBX::Instance>,float)")
 }
 
 // 0x4a51c4 — __ZNK5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEfEclES4_f

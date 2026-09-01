@@ -117,7 +117,7 @@ pub fn stub_8913c0() -> ! {
 // 0x891474 — __GLOBAL__I_a_442
 #[doc(alias = "global constructor keyed to_a_442")]
 pub fn stub_891474() -> ! {
-    todo!("0x891474 `global constructor keyed to'_a_442")
+    todo!("0x891474 global constructor keyed to_a_442")
 }
 
 // 0x891ae8 — __ZN3RBX21PersonalServerService27setPersonalServerGetRankUrlESs
@@ -279,13 +279,13 @@ pub fn stub_8934bc() -> ! {
 // 0x8934e4 — __ZThn32_N3RBX21PersonalServerServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")]
 pub fn stub_8934e4() -> ! {
-    todo!("0x8934e4 `non-virtual thunk to'RBX::PersonalServerService::~PersonalServerService()")
+    todo!("0x8934e4 non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")
 }
 
 // 0x893540 — __ZThn32_N3RBX21PersonalServerServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")]
 pub fn stub_893540() -> ! {
-    todo!("0x893540 `non-virtual thunk to'RBX::PersonalServerService::~PersonalServerService()")
+    todo!("0x893540 non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")
 }
 
 // 0x89362c — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEE12getClassNameEv
@@ -297,13 +297,13 @@ pub fn stub_89362c() -> ! {
 // 0x893654 — __ZThn36_N3RBX21PersonalServerServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")]
 pub fn stub_893654() -> ! {
-    todo!("0x893654 `non-virtual thunk to'RBX::PersonalServerService::~PersonalServerService()")
+    todo!("0x893654 non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")
 }
 
 // 0x8936b0 — __ZThn36_N3RBX21PersonalServerServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")]
 pub fn stub_8936b0() -> ! {
-    todo!("0x8936b0 `non-virtual thunk to'RBX::PersonalServerService::~PersonalServerService()")
+    todo!("0x8936b0 non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")
 }
 
 // 0x89379c — __ZN3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -525,7 +525,7 @@ pub fn stub_894db8() -> ! {
 // 0x894ee8 — __GLOBAL__I_a_443
 #[doc(alias = "global constructor keyed to_a_443")]
 pub fn stub_894ee8() -> ! {
-    todo!("0x894ee8 `global constructor keyed to'_a_443")
+    todo!("0x894ee8 global constructor keyed to_a_443")
 }
 
 // 0x8952bc — __ZN3RBX16TerrainPartition15buildPartitionsEv

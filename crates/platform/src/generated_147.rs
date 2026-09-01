@@ -523,7 +523,7 @@ pub fn stub_a5cb00() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_523")]
 pub fn stub_a5c4bc() -> ! {
-    todo!("0xa5c4bc `global constructor keyed to'_a_523")
+    todo!("0xa5c4bc global constructor keyed to_a_523")
 }
 
 // 0xa5c4a4 — RakNet::RakNetGUID::operator==(RakNet::RakNetGUID const&)const
@@ -731,7 +731,7 @@ pub fn stub_a5bfec() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_522")]
 pub fn stub_a5b9cc() -> ! {
-    todo!("0xa5b9cc `global constructor keyed to'_a_522")
+    todo!("0xa5b9cc global constructor keyed to_a_522")
 }
 
 // 0xa5b5b0 — RakNet::StatisticsToString(RakNet::RakNetStatistics const*,char *,int)
@@ -747,7 +747,7 @@ pub fn stub_a5b5b0() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_521")]
 pub fn stub_a5af7c() -> ! {
-    todo!("0xa5af7c `global constructor keyed to'_a_521")
+    todo!("0xa5af7c global constructor keyed to_a_521")
 }
 
 // 0xa5af50 — RakNet::RakNetSocket::~RakNetSocket()
@@ -771,7 +771,7 @@ pub fn stub_a5af38() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_520")]
 pub fn stub_a5a924() -> ! {
-    todo!("0xa5a924 `global constructor keyed to'_a_520")
+    todo!("0xa5a924 global constructor keyed to_a_520")
 }
 
 // 0xa5a918 — RakNet::_RakFree_Ex(void *,char const*,unsigned int)

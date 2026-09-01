@@ -18,13 +18,13 @@ pub fn stub_9eaa38() -> ! {
 // 0x9eaab0 — __ZThn32_N3RBX7Network12RakStatsItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")]
 pub fn stub_9eaab0() -> ! {
-    todo!("0x9eaab0 `non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")
+    todo!("0x9eaab0 non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")
 }
 
 // 0x9eab30 — __ZThn32_N3RBX7Network12RakStatsItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")]
 pub fn stub_9eab30() -> ! {
-    todo!("0x9eab30 `non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")
+    todo!("0x9eab30 non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")
 }
 
 // 0x9febe8 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network12FilterResultEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
@@ -258,13 +258,13 @@ pub fn stub_a0811c() -> ! {
 // 0xa08128 — __ZThn32_N3RBX7Network7PlayersD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::Players::~Players()")]
 pub fn stub_a08128() -> ! {
-    todo!("0xa08128 `non-virtual thunk toRBX::Network::Players::~Players()")
+    todo!("0xa08128 non-virtual thunk toRBX::Network::Players::~Players()")
 }
 
 // 0xa081cc — __ZThn36_N3RBX7Network7PlayersD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::Players::~Players()")]
 pub fn stub_a081cc() -> ! {
-    todo!("0xa081cc `non-virtual thunk toRBX::Network::Players::~Players()")
+    todo!("0xa081cc non-virtual thunk toRBX::Network::Players::~Players()")
 }
 
 // 0xa08270 — __ZN3RBX7Network7PlayersD2Ev
@@ -276,13 +276,13 @@ pub fn stub_a08270() -> ! {
 // 0xa09784 — __ZThn32_N3RBX7Network7PlayersD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::Players::~Players()")]
 pub fn stub_a09784() -> ! {
-    todo!("0xa09784 `non-virtual thunk toRBX::Network::Players::~Players()")
+    todo!("0xa09784 non-virtual thunk toRBX::Network::Players::~Players()")
 }
 
 // 0xa09790 — __ZThn36_N3RBX7Network7PlayersD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::Players::~Players()")]
 pub fn stub_a09790() -> ! {
-    todo!("0xa09790 `non-virtual thunk toRBX::Network::Players::~Players()")
+    todo!("0xa09790 non-virtual thunk toRBX::Network::Players::~Players()")
 }
 
 // 0xa0979c — __ZN3RBX7Network7Players13setConnectionEPNS0_17ConcurrentRakPeerE

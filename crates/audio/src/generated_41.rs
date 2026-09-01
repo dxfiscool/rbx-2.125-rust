@@ -114,35 +114,35 @@ pub fn stub_421c20() -> ! {
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 pub fn stub_421c24() -> ! {
-    todo!("0x421c24 `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x421c24 non-virtual thunk toRBX::DataModel::~DataModel()")
 }
 
 // 0x421c2c — __ZThn36_N3RBX9DataModelD0Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 pub fn stub_421c2c() -> ! {
-    todo!("0x421c2c `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x421c2c non-virtual thunk toRBX::DataModel::~DataModel()")
 }
 
 // 0x421c34 — __ZThn144_N3RBX9DataModelD0Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 pub fn stub_421c34() -> ! {
-    todo!("0x421c34 `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x421c34 non-virtual thunk toRBX::DataModel::~DataModel()")
 }
 
 // 0x421c3c — __ZThn180_N3RBX9DataModelD0Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 pub fn stub_421c3c() -> ! {
-    todo!("0x421c3c `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x421c3c non-virtual thunk toRBX::DataModel::~DataModel()")
 }
 
 // 0x421c44 — __ZThn184_N3RBX9DataModelD0Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 pub fn stub_421c44() -> ! {
-    todo!("0x421c44 `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x421c44 non-virtual thunk toRBX::DataModel::~DataModel()")
 }
 
 // 0x421c4c — __ZN3RBX9DataModelD2Ev
@@ -156,35 +156,35 @@ pub fn stub_421c4c() -> ! {
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 pub fn stub_4228ac() -> ! {
-    todo!("0x4228ac `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x4228ac non-virtual thunk toRBX::DataModel::~DataModel()")
 }
 
 // 0x4228b4 — __ZThn36_N3RBX9DataModelD1Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 pub fn stub_4228b4() -> ! {
-    todo!("0x4228b4 `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x4228b4 non-virtual thunk toRBX::DataModel::~DataModel()")
 }
 
 // 0x4228bc — __ZThn144_N3RBX9DataModelD1Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 pub fn stub_4228bc() -> ! {
-    todo!("0x4228bc `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x4228bc non-virtual thunk toRBX::DataModel::~DataModel()")
 }
 
 // 0x4228c4 — __ZThn180_N3RBX9DataModelD1Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 pub fn stub_4228c4() -> ! {
-    todo!("0x4228c4 `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x4228c4 non-virtual thunk toRBX::DataModel::~DataModel()")
 }
 
 // 0x4228cc — __ZThn184_N3RBX9DataModelD1Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 pub fn stub_4228cc() -> ! {
-    todo!("0x4228cc `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x4228cc non-virtual thunk toRBX::DataModel::~DataModel()")
 }
 
 // 0x4228d4 — __ZN3RBX9DataModel13getGenericJobENS_12DataModelJob8TaskTypeE
@@ -429,7 +429,7 @@ pub fn stub_427dc0() -> ! {
 // type: __int64 __fastcall(RBX::DataModel *this, const std::string *)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::getMetricValue(std::string const&)const")]
 pub fn stub_4288b0() -> ! {
-    todo!("0x4288b0 `non-virtual thunk to'RBX::DataModel::getMetricValue(std::string const&)const")
+    todo!("0x4288b0 non-virtual thunk toRBX::DataModel::getMetricValue(std::string const&)const")
 }
 
 // 0x4288b8 — __ZNK3RBX9DataModel9getMetricERKSs
@@ -443,7 +443,7 @@ pub fn stub_4288b8() -> ! {
 // type: void __fastcall(RBX::DataModel *this, const std::string *, std::string *)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::getMetric(std::string const&)const")]
 pub fn stub_42fb24() -> ! {
-    todo!("0x42fb24 `non-virtual thunk to'RBX::DataModel::getMetric(std::string const&)const")
+    todo!("0x42fb24 non-virtual thunk toRBX::DataModel::getMetric(std::string const&)const")
 }
 
 // 0x42fb30 — __ZN3RBX9DataModel3getEPNS_8InstanceE
@@ -520,7 +520,7 @@ pub fn stub_430900() -> ! {
 // type: int __fastcall(RBX::DataModel *this)
 #[doc(alias = "non-virtual thunk toRBX::DataModel::getNumPlayers(void)const")]
 pub fn stub_430924() -> ! {
-    todo!("0x430924 `non-virtual thunk to'RBX::DataModel::getNumPlayers(void)const")
+    todo!("0x430924 non-virtual thunk toRBX::DataModel::getNumPlayers(void)const")
 }
 
 // 0x430930 — __ZN3RBX9DataModel19ScreenshotReadyTaskEN5boost8weak_ptrIS0_EERKSs

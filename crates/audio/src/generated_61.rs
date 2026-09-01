@@ -33,7 +33,7 @@ pub fn stub_631ee0() -> ! {
 // 0x633f10 — __GLOBAL__I_a_256
 #[doc(alias = "global constructor keyed to_a_256")]
 pub fn stub_633f10() -> ! {
-    todo!("0x633f10 `global constructor keyed to'_a_256")
+    todo!("0x633f10 global constructor keyed to_a_256")
 }
 
 // 0x635890 — __ZN3RBX14FactoryProductINS_3SkyENS_8InstanceELZNS_4sSkyEES2_E7CreatorD1Ev
@@ -135,7 +135,7 @@ pub fn stub_63682c() -> ! {
 // 0x636e80 — __GLOBAL__I_a_257
 #[doc(alias = "global constructor keyed to_a_257")]
 pub fn stub_636e80() -> ! {
-    todo!("0x636e80 `global constructor keyed to'_a_257")
+    todo!("0x636e80 global constructor keyed to_a_257")
 }
 
 // 0x637904 — __ZNK3RBX14FactoryProductINS_5SmokeENS_8InstanceELZNS_6sSmokeEES2_E12getClassNameEv
@@ -273,7 +273,7 @@ pub fn stub_63862c() -> ! {
 // 0x638bfc — __GLOBAL__I_a_258
 #[doc(alias = "global constructor keyed to_a_258")]
 pub fn stub_638bfc() -> ! {
-    todo!("0x638bfc `global constructor keyed to'_a_258")
+    todo!("0x638bfc global constructor keyed to_a_258")
 }
 
 // 0x63aee4 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sSocialServiceEEE12getClassNameEv
@@ -327,7 +327,7 @@ pub fn stub_63b37c() -> ! {
 // 0x63be1c — __GLOBAL__I_a_259
 #[doc(alias = "global constructor keyed to_a_259")]
 pub fn stub_63be1c() -> ! {
-    todo!("0x63be1c `global constructor keyed to'_a_259")
+    todo!("0x63be1c global constructor keyed to_a_259")
 }
 
 // 0x63c568 — __ZNK3RBX14FactoryProductINS_8SparklesENS_8InstanceELZNS_9sSparklesEES2_E12getClassNameEv
@@ -423,7 +423,7 @@ pub fn stub_63ca3c() -> ! {
 // 0x63ce80 — __GLOBAL__I_a_260
 #[doc(alias = "global constructor keyed to_a_260")]
 pub fn stub_63ce80() -> ! {
-    todo!("0x63ce80 `global constructor keyed to'_a_260")
+    todo!("0x63ce80 global constructor keyed to_a_260")
 }
 
 // 0x63e2d0 — __ZN3RBX18DescribedCreatableINS_13SpawnLocationENS_17BasicPartInstanceELZNS_14sSpawnLocationEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EEC2Ev

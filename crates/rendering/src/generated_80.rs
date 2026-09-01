@@ -262,7 +262,7 @@ pub fn stub_e243d4() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::SimpleRenderable::getMaterial(void)const")]
 // was: `non-virtual thunk to'Ogre::SimpleRenderable::getMaterial(void)const
 pub fn stub_e243dc() -> ! {
-    todo!("0xe243dc `non-virtual thunk to'Ogre::SimpleRenderable::getMaterial(void)const")
+    todo!("0xe243dc non-virtual thunk toOgre::SimpleRenderable::getMaterial(void)const")
 }
 
 // 0xe243e0 — __ZN4Ogre16SimpleRenderable18getRenderOperationERNS_15RenderOperationE
@@ -276,7 +276,7 @@ pub fn stub_e243e0() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::SimpleRenderable::getRenderOperation(Ogre::RenderOperation &)")]
 // was: `non-virtual thunk to'Ogre::SimpleRenderable::getRenderOperation(Ogre::RenderOperation &)
 pub fn stub_e243fc() -> ! {
-    todo!("0xe243fc `non-virtual thunk to'Ogre::SimpleRenderable::getRenderOperation(Ogre::RenderOperation &)")
+    todo!("0xe243fc non-virtual thunk toOgre::SimpleRenderable::getRenderOperation(Ogre::RenderOperation &)")
 }
 
 // 0xe24418 — __ZN4Ogre16SimpleRenderable18setRenderOperationERKNS_15RenderOperationE
@@ -297,7 +297,7 @@ pub fn stub_e24434() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::SimpleRenderable::getWorldTransforms(Ogre::Matrix4 *)const")]
 // was: `non-virtual thunk to'Ogre::SimpleRenderable::getWorldTransforms(Ogre::Matrix4 *)const
 pub fn stub_e24494() -> ! {
-    todo!("0xe24494 `non-virtual thunk to'Ogre::SimpleRenderable::getWorldTransforms(Ogre::Matrix4 *)const")
+    todo!("0xe24494 non-virtual thunk toOgre::SimpleRenderable::getWorldTransforms(Ogre::Matrix4 *)const")
 }
 
 // 0xe244f4 — __ZN4Ogre16SimpleRenderable20_notifyCurrentCameraEPNS_6CameraE
@@ -353,14 +353,14 @@ pub fn stub_e24624() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")]
 // was: `non-virtual thunk to'Ogre::SimpleRenderable::~SimpleRenderable()
 pub fn stub_e24630() -> ! {
-    todo!("0xe24630 `non-virtual thunk to'Ogre::SimpleRenderable::~SimpleRenderable()")
+    todo!("0xe24630 non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")
 }
 
 // 0xe246c4 — __ZThn188_N4Ogre16SimpleRenderableD0Ev
 #[doc(alias = "non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")]
 // was: `non-virtual thunk to'Ogre::SimpleRenderable::~SimpleRenderable()
 pub fn stub_e246c4() -> ! {
-    todo!("0xe246c4 `non-virtual thunk to'Ogre::SimpleRenderable::~SimpleRenderable()")
+    todo!("0xe246c4 non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")
 }
 
 // 0xe24758 — __ZN4Ogre16SimpleRenderableD2Ev
@@ -374,14 +374,14 @@ pub fn stub_e24758() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")]
 // was: `non-virtual thunk to'Ogre::SimpleRenderable::~SimpleRenderable()
 pub fn stub_e24918() -> ! {
-    todo!("0xe24918 `non-virtual thunk to'Ogre::SimpleRenderable::~SimpleRenderable()")
+    todo!("0xe24918 non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")
 }
 
 // 0xe24924 — __ZThn188_N4Ogre16SimpleRenderableD1Ev
 #[doc(alias = "non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")]
 // was: `non-virtual thunk to'Ogre::SimpleRenderable::~SimpleRenderable()
 pub fn stub_e24924() -> ! {
-    todo!("0xe24924 `non-virtual thunk to'Ogre::SimpleRenderable::~SimpleRenderable()")
+    todo!("0xe24924 non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")
 }
 
 // 0xe24930 — __ZNK4Ogre16SimpleRenderable14getMovableTypeEv
@@ -402,7 +402,7 @@ pub fn stub_e24a24() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::SimpleRenderable::getLights(void)const")]
 // was: `non-virtual thunk to'Ogre::SimpleRenderable::getLights(void)const
 pub fn stub_e24a34() -> ! {
-    todo!("0xe24a34 `non-virtual thunk to'Ogre::SimpleRenderable::getLights(void)const")
+    todo!("0xe24a34 non-virtual thunk toOgre::SimpleRenderable::getLights(void)const")
 }
 
 // 0xe24a78 — __ZN4Ogre12SimpleSplineC1Ev
@@ -591,7 +591,7 @@ pub fn stub_e26f40() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Skeleton::createAnimation(std::string const&,float)")]
 // was: `non-virtual thunk to'Ogre::Skeleton::createAnimation(std::string const&,float)
 pub fn stub_e272bc() -> ! {
-    todo!("0xe272bc `non-virtual thunk to'Ogre::Skeleton::createAnimation(std::string const&,float)")
+    todo!("0xe272bc non-virtual thunk toOgre::Skeleton::createAnimation(std::string const&,float)")
 }
 
 // 0xe272c8 — __ZNK4Ogre8Skeleton12getAnimationERKSsPPKNS_29LinkedSkeletonAnimationSourceE
@@ -612,7 +612,7 @@ pub fn stub_e27500() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Skeleton::getAnimation(std::string const&)const")]
 // was: `non-virtual thunk to'Ogre::Skeleton::getAnimation(std::string const&)const
 pub fn stub_e27510() -> ! {
-    todo!("0xe27510 `non-virtual thunk to'Ogre::Skeleton::getAnimation(std::string const&)const")
+    todo!("0xe27510 non-virtual thunk toOgre::Skeleton::getAnimation(std::string const&)const")
 }
 
 // 0xe27524 — __ZNK4Ogre8Skeleton12hasAnimationERKSs
@@ -626,7 +626,7 @@ pub fn stub_e27524() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Skeleton::hasAnimation(std::string const&)const")]
 // was: `non-virtual thunk to'Ogre::Skeleton::hasAnimation(std::string const&)const
 pub fn stub_e2753c() -> ! {
-    todo!("0xe2753c `non-virtual thunk to'Ogre::Skeleton::hasAnimation(std::string const&)const")
+    todo!("0xe2753c non-virtual thunk toOgre::Skeleton::hasAnimation(std::string const&)const")
 }
 
 // 0xe27554 — __ZNK4Ogre8Skeleton17_getAnimationImplERKSsPPKNS_29LinkedSkeletonAnimationSourceE
@@ -647,7 +647,7 @@ pub fn stub_e275bc() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Skeleton::removeAnimation(std::string const&)")]
 // was: `non-virtual thunk to'Ogre::Skeleton::removeAnimation(std::string const&)
 pub fn stub_e2785c() -> ! {
-    todo!("0xe2785c `non-virtual thunk to'Ogre::Skeleton::removeAnimation(std::string const&)")
+    todo!("0xe2785c non-virtual thunk toOgre::Skeleton::removeAnimation(std::string const&)")
 }
 
 // 0xe27868 — __ZN4Ogre8Skeleton19_initAnimationStateEPNS_17AnimationStateSetE
@@ -703,5 +703,5 @@ pub fn stub_e27a68() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Skeleton::getNumAnimations(void)const")]
 // was: `non-virtual thunk to'Ogre::Skeleton::getNumAnimations(void)const
 pub fn stub_e27a70() -> ! {
-    todo!("0xe27a70 `non-virtual thunk to'Ogre::Skeleton::getNumAnimations(void)const")
+    todo!("0xe27a70 non-virtual thunk toOgre::Skeleton::getNumAnimations(void)const")
 }

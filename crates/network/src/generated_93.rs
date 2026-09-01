@@ -11,7 +11,7 @@ use rbx_core::SharedPtr;
 // type: void __fastcall(RBX::TextService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TextService::~TextService()")]
 pub fn stub_7d9fd8() -> ! {
-    todo!("0x7d9fd8 `non-virtual thunk to'RBX::TextService::~TextService()")
+    todo!("0x7d9fd8 non-virtual thunk toRBX::TextService::~TextService()")
 }
 
 // 0x7da07c — __ZN3RBX10Reflection9DescribedINS_11TextServiceELZNS_12sTextServiceEENS_17NonFactoryProductINS_8InstanceELZNS_12sTextServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
@@ -299,7 +299,7 @@ pub fn stub_7db4a8() -> ! {
 // 0x7db638 — __GLOBAL__I_a_386
 #[doc(alias = "global constructor keyed to_a_386")]
 pub fn stub_7db638() -> ! {
-    todo!("0x7db638 `global constructor keyed to'_a_386")
+    todo!("0x7db638 global constructor keyed to_a_386")
 }
 
 // 0x7db7d0 — __ZN3RBX13WebSerializer10writeTableERKSt3mapISsNS_10Reflection7VariantESt4lessISsESaISt4pairIKSsS3_EEE
@@ -337,7 +337,7 @@ pub fn stub_7dc6cc() -> ! {
 // 0x7dc784 — __GLOBAL__I_a_387
 #[doc(alias = "global constructor keyed to_a_387")]
 pub fn stub_7dc784() -> ! {
-    todo!("0x7dc784 `global constructor keyed to'_a_387")
+    todo!("0x7dc784 global constructor keyed to_a_387")
 }
 
 // 0x7dc98c — -[MacHttpController receivedData]
@@ -642,4 +642,3 @@ pub fn stub_7deb24() -> ! {
 pub fn stub_7debec() -> ! {
     todo!("0x7debec boost::iostreams::detail::indirect_streambuf<boost::iostreams::basic_null_device<char,boost::iostreams::output>,std::char_traits<char>,std::allocator<char>,boost::iostreams::output>::component_type(void)const")
 }
-

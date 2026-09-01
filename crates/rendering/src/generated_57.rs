@@ -398,7 +398,7 @@ pub fn stub_dc52f8() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RegionSceneQuery::~RegionSceneQuery()")]
 // was: `non-virtual thunk to'Ogre::RegionSceneQuery::~RegionSceneQuery()
 pub fn stub_dc5304() -> ! {
-    todo!("0xdc5304 `non-virtual thunk to'Ogre::RegionSceneQuery::~RegionSceneQuery()")
+    todo!("0xdc5304 non-virtual thunk toOgre::RegionSceneQuery::~RegionSceneQuery()")
 }
 
 // 0xdc5398 — __ZN4Ogre16RegionSceneQueryD2Ev
@@ -414,7 +414,7 @@ pub fn stub_dc5398() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RegionSceneQuery::~RegionSceneQuery()")]
 // was: `non-virtual thunk to'Ogre::RegionSceneQuery::~RegionSceneQuery()
 pub fn stub_dc54ac() -> ! {
-    todo!("0xdc54ac `non-virtual thunk to'Ogre::RegionSceneQuery::~RegionSceneQuery()")
+    todo!("0xdc54ac non-virtual thunk toOgre::RegionSceneQuery::~RegionSceneQuery()")
 }
 
 // 0xdc54b8 — __ZNK4Ogre16RegionSceneQuery14getLastResultsEv
@@ -454,7 +454,7 @@ pub fn stub_dc5614() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RegionSceneQuery::queryResult(Ogre::MovableObject *)")]
 // was: `non-virtual thunk to'Ogre::RegionSceneQuery::queryResult(Ogre::MovableObject *)
 pub fn stub_dc5634() -> ! {
-    todo!("0xdc5634 `non-virtual thunk to'Ogre::RegionSceneQuery::queryResult(Ogre::MovableObject *)")
+    todo!("0xdc5634 non-virtual thunk toOgre::RegionSceneQuery::queryResult(Ogre::MovableObject *)")
 }
 
 // 0xdc5654 — __ZN4Ogre16RegionSceneQuery11queryResultEPNS_10SceneQuery13WorldFragmentE
@@ -468,7 +468,7 @@ pub fn stub_dc5654() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RegionSceneQuery::queryResult(Ogre::SceneQuery::WorldFragment *)")]
 // was: `non-virtual thunk to'Ogre::RegionSceneQuery::queryResult(Ogre::SceneQuery::WorldFragment *)
 pub fn stub_dc5678() -> ! {
-    todo!("0xdc5678 `non-virtual thunk to'Ogre::RegionSceneQuery::queryResult(Ogre::SceneQuery::WorldFragment *)")
+    todo!("0xdc5678 non-virtual thunk toOgre::RegionSceneQuery::queryResult(Ogre::SceneQuery::WorldFragment *)")
 }
 
 // 0xdc569c — __ZN4Ogre24AxisAlignedBoxSceneQueryC2EPNS_12SceneManagerE
@@ -500,7 +500,7 @@ pub fn stub_dc5810() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")]
 // was: `non-virtual thunk to'Ogre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()
 pub fn stub_dc58c4() -> ! {
-    todo!("0xdc58c4 `non-virtual thunk to'Ogre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")
+    todo!("0xdc58c4 non-virtual thunk toOgre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")
 }
 
 // 0xdc5984 — __ZN4Ogre24AxisAlignedBoxSceneQueryD2Ev
@@ -516,7 +516,7 @@ pub fn stub_dc5984() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")]
 // was: `non-virtual thunk to'Ogre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()
 pub fn stub_dc5a38() -> ! {
-    todo!("0xdc5a38 `non-virtual thunk to'Ogre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")
+    todo!("0xdc5a38 non-virtual thunk toOgre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")
 }
 
 // 0xdc5aec — __ZN4Ogre24AxisAlignedBoxSceneQuery6setBoxERKNS_14AxisAlignedBoxE
@@ -556,7 +556,7 @@ pub fn stub_dc5c48() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::SphereSceneQuery::~SphereSceneQuery()")]
 // was: `non-virtual thunk to'Ogre::SphereSceneQuery::~SphereSceneQuery()
 pub fn stub_dc5c54() -> ! {
-    todo!("0xdc5c54 `non-virtual thunk to'Ogre::SphereSceneQuery::~SphereSceneQuery()")
+    todo!("0xdc5c54 non-virtual thunk toOgre::SphereSceneQuery::~SphereSceneQuery()")
 }
 
 // 0xdc5ce8 — __ZN4Ogre16SphereSceneQueryD2Ev
@@ -572,7 +572,7 @@ pub fn stub_dc5ce8() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::SphereSceneQuery::~SphereSceneQuery()")]
 // was: `non-virtual thunk to'Ogre::SphereSceneQuery::~SphereSceneQuery()
 pub fn stub_dc5cf4() -> ! {
-    todo!("0xdc5cf4 `non-virtual thunk to'Ogre::SphereSceneQuery::~SphereSceneQuery()")
+    todo!("0xdc5cf4 non-virtual thunk toOgre::SphereSceneQuery::~SphereSceneQuery()")
 }
 
 // 0xdc5d00 — __ZN4Ogre16SphereSceneQuery9setSphereERKNS_6SphereE
@@ -612,7 +612,7 @@ pub fn stub_dc5e8c() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::PlaneBoundedVolumeListSceneQuery::~PlaneBoundedVolumeListSceneQuery()")]
 // was: `non-virtual thunk to'Ogre::PlaneBoundedVolumeListSceneQuery::~PlaneBoundedVolumeListSceneQuery()
 pub fn stub_dc5f64() -> ! {
-    todo!("0xdc5f64 `non-virtual thunk to'Ogre::PlaneBoundedVolumeListSceneQuery::~PlaneBoundedVolumeListSceneQuery()")
+    todo!("0xdc5f64 non-virtual thunk toOgre::PlaneBoundedVolumeListSceneQuery::~PlaneBoundedVolumeListSceneQuery()")
 }
 
 // 0xdc5f70 — __ZN4Ogre32PlaneBoundedVolumeListSceneQueryD2Ev
@@ -628,7 +628,7 @@ pub fn stub_dc5f70() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::PlaneBoundedVolumeListSceneQuery::~PlaneBoundedVolumeListSceneQuery()")]
 // was: `non-virtual thunk to'Ogre::PlaneBoundedVolumeListSceneQuery::~PlaneBoundedVolumeListSceneQuery()
 pub fn stub_dc6048() -> ! {
-    todo!("0xdc6048 `non-virtual thunk to'Ogre::PlaneBoundedVolumeListSceneQuery::~PlaneBoundedVolumeListSceneQuery()")
+    todo!("0xdc6048 non-virtual thunk toOgre::PlaneBoundedVolumeListSceneQuery::~PlaneBoundedVolumeListSceneQuery()")
 }
 
 // 0xdc6128 — __ZN4Ogre32PlaneBoundedVolumeListSceneQuery10setVolumesERKSt6vectorINS_18PlaneBoundedVolumeENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
@@ -668,7 +668,7 @@ pub fn stub_dc62d0() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RaySceneQuery::~RaySceneQuery()")]
 // was: `non-virtual thunk to'Ogre::RaySceneQuery::~RaySceneQuery()
 pub fn stub_dc639c() -> ! {
-    todo!("0xdc639c `non-virtual thunk to'Ogre::RaySceneQuery::~RaySceneQuery()")
+    todo!("0xdc639c non-virtual thunk toOgre::RaySceneQuery::~RaySceneQuery()")
 }
 
 // 0xdc6478 — __ZN4Ogre13RaySceneQueryD2Ev
@@ -684,7 +684,7 @@ pub fn stub_dc6478() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RaySceneQuery::~RaySceneQuery()")]
 // was: `non-virtual thunk to'Ogre::RaySceneQuery::~RaySceneQuery()
 pub fn stub_dc6544() -> ! {
-    todo!("0xdc6544 `non-virtual thunk to'Ogre::RaySceneQuery::~RaySceneQuery()")
+    todo!("0xdc6544 non-virtual thunk toOgre::RaySceneQuery::~RaySceneQuery()")
 }
 
 // 0xdc6610 — __ZN4Ogre13RaySceneQuery6setRayERKNS_3RayE
@@ -763,7 +763,7 @@ pub fn stub_dc67c0() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RaySceneQuery::queryResult(Ogre::MovableObject *,float)")]
 // was: `non-virtual thunk to'Ogre::RaySceneQuery::queryResult(Ogre::MovableObject *,float)
 pub fn stub_dc6804() -> ! {
-    todo!("0xdc6804 `non-virtual thunk to'Ogre::RaySceneQuery::queryResult(Ogre::MovableObject *,float)")
+    todo!("0xdc6804 non-virtual thunk toOgre::RaySceneQuery::queryResult(Ogre::MovableObject *,float)")
 }
 
 // 0xdc6848 — __ZN4Ogre13RaySceneQuery11queryResultEPNS_10SceneQuery13WorldFragmentEf
@@ -777,7 +777,7 @@ pub fn stub_dc6848() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RaySceneQuery::queryResult(Ogre::SceneQuery::WorldFragment *,float)")]
 // was: `non-virtual thunk to'Ogre::RaySceneQuery::queryResult(Ogre::SceneQuery::WorldFragment *,float)
 pub fn stub_dc688c() -> ! {
-    todo!("0xdc688c `non-virtual thunk to'Ogre::RaySceneQuery::queryResult(Ogre::SceneQuery::WorldFragment *,float)")
+    todo!("0xdc688c non-virtual thunk toOgre::RaySceneQuery::queryResult(Ogre::SceneQuery::WorldFragment *,float)")
 }
 
 // 0xdc68d0 — __ZN4Ogre22IntersectionSceneQueryC2EPNS_12SceneManagerE

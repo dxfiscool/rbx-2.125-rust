@@ -570,7 +570,7 @@ pub fn stub_45d810() -> ! {
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::function<void ()(bool)>,1,void ()(bool)>::call(bool) -> rbx_core::SharedPtr
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::function<void ()(bool)>,1,void ()(bool)>::call(bool)")]
 pub fn stub_45d818() -> ! {
-    todo!("0x45d818 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::function<void ()(bool)>,1,void ()(bool)>::call(bool)")
+    todo!("0x45d818 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::function<void ()(bool)>,1,void ()(bool)>::call(bool)")
 }
 
 // 0x45d820 — __ZN3rbx7signals6signalIFvbEE6removeEPNS3_4slotE

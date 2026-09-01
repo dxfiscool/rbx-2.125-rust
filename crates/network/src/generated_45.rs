@@ -46,7 +46,7 @@ pub fn stub_3eb43c() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_169")]
 pub fn stub_3eb460() -> ! {
-    todo!("0x3eb460 `global constructor keyed to_a_169")
+    todo!("0x3eb460 global constructor keyed to_a_169")
 }
 
 // 0x3eb850 — __ZN3RBX11ChatService4chatEN5boost10shared_ptrINS_8InstanceEEESsNS0_9ChatColorE
@@ -137,14 +137,14 @@ pub fn stub_3ecdb0() -> ! {
 // type: void __fastcall(RBX::ChatService *this, int, int, int)
 #[doc(alias = "non-virtual thunk toRBX::ChatService::~ChatService()")]
 pub fn stub_3ecdc0() -> ! {
-    todo!("0x3ecdc0 `non-virtual thunk toRBX::ChatService::~ChatService()")
+    todo!("0x3ecdc0 non-virtual thunk toRBX::ChatService::~ChatService()")
 }
 
 // 0x3ecea4 — __ZThn32_N3RBX11ChatServiceD0Ev
 // type: void __fastcall(RBX::ChatService *this, int, int, int)
 #[doc(alias = "non-virtual thunk toRBX::ChatService::~ChatService()")]
 pub fn stub_3ecea4() -> ! {
-    todo!("0x3ecea4 `non-virtual thunk toRBX::ChatService::~ChatService()")
+    todo!("0x3ecea4 non-virtual thunk toRBX::ChatService::~ChatService()")
 }
 
 // 0x3ecf9c — __ZThn32_NK3RBX14FactoryProductINS_11ChatServiceENS_8InstanceELZNS_12sChatServiceEES2_E12getClassNameEv
@@ -158,14 +158,14 @@ pub fn stub_3ecf9c() -> ! {
 // type: void __fastcall(RBX::ChatService *this, int, int, int)
 #[doc(alias = "non-virtual thunk toRBX::ChatService::~ChatService()")]
 pub fn stub_3ecfac() -> ! {
-    todo!("0x3ecfac `non-virtual thunk toRBX::ChatService::~ChatService()")
+    todo!("0x3ecfac non-virtual thunk toRBX::ChatService::~ChatService()")
 }
 
 // 0x3ed090 — __ZThn36_N3RBX11ChatServiceD0Ev
 // type: void __fastcall(RBX::ChatService *this, int, int, int)
 #[doc(alias = "non-virtual thunk toRBX::ChatService::~ChatService()")]
 pub fn stub_3ed090() -> ! {
-    todo!("0x3ed090 `non-virtual thunk toRBX::ChatService::~ChatService()")
+    todo!("0x3ed090 non-virtual thunk toRBX::ChatService::~ChatService()")
 }
 
 // 0x3ed48c — __ZN3rbx7signals16signal_with_argsILi3EFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEEclES6_SsS8_
@@ -459,7 +459,7 @@ pub fn stub_3ef75c() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,3,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::call(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")]
 pub fn stub_3ef8c8() -> ! {
-    todo!("0x3ef8c8 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,3,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::call(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")
+    todo!("0x3ef8c8 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,3,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::call(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")
 }
 
 // 0x3ef8d0 — __ZNK5boost9function3IvNS_10shared_ptrIN3RBX8InstanceEEESsNS2_11ChatService9ChatColorEEclES4_SsS6_
@@ -543,7 +543,7 @@ pub fn stub_3f08f4() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_170")]
 pub fn stub_3f0a94() -> ! {
-    todo!("0x3f0a94 `global constructor keyed to_a_170")
+    todo!("0x3f0a94 global constructor keyed to_a_170")
 }
 
 // 0x3f0e0c — __ZN3RBX13ClickDetectorC1Ev
@@ -571,7 +571,7 @@ pub fn stub_3f110c() -> ! {
 // type: void()
 #[doc(alias = "non-virtual thunk toRBX::ClickDetector::render3dAdorn(RBX::Adorn *)")]
 pub fn stub_3f1110() -> ! {
-    todo!("0x3f1110 `non-virtual thunk toRBX::ClickDetector::render3dAdorn(RBX::Adorn *)")
+    todo!("0x3f1110 non-virtual thunk toRBX::ClickDetector::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x3f181c — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_12PartInstanceEEERS3_RKNS0_IT_EE
@@ -634,14 +634,14 @@ pub fn stub_3f1c00() -> ! {
 // type: void __fastcall(RBX::ClickDetector *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ClickDetector::~ClickDetector()")]
 pub fn stub_3f1c04() -> ! {
-    todo!("0x3f1c04 `non-virtual thunk toRBX::ClickDetector::~ClickDetector()")
+    todo!("0x3f1c04 non-virtual thunk toRBX::ClickDetector::~ClickDetector()")
 }
 
 // 0x3f1c0c — __ZThn32_N3RBX13ClickDetectorD0Ev
 // type: void __fastcall(RBX::ClickDetector *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ClickDetector::~ClickDetector()")]
 pub fn stub_3f1c0c() -> ! {
-    todo!("0x3f1c0c `non-virtual thunk toRBX::ClickDetector::~ClickDetector()")
+    todo!("0x3f1c0c non-virtual thunk toRBX::ClickDetector::~ClickDetector()")
 }
 
 // 0x3f1c14 — __ZThn32_NK3RBX14FactoryProductINS_13ClickDetectorENS_8InstanceELZNS_14sClickDetectorEES2_E12getClassNameEv
@@ -655,21 +655,21 @@ pub fn stub_3f1c14() -> ! {
 // type: void __fastcall(RBX::ClickDetector *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ClickDetector::~ClickDetector()")]
 pub fn stub_3f1c24() -> ! {
-    todo!("0x3f1c24 `non-virtual thunk toRBX::ClickDetector::~ClickDetector()")
+    todo!("0x3f1c24 non-virtual thunk toRBX::ClickDetector::~ClickDetector()")
 }
 
 // 0x3f1c2c — __ZThn36_N3RBX13ClickDetectorD0Ev
 // type: void __fastcall(RBX::ClickDetector *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ClickDetector::~ClickDetector()")]
 pub fn stub_3f1c2c() -> ! {
-    todo!("0x3f1c2c `non-virtual thunk toRBX::ClickDetector::~ClickDetector()")
+    todo!("0x3f1c2c non-virtual thunk toRBX::ClickDetector::~ClickDetector()")
 }
 
 // 0x3f1c34 — __ZThn92_NK3RBX13ClickDetector19shouldRender3dAdornEv
 // type: int __fastcall(RBX::ClickDetector *this)
 #[doc(alias = "non-virtual thunk toRBX::ClickDetector::shouldRender3dAdorn(void)const")]
 pub fn stub_3f1c34() -> ! {
-    todo!("0x3f1c34 `non-virtual thunk toRBX::ClickDetector::shouldRender3dAdorn(void)const")
+    todo!("0x3f1c34 non-virtual thunk toRBX::ClickDetector::shouldRender3dAdorn(void)const")
 }
 
 // 0x3f1c38 — __ZN3RBX14FactoryProductINS_13ClickDetectorENS_8InstanceELZNS_14sClickDetectorEES2_E17static_getCreatorEv

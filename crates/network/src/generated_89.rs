@@ -11,7 +11,7 @@ use rbx_core::SharedPtr;
 // type: 
 #[doc(alias = "global constructor keyed to_a_371")]
 pub fn stub_7b3fa0() -> ! {
-    todo!("0x7b3fa0 `global constructor keyed to_a_371")
+    todo!("0x7b3fa0 global constructor keyed to_a_371")
 }
 
 // 0x7b42bc — __ZNK3RBX5NamedINS_5HUMAN13HumanoidStateELZNS1_5sDeadEEE7getNameEv
@@ -60,7 +60,7 @@ pub fn stub_7b46a4() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_372")]
 pub fn stub_7b4784() -> ! {
-    todo!("0x7b4784 `global constructor keyed to_a_372")
+    todo!("0x7b4784 global constructor keyed to_a_372")
 }
 
 // 0x7b4a50 — __ZNK3RBX5NamedINS_5HUMAN9BalancingELZNS1_7sFlyingEEE7getNameEv
@@ -88,7 +88,7 @@ pub fn stub_7b4bd0() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_373")]
 pub fn stub_7b4cb0() -> ! {
-    todo!("0x7b4cb0 `global constructor keyed to_a_373")
+    todo!("0x7b4cb0 global constructor keyed to_a_373")
 }
 
 // 0x7b5814 — __ZNK3RBX5NamedINS_5HUMAN9BalancingELZNS1_9sFreefallEEE7getNameEv
@@ -116,7 +116,7 @@ pub fn stub_7b584c() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_374")]
 pub fn stub_7b592c() -> ! {
-    todo!("0x7b592c `global constructor keyed to_a_374")
+    todo!("0x7b592c global constructor keyed to_a_374")
 }
 
 // 0x7b5c40 — __ZNK3RBX5NamedINS_5HUMAN9BalancingELZNS1_10sGettingUpEEE7getNameEv
@@ -144,7 +144,7 @@ pub fn stub_7b5dc8() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_375")]
 pub fn stub_7b5ea8() -> ! {
-    todo!("0x7b5ea8 `global constructor keyed to_a_375")
+    todo!("0x7b5ea8 global constructor keyed to_a_375")
 }
 
 // 0x7bc1e8 — __ZN3RBX8Humanoid29onCFrameChangedFromReflectionEv
@@ -270,7 +270,7 @@ pub fn stub_7c0184() -> ! {
 // type: 
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>,0,void ()(void)>::call(void)")]
 pub fn stub_7c018c() -> ! {
-    todo!("0x7c018c `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>,0,void ()(void)>::call(void)")
+    todo!("0x7c018c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>,0,void ()(void)>::call(void)")
 }
 
 // 0x7c0194 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX8HumanoidEEENS0_5list1INS0_5valueIPS5_EEEEEclEv
@@ -515,7 +515,7 @@ pub fn stub_7c6850() -> ! {
 // type: 
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Humanoid::Status)>::slot,boost::function<void ()(RBX::Humanoid::Status)>,1,void ()(RBX::Humanoid::Status)>::call(RBX::Humanoid::Status)")]
 pub fn stub_7c6858() -> ! {
-    todo!("0x7c6858 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Humanoid::Status)>::slot,boost::function<void ()(RBX::Humanoid::Status)>,1,void ()(RBX::Humanoid::Status)>::call(RBX::Humanoid::Status)")
+    todo!("0x7c6858 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Humanoid::Status)>::slot,boost::function<void ()(RBX::Humanoid::Status)>,1,void ()(RBX::Humanoid::Status)>::call(RBX::Humanoid::Status)")
 }
 
 // 0x7c6860 — __ZNK5boost9function1IvN3RBX8Humanoid6StatusEEclES3_
@@ -606,7 +606,7 @@ pub fn stub_7c9800() -> ! {
 // type: 
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::function<void ()(float)>,1,void ()(float)>::call(float)")]
 pub fn stub_7c9808() -> ! {
-    todo!("0x7c9808 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::function<void ()(float)>,1,void ()(float)>::call(float)")
+    todo!("0x7c9808 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::function<void ()(float)>,1,void ()(float)>::call(float)")
 }
 
 // 0x7c9810 — __ZNK5boost9function1IvfEclEf
@@ -706,4 +706,3 @@ pub fn stub_7cb148() -> ! {
 pub fn stub_7cb178() -> ! {
     todo!("0x7cb178 RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::isReadOnly(void)const")
 }
-

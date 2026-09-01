@@ -31,7 +31,7 @@ pub fn stub_b4152c() -> ! {
 // type: void __fastcall(int, int *, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsPacketCache,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsPacketCache*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_b41648() -> ! {
-    todo!("0xb41648 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsPacketCache,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsPacketCache*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+    todo!("0xb41648 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsPacketCache,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsPacketCache*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0xb418b4 — __ZNK5boost4_mfi3mf1IvN3RBX7Network18PhysicsPacketCacheENS_10shared_ptrINS2_8InstanceEEEEclEPS4_S7_
@@ -311,7 +311,7 @@ pub fn stub_b49630() -> ! {
 // type: void __fastcall(int, int *, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender2,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::ErrorCompPhysicsSender2*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_b4974c() -> ! {
-    todo!("0xb4974c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender2,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::ErrorCompPhysicsSender2*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+    todo!("0xb4974c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender2,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::ErrorCompPhysicsSender2*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0xb499b8 — __ZNK5boost4_mfi3mf1IvN3RBX7Network23ErrorCompPhysicsSender2ENS_10shared_ptrINS2_8InstanceEEEEclEPS4_S7_
@@ -409,7 +409,7 @@ pub fn stub_b4e948() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "non-virtual thunk toRBX::Network::ClusterPacketCache::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)")]
 pub fn stub_b4e998() -> ! {
-    todo!("0xb4e998 `non-virtual thunk to'RBX::Network::ClusterPacketCache::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)")
+    todo!("0xb4e998 non-virtual thunk toRBX::Network::ClusterPacketCache::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)")
 }
 
 // 0xb4e9e8 — __ZN3RBX7Network18ClusterPacketCache13setupListenerEPNS_19MegaClusterInstanceE
@@ -444,28 +444,28 @@ pub fn stub_b4f1f8() -> ! {
 // type: void __fastcall(RBX::Network::ClusterPacketCache *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::ClusterPacketCache::~ClusterPacketCache()")]
 pub fn stub_b4f398() -> ! {
-    todo!("0xb4f398 `non-virtual thunk to'RBX::Network::ClusterPacketCache::~ClusterPacketCache()")
+    todo!("0xb4f398 non-virtual thunk toRBX::Network::ClusterPacketCache::~ClusterPacketCache()")
 }
 
 // 0xb4f3a4 — __ZThn32_N3RBX7Network18ClusterPacketCacheD0Ev
 // type: void __fastcall(RBX::Network::ClusterPacketCache *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::ClusterPacketCache::~ClusterPacketCache()")]
 pub fn stub_b4f3a4() -> ! {
-    todo!("0xb4f3a4 `non-virtual thunk to'RBX::Network::ClusterPacketCache::~ClusterPacketCache()")
+    todo!("0xb4f3a4 non-virtual thunk toRBX::Network::ClusterPacketCache::~ClusterPacketCache()")
 }
 
 // 0xb4f544 — __ZThn36_N3RBX7Network18ClusterPacketCacheD1Ev
 // type: void __fastcall(RBX::Network::ClusterPacketCache *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::ClusterPacketCache::~ClusterPacketCache()")]
 pub fn stub_b4f544() -> ! {
-    todo!("0xb4f544 `non-virtual thunk to'RBX::Network::ClusterPacketCache::~ClusterPacketCache()")
+    todo!("0xb4f544 non-virtual thunk toRBX::Network::ClusterPacketCache::~ClusterPacketCache()")
 }
 
 // 0xb4f550 — __ZThn36_N3RBX7Network18ClusterPacketCacheD0Ev
 // type: void __fastcall(RBX::Network::ClusterPacketCache *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::ClusterPacketCache::~ClusterPacketCache()")]
 pub fn stub_b4f550() -> ! {
-    todo!("0xb4f550 `non-virtual thunk to'RBX::Network::ClusterPacketCache::~ClusterPacketCache()")
+    todo!("0xb4f550 non-virtual thunk toRBX::Network::ClusterPacketCache::~ClusterPacketCache()")
 }
 
 // 0xb4fe28 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN3RBX12StreamRegion2IdENS5_7Network18ClusterPacketCache15CachedBitStreamEEES7_SB_NS7_27boost_compatible_hash_valueESt8equal_toIS7_EEEEixERS8_

@@ -306,7 +306,7 @@ pub fn stub_5a2d6c() -> ! {
 // 0x5a2d90 — __ZThn136_N3RBX5Motor11getPartNameEv
 #[doc(alias = "non-virtual thunk toRBX::Motor::getPartName(void)")]
 pub fn stub_5a2d90() -> ! {
-    todo!("0x5a2d90 `non-virtual thunk toRBX::Motor::getPartName(void)")
+    todo!("0x5a2d90 non-virtual thunk toRBX::Motor::getPartName(void)")
 }
 
 // 0x5cde1c — __ZNSt6vectorIPN3RBX14IModelModifierESaIS2_EE9push_backERKS2_
@@ -474,7 +474,7 @@ pub fn stub_61f4b4() -> ! {
 // 0x61f4e4 — __ZThn96_NK3RBX18SelectionPartLasso19shouldRender3dAdornEv
 #[doc(alias = "non-virtual thunk toRBX::SelectionPartLasso::shouldRender3dAdorn(void)const")]
 pub fn stub_61f4e4() -> ! {
-    todo!("0x61f4e4 `non-virtual thunk toRBX::SelectionPartLasso::shouldRender3dAdorn(void)const")
+    todo!("0x61f4e4 non-virtual thunk toRBX::SelectionPartLasso::shouldRender3dAdorn(void)const")
 }
 
 // 0x61f4f0 — __ZNK3RBX18SelectionPartLasso11getPositionERN3G3D7Vector3E
@@ -504,25 +504,25 @@ pub fn stub_6202dc() -> ! {
 // 0x62038c — __ZThn32_N3RBX18SelectionPartLassoD1Ev
 #[doc(alias = "non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")]
 pub fn stub_62038c() -> ! {
-    todo!("0x62038c `non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")
+    todo!("0x62038c non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")
 }
 
 // 0x620394 — __ZThn32_N3RBX18SelectionPartLassoD0Ev
 #[doc(alias = "non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")]
 pub fn stub_620394() -> ! {
-    todo!("0x620394 `non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")
+    todo!("0x620394 non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")
 }
 
 // 0x620448 — __ZThn36_N3RBX18SelectionPartLassoD1Ev
 #[doc(alias = "non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")]
 pub fn stub_620448() -> ! {
-    todo!("0x620448 `non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")
+    todo!("0x620448 non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")
 }
 
 // 0x620450 — __ZThn36_N3RBX18SelectionPartLassoD0Ev
 #[doc(alias = "non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")]
 pub fn stub_620450() -> ! {
-    todo!("0x620450 `non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")
+    todo!("0x620450 non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")
 }
 
 // 0x6219e4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18SelectionPartLassoES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -547,7 +547,7 @@ pub fn stub_689c04() -> ! {
 // 0x689c08 — __ZThn36_N3RBX9ModelToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::ModelTool::~ModelTool()")]
 pub fn stub_689c08() -> ! {
-    todo!("0x689c08 `non-virtual thunk toRBX::ModelTool::~ModelTool()")
+    todo!("0x689c08 non-virtual thunk toRBX::ModelTool::~ModelTool()")
 }
 
 // 0x689c10 — __ZN3RBX9ModelToolD2Ev
@@ -559,7 +559,7 @@ pub fn stub_689c10() -> ! {
 // 0x689d2c — __ZThn36_N3RBX9ModelToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::ModelTool::~ModelTool()")]
 pub fn stub_689d2c() -> ! {
-    todo!("0x689d2c `non-virtual thunk toRBX::ModelTool::~ModelTool()")
+    todo!("0x689d2c non-virtual thunk toRBX::ModelTool::~ModelTool()")
 }
 
 // 0x689d34 — __ZN3RBX9ModelTool12onMouseHoverERKNS_7UIEventE
@@ -577,7 +577,7 @@ pub fn stub_689e28() -> ! {
 // 0x689e6c — __ZThn4_N3RBX9ModelTool13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::ModelTool::render3dAdorn(RBX::Adorn *)")]
 pub fn stub_689e6c() -> ! {
-    todo!("0x689e6c `non-virtual thunk toRBX::ModelTool::render3dAdorn(RBX::Adorn *)")
+    todo!("0x689e6c non-virtual thunk toRBX::ModelTool::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x68ada4 — __ZN3RBX8PartToolD0Ev
@@ -595,7 +595,7 @@ pub fn stub_68ae44() -> ! {
 // 0x68ae48 — __ZThn36_N3RBX8PartToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PartTool::~PartTool()")]
 pub fn stub_68ae48() -> ! {
-    todo!("0x68ae48 `non-virtual thunk toRBX::PartTool::~PartTool()")
+    todo!("0x68ae48 non-virtual thunk toRBX::PartTool::~PartTool()")
 }
 
 // 0x68ae50 — __ZN3RBX8PartToolD2Ev
@@ -607,5 +607,5 @@ pub fn stub_68ae50() -> ! {
 // 0x68af6c — __ZThn36_N3RBX8PartToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PartTool::~PartTool()")]
 pub fn stub_68af6c() -> ! {
-    todo!("0x68af6c `non-virtual thunk toRBX::PartTool::~PartTool()")
+    todo!("0x68af6c non-virtual thunk toRBX::PartTool::~PartTool()")
 }

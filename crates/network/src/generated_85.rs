@@ -169,7 +169,7 @@ pub fn stub_6bb49c() -> ! {
 // 0x6bb4ec — __GLOBAL__I_a_281
 #[doc(alias = "global constructor keyed to_a_281")]
 pub fn stub_6bb4ec() -> ! {
-    todo!("0x6bb4ec `global constructor keyed to'_a_281")
+    todo!("0x6bb4ec global constructor keyed to_a_281")
 }
 
 // 0x6bc614 — __ZN3RBX11VehicleSeat11setThrottleEi
@@ -246,42 +246,42 @@ pub fn stub_6bcc30() -> ! {
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 pub fn stub_6bcc40() -> ! {
-    todo!("0x6bcc40 `non-virtual thunk to'RBX::VehicleSeat::~VehicleSeat()")
+    todo!("0x6bcc40 non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")
 }
 
 // 0x6bcc48 — __ZThn36_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 pub fn stub_6bcc48() -> ! {
-    todo!("0x6bcc48 `non-virtual thunk to'RBX::VehicleSeat::~VehicleSeat()")
+    todo!("0x6bcc48 non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")
 }
 
 // 0x6bcc50 — __ZThn132_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 pub fn stub_6bcc50() -> ! {
-    todo!("0x6bcc50 `non-virtual thunk to'RBX::VehicleSeat::~VehicleSeat()")
+    todo!("0x6bcc50 non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")
 }
 
 // 0x6bcc58 — __ZThn348_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 pub fn stub_6bcc58() -> ! {
-    todo!("0x6bcc58 `non-virtual thunk to'RBX::VehicleSeat::~VehicleSeat()")
+    todo!("0x6bcc58 non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")
 }
 
 // 0x6bcc60 — __ZThn380_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 pub fn stub_6bcc60() -> ! {
-    todo!("0x6bcc60 `non-virtual thunk to'RBX::VehicleSeat::~VehicleSeat()")
+    todo!("0x6bcc60 non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")
 }
 
 // 0x6bcc68 — __ZThn500_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 pub fn stub_6bcc68() -> ! {
-    todo!("0x6bcc68 `non-virtual thunk to'RBX::VehicleSeat::~VehicleSeat()")
+    todo!("0x6bcc68 non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")
 }
 
 // 0x6bcc70 — __ZN3RBX11VehicleSeatD2Ev
@@ -295,42 +295,42 @@ pub fn stub_6bcc70() -> ! {
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 pub fn stub_6bcfa0() -> ! {
-    todo!("0x6bcfa0 `non-virtual thunk to'RBX::VehicleSeat::~VehicleSeat()")
+    todo!("0x6bcfa0 non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")
 }
 
 // 0x6bcfb0 — __ZThn36_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 pub fn stub_6bcfb0() -> ! {
-    todo!("0x6bcfb0 `non-virtual thunk to'RBX::VehicleSeat::~VehicleSeat()")
+    todo!("0x6bcfb0 non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")
 }
 
 // 0x6bcfc0 — __ZThn132_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 pub fn stub_6bcfc0() -> ! {
-    todo!("0x6bcfc0 `non-virtual thunk to'RBX::VehicleSeat::~VehicleSeat()")
+    todo!("0x6bcfc0 non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")
 }
 
 // 0x6bcfd0 — __ZThn348_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 pub fn stub_6bcfd0() -> ! {
-    todo!("0x6bcfd0 `non-virtual thunk to'RBX::VehicleSeat::~VehicleSeat()")
+    todo!("0x6bcfd0 non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")
 }
 
 // 0x6bcfe4 — __ZThn380_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 pub fn stub_6bcfe4() -> ! {
-    todo!("0x6bcfe4 `non-virtual thunk to'RBX::VehicleSeat::~VehicleSeat()")
+    todo!("0x6bcfe4 non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")
 }
 
 // 0x6bcff8 — __ZThn500_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
 pub fn stub_6bcff8() -> ! {
-    todo!("0x6bcff8 `non-virtual thunk to'RBX::VehicleSeat::~VehicleSeat()")
+    todo!("0x6bcff8 non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")
 }
 
 // 0x6bd00c — __ZNK3RBX11VehicleSeat14shouldRender2dEv
@@ -344,7 +344,7 @@ pub fn stub_6bd00c() -> ! {
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::shouldRender2d(void)const")]
 pub fn stub_6bd020() -> ! {
-    todo!("0x6bd020 `non-virtual thunk to'RBX::VehicleSeat::shouldRender2d(void)const")
+    todo!("0x6bd020 non-virtual thunk toRBX::VehicleSeat::shouldRender2d(void)const")
 }
 
 // 0x6bd034 — __ZN3RBX11VehicleSeat8render2dEPNS_5AdornE
@@ -358,7 +358,7 @@ pub fn stub_6bd034() -> ! {
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::render2d(RBX::Adorn *)")]
 pub fn stub_6bd3ac() -> ! {
-    todo!("0x6bd3ac `non-virtual thunk to'RBX::VehicleSeat::render2d(RBX::Adorn *)")
+    todo!("0x6bd3ac non-virtual thunk toRBX::VehicleSeat::render2d(RBX::Adorn *)")
 }
 
 // 0x6bd3b4 — __ZN3RBX11VehicleSeat15onSeatedChangedEbPNS_8HumanoidE
@@ -414,7 +414,7 @@ pub fn stub_6bdb44() -> ! {
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::getEngineBody(void)")]
 pub fn stub_6bdb50() -> ! {
-    todo!("0x6bdb50 `non-virtual thunk to'RBX::VehicleSeat::getEngineBody(void)")
+    todo!("0x6bdb50 non-virtual thunk toRBX::VehicleSeat::getEngineBody(void)")
 }
 
 // 0x6bdb5c — __ZN3RBX11VehicleSeat12computeForceEb
@@ -435,7 +435,7 @@ pub fn stub_6bdb60() -> ! {
 // type: int __fastcall(RBX::VehicleSeat *this, bool)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::computeForce(bool)")]
 pub fn stub_6bdd2c() -> ! {
-    todo!("0x6bdd2c `non-virtual thunk to'RBX::VehicleSeat::computeForce(bool)")
+    todo!("0x6bdd2c non-virtual thunk toRBX::VehicleSeat::computeForce(bool)")
 }
 
 // 0x6bdd34 — __ZN3RBX11VehicleSeat6stepUiEd
@@ -456,7 +456,7 @@ pub fn stub_6bdd8c() -> ! {
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this, double)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::stepUi(double)")]
 pub fn stub_6bde4c() -> ! {
-    todo!("0x6bde4c `non-virtual thunk to'RBX::VehicleSeat::stepUi(double)")
+    todo!("0x6bde4c non-virtual thunk toRBX::VehicleSeat::stepUi(double)")
 }
 
 // 0x6bde60 — __ZN3RBX11VehicleSeat12doLoadHingesEPNS_9PrimitiveE
@@ -488,7 +488,7 @@ pub fn stub_6be0ac() -> ! {
 // 0x6be0c4 — __ZThn132_N3RBX11VehicleSeat25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
 pub fn stub_6be0c4() -> ! {
-    todo!("0x6be0c4 `non-virtual thunk to'RBX::VehicleSeat::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")
+    todo!("0x6be0c4 non-virtual thunk toRBX::VehicleSeat::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")
 }
 
 // 0x6be0cc — __ZN3RBX11VehicleSeat4zoomEfRN3G3D15CoordinateFrameES3_
@@ -502,7 +502,7 @@ pub fn stub_6be0cc() -> ! {
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this, float, G3D::CoordinateFrame *, G3D::CoordinateFrame *)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")]
 pub fn stub_6be23c() -> ! {
-    todo!("0x6be23c `non-virtual thunk to'RBX::VehicleSeat::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")
+    todo!("0x6be23c non-virtual thunk toRBX::VehicleSeat::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")
 }
 
 // 0x6be248 — __ZN3RBX11VehicleSeat20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd
@@ -516,7 +516,7 @@ pub fn stub_6be248() -> ! {
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this, G3D::Vector3 *, G3D::CoordinateFrame *, double)
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")]
 pub fn stub_6be4ac() -> ! {
-    todo!("0x6be4ac `non-virtual thunk to'RBX::VehicleSeat::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")
+    todo!("0x6be4ac non-virtual thunk toRBX::VehicleSeat::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")
 }
 
 // 0x6be4c4 — __ZNK3RBX8SeatImplINS_12PartInstanceEE11getDisabledEv

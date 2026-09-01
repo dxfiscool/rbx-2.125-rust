@@ -127,6 +127,7 @@ pub mod generated_123;
 pub mod generated_124;
 pub mod generated_125;
 pub mod generated_126;
+pub mod generated_127;
 // 0x686a4 — __ZN4FMOD10ProfileCpu4initEv
 #[doc(alias = "FMOD::ProfileCpu::init(void)")]
 pub fn stub_686a4() -> ! {
@@ -8439,7 +8440,7 @@ pub fn stub_d47e8() -> ! {
 // 0xd48ec — __GLOBAL__I__ZN4FMOD17nosoundoutput_nrtE
 #[doc(alias = "global constructor keyed toFMOD::nosoundoutput_nrt")]
 pub fn stub_d48ec() -> ! {
-    todo!("0xd48ec `global constructor keyed to'FMOD::nosoundoutput_nrt")
+    todo!("0xd48ec global constructor keyed toFMOD::nosoundoutput_nrt")
 }
 
 // 0xd48f8 — __ZN4FMOD12OutputPolled4stopEv
@@ -8685,7 +8686,7 @@ pub fn stub_d60f4() -> ! {
 // 0xd6144 — __GLOBAL__I__ZN4FMOD15wavwriteroutputE
 #[doc(alias = "global constructor keyed toFMOD::wavwriteroutput")]
 pub fn stub_d6144() -> ! {
-    todo!("0xd6144 `global constructor keyed to'FMOD::wavwriteroutput")
+    todo!("0xd6144 global constructor keyed toFMOD::wavwriteroutput")
 }
 
 // 0xd6150 — __ZN4FMOD19OutputWavWriter_NRT13getNumDriversEPi
@@ -8819,7 +8820,7 @@ pub fn stub_d6874() -> ! {
 // 0xd69bc — __GLOBAL__I__ZN4FMOD19wavwriteroutput_nrtE
 #[doc(alias = "global constructor keyed toFMOD::wavwriteroutput_nrt")]
 pub fn stub_d69bc() -> ! {
-    todo!("0xd69bc `global constructor keyed to'FMOD::wavwriteroutput_nrt")
+    todo!("0xd69bc global constructor keyed toFMOD::wavwriteroutput_nrt")
 }
 
 // 0xd69c8 — __ZN4FMOD6Plugin7releaseEv
@@ -11675,7 +11676,7 @@ pub fn stub_1078e0() -> ! {
 // 0x107a1c — __GLOBAL__I__ZN4FMOD15CodecAudioQueue10gCodecHeadE
 #[doc(alias = "global constructor keyed toFMOD::CodecAudioQueue::gCodecHead")]
 pub fn stub_107a1c() -> ! {
-    todo!("0x107a1c `global constructor keyed to'FMOD::CodecAudioQueue::gCodecHead")
+    todo!("0x107a1c global constructor keyed toFMOD::CodecAudioQueue::gCodecHead")
 }
 
 // 0x371844 — __Z18checkResultNoThrow11FMOD_RESULT
@@ -13187,7 +13188,7 @@ pub fn stub_70e5c_wd085() -> ! {
 // 0x70f2c — __GLOBAL__I__ZN4FMOD11AsyncThread10gAsyncHeadE
 #[doc(alias = "global constructor keyed toFMOD::AsyncThread::gAsyncHead")]
 pub fn stub_70f2c_wd086() -> ! {
-    todo!("0x70f2c `global constructor keyed to'FMOD::AsyncThread::gAsyncHead")
+    todo!("0x70f2c global constructor keyed toFMOD::AsyncThread::gAsyncHead")
 }
 
 // 0x70f38 — __ZN4FMOD7Channel11getUserDataEPPv

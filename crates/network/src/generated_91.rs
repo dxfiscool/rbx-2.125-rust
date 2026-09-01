@@ -14,7 +14,7 @@ use rbx_core::SharedPtr;
     alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HUMAN::HumanoidState,bool>,boost::_bi::list2<boost::_bi::value<RBX::HUMAN::HumanoidState*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)"
 )]
 pub fn stub_7d1924() -> ! {
-    todo!("0x7d1924 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HUMAN::HumanoidState,bool>,boost::_bi::list2<boost::_bi::value<RBX::HUMAN::HumanoidState*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")
+    todo!("0x7d1924 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HUMAN::HumanoidState,bool>,boost::_bi::list2<boost::_bi::value<RBX::HUMAN::HumanoidState*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")
 }
 
 // 0x7d1948 — __ZN5boost3_bi5list2INS0_5valueIPN3RBX5HUMAN13HumanoidStateEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS5_bEENS0_5list1IRbEEEEvNS0_4typeIvEERT_RT0_i
@@ -147,7 +147,7 @@ pub fn stub_7d1f98() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_377")]
 pub fn stub_7d207c() -> ! {
-    todo!("0x7d207c `global constructor keyed to'_a_377")
+    todo!("0x7d207c global constructor keyed to_a_377")
 }
 
 // 0x7d24ac — __ZN3RBX5HUMAN7JumpingC1EPNS_8HumanoidENS0_9StateTypeE
@@ -189,7 +189,7 @@ pub fn stub_7d2cb8() -> ! {
 // type: _DWORD __fastcall(RBX::HUMAN::Jumping *__hidden this, const RBX::Primitive *)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Jumping::filterResult(RBX::Primitive const*)const")]
 pub fn stub_7d2d70() -> ! {
-    todo!("0x7d2d70 `non-virtual thunk to'RBX::HUMAN::Jumping::filterResult(RBX::Primitive const*)const")
+    todo!("0x7d2d70 non-virtual thunk toRBX::HUMAN::Jumping::filterResult(RBX::Primitive const*)const")
 }
 
 // 0x7d2d78 — __ZNK3RBX5NamedINS_5HUMAN6FlyingELZNS1_8sJumpingEEE7getNameEv
@@ -245,14 +245,14 @@ pub fn stub_7d2e50() -> ! {
 // type: void __fastcall(RBX::HUMAN::Jumping *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Jumping::~Jumping()")]
 pub fn stub_7d2e54() -> ! {
-    todo!("0x7d2e54 `non-virtual thunk to'RBX::HUMAN::Jumping::~Jumping()")
+    todo!("0x7d2e54 non-virtual thunk toRBX::HUMAN::Jumping::~Jumping()")
 }
 
 // 0x7d2e5c — __ZThn4_N3RBX5HUMAN7JumpingD0Ev
 // type: void __fastcall(RBX::HUMAN::Jumping *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Jumping::~Jumping()")]
 pub fn stub_7d2e5c() -> ! {
-    todo!("0x7d2e5c `non-virtual thunk to'RBX::HUMAN::Jumping::~Jumping()")
+    todo!("0x7d2e5c non-virtual thunk toRBX::HUMAN::Jumping::~Jumping()")
 }
 
 // 0x7d2f00 — __ZN3RBX4Name13callDoDeclareILZNS_5HUMAN8sJumpingEEEEvv
@@ -273,7 +273,7 @@ pub fn stub_7d2f04() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_378")]
 pub fn stub_7d2fe4() -> ! {
-    todo!("0x7d2fe4 `global constructor keyed to'_a_378")
+    todo!("0x7d2fe4 global constructor keyed to_a_378")
 }
 
 // 0x7d32bc — __ZN3RBX5HUMAN19MovingNoPhysicsBaseC2EPNS_8HumanoidENS0_9StateTypeE
@@ -308,7 +308,7 @@ pub fn stub_7d364c() -> ! {
 // type: void __fastcall(RBX::HUMAN::MovingNoPhysicsBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::MovingNoPhysicsBase::~MovingNoPhysicsBase()")]
 pub fn stub_7d3650() -> ! {
-    todo!("0x7d3650 `non-virtual thunk to'RBX::HUMAN::MovingNoPhysicsBase::~MovingNoPhysicsBase()")
+    todo!("0x7d3650 non-virtual thunk toRBX::HUMAN::MovingNoPhysicsBase::~MovingNoPhysicsBase()")
 }
 
 // 0x7d3658 — __ZN3RBX5HUMAN19MovingNoPhysicsBaseD2Ev
@@ -322,7 +322,7 @@ pub fn stub_7d3658() -> ! {
 // type: void __fastcall(RBX::HUMAN::MovingNoPhysicsBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::MovingNoPhysicsBase::~MovingNoPhysicsBase()")]
 pub fn stub_7d386c() -> ! {
-    todo!("0x7d386c `non-virtual thunk to'RBX::HUMAN::MovingNoPhysicsBase::~MovingNoPhysicsBase()")
+    todo!("0x7d386c non-virtual thunk toRBX::HUMAN::MovingNoPhysicsBase::~MovingNoPhysicsBase()")
 }
 
 // 0x7d3874 — __ZN3RBX5HUMAN19MovingNoPhysicsBase15disconnectTorsoEv
@@ -430,7 +430,7 @@ pub fn stub_7d410c() -> ! {
     alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HUMAN::MovingNoPhysicsBase>,boost::_bi::list1<boost::_bi::value<RBX::HUMAN::MovingNoPhysicsBase*>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)"
 )]
 pub fn stub_7d4124() -> ! {
-    todo!("0x7d4124 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HUMAN::MovingNoPhysicsBase>,boost::_bi::list1<boost::_bi::value<RBX::HUMAN::MovingNoPhysicsBase*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
+    todo!("0x7d4124 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HUMAN::MovingNoPhysicsBase>,boost::_bi::list1<boost::_bi::value<RBX::HUMAN::MovingNoPhysicsBase*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0x7d413c — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf0IvNS5_5HUMAN19MovingNoPhysicsBaseEEENSB_5list1INSB_5valueIPSG_EEEEEELi2ES8_ED1Ev
@@ -455,7 +455,7 @@ pub fn stub_7d4168() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_379")]
 pub fn stub_7d423c() -> ! {
-    todo!("0x7d423c `global constructor keyed to'_a_379")
+    todo!("0x7d423c global constructor keyed to_a_379")
 }
 
 // 0x7d4514 — __ZN3RBX5HUMAN7RunningC1EPNS_8HumanoidENS0_9StateTypeE
@@ -518,14 +518,14 @@ pub fn stub_7d46c4() -> ! {
 // type: void __fastcall(RBX::HUMAN::Climbing *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Climbing::~Climbing()")]
 pub fn stub_7d4764() -> ! {
-    todo!("0x7d4764 `non-virtual thunk to'RBX::HUMAN::Climbing::~Climbing()")
+    todo!("0x7d4764 non-virtual thunk toRBX::HUMAN::Climbing::~Climbing()")
 }
 
 // 0x7d476c — __ZThn4_N3RBX5HUMAN8ClimbingD0Ev
 // type: void __fastcall(RBX::HUMAN::Climbing *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Climbing::~Climbing()")]
 pub fn stub_7d476c() -> ! {
-    todo!("0x7d476c `non-virtual thunk to'RBX::HUMAN::Climbing::~Climbing()")
+    todo!("0x7d476c non-virtual thunk toRBX::HUMAN::Climbing::~Climbing()")
 }
 
 // 0x7d4810 — __ZNK3RBX5NamedINS_5HUMAN11RunningBaseELZNS1_8sRunningEEE7getNameEv
@@ -560,14 +560,14 @@ pub fn stub_7d48dc() -> ! {
 // type: void __fastcall(RBX::HUMAN::Running *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Running::~Running()")]
 pub fn stub_7d48e0() -> ! {
-    todo!("0x7d48e0 `non-virtual thunk to'RBX::HUMAN::Running::~Running()")
+    todo!("0x7d48e0 non-virtual thunk toRBX::HUMAN::Running::~Running()")
 }
 
 // 0x7d48e8 — __ZThn4_N3RBX5HUMAN7RunningD0Ev
 // type: void __fastcall(RBX::HUMAN::Running *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Running::~Running()")]
 pub fn stub_7d48e8() -> ! {
-    todo!("0x7d48e8 `non-virtual thunk to'RBX::HUMAN::Running::~Running()")
+    todo!("0x7d48e8 non-virtual thunk toRBX::HUMAN::Running::~Running()")
 }
 
 // 0x7d498c — __ZNK3RBX5NamedINS_5HUMAN7RunningELZNS1_13sRunningSlaveEEE7getNameEv
@@ -595,14 +595,14 @@ pub fn stub_7d49b8() -> ! {
 // type: void __fastcall(RBX::HUMAN::RunningSlave *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::RunningSlave::~RunningSlave()")]
 pub fn stub_7d4a58() -> ! {
-    todo!("0x7d4a58 `non-virtual thunk to'RBX::HUMAN::RunningSlave::~RunningSlave()")
+    todo!("0x7d4a58 non-virtual thunk toRBX::HUMAN::RunningSlave::~RunningSlave()")
 }
 
 // 0x7d4a60 — __ZThn4_N3RBX5HUMAN12RunningSlaveD0Ev
 // type: void __fastcall(RBX::HUMAN::RunningSlave *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::RunningSlave::~RunningSlave()")]
 pub fn stub_7d4a60() -> ! {
-    todo!("0x7d4a60 `non-virtual thunk to'RBX::HUMAN::RunningSlave::~RunningSlave()")
+    todo!("0x7d4a60 non-virtual thunk toRBX::HUMAN::RunningSlave::~RunningSlave()")
 }
 
 // 0x7d4b04 — __ZNK3RBX5NamedINS_5HUMAN11RunningBaseELZNS1_7sLandedEEE7getNameEv
@@ -637,14 +637,14 @@ pub fn stub_7d4bd0() -> ! {
 // type: void __fastcall(RBX::HUMAN::Landed *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Landed::~Landed()")]
 pub fn stub_7d4bd4() -> ! {
-    todo!("0x7d4bd4 `non-virtual thunk to'RBX::HUMAN::Landed::~Landed()")
+    todo!("0x7d4bd4 non-virtual thunk toRBX::HUMAN::Landed::~Landed()")
 }
 
 // 0x7d4bdc — __ZThn4_N3RBX5HUMAN6LandedD0Ev
 // type: void __fastcall(RBX::HUMAN::Landed *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Landed::~Landed()")]
 pub fn stub_7d4bdc() -> ! {
-    todo!("0x7d4bdc `non-virtual thunk to'RBX::HUMAN::Landed::~Landed()")
+    todo!("0x7d4bdc non-virtual thunk toRBX::HUMAN::Landed::~Landed()")
 }
 
 // 0x7d4c80 — __ZN3RBX4Name13callDoDeclareILZNS_5HUMAN7sLandedEEEEvv
@@ -693,7 +693,7 @@ pub fn stub_7d4e4c() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_380")]
 pub fn stub_7d4f2c() -> ! {
-    todo!("0x7d4f2c `global constructor keyed to'_a_380")
+    todo!("0x7d4f2c global constructor keyed to_a_380")
 }
 
 // 0x7d5168 — __ZN3RBX5HUMAN11RunningBaseC2EPNS_8HumanoidENS0_9StateTypeE

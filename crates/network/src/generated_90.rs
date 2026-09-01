@@ -111,7 +111,7 @@ pub fn stub_7cb56c() -> ! {
     alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const"
 )]
 pub fn stub_7cb64c() -> ! {
-    todo!("0x7cb64c `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0x7cb64c non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 // 0x7cb654 — __ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -191,7 +191,7 @@ pub fn stub_7cb7b4() -> ! {
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "global constructor keyed to_a_376")]
 pub fn stub_7cb890() -> ! {
-    todo!("0x7cb890 `global constructor keyed to'_a_376")
+    todo!("0x7cb890 global constructor keyed to_a_376")
 }
 
 // 0x7cd220 — __ZN3RBX5HUMAN8getStateENS0_9StateTypeENS0_9EventTypeE
@@ -233,7 +233,7 @@ pub fn stub_7cd744() -> ! {
 // type: void __fastcall(RBX::HUMAN::HumanoidState *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::HumanoidState::~HumanoidState()")]
 pub fn stub_7cd748() -> ! {
-    todo!("0x7cd748 `non-virtual thunk to'RBX::HUMAN::HumanoidState::~HumanoidState()")
+    todo!("0x7cd748 non-virtual thunk toRBX::HUMAN::HumanoidState::~HumanoidState()")
 }
 
 // 0x7cd750 — __ZN3RBX5HUMAN13HumanoidStateD2Ev
@@ -247,7 +247,7 @@ pub fn stub_7cd750() -> ! {
 // type: void __fastcall(RBX::HUMAN::HumanoidState *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::HumanoidState::~HumanoidState()")]
 pub fn stub_7cd8c0() -> ! {
-    todo!("0x7cd8c0 `non-virtual thunk to'RBX::HUMAN::HumanoidState::~HumanoidState()")
+    todo!("0x7cd8c0 non-virtual thunk toRBX::HUMAN::HumanoidState::~HumanoidState()")
 }
 
 // 0x7cd8c8 — __ZN3RBX5HUMAN13HumanoidState10fireEventsEv
@@ -535,7 +535,7 @@ pub fn stub_7d0ba8() -> ! {
 // type: _DWORD __fastcall(RBX::HUMAN::HumanoidState *__hidden this, const RBX::Primitive *)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::HumanoidState::filterResult(RBX::Primitive const*)const")]
 pub fn stub_7d0c30() -> ! {
-    todo!("0x7d0c30 `non-virtual thunk to'RBX::HUMAN::HumanoidState::filterResult(RBX::Primitive const*)const")
+    todo!("0x7d0c30 non-virtual thunk toRBX::HUMAN::HumanoidState::filterResult(RBX::Primitive const*)const")
 }
 
 // 0x7d0c38 — __ZN3RBX5HUMAN13HumanoidState21getFloorPointVelocityEv

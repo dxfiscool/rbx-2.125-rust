@@ -40,21 +40,21 @@ pub fn stub_7d6260() -> ! {
 // type: void __fastcall(RBX::HUMAN::RunningBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::RunningBase::~RunningBase()")]
 pub fn stub_7d6300() -> ! {
-    todo!("0x7d6300 `non-virtual thunk to'RBX::HUMAN::RunningBase::~RunningBase()")
+    todo!("0x7d6300 non-virtual thunk toRBX::HUMAN::RunningBase::~RunningBase()")
 }
 
 // 0x7d6308 — __ZThn4_N3RBX5HUMAN11RunningBaseD0Ev
 // type: void __fastcall(RBX::HUMAN::RunningBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::RunningBase::~RunningBase()")]
 pub fn stub_7d6308() -> ! {
-    todo!("0x7d6308 `non-virtual thunk to'RBX::HUMAN::RunningBase::~RunningBase()")
+    todo!("0x7d6308 non-virtual thunk toRBX::HUMAN::RunningBase::~RunningBase()")
 }
 
 // 0x7d63ac — __GLOBAL__I_a_381
 // type: 
 #[doc(alias = "global constructor keyed to_a_381")]
 pub fn stub_7d63ac() -> ! {
-    todo!("0x7d63ac `global constructor keyed to'_a_381")
+    todo!("0x7d63ac global constructor keyed to_a_381")
 }
 
 // 0x7d6684 — __ZN3RBX5HUMAN16RunningNoPhysicsC1EPNS_8HumanoidENS0_9StateTypeE
@@ -117,14 +117,14 @@ pub fn stub_7d6834() -> ! {
 // type: void __fastcall(RBX::HUMAN::RunningNoPhysics *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::RunningNoPhysics::~RunningNoPhysics()")]
 pub fn stub_7d6838() -> ! {
-    todo!("0x7d6838 `non-virtual thunk to'RBX::HUMAN::RunningNoPhysics::~RunningNoPhysics()")
+    todo!("0x7d6838 non-virtual thunk toRBX::HUMAN::RunningNoPhysics::~RunningNoPhysics()")
 }
 
 // 0x7d6840 — __ZThn4_N3RBX5HUMAN16RunningNoPhysicsD0Ev
 // type: void __fastcall(RBX::HUMAN::RunningNoPhysics *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::RunningNoPhysics::~RunningNoPhysics()")]
 pub fn stub_7d6840() -> ! {
-    todo!("0x7d6840 `non-virtual thunk to'RBX::HUMAN::RunningNoPhysics::~RunningNoPhysics()")
+    todo!("0x7d6840 non-virtual thunk toRBX::HUMAN::RunningNoPhysics::~RunningNoPhysics()")
 }
 
 // 0x7d68e4 — __ZN3RBX4Name13callDoDeclareILZNS_5HUMAN17sRunningNoPhysicsEEEEvv
@@ -145,7 +145,7 @@ pub fn stub_7d68e8() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_382")]
 pub fn stub_7d69c8() -> ! {
-    todo!("0x7d69c8 `global constructor keyed to'_a_382")
+    todo!("0x7d69c8 global constructor keyed to_a_382")
 }
 
 // 0x7d6c04 — __ZN3RBX5HUMAN6SeatedC1EPNS_8HumanoidENS0_9StateTypeE
@@ -180,7 +180,7 @@ pub fn stub_7d6d7c() -> ! {
 // type: void __fastcall(RBX::HUMAN::Seated *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Seated::~Seated()")]
 pub fn stub_7d6d80() -> ! {
-    todo!("0x7d6d80 `non-virtual thunk to'RBX::HUMAN::Seated::~Seated()")
+    todo!("0x7d6d80 non-virtual thunk toRBX::HUMAN::Seated::~Seated()")
 }
 
 // 0x7d6d88 — __ZN3RBX5HUMAN6SeatedD2Ev
@@ -194,7 +194,7 @@ pub fn stub_7d6d88() -> ! {
 // type: void __fastcall(RBX::HUMAN::Seated *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Seated::~Seated()")]
 pub fn stub_7d6e7c() -> ! {
-    todo!("0x7d6e7c `non-virtual thunk to'RBX::HUMAN::Seated::~Seated()")
+    todo!("0x7d6e7c non-virtual thunk toRBX::HUMAN::Seated::~Seated()")
 }
 
 // 0x7d6e84 — __ZN3RBX5HUMAN16PlatformStandingC1EPNS_8HumanoidENS0_9StateTypeE
@@ -229,7 +229,7 @@ pub fn stub_7d6ffc() -> ! {
 // type: void __fastcall(RBX::HUMAN::PlatformStanding *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::PlatformStanding::~PlatformStanding()")]
 pub fn stub_7d7000() -> ! {
-    todo!("0x7d7000 `non-virtual thunk to'RBX::HUMAN::PlatformStanding::~PlatformStanding()")
+    todo!("0x7d7000 non-virtual thunk toRBX::HUMAN::PlatformStanding::~PlatformStanding()")
 }
 
 // 0x7d7008 — __ZN3RBX5HUMAN16PlatformStandingD2Ev
@@ -243,7 +243,7 @@ pub fn stub_7d7008() -> ! {
 // type: void __fastcall(RBX::HUMAN::PlatformStanding *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::PlatformStanding::~PlatformStanding()")]
 pub fn stub_7d70fc() -> ! {
-    todo!("0x7d70fc `non-virtual thunk to'RBX::HUMAN::PlatformStanding::~PlatformStanding()")
+    todo!("0x7d70fc non-virtual thunk toRBX::HUMAN::PlatformStanding::~PlatformStanding()")
 }
 
 // 0x7d7104 — __ZNK3RBX5NamedINS_5HUMAN13HumanoidStateELZNS1_7sSeatedEEE7getNameEv
@@ -348,7 +348,7 @@ pub fn stub_7d725c() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_383")]
 pub fn stub_7d733c() -> ! {
-    todo!("0x7d733c `global constructor keyed to'_a_383")
+    todo!("0x7d733c global constructor keyed to_a_383")
 }
 
 // 0x7d7578 — __ZN3RBX5HUMAN17StrafingNoPhysicsC1EPNS_8HumanoidENS0_9StateTypeE
@@ -390,14 +390,14 @@ pub fn stub_7d766c() -> ! {
 // type: void __fastcall(RBX::HUMAN::StrafingNoPhysics *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::StrafingNoPhysics::~StrafingNoPhysics()")]
 pub fn stub_7d7670() -> ! {
-    todo!("0x7d7670 `non-virtual thunk to'RBX::HUMAN::StrafingNoPhysics::~StrafingNoPhysics()")
+    todo!("0x7d7670 non-virtual thunk toRBX::HUMAN::StrafingNoPhysics::~StrafingNoPhysics()")
 }
 
 // 0x7d7678 — __ZThn4_N3RBX5HUMAN17StrafingNoPhysicsD0Ev
 // type: void __fastcall(RBX::HUMAN::StrafingNoPhysics *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::StrafingNoPhysics::~StrafingNoPhysics()")]
 pub fn stub_7d7678() -> ! {
-    todo!("0x7d7678 `non-virtual thunk to'RBX::HUMAN::StrafingNoPhysics::~StrafingNoPhysics()")
+    todo!("0x7d7678 non-virtual thunk toRBX::HUMAN::StrafingNoPhysics::~StrafingNoPhysics()")
 }
 
 // 0x7d771c — __ZN3RBX4Name13callDoDeclareILZNS_5HUMAN18sStrafingNoPhysicsEEEEvv
@@ -418,7 +418,7 @@ pub fn stub_7d7720() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_384")]
 pub fn stub_7d7800() -> ! {
-    todo!("0x7d7800 `global constructor keyed to'_a_384")
+    todo!("0x7d7800 global constructor keyed to_a_384")
 }
 
 // 0x7d7a3c — __ZN3RBX10Reflection18CallbackDescriptorC2ERNS0_15ClassDescriptorEPKcNS0_10Descriptor10AttributesENS_8Security11PermissionsE
@@ -524,7 +524,7 @@ pub fn stub_7d7f60() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_385")]
 pub fn stub_7d7f90() -> ! {
-    todo!("0x7d7f90 `global constructor keyed to'_a_385")
+    todo!("0x7d7f90 global constructor keyed to_a_385")
 }
 
 // 0x7d80c0 — __ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEEC1Ev
@@ -712,14 +712,14 @@ pub fn stub_7d9ed4() -> ! {
 // type: void __fastcall(RBX::TextService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TextService::~TextService()")]
 pub fn stub_7d9efc() -> ! {
-    todo!("0x7d9efc `non-virtual thunk to'RBX::TextService::~TextService()")
+    todo!("0x7d9efc non-virtual thunk toRBX::TextService::~TextService()")
 }
 
 // 0x7d9f04 — __ZThn32_N3RBX11TextServiceD0Ev
 // type: void __fastcall(RBX::TextService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TextService::~TextService()")]
 pub fn stub_7d9f04() -> ! {
-    todo!("0x7d9f04 `non-virtual thunk to'RBX::TextService::~TextService()")
+    todo!("0x7d9f04 non-virtual thunk toRBX::TextService::~TextService()")
 }
 
 // 0x7d9fa8 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_12sTextServiceEEE12getClassNameEv
@@ -733,5 +733,5 @@ pub fn stub_7d9fa8() -> ! {
 // type: void __fastcall(RBX::TextService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TextService::~TextService()")]
 pub fn stub_7d9fd0() -> ! {
-    todo!("0x7d9fd0 `non-virtual thunk to'RBX::TextService::~TextService()")
+    todo!("0x7d9fd0 non-virtual thunk toRBX::TextService::~TextService()")
 }

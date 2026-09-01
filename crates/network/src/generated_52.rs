@@ -546,28 +546,28 @@ pub fn stub_457b28() -> ! {
 // type: void __fastcall(RBX::ServiceProvider *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX15ServiceProviderD1Ev")]
 pub fn stub_457b30() -> ! {
-    todo!("0x457b30 `non-virtual thunk to'RBX::ServiceProvider::~ServiceProvider()")
+    todo!("0x457b30 non-virtual thunk toRBX::ServiceProvider::~ServiceProvider()")
 }
 
 // 0x457b38 — __ZThn32_N3RBX15ServiceProviderD0Ev
 // type: void __fastcall(RBX::ServiceProvider *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX15ServiceProviderD0Ev")]
 pub fn stub_457b38() -> ! {
-    todo!("0x457b38 `non-virtual thunk to'RBX::ServiceProvider::~ServiceProvider()")
+    todo!("0x457b38 non-virtual thunk toRBX::ServiceProvider::~ServiceProvider()")
 }
 
 // 0x457be0 — __ZThn36_N3RBX15ServiceProviderD1Ev
 // type: void __fastcall(RBX::ServiceProvider *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX15ServiceProviderD1Ev")]
 pub fn stub_457be0() -> ! {
-    todo!("0x457be0 `non-virtual thunk to'RBX::ServiceProvider::~ServiceProvider()")
+    todo!("0x457be0 non-virtual thunk toRBX::ServiceProvider::~ServiceProvider()")
 }
 
 // 0x457be8 — __ZThn36_N3RBX15ServiceProviderD0Ev
 // type: void __fastcall(RBX::ServiceProvider *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX15ServiceProviderD0Ev")]
 pub fn stub_457be8() -> ! {
-    todo!("0x457be8 `non-virtual thunk to'RBX::ServiceProvider::~ServiceProvider()")
+    todo!("0x457be8 non-virtual thunk toRBX::ServiceProvider::~ServiceProvider()")
 }
 
 // 0x457c90 — __ZN3RBX4Name13callDoDeclareILZNS_16sServiceProviderEEEEvv
@@ -650,4 +650,3 @@ pub fn stub_45814c() -> ! {
 pub fn stub_458254() -> ! {
     todo!("0x458254 boost::detail::sp_counted_impl_pd<RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
 }
-

@@ -214,7 +214,7 @@ pub fn stub_d27eac() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::OverlayContainer::~OverlayContainer()")]
 // was: `non-virtual thunk to'Ogre::OverlayContainer::~OverlayContainer()
 pub fn stub_d27eb8() -> ! {
-    todo!("0xd27eb8 `non-virtual thunk to'Ogre::OverlayContainer::~OverlayContainer()")
+    todo!("0xd27eb8 non-virtual thunk toOgre::OverlayContainer::~OverlayContainer()")
 }
 
 // 0xd27f4c — __ZN4Ogre16OverlayContainerD2Ev
@@ -228,7 +228,7 @@ pub fn stub_d27f4c() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::OverlayContainer::~OverlayContainer()")]
 // was: `non-virtual thunk to'Ogre::OverlayContainer::~OverlayContainer()
 pub fn stub_d280bc() -> ! {
-    todo!("0xd280bc `non-virtual thunk to'Ogre::OverlayContainer::~OverlayContainer()")
+    todo!("0xd280bc non-virtual thunk toOgre::OverlayContainer::~OverlayContainer()")
 }
 
 // 0xd280c8 — __ZN4Ogre16OverlayContainer8addChildEPNS_14OverlayElementE
@@ -389,7 +389,7 @@ pub fn stub_d29ed0() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::OverlayElement::~OverlayElement()")]
 // was: `non-virtual thunk to'Ogre::OverlayElement::~OverlayElement()
 pub fn stub_d29edc() -> ! {
-    todo!("0xd29edc `non-virtual thunk to'Ogre::OverlayElement::~OverlayElement()")
+    todo!("0xd29edc non-virtual thunk toOgre::OverlayElement::~OverlayElement()")
 }
 
 // 0xd29f70 — __ZN4Ogre14OverlayElementD2Ev
@@ -403,7 +403,7 @@ pub fn stub_d29f70() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::OverlayElement::~OverlayElement()")]
 // was: `non-virtual thunk to'Ogre::OverlayElement::~OverlayElement()
 pub fn stub_d2a33c() -> ! {
-    todo!("0xd2a33c `non-virtual thunk to'Ogre::OverlayElement::~OverlayElement()")
+    todo!("0xd2a33c non-virtual thunk toOgre::OverlayElement::~OverlayElement()")
 }
 
 // 0xd2a348 — __ZNK4Ogre14OverlayElement7getNameEv
@@ -515,7 +515,7 @@ pub fn stub_d2a8b4() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::OverlayElement::getMaterial(void)const")]
 // was: `non-virtual thunk to'Ogre::OverlayElement::getMaterial(void)const
 pub fn stub_d2a8b8() -> ! {
-    todo!("0xd2a8b8 `non-virtual thunk to'Ogre::OverlayElement::getMaterial(void)const")
+    todo!("0xd2a8b8 non-virtual thunk toOgre::OverlayElement::getMaterial(void)const")
 }
 
 // 0xd2a8bc — __ZNK4Ogre14OverlayElement18getWorldTransformsEPNS_7Matrix4E
@@ -529,7 +529,7 @@ pub fn stub_d2a8bc() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::OverlayElement::getWorldTransforms(Ogre::Matrix4 *)const")]
 // was: `non-virtual thunk to'Ogre::OverlayElement::getWorldTransforms(Ogre::Matrix4 *)const
 pub fn stub_d2a8cc() -> ! {
-    todo!("0xd2a8cc `non-virtual thunk to'Ogre::OverlayElement::getWorldTransforms(Ogre::Matrix4 *)const")
+    todo!("0xd2a8cc non-virtual thunk toOgre::OverlayElement::getWorldTransforms(Ogre::Matrix4 *)const")
 }
 
 // 0xd2a8dc — __ZN4Ogre14OverlayElement19_positionsOutOfDateEv
@@ -846,4 +846,3 @@ pub fn stub_d2ce5c() -> ! {
 pub fn stub_d2ce68() -> ! {
     todo!("0xd2ce68 Ogre::OverlayElementCommands::CmdHorizontalAlign::~CmdHorizontalAlign()")
 }
-

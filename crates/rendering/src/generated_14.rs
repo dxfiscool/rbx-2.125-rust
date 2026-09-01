@@ -103,7 +103,7 @@ pub fn stub_cc7708() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::InstancedGeometry::BatchInstance::~BatchInstance()")]
 // was: `non-virtual thunk to'Ogre::InstancedGeometry::BatchInstance::~BatchInstance()
 pub fn stub_cc7714() -> ! {
-    todo!("0xcc7714 `non-virtual thunk to'Ogre::InstancedGeometry::BatchInstance::~BatchInstance()")
+    todo!("0xcc7714 non-virtual thunk toOgre::InstancedGeometry::BatchInstance::~BatchInstance()")
 }
 
 // 0xcc77a8 — __ZN4Ogre17InstancedGeometry13BatchInstanceD2Ev
@@ -117,7 +117,7 @@ pub fn stub_cc77a8() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::InstancedGeometry::BatchInstance::~BatchInstance()")]
 // was: `non-virtual thunk to'Ogre::InstancedGeometry::BatchInstance::~BatchInstance()
 pub fn stub_cc7a28() -> ! {
-    todo!("0xcc7a28 `non-virtual thunk to'Ogre::InstancedGeometry::BatchInstance::~BatchInstance()")
+    todo!("0xcc7a28 non-virtual thunk toOgre::InstancedGeometry::BatchInstance::~BatchInstance()")
 }
 
 // 0xcc7a34 — __ZN4Ogre17InstancedGeometry9LODBucket6assignEPNS0_13QueuedSubMeshEt
@@ -320,14 +320,14 @@ pub fn stub_cca808() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::~GeometryBucket()")]
 // was: `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::~GeometryBucket()
 pub fn stub_cca814() -> ! {
-    todo!("0xcca814 `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::~GeometryBucket()")
+    todo!("0xcca814 non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::~GeometryBucket()")
 }
 
 // 0xcca8a8 — __ZThn188_N4Ogre17InstancedGeometry14GeometryBucketD0Ev
 #[doc(alias = "non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::~GeometryBucket()")]
 // was: `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::~GeometryBucket()
 pub fn stub_cca8a8() -> ! {
-    todo!("0xcca8a8 `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::~GeometryBucket()")
+    todo!("0xcca8a8 non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::~GeometryBucket()")
 }
 
 // 0xcca93c — __ZN4Ogre17InstancedGeometry14GeometryBucketD2Ev
@@ -341,14 +341,14 @@ pub fn stub_cca93c() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::~GeometryBucket()")]
 // was: `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::~GeometryBucket()
 pub fn stub_ccaa50() -> ! {
-    todo!("0xccaa50 `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::~GeometryBucket()")
+    todo!("0xccaa50 non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::~GeometryBucket()")
 }
 
 // 0xccaa5c — __ZThn188_N4Ogre17InstancedGeometry14GeometryBucketD1Ev
 #[doc(alias = "non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::~GeometryBucket()")]
 // was: `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::~GeometryBucket()
 pub fn stub_ccaa5c() -> ! {
-    todo!("0xccaa5c `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::~GeometryBucket()")
+    todo!("0xccaa5c non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::~GeometryBucket()")
 }
 
 // 0xccaa68 — __ZNK4Ogre17InstancedGeometry14GeometryBucket17getBoundingRadiusEv
@@ -369,7 +369,7 @@ pub fn stub_ccaa70() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::getMaterial(void)const")]
 // was: `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::getMaterial(void)const
 pub fn stub_ccaa78() -> ! {
-    todo!("0xccaa78 `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::getMaterial(void)const")
+    todo!("0xccaa78 non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::getMaterial(void)const")
 }
 
 // 0xccaa80 — __ZNK4Ogre17InstancedGeometry14GeometryBucket12getTechniqueEv
@@ -383,7 +383,7 @@ pub fn stub_ccaa80() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::getTechnique(void)const")]
 // was: `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::getTechnique(void)const
 pub fn stub_ccaa88() -> ! {
-    todo!("0xccaa88 `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::getTechnique(void)const")
+    todo!("0xccaa88 non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::getTechnique(void)const")
 }
 
 // 0xccaa90 — __ZNK4Ogre17InstancedGeometry14GeometryBucket18getWorldTransformsEPNS_7Matrix4E
@@ -397,7 +397,7 @@ pub fn stub_ccaa90() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::getWorldTransforms(Ogre::Matrix4 *)const")]
 // was: `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::getWorldTransforms(Ogre::Matrix4 *)const
 pub fn stub_ccae04() -> ! {
-    todo!("0xccae04 `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::getWorldTransforms(Ogre::Matrix4 *)const")
+    todo!("0xccae04 non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::getWorldTransforms(Ogre::Matrix4 *)const")
 }
 
 // 0xccae10 — __ZNK4Ogre17InstancedGeometry14GeometryBucket21getNumWorldTransformsEv
@@ -411,7 +411,7 @@ pub fn stub_ccae10() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::getNumWorldTransforms(void)const")]
 // was: `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::getNumWorldTransforms(void)const
 pub fn stub_ccb078() -> ! {
-    todo!("0xccb078 `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::getNumWorldTransforms(void)const")
+    todo!("0xccb078 non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::getNumWorldTransforms(void)const")
 }
 
 // 0xccb084 — __ZNK4Ogre17InstancedGeometry14GeometryBucket19getSquaredViewDepthEPKNS_6CameraE
@@ -425,7 +425,7 @@ pub fn stub_ccb084() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::getSquaredViewDepth(Ogre::Camera const*)const")]
 // was: `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::getSquaredViewDepth(Ogre::Camera const*)const
 pub fn stub_ccb0cc() -> ! {
-    todo!("0xccb0cc `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::getSquaredViewDepth(Ogre::Camera const*)const")
+    todo!("0xccb0cc non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::getSquaredViewDepth(Ogre::Camera const*)const")
 }
 
 // 0xccb114 — __ZNK4Ogre17InstancedGeometry14GeometryBucket9getLightsEv
@@ -439,7 +439,7 @@ pub fn stub_ccb114() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::getLights(void)const")]
 // was: `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::getLights(void)const
 pub fn stub_ccb12c() -> ! {
-    todo!("0xccb12c `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::getLights(void)const")
+    todo!("0xccb12c non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::getLights(void)const")
 }
 
 // 0xccb144 — __ZNK4Ogre17InstancedGeometry14GeometryBucket15getCastsShadowsEv
@@ -453,7 +453,7 @@ pub fn stub_ccb144() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::getCastsShadows(void)const")]
 // was: `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::getCastsShadows(void)const
 pub fn stub_ccb158() -> ! {
-    todo!("0xccb158 `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::getCastsShadows(void)const")
+    todo!("0xccb158 non-virtual thunk toOgre::InstancedGeometry::GeometryBucket::getCastsShadows(void)const")
 }
 
 // 0xccb16c — __ZN4Ogre17InstancedGeometry14GeometryBucket16visitRenderablesEPNS_10Renderable7VisitorEb

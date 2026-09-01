@@ -17,7 +17,7 @@ pub fn stub_3a8664() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::shouldRender2d(void)const")]
 // was: `non-virtual thunk to'RBX::HandlesBase::shouldRender2d(void)const
 pub fn stub_3a87dc() -> ! {
-    todo!("0x3a87dc `non-virtual thunk to'RBX::HandlesBase::shouldRender2d(void)const")
+    todo!("0x3a87dc non-virtual thunk toRBX::HandlesBase::shouldRender2d(void)const")
 }
 
 // 0x3c042c — __ZN3RBX12BillboardGui17setRenderFunctionEN5boost8functionIFvPS0_PNS_5AdornEEEE
@@ -38,7 +38,7 @@ pub fn stub_3c04a8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::shouldRender3dSortedAdorn(void)const")]
 // was: `non-virtual thunk to'RBX::BillboardGui::shouldRender3dSortedAdorn(void)const
 pub fn stub_3c066c() -> ! {
-    todo!("0x3c066c `non-virtual thunk to'RBX::BillboardGui::shouldRender3dSortedAdorn(void)const")
+    todo!("0x3c066c non-virtual thunk toRBX::BillboardGui::shouldRender3dSortedAdorn(void)const")
 }
 
 // 0x3f1c00 — __ZNK3RBX13ClickDetector19shouldRender3dAdornEv
@@ -52,7 +52,7 @@ pub fn stub_3f1c00() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ClickDetector::shouldRender3dAdorn(void)const")]
 // was: `non-virtual thunk to'RBX::ClickDetector::shouldRender3dAdorn(void)const
 pub fn stub_3f1c34() -> ! {
-    todo!("0x3f1c34 `non-virtual thunk to'RBX::ClickDetector::shouldRender3dAdorn(void)const")
+    todo!("0x3f1c34 non-virtual thunk toRBX::ClickDetector::shouldRender3dAdorn(void)const")
 }
 
 // 0x3f6a8c — __ZN3RBX18RenderStatsCommandC1EPNS_9DataModelE
@@ -234,7 +234,7 @@ pub fn stub_4a1350() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Explosion::shouldRender3dAdorn(void)const")]
 // was: `non-virtual thunk to'RBX::Explosion::shouldRender3dAdorn(void)const
 pub fn stub_4a1368() -> ! {
-    todo!("0x4a1368 `non-virtual thunk to'RBX::Explosion::shouldRender3dAdorn(void)const")
+    todo!("0x4a1368 non-virtual thunk toRBX::Explosion::shouldRender3dAdorn(void)const")
 }
 
 // 0x4a6868 — __ZNK3RBX10IAdornable19shouldRender3dAdornEv
@@ -388,7 +388,7 @@ pub fn stub_4e7160() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Feature::shouldRender3dAdorn(void)const")]
 // was: `non-virtual thunk to'RBX::Feature::shouldRender3dAdorn(void)const
 pub fn stub_4e7190() -> ! {
-    todo!("0x4e7190 `non-virtual thunk to'RBX::Feature::shouldRender3dAdorn(void)const")
+    todo!("0x4e7190 non-virtual thunk toRBX::Feature::shouldRender3dAdorn(void)const")
 }
 
 // 0x4f8834 — __ZNK3RBX10ForceField19shouldRender3dAdornEv
@@ -402,7 +402,7 @@ pub fn stub_4f8834() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ForceField::shouldRender3dAdorn(void)const")]
 // was: `non-virtual thunk to'RBX::ForceField::shouldRender3dAdorn(void)const
 pub fn stub_4f8868() -> ! {
-    todo!("0x4f8868 `non-virtual thunk to'RBX::ForceField::shouldRender3dAdorn(void)const")
+    todo!("0x4f8868 non-virtual thunk toRBX::ForceField::shouldRender3dAdorn(void)const")
 }
 
 // 0x5156a4 — __ZN3RBX10GuiBuilder16buildRenderStatsEv
@@ -430,7 +430,7 @@ pub fn stub_59fad8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::JointInstance::shouldRender3dAdorn(void)const")]
 // was: `non-virtual thunk to'RBX::JointInstance::shouldRender3dAdorn(void)const
 pub fn stub_59fae8() -> ! {
-    todo!("0x59fae8 `non-virtual thunk to'RBX::JointInstance::shouldRender3dAdorn(void)const")
+    todo!("0x59fae8 non-virtual thunk toRBX::JointInstance::shouldRender3dAdorn(void)const")
 }
 
 // 0x5a3aec — __ZNK3RBX10ManualWeld19shouldRender3dAdornEv
@@ -444,7 +444,7 @@ pub fn stub_5a3aec() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ManualWeld::shouldRender3dAdorn(void)const")]
 // was: `non-virtual thunk to'RBX::ManualWeld::shouldRender3dAdorn(void)const
 pub fn stub_5a3c58() -> ! {
-    todo!("0x5a3c58 `non-virtual thunk to'RBX::ManualWeld::shouldRender3dAdorn(void)const")
+    todo!("0x5a3c58 non-virtual thunk toRBX::ManualWeld::shouldRender3dAdorn(void)const")
 }
 
 // 0x5a3d10 — __ZNK3RBX10ManualGlue19shouldRender3dAdornEv
@@ -458,7 +458,7 @@ pub fn stub_5a3d10() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ManualGlue::shouldRender3dAdorn(void)const")]
 // was: `non-virtual thunk to'RBX::ManualGlue::shouldRender3dAdorn(void)const
 pub fn stub_5a3e7c() -> ! {
-    todo!("0x5a3e7c `non-virtual thunk to'RBX::ManualGlue::shouldRender3dAdorn(void)const")
+    todo!("0x5a3e7c non-virtual thunk toRBX::ManualGlue::shouldRender3dAdorn(void)const")
 }
 
 // 0x5c8a7c — __ZNK3RBX7Message14shouldRender2dEv
@@ -472,7 +472,7 @@ pub fn stub_5c8a7c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Message::shouldRender2d(void)const")]
 // was: `non-virtual thunk to'RBX::Message::shouldRender2d(void)const
 pub fn stub_5c8e84() -> ! {
-    todo!("0x5c8e84 `non-virtual thunk to'RBX::Message::shouldRender2d(void)const")
+    todo!("0x5c8e84 non-virtual thunk toRBX::Message::shouldRender2d(void)const")
 }
 
 // 0x5cd254 — __ZNK3RBX13ModelInstance19shouldRender3dAdornEv
@@ -486,7 +486,7 @@ pub fn stub_5cd254() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::shouldRender3dAdorn(void)const")]
 // was: `non-virtual thunk to'RBX::ModelInstance::shouldRender3dAdorn(void)const
 pub fn stub_5cd274() -> ! {
-    todo!("0x5cd274 `non-virtual thunk to'RBX::ModelInstance::shouldRender3dAdorn(void)const")
+    todo!("0x5cd274 non-virtual thunk toRBX::ModelInstance::shouldRender3dAdorn(void)const")
 }
 
 // 0x5d9d60 — __ZNK3RBX12PartInstance27getRenderingCoordinateFrameEv
@@ -514,7 +514,7 @@ pub fn stub_5dbcfc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::shouldRender3dAdorn(void)const")]
 // was: `non-virtual thunk to'RBX::PartInstance::shouldRender3dAdorn(void)const
 pub fn stub_5dbe44() -> ! {
-    todo!("0x5dbe44 `non-virtual thunk to'RBX::PartInstance::shouldRender3dAdorn(void)const")
+    todo!("0x5dbe44 non-virtual thunk toRBX::PartInstance::shouldRender3dAdorn(void)const")
 }
 
 // 0x5dd96c — __ZN3RBX12PartInstance31computeRenderingCoordinateFrameEPS0_
@@ -570,14 +570,14 @@ pub fn stub_5e2b98() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::getRenderLocation(void)")]
 // was: `non-virtual thunk to'RBX::PartInstance::getRenderLocation(void)
 pub fn stub_5e2c08() -> ! {
-    todo!("0x5e2c08 `non-virtual thunk to'RBX::PartInstance::getRenderLocation(void)")
+    todo!("0x5e2c08 non-virtual thunk toRBX::PartInstance::getRenderLocation(void)")
 }
 
 // 0x5e2c14 — __ZThn132_N3RBX12PartInstance13getRenderSizeEv
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::getRenderSize(void)")]
 // was: `non-virtual thunk to'RBX::PartInstance::getRenderSize(void)
 pub fn stub_5e2c14() -> ! {
-    todo!("0x5e2c14 `non-virtual thunk to'RBX::PartInstance::getRenderSize(void)")
+    todo!("0x5e2c14 non-virtual thunk toRBX::PartInstance::getRenderSize(void)")
 }
 
 // 0x61054c — __ZNK3RBX9ScreenGui23isAncestorRenderableGuiEv
@@ -598,7 +598,7 @@ pub fn stub_610f4c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::shouldRender2d(void)const")]
 // was: `non-virtual thunk to'RBX::ScreenGui::shouldRender2d(void)const
 pub fn stub_61149c() -> ! {
-    todo!("0x61149c `non-virtual thunk to'RBX::ScreenGui::shouldRender2d(void)const")
+    todo!("0x61149c non-virtual thunk toRBX::ScreenGui::shouldRender2d(void)const")
 }
 
 // 0x61ee4c — __ZNK3RBX14SelectionLasso19shouldRender3dAdornEv
@@ -612,7 +612,7 @@ pub fn stub_61ee4c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::SelectionLasso::shouldRender3dAdorn(void)const")]
 // was: `non-virtual thunk to'RBX::SelectionLasso::shouldRender3dAdorn(void)const
 pub fn stub_61ee7c() -> ! {
-    todo!("0x61ee7c `non-virtual thunk to'RBX::SelectionLasso::shouldRender3dAdorn(void)const")
+    todo!("0x61ee7c non-virtual thunk toRBX::SelectionLasso::shouldRender3dAdorn(void)const")
 }
 
 // 0x61f4b4 — __ZNK3RBX18SelectionPartLasso19shouldRender3dAdornEv
@@ -626,7 +626,7 @@ pub fn stub_61f4b4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::SelectionPartLasso::shouldRender3dAdorn(void)const")]
 // was: `non-virtual thunk to'RBX::SelectionPartLasso::shouldRender3dAdorn(void)const
 pub fn stub_61f4e4() -> ! {
-    todo!("0x61f4e4 `non-virtual thunk to'RBX::SelectionPartLasso::shouldRender3dAdorn(void)const")
+    todo!("0x61f4e4 non-virtual thunk toRBX::SelectionPartLasso::shouldRender3dAdorn(void)const")
 }
 
 // 0x6290fc — __ZNK3RBX18SkateboardPlatform14shouldRender2dEv
@@ -640,7 +640,7 @@ pub fn stub_6290fc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::shouldRender2d(void)const")]
 // was: `non-virtual thunk to'RBX::SkateboardPlatform::shouldRender2d(void)const
 pub fn stub_629100() -> ! {
-    todo!("0x629100 `non-virtual thunk to'RBX::SkateboardPlatform::shouldRender2d(void)const")
+    todo!("0x629100 non-virtual thunk toRBX::SkateboardPlatform::shouldRender2d(void)const")
 }
 
 // 0x668d28 — __ZNK3RBX9GuiBase2d14shouldRender2dEv
@@ -654,7 +654,7 @@ pub fn stub_668d28() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GuiBase2d::shouldRender2d(void)const")]
 // was: `non-virtual thunk to'RBX::GuiBase2d::shouldRender2d(void)const
 pub fn stub_668ef8() -> ! {
-    todo!("0x668ef8 `non-virtual thunk to'RBX::GuiBase2d::shouldRender2d(void)const")
+    todo!("0x668ef8 non-virtual thunk toRBX::GuiBase2d::shouldRender2d(void)const")
 }
 
 // 0x6bd00c — __ZNK3RBX11VehicleSeat14shouldRender2dEv
@@ -668,7 +668,7 @@ pub fn stub_6bd00c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::shouldRender2d(void)const")]
 // was: `non-virtual thunk to'RBX::VehicleSeat::shouldRender2d(void)const
 pub fn stub_6bd020() -> ! {
-    todo!("0x6bd020 `non-virtual thunk to'RBX::VehicleSeat::shouldRender2d(void)const")
+    todo!("0x6bd020 non-virtual thunk toRBX::VehicleSeat::shouldRender2d(void)const")
 }
 
 // 0x6cd8e0 — __ZN3RBX9Workspace27selectAllTopLevelRenderableEv
@@ -703,5 +703,5 @@ pub fn stub_6d2d48() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::getRenderLocation(void)")]
 // was: `non-virtual thunk to'RBX::ModelInstance::getRenderLocation(void)
 pub fn stub_6d2d64() -> ! {
-    todo!("0x6d2d64 `non-virtual thunk to'RBX::ModelInstance::getRenderLocation(void)")
+    todo!("0x6d2d64 non-virtual thunk toRBX::ModelInstance::getRenderLocation(void)")
 }

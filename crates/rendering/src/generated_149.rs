@@ -333,7 +333,7 @@ pub fn stub_25adb4() -> ! {
 #[doc(alias = "global constructor keyed to_a_55")]
 // was: `global constructor keyed to'_a_55
 pub fn stub_25afd8() -> ! {
-    todo!("0x25afd8 `global constructor keyed to'_a_55")
+    todo!("0x25afd8 global constructor keyed to_a_55")
 }
 
 // 0x25b4c0 — __ZN3RBX5Light10setEnabledEb
@@ -417,21 +417,21 @@ pub fn stub_25bb48() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
 // was: `non-virtual thunk to'RBX::Light::~Light()
 pub fn stub_25bb4c() -> ! {
-    todo!("0x25bb4c `non-virtual thunk to'RBX::Light::~Light()")
+    todo!("0x25bb4c non-virtual thunk toRBX::Light::~Light()")
 }
 
 // 0x25bb54 — __ZThn36_N3RBX5LightD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
 // was: `non-virtual thunk to'RBX::Light::~Light()
 pub fn stub_25bb54() -> ! {
-    todo!("0x25bb54 `non-virtual thunk to'RBX::Light::~Light()")
+    todo!("0x25bb54 non-virtual thunk toRBX::Light::~Light()")
 }
 
 // 0x25bb5c — __ZThn92_N3RBX5LightD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
 // was: `non-virtual thunk to'RBX::Light::~Light()
 pub fn stub_25bb5c() -> ! {
-    todo!("0x25bb5c `non-virtual thunk to'RBX::Light::~Light()")
+    todo!("0x25bb5c non-virtual thunk toRBX::Light::~Light()")
 }
 
 // 0x25bb64 — __ZN3RBX5LightD2Ev
@@ -445,21 +445,21 @@ pub fn stub_25bb64() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
 // was: `non-virtual thunk to'RBX::Light::~Light()
 pub fn stub_25bc20() -> ! {
-    todo!("0x25bc20 `non-virtual thunk to'RBX::Light::~Light()")
+    todo!("0x25bc20 non-virtual thunk toRBX::Light::~Light()")
 }
 
 // 0x25bc28 — __ZThn36_N3RBX5LightD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
 // was: `non-virtual thunk to'RBX::Light::~Light()
 pub fn stub_25bc28() -> ! {
-    todo!("0x25bc28 `non-virtual thunk to'RBX::Light::~Light()")
+    todo!("0x25bc28 non-virtual thunk toRBX::Light::~Light()")
 }
 
 // 0x25bc30 — __ZThn92_N3RBX5LightD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
 // was: `non-virtual thunk to'RBX::Light::~Light()
 pub fn stub_25bc30() -> ! {
-    todo!("0x25bc30 `non-virtual thunk to'RBX::Light::~Light()")
+    todo!("0x25bc30 non-virtual thunk toRBX::Light::~Light()")
 }
 
 // 0x25bc38 — __ZNK3RBX5Light12askSetParentEPKNS_8InstanceE
@@ -501,42 +501,42 @@ pub fn stub_25be58() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
 // was: `non-virtual thunk to'RBX::PointLight::~PointLight()
 pub fn stub_25be5c() -> ! {
-    todo!("0x25be5c `non-virtual thunk to'RBX::PointLight::~PointLight()")
+    todo!("0x25be5c non-virtual thunk toRBX::PointLight::~PointLight()")
 }
 
 // 0x25be64 — __ZThn36_N3RBX10PointLightD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
 // was: `non-virtual thunk to'RBX::PointLight::~PointLight()
 pub fn stub_25be64() -> ! {
-    todo!("0x25be64 `non-virtual thunk to'RBX::PointLight::~PointLight()")
+    todo!("0x25be64 non-virtual thunk toRBX::PointLight::~PointLight()")
 }
 
 // 0x25be6c — __ZThn92_N3RBX10PointLightD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
 // was: `non-virtual thunk to'RBX::PointLight::~PointLight()
 pub fn stub_25be6c() -> ! {
-    todo!("0x25be6c `non-virtual thunk to'RBX::PointLight::~PointLight()")
+    todo!("0x25be6c non-virtual thunk toRBX::PointLight::~PointLight()")
 }
 
 // 0x25be74 — __ZThn32_N3RBX10PointLightD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
 // was: `non-virtual thunk to'RBX::PointLight::~PointLight()
 pub fn stub_25be74() -> ! {
-    todo!("0x25be74 `non-virtual thunk to'RBX::PointLight::~PointLight()")
+    todo!("0x25be74 non-virtual thunk toRBX::PointLight::~PointLight()")
 }
 
 // 0x25be7c — __ZThn36_N3RBX10PointLightD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
 // was: `non-virtual thunk to'RBX::PointLight::~PointLight()
 pub fn stub_25be7c() -> ! {
-    todo!("0x25be7c `non-virtual thunk to'RBX::PointLight::~PointLight()")
+    todo!("0x25be7c non-virtual thunk toRBX::PointLight::~PointLight()")
 }
 
 // 0x25be84 — __ZThn92_N3RBX10PointLightD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
 // was: `non-virtual thunk to'RBX::PointLight::~PointLight()
 pub fn stub_25be84() -> ! {
-    todo!("0x25be84 `non-virtual thunk to'RBX::PointLight::~PointLight()")
+    todo!("0x25be84 non-virtual thunk toRBX::PointLight::~PointLight()")
 }
 
 // 0x25be8c — __ZN3RBX9SpotLightC2Ev
@@ -564,42 +564,42 @@ pub fn stub_25c090() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
 // was: `non-virtual thunk to'RBX::SpotLight::~SpotLight()
 pub fn stub_25c094() -> ! {
-    todo!("0x25c094 `non-virtual thunk to'RBX::SpotLight::~SpotLight()")
+    todo!("0x25c094 non-virtual thunk toRBX::SpotLight::~SpotLight()")
 }
 
 // 0x25c09c — __ZThn36_N3RBX9SpotLightD0Ev
 #[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
 // was: `non-virtual thunk to'RBX::SpotLight::~SpotLight()
 pub fn stub_25c09c() -> ! {
-    todo!("0x25c09c `non-virtual thunk to'RBX::SpotLight::~SpotLight()")
+    todo!("0x25c09c non-virtual thunk toRBX::SpotLight::~SpotLight()")
 }
 
 // 0x25c0a4 — __ZThn92_N3RBX9SpotLightD0Ev
 #[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
 // was: `non-virtual thunk to'RBX::SpotLight::~SpotLight()
 pub fn stub_25c0a4() -> ! {
-    todo!("0x25c0a4 `non-virtual thunk to'RBX::SpotLight::~SpotLight()")
+    todo!("0x25c0a4 non-virtual thunk toRBX::SpotLight::~SpotLight()")
 }
 
 // 0x25c0ac — __ZThn32_N3RBX9SpotLightD1Ev
 #[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
 // was: `non-virtual thunk to'RBX::SpotLight::~SpotLight()
 pub fn stub_25c0ac() -> ! {
-    todo!("0x25c0ac `non-virtual thunk to'RBX::SpotLight::~SpotLight()")
+    todo!("0x25c0ac non-virtual thunk toRBX::SpotLight::~SpotLight()")
 }
 
 // 0x25c0b4 — __ZThn36_N3RBX9SpotLightD1Ev
 #[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
 // was: `non-virtual thunk to'RBX::SpotLight::~SpotLight()
 pub fn stub_25c0b4() -> ! {
-    todo!("0x25c0b4 `non-virtual thunk to'RBX::SpotLight::~SpotLight()")
+    todo!("0x25c0b4 non-virtual thunk toRBX::SpotLight::~SpotLight()")
 }
 
 // 0x25c0bc — __ZThn92_N3RBX9SpotLightD1Ev
 #[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
 // was: `non-virtual thunk to'RBX::SpotLight::~SpotLight()
 pub fn stub_25c0bc() -> ! {
-    todo!("0x25c0bc `non-virtual thunk to'RBX::SpotLight::~SpotLight()")
+    todo!("0x25c0bc non-virtual thunk toRBX::SpotLight::~SpotLight()")
 }
 
 // 0x25c0c4 — __ZNK3RBX5Light10getEnabledEv

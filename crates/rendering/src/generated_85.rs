@@ -101,7 +101,7 @@ pub fn stub_e433bc() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::TextAreaOverlayElement::~TextAreaOverlayElement()")]
 // was: `non-virtual thunk to'Ogre::TextAreaOverlayElement::~TextAreaOverlayElement()
 pub fn stub_e433c8() -> ! {
-    todo!("0xe433c8 `non-virtual thunk to'Ogre::TextAreaOverlayElement::~TextAreaOverlayElement()")
+    todo!("0xe433c8 non-virtual thunk toOgre::TextAreaOverlayElement::~TextAreaOverlayElement()")
 }
 
 // 0xe4345c — __ZN4Ogre22TextAreaOverlayElementD2Ev
@@ -115,7 +115,7 @@ pub fn stub_e4345c() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::TextAreaOverlayElement::~TextAreaOverlayElement()")]
 // was: `non-virtual thunk to'Ogre::TextAreaOverlayElement::~TextAreaOverlayElement()
 pub fn stub_e43594() -> ! {
-    todo!("0xe43594 `non-virtual thunk to'Ogre::TextAreaOverlayElement::~TextAreaOverlayElement()")
+    todo!("0xe43594 non-virtual thunk toOgre::TextAreaOverlayElement::~TextAreaOverlayElement()")
 }
 
 // 0xe435a0 — __ZNK4Ogre22TextAreaOverlayElement11getTypeNameEv
@@ -136,7 +136,7 @@ pub fn stub_e435ac() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::TextAreaOverlayElement::getMaterial(void)const")]
 // was: `non-virtual thunk to'Ogre::TextAreaOverlayElement::getMaterial(void)const
 pub fn stub_e435ec() -> ! {
-    todo!("0xe435ec `non-virtual thunk to'Ogre::TextAreaOverlayElement::getMaterial(void)const")
+    todo!("0xe435ec non-virtual thunk toOgre::TextAreaOverlayElement::getMaterial(void)const")
 }
 
 // 0xe4362c — __ZN4Ogre22TextAreaOverlayElement18getRenderOperationERNS_15RenderOperationE
@@ -150,7 +150,7 @@ pub fn stub_e4362c() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::TextAreaOverlayElement::getRenderOperation(Ogre::RenderOperation &)")]
 // was: `non-virtual thunk to'Ogre::TextAreaOverlayElement::getRenderOperation(Ogre::RenderOperation &)
 pub fn stub_e4364c() -> ! {
-    todo!("0xe4364c `non-virtual thunk to'Ogre::TextAreaOverlayElement::getRenderOperation(Ogre::RenderOperation &)")
+    todo!("0xe4364c non-virtual thunk toOgre::TextAreaOverlayElement::getRenderOperation(Ogre::RenderOperation &)")
 }
 
 // 0xe4366c — __ZN4Ogre22TextAreaOverlayElement15setMaterialNameERKSs

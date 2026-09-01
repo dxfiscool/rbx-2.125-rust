@@ -190,7 +190,7 @@ pub fn stub_0x7cb56c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_8HumanoidENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 pub fn stub_0x7cb64c() -> ! {
-    todo!("0x7cb64c `non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0x7cb64c non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 // 0x7cb654 — __ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -843,4 +843,3 @@ pub fn stub_0x808a84() -> ! {
 pub fn stub_0x808a8c() -> ! {
     todo!("0x808a8c bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::TestService,int>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::TestService>>,boost::_bi::value<int>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::TestService,int>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::TestService>>,boost::_bi::value<int>>>,boost::detail::function::function_buffer &)const")
 }
-

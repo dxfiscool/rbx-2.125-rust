@@ -622,7 +622,7 @@ pub fn stub_0x5cd060() -> ! {
 #[doc(alias = "virtual thunk toRBX::ModelInstance::getLocation(void)")]
 // was: `virtual thunk to'RBX::ModelInstance::getLocation(void)
 pub fn stub_0x5cd1f4() -> ! {
-    todo!("0x5cd1f4 `virtual thunk to'RBX::ModelInstance::getLocation(void)")
+    todo!("0x5cd1f4 virtual thunk toRBX::ModelInstance::getLocation(void)")
 }
 
 // 0x5cd254 — __ZNK3RBX13ModelInstance19shouldRender3dAdornEv
@@ -1478,4 +1478,3 @@ pub fn stub_0x5db3a8() -> ! {
 pub fn stub_0x5db564() -> ! {
     todo!("0x5db564 non-virtual thunk toRBX::PartInstance::onSleepingChanged(bool)")
 }
-

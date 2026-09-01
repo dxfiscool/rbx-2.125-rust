@@ -254,7 +254,7 @@ pub fn stub_b5e218() -> ! {
 // 0xb5eb30 — __ZThn488_N3RBX7Network10Replicator9StreamJob23coarsePrimitiveMovementEPNS_9PrimitiveERKNS_11SpatialHashIS3_NS_7ContactENS_14ContactManagerELi4EE22CoarseMovementCallback10UpdateInfoE
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::StreamJob::coarsePrimitiveMovement(RBX::Primitive *,RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::CoarseMovementCallback::UpdateInfo const&)")]
 pub fn stub_b5eb30() -> ! {
-    todo!("0xb5eb30 `non-virtual thunk to'RBX::Network::Replicator::StreamJob::coarsePrimitiveMovement(RBX::Primitive *,RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::CoarseMovementCallback::UpdateInfo const&)")
+    todo!("0xb5eb30 non-virtual thunk toRBX::Network::Replicator::StreamJob::coarsePrimitiveMovement(RBX::Primitive *,RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::CoarseMovementCallback::UpdateInfo const&)")
 }
 
 // 0xb5ed30 — __ZNSt5dequeIPN3RBX7Network10Replicator9StreamJob14StreamDataItemESaIS5_EE5eraseESt15_Deque_iteratorIS5_RS5_PS5_E
@@ -303,7 +303,7 @@ pub fn stub_b5fed4() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator::StreamJob,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
 pub fn stub_b5fef0() -> ! {
-    todo!("0xb5fef0 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator::StreamJob,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+    todo!("0xb5fef0 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator::StreamJob,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
 }
 
 // 0xb60388 — __ZNSt5dequeIPN3RBX7Network10Replicator9StreamJob14StreamDataItemESaIS5_EE17_M_reallocate_mapEmb
@@ -352,7 +352,7 @@ pub fn stub_b610c4() -> ! {
 // type: void __fastcall(int, int *, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator::StreamJob,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_b611e0() -> ! {
-    todo!("0xb611e0 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator::StreamJob,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+    todo!("0xb611e0 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator::StreamJob,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0xb6144c — __ZNK5boost4_mfi3mf1IvN3RBX7Network10Replicator9StreamJobENS_10shared_ptrINS2_8InstanceEEEEclEPS5_S8_
@@ -387,7 +387,7 @@ pub fn stub_b61da4() -> ! {
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf2<bool,RBX::Network::Replicator::StreamJob,G3D::Vector3 const&,bool>,boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>,boost::_bi::value<bool>>>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)")]
 pub fn stub_b61dd0() -> ! {
-    todo!("0xb61dd0 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf2<bool,RBX::Network::Replicator::StreamJob,G3D::Vector3 const&,bool>,boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>,boost::_bi::value<bool>>>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)")
+    todo!("0xb61dd0 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf2<bool,RBX::Network::Replicator::StreamJob,G3D::Vector3 const&,bool>,boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>,boost::_bi::value<bool>>>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)")
 }
 
 // 0xb61ff0 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE11erase_nodesEPNS1_8ptr_nodeISD_EESN_
@@ -478,7 +478,7 @@ pub fn stub_b63b80() -> ! {
 // type: bool __fastcall(int, int)
 #[doc(alias = "anonymous namespace::compRegionDistance(boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::StreamRegion::Id const,RBX::Network::RegionInfo>>>,boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::StreamRegion::Id const,RBX::Network::RegionInfo>>>)")]
 pub fn stub_b647d8() -> ! {
-    todo!("0xb647d8 `anonymous namespace'::compRegionDistance(boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::StreamRegion::Id const,RBX::Network::RegionInfo>>>,boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::StreamRegion::Id const,RBX::Network::RegionInfo>>>)")
+    todo!("0xb647d8 anonymous namespace::compRegionDistance(boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::StreamRegion::Id const,RBX::Network::RegionInfo>>>,boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::StreamRegion::Id const,RBX::Network::RegionInfo>>>)")
 }
 
 // 0xb647e8 — __ZN3RBX7Network16ClientReplicator5GCJob8gcRegionERKNS_12StreamRegion2IdEPNS2_17RegionRemovalItemE
@@ -505,7 +505,7 @@ pub fn stub_b64cb0() -> ! {
 // 0xb6503c — __ZThn488_N3RBX7Network16ClientReplicator5GCJob23coarsePrimitiveMovementEPNS_9PrimitiveERKNS_11SpatialHashIS3_NS_7ContactENS_14ContactManagerELi4EE22CoarseMovementCallback10UpdateInfoE
 #[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::GCJob::coarsePrimitiveMovement(RBX::Primitive *,RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::CoarseMovementCallback::UpdateInfo const&)")]
 pub fn stub_b6503c() -> ! {
-    todo!("0xb6503c `non-virtual thunk to'RBX::Network::ClientReplicator::GCJob::coarsePrimitiveMovement(RBX::Primitive *,RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::CoarseMovementCallback::UpdateInfo const&)")
+    todo!("0xb6503c non-virtual thunk toRBX::Network::ClientReplicator::GCJob::coarsePrimitiveMovement(RBX::Primitive *,RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::CoarseMovementCallback::UpdateInfo const&)")
 }
 
 // 0xb6504c — __ZN3RBX7Network16ClientReplicator5GCJob14gcPartInstanceEPNS_12PartInstanceEPNS2_17RegionRemovalItemE

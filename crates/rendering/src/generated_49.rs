@@ -243,21 +243,21 @@ pub fn stub_d8fb18() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
 // was: `non-virtual thunk to'Ogre::RibbonTrail::~RibbonTrail()
 pub fn stub_d8fb24() -> ! {
-    todo!("0xd8fb24 `non-virtual thunk to'Ogre::RibbonTrail::~RibbonTrail()")
+    todo!("0xd8fb24 non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")
 }
 
 // 0xd8fbb8 — __ZThn188_N4Ogre11RibbonTrailD0Ev
 #[doc(alias = "non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
 // was: `non-virtual thunk to'Ogre::RibbonTrail::~RibbonTrail()
 pub fn stub_d8fbb8() -> ! {
-    todo!("0xd8fbb8 `non-virtual thunk to'Ogre::RibbonTrail::~RibbonTrail()")
+    todo!("0xd8fbb8 non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")
 }
 
 // 0xd8fc4c — __ZThn376_N4Ogre11RibbonTrailD0Ev
 #[doc(alias = "non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
 // was: `non-virtual thunk to'Ogre::RibbonTrail::~RibbonTrail()
 pub fn stub_d8fc4c() -> ! {
-    todo!("0xd8fc4c `non-virtual thunk to'Ogre::RibbonTrail::~RibbonTrail()")
+    todo!("0xd8fc4c non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")
 }
 
 // 0xd8fce0 — __ZN4Ogre11RibbonTrailD2Ev
@@ -271,21 +271,21 @@ pub fn stub_d8fce0() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
 // was: `non-virtual thunk to'Ogre::RibbonTrail::~RibbonTrail()
 pub fn stub_d9003c() -> ! {
-    todo!("0xd9003c `non-virtual thunk to'Ogre::RibbonTrail::~RibbonTrail()")
+    todo!("0xd9003c non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")
 }
 
 // 0xd90048 — __ZThn188_N4Ogre11RibbonTrailD1Ev
 #[doc(alias = "non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
 // was: `non-virtual thunk to'Ogre::RibbonTrail::~RibbonTrail()
 pub fn stub_d90048() -> ! {
-    todo!("0xd90048 `non-virtual thunk to'Ogre::RibbonTrail::~RibbonTrail()")
+    todo!("0xd90048 non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")
 }
 
 // 0xd90054 — __ZThn376_N4Ogre11RibbonTrailD1Ev
 #[doc(alias = "non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
 // was: `non-virtual thunk to'Ogre::RibbonTrail::~RibbonTrail()
 pub fn stub_d90054() -> ! {
-    todo!("0xd90054 `non-virtual thunk to'Ogre::RibbonTrail::~RibbonTrail()")
+    todo!("0xd90054 non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")
 }
 
 // 0xd90064 — __ZN4Ogre11RibbonTrail7addNodeEPNS_4NodeE
@@ -432,7 +432,7 @@ pub fn stub_d91f48() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RibbonTrail::nodeUpdated(Ogre::Node const*)")]
 // was: `non-virtual thunk to'Ogre::RibbonTrail::nodeUpdated(Ogre::Node const*)
 pub fn stub_d91f6c() -> ! {
-    todo!("0xd91f6c `non-virtual thunk to'Ogre::RibbonTrail::nodeUpdated(Ogre::Node const*)")
+    todo!("0xd91f6c non-virtual thunk toOgre::RibbonTrail::nodeUpdated(Ogre::Node const*)")
 }
 
 // 0xd91fa8 — __ZN4Ogre11RibbonTrail13nodeDestroyedEPKNS_4NodeE
@@ -446,7 +446,7 @@ pub fn stub_d91fa8() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RibbonTrail::nodeDestroyed(Ogre::Node const*)")]
 // was: `non-virtual thunk to'Ogre::RibbonTrail::nodeDestroyed(Ogre::Node const*)
 pub fn stub_d91fb8() -> ! {
-    todo!("0xd91fb8 `non-virtual thunk to'Ogre::RibbonTrail::nodeDestroyed(Ogre::Node const*)")
+    todo!("0xd91fb8 non-virtual thunk toOgre::RibbonTrail::nodeDestroyed(Ogre::Node const*)")
 }
 
 // 0xd91fd8 — __ZN4Ogre11RibbonTrail11updateTrailEmPKNS_4NodeE
@@ -509,28 +509,28 @@ pub fn stub_d92960() -> ! {
 #[doc(alias = "Ogre::anonymous namespace::TimeControllerValue::~TimeControllerValue()")]
 // was: Ogre::`anonymous namespace'::TimeControllerValue::~TimeControllerValue()
 pub fn stub_d92974() -> ! {
-    todo!("0xd92974 Ogre::`anonymous namespace'::TimeControllerValue::~TimeControllerValue()")
+    todo!("0xd92974 Ogre::anonymous namespace::TimeControllerValue::~TimeControllerValue()")
 }
 
 // 0xd92978 — __ZN4Ogre12_GLOBAL__N_119TimeControllerValueD0Ev
 #[doc(alias = "Ogre::anonymous namespace::TimeControllerValue::~TimeControllerValue()")]
 // was: Ogre::`anonymous namespace'::TimeControllerValue::~TimeControllerValue()
 pub fn stub_d92978() -> ! {
-    todo!("0xd92978 Ogre::`anonymous namespace'::TimeControllerValue::~TimeControllerValue()")
+    todo!("0xd92978 Ogre::anonymous namespace::TimeControllerValue::~TimeControllerValue()")
 }
 
 // 0xd92a04 — __ZNK4Ogre12_GLOBAL__N_119TimeControllerValue8getValueEv
 #[doc(alias = "Ogre::anonymous namespace::TimeControllerValue::getValue(void)const")]
 // was: Ogre::`anonymous namespace'::TimeControllerValue::getValue(void)const
 pub fn stub_d92a04() -> ! {
-    todo!("0xd92a04 Ogre::`anonymous namespace'::TimeControllerValue::getValue(void)const")
+    todo!("0xd92a04 Ogre::anonymous namespace::TimeControllerValue::getValue(void)const")
 }
 
 // 0xd92a08 — __ZN4Ogre12_GLOBAL__N_119TimeControllerValue8setValueEf
 #[doc(alias = "Ogre::anonymous namespace::TimeControllerValue::setValue(float)")]
 // was: Ogre::`anonymous namespace'::TimeControllerValue::setValue(float)
 pub fn stub_d92a08() -> ! {
-    todo!("0xd92a08 Ogre::`anonymous namespace'::TimeControllerValue::setValue(float)")
+    todo!("0xd92a08 Ogre::anonymous namespace::TimeControllerValue::setValue(float)")
 }
 
 // 0xd92a18 — __ZN4Ogre9SharedPtrINS_15ControllerValueIfEEEaSERKS3_

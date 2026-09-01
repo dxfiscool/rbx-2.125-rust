@@ -41403,7 +41403,7 @@ pub fn stub_0x5aad08() -> ! {
 // 0x5aade8 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 pub fn stub_0x5aade8() -> ! {
-    todo!("0x5aade8 `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0x5aade8 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 // 0x5aadf0 — __ZNK3RBX10Reflection14PropDescriptorINS_13JointInstanceEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv

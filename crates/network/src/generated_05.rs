@@ -252,14 +252,14 @@ pub fn stub_b0ceb0() -> ! {
 // type: int __fastcall(RBX::Network::Replicator *this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::getClassName(void)const")]
 pub fn stub_b0cec0() -> ! {
-    todo!("0xb0cec0 `non-virtual thunk to'RBX::Network::Replicator::getClassName(void)const")
+    todo!("0xb0cec0 non-virtual thunk toRBX::Network::Replicator::getClassName(void)const")
 }
 
 // 0xb0cef0 — __ZThn1180_NK3RBX7Network10Replicator20UsesReliabilityLayerEv
 // type: int __fastcall(RBX::Network::Replicator *this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::UsesReliabilityLayer(void)const")]
 pub fn stub_b0cef0() -> ! {
-    todo!("0xb0cef0 `non-virtual thunk to'RBX::Network::Replicator::UsesReliabilityLayer(void)const")
+    todo!("0xb0cef0 non-virtual thunk toRBX::Network::Replicator::UsesReliabilityLayer(void)const")
 }
 
 // 0xb0cf08 — __ZN3RBX7Network10Replicator11SendDataJobD1Ev
@@ -550,7 +550,7 @@ pub fn stub_b1bde4() -> ! {
     alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>>,2,void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::call(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)"
 )]
 pub fn stub_b1be0c() -> ! {
-    todo!("0xb1be0c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>>,2,void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::call(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)")
+    todo!("0xb1be0c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>>,2,void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::call(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)")
 }
 
 // 0xb1be34 — __ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEENS_3argILi1EEENSC_ILi2EEEEclIPFvS7_SA_NS4_8Instance18CombinedSignalTypeEPKNSH_19ICombinedSignalDataEENS0_5list2IRSI_RSL_EEEEvNS0_4typeIvEERT_RT0_i

@@ -220,7 +220,7 @@ pub fn stub_adcff8() -> ! {
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_add110() -> ! {
-    todo!("0xadd110 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
+    todo!("0xadd110 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0xadd37c — __ZNK5boost4_mfi3mf1IvN3RBX7Network28InterpolatingPhysicsReceiverENS_10shared_ptrIS4_EEEclEPS4_S6_
@@ -493,28 +493,28 @@ pub fn stub_ae2a58() -> ! {
 // type: void __fastcall(struct _Unwind_Exception *this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::~Replicator()")]
 pub fn stub_ae2a64() -> ! {
-    todo!("0xae2a64 `non-virtual thunk to'RBX::Network::Replicator::~Replicator()")
+    todo!("0xae2a64 non-virtual thunk toRBX::Network::Replicator::~Replicator()")
 }
 
 // 0xae2b08 — __ZThn36_N3RBX7Network10ReplicatorD0Ev
 // type: void __fastcall(RBX::Network::Replicator *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::~Replicator()")]
 pub fn stub_ae2b08() -> ! {
-    todo!("0xae2b08 `non-virtual thunk to'RBX::Network::Replicator::~Replicator()")
+    todo!("0xae2b08 non-virtual thunk toRBX::Network::Replicator::~Replicator()")
 }
 
 // 0xae2bac — __ZThn1180_N3RBX7Network10ReplicatorD0Ev
 // type: void __fastcall(RBX::Network::Replicator *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::~Replicator()")]
 pub fn stub_ae2bac() -> ! {
-    todo!("0xae2bac `non-virtual thunk to'RBX::Network::Replicator::~Replicator()")
+    todo!("0xae2bac non-virtual thunk toRBX::Network::Replicator::~Replicator()")
 }
 
 // 0xae2c50 — __ZThn1192_N3RBX7Network10ReplicatorD0Ev
 // type: void __fastcall(RBX::Network::Replicator *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::~Replicator()")]
 pub fn stub_ae2c50() -> ! {
-    todo!("0xae2c50 `non-virtual thunk to'RBX::Network::Replicator::~Replicator()")
+    todo!("0xae2c50 non-virtual thunk toRBX::Network::Replicator::~Replicator()")
 }
 
 // 0xae2cf4 — __ZN3RBX7Network10ReplicatorD2Ev
@@ -528,28 +528,28 @@ pub fn stub_ae2cf4() -> ! {
 // type: void __fastcall(struct _Unwind_Exception *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::~Replicator()")]
 pub fn stub_ae3aa8() -> ! {
-    todo!("0xae3aa8 `non-virtual thunk to'RBX::Network::Replicator::~Replicator()")
+    todo!("0xae3aa8 non-virtual thunk toRBX::Network::Replicator::~Replicator()")
 }
 
 // 0xae3ab4 — __ZThn36_N3RBX7Network10ReplicatorD1Ev
 // type: void __fastcall(RBX::Network::Replicator *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::~Replicator()")]
 pub fn stub_ae3ab4() -> ! {
-    todo!("0xae3ab4 `non-virtual thunk to'RBX::Network::Replicator::~Replicator()")
+    todo!("0xae3ab4 non-virtual thunk toRBX::Network::Replicator::~Replicator()")
 }
 
 // 0xae3ac0 — __ZThn1180_N3RBX7Network10ReplicatorD1Ev
 // type: void __fastcall(RBX::Network::Replicator *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::~Replicator()")]
 pub fn stub_ae3ac0() -> ! {
-    todo!("0xae3ac0 `non-virtual thunk to'RBX::Network::Replicator::~Replicator()")
+    todo!("0xae3ac0 non-virtual thunk toRBX::Network::Replicator::~Replicator()")
 }
 
 // 0xae3ad0 — __ZThn1192_N3RBX7Network10ReplicatorD1Ev
 // type: void __fastcall(RBX::Network::Replicator *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::~Replicator()")]
 pub fn stub_ae3ad0() -> ! {
-    todo!("0xae3ad0 `non-virtual thunk to'RBX::Network::Replicator::~Replicator()")
+    todo!("0xae3ad0 non-virtual thunk toRBX::Network::Replicator::~Replicator()")
 }
 
 // 0xae3ae0 — __ZN3RBX7Network10Replicator14isTopContainerEPKNS_8InstanceE
@@ -787,7 +787,7 @@ pub fn stub_af7c18() -> ! {
 // type: unsigned int __fastcall(int, int)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)")]
 pub fn stub_af7ce0() -> ! {
-    todo!("0xaf7ce0 `non-virtual thunk to'RBX::Network::Replicator::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)")
+    todo!("0xaf7ce0 non-virtual thunk toRBX::Network::Replicator::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)")
 }
 
 // 0xaf7cf4 — __ZNK3RBX7Network10Replicator18isSerializePendingEPKNS_8InstanceE
@@ -920,7 +920,7 @@ pub fn stub_b04b48() -> ! {
 // type: void __fastcall(RBX::Network::Replicator *this, const std::string *, std::string *)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::getMetric(std::string const&)const")]
 pub fn stub_b04f70() -> ! {
-    todo!("0xb04f70 `non-virtual thunk to'RBX::Network::Replicator::getMetric(std::string const&)const")
+    todo!("0xb04f70 non-virtual thunk toRBX::Network::Replicator::getMetric(std::string const&)const")
 }
 
 // 0xb04f80 — __ZNK3RBX7Network10Replicator14getMetricValueERKSs
@@ -934,7 +934,7 @@ pub fn stub_b04f80() -> ! {
 // type: double __fastcall(RBX::Network::Replicator *this, const std::string *)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::getMetricValue(std::string const&)const")]
 pub fn stub_b05000() -> ! {
-    todo!("0xb05000 `non-virtual thunk to'RBX::Network::Replicator::getMetricValue(std::string const&)const")
+    todo!("0xb05000 non-virtual thunk toRBX::Network::Replicator::getMetricValue(std::string const&)const")
 }
 
 // 0xb05080 — __ZN3RBX10Reflection9EventDescINS_7Network10ReplicatorEFvSsbEN3rbx6signalIS4_EEMS3_S7_ED1Ev

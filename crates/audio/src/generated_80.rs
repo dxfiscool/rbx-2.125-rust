@@ -405,25 +405,25 @@ pub fn stub_8735ec() -> ! {
 // 0x8799e0 — __GLOBAL__I_a_436
 #[doc(alias = "_global constructor keyed to__a_436")]
 pub fn stub_8799e0() -> ! {
-    todo!("0x8799e0 `global constructor keyed to'_a_436")
+    todo!("0x8799e0 global constructor keyed to_a_436")
 }
 
 // 0x87acd4 — __GLOBAL__I_a_437
 #[doc(alias = "_global constructor keyed to__a_437")]
 pub fn stub_87acd4() -> ! {
-    todo!("0x87acd4 `global constructor keyed to'_a_437")
+    todo!("0x87acd4 global constructor keyed to_a_437")
 }
 
 // 0x88118c — __GLOBAL__I_a_438
 #[doc(alias = "_global constructor keyed to__a_438")]
 pub fn stub_88118c() -> ! {
-    todo!("0x88118c `global constructor keyed to'_a_438")
+    todo!("0x88118c global constructor keyed to_a_438")
 }
 
 // 0x884600 — __GLOBAL__I_a_439
 #[doc(alias = "_global constructor keyed to__a_439")]
 pub fn stub_884600() -> ! {
-    todo!("0x884600 `global constructor keyed to'_a_439")
+    todo!("0x884600 global constructor keyed to_a_439")
 }
 
 // 0x8860f4 — __Z26initPluginManagerSingletonv

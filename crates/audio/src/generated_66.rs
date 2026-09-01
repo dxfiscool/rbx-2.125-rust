@@ -103,7 +103,7 @@ pub fn stub_663ad0() -> ! {
 // 0x664218 — __GLOBAL__I_a_268
 #[doc(alias = "global constructor keyed to_a_268")]
 pub fn stub_664218() -> ! {
-    todo!("0x664218 `global constructor keyed to'_a_268")
+    todo!("0x664218 global constructor keyed to_a_268")
 }
 
 // 0x665210 — __ZNK3RBX14FactoryProductINS_5TeamsENS_8InstanceELZNS_6sTeamsEES2_E12getClassNameEv
@@ -157,7 +157,7 @@ pub fn stub_665418() -> ! {
 // 0x665958 — __GLOBAL__I_a_269
 #[doc(alias = "global constructor keyed to_a_269")]
 pub fn stub_665958() -> ! {
-    todo!("0x665958 `global constructor keyed to'_a_269")
+    todo!("0x665958 global constructor keyed to_a_269")
 }
 
 // 0x668cf0 — __ZNK3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE12getClassNameEv
@@ -364,7 +364,7 @@ pub fn stub_66c0f4() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed to_a_270")]
 pub fn stub_672440() -> ! {
-    todo!("0x672440 `global constructor keyed to'_a_270")
+    todo!("0x672440 global constructor keyed to_a_270")
 }
 
 // 0x673da8 — __ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE12getClassNameEv
@@ -523,7 +523,7 @@ pub fn stub_677af0() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed to_a_271")]
 pub fn stub_677b94() -> ! {
-    todo!("0x677b94 `global constructor keyed to'_a_271")
+    todo!("0x677b94 global constructor keyed to_a_271")
 }
 
 // 0x679360 — __ZNK3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE12getClassNameEv

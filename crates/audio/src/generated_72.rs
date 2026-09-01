@@ -455,7 +455,7 @@ pub fn stub_6c29fc() -> ! {
 // 0x6c2cc0 — __GLOBAL__I_a_282
 #[doc(alias = "global constructor keyed to_a_282")]
 pub fn stub_6c2cc0() -> ! {
-    todo!("0x6c2cc0 `global constructor keyed to'_a_282")
+    todo!("0x6c2cc0 global constructor keyed to_a_282")
 }
 
 // 0x6c4978 — __ZN3RBX10Reflection13BoundFuncDescINS_11VirtualUserEFvvELi0EED1Ev
@@ -595,7 +595,7 @@ pub fn stub_6c60c4() -> ! {
 // 0x6c60cc — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX7UIEventEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_11VirtualUserES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::VirtualUser,RBX::UIEvent const&>,boost::_bi::list2<boost::_bi::value<RBX::VirtualUser*>,boost::arg<1>>>,1,void ()(RBX::UIEvent const&)>::call(RBX::UIEvent const&)")]
 pub fn stub_6c60cc() -> ! {
-    todo!("0x6c60cc `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::VirtualUser,RBX::UIEvent const&>,boost::_bi::list2<boost::_bi::value<RBX::VirtualUser*>,boost::arg<1>>>,1,void ()(RBX::UIEvent const&)>::call(RBX::UIEvent const&)")
+    todo!("0x6c60cc non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::VirtualUser,RBX::UIEvent const&>,boost::_bi::list2<boost::_bi::value<RBX::VirtualUser*>,boost::arg<1>>>,1,void ()(RBX::UIEvent const&)>::call(RBX::UIEvent const&)")
 }
 
 // 0x6c60d4 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX11VirtualUserERKNS4_7UIEventEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_

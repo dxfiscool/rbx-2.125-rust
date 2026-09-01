@@ -158,7 +158,7 @@ pub fn stub_4f6e5c() -> ! {
 // type: void
 #[doc(alias = "global constructor keyed to_a_197")]
 pub fn stub_4f7894() -> ! {
-    todo!("0x4f7894 `global constructor keyed to'_a_197")
+    todo!("0x4f7894 global constructor keyed to_a_197")
 }
 
 // 0x4f8824 — __ZNK3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E12getClassNameEv
@@ -270,7 +270,7 @@ pub fn stub_4f8c44() -> ! {
 // type: void
 #[doc(alias = "global constructor keyed to_a_198")]
 pub fn stub_4f8e28() -> ! {
-    todo!("0x4f8e28 `global constructor keyed to'_a_198")
+    todo!("0x4f8e28 global constructor keyed to_a_198")
 }
 
 // 0x4f9d0c — __ZN3RBX10Reflection9DescribedINS_5FrameELZNS_6sFrameEENS_14FactoryProductIS2_NS_9GuiObjectELZNS_6sFrameEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -319,7 +319,7 @@ pub fn stub_4f9e64() -> ! {
 // type: void
 #[doc(alias = "global constructor keyed to_a_199")]
 pub fn stub_4fac70() -> ! {
-    todo!("0x4fac70 `global constructor keyed to'_a_199")
+    todo!("0x4fac70 global constructor keyed to_a_199")
 }
 
 // 0x4fc998 — __ZN3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEE9singletonEv
@@ -368,7 +368,7 @@ pub fn stub_4ff2a4() -> ! {
 // type: void
 #[doc(alias = "global constructor keyed to_a_200")]
 pub fn stub_500254() -> ! {
-    todo!("0x500254 `global constructor keyed to'_a_200")
+    todo!("0x500254 global constructor keyed to_a_200")
 }
 
 // 0x501608 — __ZN3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEEC2Ev
@@ -487,7 +487,7 @@ pub fn stub_502484() -> ! {
 // type: void
 #[doc(alias = "global constructor keyed to_a_201")]
 pub fn stub_504a0c() -> ! {
-    todo!("0x504a0c `global constructor keyed to'_a_201")
+    todo!("0x504a0c global constructor keyed to_a_201")
 }
 
 // 0x50603c — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEE12getClassNameEv
@@ -557,7 +557,7 @@ pub fn stub_506f00() -> ! {
 // type: void
 #[doc(alias = "global constructor keyed to_a_202")]
 pub fn stub_507150() -> ! {
-    todo!("0x507150 `global constructor keyed to'_a_202")
+    todo!("0x507150 global constructor keyed to_a_202")
 }
 
 // 0x507eac — __Z21initAdvancedSingletonv

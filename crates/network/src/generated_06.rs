@@ -633,28 +633,28 @@ pub fn stub_b2d590() -> ! {
 // type: void __fastcall(RBX::Network::IdSerializer *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::IdSerializer::~IdSerializer()")]
 pub fn stub_b2d630() -> ! {
-    todo!("0xb2d630 `non-virtual thunk to'RBX::Network::IdSerializer::~IdSerializer()")
+    todo!("0xb2d630 non-virtual thunk toRBX::Network::IdSerializer::~IdSerializer()")
 }
 
 // 0xb2d63c — __ZThn32_N3RBX7Network12IdSerializerD0Ev
 // type: void __fastcall(RBX::Network::IdSerializer *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::IdSerializer::~IdSerializer()")]
 pub fn stub_b2d63c() -> ! {
-    todo!("0xb2d63c `non-virtual thunk to'RBX::Network::IdSerializer::~IdSerializer()")
+    todo!("0xb2d63c non-virtual thunk toRBX::Network::IdSerializer::~IdSerializer()")
 }
 
 // 0xb2d6e0 — __ZThn36_N3RBX7Network12IdSerializerD1Ev
 // type: void __fastcall(RBX::Network::IdSerializer *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::IdSerializer::~IdSerializer()")]
 pub fn stub_b2d6e0() -> ! {
-    todo!("0xb2d6e0 `non-virtual thunk to'RBX::Network::IdSerializer::~IdSerializer()")
+    todo!("0xb2d6e0 non-virtual thunk toRBX::Network::IdSerializer::~IdSerializer()")
 }
 
 // 0xb2d6ec — __ZThn36_N3RBX7Network12IdSerializerD0Ev
 // type: void __fastcall(RBX::Network::IdSerializer *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::IdSerializer::~IdSerializer()")]
 pub fn stub_b2d6ec() -> ! {
-    todo!("0xb2d6ec `non-virtual thunk to'RBX::Network::IdSerializer::~IdSerializer()")
+    todo!("0xb2d6ec non-virtual thunk toRBX::Network::IdSerializer::~IdSerializer()")
 }
 
 // 0xb2d790 — __ZNSt8_Rb_treeIN3RBX4Guid4DataESt4pairIKS2_St6vectorINS0_7Network12IdSerializer8WaitItemESaIS8_EEESt10_Select1stISB_ESt4lessIS2_ESaISB_EE8_M_eraseEPSt13_Rb_tree_nodeISB_E

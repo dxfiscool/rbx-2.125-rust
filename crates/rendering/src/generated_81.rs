@@ -17,7 +17,7 @@ pub fn stub_e27a78() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Skeleton::getAnimation(unsigned short)const")]
 // was: `non-virtual thunk to'Ogre::Skeleton::getAnimation(unsigned short)const
 pub fn stub_e27a90() -> ! {
-    todo!("0xe27a90 `non-virtual thunk to'Ogre::Skeleton::getAnimation(unsigned short)const")
+    todo!("0xe27a90 non-virtual thunk toOgre::Skeleton::getAnimation(unsigned short)const")
 }
 
 // 0xe27aa8 — __ZNK4Ogre8Skeleton7getBoneEt
@@ -339,7 +339,7 @@ pub fn stub_e2b080() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::SkeletonInstance::getNumAnimations(void)const")]
 // was: `non-virtual thunk to'Ogre::SkeletonInstance::getNumAnimations(void)const
 pub fn stub_e2b094() -> ! {
-    todo!("0xe2b094 `non-virtual thunk to'Ogre::SkeletonInstance::getNumAnimations(void)const")
+    todo!("0xe2b094 non-virtual thunk toOgre::SkeletonInstance::getNumAnimations(void)const")
 }
 
 // 0xe2b0a8 — __ZNK4Ogre16SkeletonInstance12getAnimationEt
@@ -353,7 +353,7 @@ pub fn stub_e2b0a8() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::SkeletonInstance::getAnimation(unsigned short)const")]
 // was: `non-virtual thunk to'Ogre::SkeletonInstance::getAnimation(unsigned short)const
 pub fn stub_e2b0bc() -> ! {
-    todo!("0xe2b0bc `non-virtual thunk to'Ogre::SkeletonInstance::getAnimation(unsigned short)const")
+    todo!("0xe2b0bc non-virtual thunk toOgre::SkeletonInstance::getAnimation(unsigned short)const")
 }
 
 // 0xe2b0d0 — __ZN4Ogre16SkeletonInstance15createAnimationERKSsf
@@ -367,7 +367,7 @@ pub fn stub_e2b0d0() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::SkeletonInstance::createAnimation(std::string const&,float)")]
 // was: `non-virtual thunk to'Ogre::SkeletonInstance::createAnimation(std::string const&,float)
 pub fn stub_e2b0e4() -> ! {
-    todo!("0xe2b0e4 `non-virtual thunk to'Ogre::SkeletonInstance::createAnimation(std::string const&,float)")
+    todo!("0xe2b0e4 non-virtual thunk toOgre::SkeletonInstance::createAnimation(std::string const&,float)")
 }
 
 // 0xe2b0f8 — __ZNK4Ogre16SkeletonInstance12getAnimationERKSsPPKNS_29LinkedSkeletonAnimationSourceE
@@ -395,7 +395,7 @@ pub fn stub_e2b120() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::SkeletonInstance::removeAnimation(std::string const&)")]
 // was: `non-virtual thunk to'Ogre::SkeletonInstance::removeAnimation(std::string const&)
 pub fn stub_e2b134() -> ! {
-    todo!("0xe2b134 `non-virtual thunk to'Ogre::SkeletonInstance::removeAnimation(std::string const&)")
+    todo!("0xe2b134 non-virtual thunk toOgre::SkeletonInstance::removeAnimation(std::string const&)")
 }
 
 // 0xe2b148 — __ZN4Ogre16SkeletonInstance32addLinkedSkeletonAnimationSourceERKSsf

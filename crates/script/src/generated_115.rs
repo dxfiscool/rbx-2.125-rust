@@ -552,28 +552,28 @@ pub fn stub_0x2c75a8() -> ! {
 // type: void __fastcall(RBX::LuaStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
 pub fn stub_0x2c767c() -> ! {
-    todo!("0x2c767c `non-virtual thunk to'RBX::LuaStatsItem::~LuaStatsItem()")
+    todo!("0x2c767c non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")
 }
 
 // 0x2c76bc — __ZThn32_N3RBX12LuaStatsItemD0Ev
 // type: void __fastcall(RBX::LuaStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
 pub fn stub_0x2c76bc() -> ! {
-    todo!("0x2c76bc `non-virtual thunk to'RBX::LuaStatsItem::~LuaStatsItem()")
+    todo!("0x2c76bc non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")
 }
 
 // 0x2c7794 — __ZThn36_N3RBX12LuaStatsItemD1Ev
 // type: void __fastcall(RBX::LuaStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
 pub fn stub_0x2c7794() -> ! {
-    todo!("0x2c7794 `non-virtual thunk to'RBX::LuaStatsItem::~LuaStatsItem()")
+    todo!("0x2c7794 non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")
 }
 
 // 0x2c77d4 — __ZThn36_N3RBX12LuaStatsItemD0Ev
 // type: void __fastcall(RBX::LuaStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
 pub fn stub_0x2c77d4() -> ! {
-    todo!("0x2c77d4 `non-virtual thunk to'RBX::LuaStatsItem::~LuaStatsItem()")
+    todo!("0x2c77d4 non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")
 }
 
 // 0x2c78a8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tImNS_4_mfi4cmf0ImN3RBX13ScriptContextEEENS3_5list1INS3_5valueIPS8_EEEEEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE

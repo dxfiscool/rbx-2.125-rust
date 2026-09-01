@@ -471,14 +471,14 @@ pub fn stub_b3969c() -> ! {
 // type: void __fastcall(RBX::Network::PhysicsPacketCache *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::PhysicsPacketCache::~PhysicsPacketCache()")]
 pub fn stub_b396a8() -> ! {
-    todo!("0xb396a8 `non-virtual thunk to'RBX::Network::PhysicsPacketCache::~PhysicsPacketCache()")
+    todo!("0xb396a8 non-virtual thunk toRBX::Network::PhysicsPacketCache::~PhysicsPacketCache()")
 }
 
 // 0xb3974c — __ZThn36_N3RBX7Network18PhysicsPacketCacheD0Ev
 // type: void __fastcall(RBX::Network::PhysicsPacketCache *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::PhysicsPacketCache::~PhysicsPacketCache()")]
 pub fn stub_b3974c() -> ! {
-    todo!("0xb3974c `non-virtual thunk to'RBX::Network::PhysicsPacketCache::~PhysicsPacketCache()")
+    todo!("0xb3974c non-virtual thunk toRBX::Network::PhysicsPacketCache::~PhysicsPacketCache()")
 }
 
 // 0xb397f0 — __ZN3RBX7Network18PhysicsPacketCacheD2Ev
@@ -492,14 +492,14 @@ pub fn stub_b397f0() -> ! {
 // type: void __fastcall(RBX::Network::PhysicsPacketCache *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::PhysicsPacketCache::~PhysicsPacketCache()")]
 pub fn stub_b399ec() -> ! {
-    todo!("0xb399ec `non-virtual thunk to'RBX::Network::PhysicsPacketCache::~PhysicsPacketCache()")
+    todo!("0xb399ec non-virtual thunk toRBX::Network::PhysicsPacketCache::~PhysicsPacketCache()")
 }
 
 // 0xb399f8 — __ZThn36_N3RBX7Network18PhysicsPacketCacheD1Ev
 // type: void __fastcall(RBX::Network::PhysicsPacketCache *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::PhysicsPacketCache::~PhysicsPacketCache()")]
 pub fn stub_b399f8() -> ! {
-    todo!("0xb399f8 `non-virtual thunk to'RBX::Network::PhysicsPacketCache::~PhysicsPacketCache()")
+    todo!("0xb399f8 non-virtual thunk toRBX::Network::PhysicsPacketCache::~PhysicsPacketCache()")
 }
 
 // 0xb39a04 — __ZN3RBX7Network18PhysicsPacketCache6insertEPKNS_8AssemblyE
@@ -590,14 +590,14 @@ pub fn stub_b3c778() -> ! {
 // type: void __fastcall(RBX::Network::InstancePacketCache *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::InstancePacketCache::~InstancePacketCache()")]
 pub fn stub_b3c784() -> ! {
-    todo!("0xb3c784 `non-virtual thunk to'RBX::Network::InstancePacketCache::~InstancePacketCache()")
+    todo!("0xb3c784 non-virtual thunk toRBX::Network::InstancePacketCache::~InstancePacketCache()")
 }
 
 // 0xb3c828 — __ZThn36_N3RBX7Network19InstancePacketCacheD0Ev
 // type: void __fastcall(RBX::Network::InstancePacketCache *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::InstancePacketCache::~InstancePacketCache()")]
 pub fn stub_b3c828() -> ! {
-    todo!("0xb3c828 `non-virtual thunk to'RBX::Network::InstancePacketCache::~InstancePacketCache()")
+    todo!("0xb3c828 non-virtual thunk toRBX::Network::InstancePacketCache::~InstancePacketCache()")
 }
 
 // 0xb3c8cc — __ZN3RBX7Network19InstancePacketCacheD2Ev
@@ -611,14 +611,14 @@ pub fn stub_b3c8cc() -> ! {
 // type: void __fastcall(RBX::Network::InstancePacketCache *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::InstancePacketCache::~InstancePacketCache()")]
 pub fn stub_b3caa4() -> ! {
-    todo!("0xb3caa4 `non-virtual thunk to'RBX::Network::InstancePacketCache::~InstancePacketCache()")
+    todo!("0xb3caa4 non-virtual thunk toRBX::Network::InstancePacketCache::~InstancePacketCache()")
 }
 
 // 0xb3cab0 — __ZThn36_N3RBX7Network19InstancePacketCacheD1Ev
 // type: void __fastcall(RBX::Network::InstancePacketCache *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::InstancePacketCache::~InstancePacketCache()")]
 pub fn stub_b3cab0() -> ! {
-    todo!("0xb3cab0 `non-virtual thunk to'RBX::Network::InstancePacketCache::~InstancePacketCache()")
+    todo!("0xb3cab0 non-virtual thunk toRBX::Network::InstancePacketCache::~InstancePacketCache()")
 }
 
 // 0xb3cabc — __ZN3RBX7Network19InstancePacketCache17onServiceProviderEPNS_15ServiceProviderES3_
@@ -700,7 +700,7 @@ pub fn stub_b3fa50() -> ! {
 // 0xb3fa6c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_7Network19InstancePacketCacheES7_S7_EENSB_5list3INSB_5valueIPSG_EENS3_3argILi1EEENSM_ILi2EEEEEEELi2ES8_E4callES7_S7_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::Network::InstancePacketCache*>,boost::arg<1>,boost::arg<2>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_b3fa6c() -> ! {
-    todo!("0xb3fa6c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::Network::InstancePacketCache*>,boost::arg<1>,boost::arg<2>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
+    todo!("0xb3fa6c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::Network::InstancePacketCache*>,boost::arg<1>,boost::arg<2>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0xb3fa88 — __ZN5boost3_bi5list3INS0_5valueIPN3RBX7Network19InstancePacketCacheEEENS_3argILi1EEENS8_ILi2EEEEclINS_4_mfi3mf2IvS5_NS_10shared_ptrINS3_8InstanceEEESH_EENS0_5list2IRSH_SK_EEEEvNS0_4typeIvEERT_RT0_i
@@ -742,7 +742,7 @@ pub fn stub_b40414() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
 pub fn stub_b40430() -> ! {
-    todo!("0xb40430 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+    todo!("0xb40430 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
 }
 
 // 0xb4044c — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_7Network19InstancePacketCache15CachedBitStreamES7_EENSC_5list2INSC_5valueINSB_10shared_ptrISI_EEEENSB_3argILi1EEEEEEELi1ES8_ED2Ev

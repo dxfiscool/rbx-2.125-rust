@@ -194,7 +194,7 @@ pub fn stub_cda1c0() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::ManualObject::~ManualObject()")]
 // was: `non-virtual thunk to'Ogre::ManualObject::~ManualObject()
 pub fn stub_cda1cc() -> ! {
-    todo!("0xcda1cc `non-virtual thunk to'Ogre::ManualObject::~ManualObject()")
+    todo!("0xcda1cc non-virtual thunk toOgre::ManualObject::~ManualObject()")
 }
 
 // 0xcda260 — __ZN4Ogre12ManualObjectD2Ev
@@ -208,7 +208,7 @@ pub fn stub_cda260() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::ManualObject::~ManualObject()")]
 // was: `non-virtual thunk to'Ogre::ManualObject::~ManualObject()
 pub fn stub_cda394() -> ! {
-    todo!("0xcda394 `non-virtual thunk to'Ogre::ManualObject::~ManualObject()")
+    todo!("0xcda394 non-virtual thunk toOgre::ManualObject::~ManualObject()")
 }
 
 // 0xcda3a0 — __ZN4Ogre12ManualObject5clearEv
@@ -707,4 +707,3 @@ pub fn stub_cdf884() -> ! {
 pub fn stub_cdf890() -> ! {
     todo!("0xcdf890 Ogre::Material::~Material()")
 }
-

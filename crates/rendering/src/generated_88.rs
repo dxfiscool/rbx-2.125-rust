@@ -542,28 +542,28 @@ pub fn stub_e55a90() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::WireBoundingBox::~WireBoundingBox()")]
 // was: `non-virtual thunk to'Ogre::WireBoundingBox::~WireBoundingBox()
 pub fn stub_e55b54() -> ! {
-    todo!("0xe55b54 `non-virtual thunk to'Ogre::WireBoundingBox::~WireBoundingBox()")
+    todo!("0xe55b54 non-virtual thunk toOgre::WireBoundingBox::~WireBoundingBox()")
 }
 
 // 0xe55c28 — __ZThn188_N4Ogre15WireBoundingBoxD0Ev
 #[doc(alias = "non-virtual thunk toOgre::WireBoundingBox::~WireBoundingBox()")]
 // was: `non-virtual thunk to'Ogre::WireBoundingBox::~WireBoundingBox()
 pub fn stub_e55c28() -> ! {
-    todo!("0xe55c28 `non-virtual thunk to'Ogre::WireBoundingBox::~WireBoundingBox()")
+    todo!("0xe55c28 non-virtual thunk toOgre::WireBoundingBox::~WireBoundingBox()")
 }
 
 // 0xe55cf8 — __ZThn4_N4Ogre15WireBoundingBoxD1Ev
 #[doc(alias = "non-virtual thunk toOgre::WireBoundingBox::~WireBoundingBox()")]
 // was: `non-virtual thunk to'Ogre::WireBoundingBox::~WireBoundingBox()
 pub fn stub_e55cf8() -> ! {
-    todo!("0xe55cf8 `non-virtual thunk to'Ogre::WireBoundingBox::~WireBoundingBox()")
+    todo!("0xe55cf8 non-virtual thunk toOgre::WireBoundingBox::~WireBoundingBox()")
 }
 
 // 0xe55dbc — __ZThn188_N4Ogre15WireBoundingBoxD1Ev
 #[doc(alias = "non-virtual thunk toOgre::WireBoundingBox::~WireBoundingBox()")]
 // was: `non-virtual thunk to'Ogre::WireBoundingBox::~WireBoundingBox()
 pub fn stub_e55dbc() -> ! {
-    todo!("0xe55dbc `non-virtual thunk to'Ogre::WireBoundingBox::~WireBoundingBox()")
+    todo!("0xe55dbc non-virtual thunk toOgre::WireBoundingBox::~WireBoundingBox()")
 }
 
 // 0xe55e80 — __ZN4Ogre15WireBoundingBox16setupBoundingBoxERKNS_14AxisAlignedBoxE
@@ -591,7 +591,7 @@ pub fn stub_e561b4() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::WireBoundingBox::getWorldTransforms(Ogre::Matrix4 *)const")]
 // was: `non-virtual thunk to'Ogre::WireBoundingBox::getWorldTransforms(Ogre::Matrix4 *)const
 pub fn stub_e561f8() -> ! {
-    todo!("0xe561f8 `non-virtual thunk to'Ogre::WireBoundingBox::getWorldTransforms(Ogre::Matrix4 *)const")
+    todo!("0xe561f8 non-virtual thunk toOgre::WireBoundingBox::getWorldTransforms(Ogre::Matrix4 *)const")
 }
 
 // 0xe5623c — __ZNK4Ogre15WireBoundingBox19getSquaredViewDepthEPKNS_6CameraE
@@ -605,7 +605,7 @@ pub fn stub_e5623c() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::WireBoundingBox::getSquaredViewDepth(Ogre::Camera const*)const")]
 // was: `non-virtual thunk to'Ogre::WireBoundingBox::getSquaredViewDepth(Ogre::Camera const*)const
 pub fn stub_e562e4() -> ! {
-    todo!("0xe562e4 `non-virtual thunk to'Ogre::WireBoundingBox::getSquaredViewDepth(Ogre::Camera const*)const")
+    todo!("0xe562e4 non-virtual thunk toOgre::WireBoundingBox::getSquaredViewDepth(Ogre::Camera const*)const")
 }
 
 // 0xe5638c — __ZNK4Ogre15WireBoundingBox17getBoundingRadiusEv

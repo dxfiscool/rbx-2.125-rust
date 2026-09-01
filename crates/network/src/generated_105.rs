@@ -144,7 +144,7 @@ pub fn stub_c71af0() -> ! {
 // 0xc71afc — __GLOBAL__I_a_664
 #[doc(alias = "global constructor keyed to_a_664")]
 pub fn stub_c71afc() -> ! {
-    todo!("0xc71afc `global constructor keyed to'_a_664")
+    todo!("0xc71afc global constructor keyed to_a_664")
 }
 
 // 0xc71b30 — __ZN4Ogre10CompositorC1EPNS_15ResourceManagerERKSsyS4_bPNS_20ManualResourceLoaderE
@@ -370,7 +370,7 @@ pub fn stub_c74fec() -> ! {
 // 0xc74ff8 — __GLOBAL__I_a_665
 #[doc(alias = "global constructor keyed to_a_665")]
 pub fn stub_c74ff8() -> ! {
-    todo!("0xc74ff8 `global constructor keyed to'_a_665")
+    todo!("0xc74ff8 global constructor keyed to_a_665")
 }
 
 // 0xc7502c — __ZN4Ogre15CompositorChain13getCompositorERKSs
@@ -395,7 +395,7 @@ pub fn stub_c75098() -> ! {
 // 0xc7509c — __GLOBAL__I_a_666
 #[doc(alias = "global constructor keyed to_a_666")]
 pub fn stub_c7509c() -> ! {
-    todo!("0xc7509c `global constructor keyed to'_a_666")
+    todo!("0xc7509c global constructor keyed to_a_666")
 }
 
 // 0xc750d0 — __ZN4Ogre18CompositorInstance13getCompositorEv
@@ -422,7 +422,7 @@ pub fn stub_c751e8() -> ! {
 // 0xc7542c — __GLOBAL__I_a_667
 #[doc(alias = "global constructor keyed to_a_667")]
 pub fn stub_c7542c() -> ! {
-    todo!("0xc7542c `global constructor keyed to'_a_667")
+    todo!("0xc7542c global constructor keyed to_a_667")
 }
 
 // 0xc75460 — __ZN4Ogre17CompositorManager12getSingletonEv
@@ -641,7 +641,7 @@ pub fn stub_c76924() -> ! {
 // 0xc7699c — __GLOBAL__I_a_668
 #[doc(alias = "global constructor keyed to_a_668")]
 pub fn stub_c7699c() -> ! {
-    todo!("0xc7699c `global constructor keyed to'_a_668")
+    todo!("0xc7699c global constructor keyed to_a_668")
 }
 
 // 0xc769d0 — __ZN4Ogre10ConfigFileC1Ev

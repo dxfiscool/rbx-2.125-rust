@@ -67,7 +67,7 @@ pub fn stub_c7f2cc() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Entity::backgroundLoadingComplete(Ogre::Resource *)")]
 // was: `non-virtual thunk to'Ogre::Entity::backgroundLoadingComplete(Ogre::Resource *)
 pub fn stub_c85874() -> ! {
-    todo!("0xc85874 `non-virtual thunk to'Ogre::Entity::backgroundLoadingComplete(Ogre::Resource *)")
+    todo!("0xc85874 non-virtual thunk toOgre::Entity::backgroundLoadingComplete(Ogre::Resource *)")
 }
 
 // 0xf52374 — j___ZN5boost8functionIFvPN3RBX12BillboardGuiEPNS1_5AdornEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS1_10ChatOutputES5_NS_8weak_ptrIKNS1_8InstanceEEENSE_INS1_12PartInstanceEEEEENS9_5list4INS9_5valueIPSD_EENS_3argILi2EEENSM_ISH_EENSM_ISJ_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISV_EE5valueEEE5valueEiE4typeE

@@ -343,7 +343,7 @@ pub fn stub_0x4f75a4() -> ! {
 // 0x4f7894 — __GLOBAL__I_a_197
 #[doc(alias = "global constructor keyed to_a_197")]
 pub fn stub_0x4f7894() -> ! {
-    todo!("0x4f7894 `global constructor keyed to'_a_197")
+    todo!("0x4f7894 global constructor keyed to_a_197")
 }
 
 // 0x4f7c58 — __ZN3RBX10ForceFieldC1Ev
@@ -406,7 +406,7 @@ pub fn stub_0x4f842c() -> ! {
 // type: _DWORD __fastcall(RBX::ForceField *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::ForceField::render3dAdorn(RBX::Adorn *)")]
 pub fn stub_0x4f8778() -> ! {
-    todo!("0x4f8778 `non-virtual thunk to'RBX::ForceField::render3dAdorn(RBX::Adorn *)")
+    todo!("0x4f8778 non-virtual thunk toRBX::ForceField::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x4f8780 — __ZN3RBX10ForceFieldD1Ev
@@ -440,14 +440,14 @@ pub fn stub_0x4f8834() -> ! {
 // type: void __fastcall(RBX::ForceField *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
 pub fn stub_0x4f8838() -> ! {
-    todo!("0x4f8838 `non-virtual thunk to'RBX::ForceField::~ForceField()")
+    todo!("0x4f8838 non-virtual thunk toRBX::ForceField::~ForceField()")
 }
 
 // 0x4f8840 — __ZThn32_N3RBX10ForceFieldD0Ev
 // type: void __fastcall(RBX::ForceField *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
 pub fn stub_0x4f8840() -> ! {
-    todo!("0x4f8840 `non-virtual thunk to'RBX::ForceField::~ForceField()")
+    todo!("0x4f8840 non-virtual thunk toRBX::ForceField::~ForceField()")
 }
 
 // 0x4f8848 — __ZThn32_NK3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E12getClassNameEv
@@ -460,35 +460,35 @@ pub fn stub_0x4f8848() -> ! {
 // type: void __fastcall(RBX::ForceField *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
 pub fn stub_0x4f8858() -> ! {
-    todo!("0x4f8858 `non-virtual thunk to'RBX::ForceField::~ForceField()")
+    todo!("0x4f8858 non-virtual thunk toRBX::ForceField::~ForceField()")
 }
 
 // 0x4f8860 — __ZThn36_N3RBX10ForceFieldD0Ev
 // type: void __fastcall(RBX::ForceField *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
 pub fn stub_0x4f8860() -> ! {
-    todo!("0x4f8860 `non-virtual thunk to'RBX::ForceField::~ForceField()")
+    todo!("0x4f8860 non-virtual thunk toRBX::ForceField::~ForceField()")
 }
 
 // 0x4f8868 — __ZThn92_NK3RBX10ForceField19shouldRender3dAdornEv
 // type: _DWORD __fastcall(RBX::ForceField *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ForceField::shouldRender3dAdorn(void)const")]
 pub fn stub_0x4f8868() -> ! {
-    todo!("0x4f8868 `non-virtual thunk to'RBX::ForceField::shouldRender3dAdorn(void)const")
+    todo!("0x4f8868 non-virtual thunk toRBX::ForceField::shouldRender3dAdorn(void)const")
 }
 
 // 0x4f886c — __ZThn116_N3RBX10ForceFieldD1Ev
 // type: void __fastcall(RBX::ForceField *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
 pub fn stub_0x4f886c() -> ! {
-    todo!("0x4f886c `non-virtual thunk to'RBX::ForceField::~ForceField()")
+    todo!("0x4f886c non-virtual thunk toRBX::ForceField::~ForceField()")
 }
 
 // 0x4f8874 — __ZThn116_N3RBX10ForceFieldD0Ev
 // type: void __fastcall(RBX::ForceField *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
 pub fn stub_0x4f8874() -> ! {
-    todo!("0x4f8874 `non-virtual thunk to'RBX::ForceField::~ForceField()")
+    todo!("0x4f8874 non-virtual thunk toRBX::ForceField::~ForceField()")
 }
 
 // 0x4f887c — __ZN3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E17static_getCreatorEv
@@ -580,7 +580,7 @@ pub fn stub_0x4f8ce8() -> ! {
 // 0x4f8e28 — __GLOBAL__I_a_198
 #[doc(alias = "global constructor keyed to_a_198")]
 pub fn stub_0x4f8e28() -> ! {
-    todo!("0x4f8e28 `global constructor keyed to'_a_198")
+    todo!("0x4f8e28 global constructor keyed to_a_198")
 }
 
 // 0x4f90d8 — __ZN3RBX5Frame8setStyleENS0_5StyleE
@@ -634,7 +634,7 @@ pub fn stub_0x4f956c() -> ! {
 // type: _DWORD __fastcall(RBX::Frame *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::Frame::render2d(RBX::Adorn *)")]
 pub fn stub_0x4f9978() -> ! {
-    todo!("0x4f9978 `non-virtual thunk to'RBX::Frame::render2d(RBX::Adorn *)")
+    todo!("0x4f9978 non-virtual thunk toRBX::Frame::render2d(RBX::Adorn *)")
 }
 
 // 0x4f9980 — __ZNK3RBX5Frame8getStyleEv

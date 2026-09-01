@@ -61,7 +61,7 @@ pub fn stub_35fff0() -> ! {
 // 0x360154 — __GLOBAL__I_a_133
 #[doc(alias = "global constructor keyed to_a_133")]
 pub fn stub_360154() -> ! {
-    todo!("0x360154 `global constructor keyed to'_a_133")
+    todo!("0x360154 global constructor keyed to_a_133")
 }
 
 // 0x3602a8 — __ZN3RBX10QuaternionaSERKS0_
@@ -73,7 +73,7 @@ pub fn stub_3602a8() -> ! {
 // 0x360528 — __GLOBAL__I_a_134
 #[doc(alias = "global constructor keyed to_a_134")]
 pub fn stub_360528() -> ! {
-    todo!("0x360528 `global constructor keyed to'_a_134")
+    todo!("0x360528 global constructor keyed to_a_134")
 }
 
 // 0x360560 — __ZNK3RBX4Rect13positionPointENS0_8LocationES1_
@@ -92,7 +92,7 @@ pub fn stub_360678() -> ! {
 // 0x3607f4 — __GLOBAL__I_a_135
 #[doc(alias = "global constructor keyed to_a_135")]
 pub fn stub_3607f4() -> ! {
-    todo!("0x3607f4 `global constructor keyed to'_a_135")
+    todo!("0x3607f4 global constructor keyed to_a_135")
 }
 
 // 0x36082c — __ZN3RBX10RunServiceC1Ev
@@ -141,14 +141,14 @@ pub fn stub_36128c() -> ! {
 // type: void __fastcall(RBX::RunService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 pub fn stub_361290() -> ! {
-    todo!("0x361290 `non-virtual thunk to'RBX::RunService::~RunService()")
+    todo!("0x361290 non-virtual thunk toRBX::RunService::~RunService()")
 }
 
 // 0x361298 — __ZThn36_N3RBX10RunServiceD0Ev
 // type: void __fastcall(RBX::RunService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 pub fn stub_361298() -> ! {
-    todo!("0x361298 `non-virtual thunk to'RBX::RunService::~RunService()")
+    todo!("0x361298 non-virtual thunk toRBX::RunService::~RunService()")
 }
 
 // 0x3612a0 — __ZN3RBX10RunServiceD2Ev
@@ -162,14 +162,14 @@ pub fn stub_3612a0() -> ! {
 // type: void __fastcall(RBX::RunService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 pub fn stub_3616a8() -> ! {
-    todo!("0x3616a8 `non-virtual thunk to'RBX::RunService::~RunService()")
+    todo!("0x3616a8 non-virtual thunk toRBX::RunService::~RunService()")
 }
 
 // 0x3616b0 — __ZThn36_N3RBX10RunServiceD1Ev
 // type: void __fastcall(RBX::RunService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 pub fn stub_3616b0() -> ! {
-    todo!("0x3616b0 `non-virtual thunk to'RBX::RunService::~RunService()")
+    todo!("0x3616b0 non-virtual thunk toRBX::RunService::~RunService()")
 }
 
 // 0x3616b8 — __ZN3RBX10RunService13getPhysicsJobEv
@@ -384,7 +384,7 @@ pub fn stub_369ac8() -> ! {
 // 0x36a0bc — __GLOBAL__I_a_136
 #[doc(alias = "global constructor keyed to_a_136")]
 pub fn stub_36a0bc() -> ! {
-    todo!("0x36a0bc `global constructor keyed to'_a_136")
+    todo!("0x36a0bc global constructor keyed to_a_136")
 }
 
 // 0x36a710 — __ZN3RBXL13findLocalFileERKSsPSs
@@ -481,7 +481,7 @@ pub fn stub_370860() -> ! {
 // 0x371254 — __GLOBAL__I_a_137
 #[doc(alias = "global constructor keyed to_a_137")]
 pub fn stub_371254() -> ! {
-    todo!("0x371254 `global constructor keyed to'_a_137")
+    todo!("0x371254 global constructor keyed to_a_137")
 }
 
 // 0x3729c4 — __ZL11initReverbsv
@@ -501,13 +501,13 @@ pub fn stub_37da40() -> ! {
 // 0x37ead8 — __GLOBAL__I_a_138
 #[doc(alias = "global constructor keyed to_a_138")]
 pub fn stub_37ead8() -> ! {
-    todo!("0x37ead8 `global constructor keyed to'_a_138")
+    todo!("0x37ead8 global constructor keyed to_a_138")
 }
 
 // 0x38039c — __GLOBAL__I_a_139
 #[doc(alias = "global constructor keyed to_a_139")]
 pub fn stub_38039c() -> ! {
-    todo!("0x38039c `global constructor keyed to'_a_139")
+    todo!("0x38039c global constructor keyed to_a_139")
 }
 
 // 0x380464 — __ZNK3RBX12SpanningEdge25getConstChildSpanningNodeEv
@@ -555,7 +555,7 @@ pub fn stub_3806bc() -> ! {
 // 0x3806e4 — __GLOBAL__I_a_140
 #[doc(alias = "global constructor keyed to_a_140")]
 pub fn stub_3806e4() -> ! {
-    todo!("0x3806e4 `global constructor keyed to'_a_140")
+    todo!("0x3806e4 global constructor keyed to_a_140")
 }
 
 // 0x3807ac — __ZN3RBX12SpanningNode15setEdgeToParentEPNS_12SpanningEdgeE
@@ -568,7 +568,7 @@ pub fn stub_3807ac() -> ! {
 // 0x3807b0 — __GLOBAL__I_a_141
 #[doc(alias = "global constructor keyed to_a_141")]
 pub fn stub_3807b0() -> ! {
-    todo!("0x3807b0 `global constructor keyed to'_a_141")
+    todo!("0x3807b0 global constructor keyed to_a_141")
 }
 
 // 0x380878 — __ZN3RBX12SpanningTreeC2Ev

@@ -35,7 +35,7 @@ pub fn stub_a700b8() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_527")]
 pub fn stub_a6faa0() -> ! {
-    todo!("0xa6faa0 `global constructor keyed to'_a_527")
+    todo!("0xa6faa0 global constructor keyed to_a_527")
 }
 
 // 0xa6fa3c — RakNet::RakThread::Create(void * (*)(void *),void *,int)
@@ -51,7 +51,7 @@ pub fn stub_a6fa3c() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_526")]
 pub fn stub_a6f3e8() -> ! {
-    todo!("0xa6f3e8 `global constructor keyed to'_a_526")
+    todo!("0xa6f3e8 global constructor keyed to_a_526")
 }
 
 // 0xa6f3d8 — RakStringCleanup::~RakStringCleanup()
@@ -163,7 +163,7 @@ pub fn stub_a6eaa4() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_525")]
 pub fn stub_a6e490() -> ! {
-    todo!("0xa6e490 `global constructor keyed to'_a_525")
+    todo!("0xa6e490 global constructor keyed to_a_525")
 }
 
 // 0xa6e3ac — RakSleep(unsigned int)
@@ -179,7 +179,7 @@ pub fn stub_a6e3ac() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_524")]
 pub fn stub_a6dd60() -> ! {
-    todo!("0xa6dd60 `global constructor keyed to'_a_524")
+    todo!("0xa6dd60 global constructor keyed to_a_524")
 }
 
 // 0xa6da80 — DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::SocketQueryOutput>::~ThreadsafeAllocatingQueue()

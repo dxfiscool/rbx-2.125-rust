@@ -14,35 +14,35 @@ const _: () = {
 // 0xb76a0c — __GLOBAL__I_a_568
 #[doc(alias = "global constructor keyed to_a_568")]
 pub fn stub_b76a0c() -> ! {
-    todo!("0xb76a0c `global constructor keyed to'_a_568")
+    todo!("0xb76a0c global constructor keyed to_a_568")
 }
 
 // 0xb86124 — __GLOBAL__I_a_569
 // type: void()
 #[doc(alias = "global constructor keyed to_a_569")]
 pub fn stub_b86124() -> ! {
-    todo!("0xb86124 `global constructor keyed to'_a_569")
+    todo!("0xb86124 global constructor keyed to_a_569")
 }
 
 // 0xb87024 — __ZN12_GLOBAL__N_115getMaterialNameEj
 // type: void __fastcall(_anonymous_namespace_ *this, char)
 #[doc(alias = "anonymous namespace::getMaterialName(unsigned int)")]
 pub fn stub_b87024() -> ! {
-    todo!("0xb87024 `anonymous namespace'::getMaterialName(unsigned int)")
+    todo!("0xb87024 anonymous namespace::getMaterialName(unsigned int)")
 }
 
 // 0xb8754c — __ZN12_GLOBAL__N_115getMaterialNameEjib
 // type: void __fastcall(_anonymous_namespace_ *this, char, unsigned int, int)
 #[doc(alias = "anonymous namespace::getMaterialName(unsigned int,int,bool)")]
 pub fn stub_b8754c() -> ! {
-    todo!("0xb8754c `anonymous namespace'::getMaterialName(unsigned int,int,bool)")
+    todo!("0xb8754c anonymous namespace::getMaterialName(unsigned int,int,bool)")
 }
 
 // 0xb8c808 — __ZSt13__adjust_heapIPN12_GLOBAL__N_116AccoutrementMeshEiS1_NS0_28AccoutrementMeshIdComparatorEEvT_T0_S5_T1_T2_
 // type: int __fastcall(int, int, int, int, int, int)
 #[doc(alias = "void std::__adjust_heap<anonymous namespace::AccoutrementMesh *,int,anonymous namespace::AccoutrementMesh,anonymous namespace::AccoutrementMeshIdComparator>(anonymous namespace::AccoutrementMesh *,int,int,anonymous namespace::AccoutrementMesh,anonymous namespace::AccoutrementMeshIdComparator)")]
 pub fn stub_b8c808() -> ! {
-    todo!("0xb8c808 void std::__adjust_heap<`anonymous namespace'::AccoutrementMesh *,int,`anonymous namespace'::AccoutrementMesh,`anonymous namespace'::AccoutrementMeshIdComparator>(`anonymous namespace'::AccoutrementMesh *,int,int,`anonymous namespace'::AccoutrementMesh,`anonymous namespace'::AccoutrementMeshIdComparator)")
+    todo!("0xb8c808 void std::__adjust_heap<anonymous namespace::AccoutrementMesh *,int,anonymous namespace::AccoutrementMesh,anonymous namespace::AccoutrementMeshIdComparator>(anonymous namespace::AccoutrementMesh *,int,int,anonymous namespace::AccoutrementMesh,anonymous namespace::AccoutrementMeshIdComparator)")
 }
 
 // 0xb8cc38 — __ZNSt6vectorIN3RBX22TextureCompositorLayerESaIS1_EE9push_backERKS1_
@@ -76,7 +76,7 @@ pub fn stub_b8d608() -> ! {
 // 0xb8d8a4 — __GLOBAL__I_a_570
 #[doc(alias = "global constructor keyed to_a_570")]
 pub fn stub_b8d8a4() -> ! {
-    todo!("0xb8d8a4 `global constructor keyed to'_a_570")
+    todo!("0xb8d8a4 global constructor keyed to_a_570")
 }
 
 // 0xb98660 — __ZN3RBX5AdornD2Ev
@@ -243,13 +243,13 @@ pub fn stub_b9aa74() -> ! {
 // 0xb9ac50 — __GLOBAL__I_a_571
 #[doc(alias = "global constructor keyed to_a_571")]
 pub fn stub_b9ac50() -> ! {
-    todo!("0xb9ac50 `global constructor keyed to'_a_571")
+    todo!("0xb9ac50 global constructor keyed to_a_571")
 }
 
 // 0xb9bc98 — __GLOBAL__I_a_572
 #[doc(alias = "global constructor keyed to_a_572")]
 pub fn stub_b9bc98() -> ! {
-    todo!("0xb9bc98 `global constructor keyed to'_a_572")
+    todo!("0xb9bc98 global constructor keyed to_a_572")
 }
 
 // 0xb9e4fe — sub_B9E4FE
@@ -262,25 +262,25 @@ pub fn stub_b9e4fe() -> ! {
 // 0xba3e0c — __GLOBAL__I_a_573
 #[doc(alias = "global constructor keyed to_a_573")]
 pub fn stub_ba3e0c() -> ! {
-    todo!("0xba3e0c `global constructor keyed to'_a_573")
+    todo!("0xba3e0c global constructor keyed to_a_573")
 }
 
 // 0xba7898 — __GLOBAL__I_a_574
 #[doc(alias = "global constructor keyed to_a_574")]
 pub fn stub_ba7898() -> ! {
-    todo!("0xba7898 `global constructor keyed to'_a_574")
+    todo!("0xba7898 global constructor keyed to_a_574")
 }
 
 // 0xba8790 — __GLOBAL__I_a_575
 #[doc(alias = "global constructor keyed to_a_575")]
 pub fn stub_ba8790() -> ! {
-    todo!("0xba8790 `global constructor keyed to'_a_575")
+    todo!("0xba8790 global constructor keyed to_a_575")
 }
 
 // 0xba9720 — __GLOBAL__I_a_576
 #[doc(alias = "global constructor keyed to_a_576")]
 pub fn stub_ba9720() -> ! {
-    todo!("0xba9720 `global constructor keyed to'_a_576")
+    todo!("0xba9720 global constructor keyed to_a_576")
 }
 
 // 0xbb3ff4 — __ZNK3RBX15ServiceProvider6createINS_19MeshContentProviderEEEPT_v
@@ -335,25 +335,25 @@ pub fn stub_bb5df4() -> ! {
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt)
 #[doc(alias = "global constructor keyed to_a_577")]
 pub fn stub_bb603c() -> ! {
-    todo!("0xbb603c `global constructor keyed to'_a_577")
+    todo!("0xbb603c global constructor keyed to_a_577")
 }
 
 // 0xbbb930 — __GLOBAL__I_a_578
 #[doc(alias = "global constructor keyed to_a_578")]
 pub fn stub_bbb930() -> ! {
-    todo!("0xbbb930 `global constructor keyed to'_a_578")
+    todo!("0xbbb930 global constructor keyed to_a_578")
 }
 
 // 0xbbc3a8 — __GLOBAL__I_a_579
 #[doc(alias = "global constructor keyed to_a_579")]
 pub fn stub_bbc3a8() -> ! {
-    todo!("0xbbc3a8 `global constructor keyed to'_a_579")
+    todo!("0xbbc3a8 global constructor keyed to_a_579")
 }
 
 // 0xbbdfa0 — __GLOBAL__I_a_580
 #[doc(alias = "global constructor keyed to_a_580")]
 pub fn stub_bbdfa0() -> ! {
-    todo!("0xbbdfa0 `global constructor keyed to'_a_580")
+    todo!("0xbbdfa0 global constructor keyed to_a_580")
 }
 
 // 0xbbe678 — __ZN3RBX18RbxParticleEmitterD0Ev
@@ -381,7 +381,7 @@ pub fn stub_bbe8c4() -> ! {
 // type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this, bool)
 #[doc(alias = "non-virtual thunk toRBX::RbxParticleEmitter::onSleepingChanged(bool)")]
 pub fn stub_bbe9e8() -> ! {
-    todo!("0xbbe9e8 `non-virtual thunk to'RBX::RbxParticleEmitter::onSleepingChanged(bool)")
+    todo!("0xbbe9e8 non-virtual thunk toRBX::RbxParticleEmitter::onSleepingChanged(bool)")
 }
 
 // 0xbbe9f0 — __ZN3RBX18RbxParticleEmitter21updateCoordinateFrameEb
@@ -395,7 +395,7 @@ pub fn stub_bbe9f0() -> ! {
 // type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this, bool)
 #[doc(alias = "non-virtual thunk toRBX::RbxParticleEmitter::updateCoordinateFrame(bool)")]
 pub fn stub_bbea40() -> ! {
-    todo!("0xbbea40 `non-virtual thunk to'RBX::RbxParticleEmitter::updateCoordinateFrame(bool)")
+    todo!("0xbbea40 non-virtual thunk toRBX::RbxParticleEmitter::updateCoordinateFrame(bool)")
 }
 
 // 0xbbeab4 — __ZN3RBX18RbxParticleEmitter19onAncestorChangedExEv
@@ -416,7 +416,7 @@ pub fn stub_bbf390() -> ! {
 // type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RbxParticleEmitter::unbind(void)")]
 pub fn stub_bbf398() -> ! {
-    todo!("0xbbf398 `non-virtual thunk to'RBX::RbxParticleEmitter::unbind(void)")
+    todo!("0xbbf398 non-virtual thunk toRBX::RbxParticleEmitter::unbind(void)")
 }
 
 // 0xbbf39c — __ZN3RBX18RbxParticleEmitter16invalidateEntityEv
@@ -430,7 +430,7 @@ pub fn stub_bbf39c() -> ! {
 // type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RbxParticleEmitter::invalidateEntity(void)")]
 pub fn stub_bbf3d0() -> ! {
-    todo!("0xbbf3d0 `non-virtual thunk to'RBX::RbxParticleEmitter::invalidateEntity(void)")
+    todo!("0xbbf3d0 non-virtual thunk toRBX::RbxParticleEmitter::invalidateEntity(void)")
 }
 
 // 0xbbf404 — __ZN3RBX18RbxParticleEmitter12updateEntityEb
@@ -444,7 +444,7 @@ pub fn stub_bbf404() -> ! {
 // type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this, bool)
 #[doc(alias = "non-virtual thunk toRBX::RbxParticleEmitter::updateEntity(bool)")]
 pub fn stub_bbf8b0() -> ! {
-    todo!("0xbbf8b0 `non-virtual thunk to'RBX::RbxParticleEmitter::updateEntity(bool)")
+    todo!("0xbbf8b0 non-virtual thunk toRBX::RbxParticleEmitter::updateEntity(bool)")
 }
 
 // 0xbbfa58 — __ZN3rbx7signals6signalIFvbEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX18RbxParticleEmitterEbEENS6_5list2INS6_5valueIPSB_EENS5_3argILi1EEEEEEEED1Ev
@@ -468,7 +468,7 @@ pub fn stub_bbfbbc() -> ! {
 // 0xbbfbd4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX18RbxParticleEmitterEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")]
 pub fn stub_bbfbd4() -> ! {
-    todo!("0xbbfbd4 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")
+    todo!("0xbbfbd4 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")
 }
 
 // 0xbbfbec — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX18RbxParticleEmitterEEENS6_5list1INS6_5valueIPSB_EEEEEEED1Ev
@@ -492,13 +492,13 @@ pub fn stub_bbfd50() -> ! {
 // 0xbbfd68 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX18RbxParticleEmitterEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>,0,void ()(void)>::call(void)")]
 pub fn stub_bbfd68() -> ! {
-    todo!("0xbbfd68 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>,0,void ()(void)>::call(void)")
+    todo!("0xbbfd68 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>,0,void ()(void)>::call(void)")
 }
 
 // 0xbbfd80 — __GLOBAL__I_a_581
 #[doc(alias = "global constructor keyed to_a_581")]
 pub fn stub_bbfd80() -> ! {
-    todo!("0xbbfd80 `global constructor keyed to'_a_581")
+    todo!("0xbbfd80 global constructor keyed to_a_581")
 }
 
 // 0xbc0438 — __ZN3RBX18RbxParticleFactoryD1Ev
@@ -532,7 +532,7 @@ pub fn stub_bc1d7c() -> ! {
 // 0xbc3da4 — __GLOBAL__I_a_582
 #[doc(alias = "global constructor keyed to_a_582")]
 pub fn stub_bc3da4() -> ! {
-    todo!("0xbc3da4 `global constructor keyed to'_a_582")
+    todo!("0xbc3da4 global constructor keyed to_a_582")
 }
 
 // 0xbc44b8 — __ZN3RBX18RbxParticleManager8ThrottleEv
@@ -545,19 +545,19 @@ pub fn stub_bc44b8() -> ! {
 // 0xbc462c — __GLOBAL__I_a_583
 #[doc(alias = "global constructor keyed to_a_583")]
 pub fn stub_bc462c() -> ! {
-    todo!("0xbc462c `global constructor keyed to'_a_583")
+    todo!("0xbc462c global constructor keyed to_a_583")
 }
 
 // 0xbcadf0 — __GLOBAL__I_a_584
 #[doc(alias = "global constructor keyed to_a_584")]
 pub fn stub_bcadf0() -> ! {
-    todo!("0xbcadf0 `global constructor keyed to'_a_584")
+    todo!("0xbcadf0 global constructor keyed to_a_584")
 }
 
 // 0xbcbc58 — __GLOBAL__I_a_585
 #[doc(alias = "global constructor keyed to_a_585")]
 pub fn stub_bcbc58() -> ! {
-    todo!("0xbcbc58 `global constructor keyed to'_a_585")
+    todo!("0xbcbc58 global constructor keyed to_a_585")
 }
 
 // 0xbce398 — __ZN3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E7CreatorD1Ev

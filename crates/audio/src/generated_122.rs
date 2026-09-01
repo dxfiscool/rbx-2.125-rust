@@ -7,14 +7,14 @@
 // type: int __fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::rethrow(void)const")]
 pub fn stub_25323c() -> ! {
-    todo!("0x25323c `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::rethrow(void)const")
+    todo!("0x25323c virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::rethrow(void)const")
 }
 
 // 0x25324c — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()")]
 pub fn stub_25324c() -> ! {
-    todo!("0x25324c `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()")
+    todo!("0x25324c virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()")
 }
 
 // 0x253320 — __ZN5boost16exception_detail19error_info_injectorINS_9gregorian8bad_yearEED0Ev
@@ -28,7 +28,7 @@ pub fn stub_253320() -> ! {
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::gregorian::bad_year>::~error_info_injector()")]
 pub fn stub_2533dc() -> ! {
-    todo!("0x2533dc `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::gregorian::bad_year>::~error_info_injector()")
+    todo!("0x2533dc non-virtual thunk toboost::exception_detail::error_info_injector<boost::gregorian::bad_year>::~error_info_injector()")
 }
 
 // 0x253498 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEEC1ERKS6_NS6_9clone_tagE

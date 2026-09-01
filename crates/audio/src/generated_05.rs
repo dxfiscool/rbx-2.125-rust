@@ -508,7 +508,7 @@ pub fn stub_651c74() -> ! {
 // 0x651c8c — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIbNSB_4_mfi3mf0IbNS3_5Stats12StatsServiceEEENSC_5list1INSC_5valueIPSH_EEEEEELi1ES8_E4callES7_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf0<bool,RBX::Stats::StatsService>,boost::_bi::list1<boost::_bi::value<RBX::Stats::StatsService*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
 pub fn stub_651c8c() -> ! {
-    todo!("0x651c8c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf0<bool,RBX::Stats::StatsService>,boost::_bi::list1<boost::_bi::value<RBX::Stats::StatsService*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+    todo!("0x651c8c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf0<bool,RBX::Stats::StatsService>,boost::_bi::list1<boost::_bi::value<RBX::Stats::StatsService*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
 }
 
 // 0x651ca8 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slot24safe_static_do_get_mutexEv

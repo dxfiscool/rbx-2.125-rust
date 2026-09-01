@@ -53,7 +53,7 @@ pub fn stub_518284() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "anonymous namespace::computeNetworkOwnerIsSomeoneElseImpl(RBX::SystemAddress const&,RBX::SystemAddress const&)")]
 pub fn stub_5dbca8() -> ! {
-    todo!("0x5dbca8 `anonymous namespace'::computeNetworkOwnerIsSomeoneElseImpl(RBX::SystemAddress const&,RBX::SystemAddress const&)")
+    todo!("0x5dbca8 anonymous namespace::computeNetworkOwnerIsSomeoneElseImpl(RBX::SystemAddress const&,RBX::SystemAddress const&)")
 }
 
 // 0x6036d0 — __ZN3RBX10Reflection9DescribedINS_7Network6PlayerELZNS2_7sPlayerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_7sPlayerEES5_EELNS0_15ClassDescriptor13FunctionalityE19ELNS_8Security11PermissionsE0EE15classDescriptorEv

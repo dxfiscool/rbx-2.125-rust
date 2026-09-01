@@ -15,7 +15,7 @@ const _: () = {
 // 0x7d63ac — __GLOBAL__I_a_381
 #[doc(alias = "global constructor keyed to_a_381")]
 pub fn stub_7d63ac() -> ! {
-    todo!("0x7d63ac `global constructor keyed to'_a_381")
+    todo!("0x7d63ac global constructor keyed to_a_381")
 }
 
 // 0x7d6760 — __ZNK3RBX5NamedINS_5HUMAN19MovingNoPhysicsBaseELZNS1_17sRunningNoPhysicsEEE7getNameEv
@@ -39,7 +39,7 @@ pub fn stub_7d68e8() -> ! {
 // 0x7d69c8 — __GLOBAL__I_a_382
 #[doc(alias = "global constructor keyed to_a_382")]
 pub fn stub_7d69c8() -> ! {
-    todo!("0x7d69c8 `global constructor keyed to'_a_382")
+    todo!("0x7d69c8 global constructor keyed to_a_382")
 }
 
 // 0x7d7104 — __ZNK3RBX5NamedINS_5HUMAN13HumanoidStateELZNS1_7sSeatedEEE7getNameEv
@@ -81,7 +81,7 @@ pub fn stub_7d725c() -> ! {
 // 0x7d733c — __GLOBAL__I_a_383
 #[doc(alias = "global constructor keyed to_a_383")]
 pub fn stub_7d733c() -> ! {
-    todo!("0x7d733c `global constructor keyed to'_a_383")
+    todo!("0x7d733c global constructor keyed to_a_383")
 }
 
 // 0x7d75a0 — __ZNK3RBX5NamedINS_5HUMAN19MovingNoPhysicsBaseELZNS1_18sStrafingNoPhysicsEEE7getNameEv
@@ -105,13 +105,13 @@ pub fn stub_7d7720() -> ! {
 // 0x7d7800 — __GLOBAL__I_a_384
 #[doc(alias = "global constructor keyed to_a_384")]
 pub fn stub_7d7800() -> ! {
-    todo!("0x7d7800 `global constructor keyed to'_a_384")
+    todo!("0x7d7800 global constructor keyed to_a_384")
 }
 
 // 0x7d7f90 — __GLOBAL__I_a_385
 #[doc(alias = "global constructor keyed to_a_385")]
 pub fn stub_7d7f90() -> ! {
-    todo!("0x7d7f90 `global constructor keyed to'_a_385")
+    todo!("0x7d7f90 global constructor keyed to_a_385")
 }
 
 // 0x7d9ed4 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_12sTextServiceEEE12getClassNameEv
@@ -165,7 +165,7 @@ pub fn stub_7da1d4() -> ! {
 // 0x7db638 — __GLOBAL__I_a_386
 #[doc(alias = "global constructor keyed to_a_386")]
 pub fn stub_7db638() -> ! {
-    todo!("0x7db638 `global constructor keyed to'_a_386")
+    todo!("0x7db638 global constructor keyed to_a_386")
 }
 
 // 0x7dc6cc — __ZN16XmlNameValuePair8setValueEPKc
@@ -177,19 +177,19 @@ pub fn stub_7dc6cc() -> ! {
 // 0x7dc784 — __GLOBAL__I_a_387
 #[doc(alias = "global constructor keyed to_a_387")]
 pub fn stub_7dc784() -> ! {
-    todo!("0x7dc784 `global constructor keyed to'_a_387")
+    todo!("0x7dc784 global constructor keyed to_a_387")
 }
 
 // 0x7e436c — __GLOBAL__I_a_388
 #[doc(alias = "global constructor keyed to_a_388")]
 pub fn stub_7e436c() -> ! {
-    todo!("0x7e436c `global constructor keyed to'_a_388")
+    todo!("0x7e436c global constructor keyed to_a_388")
 }
 
 // 0x7e6300 — __GLOBAL__I_a_389
 #[doc(alias = "global constructor keyed to_a_389")]
 pub fn stub_7e6300() -> ! {
-    todo!("0x7e6300 `global constructor keyed to'_a_389")
+    todo!("0x7e6300 global constructor keyed to_a_389")
 }
 
 // 0x7e6b64 — __ZNK3RBX17NonFactoryProductINS_24CacheableContentProviderELZNS_20sMeshContentProviderEEE12getClassNameEv
@@ -267,7 +267,7 @@ pub fn stub_7e74b8() -> ! {
 // 0x7e755c — __GLOBAL__I_a_390
 #[doc(alias = "global constructor keyed to_a_390")]
 pub fn stub_7e755c() -> ! {
-    todo!("0x7e755c `global constructor keyed to'_a_390")
+    todo!("0x7e755c global constructor keyed to_a_390")
 }
 
 // 0x7e808c — __ZNK3RBX17NonFactoryProductINS_24CacheableContentProviderELZNS_23sTextureContentProviderEEE12getClassNameEv
@@ -339,7 +339,7 @@ pub fn stub_7e881c() -> ! {
 // 0x7e89ac — __GLOBAL__I_a_391
 #[doc(alias = "global constructor keyed to_a_391")]
 pub fn stub_7e89ac() -> ! {
-    todo!("0x7e89ac `global constructor keyed to'_a_391")
+    todo!("0x7e89ac global constructor keyed to_a_391")
 }
 
 // 0x7e8d1c — __ZN3RBX18DescribedCreatableINS_14StatusInstanceENS_13ModelInstanceELZNS_15sStatusInstanceEELNS_10Reflection15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EEC2Ev
@@ -555,7 +555,7 @@ pub fn stub_7e9ef4() -> ! {
 // 0x7e9fa8 — __GLOBAL__I_a_392
 #[doc(alias = "global constructor keyed to_a_392")]
 pub fn stub_7e9fa8() -> ! {
-    todo!("0x7e9fa8 `global constructor keyed to'_a_392")
+    todo!("0x7e9fa8 global constructor keyed to_a_392")
 }
 
 // 0x7f1074 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_16sContentProviderEEE12getClassNameEv

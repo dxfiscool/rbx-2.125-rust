@@ -635,7 +635,7 @@ pub fn stub_5aaf94() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_218")]
 pub fn stub_5ab31c() -> ! {
-    todo!("0x5ab31c `global constructor keyed to'_a_218")
+    todo!("0x5ab31c global constructor keyed to_a_218")
 }
 
 // 0x5ad1a8 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sJointsServiceEEE12getClassNameEv

@@ -460,7 +460,7 @@ pub fn stub_967ec8() -> ! {
 #[doc(alias = "__ZThn32_N3RBX7Network6ClientD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::~Client()")]
 pub fn stub_967ed4() -> ! {
-    todo!("0x967ed4 `non-virtual thunk to'RBX::Network::Client::~Client()")
+    todo!("0x967ed4 non-virtual thunk toRBX::Network::Client::~Client()")
 }
 
 // 0x967f78 — __ZThn36_N3RBX7Network6ClientD0Ev
@@ -468,7 +468,7 @@ pub fn stub_967ed4() -> ! {
 #[doc(alias = "__ZThn36_N3RBX7Network6ClientD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::~Client()")]
 pub fn stub_967f78() -> ! {
-    todo!("0x967f78 `non-virtual thunk to'RBX::Network::Client::~Client()")
+    todo!("0x967f78 non-virtual thunk toRBX::Network::Client::~Client()")
 }
 
 // 0x96801c — __ZThn92_N3RBX7Network6ClientD0Ev
@@ -476,7 +476,7 @@ pub fn stub_967f78() -> ! {
 #[doc(alias = "__ZThn92_N3RBX7Network6ClientD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::~Client()")]
 pub fn stub_96801c() -> ! {
-    todo!("0x96801c `non-virtual thunk to'RBX::Network::Client::~Client()")
+    todo!("0x96801c non-virtual thunk toRBX::Network::Client::~Client()")
 }
 
 // 0x9680c0 — __ZN3RBX7Network6ClientD2Ev
@@ -492,7 +492,7 @@ pub fn stub_9680c0() -> ! {
 #[doc(alias = "__ZThn32_N3RBX7Network6ClientD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::~Client()")]
 pub fn stub_9686ac() -> ! {
-    todo!("0x9686ac `non-virtual thunk to'RBX::Network::Client::~Client()")
+    todo!("0x9686ac non-virtual thunk toRBX::Network::Client::~Client()")
 }
 
 // 0x9686b8 — __ZThn36_N3RBX7Network6ClientD1Ev
@@ -500,7 +500,7 @@ pub fn stub_9686ac() -> ! {
 #[doc(alias = "__ZThn36_N3RBX7Network6ClientD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::~Client()")]
 pub fn stub_9686b8() -> ! {
-    todo!("0x9686b8 `non-virtual thunk to'RBX::Network::Client::~Client()")
+    todo!("0x9686b8 non-virtual thunk toRBX::Network::Client::~Client()")
 }
 
 // 0x9686c4 — __ZThn92_N3RBX7Network6ClientD1Ev
@@ -508,7 +508,7 @@ pub fn stub_9686b8() -> ! {
 #[doc(alias = "__ZThn92_N3RBX7Network6ClientD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::~Client()")]
 pub fn stub_9686c4() -> ! {
-    todo!("0x9686c4 `non-virtual thunk to'RBX::Network::Client::~Client()")
+    todo!("0x9686c4 non-virtual thunk toRBX::Network::Client::~Client()")
 }
 
 // 0x9686d0 — __ZN3RBX7Network6Client10findClientEPKNS_8InstanceEb
@@ -580,7 +580,7 @@ pub fn stub_968fb0() -> ! {
 #[doc(alias = "__ZThn92_N3RBX7Network6Client25OnFailedConnectionAttemptEPN6RakNet6PacketENS2_33PI2_FailedConnectionAttemptReasonE")]
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")]
 pub fn stub_9694b4() -> ! {
-    todo!("0x9694b4 `non-virtual thunk to'RBX::Network::Client::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")
+    todo!("0x9694b4 non-virtual thunk toRBX::Network::Client::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")
 }
 
 // 0x9694c0 — __ZNK3RBX7Network6Client21sendPreferedSpawnNameEv
@@ -604,7 +604,7 @@ pub fn stub_969704() -> ! {
 #[doc(alias = "__ZThn92_N3RBX7Network6Client9OnReceiveEPN6RakNet6PacketE")]
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::OnReceive(RakNet::Packet *)")]
 pub fn stub_96c474() -> ! {
-    todo!("0x96c474 `non-virtual thunk to'RBX::Network::Client::OnReceive(RakNet::Packet *)")
+    todo!("0x96c474 non-virtual thunk toRBX::Network::Client::OnReceive(RakNet::Packet *)")
 }
 
 // 0x96c484 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFN5boost10shared_ptrINS_8InstanceEEEiSsiiiELi5EED1Ev // was: boost::shared_ptr
@@ -748,7 +748,7 @@ pub fn stub_970468() -> ! {
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX7Network6ClientEEENS7_5list1INS7_5valueIPSD_EEEEEELi0ES3_E4callEv")]
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Client>,boost::_bi::list1<boost::_bi::value<RBX::Network::Client*>>>,0,void ()(void)>::call(void)")]
 pub fn stub_970484() -> ! {
-    todo!("0x970484 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Client>,boost::_bi::list1<boost::_bi::value<RBX::Network::Client*>>>,0,void ()(void)>::call(void)")
+    todo!("0x970484 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Client>,boost::_bi::list1<boost::_bi::value<RBX::Network::Client*>>>,0,void ()(void)>::call(void)")
 }
 
 // 0x9709b0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network6ClientES7_EEvPKNS_10shared_ptrIT_EEPT0_ // was: boost::shared_ptr

@@ -562,7 +562,7 @@ pub fn stub_379194() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")]
 pub fn stub_37919c() -> ! {
-    todo!("0x37919c `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")
+    todo!("0x37919c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")
 }
 
 // 0x3791a4 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape12SoundChannelERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS7_EEvRKT_
@@ -4209,7 +4209,7 @@ pub fn stub_70e5c_wdog080() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed to FMOD::AsyncThread::gAsyncHead")]
 pub fn stub_70f2c_wdog081() -> ! {
-    todo!("0x70f2c `global constructor keyed to FMOD::AsyncThread::gAsyncHead")
+    todo!("0x70f2c global constructor keyed to FMOD::AsyncThread::gAsyncHead")
 }
 
 // 0x70f38 — __ZN4FMOD7Channel11getUserDataEPPv [watchdog]
@@ -5989,7 +5989,7 @@ pub fn stub_81074() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed to FMOD::aiffcodec")]
 pub fn stub_8115c() -> ! {
-    todo!("0x8115c `global constructor keyed to'FMOD::aiffcodec")
+    todo!("0x8115c global constructor keyed toFMOD::aiffcodec")
 }
 
 // 0x81168 — __ZN4FMOD8CodecDLS19setPositionInternalEijj
@@ -6066,7 +6066,7 @@ pub fn stub_82970() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed to FMOD::dlscodec")]
 pub fn stub_829c8() -> ! {
-    todo!("0x829c8 `global constructor keyed to'FMOD::dlscodec")
+    todo!("0x829c8 global constructor keyed toFMOD::dlscodec")
 }
 
 // 0x829d4 — __ZN4FMODL24FMOD_FLAC_LengthCallbackEPK19FLAC__StreamDecoderPyPv
@@ -6192,7 +6192,7 @@ pub fn stub_83320() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed to FMOD::flaccodec")]
 pub fn stub_8340c() -> ! {
-    todo!("0x8340c `global constructor keyed to'FMOD::flaccodec")
+    todo!("0x8340c global constructor keyed toFMOD::flaccodec")
 }
 
 // 0x83418 — __ZN4FMOD8CodecFSB16getNumSyncPointsEiPi
@@ -6360,7 +6360,7 @@ pub fn stub_86aa0() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed to FMOD::fsbcodec")]
 pub fn stub_86b10() -> ! {
-    todo!("0x86b10 `global constructor keyed to'FMOD::fsbcodec")
+    todo!("0x86b10 global constructor keyed toFMOD::fsbcodec")
 }
 
 // 0x86b1c — __ZN4FMOD7CodecIT8readBitsEhPj
@@ -6577,7 +6577,7 @@ pub fn stub_8ebc0() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed to FMOD::itcodec")]
 pub fn stub_8ec18() -> ! {
-    todo!("0x8ec18 `global constructor keyed to'FMOD::itcodec")
+    todo!("0x8ec18 global constructor keyed toFMOD::itcodec")
 }
 
 // 0x8ec24 — __ZN4FMOD19CodecMIDISubChannel15findArticulatorEii
@@ -6789,4 +6789,3 @@ pub fn stub_90a44() -> ! {
 pub fn stub_91454() -> ! {
     todo!("0x91454 FMOD::CodecMIDITrack::process(bool)")
 }
-

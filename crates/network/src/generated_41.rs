@@ -11,7 +11,7 @@ use rbx_core::SharedPtr;
 // type: int __fastcall(int, int, int, int, float)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(float,float,float,float)>::call(float,float,float,float)")]
 pub fn stub_39e824() -> ! {
-    todo!("0x39e824 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(float,float,float,float)>::call(float,float,float,float)")
+    todo!("0x39e824 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(float,float,float,float)>::call(float,float,float,float)")
 }
 
 // 0x39e860 — __ZN5boost3_bi5list5INS0_5valueIPN3RBX19AnimationTrackStateEEENS_3argILi1EEENS7_ILi2EEENS7_ILi3EEENS7_ILi4EEEEclINS_4_mfi3mf4IvS4_ffffEENS0_5list4IRfSI_SI_SI_EEEEvNS0_4typeIvEERT_RT0_i
@@ -256,7 +256,7 @@ pub fn stub_3a0d00() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float,float)>::slot,boost::function<void ()(float,float,float)>,3,void ()(float,float,float)>::call(float,float,float)")]
 pub fn stub_3a0d08() -> ! {
-    todo!("0x3a0d08 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(float,float,float)>::slot,boost::function<void ()(float,float,float)>,3,void ()(float,float,float)>::call(float,float,float)")
+    todo!("0x3a0d08 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float,float)>::slot,boost::function<void ()(float,float,float)>,3,void ()(float,float,float)>::call(float,float,float)")
 }
 
 // 0x3a0d10 — __ZNK5boost9function3IvfffEclEfff
@@ -416,7 +416,7 @@ pub fn stub_3a2ab4() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::function<void ()(float,float,float,float)>,4,void ()(float,float,float,float)>::call(float,float,float,float)")]
 pub fn stub_3a2abc() -> ! {
-    todo!("0x3a2abc `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::function<void ()(float,float,float,float)>,4,void ()(float,float,float,float)>::call(float,float,float,float)")
+    todo!("0x3a2abc non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::function<void ()(float,float,float,float)>,4,void ()(float,float,float,float)>::call(float,float,float,float)")
 }
 
 // 0x3a2ac4 — __ZNK5boost9function4IvffffEclEffff
@@ -450,7 +450,7 @@ pub fn stub_3a2dec() -> ! {
 // 0x3a35a4 — __GLOBAL__I_a_157
 #[doc(alias = "global constructor keyed to_a_157")]
 pub fn stub_3a35a4() -> ! {
-    todo!("0x3a35a4 `global constructor keyed to'_a_157")
+    todo!("0x3a35a4 global constructor keyed to_a_157")
 }
 
 // 0x3a395c — __ZN3RBX8Animator13loadAnimationEN5boost10shared_ptrINS_8InstanceEEE
@@ -492,21 +492,21 @@ pub fn stub_3a4158() -> ! {
 // type: void __fastcall(RBX::Animator *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
 pub fn stub_3a415c() -> ! {
-    todo!("0x3a415c `non-virtual thunk to'RBX::Animator::~Animator()")
+    todo!("0x3a415c non-virtual thunk toRBX::Animator::~Animator()")
 }
 
 // 0x3a4164 — __ZThn36_N3RBX8AnimatorD0Ev
 // type: void __fastcall(RBX::Animator *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
 pub fn stub_3a4164() -> ! {
-    todo!("0x3a4164 `non-virtual thunk to'RBX::Animator::~Animator()")
+    todo!("0x3a4164 non-virtual thunk toRBX::Animator::~Animator()")
 }
 
 // 0x3a416c — __ZThn92_N3RBX8AnimatorD0Ev
 // type: void __fastcall(RBX::Animator *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
 pub fn stub_3a416c() -> ! {
-    todo!("0x3a416c `non-virtual thunk to'RBX::Animator::~Animator()")
+    todo!("0x3a416c non-virtual thunk toRBX::Animator::~Animator()")
 }
 
 // 0x3a4174 — __ZN3RBX8AnimatorD2Ev
@@ -520,21 +520,21 @@ pub fn stub_3a4174() -> ! {
 // type: void __fastcall(RBX::Animator *this, int, int, const void *)
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
 pub fn stub_3a434c() -> ! {
-    todo!("0x3a434c `non-virtual thunk to'RBX::Animator::~Animator()")
+    todo!("0x3a434c non-virtual thunk toRBX::Animator::~Animator()")
 }
 
 // 0x3a4354 — __ZThn36_N3RBX8AnimatorD1Ev
 // type: void __fastcall(RBX::Animator *this, int, int, const void *)
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
 pub fn stub_3a4354() -> ! {
-    todo!("0x3a4354 `non-virtual thunk to'RBX::Animator::~Animator()")
+    todo!("0x3a4354 non-virtual thunk toRBX::Animator::~Animator()")
 }
 
 // 0x3a435c — __ZThn92_N3RBX8AnimatorD1Ev
 // type: void __fastcall(RBX::Animator *this, int, int, const void *)
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
 pub fn stub_3a435c() -> ! {
-    todo!("0x3a435c `non-virtual thunk to'RBX::Animator::~Animator()")
+    todo!("0x3a435c non-virtual thunk toRBX::Animator::~Animator()")
 }
 
 // 0x3a4364 — __ZN3RBX8Animator15reloadAnimationEN5boost10shared_ptrINS_19AnimationTrackStateEEE
@@ -583,7 +583,7 @@ pub fn stub_3a4870() -> ! {
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "non-virtual thunk toRBX::Animator::onStepped(RBX::Stepped const&)")]
 pub fn stub_3a4e98() -> ! {
-    todo!("0x3a4e98 `non-virtual thunk to'RBX::Animator::onStepped(RBX::Stepped const&)")
+    todo!("0x3a4e98 non-virtual thunk toRBX::Animator::onStepped(RBX::Stepped const&)")
 }
 
 // 0x3a4ea0 — __ZNK3RBX8Animator11askAddChildEPKNS_8InstanceE

@@ -9,7 +9,7 @@ use rbx_core::SharedPtr;
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::getRenderSize(void)")]
 // was: `non-virtual thunk to'RBX::ModelInstance::getRenderSize(void)
 pub fn stub_6d2d74() -> ! {
-    todo!("0x6d2d74 `non-virtual thunk to'RBX::ModelInstance::getRenderSize(void)")
+    todo!("0x6d2d74 non-virtual thunk toRBX::ModelInstance::getRenderSize(void)")
 }
 
 // 0x7a9bf8 — __ZN3RBX5Adorn17prepareRenderPassEv
@@ -30,7 +30,7 @@ pub fn stub_7bce4c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::getRenderLocation(void)")]
 // was: `non-virtual thunk to'RBX::Humanoid::getRenderLocation(void)
 pub fn stub_7bcee4() -> ! {
-    todo!("0x7bcee4 `non-virtual thunk to'RBX::Humanoid::getRenderLocation(void)")
+    todo!("0x7bcee4 non-virtual thunk toRBX::Humanoid::getRenderLocation(void)")
 }
 
 // 0x7bcef4 — __ZN3RBX8Humanoid13getRenderSizeEv
@@ -44,7 +44,7 @@ pub fn stub_7bcef4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::getRenderSize(void)")]
 // was: `non-virtual thunk to'RBX::Humanoid::getRenderSize(void)
 pub fn stub_7bcf1c() -> ! {
-    todo!("0x7bcf1c `non-virtual thunk to'RBX::Humanoid::getRenderSize(void)")
+    todo!("0x7bcf1c non-virtual thunk toRBX::Humanoid::getRenderSize(void)")
 }
 
 // 0x7bf638 — __ZNK3RBX8Humanoid19shouldRender3dAdornEv
@@ -65,14 +65,14 @@ pub fn stub_7bf63c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::shouldRender3dAdorn(void)const")]
 // was: `non-virtual thunk to'RBX::Humanoid::shouldRender3dAdorn(void)const
 pub fn stub_7bf69c() -> ! {
-    todo!("0x7bf69c `non-virtual thunk to'RBX::Humanoid::shouldRender3dAdorn(void)const")
+    todo!("0x7bf69c non-virtual thunk toRBX::Humanoid::shouldRender3dAdorn(void)const")
 }
 
 // 0x7bf6a0 — __ZThn268_NK3RBX8Humanoid25shouldRender3dSortedAdornEv
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::shouldRender3dSortedAdorn(void)const")]
 // was: `non-virtual thunk to'RBX::Humanoid::shouldRender3dSortedAdorn(void)const
 pub fn stub_7bf6a0() -> ! {
-    todo!("0x7bf6a0 `non-virtual thunk to'RBX::Humanoid::shouldRender3dSortedAdorn(void)const")
+    todo!("0x7bf6a0 non-virtual thunk toRBX::Humanoid::shouldRender3dSortedAdorn(void)const")
 }
 
 // 0x849134 — __ZN3RBX17GameBasicSettings16setRenderQualityENS0_20RenderQualitySettingE
@@ -534,14 +534,14 @@ pub fn stub_8500c4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RenderHooksService::~RenderHooksService()")]
 // was: `non-virtual thunk to'RBX::RenderHooksService::~RenderHooksService()
 pub fn stub_8500ec() -> ! {
-    todo!("0x8500ec `non-virtual thunk to'RBX::RenderHooksService::~RenderHooksService()")
+    todo!("0x8500ec non-virtual thunk toRBX::RenderHooksService::~RenderHooksService()")
 }
 
 // 0x8500f4 — __ZThn32_N3RBX18RenderHooksServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::RenderHooksService::~RenderHooksService()")]
 // was: `non-virtual thunk to'RBX::RenderHooksService::~RenderHooksService()
 pub fn stub_8500f4() -> ! {
-    todo!("0x8500f4 `non-virtual thunk to'RBX::RenderHooksService::~RenderHooksService()")
+    todo!("0x8500f4 non-virtual thunk toRBX::RenderHooksService::~RenderHooksService()")
 }
 
 // 0x850198 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_19sRenderHooksServiceEEE12getClassNameEv
@@ -555,14 +555,14 @@ pub fn stub_850198() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RenderHooksService::~RenderHooksService()")]
 // was: `non-virtual thunk to'RBX::RenderHooksService::~RenderHooksService()
 pub fn stub_8501c0() -> ! {
-    todo!("0x8501c0 `non-virtual thunk to'RBX::RenderHooksService::~RenderHooksService()")
+    todo!("0x8501c0 non-virtual thunk toRBX::RenderHooksService::~RenderHooksService()")
 }
 
 // 0x8501c8 — __ZThn36_N3RBX18RenderHooksServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::RenderHooksService::~RenderHooksService()")]
 // was: `non-virtual thunk to'RBX::RenderHooksService::~RenderHooksService()
 pub fn stub_8501c8() -> ! {
-    todo!("0x8501c8 `non-virtual thunk to'RBX::RenderHooksService::~RenderHooksService()")
+    todo!("0x8501c8 non-virtual thunk toRBX::RenderHooksService::~RenderHooksService()")
 }
 
 // 0x85026c — __ZN3RBX18RenderHooksServiceD2Ev
@@ -758,7 +758,7 @@ pub fn stub_868ce0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GuiBase3d::shouldRender3dAdorn(void)const")]
 // was: `non-virtual thunk to'RBX::GuiBase3d::shouldRender3dAdorn(void)const
 pub fn stub_8691c8() -> ! {
-    todo!("0x8691c8 `non-virtual thunk to'RBX::GuiBase3d::shouldRender3dAdorn(void)const")
+    todo!("0x8691c8 non-virtual thunk toRBX::GuiBase3d::shouldRender3dAdorn(void)const")
 }
 
 // 0x87236c — __ZN3RBX19MegaClusterInstance17setRenderMaterialENS_8MaterialE

@@ -15,7 +15,7 @@ const _: () = {
 // 0x3df948 — __GLOBAL__I_a_167
 #[doc(alias = "global constructor keyed to_a_167")]
 pub fn stub_3df948() -> ! {
-    todo!("0x3df948 `global constructor keyed to_a_167")
+    todo!("0x3df948 global constructor keyed to_a_167")
 }
 
 // 0x3e0048 — __ZN3RBX5Shirt11setTemplateENS_9TextureIdE
@@ -209,14 +209,14 @@ pub fn stub_3e1344() -> ! {
 // type: void __fastcall(RBX::ShirtGraphic *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")]
 pub fn stub_3e1354() -> ! {
-    todo!("0x3e1354 `non-virtual thunk to'RBX::ShirtGraphic::~ShirtGraphic()")
+    todo!("0x3e1354 non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")
 }
 
 // 0x3e1394 — __ZThn32_N3RBX12ShirtGraphicD0Ev
 // type: void __fastcall(RBX::ShirtGraphic *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")]
 pub fn stub_3e1394() -> ! {
-    todo!("0x3e1394 `non-virtual thunk to'RBX::ShirtGraphic::~ShirtGraphic()")
+    todo!("0x3e1394 non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")
 }
 
 // 0x3e1470 — __ZThn32_NK3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE12getClassNameEv
@@ -230,28 +230,28 @@ pub fn stub_3e1470() -> ! {
 // type: void __fastcall(RBX::ShirtGraphic *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")]
 pub fn stub_3e1480() -> ! {
-    todo!("0x3e1480 `non-virtual thunk to'RBX::ShirtGraphic::~ShirtGraphic()")
+    todo!("0x3e1480 non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")
 }
 
 // 0x3e14c0 — __ZThn36_N3RBX12ShirtGraphicD0Ev
 // type: void __fastcall(RBX::ShirtGraphic *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")]
 pub fn stub_3e14c0() -> ! {
-    todo!("0x3e14c0 `non-virtual thunk to'RBX::ShirtGraphic::~ShirtGraphic()")
+    todo!("0x3e14c0 non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")
 }
 
 // 0x3e159c — __ZThn92_N3RBX12ShirtGraphicD1Ev
 // type: void __fastcall(RBX::ShirtGraphic *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")]
 pub fn stub_3e159c() -> ! {
-    todo!("0x3e159c `non-virtual thunk to'RBX::ShirtGraphic::~ShirtGraphic()")
+    todo!("0x3e159c non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")
 }
 
 // 0x3e15dc — __ZThn92_N3RBX12ShirtGraphicD0Ev
 // type: void __fastcall(RBX::ShirtGraphic *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")]
 pub fn stub_3e15dc() -> ! {
-    todo!("0x3e15dc `non-virtual thunk to'RBX::ShirtGraphic::~ShirtGraphic()")
+    todo!("0x3e15dc non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")
 }
 
 // 0x3e16b8 — __ZN3RBX8ClothingD1Ev
@@ -285,14 +285,14 @@ pub fn stub_3e1808() -> ! {
 // type: void __fastcall(RBX::Clothing *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Clothing::~Clothing()")]
 pub fn stub_3e1864() -> ! {
-    todo!("0x3e1864 `non-virtual thunk to'RBX::Clothing::~Clothing()")
+    todo!("0x3e1864 non-virtual thunk toRBX::Clothing::~Clothing()")
 }
 
 // 0x3e18b0 — __ZThn32_N3RBX8ClothingD0Ev
 // type: void __fastcall(RBX::Clothing *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Clothing::~Clothing()")]
 pub fn stub_3e18b0() -> ! {
-    todo!("0x3e18b0 `non-virtual thunk to'RBX::Clothing::~Clothing()")
+    todo!("0x3e18b0 non-virtual thunk toRBX::Clothing::~Clothing()")
 }
 
 // 0x3e1994 — __ZThn32_NK3RBX17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEE12getClassNameEv
@@ -305,28 +305,28 @@ pub fn stub_3e1994() -> ! {
 // type: void __fastcall(RBX::Clothing *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Clothing::~Clothing()")]
 pub fn stub_3e19bc() -> ! {
-    todo!("0x3e19bc `non-virtual thunk to'RBX::Clothing::~Clothing()")
+    todo!("0x3e19bc non-virtual thunk toRBX::Clothing::~Clothing()")
 }
 
 // 0x3e1a08 — __ZThn36_N3RBX8ClothingD0Ev
 // type: void __fastcall(RBX::Clothing *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Clothing::~Clothing()")]
 pub fn stub_3e1a08() -> ! {
-    todo!("0x3e1a08 `non-virtual thunk to'RBX::Clothing::~Clothing()")
+    todo!("0x3e1a08 non-virtual thunk toRBX::Clothing::~Clothing()")
 }
 
 // 0x3e1aec — __ZThn92_N3RBX8ClothingD1Ev
 // type: void __fastcall(RBX::Clothing *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Clothing::~Clothing()")]
 pub fn stub_3e1aec() -> ! {
-    todo!("0x3e1aec `non-virtual thunk to'RBX::Clothing::~Clothing()")
+    todo!("0x3e1aec non-virtual thunk toRBX::Clothing::~Clothing()")
 }
 
 // 0x3e1b38 — __ZThn92_N3RBX8ClothingD0Ev
 // type: void __fastcall(RBX::Clothing *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Clothing::~Clothing()")]
 pub fn stub_3e1b38() -> ! {
-    todo!("0x3e1b38 `non-virtual thunk to'RBX::Clothing::~Clothing()")
+    todo!("0x3e1b38 non-virtual thunk toRBX::Clothing::~Clothing()")
 }
 
 // 0x3e1c1c — __ZN3RBX4SkinD1Ev
@@ -354,14 +354,14 @@ pub fn stub_3e1cc0() -> ! {
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Skin::~Skin()")]
 pub fn stub_3e1cd0() -> ! {
-    todo!("0x3e1cd0 `non-virtual thunk to'RBX::Skin::~Skin()")
+    todo!("0x3e1cd0 non-virtual thunk toRBX::Skin::~Skin()")
 }
 
 // 0x3e1cd8 — __ZThn32_N3RBX4SkinD0Ev
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Skin::~Skin()")]
 pub fn stub_3e1cd8() -> ! {
-    todo!("0x3e1cd8 `non-virtual thunk to'RBX::Skin::~Skin()")
+    todo!("0x3e1cd8 non-virtual thunk toRBX::Skin::~Skin()")
 }
 
 // 0x3e1d7c — __ZThn32_NK3RBX14FactoryProductINS_4SkinENS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEE12getClassNameEv
@@ -375,28 +375,28 @@ pub fn stub_3e1d7c() -> ! {
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Skin::~Skin()")]
 pub fn stub_3e1d8c() -> ! {
-    todo!("0x3e1d8c `non-virtual thunk to'RBX::Skin::~Skin()")
+    todo!("0x3e1d8c non-virtual thunk toRBX::Skin::~Skin()")
 }
 
 // 0x3e1d94 — __ZThn36_N3RBX4SkinD0Ev
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Skin::~Skin()")]
 pub fn stub_3e1d94() -> ! {
-    todo!("0x3e1d94 `non-virtual thunk to'RBX::Skin::~Skin()")
+    todo!("0x3e1d94 non-virtual thunk toRBX::Skin::~Skin()")
 }
 
 // 0x3e1e38 — __ZThn92_N3RBX4SkinD1Ev
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Skin::~Skin()")]
 pub fn stub_3e1e38() -> ! {
-    todo!("0x3e1e38 `non-virtual thunk to'RBX::Skin::~Skin()")
+    todo!("0x3e1e38 non-virtual thunk toRBX::Skin::~Skin()")
 }
 
 // 0x3e1e40 — __ZThn92_N3RBX4SkinD0Ev
 // type: void __fastcall(RBX::Skin *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Skin::~Skin()")]
 pub fn stub_3e1e40() -> ! {
-    todo!("0x3e1e40 `non-virtual thunk to'RBX::Skin::~Skin()")
+    todo!("0x3e1e40 non-virtual thunk toRBX::Skin::~Skin()")
 }
 
 // 0x3e1ee4 — __ZN3RBX10BodyColorsD1Ev
@@ -424,14 +424,14 @@ pub fn stub_3e1f88() -> ! {
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyColors::~BodyColors()")]
 pub fn stub_3e1f98() -> ! {
-    todo!("0x3e1f98 `non-virtual thunk to'RBX::BodyColors::~BodyColors()")
+    todo!("0x3e1f98 non-virtual thunk toRBX::BodyColors::~BodyColors()")
 }
 
 // 0x3e1fa0 — __ZThn32_N3RBX10BodyColorsD0Ev
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyColors::~BodyColors()")]
 pub fn stub_3e1fa0() -> ! {
-    todo!("0x3e1fa0 `non-virtual thunk to'RBX::BodyColors::~BodyColors()")
+    todo!("0x3e1fa0 non-virtual thunk toRBX::BodyColors::~BodyColors()")
 }
 
 // 0x3e2044 — __ZThn32_NK3RBX14FactoryProductINS_10BodyColorsENS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEE12getClassNameEv
@@ -445,28 +445,28 @@ pub fn stub_3e2044() -> ! {
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyColors::~BodyColors()")]
 pub fn stub_3e2054() -> ! {
-    todo!("0x3e2054 `non-virtual thunk to'RBX::BodyColors::~BodyColors()")
+    todo!("0x3e2054 non-virtual thunk toRBX::BodyColors::~BodyColors()")
 }
 
 // 0x3e205c — __ZThn36_N3RBX10BodyColorsD0Ev
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyColors::~BodyColors()")]
 pub fn stub_3e205c() -> ! {
-    todo!("0x3e205c `non-virtual thunk to'RBX::BodyColors::~BodyColors()")
+    todo!("0x3e205c non-virtual thunk toRBX::BodyColors::~BodyColors()")
 }
 
 // 0x3e2100 — __ZThn92_N3RBX10BodyColorsD1Ev
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyColors::~BodyColors()")]
 pub fn stub_3e2100() -> ! {
-    todo!("0x3e2100 `non-virtual thunk to'RBX::BodyColors::~BodyColors()")
+    todo!("0x3e2100 non-virtual thunk toRBX::BodyColors::~BodyColors()")
 }
 
 // 0x3e2108 — __ZThn92_N3RBX10BodyColorsD0Ev
 // type: void __fastcall(RBX::BodyColors *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BodyColors::~BodyColors()")]
 pub fn stub_3e2108() -> ! {
-    todo!("0x3e2108 `non-virtual thunk to'RBX::BodyColors::~BodyColors()")
+    todo!("0x3e2108 non-virtual thunk toRBX::BodyColors::~BodyColors()")
 }
 
 // 0x3e21ac — __ZN3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE7CreatorD1Ev
@@ -536,14 +536,14 @@ pub fn stub_3e22f8() -> ! {
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Shirt::~Shirt()")]
 pub fn stub_3e2310() -> ! {
-    todo!("0x3e2310 `non-virtual thunk to'RBX::Shirt::~Shirt()")
+    todo!("0x3e2310 non-virtual thunk toRBX::Shirt::~Shirt()")
 }
 
 // 0x3e235c — __ZThn32_N3RBX5ShirtD0Ev
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Shirt::~Shirt()")]
 pub fn stub_3e235c() -> ! {
-    todo!("0x3e235c `non-virtual thunk to'RBX::Shirt::~Shirt()")
+    todo!("0x3e235c non-virtual thunk toRBX::Shirt::~Shirt()")
 }
 
 // 0x3e2440 — __ZThn32_NK3RBX14FactoryProductINS_5ShirtENS_8ClothingELZNS_6sShirtEENS_8InstanceEE12getClassNameEv
@@ -557,28 +557,28 @@ pub fn stub_3e2440() -> ! {
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Shirt::~Shirt()")]
 pub fn stub_3e2450() -> ! {
-    todo!("0x3e2450 `non-virtual thunk to'RBX::Shirt::~Shirt()")
+    todo!("0x3e2450 non-virtual thunk toRBX::Shirt::~Shirt()")
 }
 
 // 0x3e249c — __ZThn36_N3RBX5ShirtD0Ev
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Shirt::~Shirt()")]
 pub fn stub_3e249c() -> ! {
-    todo!("0x3e249c `non-virtual thunk to'RBX::Shirt::~Shirt()")
+    todo!("0x3e249c non-virtual thunk toRBX::Shirt::~Shirt()")
 }
 
 // 0x3e2580 — __ZThn92_N3RBX5ShirtD1Ev
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Shirt::~Shirt()")]
 pub fn stub_3e2580() -> ! {
-    todo!("0x3e2580 `non-virtual thunk to'RBX::Shirt::~Shirt()")
+    todo!("0x3e2580 non-virtual thunk toRBX::Shirt::~Shirt()")
 }
 
 // 0x3e25cc — __ZThn92_N3RBX5ShirtD0Ev
 // type: void __fastcall(RBX::Shirt *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Shirt::~Shirt()")]
 pub fn stub_3e25cc() -> ! {
-    todo!("0x3e25cc `non-virtual thunk to'RBX::Shirt::~Shirt()")
+    todo!("0x3e25cc non-virtual thunk toRBX::Shirt::~Shirt()")
 }
 
 // 0x3e26b0 — __ZN3RBX5PantsD1Ev
@@ -613,14 +613,14 @@ pub fn stub_3e27e8() -> ! {
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Pants::~Pants()")]
 pub fn stub_3e2800() -> ! {
-    todo!("0x3e2800 `non-virtual thunk to'RBX::Pants::~Pants()")
+    todo!("0x3e2800 non-virtual thunk toRBX::Pants::~Pants()")
 }
 
 // 0x3e284c — __ZThn32_N3RBX5PantsD0Ev
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Pants::~Pants()")]
 pub fn stub_3e284c() -> ! {
-    todo!("0x3e284c `non-virtual thunk to'RBX::Pants::~Pants()")
+    todo!("0x3e284c non-virtual thunk toRBX::Pants::~Pants()")
 }
 
 // 0x3e2930 — __ZThn32_NK3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE12getClassNameEv
@@ -634,28 +634,28 @@ pub fn stub_3e2930() -> ! {
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Pants::~Pants()")]
 pub fn stub_3e2940() -> ! {
-    todo!("0x3e2940 `non-virtual thunk to'RBX::Pants::~Pants()")
+    todo!("0x3e2940 non-virtual thunk toRBX::Pants::~Pants()")
 }
 
 // 0x3e298c — __ZThn36_N3RBX5PantsD0Ev
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Pants::~Pants()")]
 pub fn stub_3e298c() -> ! {
-    todo!("0x3e298c `non-virtual thunk to'RBX::Pants::~Pants()")
+    todo!("0x3e298c non-virtual thunk toRBX::Pants::~Pants()")
 }
 
 // 0x3e2a70 — __ZThn92_N3RBX5PantsD1Ev
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Pants::~Pants()")]
 pub fn stub_3e2a70() -> ! {
-    todo!("0x3e2a70 `non-virtual thunk to'RBX::Pants::~Pants()")
+    todo!("0x3e2a70 non-virtual thunk toRBX::Pants::~Pants()")
 }
 
 // 0x3e2abc — __ZThn92_N3RBX5PantsD0Ev
 // type: void __fastcall(RBX::Pants *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Pants::~Pants()")]
 pub fn stub_3e2abc() -> ! {
-    todo!("0x3e2abc `non-virtual thunk to'RBX::Pants::~Pants()")
+    todo!("0x3e2abc non-virtual thunk toRBX::Pants::~Pants()")
 }
 
 // 0x3e2ba0 — __ZN3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE17static_getCreatorEv

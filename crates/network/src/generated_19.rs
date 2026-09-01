@@ -484,14 +484,14 @@ pub fn stub_90dfb8() -> ! {
 // type: void __fastcall(RBX::ReplicatedStorage *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX17ReplicatedStorageD1Ev")]
 pub fn stub_90dfc8() -> ! {
-    todo!("0x90dfc8 `non-virtual thunk to'RBX::ReplicatedStorage::~ReplicatedStorage()")
+    todo!("0x90dfc8 non-virtual thunk toRBX::ReplicatedStorage::~ReplicatedStorage()")
 }
 
 // 0x90dfd0 — __ZThn32_N3RBX17ReplicatedStorageD0Ev
 // type: void __fastcall(RBX::ReplicatedStorage *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX17ReplicatedStorageD0Ev")]
 pub fn stub_90dfd0() -> ! {
-    todo!("0x90dfd0 `non-virtual thunk to'RBX::ReplicatedStorage::~ReplicatedStorage()")
+    todo!("0x90dfd0 non-virtual thunk toRBX::ReplicatedStorage::~ReplicatedStorage()")
 }
 
 // 0x90e074 — __ZThn32_NK3RBX14FactoryProductINS_17ReplicatedStorageENS_8InstanceELZNS_18sReplicatedStorageEES2_E12getClassNameEv
@@ -504,14 +504,14 @@ pub fn stub_90e074() -> ! {
 // type: void __fastcall(RBX::ReplicatedStorage *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX17ReplicatedStorageD1Ev")]
 pub fn stub_90e084() -> ! {
-    todo!("0x90e084 `non-virtual thunk to'RBX::ReplicatedStorage::~ReplicatedStorage()")
+    todo!("0x90e084 non-virtual thunk toRBX::ReplicatedStorage::~ReplicatedStorage()")
 }
 
 // 0x90e08c — __ZThn36_N3RBX17ReplicatedStorageD0Ev
 // type: void __fastcall(RBX::ReplicatedStorage *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX17ReplicatedStorageD0Ev")]
 pub fn stub_90e08c() -> ! {
-    todo!("0x90e08c `non-virtual thunk to'RBX::ReplicatedStorage::~ReplicatedStorage()")
+    todo!("0x90e08c non-virtual thunk toRBX::ReplicatedStorage::~ReplicatedStorage()")
 }
 
 // 0x90e130 — __ZN3RBX10Reflection9DescribedINS_17ReplicatedStorageELZNS_18sReplicatedStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_18sReplicatedStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev

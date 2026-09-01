@@ -81,14 +81,14 @@ pub fn stub_413f78() -> ! {
 // type: void __fastcall(RBX::AxisRotateTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AxisRotateTool::~AxisRotateTool()")]
 pub fn stub_413f7c() -> ! {
-    todo!("0x413f7c `non-virtual thunk toRBX::AxisRotateTool::~AxisRotateTool()")
+    todo!("0x413f7c non-virtual thunk toRBX::AxisRotateTool::~AxisRotateTool()")
 }
 
 // 0x414060 — __ZThn36_N3RBX14AxisRotateToolD0Ev
 // type: void __fastcall(RBX::AxisRotateTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AxisRotateTool::~AxisRotateTool()")]
 pub fn stub_414060() -> ! {
-    todo!("0x414060 `non-virtual thunk toRBX::AxisRotateTool::~AxisRotateTool()")
+    todo!("0x414060 non-virtual thunk toRBX::AxisRotateTool::~AxisRotateTool()")
 }
 
 // 0x414158 — __ZN3RBX12AxisToolBaseD1Ev
@@ -109,14 +109,14 @@ pub fn stub_41423c() -> ! {
 // type: void __fastcall(RBX::AxisToolBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AxisToolBase::~AxisToolBase()")]
 pub fn stub_414334() -> ! {
-    todo!("0x414334 `non-virtual thunk toRBX::AxisToolBase::~AxisToolBase()")
+    todo!("0x414334 non-virtual thunk toRBX::AxisToolBase::~AxisToolBase()")
 }
 
 // 0x414418 — __ZThn36_N3RBX12AxisToolBaseD0Ev
 // type: void __fastcall(RBX::AxisToolBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AxisToolBase::~AxisToolBase()")]
 pub fn stub_414418() -> ! {
-    todo!("0x414418 `non-virtual thunk toRBX::AxisToolBase::~AxisToolBase()")
+    todo!("0x414418 non-virtual thunk toRBX::AxisToolBase::~AxisToolBase()")
 }
 
 // 0x4147e8 — __ZN3RBX4Name7declareILZNS_15sAxisRotateToolEEEERKS0_v
@@ -191,7 +191,7 @@ pub fn stub_416044() -> ! {
 // 0x4160e4 — __GLOBAL__I_a_174
 #[doc(alias = "global constructor keyed to_a_174")]
 pub fn stub_4160e4() -> ! {
-    todo!("0x4160e4 `global constructor keyed to_a_174")
+    todo!("0x4160e4 global constructor keyed to_a_174")
 }
 
 // 0x416388 — __ZN3RBX13ConfigurationC2Ev
@@ -233,14 +233,14 @@ pub fn stub_416a1c() -> ! {
 // type: void __fastcall(RBX::Configuration *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Configuration::~Configuration()")]
 pub fn stub_416a2c() -> ! {
-    todo!("0x416a2c `non-virtual thunk toRBX::Configuration::~Configuration()")
+    todo!("0x416a2c non-virtual thunk toRBX::Configuration::~Configuration()")
 }
 
 // 0x416a34 — __ZThn32_N3RBX13ConfigurationD0Ev
 // type: void __fastcall(RBX::Configuration *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Configuration::~Configuration()")]
 pub fn stub_416a34() -> ! {
-    todo!("0x416a34 `non-virtual thunk toRBX::Configuration::~Configuration()")
+    todo!("0x416a34 non-virtual thunk toRBX::Configuration::~Configuration()")
 }
 
 // 0x416ad8 — __ZThn32_NK3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E12getClassNameEv
@@ -254,14 +254,14 @@ pub fn stub_416ad8() -> ! {
 // type: void __fastcall(RBX::Configuration *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Configuration::~Configuration()")]
 pub fn stub_416ae8() -> ! {
-    todo!("0x416ae8 `non-virtual thunk toRBX::Configuration::~Configuration()")
+    todo!("0x416ae8 non-virtual thunk toRBX::Configuration::~Configuration()")
 }
 
 // 0x416af0 — __ZThn36_N3RBX13ConfigurationD0Ev
 // type: void __fastcall(RBX::Configuration *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Configuration::~Configuration()")]
 pub fn stub_416af0() -> ! {
-    todo!("0x416af0 `non-virtual thunk toRBX::Configuration::~Configuration()")
+    todo!("0x416af0 non-virtual thunk toRBX::Configuration::~Configuration()")
 }
 
 // 0x416b94 — __ZN3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E7CreatorD1Ev
@@ -322,7 +322,7 @@ pub fn stub_4174d4() -> ! {
 // 0x417744 — __GLOBAL__I_a_175
 #[doc(alias = "global constructor keyed to_a_175")]
 pub fn stub_417744() -> ! {
-    todo!("0x417744 `global constructor keyed to_a_175")
+    todo!("0x417744 global constructor keyed to_a_175")
 }
 
 // 0x417e8c — __ZNK3RBX14FactoryProductINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEE12getClassNameEv
@@ -453,13 +453,13 @@ pub fn stub_418c90() -> ! {
 // 0x419024 — __GLOBAL__I_a_176
 #[doc(alias = "global constructor keyed to_a_176")]
 pub fn stub_419024() -> ! {
-    todo!("0x419024 `global constructor keyed to_a_176")
+    todo!("0x419024 global constructor keyed to_a_176")
 }
 
 // 0x419344 — __GLOBAL__I_a_177
 #[doc(alias = "global constructor keyed to_a_177")]
 pub fn stub_419344() -> ! {
-    todo!("0x419344 `global constructor keyed to_a_177")
+    todo!("0x419344 global constructor keyed to_a_177")
 }
 
 // 0x420c38 — __ZN3RBXL19registerNewImageAPIEv

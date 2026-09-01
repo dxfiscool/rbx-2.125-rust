@@ -189,7 +189,7 @@ pub fn stub_88dd2c() -> ! {
 // 0x88dd30 — __GLOBAL__I_a_440
 #[doc(alias = "global constructor keyed to_a_440")]
 pub fn stub_88dd30() -> ! {
-    todo!("0x88dd30 `global constructor keyed to'_a_440")
+    todo!("0x88dd30 global constructor keyed to_a_440")
 }
 
 // 0x88e2c8 — __ZN3RBX11PluginMouseC1Ev
@@ -219,13 +219,13 @@ pub fn stub_88e508() -> ! {
 // 0x88e50c — __ZThn32_N3RBX11PluginMouseD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PluginMouse::~PluginMouse()")]
 pub fn stub_88e50c() -> ! {
-    todo!("0x88e50c `non-virtual thunk to'RBX::PluginMouse::~PluginMouse()")
+    todo!("0x88e50c non-virtual thunk toRBX::PluginMouse::~PluginMouse()")
 }
 
 // 0x88e514 — __ZThn36_N3RBX11PluginMouseD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PluginMouse::~PluginMouse()")]
 pub fn stub_88e514() -> ! {
-    todo!("0x88e514 `non-virtual thunk to'RBX::PluginMouse::~PluginMouse()")
+    todo!("0x88e514 non-virtual thunk toRBX::PluginMouse::~PluginMouse()")
 }
 
 // 0x88e51c — __ZN3RBX11PluginMouseD2Ev
@@ -237,13 +237,13 @@ pub fn stub_88e51c() -> ! {
 // 0x88e614 — __ZThn32_N3RBX11PluginMouseD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PluginMouse::~PluginMouse()")]
 pub fn stub_88e614() -> ! {
-    todo!("0x88e614 `non-virtual thunk to'RBX::PluginMouse::~PluginMouse()")
+    todo!("0x88e614 non-virtual thunk toRBX::PluginMouse::~PluginMouse()")
 }
 
 // 0x88e61c — __ZThn36_N3RBX11PluginMouseD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PluginMouse::~PluginMouse()")]
 pub fn stub_88e61c() -> ! {
-    todo!("0x88e61c `non-virtual thunk to'RBX::PluginMouse::~PluginMouse()")
+    todo!("0x88e61c non-virtual thunk toRBX::PluginMouse::~PluginMouse()")
 }
 
 // 0x88e624 — __ZNK3RBX11PluginMouse6getHitEv
@@ -411,7 +411,7 @@ pub fn stub_88f748() -> ! {
 // 0x88f7ec — __GLOBAL__I_a_441
 #[doc(alias = "global constructor keyed to_a_441")]
 pub fn stub_88f7ec() -> ! {
-    todo!("0x88f7ec `global constructor keyed to'_a_441")
+    todo!("0x88f7ec global constructor keyed to_a_441")
 }
 
 // 0x88fa74 — __ZN3RBX15BallCellContactC1EPNS_9PrimitiveES2_RKN3G3D12Vector3int16E

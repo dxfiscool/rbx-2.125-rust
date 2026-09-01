@@ -80,7 +80,7 @@ pub fn stub_3818e0() -> ! {
 // 0x381908 — __GLOBAL__I_a_142
 #[doc(alias = "global constructor keyed to_a_142")]
 pub fn stub_381908() -> ! {
-    todo!("0x381908 `global constructor keyed to'_a_142")
+    todo!("0x381908 global constructor keyed to_a_142")
 }
 
 // 0x3819d0 — __ZN3RBX11StandardOut9singletonEv
@@ -240,7 +240,7 @@ pub fn stub_382bfc() -> ! {
 // 0x382d18 — __GLOBAL__I_a_143
 #[doc(alias = "global constructor keyed to_a_143")]
 pub fn stub_382d18() -> ! {
-    todo!("0x382d18 `global constructor keyed to'_a_143")
+    todo!("0x382d18 global constructor keyed to_a_143")
 }
 
 // 0x382de0 — __Z10SetBaseURLRKSs
@@ -323,7 +323,7 @@ pub fn stub_384c3c() -> ! {
 // 0x384c44 — __GLOBAL__I_a_144
 #[doc(alias = "global constructor keyed to_a_144")]
 pub fn stub_384c44() -> ! {
-    todo!("0x384c44 `global constructor keyed to'_a_144")
+    todo!("0x384c44 global constructor keyed to_a_144")
 }
 
 // 0x384d34 — __ZN3RBX8IStepped25onServiceProviderISteppedEPNS_15ServiceProviderES2_
@@ -393,7 +393,7 @@ pub fn stub_385470() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>,1,void ()(RBX::Stepped const&)>::call(RBX::Stepped const&)")]
 pub fn stub_385478() -> ! {
-    todo!("0x385478 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>,1,void ()(RBX::Stepped const&)>::call(RBX::Stepped const&)")
+    todo!("0x385478 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>,1,void ()(RBX::Stepped const&)>::call(RBX::Stepped const&)")
 }
 
 // 0x385480 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX8ISteppedERKNS4_7SteppedEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_
@@ -454,7 +454,7 @@ pub fn stub_3857a8() -> ! {
 // 0x38587c — __GLOBAL__I_a_145
 #[doc(alias = "global constructor keyed to_a_145")]
 pub fn stub_38587c() -> ! {
-    todo!("0x38587c `global constructor keyed to'_a_145")
+    todo!("0x38587c global constructor keyed to_a_145")
 }
 
 // 0x385a3c — __ZNK3RBX13SystemAddresseqERKS0_
