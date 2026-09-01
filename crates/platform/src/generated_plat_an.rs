@@ -1,7 +1,7 @@
-//! platform — generated_plat_an — 100 stubs EA-sorted asc global gap filler | Source ida/export.json | Distinct 28060->28160 | range 0x106428..0x10a584 | rbx_core::SharedPtr not boost | ObjC doc aliases
-//! Source: ida/export.json (85545 funcs) global gap filler next 100 EA-sorted asc not yet stubbed in platform
-//! Distinct stub_ 28060/85545 -> 28160/85545 | uncovered 57485 -> 57385 (platform)
-//! Batch: 100 stubs | range 0x106428..0x10a584 | rbx_core::SharedPtr not boost
+//! platform — generated_plat_an — 120 stubs EA-sorted asc global gap filler | Source ida/export.json | Distinct 28060->28180 | range 0x106428..0x10e0fc | rbx_core::SharedPtr not boost | ObjC doc aliases
+//! Source: ida/export.json (85545 funcs) global gap filler next 120 EA-sorted asc not yet stubbed in platform
+//! Distinct stub_ 28060/85545 -> 28180/85545 | uncovered 57485 -> 57365 (platform)
+//! Batch: 120 stubs | range 0x106428..0x10e0fc | rbx_core::SharedPtr not boost
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -709,4 +709,143 @@ pub fn stub_10a4c0() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,FITAG *>,std::_Select1st<std::pair<std::string const,FITAG *>>,std::less<std::string>,std::allocator<std::pair<std::string const,FITAG *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,FITAG *>>,std::pair<std::string const,FITAG *> const&)")]
 pub fn stub_10a584() -> ! {
     todo!("0x10a584 std::_Rb_tree<std::string,std::pair<std::string const,FITAG *>,std::_Select1st<std::pair<std::string const,FITAG *>>,std::less<std::string>,std::allocator<std::pair<std::string const,FITAG *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,FITAG *>>,std::pair<std::string const,FITAG *> const&)")
+}
+// 0x10a6e4 — __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE5eraseESt17_Rb_tree_iteratorIS4_ESC_ / std::_Rb_tree<std::string,std::pair<std::string const,FITAG *>,std::_Select1st<std::pair<std::string const,FITAG *>>,std::less<std::string>,std::allocator<std::pair<std::string const,FITAG *>>>::erase(std::_Rb_tree_iterator<std::pair<std::string const,FITAG *>>,std::_Rb_tree_iterator<std::pair<std::string const,FITAG *>>)
+// type: int __fastcall(int, _Rb_tree_node_base *)
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,FITAG *>,std::_Select1st<std::pair<std::string const,FITAG *>>,std::less<std::string>,std::allocator<std::pair<std::string const,FITAG *>>>::erase(std::_Rb_tree_iterator<std::pair<std::string const,FITAG *>>,std::_Rb_tree_iterator<std::pair<std::string const,FITAG *>>)")]
+pub fn stub_10a6e4() -> ! {
+    todo!("0x10a6e4 std::_Rb_tree<std::string,std::pair<std::string const,FITAG *>,std::_Select1st<std::pair<std::string const,FITAG *>>,std::less<std::string>,std::allocator<std::pair<std::string const,FITAG *>>>::erase(std::_Rb_tree_iterator<std::pair<std::string const,FITAG *>>,std::_Rb_tree_iterator<std::pair<std::string const,FITAG *>>)")
+}
+
+// 0x10a760 — __ZNSt8_Rb_treeISsSt4pairIKSsP5FITAGESt10_Select1stIS4_ESt4lessISsESaIS4_EE5eraseERS1_ / std::_Rb_tree<std::string,std::pair<std::string const,FITAG *>,std::_Select1st<std::pair<std::string const,FITAG *>>,std::less<std::string>,std::allocator<std::pair<std::string const,FITAG *>>>::erase(std::string const&)
+// type: int __fastcall(int, std::string *)
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,FITAG *>,std::_Select1st<std::pair<std::string const,FITAG *>>,std::less<std::string>,std::allocator<std::pair<std::string const,FITAG *>>>::erase(std::string const&)")]
+pub fn stub_10a760() -> ! {
+    todo!("0x10a760 std::_Rb_tree<std::string,std::pair<std::string const,FITAG *>,std::_Select1st<std::pair<std::string const,FITAG *>>,std::less<std::string>,std::allocator<std::pair<std::string const,FITAG *>>>::erase(std::string const&)")
+}
+
+// 0x10a7a8 — __ZNSt3mapISsP5FITAGSt4lessISsESaISt4pairIKSsS1_EEEixERS5_ / std::map<std::string,FITAG *,std::less<std::string>,std::allocator<std::pair<std::string const,FITAG *>>>::operator[](std::string const&)
+// type: (unknown)
+#[doc(alias = "std::map<std::string,FITAG *,std::less<std::string>,std::allocator<std::pair<std::string const,FITAG *>>>::operator[](std::string const&)")]
+pub fn stub_10a7a8() -> ! {
+    todo!("0x10a7a8 std::map<std::string,FITAG *,std::less<std::string>,std::allocator<std::pair<std::string const,FITAG *>>>::operator[](std::string const&)")
+}
+
+// 0x10a8e4 — __ZNSt3mapIiPS_ISsP5FITAGSt4lessISsESaISt4pairIKSsS1_EEES2_IiESaIS4_IKiS9_EEEixERSB_ / std::map<int,std::map<std::string,FITAG *,std::less<std::string>,std::allocator<std::pair<std::string const,FITAG *>>> *,std::less<int>,std::allocator<std::pair<int const,std::map<std::string,FITAG *,std::less<std::string>,std::allocator<std::pair<std::string const,FITAG *>>> *>>>::operator[](int const&)
+// type: (unknown)
+#[doc(alias = "std::map<int,std::map<std::string,FITAG *,std::less<std::string>,std::allocator<std::pair<std::string const,FITAG *>>> *,std::less<int>,std::allocator<std::pair<int const,std::map<std::string,FITAG *,std::less<std::string>,std::allocator<std::pair<std::string const,FITAG *>>> *>>>::operator[](int const&)")]
+pub fn stub_10a8e4() -> ! {
+    todo!("0x10a8e4 std::map<int,std::map<std::string,FITAG *,std::less<std::string>,std::allocator<std::pair<std::string const,FITAG *>>> *,std::less<int>,std::allocator<std::pair<int const,std::map<std::string,FITAG *,std::less<std::string>,std::allocator<std::pair<std::string const,FITAG *>>> *>>>::operator[](int const&)")
+}
+
+// 0x10a950 — _FreeImage_ConvertLine1To24 / _FreeImage_ConvertLine1To24
+// type: (unknown)
+#[doc(alias = "_FreeImage_ConvertLine1To24")]
+pub fn stub_10a950() -> ! {
+    todo!("0x10a950 _FreeImage_ConvertLine1To24")
+}
+
+// 0x10ab1c — _FreeImage_ConvertLine4To24 / _FreeImage_ConvertLine4To24
+// type: (unknown)
+#[doc(alias = "_FreeImage_ConvertLine4To24")]
+pub fn stub_10ab1c() -> ! {
+    todo!("0x10ab1c _FreeImage_ConvertLine4To24")
+}
+
+// 0x10ad30 — _FreeImage_ConvertLine8To24 / _FreeImage_ConvertLine8To24
+// type: (unknown)
+#[doc(alias = "_FreeImage_ConvertLine8To24")]
+pub fn stub_10ad30() -> ! {
+    todo!("0x10ad30 _FreeImage_ConvertLine8To24")
+}
+
+// 0x10af0c — _FreeImage_ConvertLine16To24_555 / _FreeImage_ConvertLine16To24_555
+// type: (unknown)
+#[doc(alias = "_FreeImage_ConvertLine16To24_555")]
+pub fn stub_10af0c() -> ! {
+    todo!("0x10af0c _FreeImage_ConvertLine16To24_555")
+}
+
+// 0x10b0b4 — _FreeImage_ConvertLine16To24_565 / _FreeImage_ConvertLine16To24_565
+// type: (unknown)
+#[doc(alias = "_FreeImage_ConvertLine16To24_565")]
+pub fn stub_10b0b4() -> ! {
+    todo!("0x10b0b4 _FreeImage_ConvertLine16To24_565")
+}
+
+// 0x10b270 — _FreeImage_ConvertLine32To24 / _FreeImage_ConvertLine32To24
+// type: (unknown)
+#[doc(alias = "_FreeImage_ConvertLine32To24")]
+pub fn stub_10b270() -> ! {
+    todo!("0x10b270 _FreeImage_ConvertLine32To24")
+}
+
+// 0x10b4a0 — _FreeImage_ConvertTo24Bits / _FreeImage_ConvertTo24Bits
+// type: (unknown)
+#[doc(alias = "_FreeImage_ConvertTo24Bits")]
+pub fn stub_10b4a0() -> ! {
+    todo!("0x10b4a0 _FreeImage_ConvertTo24Bits")
+}
+
+// 0x10c390 — _FreeImage_ConvertLine1To32 / _FreeImage_ConvertLine1To32
+// type: (unknown)
+#[doc(alias = "_FreeImage_ConvertLine1To32")]
+pub fn stub_10c390() -> ! {
+    todo!("0x10c390 _FreeImage_ConvertLine1To32")
+}
+
+// 0x10c590 — _FreeImage_ConvertLine4To32 / _FreeImage_ConvertLine4To32
+// type: (unknown)
+#[doc(alias = "_FreeImage_ConvertLine4To32")]
+pub fn stub_10c590() -> ! {
+    todo!("0x10c590 _FreeImage_ConvertLine4To32")
+}
+
+// 0x10c7c0 — _FreeImage_ConvertLine8To32 / _FreeImage_ConvertLine8To32
+// type: (unknown)
+#[doc(alias = "_FreeImage_ConvertLine8To32")]
+pub fn stub_10c7c0() -> ! {
+    todo!("0x10c7c0 _FreeImage_ConvertLine8To32")
+}
+
+// 0x10c9c4 — _FreeImage_ConvertLine16To32_555 / _FreeImage_ConvertLine16To32_555
+// type: (unknown)
+#[doc(alias = "_FreeImage_ConvertLine16To32_555")]
+pub fn stub_10c9c4() -> ! {
+    todo!("0x10c9c4 _FreeImage_ConvertLine16To32_555")
+}
+
+// 0x10cb84 — _FreeImage_ConvertLine16To32_565 / _FreeImage_ConvertLine16To32_565
+// type: (unknown)
+#[doc(alias = "_FreeImage_ConvertLine16To32_565")]
+pub fn stub_10cb84() -> ! {
+    todo!("0x10cb84 _FreeImage_ConvertLine16To32_565")
+}
+
+// 0x10cd50 — _FreeImage_ConvertLine24To32 / _FreeImage_ConvertLine24To32
+// type: (unknown)
+#[doc(alias = "_FreeImage_ConvertLine24To32")]
+pub fn stub_10cd50() -> ! {
+    todo!("0x10cd50 _FreeImage_ConvertLine24To32")
+}
+
+// 0x10ce94 — _FreeImage_ConvertTo32Bits / _FreeImage_ConvertTo32Bits
+// type: (unknown)
+#[doc(alias = "_FreeImage_ConvertTo32Bits")]
+pub fn stub_10ce94() -> ! {
+    todo!("0x10ce94 _FreeImage_ConvertTo32Bits")
+}
+
+// 0x10e008 — _FreeImage_ConvertLine1To8 / _FreeImage_ConvertLine1To8
+// type: (unknown)
+#[doc(alias = "_FreeImage_ConvertLine1To8")]
+pub fn stub_10e008() -> ! {
+    todo!("0x10e008 _FreeImage_ConvertLine1To8")
+}
+
+// 0x10e0fc — _FreeImage_ConvertLine4To8 / _FreeImage_ConvertLine4To8
+// type: (unknown)
+#[doc(alias = "_FreeImage_ConvertLine4To8")]
+pub fn stub_10e0fc() -> ! {
+    todo!("0x10e0fc _FreeImage_ConvertLine4To8")
 }
