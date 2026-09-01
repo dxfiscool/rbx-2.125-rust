@@ -606,9 +606,9 @@ pub fn stub_25fdc0() -> ! {
 
 // 0x25fdc8 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED1Ev
 // type: int __fastcall(int)
-#[doc(alias = "`non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
 pub fn stub_25fdc8() -> ! {
-    todo!("0x25fdc8 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")
+    todo!("0x25fdc8 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")
 }
 
 // 0x25fdd0 — __ZN5boost16exception_detail20copy_boost_exceptionEPNS_9exceptionEPKS1_
@@ -648,16 +648,16 @@ pub fn stub_25ff88() -> ! {
 
 // 0x260098 — __ZThn20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "`non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
 pub fn stub_260098() -> ! {
-    todo!("0x260098 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
+    todo!("0x260098 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
 }
 
 // 0x2600b0 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_14bad_exception_EE5cloneEv
 // type: int __fastcall(_DWORD *)
-#[doc(alias = "`virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone(void)const")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone(void)const")]
 pub fn stub_2600b0() -> ! {
-    todo!("0x2600b0 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone(void)const")
+    todo!("0x2600b0 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone(void)const")
 }
 
 // 0x2600c0 — __ZN5boost6detail12shared_countC1ERKS1_
