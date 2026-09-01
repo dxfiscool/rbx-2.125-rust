@@ -83,6 +83,7 @@ pub mod generated_79;
 pub mod generated_80;
 pub mod generated_81;
 pub mod generated_82;
+pub mod generated_83;
 
 
 // 0x686a4 — __ZN4FMOD10ProfileCpu4initEv
