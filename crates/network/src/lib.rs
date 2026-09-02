@@ -324,3 +324,4 @@ pub mod generated_net_wd_watchdog19;
 pub mod generated_net_wd_watchdog20;
 pub mod generated_net_wd_watchdog22;
 pub mod generated_201;
+pub mod generated_net_wd_watchdog23;
