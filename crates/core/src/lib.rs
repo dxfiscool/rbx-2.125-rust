@@ -474,3 +474,5 @@ pub mod generated_core_wd_10a;
 pub mod generated_core_wd_10k;
 pub mod generated_core_wd_10l;
 pub mod generated_core_wd_10m2;
+pub mod generated_core_wd_10n;
+pub mod generated_core_wd_10o;
