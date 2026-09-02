@@ -241,3 +241,4 @@ pub mod generated_236;
 pub mod generated_script_watchdog_a;
 pub mod generated_script_watchdog_b;
 pub mod generated_237;
+pub mod generated_script_watchdog_c;
