@@ -286,7 +286,7 @@ pub fn stub_846184() -> ! {
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFviiN3RBX13FriendService12FriendStatusEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEiiS5_")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFviiN3RBX13FriendService12FriendStatusEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEiiS5_
 pub fn stub_84618c() -> ! {
-    todo!("0x84618c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(int,int,RBX::FriendService::FriendStatus)>::slot,boost::function<void ()(int,int,RBX::FriendService::FriendStatus)>,3,void ()(int,int,RBX::FriendService::FriendStatus)>::call(int,int,RBX::FriendService::FriendStatus)")
+    todo!("0x84618c non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(int,int,RBX::FriendService::FriendStatus)>::slot,boost::function<void ()(int,int,RBX::FriendService::FriendStatus)>,3,void ()(int,int,RBX::FriendService::FriendStatus)>::call(int,int,RBX::FriendService::FriendStatus)")
 }
 
 // 0x846194 — __ZNK5boost9function3IviiN3RBX13FriendService12FriendStatusEEclEiiS3_
@@ -581,7 +581,7 @@ pub fn stub_847924() -> ! {
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEiiS5_")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEiiS5_
 pub fn stub_84792c() -> ! {
-    todo!("0x84792c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(int,int,RBX::FriendService::FriendEventType)>::slot,boost::function<void ()(int,int,RBX::FriendService::FriendEventType)>,3,void ()(int,int,RBX::FriendService::FriendEventType)>::call(int,int,RBX::FriendService::FriendEventType)")
+    todo!("0x84792c non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(int,int,RBX::FriendService::FriendEventType)>::slot,boost::function<void ()(int,int,RBX::FriendService::FriendEventType)>,3,void ()(int,int,RBX::FriendService::FriendEventType)>::call(int,int,RBX::FriendService::FriendEventType)")
 }
 
 // 0x847934 — __ZNK5boost9function3IviiN3RBX13FriendService15FriendEventTypeEEclEiiS3_
@@ -763,7 +763,7 @@ pub fn stub_848c0c() -> ! {
 #[doc(alias = "__GLOBAL__I_a_426")]
 // was: __GLOBAL__I_a_426
 pub fn stub_848c3c() -> ! {
-    todo!("0x848c3c `global constructor keyed to'_a_426")
+    todo!("0x848c3c global constructor keyed to _a_426")
 }
 
 // 0x8490fc — __ZN3RBX17GameBasicSettings14setControlModeENS0_11ControlModeE

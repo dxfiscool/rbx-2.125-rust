@@ -653,7 +653,7 @@ pub fn stub_7345c8() -> ! {
 #[doc(alias = "__ZThn32_N3RBX9GlueJointD1Ev")]
 // was: __ZThn32_N3RBX9GlueJointD1Ev
 pub fn stub_7345cc() -> ! {
-    todo!("0x7345cc `non-virtual thunk to'RBX::GlueJoint::~GlueJoint()")
+    todo!("0x7345cc non-virtual thunk to RBX::GlueJoint::~GlueJoint()")
 }
 
 // 0x7345d4 — __ZThn32_N3RBX9GlueJointD0Ev
@@ -662,7 +662,7 @@ pub fn stub_7345cc() -> ! {
 #[doc(alias = "__ZThn32_N3RBX9GlueJointD0Ev")]
 // was: __ZThn32_N3RBX9GlueJointD0Ev
 pub fn stub_7345d4() -> ! {
-    todo!("0x7345d4 `non-virtual thunk to'RBX::GlueJoint::~GlueJoint()")
+    todo!("0x7345d4 non-virtual thunk to RBX::GlueJoint::~GlueJoint()")
 }
 
 // 0x734678 — __ZN5boost14singleton_poolIN3RBX20NormalBreakConnectorELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv
@@ -702,7 +702,7 @@ pub fn stub_734730() -> ! {
 #[doc(alias = "__GLOBAL__I_a_319")]
 // was: __GLOBAL__I_a_319
 pub fn stub_734760() -> ! {
-    todo!("0x734760 `global constructor keyed to'_a_319")
+    todo!("0x734760 global constructor keyed to _a_319")
 }
 
 // 0x73492c — __ZN3RBX11GroundStageC1EPNS_6IStageEPNS_5WorldE

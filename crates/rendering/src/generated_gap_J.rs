@@ -207,10 +207,10 @@ pub fn stub_858598() -> ! {
 }
 
 // 0x8586d4 — __GLOBAL__I_a_430
-#[doc(alias = "`global constructor keyed to_a_430")]
-// was: `global constructor keyed to'_a_430
+#[doc(alias = "global constructor keyed to_a_430")]
+// was: global constructor keyed to _a_430
 pub fn stub_8586d4() -> ! {
-    todo!("0x8586d4 `global constructor keyed to'_a_430")
+    todo!("0x8586d4 global constructor keyed to _a_430")
 }
 
 // 0x85a62c — __Z13getStringByIdi
@@ -418,10 +418,10 @@ pub fn stub_85b5bc() -> ! {
 }
 
 // 0x85b5e0 — __GLOBAL__I_a_431
-#[doc(alias = "`global constructor keyed to_a_431")]
-// was: `global constructor keyed to'_a_431
+#[doc(alias = "global constructor keyed to_a_431")]
+// was: global constructor keyed to _a_431
 pub fn stub_85b5e0() -> ! {
-    todo!("0x85b5e0 `global constructor keyed to'_a_431")
+    todo!("0x85b5e0 global constructor keyed to _a_431")
 }
 
 // 0x85ba3c — __ZN3RBX19CustomEventReceiver9setSourceEPNS_8InstanceE
@@ -525,34 +525,34 @@ pub fn stub_85c3bc() -> ! {
 
 // 0x85c45c — __ZThn32_N3RBX19CustomEventReceiverD1Ev
 // type: void __fastcall(RBX::CustomEventReceiver *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::CustomEventReceiver::~CustomEventReceiver()")]
-// was: `non-virtual thunk to'RBX::CustomEventReceiver::~CustomEventReceiver()
+#[doc(alias = "non-virtual thunk toRBX::CustomEventReceiver::~CustomEventReceiver()")]
+// was: non-virtual thunk to RBX::CustomEventReceiver::~CustomEventReceiver()
 pub fn stub_85c45c() -> ! {
-    todo!("0x85c45c `non-virtual thunk to'RBX::CustomEventReceiver::~CustomEventReceiver()")
+    todo!("0x85c45c non-virtual thunk to RBX::CustomEventReceiver::~CustomEventReceiver()")
 }
 
 // 0x85c464 — __ZThn32_N3RBX19CustomEventReceiverD0Ev
 // type: void __fastcall(RBX::CustomEventReceiver *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::CustomEventReceiver::~CustomEventReceiver()")]
-// was: `non-virtual thunk to'RBX::CustomEventReceiver::~CustomEventReceiver()
+#[doc(alias = "non-virtual thunk toRBX::CustomEventReceiver::~CustomEventReceiver()")]
+// was: non-virtual thunk to RBX::CustomEventReceiver::~CustomEventReceiver()
 pub fn stub_85c464() -> ! {
-    todo!("0x85c464 `non-virtual thunk to'RBX::CustomEventReceiver::~CustomEventReceiver()")
+    todo!("0x85c464 non-virtual thunk to RBX::CustomEventReceiver::~CustomEventReceiver()")
 }
 
 // 0x85c508 — __ZThn36_N3RBX19CustomEventReceiverD1Ev
 // type: void __fastcall(RBX::CustomEventReceiver *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::CustomEventReceiver::~CustomEventReceiver()")]
-// was: `non-virtual thunk to'RBX::CustomEventReceiver::~CustomEventReceiver()
+#[doc(alias = "non-virtual thunk toRBX::CustomEventReceiver::~CustomEventReceiver()")]
+// was: non-virtual thunk to RBX::CustomEventReceiver::~CustomEventReceiver()
 pub fn stub_85c508() -> ! {
-    todo!("0x85c508 `non-virtual thunk to'RBX::CustomEventReceiver::~CustomEventReceiver()")
+    todo!("0x85c508 non-virtual thunk to RBX::CustomEventReceiver::~CustomEventReceiver()")
 }
 
 // 0x85c510 — __ZThn36_N3RBX19CustomEventReceiverD0Ev
 // type: void __fastcall(RBX::CustomEventReceiver *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::CustomEventReceiver::~CustomEventReceiver()")]
-// was: `non-virtual thunk to'RBX::CustomEventReceiver::~CustomEventReceiver()
+#[doc(alias = "non-virtual thunk toRBX::CustomEventReceiver::~CustomEventReceiver()")]
+// was: non-virtual thunk to RBX::CustomEventReceiver::~CustomEventReceiver()
 pub fn stub_85c510() -> ! {
-    todo!("0x85c510 `non-virtual thunk to'RBX::CustomEventReceiver::~CustomEventReceiver()")
+    todo!("0x85c510 non-virtual thunk to RBX::CustomEventReceiver::~CustomEventReceiver()")
 }
 
 // 0x85c5b4 — __ZN3RBX10Reflection9EventDescINS_19CustomEventReceiverEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_EC2ESB_PKcSE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
