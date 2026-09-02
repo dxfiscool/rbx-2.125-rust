@@ -649,7 +649,7 @@ pub fn stub_7345c8() -> ! {
 
 // 0x7345cc — __ZThn32_N3RBX9GlueJointD1Ev
 // type: void __fastcall(RBX::GlueJoint *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GlueJoint::~GlueJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::GlueJoint::~GlueJoint()")]
 #[doc(alias = "__ZThn32_N3RBX9GlueJointD1Ev")]
 // was: __ZThn32_N3RBX9GlueJointD1Ev
 pub fn stub_7345cc() -> ! {
@@ -658,7 +658,7 @@ pub fn stub_7345cc() -> ! {
 
 // 0x7345d4 — __ZThn32_N3RBX9GlueJointD0Ev
 // type: void __fastcall(RBX::GlueJoint *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GlueJoint::~GlueJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::GlueJoint::~GlueJoint()")]
 #[doc(alias = "__ZThn32_N3RBX9GlueJointD0Ev")]
 // was: __ZThn32_N3RBX9GlueJointD0Ev
 pub fn stub_7345d4() -> ! {
@@ -698,7 +698,7 @@ pub fn stub_734730() -> ! {
 }
 
 // 0x734760 — __GLOBAL__I_a_319
-#[doc(alias = "`global constructor keyed to_a_319")]
+#[doc(alias = "global constructor keyed to_a_319")]
 #[doc(alias = "__GLOBAL__I_a_319")]
 // was: __GLOBAL__I_a_319
 pub fn stub_734760() -> ! {

@@ -591,3 +591,5 @@ pub mod generated_dm_wdog_C;
 pub mod generated_dm_wdog_D;
 pub mod generated_dm_wdog_E;
 pub mod generated_dm_wdog_G_1788368415;
+pub mod generated_dm_wdog_F_1788368585;
+pub mod generated_gap_5404ac;
