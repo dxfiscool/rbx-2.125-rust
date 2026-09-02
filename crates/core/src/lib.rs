@@ -471,3 +471,4 @@ pub mod generated_core_wd3b_1788337595;
 pub mod generated_core_wd3c_1788337701;
 pub mod generated_core_wd_10i;
 pub mod generated_core_wd_10a;
+pub mod generated_core_wd_10k;
