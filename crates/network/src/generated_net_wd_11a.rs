@@ -47,7 +47,6 @@ pub fn stub_40a870() -> ! {
 // 0x40a948 — __ZNK3RBX5NamedINS_11SurfaceToolELZNS_21sSmoothNoOutlinesToolEEE7getNameEv
 // type: int()
 #[doc(alias = "__ZNK3RBX5NamedINS_11SurfaceToolELZNS_21sSmoothNoOutlinesToolEEE7getNameEv")]
-#[doc(alias = "__ZNK3RBX5NamedINS_11SurfaceToolELZNS_21sSmoothNoOutlinesToolEEE7getNameEv")]
 pub fn stub_40a948() -> ! {
     todo!("0x40a948 __ZNK3RBX5NamedINS_11SurfaceToolELZNS_21sSmoothNoOutlinesToolEEE7getNameEv")
 }
@@ -135,13 +134,11 @@ pub fn stub_40ad04() -> ! {
 // 0x40ad08 — __ZN3RBX4Name7declareILZNS_21sSmoothNoOutlinesToolEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_21sSmoothNoOutlinesToolEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name7declareILZNS_21sSmoothNoOutlinesToolEEEERKS0_v")]
 pub fn stub_40ad08() -> ! {
     todo!("0x40ad08 __ZN3RBX4Name7declareILZNS_21sSmoothNoOutlinesToolEEEERKS0_v")
 }
 
 // 0x40ad4c — __ZN3RBX4Name13callDoDeclareILZNS_21sSmoothNoOutlinesToolEEEEvv
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_21sSmoothNoOutlinesToolEEEEvv")]
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_21sSmoothNoOutlinesToolEEEEvv")]
 pub fn stub_40ad4c() -> ! {
     todo!("0x40ad4c __ZN3RBX4Name13callDoDeclareILZNS_21sSmoothNoOutlinesToolEEEEvv")
@@ -149,7 +146,6 @@ pub fn stub_40ad4c() -> ! {
 
 // 0x40ad50 — __ZN3RBX4Name9doDeclareILZNS_21sSmoothNoOutlinesToolEEEERKS0_v
 // type: int()
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_21sSmoothNoOutlinesToolEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_21sSmoothNoOutlinesToolEEEERKS0_v")]
 pub fn stub_40ad50() -> ! {
     todo!("0x40ad50 __ZN3RBX4Name9doDeclareILZNS_21sSmoothNoOutlinesToolEEEERKS0_v")
@@ -205,7 +201,6 @@ pub fn stub_40b270() -> ! {
 
 // 0x40b348 — __ZNK3RBX5NamedINS_11SurfaceToolELZNS_19sOscillateMotorToolEEE7getNameEv
 // type: int()
-#[doc(alias = "__ZNK3RBX5NamedINS_11SurfaceToolELZNS_19sOscillateMotorToolEEE7getNameEv")]
 #[doc(alias = "__ZNK3RBX5NamedINS_11SurfaceToolELZNS_19sOscillateMotorToolEEE7getNameEv")]
 pub fn stub_40b348() -> ! {
     todo!("0x40b348 __ZNK3RBX5NamedINS_11SurfaceToolELZNS_19sOscillateMotorToolEEE7getNameEv")
@@ -286,13 +281,11 @@ pub fn stub_40b63c() -> ! {
 // 0x40b640 — __ZN3RBX4Name7declareILZNS_19sOscillateMotorToolEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_19sOscillateMotorToolEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name7declareILZNS_19sOscillateMotorToolEEEERKS0_v")]
 pub fn stub_40b640() -> ! {
     todo!("0x40b640 __ZN3RBX4Name7declareILZNS_19sOscillateMotorToolEEEERKS0_v")
 }
 
 // 0x40b684 — __ZN3RBX4Name13callDoDeclareILZNS_19sOscillateMotorToolEEEEvv
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_19sOscillateMotorToolEEEEvv")]
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_19sOscillateMotorToolEEEEvv")]
 pub fn stub_40b684() -> ! {
     todo!("0x40b684 __ZN3RBX4Name13callDoDeclareILZNS_19sOscillateMotorToolEEEEvv")
@@ -300,7 +293,6 @@ pub fn stub_40b684() -> ! {
 
 // 0x40b688 — __ZN3RBX4Name9doDeclareILZNS_19sOscillateMotorToolEEEERKS0_v
 // type: int()
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_19sOscillateMotorToolEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_19sOscillateMotorToolEEEERKS0_v")]
 pub fn stub_40b688() -> ! {
     todo!("0x40b688 __ZN3RBX4Name9doDeclareILZNS_19sOscillateMotorToolEEEERKS0_v")
@@ -356,7 +348,6 @@ pub fn stub_40bba8() -> ! {
 
 // 0x40bc80 — __ZNK3RBX5NamedINS_11SurfaceToolELZNS_14sLeftMotorToolEEE7getNameEv
 // type: int()
-#[doc(alias = "__ZNK3RBX5NamedINS_11SurfaceToolELZNS_14sLeftMotorToolEEE7getNameEv")]
 #[doc(alias = "__ZNK3RBX5NamedINS_11SurfaceToolELZNS_14sLeftMotorToolEEE7getNameEv")]
 pub fn stub_40bc80() -> ! {
     todo!("0x40bc80 __ZNK3RBX5NamedINS_11SurfaceToolELZNS_14sLeftMotorToolEEE7getNameEv")
@@ -437,13 +428,11 @@ pub fn stub_40bf74() -> ! {
 // 0x40bf78 — __ZN3RBX4Name7declareILZNS_14sLeftMotorToolEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_14sLeftMotorToolEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name7declareILZNS_14sLeftMotorToolEEEERKS0_v")]
 pub fn stub_40bf78() -> ! {
     todo!("0x40bf78 __ZN3RBX4Name7declareILZNS_14sLeftMotorToolEEEERKS0_v")
 }
 
 // 0x40bfbc — __ZN3RBX4Name13callDoDeclareILZNS_14sLeftMotorToolEEEEvv
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sLeftMotorToolEEEEvv")]
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sLeftMotorToolEEEEvv")]
 pub fn stub_40bfbc() -> ! {
     todo!("0x40bfbc __ZN3RBX4Name13callDoDeclareILZNS_14sLeftMotorToolEEEEvv")
@@ -451,7 +440,6 @@ pub fn stub_40bfbc() -> ! {
 
 // 0x40bfc0 — __ZN3RBX4Name9doDeclareILZNS_14sLeftMotorToolEEEERKS0_v
 // type: int()
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sLeftMotorToolEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sLeftMotorToolEEEERKS0_v")]
 pub fn stub_40bfc0() -> ! {
     todo!("0x40bfc0 __ZN3RBX4Name9doDeclareILZNS_14sLeftMotorToolEEEERKS0_v")
@@ -507,7 +495,6 @@ pub fn stub_40c4e0() -> ! {
 
 // 0x40c5b8 — __ZNK3RBX5NamedINS_11SurfaceToolELZNS_15sRightMotorToolEEE7getNameEv
 // type: int()
-#[doc(alias = "__ZNK3RBX5NamedINS_11SurfaceToolELZNS_15sRightMotorToolEEE7getNameEv")]
 #[doc(alias = "__ZNK3RBX5NamedINS_11SurfaceToolELZNS_15sRightMotorToolEEE7getNameEv")]
 pub fn stub_40c5b8() -> ! {
     todo!("0x40c5b8 __ZNK3RBX5NamedINS_11SurfaceToolELZNS_15sRightMotorToolEEE7getNameEv")
@@ -596,13 +583,11 @@ pub fn stub_40c974() -> ! {
 // 0x40c978 — __ZN3RBX4Name7declareILZNS_15sRightMotorToolEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_15sRightMotorToolEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name7declareILZNS_15sRightMotorToolEEEERKS0_v")]
 pub fn stub_40c978() -> ! {
     todo!("0x40c978 __ZN3RBX4Name7declareILZNS_15sRightMotorToolEEEERKS0_v")
 }
 
 // 0x40c9bc — __ZN3RBX4Name13callDoDeclareILZNS_15sRightMotorToolEEEEvv
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_15sRightMotorToolEEEEvv")]
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_15sRightMotorToolEEEEvv")]
 pub fn stub_40c9bc() -> ! {
     todo!("0x40c9bc __ZN3RBX4Name13callDoDeclareILZNS_15sRightMotorToolEEEEvv")
@@ -610,7 +595,6 @@ pub fn stub_40c9bc() -> ! {
 
 // 0x40c9c0 — __ZN3RBX4Name9doDeclareILZNS_15sRightMotorToolEEEERKS0_v
 // type: int()
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_15sRightMotorToolEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_15sRightMotorToolEEEERKS0_v")]
 pub fn stub_40c9c0() -> ! {
     todo!("0x40c9c0 __ZN3RBX4Name9doDeclareILZNS_15sRightMotorToolEEEERKS0_v")
@@ -666,7 +650,6 @@ pub fn stub_40cee0() -> ! {
 
 // 0x40cfb8 — __ZNK3RBX5NamedINS_11SurfaceToolELZNS_10sHingeToolEEE7getNameEv
 // type: int()
-#[doc(alias = "__ZNK3RBX5NamedINS_11SurfaceToolELZNS_10sHingeToolEEE7getNameEv")]
 #[doc(alias = "__ZNK3RBX5NamedINS_11SurfaceToolELZNS_10sHingeToolEEE7getNameEv")]
 pub fn stub_40cfb8() -> ! {
     todo!("0x40cfb8 __ZNK3RBX5NamedINS_11SurfaceToolELZNS_10sHingeToolEEE7getNameEv")
@@ -755,13 +738,11 @@ pub fn stub_40d374() -> ! {
 // 0x40d378 — __ZN3RBX4Name7declareILZNS_10sHingeToolEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_10sHingeToolEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name7declareILZNS_10sHingeToolEEEERKS0_v")]
 pub fn stub_40d378() -> ! {
     todo!("0x40d378 __ZN3RBX4Name7declareILZNS_10sHingeToolEEEERKS0_v")
 }
 
 // 0x40d3bc — __ZN3RBX4Name13callDoDeclareILZNS_10sHingeToolEEEEvv
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_10sHingeToolEEEEvv")]
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_10sHingeToolEEEEvv")]
 pub fn stub_40d3bc() -> ! {
     todo!("0x40d3bc __ZN3RBX4Name13callDoDeclareILZNS_10sHingeToolEEEEvv")
@@ -769,7 +750,6 @@ pub fn stub_40d3bc() -> ! {
 
 // 0x40d3c0 — __ZN3RBX4Name9doDeclareILZNS_10sHingeToolEEEERKS0_v
 // type: int()
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sHingeToolEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sHingeToolEEEERKS0_v")]
 pub fn stub_40d3c0() -> ! {
     todo!("0x40d3c0 __ZN3RBX4Name9doDeclareILZNS_10sHingeToolEEEERKS0_v")

@@ -687,13 +687,11 @@ pub fn stub_f65834() -> ! {
 // 0xf65844 — j___ZN3RBX14FactoryProductINS_8LightingENS_8InstanceELZNS_9sLightingEES2_E7CreatorC2Ev
 // type: int __fastcall(_DWORD)
 #[doc(alias = "j___ZN3RBX14FactoryProductINS_8LightingENS_8InstanceELZNS_9sLightingEES2_E7CreatorC2Ev")]
-#[doc(alias = "j___ZN3RBX14FactoryProductINS_8LightingENS_8InstanceELZNS_9sLightingEES2_E7CreatorC2Ev")]
 pub fn stub_f65844() -> ! {
     todo!("0xf65844 j___ZN3RBX14FactoryProductINS_8LightingENS_8InstanceELZNS_9sLightingEES2_E7CreatorC2Ev")
 }
 
 // 0xf65854 — j___ZN3RBX17NonFactoryProductINS_24CacheableContentProviderELZNS_23sTextureContentProviderEEE9classNameEv
-#[doc(alias = "j___ZN3RBX17NonFactoryProductINS_24CacheableContentProviderELZNS_23sTextureContentProviderEEE9classNameEv")]
 #[doc(alias = "j___ZN3RBX17NonFactoryProductINS_24CacheableContentProviderELZNS_23sTextureContentProviderEEE9classNameEv")]
 pub fn stub_f65854() -> ! {
     todo!("0xf65854 j___ZN3RBX17NonFactoryProductINS_24CacheableContentProviderELZNS_23sTextureContentProviderEEE9classNameEv")
@@ -701,20 +699,17 @@ pub fn stub_f65854() -> ! {
 
 // 0xf65864 — j___ZN3RBX17NonFactoryProductINS_8InstanceELZNS_12sTextServiceEEE9classNameEv
 #[doc(alias = "j___ZN3RBX17NonFactoryProductINS_8InstanceELZNS_12sTextServiceEEE9classNameEv")]
-#[doc(alias = "j___ZN3RBX17NonFactoryProductINS_8InstanceELZNS_12sTextServiceEEE9classNameEv")]
 pub fn stub_f65864() -> ! {
     todo!("0xf65864 j___ZN3RBX17NonFactoryProductINS_8InstanceELZNS_12sTextServiceEEE9classNameEv")
 }
 
 // 0xf65874 — j___ZN3RBX17NonFactoryProductINS_8InstanceELZNS_19sRenderHooksServiceEEE9classNameEv
 #[doc(alias = "j___ZN3RBX17NonFactoryProductINS_8InstanceELZNS_19sRenderHooksServiceEEE9classNameEv")]
-#[doc(alias = "j___ZN3RBX17NonFactoryProductINS_8InstanceELZNS_19sRenderHooksServiceEEE9classNameEv")]
 pub fn stub_f65874() -> ! {
     todo!("0xf65874 j___ZN3RBX17NonFactoryProductINS_8InstanceELZNS_19sRenderHooksServiceEEE9classNameEv")
 }
 
 // 0xf65884 — j___ZN3RBX4Name7declareILZNS_13sCylinderMeshEEEERKS0_v
-#[doc(alias = "j___ZN3RBX4Name7declareILZNS_13sCylinderMeshEEEERKS0_v")]
 #[doc(alias = "j___ZN3RBX4Name7declareILZNS_13sCylinderMeshEEEERKS0_v")]
 pub fn stub_f65884() -> ! {
     todo!("0xf65884 j___ZN3RBX4Name7declareILZNS_13sCylinderMeshEEEERKS0_v")

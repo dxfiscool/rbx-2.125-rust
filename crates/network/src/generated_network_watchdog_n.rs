@@ -383,7 +383,6 @@ pub fn stub_2efef8() -> ! {
 
 // 0x2f0060 — __ZNK3RBX5NamedINS_12MouseCommandELZNS_9sNullToolEEE7getNameEv
 #[doc(alias = "__ZNK3RBX5NamedINS_12MouseCommandELZNS_9sNullToolEEE7getNameEv")]
-#[doc(alias = "__ZNK3RBX5NamedINS_12MouseCommandELZNS_9sNullToolEEE7getNameEv")]
 pub fn stub_2f0060() -> ! {
     todo!("0x2f0060 __ZNK3RBX5NamedINS_12MouseCommandELZNS_9sNullToolEEE7getNameEv")
 }
@@ -413,7 +412,6 @@ pub fn stub_2f0224() -> ! {
 }
 
 // 0x2f0240 — __ZNK3RBX5NamedINS_12MouseCommandELZNS_12sNewNullToolEEE7getNameEv
-#[doc(alias = "__ZNK3RBX5NamedINS_12MouseCommandELZNS_12sNewNullToolEEE7getNameEv")]
 #[doc(alias = "__ZNK3RBX5NamedINS_12MouseCommandELZNS_12sNewNullToolEEE7getNameEv")]
 pub fn stub_2f0240() -> ! {
     todo!("0x2f0240 __ZNK3RBX5NamedINS_12MouseCommandELZNS_12sNewNullToolEEE7getNameEv")
@@ -461,13 +459,11 @@ pub fn stub_2f0414() -> ! {
 
 // 0x2f0418 — __ZN3RBX4Name13callDoDeclareILZNS_12sNewNullToolEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_12sNewNullToolEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_12sNewNullToolEEEEvv")]
 pub fn stub_2f0418() -> ! {
     todo!("0x2f0418 __ZN3RBX4Name13callDoDeclareILZNS_12sNewNullToolEEEEvv")
 }
 
 // 0x2f041c — __ZN3RBX4Name9doDeclareILZNS_12sNewNullToolEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sNewNullToolEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sNewNullToolEEEERKS0_v")]
 pub fn stub_2f041c() -> ! {
     todo!("0x2f041c __ZN3RBX4Name9doDeclareILZNS_12sNewNullToolEEEERKS0_v")
@@ -624,7 +620,6 @@ pub fn stub_2f1754() -> ! {
 
 // 0x2f1808 — __ZNK3RBX5NamedINS_12MouseCommandELZNS_13sPartDragToolEEE7getNameEv
 #[doc(alias = "__ZNK3RBX5NamedINS_12MouseCommandELZNS_13sPartDragToolEEE7getNameEv")]
-#[doc(alias = "__ZNK3RBX5NamedINS_12MouseCommandELZNS_13sPartDragToolEEE7getNameEv")]
 pub fn stub_2f1808() -> ! {
     todo!("0x2f1808 __ZNK3RBX5NamedINS_12MouseCommandELZNS_13sPartDragToolEEE7getNameEv")
 }
@@ -647,13 +642,11 @@ pub fn stub_2f1834() -> ! {
 
 // 0x2f1864 — __ZN3RBX4Name13callDoDeclareILZNS_13sPartDragToolEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_13sPartDragToolEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_13sPartDragToolEEEEvv")]
 pub fn stub_2f1864() -> ! {
     todo!("0x2f1864 __ZN3RBX4Name13callDoDeclareILZNS_13sPartDragToolEEEEvv")
 }
 
 // 0x2f1868 — __ZN3RBX4Name9doDeclareILZNS_13sPartDragToolEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_13sPartDragToolEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_13sPartDragToolEEEERKS0_v")]
 pub fn stub_2f1868() -> ! {
     todo!("0x2f1868 __ZN3RBX4Name9doDeclareILZNS_13sPartDragToolEEEERKS0_v")

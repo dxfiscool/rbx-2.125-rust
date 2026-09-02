@@ -398,7 +398,6 @@ pub fn stub_34a5ec() -> ! {
 
 // 0x34a714 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv")]
 pub fn stub_34a714() -> ! {
     todo!("0x34a714 __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv")
 }
@@ -421,7 +420,6 @@ pub fn stub_34a84c() -> ! {
 
 // 0x34a970 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv")]
-#[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv")]
 pub fn stub_34a970() -> ! {
     todo!("0x34a970 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv")
 }
@@ -443,7 +441,6 @@ pub fn stub_34aaa4() -> ! {
 }
 
 // 0x34abc8 — __ZN3RBX4Name13callDoDeclareILZNS_14sLuaWebServiceEEEEvv
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sLuaWebServiceEEEEvv")]
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sLuaWebServiceEEEEvv")]
 pub fn stub_34abc8() -> ! {
     todo!("0x34abc8 __ZN3RBX4Name13callDoDeclareILZNS_14sLuaWebServiceEEEEvv")
@@ -620,14 +617,12 @@ pub fn stub_35031c() -> ! {
 // 0x350670 — __ZN5boost8functionIFvSsEEC2INS_3_bi6bind_tINS4_11unspecifiedENS0_IFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS4_5list1INS4_5valueISK_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZN5boost8functionIFvSsEEC2INS_3_bi6bind_tINS4_11unspecifiedENS0_IFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS4_5list1INS4_5valueISK_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")]
-#[doc(alias = "__ZN5boost8functionIFvSsEEC2INS_3_bi6bind_tINS4_11unspecifiedENS0_IFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS4_5list1INS4_5valueISK_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")]
 pub fn stub_350670() -> ! {
     todo!("0x350670 __ZN5boost8functionIFvSsEEC2INS_3_bi6bind_tINS4_11unspecifiedENS0_IFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS4_5list1INS4_5valueISK_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")
 }
 
 // 0x3507b4 — __ZN5boost9function1IvSsEC2INS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS3_5list1INS3_5valueISK_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "__ZN5boost9function1IvSsEC2INS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS3_5list1INS3_5valueISK_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")]
 #[doc(alias = "__ZN5boost9function1IvSsEC2INS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS3_5list1INS3_5valueISK_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")]
 pub fn stub_3507b4() -> ! {
     todo!("0x3507b4 __ZN5boost9function1IvSsEC2INS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS3_5list1INS3_5valueISK_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")

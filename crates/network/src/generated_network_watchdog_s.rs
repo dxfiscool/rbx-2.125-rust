@@ -209,7 +209,6 @@ pub fn stub_3207f8() -> ! {
 // 0x3208c0 — _gpc_free_polygon
 // type: int __fastcall(_DWORD)
 #[doc(alias = "_gpc_free_polygon")]
-#[doc(alias = "_gpc_free_polygon")]
 pub fn stub_3208c0() -> ! {
     todo!("0x3208c0 _gpc_free_polygon")
 }
@@ -217,13 +216,11 @@ pub fn stub_3208c0() -> ! {
 // 0x320910 — _gpc_polygon_clip
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "_gpc_polygon_clip")]
-#[doc(alias = "_gpc_polygon_clip")]
 pub fn stub_320910() -> ! {
     todo!("0x320910 _gpc_polygon_clip")
 }
 
 // 0x321838 — _minimax_test
-#[doc(alias = "_minimax_test")]
 #[doc(alias = "_minimax_test")]
 pub fn stub_321838() -> ! {
     todo!("0x321838 _minimax_test")
@@ -231,13 +228,11 @@ pub fn stub_321838() -> ! {
 
 // 0x321a18 — _build_lmt
 #[doc(alias = "_build_lmt")]
-#[doc(alias = "_build_lmt")]
 pub fn stub_321a18() -> ! {
     todo!("0x321a18 _build_lmt")
 }
 
 // 0x321fd4 — _build_sbt
-#[doc(alias = "_build_sbt")]
 #[doc(alias = "_build_sbt")]
 pub fn stub_321fd4() -> ! {
     todo!("0x321fd4 _build_sbt")
@@ -245,13 +240,11 @@ pub fn stub_321fd4() -> ! {
 
 // 0x322004 — _free_sbtree
 #[doc(alias = "_free_sbtree")]
-#[doc(alias = "_free_sbtree")]
 pub fn stub_322004() -> ! {
     todo!("0x322004 _free_sbtree")
 }
 
 // 0x322030 — _add_edge_to_aet
-#[doc(alias = "_add_edge_to_aet")]
 #[doc(alias = "_add_edge_to_aet")]
 pub fn stub_322030() -> ! {
     todo!("0x322030 _add_edge_to_aet")
@@ -259,13 +252,11 @@ pub fn stub_322030() -> ! {
 
 // 0x322088 — _add_local_min
 #[doc(alias = "_add_local_min")]
-#[doc(alias = "_add_local_min")]
 pub fn stub_322088() -> ! {
     todo!("0x322088 _add_local_min")
 }
 
 // 0x322140 — _add_right
-#[doc(alias = "_add_right")]
 #[doc(alias = "_add_right")]
 pub fn stub_322140() -> ! {
     todo!("0x322140 _add_right")
@@ -274,13 +265,11 @@ pub fn stub_322140() -> ! {
 // 0x3221b0 — _add_left
 // type: _QWORD *__fastcall(int)
 #[doc(alias = "_add_left")]
-#[doc(alias = "_add_left")]
 pub fn stub_3221b0() -> ! {
     todo!("0x3221b0 _add_left")
 }
 
 // 0x32221c — _merge_right
-#[doc(alias = "_merge_right")]
 #[doc(alias = "_merge_right")]
 pub fn stub_32221c() -> ! {
     todo!("0x32221c _merge_right")
@@ -288,13 +277,11 @@ pub fn stub_32221c() -> ! {
 
 // 0x322268 — _merge_left
 #[doc(alias = "_merge_left")]
-#[doc(alias = "_merge_left")]
 pub fn stub_322268() -> ! {
     todo!("0x322268 _merge_left")
 }
 
 // 0x3222b8 — _build_intersection_table
-#[doc(alias = "_build_intersection_table")]
 #[doc(alias = "_build_intersection_table")]
 pub fn stub_3222b8() -> ! {
     todo!("0x3222b8 _build_intersection_table")
@@ -303,20 +290,17 @@ pub fn stub_3222b8() -> ! {
 // 0x3224d8 — _insert_bound
 // type: int *__fastcall(int *result, int)
 #[doc(alias = "_insert_bound")]
-#[doc(alias = "_insert_bound")]
 pub fn stub_3224d8() -> ! {
     todo!("0x3224d8 _insert_bound")
 }
 
 // 0x322518 — _bound_list
 #[doc(alias = "_bound_list")]
-#[doc(alias = "_bound_list")]
 pub fn stub_322518() -> ! {
     todo!("0x322518 _bound_list")
 }
 
 // 0x3225b8 — _create_contour_bboxes
-#[doc(alias = "_create_contour_bboxes")]
 #[doc(alias = "_create_contour_bboxes")]
 pub fn stub_3225b8() -> ! {
     todo!("0x3225b8 _create_contour_bboxes")
