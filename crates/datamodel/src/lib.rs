@@ -597,3 +597,4 @@ pub mod generated_wdog_dm_A2_1788369390;
 pub mod generated_wdog_dm_A2_1788369662;
 pub mod generated_wdog_dm_B2_1788369419;
 pub mod generated_wdog_dm_C2_1788370600;
+pub mod generated_datamodel_shard_289;
