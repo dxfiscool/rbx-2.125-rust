@@ -281,3 +281,4 @@ pub mod generated_244;
 pub mod generated_245;
 pub mod generated_script_wd_10g;
 pub mod generated_script_wd_10h;
+pub mod generated_script_wd_10i;
