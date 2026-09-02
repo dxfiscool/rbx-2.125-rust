@@ -407,3 +407,4 @@ pub mod generated_plat_bg10;
 pub mod generated_plat_bg11;
 pub mod generated_plat_wd_watchdog_a;
 pub mod generated_watchdog_plat_1788382973;
+pub mod generated_plat_ios_eagl;
