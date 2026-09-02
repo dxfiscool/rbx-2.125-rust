@@ -503,3 +503,5 @@ pub mod generated_datamodel_shard_281;
 pub mod generated_datamodel_watchdog_A;
 pub mod generated_270;
 pub mod generated_282;
+pub mod generated_datamodel_shard_283;
+pub mod generated_283;
