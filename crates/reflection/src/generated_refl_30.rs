@@ -521,7 +521,6 @@ pub fn stub_2577c0() -> ! {
 
 // 0x2580a8 — __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD1Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD1Ev")]
 pub fn stub_2580a8() -> ! {
     todo!("0x2580a8 __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD1Ev")
 }
@@ -541,7 +540,6 @@ pub fn stub_2580b0() -> ! {
 }
 
 // 0x258150 — __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv")]
 pub fn stub_258150() -> ! {
     todo!("0x258150 __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv")
@@ -563,7 +561,6 @@ pub fn stub_258168() -> ! {
 
 // 0x25820c — __ZThn32_NK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv")]
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv")]
 pub fn stub_25820c() -> ! {
     todo!("0x25820c __ZThn32_NK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv")
 }
@@ -584,13 +581,11 @@ pub fn stub_258224() -> ! {
 
 // 0x2582c8 — __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E17static_getCreatorEv
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E17static_getCreatorEv")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E17static_getCreatorEv")]
 pub fn stub_2582c8() -> ! {
     todo!("0x2582c8 __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E17static_getCreatorEv")
 }
 
 // 0x25833c — __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator12getClassNameEv
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator12getClassNameEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator12getClassNameEv")]
 pub fn stub_25833c() -> ! {
     todo!("0x25833c __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator12getClassNameEv")
@@ -598,13 +593,11 @@ pub fn stub_25833c() -> ! {
 
 // 0x2583c4 — __ZN3RBX4Name13callDoDeclareILZNS_12sHttpServiceEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_12sHttpServiceEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_12sHttpServiceEEEEvv")]
 pub fn stub_2583c4() -> ! {
     todo!("0x2583c4 __ZN3RBX4Name13callDoDeclareILZNS_12sHttpServiceEEEEvv")
 }
 
 // 0x2583c8 — __ZN3RBX4Name9doDeclareILZNS_12sHttpServiceEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sHttpServiceEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sHttpServiceEEEERKS0_v")]
 pub fn stub_2583c8() -> ! {
     todo!("0x2583c8 __ZN3RBX4Name9doDeclareILZNS_12sHttpServiceEEEERKS0_v")
@@ -612,13 +605,11 @@ pub fn stub_2583c8() -> ! {
 
 // 0x2584a8 — __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD2Ev")]
 pub fn stub_2584a8() -> ! {
     todo!("0x2584a8 __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD2Ev")
 }
 
 // 0x258544 — __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator6createEv
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator6createEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator6createEv")]
 pub fn stub_258544() -> ! {
     todo!("0x258544 __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator6createEv")
@@ -689,7 +680,6 @@ pub fn stub_258a30() -> ! {
 }
 
 // 0x258a34 — __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorC2Ev
-#[doc(alias = "__ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorC2Ev")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorC2Ev")]
 pub fn stub_258a34() -> ! {
     todo!("0x258a34 __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorC2Ev")

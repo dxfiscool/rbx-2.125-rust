@@ -23,7 +23,7 @@ pub fn stub_0x368670() -> ! {
 }
 
 // 0x368688 — __ZThn4_N3rbx8callableINS_7signals6signalIFvddEE4slotEN5boost8functionIS3_EELi2ES3_E4callEdd
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::call(double,double)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::call(double,double)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvddEE4slotEN5boost8functionIS3_EELi2ES3_E4callEdd")]
 pub fn stub_0x368688() -> ! {
     todo!("0x368688 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::call(double,double)")
@@ -219,7 +219,7 @@ pub fn stub_0x369f44() -> ! {
 }
 
 // 0x36a0bc — __GLOBAL__I_a_136
-#[doc(alias = "`global constructor keyed to_a_136")]
+#[doc(alias = "global constructor keyed to_a_136")]
 #[doc(alias = "__GLOBAL__I_a_136")]
 pub fn stub_0x36a0bc() -> ! {
     todo!("0x36a0bc `global constructor keyed to'_a_136")
@@ -254,7 +254,7 @@ pub fn stub_0x36a714() -> ! {
 }
 
 // 0x36a71c — __ZThn96_N3RBX25ScriptInformationProvider11onHeartbeatERKNS_9HeartbeatE
-#[doc(alias = "`non-virtual thunk toRBX::ScriptInformationProvider::onHeartbeat(RBX::Heartbeat const&)")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::onHeartbeat(RBX::Heartbeat const&)")]
 #[doc(alias = "__ZThn96_N3RBX25ScriptInformationProvider11onHeartbeatERKNS_9HeartbeatE")]
 pub fn stub_0x36a71c() -> ! {
     todo!("0x36a71c `non-virtual thunk to'RBX::ScriptInformationProvider::onHeartbeat(RBX::Heartbeat const&)")
@@ -379,14 +379,14 @@ pub fn stub_0x36bd70() -> ! {
 }
 
 // 0x36bd9c — __ZThn32_N3RBX25ScriptInformationProviderD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
 #[doc(alias = "__ZThn32_N3RBX25ScriptInformationProviderD1Ev")]
 pub fn stub_0x36bd9c() -> ! {
     todo!("0x36bd9c `non-virtual thunk to'RBX::ScriptInformationProvider::~ScriptInformationProvider()")
 }
 
 // 0x36bda4 — __ZThn32_N3RBX25ScriptInformationProviderD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
 #[doc(alias = "__ZThn32_N3RBX25ScriptInformationProviderD0Ev")]
 pub fn stub_0x36bda4() -> ! {
     todo!("0x36bda4 `non-virtual thunk to'RBX::ScriptInformationProvider::~ScriptInformationProvider()")
@@ -399,28 +399,28 @@ pub fn stub_0x36be48() -> ! {
 }
 
 // 0x36be70 — __ZThn36_N3RBX25ScriptInformationProviderD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
 #[doc(alias = "__ZThn36_N3RBX25ScriptInformationProviderD1Ev")]
 pub fn stub_0x36be70() -> ! {
     todo!("0x36be70 `non-virtual thunk to'RBX::ScriptInformationProvider::~ScriptInformationProvider()")
 }
 
 // 0x36be78 — __ZThn36_N3RBX25ScriptInformationProviderD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
 #[doc(alias = "__ZThn36_N3RBX25ScriptInformationProviderD0Ev")]
 pub fn stub_0x36be78() -> ! {
     todo!("0x36be78 `non-virtual thunk to'RBX::ScriptInformationProvider::~ScriptInformationProvider()")
 }
 
 // 0x36bf20 — __ZThn96_N3RBX25ScriptInformationProviderD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
 #[doc(alias = "__ZThn96_N3RBX25ScriptInformationProviderD1Ev")]
 pub fn stub_0x36bf20() -> ! {
     todo!("0x36bf20 `non-virtual thunk to'RBX::ScriptInformationProvider::~ScriptInformationProvider()")
 }
 
 // 0x36bf28 — __ZThn96_N3RBX25ScriptInformationProviderD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
 #[doc(alias = "__ZThn96_N3RBX25ScriptInformationProviderD0Ev")]
 pub fn stub_0x36bf28() -> ! {
     todo!("0x36bf28 `non-virtual thunk to'RBX::ScriptInformationProvider::~ScriptInformationProvider()")

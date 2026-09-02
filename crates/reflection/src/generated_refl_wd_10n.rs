@@ -50,12 +50,10 @@ pub fn stub_2b8600() -> ! {
 }
 // 0x2b8608 — __ZN3RBX4Name13callDoDeclareILZNS_12sLuaSettingsEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_12sLuaSettingsEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_12sLuaSettingsEEEEvv")]
 pub fn stub_2b8608() -> ! {
     todo!("0x2b8608 __ZN3RBX4Name13callDoDeclareILZNS_12sLuaSettingsEEEEvv")
 }
 // 0x2b8610 — __ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7CreatorC2Ev
-#[doc(alias = "__ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7CreatorC2Ev")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7CreatorC2Ev")]
 pub fn stub_2b8610() -> ! {
     todo!("0x2b8610 __ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7CreatorC2Ev")
@@ -548,18 +546,15 @@ pub fn stub_2c1bac() -> ! {
 }
 // 0x2c1df8 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_5Stats10sStatsItemEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_5Stats10sStatsItemEEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_5Stats10sStatsItemEEE12getClassNameEv")]
 pub fn stub_2c1df8() -> ! {
     todo!("0x2c1df8 __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_5Stats10sStatsItemEEE12getClassNameEv")
 }
 // 0x2c1e00 — __ZN3RBX4Name7declareILZNS_5Stats10sStatsItemEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_5Stats10sStatsItemEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name7declareILZNS_5Stats10sStatsItemEEEERKS0_v")]
 pub fn stub_2c1e00() -> ! {
     todo!("0x2c1e00 __ZN3RBX4Name7declareILZNS_5Stats10sStatsItemEEEERKS0_v")
 }
 // 0x2c1e48 — __ZN3RBX4Name9doDeclareILZNS_5Stats10sStatsItemEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_5Stats10sStatsItemEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_5Stats10sStatsItemEEEERKS0_v")]
 pub fn stub_2c1e48() -> ! {
     todo!("0x2c1e48 __ZN3RBX4Name9doDeclareILZNS_5Stats10sStatsItemEEEERKS0_v")

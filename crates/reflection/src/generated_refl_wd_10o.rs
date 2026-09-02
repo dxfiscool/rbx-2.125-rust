@@ -572,7 +572,6 @@ pub fn stub_2c76bc() -> ! {
 
 // 0x2c7790 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_5Stats10sStatsItemEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_5Stats10sStatsItemEEE12getClassNameEv")]
-#[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_5Stats10sStatsItemEEE12getClassNameEv")]
 pub fn stub_2c7790() -> ! {
     todo!("0x2c7790 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_5Stats10sStatsItemEEE12getClassNameEv")
 }

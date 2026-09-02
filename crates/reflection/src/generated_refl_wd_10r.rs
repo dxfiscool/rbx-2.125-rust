@@ -299,7 +299,6 @@ pub fn stub_2dbe5c() -> ! {
 
 // 0x2dbf88 — __ZNK3RBX5NamedINS_12MouseCommandELZNS_10sCloneToolEEE7getNameEv
 #[doc(alias = "__ZNK3RBX5NamedINS_12MouseCommandELZNS_10sCloneToolEEE7getNameEv")]
-#[doc(alias = "__ZNK3RBX5NamedINS_12MouseCommandELZNS_10sCloneToolEEE7getNameEv")]
 pub fn stub_2dbf88() -> ! {
     todo!("0x2dbf88 __ZNK3RBX5NamedINS_12MouseCommandELZNS_10sCloneToolEEE7getNameEv")
 }

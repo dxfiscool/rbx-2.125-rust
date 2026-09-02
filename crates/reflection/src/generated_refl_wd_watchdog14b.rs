@@ -269,7 +269,6 @@ pub fn stub_0x326e58() -> ! {
 
 // 0x3378c6 — sub_3378C6
 #[doc(alias = "sub_3378C6")]
-#[doc(alias = "sub_3378C6")]
 pub fn stub_0x3378c6() -> ! {
     todo!("0x3378c6 sub_3378C6")
 }
@@ -500,7 +499,6 @@ pub fn stub_0x34a5ec() -> ! {
 
 // 0x34a714 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv")]
 pub fn stub_0x34a714() -> ! {
     todo!("0x34a714 __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv")
 }
@@ -520,7 +518,6 @@ pub fn stub_0x34a84c() -> ! {
 }
 
 // 0x34a970 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv")]
 pub fn stub_0x34a970() -> ! {
     todo!("0x34a970 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv")
@@ -542,20 +539,17 @@ pub fn stub_0x34aaa4() -> ! {
 
 // 0x34abc8 — __ZN3RBX4Name13callDoDeclareILZNS_14sLuaWebServiceEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sLuaWebServiceEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sLuaWebServiceEEEEvv")]
 pub fn stub_0x34abc8() -> ! {
     todo!("0x34abc8 __ZN3RBX4Name13callDoDeclareILZNS_14sLuaWebServiceEEEEvv")
 }
 
 // 0x34abcc — __ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_13LuaWebServiceEEES3_SsNS0_IFvSsEEESH_ENSB_5list5INSB_5valueISF_EENS_3argILi1EEENSL_ISsEENSL_ISH_EESQ_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "__ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_13LuaWebServiceEEES3_SsNS0_IFvSsEEESH_ENSB_5list5INSB_5valueISF_EENS_3argILi1EEENSL_ISsEENSL_ISH_EESQ_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE")]
-#[doc(alias = "__ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_13LuaWebServiceEEES3_SsNS0_IFvSsEEESH_ENSB_5list5INSB_5valueISF_EENS_3argILi1EEENSL_ISsEENSL_ISH_EESQ_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE")]
 pub fn stub_0x34abcc() -> ! {
     todo!("0x34abcc __ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_13LuaWebServiceEEES3_SsNS0_IFvSsEEESH_ENSB_5list5INSB_5valueISF_EENS_3argILi1EEENSL_ISsEENSL_ISH_EESQ_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE")
 }
 
 // 0x34ac8c — __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_13LuaWebServiceEEES3_SsNS_8functionIFvSsEEESH_ENSA_5list5INSA_5valueISE_EENS_3argILi1EEENSL_ISsEENSL_ISH_EESQ_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE
-#[doc(alias = "__ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_13LuaWebServiceEEES3_SsNS_8functionIFvSsEEESH_ENSA_5list5INSA_5valueISE_EENS_3argILi1EEENSL_ISsEENSL_ISH_EESQ_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE")]
 #[doc(alias = "__ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_13LuaWebServiceEEES3_SsNS_8functionIFvSsEEESH_ENSA_5list5INSA_5valueISE_EENS_3argILi1EEENSL_ISsEENSL_ISH_EESQ_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE")]
 pub fn stub_0x34ac8c() -> ! {
     todo!("0x34ac8c __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_13LuaWebServiceEEES3_SsNS_8functionIFvSsEEESH_ENSA_5list5INSA_5valueISE_EENS_3argILi1EEENSL_ISsEENSL_ISH_EESQ_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE")

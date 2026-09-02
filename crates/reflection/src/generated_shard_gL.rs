@@ -164,7 +164,6 @@ pub fn stub_0xccbdc() -> ! {
 
 // 0xccbfc — ___tcf_1
 #[doc(alias = "___tcf_1")]
-#[doc(alias = "___tcf_1")]
 pub fn stub_0xccbfc() -> ! {
     todo!("0xccbfc ___tcf_1")
 }
@@ -187,14 +186,12 @@ pub fn stub_0xccd00() -> ! {
 
 // 0xccd88 — ___tcf_0
 #[doc(alias = "___tcf_0")]
-#[doc(alias = "___tcf_0")]
 pub fn stub_0xccd88() -> ! {
     todo!("0xccd88 ___tcf_0")
 }
 
 // 0xcce0c — __Z41__static_initialization_and_destruction_0ii_33
 // type: _DWORD __fastcall(int, int)
-#[doc(alias = "__Z41__static_initialization_and_destruction_0ii_33")]
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_33")]
 pub fn stub_0xcce0c() -> ! {
     todo!("0xcce0c __Z41__static_initialization_and_destruction_0ii_33")
@@ -672,7 +669,6 @@ pub fn stub_0xcef08() -> ! {
 
 // 0xcef20 — __Z41__static_initialization_and_destruction_0ii_34
 // type: _DWORD __fastcall(int, int)
-#[doc(alias = "__Z41__static_initialization_and_destruction_0ii_34")]
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_34")]
 pub fn stub_0xcef20() -> ! {
     todo!("0xcef20 __Z41__static_initialization_and_destruction_0ii_34")

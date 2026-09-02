@@ -71,7 +71,6 @@ pub fn stub_0xbb770() -> ! {
 // 0xbb77c — __Z41__static_initialization_and_destruction_0ii_29
 // type: _DWORD __fastcall(int, int)
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_29")]
-#[doc(alias = "__Z41__static_initialization_and_destruction_0ii_29")]
 pub fn stub_0xbb77c() -> ! {
     todo!("0xbb77c __Z41__static_initialization_and_destruction_0ii_29")
 }
@@ -289,7 +288,6 @@ pub fn stub_0xbf2f0() -> ! {
 // 0xbf318 — __Z41__static_initialization_and_destruction_0ii_30
 // type: _DWORD __fastcall(int, int)
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_30")]
-#[doc(alias = "__Z41__static_initialization_and_destruction_0ii_30")]
 pub fn stub_0xbf318() -> ! {
     todo!("0xbf318 __Z41__static_initialization_and_destruction_0ii_30")
 }
@@ -387,7 +385,6 @@ pub fn stub_0xc0378() -> ! {
 }
 
 // 0xc097c — _FMOD_Resampler_NoInterp
-#[doc(alias = "_FMOD_Resampler_NoInterp")]
 #[doc(alias = "_FMOD_Resampler_NoInterp")]
 pub fn stub_0xc097c() -> ! {
     todo!("0xc097c _FMOD_Resampler_NoInterp")
@@ -508,7 +505,6 @@ pub fn stub_0xc19d0() -> ! {
 
 // 0xc1ac0 — __Z41__static_initialization_and_destruction_0ii_31
 // type: _DWORD __fastcall(int, int)
-#[doc(alias = "__Z41__static_initialization_and_destruction_0ii_31")]
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_31")]
 pub fn stub_0xc1ac0() -> ! {
     todo!("0xc1ac0 __Z41__static_initialization_and_destruction_0ii_31")
@@ -761,7 +757,6 @@ pub fn stub_0xc35d8() -> ! {
 
 // 0xc36d4 — __Z41__static_initialization_and_destruction_0ii_32
 // type: _DWORD __fastcall(int, int)
-#[doc(alias = "__Z41__static_initialization_and_destruction_0ii_32")]
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_32")]
 pub fn stub_0xc36d4() -> ! {
     todo!("0xc36d4 __Z41__static_initialization_and_destruction_0ii_32")

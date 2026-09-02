@@ -17,7 +17,6 @@ pub fn stub_0xb2424() -> ! {
 // 0xb2430 — __Z41__static_initialization_and_destruction_0ii_20
 // type: int __fastcall(int result, int)
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_20")]
-#[doc(alias = "__Z41__static_initialization_and_destruction_0ii_20")]
 pub fn stub_0xb2430() -> ! {
     todo!("0xb2430 __Z41__static_initialization_and_destruction_0ii_20")
 }
@@ -225,7 +224,6 @@ pub fn stub_0xb4144() -> ! {
 // 0xb4230 — __Z41__static_initialization_and_destruction_0ii_21
 // type: int __fastcall(int result, int)
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_21")]
-#[doc(alias = "__Z41__static_initialization_and_destruction_0ii_21")]
 pub fn stub_0xb4230() -> ! {
     todo!("0xb4230 __Z41__static_initialization_and_destruction_0ii_21")
 }
@@ -361,7 +359,6 @@ pub fn stub_0xb53a4() -> ! {
 // 0xb53b0 — __Z41__static_initialization_and_destruction_0ii_22
 // type: int __fastcall(int result, int)
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_22")]
-#[doc(alias = "__Z41__static_initialization_and_destruction_0ii_22")]
 pub fn stub_0xb53b0() -> ! {
     todo!("0xb53b0 __Z41__static_initialization_and_destruction_0ii_22")
 }
@@ -496,7 +493,6 @@ pub fn stub_0xb5d6c() -> ! {
 
 // 0xb5e58 — __Z41__static_initialization_and_destruction_0ii_23
 // type: int __fastcall(int result, int)
-#[doc(alias = "__Z41__static_initialization_and_destruction_0ii_23")]
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_23")]
 pub fn stub_0xb5e58() -> ! {
     todo!("0xb5e58 __Z41__static_initialization_and_destruction_0ii_23")
@@ -641,7 +637,6 @@ pub fn stub_0xb79c4() -> ! {
 // 0xb79ec — __Z41__static_initialization_and_destruction_0ii_24
 // type: int __fastcall(int result, int)
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_24")]
-#[doc(alias = "__Z41__static_initialization_and_destruction_0ii_24")]
 pub fn stub_0xb79ec() -> ! {
     todo!("0xb79ec __Z41__static_initialization_and_destruction_0ii_24")
 }
@@ -767,7 +762,6 @@ pub fn stub_0xb884c() -> ! {
 // 0xb8928 — __Z41__static_initialization_and_destruction_0ii_25
 // type: _DWORD __fastcall(int, int)
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_25")]
-#[doc(alias = "__Z41__static_initialization_and_destruction_0ii_25")]
 pub fn stub_0xb8928() -> ! {
     todo!("0xb8928 __Z41__static_initialization_and_destruction_0ii_25")
 }
@@ -886,7 +880,6 @@ pub fn stub_0xb95b4() -> ! {
 
 // 0xb9690 — __Z41__static_initialization_and_destruction_0ii_26
 // type: _DWORD __fastcall(int, int)
-#[doc(alias = "__Z41__static_initialization_and_destruction_0ii_26")]
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_26")]
 pub fn stub_0xb9690() -> ! {
     todo!("0xb9690 __Z41__static_initialization_and_destruction_0ii_26")
@@ -1015,7 +1008,6 @@ pub fn stub_0xb9abc() -> ! {
 // 0xb9ba8 — __Z41__static_initialization_and_destruction_0ii_27
 // type: _DWORD __fastcall(int, int)
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_27")]
-#[doc(alias = "__Z41__static_initialization_and_destruction_0ii_27")]
 pub fn stub_0xb9ba8() -> ! {
     todo!("0xb9ba8 __Z41__static_initialization_and_destruction_0ii_27")
 }
@@ -1121,7 +1113,6 @@ pub fn stub_0xba1fc() -> ! {
 
 // 0xba22c — __Z41__static_initialization_and_destruction_0ii_28
 // type: _DWORD __fastcall(int, int)
-#[doc(alias = "__Z41__static_initialization_and_destruction_0ii_28")]
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_28")]
 pub fn stub_0xba22c() -> ! {
     todo!("0xba22c __Z41__static_initialization_and_destruction_0ii_28")

@@ -719,14 +719,12 @@ pub fn stub_0xe28e8() -> ! {
 // 0xe2940 — _FMOD_strlen
 // type: int __fastcall(_DWORD)
 #[doc(alias = "_FMOD_strlen")]
-#[doc(alias = "_FMOD_strlen")]
 pub fn stub_0xe2940() -> ! {
     todo!("0xe2940 _FMOD_strlen")
 }
 
 // 0xe2968 — _FMOD_strcpy
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "_FMOD_strcpy")]
 #[doc(alias = "_FMOD_strcpy")]
 pub fn stub_0xe2968() -> ! {
     todo!("0xe2968 _FMOD_strcpy")
@@ -735,13 +733,11 @@ pub fn stub_0xe2968() -> ! {
 // 0xe2980 — _FMOD_strncpy
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "_FMOD_strncpy")]
-#[doc(alias = "_FMOD_strncpy")]
 pub fn stub_0xe2980() -> ! {
     todo!("0xe2980 _FMOD_strncpy")
 }
 
 // 0xe29b0 — _FMOD_strcat
-#[doc(alias = "_FMOD_strcat")]
 #[doc(alias = "_FMOD_strcat")]
 pub fn stub_0xe29b0() -> ! {
     todo!("0xe29b0 _FMOD_strcat")
@@ -749,13 +745,11 @@ pub fn stub_0xe29b0() -> ! {
 
 // 0xe29e4 — _FMOD_strncat
 #[doc(alias = "_FMOD_strncat")]
-#[doc(alias = "_FMOD_strncat")]
 pub fn stub_0xe29e4() -> ! {
     todo!("0xe29e4 _FMOD_strncat")
 }
 
 // 0xe2a34 — _FMOD_tolower
-#[doc(alias = "_FMOD_tolower")]
 #[doc(alias = "_FMOD_tolower")]
 pub fn stub_0xe2a34() -> ! {
     todo!("0xe2a34 _FMOD_tolower")
@@ -764,13 +758,11 @@ pub fn stub_0xe2a34() -> ! {
 // 0xe2a58 — _FMOD_strupr
 // type: int __fastcall(_DWORD)
 #[doc(alias = "_FMOD_strupr")]
-#[doc(alias = "_FMOD_strupr")]
 pub fn stub_0xe2a58() -> ! {
     todo!("0xe2a58 _FMOD_strupr")
 }
 
 // 0xe2a90 — _FMOD_strcmp
-#[doc(alias = "_FMOD_strcmp")]
 #[doc(alias = "_FMOD_strcmp")]
 pub fn stub_0xe2a90() -> ! {
     todo!("0xe2a90 _FMOD_strcmp")
@@ -779,13 +771,11 @@ pub fn stub_0xe2a90() -> ! {
 // 0xe2abc — _FMOD_strncmp
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "_FMOD_strncmp")]
-#[doc(alias = "_FMOD_strncmp")]
 pub fn stub_0xe2abc() -> ! {
     todo!("0xe2abc _FMOD_strncmp")
 }
 
 // 0xe2b00 — _FMOD_stricmp
-#[doc(alias = "_FMOD_stricmp")]
 #[doc(alias = "_FMOD_stricmp")]
 pub fn stub_0xe2b00() -> ! {
     todo!("0xe2b00 _FMOD_stricmp")
@@ -794,7 +784,6 @@ pub fn stub_0xe2b00() -> ! {
 // 0xe2b4c — _FMOD_strnicmp
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "_FMOD_strnicmp")]
-#[doc(alias = "_FMOD_strnicmp")]
 pub fn stub_0xe2b4c() -> ! {
     todo!("0xe2b4c _FMOD_strnicmp")
 }
@@ -802,13 +791,11 @@ pub fn stub_0xe2b4c() -> ! {
 // 0xe2bb4 — _FMOD_memcmp
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "_FMOD_memcmp")]
-#[doc(alias = "_FMOD_memcmp")]
 pub fn stub_0xe2bb4() -> ! {
     todo!("0xe2bb4 _FMOD_memcmp")
 }
 
 // 0xe2c18 — _FMOD_strstr
-#[doc(alias = "_FMOD_strstr")]
 #[doc(alias = "_FMOD_strstr")]
 pub fn stub_0xe2c18() -> ! {
     todo!("0xe2c18 _FMOD_strstr")
@@ -816,13 +803,11 @@ pub fn stub_0xe2c18() -> ! {
 
 // 0xe2c94 — _FMOD_memmove
 #[doc(alias = "_FMOD_memmove")]
-#[doc(alias = "_FMOD_memmove")]
 pub fn stub_0xe2c94() -> ! {
     todo!("0xe2c94 _FMOD_memmove")
 }
 
 // 0xe2cfc — _FMOD_eatwhite
-#[doc(alias = "_FMOD_eatwhite")]
 #[doc(alias = "_FMOD_eatwhite")]
 pub fn stub_0xe2cfc() -> ! {
     todo!("0xe2cfc _FMOD_eatwhite")
@@ -830,13 +815,11 @@ pub fn stub_0xe2cfc() -> ! {
 
 // 0xe2d34 — _FMOD_strdup
 #[doc(alias = "_FMOD_strdup")]
-#[doc(alias = "_FMOD_strdup")]
 pub fn stub_0xe2d34() -> ! {
     todo!("0xe2d34 _FMOD_strdup")
 }
 
 // 0xe2da0 — _FMOD_strlenW
-#[doc(alias = "_FMOD_strlenW")]
 #[doc(alias = "_FMOD_strlenW")]
 pub fn stub_0xe2da0() -> ! {
     todo!("0xe2da0 _FMOD_strlenW")
@@ -844,13 +827,11 @@ pub fn stub_0xe2da0() -> ! {
 
 // 0xe2dcc — _FMOD_strncpyW
 #[doc(alias = "_FMOD_strncpyW")]
-#[doc(alias = "_FMOD_strncpyW")]
 pub fn stub_0xe2dcc() -> ! {
     todo!("0xe2dcc _FMOD_strncpyW")
 }
 
 // 0xe2dfc — _FMOD_tolowerW
-#[doc(alias = "_FMOD_tolowerW")]
 #[doc(alias = "_FMOD_tolowerW")]
 pub fn stub_0xe2dfc() -> ! {
     todo!("0xe2dfc _FMOD_tolowerW")
@@ -858,13 +839,11 @@ pub fn stub_0xe2dfc() -> ! {
 
 // 0xe2e20 — _FMOD_strnicmpW
 #[doc(alias = "_FMOD_strnicmpW")]
-#[doc(alias = "_FMOD_strnicmpW")]
 pub fn stub_0xe2e20() -> ! {
     todo!("0xe2e20 _FMOD_strnicmpW")
 }
 
 // 0xe2e88 — _FMOD_wtoa
-#[doc(alias = "_FMOD_wtoa")]
 #[doc(alias = "_FMOD_wtoa")]
 pub fn stub_0xe2e88() -> ! {
     todo!("0xe2e88 _FMOD_wtoa")

@@ -197,7 +197,6 @@ pub fn stub_26a064() -> ! {
 
 // 0x26a104 — __ZNK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")]
 pub fn stub_26a104() -> ! {
     todo!("0x26a104 __ZNK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")
 }
@@ -217,7 +216,6 @@ pub fn stub_26a134() -> ! {
 }
 
 // 0x26a1d8 — __ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")]
 pub fn stub_26a1d8() -> ! {
     todo!("0x26a1d8 __ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")
@@ -253,7 +251,6 @@ pub fn stub_26a2b0() -> ! {
 
 // 0x26a350 — __ZNK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")]
 pub fn stub_26a350() -> ! {
     todo!("0x26a350 __ZNK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")
 }
@@ -273,7 +270,6 @@ pub fn stub_26a380() -> ! {
 }
 
 // 0x26a424 — __ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")]
 pub fn stub_26a424() -> ! {
     todo!("0x26a424 __ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")
@@ -295,13 +291,11 @@ pub fn stub_26a454() -> ! {
 
 // 0x26a4f8 — __ZN3RBX4Name13callDoDeclareILZNS_14sStarterScriptEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sStarterScriptEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sStarterScriptEEEEvv")]
 pub fn stub_26a4f8() -> ! {
     todo!("0x26a4f8 __ZN3RBX4Name13callDoDeclareILZNS_14sStarterScriptEEEEvv")
 }
 
 // 0x26a4fc — __ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v")]
 pub fn stub_26a4fc() -> ! {
     todo!("0x26a4fc __ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v")
@@ -309,13 +303,11 @@ pub fn stub_26a4fc() -> ! {
 
 // 0x26a5dc — __ZN3RBX4Name13callDoDeclareILZNS_11sCoreScriptEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_11sCoreScriptEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_11sCoreScriptEEEEvv")]
 pub fn stub_26a5dc() -> ! {
     todo!("0x26a5dc __ZN3RBX4Name13callDoDeclareILZNS_11sCoreScriptEEEEvv")
 }
 
 // 0x26a5e0 — __ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v")]
 pub fn stub_26a5e0() -> ! {
     todo!("0x26a5e0 __ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v")
@@ -323,13 +315,11 @@ pub fn stub_26a5e0() -> ! {
 
 // 0x26ada0 — __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
-#[doc(alias = "__ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
 pub fn stub_26ada0() -> ! {
     todo!("0x26ada0 __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")
 }
 
 // 0x26ada4 — __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev
-#[doc(alias = "__ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
 pub fn stub_26ada4() -> ! {
     todo!("0x26ada4 __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")
@@ -337,13 +327,11 @@ pub fn stub_26ada4() -> ! {
 
 // 0x26ae44 — __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev
 #[doc(alias = "__ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
-#[doc(alias = "__ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
 pub fn stub_26ae44() -> ! {
     todo!("0x26ae44 __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")
 }
 
 // 0x26ae4c — __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev
-#[doc(alias = "__ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
 #[doc(alias = "__ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
 pub fn stub_26ae4c() -> ! {
     todo!("0x26ae4c __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")
@@ -351,13 +339,11 @@ pub fn stub_26ae4c() -> ! {
 
 // 0x26aef0 — __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev
 #[doc(alias = "__ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
-#[doc(alias = "__ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
 pub fn stub_26aef0() -> ! {
     todo!("0x26aef0 __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")
 }
 
 // 0x26aef8 — __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev
-#[doc(alias = "__ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
 #[doc(alias = "__ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
 pub fn stub_26aef8() -> ! {
     todo!("0x26aef8 __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")

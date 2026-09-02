@@ -254,13 +254,11 @@ pub fn stub_25c1a8() -> ! {
 
 // 0x25c1d0 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_6sLightEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_6sLightEEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_6sLightEEE12getClassNameEv")]
 pub fn stub_25c1d0() -> ! {
     todo!("0x25c1d0 __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_6sLightEEE12getClassNameEv")
 }
 
 // 0x25c1f8 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_6sLightEEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_6sLightEEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_6sLightEEE12getClassNameEv")]
 pub fn stub_25c1f8() -> ! {
     todo!("0x25c1f8 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_6sLightEEE12getClassNameEv")
@@ -268,13 +266,11 @@ pub fn stub_25c1f8() -> ! {
 
 // 0x25c220 — __ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_25c220() -> ! {
     todo!("0x25c220 __ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE12getClassNameEv")
 }
 
 // 0x25c230 — __ZThn32_NK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_25c230() -> ! {
     todo!("0x25c230 __ZThn32_NK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE12getClassNameEv")
@@ -282,13 +278,11 @@ pub fn stub_25c230() -> ! {
 
 // 0x25c240 — __ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_25c240() -> ! {
     todo!("0x25c240 __ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE12getClassNameEv")
 }
 
 // 0x25c250 — __ZThn32_NK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_25c250() -> ! {
     todo!("0x25c250 __ZThn32_NK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE12getClassNameEv")
@@ -296,13 +290,11 @@ pub fn stub_25c250() -> ! {
 
 // 0x25c260 — __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorD1Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorD1Ev")]
 pub fn stub_25c260() -> ! {
     todo!("0x25c260 __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorD1Ev")
 }
 
 // 0x25c264 — __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorD1Ev
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorD1Ev")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorD1Ev")]
 pub fn stub_25c264() -> ! {
     todo!("0x25c264 __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorD1Ev")
@@ -310,20 +302,17 @@ pub fn stub_25c264() -> ! {
 
 // 0x25c268 — __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorD2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorD2Ev")]
 pub fn stub_25c268() -> ! {
     todo!("0x25c268 __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorD2Ev")
 }
 
 // 0x25c304 — __ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7Creator12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7Creator12getClassNameEv")]
 pub fn stub_25c304() -> ! {
     todo!("0x25c304 __ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7Creator12getClassNameEv")
 }
 
 // 0x25c38c — __ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7Creator6createEv
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7Creator6createEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7Creator6createEv")]
 pub fn stub_25c38c() -> ! {
     todo!("0x25c38c __ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7Creator6createEv")
@@ -395,13 +384,11 @@ pub fn stub_25c878() -> ! {
 
 // 0x25c87c — __ZN3RBX4Name13callDoDeclareILZNS_10sSpotLightEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_10sSpotLightEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_10sSpotLightEEEEvv")]
 pub fn stub_25c87c() -> ! {
     todo!("0x25c87c __ZN3RBX4Name13callDoDeclareILZNS_10sSpotLightEEEEvv")
 }
 
 // 0x25c880 — __ZN3RBX4Name9doDeclareILZNS_10sSpotLightEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sSpotLightEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sSpotLightEEEERKS0_v")]
 pub fn stub_25c880() -> ! {
     todo!("0x25c880 __ZN3RBX4Name9doDeclareILZNS_10sSpotLightEEEERKS0_v")
@@ -409,13 +396,11 @@ pub fn stub_25c880() -> ! {
 
 // 0x25c960 — __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorC2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorC2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorC2Ev")]
 pub fn stub_25c960() -> ! {
     todo!("0x25c960 __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorC2Ev")
 }
 
 // 0x25cba4 — __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE17static_getCreatorEv
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE17static_getCreatorEv")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE17static_getCreatorEv")]
 pub fn stub_25cba4() -> ! {
     todo!("0x25cba4 __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE17static_getCreatorEv")
@@ -423,20 +408,17 @@ pub fn stub_25cba4() -> ! {
 
 // 0x25cc18 — __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorD2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorD2Ev")]
 pub fn stub_25cc18() -> ! {
     todo!("0x25cc18 __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorD2Ev")
 }
 
 // 0x25ccb4 — __ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7Creator12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7Creator12getClassNameEv")]
 pub fn stub_25ccb4() -> ! {
     todo!("0x25ccb4 __ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7Creator12getClassNameEv")
 }
 
 // 0x25cd3c — __ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7Creator6createEv
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7Creator6createEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7Creator6createEv")]
 pub fn stub_25cd3c() -> ! {
     todo!("0x25cd3c __ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7Creator6createEv")
@@ -508,13 +490,11 @@ pub fn stub_25d228() -> ! {
 
 // 0x25d22c — __ZN3RBX4Name13callDoDeclareILZNS_11sPointLightEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_11sPointLightEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_11sPointLightEEEEvv")]
 pub fn stub_25d22c() -> ! {
     todo!("0x25d22c __ZN3RBX4Name13callDoDeclareILZNS_11sPointLightEEEEvv")
 }
 
 // 0x25d230 — __ZN3RBX4Name9doDeclareILZNS_11sPointLightEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sPointLightEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sPointLightEEEERKS0_v")]
 pub fn stub_25d230() -> ! {
     todo!("0x25d230 __ZN3RBX4Name9doDeclareILZNS_11sPointLightEEEERKS0_v")
@@ -522,13 +502,11 @@ pub fn stub_25d230() -> ! {
 
 // 0x25d310 — __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorC2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorC2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorC2Ev")]
 pub fn stub_25d310() -> ! {
     todo!("0x25d310 __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorC2Ev")
 }
 
 // 0x25d554 — __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE17static_getCreatorEv
-#[doc(alias = "__ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE17static_getCreatorEv")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE17static_getCreatorEv")]
 pub fn stub_25d554() -> ! {
     todo!("0x25d554 __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE17static_getCreatorEv")
@@ -536,13 +514,11 @@ pub fn stub_25d554() -> ! {
 
 // 0x25d5c8 — __ZN3RBX4Name13callDoDeclareILZNS_6sLightEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_6sLightEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_6sLightEEEEvv")]
 pub fn stub_25d5c8() -> ! {
     todo!("0x25d5c8 __ZN3RBX4Name13callDoDeclareILZNS_6sLightEEEEvv")
 }
 
 // 0x25d5cc — __ZN3RBX4Name9doDeclareILZNS_6sLightEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_6sLightEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_6sLightEEEERKS0_v")]
 pub fn stub_25d5cc() -> ! {
     todo!("0x25d5cc __ZN3RBX4Name9doDeclareILZNS_6sLightEEEERKS0_v")

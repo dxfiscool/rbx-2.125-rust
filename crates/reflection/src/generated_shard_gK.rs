@@ -539,7 +539,6 @@ pub fn stub_0xc7db4() -> ! {
 
 // 0xc7de4 — _FMOD_File_SetDiskBusy
 #[doc(alias = "_FMOD_File_SetDiskBusy")]
-#[doc(alias = "_FMOD_File_SetDiskBusy")]
 pub fn stub_0xc7de4() -> ! {
     todo!("0xc7de4 _FMOD_File_SetDiskBusy")
 }

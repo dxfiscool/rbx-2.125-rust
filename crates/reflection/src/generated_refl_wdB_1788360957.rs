@@ -247,21 +247,21 @@ pub fn stub_0x362dc0() -> ! {
 }
 
 // 0x362f88 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE7rethrowEv
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::rethrow(void)const")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::rethrow(void)const")]
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE7rethrowEv")]
 pub fn stub_0x362f88() -> ! {
     todo!("0x362f88 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::rethrow(void)const")
 }
 
 // 0x362f98 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev")]
 pub fn stub_0x362f98() -> ! {
     todo!("0x362f98 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
 }
 
 // 0x362fb8 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev
-#[doc(alias = "`non-virtual thunk toboost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev")]
 pub fn stub_0x362fb8() -> ! {
     todo!("0x362fb8 `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")
@@ -485,7 +485,7 @@ pub fn stub_0x363f78() -> ! {
 }
 
 // 0x363f90 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE5cloneEv
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone(void)const")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone(void)const")]
 #[doc(alias = "__ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE5cloneEv")]
 pub fn stub_0x363f90() -> ! {
     todo!("0x363f90 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone(void)const")
@@ -576,21 +576,21 @@ pub fn stub_0x364e70() -> ! {
 }
 
 // 0x364f28 — __ZThn4_N5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED1Ev
-#[doc(alias = "`non-virtual thunk toboost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED1Ev")]
 pub fn stub_0x364f28() -> ! {
     todo!("0x364f28 `non-virtual thunk to'boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()")
 }
 
 // 0x364f30 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED1Ev
-#[doc(alias = "`non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED1Ev")]
 pub fn stub_0x364f30() -> ! {
     todo!("0x364f30 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")
 }
 
 // 0x364f38 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED1Ev
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED1Ev")]
 pub fn stub_0x364f38() -> ! {
     todo!("0x364f38 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")
@@ -604,21 +604,21 @@ pub fn stub_0x364f48() -> ! {
 }
 
 // 0x365008 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEE7rethrowEv
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::rethrow(void)const")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::rethrow(void)const")]
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEE7rethrowEv")]
 pub fn stub_0x365008() -> ! {
     todo!("0x365008 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::rethrow(void)const")
 }
 
 // 0x365018 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED0Ev
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED0Ev")]
 pub fn stub_0x365018() -> ! {
     todo!("0x365018 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")
 }
 
 // 0x365038 — __ZThn4_N5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED0Ev
-#[doc(alias = "`non-virtual thunk toboost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED0Ev")]
 pub fn stub_0x365038() -> ! {
     todo!("0x365038 `non-virtual thunk to'boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()")
@@ -716,7 +716,7 @@ pub fn stub_0x36680c() -> ! {
 }
 
 // 0x366814 — __ZThn4_N3rbx8callableINS_7signals6signalIFvdEE4slotEN5boost8functionIS3_EELi1ES3_E4callEd
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::call(double)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::call(double)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvdEE4slotEN5boost8functionIS3_EELi1ES3_E4callEd")]
 pub fn stub_0x366814() -> ! {
     todo!("0x366814 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::call(double)")

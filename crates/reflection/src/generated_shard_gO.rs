@@ -503,13 +503,11 @@ pub fn stub_0xee344() -> ! {
 
 // 0xee364 — _FLAC__format_entropy_coding_method_partitioned_rice_contents_init
 #[doc(alias = "_FLAC__format_entropy_coding_method_partitioned_rice_contents_init")]
-#[doc(alias = "_FLAC__format_entropy_coding_method_partitioned_rice_contents_init")]
 pub fn stub_0xee364() -> ! {
     todo!("0xee364 _FLAC__format_entropy_coding_method_partitioned_rice_contents_init")
 }
 
 // 0xee378 — _FLAC__format_entropy_coding_method_partitioned_rice_contents_ensure_size
-#[doc(alias = "_FLAC__format_entropy_coding_method_partitioned_rice_contents_ensure_size")]
 #[doc(alias = "_FLAC__format_entropy_coding_method_partitioned_rice_contents_ensure_size")]
 pub fn stub_0xee378() -> ! {
     todo!("0xee378 _FLAC__format_entropy_coding_method_partitioned_rice_contents_ensure_size")
@@ -517,20 +515,17 @@ pub fn stub_0xee378() -> ! {
 
 // 0xee3f4 — _FLAC__format_entropy_coding_method_partitioned_rice_contents_clear
 #[doc(alias = "_FLAC__format_entropy_coding_method_partitioned_rice_contents_clear")]
-#[doc(alias = "_FLAC__format_entropy_coding_method_partitioned_rice_contents_clear")]
 pub fn stub_0xee3f4() -> ! {
     todo!("0xee3f4 _FLAC__format_entropy_coding_method_partitioned_rice_contents_clear")
 }
 
 // 0xee42c — _FMOD_ogg_page_version
 #[doc(alias = "_FMOD_ogg_page_version")]
-#[doc(alias = "_FMOD_ogg_page_version")]
 pub fn stub_0xee42c() -> ! {
     todo!("0xee42c _FMOD_ogg_page_version")
 }
 
 // 0xee438 — _FMOD_ogg_page_continued
-#[doc(alias = "_FMOD_ogg_page_continued")]
 #[doc(alias = "_FMOD_ogg_page_continued")]
 pub fn stub_0xee438() -> ! {
     todo!("0xee438 _FMOD_ogg_page_continued")
@@ -539,13 +534,11 @@ pub fn stub_0xee438() -> ! {
 // 0xee448 — _FMOD_ogg_page_bos
 // type: int __fastcall(_DWORD)
 #[doc(alias = "_FMOD_ogg_page_bos")]
-#[doc(alias = "_FMOD_ogg_page_bos")]
 pub fn stub_0xee448() -> ! {
     todo!("0xee448 _FMOD_ogg_page_bos")
 }
 
 // 0xee458 — _FMOD_ogg_page_eos
-#[doc(alias = "_FMOD_ogg_page_eos")]
 #[doc(alias = "_FMOD_ogg_page_eos")]
 pub fn stub_0xee458() -> ! {
     todo!("0xee458 _FMOD_ogg_page_eos")
@@ -554,7 +547,6 @@ pub fn stub_0xee458() -> ! {
 // 0xee468 — _FMOD_ogg_page_granulepos
 // type: __int64 __fastcall(_DWORD)
 #[doc(alias = "_FMOD_ogg_page_granulepos")]
-#[doc(alias = "_FMOD_ogg_page_granulepos")]
 pub fn stub_0xee468() -> ! {
     todo!("0xee468 _FMOD_ogg_page_granulepos")
 }
@@ -562,13 +554,11 @@ pub fn stub_0xee468() -> ! {
 // 0xee53c — _FMOD_ogg_page_serialno
 // type: int __fastcall(_DWORD)
 #[doc(alias = "_FMOD_ogg_page_serialno")]
-#[doc(alias = "_FMOD_ogg_page_serialno")]
 pub fn stub_0xee53c() -> ! {
     todo!("0xee53c _FMOD_ogg_page_serialno")
 }
 
 // 0xee564 — _FMOD_ogg_page_pageno
-#[doc(alias = "_FMOD_ogg_page_pageno")]
 #[doc(alias = "_FMOD_ogg_page_pageno")]
 pub fn stub_0xee564() -> ! {
     todo!("0xee564 _FMOD_ogg_page_pageno")
@@ -576,13 +566,11 @@ pub fn stub_0xee564() -> ! {
 
 // 0xee58c — _FMOD_ogg_stream_check
 #[doc(alias = "_FMOD_ogg_stream_check")]
-#[doc(alias = "_FMOD_ogg_stream_check")]
 pub fn stub_0xee58c() -> ! {
     todo!("0xee58c _FMOD_ogg_stream_check")
 }
 
 // 0xee5a4 — _FMOD_ogg_page_checksum_set
-#[doc(alias = "_FMOD_ogg_page_checksum_set")]
 #[doc(alias = "_FMOD_ogg_page_checksum_set")]
 pub fn stub_0xee5a4() -> ! {
     todo!("0xee5a4 _FMOD_ogg_page_checksum_set")
@@ -590,13 +578,11 @@ pub fn stub_0xee5a4() -> ! {
 
 // 0xee688 — _FMOD_ogg_sync_check
 #[doc(alias = "_FMOD_ogg_sync_check")]
-#[doc(alias = "_FMOD_ogg_sync_check")]
 pub fn stub_0xee688() -> ! {
     todo!("0xee688 _FMOD_ogg_sync_check")
 }
 
 // 0xee69c — _FMOD_ogg_sync_wrote
-#[doc(alias = "_FMOD_ogg_sync_wrote")]
 #[doc(alias = "_FMOD_ogg_sync_wrote")]
 pub fn stub_0xee69c() -> ! {
     todo!("0xee69c _FMOD_ogg_sync_wrote")
@@ -604,13 +590,11 @@ pub fn stub_0xee69c() -> ! {
 
 // 0xee6dc — _FMOD_ogg_sync_reset
 #[doc(alias = "_FMOD_ogg_sync_reset")]
-#[doc(alias = "_FMOD_ogg_sync_reset")]
 pub fn stub_0xee6dc() -> ! {
     todo!("0xee6dc _FMOD_ogg_sync_reset")
 }
 
 // 0xee70c — _FMOD_ogg_stream_reset
-#[doc(alias = "_FMOD_ogg_stream_reset")]
 #[doc(alias = "_FMOD_ogg_stream_reset")]
 pub fn stub_0xee70c() -> ! {
     todo!("0xee70c _FMOD_ogg_stream_reset")
@@ -618,13 +602,11 @@ pub fn stub_0xee70c() -> ! {
 
 // 0xee76c — _FMOD_ogg_stream_reset_serialno
 #[doc(alias = "_FMOD_ogg_stream_reset_serialno")]
-#[doc(alias = "_FMOD_ogg_stream_reset_serialno")]
 pub fn stub_0xee76c() -> ! {
     todo!("0xee76c _FMOD_ogg_stream_reset_serialno")
 }
 
 // 0xee7a0 — __packetout
-#[doc(alias = "__packetout")]
 #[doc(alias = "__packetout")]
 pub fn stub_0xee7a0() -> ! {
     todo!("0xee7a0 __packetout")
@@ -633,13 +615,11 @@ pub fn stub_0xee7a0() -> ! {
 // 0xee8dc — _FMOD_ogg_stream_packetout
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "_FMOD_ogg_stream_packetout")]
-#[doc(alias = "_FMOD_ogg_stream_packetout")]
 pub fn stub_0xee8dc() -> ! {
     todo!("0xee8dc _FMOD_ogg_stream_packetout")
 }
 
 // 0xee914 — _FMOD_ogg_stream_packetpeek
-#[doc(alias = "_FMOD_ogg_stream_packetpeek")]
 #[doc(alias = "_FMOD_ogg_stream_packetpeek")]
 pub fn stub_0xee914() -> ! {
     todo!("0xee914 _FMOD_ogg_stream_packetpeek")
@@ -647,13 +627,11 @@ pub fn stub_0xee914() -> ! {
 
 // 0xee948 — _FMOD_ogg_sync_clear
 #[doc(alias = "_FMOD_ogg_sync_clear")]
-#[doc(alias = "_FMOD_ogg_sync_clear")]
 pub fn stub_0xee948() -> ! {
     todo!("0xee948 _FMOD_ogg_sync_clear")
 }
 
 // 0xee998 — _FMOD_ogg_sync_buffer
-#[doc(alias = "_FMOD_ogg_sync_buffer")]
 #[doc(alias = "_FMOD_ogg_sync_buffer")]
 pub fn stub_0xee998() -> ! {
     todo!("0xee998 _FMOD_ogg_sync_buffer")
@@ -661,13 +639,11 @@ pub fn stub_0xee998() -> ! {
 
 // 0xeea80 — _FMOD_ogg_sync_init
 #[doc(alias = "_FMOD_ogg_sync_init")]
-#[doc(alias = "_FMOD_ogg_sync_init")]
 pub fn stub_0xeea80() -> ! {
     todo!("0xeea80 _FMOD_ogg_sync_init")
 }
 
 // 0xeeab8 — _FMOD_ogg_stream_clear
-#[doc(alias = "_FMOD_ogg_stream_clear")]
 #[doc(alias = "_FMOD_ogg_stream_clear")]
 pub fn stub_0xeeab8() -> ! {
     todo!("0xeeab8 _FMOD_ogg_stream_clear")
@@ -676,13 +652,11 @@ pub fn stub_0xeeab8() -> ! {
 // 0xeeb1c — _FMOD_ogg_stream_pagein
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "_FMOD_ogg_stream_pagein")]
-#[doc(alias = "_FMOD_ogg_stream_pagein")]
 pub fn stub_0xeeb1c() -> ! {
     todo!("0xeeb1c _FMOD_ogg_stream_pagein")
 }
 
 // 0xeefdc — _FMOD_ogg_stream_init
-#[doc(alias = "_FMOD_ogg_stream_init")]
 #[doc(alias = "_FMOD_ogg_stream_init")]
 pub fn stub_0xeefdc() -> ! {
     todo!("0xeefdc _FMOD_ogg_stream_init")
@@ -690,13 +664,11 @@ pub fn stub_0xeefdc() -> ! {
 
 // 0xef088 — _FMOD_ogg_sync_pageseek
 #[doc(alias = "_FMOD_ogg_sync_pageseek")]
-#[doc(alias = "_FMOD_ogg_sync_pageseek")]
 pub fn stub_0xef088() -> ! {
     todo!("0xef088 _FMOD_ogg_sync_pageseek")
 }
 
 // 0xef274 — _FMOD_vorbis_info_blocksize
-#[doc(alias = "_FMOD_vorbis_info_blocksize")]
 #[doc(alias = "_FMOD_vorbis_info_blocksize")]
 pub fn stub_0xef274() -> ! {
     todo!("0xef274 _FMOD_vorbis_info_blocksize")
@@ -704,13 +676,11 @@ pub fn stub_0xef274() -> ! {
 
 // 0xef288 — __v_readstring
 #[doc(alias = "__v_readstring")]
-#[doc(alias = "__v_readstring")]
 pub fn stub_0xef288() -> ! {
     todo!("0xef288 __v_readstring")
 }
 
 // 0xef2cc — _FMOD_vorbis_synthesis_idheader
-#[doc(alias = "_FMOD_vorbis_synthesis_idheader")]
 #[doc(alias = "_FMOD_vorbis_synthesis_idheader")]
 pub fn stub_0xef2cc() -> ! {
     todo!("0xef2cc _FMOD_vorbis_synthesis_idheader")
@@ -719,13 +689,11 @@ pub fn stub_0xef2cc() -> ! {
 // 0xef35c — _FMOD_vorbis_comment_clear
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "_FMOD_vorbis_comment_clear")]
-#[doc(alias = "_FMOD_vorbis_comment_clear")]
 pub fn stub_0xef35c() -> ! {
     todo!("0xef35c _FMOD_vorbis_comment_clear")
 }
 
 // 0xef408 — _FMOD_vorbis_comment_init
-#[doc(alias = "_FMOD_vorbis_comment_init")]
 #[doc(alias = "_FMOD_vorbis_comment_init")]
 pub fn stub_0xef408() -> ! {
     todo!("0xef408 _FMOD_vorbis_comment_init")
@@ -733,13 +701,11 @@ pub fn stub_0xef408() -> ! {
 
 // 0xef428 — _FMOD_vorbis_info_clear
 #[doc(alias = "_FMOD_vorbis_info_clear")]
-#[doc(alias = "_FMOD_vorbis_info_clear")]
 pub fn stub_0xef428() -> ! {
     todo!("0xef428 _FMOD_vorbis_info_clear")
 }
 
 // 0xef630 — _FMOD_vorbis_synthesis_headerin
-#[doc(alias = "_FMOD_vorbis_synthesis_headerin")]
 #[doc(alias = "_FMOD_vorbis_synthesis_headerin")]
 pub fn stub_0xef630() -> ! {
     todo!("0xef630 _FMOD_vorbis_synthesis_headerin")
@@ -747,13 +713,11 @@ pub fn stub_0xef630() -> ! {
 
 // 0xefd04 — _FMOD_vorbis_info_init
 #[doc(alias = "_FMOD_vorbis_info_init")]
-#[doc(alias = "_FMOD_vorbis_info_init")]
 pub fn stub_0xefd04() -> ! {
     todo!("0xefd04 _FMOD_vorbis_info_init")
 }
 
 // 0xefd5c — _FLAC__lpc_restore_signal
-#[doc(alias = "_FLAC__lpc_restore_signal")]
 #[doc(alias = "_FLAC__lpc_restore_signal")]
 pub fn stub_0xefd5c() -> ! {
     todo!("0xefd5c _FLAC__lpc_restore_signal")
@@ -761,13 +725,11 @@ pub fn stub_0xefd5c() -> ! {
 
 // 0xf08d4 — _FLAC__lpc_restore_signal_wide
 #[doc(alias = "_FLAC__lpc_restore_signal_wide")]
-#[doc(alias = "_FLAC__lpc_restore_signal_wide")]
 pub fn stub_0xf08d4() -> ! {
     todo!("0xf08d4 _FLAC__lpc_restore_signal_wide")
 }
 
 // 0xf1768 — _ilog_0
-#[doc(alias = "_ilog_0")]
 #[doc(alias = "_ilog_0")]
 pub fn stub_0xf1768() -> ! {
     todo!("0xf1768 _ilog_0")
@@ -775,13 +737,11 @@ pub fn stub_0xf1768() -> ! {
 
 // 0xf17a0 — _FMOD_mapping0_free_info
 #[doc(alias = "_FMOD_mapping0_free_info")]
-#[doc(alias = "_FMOD_mapping0_free_info")]
 pub fn stub_0xf17a0() -> ! {
     todo!("0xf17a0 _FMOD_mapping0_free_info")
 }
 
 // 0xf17d4 — _FMOD_mapping0_unpack
-#[doc(alias = "_FMOD_mapping0_unpack")]
 #[doc(alias = "_FMOD_mapping0_unpack")]
 pub fn stub_0xf17d4() -> ! {
     todo!("0xf17d4 _FMOD_mapping0_unpack")
@@ -789,20 +749,17 @@ pub fn stub_0xf17d4() -> ! {
 
 // 0xf1a1c — _FMOD_mapping0_inverse
 #[doc(alias = "_FMOD_mapping0_inverse")]
-#[doc(alias = "_FMOD_mapping0_inverse")]
 pub fn stub_0xf1a1c() -> ! {
     todo!("0xf1a1c _FMOD_mapping0_inverse")
 }
 
 // 0xf1e80 — _FLAC__MD5Transform
 #[doc(alias = "_FLAC__MD5Transform")]
-#[doc(alias = "_FLAC__MD5Transform")]
 pub fn stub_0xf1e80() -> ! {
     todo!("0xf1e80 _FLAC__MD5Transform")
 }
 
 // 0xf28ac — _FLAC__MD5Init
-#[doc(alias = "_FLAC__MD5Init")]
 #[doc(alias = "_FLAC__MD5Init")]
 pub fn stub_0xf28ac() -> ! {
     todo!("0xf28ac _FLAC__MD5Init")
@@ -811,13 +768,11 @@ pub fn stub_0xf28ac() -> ! {
 // 0xf28f4 — _FLAC__MD5Final
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "_FLAC__MD5Final")]
-#[doc(alias = "_FLAC__MD5Final")]
 pub fn stub_0xf28f4() -> ! {
     todo!("0xf28f4 _FLAC__MD5Final")
 }
 
 // 0xf29c4 — _FLAC__MD5Accumulate
-#[doc(alias = "_FLAC__MD5Accumulate")]
 #[doc(alias = "_FLAC__MD5Accumulate")]
 pub fn stub_0xf29c4() -> ! {
     todo!("0xf29c4 _FLAC__MD5Accumulate")
@@ -826,7 +781,6 @@ pub fn stub_0xf29c4() -> ! {
 // 0xf2f34 — _FMOD_mdct_clear
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "_FMOD_mdct_clear")]
-#[doc(alias = "_FMOD_mdct_clear")]
 pub fn stub_0xf2f34() -> ! {
     todo!("0xf2f34 _FMOD_mdct_clear")
 }
@@ -834,13 +788,11 @@ pub fn stub_0xf2f34() -> ! {
 // 0xf2f90 — _FMOD_mdct_init
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "_FMOD_mdct_init")]
-#[doc(alias = "_FMOD_mdct_init")]
 pub fn stub_0xf2f90() -> ! {
     todo!("0xf2f90 _FMOD_mdct_init")
 }
 
 // 0xf3260 — _mdct_butterflies
-#[doc(alias = "_mdct_butterflies")]
 #[doc(alias = "_mdct_butterflies")]
 pub fn stub_0xf3260() -> ! {
     todo!("0xf3260 _mdct_butterflies")
@@ -848,13 +800,11 @@ pub fn stub_0xf3260() -> ! {
 
 // 0xf3bfc — _FMOD_mdct_backward
 #[doc(alias = "_FMOD_mdct_backward")]
-#[doc(alias = "_FMOD_mdct_backward")]
 pub fn stub_0xf3bfc() -> ! {
     todo!("0xf3bfc _FMOD_mdct_backward")
 }
 
 // 0xf40a0 — _FLAC__memory_alloc_aligned
-#[doc(alias = "_FLAC__memory_alloc_aligned")]
 #[doc(alias = "_FLAC__memory_alloc_aligned")]
 pub fn stub_0xf40a0() -> ! {
     todo!("0xf40a0 _FLAC__memory_alloc_aligned")
@@ -862,13 +812,11 @@ pub fn stub_0xf40a0() -> ! {
 
 // 0xf40c0 — _FLAC__memory_alloc_aligned_int32_array
 #[doc(alias = "_FLAC__memory_alloc_aligned_int32_array")]
-#[doc(alias = "_FLAC__memory_alloc_aligned_int32_array")]
 pub fn stub_0xf40c0() -> ! {
     todo!("0xf40c0 _FLAC__memory_alloc_aligned_int32_array")
 }
 
 // 0xf4120 — _FMOD_res2_inverse
-#[doc(alias = "_FMOD_res2_inverse")]
 #[doc(alias = "_FMOD_res2_inverse")]
 pub fn stub_0xf4120() -> ! {
     todo!("0xf4120 _FMOD_res2_inverse")
@@ -876,13 +824,11 @@ pub fn stub_0xf4120() -> ! {
 
 // 0xf4374 — __FMOD_01inverse
 #[doc(alias = "__FMOD_01inverse")]
-#[doc(alias = "__FMOD_01inverse")]
 pub fn stub_0xf4374() -> ! {
     todo!("0xf4374 __FMOD_01inverse")
 }
 
 // 0xf4650 — _FMOD_res1_inverse
-#[doc(alias = "_FMOD_res1_inverse")]
 #[doc(alias = "_FMOD_res1_inverse")]
 pub fn stub_0xf4650() -> ! {
     todo!("0xf4650 _FMOD_res1_inverse")
@@ -890,13 +836,11 @@ pub fn stub_0xf4650() -> ! {
 
 // 0xf46dc — _FMOD_res0_inverse
 #[doc(alias = "_FMOD_res0_inverse")]
-#[doc(alias = "_FMOD_res0_inverse")]
 pub fn stub_0xf46dc() -> ! {
     todo!("0xf46dc _FMOD_res0_inverse")
 }
 
 // 0xf4768 — _FMOD_res0_look
-#[doc(alias = "_FMOD_res0_look")]
 #[doc(alias = "_FMOD_res0_look")]
 pub fn stub_0xf4768() -> ! {
     todo!("0xf4768 _FMOD_res0_look")
@@ -904,20 +848,17 @@ pub fn stub_0xf4768() -> ! {
 
 // 0xf4a4c — _FMOD_res0_free_look
 #[doc(alias = "_FMOD_res0_free_look")]
-#[doc(alias = "_FMOD_res0_free_look")]
 pub fn stub_0xf4a4c() -> ! {
     todo!("0xf4a4c _FMOD_res0_free_look")
 }
 
 // 0xf4b30 — _FMOD_res0_free_info
 #[doc(alias = "_FMOD_res0_free_info")]
-#[doc(alias = "_FMOD_res0_free_info")]
 pub fn stub_0xf4b30() -> ! {
     todo!("0xf4b30 _FMOD_res0_free_info")
 }
 
 // 0xf4b64 — _FMOD_res0_unpack
-#[doc(alias = "_FMOD_res0_unpack")]
 #[doc(alias = "_FMOD_res0_unpack")]
 pub fn stub_0xf4b64() -> ! {
     todo!("0xf4b64 _FMOD_res0_unpack")
@@ -1062,20 +1003,17 @@ pub fn stub_0xf53f4() -> ! {
 // 0xf5a68 — __FMOD_ilog
 // type: int __fastcall(unsigned int)
 #[doc(alias = "__FMOD_ilog")]
-#[doc(alias = "__FMOD_ilog")]
 pub fn stub_0xf5a68() -> ! {
     todo!("0xf5a68 __FMOD_ilog")
 }
 
 // 0xf5a8c — _bitreverse_0
 #[doc(alias = "_bitreverse_0")]
-#[doc(alias = "_bitreverse_0")]
 pub fn stub_0xf5a8c() -> ! {
     todo!("0xf5a8c _bitreverse_0")
 }
 
 // 0xf5afc — _sort32a
-#[doc(alias = "_sort32a")]
 #[doc(alias = "_sort32a")]
 pub fn stub_0xf5afc() -> ! {
     todo!("0xf5afc _sort32a")
@@ -1084,7 +1022,6 @@ pub fn stub_0xf5afc() -> ! {
 // 0xf5b20 — _FMOD_vorbis_book_clear
 // type: int __fastcall(int result, _DWORD *)
 #[doc(alias = "_FMOD_vorbis_book_clear")]
-#[doc(alias = "_FMOD_vorbis_book_clear")]
 pub fn stub_0xf5b20() -> ! {
     todo!("0xf5b20 _FMOD_vorbis_book_clear")
 }
@@ -1092,13 +1029,11 @@ pub fn stub_0xf5b20() -> ! {
 // 0xf5bcc — __FMOD_book_maptype1_quantvals
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__FMOD_book_maptype1_quantvals")]
-#[doc(alias = "__FMOD_book_maptype1_quantvals")]
 pub fn stub_0xf5bcc() -> ! {
     todo!("0xf5bcc __FMOD_book_maptype1_quantvals")
 }
 
 // 0xf5c70 — __FMOD_make_words
-#[doc(alias = "__FMOD_make_words")]
 #[doc(alias = "__FMOD_make_words")]
 pub fn stub_0xf5c70() -> ! {
     todo!("0xf5c70 __FMOD_make_words")
@@ -1106,13 +1041,11 @@ pub fn stub_0xf5c70() -> ! {
 
 // 0xf5ec0 — __FMOD_float32_unpack
 #[doc(alias = "__FMOD_float32_unpack")]
-#[doc(alias = "__FMOD_float32_unpack")]
 pub fn stub_0xf5ec0() -> ! {
     todo!("0xf5ec0 __FMOD_float32_unpack")
 }
 
 // 0xf5f08 — __FMOD_book_unquantize
-#[doc(alias = "__FMOD_book_unquantize")]
 #[doc(alias = "__FMOD_book_unquantize")]
 pub fn stub_0xf5f08() -> ! {
     todo!("0xf5f08 __FMOD_book_unquantize")
@@ -1121,7 +1054,6 @@ pub fn stub_0xf5f08() -> ! {
 // 0xf61b4 — _FMOD_vorbis_staticbook_clear
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "_FMOD_vorbis_staticbook_clear")]
-#[doc(alias = "_FMOD_vorbis_staticbook_clear")]
 pub fn stub_0xf61b4() -> ! {
     todo!("0xf61b4 _FMOD_vorbis_staticbook_clear")
 }
@@ -1129,14 +1061,12 @@ pub fn stub_0xf61b4() -> ! {
 // 0xf622c — _FMOD_vorbis_staticbook_destroy
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "_FMOD_vorbis_staticbook_destroy")]
-#[doc(alias = "_FMOD_vorbis_staticbook_destroy")]
 pub fn stub_0xf622c() -> ! {
     todo!("0xf622c _FMOD_vorbis_staticbook_destroy")
 }
 
 // 0xf625c — _FMOD_vorbis_book_init_decode
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
-#[doc(alias = "_FMOD_vorbis_book_init_decode")]
 #[doc(alias = "_FMOD_vorbis_book_init_decode")]
 pub fn stub_0xf625c() -> ! {
     todo!("0xf625c _FMOD_vorbis_book_init_decode")

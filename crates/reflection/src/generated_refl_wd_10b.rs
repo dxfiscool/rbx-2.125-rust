@@ -36,13 +36,11 @@ pub fn stub_2a890c() -> ! {
 
 // 0x2a8910 — __ZN3RBX4Name7declareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name7declareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v")]
 pub fn stub_2a8910() -> ! {
     todo!("0x2a8910 __ZN3RBX4Name7declareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v")
 }
 
 // 0x2a8958 — __ZN3RBX4Name9doDeclareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v")]
 pub fn stub_2a8958() -> ! {
     todo!("0x2a8958 __ZN3RBX4Name9doDeclareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v")
@@ -50,20 +48,17 @@ pub fn stub_2a8958() -> ! {
 
 // 0x2a8a3c — __ZN3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7CreatorC2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7CreatorC2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7CreatorC2Ev")]
 pub fn stub_2a8a3c() -> ! {
     todo!("0x2a8a3c __ZN3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7CreatorC2Ev")
 }
 
 // 0x2a8c64 — __ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7CreatorD2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7CreatorD2Ev")]
 pub fn stub_2a8c64() -> ! {
     todo!("0x2a8c64 __ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7CreatorD2Ev")
 }
 
 // 0x2a8d00 — __ZNK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7Creator12getClassNameEv
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7Creator12getClassNameEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7Creator12getClassNameEv")]
 pub fn stub_2a8d00() -> ! {
     todo!("0x2a8d00 __ZNK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7Creator12getClassNameEv")
@@ -86,20 +81,17 @@ pub fn stub_2a8e20() -> ! {
 
 // 0x2a93b8 — __ZNK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E12getClassNameEv")]
 pub fn stub_2a93b8() -> ! {
     todo!("0x2a93b8 __ZNK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E12getClassNameEv")
 }
 
 // 0x2a93c8 — __ZThn32_NK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E12getClassNameEv")]
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E12getClassNameEv")]
 pub fn stub_2a93c8() -> ! {
     todo!("0x2a93c8 __ZThn32_NK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E12getClassNameEv")
 }
 
 // 0x2a93d8 — __ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E17static_getCreatorEv
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E17static_getCreatorEv")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E17static_getCreatorEv")]
 pub fn stub_2a93d8() -> ! {
     todo!("0x2a93d8 __ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E17static_getCreatorEv")
@@ -229,13 +221,11 @@ pub fn stub_2aa14c() -> ! {
 
 // 0x2aa150 — __ZN3RBX4Name7declareILZNS_9Scripting15sScriptDebuggerEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_9Scripting15sScriptDebuggerEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name7declareILZNS_9Scripting15sScriptDebuggerEEEERKS0_v")]
 pub fn stub_2aa150() -> ! {
     todo!("0x2aa150 __ZN3RBX4Name7declareILZNS_9Scripting15sScriptDebuggerEEEERKS0_v")
 }
 
 // 0x2aa198 — __ZN3RBX4Name9doDeclareILZNS_9Scripting15sScriptDebuggerEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_9Scripting15sScriptDebuggerEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_9Scripting15sScriptDebuggerEEEERKS0_v")]
 pub fn stub_2aa198() -> ! {
     todo!("0x2aa198 __ZN3RBX4Name9doDeclareILZNS_9Scripting15sScriptDebuggerEEEERKS0_v")
@@ -243,13 +233,11 @@ pub fn stub_2aa198() -> ! {
 
 // 0x2aa27c — __ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7CreatorC2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7CreatorC2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7CreatorC2Ev")]
 pub fn stub_2aa27c() -> ! {
     todo!("0x2aa27c __ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7CreatorC2Ev")
 }
 
 // 0x2aa4a8 — __ZNK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7Creator12getClassNameEv
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7Creator12getClassNameEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7Creator12getClassNameEv")]
 pub fn stub_2aa4a8() -> ! {
     todo!("0x2aa4a8 __ZNK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7Creator12getClassNameEv")
@@ -278,13 +266,11 @@ pub fn stub_2aa780() -> ! {
 
 // 0x2aa788 — __ZN3RBX4Name7declareILZNS_12sLocalScriptEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_12sLocalScriptEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name7declareILZNS_12sLocalScriptEEEERKS0_v")]
 pub fn stub_2aa788() -> ! {
     todo!("0x2aa788 __ZN3RBX4Name7declareILZNS_12sLocalScriptEEEERKS0_v")
 }
 
 // 0x2aa7d0 — __ZN3RBX4Name9doDeclareILZNS_12sLocalScriptEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sLocalScriptEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sLocalScriptEEEERKS0_v")]
 pub fn stub_2aa7d0() -> ! {
     todo!("0x2aa7d0 __ZN3RBX4Name9doDeclareILZNS_12sLocalScriptEEEERKS0_v")
@@ -292,13 +278,11 @@ pub fn stub_2aa7d0() -> ! {
 
 // 0x2aa8b4 — __ZN3RBX4Name13callDoDeclareILZNS_21sRuntimeScriptServiceEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_21sRuntimeScriptServiceEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_21sRuntimeScriptServiceEEEEvv")]
 pub fn stub_2aa8b4() -> ! {
     todo!("0x2aa8b4 __ZN3RBX4Name13callDoDeclareILZNS_21sRuntimeScriptServiceEEEEvv")
 }
 
 // 0x2aa8b8 — __ZN3RBX4Name9doDeclareILZNS_21sRuntimeScriptServiceEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_21sRuntimeScriptServiceEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_21sRuntimeScriptServiceEEEERKS0_v")]
 pub fn stub_2aa8b8() -> ! {
     todo!("0x2aa8b8 __ZN3RBX4Name9doDeclareILZNS_21sRuntimeScriptServiceEEEERKS0_v")
@@ -313,7 +297,6 @@ pub fn stub_2aa998() -> ! {
 }
 
 // 0x2aab10 — __ZN3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E15isNullClassNameEv
-#[doc(alias = "__ZN3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E15isNullClassNameEv")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E15isNullClassNameEv")]
 pub fn stub_2aab10() -> ! {
     todo!("0x2aab10 __ZN3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E15isNullClassNameEv")
@@ -408,7 +391,6 @@ pub fn stub_2abcd0() -> ! {
 }
 
 // 0x2abd38 — __ZN3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7CreatorD2Ev
-#[doc(alias = "__ZN3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7CreatorD2Ev")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7CreatorD2Ev")]
 pub fn stub_2abd38() -> ! {
     todo!("0x2abd38 __ZN3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7CreatorD2Ev")
@@ -753,13 +735,11 @@ pub fn stub_2adedc() -> ! {
 
 // 0x2adfd8 — __ZN3RBX4Name7declareILZNS_5Stats6sStatsEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_5Stats6sStatsEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name7declareILZNS_5Stats6sStatsEEEERKS0_v")]
 pub fn stub_2adfd8() -> ! {
     todo!("0x2adfd8 __ZN3RBX4Name7declareILZNS_5Stats6sStatsEEEERKS0_v")
 }
 
 // 0x2ae020 — __ZN3RBX4Name9doDeclareILZNS_5Stats6sStatsEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_5Stats6sStatsEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_5Stats6sStatsEEEERKS0_v")]
 pub fn stub_2ae020() -> ! {
     todo!("0x2ae020 __ZN3RBX4Name9doDeclareILZNS_5Stats6sStatsEEEERKS0_v")
@@ -774,13 +754,11 @@ pub fn stub_2ae108() -> ! {
 
 // 0x2ae1e0 — __ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD2Ev")]
 pub fn stub_2ae1e0() -> ! {
     todo!("0x2ae1e0 __ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD2Ev")
 }
 
 // 0x2ae280 — __ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7Creator6createEv
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7Creator6createEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7Creator6createEv")]
 pub fn stub_2ae280() -> ! {
     todo!("0x2ae280 __ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7Creator6createEv")
@@ -838,13 +816,11 @@ pub fn stub_2ae778() -> ! {
 
 // 0x2ae77c — __ZN3RBX4Name7declareILZNS_14sDebugSettingsEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_14sDebugSettingsEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name7declareILZNS_14sDebugSettingsEEEERKS0_v")]
 pub fn stub_2ae77c() -> ! {
     todo!("0x2ae77c __ZN3RBX4Name7declareILZNS_14sDebugSettingsEEEERKS0_v")
 }
 
 // 0x2ae7c0 — __ZN3RBX4Name13callDoDeclareILZNS_14sDebugSettingsEEEEvv
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sDebugSettingsEEEEvv")]
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sDebugSettingsEEEEvv")]
 pub fn stub_2ae7c0() -> ! {
     todo!("0x2ae7c0 __ZN3RBX4Name13callDoDeclareILZNS_14sDebugSettingsEEEEvv")
@@ -852,13 +828,11 @@ pub fn stub_2ae7c0() -> ! {
 
 // 0x2ae7c4 — __ZN3RBX4Name9doDeclareILZNS_14sDebugSettingsEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sDebugSettingsEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sDebugSettingsEEEERKS0_v")]
 pub fn stub_2ae7c4() -> ! {
     todo!("0x2ae7c4 __ZN3RBX4Name9doDeclareILZNS_14sDebugSettingsEEEERKS0_v")
 }
 
 // 0x2ae8a8 — __ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorC2Ev
-#[doc(alias = "__ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorC2Ev")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorC2Ev")]
 pub fn stub_2ae8a8() -> ! {
     todo!("0x2ae8a8 __ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorC2Ev")

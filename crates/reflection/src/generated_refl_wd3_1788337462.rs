@@ -404,13 +404,11 @@ pub fn stub_0x28e114() -> ! {
 
 // 0x28e118 — __ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0x28e118() -> ! {
     todo!("0x28e118 __ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE12getClassNameEv")
 }
 
 // 0x28e128 — __ZThn32_NK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0x28e128() -> ! {
     todo!("0x28e128 __ZThn32_NK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE12getClassNameEv")
@@ -418,13 +416,11 @@ pub fn stub_0x28e128() -> ! {
 
 // 0x28e138 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv")]
 pub fn stub_0x28e138() -> ! {
     todo!("0x28e138 __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv")
 }
 
 // 0x28e160 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv")]
 pub fn stub_0x28e160() -> ! {
     todo!("0x28e160 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv")
@@ -446,7 +442,6 @@ pub fn stub_0x28e18c() -> ! {
 
 // 0x28e22c — __ZNK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0x28e22c() -> ! {
     todo!("0x28e22c __ZNK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE12getClassNameEv")
 }
@@ -466,7 +461,6 @@ pub fn stub_0x28e244() -> ! {
 }
 
 // 0x28e24c — __ZThn32_NK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0x28e24c() -> ! {
     todo!("0x28e24c __ZThn32_NK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE12getClassNameEv")
@@ -488,13 +482,11 @@ pub fn stub_0x28e264() -> ! {
 
 // 0x28e26c — __ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorD1Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorD1Ev")]
 pub fn stub_0x28e26c() -> ! {
     todo!("0x28e26c __ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorD1Ev")
 }
 
 // 0x28e270 — __ZN3RBX4Name13callDoDeclareILZNS_11sBaseScriptEEEEvv
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_11sBaseScriptEEEEvv")]
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_11sBaseScriptEEEEvv")]
 pub fn stub_0x28e270() -> ! {
     todo!("0x28e270 __ZN3RBX4Name13callDoDeclareILZNS_11sBaseScriptEEEEvv")
@@ -502,13 +494,11 @@ pub fn stub_0x28e270() -> ! {
 
 // 0x28e274 — __ZN3RBX4Name9doDeclareILZNS_11sBaseScriptEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sBaseScriptEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sBaseScriptEEEERKS0_v")]
 pub fn stub_0x28e274() -> ! {
     todo!("0x28e274 __ZN3RBX4Name9doDeclareILZNS_11sBaseScriptEEEERKS0_v")
 }
 
 // 0x28e354 — __ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE17static_getCreatorEv
-#[doc(alias = "__ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE17static_getCreatorEv")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE17static_getCreatorEv")]
 pub fn stub_0x28e354() -> ! {
     todo!("0x28e354 __ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE17static_getCreatorEv")
@@ -516,20 +506,17 @@ pub fn stub_0x28e354() -> ! {
 
 // 0x28e3c8 — __ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorD2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorD2Ev")]
 pub fn stub_0x28e3c8() -> ! {
     todo!("0x28e3c8 __ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorD2Ev")
 }
 
 // 0x28e464 — __ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7Creator12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7Creator12getClassNameEv")]
 pub fn stub_0x28e464() -> ! {
     todo!("0x28e464 __ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7Creator12getClassNameEv")
 }
 
 // 0x28e4ec — __ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7Creator6createEv
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7Creator6createEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7Creator6createEv")]
 pub fn stub_0x28e4ec() -> ! {
     todo!("0x28e4ec __ZNK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7Creator6createEv")
@@ -601,13 +588,11 @@ pub fn stub_0x28e9d8() -> ! {
 
 // 0x28e9dc — __ZN3RBX4Name13callDoDeclareILZNS_7sScriptEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_7sScriptEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_7sScriptEEEEvv")]
 pub fn stub_0x28e9dc() -> ! {
     todo!("0x28e9dc __ZN3RBX4Name13callDoDeclareILZNS_7sScriptEEEEvv")
 }
 
 // 0x28e9e0 — __ZN3RBX4Name9doDeclareILZNS_7sScriptEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_7sScriptEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_7sScriptEEEERKS0_v")]
 pub fn stub_0x28e9e0() -> ! {
     todo!("0x28e9e0 __ZN3RBX4Name9doDeclareILZNS_7sScriptEEEERKS0_v")
@@ -615,13 +600,11 @@ pub fn stub_0x28e9e0() -> ! {
 
 // 0x28eac0 — __ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorC2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorC2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorC2Ev")]
 pub fn stub_0x28eac0() -> ! {
     todo!("0x28eac0 __ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorC2Ev")
 }
 
 // 0x28ed04 — __ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE17static_getCreatorEv
-#[doc(alias = "__ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE17static_getCreatorEv")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE17static_getCreatorEv")]
 pub fn stub_0x28ed04() -> ! {
     todo!("0x28ed04 __ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE17static_getCreatorEv")
@@ -658,7 +641,6 @@ pub fn stub_0x28f164() -> ! {
 }
 
 // 0x28f198 — __ZN3RBX4Name7declareILZNS_21sRuntimeScriptServiceEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name7declareILZNS_21sRuntimeScriptServiceEEEERKS0_v")]
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_21sRuntimeScriptServiceEEEERKS0_v")]
 pub fn stub_0x28f198() -> ! {
     todo!("0x28f198 __ZN3RBX4Name7declareILZNS_21sRuntimeScriptServiceEEEERKS0_v")
@@ -743,7 +725,6 @@ pub fn stub_0x28f924() -> ! {
 
 // 0x28f928 — __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEE15isNullClassNameEv
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEE15isNullClassNameEv")]
-#[doc(alias = "__ZN3RBX17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEE15isNullClassNameEv")]
 pub fn stub_0x28f928() -> ! {
     todo!("0x28f928 __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEE15isNullClassNameEv")
 }
@@ -751,14 +732,12 @@ pub fn stub_0x28f928() -> ! {
 // 0x28f9c8 — __ZN5boost8functionIFvN3RBX25ScriptInformationProvider13RequestResultEbbfbEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_9DataModelEEENS9_INS1_6ScriptEEESsS3_bbbENS7_5list7INS7_5valueISB_EENSH_ISD_EENSH_ISsEENS_3argILi1EEENSL_ILi2EEENSL_ILi3EEENSL_ILi5EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "__ZN5boost8functionIFvN3RBX25ScriptInformationProvider13RequestResultEbbfbEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_9DataModelEEENS9_INS1_6ScriptEEESsS3_bbbENS7_5list7INS7_5valueISB_EENSH_ISD_EENSH_ISsEENS_3argILi1EEENSL_ILi2EEENSL_ILi3EEENSL_ILi5EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")]
-#[doc(alias = "__ZN5boost8functionIFvN3RBX25ScriptInformationProvider13RequestResultEbbfbEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_9DataModelEEENS9_INS1_6ScriptEEESsS3_bbbENS7_5list7INS7_5valueISB_EENSH_ISD_EENSH_ISsEENS_3argILi1EEENSL_ILi2EEENSL_ILi3EEENSL_ILi5EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")]
 pub fn stub_0x28f9c8() -> ! {
     todo!("0x28f9c8 __ZN5boost8functionIFvN3RBX25ScriptInformationProvider13RequestResultEbbfbEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_9DataModelEEENS9_INS1_6ScriptEEESsS3_bbbENS7_5list7INS7_5valueISB_EENSH_ISD_EENSH_ISsEENS_3argILi1EEENSL_ILi2EEENSL_ILi3EEENSL_ILi5EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")
 }
 
 // 0x28fb68 — __ZN5boost9function5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_9DataModelEEENS8_INS1_6ScriptEEESsS3_bbbENS6_5list7INS6_5valueISA_EENSG_ISC_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "__ZN5boost9function5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_9DataModelEEENS8_INS1_6ScriptEEESsS3_bbbENS6_5list7INS6_5valueISA_EENSG_ISC_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE")]
 #[doc(alias = "__ZN5boost9function5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_9DataModelEEENS8_INS1_6ScriptEEESsS3_bbbENS6_5list7INS6_5valueISA_EENSG_ISC_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE")]
 pub fn stub_0x28fb68() -> ! {
     todo!("0x28fb68 __ZN5boost9function5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_9DataModelEEENS8_INS1_6ScriptEEESsS3_bbbENS6_5list7INS6_5valueISA_EENSG_ISC_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE")
