@@ -541,3 +541,5 @@ pub mod generated_dm_wd_11d;
 pub mod generated_dm_wd_11e;
 pub mod generated_dm_wd_11f;
 pub mod generated_datamodel_shard_A2;
+pub mod generated_datamodel_shard_B2;
+pub mod generated_datamodel_shard_C;
