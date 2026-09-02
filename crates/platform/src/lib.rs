@@ -299,3 +299,5 @@ pub mod generated_platform_watchdog_g;
 pub mod generated_platform_watchdog_h;
 pub mod generated_platform_watchdog_i;
 pub mod generated_platform_watchdog_j;
+pub mod generated_platform_watchdog_k;
+pub mod generated_platform_watchdog_l;
