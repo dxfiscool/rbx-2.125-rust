@@ -311,3 +311,5 @@ pub mod generated_platform_watchdog_s;
 pub mod generated_platform_watchdog_t;
 pub mod generated_platform_watchdog_u;
 pub mod generated_platform_watchdog_v;
+pub mod generated_platform_watchdog_w;
+pub mod generated_platform_watchdog_x;
