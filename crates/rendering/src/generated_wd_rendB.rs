@@ -181,7 +181,7 @@ pub fn stub_0x8ad4e0() -> ! {
 }
 
 // 0x8ad5dc — __ZThn32_N3RBX15GamePassServiceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::GamePassService::~GamePassService()")]
+#[doc(alias = "non-virtual thunk toRBX::GamePassService::~GamePassService()")]
 #[doc(alias = "__ZThn32_N3RBX15GamePassServiceD1Ev")]
 // was: __ZThn32_N3RBX15GamePassServiceD1Ev
 pub fn stub_0x8ad5dc() -> ! {
@@ -189,7 +189,7 @@ pub fn stub_0x8ad5dc() -> ! {
 }
 
 // 0x8ad61c — __ZThn32_N3RBX15GamePassServiceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::GamePassService::~GamePassService()")]
+#[doc(alias = "non-virtual thunk toRBX::GamePassService::~GamePassService()")]
 #[doc(alias = "__ZThn32_N3RBX15GamePassServiceD0Ev")]
 // was: __ZThn32_N3RBX15GamePassServiceD0Ev
 pub fn stub_0x8ad61c() -> ! {
@@ -197,7 +197,7 @@ pub fn stub_0x8ad61c() -> ! {
 }
 
 // 0x8ad718 — __ZThn36_N3RBX15GamePassServiceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::GamePassService::~GamePassService()")]
+#[doc(alias = "non-virtual thunk toRBX::GamePassService::~GamePassService()")]
 #[doc(alias = "__ZThn36_N3RBX15GamePassServiceD1Ev")]
 // was: __ZThn36_N3RBX15GamePassServiceD1Ev
 pub fn stub_0x8ad718() -> ! {
@@ -205,7 +205,7 @@ pub fn stub_0x8ad718() -> ! {
 }
 
 // 0x8ad758 — __ZThn36_N3RBX15GamePassServiceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::GamePassService::~GamePassService()")]
+#[doc(alias = "non-virtual thunk toRBX::GamePassService::~GamePassService()")]
 #[doc(alias = "__ZThn36_N3RBX15GamePassServiceD0Ev")]
 // was: __ZThn36_N3RBX15GamePassServiceD0Ev
 pub fn stub_0x8ad758() -> ! {
@@ -325,7 +325,7 @@ pub fn stub_0x8b0380() -> ! {
 }
 
 // 0x8b0784 — __ZThn96_N3RBX16UserInputService9onSteppedERKNS_7SteppedE
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::onStepped(RBX::Stepped const&)")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::onStepped(RBX::Stepped const&)")]
 #[doc(alias = "__ZThn96_N3RBX16UserInputService9onSteppedERKNS_7SteppedE")]
 // was: __ZThn96_N3RBX16UserInputService9onSteppedERKNS_7SteppedE
 pub fn stub_0x8b0784() -> ! {
@@ -437,7 +437,7 @@ pub fn stub_0x8b2e1c() -> ! {
 }
 
 // 0x8b2ed0 — __ZThn32_N3RBX16UserInputServiceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::~UserInputService()")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::~UserInputService()")]
 #[doc(alias = "__ZThn32_N3RBX16UserInputServiceD1Ev")]
 // was: __ZThn32_N3RBX16UserInputServiceD1Ev
 pub fn stub_0x8b2ed0() -> ! {
@@ -445,7 +445,7 @@ pub fn stub_0x8b2ed0() -> ! {
 }
 
 // 0x8b2ed8 — __ZThn32_N3RBX16UserInputServiceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::~UserInputService()")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::~UserInputService()")]
 #[doc(alias = "__ZThn32_N3RBX16UserInputServiceD0Ev")]
 // was: __ZThn32_N3RBX16UserInputServiceD0Ev
 pub fn stub_0x8b2ed8() -> ! {
@@ -453,7 +453,7 @@ pub fn stub_0x8b2ed8() -> ! {
 }
 
 // 0x8b2ef0 — __ZThn36_N3RBX16UserInputServiceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::~UserInputService()")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::~UserInputService()")]
 #[doc(alias = "__ZThn36_N3RBX16UserInputServiceD1Ev")]
 // was: __ZThn36_N3RBX16UserInputServiceD1Ev
 pub fn stub_0x8b2ef0() -> ! {
@@ -461,7 +461,7 @@ pub fn stub_0x8b2ef0() -> ! {
 }
 
 // 0x8b2ef8 — __ZThn36_N3RBX16UserInputServiceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::~UserInputService()")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::~UserInputService()")]
 #[doc(alias = "__ZThn36_N3RBX16UserInputServiceD0Ev")]
 // was: __ZThn36_N3RBX16UserInputServiceD0Ev
 pub fn stub_0x8b2ef8() -> ! {
@@ -469,7 +469,7 @@ pub fn stub_0x8b2ef8() -> ! {
 }
 
 // 0x8b2f04 — __ZThn96_N3RBX16UserInputServiceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::~UserInputService()")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::~UserInputService()")]
 #[doc(alias = "__ZThn96_N3RBX16UserInputServiceD1Ev")]
 // was: __ZThn96_N3RBX16UserInputServiceD1Ev
 pub fn stub_0x8b2f04() -> ! {
@@ -477,7 +477,7 @@ pub fn stub_0x8b2f04() -> ! {
 }
 
 // 0x8b2f0c — __ZThn96_N3RBX16UserInputServiceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::~UserInputService()")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::~UserInputService()")]
 #[doc(alias = "__ZThn96_N3RBX16UserInputServiceD0Ev")]
 // was: __ZThn96_N3RBX16UserInputServiceD0Ev
 pub fn stub_0x8b2f0c() -> ! {
@@ -749,7 +749,7 @@ pub fn stub_0x8bdbf0() -> ! {
 }
 
 // 0x8bdc18 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX11InputObjectEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::InputObject)>::slot,boost::function<void ()(RBX::InputObject)>,1,void ()(RBX::InputObject)>::call(RBX::InputObject)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::InputObject)>::slot,boost::function<void ()(RBX::InputObject)>,1,void ()(RBX::InputObject)>::call(RBX::InputObject)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX11InputObjectEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX11InputObjectEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_
 pub fn stub_0x8bdc18() -> ! {

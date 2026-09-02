@@ -52,7 +52,7 @@ pub fn stub_6bf4ec() -> ! {
 }
 
 // 0x6bf4f4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8SeatImplINSB_12PartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::PartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>>>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::PartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8SeatImplINSB_12PartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv")]
 pub fn stub_6bf4f4() -> ! {
     todo!("0x6bf4f4 __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8SeatImplINSB_12PartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv")
@@ -276,7 +276,7 @@ pub fn stub_6c1104() -> ! {
 }
 
 // 0x6c1120 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_8SeatImplINS5_12PartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SeatImpl<RBX::PartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SeatImpl<RBX::PartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_8SeatImplINS5_12PartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_")]
 pub fn stub_6c1120() -> ! {
     todo!("0x6c1120 __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_8SeatImplINS5_12PartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_")
@@ -318,28 +318,28 @@ pub fn stub_6c14b0() -> ! {
 }
 
 // 0x6c169c — __ZThn32_N3RBX8SeatImplINS_12PartInstanceEED1Ev
-#[doc(alias = "`non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
+#[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZThn32_N3RBX8SeatImplINS_12PartInstanceEED1Ev")]
 pub fn stub_6c169c() -> ! {
     todo!("0x6c169c __ZThn32_N3RBX8SeatImplINS_12PartInstanceEED1Ev")
 }
 
 // 0x6c16b0 — __ZThn32_N3RBX8SeatImplINS_12PartInstanceEED0Ev
-#[doc(alias = "`non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
+#[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZThn32_N3RBX8SeatImplINS_12PartInstanceEED0Ev")]
 pub fn stub_6c16b0() -> ! {
     todo!("0x6c16b0 __ZThn32_N3RBX8SeatImplINS_12PartInstanceEED0Ev")
 }
 
 // 0x6c1760 — __ZThn36_N3RBX8SeatImplINS_12PartInstanceEED1Ev
-#[doc(alias = "`non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
+#[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZThn36_N3RBX8SeatImplINS_12PartInstanceEED1Ev")]
 pub fn stub_6c1760() -> ! {
     todo!("0x6c1760 __ZThn36_N3RBX8SeatImplINS_12PartInstanceEED1Ev")
 }
 
 // 0x6c1774 — __ZThn36_N3RBX8SeatImplINS_12PartInstanceEED0Ev
-#[doc(alias = "`non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
+#[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZThn36_N3RBX8SeatImplINS_12PartInstanceEED0Ev")]
 pub fn stub_6c1774() -> ! {
     todo!("0x6c1774 __ZThn36_N3RBX8SeatImplINS_12PartInstanceEED0Ev")
@@ -451,28 +451,28 @@ pub fn stub_6c2c9c() -> ! {
 }
 
 // 0x6c2ca0 — __ZThn32_N3RBX11KernelJointD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::KernelJoint::~KernelJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::KernelJoint::~KernelJoint()")]
 #[doc(alias = "__ZThn32_N3RBX11KernelJointD1Ev")]
 pub fn stub_6c2ca0() -> ! {
     todo!("0x6c2ca0 __ZThn32_N3RBX11KernelJointD1Ev")
 }
 
 // 0x6c2ca8 — __ZThn32_N3RBX11KernelJointD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::KernelJoint::~KernelJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::KernelJoint::~KernelJoint()")]
 #[doc(alias = "__ZThn32_N3RBX11KernelJointD0Ev")]
 pub fn stub_6c2ca8() -> ! {
     todo!("0x6c2ca8 __ZThn32_N3RBX11KernelJointD0Ev")
 }
 
 // 0x6c2cb0 — __ZThn152_N3RBX11KernelJointD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::KernelJoint::~KernelJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::KernelJoint::~KernelJoint()")]
 #[doc(alias = "__ZThn152_N3RBX11KernelJointD1Ev")]
 pub fn stub_6c2cb0() -> ! {
     todo!("0x6c2cb0 __ZThn152_N3RBX11KernelJointD1Ev")
 }
 
 // 0x6c2cb8 — __ZThn152_N3RBX11KernelJointD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::KernelJoint::~KernelJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::KernelJoint::~KernelJoint()")]
 #[doc(alias = "__ZThn152_N3RBX11KernelJointD0Ev")]
 pub fn stub_6c2cb8() -> ! {
     todo!("0x6c2cb8 __ZThn152_N3RBX11KernelJointD0Ev")
@@ -654,28 +654,28 @@ pub fn stub_6c4c80() -> ! {
 }
 
 // 0x6c4d30 — __ZThn32_N3RBX11VirtualUserD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::VirtualUser::~VirtualUser()")]
+#[doc(alias = "non-virtual thunk toRBX::VirtualUser::~VirtualUser()")]
 #[doc(alias = "__ZThn32_N3RBX11VirtualUserD1Ev")]
 pub fn stub_6c4d30() -> ! {
     todo!("0x6c4d30 __ZThn32_N3RBX11VirtualUserD1Ev")
 }
 
 // 0x6c4e84 — __ZThn32_N3RBX11VirtualUserD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::VirtualUser::~VirtualUser()")]
+#[doc(alias = "non-virtual thunk toRBX::VirtualUser::~VirtualUser()")]
 #[doc(alias = "__ZThn32_N3RBX11VirtualUserD0Ev")]
 pub fn stub_6c4e84() -> ! {
     todo!("0x6c4e84 __ZThn32_N3RBX11VirtualUserD0Ev")
 }
 
 // 0x6c5000 — __ZThn36_N3RBX11VirtualUserD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::VirtualUser::~VirtualUser()")]
+#[doc(alias = "non-virtual thunk toRBX::VirtualUser::~VirtualUser()")]
 #[doc(alias = "__ZThn36_N3RBX11VirtualUserD1Ev")]
 pub fn stub_6c5000() -> ! {
     todo!("0x6c5000 __ZThn36_N3RBX11VirtualUserD1Ev")
 }
 
 // 0x6c5154 — __ZThn36_N3RBX11VirtualUserD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::VirtualUser::~VirtualUser()")]
+#[doc(alias = "non-virtual thunk toRBX::VirtualUser::~VirtualUser()")]
 #[doc(alias = "__ZThn36_N3RBX11VirtualUserD0Ev")]
 pub fn stub_6c5154() -> ! {
     todo!("0x6c5154 __ZThn36_N3RBX11VirtualUserD0Ev")

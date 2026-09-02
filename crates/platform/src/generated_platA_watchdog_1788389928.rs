@@ -29,7 +29,7 @@ pub fn stub_4f842c() -> ! {
 
 // 0x4f8778 — __ZThn92_N3RBX10ForceField13render3dAdornEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::ForceField *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk to'RBX::ForceField::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::ForceField::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn92_N3RBX10ForceField13render3dAdornEPNS_5AdornE")]
 pub fn stub_4f8778() -> ! {
     todo!("0x4f8778 __ZThn92_N3RBX10ForceField13render3dAdornEPNS_5AdornE")
@@ -45,7 +45,7 @@ pub fn stub_4f8834() -> ! {
 
 // 0x4f8868 — __ZThn92_NK3RBX10ForceField19shouldRender3dAdornEv
 // type: _DWORD __fastcall(RBX::ForceField *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::ForceField::shouldRender3dAdorn(void)const")]
+#[doc(alias = "non-virtual thunk toRBX::ForceField::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZThn92_NK3RBX10ForceField19shouldRender3dAdornEv")]
 pub fn stub_4f8868() -> ! {
     todo!("0x4f8868 __ZThn92_NK3RBX10ForceField19shouldRender3dAdornEv")
@@ -61,7 +61,7 @@ pub fn stub_4f956c() -> ! {
 
 // 0x4f9978 — __ZThn96_N3RBX5Frame8render2dEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::Frame *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk to'RBX::Frame::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::Frame::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX5Frame8render2dEPNS_5AdornE")]
 pub fn stub_4f9978() -> ! {
     todo!("0x4f9978 __ZThn96_N3RBX5Frame8render2dEPNS_5AdornE")
@@ -125,7 +125,7 @@ pub fn stub_529948() -> ! {
 
 // 0x529960 — __ZThn96_N3RBX9GuiObject8render2dEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::GuiObject *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk to'RBX::GuiObject::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::GuiObject::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX9GuiObject8render2dEPNS_5AdornE")]
 pub fn stub_529960() -> ! {
     todo!("0x529960 __ZThn96_N3RBX9GuiObject8render2dEPNS_5AdornE")
@@ -296,7 +296,7 @@ pub fn stub_5eb8b0() -> ! {
 
 // 0x5eb980 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS5_12PartInstance13TouchedSignal11TouchedSlotELi1ES8_E4callES7_
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "`non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,RBX::PartInstance::TouchedSignal::TouchedSlot,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,RBX::PartInstance::TouchedSignal::TouchedSlot,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS5_12PartInstance13TouchedSignal11TouchedSlotELi1ES8_E4callES7_")]
 pub fn stub_5eb980() -> ! {
     todo!("0x5eb980 __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS5_12PartInstance13TouchedSignal11TouchedSlotELi1ES8_E4callES7_")
@@ -404,7 +404,7 @@ pub fn stub_60ee44() -> ! {
 
 // 0x60efb8 — __ZThn96_N3RBX11Scale9Frame8render2dEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::Scale9Frame *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk to'RBX::Scale9Frame::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::Scale9Frame::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX11Scale9Frame8render2dEPNS_5AdornE")]
 pub fn stub_60efb8() -> ! {
     todo!("0x60efb8 __ZThn96_N3RBX11Scale9Frame8render2dEPNS_5AdornE")
@@ -418,7 +418,7 @@ pub fn stub_6105c4() -> ! {
 }
 
 // 0x6105d0 — __ZThn96_N3RBX9ScreenGui8render2dEPNS_5AdornE
-#[doc(alias = "`non-virtual thunk to'RBX::ScreenGui::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::ScreenGui::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX9ScreenGui8render2dEPNS_5AdornE")]
 pub fn stub_6105d0() -> ! {
     todo!("0x6105d0 __ZThn96_N3RBX9ScreenGui8render2dEPNS_5AdornE")
@@ -434,7 +434,7 @@ pub fn stub_6105dc() -> ! {
 
 // 0x610660 — __ZThn96_N3RBX9ScreenGui15render2dContextEPNS_5AdornEPKNS_8InstanceE
 // type: _DWORD __fastcall(RBX::ScreenGui *__hidden this, RBX::Adorn *, const RBX::Instance *)
-#[doc(alias = "`non-virtual thunk to'RBX::ScreenGui::render2dContext(RBX::Adorn *,RBX::Instance const*)")]
+#[doc(alias = "non-virtual thunk toRBX::ScreenGui::render2dContext(RBX::Adorn *,RBX::Instance const*)")]
 #[doc(alias = "__ZThn96_N3RBX9ScreenGui15render2dContextEPNS_5AdornEPKNS_8InstanceE")]
 pub fn stub_610660() -> ! {
     todo!("0x610660 __ZThn96_N3RBX9ScreenGui15render2dContextEPNS_5AdornEPKNS_8InstanceE")
@@ -466,7 +466,7 @@ pub fn stub_61cf00() -> ! {
 
 // 0x61d0b4 — __ZThn96_N3RBX12SelectionBox13render3dAdornEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::SelectionBox *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk to'RBX::SelectionBox::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::SelectionBox::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX12SelectionBox13render3dAdornEPNS_5AdornE")]
 pub fn stub_61d0b4() -> ! {
     todo!("0x61d0b4 __ZThn96_N3RBX12SelectionBox13render3dAdornEPNS_5AdornE")
@@ -570,7 +570,7 @@ pub fn stub_61ee4c() -> ! {
 
 // 0x61ee7c — __ZThn96_NK3RBX14SelectionLasso19shouldRender3dAdornEv
 // type: _DWORD __fastcall(RBX::SelectionLasso *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::SelectionLasso::shouldRender3dAdorn(void)const")]
+#[doc(alias = "non-virtual thunk toRBX::SelectionLasso::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX14SelectionLasso19shouldRender3dAdornEv")]
 pub fn stub_61ee7c() -> ! {
     todo!("0x61ee7c __ZThn96_NK3RBX14SelectionLasso19shouldRender3dAdornEv")
@@ -586,7 +586,7 @@ pub fn stub_61ef74() -> ! {
 
 // 0x61f17c — __ZThn96_N3RBX14SelectionLasso13render3dAdornEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::SelectionLasso *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk to'RBX::SelectionLasso::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::SelectionLasso::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX14SelectionLasso13render3dAdornEPNS_5AdornE")]
 pub fn stub_61f17c() -> ! {
     todo!("0x61f17c __ZThn96_N3RBX14SelectionLasso13render3dAdornEPNS_5AdornE")
@@ -602,7 +602,7 @@ pub fn stub_61f4b4() -> ! {
 
 // 0x61f4e4 — __ZThn96_NK3RBX18SelectionPartLasso19shouldRender3dAdornEv
 // type: _DWORD __fastcall(RBX::SelectionPartLasso *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::SelectionPartLasso::shouldRender3dAdorn(void)const")]
+#[doc(alias = "non-virtual thunk toRBX::SelectionPartLasso::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX18SelectionPartLasso19shouldRender3dAdornEv")]
 pub fn stub_61f4e4() -> ! {
     todo!("0x61f4e4 __ZThn96_NK3RBX18SelectionPartLasso19shouldRender3dAdornEv")
@@ -650,7 +650,7 @@ pub fn stub_660ac0() -> ! {
 
 // 0x660bd8 — __ZThn96_N3RBX16SurfaceSelection13render3dAdornEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::SurfaceSelection *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk to'RBX::SurfaceSelection::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::SurfaceSelection::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX16SurfaceSelection13render3dAdornEPNS_5AdornE")]
 pub fn stub_660bd8() -> ! {
     todo!("0x660bd8 __ZThn96_N3RBX16SurfaceSelection13render3dAdornEPNS_5AdornE")
@@ -754,7 +754,7 @@ pub fn stub_668088() -> ! {
 
 // 0x66856c — __ZThn96_N3RBX7TextBox8render2dEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk to'RBX::TextBox::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::TextBox::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX7TextBox8render2dEPNS_5AdornE")]
 pub fn stub_66856c() -> ! {
     todo!("0x66856c __ZThn96_N3RBX7TextBox8render2dEPNS_5AdornE")
@@ -770,7 +770,7 @@ pub fn stub_67390c() -> ! {
 
 // 0x673918 — __ZThn96_N3RBX13GuiTextButton8render2dEPNS_5AdornE
 // type: int __fastcall(RBX::GuiTextButton *this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk to'RBX::GuiTextButton::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::GuiTextButton::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX13GuiTextButton8render2dEPNS_5AdornE")]
 pub fn stub_673918() -> ! {
     todo!("0x673918 __ZThn96_N3RBX13GuiTextButton8render2dEPNS_5AdornE")
@@ -786,7 +786,7 @@ pub fn stub_673924() -> ! {
 
 // 0x673b74 — __ZThn96_N3RBX13GuiTextButton15render2dContextEPNS_5AdornEPKNS_8InstanceE
 // type: void __fastcall(RBX::GuiTextButton *this, RBX::Adorn *, const RBX::Instance *)
-#[doc(alias = "`non-virtual thunk to'RBX::GuiTextButton::render2dContext(RBX::Adorn *,RBX::Instance const*)")]
+#[doc(alias = "non-virtual thunk toRBX::GuiTextButton::render2dContext(RBX::Adorn *,RBX::Instance const*)")]
 #[doc(alias = "__ZThn96_N3RBX13GuiTextButton15render2dContextEPNS_5AdornEPKNS_8InstanceE")]
 pub fn stub_673b74() -> ! {
     todo!("0x673b74 __ZThn96_N3RBX13GuiTextButton15render2dContextEPNS_5AdornEPKNS_8InstanceE")
@@ -802,7 +802,7 @@ pub fn stub_678e98() -> ! {
 
 // 0x678ea4 — __ZThn96_N3RBX9TextLabel8render2dEPNS_5AdornE
 // type: int __fastcall(RBX::TextLabel *this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk to'RBX::TextLabel::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::TextLabel::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX9TextLabel8render2dEPNS_5AdornE")]
 pub fn stub_678ea4() -> ! {
     todo!("0x678ea4 __ZThn96_N3RBX9TextLabel8render2dEPNS_5AdornE")
@@ -818,7 +818,7 @@ pub fn stub_678eb0() -> ! {
 
 // 0x67912c — __ZThn96_N3RBX9TextLabel15render2dContextEPNS_5AdornEPKNS_8InstanceE
 // type: void __fastcall(RBX::TextLabel *this, RBX::Adorn *, const RBX::Instance *)
-#[doc(alias = "`non-virtual thunk to'RBX::TextLabel::render2dContext(RBX::Adorn *,RBX::Instance const*)")]
+#[doc(alias = "non-virtual thunk toRBX::TextLabel::render2dContext(RBX::Adorn *,RBX::Instance const*)")]
 #[doc(alias = "__ZThn96_N3RBX9TextLabel15render2dContextEPNS_5AdornEPKNS_8InstanceE")]
 pub fn stub_67912c() -> ! {
     todo!("0x67912c __ZThn96_N3RBX9TextLabel15render2dContextEPNS_5AdornEPKNS_8InstanceE")
@@ -832,7 +832,7 @@ pub fn stub_680294() -> ! {
 }
 
 // 0x680308 — __ZThn304_N3RBX4Tool14render3dSelectEPNS_5AdornENS_11SelectStateE
-#[doc(alias = "`non-virtual thunk to'RBX::Tool::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
+#[doc(alias = "non-virtual thunk toRBX::Tool::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
 #[doc(alias = "__ZThn304_N3RBX4Tool14render3dSelectEPNS_5AdornENS_11SelectStateE")]
 pub fn stub_680308() -> ! {
     todo!("0x680308 __ZThn304_N3RBX4Tool14render3dSelectEPNS_5AdornENS_11SelectStateE")
@@ -874,7 +874,7 @@ pub fn stub_689e28() -> ! {
 
 // 0x689e6c — __ZThn4_N3RBX9ModelTool13render3dAdornEPNS_5AdornE
 // type: int __fastcall(RBX::ModelTool *this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk to'RBX::ModelTool::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::ModelTool::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX9ModelTool13render3dAdornEPNS_5AdornE")]
 pub fn stub_689e6c() -> ! {
     todo!("0x689e6c __ZThn4_N3RBX9ModelTool13render3dAdornEPNS_5AdornE")
@@ -890,7 +890,7 @@ pub fn stub_68b04c() -> ! {
 
 // 0x68b060 — __ZThn4_N3RBX8PartTool13render3dAdornEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::PartTool *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk to'RBX::PartTool::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::PartTool::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX8PartTool13render3dAdornEPNS_5AdornE")]
 pub fn stub_68b060() -> ! {
     todo!("0x68b060 __ZThn4_N3RBX8PartTool13render3dAdornEPNS_5AdornE")
@@ -906,7 +906,7 @@ pub fn stub_68bfc8() -> ! {
 
 // 0x68c060 — __ZThn4_N3RBX11SurfaceTool13render3dAdornEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::SurfaceTool *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk to'RBX::SurfaceTool::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::SurfaceTool::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX11SurfaceTool13render3dAdornEPNS_5AdornE")]
 pub fn stub_68c060() -> ! {
     todo!("0x68c060 __ZThn4_N3RBX11SurfaceTool13render3dAdornEPNS_5AdornE")

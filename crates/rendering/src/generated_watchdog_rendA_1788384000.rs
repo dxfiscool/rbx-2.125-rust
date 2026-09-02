@@ -605,7 +605,7 @@ pub fn stub_8e32c8() -> ! {
 
 // 0x8e32d4 — __ZThn96_N3RBX17GuiLayerCollector8render2dEPNS_5AdornE
 // type: int __fastcall(RBX::GuiLayerCollector *this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk toRBX::GuiLayerCollector::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::GuiLayerCollector::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX17GuiLayerCollector8render2dEPNS_5AdornE")]
 pub fn stub_8e32d4() -> ! {
     todo!("0x8e32d4 `non-virtual thunk to'RBX::GuiLayerCollector::render2d(RBX::Adorn *)")

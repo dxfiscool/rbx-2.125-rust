@@ -1020,7 +1020,7 @@ pub fn stub_75e4bc() -> ! {
 
 // 0x75e4c8 — __ZThn16_N3RBX9TreeStage12validateTreeEPNS_12SpanningNodeE
 // type: _DWORD __fastcall(RBX::TreeStage *__hidden this, RBX::SpanningNode *)
-#[doc(alias = "`non-virtual thunk toRBX::TreeStage::validateTree(RBX::SpanningNode *)")]
+#[doc(alias = "non-virtual thunk toRBX::TreeStage::validateTree(RBX::SpanningNode *)")]
 #[doc(alias = "__ZThn16_N3RBX9TreeStage12validateTreeEPNS_12SpanningNodeE")]
 pub fn stub_75e4c8() -> ! {
     todo!("0x75e4c8 __ZThn16_N3RBX9TreeStage12validateTreeEPNS_12SpanningNodeE")
@@ -1052,7 +1052,7 @@ pub fn stub_75e69c() -> ! {
 
 // 0x75e710 — __ZThn16_N3RBX9TreeStage20onSpanningEdgeAddingEPNS_12SpanningEdgeEPNS_12SpanningNodeE
 // type: _DWORD __fastcall(RBX::TreeStage *__hidden this, RBX::SpanningEdge *, RBX::SpanningNode *)
-#[doc(alias = "`non-virtual thunk toRBX::TreeStage::onSpanningEdgeAdding(RBX::SpanningEdge *,RBX::SpanningNode *)")]
+#[doc(alias = "non-virtual thunk toRBX::TreeStage::onSpanningEdgeAdding(RBX::SpanningEdge *,RBX::SpanningNode *)")]
 #[doc(alias = "__ZThn16_N3RBX9TreeStage20onSpanningEdgeAddingEPNS_12SpanningEdgeEPNS_12SpanningNodeE")]
 pub fn stub_75e710() -> ! {
     todo!("0x75e710 __ZThn16_N3RBX9TreeStage20onSpanningEdgeAddingEPNS_12SpanningEdgeEPNS_12SpanningNodeE")
@@ -1076,7 +1076,7 @@ pub fn stub_75edb8() -> ! {
 
 // 0x75ee8c — __ZThn16_N3RBX9TreeStage19onSpanningEdgeAddedEPNS_12SpanningEdgeE
 // type: _DWORD __fastcall(RBX::TreeStage *__hidden this, RBX::SpanningEdge *)
-#[doc(alias = "`non-virtual thunk toRBX::TreeStage::onSpanningEdgeAdded(RBX::SpanningEdge *)")]
+#[doc(alias = "non-virtual thunk toRBX::TreeStage::onSpanningEdgeAdded(RBX::SpanningEdge *)")]
 #[doc(alias = "__ZThn16_N3RBX9TreeStage19onSpanningEdgeAddedEPNS_12SpanningEdgeE")]
 pub fn stub_75ee8c() -> ! {
     todo!("0x75ee8c __ZThn16_N3RBX9TreeStage19onSpanningEdgeAddedEPNS_12SpanningEdgeE")
@@ -1100,7 +1100,7 @@ pub fn stub_75eef8() -> ! {
 
 // 0x75ef20 — __ZThn16_N3RBX9TreeStage22onSpanningEdgeRemovingEPNS_12SpanningEdgeE
 // type: _DWORD __fastcall(RBX::TreeStage *__hidden this, RBX::SpanningEdge *)
-#[doc(alias = "`non-virtual thunk toRBX::TreeStage::onSpanningEdgeRemoving(RBX::SpanningEdge *)")]
+#[doc(alias = "non-virtual thunk toRBX::TreeStage::onSpanningEdgeRemoving(RBX::SpanningEdge *)")]
 #[doc(alias = "__ZThn16_N3RBX9TreeStage22onSpanningEdgeRemovingEPNS_12SpanningEdgeE")]
 pub fn stub_75ef20() -> ! {
     todo!("0x75ef20 __ZThn16_N3RBX9TreeStage22onSpanningEdgeRemovingEPNS_12SpanningEdgeE")
@@ -1140,7 +1140,7 @@ pub fn stub_75f29c() -> ! {
 
 // 0x75f320 — __ZThn16_N3RBX9TreeStage21onSpanningEdgeRemovedEPNS_12SpanningEdgeEPNS_12SpanningNodeE
 // type: _DWORD __fastcall(RBX::TreeStage *__hidden this, RBX::SpanningEdge *, RBX::SpanningNode *)
-#[doc(alias = "`non-virtual thunk toRBX::TreeStage::onSpanningEdgeRemoved(RBX::SpanningEdge *,RBX::SpanningNode *)")]
+#[doc(alias = "non-virtual thunk toRBX::TreeStage::onSpanningEdgeRemoved(RBX::SpanningEdge *,RBX::SpanningNode *)")]
 #[doc(alias = "__ZThn16_N3RBX9TreeStage21onSpanningEdgeRemovedEPNS_12SpanningEdgeEPNS_12SpanningNodeE")]
 pub fn stub_75f320() -> ! {
     todo!("0x75f320 __ZThn16_N3RBX9TreeStage21onSpanningEdgeRemovedEPNS_12SpanningEdgeEPNS_12SpanningNodeE")

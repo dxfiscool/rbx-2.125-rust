@@ -28,7 +28,7 @@ pub fn stub_0x74aafc() -> ! {
     todo!("0x74aafc __ZN3RBX9PrimitiveD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Primitive::~Primitive()")]
+#[doc(alias = "non-virtual thunk toRBX::Primitive::~Primitive()")]
 // 0x74ab00 - __ZThn8_N3RBX9PrimitiveD0Ev
 pub fn stub_0x74ab00() -> ! {
     todo!("0x74ab00 __ZThn8_N3RBX9PrimitiveD0Ev")
@@ -40,7 +40,7 @@ pub fn stub_0x74ab08() -> ! {
     todo!("0x74ab08 __ZN3RBX9PrimitiveD2Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Primitive::~Primitive()")]
+#[doc(alias = "non-virtual thunk toRBX::Primitive::~Primitive()")]
 // 0x74ae0c - __ZThn8_N3RBX9PrimitiveD1Ev
 pub fn stub_0x74ae0c() -> ! {
     todo!("0x74ae0c __ZThn8_N3RBX9PrimitiveD1Ev")
@@ -460,7 +460,7 @@ pub fn stub_0x74cab0() -> ! {
     todo!("0x74cab0 __ZN3RBX9Primitive20getFirstSpanningEdgeEv")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Primitive::getFirstSpanningEdge(void)")]
+#[doc(alias = "non-virtual thunk toRBX::Primitive::getFirstSpanningEdge(void)")]
 // 0x74cac4 - __ZThn8_N3RBX9Primitive20getFirstSpanningEdgeEv
 pub fn stub_0x74cac4() -> ! {
     todo!("0x74cac4 __ZThn8_N3RBX9Primitive20getFirstSpanningEdgeEv")
@@ -472,7 +472,7 @@ pub fn stub_0x74cae0() -> ! {
     todo!("0x74cae0 __ZN3RBX9Primitive19getNextSpanningEdgeEPNS_12SpanningEdgeE")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Primitive::getNextSpanningEdge(RBX::SpanningEdge *)")]
+#[doc(alias = "non-virtual thunk toRBX::Primitive::getNextSpanningEdge(RBX::SpanningEdge *)")]
 // 0x74cb08 - __ZThn8_N3RBX9Primitive19getNextSpanningEdgeEPNS_12SpanningEdgeE
 pub fn stub_0x74cb08() -> ! {
     todo!("0x74cb08 __ZThn8_N3RBX9Primitive19getNextSpanningEdgeEPNS_12SpanningEdgeE")

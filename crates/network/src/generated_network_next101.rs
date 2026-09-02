@@ -525,7 +525,7 @@ pub fn stub_0x968fb0() -> ! {
 // 0x9694b4 — __ZThn92_N3RBX7Network6Client25OnFailedConnectionAttemptEPN6RakNet6PacketENS2_33PI2_FailedConnectionAttemptReasonE
 // type: void __fastcall(int, unsigned __int8 **)
 #[doc(alias = "__ZThn92_N3RBX7Network6Client25OnFailedConnectionAttemptEPN6RakNet6PacketENS2_33PI2_FailedConnectionAttemptReasonE")]
-#[doc(alias = "`non-virtual thunk toRBX::Network::Client::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Client::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")]
 pub fn stub_0x9694b4() -> ! {
     todo!("0x9694b4 __ZThn92_N3RBX7Network6Client25OnFailedConnectionAttemptEPN6RakNet6PacketENS2_33PI2_FailedConnectionAttemptReasonE")
 }
@@ -541,7 +541,7 @@ pub fn stub_0x969704() -> ! {
 // 0x96c474 — __ZThn92_N3RBX7Network6Client9OnReceiveEPN6RakNet6PacketE
 // type: int __fastcall(int, int)
 #[doc(alias = "__ZThn92_N3RBX7Network6Client9OnReceiveEPN6RakNet6PacketE")]
-#[doc(alias = "`non-virtual thunk toRBX::Network::Client::OnReceive(RakNet::Packet *)")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Client::OnReceive(RakNet::Packet *)")]
 pub fn stub_0x96c474() -> ! {
     todo!("0x96c474 __ZThn92_N3RBX7Network6Client9OnReceiveEPN6RakNet6PacketE")
 }
@@ -573,7 +573,7 @@ pub fn stub_0x97be3c() -> ! {
 // 0x97c3ec — __ZThn1180_N3RBX7Network16ClientReplicator9OnReceiveEPN6RakNet6PacketE
 // type: int __fastcall(int, unsigned __int8 **)
 #[doc(alias = "__ZThn1180_N3RBX7Network16ClientReplicator9OnReceiveEPN6RakNet6PacketE")]
-#[doc(alias = "`non-virtual thunk toRBX::Network::ClientReplicator::OnReceive(RakNet::Packet *)")]
+#[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::OnReceive(RakNet::Packet *)")]
 pub fn stub_0x97c3ec() -> ! {
     todo!("0x97c3ec __ZThn1180_N3RBX7Network16ClientReplicator9OnReceiveEPN6RakNet6PacketE")
 }

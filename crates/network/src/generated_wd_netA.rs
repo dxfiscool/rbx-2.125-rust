@@ -22,7 +22,7 @@ pub fn stub_0x7d6ffc() -> ! {
 // 0x7d7000 — __ZThn4_N3RBX5HUMAN16PlatformStandingD0Ev
 // type: void __fastcall(RBX::HUMAN::PlatformStanding *__hidden this)
 #[doc(alias = "__ZThn4_N3RBX5HUMAN16PlatformStandingD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::HUMAN::PlatformStanding::~PlatformStanding()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::PlatformStanding::~PlatformStanding()")]
 pub fn stub_0x7d7000() -> ! {
     todo!("0x7d7000 __ZThn4_N3RBX5HUMAN16PlatformStandingD0Ev")
 }
@@ -38,7 +38,7 @@ pub fn stub_0x7d7008() -> ! {
 // 0x7d70fc — __ZThn4_N3RBX5HUMAN16PlatformStandingD1Ev
 // type: void __fastcall(RBX::HUMAN::PlatformStanding *__hidden this)
 #[doc(alias = "__ZThn4_N3RBX5HUMAN16PlatformStandingD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::HUMAN::PlatformStanding::~PlatformStanding()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::PlatformStanding::~PlatformStanding()")]
 pub fn stub_0x7d70fc() -> ! {
     todo!("0x7d70fc __ZThn4_N3RBX5HUMAN16PlatformStandingD1Ev")
 }
@@ -141,7 +141,7 @@ pub fn stub_0x7d766c() -> ! {
 // 0x7d7670 — __ZThn4_N3RBX5HUMAN17StrafingNoPhysicsD1Ev
 // type: void __fastcall(RBX::HUMAN::StrafingNoPhysics *__hidden this)
 #[doc(alias = "__ZThn4_N3RBX5HUMAN17StrafingNoPhysicsD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::HUMAN::StrafingNoPhysics::~StrafingNoPhysics()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::StrafingNoPhysics::~StrafingNoPhysics()")]
 pub fn stub_0x7d7670() -> ! {
     todo!("0x7d7670 __ZThn4_N3RBX5HUMAN17StrafingNoPhysicsD1Ev")
 }
@@ -149,7 +149,7 @@ pub fn stub_0x7d7670() -> ! {
 // 0x7d7678 — __ZThn4_N3RBX5HUMAN17StrafingNoPhysicsD0Ev
 // type: void __fastcall(RBX::HUMAN::StrafingNoPhysics *__hidden this)
 #[doc(alias = "__ZThn4_N3RBX5HUMAN17StrafingNoPhysicsD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::HUMAN::StrafingNoPhysics::~StrafingNoPhysics()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::StrafingNoPhysics::~StrafingNoPhysics()")]
 pub fn stub_0x7d7678() -> ! {
     todo!("0x7d7678 __ZThn4_N3RBX5HUMAN17StrafingNoPhysicsD0Ev")
 }
@@ -234,7 +234,7 @@ pub fn stub_0x7d9e34() -> ! {
 // 0x7d9efc — __ZThn32_N3RBX11TextServiceD1Ev
 // type: void __fastcall(RBX::TextService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX11TextServiceD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::TextService::~TextService()")]
+#[doc(alias = "non-virtual thunk toRBX::TextService::~TextService()")]
 pub fn stub_0x7d9efc() -> ! {
     todo!("0x7d9efc __ZThn32_N3RBX11TextServiceD1Ev")
 }
@@ -242,7 +242,7 @@ pub fn stub_0x7d9efc() -> ! {
 // 0x7d9f04 — __ZThn32_N3RBX11TextServiceD0Ev
 // type: void __fastcall(RBX::TextService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX11TextServiceD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::TextService::~TextService()")]
+#[doc(alias = "non-virtual thunk toRBX::TextService::~TextService()")]
 pub fn stub_0x7d9f04() -> ! {
     todo!("0x7d9f04 __ZThn32_N3RBX11TextServiceD0Ev")
 }
@@ -250,7 +250,7 @@ pub fn stub_0x7d9f04() -> ! {
 // 0x7d9fd0 — __ZThn36_N3RBX11TextServiceD1Ev
 // type: void __fastcall(RBX::TextService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX11TextServiceD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::TextService::~TextService()")]
+#[doc(alias = "non-virtual thunk toRBX::TextService::~TextService()")]
 pub fn stub_0x7d9fd0() -> ! {
     todo!("0x7d9fd0 __ZThn36_N3RBX11TextServiceD1Ev")
 }
@@ -258,7 +258,7 @@ pub fn stub_0x7d9fd0() -> ! {
 // 0x7d9fd8 — __ZThn36_N3RBX11TextServiceD0Ev
 // type: void __fastcall(RBX::TextService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX11TextServiceD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::TextService::~TextService()")]
+#[doc(alias = "non-virtual thunk toRBX::TextService::~TextService()")]
 pub fn stub_0x7d9fd8() -> ! {
     todo!("0x7d9fd8 __ZThn36_N3RBX11TextServiceD0Ev")
 }
@@ -324,7 +324,7 @@ pub fn stub_0x7da584() -> ! {
 // 0x7e80fc — __ZThn96_N3RBX22TextureContentProviderD1Ev
 // type: void __fastcall(RBX::TextureContentProvider *__hidden this)
 #[doc(alias = "__ZThn96_N3RBX22TextureContentProviderD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::TextureContentProvider::~TextureContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::TextureContentProvider::~TextureContentProvider()")]
 pub fn stub_0x7e80fc() -> ! {
     todo!("0x7e80fc __ZThn96_N3RBX22TextureContentProviderD1Ev")
 }
@@ -332,7 +332,7 @@ pub fn stub_0x7e80fc() -> ! {
 // 0x7e8104 — __ZThn96_N3RBX22TextureContentProviderD0Ev
 // type: void __fastcall(RBX::TextureContentProvider *__hidden this)
 #[doc(alias = "__ZThn96_N3RBX22TextureContentProviderD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::TextureContentProvider::~TextureContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::TextureContentProvider::~TextureContentProvider()")]
 pub fn stub_0x7e8104() -> ! {
     todo!("0x7e8104 __ZThn96_N3RBX22TextureContentProviderD0Ev")
 }
@@ -543,7 +543,7 @@ pub fn stub_0x7eb380() -> ! {
 // 0x7eb384 — __ZThn32_N3RBX15ContentProviderD0Ev
 // type: void __fastcall(RBX::ContentProvider *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX15ContentProviderD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
 pub fn stub_0x7eb384() -> ! {
     todo!("0x7eb384 __ZThn32_N3RBX15ContentProviderD0Ev")
 }
@@ -551,7 +551,7 @@ pub fn stub_0x7eb384() -> ! {
 // 0x7eb38c — __ZThn36_N3RBX15ContentProviderD0Ev
 // type: void __fastcall(RBX::ContentProvider *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX15ContentProviderD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
 pub fn stub_0x7eb38c() -> ! {
     todo!("0x7eb38c __ZThn36_N3RBX15ContentProviderD0Ev")
 }
@@ -559,7 +559,7 @@ pub fn stub_0x7eb38c() -> ! {
 // 0x7eb394 — __ZThn96_N3RBX15ContentProviderD0Ev
 // type: void __fastcall(RBX::ContentProvider *__hidden this)
 #[doc(alias = "__ZThn96_N3RBX15ContentProviderD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
 pub fn stub_0x7eb394() -> ! {
     todo!("0x7eb394 __ZThn96_N3RBX15ContentProviderD0Ev")
 }
@@ -575,7 +575,7 @@ pub fn stub_0x7eb39c() -> ! {
 // 0x7eb534 — __ZThn32_N3RBX15ContentProviderD1Ev
 // type: void __fastcall(RBX::ContentProvider *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX15ContentProviderD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
 pub fn stub_0x7eb534() -> ! {
     todo!("0x7eb534 __ZThn32_N3RBX15ContentProviderD1Ev")
 }
@@ -583,7 +583,7 @@ pub fn stub_0x7eb534() -> ! {
 // 0x7eb53c — __ZThn36_N3RBX15ContentProviderD1Ev
 // type: void __fastcall(RBX::ContentProvider *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX15ContentProviderD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
 pub fn stub_0x7eb53c() -> ! {
     todo!("0x7eb53c __ZThn36_N3RBX15ContentProviderD1Ev")
 }
@@ -591,7 +591,7 @@ pub fn stub_0x7eb53c() -> ! {
 // 0x7eb544 — __ZThn96_N3RBX15ContentProviderD1Ev
 // type: void __fastcall(RBX::ContentProvider *__hidden this)
 #[doc(alias = "__ZThn96_N3RBX15ContentProviderD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
 pub fn stub_0x7eb544() -> ! {
     todo!("0x7eb544 __ZThn96_N3RBX15ContentProviderD1Ev")
 }
@@ -605,7 +605,7 @@ pub fn stub_0x7ec044() -> ! {
 
 // 0x7ec04c — __ZThn96_N3RBX15ContentProvider11onHeartbeatERKNS_9HeartbeatE
 #[doc(alias = "__ZThn96_N3RBX15ContentProvider11onHeartbeatERKNS_9HeartbeatE")]
-#[doc(alias = "`non-virtual thunk toRBX::ContentProvider::onHeartbeat(RBX::Heartbeat const&)")]
+#[doc(alias = "non-virtual thunk toRBX::ContentProvider::onHeartbeat(RBX::Heartbeat const&)")]
 pub fn stub_0x7ec04c() -> ! {
     todo!("0x7ec04c __ZThn96_N3RBX15ContentProvider11onHeartbeatERKNS_9HeartbeatE")
 }

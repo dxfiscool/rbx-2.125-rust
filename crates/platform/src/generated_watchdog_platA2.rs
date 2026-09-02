@@ -378,7 +378,7 @@ pub fn stub_8b0380() -> ! {
 
 // 0x8b0784 — __ZThn96_N3RBX16UserInputService9onSteppedERKNS_7SteppedE
 // type: void __fastcall(int, RBX::Instance *, int, int, int, boost::detail::sp_counted_base *, int, int, boost::detail::sp_counted_base *, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, boost::detail::sp_counted_base *, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, boost::detail::sp_counted_base *, int, char, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, boost::detail::sp_counted_base *, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::onStepped(RBX::Stepped const&)")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::onStepped(RBX::Stepped const&)")]
 #[doc(alias = "__ZThn96_N3RBX16UserInputService9onSteppedERKNS_7SteppedE")]
 pub fn stub_8b0784() -> ! {
     todo!("0x8b0784 __ZThn96_N3RBX16UserInputService9onSteppedERKNS_7SteppedE")
@@ -498,7 +498,7 @@ pub fn stub_8b2e1c() -> ! {
 
 // 0x8b2ed0 — __ZThn32_N3RBX16UserInputServiceD1Ev
 // type: void __fastcall(RBX::UserInputService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::~UserInputService()")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::~UserInputService()")]
 #[doc(alias = "__ZThn32_N3RBX16UserInputServiceD1Ev")]
 pub fn stub_8b2ed0() -> ! {
     todo!("0x8b2ed0 __ZThn32_N3RBX16UserInputServiceD1Ev")
@@ -506,7 +506,7 @@ pub fn stub_8b2ed0() -> ! {
 
 // 0x8b2ed8 — __ZThn32_N3RBX16UserInputServiceD0Ev
 // type: void __fastcall(RBX::UserInputService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::~UserInputService()")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::~UserInputService()")]
 #[doc(alias = "__ZThn32_N3RBX16UserInputServiceD0Ev")]
 pub fn stub_8b2ed8() -> ! {
     todo!("0x8b2ed8 __ZThn32_N3RBX16UserInputServiceD0Ev")
@@ -514,7 +514,7 @@ pub fn stub_8b2ed8() -> ! {
 
 // 0x8b2ef0 — __ZThn36_N3RBX16UserInputServiceD1Ev
 // type: void __fastcall(RBX::UserInputService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::~UserInputService()")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::~UserInputService()")]
 #[doc(alias = "__ZThn36_N3RBX16UserInputServiceD1Ev")]
 pub fn stub_8b2ef0() -> ! {
     todo!("0x8b2ef0 __ZThn36_N3RBX16UserInputServiceD1Ev")
@@ -522,7 +522,7 @@ pub fn stub_8b2ef0() -> ! {
 
 // 0x8b2ef8 — __ZThn36_N3RBX16UserInputServiceD0Ev
 // type: void __fastcall(RBX::UserInputService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::~UserInputService()")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::~UserInputService()")]
 #[doc(alias = "__ZThn36_N3RBX16UserInputServiceD0Ev")]
 pub fn stub_8b2ef8() -> ! {
     todo!("0x8b2ef8 __ZThn36_N3RBX16UserInputServiceD0Ev")
@@ -530,7 +530,7 @@ pub fn stub_8b2ef8() -> ! {
 
 // 0x8b2f04 — __ZThn96_N3RBX16UserInputServiceD1Ev
 // type: void __fastcall(RBX::UserInputService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::~UserInputService()")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::~UserInputService()")]
 #[doc(alias = "__ZThn96_N3RBX16UserInputServiceD1Ev")]
 pub fn stub_8b2f04() -> ! {
     todo!("0x8b2f04 __ZThn96_N3RBX16UserInputServiceD1Ev")
@@ -538,7 +538,7 @@ pub fn stub_8b2f04() -> ! {
 
 // 0x8b2f0c — __ZThn96_N3RBX16UserInputServiceD0Ev
 // type: void __fastcall(RBX::UserInputService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::~UserInputService()")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::~UserInputService()")]
 #[doc(alias = "__ZThn96_N3RBX16UserInputServiceD0Ev")]
 pub fn stub_8b2f0c() -> ! {
     todo!("0x8b2f0c __ZThn96_N3RBX16UserInputServiceD0Ev")

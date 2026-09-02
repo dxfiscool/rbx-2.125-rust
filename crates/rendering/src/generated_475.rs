@@ -139,7 +139,7 @@ pub fn stub_8845d0() -> ! {
 
 // 0x884600 — __GLOBAL__I_a_439
 
-#[doc(alias = "`global constructor keyed to`_a_439")]
+#[doc(alias = "global constructor keyed to_a_439")]
 #[doc(alias = "__GLOBAL__I_a_439")]
 pub fn stub_884600() -> ! {
     todo!("0x884600 `global constructor keyed to'_a_439")
@@ -259,7 +259,7 @@ pub fn stub_885ca4() -> ! {
 
 // 0x885ca8 — __ZThn32_N3RBX6PluginD0Ev
 // type: void __fastcall(RBX::Plugin *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Plugin::~Plugin()")]
+#[doc(alias = "non-virtual thunk toRBX::Plugin::~Plugin()")]
 #[doc(alias = "__ZThn32_N3RBX6PluginD0Ev")]
 pub fn stub_885ca8() -> ! {
     todo!("0x885ca8 `non-virtual thunk to'RBX::Plugin::~Plugin()")
@@ -267,7 +267,7 @@ pub fn stub_885ca8() -> ! {
 
 // 0x885cb0 — __ZThn36_N3RBX6PluginD0Ev
 // type: void __fastcall(RBX::Plugin *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Plugin::~Plugin()")]
+#[doc(alias = "non-virtual thunk toRBX::Plugin::~Plugin()")]
 #[doc(alias = "__ZThn36_N3RBX6PluginD0Ev")]
 pub fn stub_885cb0() -> ! {
     todo!("0x885cb0 `non-virtual thunk to'RBX::Plugin::~Plugin()")
@@ -283,7 +283,7 @@ pub fn stub_885cb8() -> ! {
 
 // 0x885df0 — __ZThn32_N3RBX6PluginD1Ev
 // type: void __fastcall(RBX::Plugin *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Plugin::~Plugin()")]
+#[doc(alias = "non-virtual thunk toRBX::Plugin::~Plugin()")]
 #[doc(alias = "__ZThn32_N3RBX6PluginD1Ev")]
 pub fn stub_885df0() -> ! {
     todo!("0x885df0 `non-virtual thunk to'RBX::Plugin::~Plugin()")
@@ -291,7 +291,7 @@ pub fn stub_885df0() -> ! {
 
 // 0x885df8 — __ZThn36_N3RBX6PluginD1Ev
 // type: void __fastcall(RBX::Plugin *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Plugin::~Plugin()")]
+#[doc(alias = "non-virtual thunk toRBX::Plugin::~Plugin()")]
 #[doc(alias = "__ZThn36_N3RBX6PluginD1Ev")]
 pub fn stub_885df8() -> ! {
     todo!("0x885df8 `non-virtual thunk to'RBX::Plugin::~Plugin()")
@@ -347,7 +347,7 @@ pub fn stub_886368() -> ! {
 
 // 0x886388 — __ZThn92_N3RBX13PluginManager17DeactivatePluginsEv
 // type: _DWORD __fastcall(RBX::PluginManager *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::PluginManager::DeactivatePlugins(void)")]
+#[doc(alias = "non-virtual thunk toRBX::PluginManager::DeactivatePlugins(void)")]
 #[doc(alias = "__ZThn92_N3RBX13PluginManager17DeactivatePluginsEv")]
 pub fn stub_886388() -> ! {
     todo!("0x886388 `non-virtual thunk to'RBX::PluginManager::DeactivatePlugins(void)")
@@ -363,7 +363,7 @@ pub fn stub_8863a8() -> ! {
 
 // 0x8865c0 — __ZThn92_N3RBX13PluginManager8activateEPNS_6PluginEPNS_9DataModelE
 // type: _DWORD __fastcall(RBX::PluginManager *__hidden this, RBX::Plugin *, RBX::DataModel *)
-#[doc(alias = "`non-virtual thunk to`RBX::PluginManager::activate(RBX::Plugin *,RBX::DataModel *)")]
+#[doc(alias = "non-virtual thunk toRBX::PluginManager::activate(RBX::Plugin *,RBX::DataModel *)")]
 #[doc(alias = "__ZThn92_N3RBX13PluginManager8activateEPNS_6PluginEPNS_9DataModelE")]
 pub fn stub_8865c0() -> ! {
     todo!("0x8865c0 `non-virtual thunk to'RBX::PluginManager::activate(RBX::Plugin *,RBX::DataModel *)")
@@ -403,7 +403,7 @@ pub fn stub_886984() -> ! {
 
 // 0x886b40 — __ZThn92_N3RBX13PluginManager13createToolbarEPNS_6PluginESs
 
-#[doc(alias = "`non-virtual thunk to`RBX::PluginManager::createToolbar(RBX::Plugin *,std::string)")]
+#[doc(alias = "non-virtual thunk toRBX::PluginManager::createToolbar(RBX::Plugin *,std::string)")]
 #[doc(alias = "__ZThn92_N3RBX13PluginManager13createToolbarEPNS_6PluginESs")]
 pub fn stub_886b40() -> ! {
     todo!("0x886b40 `non-virtual thunk to'RBX::PluginManager::createToolbar(RBX::Plugin *,std::string)")
@@ -419,7 +419,7 @@ pub fn stub_886b4c() -> ! {
 
 // 0x886cb0 — __ZThn96_N3RBX13PluginManager11buttonClickEPNS_9DataModelEPv
 // type: _DWORD __fastcall(RBX::PluginManager *__hidden this, RBX::DataModel *, void *)
-#[doc(alias = "`non-virtual thunk to`RBX::PluginManager::buttonClick(RBX::DataModel *,void *)")]
+#[doc(alias = "non-virtual thunk toRBX::PluginManager::buttonClick(RBX::DataModel *,void *)")]
 #[doc(alias = "__ZThn96_N3RBX13PluginManager11buttonClickEPNS_9DataModelEPv")]
 pub fn stub_886cb0() -> ! {
     todo!("0x886cb0 `non-virtual thunk to'RBX::PluginManager::buttonClick(RBX::DataModel *,void *)")
@@ -595,7 +595,7 @@ pub fn stub_8875d8() -> ! {
 
 // 0x887600 — __ZThn32_N3RBX13PluginManagerD1Ev
 // type: void __fastcall(RBX::PluginManager *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::PluginManager::~PluginManager()")]
+#[doc(alias = "non-virtual thunk toRBX::PluginManager::~PluginManager()")]
 #[doc(alias = "__ZThn32_N3RBX13PluginManagerD1Ev")]
 pub fn stub_887600() -> ! {
     todo!("0x887600 `non-virtual thunk to'RBX::PluginManager::~PluginManager()")
@@ -603,7 +603,7 @@ pub fn stub_887600() -> ! {
 
 // 0x887608 — __ZThn32_N3RBX13PluginManagerD0Ev
 // type: void __fastcall(RBX::PluginManager *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::PluginManager::~PluginManager()")]
+#[doc(alias = "non-virtual thunk toRBX::PluginManager::~PluginManager()")]
 #[doc(alias = "__ZThn32_N3RBX13PluginManagerD0Ev")]
 pub fn stub_887608() -> ! {
     todo!("0x887608 `non-virtual thunk to'RBX::PluginManager::~PluginManager()")
@@ -619,7 +619,7 @@ pub fn stub_8876ac() -> ! {
 
 // 0x8876d4 — __ZThn36_N3RBX13PluginManagerD1Ev
 // type: void __fastcall(RBX::PluginManager *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::PluginManager::~PluginManager()")]
+#[doc(alias = "non-virtual thunk toRBX::PluginManager::~PluginManager()")]
 #[doc(alias = "__ZThn36_N3RBX13PluginManagerD1Ev")]
 pub fn stub_8876d4() -> ! {
     todo!("0x8876d4 `non-virtual thunk to'RBX::PluginManager::~PluginManager()")
@@ -627,7 +627,7 @@ pub fn stub_8876d4() -> ! {
 
 // 0x8876dc — __ZThn36_N3RBX13PluginManagerD0Ev
 // type: void __fastcall(RBX::PluginManager *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::PluginManager::~PluginManager()")]
+#[doc(alias = "non-virtual thunk toRBX::PluginManager::~PluginManager()")]
 #[doc(alias = "__ZThn36_N3RBX13PluginManagerD0Ev")]
 pub fn stub_8876dc() -> ! {
     todo!("0x8876dc `non-virtual thunk to'RBX::PluginManager::~PluginManager()")
@@ -699,7 +699,7 @@ pub fn stub_8879e8() -> ! {
 
 // 0x8879f8 — __ZThn32_N3RBX6ButtonD1Ev
 // type: void __fastcall(RBX::Button *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Button::~Button()")]
+#[doc(alias = "non-virtual thunk toRBX::Button::~Button()")]
 #[doc(alias = "__ZThn32_N3RBX6ButtonD1Ev")]
 pub fn stub_8879f8() -> ! {
     todo!("0x8879f8 `non-virtual thunk to'RBX::Button::~Button()")
@@ -707,7 +707,7 @@ pub fn stub_8879f8() -> ! {
 
 // 0x887b08 — __ZThn32_N3RBX6ButtonD0Ev
 // type: void __fastcall(RBX::Button *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Button::~Button()")]
+#[doc(alias = "non-virtual thunk toRBX::Button::~Button()")]
 #[doc(alias = "__ZThn32_N3RBX6ButtonD0Ev")]
 pub fn stub_887b08() -> ! {
     todo!("0x887b08 `non-virtual thunk to'RBX::Button::~Button()")
@@ -723,7 +723,7 @@ pub fn stub_887c30() -> ! {
 
 // 0x887c40 — __ZThn36_N3RBX6ButtonD1Ev
 // type: void __fastcall(RBX::Button *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Button::~Button()")]
+#[doc(alias = "non-virtual thunk toRBX::Button::~Button()")]
 #[doc(alias = "__ZThn36_N3RBX6ButtonD1Ev")]
 pub fn stub_887c40() -> ! {
     todo!("0x887c40 `non-virtual thunk to'RBX::Button::~Button()")
@@ -731,7 +731,7 @@ pub fn stub_887c40() -> ! {
 
 // 0x887d50 — __ZThn36_N3RBX6ButtonD0Ev
 // type: void __fastcall(RBX::Button *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Button::~Button()")]
+#[doc(alias = "non-virtual thunk toRBX::Button::~Button()")]
 #[doc(alias = "__ZThn36_N3RBX6ButtonD0Ev")]
 pub fn stub_887d50() -> ! {
     todo!("0x887d50 `non-virtual thunk to'RBX::Button::~Button()")
@@ -763,7 +763,7 @@ pub fn stub_888060() -> ! {
 
 // 0x888070 — __ZThn32_N3RBX7ToolbarD1Ev
 // type: void __fastcall(RBX::Toolbar *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Toolbar::~Toolbar()")]
+#[doc(alias = "non-virtual thunk toRBX::Toolbar::~Toolbar()")]
 #[doc(alias = "__ZThn32_N3RBX7ToolbarD1Ev")]
 pub fn stub_888070() -> ! {
     todo!("0x888070 `non-virtual thunk to'RBX::Toolbar::~Toolbar()")
@@ -771,7 +771,7 @@ pub fn stub_888070() -> ! {
 
 // 0x888158 — __ZThn32_N3RBX7ToolbarD0Ev
 // type: void __fastcall(RBX::Toolbar *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Toolbar::~Toolbar()")]
+#[doc(alias = "non-virtual thunk toRBX::Toolbar::~Toolbar()")]
 #[doc(alias = "__ZThn32_N3RBX7ToolbarD0Ev")]
 pub fn stub_888158() -> ! {
     todo!("0x888158 `non-virtual thunk to'RBX::Toolbar::~Toolbar()")
@@ -787,7 +787,7 @@ pub fn stub_888258() -> ! {
 
 // 0x888268 — __ZThn36_N3RBX7ToolbarD1Ev
 // type: void __fastcall(RBX::Toolbar *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Toolbar::~Toolbar()")]
+#[doc(alias = "non-virtual thunk toRBX::Toolbar::~Toolbar()")]
 #[doc(alias = "__ZThn36_N3RBX7ToolbarD1Ev")]
 pub fn stub_888268() -> ! {
     todo!("0x888268 `non-virtual thunk to'RBX::Toolbar::~Toolbar()")
@@ -795,7 +795,7 @@ pub fn stub_888268() -> ! {
 
 // 0x888350 — __ZThn36_N3RBX7ToolbarD0Ev
 // type: void __fastcall(RBX::Toolbar *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Toolbar::~Toolbar()")]
+#[doc(alias = "non-virtual thunk toRBX::Toolbar::~Toolbar()")]
 #[doc(alias = "__ZThn36_N3RBX7ToolbarD0Ev")]
 pub fn stub_888350() -> ! {
     todo!("0x888350 `non-virtual thunk to'RBX::Toolbar::~Toolbar()")

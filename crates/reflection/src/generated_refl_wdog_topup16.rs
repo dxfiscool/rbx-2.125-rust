@@ -42,7 +42,7 @@ pub fn stub_6df7f8() -> ! {
 }
 
 // 0x6df818 — __ZThn32_N3RBX5Stats14TypedStatsItemIfED0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemIfED0Ev")]
 pub fn stub_6df818() -> ! {
     todo!("0x6df818")
@@ -119,14 +119,14 @@ pub fn stub_6dffd0() -> ! {
 }
 
 // 0x6e0130 — __ZThn32_N3RBX5Stats14TypedStatsItemIdED1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemIdED1Ev")]
 pub fn stub_6e0130() -> ! {
     todo!("0x6e0130")
 }
 
 // 0x6e0278 — __ZThn32_N3RBX5Stats14TypedStatsItemIdED0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemIdED0Ev")]
 pub fn stub_6e0278() -> ! {
     todo!("0x6e0278")

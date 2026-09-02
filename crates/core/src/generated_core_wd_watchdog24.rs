@@ -624,7 +624,7 @@ pub fn stub_0x7382a4() -> ! {
     todo!("0x7382a4 __ZNK3RBX5Joint14otherConstNodeEPKNS_12SpanningNodeE")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Joint::otherConstNode(RBX::SpanningNode const*)const")]
+#[doc(alias = "non-virtual thunk toRBX::Joint::otherConstNode(RBX::SpanningNode const*)const")]
 // 0x7382c0 — __ZThn32_NK3RBX5Joint14otherConstNodeEPKNS_12SpanningNodeE
 // type: _DWORD __fastcall(RBX::Joint *__hidden this, const RBX::SpanningNode *)
 pub fn stub_0x7382c0() -> ! {
@@ -638,7 +638,7 @@ pub fn stub_0x7382e0() -> ! {
     todo!("0x7382e0 __ZN3RBX5Joint7getNodeEi")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Joint::getNode(int)")]
+#[doc(alias = "non-virtual thunk toRBX::Joint::getNode(int)")]
 // 0x7382f0 — __ZThn32_N3RBX5Joint7getNodeEi
 // type: _DWORD __fastcall(RBX::Joint *__hidden this, int)
 pub fn stub_0x7382f0() -> ! {
@@ -652,7 +652,7 @@ pub fn stub_0x738300() -> ! {
     todo!("0x738300 __ZNK3RBX5Joint12getConstNodeEi")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Joint::getConstNode(int)const")]
+#[doc(alias = "non-virtual thunk toRBX::Joint::getConstNode(int)const")]
 // 0x738310 — __ZThn32_NK3RBX5Joint12getConstNodeEi
 // type: _DWORD __fastcall(RBX::Joint *__hidden this, int)
 pub fn stub_0x738310() -> ! {

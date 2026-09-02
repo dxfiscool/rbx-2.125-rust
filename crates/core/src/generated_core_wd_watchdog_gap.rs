@@ -127,7 +127,7 @@ pub fn stub_0x7419c0() -> ! {
 
 // 0x7419c4 — __ZThn32_N3RBX12Motor6DJointD0Ev
 // type: void __fastcall(RBX::Motor6DJoint *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Motor6DJoint::~Motor6DJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::Motor6DJoint::~Motor6DJoint()")]
 pub fn stub_0x7419c4() -> ! {
     todo!("0x7419c4")
 }
@@ -141,7 +141,7 @@ pub fn stub_0x7419cc() -> ! {
 
 // 0x741ac8 — __ZThn32_N3RBX12Motor6DJointD1Ev
 // type: void __fastcall(RBX::Motor6DJoint *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Motor6DJoint::~Motor6DJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::Motor6DJoint::~Motor6DJoint()")]
 pub fn stub_0x741ac8() -> ! {
     todo!("0x741ac8")
 }
@@ -266,7 +266,7 @@ pub fn stub_0x74274c() -> ! {
 
 // 0x742750 — __ZThn32_N3RBX10MotorJointD0Ev
 // type: void __fastcall(RBX::MotorJoint *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::MotorJoint::~MotorJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::MotorJoint::~MotorJoint()")]
 pub fn stub_0x742750() -> ! {
     todo!("0x742750")
 }
@@ -280,7 +280,7 @@ pub fn stub_0x742758() -> ! {
 
 // 0x742854 — __ZThn32_N3RBX10MotorJointD1Ev
 // type: void __fastcall(RBX::MotorJoint *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::MotorJoint::~MotorJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::MotorJoint::~MotorJoint()")]
 pub fn stub_0x742854() -> ! {
     todo!("0x742854")
 }
@@ -559,7 +559,7 @@ pub fn stub_0x743c40() -> ! {
 
 // 0x743c44 — __ZThn32_N3RBX10MultiJointD0Ev
 // type: void __fastcall(RBX::MultiJoint *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::MultiJoint::~MultiJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::MultiJoint::~MultiJoint()")]
 pub fn stub_0x743c44() -> ! {
     todo!("0x743c44")
 }
@@ -573,7 +573,7 @@ pub fn stub_0x743c4c() -> ! {
 
 // 0x743dc8 — __ZThn32_N3RBX10MultiJointD1Ev
 // type: void __fastcall(RBX::MultiJoint *this, int, int)
-#[doc(alias = "`non-virtual thunk toRBX::MultiJoint::~MultiJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::MultiJoint::~MultiJoint()")]
 pub fn stub_0x743dc8() -> ! {
     todo!("0x743dc8")
 }

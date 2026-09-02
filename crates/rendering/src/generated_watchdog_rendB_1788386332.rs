@@ -107,7 +107,7 @@ pub fn stub_88e508() -> ! {
 
 // 0x88e50c — __ZThn32_N3RBX11PluginMouseD0Ev
 // type: void __fastcall(RBX::PluginMouse *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::PluginMouse::~PluginMouse()")]
+#[doc(alias = "non-virtual thunk toRBX::PluginMouse::~PluginMouse()")]
 #[doc(alias = "__ZThn32_N3RBX11PluginMouseD0Ev")]
 pub fn stub_88e50c() -> ! {
     todo!("0x88e50c `non-virtual thunk toRBX::PluginMouse::~PluginMouse()")
@@ -115,7 +115,7 @@ pub fn stub_88e50c() -> ! {
 
 // 0x88e514 — __ZThn36_N3RBX11PluginMouseD0Ev
 // type: void __fastcall(RBX::PluginMouse *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::PluginMouse::~PluginMouse()")]
+#[doc(alias = "non-virtual thunk toRBX::PluginMouse::~PluginMouse()")]
 #[doc(alias = "__ZThn36_N3RBX11PluginMouseD0Ev")]
 pub fn stub_88e514() -> ! {
     todo!("0x88e514 `non-virtual thunk toRBX::PluginMouse::~PluginMouse()")
@@ -131,7 +131,7 @@ pub fn stub_88e51c() -> ! {
 
 // 0x88e614 — __ZThn32_N3RBX11PluginMouseD1Ev
 // type: void __fastcall(RBX::PluginMouse *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::PluginMouse::~PluginMouse()")]
+#[doc(alias = "non-virtual thunk toRBX::PluginMouse::~PluginMouse()")]
 #[doc(alias = "__ZThn32_N3RBX11PluginMouseD1Ev")]
 pub fn stub_88e614() -> ! {
     todo!("0x88e614 `non-virtual thunk toRBX::PluginMouse::~PluginMouse()")
@@ -139,7 +139,7 @@ pub fn stub_88e614() -> ! {
 
 // 0x88e61c — __ZThn36_N3RBX11PluginMouseD1Ev
 // type: void __fastcall(RBX::PluginMouse *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::PluginMouse::~PluginMouse()")]
+#[doc(alias = "non-virtual thunk toRBX::PluginMouse::~PluginMouse()")]
 #[doc(alias = "__ZThn36_N3RBX11PluginMouseD1Ev")]
 pub fn stub_88e61c() -> ! {
     todo!("0x88e61c `non-virtual thunk toRBX::PluginMouse::~PluginMouse()")
@@ -651,7 +651,7 @@ pub fn stub_8933d0() -> ! {
 
 // 0x8934e4 — __ZThn32_N3RBX21PersonalServerServiceD1Ev
 // type: void __fastcall(RBX::PersonalServerService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")]
+#[doc(alias = "non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")]
 #[doc(alias = "__ZThn32_N3RBX21PersonalServerServiceD1Ev")]
 pub fn stub_8934e4() -> ! {
     todo!("0x8934e4 `non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")
@@ -659,7 +659,7 @@ pub fn stub_8934e4() -> ! {
 
 // 0x893540 — __ZThn32_N3RBX21PersonalServerServiceD0Ev
 // type: void __fastcall(RBX::PersonalServerService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")]
+#[doc(alias = "non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")]
 #[doc(alias = "__ZThn32_N3RBX21PersonalServerServiceD0Ev")]
 pub fn stub_893540() -> ! {
     todo!("0x893540 `non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")
@@ -667,7 +667,7 @@ pub fn stub_893540() -> ! {
 
 // 0x893654 — __ZThn36_N3RBX21PersonalServerServiceD1Ev
 // type: void __fastcall(RBX::PersonalServerService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")]
+#[doc(alias = "non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")]
 #[doc(alias = "__ZThn36_N3RBX21PersonalServerServiceD1Ev")]
 pub fn stub_893654() -> ! {
     todo!("0x893654 `non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")
@@ -675,7 +675,7 @@ pub fn stub_893654() -> ! {
 
 // 0x8936b0 — __ZThn36_N3RBX21PersonalServerServiceD0Ev
 // type: void __fastcall(RBX::PersonalServerService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")]
+#[doc(alias = "non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")]
 #[doc(alias = "__ZThn36_N3RBX21PersonalServerServiceD0Ev")]
 pub fn stub_8936b0() -> ! {
     todo!("0x8936b0 `non-virtual thunk toRBX::PersonalServerService::~PersonalServerService()")
@@ -827,7 +827,7 @@ pub fn stub_897f9c() -> ! {
 
 // 0x897fa0 — __ZThn32_N3RBX24CacheableContentProviderD0Ev
 // type: void __fastcall(RBX::CacheableContentProvider *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
 #[doc(alias = "__ZThn32_N3RBX24CacheableContentProviderD0Ev")]
 pub fn stub_897fa0() -> ! {
     todo!("0x897fa0 `non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")
@@ -835,7 +835,7 @@ pub fn stub_897fa0() -> ! {
 
 // 0x897fa8 — __ZThn36_N3RBX24CacheableContentProviderD0Ev
 // type: void __fastcall(RBX::CacheableContentProvider *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
 #[doc(alias = "__ZThn36_N3RBX24CacheableContentProviderD0Ev")]
 pub fn stub_897fa8() -> ! {
     todo!("0x897fa8 `non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")
@@ -843,7 +843,7 @@ pub fn stub_897fa8() -> ! {
 
 // 0x897fb0 — __ZThn96_N3RBX24CacheableContentProviderD0Ev
 // type: void __fastcall(RBX::CacheableContentProvider *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
 #[doc(alias = "__ZThn96_N3RBX24CacheableContentProviderD0Ev")]
 pub fn stub_897fb0() -> ! {
     todo!("0x897fb0 `non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")
@@ -859,7 +859,7 @@ pub fn stub_897fb8() -> ! {
 
 // 0x8981cc — __ZThn32_N3RBX24CacheableContentProviderD1Ev
 // type: void __fastcall(RBX::CacheableContentProvider *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
 #[doc(alias = "__ZThn32_N3RBX24CacheableContentProviderD1Ev")]
 pub fn stub_8981cc() -> ! {
     todo!("0x8981cc `non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")
@@ -867,7 +867,7 @@ pub fn stub_8981cc() -> ! {
 
 // 0x8981d4 — __ZThn36_N3RBX24CacheableContentProviderD1Ev
 // type: void __fastcall(RBX::CacheableContentProvider *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
 #[doc(alias = "__ZThn36_N3RBX24CacheableContentProviderD1Ev")]
 pub fn stub_8981d4() -> ! {
     todo!("0x8981d4 `non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")
@@ -875,7 +875,7 @@ pub fn stub_8981d4() -> ! {
 
 // 0x8981dc — __ZThn96_N3RBX24CacheableContentProviderD1Ev
 // type: void __fastcall(RBX::CacheableContentProvider *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
 #[doc(alias = "__ZThn96_N3RBX24CacheableContentProviderD1Ev")]
 pub fn stub_8981dc() -> ! {
     todo!("0x8981dc `non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")
@@ -891,7 +891,7 @@ pub fn stub_8981e4() -> ! {
 
 // 0x898324 — __ZThn96_N3RBX24CacheableContentProvider11onHeartbeatERKNS_9HeartbeatE
 // type: void __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
-#[doc(alias = "`non-virtual thunk toRBX::CacheableContentProvider::onHeartbeat(RBX::Heartbeat const&)")]
+#[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::onHeartbeat(RBX::Heartbeat const&)")]
 #[doc(alias = "__ZThn96_N3RBX24CacheableContentProvider11onHeartbeatERKNS_9HeartbeatE")]
 pub fn stub_898324() -> ! {
     todo!("0x898324 `non-virtual thunk toRBX::CacheableContentProvider::onHeartbeat(RBX::Heartbeat const&)")

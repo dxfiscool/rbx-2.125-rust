@@ -83,7 +83,7 @@ pub fn stub_83548c() -> ! {
 
 // 0x835490 — __ZThn96_N3RBX15NotificationBox8render2dEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::NotificationBox *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk toRBX::NotificationBox::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::NotificationBox::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX15NotificationBox8render2dEPNS_5AdornE")]
 pub fn stub_835490() -> ! {
     todo!("0x835490 __ZThn96_N3RBX15NotificationBox8render2dEPNS_5AdornE")
@@ -106,7 +106,7 @@ pub fn stub_83753c() -> ! {
 
 // 0x837540 — __ZThn96_N3RBX18NotificationObject8render2dEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::NotificationObject *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk toRBX::NotificationObject::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::NotificationObject::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX18NotificationObject8render2dEPNS_5AdornE")]
 pub fn stub_837540() -> ! {
     todo!("0x837540 __ZThn96_N3RBX18NotificationObject8render2dEPNS_5AdornE")
@@ -146,7 +146,7 @@ pub fn stub_85e2bc() -> ! {
 
 // 0x85e7f0 — __ZThn96_N3RBX12TextureTrail13render3dAdornEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::TextureTrail *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk toRBX::TextureTrail::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::TextureTrail::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX12TextureTrail13render3dAdornEPNS_5AdornE")]
 pub fn stub_85e7f0() -> ! {
     todo!("0x85e7f0 __ZThn96_N3RBX12TextureTrail13render3dAdornEPNS_5AdornE")
@@ -162,7 +162,7 @@ pub fn stub_867de4() -> ! {
 
 // 0x8685d8 — __ZThn96_N3RBX9FloorWire13render3dAdornEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::FloorWire *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk toRBX::FloorWire::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::FloorWire::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX9FloorWire13render3dAdornEPNS_5AdornE")]
 pub fn stub_8685d8() -> ! {
     todo!("0x8685d8 __ZThn96_N3RBX9FloorWire13render3dAdornEPNS_5AdornE")
@@ -202,7 +202,7 @@ pub fn stub_868ce0() -> ! {
 
 // 0x8691c8 — __ZThn96_NK3RBX9GuiBase3d19shouldRender3dAdornEv
 // type: _DWORD __fastcall(RBX::GuiBase3d *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GuiBase3d::shouldRender3dAdorn(void)const")]
+#[doc(alias = "non-virtual thunk toRBX::GuiBase3d::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX9GuiBase3d19shouldRender3dAdornEv")]
 pub fn stub_8691c8() -> ! {
     todo!("0x8691c8 __ZThn96_NK3RBX9GuiBase3d19shouldRender3dAdornEv")
@@ -482,7 +482,7 @@ pub fn stub_8b0380() -> ! {
 
 // 0x8b0784 — __ZThn96_N3RBX16UserInputService9onSteppedERKNS_7SteppedE
 // type: void __fastcall(int, RBX::Instance *, int, int, int, boost::detail::sp_counted_base *, int, int, boost::detail::sp_counted_base *, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, boost::detail::sp_counted_base *, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, boost::detail::sp_counted_base *, int, char, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, boost::detail::sp_counted_base *, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::onStepped(RBX::Stepped const&)")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::onStepped(RBX::Stepped const&)")]
 #[doc(alias = "__ZThn96_N3RBX16UserInputService9onSteppedERKNS_7SteppedE")]
 pub fn stub_8b0784() -> ! {
     todo!("0x8b0784 __ZThn96_N3RBX16UserInputService9onSteppedERKNS_7SteppedE")
@@ -602,7 +602,7 @@ pub fn stub_8b2e1c() -> ! {
 
 // 0x8b2ed0 — __ZThn32_N3RBX16UserInputServiceD1Ev
 // type: void __fastcall(RBX::UserInputService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::~UserInputService()")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::~UserInputService()")]
 #[doc(alias = "__ZThn32_N3RBX16UserInputServiceD1Ev")]
 pub fn stub_8b2ed0() -> ! {
     todo!("0x8b2ed0 __ZThn32_N3RBX16UserInputServiceD1Ev")
@@ -610,7 +610,7 @@ pub fn stub_8b2ed0() -> ! {
 
 // 0x8b2ed8 — __ZThn32_N3RBX16UserInputServiceD0Ev
 // type: void __fastcall(RBX::UserInputService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::~UserInputService()")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::~UserInputService()")]
 #[doc(alias = "__ZThn32_N3RBX16UserInputServiceD0Ev")]
 pub fn stub_8b2ed8() -> ! {
     todo!("0x8b2ed8 __ZThn32_N3RBX16UserInputServiceD0Ev")
@@ -618,7 +618,7 @@ pub fn stub_8b2ed8() -> ! {
 
 // 0x8b2ef0 — __ZThn36_N3RBX16UserInputServiceD1Ev
 // type: void __fastcall(RBX::UserInputService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::~UserInputService()")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::~UserInputService()")]
 #[doc(alias = "__ZThn36_N3RBX16UserInputServiceD1Ev")]
 pub fn stub_8b2ef0() -> ! {
     todo!("0x8b2ef0 __ZThn36_N3RBX16UserInputServiceD1Ev")
@@ -626,7 +626,7 @@ pub fn stub_8b2ef0() -> ! {
 
 // 0x8b2ef8 — __ZThn36_N3RBX16UserInputServiceD0Ev
 // type: void __fastcall(RBX::UserInputService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::~UserInputService()")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::~UserInputService()")]
 #[doc(alias = "__ZThn36_N3RBX16UserInputServiceD0Ev")]
 pub fn stub_8b2ef8() -> ! {
     todo!("0x8b2ef8 __ZThn36_N3RBX16UserInputServiceD0Ev")
@@ -634,7 +634,7 @@ pub fn stub_8b2ef8() -> ! {
 
 // 0x8b2f04 — __ZThn96_N3RBX16UserInputServiceD1Ev
 // type: void __fastcall(RBX::UserInputService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::~UserInputService()")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::~UserInputService()")]
 #[doc(alias = "__ZThn96_N3RBX16UserInputServiceD1Ev")]
 pub fn stub_8b2f04() -> ! {
     todo!("0x8b2f04 __ZThn96_N3RBX16UserInputServiceD1Ev")
@@ -642,7 +642,7 @@ pub fn stub_8b2f04() -> ! {
 
 // 0x8b2f0c — __ZThn96_N3RBX16UserInputServiceD0Ev
 // type: void __fastcall(RBX::UserInputService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::UserInputService::~UserInputService()")]
+#[doc(alias = "non-virtual thunk toRBX::UserInputService::~UserInputService()")]
 #[doc(alias = "__ZThn96_N3RBX16UserInputServiceD0Ev")]
 pub fn stub_8b2f0c() -> ! {
     todo!("0x8b2f0c __ZThn96_N3RBX16UserInputServiceD0Ev")

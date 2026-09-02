@@ -31,7 +31,7 @@ pub fn stub_0x7cd744() -> ! {
     todo!("0x7cd744 __ZN3RBX5HUMAN13HumanoidStateD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HUMAN::HumanoidState::~HumanoidState()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::HumanoidState::~HumanoidState()")]
 // 0x7cd748 — __ZThn4_N3RBX5HUMAN13HumanoidStateD0Ev
 pub fn stub_0x7cd748() -> ! {
     todo!("0x7cd748 __ZThn4_N3RBX5HUMAN13HumanoidStateD0Ev")
@@ -43,7 +43,7 @@ pub fn stub_0x7cd750() -> ! {
     todo!("0x7cd750 __ZN3RBX5HUMAN13HumanoidStateD2Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HUMAN::HumanoidState::~HumanoidState()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::HumanoidState::~HumanoidState()")]
 // 0x7cd8c0 — __ZThn4_N3RBX5HUMAN13HumanoidStateD1Ev
 pub fn stub_0x7cd8c0() -> ! {
     todo!("0x7cd8c0 __ZThn4_N3RBX5HUMAN13HumanoidStateD1Ev")
@@ -217,7 +217,7 @@ pub fn stub_0x7d0ba8() -> ! {
     todo!("0x7d0ba8 __ZNK3RBX5HUMAN13HumanoidState12filterResultEPKNS_9PrimitiveE")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HUMAN::HumanoidState::filterResult(RBX::Primitive const*)const")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::HumanoidState::filterResult(RBX::Primitive const*)const")]
 // 0x7d0c30 — __ZThn4_NK3RBX5HUMAN13HumanoidState12filterResultEPKNS_9PrimitiveE
 pub fn stub_0x7d0c30() -> ! {
     todo!("0x7d0c30 __ZThn4_NK3RBX5HUMAN13HumanoidState12filterResultEPKNS_9PrimitiveE")
@@ -391,7 +391,7 @@ pub fn stub_0x7d2cb8() -> ! {
     todo!("0x7d2cb8 __ZNK3RBX5HUMAN7Jumping12filterResultEPKNS_9PrimitiveE")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HUMAN::Jumping::filterResult(RBX::Primitive const*)const")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::Jumping::filterResult(RBX::Primitive const*)const")]
 // 0x7d2d70 — __ZThn4_NK3RBX5HUMAN7Jumping12filterResultEPKNS_9PrimitiveE
 pub fn stub_0x7d2d70() -> ! {
     todo!("0x7d2d70 __ZThn4_NK3RBX5HUMAN7Jumping12filterResultEPKNS_9PrimitiveE")
@@ -433,13 +433,13 @@ pub fn stub_0x7d2e50() -> ! {
     todo!("0x7d2e50 __ZNK3RBX5HUMAN7Jumping12getStateTypeEv")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HUMAN::Jumping::~Jumping()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::Jumping::~Jumping()")]
 // 0x7d2e54 — __ZThn4_N3RBX5HUMAN7JumpingD1Ev
 pub fn stub_0x7d2e54() -> ! {
     todo!("0x7d2e54 __ZThn4_N3RBX5HUMAN7JumpingD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HUMAN::Jumping::~Jumping()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::Jumping::~Jumping()")]
 // 0x7d2e5c — __ZThn4_N3RBX5HUMAN7JumpingD0Ev
 pub fn stub_0x7d2e5c() -> ! {
     todo!("0x7d2e5c __ZThn4_N3RBX5HUMAN7JumpingD0Ev")
@@ -469,7 +469,7 @@ pub fn stub_0x7d364c() -> ! {
     todo!("0x7d364c __ZN3RBX5HUMAN19MovingNoPhysicsBaseD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HUMAN::MovingNoPhysicsBase::~MovingNoPhysicsBase()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::MovingNoPhysicsBase::~MovingNoPhysicsBase()")]
 // 0x7d3650 — __ZThn4_N3RBX5HUMAN19MovingNoPhysicsBaseD0Ev
 pub fn stub_0x7d3650() -> ! {
     todo!("0x7d3650 __ZThn4_N3RBX5HUMAN19MovingNoPhysicsBaseD0Ev")
@@ -481,7 +481,7 @@ pub fn stub_0x7d3658() -> ! {
     todo!("0x7d3658 __ZN3RBX5HUMAN19MovingNoPhysicsBaseD2Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HUMAN::MovingNoPhysicsBase::~MovingNoPhysicsBase()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::MovingNoPhysicsBase::~MovingNoPhysicsBase()")]
 // 0x7d386c — __ZThn4_N3RBX5HUMAN19MovingNoPhysicsBaseD1Ev
 pub fn stub_0x7d386c() -> ! {
     todo!("0x7d386c __ZThn4_N3RBX5HUMAN19MovingNoPhysicsBaseD1Ev")
@@ -571,13 +571,13 @@ pub fn stub_0x7d46c4() -> ! {
     todo!("0x7d46c4 __ZN3RBX5HUMAN8ClimbingD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HUMAN::Climbing::~Climbing()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::Climbing::~Climbing()")]
 // 0x7d4764 — __ZThn4_N3RBX5HUMAN8ClimbingD1Ev
 pub fn stub_0x7d4764() -> ! {
     todo!("0x7d4764 __ZThn4_N3RBX5HUMAN8ClimbingD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HUMAN::Climbing::~Climbing()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::Climbing::~Climbing()")]
 // 0x7d476c — __ZThn4_N3RBX5HUMAN8ClimbingD0Ev
 pub fn stub_0x7d476c() -> ! {
     todo!("0x7d476c __ZThn4_N3RBX5HUMAN8ClimbingD0Ev")
@@ -601,7 +601,7 @@ pub fn stub_0x7d48dc() -> ! {
     todo!("0x7d48dc __ZNK3RBX5HUMAN7Running12getStateTypeEv")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HUMAN::Running::~Running()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::Running::~Running()")]
 // 0x7d48e0 — __ZThn4_N3RBX5HUMAN7RunningD1Ev
 pub fn stub_0x7d48e0() -> ! {
     todo!("0x7d48e0 __ZThn4_N3RBX5HUMAN7RunningD1Ev")
