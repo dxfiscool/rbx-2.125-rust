@@ -587,3 +587,5 @@ pub mod generated_watchdog_rend_1788383148;
 pub mod generated_watchdog_rendA_1788384000;
 pub mod generated_watchdog_renderA;
 pub mod generated_479;
+pub mod generated_watchdog_rendB_1788386332;
+pub mod generated_watchdog_rendC_1788386367;
