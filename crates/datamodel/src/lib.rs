@@ -619,3 +619,5 @@ pub mod generated_dm_wdog7B;
 pub mod generated_dm_wdog7I;
 pub mod generated_dm_wdogW3A;
 pub mod generated_dm_wdogW3B;
+pub mod generated_datamodel_shard_B6;
+pub mod generated_datamodel_shard_294;
