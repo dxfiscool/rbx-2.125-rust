@@ -641,3 +641,4 @@ pub mod generated_290;
 pub mod generated_291;
 pub mod generated_wd_dmA;
 pub mod generated_wd_dmB;
+pub mod generated_292;

@@ -321,3 +321,308 @@ pub fn stub_0x7da584() -> ! {
     todo!("0x7da584 __ZNSt12_Vector_baseIN3RBX11TextService10YAlignmentESaIS2_EE11_M_allocateEm")
 }
 
+// 0x7e80fc — __ZThn96_N3RBX22TextureContentProviderD1Ev
+// type: void __fastcall(RBX::TextureContentProvider *__hidden this)
+#[doc(alias = "__ZThn96_N3RBX22TextureContentProviderD1Ev")]
+#[doc(alias = "`non-virtual thunk toRBX::TextureContentProvider::~TextureContentProvider()")]
+pub fn stub_0x7e80fc() -> ! {
+    todo!("0x7e80fc __ZThn96_N3RBX22TextureContentProviderD1Ev")
+}
+
+// 0x7e8104 — __ZThn96_N3RBX22TextureContentProviderD0Ev
+// type: void __fastcall(RBX::TextureContentProvider *__hidden this)
+#[doc(alias = "__ZThn96_N3RBX22TextureContentProviderD0Ev")]
+#[doc(alias = "`non-virtual thunk toRBX::TextureContentProvider::~TextureContentProvider()")]
+pub fn stub_0x7e8104() -> ! {
+    todo!("0x7e8104 __ZThn96_N3RBX22TextureContentProviderD0Ev")
+}
+
+// 0x7e81ec — __ZN5boost10shared_ptrIvEC2IN3RBX5ImageEEEPT_
+#[doc(alias = "__ZN5boost10shared_ptrIvEC2IN3RBX5ImageEEEPT_")]
+#[doc(alias = "boost::shared_ptr<void>::shared_ptr<RBX::Image>(RBX::Image *)")]
+pub fn stub_0x7e81ec() -> ! {
+    todo!("0x7e81ec __ZN5boost10shared_ptrIvEC2IN3RBX5ImageEEEPT_")
+}
+
+// 0x7e82c0 — __ZN5boost6detail12shared_countC2IN3RBX5ImageEEEPT_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "__ZN5boost6detail12shared_countC2IN3RBX5ImageEEEPT_")]
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::Image>(RBX::Image *)")]
+pub fn stub_0x7e82c0() -> ! {
+    todo!("0x7e82c0 __ZN5boost6detail12shared_countC2IN3RBX5ImageEEEPT_")
+}
+
+// 0x7e83b8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5ImageEED1Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX5ImageEED1Ev")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Image>::~sp_counted_impl_p()")]
+pub fn stub_0x7e83b8() -> ! {
+    todo!("0x7e83b8 __ZN5boost6detail17sp_counted_impl_pIN3RBX5ImageEED1Ev")
+}
+
+// 0x7e83bc — __ZN5boost6detail17sp_counted_impl_pIN3RBX5ImageEED0Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX5ImageEED0Ev")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Image>::~sp_counted_impl_p()")]
+pub fn stub_0x7e83bc() -> ! {
+    todo!("0x7e83bc __ZN5boost6detail17sp_counted_impl_pIN3RBX5ImageEED0Ev")
+}
+
+// 0x7e83c0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5ImageEE7disposeEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX5ImageEE7disposeEv")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Image>::dispose(void)")]
+pub fn stub_0x7e83c0() -> ! {
+    todo!("0x7e83c0 __ZN5boost6detail17sp_counted_impl_pIN3RBX5ImageEE7disposeEv")
+}
+
+// 0x7e83d0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5ImageEE11get_deleterERKSt9type_info
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX5ImageEE11get_deleterERKSt9type_info")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Image>::get_deleter(std::type_info const&)")]
+pub fn stub_0x7e83d0() -> ! {
+    todo!("0x7e83d0 __ZN5boost6detail17sp_counted_impl_pIN3RBX5ImageEE11get_deleterERKSt9type_info")
+}
+
+// 0x7e83d4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5ImageEE19get_untyped_deleterEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX5ImageEE19get_untyped_deleterEv")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Image>::get_untyped_deleter(void)")]
+pub fn stub_0x7e83d4() -> ! {
+    todo!("0x7e83d4 __ZN5boost6detail17sp_counted_impl_pIN3RBX5ImageEE19get_untyped_deleterEv")
+}
+
+// 0x7e83d8 — __ZN5boost9function2IPN3RBX5ImageERSiRKSsE5dummy7nonnullEv
+#[doc(alias = "__ZN5boost9function2IPN3RBX5ImageERSiRKSsE5dummy7nonnullEv")]
+#[doc(alias = "boost::function2<RBX::Image *,std::istream &,std::string const&>::dummy::nonnull(void)")]
+pub fn stub_0x7e83d8() -> ! {
+    todo!("0x7e83d8 __ZN5boost9function2IPN3RBX5ImageERSiRKSsE5dummy7nonnullEv")
+}
+
+// 0x7e83dc — __ZN5boost9function2IPN3RBX5ImageERSiRKSsE4swapERS7_
+#[doc(alias = "__ZN5boost9function2IPN3RBX5ImageERSiRKSsE4swapERS7_")]
+#[doc(alias = "boost::function2<RBX::Image *,std::istream &,std::string const&>::swap(boost::function2<RBX::Image *,std::istream &,std::string const&>&)")]
+pub fn stub_0x7e83dc() -> ! {
+    todo!("0x7e83dc __ZN5boost9function2IPN3RBX5ImageERSiRKSsE4swapERS7_")
+}
+
+// 0x7e84b8 — __ZN5boost9function2IPN3RBX5ImageERSiRKSsE11move_assignERS7_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "__ZN5boost9function2IPN3RBX5ImageERSiRKSsE11move_assignERS7_")]
+#[doc(alias = "boost::function2<RBX::Image *,std::istream &,std::string const&>::move_assign(boost::function2<RBX::Image *,std::istream &,std::string const&>&)")]
+pub fn stub_0x7e84b8() -> ! {
+    todo!("0x7e84b8 __ZN5boost9function2IPN3RBX5ImageERSiRKSsE11move_assignERS7_")
+}
+
+// 0x7e85bc — __ZN5boost9function2IPN3RBX5ImageERSiRKSsE5clearEv
+#[doc(alias = "__ZN5boost9function2IPN3RBX5ImageERSiRKSsE5clearEv")]
+#[doc(alias = "boost::function2<RBX::Image *,std::istream &,std::string const&>::clear(void)")]
+pub fn stub_0x7e85bc() -> ! {
+    todo!("0x7e85bc __ZN5boost9function2IPN3RBX5ImageERSiRKSsE5clearEv")
+}
+
+// 0x7e85e8 — __ZN5boost9function2IPN3RBX5ImageERSiRKSsE13assign_to_ownERKS7_
+#[doc(alias = "__ZN5boost9function2IPN3RBX5ImageERSiRKSsE13assign_to_ownERKS7_")]
+#[doc(alias = "boost::function2<RBX::Image *,std::istream &,std::string const&>::assign_to_own(boost::function2<RBX::Image *,std::istream &,std::string const&> const&)")]
+pub fn stub_0x7e85e8() -> ! {
+    todo!("0x7e85e8 __ZN5boost9function2IPN3RBX5ImageERSiRKSsE13assign_to_ownERKS7_")
+}
+
+// 0x7e88c0 — __ZN3RBX22TextureContentProviderD2Ev
+// type: void __fastcall(RBX::TextureContentProvider *__hidden this)
+#[doc(alias = "__ZN3RBX22TextureContentProviderD2Ev")]
+#[doc(alias = "RBX::TextureContentProvider::~TextureContentProvider()")]
+pub fn stub_0x7e88c0() -> ! {
+    todo!("0x7e88c0 __ZN3RBX22TextureContentProviderD2Ev")
+}
+
+// 0x7ea22c — __ZN3RBX15ContentProvider10setBaseUrlESs
+#[doc(alias = "__ZN3RBX15ContentProvider10setBaseUrlESs")]
+#[doc(alias = "RBX::ContentProvider::setBaseUrl(std::string)")]
+pub fn stub_0x7ea22c() -> ! {
+    todo!("0x7ea22c __ZN3RBX15ContentProvider10setBaseUrlESs")
+}
+
+// 0x7ea268 — __ZNK3RBX15ContentProvider10getBaseUrlEv
+// type: _DWORD __fastcall(RBX::ContentProvider *__hidden this)
+#[doc(alias = "__ZNK3RBX15ContentProvider10getBaseUrlEv")]
+#[doc(alias = "RBX::ContentProvider::getBaseUrl(void)const")]
+pub fn stub_0x7ea268() -> ! {
+    todo!("0x7ea268 __ZNK3RBX15ContentProvider10getBaseUrlEv")
+}
+
+// 0x7ea26c — __ZN3RBX15ContentProvider13setThreadPoolEi
+// type: _DWORD __fastcall(RBX::ContentProvider *__hidden this, int)
+#[doc(alias = "__ZN3RBX15ContentProvider13setThreadPoolEi")]
+#[doc(alias = "RBX::ContentProvider::setThreadPool(int)")]
+pub fn stub_0x7ea26c() -> ! {
+    todo!("0x7ea26c __ZN3RBX15ContentProvider13setThreadPoolEi")
+}
+
+// 0x7ea274 — __ZN3RBX15ContentProvider12setCacheSizeEi
+// type: _DWORD __fastcall(RBX::ContentProvider *__hidden this, int)
+#[doc(alias = "__ZN3RBX15ContentProvider12setCacheSizeEi")]
+#[doc(alias = "RBX::ContentProvider::setCacheSize(int)")]
+pub fn stub_0x7ea274() -> ! {
+    todo!("0x7ea274 __ZN3RBX15ContentProvider12setCacheSizeEi")
+}
+
+// 0x7ea27c — __ZN3RBX15ContentProvider14preloadContentENS_9ContentIdE
+#[doc(alias = "__ZN3RBX15ContentProvider14preloadContentENS_9ContentIdE")]
+#[doc(alias = "RBX::ContentProvider::preloadContent(RBX::ContentId)")]
+pub fn stub_0x7ea27c() -> ! {
+    todo!("0x7ea27c __ZN3RBX15ContentProvider14preloadContentENS_9ContentIdE")
+}
+
+// 0x7ea298 — __ZNK3RBX15ContentProvider19getRequestQueueSizeEv
+// type: _DWORD __fastcall(RBX::ContentProvider *__hidden this)
+#[doc(alias = "__ZNK3RBX15ContentProvider19getRequestQueueSizeEv")]
+#[doc(alias = "RBX::ContentProvider::getRequestQueueSize(void)const")]
+pub fn stub_0x7ea298() -> ! {
+    todo!("0x7ea298 __ZNK3RBX15ContentProvider19getRequestQueueSizeEv")
+}
+
+// 0x7ea2a0 — __ZNK3RBX15ContentProvider13getApiBaseUrlEv
+// type: _DWORD __fastcall(RBX::ContentProvider *__hidden this)
+#[doc(alias = "__ZNK3RBX15ContentProvider13getApiBaseUrlEv")]
+#[doc(alias = "RBX::ContentProvider::getApiBaseUrl(void)const")]
+pub fn stub_0x7ea2a0() -> ! {
+    todo!("0x7ea2a0 __ZNK3RBX15ContentProvider13getApiBaseUrlEv")
+}
+
+// 0x7ea4b4 — __ZN3RBX15ContentProvider13findLocalFileERKSsPSs
+// type: _DWORD __fastcall(RBX::ContentProvider *__hidden this, const std::string *, std::string *)
+#[doc(alias = "__ZN3RBX15ContentProvider13findLocalFileERKSsPSs")]
+#[doc(alias = "RBX::ContentProvider::findLocalFile(std::string const&,std::string *)")]
+pub fn stub_0x7ea4b4() -> ! {
+    todo!("0x7ea4b4 __ZN3RBX15ContentProvider13findLocalFileERKSsPSs")
+}
+
+// 0x7ea848 — __ZN3RBX15ContentProvider9findAssetENS_9ContentIdE
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "__ZN3RBX15ContentProvider9findAssetENS_9ContentIdE")]
+#[doc(alias = "RBX::ContentProvider::findAsset(RBX::ContentId)")]
+pub fn stub_0x7ea848() -> ! {
+    todo!("0x7ea848 __ZN3RBX15ContentProvider9findAssetENS_9ContentIdE")
+}
+
+// 0x7eadf0 — __ZN3RBX15ContentProvider12findHashFileENS_9ContentIdE
+#[doc(alias = "__ZN3RBX15ContentProvider12findHashFileENS_9ContentIdE")]
+#[doc(alias = "RBX::ContentProvider::findHashFile(RBX::ContentId)")]
+pub fn stub_0x7eadf0() -> ! {
+    todo!("0x7eadf0 __ZN3RBX15ContentProvider12findHashFileENS_9ContentIdE")
+}
+
+// 0x7eafc8 — __ZN3RBX15ContentProviderC1Ev
+// type: _DWORD __fastcall(RBX::ContentProvider *__hidden this)
+#[doc(alias = "__ZN3RBX15ContentProviderC1Ev")]
+#[doc(alias = "RBX::ContentProvider::ContentProvider(void)")]
+pub fn stub_0x7eafc8() -> ! {
+    todo!("0x7eafc8 __ZN3RBX15ContentProviderC1Ev")
+}
+
+// 0x7eafcc — __ZN3RBX15ContentProviderC2Ev
+// type: _DWORD __fastcall(RBX::ContentProvider *__hidden this)
+#[doc(alias = "__ZN3RBX15ContentProviderC2Ev")]
+#[doc(alias = "RBX::ContentProvider::ContentProvider(void)")]
+pub fn stub_0x7eafcc() -> ! {
+    todo!("0x7eafcc __ZN3RBX15ContentProviderC2Ev")
+}
+
+// 0x7eb2e0 — __ZN3RBX15ContentProviderD0Ev
+// type: void __fastcall(RBX::ContentProvider *__hidden this)
+#[doc(alias = "__ZN3RBX15ContentProviderD0Ev")]
+#[doc(alias = "RBX::ContentProvider::~ContentProvider()")]
+pub fn stub_0x7eb2e0() -> ! {
+    todo!("0x7eb2e0 __ZN3RBX15ContentProviderD0Ev")
+}
+
+// 0x7eb380 — __ZN3RBX15ContentProviderD1Ev
+// type: void __fastcall(RBX::ContentProvider *__hidden this)
+#[doc(alias = "__ZN3RBX15ContentProviderD1Ev")]
+#[doc(alias = "RBX::ContentProvider::~ContentProvider()")]
+pub fn stub_0x7eb380() -> ! {
+    todo!("0x7eb380 __ZN3RBX15ContentProviderD1Ev")
+}
+
+// 0x7eb384 — __ZThn32_N3RBX15ContentProviderD0Ev
+// type: void __fastcall(RBX::ContentProvider *__hidden this)
+#[doc(alias = "__ZThn32_N3RBX15ContentProviderD0Ev")]
+#[doc(alias = "`non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
+pub fn stub_0x7eb384() -> ! {
+    todo!("0x7eb384 __ZThn32_N3RBX15ContentProviderD0Ev")
+}
+
+// 0x7eb38c — __ZThn36_N3RBX15ContentProviderD0Ev
+// type: void __fastcall(RBX::ContentProvider *__hidden this)
+#[doc(alias = "__ZThn36_N3RBX15ContentProviderD0Ev")]
+#[doc(alias = "`non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
+pub fn stub_0x7eb38c() -> ! {
+    todo!("0x7eb38c __ZThn36_N3RBX15ContentProviderD0Ev")
+}
+
+// 0x7eb394 — __ZThn96_N3RBX15ContentProviderD0Ev
+// type: void __fastcall(RBX::ContentProvider *__hidden this)
+#[doc(alias = "__ZThn96_N3RBX15ContentProviderD0Ev")]
+#[doc(alias = "`non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
+pub fn stub_0x7eb394() -> ! {
+    todo!("0x7eb394 __ZThn96_N3RBX15ContentProviderD0Ev")
+}
+
+// 0x7eb39c — __ZN3RBX15ContentProviderD2Ev
+// type: void __fastcall(RBX::ContentProvider *__hidden this)
+#[doc(alias = "__ZN3RBX15ContentProviderD2Ev")]
+#[doc(alias = "RBX::ContentProvider::~ContentProvider()")]
+pub fn stub_0x7eb39c() -> ! {
+    todo!("0x7eb39c __ZN3RBX15ContentProviderD2Ev")
+}
+
+// 0x7eb534 — __ZThn32_N3RBX15ContentProviderD1Ev
+// type: void __fastcall(RBX::ContentProvider *__hidden this)
+#[doc(alias = "__ZThn32_N3RBX15ContentProviderD1Ev")]
+#[doc(alias = "`non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
+pub fn stub_0x7eb534() -> ! {
+    todo!("0x7eb534 __ZThn32_N3RBX15ContentProviderD1Ev")
+}
+
+// 0x7eb53c — __ZThn36_N3RBX15ContentProviderD1Ev
+// type: void __fastcall(RBX::ContentProvider *__hidden this)
+#[doc(alias = "__ZThn36_N3RBX15ContentProviderD1Ev")]
+#[doc(alias = "`non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
+pub fn stub_0x7eb53c() -> ! {
+    todo!("0x7eb53c __ZThn36_N3RBX15ContentProviderD1Ev")
+}
+
+// 0x7eb544 — __ZThn96_N3RBX15ContentProviderD1Ev
+// type: void __fastcall(RBX::ContentProvider *__hidden this)
+#[doc(alias = "__ZThn96_N3RBX15ContentProviderD1Ev")]
+#[doc(alias = "`non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
+pub fn stub_0x7eb544() -> ! {
+    todo!("0x7eb544 __ZThn96_N3RBX15ContentProviderD1Ev")
+}
+
+// 0x7ec044 — __ZN3RBX15ContentProvider11onHeartbeatERKNS_9HeartbeatE
+#[doc(alias = "__ZN3RBX15ContentProvider11onHeartbeatERKNS_9HeartbeatE")]
+#[doc(alias = "RBX::ContentProvider::onHeartbeat(RBX::Heartbeat const&)")]
+pub fn stub_0x7ec044() -> ! {
+    todo!("0x7ec044 __ZN3RBX15ContentProvider11onHeartbeatERKNS_9HeartbeatE")
+}
+
+// 0x7ec04c — __ZThn96_N3RBX15ContentProvider11onHeartbeatERKNS_9HeartbeatE
+#[doc(alias = "__ZThn96_N3RBX15ContentProvider11onHeartbeatERKNS_9HeartbeatE")]
+#[doc(alias = "`non-virtual thunk toRBX::ContentProvider::onHeartbeat(RBX::Heartbeat const&)")]
+pub fn stub_0x7ec04c() -> ! {
+    todo!("0x7ec04c __ZThn96_N3RBX15ContentProvider11onHeartbeatERKNS_9HeartbeatE")
+}
+
+// 0x7ec054 — __ZN3RBX15ContentProvider12getAssetFileEPKc
+// type: _DWORD __fastcall(RBX::ContentProvider *__hidden this, const char *)
+#[doc(alias = "__ZN3RBX15ContentProvider12getAssetFileEPKc")]
+#[doc(alias = "RBX::ContentProvider::getAssetFile(char const*)")]
+pub fn stub_0x7ec054() -> ! {
+    todo!("0x7ec054 __ZN3RBX15ContentProvider12getAssetFileEPKc")
+}
+
+// 0x7ec1bc — __ZN3RBX15ContentProvider11assetFolderEv
+// type: _DWORD __fastcall(RBX::ContentProvider *__hidden this)
+#[doc(alias = "__ZN3RBX15ContentProvider11assetFolderEv")]
+#[doc(alias = "RBX::ContentProvider::assetFolder(void)")]
+pub fn stub_0x7ec1bc() -> ! {
+    todo!("0x7ec1bc __ZN3RBX15ContentProvider11assetFolderEv")
+}
+

@@ -326,3 +326,306 @@ pub fn stub_0x7d6f5c() -> ! {
     todo!("0x7d6f5c __ZN3RBX5HUMAN16PlatformStandingD0Ev")
 }
 
+// 0x7e51a4 — __ZN3rbx10safe_queueIN3RBX18ContentProviderJob19ContentProviderTaskEE14pop_if_presentERS3_
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int)
+#[doc(alias = "__ZN3rbx10safe_queueIN3RBX18ContentProviderJob19ContentProviderTaskEE14pop_if_presentERS3_")]
+#[doc(alias = "rbx::safe_queue<RBX::ContentProviderJob::ContentProviderTask>::pop_if_present(RBX::ContentProviderJob::ContentProviderTask&)")]
+pub fn stub_0x7e51a4() -> ! {
+    todo!("0x7e51a4 __ZN3rbx10safe_queueIN3RBX18ContentProviderJob19ContentProviderTaskEE14pop_if_presentERS3_")
+}
+
+// 0x7e5298 — __ZN3RBX18ContentProviderJobD1Ev
+// type: void __fastcall(RBX::ContentProviderJob *__hidden this)
+#[doc(alias = "__ZN3RBX18ContentProviderJobD1Ev")]
+#[doc(alias = "RBX::ContentProviderJob::~ContentProviderJob()")]
+pub fn stub_0x7e5298() -> ! {
+    todo!("0x7e5298 __ZN3RBX18ContentProviderJobD1Ev")
+}
+
+// 0x7e53d8 — __ZN3RBX18ContentProviderJobD0Ev
+// type: void __fastcall(RBX::ContentProviderJob *__hidden this)
+#[doc(alias = "__ZN3RBX18ContentProviderJobD0Ev")]
+#[doc(alias = "RBX::ContentProviderJob::~ContentProviderJob()")]
+pub fn stub_0x7e53d8() -> ! {
+    todo!("0x7e53d8 __ZN3RBX18ContentProviderJobD0Ev")
+}
+
+// 0x7e5528 — __ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE9pop_frontEv
+#[doc(alias = "__ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE9pop_frontEv")]
+#[doc(alias = "std::deque<RBX::ContentProviderJob::ContentProviderTask,std::allocator<RBX::ContentProviderJob::ContentProviderTask>>::pop_front(void)")]
+pub fn stub_0x7e5528() -> ! {
+    todo!("0x7e5528 __ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE9pop_frontEv")
+}
+
+// 0x7e5560 — __ZN9__gnu_cxx13new_allocatorIN3RBX18ContentProviderJob19ContentProviderTaskEE7destroyEPS3_
+#[doc(alias = "__ZN9__gnu_cxx13new_allocatorIN3RBX18ContentProviderJob19ContentProviderTaskEE7destroyEPS3_")]
+#[doc(alias = "__gnu_cxx::new_allocator<RBX::ContentProviderJob::ContentProviderTask>::destroy(RBX::ContentProviderJob::ContentProviderTask*)")]
+pub fn stub_0x7e5560() -> ! {
+    todo!("0x7e5560 __ZN9__gnu_cxx13new_allocatorIN3RBX18ContentProviderJob19ContentProviderTaskEE7destroyEPS3_")
+}
+
+// 0x7e5604 — __ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE9push_backERKS2_
+#[doc(alias = "__ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE9push_backERKS2_")]
+#[doc(alias = "std::deque<RBX::ContentProviderJob::ContentProviderTask,std::allocator<RBX::ContentProviderJob::ContentProviderTask>>::push_back(RBX::ContentProviderJob::ContentProviderTask const&)")]
+pub fn stub_0x7e5604() -> ! {
+    todo!("0x7e5604 __ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE9push_backERKS2_")
+}
+
+// 0x7e56f4 — __ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE16_M_push_back_auxERKS2_
+#[doc(alias = "__ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE16_M_push_back_auxERKS2_")]
+#[doc(alias = "std::deque<RBX::ContentProviderJob::ContentProviderTask,std::allocator<RBX::ContentProviderJob::ContentProviderTask>>::_M_push_back_aux(RBX::ContentProviderJob::ContentProviderTask const&)")]
+pub fn stub_0x7e56f4() -> ! {
+    todo!("0x7e56f4 __ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE16_M_push_back_auxERKS2_")
+}
+
+// 0x7e59b0 — __ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE22_M_reserve_map_at_backEm
+#[doc(alias = "__ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE22_M_reserve_map_at_backEm")]
+#[doc(alias = "std::deque<RBX::ContentProviderJob::ContentProviderTask,std::allocator<RBX::ContentProviderJob::ContentProviderTask>>::_M_reserve_map_at_back(unsigned long)")]
+pub fn stub_0x7e59b0() -> ! {
+    todo!("0x7e59b0 __ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE22_M_reserve_map_at_backEm")
+}
+
+// 0x7e59cc — __ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE17_M_reallocate_mapEmb
+#[doc(alias = "__ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE17_M_reallocate_mapEmb")]
+#[doc(alias = "std::deque<RBX::ContentProviderJob::ContentProviderTask,std::allocator<RBX::ContentProviderJob::ContentProviderTask>>::_M_reallocate_map(unsigned long,bool)")]
+pub fn stub_0x7e59cc() -> ! {
+    todo!("0x7e59cc __ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE17_M_reallocate_mapEmb")
+}
+
+// 0x7e5aa4 — __ZNSt11_Deque_baseIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE15_M_allocate_mapEm
+#[doc(alias = "__ZNSt11_Deque_baseIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE15_M_allocate_mapEm")]
+#[doc(alias = "std::_Deque_base<RBX::ContentProviderJob::ContentProviderTask,std::allocator<RBX::ContentProviderJob::ContentProviderTask>>::_M_allocate_map(unsigned long)")]
+pub fn stub_0x7e5aa4() -> ! {
+    todo!("0x7e5aa4 __ZNSt11_Deque_baseIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE15_M_allocate_mapEm")
+}
+
+// 0x7e5abc — __ZN5boost9function2IN3RBX13TaskScheduler10StepResultESsNS_10shared_ptrIKSsEEE13assign_to_ownERKS7_
+#[doc(alias = "__ZN5boost9function2IN3RBX13TaskScheduler10StepResultESsNS_10shared_ptrIKSsEEE13assign_to_ownERKS7_")]
+#[doc(alias = "boost::function2<RBX::TaskScheduler::StepResult,std::string,boost::shared_ptr<std::string const>>::assign_to_own(boost::function2<RBX::TaskScheduler::StepResult,std::string,boost::shared_ptr<std::string const>> const&)")]
+pub fn stub_0x7e5abc() -> ! {
+    todo!("0x7e5abc __ZN5boost9function2IN3RBX13TaskScheduler10StepResultESsNS_10shared_ptrIKSsEEE13assign_to_ownERKS7_")
+}
+
+// 0x7e5aec — __ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EED2Ev
+#[doc(alias = "__ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EED2Ev")]
+#[doc(alias = "std::deque<RBX::ContentProviderJob::ContentProviderTask,std::allocator<RBX::ContentProviderJob::ContentProviderTask>>::~deque()")]
+pub fn stub_0x7e5aec() -> ! {
+    todo!("0x7e5aec __ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EED2Ev")
+}
+
+// 0x7e5bd4 — __ZNSt11_Deque_baseIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EED2Ev
+#[doc(alias = "__ZNSt11_Deque_baseIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EED2Ev")]
+#[doc(alias = "std::_Deque_base<RBX::ContentProviderJob::ContentProviderTask,std::allocator<RBX::ContentProviderJob::ContentProviderTask>>::~_Deque_base()")]
+pub fn stub_0x7e5bd4() -> ! {
+    todo!("0x7e5bd4 __ZNSt11_Deque_baseIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EED2Ev")
+}
+
+// 0x7e5c00 — __ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE19_M_destroy_data_auxESt15_Deque_iteratorIS2_RS2_PS2_ES8_
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, std::string *, int, int, int, int)
+#[doc(alias = "__ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE19_M_destroy_data_auxESt15_Deque_iteratorIS2_RS2_PS2_ES8_")]
+#[doc(alias = "std::deque<RBX::ContentProviderJob::ContentProviderTask,std::allocator<RBX::ContentProviderJob::ContentProviderTask>>::_M_destroy_data_aux(std::_Deque_iterator<RBX::ContentProviderJob::ContentProviderTask,RBX::ContentProviderJob::ContentProviderTask&,RBX::ContentProviderJob::ContentProviderTask*>,std::_Deque_iterator<RBX::ContentProviderJob::ContentProviderTask,RBX::ContentProviderJob::ContentProviderTask&,RBX::ContentProviderJob::ContentProviderTask*>)")]
+pub fn stub_0x7e5c00() -> ! {
+    todo!("0x7e5c00 __ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE19_M_destroy_data_auxESt15_Deque_iteratorIS2_RS2_PS2_ES8_")
+}
+
+// 0x7e5d84 — __ZNSt11_Deque_baseIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE17_M_initialize_mapEm
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, void *, int)
+#[doc(alias = "__ZNSt11_Deque_baseIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE17_M_initialize_mapEm")]
+#[doc(alias = "std::_Deque_base<RBX::ContentProviderJob::ContentProviderTask,std::allocator<RBX::ContentProviderJob::ContentProviderTask>>::_M_initialize_map(unsigned long)")]
+pub fn stub_0x7e5d84() -> ! {
+    todo!("0x7e5d84 __ZNSt11_Deque_baseIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE17_M_initialize_mapEm")
+}
+
+// 0x7e5f04 — __ZNSt11_Deque_baseIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE15_M_create_nodesEPPS2_S6_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "__ZNSt11_Deque_baseIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE15_M_create_nodesEPPS2_S6_")]
+#[doc(alias = "std::_Deque_base<RBX::ContentProviderJob::ContentProviderTask,std::allocator<RBX::ContentProviderJob::ContentProviderTask>>::_M_create_nodes(RBX::ContentProviderJob::ContentProviderTask**,RBX::ContentProviderJob::ContentProviderTask**)")]
+pub fn stub_0x7e5f04() -> ! {
+    todo!("0x7e5f04 __ZNSt11_Deque_baseIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EE15_M_create_nodesEPPS2_S6_")
+}
+
+// 0x7e5ff8 — __ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EEC2ERKS4_
+#[doc(alias = "__ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EEC2ERKS4_")]
+#[doc(alias = "std::deque<RBX::ContentProviderJob::ContentProviderTask,std::allocator<RBX::ContentProviderJob::ContentProviderTask>>::deque(std::deque<RBX::ContentProviderJob::ContentProviderTask,std::allocator<RBX::ContentProviderJob::ContentProviderTask>> const&)")]
+pub fn stub_0x7e5ff8() -> ! {
+    todo!("0x7e5ff8 __ZNSt5dequeIN3RBX18ContentProviderJob19ContentProviderTaskESaIS2_EEC2ERKS4_")
+}
+
+// 0x7e612c — __ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN3RBX18ContentProviderJob19ContentProviderTaskERKS3_PS4_ES0_IS3_RS3_PS3_EET0_T_SC_SB_St12__false_type
+// type: int __fastcall(int, int, int, int, std::string *, std::string *, int, int, void *, int)
+#[doc(alias = "__ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN3RBX18ContentProviderJob19ContentProviderTaskERKS3_PS4_ES0_IS3_RS3_PS3_EET0_T_SC_SB_St12__false_type")]
+#[doc(alias = "std::_Deque_iterator<RBX::ContentProviderJob::ContentProviderTask,RBX::ContentProviderJob::ContentProviderTask&,RBX::ContentProviderJob::ContentProviderTask*> std::__uninitialized_copy_aux<std::_Deque_iterator<RBX::ContentProviderJob::ContentProviderTask,RBX::ContentProviderJob::ContentProviderTask const&,RBX::ContentProviderJob::ContentProviderTask const*>,std::_Deque_iterator<RBX::ContentProviderJob::ContentProviderTask,RBX::ContentProviderJob::ContentProviderTask&,RBX::ContentProviderJob::ContentProviderTask*>>(std::_Deque_iterator<RBX::ContentProviderJob::ContentProviderTask,RBX::ContentProviderJob::ContentProviderTask const&,RBX::ContentProviderJob::ContentProviderTask const*>,std::_Deque_iterator<RBX::ContentProviderJob::ContentProviderTask,RBX::ContentProviderJob::ContentProviderTask const&,RBX::ContentProviderJob::ContentProviderTask const*>,std::_Deque_iterator<RBX::ContentProviderJob::ContentProviderTask,RBX::ContentProviderJob::ContentProviderTask&,RBX::ContentProviderJob::ContentProviderTask*>,std::__false_type)")]
+pub fn stub_0x7e612c() -> ! {
+    todo!("0x7e612c __ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN3RBX18ContentProviderJob19ContentProviderTaskERKS3_PS4_ES0_IS3_RS3_PS3_EET0_T_SC_SB_St12__false_type")
+}
+
+// 0x7e6cc8 — __ZN3RBX18ControlledLRUCacheISsN5boost10shared_ptrINS_24CacheableContentProvider10CachedItemEEEE6insertERKSsRKS5_m
+// type: int __fastcall(int, int, int)
+#[doc(alias = "__ZN3RBX18ControlledLRUCacheISsN5boost10shared_ptrINS_24CacheableContentProvider10CachedItemEEEE6insertERKSsRKS5_m")]
+#[doc(alias = "RBX::ControlledLRUCache<std::string,boost::shared_ptr<RBX::CacheableContentProvider::CachedItem>>::insert(std::string const&,boost::shared_ptr<RBX::CacheableContentProvider::CachedItem> const&,unsigned long)")]
+pub fn stub_0x7e6cc8() -> ! {
+    todo!("0x7e6cc8 __ZN3RBX18ControlledLRUCacheISsN5boost10shared_ptrINS_24CacheableContentProvider10CachedItemEEEE6insertERKSsRKS5_m")
+}
+
+// 0x7e6e0c — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX24CacheableContentProvider10CachedItemEEEEEEEESsSE_NS_4hashISsEESt8equal_toISsEEEE11delete_nodeEPNS1_10ptr_bucketE
+#[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX24CacheableContentProvider10CachedItemEEEEEEEESsSE_NS_4hashISsEESt8equal_toISsEEEE11delete_nodeEPNS1_10ptr_bucketE")]
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,boost::shared_ptr<RBX::CacheableContentProvider::CachedItem>>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,boost::shared_ptr<RBX::CacheableContentProvider::CachedItem>>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_node(boost::unordered::detail::ptr_bucket *)")]
+pub fn stub_0x7e6e0c() -> ! {
+    todo!("0x7e6e0c __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX24CacheableContentProvider10CachedItemEEEEEEEESsSE_NS_4hashISsEESt8equal_toISsEEEE11delete_nodeEPNS1_10ptr_bucketE")
+}
+
+// 0x7e6e38 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX24CacheableContentProvider10CachedItemEEEEEEEESsSE_NS_4hashISsEESt8equal_toISsEEEE9find_nodeERS5_
+#[doc(alias = "__ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX24CacheableContentProvider10CachedItemEEEEEEEESsSE_NS_4hashISsEESt8equal_toISsEEEE9find_nodeERS5_")]
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,boost::shared_ptr<RBX::CacheableContentProvider::CachedItem>>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,boost::shared_ptr<RBX::CacheableContentProvider::CachedItem>>>>,boost::hash<std::string>,std::equal_to<std::string>>>::find_node(std::string const&)const")]
+pub fn stub_0x7e6e38() -> ! {
+    todo!("0x7e6e38 __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX24CacheableContentProvider10CachedItemEEEEEEEESsSE_NS_4hashISsEESt8equal_toISsEEEE9find_nodeERS5_")
+}
+
+// 0x7e6e78 — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX24CacheableContentProvider10CachedItemEEEEEEEESsSE_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSK_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISF_EEEEmRKT_RKT0_
+#[doc(alias = "__ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX24CacheableContentProvider10CachedItemEEEEEEEESsSE_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSK_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISF_EEEEmRKT_RKT0_")]
+#[doc(alias = "boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,boost::shared_ptr<RBX::CacheableContentProvider::CachedItem>>>>>>> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,boost::shared_ptr<RBX::CacheableContentProvider::CachedItem>>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,boost::shared_ptr<RBX::CacheableContentProvider::CachedItem>>>>,boost::hash<std::string>,std::equal_to<std::string>>>::find_node_impl<std::string,std::equal_to<std::string>>(unsigned long,std::string const&,std::equal_to<std::string> const&)const")]
+pub fn stub_0x7e6e78() -> ! {
+    todo!("0x7e6e78 __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX24CacheableContentProvider10CachedItemEEEEEEEESsSE_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSK_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISF_EEEEmRKT_RKT0_")
+}
+
+// 0x7e70fc — __ZN5boost6detail12shared_countC2IN3RBX24CacheableContentProvider10CachedItemEEEPT_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "__ZN5boost6detail12shared_countC2IN3RBX24CacheableContentProvider10CachedItemEEEPT_")]
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::CacheableContentProvider::CachedItem>(RBX::CacheableContentProvider::CachedItem *)")]
+pub fn stub_0x7e70fc() -> ! {
+    todo!("0x7e70fc __ZN5boost6detail12shared_countC2IN3RBX24CacheableContentProvider10CachedItemEEEPT_")
+}
+
+// 0x7e7208 — __ZN5boost6detail17sp_counted_impl_pIN3RBX24CacheableContentProvider10CachedItemEED1Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX24CacheableContentProvider10CachedItemEED1Ev")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::CacheableContentProvider::CachedItem>::~sp_counted_impl_p()")]
+pub fn stub_0x7e7208() -> ! {
+    todo!("0x7e7208 __ZN5boost6detail17sp_counted_impl_pIN3RBX24CacheableContentProvider10CachedItemEED1Ev")
+}
+
+// 0x7e720c — __ZN5boost6detail17sp_counted_impl_pIN3RBX24CacheableContentProvider10CachedItemEE7disposeEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX24CacheableContentProvider10CachedItemEE7disposeEv")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::CacheableContentProvider::CachedItem>::dispose(void)")]
+pub fn stub_0x7e720c() -> ! {
+    todo!("0x7e720c __ZN5boost6detail17sp_counted_impl_pIN3RBX24CacheableContentProvider10CachedItemEE7disposeEv")
+}
+
+// 0x7e72b0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX24CacheableContentProvider10CachedItemEE11get_deleterERKSt9type_info
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX24CacheableContentProvider10CachedItemEE11get_deleterERKSt9type_info")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::CacheableContentProvider::CachedItem>::get_deleter(std::type_info const&)")]
+pub fn stub_0x7e72b0() -> ! {
+    todo!("0x7e72b0 __ZN5boost6detail17sp_counted_impl_pIN3RBX24CacheableContentProvider10CachedItemEE11get_deleterERKSt9type_info")
+}
+
+// 0x7e76f4 — __ZN3RBX22TextureContentProviderC1Ev
+// type: int __fastcall(RBX::TextureContentProvider *this)
+#[doc(alias = "__ZN3RBX22TextureContentProviderC1Ev")]
+#[doc(alias = "RBX::TextureContentProvider::TextureContentProvider(void)")]
+pub fn stub_0x7e76f4() -> ! {
+    todo!("0x7e76f4 __ZN3RBX22TextureContentProviderC1Ev")
+}
+
+// 0x7e76f8 — __ZN3RBX22TextureContentProviderC2Ev
+// type: RBX::Instance *__fastcall(RBX::TextureContentProvider *this, int, int, int)
+#[doc(alias = "__ZN3RBX22TextureContentProviderC2Ev")]
+#[doc(alias = "RBX::TextureContentProvider::TextureContentProvider(void)")]
+pub fn stub_0x7e76f8() -> ! {
+    todo!("0x7e76f8 __ZN3RBX22TextureContentProviderC2Ev")
+}
+
+// 0x7e7910 — __ZN3RBX22TextureContentProvider19setTextureAllocatorEN5boost8functionIFPNS_5ImageERSiRKSsEEE
+// type: int __fastcall(int)
+#[doc(alias = "__ZN3RBX22TextureContentProvider19setTextureAllocatorEN5boost8functionIFPNS_5ImageERSiRKSsEEE")]
+#[doc(alias = "RBX::TextureContentProvider::setTextureAllocator(boost::function<RBX::Image * ()(std::istream &,std::string const&)>)")]
+pub fn stub_0x7e7910() -> ! {
+    todo!("0x7e7910 __ZN3RBX22TextureContentProvider19setTextureAllocatorEN5boost8functionIFPNS_5ImageERSiRKSsEEE")
+}
+
+// 0x7e7918 — __ZN3RBX22TextureContentProvider11ProcessTaskERKSsN5boost10shared_ptrIS1_EE
+// type: int __fastcall(int32_t *, const std::string *, _DWORD *)
+#[doc(alias = "__ZN3RBX22TextureContentProvider11ProcessTaskERKSsN5boost10shared_ptrIS1_EE")]
+#[doc(alias = "RBX::TextureContentProvider::ProcessTask(std::string const&,boost::shared_ptr<std::string const>)")]
+pub fn stub_0x7e7918() -> ! {
+    todo!("0x7e7918 __ZN3RBX22TextureContentProvider11ProcessTaskERKSsN5boost10shared_ptrIS1_EE")
+}
+
+// 0x7e7c98 — __ZN3RBX22TextureContentProvider13updateContentERKSsN5boost10shared_ptrINS_24CacheableContentProvider10CachedItemEEE
+// type: void __fastcall(int, int, const shared_count **, int, int, boost::detail::sp_counted_base *, boost::mutex *, char, boost::mutex *, char, int, int, int, int)
+#[doc(alias = "__ZN3RBX22TextureContentProvider13updateContentERKSsN5boost10shared_ptrINS_24CacheableContentProvider10CachedItemEEE")]
+#[doc(alias = "RBX::TextureContentProvider::updateContent(std::string const&,boost::shared_ptr<RBX::CacheableContentProvider::CachedItem>)")]
+pub fn stub_0x7e7c98() -> ! {
+    todo!("0x7e7c98 __ZN3RBX22TextureContentProvider13updateContentERKSsN5boost10shared_ptrINS_24CacheableContentProvider10CachedItemEEE")
+}
+
+// 0x7e7e2c — __ZN5boost8functionIFPN3RBX5ImageERSiRKSsEEaSERKS8_
+// type: int __fastcall(int)
+#[doc(alias = "__ZN5boost8functionIFPN3RBX5ImageERSiRKSsEEaSERKS8_")]
+#[doc(alias = "boost::function<RBX::Image * ()(std::istream &,std::string const&)>::operator=(boost::function<RBX::Image * ()(std::istream &,std::string const&)> const&)")]
+pub fn stub_0x7e7e2c() -> ! {
+    todo!("0x7e7e2c __ZN5boost8functionIFPN3RBX5ImageERSiRKSsEEaSERKS8_")
+}
+
+// 0x7e7ef0 — __ZN5boost10shared_ptrIvE5resetIN3RBX5ImageEEEvPT_
+// type: boost::detail::sp_counted_base *__fastcall(int *)
+#[doc(alias = "__ZN5boost10shared_ptrIvE5resetIN3RBX5ImageEEEvPT_")]
+#[doc(alias = "void boost::shared_ptr<void>::reset<RBX::Image>(RBX::Image *)")]
+pub fn stub_0x7e7ef0() -> ! {
+    todo!("0x7e7ef0 __ZN5boost10shared_ptrIvE5resetIN3RBX5ImageEEEvPT_")
+}
+
+// 0x7e7f1c — __ZNK5boost9function2IPN3RBX5ImageERSiRKSsEclES4_S6_
+// type: int __fastcall(_DWORD *, int, int)
+#[doc(alias = "__ZNK5boost9function2IPN3RBX5ImageERSiRKSsEclES4_S6_")]
+#[doc(alias = "boost::function2<RBX::Image *,std::istream &,std::string const&>::operator()(std::istream &,std::string const&)const")]
+pub fn stub_0x7e7f1c() -> ! {
+    todo!("0x7e7f1c __ZNK5boost9function2IPN3RBX5ImageERSiRKSsEclES4_S6_")
+}
+
+// 0x7e7fe8 — __ZN3RBX22TextureContentProviderD1Ev
+// type: void __fastcall(RBX::TextureContentProvider *__hidden this)
+#[doc(alias = "__ZN3RBX22TextureContentProviderD1Ev")]
+#[doc(alias = "RBX::TextureContentProvider::~TextureContentProvider()")]
+pub fn stub_0x7e7fe8() -> ! {
+    todo!("0x7e7fe8 __ZN3RBX22TextureContentProviderD1Ev")
+}
+
+// 0x7e7fec — __ZN3RBX22TextureContentProviderD0Ev
+// type: void __fastcall(RBX::TextureContentProvider *__hidden this)
+#[doc(alias = "__ZN3RBX22TextureContentProviderD0Ev")]
+#[doc(alias = "RBX::TextureContentProvider::~TextureContentProvider()")]
+pub fn stub_0x7e7fec() -> ! {
+    todo!("0x7e7fec __ZN3RBX22TextureContentProviderD0Ev")
+}
+
+// 0x7e80b4 — __ZThn32_N3RBX22TextureContentProviderD1Ev
+// type: void __fastcall(RBX::TextureContentProvider *__hidden this)
+#[doc(alias = "__ZThn32_N3RBX22TextureContentProviderD1Ev")]
+#[doc(alias = "`non-virtual thunk toRBX::TextureContentProvider::~TextureContentProvider()")]
+pub fn stub_0x7e80b4() -> ! {
+    todo!("0x7e80b4 __ZThn32_N3RBX22TextureContentProviderD1Ev")
+}
+
+// 0x7e80bc — __ZThn32_N3RBX22TextureContentProviderD0Ev
+// type: void __fastcall(RBX::TextureContentProvider *__hidden this)
+#[doc(alias = "__ZThn32_N3RBX22TextureContentProviderD0Ev")]
+#[doc(alias = "`non-virtual thunk toRBX::TextureContentProvider::~TextureContentProvider()")]
+pub fn stub_0x7e80bc() -> ! {
+    todo!("0x7e80bc __ZThn32_N3RBX22TextureContentProviderD0Ev")
+}
+
+// 0x7e80ec — __ZThn36_N3RBX22TextureContentProviderD1Ev
+// type: void __fastcall(RBX::TextureContentProvider *__hidden this)
+#[doc(alias = "__ZThn36_N3RBX22TextureContentProviderD1Ev")]
+#[doc(alias = "`non-virtual thunk toRBX::TextureContentProvider::~TextureContentProvider()")]
+pub fn stub_0x7e80ec() -> ! {
+    todo!("0x7e80ec __ZThn36_N3RBX22TextureContentProviderD1Ev")
+}
+
+// 0x7e80f4 — __ZThn36_N3RBX22TextureContentProviderD0Ev
+// type: void __fastcall(RBX::TextureContentProvider *__hidden this)
+#[doc(alias = "__ZThn36_N3RBX22TextureContentProviderD0Ev")]
+#[doc(alias = "`non-virtual thunk toRBX::TextureContentProvider::~TextureContentProvider()")]
+pub fn stub_0x7e80f4() -> ! {
+    todo!("0x7e80f4 __ZThn36_N3RBX22TextureContentProviderD0Ev")
+}
+
