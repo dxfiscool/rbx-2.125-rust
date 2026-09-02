@@ -645,3 +645,5 @@ pub mod generated_292;
 
 pub mod generated_dmB_watchdog_1788388807;
 pub mod generated_293;
+pub mod generated_dmB_watchdog_1788389831;
+pub mod generated_dmA_watchdog_X;
