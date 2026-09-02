@@ -125,7 +125,7 @@ pub fn stub_0x72d0d0() -> ! {
 
 // 0x7345d4 — __ZThn32_N3RBX9GlueJointD0Ev
 // type: void __fastcall(RBX::GlueJoint *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::GlueJoint::~GlueJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::GlueJoint::~GlueJoint()")]
 #[doc(alias = "__ZThn32_N3RBX9GlueJointD0Ev")]
 // was: __ZThn32_N3RBX9GlueJointD0Ev
 pub fn stub_0x7345d4() -> ! {
@@ -165,7 +165,7 @@ pub fn stub_0x734730() -> ! {
 }
 
 // 0x734760 — __GLOBAL__I_a_319
-#[doc(alias = "`global constructor keyed to'_a_319")]
+#[doc(alias = "global constructor keyed to_a_319")]
 #[doc(alias = "__GLOBAL__I_a_319")]
 // was: __GLOBAL__I_a_319
 pub fn stub_0x734760() -> ! {
@@ -381,7 +381,7 @@ pub fn stub_0x735660() -> ! {
 
 // 0x735664 — __ZThn32_N3RBX9FreeJointD1Ev
 // type: void __fastcall(RBX::FreeJoint *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::FreeJoint::~FreeJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::FreeJoint::~FreeJoint()")]
 #[doc(alias = "__ZThn32_N3RBX9FreeJointD1Ev")]
 // was: __ZThn32_N3RBX9FreeJointD1Ev
 pub fn stub_0x735664() -> ! {
@@ -390,7 +390,7 @@ pub fn stub_0x735664() -> ! {
 
 // 0x73566c — __ZThn32_N3RBX9FreeJointD0Ev
 // type: void __fastcall(RBX::FreeJoint *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::FreeJoint::~FreeJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::FreeJoint::~FreeJoint()")]
 #[doc(alias = "__ZThn32_N3RBX9FreeJointD0Ev")]
 // was: __ZThn32_N3RBX9FreeJointD0Ev
 pub fn stub_0x73566c() -> ! {
@@ -435,7 +435,7 @@ pub fn stub_0x735880() -> ! {
 
 // 0x735884 — __ZThn32_N3RBX11AnchorJointD1Ev
 // type: void __fastcall(RBX::AnchorJoint *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::AnchorJoint::~AnchorJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::AnchorJoint::~AnchorJoint()")]
 #[doc(alias = "__ZThn32_N3RBX11AnchorJointD1Ev")]
 // was: __ZThn32_N3RBX11AnchorJointD1Ev
 pub fn stub_0x735884() -> ! {
@@ -444,7 +444,7 @@ pub fn stub_0x735884() -> ! {
 
 // 0x73588c — __ZThn32_N3RBX11AnchorJointD0Ev
 // type: void __fastcall(RBX::AnchorJoint *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::AnchorJoint::~AnchorJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::AnchorJoint::~AnchorJoint()")]
 #[doc(alias = "__ZThn32_N3RBX11AnchorJointD0Ev")]
 // was: __ZThn32_N3RBX11AnchorJointD0Ev
 pub fn stub_0x73588c() -> ! {
@@ -452,7 +452,7 @@ pub fn stub_0x73588c() -> ! {
 }
 
 // 0x735930 — __GLOBAL__I_a_320
-#[doc(alias = "`global constructor keyed to'_a_320")]
+#[doc(alias = "global constructor keyed to_a_320")]
 #[doc(alias = "__GLOBAL__I_a_320")]
 // was: __GLOBAL__I_a_320
 pub fn stub_0x735930() -> ! {
@@ -550,7 +550,7 @@ pub fn stub_0x735f10() -> ! {
 }
 
 // 0x735f14 — __GLOBAL__I_a_321
-#[doc(alias = "`global constructor keyed to'_a_321")]
+#[doc(alias = "global constructor keyed to_a_321")]
 #[doc(alias = "__GLOBAL__I_a_321")]
 // was: __GLOBAL__I_a_321
 pub fn stub_0x735f14() -> ! {
@@ -786,7 +786,7 @@ pub fn stub_0x736bb0() -> ! {
 }
 
 // 0x736c94 — __GLOBAL__I_a_322
-#[doc(alias = "`global constructor keyed to'_a_322")]
+#[doc(alias = "global constructor keyed to_a_322")]
 #[doc(alias = "__GLOBAL__I_a_322")]
 // was: __GLOBAL__I_a_322
 pub fn stub_0x736c94() -> ! {
@@ -830,7 +830,7 @@ pub fn stub_0x736dc8() -> ! {
 }
 
 // 0x736e80 — __GLOBAL__I_a_323
-#[doc(alias = "`global constructor keyed to'_a_323")]
+#[doc(alias = "global constructor keyed to_a_323")]
 #[doc(alias = "__GLOBAL__I_a_323")]
 // was: __GLOBAL__I_a_323
 pub fn stub_0x736e80() -> ! {
@@ -882,7 +882,7 @@ pub fn stub_0x7377d0() -> ! {
 
 // 0x7377d4 — __ZThn32_N3RBX5JointD0Ev
 // type: void __fastcall(RBX::Joint *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Joint::~Joint()")]
+#[doc(alias = "non-virtual thunk toRBX::Joint::~Joint()")]
 #[doc(alias = "__ZThn32_N3RBX5JointD0Ev")]
 // was: __ZThn32_N3RBX5JointD0Ev
 pub fn stub_0x7377d4() -> ! {
@@ -900,7 +900,7 @@ pub fn stub_0x7377dc() -> ! {
 
 // 0x737924 — __ZThn32_N3RBX5JointD1Ev
 // type: void __fastcall(RBX::Joint *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Joint::~Joint()")]
+#[doc(alias = "non-virtual thunk toRBX::Joint::~Joint()")]
 #[doc(alias = "__ZThn32_N3RBX5JointD1Ev")]
 // was: __ZThn32_N3RBX5JointD1Ev
 pub fn stub_0x737924() -> ! {
@@ -1030,7 +1030,7 @@ pub fn stub_0x738028() -> ! {
 
 // 0x73825c — __ZThn32_NK3RBX5Joint13isHeavierThanEPKNS_12SpanningEdgeE
 // type: _DWORD __fastcall(RBX::Joint *__hidden this, const RBX::SpanningEdge *)
-#[doc(alias = "`non-virtual thunk to'RBX::Joint::isHeavierThan(RBX::SpanningEdge const*)const")]
+#[doc(alias = "non-virtual thunk toRBX::Joint::isHeavierThan(RBX::SpanningEdge const*)const")]
 #[doc(alias = "__ZThn32_NK3RBX5Joint13isHeavierThanEPKNS_12SpanningEdgeE")]
 // was: __ZThn32_NK3RBX5Joint13isHeavierThanEPKNS_12SpanningEdgeE
 pub fn stub_0x73825c() -> ! {
@@ -1048,7 +1048,7 @@ pub fn stub_0x738268() -> ! {
 
 // 0x738284 — __ZThn32_N3RBX5Joint9otherNodeEPNS_12SpanningNodeE
 // type: char *__fastcall(RBX::Joint *this, RBX::SpanningNode *)
-#[doc(alias = "`non-virtual thunk to'RBX::Joint::otherNode(RBX::SpanningNode *)")]
+#[doc(alias = "non-virtual thunk toRBX::Joint::otherNode(RBX::SpanningNode *)")]
 #[doc(alias = "__ZThn32_N3RBX5Joint9otherNodeEPNS_12SpanningNodeE")]
 // was: __ZThn32_N3RBX5Joint9otherNodeEPNS_12SpanningNodeE
 pub fn stub_0x738284() -> ! {

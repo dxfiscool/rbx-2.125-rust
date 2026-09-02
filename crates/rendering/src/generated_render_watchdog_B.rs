@@ -1037,7 +1037,7 @@ pub fn stub_0x7345c8() -> ! {
 // 0x7345cc — __ZThn32_N3RBX9GlueJointD1Ev
 // type: void __fastcall(RBX::GlueJoint *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX9GlueJointD1Ev")]
-#[doc(alias = "`non-virtual thunk to_RBX::GlueJoint::~GlueJoint()")]
+#[doc(alias = "non-virtual thunk to_RBX::GlueJoint::~GlueJoint()")]
 // was: __ZThn32_N3RBX9GlueJointD1Ev
 pub fn stub_0x7345cc() -> ! {
     todo!("0x7345cc `non-virtual thunk to_RBX::GlueJoint::~GlueJoint()")
