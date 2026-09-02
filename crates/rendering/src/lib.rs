@@ -571,3 +571,4 @@ pub mod generated_rend_wdog2A_1788371867;
 pub mod generated_rend_wdog2B_1788371993;
 
 pub mod generated_rend_wdog3C_1788372249;
+pub mod generated_rend_wdog4D_1788373512;
