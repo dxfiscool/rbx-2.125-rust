@@ -134,6 +134,7 @@ pub mod generated_130;
 pub mod generated_131;
 pub mod generated_218;
 pub mod generated_audio_wdogW8;
+pub mod generated_audio_wdogW9;
 
 // 0x686a4 — __ZN4FMOD10ProfileCpu4initEv
 #[doc(alias = "FMOD::ProfileCpu::init(void)")]
