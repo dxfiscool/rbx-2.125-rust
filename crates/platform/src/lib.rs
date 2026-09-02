@@ -337,3 +337,4 @@ pub mod generated_plat_wd3_1788337463;
 pub mod generated_plat_cf;
 pub mod generated_plat_wd_10h;
 pub mod generated_plat_wd_10n;
+pub mod generated_plat_wd_10o;
