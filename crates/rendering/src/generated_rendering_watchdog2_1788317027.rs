@@ -718,7 +718,7 @@ pub fn stub_6fe6e4() -> ! {
 
 // 0x6fe70c — __GLOBAL__I_a_297
 #[doc(alias = "__GLOBAL__I_a_297")]
-#[doc(alias = "`global constructor keyed to'_a_297")]
+#[doc(alias = "global constructor keyed to_a_297")]
 pub fn stub_6fe70c() -> ! {
     todo!("0x6fe70c __GLOBAL__I_a_297")
 }
