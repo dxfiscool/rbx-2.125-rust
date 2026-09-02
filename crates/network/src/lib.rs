@@ -338,3 +338,4 @@ pub mod generated_203;
 pub mod generated_net_wdog_1788373000;
 pub mod generated_net_wdog_1788374000;
 pub mod generated_net_wdog2_1788371810;
+pub mod generated_net_wdog3B_1788372273;
