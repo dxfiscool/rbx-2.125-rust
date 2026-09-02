@@ -488,4 +488,6 @@ pub mod generated_rendering_watchdog_b;
 pub mod generated_rendering_watchdog_c;
 pub mod generated_rendering_watchdog_d;
 pub mod generated_rendering_watchdog_e;
+pub mod generated_rendering_watchdog_f;
+pub mod generated_rendering_watchdog_g;
 pub mod generated_rendering_watchdog2_1788317027;
