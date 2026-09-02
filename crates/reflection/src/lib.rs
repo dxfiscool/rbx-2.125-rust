@@ -306,3 +306,4 @@ pub mod generated_refl_wd_watchdog23;
 pub mod generated_refl_31;
 pub mod generated_refl_wdcron_A;
 pub mod generated_refl_wd_10u;
+pub mod generated_wdog_refl_B2_1788369377;
