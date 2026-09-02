@@ -468,3 +468,4 @@ pub mod generated_core_b_watchdog_1788336813;
 pub mod generated_core_watchdog_1788336888;
 pub mod generated_core_wd3a_1788337499;
 pub mod generated_core_wd3b_1788337595;
+pub mod generated_core_wd3c_1788337701;
