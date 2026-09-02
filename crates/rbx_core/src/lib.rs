@@ -27,3 +27,5 @@ pub mod generated_rbxcore_wdog_C;
 pub mod generated_core_wdog7H;
 pub mod generated_core_bg4;
 pub mod generated_core_bg5;
+pub mod generated_gap_wd;
+pub mod generated_gap_wd25;
