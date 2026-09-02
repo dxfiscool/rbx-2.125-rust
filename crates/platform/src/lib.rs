@@ -404,3 +404,4 @@ pub mod generated_plat_wdogW6;
 pub mod generated_plat_bg8;
 pub mod generated_plat_bg9;
 pub mod generated_plat_bg10;
+pub mod generated_plat_wd_watchdog_a;
