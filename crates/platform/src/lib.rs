@@ -385,3 +385,4 @@ pub mod generated_plat_wdcron_E;
 
 pub mod generated_plat_wdog_D_1788368206;
 pub mod generated_plat_cg;
+pub mod generated_plat_ch;
