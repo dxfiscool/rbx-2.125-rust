@@ -315,3 +315,5 @@ pub mod generated_script_wd2_1788361451;
 pub mod generated_script_wd_watchdog23;
 pub mod generated_script_wdcron_A;
 pub mod generated_script_wdog_B_1788368418;
+pub mod generated_script_wdog_C_1788368718;
+pub mod generated_script_gap_59e124;
