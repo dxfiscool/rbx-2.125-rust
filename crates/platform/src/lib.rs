@@ -354,3 +354,4 @@ pub mod generated_plat_wd_12e;
 pub mod generated_plat_wd_12f;
 pub mod generated_plat_wd2;
 pub mod generated_plat_wd_watchdog2;
+pub mod generated_plat_wd_watchdog4;
