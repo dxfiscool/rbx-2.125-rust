@@ -14913,3 +14913,4 @@ pub mod generated_audio_next;
 pub mod generated_audio_watchdog_W;
 pub mod generated_audio_watchdog_X;
 pub mod generated_audio_watchdog_Y;
+pub mod generated_watchdog_aud_w1;
