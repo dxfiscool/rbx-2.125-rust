@@ -345,3 +345,4 @@ pub mod generated_plat_wd_10s;
 pub mod generated_plat_wd_10t;
 pub mod generated_plat_wd_11a;
 pub mod generated_plat_wd_11b;
+pub mod generated_plat_wd_11c;
