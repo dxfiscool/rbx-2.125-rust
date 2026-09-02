@@ -520,3 +520,5 @@ pub mod generated_watchdog_dm_w5;
 pub mod generated_datamodel_alt_3;
 pub mod generated_datamodel_alt_4;
 pub mod generated_datamodel_alt_5;
+pub mod generated_dm_b_watchdog_1788336769;
+pub mod generated_dm_a_watchdog_1788336843;
