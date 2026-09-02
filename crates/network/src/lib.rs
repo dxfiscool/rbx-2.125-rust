@@ -347,3 +347,4 @@ pub mod generated_net_wdog6H_1788375344;
 pub mod generated_net_wdog7E;
 pub mod generated_net_wdog8;
 pub mod generated_net_wdogW7;
+pub mod generated_206;
