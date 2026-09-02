@@ -244,4 +244,4 @@ pub mod generated_reflection_watchdog_a;
 pub mod generated_reflection_watchdog_b;
 pub mod generated_reflection_watchdog_c;
 pub mod generated_reflection_watchdog_d;
-pub mod generated_shard_watchdog_d;
+pub mod generated_reflection_watchdog_e;
