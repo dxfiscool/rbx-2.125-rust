@@ -14885,3 +14885,4 @@ pub mod generated_audio_shard_224;
 pub mod generated_audio_watchdog_a;
 pub mod generated_audio_watchdog_b;
 pub mod generated_audio_watchdog_c;
+pub mod generated_audio_watchdog_d;
