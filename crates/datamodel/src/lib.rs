@@ -509,3 +509,4 @@ pub mod generated_283;
 pub mod generated_datamodel_shard_284;
 pub mod generated_datamodel_shard_A;
 pub mod generated_datamodel_shard_B;
+pub mod generated_284;
