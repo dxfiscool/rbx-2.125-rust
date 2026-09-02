@@ -286,4 +286,6 @@ pub mod generated_gap_4;
 pub mod generated_refl_wd1;
 pub mod generated_refl_wd2;
 pub mod generated_refl_wd_watchdog;
+pub mod generated_refl_wd_watchdog4;
+pub mod generated_refl_wd_watchdog5;
 pub mod generated_refl_wd_watchdog6;
