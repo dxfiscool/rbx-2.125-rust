@@ -518,3 +518,4 @@ pub mod generated_rend_watchdog_1788336740;
 pub mod generated_rend_watchdog2_1788337199;
 pub mod generated_rend_wd3_1788337482;
 pub mod generated_rend_wd4_1788337907;
+pub mod generated_rend_wd_10d;
