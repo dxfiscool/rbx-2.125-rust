@@ -399,3 +399,4 @@ pub mod generated_plat_input_1788375157;
 pub mod generated_plat_input2_1788375648;
 pub mod generated_plat_wdog7D;
 pub mod generated_plat_wdogW5;
+pub mod generated_plat_bg7;
