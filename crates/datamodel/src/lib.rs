@@ -477,4 +477,6 @@ pub mod generated_datamodel_watchdog_i;
 
 pub mod generated_datamodel_watchdog_j;
 
+pub mod generated_datamodel_watchdog_k;
+
 pub mod generated_next_g;
