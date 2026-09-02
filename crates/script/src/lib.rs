@@ -297,3 +297,4 @@ pub mod generated_script_wd1;
 pub mod generated_script_wd2;
 pub mod generated_script_wd_watchdog;
 pub mod generated_script_wd_watchdog4;
+pub mod generated_script_wd_watchdog5;
