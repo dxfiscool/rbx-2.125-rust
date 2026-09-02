@@ -548,3 +548,4 @@ pub mod generated_watchdog_gap_1788383019;
 pub mod generated_watchdog_coreB_1788384000;
 pub mod generated_watchdog_coreA_1788384000;
 pub mod generated_core_shard_on;
+pub mod generated_watchdog_coreB;
