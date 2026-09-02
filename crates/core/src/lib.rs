@@ -562,3 +562,6 @@ pub mod generated_watchdog_coreB_1788391040;
 pub mod generated_core_wd_watchdog_gap2_1788391071;
 pub mod generated_core_shard_ot;
 pub mod generated_wdog_core_1788392155;
+pub mod generated_core_shard_ou;
+pub mod generated_core_shard_ov;
+pub mod generated_wdog_gap_1788392241;
