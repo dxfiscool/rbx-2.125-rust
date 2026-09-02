@@ -14964,3 +14964,4 @@ pub mod generated_audio_wdcron_B;
 pub mod generated_audio_wdog_B;
 pub mod generated_audio_wdcron_C;
 pub mod generated_audio_wdcron_D;
+pub mod generated_audio_wdcron_E;
