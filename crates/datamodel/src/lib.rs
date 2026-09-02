@@ -492,3 +492,5 @@ pub mod generated_datamodel_watchdog_r;
 pub mod generated_datamodel_watchdog_s;
 pub mod generated_datamodel_watchdog_t;
 pub mod generated_datamodel_watchdog_u;
+
+pub mod generated_datamodel_watchdog_v;
