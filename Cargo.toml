@@ -1,5 +1,6 @@
 [workspace]
 members = ["crates/*", "xtask"]
+exclude = ["crates/rbx_core"]
 resolver = "2"
 
 [workspace.package]
