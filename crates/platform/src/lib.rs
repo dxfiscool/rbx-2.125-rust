@@ -382,3 +382,5 @@ pub mod generated_plat_watchdog_1788362712;
 pub mod generated_plat_watchdog_1788362714;
 pub mod generated_plat_wdcron_D;
 pub mod generated_plat_wdcron_E;
+
+pub mod generated_plat_wdog_D_1788368206;
