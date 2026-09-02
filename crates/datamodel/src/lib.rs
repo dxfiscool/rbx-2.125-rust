@@ -571,3 +571,7 @@ pub mod generated_dm_wd_watchdog15;
 pub mod generated_dm_wd_watchdog16;
 pub mod generated_dm2_wd_watchdog16;
 pub mod generated_dm_wd_watchdog18;
+pub mod generated_dm_wd_watchdog20;
+pub mod generated_dm_wdA_1788360960;
+
+pub mod generated_dm_wdB_1788360977;
