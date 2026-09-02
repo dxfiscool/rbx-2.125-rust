@@ -288,3 +288,5 @@ pub mod generated_platform_shard_211;
 pub mod generated_platform_shard_212;
 pub mod generated_platform_shard_213;
 pub mod generated_platform_shard_214;
+pub mod generated_platform_shard_215;
+pub mod generated_platform_watchdog_a;
