@@ -317,3 +317,4 @@ pub mod generated_platform_watchdog_y;
 pub mod generated_platform_watchdog_z;
 pub mod generated_platform_watchdog_W;
 pub mod generated_platform_watchdog_X;
+pub mod generated_plat_bs;
