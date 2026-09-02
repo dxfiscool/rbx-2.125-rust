@@ -393,3 +393,4 @@ pub mod generated_plat_wdog2_1788371831;
 pub mod generated_plat_gap_29f0fc;
 pub mod generated_plat_wdog3B_1788372296;
 pub mod generated_plat_wdog4H_1788373485;
+pub mod generated_plat_wdog4I_1788373700;
