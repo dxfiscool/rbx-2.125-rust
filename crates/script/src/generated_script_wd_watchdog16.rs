@@ -364,13 +364,11 @@ pub fn stub_0x559920() -> ! {
 
 // 0x559928 — __ZNK3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE12getClassNameEv — __ZNK3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0x559928() -> ! {
     todo!("0x559928 __ZNK3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE12getClassNameEv")
 }
 
 // 0x559ba8 — __ZThn32_NK3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE12getClassNameEv — __ZThn32_NK3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0x559ba8() -> ! {
     todo!("0x559ba8 __ZThn32_NK3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE12getClassNameEv")
@@ -385,13 +383,11 @@ pub fn stub_0x55a7e8() -> ! {
 
 // 0x55a7f0 — __ZNK3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE12getClassNameEv — __ZNK3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0x55a7f0() -> ! {
     todo!("0x55a7f0 __ZNK3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE12getClassNameEv")
 }
 
 // 0x55a800 — __ZThn32_NK3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE12getClassNameEv — __ZThn32_NK3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0x55a800() -> ! {
     todo!("0x55a800 __ZThn32_NK3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE12getClassNameEv")
@@ -399,13 +395,11 @@ pub fn stub_0x55a800() -> ! {
 
 // 0x55a810 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEE12getClassNameEv — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEE12getClassNameEv")]
 pub fn stub_0x55a810() -> ! {
     todo!("0x55a810 __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEE12getClassNameEv")
 }
 
 // 0x55a838 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEE12getClassNameEv — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEE12getClassNameEv")]
 pub fn stub_0x55a838() -> ! {
     todo!("0x55a838 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEE12getClassNameEv")
@@ -413,13 +407,11 @@ pub fn stub_0x55a838() -> ! {
 
 // 0x55a904 — __ZNK3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE12getClassNameEv — __ZNK3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0x55a904() -> ! {
     todo!("0x55a904 __ZNK3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE12getClassNameEv")
 }
 
 // 0x55a9c0 — __ZThn32_NK3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE12getClassNameEv — __ZThn32_NK3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0x55a9c0() -> ! {
     todo!("0x55a9c0 __ZThn32_NK3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE12getClassNameEv")
@@ -427,13 +419,11 @@ pub fn stub_0x55a9c0() -> ! {
 
 // 0x55ad24 — __ZNK3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE12getClassNameEv — __ZNK3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0x55ad24() -> ! {
     todo!("0x55ad24 __ZNK3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE12getClassNameEv")
 }
 
 // 0x55ade0 — __ZThn32_NK3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE12getClassNameEv — __ZThn32_NK3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0x55ade0() -> ! {
     todo!("0x55ade0 __ZThn32_NK3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE12getClassNameEv")
@@ -441,13 +431,11 @@ pub fn stub_0x55ade0() -> ! {
 
 // 0x55b144 — __ZNK3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE12getClassNameEv — __ZNK3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0x55b144() -> ! {
     todo!("0x55b144 __ZNK3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE12getClassNameEv")
 }
 
 // 0x55b200 — __ZThn32_NK3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE12getClassNameEv — __ZThn32_NK3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0x55b200() -> ! {
     todo!("0x55b200 __ZThn32_NK3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE12getClassNameEv")
@@ -455,13 +443,11 @@ pub fn stub_0x55b200() -> ! {
 
 // 0x55b564 — __ZNK3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE12getClassNameEv — __ZNK3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0x55b564() -> ! {
     todo!("0x55b564 __ZNK3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE12getClassNameEv")
 }
 
 // 0x55b624 — __ZThn32_NK3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE12getClassNameEv — __ZThn32_NK3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0x55b624() -> ! {
     todo!("0x55b624 __ZThn32_NK3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE12getClassNameEv")
@@ -469,13 +455,11 @@ pub fn stub_0x55b624() -> ! {
 
 // 0x55b988 — __ZNK3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE12getClassNameEv — __ZNK3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0x55b988() -> ! {
     todo!("0x55b988 __ZNK3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE12getClassNameEv")
 }
 
 // 0x55ba48 — __ZThn32_NK3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE12getClassNameEv — __ZThn32_NK3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE12getClassNameEv")]
 pub fn stub_0x55ba48() -> ! {
     todo!("0x55ba48 __ZThn32_NK3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE12getClassNameEv")
@@ -483,13 +467,11 @@ pub fn stub_0x55ba48() -> ! {
 
 // 0x55bd08 — __ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7CreatorD1Ev — __ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7CreatorD1Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7CreatorD1Ev")]
 pub fn stub_0x55bd08() -> ! {
     todo!("0x55bd08 __ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7CreatorD1Ev")
 }
 
 // 0x55bd0c — __ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorD1Ev — __ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorD1Ev
-#[doc(alias = "__ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorD1Ev")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorD1Ev")]
 pub fn stub_0x55bd0c() -> ! {
     todo!("0x55bd0c __ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorD1Ev")
@@ -497,13 +479,11 @@ pub fn stub_0x55bd0c() -> ! {
 
 // 0x55bd10 — __ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorD1Ev — __ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorD1Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorD1Ev")]
 pub fn stub_0x55bd10() -> ! {
     todo!("0x55bd10 __ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorD1Ev")
 }
 
 // 0x55bd14 — __ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorD1Ev — __ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorD1Ev
-#[doc(alias = "__ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorD1Ev")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorD1Ev")]
 pub fn stub_0x55bd14() -> ! {
     todo!("0x55bd14 __ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorD1Ev")
@@ -511,13 +491,11 @@ pub fn stub_0x55bd14() -> ! {
 
 // 0x55bd18 — __ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7CreatorD1Ev — __ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7CreatorD1Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7CreatorD1Ev")]
 pub fn stub_0x55bd18() -> ! {
     todo!("0x55bd18 __ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7CreatorD1Ev")
 }
 
 // 0x55bd1c — __ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7CreatorD1Ev — __ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7CreatorD1Ev
-#[doc(alias = "__ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7CreatorD1Ev")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7CreatorD1Ev")]
 pub fn stub_0x55bd1c() -> ! {
     todo!("0x55bd1c __ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7CreatorD1Ev")
@@ -525,13 +503,11 @@ pub fn stub_0x55bd1c() -> ! {
 
 // 0x55bd20 — __ZN3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE7CreatorD1Ev — __ZN3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE7CreatorD1Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE7CreatorD1Ev")]
 pub fn stub_0x55bd20() -> ! {
     todo!("0x55bd20 __ZN3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE7CreatorD1Ev")
 }
 
 // 0x55bd24 — __ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE17static_getCreatorEv — __ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE17static_getCreatorEv
-#[doc(alias = "__ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE17static_getCreatorEv")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE17static_getCreatorEv")]
 pub fn stub_0x55bd24() -> ! {
     todo!("0x55bd24 __ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE17static_getCreatorEv")
@@ -539,13 +515,11 @@ pub fn stub_0x55bd24() -> ! {
 
 // 0x55bd98 — __ZNK3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7Creator12getClassNameEv — __ZNK3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7Creator12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7Creator12getClassNameEv")]
 pub fn stub_0x55bd98() -> ! {
     todo!("0x55bd98 __ZNK3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7Creator12getClassNameEv")
 }
 
 // 0x55be20 — __ZN3RBX4Name13callDoDeclareILZNS_11sBodyThrustEEEEvv — __ZN3RBX4Name13callDoDeclareILZNS_11sBodyThrustEEEEvv
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_11sBodyThrustEEEEvv")]
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_11sBodyThrustEEEEvv")]
 pub fn stub_0x55be20() -> ! {
     todo!("0x55be20 __ZN3RBX4Name13callDoDeclareILZNS_11sBodyThrustEEEEvv")
@@ -553,13 +527,11 @@ pub fn stub_0x55be20() -> ! {
 
 // 0x55be24 — __ZN3RBX4Name9doDeclareILZNS_11sBodyThrustEEEERKS0_v — __ZN3RBX4Name9doDeclareILZNS_11sBodyThrustEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sBodyThrustEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sBodyThrustEEEERKS0_v")]
 pub fn stub_0x55be24() -> ! {
     todo!("0x55be24 __ZN3RBX4Name9doDeclareILZNS_11sBodyThrustEEEERKS0_v")
 }
 
 // 0x55bf04 — __ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE17static_getCreatorEv — __ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE17static_getCreatorEv
-#[doc(alias = "__ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE17static_getCreatorEv")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE17static_getCreatorEv")]
 pub fn stub_0x55bf04() -> ! {
     todo!("0x55bf04 __ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE17static_getCreatorEv")
@@ -567,13 +539,11 @@ pub fn stub_0x55bf04() -> ! {
 
 // 0x55bf78 — __ZNK3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7Creator12getClassNameEv — __ZNK3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7Creator12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7Creator12getClassNameEv")]
 pub fn stub_0x55bf78() -> ! {
     todo!("0x55bf78 __ZNK3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7Creator12getClassNameEv")
 }
 
 // 0x55c000 — __ZN3RBX4Name13callDoDeclareILZNS_10sBodyForceEEEEvv — __ZN3RBX4Name13callDoDeclareILZNS_10sBodyForceEEEEvv
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_10sBodyForceEEEEvv")]
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_10sBodyForceEEEEvv")]
 pub fn stub_0x55c000() -> ! {
     todo!("0x55c000 __ZN3RBX4Name13callDoDeclareILZNS_10sBodyForceEEEEvv")
@@ -581,13 +551,11 @@ pub fn stub_0x55c000() -> ! {
 
 // 0x55c004 — __ZN3RBX4Name9doDeclareILZNS_10sBodyForceEEEERKS0_v — __ZN3RBX4Name9doDeclareILZNS_10sBodyForceEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sBodyForceEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sBodyForceEEEERKS0_v")]
 pub fn stub_0x55c004() -> ! {
     todo!("0x55c004 __ZN3RBX4Name9doDeclareILZNS_10sBodyForceEEEERKS0_v")
 }
 
 // 0x55c0e4 — __ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE17static_getCreatorEv — __ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE17static_getCreatorEv
-#[doc(alias = "__ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE17static_getCreatorEv")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE17static_getCreatorEv")]
 pub fn stub_0x55c0e4() -> ! {
     todo!("0x55c0e4 __ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE17static_getCreatorEv")
@@ -595,13 +563,11 @@ pub fn stub_0x55c0e4() -> ! {
 
 // 0x55c158 — __ZNK3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7Creator12getClassNameEv — __ZNK3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7Creator12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7Creator12getClassNameEv")]
 pub fn stub_0x55c158() -> ! {
     todo!("0x55c158 __ZNK3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7Creator12getClassNameEv")
 }
 
 // 0x55c1e0 — __ZN3RBX4Name13callDoDeclareILZNS_20sBodyAngularVelocityEEEEvv — __ZN3RBX4Name13callDoDeclareILZNS_20sBodyAngularVelocityEEEEvv
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_20sBodyAngularVelocityEEEEvv")]
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_20sBodyAngularVelocityEEEEvv")]
 pub fn stub_0x55c1e0() -> ! {
     todo!("0x55c1e0 __ZN3RBX4Name13callDoDeclareILZNS_20sBodyAngularVelocityEEEEvv")
@@ -609,13 +575,11 @@ pub fn stub_0x55c1e0() -> ! {
 
 // 0x55c1e4 — __ZN3RBX4Name9doDeclareILZNS_20sBodyAngularVelocityEEEERKS0_v — __ZN3RBX4Name9doDeclareILZNS_20sBodyAngularVelocityEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_20sBodyAngularVelocityEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_20sBodyAngularVelocityEEEERKS0_v")]
 pub fn stub_0x55c1e4() -> ! {
     todo!("0x55c1e4 __ZN3RBX4Name9doDeclareILZNS_20sBodyAngularVelocityEEEERKS0_v")
 }
 
 // 0x55c2c4 — __ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE17static_getCreatorEv — __ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE17static_getCreatorEv
-#[doc(alias = "__ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE17static_getCreatorEv")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE17static_getCreatorEv")]
 pub fn stub_0x55c2c4() -> ! {
     todo!("0x55c2c4 __ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE17static_getCreatorEv")
@@ -623,13 +587,11 @@ pub fn stub_0x55c2c4() -> ! {
 
 // 0x55c338 — __ZNK3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7Creator12getClassNameEv — __ZNK3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7Creator12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7Creator12getClassNameEv")]
 pub fn stub_0x55c338() -> ! {
     todo!("0x55c338 __ZNK3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7Creator12getClassNameEv")
 }
 
 // 0x55c3c0 — __ZN3RBX4Name13callDoDeclareILZNS_13sBodyVelocityEEEEvv — __ZN3RBX4Name13callDoDeclareILZNS_13sBodyVelocityEEEEvv
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_13sBodyVelocityEEEEvv")]
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_13sBodyVelocityEEEEvv")]
 pub fn stub_0x55c3c0() -> ! {
     todo!("0x55c3c0 __ZN3RBX4Name13callDoDeclareILZNS_13sBodyVelocityEEEEvv")
@@ -637,13 +599,11 @@ pub fn stub_0x55c3c0() -> ! {
 
 // 0x55c3c4 — __ZN3RBX4Name9doDeclareILZNS_13sBodyVelocityEEEERKS0_v — __ZN3RBX4Name9doDeclareILZNS_13sBodyVelocityEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_13sBodyVelocityEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_13sBodyVelocityEEEERKS0_v")]
 pub fn stub_0x55c3c4() -> ! {
     todo!("0x55c3c4 __ZN3RBX4Name9doDeclareILZNS_13sBodyVelocityEEEERKS0_v")
 }
 
 // 0x55c4a4 — __ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE17static_getCreatorEv — __ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE17static_getCreatorEv
-#[doc(alias = "__ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE17static_getCreatorEv")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE17static_getCreatorEv")]
 pub fn stub_0x55c4a4() -> ! {
     todo!("0x55c4a4 __ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE17static_getCreatorEv")
@@ -651,13 +611,11 @@ pub fn stub_0x55c4a4() -> ! {
 
 // 0x55c518 — __ZNK3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7Creator12getClassNameEv — __ZNK3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7Creator12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7Creator12getClassNameEv")]
 pub fn stub_0x55c518() -> ! {
     todo!("0x55c518 __ZNK3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7Creator12getClassNameEv")
 }
 
 // 0x55c5a0 — __ZN3RBX4Name13callDoDeclareILZNS_9sBodyGyroEEEEvv — __ZN3RBX4Name13callDoDeclareILZNS_9sBodyGyroEEEEvv
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_9sBodyGyroEEEEvv")]
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_9sBodyGyroEEEEvv")]
 pub fn stub_0x55c5a0() -> ! {
     todo!("0x55c5a0 __ZN3RBX4Name13callDoDeclareILZNS_9sBodyGyroEEEEvv")
@@ -665,13 +623,11 @@ pub fn stub_0x55c5a0() -> ! {
 
 // 0x55c5a4 — __ZN3RBX4Name9doDeclareILZNS_9sBodyGyroEEEERKS0_v — __ZN3RBX4Name9doDeclareILZNS_9sBodyGyroEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_9sBodyGyroEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_9sBodyGyroEEEERKS0_v")]
 pub fn stub_0x55c5a4() -> ! {
     todo!("0x55c5a4 __ZN3RBX4Name9doDeclareILZNS_9sBodyGyroEEEERKS0_v")
 }
 
 // 0x55c684 — __ZN3RBX4Name13callDoDeclareILZNS_10sBodyMoverEEEEvv — __ZN3RBX4Name13callDoDeclareILZNS_10sBodyMoverEEEEvv
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_10sBodyMoverEEEEvv")]
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_10sBodyMoverEEEEvv")]
 pub fn stub_0x55c684() -> ! {
     todo!("0x55c684 __ZN3RBX4Name13callDoDeclareILZNS_10sBodyMoverEEEEvv")
@@ -679,13 +635,11 @@ pub fn stub_0x55c684() -> ! {
 
 // 0x55c688 — __ZN3RBX4Name9doDeclareILZNS_10sBodyMoverEEEERKS0_v — __ZN3RBX4Name9doDeclareILZNS_10sBodyMoverEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sBodyMoverEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sBodyMoverEEEERKS0_v")]
 pub fn stub_0x55c688() -> ! {
     todo!("0x55c688 __ZN3RBX4Name9doDeclareILZNS_10sBodyMoverEEEERKS0_v")
 }
 
 // 0x55c768 — __ZN3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE17static_getCreatorEv — __ZN3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE17static_getCreatorEv
-#[doc(alias = "__ZN3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE17static_getCreatorEv")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE17static_getCreatorEv")]
 pub fn stub_0x55c768() -> ! {
     todo!("0x55c768 __ZN3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE17static_getCreatorEv")
@@ -693,13 +647,11 @@ pub fn stub_0x55c768() -> ! {
 
 // 0x55c7dc — __ZNK3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE7Creator12getClassNameEv — __ZNK3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE7Creator12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE7Creator12getClassNameEv")]
 pub fn stub_0x55c7dc() -> ! {
     todo!("0x55c7dc __ZNK3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE7Creator12getClassNameEv")
 }
 
 // 0x55c864 — __ZN3RBX4Name13callDoDeclareILZNS_7sRocketEEEEvv — __ZN3RBX4Name13callDoDeclareILZNS_7sRocketEEEEvv
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_7sRocketEEEEvv")]
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_7sRocketEEEEvv")]
 pub fn stub_0x55c864() -> ! {
     todo!("0x55c864 __ZN3RBX4Name13callDoDeclareILZNS_7sRocketEEEEvv")
@@ -707,13 +659,11 @@ pub fn stub_0x55c864() -> ! {
 
 // 0x55c868 — __ZN3RBX4Name9doDeclareILZNS_7sRocketEEEERKS0_v — __ZN3RBX4Name9doDeclareILZNS_7sRocketEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_7sRocketEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_7sRocketEEEERKS0_v")]
 pub fn stub_0x55c868() -> ! {
     todo!("0x55c868 __ZN3RBX4Name9doDeclareILZNS_7sRocketEEEERKS0_v")
 }
 
 // 0x55c948 — __ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE17static_getCreatorEv — __ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE17static_getCreatorEv
-#[doc(alias = "__ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE17static_getCreatorEv")]
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE17static_getCreatorEv")]
 pub fn stub_0x55c948() -> ! {
     todo!("0x55c948 __ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE17static_getCreatorEv")
@@ -721,13 +671,11 @@ pub fn stub_0x55c948() -> ! {
 
 // 0x55c9bc — __ZNK3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7Creator12getClassNameEv — __ZNK3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7Creator12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7Creator12getClassNameEv")]
 pub fn stub_0x55c9bc() -> ! {
     todo!("0x55c9bc __ZNK3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7Creator12getClassNameEv")
 }
 
 // 0x55ca44 — __ZN3RBX4Name13callDoDeclareILZNS_13sBodyPositionEEEEvv — __ZN3RBX4Name13callDoDeclareILZNS_13sBodyPositionEEEEvv
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_13sBodyPositionEEEEvv")]
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_13sBodyPositionEEEEvv")]
 pub fn stub_0x55ca44() -> ! {
     todo!("0x55ca44 __ZN3RBX4Name13callDoDeclareILZNS_13sBodyPositionEEEEvv")
@@ -735,13 +683,11 @@ pub fn stub_0x55ca44() -> ! {
 
 // 0x55ca48 — __ZN3RBX4Name9doDeclareILZNS_13sBodyPositionEEEERKS0_v — __ZN3RBX4Name9doDeclareILZNS_13sBodyPositionEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_13sBodyPositionEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_13sBodyPositionEEEERKS0_v")]
 pub fn stub_0x55ca48() -> ! {
     todo!("0x55ca48 __ZN3RBX4Name9doDeclareILZNS_13sBodyPositionEEEERKS0_v")
 }
 
 // 0x55cb28 — __ZN3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv — __ZN3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 pub fn stub_0x55cb28() -> ! {
     todo!("0x55cb28 __ZN3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
@@ -749,13 +695,11 @@ pub fn stub_0x55cb28() -> ! {
 
 // 0x55cc44 — __ZN3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev — __ZN3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 pub fn stub_0x55cc44() -> ! {
     todo!("0x55cc44 __ZN3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
 }
 
 // 0x55cc48 — __ZN3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev — __ZN3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 pub fn stub_0x55cc48() -> ! {
     todo!("0x55cc48 __ZN3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
@@ -763,13 +707,11 @@ pub fn stub_0x55cc48() -> ! {
 
 // 0x55cce8 — __ZThn32_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev — __ZThn32_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 pub fn stub_0x55cce8() -> ! {
     todo!("0x55cce8 __ZThn32_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
 }
 
 // 0x55ccf0 — __ZThn32_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev — __ZThn32_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 pub fn stub_0x55ccf0() -> ! {
     todo!("0x55ccf0 __ZThn32_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
@@ -777,13 +719,11 @@ pub fn stub_0x55ccf0() -> ! {
 
 // 0x55cd94 — __ZThn36_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev — __ZThn36_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 pub fn stub_0x55cd94() -> ! {
     todo!("0x55cd94 __ZThn36_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
 }
 
 // 0x55cd9c — __ZThn36_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev — __ZThn36_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 pub fn stub_0x55cd9c() -> ! {
     todo!("0x55cd9c __ZThn36_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
@@ -791,13 +731,11 @@ pub fn stub_0x55cd9c() -> ! {
 
 // 0x55ce40 — __ZThn92_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev — __ZThn92_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-#[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 pub fn stub_0x55ce40() -> ! {
     todo!("0x55ce40 __ZThn92_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
 }
 
 // 0x55ce48 — __ZThn92_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev — __ZThn92_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-#[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 pub fn stub_0x55ce48() -> ! {
     todo!("0x55ce48 __ZThn92_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
@@ -805,13 +743,11 @@ pub fn stub_0x55ce48() -> ! {
 
 // 0x55ceec — __ZThn124_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev — __ZThn124_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn124_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-#[doc(alias = "__ZThn124_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 pub fn stub_0x55ceec() -> ! {
     todo!("0x55ceec __ZThn124_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
 }
 
 // 0x55cef4 — __ZThn124_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev — __ZThn124_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-#[doc(alias = "__ZThn124_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZThn124_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 pub fn stub_0x55cef4() -> ! {
     todo!("0x55cef4 __ZThn124_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
@@ -819,13 +755,11 @@ pub fn stub_0x55cef4() -> ! {
 
 // 0x55cf98 — __ZThn244_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev — __ZThn244_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn244_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-#[doc(alias = "__ZThn244_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 pub fn stub_0x55cf98() -> ! {
     todo!("0x55cf98 __ZThn244_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
 }
 
 // 0x55cfa0 — __ZThn244_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev — __ZThn244_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-#[doc(alias = "__ZThn244_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 #[doc(alias = "__ZThn244_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 pub fn stub_0x55cfa0() -> ! {
     todo!("0x55cfa0 __ZThn244_N3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
