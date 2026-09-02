@@ -580,3 +580,4 @@ pub mod generated_dm_wdA2_1788361473;
 pub mod generated_dm_wdB_1788362744;
 pub mod generated_286;
 pub mod generated_287;
+pub mod generated_288;
