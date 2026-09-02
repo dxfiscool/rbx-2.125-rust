@@ -331,3 +331,4 @@ pub mod generated_watchdog_plat_w1;
 pub mod generated_plat_cb;
 pub mod generated_plat_cc;
 pub mod generated_plat_cd;
+pub mod generated_plat_watchdog_1788336841;
