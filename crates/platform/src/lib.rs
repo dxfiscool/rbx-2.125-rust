@@ -335,3 +335,5 @@ pub mod generated_plat_ce;
 pub mod generated_plat_watchdog_1788336841;
 pub mod generated_plat_wd3_1788337463;
 pub mod generated_plat_cf;
+pub mod generated_plat_wd_10h;
+pub mod generated_plat_wd_10n;
