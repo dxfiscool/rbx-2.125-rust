@@ -604,3 +604,5 @@ pub mod generated_dm_wdog2B_1788371858;
 pub mod generated_dm_wdog2A_1788371872;
 
 pub mod generated_dm_wdog3C_1788372316;
+
+pub mod generated_datamodel_shard_292;
