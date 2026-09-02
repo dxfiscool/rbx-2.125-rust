@@ -503,4 +503,6 @@ pub mod generated_core_shard_od;
 pub mod generated_core_shard_oc;
 pub mod generated_core_wd_watchdog11;
 pub mod generated_core_wd_watchdog13;
+pub mod generated_core_wd_watchdog14;
+pub mod generated_core_wd_watchdog16;
 pub mod generated_gap_wd_watchdog;
