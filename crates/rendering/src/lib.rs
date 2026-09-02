@@ -549,3 +549,8 @@ pub mod generated_rend_wd_watchdog14;
 pub mod generated_rend_wd_watchdog15;
 pub mod generated_rend_wd_watchdog16;
 pub mod generated_rend_wd2_1788361464;
+pub mod generated_rend_479;
+pub mod generated_rend_480;
+pub mod generated_rend_wd_watchdog17;
+pub mod generated_rendering_shard_a;
+pub mod generated_rend_wd_watchdog18;
