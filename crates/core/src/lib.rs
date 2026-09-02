@@ -513,6 +513,8 @@ pub mod generated_core_wd_watchdog20;
 pub mod generated_core_wd_watchdog21;
 pub mod generated_core_shard_of;
 pub mod generated_core_shard_og;
+pub mod generated_core_shard_oh;
 pub mod generated_core_wd2_1788360991;
 pub mod generated_core_wd2_1788361289;
 pub mod generated_core_wd_watchdog22;
+pub mod generated_core_wdcron_core;
