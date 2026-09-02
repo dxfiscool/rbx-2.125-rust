@@ -521,3 +521,6 @@ pub mod generated_core_wdcron_core;
 pub mod generated_core_wdog_B;
 pub mod generated_core_shard_oi;
 pub mod generated_core_shard_oj;
+pub mod generated_wdog_core_A2_1788369378;
+pub mod generated_wdog_core_B2_1788369458;
+pub mod generated_wdog_core_C2_1788370000;
