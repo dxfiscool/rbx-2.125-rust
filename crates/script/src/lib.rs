@@ -321,3 +321,5 @@ pub mod generated_wdog_script_B2_1788369654;
 pub mod generated_script_gap_68a770;
 pub mod generated_script_wdog_1788370681;
 pub mod generated_script_gap_6948d8;
+
+pub mod generated_script_wdog3_1788372317;
