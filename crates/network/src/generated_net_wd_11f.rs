@@ -683,7 +683,7 @@ pub fn stub_b1fdd8() -> ! {
 }
 
 // 0xc2c270 — __ZThn36_N3RBX8Instance20raiseEventInvocationERKNS_10Reflection15EventDescriptorERKSt6vectorINS1_7VariantESaIS6_EEPKNS_13SystemAddressE
-#[doc(alias = "`non-virtual thunk to'RBX::Instance::raiseEventInvocation(RBX::Reflection::EventDescriptor const&,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&,RBX::SystemAddress const*)")]
+#[doc(alias = "non-virtual thunk to RBX::Instance::raiseEventInvocation(RBX::Reflection::EventDescriptor const&,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&,RBX::SystemAddress const*)")]
 #[doc(alias = "__ZThn36_N3RBX8Instance20raiseEventInvocationERKNS_10Reflection15EventDescriptorERKSt6vectorINS1_7VariantESaIS6_EEPKNS_13SystemAddressE")]
 pub fn stub_c2c270() -> ! {
     todo!("0xc2c270 __ZThn36_N3RBX8Instance20raiseEventInvocationERKNS_10Reflection15EventDescriptorERKSt6vectorINS1_7VariantESaIS6_EEPKNS_13SystemAddressE")
