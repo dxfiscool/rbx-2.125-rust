@@ -1,0 +1,485 @@
+//! generated_watchdog_core_w1 — 120 gap-fill stubs EA-sorted, lowest uncovered EA first.
+//! Source: `ida/export.json` global gap filler (all EAs not yet in crates/*/src/*.rs via stub_0x), EA-sorted ascending.
+//! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
+
+#![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
+
+#[doc(alias="__ZN3RBX9findOrAddISt4pairImmEEEmRSt6vectorIT_SaIS4_EERKS4_")]
+// 0x5b5c28 — __ZN3RBX9findOrAddISt4pairImmEEEmRSt6vectorIT_SaIS4_EERKS4_
+pub fn stub_0x5b5c28() { todo!("0x5b5c28") }
+
+#[doc(alias="__ZNSt6vectorIN3RBX10CachedPoseESaIS1_EE9push_backERKS1_")]
+// 0x5b5c7c — __ZNSt6vectorIN3RBX10CachedPoseESaIS1_EE9push_backERKS1_
+pub fn stub_0x5b5c7c() { todo!("0x5b5c7c") }
+
+#[doc(alias="__ZNSt6vectorIPN3RBX10CachedPoseESaIS2_EE6resizeEmS2_")]
+// 0x5b5cb8 — __ZNSt6vectorIPN3RBX10CachedPoseESaIS2_EE6resizeEmS2_
+pub fn stub_0x5b5cb8() { todo!("0x5b5cb8") }
+
+#[doc(alias="__ZNSt6vectorIN3RBX16KeyframeSequence14CachedKeyframeESaIS2_EE9push_backERKS2_")]
+// 0x5b5ef0 — __ZNSt6vectorIN3RBX16KeyframeSequence14CachedKeyframeESaIS2_EE9push_backERKS2_
+pub fn stub_0x5b5ef0() { todo!("0x5b5ef0") }
+
+#[doc(alias="__ZNSt6vectorIN3RBX10CachedPoseESaIS1_EE7reserveEm")]
+// 0x5b5f40 — __ZNSt6vectorIN3RBX10CachedPoseESaIS1_EE7reserveEm
+pub fn stub_0x5b5f40() { todo!("0x5b5f40") }
+
+#[doc(alias="__ZN3RBX16KeyframeSequenceD1Ev")]
+// 0x5b5fcc — __ZN3RBX16KeyframeSequenceD1Ev
+pub fn stub_0x5b5fcc() { todo!("0x5b5fcc") }
+
+#[doc(alias="__ZN3RBX16KeyframeSequenceD0Ev")]
+// 0x5b6104 — __ZN3RBX16KeyframeSequenceD0Ev
+pub fn stub_0x5b6104() { todo!("0x5b6104") }
+
+#[doc(alias="__ZThn32_N3RBX16KeyframeSequenceD1Ev")]
+// 0x5b61f4 — __ZThn32_N3RBX16KeyframeSequenceD1Ev
+pub fn stub_0x5b61f4() { todo!("0x5b61f4") }
+
+#[doc(alias="__ZThn32_N3RBX16KeyframeSequenceD0Ev")]
+// 0x5b61fc — __ZThn32_N3RBX16KeyframeSequenceD0Ev
+pub fn stub_0x5b61fc() { todo!("0x5b61fc") }
+
+#[doc(alias="__ZThn36_N3RBX16KeyframeSequenceD1Ev")]
+// 0x5b62b0 — __ZThn36_N3RBX16KeyframeSequenceD1Ev
+pub fn stub_0x5b62b0() { todo!("0x5b62b0") }
+
+#[doc(alias="__ZThn36_N3RBX16KeyframeSequenceD0Ev")]
+// 0x5b62b8 — __ZThn36_N3RBX16KeyframeSequenceD0Ev
+pub fn stub_0x5b62b8() { todo!("0x5b62b8") }
+
+#[doc(alias="__ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEEiEvT_SA_T0_")]
+// 0x5b6964 — __ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEEiEvT_SA_T0_
+pub fn stub_0x5b6964() { todo!("0x5b6964") }
+
+#[doc(alias="__ZSt22__final_insertion_sortIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEEEvT_SA_")]
+// 0x5b6aec — __ZSt22__final_insertion_sortIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEEEvT_SA_
+pub fn stub_0x5b6aec() { todo!("0x5b6aec") }
+
+#[doc(alias="__ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEEEvT_SA_")]
+// 0x5b6bf4 — __ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEEEvT_SA_
+pub fn stub_0x5b6bf4() { todo!("0x5b6bf4") }
+
+#[doc(alias="__ZSt25__unguarded_linear_insertIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEES4_EvT_T0_")]
+// 0x5b6d58 — __ZSt25__unguarded_linear_insertIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEES4_EvT_T0_
+pub fn stub_0x5b6d58() { todo!("0x5b6d58") }
+
+#[doc(alias="__ZNSt6vectorIPN3RBX10CachedPoseESaIS2_EEC2ERKS4_")]
+// 0x5b6d9c — __ZNSt6vectorIPN3RBX10CachedPoseESaIS2_EEC2ERKS4_
+pub fn stub_0x5b6d9c() { todo!("0x5b6d9c") }
+
+#[doc(alias="__ZNSt12_Vector_baseIPN3RBX10CachedPoseESaIS2_EEC2EmRKS3_")]
+// 0x5b6dd4 — __ZNSt12_Vector_baseIPN3RBX10CachedPoseESaIS2_EEC2EmRKS3_
+pub fn stub_0x5b6dd4() { todo!("0x5b6dd4") }
+
+#[doc(alias="__ZNSt12_Vector_baseIPN3RBX10CachedPoseESaIS2_EE11_M_allocateEm")]
+// 0x5b6e04 — __ZNSt12_Vector_baseIPN3RBX10CachedPoseESaIS2_EE11_M_allocateEm
+pub fn stub_0x5b6e04() { todo!("0x5b6e04") }
+
+#[doc(alias="__ZNSt6vectorIPN3RBX10CachedPoseESaIS2_EEaSERKS4_")]
+// 0x5b6e1c — __ZNSt6vectorIPN3RBX10CachedPoseESaIS2_EEaSERKS4_
+pub fn stub_0x5b6e1c() { todo!("0x5b6e1c") }
+
+#[doc(alias="__ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX16KeyframeSequence14CachedKeyframeES6_EET0_T_S8_S7_")]
+// 0x5b6eb4 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX16KeyframeSequence14CachedKeyframeES6_EET0_T_S8_S7_
+pub fn stub_0x5b6eb4() { todo!("0x5b6eb4") }
+
+#[doc(alias="__ZSt21__unguarded_partitionIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEES4_ET_SA_SA_T0_")]
+// 0x5b6f10 — __ZSt21__unguarded_partitionIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEES4_ET_SA_SA_T0_
+pub fn stub_0x5b6f10() { todo!("0x5b6f10") }
+
+#[doc(alias="__ZSt13__heap_selectIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEEEvT_SA_SA_")]
+// 0x5b7040 — __ZSt13__heap_selectIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEEEvT_SA_SA_
+pub fn stub_0x5b7040() { todo!("0x5b7040") }
+
+#[doc(alias="__ZSt9sort_heapIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEEEvT_SA_")]
+// 0x5b718c — __ZSt9sort_heapIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEEEvT_SA_
+pub fn stub_0x5b718c() { todo!("0x5b718c") }
+
+#[doc(alias="__ZSt8pop_heapIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEEEvT_SA_")]
+// 0x5b71b4 — __ZSt8pop_heapIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEEEvT_SA_
+pub fn stub_0x5b71b4() { todo!("0x5b71b4") }
+
+#[doc(alias="__ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEEiS4_EvT_T0_SB_T1_")]
+// 0x5b72c8 — __ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEEiS4_EvT_T0_SB_T1_
+pub fn stub_0x5b72c8() { todo!("0x5b72c8") }
+
+#[doc(alias="__ZSt11__push_heapIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEEiS4_EvT_T0_SB_T1_")]
+// 0x5b7424 — __ZSt11__push_heapIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEEiS4_EvT_T0_SB_T1_
+pub fn stub_0x5b7424() { todo!("0x5b7424") }
+
+#[doc(alias="__ZSt9make_heapIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEEEvT_SA_")]
+// 0x5b748c — __ZSt9make_heapIN9__gnu_cxx17__normal_iteratorIPN3RBX16KeyframeSequence14CachedKeyframeESt6vectorIS4_SaIS4_EEEEEvT_SA_
+pub fn stub_0x5b748c() { todo!("0x5b748c") }
+
+#[doc(alias="__ZNSt12_Vector_baseIN3RBX10CachedPoseESaIS1_EE11_M_allocateEm")]
+// 0x5b7588 — __ZNSt12_Vector_baseIN3RBX10CachedPoseESaIS1_EE11_M_allocateEm
+pub fn stub_0x5b7588() { todo!("0x5b7588") }
+
+#[doc(alias="__ZNSt6vectorIN3RBX16KeyframeSequence14CachedKeyframeESaIS2_EE15_M_erase_at_endEPS2_")]
+// 0x5b75b8 — __ZNSt6vectorIN3RBX16KeyframeSequence14CachedKeyframeESaIS2_EE15_M_erase_at_endEPS2_
+pub fn stub_0x5b75b8() { todo!("0x5b75b8") }
+
+#[doc(alias="__ZNSt6vectorIN3RBX16KeyframeSequence14CachedKeyframeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
+// 0x5b75e8 — __ZNSt6vectorIN3RBX16KeyframeSequence14CachedKeyframeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+pub fn stub_0x5b75e8() { todo!("0x5b75e8") }
+
+#[doc(alias="__ZNSt12_Vector_baseIN3RBX16KeyframeSequence14CachedKeyframeESaIS2_EE11_M_allocateEm")]
+// 0x5b797c — __ZNSt12_Vector_baseIN3RBX16KeyframeSequence14CachedKeyframeESaIS2_EE11_M_allocateEm
+pub fn stub_0x5b797c() { todo!("0x5b797c") }
+
+#[doc(alias="__ZNSt6vectorIPN3RBX10CachedPoseESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")]
+// 0x5b79c0 — __ZNSt6vectorIPN3RBX10CachedPoseESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
+pub fn stub_0x5b79c0() { todo!("0x5b79c0") }
+
+#[doc(alias="__ZNSt6vectorIN3RBX10CachedPoseESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_")]
+// 0x5b7b28 — __ZNSt6vectorIN3RBX10CachedPoseESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_
+pub fn stub_0x5b7b28() { todo!("0x5b7b28") }
+
+#[doc(alias="__ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX10CachedPoseES5_EET0_T_S7_S6_")]
+// 0x5b7cc4 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX10CachedPoseES5_EET0_T_S7_S6_
+pub fn stub_0x5b7cc4() { todo!("0x5b7cc4") }
+
+#[doc(alias="__ZNSt6vectorISt4pairImmESaIS1_EE9push_backERKS1_")]
+// 0x5b7d40 — __ZNSt6vectorISt4pairImmESaIS1_EE9push_backERKS1_
+pub fn stub_0x5b7d40() { todo!("0x5b7d40") }
+
+#[doc(alias="__ZNSt6vectorISt4pairImmESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_")]
+// 0x5b7d70 — __ZNSt6vectorISt4pairImmESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_
+pub fn stub_0x5b7d70() { todo!("0x5b7d70") }
+
+#[doc(alias="__ZNSt12_Vector_baseISt4pairImmESaIS1_EE11_M_allocateEm")]
+// 0x5b7e68 — __ZNSt12_Vector_baseISt4pairImmESaIS1_EE11_M_allocateEm
+pub fn stub_0x5b7e68() { todo!("0x5b7e68") }
+
+#[doc(alias="__ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPSt4pairImmES5_EET0_T_S7_S6_")]
+// 0x5b7e80 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPSt4pairImmES5_EET0_T_S7_S6_
+pub fn stub_0x5b7e80() { todo!("0x5b7e80") }
+
+#[doc(alias="__ZNSt6vectorIN3RBX16KeyframeSequence8PriorityESaIS2_EE6resizeEmS2_")]
+// 0x5b8194 — __ZNSt6vectorIN3RBX16KeyframeSequence8PriorityESaIS2_EE6resizeEmS2_
+pub fn stub_0x5b8194() { todo!("0x5b8194") }
+
+#[doc(alias="__ZNSt6vectorIN3RBX16KeyframeSequence8PriorityESaIS2_EE9push_backERKS2_")]
+// 0x5b81c8 — __ZNSt6vectorIN3RBX16KeyframeSequence8PriorityESaIS2_EE9push_backERKS2_
+pub fn stub_0x5b81c8() { todo!("0x5b81c8") }
+
+#[doc(alias="__ZNSt3mapIPKN3RBX4NameENS0_16KeyframeSequence8PriorityESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")]
+// 0x5b81f0 — __ZNSt3mapIPKN3RBX4NameENS0_16KeyframeSequence8PriorityESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
+pub fn stub_0x5b81f0() { todo!("0x5b81f0") }
+
+#[doc(alias="__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_16KeyframeSequence8PriorityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")]
+// 0x5b8248 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_16KeyframeSequence8PriorityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
+pub fn stub_0x5b8248() { todo!("0x5b8248") }
+
+#[doc(alias="__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_16KeyframeSequence8PriorityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")]
+// 0x5b82fc — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_16KeyframeSequence8PriorityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
+pub fn stub_0x5b82fc() { todo!("0x5b82fc") }
+
+#[doc(alias="__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_16KeyframeSequence8PriorityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")]
+// 0x5b8354 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_16KeyframeSequence8PriorityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
+pub fn stub_0x5b8354() { todo!("0x5b8354") }
+
+#[doc(alias="__ZNSt6vectorIN3RBX16KeyframeSequence8PriorityESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
+// 0x5b83bc — __ZNSt6vectorIN3RBX16KeyframeSequence8PriorityESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+pub fn stub_0x5b83bc() { todo!("0x5b83bc") }
+
+#[doc(alias="__ZNSt12_Vector_baseIN3RBX16KeyframeSequence8PriorityESaIS2_EE11_M_allocateEm")]
+// 0x5b84a0 — __ZNSt12_Vector_baseIN3RBX16KeyframeSequence8PriorityESaIS2_EE11_M_allocateEm
+pub fn stub_0x5b84a0() { todo!("0x5b84a0") }
+
+#[doc(alias="__ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX16KeyframeSequence8PriorityES6_EET0_T_S8_S7_")]
+// 0x5b84b8 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX16KeyframeSequence8PriorityES6_EET0_T_S8_S7_
+pub fn stub_0x5b84b8() { todo!("0x5b84b8") }
+
+#[doc(alias="__ZNSt6vectorIN3RBX16KeyframeSequence8PriorityESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")]
+// 0x5b84f4 — __ZNSt6vectorIN3RBX16KeyframeSequence8PriorityESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
+pub fn stub_0x5b84f4() { todo!("0x5b84f4") }
+
+#[doc(alias="__ZNSt6vectorIN3RBX16KeyframeSequence14CachedKeyframeESaIS2_EED2Ev")]
+// 0x5b9800 — __ZNSt6vectorIN3RBX16KeyframeSequence14CachedKeyframeESaIS2_EED2Ev
+pub fn stub_0x5b9800() { todo!("0x5b9800") }
+
+#[doc(alias="__ZN3RBX24KeyframeSequenceProviderC1Ev")]
+// 0x5ba44c — __ZN3RBX24KeyframeSequenceProviderC1Ev
+pub fn stub_0x5ba44c() { todo!("0x5ba44c") }
+
+#[doc(alias="__ZN3RBX24KeyframeSequenceProviderC2Ev")]
+// 0x5ba450 — __ZN3RBX24KeyframeSequenceProviderC2Ev
+pub fn stub_0x5ba450() { todo!("0x5ba450") }
+
+#[doc(alias="__ZN3RBX24KeyframeSequenceProvider26privateGetKeyframeSequenceENS_9ContentIdEb")]
+// 0x5ba628 — __ZN3RBX24KeyframeSequenceProvider26privateGetKeyframeSequenceENS_9ContentIdEb
+pub fn stub_0x5ba628() { todo!("0x5ba628") }
+
+#[doc(alias="__ZN3RBX24KeyframeSequenceProvider19getKeyframeSequenceENS_9ContentIdE")]
+// 0x5bb084 — __ZN3RBX24KeyframeSequenceProvider19getKeyframeSequenceENS_9ContentIdE
+pub fn stub_0x5bb084() { todo!("0x5bb084") }
+
+#[doc(alias="__ZN3RBXL25AsyncKeyframeLoaderHelperENS_14AsyncHttpQueue13RequestResultEPSiN5boost8weak_ptrINS_24KeyframeSequenceProviderEEENS4_INS_16KeyframeSequenceEEE")]
+// 0x5bb1ec — __ZN3RBXL25AsyncKeyframeLoaderHelperENS_14AsyncHttpQueue13RequestResultEPSiN5boost8weak_ptrINS_24KeyframeSequenceProviderEEENS4_INS_16KeyframeSequenceEEE
+pub fn stub_0x5bb1ec() { todo!("0x5bb1ec") }
+
+#[doc(alias="__ZN3RBXL20KeyframeLoaderHelperENS_14AsyncHttpQueue13RequestResultEPSiN5boost8weak_ptrINS_24KeyframeSequenceProviderEEENS4_INS_16KeyframeSequenceEEEb")]
+// 0x5bb30c — __ZN3RBXL20KeyframeLoaderHelperENS_14AsyncHttpQueue13RequestResultEPSiN5boost8weak_ptrINS_24KeyframeSequenceProviderEEENS4_INS_16KeyframeSequenceEEEb
+pub fn stub_0x5bb30c() { todo!("0x5bb30c") }
+
+#[doc(alias="__ZN3RBXL24CopyKeyframeSequenceDataEN5boost8weak_ptrINS_16KeyframeSequenceEEENS0_10shared_ptrIS2_EE")]
+// 0x5bb8cc — __ZN3RBXL24CopyKeyframeSequenceDataEN5boost8weak_ptrINS_16KeyframeSequenceEEENS0_10shared_ptrIS2_EE
+pub fn stub_0x5bb8cc() { todo!("0x5bb8cc") }
+
+#[doc(alias="__ZNSt3mapISsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEESt4lessISsESaISt4pairIKSsS4_EEEixERS8_")]
+// 0x5bbadc — __ZNSt3mapISsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEESt4lessISsESaISt4pairIKSsS4_EEEixERS8_
+pub fn stub_0x5bbadc() { todo!("0x5bbadc") }
+
+#[doc(alias="__ZN5boost10shared_ptrIN3RBX16KeyframeSequenceEEaSERKS3_")]
+// 0x5bbcf8 — __ZN5boost10shared_ptrIN3RBX16KeyframeSequenceEEaSERKS3_
+pub fn stub_0x5bbcf8() { todo!("0x5bbcf8") }
+
+#[doc(alias="__ZNK3RBX11AnimationId8isActiveEv")]
+// 0x5bbd34 — __ZNK3RBX11AnimationId8isActiveEv
+pub fn stub_0x5bbd34() { todo!("0x5bbd34") }
+
+#[doc(alias="__ZN3RBX20SizeEnforcedLRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEE6insertERKSsRKS4_m")]
+// 0x5bbf14 — __ZN3RBX20SizeEnforcedLRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEE6insertERKSsRKS4_m
+pub fn stub_0x5bbf14() { todo!("0x5bbf14") }
+
+#[doc(alias="__ZN3RBX9weak_fromINS_24KeyframeSequenceProviderEEEN5boost8weak_ptrIT_EEPS4_")]
+// 0x5bbf48 — __ZN3RBX9weak_fromINS_24KeyframeSequenceProviderEEEN5boost8weak_ptrIT_EEPS4_
+pub fn stub_0x5bbf48() { todo!("0x5bbf48") }
+
+#[doc(alias="__ZN5boost4bindIvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_8weak_ptrINS1_24KeyframeSequenceProviderEEENS5_INS1_16KeyframeSequenceEEENS_3argILi1EEENSA_ILi2EEES7_S9_EENS_3_bi6bind_tIT_PFSF_T0_T1_T2_T3_ENSD_9list_av_4IT4_T5_T6_T7_E4typeEEESL_SN_SO_SP_SQ_")]
+// 0x5bc150 — __ZN5boost4bindIvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_8weak_ptrINS1_24KeyframeSequenceProviderEEENS5_INS1_16KeyframeSequenceEEENS_3argILi1EEENSA_ILi2EEES7_S9_EENS_3_bi6bind_tIT_PFSF_T0_T1_T2_T3_ENSD_9list_av_4IT4_T5_T6_T7_E4typeEEESL_SN_SO_SP_SQ_
+pub fn stub_0x5bc150() { todo!("0x5bc150") }
+
+#[doc(alias="__ZN3RBX24KeyframeSequenceProviderD1Ev")]
+// 0x5bc33c — __ZN3RBX24KeyframeSequenceProviderD1Ev
+pub fn stub_0x5bc33c() { todo!("0x5bc33c") }
+
+#[doc(alias="__ZN3RBX24KeyframeSequenceProviderD0Ev")]
+// 0x5bc480 — __ZN3RBX24KeyframeSequenceProviderD0Ev
+pub fn stub_0x5bc480() { todo!("0x5bc480") }
+
+#[doc(alias="__ZThn32_N3RBX24KeyframeSequenceProviderD1Ev")]
+// 0x5bc604 — __ZThn32_N3RBX24KeyframeSequenceProviderD1Ev
+pub fn stub_0x5bc604() { todo!("0x5bc604") }
+
+#[doc(alias="__ZThn32_N3RBX24KeyframeSequenceProviderD0Ev")]
+// 0x5bc748 — __ZThn32_N3RBX24KeyframeSequenceProviderD0Ev
+pub fn stub_0x5bc748() { todo!("0x5bc748") }
+
+#[doc(alias="__ZThn36_N3RBX24KeyframeSequenceProviderD1Ev")]
+// 0x5bc8c8 — __ZThn36_N3RBX24KeyframeSequenceProviderD1Ev
+pub fn stub_0x5bc8c8() { todo!("0x5bc8c8") }
+
+#[doc(alias="__ZThn36_N3RBX24KeyframeSequenceProviderD0Ev")]
+// 0x5bca0c — __ZThn36_N3RBX24KeyframeSequenceProviderD0Ev
+pub fn stub_0x5bca0c() { todo!("0x5bca0c") }
+
+#[doc(alias="__ZN3RBX8LRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEED2Ev")]
+// 0x5bcb68 — __ZN3RBX8LRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEED2Ev
+pub fn stub_0x5bcb68() { todo!("0x5bcb68") }
+
+#[doc(alias="__ZN3RBX8LRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEE6resizeEm")]
+// 0x5bcc68 — __ZN3RBX8LRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEE6resizeEm
+pub fn stub_0x5bcc68() { todo!("0x5bcc68") }
+
+#[doc(alias="__ZN3RBX8LRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEE6insertERKSsRKS4_m")]
+// 0x5bcca0 — __ZN3RBX8LRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEE6insertERKSsRKS4_m
+pub fn stub_0x5bcca0() { todo!("0x5bcca0") }
+
+#[doc(alias="__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE12emplace_implINS1_13emplace_args1ISE_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISE_EEEEbERS5_RKT_")]
+// 0x5bd1c8 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE12emplace_implINS1_13emplace_args1ISE_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISE_EEEEbERS5_RKT_
+pub fn stub_0x5bd1c8() { todo!("0x5bd1c8") }
+
+#[doc(alias="__ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEEEEE20construct_with_valueINS1_13emplace_args1ISE_EEEEvRKT_")]
+// 0x5bd368 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEEEEE20construct_with_valueINS1_13emplace_args1ISE_EEEEvRKT_
+pub fn stub_0x5bd368() { todo!("0x5bd368") }
+
+#[doc(alias="__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE18reserve_for_insertEm")]
+// 0x5bd38c — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE18reserve_for_insertEm
+pub fn stub_0x5bd38c() { todo!("0x5bd38c") }
+
+#[doc(alias="__ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEEEEED2Ev")]
+// 0x5bd3dc — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEEEEED2Ev
+pub fn stub_0x5bd3dc() { todo!("0x5bd3dc") }
+
+#[doc(alias="__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm")]
+// 0x5bd3f8 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm
+pub fn stub_0x5bd3f8() { todo!("0x5bd3f8") }
+
+#[doc(alias="__ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE20min_buckets_for_sizeEm")]
+// 0x5bd520 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE20min_buckets_for_sizeEm
+pub fn stub_0x5bd520() { todo!("0x5bd520") }
+
+#[doc(alias="__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm")]
+// 0x5bd5b0 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm
+pub fn stub_0x5bd5b0() { todo!("0x5bd5b0") }
+
+#[doc(alias="__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE15place_in_bucketERNS1_5tableISK_EEPNS1_10ptr_bucketE")]
+// 0x5bd5dc — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE15place_in_bucketERNS1_5tableISK_EEPNS1_10ptr_bucketE
+pub fn stub_0x5bd5dc() { todo!("0x5bd5dc") }
+
+#[doc(alias="__ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEEEEE9constructEv")]
+// 0x5bd634 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEEEEE9constructEv
+pub fn stub_0x5bd634() { todo!("0x5bd634") }
+
+#[doc(alias="__ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSJ_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISE_EEEEmRKT_RKT0_")]
+// 0x5bd670 — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSJ_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISE_EEEEmRKT_RKT0_
+pub fn stub_0x5bd670() { todo!("0x5bd670") }
+
+#[doc(alias="__ZNSt4pairISsS_ImN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEEEC2ERKSsRKS5_")]
+// 0x5bd6dc — __ZNSt4pairISsS_ImN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEEEC2ERKSsRKS5_
+pub fn stub_0x5bd6dc() { todo!("0x5bd6dc") }
+
+#[doc(alias="__ZNSt4listISt4pairISsS0_ImN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEEESaIS7_EE14_M_create_nodeERKS7_")]
+// 0x5bd7a4 — __ZNSt4listISt4pairISsS0_ImN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEEESaIS7_EE14_M_create_nodeERKS7_
+pub fn stub_0x5bd7a4() { todo!("0x5bd7a4") }
+
+#[doc(alias="__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISE_EESO_")]
+// 0x5bd8b8 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISE_EESO_
+pub fn stub_0x5bd8b8() { todo!("0x5bd8b8") }
+
+#[doc(alias="__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE11delete_nodeEPNS1_10ptr_bucketE")]
+// 0x5bd914 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE11delete_nodeEPNS1_10ptr_bucketE
+pub fn stub_0x5bd914() { todo!("0x5bd914") }
+
+#[doc(alias="__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE10fix_bucketEmPNS1_10ptr_bucketE")]
+// 0x5bd940 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE10fix_bucketEmPNS1_10ptr_bucketE
+pub fn stub_0x5bd940() { todo!("0x5bd940") }
+
+#[doc(alias="__ZN9__gnu_cxx13new_allocatorISt4pairISsS1_ImN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEEEE7destroyEPS8_")]
+// 0x5bd980 — __ZN9__gnu_cxx13new_allocatorISt4pairISsS1_ImN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEEEE7destroyEPS8_
+pub fn stub_0x5bd980() { todo!("0x5bd980") }
+
+#[doc(alias="__ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE9find_nodeERS5_")]
+// 0x5bda24 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE9find_nodeERS5_
+pub fn stub_0x5bda24() { todo!("0x5bda24") }
+
+#[doc(alias="__ZN3RBX8LRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEE6removeERKSs")]
+// 0x5bda64 — __ZN3RBX8LRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEE6removeERKSs
+pub fn stub_0x5bda64() { todo!("0x5bda64") }
+
+#[doc(alias="__ZNSt10_List_baseISt4pairISsS0_ImN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEEESaIS7_EE8_M_clearEv")]
+// 0x5bdab8 — __ZNSt10_List_baseISt4pairISsS0_ImN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEEESaIS7_EE8_M_clearEv
+pub fn stub_0x5bdab8() { todo!("0x5bdab8") }
+
+#[doc(alias="__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE14delete_bucketsEv")]
+// 0x5bdae0 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE14delete_bucketsEv
+pub fn stub_0x5bdae0() { todo!("0x5bdae0") }
+
+#[doc(alias="__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE5clearEv")]
+// 0x5bdb18 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEE5clearEv
+pub fn stub_0x5bdb18() { todo!("0x5bdb18") }
+
+#[doc(alias="__ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEC2INS_3_bi6bind_tIvPFvS3_S4_NS_8weak_ptrINS1_24KeyframeSequenceProviderEEENSD_INS1_16KeyframeSequenceEEEENSB_5list4INS_3argILi1EEENSL_ILi2EEENSB_5valueISF_EENSO_ISH_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE")]
+// 0x5bdc30 — __ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEC2INS_3_bi6bind_tIvPFvS3_S4_NS_8weak_ptrINS1_24KeyframeSequenceProviderEEENSD_INS1_16KeyframeSequenceEEEENSB_5list4INS_3argILi1EEENSL_ILi2EEENSB_5valueISF_EENSO_ISH_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE
+pub fn stub_0x5bdc30() { todo!("0x5bdc30") }
+
+#[doc(alias="__ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEC2INS_3_bi6bind_tIvPFvS3_S4_NS_8weak_ptrINS1_24KeyframeSequenceProviderEEENSC_INS1_16KeyframeSequenceEEEENSA_5list4INS_3argILi1EEENSK_ILi2EEENSA_5valueISE_EENSN_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")]
+// 0x5bdd90 — __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEC2INS_3_bi6bind_tIvPFvS3_S4_NS_8weak_ptrINS1_24KeyframeSequenceProviderEEENSC_INS1_16KeyframeSequenceEEEENSA_5list4INS_3argILi1EEENSK_ILi2EEENSA_5valueISE_EENSN_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
+pub fn stub_0x5bdd90() { todo!("0x5bdd90") }
+
+#[doc(alias="__ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE9assign_toINS_3_bi6bind_tIvPFvS3_S4_NS_8weak_ptrINS1_24KeyframeSequenceProviderEEENSC_INS1_16KeyframeSequenceEEEENSA_5list4INS_3argILi1EEENSK_ILi2EEENSA_5valueISE_EENSN_ISG_EEEEEEEEvT_")]
+// 0x5bdef8 — __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE9assign_toINS_3_bi6bind_tIvPFvS3_S4_NS_8weak_ptrINS1_24KeyframeSequenceProviderEEENSC_INS1_16KeyframeSequenceEEEENSA_5list4INS_3argILi1EEENSK_ILi2EEENSA_5valueISE_EENSN_ISG_EEEEEEEEvT_
+pub fn stub_0x5bdef8() { todo!("0x5bdef8") }
+
+#[doc(alias="__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_8weak_ptrINS5_24KeyframeSequenceProviderEEENS9_INS5_16KeyframeSequenceEEEENS3_5list4INS_3argILi1EEENSH_ILi2EEENS3_5valueISB_EENSK_ISD_EEEEEEE6manageERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeE")]
+// 0x5be070 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_8weak_ptrINS5_24KeyframeSequenceProviderEEENS9_INS5_16KeyframeSequenceEEEENS3_5list4INS_3argILi1EEENSH_ILi2EEENS3_5valueISB_EENSK_ISD_EEEEEEE6manageERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeE
+pub fn stub_0x5be070() { todo!("0x5be070") }
+
+#[doc(alias="__ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvPFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_8weak_ptrINS5_24KeyframeSequenceProviderEEENS9_INS5_16KeyframeSequenceEEEENS3_5list4INS_3argILi1EEENSH_ILi2EEENS3_5valueISB_EENSK_ISD_EEEEEEvS7_S8_NS_10shared_ptrIKSsEEE6invokeERNS1_15function_bufferES7_S8_SR_")]
+// 0x5be08c — __ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvPFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_8weak_ptrINS5_24KeyframeSequenceProviderEEENS9_INS5_16KeyframeSequenceEEEENS3_5list4INS_3argILi1EEENSH_ILi2EEENS3_5valueISB_EENSK_ISD_EEEEEEvS7_S8_NS_10shared_ptrIKSsEEE6invokeERNS1_15function_bufferES7_S8_SR_
+pub fn stub_0x5be08c() { todo!("0x5be08c") }
+
+#[doc(alias="__ZNK5boost6detail8function13basic_vtable3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE9assign_toINS_3_bi6bind_tIvPFvS5_S6_NS_8weak_ptrINS3_24KeyframeSequenceProviderEEENSE_INS3_16KeyframeSequenceEEEENSC_5list4INS_3argILi1EEENSM_ILi2EEENSC_5valueISG_EENSP_ISI_EEEEEEEEbT_RNS1_15function_bufferE")]
+// 0x5be0b0 — __ZNK5boost6detail8function13basic_vtable3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE9assign_toINS_3_bi6bind_tIvPFvS5_S6_NS_8weak_ptrINS3_24KeyframeSequenceProviderEEENSE_INS3_16KeyframeSequenceEEEENSC_5list4INS_3argILi1EEENSM_ILi2EEENSC_5valueISG_EENSP_ISI_EEEEEEEEbT_RNS1_15function_bufferE
+pub fn stub_0x5be0b0() { todo!("0x5be0b0") }
+
+#[doc(alias="__ZNK5boost6detail8function13basic_vtable3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE9assign_toINS_3_bi6bind_tIvPFvS5_S6_NS_8weak_ptrINS3_24KeyframeSequenceProviderEEENSE_INS3_16KeyframeSequenceEEEENSC_5list4INS_3argILi1EEENSM_ILi2EEENSC_5valueISG_EENSP_ISI_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
+// 0x5be214 — __ZNK5boost6detail8function13basic_vtable3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE9assign_toINS_3_bi6bind_tIvPFvS5_S6_NS_8weak_ptrINS3_24KeyframeSequenceProviderEEENSE_INS3_16KeyframeSequenceEEEENSC_5list4INS_3argILi1EEENSM_ILi2EEENSC_5valueISG_EENSP_ISI_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+pub fn stub_0x5be214() { todo!("0x5be214") }
+
+#[doc(alias="__ZNK5boost6detail8function13basic_vtable3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE14assign_functorINS_3_bi6bind_tIvPFvS5_S6_NS_8weak_ptrINS3_24KeyframeSequenceProviderEEENSE_INS3_16KeyframeSequenceEEEENSC_5list4INS_3argILi1EEENSM_ILi2EEENSC_5valueISG_EENSP_ISI_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")]
+// 0x5be374 — __ZNK5boost6detail8function13basic_vtable3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE14assign_functorINS_3_bi6bind_tIvPFvS5_S6_NS_8weak_ptrINS3_24KeyframeSequenceProviderEEENSE_INS3_16KeyframeSequenceEEEENSC_5list4INS_3argILi1EEENSM_ILi2EEENSC_5valueISG_EENSP_ISI_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+pub fn stub_0x5be374() { todo!("0x5be374") }
+
+#[doc(alias="__ZN5boost3_bi5list4INS_3argILi1EEENS2_ILi2EEENS0_5valueINS_8weak_ptrIN3RBX24KeyframeSequenceProviderEEEEENS5_INS6_INS7_16KeyframeSequenceEEEEEEclIPFvNS7_14AsyncHttpQueue13RequestResultEPSiS9_SC_ENS0_5list3IRSH_RSI_RNS_10shared_ptrIKSsEEEEEEvNS0_4typeIvEERT_RT0_i")]
+// 0x5be488 — __ZN5boost3_bi5list4INS_3argILi1EEENS2_ILi2EEENS0_5valueINS_8weak_ptrIN3RBX24KeyframeSequenceProviderEEEEENS5_INS6_INS7_16KeyframeSequenceEEEEEEclIPFvNS7_14AsyncHttpQueue13RequestResultEPSiS9_SC_ENS0_5list3IRSH_RSI_RNS_10shared_ptrIKSsEEEEEEvNS0_4typeIvEERT_RT0_i
+pub fn stub_0x5be488() { todo!("0x5be488") }
+
+#[doc(alias="__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_8weak_ptrINS5_24KeyframeSequenceProviderEEENS9_INS5_16KeyframeSequenceEEEENS3_5list4INS_3argILi1EEENSH_ILi2EEENS3_5valueISB_EENSK_ISD_EEEEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
+// 0x5be5ac — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_8weak_ptrINS5_24KeyframeSequenceProviderEEENS9_INS5_16KeyframeSequenceEEEENS3_5list4INS_3argILi1EEENSH_ILi2EEENS3_5valueISB_EENSK_ISD_EEEEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+pub fn stub_0x5be5ac() { todo!("0x5be5ac") }
+
+#[doc(alias="__ZN5boost3_bi5list4INS_3argILi1EEENS2_ILi2EEENS0_5valueINS_8weak_ptrIN3RBX24KeyframeSequenceProviderEEEEENS5_INS6_INS7_16KeyframeSequenceEEEEEEC2ES3_S4_SA_SD_")]
+// 0x5be76c — __ZN5boost3_bi5list4INS_3argILi1EEENS2_ILi2EEENS0_5valueINS_8weak_ptrIN3RBX24KeyframeSequenceProviderEEEEENS5_INS6_INS7_16KeyframeSequenceEEEEEEC2ES3_S4_SA_SD_
+pub fn stub_0x5be76c() { todo!("0x5be76c") }
+
+#[doc(alias="__ZN5boost3_bi8storage4INS_3argILi1EEENS2_ILi2EEENS0_5valueINS_8weak_ptrIN3RBX24KeyframeSequenceProviderEEEEENS5_INS6_INS7_16KeyframeSequenceEEEEEEC2ES3_S4_SA_SD_")]
+// 0x5be884 — __ZN5boost3_bi8storage4INS_3argILi1EEENS2_ILi2EEENS0_5valueINS_8weak_ptrIN3RBX24KeyframeSequenceProviderEEEEENS5_INS6_INS7_16KeyframeSequenceEEEEEEC2ES3_S4_SA_SD_
+pub fn stub_0x5be884() { todo!("0x5be884") }
+
+#[doc(alias="__ZN3RBX8LRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEE23removeLeastRecentlyUsedEv")]
+// 0x5be9a0 — __ZN3RBX8LRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEE23removeLeastRecentlyUsedEv
+pub fn stub_0x5be9a0() { todo!("0x5be9a0") }
+
+#[doc(alias="__ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE4findERS1_")]
+// 0x5becf4 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE4findERS1_
+pub fn stub_0x5becf4() { todo!("0x5becf4") }
+
+#[doc(alias="__ZNSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEEC2ERS0_RKS5_")]
+// 0x5bed54 — __ZNSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEEC2ERS0_RKS5_
+pub fn stub_0x5bed54() { todo!("0x5bed54") }
+
+#[doc(alias="__ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS7_ERKS7_")]
+// 0x5bee10 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS7_ERKS7_
+pub fn stub_0x5bee10() { todo!("0x5bee10") }
+
+#[doc(alias="__ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE9_M_insertEPSt18_Rb_tree_node_baseSF_RKS7_")]
+// 0x5beefc — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE9_M_insertEPSt18_Rb_tree_node_baseSF_RKS7_
+pub fn stub_0x5beefc() { todo!("0x5beefc") }
+
+#[doc(alias="__ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE16_M_insert_uniqueERKS7_")]
+// 0x5bef4c — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE16_M_insert_uniqueERKS7_
+pub fn stub_0x5bef4c() { todo!("0x5bef4c") }
+
+#[doc(alias="__ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE14_M_create_nodeERKS7_")]
+// 0x5befd0 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE14_M_create_nodeERKS7_
+pub fn stub_0x5befd0() { todo!("0x5befd0") }
+
+#[doc(alias="__ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE11lower_boundERS1_")]
+// 0x5bf0d8 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX16KeyframeSequenceEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE11lower_boundERS1_
+pub fn stub_0x5bf0d8() { todo!("0x5bf0d8") }
+
+#[doc(alias="__ZN3RBX8LRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEEC2Ev")]
+// 0x5bf540 — __ZN3RBX8LRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEEC2Ev
+pub fn stub_0x5bf540() { todo!("0x5bf540") }
+
+#[doc(alias="__ZN3RBX20SizeEnforcedLRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEE6resizeEm")]
+// 0x5bf620 — __ZN3RBX20SizeEnforcedLRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEE6resizeEm
+pub fn stub_0x5bf620() { todo!("0x5bf620") }
+
+#[doc(alias="__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEEC2EmRKSH_RKSJ_RKSaINS1_8ptr_nodeISE_EEE")]
+// 0x5bf6a4 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImNS_10shared_ptrIN3RBX16KeyframeSequenceEEEEEEEESsSD_NS_4hashISsEESt8equal_toISsEEEEC2EmRKSH_RKSJ_RKSaINS1_8ptr_nodeISE_EEE
+pub fn stub_0x5bf6a4() { todo!("0x5bf6a4") }
+
+#[doc(alias="__ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9ContentIdEEERS3_RKT_")]
+// 0x5c01b0 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9ContentIdEEERS3_RKT_
+pub fn stub_0x5c01b0() { todo!("0x5c01b0") }
+
+#[doc(alias="__ZN3rbx14implementation12typed_holderIN3RBX9ContentIdEE9singletonEv")]
+// 0x5c0210 — __ZN3rbx14implementation12typed_holderIN3RBX9ContentIdEE9singletonEv
+pub fn stub_0x5c0210() { todo!("0x5c0210") }
+
+#[doc(alias="__ZN3rbx14implementation12typed_holderIN3RBX9ContentIdEE13destruct_funcEPc")]
+// 0x5c0280 — __ZN3rbx14implementation12typed_holderIN3RBX9ContentIdEE13destruct_funcEPc
+pub fn stub_0x5c0280() { todo!("0x5c0280") }
+
+#[doc(alias="__ZN5boost4bindIvNS_8weak_ptrIN3RBX16KeyframeSequenceEEENS_10shared_ptrIS3_EES4_S6_EENS_3_bi6bind_tIT_PFS9_T0_T1_ENS7_9list_av_2IT2_T3_E4typeEEESD_SF_SG_")]
+// 0x5c0288 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX16KeyframeSequenceEEENS_10shared_ptrIS3_EES4_S6_EENS_3_bi6bind_tIT_PFS9_T0_T1_ENS7_9list_av_2IT2_T3_E4typeEEESD_SF_SG_
+pub fn stub_0x5c0288() { todo!("0x5c0288") }
+
+#[doc(alias="__ZNSt11_Deque_baseIP10XmlElementSaIS1_EED2Ev")]
+// 0x5c0470 — __ZNSt11_Deque_baseIP10XmlElementSaIS1_EED2Ev
+pub fn stub_0x5c0470() { todo!("0x5c0470") }
