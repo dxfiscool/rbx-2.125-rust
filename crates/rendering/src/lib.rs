@@ -521,3 +521,5 @@ pub mod generated_rend_wd4_1788337907;
 pub mod generated_rend_wd_10d;
 pub mod generated_rend_wd_10e;
 pub mod generated_rend_wd_10f;
+pub mod generated_rend_wd_10g;
+pub mod generated_rend_wd_10h;
