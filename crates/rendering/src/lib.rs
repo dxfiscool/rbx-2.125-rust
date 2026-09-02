@@ -484,3 +484,5 @@ pub mod generated_461;
 pub mod generated_462;
 pub mod generated_rendering_watchdog_a;
 pub mod generated_rendering_watchdog_b;
+pub mod generated_rendering_watchdog_c;
+pub mod generated_rendering_watchdog_d;
