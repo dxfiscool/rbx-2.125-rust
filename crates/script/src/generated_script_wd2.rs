@@ -1,7 +1,7 @@
-// Auto-generated skeletons for rbx-script — Script/Lua/Yield/CodeGen/Luau gap filler
-// Filter: Script|Lua|Yield|CodeGen|Luau (filtered 4818 exhausted) — EA-sorted asc gap filler distinct not yet in crates/script/src
+// Auto-generated skeletons for rbx-script — Script/Lua/Yield/LuaBridge/ProtectedString gap filler
+// Filter: Script|Lua|LuaBridge|Yield|ProtectedString (filtered 4921, 866 remaining before batch — EA-sorted asc distinct not yet in any crate)
 // Source: ida/export.json (85545 funcs, base 0x4000)
-// Batch: +120 stubs | range 0x523f88..0x52a420 | EA-sorted asc distinct not yet in script (remaining 55630->55510, rbx_core::SharedPtr not boost)
+// Batch: +120 stubs | range 0x824b14..0xd01bc0 | EA-sorted asc distinct not yet in any crate (remaining 30593->30473, rbx_core::SharedPtr not boost)
 // SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
@@ -12,889 +12,839 @@ const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
 
-// 0x523f88 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13RelativePanelENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev — boost::detail::sp_counted_impl_pd<RBX::RelativePanel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RelativePanel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX13RelativePanelENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_0x523f88() -> ! {
-    todo!("0x523f88 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13RelativePanelENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+// 0x824b14 — __Z18luaL_loadprotectedP9lua_StateRKN3RBX15ProtectedStringEPKc — luaL_loadprotected(lua_State *,RBX::ProtectedString const&,char const*)
+#[doc(alias = "luaL_loadprotected(lua_State *,RBX::ProtectedString const&,char const*)")]
+#[doc(alias = "__Z18luaL_loadprotectedP9lua_StateRKN3RBX15ProtectedStringEPKc")]
+pub fn stub_0x824b14() -> ! {
+    todo!("0x824b14 __Z18luaL_loadprotectedP9lua_StateRKN3RBX15ProtectedStringEPKc")
 }
 
-// 0x523f8c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13RelativePanelENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv — boost::detail::sp_counted_impl_pd<RBX::RelativePanel *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RelativePanel *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX13RelativePanelENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_0x523f8c() -> ! {
-    todo!("0x523f8c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13RelativePanelENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+// 0x9e6880 — __ZN3RBX10Reflection9DescribedINS_6ScriptELZNS_7sScriptEENS_14FactoryProductIS2_NS_10BaseScriptELZNS_7sScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv — __ZN3RBX10Reflection9DescribedINS_6ScriptELZNS_7sScriptEENS_14FactoryProductIS2_NS_10BaseScriptELZNS_7sScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_6ScriptELZNS_7sScriptEENS_14FactoryProductIS2_NS_10BaseScriptELZNS_7sScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
+pub fn stub_0x9e6880() -> ! {
+    todo!("0x9e6880 __ZN3RBX10Reflection9DescribedINS_6ScriptELZNS_7sScriptEENS_14FactoryProductIS2_NS_10BaseScriptELZNS_7sScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
 }
 
-// 0x523fac — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13RelativePanelENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info — boost::detail::sp_counted_impl_pd<RBX::RelativePanel *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RelativePanel *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX13RelativePanelENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_0x523fac() -> ! {
-    todo!("0x523fac __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13RelativePanelENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+// 0xa23780 — __ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7CreatorD2Ev — __ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7CreatorD2Ev
+#[doc(alias = "__ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_0xa23780() -> ! {
+    todo!("0xa23780 __ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7CreatorD2Ev")
 }
 
-// 0x523fc4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13RelativePanelENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv — boost::detail::sp_counted_impl_pd<RBX::RelativePanel *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RelativePanel *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX13RelativePanelENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_0x523fc4() -> ! {
-    todo!("0x523fc4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13RelativePanelENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+// 0xa23af0 — __ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7CreatorC2Ev — __ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7CreatorC2Ev
+#[doc(alias = "__ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_0xa23af0() -> ! {
+    todo!("0xa23af0 __ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7CreatorC2Ev")
 }
 
-// 0x523fc8 — __ZNSt8_Rb_treeISsSt4pairIKSsN3RBX10GuiBuilder4DataEESt10_Select1stIS5_ESt4lessISsESaIS5_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS5_E — std::_Rb_tree<std::string,std::pair<std::string const,RBX::GuiBuilder::Data>,std::_Select1st<std::pair<std::string const,RBX::GuiBuilder::Data>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::GuiBuilder::Data>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<std::string const,RBX::GuiBuilder::Data>> *)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,RBX::GuiBuilder::Data>,std::_Select1st<std::pair<std::string const,RBX::GuiBuilder::Data>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::GuiBuilder::Data>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<std::string const,RBX::GuiBuilder::Data>> *)")]
-#[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN3RBX10GuiBuilder4DataEESt10_Select1stIS5_ESt4lessISsESaIS5_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS5_E")]
-pub fn stub_0x523fc8() -> ! {
-    todo!("0x523fc8 __ZNSt8_Rb_treeISsSt4pairIKSsN3RBX10GuiBuilder4DataEESt10_Select1stIS5_ESt4lessISsESaIS5_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS5_E")
+// 0xa85188 — __ZN3RBX7Network6Player31removeCharacterAppearanceScriptEv — RBX::Network::Player::removeCharacterAppearanceScript(void)
+#[doc(alias = "RBX::Network::Player::removeCharacterAppearanceScript(void)")]
+#[doc(alias = "__ZN3RBX7Network6Player31removeCharacterAppearanceScriptEv")]
+pub fn stub_0xa85188() -> ! {
+    todo!("0xa85188 __ZN3RBX7Network6Player31removeCharacterAppearanceScriptEv")
 }
 
-// 0x524088 — __ZNSt8_Rb_treeISsSt4pairIKSsN3RBX10GuiBuilder4DataEESt10_Select1stIS5_ESt4lessISsESaIS5_EE4findERS1_ — std::_Rb_tree<std::string,std::pair<std::string const,RBX::GuiBuilder::Data>,std::_Select1st<std::pair<std::string const,RBX::GuiBuilder::Data>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::GuiBuilder::Data>>>::find(std::string const&)
-// type: int __fastcall(int, std::string *this)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,RBX::GuiBuilder::Data>,std::_Select1st<std::pair<std::string const,RBX::GuiBuilder::Data>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::GuiBuilder::Data>>>::find(std::string const&)")]
-#[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN3RBX10GuiBuilder4DataEESt10_Select1stIS5_ESt4lessISsESaIS5_EE4findERS1_")]
-pub fn stub_0x524088() -> ! {
-    todo!("0x524088 __ZNSt8_Rb_treeISsSt4pairIKSsN3RBX10GuiBuilder4DataEESt10_Select1stIS5_ESt4lessISsESaIS5_EE4findERS1_")
+// 0xbb5020 — __ZN4Ogre20ShaderScriptListenerD1Ev — Ogre::ShaderScriptListener::~ShaderScriptListener()
+#[doc(alias = "Ogre::ShaderScriptListener::~ShaderScriptListener()")]
+#[doc(alias = "__ZN4Ogre20ShaderScriptListenerD1Ev")]
+pub fn stub_0xbb5020() -> ! {
+    todo!("0xbb5020 __ZN4Ogre20ShaderScriptListenerD1Ev")
 }
 
-// 0x5240d8 — __ZN3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEE15isNullClassNameEv — __ZN3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEE15isNullClassNameEv
-#[doc(alias = "__ZN3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEE15isNullClassNameEv")]
-#[doc(alias = "__ZN3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEE15isNullClassNameEv")]
-pub fn stub_0x5240d8() -> ! {
-    todo!("0x5240d8 __ZN3RBX17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEE15isNullClassNameEv")
+// 0xbb507c — __ZN4Ogre20ShaderScriptListenerD0Ev — Ogre::ShaderScriptListener::~ShaderScriptListener()
+#[doc(alias = "Ogre::ShaderScriptListener::~ShaderScriptListener()")]
+#[doc(alias = "__ZN4Ogre20ShaderScriptListenerD0Ev")]
+pub fn stub_0xbb507c() -> ! {
+    todo!("0xbb507c __ZN4Ogre20ShaderScriptListenerD0Ev")
 }
 
-// 0x524178 — __ZN3RBX4Name7declareILZNS_15sCoreGuiServiceEEEERKS0_v — __ZN3RBX4Name7declareILZNS_15sCoreGuiServiceEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name7declareILZNS_15sCoreGuiServiceEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name7declareILZNS_15sCoreGuiServiceEEEERKS0_v")]
-pub fn stub_0x524178() -> ! {
-    todo!("0x524178 __ZN3RBX4Name7declareILZNS_15sCoreGuiServiceEEEERKS0_v")
+// 0xbb50dc — __ZN4Ogre20ShaderScriptListener11handleEventEPNS_14ScriptCompilerEPNS_19ScriptCompilerEventEPv — Ogre::ShaderScriptListener::handleEvent(Ogre::ScriptCompiler *,Ogre::ScriptCompilerEvent *,void *)
+#[doc(alias = "Ogre::ShaderScriptListener::handleEvent(Ogre::ScriptCompiler *,Ogre::ScriptCompilerEvent *,void *)")]
+#[doc(alias = "__ZN4Ogre20ShaderScriptListener11handleEventEPNS_14ScriptCompilerEPNS_19ScriptCompilerEventEPv")]
+pub fn stub_0xbb50dc() -> ! {
+    todo!("0xbb50dc __ZN4Ogre20ShaderScriptListener11handleEventEPNS_14ScriptCompilerEPNS_19ScriptCompilerEventEPv")
 }
 
-// 0x5241bc — __ZN3RBX4Name9doDeclareILZNS_15sCoreGuiServiceEEEERKS0_v — __ZN3RBX4Name9doDeclareILZNS_15sCoreGuiServiceEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_15sCoreGuiServiceEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_15sCoreGuiServiceEEEERKS0_v")]
-pub fn stub_0x5241bc() -> ! {
-    todo!("0x5241bc __ZN3RBX4Name9doDeclareILZNS_15sCoreGuiServiceEEEERKS0_v")
+// 0xbb5440 — __ZN4Ogre20ShaderScriptListener26getAutogeneratedShaderPathERKNS_44CreateHighLevelGpuProgramScriptCompilerEventE — Ogre::ShaderScriptListener::getAutogeneratedShaderPath(Ogre::CreateHighLevelGpuProgramScriptCompilerEvent const&)
+#[doc(alias = "Ogre::ShaderScriptListener::getAutogeneratedShaderPath(Ogre::CreateHighLevelGpuProgramScriptCompilerEvent const&)")]
+#[doc(alias = "__ZN4Ogre20ShaderScriptListener26getAutogeneratedShaderPathERKNS_44CreateHighLevelGpuProgramScriptCompilerEventE")]
+pub fn stub_0xbb5440() -> ! {
+    todo!("0xbb5440 __ZN4Ogre20ShaderScriptListener26getAutogeneratedShaderPathERKNS_44CreateHighLevelGpuProgramScriptCompilerEventE")
 }
 
-// 0x5242a0 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_14CoreGuiServiceEEEmv — unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::CoreGuiService>(void)
-#[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::CoreGuiService>(void)")]
-#[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_14CoreGuiServiceEEEmv")]
-pub fn stub_0x5242a0() -> ! {
-    todo!("0x5242a0 __ZN3RBX15ServiceProvider15doGetClassIndexINS_14CoreGuiServiceEEEmv")
+// 0xbb569c — __ZN4Ogre20ShaderScriptListener26getAutogeneratedShaderPathERKSsS2_S2_ — Ogre::ShaderScriptListener::getAutogeneratedShaderPath(std::string const&,std::string const&,std::string const&)
+#[doc(alias = "Ogre::ShaderScriptListener::getAutogeneratedShaderPath(std::string const&,std::string const&,std::string const&)")]
+#[doc(alias = "__ZN4Ogre20ShaderScriptListener26getAutogeneratedShaderPathERKSsS2_S2_")]
+pub fn stub_0xbb569c() -> ! {
+    todo!("0xbb569c __ZN4Ogre20ShaderScriptListener26getAutogeneratedShaderPathERKSsS2_S2_")
 }
 
-// 0x524378 — __ZN5boost6detail12shared_countC2IPN3RBX17GameBasicSettingsENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_ — boost::detail::shared_count::shared_count<RBX::GameBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GameBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter)
-// type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
-#[doc(alias = "boost::detail::shared_count::shared_count<RBX::GameBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GameBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
-#[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX17GameBasicSettingsENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_0x524378() -> ! {
-    todo!("0x524378 __ZN5boost6detail12shared_countC2IPN3RBX17GameBasicSettingsENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+// 0xc75db0 — __ZN4Ogre17CompositorManager11parseScriptERNS_9SharedPtrINS_10DataStreamEEERKSs — Ogre::CompositorManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)
+#[doc(alias = "Ogre::CompositorManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")]
+#[doc(alias = "__ZN4Ogre17CompositorManager11parseScriptERNS_9SharedPtrINS_10DataStreamEEERKSs")]
+pub fn stub_0xc75db0() -> ! {
+    todo!("0xc75db0 __ZN4Ogre17CompositorManager11parseScriptERNS_9SharedPtrINS_10DataStreamEEERKSs")
 }
 
-// 0x524480 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17GameBasicSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev — boost::detail::sp_counted_impl_pd<RBX::GameBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-// type: void()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GameBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX17GameBasicSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_0x524480() -> ! {
-    todo!("0x524480 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17GameBasicSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+// 0xc94c78 — __ZN4Ogre11FontManager11parseScriptERNS_9SharedPtrINS_10DataStreamEEERKSs — Ogre::FontManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)
+#[doc(alias = "Ogre::FontManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")]
+#[doc(alias = "__ZN4Ogre11FontManager11parseScriptERNS_9SharedPtrINS_10DataStreamEEERKSs")]
+pub fn stub_0xc94c78() -> ! {
+    todo!("0xc94c78 __ZN4Ogre11FontManager11parseScriptERNS_9SharedPtrINS_10DataStreamEEERKSs")
 }
 
-// 0x524484 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17GameBasicSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv — boost::detail::sp_counted_impl_pd<RBX::GameBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GameBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX17GameBasicSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_0x524484() -> ! {
-    todo!("0x524484 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17GameBasicSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+// 0xce23b4 — __ZN4Ogre15MaterialManager11parseScriptERNS_9SharedPtrINS_10DataStreamEEERKSs — Ogre::MaterialManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)
+#[doc(alias = "Ogre::MaterialManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")]
+#[doc(alias = "__ZN4Ogre15MaterialManager11parseScriptERNS_9SharedPtrINS_10DataStreamEEERKSs")]
+pub fn stub_0xce23b4() -> ! {
+    todo!("0xce23b4 __ZN4Ogre15MaterialManager11parseScriptERNS_9SharedPtrINS_10DataStreamEEERKSs")
 }
 
-// 0x5244a4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17GameBasicSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info — boost::detail::sp_counted_impl_pd<RBX::GameBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GameBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX17GameBasicSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_0x5244a4() -> ! {
-    todo!("0x5244a4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17GameBasicSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+// 0xce39f4 — __ZN4Ogre13logParseErrorERKSsRKNS_21MaterialScriptContextE — Ogre::logParseError(std::string const&,Ogre::MaterialScriptContext const&)
+#[doc(alias = "Ogre::logParseError(std::string const&,Ogre::MaterialScriptContext const&)")]
+#[doc(alias = "__ZN4Ogre13logParseErrorERKSsRKNS_21MaterialScriptContextE")]
+pub fn stub_0xce39f4() -> ! {
+    todo!("0xce39f4 __ZN4Ogre13logParseErrorERKSsRKNS_21MaterialScriptContextE")
 }
 
-// 0x5244bc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17GameBasicSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv — boost::detail::sp_counted_impl_pd<RBX::GameBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GameBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX17GameBasicSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_0x5244bc() -> ! {
-    todo!("0x5244bc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17GameBasicSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+// 0xce4950 — __ZN4Ogre12parseAmbientERSsRNS_21MaterialScriptContextE — Ogre::parseAmbient(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseAmbient(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre12parseAmbientERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce4950() -> ! {
+    todo!("0xce4950 __ZN4Ogre12parseAmbientERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5244c0 — __ZN5boost10shared_ptrIN3RBX14GuiImageButtonEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_ — rbx_core::SharedPtr<RBX::GuiImageButton>::shared_ptr<RBX::GuiImageButton,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GuiImageButton *,RBX::Creatable<RBX::Instance>::Deleter)
-#[doc(alias = "rbx_core::SharedPtr<RBX::GuiImageButton>::shared_ptr<RBX::GuiImageButton,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GuiImageButton *,RBX::Creatable<RBX::Instance>::Deleter)")]
-#[doc(alias = "__ZN5boost10shared_ptrIN3RBX14GuiImageButtonEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_0x5244c0() -> ! {
-    todo!("0x5244c0 __ZN5boost10shared_ptrIN3RBX14GuiImageButtonEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+// 0xce4da8 — __ZN4Ogre12parseDiffuseERSsRNS_21MaterialScriptContextE — Ogre::parseDiffuse(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseDiffuse(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre12parseDiffuseERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce4da8() -> ! {
+    todo!("0xce4da8 __ZN4Ogre12parseDiffuseERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524588 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14GuiImageButtonES6_EEvPKNS_10shared_ptrIT_EEPT0_ — void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiImageButton,RBX::GuiImageButton>(rbx_core::SharedPtr<RBX::GuiImageButton> const*,RBX::GuiImageButton *)const
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiImageButton,RBX::GuiImageButton>(rbx_core::SharedPtr<RBX::GuiImageButton> const*,RBX::GuiImageButton *)const")]
-#[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14GuiImageButtonES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0x524588() -> ! {
-    todo!("0x524588 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14GuiImageButtonES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+// 0xce5200 — __ZN4Ogre13parseSpecularERSsRNS_21MaterialScriptContextE — Ogre::parseSpecular(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseSpecular(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre13parseSpecularERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce5200() -> ! {
+    todo!("0xce5200 __ZN4Ogre13parseSpecularERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524670 — __ZN5boost6detail12shared_countC2IPN3RBX14GuiImageButtonENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_ — boost::detail::shared_count::shared_count<RBX::GuiImageButton *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GuiImageButton *,RBX::Creatable<RBX::Instance>::Deleter)
-// type: int __fastcall(int, int, int, int, void *, int)
-#[doc(alias = "boost::detail::shared_count::shared_count<RBX::GuiImageButton *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GuiImageButton *,RBX::Creatable<RBX::Instance>::Deleter)")]
-#[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX14GuiImageButtonENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_0x524670() -> ! {
-    todo!("0x524670 __ZN5boost6detail12shared_countC2IPN3RBX14GuiImageButtonENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+// 0xce56b0 — __ZN4Ogre13parseEmissiveERSsRNS_21MaterialScriptContextE — Ogre::parseEmissive(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseEmissive(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre13parseEmissiveERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce56b0() -> ! {
+    todo!("0xce56b0 __ZN4Ogre13parseEmissiveERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524778 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14GuiImageButtonENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev — boost::detail::sp_counted_impl_pd<RBX::GuiImageButton *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GuiImageButton *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX14GuiImageButtonENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_0x524778() -> ! {
-    todo!("0x524778 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14GuiImageButtonENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+// 0xce5dd0 — __ZN4Ogre15parseSceneBlendERSsRNS_21MaterialScriptContextE — Ogre::parseSceneBlend(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseSceneBlend(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre15parseSceneBlendERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce5dd0() -> ! {
+    todo!("0xce5dd0 __ZN4Ogre15parseSceneBlendERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x52477c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14GuiImageButtonENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev — boost::detail::sp_counted_impl_pd<RBX::GuiImageButton *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GuiImageButton *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX14GuiImageButtonENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_0x52477c() -> ! {
-    todo!("0x52477c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14GuiImageButtonENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+// 0xce64d0 — __ZN4Ogre23parseSeparateSceneBlendERSsRNS_21MaterialScriptContextE — Ogre::parseSeparateSceneBlend(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseSeparateSceneBlend(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre23parseSeparateSceneBlendERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce64d0() -> ! {
+    todo!("0xce64d0 __ZN4Ogre23parseSeparateSceneBlendERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524780 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14GuiImageButtonENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv — boost::detail::sp_counted_impl_pd<RBX::GuiImageButton *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GuiImageButton *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX14GuiImageButtonENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_0x524780() -> ! {
-    todo!("0x524780 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14GuiImageButtonENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+// 0xce7104 — __ZN4Ogre15parseDepthCheckERSsRNS_21MaterialScriptContextE — Ogre::parseDepthCheck(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseDepthCheck(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre15parseDepthCheckERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce7104() -> ! {
+    todo!("0xce7104 __ZN4Ogre15parseDepthCheckERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5247a0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14GuiImageButtonENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info — boost::detail::sp_counted_impl_pd<RBX::GuiImageButton *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GuiImageButton *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX14GuiImageButtonENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_0x5247a0() -> ! {
-    todo!("0x5247a0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14GuiImageButtonENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+// 0xce7288 — __ZN4Ogre15parseDepthWriteERSsRNS_21MaterialScriptContextE — Ogre::parseDepthWrite(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseDepthWrite(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre15parseDepthWriteERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce7288() -> ! {
+    todo!("0xce7288 __ZN4Ogre15parseDepthWriteERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5247b8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14GuiImageButtonENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv — boost::detail::sp_counted_impl_pd<RBX::GuiImageButton *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GuiImageButton *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX14GuiImageButtonENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_0x5247b8() -> ! {
-    todo!("0x5247b8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14GuiImageButtonENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+// 0xce740c — __ZN4Ogre17parseLightScissorERSsRNS_21MaterialScriptContextE — Ogre::parseLightScissor(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseLightScissor(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre17parseLightScissorERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce740c() -> ! {
+    todo!("0xce740c __ZN4Ogre17parseLightScissorERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5247bc — __ZN5boost10shared_ptrIN3RBX15NotificationBoxEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_ — rbx_core::SharedPtr<RBX::NotificationBox>::shared_ptr<RBX::NotificationBox,RBX::Creatable<RBX::Instance>::Deleter>(RBX::NotificationBox *,RBX::Creatable<RBX::Instance>::Deleter)
-#[doc(alias = "rbx_core::SharedPtr<RBX::NotificationBox>::shared_ptr<RBX::NotificationBox,RBX::Creatable<RBX::Instance>::Deleter>(RBX::NotificationBox *,RBX::Creatable<RBX::Instance>::Deleter)")]
-#[doc(alias = "__ZN5boost10shared_ptrIN3RBX15NotificationBoxEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_0x5247bc() -> ! {
-    todo!("0x5247bc __ZN5boost10shared_ptrIN3RBX15NotificationBoxEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+// 0xce7588 — __ZN4Ogre14parseLightClipERSsRNS_21MaterialScriptContextE — Ogre::parseLightClip(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseLightClip(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre14parseLightClipERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce7588() -> ! {
+    todo!("0xce7588 __ZN4Ogre14parseLightClipERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524884 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15NotificationBoxES6_EEvPKNS_10shared_ptrIT_EEPT0_ — void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::NotificationBox,RBX::NotificationBox>(rbx_core::SharedPtr<RBX::NotificationBox> const*,RBX::NotificationBox *)const
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::NotificationBox,RBX::NotificationBox>(rbx_core::SharedPtr<RBX::NotificationBox> const*,RBX::NotificationBox *)const")]
-#[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15NotificationBoxES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0x524884() -> ! {
-    todo!("0x524884 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15NotificationBoxES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+// 0xce7704 — __ZN4Ogre14parseDepthFuncERSsRNS_21MaterialScriptContextE — Ogre::parseDepthFunc(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseDepthFunc(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre14parseDepthFuncERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce7704() -> ! {
+    todo!("0xce7704 __ZN4Ogre14parseDepthFuncERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x52496c — __ZN5boost6detail12shared_countC2IPN3RBX15NotificationBoxENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_ — boost::detail::shared_count::shared_count<RBX::NotificationBox *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::NotificationBox *,RBX::Creatable<RBX::Instance>::Deleter)
-// type: int __fastcall(int, int, int, int, void *, int)
-#[doc(alias = "boost::detail::shared_count::shared_count<RBX::NotificationBox *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::NotificationBox *,RBX::Creatable<RBX::Instance>::Deleter)")]
-#[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX15NotificationBoxENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_0x52496c() -> ! {
-    todo!("0x52496c __ZN5boost6detail12shared_countC2IPN3RBX15NotificationBoxENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+// 0xce7884 — __ZN4Ogre21parseNormaliseNormalsERSsRNS_21MaterialScriptContextE — Ogre::parseNormaliseNormals(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseNormaliseNormals(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre21parseNormaliseNormalsERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce7884() -> ! {
+    todo!("0xce7884 __ZN4Ogre21parseNormaliseNormalsERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524a74 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NotificationBoxENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev — boost::detail::sp_counted_impl_pd<RBX::NotificationBox *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NotificationBox *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NotificationBoxENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_0x524a74() -> ! {
-    todo!("0x524a74 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NotificationBoxENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+// 0xce7a00 — __ZN4Ogre16parseColourWriteERSsRNS_21MaterialScriptContextE — Ogre::parseColourWrite(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseColourWrite(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre16parseColourWriteERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce7a00() -> ! {
+    todo!("0xce7a00 __ZN4Ogre16parseColourWriteERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524a78 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NotificationBoxENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev — boost::detail::sp_counted_impl_pd<RBX::NotificationBox *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NotificationBox *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NotificationBoxENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_0x524a78() -> ! {
-    todo!("0x524a78 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NotificationBoxENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+// 0xce7b84 — __ZN4Ogre17parseCullHardwareERSsRNS_21MaterialScriptContextE — Ogre::parseCullHardware(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseCullHardware(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre17parseCullHardwareERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce7b84() -> ! {
+    todo!("0xce7b84 __ZN4Ogre17parseCullHardwareERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524a7c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NotificationBoxENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv — boost::detail::sp_counted_impl_pd<RBX::NotificationBox *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NotificationBox *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NotificationBoxENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_0x524a7c() -> ! {
-    todo!("0x524a7c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NotificationBoxENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+// 0xce7d2c — __ZN4Ogre17parseCullSoftwareERSsRNS_21MaterialScriptContextE — Ogre::parseCullSoftware(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseCullSoftware(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre17parseCullSoftwareERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce7d2c() -> ! {
+    todo!("0xce7d2c __ZN4Ogre17parseCullSoftwareERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524a9c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NotificationBoxENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info — boost::detail::sp_counted_impl_pd<RBX::NotificationBox *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NotificationBox *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NotificationBoxENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_0x524a9c() -> ! {
-    todo!("0x524a9c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NotificationBoxENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+// 0xce7ed4 — __ZN4Ogre13parseLightingERSsRNS_21MaterialScriptContextE — Ogre::parseLighting(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseLighting(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre13parseLightingERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce7ed4() -> ! {
+    todo!("0xce7ed4 __ZN4Ogre13parseLightingERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524ab4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NotificationBoxENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv — boost::detail::sp_counted_impl_pd<RBX::NotificationBox *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NotificationBox *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NotificationBoxENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_0x524ab4() -> ! {
-    todo!("0x524ab4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NotificationBoxENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+// 0xce8058 — __ZN4Ogre14parseMaxLightsERSsRNS_21MaterialScriptContextE — Ogre::parseMaxLights(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseMaxLights(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre14parseMaxLightsERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce8058() -> ! {
+    todo!("0xce8058 __ZN4Ogre14parseMaxLightsERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524ab8 — __ZN5boost10shared_ptrIN3RBX5FrameEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_ — rbx_core::SharedPtr<RBX::Frame>::shared_ptr<RBX::Frame,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Frame *,RBX::Creatable<RBX::Instance>::Deleter)
-#[doc(alias = "rbx_core::SharedPtr<RBX::Frame>::shared_ptr<RBX::Frame,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Frame *,RBX::Creatable<RBX::Instance>::Deleter)")]
-#[doc(alias = "__ZN5boost10shared_ptrIN3RBX5FrameEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_0x524ab8() -> ! {
-    todo!("0x524ab8 __ZN5boost10shared_ptrIN3RBX5FrameEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+// 0xce8070 — __ZN4Ogre15parseStartLightERSsRNS_21MaterialScriptContextE — Ogre::parseStartLight(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseStartLight(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre15parseStartLightERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce8070() -> ! {
+    todo!("0xce8070 __ZN4Ogre15parseStartLightERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524b80 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5FrameES6_EEvPKNS_10shared_ptrIT_EEPT0_ — void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Frame,RBX::Frame>(rbx_core::SharedPtr<RBX::Frame> const*,RBX::Frame *)const
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Frame,RBX::Frame>(rbx_core::SharedPtr<RBX::Frame> const*,RBX::Frame *)const")]
-#[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5FrameES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0x524b80() -> ! {
-    todo!("0x524b80 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5FrameES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+// 0xce8088 — __ZN4Ogre24parseIterationLightTypesERSsRNS_21MaterialScriptContextE — Ogre::parseIterationLightTypes(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseIterationLightTypes(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre24parseIterationLightTypesERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce8088() -> ! {
+    todo!("0xce8088 __ZN4Ogre24parseIterationLightTypesERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524c68 — __ZN5boost6detail12shared_countC2IPN3RBX5FrameENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_ — boost::detail::shared_count::shared_count<RBX::Frame *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Frame *,RBX::Creatable<RBX::Instance>::Deleter)
-// type: int __fastcall(int, int, int, int, void *, int)
-#[doc(alias = "boost::detail::shared_count::shared_count<RBX::Frame *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Frame *,RBX::Creatable<RBX::Instance>::Deleter)")]
-#[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX5FrameENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_0x524c68() -> ! {
-    todo!("0x524c68 __ZN5boost6detail12shared_countC2IPN3RBX5FrameENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+// 0xce8234 — __ZN4Ogre14parseIterationERSsRNS_21MaterialScriptContextE — Ogre::parseIteration(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseIteration(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre14parseIterationERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce8234() -> ! {
+    todo!("0xce8234 __ZN4Ogre14parseIterationERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524d70 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5FrameENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev — boost::detail::sp_counted_impl_pd<RBX::Frame *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Frame *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX5FrameENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_0x524d70() -> ! {
-    todo!("0x524d70 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5FrameENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+// 0xce8868 — __ZN4Ogre14parsePointSizeERSsRNS_21MaterialScriptContextE — Ogre::parsePointSize(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parsePointSize(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre14parsePointSizeERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce8868() -> ! {
+    todo!("0xce8868 __ZN4Ogre14parsePointSizeERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524d74 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5FrameENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev — boost::detail::sp_counted_impl_pd<RBX::Frame *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Frame *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX5FrameENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_0x524d74() -> ! {
-    todo!("0x524d74 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5FrameENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+// 0xce8880 — __ZN4Ogre17parsePointSpritesERSsRNS_21MaterialScriptContextE — Ogre::parsePointSprites(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parsePointSprites(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre17parsePointSpritesERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce8880() -> ! {
+    todo!("0xce8880 __ZN4Ogre17parsePointSpritesERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524d78 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5FrameENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv — boost::detail::sp_counted_impl_pd<RBX::Frame *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Frame *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX5FrameENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_0x524d78() -> ! {
-    todo!("0x524d78 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5FrameENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+// 0xce89fc — __ZN4Ogre21parsePointAttenuationERSsRNS_21MaterialScriptContextE — Ogre::parsePointAttenuation(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parsePointAttenuation(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre21parsePointAttenuationERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce89fc() -> ! {
+    todo!("0xce89fc __ZN4Ogre21parsePointAttenuationERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524d98 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5FrameENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info — boost::detail::sp_counted_impl_pd<RBX::Frame *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Frame *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX5FrameENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_0x524d98() -> ! {
-    todo!("0x524d98 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5FrameENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+// 0xce8da4 — __ZN4Ogre17parsePointSizeMinERSsRNS_21MaterialScriptContextE — Ogre::parsePointSizeMin(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parsePointSizeMin(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre17parsePointSizeMinERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce8da4() -> ! {
+    todo!("0xce8da4 __ZN4Ogre17parsePointSizeMinERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524db0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5FrameENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv — boost::detail::sp_counted_impl_pd<RBX::Frame *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Frame *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX5FrameENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_0x524db0() -> ! {
-    todo!("0x524db0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5FrameENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+// 0xce8dbc — __ZN4Ogre17parsePointSizeMaxERSsRNS_21MaterialScriptContextE — Ogre::parsePointSizeMax(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parsePointSizeMax(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre17parsePointSizeMaxERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce8dbc() -> ! {
+    todo!("0xce8dbc __ZN4Ogre17parsePointSizeMaxERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524db4 — __ZN3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7CreatorD2Ev — __ZN3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7CreatorD2Ev
-#[doc(alias = "__ZN3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7CreatorD2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_0x524db4() -> ! {
-    todo!("0x524db4 __ZN3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7CreatorD2Ev")
+// 0xce8dd4 — __ZN4Ogre12parseFoggingERSsRNS_21MaterialScriptContextE — Ogre::parseFogging(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseFogging(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre12parseFoggingERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce8dd4() -> ! {
+    todo!("0xce8dd4 __ZN4Ogre12parseFoggingERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524e50 — __ZNK3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7Creator12getClassNameEv — __ZNK3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7Creator12getClassNameEv
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7Creator12getClassNameEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_0x524e50() -> ! {
-    todo!("0x524e50 __ZNK3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7Creator12getClassNameEv")
+// 0xce931c — __ZN4Ogre12parseShadingERSsRNS_21MaterialScriptContextE — Ogre::parseShading(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseShading(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre12parseShadingERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce931c() -> ! {
+    todo!("0xce931c __ZN4Ogre12parseShadingERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x524ebc — __ZNK3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7Creator6createEv — __ZNK3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7Creator6createEv
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7Creator6createEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7Creator6createEv")]
-pub fn stub_0x524ebc() -> ! {
-    todo!("0x524ebc __ZNK3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7Creator6createEv")
+// 0xce94c4 — __ZN4Ogre16parsePolygonModeERSsRNS_21MaterialScriptContextE — Ogre::parsePolygonMode(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parsePolygonMode(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre16parsePolygonModeERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce94c4() -> ! {
+    todo!("0xce94c4 __ZN4Ogre16parsePolygonModeERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x525000 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_15PhysicsSettingsEEEN5boost10shared_ptrIT_EEv — rbx_core::SharedPtr<RBX::PhysicsSettings> RBX::Creatable<RBX::Instance>::create<RBX::PhysicsSettings>(void)
-#[doc(alias = "rbx_core::SharedPtr<RBX::PhysicsSettings> RBX::Creatable<RBX::Instance>::create<RBX::PhysicsSettings>(void)")]
-#[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_15PhysicsSettingsEEEN5boost10shared_ptrIT_EEv")]
-pub fn stub_0x525000() -> ! {
-    todo!("0x525000 __ZN3RBX9CreatableINS_8InstanceEE6createINS_15PhysicsSettingsEEEN5boost10shared_ptrIT_EEv")
+// 0xce966c — __ZN4Ogre28parsePolygonModeOverrideableERSsRNS_21MaterialScriptContextE — Ogre::parsePolygonModeOverrideable(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parsePolygonModeOverrideable(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre28parsePolygonModeOverrideableERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce966c() -> ! {
+    todo!("0xce966c __ZN4Ogre28parsePolygonModeOverrideableERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5250b0 — __ZN5boost10shared_ptrIN3RBX15PhysicsSettingsEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_ — rbx_core::SharedPtr<RBX::PhysicsSettings>::shared_ptr<RBX::PhysicsSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PhysicsSettings *,RBX::Creatable<RBX::Instance>::Deleter)
-#[doc(alias = "rbx_core::SharedPtr<RBX::PhysicsSettings>::shared_ptr<RBX::PhysicsSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PhysicsSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
-#[doc(alias = "__ZN5boost10shared_ptrIN3RBX15PhysicsSettingsEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_0x5250b0() -> ! {
-    todo!("0x5250b0 __ZN5boost10shared_ptrIN3RBX15PhysicsSettingsEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+// 0xce9690 — __ZN4Ogre14parseFilteringERSsRNS_21MaterialScriptContextE — Ogre::parseFiltering(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseFiltering(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre14parseFilteringERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce9690() -> ! {
+    todo!("0xce9690 __ZN4Ogre14parseFilteringERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x525178 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15PhysicsSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_ — void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PhysicsSettings,RBX::PhysicsSettings>(rbx_core::SharedPtr<RBX::PhysicsSettings> const*,RBX::PhysicsSettings *)const
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PhysicsSettings,RBX::PhysicsSettings>(rbx_core::SharedPtr<RBX::PhysicsSettings> const*,RBX::PhysicsSettings *)const")]
-#[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15PhysicsSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0x525178() -> ! {
-    todo!("0x525178 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15PhysicsSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+// 0xce9c18 — __ZN4Ogre12parseTextureERSsRNS_21MaterialScriptContextE — Ogre::parseTexture(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseTexture(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre12parseTextureERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xce9c18() -> ! {
+    todo!("0xce9c18 __ZN4Ogre12parseTextureERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x525260 — __ZN5boost6detail12shared_countC2IPN3RBX15PhysicsSettingsENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_ — boost::detail::shared_count::shared_count<RBX::PhysicsSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PhysicsSettings *,RBX::Creatable<RBX::Instance>::Deleter)
-// type: int __fastcall(int, int, int, int, void *, int)
-#[doc(alias = "boost::detail::shared_count::shared_count<RBX::PhysicsSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PhysicsSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
-#[doc(alias = "__ZN5boost6detail12shared_countC2IPN3RBX15PhysicsSettingsENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")]
-pub fn stub_0x525260() -> ! {
-    todo!("0x525260 __ZN5boost6detail12shared_countC2IPN3RBX15PhysicsSettingsENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+// 0xcea2e4 — __ZN4Ogre16parseBindingTypeERSsRNS_21MaterialScriptContextE — Ogre::parseBindingType(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseBindingType(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre16parseBindingTypeERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcea2e4() -> ! {
+    todo!("0xcea2e4 __ZN4Ogre16parseBindingTypeERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x525368 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15PhysicsSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev — boost::detail::sp_counted_impl_pd<RBX::PhysicsSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PhysicsSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX15PhysicsSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_0x525368() -> ! {
-    todo!("0x525368 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15PhysicsSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+// 0xcea568 — __ZN4Ogre16parseAnimTextureERSsRNS_21MaterialScriptContextE — Ogre::parseAnimTexture(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseAnimTexture(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre16parseAnimTextureERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcea568() -> ! {
+    todo!("0xcea568 __ZN4Ogre16parseAnimTextureERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x52536c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15PhysicsSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev — boost::detail::sp_counted_impl_pd<RBX::PhysicsSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PhysicsSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX15PhysicsSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_0x52536c() -> ! {
-    todo!("0x52536c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15PhysicsSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+// 0xcea8c8 — __ZN4Ogre17parseCubicTextureERSsRNS_21MaterialScriptContextE — Ogre::parseCubicTexture(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseCubicTexture(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre17parseCubicTextureERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcea8c8() -> ! {
+    todo!("0xcea8c8 __ZN4Ogre17parseCubicTextureERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x525370 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15PhysicsSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv — boost::detail::sp_counted_impl_pd<RBX::PhysicsSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PhysicsSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX15PhysicsSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_0x525370() -> ! {
-    todo!("0x525370 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15PhysicsSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+// 0xceaca4 — __ZN4Ogre13parseTexCoordERSsRNS_21MaterialScriptContextE — Ogre::parseTexCoord(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseTexCoord(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre13parseTexCoordERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xceaca4() -> ! {
+    todo!("0xceaca4 __ZN4Ogre13parseTexCoordERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x525390 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15PhysicsSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info — boost::detail::sp_counted_impl_pd<RBX::PhysicsSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PhysicsSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX15PhysicsSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_0x525390() -> ! {
-    todo!("0x525390 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15PhysicsSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+// 0xceacbc — __ZN4Ogre18convTexAddressModeERKSsRNS_21MaterialScriptContextE — Ogre::convTexAddressMode(std::string const&,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::convTexAddressMode(std::string const&,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre18convTexAddressModeERKSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xceacbc() -> ! {
+    todo!("0xceacbc __ZN4Ogre18convTexAddressModeERKSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5253a8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15PhysicsSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv — boost::detail::sp_counted_impl_pd<RBX::PhysicsSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PhysicsSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX15PhysicsSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_0x5253a8() -> ! {
-    todo!("0x5253a8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15PhysicsSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+// 0xceae54 — __ZN4Ogre19parseTexAddressModeERSsRNS_21MaterialScriptContextE — Ogre::parseTexAddressMode(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseTexAddressMode(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre19parseTexAddressModeERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xceae54() -> ! {
+    todo!("0xceae54 __ZN4Ogre19parseTexAddressModeERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5253ac — __ZN3RBX4Name7declareILZNS_16sPhysicsSettingsEEEERKS0_v — __ZN3RBX4Name7declareILZNS_16sPhysicsSettingsEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name7declareILZNS_16sPhysicsSettingsEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name7declareILZNS_16sPhysicsSettingsEEEERKS0_v")]
-pub fn stub_0x5253ac() -> ! {
-    todo!("0x5253ac __ZN3RBX4Name7declareILZNS_16sPhysicsSettingsEEEERKS0_v")
+// 0xceb1a0 — __ZN4Ogre20parseTexBorderColourERSsRNS_21MaterialScriptContextE — Ogre::parseTexBorderColour(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseTexBorderColour(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre20parseTexBorderColourERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xceb1a0() -> ! {
+    todo!("0xceb1a0 __ZN4Ogre20parseTexBorderColourERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5253f0 — __ZN3RBX4Name13callDoDeclareILZNS_16sPhysicsSettingsEEEEvv — __ZN3RBX4Name13callDoDeclareILZNS_16sPhysicsSettingsEEEEvv
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_16sPhysicsSettingsEEEEvv")]
-#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_16sPhysicsSettingsEEEEvv")]
-pub fn stub_0x5253f0() -> ! {
-    todo!("0x5253f0 __ZN3RBX4Name13callDoDeclareILZNS_16sPhysicsSettingsEEEEvv")
+// 0xceb4fc — __ZN4Ogre13parseColourOpERSsRNS_21MaterialScriptContextE — Ogre::parseColourOp(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseColourOp(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre13parseColourOpERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xceb4fc() -> ! {
+    todo!("0xceb4fc __ZN4Ogre13parseColourOpERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5253f4 — __ZN3RBX4Name9doDeclareILZNS_16sPhysicsSettingsEEEERKS0_v — __ZN3RBX4Name9doDeclareILZNS_16sPhysicsSettingsEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_16sPhysicsSettingsEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_16sPhysicsSettingsEEEERKS0_v")]
-pub fn stub_0x5253f4() -> ! {
-    todo!("0x5253f4 __ZN3RBX4Name9doDeclareILZNS_16sPhysicsSettingsEEEERKS0_v")
+// 0xceb6cc — __ZN4Ogre19parseAlphaRejectionERSsRNS_21MaterialScriptContextE — Ogre::parseAlphaRejection(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseAlphaRejection(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre19parseAlphaRejectionERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xceb6cc() -> ! {
+    todo!("0xceb6cc __ZN4Ogre19parseAlphaRejectionERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5254d8 — __ZN3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7CreatorC2Ev — __ZN3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7CreatorC2Ev
-#[doc(alias = "__ZN3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7CreatorC2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_0x5254d8() -> ! {
-    todo!("0x5254d8 __ZN3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7CreatorC2Ev")
+// 0xcebaa8 — __ZN4Ogre20parseAlphaToCoverageERSsRNS_21MaterialScriptContextE — Ogre::parseAlphaToCoverage(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseAlphaToCoverage(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre20parseAlphaToCoverageERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcebaa8() -> ! {
+    todo!("0xcebaa8 __ZN4Ogre20parseAlphaToCoverageERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x525700 — __ZNSt4pairIKSsN3RBX10GuiBuilder4DataEEC2ISsS3_EERKS_IT_T0_E — std::pair<std::string const,RBX::GuiBuilder::Data>::pair<std::string,RBX::GuiBuilder::Data>(std::pair const&<std::string,RBX::GuiBuilder::Data>)
-#[doc(alias = "std::pair<std::string const,RBX::GuiBuilder::Data>::pair<std::string,RBX::GuiBuilder::Data>(std::pair const&<std::string,RBX::GuiBuilder::Data>)")]
-#[doc(alias = "__ZNSt4pairIKSsN3RBX10GuiBuilder4DataEEC2ISsS3_EERKS_IT_T0_E")]
-pub fn stub_0x525700() -> ! {
-    todo!("0x525700 __ZNSt4pairIKSsN3RBX10GuiBuilder4DataEEC2ISsS3_EERKS_IT_T0_E")
+// 0xcebc2c — __ZN4Ogre23parseTransparentSortingERSsRNS_21MaterialScriptContextE — Ogre::parseTransparentSorting(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseTransparentSorting(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre23parseTransparentSortingERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcebc2c() -> ! {
+    todo!("0xcebc2c __ZN4Ogre23parseTransparentSortingERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5257e0 — __ZNSt8_Rb_treeISsSt4pairIKSsN3RBX10GuiBuilder4DataEESt10_Select1stIS5_ESt4lessISsESaIS5_EE16_M_insert_uniqueERKS5_ — std::_Rb_tree<std::string,std::pair<std::string const,RBX::GuiBuilder::Data>,std::_Select1st<std::pair<std::string const,RBX::GuiBuilder::Data>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::GuiBuilder::Data>>>::_M_insert_unique(std::pair<std::string const,RBX::GuiBuilder::Data> const&)
-// type: int __fastcall(int, int, int)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,RBX::GuiBuilder::Data>,std::_Select1st<std::pair<std::string const,RBX::GuiBuilder::Data>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::GuiBuilder::Data>>>::_M_insert_unique(std::pair<std::string const,RBX::GuiBuilder::Data> const&)")]
-#[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN3RBX10GuiBuilder4DataEESt10_Select1stIS5_ESt4lessISsESaIS5_EE16_M_insert_uniqueERKS5_")]
-pub fn stub_0x5257e0() -> ! {
-    todo!("0x5257e0 __ZNSt8_Rb_treeISsSt4pairIKSsN3RBX10GuiBuilder4DataEESt10_Select1stIS5_ESt4lessISsESaIS5_EE16_M_insert_uniqueERKS5_")
+// 0xcec348 — __ZN4Ogre15parseColourOpExERSsRNS_21MaterialScriptContextE — Ogre::parseColourOpEx(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseColourOpEx(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre15parseColourOpExERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcec348() -> ! {
+    todo!("0xcec348 __ZN4Ogre15parseColourOpExERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x525864 — __ZNSt8_Rb_treeISsSt4pairIKSsN3RBX10GuiBuilder4DataEESt10_Select1stIS5_ESt4lessISsESaIS5_EE9_M_insertEPSt18_Rb_tree_node_baseSD_RKS5_ — std::_Rb_tree<std::string,std::pair<std::string const,RBX::GuiBuilder::Data>,std::_Select1st<std::pair<std::string const,RBX::GuiBuilder::Data>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::GuiBuilder::Data>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,RBX::GuiBuilder::Data> const&)
-// type: int __fastcall(int, int, int, int)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,RBX::GuiBuilder::Data>,std::_Select1st<std::pair<std::string const,RBX::GuiBuilder::Data>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::GuiBuilder::Data>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,RBX::GuiBuilder::Data> const&)")]
-#[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN3RBX10GuiBuilder4DataEESt10_Select1stIS5_ESt4lessISsESaIS5_EE9_M_insertEPSt18_Rb_tree_node_baseSD_RKS5_")]
-pub fn stub_0x525864() -> ! {
-    todo!("0x525864 __ZNSt8_Rb_treeISsSt4pairIKSsN3RBX10GuiBuilder4DataEESt10_Select1stIS5_ESt4lessISsESaIS5_EE9_M_insertEPSt18_Rb_tree_node_baseSD_RKS5_")
+// 0xcecf28 — __ZN4Ogre21parseColourOpFallbackERSsRNS_21MaterialScriptContextE — Ogre::parseColourOpFallback(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseColourOpFallback(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre21parseColourOpFallbackERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcecf28() -> ! {
+    todo!("0xcecf28 __ZN4Ogre21parseColourOpFallbackERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5258b4 — __ZNSt4pairISsN3RBX10GuiBuilder4DataEEC2ERKSsRKS2_ — std::pair<std::string,RBX::GuiBuilder::Data>::pair(std::string const&,RBX::GuiBuilder::Data const&)
-#[doc(alias = "std::pair<std::string,RBX::GuiBuilder::Data>::pair(std::string const&,RBX::GuiBuilder::Data const&)")]
-#[doc(alias = "__ZNSt4pairISsN3RBX10GuiBuilder4DataEEC2ERKSsRKS2_")]
-pub fn stub_0x5258b4() -> ! {
-    todo!("0x5258b4 __ZNSt4pairISsN3RBX10GuiBuilder4DataEEC2ERKSsRKS2_")
+// 0xced384 — __ZN4Ogre14parseAlphaOpExERSsRNS_21MaterialScriptContextE — Ogre::parseAlphaOpEx(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseAlphaOpEx(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre14parseAlphaOpExERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xced384() -> ! {
+    todo!("0xced384 __ZN4Ogre14parseAlphaOpExERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x525994 — __GLOBAL__I_a_206 — global constructor keyed to_a_206
-#[doc(alias = "global constructor keyed to_a_206")]
-#[doc(alias = "__GLOBAL__I_a_206")]
-pub fn stub_0x525994() -> ! {
-    todo!("0x525994 __GLOBAL__I_a_206")
+// 0xcede50 — __ZN4Ogre11parseEnvMapERSsRNS_21MaterialScriptContextE — Ogre::parseEnvMap(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseEnvMap(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre11parseEnvMapERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcede50() -> ! {
+    todo!("0xcede50 __ZN4Ogre11parseEnvMapERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x526260 — __ZN3RBX9GuiObject7setSizeENS_5UDim2E — RBX::GuiObject::setSize(RBX::UDim2)
-// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
-#[doc(alias = "RBX::GuiObject::setSize(RBX::UDim2)")]
-#[doc(alias = "__ZN3RBX9GuiObject7setSizeENS_5UDim2E")]
-pub fn stub_0x526260() -> ! {
-    todo!("0x526260 __ZN3RBX9GuiObject7setSizeENS_5UDim2E")
+// 0xcee048 — __ZN4Ogre11parseScrollERSsRNS_21MaterialScriptContextE — Ogre::parseScroll(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseScroll(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre11parseScrollERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcee048() -> ! {
+    todo!("0xcee048 __ZN4Ogre11parseScrollERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5262dc — __ZN3RBX9GuiObject11setPositionENS_5UDim2E — RBX::GuiObject::setPosition(RBX::UDim2)
-// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
-#[doc(alias = "RBX::GuiObject::setPosition(RBX::UDim2)")]
-#[doc(alias = "__ZN3RBX9GuiObject11setPositionENS_5UDim2E")]
-pub fn stub_0x5262dc() -> ! {
-    todo!("0x5262dc __ZN3RBX9GuiObject11setPositionENS_5UDim2E")
+// 0xcee354 — __ZN4Ogre15parseScrollAnimERSsRNS_21MaterialScriptContextE — Ogre::parseScrollAnim(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseScrollAnim(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre15parseScrollAnimERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcee354() -> ! {
+    todo!("0xcee354 __ZN4Ogre15parseScrollAnimERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x526358 — __ZN3RBX9GuiObject18setBorderSizePixelEi — RBX::GuiObject::setBorderSizePixel(int)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this, int)
-#[doc(alias = "RBX::GuiObject::setBorderSizePixel(int)")]
-#[doc(alias = "__ZN3RBX9GuiObject18setBorderSizePixelEi")]
-pub fn stub_0x526358() -> ! {
-    todo!("0x526358 __ZN3RBX9GuiObject18setBorderSizePixelEi")
+// 0xcee660 — __ZN4Ogre11parseRotateERSsRNS_21MaterialScriptContextE — Ogre::parseRotate(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseRotate(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre11parseRotateERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcee660() -> ! {
+    todo!("0xcee660 __ZN4Ogre11parseRotateERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x526398 — __ZN3RBX9GuiObject9setZIndexEi — RBX::GuiObject::setZIndex(int)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this, int)
-#[doc(alias = "RBX::GuiObject::setZIndex(int)")]
-#[doc(alias = "__ZN3RBX9GuiObject9setZIndexEi")]
-pub fn stub_0x526398() -> ! {
-    todo!("0x526398 __ZN3RBX9GuiObject9setZIndexEi")
+// 0xcee684 — __ZN4Ogre15parseRotateAnimERSsRNS_21MaterialScriptContextE — Ogre::parseRotateAnim(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseRotateAnim(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre15parseRotateAnimERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcee684() -> ! {
+    todo!("0xcee684 __ZN4Ogre15parseRotateAnimERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5263ec — __ZN3RBX9GuiObject17setSizeConstraintENS0_14SizeConstraintE — RBX::GuiObject::setSizeConstraint(RBX::GuiObject::SizeConstraint)
-// type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "RBX::GuiObject::setSizeConstraint(RBX::GuiObject::SizeConstraint)")]
-#[doc(alias = "__ZN3RBX9GuiObject17setSizeConstraintENS0_14SizeConstraintE")]
-pub fn stub_0x5263ec() -> ! {
-    todo!("0x5263ec __ZN3RBX9GuiObject17setSizeConstraintENS0_14SizeConstraintE")
+// 0xcee69c — __ZN4Ogre10parseScaleERSsRNS_21MaterialScriptContextE — Ogre::parseScale(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseScale(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre10parseScaleERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcee69c() -> ! {
+    todo!("0xcee69c __ZN4Ogre10parseScaleERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x526424 — __ZN3RBX9GuiObject14setBorderColorENS_10BrickColorE — RBX::GuiObject::setBorderColor(RBX::BrickColor)
-#[doc(alias = "RBX::GuiObject::setBorderColor(RBX::BrickColor)")]
-#[doc(alias = "__ZN3RBX9GuiObject14setBorderColorENS_10BrickColorE")]
-pub fn stub_0x526424() -> ! {
-    todo!("0x526424 __ZN3RBX9GuiObject14setBorderColorENS_10BrickColorE")
+// 0xcee9a8 — __ZN4Ogre14parseWaveXformERSsRNS_21MaterialScriptContextE — Ogre::parseWaveXform(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseWaveXform(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre14parseWaveXformERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcee9a8() -> ! {
+    todo!("0xcee9a8 __ZN4Ogre14parseWaveXformERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x526444 — __ZN3RBX9GuiObject15setBorderColor3EN3G3D6Color3E — RBX::GuiObject::setBorderColor3(G3D::Color3)
-#[doc(alias = "RBX::GuiObject::setBorderColor3(G3D::Color3)")]
-#[doc(alias = "__ZN3RBX9GuiObject15setBorderColor3EN3G3D6Color3E")]
-pub fn stub_0x526444() -> ! {
-    todo!("0x526444 __ZN3RBX9GuiObject15setBorderColor3EN3G3D6Color3E")
+// 0xceef54 — __ZN4Ogre14parseTransformERSsRNS_21MaterialScriptContextE — Ogre::parseTransform(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseTransform(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre14parseTransformERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xceef54() -> ! {
+    todo!("0xceef54 __ZN4Ogre14parseTransformERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5264c4 — __ZN3RBX9GuiObject18setBackgroundColorENS_10BrickColorE — RBX::GuiObject::setBackgroundColor(RBX::BrickColor)
-#[doc(alias = "RBX::GuiObject::setBackgroundColor(RBX::BrickColor)")]
-#[doc(alias = "__ZN3RBX9GuiObject18setBackgroundColorENS_10BrickColorE")]
-pub fn stub_0x5264c4() -> ! {
-    todo!("0x5264c4 __ZN3RBX9GuiObject18setBackgroundColorENS_10BrickColorE")
+// 0xcef3e4 — __ZN4Ogre14parseDepthBiasERSsRNS_21MaterialScriptContextE — Ogre::parseDepthBias(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseDepthBias(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre14parseDepthBiasERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcef3e4() -> ! {
+    todo!("0xcef3e4 __ZN4Ogre14parseDepthBiasERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5264e4 — __ZN3RBX9GuiObject19setBackgroundColor3EN3G3D6Color3E — RBX::GuiObject::setBackgroundColor3(G3D::Color3)
-#[doc(alias = "RBX::GuiObject::setBackgroundColor3(G3D::Color3)")]
-#[doc(alias = "__ZN3RBX9GuiObject19setBackgroundColor3EN3G3D6Color3E")]
-pub fn stub_0x5264e4() -> ! {
-    todo!("0x5264e4 __ZN3RBX9GuiObject19setBackgroundColor3EN3G3D6Color3E")
+// 0xcef640 — __ZN4Ogre23parseIterationDepthBiasERSsRNS_21MaterialScriptContextE — Ogre::parseIterationDepthBias(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseIterationDepthBias(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre23parseIterationDepthBiasERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcef640() -> ! {
+    todo!("0xcef640 __ZN4Ogre23parseIterationDepthBiasERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x526564 — __ZN3RBX9GuiObject25setBackgroundTransparencyEf — RBX::GuiObject::setBackgroundTransparency(float)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this, float)
-#[doc(alias = "RBX::GuiObject::setBackgroundTransparency(float)")]
-#[doc(alias = "__ZN3RBX9GuiObject25setBackgroundTransparencyEf")]
-pub fn stub_0x526564() -> ! {
-    todo!("0x526564 __ZN3RBX9GuiObject25setBackgroundTransparencyEf")
+// 0xcef874 — __ZN4Ogre15parseAnisotropyERSsRNS_21MaterialScriptContextE — Ogre::parseAnisotropy(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseAnisotropy(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre15parseAnisotropyERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcef874() -> ! {
+    todo!("0xcef874 __ZN4Ogre15parseAnisotropyERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x526590 — __ZN3RBX9GuiObject12setDraggableEb — RBX::GuiObject::setDraggable(bool)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this, bool)
-#[doc(alias = "RBX::GuiObject::setDraggable(bool)")]
-#[doc(alias = "__ZN3RBX9GuiObject12setDraggableEb")]
-pub fn stub_0x526590() -> ! {
-    todo!("0x526590 __ZN3RBX9GuiObject12setDraggableEb")
+// 0xcef88c — __ZN4Ogre17parseTextureAliasERSsRNS_21MaterialScriptContextE — Ogre::parseTextureAlias(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseTextureAlias(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre17parseTextureAliasERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcef88c() -> ! {
+    todo!("0xcef88c __ZN4Ogre17parseTextureAliasERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5265b0 — __ZN3RBX9GuiObject11setClippingEb — RBX::GuiObject::setClipping(bool)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this, bool)
-#[doc(alias = "RBX::GuiObject::setClipping(bool)")]
-#[doc(alias = "__ZN3RBX9GuiObject11setClippingEb")]
-pub fn stub_0x5265b0() -> ! {
-    todo!("0x5265b0 __ZN3RBX9GuiObject11setClippingEb")
+// 0xcef8a0 — __ZN4Ogre15parseMipmapBiasERSsRNS_21MaterialScriptContextE — Ogre::parseMipmapBias(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseMipmapBias(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre15parseMipmapBiasERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcef8a0() -> ! {
+    todo!("0xcef8a0 __ZN4Ogre15parseMipmapBiasERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5265d0 — __ZN3RBX9GuiObject10setVisibleEb — RBX::GuiObject::setVisible(bool)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this, bool)
-#[doc(alias = "RBX::GuiObject::setVisible(bool)")]
-#[doc(alias = "__ZN3RBX9GuiObject10setVisibleEb")]
-pub fn stub_0x5265d0() -> ! {
-    todo!("0x5265d0 __ZN3RBX9GuiObject10setVisibleEb")
+// 0xcef8b4 — __ZN4Ogre16parseContentTypeERSsRNS_21MaterialScriptContextE — Ogre::parseContentType(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseContentType(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre16parseContentTypeERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcef8b4() -> ! {
+    todo!("0xcef8b4 __ZN4Ogre16parseContentTypeERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x526608 — __ZN3RBX9GuiObject9setActiveEb — RBX::GuiObject::setActive(bool)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this, bool)
-#[doc(alias = "RBX::GuiObject::setActive(bool)")]
-#[doc(alias = "__ZN3RBX9GuiObject9setActiveEb")]
-pub fn stub_0x526608() -> ! {
-    todo!("0x526608 __ZN3RBX9GuiObject9setActiveEb")
+// 0xcefe8c — __ZN4Ogre22parseIlluminationStageERSsRNS_21MaterialScriptContextE — Ogre::parseIlluminationStage(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseIlluminationStage(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre22parseIlluminationStageERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcefe8c() -> ! {
+    todo!("0xcefe8c __ZN4Ogre22parseIlluminationStageERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x526640 — __ZN3RBX10Reflection8EnumDescINS_9GuiObject20TweenEasingDirectionEEC1Ev — RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingDirection>::EnumDesc(void)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingDirection>::EnumDesc(void)")]
-#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9GuiObject20TweenEasingDirectionEEC1Ev")]
-pub fn stub_0x526640() -> ! {
-    todo!("0x526640 __ZN3RBX10Reflection8EnumDescINS_9GuiObject20TweenEasingDirectionEEC1Ev")
+// 0xcf0020 — __ZN4Ogre14parseLodValuesERSsRNS_21MaterialScriptContextE — Ogre::parseLodValues(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseLodValues(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre14parseLodValuesERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf0020() -> ! {
+    todo!("0xcf0020 __ZN4Ogre14parseLodValuesERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x526644 — __ZN3RBX10Reflection8EnumDescINS_9GuiObject20TweenEasingDirectionEEC2Ev — RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingDirection>::EnumDesc(void)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingDirection>::EnumDesc(void)")]
-#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9GuiObject20TweenEasingDirectionEEC2Ev")]
-pub fn stub_0x526644() -> ! {
-    todo!("0x526644 __ZN3RBX10Reflection8EnumDescINS_9GuiObject20TweenEasingDirectionEEC2Ev")
+// 0xcf02d8 — __ZN4Ogre13parseLodIndexERSsRNS_21MaterialScriptContextE — Ogre::parseLodIndex(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseLodIndex(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre13parseLodIndexERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf02d8() -> ! {
+    todo!("0xcf02d8 __ZN4Ogre13parseLodIndexERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x526820 — __ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEEC1Ev — RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingStyle>::EnumDesc(void)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingStyle>::EnumDesc(void)")]
-#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEEC1Ev")]
-pub fn stub_0x526820() -> ! {
-    todo!("0x526820 __ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEEC1Ev")
+// 0xcf02f0 — __ZN4Ogre11parseSchemeERSsRNS_21MaterialScriptContextE — Ogre::parseScheme(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseScheme(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre11parseSchemeERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf02f0() -> ! {
+    todo!("0xcf02f0 __ZN4Ogre11parseSchemeERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x526824 — __ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEEC2Ev — RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingStyle>::EnumDesc(void)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingStyle>::EnumDesc(void)")]
-#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEEC2Ev")]
-pub fn stub_0x526824() -> ! {
-    todo!("0x526824 __ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEEC2Ev")
+// 0xcf0304 — __ZN4Ogre18parseGPUVendorRuleERSsRNS_21MaterialScriptContextE — Ogre::parseGPUVendorRule(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseGPUVendorRule(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre18parseGPUVendorRuleERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf0304() -> ! {
+    todo!("0xcf0304 __ZN4Ogre18parseGPUVendorRuleERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x526a70 — __ZN3RBX10Reflection8EnumDescINS_9GuiObject11TweenStatusEEC1Ev — RBX::Reflection::EnumDesc<RBX::GuiObject::TweenStatus>::EnumDesc(void)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::TweenStatus>::EnumDesc(void)")]
-#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9GuiObject11TweenStatusEEC1Ev")]
-pub fn stub_0x526a70() -> ! {
-    todo!("0x526a70 __ZN3RBX10Reflection8EnumDescINS_9GuiObject11TweenStatusEEC1Ev")
+// 0xcf08d0 — __ZN4Ogre18parseGPUDeviceRuleERSsRNS_21MaterialScriptContextE — Ogre::parseGPUDeviceRule(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseGPUDeviceRule(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre18parseGPUDeviceRuleERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf08d0() -> ! {
+    todo!("0xcf08d0 __ZN4Ogre18parseGPUDeviceRuleERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x526a74 — __ZN3RBX10Reflection8EnumDescINS_9GuiObject11TweenStatusEEC2Ev — RBX::Reflection::EnumDesc<RBX::GuiObject::TweenStatus>::EnumDesc(void)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::TweenStatus>::EnumDesc(void)")]
-#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9GuiObject11TweenStatusEEC2Ev")]
-pub fn stub_0x526a74() -> ! {
-    todo!("0x526a74 __ZN3RBX10Reflection8EnumDescINS_9GuiObject11TweenStatusEEC2Ev")
+// 0xcf0d04 — __ZN4Ogre25parseShadowCasterMaterialERSsRNS_21MaterialScriptContextE — Ogre::parseShadowCasterMaterial(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseShadowCasterMaterial(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre25parseShadowCasterMaterialERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf0d04() -> ! {
+    todo!("0xcf0d04 __ZN4Ogre25parseShadowCasterMaterialERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x526c38 — __ZN3RBX15StringConverterINS_9GuiObject16TweenEasingStyleEE14convertToValueERKSsRS2_ — RBX::StringConverter<RBX::GuiObject::TweenEasingStyle>::convertToValue(std::string const&,RBX::GuiObject::TweenEasingStyle&)
-#[doc(alias = "RBX::StringConverter<RBX::GuiObject::TweenEasingStyle>::convertToValue(std::string const&,RBX::GuiObject::TweenEasingStyle&)")]
-#[doc(alias = "__ZN3RBX15StringConverterINS_9GuiObject16TweenEasingStyleEE14convertToValueERKSsRS2_")]
-pub fn stub_0x526c38() -> ! {
-    todo!("0x526c38 __ZN3RBX15StringConverterINS_9GuiObject16TweenEasingStyleEE14convertToValueERKSsRS2_")
+// 0xcf0d18 — __ZN4Ogre27parseShadowReceiverMaterialERSsRNS_21MaterialScriptContextE — Ogre::parseShadowReceiverMaterial(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseShadowReceiverMaterial(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre27parseShadowReceiverMaterialERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf0d18() -> ! {
+    todo!("0xcf0d18 __ZN4Ogre27parseShadowReceiverMaterialERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x526c84 — __ZN3RBX15StringConverterINS_9GuiObject20TweenEasingDirectionEE14convertToValueERKSsRS2_ — RBX::StringConverter<RBX::GuiObject::TweenEasingDirection>::convertToValue(std::string const&,RBX::GuiObject::TweenEasingDirection&)
-#[doc(alias = "RBX::StringConverter<RBX::GuiObject::TweenEasingDirection>::convertToValue(std::string const&,RBX::GuiObject::TweenEasingDirection&)")]
-#[doc(alias = "__ZN3RBX15StringConverterINS_9GuiObject20TweenEasingDirectionEE14convertToValueERKSsRS2_")]
-pub fn stub_0x526c84() -> ! {
-    todo!("0x526c84 __ZN3RBX15StringConverterINS_9GuiObject20TweenEasingDirectionEE14convertToValueERKSsRS2_")
+// 0xcf0d2c — __ZN4Ogre20parseSetTextureAliasERSsRNS_21MaterialScriptContextE — Ogre::parseSetTextureAlias(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseSetTextureAlias(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre20parseSetTextureAliasERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf0d2c() -> ! {
+    todo!("0xcf0d2c __ZN4Ogre20parseSetTextureAliasERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x526cd0 — __ZN3RBX9GuiObjectC2EPKcb — RBX::GuiObject::GuiObject(char const*,bool)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this, const char *, bool)
-#[doc(alias = "RBX::GuiObject::GuiObject(char const*,bool)")]
-#[doc(alias = "__ZN3RBX9GuiObjectC2EPKcb")]
-pub fn stub_0x526cd0() -> ! {
-    todo!("0x526cd0 __ZN3RBX9GuiObjectC2EPKcb")
+// 0xcf100c — __ZN4Ogre25processManualProgramParamEbSsRSt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEERNS_21MaterialScriptContextEmRKSs — Ogre::processManualProgramParam(bool,std::string,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &,Ogre::MaterialScriptContext &,unsigned long,std::string const&)
+#[doc(alias = "Ogre::processManualProgramParam(bool,std::string,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &,Ogre::MaterialScriptContext &,unsigned long,std::string const&)")]
+#[doc(alias = "__ZN4Ogre25processManualProgramParamEbSsRSt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEERNS_21MaterialScriptContextEmRKSs")]
+pub fn stub_0xcf100c() -> ! {
+    todo!("0xcf100c __ZN4Ogre25processManualProgramParamEbSsRSt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEERNS_21MaterialScriptContextEmRKSs")
 }
 
-// 0x527344 — __ZN3RBX9GuiObject11UpdateTweenERNS0_5TweenEPS0_N5boost8functionIFvS3_NS_5UDim2EEEEf — RBX::GuiObject::UpdateTween(RBX::GuiObject::Tween &,RBX::GuiObject*,boost::function<void ()(RBX::GuiObject*,RBX::UDim2)>,float)
-#[doc(alias = "RBX::GuiObject::UpdateTween(RBX::GuiObject::Tween &,RBX::GuiObject*,boost::function<void ()(RBX::GuiObject*,RBX::UDim2)>,float)")]
-#[doc(alias = "__ZN3RBX9GuiObject11UpdateTweenERNS0_5TweenEPS0_N5boost8functionIFvS3_NS_5UDim2EEEEf")]
-pub fn stub_0x527344() -> ! {
-    todo!("0x527344 __ZN3RBX9GuiObject11UpdateTweenERNS0_5TweenEPS0_N5boost8functionIFvS3_NS_5UDim2EEEEf")
+// 0xcf1d14 — __ZN4Ogre23processAutoProgramParamEbRKSsRSt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEERNS_21MaterialScriptContextEmS1_ — Ogre::processAutoProgramParam(bool,std::string const&,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &,Ogre::MaterialScriptContext &,unsigned long,std::string const&)
+#[doc(alias = "Ogre::processAutoProgramParam(bool,std::string const&,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &,Ogre::MaterialScriptContext &,unsigned long,std::string const&)")]
+#[doc(alias = "__ZN4Ogre23processAutoProgramParamEbRKSsRSt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEERNS_21MaterialScriptContextEmS1_")]
+pub fn stub_0xcf1d14() -> ! {
+    todo!("0xcf1d14 __ZN4Ogre23processAutoProgramParamEbRKSsRSt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEERNS_21MaterialScriptContextEmS1_")
 }
 
-// 0x52757c — __ZN3RBXL14InvokeCallbackEN5boost8functionIFvNS_9GuiObject11TweenStatusEEEES3_ — RBX::InvokeCallback(boost::function<void ()(RBX::GuiObject::TweenStatus)>,RBX::GuiObject::TweenStatus)
-#[doc(alias = "RBX::InvokeCallback(boost::function<void ()(RBX::GuiObject::TweenStatus)>,RBX::GuiObject::TweenStatus)")]
-#[doc(alias = "__ZN3RBXL14InvokeCallbackEN5boost8functionIFvNS_9GuiObject11TweenStatusEEEES3_")]
-pub fn stub_0x52757c() -> ! {
-    todo!("0x52757c __ZN3RBXL14InvokeCallbackEN5boost8functionIFvNS_9GuiObject11TweenStatusEEEES3_")
+// 0xcf25d0 — __ZN4Ogre17parseParamIndexedERSsRNS_21MaterialScriptContextE — Ogre::parseParamIndexed(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseParamIndexed(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre17parseParamIndexedERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf25d0() -> ! {
+    todo!("0xcf25d0 __ZN4Ogre17parseParamIndexedERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x527580 — __ZN3RBX9GuiObject16TweenInterpolateENS0_20TweenEasingDirectionENS0_16TweenEasingStyleEffRKNS_5UDim2ES5_ — RBX::GuiObject::TweenInterpolate(RBX::GuiObject::TweenEasingDirection,RBX::GuiObject::TweenEasingStyle,float,float,RBX::UDim2 const&,RBX::UDim2 const&)
-// type: int __fastcall(int, int, int, int, float, int, int)
-#[doc(alias = "RBX::GuiObject::TweenInterpolate(RBX::GuiObject::TweenEasingDirection,RBX::GuiObject::TweenEasingStyle,float,float,RBX::UDim2 const&,RBX::UDim2 const&)")]
-#[doc(alias = "__ZN3RBX9GuiObject16TweenInterpolateENS0_20TweenEasingDirectionENS0_16TweenEasingStyleEffRKNS_5UDim2ES5_")]
-pub fn stub_0x527580() -> ! {
-    todo!("0x527580 __ZN3RBX9GuiObject16TweenInterpolateENS0_20TweenEasingDirectionENS0_16TweenEasingStyleEffRKNS_5UDim2ES5_")
+// 0xcf2980 — __ZN4Ogre21parseParamIndexedAutoERSsRNS_21MaterialScriptContextE — Ogre::parseParamIndexedAuto(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseParamIndexedAuto(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre21parseParamIndexedAutoERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf2980() -> ! {
+    todo!("0xcf2980 __ZN4Ogre21parseParamIndexedAutoERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x527f50 — __ZN3RBX9GuiObject18tweenPositionDelayENS_5UDim2ES1_fNS0_20TweenEasingDirectionENS0_16TweenEasingStyleEfbN5boost8functionIFvNS0_11TweenStatusEEEE — RBX::GuiObject::tweenPositionDelay(RBX::UDim2,RBX::UDim2,float,RBX::GuiObject::TweenEasingDirection,RBX::GuiObject::TweenEasingStyle,float,bool,boost::function<void ()(RBX::GuiObject::TweenStatus)>)
-// type: int __fastcall(int, int, int, int, int, int, int, int, int, float, int, int, float, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int)
-#[doc(alias = "RBX::GuiObject::tweenPositionDelay(RBX::UDim2,RBX::UDim2,float,RBX::GuiObject::TweenEasingDirection,RBX::GuiObject::TweenEasingStyle,float,bool,boost::function<void ()(RBX::GuiObject::TweenStatus)>)")]
-#[doc(alias = "__ZN3RBX9GuiObject18tweenPositionDelayENS_5UDim2ES1_fNS0_20TweenEasingDirectionENS0_16TweenEasingStyleEfbN5boost8functionIFvNS0_11TweenStatusEEEE")]
-pub fn stub_0x527f50() -> ! {
-    todo!("0x527f50 __ZN3RBX9GuiObject18tweenPositionDelayENS_5UDim2ES1_fNS0_20TweenEasingDirectionENS0_16TweenEasingStyleEfbN5boost8functionIFvNS0_11TweenStatusEEEE")
+// 0xcf2d34 — __ZN4Ogre15parseParamNamedERSsRNS_21MaterialScriptContextE — Ogre::parseParamNamed(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseParamNamed(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre15parseParamNamedERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf2d34() -> ! {
+    todo!("0xcf2d34 __ZN4Ogre15parseParamNamedERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x528528 — __ZN3RBX9GuiObject13tweenPositionENS_5UDim2ENS0_20TweenEasingDirectionENS0_16TweenEasingStyleEfbb — RBX::GuiObject::tweenPosition(RBX::UDim2,RBX::GuiObject::TweenEasingDirection,RBX::GuiObject::TweenEasingStyle,float,bool,bool)
-// type: int __fastcall(int, int, int, int, int, int, int, float, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, char, int, int, int, int, int, int, int, boost::detail::sp_counted_base *, char, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, char, int, int, int, char, int, int, int, int, int, int, int, boost::detail::sp_counted_base *, char, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, char, int, int, int, int, int, int, int)
-#[doc(alias = "RBX::GuiObject::tweenPosition(RBX::UDim2,RBX::GuiObject::TweenEasingDirection,RBX::GuiObject::TweenEasingStyle,float,bool,bool)")]
-#[doc(alias = "__ZN3RBX9GuiObject13tweenPositionENS_5UDim2ENS0_20TweenEasingDirectionENS0_16TweenEasingStyleEfbb")]
-pub fn stub_0x528528() -> ! {
-    todo!("0x528528 __ZN3RBX9GuiObject13tweenPositionENS_5UDim2ENS0_20TweenEasingDirectionENS0_16TweenEasingStyleEfbb")
+// 0xcf3244 — __ZN4Ogre19parseParamNamedAutoERSsRNS_21MaterialScriptContextE — Ogre::parseParamNamedAuto(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseParamNamedAuto(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre19parseParamNamedAutoERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf3244() -> ! {
+    todo!("0xcf3244 __ZN4Ogre19parseParamNamedAutoERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5288b0 — __ZN3RBX9GuiObject18tweenPositionDelayENS_5UDim2ES1_fNS0_20TweenEasingDirectionENS0_16TweenEasingStyleEfbN5boost8functionIFvNS0_11TweenStatusEEEEPNS_12TweenServiceE — RBX::GuiObject::tweenPositionDelay(RBX::UDim2,RBX::UDim2,float,RBX::GuiObject::TweenEasingDirection,RBX::GuiObject::TweenEasingStyle,float,bool,boost::function<void ()(RBX::GuiObject::TweenStatus)>,RBX::TweenService *)
-// type: int __fastcall(int, int, int, int, int, int, int, int, int, float, int, int, float, int, int, int)
-#[doc(alias = "RBX::GuiObject::tweenPositionDelay(RBX::UDim2,RBX::UDim2,float,RBX::GuiObject::TweenEasingDirection,RBX::GuiObject::TweenEasingStyle,float,bool,boost::function<void ()(RBX::GuiObject::TweenStatus)>,RBX::TweenService *)")]
-#[doc(alias = "__ZN3RBX9GuiObject18tweenPositionDelayENS_5UDim2ES1_fNS0_20TweenEasingDirectionENS0_16TweenEasingStyleEfbN5boost8functionIFvNS0_11TweenStatusEEEEPNS_12TweenServiceE")]
-pub fn stub_0x5288b0() -> ! {
-    todo!("0x5288b0 __ZN3RBX9GuiObject18tweenPositionDelayENS_5UDim2ES1_fNS0_20TweenEasingDirectionENS0_16TweenEasingStyleEfbN5boost8functionIFvNS0_11TweenStatusEEEEPNS_12TweenServiceE")
+// 0xcf3754 — __ZN4Ogre13parseMaterialERSsRNS_21MaterialScriptContextE — Ogre::parseMaterial(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseMaterial(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre13parseMaterialERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf3754() -> ! {
+    todo!("0xcf3754 __ZN4Ogre13parseMaterialERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x528d14 — __ZN3RBX9GuiObject14tweenSizeDelayENS_5UDim2ES1_fNS0_20TweenEasingDirectionENS0_16TweenEasingStyleEfbN5boost8functionIFvNS0_11TweenStatusEEEE — RBX::GuiObject::tweenSizeDelay(RBX::UDim2,RBX::UDim2,float,RBX::GuiObject::TweenEasingDirection,RBX::GuiObject::TweenEasingStyle,float,bool,boost::function<void ()(RBX::GuiObject::TweenStatus)>)
-// type: int __fastcall(int, int, int, int, int, int, int, int, int, float, int, int, float, int, int)
-#[doc(alias = "RBX::GuiObject::tweenSizeDelay(RBX::UDim2,RBX::UDim2,float,RBX::GuiObject::TweenEasingDirection,RBX::GuiObject::TweenEasingStyle,float,bool,boost::function<void ()(RBX::GuiObject::TweenStatus)>)")]
-#[doc(alias = "__ZN3RBX9GuiObject14tweenSizeDelayENS_5UDim2ES1_fNS0_20TweenEasingDirectionENS0_16TweenEasingStyleEfbN5boost8functionIFvNS0_11TweenStatusEEEE")]
-pub fn stub_0x528d14() -> ! {
-    todo!("0x528d14 __ZN3RBX9GuiObject14tweenSizeDelayENS_5UDim2ES1_fNS0_20TweenEasingDirectionENS0_16TweenEasingStyleEfbN5boost8functionIFvNS0_11TweenStatusEEEE")
+// 0xcf4060 — __ZN4Ogre14parseTechniqueERSsRNS_21MaterialScriptContextE — Ogre::parseTechnique(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseTechnique(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre14parseTechniqueERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf4060() -> ! {
+    todo!("0xcf4060 __ZN4Ogre14parseTechniqueERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5290b4 — __ZN3RBX9GuiObject9tweenStepERKd — RBX::GuiObject::tweenStep(double const&)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this, const double *)
-#[doc(alias = "RBX::GuiObject::tweenStep(double const&)")]
-#[doc(alias = "__ZN3RBX9GuiObject9tweenStepERKd")]
-pub fn stub_0x5290b4() -> ! {
-    todo!("0x5290b4 __ZN3RBX9GuiObject9tweenStepERKd")
+// 0xcf40f4 — __ZN4Ogre9parsePassERSsRNS_21MaterialScriptContextE — Ogre::parsePass(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parsePass(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre9parsePassERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf40f4() -> ! {
+    todo!("0xcf40f4 __ZN4Ogre9parsePassERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x529284 — __ZN3RBX9GuiObject18setServerGuiObjectEv — RBX::GuiObject::setServerGuiObject(void)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this)
-#[doc(alias = "RBX::GuiObject::setServerGuiObject(void)")]
-#[doc(alias = "__ZN3RBX9GuiObject18setServerGuiObjectEv")]
-pub fn stub_0x529284() -> ! {
-    todo!("0x529284 __ZN3RBX9GuiObject18setServerGuiObjectEv")
+// 0xcf4160 — __ZN4Ogre16parseTextureUnitERSsRNS_21MaterialScriptContextE — Ogre::parseTextureUnit(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseTextureUnit(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre16parseTextureUnitERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf4160() -> ! {
+    todo!("0xcf4160 __ZN4Ogre16parseTextureUnitERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x529314 — __ZN3RBX9GuiObject13getWindowRectEPNS_9GuiBase2dE — RBX::GuiObject::getWindowRect(RBX::GuiBase2d *)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this, RBX::GuiBase2d *)
-#[doc(alias = "RBX::GuiObject::getWindowRect(RBX::GuiBase2d *)")]
-#[doc(alias = "__ZN3RBX9GuiObject13getWindowRectEPNS_9GuiBase2dE")]
-pub fn stub_0x529314() -> ! {
-    todo!("0x529314 __ZN3RBX9GuiObject13getWindowRectEPNS_9GuiBase2dE")
+// 0xcf41ec — __ZN4Ogre21parseVertexProgramRefERSsRNS_21MaterialScriptContextE — Ogre::parseVertexProgramRef(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseVertexProgramRef(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre21parseVertexProgramRefERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf41ec() -> ! {
+    todo!("0xcf41ec __ZN4Ogre21parseVertexProgramRefERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5293fc — __ZN3RBX9GuiObject12handleResizeERKN3G3D6Rect2DEb — RBX::GuiObject::handleResize(G3D::Rect2D const&,bool)
-// type: int __fastcall(RBX::GuiBase2d *)
-#[doc(alias = "RBX::GuiObject::handleResize(G3D::Rect2D const&,bool)")]
-#[doc(alias = "__ZN3RBX9GuiObject12handleResizeERKN3G3D6Rect2DEb")]
-pub fn stub_0x5293fc() -> ! {
-    todo!("0x5293fc __ZN3RBX9GuiObject12handleResizeERKN3G3D6Rect2DEb")
+// 0xcf46f4 — __ZN4Ogre23parseGeometryProgramRefERSsRNS_21MaterialScriptContextE — Ogre::parseGeometryProgramRef(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseGeometryProgramRef(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre23parseGeometryProgramRefERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf46f4() -> ! {
+    todo!("0xcf46f4 __ZN4Ogre23parseGeometryProgramRefERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x529438 — __ZN3RBX9GuiObject10handleDragEN3G3D7Vector2E — RBX::GuiObject::handleDrag(G3D::Vector2)
-#[doc(alias = "RBX::GuiObject::handleDrag(G3D::Vector2)")]
-#[doc(alias = "__ZN3RBX9GuiObject10handleDragEN3G3D7Vector2E")]
-pub fn stub_0x529438() -> ! {
-    todo!("0x529438 __ZN3RBX9GuiObject10handleDragEN3G3D7Vector2E")
+// 0xcf4bfc — __ZN4Ogre33parseShadowCasterVertexProgramRefERSsRNS_21MaterialScriptContextE — Ogre::parseShadowCasterVertexProgramRef(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseShadowCasterVertexProgramRef(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre33parseShadowCasterVertexProgramRefERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf4bfc() -> ! {
+    todo!("0xcf4bfc __ZN4Ogre33parseShadowCasterVertexProgramRefERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5294c8 — __ZN3RBX9GuiObject34recalculateAbsoluteSizeAndPositionERKN3G3D6Rect2DE — RBX::GuiObject::recalculateAbsoluteSizeAndPosition(G3D::Rect2D const&)
-#[doc(alias = "RBX::GuiObject::recalculateAbsoluteSizeAndPosition(G3D::Rect2D const&)")]
-#[doc(alias = "__ZN3RBX9GuiObject34recalculateAbsoluteSizeAndPositionERKN3G3D6Rect2DE")]
-pub fn stub_0x5294c8() -> ! {
-    todo!("0x5294c8 __ZN3RBX9GuiObject34recalculateAbsoluteSizeAndPositionERKN3G3D6Rect2DE")
+// 0xcf5084 — __ZN4Ogre35parseShadowCasterFragmentProgramRefERSsRNS_21MaterialScriptContextE — Ogre::parseShadowCasterFragmentProgramRef(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseShadowCasterFragmentProgramRef(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre35parseShadowCasterFragmentProgramRefERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf5084() -> ! {
+    todo!("0xcf5084 __ZN4Ogre35parseShadowCasterFragmentProgramRefERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x529650 — __ZN3RBX9GuiObject11forceResizeEv — RBX::GuiObject::forceResize(void)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this)
-#[doc(alias = "RBX::GuiObject::forceResize(void)")]
-#[doc(alias = "__ZN3RBX9GuiObject11forceResizeEv")]
-pub fn stub_0x529650() -> ! {
-    todo!("0x529650 __ZN3RBX9GuiObject11forceResizeEv")
+// 0xcf550c — __ZN4Ogre35parseShadowReceiverVertexProgramRefERSsRNS_21MaterialScriptContextE — Ogre::parseShadowReceiverVertexProgramRef(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseShadowReceiverVertexProgramRef(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre35parseShadowReceiverVertexProgramRefERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf550c() -> ! {
+    todo!("0xcf550c __ZN4Ogre35parseShadowReceiverVertexProgramRefERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5296a4 — __ZN3RBX9GuiObject14checkForResizeEv — RBX::GuiObject::checkForResize(void)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this)
-#[doc(alias = "RBX::GuiObject::checkForResize(void)")]
-#[doc(alias = "__ZN3RBX9GuiObject14checkForResizeEv")]
-pub fn stub_0x5296a4() -> ! {
-    todo!("0x5296a4 __ZN3RBX9GuiObject14checkForResizeEv")
+// 0xcf5994 — __ZN4Ogre37parseShadowReceiverFragmentProgramRefERSsRNS_21MaterialScriptContextE — Ogre::parseShadowReceiverFragmentProgramRef(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseShadowReceiverFragmentProgramRef(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre37parseShadowReceiverFragmentProgramRefERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf5994() -> ! {
+    todo!("0xcf5994 __ZN4Ogre37parseShadowReceiverFragmentProgramRefERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5296f8 — __ZN3RBX9GuiObject21firstAncestorClippingEv — RBX::GuiObject::firstAncestorClipping(void)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this)
-#[doc(alias = "RBX::GuiObject::firstAncestorClipping(void)")]
-#[doc(alias = "__ZN3RBX9GuiObject21firstAncestorClippingEv")]
-pub fn stub_0x5296f8() -> ! {
-    todo!("0x5296f8 __ZN3RBX9GuiObject21firstAncestorClippingEv")
+// 0xcf5e1c — __ZN4Ogre23parseFragmentProgramRefERSsRNS_21MaterialScriptContextE — Ogre::parseFragmentProgramRef(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseFragmentProgramRef(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre23parseFragmentProgramRefERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf5e1c() -> ! {
+    todo!("0xcf5e1c __ZN4Ogre23parseFragmentProgramRefERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x52973c — __ZN3RBX9GuiObject14getClippedRectEv — RBX::GuiObject::getClippedRect(void)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this)
-#[doc(alias = "RBX::GuiObject::getClippedRect(void)")]
-#[doc(alias = "__ZN3RBX9GuiObject14getClippedRectEv")]
-pub fn stub_0x52973c() -> ! {
-    todo!("0x52973c __ZN3RBX9GuiObject14getClippedRectEv")
+// 0xcf6320 — __ZN4Ogre18parseVertexProgramERSsRNS_21MaterialScriptContextE — Ogre::parseVertexProgram(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseVertexProgram(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre18parseVertexProgramERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf6320() -> ! {
+    todo!("0xcf6320 __ZN4Ogre18parseVertexProgramERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x529798 — __ZN3RBX9GuiObject17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE — RBX::GuiObject::onPropertyChanged(RBX::Reflection::PropertyDescriptor const&)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this, const RBX::Reflection::PropertyDescriptor *)
-#[doc(alias = "RBX::GuiObject::onPropertyChanged(RBX::Reflection::PropertyDescriptor const&)")]
-#[doc(alias = "__ZN3RBX9GuiObject17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE")]
-pub fn stub_0x529798() -> ! {
-    todo!("0x529798 __ZN3RBX9GuiObject17onPropertyChangedERKNS_10Reflection18PropertyDescriptorE")
+// 0xcf6684 — __ZN4Ogre20parseGeometryProgramERSsRNS_21MaterialScriptContextE — Ogre::parseGeometryProgram(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseGeometryProgram(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre20parseGeometryProgramERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf6684() -> ! {
+    todo!("0xcf6684 __ZN4Ogre20parseGeometryProgramERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5297e8 — __ZN3RBX9GuiObject17onAncestorChangedERKNS_15AncestorChangedE — RBX::GuiObject::onAncestorChanged(RBX::AncestorChanged const&)
-#[doc(alias = "RBX::GuiObject::onAncestorChanged(RBX::AncestorChanged const&)")]
-#[doc(alias = "__ZN3RBX9GuiObject17onAncestorChangedERKNS_15AncestorChangedE")]
-pub fn stub_0x5297e8() -> ! {
-    todo!("0x5297e8 __ZN3RBX9GuiObject17onAncestorChangedERKNS_15AncestorChangedE")
+// 0xcf69ec — __ZN4Ogre20parseFragmentProgramERSsRNS_21MaterialScriptContextE — Ogre::parseFragmentProgram(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseFragmentProgram(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre20parseFragmentProgramERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf69ec() -> ! {
+    todo!("0xcf69ec __ZN4Ogre20parseFragmentProgramERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x52981c — __ZNK3RBX9GuiObject12askSetParentEPKNS_8InstanceE — RBX::GuiObject::askSetParent(RBX::Instance const*)const
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this, const RBX::Instance *)
-#[doc(alias = "RBX::GuiObject::askSetParent(RBX::Instance const*)const")]
-#[doc(alias = "__ZNK3RBX9GuiObject12askSetParentEPKNS_8InstanceE")]
-pub fn stub_0x52981c() -> ! {
-    todo!("0x52981c __ZNK3RBX9GuiObject12askSetParentEPKNS_8InstanceE")
+// 0xcf6d50 — __ZN4Ogre18parseProgramSourceERSsRNS_21MaterialScriptContextE — Ogre::parseProgramSource(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseProgramSource(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre18parseProgramSourceERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf6d50() -> ! {
+    todo!("0xcf6d50 __ZN4Ogre18parseProgramSourceERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x52986c — __ZNK3RBX9GuiObject25getRenderBackgroundColor4Ev — RBX::GuiObject::getRenderBackgroundColor4(void)const
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this)
-#[doc(alias = "RBX::GuiObject::getRenderBackgroundColor4(void)const")]
-#[doc(alias = "__ZNK3RBX9GuiObject25getRenderBackgroundColor4Ev")]
-pub fn stub_0x52986c() -> ! {
-    todo!("0x52986c __ZNK3RBX9GuiObject25getRenderBackgroundColor4Ev")
+// 0xcf6d64 — __ZN4Ogre29parseProgramSkeletalAnimationERSsRNS_21MaterialScriptContextE — Ogre::parseProgramSkeletalAnimation(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseProgramSkeletalAnimation(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre29parseProgramSkeletalAnimationERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf6d64() -> ! {
+    todo!("0xcf6d64 __ZN4Ogre29parseProgramSkeletalAnimationERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5298b0 — __ZN3RBX9GuiObject14legacyRender2dEPNS_5AdornERKN3G3D6Rect2DE — RBX::GuiObject::legacyRender2d(RBX::Adorn *,G3D::Rect2D const&)
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
-#[doc(alias = "RBX::GuiObject::legacyRender2d(RBX::Adorn *,G3D::Rect2D const&)")]
-#[doc(alias = "__ZN3RBX9GuiObject14legacyRender2dEPNS_5AdornERKN3G3D6Rect2DE")]
-pub fn stub_0x5298b0() -> ! {
-    todo!("0x5298b0 __ZN3RBX9GuiObject14legacyRender2dEPNS_5AdornERKN3G3D6Rect2DE")
+// 0xcf6d78 — __ZN4Ogre26parseProgramMorphAnimationERSsRNS_21MaterialScriptContextE — Ogre::parseProgramMorphAnimation(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseProgramMorphAnimation(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre26parseProgramMorphAnimationERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf6d78() -> ! {
+    todo!("0xcf6d78 __ZN4Ogre26parseProgramMorphAnimationERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x5298dc — __ZN3RBX9GuiObject8render2dEPNS_5AdornE — RBX::GuiObject::render2d(RBX::Adorn *)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this, RBX::Adorn *)
-#[doc(alias = "RBX::GuiObject::render2d(RBX::Adorn *)")]
-#[doc(alias = "__ZN3RBX9GuiObject8render2dEPNS_5AdornE")]
-pub fn stub_0x5298dc() -> ! {
-    todo!("0x5298dc __ZN3RBX9GuiObject8render2dEPNS_5AdornE")
+// 0xcf6d8c — __ZN4Ogre25parseProgramPoseAnimationERSsRNS_21MaterialScriptContextE — Ogre::parseProgramPoseAnimation(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseProgramPoseAnimation(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre25parseProgramPoseAnimationERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf6d8c() -> ! {
+    todo!("0xcf6d8c __ZN4Ogre25parseProgramPoseAnimationERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x529948 — __ZN3RBX9GuiObject12render2dImplEPNS_5AdornERKN3G3D6Color4E — RBX::GuiObject::render2dImpl(RBX::Adorn *,G3D::Color4 const&)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this, RBX::Adorn *, const G3D::Color4 *)
-#[doc(alias = "RBX::GuiObject::render2dImpl(RBX::Adorn *,G3D::Color4 const&)")]
-#[doc(alias = "__ZN3RBX9GuiObject12render2dImplEPNS_5AdornERKN3G3D6Color4E")]
-pub fn stub_0x529948() -> ! {
-    todo!("0x529948 __ZN3RBX9GuiObject12render2dImplEPNS_5AdornERKN3G3D6Color4E")
+// 0xcf6da0 — __ZN4Ogre30parseProgramVertexTextureFetchERSsRNS_21MaterialScriptContextE — Ogre::parseProgramVertexTextureFetch(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseProgramVertexTextureFetch(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre30parseProgramVertexTextureFetchERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf6da0() -> ! {
+    todo!("0xcf6da0 __ZN4Ogre30parseProgramVertexTextureFetchERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x529960 — __ZThn96_N3RBX9GuiObject8render2dEPNS_5AdornE — non-virtual thunk toRBX::GuiObject::render2d(RBX::Adorn *)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this, RBX::Adorn *)
-#[doc(alias = "non-virtual thunk toRBX::GuiObject::render2d(RBX::Adorn *)")]
-#[doc(alias = "__ZThn96_N3RBX9GuiObject8render2dEPNS_5AdornE")]
-pub fn stub_0x529960() -> ! {
-    todo!("0x529960 __ZThn96_N3RBX9GuiObject8render2dEPNS_5AdornE")
+// 0xcf6db4 — __ZN4Ogre18parseProgramSyntaxERSsRNS_21MaterialScriptContextE — Ogre::parseProgramSyntax(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseProgramSyntax(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre18parseProgramSyntaxERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf6db4() -> ! {
+    todo!("0xcf6db4 __ZN4Ogre18parseProgramSyntaxERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x529968 — __ZN3RBX9GuiObject12render2dImplEPNS_5AdornERKN3G3D6Color4ERNS3_6Rect2DE — RBX::GuiObject::render2dImpl(RBX::Adorn *,G3D::Color4 const&,G3D::Rect2D &)
-#[doc(alias = "RBX::GuiObject::render2dImpl(RBX::Adorn *,G3D::Color4 const&,G3D::Rect2D &)")]
-#[doc(alias = "__ZN3RBX9GuiObject12render2dImplEPNS_5AdornERKN3G3D6Color4ERNS3_6Rect2DE")]
-pub fn stub_0x529968() -> ! {
-    todo!("0x529968 __ZN3RBX9GuiObject12render2dImplEPNS_5AdornERKN3G3D6Color4ERNS3_6Rect2DE")
+// 0xcf6dd0 — __ZN4Ogre18parseTextureSourceERSsRNS_21MaterialScriptContextE — Ogre::parseTextureSource(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseTextureSource(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre18parseTextureSourceERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf6dd0() -> ! {
+    todo!("0xcf6dd0 __ZN4Ogre18parseTextureSourceERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x529a50 — __ZN3RBX9GuiObject18renderSelectionBoxEPNS_5AdornE — RBX::GuiObject::renderSelectionBox(RBX::Adorn *)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this, RBX::Adorn *)
-#[doc(alias = "RBX::GuiObject::renderSelectionBox(RBX::Adorn *)")]
-#[doc(alias = "__ZN3RBX9GuiObject18renderSelectionBoxEPNS_5AdornE")]
-pub fn stub_0x529a50() -> ! {
-    todo!("0x529a50 __ZN3RBX9GuiObject18renderSelectionBoxEPNS_5AdornE")
+// 0xcf7738 — __ZN4Ogre19parseReceiveShadowsERSsRNS_21MaterialScriptContextE — Ogre::parseReceiveShadows(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseReceiveShadows(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre19parseReceiveShadowsERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf7738() -> ! {
+    todo!("0xcf7738 __ZN4Ogre19parseReceiveShadowsERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x529b14 — __ZN3RBX9GuiObject12Scale9Rect2DERKN3G3D6Rect2DEff — RBX::GuiObject::Scale9Rect2D(G3D::Rect2D const&,float,float)
-#[doc(alias = "RBX::GuiObject::Scale9Rect2D(G3D::Rect2D const&,float,float)")]
-#[doc(alias = "__ZN3RBX9GuiObject12Scale9Rect2DERKN3G3D6Rect2DEff")]
-pub fn stub_0x529b14() -> ! {
-    todo!("0x529b14 __ZN3RBX9GuiObject12Scale9Rect2DERKN3G3D6Rect2DEff")
+// 0xcf78b4 — __ZN4Ogre18parseDefaultParamsERSsRNS_21MaterialScriptContextE — Ogre::parseDefaultParams(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseDefaultParams(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre18parseDefaultParamsERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf78b4() -> ! {
+    todo!("0xcf78b4 __ZN4Ogre18parseDefaultParamsERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x529bd4 — __ZN3RBX9GuiObject18render2dScale9ImplEPNS_5AdornERKNS_9TextureIdERKN3G3D12Vector2int16ERKNS6_7Vector2ERNS_12GuiDrawImageERNS6_6Rect2DEPS0_ — RBX::GuiObject::render2dScale9Impl(RBX::Adorn *,RBX::TextureId const&,G3D::Vector2int16 const&,G3D::Vector2 const&,RBX::GuiDrawImage &,G3D::Rect2D &,RBX::GuiObject*)
-// type: int __fastcall(int, int, int, int, int, RBX::GuiDrawImage *, int, int)
-#[doc(alias = "RBX::GuiObject::render2dScale9Impl(RBX::Adorn *,RBX::TextureId const&,G3D::Vector2int16 const&,G3D::Vector2 const&,RBX::GuiDrawImage &,G3D::Rect2D &,RBX::GuiObject*)")]
-#[doc(alias = "__ZN3RBX9GuiObject18render2dScale9ImplEPNS_5AdornERKNS_9TextureIdERKN3G3D12Vector2int16ERKNS6_7Vector2ERNS_12GuiDrawImageERNS6_6Rect2DEPS0_")]
-pub fn stub_0x529bd4() -> ! {
-    todo!("0x529bd4 __ZN3RBX9GuiObject18render2dScale9ImplEPNS_5AdornERKNS_9TextureIdERKN3G3D12Vector2int16ERKNS6_7Vector2ERNS_12GuiDrawImageERNS6_6Rect2DEPS0_")
+// 0xcf78bc — __ZN4Ogre29parseTransparencyCastsShadowsERSsRNS_21MaterialScriptContextE — Ogre::parseTransparencyCastsShadows(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseTransparencyCastsShadows(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre29parseTransparencyCastsShadowsERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf78bc() -> ! {
+    todo!("0xcf78bc __ZN4Ogre29parseTransparencyCastsShadowsERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x529eac — __ZN3RBX9GuiObject16render2dTextImplEPNS_5AdornERKN3G3D6Color4ERKSsNS_11TextService4FontENS9_8FontSizeES6_S6_bbNS9_10XAlignmentENS9_10YAlignmentE — RBX::GuiObject::render2dTextImpl(RBX::Adorn *,G3D::Color4 const&,std::string const&,RBX::TextService::Font,RBX::TextService::FontSize,G3D::Color4 const&,G3D::Color4 const&,bool,bool,RBX::TextService::XAlignment,RBX::TextService::YAlignment)
-// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
-#[doc(alias = "RBX::GuiObject::render2dTextImpl(RBX::Adorn *,G3D::Color4 const&,std::string const&,RBX::TextService::Font,RBX::TextService::FontSize,G3D::Color4 const&,G3D::Color4 const&,bool,bool,RBX::TextService::XAlignment,RBX::TextService::YAlignment)")]
-#[doc(alias = "__ZN3RBX9GuiObject16render2dTextImplEPNS_5AdornERKN3G3D6Color4ERKSsNS_11TextService4FontENS9_8FontSizeES6_S6_bbNS9_10XAlignmentENS9_10YAlignmentE")]
-pub fn stub_0x529eac() -> ! {
-    todo!("0x529eac __ZN3RBX9GuiObject16render2dTextImplEPNS_5AdornERKN3G3D6Color4ERKSsNS_11TextService4FontENS9_8FontSizeES6_S6_bbNS9_10XAlignmentENS9_10YAlignmentE")
+// 0xcf7a38 — __ZN4Ogre16parseLodStrategyERSsRNS_21MaterialScriptContextE — Ogre::parseLodStrategy(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseLodStrategy(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre16parseLodStrategyERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf7a38() -> ! {
+    todo!("0xcf7a38 __ZN4Ogre16parseLodStrategyERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x529f10 — __ZN3RBX9GuiObject16render2dTextImplEPNS_5AdornERKN3G3D6Rect2DERKSsNS_11TextService4FontENS9_8FontSizeERKNS3_6Color4ESE_bbNS9_10XAlignmentENS9_10YAlignmentE — RBX::GuiObject::render2dTextImpl(RBX::Adorn *,G3D::Rect2D const&,std::string const&,RBX::TextService::Font,RBX::TextService::FontSize,G3D::Color4 const&,G3D::Color4 const&,bool,bool,RBX::TextService::XAlignment,RBX::TextService::YAlignment)
-// type: int __fastcall(int, int, int, int, int, int, int, int, int, G3D::Vector2 *, int, int, int)
-#[doc(alias = "RBX::GuiObject::render2dTextImpl(RBX::Adorn *,G3D::Rect2D const&,std::string const&,RBX::TextService::Font,RBX::TextService::FontSize,G3D::Color4 const&,G3D::Color4 const&,bool,bool,RBX::TextService::XAlignment,RBX::TextService::YAlignment)")]
-#[doc(alias = "__ZN3RBX9GuiObject16render2dTextImplEPNS_5AdornERKN3G3D6Rect2DERKSsNS_11TextService4FontENS9_8FontSizeERKNS3_6Color4ESE_bbNS9_10XAlignmentENS9_10YAlignmentE")]
-pub fn stub_0x529f10() -> ! {
-    todo!("0x529f10 __ZN3RBX9GuiObject16render2dTextImplEPNS_5AdornERKN3G3D6Rect2DERKSsNS_11TextService4FontENS9_8FontSizeERKNS3_6Color4ESE_bbNS9_10XAlignmentENS9_10YAlignmentE")
+// 0xcf7b8c — __ZN4Ogre17parseLodDistancesERSsRNS_21MaterialScriptContextE — Ogre::parseLodDistances(std::string &,Ogre::MaterialScriptContext &)
+#[doc(alias = "Ogre::parseLodDistances(std::string &,Ogre::MaterialScriptContext &)")]
+#[doc(alias = "__ZN4Ogre17parseLodDistancesERSsRNS_21MaterialScriptContextE")]
+pub fn stub_0xcf7b8c() -> ! {
+    todo!("0xcf7b8c __ZN4Ogre17parseLodDistancesERSsRNS_21MaterialScriptContextE")
 }
 
-// 0x52a12c — __ZN3RBX9GuiObject17getScaledFontSizeERKN3G3D6Rect2DERKSsNS_11TextService4FontEbf — RBX::GuiObject::getScaledFontSize(G3D::Rect2D const&,std::string const&,RBX::TextService::Font,bool,float)
-// type: int __fastcall(int, int, int, int, int, float, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "RBX::GuiObject::getScaledFontSize(G3D::Rect2D const&,std::string const&,RBX::TextService::Font,bool,float)")]
-#[doc(alias = "__ZN3RBX9GuiObject17getScaledFontSizeERKN3G3D6Rect2DERKSsNS_11TextService4FontEbf")]
-pub fn stub_0x52a12c() -> ! {
-    todo!("0x52a12c __ZN3RBX9GuiObject17getScaledFontSizeERKN3G3D6Rect2DERKSsNS_11TextService4FontEbf")
+// 0xd0168c — __ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS8_ — std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)> const&)
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)> const&)")]
+#[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS8_")]
+pub fn stub_0xd0168c() -> ! {
+    todo!("0xd0168c __ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS8_")
 }
 
-// 0x52a2f0 — __ZN3RBX9GuiObject7processERKNS_8GuiEventE — RBX::GuiObject::process(RBX::GuiEvent const&)
-#[doc(alias = "RBX::GuiObject::process(RBX::GuiEvent const&)")]
-#[doc(alias = "__ZN3RBX9GuiObject7processERKNS_8GuiEventE")]
-pub fn stub_0x52a2f0() -> ! {
-    todo!("0x52a2f0 __ZN3RBX9GuiObject7processERKNS_8GuiEventE")
+// 0xd01770 — __ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSK_RKS8_ — std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)> const&)
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)> const&)")]
+#[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSK_RKS8_")]
+pub fn stub_0xd01770() -> ! {
+    todo!("0xd01770 __ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSK_RKS8_")
 }
 
-// 0x52a328 — __ZThn92_N3RBX9GuiObject7processERKNS_8GuiEventE — non-virtual thunk toRBX::GuiObject::process(RBX::GuiEvent const&)
-#[doc(alias = "non-virtual thunk toRBX::GuiObject::process(RBX::GuiEvent const&)")]
-#[doc(alias = "__ZThn92_N3RBX9GuiObject7processERKNS_8GuiEventE")]
-pub fn stub_0x52a328() -> ! {
-    todo!("0x52a328 __ZThn92_N3RBX9GuiObject7processERKNS_8GuiEventE")
+// 0xd018d4 — __ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE13_Rb_tree_implISC_Lb0EED1Ev — std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE13_Rb_tree_implISC_Lb0EED1Ev")]
+pub fn stub_0xd018d4() -> ! {
+    todo!("0xd018d4 __ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE13_Rb_tree_implISC_Lb0EED1Ev")
 }
 
-// 0x52a334 — __ZN3RBX9GuiObject11mouseIsOverERKN3G3D7Vector2E — RBX::GuiObject::mouseIsOver(G3D::Vector2 const&)
-// type: _DWORD __fastcall(RBX::GuiObject *__hidden this, const G3D::Vector2 *)
-#[doc(alias = "RBX::GuiObject::mouseIsOver(G3D::Vector2 const&)")]
-#[doc(alias = "__ZN3RBX9GuiObject11mouseIsOverERKN3G3D7Vector2E")]
-pub fn stub_0x52a334() -> ! {
-    todo!("0x52a334 __ZN3RBX9GuiObject11mouseIsOverERKN3G3D7Vector2E")
+// 0xd018d8 — __ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE13_Rb_tree_implISC_Lb0EED0Ev — std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE13_Rb_tree_implISC_Lb0EED0Ev")]
+pub fn stub_0xd018d8() -> ! {
+    todo!("0xd018d8 __ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE13_Rb_tree_implISC_Lb0EED0Ev")
 }
 
-// 0x52a414 — __ZN3RBX9GuiObject15processKeyEventERKNS_8GuiEventE — RBX::GuiObject::processKeyEvent(RBX::GuiEvent const&)
-#[doc(alias = "RBX::GuiObject::processKeyEvent(RBX::GuiEvent const&)")]
-#[doc(alias = "__ZN3RBX9GuiObject15processKeyEventERKNS_8GuiEventE")]
-pub fn stub_0x52a414() -> ! {
-    todo!("0x52a414 __ZN3RBX9GuiObject15processKeyEventERKNS_8GuiEventE")
+// 0xd018e8 — __ZN4Ogre21MaterialScriptContextD2Ev — Ogre::MaterialScriptContext::~MaterialScriptContext()
+#[doc(alias = "Ogre::MaterialScriptContext::~MaterialScriptContext()")]
+#[doc(alias = "__ZN4Ogre21MaterialScriptContextD2Ev")]
+pub fn stub_0xd018e8() -> ! {
+    todo!("0xd018e8 __ZN4Ogre21MaterialScriptContextD2Ev")
 }
 
-// 0x52a420 — __ZN3RBX9GuiObject17processMouseEventERKNS_8GuiEventE — RBX::GuiObject::processMouseEvent(RBX::GuiEvent const&)
-// type: int __fastcall(int, RBX::GuiObject *this)
-#[doc(alias = "RBX::GuiObject::processMouseEvent(RBX::GuiEvent const&)")]
-#[doc(alias = "__ZN3RBX9GuiObject17processMouseEventERKNS_8GuiEventE")]
-pub fn stub_0x52a420() -> ! {
-    todo!("0x52a420 __ZN3RBX9GuiObject17processMouseEventERKNS_8GuiEventE")
+// 0xd01bc0 — __ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS8_E — std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>> *)
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>> *)")]
+#[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
+pub fn stub_0xd01bc0() -> ! {
+    todo!("0xd01bc0 __ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
 }
