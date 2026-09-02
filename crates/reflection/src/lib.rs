@@ -295,3 +295,6 @@ pub mod generated_refl_wd_watchdog13;
 pub mod generated_refl_wd_watchdog13b;
 pub mod generated_refl_wd_watchdog14b;
 pub mod generated_refl_wd_watchdog14;
+pub mod generated_refl_wdB_1788360957;
+
+pub mod generated_refl_wdA_1788361084;
