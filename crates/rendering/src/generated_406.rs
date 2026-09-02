@@ -253,7 +253,7 @@ pub fn stub_60da60() -> ! {
 #[doc(alias = "global constructor keyed to_a_246")]
 // was: __GLOBAL__I_a_246
 pub fn stub_60da64() -> ! {
-    todo!("0x60da64 `global constructor keyed to'_a_246")
+    todo!("0x60da64 global constructor keyed to _a_246")
 }
 
 // 0x60ddb8 — __ZN3RBX8SafeChat9singletonEv
@@ -374,7 +374,7 @@ pub fn stub_60e974() -> ! {
 #[doc(alias = "global constructor keyed to_a_247")]
 // was: __GLOBAL__I_a_247
 pub fn stub_60ea58() -> ! {
-    todo!("0x60ea58 `global constructor keyed to'_a_247")
+    todo!("0x60ea58 global constructor keyed to _a_247")
 }
 
 // 0x60ec58 — __ZN3RBX11Scale9Frame14setSlicePrefixESs
@@ -602,7 +602,7 @@ pub fn stub_60fb2c() -> ! {
 #[doc(alias = "global constructor keyed to_a_248")]
 // was: __GLOBAL__I_a_248
 pub fn stub_60fe04() -> ! {
-    todo!("0x60fe04 `global constructor keyed to'_a_248")
+    todo!("0x60fe04 global constructor keyed to _a_248")
 }
 
 // 0x6100dc — __ZN3RBX9ScreenGuiC1Ev

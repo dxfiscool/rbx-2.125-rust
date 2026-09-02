@@ -57,7 +57,7 @@ pub fn stub_244cb0() -> ! {
 
 // 0x244cb4 — __GLOBAL__I_a_46
 #[doc(alias = "global constructor keyed to_a_46")]
-// was: `global constructor keyed to'_a_46
+// was: global constructor keyed to _a_46
 pub fn stub_244cb4() -> ! {
     todo!("0x244cb4 global constructor keyed to_a_46")
 }
@@ -97,7 +97,7 @@ pub fn stub_244dcc() -> ! {
 // 0x244de0 — __GLOBAL__I_a_47
 // type: int()
 #[doc(alias = "global constructor keyed to_a_47")]
-// was: `global constructor keyed to'_a_47
+// was: global constructor keyed to _a_47
 pub fn stub_244de0() -> ! {
     todo!("0x244de0 global constructor keyed to_a_47")
 }
@@ -160,7 +160,7 @@ pub fn stub_245544() -> ! {
 
 // 0x245548 — __GLOBAL__I_a_48
 #[doc(alias = "global constructor keyed to_a_48")]
-// was: `global constructor keyed to'_a_48
+// was: global constructor keyed to _a_48
 pub fn stub_245548() -> ! {
     todo!("0x245548 global constructor keyed to_a_48")
 }
@@ -207,7 +207,7 @@ pub fn stub_245848() -> ! {
 
 // 0x245940 — __GLOBAL__I_a_49
 #[doc(alias = "global constructor keyed to_a_49")]
-// was: `global constructor keyed to'_a_49
+// was: global constructor keyed to _a_49
 pub fn stub_245940() -> ! {
     todo!("0x245940 global constructor keyed to_a_49")
 }
@@ -590,7 +590,7 @@ pub fn stub_248b90() -> ! {
 // 0x248be0 — __GLOBAL__I_a_50
 // type: void __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "global constructor keyed to_a_50")]
-// was: `global constructor keyed to'_a_50
+// was: global constructor keyed to _a_50
 pub fn stub_248be0() -> ! {
     todo!("0x248be0 global constructor keyed to_a_50")
 }
@@ -629,7 +629,7 @@ pub fn stub_24b364() -> ! {
 
 // 0x24bf64 — __GLOBAL__I_a_51
 #[doc(alias = "global constructor keyed to_a_51")]
-// was: `global constructor keyed to'_a_51
+// was: global constructor keyed to _a_51
 pub fn stub_24bf64() -> ! {
     todo!("0x24bf64 global constructor keyed to_a_51")
 }

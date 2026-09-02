@@ -88,7 +88,7 @@ pub fn stub_640a2c() -> ! {
 #[doc(alias = "global constructor keyed to_a_261")]
 // was: __GLOBAL__I_a_261
 pub fn stub_640a7c() -> ! {
-    todo!("0x640a7c `global constructor keyed to'_a_261")
+    todo!("0x640a7c global constructor keyed to _a_261")
 }
 
 // 0x640f14 — __ZN3RBX10Reflection8EnumDescINS_12SpecialShape8MeshTypeEEC1Ev

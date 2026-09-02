@@ -331,7 +331,7 @@ pub fn stub_25adb4() -> ! {
 
 // 0x25afd8 — __GLOBAL__I_a_55
 #[doc(alias = "global constructor keyed to_a_55")]
-// was: `global constructor keyed to'_a_55
+// was: global constructor keyed to _a_55
 pub fn stub_25afd8() -> ! {
     todo!("0x25afd8 global constructor keyed to_a_55")
 }

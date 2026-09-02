@@ -668,7 +668,7 @@ pub fn stub_67ccf8() -> ! {
 #[doc(alias = "global constructor keyed to_a_272")]
 // was: __GLOBAL__I_a_272
 pub fn stub_67cd9c() -> ! {
-    todo!("0x67cd9c `global constructor keyed to'_a_272")
+    todo!("0x67cd9c global constructor keyed to _a_272")
 }
 
 // 0x67d4f4 — __ZN3RBX12TimerServiceC1Ev

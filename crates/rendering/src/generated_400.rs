@@ -307,7 +307,7 @@ pub fn stub_5f565c() -> ! {
 #[doc(alias = "global constructor keyed to_a_233")]
 // was: __GLOBAL__I_a_233
 pub fn stub_5f5684() -> ! {
-    todo!("0x5f5684 `global constructor keyed to'_a_233")
+    todo!("0x5f5684 global constructor keyed to _a_233")
 }
 
 // 0x5f6800 — __ZN3RBX19PhysicsInstructionsC1Ev
@@ -404,7 +404,7 @@ pub fn stub_5f6cf8() -> ! {
 #[doc(alias = "global constructor keyed to_a_234")]
 // was: __GLOBAL__I_a_234
 pub fn stub_5f6d3c() -> ! {
-    todo!("0x5f6d3c `global constructor keyed to'_a_234")
+    todo!("0x5f6d3c global constructor keyed to _a_234")
 }
 
 // 0x5f6fac — __ZN3RBX14PhysicsServiceD0Ev
@@ -677,7 +677,7 @@ pub fn stub_5f8720() -> ! {
 #[doc(alias = "global constructor keyed to_a_235")]
 // was: __GLOBAL__I_a_235
 pub fn stub_5f87f4() -> ! {
-    todo!("0x5f87f4 `global constructor keyed to'_a_235")
+    todo!("0x5f87f4 global constructor keyed to _a_235")
 }
 
 // 0x5f8a64 — __ZNK3RBX15PhysicsSettings20getShowAnchoredPartsEv

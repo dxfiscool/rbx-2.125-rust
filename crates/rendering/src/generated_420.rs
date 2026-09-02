@@ -106,7 +106,7 @@ pub fn stub_644ba0() -> ! {
 #[doc(alias = "global constructor keyed to_a_262")]
 // was: __GLOBAL__I_a_262
 pub fn stub_644d30() -> ! {
-    todo!("0x644d30 `global constructor keyed to'_a_262")
+    todo!("0x644d30 global constructor keyed to _a_262")
 }
 
 // 0x645080 — __ZN3RBX5Stats12StatsService6reportESsN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS_10Reflection7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEE

@@ -303,7 +303,7 @@ pub fn stub_65b20() -> ! {
 
 // 0x65b4c — __GLOBAL__I_a_35
 #[doc(alias = "global constructor keyed to_a_35")]
-// was: `global constructor keyed to'_a_35
+// was: global constructor keyed to _a_35
 pub fn stub_65b4c() -> ! {
     todo!("0x65b4c global constructor keyed to_a_35")
 }

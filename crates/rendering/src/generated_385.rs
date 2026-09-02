@@ -143,7 +143,7 @@ pub fn stub_565fbc() -> ! {
 #[doc(alias = "global constructor keyed to_a_209")]
 // was: __GLOBAL__I_a_209
 pub fn stub_565fdc() -> ! {
-    todo!("0x565fdc `global constructor keyed to'_a_209")
+    todo!("0x565fdc global constructor keyed to _a_209")
 }
 
 // 0x566ee0 — __ZN3RBX7Handles14setVisualStyleENS0_11VisualStyleE

@@ -347,7 +347,7 @@ pub fn stub_69cf58() -> ! {
 // type: 
 #[doc(alias = "__GLOBAL__I_a_280")]
 #[doc(alias = "__GLOBAL__I_a_280")]
-// was: `global constructor keyed to'_a_280
+// was: global constructor keyed to _a_280
 pub fn stub_69cf80() -> ! {
     todo!("0x69cf80 __GLOBAL__I_a_280")
 }

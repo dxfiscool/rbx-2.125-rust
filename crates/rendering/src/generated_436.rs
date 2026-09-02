@@ -15,7 +15,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "global constructor keyed to_a_273")]
 // was: __GLOBAL__I_a_273
 pub fn stub_67e5cc() -> ! {
-    todo!("0x67e5cc `global constructor keyed to'_a_273")
+    todo!("0x67e5cc global constructor keyed to _a_273")
 }
 
 // 0x67e8c0 — __ZNK3RBX4Tool10getGripPosEv

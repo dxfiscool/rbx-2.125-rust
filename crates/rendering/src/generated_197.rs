@@ -322,7 +322,7 @@ pub fn stub_a05c8() -> ! {
 // 0xa0614 — __GLOBAL__I_FMOD_OggVorbis_Malloc
 // type: int()
 #[doc(alias = "global constructor keyed to_FMOD_OggVorbis_Malloc")]
-// was: `global constructor keyed to'_FMOD_OggVorbis_Malloc
+// was: global constructor keyed to _FMOD_OggVorbis_Malloc
 pub fn stub_a0614() -> ! {
     todo!("0xa0614 global constructor keyed to_FMOD_OggVorbis_Malloc")
 }

@@ -103,7 +103,7 @@ pub fn stub_4f305c() -> ! {
 
 // 0x4f3080 — __GLOBAL__I_a_196
 #[doc(alias = "global constructor keyed to_a_196")]
-// was: `global constructor keyed to'_a_196
+// was: global constructor keyed to _a_196
 pub fn stub_4f3080() -> ! {
     todo!("0x4f3080 global constructor keyed to_a_196")
 }

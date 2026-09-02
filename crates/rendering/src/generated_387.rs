@@ -444,7 +444,7 @@ pub fn stub_56f2c0() -> ! {
 #[doc(alias = "global constructor keyed to_a_210")]
 // was: __GLOBAL__I_a_210
 pub fn stub_56f3f0() -> ! {
-    todo!("0x56f3f0 `global constructor keyed to'_a_210")
+    todo!("0x56f3f0 global constructor keyed to _a_210")
 }
 
 // 0x56f9fc — __ZN3RBX11HandlesBaseC2EPKc
@@ -487,7 +487,7 @@ pub fn stub_5707ac() -> ! {
 #[doc(alias = "global constructor keyed to_a_211")]
 // was: __GLOBAL__I_a_211
 pub fn stub_570f0c() -> ! {
-    todo!("0x570f0c `global constructor keyed to'_a_211")
+    todo!("0x570f0c global constructor keyed to _a_211")
 }
 
 // 0x57117c — __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEEC1Ev

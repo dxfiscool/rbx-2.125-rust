@@ -180,7 +180,7 @@ pub fn stub_63862c() -> ! {
 #[doc(alias = "global constructor keyed to_a_258")]
 // was: __GLOBAL__I_a_258
 pub fn stub_638bfc() -> ! {
-    todo!("0x638bfc `global constructor keyed to'_a_258")
+    todo!("0x638bfc global constructor keyed to _a_258")
 }
 
 // 0x639138 — __ZN3RBX13SocialService12setFriendUrlESs
@@ -550,7 +550,7 @@ pub fn stub_63b780() -> ! {
 #[doc(alias = "global constructor keyed to_a_259")]
 // was: __GLOBAL__I_a_259
 pub fn stub_63be1c() -> ! {
-    todo!("0x63be1c `global constructor keyed to'_a_259")
+    todo!("0x63be1c global constructor keyed to _a_259")
 }
 
 // 0x63c208 — __ZNK3RBX8Sparkles14getLegacyColorEv
@@ -814,7 +814,7 @@ pub fn stub_63ca3c() -> ! {
 #[doc(alias = "global constructor keyed to_a_260")]
 // was: __GLOBAL__I_a_260
 pub fn stub_63ce80() -> ! {
-    todo!("0x63ce80 `global constructor keyed to'_a_260")
+    todo!("0x63ce80 global constructor keyed to _a_260")
 }
 
 // 0x63d228 — __ZNK3RBX13SpawnLocation12getTeamColorEv

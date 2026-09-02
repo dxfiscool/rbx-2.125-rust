@@ -180,7 +180,7 @@ pub fn stub_4fac4c() -> ! {
 
 // 0x4fac70 — __GLOBAL__I_a_199
 #[doc(alias = "global constructor keyed to_a_199")]
-// was: `global constructor keyed to'_a_199
+// was: global constructor keyed to _a_199
 pub fn stub_4fac70() -> ! {
     todo!("0x4fac70 global constructor keyed to_a_199")
 }
@@ -705,7 +705,7 @@ pub fn stub_50010c() -> ! {
 
 // 0x500254 — __GLOBAL__I_a_200
 #[doc(alias = "global constructor keyed to_a_200")]
-// was: `global constructor keyed to'_a_200
+// was: global constructor keyed to _a_200
 pub fn stub_500254() -> ! {
     todo!("0x500254 global constructor keyed to_a_200")
 }

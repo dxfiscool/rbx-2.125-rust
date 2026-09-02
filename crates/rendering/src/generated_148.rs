@@ -79,7 +79,7 @@ pub fn stub_253af0() -> ! {
 
 // 0x253c78 — __GLOBAL__I_a_52
 #[doc(alias = "global constructor keyed to_a_52")]
-// was: `global constructor keyed to'_a_52
+// was: global constructor keyed to _a_52
 pub fn stub_253c78() -> ! {
     todo!("0x253c78 global constructor keyed to_a_52")
 }
@@ -296,7 +296,7 @@ pub fn stub_254bbc() -> ! {
 
 // 0x254bc0 — __GLOBAL__I_a_53
 #[doc(alias = "global constructor keyed to_a_53")]
-// was: `global constructor keyed to'_a_53
+// was: global constructor keyed to _a_53
 pub fn stub_254bc0() -> ! {
     todo!("0x254bc0 global constructor keyed to_a_53")
 }
@@ -359,7 +359,7 @@ pub fn stub_25529c() -> ! {
 
 // 0x2552f0 — __GLOBAL__I_a_54
 #[doc(alias = "global constructor keyed to_a_54")]
-// was: `global constructor keyed to'_a_54
+// was: global constructor keyed to _a_54
 pub fn stub_2552f0() -> ! {
     todo!("0x2552f0 global constructor keyed to_a_54")
 }

@@ -124,7 +124,7 @@ pub fn stub_633e20() -> ! {
 #[doc(alias = "global constructor keyed to_a_256")]
 // was: __GLOBAL__I_a_256
 pub fn stub_633f10() -> ! {
-    todo!("0x633f10 `global constructor keyed to'_a_256")
+    todo!("0x633f10 global constructor keyed to _a_256")
 }
 
 // 0x634630 — __ZN3RBX3Sky11setNumStarsEi
@@ -576,7 +576,7 @@ pub fn stub_636e0c() -> ! {
 #[doc(alias = "global constructor keyed to_a_257")]
 // was: __GLOBAL__I_a_257
 pub fn stub_636e80() -> ! {
-    todo!("0x636e80 `global constructor keyed to'_a_257")
+    todo!("0x636e80 global constructor keyed to _a_257")
 }
 
 // 0x6372cc — __ZN3RBX5Smoke9setSizeUiEf

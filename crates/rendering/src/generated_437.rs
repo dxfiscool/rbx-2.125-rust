@@ -513,7 +513,7 @@ pub fn stub_688268() -> ! {
 #[doc(alias = "global constructor keyed to_a_274")]
 // was: __GLOBAL__I_a_274
 pub fn stub_688388() -> ! {
-    todo!("0x688388 `global constructor keyed to'_a_274")
+    todo!("0x688388 global constructor keyed to _a_274")
 }
 
 // 0x688b04 — __ZN3RBX16ToolMouseCommandC1EPNS_9WorkspaceEPNS_4ToolE
@@ -689,7 +689,7 @@ pub fn stub_689648() -> ! {
 #[doc(alias = "global constructor keyed to_a_275")]
 // was: __GLOBAL__I_a_275
 pub fn stub_689778() -> ! {
-    todo!("0x689778 `global constructor keyed to'_a_275")
+    todo!("0x689778 global constructor keyed to _a_275")
 }
 
 // 0x689a5c — __ZN3RBX9ModelToolC2EPNS_9WorkspaceE

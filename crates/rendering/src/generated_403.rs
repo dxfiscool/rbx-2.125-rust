@@ -796,7 +796,7 @@ pub fn stub_603f50() -> ! {
 #[doc(alias = "global constructor keyed to_a_238")]
 // was: __GLOBAL__I_a_238
 pub fn stub_6041a4() -> ! {
-    todo!("0x6041a4 `global constructor keyed to'_a_238")
+    todo!("0x6041a4 global constructor keyed to _a_238")
 }
 
 // 0x604694 — __ZN3RBX9PlayerHUDC1Ev
