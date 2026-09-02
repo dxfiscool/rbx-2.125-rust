@@ -270,3 +270,4 @@ pub mod generated_network_watchdog_s;
 pub mod generated_network_watchdog_t;
 pub mod generated_network_watchdog_u;
 pub mod generated_network_watchdog_v;
+pub mod generated_network_watchdog_w;
