@@ -285,3 +285,4 @@ pub mod generated_network_shard_c;
 pub mod generated_network_watchdog_Z;
 pub mod generated_watchdog_net_w1;
 pub mod generated_watchdog_net_w2;
+pub mod generated_watchdog_net_w3;
