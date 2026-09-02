@@ -482,14 +482,14 @@ pub fn stub_0x52e6ac() -> ! {
 
 // 0x52e6b0 — `non-virtual thunk toRBX::GuiButton::~GuiButton()
 // type: void __fastcall(RBX::GuiButton *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GuiButton::~GuiButton()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiButton::~GuiButton()")]
 pub fn stub_0x52e6b0() -> ! {
     todo!("0x52e6b0 `non-virtual thunk toRBX::GuiButton::~GuiButton()")
 }
 
 // 0x52e6b8 — `non-virtual thunk toRBX::GuiButton::~GuiButton()
 // type: void __fastcall(RBX::GuiButton *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GuiButton::~GuiButton()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiButton::~GuiButton()")]
 pub fn stub_0x52e6b8() -> ! {
     todo!("0x52e6b8 `non-virtual thunk toRBX::GuiButton::~GuiButton()")
 }
@@ -503,14 +503,14 @@ pub fn stub_0x52e75c() -> ! {
 
 // 0x52e784 — `non-virtual thunk toRBX::GuiButton::~GuiButton()
 // type: void __fastcall(RBX::GuiButton *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GuiButton::~GuiButton()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiButton::~GuiButton()")]
 pub fn stub_0x52e784() -> ! {
     todo!("0x52e784 `non-virtual thunk toRBX::GuiButton::~GuiButton()")
 }
 
 // 0x52e78c — `non-virtual thunk toRBX::GuiButton::~GuiButton()
 // type: void __fastcall(RBX::GuiButton *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GuiButton::~GuiButton()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiButton::~GuiButton()")]
 pub fn stub_0x52e78c() -> ! {
     todo!("0x52e78c `non-virtual thunk toRBX::GuiButton::~GuiButton()")
 }
@@ -538,14 +538,14 @@ pub fn stub_0x52e8d4() -> ! {
 
 // 0x52e8fc — `non-virtual thunk toRBX::GuiLabel::~GuiLabel()
 // type: void __fastcall(RBX::GuiLabel *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
 pub fn stub_0x52e8fc() -> ! {
     todo!("0x52e8fc `non-virtual thunk toRBX::GuiLabel::~GuiLabel()")
 }
 
 // 0x52e904 — `non-virtual thunk toRBX::GuiLabel::~GuiLabel()
 // type: void __fastcall(RBX::GuiLabel *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
 pub fn stub_0x52e904() -> ! {
     todo!("0x52e904 `non-virtual thunk toRBX::GuiLabel::~GuiLabel()")
 }
@@ -559,14 +559,14 @@ pub fn stub_0x52e9a8() -> ! {
 
 // 0x52e9d0 — `non-virtual thunk toRBX::GuiLabel::~GuiLabel()
 // type: void __fastcall(RBX::GuiLabel *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
 pub fn stub_0x52e9d0() -> ! {
     todo!("0x52e9d0 `non-virtual thunk toRBX::GuiLabel::~GuiLabel()")
 }
 
 // 0x52e9d8 — `non-virtual thunk toRBX::GuiLabel::~GuiLabel()
 // type: void __fastcall(RBX::GuiLabel *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
 pub fn stub_0x52e9d8() -> ! {
     todo!("0x52e9d8 `non-virtual thunk toRBX::GuiLabel::~GuiLabel()")
 }
@@ -678,7 +678,7 @@ pub fn stub_0x52f000() -> ! {
 
 // 0x52f008 — `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>*>>>,0,void ()(void)>::call(void)
 // type: 
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>*>>>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>*>>>,0,void ()(void)>::call(void)")]
 pub fn stub_0x52f008() -> ! {
     todo!("0x52f008 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>*>>>,0,void ()(void)>::call(void)")
 }

@@ -11,7 +11,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
 // 0x5a4384 — __ZThn32_N3RBX4GlueD1Ev
 // type: void __fastcall(RBX::Glue *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Glue::~Glue()")]
+#[doc(alias = "non-virtual thunk toRBX::Glue::~Glue()")]
 #[doc(alias = "__ZThn32_N3RBX4GlueD1Ev")]
 pub fn stub_0x5a4384() -> ! {
     todo!("0x5a4384 `non-virtual thunk to'RBX::Glue::~Glue()")
@@ -19,7 +19,7 @@ pub fn stub_0x5a4384() -> ! {
 
 // 0x5a438c — __ZThn32_N3RBX4GlueD0Ev
 // type: void __fastcall(RBX::Glue *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Glue::~Glue()")]
+#[doc(alias = "non-virtual thunk toRBX::Glue::~Glue()")]
 #[doc(alias = "__ZThn32_N3RBX4GlueD0Ev")]
 pub fn stub_0x5a438c() -> ! {
     todo!("0x5a438c `non-virtual thunk to'RBX::Glue::~Glue()")
@@ -27,7 +27,7 @@ pub fn stub_0x5a438c() -> ! {
 
 // 0x5a4440 — __ZThn36_N3RBX4GlueD1Ev
 // type: void __fastcall(RBX::Glue *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Glue::~Glue()")]
+#[doc(alias = "non-virtual thunk toRBX::Glue::~Glue()")]
 #[doc(alias = "__ZThn36_N3RBX4GlueD1Ev")]
 pub fn stub_0x5a4440() -> ! {
     todo!("0x5a4440 `non-virtual thunk to'RBX::Glue::~Glue()")
@@ -35,7 +35,7 @@ pub fn stub_0x5a4440() -> ! {
 
 // 0x5a4448 — __ZThn36_N3RBX4GlueD0Ev
 // type: void __fastcall(RBX::Glue *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Glue::~Glue()")]
+#[doc(alias = "non-virtual thunk toRBX::Glue::~Glue()")]
 #[doc(alias = "__ZThn36_N3RBX4GlueD0Ev")]
 pub fn stub_0x5a4448() -> ! {
     todo!("0x5a4448 `non-virtual thunk to'RBX::Glue::~Glue()")
@@ -59,7 +59,7 @@ pub fn stub_0x5a44f0() -> ! {
 
 // 0x5a45a0 — __ZThn32_N3RBX6RotateD1Ev
 // type: void __fastcall(RBX::Rotate *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Rotate::~Rotate()")]
+#[doc(alias = "non-virtual thunk toRBX::Rotate::~Rotate()")]
 #[doc(alias = "__ZThn32_N3RBX6RotateD1Ev")]
 pub fn stub_0x5a45a0() -> ! {
     todo!("0x5a45a0 `non-virtual thunk to'RBX::Rotate::~Rotate()")
@@ -67,7 +67,7 @@ pub fn stub_0x5a45a0() -> ! {
 
 // 0x5a45a8 — __ZThn32_N3RBX6RotateD0Ev
 // type: void __fastcall(RBX::Rotate *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Rotate::~Rotate()")]
+#[doc(alias = "non-virtual thunk toRBX::Rotate::~Rotate()")]
 #[doc(alias = "__ZThn32_N3RBX6RotateD0Ev")]
 pub fn stub_0x5a45a8() -> ! {
     todo!("0x5a45a8 `non-virtual thunk to'RBX::Rotate::~Rotate()")
@@ -75,7 +75,7 @@ pub fn stub_0x5a45a8() -> ! {
 
 // 0x5a465c — __ZThn36_N3RBX6RotateD1Ev
 // type: void __fastcall(RBX::Rotate *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Rotate::~Rotate()")]
+#[doc(alias = "non-virtual thunk toRBX::Rotate::~Rotate()")]
 #[doc(alias = "__ZThn36_N3RBX6RotateD1Ev")]
 pub fn stub_0x5a465c() -> ! {
     todo!("0x5a465c `non-virtual thunk to'RBX::Rotate::~Rotate()")
@@ -83,7 +83,7 @@ pub fn stub_0x5a465c() -> ! {
 
 // 0x5a4664 — __ZThn36_N3RBX6RotateD0Ev
 // type: void __fastcall(RBX::Rotate *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Rotate::~Rotate()")]
+#[doc(alias = "non-virtual thunk toRBX::Rotate::~Rotate()")]
 #[doc(alias = "__ZThn36_N3RBX6RotateD0Ev")]
 pub fn stub_0x5a4664() -> ! {
     todo!("0x5a4664 `non-virtual thunk to'RBX::Rotate::~Rotate()")
@@ -107,7 +107,7 @@ pub fn stub_0x5a470c() -> ! {
 
 // 0x5a47d4 — __ZThn32_N3RBX13DynamicRotateD1Ev
 // type: void __fastcall(RBX::DynamicRotate *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::DynamicRotate::~DynamicRotate()")]
+#[doc(alias = "non-virtual thunk toRBX::DynamicRotate::~DynamicRotate()")]
 #[doc(alias = "__ZThn32_N3RBX13DynamicRotateD1Ev")]
 pub fn stub_0x5a47d4() -> ! {
     todo!("0x5a47d4 `non-virtual thunk to'RBX::DynamicRotate::~DynamicRotate()")
@@ -115,7 +115,7 @@ pub fn stub_0x5a47d4() -> ! {
 
 // 0x5a47dc — __ZThn32_N3RBX13DynamicRotateD0Ev
 // type: void __fastcall(RBX::DynamicRotate *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::DynamicRotate::~DynamicRotate()")]
+#[doc(alias = "non-virtual thunk toRBX::DynamicRotate::~DynamicRotate()")]
 #[doc(alias = "__ZThn32_N3RBX13DynamicRotateD0Ev")]
 pub fn stub_0x5a47dc() -> ! {
     todo!("0x5a47dc `non-virtual thunk to'RBX::DynamicRotate::~DynamicRotate()")
@@ -123,7 +123,7 @@ pub fn stub_0x5a47dc() -> ! {
 
 // 0x5a48a8 — __ZThn36_N3RBX13DynamicRotateD1Ev
 // type: void __fastcall(RBX::DynamicRotate *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::DynamicRotate::~DynamicRotate()")]
+#[doc(alias = "non-virtual thunk toRBX::DynamicRotate::~DynamicRotate()")]
 #[doc(alias = "__ZThn36_N3RBX13DynamicRotateD1Ev")]
 pub fn stub_0x5a48a8() -> ! {
     todo!("0x5a48a8 `non-virtual thunk to'RBX::DynamicRotate::~DynamicRotate()")
@@ -131,7 +131,7 @@ pub fn stub_0x5a48a8() -> ! {
 
 // 0x5a48b0 — __ZThn36_N3RBX13DynamicRotateD0Ev
 // type: void __fastcall(RBX::DynamicRotate *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::DynamicRotate::~DynamicRotate()")]
+#[doc(alias = "non-virtual thunk toRBX::DynamicRotate::~DynamicRotate()")]
 #[doc(alias = "__ZThn36_N3RBX13DynamicRotateD0Ev")]
 pub fn stub_0x5a48b0() -> ! {
     todo!("0x5a48b0 `non-virtual thunk to'RBX::DynamicRotate::~DynamicRotate()")
@@ -155,7 +155,7 @@ pub fn stub_0x5a4958() -> ! {
 
 // 0x5a4a08 — __ZThn32_N3RBX7RotatePD1Ev
 // type: void __fastcall(RBX::RotateP *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::RotateP::~RotateP()")]
+#[doc(alias = "non-virtual thunk toRBX::RotateP::~RotateP()")]
 #[doc(alias = "__ZThn32_N3RBX7RotatePD1Ev")]
 pub fn stub_0x5a4a08() -> ! {
     todo!("0x5a4a08 `non-virtual thunk to'RBX::RotateP::~RotateP()")
@@ -163,7 +163,7 @@ pub fn stub_0x5a4a08() -> ! {
 
 // 0x5a4a10 — __ZThn32_N3RBX7RotatePD0Ev
 // type: void __fastcall(RBX::RotateP *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::RotateP::~RotateP()")]
+#[doc(alias = "non-virtual thunk toRBX::RotateP::~RotateP()")]
 #[doc(alias = "__ZThn32_N3RBX7RotatePD0Ev")]
 pub fn stub_0x5a4a10() -> ! {
     todo!("0x5a4a10 `non-virtual thunk to'RBX::RotateP::~RotateP()")
@@ -171,7 +171,7 @@ pub fn stub_0x5a4a10() -> ! {
 
 // 0x5a4ac4 — __ZThn36_N3RBX7RotatePD1Ev
 // type: void __fastcall(RBX::RotateP *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::RotateP::~RotateP()")]
+#[doc(alias = "non-virtual thunk toRBX::RotateP::~RotateP()")]
 #[doc(alias = "__ZThn36_N3RBX7RotatePD1Ev")]
 pub fn stub_0x5a4ac4() -> ! {
     todo!("0x5a4ac4 `non-virtual thunk to'RBX::RotateP::~RotateP()")
@@ -179,7 +179,7 @@ pub fn stub_0x5a4ac4() -> ! {
 
 // 0x5a4acc — __ZThn36_N3RBX7RotatePD0Ev
 // type: void __fastcall(RBX::RotateP *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::RotateP::~RotateP()")]
+#[doc(alias = "non-virtual thunk toRBX::RotateP::~RotateP()")]
 #[doc(alias = "__ZThn36_N3RBX7RotatePD0Ev")]
 pub fn stub_0x5a4acc() -> ! {
     todo!("0x5a4acc `non-virtual thunk to'RBX::RotateP::~RotateP()")
@@ -203,7 +203,7 @@ pub fn stub_0x5a4b74() -> ! {
 
 // 0x5a4c24 — __ZThn32_N3RBX7RotateVD1Ev
 // type: void __fastcall(RBX::RotateV *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::RotateV::~RotateV()")]
+#[doc(alias = "non-virtual thunk toRBX::RotateV::~RotateV()")]
 #[doc(alias = "__ZThn32_N3RBX7RotateVD1Ev")]
 pub fn stub_0x5a4c24() -> ! {
     todo!("0x5a4c24 `non-virtual thunk to'RBX::RotateV::~RotateV()")
@@ -211,7 +211,7 @@ pub fn stub_0x5a4c24() -> ! {
 
 // 0x5a4c2c — __ZThn32_N3RBX7RotateVD0Ev
 // type: void __fastcall(RBX::RotateV *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::RotateV::~RotateV()")]
+#[doc(alias = "non-virtual thunk toRBX::RotateV::~RotateV()")]
 #[doc(alias = "__ZThn32_N3RBX7RotateVD0Ev")]
 pub fn stub_0x5a4c2c() -> ! {
     todo!("0x5a4c2c `non-virtual thunk to'RBX::RotateV::~RotateV()")
@@ -219,7 +219,7 @@ pub fn stub_0x5a4c2c() -> ! {
 
 // 0x5a4ce0 — __ZThn36_N3RBX7RotateVD1Ev
 // type: void __fastcall(RBX::RotateV *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::RotateV::~RotateV()")]
+#[doc(alias = "non-virtual thunk toRBX::RotateV::~RotateV()")]
 #[doc(alias = "__ZThn36_N3RBX7RotateVD1Ev")]
 pub fn stub_0x5a4ce0() -> ! {
     todo!("0x5a4ce0 `non-virtual thunk to'RBX::RotateV::~RotateV()")
@@ -227,7 +227,7 @@ pub fn stub_0x5a4ce0() -> ! {
 
 // 0x5a4ce8 — __ZThn36_N3RBX7RotateVD0Ev
 // type: void __fastcall(RBX::RotateV *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::RotateV::~RotateV()")]
+#[doc(alias = "non-virtual thunk toRBX::RotateV::~RotateV()")]
 #[doc(alias = "__ZThn36_N3RBX7RotateVD0Ev")]
 pub fn stub_0x5a4ce8() -> ! {
     todo!("0x5a4ce8 `non-virtual thunk to'RBX::RotateV::~RotateV()")
@@ -722,7 +722,7 @@ pub fn stub_0x5aad08() -> ! {
 }
 
 // 0x5aade8 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-#[doc(alias = "`non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 pub fn stub_0x5aade8() -> ! {
     todo!("0x5aade8 `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")

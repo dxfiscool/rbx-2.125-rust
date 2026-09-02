@@ -617,3 +617,4 @@ pub mod generated_dm2_wdog6E_1788379010;
 pub mod generated_dm_wdog7B;
 pub mod generated_dm_wdog7I;
 pub mod generated_dm_wdogW3A;
+pub mod generated_dm_wdogW3B;

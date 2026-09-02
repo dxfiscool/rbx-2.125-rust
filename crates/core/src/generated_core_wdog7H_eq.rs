@@ -188,21 +188,21 @@ pub fn stub_9c7f18() -> ! {
     todo!("0x9c7f18 __ZN3RBX7Network6ServerD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::Server::~Server()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
 // 0x9c7f24 — __ZThn32_N3RBX7Network6ServerD0Ev
  // type: void __fastcall(RBX::Network::Server *__hidden this)
 pub fn stub_9c7f24() -> ! {
     todo!("0x9c7f24 __ZThn32_N3RBX7Network6ServerD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::Server::~Server()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
 // 0x9c7fc8 — __ZThn36_N3RBX7Network6ServerD0Ev
  // type: void __fastcall(RBX::Network::Server *__hidden this)
 pub fn stub_9c7fc8() -> ! {
     todo!("0x9c7fc8 __ZThn36_N3RBX7Network6ServerD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::Server::~Server()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
 // 0x9c806c — __ZThn92_N3RBX7Network6ServerD0Ev
  // type: void __fastcall(RBX::Network::Server *__hidden this)
 pub fn stub_9c806c() -> ! {
@@ -216,21 +216,21 @@ pub fn stub_9c8110() -> ! {
     todo!("0x9c8110 __ZN3RBX7Network6ServerD2Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::Server::~Server()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
 // 0x9c87d4 — __ZThn32_N3RBX7Network6ServerD1Ev
  // type: void __fastcall(RBX::Network::Server *this, int, int, const void *)
 pub fn stub_9c87d4() -> ! {
     todo!("0x9c87d4 __ZThn32_N3RBX7Network6ServerD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::Server::~Server()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
 // 0x9c87e0 — __ZThn36_N3RBX7Network6ServerD1Ev
  // type: void __fastcall(RBX::Network::Server *this, int, int, const void *)
 pub fn stub_9c87e0() -> ! {
     todo!("0x9c87e0 __ZThn36_N3RBX7Network6ServerD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::Server::~Server()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
 // 0x9c87ec — __ZThn92_N3RBX7Network6ServerD1Ev
  // type: void __fastcall(RBX::Network::Server *this, int, int, const void *)
 pub fn stub_9c87ec() -> ! {
@@ -328,28 +328,28 @@ pub fn stub_9d7ef4() -> ! {
     todo!("0x9d7ef4 __ZN3RBX7Network16ServerReplicatorD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
 // 0x9d7f00 — __ZThn32_N3RBX7Network16ServerReplicatorD0Ev
  // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
 pub fn stub_9d7f00() -> ! {
     todo!("0x9d7f00 __ZThn32_N3RBX7Network16ServerReplicatorD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
 // 0x9d7fa4 — __ZThn36_N3RBX7Network16ServerReplicatorD0Ev
  // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
 pub fn stub_9d7fa4() -> ! {
     todo!("0x9d7fa4 __ZThn36_N3RBX7Network16ServerReplicatorD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
 // 0x9d8048 — __ZThn1180_N3RBX7Network16ServerReplicatorD0Ev
  // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
 pub fn stub_9d8048() -> ! {
     todo!("0x9d8048 __ZThn1180_N3RBX7Network16ServerReplicatorD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
 // 0x9d80ec — __ZThn1192_N3RBX7Network16ServerReplicatorD0Ev
  // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
 pub fn stub_9d80ec() -> ! {
@@ -363,28 +363,28 @@ pub fn stub_9d8190() -> ! {
     todo!("0x9d8190 __ZN3RBX7Network16ServerReplicatorD2Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
 // 0x9d86b4 — __ZThn32_N3RBX7Network16ServerReplicatorD1Ev
  // type: void __fastcall(struct _Unwind_Exception *this)
 pub fn stub_9d86b4() -> ! {
     todo!("0x9d86b4 __ZThn32_N3RBX7Network16ServerReplicatorD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
 // 0x9d86c0 — __ZThn36_N3RBX7Network16ServerReplicatorD1Ev
  // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
 pub fn stub_9d86c0() -> ! {
     todo!("0x9d86c0 __ZThn36_N3RBX7Network16ServerReplicatorD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
 // 0x9d86cc — __ZThn1180_N3RBX7Network16ServerReplicatorD1Ev
  // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
 pub fn stub_9d86cc() -> ! {
     todo!("0x9d86cc __ZThn1180_N3RBX7Network16ServerReplicatorD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::~ServerReplicator()")]
 // 0x9d86dc — __ZThn1192_N3RBX7Network16ServerReplicatorD1Ev
  // type: void __fastcall(RBX::Network::ServerReplicator *__hidden this)
 pub fn stub_9d86dc() -> ! {
@@ -566,28 +566,28 @@ pub fn stub_9e9728() -> ! {
     todo!("0x9e9728 __ZN3RBX7Network16ServerReplicator15ServerStatsItem6updateEv")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")]
 // 0x9e9b30 — __ZThn32_N3RBX7Network16ServerReplicator15ServerStatsItemD1Ev
  // type: void __fastcall(RBX::Network::ServerReplicator::ServerStatsItem *__hidden this)
 pub fn stub_9e9b30() -> ! {
     todo!("0x9e9b30 __ZThn32_N3RBX7Network16ServerReplicator15ServerStatsItemD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")]
 // 0x9e9b3c — __ZThn32_N3RBX7Network16ServerReplicator15ServerStatsItemD0Ev
  // type: void __fastcall(RBX::Network::ServerReplicator::ServerStatsItem *__hidden this)
 pub fn stub_9e9b3c() -> ! {
     todo!("0x9e9b3c __ZThn32_N3RBX7Network16ServerReplicator15ServerStatsItemD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")]
 // 0x9e9be4 — __ZThn36_N3RBX7Network16ServerReplicator15ServerStatsItemD1Ev
  // type: void __fastcall(RBX::Network::ServerReplicator::ServerStatsItem *__hidden this)
 pub fn stub_9e9be4() -> ! {
     todo!("0x9e9be4 __ZThn36_N3RBX7Network16ServerReplicator15ServerStatsItemD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")]
 // 0x9e9bf0 — __ZThn36_N3RBX7Network16ServerReplicator15ServerStatsItemD0Ev
  // type: void __fastcall(RBX::Network::ServerReplicator::ServerStatsItem *__hidden this)
 pub fn stub_9e9bf0() -> ! {
@@ -615,28 +615,28 @@ pub fn stub_9ea2c4() -> ! {
     todo!("0x9ea2c4 __ZN3RBX7Network10Replicator9StatsItemD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::Replicator::StatsItem::~StatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Replicator::StatsItem::~StatsItem()")]
 // 0x9ea364 — __ZThn32_N3RBX7Network10Replicator9StatsItemD1Ev
  // type: void __fastcall(RBX::Network::Replicator::StatsItem *__hidden this)
 pub fn stub_9ea364() -> ! {
     todo!("0x9ea364 __ZThn32_N3RBX7Network10Replicator9StatsItemD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::Replicator::StatsItem::~StatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Replicator::StatsItem::~StatsItem()")]
 // 0x9ea370 — __ZThn32_N3RBX7Network10Replicator9StatsItemD0Ev
  // type: void __fastcall(RBX::Network::Replicator::StatsItem *__hidden this)
 pub fn stub_9ea370() -> ! {
     todo!("0x9ea370 __ZThn32_N3RBX7Network10Replicator9StatsItemD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::Replicator::StatsItem::~StatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Replicator::StatsItem::~StatsItem()")]
 // 0x9ea414 — __ZThn36_N3RBX7Network10Replicator9StatsItemD1Ev
  // type: void __fastcall(RBX::Network::Replicator::StatsItem *__hidden this)
 pub fn stub_9ea414() -> ! {
     todo!("0x9ea414 __ZThn36_N3RBX7Network10Replicator9StatsItemD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::Replicator::StatsItem::~StatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Replicator::StatsItem::~StatsItem()")]
 // 0x9ea420 — __ZThn36_N3RBX7Network10Replicator9StatsItemD0Ev
  // type: void __fastcall(RBX::Network::Replicator::StatsItem *__hidden this)
 pub fn stub_9ea420() -> ! {
@@ -650,14 +650,14 @@ pub fn stub_9eaa38() -> ! {
     todo!("0x9eaa38 __ZN3RBX7Network12RakStatsItemD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")]
 // 0x9eaab0 — __ZThn32_N3RBX7Network12RakStatsItemD1Ev
  // type: void __fastcall(RBX::Network::RakStatsItem *__hidden this)
 pub fn stub_9eaab0() -> ! {
     todo!("0x9eaab0 __ZThn32_N3RBX7Network12RakStatsItemD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")]
 // 0x9eab30 — __ZThn32_N3RBX7Network12RakStatsItemD0Ev
  // type: void __fastcall(RBX::Network::RakStatsItem *__hidden this)
 pub fn stub_9eab30() -> ! {
