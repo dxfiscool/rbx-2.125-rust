@@ -560,3 +560,4 @@ pub mod generated_core_shard_or;
 pub mod generated_core_shard_os;
 pub mod generated_watchdog_coreB_1788391040;
 pub mod generated_core_wd_watchdog_gap2_1788391071;
+pub mod generated_core_shard_ot;
