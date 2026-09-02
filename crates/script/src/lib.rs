@@ -317,3 +317,4 @@ pub mod generated_script_wdcron_A;
 pub mod generated_script_wdog_B_1788368418;
 pub mod generated_script_wdog_C_1788368718;
 pub mod generated_script_gap_59e124;
+pub mod generated_wdog_script_B2_1788369654;
