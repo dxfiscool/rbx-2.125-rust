@@ -181,7 +181,7 @@ pub fn stub_2f5c4c() -> ! {
 
 // 0x2f5d3c — __GLOBAL__I_a_102 — `global constructor keyed to'_a_102
 // type: 
-#[doc(alias = "`global constructor keyed to_a_102")]
+#[doc(alias = "global constructor keyed to_a_102")]
 #[doc(alias = "__GLOBAL__I_a_102")]
 pub fn stub_2f5d3c() -> ! {
     todo!("0x2f5d3c __GLOBAL__I_a_102")
@@ -253,7 +253,7 @@ pub fn stub_2f6858() -> ! {
 
 // 0x2f68c8 — __ZThn4_N3RBX13ArrowToolBase13render3dAdornEPNS_5AdornE — `non-virtual thunk to'RBX::ArrowToolBase::render3dAdorn(RBX::Adorn *)
 // type: _DWORD __fastcall(RBX::ArrowToolBase *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk toRBX::ArrowToolBase::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::ArrowToolBase::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX13ArrowToolBase13render3dAdornEPNS_5AdornE")]
 pub fn stub_2f68c8() -> ! {
     todo!("0x2f68c8 __ZThn4_N3RBX13ArrowToolBase13render3dAdornEPNS_5AdornE")
@@ -333,7 +333,7 @@ pub fn stub_2f71d4() -> ! {
 
 // 0x2f71d8 — __ZThn36_N3RBX16BoxSelectCommandD0Ev — `non-virtual thunk to'RBX::BoxSelectCommand::~BoxSelectCommand()
 // type: void __fastcall(RBX::BoxSelectCommand *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")]
+#[doc(alias = "non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")]
 #[doc(alias = "__ZThn36_N3RBX16BoxSelectCommandD0Ev")]
 pub fn stub_2f71d8() -> ! {
     todo!("0x2f71d8 __ZThn36_N3RBX16BoxSelectCommandD0Ev")
@@ -349,7 +349,7 @@ pub fn stub_2f71e0() -> ! {
 
 // 0x2f7324 — __ZThn36_N3RBX16BoxSelectCommandD1Ev — `non-virtual thunk to'RBX::BoxSelectCommand::~BoxSelectCommand()
 // type: void __fastcall(RBX::BoxSelectCommand *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")]
+#[doc(alias = "non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")]
 #[doc(alias = "__ZThn36_N3RBX16BoxSelectCommandD1Ev")]
 pub fn stub_2f7324() -> ! {
     todo!("0x2f7324 __ZThn36_N3RBX16BoxSelectCommandD1Ev")
@@ -405,7 +405,7 @@ pub fn stub_2f7818() -> ! {
 
 // 0x2f78d0 — __ZThn4_N3RBX16BoxSelectCommand8render2dEPNS_5AdornE — `non-virtual thunk to'RBX::BoxSelectCommand::render2d(RBX::Adorn *)
 // type: _DWORD __fastcall(RBX::BoxSelectCommand *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk toRBX::BoxSelectCommand::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::BoxSelectCommand::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX16BoxSelectCommand8render2dEPNS_5AdornE")]
 pub fn stub_2f78d0() -> ! {
     todo!("0x2f78d0 __ZThn4_N3RBX16BoxSelectCommand8render2dEPNS_5AdornE")
@@ -669,7 +669,7 @@ pub fn stub_2f8b9c() -> ! {
 
 // 0x2f8c2c — __GLOBAL__I_a_103 — `global constructor keyed to'_a_103
 // type: 
-#[doc(alias = "`global constructor keyed to_a_103")]
+#[doc(alias = "global constructor keyed to_a_103")]
 #[doc(alias = "__GLOBAL__I_a_103")]
 pub fn stub_2f8c2c() -> ! {
     todo!("0x2f8c2c __GLOBAL__I_a_103")
@@ -781,7 +781,7 @@ pub fn stub_2f97cc() -> ! {
 
 // 0x2f995c — __GLOBAL__I_a_104 — `global constructor keyed to'_a_104
 // type: 
-#[doc(alias = "`global constructor keyed to_a_104")]
+#[doc(alias = "global constructor keyed to_a_104")]
 #[doc(alias = "__GLOBAL__I_a_104")]
 pub fn stub_2f995c() -> ! {
     todo!("0x2f995c __GLOBAL__I_a_104")

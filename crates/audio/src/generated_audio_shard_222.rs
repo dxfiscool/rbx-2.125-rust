@@ -188,7 +188,7 @@ pub fn stub_50010c() -> ! {
 }
 
 // 0x500254 — __GLOBAL__I_a_200
-#[doc(alias = "`global constructor keyed to_a_200")]
+#[doc(alias = "global constructor keyed to_a_200")]
 pub fn stub_500254() -> ! {
     todo!("0x500254 __GLOBAL__I_a_200")
 }
@@ -315,14 +315,14 @@ pub fn stub_501aa0() -> ! {
 
 // 0x501ab0 — __ZThn32_N3RBX12GameSettingsD1Ev
 // type: void __fastcall(RBX::GameSettings *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GameSettings::~GameSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings()")]
 pub fn stub_501ab0() -> ! {
     todo!("0x501ab0 __ZThn32_N3RBX12GameSettingsD1Ev")
 }
 
 // 0x501c34 — __ZThn32_N3RBX12GameSettingsD0Ev
 // type: void __fastcall(RBX::GameSettings *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GameSettings::~GameSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings()")]
 pub fn stub_501c34() -> ! {
     todo!("0x501c34 __ZThn32_N3RBX12GameSettingsD0Ev")
 }
@@ -335,14 +335,14 @@ pub fn stub_501dd0() -> ! {
 
 // 0x501de0 — __ZThn36_N3RBX12GameSettingsD1Ev
 // type: void __fastcall(RBX::GameSettings *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GameSettings::~GameSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings()")]
 pub fn stub_501de0() -> ! {
     todo!("0x501de0 __ZThn36_N3RBX12GameSettingsD1Ev")
 }
 
 // 0x501f64 — __ZThn36_N3RBX12GameSettingsD0Ev
 // type: void __fastcall(RBX::GameSettings *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GameSettings::~GameSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings()")]
 pub fn stub_501f64() -> ! {
     todo!("0x501f64 __ZThn36_N3RBX12GameSettingsD0Ev")
 }

@@ -170,7 +170,7 @@ pub fn stub_4fac4c() -> ! {
 }
 
 // 0x4fac70 — __GLOBAL__I_a_199
-#[doc(alias = "`global constructor keyed to_a_199")]
+#[doc(alias = "global constructor keyed to_a_199")]
 pub fn stub_4fac70() -> ! {
     todo!("0x4fac70 __GLOBAL__I_a_199")
 }

@@ -12,7 +12,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
 // 0x6dd054 — __ZThn36_N3RBX12AdvArrowToolD1Ev
 // type: void __fastcall(RBX::AdvArrowTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::AdvArrowTool::~AdvArrowTool()")]
+#[doc(alias = "non-virtual thunk toRBX::AdvArrowTool::~AdvArrowTool()")]
 #[doc(alias = "__ZThn36_N3RBX12AdvArrowToolD1Ev")]
 // was: __ZThn36_N3RBX12AdvArrowToolD1Ev
 pub fn stub_6dd054() -> ! {
@@ -21,7 +21,7 @@ pub fn stub_6dd054() -> ! {
 
 // 0x6dd05c — __ZThn36_N3RBX12AdvArrowToolD0Ev
 // type: void __fastcall(RBX::AdvArrowTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::AdvArrowTool::~AdvArrowTool()")]
+#[doc(alias = "non-virtual thunk toRBX::AdvArrowTool::~AdvArrowTool()")]
 #[doc(alias = "__ZThn36_N3RBX12AdvArrowToolD0Ev")]
 // was: __ZThn36_N3RBX12AdvArrowToolD0Ev
 pub fn stub_6dd05c() -> ! {
@@ -75,7 +75,7 @@ pub fn stub_6dd374() -> ! {
 
 // 0x6dd378 — __ZThn36_N3RBX16AdvArrowToolBaseD1Ev
 // type: void __fastcall(RBX::AdvArrowToolBase *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::AdvArrowToolBase::~AdvArrowToolBase()")]
+#[doc(alias = "non-virtual thunk toRBX::AdvArrowToolBase::~AdvArrowToolBase()")]
 #[doc(alias = "__ZThn36_N3RBX16AdvArrowToolBaseD1Ev")]
 // was: __ZThn36_N3RBX16AdvArrowToolBaseD1Ev
 pub fn stub_6dd378() -> ! {
@@ -84,7 +84,7 @@ pub fn stub_6dd378() -> ! {
 
 // 0x6dd380 — __ZThn36_N3RBX16AdvArrowToolBaseD0Ev
 // type: void __fastcall(RBX::AdvArrowToolBase *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::AdvArrowToolBase::~AdvArrowToolBase()")]
+#[doc(alias = "non-virtual thunk toRBX::AdvArrowToolBase::~AdvArrowToolBase()")]
 #[doc(alias = "__ZThn36_N3RBX16AdvArrowToolBaseD0Ev")]
 // was: __ZThn36_N3RBX16AdvArrowToolBaseD0Ev
 pub fn stub_6dd380() -> ! {
@@ -111,7 +111,7 @@ pub fn stub_6dd38c() -> ! {
 
 // 0x6dd42c — __ZThn36_N3RBX13ArrowToolBaseD1Ev
 // type: void __fastcall(RBX::ArrowToolBase *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::ArrowToolBase::~ArrowToolBase()")]
+#[doc(alias = "non-virtual thunk toRBX::ArrowToolBase::~ArrowToolBase()")]
 #[doc(alias = "__ZThn36_N3RBX13ArrowToolBaseD1Ev")]
 // was: __ZThn36_N3RBX13ArrowToolBaseD1Ev
 pub fn stub_6dd42c() -> ! {
@@ -120,7 +120,7 @@ pub fn stub_6dd42c() -> ! {
 
 // 0x6dd434 — __ZThn36_N3RBX13ArrowToolBaseD0Ev
 // type: void __fastcall(RBX::ArrowToolBase *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::ArrowToolBase::~ArrowToolBase()")]
+#[doc(alias = "non-virtual thunk toRBX::ArrowToolBase::~ArrowToolBase()")]
 #[doc(alias = "__ZThn36_N3RBX13ArrowToolBaseD0Ev")]
 // was: __ZThn36_N3RBX13ArrowToolBaseD0Ev
 pub fn stub_6dd434() -> ! {
@@ -510,7 +510,7 @@ pub fn stub_6ded30() -> ! {
 
 // 0x6ded50 — __ZThn32_N3RBX5Stats14TypedStatsItemIiED1Ev
 // type: 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemIiED1Ev")]
 // was: __ZThn32_N3RBX5Stats14TypedStatsItemIiED1Ev
 pub fn stub_6ded50() -> ! {
@@ -519,7 +519,7 @@ pub fn stub_6ded50() -> ! {
 
 // 0x6dee98 — __ZThn32_N3RBX5Stats14TypedStatsItemIiED0Ev
 // type: 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemIiED0Ev")]
 // was: __ZThn32_N3RBX5Stats14TypedStatsItemIiED0Ev
 pub fn stub_6dee98() -> ! {
@@ -528,7 +528,7 @@ pub fn stub_6dee98() -> ! {
 
 // 0x6deff8 — __ZThn36_N3RBX5Stats14TypedStatsItemIiED1Ev
 // type: 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats14TypedStatsItemIiED1Ev")]
 // was: __ZThn36_N3RBX5Stats14TypedStatsItemIiED1Ev
 pub fn stub_6deff8() -> ! {
@@ -537,7 +537,7 @@ pub fn stub_6deff8() -> ! {
 
 // 0x6df140 — __ZThn36_N3RBX5Stats14TypedStatsItemIiED0Ev
 // type: 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats14TypedStatsItemIiED0Ev")]
 // was: __ZThn36_N3RBX5Stats14TypedStatsItemIiED0Ev
 pub fn stub_6df140() -> ! {
@@ -609,7 +609,7 @@ pub fn stub_6df7f8() -> ! {
 
 // 0x6df818 — __ZThn32_N3RBX5Stats14TypedStatsItemIfED0Ev
 // type: 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemIfED0Ev")]
 // was: __ZThn32_N3RBX5Stats14TypedStatsItemIfED0Ev
 pub fn stub_6df818() -> ! {
@@ -753,7 +753,7 @@ pub fn stub_6dffd0() -> ! {
 
 // 0x6e0130 — __ZThn32_N3RBX5Stats14TypedStatsItemIdED1Ev
 // type: 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemIdED1Ev")]
 // was: __ZThn32_N3RBX5Stats14TypedStatsItemIdED1Ev
 pub fn stub_6e0130() -> ! {
@@ -762,7 +762,7 @@ pub fn stub_6e0130() -> ! {
 
 // 0x6e0278 — __ZThn32_N3RBX5Stats14TypedStatsItemIdED0Ev
 // type: 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemIdED0Ev")]
 // was: __ZThn32_N3RBX5Stats14TypedStatsItemIdED0Ev
 pub fn stub_6e0278() -> ! {
@@ -834,7 +834,7 @@ pub fn stub_6e0890() -> ! {
 
 // 0x6e0964 — __ZThn32_N3RBX18WorkspaceStatsItemD1Ev
 // type: void __fastcall(RBX::WorkspaceStatsItem *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX18WorkspaceStatsItemD1Ev")]
 // was: __ZThn32_N3RBX18WorkspaceStatsItemD1Ev
 pub fn stub_6e0964() -> ! {
@@ -843,7 +843,7 @@ pub fn stub_6e0964() -> ! {
 
 // 0x6e09a4 — __ZThn32_N3RBX18WorkspaceStatsItemD0Ev
 // type: void __fastcall(RBX::WorkspaceStatsItem *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX18WorkspaceStatsItemD0Ev")]
 // was: __ZThn32_N3RBX18WorkspaceStatsItemD0Ev
 pub fn stub_6e09a4() -> ! {
@@ -852,7 +852,7 @@ pub fn stub_6e09a4() -> ! {
 
 // 0x6e0a78 — __ZThn36_N3RBX18WorkspaceStatsItemD1Ev
 // type: void __fastcall(RBX::WorkspaceStatsItem *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX18WorkspaceStatsItemD1Ev")]
 // was: __ZThn36_N3RBX18WorkspaceStatsItemD1Ev
 pub fn stub_6e0a78() -> ! {
@@ -861,7 +861,7 @@ pub fn stub_6e0a78() -> ! {
 
 // 0x6e0ab8 — __ZThn36_N3RBX18WorkspaceStatsItemD0Ev
 // type: void __fastcall(RBX::WorkspaceStatsItem *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX18WorkspaceStatsItemD0Ev")]
 // was: __ZThn36_N3RBX18WorkspaceStatsItemD0Ev
 pub fn stub_6e0ab8() -> ! {

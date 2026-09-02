@@ -67,14 +67,14 @@ pub fn stub_2868bc() -> ! {
     todo!("0x2868bc __ZNK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE12getClassNameEv")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
 // 0x2868cc — __ZThn32_N3RBX11LuaSettingsD1Ev
 // type: void __fastcall(RBX::LuaSettings *__hidden this)
 pub fn stub_2868cc() -> ! {
     todo!("0x2868cc __ZThn32_N3RBX11LuaSettingsD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
 // 0x286910 — __ZThn32_N3RBX11LuaSettingsD0Ev
 // type: void __fastcall(RBX::LuaSettings *__hidden this)
 pub fn stub_286910() -> ! {
@@ -87,14 +87,14 @@ pub fn stub_2869f0() -> ! {
     todo!("0x2869f0 __ZThn32_NK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE12getClassNameEv")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
 // 0x286a00 — __ZThn36_N3RBX11LuaSettingsD1Ev
 // type: void __fastcall(RBX::LuaSettings *__hidden this)
 pub fn stub_286a00() -> ! {
     todo!("0x286a00 __ZThn36_N3RBX11LuaSettingsD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
 // 0x286a44 — __ZThn36_N3RBX11LuaSettingsD0Ev
 // type: void __fastcall(RBX::LuaSettings *__hidden this)
 pub fn stub_286a44() -> ! {

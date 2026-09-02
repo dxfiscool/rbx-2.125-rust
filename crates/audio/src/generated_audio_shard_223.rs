@@ -397,7 +397,7 @@ pub fn stub_50487c() -> ! {
 }
 
 // 0x504a0c — __GLOBAL__I_a_201
-#[doc(alias = "`global constructor keyed to_a_201")]
+#[doc(alias = "global constructor keyed to_a_201")]
 #[doc(alias = "__GLOBAL__I_a_201")]
 pub fn stub_504a0c() -> ! {
     todo!("0x504a0c __GLOBAL__I_a_201")
@@ -522,14 +522,14 @@ pub fn stub_50603c() -> ! {
 }
 
 // 0x506068 — __ZThn32_N3RBX15GeometryServiceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::GeometryService::~GeometryService()")]
+#[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService()")]
 #[doc(alias = "__ZThn32_N3RBX15GeometryServiceD1Ev")]
 pub fn stub_506068() -> ! {
     todo!("0x506068 __ZThn32_N3RBX15GeometryServiceD1Ev")
 }
 
 // 0x506148 — __ZThn32_N3RBX15GeometryServiceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::GeometryService::~GeometryService()")]
+#[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService()")]
 #[doc(alias = "__ZThn32_N3RBX15GeometryServiceD0Ev")]
 pub fn stub_506148() -> ! {
     todo!("0x506148 __ZThn32_N3RBX15GeometryServiceD0Ev")
@@ -542,14 +542,14 @@ pub fn stub_506240() -> ! {
 }
 
 // 0x506268 — __ZThn36_N3RBX15GeometryServiceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::GeometryService::~GeometryService()")]
+#[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService()")]
 #[doc(alias = "__ZThn36_N3RBX15GeometryServiceD1Ev")]
 pub fn stub_506268() -> ! {
     todo!("0x506268 __ZThn36_N3RBX15GeometryServiceD1Ev")
 }
 
 // 0x506348 — __ZThn36_N3RBX15GeometryServiceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::GeometryService::~GeometryService()")]
+#[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService()")]
 #[doc(alias = "__ZThn36_N3RBX15GeometryServiceD0Ev")]
 pub fn stub_506348() -> ! {
     todo!("0x506348 __ZThn36_N3RBX15GeometryServiceD0Ev")
@@ -696,7 +696,7 @@ pub fn stub_507098() -> ! {
 }
 
 // 0x507150 — __GLOBAL__I_a_202
-#[doc(alias = "`global constructor keyed to_a_202")]
+#[doc(alias = "global constructor keyed to_a_202")]
 #[doc(alias = "__GLOBAL__I_a_202")]
 pub fn stub_507150() -> ! {
     todo!("0x507150 __GLOBAL__I_a_202")
