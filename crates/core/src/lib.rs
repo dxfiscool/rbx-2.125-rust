@@ -499,6 +499,7 @@ pub mod generated_core_wd_watchdog7;
 pub mod generated_core_wd_watchdog8;
 pub mod generated_core_wd_watchdog9;
 pub mod generated_core_wd_watchdog10;
+pub mod generated_core_shard_od;
 pub mod generated_core_shard_oc;
-pub mod generated_gap_wd_watchdog;
 pub mod generated_core_wd_watchdog11;
+pub mod generated_gap_wd_watchdog;
