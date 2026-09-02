@@ -287,7 +287,7 @@ pub fn stub_2c4a50() -> ! {
 }
 
 // 0x2c4a80 — __GLOBAL__I_a_72
-#[doc(alias = "`global constructor keyed to_a_72")]
+#[doc(alias = "global constructor keyed to_a_72")]
 #[doc(alias = "__GLOBAL__I_a_72")]
 pub fn stub_2c4a80() -> ! {
     todo!("0x2c4a80 `global constructor keyed to'_a_72")
@@ -457,7 +457,7 @@ pub fn stub_2c67c8() -> ! {
 }
 
 // 0x2c68dc — __GLOBAL__I_a_73
-#[doc(alias = "`global constructor keyed to_a_73")]
+#[doc(alias = "global constructor keyed to_a_73")]
 #[doc(alias = "__GLOBAL__I_a_73")]
 pub fn stub_2c68dc() -> ! {
     todo!("0x2c68dc `global constructor keyed to'_a_73")
@@ -557,14 +557,14 @@ pub fn stub_2c75a8() -> ! {
 }
 
 // 0x2c767c — __ZThn32_N3RBX12LuaStatsItemD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX12LuaStatsItemD1Ev")]
 pub fn stub_2c767c() -> ! {
     todo!("0x2c767c `non-virtual thunk to'RBX::LuaStatsItem::~LuaStatsItem()")
 }
 
 // 0x2c76bc — __ZThn32_N3RBX12LuaStatsItemD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX12LuaStatsItemD0Ev")]
 pub fn stub_2c76bc() -> ! {
     todo!("0x2c76bc `non-virtual thunk to'RBX::LuaStatsItem::~LuaStatsItem()")
@@ -578,14 +578,14 @@ pub fn stub_2c7790() -> ! {
 }
 
 // 0x2c7794 — __ZThn36_N3RBX12LuaStatsItemD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX12LuaStatsItemD1Ev")]
 pub fn stub_2c7794() -> ! {
     todo!("0x2c7794 `non-virtual thunk to'RBX::LuaStatsItem::~LuaStatsItem()")
 }
 
 // 0x2c77d4 — __ZThn36_N3RBX12LuaStatsItemD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX12LuaStatsItemD0Ev")]
 pub fn stub_2c77d4() -> ! {
     todo!("0x2c77d4 `non-virtual thunk to'RBX::LuaStatsItem::~LuaStatsItem()")
@@ -616,7 +616,7 @@ pub fn stub_2c790c() -> ! {
 }
 
 // 0x2c7928 — __ZThn32_N3RBX5Stats4ItemD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::Item::~Item()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::Item::~Item()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats4ItemD1Ev")]
 pub fn stub_2c7928() -> ! {
     todo!("0x2c7928 `non-virtual thunk to'RBX::Stats::Item::~Item()")
@@ -661,14 +661,14 @@ pub fn stub_2c7c90() -> ! {
 }
 
 // 0x2c7df0 — __ZThn36_N3RBX5Stats14TypedStatsItemIbED1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats14TypedStatsItemIbED1Ev")]
 pub fn stub_2c7df0() -> ! {
     todo!("0x2c7df0 `non-virtual thunk to'RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")
 }
 
 // 0x2c7f38 — __ZThn36_N3RBX5Stats14TypedStatsItemIbED0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats14TypedStatsItemIbED0Ev")]
 pub fn stub_2c7f38() -> ! {
     todo!("0x2c7f38 `non-virtual thunk to'RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")
