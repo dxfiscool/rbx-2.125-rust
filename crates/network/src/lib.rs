@@ -310,3 +310,5 @@ pub mod generated_net_wd2;
 pub mod generated_net_wd_watchdog2;
 pub mod generated_net_wd_watchdog4;
 pub mod generated_net_wd_watchdog3;
+pub mod generated_net_wd_watchdog5;
+pub mod generated_net_wd_watchdog11;
