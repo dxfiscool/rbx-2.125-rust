@@ -520,3 +520,4 @@ pub mod generated_core_wd_watchdog22;
 pub mod generated_core_wdcron_core;
 pub mod generated_core_wdog_B;
 pub mod generated_core_shard_oi;
+pub mod generated_core_shard_oj;
