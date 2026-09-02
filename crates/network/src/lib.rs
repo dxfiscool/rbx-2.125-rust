@@ -330,3 +330,4 @@ pub mod generated_net_wdcron_B;
 pub mod generated_net_wdog_B;
 pub mod generated_net_wdcron_C;
 pub mod generated_net_wdcron_D;
+pub mod generated_net_wdcron_E;
