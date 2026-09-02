@@ -544,3 +544,4 @@ pub mod generated_rend_wd_watchdog7;
 pub mod generated_rend_wd_watchdog8;
 pub mod generated_rend_wd_watchdog9;
 pub mod generated_rend_wd_watchdog11;
+pub mod generated_rend_wd_watchdog13;
