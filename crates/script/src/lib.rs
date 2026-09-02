@@ -237,3 +237,4 @@ pub mod generated_script_shard_232;
 pub mod generated_233;
 pub mod generated_234;
 pub mod generated_235;
+pub mod generated_236;
