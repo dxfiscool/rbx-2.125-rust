@@ -463,3 +463,5 @@ pub mod generated_datamodel_shard_272;
 pub mod generated_datamodel_shard_273;
 pub mod generated_datamodel_shard_274;
 pub mod generated_datamodel_watchdog_a;
+
+pub mod generated_datamodel_watchdog_b;
