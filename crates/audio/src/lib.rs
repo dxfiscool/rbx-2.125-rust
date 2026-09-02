@@ -14945,3 +14945,4 @@ pub mod generated_audio_wd_watchdog2;
 pub mod generated_audio_wd_watchdog3;
 pub mod generated_audio_wd_watchdog4;
 pub mod generated_audio_wd_watchdog5;
+pub mod generated_audio_wd_watchdog6;
