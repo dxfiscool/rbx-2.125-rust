@@ -507,3 +507,4 @@ pub mod generated_472;
 pub mod generated_rend_473;
 pub mod generated_rend_474;
 pub mod generated_rend_475;
+pub mod generated_rend_476;
