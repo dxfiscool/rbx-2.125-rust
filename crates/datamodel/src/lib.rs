@@ -569,3 +569,4 @@ pub mod generated_dm_wd_watchdog14b;
 pub mod generated_285;
 pub mod generated_dm_wd_watchdog15;
 pub mod generated_dm_wd_watchdog16;
+pub mod generated_dm2_wd_watchdog16;
