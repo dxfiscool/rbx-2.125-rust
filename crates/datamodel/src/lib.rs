@@ -575,3 +575,4 @@ pub mod generated_dm_wd_watchdog20;
 pub mod generated_dm_wdA_1788360960;
 
 pub mod generated_dm_wdB_1788360977;
+pub mod generated_dm_wdB2_1788361394;
