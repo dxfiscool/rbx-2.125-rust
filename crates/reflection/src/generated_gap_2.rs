@@ -164,7 +164,7 @@ pub fn stub_0x294cc4() -> ! {
 #[doc(alias = "global constructor keyed to_a_71")]
 #[doc(alias = "__GLOBAL__I_a_71")]
 pub fn stub_0x294e3c() -> ! {
-    todo!("0x294e3c global constructor keyed to'_a_71")
+    todo!("0x294e3c global constructor keyed to_a_71")
 }
 
 // 0x295320 — __ZN3RBX3Lua17protect_metatableEP9lua_Statei

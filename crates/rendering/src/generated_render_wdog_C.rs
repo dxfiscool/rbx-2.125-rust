@@ -56,9 +56,9 @@ pub fn stub_83904c() -> ! {
 // 0x8392b8 — __GLOBAL__I_a_425
 #[doc(alias = "global constructor keyed to_a_425")]
 #[doc(alias = "__GLOBAL__I_a_425")]
-// was: global constructor keyed to'_a_425
+// was: global constructor keyed to_a_425
 pub fn stub_8392b8() -> ! {
-    todo!("0x8392b8 global constructor keyed to'_a_425")
+    todo!("0x8392b8 global constructor keyed to_a_425")
 }
 
 // 0x839508 — __ZN3RBX13FriendService25setCreateFriendRequestUrlESs

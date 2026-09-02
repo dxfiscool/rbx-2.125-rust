@@ -494,7 +494,7 @@ pub fn stub_4a6870() -> ! {
     todo!("0x4a6870 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9Explosion13ExplosionTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
 }
 
-// 0x4a6898 — __GLOBAL__I_a_188 — global constructor keyed to'_a_188
+// 0x4a6898 — __GLOBAL__I_a_188 — global constructor keyed to_a_188
 #[doc(alias = "global constructor keyed to_a_188")]
 #[doc(alias = "__GLOBAL__I_a_188")]
 pub fn stub_4a6898() -> ! {

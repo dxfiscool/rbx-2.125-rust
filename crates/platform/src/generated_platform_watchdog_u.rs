@@ -75,7 +75,7 @@ pub fn stub_38c3ec() -> ! {
     todo!("0x38c3ec __ZNK3RBX7UIEvent15isRightArrowKeyEv")
 }
 
-// 0x38c3fc — __GLOBAL__I_a_148 — global constructor keyed to'_a_148
+// 0x38c3fc — __GLOBAL__I_a_148 — global constructor keyed to_a_148
 // type: int()
 #[doc(alias = "global constructor keyed to_a_148")]
 #[doc(alias = "__GLOBAL__I_a_148")]
@@ -99,7 +99,7 @@ pub fn stub_38c464() -> ! {
     todo!("0x38c464 __ZN3RBX5Units13kmsForceToRbxEf")
 }
 
-// 0x38c478 — __GLOBAL__I_a_149 — global constructor keyed to'_a_149
+// 0x38c478 — __GLOBAL__I_a_149 — global constructor keyed to_a_149
 // type: int()
 #[doc(alias = "global constructor keyed to_a_149")]
 #[doc(alias = "__GLOBAL__I_a_149")]
@@ -155,7 +155,7 @@ pub fn stub_38cb9c() -> ! {
     todo!("0x38cb9c __ZN3RBX13UserInputBase10removeJobsEv")
 }
 
-// 0x38cba0 — __GLOBAL__I_a_150 — global constructor keyed to'_a_150
+// 0x38cba0 — __GLOBAL__I_a_150 — global constructor keyed to_a_150
 // type: 
 #[doc(alias = "global constructor keyed to_a_150")]
 #[doc(alias = "__GLOBAL__I_a_150")]
@@ -267,7 +267,7 @@ pub fn stub_38d4c4() -> ! {
     todo!("0x38d4c4 __ZN3RBX15StringConverterIfE15convertToStringERKf")
 }
 
-// 0x38da58 — __GLOBAL__I_a_151 — global constructor keyed to'_a_151
+// 0x38da58 — __GLOBAL__I_a_151 — global constructor keyed to_a_151
 // type: 
 #[doc(alias = "global constructor keyed to_a_151")]
 #[doc(alias = "__GLOBAL__I_a_151")]
@@ -523,7 +523,7 @@ pub fn stub_38f1c4() -> ! {
     todo!("0x38f1c4 __ZN3RBX12Accoutrement11getLocationEv")
 }
 
-// 0x38f1f8 — __ZTv0_n12_N3RBX12Accoutrement11getLocationEv — virtual thunk to'RBX::Accoutrement::getLocation(void)
+// 0x38f1f8 — __ZTv0_n12_N3RBX12Accoutrement11getLocationEv — virtual thunk toRBX::Accoutrement::getLocation(void)
 // type: int __fastcall(RBX::Accoutrement *this, _DWORD *)
 #[doc(alias = "virtual thunk toRBX::Accoutrement::getLocation(void)")]
 #[doc(alias = "__ZTv0_n12_N3RBX12Accoutrement11getLocationEv")]

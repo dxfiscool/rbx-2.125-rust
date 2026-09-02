@@ -2,7 +2,7 @@
 // Filter: RBX::Instance|DataModel high EA >0x700000 gap filler EA-sorted asc (shard D after B2)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x888854..0x8c9ffc | RBX::Instance/DataModel high EA >0x700000 sorted asc next 100 after B2 (0x8886e8)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias where needed
 // Shard: datamodel_shard_D EA-sorted ascending continuation after datamodel_shard_B2
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]

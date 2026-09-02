@@ -398,7 +398,7 @@ pub fn stub_823d98() -> ! {
 #[doc(alias = "global constructor keyed to_a_399")]
 #[doc(alias = "__GLOBAL__I_a_399")]
 pub fn stub_823f24() -> ! {
-    todo!("0x823f24 global constructor keyed to'_a_399")
+    todo!("0x823f24 global constructor keyed to_a_399")
 }
 
 // 0x823fec — __Z13luaL_argerrorP9lua_StateiPKc
@@ -670,7 +670,7 @@ pub fn stub_824ff0() -> ! {
 #[doc(alias = "global constructor keyed to_a_400")]
 #[doc(alias = "__GLOBAL__I_a_400")]
 pub fn stub_825024() -> ! {
-    todo!("0x825024 global constructor keyed to'_a_400")
+    todo!("0x825024 global constructor keyed to_a_400")
 }
 
 // 0x8251c0 — __Z12luaopen_baseP9lua_State

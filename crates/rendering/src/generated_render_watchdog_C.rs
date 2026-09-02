@@ -169,7 +169,7 @@ pub fn stub_0x734730() -> ! {
 #[doc(alias = "__GLOBAL__I_a_319")]
 // was: __GLOBAL__I_a_319
 pub fn stub_0x734760() -> ! {
-    todo!("0x734760 global constructor keyed to'_a_319")
+    todo!("0x734760 global constructor keyed to_a_319")
 }
 
 // 0x73492c — __ZN3RBX11GroundStageC1EPNS_6IStageEPNS_5WorldE
@@ -456,7 +456,7 @@ pub fn stub_0x73588c() -> ! {
 #[doc(alias = "__GLOBAL__I_a_320")]
 // was: __GLOBAL__I_a_320
 pub fn stub_0x735930() -> ! {
-    todo!("0x735930 global constructor keyed to'_a_320")
+    todo!("0x735930 global constructor keyed to_a_320")
 }
 
 // 0x735a2c — __ZN3RBX13HumanoidStageC1EPNS_6IStageEPNS_5WorldE
@@ -554,7 +554,7 @@ pub fn stub_0x735f10() -> ! {
 #[doc(alias = "__GLOBAL__I_a_321")]
 // was: __GLOBAL__I_a_321
 pub fn stub_0x735f14() -> ! {
-    todo!("0x735f14 global constructor keyed to'_a_321")
+    todo!("0x735f14 global constructor keyed to_a_321")
 }
 
 // 0x736044 — __ZN3RBX7IMovingC2Ev
@@ -790,7 +790,7 @@ pub fn stub_0x736bb0() -> ! {
 #[doc(alias = "__GLOBAL__I_a_322")]
 // was: __GLOBAL__I_a_322
 pub fn stub_0x736c94() -> ! {
-    todo!("0x736c94 global constructor keyed to'_a_322")
+    todo!("0x736c94 global constructor keyed to_a_322")
 }
 
 // 0x736ccc — __ZN3RBX11IWorldStage11onEdgeAddedEPNS_4EdgeE
@@ -834,7 +834,7 @@ pub fn stub_0x736dc8() -> ! {
 #[doc(alias = "__GLOBAL__I_a_323")]
 // was: __GLOBAL__I_a_323
 pub fn stub_0x736e80() -> ! {
-    todo!("0x736e80 global constructor keyed to'_a_323")
+    todo!("0x736e80 global constructor keyed to_a_323")
 }
 
 // 0x736f30 — __ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEEC1Ev

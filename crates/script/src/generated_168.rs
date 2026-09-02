@@ -2,7 +2,7 @@
 // Filter: Lua|Script|CodeGen (4456 filtered, 0 remaining) -> global gap filler EA-sorted asc next 150 not yet in script crate
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: +150 stubs | range 0x30b1c..0x38720 EA-sorted asc next 150 global not yet in script crate (script 16233 -> 16383 distinct, global 85546->85546 distinct)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

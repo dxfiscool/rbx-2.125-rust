@@ -30,7 +30,7 @@ pub fn stub_a700b8() -> ! {
     todo!("0xa700b8 reloadMT(unsigned int *,unsigned int *&,int &)")
 }
 
-// 0xa6faa0 — global constructor keyed to'_a_527
+// 0xa6faa0 — global constructor keyed to_a_527
 // mangled: __GLOBAL__I_a_527
 // type: 
 #[doc(alias = "global constructor keyed to_a_527")]
@@ -46,7 +46,7 @@ pub fn stub_a6fa3c() -> ! {
     todo!("0xa6fa3c RakNet::RakThread::Create(void * (*)(void *),void *,int)")
 }
 
-// 0xa6f3e8 — global constructor keyed to'_a_526
+// 0xa6f3e8 — global constructor keyed to_a_526
 // mangled: __GLOBAL__I_a_526
 // type: 
 #[doc(alias = "global constructor keyed to_a_526")]
@@ -158,7 +158,7 @@ pub fn stub_a6eaa4() -> ! {
     todo!("0xa6eaa4 RakNet::RakString::RakString(void)")
 }
 
-// 0xa6e490 — global constructor keyed to'_a_525
+// 0xa6e490 — global constructor keyed to_a_525
 // mangled: __GLOBAL__I_a_525
 // type: 
 #[doc(alias = "global constructor keyed to_a_525")]
@@ -174,7 +174,7 @@ pub fn stub_a6e3ac() -> ! {
     todo!("0xa6e3ac RakSleep(unsigned int)")
 }
 
-// 0xa6dd60 — global constructor keyed to'_a_524
+// 0xa6dd60 — global constructor keyed to_a_524
 // mangled: __GLOBAL__I_a_524
 // type: 
 #[doc(alias = "global constructor keyed to_a_524")]

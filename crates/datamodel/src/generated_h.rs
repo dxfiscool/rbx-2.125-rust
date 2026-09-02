@@ -1,8 +1,8 @@
 // Auto-generated skeletons for rbx-datamodel — from ida/export.json
-// Filter: demangled contains RBX::Instance|RBX::DataModel|RBX::Workspace (exact), EA-sorted second half (N-Z) where demangled >= 'RBX::Instance::N' (offset 50%)
+// Filter: demangled contains RBX::Instance|RBX::DataModel|RBX::Workspace (exact), EA-sorted second half (N-Z) where demangled >= RBX::Instance::N (offset 50%)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 150 stubs | range 0x88c16c..0x8d8928 | total filtered 10215, second half 5108, remaining 4307 after batch
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias
 
 #![allow(
     non_snake_case,

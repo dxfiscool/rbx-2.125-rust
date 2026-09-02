@@ -430,11 +430,11 @@ pub fn stub_065ff90() -> ! {
 }
 
 // 0x65ff94 — __GLOBAL__I_a_266
-// demangled: global constructor keyed to'_a_266
+// demangled: global constructor keyed to_a_266
 #[doc(alias = "global constructor keyed to\_a_266")]
 #[doc(alias = "__GLOBAL__I_a_266")]
 pub fn stub_065ff94() -> ! {
-    todo!("0x65ff94 global constructor keyed to'_a_266")
+    todo!("0x65ff94 global constructor keyed to_a_266")
 }
 
 // 0x660890 — __ZN3RBX16SurfaceSelection10setSurfaceENS_8NormalIdE

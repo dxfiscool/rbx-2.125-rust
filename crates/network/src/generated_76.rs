@@ -416,7 +416,7 @@ pub fn stub_633e44() -> ! {
 }
 
 // 0x633f10 — __GLOBAL__I_a_256
-// demangled: global constructor keyed to'_a_256
+// demangled: global constructor keyed to_a_256
 // type: 
 #[doc(alias = "global constructor keyed to_a_256")]
 pub fn stub_633f10() -> ! {

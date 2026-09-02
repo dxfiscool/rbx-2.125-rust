@@ -123,7 +123,7 @@ pub fn stub_662c24() -> ! {
 }
 
 // 0x662c48 — __GLOBAL__I_a_267
-// demangled: global constructor keyed to'_a_267
+// demangled: global constructor keyed to_a_267
 #[doc(alias = "global constructor keyed to_a_267")]
 #[doc(alias = "__GLOBAL__I_a_267")]
 pub fn stub_662c48() -> ! {

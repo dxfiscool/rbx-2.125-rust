@@ -3,7 +3,7 @@
 // Secondary namespace Part|Model|Workspace considered; all Instance|DataModel|Workspace already in datamodel, so high-EA RBX:: used
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0xf65e74..0xf6acf4 | datamodel before 21030, rbx_miss 32866, sec_miss 0
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

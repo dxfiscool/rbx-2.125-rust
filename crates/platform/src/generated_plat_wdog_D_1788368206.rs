@@ -780,9 +780,9 @@ pub fn stub_50010c() -> ! {
 }
 
 // 0x500254 — __GLOBAL__I_a_200
-// was: `global constructor keyed to'_a_200
+// was: global constructor keyed to_a_200
 #[doc(alias = "__GLOBAL__I_a_200")]
-#[doc(alias = "`global constructor keyed to'_a_200")]
+#[doc(alias = "global constructor keyed to_a_200")]
 pub fn stub_500254() -> ! {
     todo!("0x500254 __GLOBAL__I_a_200")
 }

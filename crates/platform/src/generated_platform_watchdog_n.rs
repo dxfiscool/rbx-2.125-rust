@@ -707,7 +707,7 @@ pub fn stub_371250() -> ! {
     todo!("0x371250 __ZN3RBX17HeartbeatInstanceD1Ev")
 }
 
-// 0x371254 — __GLOBAL__I_a_137 — global constructor keyed to'_a_137
+// 0x371254 — __GLOBAL__I_a_137 — global constructor keyed to_a_137
 #[doc(alias = "global constructor keyed to_a_137")]
 #[doc(alias = "__GLOBAL__I_a_137")]
 pub fn stub_371254() -> ! {

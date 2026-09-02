@@ -110,7 +110,7 @@ pub fn stub_0x2f5c4c() -> ! {
 #[doc(alias = "global constructor keyed to_a_102")]
 #[doc(alias = "__GLOBAL__I_a_102")]
 pub fn stub_0x2f5d3c() -> ! {
-    todo!("0x2f5d3c global constructor keyed to'_a_102")
+    todo!("0x2f5d3c global constructor keyed to_a_102")
 }
 
 // 0x2f614c — __ZN3RBX13ArrowToolBase12onMouseHoverERKNS_7UIEventE
@@ -534,7 +534,7 @@ pub fn stub_0x2f8b9c() -> ! {
 #[doc(alias = "global constructor keyed to_a_103")]
 #[doc(alias = "__GLOBAL__I_a_103")]
 pub fn stub_0x2f8c2c() -> ! {
-    todo!("0x2f8c2c global constructor keyed to'_a_103")
+    todo!("0x2f8c2c global constructor keyed to_a_103")
 }
 
 // 0x2f946c — __ZNSt6vectorIN3RBX6Action10ActionTypeESaIS2_EE6resizeEmS2_
@@ -611,7 +611,7 @@ pub fn stub_0x2f97cc() -> ! {
 #[doc(alias = "global constructor keyed to_a_104")]
 #[doc(alias = "__GLOBAL__I_a_104")]
 pub fn stub_0x2f995c() -> ! {
-    todo!("0x2f995c global constructor keyed to'_a_104")
+    todo!("0x2f995c global constructor keyed to_a_104")
 }
 
 // 0x2f9a24 — __ZN3RBX15StringConverterINS_11AnimationIdEE14convertToValueERKSsRS1_
@@ -667,7 +667,7 @@ pub fn stub_0x2fa878() -> ! {
 #[doc(alias = "global constructor keyed to_a_105")]
 #[doc(alias = "__GLOBAL__I_a_105")]
 pub fn stub_0x2fa87c() -> ! {
-    todo!("0x2fa87c global constructor keyed to'_a_105")
+    todo!("0x2fa87c global constructor keyed to_a_105")
 }
 
 // 0x2faa84 — __ZN3RBX14AsyncHttpQueueC2EPNS_8InstanceEN5boost8functionIFbRKSsPSsEEEi

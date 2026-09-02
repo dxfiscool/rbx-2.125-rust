@@ -75,7 +75,7 @@ pub fn stub_75dfd4() -> ! {
 #[doc(alias = "global constructor keyed to_a_354")]
 #[doc(alias = "__GLOBAL__I_a_354")]
 pub fn stub_75dfd8() -> ! {
-    todo!("0x75dfd8 global constructor keyed to'_a_354")
+    todo!("0x75dfd8 global constructor keyed to_a_354")
 }
 // 0x75e0a0 — __ZN3RBX9TreeStageC1EPNS_6IStageEPNS_5WorldE
 // type: _DWORD __fastcall(RBX::TreeStage *__hidden this, RBX::IStage *, RBX::World *)
@@ -340,7 +340,7 @@ pub fn stub_75fa40() -> ! {
 #[doc(alias = "global constructor keyed to_a_355")]
 #[doc(alias = "__GLOBAL__I_a_355")]
 pub fn stub_75fae4() -> ! {
-    todo!("0x75fae4 global constructor keyed to'_a_355")
+    todo!("0x75fae4 global constructor keyed to_a_355")
 }
 // 0x75fc48 — __ZN3RBX9WedgePoly9buildMeshEv
 // type: _DWORD __fastcall(RBX::WedgePoly *__hidden this)
@@ -432,7 +432,7 @@ pub fn stub_761134() -> ! {
 #[doc(alias = "global constructor keyed to_a_356")]
 #[doc(alias = "__GLOBAL__I_a_356")]
 pub fn stub_7613d4() -> ! {
-    todo!("0x7613d4 global constructor keyed to'_a_356")
+    todo!("0x7613d4 global constructor keyed to_a_356")
 }
 // 0x761504 — __ZN3RBX9WeldJoint13canBuildJointEPNS_9PrimitiveES2_NS_8NormalIdES3_
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, void *, int, int, struct _Unwind_Exception *lpuexcpt, int)
@@ -445,7 +445,7 @@ pub fn stub_761504() -> ! {
 #[doc(alias = "global constructor keyed to_a_357")]
 #[doc(alias = "__GLOBAL__I_a_357")]
 pub fn stub_761648() -> ! {
-    todo!("0x761648 global constructor keyed to'_a_357")
+    todo!("0x761648 global constructor keyed to_a_357")
 }
 // 0x761710 — __ZN3RBX9EThrottle12increaseLoadEb
 // type: _DWORD __fastcall(RBX::EThrottle *__hidden this, bool)

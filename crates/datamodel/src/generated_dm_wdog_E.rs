@@ -2,7 +2,7 @@
 // Filter: RBX::Instance|RBX::DataModel|RBX::Workspace filtered 10215 complete -> gap filler distinct not yet in crates/datamodel/src (exact), EA-sorted
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x4f0c8c..0x4f886c | total filtered 10215, remaining filtered 0, remaining global for crate 45083 after batch
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

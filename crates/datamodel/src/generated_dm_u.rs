@@ -2,7 +2,7 @@
 // Filter: demangled contains RBX::Instance|RBX::DataModel|RBX::Workspace, EA-sorted asc next uncovered (~9900 primary + gap filler)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 150 stubs | range 0xa1f64..0xb2480 | total filtered 10215, remaining primary 0 before batch (0 after, gap filler used 150)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -40,7 +40,7 @@ pub fn stub_0xa2328() -> ! {
 // 0xa2374 — __GLOBAL__I__ZN4FMOD8rawcodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::rawcodec")]
-// was: global constructor keyed to'FMOD::rawcodec
+// was: global constructor keyed toFMOD::rawcodec
 pub fn stub_0xa2374() -> ! {
     todo!("0xa2374 global constructor keyed toFMOD::rawcodec")
 }
@@ -181,7 +181,7 @@ pub fn stub_0xa5c98() -> ! {
 // 0xa5ce4 — __GLOBAL__I__ZN4FMOD8s3mcodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::s3mcodec")]
-// was: global constructor keyed to'FMOD::s3mcodec
+// was: global constructor keyed toFMOD::s3mcodec
 pub fn stub_0xa5ce4() -> ! {
     todo!("0xa5ce4 global constructor keyed toFMOD::s3mcodec")
 }
@@ -273,7 +273,7 @@ pub fn stub_0xa6aac() -> ! {
 // 0xa6af8 — __GLOBAL__I__ZN4FMOD8tagcodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::tagcodec")]
-// was: global constructor keyed to'FMOD::tagcodec
+// was: global constructor keyed toFMOD::tagcodec
 pub fn stub_0xa6af8() -> ! {
     todo!("0xa6af8 global constructor keyed toFMOD::tagcodec")
 }
@@ -351,7 +351,7 @@ pub fn stub_0xa6ecc() -> ! {
 // 0xa6f18 — __GLOBAL__I__ZN4FMOD9usercodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::usercodec")]
-// was: global constructor keyed to'FMOD::usercodec
+// was: global constructor keyed toFMOD::usercodec
 pub fn stub_0xa6f18() -> ! {
     todo!("0xa6f18 global constructor keyed toFMOD::usercodec")
 }
@@ -457,7 +457,7 @@ pub fn stub_0xa8400() -> ! {
 // 0xa844c — __GLOBAL__I__ZN4FMOD8wavcodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::wavcodec")]
-// was: global constructor keyed to'FMOD::wavcodec
+// was: global constructor keyed toFMOD::wavcodec
 pub fn stub_0xa844c() -> ! {
     todo!("0xa844c global constructor keyed toFMOD::wavcodec")
 }
@@ -773,7 +773,7 @@ pub fn stub_0xafd50() -> ! {
 // 0xafd94 — __GLOBAL__I__ZN4FMOD13dspcompressorE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::dspcompressor")]
-// was: global constructor keyed to'FMOD::dspcompressor
+// was: global constructor keyed toFMOD::dspcompressor
 pub fn stub_0xafd94() -> ! {
     todo!("0xafd94 global constructor keyed toFMOD::dspcompressor")
 }
@@ -921,7 +921,7 @@ pub fn stub_0xb0f30() -> ! {
 // 0xb0f74 — __GLOBAL__I__ZN4FMOD13dspdistortionE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::dspdistortion")]
-// was: global constructor keyed to'FMOD::dspdistortion
+// was: global constructor keyed toFMOD::dspdistortion
 pub fn stub_0xb0f74() -> ! {
     todo!("0xb0f74 global constructor keyed toFMOD::dspdistortion")
 }
@@ -1055,7 +1055,7 @@ pub fn stub_0xb2430() -> ! {
 // 0xb2474 — __GLOBAL__I__ZN4FMOD12dspecho_descE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::dspecho_desc")]
-// was: global constructor keyed to'FMOD::dspecho_desc
+// was: global constructor keyed toFMOD::dspecho_desc
 pub fn stub_0xb2474() -> ! {
     todo!("0xb2474 global constructor keyed toFMOD::dspecho_desc")
 }

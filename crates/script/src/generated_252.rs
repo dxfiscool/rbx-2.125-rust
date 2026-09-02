@@ -2,7 +2,7 @@
 // Filter: Script|Lua|Yield|CodeGen|Luau (filtered 5401 exhausted) — EA-sorted asc gap filler distinct not yet in crates/script/src
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: +120 stubs | range 0x50cf84..0x5131e8 | EA-sorted asc distinct not yet in script (remaining 55870->55750, rbx_core::SharedPtr not boost)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -348,7 +348,7 @@ pub fn stub_50eff0() -> ! {
     todo!("0x50eff0 __ZNSt6vectorIN3RBX11MergeBinder9IDREFItemESaIS2_EE15_M_erase_at_endEPS2_")
 }
 
-// 0x50f020 — __GLOBAL__I_a_203 — global constructor keyed to'_a_203
+// 0x50f020 — __GLOBAL__I_a_203 — global constructor keyed to_a_203
 #[doc(alias = "global constructor keyed to_a_203")]
 #[doc(alias = "__GLOBAL__I_a_203")]
 pub fn stub_50f020() -> ! {
@@ -474,7 +474,7 @@ pub fn stub_50fbb8() -> ! {
     todo!("0x50fbb8 __ZThn36_N3RBX10Reflection9DescribedINS_7GuiBaseELZNS_8sGuiBaseEENS_17NonFactoryProductINS_8InstanceELZNS_8sGuiBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
 }
 
-// 0x50fc5c — __GLOBAL__I_a_204 — global constructor keyed to'_a_204
+// 0x50fc5c — __GLOBAL__I_a_204 — global constructor keyed to_a_204
 #[doc(alias = "global constructor keyed to_a_204")]
 #[doc(alias = "__GLOBAL__I_a_204")]
 pub fn stub_50fc5c() -> ! {
@@ -789,7 +789,7 @@ pub fn stub_510f70() -> ! {
     todo!("0x510f70 __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase3dENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")
 }
 
-// 0x510f94 — __GLOBAL__I_a_205 — global constructor keyed to'_a_205
+// 0x510f94 — __GLOBAL__I_a_205 — global constructor keyed to_a_205
 #[doc(alias = "global constructor keyed to_a_205")]
 #[doc(alias = "__GLOBAL__I_a_205")]
 pub fn stub_510f94() -> ! {

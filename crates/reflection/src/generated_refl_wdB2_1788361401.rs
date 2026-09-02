@@ -272,7 +272,7 @@ pub fn stub_0x371250() -> ! {
 #[doc(alias = "global constructor keyed to_a_137")]
 #[doc(alias = "__GLOBAL__I_a_137")]
 pub fn stub_0x371254() -> ! {
-    todo!("0x371254 global constructor keyed to'_a_137")
+    todo!("0x371254 global constructor keyed to_a_137")
 }
 
 // 0x371844 — __Z18checkResultNoThrow11FMOD_RESULT

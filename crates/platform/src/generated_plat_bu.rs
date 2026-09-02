@@ -21,7 +21,7 @@ pub fn stub_0x3beb14() -> ! {
 // 0x3beb38 — __GLOBAL__I_a_162
 #[doc(alias = "__GLOBAL__I_a_162")]
 pub fn stub_0x3beb38() -> ! {
-    todo!("0x3beb38 global constructor keyed to'_a_162")
+    todo!("0x3beb38 global constructor keyed to_a_162")
 }
 
 // 0x3befe4 — __ZNK3RBX9BevelMesh8getBevelEv
@@ -234,7 +234,7 @@ pub fn stub_0x3bf844() -> ! {
 // 0x3bf868 — __GLOBAL__I_a_163
 #[doc(alias = "__GLOBAL__I_a_163")]
 pub fn stub_0x3bf868() -> ! {
-    todo!("0x3bf868 global constructor keyed to'_a_163")
+    todo!("0x3bf868 global constructor keyed to_a_163")
 }
 
 // 0x3bfaf4 — __ZN3RBX12BillboardGui10setAdorneeEPNS_8InstanceE

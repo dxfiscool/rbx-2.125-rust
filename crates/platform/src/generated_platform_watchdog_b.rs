@@ -83,7 +83,7 @@ pub fn stub_30e130() -> ! {
     todo!("0x30e130 __ZN3RBX13CameraSubject23cameraPointFromDistanceERKN3G3D7Vector3ES4_f")
 }
 
-// 0x30e1b0 — __GLOBAL__I_a_108 — global constructor keyed to'_a_108
+// 0x30e1b0 — __GLOBAL__I_a_108 — global constructor keyed to_a_108
 // type: 
 #[doc(alias = "global constructor keyed to_a_108")]
 #[doc(alias = "__GLOBAL__I_a_108")]
@@ -123,7 +123,7 @@ pub fn stub_30e670() -> ! {
     todo!("0x30e670 __ZN3RBX5Color16colorFromPointerEPv")
 }
 
-// 0x30e67c — __GLOBAL__I_a_109 — global constructor keyed to'_a_109
+// 0x30e67c — __GLOBAL__I_a_109 — global constructor keyed to_a_109
 // type: 
 #[doc(alias = "global constructor keyed to_a_109")]
 #[doc(alias = "__GLOBAL__I_a_109")]

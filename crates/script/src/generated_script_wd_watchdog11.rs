@@ -2,7 +2,7 @@
 // Filter: Script|Lua|Yield|CodeGen|Luau (filtered 4818 exhausted) — EA-sorted asc gap filler distinct not yet in crates/script/src
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: +120 stubs | range 0x53ce28..0x5477e4 | EA-sorted asc distinct not yet in script (remaining 55230->55110, rbx_core::SharedPtr not boost)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -320,7 +320,7 @@ pub fn stub_0x540278() -> ! {
     todo!("0x540278 __ZNK5boost9function1IvN3RBX9GuiObject11TweenStatusEEclES3_")
 }
 
-// 0x540634 — __GLOBAL__I_a_207 — global constructor keyed to'_a_207
+// 0x540634 — __GLOBAL__I_a_207 — global constructor keyed to_a_207
 #[doc(alias = "global constructor keyed to_a_207")]
 #[doc(alias = "__GLOBAL__I_a_207")]
 pub fn stub_0x540634() -> ! {

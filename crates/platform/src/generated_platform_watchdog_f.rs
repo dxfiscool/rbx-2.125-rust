@@ -58,7 +58,7 @@ pub fn stub_3246ec() -> ! {
     todo!("0x3246ec __ZN3RBX11IndexedMesh13lowersChangedEv")
 }
 
-// 0x324710 — __GLOBAL__I_a_122 — global constructor keyed to'_a_122
+// 0x324710 — __GLOBAL__I_a_122 — global constructor keyed to_a_122
 #[doc(alias = "__GLOBAL__I_a_122")]
 #[doc(alias = "global constructor keyed to_a_122")]
 pub fn stub_324710() -> ! {
@@ -155,7 +155,7 @@ pub fn stub_3250bc() -> ! {
     todo!("0x3250bc __ZN3G3D5ArrayIPN3RBX11IndexedTreeELi10ELm32EEC2Ev")
 }
 
-// 0x3251ac — __GLOBAL__I_a_123 — global constructor keyed to'_a_123
+// 0x3251ac — __GLOBAL__I_a_123 — global constructor keyed to_a_123
 #[doc(alias = "__GLOBAL__I_a_123")]
 #[doc(alias = "global constructor keyed to_a_123")]
 pub fn stub_3251ac() -> ! {
@@ -232,7 +232,7 @@ pub fn stub_325c38() -> ! {
     todo!("0x325c38 __ZN5boost15circular_bufferIN3RBX18InterpolatedCFrame9FrameInfoESaIS3_EE9push_backERKS3_")
 }
 
-// 0x326108 — __GLOBAL__I_a_124 — global constructor keyed to'_a_124
+// 0x326108 — __GLOBAL__I_a_124 — global constructor keyed to_a_124
 #[doc(alias = "__GLOBAL__I_a_124")]
 #[doc(alias = "global constructor keyed to_a_124")]
 pub fn stub_326108() -> ! {
@@ -333,7 +333,7 @@ pub fn stub_326bfc() -> ! {
     todo!("0x326bfc __ZNSt6vectorIN3RBX17KeywordFilterTypeESaIS1_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS1_S3_EEmRKS1_")
 }
 
-// 0x326d8c — __GLOBAL__I_a_125 — global constructor keyed to'_a_125
+// 0x326d8c — __GLOBAL__I_a_125 — global constructor keyed to_a_125
 #[doc(alias = "__GLOBAL__I_a_125")]
 #[doc(alias = "global constructor keyed to_a_125")]
 pub fn stub_326d8c() -> ! {
@@ -372,7 +372,7 @@ pub fn stub_34581c() -> ! {
     todo!("0x34581c __ZN3RBX18LegacyContentTable8AddEntryERKSsS2_")
 }
 
-// 0x345950 — __ZN12_GLOBAL__N_112normalizeUrlERSs — anonymous namespace'::normalizeUrl(std::string &)
+// 0x345950 — __ZN12_GLOBAL__N_112normalizeUrlERSs — anonymous namespace::normalizeUrl(std::string &)
 // type: _DWORD __fastcall(_anonymous_namespace_ *__hidden this, std::string *)
 #[doc(alias = "__ZN12_GLOBAL__N_112normalizeUrlERSs")]
 #[doc(alias = "anonymous namespace::normalizeUrl(std::string &)")]

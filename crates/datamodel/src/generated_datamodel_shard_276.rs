@@ -2,7 +2,7 @@
 // Filter: RBX::Instance|DataModel|Workspace (10215) gap filler EA-sorted asc not yet in datamodel
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 120 stubs | range 0x860708..0xacc888 | filtered 8110->8230/10215 (remaining 1985) | datamodel distinct 19745->19865
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias where needed
 // Shard: datamodel_shard_276 EA-sorted ascending next uncovered filtered gap, no overlap
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]

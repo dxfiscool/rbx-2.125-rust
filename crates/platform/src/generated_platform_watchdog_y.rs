@@ -11,7 +11,7 @@ const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
 
-// 0x39b100 — __GLOBAL__I_a_156 — global constructor keyed to'_a_156
+// 0x39b100 — __GLOBAL__I_a_156 — global constructor keyed to_a_156
 #[doc(alias = "global constructor keyed to_a_156")]
 #[doc(alias = "__GLOBAL__I_a_156")]
 pub fn stub_39b100() -> ! {

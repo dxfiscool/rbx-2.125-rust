@@ -65,7 +65,7 @@ pub fn stub_38b584() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_146")]
 pub fn stub_38b740() -> ! {
-    todo!("0x38b740 global constructor keyed to'_a_146")
+    todo!("0x38b740 global constructor keyed to_a_146")
 }
 
 // 0x38b808 — __ZN3RBX15StringConverterINS_4UDimEE15convertToStringERKS1_
@@ -156,7 +156,7 @@ pub fn stub_38c264() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_147")]
 pub fn stub_38c294() -> ! {
-    todo!("0x38c294 global constructor keyed to'_a_147")
+    todo!("0x38c294 global constructor keyed to_a_147")
 }
 
 // 0x38c35c — __ZNK3RBX7UIEvent18isTextCharacterKeyEv
@@ -233,7 +233,7 @@ pub fn stub_38c3ec() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed to_a_148")]
 pub fn stub_38c3fc() -> ! {
-    todo!("0x38c3fc global constructor keyed to'_a_148")
+    todo!("0x38c3fc global constructor keyed to_a_148")
 }
 
 // 0x38c434 — __ZN3RBX5Units20kmsAccelerationToRbxERKN3G3D7Vector3E
@@ -254,7 +254,7 @@ pub fn stub_38c464() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed to_a_149")]
 pub fn stub_38c478() -> ! {
-    todo!("0x38c478 global constructor keyed to'_a_149")
+    todo!("0x38c478 global constructor keyed to_a_149")
 }
 
 // 0x38c4b0 — __ZN3RBX13UserInputBaseC2Ev
@@ -303,7 +303,7 @@ pub fn stub_38cb9c() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_150")]
 pub fn stub_38cba0() -> ! {
-    todo!("0x38cba0 global constructor keyed to'_a_150")
+    todo!("0x38cba0 global constructor keyed to_a_150")
 }
 
 // 0x38cc68 — __ZN3RBX5rot13ESs
@@ -422,7 +422,7 @@ pub fn stub_38da14() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_151")]
 pub fn stub_38da58() -> ! {
-    todo!("0x38da58 global constructor keyed to'_a_151")
+    todo!("0x38da58 global constructor keyed to_a_151")
 }
 
 // 0x38db20 — __ZN3RBX12Accoutrement18setAttachmentPointERKN3G3D15CoordinateFrameE

@@ -374,7 +374,7 @@ pub fn stub_369f44() -> ! {
     todo!("0x369f44 __ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE13disconnectAllEv")
 }
 
-// 0x36a0bc — __GLOBAL__I_a_136 — global constructor keyed to'_a_136
+// 0x36a0bc — __GLOBAL__I_a_136 — global constructor keyed to_a_136
 #[doc(alias = "global constructor keyed to_a_136")]
 #[doc(alias = "__GLOBAL__I_a_136")]
 pub fn stub_36a0bc() -> ! {

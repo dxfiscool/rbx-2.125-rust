@@ -3,7 +3,7 @@
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x52ab98..0x52fae0 | EA-sorted asc gap filler distinct not overlapping shard A/B4, not yet in datamodel
 // Shard: generated_datamodel_shard_B5 EA-sorted ascending next 100 RBX gap filler after shard B4 (Instance subclasses)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias where needed
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

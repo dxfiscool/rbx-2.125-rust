@@ -739,7 +739,7 @@ pub fn stub_3a3458() -> ! {
     todo!("0x3a3458 __ZN3rbx13remote_signalIFvffEED2Ev")
 }
 
-// 0x3a35a4 — __GLOBAL__I_a_157 — global constructor keyed to'_a_157
+// 0x3a35a4 — __GLOBAL__I_a_157 — global constructor keyed to_a_157
 #[doc(alias = "global constructor keyed to_a_157")]
 #[doc(alias = "__GLOBAL__I_a_157")]
 pub fn stub_3a35a4() -> ! {

@@ -195,7 +195,7 @@ pub fn stub_718c64() -> ! {
 #[doc(alias = "global constructor keyed to_a_302")]
 #[doc(alias = "__GLOBAL__I_a_302")]
 pub fn stub_718ce0() -> ! {
-    todo!("0x718ce0 global constructor keyed to'_a_302")
+    todo!("0x718ce0 global constructor keyed to_a_302")
 }
 
 // 0x718e44 — __ZN3RBX15AssemblyHistoryC1ERNS_8AssemblyE
@@ -314,7 +314,7 @@ pub fn stub_719620() -> ! {
 #[doc(alias = "global constructor keyed to_a_303")]
 #[doc(alias = "__GLOBAL__I_a_303")]
 pub fn stub_71968c() -> ! {
-    todo!("0x71968c global constructor keyed to'_a_303")
+    todo!("0x71968c global constructor keyed to_a_303")
 }
 
 // 0x719788 — __ZN3RBX13AssemblyStageC1EPNS_6IStageEPNS_5WorldE
@@ -441,7 +441,7 @@ pub fn stub_719aac() -> ! {
 #[doc(alias = "global constructor keyed to_a_304")]
 #[doc(alias = "__GLOBAL__I_a_304")]
 pub fn stub_719ab0() -> ! {
-    todo!("0x719ab0 global constructor keyed to'_a_304")
+    todo!("0x719ab0 global constructor keyed to_a_304")
 }
 
 // 0x719be0 — __ZNK3RBX4Ball14getMomentSolidEf
@@ -504,7 +504,7 @@ pub fn stub_71a230() -> ! {
 #[doc(alias = "global constructor keyed to_a_305")]
 #[doc(alias = "__GLOBAL__I_a_305")]
 pub fn stub_71a2fc() -> ! {
-    todo!("0x71a2fc global constructor keyed to'_a_305")
+    todo!("0x71a2fc global constructor keyed to_a_305")
 }
 
 // 0x71a334 — __ZN3RBX15BallPolyContactC1EPNS_9PrimitiveES2_
@@ -619,7 +619,7 @@ pub fn stub_71b084() -> ! {
 #[doc(alias = "global constructor keyed to_a_306")]
 #[doc(alias = "__GLOBAL__I_a_306")]
 pub fn stub_71b0c0() -> ! {
-    todo!("0x71b0c0 global constructor keyed to'_a_306")
+    todo!("0x71b0c0 global constructor keyed to_a_306")
 }
 
 // 0x71b460 — __ZN3RBX5Block4initEv
@@ -861,7 +861,7 @@ pub fn stub_71e3bc() -> ! {
 #[doc(alias = "global constructor keyed to_a_307")]
 #[doc(alias = "__GLOBAL__I_a_307")]
 pub fn stub_71e49c() -> ! {
-    todo!("0x71e49c global constructor keyed to'_a_307")
+    todo!("0x71e49c global constructor keyed to_a_307")
 }
 
 // 0x71e5cc — __ZN3RBX10CleanStageC1EPNS_6IStageEPNS_5WorldE

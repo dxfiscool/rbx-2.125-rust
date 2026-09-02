@@ -213,7 +213,7 @@ pub fn stub_2c9230() -> ! {
 #[doc(alias = "global constructor keyed to_a_74")]
 #[doc(alias = "__GLOBAL__I_a_74")]
 pub fn stub_2c9314() -> ! {
-    todo!("0x2c9314 global constructor keyed to'_a_74")
+    todo!("0x2c9314 global constructor keyed to_a_74")
 }
 
 // 0x2c94ac — __ZN3RBX3Lua13WeakThreadRefC1EP9lua_State
@@ -668,7 +668,7 @@ pub fn stub_2cdd44() -> ! {
 #[doc(alias = "global constructor keyed to_a_75")]
 #[doc(alias = "__GLOBAL__I_a_75")]
 pub fn stub_2cde88() -> ! {
-    todo!("0x2cde88 global constructor keyed to'_a_75")
+    todo!("0x2cde88 global constructor keyed to_a_75")
 }
 
 // 0x2ce130 — __ZN3RBX8Security7Context8isInRoleENS0_10IdentitiesENS0_11PermissionsE
@@ -682,7 +682,7 @@ pub fn stub_2ce130() -> ! {
 #[doc(alias = "global constructor keyed to_a_76")]
 #[doc(alias = "__GLOBAL__I_a_76")]
 pub fn stub_2ce1fc() -> ! {
-    todo!("0x2ce1fc global constructor keyed to'_a_76")
+    todo!("0x2ce1fc global constructor keyed to_a_76")
 }
 
 // 0x2ce2c4 — __ZN3RBX11AdvDragTool11onMouseDownEPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIPNS_8InstanceESaIS9_EERKNS_7UIEventEPNS_9WorkspaceEN5boost10shared_ptrIS8_EE

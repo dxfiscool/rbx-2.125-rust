@@ -226,7 +226,7 @@ pub fn stub_0x4f75a4() -> ! {
     todo!("0x4f75a4")
 }
 
-// 0x4f7894 — __GLOBAL__I_a_197 — `global constructor keyed to'_a_197
+// 0x4f7894 — __GLOBAL__I_a_197 — global constructor keyed to_a_197
 #[doc(alias = "global constructor keyed to_a_197")]
 #[doc(alias = "__GLOBAL__I_a_197")]
 pub fn stub_0x4f7894() -> ! {
@@ -290,7 +290,7 @@ pub fn stub_0x4f842c() -> ! {
     todo!("0x4f842c")
 }
 
-// 0x4f8778 — __ZThn92_N3RBX10ForceField13render3dAdornEPNS_5AdornE — `non-virtual thunk to'RBX::ForceField::render3dAdorn(RBX::Adorn *) — _DWORD __fastcall(RBX::ForceField *__hidden this, RBX::Adorn *)
+// 0x4f8778 — __ZThn92_N3RBX10ForceField13render3dAdornEPNS_5AdornE — non-virtual thunk toRBX::ForceField::render3dAdorn(RBX::Adorn *) — _DWORD __fastcall(RBX::ForceField *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::ForceField::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn92_N3RBX10ForceField13render3dAdornEPNS_5AdornE")]
 pub fn stub_0x4f8778() -> ! {
@@ -325,14 +325,14 @@ pub fn stub_0x4f8834() -> ! {
     todo!("0x4f8834")
 }
 
-// 0x4f8838 — __ZThn32_N3RBX10ForceFieldD1Ev — `non-virtual thunk to'RBX::ForceField::~ForceField() — void __fastcall(RBX::ForceField *__hidden this)
+// 0x4f8838 — __ZThn32_N3RBX10ForceFieldD1Ev — non-virtual thunk toRBX::ForceField::~ForceField() — void __fastcall(RBX::ForceField *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
 #[doc(alias = "__ZThn32_N3RBX10ForceFieldD1Ev")]
 pub fn stub_0x4f8838() -> ! {
     todo!("0x4f8838")
 }
 
-// 0x4f8840 — __ZThn32_N3RBX10ForceFieldD0Ev — `non-virtual thunk to'RBX::ForceField::~ForceField() — void __fastcall(RBX::ForceField *__hidden this)
+// 0x4f8840 — __ZThn32_N3RBX10ForceFieldD0Ev — non-virtual thunk toRBX::ForceField::~ForceField() — void __fastcall(RBX::ForceField *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
 #[doc(alias = "__ZThn32_N3RBX10ForceFieldD0Ev")]
 pub fn stub_0x4f8840() -> ! {
@@ -346,35 +346,35 @@ pub fn stub_0x4f8848() -> ! {
     todo!("0x4f8848")
 }
 
-// 0x4f8858 — __ZThn36_N3RBX10ForceFieldD1Ev — `non-virtual thunk to'RBX::ForceField::~ForceField() — void __fastcall(RBX::ForceField *__hidden this)
+// 0x4f8858 — __ZThn36_N3RBX10ForceFieldD1Ev — non-virtual thunk toRBX::ForceField::~ForceField() — void __fastcall(RBX::ForceField *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
 #[doc(alias = "__ZThn36_N3RBX10ForceFieldD1Ev")]
 pub fn stub_0x4f8858() -> ! {
     todo!("0x4f8858")
 }
 
-// 0x4f8860 — __ZThn36_N3RBX10ForceFieldD0Ev — `non-virtual thunk to'RBX::ForceField::~ForceField() — void __fastcall(RBX::ForceField *__hidden this)
+// 0x4f8860 — __ZThn36_N3RBX10ForceFieldD0Ev — non-virtual thunk toRBX::ForceField::~ForceField() — void __fastcall(RBX::ForceField *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
 #[doc(alias = "__ZThn36_N3RBX10ForceFieldD0Ev")]
 pub fn stub_0x4f8860() -> ! {
     todo!("0x4f8860")
 }
 
-// 0x4f8868 — __ZThn92_NK3RBX10ForceField19shouldRender3dAdornEv — `non-virtual thunk to'RBX::ForceField::shouldRender3dAdorn(void)const — _DWORD __fastcall(RBX::ForceField *__hidden this)
+// 0x4f8868 — __ZThn92_NK3RBX10ForceField19shouldRender3dAdornEv — non-virtual thunk toRBX::ForceField::shouldRender3dAdorn(void)const — _DWORD __fastcall(RBX::ForceField *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ForceField::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZThn92_NK3RBX10ForceField19shouldRender3dAdornEv")]
 pub fn stub_0x4f8868() -> ! {
     todo!("0x4f8868")
 }
 
-// 0x4f886c — __ZThn116_N3RBX10ForceFieldD1Ev — `non-virtual thunk to'RBX::ForceField::~ForceField() — void __fastcall(RBX::ForceField *__hidden this)
+// 0x4f886c — __ZThn116_N3RBX10ForceFieldD1Ev — non-virtual thunk toRBX::ForceField::~ForceField() — void __fastcall(RBX::ForceField *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
 #[doc(alias = "__ZThn116_N3RBX10ForceFieldD1Ev")]
 pub fn stub_0x4f886c() -> ! {
     todo!("0x4f886c")
 }
 
-// 0x4f8874 — __ZThn116_N3RBX10ForceFieldD0Ev — `non-virtual thunk to'RBX::ForceField::~ForceField() — void __fastcall(RBX::ForceField *__hidden this)
+// 0x4f8874 — __ZThn116_N3RBX10ForceFieldD0Ev — non-virtual thunk toRBX::ForceField::~ForceField() — void __fastcall(RBX::ForceField *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
 #[doc(alias = "__ZThn116_N3RBX10ForceFieldD0Ev")]
 pub fn stub_0x4f8874() -> ! {
@@ -479,7 +479,7 @@ pub fn stub_0x4f8ce8() -> ! {
     todo!("0x4f8ce8")
 }
 
-// 0x4f8e28 — __GLOBAL__I_a_198 — `global constructor keyed to'_a_198
+// 0x4f8e28 — __GLOBAL__I_a_198 — global constructor keyed to_a_198
 #[doc(alias = "global constructor keyed to_a_198")]
 #[doc(alias = "__GLOBAL__I_a_198")]
 pub fn stub_0x4f8e28() -> ! {
@@ -521,7 +521,7 @@ pub fn stub_0x4f956c() -> ! {
     todo!("0x4f956c")
 }
 
-// 0x4f9978 — __ZThn96_N3RBX5Frame8render2dEPNS_5AdornE — `non-virtual thunk to'RBX::Frame::render2d(RBX::Adorn *) — _DWORD __fastcall(RBX::Frame *__hidden this, RBX::Adorn *)
+// 0x4f9978 — __ZThn96_N3RBX5Frame8render2dEPNS_5AdornE — non-virtual thunk toRBX::Frame::render2d(RBX::Adorn *) — _DWORD __fastcall(RBX::Frame *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::Frame::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX5Frame8render2dEPNS_5AdornE")]
 pub fn stub_0x4f9978() -> ! {
@@ -647,7 +647,7 @@ pub fn stub_0x4fa268() -> ! {
     todo!("0x4fa268")
 }
 
-// 0x4fac70 — __GLOBAL__I_a_199 — `global constructor keyed to'_a_199
+// 0x4fac70 — __GLOBAL__I_a_199 — global constructor keyed to_a_199
 #[doc(alias = "global constructor keyed to_a_199")]
 #[doc(alias = "__GLOBAL__I_a_199")]
 pub fn stub_0x4fac70() -> ! {

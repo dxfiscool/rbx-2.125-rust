@@ -340,14 +340,14 @@ pub fn stub_3c2b5c() -> ! {
 }
 
 // 0x3c2d40 — __GLOBAL__I_a_164
-// demangled: global constructor keyed to'_a_164
+// demangled: global constructor keyed to_a_164
 #[doc(alias = "global constructor keyed to_a_164")]
 pub fn stub_3c2d40() -> ! {
     todo!("0x3c2d40 global constructor keyed to_a_164")
 }
 
 // 0x3c333c — __GLOBAL__I_a_165
-// demangled: global constructor keyed to'_a_165
+// demangled: global constructor keyed to_a_165
 #[doc(alias = "global constructor keyed to_a_165")]
 pub fn stub_3c333c() -> ! {
     todo!("0x3c333c global constructor keyed to_a_165")

@@ -2,7 +2,7 @@
 // Filter: EA-sorted asc next 100 not yet in datamodel (high EA global gap fallback after shard A 0x266504..0x26d0ec [262], strict RBX::Instance|RBX::DataModel|Workspace 10215 complete, global fallback, EA-sorted asc)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0xf6df80..0xf6e424 | high EA global gap fallback not yet in datamodel after 0x26d0ec (shard 262) and after global max 0xf6df74, datamodel distinct 30314->30414 (global 85545 all covered, fallback to high EA gap), was 594 remaining high tail
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias where needed
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

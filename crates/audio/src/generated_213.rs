@@ -544,7 +544,7 @@ pub fn stub_4e14f8() -> ! {
 }
 
 // 0x4e1618 — __GLOBAL__I_a_191
-// demangled: global constructor keyed to'_a_191
+// demangled: global constructor keyed to_a_191
 #[doc(alias = "global constructor keyed to_a_191")]
 #[doc(alias = "__GLOBAL__I_a_191")]
 pub fn stub_4e1618() -> ! {

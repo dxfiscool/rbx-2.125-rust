@@ -2,7 +2,7 @@
 // Filter: EA-sorted asc next 150 not yet in datamodel (strict RBX::Instance|RBX::DataModel|RBX::Workspace 0 remaining, fallback gap filler)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 150 stubs | range 0x248224..0x257980 | strict 10215 complete (0 remaining), datamodel distinct 29652->29802
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias where needed
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -202,7 +202,7 @@ pub fn stub_0x248bdc() -> ! {
 
 // 0x248be0 — __GLOBAL__I_a_50
 // type: void __fastcall(int, int, int, int, void *, int)
-// was: global constructor keyed to'_a_50
+// was: global constructor keyed to_a_50
 #[doc(alias = "global constructor keyed to_a_50")]
 pub fn stub_0x248be0() -> ! {
     todo!("0x248be0 global constructor keyed to_a_50")
@@ -442,7 +442,7 @@ pub fn stub_0x24b070() -> ! {
 
 // 0x24b120 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEE7rethrowEv
 // type: void __fastcall __noreturn(_DWORD *)
-// was: virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::rethrow(void)const
+// was: virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::rethrow(void)const
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::rethrow(void)const")]
 pub fn stub_0x24b120() -> ! {
     todo!("0x24b120 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::rethrow(void)const")
@@ -450,7 +450,7 @@ pub fn stub_0x24b120() -> ! {
 
 // 0x24b130 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
-// was: virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()
+// was: virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
 pub fn stub_0x24b130() -> ! {
     todo!("0x24b130 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")
@@ -570,7 +570,7 @@ pub fn stub_0x24beb0() -> ! {
 
 // 0x24bf64 — __GLOBAL__I_a_51
 // type: (unknown)
-// was: global constructor keyed to'_a_51
+// was: global constructor keyed to_a_51
 #[doc(alias = "global constructor keyed to_a_51")]
 pub fn stub_0x24bf64() -> ! {
     todo!("0x24bf64 global constructor keyed to_a_51")
@@ -618,7 +618,7 @@ pub fn stub_0x2501bc() -> ! {
 
 // 0x25323c — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEE7rethrowEv
 // type: int __fastcall(_DWORD *, int, int, int, void *, int)
-// was: virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::rethrow(void)const
+// was: virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::rethrow(void)const
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::rethrow(void)const")]
 pub fn stub_0x25323c() -> ! {
     todo!("0x25323c virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::rethrow(void)const")
@@ -626,7 +626,7 @@ pub fn stub_0x25323c() -> ! {
 
 // 0x25324c — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
-// was: virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()
+// was: virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()")]
 pub fn stub_0x25324c() -> ! {
     todo!("0x25324c virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()")
@@ -690,7 +690,7 @@ pub fn stub_0x253af0() -> ! {
 
 // 0x253c78 — __GLOBAL__I_a_52
 // type: (unknown)
-// was: global constructor keyed to'_a_52
+// was: global constructor keyed to_a_52
 #[doc(alias = "global constructor keyed to_a_52")]
 pub fn stub_0x253c78() -> ! {
     todo!("0x253c78 global constructor keyed to_a_52")
@@ -962,7 +962,7 @@ pub fn stub_0x254bbc() -> ! {
 
 // 0x254bc0 — __GLOBAL__I_a_53
 // type: int()
-// was: global constructor keyed to'_a_53
+// was: global constructor keyed to_a_53
 #[doc(alias = "global constructor keyed to_a_53")]
 pub fn stub_0x254bc0() -> ! {
     todo!("0x254bc0 global constructor keyed to_a_53")
@@ -1034,7 +1034,7 @@ pub fn stub_0x25529c() -> ! {
 
 // 0x2552f0 — __GLOBAL__I_a_54
 // type: int()
-// was: global constructor keyed to'_a_54
+// was: global constructor keyed to_a_54
 #[doc(alias = "global constructor keyed to_a_54")]
 pub fn stub_0x2552f0() -> ! {
     todo!("0x2552f0 global constructor keyed to_a_54")

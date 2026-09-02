@@ -42,7 +42,7 @@ pub fn stub_38cb9c() -> ! {
 #[doc(alias = "global constructor keyed to_a_150")]
 #[doc(alias = "__GLOBAL__I_a_150")]
 pub fn stub_38cba0() -> ! {
-    todo!("0x38cba0 global constructor keyed to'_a_150")
+    todo!("0x38cba0 global constructor keyed to_a_150")
 }
 
 // 0x38cc68 — __ZN3RBX5rot13ESs
@@ -161,7 +161,7 @@ pub fn stub_38da14() -> ! {
 #[doc(alias = "global constructor keyed to_a_151")]
 #[doc(alias = "__GLOBAL__I_a_151")]
 pub fn stub_38da58() -> ! {
-    todo!("0x38da58 global constructor keyed to'_a_151")
+    todo!("0x38da58 global constructor keyed to_a_151")
 }
 
 // 0x38db20 — __ZN3RBX12Accoutrement18setAttachmentPointERKN3G3D15CoordinateFrameE
@@ -371,7 +371,7 @@ pub fn stub_38f1c4() -> ! {
 #[doc(alias = "virtual thunk toRBX::Accoutrement::getLocation(void)")]
 #[doc(alias = "__ZTv0_n12_N3RBX12Accoutrement11getLocationEv")]
 pub fn stub_38f1f8() -> ! {
-    todo!("0x38f1f8 virtual thunk to'RBX::Accoutrement::getLocation(void)")
+    todo!("0x38f1f8 virtual thunk toRBX::Accoutrement::getLocation(void)")
 }
 
 // 0x38f20c — __ZN3RBX12Accoutrement17connectTouchEventEv
@@ -675,7 +675,7 @@ pub fn stub_39357c() -> ! {
 #[doc(alias = "global constructor keyed to_a_152")]
 #[doc(alias = "__GLOBAL__I_a_152")]
 pub fn stub_3935a0() -> ! {
-    todo!("0x3935a0 global constructor keyed to'_a_152")
+    todo!("0x3935a0 global constructor keyed to_a_152")
 }
 
 // 0x393ee0 — __ZN3RBX11PVAdornmentC2EPKc
@@ -738,7 +738,7 @@ pub fn stub_3948a0() -> ! {
 #[doc(alias = "global constructor keyed to_a_153")]
 #[doc(alias = "__GLOBAL__I_a_153")]
 pub fn stub_396230() -> ! {
-    todo!("0x396230 global constructor keyed to'_a_153")
+    todo!("0x396230 global constructor keyed to_a_153")
 }
 
 // 0x396554 — __ZN3RBX19AnimatableRootJoint13getParentNameEv
@@ -759,7 +759,7 @@ pub fn stub_396574() -> ! {
 #[doc(alias = "global constructor keyed to_a_154")]
 #[doc(alias = "__GLOBAL__I_a_154")]
 pub fn stub_39672c() -> ! {
-    todo!("0x39672c global constructor keyed to'_a_154")
+    todo!("0x39672c global constructor keyed to_a_154")
 }
 
 // 0x39699c — __ZN3RBX9Animation10setAssetIdENS_11AnimationIdE

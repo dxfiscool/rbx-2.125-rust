@@ -2,7 +2,7 @@
 // Filter: RBX::(Instance|DataModel|Workspace) EA-sorted asc next 100 not yet covered in ANY crate (fallback EA-sorted asc not yet in datamodel, global 85545 all covered)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x180440..0x18c6f0 | global missing 0 (datamodel distinct 27402->27502, global 85545)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias where needed
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

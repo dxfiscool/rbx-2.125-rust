@@ -60,11 +60,11 @@ pub fn stub_73beac() -> ! {
 }
 
 // 0x73c03c — __GLOBAL__I_a_328
-// was: global constructor keyed to'_a_328
+// was: global constructor keyed to_a_328
 #[doc(alias = "global constructor keyed to_a_328")]
 #[doc(alias = "__GLOBAL__I_a_328")]
 pub fn stub_73c03c() -> ! {
-    todo!("0x73c03c global constructor keyed to'_a_328")
+    todo!("0x73c03c global constructor keyed to_a_328")
 }
 
 // 0x73c104 — __ZN3RBX9MechanismC1Ev
@@ -222,11 +222,11 @@ pub fn stub_73c584() -> ! {
 }
 
 // 0x73c628 — __GLOBAL__I_a_329
-// was: global constructor keyed to'_a_329
+// was: global constructor keyed to_a_329
 #[doc(alias = "global constructor keyed to_a_329")]
 #[doc(alias = "__GLOBAL__I_a_329")]
 pub fn stub_73c628() -> ! {
-    todo!("0x73c628 global constructor keyed to'_a_329")
+    todo!("0x73c628 global constructor keyed to_a_329")
 }
 
 // 0x73c6f0 — __ZN3RBX19MechToAssemblyStageC1EPNS_6IStageEPNS_5WorldE
@@ -325,11 +325,11 @@ pub fn stub_73cbc8() -> ! {
 }
 
 // 0x73cc88 — __GLOBAL__I_a_330
-// was: global constructor keyed to'_a_330
+// was: global constructor keyed to_a_330
 #[doc(alias = "global constructor keyed to_a_330")]
 #[doc(alias = "__GLOBAL__I_a_330")]
 pub fn stub_73cc88() -> ! {
-    todo!("0x73cc88 global constructor keyed to'_a_330")
+    todo!("0x73cc88 global constructor keyed to_a_330")
 }
 
 // 0x73cea8 — __ZN3RBX4POLY4Mesh9addVertexEfff
@@ -692,11 +692,11 @@ pub fn stub_741650() -> ! {
 }
 
 // 0x7416e0 — __GLOBAL__I_a_331
-// was: global constructor keyed to'_a_331
+// was: global constructor keyed to_a_331
 #[doc(alias = "global constructor keyed to_a_331")]
 #[doc(alias = "__GLOBAL__I_a_331")]
 pub fn stub_7416e0() -> ! {
-    todo!("0x7416e0 global constructor keyed to'_a_331")
+    todo!("0x7416e0 global constructor keyed to_a_331")
 }
 
 // 0x7417a8 — __ZN3RBX12Motor6DJointC1Ev

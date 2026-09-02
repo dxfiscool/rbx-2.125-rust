@@ -393,7 +393,7 @@ pub fn stub_bdd9d4() -> ! {
 
 // 0xbde2d4 — __ZN12_GLOBAL__N_123replaceMaterialTexturesERKyN4Ogre10TexturePtrE
 #[doc(alias = "anonymous namespace::replaceMaterialTextures(unsigned long long const&,Ogre::TexturePtr)")]
-// was: anonymous namespace'::replaceMaterialTextures(unsigned long long const&,Ogre::TexturePtr)
+// was: anonymous namespace::replaceMaterialTextures(unsigned long long const&,Ogre::TexturePtr)
 pub fn stub_bde2d4() -> ! {
     todo!("0xbde2d4 anonymous namespace::replaceMaterialTextures(unsigned long long const&,Ogre::TexturePtr)")
 }

@@ -2,7 +2,7 @@
 // Filter: RBX::Instance/DataModel gap filler EA-sorted asc next 120 uncovered distinct not yet in crates/datamodel/src after shard C (0x404370..0x408518)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 120 stubs | range 0x4085b8..0x40d9b8 | total datamodel covered 38582, global uncovered 48733, next after shard C
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias
 // Shard: D EA-sorted ascending — continuation after shard C (0x408518) next 120 gap filler
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]

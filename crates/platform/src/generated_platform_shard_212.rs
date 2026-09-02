@@ -508,7 +508,7 @@ pub fn stub_2e998c() -> ! {
     todo!("0x2e998c __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EED2Ev")
 }
 
-// 0x2e9b08 — __GLOBAL__I_a_95 — global constructor keyed to'_a_95
+// 0x2e9b08 — __GLOBAL__I_a_95 — global constructor keyed to_a_95
 // type: 
 #[doc(alias = "global constructor keyed to_a_95")]
 #[doc(alias = "__GLOBAL__I_a_95")]
@@ -657,7 +657,7 @@ pub fn stub_2eab50() -> ! {
     todo!("0x2eab50 __ZN3RBX4Name9doDeclareILZNS_12sLuaDragToolEEEERKS0_v")
 }
 
-// 0x2eac30 — __GLOBAL__I_a_96 — global constructor keyed to'_a_96
+// 0x2eac30 — __GLOBAL__I_a_96 — global constructor keyed to_a_96
 // type: 
 #[doc(alias = "global constructor keyed to_a_96")]
 #[doc(alias = "__GLOBAL__I_a_96")]

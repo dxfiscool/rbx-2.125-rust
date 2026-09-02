@@ -2,7 +2,7 @@
 // Global gap filler EA-sorted asc — next 120 uncovered funcs not in any crates/*/src
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 120 stubs | range 0x8f3fc..0xa0c58 | total 85545, distinct before 36421, after 36541, global missing before 49125, after 49005
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -208,7 +208,7 @@ pub fn stub_0x92fac() -> ! {
 // 0x9301c — __GLOBAL__I__ZN4FMOD9midicodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::midicodec")]
-// was: global constructor keyed to'FMOD::midicodec
+// was: global constructor keyed toFMOD::midicodec
 pub fn stub_0x9301c() -> ! {
     todo!("0x9301c global constructor keyed toFMOD::midicodec")
 }
@@ -321,7 +321,7 @@ pub fn stub_0x95e64() -> ! {
 // 0x95ebc — __GLOBAL__I__ZN4FMOD8modcodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::modcodec")]
-// was: global constructor keyed to'FMOD::modcodec
+// was: global constructor keyed toFMOD::modcodec
 pub fn stub_0x95ebc() -> ! {
     todo!("0x95ebc global constructor keyed toFMOD::modcodec")
 }
@@ -427,7 +427,7 @@ pub fn stub_0x97670() -> ! {
 // 0x976c8 — __GLOBAL__I__ZN4FMOD9mpegcodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::mpegcodec")]
-// was: global constructor keyed to'FMOD::mpegcodec
+// was: global constructor keyed toFMOD::mpegcodec
 pub fn stub_0x976c8() -> ! {
     todo!("0x976c8 global constructor keyed toFMOD::mpegcodec")
 }
@@ -757,7 +757,7 @@ pub fn stub_0xa0564() -> ! {
 // 0xa0614 — __GLOBAL__I_FMOD_OggVorbis_Malloc
 // type: int()
 #[doc(alias = "global constructor keyed to_FMOD_OggVorbis_Malloc")]
-// was: global constructor keyed to'_FMOD_OggVorbis_Malloc
+// was: global constructor keyed to_FMOD_OggVorbis_Malloc
 pub fn stub_0xa0614() -> ! {
     todo!("0xa0614 global constructor keyed to_FMOD_OggVorbis_Malloc")
 }

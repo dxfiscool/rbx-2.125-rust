@@ -742,7 +742,7 @@ pub fn stub_3b06ec() -> ! {
     todo!("0x3b06ec __ZN3RBX19EventReplicatorBaseINS_10ArcHandlesEFvN3G3D7Vector34AxisEEED2Ev")
 }
 
-// 0x3b081c — __GLOBAL__I_a_159 — global constructor keyed to'_a_159
+// 0x3b081c — __GLOBAL__I_a_159 — global constructor keyed to_a_159
 #[doc(alias = "global constructor keyed to_a_159")]
 #[doc(alias = "__GLOBAL__I_a_159")]
 pub fn stub_3b081c() -> ! {

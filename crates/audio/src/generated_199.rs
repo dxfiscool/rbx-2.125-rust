@@ -482,11 +482,11 @@ pub fn stub_4a6870() -> ! {
 }
 
 // 0x4a6898 — __GLOBAL__I_a_188
-// demangled: global constructor keyed to'_a_188
+// demangled: global constructor keyed to_a_188
 #[doc(alias = "global constructor keyed to_a_188")]
 #[doc(alias = "__GLOBAL__I_a_188")]
 pub fn stub_4a6898() -> ! {
-    todo!("0x4a6898 global constructor keyed to'_a_188")
+    todo!("0x4a6898 global constructor keyed to_a_188")
 }
 
 // 0x4a6e24 — __ZN3RBX20ExtrudedPartInstance19setVisualTrussStyleENS0_16VisualTrussStyleE
@@ -525,57 +525,57 @@ pub fn stub_4a7234() -> ! {
 }
 
 // 0x4a7244 — __ZThn32_N3RBX20ExtrudedPartInstanceD0Ev
-// demangled: non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()
+// demangled: non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()
 // type: void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 #[doc(alias = "__ZThn32_N3RBX20ExtrudedPartInstanceD0Ev")]
 pub fn stub_4a7244() -> ! {
-    todo!("0x4a7244 non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
+    todo!("0x4a7244 non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
 
 // 0x4a724c — __ZThn36_N3RBX20ExtrudedPartInstanceD0Ev
-// demangled: non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()
+// demangled: non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()
 // type: void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 #[doc(alias = "__ZThn36_N3RBX20ExtrudedPartInstanceD0Ev")]
 pub fn stub_4a724c() -> ! {
-    todo!("0x4a724c non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
+    todo!("0x4a724c non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
 
 // 0x4a7254 — __ZThn132_N3RBX20ExtrudedPartInstanceD0Ev
-// demangled: non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()
+// demangled: non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()
 // type: void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 #[doc(alias = "__ZThn132_N3RBX20ExtrudedPartInstanceD0Ev")]
 pub fn stub_4a7254() -> ! {
-    todo!("0x4a7254 non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
+    todo!("0x4a7254 non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
 
 // 0x4a725c — __ZThn32_N3RBX20ExtrudedPartInstanceD1Ev
-// demangled: non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()
+// demangled: non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()
 // type: void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 #[doc(alias = "__ZThn32_N3RBX20ExtrudedPartInstanceD1Ev")]
 pub fn stub_4a725c() -> ! {
-    todo!("0x4a725c non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
+    todo!("0x4a725c non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
 
 // 0x4a7270 — __ZThn36_N3RBX20ExtrudedPartInstanceD1Ev
-// demangled: non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()
+// demangled: non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()
 // type: void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 #[doc(alias = "__ZThn36_N3RBX20ExtrudedPartInstanceD1Ev")]
 pub fn stub_4a7270() -> ! {
-    todo!("0x4a7270 non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
+    todo!("0x4a7270 non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
 
 // 0x4a7284 — __ZThn132_N3RBX20ExtrudedPartInstanceD1Ev
-// demangled: non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()
+// demangled: non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()
 // type: void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 #[doc(alias = "__ZThn132_N3RBX20ExtrudedPartInstanceD1Ev")]
 pub fn stub_4a7284() -> ! {
-    todo!("0x4a7284 non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
+    todo!("0x4a7284 non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
 
 // 0x4a7298 — __ZNK3RBX20ExtrudedPartInstance16getMinimumUiSizeEv

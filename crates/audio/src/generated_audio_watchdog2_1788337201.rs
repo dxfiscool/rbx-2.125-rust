@@ -79,7 +79,7 @@ pub fn stub_5cb2c0() -> ! {
 }
 
 // 0x5cb2e4 — __GLOBAL__I_a_227
-// demangled: global constructor keyed to'_a_227
+// demangled: global constructor keyed to_a_227
 #[doc(alias = "global constructor keyed to_a_227")]
 #[doc(alias = "__GLOBAL__I_a_227")]
 pub fn stub_5cb2e4() -> ! {
@@ -430,7 +430,7 @@ pub fn stub_5cd060() -> ! {
 }
 
 // 0x5cd1f4 — __ZTv0_n12_N3RBX13ModelInstance11getLocationEv
-// demangled: virtual thunk to'RBX::ModelInstance::getLocation(void)
+// demangled: virtual thunk toRBX::ModelInstance::getLocation(void)
 // type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
 #[doc(alias = "virtual thunk toRBX::ModelInstance::getLocation(void)")]
 #[doc(alias = "__ZTv0_n12_N3RBX13ModelInstance11getLocationEv")]

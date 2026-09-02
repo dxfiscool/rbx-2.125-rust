@@ -179,7 +179,7 @@ pub fn stub_2f5c4c() -> ! {
     todo!("0x2f5c4c __ZN3G3D5ArrayImLi10ELm32EEC2Ev")
 }
 
-// 0x2f5d3c — __GLOBAL__I_a_102 — global constructor keyed to'_a_102
+// 0x2f5d3c — __GLOBAL__I_a_102 — global constructor keyed to_a_102
 // type: 
 #[doc(alias = "global constructor keyed to_a_102")]
 #[doc(alias = "__GLOBAL__I_a_102")]
@@ -667,7 +667,7 @@ pub fn stub_2f8b9c() -> ! {
     todo!("0x2f8b9c __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS3_IKS5_EEET_SF_SF_RKT0_St26random_access_iterator_tag")
 }
 
-// 0x2f8c2c — __GLOBAL__I_a_103 — global constructor keyed to'_a_103
+// 0x2f8c2c — __GLOBAL__I_a_103 — global constructor keyed to_a_103
 // type: 
 #[doc(alias = "global constructor keyed to_a_103")]
 #[doc(alias = "__GLOBAL__I_a_103")]
@@ -779,7 +779,7 @@ pub fn stub_2f97cc() -> ! {
     todo!("0x2f97cc __ZNSt6vectorIN3RBX6Action10ActionTypeESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")
 }
 
-// 0x2f995c — __GLOBAL__I_a_104 — global constructor keyed to'_a_104
+// 0x2f995c — __GLOBAL__I_a_104 — global constructor keyed to_a_104
 // type: 
 #[doc(alias = "global constructor keyed to_a_104")]
 #[doc(alias = "__GLOBAL__I_a_104")]

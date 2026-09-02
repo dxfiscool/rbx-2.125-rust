@@ -2,7 +2,7 @@
 // Filter: RBX::Instance|DataModel|Workspace (10215) — next 120 not yet in crates/datamodel/src
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 120 stubs | range 0x45b560..0x45fd90 | EA-sorted asc distinct, RBX::Instance|DataModel|Workspace only gap filler not yet in rbx_datamodel
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias
 // Shard: A EA-sorted ascending next uncovered RBX after watchdog_W
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]

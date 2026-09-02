@@ -184,7 +184,7 @@ pub fn stub_766dfc() -> ! {
 // 0x767640 — __GLOBAL__I_a_358
 #[doc(alias = "__GLOBAL__I_a_358")]
 pub fn stub_767640() -> ! {
-    todo!("0x767640 global constructor keyed to'_a_358")
+    todo!("0x767640 global constructor keyed to_a_358")
 }
 
 // 0x767950 — __ZN3RBX9Scripting15DebuggerManager22addDebugger_ReflectionEN5boost10shared_ptrINS_8InstanceEEE

@@ -2,7 +2,7 @@
 // Filter: RBX::Instance|DataModel|Workspace (10215) complete — fallback global gap filler lowest uncovered EA asc not yet in datamodel
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x3485f8..0x351780 | datamodel distinct 34039->34139 global uncovered 51506->51406, lowest gap EA-sorted asc next 100 after watchdog_u (0x322b78..0x3480fc)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias where needed
 // Shard: watchdog_v EA-sorted ascending next uncovered gap after watchdog_u (distinct check via export.json sorted EA, no overlap)
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]

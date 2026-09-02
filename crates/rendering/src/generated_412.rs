@@ -295,7 +295,7 @@ pub fn stub_63ef38() -> ! {
 #[doc(alias = "global constructor keyed to_a_263")]
 // was: __GLOBAL__I_a_263
 pub fn stub_65740c() -> ! {
-    todo!("0x65740c 'global constructor keyed to'_a_263")
+    todo!("0x65740c global constructor keyed to_a_263")
 }
 
 // 0x657980 — __ZN3RBX10Reflection9EventDescINS_10StudioToolEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev
@@ -412,7 +412,7 @@ pub fn stub_657e8c() -> ! {
 #[doc(alias = "global constructor keyed to_a_264")]
 // was: __GLOBAL__I_a_264
 pub fn stub_6583a0() -> ! {
-    todo!("0x6583a0 'global constructor keyed to'_a_264")
+    todo!("0x6583a0 global constructor keyed to_a_264")
 }
 
 // 0x658744 — __GLOBAL__I_a_265
@@ -421,7 +421,7 @@ pub fn stub_6583a0() -> ! {
 #[doc(alias = "global constructor keyed to_a_265")]
 // was: __GLOBAL__I_a_265
 pub fn stub_658744() -> ! {
-    todo!("0x658744 'global constructor keyed to'_a_265")
+    todo!("0x658744 global constructor keyed to_a_265")
 }
 
 // 0x658a7c — __ZN3RBX10Reflection4Type12getSingletonINS_7SurfaceEEERKS1_v

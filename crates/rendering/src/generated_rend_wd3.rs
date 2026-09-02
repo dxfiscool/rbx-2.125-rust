@@ -833,9 +833,9 @@ pub fn stub_7d1f98() -> ! {
 // 0x7d207c — __GLOBAL__I_a_377
 #[doc(alias = "global constructor keyed to_a_377")]
 #[doc(alias = "__GLOBAL__I_a_377")]
-// was: global constructor keyed to'_a_377
+// was: global constructor keyed to_a_377
 pub fn stub_7d207c() -> ! {
-    todo!("0x7d207c global constructor keyed to'_a_377")
+    todo!("0x7d207c global constructor keyed to_a_377")
 }
 
 

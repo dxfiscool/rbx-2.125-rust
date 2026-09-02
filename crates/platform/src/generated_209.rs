@@ -40,7 +40,7 @@ pub fn stub_2c67c8() -> ! {
     todo!("0x2c67c8 __ZN3RBX3Lua15YieldingThreads13WaitingThreadC2EP9lua_StateNS_4Time8IntervalE")
 }
 
-// 0x2c68dc — __GLOBAL__I_a_73 — global constructor keyed to'_a_73
+// 0x2c68dc — __GLOBAL__I_a_73 — global constructor keyed to_a_73
 #[doc(alias = "global constructor keyed to_a_73")]
 #[doc(alias = "__GLOBAL__I_a_73")]
 pub fn stub_2c68dc() -> ! {
@@ -537,7 +537,7 @@ pub fn stub_2c9230() -> ! {
     todo!("0x2c9230 __ZNSt8_Rb_treeISsSt4pairIKSsN3RBX11ScriptStats14StatCollectionEESt10_Select1stIS5_ESt4lessISsESaIS5_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS5_E")
 }
 
-// 0x2c9314 — __GLOBAL__I_a_74 — global constructor keyed to'_a_74
+// 0x2c9314 — __GLOBAL__I_a_74 — global constructor keyed to_a_74
 #[doc(alias = "global constructor keyed to_a_74")]
 #[doc(alias = "__GLOBAL__I_a_74")]
 pub fn stub_2c9314() -> ! {

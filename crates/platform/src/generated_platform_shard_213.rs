@@ -51,7 +51,7 @@ pub fn stub_2ebf7c() -> ! {
     todo!("0x2ebf7c __ZN3RBX11MegaDragger16anyDragPartAliveEv")
 }
 
-// 0x2ebf88 — __GLOBAL__I_a_97 — global constructor keyed to'_a_97
+// 0x2ebf88 — __GLOBAL__I_a_97 — global constructor keyed to_a_97
 // type: 
 #[doc(alias = "global constructor keyed to_a_97")]
 #[doc(alias = "__GLOBAL__I_a_97")]
@@ -203,7 +203,7 @@ pub fn stub_2eeadc() -> ! {
     todo!("0x2eeadc __ZThn36_N3RBX18MoveResizeJoinToolD0Ev")
 }
 
-// 0x2eebd8 — __GLOBAL__I_a_98 — global constructor keyed to'_a_98
+// 0x2eebd8 — __GLOBAL__I_a_98 — global constructor keyed to_a_98
 // type: 
 #[doc(alias = "global constructor keyed to_a_98")]
 #[doc(alias = "__GLOBAL__I_a_98")]
@@ -499,7 +499,7 @@ pub fn stub_2f04fc() -> ! {
     todo!("0x2f04fc __ZN3RBX11shared_fromINS_8NullToolEEEN5boost10shared_ptrIT_EEPS4_")
 }
 
-// 0x2f0664 — __GLOBAL__I_a_99 — global constructor keyed to'_a_99
+// 0x2f0664 — __GLOBAL__I_a_99 — global constructor keyed to_a_99
 // type: 
 #[doc(alias = "global constructor keyed to_a_99")]
 #[doc(alias = "__GLOBAL__I_a_99")]
@@ -683,7 +683,7 @@ pub fn stub_2f1868() -> ! {
     todo!("0x2f1868 __ZN3RBX4Name9doDeclareILZNS_13sPartDragToolEEEERKS0_v")
 }
 
-// 0x2f1948 — __GLOBAL__I_a_100 — global constructor keyed to'_a_100
+// 0x2f1948 — __GLOBAL__I_a_100 — global constructor keyed to_a_100
 // type: 
 #[doc(alias = "global constructor keyed to_a_100")]
 #[doc(alias = "__GLOBAL__I_a_100")]
@@ -691,7 +691,7 @@ pub fn stub_2f1948() -> ! {
     todo!("0x2f1948 __GLOBAL__I_a_100")
 }
 
-// 0x2f1c20 — __GLOBAL__I_a_101 — global constructor keyed to'_a_101
+// 0x2f1c20 — __GLOBAL__I_a_101 — global constructor keyed to_a_101
 // type: 
 #[doc(alias = "global constructor keyed to_a_101")]
 #[doc(alias = "__GLOBAL__I_a_101")]

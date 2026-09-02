@@ -810,14 +810,14 @@ pub fn stub_0x2e28bc() -> ! {
 #[doc(alias = "global constructor keyed to_a_88")]
 #[doc(alias = "__GLOBAL__I_a_88")]
 pub fn stub_0x2e2948() -> ! {
-    todo!("0x2e2948 global constructor keyed to'_a_88")
+    todo!("0x2e2948 global constructor keyed to_a_88")
 }
 
 // 0x2e2cbc — __GLOBAL__I_a_89
 #[doc(alias = "global constructor keyed to_a_89")]
 #[doc(alias = "__GLOBAL__I_a_89")]
 pub fn stub_0x2e2cbc() -> ! {
-    todo!("0x2e2cbc global constructor keyed to'_a_89")
+    todo!("0x2e2cbc global constructor keyed to_a_89")
 }
 
 // 0x2e2f2c — __ZN3RBX8GameToolC1EPNS_9WorkspaceE

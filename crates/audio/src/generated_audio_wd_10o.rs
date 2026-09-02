@@ -261,7 +261,7 @@ pub fn stub_5e2bc0() -> ! {
 }
 
 // 0x5e2bd0 — __ZTv0_n12_N3RBX12PartInstance11getLocationEv
-// demangled: virtual thunk to'RBX::PartInstance::getLocation(void)
+// demangled: virtual thunk toRBX::PartInstance::getLocation(void)
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "virtual thunk toRBX::PartInstance::getLocation(void)")]
 #[doc(alias = "__ZTv0_n12_N3RBX12PartInstance11getLocationEv")]
@@ -709,7 +709,7 @@ pub fn stub_5e4228() -> ! {
 }
 
 // 0x5e4240 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEE5cloneEv
-// demangled: virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::clone(void)const
+// demangled: virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::clone(void)const
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::clone(void)const")]
 #[doc(alias = "__ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEE5cloneEv")]
 pub fn stub_5e4240() -> ! {

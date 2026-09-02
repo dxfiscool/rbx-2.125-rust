@@ -159,7 +159,7 @@ pub fn stub_36e04() -> ! {
 }
 
 // 0x36e80 — __GLOBAL__I_a_9
-// demangled: global constructor keyed to'_a_9
+// demangled: global constructor keyed to_a_9
 // type: 
 #[doc(alias = "global constructor keyed to_a_9")]
 pub fn stub_36e80() -> ! {

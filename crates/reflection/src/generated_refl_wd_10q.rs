@@ -42,7 +42,7 @@ pub fn stub_2cead8() -> ! {
 #[doc(alias = "global constructor keyed to_a_77")]
 #[doc(alias = "__GLOBAL__I_a_77")]
 pub fn stub_2ceadc() -> ! {
-    todo!("0x2ceadc global constructor keyed to'_a_77")
+    todo!("0x2ceadc global constructor keyed to_a_77")
 }
 
 // 0x2ced4c — __ZN3RBX13AdvLuaDraggerC2Ev
@@ -314,7 +314,7 @@ pub fn stub_2d11b8() -> ! {
 #[doc(alias = "global constructor keyed to_a_78")]
 #[doc(alias = "__GLOBAL__I_a_78")]
 pub fn stub_2d145c() -> ! {
-    todo!("0x2d145c global constructor keyed to'_a_78")
+    todo!("0x2d145c global constructor keyed to_a_78")
 }
 
 // 0x2d17c4 — __ZN3RBX14AdvLuaDragToolC1EPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIN5boost8weak_ptrIS1_EESaISA_EEPNS_9WorkspaceENS8_10shared_ptrINS_8InstanceEEE
@@ -455,7 +455,7 @@ pub fn stub_2d2554() -> ! {
 #[doc(alias = "global constructor keyed to_a_79")]
 #[doc(alias = "__GLOBAL__I_a_79")]
 pub fn stub_2d2634() -> ! {
-    todo!("0x2d2634 global constructor keyed to'_a_79")
+    todo!("0x2d2634 global constructor keyed to_a_79")
 }
 
 // 0x2d28a4 — __ZN3RBX15AdvMoveToolBaseC2EPNS_9WorkspaceE
@@ -657,7 +657,7 @@ pub fn stub_2d54d0() -> ! {
 #[doc(alias = "global constructor keyed to_a_80")]
 #[doc(alias = "__GLOBAL__I_a_80")]
 pub fn stub_2d55f8() -> ! {
-    todo!("0x2d55f8 global constructor keyed to'_a_80")
+    todo!("0x2d55f8 global constructor keyed to_a_80")
 }
 
 // 0x2d5890 — __ZN3RBX13AdvRotateTool8render2dEPNS_5AdornE
@@ -727,7 +727,7 @@ pub fn stub_2d607c() -> ! {
 #[doc(alias = "global constructor keyed to_a_81")]
 #[doc(alias = "__GLOBAL__I_a_81")]
 pub fn stub_2d6120() -> ! {
-    todo!("0x2d6120 global constructor keyed to'_a_81")
+    todo!("0x2d6120 global constructor keyed to_a_81")
 }
 
 // 0x2d6390 — __ZN3RBX13AdvRunDragger8SnapInfo20updateSurfaceFromHitEv

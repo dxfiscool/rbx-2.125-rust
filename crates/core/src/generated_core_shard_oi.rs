@@ -1,5 +1,5 @@
 //! core shard oi — 120 core stubs EA-sorted, filtered.
-//! Source: `ida/export.json` filtered where demangled/mangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted, next 120 uncovered (lowest filtered after existing).
+//! Source: ida/export.json filtered where demangled/mangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted, next 120 uncovered (lowest filtered after existing).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
@@ -74,10 +74,10 @@ pub fn stub_9ac8() -> ! {
     todo!("0x9ac8 __ZN19CRenderSettingsItem19setAutoQualityLevelEi")
 }
 
-#[doc(alias = "`non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int)")]
+#[doc(alias = "non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int)")]
 // 0x9ae8 — __ZThn96_N19CRenderSettingsItem19setAutoQualityLevelEi
 // type: int __fastcall(int this, int)
-// was: `non-virtual thunk to'CRenderSettingsItem::setAutoQualityLevel(int)
+// was: non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int)
 pub fn stub_9ae8() -> ! {
     todo!("0x9ae8 __ZThn96_N19CRenderSettingsItem19setAutoQualityLevelEi")
 }
@@ -110,34 +110,34 @@ pub fn stub_b8bc() -> ! {
     todo!("0xb8bc __ZN19CRenderSettingsItemD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
+#[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 // 0xb8e0 — __ZThn32_N19CRenderSettingsItemD1Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
-// was: `non-virtual thunk to'CRenderSettingsItem::~CRenderSettingsItem()
+// was: non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()
 pub fn stub_b8e0() -> ! {
     todo!("0xb8e0 __ZThn32_N19CRenderSettingsItemD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
+#[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 // 0xb8e8 — __ZThn32_N19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
-// was: `non-virtual thunk to'CRenderSettingsItem::~CRenderSettingsItem()
+// was: non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()
 pub fn stub_b8e8() -> ! {
     todo!("0xb8e8 __ZThn32_N19CRenderSettingsItemD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
+#[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 // 0xb910 — __ZThn36_N19CRenderSettingsItemD1Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
-// was: `non-virtual thunk to'CRenderSettingsItem::~CRenderSettingsItem()
+// was: non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()
 pub fn stub_b910() -> ! {
     todo!("0xb910 __ZThn36_N19CRenderSettingsItemD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
+#[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 // 0xb918 — __ZThn36_N19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
-// was: `non-virtual thunk to'CRenderSettingsItem::~CRenderSettingsItem()
+// was: non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()
 pub fn stub_b918() -> ! {
     todo!("0xb918 __ZThn36_N19CRenderSettingsItemD0Ev")
 }

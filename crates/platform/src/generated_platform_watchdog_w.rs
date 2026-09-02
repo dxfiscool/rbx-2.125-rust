@@ -147,7 +147,7 @@ pub fn stub_39357c() -> ! {
     todo!("0x39357c __ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8setValueEPNS0_13DescribedBaseES8_")
 }
 
-// 0x3935a0 — __GLOBAL__I_a_152 — global constructor keyed to'_a_152
+// 0x3935a0 — __GLOBAL__I_a_152 — global constructor keyed to_a_152
 #[doc(alias = "global constructor keyed to_a_152")]
 #[doc(alias = "__GLOBAL__I_a_152")]
 pub fn stub_3935a0() -> ! {
@@ -727,7 +727,7 @@ pub fn stub_3961b4() -> ! {
     todo!("0x3961b4 __ZN5boost10shared_ptrIN3RBX10PVInstanceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")
 }
 
-// 0x396230 — __GLOBAL__I_a_153 — global constructor keyed to'_a_153
+// 0x396230 — __GLOBAL__I_a_153 — global constructor keyed to_a_153
 #[doc(alias = "global constructor keyed to_a_153")]
 #[doc(alias = "__GLOBAL__I_a_153")]
 pub fn stub_396230() -> ! {
@@ -758,7 +758,7 @@ pub fn stub_396574() -> ! {
     todo!("0x396574 __ZN3RBX19AnimatableRootJoint9applyPoseERKNS_10CachedPoseE")
 }
 
-// 0x39672c — __GLOBAL__I_a_154 — global constructor keyed to'_a_154
+// 0x39672c — __GLOBAL__I_a_154 — global constructor keyed to_a_154
 #[doc(alias = "global constructor keyed to_a_154")]
 #[doc(alias = "__GLOBAL__I_a_154")]
 pub fn stub_39672c() -> ! {

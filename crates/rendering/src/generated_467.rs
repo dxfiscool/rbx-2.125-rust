@@ -35,7 +35,7 @@ pub fn stub_711244() -> ! {
 #[doc(alias = "global constructor keyed to_a_298")]
 #[doc(alias = "__GLOBAL__I_a_298")]
 pub fn stub_711274() -> ! {
-    todo!("0x711274 global constructor keyed to'_a_298")
+    todo!("0x711274 global constructor keyed to_a_298")
 }
 
 // 0x71281c — __ZN3RBX15StringConverterINS_7Region3EE15convertToStringERKS1_
@@ -130,7 +130,7 @@ pub fn stub_713f20() -> ! {
 #[doc(alias = "global constructor keyed to_a_299")]
 #[doc(alias = "__GLOBAL__I_a_299")]
 pub fn stub_713f2c() -> ! {
-    todo!("0x713f2c global constructor keyed to'_a_299")
+    todo!("0x713f2c global constructor keyed to_a_299")
 }
 
 // 0x7140c4 — __ZN3RBX15ServiceProvider34findPublicServiceByClassNameStringESs
@@ -384,7 +384,7 @@ pub fn stub_715950() -> ! {
 #[doc(alias = "global constructor keyed to_a_300")]
 #[doc(alias = "__GLOBAL__I_a_300")]
 pub fn stub_715ad0() -> ! {
-    todo!("0x715ad0 global constructor keyed to'_a_300")
+    todo!("0x715ad0 global constructor keyed to_a_300")
 }
 
 // 0x715ea0 — __ZN3RBX4VerbC2EPNS_13VerbContainerERKSs
@@ -553,7 +553,7 @@ pub fn stub_716570() -> ! {
 #[doc(alias = "global constructor keyed to_a_301")]
 #[doc(alias = "__GLOBAL__I_a_301")]
 pub fn stub_7165d8() -> ! {
-    todo!("0x7165d8 global constructor keyed to'_a_301")
+    todo!("0x7165d8 global constructor keyed to_a_301")
 }
 
 // 0x7166a0 — __ZN3RBX8AssemblyC1Ev

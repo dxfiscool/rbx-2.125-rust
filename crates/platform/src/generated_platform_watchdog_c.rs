@@ -96,7 +96,7 @@ pub fn stub_314a10() -> ! {
     todo!("0x314a10 __ZNSt8_Rb_treeISsSt4pairIKSsN3RBX13ContentFilter11ResultEntryEESt10_Select1stIS5_ESt4lessISsESaIS5_EE8_M_eraseEPSt13_Rb_tree_nodeIS5_E")
 }
 
-// 0x314a40 — __GLOBAL__I_a_110 — global constructor keyed to'_a_110
+// 0x314a40 — __GLOBAL__I_a_110 — global constructor keyed to_a_110
 #[doc(alias = "global constructor keyed to_a_110")]
 #[doc(alias = "__GLOBAL__I_a_110")]
 pub fn stub_314a40() -> ! {
@@ -151,7 +151,7 @@ pub fn stub_314d14() -> ! {
     todo!("0x314d14 __ZN3RBX9ContentId14convertAssetIdERKSs")
 }
 
-// 0x314f94 — __ZN12_GLOBAL__N_111createIdUrlERSsRKSsS2_ — anonymous namespace'::createIdUrl(std::string &,std::string const&,std::string const&)
+// 0x314f94 — __ZN12_GLOBAL__N_111createIdUrlERSsRKSsS2_ — anonymous namespace::createIdUrl(std::string &,std::string const&,std::string const&)
 // type: _DWORD __fastcall(_anonymous_namespace_ *__hidden this, std::string *, const std::string *, const std::string *)
 #[doc(alias = "anonymous namespace::createIdUrl(std::string &,std::string const&,std::string const&)")]
 #[doc(alias = "__ZN12_GLOBAL__N_111createIdUrlERSsRKSsS2_")]
@@ -207,7 +207,7 @@ pub fn stub_315564() -> ! {
     todo!("0x315564 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSsEESsSsNS_4hashISsEESt8equal_toISsEEEE11delete_nodeEPNS1_10ptr_bucketE")
 }
 
-// 0x315594 — __GLOBAL__I_a_111 — global constructor keyed to'_a_111
+// 0x315594 — __GLOBAL__I_a_111 — global constructor keyed to_a_111
 #[doc(alias = "global constructor keyed to_a_111")]
 #[doc(alias = "__GLOBAL__I_a_111")]
 pub fn stub_315594() -> ! {
@@ -329,7 +329,7 @@ pub fn stub_3164c4() -> ! {
     todo!("0x3164c4 __ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEE19get_untyped_deleterEv")
 }
 
-// 0x3164c8 — __GLOBAL__I_a_112 — global constructor keyed to'_a_112
+// 0x3164c8 — __GLOBAL__I_a_112 — global constructor keyed to_a_112
 #[doc(alias = "global constructor keyed to_a_112")]
 #[doc(alias = "__GLOBAL__I_a_112")]
 pub fn stub_3164c8() -> ! {

@@ -2,7 +2,7 @@
 // Filter: global gap filler fallback excluding all namespaced (no ::, no _Z) — next 120 not yet in rbx_datamodel (datamodel_shard_B)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 120 stubs | range 0x3a35a4..0x689778 | EA-sorted asc distinct, global gap filler fallback not yet in datamodel (excluding all namespaced)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias
 // Shard: datamodel_shard_B EA-sorted ascending
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]

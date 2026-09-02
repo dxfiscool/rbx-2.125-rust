@@ -3,7 +3,7 @@
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 150 stubs | range 0x23ca8..0x2f5d4 | total filtered 10215 already complete (RBX::Instance|DataModel|Workspace), datamodel distinct before 19216, after 19366, not-in-datamodel 66329->66179
 // Shard: bg_5 EA-sorted asc next 150 low-EA global gap filler after 0x23c90 not yet in datamodel (filtered exhausted, 66329 missing before -> 66179 after, rbx_core::SharedPtr not boost)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -215,7 +215,7 @@ pub fn stub_24510() -> ! {
 
 // 0x24540 — __GLOBAL__I_a_7
 #[doc(alias = "global constructor keyed to_a_7")]
-// was: global constructor keyed to'_a_7
+// was: global constructor keyed to_a_7
 pub fn stub_24540() -> ! {
     todo!("0x24540 global constructor keyed to_a_7")
 }

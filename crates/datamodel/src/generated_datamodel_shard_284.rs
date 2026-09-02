@@ -2,7 +2,7 @@
 // Filter: RBX::Instance|DataModel|Workspace complete — fallback EA-sorted asc not yet in datamodel
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0xf1fa68..0xf1ff6c | next 100 uncovered after 0xf1fa5c (shard_283)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias
 // Shard: datamodel_shard_284 EA-sorted ascending
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]

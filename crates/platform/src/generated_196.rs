@@ -944,10 +944,10 @@ pub fn stub_0x294cc4() -> ! {
     todo!("0x294cc4 rbx::signals::signal<void ()(lua_State *)>::disconnectAll(void)")
 }
 
-// 0x294e3c — global constructor keyed to'_a_71
+// 0x294e3c — global constructor keyed to_a_71
 // mangled: __GLOBAL__I_a_71
 pub fn stub_0x294e3c() -> ! {
-    todo!("0x294e3c global constructor keyed to'_a_71")
+    todo!("0x294e3c global constructor keyed to_a_71")
 }
 
 // 0x295320 — RBX::Lua::protect_metatable(lua_State *,int)

@@ -244,7 +244,7 @@ pub fn stub_267488() -> ! {
 // 0x2674b0 — __GLOBAL__I_a_60
 #[doc(alias = "global constructor keyed to_a_60")]
 pub fn stub_2674b0() -> ! {
-    todo!("0x2674b0 global constructor keyed to'_a_60")
+    todo!("0x2674b0 global constructor keyed to_a_60")
 }
 
 // 0x2675e0 — __ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEEERKS1_v
@@ -509,7 +509,7 @@ pub fn stub_268bec() -> ! {
 // 0x268bf0 — __GLOBAL__I_a_61
 #[doc(alias = "global constructor keyed to_a_61")]
 pub fn stub_268bf0() -> ! {
-    todo!("0x268bf0 global constructor keyed to'_a_61")
+    todo!("0x268bf0 global constructor keyed to_a_61")
 }
 
 // 0x268cb8 — __ZN3RBX10CoreScriptC1ERKNS_9ContentIdE

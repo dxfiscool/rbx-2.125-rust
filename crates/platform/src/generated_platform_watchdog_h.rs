@@ -683,7 +683,7 @@ pub fn stub_3565b8() -> ! {
     todo!("0x3565b8 __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE5clearEv")
 }
 
-// 0x3565e4 — __GLOBAL__I_a_126 — global constructor keyed to'_a_126
+// 0x3565e4 — __GLOBAL__I_a_126 — global constructor keyed to_a_126
 #[doc(alias = "__GLOBAL__I_a_126")]
 #[doc(alias = "global constructor keyed to_a_126")]
 pub fn stub_3565e4() -> ! {

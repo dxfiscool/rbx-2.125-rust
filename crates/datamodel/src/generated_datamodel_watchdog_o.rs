@@ -11,7 +11,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0x2d2634 — __GLOBAL__I_a_79
 #[doc(alias = "global constructor keyed to_a_79")]
 #[doc(alias = "__GLOBAL__I_a_79")]
-// was: global constructor keyed to'_a_79
+// was: global constructor keyed to_a_79
 pub fn stub_2d2634() -> ! {
     todo!("0x2d2634 global constructor keyed to_a_79")
 }
@@ -149,7 +149,7 @@ pub fn stub_2d51bc() -> ! {
 // 0x2d55f8 — __GLOBAL__I_a_80
 #[doc(alias = "global constructor keyed to_a_80")]
 #[doc(alias = "__GLOBAL__I_a_80")]
-// was: global constructor keyed to'_a_80
+// was: global constructor keyed to_a_80
 pub fn stub_2d55f8() -> ! {
     todo!("0x2d55f8 global constructor keyed to_a_80")
 }
@@ -224,7 +224,7 @@ pub fn stub_2d607c() -> ! {
 // 0x2d6120 — __GLOBAL__I_a_81
 #[doc(alias = "global constructor keyed to_a_81")]
 #[doc(alias = "__GLOBAL__I_a_81")]
-// was: global constructor keyed to'_a_81
+// was: global constructor keyed to_a_81
 pub fn stub_2d6120() -> ! {
     todo!("0x2d6120 global constructor keyed to_a_81")
 }
@@ -358,7 +358,7 @@ pub fn stub_2d9d4c() -> ! {
 // 0x2d9d50 — __GLOBAL__I_a_82
 #[doc(alias = "global constructor keyed to_a_82")]
 #[doc(alias = "__GLOBAL__I_a_82")]
-// was: global constructor keyed to'_a_82
+// was: global constructor keyed to_a_82
 pub fn stub_2d9d50() -> ! {
     todo!("0x2d9d50 global constructor keyed to_a_82")
 }
@@ -460,7 +460,7 @@ pub fn stub_2db1c0() -> ! {
 // 0x2db2c4 — __GLOBAL__I_a_83
 #[doc(alias = "global constructor keyed to_a_83")]
 #[doc(alias = "__GLOBAL__I_a_83")]
-// was: global constructor keyed to'_a_83
+// was: global constructor keyed to_a_83
 pub fn stub_2db2c4() -> ! {
     todo!("0x2db2c4 global constructor keyed to_a_83")
 }
@@ -468,7 +468,7 @@ pub fn stub_2db2c4() -> ! {
 // 0x2db534 — __GLOBAL__I_a_84
 #[doc(alias = "global constructor keyed to_a_84")]
 #[doc(alias = "__GLOBAL__I_a_84")]
-// was: global constructor keyed to'_a_84
+// was: global constructor keyed to_a_84
 pub fn stub_2db534() -> ! {
     todo!("0x2db534 global constructor keyed to_a_84")
 }
@@ -555,7 +555,7 @@ pub fn stub_2dc078() -> ! {
 // 0x2dc354 — __GLOBAL__I_a_85
 #[doc(alias = "global constructor keyed to_a_85")]
 #[doc(alias = "__GLOBAL__I_a_85")]
-// was: global constructor keyed to'_a_85
+// was: global constructor keyed to_a_85
 pub fn stub_2dc354() -> ! {
     todo!("0x2dc354 global constructor keyed to_a_85")
 }

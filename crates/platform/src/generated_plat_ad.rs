@@ -65,7 +65,7 @@ pub fn stub_bb77c() -> ! {
     todo!("0xbb77c __Z41__static_initialization_and_destruction_0ii_29")
 }
 
-// 0xbb7c0 - __GLOBAL__I__ZN4FMOD10dspparameqE / global constructor keyed to'FMOD::dspparameq
+// 0xbb7c0 - __GLOBAL__I__ZN4FMOD10dspparameqE / global constructor keyed toFMOD::dspparameq
 #[doc(alias = "global constructor keyed toFMOD::dspparameq")]
 pub fn stub_bb7c0() -> ! {
     todo!("0xbb7c0 global constructor keyed toFMOD::dspparameq")
@@ -255,7 +255,7 @@ pub fn stub_bf318() -> ! {
     todo!("0xbf318 __Z41__static_initialization_and_destruction_0ii_30")
 }
 
-// 0xbf35c - __GLOBAL__I__ZN4FMOD13dsppitchshiftE / global constructor keyed to'FMOD::dsppitchshift
+// 0xbf35c - __GLOBAL__I__ZN4FMOD13dsppitchshiftE / global constructor keyed toFMOD::dsppitchshift
 #[doc(alias = "global constructor keyed toFMOD::dsppitchshift")]
 pub fn stub_bf35c() -> ! {
     todo!("0xbf35c global constructor keyed toFMOD::dsppitchshift")
@@ -446,7 +446,7 @@ pub fn stub_c1ac0() -> ! {
     todo!("0xc1ac0 __Z41__static_initialization_and_destruction_0ii_31")
 }
 
-// 0xc1b04 - __GLOBAL__I__ZN4FMOD9dspreverbE / global constructor keyed to'FMOD::dspreverb
+// 0xc1b04 - __GLOBAL__I__ZN4FMOD9dspreverbE / global constructor keyed toFMOD::dspreverb
 #[doc(alias = "global constructor keyed toFMOD::dspreverb")]
 pub fn stub_c1b04() -> ! {
     todo!("0xc1b04 global constructor keyed toFMOD::dspreverb")
@@ -677,7 +677,7 @@ pub fn stub_c36d4() -> ! {
     todo!("0xc36d4 __Z41__static_initialization_and_destruction_0ii_32")
 }
 
-// 0xc3718 - __GLOBAL__I__ZN4FMOD12dspsfxreverbE / global constructor keyed to'FMOD::dspsfxreverb
+// 0xc3718 - __GLOBAL__I__ZN4FMOD12dspsfxreverbE / global constructor keyed toFMOD::dspsfxreverb
 #[doc(alias = "global constructor keyed toFMOD::dspsfxreverb")]
 pub fn stub_c3718() -> ! {
     todo!("0xc3718 global constructor keyed toFMOD::dspsfxreverb")

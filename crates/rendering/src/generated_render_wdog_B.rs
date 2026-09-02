@@ -65,9 +65,9 @@ pub fn stub_68fec8() -> ! {
 
 // 0x690050 — __GLOBAL__I_a_279
 #[doc(alias = "global constructor keyed to_a_279")]
-// was: global constructor keyed to'_a_279
+// was: global constructor keyed to_a_279
 pub fn stub_690050() -> ! {
-    todo!("0x690050 global constructor keyed to'_a_279")
+    todo!("0x690050 global constructor keyed to_a_279")
 }
 
 // 0x6907e4 — __ZN3RBX10Controller9getButtonENS0_6ButtonE

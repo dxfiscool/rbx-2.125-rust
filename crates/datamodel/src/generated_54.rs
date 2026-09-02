@@ -2,7 +2,7 @@
 // Filter: demangled contains RBX::Instance|RBX::DataModel (exact RBX:: prefix), EA-sorted
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 120 stubs | range 0x43af8c..0x44c37c | total filtered 9903, remaining 3116->2996 after batch
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias
 // Shard: 54 EA-sorted ascending earliest gap after 0x43adec (shard 52), distinct from shard 51 (0x7101ec..0x786a10) and shard 53 (0xf5a404..0xf5cb14)
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]

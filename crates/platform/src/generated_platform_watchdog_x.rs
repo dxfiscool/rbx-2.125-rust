@@ -306,7 +306,7 @@ pub fn stub_3980f8() -> ! {
     todo!("0x3980f8 __ZNK3RBX10Reflection14PropDescriptorINS_9AnimationENS_11AnimationIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")
 }
 
-// 0x398240 — __GLOBAL__I_a_155 — global constructor keyed to'_a_155
+// 0x398240 — __GLOBAL__I_a_155 — global constructor keyed to_a_155
 #[doc(alias = "global constructor keyed to_a_155")]
 #[doc(alias = "__GLOBAL__I_a_155")]
 pub fn stub_398240() -> ! {

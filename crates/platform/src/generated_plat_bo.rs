@@ -497,7 +497,7 @@ pub fn stub_2657a0() -> ! {
 // 0x2657a4 — __GLOBAL__I_a_59
 #[doc(alias = "global constructor keyed to_a_59")]
 pub fn stub_2657a4() -> ! {
-    todo!("0x2657a4 global constructor keyed to'_a_59")
+    todo!("0x2657a4 global constructor keyed to_a_59")
 }
 
 // 0x2658d4 — __ZN3RBX10Reflection10hash_valueERKNS0_13ConstPropertyE

@@ -44,7 +44,7 @@ pub fn stub_31e558() -> ! {
     todo!("0x31e558 __ZN3RBX4Http10MutexGuardC2Ev")
 }
 
-// 0x31e658 — __GLOBAL__I_a_113 — global constructor keyed to'_a_113
+// 0x31e658 — __GLOBAL__I_a_113 — global constructor keyed to_a_113
 #[doc(alias = "__GLOBAL__I_a_113")]
 #[doc(alias = "global constructor keyed to_a_113")]
 pub fn stub_31e658() -> ! {
@@ -138,7 +138,7 @@ pub fn stub_31f68c() -> ! {
     todo!("0x31f68c __ZN3RBX7Extents2vvERKN3G3D7Vector3ES4_")
 }
 
-// 0x31f738 — __GLOBAL__I_a_114 — global constructor keyed to'_a_114
+// 0x31f738 — __GLOBAL__I_a_114 — global constructor keyed to_a_114
 #[doc(alias = "__GLOBAL__I_a_114")]
 #[doc(alias = "global constructor keyed to_a_114")]
 pub fn stub_31f738() -> ! {
@@ -246,7 +246,7 @@ pub fn stub_3201f4() -> ! {
     todo!("0x3201f4 __ZNK3RBX4Face7getAxisEi")
 }
 
-// 0x3202dc — __GLOBAL__I_a_115 — global constructor keyed to'_a_115
+// 0x3202dc — __GLOBAL__I_a_115 — global constructor keyed to_a_115
 // type: int()
 #[doc(alias = "__GLOBAL__I_a_115")]
 #[doc(alias = "global constructor keyed to_a_115")]
@@ -294,7 +294,7 @@ pub fn stub_32059c() -> ! {
     todo!("0x32059c __ZN3RBX15StringConverterINS_5FacesEE14convertToValueERKSsRS1_")
 }
 
-// 0x3207f8 — __GLOBAL__I_a_116 — global constructor keyed to'_a_116
+// 0x3207f8 — __GLOBAL__I_a_116 — global constructor keyed to_a_116
 #[doc(alias = "__GLOBAL__I_a_116")]
 #[doc(alias = "global constructor keyed to_a_116")]
 pub fn stub_3207f8() -> ! {
@@ -473,7 +473,7 @@ pub fn stub_322bdc() -> ! {
     todo!("0x322bdc __ZNK3RBX4Guid4Data14readableStringEi")
 }
 
-// 0x322e00 — __GLOBAL__I_a_117 — global constructor keyed to'_a_117
+// 0x322e00 — __GLOBAL__I_a_117 — global constructor keyed to_a_117
 #[doc(alias = "__GLOBAL__I_a_117")]
 #[doc(alias = "global constructor keyed to_a_117")]
 pub fn stub_322e00() -> ! {
@@ -512,7 +512,7 @@ pub fn stub_322ef4() -> ! {
     todo!("0x322ef4 __ZN3RBX14InstanceHandle6linkToEN5boost10shared_ptrINS_10Reflection13DescribedBaseEEE")
 }
 
-// 0x322ef8 — __GLOBAL__I_a_118 — global constructor keyed to'_a_118
+// 0x322ef8 — __GLOBAL__I_a_118 — global constructor keyed to_a_118
 #[doc(alias = "__GLOBAL__I_a_118")]
 #[doc(alias = "global constructor keyed to_a_118")]
 pub fn stub_322ef8() -> ! {
@@ -591,7 +591,7 @@ pub fn stub_323400() -> ! {
     todo!("0x323400 __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_17HeartbeatInstanceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_ED0Ev")
 }
 
-// 0x3234d4 — __GLOBAL__I_a_119 — global constructor keyed to'_a_119
+// 0x3234d4 — __GLOBAL__I_a_119 — global constructor keyed to_a_119
 #[doc(alias = "__GLOBAL__I_a_119")]
 #[doc(alias = "global constructor keyed to_a_119")]
 pub fn stub_3234d4() -> ! {
@@ -620,7 +620,7 @@ pub fn stub_3238e8() -> ! {
     todo!("0x3238e8 __ZN3RBX13HandleHitTest22hitTestMoveHandleWorldERKNS_7ExtentsERKNS_6RbxRayERN3G3D7Vector3ERNS_8NormalIdEi")
 }
 
-// 0x323b78 — __GLOBAL__I_a_120 — global constructor keyed to'_a_120
+// 0x323b78 — __GLOBAL__I_a_120 — global constructor keyed to_a_120
 #[doc(alias = "__GLOBAL__I_a_120")]
 #[doc(alias = "global constructor keyed to_a_120")]
 pub fn stub_323b78() -> ! {
@@ -667,7 +667,7 @@ pub fn stub_323fdc() -> ! {
     todo!("0x323fdc __ZN3RBX8IndexBoxD0Ev")
 }
 
-// 0x323fe0 — __GLOBAL__I_a_121 — global constructor keyed to'_a_121
+// 0x323fe0 — __GLOBAL__I_a_121 — global constructor keyed to_a_121
 #[doc(alias = "__GLOBAL__I_a_121")]
 #[doc(alias = "global constructor keyed to_a_121")]
 pub fn stub_323fe0() -> ! {

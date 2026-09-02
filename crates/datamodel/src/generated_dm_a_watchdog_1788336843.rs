@@ -1,7 +1,7 @@
 // Auto-generated skeletons for rbx-datamodel shard A — from ida/export.json
 // Filter: RBX::Instance|RBX::DataModel|Workspace complete (10215) — fallback global gap filler EA-sorted asc not yet in crates/datamodel/src
 // Source: ida/export.json (85545 funcs, base 0x4000) — batch 120, range 0x3a9ea0..0x3aee10 | dm gap before 50833, after 50713
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

@@ -115,11 +115,11 @@ pub fn stub_0x27b4b4() -> ! {
     todo!("0x27b4b4 RBX::CellID::operator==(RBX::CellID const&)const")
 }
 
-// 0x27b50c — global constructor keyed to'_a_65
+// 0x27b50c — global constructor keyed to_a_65
 // mangled: __GLOBAL__I_a_65
 #[doc(alias = "global constructor keyed to_a_65")]
 pub fn stub_0x27b50c() -> ! {
-    todo!("0x27b50c global constructor keyed to'_a_65")
+    todo!("0x27b50c global constructor keyed to_a_65")
 }
 
 // 0x27b6a4 — RBX::Lua::Bridge<RBX::Lua::AllEnumDescriptors const*,true>::on_index(RBX::Lua::AllEnumDescriptors const* const&,char const*,lua_State *)
@@ -226,11 +226,11 @@ pub fn stub_0x27bea8() -> ! {
     todo!("0x27bea8 RBX::Reflection::EnumDescriptor::lookupDescriptor(RBX::Name const&)")
 }
 
-// 0x27bef0 — global constructor keyed to'_a_66
+// 0x27bef0 — global constructor keyed to_a_66
 // mangled: __GLOBAL__I_a_66
 #[doc(alias = "global constructor keyed to_a_66")]
 pub fn stub_0x27bef0() -> ! {
-    todo!("0x27bef0 global constructor keyed to'_a_66")
+    todo!("0x27bef0 global constructor keyed to_a_66")
 }
 
 // 0x27bfb8 — RBX::Lua::newweaktable(lua_State *,char const*)
@@ -920,11 +920,11 @@ pub fn stub_0x285898() -> ! {
     todo!("0x285898 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::findDescriptor(char const*)const")
 }
 
-// 0x2858c0 — global constructor keyed to'_a_67
+// 0x2858c0 — global constructor keyed to_a_67
 // mangled: __GLOBAL__I_a_67
 #[doc(alias = "global constructor keyed to_a_67")]
 pub fn stub_0x2858c0() -> ! {
-    todo!("0x2858c0 global constructor keyed to'_a_67")
+    todo!("0x2858c0 global constructor keyed to_a_67")
 }
 
 // 0x285c30 — RBX::LuaAllocator::LuaAllocator(bool)
@@ -1028,11 +1028,11 @@ pub fn stub_0x286250() -> ! {
     todo!("0x286250 std::_Vector_base<boost::pool<boost::default_user_allocator_new_delete> *,std::allocator<boost::pool<boost::default_user_allocator_new_delete> *>>::_M_allocate(unsigned long)")
 }
 
-// 0x286268 — global constructor keyed to'_a_68
+// 0x286268 — global constructor keyed to_a_68
 // mangled: __GLOBAL__I_a_68
 #[doc(alias = "global constructor keyed to_a_68")]
 pub fn stub_0x286268() -> ! {
-    todo!("0x286268 global constructor keyed to'_a_68")
+    todo!("0x286268 global constructor keyed to_a_68")
 }
 
 // 0x286330 — RBX::LuaSettings::LuaSettings(void)

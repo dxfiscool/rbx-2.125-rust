@@ -518,7 +518,7 @@ pub fn stub_a5cb00() -> ! {
     todo!("0xa5cb00 RakNet::RakPeer::RakPeer(void)")
 }
 
-// 0xa5c4bc — global constructor keyed to'_a_523
+// 0xa5c4bc — global constructor keyed to_a_523
 // mangled: __GLOBAL__I_a_523
 // type: 
 #[doc(alias = "global constructor keyed to_a_523")]
@@ -726,7 +726,7 @@ pub fn stub_a5bfec() -> ! {
     todo!("0xa5bfec RakNet::SystemAddress::SystemAddress(void)")
 }
 
-// 0xa5b9cc — global constructor keyed to'_a_522
+// 0xa5b9cc — global constructor keyed to_a_522
 // mangled: __GLOBAL__I_a_522
 // type: 
 #[doc(alias = "global constructor keyed to_a_522")]
@@ -742,7 +742,7 @@ pub fn stub_a5b5b0() -> ! {
     todo!("0xa5b5b0 RakNet::StatisticsToString(RakNet::RakNetStatistics const*,char *,int)")
 }
 
-// 0xa5af7c — global constructor keyed to'_a_521
+// 0xa5af7c — global constructor keyed to_a_521
 // mangled: __GLOBAL__I_a_521
 // type: 
 #[doc(alias = "global constructor keyed to_a_521")]
@@ -766,7 +766,7 @@ pub fn stub_a5af38() -> ! {
     todo!("0xa5af38 RakNet::RakNetSocket::RakNetSocket(void)")
 }
 
-// 0xa5a924 — global constructor keyed to'_a_520
+// 0xa5a924 — global constructor keyed to_a_520
 // mangled: __GLOBAL__I_a_520
 // type: 
 #[doc(alias = "global constructor keyed to_a_520")]

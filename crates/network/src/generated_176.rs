@@ -40,7 +40,7 @@ pub fn stub_48dc4c() -> ! {
 }
 
 // 0x48ddb0 — __GLOBAL__I_a_182
-// demangled: global constructor keyed to'_a_182
+// demangled: global constructor keyed to_a_182
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, void *, int, int, int)
 #[doc(alias = "global constructor keyed to_a_182")]
 pub fn stub_48ddb0() -> ! {
@@ -289,7 +289,7 @@ pub fn stub_493100() -> ! {
 }
 
 // 0x493248 — __GLOBAL__I_a_183
-// demangled: global constructor keyed to'_a_183
+// demangled: global constructor keyed to_a_183
 #[doc(alias = "global constructor keyed to_a_183")]
 pub fn stub_493248() -> ! {
     todo!("0x493248 global constructor keyed to_a_183")
@@ -359,7 +359,7 @@ pub fn stub_495058() -> ! {
 }
 
 // 0x49519c — __GLOBAL__I_a_184
-// demangled: global constructor keyed to'_a_184
+// demangled: global constructor keyed to_a_184
 #[doc(alias = "global constructor keyed to_a_184")]
 pub fn stub_49519c() -> ! {
     todo!("0x49519c global constructor keyed to_a_184")

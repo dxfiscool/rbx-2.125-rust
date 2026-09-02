@@ -12,28 +12,28 @@ const _: () = {
 };
 
 // 0xbcfac8 — __GLOBAL__I_a_586
-// was: global constructor keyed to'_a_586
+// was: global constructor keyed to_a_586
 #[doc(alias = "global constructor keyed to_a_586")]
 pub fn stub_bcfac8() -> ! {
     todo!("0xbcfac8 global constructor keyed to_a_586")
 }
 
 // 0xbd47ec — __GLOBAL__I_a_587
-// was: global constructor keyed to'_a_587
+// was: global constructor keyed to_a_587
 #[doc(alias = "global constructor keyed to_a_587")]
 pub fn stub_bd47ec() -> ! {
     todo!("0xbd47ec global constructor keyed to_a_587")
 }
 
 // 0xbd6798 — __GLOBAL__I_a_588
-// was: global constructor keyed to'_a_588
+// was: global constructor keyed to_a_588
 #[doc(alias = "global constructor keyed to_a_588")]
 pub fn stub_bd6798() -> ! {
     todo!("0xbd6798 global constructor keyed to_a_588")
 }
 
 // 0xbd728c — __GLOBAL__I_a_589
-// was: global constructor keyed to'_a_589
+// was: global constructor keyed to_a_589
 #[doc(alias = "global constructor keyed to_a_589")]
 pub fn stub_bd728c() -> ! {
     todo!("0xbd728c global constructor keyed to_a_589")
@@ -41,28 +41,28 @@ pub fn stub_bd728c() -> ! {
 
 // 0xbe01e4 — __ZNK12_GLOBAL__N_121MaterialDeadPredicateclERKy
 // type: int __fastcall(int, int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, int)
-// was: anonymous namespace'::MaterialDeadPredicate::operator()(unsigned long long const&)const
+// was: anonymous namespace::MaterialDeadPredicate::operator()(unsigned long long const&)const
 #[doc(alias = "anonymous namespace::MaterialDeadPredicate::operator()(unsigned long long const&)const")]
 pub fn stub_be01e4() -> ! {
     todo!("0xbe01e4 anonymous namespace::MaterialDeadPredicate::operator()(unsigned long long const&)const")
 }
 
 // 0xbe4df4 — __GLOBAL__I_a_590
-// was: global constructor keyed to'_a_590
+// was: global constructor keyed to_a_590
 #[doc(alias = "global constructor keyed to_a_590")]
 pub fn stub_be4df4() -> ! {
     todo!("0xbe4df4 global constructor keyed to_a_590")
 }
 
 // 0xbe5b04 — __GLOBAL__I_a_591
-// was: global constructor keyed to'_a_591
+// was: global constructor keyed to_a_591
 #[doc(alias = "global constructor keyed to_a_591")]
 pub fn stub_be5b04() -> ! {
     todo!("0xbe5b04 global constructor keyed to_a_591")
 }
 
 // 0xbe66e8 — __GLOBAL__I_a_592
-// was: global constructor keyed to'_a_592
+// was: global constructor keyed to_a_592
 #[doc(alias = "global constructor keyed to_a_592")]
 pub fn stub_be66e8() -> ! {
     todo!("0xbe66e8 global constructor keyed to_a_592")
@@ -105,42 +105,42 @@ pub fn stub_bf35dc() -> ! {
 }
 
 // 0xbf3acc — __GLOBAL__I_a_593
-// was: global constructor keyed to'_a_593
+// was: global constructor keyed to_a_593
 #[doc(alias = "global constructor keyed to_a_593")]
 pub fn stub_bf3acc() -> ! {
     todo!("0xbf3acc global constructor keyed to_a_593")
 }
 
 // 0xbf5b70 — __GLOBAL__I_a_594
-// was: global constructor keyed to'_a_594
+// was: global constructor keyed to_a_594
 #[doc(alias = "global constructor keyed to_a_594")]
 pub fn stub_bf5b70() -> ! {
     todo!("0xbf5b70 global constructor keyed to_a_594")
 }
 
 // 0xbf9d5c — __GLOBAL__I_a_595
-// was: global constructor keyed to'_a_595
+// was: global constructor keyed to_a_595
 #[doc(alias = "global constructor keyed to_a_595")]
 pub fn stub_bf9d5c() -> ! {
     todo!("0xbf9d5c global constructor keyed to_a_595")
 }
 
 // 0xbfa694 — __GLOBAL__I_a_596
-// was: global constructor keyed to'_a_596
+// was: global constructor keyed to_a_596
 #[doc(alias = "global constructor keyed to_a_596")]
 pub fn stub_bfa694() -> ! {
     todo!("0xbfa694 global constructor keyed to_a_596")
 }
 
 // 0xbfe55c — __GLOBAL__I_a_597
-// was: global constructor keyed to'_a_597
+// was: global constructor keyed to_a_597
 #[doc(alias = "global constructor keyed to_a_597")]
 pub fn stub_bfe55c() -> ! {
     todo!("0xbfe55c global constructor keyed to_a_597")
 }
 
 // 0xc025b8 — __GLOBAL__I_a_598
-// was: global constructor keyed to'_a_598
+// was: global constructor keyed to_a_598
 #[doc(alias = "global constructor keyed to_a_598")]
 pub fn stub_c025b8() -> ! {
     todo!("0xc025b8 global constructor keyed to_a_598")
@@ -189,7 +189,7 @@ pub fn stub_c039e4() -> ! {
 }
 
 // 0xc051b8 — __GLOBAL__I_a_599
-// was: global constructor keyed to'_a_599
+// was: global constructor keyed to_a_599
 #[doc(alias = "global constructor keyed to_a_599")]
 pub fn stub_c051b8() -> ! {
     todo!("0xc051b8 global constructor keyed to_a_599")
@@ -204,7 +204,7 @@ pub fn stub_c09780() -> ! {
 
 // 0xc09948 — __ZN3RBX5Voxel5Water12_GLOBAL__N_114isWaterOnWedgeERKNS0_4CellERKNS1_13LocalAreaInfoE
 // type: int __fastcall(_DWORD, _DWORD)
-// was: RBX::Voxel::Water::anonymous namespace'::isWaterOnWedge(RBX::Voxel::Cell const&,RBX::Voxel::Water::LocalAreaInfo const&)
+// was: RBX::Voxel::Water::anonymous namespace::isWaterOnWedge(RBX::Voxel::Cell const&,RBX::Voxel::Water::LocalAreaInfo const&)
 #[doc(alias = "RBX::Voxel::Water::anonymous namespace::isWaterOnWedge(RBX::Voxel::Cell const&,RBX::Voxel::Water::LocalAreaInfo const&)")]
 pub fn stub_c09948() -> ! {
     todo!("0xc09948 RBX::Voxel::Water::anonymous namespace::isWaterOnWedge(RBX::Voxel::Cell const&,RBX::Voxel::Water::LocalAreaInfo const&)")
@@ -322,7 +322,7 @@ pub fn stub_c18eac() -> ! {
 }
 
 // 0xc18f5c — __GLOBAL__I_a_600
-// was: global constructor keyed to'_a_600
+// was: global constructor keyed to_a_600
 #[doc(alias = "global constructor keyed to_a_600")]
 pub fn stub_c18f5c() -> ! {
     todo!("0xc18f5c global constructor keyed to_a_600")

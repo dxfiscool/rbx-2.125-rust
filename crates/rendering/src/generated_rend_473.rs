@@ -97,11 +97,11 @@ pub fn stub_74242c() -> ! {
 }
 
 // 0x74245c — __GLOBAL__I_a_332
-// was: global constructor keyed to'_a_332
+// was: global constructor keyed to_a_332
 #[doc(alias = "global constructor keyed to_a_332")]
 #[doc(alias = "__GLOBAL__I_a_332")]
 pub fn stub_74245c() -> ! {
-    todo!("0x74245c global constructor keyed to'_a_332")
+    todo!("0x74245c global constructor keyed to_a_332")
 }
 
 // 0x74258c — __ZN3RBX10MotorJointC1Ev
@@ -298,11 +298,11 @@ pub fn stub_742dfc() -> ! {
 }
 
 // 0x742e2c — __GLOBAL__I_a_333
-// was: global constructor keyed to'_a_333
+// was: global constructor keyed to_a_333
 #[doc(alias = "global constructor keyed to_a_333")]
 #[doc(alias = "__GLOBAL__I_a_333")]
 pub fn stub_742e2c() -> ! {
-    todo!("0x742e2c global constructor keyed to'_a_333")
+    todo!("0x742e2c global constructor keyed to_a_333")
 }
 
 // 0x742f28 — __ZN3RBX19MovingAssemblyStageC1EPNS_6IStageEPNS_5WorldE
@@ -410,11 +410,11 @@ pub fn stub_74350c() -> ! {
 }
 
 // 0x743510 — __GLOBAL__I_a_334
-// was: global constructor keyed to'_a_334
+// was: global constructor keyed to_a_334
 #[doc(alias = "global constructor keyed to_a_334")]
 #[doc(alias = "__GLOBAL__I_a_334")]
 pub fn stub_743510() -> ! {
-    todo!("0x743510 global constructor keyed to'_a_334")
+    todo!("0x743510 global constructor keyed to_a_334")
 }
 
 // 0x743640 — __ZN3RBX11MovingStageC1EPNS_6IStageEPNS_5WorldE
@@ -482,11 +482,11 @@ pub fn stub_743a34() -> ! {
 }
 
 // 0x743a38 — __GLOBAL__I_a_335
-// was: global constructor keyed to'_a_335
+// was: global constructor keyed to_a_335
 #[doc(alias = "global constructor keyed to_a_335")]
 #[doc(alias = "__GLOBAL__I_a_335")]
 pub fn stub_743a38() -> ! {
-    todo!("0x743a38 global constructor keyed to'_a_335")
+    todo!("0x743a38 global constructor keyed to_a_335")
 }
 
 // 0x743b00 — __ZN3RBX10MultiJointC2Ei
@@ -580,11 +580,11 @@ pub fn stub_744078() -> ! {
 }
 
 // 0x74419c — __GLOBAL__I_a_336
-// was: global constructor keyed to'_a_336
+// was: global constructor keyed to_a_336
 #[doc(alias = "global constructor keyed to_a_336")]
 #[doc(alias = "__GLOBAL__I_a_336")]
 pub fn stub_74419c() -> ! {
-    todo!("0x74419c global constructor keyed to'_a_336")
+    todo!("0x74419c global constructor keyed to_a_336")
 }
 
 // 0x744368 — __ZN3RBX16ParallelRampPoly9buildMeshEv
@@ -675,11 +675,11 @@ pub fn stub_745628() -> ! {
 }
 
 // 0x7458c8 — __GLOBAL__I_a_337
-// was: global constructor keyed to'_a_337
+// was: global constructor keyed to_a_337
 #[doc(alias = "global constructor keyed to_a_337")]
 #[doc(alias = "__GLOBAL__I_a_337")]
 pub fn stub_7458c8() -> ! {
-    todo!("0x7458c8 global constructor keyed to'_a_337")
+    todo!("0x7458c8 global constructor keyed to_a_337")
 }
 
 // 0x745a7c — __ZNK3RBX4Poly13getCofmOffsetEv
@@ -731,11 +731,11 @@ pub fn stub_746098() -> ! {
 }
 
 // 0x7471dc — __GLOBAL__I_a_338
-// was: global constructor keyed to'_a_338
+// was: global constructor keyed to_a_338
 #[doc(alias = "global constructor keyed to_a_338")]
 #[doc(alias = "__GLOBAL__I_a_338")]
 pub fn stub_7471dc() -> ! {
-    todo!("0x7471dc global constructor keyed to'_a_338")
+    todo!("0x7471dc global constructor keyed to_a_338")
 }
 
 // 0x7473a8 — __ZN3RBX11PolyContactD0Ev

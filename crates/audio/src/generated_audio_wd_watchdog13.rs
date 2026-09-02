@@ -665,11 +665,11 @@ pub fn stub_0657270() -> ! {
 }
 
 // 0x065740c — __GLOBAL__I_a_263
-// demangled: global constructor keyed to'_a_263
+// demangled: global constructor keyed to_a_263
 #[doc(alias = "global constructor keyed to_a_263")]
 #[doc(alias = "__GLOBAL__I_a_263")]
 pub fn stub_065740c() -> ! {
-    todo!("0x065740c global constructor keyed to'_a_263")
+    todo!("0x065740c global constructor keyed to_a_263")
 }
 
 // 0x065793c — __ZN3RBX10StudioTool10setEnabledEb
@@ -838,19 +838,19 @@ pub fn stub_065838c() -> ! {
 }
 
 // 0x06583a0 — __GLOBAL__I_a_264
-// demangled: global constructor keyed to'_a_264
+// demangled: global constructor keyed to_a_264
 #[doc(alias = "global constructor keyed to_a_264")]
 #[doc(alias = "__GLOBAL__I_a_264")]
 pub fn stub_06583a0() -> ! {
-    todo!("0x06583a0 global constructor keyed to'_a_264")
+    todo!("0x06583a0 global constructor keyed to_a_264")
 }
 
 // 0x0658744 — __GLOBAL__I_a_265
-// demangled: global constructor keyed to'_a_265
+// demangled: global constructor keyed to_a_265
 #[doc(alias = "global constructor keyed to_a_265")]
 #[doc(alias = "__GLOBAL__I_a_265")]
 pub fn stub_0658744() -> ! {
-    todo!("0x0658744 global constructor keyed to'_a_265")
+    todo!("0x0658744 global constructor keyed to_a_265")
 }
 
 // 0x06589e8 — __ZN3RBX7SurfaceC1EPNS_12PartInstanceENS_8NormalIdE

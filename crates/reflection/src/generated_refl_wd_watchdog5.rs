@@ -293,7 +293,7 @@ pub fn stub_0x30e130() -> ! {
 #[doc(alias = "global constructor keyed to_a_108")]
 #[doc(alias = "__GLOBAL__I_a_108")]
 pub fn stub_0x30e1b0() -> ! {
-    todo!("0x30e1b0 global constructor keyed to'_a_108")
+    todo!("0x30e1b0 global constructor keyed to_a_108")
 }
 
 // 0x30e3b8 — __ZN3RBX5Color15getColorByIndexEi
@@ -328,7 +328,7 @@ pub fn stub_0x30e670() -> ! {
 #[doc(alias = "global constructor keyed to_a_109")]
 #[doc(alias = "__GLOBAL__I_a_109")]
 pub fn stub_0x30e67c() -> ! {
-    todo!("0x30e67c global constructor keyed to'_a_109")
+    todo!("0x30e67c global constructor keyed to_a_109")
 }
 
 // 0x30e6b4 — __ZN3RBX13ContentFilter12setFilterUrlESs

@@ -723,7 +723,7 @@ pub fn stub_35438() -> ! {
 }
 
 // 0x355c8 — __GLOBAL__I_a_8
-// demangled: global constructor keyed to'_a_8
+// demangled: global constructor keyed to_a_8
 // type: 
 #[doc(alias = "global constructor keyed to_a_8")]
 pub fn stub_355c8() -> ! {

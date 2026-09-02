@@ -2,7 +2,7 @@
 // Filter: RBX::Instance|DataModel|Workspace (10215) exhausted — gap filler EA-sorted asc distinct not yet in crates/datamodel/src
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 120 stubs | range 0x49a900..0x4af45c | gap filler EA-sorted ascending next 120 after 0xf78880 (shard wd_watchdog8)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias
 // Shard: wd_watchdog8 EA-sorted ascending continuation after wd_watchdog7 (global gap filler)
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]

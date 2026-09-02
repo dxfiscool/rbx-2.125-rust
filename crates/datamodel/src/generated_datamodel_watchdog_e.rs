@@ -2,7 +2,7 @@
 // Filter: global gap filler EA-sorted asc not yet in crates (any crate)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x53280c..0x539a78 | in_export distinct 49770->49870 global uncovered 35775->35675, lowest gap EA-sorted asc next 100 after watchdog_d (0xf70e00 synthetic)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

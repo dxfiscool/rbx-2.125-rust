@@ -298,7 +298,7 @@ pub fn stub_7f8f00() -> ! {
 #[doc(alias = "global constructor keyed to_a_393")]
 #[doc(alias = "__GLOBAL__I_a_393")]
 pub fn stub_7f8f2c() -> ! {
-    todo!("0x7f8f2c global constructor keyed to'_a_393")
+    todo!("0x7f8f2c global constructor keyed to_a_393")
 }
 
 // 0x7f937c — __ZN3RBX10Soundscape14CollisionSoundC2ENS0_7SoundIdEPNS0_21CollisionSoundManagerEPKNS_8InstanceE
@@ -678,7 +678,7 @@ pub fn stub_7fe20c() -> ! {
 #[doc(alias = "global constructor keyed to_a_394")]
 #[doc(alias = "__GLOBAL__I_a_394")]
 pub fn stub_7fe228() -> ! {
-    todo!("0x7fe228 global constructor keyed to'_a_394")
+    todo!("0x7fe228 global constructor keyed to_a_394")
 }
 
 // 0x7fe50c — __ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEEC1Ev

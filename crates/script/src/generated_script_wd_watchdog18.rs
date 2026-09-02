@@ -3,7 +3,7 @@
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: +100 stubs | range 0x63c568..0x648eb0 | EA-sorted asc global gap filler not yet in any crate (script)
 // Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR mangled") rbx_core::SharedPtr, backticks stripped
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias, ' stripped
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias,  stripped
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

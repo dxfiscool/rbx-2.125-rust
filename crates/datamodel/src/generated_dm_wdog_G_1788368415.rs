@@ -3,7 +3,7 @@
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x5324a8..0x53bf5c | gap filler EA-sorted ascending
 // Shard: dm_wdog_G EA-sorted asc gap filler 100 distinct per crate (shard B continuation, rbx_core::SharedPtr not boost, // 0xADDR mangled + #[doc(alias)] + todo)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

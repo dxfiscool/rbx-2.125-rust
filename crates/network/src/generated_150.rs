@@ -216,7 +216,7 @@ pub fn stub_1a5bc() -> ! {
 }
 
 // 0x1a5d0 — __GLOBAL__I_a_1
-// demangled: global constructor keyed to'_a_1
+// demangled: global constructor keyed to_a_1
 // type: 
 #[doc(alias = "global constructor keyed to_a_1")]
 pub fn stub_1a5d0() -> ! {
@@ -232,7 +232,7 @@ pub fn stub_1a768() -> ! {
 }
 
 // 0x1a7d4 — __GLOBAL__I_a_2
-// demangled: global constructor keyed to'_a_2
+// demangled: global constructor keyed to_a_2
 // type: 
 #[doc(alias = "global constructor keyed to_a_2")]
 pub fn stub_1a7d4() -> ! {
@@ -416,7 +416,7 @@ pub fn stub_1b304() -> ! {
 }
 
 // 0x1b308 — __GLOBAL__I_a_3
-// demangled: global constructor keyed to'_a_3
+// demangled: global constructor keyed to_a_3
 // type: 
 #[doc(alias = "global constructor keyed to_a_3")]
 pub fn stub_1b308() -> ! {

@@ -507,28 +507,28 @@ pub fn stub_d92960() -> ! {
 
 // 0xd92974 — __ZN4Ogre12_GLOBAL__N_119TimeControllerValueD1Ev
 #[doc(alias = "Ogre::anonymous namespace::TimeControllerValue::~TimeControllerValue()")]
-// was: Ogre::anonymous namespace'::TimeControllerValue::~TimeControllerValue()
+// was: Ogre::anonymous namespace::TimeControllerValue::~TimeControllerValue()
 pub fn stub_d92974() -> ! {
     todo!("0xd92974 Ogre::anonymous namespace::TimeControllerValue::~TimeControllerValue()")
 }
 
 // 0xd92978 — __ZN4Ogre12_GLOBAL__N_119TimeControllerValueD0Ev
 #[doc(alias = "Ogre::anonymous namespace::TimeControllerValue::~TimeControllerValue()")]
-// was: Ogre::anonymous namespace'::TimeControllerValue::~TimeControllerValue()
+// was: Ogre::anonymous namespace::TimeControllerValue::~TimeControllerValue()
 pub fn stub_d92978() -> ! {
     todo!("0xd92978 Ogre::anonymous namespace::TimeControllerValue::~TimeControllerValue()")
 }
 
 // 0xd92a04 — __ZNK4Ogre12_GLOBAL__N_119TimeControllerValue8getValueEv
 #[doc(alias = "Ogre::anonymous namespace::TimeControllerValue::getValue(void)const")]
-// was: Ogre::anonymous namespace'::TimeControllerValue::getValue(void)const
+// was: Ogre::anonymous namespace::TimeControllerValue::getValue(void)const
 pub fn stub_d92a04() -> ! {
     todo!("0xd92a04 Ogre::anonymous namespace::TimeControllerValue::getValue(void)const")
 }
 
 // 0xd92a08 — __ZN4Ogre12_GLOBAL__N_119TimeControllerValue8setValueEf
 #[doc(alias = "Ogre::anonymous namespace::TimeControllerValue::setValue(float)")]
-// was: Ogre::anonymous namespace'::TimeControllerValue::setValue(float)
+// was: Ogre::anonymous namespace::TimeControllerValue::setValue(float)
 pub fn stub_d92a08() -> ! {
     todo!("0xd92a08 Ogre::anonymous namespace::TimeControllerValue::setValue(float)")
 }

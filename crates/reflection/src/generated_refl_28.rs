@@ -32,7 +32,7 @@ pub fn stub_0x244dcc() -> ! {
 #[doc(alias = "global constructor keyed to_a_47")]
 #[doc(alias = "__GLOBAL__I_a_47")]
 pub fn stub_0x244de0() -> ! {
-    todo!("0x244de0 global constructor keyed to'_a_47")
+    todo!("0x244de0 global constructor keyed to_a_47")
 }
 
 // 0x244e94 — __ZNK3rbx7signals10connection10disconnectEv
@@ -88,7 +88,7 @@ pub fn stub_0x245544() -> ! {
 #[doc(alias = "global constructor keyed to_a_48")]
 #[doc(alias = "__GLOBAL__I_a_48")]
 pub fn stub_0x245548() -> ! {
-    todo!("0x245548 global constructor keyed to'_a_48")
+    todo!("0x245548 global constructor keyed to_a_48")
 }
 
 // 0x2456a0 — __ZN3RBX5Tasks12SequenceBase11isInhibitedEPNS_13TaskScheduler3JobE
@@ -130,7 +130,7 @@ pub fn stub_0x245848() -> ! {
 #[doc(alias = "global constructor keyed to_a_49")]
 #[doc(alias = "__GLOBAL__I_a_49")]
 pub fn stub_0x245940() -> ! {
-    todo!("0x245940 global constructor keyed to'_a_49")
+    todo!("0x245940 global constructor keyed to_a_49")
 }
 
 // 0x245a08 — __ZNK3RBX13TaskScheduler30getSchedulerDutyCyclePerThreadEv
@@ -501,7 +501,7 @@ pub fn stub_0x248bdc() -> ! {
 #[doc(alias = "global constructor keyed to_a_50")]
 #[doc(alias = "__GLOBAL__I_a_50")]
 pub fn stub_0x248be0() -> ! {
-    todo!("0x248be0 global constructor keyed to'_a_50")
+    todo!("0x248be0 global constructor keyed to_a_50")
 }
 
 // 0x248e38 — __ZNK3RBX13TaskScheduler3Job16averageDutyCycleEv
@@ -711,14 +711,14 @@ pub fn stub_0x24b070() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::rethrow(void)const")]
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEE7rethrowEv")]
 pub fn stub_0x24b120() -> ! {
-    todo!("0x24b120 virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::rethrow(void)const")
+    todo!("0x24b120 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::rethrow(void)const")
 }
 
 // 0x24b130 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED0Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED0Ev")]
 pub fn stub_0x24b130() -> ! {
-    todo!("0x24b130 virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")
+    todo!("0x24b130 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")
 }
 
 // 0x24b208 — __ZThn8_N5boost16exception_detail19error_info_injectorISt12length_errorED0Ev
@@ -823,7 +823,7 @@ pub fn stub_0x24beb0() -> ! {
 #[doc(alias = "global constructor keyed to_a_51")]
 #[doc(alias = "__GLOBAL__I_a_51")]
 pub fn stub_0x24bf64() -> ! {
-    todo!("0x24bf64 global constructor keyed to'_a_51")
+    todo!("0x24bf64 global constructor keyed to_a_51")
 }
 
 // 0x24c02c — __ZN3RBX13TaskScheduler13endAllThreadsEv

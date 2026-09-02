@@ -429,7 +429,7 @@ pub fn stub_48dd88() -> ! {
 }
 
 // 0x48ddb0 — __GLOBAL__I_a_182
-// demangled: global constructor keyed to'_a_182
+// demangled: global constructor keyed to_a_182
 #[doc(alias = "__GLOBAL__I_a_182")]
 pub fn stub_48ddb0() -> ! {
     todo!("0x48ddb0 __GLOBAL__I_a_182")

@@ -480,7 +480,7 @@ pub fn stub_0x382bfc() {
 #[doc(alias = "global constructor keyed to_a_143")]
 #[doc(alias = "__GLOBAL__I_a_143")]
 pub fn stub_0x382d18() {
-    todo!("0x382d18 global constructor keyed to'_a_143")
+    todo!("0x382d18 global constructor keyed to_a_143")
 }
 
 // 0x382de0 — __Z10SetBaseURLRKSs
@@ -564,7 +564,7 @@ pub fn stub_0x384c3c() {
 #[doc(alias = "global constructor keyed to_a_144")]
 #[doc(alias = "__GLOBAL__I_a_144")]
 pub fn stub_0x384c44() {
-    todo!("0x384c44 global constructor keyed to'_a_144")
+    todo!("0x384c44 global constructor keyed to_a_144")
 }
 
 // 0x384d34 — __ZN3RBX8IStepped25onServiceProviderISteppedEPNS_15ServiceProviderES2_
@@ -697,7 +697,7 @@ pub fn stub_0x3857a8() {
 #[doc(alias = "global constructor keyed to_a_145")]
 #[doc(alias = "__GLOBAL__I_a_145")]
 pub fn stub_0x38587c() {
-    todo!("0x38587c global constructor keyed to'_a_145")
+    todo!("0x38587c global constructor keyed to_a_145")
 }
 
 // 0x385a3c — __ZNK3RBX13SystemAddresseqERKS0_

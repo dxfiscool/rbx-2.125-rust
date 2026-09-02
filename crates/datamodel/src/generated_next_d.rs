@@ -2,7 +2,7 @@
 // Global gap filler EA-sorted asc — next 150 uncovered funcs not in any crates/*/src
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 150 stubs | range 0x4d6578..0x5c4a28 | total 85545, distinct before 82622, after 82772, global missing before 2923, after 2773
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

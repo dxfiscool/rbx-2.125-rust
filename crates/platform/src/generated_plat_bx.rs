@@ -462,7 +462,7 @@ pub fn stub_0x3d199c() -> ! {
 #[doc(alias = "global constructor keyed to_a_166")]
 #[doc(alias = "__GLOBAL__I_a_166")]
 pub fn stub_0x3d19c4() -> ! {
-    todo!("0x3d19c4 global constructor keyed to'_a_166")
+    todo!("0x3d19c4 global constructor keyed to_a_166")
 }
 
 // 0x3d22c0 — __ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEEC1Ev

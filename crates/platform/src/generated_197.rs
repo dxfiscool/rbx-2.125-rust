@@ -176,10 +176,10 @@ pub fn stub_0x2876e8() -> ! {
 }
 
 // 0x287738 — __GLOBAL__I_a_69
-// demangled: global constructor keyed to'_a_69
+// demangled: global constructor keyed to_a_69
 #[doc(alias = "global constructor keyed to_a_69")]
 pub fn stub_0x287738() -> ! {
-    todo!("0x287738 global constructor keyed to'_a_69")
+    todo!("0x287738 global constructor keyed to_a_69")
 }
 
 // 0x287acc — __ZN3RBX3Lua6BridgeINS0_13EventInstanceELb1EE8on_indexERKS2_PKcP9lua_State
@@ -482,10 +482,10 @@ pub fn stub_0x28a98c() -> ! {
 }
 
 // 0x28aa88 — __GLOBAL__I_a_70
-// demangled: global constructor keyed to'_a_70
+// demangled: global constructor keyed to_a_70
 #[doc(alias = "global constructor keyed to_a_70")]
 pub fn stub_0x28aa88() -> ! {
-    todo!("0x28aa88 global constructor keyed to'_a_70")
+    todo!("0x28aa88 global constructor keyed to_a_70")
 }
 
 // 0x28ace0 — __ZNK3RBX6Script19getEmbeddedCodeSafeEv

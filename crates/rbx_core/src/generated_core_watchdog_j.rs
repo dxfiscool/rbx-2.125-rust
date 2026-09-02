@@ -73,7 +73,7 @@ pub fn stub_741650() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_331")]
 // 0x7416e0 — __GLOBAL__I_a_331
-// was: global constructor keyed to'_a_331
+// was: global constructor keyed to_a_331
 pub fn stub_7416e0() -> ! {
     todo!("0x7416e0 __GLOBAL__I_a_331")
 }
@@ -242,7 +242,7 @@ pub fn stub_74242c() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_332")]
 // 0x74245c — __GLOBAL__I_a_332
-// was: global constructor keyed to'_a_332
+// was: global constructor keyed to_a_332
 pub fn stub_74245c() -> ! {
     todo!("0x74245c __GLOBAL__I_a_332")
 }
@@ -418,7 +418,7 @@ pub fn stub_742dfc() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_333")]
 // 0x742e2c — __GLOBAL__I_a_333
-// was: global constructor keyed to'_a_333
+// was: global constructor keyed to_a_333
 pub fn stub_742e2c() -> ! {
     todo!("0x742e2c __GLOBAL__I_a_333")
 }
@@ -516,7 +516,7 @@ pub fn stub_74350c() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_334")]
 // 0x743510 — __GLOBAL__I_a_334
-// was: global constructor keyed to'_a_334
+// was: global constructor keyed to_a_334
 pub fn stub_743510() -> ! {
     todo!("0x743510 __GLOBAL__I_a_334")
 }
@@ -579,7 +579,7 @@ pub fn stub_743a34() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_335")]
 // 0x743a38 — __GLOBAL__I_a_335
-// was: global constructor keyed to'_a_335
+// was: global constructor keyed to_a_335
 pub fn stub_743a38() -> ! {
     todo!("0x743a38 __GLOBAL__I_a_335")
 }
@@ -665,7 +665,7 @@ pub fn stub_744078() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_336")]
 // 0x74419c — __GLOBAL__I_a_336
-// was: global constructor keyed to'_a_336
+// was: global constructor keyed to_a_336
 pub fn stub_74419c() -> ! {
     todo!("0x74419c __GLOBAL__I_a_336")
 }

@@ -2,7 +2,7 @@
 // Filter: EA-sorted asc next 150 not yet in datamodel (strict RBX::Instance|RBX::DataModel|RBX::Workspace 0 remaining, fallback gap filler)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 150 stubs | range 0x234a5c..0x23e5c0 | strict 10215 complete (0 remaining), datamodel distinct 29352->29502
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias where needed
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -92,7 +92,7 @@ pub fn stub_0x235d7c() -> ! {
 
 // 0x235da4 — __ZN5boost6detail12_GLOBAL__N_129create_current_thread_tls_keyEv
 // type: int __fastcall(boost::detail::_anonymous_namespace_ *this)
-// was: boost::detail::anonymous namespace'::create_current_thread_tls_key(void)
+// was: boost::detail::anonymous namespace::create_current_thread_tls_key(void)
 #[doc(alias = "boost::detail::anonymous namespace::create_current_thread_tls_key(void)")]
 pub fn stub_0x235da4() -> ! {
     todo!("0x235da4 boost::detail::anonymous namespace::create_current_thread_tls_key(void)")
@@ -179,7 +179,7 @@ pub fn stub_0x236c14() -> ! {
 
 // 0x236d04 — __ZN5boost12_GLOBAL__N_131get_or_make_current_thread_dataEv
 // type: void *__fastcall(boost::_anonymous_namespace_ *this, int, int, int)
-// was: boost::anonymous namespace'::get_or_make_current_thread_data(void)
+// was: boost::anonymous namespace::get_or_make_current_thread_data(void)
 #[doc(alias = "boost::anonymous namespace::get_or_make_current_thread_data(void)")]
 pub fn stub_0x236d04() -> ! {
     todo!("0x236d04 boost::anonymous namespace::get_or_make_current_thread_data(void)")
@@ -211,7 +211,7 @@ pub fn stub_0x237130() -> ! {
 
 // 0x237348 — __ZN5boost12_GLOBAL__N_126externally_launched_threadD1Ev
 // type: void __fastcall(boost::_anonymous_namespace_::externally_launched_thread *__hidden this)
-// was: boost::anonymous namespace'::externally_launched_thread::~externally_launched_thread()
+// was: boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")]
 pub fn stub_0x237348() -> ! {
     todo!("0x237348 boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")
@@ -219,7 +219,7 @@ pub fn stub_0x237348() -> ! {
 
 // 0x237354 — __ZN5boost12_GLOBAL__N_126externally_launched_threadD0Ev
 // type: void __fastcall(boost::_anonymous_namespace_::externally_launched_thread *__hidden this)
-// was: boost::anonymous namespace'::externally_launched_thread::~externally_launched_thread()
+// was: boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")]
 pub fn stub_0x237354() -> ! {
     todo!("0x237354 boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")
@@ -227,7 +227,7 @@ pub fn stub_0x237354() -> ! {
 
 // 0x237368 — __ZN5boost12_GLOBAL__N_126externally_launched_thread3runEv
 // type: void __fastcall(boost::_anonymous_namespace_::externally_launched_thread *this)
-// was: boost::anonymous namespace'::externally_launched_thread::run(void)
+// was: boost::anonymous namespace::externally_launched_thread::run(void)
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::run(void)")]
 pub fn stub_0x237368() -> ! {
     todo!("0x237368 boost::anonymous namespace::externally_launched_thread::run(void)")
@@ -235,7 +235,7 @@ pub fn stub_0x237368() -> ! {
 
 // 0x23736c — __ZN5boost12_GLOBAL__N_126externally_launched_thread25notify_all_at_thread_exitEPNS_18condition_variableEPNS_5mutexE
 // type: void()
-// was: boost::anonymous namespace'::externally_launched_thread::notify_all_at_thread_exit(boost::condition_variable *,boost::mutex *)
+// was: boost::anonymous namespace::externally_launched_thread::notify_all_at_thread_exit(boost::condition_variable *,boost::mutex *)
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::notify_all_at_thread_exit(boost::condition_variable *,boost::mutex *)")]
 pub fn stub_0x23736c() -> ! {
     todo!("0x23736c boost::anonymous namespace::externally_launched_thread::notify_all_at_thread_exit(boost::condition_variable *,boost::mutex *)")
@@ -354,7 +354,7 @@ pub fn stub_0x237b6c() -> ! {
 
 // 0x237c98 — __GLOBAL__I_a_38
 // type: (unknown)
-// was: global constructor keyed to'_a_38
+// was: global constructor keyed to_a_38
 #[doc(alias = "global constructor keyed to_a_38")]
 pub fn stub_0x237c98() -> ! {
     todo!("0x237c98 global constructor keyed to_a_38")
@@ -378,7 +378,7 @@ pub fn stub_0x237fa4() -> ! {
 
 // 0x238258 — __ZN12_GLOBAL__N_15errorEbRKN5boost10filesystem4pathEPNS0_6system10error_codeERKSs
 // type: int __fastcall(int, void *, int, int)
-// was: anonymous namespace'::error(bool,boost::filesystem::path const&,boost::system::error_code *,std::string const&)
+// was: anonymous namespace::error(bool,boost::filesystem::path const&,boost::system::error_code *,std::string const&)
 #[doc(alias = "anonymous namespace::error(bool,boost::filesystem::path const&,boost::system::error_code *,std::string const&)")]
 pub fn stub_0x238258() -> ! {
     todo!("0x238258 anonymous namespace::error(bool,boost::filesystem::path const&,boost::system::error_code *,std::string const&)")
@@ -410,7 +410,7 @@ pub fn stub_0x2386d4() -> ! {
 
 // 0x2388a8 — __ZN12_GLOBAL__N_124remove_file_or_directoryERKN5boost10filesystem4pathENS1_9file_typeEPNS0_6system10error_codeE
 // type: bool __fastcall(const char **, int, _DWORD *)
-// was: anonymous namespace'::remove_file_or_directory(boost::filesystem::path const&,boost::filesystem::file_type,boost::system::error_code *)
+// was: anonymous namespace::remove_file_or_directory(boost::filesystem::path const&,boost::filesystem::file_type,boost::system::error_code *)
 #[doc(alias = "anonymous namespace::remove_file_or_directory(boost::filesystem::path const&,boost::filesystem::file_type,boost::system::error_code *)")]
 pub fn stub_0x2388a8() -> ! {
     todo!("0x2388a8 anonymous namespace::remove_file_or_directory(boost::filesystem::path const&,boost::filesystem::file_type,boost::system::error_code *)")
@@ -562,7 +562,7 @@ pub fn stub_0x23a394() -> ! {
 
 // 0x23a570 — __GLOBAL__I_a_39
 // type: int *()
-// was: global constructor keyed to'_a_39
+// was: global constructor keyed to_a_39
 #[doc(alias = "global constructor keyed to_a_39")]
 pub fn stub_0x23a570() -> ! {
     todo!("0x23a570 global constructor keyed to_a_39")
@@ -698,7 +698,7 @@ pub fn stub_0x23afa4() -> ! {
 
 // 0x23afa8 — __GLOBAL__I_a_40
 // type: void __fastcall(int, int, int, int, char, void *, int, int, int, int)
-// was: global constructor keyed to'_a_40
+// was: global constructor keyed to_a_40
 #[doc(alias = "global constructor keyed to_a_40")]
 pub fn stub_0x23afa8() -> ! {
     todo!("0x23afa8 global constructor keyed to_a_40")
@@ -762,7 +762,7 @@ pub fn stub_0x23b508() -> ! {
 
 // 0x23b544 — __ZN12_GLOBAL__N_121system_error_categoryD1Ev
 // type: void __fastcall(_anonymous_namespace_::system_error_category *__hidden this)
-// was: anonymous namespace'::system_error_category::~system_error_category()
+// was: anonymous namespace::system_error_category::~system_error_category()
 #[doc(alias = "anonymous namespace::system_error_category::~system_error_category()")]
 pub fn stub_0x23b544() -> ! {
     todo!("0x23b544 anonymous namespace::system_error_category::~system_error_category()")
@@ -770,7 +770,7 @@ pub fn stub_0x23b544() -> ! {
 
 // 0x23b548 — __ZN12_GLOBAL__N_122generic_error_categoryD1Ev
 // type: void __fastcall(_anonymous_namespace_::generic_error_category *__hidden this)
-// was: anonymous namespace'::generic_error_category::~generic_error_category()
+// was: anonymous namespace::generic_error_category::~generic_error_category()
 #[doc(alias = "anonymous namespace::generic_error_category::~generic_error_category()")]
 pub fn stub_0x23b548() -> ! {
     todo!("0x23b548 anonymous namespace::generic_error_category::~generic_error_category()")
@@ -778,7 +778,7 @@ pub fn stub_0x23b548() -> ! {
 
 // 0x23b54c — __ZN12_GLOBAL__N_122generic_error_categoryD0Ev
 // type: void __fastcall(_anonymous_namespace_::generic_error_category *__hidden this)
-// was: anonymous namespace'::generic_error_category::~generic_error_category()
+// was: anonymous namespace::generic_error_category::~generic_error_category()
 #[doc(alias = "anonymous namespace::generic_error_category::~generic_error_category()")]
 pub fn stub_0x23b54c() -> ! {
     todo!("0x23b54c anonymous namespace::generic_error_category::~generic_error_category()")
@@ -786,7 +786,7 @@ pub fn stub_0x23b54c() -> ! {
 
 // 0x23b558 — __ZNK12_GLOBAL__N_122generic_error_category4nameEv
 // type: const char *__fastcall(_anonymous_namespace_::generic_error_category *this)
-// was: anonymous namespace'::generic_error_category::name(void)const
+// was: anonymous namespace::generic_error_category::name(void)const
 #[doc(alias = "anonymous namespace::generic_error_category::name(void)const")]
 pub fn stub_0x23b558() -> ! {
     todo!("0x23b558 anonymous namespace::generic_error_category::name(void)const")
@@ -794,7 +794,7 @@ pub fn stub_0x23b558() -> ! {
 
 // 0x23b564 — __ZNK12_GLOBAL__N_122generic_error_category7messageEi
 // type: int __fastcall(_anonymous_namespace_::generic_error_category *this, int, int)
-// was: anonymous namespace'::generic_error_category::message(int)const
+// was: anonymous namespace::generic_error_category::message(int)const
 #[doc(alias = "anonymous namespace::generic_error_category::message(int)const")]
 pub fn stub_0x23b564() -> ! {
     todo!("0x23b564 anonymous namespace::generic_error_category::message(int)const")
@@ -802,7 +802,7 @@ pub fn stub_0x23b564() -> ! {
 
 // 0x23b7cc — __ZN12_GLOBAL__N_121system_error_categoryD0Ev
 // type: void __fastcall(_anonymous_namespace_::system_error_category *__hidden this)
-// was: anonymous namespace'::system_error_category::~system_error_category()
+// was: anonymous namespace::system_error_category::~system_error_category()
 #[doc(alias = "anonymous namespace::system_error_category::~system_error_category()")]
 pub fn stub_0x23b7cc() -> ! {
     todo!("0x23b7cc anonymous namespace::system_error_category::~system_error_category()")
@@ -810,7 +810,7 @@ pub fn stub_0x23b7cc() -> ! {
 
 // 0x23b7d8 — __ZNK12_GLOBAL__N_121system_error_category4nameEv
 // type: const char *__fastcall(_anonymous_namespace_::system_error_category *this)
-// was: anonymous namespace'::system_error_category::name(void)const
+// was: anonymous namespace::system_error_category::name(void)const
 #[doc(alias = "anonymous namespace::system_error_category::name(void)const")]
 pub fn stub_0x23b7d8() -> ! {
     todo!("0x23b7d8 anonymous namespace::system_error_category::name(void)const")
@@ -818,7 +818,7 @@ pub fn stub_0x23b7d8() -> ! {
 
 // 0x23b7e4 — __ZNK12_GLOBAL__N_121system_error_category7messageEi
 // type: int __fastcall(_anonymous_namespace_::system_error_category *this, int, int)
-// was: anonymous namespace'::system_error_category::message(int)const
+// was: anonymous namespace::system_error_category::message(int)const
 #[doc(alias = "anonymous namespace::system_error_category::message(int)const")]
 pub fn stub_0x23b7e4() -> ! {
     todo!("0x23b7e4 anonymous namespace::system_error_category::message(int)const")
@@ -826,7 +826,7 @@ pub fn stub_0x23b7e4() -> ! {
 
 // 0x23b838 — __ZNK12_GLOBAL__N_121system_error_category23default_error_conditionEi
 // type: void __fastcall(_anonymous_namespace_::system_error_category *this, int, int)
-// was: anonymous namespace'::system_error_category::default_error_condition(int)const
+// was: anonymous namespace::system_error_category::default_error_condition(int)const
 #[doc(alias = "anonymous namespace::system_error_category::default_error_condition(int)const")]
 pub fn stub_0x23b838() -> ! {
     todo!("0x23b838 anonymous namespace::system_error_category::default_error_condition(int)const")
@@ -858,7 +858,7 @@ pub fn stub_0x23ca70() -> ! {
 
 // 0x23ca88 — __GLOBAL__I_a_41
 // type: void()
-// was: global constructor keyed to'_a_41
+// was: global constructor keyed to_a_41
 #[doc(alias = "global constructor keyed to_a_41")]
 pub fn stub_0x23ca88() -> ! {
     todo!("0x23ca88 global constructor keyed to_a_41")
@@ -1026,7 +1026,7 @@ pub fn stub_0x23d5d8() -> ! {
 
 // 0x23d690 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED1Ev
 // type: void __fastcall(_DWORD *)
-// was: virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
+// was: virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
 pub fn stub_0x23d690() -> ! {
     todo!("0x23d690 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
@@ -1066,7 +1066,7 @@ pub fn stub_0x23d984() -> ! {
 
 // 0x23da40 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEE5cloneEv
 // type: char *__fastcall(_DWORD *)
-// was: virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone(void)const
+// was: virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone(void)const
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone(void)const")]
 pub fn stub_0x23da40() -> ! {
     todo!("0x23da40 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone(void)const")
@@ -1074,7 +1074,7 @@ pub fn stub_0x23da40() -> ! {
 
 // 0x23db04 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEE7rethrowEv
 // type: void __fastcall __noreturn(_DWORD *)
-// was: virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const
+// was: virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const")]
 pub fn stub_0x23db04() -> ! {
     todo!("0x23db04 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const")
@@ -1082,7 +1082,7 @@ pub fn stub_0x23db04() -> ! {
 
 // 0x23db14 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
 // type: void __fastcall(_DWORD *)
-// was: virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
+// was: virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
 pub fn stub_0x23db14() -> ! {
     todo!("0x23db14 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
@@ -1178,7 +1178,7 @@ pub fn stub_0x23e568() -> ! {
 
 // 0x23e574 — __GLOBAL__I_a_42
 // type: int()
-// was: global constructor keyed to'_a_42
+// was: global constructor keyed to_a_42
 #[doc(alias = "global constructor keyed to_a_42")]
 pub fn stub_0x23e574() -> ! {
     todo!("0x23e574 global constructor keyed to_a_42")

@@ -3,7 +3,7 @@
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x1fd30..0x23c90 | total filtered 10215 already complete (RBX::Instance|DataModel|Workspace), datamodel distinct before 15835, after 15935, not-in-datamodel 69710->69610
 // Shard: bg_4 EA-sorted asc next 100 low-EA global gap filler after 0x1fd24 not yet in datamodel (filtered exhausted, 66619 missing before -> 66519 after for gap sequence, rbx_core::SharedPtr not boost)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

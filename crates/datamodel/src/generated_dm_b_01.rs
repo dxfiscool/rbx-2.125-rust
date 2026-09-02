@@ -2,7 +2,7 @@
 // Filter: mangled or demangled contains Instance|DataModel (case-sensitive) — EA-sorted asc next uncovered
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 120 stubs | range 0x6a80e4..0x6d3250 | total filtered 18838, uncovered 2810, remaining >0x5a8858 2810 (2690 after batch), datamodel distinct before 22722, after 22842
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias
 // Shard: B_01 EA-sorted ascending next uncovered after 0x6a8048 (shard A max 0x5a8858)
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]

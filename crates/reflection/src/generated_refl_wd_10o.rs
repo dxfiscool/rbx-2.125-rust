@@ -290,7 +290,7 @@ pub fn stub_2c4a50() -> ! {
 #[doc(alias = "global constructor keyed to_a_72")]
 #[doc(alias = "__GLOBAL__I_a_72")]
 pub fn stub_2c4a80() -> ! {
-    todo!("0x2c4a80 global constructor keyed to'_a_72")
+    todo!("0x2c4a80 global constructor keyed to_a_72")
 }
 
 // 0x2c5440 — __ZN3RBX3Lua15YieldingThreadsC1EPNS_13ScriptContextE
@@ -460,7 +460,7 @@ pub fn stub_2c67c8() -> ! {
 #[doc(alias = "global constructor keyed to_a_73")]
 #[doc(alias = "__GLOBAL__I_a_73")]
 pub fn stub_2c68dc() -> ! {
-    todo!("0x2c68dc global constructor keyed to'_a_73")
+    todo!("0x2c68dc global constructor keyed to_a_73")
 }
 
 // 0x2c6a74 — __ZN3RBX11ScriptStatsC1Ev

@@ -122,14 +122,14 @@ pub fn stub_267420() -> ! {
 #[doc(alias = "global constructor keyed to_a_60")]
 #[doc(alias = "__GLOBAL__I_a_60")]
 pub fn stub_2674b0() -> ! {
-    todo!("0x2674b0 global constructor keyed to'_a_60")
+    todo!("0x2674b0 global constructor keyed to_a_60")
 }
 
 // 0x268bf0 — __GLOBAL__I_a_61
 #[doc(alias = "global constructor keyed to_a_61")]
 #[doc(alias = "__GLOBAL__I_a_61")]
 pub fn stub_268bf0() -> ! {
-    todo!("0x268bf0 global constructor keyed to'_a_61")
+    todo!("0x268bf0 global constructor keyed to_a_61")
 }
 
 // 0x268cb8 — __ZN3RBX10CoreScriptC1ERKNS_9ContentIdE
@@ -376,7 +376,7 @@ pub fn stub_26aff4() -> ! {
 #[doc(alias = "global constructor keyed to_a_62")]
 #[doc(alias = "__GLOBAL__I_a_62")]
 pub fn stub_26b1f4() -> ! {
-    todo!("0x26b1f4 global constructor keyed to'_a_62")
+    todo!("0x26b1f4 global constructor keyed to_a_62")
 }
 
 // 0x26b464 — __ZNK3RBX3Lua12LuaArguments9getStringEiRSs
@@ -780,7 +780,7 @@ pub fn stub_26fb60() -> ! {
 #[doc(alias = "global constructor keyed to_a_63")]
 #[doc(alias = "__GLOBAL__I_a_63")]
 pub fn stub_270078() -> ! {
-    todo!("0x270078 global constructor keyed to'_a_63")
+    todo!("0x270078 global constructor keyed to_a_63")
 }
 
 // 0x270210 — __ZN3RBX3Lua17safe_lua_tostringEP9lua_Statei

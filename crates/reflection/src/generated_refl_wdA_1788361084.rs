@@ -222,7 +222,7 @@ pub fn stub_0x369f44() -> ! {
 #[doc(alias = "global constructor keyed to_a_136")]
 #[doc(alias = "__GLOBAL__I_a_136")]
 pub fn stub_0x36a0bc() -> ! {
-    todo!("0x36a0bc global constructor keyed to'_a_136")
+    todo!("0x36a0bc global constructor keyed to_a_136")
 }
 
 // 0x36a44c — __ZN3RBX25ScriptInformationProviderC1Ev

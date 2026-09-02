@@ -92,7 +92,7 @@ pub fn stub_750dbc() -> ! {
 #[doc(alias = "global constructor keyed to_a_343")]
 #[doc(alias = "__GLOBAL__I_a_343")]
 pub fn stub_750e6c() -> ! {
-    todo!("0x750e6c global constructor keyed to'_a_343")
+    todo!("0x750e6c global constructor keyed to_a_343")
 }
 // 0x750f9c — __ZN3RBX18RightAngleRampPoly9buildMeshEv
 // type: _DWORD __fastcall(RBX::RightAngleRampPoly *__hidden this)
@@ -164,7 +164,7 @@ pub fn stub_75222c() -> ! {
 #[doc(alias = "global constructor keyed to_a_344")]
 #[doc(alias = "__GLOBAL__I_a_344")]
 pub fn stub_752518() -> ! {
-    todo!("0x752518 global constructor keyed to'_a_344")
+    todo!("0x752518 global constructor keyed to_a_344")
 }
 // 0x752648 — __ZN3RBX10RigidJoint9isAlignedEv
 // type: _DWORD __fastcall(RBX::RigidJoint *__hidden this)
@@ -198,7 +198,7 @@ pub fn stub_752b14() -> ! {
 #[doc(alias = "global constructor keyed to_a_345")]
 #[doc(alias = "__GLOBAL__I_a_345")]
 pub fn stub_752b18() -> ! {
-    todo!("0x752b18 global constructor keyed to'_a_345")
+    todo!("0x752b18 global constructor keyed to_a_345")
 }
 // 0x752be0 — __ZN3RBX11RotateJointC1Ev
 // type: _DWORD __fastcall(RBX::RotateJoint *__hidden this)
@@ -491,7 +491,7 @@ pub fn stub_754458() -> ! {
 #[doc(alias = "global constructor keyed to_a_346")]
 #[doc(alias = "__GLOBAL__I_a_346")]
 pub fn stub_754460() -> ! {
-    todo!("0x754460 global constructor keyed to'_a_346")
+    todo!("0x754460 global constructor keyed to_a_346")
 }
 // 0x75462c — __ZN3RBX11SendPhysicsC1Ev
 // type: _DWORD __fastcall(RBX::SendPhysics *__hidden this)
@@ -560,7 +560,7 @@ pub fn stub_754e00() -> ! {
 #[doc(alias = "global constructor keyed to_a_347")]
 #[doc(alias = "__GLOBAL__I_a_347")]
 pub fn stub_754e74() -> ! {
-    todo!("0x754e74 global constructor keyed to'_a_347")
+    todo!("0x754e74 global constructor keyed to_a_347")
 }
 // 0x754f3c — __ZN3RBX6SimJob27getConstSimJobFromPrimitiveEPKNS_9PrimitiveE
 // type: _DWORD __fastcall(RBX::SimJob *__hidden this, const RBX::Primitive *)
@@ -680,7 +680,7 @@ pub fn stub_75599c() -> ! {
 #[doc(alias = "global constructor keyed to_a_348")]
 #[doc(alias = "__GLOBAL__I_a_348")]
 pub fn stub_755a2c() -> ! {
-    todo!("0x755a2c global constructor keyed to'_a_348")
+    todo!("0x755a2c global constructor keyed to_a_348")
 }
 // 0x755af4 — __ZN3RBX13SimulateStageC1EPNS_6IStageEPNS_5WorldE
 // type: _DWORD __fastcall(RBX::SimulateStage *__hidden this, RBX::IStage *, RBX::World *)
@@ -801,7 +801,7 @@ pub fn stub_75646c() -> ! {
 #[doc(alias = "global constructor keyed to_a_349")]
 #[doc(alias = "__GLOBAL__I_a_349")]
 pub fn stub_756494() -> ! {
-    todo!("0x756494 global constructor keyed to'_a_349")
+    todo!("0x756494 global constructor keyed to_a_349")
 }
 // 0x75655c — __ZN3RBX10SleepStageC1EPNS_6IStageEPNS_5WorldE
 // type: _DWORD __fastcall(RBX::SleepStage *__hidden this, RBX::IStage *, RBX::World *)

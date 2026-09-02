@@ -211,14 +211,14 @@ pub fn stub_2e28bc() -> ! {
     todo!("0x2e28bc __ZN3RBX13DragUtilities18getPrimitivesConstEPKNS_8InstanceERSt6vectorIPKNS_9PrimitiveESaIS7_EE")
 }
 
-// 0x2e2948 — __GLOBAL__I_a_88 — global constructor keyed to'_a_88
+// 0x2e2948 — __GLOBAL__I_a_88 — global constructor keyed to_a_88
 #[doc(alias = "global constructor keyed to_a_88")]
 #[doc(alias = "__GLOBAL__I_a_88")]
 pub fn stub_2e2948() -> ! {
     todo!("0x2e2948 __GLOBAL__I_a_88")
 }
 
-// 0x2e2cbc — __GLOBAL__I_a_89 — global constructor keyed to'_a_89
+// 0x2e2cbc — __GLOBAL__I_a_89 — global constructor keyed to_a_89
 #[doc(alias = "global constructor keyed to_a_89")]
 #[doc(alias = "__GLOBAL__I_a_89")]
 pub fn stub_2e2cbc() -> ! {
@@ -344,7 +344,7 @@ pub fn stub_2e34e0() -> ! {
     todo!("0x2e34e0 __ZNK3RBX8GameTool13getCursorNameEv")
 }
 
-// 0x2e34ec — __GLOBAL__I_a_90 — global constructor keyed to'_a_90
+// 0x2e34ec — __GLOBAL__I_a_90 — global constructor keyed to_a_90
 #[doc(alias = "global constructor keyed to_a_90")]
 #[doc(alias = "__GLOBAL__I_a_90")]
 pub fn stub_2e34ec() -> ! {
@@ -462,21 +462,21 @@ pub fn stub_2e3d54() -> ! {
     todo!("0x2e3d54 __ZNK3RBX8GrabTool13getCursorNameEv")
 }
 
-// 0x2e3d60 — __GLOBAL__I_a_91 — global constructor keyed to'_a_91
+// 0x2e3d60 — __GLOBAL__I_a_91 — global constructor keyed to_a_91
 #[doc(alias = "global constructor keyed to_a_91")]
 #[doc(alias = "__GLOBAL__I_a_91")]
 pub fn stub_2e3d60() -> ! {
     todo!("0x2e3d60 __GLOBAL__I_a_91")
 }
 
-// 0x2e3fd0 — __GLOBAL__I_a_92 — global constructor keyed to'_a_92
+// 0x2e3fd0 — __GLOBAL__I_a_92 — global constructor keyed to_a_92
 #[doc(alias = "global constructor keyed to_a_92")]
 #[doc(alias = "__GLOBAL__I_a_92")]
 pub fn stub_2e3fd0() -> ! {
     todo!("0x2e3fd0 __GLOBAL__I_a_92")
 }
 
-// 0x2e4240 — __GLOBAL__I_a_93 — global constructor keyed to'_a_93
+// 0x2e4240 — __GLOBAL__I_a_93 — global constructor keyed to_a_93
 #[doc(alias = "global constructor keyed to_a_93")]
 #[doc(alias = "__GLOBAL__I_a_93")]
 pub fn stub_2e4240() -> ! {
@@ -650,7 +650,7 @@ pub fn stub_2e4f1c() -> ! {
     todo!("0x2e4f1c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ExplosionENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
 }
 
-// 0x2e4f20 — __GLOBAL__I_a_94 — global constructor keyed to'_a_94
+// 0x2e4f20 — __GLOBAL__I_a_94 — global constructor keyed to_a_94
 #[doc(alias = "global constructor keyed to_a_94")]
 #[doc(alias = "__GLOBAL__I_a_94")]
 pub fn stub_2e4f20() -> ! {

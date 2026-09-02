@@ -602,7 +602,7 @@ pub fn stub_5d47a0() -> ! {
 }
 
 // 0x5d47b4 — __GLOBAL__I_a_229
-// demangled: global constructor keyed to'_a_229
+// demangled: global constructor keyed to_a_229
 #[doc(alias = "__GLOBAL__I_a_229")]
 pub fn stub_5d47b4() -> ! {
     todo!("0x5d47b4 __GLOBAL__I_a_229")

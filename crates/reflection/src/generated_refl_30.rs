@@ -20,7 +20,7 @@ pub fn stub_2530bc() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::clone(void)const")]
 #[doc(alias = "__ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEE5cloneEv")]
 pub fn stub_253178() -> ! {
-    todo!("0x253178 virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::clone(void)const")
+    todo!("0x253178 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::clone(void)const")
 }
 
 // 0x25323c — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEE7rethrowEv
@@ -28,7 +28,7 @@ pub fn stub_253178() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::rethrow(void)const")]
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEE7rethrowEv")]
 pub fn stub_25323c() -> ! {
-    todo!("0x25323c virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::rethrow(void)const")
+    todo!("0x25323c virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::rethrow(void)const")
 }
 
 // 0x25324c — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEED0Ev
@@ -36,7 +36,7 @@ pub fn stub_25323c() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEED0Ev")]
 pub fn stub_25324c() -> ! {
-    todo!("0x25324c virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()")
+    todo!("0x25324c virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()")
 }
 
 // 0x253320 — __ZN5boost16exception_detail19error_info_injectorINS_9gregorian8bad_yearEED0Ev
@@ -99,7 +99,7 @@ pub fn stub_253af0() -> ! {
 #[doc(alias = "global constructor keyed to_a_52")]
 #[doc(alias = "__GLOBAL__I_a_52")]
 pub fn stub_253c78() -> ! {
-    todo!("0x253c78 global constructor keyed to'_a_52")
+    todo!("0x253c78 global constructor keyed to_a_52")
 }
 
 // 0x253d50 — __ZN3RBX4Time3nowILNS0_12SampleMethodE2EEES0_v
@@ -337,7 +337,7 @@ pub fn stub_254bbc() -> ! {
 #[doc(alias = "global constructor keyed to_a_53")]
 #[doc(alias = "__GLOBAL__I_a_53")]
 pub fn stub_254bc0() -> ! {
-    todo!("0x254bc0 global constructor keyed to'_a_53")
+    todo!("0x254bc0 global constructor keyed to_a_53")
 }
 
 // 0x254bf8 — __ZN3RBX14IsValueOutlierEdjddNS_10ConfidenceE
@@ -400,7 +400,7 @@ pub fn stub_25529c() -> ! {
 #[doc(alias = "global constructor keyed to_a_54")]
 #[doc(alias = "__GLOBAL__I_a_54")]
 pub fn stub_2552f0() -> ! {
-    todo!("0x2552f0 global constructor keyed to'_a_54")
+    todo!("0x2552f0 global constructor keyed to_a_54")
 }
 
 // 0x255320 — __Z11convert_w2sRKSbIwSt11char_traitsIwESaIwEE
@@ -773,7 +773,7 @@ pub fn stub_25931c() -> ! {
 #[doc(alias = "global constructor keyed to_a_55")]
 #[doc(alias = "__GLOBAL__I_a_55")]
 pub fn stub_25afd8() -> ! {
-    todo!("0x25afd8 global constructor keyed to'_a_55")
+    todo!("0x25afd8 global constructor keyed to_a_55")
 }
 
 // 0x25b4c0 — __ZN3RBX5Light10setEnabledEb

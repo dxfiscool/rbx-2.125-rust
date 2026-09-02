@@ -54,7 +54,7 @@ pub fn stub_747a10() -> ! {
 #[doc(alias = "global constructor keyed to _a_339")]
 #[doc(alias = "__GLOBAL__I_a_339")]
 pub fn stub_747a54() -> ! {
-    todo!("0x747a54 global constructor keyed to'_a_339")
+    todo!("0x747a54 global constructor keyed to_a_339")
 }
 // 0x747dc0 — __ZN3RBX15PolyPolyContactC1EPNS_9PrimitiveES2_
 // type: int __fastcall(RBX::PolyPolyContact *this, RBX::Primitive *, RBX::Primitive *)
@@ -283,7 +283,7 @@ pub fn stub_74a114() -> ! {
 #[doc(alias = "global constructor keyed to _a_340")]
 #[doc(alias = "__GLOBAL__I_a_340")]
 pub fn stub_74a118() -> ! {
-    todo!("0x74a118 global constructor keyed to'_a_340")
+    todo!("0x74a118 global constructor keyed to_a_340")
 }
 // 0x74a4b8 — __ZN3RBX9PrimitiveC1ENS_8Geometry12GeometryTypeE
 // type: int __fastcall(int, int, int, int, RBX::IndexedMesh *, RBX::BasicSpatialHashPrimitive *, RBX::ConcurrencyValidator *, RBX::EdgeList *, RBX::EdgeList *, int, int, int, int, int)

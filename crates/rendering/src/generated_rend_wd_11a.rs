@@ -12,7 +12,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0x7b3fa0 — __GLOBAL__I_a_371
 #[doc(alias = "global constructor keyed to_a_371")]
 #[doc(alias = "__GLOBAL__I_a_371")]
-// was: global constructor keyed to'_a_371
+// was: global constructor keyed to_a_371
 pub fn stub_7b3fa0() -> ! {
     todo!("0x7b3fa0 global constructor keyed to_a_371")
 }
@@ -215,7 +215,7 @@ pub fn stub_7b46a4() -> ! {
 // 0x7b4784 — __GLOBAL__I_a_372
 #[doc(alias = "global constructor keyed to_a_372")]
 #[doc(alias = "__GLOBAL__I_a_372")]
-// was: global constructor keyed to'_a_372
+// was: global constructor keyed to_a_372
 pub fn stub_7b4784() -> ! {
     todo!("0x7b4784 global constructor keyed to_a_372")
 }
@@ -329,7 +329,7 @@ pub fn stub_7b4bd0() -> ! {
 // 0x7b4cb0 — __GLOBAL__I_a_373
 #[doc(alias = "global constructor keyed to_a_373")]
 #[doc(alias = "__GLOBAL__I_a_373")]
-// was: global constructor keyed to'_a_373
+// was: global constructor keyed to_a_373
 pub fn stub_7b4cb0() -> ! {
     todo!("0x7b4cb0 global constructor keyed to_a_373")
 }
@@ -470,7 +470,7 @@ pub fn stub_7b584c() -> ! {
 // 0x7b592c — __GLOBAL__I_a_374
 #[doc(alias = "global constructor keyed to_a_374")]
 #[doc(alias = "__GLOBAL__I_a_374")]
-// was: global constructor keyed to'_a_374
+// was: global constructor keyed to_a_374
 pub fn stub_7b592c() -> ! {
     todo!("0x7b592c global constructor keyed to_a_374")
 }
@@ -577,7 +577,7 @@ pub fn stub_7b5dc8() -> ! {
 // 0x7b5ea8 — __GLOBAL__I_a_375
 #[doc(alias = "global constructor keyed to_a_375")]
 #[doc(alias = "__GLOBAL__I_a_375")]
-// was: global constructor keyed to'_a_375
+// was: global constructor keyed to_a_375
 pub fn stub_7b5ea8() -> ! {
     todo!("0x7b5ea8 global constructor keyed to_a_375")
 }

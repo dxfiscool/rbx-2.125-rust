@@ -3,7 +3,7 @@
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 120 stubs | range 0x1654c..0x1bb9c | gap filler EA-sorted ascending
 // Shard: dm_wdog_C EA-sorted asc gap filler 120 not yet in datamodel distinct (Instance/DataModel/Workspace shard A)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -138,7 +138,7 @@ pub fn stub_0x16e24() -> ! {
 
 // 0x16e4c — __GLOBAL__I_a
 #[doc(alias = "global constructor keyed to_a")]
-// was: global constructor keyed to'_a
+// was: global constructor keyed to_a
 pub fn stub_0x16e4c() -> ! {
     todo!("0x16e4c __GLOBAL__I_a")
 }
@@ -159,7 +159,7 @@ pub fn stub_0x17b80() -> ! {
 
 // 0x17c58 — __GLOBAL__I_a_0
 #[doc(alias = "global constructor keyed to_a_0")]
-// was: global constructor keyed to'_a_0
+// was: global constructor keyed to_a_0
 pub fn stub_0x17c58() -> ! {
     todo!("0x17c58 __GLOBAL__I_a_0")
 }
@@ -532,7 +532,7 @@ pub fn stub_0x1a5bc() -> ! {
 
 // 0x1a5d0 — __GLOBAL__I_a_1
 #[doc(alias = "global constructor keyed to_a_1")]
-// was: global constructor keyed to'_a_1
+// was: global constructor keyed to_a_1
 pub fn stub_0x1a5d0() -> ! {
     todo!("0x1a5d0 __GLOBAL__I_a_1")
 }
@@ -545,7 +545,7 @@ pub fn stub_0x1a768() -> ! {
 
 // 0x1a7d4 — __GLOBAL__I_a_2
 #[doc(alias = "global constructor keyed to_a_2")]
-// was: global constructor keyed to'_a_2
+// was: global constructor keyed to_a_2
 pub fn stub_0x1a7d4() -> ! {
     todo!("0x1a7d4 __GLOBAL__I_a_2")
 }
@@ -684,7 +684,7 @@ pub fn stub_0x1b304() -> ! {
 
 // 0x1b308 — __GLOBAL__I_a_3
 #[doc(alias = "global constructor keyed to_a_3")]
-// was: global constructor keyed to'_a_3
+// was: global constructor keyed to_a_3
 pub fn stub_0x1b308() -> ! {
     todo!("0x1b308 __GLOBAL__I_a_3")
 }

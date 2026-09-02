@@ -253,7 +253,7 @@ pub fn stub_285898() -> ! {
     todo!("0x285898 __ZNK3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE14findDescriptorEPKc")
 }
 
-// 0x2858c0 — __GLOBAL__I_a_67 — global constructor keyed to'_a_67
+// 0x2858c0 — __GLOBAL__I_a_67 — global constructor keyed to_a_67
 #[doc(alias = "global constructor keyed to_a_67")]
 #[doc(alias = "__GLOBAL__I_a_67")]
 pub fn stub_2858c0() -> ! {
@@ -351,7 +351,7 @@ pub fn stub_286250() -> ! {
     todo!("0x286250 __ZNSt12_Vector_baseIPN5boost4poolINS0_33default_user_allocator_new_deleteEEESaIS4_EE11_M_allocateEm")
 }
 
-// 0x286268 — __GLOBAL__I_a_68 — global constructor keyed to'_a_68
+// 0x286268 — __GLOBAL__I_a_68 — global constructor keyed to_a_68
 #[doc(alias = "global constructor keyed to_a_68")]
 #[doc(alias = "__GLOBAL__I_a_68")]
 pub fn stub_286268() -> ! {
@@ -650,7 +650,7 @@ pub fn stub_2876e8() -> ! {
     todo!("0x2876e8 __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_11LuaSettingsEE8setValueEPNS0_13DescribedBaseERKi")
 }
 
-// 0x287738 — __GLOBAL__I_a_69 — global constructor keyed to'_a_69
+// 0x287738 — __GLOBAL__I_a_69 — global constructor keyed to_a_69
 #[doc(alias = "global constructor keyed to_a_69")]
 #[doc(alias = "__GLOBAL__I_a_69")]
 pub fn stub_287738() -> ! {

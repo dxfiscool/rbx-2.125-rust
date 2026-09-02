@@ -287,7 +287,7 @@ pub fn stub_7e9ef4() -> ! {
 #[doc(alias = "global constructor keyed to_a_392")]
 #[doc(alias = "__GLOBAL__I_a_392")]
 pub fn stub_7e9fa8() -> ! {
-    todo!("0x7e9fa8 global constructor keyed to'_a_392")
+    todo!("0x7e9fa8 global constructor keyed to_a_392")
 }
 
 // 0x7ea22c — __ZN3RBX15ContentProvider10setBaseUrlESs

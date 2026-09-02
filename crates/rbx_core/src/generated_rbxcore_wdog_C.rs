@@ -1,5 +1,5 @@
 //! rbx_core watchdog C — 120 stubs EA-sorted, gap filler distinct not yet in rbx_core.
-//! Source: `ida/export.json` (85545 funcs) EA asc gap-filler not yet in crates/rbx_core/src (lowest uncovered).
+//! Source: ida/export.json (85545 funcs) EA asc gap-filler not yet in crates/rbx_core/src (lowest uncovered).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
