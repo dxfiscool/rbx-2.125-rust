@@ -436,3 +436,5 @@ pub mod generated_core_watchdog_j;
 pub mod generated_core_watchdog_k;
 pub mod generated_core_watchdog_l;
 pub mod generated_core_watchdog_m;
+pub mod generated_core_watchdog_n;
+pub mod generated_core_watchdog_o;
