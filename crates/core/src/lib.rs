@@ -557,3 +557,4 @@ pub mod generated_wd_coreA;
 pub mod generated_core_shard_oq;
 pub mod generated_coreB_watchdog_1788388737;
 pub mod generated_core_shard_or;
+pub mod generated_core_shard_os;
