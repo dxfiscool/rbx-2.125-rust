@@ -189,11 +189,11 @@ pub fn stub_0x5e40e8() { todo!("0x5e40e8") }
 // 0x5e4100 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEE7rethrowEv
 pub fn stub_0x5e4100() { todo!("0x5e4100") }
 
-#[doc(alias="`non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")]
+#[doc(alias="non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")]
 // 0x5e4228 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED0Ev
 pub fn stub_0x5e4228() { todo!("0x5e4228") }
 
-#[doc(alias="`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::clone(void)const")]
+#[doc(alias="virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::clone(void)const")]
 // 0x5e4240 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEE5cloneEv
 pub fn stub_0x5e4240() { todo!("0x5e4240") }
 
@@ -225,7 +225,7 @@ pub fn stub_0x5e6298() { todo!("0x5e6298") }
 // 0x5e62a8 — __ZN5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED2Ev
 pub fn stub_0x5e62a8() { todo!("0x5e62a8") }
 
-#[doc(alias="`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
+#[doc(alias="virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
 // 0x5e6360 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED1Ev
 pub fn stub_0x5e6360() { todo!("0x5e6360") }
 
@@ -261,15 +261,15 @@ pub fn stub_0x5e71b0() { todo!("0x5e71b0") }
 // 0x5e71c8 — __ZN5boost16exception_detail19error_info_injectorINS_17bad_function_callEED2Ev
 pub fn stub_0x5e71c8() { todo!("0x5e71c8") }
 
-#[doc(alias="`non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()")]
+#[doc(alias="non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()")]
 // 0x5e7280 — __ZThn8_N5boost16exception_detail19error_info_injectorINS_17bad_function_callEED1Ev
 pub fn stub_0x5e7280() { todo!("0x5e7280") }
 
-#[doc(alias="`non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
+#[doc(alias="non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
 // 0x5e7288 — __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED1Ev
 pub fn stub_0x5e7288() { todo!("0x5e7288") }
 
-#[doc(alias="`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
+#[doc(alias="virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
 // 0x5e7290 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED1Ev
 pub fn stub_0x5e7290() { todo!("0x5e7290") }
 
@@ -277,7 +277,7 @@ pub fn stub_0x5e7290() { todo!("0x5e7290") }
 // 0x5e72a0 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEE5cloneEv
 pub fn stub_0x5e72a0() { todo!("0x5e72a0") }
 
-#[doc(alias="`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::clone(void)const")]
+#[doc(alias="virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::clone(void)const")]
 // 0x5e7360 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEE5cloneEv
 pub fn stub_0x5e7360() { todo!("0x5e7360") }
 
@@ -397,15 +397,15 @@ pub fn stub_0x5f4868() { todo!("0x5f4868") }
 // 0x5f4948 — __ZN5boost16exception_detail19error_info_injectorISt12length_errorED2Ev
 pub fn stub_0x5f4948() { todo!("0x5f4948") }
 
-#[doc(alias="`non-virtual thunk toboost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()")]
+#[doc(alias="non-virtual thunk toboost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()")]
 // 0x5f4a00 — __ZThn8_N5boost16exception_detail19error_info_injectorISt12length_errorED1Ev
 pub fn stub_0x5f4a00() { todo!("0x5f4a00") }
 
-#[doc(alias="`non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
+#[doc(alias="non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
 // 0x5f4a08 — __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED1Ev
 pub fn stub_0x5f4a08() { todo!("0x5f4a08") }
 
-#[doc(alias="`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
+#[doc(alias="virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
 // 0x5f4a10 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED1Ev
 pub fn stub_0x5f4a10() { todo!("0x5f4a10") }
 
@@ -413,11 +413,11 @@ pub fn stub_0x5f4a10() { todo!("0x5f4a10") }
 // 0x5f4a20 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEE5cloneEv
 pub fn stub_0x5f4a20() { todo!("0x5f4a20") }
 
-#[doc(alias="`non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
+#[doc(alias="non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
 // 0x5f4ae0 — __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED0Ev
 pub fn stub_0x5f4ae0() { todo!("0x5f4ae0") }
 
-#[doc(alias="`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::clone(void)const")]
+#[doc(alias="virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::clone(void)const")]
 // 0x5f4af8 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEE5cloneEv
 pub fn stub_0x5f4af8() { todo!("0x5f4af8") }
 
@@ -453,11 +453,11 @@ pub fn stub_0x5f6fac() { todo!("0x5f6fac") }
 // 0x5f704c — __ZN3RBX14PhysicsServiceD1Ev
 pub fn stub_0x5f704c() { todo!("0x5f704c") }
 
-#[doc(alias="`non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
+#[doc(alias="non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
 // 0x5f7050 — __ZThn32_N3RBX14PhysicsServiceD0Ev
 pub fn stub_0x5f7050() { todo!("0x5f7050") }
 
-#[doc(alias="`non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
+#[doc(alias="non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
 // 0x5f7058 — __ZThn36_N3RBX14PhysicsServiceD0Ev
 pub fn stub_0x5f7058() { todo!("0x5f7058") }
 
@@ -465,11 +465,11 @@ pub fn stub_0x5f7058() { todo!("0x5f7058") }
 // 0x5f7060 — __ZN3RBX14PhysicsServiceD2Ev
 pub fn stub_0x5f7060() { todo!("0x5f7060") }
 
-#[doc(alias="`non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
+#[doc(alias="non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
 // 0x5f7410 — __ZThn32_N3RBX14PhysicsServiceD1Ev
 pub fn stub_0x5f7410() { todo!("0x5f7410") }
 
-#[doc(alias="`non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
+#[doc(alias="non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
 // 0x5f7418 — __ZThn36_N3RBX14PhysicsServiceD1Ev
 pub fn stub_0x5f7418() { todo!("0x5f7418") }
 

@@ -72,7 +72,7 @@ pub fn stub_75dfd4() -> ! {
     todo!("0x75dfd4 RBX::StepJointsStage::getStageType(void)const")
 }
 // 0x75dfd8 — __GLOBAL__I_a_354
-#[doc(alias = "`global constructor keyed to_a_354")]
+#[doc(alias = "global constructor keyed to_a_354")]
 #[doc(alias = "__GLOBAL__I_a_354")]
 pub fn stub_75dfd8() -> ! {
     todo!("0x75dfd8 `global constructor keyed to'_a_354")
@@ -121,7 +121,7 @@ pub fn stub_75e4bc() -> ! {
 }
 // 0x75e4c8 — __ZThn16_N3RBX9TreeStage12validateTreeEPNS_12SpanningNodeE
 // type: _DWORD __fastcall(RBX::TreeStage *__hidden this, RBX::SpanningNode *)
-#[doc(alias = "`non-virtual thunk toRBX::TreeStage::validateTree(RBX::SpanningNode *)")]
+#[doc(alias = "non-virtual thunk toRBX::TreeStage::validateTree(RBX::SpanningNode *)")]
 #[doc(alias = "__ZThn16_N3RBX9TreeStage12validateTreeEPNS_12SpanningNodeE")]
 pub fn stub_75e4c8() -> ! {
     todo!("0x75e4c8 `non-virtual thunk to'RBX::TreeStage::validateTree(RBX::SpanningNode *)")
@@ -149,7 +149,7 @@ pub fn stub_75e69c() -> ! {
 }
 // 0x75e710 — __ZThn16_N3RBX9TreeStage20onSpanningEdgeAddingEPNS_12SpanningEdgeEPNS_12SpanningNodeE
 // type: _DWORD __fastcall(RBX::TreeStage *__hidden this, RBX::SpanningEdge *, RBX::SpanningNode *)
-#[doc(alias = "`non-virtual thunk toRBX::TreeStage::onSpanningEdgeAdding(RBX::SpanningEdge *,RBX::SpanningNode *)")]
+#[doc(alias = "non-virtual thunk toRBX::TreeStage::onSpanningEdgeAdding(RBX::SpanningEdge *,RBX::SpanningNode *)")]
 #[doc(alias = "__ZThn16_N3RBX9TreeStage20onSpanningEdgeAddingEPNS_12SpanningEdgeEPNS_12SpanningNodeE")]
 pub fn stub_75e710() -> ! {
     todo!("0x75e710 `non-virtual thunk to'RBX::TreeStage::onSpanningEdgeAdding(RBX::SpanningEdge *,RBX::SpanningNode *)")
@@ -170,7 +170,7 @@ pub fn stub_75edb8() -> ! {
 }
 // 0x75ee8c — __ZThn16_N3RBX9TreeStage19onSpanningEdgeAddedEPNS_12SpanningEdgeE
 // type: _DWORD __fastcall(RBX::TreeStage *__hidden this, RBX::SpanningEdge *)
-#[doc(alias = "`non-virtual thunk toRBX::TreeStage::onSpanningEdgeAdded(RBX::SpanningEdge *)")]
+#[doc(alias = "non-virtual thunk toRBX::TreeStage::onSpanningEdgeAdded(RBX::SpanningEdge *)")]
 #[doc(alias = "__ZThn16_N3RBX9TreeStage19onSpanningEdgeAddedEPNS_12SpanningEdgeE")]
 pub fn stub_75ee8c() -> ! {
     todo!("0x75ee8c `non-virtual thunk to'RBX::TreeStage::onSpanningEdgeAdded(RBX::SpanningEdge *)")
@@ -191,7 +191,7 @@ pub fn stub_75eef8() -> ! {
 }
 // 0x75ef20 — __ZThn16_N3RBX9TreeStage22onSpanningEdgeRemovingEPNS_12SpanningEdgeE
 // type: _DWORD __fastcall(RBX::TreeStage *__hidden this, RBX::SpanningEdge *)
-#[doc(alias = "`non-virtual thunk toRBX::TreeStage::onSpanningEdgeRemoving(RBX::SpanningEdge *)")]
+#[doc(alias = "non-virtual thunk toRBX::TreeStage::onSpanningEdgeRemoving(RBX::SpanningEdge *)")]
 #[doc(alias = "__ZThn16_N3RBX9TreeStage22onSpanningEdgeRemovingEPNS_12SpanningEdgeE")]
 pub fn stub_75ef20() -> ! {
     todo!("0x75ef20 `non-virtual thunk to'RBX::TreeStage::onSpanningEdgeRemoving(RBX::SpanningEdge *)")
@@ -226,7 +226,7 @@ pub fn stub_75f29c() -> ! {
 }
 // 0x75f320 — __ZThn16_N3RBX9TreeStage21onSpanningEdgeRemovedEPNS_12SpanningEdgeEPNS_12SpanningNodeE
 // type: _DWORD __fastcall(RBX::TreeStage *__hidden this, RBX::SpanningEdge *, RBX::SpanningNode *)
-#[doc(alias = "`non-virtual thunk toRBX::TreeStage::onSpanningEdgeRemoved(RBX::SpanningEdge *,RBX::SpanningNode *)")]
+#[doc(alias = "non-virtual thunk toRBX::TreeStage::onSpanningEdgeRemoved(RBX::SpanningEdge *,RBX::SpanningNode *)")]
 #[doc(alias = "__ZThn16_N3RBX9TreeStage21onSpanningEdgeRemovedEPNS_12SpanningEdgeEPNS_12SpanningNodeE")]
 pub fn stub_75f320() -> ! {
     todo!("0x75f320 `non-virtual thunk to'RBX::TreeStage::onSpanningEdgeRemoved(RBX::SpanningEdge *,RBX::SpanningNode *)")
@@ -337,7 +337,7 @@ pub fn stub_75fa40() -> ! {
     todo!("0x75fa40 void RBX::IndexedTree::visitMeAndChildren<RBX::Assembly,boost::_bi::bind_t<void,void (*)(RBX::Assembly*),boost::_bi::list1<boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Assembly*),boost::_bi::list1<boost::arg<1>>>)")
 }
 // 0x75fae4 — __GLOBAL__I_a_355
-#[doc(alias = "`global constructor keyed to_a_355")]
+#[doc(alias = "global constructor keyed to_a_355")]
 #[doc(alias = "__GLOBAL__I_a_355")]
 pub fn stub_75fae4() -> ! {
     todo!("0x75fae4 `global constructor keyed to'_a_355")
@@ -429,7 +429,7 @@ pub fn stub_761134() -> ! {
     todo!("0x761134 boost::singleton_pool<RBX::POLY::WedgeMesh,36u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")
 }
 // 0x7613d4 — __GLOBAL__I_a_356
-#[doc(alias = "`global constructor keyed to_a_356")]
+#[doc(alias = "global constructor keyed to_a_356")]
 #[doc(alias = "__GLOBAL__I_a_356")]
 pub fn stub_7613d4() -> ! {
     todo!("0x7613d4 `global constructor keyed to'_a_356")
@@ -442,7 +442,7 @@ pub fn stub_761504() -> ! {
     todo!("0x761504 RBX::WeldJoint::canBuildJoint(RBX::Primitive *,RBX::Primitive *,RBX::NormalId,RBX::NormalId)")
 }
 // 0x761648 — __GLOBAL__I_a_357
-#[doc(alias = "`global constructor keyed to_a_357")]
+#[doc(alias = "global constructor keyed to_a_357")]
 #[doc(alias = "__GLOBAL__I_a_357")]
 pub fn stub_761648() -> ! {
     todo!("0x761648 `global constructor keyed to'_a_357")

@@ -446,7 +446,7 @@ pub fn stub_5aad08() -> ! {
 }
 
 // 0x5aade8 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-#[doc(alias = "`non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 pub fn stub_5aade8() -> ! {
     todo!("0x5aade8 __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")
@@ -551,14 +551,14 @@ pub fn stub_5ab0e0() -> ! {
 }
 
 // 0x5ab0e4 — __ZThn32_N3RBX15ManualGlueJointD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::ManualGlueJoint::~ManualGlueJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::ManualGlueJoint::~ManualGlueJoint()")]
 #[doc(alias = "__ZThn32_N3RBX15ManualGlueJointD1Ev")]
 pub fn stub_5ab0e4() -> ! {
     todo!("0x5ab0e4 __ZThn32_N3RBX15ManualGlueJointD1Ev")
 }
 
 // 0x5ab0ec — __ZThn32_N3RBX15ManualGlueJointD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::ManualGlueJoint::~ManualGlueJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::ManualGlueJoint::~ManualGlueJoint()")]
 #[doc(alias = "__ZThn32_N3RBX15ManualGlueJointD0Ev")]
 pub fn stub_5ab0ec() -> ! {
     todo!("0x5ab0ec __ZThn32_N3RBX15ManualGlueJointD0Ev")
@@ -586,14 +586,14 @@ pub fn stub_5ab198() -> ! {
 }
 
 // 0x5ab19c — __ZThn32_N3RBX15ManualWeldJointD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::ManualWeldJoint::~ManualWeldJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::ManualWeldJoint::~ManualWeldJoint()")]
 #[doc(alias = "__ZThn32_N3RBX15ManualWeldJointD1Ev")]
 pub fn stub_5ab19c() -> ! {
     todo!("0x5ab19c __ZThn32_N3RBX15ManualWeldJointD1Ev")
 }
 
 // 0x5ab1a4 — __ZThn32_N3RBX15ManualWeldJointD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::ManualWeldJoint::~ManualWeldJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::ManualWeldJoint::~ManualWeldJoint()")]
 #[doc(alias = "__ZThn32_N3RBX15ManualWeldJointD0Ev")]
 pub fn stub_5ab1a4() -> ! {
     todo!("0x5ab1a4 __ZThn32_N3RBX15ManualWeldJointD0Ev")
@@ -621,14 +621,14 @@ pub fn stub_5ab250() -> ! {
 }
 
 // 0x5ab254 — __ZThn32_N3RBX9WeldJointD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::WeldJoint::~WeldJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::WeldJoint::~WeldJoint()")]
 #[doc(alias = "__ZThn32_N3RBX9WeldJointD1Ev")]
 pub fn stub_5ab254() -> ! {
     todo!("0x5ab254 __ZThn32_N3RBX9WeldJointD1Ev")
 }
 
 // 0x5ab25c — __ZThn32_N3RBX9WeldJointD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::WeldJoint::~WeldJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::WeldJoint::~WeldJoint()")]
 #[doc(alias = "__ZThn32_N3RBX9WeldJointD0Ev")]
 pub fn stub_5ab25c() -> ! {
     todo!("0x5ab25c __ZThn32_N3RBX9WeldJointD0Ev")
@@ -656,21 +656,21 @@ pub fn stub_5ab308() -> ! {
 }
 
 // 0x5ab30c — __ZThn32_N3RBX9SnapJointD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::SnapJoint::~SnapJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::SnapJoint::~SnapJoint()")]
 #[doc(alias = "__ZThn32_N3RBX9SnapJointD1Ev")]
 pub fn stub_5ab30c() -> ! {
     todo!("0x5ab30c __ZThn32_N3RBX9SnapJointD1Ev")
 }
 
 // 0x5ab314 — __ZThn32_N3RBX9SnapJointD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::SnapJoint::~SnapJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::SnapJoint::~SnapJoint()")]
 #[doc(alias = "__ZThn32_N3RBX9SnapJointD0Ev")]
 pub fn stub_5ab314() -> ! {
     todo!("0x5ab314 __ZThn32_N3RBX9SnapJointD0Ev")
 }
 
 // 0x5ab31c — __GLOBAL__I_a_218
-#[doc(alias = "`global constructor keyed to_a_218")]
+#[doc(alias = "global constructor keyed to_a_218")]
 #[doc(alias = "__GLOBAL__I_a_218")]
 pub fn stub_5ab31c() -> ! {
     todo!("0x5ab31c __GLOBAL__I_a_218")

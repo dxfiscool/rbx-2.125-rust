@@ -330,3 +330,4 @@ pub mod generated_plat_bz;
 pub mod generated_watchdog_plat_w1;
 pub mod generated_plat_cb;
 pub mod generated_plat_cc;
+pub mod generated_plat_cd;
