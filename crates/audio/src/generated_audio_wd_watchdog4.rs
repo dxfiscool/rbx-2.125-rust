@@ -1,7 +1,7 @@
-//! audio generated_audio_wd_watchdog4 — 100 stubs EA-sorted asc gap filler not yet in audio (FMOD|Sound|Audio exhausted, global gap filler)
-//! Source: ida/export.json (85545 funcs) EA-sorted asc next 100 not in audio after 0x623a40 | rbx_core::SharedPtr not boost
-//! Range 0x623b10..0x628364 | existing 35752 -> 35852 distinct
-//! Batch: 100 stubs | // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR mangled")
+//! audio generated_audio_wd_watchdog4 — 120 stubs EA-sorted asc gap filler not yet in audio (FMOD|Sound|Audio exhausted, global gap filler)
+//! Source: ida/export.json (85545 funcs) EA-sorted asc next 120 not in audio after 0x623a40 | rbx_core::SharedPtr not boost
+//! Range 0x623b10..0x62910c | existing 35752 -> 35872 distinct
+//! Batch: 120 stubs | // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR mangled")
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 use rbx_core::SharedPtr;
@@ -769,4 +769,164 @@ pub fn stub_6280cc() -> ! {
 #[doc(alias = "__ZN3RBX18SkateboardPlatform26onLocalNotPlatformStandingEPNS_8HumanoidE")]
 pub fn stub_628364() -> ! {
     todo!("0x628364 __ZN3RBX18SkateboardPlatform26onLocalNotPlatformStandingEPNS_8HumanoidE")
+}
+
+// 0x628660 — __ZN3RBX18SkateboardPlatform26delayedReparentToWorkspaceEN5boost8weak_ptrINS_13ModelInstanceEEES4_
+// demangled: RBX::SkateboardPlatform::delayedReparentToWorkspace(boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>)
+#[doc(alias = "RBX::SkateboardPlatform::delayedReparentToWorkspace(boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>)")]
+#[doc(alias = "__ZN3RBX18SkateboardPlatform26delayedReparentToWorkspaceEN5boost8weak_ptrINS_13ModelInstanceEEES4_")]
+pub fn stub_628660() -> ! {
+    todo!("0x628660 __ZN3RBX18SkateboardPlatform26delayedReparentToWorkspaceEN5boost8weak_ptrINS_13ModelInstanceEEES4_")
+}
+
+// 0x628774 — __ZN3RBX18SkateboardPlatform17onServiceProviderEPNS_15ServiceProviderES2_
+// demangled: RBX::SkateboardPlatform::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)
+#[doc(alias = "RBX::SkateboardPlatform::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
+#[doc(alias = "__ZN3RBX18SkateboardPlatform17onServiceProviderEPNS_15ServiceProviderES2_")]
+pub fn stub_628774() -> ! {
+    todo!("0x628774 __ZN3RBX18SkateboardPlatform17onServiceProviderEPNS_15ServiceProviderES2_")
+}
+
+// 0x628778 — __ZN3RBX18SkateboardPlatform17onAncestorChangedERKNS_15AncestorChangedE
+// demangled: RBX::SkateboardPlatform::onAncestorChanged(RBX::AncestorChanged const&)
+#[doc(alias = "RBX::SkateboardPlatform::onAncestorChanged(RBX::AncestorChanged const&)")]
+#[doc(alias = "__ZN3RBX18SkateboardPlatform17onAncestorChangedERKNS_15AncestorChangedE")]
+pub fn stub_628778() -> ! {
+    todo!("0x628778 __ZN3RBX18SkateboardPlatform17onAncestorChangedERKNS_15AncestorChangedE")
+}
+
+// 0x628828 — __ZN3RBX18SkateboardPlatform13getEngineBodyEv
+// demangled: RBX::SkateboardPlatform::getEngineBody(void)
+#[doc(alias = "RBX::SkateboardPlatform::getEngineBody(void)")]
+#[doc(alias = "__ZN3RBX18SkateboardPlatform13getEngineBodyEv")]
+pub fn stub_628828() -> ! {
+    todo!("0x628828 __ZN3RBX18SkateboardPlatform13getEngineBodyEv")
+}
+
+// 0x628834 — __ZThn352_N3RBX18SkateboardPlatform13getEngineBodyEv
+// demangled: `non-virtual thunk to'RBX::SkateboardPlatform::getEngineBody(void)
+#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::getEngineBody(void)")]
+#[doc(alias = "__ZThn352_N3RBX18SkateboardPlatform13getEngineBodyEv")]
+pub fn stub_628834() -> ! {
+    todo!("0x628834 __ZThn352_N3RBX18SkateboardPlatform13getEngineBodyEv")
+}
+
+// 0x628844 — __ZN3RBX18SkateboardPlatform19countGroundedWheelsEv
+// demangled: RBX::SkateboardPlatform::countGroundedWheels(void)
+#[doc(alias = "RBX::SkateboardPlatform::countGroundedWheels(void)")]
+#[doc(alias = "__ZN3RBX18SkateboardPlatform19countGroundedWheelsEv")]
+pub fn stub_628844() -> ! {
+    todo!("0x628844 __ZN3RBX18SkateboardPlatform19countGroundedWheelsEv")
+}
+
+// 0x6289b0 — __ZN3RBX18SkateboardPlatform6stepUiEd
+// demangled: RBX::SkateboardPlatform::stepUi(double)
+#[doc(alias = "RBX::SkateboardPlatform::stepUi(double)")]
+#[doc(alias = "__ZN3RBX18SkateboardPlatform6stepUiEd")]
+pub fn stub_6289b0() -> ! {
+    todo!("0x6289b0 __ZN3RBX18SkateboardPlatform6stepUiEd")
+}
+
+// 0x628afc — __ZN3RBX18SkateboardPlatform10loadWheelsEv
+// demangled: RBX::SkateboardPlatform::loadWheels(void)
+#[doc(alias = "RBX::SkateboardPlatform::loadWheels(void)")]
+#[doc(alias = "__ZN3RBX18SkateboardPlatform10loadWheelsEv")]
+pub fn stub_628afc() -> ! {
+    todo!("0x628afc __ZN3RBX18SkateboardPlatform10loadWheelsEv")
+}
+
+// 0x628b9c — __ZThn352_N3RBX18SkateboardPlatform6stepUiEd
+// demangled: `non-virtual thunk to'RBX::SkateboardPlatform::stepUi(double)
+#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::stepUi(double)")]
+#[doc(alias = "__ZThn352_N3RBX18SkateboardPlatform6stepUiEd")]
+pub fn stub_628b9c() -> ! {
+    todo!("0x628b9c __ZThn352_N3RBX18SkateboardPlatform6stepUiEd")
+}
+
+// 0x628bb0 — __ZN3RBX18SkateboardPlatform12doLoadWheelsEPNS_9PrimitiveE
+// demangled: RBX::SkateboardPlatform::doLoadWheels(RBX::Primitive *)
+#[doc(alias = "RBX::SkateboardPlatform::doLoadWheels(RBX::Primitive *)")]
+#[doc(alias = "__ZN3RBX18SkateboardPlatform12doLoadWheelsEPNS_9PrimitiveE")]
+pub fn stub_628bb0() -> ! {
+    todo!("0x628bb0 __ZN3RBX18SkateboardPlatform12doLoadWheelsEPNS_9PrimitiveE")
+}
+
+// 0x628c18 — __ZN3RBX18SkateboardPlatform12computeForceEb
+// demangled: RBX::SkateboardPlatform::computeForce(bool)
+#[doc(alias = "RBX::SkateboardPlatform::computeForce(bool)")]
+#[doc(alias = "__ZN3RBX18SkateboardPlatform12computeForceEb")]
+pub fn stub_628c18() -> ! {
+    todo!("0x628c18 __ZN3RBX18SkateboardPlatform12computeForceEb")
+}
+
+// 0x628f7c — __ZN3RBX18SkateboardPlatform6doPushEf
+// demangled: RBX::SkateboardPlatform::doPush(float)
+#[doc(alias = "RBX::SkateboardPlatform::doPush(float)")]
+#[doc(alias = "__ZN3RBX18SkateboardPlatform6doPushEf")]
+pub fn stub_628f7c() -> ! {
+    todo!("0x628f7c __ZN3RBX18SkateboardPlatform6doPushEf")
+}
+
+// 0x628fb8 — __ZN3RBX18SkateboardPlatform6doTurnEf
+// demangled: RBX::SkateboardPlatform::doTurn(float)
+#[doc(alias = "RBX::SkateboardPlatform::doTurn(float)")]
+#[doc(alias = "__ZN3RBX18SkateboardPlatform6doTurnEf")]
+pub fn stub_628fb8() -> ! {
+    todo!("0x628fb8 __ZN3RBX18SkateboardPlatform6doTurnEf")
+}
+
+// 0x629084 — __ZThn504_N3RBX18SkateboardPlatform12computeForceEb
+// demangled: `non-virtual thunk to'RBX::SkateboardPlatform::computeForce(bool)
+#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::computeForce(bool)")]
+#[doc(alias = "__ZThn504_N3RBX18SkateboardPlatform12computeForceEb")]
+pub fn stub_629084() -> ! {
+    todo!("0x629084 __ZThn504_N3RBX18SkateboardPlatform12computeForceEb")
+}
+
+// 0x629090 — __ZN3RBX18SkateboardPlatform17applyForwardForceEf
+// demangled: RBX::SkateboardPlatform::applyForwardForce(float)
+#[doc(alias = "RBX::SkateboardPlatform::applyForwardForce(float)")]
+#[doc(alias = "__ZN3RBX18SkateboardPlatform17applyForwardForceEf")]
+pub fn stub_629090() -> ! {
+    todo!("0x629090 __ZN3RBX18SkateboardPlatform17applyForwardForceEf")
+}
+
+// 0x6290fc — __ZNK3RBX18SkateboardPlatform14shouldRender2dEv
+// demangled: RBX::SkateboardPlatform::shouldRender2d(void)const
+#[doc(alias = "RBX::SkateboardPlatform::shouldRender2d(void)const")]
+#[doc(alias = "__ZNK3RBX18SkateboardPlatform14shouldRender2dEv")]
+pub fn stub_6290fc() -> ! {
+    todo!("0x6290fc __ZNK3RBX18SkateboardPlatform14shouldRender2dEv")
+}
+
+// 0x629100 — __ZThn108_NK3RBX18SkateboardPlatform14shouldRender2dEv
+// demangled: `non-virtual thunk to'RBX::SkateboardPlatform::shouldRender2d(void)const
+#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::shouldRender2d(void)const")]
+#[doc(alias = "__ZThn108_NK3RBX18SkateboardPlatform14shouldRender2dEv")]
+pub fn stub_629100() -> ! {
+    todo!("0x629100 __ZThn108_NK3RBX18SkateboardPlatform14shouldRender2dEv")
+}
+
+// 0x629104 — __ZN3RBX18SkateboardPlatform8render2dEPNS_5AdornE
+// demangled: RBX::SkateboardPlatform::render2d(RBX::Adorn *)
+#[doc(alias = "RBX::SkateboardPlatform::render2d(RBX::Adorn *)")]
+#[doc(alias = "__ZN3RBX18SkateboardPlatform8render2dEPNS_5AdornE")]
+pub fn stub_629104() -> ! {
+    todo!("0x629104 __ZN3RBX18SkateboardPlatform8render2dEPNS_5AdornE")
+}
+
+// 0x629108 — __ZThn108_N3RBX18SkateboardPlatform8render2dEPNS_5AdornE
+// demangled: `non-virtual thunk to'RBX::SkateboardPlatform::render2d(RBX::Adorn *)
+#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::render2d(RBX::Adorn *)")]
+#[doc(alias = "__ZThn108_N3RBX18SkateboardPlatform8render2dEPNS_5AdornE")]
+pub fn stub_629108() -> ! {
+    todo!("0x629108 __ZThn108_N3RBX18SkateboardPlatform8render2dEPNS_5AdornE")
+}
+
+// 0x62910c — __ZN3RBX18SkateboardPlatform25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE
+// demangled: RBX::SkateboardPlatform::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)
+#[doc(alias = "RBX::SkateboardPlatform::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
+#[doc(alias = "__ZN3RBX18SkateboardPlatform25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE")]
+pub fn stub_62910c() -> ! {
+    todo!("0x62910c __ZN3RBX18SkateboardPlatform25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE")
 }
