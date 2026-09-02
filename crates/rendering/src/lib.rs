@@ -514,3 +514,4 @@ pub mod generated_watchdog_rend_w1;
 pub mod generated_watchdog_rend_w2;
 pub mod generated_watchdog_rend_w3;
 pub mod generated_rend_481;
+pub mod generated_rend_watchdog_1788336740;
