@@ -322,3 +322,5 @@ pub mod generated_refl_wdog_topup16;
 pub mod generated_ref_wd;
 pub mod generated_refl_batch_91d2fc_ad1ac8;
 pub mod generated_ref_wd25;
+pub mod generated_refl_batch_b1e740_146b48;
+pub mod generated_watchdog_refl_1788382772;
