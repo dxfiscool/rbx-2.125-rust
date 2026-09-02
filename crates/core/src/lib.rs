@@ -444,3 +444,5 @@ pub mod generated_core_watchdog_p;
 pub mod generated_core_watchdog_q;
 pub mod generated_core_watchdog_r;
 pub mod generated_core_watchdog_s;
+pub mod generated_core_watchdog_t;
+pub mod generated_core_watchdog_u;
