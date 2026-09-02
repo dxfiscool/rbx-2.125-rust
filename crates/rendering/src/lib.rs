@@ -501,3 +501,4 @@ pub mod generated_470;
 pub mod generated_render_watchdog_A;
 pub mod generated_render_watchdog_B;
 pub mod generated_render_watchdog_C;
+pub mod generated_render_watchdog_D;
