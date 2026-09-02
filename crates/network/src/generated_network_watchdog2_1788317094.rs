@@ -452,7 +452,7 @@ pub fn stub_2e998c() -> ! {
 }
 
 // 0x2e9b08 — __GLOBAL__I_a_95
-#[doc(alias = "`global constructor keyed to_a_95")]
+#[doc(alias = "global constructor keyed to_a_95")]
 #[doc(alias = "__GLOBAL__I_a_95")]
 pub fn stub_2e9b08() -> ! {
     todo!("0x2e9b08 __GLOBAL__I_a_95")
@@ -500,7 +500,7 @@ pub fn stub_2ea2ac() -> ! {
 
 // 0x2ea2b0 — __ZThn36_N3RBX11LuaDragToolD0Ev
 // type: void __fastcall(RBX::LuaDragTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")]
 #[doc(alias = "__ZThn36_N3RBX11LuaDragToolD0Ev")]
 pub fn stub_2ea2b0() -> ! {
     todo!("0x2ea2b0 __ZThn36_N3RBX11LuaDragToolD0Ev")
@@ -516,7 +516,7 @@ pub fn stub_2ea2b8() -> ! {
 
 // 0x2ea3f8 — __ZThn36_N3RBX11LuaDragToolD1Ev
 // type: void __fastcall(RBX::LuaDragTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")]
 #[doc(alias = "__ZThn36_N3RBX11LuaDragToolD1Ev")]
 pub fn stub_2ea3f8() -> ! {
     todo!("0x2ea3f8 __ZThn36_N3RBX11LuaDragToolD1Ev")
@@ -595,7 +595,7 @@ pub fn stub_2eab50() -> ! {
 }
 
 // 0x2eac30 — __GLOBAL__I_a_96
-#[doc(alias = "`global constructor keyed to_a_96")]
+#[doc(alias = "global constructor keyed to_a_96")]
 #[doc(alias = "__GLOBAL__I_a_96")]
 pub fn stub_2eac30() -> ! {
     todo!("0x2eac30 __GLOBAL__I_a_96")

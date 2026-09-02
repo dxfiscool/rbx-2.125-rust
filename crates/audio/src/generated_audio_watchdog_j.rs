@@ -327,7 +327,7 @@ pub fn stub_53b298() -> ! {
 }
 
 // 0x53b2b0 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX5UDim2EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::UDim2)>::slot,boost::function<void ()(RBX::UDim2)>,1,void ()(RBX::UDim2)>::call(RBX::UDim2)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::UDim2)>::slot,boost::function<void ()(RBX::UDim2)>,1,void ()(RBX::UDim2)>::call(RBX::UDim2)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX5UDim2EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")]
 pub fn stub_53b2b0() -> ! {
     todo!("0x53b2b0 __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX5UDim2EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")

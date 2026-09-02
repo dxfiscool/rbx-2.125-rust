@@ -275,7 +275,7 @@ pub fn stub_37e16c() -> ! {
 
 // 0x37e344 — __ZThn32_N21SoundServiceStatsItemD1Ev — non-virtual thunk to SoundServiceStatsItem::~SoundServiceStatsItem()
 // type: void __fastcall(SoundServiceStatsItem *__hidden this)
-#[doc(alias = "`non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")]
+#[doc(alias = "non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")]
 #[doc(alias = "__ZThn32_N21SoundServiceStatsItemD1Ev")]
 pub fn stub_37e344() -> ! {
     todo!("0x37e344 __ZThn32_N21SoundServiceStatsItemD1Ev")
@@ -284,7 +284,7 @@ pub fn stub_37e344() -> ! {
 
 // 0x37e384 — __ZThn32_N21SoundServiceStatsItemD0Ev — non-virtual thunk to SoundServiceStatsItem::~SoundServiceStatsItem()
 // type: void __fastcall(SoundServiceStatsItem *__hidden this)
-#[doc(alias = "`non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")]
+#[doc(alias = "non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")]
 #[doc(alias = "__ZThn32_N21SoundServiceStatsItemD0Ev")]
 pub fn stub_37e384() -> ! {
     todo!("0x37e384 __ZThn32_N21SoundServiceStatsItemD0Ev")
@@ -293,7 +293,7 @@ pub fn stub_37e384() -> ! {
 
 // 0x37e458 — __ZThn36_N21SoundServiceStatsItemD1Ev — non-virtual thunk to SoundServiceStatsItem::~SoundServiceStatsItem()
 // type: void __fastcall(SoundServiceStatsItem *__hidden this)
-#[doc(alias = "`non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")]
+#[doc(alias = "non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")]
 #[doc(alias = "__ZThn36_N21SoundServiceStatsItemD1Ev")]
 pub fn stub_37e458() -> ! {
     todo!("0x37e458 __ZThn36_N21SoundServiceStatsItemD1Ev")
@@ -302,7 +302,7 @@ pub fn stub_37e458() -> ! {
 
 // 0x37e498 — __ZThn36_N21SoundServiceStatsItemD0Ev — non-virtual thunk to SoundServiceStatsItem::~SoundServiceStatsItem()
 // type: void __fastcall(SoundServiceStatsItem *__hidden this)
-#[doc(alias = "`non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")]
+#[doc(alias = "non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")]
 #[doc(alias = "__ZThn36_N21SoundServiceStatsItemD0Ev")]
 pub fn stub_37e498() -> ! {
     todo!("0x37e498 __ZThn36_N21SoundServiceStatsItemD0Ev")
@@ -446,7 +446,7 @@ pub fn stub_37eab0() -> ! {
 
 // 0x37ead8 — __GLOBAL__I_a_138 — global constructor keyed to _a_138
 // type: void
-#[doc(alias = "`global constructor keyed to_a_138")]
+#[doc(alias = "global constructor keyed to_a_138")]
 #[doc(alias = "__GLOBAL__I_a_138")]
 pub fn stub_37ead8() -> ! {
     todo!("0x37ead8 __GLOBAL__I_a_138")
@@ -617,7 +617,7 @@ pub fn stub_38020c() -> ! {
 
 // 0x38039c — __GLOBAL__I_a_139 — global constructor keyed to _a_139
 // type: void
-#[doc(alias = "`global constructor keyed to_a_139")]
+#[doc(alias = "global constructor keyed to_a_139")]
 #[doc(alias = "__GLOBAL__I_a_139")]
 pub fn stub_38039c() -> ! {
     todo!("0x38039c __GLOBAL__I_a_139")
@@ -680,7 +680,7 @@ pub fn stub_3806bc() -> ! {
 
 // 0x3806e4 — __GLOBAL__I_a_140 — global constructor keyed to _a_140
 // type: void
-#[doc(alias = "`global constructor keyed to_a_140")]
+#[doc(alias = "global constructor keyed to_a_140")]
 #[doc(alias = "__GLOBAL__I_a_140")]
 pub fn stub_3806e4() -> ! {
     todo!("0x3806e4 __GLOBAL__I_a_140")
@@ -698,7 +698,7 @@ pub fn stub_3807ac() -> ! {
 
 // 0x3807b0 — __GLOBAL__I_a_141 — global constructor keyed to _a_141
 // type: void
-#[doc(alias = "`global constructor keyed to_a_141")]
+#[doc(alias = "global constructor keyed to_a_141")]
 #[doc(alias = "__GLOBAL__I_a_141")]
 pub fn stub_3807b0() -> ! {
     todo!("0x3807b0 __GLOBAL__I_a_141")

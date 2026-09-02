@@ -423,6 +423,7 @@ pub mod generated_core_shard_nl;
 pub mod generated_core_shard_nm;
 pub mod generated_core_shard_nn;
 pub mod generated_core_shard_no;
+pub mod generated_core_shard_np;
 pub mod generated_core_watchdog_a;
 pub mod generated_core_watchdog_b;
 pub mod generated_core_watchdog_c;

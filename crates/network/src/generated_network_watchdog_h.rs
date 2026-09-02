@@ -156,14 +156,14 @@ pub fn stub_2c1f30() -> ! {
 }
 
 // 0x2c2008 — __ZThn36_N3RBX5Stats4ItemD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::Item::~Item()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::Item::~Item()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats4ItemD1Ev")]
 pub fn stub_2c2008() -> ! {
     todo!("0x2c2008 __ZThn36_N3RBX5Stats4ItemD1Ev")
 }
 
 // 0x2c2048 — __ZThn36_N3RBX5Stats4ItemD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::Item::~Item()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::Item::~Item()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats4ItemD0Ev")]
 pub fn stub_2c2048() -> ! {
     todo!("0x2c2048 __ZThn36_N3RBX5Stats4ItemD0Ev")
@@ -538,7 +538,7 @@ pub fn stub_2c4a50() -> ! {
 }
 
 // 0x2c4a80 — __GLOBAL__I_a_72
-#[doc(alias = "`global constructor keyed to_a_72")]
+#[doc(alias = "global constructor keyed to_a_72")]
 #[doc(alias = "__GLOBAL__I_a_72")]
 pub fn stub_2c4a80() -> ! {
     todo!("0x2c4a80 __GLOBAL__I_a_72")

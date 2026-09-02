@@ -99,7 +99,7 @@ pub fn stub_2fa878() -> ! {
 }
 
 // 0x2fa87c — __GLOBAL__I_a_105
-#[doc(alias = "`global constructor keyed to_a_105")]
+#[doc(alias = "global constructor keyed to_a_105")]
 #[doc(alias = "__GLOBAL__I_a_105")]
 pub fn stub_2fa87c() -> ! {
     todo!("0x2fa87c __GLOBAL__I_a_105")
@@ -194,7 +194,7 @@ pub fn stub_3022f8() -> ! {
 }
 
 // 0x302d20 — __GLOBAL__I_a_106
-#[doc(alias = "`global constructor keyed to_a_106")]
+#[doc(alias = "global constructor keyed to_a_106")]
 #[doc(alias = "__GLOBAL__I_a_106")]
 pub fn stub_302d20() -> ! {
     todo!("0x302d20 __GLOBAL__I_a_106")
@@ -405,7 +405,7 @@ pub fn stub_304070() -> ! {
 }
 
 // 0x304200 — __GLOBAL__I_a_107
-#[doc(alias = "`global constructor keyed to_a_107")]
+#[doc(alias = "global constructor keyed to_a_107")]
 #[doc(alias = "__GLOBAL__I_a_107")]
 pub fn stub_304200() -> ! {
     todo!("0x304200 __GLOBAL__I_a_107")

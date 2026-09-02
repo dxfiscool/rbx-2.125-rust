@@ -267,3 +267,4 @@ pub mod generated_network_watchdog_p;
 pub mod generated_network_watchdog_q;
 pub mod generated_network_watchdog_r;
 pub mod generated_network_watchdog_s;
+pub mod generated_network_watchdog_t;

@@ -13,7 +13,7 @@ const _: () = {
 
 
 // 0x314a40 — __GLOBAL__I_a_110
-#[doc(alias = "`global constructor keyed to_a_110")]
+#[doc(alias = "global constructor keyed to_a_110")]
 #[doc(alias = "__GLOBAL__I_a_110")]
 pub fn stub_314a40() -> ! {
     todo!("0x314a40 __GLOBAL__I_a_110")
@@ -69,7 +69,7 @@ pub fn stub_314d14() -> ! {
 
 // 0x314f94 — __ZN12_GLOBAL__N_111createIdUrlERSsRKSsS2_
 // type: _DWORD __fastcall(_anonymous_namespace_ *__hidden this, std::string *, const std::string *, const std::string *)
-#[doc(alias = "`anonymous namespace::createIdUrl(std::string &,std::string const&,std::string const&)")]
+#[doc(alias = "anonymous namespace::createIdUrl(std::string &,std::string const&,std::string const&)")]
 #[doc(alias = "__ZN12_GLOBAL__N_111createIdUrlERSsRKSsS2_")]
 pub fn stub_314f94() -> ! {
     todo!("0x314f94 __ZN12_GLOBAL__N_111createIdUrlERSsRKSsS2_")
@@ -124,7 +124,7 @@ pub fn stub_315564() -> ! {
 }
 
 // 0x315594 — __GLOBAL__I_a_111
-#[doc(alias = "`global constructor keyed to_a_111")]
+#[doc(alias = "global constructor keyed to_a_111")]
 #[doc(alias = "__GLOBAL__I_a_111")]
 pub fn stub_315594() -> ! {
     todo!("0x315594 __GLOBAL__I_a_111")
@@ -246,7 +246,7 @@ pub fn stub_3164c4() -> ! {
 }
 
 // 0x3164c8 — __GLOBAL__I_a_112
-#[doc(alias = "`global constructor keyed to_a_112")]
+#[doc(alias = "global constructor keyed to_a_112")]
 #[doc(alias = "__GLOBAL__I_a_112")]
 pub fn stub_3164c8() -> ! {
     todo!("0x3164c8 __GLOBAL__I_a_112")
@@ -704,7 +704,7 @@ pub fn stub_31e63c() -> ! {
 }
 
 // 0x31e658 — __GLOBAL__I_a_113
-#[doc(alias = "`global constructor keyed to_a_113")]
+#[doc(alias = "global constructor keyed to_a_113")]
 #[doc(alias = "__GLOBAL__I_a_113")]
 pub fn stub_31e658() -> ! {
     todo!("0x31e658 __GLOBAL__I_a_113")

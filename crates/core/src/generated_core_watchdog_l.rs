@@ -37,7 +37,7 @@ pub fn stub_0x2d1afc() -> ! {
 }
 
 // 0x2d1b00 — __ZThn36_N3RBX14AdvLuaDragToolD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::AdvLuaDragTool::~AdvLuaDragTool()")]
+#[doc(alias = "non-virtual thunk toRBX::AdvLuaDragTool::~AdvLuaDragTool()")]
 pub fn stub_0x2d1b00() -> ! {
     todo!("0x2d1b00")
 }
@@ -49,7 +49,7 @@ pub fn stub_0x2d1b08() -> ! {
 }
 
 // 0x2d1c48 — __ZThn36_N3RBX14AdvLuaDragToolD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::AdvLuaDragTool::~AdvLuaDragTool()")]
+#[doc(alias = "non-virtual thunk toRBX::AdvLuaDragTool::~AdvLuaDragTool()")]
 pub fn stub_0x2d1c48() -> ! {
     todo!("0x2d1c48")
 }
@@ -199,13 +199,13 @@ pub fn stub_0x2e5eb0() -> ! {
 }
 
 // 0x2e5eb4 — __ZThn32_N3RBX10LuaDraggerD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
 pub fn stub_0x2e5eb4() -> ! {
     todo!("0x2e5eb4")
 }
 
 // 0x2e5ebc — __ZThn36_N3RBX10LuaDraggerD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
 pub fn stub_0x2e5ebc() -> ! {
     todo!("0x2e5ebc")
 }
@@ -217,13 +217,13 @@ pub fn stub_0x2e5ec4() -> ! {
 }
 
 // 0x2e6060 — __ZThn32_N3RBX10LuaDraggerD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
 pub fn stub_0x2e6060() -> ! {
     todo!("0x2e6060")
 }
 
 // 0x2e6068 — __ZThn36_N3RBX10LuaDraggerD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
 pub fn stub_0x2e6068() -> ! {
     todo!("0x2e6068")
 }
@@ -463,7 +463,7 @@ pub fn stub_0x2ea2ac() -> ! {
 }
 
 // 0x2ea2b0 — __ZThn36_N3RBX11LuaDragToolD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")]
 pub fn stub_0x2ea2b0() -> ! {
     todo!("0x2ea2b0")
 }
@@ -475,7 +475,7 @@ pub fn stub_0x2ea2b8() -> ! {
 }
 
 // 0x2ea3f8 — __ZThn36_N3RBX11LuaDragToolD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")]
 pub fn stub_0x2ea3f8() -> ! {
     todo!("0x2ea3f8")
 }

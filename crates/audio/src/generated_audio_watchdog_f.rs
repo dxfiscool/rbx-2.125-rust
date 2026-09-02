@@ -33,7 +33,7 @@ pub fn stub_52a2f0() -> ! {
 }
 
 // 0x52a328 — __ZThn92_N3RBX9GuiObject7processERKNS_8GuiEventE
-#[doc(alias = "`non-virtual thunk toRBX::GuiObject::process(RBX::GuiEvent const&)")]
+#[doc(alias = "non-virtual thunk toRBX::GuiObject::process(RBX::GuiEvent const&)")]
 #[doc(alias = "__ZThn92_N3RBX9GuiObject7processERKNS_8GuiEventE")]
 pub fn stub_52a328() -> ! {
     todo!("0x52a328 __ZThn92_N3RBX9GuiObject7processERKNS_8GuiEventE")
@@ -613,14 +613,14 @@ pub fn stub_52e6ac() -> ! {
 }
 
 // 0x52e6b0 — __ZThn32_N3RBX9GuiButtonD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::GuiButton::~GuiButton()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiButton::~GuiButton()")]
 #[doc(alias = "__ZThn32_N3RBX9GuiButtonD1Ev")]
 pub fn stub_52e6b0() -> ! {
     todo!("0x52e6b0 __ZThn32_N3RBX9GuiButtonD1Ev")
 }
 
 // 0x52e6b8 — __ZThn32_N3RBX9GuiButtonD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::GuiButton::~GuiButton()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiButton::~GuiButton()")]
 #[doc(alias = "__ZThn32_N3RBX9GuiButtonD0Ev")]
 pub fn stub_52e6b8() -> ! {
     todo!("0x52e6b8 __ZThn32_N3RBX9GuiButtonD0Ev")
@@ -633,14 +633,14 @@ pub fn stub_52e75c() -> ! {
 }
 
 // 0x52e784 — __ZThn36_N3RBX9GuiButtonD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::GuiButton::~GuiButton()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiButton::~GuiButton()")]
 #[doc(alias = "__ZThn36_N3RBX9GuiButtonD1Ev")]
 pub fn stub_52e784() -> ! {
     todo!("0x52e784 __ZThn36_N3RBX9GuiButtonD1Ev")
 }
 
 // 0x52e78c — __ZThn36_N3RBX9GuiButtonD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::GuiButton::~GuiButton()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiButton::~GuiButton()")]
 #[doc(alias = "__ZThn36_N3RBX9GuiButtonD0Ev")]
 pub fn stub_52e78c() -> ! {
     todo!("0x52e78c __ZThn36_N3RBX9GuiButtonD0Ev")
@@ -667,14 +667,14 @@ pub fn stub_52e8d4() -> ! {
 }
 
 // 0x52e8fc — __ZThn32_N3RBX8GuiLabelD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
 #[doc(alias = "__ZThn32_N3RBX8GuiLabelD1Ev")]
 pub fn stub_52e8fc() -> ! {
     todo!("0x52e8fc __ZThn32_N3RBX8GuiLabelD1Ev")
 }
 
 // 0x52e904 — __ZThn32_N3RBX8GuiLabelD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
 #[doc(alias = "__ZThn32_N3RBX8GuiLabelD0Ev")]
 pub fn stub_52e904() -> ! {
     todo!("0x52e904 __ZThn32_N3RBX8GuiLabelD0Ev")
@@ -687,14 +687,14 @@ pub fn stub_52e9a8() -> ! {
 }
 
 // 0x52e9d0 — __ZThn36_N3RBX8GuiLabelD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
 #[doc(alias = "__ZThn36_N3RBX8GuiLabelD1Ev")]
 pub fn stub_52e9d0() -> ! {
     todo!("0x52e9d0 __ZThn36_N3RBX8GuiLabelD1Ev")
 }
 
 // 0x52e9d8 — __ZThn36_N3RBX8GuiLabelD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
 #[doc(alias = "__ZThn36_N3RBX8GuiLabelD0Ev")]
 pub fn stub_52e9d8() -> ! {
     todo!("0x52e9d8 __ZThn36_N3RBX8GuiLabelD0Ev")

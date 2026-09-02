@@ -44,7 +44,7 @@ pub fn stub_31f68c() -> ! {
 }
 
 // 0x31f738 — __GLOBAL__I_a_114
-#[doc(alias = "`global constructor keyed to_a_114")]
+#[doc(alias = "global constructor keyed to_a_114")]
 #[doc(alias = "__GLOBAL__I_a_114")]
 pub fn stub_31f738() -> ! {
     todo!("0x31f738 __GLOBAL__I_a_114")
@@ -153,7 +153,7 @@ pub fn stub_3201f4() -> ! {
 
 // 0x3202dc — __GLOBAL__I_a_115
 // type: int()
-#[doc(alias = "`global constructor keyed to_a_115")]
+#[doc(alias = "global constructor keyed to_a_115")]
 #[doc(alias = "__GLOBAL__I_a_115")]
 pub fn stub_3202dc() -> ! {
     todo!("0x3202dc __GLOBAL__I_a_115")
@@ -200,7 +200,7 @@ pub fn stub_32059c() -> ! {
 }
 
 // 0x3207f8 — __GLOBAL__I_a_116
-#[doc(alias = "`global constructor keyed to_a_116")]
+#[doc(alias = "global constructor keyed to_a_116")]
 #[doc(alias = "__GLOBAL__I_a_116")]
 pub fn stub_3207f8() -> ! {
     todo!("0x3207f8 __GLOBAL__I_a_116")
@@ -395,7 +395,7 @@ pub fn stub_322bdc() -> ! {
 }
 
 // 0x322e00 — __GLOBAL__I_a_117
-#[doc(alias = "`global constructor keyed to_a_117")]
+#[doc(alias = "global constructor keyed to_a_117")]
 #[doc(alias = "__GLOBAL__I_a_117")]
 pub fn stub_322e00() -> ! {
     todo!("0x322e00 __GLOBAL__I_a_117")
@@ -434,7 +434,7 @@ pub fn stub_322ef4() -> ! {
 }
 
 // 0x322ef8 — __GLOBAL__I_a_118
-#[doc(alias = "`global constructor keyed to_a_118")]
+#[doc(alias = "global constructor keyed to_a_118")]
 #[doc(alias = "__GLOBAL__I_a_118")]
 pub fn stub_322ef8() -> ! {
     todo!("0x322ef8 __GLOBAL__I_a_118")
@@ -485,7 +485,7 @@ pub fn stub_3233ac() -> ! {
 }
 
 // 0x3233b4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_17HeartbeatInstanceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_17HeartbeatInstanceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_")]
 pub fn stub_3233b4() -> ! {
     todo!("0x3233b4 __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_17HeartbeatInstanceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_")
@@ -513,7 +513,7 @@ pub fn stub_323400() -> ! {
 }
 
 // 0x3234d4 — __GLOBAL__I_a_119
-#[doc(alias = "`global constructor keyed to_a_119")]
+#[doc(alias = "global constructor keyed to_a_119")]
 #[doc(alias = "__GLOBAL__I_a_119")]
 pub fn stub_3234d4() -> ! {
     todo!("0x3234d4 __GLOBAL__I_a_119")
@@ -542,7 +542,7 @@ pub fn stub_3238e8() -> ! {
 }
 
 // 0x323b78 — __GLOBAL__I_a_120
-#[doc(alias = "`global constructor keyed to_a_120")]
+#[doc(alias = "global constructor keyed to_a_120")]
 #[doc(alias = "__GLOBAL__I_a_120")]
 pub fn stub_323b78() -> ! {
     todo!("0x323b78 __GLOBAL__I_a_120")
@@ -589,7 +589,7 @@ pub fn stub_323fdc() -> ! {
 }
 
 // 0x323fe0 — __GLOBAL__I_a_121
-#[doc(alias = "`global constructor keyed to_a_121")]
+#[doc(alias = "global constructor keyed to_a_121")]
 #[doc(alias = "__GLOBAL__I_a_121")]
 pub fn stub_323fe0() -> ! {
     todo!("0x323fe0 __GLOBAL__I_a_121")
@@ -731,7 +731,7 @@ pub fn stub_3246ec() -> ! {
 }
 
 // 0x324710 — __GLOBAL__I_a_122
-#[doc(alias = "`global constructor keyed to_a_122")]
+#[doc(alias = "global constructor keyed to_a_122")]
 #[doc(alias = "__GLOBAL__I_a_122")]
 pub fn stub_324710() -> ! {
     todo!("0x324710 __GLOBAL__I_a_122")

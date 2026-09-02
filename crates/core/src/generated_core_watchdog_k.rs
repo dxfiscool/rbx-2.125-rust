@@ -151,13 +151,13 @@ pub fn stub_0x2c75a8() -> ! {
 }
 
 // 0x2c767c — __ZThn32_N3RBX12LuaStatsItemD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
 pub fn stub_0x2c767c() -> ! {
     todo!("0x2c767c")
 }
 
 // 0x2c76bc — __ZThn32_N3RBX12LuaStatsItemD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
 pub fn stub_0x2c76bc() -> ! {
     todo!("0x2c76bc")
 }
@@ -169,13 +169,13 @@ pub fn stub_0x2c7790() -> ! {
 }
 
 // 0x2c7794 — __ZThn36_N3RBX12LuaStatsItemD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
 pub fn stub_0x2c7794() -> ! {
     todo!("0x2c7794")
 }
 
 // 0x2c77d4 — __ZThn36_N3RBX12LuaStatsItemD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
 pub fn stub_0x2c77d4() -> ! {
     todo!("0x2c77d4")
 }
@@ -445,13 +445,13 @@ pub fn stub_0x2cefe0() -> ! {
 }
 
 // 0x2cefe4 — __ZThn32_N3RBX13AdvLuaDraggerD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
+#[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
 pub fn stub_0x2cefe4() -> ! {
     todo!("0x2cefe4")
 }
 
 // 0x2cefec — __ZThn36_N3RBX13AdvLuaDraggerD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
+#[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
 pub fn stub_0x2cefec() -> ! {
     todo!("0x2cefec")
 }
@@ -463,13 +463,13 @@ pub fn stub_0x2ceff4() -> ! {
 }
 
 // 0x2cf168 — __ZThn32_N3RBX13AdvLuaDraggerD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
+#[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
 pub fn stub_0x2cf168() -> ! {
     todo!("0x2cf168")
 }
 
 // 0x2cf170 — __ZThn36_N3RBX13AdvLuaDraggerD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
+#[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
 pub fn stub_0x2cf170() -> ! {
     todo!("0x2cf170")
 }

@@ -32,7 +32,7 @@ pub fn stub_711244() -> ! {
 }
 
 // 0x711274 — __GLOBAL__I_a_298
-#[doc(alias = "`global constructor keyed to_a_298")]
+#[doc(alias = "global constructor keyed to_a_298")]
 #[doc(alias = "__GLOBAL__I_a_298")]
 pub fn stub_711274() -> ! {
     todo!("0x711274 `global constructor keyed to'_a_298")
@@ -127,7 +127,7 @@ pub fn stub_713f20() -> ! {
 }
 
 // 0x713f2c — __GLOBAL__I_a_299
-#[doc(alias = "`global constructor keyed to_a_299")]
+#[doc(alias = "global constructor keyed to_a_299")]
 #[doc(alias = "__GLOBAL__I_a_299")]
 pub fn stub_713f2c() -> ! {
     todo!("0x713f2c `global constructor keyed to'_a_299")
@@ -381,7 +381,7 @@ pub fn stub_715950() -> ! {
 }
 
 // 0x715ad0 — __GLOBAL__I_a_300
-#[doc(alias = "`global constructor keyed to_a_300")]
+#[doc(alias = "global constructor keyed to_a_300")]
 #[doc(alias = "__GLOBAL__I_a_300")]
 pub fn stub_715ad0() -> ! {
     todo!("0x715ad0 `global constructor keyed to'_a_300")
@@ -550,7 +550,7 @@ pub fn stub_716570() -> ! {
 }
 
 // 0x7165d8 — __GLOBAL__I_a_301
-#[doc(alias = "`global constructor keyed to_a_301")]
+#[doc(alias = "global constructor keyed to_a_301")]
 #[doc(alias = "__GLOBAL__I_a_301")]
 pub fn stub_7165d8() -> ! {
     todo!("0x7165d8 `global constructor keyed to'_a_301")
@@ -598,7 +598,7 @@ pub fn stub_71695c() -> ! {
 
 // 0x716960 — __ZThn8_N3RBX8AssemblyD0Ev
 // type: void __fastcall(RBX::Assembly *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Assembly::~Assembly()")]
+#[doc(alias = "non-virtual thunk toRBX::Assembly::~Assembly()")]
 #[doc(alias = "__ZThn8_N3RBX8AssemblyD0Ev")]
 pub fn stub_716960() -> ! {
     todo!("0x716960 `non-virtual thunk to'RBX::Assembly::~Assembly()")
@@ -614,7 +614,7 @@ pub fn stub_716968() -> ! {
 
 // 0x716bf8 — __ZThn8_N3RBX8AssemblyD1Ev
 // type: void __fastcall(RBX::Assembly *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Assembly::~Assembly()")]
+#[doc(alias = "non-virtual thunk toRBX::Assembly::~Assembly()")]
 #[doc(alias = "__ZThn8_N3RBX8AssemblyD1Ev")]
 pub fn stub_716bf8() -> ! {
     todo!("0x716bf8 `non-virtual thunk to'RBX::Assembly::~Assembly()")
@@ -710,7 +710,7 @@ pub fn stub_717020() -> ! {
 
 // 0x717028 — __ZThn8_N3RBX8Assembly15onLowersChangedEv
 // type: _DWORD __fastcall(RBX::Assembly *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Assembly::onLowersChanged(void)")]
+#[doc(alias = "non-virtual thunk toRBX::Assembly::onLowersChanged(void)")]
 #[doc(alias = "__ZThn8_N3RBX8Assembly15onLowersChangedEv")]
 pub fn stub_717028() -> ! {
     todo!("0x717028 `non-virtual thunk to'RBX::Assembly::onLowersChanged(void)")

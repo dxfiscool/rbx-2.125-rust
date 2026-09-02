@@ -12,7 +12,7 @@ const _: () = {
 };
 
 // 0x30e1b0 — __GLOBAL__I_a_108
-#[doc(alias = "`global constructor keyed to_a_108")]
+#[doc(alias = "global constructor keyed to_a_108")]
 #[doc(alias = "__GLOBAL__I_a_108")]
 pub fn stub_30e1b0() -> ! {
     todo!("0x30e1b0 __GLOBAL__I_a_108")
@@ -51,7 +51,7 @@ pub fn stub_30e670() -> ! {
 }
 
 // 0x30e67c — __GLOBAL__I_a_109
-#[doc(alias = "`global constructor keyed to_a_109")]
+#[doc(alias = "global constructor keyed to_a_109")]
 #[doc(alias = "__GLOBAL__I_a_109")]
 pub fn stub_30e67c() -> ! {
     todo!("0x30e67c __GLOBAL__I_a_109")
@@ -106,7 +106,7 @@ pub fn stub_30e908() -> ! {
 
 // 0x30e90c — __ZThn32_N3RBX13ContentFilterD0Ev
 // type: void __fastcall(RBX::ContentFilter *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
+#[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 #[doc(alias = "__ZThn32_N3RBX13ContentFilterD0Ev")]
 pub fn stub_30e90c() -> ! {
     todo!("0x30e90c __ZThn32_N3RBX13ContentFilterD0Ev")
@@ -114,7 +114,7 @@ pub fn stub_30e90c() -> ! {
 
 // 0x30e914 — __ZThn36_N3RBX13ContentFilterD0Ev
 // type: void __fastcall(RBX::ContentFilter *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
+#[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 #[doc(alias = "__ZThn36_N3RBX13ContentFilterD0Ev")]
 pub fn stub_30e914() -> ! {
     todo!("0x30e914 __ZThn36_N3RBX13ContentFilterD0Ev")
@@ -130,7 +130,7 @@ pub fn stub_30e91c() -> ! {
 
 // 0x30e96c — __ZThn32_N3RBX13ContentFilterD1Ev
 // type: void __fastcall(RBX::ContentFilter *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
+#[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 #[doc(alias = "__ZThn32_N3RBX13ContentFilterD1Ev")]
 pub fn stub_30e96c() -> ! {
     todo!("0x30e96c __ZThn32_N3RBX13ContentFilterD1Ev")
@@ -138,7 +138,7 @@ pub fn stub_30e96c() -> ! {
 
 // 0x30e974 — __ZThn36_N3RBX13ContentFilterD1Ev
 // type: void __fastcall(RBX::ContentFilter *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
+#[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 #[doc(alias = "__ZThn36_N3RBX13ContentFilterD1Ev")]
 pub fn stub_30e974() -> ! {
     todo!("0x30e974 __ZThn36_N3RBX13ContentFilterD1Ev")
