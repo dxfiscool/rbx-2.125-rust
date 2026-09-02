@@ -555,3 +555,4 @@ pub mod generated_rend_wd_watchdog17;
 pub mod generated_rendering_shard_a;
 pub mod generated_rend_wd_watchdog18;
 pub mod generated_rend_wd_watchdog19;
+pub mod generated_rend_wd_watchdog22;
