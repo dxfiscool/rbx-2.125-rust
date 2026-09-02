@@ -262,6 +262,7 @@ pub mod generated_script_watchdog_A;
 pub mod generated_script_watchdog_S;
 pub mod generated_script_watchdog_T;
 pub mod generated_script_watchdog_U;
+pub mod generated_script_watchdog_V;
 pub mod generated_bg_4;
 pub mod generated_bg_5;
 pub mod generated_script_bg6;
