@@ -593,3 +593,7 @@ pub mod generated_dm_wdog_E;
 pub mod generated_dm_wdog_G_1788368415;
 pub mod generated_dm_wdog_F_1788368585;
 pub mod generated_gap_5404ac;
+pub mod generated_wdog_dm_A2_1788369390;
+pub mod generated_wdog_dm_A2_1788369662;
+pub mod generated_wdog_dm_B2_1788369419;
+pub mod generated_wdog_dm_C2_1788370600;
