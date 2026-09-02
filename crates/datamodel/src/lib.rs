@@ -590,3 +590,4 @@ pub mod generated_dm_wdog_B;
 pub mod generated_dm_wdog_C;
 pub mod generated_dm_wdog_D;
 pub mod generated_dm_wdog_E;
+pub mod generated_dm_wdog_G_1788368415;
