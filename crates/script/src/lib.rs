@@ -306,3 +306,5 @@ pub mod generated_script_wd_watchdog14;
 pub mod generated_script_wd_watchdog15;
 pub mod generated_script_wd_watchdog16;
 pub mod generated_script_wd_watchdog17;
+pub mod generated_sh_03;
+pub mod generated_script_wd_watchdog18;
