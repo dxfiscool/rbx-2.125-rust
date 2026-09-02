@@ -401,3 +401,5 @@ pub mod generated_plat_wdog7D;
 pub mod generated_plat_wdogW5;
 pub mod generated_plat_bg7;
 pub mod generated_plat_wdogW6;
+pub mod generated_plat_bg8;
+pub mod generated_plat_bg9;
