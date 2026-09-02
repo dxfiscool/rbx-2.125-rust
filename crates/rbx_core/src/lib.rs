@@ -24,3 +24,4 @@ pub mod generated_core_watchdog_k;
 pub mod generated_core_watchdog_l;
 pub mod generated_rbxcore_wdog_B;
 pub mod generated_rbxcore_wdog_C;
+pub mod generated_core_wdog7H;
