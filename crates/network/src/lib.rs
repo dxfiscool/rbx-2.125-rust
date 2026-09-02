@@ -342,3 +342,4 @@ pub mod generated_net_wdog3B_1788372273;
 pub mod generated_204;
 pub mod generated_net_wdog4F_1788373437;
 pub mod generated_net_wdog5G_1788374642;
+pub mod generated_205;
