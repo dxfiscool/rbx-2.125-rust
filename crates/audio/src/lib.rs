@@ -14900,3 +14900,4 @@ pub mod generated_audio_watchdog_n;
 pub mod generated_audio_watchdog_o;
 pub mod generated_audio_watchdog_p;
 pub mod generated_audio_watchdog_q;
+pub mod generated_audio_watchdog_r;
