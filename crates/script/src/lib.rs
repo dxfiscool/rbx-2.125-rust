@@ -267,3 +267,4 @@ pub mod generated_script_watchdog_W2;
 pub mod generated_bg_4;
 pub mod generated_bg_5;
 pub mod generated_script_bg6;
+pub mod generated_script_bg7;
