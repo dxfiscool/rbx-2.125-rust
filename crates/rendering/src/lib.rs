@@ -513,3 +513,4 @@ pub mod generated_rend_478;
 pub mod generated_watchdog_rend_w1;
 pub mod generated_watchdog_rend_w2;
 pub mod generated_watchdog_rend_w3;
+pub mod generated_rend_481;
