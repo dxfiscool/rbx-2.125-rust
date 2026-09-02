@@ -14984,3 +14984,4 @@ pub mod generated_audio_wd25;
 pub mod generated_audio_wd_watchdog_a;
 pub mod generated_audio_fmod_dedup;
 pub mod generated_watchdog_audioA2;
+pub mod generated_audio_rem52_fill48;
