@@ -606,11 +606,11 @@ pub fn stub_879850() -> ! {
 }
 
 // 0x8799e0 — __GLOBAL__I_a_436
-#[doc(alias = "`global constructor keyed to_a_436")]
+#[doc(alias = "global constructor keyed to_a_436")]
 #[doc(alias = "__GLOBAL__I_a_436")]
 // was: __GLOBAL__I_a_436
 pub fn stub_8799e0() -> ! {
-    todo!("0x8799e0 `global constructor keyed to_a_436")
+    todo!("0x8799e0 global constructor keyed to_a_436")
 }
 
 // 0x87aa94 — __ZN3RBX11CellContact13getVoxelStoreINS_19MegaClusterInstanceEEEPT_v
@@ -622,11 +622,11 @@ pub fn stub_87aa94() -> ! {
 }
 
 // 0x87acd4 — __GLOBAL__I_a_437
-#[doc(alias = "`global constructor keyed to_a_437")]
+#[doc(alias = "global constructor keyed to_a_437")]
 #[doc(alias = "__GLOBAL__I_a_437")]
 // was: __GLOBAL__I_a_437
 pub fn stub_87acd4() -> ! {
-    todo!("0x87acd4 `global constructor keyed to_a_437")
+    todo!("0x87acd4 global constructor keyed to_a_437")
 }
 
 // 0x87fd30 — __ZN3RBX5Voxel6RegionINS_19MegaClusterInstance9CellChunkEE8iteratorC2ERKS4_
@@ -686,11 +686,11 @@ pub fn stub_880eec() -> ! {
 }
 
 // 0x88118c — __GLOBAL__I_a_438
-#[doc(alias = "`global constructor keyed to_a_438")]
+#[doc(alias = "global constructor keyed to_a_438")]
 #[doc(alias = "__GLOBAL__I_a_438")]
 // was: __GLOBAL__I_a_438
 pub fn stub_88118c() -> ! {
-    todo!("0x88118c `global constructor keyed to_a_438")
+    todo!("0x88118c global constructor keyed to_a_438")
 }
 
 // 0x881898 — __ZN3RBX15PolyCellContactD0Ev
