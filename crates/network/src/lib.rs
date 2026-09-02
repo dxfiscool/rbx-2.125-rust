@@ -318,3 +318,4 @@ pub mod generated_net_wd_watchdog15;
 pub mod generated_net_wd_watchdog16;
 pub mod generated_net_wd_watchdog17;
 pub mod generated_net_wd_watchdog18;
+pub mod generated_net_wd_1788360977;
