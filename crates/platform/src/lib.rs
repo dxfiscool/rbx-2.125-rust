@@ -411,3 +411,4 @@ pub mod generated_watchdog_plat_1788382973;
 pub mod generated_plat_ios_eagl;
 pub mod generated_wd_platA;
 pub mod generated_platform_shard_216;
+pub mod generated_platA_watchdog_1788389928;
