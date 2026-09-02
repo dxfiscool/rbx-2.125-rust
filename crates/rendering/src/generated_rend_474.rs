@@ -51,7 +51,7 @@ pub fn stub_747a10() -> ! {
     todo!("0x747a10 RBX::PolyContact::matchClosestFeature(RBX::PolyConnector *)")
 }
 // 0x747a54 — __GLOBAL__I_a_339
-#[doc(alias = "global constructor keyed to_a_339")]
+#[doc(alias = "global constructor keyed to _a_339")]
 #[doc(alias = "__GLOBAL__I_a_339")]
 pub fn stub_747a54() -> ! {
     todo!("0x747a54 `global constructor keyed to'_a_339")
@@ -280,7 +280,7 @@ pub fn stub_74a114() -> ! {
     todo!("0x74a114 RBX::PolyPair::~PolyPair()")
 }
 // 0x74a118 — __GLOBAL__I_a_340
-#[doc(alias = "global constructor keyed to_a_340")]
+#[doc(alias = "global constructor keyed to _a_340")]
 #[doc(alias = "__GLOBAL__I_a_340")]
 pub fn stub_74a118() -> ! {
     todo!("0x74a118 `global constructor keyed to'_a_340")
@@ -329,7 +329,7 @@ pub fn stub_74aafc() -> ! {
 }
 // 0x74ab00 — __ZThn8_N3RBX9PrimitiveD0Ev
 // type: void __fastcall(RBX::Primitive *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Primitive::~Primitive()")]
+#[doc(alias = "non-virtual thunk to RBX::Primitive::~Primitive()")]
 #[doc(alias = "__ZThn8_N3RBX9PrimitiveD0Ev")]
 pub fn stub_74ab00() -> ! {
     todo!("0x74ab00 `non-virtual thunk to'RBX::Primitive::~Primitive()")
@@ -343,7 +343,7 @@ pub fn stub_74ab08() -> ! {
 }
 // 0x74ae0c — __ZThn8_N3RBX9PrimitiveD1Ev
 // type: void __fastcall(RBX::Primitive *this, int, int)
-#[doc(alias = "non-virtual thunk toRBX::Primitive::~Primitive()")]
+#[doc(alias = "non-virtual thunk to RBX::Primitive::~Primitive()")]
 #[doc(alias = "__ZThn8_N3RBX9PrimitiveD1Ev")]
 pub fn stub_74ae0c() -> ! {
     todo!("0x74ae0c `non-virtual thunk to'RBX::Primitive::~Primitive()")
@@ -404,12 +404,12 @@ pub fn stub_74aff4() -> ! {
 pub fn stub_74b104() -> ! {
     todo!("0x74b104 RBX::Primitive::getFastFuzzyExtents(void)")
 }
-// 0x74b168 — __ZNK3RBX9Primitive18countNumAutoJointsEv
+// 0x74b168 — __ZNK3RBX9Primitive18countNumAuto JointsEv
 // type: int __fastcall(RBX::Primitive *this, const RBX::Joint *)
-#[doc(alias = "RBX::Primitive::countNumAutoJoints(void)const")]
-#[doc(alias = "__ZNK3RBX9Primitive18countNumAutoJointsEv")]
+#[doc(alias = "RBX::Primitive::countNumAuto Joints(void)const")]
+#[doc(alias = "__ZNK3RBX9Primitive18countNumAuto JointsEv")]
 pub fn stub_74b168() -> ! {
-    todo!("0x74b168 RBX::Primitive::countNumAutoJoints(void)const")
+    todo!("0x74b168 RBX::Primitive::countNumAuto Joints(void)const")
 }
 // 0x74b1b4 — __ZNK3RBX9Primitive18getConstFirstJointEv
 // type: int __fastcall(RBX::Primitive *this)
