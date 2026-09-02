@@ -567,3 +567,5 @@ pub mod generated_wdog_rend_B2_1788369389;
 pub mod generated_gap_J;
 pub mod generated_gap_K;
 pub mod generated_gap_L;
+pub mod generated_rend_wdog2A_1788371867;
+pub mod generated_rend_wdog2B_1788371993;
