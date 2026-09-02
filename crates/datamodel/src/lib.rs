@@ -589,3 +589,4 @@ pub mod generated_datamodel_shard_B5;
 pub mod generated_dm_wdog_B;
 pub mod generated_dm_wdog_C;
 pub mod generated_dm_wdog_D;
+pub mod generated_dm_wdog_E;
