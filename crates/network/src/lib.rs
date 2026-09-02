@@ -357,3 +357,4 @@ pub mod generated_watchdog_net_1788383115;
 pub mod generated_watchdog_netA_1788384000;
 pub mod generated_watchdog_netA2;
 pub mod generated_net_wd_12f;
+pub mod generated_watchdog_netC_1788386419;
