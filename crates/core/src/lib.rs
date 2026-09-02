@@ -485,3 +485,5 @@ pub mod generated_core_wd_11d;
 pub mod generated_core_wd_11e;
 pub mod generated_core_shard_nw;
 pub mod generated_core_shard_nx;
+pub mod generated_core_shard_ny;
+pub mod generated_core_shard_nz;
