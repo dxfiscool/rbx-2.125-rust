@@ -296,3 +296,4 @@ pub mod generated_net_wd_10e;
 pub mod generated_net_wd_10f;
 pub mod generated_net_wd_10g;
 pub mod generated_net_wd_10h;
+pub mod generated_net_wd_11a;
