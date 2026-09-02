@@ -326,3 +326,5 @@ pub mod generated_net_wd_watchdog22;
 pub mod generated_201;
 pub mod generated_net_wd_watchdog23;
 pub mod generated_net_wdcron_A;
+pub mod generated_net_wdcron_B;
+pub mod generated_net_wdog_B;
