@@ -1,5 +1,5 @@
 //! network generated_watchdog_netA_1788384000 — 100 stubs EA-sorted asc RakNet|RakPeer|Packet|Network|BitStream filtered, skip global_eas
-//! Source: ida/export.json (85545 funcs) filtered 2456 minus global, EA-sorted asc take 100
+//! Source: ida/export.json (85545 funcs) filtered 2453 minus global, EA-sorted asc take 100
 //! Range 0x903a48..0x999f78 | EA-sorted asc distinct
 //! Batch: 100 stubs | // 0xADDR — mangled + #[doc(alias)] + todo!("0xADDR") + SharedPtr
 
