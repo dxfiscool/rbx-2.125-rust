@@ -14917,3 +14917,4 @@ pub mod generated_audio_watchdog_Y;
 pub mod generated_watchdog_aud_w1;
 pub mod generated_bg_u;
 pub mod generated_bg_v;
+pub mod generated_bg_w;
