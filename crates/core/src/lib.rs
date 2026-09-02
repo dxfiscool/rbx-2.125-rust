@@ -455,3 +455,5 @@ pub mod generated_core_watchdog_coreA;
 pub mod generated_core_shard_nq;
 pub mod generated_core_shard_nr;
 pub mod generated_core_shard_ns;
+pub mod generated_core_shard_nt;
+pub mod generated_core_shard_nu;
