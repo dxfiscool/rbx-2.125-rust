@@ -416,3 +416,4 @@ pub mod generated_core_shard_ne;
 pub mod generated_core_shard_nf;
 pub mod generated_core_shard_ng;
 pub mod generated_core_shard_nh;
+pub mod generated_core_shard_ni;
