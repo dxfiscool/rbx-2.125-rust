@@ -249,3 +249,4 @@ pub mod generated_script_watchdog_g;
 pub mod generated_script_watchdog_h;
 pub mod generated_script_watchdog_i;
 pub mod generated_script_watchdog_j;
+pub mod generated_script_watchdog2_1788317012;
