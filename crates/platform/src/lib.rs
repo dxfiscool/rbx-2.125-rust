@@ -320,3 +320,4 @@ pub mod generated_platform_watchdog_X;
 pub mod generated_plat_bs;
 pub mod generated_plat_bt;
 pub mod generated_plat_next;
+pub mod generated_plat_bu;
