@@ -564,4 +564,5 @@ pub mod generated_core_shard_ot;
 pub mod generated_wdog_core_1788392155;
 pub mod generated_core_shard_ou;
 pub mod generated_core_shard_ov;
+pub mod generated_core_shard_ow;
 pub mod generated_wdog_gap_1788392241;
