@@ -483,3 +483,4 @@ pub mod generated_next_g;
 pub mod generated_datamodel_watchdog_l;
 pub mod generated_datamodel_watchdog2_1788317042;
 pub mod generated_datamodel_watchdog_m;
+pub mod generated_datamodel_watchdog_n;
