@@ -302,3 +302,4 @@ pub mod generated_platform_watchdog_j;
 pub mod generated_platform_watchdog_k;
 pub mod generated_platform_watchdog_l;
 pub mod generated_platform_watchdog_m;
+pub mod generated_platform_watchdog_n;
