@@ -581,3 +581,5 @@ pub mod generated_dm_wdB_1788362744;
 pub mod generated_286;
 pub mod generated_287;
 pub mod generated_288;
+pub mod generated_dm_wd_watchdog22;
+pub mod generated_dm_wd_watchdog23;
