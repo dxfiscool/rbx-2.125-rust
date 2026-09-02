@@ -516,3 +516,4 @@ pub mod generated_watchdog_dm_w1;
 pub mod generated_watchdog_dm_w4;
 pub mod generated_datamodel_alt_1;
 pub mod generated_datamodel_alt_2;
+pub mod generated_watchdog_dm_w5;
