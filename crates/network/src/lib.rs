@@ -243,3 +243,4 @@ pub mod generated_bg_8;
 pub mod generated_bg_9;
 pub mod generated_bg_10;
 pub mod generated_network_bg_10;
+pub mod generated_bg_11;
