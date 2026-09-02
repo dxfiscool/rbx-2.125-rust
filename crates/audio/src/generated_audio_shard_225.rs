@@ -103,7 +103,7 @@ pub fn stub_7967e0() -> ! {
 }
 
 // 0x7968c0 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEED0Ev
-#[doc(alias = "`non-virtual thunk toboost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>::~error_info_injector()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>::~error_info_injector()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEED0Ev")]
 pub fn stub_7968c0() -> ! {
     todo!("0x7968c0 __ZThn20_N5boost16exception_detail19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEED0Ev")
@@ -117,14 +117,14 @@ pub fn stub_7968d8() -> ! {
 }
 
 // 0x7968e8 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED1Ev
-#[doc(alias = "`non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>>::~clone_impl()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED1Ev")]
 pub fn stub_7968e8() -> ! {
     todo!("0x7968e8 __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED1Ev")
 }
 
 // 0x7968f0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED1Ev
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>>::~clone_impl()")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED1Ev")]
 pub fn stub_7968f0() -> ! {
     todo!("0x7968f0 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED1Ev")
@@ -138,14 +138,14 @@ pub fn stub_796900() -> ! {
 }
 
 // 0x7969c0 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED0Ev
-#[doc(alias = "`non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>>::~clone_impl()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED0Ev")]
 pub fn stub_7969c0() -> ! {
     todo!("0x7969c0 __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED0Ev")
 }
 
 // 0x7969d8 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEE5cloneEv
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>>::clone(void)const")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>>::clone(void)const")]
 #[doc(alias = "__ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEE5cloneEv")]
 pub fn stub_7969d8() -> ! {
     todo!("0x7969d8 __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEE5cloneEv")
@@ -250,7 +250,7 @@ pub fn stub_79746c() -> ! {
 }
 
 // 0x797558 — __ZThn12_N5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED1Ev
-#[doc(alias = "`non-virtual thunk toboost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>::~error_info_injector()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>::~error_info_injector()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED1Ev")]
 pub fn stub_797558() -> ! {
     todo!("0x797558 __ZThn12_N5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED1Ev")
@@ -264,7 +264,7 @@ pub fn stub_797560() -> ! {
 }
 
 // 0x797574 — __ZThn12_N5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED0Ev
-#[doc(alias = "`non-virtual thunk toboost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>::~error_info_injector()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>::~error_info_injector()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED0Ev")]
 pub fn stub_797574() -> ! {
     todo!("0x797574 __ZThn12_N5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED0Ev")
@@ -278,14 +278,14 @@ pub fn stub_79758c() -> ! {
 }
 
 // 0x79759c — __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED1Ev
-#[doc(alias = "`non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>>::~clone_impl()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED1Ev")]
 pub fn stub_79759c() -> ! {
     todo!("0x79759c __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED1Ev")
 }
 
 // 0x7975a4 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED1Ev
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>>::~clone_impl()")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED1Ev")]
 pub fn stub_7975a4() -> ! {
     todo!("0x7975a4 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED1Ev")
@@ -313,28 +313,28 @@ pub fn stub_797680() -> ! {
 }
 
 // 0x797764 — __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED0Ev
-#[doc(alias = "`non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>>::~clone_impl()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED0Ev")]
 pub fn stub_797764() -> ! {
     todo!("0x797764 __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED0Ev")
 }
 
 // 0x79777c — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEE5cloneEv
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>>::clone(void)const")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>>::clone(void)const")]
 #[doc(alias = "__ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEE5cloneEv")]
 pub fn stub_79777c() -> ! {
     todo!("0x79777c __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEE5cloneEv")
 }
 
 // 0x797788 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEE7rethrowEv
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>>::rethrow(void)const")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>>::rethrow(void)const")]
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEE7rethrowEv")]
 pub fn stub_797788() -> ! {
     todo!("0x797788 __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEE7rethrowEv")
 }
 
 // 0x797798 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED0Ev
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>>::~clone_impl()")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED0Ev")]
 pub fn stub_797798() -> ! {
     todo!("0x797798 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree14ptree_bad_dataEEEED0Ev")

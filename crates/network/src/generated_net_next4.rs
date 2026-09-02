@@ -63,7 +63,7 @@ pub fn stub_38b584() -> ! {
 
 // 0x38b740 — __GLOBAL__I_a_146
 // type: 
-#[doc(alias = "`global constructor keyed to_a_146")]
+#[doc(alias = "global constructor keyed to_a_146")]
 pub fn stub_38b740() -> ! {
     todo!("0x38b740 `global constructor keyed to'_a_146")
 }
@@ -154,7 +154,7 @@ pub fn stub_38c264() -> ! {
 
 // 0x38c294 — __GLOBAL__I_a_147
 // type: 
-#[doc(alias = "`global constructor keyed to_a_147")]
+#[doc(alias = "global constructor keyed to_a_147")]
 pub fn stub_38c294() -> ! {
     todo!("0x38c294 `global constructor keyed to'_a_147")
 }
@@ -231,7 +231,7 @@ pub fn stub_38c3ec() -> ! {
 
 // 0x38c3fc — __GLOBAL__I_a_148
 // type: int()
-#[doc(alias = "`global constructor keyed to_a_148")]
+#[doc(alias = "global constructor keyed to_a_148")]
 pub fn stub_38c3fc() -> ! {
     todo!("0x38c3fc `global constructor keyed to'_a_148")
 }
@@ -252,7 +252,7 @@ pub fn stub_38c464() -> ! {
 
 // 0x38c478 — __GLOBAL__I_a_149
 // type: int()
-#[doc(alias = "`global constructor keyed to_a_149")]
+#[doc(alias = "global constructor keyed to_a_149")]
 pub fn stub_38c478() -> ! {
     todo!("0x38c478 `global constructor keyed to'_a_149")
 }
@@ -301,7 +301,7 @@ pub fn stub_38cb9c() -> ! {
 
 // 0x38cba0 — __GLOBAL__I_a_150
 // type: 
-#[doc(alias = "`global constructor keyed to_a_150")]
+#[doc(alias = "global constructor keyed to_a_150")]
 pub fn stub_38cba0() -> ! {
     todo!("0x38cba0 `global constructor keyed to'_a_150")
 }
@@ -420,7 +420,7 @@ pub fn stub_38da14() -> ! {
 
 // 0x38da58 — __GLOBAL__I_a_151
 // type: 
-#[doc(alias = "`global constructor keyed to_a_151")]
+#[doc(alias = "global constructor keyed to_a_151")]
 pub fn stub_38da58() -> ! {
     todo!("0x38da58 `global constructor keyed to'_a_151")
 }
@@ -525,7 +525,7 @@ pub fn stub_38e9b8() -> ! {
 
 // 0x38e9c8 — __ZThn32_N3RBX12AccoutrementD0Ev
 // type: void __fastcall(RBX::Accoutrement *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
+#[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 pub fn stub_38e9c8() -> ! {
     todo!("0x38e9c8 `non-virtual thunk to'RBX::Accoutrement::~Accoutrement()")
 }
@@ -539,7 +539,7 @@ pub fn stub_38efa0() -> ! {
 
 // 0x38f014 — __ZThn104_N3RBX12Accoutrement14render3dSelectEPNS_5AdornENS_11SelectStateE
 // type: unsigned int __fastcall(int, int, int)
-#[doc(alias = "`non-virtual thunk toRBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
+#[doc(alias = "non-virtual thunk toRBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
 pub fn stub_38f014() -> ! {
     todo!("0x38f014 `non-virtual thunk to'RBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)")
 }
@@ -691,14 +691,14 @@ pub fn stub_39067c() -> ! {
 
 // 0x3906b4 — __ZThn128_N3RBX12Accoutrement17getRenderLocationEv
 // type: int __fastcall(RBX::Accoutrement *this, int)
-#[doc(alias = "`non-virtual thunk toRBX::Accoutrement::getRenderLocation(void)")]
+#[doc(alias = "non-virtual thunk toRBX::Accoutrement::getRenderLocation(void)")]
 pub fn stub_3906b4() -> ! {
     todo!("0x3906b4 `non-virtual thunk to'RBX::Accoutrement::getRenderLocation(void)")
 }
 
 // 0x3906c4 — __ZThn128_N3RBX12Accoutrement13getRenderSizeEv
 // type: int __fastcall(RBX::Accoutrement *this)
-#[doc(alias = "`non-virtual thunk toRBX::Accoutrement::getRenderSize(void)")]
+#[doc(alias = "non-virtual thunk toRBX::Accoutrement::getRenderSize(void)")]
 pub fn stub_3906c4() -> ! {
     todo!("0x3906c4 `non-virtual thunk to'RBX::Accoutrement::getRenderSize(void)")
 }

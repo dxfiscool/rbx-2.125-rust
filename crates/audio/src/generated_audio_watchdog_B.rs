@@ -33,7 +33,7 @@ pub fn stub_594370() -> ! {
 }
 
 // 0x594518 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsN3RBX9ContentIdEEE4slotEN5boost8functionIS5_EELi2ES5_E4callESsS4_
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot,boost::function<void ()(std::string,RBX::ContentId)>,2,void ()(std::string,RBX::ContentId)>::call(std::string,RBX::ContentId)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot,boost::function<void ()(std::string,RBX::ContentId)>,2,void ()(std::string,RBX::ContentId)>::call(std::string,RBX::ContentId)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvSsN3RBX9ContentIdEEE4slotEN5boost8functionIS5_EELi2ES5_E4callESsS4_")]
 pub fn stub_594518() -> ! {
     todo!("0x594518 __ZThn4_N3rbx8callableINS_7signals6signalIFvSsN3RBX9ContentIdEEE4slotEN5boost8functionIS5_EELi2ES5_E4callESsS4_")
@@ -510,7 +510,7 @@ pub fn stub_59e508() -> ! {
 }
 
 // 0x59e530 — __GLOBAL__I_a_217
-#[doc(alias = "`global constructor keyed to_a_217")]
+#[doc(alias = "global constructor keyed to_a_217")]
 #[doc(alias = "__GLOBAL__I_a_217")]
 pub fn stub_59e530() -> ! {
     todo!("0x59e530 __GLOBAL__I_a_217")
@@ -692,14 +692,14 @@ pub fn stub_59f75c() -> ! {
 }
 
 // 0x59f760 — __ZThn32_N3RBX13JointInstanceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::JointInstance::~JointInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::JointInstance::~JointInstance()")]
 #[doc(alias = "__ZThn32_N3RBX13JointInstanceD0Ev")]
 pub fn stub_59f760() -> ! {
     todo!("0x59f760 __ZThn32_N3RBX13JointInstanceD0Ev")
 }
 
 // 0x59f768 — __ZThn36_N3RBX13JointInstanceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::JointInstance::~JointInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::JointInstance::~JointInstance()")]
 #[doc(alias = "__ZThn36_N3RBX13JointInstanceD0Ev")]
 pub fn stub_59f768() -> ! {
     todo!("0x59f768 __ZThn36_N3RBX13JointInstanceD0Ev")
@@ -713,14 +713,14 @@ pub fn stub_59f770() -> ! {
 }
 
 // 0x59fa24 — __ZThn32_N3RBX13JointInstanceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::JointInstance::~JointInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::JointInstance::~JointInstance()")]
 #[doc(alias = "__ZThn32_N3RBX13JointInstanceD1Ev")]
 pub fn stub_59fa24() -> ! {
     todo!("0x59fa24 __ZThn32_N3RBX13JointInstanceD1Ev")
 }
 
 // 0x59fa2c — __ZThn36_N3RBX13JointInstanceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::JointInstance::~JointInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::JointInstance::~JointInstance()")]
 #[doc(alias = "__ZThn36_N3RBX13JointInstanceD1Ev")]
 pub fn stub_59fa2c() -> ! {
     todo!("0x59fa2c __ZThn36_N3RBX13JointInstanceD1Ev")
@@ -755,7 +755,7 @@ pub fn stub_59fad8() -> ! {
 }
 
 // 0x59fae8 — __ZThn92_NK3RBX13JointInstance19shouldRender3dAdornEv
-#[doc(alias = "`non-virtual thunk toRBX::JointInstance::shouldRender3dAdorn(void)const")]
+#[doc(alias = "non-virtual thunk toRBX::JointInstance::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZThn92_NK3RBX13JointInstance19shouldRender3dAdornEv")]
 pub fn stub_59fae8() -> ! {
     todo!("0x59fae8 __ZThn92_NK3RBX13JointInstance19shouldRender3dAdornEv")
@@ -769,7 +769,7 @@ pub fn stub_59faf8() -> ! {
 }
 
 // 0x59fc7c — __ZThn92_N3RBX13JointInstance13render3dAdornEPNS_5AdornE
-#[doc(alias = "`non-virtual thunk toRBX::JointInstance::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::JointInstance::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn92_N3RBX13JointInstance13render3dAdornEPNS_5AdornE")]
 pub fn stub_59fc7c() -> ! {
     todo!("0x59fc7c __ZThn92_N3RBX13JointInstance13render3dAdornEPNS_5AdornE")
