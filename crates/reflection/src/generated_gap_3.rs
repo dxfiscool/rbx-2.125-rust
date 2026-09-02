@@ -713,7 +713,7 @@ pub fn stub_0x2a7d20() -> ! {
 
 // 0x2a7d4c — __ZThn32_N3RBX20RuntimeScriptServiceD1Ev
 // type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
 #[doc(alias = "__ZThn32_N3RBX20RuntimeScriptServiceD1Ev")]
 pub fn stub_0x2a7d4c() -> ! {
     todo!("0x2a7d4c `non-virtual thunk to'RBX::RuntimeScriptService::~RuntimeScriptService()")
@@ -721,7 +721,7 @@ pub fn stub_0x2a7d4c() -> ! {
 
 // 0x2a7d54 — __ZThn32_N3RBX20RuntimeScriptServiceD0Ev
 // type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
 #[doc(alias = "__ZThn32_N3RBX20RuntimeScriptServiceD0Ev")]
 pub fn stub_0x2a7d54() -> ! {
     todo!("0x2a7d54 `non-virtual thunk to'RBX::RuntimeScriptService::~RuntimeScriptService()")
@@ -735,7 +735,7 @@ pub fn stub_0x2a7df8() -> ! {
 
 // 0x2a7e20 — __ZThn36_N3RBX20RuntimeScriptServiceD1Ev
 // type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
 #[doc(alias = "__ZThn36_N3RBX20RuntimeScriptServiceD1Ev")]
 pub fn stub_0x2a7e20() -> ! {
     todo!("0x2a7e20 `non-virtual thunk to'RBX::RuntimeScriptService::~RuntimeScriptService()")
@@ -743,7 +743,7 @@ pub fn stub_0x2a7e20() -> ! {
 
 // 0x2a7e28 — __ZThn36_N3RBX20RuntimeScriptServiceD0Ev
 // type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
 #[doc(alias = "__ZThn36_N3RBX20RuntimeScriptServiceD0Ev")]
 pub fn stub_0x2a7e28() -> ! {
     todo!("0x2a7e28 `non-virtual thunk to'RBX::RuntimeScriptService::~RuntimeScriptService()")
