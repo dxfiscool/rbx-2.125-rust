@@ -199,7 +199,7 @@ pub fn stub_0x8c4214() -> ! {
 pub fn stub_0x8c4220() -> ! {
     todo!("0x8c4220 __ZN3rbx8callableINS_7signals6signalIFvN3G3D7Vector2EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")
 }
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector2)>::slot,boost::function<void ()(G3D::Vector2)>,1,void ()(G3D::Vector2)>::call(G3D::Vector2)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector2)>::slot,boost::function<void ()(G3D::Vector2)>,1,void ()(G3D::Vector2)>::call(G3D::Vector2)")]
 // 0x8c423c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector2EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_
 // type: int __fastcall(int, _DWORD *)
 pub fn stub_0x8c423c() -> ! {

@@ -539,7 +539,7 @@ pub fn stub_7c9800() -> ! {
 
 
 // 0x7c9808 — __ZThn4_N3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost8functionIS3_EELi1ES3_E4callEf
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::function<void ()(float)>,1,void ()(float)>::call(float)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::function<void ()(float)>,1,void ()(float)>::call(float)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost8functionIS3_EELi1ES3_E4callEf")]
 // was: `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::function<void ()(float)>,1,void ()(float)>::call(float)
 pub fn stub_7c9808() -> ! {
@@ -978,7 +978,7 @@ pub fn stub_7cb56c() -> ! {
 
 
 // 0x7cb64c — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_8HumanoidENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-#[doc(alias = "`non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_8HumanoidENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 // was: `non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
 pub fn stub_7cb64c() -> ! {
@@ -1072,7 +1072,7 @@ pub fn stub_7cb7b4() -> ! {
 
 // 0x7cb890 — __GLOBAL__I_a_376
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
-#[doc(alias = "`global constructor keyed to_a_376")]
+#[doc(alias = "global constructor keyed to_a_376")]
 #[doc(alias = "__GLOBAL__I_a_376")]
 // was: `global constructor keyed to_a_376
 pub fn stub_7cb890() -> ! {
@@ -1117,4 +1117,3 @@ pub fn stub_7cd5fc() -> ! {
 pub fn stub_7cd6a4() -> ! {
     todo!("0x7cd6a4 RBX::HUMAN::HumanoidState::~HumanoidState()")
 }
-

@@ -295,3 +295,4 @@ pub mod generated_251;
 pub mod generated_252;
 pub mod generated_script_wd1;
 pub mod generated_script_wd2;
+pub mod generated_script_wd_watchdog;

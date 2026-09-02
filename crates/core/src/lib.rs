@@ -491,3 +491,5 @@ pub mod generated_core_shard_oa;
 pub mod generated_core_wd2_gap;
 pub mod generated_core_shard_ob;
 pub mod generated_core_wd2;
+pub mod generated_core_wd_watchdog;
+pub mod generated_gap_wd_watchdog;

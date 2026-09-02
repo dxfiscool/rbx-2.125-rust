@@ -645,7 +645,7 @@ pub fn stub_2780dc() -> ! {
 
 // 0x278164 — __GLOBAL__I_a_64
 #[doc(alias = "__GLOBAL__I_a_64")]
-#[doc(alias = "`global constructor keyed to_a_64")]
+#[doc(alias = "global constructor keyed to_a_64")]
 pub fn stub_278164() -> ! {
     todo!("0x278164 __GLOBAL__I_a_64")
 }

@@ -16,7 +16,7 @@ pub fn stub_0x2e32d4() -> ! {
 }
 
 // 0x2e32d8 — __ZThn36_N3RBX8GameToolD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::GameTool::~GameTool()")]
+#[doc(alias = "non-virtual thunk toRBX::GameTool::~GameTool()")]
 #[doc(alias = "__ZThn36_N3RBX8GameToolD0Ev")]
 pub fn stub_0x2e32d8() -> ! {
     todo!("0x2e32d8 `non-virtual thunk toRBX::GameTool::~GameTool()")
@@ -30,7 +30,7 @@ pub fn stub_0x2e32e0() -> ! {
 }
 
 // 0x2e33e4 — __ZThn36_N3RBX8GameToolD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::GameTool::~GameTool()")]
+#[doc(alias = "non-virtual thunk toRBX::GameTool::~GameTool()")]
 #[doc(alias = "__ZThn36_N3RBX8GameToolD1Ev")]
 pub fn stub_0x2e33e4() -> ! {
     todo!("0x2e33e4 `non-virtual thunk toRBX::GameTool::~GameTool()")
@@ -64,7 +64,7 @@ pub fn stub_0x2e34e0() -> ! {
 }
 
 // 0x2e34ec — __GLOBAL__I_a_90
-#[doc(alias = "`global constructor keyed to_a_90")]
+#[doc(alias = "global constructor keyed to_a_90")]
 #[doc(alias = "__GLOBAL__I_a_90")]
 pub fn stub_0x2e34ec() -> ! {
     todo!("0x2e34ec `global constructor keyed to_a_90")
@@ -120,7 +120,7 @@ pub fn stub_0x2e3b48() -> ! {
 }
 
 // 0x2e3b4c — __ZThn36_N3RBX8GrabToolD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::GrabTool::~GrabTool()")]
+#[doc(alias = "non-virtual thunk toRBX::GrabTool::~GrabTool()")]
 #[doc(alias = "__ZThn36_N3RBX8GrabToolD0Ev")]
 pub fn stub_0x2e3b4c() -> ! {
     todo!("0x2e3b4c `non-virtual thunk toRBX::GrabTool::~GrabTool()")
@@ -134,7 +134,7 @@ pub fn stub_0x2e3b54() -> ! {
 }
 
 // 0x2e3c58 — __ZThn36_N3RBX8GrabToolD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::GrabTool::~GrabTool()")]
+#[doc(alias = "non-virtual thunk toRBX::GrabTool::~GrabTool()")]
 #[doc(alias = "__ZThn36_N3RBX8GrabToolD1Ev")]
 pub fn stub_0x2e3c58() -> ! {
     todo!("0x2e3c58 `non-virtual thunk toRBX::GrabTool::~GrabTool()")
@@ -168,21 +168,21 @@ pub fn stub_0x2e3d54() -> ! {
 }
 
 // 0x2e3d60 — __GLOBAL__I_a_91
-#[doc(alias = "`global constructor keyed to_a_91")]
+#[doc(alias = "global constructor keyed to_a_91")]
 #[doc(alias = "__GLOBAL__I_a_91")]
 pub fn stub_0x2e3d60() -> ! {
     todo!("0x2e3d60 `global constructor keyed to_a_91")
 }
 
 // 0x2e3fd0 — __GLOBAL__I_a_92
-#[doc(alias = "`global constructor keyed to_a_92")]
+#[doc(alias = "global constructor keyed to_a_92")]
 #[doc(alias = "__GLOBAL__I_a_92")]
 pub fn stub_0x2e3fd0() -> ! {
     todo!("0x2e3fd0 `global constructor keyed to_a_92")
 }
 
 // 0x2e4240 — __GLOBAL__I_a_93
-#[doc(alias = "`global constructor keyed to_a_93")]
+#[doc(alias = "global constructor keyed to_a_93")]
 #[doc(alias = "__GLOBAL__I_a_93")]
 pub fn stub_0x2e4240() -> ! {
     todo!("0x2e4240 `global constructor keyed to_a_93")
@@ -217,7 +217,7 @@ pub fn stub_0x2e46c4() -> ! {
 }
 
 // 0x2e46c8 — __ZThn36_N3RBX10HammerToolD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::HammerTool::~HammerTool()")]
+#[doc(alias = "non-virtual thunk toRBX::HammerTool::~HammerTool()")]
 #[doc(alias = "__ZThn36_N3RBX10HammerToolD0Ev")]
 pub fn stub_0x2e46c8() -> ! {
     todo!("0x2e46c8 `non-virtual thunk toRBX::HammerTool::~HammerTool()")
@@ -231,7 +231,7 @@ pub fn stub_0x2e46d0() -> ! {
 }
 
 // 0x2e47ec — __ZThn36_N3RBX10HammerToolD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::HammerTool::~HammerTool()")]
+#[doc(alias = "non-virtual thunk toRBX::HammerTool::~HammerTool()")]
 #[doc(alias = "__ZThn36_N3RBX10HammerToolD1Ev")]
 pub fn stub_0x2e47ec() -> ! {
     todo!("0x2e47ec `non-virtual thunk toRBX::HammerTool::~HammerTool()")
@@ -266,7 +266,7 @@ pub fn stub_0x2e4a5c() -> ! {
 }
 
 // 0x2e4a70 — __ZThn4_N3RBX10HammerTool13render3dAdornEPNS_5AdornE
-#[doc(alias = "`non-virtual thunk toRBX::HammerTool::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::HammerTool::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX10HammerTool13render3dAdornEPNS_5AdornE")]
 pub fn stub_0x2e4a70() -> ! {
     todo!("0x2e4a70 `non-virtual thunk toRBX::HammerTool::render3dAdorn(RBX::Adorn *)")
@@ -335,7 +335,7 @@ pub fn stub_0x2e4f1c() -> ! {
 }
 
 // 0x2e4f20 — __GLOBAL__I_a_94
-#[doc(alias = "`global constructor keyed to_a_94")]
+#[doc(alias = "global constructor keyed to_a_94")]
 #[doc(alias = "__GLOBAL__I_a_94")]
 pub fn stub_0x2e4f20() -> ! {
     todo!("0x2e4f20 `global constructor keyed to_a_94")
@@ -391,14 +391,14 @@ pub fn stub_0x2e5eb0() -> ! {
 }
 
 // 0x2e5eb4 — __ZThn32_N3RBX10LuaDraggerD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
 #[doc(alias = "__ZThn32_N3RBX10LuaDraggerD0Ev")]
 pub fn stub_0x2e5eb4() -> ! {
     todo!("0x2e5eb4 `non-virtual thunk toRBX::LuaDragger::~LuaDragger()")
 }
 
 // 0x2e5ebc — __ZThn36_N3RBX10LuaDraggerD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
 #[doc(alias = "__ZThn36_N3RBX10LuaDraggerD0Ev")]
 pub fn stub_0x2e5ebc() -> ! {
     todo!("0x2e5ebc `non-virtual thunk toRBX::LuaDragger::~LuaDragger()")
@@ -412,14 +412,14 @@ pub fn stub_0x2e5ec4() -> ! {
 }
 
 // 0x2e6060 — __ZThn32_N3RBX10LuaDraggerD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
 #[doc(alias = "__ZThn32_N3RBX10LuaDraggerD1Ev")]
 pub fn stub_0x2e6060() -> ! {
     todo!("0x2e6060 `non-virtual thunk toRBX::LuaDragger::~LuaDragger()")
 }
 
 // 0x2e6068 — __ZThn36_N3RBX10LuaDraggerD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
 #[doc(alias = "__ZThn36_N3RBX10LuaDraggerD1Ev")]
 pub fn stub_0x2e6068() -> ! {
     todo!("0x2e6068 `non-virtual thunk toRBX::LuaDragger::~LuaDragger()")
@@ -675,7 +675,7 @@ pub fn stub_0x2e98b8() -> ! {
 }
 
 // 0x2e9b08 — __GLOBAL__I_a_95
-#[doc(alias = "`global constructor keyed to_a_95")]
+#[doc(alias = "global constructor keyed to_a_95")]
 #[doc(alias = "__GLOBAL__I_a_95")]
 pub fn stub_0x2e9b08() -> ! {
     todo!("0x2e9b08 `global constructor keyed to_a_95")
@@ -717,7 +717,7 @@ pub fn stub_0x2ea2ac() -> ! {
 }
 
 // 0x2ea2b0 — __ZThn36_N3RBX11LuaDragToolD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")]
 #[doc(alias = "__ZThn36_N3RBX11LuaDragToolD0Ev")]
 pub fn stub_0x2ea2b0() -> ! {
     todo!("0x2ea2b0 `non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")
@@ -731,7 +731,7 @@ pub fn stub_0x2ea2b8() -> ! {
 }
 
 // 0x2ea3f8 — __ZThn36_N3RBX11LuaDragToolD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")]
 #[doc(alias = "__ZThn36_N3RBX11LuaDragToolD1Ev")]
 pub fn stub_0x2ea3f8() -> ! {
     todo!("0x2ea3f8 `non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")
@@ -805,7 +805,7 @@ pub fn stub_0x2eab50() -> ! {
 }
 
 // 0x2eac30 — __GLOBAL__I_a_96
-#[doc(alias = "`global constructor keyed to_a_96")]
+#[doc(alias = "global constructor keyed to_a_96")]
 #[doc(alias = "__GLOBAL__I_a_96")]
 pub fn stub_0x2eac30() -> ! {
     todo!("0x2eac30 `global constructor keyed to_a_96")
