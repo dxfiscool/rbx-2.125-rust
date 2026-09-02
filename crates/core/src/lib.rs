@@ -528,3 +528,4 @@ pub mod generated_wdog_core_C2_1788370000;
 pub mod generated_core_wdog_1788370647;
 pub mod generated_core_wdog_1788371100;
 pub mod generated_core_wdog2_1788371862;
+pub mod generated_core_wdog3B_1788372300;
