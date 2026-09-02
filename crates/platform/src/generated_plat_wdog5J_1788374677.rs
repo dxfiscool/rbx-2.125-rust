@@ -40,9 +40,9 @@ pub fn stub_0x5222f4() -> ! {
 
 // 0x52231c — __ZThn32_NK3RBX7GuiItem12getClassNameEv
 // type: _DWORD __fastcall(RBX::GuiItem *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::GuiItem::getClassName(void)const")]
+#[doc(alias = "_non-virtual thunk to_RBX::GuiItem::getClassName(void)const")]
 pub fn stub_0x52231c() -> ! {
-    todo!("0x52231c `non-virtual thunk to'RBX::GuiItem::getClassName(void)const")
+    todo!("0x52231c _non-virtual thunk to_RBX::GuiItem::getClassName(void)const")
 }
 
 // 0x522a08 — __ZN3RBX12GuiDrawImageD2Ev
@@ -553,9 +553,9 @@ pub fn stub_0x529948() -> ! {
 
 // 0x529960 — __ZThn96_N3RBX9GuiObject8render2dEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::GuiObject *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk to'RBX::GuiObject::render2d(RBX::Adorn *)")]
+#[doc(alias = "_non-virtual thunk to_RBX::GuiObject::render2d(RBX::Adorn *)")]
 pub fn stub_0x529960() -> ! {
-    todo!("0x529960 `non-virtual thunk to'RBX::GuiObject::render2d(RBX::Adorn *)")
+    todo!("0x529960 _non-virtual thunk to_RBX::GuiObject::render2d(RBX::Adorn *)")
 }
 
 // 0x529968 — __ZN3RBX9GuiObject12render2dImplEPNS_5AdornERKN3G3D6Color4ERNS3_6Rect2DE
@@ -612,9 +612,9 @@ pub fn stub_0x52a2f0() -> ! {
 }
 
 // 0x52a328 — __ZThn92_N3RBX9GuiObject7processERKNS_8GuiEventE
-#[doc(alias = "`non-virtual thunk to'RBX::GuiObject::process(RBX::GuiEvent const&)")]
+#[doc(alias = "_non-virtual thunk to_RBX::GuiObject::process(RBX::GuiEvent const&)")]
 pub fn stub_0x52a328() -> ! {
-    todo!("0x52a328 `non-virtual thunk to'RBX::GuiObject::process(RBX::GuiEvent const&)")
+    todo!("0x52a328 _non-virtual thunk to_RBX::GuiObject::process(RBX::GuiEvent const&)")
 }
 
 // 0x52a334 — __ZN3RBX9GuiObject11mouseIsOverERKN3G3D7Vector2E
