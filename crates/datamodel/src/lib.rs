@@ -585,4 +585,6 @@ pub mod generated_dm_wd_watchdog22;
 pub mod generated_dm_wd_watchdog23;
 pub mod generated_dm_wdcron_A;
 pub mod generated_datamodel_shard_B4;
+pub mod generated_datamodel_shard_B5;
 pub mod generated_dm_wdog_B;
+pub mod generated_dm_wdog_C;
