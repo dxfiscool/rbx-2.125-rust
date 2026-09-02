@@ -248,7 +248,7 @@ pub fn stub_0x50eff0() -> ! { todo!("0x50eff0 __ZNSt6vectorIN3RBX11MergeBinder9I
 // 0x50f020 — __GLOBAL__I_a_203
 // was: `global constructor keyed to'_a_203
 #[doc(alias = "__GLOBAL__I_a_203")]
-#[doc(alias = "`global constructor keyed to_a_203")]
+#[doc(alias = "global constructor keyed to_a_203")]
 pub fn stub_0x50f020() -> ! { todo!("0x50f020 __GLOBAL__I_a_203") }
 
 // 0x50f330 — __ZN3RBX7GuiBaseC2EPKc
@@ -280,14 +280,14 @@ pub fn stub_0x50f61c() -> ! { todo!("0x50f61c __ZNK3RBX17NonFactoryProductINS_8I
 // was: `non-virtual thunk to'RBX::GuiBase::~GuiBase()
 // type: void __fastcall(RBX::GuiBase *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX7GuiBaseD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::GuiBase::~GuiBase()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiBase::~GuiBase()")]
 pub fn stub_0x50f644() -> ! { todo!("0x50f644 __ZThn32_N3RBX7GuiBaseD1Ev") }
 
 // 0x50f6fc — __ZThn32_N3RBX7GuiBaseD0Ev
 // was: `non-virtual thunk to'RBX::GuiBase::~GuiBase()
 // type: void __fastcall(RBX::GuiBase *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX7GuiBaseD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::GuiBase::~GuiBase()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiBase::~GuiBase()")]
 pub fn stub_0x50f6fc() -> ! { todo!("0x50f6fc __ZThn32_N3RBX7GuiBaseD0Ev") }
 
 // 0x50f7cc — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_8sGuiBaseEEE12getClassNameEv
@@ -298,14 +298,14 @@ pub fn stub_0x50f7cc() -> ! { todo!("0x50f7cc __ZThn32_NK3RBX17NonFactoryProduct
 // was: `non-virtual thunk to'RBX::GuiBase::~GuiBase()
 // type: void __fastcall(RBX::GuiBase *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX7GuiBaseD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::GuiBase::~GuiBase()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiBase::~GuiBase()")]
 pub fn stub_0x50f7f4() -> ! { todo!("0x50f7f4 __ZThn36_N3RBX7GuiBaseD1Ev") }
 
 // 0x50f8ac — __ZThn36_N3RBX7GuiBaseD0Ev
 // was: `non-virtual thunk to'RBX::GuiBase::~GuiBase()
 // type: void __fastcall(RBX::GuiBase *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX7GuiBaseD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::GuiBase::~GuiBase()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiBase::~GuiBase()")]
 pub fn stub_0x50f8ac() -> ! { todo!("0x50f8ac __ZThn36_N3RBX7GuiBaseD0Ev") }
 
 // 0x50f97c — __ZN3RBX4Name13callDoDeclareILZNS_8sGuiBaseEEEEvv
@@ -344,7 +344,7 @@ pub fn stub_0x50fbb8() -> ! { todo!("0x50fbb8 __ZThn36_N3RBX10Reflection9Describ
 // 0x50fc5c — __GLOBAL__I_a_204
 // was: `global constructor keyed to'_a_204
 #[doc(alias = "__GLOBAL__I_a_204")]
-#[doc(alias = "`global constructor keyed to_a_204")]
+#[doc(alias = "global constructor keyed to_a_204")]
 pub fn stub_0x50fc5c() -> ! { todo!("0x50fc5c __GLOBAL__I_a_204") }
 
 // 0x50fdf4 — __ZN3RBX9GuiBase3d8setColorENS_10BrickColorE
@@ -417,14 +417,14 @@ pub fn stub_0x510208() -> ! { todo!("0x510208 __ZNK3RBX17NonFactoryProductINS_7G
 // was: `non-virtual thunk to'RBX::GuiBase3d::~GuiBase3d()
 // type: void __fastcall(RBX::GuiBase3d *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX9GuiBase3dD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::GuiBase3d::~GuiBase3d()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiBase3d::~GuiBase3d()")]
 pub fn stub_0x510230() -> ! { todo!("0x510230 __ZThn32_N3RBX9GuiBase3dD1Ev") }
 
 // 0x5102e8 — __ZThn32_N3RBX9GuiBase3dD0Ev
 // was: `non-virtual thunk to'RBX::GuiBase3d::~GuiBase3d()
 // type: void __fastcall(RBX::GuiBase3d *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX9GuiBase3dD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::GuiBase3d::~GuiBase3d()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiBase3d::~GuiBase3d()")]
 pub fn stub_0x5102e8() -> ! { todo!("0x5102e8 __ZThn32_N3RBX9GuiBase3dD0Ev") }
 
 // 0x5103b8 — __ZThn32_NK3RBX17NonFactoryProductINS_7GuiBaseELZNS_10sGuiBase3dEEE12getClassNameEv
@@ -435,14 +435,14 @@ pub fn stub_0x5103b8() -> ! { todo!("0x5103b8 __ZThn32_NK3RBX17NonFactoryProduct
 // was: `non-virtual thunk to'RBX::GuiBase3d::~GuiBase3d()
 // type: void __fastcall(RBX::GuiBase3d *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX9GuiBase3dD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::GuiBase3d::~GuiBase3d()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiBase3d::~GuiBase3d()")]
 pub fn stub_0x5103e0() -> ! { todo!("0x5103e0 __ZThn36_N3RBX9GuiBase3dD1Ev") }
 
 // 0x510498 — __ZThn36_N3RBX9GuiBase3dD0Ev
 // was: `non-virtual thunk to'RBX::GuiBase3d::~GuiBase3d()
 // type: void __fastcall(RBX::GuiBase3d *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX9GuiBase3dD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::GuiBase3d::~GuiBase3d()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiBase3d::~GuiBase3d()")]
 pub fn stub_0x510498() -> ! { todo!("0x510498 __ZThn36_N3RBX9GuiBase3dD0Ev") }
 
 // 0x510568 — __ZN3RBX4Name13callDoDeclareILZNS_10sGuiBase3dEEEEvv
@@ -480,7 +480,7 @@ pub fn stub_0x510a14() -> ! { todo!("0x510a14 __ZThn36_N3RBX10Reflection9Describ
 // 0x510f94 — __GLOBAL__I_a_205
 // was: `global constructor keyed to'_a_205
 #[doc(alias = "__GLOBAL__I_a_205")]
-#[doc(alias = "`global constructor keyed to_a_205")]
+#[doc(alias = "global constructor keyed to_a_205")]
 pub fn stub_0x510f94() -> ! { todo!("0x510f94 __GLOBAL__I_a_205") }
 
 // 0x511244 — __ZN3RBX22GetCustomStatsFilenameEv

@@ -21,7 +21,7 @@ pub fn stub_68ced4() -> ! {
 
 // 0x68cf74 — __ZThn36_N3RBX9StudsToolD1Ev
 // type: void __fastcall(RBX::StudsTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::StudsTool::~StudsTool()")]
+#[doc(alias = "non-virtual thunk toRBX::StudsTool::~StudsTool()")]
 #[doc(alias = "__ZThn36_N3RBX9StudsToolD1Ev")]
 pub fn stub_68cf74() -> ! {
     todo!("0x68cf74 __ZThn36_N3RBX9StudsToolD1Ev")
@@ -29,7 +29,7 @@ pub fn stub_68cf74() -> ! {
 
 // 0x68cf7c — __ZThn36_N3RBX9StudsToolD0Ev
 // type: void __fastcall(RBX::StudsTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::StudsTool::~StudsTool()")]
+#[doc(alias = "non-virtual thunk toRBX::StudsTool::~StudsTool()")]
 #[doc(alias = "__ZThn36_N3RBX9StudsToolD0Ev")]
 pub fn stub_68cf7c() -> ! {
     todo!("0x68cf7c __ZThn36_N3RBX9StudsToolD0Ev")
@@ -53,7 +53,7 @@ pub fn stub_68d024() -> ! {
 
 // 0x68d0c4 — __ZThn36_N3RBX9InletToolD1Ev
 // type: void __fastcall(RBX::InletTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::InletTool::~InletTool()")]
+#[doc(alias = "non-virtual thunk toRBX::InletTool::~InletTool()")]
 #[doc(alias = "__ZThn36_N3RBX9InletToolD1Ev")]
 pub fn stub_68d0c4() -> ! {
     todo!("0x68d0c4 __ZThn36_N3RBX9InletToolD1Ev")
@@ -61,7 +61,7 @@ pub fn stub_68d0c4() -> ! {
 
 // 0x68d0cc — __ZThn36_N3RBX9InletToolD0Ev
 // type: void __fastcall(RBX::InletTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::InletTool::~InletTool()")]
+#[doc(alias = "non-virtual thunk toRBX::InletTool::~InletTool()")]
 #[doc(alias = "__ZThn36_N3RBX9InletToolD0Ev")]
 pub fn stub_68d0cc() -> ! {
     todo!("0x68d0cc __ZThn36_N3RBX9InletToolD0Ev")
@@ -85,7 +85,7 @@ pub fn stub_68d174() -> ! {
 
 // 0x68d214 — __ZThn36_N3RBX13UniversalToolD1Ev
 // type: void __fastcall(RBX::UniversalTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::UniversalTool::~UniversalTool()")]
+#[doc(alias = "non-virtual thunk toRBX::UniversalTool::~UniversalTool()")]
 #[doc(alias = "__ZThn36_N3RBX13UniversalToolD1Ev")]
 pub fn stub_68d214() -> ! {
     todo!("0x68d214 __ZThn36_N3RBX13UniversalToolD1Ev")
@@ -93,7 +93,7 @@ pub fn stub_68d214() -> ! {
 
 // 0x68d21c — __ZThn36_N3RBX13UniversalToolD0Ev
 // type: void __fastcall(RBX::UniversalTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::UniversalTool::~UniversalTool()")]
+#[doc(alias = "non-virtual thunk toRBX::UniversalTool::~UniversalTool()")]
 #[doc(alias = "__ZThn36_N3RBX13UniversalToolD0Ev")]
 pub fn stub_68d21c() -> ! {
     todo!("0x68d21c __ZThn36_N3RBX13UniversalToolD0Ev")
@@ -117,7 +117,7 @@ pub fn stub_68d2c4() -> ! {
 
 // 0x68d364 — __ZThn36_N3RBX9HingeToolD1Ev
 // type: void __fastcall(RBX::HingeTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::HingeTool::~HingeTool()")]
+#[doc(alias = "non-virtual thunk toRBX::HingeTool::~HingeTool()")]
 #[doc(alias = "__ZThn36_N3RBX9HingeToolD1Ev")]
 pub fn stub_68d364() -> ! {
     todo!("0x68d364 __ZThn36_N3RBX9HingeToolD1Ev")
@@ -125,7 +125,7 @@ pub fn stub_68d364() -> ! {
 
 // 0x68d36c — __ZThn36_N3RBX9HingeToolD0Ev
 // type: void __fastcall(RBX::HingeTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::HingeTool::~HingeTool()")]
+#[doc(alias = "non-virtual thunk toRBX::HingeTool::~HingeTool()")]
 #[doc(alias = "__ZThn36_N3RBX9HingeToolD0Ev")]
 pub fn stub_68d36c() -> ! {
     todo!("0x68d36c __ZThn36_N3RBX9HingeToolD0Ev")
@@ -149,7 +149,7 @@ pub fn stub_68d414() -> ! {
 
 // 0x68d4b4 — __ZThn36_N3RBX14RightMotorToolD1Ev
 // type: void __fastcall(RBX::RightMotorTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::RightMotorTool::~RightMotorTool()")]
+#[doc(alias = "non-virtual thunk toRBX::RightMotorTool::~RightMotorTool()")]
 #[doc(alias = "__ZThn36_N3RBX14RightMotorToolD1Ev")]
 pub fn stub_68d4b4() -> ! {
     todo!("0x68d4b4 __ZThn36_N3RBX14RightMotorToolD1Ev")
@@ -157,7 +157,7 @@ pub fn stub_68d4b4() -> ! {
 
 // 0x68d4bc — __ZThn36_N3RBX14RightMotorToolD0Ev
 // type: void __fastcall(RBX::RightMotorTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::RightMotorTool::~RightMotorTool()")]
+#[doc(alias = "non-virtual thunk toRBX::RightMotorTool::~RightMotorTool()")]
 #[doc(alias = "__ZThn36_N3RBX14RightMotorToolD0Ev")]
 pub fn stub_68d4bc() -> ! {
     todo!("0x68d4bc __ZThn36_N3RBX14RightMotorToolD0Ev")
@@ -181,7 +181,7 @@ pub fn stub_68d564() -> ! {
 
 // 0x68d604 — __ZThn36_N3RBX13LeftMotorToolD1Ev
 // type: void __fastcall(RBX::LeftMotorTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::LeftMotorTool::~LeftMotorTool()")]
+#[doc(alias = "non-virtual thunk toRBX::LeftMotorTool::~LeftMotorTool()")]
 #[doc(alias = "__ZThn36_N3RBX13LeftMotorToolD1Ev")]
 pub fn stub_68d604() -> ! {
     todo!("0x68d604 __ZThn36_N3RBX13LeftMotorToolD1Ev")
@@ -189,7 +189,7 @@ pub fn stub_68d604() -> ! {
 
 // 0x68d60c — __ZThn36_N3RBX13LeftMotorToolD0Ev
 // type: void __fastcall(RBX::LeftMotorTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::LeftMotorTool::~LeftMotorTool()")]
+#[doc(alias = "non-virtual thunk toRBX::LeftMotorTool::~LeftMotorTool()")]
 #[doc(alias = "__ZThn36_N3RBX13LeftMotorToolD0Ev")]
 pub fn stub_68d60c() -> ! {
     todo!("0x68d60c __ZThn36_N3RBX13LeftMotorToolD0Ev")
@@ -213,7 +213,7 @@ pub fn stub_68d6b4() -> ! {
 
 // 0x68d754 — __ZThn36_N3RBX18OscillateMotorToolD1Ev
 // type: void __fastcall(RBX::OscillateMotorTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::OscillateMotorTool::~OscillateMotorTool()")]
+#[doc(alias = "non-virtual thunk toRBX::OscillateMotorTool::~OscillateMotorTool()")]
 #[doc(alias = "__ZThn36_N3RBX18OscillateMotorToolD1Ev")]
 pub fn stub_68d754() -> ! {
     todo!("0x68d754 __ZThn36_N3RBX18OscillateMotorToolD1Ev")
@@ -221,7 +221,7 @@ pub fn stub_68d754() -> ! {
 
 // 0x68d75c — __ZThn36_N3RBX18OscillateMotorToolD0Ev
 // type: void __fastcall(RBX::OscillateMotorTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::OscillateMotorTool::~OscillateMotorTool()")]
+#[doc(alias = "non-virtual thunk toRBX::OscillateMotorTool::~OscillateMotorTool()")]
 #[doc(alias = "__ZThn36_N3RBX18OscillateMotorToolD0Ev")]
 pub fn stub_68d75c() -> ! {
     todo!("0x68d75c __ZThn36_N3RBX18OscillateMotorToolD0Ev")
@@ -245,7 +245,7 @@ pub fn stub_68d804() -> ! {
 
 // 0x68d8a4 — __ZThn36_N3RBX20SmoothNoOutlinesToolD1Ev
 // type: void __fastcall(RBX::SmoothNoOutlinesTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::SmoothNoOutlinesTool::~SmoothNoOutlinesTool()")]
+#[doc(alias = "non-virtual thunk toRBX::SmoothNoOutlinesTool::~SmoothNoOutlinesTool()")]
 #[doc(alias = "__ZThn36_N3RBX20SmoothNoOutlinesToolD1Ev")]
 pub fn stub_68d8a4() -> ! {
     todo!("0x68d8a4 __ZThn36_N3RBX20SmoothNoOutlinesToolD1Ev")
@@ -253,7 +253,7 @@ pub fn stub_68d8a4() -> ! {
 
 // 0x68d8ac — __ZThn36_N3RBX20SmoothNoOutlinesToolD0Ev
 // type: void __fastcall(RBX::SmoothNoOutlinesTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::SmoothNoOutlinesTool::~SmoothNoOutlinesTool()")]
+#[doc(alias = "non-virtual thunk toRBX::SmoothNoOutlinesTool::~SmoothNoOutlinesTool()")]
 #[doc(alias = "__ZThn36_N3RBX20SmoothNoOutlinesToolD0Ev")]
 pub fn stub_68d8ac() -> ! {
     todo!("0x68d8ac __ZThn36_N3RBX20SmoothNoOutlinesToolD0Ev")
@@ -293,7 +293,7 @@ pub fn stub_68df2c() -> ! {
 
 // 0x68df30 — __ZThn32_N3RBX16TouchTransmitterD0Ev
 // type: void __fastcall(RBX::TouchTransmitter *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")]
+#[doc(alias = "non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")]
 #[doc(alias = "__ZThn32_N3RBX16TouchTransmitterD0Ev")]
 pub fn stub_68df30() -> ! {
     todo!("0x68df30 __ZThn32_N3RBX16TouchTransmitterD0Ev")
@@ -301,7 +301,7 @@ pub fn stub_68df30() -> ! {
 
 // 0x68df38 — __ZThn36_N3RBX16TouchTransmitterD0Ev
 // type: void __fastcall(RBX::TouchTransmitter *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")]
+#[doc(alias = "non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")]
 #[doc(alias = "__ZThn36_N3RBX16TouchTransmitterD0Ev")]
 pub fn stub_68df38() -> ! {
     todo!("0x68df38 __ZThn36_N3RBX16TouchTransmitterD0Ev")
@@ -317,7 +317,7 @@ pub fn stub_68df40() -> ! {
 
 // 0x68e058 — __ZThn32_N3RBX16TouchTransmitterD1Ev
 // type: void __fastcall(RBX::TouchTransmitter *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")]
+#[doc(alias = "non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")]
 #[doc(alias = "__ZThn32_N3RBX16TouchTransmitterD1Ev")]
 pub fn stub_68e058() -> ! {
     todo!("0x68e058 __ZThn32_N3RBX16TouchTransmitterD1Ev")
@@ -325,7 +325,7 @@ pub fn stub_68e058() -> ! {
 
 // 0x68e060 — __ZThn36_N3RBX16TouchTransmitterD1Ev
 // type: void __fastcall(RBX::TouchTransmitter *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")]
+#[doc(alias = "non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")]
 #[doc(alias = "__ZThn36_N3RBX16TouchTransmitterD1Ev")]
 pub fn stub_68e060() -> ! {
     todo!("0x68e060 __ZThn36_N3RBX16TouchTransmitterD1Ev")
@@ -559,7 +559,7 @@ pub fn stub_691814() -> ! {
 
 // 0x691818 — __ZThn32_N3RBX10ControllerD0Ev
 // type: void __fastcall(RBX::Controller *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Controller::~Controller()")]
+#[doc(alias = "non-virtual thunk toRBX::Controller::~Controller()")]
 #[doc(alias = "__ZThn32_N3RBX10ControllerD0Ev")]
 pub fn stub_691818() -> ! {
     todo!("0x691818 __ZThn32_N3RBX10ControllerD0Ev")
@@ -567,7 +567,7 @@ pub fn stub_691818() -> ! {
 
 // 0x691820 — __ZThn36_N3RBX10ControllerD0Ev
 // type: void __fastcall(RBX::Controller *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Controller::~Controller()")]
+#[doc(alias = "non-virtual thunk toRBX::Controller::~Controller()")]
 #[doc(alias = "__ZThn36_N3RBX10ControllerD0Ev")]
 pub fn stub_691820() -> ! {
     todo!("0x691820 __ZThn36_N3RBX10ControllerD0Ev")
@@ -575,7 +575,7 @@ pub fn stub_691820() -> ! {
 
 // 0x691828 — __ZThn92_N3RBX10ControllerD0Ev
 // type: void __fastcall(RBX::Controller *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Controller::~Controller()")]
+#[doc(alias = "non-virtual thunk toRBX::Controller::~Controller()")]
 #[doc(alias = "__ZThn92_N3RBX10ControllerD0Ev")]
 pub fn stub_691828() -> ! {
     todo!("0x691828 __ZThn92_N3RBX10ControllerD0Ev")
@@ -591,7 +591,7 @@ pub fn stub_691830() -> ! {
 
 // 0x691a04 — __ZThn32_N3RBX10ControllerD1Ev
 // type: void __fastcall(RBX::Controller *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Controller::~Controller()")]
+#[doc(alias = "non-virtual thunk toRBX::Controller::~Controller()")]
 #[doc(alias = "__ZThn32_N3RBX10ControllerD1Ev")]
 pub fn stub_691a04() -> ! {
     todo!("0x691a04 __ZThn32_N3RBX10ControllerD1Ev")
@@ -599,7 +599,7 @@ pub fn stub_691a04() -> ! {
 
 // 0x691a0c — __ZThn36_N3RBX10ControllerD1Ev
 // type: void __fastcall(RBX::Controller *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Controller::~Controller()")]
+#[doc(alias = "non-virtual thunk toRBX::Controller::~Controller()")]
 #[doc(alias = "__ZThn36_N3RBX10ControllerD1Ev")]
 pub fn stub_691a0c() -> ! {
     todo!("0x691a0c __ZThn36_N3RBX10ControllerD1Ev")
@@ -607,7 +607,7 @@ pub fn stub_691a0c() -> ! {
 
 // 0x691a14 — __ZThn92_N3RBX10ControllerD1Ev
 // type: void __fastcall(RBX::Controller *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Controller::~Controller()")]
+#[doc(alias = "non-virtual thunk toRBX::Controller::~Controller()")]
 #[doc(alias = "__ZThn92_N3RBX10ControllerD1Ev")]
 pub fn stub_691a14() -> ! {
     todo!("0x691a14 __ZThn92_N3RBX10ControllerD1Ev")
@@ -689,7 +689,7 @@ pub fn stub_692420() -> ! {
 }
 
 // 0x6925f8 — __ZThn92_N3RBX17VehicleController9onSteppedERKNS_7SteppedE
-#[doc(alias = "`non-virtual thunk toRBX::VehicleController::onStepped(RBX::Stepped const&)")]
+#[doc(alias = "non-virtual thunk toRBX::VehicleController::onStepped(RBX::Stepped const&)")]
 #[doc(alias = "__ZThn92_N3RBX17VehicleController9onSteppedERKNS_7SteppedE")]
 pub fn stub_6925f8() -> ! {
     todo!("0x6925f8 __ZThn92_N3RBX17VehicleController9onSteppedERKNS_7SteppedE")
@@ -725,7 +725,7 @@ pub fn stub_692a04() -> ! {
 }
 
 // 0x692b9c — __ZThn92_N3RBX18HumanoidController9onSteppedERKNS_7SteppedE
-#[doc(alias = "`non-virtual thunk toRBX::HumanoidController::onStepped(RBX::Stepped const&)")]
+#[doc(alias = "non-virtual thunk toRBX::HumanoidController::onStepped(RBX::Stepped const&)")]
 #[doc(alias = "__ZThn92_N3RBX18HumanoidController9onSteppedERKNS_7SteppedE")]
 pub fn stub_692b9c() -> ! {
     todo!("0x692b9c __ZThn92_N3RBX18HumanoidController9onSteppedERKNS_7SteppedE")

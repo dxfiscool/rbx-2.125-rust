@@ -192,14 +192,14 @@ pub fn stub_84f518() -> ! {
 }
 
 // 0x84f548 — __GLOBAL__I_a_427
-#[doc(alias = "`global constructor keyed to_a_427")]
+#[doc(alias = "global constructor keyed to_a_427")]
 #[doc(alias = "__GLOBAL__I_a_427")]
 pub fn stub_84f548() -> ! {
     todo!("0x84f548 `global constructor keyed to'_a_427")
 }
 
 // 0x851318 — __GLOBAL__I_a_428
-#[doc(alias = "`global constructor keyed to_a_428")]
+#[doc(alias = "global constructor keyed to_a_428")]
 #[doc(alias = "__GLOBAL__I_a_428")]
 pub fn stub_851318() -> ! {
     todo!("0x851318 `global constructor keyed to'_a_428")
@@ -283,14 +283,14 @@ pub fn stub_852618() -> ! {
 }
 
 // 0x852640 — __ZThn32_N3RBX14CookiesServiceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::CookiesService::~CookiesService()")]
+#[doc(alias = "non-virtual thunk toRBX::CookiesService::~CookiesService()")]
 #[doc(alias = "__ZThn32_N3RBX14CookiesServiceD1Ev")]
 pub fn stub_852640() -> ! {
     todo!("0x852640 `non-virtual thunk to'RBX::CookiesService::~CookiesService()")
 }
 
 // 0x852680 — __ZThn32_N3RBX14CookiesServiceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::CookiesService::~CookiesService()")]
+#[doc(alias = "non-virtual thunk toRBX::CookiesService::~CookiesService()")]
 #[doc(alias = "__ZThn32_N3RBX14CookiesServiceD0Ev")]
 pub fn stub_852680() -> ! {
     todo!("0x852680 `non-virtual thunk to'RBX::CookiesService::~CookiesService()")
@@ -304,14 +304,14 @@ pub fn stub_852754() -> ! {
 }
 
 // 0x85277c — __ZThn36_N3RBX14CookiesServiceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::CookiesService::~CookiesService()")]
+#[doc(alias = "non-virtual thunk toRBX::CookiesService::~CookiesService()")]
 #[doc(alias = "__ZThn36_N3RBX14CookiesServiceD1Ev")]
 pub fn stub_85277c() -> ! {
     todo!("0x85277c `non-virtual thunk to'RBX::CookiesService::~CookiesService()")
 }
 
 // 0x8527bc — __ZThn36_N3RBX14CookiesServiceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::CookiesService::~CookiesService()")]
+#[doc(alias = "non-virtual thunk toRBX::CookiesService::~CookiesService()")]
 #[doc(alias = "__ZThn36_N3RBX14CookiesServiceD0Ev")]
 pub fn stub_8527bc() -> ! {
     todo!("0x8527bc `non-virtual thunk to'RBX::CookiesService::~CookiesService()")
@@ -472,7 +472,7 @@ pub fn stub_853b60() -> ! {
 }
 
 // 0x853c20 — __GLOBAL__I_a_429
-#[doc(alias = "`global constructor keyed to_a_429")]
+#[doc(alias = "global constructor keyed to_a_429")]
 #[doc(alias = "__GLOBAL__I_a_429")]
 pub fn stub_853c20() -> ! {
     todo!("0x853c20 `global constructor keyed to'_a_429")
@@ -738,14 +738,14 @@ pub fn stub_856ae4() -> ! {
 }
 
 // 0x856af4 — __ZThn32_N4FLog19FastLogSettingsItemD1Ev
-#[doc(alias = "`non-virtual thunk toFLog::FastLogSettingsItem::~FastLogSettingsItem()")]
+#[doc(alias = "non-virtual thunk toFLog::FastLogSettingsItem::~FastLogSettingsItem()")]
 #[doc(alias = "__ZThn32_N4FLog19FastLogSettingsItemD1Ev")]
 pub fn stub_856af4() -> ! {
     todo!("0x856af4 `non-virtual thunk to'FLog::FastLogSettingsItem::~FastLogSettingsItem()")
 }
 
 // 0x856b38 — __ZThn32_N4FLog19FastLogSettingsItemD0Ev
-#[doc(alias = "`non-virtual thunk toFLog::FastLogSettingsItem::~FastLogSettingsItem()")]
+#[doc(alias = "non-virtual thunk toFLog::FastLogSettingsItem::~FastLogSettingsItem()")]
 #[doc(alias = "__ZThn32_N4FLog19FastLogSettingsItemD0Ev")]
 pub fn stub_856b38() -> ! {
     todo!("0x856b38 `non-virtual thunk to'FLog::FastLogSettingsItem::~FastLogSettingsItem()")
@@ -759,14 +759,14 @@ pub fn stub_856c18() -> ! {
 }
 
 // 0x856c28 — __ZThn36_N4FLog19FastLogSettingsItemD1Ev
-#[doc(alias = "`non-virtual thunk toFLog::FastLogSettingsItem::~FastLogSettingsItem()")]
+#[doc(alias = "non-virtual thunk toFLog::FastLogSettingsItem::~FastLogSettingsItem()")]
 #[doc(alias = "__ZThn36_N4FLog19FastLogSettingsItemD1Ev")]
 pub fn stub_856c28() -> ! {
     todo!("0x856c28 `non-virtual thunk to'FLog::FastLogSettingsItem::~FastLogSettingsItem()")
 }
 
 // 0x856c6c — __ZThn36_N4FLog19FastLogSettingsItemD0Ev
-#[doc(alias = "`non-virtual thunk toFLog::FastLogSettingsItem::~FastLogSettingsItem()")]
+#[doc(alias = "non-virtual thunk toFLog::FastLogSettingsItem::~FastLogSettingsItem()")]
 #[doc(alias = "__ZThn36_N4FLog19FastLogSettingsItemD0Ev")]
 pub fn stub_856c6c() -> ! {
     todo!("0x856c6c `non-virtual thunk to'FLog::FastLogSettingsItem::~FastLogSettingsItem()")

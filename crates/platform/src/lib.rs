@@ -387,3 +387,4 @@ pub mod generated_plat_wdog_D_1788368206;
 pub mod generated_plat_cg;
 pub mod generated_plat_ch;
 pub mod generated_wdog_plat_B2_1788369516;
+pub mod generated_plat_gapB_1788370730;

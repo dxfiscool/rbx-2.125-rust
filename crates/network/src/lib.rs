@@ -334,3 +334,5 @@ pub mod generated_net_wdcron_E;
 pub mod generated_net_wdog_F_1788368151;
 pub mod generated_net_wdog_G;
 pub mod generated_202;
+pub mod generated_203;
+pub mod generated_net_wdog_1788373000;
