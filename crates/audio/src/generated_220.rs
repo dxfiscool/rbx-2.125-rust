@@ -40,7 +40,7 @@ pub fn stub_604ca8() -> ! {
 }
 
 // 0x604d4c — __GLOBAL__I_a_239
-#[doc(alias = "'global constructor keyed to'_a_239")]
+#[doc(alias = "global constructor keyed to _a_239")]
 #[doc(alias = "__GLOBAL__I_a_239")]
 pub fn stub_604d4c() -> ! {
     todo!("0x604d4c __GLOBAL__I_a_239")
@@ -80,7 +80,7 @@ pub fn stub_605128() -> ! {
 
 // 0x60512c — __ZThn32_N3RBX11PlayerMouseD0Ev
 // type: void __fastcall(RBX::PlayerMouse *__hidden this)
-#[doc(alias = "'non-virtual thunk to'RBX::PlayerMouse::~PlayerMouse()")]
+#[doc(alias = "non-virtual thunk to RBX::PlayerMouse::~PlayerMouse()")]
 #[doc(alias = "__ZThn32_N3RBX11PlayerMouseD0Ev")]
 pub fn stub_60512c() -> ! {
     todo!("0x60512c __ZThn32_N3RBX11PlayerMouseD0Ev")
@@ -88,7 +88,7 @@ pub fn stub_60512c() -> ! {
 
 // 0x605134 — __ZThn36_N3RBX11PlayerMouseD0Ev
 // type: void __fastcall(RBX::PlayerMouse *__hidden this)
-#[doc(alias = "'non-virtual thunk to'RBX::PlayerMouse::~PlayerMouse()")]
+#[doc(alias = "non-virtual thunk to RBX::PlayerMouse::~PlayerMouse()")]
 #[doc(alias = "__ZThn36_N3RBX11PlayerMouseD0Ev")]
 pub fn stub_605134() -> ! {
     todo!("0x605134 __ZThn36_N3RBX11PlayerMouseD0Ev")
@@ -96,7 +96,7 @@ pub fn stub_605134() -> ! {
 
 // 0x60513c — __ZThn32_N3RBX11PlayerMouseD1Ev
 // type: void __fastcall(RBX::PlayerMouse *__hidden this)
-#[doc(alias = "'non-virtual thunk to'RBX::PlayerMouse::~PlayerMouse()")]
+#[doc(alias = "non-virtual thunk to RBX::PlayerMouse::~PlayerMouse()")]
 #[doc(alias = "__ZThn32_N3RBX11PlayerMouseD1Ev")]
 pub fn stub_60513c() -> ! {
     todo!("0x60513c __ZThn32_N3RBX11PlayerMouseD1Ev")
@@ -104,7 +104,7 @@ pub fn stub_60513c() -> ! {
 
 // 0x605144 — __ZThn36_N3RBX11PlayerMouseD1Ev
 // type: void __fastcall(RBX::PlayerMouse *__hidden this)
-#[doc(alias = "'non-virtual thunk to'RBX::PlayerMouse::~PlayerMouse()")]
+#[doc(alias = "non-virtual thunk to RBX::PlayerMouse::~PlayerMouse()")]
 #[doc(alias = "__ZThn36_N3RBX11PlayerMouseD1Ev")]
 pub fn stub_605144() -> ! {
     todo!("0x605144 __ZThn36_N3RBX11PlayerMouseD1Ev")
@@ -195,7 +195,7 @@ pub fn stub_6057e4() -> ! {
 }
 
 // 0x605888 — __GLOBAL__I_a_240
-#[doc(alias = "'global constructor keyed to'_a_240")]
+#[doc(alias = "global constructor keyed to _a_240")]
 #[doc(alias = "__GLOBAL__I_a_240")]
 pub fn stub_605888() -> ! {
     todo!("0x605888 __GLOBAL__I_a_240")
@@ -379,7 +379,7 @@ pub fn stub_606218() -> ! {
 
 // 0x606228 — __ZThn32_N3RBX4PoseD1Ev
 // type: void __fastcall(RBX::Pose *__hidden this)
-#[doc(alias = "'non-virtual thunk to'RBX::Pose::~Pose()")]
+#[doc(alias = "non-virtual thunk to RBX::Pose::~Pose()")]
 #[doc(alias = "__ZThn32_N3RBX4PoseD1Ev")]
 pub fn stub_606228() -> ! {
     todo!("0x606228 __ZThn32_N3RBX4PoseD1Ev")
@@ -387,7 +387,7 @@ pub fn stub_606228() -> ! {
 
 // 0x606230 — __ZThn32_N3RBX4PoseD0Ev
 // type: void __fastcall(RBX::Pose *__hidden this)
-#[doc(alias = "'non-virtual thunk to'RBX::Pose::~Pose()")]
+#[doc(alias = "non-virtual thunk to RBX::Pose::~Pose()")]
 #[doc(alias = "__ZThn32_N3RBX4PoseD0Ev")]
 pub fn stub_606230() -> ! {
     todo!("0x606230 __ZThn32_N3RBX4PoseD0Ev")
@@ -401,7 +401,7 @@ pub fn stub_6062d4() -> ! {
 
 // 0x6062e4 — __ZThn36_N3RBX4PoseD1Ev
 // type: void __fastcall(RBX::Pose *__hidden this)
-#[doc(alias = "'non-virtual thunk to'RBX::Pose::~Pose()")]
+#[doc(alias = "non-virtual thunk to RBX::Pose::~Pose()")]
 #[doc(alias = "__ZThn36_N3RBX4PoseD1Ev")]
 pub fn stub_6062e4() -> ! {
     todo!("0x6062e4 __ZThn36_N3RBX4PoseD1Ev")
@@ -409,7 +409,7 @@ pub fn stub_6062e4() -> ! {
 
 // 0x6062ec — __ZThn36_N3RBX4PoseD0Ev
 // type: void __fastcall(RBX::Pose *__hidden this)
-#[doc(alias = "'non-virtual thunk to'RBX::Pose::~Pose()")]
+#[doc(alias = "non-virtual thunk to RBX::Pose::~Pose()")]
 #[doc(alias = "__ZThn36_N3RBX4PoseD0Ev")]
 pub fn stub_6062ec() -> ! {
     todo!("0x6062ec __ZThn36_N3RBX4PoseD0Ev")
@@ -721,7 +721,7 @@ pub fn stub_607900() -> ! {
 }
 
 // 0x6079e8 — __GLOBAL__I_a_241
-#[doc(alias = "'global constructor keyed to'_a_241")]
+#[doc(alias = "global constructor keyed to _a_241")]
 #[doc(alias = "__GLOBAL__I_a_241")]
 pub fn stub_6079e8() -> ! {
     todo!("0x6079e8 __GLOBAL__I_a_241")
