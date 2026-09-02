@@ -544,3 +544,4 @@ pub mod generated_core_wd_watchdog23;
 pub mod generated_core_wd_watchdog24;
 pub mod generated_core_wd_watchdog_a;
 pub mod generated_watchdog_core_1788382897;
+pub mod generated_watchdog_gap_1788383019;
