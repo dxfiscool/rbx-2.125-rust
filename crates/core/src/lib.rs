@@ -541,3 +541,4 @@ pub mod generated_core_bg7;
 pub mod generated_core_shard_ol;
 pub mod generated_core_shard_om;
 pub mod generated_core_wd_watchdog23;
+pub mod generated_core_wd_watchdog24;
