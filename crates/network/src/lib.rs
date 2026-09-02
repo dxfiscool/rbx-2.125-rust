@@ -287,3 +287,4 @@ pub mod generated_watchdog_net_w1;
 pub mod generated_watchdog_net_w2;
 pub mod generated_watchdog_net_w3;
 pub mod generated_watchdog_net_w4;
+pub mod generated_watchdog_net_w5;
