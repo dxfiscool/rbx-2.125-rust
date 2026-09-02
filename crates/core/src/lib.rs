@@ -421,3 +421,5 @@ pub mod generated_core_shard_nj;
 pub mod generated_core_shard_nk;
 pub mod generated_core_shard_nl;
 pub mod generated_core_shard_nm;
+pub mod generated_core_watchdog_a;
+pub mod generated_core_watchdog_b;
