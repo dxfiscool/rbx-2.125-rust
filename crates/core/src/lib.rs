@@ -508,3 +508,8 @@ pub mod generated_core_wd_watchdog16;
 pub mod generated_gap_wd_watchdog;
 pub mod generated_core2_wd_watchdog16;
 pub mod generated_core_shard_oe;
+pub mod generated_core_wd_watchdog19;
+pub mod generated_core_wd_watchdog20;
+pub mod generated_core_shard_of;
+pub mod generated_core_shard_og;
+pub mod generated_core_wd2_1788360991;
