@@ -467,3 +467,4 @@ pub mod generated_datamodel_watchdog_a;
 pub mod generated_datamodel_watchdog_b;
 pub mod generated_datamodel_watchdog_c;
 pub mod generated_datamodel_watchdog_d;
+pub mod generated_datamodel_watchdog_e;
