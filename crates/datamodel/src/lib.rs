@@ -555,3 +555,4 @@ pub mod generated_datamodel_shard_D2;
 pub mod generated_datamodel_watchdog_B;
 pub mod generated_datamodel_wd_watchdog4;
 pub mod generated_datamodel_wd_watchdog5;
+pub mod generated_datamodel_wd_watchdog6;
