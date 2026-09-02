@@ -519,3 +519,4 @@ pub mod generated_datamodel_alt_2;
 pub mod generated_watchdog_dm_w5;
 pub mod generated_datamodel_alt_3;
 pub mod generated_datamodel_alt_4;
+pub mod generated_datamodel_alt_5;
