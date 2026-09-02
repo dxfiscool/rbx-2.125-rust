@@ -534,3 +534,4 @@ pub mod generated_rend_wd_12a;
 pub mod generated_rend_wd_12b;
 pub mod generated_rend_wd_12c;
 pub mod generated_rend_wd1;
+pub mod generated_rend_wd2;

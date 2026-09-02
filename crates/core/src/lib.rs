@@ -489,3 +489,5 @@ pub mod generated_core_shard_ny;
 pub mod generated_core_shard_nz;
 pub mod generated_core_shard_oa;
 pub mod generated_core_wd2_gap;
+pub mod generated_core_shard_ob;
+pub mod generated_core_wd2;

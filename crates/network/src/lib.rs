@@ -306,3 +306,4 @@ pub mod generated_net_wd_12b;
 pub mod generated_net_wd_12c;
 pub mod generated_net_wd_12d;
 pub mod generated_net_wd_12e;
+pub mod generated_net_wd2;

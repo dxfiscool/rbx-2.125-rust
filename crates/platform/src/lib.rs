@@ -351,3 +351,5 @@ pub mod generated_plat_wd_11e;
 pub mod generated_plat_wd_12c;
 pub mod generated_plat_wd_12d;
 pub mod generated_plat_wd_12e;
+pub mod generated_plat_wd_12f;
+pub mod generated_plat_wd2;

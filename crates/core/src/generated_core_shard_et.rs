@@ -12,7 +12,7 @@ pub fn stub_b6b668() -> ! {
 
 #[doc(alias = "non-virtual thunk toRBX::FastClusterShadowRenderable::getLightCapBounds(void)const")]
 // 0xb6b674 — __ZThn96_NK3RBX27FastClusterShadowRenderable17getLightCapBoundsEv
-// was: `'non-virtual thunk to'RBX::FastClusterShadowRenderable::getLightCapBounds(void)const`
+// was: `non-virtual thunk toRBX::FastClusterShadowRenderable::getLightCapBounds(void)const`
 pub fn stub_b6b674() -> ! {
     todo!("0xb6b674 __ZThn96_NK3RBX27FastClusterShadowRenderable17getLightCapBoundsEv")
 }
@@ -121,7 +121,7 @@ pub fn stub_b6d7b8() -> ! {
 
 #[doc(alias = "non-virtual thunk toRBX::FastCluster::invalidateEntity(void)")]
 // 0xb6d808 — __ZThn392_N3RBX11FastCluster16invalidateEntityEv
-// was: `'non-virtual thunk to'RBX::FastCluster::invalidateEntity(void)`
+// was: `non-virtual thunk toRBX::FastCluster::invalidateEntity(void)`
 pub fn stub_b6d808() -> ! {
     todo!("0xb6d808 __ZThn392_N3RBX11FastCluster16invalidateEntityEv")
 }
@@ -152,7 +152,7 @@ pub fn stub_b6e18c() -> ! {
 
 #[doc(alias = "non-virtual thunk toRBX::FastCluster::updateEntity(bool)")]
 // 0xb6e938 — __ZThn392_N3RBX11FastCluster12updateEntityEb
-// was: `'non-virtual thunk to'RBX::FastCluster::updateEntity(bool)`
+// was: `non-virtual thunk toRBX::FastCluster::updateEntity(bool)`
 pub fn stub_b6e938() -> ! {
     todo!("0xb6e938 __ZThn392_N3RBX11FastCluster12updateEntityEb")
 }
@@ -165,7 +165,7 @@ pub fn stub_b6e940() -> ! {
 
 #[doc(alias = "non-virtual thunk toRBX::FastCluster::updateCoordinateFrame(bool)")]
 // 0xb6edc4 — __ZThn392_N3RBX11FastCluster21updateCoordinateFrameEb
-// was: `'non-virtual thunk to'RBX::FastCluster::updateCoordinateFrame(bool)`
+// was: `non-virtual thunk toRBX::FastCluster::updateCoordinateFrame(bool)`
 pub fn stub_b6edc4() -> ! {
     todo!("0xb6edc4 __ZThn392_N3RBX11FastCluster21updateCoordinateFrameEb")
 }
@@ -178,7 +178,7 @@ pub fn stub_b6edd0() -> ! {
 
 #[doc(alias = "non-virtual thunk toRBX::FastCluster::unbind(void)")]
 // 0xb6f048 — __ZThn392_N3RBX11FastCluster6unbindEv
-// was: `'non-virtual thunk to'RBX::FastCluster::unbind(void)`
+// was: `non-virtual thunk toRBX::FastCluster::unbind(void)`
 pub fn stub_b6f048() -> ! {
     todo!("0xb6f048 __ZThn392_N3RBX11FastCluster6unbindEv")
 }
@@ -191,7 +191,7 @@ pub fn stub_b6f0e8() -> ! {
 
 #[doc(alias = "non-virtual thunk toRBX::FastCluster::onClumpChanged(void)")]
 // 0xb6f128 — __ZThn392_N3RBX11FastCluster14onClumpChangedEv
-// was: `'non-virtual thunk to'RBX::FastCluster::onClumpChanged(void)`
+// was: `non-virtual thunk toRBX::FastCluster::onClumpChanged(void)`
 pub fn stub_b6f128() -> ! {
     todo!("0xb6f128 __ZThn392_N3RBX11FastCluster14onClumpChangedEv")
 }
@@ -204,7 +204,7 @@ pub fn stub_b6f16c() -> ! {
 
 #[doc(alias = "non-virtual thunk toRBX::FastCluster::getPartCount(void)")]
 // 0xb6f178 — __ZThn392_N3RBX11FastCluster12getPartCountEv
-// was: `'non-virtual thunk to'RBX::FastCluster::getPartCount(void)`
+// was: `non-virtual thunk toRBX::FastCluster::getPartCount(void)`
 pub fn stub_b6f178() -> ! {
     todo!("0xb6f178 __ZThn392_N3RBX11FastCluster12getPartCountEv")
 }
@@ -349,7 +349,7 @@ pub fn stub_b72048() -> ! {
 
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FastCluster>,boost::_bi::list1<boost::_bi::value<RBX::FastCluster*>>>,0,void ()(void)>::call(void)")]
 // 0xb72060 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX11FastClusterEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
-// was: `'non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FastCluster>,boost::_bi::list1<boost::_bi::value<RBX::FastCluster*>>>,0,void ()(void)>::call(void)`
+// was: `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FastCluster>,boost::_bi::list1<boost::_bi::value<RBX::FastCluster*>>>,0,void ()(void)>::call(void)`
 pub fn stub_b72060() -> ! {
     todo!("0xb72060 __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX11FastClusterEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")
 }
@@ -597,21 +597,21 @@ pub fn stub_b8aa38() -> ! {
 
 #[doc(alias = "anonymous namespace::TextureCompositingDescription::add(RBX::MeshId const&,RBX::BrickColor const&)")]
 // 0xb8bed8 — __ZN12_GLOBAL__N_129TextureCompositingDescription3addERKN3RBX6MeshIdERKNS1_10BrickColorE
-// was: `'anonymous namespace'::TextureCompositingDescription::add(RBX::MeshId const&,RBX::BrickColor const&)`
+// was: `anonymous namespace::TextureCompositingDescription::add(RBX::MeshId const&,RBX::BrickColor const&)`
 pub fn stub_b8bed8() -> ! {
     todo!("0xb8bed8 __ZN12_GLOBAL__N_129TextureCompositingDescription3addERKN3RBX6MeshIdERKNS1_10BrickColorE")
 }
 
 #[doc(alias = "anonymous namespace::TextureCompositingDescription::add(RBX::MeshId const&,RBX::ContentId const&,RBX::TextureCompositorLayer::CompositMode)")]
 // 0xb8c314 — __ZN12_GLOBAL__N_129TextureCompositingDescription3addERKN3RBX6MeshIdERKNS1_9ContentIdENS1_22TextureCompositorLayer12CompositModeE
-// was: `'anonymous namespace'::TextureCompositingDescription::add(RBX::MeshId const&,RBX::ContentId const&,RBX::TextureCompositorLayer::CompositMode)`
+// was: `anonymous namespace::TextureCompositingDescription::add(RBX::MeshId const&,RBX::ContentId const&,RBX::TextureCompositorLayer::CompositMode)`
 pub fn stub_b8c314() -> ! {
     todo!("0xb8c314 __ZN12_GLOBAL__N_129TextureCompositingDescription3addERKN3RBX6MeshIdERKNS1_9ContentIdENS1_22TextureCompositorLayer12CompositModeE")
 }
 
 #[doc(alias = "void std::__introsort_loop<anonymous namespace::AccoutrementMesh *,int,anonymous namespace::AccoutrementMeshIdComparator>(anonymous namespace::AccoutrementMesh *,anonymous namespace::AccoutrementMesh *,int,anonymous namespace::AccoutrementMeshIdComparator)")]
 // 0xb8c644 — __ZSt16__introsort_loopIPN12_GLOBAL__N_116AccoutrementMeshEiNS0_28AccoutrementMeshIdComparatorEEvT_S4_T0_T1_
-// was: `void std::__introsort_loop<'anonymous namespace'::AccoutrementMesh *,int,'anonymous namespace'::AccoutrementMeshIdComparator>('anonymous namespace'::AccoutrementMesh *,'anonymous namespace'::AccoutrementMesh *,int,'anonymous namespace'::AccoutrementMeshIdComparator)`
+// was: `void std::__introsort_loop<anonymous namespace::AccoutrementMesh *,int,anonymous namespace::AccoutrementMeshIdComparator>(anonymous namespace::AccoutrementMesh *,anonymous namespace::AccoutrementMesh *,int,anonymous namespace::AccoutrementMeshIdComparator)`
 pub fn stub_b8c644() -> ! {
     todo!("0xb8c644 __ZSt16__introsort_loopIPN12_GLOBAL__N_116AccoutrementMeshEiNS0_28AccoutrementMeshIdComparatorEEvT_S4_T0_T1_")
 }

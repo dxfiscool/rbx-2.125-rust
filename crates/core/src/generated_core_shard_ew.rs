@@ -491,7 +491,7 @@ pub fn stub_c06020() -> ! {
 
 #[doc(alias = "RBX::anonymous namespace::indexFromChunkPos(RBX::SpatialRegion::Id const&)")]
 // 0xc060d0 — __ZN3RBX12_GLOBAL__N_117indexFromChunkPosERKNS_13SpatialRegion2IdE
-// was: RBX::`anonymous namespace'::indexFromChunkPos(RBX::SpatialRegion::Id const&)
+// was: RBX::`anonymous namespace::indexFromChunkPos(RBX::SpatialRegion::Id const&)
 pub fn stub_c060d0() -> ! {
     todo!("0xc060d0 __ZN3RBX12_GLOBAL__N_117indexFromChunkPosERKNS_13SpatialRegion2IdE")
 }
