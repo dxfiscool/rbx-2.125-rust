@@ -518,3 +518,4 @@ pub mod generated_core_wd2_1788360991;
 pub mod generated_core_wd2_1788361289;
 pub mod generated_core_wd_watchdog22;
 pub mod generated_core_wdcron_core;
+pub mod generated_core_wdog_B;
