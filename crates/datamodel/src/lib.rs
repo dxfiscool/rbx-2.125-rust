@@ -551,3 +551,7 @@ pub mod generated_datamodel_shard_F;
 pub mod generated_datamodel_shard_WD1;
 pub mod generated_datamodel_wd2;
 pub mod generated_datamodel_wd_watchdog;
+pub mod generated_datamodel_shard_D2;
+pub mod generated_datamodel_watchdog_B;
+pub mod generated_datamodel_wd_watchdog4;
+pub mod generated_datamodel_wd_watchdog5;

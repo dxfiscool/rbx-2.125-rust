@@ -9,7 +9,7 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
 // 0x61fc74 — __ZThn32_N3RBX14SelectionLassoD0Ev
 // demangled: `non-virtual thunk to'RBX::SelectionLasso::~SelectionLasso()
-#[doc(alias = "`non-virtual thunk toRBX::SelectionLasso::~SelectionLasso()")]
+#[doc(alias = "non-virtual thunk toRBX::SelectionLasso::~SelectionLasso()")]
 #[doc(alias = "__ZThn32_N3RBX14SelectionLassoD0Ev")]
 pub fn stub_61fc74() -> ! {
     todo!("0x61fc74 __ZThn32_N3RBX14SelectionLassoD0Ev")
@@ -23,7 +23,7 @@ pub fn stub_61fdd0() -> ! {
 
 // 0x61fdf8 — __ZThn36_N3RBX14SelectionLassoD1Ev
 // demangled: `non-virtual thunk to'RBX::SelectionLasso::~SelectionLasso()
-#[doc(alias = "`non-virtual thunk toRBX::SelectionLasso::~SelectionLasso()")]
+#[doc(alias = "non-virtual thunk toRBX::SelectionLasso::~SelectionLasso()")]
 #[doc(alias = "__ZThn36_N3RBX14SelectionLassoD1Ev")]
 pub fn stub_61fdf8() -> ! {
     todo!("0x61fdf8 __ZThn36_N3RBX14SelectionLassoD1Ev")
@@ -31,7 +31,7 @@ pub fn stub_61fdf8() -> ! {
 
 // 0x61ff3c — __ZThn36_N3RBX14SelectionLassoD0Ev
 // demangled: `non-virtual thunk to'RBX::SelectionLasso::~SelectionLasso()
-#[doc(alias = "`non-virtual thunk toRBX::SelectionLasso::~SelectionLasso()")]
+#[doc(alias = "non-virtual thunk toRBX::SelectionLasso::~SelectionLasso()")]
 #[doc(alias = "__ZThn36_N3RBX14SelectionLassoD0Ev")]
 pub fn stub_61ff3c() -> ! {
     todo!("0x61ff3c __ZThn36_N3RBX14SelectionLassoD0Ev")
@@ -61,7 +61,7 @@ pub fn stub_62037c() -> ! {
 
 // 0x62038c — __ZThn32_N3RBX18SelectionPartLassoD1Ev
 // demangled: `non-virtual thunk to'RBX::SelectionPartLasso::~SelectionPartLasso()
-#[doc(alias = "`non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")]
+#[doc(alias = "non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")]
 #[doc(alias = "__ZThn32_N3RBX18SelectionPartLassoD1Ev")]
 pub fn stub_62038c() -> ! {
     todo!("0x62038c __ZThn32_N3RBX18SelectionPartLassoD1Ev")
@@ -69,7 +69,7 @@ pub fn stub_62038c() -> ! {
 
 // 0x620394 — __ZThn32_N3RBX18SelectionPartLassoD0Ev
 // demangled: `non-virtual thunk to'RBX::SelectionPartLasso::~SelectionPartLasso()
-#[doc(alias = "`non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")]
+#[doc(alias = "non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")]
 #[doc(alias = "__ZThn32_N3RBX18SelectionPartLassoD0Ev")]
 pub fn stub_620394() -> ! {
     todo!("0x620394 __ZThn32_N3RBX18SelectionPartLassoD0Ev")
@@ -83,7 +83,7 @@ pub fn stub_620438() -> ! {
 
 // 0x620448 — __ZThn36_N3RBX18SelectionPartLassoD1Ev
 // demangled: `non-virtual thunk to'RBX::SelectionPartLasso::~SelectionPartLasso()
-#[doc(alias = "`non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")]
+#[doc(alias = "non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")]
 #[doc(alias = "__ZThn36_N3RBX18SelectionPartLassoD1Ev")]
 pub fn stub_620448() -> ! {
     todo!("0x620448 __ZThn36_N3RBX18SelectionPartLassoD1Ev")
@@ -91,7 +91,7 @@ pub fn stub_620448() -> ! {
 
 // 0x620450 — __ZThn36_N3RBX18SelectionPartLassoD0Ev
 // demangled: `non-virtual thunk to'RBX::SelectionPartLasso::~SelectionPartLasso()
-#[doc(alias = "`non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")]
+#[doc(alias = "non-virtual thunk toRBX::SelectionPartLasso::~SelectionPartLasso()")]
 #[doc(alias = "__ZThn36_N3RBX18SelectionPartLassoD0Ev")]
 pub fn stub_620450() -> ! {
     todo!("0x620450 __ZThn36_N3RBX18SelectionPartLassoD0Ev")
@@ -141,7 +141,7 @@ pub fn stub_6206f0() -> ! {
 
 // 0x620708 — __ZThn32_N3RBX19SelectionPointLassoD1Ev
 // demangled: `non-virtual thunk to'RBX::SelectionPointLasso::~SelectionPointLasso()
-#[doc(alias = "`non-virtual thunk toRBX::SelectionPointLasso::~SelectionPointLasso()")]
+#[doc(alias = "non-virtual thunk toRBX::SelectionPointLasso::~SelectionPointLasso()")]
 #[doc(alias = "__ZThn32_N3RBX19SelectionPointLassoD1Ev")]
 pub fn stub_620708() -> ! {
     todo!("0x620708 __ZThn32_N3RBX19SelectionPointLassoD1Ev")
@@ -149,7 +149,7 @@ pub fn stub_620708() -> ! {
 
 // 0x62084c — __ZThn32_N3RBX19SelectionPointLassoD0Ev
 // demangled: `non-virtual thunk to'RBX::SelectionPointLasso::~SelectionPointLasso()
-#[doc(alias = "`non-virtual thunk toRBX::SelectionPointLasso::~SelectionPointLasso()")]
+#[doc(alias = "non-virtual thunk toRBX::SelectionPointLasso::~SelectionPointLasso()")]
 #[doc(alias = "__ZThn32_N3RBX19SelectionPointLassoD0Ev")]
 pub fn stub_62084c() -> ! {
     todo!("0x62084c __ZThn32_N3RBX19SelectionPointLassoD0Ev")
@@ -163,7 +163,7 @@ pub fn stub_6209a4() -> ! {
 
 // 0x6209b4 — __ZThn36_N3RBX19SelectionPointLassoD1Ev
 // demangled: `non-virtual thunk to'RBX::SelectionPointLasso::~SelectionPointLasso()
-#[doc(alias = "`non-virtual thunk toRBX::SelectionPointLasso::~SelectionPointLasso()")]
+#[doc(alias = "non-virtual thunk toRBX::SelectionPointLasso::~SelectionPointLasso()")]
 #[doc(alias = "__ZThn36_N3RBX19SelectionPointLassoD1Ev")]
 pub fn stub_6209b4() -> ! {
     todo!("0x6209b4 __ZThn36_N3RBX19SelectionPointLassoD1Ev")
@@ -171,7 +171,7 @@ pub fn stub_6209b4() -> ! {
 
 // 0x620af8 — __ZThn36_N3RBX19SelectionPointLassoD0Ev
 // demangled: `non-virtual thunk to'RBX::SelectionPointLasso::~SelectionPointLasso()
-#[doc(alias = "`non-virtual thunk toRBX::SelectionPointLasso::~SelectionPointLasso()")]
+#[doc(alias = "non-virtual thunk toRBX::SelectionPointLasso::~SelectionPointLasso()")]
 #[doc(alias = "__ZThn36_N3RBX19SelectionPointLassoD0Ev")]
 pub fn stub_620af8() -> ! {
     todo!("0x620af8 __ZThn36_N3RBX19SelectionPointLassoD0Ev")
@@ -651,7 +651,7 @@ pub fn stub_623544() -> ! {
 
 // 0x623624 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SelectionPartLassoENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 // demangled: `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
-#[doc(alias = "`non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SelectionPartLassoENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 pub fn stub_623624() -> ! {
     todo!("0x623624 __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SelectionPartLassoENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")

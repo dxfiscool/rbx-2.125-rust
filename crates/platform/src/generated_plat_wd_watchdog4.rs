@@ -410,7 +410,7 @@ pub fn stub_457b28() -> ! {
 // 0x457b30 — __ZThn32_N3RBX15ServiceProviderD1Ev
 // type: void __fastcall(RBX::ServiceProvider *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX15ServiceProviderD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::ServiceProvider::~ServiceProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ServiceProvider::~ServiceProvider()")]
 pub fn stub_457b30() -> ! {
     todo!("0x457b30 __ZThn32_N3RBX15ServiceProviderD1Ev")
 }
@@ -418,7 +418,7 @@ pub fn stub_457b30() -> ! {
 // 0x457b38 — __ZThn32_N3RBX15ServiceProviderD0Ev
 // type: void __fastcall(RBX::ServiceProvider *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX15ServiceProviderD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::ServiceProvider::~ServiceProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ServiceProvider::~ServiceProvider()")]
 pub fn stub_457b38() -> ! {
     todo!("0x457b38 __ZThn32_N3RBX15ServiceProviderD0Ev")
 }
@@ -426,7 +426,7 @@ pub fn stub_457b38() -> ! {
 // 0x457be0 — __ZThn36_N3RBX15ServiceProviderD1Ev
 // type: void __fastcall(RBX::ServiceProvider *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX15ServiceProviderD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::ServiceProvider::~ServiceProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ServiceProvider::~ServiceProvider()")]
 pub fn stub_457be0() -> ! {
     todo!("0x457be0 __ZThn36_N3RBX15ServiceProviderD1Ev")
 }
@@ -434,7 +434,7 @@ pub fn stub_457be0() -> ! {
 // 0x457be8 — __ZThn36_N3RBX15ServiceProviderD0Ev
 // type: void __fastcall(RBX::ServiceProvider *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX15ServiceProviderD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::ServiceProvider::~ServiceProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ServiceProvider::~ServiceProvider()")]
 pub fn stub_457be8() -> ! {
     todo!("0x457be8 __ZThn36_N3RBX15ServiceProviderD0Ev")
 }

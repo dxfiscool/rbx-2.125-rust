@@ -355,3 +355,5 @@ pub mod generated_plat_wd_12f;
 pub mod generated_plat_wd2;
 pub mod generated_plat_wd_watchdog2;
 pub mod generated_plat_wd_watchdog4;
+pub mod generated_platform_watchdog_V;
+pub mod generated_watchdog_plat_w2;

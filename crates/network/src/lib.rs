@@ -308,3 +308,4 @@ pub mod generated_net_wd_12d;
 pub mod generated_net_wd_12e;
 pub mod generated_net_wd2;
 pub mod generated_net_wd_watchdog2;
+pub mod generated_net_wd_watchdog4;
