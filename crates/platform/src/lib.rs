@@ -291,3 +291,4 @@ pub mod generated_platform_shard_214;
 pub mod generated_platform_shard_215;
 pub mod generated_platform_watchdog_a;
 pub mod generated_platform_watchdog_b;
+pub mod generated_platform_watchdog_c;
