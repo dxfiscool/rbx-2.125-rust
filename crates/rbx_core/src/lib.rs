@@ -31,3 +31,5 @@ pub mod generated_gap_wd;
 pub mod generated_gap_wd25;
 pub mod generated_core_bg6;
 pub mod generated_core_bg7;
+pub mod generated_watchdog_coreB;
+pub mod generated_watchdog_coreA;
