@@ -452,7 +452,7 @@ pub fn stub_0x5673e8() -> ! {
 }
 
 // 0x567688 — __ZThn92_N3RBX7Handles7processERKNS_8GuiEventE
-#[doc(alias = "`non-virtual thunk toRBX::Handles::process(RBX::GuiEvent const&)")]
+#[doc(alias = "non-virtual thunk toRBX::Handles::process(RBX::GuiEvent const&)")]
 #[doc(alias = "__ZThn92_N3RBX7Handles7processERKNS_8GuiEventE")]
 pub fn stub_0x567688() -> ! {
     todo!("0x567688 `non-virtual thunk toRBX::Handles::process(RBX::GuiEvent const&)")
@@ -571,28 +571,28 @@ pub fn stub_0x567e18() -> ! {
 }
 
 // 0x567e20 — __ZThn32_N3RBX7HandlesD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Handles::~Handles()")]
+#[doc(alias = "non-virtual thunk toRBX::Handles::~Handles()")]
 #[doc(alias = "__ZThn32_N3RBX7HandlesD1Ev")]
 pub fn stub_0x567e20() -> ! {
     todo!("0x567e20 `non-virtual thunk toRBX::Handles::~Handles()")
 }
 
 // 0x567e28 — __ZThn32_N3RBX7HandlesD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Handles::~Handles()")]
+#[doc(alias = "non-virtual thunk toRBX::Handles::~Handles()")]
 #[doc(alias = "__ZThn32_N3RBX7HandlesD0Ev")]
 pub fn stub_0x567e28() -> ! {
     todo!("0x567e28 `non-virtual thunk toRBX::Handles::~Handles()")
 }
 
 // 0x567edc — __ZThn36_N3RBX7HandlesD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Handles::~Handles()")]
+#[doc(alias = "non-virtual thunk toRBX::Handles::~Handles()")]
 #[doc(alias = "__ZThn36_N3RBX7HandlesD1Ev")]
 pub fn stub_0x567edc() -> ! {
     todo!("0x567edc `non-virtual thunk toRBX::Handles::~Handles()")
 }
 
 // 0x567ee4 — __ZThn36_N3RBX7HandlesD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Handles::~Handles()")]
+#[doc(alias = "non-virtual thunk toRBX::Handles::~Handles()")]
 #[doc(alias = "__ZThn36_N3RBX7HandlesD0Ev")]
 pub fn stub_0x567ee4() -> ! {
     todo!("0x567ee4 `non-virtual thunk toRBX::Handles::~Handles()")

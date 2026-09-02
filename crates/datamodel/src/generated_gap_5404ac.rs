@@ -403,28 +403,28 @@ pub fn stub_546e70() -> ! {
 // type: void __fastcall(RBX::GuiService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 pub fn stub_546f38() -> ! {
-    todo!("0x546f38 `non-virtual thunk to'RBX::GuiService::~GuiService()")
+    todo!("0x546f38 non-virtual thunk to RBX::GuiService::~GuiService()")
 }
 
 // 0x546f40 — __ZThn32_N3RBX10GuiServiceD0Ev
 // type: void __fastcall(RBX::GuiService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 pub fn stub_546f40() -> ! {
-    todo!("0x546f40 `non-virtual thunk to'RBX::GuiService::~GuiService()")
+    todo!("0x546f40 non-virtual thunk to RBX::GuiService::~GuiService()")
 }
 
 // 0x54700c — __ZThn36_N3RBX10GuiServiceD1Ev
 // type: void __fastcall(RBX::GuiService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 pub fn stub_54700c() -> ! {
-    todo!("0x54700c `non-virtual thunk to'RBX::GuiService::~GuiService()")
+    todo!("0x54700c non-virtual thunk to RBX::GuiService::~GuiService()")
 }
 
 // 0x547014 — __ZThn36_N3RBX10GuiServiceD0Ev
 // type: void __fastcall(RBX::GuiService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 pub fn stub_547014() -> ! {
-    todo!("0x547014 `non-virtual thunk to'RBX::GuiService::~GuiService()")
+    todo!("0x547014 non-virtual thunk to RBX::GuiService::~GuiService()")
 }
 
 // 0x5470b8 — __ZN3RBX10GuiServiceD2Ev
