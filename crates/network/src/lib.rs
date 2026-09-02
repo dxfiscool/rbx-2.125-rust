@@ -322,4 +322,5 @@ pub mod generated_net_wd_1788360977;
 pub mod generated_net_wd2_1788361415;
 pub mod generated_net_wd_watchdog19;
 pub mod generated_net_wd_watchdog20;
+pub mod generated_net_wd_watchdog22;
 pub mod generated_201;
