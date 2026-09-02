@@ -556,3 +556,6 @@ pub mod generated_datamodel_watchdog_B;
 pub mod generated_datamodel_wd_watchdog4;
 pub mod generated_datamodel_wd_watchdog5;
 pub mod generated_datamodel_wd_watchdog6;
+pub mod generated_datamodel_wd_watchdog7;
+pub mod generated_datamodel_wd_watchdog8;
+pub mod generated_datamodel_wd_watchdog9;
