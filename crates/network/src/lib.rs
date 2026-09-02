@@ -359,3 +359,4 @@ pub mod generated_watchdog_netA2;
 pub mod generated_net_wd_12f;
 pub mod generated_watchdog_netC_1788386419;
 pub mod generated_wd_netA;
+pub mod generated_network_next101;
