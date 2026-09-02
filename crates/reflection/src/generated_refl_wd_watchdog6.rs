@@ -47,7 +47,7 @@ pub fn stub_0x314a10() -> ! {
 #[doc(alias = "global constructor keyed to_a_110")]
 #[doc(alias = "__GLOBAL__I_a_110")]
 pub fn stub_0x314a40() -> ! {
-    todo!("0x314a40 `global constructor keyed to'_a_110")
+    todo!("0x314a40 global constructor keyed to'_a_110")
 }
 
 // 0x314c84 — __ZN3RBXltERKNS_9ContentIdES2_
@@ -96,7 +96,7 @@ pub fn stub_0x314d14() -> ! {
 #[doc(alias = "anonymous namespace::createIdUrl(std::string &,std::string const&,std::string const&)")]
 #[doc(alias = "__ZN12_GLOBAL__N_111createIdUrlERSsRKSsS2_")]
 pub fn stub_0x314f94() -> ! {
-    todo!("0x314f94 `anonymous namespace'::createIdUrl(std::string &,std::string const&,std::string const&)")
+    todo!("0x314f94 anonymous namespace'::createIdUrl(std::string &,std::string const&,std::string const&)")
 }
 
 // 0x315004 — __ZN3RBX9ContentId22convertToLegacyContentERKSs
@@ -145,7 +145,7 @@ pub fn stub_0x315564() -> ! {
 #[doc(alias = "global constructor keyed to_a_111")]
 #[doc(alias = "__GLOBAL__I_a_111")]
 pub fn stub_0x315594() -> ! {
-    todo!("0x315594 `global constructor keyed to'_a_111")
+    todo!("0x315594 global constructor keyed to'_a_111")
 }
 
 // 0x315680 — __ZN3RBX10FileSystem16getUserDirectoryEbNS_13FileSystemDirEPKc
@@ -257,7 +257,7 @@ pub fn stub_0x3164c4() -> ! {
 #[doc(alias = "global constructor keyed to_a_112")]
 #[doc(alias = "__GLOBAL__I_a_112")]
 pub fn stub_0x3164c8() -> ! {
-    todo!("0x3164c8 `global constructor keyed to'_a_112")
+    todo!("0x3164c8 global constructor keyed to'_a_112")
 }
 
 // 0x316590 — __ZN3RBX4Http21getRobloxResponceLockEv
@@ -783,7 +783,7 @@ pub fn stub_0x31e63c() -> ! {
 #[doc(alias = "global constructor keyed to_a_113")]
 #[doc(alias = "__GLOBAL__I_a_113")]
 pub fn stub_0x31e658() -> ! {
-    todo!("0x31e658 `global constructor keyed to'_a_113")
+    todo!("0x31e658 global constructor keyed to'_a_113")
 }
 
 // 0x31e8b0 — __ZNK3RBX7Extents13clampInsideOfERKS0_

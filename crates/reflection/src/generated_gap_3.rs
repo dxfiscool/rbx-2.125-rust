@@ -716,7 +716,7 @@ pub fn stub_0x2a7d20() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
 #[doc(alias = "__ZThn32_N3RBX20RuntimeScriptServiceD1Ev")]
 pub fn stub_0x2a7d4c() -> ! {
-    todo!("0x2a7d4c `non-virtual thunk to'RBX::RuntimeScriptService::~RuntimeScriptService()")
+    todo!("0x2a7d4c non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")
 }
 
 // 0x2a7d54 — __ZThn32_N3RBX20RuntimeScriptServiceD0Ev
@@ -724,7 +724,7 @@ pub fn stub_0x2a7d4c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
 #[doc(alias = "__ZThn32_N3RBX20RuntimeScriptServiceD0Ev")]
 pub fn stub_0x2a7d54() -> ! {
-    todo!("0x2a7d54 `non-virtual thunk to'RBX::RuntimeScriptService::~RuntimeScriptService()")
+    todo!("0x2a7d54 non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")
 }
 
 // 0x2a7df8 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEE12getClassNameEv
@@ -738,7 +738,7 @@ pub fn stub_0x2a7df8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
 #[doc(alias = "__ZThn36_N3RBX20RuntimeScriptServiceD1Ev")]
 pub fn stub_0x2a7e20() -> ! {
-    todo!("0x2a7e20 `non-virtual thunk to'RBX::RuntimeScriptService::~RuntimeScriptService()")
+    todo!("0x2a7e20 non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")
 }
 
 // 0x2a7e28 — __ZThn36_N3RBX20RuntimeScriptServiceD0Ev
@@ -746,7 +746,7 @@ pub fn stub_0x2a7e20() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
 #[doc(alias = "__ZThn36_N3RBX20RuntimeScriptServiceD0Ev")]
 pub fn stub_0x2a7e28() -> ! {
-    todo!("0x2a7e28 `non-virtual thunk to'RBX::RuntimeScriptService::~RuntimeScriptService()")
+    todo!("0x2a7e28 non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")
 }
 
 // 0x2a7ed0 — __ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E12getClassNameEv

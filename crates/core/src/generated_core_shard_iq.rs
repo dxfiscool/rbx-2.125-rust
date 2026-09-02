@@ -1,5 +1,5 @@
 //! core shard IQ — 100 core stubs EA-sorted, 0x427a8..0x58574 (global gap filler EA-sorted ascending, next 100 uncovered after strict RBX|boost exhausted, broad exclude Reflection|Instance|DataModel|Workspace|Ogre|G3D|Rendering|Adorn|RakNet|Network|Replicat|Socket|Sound|Audio|FMOD|Script|Lua|lua|ViewController|UIApplication|Platform|iOS).
-//! Source: `ida/export.json` filtered where demangled NOT containing Reflection|Instance|DataModel|Workspace|Ogre|G3D|Rendering|Adorn|RakNet|Network|Replicat|Socket|Sound|Audio|FMOD|Script|Lua|lua|ViewController|UIApplication|Platform|iOS, EA-sorted ascending, next 100 uncovered (global gap filler).
+//! Source: ida/export.json filtered where demangled NOT containing Reflection|Instance|DataModel|Workspace|Ogre|G3D|Rendering|Adorn|RakNet|Network|Replicat|Socket|Sound|Audio|FMOD|Script|Lua|lua|ViewController|UIApplication|Platform|iOS, EA-sorted ascending, next 100 uncovered (global gap filler).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]

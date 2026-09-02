@@ -629,7 +629,7 @@ pub fn stub_0x48dd88() -> ! {
 
 // 0x48ddb0 — __GLOBAL__I_a_182
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, void *, int, int, int)
-#[doc(alias = "`global constructor keyed to_a_182")]
+#[doc(alias = "global constructor keyed to_a_182")]
 #[doc(alias = "__GLOBAL__I_a_182")]
 pub fn stub_0x48ddb0() -> ! {
     todo!("0x48ddb0 __GLOBAL__I_a_182")

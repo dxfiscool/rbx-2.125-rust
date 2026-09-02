@@ -1,5 +1,5 @@
 //! core shard nh — 100 core stubs EA-sorted asc global gap filler not yet in rbx_core.
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc, next 100 not yet stubbed globally (non-boost, lowest EA uncovered 0x516a30..0x52bf58, 27251 non-boost uncovered, rbx_core::SharedPtr not boost).
+//! Source: ida/export.json (85545 funcs) EA-sorted asc, next 100 not yet stubbed globally (non-boost, lowest EA uncovered 0x516a30..0x52bf58, 27251 non-boost uncovered, rbx_core::SharedPtr not boost).
 //! Format: // 0xADDR — mangled + #[doc(alias = "mangled")] + pub fn stub_0xADDR() -> ! { todo!("0xADDR mangled") }
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 

@@ -2,7 +2,7 @@
 // Filter: demangled contains RBX::Instance|RBX::DataModel|RBX::Workspace (exact), EA-sorted
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x85ba3c..0x8e8e5c | total filtered 10215, remaining 4357 after batch
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; `'` stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
 
 #![allow(
     non_snake_case,

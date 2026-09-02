@@ -140,7 +140,7 @@ pub fn stub_6163dc() -> ! {
 }
 
 // 0x616488 — __ZThn132_N3RBX8SeatImplINS_17BasicPartInstanceEED1Ev
-// demangled: `non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
+// demangled: non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
 #[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZThn132_N3RBX8SeatImplINS_17BasicPartInstanceEED1Ev")]
 pub fn stub_616488() -> ! {
@@ -148,7 +148,7 @@ pub fn stub_616488() -> ! {
 }
 
 // 0x61649c — __ZThn132_N3RBX8SeatImplINS_17BasicPartInstanceEED0Ev
-// demangled: `non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
+// demangled: non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
 #[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZThn132_N3RBX8SeatImplINS_17BasicPartInstanceEED0Ev")]
 pub fn stub_61649c() -> ! {
@@ -226,7 +226,7 @@ pub fn stub_616778() -> ! {
 }
 
 // 0x616780 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8SeatImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv
-// demangled: `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)
+// demangled: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8SeatImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv")]
 pub fn stub_616780() -> ! {
@@ -330,7 +330,7 @@ pub fn stub_6171d8() -> ! {
 }
 
 // 0x6171f4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_8SeatImplINS5_17BasicPartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
-// demangled: `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SeatImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
+// demangled: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SeatImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SeatImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_8SeatImplINS5_17BasicPartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_")]
 pub fn stub_6171f4() -> ! {
@@ -516,7 +516,7 @@ pub fn stub_617ebc() -> ! {
 }
 
 // 0x6180ac — __ZThn32_N3RBX8SeatImplINS_17BasicPartInstanceEED1Ev
-// demangled: `non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
+// demangled: non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
 #[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZThn32_N3RBX8SeatImplINS_17BasicPartInstanceEED1Ev")]
 pub fn stub_6180ac() -> ! {
@@ -524,7 +524,7 @@ pub fn stub_6180ac() -> ! {
 }
 
 // 0x6180c0 — __ZThn32_N3RBX8SeatImplINS_17BasicPartInstanceEED0Ev
-// demangled: `non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
+// demangled: non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
 #[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZThn32_N3RBX8SeatImplINS_17BasicPartInstanceEED0Ev")]
 pub fn stub_6180c0() -> ! {
@@ -532,7 +532,7 @@ pub fn stub_6180c0() -> ! {
 }
 
 // 0x618170 — __ZThn36_N3RBX8SeatImplINS_17BasicPartInstanceEED1Ev
-// demangled: `non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
+// demangled: non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
 #[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZThn36_N3RBX8SeatImplINS_17BasicPartInstanceEED1Ev")]
 pub fn stub_618170() -> ! {
@@ -540,7 +540,7 @@ pub fn stub_618170() -> ! {
 }
 
 // 0x618184 — __ZThn36_N3RBX8SeatImplINS_17BasicPartInstanceEED0Ev
-// demangled: `non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
+// demangled: non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()
 #[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")]
 #[doc(alias = "__ZThn36_N3RBX8SeatImplINS_17BasicPartInstanceEED0Ev")]
 pub fn stub_618184() -> ! {
@@ -650,7 +650,7 @@ pub fn stub_6188ec() -> ! {
 }
 
 // 0x618910 — __GLOBAL__I_a_251
-// demangled: `global constructor keyed to_a_251
+// demangled: global constructor keyed to_a_251
 #[doc(alias = "global constructor keyed to_a_251")]
 #[doc(alias = "__GLOBAL__I_a_251")]
 pub fn stub_618910() -> ! {
@@ -698,7 +698,7 @@ pub fn stub_619128() -> ! {
 }
 
 // 0x61912c — __ZThn32_N3RBX9SelectionD0Ev
-// demangled: `non-virtual thunk toRBX::Selection::~Selection()
+// demangled: non-virtual thunk toRBX::Selection::~Selection()
 #[doc(alias = "non-virtual thunk toRBX::Selection::~Selection()")]
 #[doc(alias = "__ZThn32_N3RBX9SelectionD0Ev")]
 pub fn stub_61912c() -> ! {
@@ -706,7 +706,7 @@ pub fn stub_61912c() -> ! {
 }
 
 // 0x619134 — __ZThn36_N3RBX9SelectionD0Ev
-// demangled: `non-virtual thunk toRBX::Selection::~Selection()
+// demangled: non-virtual thunk toRBX::Selection::~Selection()
 #[doc(alias = "non-virtual thunk toRBX::Selection::~Selection()")]
 #[doc(alias = "__ZThn36_N3RBX9SelectionD0Ev")]
 pub fn stub_619134() -> ! {
@@ -722,7 +722,7 @@ pub fn stub_61913c() -> ! {
 }
 
 // 0x619444 — __ZThn32_N3RBX9SelectionD1Ev
-// demangled: `non-virtual thunk toRBX::Selection::~Selection()
+// demangled: non-virtual thunk toRBX::Selection::~Selection()
 #[doc(alias = "non-virtual thunk toRBX::Selection::~Selection()")]
 #[doc(alias = "__ZThn32_N3RBX9SelectionD1Ev")]
 pub fn stub_619444() -> ! {
@@ -730,7 +730,7 @@ pub fn stub_619444() -> ! {
 }
 
 // 0x61944c — __ZThn36_N3RBX9SelectionD1Ev
-// demangled: `non-virtual thunk toRBX::Selection::~Selection()
+// demangled: non-virtual thunk toRBX::Selection::~Selection()
 #[doc(alias = "non-virtual thunk toRBX::Selection::~Selection()")]
 #[doc(alias = "__ZThn36_N3RBX9SelectionD1Ev")]
 pub fn stub_61944c() -> ! {

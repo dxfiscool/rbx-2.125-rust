@@ -68,7 +68,7 @@ pub fn stub_58a0cc() -> ! {
 }
 
 // 0x58a0e8 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX13InsertServiceESsSsEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_E4callESsSs
-// demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,std::string)>::call(std::string,std::string)
+// demangled: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,std::string)>::call(std::string,std::string)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,std::string)>::call(std::string,std::string)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvSsSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX13InsertServiceESsSsEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_E4callESsSs")]
 pub fn stub_58a0e8() -> ! {
@@ -160,7 +160,7 @@ pub fn stub_58a714() -> ! {
 }
 
 // 0x58a730 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_13InsertServiceESsS7_EENSB_5list3INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEEEEEELi2ES8_E4callESsS7_
-// demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::call(std::string,boost::shared_ptr<RBX::Instance>)
+// demangled: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::call(std::string,boost::shared_ptr<RBX::Instance>)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::call(std::string,rbx_core::SharedPtr<RBX::Instance>)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_13InsertServiceESsS7_EENSB_5list3INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEEEEEELi2ES8_E4callESsS7_")]
 pub fn stub_58a730() -> ! {
@@ -363,7 +363,7 @@ pub fn stub_58b508() -> ! {
 }
 
 // 0x58b530 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsiiEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf3IvN3RBX13InsertServiceESsiiEENS7_5list4INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEEEEEELi3ES3_E4callESsii
-// demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(std::string,int,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list4<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(std::string,int,int)>::call(std::string,int,int)
+// demangled: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,int,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list4<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(std::string,int,int)>::call(std::string,int,int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,int,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::InsertService,std::string,int,int>,boost::_bi::list4<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(std::string,int,int)>::call(std::string,int,int)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvSsiiEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf3IvN3RBX13InsertServiceESsiiEENS7_5list4INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEEEEEELi3ES3_E4callESsii")]
 pub fn stub_58b530() -> ! {
@@ -513,7 +513,7 @@ pub fn stub_58bfc0() -> ! {
 }
 
 // 0x58bfdc — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsN3RBX9ContentIdEEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf2IvNS3_13InsertServiceESsS4_EENS9_5list3INS9_5valueIPSD_EENS8_3argILi1EEENSJ_ILi2EEEEEEELi2ES5_E4callESsS4_
-// demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,RBX::ContentId>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,RBX::ContentId)>::call(std::string,RBX::ContentId)
+// demangled: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,RBX::ContentId>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,RBX::ContentId)>::call(std::string,RBX::ContentId)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,RBX::ContentId>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,RBX::ContentId)>::call(std::string,RBX::ContentId)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvSsN3RBX9ContentIdEEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf2IvNS3_13InsertServiceESsS4_EENS9_5list3INS9_5valueIPSD_EENS8_3argILi1EEENSJ_ILi2EEEEEEELi2ES5_E4callESsS4_")]
 pub fn stub_58bfdc() -> ! {

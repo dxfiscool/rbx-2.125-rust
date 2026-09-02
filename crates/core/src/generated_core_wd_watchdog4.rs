@@ -1,5 +1,5 @@
 //! core wd_watchdog4 — 120 core stubs EA-sorted asc gap filler not yet in core (generic/unclaimed filtered).
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc, next 120 uncovered distinct not yet in crates/core/src.
+//! Source: ida/export.json (85545 funcs) EA-sorted asc, next 120 uncovered distinct not yet in crates/core/src.
 //! Filter: generic/unclaimed — excludes RBX::Reflection/Instance/DataModel/Ogre/RakNet/FMOD/Lua/Script/Render/Platform/iOS (checked mangled+demangled); 120 stubs EA-sorted asc.
 //! Batch: 120 stubs | range 0x71231c..0x731f04 | EA-sorted asc gap filler distinct NOT yet in core.
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR") using rbx_core::SharedPtr not boost.

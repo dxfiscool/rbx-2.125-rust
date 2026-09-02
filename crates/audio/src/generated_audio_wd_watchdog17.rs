@@ -430,11 +430,11 @@ pub fn stub_065ff90() -> ! {
 }
 
 // 0x65ff94 — __GLOBAL__I_a_266
-// demangled: `global constructor keyed to'_a_266
+// demangled: global constructor keyed to'_a_266
 #[doc(alias = "global constructor keyed to\_a_266")]
 #[doc(alias = "__GLOBAL__I_a_266")]
 pub fn stub_065ff94() -> ! {
-    todo!("0x65ff94 `global constructor keyed to'_a_266")
+    todo!("0x65ff94 global constructor keyed to'_a_266")
 }
 
 // 0x660890 — __ZN3RBX16SurfaceSelection10setSurfaceENS_8NormalIdE
@@ -464,12 +464,12 @@ pub fn stub_0660ac0() -> ! {
 }
 
 // 0x660bd8 — __ZThn96_N3RBX16SurfaceSelection13render3dAdornEPNS_5AdornE
-// demangled: `non-virtual thunk to'RBX::SurfaceSelection::render3dAdorn(RBX::Adorn *)
+// demangled: non-virtual thunk toRBX::SurfaceSelection::render3dAdorn(RBX::Adorn *)
 // type: _DWORD __fastcall(RBX::SurfaceSelection *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::SurfaceSelection::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX16SurfaceSelection13render3dAdornEPNS_5AdornE")]
 pub fn stub_0660bd8() -> ! {
-    todo!("0x660bd8 `non-virtual thunk to'RBX::SurfaceSelection::render3dAdorn(RBX::Adorn *)")
+    todo!("0x660bd8 non-virtual thunk toRBX::SurfaceSelection::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x660be0 — __ZNK3RBX16SurfaceSelection10getSurfaceEv
@@ -514,21 +514,21 @@ pub fn stub_0660df4() -> ! {
 }
 
 // 0x660e04 — __ZThn32_N3RBX16SurfaceSelectionD1Ev
-// demangled: `non-virtual thunk to'RBX::SurfaceSelection::~SurfaceSelection()
+// demangled: non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()
 // type: void __fastcall(RBX::SurfaceSelection *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")]
 #[doc(alias = "__ZThn32_N3RBX16SurfaceSelectionD1Ev")]
 pub fn stub_0660e04() -> ! {
-    todo!("0x660e04 `non-virtual thunk to'RBX::SurfaceSelection::~SurfaceSelection()")
+    todo!("0x660e04 non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")
 }
 
 // 0x660f4c — __ZThn32_N3RBX16SurfaceSelectionD0Ev
-// demangled: `non-virtual thunk to'RBX::SurfaceSelection::~SurfaceSelection()
+// demangled: non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()
 // type: void __fastcall(RBX::SurfaceSelection *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")]
 #[doc(alias = "__ZThn32_N3RBX16SurfaceSelectionD0Ev")]
 pub fn stub_0660f4c() -> ! {
-    todo!("0x660f4c `non-virtual thunk to'RBX::SurfaceSelection::~SurfaceSelection()")
+    todo!("0x660f4c non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")
 }
 
 // 0x6610a8 — __ZThn32_NK3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE12getClassNameEv
@@ -538,21 +538,21 @@ pub fn stub_06610a8() -> ! {
 }
 
 // 0x6610b8 — __ZThn36_N3RBX16SurfaceSelectionD1Ev
-// demangled: `non-virtual thunk to'RBX::SurfaceSelection::~SurfaceSelection()
+// demangled: non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()
 // type: void __fastcall(RBX::SurfaceSelection *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")]
 #[doc(alias = "__ZThn36_N3RBX16SurfaceSelectionD1Ev")]
 pub fn stub_06610b8() -> ! {
-    todo!("0x6610b8 `non-virtual thunk to'RBX::SurfaceSelection::~SurfaceSelection()")
+    todo!("0x6610b8 non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")
 }
 
 // 0x661200 — __ZThn36_N3RBX16SurfaceSelectionD0Ev
-// demangled: `non-virtual thunk to'RBX::SurfaceSelection::~SurfaceSelection()
+// demangled: non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()
 // type: void __fastcall(RBX::SurfaceSelection *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")]
 #[doc(alias = "__ZThn36_N3RBX16SurfaceSelectionD0Ev")]
 pub fn stub_0661200() -> ! {
-    todo!("0x661200 `non-virtual thunk to'RBX::SurfaceSelection::~SurfaceSelection()")
+    todo!("0x661200 non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")
 }
 
 // 0x66135c — __ZN3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE7CreatorD1Ev

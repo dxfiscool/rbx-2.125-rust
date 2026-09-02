@@ -1,5 +1,5 @@
 //! core shard F — 120 boost core stubs EA-sorted, continuation after 0x777a9c.
-//! Source: `ida/export.json` filtered where mangled/demangled contains "boost" (excl Reflection/Instance/DataModel/Workspace/Ogre/RakNet/Network/Lua), EA-sorted, next 120 uncovered.
+//! Source: ida/export.json filtered where mangled/demangled contains "boost" (excl Reflection/Instance/DataModel/Workspace/Ogre/RakNet/Network/Lua), EA-sorted, next 120 uncovered.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #[doc(alias = "rbx_core::SharedPtr<std::string> rbx::make_shared<std::string,char const*>(char const* const&)")]
@@ -185,7 +185,7 @@ pub fn stub_0x77a6b0() -> ! {
 }
 
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Scripting::ScriptDebugger>,boost::_bi::list1<boost::_bi::value<RBX::Scripting::ScriptDebugger*>>>,0,void ()(void)>::call(void)")]
-// 0x77a6b8 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9Scripting14ScriptDebuggerEEENS7_5list1INS7_5valueIPSD_EEEEEELi0ES3_E4callEv — `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Scripting::ScriptDebugger>,boost::_bi::list1<boost::_bi::value<RBX::Scripting::ScriptDebugger*>>>,0,void ()(void)>::call(void)
+// 0x77a6b8 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9Scripting14ScriptDebuggerEEENS7_5list1INS7_5valueIPSD_EEEEEELi0ES3_E4callEv — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Scripting::ScriptDebugger>,boost::_bi::list1<boost::_bi::value<RBX::Scripting::ScriptDebugger*>>>,0,void ()(void)>::call(void)
 pub fn stub_0x77a6b8() -> ! {
     todo!("0x77a6b8 __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9Scripting14ScriptDebuggerEEENS7_5list1INS7_5valueIPSD_EEEEEELi0ES3_E4callEv")
 }
@@ -234,7 +234,7 @@ pub fn stub_0x77ac30() -> ! {
 }
 
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(lua_State *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Scripting::ScriptDebugger,lua_State *>,boost::_bi::list2<boost::_bi::value<RBX::Scripting::ScriptDebugger*>,boost::arg<1>>>,1,void ()(lua_State *)>::call(lua_State *)")]
-// 0x77ac44 — __ZThn4_N3rbx8callableINS_7signals6signalIFvP9lua_StateEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvN3RBX9Scripting14ScriptDebuggerES4_EENS9_5list2INS9_5valueIPSF_EENS8_3argILi1EEEEEEELi1ES5_E4callES4_ — `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(lua_State *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Scripting::ScriptDebugger,lua_State *>,boost::_bi::list2<boost::_bi::value<RBX::Scripting::ScriptDebugger*>,boost::arg<1>>>,1,void ()(lua_State *)>::call(lua_State *)
+// 0x77ac44 — __ZThn4_N3rbx8callableINS_7signals6signalIFvP9lua_StateEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvN3RBX9Scripting14ScriptDebuggerES4_EENS9_5list2INS9_5valueIPSF_EENS8_3argILi1EEEEEEELi1ES5_E4callES4_ — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(lua_State *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Scripting::ScriptDebugger,lua_State *>,boost::_bi::list2<boost::_bi::value<RBX::Scripting::ScriptDebugger*>,boost::arg<1>>>,1,void ()(lua_State *)>::call(lua_State *)
 pub fn stub_0x77ac44() -> ! {
     todo!("0x77ac44 __ZThn4_N3rbx8callableINS_7signals6signalIFvP9lua_StateEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvN3RBX9Scripting14ScriptDebuggerES4_EENS9_5list2INS9_5valueIPSF_EENS8_3argILi1EEEEEEELi1ES5_E4callES4_")
 }
@@ -590,7 +590,7 @@ pub fn stub_0x78edbc() -> ! {
 }
 
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>::~error_info_injector()")]
-// 0x78eeb0 — __ZThn12_N5boost16exception_detail19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEED0Ev — `non-virtual thunk toboost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>::~error_info_injector()
+// 0x78eeb0 — __ZThn12_N5boost16exception_detail19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEED0Ev — non-virtual thunk toboost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>::~error_info_injector()
 pub fn stub_0x78eeb0() -> ! {
     todo!("0x78eeb0 __ZThn12_N5boost16exception_detail19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEED0Ev")
 }
@@ -602,13 +602,13 @@ pub fn stub_0x78eec8() -> ! {
 }
 
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()")]
-// 0x78eed8 — __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEED1Ev — `non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()
+// 0x78eed8 — __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEED1Ev — non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()
 pub fn stub_0x78eed8() -> ! {
     todo!("0x78eed8 __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEED1Ev")
 }
 
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()")]
-// 0x78eee0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEED1Ev — `virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()
+// 0x78eee0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEED1Ev — virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()
 pub fn stub_0x78eee0() -> ! {
     todo!("0x78eee0 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEED1Ev")
 }
@@ -620,13 +620,13 @@ pub fn stub_0x78eef0() -> ! {
 }
 
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::rethrow(void)const")]
-// 0x78efb0 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEE7rethrowEv — `virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::rethrow(void)const
+// 0x78efb0 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEE7rethrowEv — virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::rethrow(void)const
 pub fn stub_0x78efb0() -> ! {
     todo!("0x78efb0 __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEE7rethrowEv")
 }
 
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()")]
-// 0x78efc0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEED0Ev — `virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()
+// 0x78efc0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEED0Ev — virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()
 pub fn stub_0x78efc0() -> ! {
     todo!("0x78efc0 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEED0Ev")
 }

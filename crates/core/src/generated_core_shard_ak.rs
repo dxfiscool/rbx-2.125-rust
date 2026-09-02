@@ -1,5 +1,5 @@
 //! core shard AK — 120 core stubs EA-sorted ascending earliest gap after 0x326a04, 0x381334..0x38e9c8 (was 100, extended +20).
-//! Source: `ida/export.json` filtered where demangled/mangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted, next 100 uncovered after 0x326a04 (lowest EA first).
+//! Source: ida/export.json filtered where demangled/mangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted, next 100 uncovered after 0x326a04 (lowest EA first).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]

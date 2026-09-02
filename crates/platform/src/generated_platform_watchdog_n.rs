@@ -707,7 +707,7 @@ pub fn stub_371250() -> ! {
     todo!("0x371250 __ZN3RBX17HeartbeatInstanceD1Ev")
 }
 
-// 0x371254 — __GLOBAL__I_a_137 — `global constructor keyed to'_a_137
+// 0x371254 — __GLOBAL__I_a_137 — global constructor keyed to'_a_137
 #[doc(alias = "global constructor keyed to_a_137")]
 #[doc(alias = "__GLOBAL__I_a_137")]
 pub fn stub_371254() -> ! {
@@ -794,7 +794,7 @@ pub fn stub_372500() -> ! {
     todo!("0x372500 __ZN3RBX10Soundscape12SoundServiceD1Ev")
 }
 
-// 0x372504 — __ZThn32_N3RBX10Soundscape12SoundServiceD0Ev — `non-virtual thunk to'RBX::Soundscape::SoundService::~SoundService()
+// 0x372504 — __ZThn32_N3RBX10Soundscape12SoundServiceD0Ev — non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()
 // type: void __fastcall(RBX::Soundscape::SoundService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
 #[doc(alias = "__ZThn32_N3RBX10Soundscape12SoundServiceD0Ev")]
@@ -802,7 +802,7 @@ pub fn stub_372504() -> ! {
     todo!("0x372504 __ZThn32_N3RBX10Soundscape12SoundServiceD0Ev")
 }
 
-// 0x37250c — __ZThn36_N3RBX10Soundscape12SoundServiceD0Ev — `non-virtual thunk to'RBX::Soundscape::SoundService::~SoundService()
+// 0x37250c — __ZThn36_N3RBX10Soundscape12SoundServiceD0Ev — non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()
 // type: void __fastcall(RBX::Soundscape::SoundService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
 #[doc(alias = "__ZThn36_N3RBX10Soundscape12SoundServiceD0Ev")]

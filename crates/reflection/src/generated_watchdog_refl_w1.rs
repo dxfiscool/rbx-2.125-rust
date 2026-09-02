@@ -11,21 +11,21 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
 #[doc(alias = "__ZThn32_N3RBX5LightD0Ev")]
 pub fn stub_25bb4c() -> ! {
-    todo!("0x25bb4c `non-virtual thunk to'RBX::Light::~Light()")
+    todo!("0x25bb4c non-virtual thunk toRBX::Light::~Light()")
 }
 
 // 0x25bb54 — __ZThn36_N3RBX5LightD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
 #[doc(alias = "__ZThn36_N3RBX5LightD0Ev")]
 pub fn stub_25bb54() -> ! {
-    todo!("0x25bb54 `non-virtual thunk to'RBX::Light::~Light()")
+    todo!("0x25bb54 non-virtual thunk toRBX::Light::~Light()")
 }
 
 // 0x25bb5c — __ZThn92_N3RBX5LightD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
 #[doc(alias = "__ZThn92_N3RBX5LightD0Ev")]
 pub fn stub_25bb5c() -> ! {
-    todo!("0x25bb5c `non-virtual thunk to'RBX::Light::~Light()")
+    todo!("0x25bb5c non-virtual thunk toRBX::Light::~Light()")
 }
 
 // 0x25bb64 — __ZN3RBX5LightD2Ev
@@ -39,21 +39,21 @@ pub fn stub_25bb64() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
 #[doc(alias = "__ZThn32_N3RBX5LightD1Ev")]
 pub fn stub_25bc20() -> ! {
-    todo!("0x25bc20 `non-virtual thunk to'RBX::Light::~Light()")
+    todo!("0x25bc20 non-virtual thunk toRBX::Light::~Light()")
 }
 
 // 0x25bc28 — __ZThn36_N3RBX5LightD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
 #[doc(alias = "__ZThn36_N3RBX5LightD1Ev")]
 pub fn stub_25bc28() -> ! {
-    todo!("0x25bc28 `non-virtual thunk to'RBX::Light::~Light()")
+    todo!("0x25bc28 non-virtual thunk toRBX::Light::~Light()")
 }
 
 // 0x25bc30 — __ZThn92_N3RBX5LightD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
 #[doc(alias = "__ZThn92_N3RBX5LightD1Ev")]
 pub fn stub_25bc30() -> ! {
-    todo!("0x25bc30 `non-virtual thunk to'RBX::Light::~Light()")
+    todo!("0x25bc30 non-virtual thunk toRBX::Light::~Light()")
 }
 
 // 0x25bc38 — __ZNK3RBX5Light12askSetParentEPKNS_8InstanceE
@@ -95,42 +95,42 @@ pub fn stub_25be58() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
 #[doc(alias = "__ZThn32_N3RBX10PointLightD0Ev")]
 pub fn stub_25be5c() -> ! {
-    todo!("0x25be5c `non-virtual thunk to'RBX::PointLight::~PointLight()")
+    todo!("0x25be5c non-virtual thunk toRBX::PointLight::~PointLight()")
 }
 
 // 0x25be64 — __ZThn36_N3RBX10PointLightD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
 #[doc(alias = "__ZThn36_N3RBX10PointLightD0Ev")]
 pub fn stub_25be64() -> ! {
-    todo!("0x25be64 `non-virtual thunk to'RBX::PointLight::~PointLight()")
+    todo!("0x25be64 non-virtual thunk toRBX::PointLight::~PointLight()")
 }
 
 // 0x25be6c — __ZThn92_N3RBX10PointLightD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
 #[doc(alias = "__ZThn92_N3RBX10PointLightD0Ev")]
 pub fn stub_25be6c() -> ! {
-    todo!("0x25be6c `non-virtual thunk to'RBX::PointLight::~PointLight()")
+    todo!("0x25be6c non-virtual thunk toRBX::PointLight::~PointLight()")
 }
 
 // 0x25be74 — __ZThn32_N3RBX10PointLightD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
 #[doc(alias = "__ZThn32_N3RBX10PointLightD1Ev")]
 pub fn stub_25be74() -> ! {
-    todo!("0x25be74 `non-virtual thunk to'RBX::PointLight::~PointLight()")
+    todo!("0x25be74 non-virtual thunk toRBX::PointLight::~PointLight()")
 }
 
 // 0x25be7c — __ZThn36_N3RBX10PointLightD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
 #[doc(alias = "__ZThn36_N3RBX10PointLightD1Ev")]
 pub fn stub_25be7c() -> ! {
-    todo!("0x25be7c `non-virtual thunk to'RBX::PointLight::~PointLight()")
+    todo!("0x25be7c non-virtual thunk toRBX::PointLight::~PointLight()")
 }
 
 // 0x25be84 — __ZThn92_N3RBX10PointLightD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
 #[doc(alias = "__ZThn92_N3RBX10PointLightD1Ev")]
 pub fn stub_25be84() -> ! {
-    todo!("0x25be84 `non-virtual thunk to'RBX::PointLight::~PointLight()")
+    todo!("0x25be84 non-virtual thunk toRBX::PointLight::~PointLight()")
 }
 
 // 0x25be8c — __ZN3RBX9SpotLightC2Ev
@@ -158,42 +158,42 @@ pub fn stub_25c090() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
 #[doc(alias = "__ZThn32_N3RBX9SpotLightD0Ev")]
 pub fn stub_25c094() -> ! {
-    todo!("0x25c094 `non-virtual thunk to'RBX::SpotLight::~SpotLight()")
+    todo!("0x25c094 non-virtual thunk toRBX::SpotLight::~SpotLight()")
 }
 
 // 0x25c09c — __ZThn36_N3RBX9SpotLightD0Ev
 #[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
 #[doc(alias = "__ZThn36_N3RBX9SpotLightD0Ev")]
 pub fn stub_25c09c() -> ! {
-    todo!("0x25c09c `non-virtual thunk to'RBX::SpotLight::~SpotLight()")
+    todo!("0x25c09c non-virtual thunk toRBX::SpotLight::~SpotLight()")
 }
 
 // 0x25c0a4 — __ZThn92_N3RBX9SpotLightD0Ev
 #[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
 #[doc(alias = "__ZThn92_N3RBX9SpotLightD0Ev")]
 pub fn stub_25c0a4() -> ! {
-    todo!("0x25c0a4 `non-virtual thunk to'RBX::SpotLight::~SpotLight()")
+    todo!("0x25c0a4 non-virtual thunk toRBX::SpotLight::~SpotLight()")
 }
 
 // 0x25c0ac — __ZThn32_N3RBX9SpotLightD1Ev
 #[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
 #[doc(alias = "__ZThn32_N3RBX9SpotLightD1Ev")]
 pub fn stub_25c0ac() -> ! {
-    todo!("0x25c0ac `non-virtual thunk to'RBX::SpotLight::~SpotLight()")
+    todo!("0x25c0ac non-virtual thunk toRBX::SpotLight::~SpotLight()")
 }
 
 // 0x25c0b4 — __ZThn36_N3RBX9SpotLightD1Ev
 #[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
 #[doc(alias = "__ZThn36_N3RBX9SpotLightD1Ev")]
 pub fn stub_25c0b4() -> ! {
-    todo!("0x25c0b4 `non-virtual thunk to'RBX::SpotLight::~SpotLight()")
+    todo!("0x25c0b4 non-virtual thunk toRBX::SpotLight::~SpotLight()")
 }
 
 // 0x25c0bc — __ZThn92_N3RBX9SpotLightD1Ev
 #[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
 #[doc(alias = "__ZThn92_N3RBX9SpotLightD1Ev")]
 pub fn stub_25c0bc() -> ! {
-    todo!("0x25c0bc `non-virtual thunk to'RBX::SpotLight::~SpotLight()")
+    todo!("0x25c0bc non-virtual thunk toRBX::SpotLight::~SpotLight()")
 }
 
 // 0x25c0c4 — __ZNK3RBX5Light10getEnabledEv
@@ -528,7 +528,7 @@ pub fn stub_25d5cc() -> ! {
 #[doc(alias = "global constructor keyed to_a_56")]
 #[doc(alias = "__GLOBAL__I_a_56")]
 pub fn stub_25f04c() -> ! {
-    todo!("0x25f04c `global constructor keyed to'_a_56")
+    todo!("0x25f04c global constructor keyed to'_a_56")
 }
 
 // 0x25fc58 — __ZN5boost15throw_exceptionINS_21thread_resource_errorEEEvRKT_
@@ -552,7 +552,7 @@ pub fn stub_25fdc0() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED1Ev")]
 pub fn stub_25fdc8() -> ! {
-    todo!("0x25fdc8 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")
+    todo!("0x25fdc8 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")
 }
 
 // 0x25fdd0 — __ZN5boost16exception_detail20copy_boost_exceptionEPNS_9exceptionEPKS1_
@@ -600,7 +600,7 @@ pub fn stub_25ff88() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED0Ev")]
 pub fn stub_260098() -> ! {
-    todo!("0x260098 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
+    todo!("0x260098 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
 }
 
 // 0x2600b0 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_14bad_exception_EE5cloneEv
@@ -608,7 +608,7 @@ pub fn stub_260098() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone(void)const")]
 #[doc(alias = "__ZTv0_n12_NK5boost16exception_detail10clone_implINS0_14bad_exception_EE5cloneEv")]
 pub fn stub_2600b0() -> ! {
-    todo!("0x2600b0 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone(void)const")
+    todo!("0x2600b0 virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone(void)const")
 }
 
 // 0x2600c0 — __ZN5boost6detail12shared_countC1ERKS1_
@@ -623,7 +623,7 @@ pub fn stub_2600c0() -> ! {
 #[doc(alias = "global constructor keyed to_a_57")]
 #[doc(alias = "__GLOBAL__I_a_57")]
 pub fn stub_260144() -> ! {
-    todo!("0x260144 `global constructor keyed to'_a_57")
+    todo!("0x260144 global constructor keyed to'_a_57")
 }
 
 // 0x260d98 — __ZN5boost6detail15sp_counted_base7releaseEv
@@ -663,7 +663,7 @@ pub fn stub_260e50() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone(void)const")]
 #[doc(alias = "__ZTv0_n12_NK5boost16exception_detail10clone_implINS0_10bad_alloc_EE5cloneEv")]
 pub fn stub_260e60() -> ! {
-    todo!("0x260e60 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone(void)const")
+    todo!("0x260e60 virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone(void)const")
 }
 
 // 0x260e70 — __ZN5boost6detail12shared_countC2INS_16exception_detail10clone_implINS3_10bad_alloc_EEEEEPT_
@@ -694,7 +694,7 @@ pub fn stub_260f70() -> ! {
 #[doc(alias = "global constructor keyed to_a_58")]
 #[doc(alias = "__GLOBAL__I_a_58")]
 pub fn stub_260f7c() -> ! {
-    todo!("0x260f7c `global constructor keyed to'_a_58")
+    todo!("0x260f7c global constructor keyed to'_a_58")
 }
 
 // 0x2610d8 — __ZL15initStaticData2v
@@ -748,7 +748,7 @@ pub fn stub_2650e8() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::rethrow(void)const")]
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE7rethrowEv")]
 pub fn stub_2652b0() -> ! {
-    todo!("0x2652b0 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::rethrow(void)const")
+    todo!("0x2652b0 virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::rethrow(void)const")
 }
 
 // 0x2652c0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev
@@ -756,7 +756,7 @@ pub fn stub_2652b0() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev")]
 pub fn stub_2652c0() -> ! {
-    todo!("0x2652c0 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")
+    todo!("0x2652c0 virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")
 }
 
 // 0x2652e0 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED0Ev
@@ -764,7 +764,7 @@ pub fn stub_2652c0() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED0Ev")]
 pub fn stub_2652e0() -> ! {
-    todo!("0x2652e0 `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")
+    todo!("0x2652e0 non-virtual thunk toboost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")
 }
 
 // 0x2652f8 — __ZN5boost16exception_detail10clone_baseD1Ev
@@ -796,7 +796,7 @@ pub fn stub_2654d8() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::bad_exception_::~bad_exception_()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail14bad_exception_D1Ev")]
 pub fn stub_265590() -> ! {
-    todo!("0x265590 `non-virtual thunk to'boost::exception_detail::bad_exception_::~bad_exception_()")
+    todo!("0x265590 non-virtual thunk toboost::exception_detail::bad_exception_::~bad_exception_()")
 }
 
 // 0x265598 — __ZThn20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED1Ev
@@ -804,7 +804,7 @@ pub fn stub_265590() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED1Ev")]
 pub fn stub_265598() -> ! {
-    todo!("0x265598 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
+    todo!("0x265598 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
 }
 
 // 0x2655a0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED1Ev
@@ -812,7 +812,7 @@ pub fn stub_265598() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED1Ev")]
 pub fn stub_2655a0() -> ! {
-    todo!("0x2655a0 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
+    todo!("0x2655a0 virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
 }
 
 // 0x2655b0 — __ZN5boost6detail12shared_countC2INS_16exception_detail10clone_implINS3_14bad_exception_EEEEEPT_
@@ -844,7 +844,7 @@ pub fn stub_2656b0() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::bad_alloc_::~bad_alloc_()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10bad_alloc_D1Ev")]
 pub fn stub_265768() -> ! {
-    todo!("0x265768 `non-virtual thunk to'boost::exception_detail::bad_alloc_::~bad_alloc_()")
+    todo!("0x265768 non-virtual thunk toboost::exception_detail::bad_alloc_::~bad_alloc_()")
 }
 
 // 0x265770 — __ZThn20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED1Ev
@@ -852,7 +852,7 @@ pub fn stub_265768() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED1Ev")]
 pub fn stub_265770() -> ! {
-    todo!("0x265770 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
+    todo!("0x265770 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
 }
 
 // 0x265778 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED1Ev
@@ -860,7 +860,7 @@ pub fn stub_265770() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED1Ev")]
 pub fn stub_265778() -> ! {
-    todo!("0x265778 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
+    todo!("0x265778 virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
 }
 
 // 0x265788 — __ZN5boost16exception_detail10bad_alloc_D0Ev
@@ -875,5 +875,5 @@ pub fn stub_265788() -> ! {
 #[doc(alias = "global constructor keyed to_a_59")]
 #[doc(alias = "__GLOBAL__I_a_59")]
 pub fn stub_2657a4() -> ! {
-    todo!("0x2657a4 `global constructor keyed to'_a_59")
+    todo!("0x2657a4 global constructor keyed to'_a_59")
 }

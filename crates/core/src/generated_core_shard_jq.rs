@@ -1,5 +1,5 @@
 //! core shard jq — 100 core stubs EA-sorted, 0x20f380..0x2197cc (EA-sorted asc next 100 core utility gaps not yet in rbx_core after jp 0x20f1d8, rbx_core::SharedPtr not boost).
-//! Source: `ida/export.json` (85545 funcs) filtered where demangled/mangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 not yet in rbx_core (core utility gap filler, rbx_core::SharedPtr not boost).
+//! Source: ida/export.json (85545 funcs) filtered where demangled/mangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 not yet in rbx_core (core utility gap filler, rbx_core::SharedPtr not boost).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]

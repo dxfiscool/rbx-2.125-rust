@@ -32,7 +32,7 @@ pub fn stub_7d766c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::StrafingNoPhysics::~StrafingNoPhysics()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN17StrafingNoPhysicsD1Ev")]
 pub fn stub_7d7670() -> ! {
-    todo!("0x7d7670 `non-virtual thunk to'RBX::HUMAN::StrafingNoPhysics::~StrafingNoPhysics()")
+    todo!("0x7d7670 non-virtual thunk toRBX::HUMAN::StrafingNoPhysics::~StrafingNoPhysics()")
 }
 
 
@@ -41,7 +41,7 @@ pub fn stub_7d7670() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::StrafingNoPhysics::~StrafingNoPhysics()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN17StrafingNoPhysicsD0Ev")]
 pub fn stub_7d7678() -> ! {
-    todo!("0x7d7678 `non-virtual thunk to'RBX::HUMAN::StrafingNoPhysics::~StrafingNoPhysics()")
+    todo!("0x7d7678 non-virtual thunk toRBX::HUMAN::StrafingNoPhysics::~StrafingNoPhysics()")
 }
 
 
@@ -65,7 +65,7 @@ pub fn stub_7d7720() -> ! {
 #[doc(alias = "global constructor keyed to_a_384")]
 #[doc(alias = "__GLOBAL__I_a_384")]
 pub fn stub_7d7800() -> ! {
-    todo!("0x7d7800 `global constructor keyed to'_a_384")
+    todo!("0x7d7800 global constructor keyed to'_a_384")
 }
 
 
@@ -174,7 +174,7 @@ pub fn stub_7d7f60() -> ! {
 #[doc(alias = "global constructor keyed to_a_385")]
 #[doc(alias = "__GLOBAL__I_a_385")]
 pub fn stub_7d7f90() -> ! {
-    todo!("0x7d7f90 `global constructor keyed to'_a_385")
+    todo!("0x7d7f90 global constructor keyed to'_a_385")
 }
 
 
@@ -395,7 +395,7 @@ pub fn stub_7d9ed4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TextService::~TextService()")]
 #[doc(alias = "__ZThn32_N3RBX11TextServiceD1Ev")]
 pub fn stub_7d9efc() -> ! {
-    todo!("0x7d9efc `non-virtual thunk to'RBX::TextService::~TextService()")
+    todo!("0x7d9efc non-virtual thunk toRBX::TextService::~TextService()")
 }
 
 
@@ -404,7 +404,7 @@ pub fn stub_7d9efc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TextService::~TextService()")]
 #[doc(alias = "__ZThn32_N3RBX11TextServiceD0Ev")]
 pub fn stub_7d9f04() -> ! {
-    todo!("0x7d9f04 `non-virtual thunk to'RBX::TextService::~TextService()")
+    todo!("0x7d9f04 non-virtual thunk toRBX::TextService::~TextService()")
 }
 
 
@@ -421,7 +421,7 @@ pub fn stub_7d9fa8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TextService::~TextService()")]
 #[doc(alias = "__ZThn36_N3RBX11TextServiceD1Ev")]
 pub fn stub_7d9fd0() -> ! {
-    todo!("0x7d9fd0 `non-virtual thunk to'RBX::TextService::~TextService()")
+    todo!("0x7d9fd0 non-virtual thunk toRBX::TextService::~TextService()")
 }
 
 
@@ -430,7 +430,7 @@ pub fn stub_7d9fd0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TextService::~TextService()")]
 #[doc(alias = "__ZThn36_N3RBX11TextServiceD0Ev")]
 pub fn stub_7d9fd8() -> ! {
-    todo!("0x7d9fd8 `non-virtual thunk to'RBX::TextService::~TextService()")
+    todo!("0x7d9fd8 non-virtual thunk toRBX::TextService::~TextService()")
 }
 
 
@@ -812,7 +812,7 @@ pub fn stub_7db4a8() -> ! {
 #[doc(alias = "global constructor keyed to_a_386")]
 #[doc(alias = "__GLOBAL__I_a_386")]
 pub fn stub_7db638() -> ! {
-    todo!("0x7db638 `global constructor keyed to'_a_386")
+    todo!("0x7db638 global constructor keyed to'_a_386")
 }
 
 
@@ -862,7 +862,7 @@ pub fn stub_7dc6cc() -> ! {
 #[doc(alias = "global constructor keyed to_a_387")]
 #[doc(alias = "__GLOBAL__I_a_387")]
 pub fn stub_7dc784() -> ! {
-    todo!("0x7dc784 `global constructor keyed to'_a_387")
+    todo!("0x7dc784 global constructor keyed to'_a_387")
 }
 
 

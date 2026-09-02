@@ -1,5 +1,5 @@
 //! core shard A — 340 core stubs EA-sorted, next uncovered.
-//! Source: `ida/export.json` filtered where demangled contains boost::|RBX::Signals|shared_ptr|weak_ptr|function|bind, excluding Reflection/Instance/Ogre/RakNet/Network, EA-sorted, next 120 after existing stubs.
+//! Source: ida/export.json filtered where demangled contains boost::|RBX::Signals|shared_ptr|weak_ptr|function|bind, excluding Reflection/Instance/Ogre/RakNet/Network, EA-sorted, next 120 after existing stubs.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, single quotes removed.
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list_av_5<std::string,std::string,std::string,RobloxPageViewController *,rbx_core::SharedPtr<RBX::Game>>::type> boost::bind<void,std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>,std::string,std::string,std::string,RobloxPageViewController *,rbx_core::SharedPtr<RBX::Game>>(void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),std::string,std::string,std::string,RobloxPageViewController *,rbx_core::SharedPtr<RBX::Game>)")]
@@ -150,7 +150,7 @@ pub fn stub_0x4b97c() -> ! {
 }
 
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")]
-// 0x4b984 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_ — `non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)
+// 0x4b984 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_ — non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)
 pub fn stub_0x4b984() -> ! {
     todo!("0x4b984 __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_")
@@ -1211,8 +1211,8 @@ pub fn stub_0x6b4260() -> ! {
 }
 
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)")]
-// 0x6b428c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_ — `non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)
-// was: `non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)
+// 0x6b428c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_ — non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)
 pub fn stub_0x6b428c() -> ! {
     todo!("0x6b428c __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")
 }
@@ -1350,8 +1350,8 @@ pub fn stub_0x6b668c() -> ! {
 }
 
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::call(RBX::RbxRay)")]
-// 0x6b66c4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX6RbxRayEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_ — `non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::call(RBX::RbxRay)
-// was: `non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::call(RBX::RbxRay)
+// 0x6b66c4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX6RbxRayEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_ — non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::call(RBX::RbxRay)
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::call(RBX::RbxRay)
 pub fn stub_0x6b66c4() -> ! {
     todo!("0x6b66c4 __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX6RbxRayEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")
 }

@@ -1,5 +1,5 @@
 //! core watchdog2 1788317163 — 100 core stubs EA-sorted asc second shard after first core shard 1788317087.
-//! Source: `ida/export.json` (85545 funcs) global EA asc not yet covered — next 100 uncovered after first shard (offset 100) 0x84c924..0xf1ef8c to avoid duplicate.
+//! Source: ida/export.json (85545 funcs) global EA asc not yet covered — next 100 uncovered after first shard (offset 100) 0x84c924..0xf1ef8c to avoid duplicate.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]

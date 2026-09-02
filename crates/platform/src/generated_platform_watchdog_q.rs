@@ -626,7 +626,7 @@ pub fn stub_37c9d8() -> ! {
     todo!("0x37c9d8 __ZNK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE12getClassNameEv")
 }
 
-// 0x37c9e8 — __ZThn32_N3RBX10StockSoundD1Ev — `non-virtual thunk to'RBX::StockSound::~StockSound()
+// 0x37c9e8 — __ZThn32_N3RBX10StockSoundD1Ev — non-virtual thunk toRBX::StockSound::~StockSound()
 // type: void __fastcall(RBX::StockSound *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
 #[doc(alias = "__ZThn32_N3RBX10StockSoundD1Ev")]
@@ -634,7 +634,7 @@ pub fn stub_37c9e8() -> ! {
     todo!("0x37c9e8 __ZThn32_N3RBX10StockSoundD1Ev")
 }
 
-// 0x37c9f0 — __ZThn32_N3RBX10StockSoundD0Ev — `non-virtual thunk to'RBX::StockSound::~StockSound()
+// 0x37c9f0 — __ZThn32_N3RBX10StockSoundD0Ev — non-virtual thunk toRBX::StockSound::~StockSound()
 // type: void __fastcall(RBX::StockSound *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
 #[doc(alias = "__ZThn32_N3RBX10StockSoundD0Ev")]
@@ -650,7 +650,7 @@ pub fn stub_37ca94() -> ! {
     todo!("0x37ca94 __ZThn32_NK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE12getClassNameEv")
 }
 
-// 0x37caa4 — __ZThn36_N3RBX10StockSoundD1Ev — `non-virtual thunk to'RBX::StockSound::~StockSound()
+// 0x37caa4 — __ZThn36_N3RBX10StockSoundD1Ev — non-virtual thunk toRBX::StockSound::~StockSound()
 // type: void __fastcall(RBX::StockSound *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
 #[doc(alias = "__ZThn36_N3RBX10StockSoundD1Ev")]
@@ -658,7 +658,7 @@ pub fn stub_37caa4() -> ! {
     todo!("0x37caa4 __ZThn36_N3RBX10StockSoundD1Ev")
 }
 
-// 0x37caac — __ZThn36_N3RBX10StockSoundD0Ev — `non-virtual thunk to'RBX::StockSound::~StockSound()
+// 0x37caac — __ZThn36_N3RBX10StockSoundD0Ev — non-virtual thunk toRBX::StockSound::~StockSound()
 // type: void __fastcall(RBX::StockSound *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
 #[doc(alias = "__ZThn36_N3RBX10StockSoundD0Ev")]

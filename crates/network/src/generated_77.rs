@@ -297,7 +297,7 @@ pub fn stub_69aa40() -> ! {
 }
 
 // 0x69cf80 — __GLOBAL__I_a_280
-// demangled: `global constructor keyed to'_a_280
+// demangled: global constructor keyed to'_a_280
 // type: 
 #[doc(alias = "global constructor keyed to_a_280")]
 pub fn stub_69cf80() -> ! {

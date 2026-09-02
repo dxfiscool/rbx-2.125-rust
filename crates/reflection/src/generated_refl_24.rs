@@ -569,7 +569,7 @@ pub fn stub_0x235d7c() -> ! {
 #[doc(alias = "boost::detail::anonymous namespace::create_current_thread_tls_key(void)")]
 #[doc(alias = "__ZN5boost6detail12_GLOBAL__N_129create_current_thread_tls_keyEv")]
 pub fn stub_0x235da4() -> ! {
-    todo!("0x235da4 boost::detail::`anonymous namespace::create_current_thread_tls_key(void)")
+    todo!("0x235da4 boost::detail::anonymous namespace::create_current_thread_tls_key(void)")
 }
 
 // 0x235dc4 — __ZN5boost6thread21start_thread_noexceptEv
@@ -656,7 +656,7 @@ pub fn stub_0x236c14() -> ! {
 #[doc(alias = "boost::anonymous namespace::get_or_make_current_thread_data(void)")]
 #[doc(alias = "__ZN5boost12_GLOBAL__N_131get_or_make_current_thread_dataEv")]
 pub fn stub_0x236d04() -> ! {
-    todo!("0x236d04 boost::`anonymous namespace::get_or_make_current_thread_data(void)")
+    todo!("0x236d04 boost::anonymous namespace::get_or_make_current_thread_data(void)")
 }
 
 // 0x236ec0 — __ZN5boost6detail12get_tss_dataEPKv
@@ -688,7 +688,7 @@ pub fn stub_0x237130() -> ! {
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")]
 #[doc(alias = "__ZN5boost12_GLOBAL__N_126externally_launched_threadD1Ev")]
 pub fn stub_0x237348() -> ! {
-    todo!("0x237348 boost::`anonymous namespace::externally_launched_thread::~externally_launched_thread()")
+    todo!("0x237348 boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")
 }
 
 // 0x237354 — __ZN5boost12_GLOBAL__N_126externally_launched_threadD0Ev
@@ -696,7 +696,7 @@ pub fn stub_0x237348() -> ! {
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")]
 #[doc(alias = "__ZN5boost12_GLOBAL__N_126externally_launched_threadD0Ev")]
 pub fn stub_0x237354() -> ! {
-    todo!("0x237354 boost::`anonymous namespace::externally_launched_thread::~externally_launched_thread()")
+    todo!("0x237354 boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")
 }
 
 // 0x237368 — __ZN5boost12_GLOBAL__N_126externally_launched_thread3runEv
@@ -704,7 +704,7 @@ pub fn stub_0x237354() -> ! {
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::run(void)")]
 #[doc(alias = "__ZN5boost12_GLOBAL__N_126externally_launched_thread3runEv")]
 pub fn stub_0x237368() -> ! {
-    todo!("0x237368 boost::`anonymous namespace::externally_launched_thread::run(void)")
+    todo!("0x237368 boost::anonymous namespace::externally_launched_thread::run(void)")
 }
 
 // 0x23736c — __ZN5boost12_GLOBAL__N_126externally_launched_thread25notify_all_at_thread_exitEPNS_18condition_variableEPNS_5mutexE
@@ -712,7 +712,7 @@ pub fn stub_0x237368() -> ! {
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::notify_all_at_thread_exit(boost::condition_variable *,boost::mutex *)")]
 #[doc(alias = "__ZN5boost12_GLOBAL__N_126externally_launched_thread25notify_all_at_thread_exitEPNS_18condition_variableEPNS_5mutexE")]
 pub fn stub_0x23736c() -> ! {
-    todo!("0x23736c boost::`anonymous namespace::externally_launched_thread::notify_all_at_thread_exit(boost::condition_variable *,boost::mutex *)")
+    todo!("0x23736c boost::anonymous namespace::externally_launched_thread::notify_all_at_thread_exit(boost::condition_variable *,boost::mutex *)")
 }
 
 // 0x237370 — _tls_destructor

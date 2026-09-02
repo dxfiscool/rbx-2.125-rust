@@ -1,6 +1,6 @@
 //! core shard IL — 100 core stubs EA-sorted, continuation after IK 0x682a28 (EA-sorted ascending, next 100 uncovered).
 //!
-//! Source: `ida/export.json` filtered where demangled/mangled contains RBX::|boost, excludes Reflection|DataModel|Ogre|RakNet|Lua, EA-sorted, next 100 uncovered after 0x682a28.
+//! Source: ida/export.json filtered where demangled/mangled contains RBX::|boost, excludes Reflection|DataModel|Ogre|RakNet|Lua, EA-sorted, next 100 uncovered after 0x682a28.
 //!
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 

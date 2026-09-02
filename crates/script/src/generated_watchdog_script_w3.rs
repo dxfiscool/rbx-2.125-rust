@@ -2,7 +2,7 @@
 // Filter: Script|Lua|Yield|CodeGen|Luau (4818 filtered, all already stubbed in crates/script/src) — EA-sorted asc gap filler distinct not yet in crates/script/src
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: +100 stubs | range 0x4a0320..0x4a54c4 | EA-sorted asc distinct not yet in script (remaining 57850->57750, rbx_core::SharedPtr not boost)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -19,7 +19,7 @@ pub fn stub_4a0320() -> ! {
     todo!("0x4a0320 __ZN3RBX9Explosion13render3dAdornEPNS_5AdornE")
 }
 
-// 0x4a0430 — __ZThn92_N3RBX9Explosion13render3dAdornEPNS_5AdornE — `non-virtual thunk to'RBX::Explosion::render3dAdorn(RBX::Adorn *) — _DWORD __fastcall(RBX::Explosion *__hidden this, RBX::Adorn *)
+// 0x4a0430 — __ZThn92_N3RBX9Explosion13render3dAdornEPNS_5AdornE — non-virtual thunk toRBX::Explosion::render3dAdorn(RBX::Adorn *) — _DWORD __fastcall(RBX::Explosion *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::Explosion::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn92_N3RBX9Explosion13render3dAdornEPNS_5AdornE")]
 pub fn stub_4a0430() -> ! {
@@ -110,7 +110,7 @@ pub fn stub_4a1350() -> ! {
     todo!("0x4a1350 __ZNK3RBX9Explosion19shouldRender3dAdornEv")
 }
 
-// 0x4a1368 — __ZThn92_NK3RBX9Explosion19shouldRender3dAdornEv — `non-virtual thunk to'RBX::Explosion::shouldRender3dAdorn(void)const — _DWORD __fastcall(RBX::Explosion *__hidden this)
+// 0x4a1368 — __ZThn92_NK3RBX9Explosion19shouldRender3dAdornEv — non-virtual thunk toRBX::Explosion::shouldRender3dAdorn(void)const — _DWORD __fastcall(RBX::Explosion *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Explosion::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZThn92_NK3RBX9Explosion19shouldRender3dAdornEv")]
 pub fn stub_4a1368() -> ! {
@@ -656,7 +656,7 @@ pub fn stub_4a50e4() -> ! {
     todo!("0x4a50e4 __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotENS3_8functionIS8_EELi2ES8_E4callES7_f")
 }
 
-// 0x4a51bc — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotENS3_8functionIS8_EELi2ES8_E4callES7_f — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::call(boost::shared_ptr<RBX::Instance>,float)
+// 0x4a51bc — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotENS3_8functionIS8_EELi2ES8_E4callES7_f — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::call(boost::shared_ptr<RBX::Instance>,float)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::call(rbx_core::SharedPtr<RBX::Instance>,float)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotENS3_8functionIS8_EELi2ES8_E4callES7_f")]
 pub fn stub_4a51bc() -> ! {

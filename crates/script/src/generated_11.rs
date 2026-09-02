@@ -2,7 +2,7 @@
 // Filter: Lua|Script -> 4456 funcs, all already stubbed (6111 existing); this batch appends next 120 EA-sorted filler not yet in any crate
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: +120 stubs | range 0xf6cbd4..0xf6d344 | filtered 4456 done, existing 6111 -> 6231 total (filler)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; `` stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

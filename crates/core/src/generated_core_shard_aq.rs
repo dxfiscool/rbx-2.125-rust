@@ -1,5 +1,5 @@
 //! core shard AQ — 120 core stubs EA-sorted, next uncovered after AP 0x326ba8..0x326bc0 (strict RBX|boost|std earliest gap).
-//! Source: `ida/export.json` filtered where demangled/mangled contains `RBX::`|`boost::`|`std::` excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 120 uncovered after 0x326ba8.
+//! Source: ida/export.json filtered where demangled/mangled contains RBX::|boost::|std:: excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 120 uncovered after 0x326ba8.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]

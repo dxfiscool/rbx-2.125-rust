@@ -1,5 +1,5 @@
 //! core — generated_core_shard_oe — 100 stubs EA-sorted asc core namespace gap filler 0x7320ac..0x751ac4 (core namespace not yet in crates/core/src).
-//! Source: `ida/export.json` (85545 funcs) filtered where demangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|FMOD|Audio|Sound|lua, EA-sorted asc, next 100 uncovered (lowest EA first).
+//! Source: ida/export.json (85545 funcs) filtered where demangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|FMOD|Audio|Sound|lua, EA-sorted asc, next 100 uncovered (lowest EA first).
 //! Core namespace total 39062, 49304 stubbed before, 49404 after; range 0x7320ac..0x751ac4 EA-sorted asc.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 

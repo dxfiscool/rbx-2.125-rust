@@ -1,5 +1,5 @@
 //! core shard V — 100 core stubs EA-sorted, earliest uncovered gap after shard U (0x25c0ac).
-//! Source: `ida/export.json` filtered where demangled excludes Reflection/Instance/DataModel/Workspace/Ogre/RakNet/Network/Lua/Script/Yield/FMOD/Audio/Sound/G3D/CRender, EA-sorted, next 100 uncovered (lowest EA first).
+//! Source: ida/export.json filtered where demangled excludes Reflection/Instance/DataModel/Workspace/Ogre/RakNet/Network/Lua/Script/Yield/FMOD/Audio/Sound/G3D/CRender, EA-sorted, next 100 uncovered (lowest EA first).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(

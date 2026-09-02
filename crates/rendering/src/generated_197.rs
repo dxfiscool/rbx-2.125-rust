@@ -498,7 +498,7 @@ pub fn stub_a1e00() -> ! {
 // 0xa1e4c — __GLOBAL__I__ZN4FMOD13playlistcodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::playlistcodec")]
-// was: `global constructor keyed to'FMOD::playlistcodec
+// was: global constructor keyed to'FMOD::playlistcodec
 pub fn stub_a1e4c() -> ! {
     todo!("0xa1e4c global constructor keyed toFMOD::playlistcodec")
 }
@@ -602,7 +602,7 @@ pub fn stub_a2328() -> ! {
 // 0xa2374 — __GLOBAL__I__ZN4FMOD8rawcodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::rawcodec")]
-// was: `global constructor keyed to'FMOD::rawcodec
+// was: global constructor keyed to'FMOD::rawcodec
 pub fn stub_a2374() -> ! {
     todo!("0xa2374 global constructor keyed toFMOD::rawcodec")
 }
@@ -762,7 +762,7 @@ pub fn stub_a5c98() -> ! {
 // 0xa5ce4 — __GLOBAL__I__ZN4FMOD8s3mcodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::s3mcodec")]
-// was: `global constructor keyed to'FMOD::s3mcodec
+// was: global constructor keyed to'FMOD::s3mcodec
 pub fn stub_a5ce4() -> ! {
     todo!("0xa5ce4 global constructor keyed toFMOD::s3mcodec")
 }

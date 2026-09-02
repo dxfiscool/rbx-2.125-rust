@@ -8,7 +8,7 @@ use rbx_core::SharedPtr;
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
 // 0x611200 — __ZThn36_N3RBX9ScreenGuiD1Ev
-// demangled: `non-virtual thunk to'RBX::ScreenGui::~ScreenGui()
+// demangled: non-virtual thunk toRBX::ScreenGui::~ScreenGui()
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui()")]
 #[doc(alias = "__ZThn36_N3RBX9ScreenGuiD1Ev")]
 pub fn stub_611200() -> ! {
@@ -16,7 +16,7 @@ pub fn stub_611200() -> ! {
 }
 
 // 0x611344 — __ZThn36_N3RBX9ScreenGuiD0Ev
-// demangled: `non-virtual thunk to'RBX::ScreenGui::~ScreenGui()
+// demangled: non-virtual thunk toRBX::ScreenGui::~ScreenGui()
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui()")]
 #[doc(alias = "__ZThn36_N3RBX9ScreenGuiD0Ev")]
 pub fn stub_611344() -> ! {
@@ -24,7 +24,7 @@ pub fn stub_611344() -> ! {
 }
 
 // 0x61149c — __ZThn96_NK3RBX9ScreenGui14shouldRender2dEv
-// demangled: `non-virtual thunk to'RBX::ScreenGui::shouldRender2d(void)const
+// demangled: non-virtual thunk toRBX::ScreenGui::shouldRender2d(void)const
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::shouldRender2d(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX9ScreenGui14shouldRender2dEv")]
 pub fn stub_61149c() -> ! {
@@ -32,7 +32,7 @@ pub fn stub_61149c() -> ! {
 }
 
 // 0x6114a4 — __ZThn168_N3RBX9ScreenGuiD1Ev
-// demangled: `non-virtual thunk to'RBX::ScreenGui::~ScreenGui()
+// demangled: non-virtual thunk toRBX::ScreenGui::~ScreenGui()
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui()")]
 #[doc(alias = "__ZThn168_N3RBX9ScreenGuiD1Ev")]
 pub fn stub_6114a4() -> ! {
@@ -40,7 +40,7 @@ pub fn stub_6114a4() -> ! {
 }
 
 // 0x6115e8 — __ZThn168_N3RBX9ScreenGuiD0Ev
-// demangled: `non-virtual thunk to'RBX::ScreenGui::~ScreenGui()
+// demangled: non-virtual thunk toRBX::ScreenGui::~ScreenGui()
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui()")]
 #[doc(alias = "__ZThn168_N3RBX9ScreenGuiD0Ev")]
 pub fn stub_6115e8() -> ! {
@@ -85,7 +85,7 @@ pub fn stub_611930() -> ! {
 }
 
 // 0x611940 — __ZThn32_N3RBX7GuiMainD1Ev
-// demangled: `non-virtual thunk to'RBX::GuiMain::~GuiMain()
+// demangled: non-virtual thunk toRBX::GuiMain::~GuiMain()
 #[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain()")]
 #[doc(alias = "__ZThn32_N3RBX7GuiMainD1Ev")]
 pub fn stub_611940() -> ! {
@@ -93,7 +93,7 @@ pub fn stub_611940() -> ! {
 }
 
 // 0x611a84 — __ZThn32_N3RBX7GuiMainD0Ev
-// demangled: `non-virtual thunk to'RBX::GuiMain::~GuiMain()
+// demangled: non-virtual thunk toRBX::GuiMain::~GuiMain()
 #[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain()")]
 #[doc(alias = "__ZThn32_N3RBX7GuiMainD0Ev")]
 pub fn stub_611a84() -> ! {
@@ -108,7 +108,7 @@ pub fn stub_611bdc() -> ! {
 }
 
 // 0x611bec — __ZThn36_N3RBX7GuiMainD1Ev
-// demangled: `non-virtual thunk to'RBX::GuiMain::~GuiMain()
+// demangled: non-virtual thunk toRBX::GuiMain::~GuiMain()
 #[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain()")]
 #[doc(alias = "__ZThn36_N3RBX7GuiMainD1Ev")]
 pub fn stub_611bec() -> ! {
@@ -116,7 +116,7 @@ pub fn stub_611bec() -> ! {
 }
 
 // 0x611d30 — __ZThn36_N3RBX7GuiMainD0Ev
-// demangled: `non-virtual thunk to'RBX::GuiMain::~GuiMain()
+// demangled: non-virtual thunk toRBX::GuiMain::~GuiMain()
 #[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain()")]
 #[doc(alias = "__ZThn36_N3RBX7GuiMainD0Ev")]
 pub fn stub_611d30() -> ! {
@@ -124,7 +124,7 @@ pub fn stub_611d30() -> ! {
 }
 
 // 0x611e88 — __ZThn168_N3RBX7GuiMainD1Ev
-// demangled: `non-virtual thunk to'RBX::GuiMain::~GuiMain()
+// demangled: non-virtual thunk toRBX::GuiMain::~GuiMain()
 #[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain()")]
 #[doc(alias = "__ZThn168_N3RBX7GuiMainD1Ev")]
 pub fn stub_611e88() -> ! {
@@ -132,7 +132,7 @@ pub fn stub_611e88() -> ! {
 }
 
 // 0x611fcc — __ZThn168_N3RBX7GuiMainD0Ev
-// demangled: `non-virtual thunk to'RBX::GuiMain::~GuiMain()
+// demangled: non-virtual thunk toRBX::GuiMain::~GuiMain()
 #[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain()")]
 #[doc(alias = "__ZThn168_N3RBX7GuiMainD0Ev")]
 pub fn stub_611fcc() -> ! {
@@ -430,7 +430,7 @@ pub fn stub_613d80() -> ! {
 }
 
 // 0x613da0 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf2IvNS3_9ScreenGuiES7_PNS3_9GuiButtonEEENSC_5list3INSC_5valueIPSG_EENSB_3argILi1EEENSL_ISI_EEEEEELi1ES8_E4callES7_
-// demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScreenGui,RBX::Reflection::PropertyDescriptor const*,RBX::GuiButton *>,boost::_bi::list3<boost::_bi::value<RBX::ScreenGui*>,boost::arg<1>,boost::_bi::value<RBX::GuiButton *>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
+// demangled: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScreenGui,RBX::Reflection::PropertyDescriptor const*,RBX::GuiButton *>,boost::_bi::list3<boost::_bi::value<RBX::ScreenGui*>,boost::arg<1>,boost::_bi::value<RBX::GuiButton *>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScreenGui,RBX::Reflection::PropertyDescriptor const*,RBX::GuiButton *>,boost::_bi::list3<boost::_bi::value<RBX::ScreenGui*>,boost::arg<1>,boost::_bi::value<RBX::GuiButton *>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf2IvNS3_9ScreenGuiES7_PNS3_9GuiButtonEEENSC_5list3INSC_5valueIPSG_EENSB_3argILi1EEENSL_ISI_EEEEEELi1ES8_E4callES7_")]
 pub fn stub_613da0() -> ! {
@@ -640,7 +640,7 @@ pub fn stub_6146d4() -> ! {
 }
 
 // 0x6146f8 — __GLOBAL__I_a_249
-// demangled: `global constructor keyed to'_a_249
+// demangled: global constructor keyed to'_a_249
 #[doc(alias = "global constructor keyed to_a_249")]
 #[doc(alias = "__GLOBAL__I_a_249")]
 pub fn stub_6146f8() -> ! {
@@ -680,7 +680,7 @@ pub fn stub_614bf8() -> ! {
 }
 
 // 0x614bfc — __ZThn36_N3RBX18ScriptMouseCommandD0Ev
-// demangled: `non-virtual thunk to'RBX::ScriptMouseCommand::~ScriptMouseCommand()
+// demangled: non-virtual thunk toRBX::ScriptMouseCommand::~ScriptMouseCommand()
 #[doc(alias = "non-virtual thunk toRBX::ScriptMouseCommand::~ScriptMouseCommand()")]
 #[doc(alias = "__ZThn36_N3RBX18ScriptMouseCommandD0Ev")]
 pub fn stub_614bfc() -> ! {
@@ -696,7 +696,7 @@ pub fn stub_614c04() -> ! {
 }
 
 // 0x614d30 — __ZThn36_N3RBX18ScriptMouseCommandD1Ev
-// demangled: `non-virtual thunk to'RBX::ScriptMouseCommand::~ScriptMouseCommand()
+// demangled: non-virtual thunk toRBX::ScriptMouseCommand::~ScriptMouseCommand()
 #[doc(alias = "non-virtual thunk toRBX::ScriptMouseCommand::~ScriptMouseCommand()")]
 #[doc(alias = "__ZThn36_N3RBX18ScriptMouseCommandD1Ev")]
 pub fn stub_614d30() -> ! {
@@ -829,7 +829,7 @@ pub fn stub_6155d4() -> ! {
 }
 
 // 0x6156b8 — __GLOBAL__I_a_250
-// demangled: `global constructor keyed to'_a_250
+// demangled: global constructor keyed to'_a_250
 #[doc(alias = "global constructor keyed to_a_250")]
 #[doc(alias = "__GLOBAL__I_a_250")]
 pub fn stub_6156b8() -> ! {
@@ -861,7 +861,7 @@ pub fn stub_615b70() -> ! {
 }
 
 // 0x615b80 — __ZThn32_N3RBX4SeatD0Ev
-// demangled: `non-virtual thunk to'RBX::Seat::~Seat()
+// demangled: non-virtual thunk toRBX::Seat::~Seat()
 #[doc(alias = "non-virtual thunk toRBX::Seat::~Seat()")]
 #[doc(alias = "__ZThn32_N3RBX4SeatD0Ev")]
 pub fn stub_615b80() -> ! {
@@ -869,7 +869,7 @@ pub fn stub_615b80() -> ! {
 }
 
 // 0x615b88 — __ZThn36_N3RBX4SeatD0Ev
-// demangled: `non-virtual thunk to'RBX::Seat::~Seat()
+// demangled: non-virtual thunk toRBX::Seat::~Seat()
 #[doc(alias = "non-virtual thunk toRBX::Seat::~Seat()")]
 #[doc(alias = "__ZThn36_N3RBX4SeatD0Ev")]
 pub fn stub_615b88() -> ! {
@@ -877,7 +877,7 @@ pub fn stub_615b88() -> ! {
 }
 
 // 0x615b90 — __ZThn132_N3RBX4SeatD0Ev
-// demangled: `non-virtual thunk to'RBX::Seat::~Seat()
+// demangled: non-virtual thunk toRBX::Seat::~Seat()
 #[doc(alias = "non-virtual thunk toRBX::Seat::~Seat()")]
 #[doc(alias = "__ZThn132_N3RBX4SeatD0Ev")]
 pub fn stub_615b90() -> ! {
@@ -885,7 +885,7 @@ pub fn stub_615b90() -> ! {
 }
 
 // 0x615b98 — __ZThn32_N3RBX4SeatD1Ev
-// demangled: `non-virtual thunk to'RBX::Seat::~Seat()
+// demangled: non-virtual thunk toRBX::Seat::~Seat()
 #[doc(alias = "non-virtual thunk toRBX::Seat::~Seat()")]
 #[doc(alias = "__ZThn32_N3RBX4SeatD1Ev")]
 pub fn stub_615b98() -> ! {
@@ -893,7 +893,7 @@ pub fn stub_615b98() -> ! {
 }
 
 // 0x615bac — __ZThn36_N3RBX4SeatD1Ev
-// demangled: `non-virtual thunk to'RBX::Seat::~Seat()
+// demangled: non-virtual thunk toRBX::Seat::~Seat()
 #[doc(alias = "non-virtual thunk toRBX::Seat::~Seat()")]
 #[doc(alias = "__ZThn36_N3RBX4SeatD1Ev")]
 pub fn stub_615bac() -> ! {
@@ -901,7 +901,7 @@ pub fn stub_615bac() -> ! {
 }
 
 // 0x615bc0 — __ZThn132_N3RBX4SeatD1Ev
-// demangled: `non-virtual thunk to'RBX::Seat::~Seat()
+// demangled: non-virtual thunk toRBX::Seat::~Seat()
 #[doc(alias = "non-virtual thunk toRBX::Seat::~Seat()")]
 #[doc(alias = "__ZThn132_N3RBX4SeatD1Ev")]
 pub fn stub_615bc0() -> ! {

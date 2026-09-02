@@ -844,7 +844,7 @@ pub fn stub_67d788() -> ! {
 }
 
 // 0x67d8f4 — __ZThn96_N3RBX12TimerService11onHeartbeatERKNS_9HeartbeatE
-// demangled: `non-virtual thunk to'RBX::TimerService::onHeartbeat(RBX::Heartbeat const&)
+// demangled: non-virtual thunk toRBX::TimerService::onHeartbeat(RBX::Heartbeat const&)
 // type: void __fastcall(int)
 #[doc(alias = "non-virtual thunk toRBX::TimerService::onHeartbeat(RBX::Heartbeat const&)")]
 #[doc(alias = "__ZThn96_N3RBX12TimerService11onHeartbeatERKNS_9HeartbeatE")]
@@ -889,7 +889,7 @@ pub fn stub_67dc08() -> ! {
 }
 
 // 0x67dc20 — __ZThn32_N3RBX12TimerServiceD1Ev
-// demangled: `non-virtual thunk to'RBX::TimerService::~TimerService()
+// demangled: non-virtual thunk toRBX::TimerService::~TimerService()
 // type: void __fastcall(RBX::TimerService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TimerService::~TimerService()")]
 #[doc(alias = "__ZThn32_N3RBX12TimerServiceD1Ev")]
@@ -898,7 +898,7 @@ pub fn stub_67dc20() -> ! {
 }
 
 // 0x67dd2c — __ZThn32_N3RBX12TimerServiceD0Ev
-// demangled: `non-virtual thunk to'RBX::TimerService::~TimerService()
+// demangled: non-virtual thunk toRBX::TimerService::~TimerService()
 // type: void __fastcall(RBX::TimerService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TimerService::~TimerService()")]
 #[doc(alias = "__ZThn32_N3RBX12TimerServiceD0Ev")]

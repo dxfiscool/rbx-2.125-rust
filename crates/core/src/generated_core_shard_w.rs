@@ -1,5 +1,5 @@
 //! core shard W — 100 core stubs EA-sorted, earliest uncovered fallback after shard V (0x1ebe5c) skipping workspace-covered (audio 0x1ebfe8..0x1faef0).
-//! Source: `ida/export.json` filtered where demangled excludes Reflection/Instance/DataModel/Ogre/RakNet/Network/Lua/Script/FMOD/Audio, EA-sorted, next 100 uncovered (lowest EA first).
+//! Source: ida/export.json filtered where demangled excludes Reflection/Instance/DataModel/Ogre/RakNet/Network/Lua/Script/FMOD/Audio, EA-sorted, next 100 uncovered (lowest EA first).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]

@@ -544,7 +544,7 @@ pub fn stub_4e14f8() -> ! {
 }
 
 // 0x4e1618 — __GLOBAL__I_a_191
-// demangled: `global constructor keyed to'_a_191
+// demangled: global constructor keyed to'_a_191
 #[doc(alias = "global constructor keyed to_a_191")]
 #[doc(alias = "__GLOBAL__I_a_191")]
 pub fn stub_4e1618() -> ! {
@@ -731,7 +731,7 @@ pub fn stub_4e51d8() -> ! {
 }
 
 // 0x4e51dc — __ZThn32_N3RBX7FeatureD0Ev
-// demangled: `non-virtual thunk to'RBX::Feature::~Feature()
+// demangled: non-virtual thunk toRBX::Feature::~Feature()
 // type: void __fastcall(RBX::Feature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Feature::~Feature()")]
 #[doc(alias = "__ZThn32_N3RBX7FeatureD0Ev")]
@@ -740,7 +740,7 @@ pub fn stub_4e51dc() -> ! {
 }
 
 // 0x4e51e4 — __ZThn36_N3RBX7FeatureD0Ev
-// demangled: `non-virtual thunk to'RBX::Feature::~Feature()
+// demangled: non-virtual thunk toRBX::Feature::~Feature()
 // type: void __fastcall(RBX::Feature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Feature::~Feature()")]
 #[doc(alias = "__ZThn36_N3RBX7FeatureD0Ev")]

@@ -314,12 +314,12 @@ pub fn stub_0632c84() -> ! {
 }
 
 // 0x0632c8c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES5_EE4slotEN5boost8functionIS6_EELi2ES6_E4callES5_S5_
-// demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot,boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,2,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::call(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)
+// demangled: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot,boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,2,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::call(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)
 // type: int()
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot,boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,2,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::call(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES5_EE4slotEN5boost8functionIS6_EELi2ES6_E4callES5_S5_")]
 pub fn stub_0632c8c() -> ! {
-    todo!("0x0632c8c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot,boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,2,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::call(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)")
+    todo!("0x0632c8c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot,boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,2,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::call(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)")
 }
 
 // 0x0632c94 — __ZNK5boost9function2IvN3RBX18SkateboardPlatform9MoveStateES3_EclES3_S3_
@@ -800,39 +800,39 @@ pub fn stub_06358f8() -> ! {
 }
 
 // 0x0635a04 — __ZThn32_N3RBX3SkyD1Ev
-// demangled: `non-virtual thunk to'RBX::Sky::~Sky()
+// demangled: non-virtual thunk toRBX::Sky::~Sky()
 // type: void __fastcall(RBX::Sky *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
 #[doc(alias = "__ZThn32_N3RBX3SkyD1Ev")]
 pub fn stub_0635a04() -> ! {
-    todo!("0x0635a04 `non-virtual thunk to'RBX::Sky::~Sky()")
+    todo!("0x0635a04 non-virtual thunk toRBX::Sky::~Sky()")
 }
 
 // 0x0635a70 — __ZThn32_N3RBX3SkyD0Ev
-// demangled: `non-virtual thunk to'RBX::Sky::~Sky()
+// demangled: non-virtual thunk toRBX::Sky::~Sky()
 // type: void __fastcall(RBX::Sky *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
 #[doc(alias = "__ZThn32_N3RBX3SkyD0Ev")]
 pub fn stub_0635a70() -> ! {
-    todo!("0x0635a70 `non-virtual thunk to'RBX::Sky::~Sky()")
+    todo!("0x0635a70 non-virtual thunk toRBX::Sky::~Sky()")
 }
 
 // 0x0635b7c — __ZThn36_N3RBX3SkyD1Ev
-// demangled: `non-virtual thunk to'RBX::Sky::~Sky()
+// demangled: non-virtual thunk toRBX::Sky::~Sky()
 // type: void __fastcall(RBX::Sky *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
 #[doc(alias = "__ZThn36_N3RBX3SkyD1Ev")]
 pub fn stub_0635b7c() -> ! {
-    todo!("0x0635b7c `non-virtual thunk to'RBX::Sky::~Sky()")
+    todo!("0x0635b7c non-virtual thunk toRBX::Sky::~Sky()")
 }
 
 // 0x0635be8 — __ZThn36_N3RBX3SkyD0Ev
-// demangled: `non-virtual thunk to'RBX::Sky::~Sky()
+// demangled: non-virtual thunk toRBX::Sky::~Sky()
 // type: void __fastcall(RBX::Sky *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
 #[doc(alias = "__ZThn36_N3RBX3SkyD0Ev")]
 pub fn stub_0635be8() -> ! {
-    todo!("0x0635be8 `non-virtual thunk to'RBX::Sky::~Sky()")
+    todo!("0x0635be8 non-virtual thunk toRBX::Sky::~Sky()")
 }
 
 // 0x06360a4 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_3SkyEEEN5boost10shared_ptrIT_EEv

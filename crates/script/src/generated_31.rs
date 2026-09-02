@@ -2,7 +2,7 @@
 // Filter: Lua|Script|Yield|lua (5401 filtered, 120 in this batch)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: +120 stubs | range 0x257980..0x278574 | earliest EA gap 0x257980 (filtered Lua|Script|Yield|lua)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

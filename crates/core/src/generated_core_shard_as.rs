@@ -1,5 +1,5 @@
 //! core shard AS — 100 core stubs EA-sorted desc high-EA window >0x390000 distinct from main ascending 0x250000-0x390000.
-//! Source: `ida/export.json` filtered RBX|boost|std strict excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-desc, next 100 uncovered high-EA >0x390000.
+//! Source: ida/export.json filtered RBX|boost|std strict excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-desc, next 100 uncovered high-EA >0x390000.
 //! Range: 0xf6b434..0xf6baa4 (high-EA desc, top uncovered, rbx_core::SharedPtr not boost).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, quotes stripped.
 

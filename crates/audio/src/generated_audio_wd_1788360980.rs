@@ -220,8 +220,8 @@ pub fn stub_667698() -> ! {
 
 
 // 0x667b28 — __ZThn596_N3RBX7TextBox11onHeartbeatERKNS_9HeartbeatE
-// demangled: `non-virtual thunk to'RBX::TextBox::onHeartbeat(RBX::Heartbeat const&)
-#[doc(alias = "`non-virtual thunk toRBX::TextBox::onHeartbeat(RBX::Heartbeat const&)")]
+// demangled: non-virtual thunk toRBX::TextBox::onHeartbeat(RBX::Heartbeat const&)
+#[doc(alias = "non-virtual thunk toRBX::TextBox::onHeartbeat(RBX::Heartbeat const&)")]
 #[doc(alias = "__ZThn596_N3RBX7TextBox11onHeartbeatERKNS_9HeartbeatE")]
 pub fn stub_667b28() -> ! {
     todo!("0x667b28 __ZThn596_N3RBX7TextBox11onHeartbeatERKNS_9HeartbeatE")
@@ -277,9 +277,9 @@ pub fn stub_668088() -> ! {
 
 
 // 0x66856c — __ZThn96_N3RBX7TextBox8render2dEPNS_5AdornE
-// demangled: `non-virtual thunk to'RBX::TextBox::render2d(RBX::Adorn *)
+// demangled: non-virtual thunk toRBX::TextBox::render2d(RBX::Adorn *)
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk toRBX::TextBox::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::TextBox::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX7TextBox8render2dEPNS_5AdornE")]
 pub fn stub_66856c() -> ! {
     todo!("0x66856c __ZThn96_N3RBX7TextBox8render2dEPNS_5AdornE")
@@ -695,9 +695,9 @@ pub fn stub_668d2c() -> ! {
 
 
 // 0x668d90 — __ZThn32_N3RBX7TextBoxD1Ev
-// demangled: `non-virtual thunk to'RBX::TextBox::~TextBox()
+// demangled: non-virtual thunk toRBX::TextBox::~TextBox()
 // type: void __fastcall(RBX::TextBox *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::TextBox::~TextBox()")]
+#[doc(alias = "non-virtual thunk toRBX::TextBox::~TextBox()")]
 #[doc(alias = "__ZThn32_N3RBX7TextBoxD1Ev")]
 pub fn stub_668d90() -> ! {
     todo!("0x668d90 __ZThn32_N3RBX7TextBoxD1Ev")
@@ -705,9 +705,9 @@ pub fn stub_668d90() -> ! {
 
 
 // 0x668d98 — __ZThn32_N3RBX7TextBoxD0Ev
-// demangled: `non-virtual thunk to'RBX::TextBox::~TextBox()
+// demangled: non-virtual thunk toRBX::TextBox::~TextBox()
 // type: void __fastcall(RBX::TextBox *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::TextBox::~TextBox()")]
+#[doc(alias = "non-virtual thunk toRBX::TextBox::~TextBox()")]
 #[doc(alias = "__ZThn32_N3RBX7TextBoxD0Ev")]
 pub fn stub_668d98() -> ! {
     todo!("0x668d98 __ZThn32_N3RBX7TextBoxD0Ev")
@@ -715,9 +715,9 @@ pub fn stub_668d98() -> ! {
 
 
 // 0x668e4c — __ZThn36_N3RBX7TextBoxD1Ev
-// demangled: `non-virtual thunk to'RBX::TextBox::~TextBox()
+// demangled: non-virtual thunk toRBX::TextBox::~TextBox()
 // type: void __fastcall(RBX::TextBox *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::TextBox::~TextBox()")]
+#[doc(alias = "non-virtual thunk toRBX::TextBox::~TextBox()")]
 #[doc(alias = "__ZThn36_N3RBX7TextBoxD1Ev")]
 pub fn stub_668e4c() -> ! {
     todo!("0x668e4c __ZThn36_N3RBX7TextBoxD1Ev")
@@ -725,9 +725,9 @@ pub fn stub_668e4c() -> ! {
 
 
 // 0x668e54 — __ZThn36_N3RBX7TextBoxD0Ev
-// demangled: `non-virtual thunk to'RBX::TextBox::~TextBox()
+// demangled: non-virtual thunk toRBX::TextBox::~TextBox()
 // type: void __fastcall(RBX::TextBox *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::TextBox::~TextBox()")]
+#[doc(alias = "non-virtual thunk toRBX::TextBox::~TextBox()")]
 #[doc(alias = "__ZThn36_N3RBX7TextBoxD0Ev")]
 pub fn stub_668e54() -> ! {
     todo!("0x668e54 __ZThn36_N3RBX7TextBoxD0Ev")
@@ -735,9 +735,9 @@ pub fn stub_668e54() -> ! {
 
 
 // 0x668ef8 — __ZThn96_NK3RBX9GuiBase2d14shouldRender2dEv
-// demangled: `non-virtual thunk to'RBX::GuiBase2d::shouldRender2d(void)const
+// demangled: non-virtual thunk toRBX::GuiBase2d::shouldRender2d(void)const
 // type: _DWORD __fastcall(RBX::GuiBase2d *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GuiBase2d::shouldRender2d(void)const")]
+#[doc(alias = "non-virtual thunk toRBX::GuiBase2d::shouldRender2d(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX9GuiBase2d14shouldRender2dEv")]
 pub fn stub_668ef8() -> ! {
     todo!("0x668ef8 __ZThn96_NK3RBX9GuiBase2d14shouldRender2dEv")
@@ -745,8 +745,8 @@ pub fn stub_668ef8() -> ! {
 
 
 // 0x668efc — __ZThn96_NK3RBX9GuiBase2d9isVisibleERKN3G3D6Rect2DE
-// demangled: `non-virtual thunk to'RBX::GuiBase2d::isVisible(G3D::Rect2D const&)const
-#[doc(alias = "`non-virtual thunk toRBX::GuiBase2d::isVisible(G3D::Rect2D const&)const")]
+// demangled: non-virtual thunk toRBX::GuiBase2d::isVisible(G3D::Rect2D const&)const
+#[doc(alias = "non-virtual thunk toRBX::GuiBase2d::isVisible(G3D::Rect2D const&)const")]
 #[doc(alias = "__ZThn96_NK3RBX9GuiBase2d9isVisibleERKN3G3D6Rect2DE")]
 pub fn stub_668efc() -> ! {
     todo!("0x668efc __ZThn96_NK3RBX9GuiBase2d9isVisibleERKN3G3D6Rect2DE")
@@ -754,9 +754,9 @@ pub fn stub_668efc() -> ! {
 
 
 // 0x668f08 — __ZThn596_N3RBX7TextBoxD1Ev
-// demangled: `non-virtual thunk to'RBX::TextBox::~TextBox()
+// demangled: non-virtual thunk toRBX::TextBox::~TextBox()
 // type: void __fastcall(RBX::TextBox *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::TextBox::~TextBox()")]
+#[doc(alias = "non-virtual thunk toRBX::TextBox::~TextBox()")]
 #[doc(alias = "__ZThn596_N3RBX7TextBoxD1Ev")]
 pub fn stub_668f08() -> ! {
     todo!("0x668f08 __ZThn596_N3RBX7TextBoxD1Ev")
@@ -764,9 +764,9 @@ pub fn stub_668f08() -> ! {
 
 
 // 0x668f10 — __ZThn596_N3RBX7TextBoxD0Ev
-// demangled: `non-virtual thunk to'RBX::TextBox::~TextBox()
+// demangled: non-virtual thunk toRBX::TextBox::~TextBox()
 // type: void __fastcall(RBX::TextBox *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::TextBox::~TextBox()")]
+#[doc(alias = "non-virtual thunk toRBX::TextBox::~TextBox()")]
 #[doc(alias = "__ZThn596_N3RBX7TextBoxD0Ev")]
 pub fn stub_668f10() -> ! {
     todo!("0x668f10 __ZThn596_N3RBX7TextBoxD0Ev")
@@ -941,8 +941,8 @@ pub fn stub_669f40() -> ! {
 
 
 // 0x669f68 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKcbEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf2IvN3RBX7TextBoxES4_bEENS9_5list3INS9_5valueIPSE_EENS8_3argILi1EEENSK_ILi2EEEEEEELi2ES5_E4callES4_b
-// demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(char const*,bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>>,2,void ()(char const*,bool)>::call(char const*,bool)
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(char const*,bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>>,2,void ()(char const*,bool)>::call(char const*,bool)")]
+// demangled: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(char const*,bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>>,2,void ()(char const*,bool)>::call(char const*,bool)
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(char const*,bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>>,2,void ()(char const*,bool)>::call(char const*,bool)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvPKcbEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf2IvN3RBX7TextBoxES4_bEENS9_5list3INS9_5valueIPSE_EENS8_3argILi1EEENSK_ILi2EEEEEEELi2ES5_E4callES4_b")]
 pub fn stub_669f68() -> ! {
     todo!("0x669f68 __ZThn4_N3rbx8callableINS_7signals6signalIFvPKcbEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf2IvN3RBX7TextBoxES4_bEENS9_5list3INS9_5valueIPSE_EENS8_3argILi1EEENSK_ILi2EEEEEEELi2ES5_E4callES4_b")
@@ -1055,9 +1055,9 @@ pub fn stub_66ac90() -> ! {
 
 
 // 0x66ad34 — __ZThn32_N3RBX9GuiObjectD1Ev
-// demangled: `non-virtual thunk to'RBX::GuiObject::~GuiObject()
+// demangled: non-virtual thunk toRBX::GuiObject::~GuiObject()
 // type: void __fastcall(RBX::GuiObject *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GuiObject::~GuiObject()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiObject::~GuiObject()")]
 #[doc(alias = "__ZThn32_N3RBX9GuiObjectD1Ev")]
 pub fn stub_66ad34() -> ! {
     todo!("0x66ad34 __ZThn32_N3RBX9GuiObjectD1Ev")
@@ -1065,9 +1065,9 @@ pub fn stub_66ad34() -> ! {
 
 
 // 0x66ad3c — __ZThn32_N3RBX9GuiObjectD0Ev
-// demangled: `non-virtual thunk to'RBX::GuiObject::~GuiObject()
+// demangled: non-virtual thunk toRBX::GuiObject::~GuiObject()
 // type: void __fastcall(RBX::GuiObject *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GuiObject::~GuiObject()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiObject::~GuiObject()")]
 #[doc(alias = "__ZThn32_N3RBX9GuiObjectD0Ev")]
 pub fn stub_66ad3c() -> ! {
     todo!("0x66ad3c __ZThn32_N3RBX9GuiObjectD0Ev")
@@ -1075,9 +1075,9 @@ pub fn stub_66ad3c() -> ! {
 
 
 // 0x66ade4 — __ZThn36_N3RBX9GuiObjectD1Ev
-// demangled: `non-virtual thunk to'RBX::GuiObject::~GuiObject()
+// demangled: non-virtual thunk toRBX::GuiObject::~GuiObject()
 // type: void __fastcall(RBX::GuiObject *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GuiObject::~GuiObject()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiObject::~GuiObject()")]
 #[doc(alias = "__ZThn36_N3RBX9GuiObjectD1Ev")]
 pub fn stub_66ade4() -> ! {
     todo!("0x66ade4 __ZThn36_N3RBX9GuiObjectD1Ev")
@@ -1085,9 +1085,9 @@ pub fn stub_66ade4() -> ! {
 
 
 // 0x66adec — __ZThn36_N3RBX9GuiObjectD0Ev
-// demangled: `non-virtual thunk to'RBX::GuiObject::~GuiObject()
+// demangled: non-virtual thunk toRBX::GuiObject::~GuiObject()
 // type: void __fastcall(RBX::GuiObject *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::GuiObject::~GuiObject()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiObject::~GuiObject()")]
 #[doc(alias = "__ZThn36_N3RBX9GuiObjectD0Ev")]
 pub fn stub_66adec() -> ! {
     todo!("0x66adec __ZThn36_N3RBX9GuiObjectD0Ev")

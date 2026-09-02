@@ -1,5 +1,5 @@
 //! core shard AC — 120 core stubs EA-sorted, next uncovered after shard AB (0x11c0f8), lowest EA first.
-//! Source: `ida/export.json` filtered where demangled/mangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted, next 120 uncovered globally.
+//! Source: ida/export.json filtered where demangled/mangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted, next 120 uncovered globally.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
@@ -456,91 +456,91 @@ pub fn stub_0x237370() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_38")]
 // 0x237c98 — __GLOBAL__I_a_38
-// was: `global constructor keyed to_a_38
+// was: global constructor keyed to_a_38
 pub fn stub_0x237c98() -> ! {
     todo!("0x237c98 __GLOBAL__I_a_38")
 }
 
 #[doc(alias = "global constructor keyed to_a_39")]
 // 0x23a570 — __GLOBAL__I_a_39
-// was: `global constructor keyed to_a_39
+// was: global constructor keyed to_a_39
 pub fn stub_0x23a570() -> ! {
     todo!("0x23a570 __GLOBAL__I_a_39")
 }
 
 #[doc(alias = "global constructor keyed to_a_40")]
 // 0x23afa8 — __GLOBAL__I_a_40
-// was: `global constructor keyed to_a_40
+// was: global constructor keyed to_a_40
 pub fn stub_0x23afa8() -> ! {
     todo!("0x23afa8 __GLOBAL__I_a_40")
 }
 
 #[doc(alias = "anonymous namespace::system_error_category::~system_error_category()")]
 // 0x23b544 — __ZN12_GLOBAL__N_121system_error_categoryD1Ev
-// was: `anonymous namespace::system_error_category::~system_error_category()
+// was: anonymous namespace::system_error_category::~system_error_category()
 pub fn stub_0x23b544() -> ! {
     todo!("0x23b544 __ZN12_GLOBAL__N_121system_error_categoryD1Ev")
 }
 
 #[doc(alias = "anonymous namespace::generic_error_category::~generic_error_category()")]
 // 0x23b548 — __ZN12_GLOBAL__N_122generic_error_categoryD1Ev
-// was: `anonymous namespace::generic_error_category::~generic_error_category()
+// was: anonymous namespace::generic_error_category::~generic_error_category()
 pub fn stub_0x23b548() -> ! {
     todo!("0x23b548 __ZN12_GLOBAL__N_122generic_error_categoryD1Ev")
 }
 
 #[doc(alias = "anonymous namespace::generic_error_category::~generic_error_category()")]
 // 0x23b54c — __ZN12_GLOBAL__N_122generic_error_categoryD0Ev
-// was: `anonymous namespace::generic_error_category::~generic_error_category()
+// was: anonymous namespace::generic_error_category::~generic_error_category()
 pub fn stub_0x23b54c() -> ! {
     todo!("0x23b54c __ZN12_GLOBAL__N_122generic_error_categoryD0Ev")
 }
 
 #[doc(alias = "anonymous namespace::generic_error_category::name(void)const")]
 // 0x23b558 — __ZNK12_GLOBAL__N_122generic_error_category4nameEv
-// was: `anonymous namespace::generic_error_category::name(void)const
+// was: anonymous namespace::generic_error_category::name(void)const
 pub fn stub_0x23b558() -> ! {
     todo!("0x23b558 __ZNK12_GLOBAL__N_122generic_error_category4nameEv")
 }
 
 #[doc(alias = "anonymous namespace::generic_error_category::message(int)const")]
 // 0x23b564 — __ZNK12_GLOBAL__N_122generic_error_category7messageEi
-// was: `anonymous namespace::generic_error_category::message(int)const
+// was: anonymous namespace::generic_error_category::message(int)const
 pub fn stub_0x23b564() -> ! {
     todo!("0x23b564 __ZNK12_GLOBAL__N_122generic_error_category7messageEi")
 }
 
 #[doc(alias = "anonymous namespace::system_error_category::~system_error_category()")]
 // 0x23b7cc — __ZN12_GLOBAL__N_121system_error_categoryD0Ev
-// was: `anonymous namespace::system_error_category::~system_error_category()
+// was: anonymous namespace::system_error_category::~system_error_category()
 pub fn stub_0x23b7cc() -> ! {
     todo!("0x23b7cc __ZN12_GLOBAL__N_121system_error_categoryD0Ev")
 }
 
 #[doc(alias = "anonymous namespace::system_error_category::name(void)const")]
 // 0x23b7d8 — __ZNK12_GLOBAL__N_121system_error_category4nameEv
-// was: `anonymous namespace::system_error_category::name(void)const
+// was: anonymous namespace::system_error_category::name(void)const
 pub fn stub_0x23b7d8() -> ! {
     todo!("0x23b7d8 __ZNK12_GLOBAL__N_121system_error_category4nameEv")
 }
 
 #[doc(alias = "anonymous namespace::system_error_category::message(int)const")]
 // 0x23b7e4 — __ZNK12_GLOBAL__N_121system_error_category7messageEi
-// was: `anonymous namespace::system_error_category::message(int)const
+// was: anonymous namespace::system_error_category::message(int)const
 pub fn stub_0x23b7e4() -> ! {
     todo!("0x23b7e4 __ZNK12_GLOBAL__N_121system_error_category7messageEi")
 }
 
 #[doc(alias = "anonymous namespace::system_error_category::default_error_condition(int)const")]
 // 0x23b838 — __ZNK12_GLOBAL__N_121system_error_category23default_error_conditionEi
-// was: `anonymous namespace::system_error_category::default_error_condition(int)const
+// was: anonymous namespace::system_error_category::default_error_condition(int)const
 pub fn stub_0x23b838() -> ! {
     todo!("0x23b838 __ZNK12_GLOBAL__N_121system_error_category23default_error_conditionEi")
 }
 
 #[doc(alias = "global constructor keyed to_a_41")]
 // 0x23ca88 — __GLOBAL__I_a_41
-// was: `global constructor keyed to_a_41
+// was: global constructor keyed to_a_41
 pub fn stub_0x23ca88() -> ! {
     todo!("0x23ca88 __GLOBAL__I_a_41")
 }
@@ -559,7 +559,7 @@ pub fn stub_0x23e568() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_42")]
 // 0x23e574 — __GLOBAL__I_a_42
-// was: `global constructor keyed to_a_42
+// was: global constructor keyed to_a_42
 pub fn stub_0x23e574() -> ! {
     todo!("0x23e574 __GLOBAL__I_a_42")
 }
@@ -584,7 +584,7 @@ pub fn stub_0x23ec00() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_43")]
 // 0x23f068 — __GLOBAL__I_a_43
-// was: `global constructor keyed to_a_43
+// was: global constructor keyed to_a_43
 pub fn stub_0x23f068() -> ! {
     todo!("0x23f068 __GLOBAL__I_a_43")
 }
@@ -603,28 +603,28 @@ pub fn stub_0x23f2a0() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_50")]
 // 0x248be0 — __GLOBAL__I_a_50
-// was: `global constructor keyed to_a_50
+// was: global constructor keyed to_a_50
 pub fn stub_0x248be0() -> ! {
     todo!("0x248be0 __GLOBAL__I_a_50")
 }
 
 #[doc(alias = "global constructor keyed to_a_51")]
 // 0x24bf64 — __GLOBAL__I_a_51
-// was: `global constructor keyed to_a_51
+// was: global constructor keyed to_a_51
 pub fn stub_0x24bf64() -> ! {
     todo!("0x24bf64 __GLOBAL__I_a_51")
 }
 
 #[doc(alias = "global constructor keyed to_a_52")]
 // 0x253c78 — __GLOBAL__I_a_52
-// was: `global constructor keyed to_a_52
+// was: global constructor keyed to_a_52
 pub fn stub_0x253c78() -> ! {
     todo!("0x253c78 __GLOBAL__I_a_52")
 }
 
 #[doc(alias = "global constructor keyed to_a_53")]
 // 0x254bc0 — __GLOBAL__I_a_53
-// was: `global constructor keyed to_a_53
+// was: global constructor keyed to_a_53
 pub fn stub_0x254bc0() -> ! {
     todo!("0x254bc0 __GLOBAL__I_a_53")
 }
@@ -661,7 +661,7 @@ pub fn stub_0x25529c() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_54")]
 // 0x2552f0 — __GLOBAL__I_a_54
-// was: `global constructor keyed to_a_54
+// was: global constructor keyed to_a_54
 pub fn stub_0x2552f0() -> ! {
     todo!("0x2552f0 __GLOBAL__I_a_54")
 }
@@ -722,7 +722,7 @@ pub fn stub_0x2583c8() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_55")]
 // 0x25afd8 — __GLOBAL__I_a_55
-// was: `global constructor keyed to_a_55
+// was: global constructor keyed to_a_55
 pub fn stub_0x25afd8() -> ! {
     todo!("0x25afd8 __GLOBAL__I_a_55")
 }

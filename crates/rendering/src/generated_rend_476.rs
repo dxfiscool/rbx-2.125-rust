@@ -92,7 +92,7 @@ pub fn stub_750dbc() -> ! {
 #[doc(alias = "global constructor keyed to_a_343")]
 #[doc(alias = "__GLOBAL__I_a_343")]
 pub fn stub_750e6c() -> ! {
-    todo!("0x750e6c `global constructor keyed to'_a_343")
+    todo!("0x750e6c global constructor keyed to'_a_343")
 }
 // 0x750f9c — __ZN3RBX18RightAngleRampPoly9buildMeshEv
 // type: _DWORD __fastcall(RBX::RightAngleRampPoly *__hidden this)
@@ -164,7 +164,7 @@ pub fn stub_75222c() -> ! {
 #[doc(alias = "global constructor keyed to_a_344")]
 #[doc(alias = "__GLOBAL__I_a_344")]
 pub fn stub_752518() -> ! {
-    todo!("0x752518 `global constructor keyed to'_a_344")
+    todo!("0x752518 global constructor keyed to'_a_344")
 }
 // 0x752648 — __ZN3RBX10RigidJoint9isAlignedEv
 // type: _DWORD __fastcall(RBX::RigidJoint *__hidden this)
@@ -198,7 +198,7 @@ pub fn stub_752b14() -> ! {
 #[doc(alias = "global constructor keyed to_a_345")]
 #[doc(alias = "__GLOBAL__I_a_345")]
 pub fn stub_752b18() -> ! {
-    todo!("0x752b18 `global constructor keyed to'_a_345")
+    todo!("0x752b18 global constructor keyed to'_a_345")
 }
 // 0x752be0 — __ZN3RBX11RotateJointC1Ev
 // type: _DWORD __fastcall(RBX::RotateJoint *__hidden this)
@@ -233,14 +233,14 @@ pub fn stub_752cc8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RotateJoint::~RotateJoint()")]
 #[doc(alias = "__ZThn32_N3RBX11RotateJointD0Ev")]
 pub fn stub_752ccc() -> ! {
-    todo!("0x752ccc `non-virtual thunk to'RBX::RotateJoint::~RotateJoint()")
+    todo!("0x752ccc non-virtual thunk toRBX::RotateJoint::~RotateJoint()")
 }
 // 0x752cd4 — __ZThn32_N3RBX11RotateJointD1Ev
 // type: void __fastcall(RBX::RotateJoint *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RotateJoint::~RotateJoint()")]
 #[doc(alias = "__ZThn32_N3RBX11RotateJointD1Ev")]
 pub fn stub_752cd4() -> ! {
-    todo!("0x752cd4 `non-virtual thunk to'RBX::RotateJoint::~RotateJoint()")
+    todo!("0x752cd4 non-virtual thunk toRBX::RotateJoint::~RotateJoint()")
 }
 // 0x752cdc — __ZN3RBX11RotateJoint21getAxleWorldDirectionEv
 // type: _DWORD __fastcall(RBX::RotateJoint *__hidden this)
@@ -303,7 +303,7 @@ pub fn stub_753ca0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DynamicRotateJoint::~DynamicRotateJoint()")]
 #[doc(alias = "__ZThn32_N3RBX18DynamicRotateJointD0Ev")]
 pub fn stub_753ca4() -> ! {
-    todo!("0x753ca4 `non-virtual thunk to'RBX::DynamicRotateJoint::~DynamicRotateJoint()")
+    todo!("0x753ca4 non-virtual thunk toRBX::DynamicRotateJoint::~DynamicRotateJoint()")
 }
 // 0x753cac — __ZN3RBX18DynamicRotateJointD2Ev
 // type: void __fastcall(RBX::DynamicRotateJoint *__hidden this)
@@ -317,7 +317,7 @@ pub fn stub_753cac() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DynamicRotateJoint::~DynamicRotateJoint()")]
 #[doc(alias = "__ZThn32_N3RBX18DynamicRotateJointD1Ev")]
 pub fn stub_753dd4() -> ! {
-    todo!("0x753dd4 `non-virtual thunk to'RBX::DynamicRotateJoint::~DynamicRotateJoint()")
+    todo!("0x753dd4 non-virtual thunk toRBX::DynamicRotateJoint::~DynamicRotateJoint()")
 }
 // 0x753ddc — __ZN3RBX18DynamicRotateJoint10setPhysicsEv
 // type: _DWORD __fastcall(RBX::DynamicRotateJoint *__hidden this)
@@ -415,14 +415,14 @@ pub fn stub_754248() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RotatePJoint::~RotatePJoint()")]
 #[doc(alias = "__ZThn32_N3RBX12RotatePJointD1Ev")]
 pub fn stub_75424c() -> ! {
-    todo!("0x75424c `non-virtual thunk to'RBX::RotatePJoint::~RotatePJoint()")
+    todo!("0x75424c non-virtual thunk toRBX::RotatePJoint::~RotatePJoint()")
 }
 // 0x754254 — __ZThn32_N3RBX12RotatePJointD0Ev
 // type: void __fastcall(RBX::RotatePJoint *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RotatePJoint::~RotatePJoint()")]
 #[doc(alias = "__ZThn32_N3RBX12RotatePJointD0Ev")]
 pub fn stub_754254() -> ! {
-    todo!("0x754254 `non-virtual thunk to'RBX::RotatePJoint::~RotatePJoint()")
+    todo!("0x754254 non-virtual thunk toRBX::RotatePJoint::~RotatePJoint()")
 }
 // 0x7542f8 — __ZN3RBX12RotateVJointD1Ev
 // type: void __fastcall(RBX::RotateVJoint *__hidden this)
@@ -450,14 +450,14 @@ pub fn stub_75439c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RotateVJoint::~RotateVJoint()")]
 #[doc(alias = "__ZThn32_N3RBX12RotateVJointD1Ev")]
 pub fn stub_7543a0() -> ! {
-    todo!("0x7543a0 `non-virtual thunk to'RBX::RotateVJoint::~RotateVJoint()")
+    todo!("0x7543a0 non-virtual thunk toRBX::RotateVJoint::~RotateVJoint()")
 }
 // 0x7543a8 — __ZThn32_N3RBX12RotateVJointD0Ev
 // type: void __fastcall(RBX::RotateVJoint *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RotateVJoint::~RotateVJoint()")]
 #[doc(alias = "__ZThn32_N3RBX12RotateVJointD0Ev")]
 pub fn stub_7543a8() -> ! {
-    todo!("0x7543a8 `non-virtual thunk to'RBX::RotateVJoint::~RotateVJoint()")
+    todo!("0x7543a8 non-virtual thunk toRBX::RotateVJoint::~RotateVJoint()")
 }
 // 0x75444c — __ZNK3RBX14JointConnector22getConnectorKernelTypeEv
 // type: _DWORD __fastcall(RBX::JointConnector *__hidden this)
@@ -491,7 +491,7 @@ pub fn stub_754458() -> ! {
 #[doc(alias = "global constructor keyed to_a_346")]
 #[doc(alias = "__GLOBAL__I_a_346")]
 pub fn stub_754460() -> ! {
-    todo!("0x754460 `global constructor keyed to'_a_346")
+    todo!("0x754460 global constructor keyed to'_a_346")
 }
 // 0x75462c — __ZN3RBX11SendPhysicsC1Ev
 // type: _DWORD __fastcall(RBX::SendPhysics *__hidden this)
@@ -560,7 +560,7 @@ pub fn stub_754e00() -> ! {
 #[doc(alias = "global constructor keyed to_a_347")]
 #[doc(alias = "__GLOBAL__I_a_347")]
 pub fn stub_754e74() -> ! {
-    todo!("0x754e74 `global constructor keyed to'_a_347")
+    todo!("0x754e74 global constructor keyed to'_a_347")
 }
 // 0x754f3c — __ZN3RBX6SimJob27getConstSimJobFromPrimitiveEPKNS_9PrimitiveE
 // type: _DWORD __fastcall(RBX::SimJob *__hidden this, const RBX::Primitive *)
@@ -680,7 +680,7 @@ pub fn stub_75599c() -> ! {
 #[doc(alias = "global constructor keyed to_a_348")]
 #[doc(alias = "__GLOBAL__I_a_348")]
 pub fn stub_755a2c() -> ! {
-    todo!("0x755a2c `global constructor keyed to'_a_348")
+    todo!("0x755a2c global constructor keyed to'_a_348")
 }
 // 0x755af4 — __ZN3RBX13SimulateStageC1EPNS_6IStageEPNS_5WorldE
 // type: _DWORD __fastcall(RBX::SimulateStage *__hidden this, RBX::IStage *, RBX::World *)
@@ -801,7 +801,7 @@ pub fn stub_75646c() -> ! {
 #[doc(alias = "global constructor keyed to_a_349")]
 #[doc(alias = "__GLOBAL__I_a_349")]
 pub fn stub_756494() -> ! {
-    todo!("0x756494 `global constructor keyed to'_a_349")
+    todo!("0x756494 global constructor keyed to'_a_349")
 }
 // 0x75655c — __ZN3RBX10SleepStageC1EPNS_6IStageEPNS_5WorldE
 // type: _DWORD __fastcall(RBX::SleepStage *__hidden this, RBX::IStage *, RBX::World *)

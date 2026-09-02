@@ -487,14 +487,14 @@ pub fn stub_0x3c9d7c() -> ! {
 // type: void __fastcall(RBX::Camera *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX6CameraD1Ev")]
 pub fn stub_0x3c9d8c() -> ! {
-    todo!("0x3c9d8c `non-virtual thunk to'RBX::Camera::~Camera()")
+    todo!("0x3c9d8c non-virtual thunk toRBX::Camera::~Camera()")
 }
 
 // 0x3c9d94 — __ZThn32_N3RBX6CameraD0Ev
 // type: void __fastcall(RBX::Camera *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX6CameraD0Ev")]
 pub fn stub_0x3c9d94() -> ! {
-    todo!("0x3c9d94 `non-virtual thunk to'RBX::Camera::~Camera()")
+    todo!("0x3c9d94 non-virtual thunk toRBX::Camera::~Camera()")
 }
 
 // 0x3c9d9c — __ZThn32_NK3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E12getClassNameEv
@@ -508,28 +508,28 @@ pub fn stub_0x3c9d9c() -> ! {
 // type: void __fastcall(RBX::Camera *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX6CameraD1Ev")]
 pub fn stub_0x3c9dac() -> ! {
-    todo!("0x3c9dac `non-virtual thunk to'RBX::Camera::~Camera()")
+    todo!("0x3c9dac non-virtual thunk toRBX::Camera::~Camera()")
 }
 
 // 0x3c9db4 — __ZThn36_N3RBX6CameraD0Ev
 // type: void __fastcall(RBX::Camera *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX6CameraD0Ev")]
 pub fn stub_0x3c9db4() -> ! {
-    todo!("0x3c9db4 `non-virtual thunk to'RBX::Camera::~Camera()")
+    todo!("0x3c9db4 non-virtual thunk toRBX::Camera::~Camera()")
 }
 
 // 0x3c9dbc — __ZThn92_N3RBX6CameraD1Ev
 // type: void __fastcall(RBX::Camera *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX6CameraD1Ev")]
 pub fn stub_0x3c9dbc() -> ! {
-    todo!("0x3c9dbc `non-virtual thunk to'RBX::Camera::~Camera()")
+    todo!("0x3c9dbc non-virtual thunk toRBX::Camera::~Camera()")
 }
 
 // 0x3c9dc4 — __ZThn92_N3RBX6CameraD0Ev
 // type: void __fastcall(RBX::Camera *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX6CameraD0Ev")]
 pub fn stub_0x3c9dc4() -> ! {
-    todo!("0x3c9dc4 `non-virtual thunk to'RBX::Camera::~Camera()")
+    todo!("0x3c9dc4 non-virtual thunk toRBX::Camera::~Camera()")
 }
 
 // 0x3c9dcc — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEED1Ev

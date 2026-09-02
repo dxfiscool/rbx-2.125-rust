@@ -1,5 +1,5 @@
 //! core watchdog coreB — 120 core stubs EA-sorted, fallback gap filler after watchdog_w 0x3e7298.
-//! Source: `ida/export.json` (85545 funcs) global EA asc not yet in rbx_core — next 120 uncovered after 0x3e7298 (watchdog_w max).
+//! Source: ida/export.json (85545 funcs) global EA asc not yet in rbx_core — next 120 uncovered after 0x3e7298 (watchdog_w max).
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 

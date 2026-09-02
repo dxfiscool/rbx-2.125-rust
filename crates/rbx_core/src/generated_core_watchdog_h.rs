@@ -1,5 +1,5 @@
 //! core watchdog h — 120 core stubs EA-sorted, continuation after watchdog_g 0x734ae0.
-//! Source: `ida/export.json` (85545 funcs) global EA asc not yet in rbx_core — next 120 uncovered after 0x734ae0 (watchdog_g max).
+//! Source: ida/export.json (85545 funcs) global EA asc not yet in rbx_core — next 120 uncovered after 0x734ae0 (watchdog_g max).
 //! Filter: core namespace (exclude Reflection, Instance, DataModel, Workspace, Ogre, G3D, RakNet, Network, Replicator, Lua, Script, Yield, CodeGen, FMOD, Audio, Sound).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 

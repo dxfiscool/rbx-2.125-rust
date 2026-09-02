@@ -60,11 +60,11 @@ pub fn stub_73beac() -> ! {
 }
 
 // 0x73c03c — __GLOBAL__I_a_328
-// was: ``global constructor keyed to'_a_328`
+// was: global constructor keyed to'_a_328
 #[doc(alias = "global constructor keyed to_a_328")]
 #[doc(alias = "__GLOBAL__I_a_328")]
 pub fn stub_73c03c() -> ! {
-    todo!("0x73c03c `global constructor keyed to'_a_328")
+    todo!("0x73c03c global constructor keyed to'_a_328")
 }
 
 // 0x73c104 — __ZN3RBX9MechanismC1Ev
@@ -101,11 +101,11 @@ pub fn stub_73c288() -> ! {
 
 // 0x73c28c — __ZThn8_N3RBX9MechanismD0Ev
 // type: void __fastcall(RBX::Mechanism *__hidden this)
-// was: ``non-virtual thunk to'RBX::Mechanism::~Mechanism()`
+// was: non-virtual thunk toRBX::Mechanism::~Mechanism()
 #[doc(alias = "non-virtual thunk toRBX::Mechanism::~Mechanism()")]
 #[doc(alias = "__ZThn8_N3RBX9MechanismD0Ev")]
 pub fn stub_73c28c() -> ! {
-    todo!("0x73c28c `non-virtual thunk to'RBX::Mechanism::~Mechanism()")
+    todo!("0x73c28c non-virtual thunk toRBX::Mechanism::~Mechanism()")
 }
 
 // 0x73c294 — __ZN3RBX9MechanismD2Ev
@@ -118,11 +118,11 @@ pub fn stub_73c294() -> ! {
 
 // 0x73c350 — __ZThn8_N3RBX9MechanismD1Ev
 // type: void __fastcall(RBX::Mechanism *__hidden this)
-// was: ``non-virtual thunk to'RBX::Mechanism::~Mechanism()`
+// was: non-virtual thunk toRBX::Mechanism::~Mechanism()
 #[doc(alias = "non-virtual thunk toRBX::Mechanism::~Mechanism()")]
 #[doc(alias = "__ZThn8_N3RBX9MechanismD1Ev")]
 pub fn stub_73c350() -> ! {
-    todo!("0x73c350 `non-virtual thunk to'RBX::Mechanism::~Mechanism()")
+    todo!("0x73c350 non-virtual thunk toRBX::Mechanism::~Mechanism()")
 }
 
 // 0x73c358 — __ZNK3RBX9Mechanism26getConstMechanismPrimitiveEv
@@ -222,11 +222,11 @@ pub fn stub_73c584() -> ! {
 }
 
 // 0x73c628 — __GLOBAL__I_a_329
-// was: ``global constructor keyed to'_a_329`
+// was: global constructor keyed to'_a_329
 #[doc(alias = "global constructor keyed to_a_329")]
 #[doc(alias = "__GLOBAL__I_a_329")]
 pub fn stub_73c628() -> ! {
-    todo!("0x73c628 `global constructor keyed to'_a_329")
+    todo!("0x73c628 global constructor keyed to'_a_329")
 }
 
 // 0x73c6f0 — __ZN3RBX19MechToAssemblyStageC1EPNS_6IStageEPNS_5WorldE
@@ -325,11 +325,11 @@ pub fn stub_73cbc8() -> ! {
 }
 
 // 0x73cc88 — __GLOBAL__I_a_330
-// was: ``global constructor keyed to'_a_330`
+// was: global constructor keyed to'_a_330
 #[doc(alias = "global constructor keyed to_a_330")]
 #[doc(alias = "__GLOBAL__I_a_330")]
 pub fn stub_73cc88() -> ! {
-    todo!("0x73cc88 `global constructor keyed to'_a_330")
+    todo!("0x73cc88 global constructor keyed to'_a_330")
 }
 
 // 0x73cea8 — __ZN3RBX4POLY4Mesh9addVertexEfff
@@ -692,11 +692,11 @@ pub fn stub_741650() -> ! {
 }
 
 // 0x7416e0 — __GLOBAL__I_a_331
-// was: ``global constructor keyed to'_a_331`
+// was: global constructor keyed to'_a_331
 #[doc(alias = "global constructor keyed to_a_331")]
 #[doc(alias = "__GLOBAL__I_a_331")]
 pub fn stub_7416e0() -> ! {
-    todo!("0x7416e0 `global constructor keyed to'_a_331")
+    todo!("0x7416e0 global constructor keyed to'_a_331")
 }
 
 // 0x7417a8 — __ZN3RBX12Motor6DJointC1Ev
@@ -733,11 +733,11 @@ pub fn stub_7419c0() -> ! {
 
 // 0x7419c4 — __ZThn32_N3RBX12Motor6DJointD0Ev
 // type: void __fastcall(RBX::Motor6DJoint *__hidden this)
-// was: ``non-virtual thunk to'RBX::Motor6DJoint::~Motor6DJoint()`
+// was: non-virtual thunk toRBX::Motor6DJoint::~Motor6DJoint()
 #[doc(alias = "non-virtual thunk toRBX::Motor6DJoint::~Motor6DJoint()")]
 #[doc(alias = "__ZThn32_N3RBX12Motor6DJointD0Ev")]
 pub fn stub_7419c4() -> ! {
-    todo!("0x7419c4 `non-virtual thunk to'RBX::Motor6DJoint::~Motor6DJoint()")
+    todo!("0x7419c4 non-virtual thunk toRBX::Motor6DJoint::~Motor6DJoint()")
 }
 
 // 0x7419cc — __ZN3RBX12Motor6DJointD2Ev
@@ -750,11 +750,11 @@ pub fn stub_7419cc() -> ! {
 
 // 0x741ac8 — __ZThn32_N3RBX12Motor6DJointD1Ev
 // type: void __fastcall(RBX::Motor6DJoint *__hidden this)
-// was: ``non-virtual thunk to'RBX::Motor6DJoint::~Motor6DJoint()`
+// was: non-virtual thunk toRBX::Motor6DJoint::~Motor6DJoint()
 #[doc(alias = "non-virtual thunk toRBX::Motor6DJoint::~Motor6DJoint()")]
 #[doc(alias = "__ZThn32_N3RBX12Motor6DJointD1Ev")]
 pub fn stub_741ac8() -> ! {
-    todo!("0x741ac8 `non-virtual thunk to'RBX::Motor6DJoint::~Motor6DJoint()")
+    todo!("0x741ac8 non-virtual thunk toRBX::Motor6DJoint::~Motor6DJoint()")
 }
 
 // 0x741ad0 — __ZNK3RBX12Motor6DJoint11getParentIdEv

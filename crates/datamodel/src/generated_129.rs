@@ -2,7 +2,7 @@
 // Filter: demangled contains RBX:: + Instance|DataModel|Workspace|Part|Model (broad, includes PartInstance/MegaClusterInstance etc), EA-sorted, true uncovered after existing shards
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x3eae34..0x68af6c | total filtered 13497, remaining 276->176 after batch
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; `'` stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

@@ -1,5 +1,5 @@
 //! generated_watchdog_core_w1 — 120 gap-fill stubs EA-sorted, lowest uncovered EA first.
-//! Source: `ida/export.json` global gap filler (all EAs not yet in crates/*/src/*.rs via stub_0x), EA-sorted ascending.
+//! Source: ida/export.json global gap filler (all EAs not yet in crates/*/src/*.rs via stub_0x), EA-sorted ascending.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]

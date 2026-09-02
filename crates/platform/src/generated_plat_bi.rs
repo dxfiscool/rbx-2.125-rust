@@ -359,7 +359,7 @@ pub fn stub_243304() -> ! {
 // 0x2434dc — __GLOBAL__I_a_44
 #[doc(alias = "global constructor keyed to_a_44")]
 pub fn stub_2434dc() -> ! {
-    todo!("0x2434dc `global constructor keyed to'_a_44")
+    todo!("0x2434dc global constructor keyed to'_a_44")
 }
 
 // 0x2435a4 — __ZN3RBX6CEvent4WaitEv
@@ -421,7 +421,7 @@ pub fn stub_243b84() -> ! {
 // 0x243dd0 — __GLOBAL__I_a_45
 #[doc(alias = "global constructor keyed to_a_45")]
 pub fn stub_243dd0() -> ! {
-    todo!("0x243dd0 `global constructor keyed to'_a_45")
+    todo!("0x243dd0 global constructor keyed to'_a_45")
 }
 
 // 0x243e98 — __ZN3RBX6Limits9CountableC2Ev
@@ -591,7 +591,7 @@ pub fn stub_244cb0() -> ! {
 // 0x244cb4 — __GLOBAL__I_a_46
 #[doc(alias = "global constructor keyed to_a_46")]
 pub fn stub_244cb4() -> ! {
-    todo!("0x244cb4 `global constructor keyed to'_a_46")
+    todo!("0x244cb4 global constructor keyed to'_a_46")
 }
 
 // 0x244d7c — __ZN3RBX16roblox_allocator6mallocEm
@@ -626,7 +626,7 @@ pub fn stub_244dcc() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed to_a_47")]
 pub fn stub_244de0() -> ! {
-    todo!("0x244de0 `global constructor keyed to'_a_47")
+    todo!("0x244de0 global constructor keyed to'_a_47")
 }
 
 // 0x244e94 — __ZNK3rbx7signals10connection10disconnectEv
@@ -681,7 +681,7 @@ pub fn stub_245544() -> ! {
 // 0x245548 — __GLOBAL__I_a_48
 #[doc(alias = "global constructor keyed to_a_48")]
 pub fn stub_245548() -> ! {
-    todo!("0x245548 `global constructor keyed to'_a_48")
+    todo!("0x245548 global constructor keyed to'_a_48")
 }
 
 // 0x2456a0 — __ZN3RBX5Tasks12SequenceBase11isInhibitedEPNS_13TaskScheduler3JobE
@@ -722,7 +722,7 @@ pub fn stub_245848() -> ! {
 // 0x245940 — __GLOBAL__I_a_49
 #[doc(alias = "global constructor keyed to_a_49")]
 pub fn stub_245940() -> ! {
-    todo!("0x245940 `global constructor keyed to'_a_49")
+    todo!("0x245940 global constructor keyed to'_a_49")
 }
 
 // 0x245a08 — __ZNK3RBX13TaskScheduler30getSchedulerDutyCyclePerThreadEv

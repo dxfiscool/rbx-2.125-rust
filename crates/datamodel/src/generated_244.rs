@@ -2,7 +2,7 @@
 // Filter: EA-sorted asc global gap filler not yet in datamodel crate (any mangled not yet stubbed in datamodel)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x1a631c..0x1b5118 | datamodel distinct 27702->27802, workspace 85546->85546, global missing 57843->57743
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias where needed
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

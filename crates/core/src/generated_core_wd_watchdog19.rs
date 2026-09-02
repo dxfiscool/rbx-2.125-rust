@@ -163,13 +163,13 @@ pub fn stub_0x6359f4() -> ! {
     todo!("0x6359f4 __ZNK3RBX14FactoryProductINS_3SkyENS_8InstanceELZNS_4sSkyEES2_E12getClassNameEv")
 }
 
-// 0x635a04 — `non-virtual thunk toRBX::Sky::~Sky()
+// 0x635a04 — non-virtual thunk toRBX::Sky::~Sky()
 #[doc(alias = "__ZThn32_N3RBX3SkyD1Ev")]
 pub fn stub_0x635a04() -> ! {
     todo!("0x635a04 __ZThn32_N3RBX3SkyD1Ev")
 }
 
-// 0x635a70 — `non-virtual thunk toRBX::Sky::~Sky()
+// 0x635a70 — non-virtual thunk toRBX::Sky::~Sky()
 #[doc(alias = "__ZThn32_N3RBX3SkyD0Ev")]
 pub fn stub_0x635a70() -> ! {
     todo!("0x635a70 __ZThn32_N3RBX3SkyD0Ev")
@@ -181,13 +181,13 @@ pub fn stub_0x635b6c() -> ! {
     todo!("0x635b6c __ZThn32_NK3RBX14FactoryProductINS_3SkyENS_8InstanceELZNS_4sSkyEES2_E12getClassNameEv")
 }
 
-// 0x635b7c — `non-virtual thunk toRBX::Sky::~Sky()
+// 0x635b7c — non-virtual thunk toRBX::Sky::~Sky()
 #[doc(alias = "__ZThn36_N3RBX3SkyD1Ev")]
 pub fn stub_0x635b7c() -> ! {
     todo!("0x635b7c __ZThn36_N3RBX3SkyD1Ev")
 }
 
-// 0x635be8 — `non-virtual thunk toRBX::Sky::~Sky()
+// 0x635be8 — non-virtual thunk toRBX::Sky::~Sky()
 #[doc(alias = "__ZThn36_N3RBX3SkyD0Ev")]
 pub fn stub_0x635be8() -> ! {
     todo!("0x635be8 __ZThn36_N3RBX3SkyD0Ev")
@@ -277,19 +277,19 @@ pub fn stub_0x637708() -> ! {
     todo!("0x637708 __ZN3RBX5SmokeD1Ev")
 }
 
-// 0x63770c — `non-virtual thunk toRBX::Smoke::~Smoke()
+// 0x63770c — non-virtual thunk toRBX::Smoke::~Smoke()
 #[doc(alias = "__ZThn32_N3RBX5SmokeD0Ev")]
 pub fn stub_0x63770c() -> ! {
     todo!("0x63770c __ZThn32_N3RBX5SmokeD0Ev")
 }
 
-// 0x637714 — `non-virtual thunk toRBX::Smoke::~Smoke()
+// 0x637714 — non-virtual thunk toRBX::Smoke::~Smoke()
 #[doc(alias = "__ZThn36_N3RBX5SmokeD0Ev")]
 pub fn stub_0x637714() -> ! {
     todo!("0x637714 __ZThn36_N3RBX5SmokeD0Ev")
 }
 
-// 0x63771c — `non-virtual thunk toRBX::Smoke::~Smoke()
+// 0x63771c — non-virtual thunk toRBX::Smoke::~Smoke()
 #[doc(alias = "__ZThn92_N3RBX5SmokeD0Ev")]
 pub fn stub_0x63771c() -> ! {
     todo!("0x63771c __ZThn92_N3RBX5SmokeD0Ev")
@@ -301,19 +301,19 @@ pub fn stub_0x637724() -> ! {
     todo!("0x637724 __ZN3RBX5SmokeD2Ev")
 }
 
-// 0x6377e0 — `non-virtual thunk toRBX::Smoke::~Smoke()
+// 0x6377e0 — non-virtual thunk toRBX::Smoke::~Smoke()
 #[doc(alias = "__ZThn32_N3RBX5SmokeD1Ev")]
 pub fn stub_0x6377e0() -> ! {
     todo!("0x6377e0 __ZThn32_N3RBX5SmokeD1Ev")
 }
 
-// 0x6377e8 — `non-virtual thunk toRBX::Smoke::~Smoke()
+// 0x6377e8 — non-virtual thunk toRBX::Smoke::~Smoke()
 #[doc(alias = "__ZThn36_N3RBX5SmokeD1Ev")]
 pub fn stub_0x6377e8() -> ! {
     todo!("0x6377e8 __ZThn36_N3RBX5SmokeD1Ev")
 }
 
-// 0x6377f0 — `non-virtual thunk toRBX::Smoke::~Smoke()
+// 0x6377f0 — non-virtual thunk toRBX::Smoke::~Smoke()
 #[doc(alias = "__ZThn92_N3RBX5SmokeD1Ev")]
 pub fn stub_0x6377f0() -> ! {
     todo!("0x6377f0 __ZThn92_N3RBX5SmokeD1Ev")
@@ -481,13 +481,13 @@ pub fn stub_0x63aee4() -> ! {
     todo!("0x63aee4 __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sSocialServiceEEE12getClassNameEv")
 }
 
-// 0x63af0c — `non-virtual thunk toRBX::SocialService::~SocialService()
+// 0x63af0c — non-virtual thunk toRBX::SocialService::~SocialService()
 #[doc(alias = "__ZThn32_N3RBX13SocialServiceD1Ev")]
 pub fn stub_0x63af0c() -> ! {
     todo!("0x63af0c __ZThn32_N3RBX13SocialServiceD1Ev")
 }
 
-// 0x63af80 — `non-virtual thunk toRBX::SocialService::~SocialService()
+// 0x63af80 — non-virtual thunk toRBX::SocialService::~SocialService()
 #[doc(alias = "__ZThn32_N3RBX13SocialServiceD0Ev")]
 pub fn stub_0x63af80() -> ! {
     todo!("0x63af80 __ZThn32_N3RBX13SocialServiceD0Ev")
@@ -499,13 +499,13 @@ pub fn stub_0x63b084() -> ! {
     todo!("0x63b084 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sSocialServiceEEE12getClassNameEv")
 }
 
-// 0x63b0ac — `non-virtual thunk toRBX::SocialService::~SocialService()
+// 0x63b0ac — non-virtual thunk toRBX::SocialService::~SocialService()
 #[doc(alias = "__ZThn36_N3RBX13SocialServiceD1Ev")]
 pub fn stub_0x63b0ac() -> ! {
     todo!("0x63b0ac __ZThn36_N3RBX13SocialServiceD1Ev")
 }
 
-// 0x63b120 — `non-virtual thunk toRBX::SocialService::~SocialService()
+// 0x63b120 — non-virtual thunk toRBX::SocialService::~SocialService()
 #[doc(alias = "__ZThn36_N3RBX13SocialServiceD0Ev")]
 pub fn stub_0x63b120() -> ! {
     todo!("0x63b120 __ZThn36_N3RBX13SocialServiceD0Ev")

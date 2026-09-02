@@ -2,7 +2,7 @@
 // Filter: Script|Lua|Yield|CodeGen|Luau (filtered 4818 exhausted) — EA-sorted asc gap filler distinct not yet in crates/script/src
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: +120 stubs | range 0x514734..0x523f84 | EA-sorted asc distinct not yet in script (remaining 55750->55630, rbx_core::SharedPtr not boost)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -493,7 +493,7 @@ pub fn stub_0x522318() -> ! {
     todo!("0x522318 __ZN3RBX13UnifiedWidget18onMenuStateChangedEv")
 }
 
-// 0x52231c — __ZThn32_NK3RBX7GuiItem12getClassNameEv — `non-virtual thunk to'RBX::GuiItem::getClassName(void)const
+// 0x52231c — __ZThn32_NK3RBX7GuiItem12getClassNameEv — non-virtual thunk toRBX::GuiItem::getClassName(void)const
 // type: _DWORD __fastcall(RBX::GuiItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiItem::getClassName(void)const")]
 #[doc(alias = "__ZThn32_NK3RBX7GuiItem12getClassNameEv")]
@@ -525,7 +525,7 @@ pub fn stub_0x522500() -> ! {
     todo!("0x522500 __ZN3RBX18UnifiedImageWidgetD0Ev")
 }
 
-// 0x522608 — __ZThn32_N3RBX18UnifiedImageWidgetD1Ev — `non-virtual thunk to'RBX::UnifiedImageWidget::~UnifiedImageWidget()
+// 0x522608 — __ZThn32_N3RBX18UnifiedImageWidgetD1Ev — non-virtual thunk toRBX::UnifiedImageWidget::~UnifiedImageWidget()
 // type: void __fastcall(RBX::UnifiedImageWidget *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::UnifiedImageWidget::~UnifiedImageWidget()")]
 #[doc(alias = "__ZThn32_N3RBX18UnifiedImageWidgetD1Ev")]
@@ -533,7 +533,7 @@ pub fn stub_0x522608() -> ! {
     todo!("0x522608 __ZThn32_N3RBX18UnifiedImageWidgetD1Ev")
 }
 
-// 0x5226fc — __ZThn32_N3RBX18UnifiedImageWidgetD0Ev — `non-virtual thunk to'RBX::UnifiedImageWidget::~UnifiedImageWidget()
+// 0x5226fc — __ZThn32_N3RBX18UnifiedImageWidgetD0Ev — non-virtual thunk toRBX::UnifiedImageWidget::~UnifiedImageWidget()
 // type: void __fastcall(RBX::UnifiedImageWidget *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::UnifiedImageWidget::~UnifiedImageWidget()")]
 #[doc(alias = "__ZThn32_N3RBX18UnifiedImageWidgetD0Ev")]
@@ -541,7 +541,7 @@ pub fn stub_0x5226fc() -> ! {
     todo!("0x5226fc __ZThn32_N3RBX18UnifiedImageWidgetD0Ev")
 }
 
-// 0x522808 — __ZThn36_N3RBX18UnifiedImageWidgetD1Ev — `non-virtual thunk to'RBX::UnifiedImageWidget::~UnifiedImageWidget()
+// 0x522808 — __ZThn36_N3RBX18UnifiedImageWidgetD1Ev — non-virtual thunk toRBX::UnifiedImageWidget::~UnifiedImageWidget()
 // type: void __fastcall(RBX::UnifiedImageWidget *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::UnifiedImageWidget::~UnifiedImageWidget()")]
 #[doc(alias = "__ZThn36_N3RBX18UnifiedImageWidgetD1Ev")]
@@ -549,7 +549,7 @@ pub fn stub_0x522808() -> ! {
     todo!("0x522808 __ZThn36_N3RBX18UnifiedImageWidgetD1Ev")
 }
 
-// 0x5228fc — __ZThn36_N3RBX18UnifiedImageWidgetD0Ev — `non-virtual thunk to'RBX::UnifiedImageWidget::~UnifiedImageWidget()
+// 0x5228fc — __ZThn36_N3RBX18UnifiedImageWidgetD0Ev — non-virtual thunk toRBX::UnifiedImageWidget::~UnifiedImageWidget()
 // type: void __fastcall(RBX::UnifiedImageWidget *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::UnifiedImageWidget::~UnifiedImageWidget()")]
 #[doc(alias = "__ZThn36_N3RBX18UnifiedImageWidgetD0Ev")]
@@ -596,7 +596,7 @@ pub fn stub_0x522e8c() -> ! {
     todo!("0x522e8c __ZNK3RBX7GuiItem7getSizeENS_6CanvasE")
 }
 
-// 0x522e98 — __ZThn32_N3RBX13UnifiedWidgetD1Ev — `non-virtual thunk to'RBX::UnifiedWidget::~UnifiedWidget()
+// 0x522e98 — __ZThn32_N3RBX13UnifiedWidgetD1Ev — non-virtual thunk toRBX::UnifiedWidget::~UnifiedWidget()
 // type: void __fastcall(RBX::UnifiedWidget *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::UnifiedWidget::~UnifiedWidget()")]
 #[doc(alias = "__ZThn32_N3RBX13UnifiedWidgetD1Ev")]
@@ -604,7 +604,7 @@ pub fn stub_0x522e98() -> ! {
     todo!("0x522e98 __ZThn32_N3RBX13UnifiedWidgetD1Ev")
 }
 
-// 0x522ea0 — __ZThn32_N3RBX13UnifiedWidgetD0Ev — `non-virtual thunk to'RBX::UnifiedWidget::~UnifiedWidget()
+// 0x522ea0 — __ZThn32_N3RBX13UnifiedWidgetD0Ev — non-virtual thunk toRBX::UnifiedWidget::~UnifiedWidget()
 // type: void __fastcall(RBX::UnifiedWidget *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::UnifiedWidget::~UnifiedWidget()")]
 #[doc(alias = "__ZThn32_N3RBX13UnifiedWidgetD0Ev")]
@@ -612,7 +612,7 @@ pub fn stub_0x522ea0() -> ! {
     todo!("0x522ea0 __ZThn32_N3RBX13UnifiedWidgetD0Ev")
 }
 
-// 0x522f44 — __ZThn36_N3RBX13UnifiedWidgetD1Ev — `non-virtual thunk to'RBX::UnifiedWidget::~UnifiedWidget()
+// 0x522f44 — __ZThn36_N3RBX13UnifiedWidgetD1Ev — non-virtual thunk toRBX::UnifiedWidget::~UnifiedWidget()
 // type: void __fastcall(RBX::UnifiedWidget *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::UnifiedWidget::~UnifiedWidget()")]
 #[doc(alias = "__ZThn36_N3RBX13UnifiedWidgetD1Ev")]
@@ -620,7 +620,7 @@ pub fn stub_0x522f44() -> ! {
     todo!("0x522f44 __ZThn36_N3RBX13UnifiedWidgetD1Ev")
 }
 
-// 0x522f4c — __ZThn36_N3RBX13UnifiedWidgetD0Ev — `non-virtual thunk to'RBX::UnifiedWidget::~UnifiedWidget()
+// 0x522f4c — __ZThn36_N3RBX13UnifiedWidgetD0Ev — non-virtual thunk toRBX::UnifiedWidget::~UnifiedWidget()
 // type: void __fastcall(RBX::UnifiedWidget *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::UnifiedWidget::~UnifiedWidget()")]
 #[doc(alias = "__ZThn36_N3RBX13UnifiedWidgetD0Ev")]
@@ -854,7 +854,7 @@ pub fn stub_0x523ad4() -> ! {
     todo!("0x523ad4 __ZN3RBX10TopMenuBarD0Ev")
 }
 
-// 0x523b74 — __ZThn32_N3RBX10TopMenuBarD1Ev — `non-virtual thunk to'RBX::TopMenuBar::~TopMenuBar()
+// 0x523b74 — __ZThn32_N3RBX10TopMenuBarD1Ev — non-virtual thunk toRBX::TopMenuBar::~TopMenuBar()
 // type: void __fastcall(RBX::TopMenuBar *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TopMenuBar::~TopMenuBar()")]
 #[doc(alias = "__ZThn32_N3RBX10TopMenuBarD1Ev")]
@@ -862,7 +862,7 @@ pub fn stub_0x523b74() -> ! {
     todo!("0x523b74 __ZThn32_N3RBX10TopMenuBarD1Ev")
 }
 
-// 0x523b7c — __ZThn32_N3RBX10TopMenuBarD0Ev — `non-virtual thunk to'RBX::TopMenuBar::~TopMenuBar()
+// 0x523b7c — __ZThn32_N3RBX10TopMenuBarD0Ev — non-virtual thunk toRBX::TopMenuBar::~TopMenuBar()
 // type: void __fastcall(RBX::TopMenuBar *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TopMenuBar::~TopMenuBar()")]
 #[doc(alias = "__ZThn32_N3RBX10TopMenuBarD0Ev")]
@@ -870,7 +870,7 @@ pub fn stub_0x523b7c() -> ! {
     todo!("0x523b7c __ZThn32_N3RBX10TopMenuBarD0Ev")
 }
 
-// 0x523c20 — __ZThn36_N3RBX10TopMenuBarD1Ev — `non-virtual thunk to'RBX::TopMenuBar::~TopMenuBar()
+// 0x523c20 — __ZThn36_N3RBX10TopMenuBarD1Ev — non-virtual thunk toRBX::TopMenuBar::~TopMenuBar()
 // type: void __fastcall(RBX::TopMenuBar *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TopMenuBar::~TopMenuBar()")]
 #[doc(alias = "__ZThn36_N3RBX10TopMenuBarD1Ev")]
@@ -878,7 +878,7 @@ pub fn stub_0x523c20() -> ! {
     todo!("0x523c20 __ZThn36_N3RBX10TopMenuBarD1Ev")
 }
 
-// 0x523c28 — __ZThn36_N3RBX10TopMenuBarD0Ev — `non-virtual thunk to'RBX::TopMenuBar::~TopMenuBar()
+// 0x523c28 — __ZThn36_N3RBX10TopMenuBarD0Ev — non-virtual thunk toRBX::TopMenuBar::~TopMenuBar()
 // type: void __fastcall(RBX::TopMenuBar *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TopMenuBar::~TopMenuBar()")]
 #[doc(alias = "__ZThn36_N3RBX10TopMenuBarD0Ev")]

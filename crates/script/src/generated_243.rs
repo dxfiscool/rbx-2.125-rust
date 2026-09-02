@@ -2,7 +2,7 @@
 // Filter: Script|Lua|Yield|CodeGen|Luau (4818 filtered, all already stubbed in crates/script/src) — EA-sorted asc gap filler distinct not yet in crates/script/src
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: +100 stubs | range 0x4abe94..0x4b1c40 | EA-sorted asc distinct not yet in script (remaining 57348->57248, rbx_core::SharedPtr not boost)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -610,7 +610,7 @@ pub fn stub_4b0e58() -> ! {
     todo!("0x4b0e58 __ZNK3RBX11CustomEvent12askSetParentEPKNS_8InstanceE")
 }
 
-// 0x4b0ea4 — __ZThn32_N3RBX11CustomEventD1Ev — `non-virtual thunk to'RBX::CustomEvent::~CustomEvent()
+// 0x4b0ea4 — __ZThn32_N3RBX11CustomEventD1Ev — non-virtual thunk toRBX::CustomEvent::~CustomEvent()
 // type: void __fastcall(RBX::CustomEvent *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CustomEvent::~CustomEvent()")]
 #[doc(alias = "__ZThn32_N3RBX11CustomEventD1Ev")]
@@ -618,7 +618,7 @@ pub fn stub_4b0ea4() -> ! {
     todo!("0x4b0ea4 __ZThn32_N3RBX11CustomEventD1Ev")
 }
 
-// 0x4b0eac — __ZThn32_N3RBX11CustomEventD0Ev — `non-virtual thunk to'RBX::CustomEvent::~CustomEvent()
+// 0x4b0eac — __ZThn32_N3RBX11CustomEventD0Ev — non-virtual thunk toRBX::CustomEvent::~CustomEvent()
 // type: void __fastcall(RBX::CustomEvent *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CustomEvent::~CustomEvent()")]
 #[doc(alias = "__ZThn32_N3RBX11CustomEventD0Ev")]
@@ -626,7 +626,7 @@ pub fn stub_4b0eac() -> ! {
     todo!("0x4b0eac __ZThn32_N3RBX11CustomEventD0Ev")
 }
 
-// 0x4b0f60 — __ZThn36_N3RBX11CustomEventD1Ev — `non-virtual thunk to'RBX::CustomEvent::~CustomEvent()
+// 0x4b0f60 — __ZThn36_N3RBX11CustomEventD1Ev — non-virtual thunk toRBX::CustomEvent::~CustomEvent()
 // type: void __fastcall(RBX::CustomEvent *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CustomEvent::~CustomEvent()")]
 #[doc(alias = "__ZThn36_N3RBX11CustomEventD1Ev")]
@@ -634,7 +634,7 @@ pub fn stub_4b0f60() -> ! {
     todo!("0x4b0f60 __ZThn36_N3RBX11CustomEventD1Ev")
 }
 
-// 0x4b0f68 — __ZThn36_N3RBX11CustomEventD0Ev — `non-virtual thunk to'RBX::CustomEvent::~CustomEvent()
+// 0x4b0f68 — __ZThn36_N3RBX11CustomEventD0Ev — non-virtual thunk toRBX::CustomEvent::~CustomEvent()
 // type: void __fastcall(RBX::CustomEvent *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CustomEvent::~CustomEvent()")]
 #[doc(alias = "__ZThn36_N3RBX11CustomEventD0Ev")]

@@ -3,7 +3,7 @@
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x786af8..0x810438 | dm distinct before 10321, after 10421, dm missing 75224->75124
 // Shard: 199 EA-sorted asc next 100 Instance gaps after 197 (filtered RBX::Instance, 786af8..810438)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; `'` stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

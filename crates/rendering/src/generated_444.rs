@@ -59,7 +59,7 @@ pub fn stub_69b7dc() -> ! {
 // type: 
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX10Controller6ButtonEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX10Controller6ButtonEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_")]
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot,boost::function<void ()(RBX::Controller::Button)>,1,void ()(RBX::Controller::Button)>::call(RBX::Controller::Button)
+// was: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot,boost::function<void ()(RBX::Controller::Button)>,1,void ()(RBX::Controller::Button)>::call(RBX::Controller::Button)
 pub fn stub_69b7e4() -> ! {
     todo!("0x69b7e4 __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX10Controller6ButtonEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_")
 }

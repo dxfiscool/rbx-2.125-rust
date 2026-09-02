@@ -41,7 +41,7 @@ pub fn stub_39079c() -> ! {
     todo!("0x39079c __ZNK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE12getClassNameEv")
 }
 
-// 0x3907ac — __ZThn32_N3RBX3HatD1Ev — `non-virtual thunk to'RBX::Hat::~Hat()
+// 0x3907ac — __ZThn32_N3RBX3HatD1Ev — non-virtual thunk toRBX::Hat::~Hat()
 // type: void __fastcall(RBX::Hat *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
 #[doc(alias = "__ZThn32_N3RBX3HatD1Ev")]
@@ -49,7 +49,7 @@ pub fn stub_3907ac() -> ! {
     todo!("0x3907ac __ZThn32_N3RBX3HatD1Ev")
 }
 
-// 0x3907c0 — __ZThn32_N3RBX3HatD0Ev — `non-virtual thunk to'RBX::Hat::~Hat()
+// 0x3907c0 — __ZThn32_N3RBX3HatD0Ev — non-virtual thunk toRBX::Hat::~Hat()
 // type: void __fastcall(RBX::Hat *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
 #[doc(alias = "__ZThn32_N3RBX3HatD0Ev")]
@@ -64,7 +64,7 @@ pub fn stub_390874() -> ! {
     todo!("0x390874 __ZThn32_NK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE12getClassNameEv")
 }
 
-// 0x390884 — __ZThn36_N3RBX3HatD1Ev — `non-virtual thunk to'RBX::Hat::~Hat()
+// 0x390884 — __ZThn36_N3RBX3HatD1Ev — non-virtual thunk toRBX::Hat::~Hat()
 // type: void __fastcall(RBX::Hat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
 #[doc(alias = "__ZThn36_N3RBX3HatD1Ev")]
@@ -72,7 +72,7 @@ pub fn stub_390884() -> ! {
     todo!("0x390884 __ZThn36_N3RBX3HatD1Ev")
 }
 
-// 0x390898 — __ZThn36_N3RBX3HatD0Ev — `non-virtual thunk to'RBX::Hat::~Hat()
+// 0x390898 — __ZThn36_N3RBX3HatD0Ev — non-virtual thunk toRBX::Hat::~Hat()
 // type: void __fastcall(RBX::Hat *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
 #[doc(alias = "__ZThn36_N3RBX3HatD0Ev")]
@@ -80,7 +80,7 @@ pub fn stub_390898() -> ! {
     todo!("0x390898 __ZThn36_N3RBX3HatD0Ev")
 }
 
-// 0x39094c — __ZThn92_N3RBX3HatD1Ev — `non-virtual thunk to'RBX::Hat::~Hat()
+// 0x39094c — __ZThn92_N3RBX3HatD1Ev — non-virtual thunk toRBX::Hat::~Hat()
 // type: void __fastcall(RBX::Hat *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
 #[doc(alias = "__ZThn92_N3RBX3HatD1Ev")]
@@ -88,7 +88,7 @@ pub fn stub_39094c() -> ! {
     todo!("0x39094c __ZThn92_N3RBX3HatD1Ev")
 }
 
-// 0x390960 — __ZThn92_N3RBX3HatD0Ev — `non-virtual thunk to'RBX::Hat::~Hat()
+// 0x390960 — __ZThn92_N3RBX3HatD0Ev — non-virtual thunk toRBX::Hat::~Hat()
 // type: void __fastcall(RBX::Hat *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
 #[doc(alias = "__ZThn92_N3RBX3HatD0Ev")]
@@ -96,7 +96,7 @@ pub fn stub_390960() -> ! {
     todo!("0x390960 __ZThn92_N3RBX3HatD0Ev")
 }
 
-// 0x390a14 — __ZThn128_N3RBX3HatD1Ev — `non-virtual thunk to'RBX::Hat::~Hat()
+// 0x390a14 — __ZThn128_N3RBX3HatD1Ev — non-virtual thunk toRBX::Hat::~Hat()
 // type: void __fastcall(RBX::Hat *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
 #[doc(alias = "__ZThn128_N3RBX3HatD1Ev")]
@@ -104,7 +104,7 @@ pub fn stub_390a14() -> ! {
     todo!("0x390a14 __ZThn128_N3RBX3HatD1Ev")
 }
 
-// 0x390a28 — __ZThn128_N3RBX3HatD0Ev — `non-virtual thunk to'RBX::Hat::~Hat()
+// 0x390a28 — __ZThn128_N3RBX3HatD0Ev — non-virtual thunk toRBX::Hat::~Hat()
 // type: void __fastcall(RBX::Hat *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
 #[doc(alias = "__ZThn128_N3RBX3HatD0Ev")]
@@ -592,7 +592,7 @@ pub fn stub_392904() -> ! {
     todo!("0x392904 __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12AccoutrementES7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_")
 }
 
-// 0x392920 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12AccoutrementES7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_ — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
+// 0x392920 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12AccoutrementES7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_ — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
 // type: int __fastcall(int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12AccoutrementES7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_")]

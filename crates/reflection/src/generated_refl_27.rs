@@ -11,14 +11,14 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const")]
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEE7rethrowEv")]
 pub fn stub_0x23db04() -> ! {
-    todo!("0x23db04 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const")
+    todo!("0x23db04 virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const")
 }
 
 // 0x23db14 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev")]
 pub fn stub_0x23db14() -> ! {
-    todo!("0x23db14 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+    todo!("0x23db14 virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
 }
 
 // 0x23dbe8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEEC1ERKS6_
@@ -39,7 +39,7 @@ pub fn stub_0x23dd30() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED0Ev")]
 pub fn stub_0x23ddec() -> ! {
-    todo!("0x23ddec `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
+    todo!("0x23ddec non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
 }
 
 // 0x23dea8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEEC1ERKS6_NS6_9clone_tagE
@@ -102,7 +102,7 @@ pub fn stub_0x23e568() -> ! {
 #[doc(alias = "global constructor keyed to_a_42")]
 #[doc(alias = "__GLOBAL__I_a_42")]
 pub fn stub_0x23e574() -> ! {
-    todo!("0x23e574 `global constructor keyed to'_a_42")
+    todo!("0x23e574 global constructor keyed to'_a_42")
 }
 
 // 0x23e5a4 — __Z13ReleaseAssertiPKc
@@ -214,7 +214,7 @@ pub fn stub_0x23ef20() -> ! {
 #[doc(alias = "global constructor keyed to_a_43")]
 #[doc(alias = "__GLOBAL__I_a_43")]
 pub fn stub_0x23f068() -> ! {
-    todo!("0x23f068 `global constructor keyed to'_a_43")
+    todo!("0x23f068 global constructor keyed to'_a_43")
 }
 
 // 0x23f294 — __Z8RBXCRASHv
@@ -368,21 +368,21 @@ pub fn stub_0x241108() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::condition_error>::~error_info_injector()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail19error_info_injectorINS_15condition_errorEED1Ev")]
 pub fn stub_0x241214() -> ! {
-    todo!("0x241214 `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::condition_error>::~error_info_injector()")
+    todo!("0x241214 non-virtual thunk toboost::exception_detail::error_info_injector<boost::condition_error>::~error_info_injector()")
 }
 
 // 0x241324 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_15condition_errorEEEED1Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::~clone_impl()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_15condition_errorEEEED1Ev")]
 pub fn stub_0x241324() -> ! {
-    todo!("0x241324 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::~clone_impl()")
+    todo!("0x241324 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::~clone_impl()")
 }
 
 // 0x241430 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_15condition_errorEEEE5cloneEv
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::clone(void)const")]
 #[doc(alias = "__ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_15condition_errorEEEE5cloneEv")]
 pub fn stub_0x241430() -> ! {
-    todo!("0x241430 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::clone(void)const")
+    todo!("0x241430 virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::clone(void)const")
 }
 
 // 0x241444 — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX13worker_thread4dataEEERKNS0_INS7_11work_resultEEEENS3_5list2INS3_5valueIS9_EENSH_ISB_EEEEEEEEvT_
@@ -613,7 +613,7 @@ pub fn stub_0x243304() -> ! {
 #[doc(alias = "global constructor keyed to_a_44")]
 #[doc(alias = "__GLOBAL__I_a_44")]
 pub fn stub_0x2434dc() -> ! {
-    todo!("0x2434dc `global constructor keyed to'_a_44")
+    todo!("0x2434dc global constructor keyed to'_a_44")
 }
 
 // 0x2435a4 — __ZN3RBX6CEvent4WaitEv
@@ -676,7 +676,7 @@ pub fn stub_0x243b84() -> ! {
 #[doc(alias = "global constructor keyed to_a_45")]
 #[doc(alias = "__GLOBAL__I_a_45")]
 pub fn stub_0x243dd0() -> ! {
-    todo!("0x243dd0 `global constructor keyed to'_a_45")
+    todo!("0x243dd0 global constructor keyed to'_a_45")
 }
 
 // 0x243e98 — __ZN3RBX6Limits9CountableC2Ev
@@ -837,7 +837,7 @@ pub fn stub_0x244cb0() -> ! {
 #[doc(alias = "global constructor keyed to_a_46")]
 #[doc(alias = "__GLOBAL__I_a_46")]
 pub fn stub_0x244cb4() -> ! {
-    todo!("0x244cb4 `global constructor keyed to'_a_46")
+    todo!("0x244cb4 global constructor keyed to'_a_46")
 }
 
 // 0x244d7c — __ZN3RBX16roblox_allocator6mallocEm

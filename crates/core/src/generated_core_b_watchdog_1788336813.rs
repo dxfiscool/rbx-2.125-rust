@@ -1,5 +1,5 @@
 //! core b watchdog — 120 core stubs EA-sorted, gap filler distinct from shard A (watchdog_coreA 0x54c9a8..0x5765ec).
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc next 120 not yet in crates/core/src, not overlapping shard A/B.
+//! Source: ida/export.json (85545 funcs) EA-sorted asc next 120 not yet in crates/core/src, not overlapping shard A/B.
 //! Range: 0x26b55c..0x2aa5c8 | rbx_core::SharedPtr not boost.
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR") using rbx_core::SharedPtr.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.

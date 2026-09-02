@@ -166,7 +166,7 @@ pub fn stub_74cab0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Primitive::getFirstSpanningEdge(void)")]
 #[doc(alias = "__ZThn8_N3RBX9Primitive20getFirstSpanningEdgeEv")]
 pub fn stub_74cac4() -> ! {
-    todo!("0x74cac4 `non-virtual thunk to'RBX::Primitive::getFirstSpanningEdge(void)")
+    todo!("0x74cac4 non-virtual thunk toRBX::Primitive::getFirstSpanningEdge(void)")
 }
 
 // 0x74cae0 — __ZN3RBX9Primitive19getNextSpanningEdgeEPNS_12SpanningEdgeE
@@ -182,7 +182,7 @@ pub fn stub_74cae0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Primitive::getNextSpanningEdge(RBX::SpanningEdge *)")]
 #[doc(alias = "__ZThn8_N3RBX9Primitive19getNextSpanningEdgeEPNS_12SpanningEdgeE")]
 pub fn stub_74cb08() -> ! {
-    todo!("0x74cb08 `non-virtual thunk to'RBX::Primitive::getNextSpanningEdge(RBX::SpanningEdge *)")
+    todo!("0x74cb08 non-virtual thunk toRBX::Primitive::getNextSpanningEdge(RBX::SpanningEdge *)")
 }
 
 // 0x74cb10 — __ZNK3RBX9Primitive20isGeometryOrthogonalEv
@@ -549,7 +549,7 @@ pub fn stub_74d4dc() -> ! {
 #[doc(alias = "global constructor keyed to_a_341")]
 #[doc(alias = "__GLOBAL__I_a_341")]
 pub fn stub_74d57c() -> ! {
-    todo!("0x74d57c `global constructor keyed to'_a_341")
+    todo!("0x74d57c global constructor keyed to'_a_341")
 }
 
 // 0x74da88 — __ZN3RBX9PrismPoly9buildMeshEv
@@ -804,7 +804,7 @@ pub fn stub_74f300() -> ! {
 #[doc(alias = "global constructor keyed to_a_342")]
 #[doc(alias = "__GLOBAL__I_a_342")]
 pub fn stub_74f3b0() -> ! {
-    todo!("0x74f3b0 `global constructor keyed to'_a_342")
+    todo!("0x74f3b0 global constructor keyed to'_a_342")
 }
 
 // 0x74f4e0 — __ZN3RBX11PyramidPoly9buildMeshEv

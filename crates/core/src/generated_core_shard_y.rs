@@ -1,5 +1,5 @@
 //! core shard Y — 100 core stubs EA-sorted, next uncovered fallback after shard X (0x665ec), lowest EA first.
-//! Source: `ida/export.json` filtered where demangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted, next 100 uncovered (lowest EA first) after 0x665ec.
+//! Source: ida/export.json filtered where demangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted, next 100 uncovered (lowest EA first) after 0x665ec.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]

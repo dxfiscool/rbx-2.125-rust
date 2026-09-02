@@ -16,7 +16,7 @@ pub fn stub_06291a4() -> ! {
 }
 
 // 0x06291bc — __ZThn132_N3RBX18SkateboardPlatform25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE
-// demangled: `non-virtual thunk to'RBX::SkateboardPlatform::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)
+// demangled: non-virtual thunk toRBX::SkateboardPlatform::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)
 #[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
 #[doc(alias = "__ZThn132_N3RBX18SkateboardPlatform25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE")]
 pub fn stub_06291bc() -> ! {
@@ -33,7 +33,7 @@ pub fn stub_06291c4() -> ! {
 }
 
 // 0x0629334 — __ZThn132_N3RBX18SkateboardPlatform4zoomEfRN3G3D15CoordinateFrameES3_
-// demangled: `non-virtual thunk to'RBX::SkateboardPlatform::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)
+// demangled: non-virtual thunk toRBX::SkateboardPlatform::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)
 // type: _DWORD __fastcall(RBX::SkateboardPlatform *__hidden this, float, G3D::CoordinateFrame *, G3D::CoordinateFrame *)
 #[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")]
 #[doc(alias = "__ZThn132_N3RBX18SkateboardPlatform4zoomEfRN3G3D15CoordinateFrameES3_")]
@@ -51,7 +51,7 @@ pub fn stub_0629340() -> ! {
 }
 
 // 0x06295a4 — __ZThn132_N3RBX18SkateboardPlatform20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd
-// demangled: `non-virtual thunk to'RBX::SkateboardPlatform::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)
+// demangled: non-virtual thunk toRBX::SkateboardPlatform::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)
 // type: _DWORD __fastcall(RBX::SkateboardPlatform *__hidden this, G3D::Vector3 *, G3D::CoordinateFrame *, double)
 #[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")]
 #[doc(alias = "__ZThn132_N3RBX18SkateboardPlatform20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd")]
@@ -338,7 +338,7 @@ pub fn stub_062a724() -> ! {
 }
 
 // 0x062a734 — __ZThn352_NK3RBX18SkateboardPlatform9canStepUiEv
-// demangled: `non-virtual thunk to'RBX::SkateboardPlatform::canStepUi(void)const
+// demangled: non-virtual thunk toRBX::SkateboardPlatform::canStepUi(void)const
 // type: _DWORD __fastcall(RBX::SkateboardPlatform *__hidden this)
 #[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::canStepUi(void)const")]
 #[doc(alias = "__ZThn352_NK3RBX18SkateboardPlatform9canStepUiEv")]
@@ -451,7 +451,7 @@ pub fn stub_062ab48() -> ! {
 }
 
 // 0x062abf4 — __ZThn132_N3RBX12PlatformImplINS_17BasicPartInstanceEED1Ev
-// demangled: `non-virtual thunk to'RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
+// demangled: non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk to RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")]
 #[doc(alias = "__ZThn132_N3RBX12PlatformImplINS_17BasicPartInstanceEED1Ev")]
@@ -460,7 +460,7 @@ pub fn stub_062abf4() -> ! {
 }
 
 // 0x062ac08 — __ZThn132_N3RBX12PlatformImplINS_17BasicPartInstanceEED0Ev
-// demangled: `non-virtual thunk to'RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
+// demangled: non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
 #[doc(alias = "non-virtual thunk to RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")]
 #[doc(alias = "__ZThn132_N3RBX12PlatformImplINS_17BasicPartInstanceEED0Ev")]
 pub fn stub_062ac08() -> ! {
@@ -484,7 +484,7 @@ pub fn stub_062accc() -> ! {
 }
 
 // 0x062ad7c — __ZThn132_N3RBX13ActionStationINS_17BasicPartInstanceEED1Ev
-// demangled: `non-virtual thunk to'RBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()
+// demangled: non-virtual thunk toRBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()
 #[doc(alias = "non-virtual thunk to RBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()")]
 #[doc(alias = "__ZThn132_N3RBX13ActionStationINS_17BasicPartInstanceEED1Ev")]
 pub fn stub_062ad7c() -> ! {
@@ -492,7 +492,7 @@ pub fn stub_062ad7c() -> ! {
 }
 
 // 0x062ad90 — __ZThn132_N3RBX13ActionStationINS_17BasicPartInstanceEED0Ev
-// demangled: `non-virtual thunk to'RBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()
+// demangled: non-virtual thunk toRBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()
 #[doc(alias = "non-virtual thunk to RBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()")]
 #[doc(alias = "__ZThn132_N3RBX13ActionStationINS_17BasicPartInstanceEED0Ev")]
 pub fn stub_062ad90() -> ! {
@@ -675,7 +675,7 @@ pub fn stub_062b92c() -> ! {
 }
 
 // 0x062b934 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX12PlatformImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv
-// demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)
+// demangled: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX12PlatformImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv")]
 pub fn stub_062b934() -> ! {

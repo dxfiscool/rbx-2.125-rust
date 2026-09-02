@@ -1,5 +1,5 @@
 //! core shard kp — 120 stubs EA-sorted asc global gap filler not yet in core (fallback filter, fills hole 0xeb58b8 before ko).
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc, next 120 smallest not yet in rbx_core (hole 0xeb58b8..0xebc8ac before ko 0xebc958; 33260 filtered, 28437 distinct, 4823 remaining before -> 4703 after, rbx_core::SharedPtr not boost).
+//! Source: ida/export.json (85545 funcs) EA-sorted asc, next 120 smallest not yet in rbx_core (hole 0xeb58b8..0xebc8ac before ko 0xebc958; 33260 filtered, 28437 distinct, 4823 remaining before -> 4703 after, rbx_core::SharedPtr not boost).
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + #[doc(alias = mangled)] + todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 

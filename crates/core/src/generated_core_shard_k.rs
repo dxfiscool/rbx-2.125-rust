@@ -1,5 +1,5 @@
 //! core shard K — 100 core stubs EA-sorted, continuation after shard J (0x144e24+).
-//! Source: `ida/export.json` filtered where demangled excludes Reflection/Instance/DataModel/Workspace/Ogre/RakNet/Network/Lua/Sound, EA-sorted, next 100 uncovered (lowest EA first).
+//! Source: ida/export.json filtered where demangled excludes Reflection/Instance/DataModel/Workspace/Ogre/RakNet/Network/Lua/Sound, EA-sorted, next 100 uncovered (lowest EA first).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #[doc(alias = "_update_box")]

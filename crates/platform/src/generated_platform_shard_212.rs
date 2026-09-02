@@ -508,7 +508,7 @@ pub fn stub_2e998c() -> ! {
     todo!("0x2e998c __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EED2Ev")
 }
 
-// 0x2e9b08 — __GLOBAL__I_a_95 — `global constructor keyed to'_a_95
+// 0x2e9b08 — __GLOBAL__I_a_95 — global constructor keyed to'_a_95
 // type: 
 #[doc(alias = "global constructor keyed to_a_95")]
 #[doc(alias = "__GLOBAL__I_a_95")]
@@ -556,7 +556,7 @@ pub fn stub_2ea2ac() -> ! {
     todo!("0x2ea2ac __ZN3RBX11LuaDragToolD1Ev")
 }
 
-// 0x2ea2b0 — __ZThn36_N3RBX11LuaDragToolD0Ev — `non-virtual thunk to'RBX::LuaDragTool::~LuaDragTool()
+// 0x2ea2b0 — __ZThn36_N3RBX11LuaDragToolD0Ev — non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()
 // type: void __fastcall(RBX::LuaDragTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")]
 #[doc(alias = "__ZThn36_N3RBX11LuaDragToolD0Ev")]
@@ -572,7 +572,7 @@ pub fn stub_2ea2b8() -> ! {
     todo!("0x2ea2b8 __ZN3RBX11LuaDragToolD2Ev")
 }
 
-// 0x2ea3f8 — __ZThn36_N3RBX11LuaDragToolD1Ev — `non-virtual thunk to'RBX::LuaDragTool::~LuaDragTool()
+// 0x2ea3f8 — __ZThn36_N3RBX11LuaDragToolD1Ev — non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()
 // type: void __fastcall(RBX::LuaDragTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")]
 #[doc(alias = "__ZThn36_N3RBX11LuaDragToolD1Ev")]
@@ -657,7 +657,7 @@ pub fn stub_2eab50() -> ! {
     todo!("0x2eab50 __ZN3RBX4Name9doDeclareILZNS_12sLuaDragToolEEEERKS0_v")
 }
 
-// 0x2eac30 — __GLOBAL__I_a_96 — `global constructor keyed to'_a_96
+// 0x2eac30 — __GLOBAL__I_a_96 — global constructor keyed to'_a_96
 // type: 
 #[doc(alias = "global constructor keyed to_a_96")]
 #[doc(alias = "__GLOBAL__I_a_96")]

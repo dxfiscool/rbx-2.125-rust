@@ -158,7 +158,7 @@ pub fn stub_495058() -> ! {
 
 // 0x49519c — __GLOBAL__I_a_184
 #[doc(alias = "__GLOBAL__I_a_184")]
-#[doc(alias = "`global constructor keyed to_a_184")]
+#[doc(alias = "global constructor keyed to_a_184")]
 pub fn stub_49519c() -> ! {
     todo!("0x49519c __GLOBAL__I_a_184")
 }
@@ -406,7 +406,7 @@ pub fn stub_496dec() -> ! {
 // 0x496dfc — __ZThn32_N3RBX10DialogRootD1Ev
 // type: void __fastcall(RBX::DialogRoot *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX10DialogRootD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::DialogRoot::~DialogRoot()")]
+#[doc(alias = "non-virtual thunk toRBX::DialogRoot::~DialogRoot()")]
 pub fn stub_496dfc() -> ! {
     todo!("0x496dfc __ZThn32_N3RBX10DialogRootD1Ev")
 }
@@ -414,7 +414,7 @@ pub fn stub_496dfc() -> ! {
 // 0x496e04 — __ZThn32_N3RBX10DialogRootD0Ev
 // type: void __fastcall(RBX::DialogRoot *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX10DialogRootD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::DialogRoot::~DialogRoot()")]
+#[doc(alias = "non-virtual thunk toRBX::DialogRoot::~DialogRoot()")]
 pub fn stub_496e04() -> ! {
     todo!("0x496e04 __ZThn32_N3RBX10DialogRootD0Ev")
 }
@@ -429,7 +429,7 @@ pub fn stub_496ea8() -> ! {
 // 0x496eb8 — __ZThn36_N3RBX10DialogRootD1Ev
 // type: void __fastcall(RBX::DialogRoot *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX10DialogRootD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::DialogRoot::~DialogRoot()")]
+#[doc(alias = "non-virtual thunk toRBX::DialogRoot::~DialogRoot()")]
 pub fn stub_496eb8() -> ! {
     todo!("0x496eb8 __ZThn36_N3RBX10DialogRootD1Ev")
 }
@@ -437,7 +437,7 @@ pub fn stub_496eb8() -> ! {
 // 0x496ec0 — __ZThn36_N3RBX10DialogRootD0Ev
 // type: void __fastcall(RBX::DialogRoot *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX10DialogRootD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::DialogRoot::~DialogRoot()")]
+#[doc(alias = "non-virtual thunk toRBX::DialogRoot::~DialogRoot()")]
 pub fn stub_496ec0() -> ! {
     todo!("0x496ec0 __ZThn36_N3RBX10DialogRootD0Ev")
 }

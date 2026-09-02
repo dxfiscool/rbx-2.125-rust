@@ -2,7 +2,7 @@
 // Filter: distinct EA not yet in crates/datamodel/src sorted asc — shard B gap-filler continuation
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 120 stubs | range 0x410f78..0x416a34 | EA-sorted asc distinct gap filler not yet in datamodel
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
 // Shard: datamodel_shard_B3 EA-sorted ascending
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]

@@ -1,5 +1,5 @@
 //! core watchdog t — 100 core stubs EA-sorted, twenty-first gap filler after watchdog_s 0x3bd65c.
-//! Source: `ida/export.json` (85545 funcs) global EA asc not yet in rbx_core — next 100 uncovered after 0x3bd65c (watchdog_s max).
+//! Source: ida/export.json (85545 funcs) global EA asc not yet in rbx_core — next 100 uncovered after 0x3bd65c (watchdog_s max).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]

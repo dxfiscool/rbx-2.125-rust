@@ -58,7 +58,7 @@ pub fn stub_062c97c() -> ! {
 }
 
 // 0x062c998 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12PlatformImplINS5_17BasicPartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
-// demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
+// demangled: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12PlatformImplINS5_17BasicPartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_")]
 pub fn stub_062c998() -> ! {
@@ -318,7 +318,7 @@ pub fn stub_062e324() -> ! {
 }
 
 // 0x062e514 — __ZThn32_N3RBX12PlatformImplINS_17BasicPartInstanceEED1Ev
-// demangled: `non-virtual thunk to'RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
+// demangled: non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
 #[doc(alias = "non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")]
 #[doc(alias = "__ZThn32_N3RBX12PlatformImplINS_17BasicPartInstanceEED1Ev")]
 pub fn stub_062e514() -> ! {
@@ -326,7 +326,7 @@ pub fn stub_062e514() -> ! {
 }
 
 // 0x062e528 — __ZThn32_N3RBX12PlatformImplINS_17BasicPartInstanceEED0Ev
-// demangled: `non-virtual thunk to'RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
+// demangled: non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
 #[doc(alias = "non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")]
 #[doc(alias = "__ZThn32_N3RBX12PlatformImplINS_17BasicPartInstanceEED0Ev")]
 pub fn stub_062e528() -> ! {
@@ -334,7 +334,7 @@ pub fn stub_062e528() -> ! {
 }
 
 // 0x062e5d8 — __ZThn36_N3RBX12PlatformImplINS_17BasicPartInstanceEED1Ev
-// demangled: `non-virtual thunk to'RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
+// demangled: non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
 #[doc(alias = "non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")]
 #[doc(alias = "__ZThn36_N3RBX12PlatformImplINS_17BasicPartInstanceEED1Ev")]
 pub fn stub_062e5d8() -> ! {
@@ -342,7 +342,7 @@ pub fn stub_062e5d8() -> ! {
 }
 
 // 0x062e5ec — __ZThn36_N3RBX12PlatformImplINS_17BasicPartInstanceEED0Ev
-// demangled: `non-virtual thunk to'RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
+// demangled: non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
 #[doc(alias = "non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")]
 #[doc(alias = "__ZThn36_N3RBX12PlatformImplINS_17BasicPartInstanceEED0Ev")]
 pub fn stub_062e5ec() -> ! {
@@ -423,7 +423,7 @@ pub fn stub_062eda8() -> ! {
 }
 
 // 0x062efd0 — __ZThn32_N3RBX13ActionStationINS_17BasicPartInstanceEED1Ev
-// demangled: `non-virtual thunk to'RBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()
+// demangled: non-virtual thunk toRBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()
 #[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()")]
 #[doc(alias = "__ZThn32_N3RBX13ActionStationINS_17BasicPartInstanceEED1Ev")]
 pub fn stub_062efd0() -> ! {
@@ -431,7 +431,7 @@ pub fn stub_062efd0() -> ! {
 }
 
 // 0x062efe4 — __ZThn32_N3RBX13ActionStationINS_17BasicPartInstanceEED0Ev
-// demangled: `non-virtual thunk to'RBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()
+// demangled: non-virtual thunk toRBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()
 #[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()")]
 #[doc(alias = "__ZThn32_N3RBX13ActionStationINS_17BasicPartInstanceEED0Ev")]
 pub fn stub_062efe4() -> ! {
@@ -439,7 +439,7 @@ pub fn stub_062efe4() -> ! {
 }
 
 // 0x062efec — __ZThn36_N3RBX13ActionStationINS_17BasicPartInstanceEED1Ev
-// demangled: `non-virtual thunk to'RBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()
+// demangled: non-virtual thunk toRBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()
 // type: void __fastcall(int)
 #[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()")]
 #[doc(alias = "__ZThn36_N3RBX13ActionStationINS_17BasicPartInstanceEED1Ev")]
@@ -448,7 +448,7 @@ pub fn stub_062efec() -> ! {
 }
 
 // 0x062f000 — __ZThn36_N3RBX13ActionStationINS_17BasicPartInstanceEED0Ev
-// demangled: `non-virtual thunk to'RBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()
+// demangled: non-virtual thunk toRBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()
 #[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()")]
 #[doc(alias = "__ZThn36_N3RBX13ActionStationINS_17BasicPartInstanceEED0Ev")]
 pub fn stub_062f000() -> ! {
@@ -702,7 +702,7 @@ pub fn stub_062fd78() -> ! {
 }
 
 // 0x062fe58 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-// demangled: `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
+// demangled: non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 pub fn stub_062fe58() -> ! {
@@ -896,7 +896,7 @@ pub fn stub_063061c() -> ! {
 }
 
 // 0x06306fc — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-// demangled: `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
+// demangled: non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]

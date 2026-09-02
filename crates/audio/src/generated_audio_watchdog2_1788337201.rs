@@ -79,7 +79,7 @@ pub fn stub_5cb2c0() -> ! {
 }
 
 // 0x5cb2e4 — __GLOBAL__I_a_227
-// demangled: `global constructor keyed to'_a_227
+// demangled: global constructor keyed to'_a_227
 #[doc(alias = "global constructor keyed to_a_227")]
 #[doc(alias = "__GLOBAL__I_a_227")]
 pub fn stub_5cb2e4() -> ! {
@@ -203,7 +203,7 @@ pub fn stub_5cc504() -> ! {
 }
 
 // 0x5cc514 — __ZThn32_N3RBX13ModelInstanceD0Ev
-// demangled: `non-virtual thunk to'RBX::ModelInstance::~ModelInstance()
+// demangled: non-virtual thunk toRBX::ModelInstance::~ModelInstance()
 // type: void __fastcall(RBX::ModelInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
 #[doc(alias = "__ZThn32_N3RBX13ModelInstanceD0Ev")]
@@ -212,7 +212,7 @@ pub fn stub_5cc514() -> ! {
 }
 
 // 0x5cc51c — __ZThn36_N3RBX13ModelInstanceD0Ev
-// demangled: `non-virtual thunk to'RBX::ModelInstance::~ModelInstance()
+// demangled: non-virtual thunk toRBX::ModelInstance::~ModelInstance()
 // type: void __fastcall(RBX::ModelInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
 #[doc(alias = "__ZThn36_N3RBX13ModelInstanceD0Ev")]
@@ -221,7 +221,7 @@ pub fn stub_5cc51c() -> ! {
 }
 
 // 0x5cc524 — __ZThn120_N3RBX13ModelInstanceD0Ev
-// demangled: `non-virtual thunk to'RBX::ModelInstance::~ModelInstance()
+// demangled: non-virtual thunk toRBX::ModelInstance::~ModelInstance()
 // type: void __fastcall(RBX::ModelInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
 #[doc(alias = "__ZThn120_N3RBX13ModelInstanceD0Ev")]
@@ -239,7 +239,7 @@ pub fn stub_5cc52c() -> ! {
 }
 
 // 0x5cc6b0 — __ZThn32_N3RBX13ModelInstanceD1Ev
-// demangled: `non-virtual thunk to'RBX::ModelInstance::~ModelInstance()
+// demangled: non-virtual thunk toRBX::ModelInstance::~ModelInstance()
 // type: void __fastcall(RBX::ModelInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
 #[doc(alias = "__ZThn32_N3RBX13ModelInstanceD1Ev")]
@@ -248,7 +248,7 @@ pub fn stub_5cc6b0() -> ! {
 }
 
 // 0x5cc6c0 — __ZThn36_N3RBX13ModelInstanceD1Ev
-// demangled: `non-virtual thunk to'RBX::ModelInstance::~ModelInstance()
+// demangled: non-virtual thunk toRBX::ModelInstance::~ModelInstance()
 // type: void __fastcall(RBX::ModelInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
 #[doc(alias = "__ZThn36_N3RBX13ModelInstanceD1Ev")]
@@ -257,7 +257,7 @@ pub fn stub_5cc6c0() -> ! {
 }
 
 // 0x5cc6d0 — __ZThn120_N3RBX13ModelInstanceD1Ev
-// demangled: `non-virtual thunk to'RBX::ModelInstance::~ModelInstance()
+// demangled: non-virtual thunk toRBX::ModelInstance::~ModelInstance()
 // type: void __fastcall(RBX::ModelInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
 #[doc(alias = "__ZThn120_N3RBX13ModelInstanceD1Ev")]
@@ -379,7 +379,7 @@ pub fn stub_5ccca4() -> ! {
 }
 
 // 0x5cce34 — __ZThn92_N3RBX13ModelInstance14getPrimaryPartEv
-// demangled: `non-virtual thunk to'RBX::ModelInstance::getPrimaryPart(void)
+// demangled: non-virtual thunk toRBX::ModelInstance::getPrimaryPart(void)
 // type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::getPrimaryPart(void)")]
 #[doc(alias = "__ZThn92_N3RBX13ModelInstance14getPrimaryPartEv")]
@@ -430,7 +430,7 @@ pub fn stub_5cd060() -> ! {
 }
 
 // 0x5cd1f4 — __ZTv0_n12_N3RBX13ModelInstance11getLocationEv
-// demangled: `virtual thunk to'RBX::ModelInstance::getLocation(void)
+// demangled: virtual thunk to'RBX::ModelInstance::getLocation(void)
 // type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
 #[doc(alias = "virtual thunk toRBX::ModelInstance::getLocation(void)")]
 #[doc(alias = "__ZTv0_n12_N3RBX13ModelInstance11getLocationEv")]
@@ -457,7 +457,7 @@ pub fn stub_5cd254() -> ! {
 }
 
 // 0x5cd274 — __ZThn96_NK3RBX13ModelInstance19shouldRender3dAdornEv
-// demangled: `non-virtual thunk to'RBX::ModelInstance::shouldRender3dAdorn(void)const
+// demangled: non-virtual thunk toRBX::ModelInstance::shouldRender3dAdorn(void)const
 // type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX13ModelInstance19shouldRender3dAdornEv")]
@@ -475,7 +475,7 @@ pub fn stub_5cd294() -> ! {
 }
 
 // 0x5cd2c8 — __ZThn96_N3RBX13ModelInstance13render3dAdornEPNS_5AdornE
-// demangled: `non-virtual thunk to'RBX::ModelInstance::render3dAdorn(RBX::Adorn *)
+// demangled: non-virtual thunk toRBX::ModelInstance::render3dAdorn(RBX::Adorn *)
 // type: _DWORD __fastcall(RBX::ModelInstance *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX13ModelInstance13render3dAdornEPNS_5AdornE")]
@@ -535,7 +535,7 @@ pub fn stub_5cda08() -> ! {
 }
 
 // 0x5cda34 — __ZThn96_N3RBX13ModelInstance14render3dSelectEPNS_5AdornENS_11SelectStateE
-// demangled: `non-virtual thunk to'RBX::ModelInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)
+// demangled: non-virtual thunk toRBX::ModelInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
 #[doc(alias = "__ZThn96_N3RBX13ModelInstance14render3dSelectEPNS_5AdornENS_11SelectStateE")]
 pub fn stub_5cda34() -> ! {
@@ -552,7 +552,7 @@ pub fn stub_5cda60() -> ! {
 }
 
 // 0x5cda9c — __ZThn120_N3RBX13ModelInstance12onCameraNearEf
-// demangled: `non-virtual thunk to'RBX::ModelInstance::onCameraNear(float)
+// demangled: non-virtual thunk toRBX::ModelInstance::onCameraNear(float)
 // type: _DWORD __fastcall(RBX::ModelInstance *__hidden this, float)
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::onCameraNear(float)")]
 #[doc(alias = "__ZThn120_N3RBX13ModelInstance12onCameraNearEf")]
@@ -569,7 +569,7 @@ pub fn stub_5cdaa4() -> ! {
 }
 
 // 0x5cdacc — __ZThn120_N3RBX13ModelInstance25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE
-// demangled: `non-virtual thunk to'RBX::ModelInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)
+// demangled: non-virtual thunk toRBX::ModelInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
 #[doc(alias = "__ZThn120_N3RBX13ModelInstance25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE")]
 pub fn stub_5cdacc() -> ! {

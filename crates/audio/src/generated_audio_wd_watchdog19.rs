@@ -123,8 +123,8 @@ pub fn stub_662c24() -> ! {
 }
 
 // 0x662c48 — __GLOBAL__I_a_267
-// demangled: `global constructor keyed to'_a_267
-#[doc(alias = "`global constructor keyed to`_a_267")]
+// demangled: global constructor keyed to'_a_267
+#[doc(alias = "global constructor keyed to_a_267")]
 #[doc(alias = "__GLOBAL__I_a_267")]
 pub fn stub_662c48() -> ! {
     todo!("0x662c48 __GLOBAL__I_a_267")
@@ -220,36 +220,36 @@ pub fn stub_663280() -> ! {
 }
 
 // 0x663284 — __ZThn32_N3RBX4TeamD0Ev
-// demangled: `non-virtual thunk to'RBX::Team::~Team()
+// demangled: non-virtual thunk toRBX::Team::~Team()
 // type: void __fastcall(RBX::Team *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Team::~Team()")]
+#[doc(alias = "non-virtual thunk toRBX::Team::~Team()")]
 #[doc(alias = "__ZThn32_N3RBX4TeamD0Ev")]
 pub fn stub_663284() -> ! {
     todo!("0x663284 __ZThn32_N3RBX4TeamD0Ev")
 }
 
 // 0x66328c — __ZThn36_N3RBX4TeamD0Ev
-// demangled: `non-virtual thunk to'RBX::Team::~Team()
+// demangled: non-virtual thunk toRBX::Team::~Team()
 // type: void __fastcall(RBX::Team *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Team::~Team()")]
+#[doc(alias = "non-virtual thunk toRBX::Team::~Team()")]
 #[doc(alias = "__ZThn36_N3RBX4TeamD0Ev")]
 pub fn stub_66328c() -> ! {
     todo!("0x66328c __ZThn36_N3RBX4TeamD0Ev")
 }
 
 // 0x663294 — __ZThn32_N3RBX4TeamD1Ev
-// demangled: `non-virtual thunk to'RBX::Team::~Team()
+// demangled: non-virtual thunk toRBX::Team::~Team()
 // type: void __fastcall(RBX::Team *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Team::~Team()")]
+#[doc(alias = "non-virtual thunk toRBX::Team::~Team()")]
 #[doc(alias = "__ZThn32_N3RBX4TeamD1Ev")]
 pub fn stub_663294() -> ! {
     todo!("0x663294 __ZThn32_N3RBX4TeamD1Ev")
 }
 
 // 0x66329c — __ZThn36_N3RBX4TeamD1Ev
-// demangled: `non-virtual thunk to'RBX::Team::~Team()
+// demangled: non-virtual thunk toRBX::Team::~Team()
 // type: void __fastcall(RBX::Team *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Team::~Team()")]
+#[doc(alias = "non-virtual thunk toRBX::Team::~Team()")]
 #[doc(alias = "__ZThn36_N3RBX4TeamD1Ev")]
 pub fn stub_66329c() -> ! {
     todo!("0x66329c __ZThn36_N3RBX4TeamD1Ev")
@@ -544,18 +544,18 @@ pub fn stub_6648cc() -> ! {
 }
 
 // 0x6648d0 — __ZThn32_N3RBX5TeamsD0Ev
-// demangled: `non-virtual thunk to'RBX::Teams::~Teams()
+// demangled: non-virtual thunk toRBX::Teams::~Teams()
 // type: void __fastcall(RBX::Teams *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Teams::~Teams()")]
+#[doc(alias = "non-virtual thunk toRBX::Teams::~Teams()")]
 #[doc(alias = "__ZThn32_N3RBX5TeamsD0Ev")]
 pub fn stub_6648d0() -> ! {
     todo!("0x6648d0 __ZThn32_N3RBX5TeamsD0Ev")
 }
 
 // 0x6648d8 — __ZThn36_N3RBX5TeamsD0Ev
-// demangled: `non-virtual thunk to'RBX::Teams::~Teams()
+// demangled: non-virtual thunk toRBX::Teams::~Teams()
 // type: void __fastcall(RBX::Teams *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Teams::~Teams()")]
+#[doc(alias = "non-virtual thunk toRBX::Teams::~Teams()")]
 #[doc(alias = "__ZThn36_N3RBX5TeamsD0Ev")]
 pub fn stub_6648d8() -> ! {
     todo!("0x6648d8 __ZThn36_N3RBX5TeamsD0Ev")
@@ -571,18 +571,18 @@ pub fn stub_6648e0() -> ! {
 }
 
 // 0x6649c4 — __ZThn32_N3RBX5TeamsD1Ev
-// demangled: `non-virtual thunk to'RBX::Teams::~Teams()
+// demangled: non-virtual thunk toRBX::Teams::~Teams()
 // type: void __fastcall(RBX::Teams *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Teams::~Teams()")]
+#[doc(alias = "non-virtual thunk toRBX::Teams::~Teams()")]
 #[doc(alias = "__ZThn32_N3RBX5TeamsD1Ev")]
 pub fn stub_6649c4() -> ! {
     todo!("0x6649c4 __ZThn32_N3RBX5TeamsD1Ev")
 }
 
 // 0x6649cc — __ZThn36_N3RBX5TeamsD1Ev
-// demangled: `non-virtual thunk to'RBX::Teams::~Teams()
+// demangled: non-virtual thunk toRBX::Teams::~Teams()
 // type: void __fastcall(RBX::Teams *__hidden this)
-#[doc(alias = "`non-virtual thunk to`RBX::Teams::~Teams()")]
+#[doc(alias = "non-virtual thunk toRBX::Teams::~Teams()")]
 #[doc(alias = "__ZThn36_N3RBX5TeamsD1Ev")]
 pub fn stub_6649cc() -> ! {
     todo!("0x6649cc __ZThn36_N3RBX5TeamsD1Ev")

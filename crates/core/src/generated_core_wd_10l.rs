@@ -1,5 +1,5 @@
 //! core wd_10l — 100 core stubs EA-sorted asc gap filler not yet in crates/core/src (global EA asc, next uncovered after 0x466af8).
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc next 100 not yet in crates/core/src.
+//! Source: ida/export.json (85545 funcs) EA-sorted asc next 100 not yet in crates/core/src.
 //! Range: 0x466af8..0x476354 | rbx_core::SharedPtr not boost.
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR") using rbx_core::SharedPtr.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.

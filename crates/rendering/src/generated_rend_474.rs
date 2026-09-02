@@ -54,7 +54,7 @@ pub fn stub_747a10() -> ! {
 #[doc(alias = "global constructor keyed to _a_339")]
 #[doc(alias = "__GLOBAL__I_a_339")]
 pub fn stub_747a54() -> ! {
-    todo!("0x747a54 `global constructor keyed to'_a_339")
+    todo!("0x747a54 global constructor keyed to'_a_339")
 }
 // 0x747dc0 — __ZN3RBX15PolyPolyContactC1EPNS_9PrimitiveES2_
 // type: int __fastcall(RBX::PolyPolyContact *this, RBX::Primitive *, RBX::Primitive *)
@@ -283,7 +283,7 @@ pub fn stub_74a114() -> ! {
 #[doc(alias = "global constructor keyed to _a_340")]
 #[doc(alias = "__GLOBAL__I_a_340")]
 pub fn stub_74a118() -> ! {
-    todo!("0x74a118 `global constructor keyed to'_a_340")
+    todo!("0x74a118 global constructor keyed to'_a_340")
 }
 // 0x74a4b8 — __ZN3RBX9PrimitiveC1ENS_8Geometry12GeometryTypeE
 // type: int __fastcall(int, int, int, int, RBX::IndexedMesh *, RBX::BasicSpatialHashPrimitive *, RBX::ConcurrencyValidator *, RBX::EdgeList *, RBX::EdgeList *, int, int, int, int, int)
@@ -332,7 +332,7 @@ pub fn stub_74aafc() -> ! {
 #[doc(alias = "non-virtual thunk to RBX::Primitive::~Primitive()")]
 #[doc(alias = "__ZThn8_N3RBX9PrimitiveD0Ev")]
 pub fn stub_74ab00() -> ! {
-    todo!("0x74ab00 `non-virtual thunk to'RBX::Primitive::~Primitive()")
+    todo!("0x74ab00 non-virtual thunk toRBX::Primitive::~Primitive()")
 }
 // 0x74ab08 — __ZN3RBX9PrimitiveD2Ev
 // type: void __fastcall(RBX::Primitive *this, int, int)
@@ -346,7 +346,7 @@ pub fn stub_74ab08() -> ! {
 #[doc(alias = "non-virtual thunk to RBX::Primitive::~Primitive()")]
 #[doc(alias = "__ZThn8_N3RBX9PrimitiveD1Ev")]
 pub fn stub_74ae0c() -> ! {
-    todo!("0x74ae0c `non-virtual thunk to'RBX::Primitive::~Primitive()")
+    todo!("0x74ae0c non-virtual thunk toRBX::Primitive::~Primitive()")
 }
 // 0x74ae14 — __ZN3RBX9Primitive20setNetworkIsSleepingEb
 // type: int __fastcall(int this, int)

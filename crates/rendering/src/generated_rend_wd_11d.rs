@@ -255,35 +255,35 @@ pub fn stub_7c19a4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::PartInstance>::~FilteredSelection()")]
 #[doc(alias = "__ZThn32_N3RBX17FilteredSelectionINS_12PartInstanceEED1Ev")]
 pub fn stub_7c1a20() -> ! {
-    todo!("0x7c1a20 `non-virtual thunk to'RBX::FilteredSelection<RBX::PartInstance>::~FilteredSelection()")
+    todo!("0x7c1a20 non-virtual thunk toRBX::FilteredSelection<RBX::PartInstance>::~FilteredSelection()")
 }
 
 // 0x7c1a28 — __ZThn32_N3RBX17FilteredSelectionINS_12PartInstanceEED0Ev
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::PartInstance>::~FilteredSelection()")]
 #[doc(alias = "__ZThn32_N3RBX17FilteredSelectionINS_12PartInstanceEED0Ev")]
 pub fn stub_7c1a28() -> ! {
-    todo!("0x7c1a28 `non-virtual thunk to'RBX::FilteredSelection<RBX::PartInstance>::~FilteredSelection()")
+    todo!("0x7c1a28 non-virtual thunk toRBX::FilteredSelection<RBX::PartInstance>::~FilteredSelection()")
 }
 
 // 0x7c1a30 — __ZThn36_N3RBX17FilteredSelectionINS_12PartInstanceEED1Ev
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::PartInstance>::~FilteredSelection()")]
 #[doc(alias = "__ZThn36_N3RBX17FilteredSelectionINS_12PartInstanceEED1Ev")]
 pub fn stub_7c1a30() -> ! {
-    todo!("0x7c1a30 `non-virtual thunk to'RBX::FilteredSelection<RBX::PartInstance>::~FilteredSelection()")
+    todo!("0x7c1a30 non-virtual thunk toRBX::FilteredSelection<RBX::PartInstance>::~FilteredSelection()")
 }
 
 // 0x7c1a38 — __ZThn36_N3RBX17FilteredSelectionINS_12PartInstanceEED0Ev
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::PartInstance>::~FilteredSelection()")]
 #[doc(alias = "__ZThn36_N3RBX17FilteredSelectionINS_12PartInstanceEED0Ev")]
 pub fn stub_7c1a38() -> ! {
-    todo!("0x7c1a38 `non-virtual thunk to'RBX::FilteredSelection<RBX::PartInstance>::~FilteredSelection()")
+    todo!("0x7c1a38 non-virtual thunk toRBX::FilteredSelection<RBX::PartInstance>::~FilteredSelection()")
 }
 
 // 0x7c1a40 — __ZThn96_N3RBX17FilteredSelectionINS_12PartInstanceEE18onSelectionChangedERKNS_16SelectionChangedE
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::PartInstance>::onSelectionChanged(RBX::SelectionChanged const&)")]
 #[doc(alias = "__ZThn96_N3RBX17FilteredSelectionINS_12PartInstanceEE18onSelectionChangedERKNS_16SelectionChangedE")]
 pub fn stub_7c1a40() -> ! {
-    todo!("0x7c1a40 `non-virtual thunk to'RBX::FilteredSelection<RBX::PartInstance>::onSelectionChanged(RBX::SelectionChanged const&)")
+    todo!("0x7c1a40 non-virtual thunk toRBX::FilteredSelection<RBX::PartInstance>::onSelectionChanged(RBX::SelectionChanged const&)")
 }
 
 // 0x7c1a48 — __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPPN3RBX12PartInstanceESt6vectorIS4_SaIS4_EEEEPNS2_8InstanceEET_SC_SC_RKT0_St26random_access_iterator_tag
@@ -661,11 +661,11 @@ pub fn stub_7c2ea8() -> ! {
 }
 
 // 0x7c2ec4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_8HumanoidES7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Humanoid,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Humanoid*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>) — uses rbx_core::SharedPtr not boost
+// was: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Humanoid,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Humanoid*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Humanoid,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Humanoid*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_8HumanoidES7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_")]
 pub fn stub_7c2ec4() -> ! {
-    todo!("0x7c2ec4 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Humanoid,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Humanoid*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+    todo!("0x7c2ec4 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Humanoid,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Humanoid*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0x7c2ee0 — __ZN5boost3_bi5list2INS0_5valueIPN3RBX8HumanoidEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i

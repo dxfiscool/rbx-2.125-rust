@@ -120,7 +120,7 @@ pub fn stub_67f950() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Tool::~Tool()")]
 // was: __ZThn32_N3RBX4ToolD0Ev
 pub fn stub_67f954() -> ! {
-    todo!("0x67f954 `non-virtual thunk to'RBX::Tool::~Tool()")
+    todo!("0x67f954 non-virtual thunk toRBX::Tool::~Tool()")
 }
 
 // 0x67f95c — __ZThn36_N3RBX4ToolD0Ev
@@ -129,7 +129,7 @@ pub fn stub_67f954() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Tool::~Tool()")]
 // was: __ZThn36_N3RBX4ToolD0Ev
 pub fn stub_67f95c() -> ! {
-    todo!("0x67f95c `non-virtual thunk to'RBX::Tool::~Tool()")
+    todo!("0x67f95c non-virtual thunk toRBX::Tool::~Tool()")
 }
 
 // 0x67f964 — __ZThn292_N3RBX4ToolD0Ev
@@ -138,7 +138,7 @@ pub fn stub_67f95c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Tool::~Tool()")]
 // was: __ZThn292_N3RBX4ToolD0Ev
 pub fn stub_67f964() -> ! {
-    todo!("0x67f964 `non-virtual thunk to'RBX::Tool::~Tool()")
+    todo!("0x67f964 non-virtual thunk toRBX::Tool::~Tool()")
 }
 
 // 0x67f96c — __ZN3RBX4ToolD2Ev
@@ -156,7 +156,7 @@ pub fn stub_67f96c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Tool::~Tool()")]
 // was: __ZThn32_N3RBX4ToolD1Ev
 pub fn stub_68027c() -> ! {
-    todo!("0x68027c `non-virtual thunk to'RBX::Tool::~Tool()")
+    todo!("0x68027c non-virtual thunk toRBX::Tool::~Tool()")
 }
 
 // 0x680284 — __ZThn36_N3RBX4ToolD1Ev
@@ -165,7 +165,7 @@ pub fn stub_68027c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Tool::~Tool()")]
 // was: __ZThn36_N3RBX4ToolD1Ev
 pub fn stub_680284() -> ! {
-    todo!("0x680284 `non-virtual thunk to'RBX::Tool::~Tool()")
+    todo!("0x680284 non-virtual thunk toRBX::Tool::~Tool()")
 }
 
 // 0x68028c — __ZThn292_N3RBX4ToolD1Ev
@@ -174,7 +174,7 @@ pub fn stub_680284() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Tool::~Tool()")]
 // was: __ZThn292_N3RBX4ToolD1Ev
 pub fn stub_68028c() -> ! {
-    todo!("0x68028c `non-virtual thunk to'RBX::Tool::~Tool()")
+    todo!("0x68028c non-virtual thunk toRBX::Tool::~Tool()")
 }
 
 // 0x680310 — __ZN3RBX4Tool23characterCanUnequipToolEPNS_13ModelInstanceE
@@ -219,7 +219,7 @@ pub fn stub_6804e8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Tool::getLocation(void)")]
 // was: __ZThn328_N3RBX4Tool11getLocationEv
 pub fn stub_68051c() -> ! {
-    todo!("0x68051c `non-virtual thunk to'RBX::Tool::getLocation(void)")
+    todo!("0x68051c non-virtual thunk toRBX::Tool::getLocation(void)")
 }
 
 // 0x68052c — __ZN3RBX4Tool7dropAllEPNS_7Network6PlayerE

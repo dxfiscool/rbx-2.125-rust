@@ -1,5 +1,5 @@
 //! core shard jv — 150 stubs EA-sorted 0x72388..0x88818 (global EA-sorted, next 150 not yet in core after ju 0x72364, rbx_core::SharedPtr not boost).
-//! Source: `ida/export.json` (85545 funcs) global EA-sorted ascending, next 150 not yet in rbx_core (34159 before -> 34309 after, gap 51387->51237).
+//! Source: ida/export.json (85545 funcs) global EA-sorted ascending, next 150 not yet in rbx_core (34159 before -> 34309 after, gap 51387->51237).
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + #[doc(alias = mangled)] + todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 

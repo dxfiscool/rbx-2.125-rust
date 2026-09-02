@@ -1,5 +1,5 @@
 //! core shard AI — 100 core stubs EA-sorted, next uncovered (lowest EA first after global deduplication).
-//! Source: `ida/export.json` filtered where demangled/mangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted, next 100 uncovered after 0x316738 (lowest EA first).
+//! Source: ida/export.json filtered where demangled/mangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted, next 100 uncovered after 0x316738 (lowest EA first).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
@@ -54,7 +54,7 @@ pub fn stub_0x31e558() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_113")]
 // 0x31e658 — __GLOBAL__I_a_113
-// was: `global constructor keyed to_a_113
+// was: global constructor keyed to_a_113
 pub fn stub_0x31e658() -> ! {
     todo!("0x31e658 __GLOBAL__I_a_113")
 }
@@ -91,7 +91,7 @@ pub fn stub_0x31f5b4() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_114")]
 // 0x31f738 — __GLOBAL__I_a_114
-// was: `global constructor keyed to_a_114
+// was: global constructor keyed to_a_114
 pub fn stub_0x31f738() -> ! {
     todo!("0x31f738 __GLOBAL__I_a_114")
 }
@@ -152,7 +152,7 @@ pub fn stub_0x3201f4() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_115")]
 // 0x3202dc — __GLOBAL__I_a_115
-// was: `global constructor keyed to_a_115
+// was: global constructor keyed to_a_115
 pub fn stub_0x3202dc() -> ! {
     todo!("0x3202dc __GLOBAL__I_a_115")
 }
@@ -189,7 +189,7 @@ pub fn stub_0x32059c() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_116")]
 // 0x3207f8 — __GLOBAL__I_a_116
-// was: `global constructor keyed to_a_116
+// was: global constructor keyed to_a_116
 pub fn stub_0x3207f8() -> ! {
     todo!("0x3207f8 __GLOBAL__I_a_116")
 }
@@ -346,14 +346,14 @@ pub fn stub_0x322bdc() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_117")]
 // 0x322e00 — __GLOBAL__I_a_117
-// was: `global constructor keyed to_a_117
+// was: global constructor keyed to_a_117
 pub fn stub_0x322e00() -> ! {
     todo!("0x322e00 __GLOBAL__I_a_117")
 }
 
 #[doc(alias = "global constructor keyed to_a_118")]
 // 0x322ef8 — __GLOBAL__I_a_118
-// was: `global constructor keyed to_a_118
+// was: global constructor keyed to_a_118
 pub fn stub_0x322ef8() -> ! {
     todo!("0x322ef8 __GLOBAL__I_a_118")
 }
@@ -366,14 +366,14 @@ pub fn stub_0x323028() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_119")]
 // 0x3234d4 — __GLOBAL__I_a_119
-// was: `global constructor keyed to_a_119
+// was: global constructor keyed to_a_119
 pub fn stub_0x3234d4() -> ! {
     todo!("0x3234d4 __GLOBAL__I_a_119")
 }
 
 #[doc(alias = "global constructor keyed to_a_120")]
 // 0x323b78 — __GLOBAL__I_a_120
-// was: `global constructor keyed to_a_120
+// was: global constructor keyed to_a_120
 pub fn stub_0x323b78() -> ! {
     todo!("0x323b78 __GLOBAL__I_a_120")
 }
@@ -392,7 +392,7 @@ pub fn stub_0x323fdc() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_121")]
 // 0x323fe0 — __GLOBAL__I_a_121
-// was: `global constructor keyed to_a_121
+// was: global constructor keyed to_a_121
 pub fn stub_0x323fe0() -> ! {
     todo!("0x323fe0 __GLOBAL__I_a_121")
 }
@@ -501,7 +501,7 @@ pub fn stub_0x3246ec() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_122")]
 // 0x324710 — __GLOBAL__I_a_122
-// was: `global constructor keyed to_a_122
+// was: global constructor keyed to_a_122
 pub fn stub_0x324710() -> ! {
     todo!("0x324710 __GLOBAL__I_a_122")
 }
@@ -550,7 +550,7 @@ pub fn stub_0x324ce8() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_123")]
 // 0x3251ac — __GLOBAL__I_a_123
-// was: `global constructor keyed to_a_123
+// was: global constructor keyed to_a_123
 pub fn stub_0x3251ac() -> ! {
     todo!("0x3251ac __GLOBAL__I_a_123")
 }
@@ -581,7 +581,7 @@ pub fn stub_0x325b98() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_124")]
 // 0x326108 — __GLOBAL__I_a_124
-// was: `global constructor keyed to_a_124
+// was: global constructor keyed to_a_124
 pub fn stub_0x326108() -> ! {
     todo!("0x326108 __GLOBAL__I_a_124")
 }

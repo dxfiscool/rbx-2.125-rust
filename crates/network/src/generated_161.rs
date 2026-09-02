@@ -78,7 +78,7 @@ pub fn stub_424cc() -> ! {
 }
 
 // 0x42580 — __GLOBAL__I_a_12
-// demangled: `global constructor keyed to'_a_12
+// demangled: global constructor keyed to'_a_12
 #[doc(alias = "global constructor keyed to_a_12")]
 pub fn stub_42580() -> ! {
     todo!("0x42580 global constructor keyed to_a_12")
@@ -262,7 +262,7 @@ pub fn stub_43364() -> ! {
 }
 
 // 0x43394 — __GLOBAL__I_a_13
-// demangled: `global constructor keyed to'_a_13
+// demangled: global constructor keyed to'_a_13
 #[doc(alias = "global constructor keyed to_a_13")]
 pub fn stub_43394() -> ! {
     todo!("0x43394 global constructor keyed to_a_13")
@@ -484,7 +484,7 @@ pub fn stub_44888() -> ! {
 }
 
 // 0x44924 — __GLOBAL__I_a_14
-// demangled: `global constructor keyed to'_a_14
+// demangled: global constructor keyed to'_a_14
 #[doc(alias = "global constructor keyed to_a_14")]
 pub fn stub_44924() -> ! {
     todo!("0x44924 global constructor keyed to_a_14")

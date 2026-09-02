@@ -3,7 +3,7 @@
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0xb79f0c..0xb99f90 | EA-sorted asc gap filler distinct from watchdog22 (higher range 0xb79f0c+)
 // Shard: generated_dm_wd_watchdog23 EA-sorted asc next 100 uncovered not yet in crates/datamodel/src (higher range gap filler >0xb79f0c)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and single-quote stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and single-quote stripped from alias where needed
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

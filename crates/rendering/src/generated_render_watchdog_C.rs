@@ -129,7 +129,7 @@ pub fn stub_0x72d0d0() -> ! {
 #[doc(alias = "__ZThn32_N3RBX9GlueJointD0Ev")]
 // was: __ZThn32_N3RBX9GlueJointD0Ev
 pub fn stub_0x7345d4() -> ! {
-    todo!("0x7345d4 `non-virtual thunk to'RBX::GlueJoint::~GlueJoint()")
+    todo!("0x7345d4 non-virtual thunk toRBX::GlueJoint::~GlueJoint()")
 }
 
 // 0x734678 — __ZN5boost14singleton_poolIN3RBX20NormalBreakConnectorELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv
@@ -169,7 +169,7 @@ pub fn stub_0x734730() -> ! {
 #[doc(alias = "__GLOBAL__I_a_319")]
 // was: __GLOBAL__I_a_319
 pub fn stub_0x734760() -> ! {
-    todo!("0x734760 `global constructor keyed to'_a_319")
+    todo!("0x734760 global constructor keyed to'_a_319")
 }
 
 // 0x73492c — __ZN3RBX11GroundStageC1EPNS_6IStageEPNS_5WorldE
@@ -385,7 +385,7 @@ pub fn stub_0x735660() -> ! {
 #[doc(alias = "__ZThn32_N3RBX9FreeJointD1Ev")]
 // was: __ZThn32_N3RBX9FreeJointD1Ev
 pub fn stub_0x735664() -> ! {
-    todo!("0x735664 `non-virtual thunk to'RBX::FreeJoint::~FreeJoint()")
+    todo!("0x735664 non-virtual thunk toRBX::FreeJoint::~FreeJoint()")
 }
 
 // 0x73566c — __ZThn32_N3RBX9FreeJointD0Ev
@@ -394,7 +394,7 @@ pub fn stub_0x735664() -> ! {
 #[doc(alias = "__ZThn32_N3RBX9FreeJointD0Ev")]
 // was: __ZThn32_N3RBX9FreeJointD0Ev
 pub fn stub_0x73566c() -> ! {
-    todo!("0x73566c `non-virtual thunk to'RBX::FreeJoint::~FreeJoint()")
+    todo!("0x73566c non-virtual thunk toRBX::FreeJoint::~FreeJoint()")
 }
 
 // 0x735710 — __ZN3RBX11AnchorJointC2EPNS_9PrimitiveE
@@ -439,7 +439,7 @@ pub fn stub_0x735880() -> ! {
 #[doc(alias = "__ZThn32_N3RBX11AnchorJointD1Ev")]
 // was: __ZThn32_N3RBX11AnchorJointD1Ev
 pub fn stub_0x735884() -> ! {
-    todo!("0x735884 `non-virtual thunk to'RBX::AnchorJoint::~AnchorJoint()")
+    todo!("0x735884 non-virtual thunk toRBX::AnchorJoint::~AnchorJoint()")
 }
 
 // 0x73588c — __ZThn32_N3RBX11AnchorJointD0Ev
@@ -448,7 +448,7 @@ pub fn stub_0x735884() -> ! {
 #[doc(alias = "__ZThn32_N3RBX11AnchorJointD0Ev")]
 // was: __ZThn32_N3RBX11AnchorJointD0Ev
 pub fn stub_0x73588c() -> ! {
-    todo!("0x73588c `non-virtual thunk to'RBX::AnchorJoint::~AnchorJoint()")
+    todo!("0x73588c non-virtual thunk toRBX::AnchorJoint::~AnchorJoint()")
 }
 
 // 0x735930 — __GLOBAL__I_a_320
@@ -456,7 +456,7 @@ pub fn stub_0x73588c() -> ! {
 #[doc(alias = "__GLOBAL__I_a_320")]
 // was: __GLOBAL__I_a_320
 pub fn stub_0x735930() -> ! {
-    todo!("0x735930 `global constructor keyed to'_a_320")
+    todo!("0x735930 global constructor keyed to'_a_320")
 }
 
 // 0x735a2c — __ZN3RBX13HumanoidStageC1EPNS_6IStageEPNS_5WorldE
@@ -554,7 +554,7 @@ pub fn stub_0x735f10() -> ! {
 #[doc(alias = "__GLOBAL__I_a_321")]
 // was: __GLOBAL__I_a_321
 pub fn stub_0x735f14() -> ! {
-    todo!("0x735f14 `global constructor keyed to'_a_321")
+    todo!("0x735f14 global constructor keyed to'_a_321")
 }
 
 // 0x736044 — __ZN3RBX7IMovingC2Ev
@@ -790,7 +790,7 @@ pub fn stub_0x736bb0() -> ! {
 #[doc(alias = "__GLOBAL__I_a_322")]
 // was: __GLOBAL__I_a_322
 pub fn stub_0x736c94() -> ! {
-    todo!("0x736c94 `global constructor keyed to'_a_322")
+    todo!("0x736c94 global constructor keyed to'_a_322")
 }
 
 // 0x736ccc — __ZN3RBX11IWorldStage11onEdgeAddedEPNS_4EdgeE
@@ -834,7 +834,7 @@ pub fn stub_0x736dc8() -> ! {
 #[doc(alias = "__GLOBAL__I_a_323")]
 // was: __GLOBAL__I_a_323
 pub fn stub_0x736e80() -> ! {
-    todo!("0x736e80 `global constructor keyed to'_a_323")
+    todo!("0x736e80 global constructor keyed to'_a_323")
 }
 
 // 0x736f30 — __ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEEC1Ev
@@ -886,7 +886,7 @@ pub fn stub_0x7377d0() -> ! {
 #[doc(alias = "__ZThn32_N3RBX5JointD0Ev")]
 // was: __ZThn32_N3RBX5JointD0Ev
 pub fn stub_0x7377d4() -> ! {
-    todo!("0x7377d4 `non-virtual thunk to'RBX::Joint::~Joint()")
+    todo!("0x7377d4 non-virtual thunk toRBX::Joint::~Joint()")
 }
 
 // 0x7377dc — __ZN3RBX5JointD2Ev
@@ -904,7 +904,7 @@ pub fn stub_0x7377dc() -> ! {
 #[doc(alias = "__ZThn32_N3RBX5JointD1Ev")]
 // was: __ZThn32_N3RBX5JointD1Ev
 pub fn stub_0x737924() -> ! {
-    todo!("0x737924 `non-virtual thunk to'RBX::Joint::~Joint()")
+    todo!("0x737924 non-virtual thunk toRBX::Joint::~Joint()")
 }
 
 // 0x73792c — __ZN3RBX5Joint18getJointWorldCoordEi
@@ -1034,7 +1034,7 @@ pub fn stub_0x738028() -> ! {
 #[doc(alias = "__ZThn32_NK3RBX5Joint13isHeavierThanEPKNS_12SpanningEdgeE")]
 // was: __ZThn32_NK3RBX5Joint13isHeavierThanEPKNS_12SpanningEdgeE
 pub fn stub_0x73825c() -> ! {
-    todo!("0x73825c `non-virtual thunk to'RBX::Joint::isHeavierThan(RBX::SpanningEdge const*)const")
+    todo!("0x73825c non-virtual thunk toRBX::Joint::isHeavierThan(RBX::SpanningEdge const*)const")
 }
 
 // 0x738268 — __ZN3RBX5Joint9otherNodeEPNS_12SpanningNodeE
@@ -1052,5 +1052,5 @@ pub fn stub_0x738268() -> ! {
 #[doc(alias = "__ZThn32_N3RBX5Joint9otherNodeEPNS_12SpanningNodeE")]
 // was: __ZThn32_N3RBX5Joint9otherNodeEPNS_12SpanningNodeE
 pub fn stub_0x738284() -> ! {
-    todo!("0x738284 `non-virtual thunk to'RBX::Joint::otherNode(RBX::SpanningNode *)")
+    todo!("0x738284 non-virtual thunk toRBX::Joint::otherNode(RBX::SpanningNode *)")
 }

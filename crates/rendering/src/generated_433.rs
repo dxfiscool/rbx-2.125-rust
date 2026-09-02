@@ -232,7 +232,7 @@ pub fn stub_679360() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TextLabel::~TextLabel()")]
 // was: __ZThn32_N3RBX9TextLabelD1Ev
 pub fn stub_679370() -> ! {
-    todo!("0x679370 `non-virtual thunk to'RBX::TextLabel::~TextLabel()")
+    todo!("0x679370 non-virtual thunk toRBX::TextLabel::~TextLabel()")
 }
 
 // 0x67938c — __ZThn32_N3RBX9TextLabelD0Ev
@@ -241,7 +241,7 @@ pub fn stub_679370() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TextLabel::~TextLabel()")]
 // was: __ZThn32_N3RBX9TextLabelD0Ev
 pub fn stub_67938c() -> ! {
-    todo!("0x67938c `non-virtual thunk to'RBX::TextLabel::~TextLabel()")
+    todo!("0x67938c non-virtual thunk toRBX::TextLabel::~TextLabel()")
 }
 
 // 0x679438 — __ZThn32_NK3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE12getClassNameEv
@@ -258,7 +258,7 @@ pub fn stub_679438() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TextLabel::~TextLabel()")]
 // was: __ZThn36_N3RBX9TextLabelD1Ev
 pub fn stub_679448() -> ! {
-    todo!("0x679448 `non-virtual thunk to'RBX::TextLabel::~TextLabel()")
+    todo!("0x679448 non-virtual thunk toRBX::TextLabel::~TextLabel()")
 }
 
 // 0x679464 — __ZThn36_N3RBX9TextLabelD0Ev
@@ -267,7 +267,7 @@ pub fn stub_679448() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TextLabel::~TextLabel()")]
 // was: __ZThn36_N3RBX9TextLabelD0Ev
 pub fn stub_679464() -> ! {
-    todo!("0x679464 `non-virtual thunk to'RBX::TextLabel::~TextLabel()")
+    todo!("0x679464 non-virtual thunk toRBX::TextLabel::~TextLabel()")
 }
 
 // 0x679510 — __ZN3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE7CreatorD1Ev

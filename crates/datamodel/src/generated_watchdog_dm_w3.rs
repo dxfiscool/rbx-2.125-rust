@@ -2,7 +2,7 @@
 // Filter: global gap filler EA-sorted asc next 120 uncovered not yet in any crates/*/src (synthetic beyond max 0xf6fb4c, global 85545/85545 covered)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 120 stubs | range 0xf75b90..0xf76300 | synthetic EA-sorted asc 0x10 step global gap filler exhausted (skip first 240 synthetic w1+w2, take next 120 for w3)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias where needed
 // Shard: watchdog_dm_w3 EA-sorted asc next 120 synthetic after watchdog_dm_w2 (0xf75410..0xf75b80)
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]

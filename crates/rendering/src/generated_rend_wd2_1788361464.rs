@@ -25,10 +25,10 @@ pub fn stub_bf318() -> ! {
 }
 
 // 0xbf35c — __GLOBAL__I__ZN4FMOD13dsppitchshiftE
-#[doc(alias = "`global constructor keyed toFMOD::dsppitchshift")]
+#[doc(alias = "global constructor keyed toFMOD::dsppitchshift")]
 #[doc(alias = "__GLOBAL__I__ZN4FMOD13dsppitchshiftE")]
 pub fn stub_bf35c() -> ! {
-    todo!("0xbf35c `global constructor keyed to'FMOD::dsppitchshift")
+    todo!("0xbf35c global constructor keyed to'FMOD::dsppitchshift")
 }
 
 // 0xbf368 — __ZN4FMOD12DSPResampler8addInputEPNS_4DSPIE
@@ -245,10 +245,10 @@ pub fn stub_c1ac0() -> ! {
 }
 
 // 0xc1b04 — __GLOBAL__I__ZN4FMOD9dspreverbE
-#[doc(alias = "`global constructor keyed toFMOD::dspreverb")]
+#[doc(alias = "global constructor keyed toFMOD::dspreverb")]
 #[doc(alias = "__GLOBAL__I__ZN4FMOD9dspreverbE")]
 pub fn stub_c1b04() -> ! {
-    todo!("0xc1b04 `global constructor keyed to'FMOD::dspreverb")
+    todo!("0xc1b04 global constructor keyed to'FMOD::dspreverb")
 }
 
 // 0xc1b10 — __ZN4FMOD12DSPSfxReverb20SetRoomRolloffFactorEP25_I3DL2_LISTENERPROPERTIES
@@ -475,25 +475,25 @@ pub fn stub_68d804() -> ! {
 
 // 0x68d8a4 — __ZThn36_N3RBX20SmoothNoOutlinesToolD1Ev
 // type: void __fastcall(RBX::SmoothNoOutlinesTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::SmoothNoOutlinesTool::~SmoothNoOutlinesTool()")]
+#[doc(alias = "non-virtual thunk toRBX::SmoothNoOutlinesTool::~SmoothNoOutlinesTool()")]
 #[doc(alias = "__ZThn36_N3RBX20SmoothNoOutlinesToolD1Ev")]
 pub fn stub_68d8a4() -> ! {
-    todo!("0x68d8a4 `non-virtual thunk to'RBX::SmoothNoOutlinesTool::~SmoothNoOutlinesTool()")
+    todo!("0x68d8a4 non-virtual thunk toRBX::SmoothNoOutlinesTool::~SmoothNoOutlinesTool()")
 }
 
 // 0x68d8ac — __ZThn36_N3RBX20SmoothNoOutlinesToolD0Ev
 // type: void __fastcall(RBX::SmoothNoOutlinesTool *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::SmoothNoOutlinesTool::~SmoothNoOutlinesTool()")]
+#[doc(alias = "non-virtual thunk toRBX::SmoothNoOutlinesTool::~SmoothNoOutlinesTool()")]
 #[doc(alias = "__ZThn36_N3RBX20SmoothNoOutlinesToolD0Ev")]
 pub fn stub_68d8ac() -> ! {
-    todo!("0x68d8ac `non-virtual thunk to'RBX::SmoothNoOutlinesTool::~SmoothNoOutlinesTool()")
+    todo!("0x68d8ac non-virtual thunk toRBX::SmoothNoOutlinesTool::~SmoothNoOutlinesTool()")
 }
 
 // 0x68d950 — __GLOBAL__I_a_278
-#[doc(alias = "`global constructor keyed to_a_278")]
+#[doc(alias = "global constructor keyed to_a_278")]
 #[doc(alias = "__GLOBAL__I_a_278")]
 pub fn stub_68d950() -> ! {
-    todo!("0x68d950 `global constructor keyed to'_a_278")
+    todo!("0x68d950 global constructor keyed to'_a_278")
 }
 
 // 0x68dc00 — __ZN3RBX16TouchTransmitterC1Ev
@@ -530,18 +530,18 @@ pub fn stub_68df2c() -> ! {
 
 // 0x68df30 — __ZThn32_N3RBX16TouchTransmitterD0Ev
 // type: void __fastcall(RBX::TouchTransmitter *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")]
+#[doc(alias = "non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")]
 #[doc(alias = "__ZThn32_N3RBX16TouchTransmitterD0Ev")]
 pub fn stub_68df30() -> ! {
-    todo!("0x68df30 `non-virtual thunk to'RBX::TouchTransmitter::~TouchTransmitter()")
+    todo!("0x68df30 non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")
 }
 
 // 0x68df38 — __ZThn36_N3RBX16TouchTransmitterD0Ev
 // type: void __fastcall(RBX::TouchTransmitter *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")]
+#[doc(alias = "non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")]
 #[doc(alias = "__ZThn36_N3RBX16TouchTransmitterD0Ev")]
 pub fn stub_68df38() -> ! {
-    todo!("0x68df38 `non-virtual thunk to'RBX::TouchTransmitter::~TouchTransmitter()")
+    todo!("0x68df38 non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")
 }
 
 // 0x68df40 — __ZN3RBX16TouchTransmitterD2Ev
@@ -554,18 +554,18 @@ pub fn stub_68df40() -> ! {
 
 // 0x68e058 — __ZThn32_N3RBX16TouchTransmitterD1Ev
 // type: void __fastcall(RBX::TouchTransmitter *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")]
+#[doc(alias = "non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")]
 #[doc(alias = "__ZThn32_N3RBX16TouchTransmitterD1Ev")]
 pub fn stub_68e058() -> ! {
-    todo!("0x68e058 `non-virtual thunk to'RBX::TouchTransmitter::~TouchTransmitter()")
+    todo!("0x68e058 non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")
 }
 
 // 0x68e060 — __ZThn36_N3RBX16TouchTransmitterD1Ev
 // type: void __fastcall(RBX::TouchTransmitter *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")]
+#[doc(alias = "non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")]
 #[doc(alias = "__ZThn36_N3RBX16TouchTransmitterD1Ev")]
 pub fn stub_68e060() -> ! {
-    todo!("0x68e060 `non-virtual thunk to'RBX::TouchTransmitter::~TouchTransmitter()")
+    todo!("0x68e060 non-virtual thunk toRBX::TouchTransmitter::~TouchTransmitter()")
 }
 
 // 0x68e068 — __ZN3RBX16TouchTransmitter10checkTouchERKN5boost10shared_ptrINS_12PartInstanceEEE

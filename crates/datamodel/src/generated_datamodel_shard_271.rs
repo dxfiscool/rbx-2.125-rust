@@ -2,7 +2,7 @@
 // Filter: RBX::Instance|RBX::DataModel|Workspace (10215) complete — fallback global gap filler lowest uncovered EA asc not yet in datamodel
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x287340..0x28d6bc | datamodel distinct 31272->31372 global uncovered 54281->54181, lowest gap EA-sorted asc next 100 after shard 270 (0x281354..0x2872f0)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias where needed
 // Shard: 271 EA-sorted ascending next uncovered gap after shard 270 (distinct check via export.json sorted EA, no overlap)
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
@@ -71,7 +71,7 @@ pub fn stub_0x2876e8() -> ! {
 }
 
 // 0x287738 — __GLOBAL__I_a_69
-// was: `global constructor keyed to'_a_69
+// was: global constructor keyed to'_a_69
 #[doc(alias = "global constructor keyed to_a_69")]
 pub fn stub_0x287738() -> ! {
     todo!("0x287738 global constructor keyed to_a_69")
@@ -322,7 +322,7 @@ pub fn stub_0x28a98c() -> ! {
 }
 
 // 0x28aa88 — __GLOBAL__I_a_70
-// was: `global constructor keyed to'_a_70
+// was: global constructor keyed to'_a_70
 #[doc(alias = "global constructor keyed to_a_70")]
 pub fn stub_0x28aa88() -> ! {
     todo!("0x28aa88 global constructor keyed to_a_70")
@@ -413,7 +413,7 @@ pub fn stub_0x28bd74() -> ! {
 
 // 0x28bd78 — __ZThn32_N3RBX10BaseScriptD0Ev
 // type: void __fastcall(RBX::BaseScript *__hidden this)
-// was: `non-virtual thunk to'RBX::BaseScript::~BaseScript()
+// was: non-virtual thunk toRBX::BaseScript::~BaseScript()
 #[doc(alias = "non-virtual thunk toRBX::BaseScript::~BaseScript()")]
 pub fn stub_0x28bd78() -> ! {
     todo!("0x28bd78 non-virtual thunk toRBX::BaseScript::~BaseScript()")
@@ -421,7 +421,7 @@ pub fn stub_0x28bd78() -> ! {
 
 // 0x28bd80 — __ZThn36_N3RBX10BaseScriptD0Ev
 // type: void __fastcall(RBX::BaseScript *__hidden this)
-// was: `non-virtual thunk to'RBX::BaseScript::~BaseScript()
+// was: non-virtual thunk toRBX::BaseScript::~BaseScript()
 #[doc(alias = "non-virtual thunk toRBX::BaseScript::~BaseScript()")]
 pub fn stub_0x28bd80() -> ! {
     todo!("0x28bd80 non-virtual thunk toRBX::BaseScript::~BaseScript()")
@@ -436,7 +436,7 @@ pub fn stub_0x28bd88() -> ! {
 
 // 0x28bf98 — __ZThn32_N3RBX10BaseScriptD1Ev
 // type: void __fastcall(RBX::BaseScript *__hidden this)
-// was: `non-virtual thunk to'RBX::BaseScript::~BaseScript()
+// was: non-virtual thunk toRBX::BaseScript::~BaseScript()
 #[doc(alias = "non-virtual thunk toRBX::BaseScript::~BaseScript()")]
 pub fn stub_0x28bf98() -> ! {
     todo!("0x28bf98 non-virtual thunk toRBX::BaseScript::~BaseScript()")
@@ -444,7 +444,7 @@ pub fn stub_0x28bf98() -> ! {
 
 // 0x28bfa0 — __ZThn36_N3RBX10BaseScriptD1Ev
 // type: void __fastcall(RBX::BaseScript *__hidden this)
-// was: `non-virtual thunk to'RBX::BaseScript::~BaseScript()
+// was: non-virtual thunk toRBX::BaseScript::~BaseScript()
 #[doc(alias = "non-virtual thunk toRBX::BaseScript::~BaseScript()")]
 pub fn stub_0x28bfa0() -> ! {
     todo!("0x28bfa0 non-virtual thunk toRBX::BaseScript::~BaseScript()")
@@ -466,7 +466,7 @@ pub fn stub_0x28c048() -> ! {
 
 // 0x28c04c — __ZThn32_N3RBX6ScriptD0Ev
 // type: void __fastcall(RBX::Script *__hidden this)
-// was: `non-virtual thunk to'RBX::Script::~Script()
+// was: non-virtual thunk toRBX::Script::~Script()
 #[doc(alias = "non-virtual thunk toRBX::Script::~Script()")]
 pub fn stub_0x28c04c() -> ! {
     todo!("0x28c04c non-virtual thunk toRBX::Script::~Script()")
@@ -474,7 +474,7 @@ pub fn stub_0x28c04c() -> ! {
 
 // 0x28c054 — __ZThn36_N3RBX6ScriptD0Ev
 // type: void __fastcall(RBX::Script *__hidden this)
-// was: `non-virtual thunk to'RBX::Script::~Script()
+// was: non-virtual thunk toRBX::Script::~Script()
 #[doc(alias = "non-virtual thunk toRBX::Script::~Script()")]
 pub fn stub_0x28c054() -> ! {
     todo!("0x28c054 non-virtual thunk toRBX::Script::~Script()")
@@ -489,7 +489,7 @@ pub fn stub_0x28c05c() -> ! {
 
 // 0x28c1c8 — __ZThn32_N3RBX6ScriptD1Ev
 // type: void __fastcall(RBX::Script *__hidden this)
-// was: `non-virtual thunk to'RBX::Script::~Script()
+// was: non-virtual thunk toRBX::Script::~Script()
 #[doc(alias = "non-virtual thunk toRBX::Script::~Script()")]
 pub fn stub_0x28c1c8() -> ! {
     todo!("0x28c1c8 non-virtual thunk toRBX::Script::~Script()")
@@ -497,7 +497,7 @@ pub fn stub_0x28c1c8() -> ! {
 
 // 0x28c1d0 — __ZThn36_N3RBX6ScriptD1Ev
 // type: void __fastcall(RBX::Script *__hidden this)
-// was: `non-virtual thunk to'RBX::Script::~Script()
+// was: non-virtual thunk toRBX::Script::~Script()
 #[doc(alias = "non-virtual thunk toRBX::Script::~Script()")]
 pub fn stub_0x28c1d0() -> ! {
     todo!("0x28c1d0 non-virtual thunk toRBX::Script::~Script()")

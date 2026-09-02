@@ -53,7 +53,7 @@ pub fn stub_5d655c() -> ! {
 }
 
 // 0x5d6644 — __GLOBAL__I_a_230
-// demangled: `global constructor keyed to'_a_230
+// demangled: global constructor keyed to'_a_230
 #[doc(alias = "global constructor keyed to_a_230")]
 #[doc(alias = "__GLOBAL__I_a_230")]
 pub fn stub_5d6644() -> ! {
@@ -61,7 +61,7 @@ pub fn stub_5d6644() -> ! {
 }
 
 // 0x5d6900 — __GLOBAL__I_a_231
-// demangled: `global constructor keyed to'_a_231
+// demangled: global constructor keyed to'_a_231
 #[doc(alias = "global constructor keyed to_a_231")]
 #[doc(alias = "__GLOBAL__I_a_231")]
 pub fn stub_5d6900() -> ! {
@@ -87,7 +87,7 @@ pub fn stub_5d6c94() -> ! {
 }
 
 // 0x5d6ca4 — __ZThn32_N3RBX4PART22ParametricPartInstanceD0Ev
-// demangled: `non-virtual thunk to'RBX::PART::ParametricPartInstance::~ParametricPartInstance()
+// demangled: non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()
 // type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 #[doc(alias = "__ZThn32_N3RBX4PART22ParametricPartInstanceD0Ev")]
@@ -96,7 +96,7 @@ pub fn stub_5d6ca4() -> ! {
 }
 
 // 0x5d6cac — __ZThn36_N3RBX4PART22ParametricPartInstanceD0Ev
-// demangled: `non-virtual thunk to'RBX::PART::ParametricPartInstance::~ParametricPartInstance()
+// demangled: non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()
 // type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 #[doc(alias = "__ZThn36_N3RBX4PART22ParametricPartInstanceD0Ev")]
@@ -105,7 +105,7 @@ pub fn stub_5d6cac() -> ! {
 }
 
 // 0x5d6cb4 — __ZThn132_N3RBX4PART22ParametricPartInstanceD0Ev
-// demangled: `non-virtual thunk to'RBX::PART::ParametricPartInstance::~ParametricPartInstance()
+// demangled: non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()
 // type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 #[doc(alias = "__ZThn132_N3RBX4PART22ParametricPartInstanceD0Ev")]
@@ -114,7 +114,7 @@ pub fn stub_5d6cb4() -> ! {
 }
 
 // 0x5d6cbc — __ZThn32_N3RBX4PART22ParametricPartInstanceD1Ev
-// demangled: `non-virtual thunk to'RBX::PART::ParametricPartInstance::~ParametricPartInstance()
+// demangled: non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()
 // type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 #[doc(alias = "__ZThn32_N3RBX4PART22ParametricPartInstanceD1Ev")]
@@ -123,7 +123,7 @@ pub fn stub_5d6cbc() -> ! {
 }
 
 // 0x5d6cd0 — __ZThn36_N3RBX4PART22ParametricPartInstanceD1Ev
-// demangled: `non-virtual thunk to'RBX::PART::ParametricPartInstance::~ParametricPartInstance()
+// demangled: non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()
 // type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 #[doc(alias = "__ZThn36_N3RBX4PART22ParametricPartInstanceD1Ev")]
@@ -132,7 +132,7 @@ pub fn stub_5d6cd0() -> ! {
 }
 
 // 0x5d6ce4 — __ZThn132_N3RBX4PART22ParametricPartInstanceD1Ev
-// demangled: `non-virtual thunk to'RBX::PART::ParametricPartInstance::~ParametricPartInstance()
+// demangled: non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()
 // type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 #[doc(alias = "__ZThn132_N3RBX4PART22ParametricPartInstanceD1Ev")]
@@ -168,7 +168,7 @@ pub fn stub_5d704c() -> ! {
 }
 
 // 0x5d705c — __ZThn32_N3RBX4PART5WedgeD0Ev
-// demangled: `non-virtual thunk to'RBX::PART::Wedge::~Wedge()
+// demangled: non-virtual thunk toRBX::PART::Wedge::~Wedge()
 // type: void __fastcall(RBX::PART::Wedge *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::Wedge::~Wedge()")]
 #[doc(alias = "__ZThn32_N3RBX4PART5WedgeD0Ev")]
@@ -177,7 +177,7 @@ pub fn stub_5d705c() -> ! {
 }
 
 // 0x5d7064 — __ZThn36_N3RBX4PART5WedgeD0Ev
-// demangled: `non-virtual thunk to'RBX::PART::Wedge::~Wedge()
+// demangled: non-virtual thunk toRBX::PART::Wedge::~Wedge()
 // type: void __fastcall(RBX::PART::Wedge *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::Wedge::~Wedge()")]
 #[doc(alias = "__ZThn36_N3RBX4PART5WedgeD0Ev")]
@@ -186,7 +186,7 @@ pub fn stub_5d7064() -> ! {
 }
 
 // 0x5d706c — __ZThn132_N3RBX4PART5WedgeD0Ev
-// demangled: `non-virtual thunk to'RBX::PART::Wedge::~Wedge()
+// demangled: non-virtual thunk toRBX::PART::Wedge::~Wedge()
 // type: void __fastcall(RBX::PART::Wedge *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::Wedge::~Wedge()")]
 #[doc(alias = "__ZThn132_N3RBX4PART5WedgeD0Ev")]
@@ -195,7 +195,7 @@ pub fn stub_5d706c() -> ! {
 }
 
 // 0x5d7074 — __ZThn32_N3RBX4PART5WedgeD1Ev
-// demangled: `non-virtual thunk to'RBX::PART::Wedge::~Wedge()
+// demangled: non-virtual thunk toRBX::PART::Wedge::~Wedge()
 // type: void __fastcall(RBX::PART::Wedge *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::Wedge::~Wedge()")]
 #[doc(alias = "__ZThn32_N3RBX4PART5WedgeD1Ev")]
@@ -204,7 +204,7 @@ pub fn stub_5d7074() -> ! {
 }
 
 // 0x5d7088 — __ZThn36_N3RBX4PART5WedgeD1Ev
-// demangled: `non-virtual thunk to'RBX::PART::Wedge::~Wedge()
+// demangled: non-virtual thunk toRBX::PART::Wedge::~Wedge()
 // type: void __fastcall(RBX::PART::Wedge *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::Wedge::~Wedge()")]
 #[doc(alias = "__ZThn36_N3RBX4PART5WedgeD1Ev")]
@@ -213,7 +213,7 @@ pub fn stub_5d7088() -> ! {
 }
 
 // 0x5d709c — __ZThn132_N3RBX4PART5WedgeD1Ev
-// demangled: `non-virtual thunk to'RBX::PART::Wedge::~Wedge()
+// demangled: non-virtual thunk toRBX::PART::Wedge::~Wedge()
 // type: void __fastcall(RBX::PART::Wedge *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PART::Wedge::~Wedge()")]
 #[doc(alias = "__ZThn132_N3RBX4PART5WedgeD1Ev")]
@@ -555,7 +555,7 @@ pub fn stub_5d81d0() -> ! {
 }
 
 // 0x5d8284 — __GLOBAL__I_a_232
-// demangled: `global constructor keyed to'_a_232
+// demangled: global constructor keyed to'_a_232
 #[doc(alias = "global constructor keyed to_a_232")]
 #[doc(alias = "__GLOBAL__I_a_232")]
 pub fn stub_5d8284() -> ! {

@@ -1,5 +1,5 @@
 //! core watchdog 1788317087 — 100 core stubs EA-sorted asc next uncovered.
-//! Source: `ida/export.json` (85545 funcs) global EA asc not yet in core crate — next 100 core namespace (rbx_core/RBX::Tasks/SharedPtr/Signal) EA-sorted 0x26c38c..0x92c2ac (core namespace 100; global gap-filler if exhausted, rbx_core::SharedPtr not boost).
+//! Source: ida/export.json (85545 funcs) global EA asc not yet in core crate — next 100 core namespace (rbx_core/RBX::Tasks/SharedPtr/Signal) EA-sorted 0x26c38c..0x92c2ac (core namespace 100; global gap-filler if exhausted, rbx_core::SharedPtr not boost).
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 

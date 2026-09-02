@@ -2,7 +2,7 @@
 // Filter: Lua|Script|Yield|lua (5401 filtered, all already stubbed globally) — filler EA-sorted ascending
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: +100 stubs | range 0x3f3970..0x3fdb84 | existing 9151 -> 9251 total (filler 0x3f3970 ascending, global remaining 29996 -> 29896)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -24,7 +24,7 @@ pub fn stub_0x3f3a14() -> ! {
 }
 
 // 0x3f4fac — __GLOBAL__I_a_172
-// was: `global constructor keyed to'_a_172
+// was: global constructor keyed to'_a_172
 #[doc(alias = "global constructor keyed to_a_172")]
 pub fn stub_0x3f4fac() -> ! {
     todo!("0x3f4fac global constructor keyed to_a_172")

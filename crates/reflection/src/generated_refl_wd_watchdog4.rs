@@ -554,28 +554,28 @@ pub fn stub_0x30277c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX18HttpQueueStatsItemD1Ev")]
 pub fn stub_0x3027d0() -> ! {
-    todo!("0x3027d0 `non-virtual thunk to'RBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
+    todo!("0x3027d0 non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
 }
 
 // 0x302810 — __ZThn32_N3RBX18HttpQueueStatsItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX18HttpQueueStatsItemD0Ev")]
 pub fn stub_0x302810() -> ! {
-    todo!("0x302810 `non-virtual thunk to'RBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
+    todo!("0x302810 non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
 }
 
 // 0x3028e8 — __ZThn36_N3RBX18HttpQueueStatsItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX18HttpQueueStatsItemD1Ev")]
 pub fn stub_0x3028e8() -> ! {
-    todo!("0x3028e8 `non-virtual thunk to'RBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
+    todo!("0x3028e8 non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
 }
 
 // 0x302928 — __ZThn36_N3RBX18HttpQueueStatsItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX18HttpQueueStatsItemD0Ev")]
 pub fn stub_0x302928() -> ! {
-    todo!("0x302928 `non-virtual thunk to'RBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
+    todo!("0x302928 non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
 }
 
 // 0x3029fc — __ZN5boost10shared_ptrIN3RBX18HttpQueueStatsItemEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -638,7 +638,7 @@ pub fn stub_0x302cf8() -> ! {
 #[doc(alias = "global constructor keyed to_a_106")]
 #[doc(alias = "__GLOBAL__I_a_106")]
 pub fn stub_0x302d20() -> ! {
-    todo!("0x302d20 `global constructor keyed to'_a_106")
+    todo!("0x302d20 global constructor keyed to'_a_106")
 }
 
 // 0x302eb8 — __ZN3RBX4AxesC1Ei
@@ -792,7 +792,7 @@ pub fn stub_0x304070() -> ! {
 #[doc(alias = "global constructor keyed to_a_107")]
 #[doc(alias = "__GLOBAL__I_a_107")]
 pub fn stub_0x304200() -> ! {
-    todo!("0x304200 `global constructor keyed to'_a_107")
+    todo!("0x304200 global constructor keyed to'_a_107")
 }
 
 // 0x3042c8 — __ZN3RBX10BrickColor8BrickMap9singletonEv

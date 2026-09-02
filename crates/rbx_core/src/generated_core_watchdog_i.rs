@@ -1,5 +1,5 @@
 //! core watchdog i — 120 core stubs EA-sorted, continuation after watchdog_h 0x739784.
-//! Source: `ida/export.json` (85545 funcs) global EA asc not yet in rbx_core — next 120 uncovered after 0x739784 (watchdog_h max).
+//! Source: ida/export.json (85545 funcs) global EA asc not yet in rbx_core — next 120 uncovered after 0x739784 (watchdog_h max).
 //! Filter: core namespace (exclude Reflection, Instance, DataModel, Workspace, Ogre, G3D, RakNet, Network, Replicator, Lua, Script, Yield, CodeGen, FMOD, Audio, Sound).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
@@ -45,7 +45,7 @@ pub fn stub_739a90() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_324")]
 // 0x739adc — __GLOBAL__I_a_324
-// was: `global constructor keyed to'_a_324
+// was: global constructor keyed to'_a_324
 pub fn stub_739adc() -> ! {
     todo!("0x739adc __GLOBAL__I_a_324")
 }
@@ -59,7 +59,7 @@ pub fn stub_739e3c() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_325")]
 // 0x739f24 — __GLOBAL__I_a_325
-// was: `global constructor keyed to'_a_325
+// was: global constructor keyed to'_a_325
 pub fn stub_739f24() -> ! {
     todo!("0x739f24 __GLOBAL__I_a_325")
 }
@@ -241,7 +241,7 @@ pub fn stub_73b2a8() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_326")]
 // 0x73b2d0 — __GLOBAL__I_a_326
-// was: `global constructor keyed to'_a_326
+// was: global constructor keyed to'_a_326
 pub fn stub_73b2d0() -> ! {
     todo!("0x73b2d0 __GLOBAL__I_a_326")
 }
@@ -262,7 +262,7 @@ pub fn stub_73b3b4() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_327")]
 // 0x73b3d0 — __GLOBAL__I_a_327
-// was: `global constructor keyed to'_a_327
+// was: global constructor keyed to'_a_327
 pub fn stub_73b3d0() -> ! {
     todo!("0x73b3d0 __GLOBAL__I_a_327")
 }
@@ -331,7 +331,7 @@ pub fn stub_73beac() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_328")]
 // 0x73c03c — __GLOBAL__I_a_328
-// was: `global constructor keyed to'_a_328
+// was: global constructor keyed to'_a_328
 pub fn stub_73c03c() -> ! {
     todo!("0x73c03c __GLOBAL__I_a_328")
 }
@@ -367,7 +367,7 @@ pub fn stub_73c288() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Mechanism::~Mechanism()")]
 // 0x73c28c — __ZThn8_N3RBX9MechanismD0Ev
 // type: void __fastcall(RBX::Mechanism *__hidden this)
-// was: `non-virtual thunk to'RBX::Mechanism::~Mechanism()
+// was: non-virtual thunk toRBX::Mechanism::~Mechanism()
 pub fn stub_73c28c() -> ! {
     todo!("0x73c28c __ZThn8_N3RBX9MechanismD0Ev")
 }
@@ -382,7 +382,7 @@ pub fn stub_73c294() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Mechanism::~Mechanism()")]
 // 0x73c350 — __ZThn8_N3RBX9MechanismD1Ev
 // type: void __fastcall(RBX::Mechanism *__hidden this)
-// was: `non-virtual thunk to'RBX::Mechanism::~Mechanism()
+// was: non-virtual thunk toRBX::Mechanism::~Mechanism()
 pub fn stub_73c350() -> ! {
     todo!("0x73c350 __ZThn8_N3RBX9MechanismD1Ev")
 }
@@ -473,7 +473,7 @@ pub fn stub_73c584() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_329")]
 // 0x73c628 — __GLOBAL__I_a_329
-// was: `global constructor keyed to'_a_329
+// was: global constructor keyed to'_a_329
 pub fn stub_73c628() -> ! {
     todo!("0x73c628 __GLOBAL__I_a_329")
 }
@@ -563,7 +563,7 @@ pub fn stub_73cbc8() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_330")]
 // 0x73cc88 — __GLOBAL__I_a_330
-// was: `global constructor keyed to'_a_330
+// was: global constructor keyed to'_a_330
 pub fn stub_73cc88() -> ! {
     todo!("0x73cc88 __GLOBAL__I_a_330")
 }

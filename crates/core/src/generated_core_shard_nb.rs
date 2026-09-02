@@ -1,5 +1,5 @@
 //! core shard nb — 100 core stubs EA-sorted asc fallback gap filler after 0xf250cc (next uncovered >0xf250cc EA-sorted asc, not yet in rbx_core).
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc, next 100 fallback not yet in rbx_core (fallback excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound; fallback 33887, uncovered 13824 before -> 13724 after, batch 0xf25d44..0xf26644).
+//! Source: ida/export.json (85545 funcs) EA-sorted asc, next 100 fallback not yet in rbx_core (fallback excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound; fallback 33887, uncovered 13824 before -> 13724 after, batch 0xf25d44..0xf26644).
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 

@@ -1,5 +1,5 @@
 //! core shard EX — 100 core stubs EA-sorted, lowest uncovered 0xc09780..0xc27c18 (strict RBX|boost|std|rbx excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 after EW 0xc08fec).
-//! Source: `ida/export.json` filtered where demangled contains `RBX::`|`boost::`|`std::`|`rbx::` excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 lowest uncovered after 0xc08fec.
+//! Source: ida/export.json filtered where demangled contains RBX::|boost::|std::|rbx:: excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 lowest uncovered after 0xc08fec.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
@@ -12,7 +12,7 @@ pub fn stub_c09780() -> ! {
 
 #[doc(alias = "RBX::Voxel::Water::anonymous namespace::isWaterOnWedge(RBX::Voxel::Cell const&,RBX::Voxel::Water::LocalAreaInfo const&)")]
 // 0xc09948 — __ZN3RBX5Voxel5Water12_GLOBAL__N_114isWaterOnWedgeERKNS0_4CellERKNS1_13LocalAreaInfoE
-// was: RBX::Voxel::Water::`anonymous namespace::isWaterOnWedge(RBX::Voxel::Cell const&,RBX::Voxel::Water::LocalAreaInfo const&)
+// was: RBX::Voxel::Water::anonymous namespace::isWaterOnWedge(RBX::Voxel::Cell const&,RBX::Voxel::Water::LocalAreaInfo const&)
 pub fn stub_c09948() -> ! {
     todo!("0xc09948 __ZN3RBX5Voxel5Water12_GLOBAL__N_114isWaterOnWedgeERKNS0_4CellERKNS1_13LocalAreaInfoE")
 }

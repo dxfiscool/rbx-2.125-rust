@@ -52,57 +52,57 @@ pub fn stub_063c52c() -> ! {
 }
 
 // 0x063c578 — __ZThn32_N3RBX8SparklesD1Ev
-// demangled: `non-virtual thunk to'RBX::Sparkles::~Sparkles()
+// demangled: non-virtual thunk toRBX::Sparkles::~Sparkles()
 // type: void __fastcall(RBX::Sparkles *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles()")]
 #[doc(alias = "__ZThn32_N3RBX8SparklesD1Ev")]
 pub fn stub_063c578() -> ! {
-    todo!("0x063c578 `non-virtual thunk to'RBX::Sparkles::~Sparkles()")
+    todo!("0x063c578 non-virtual thunk toRBX::Sparkles::~Sparkles()")
 }
 
 // 0x063c580 — __ZThn32_N3RBX8SparklesD0Ev
-// demangled: `non-virtual thunk to'RBX::Sparkles::~Sparkles()
+// demangled: non-virtual thunk toRBX::Sparkles::~Sparkles()
 // type: void __fastcall(RBX::Sparkles *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles()")]
 #[doc(alias = "__ZThn32_N3RBX8SparklesD0Ev")]
 pub fn stub_063c580() -> ! {
-    todo!("0x063c580 `non-virtual thunk to'RBX::Sparkles::~Sparkles()")
+    todo!("0x063c580 non-virtual thunk toRBX::Sparkles::~Sparkles()")
 }
 
 // 0x063c598 — __ZThn36_N3RBX8SparklesD1Ev
-// demangled: `non-virtual thunk to'RBX::Sparkles::~Sparkles()
+// demangled: non-virtual thunk toRBX::Sparkles::~Sparkles()
 // type: void __fastcall(RBX::Sparkles *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles()")]
 #[doc(alias = "__ZThn36_N3RBX8SparklesD1Ev")]
 pub fn stub_063c598() -> ! {
-    todo!("0x063c598 `non-virtual thunk to'RBX::Sparkles::~Sparkles()")
+    todo!("0x063c598 non-virtual thunk toRBX::Sparkles::~Sparkles()")
 }
 
 // 0x063c5a0 — __ZThn36_N3RBX8SparklesD0Ev
-// demangled: `non-virtual thunk to'RBX::Sparkles::~Sparkles()
+// demangled: non-virtual thunk toRBX::Sparkles::~Sparkles()
 // type: void __fastcall(RBX::Sparkles *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles()")]
 #[doc(alias = "__ZThn36_N3RBX8SparklesD0Ev")]
 pub fn stub_063c5a0() -> ! {
-    todo!("0x063c5a0 `non-virtual thunk to'RBX::Sparkles::~Sparkles()")
+    todo!("0x063c5a0 non-virtual thunk toRBX::Sparkles::~Sparkles()")
 }
 
 // 0x063c5a8 — __ZThn92_N3RBX8SparklesD1Ev
-// demangled: `non-virtual thunk to'RBX::Sparkles::~Sparkles()
+// demangled: non-virtual thunk toRBX::Sparkles::~Sparkles()
 // type: void __fastcall(RBX::Sparkles *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles()")]
 #[doc(alias = "__ZThn92_N3RBX8SparklesD1Ev")]
 pub fn stub_063c5a8() -> ! {
-    todo!("0x063c5a8 `non-virtual thunk to'RBX::Sparkles::~Sparkles()")
+    todo!("0x063c5a8 non-virtual thunk toRBX::Sparkles::~Sparkles()")
 }
 
 // 0x063c5b0 — __ZThn92_N3RBX8SparklesD0Ev
-// demangled: `non-virtual thunk to'RBX::Sparkles::~Sparkles()
+// demangled: non-virtual thunk toRBX::Sparkles::~Sparkles()
 // type: void __fastcall(RBX::Sparkles *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles()")]
 #[doc(alias = "__ZThn92_N3RBX8SparklesD0Ev")]
 pub fn stub_063c5b0() -> ! {
-    todo!("0x063c5b0 `non-virtual thunk to'RBX::Sparkles::~Sparkles()")
+    todo!("0x063c5b0 non-virtual thunk toRBX::Sparkles::~Sparkles()")
 }
 
 // 0x063c5b8 — __ZN3RBX8SparklesD2Ev
@@ -248,30 +248,30 @@ pub fn stub_063d5ac() -> ! {
 }
 
 // 0x063d5bc — __ZThn32_N3RBX13SpawnLocationD0Ev
-// demangled: `non-virtual thunk to'RBX::SpawnLocation::~SpawnLocation()
+// demangled: non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()
 // type: void __fastcall(RBX::SpawnLocation *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")]
 #[doc(alias = "__ZThn32_N3RBX13SpawnLocationD0Ev")]
 pub fn stub_063d5bc() -> ! {
-    todo!("0x063d5bc `non-virtual thunk to'RBX::SpawnLocation::~SpawnLocation()")
+    todo!("0x063d5bc non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")
 }
 
 // 0x063d5c4 — __ZThn36_N3RBX13SpawnLocationD0Ev
-// demangled: `non-virtual thunk to'RBX::SpawnLocation::~SpawnLocation()
+// demangled: non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()
 // type: void __fastcall(RBX::SpawnLocation *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")]
 #[doc(alias = "__ZThn36_N3RBX13SpawnLocationD0Ev")]
 pub fn stub_063d5c4() -> ! {
-    todo!("0x063d5c4 `non-virtual thunk to'RBX::SpawnLocation::~SpawnLocation()")
+    todo!("0x063d5c4 non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")
 }
 
 // 0x063d5cc — __ZThn132_N3RBX13SpawnLocationD0Ev
-// demangled: `non-virtual thunk to'RBX::SpawnLocation::~SpawnLocation()
+// demangled: non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()
 // type: void __fastcall(RBX::SpawnLocation *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")]
 #[doc(alias = "__ZThn132_N3RBX13SpawnLocationD0Ev")]
 pub fn stub_063d5cc() -> ! {
-    todo!("0x063d5cc `non-virtual thunk to'RBX::SpawnLocation::~SpawnLocation()")
+    todo!("0x063d5cc non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")
 }
 
 // 0x063d5d4 — __ZN3RBX13SpawnLocationD2Ev
@@ -284,30 +284,30 @@ pub fn stub_063d5d4() -> ! {
 }
 
 // 0x063d788 — __ZThn32_N3RBX13SpawnLocationD1Ev
-// demangled: `non-virtual thunk to'RBX::SpawnLocation::~SpawnLocation()
+// demangled: non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()
 // type: void __fastcall(RBX::SpawnLocation *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")]
 #[doc(alias = "__ZThn32_N3RBX13SpawnLocationD1Ev")]
 pub fn stub_063d788() -> ! {
-    todo!("0x063d788 `non-virtual thunk to'RBX::SpawnLocation::~SpawnLocation()")
+    todo!("0x063d788 non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")
 }
 
 // 0x063d798 — __ZThn36_N3RBX13SpawnLocationD1Ev
-// demangled: `non-virtual thunk to'RBX::SpawnLocation::~SpawnLocation()
+// demangled: non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()
 // type: void __fastcall(RBX::SpawnLocation *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")]
 #[doc(alias = "__ZThn36_N3RBX13SpawnLocationD1Ev")]
 pub fn stub_063d798() -> ! {
-    todo!("0x063d798 `non-virtual thunk to'RBX::SpawnLocation::~SpawnLocation()")
+    todo!("0x063d798 non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")
 }
 
 // 0x063d7a8 — __ZThn132_N3RBX13SpawnLocationD1Ev
-// demangled: `non-virtual thunk to'RBX::SpawnLocation::~SpawnLocation()
+// demangled: non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()
 // type: void __fastcall(RBX::SpawnLocation *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")]
 #[doc(alias = "__ZThn132_N3RBX13SpawnLocationD1Ev")]
 pub fn stub_063d7a8() -> ! {
-    todo!("0x063d7a8 `non-virtual thunk to'RBX::SpawnLocation::~SpawnLocation()")
+    todo!("0x063d7a8 non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")
 }
 
 // 0x063d7b8 — __ZN3RBX13SpawnLocation22onEvent_spawnerTouchedEN5boost10shared_ptrINS_8InstanceEEE
@@ -364,21 +364,21 @@ pub fn stub_063de78() -> ! {
 }
 
 // 0x063de7c — __ZThn32_N3RBX14SpawnerServiceD0Ev
-// demangled: `non-virtual thunk to'RBX::SpawnerService::~SpawnerService()
+// demangled: non-virtual thunk toRBX::SpawnerService::~SpawnerService()
 // type: void __fastcall(RBX::SpawnerService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SpawnerService::~SpawnerService()")]
 #[doc(alias = "__ZThn32_N3RBX14SpawnerServiceD0Ev")]
 pub fn stub_063de7c() -> ! {
-    todo!("0x063de7c `non-virtual thunk to'RBX::SpawnerService::~SpawnerService()")
+    todo!("0x063de7c non-virtual thunk toRBX::SpawnerService::~SpawnerService()")
 }
 
 // 0x063de84 — __ZThn36_N3RBX14SpawnerServiceD0Ev
-// demangled: `non-virtual thunk to'RBX::SpawnerService::~SpawnerService()
+// demangled: non-virtual thunk toRBX::SpawnerService::~SpawnerService()
 // type: void __fastcall(RBX::SpawnerService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SpawnerService::~SpawnerService()")]
 #[doc(alias = "__ZThn36_N3RBX14SpawnerServiceD0Ev")]
 pub fn stub_063de84() -> ! {
-    todo!("0x063de84 `non-virtual thunk to'RBX::SpawnerService::~SpawnerService()")
+    todo!("0x063de84 non-virtual thunk toRBX::SpawnerService::~SpawnerService()")
 }
 
 // 0x063de8c — __ZN3RBX14SpawnerServiceD2Ev
@@ -391,21 +391,21 @@ pub fn stub_063de8c() -> ! {
 }
 
 // 0x063ded4 — __ZThn32_N3RBX14SpawnerServiceD1Ev
-// demangled: `non-virtual thunk to'RBX::SpawnerService::~SpawnerService()
+// demangled: non-virtual thunk toRBX::SpawnerService::~SpawnerService()
 // type: void __fastcall(RBX::SpawnerService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SpawnerService::~SpawnerService()")]
 #[doc(alias = "__ZThn32_N3RBX14SpawnerServiceD1Ev")]
 pub fn stub_063ded4() -> ! {
-    todo!("0x063ded4 `non-virtual thunk to'RBX::SpawnerService::~SpawnerService()")
+    todo!("0x063ded4 non-virtual thunk toRBX::SpawnerService::~SpawnerService()")
 }
 
 // 0x063dedc — __ZThn36_N3RBX14SpawnerServiceD1Ev
-// demangled: `non-virtual thunk to'RBX::SpawnerService::~SpawnerService()
+// demangled: non-virtual thunk toRBX::SpawnerService::~SpawnerService()
 // type: void __fastcall(RBX::SpawnerService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SpawnerService::~SpawnerService()")]
 #[doc(alias = "__ZThn36_N3RBX14SpawnerServiceD1Ev")]
 pub fn stub_063dedc() -> ! {
-    todo!("0x063dedc `non-virtual thunk to'RBX::SpawnerService::~SpawnerService()")
+    todo!("0x063dedc non-virtual thunk toRBX::SpawnerService::~SpawnerService()")
 }
 
 // 0x063dee4 — __ZN3RBX14SpawnerService13ClearContentsEv
@@ -665,11 +665,11 @@ pub fn stub_0657270() -> ! {
 }
 
 // 0x065740c — __GLOBAL__I_a_263
-// demangled: `global constructor keyed to'_a_263
+// demangled: global constructor keyed to'_a_263
 #[doc(alias = "global constructor keyed to_a_263")]
 #[doc(alias = "__GLOBAL__I_a_263")]
 pub fn stub_065740c() -> ! {
-    todo!("0x065740c `global constructor keyed to'_a_263")
+    todo!("0x065740c global constructor keyed to'_a_263")
 }
 
 // 0x065793c — __ZN3RBX10StudioTool10setEnabledEb
@@ -838,19 +838,19 @@ pub fn stub_065838c() -> ! {
 }
 
 // 0x06583a0 — __GLOBAL__I_a_264
-// demangled: `global constructor keyed to'_a_264
+// demangled: global constructor keyed to'_a_264
 #[doc(alias = "global constructor keyed to_a_264")]
 #[doc(alias = "__GLOBAL__I_a_264")]
 pub fn stub_06583a0() -> ! {
-    todo!("0x06583a0 `global constructor keyed to'_a_264")
+    todo!("0x06583a0 global constructor keyed to'_a_264")
 }
 
 // 0x0658744 — __GLOBAL__I_a_265
-// demangled: `global constructor keyed to'_a_265
+// demangled: global constructor keyed to'_a_265
 #[doc(alias = "global constructor keyed to_a_265")]
 #[doc(alias = "__GLOBAL__I_a_265")]
 pub fn stub_0658744() -> ! {
-    todo!("0x0658744 `global constructor keyed to'_a_265")
+    todo!("0x0658744 global constructor keyed to'_a_265")
 }
 
 // 0x06589e8 — __ZN3RBX7SurfaceC1EPNS_12PartInstanceENS_8NormalIdE

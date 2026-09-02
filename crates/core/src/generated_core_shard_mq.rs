@@ -1,5 +1,5 @@
 //! core shard mq — 100 core stubs EA-sorted asc global gap filler not yet in any crate.
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc, next 100 not yet in any crate (global gap; 47407 distinct before -> 47507 after, 38139 uncovered before -> 38039 after, batch 0x4bbe58..0x5079f8).
+//! Source: ida/export.json (85545 funcs) EA-sorted asc, next 100 not yet in any crate (global gap; 47407 distinct before -> 47507 after, 38139 uncovered before -> 38039 after, batch 0x4bbe58..0x5079f8).
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 

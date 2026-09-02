@@ -130,10 +130,10 @@ pub fn stub_826210() -> ! {
 }
 
 // 0x826288 — __GLOBAL__I_a_401
-#[doc(alias = "`global constructor keyed to__a_401")]
+#[doc(alias = "global constructor keyed to__a_401")]
 #[doc(alias = "__GLOBAL__I_a_401")]
 pub fn stub_826288() -> ! {
-    todo!("0x826288 `global constructor keyed to'_a_401")
+    todo!("0x826288 global constructor keyed to'_a_401")
 }
 
 // 0x826350 — __Z8luaK_nilP9FuncStateii
@@ -447,10 +447,10 @@ pub fn stub_8274ac() -> ! {
 }
 
 // 0x82751c — __GLOBAL__I_a_402
-#[doc(alias = "`global constructor keyed to__a_402")]
+#[doc(alias = "global constructor keyed to__a_402")]
 #[doc(alias = "__GLOBAL__I_a_402")]
 pub fn stub_82751c() -> ! {
-    todo!("0x82751c `global constructor keyed to'_a_402")
+    todo!("0x82751c global constructor keyed to'_a_402")
 }
 
 // 0x8275e4 — __Z11lua_sethookP9lua_StatePFvS0_P9lua_DebugEii
@@ -596,10 +596,10 @@ pub fn stub_828404() -> ! {
 }
 
 // 0x82843c — __GLOBAL__I_a_403
-#[doc(alias = "`global constructor keyed to__a_403")]
+#[doc(alias = "global constructor keyed to__a_403")]
 #[doc(alias = "__GLOBAL__I_a_403")]
 pub fn stub_82843c() -> ! {
-    todo!("0x82843c `global constructor keyed to'_a_403")
+    todo!("0x82843c global constructor keyed to'_a_403")
 }
 
 // 0x828504 — __Z16luaD_seterrorobjP9lua_StateiP10lua_TValue

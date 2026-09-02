@@ -2,7 +2,7 @@
 // Filter: RBX::Instance|DataModel|Workspace (10215) exhausted — gap filler EA-sorted asc distinct not yet in crates/datamodel/src
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 120 stubs | range 0x49a900..0x4af45c | gap filler EA-sorted ascending next 120 after 0xf78880 (shard wd_watchdog8)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
 // Shard: wd_watchdog8 EA-sorted ascending continuation after wd_watchdog7 (global gap filler)
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
@@ -391,7 +391,7 @@ pub fn stub_0x49fc84() -> ! {
 // type: void __fastcall(RBX::Explosion *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Explosion::~Explosion()")]
 #[doc(alias = "__ZThn32_N3RBX9ExplosionD0Ev")]
-// was: `non-virtual thunk to'RBX::Explosion::~Explosion()
+// was: non-virtual thunk toRBX::Explosion::~Explosion()
 pub fn stub_0x49fc88() -> ! {
     todo!("0x49fc88 non-virtual thunk toRBX::Explosion::~Explosion()")
 }
@@ -400,7 +400,7 @@ pub fn stub_0x49fc88() -> ! {
 // type: void __fastcall(RBX::Explosion *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Explosion::~Explosion()")]
 #[doc(alias = "__ZThn36_N3RBX9ExplosionD0Ev")]
-// was: `non-virtual thunk to'RBX::Explosion::~Explosion()
+// was: non-virtual thunk toRBX::Explosion::~Explosion()
 pub fn stub_0x49fc90() -> ! {
     todo!("0x49fc90 non-virtual thunk toRBX::Explosion::~Explosion()")
 }
@@ -409,7 +409,7 @@ pub fn stub_0x49fc90() -> ! {
 // type: void __fastcall(RBX::Explosion *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Explosion::~Explosion()")]
 #[doc(alias = "__ZThn116_N3RBX9ExplosionD0Ev")]
-// was: `non-virtual thunk to'RBX::Explosion::~Explosion()
+// was: non-virtual thunk toRBX::Explosion::~Explosion()
 pub fn stub_0x49fc98() -> ! {
     todo!("0x49fc98 non-virtual thunk toRBX::Explosion::~Explosion()")
 }
@@ -418,7 +418,7 @@ pub fn stub_0x49fc98() -> ! {
 // type: void __fastcall(RBX::Explosion *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Explosion::~Explosion()")]
 #[doc(alias = "__ZThn128_N3RBX9ExplosionD0Ev")]
-// was: `non-virtual thunk to'RBX::Explosion::~Explosion()
+// was: non-virtual thunk toRBX::Explosion::~Explosion()
 pub fn stub_0x49fca0() -> ! {
     todo!("0x49fca0 non-virtual thunk toRBX::Explosion::~Explosion()")
 }
@@ -435,7 +435,7 @@ pub fn stub_0x49fca8() -> ! {
 // type: void __fastcall(RBX::Explosion *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Explosion::~Explosion()")]
 #[doc(alias = "__ZThn32_N3RBX9ExplosionD1Ev")]
-// was: `non-virtual thunk to'RBX::Explosion::~Explosion()
+// was: non-virtual thunk toRBX::Explosion::~Explosion()
 pub fn stub_0x49fee8() -> ! {
     todo!("0x49fee8 non-virtual thunk toRBX::Explosion::~Explosion()")
 }
@@ -444,7 +444,7 @@ pub fn stub_0x49fee8() -> ! {
 // type: void __fastcall(RBX::Explosion *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Explosion::~Explosion()")]
 #[doc(alias = "__ZThn36_N3RBX9ExplosionD1Ev")]
-// was: `non-virtual thunk to'RBX::Explosion::~Explosion()
+// was: non-virtual thunk toRBX::Explosion::~Explosion()
 pub fn stub_0x49fef0() -> ! {
     todo!("0x49fef0 non-virtual thunk toRBX::Explosion::~Explosion()")
 }
@@ -453,7 +453,7 @@ pub fn stub_0x49fef0() -> ! {
 // type: void __fastcall(RBX::Explosion *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Explosion::~Explosion()")]
 #[doc(alias = "__ZThn116_N3RBX9ExplosionD1Ev")]
-// was: `non-virtual thunk to'RBX::Explosion::~Explosion()
+// was: non-virtual thunk toRBX::Explosion::~Explosion()
 pub fn stub_0x49fef8() -> ! {
     todo!("0x49fef8 non-virtual thunk toRBX::Explosion::~Explosion()")
 }
@@ -462,7 +462,7 @@ pub fn stub_0x49fef8() -> ! {
 // type: void __fastcall(RBX::Explosion *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Explosion::~Explosion()")]
 #[doc(alias = "__ZThn128_N3RBX9ExplosionD1Ev")]
-// was: `non-virtual thunk to'RBX::Explosion::~Explosion()
+// was: non-virtual thunk toRBX::Explosion::~Explosion()
 pub fn stub_0x49ff00() -> ! {
     todo!("0x49ff00 non-virtual thunk toRBX::Explosion::~Explosion()")
 }
@@ -478,7 +478,7 @@ pub fn stub_0x4a0098() -> ! {
 // 0x4a0318 — __ZThn116_N3RBX9Explosion9onSteppedERKNS_7SteppedE
 #[doc(alias = "non-virtual thunk toRBX::Explosion::onStepped(RBX::Stepped const&)")]
 #[doc(alias = "__ZThn116_N3RBX9Explosion9onSteppedERKNS_7SteppedE")]
-// was: `non-virtual thunk to'RBX::Explosion::onStepped(RBX::Stepped const&)
+// was: non-virtual thunk toRBX::Explosion::onStepped(RBX::Stepped const&)
 pub fn stub_0x4a0318() -> ! {
     todo!("0x4a0318 non-virtual thunk toRBX::Explosion::onStepped(RBX::Stepped const&)")
 }
@@ -495,7 +495,7 @@ pub fn stub_0x4a0320() -> ! {
 // type: _DWORD __fastcall(RBX::Explosion *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::Explosion::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn92_N3RBX9Explosion13render3dAdornEPNS_5AdornE")]
-// was: `non-virtual thunk to'RBX::Explosion::render3dAdorn(RBX::Adorn *)
+// was: non-virtual thunk toRBX::Explosion::render3dAdorn(RBX::Adorn *)
 pub fn stub_0x4a0430() -> ! {
     todo!("0x4a0430 non-virtual thunk toRBX::Explosion::render3dAdorn(RBX::Adorn *)")
 }
@@ -567,7 +567,7 @@ pub fn stub_0x4a1350() -> ! {
 // type: _DWORD __fastcall(RBX::Explosion *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Explosion::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZThn92_NK3RBX9Explosion19shouldRender3dAdornEv")]
-// was: `non-virtual thunk to'RBX::Explosion::shouldRender3dAdorn(void)const
+// was: non-virtual thunk toRBX::Explosion::shouldRender3dAdorn(void)const
 pub fn stub_0x4a1368() -> ! {
     todo!("0x4a1368 non-virtual thunk toRBX::Explosion::shouldRender3dAdorn(void)const")
 }

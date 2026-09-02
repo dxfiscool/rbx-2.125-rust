@@ -513,7 +513,7 @@ pub fn stub_78edbc() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>::~error_info_injector()")]
 // was: __ZThn12_N5boost16exception_detail19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEED0Ev
 pub fn stub_78eeb0() -> ! {
-    todo!("0x78eeb0 `non-virtual thunk to`boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>::~error_info_injector()")
+    todo!("0x78eeb0 non-virtual thunk toboost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>::~error_info_injector()")
 }
 
 // 0x78eec8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEED1Ev
@@ -527,14 +527,14 @@ pub fn stub_78eec8() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()")]
 // was: __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEED1Ev
 pub fn stub_78eed8() -> ! {
-    todo!("0x78eed8 `non-virtual thunk to`boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()")
+    todo!("0x78eed8 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()")
 }
 
 // 0x78eee0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEED1Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()")]
 // was: __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEED1Ev
 pub fn stub_78eee0() -> ! {
-    todo!("0x78eee0 `virtual thunk to`boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()")
+    todo!("0x78eee0 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()")
 }
 
 // 0x78eef0 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEE5cloneEv
@@ -548,14 +548,14 @@ pub fn stub_78eef0() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::rethrow(void)const")]
 // was: __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEE7rethrowEv
 pub fn stub_78efb0() -> ! {
-    todo!("0x78efb0 `virtual thunk to`boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::rethrow(void)const")
+    todo!("0x78efb0 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::rethrow(void)const")
 }
 
 // 0x78efc0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEED0Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()")]
 // was: __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEED0Ev
 pub fn stub_78efc0() -> ! {
-    todo!("0x78efc0 `virtual thunk to`boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()")
+    todo!("0x78efc0 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()")
 }
 
 // 0x78efdc — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEEC1ERKSF_NSF_9clone_tagE

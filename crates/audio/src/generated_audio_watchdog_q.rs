@@ -513,7 +513,7 @@ pub fn stub_587248() -> ! {
 }
 
 // 0x587258 — __ZThn32_N3RBX13InsertServiceD1Ev
-// demangled: `non-virtual thunk to'RBX::InsertService::~InsertService()
+// demangled: non-virtual thunk toRBX::InsertService::~InsertService()
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::InsertService::~InsertService()")]
 #[doc(alias = "__ZThn32_N3RBX13InsertServiceD1Ev")]
@@ -522,7 +522,7 @@ pub fn stub_587258() -> ! {
 }
 
 // 0x587260 — __ZThn32_N3RBX13InsertServiceD0Ev
-// demangled: `non-virtual thunk to'RBX::InsertService::~InsertService()
+// demangled: non-virtual thunk toRBX::InsertService::~InsertService()
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::InsertService::~InsertService()")]
 #[doc(alias = "__ZThn32_N3RBX13InsertServiceD0Ev")]
@@ -538,7 +538,7 @@ pub fn stub_587304() -> ! {
 }
 
 // 0x587314 — __ZThn36_N3RBX13InsertServiceD1Ev
-// demangled: `non-virtual thunk to'RBX::InsertService::~InsertService()
+// demangled: non-virtual thunk toRBX::InsertService::~InsertService()
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::InsertService::~InsertService()")]
 #[doc(alias = "__ZThn36_N3RBX13InsertServiceD1Ev")]
@@ -547,7 +547,7 @@ pub fn stub_587314() -> ! {
 }
 
 // 0x58731c — __ZThn36_N3RBX13InsertServiceD0Ev
-// demangled: `non-virtual thunk to'RBX::InsertService::~InsertService()
+// demangled: non-virtual thunk toRBX::InsertService::~InsertService()
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::InsertService::~InsertService()")]
 #[doc(alias = "__ZThn36_N3RBX13InsertServiceD0Ev")]

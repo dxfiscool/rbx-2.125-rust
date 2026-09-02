@@ -1,5 +1,5 @@
 //! core watchdog f — 100 core stubs EA-sorted, gap filler after 0xf6fb4c (global fallback exhausted).
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc fallback filter excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound — 0 fallback uncovered before, chose global fallback exhausted 100 not yet in rbx_core.
+//! Source: ida/export.json (85545 funcs) EA-sorted asc fallback filter excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound — 0 fallback uncovered before, chose global fallback exhausted 100 not yet in rbx_core.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]

@@ -355,11 +355,11 @@ pub fn stub_4a9144() -> ! {
 }
 
 // 0x4a9168 — __GLOBAL__I_a_189
-// demangled: `global constructor keyed to'_a_189
+// demangled: global constructor keyed to'_a_189
 #[doc(alias = "global constructor keyed to_a_189")]
 #[doc(alias = "__GLOBAL__I_a_189")]
 pub fn stub_4a9168() -> ! {
-    todo!("0x4a9168 `global constructor keyed to'_a_189")
+    todo!("0x4a9168 global constructor keyed to'_a_189")
 }
 
 // 0x4a94fc — __ZN3RBX12FaceInstance7setFaceENS_8NormalIdE
@@ -715,11 +715,11 @@ pub fn stub_4aa5c4() -> ! {
 }
 
 // 0x4aa5e8 — __GLOBAL__I_a_190
-// demangled: `global constructor keyed to'_a_190
+// demangled: global constructor keyed to'_a_190
 #[doc(alias = "global constructor keyed to_a_190")]
 #[doc(alias = "__GLOBAL__I_a_190")]
 pub fn stub_4aa5e8() -> ! {
-    todo!("0x4aa5e8 `global constructor keyed to'_a_190")
+    todo!("0x4aa5e8 global constructor keyed to'_a_190")
 }
 
 // 0x4aa8c4 — __ZN3RBX18FactoryRegistratorC1Ev

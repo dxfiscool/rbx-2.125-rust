@@ -1,5 +1,5 @@
 //! core shard lz — 150 core stubs EA-sorted, next uncovered fallback gap filler (lowest unstubbed EA first).
-//! Source: `ida/export.json` (85545 funcs) global EA asc not yet stubbed in any crate — next 150 uncovered sorted asc (0x379194..0x3acb48).
+//! Source: ida/export.json (85545 funcs) global EA asc not yet stubbed in any crate — next 150 uncovered sorted asc (0x379194..0x3acb48).
 //! Preserves IDA ea + mangled + demangled for rg; uses rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 

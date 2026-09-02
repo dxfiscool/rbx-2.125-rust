@@ -2,7 +2,7 @@
 // Filter: demangled contains RBX::Instance|RBX::DataModel|RBX::Workspace (exact), EA-sorted, true uncovered after existing shards
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x50b39c..0x524a9c | total filtered 10215, remaining 1596->1496 after batch
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; `'` stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
 // Shard: 70 EA-sorted ascending next uncovered gap from 0x50b39c
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]

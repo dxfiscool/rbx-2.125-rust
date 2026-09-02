@@ -345,7 +345,7 @@ pub fn stub_689520() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ToolMouseCommand>,boost::_bi::list1<boost::_bi::value<RBX::ToolMouseCommand*>>>,0,void ()(void)>::call(void)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
 pub fn stub_689528() -> ! {
-    todo!("0x689528 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ToolMouseCommand>,boost::_bi::list1<boost::_bi::value<RBX::ToolMouseCommand*>>>,0,void ()(void)>::call(void)")
+    todo!("0x689528 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ToolMouseCommand>,boost::_bi::list1<boost::_bi::value<RBX::ToolMouseCommand*>>>,0,void ()(void)>::call(void)")
 }
 
 // 0x689530 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS0_5list1INS0_5valueIPS5_EEEEEclEv

@@ -106,7 +106,7 @@ pub fn stub_684c70() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Tool>>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_4ToolES7_EENSB_5list2INSB_5valueINS4_ISF_EEEENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 pub fn stub_684c8c() -> ! {
-    todo!("0x684c8c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Tool>>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+    todo!("0x684c8c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Tool>>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0x684ca8 — __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX4ToolEEEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS5_NS3_INS4_8InstanceEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
@@ -647,7 +647,7 @@ pub fn stub_68928c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ToolMouseCommand::~ToolMouseCommand()")]
 // was: __ZThn36_N3RBX16ToolMouseCommandD1Ev
 pub fn stub_68932c() -> ! {
-    todo!("0x68932c `non-virtual thunk to'RBX::ToolMouseCommand::~ToolMouseCommand()")
+    todo!("0x68932c non-virtual thunk toRBX::ToolMouseCommand::~ToolMouseCommand()")
 }
 
 // 0x689334 — __ZThn36_N3RBX16ToolMouseCommandD0Ev
@@ -656,7 +656,7 @@ pub fn stub_68932c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ToolMouseCommand::~ToolMouseCommand()")]
 // was: __ZThn36_N3RBX16ToolMouseCommandD0Ev
 pub fn stub_689334() -> ! {
-    todo!("0x689334 `non-virtual thunk to'RBX::ToolMouseCommand::~ToolMouseCommand()")
+    todo!("0x689334 non-virtual thunk toRBX::ToolMouseCommand::~ToolMouseCommand()")
 }
 
 // 0x68933c — __ZN3RBX4Name13callDoDeclareILZNS_17sToolMouseCommandEEEEvv
@@ -725,7 +725,7 @@ pub fn stub_689c04() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ModelTool::~ModelTool()")]
 // was: __ZThn36_N3RBX9ModelToolD0Ev
 pub fn stub_689c08() -> ! {
-    todo!("0x689c08 `non-virtual thunk to'RBX::ModelTool::~ModelTool()")
+    todo!("0x689c08 non-virtual thunk toRBX::ModelTool::~ModelTool()")
 }
 
 // 0x689c10 — __ZN3RBX9ModelToolD2Ev
@@ -743,7 +743,7 @@ pub fn stub_689c10() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ModelTool::~ModelTool()")]
 // was: __ZThn36_N3RBX9ModelToolD1Ev
 pub fn stub_689d2c() -> ! {
-    todo!("0x689d2c `non-virtual thunk to'RBX::ModelTool::~ModelTool()")
+    todo!("0x689d2c non-virtual thunk toRBX::ModelTool::~ModelTool()")
 }
 
 // 0x689d34 — __ZN3RBX9ModelTool12onMouseHoverERKNS_7UIEventE
@@ -850,7 +850,7 @@ pub fn stub_68a620() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::AnchorTool::~AnchorTool()")]
 // was: __ZThn36_N3RBX10AnchorToolD1Ev
 pub fn stub_68a6c0() -> ! {
-    todo!("0x68a6c0 `non-virtual thunk to'RBX::AnchorTool::~AnchorTool()")
+    todo!("0x68a6c0 non-virtual thunk toRBX::AnchorTool::~AnchorTool()")
 }
 
 // 0x68a6c8 — __ZThn36_N3RBX10AnchorToolD0Ev
@@ -859,6 +859,6 @@ pub fn stub_68a6c0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::AnchorTool::~AnchorTool()")]
 // was: __ZThn36_N3RBX10AnchorToolD0Ev
 pub fn stub_68a6c8() -> ! {
-    todo!("0x68a6c8 `non-virtual thunk to'RBX::AnchorTool::~AnchorTool()")
+    todo!("0x68a6c8 non-virtual thunk toRBX::AnchorTool::~AnchorTool()")
 }
 

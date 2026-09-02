@@ -1,5 +1,5 @@
 //! core shard AB — 120 core stubs EA-sorted, next uncovered fallback after shard AA (0x110240), lowest EA first.
-//! Source: `ida/export.json` filtered where demangled/mangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted, next 120 uncovered (lowest EA first) after 0x110240.
+//! Source: ida/export.json filtered where demangled/mangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted, next 120 uncovered (lowest EA first) after 0x110240.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
@@ -31,14 +31,14 @@ pub fn stub_0x110538() -> ! {
 
 #[doc(alias = "global destructor keyed toFreeImage_SO_Initialise(void)")]
 // 0x110578 — __GLOBAL__D__Z23FreeImage_SO_Initialisev
-// was: `global destructor keyed toFreeImage_SO_Initialise(void)
+// was: global destructor keyed toFreeImage_SO_Initialise(void)
 pub fn stub_0x110578() -> ! {
     todo!("0x110578 __GLOBAL__D__Z23FreeImage_SO_Initialisev")
 }
 
 #[doc(alias = "global constructor keyed toFreeImage_SO_Initialise(void)")]
 // 0x110588 — __GLOBAL__I__Z23FreeImage_SO_Initialisev
-// was: `global constructor keyed toFreeImage_SO_Initialise(void)
+// was: global constructor keyed toFreeImage_SO_Initialise(void)
 pub fn stub_0x110588() -> ! {
     todo!("0x110588 __GLOBAL__I__Z23FreeImage_SO_Initialisev")
 }

@@ -284,7 +284,7 @@ pub fn stub_270008() -> ! {
     todo!("0x270008 __ZN3RBX3Lua6BridgeIPKNS_10Reflection14EnumDescriptor4ItemELb1EE8getValueIS6_EEbP9lua_StatejRT_")
 }
 
-// 0x270078 — __GLOBAL__I_a_63 — `global constructor keyed to'_a_63
+// 0x270078 — __GLOBAL__I_a_63 — global constructor keyed to'_a_63
 #[doc(alias = "global constructor keyed to_a_63")]
 #[doc(alias = "__GLOBAL__I_a_63")]
 pub fn stub_270078() -> ! {

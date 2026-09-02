@@ -3,7 +3,7 @@
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x44abc..0x4a21c | dm distinct before 19966, after 20066, dm missing 65579->65479
 // Shard: 194 EA-sorted asc next 100 DM gaps after 193 (filtered exhausted, global filler 0x44abc..0x4a21c)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; `'` stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -249,7 +249,7 @@ pub fn stub_46464() -> ! {
 
 // 0x46490 — __GLOBAL__I_a_15
 #[doc(alias = "global constructor keyed to_a_15")]
-// was: `global constructor keyed to'_a_15
+// was: global constructor keyed to'_a_15
 pub fn stub_46490() -> ! {
     todo!("0x46490 global constructor keyed to_a_15")
 }
@@ -355,7 +355,7 @@ pub fn stub_46eb4() -> ! {
 
 // 0x46f64 — __GLOBAL__I_a_16
 #[doc(alias = "global constructor keyed to_a_16")]
-// was: `global constructor keyed to'_a_16
+// was: global constructor keyed to'_a_16
 pub fn stub_46f64() -> ! {
     todo!("0x46f64 global constructor keyed to_a_16")
 }
@@ -383,7 +383,7 @@ pub fn stub_47274() -> ! {
 
 // 0x47424 — __GLOBAL__I_a_17
 #[doc(alias = "global constructor keyed to_a_17")]
-// was: `global constructor keyed to'_a_17
+// was: global constructor keyed to'_a_17
 pub fn stub_47424() -> ! {
     todo!("0x47424 global constructor keyed to_a_17")
 }

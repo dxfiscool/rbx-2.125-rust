@@ -2,7 +2,7 @@
 // Filter: demangled contains RBX:: and (Instance|DataModel|Workspace) — EA-sorted asc next 150 uncovered not yet in any crate
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 150 stubs | range 0x7044e4..0x88709c | total filtered 13121, uncovered before 3632, after 3482, datamodel distinct before 10871, after 11021
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; `'` stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -539,7 +539,7 @@ pub fn stub_0x86db20() -> ! {
 // 0x86db30 — __ZThn32_N3RBX19MegaClusterInstanceD0Ev
 // type: void __fastcall(RBX::MegaClusterInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")]
-// was: `non-virtual thunk to`RBX::MegaClusterInstance::~MegaClusterInstance()
+// was: non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()
 pub fn stub_0x86db30() -> ! {
     todo!("0x86db30 non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
 }
@@ -547,7 +547,7 @@ pub fn stub_0x86db30() -> ! {
 // 0x86db38 — __ZThn36_N3RBX19MegaClusterInstanceD0Ev
 // type: void __fastcall(RBX::MegaClusterInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")]
-// was: `non-virtual thunk to`RBX::MegaClusterInstance::~MegaClusterInstance()
+// was: non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()
 pub fn stub_0x86db38() -> ! {
     todo!("0x86db38 non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
 }
@@ -555,7 +555,7 @@ pub fn stub_0x86db38() -> ! {
 // 0x86db40 — __ZThn132_N3RBX19MegaClusterInstanceD0Ev
 // type: void __fastcall(RBX::MegaClusterInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")]
-// was: `non-virtual thunk to`RBX::MegaClusterInstance::~MegaClusterInstance()
+// was: non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()
 pub fn stub_0x86db40() -> ! {
     todo!("0x86db40 non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
 }
@@ -570,7 +570,7 @@ pub fn stub_0x86db48() -> ! {
 // 0x86de38 — __ZThn32_N3RBX19MegaClusterInstanceD1Ev
 // type: void __fastcall(RBX::MegaClusterInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")]
-// was: `non-virtual thunk to`RBX::MegaClusterInstance::~MegaClusterInstance()
+// was: non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()
 pub fn stub_0x86de38() -> ! {
     todo!("0x86de38 non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
 }
@@ -578,7 +578,7 @@ pub fn stub_0x86de38() -> ! {
 // 0x86de48 — __ZThn36_N3RBX19MegaClusterInstanceD1Ev
 // type: void __fastcall(RBX::MegaClusterInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")]
-// was: `non-virtual thunk to`RBX::MegaClusterInstance::~MegaClusterInstance()
+// was: non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()
 pub fn stub_0x86de48() -> ! {
     todo!("0x86de48 non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
 }
@@ -586,7 +586,7 @@ pub fn stub_0x86de48() -> ! {
 // 0x86de58 — __ZThn132_N3RBX19MegaClusterInstanceD1Ev
 // type: void __fastcall(RBX::MegaClusterInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")]
-// was: `non-virtual thunk to`RBX::MegaClusterInstance::~MegaClusterInstance()
+// was: non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()
 pub fn stub_0x86de58() -> ! {
     todo!("0x86de58 non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
 }
@@ -818,7 +818,7 @@ pub fn stub_0x86f86c() -> ! {
 
 // 0x86f870 — __ZThn108_N3RBX19MegaClusterInstance14render3dSelectEPNS_5AdornENS_11SelectStateE
 #[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
-// was: `non-virtual thunk to`RBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)
+// was: non-virtual thunk toRBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)
 pub fn stub_0x86f870() -> ! {
     todo!("0x86f870 non-virtual thunk toRBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")
 }
@@ -961,7 +961,7 @@ pub fn stub_0x87239c() -> ! {
 // 0x8723b0 — __ZThn148_N3RBX19MegaClusterInstance14isSelectable3dEv
 // type: _DWORD __fastcall(RBX::MegaClusterInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::isSelectable3d(void)")]
-// was: `non-virtual thunk to`RBX::MegaClusterInstance::isSelectable3d(void)
+// was: non-virtual thunk toRBX::MegaClusterInstance::isSelectable3d(void)
 pub fn stub_0x8723b0() -> ! {
     todo!("0x8723b0 non-virtual thunk toRBX::MegaClusterInstance::isSelectable3d(void)")
 }

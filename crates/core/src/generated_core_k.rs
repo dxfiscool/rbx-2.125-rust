@@ -1,5 +1,5 @@
 //! generated_core_k — 120 core stubs EA-sorted, next after generated_core_j.
-//! Source: `ida/export.json` filtered where demangled/mangled contains "boost" or "rbx::signals", excluding Reflection/Instance/Ogre/RakNet/Network, sorted by EA, next 120 uncovered (lowest EA first).
+//! Source: ida/export.json filtered where demangled/mangled contains "boost" or "rbx::signals", excluding Reflection/Instance/Ogre/RakNet/Network, sorted by EA, next 120 uncovered (lowest EA first).
 //! Sanitized: single quotes removed, boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr.
 
 #[doc(alias = "rbx::remote_signal<void ()(float,float,float)>::remote_signal(void)")]

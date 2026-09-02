@@ -11,7 +11,7 @@ const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
 
-// 0x3a416c — __ZThn92_N3RBX8AnimatorD0Ev — `non-virtual thunk to`RBX::Animator::~Animator()
+// 0x3a416c — __ZThn92_N3RBX8AnimatorD0Ev — non-virtual thunk toRBX::Animator::~Animator()
 // type: void __fastcall(RBX::Animator *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
 #[doc(alias = "__ZThn92_N3RBX8AnimatorD0Ev")]
@@ -27,7 +27,7 @@ pub fn stub_3a4174() -> ! {
     todo!("0x3a4174 __ZN3RBX8AnimatorD2Ev")
 }
 
-// 0x3a434c — __ZThn32_N3RBX8AnimatorD1Ev — `non-virtual thunk to`RBX::Animator::~Animator()
+// 0x3a434c — __ZThn32_N3RBX8AnimatorD1Ev — non-virtual thunk toRBX::Animator::~Animator()
 // type: void __fastcall(RBX::Animator *this, int, int, const void *)
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
 #[doc(alias = "__ZThn32_N3RBX8AnimatorD1Ev")]
@@ -35,7 +35,7 @@ pub fn stub_3a434c() -> ! {
     todo!("0x3a434c __ZThn32_N3RBX8AnimatorD1Ev")
 }
 
-// 0x3a4354 — __ZThn36_N3RBX8AnimatorD1Ev — `non-virtual thunk to`RBX::Animator::~Animator()
+// 0x3a4354 — __ZThn36_N3RBX8AnimatorD1Ev — non-virtual thunk toRBX::Animator::~Animator()
 // type: void __fastcall(RBX::Animator *this, int, int, const void *)
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
 #[doc(alias = "__ZThn36_N3RBX8AnimatorD1Ev")]
@@ -43,7 +43,7 @@ pub fn stub_3a4354() -> ! {
     todo!("0x3a4354 __ZThn36_N3RBX8AnimatorD1Ev")
 }
 
-// 0x3a435c — __ZThn92_N3RBX8AnimatorD1Ev — `non-virtual thunk to`RBX::Animator::~Animator()
+// 0x3a435c — __ZThn92_N3RBX8AnimatorD1Ev — non-virtual thunk toRBX::Animator::~Animator()
 // type: void __fastcall(RBX::Animator *this, int, int, const void *)
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
 #[doc(alias = "__ZThn92_N3RBX8AnimatorD1Ev")]
@@ -107,7 +107,7 @@ pub fn stub_3a4870() -> ! {
     todo!("0x3a4870 __ZN3RBX8Animator9onSteppedERKNS_7SteppedE")
 }
 
-// 0x3a4e98 — __ZThn92_N3RBX8Animator9onSteppedERKNS_7SteppedE — `non-virtual thunk to`RBX::Animator::onStepped(RBX::Stepped const&)
+// 0x3a4e98 — __ZThn92_N3RBX8Animator9onSteppedERKNS_7SteppedE — non-virtual thunk toRBX::Animator::onStepped(RBX::Stepped const&)
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "non-virtual thunk toRBX::Animator::onStepped(RBX::Stepped const&)")]
 #[doc(alias = "__ZThn92_N3RBX8Animator9onSteppedERKNS_7SteppedE")]
@@ -638,7 +638,7 @@ pub fn stub_3a72b8() -> ! {
     todo!("0x3a72b8 __ZNSt10_List_baseIN5boost10shared_ptrIN3RBX19AnimationTrackStateEEESaIS4_EE8_M_clearEv")
 }
 
-// 0x3a72e0 — __GLOBAL__I_a_158 — `global constructor keyed to`_a_158
+// 0x3a72e0 — __GLOBAL__I_a_158 — global constructor keyed to_a_158
 #[doc(alias = "global constructor keyed to_a_158")]
 #[doc(alias = "__GLOBAL__I_a_158")]
 pub fn stub_3a72e0() -> ! {
@@ -693,7 +693,7 @@ pub fn stub_3a7b94() -> ! {
     todo!("0x3a7b94 __ZN3RBX10ArcHandles7processERKNS_8GuiEventE")
 }
 
-// 0x3a7ee4 — __ZThn92_N3RBX10ArcHandles7processERKNS_8GuiEventE — `non-virtual thunk to`RBX::ArcHandles::process(RBX::GuiEvent const&)
+// 0x3a7ee4 — __ZThn92_N3RBX10ArcHandles7processERKNS_8GuiEventE — non-virtual thunk toRBX::ArcHandles::process(RBX::GuiEvent const&)
 // type: int __fastcall(int, int)
 #[doc(alias = "non-virtual thunk toRBX::ArcHandles::process(RBX::GuiEvent const&)")]
 #[doc(alias = "__ZThn92_N3RBX10ArcHandles7processERKNS_8GuiEventE")]
@@ -828,7 +828,7 @@ pub fn stub_3a8664() -> ! {
     todo!("0x3a8664 __ZNK3RBX11HandlesBase14shouldRender2dEv")
 }
 
-// 0x3a8674 — __ZThn32_N3RBX10ArcHandlesD1Ev — `non-virtual thunk to`RBX::ArcHandles::~ArcHandles()
+// 0x3a8674 — __ZThn32_N3RBX10ArcHandlesD1Ev — non-virtual thunk toRBX::ArcHandles::~ArcHandles()
 // type: void __fastcall(RBX::ArcHandles *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ArcHandles::~ArcHandles()")]
 #[doc(alias = "__ZThn32_N3RBX10ArcHandlesD1Ev")]
@@ -836,7 +836,7 @@ pub fn stub_3a8674() -> ! {
     todo!("0x3a8674 __ZThn32_N3RBX10ArcHandlesD1Ev")
 }
 
-// 0x3a867c — __ZThn32_N3RBX10ArcHandlesD0Ev — `non-virtual thunk to`RBX::ArcHandles::~ArcHandles()
+// 0x3a867c — __ZThn32_N3RBX10ArcHandlesD0Ev — non-virtual thunk toRBX::ArcHandles::~ArcHandles()
 // type: void __fastcall(RBX::ArcHandles *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ArcHandles::~ArcHandles()")]
 #[doc(alias = "__ZThn32_N3RBX10ArcHandlesD0Ev")]
@@ -851,7 +851,7 @@ pub fn stub_3a8720() -> ! {
     todo!("0x3a8720 __ZThn32_NK3RBX14FactoryProductINS_10ArcHandlesENS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEE12getClassNameEv")
 }
 
-// 0x3a8730 — __ZThn36_N3RBX10ArcHandlesD1Ev — `non-virtual thunk to`RBX::ArcHandles::~ArcHandles()
+// 0x3a8730 — __ZThn36_N3RBX10ArcHandlesD1Ev — non-virtual thunk toRBX::ArcHandles::~ArcHandles()
 // type: void __fastcall(RBX::ArcHandles *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ArcHandles::~ArcHandles()")]
 #[doc(alias = "__ZThn36_N3RBX10ArcHandlesD1Ev")]
@@ -859,7 +859,7 @@ pub fn stub_3a8730() -> ! {
     todo!("0x3a8730 __ZThn36_N3RBX10ArcHandlesD1Ev")
 }
 
-// 0x3a8738 — __ZThn36_N3RBX10ArcHandlesD0Ev — `non-virtual thunk to`RBX::ArcHandles::~ArcHandles()
+// 0x3a8738 — __ZThn36_N3RBX10ArcHandlesD0Ev — non-virtual thunk toRBX::ArcHandles::~ArcHandles()
 // type: void __fastcall(RBX::ArcHandles *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ArcHandles::~ArcHandles()")]
 #[doc(alias = "__ZThn36_N3RBX10ArcHandlesD0Ev")]
@@ -867,7 +867,7 @@ pub fn stub_3a8738() -> ! {
     todo!("0x3a8738 __ZThn36_N3RBX10ArcHandlesD0Ev")
 }
 
-// 0x3a87dc — __ZThn96_NK3RBX11HandlesBase14shouldRender2dEv — `non-virtual thunk to`RBX::HandlesBase::shouldRender2d(void)const
+// 0x3a87dc — __ZThn96_NK3RBX11HandlesBase14shouldRender2dEv — non-virtual thunk toRBX::HandlesBase::shouldRender2d(void)const
 // type: int __fastcall(RBX::HandlesBase *this)
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::shouldRender2d(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX11HandlesBase14shouldRender2dEv")]

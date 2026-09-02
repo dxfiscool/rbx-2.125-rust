@@ -1,5 +1,5 @@
 //! core wd_watchdog — 120 core stubs EA-sorted asc gap filler not yet in core (global fallback).
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc, next 120 uncovered foundation/global distinct not yet in crates/core/src (37157 uncovered before -> 37037 after, batch 0x4c1840..0x4c7cd0).
+//! Source: ida/export.json (85545 funcs) EA-sorted asc, next 120 uncovered foundation/global distinct not yet in crates/core/src (37157 uncovered before -> 37037 after, batch 0x4c1840..0x4c7cd0).
 //! Filter: foundation exhausted (32689/32689 stubbed) — fallback to global gap filler EA-sorted asc distinct.
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.

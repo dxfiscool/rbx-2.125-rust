@@ -24,7 +24,7 @@ pub fn stub_5f565c() -> ! {
 }
 
 // 0x5f5684 — __GLOBAL__I_a_233
-// demangled: `global constructor keyed to'_a_233
+// demangled: global constructor keyed to'_a_233
 #[doc(alias = "global constructor keyed to_a_233")]
 #[doc(alias = "__GLOBAL__I_a_233")]
 pub fn stub_5f5684() -> ! {
@@ -110,7 +110,7 @@ pub fn stub_5f6cf8() -> ! {
 }
 
 // 0x5f6d3c — __GLOBAL__I_a_234
-// demangled: `global constructor keyed to'_a_234
+// demangled: global constructor keyed to'_a_234
 #[doc(alias = "global constructor keyed to_a_234")]
 #[doc(alias = "__GLOBAL__I_a_234")]
 pub fn stub_5f6d3c() -> ! {
@@ -134,7 +134,7 @@ pub fn stub_5f704c() -> ! {
 }
 
 // 0x5f7050 — __ZThn32_N3RBX14PhysicsServiceD0Ev
-// demangled: `non-virtual thunk to'RBX::PhysicsService::~PhysicsService()
+// demangled: non-virtual thunk toRBX::PhysicsService::~PhysicsService()
 #[doc(alias = "non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
 #[doc(alias = "__ZThn32_N3RBX14PhysicsServiceD0Ev")]
 pub fn stub_5f7050() -> ! {
@@ -142,7 +142,7 @@ pub fn stub_5f7050() -> ! {
 }
 
 // 0x5f7058 — __ZThn36_N3RBX14PhysicsServiceD0Ev
-// demangled: `non-virtual thunk to'RBX::PhysicsService::~PhysicsService()
+// demangled: non-virtual thunk toRBX::PhysicsService::~PhysicsService()
 #[doc(alias = "non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
 #[doc(alias = "__ZThn36_N3RBX14PhysicsServiceD0Ev")]
 pub fn stub_5f7058() -> ! {
@@ -158,7 +158,7 @@ pub fn stub_5f7060() -> ! {
 }
 
 // 0x5f7410 — __ZThn32_N3RBX14PhysicsServiceD1Ev
-// demangled: `non-virtual thunk to'RBX::PhysicsService::~PhysicsService()
+// demangled: non-virtual thunk toRBX::PhysicsService::~PhysicsService()
 #[doc(alias = "non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
 #[doc(alias = "__ZThn32_N3RBX14PhysicsServiceD1Ev")]
 pub fn stub_5f7410() -> ! {
@@ -166,7 +166,7 @@ pub fn stub_5f7410() -> ! {
 }
 
 // 0x5f7418 — __ZThn36_N3RBX14PhysicsServiceD1Ev
-// demangled: `non-virtual thunk to'RBX::PhysicsService::~PhysicsService()
+// demangled: non-virtual thunk toRBX::PhysicsService::~PhysicsService()
 #[doc(alias = "non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
 #[doc(alias = "__ZThn36_N3RBX14PhysicsServiceD1Ev")]
 pub fn stub_5f7418() -> ! {
@@ -294,7 +294,7 @@ pub fn stub_5f83d0() -> ! {
 }
 
 // 0x5f83e4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_14PhysicsServiceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEELi1ES6_E4callES5_
-// demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Primitive *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PhysicsService,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::PhysicsService*>,boost::arg<1>>>,1,void ()(RBX::Primitive *)>::call(RBX::Primitive *)
+// demangled: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Primitive *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PhysicsService,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::PhysicsService*>,boost::arg<1>>>,1,void ()(RBX::Primitive *)>::call(RBX::Primitive *)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Primitive *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PhysicsService,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::PhysicsService*>,boost::arg<1>>>,1,void ()(RBX::Primitive *)>::call(RBX::Primitive *)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_14PhysicsServiceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEELi1ES6_E4callES5_")]
 pub fn stub_5f83e4() -> ! {
@@ -366,7 +366,7 @@ pub fn stub_5f8720() -> ! {
 }
 
 // 0x5f87f4 — __GLOBAL__I_a_235
-// demangled: `global constructor keyed to'_a_235
+// demangled: global constructor keyed to'_a_235
 #[doc(alias = "global constructor keyed to_a_235")]
 #[doc(alias = "__GLOBAL__I_a_235")]
 pub fn stub_5f87f4() -> ! {
@@ -762,7 +762,7 @@ pub fn stub_5f9510() -> ! {
 }
 
 // 0x5f9520 — __ZThn32_N3RBX15PhysicsSettingsD1Ev
-// demangled: `non-virtual thunk to'RBX::PhysicsSettings::~PhysicsSettings()
+// demangled: non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()
 #[doc(alias = "non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()")]
 #[doc(alias = "__ZThn32_N3RBX15PhysicsSettingsD1Ev")]
 pub fn stub_5f9520() -> ! {
@@ -770,7 +770,7 @@ pub fn stub_5f9520() -> ! {
 }
 
 // 0x5f9564 — __ZThn32_N3RBX15PhysicsSettingsD0Ev
-// demangled: `non-virtual thunk to'RBX::PhysicsSettings::~PhysicsSettings()
+// demangled: non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()
 #[doc(alias = "non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()")]
 #[doc(alias = "__ZThn32_N3RBX15PhysicsSettingsD0Ev")]
 pub fn stub_5f9564() -> ! {
@@ -784,7 +784,7 @@ pub fn stub_5f9644() -> ! {
 }
 
 // 0x5f9654 — __ZThn36_N3RBX15PhysicsSettingsD1Ev
-// demangled: `non-virtual thunk to'RBX::PhysicsSettings::~PhysicsSettings()
+// demangled: non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()
 #[doc(alias = "non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()")]
 #[doc(alias = "__ZThn36_N3RBX15PhysicsSettingsD1Ev")]
 pub fn stub_5f9654() -> ! {
@@ -792,7 +792,7 @@ pub fn stub_5f9654() -> ! {
 }
 
 // 0x5f9698 — __ZThn36_N3RBX15PhysicsSettingsD0Ev
-// demangled: `non-virtual thunk to'RBX::PhysicsSettings::~PhysicsSettings()
+// demangled: non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()
 #[doc(alias = "non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()")]
 #[doc(alias = "__ZThn36_N3RBX15PhysicsSettingsD0Ev")]
 pub fn stub_5f9698() -> ! {

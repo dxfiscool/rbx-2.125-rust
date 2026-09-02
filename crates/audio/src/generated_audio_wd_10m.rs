@@ -79,7 +79,7 @@ pub fn stub_5da4a4() -> ! {
 }
 
 // 0x5da4b4 — __ZThn32_N3RBX12PartInstanceD0Ev
-// demangled: `non-virtual thunk to'RBX::PartInstance::~PartInstance()
+// demangled: non-virtual thunk toRBX::PartInstance::~PartInstance()
 // type: void __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
 #[doc(alias = "__ZThn32_N3RBX12PartInstanceD0Ev")]
@@ -88,7 +88,7 @@ pub fn stub_5da4b4() -> ! {
 }
 
 // 0x5da4bc — __ZThn36_N3RBX12PartInstanceD0Ev
-// demangled: `non-virtual thunk to'RBX::PartInstance::~PartInstance()
+// demangled: non-virtual thunk toRBX::PartInstance::~PartInstance()
 // type: void __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
 #[doc(alias = "__ZThn36_N3RBX12PartInstanceD0Ev")]
@@ -97,7 +97,7 @@ pub fn stub_5da4bc() -> ! {
 }
 
 // 0x5da4c4 — __ZThn132_N3RBX12PartInstanceD0Ev
-// demangled: `non-virtual thunk to'RBX::PartInstance::~PartInstance()
+// demangled: non-virtual thunk toRBX::PartInstance::~PartInstance()
 // type: void __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
 #[doc(alias = "__ZThn132_N3RBX12PartInstanceD0Ev")]
@@ -115,7 +115,7 @@ pub fn stub_5da4cc() -> ! {
 }
 
 // 0x5da890 — __ZThn32_N3RBX12PartInstanceD1Ev
-// demangled: `non-virtual thunk to'RBX::PartInstance::~PartInstance()
+// demangled: non-virtual thunk toRBX::PartInstance::~PartInstance()
 // type: void __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
 #[doc(alias = "__ZThn32_N3RBX12PartInstanceD1Ev")]
@@ -124,7 +124,7 @@ pub fn stub_5da890() -> ! {
 }
 
 // 0x5da8a0 — __ZThn36_N3RBX12PartInstanceD1Ev
-// demangled: `non-virtual thunk to'RBX::PartInstance::~PartInstance()
+// demangled: non-virtual thunk toRBX::PartInstance::~PartInstance()
 // type: void __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
 #[doc(alias = "__ZThn36_N3RBX12PartInstanceD1Ev")]
@@ -133,7 +133,7 @@ pub fn stub_5da8a0() -> ! {
 }
 
 // 0x5da8b0 — __ZThn132_N3RBX12PartInstanceD1Ev
-// demangled: `non-virtual thunk to'RBX::PartInstance::~PartInstance()
+// demangled: non-virtual thunk toRBX::PartInstance::~PartInstance()
 // type: void __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
 #[doc(alias = "__ZThn132_N3RBX12PartInstanceD1Ev")]
@@ -196,7 +196,7 @@ pub fn stub_5daa58() -> ! {
 }
 
 // 0x5daac0 — __ZThn12_N3RBX12PartInstance13onGuidChangedEv
-// demangled: `non-virtual thunk to'RBX::PartInstance::onGuidChanged(void)
+// demangled: non-virtual thunk toRBX::PartInstance::onGuidChanged(void)
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::onGuidChanged(void)")]
 #[doc(alias = "__ZThn12_N3RBX12PartInstance13onGuidChangedEv")]
@@ -241,7 +241,7 @@ pub fn stub_5dadb8() -> ! {
 }
 
 // 0x5dae34 — __ZThn96_NK3RBX12PartInstance13reportTouchesEv
-// demangled: `non-virtual thunk to'RBX::PartInstance::reportTouches(void)const
+// demangled: non-virtual thunk toRBX::PartInstance::reportTouches(void)const
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::reportTouches(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX12PartInstance13reportTouchesEv")]
@@ -304,7 +304,7 @@ pub fn stub_5db334() -> ! {
 }
 
 // 0x5db36c — __ZThn132_N3RBX12PartInstance12onCameraNearEf
-// demangled: `non-virtual thunk to'RBX::PartInstance::onCameraNear(float)
+// demangled: non-virtual thunk toRBX::PartInstance::onCameraNear(float)
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this, float)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::onCameraNear(float)")]
 #[doc(alias = "__ZThn132_N3RBX12PartInstance12onCameraNearEf")]
@@ -322,7 +322,7 @@ pub fn stub_5db374() -> ! {
 }
 
 // 0x5db3a0 — __ZThn96_N3RBX12PartInstance14onClumpChangedEv
-// demangled: `non-virtual thunk to'RBX::PartInstance::onClumpChanged(void)
+// demangled: non-virtual thunk toRBX::PartInstance::onClumpChanged(void)
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::onClumpChanged(void)")]
 #[doc(alias = "__ZThn96_N3RBX12PartInstance14onClumpChangedEv")]
@@ -340,7 +340,7 @@ pub fn stub_5db3a8() -> ! {
 }
 
 // 0x5db564 — __ZThn96_N3RBX12PartInstance17onSleepingChangedEb
-// demangled: `non-virtual thunk to'RBX::PartInstance::onSleepingChanged(bool)
+// demangled: non-virtual thunk toRBX::PartInstance::onSleepingChanged(bool)
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this, bool)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::onSleepingChanged(bool)")]
 #[doc(alias = "__ZThn96_N3RBX12PartInstance17onSleepingChangedEb")]
@@ -358,7 +358,7 @@ pub fn stub_5db56c() -> ! {
 }
 
 // 0x5db574 — __ZThn96_N3RBX12PartInstance17onBuoyancyChangedEb
-// demangled: `non-virtual thunk to'RBX::PartInstance::onBuoyancyChanged(bool)
+// demangled: non-virtual thunk toRBX::PartInstance::onBuoyancyChanged(bool)
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this, bool)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::onBuoyancyChanged(bool)")]
 #[doc(alias = "__ZThn96_N3RBX12PartInstance17onBuoyancyChangedEb")]
@@ -376,7 +376,7 @@ pub fn stub_5db57c() -> ! {
 }
 
 // 0x5db584 — __ZThn96_N3RBX12PartInstance19isInContinousMotionEv
-// demangled: `non-virtual thunk to'RBX::PartInstance::isInContinousMotion(void)
+// demangled: non-virtual thunk toRBX::PartInstance::isInContinousMotion(void)
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::isInContinousMotion(void)")]
 #[doc(alias = "__ZThn96_N3RBX12PartInstance19isInContinousMotionEv")]
@@ -511,7 +511,7 @@ pub fn stub_5dbc80() -> ! {
 }
 
 // 0x5dbca8 — __ZN12_GLOBAL__N_136computeNetworkOwnerIsSomeoneElseImplERKN3RBX13SystemAddressES3_
-// demangled: `anonymous namespace'::computeNetworkOwnerIsSomeoneElseImpl(RBX::SystemAddress const&,RBX::SystemAddress const&)
+// demangled: anonymous namespace'::computeNetworkOwnerIsSomeoneElseImpl(RBX::SystemAddress const&,RBX::SystemAddress const&)
 // type: int __fastcall(int, int)
 #[doc(alias = "anonymous namespace::computeNetworkOwnerIsSomeoneElseImpl(RBX::SystemAddress const&,RBX::SystemAddress const&)")]
 #[doc(alias = "__ZN12_GLOBAL__N_136computeNetworkOwnerIsSomeoneElseImplERKN3RBX13SystemAddressES3_")]
@@ -537,7 +537,7 @@ pub fn stub_5dbcfc() -> ! {
 }
 
 // 0x5dbe44 — __ZThn108_NK3RBX12PartInstance19shouldRender3dAdornEv
-// demangled: `non-virtual thunk to'RBX::PartInstance::shouldRender3dAdorn(void)const
+// demangled: non-virtual thunk toRBX::PartInstance::shouldRender3dAdorn(void)const
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZThn108_NK3RBX12PartInstance19shouldRender3dAdornEv")]
@@ -555,7 +555,7 @@ pub fn stub_5dbe50() -> ! {
 }
 
 // 0x5dd39c — __ZThn108_N3RBX12PartInstance13render3dAdornEPNS_5AdornE
-// demangled: `non-virtual thunk to'RBX::PartInstance::render3dAdorn(RBX::Adorn *)
+// demangled: non-virtual thunk toRBX::PartInstance::render3dAdorn(RBX::Adorn *)
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn108_N3RBX12PartInstance13render3dAdornEPNS_5AdornE")]
@@ -572,7 +572,7 @@ pub fn stub_5dd3a4() -> ! {
 }
 
 // 0x5dd3c4 — __ZThn108_N3RBX12PartInstance14render3dSelectEPNS_5AdornENS_11SelectStateE
-// demangled: `non-virtual thunk to'RBX::PartInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)
+// demangled: non-virtual thunk toRBX::PartInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
 #[doc(alias = "__ZThn108_N3RBX12PartInstance14render3dSelectEPNS_5AdornENS_11SelectStateE")]
 pub fn stub_5dd3c4() -> ! {
@@ -795,7 +795,7 @@ pub fn stub_5de570() -> ! {
 }
 
 // 0x5de59c — __ZThn96_N3RBX12PartInstance26onNetworkIsSleepingChangedEv
-// demangled: `non-virtual thunk to'RBX::PartInstance::onNetworkIsSleepingChanged(void)
+// demangled: non-virtual thunk toRBX::PartInstance::onNetworkIsSleepingChanged(void)
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::onNetworkIsSleepingChanged(void)")]
 #[doc(alias = "__ZThn96_N3RBX12PartInstance26onNetworkIsSleepingChangedEv")]

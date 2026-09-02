@@ -256,7 +256,7 @@ pub fn stub_3adf40() -> ! {
     todo!("0x3adf40 __ZN3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEffEE4slotEN5boost8functionIS6_EELi3ES6_E4callES5_ff")
 }
 
-// 0x3adf48 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEffEE4slotEN5boost8functionIS6_EELi3ES6_E4callES5_ff — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::function<void ()(G3D::Vector3::Axis,float,float)>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)
+// 0x3adf48 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEffEE4slotEN5boost8functionIS6_EELi3ES6_E4callES5_ff — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::function<void ()(G3D::Vector3::Axis,float,float)>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::function<void ()(G3D::Vector3::Axis,float,float)>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEffEE4slotEN5boost8functionIS6_EELi3ES6_E4callES5_ff")]
@@ -518,7 +518,7 @@ pub fn stub_3af664() -> ! {
     todo!("0x3af664 __ZN3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_")
 }
 
-// 0x3af66c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_ — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)
+// 0x3af66c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_ — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_")]
@@ -742,7 +742,7 @@ pub fn stub_3b06ec() -> ! {
     todo!("0x3b06ec __ZN3RBX19EventReplicatorBaseINS_10ArcHandlesEFvN3G3D7Vector34AxisEEED2Ev")
 }
 
-// 0x3b081c — __GLOBAL__I_a_159 — `global constructor keyed to'_a_159
+// 0x3b081c — __GLOBAL__I_a_159 — global constructor keyed to'_a_159
 #[doc(alias = "global constructor keyed to_a_159")]
 #[doc(alias = "__GLOBAL__I_a_159")]
 pub fn stub_3b081c() -> ! {
@@ -773,7 +773,7 @@ pub fn stub_3b1014() -> ! {
     todo!("0x3b1014 __ZN3RBX8Backpack15scriptShouldRunEPNS_10BaseScriptE")
 }
 
-// 0x3b1218 — __ZThn148_N3RBX8Backpack15scriptShouldRunEPNS_10BaseScriptE — `non-virtual thunk to'RBX::Backpack::scriptShouldRun(RBX::BaseScript *)
+// 0x3b1218 — __ZThn148_N3RBX8Backpack15scriptShouldRunEPNS_10BaseScriptE — non-virtual thunk toRBX::Backpack::scriptShouldRun(RBX::BaseScript *)
 // type: int __fastcall(RBX::Backpack *this, RBX::Reflection::ClassDescriptor **, int, int (*)(const char *, ...))
 #[doc(alias = "non-virtual thunk toRBX::Backpack::scriptShouldRun(RBX::BaseScript *)")]
 #[doc(alias = "__ZThn148_N3RBX8Backpack15scriptShouldRunEPNS_10BaseScriptE")]

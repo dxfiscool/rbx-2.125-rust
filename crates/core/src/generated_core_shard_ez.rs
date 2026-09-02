@@ -1,5 +1,5 @@
 //! core shard EZ — 100 core stubs EA-sorted, lowest uncovered 0xcaa994..0xeb2280 (strict RBX|boost|std|rbx excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 after EY 0xc3a2bc).
-//! Source: `ida/export.json` filtered where demangled contains `RBX::`|`boost::`|`std::`|`rbx::` excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 lowest uncovered after 0xc3a2bc.
+//! Source: ida/export.json filtered where demangled contains RBX::|boost::|std::|rbx:: excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 lowest uncovered after 0xc3a2bc.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
@@ -192,28 +192,28 @@ pub fn stub_ea7378() -> ! {
 
 #[doc(alias = "anonymous namespace::computeAABB(RBX::FileMeshData *)")]
 // 0xea7dac — __ZN12_GLOBAL__N_111computeAABBEPN3RBX12FileMeshDataE
-// was: `anonymous namespace::computeAABB(RBX::FileMeshData *)
+// was: anonymous namespace::computeAABB(RBX::FileMeshData *)
 pub fn stub_ea7dac() -> ! {
     todo!("0xea7dac __ZN12_GLOBAL__N_111computeAABBEPN3RBX12FileMeshDataE")
 }
 
 #[doc(alias = "anonymous namespace::readMeshFromV1(std::istream &,float)")]
 // 0xea7f00 — __ZN12_GLOBAL__N_114readMeshFromV1ERSif
-// was: `anonymous namespace::readMeshFromV1(std::istream &,float)
+// was: anonymous namespace::readMeshFromV1(std::istream &,float)
 pub fn stub_ea7f00() -> ! {
     todo!("0xea7f00 __ZN12_GLOBAL__N_114readMeshFromV1ERSif")
 }
 
 #[doc(alias = "anonymous namespace::optimizeMesh(RBX::FileMeshData &)")]
 // 0xea85d8 — __ZN12_GLOBAL__N_112optimizeMeshERN3RBX12FileMeshDataE
-// was: `anonymous namespace::optimizeMesh(RBX::FileMeshData &)
+// was: anonymous namespace::optimizeMesh(RBX::FileMeshData &)
 pub fn stub_ea85d8() -> ! {
     todo!("0xea85d8 __ZN12_GLOBAL__N_112optimizeMeshERN3RBX12FileMeshDataE")
 }
 
 #[doc(alias = "std::_Rb_tree<RBX::FileMeshVertexNormalTexture3d,std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>,std::_Select1st<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>>,anonymous namespace::MeshVertexComparator,std::allocator<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>> *)")]
 // 0xea8a30 — __ZNSt8_Rb_treeIN3RBX29FileMeshVertexNormalTexture3dESt4pairIKS1_jESt10_Select1stIS4_EN12_GLOBAL__N_120MeshVertexComparatorESaIS4_EE8_M_eraseEPSt13_Rb_tree_nodeIS4_E
-// was: std::_Rb_tree<RBX::FileMeshVertexNormalTexture3d,std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>,std::_Select1st<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>>,`anonymous namespace::MeshVertexComparator,std::allocator<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>> *)
+// was: std::_Rb_tree<RBX::FileMeshVertexNormalTexture3d,std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>,std::_Select1st<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>>,anonymous namespace::MeshVertexComparator,std::allocator<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>> *)
 pub fn stub_ea8a30() -> ! {
     todo!("0xea8a30 __ZNSt8_Rb_treeIN3RBX29FileMeshVertexNormalTexture3dESt4pairIKS1_jESt10_Select1stIS4_EN12_GLOBAL__N_120MeshVertexComparatorESaIS4_EE8_M_eraseEPSt13_Rb_tree_nodeIS4_E")
 }

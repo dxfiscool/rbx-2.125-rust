@@ -13,7 +13,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot,boost::function<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>,4,void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::call(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvbSsN5boost10shared_ptrIN3RBX8InstanceEEEiEE4slotENS3_8functionIS8_EELi4ES8_E4callEbSsS7_i")]
 pub fn stub_80c65c() -> ! {
-    todo!("0x80c65c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot,boost::function<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>,4,void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::call(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)")
+    todo!("0x80c65c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot,boost::function<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>,4,void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::call(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)")
 }
 
 // 0x80c664 — __ZN3rbx8callableINS_7signals6signalIFvbSsN5boost10shared_ptrIN3RBX8InstanceEEEiEE4slotENS3_8functionIS8_EELi4ES8_ED1Ev
@@ -230,7 +230,7 @@ pub fn stub_80ded8() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot,boost::function<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>,int)>,3,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::call(std::string,rbx_core::SharedPtr<RBX::Instance>,int)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEiEE4slotENS3_8functionIS8_EELi3ES8_E4callESsS7_i")]
 pub fn stub_80e048() -> ! {
-    todo!("0x80e048 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot,boost::function<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>,int)>,3,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::call(std::string,rbx_core::SharedPtr<RBX::Instance>,int)")
+    todo!("0x80e048 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot,boost::function<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>,int)>,3,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::call(std::string,rbx_core::SharedPtr<RBX::Instance>,int)")
 }
 
 // 0x80e050 — __ZN3rbx8callableINS_7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEiEE4slotENS3_8functionIS8_EELi3ES8_ED1Ev

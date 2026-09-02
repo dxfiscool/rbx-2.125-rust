@@ -50,7 +50,7 @@ pub fn stub_106428() -> ! {
 
 // 0x106494 — __GLOBAL__I__ZN4FMOD15dsptremolo_descE
 #[doc(alias = "global constructor keyed toFMOD::dsptremolo_desc")]
-// was: `global constructor keyed to'FMOD::dsptremolo_desc
+// was: global constructor keyed to'FMOD::dsptremolo_desc
 pub fn stub_106494() -> ! {
     todo!("0x106494 global constructor keyed toFMOD::dsptremolo_desc")
 }
@@ -234,7 +234,7 @@ pub fn stub_1078e0() -> ! {
 
 // 0x107a1c — __GLOBAL__I__ZN4FMOD15CodecAudioQueue10gCodecHeadE
 #[doc(alias = "global constructor keyed toFMOD::CodecAudioQueue::gCodecHead")]
-// was: `global constructor keyed to'FMOD::CodecAudioQueue::gCodecHead
+// was: global constructor keyed to'FMOD::CodecAudioQueue::gCodecHead
 pub fn stub_107a1c() -> ! {
     todo!("0x107a1c global constructor keyed toFMOD::CodecAudioQueue::gCodecHead")
 }

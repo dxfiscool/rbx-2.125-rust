@@ -2,7 +2,7 @@
 // Filter: Lua|Script|Yield|lua (case-sensitive, lua lower) -> 5401 filtered, all stubbed (0 remaining)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: +100 stubs | range 0xa76ec..0xb0724 | filtered 5401 done, script 11885->11985 total, global 80022->80122 covered, 5424 remaining, rbx_core::SharedPtr not boost
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -52,7 +52,7 @@ pub fn stub_a83f4() -> ! {
 
 // 0xa844c — __GLOBAL__I__ZN4FMOD8wavcodecE
 // type: int()
-// was: `global constructor keyed to'FMOD::wavcodec
+// was: global constructor keyed to'FMOD::wavcodec
 #[doc(alias = "global constructor keyed toFMOD::wavcodec")]
 pub fn stub_a844c() -> ! {
     todo!("0xa844c global constructor keyed toFMOD::wavcodec")
@@ -249,7 +249,7 @@ pub fn stub_ad880() -> ! {
 
 // 0xad8d8 — __GLOBAL__I__ZN4FMOD7xmcodecE
 // type: int()
-// was: `global constructor keyed to'FMOD::xmcodec
+// was: global constructor keyed to'FMOD::xmcodec
 #[doc(alias = "global constructor keyed toFMOD::xmcodec")]
 pub fn stub_ad8d8() -> ! {
     todo!("0xad8d8 global constructor keyed toFMOD::xmcodec")
@@ -362,7 +362,7 @@ pub fn stub_ae5b8() -> ! {
 
 // 0xae6e8 — __GLOBAL__I__ZN4FMOD9dspchorusE
 // type: int()
-// was: `global constructor keyed to'FMOD::dspchorus
+// was: global constructor keyed to'FMOD::dspchorus
 #[doc(alias = "global constructor keyed toFMOD::dspchorus")]
 pub fn stub_ae6e8() -> ! {
     todo!("0xae6e8 global constructor keyed toFMOD::dspchorus")
@@ -489,7 +489,7 @@ pub fn stub_aee3c() -> ! {
 
 // 0xaef58 — __GLOBAL__I__ZN4FMOD8dspcodecE
 // type: int()
-// was: `global constructor keyed to'FMOD::dspcodec
+// was: global constructor keyed to'FMOD::dspcodec
 #[doc(alias = "global constructor keyed toFMOD::dspcodec")]
 pub fn stub_aef58() -> ! {
     todo!("0xaef58 global constructor keyed toFMOD::dspcodec")
@@ -602,7 +602,7 @@ pub fn stub_afc84() -> ! {
 
 // 0xafd94 — __GLOBAL__I__ZN4FMOD13dspcompressorE
 // type: int()
-// was: `global constructor keyed to'FMOD::dspcompressor
+// was: global constructor keyed to'FMOD::dspcompressor
 #[doc(alias = "global constructor keyed toFMOD::dspcompressor")]
 pub fn stub_afd94() -> ! {
     todo!("0xafd94 global constructor keyed toFMOD::dspcompressor")

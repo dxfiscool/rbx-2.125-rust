@@ -1,5 +1,5 @@
 //! core watchdog j — 100 core stubs EA-sorted, continuation after watchdog_i 0x740d88.
-//! Source: `ida/export.json` (85545 funcs) global EA asc not yet in rbx_core — next 100 uncovered after 0x740d88 (watchdog_i max).
+//! Source: ida/export.json (85545 funcs) global EA asc not yet in rbx_core — next 100 uncovered after 0x740d88 (watchdog_i max).
 //! Filter: core namespace (exclude Reflection, Instance, DataModel, Workspace, Ogre, G3D, RakNet, Network, Replicator, Lua, Script, Yield, CodeGen, FMOD, Audio, Sound).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
@@ -73,7 +73,7 @@ pub fn stub_741650() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_331")]
 // 0x7416e0 — __GLOBAL__I_a_331
-// was: `global constructor keyed to'_a_331
+// was: global constructor keyed to'_a_331
 pub fn stub_7416e0() -> ! {
     todo!("0x7416e0 __GLOBAL__I_a_331")
 }
@@ -109,7 +109,7 @@ pub fn stub_7419c0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Motor6DJoint::~Motor6DJoint()")]
 // 0x7419c4 — __ZThn32_N3RBX12Motor6DJointD0Ev
 // type: void __fastcall(RBX::Motor6DJoint *__hidden this)
-// was: `non-virtual thunk to'RBX::Motor6DJoint::~Motor6DJoint()
+// was: non-virtual thunk toRBX::Motor6DJoint::~Motor6DJoint()
 pub fn stub_7419c4() -> ! {
     todo!("0x7419c4 __ZThn32_N3RBX12Motor6DJointD0Ev")
 }
@@ -124,7 +124,7 @@ pub fn stub_7419cc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Motor6DJoint::~Motor6DJoint()")]
 // 0x741ac8 — __ZThn32_N3RBX12Motor6DJointD1Ev
 // type: void __fastcall(RBX::Motor6DJoint *__hidden this)
-// was: `non-virtual thunk to'RBX::Motor6DJoint::~Motor6DJoint()
+// was: non-virtual thunk toRBX::Motor6DJoint::~Motor6DJoint()
 pub fn stub_741ac8() -> ! {
     todo!("0x741ac8 __ZThn32_N3RBX12Motor6DJointD1Ev")
 }
@@ -242,7 +242,7 @@ pub fn stub_74242c() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_332")]
 // 0x74245c — __GLOBAL__I_a_332
-// was: `global constructor keyed to'_a_332
+// was: global constructor keyed to'_a_332
 pub fn stub_74245c() -> ! {
     todo!("0x74245c __GLOBAL__I_a_332")
 }
@@ -278,7 +278,7 @@ pub fn stub_74274c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MotorJoint::~MotorJoint()")]
 // 0x742750 — __ZThn32_N3RBX10MotorJointD0Ev
 // type: void __fastcall(RBX::MotorJoint *__hidden this)
-// was: `non-virtual thunk to'RBX::MotorJoint::~MotorJoint()
+// was: non-virtual thunk toRBX::MotorJoint::~MotorJoint()
 pub fn stub_742750() -> ! {
     todo!("0x742750 __ZThn32_N3RBX10MotorJointD0Ev")
 }
@@ -293,7 +293,7 @@ pub fn stub_742758() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MotorJoint::~MotorJoint()")]
 // 0x742854 — __ZThn32_N3RBX10MotorJointD1Ev
 // type: void __fastcall(RBX::MotorJoint *__hidden this)
-// was: `non-virtual thunk to'RBX::MotorJoint::~MotorJoint()
+// was: non-virtual thunk toRBX::MotorJoint::~MotorJoint()
 pub fn stub_742854() -> ! {
     todo!("0x742854 __ZThn32_N3RBX10MotorJointD1Ev")
 }
@@ -418,7 +418,7 @@ pub fn stub_742dfc() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_333")]
 // 0x742e2c — __GLOBAL__I_a_333
-// was: `global constructor keyed to'_a_333
+// was: global constructor keyed to'_a_333
 pub fn stub_742e2c() -> ! {
     todo!("0x742e2c __GLOBAL__I_a_333")
 }
@@ -516,7 +516,7 @@ pub fn stub_74350c() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_334")]
 // 0x743510 — __GLOBAL__I_a_334
-// was: `global constructor keyed to'_a_334
+// was: global constructor keyed to'_a_334
 pub fn stub_743510() -> ! {
     todo!("0x743510 __GLOBAL__I_a_334")
 }
@@ -579,7 +579,7 @@ pub fn stub_743a34() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_335")]
 // 0x743a38 — __GLOBAL__I_a_335
-// was: `global constructor keyed to'_a_335
+// was: global constructor keyed to'_a_335
 pub fn stub_743a38() -> ! {
     todo!("0x743a38 __GLOBAL__I_a_335")
 }
@@ -608,7 +608,7 @@ pub fn stub_743c40() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MultiJoint::~MultiJoint()")]
 // 0x743c44 — __ZThn32_N3RBX10MultiJointD0Ev
 // type: void __fastcall(RBX::MultiJoint *__hidden this)
-// was: `non-virtual thunk to'RBX::MultiJoint::~MultiJoint()
+// was: non-virtual thunk toRBX::MultiJoint::~MultiJoint()
 pub fn stub_743c44() -> ! {
     todo!("0x743c44 __ZThn32_N3RBX10MultiJointD0Ev")
 }
@@ -623,7 +623,7 @@ pub fn stub_743c4c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MultiJoint::~MultiJoint()")]
 // 0x743dc8 — __ZThn32_N3RBX10MultiJointD1Ev
 // type: void __fastcall(RBX::MultiJoint *this, int, int)
-// was: `non-virtual thunk to'RBX::MultiJoint::~MultiJoint()
+// was: non-virtual thunk toRBX::MultiJoint::~MultiJoint()
 pub fn stub_743dc8() -> ! {
     todo!("0x743dc8 __ZThn32_N3RBX10MultiJointD1Ev")
 }
@@ -665,7 +665,7 @@ pub fn stub_744078() -> ! {
 
 #[doc(alias = "global constructor keyed to_a_336")]
 // 0x74419c — __GLOBAL__I_a_336
-// was: `global constructor keyed to'_a_336
+// was: global constructor keyed to'_a_336
 pub fn stub_74419c() -> ! {
     todo!("0x74419c __GLOBAL__I_a_336")
 }

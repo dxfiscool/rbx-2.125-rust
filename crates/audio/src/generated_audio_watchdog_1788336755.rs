@@ -53,7 +53,7 @@ pub fn stub_5c7340() -> ! {
 }
 
 // 0x5c7368 — __ZThn32_N3RBX13LocalBackpackD1Ev
-// demangled: `non-virtual thunk to'RBX::LocalBackpack::~LocalBackpack()
+// demangled: non-virtual thunk toRBX::LocalBackpack::~LocalBackpack()
 // type: void __fastcall(RBX::LocalBackpack *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::LocalBackpack::~LocalBackpack()")]
 #[doc(alias = "__ZThn32_N3RBX13LocalBackpackD1Ev")]
@@ -62,7 +62,7 @@ pub fn stub_5c7368() -> ! {
 }
 
 // 0x5c7370 — __ZThn32_N3RBX13LocalBackpackD0Ev
-// demangled: `non-virtual thunk to'RBX::LocalBackpack::~LocalBackpack()
+// demangled: non-virtual thunk toRBX::LocalBackpack::~LocalBackpack()
 // type: void __fastcall(RBX::LocalBackpack *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::LocalBackpack::~LocalBackpack()")]
 #[doc(alias = "__ZThn32_N3RBX13LocalBackpackD0Ev")]
@@ -77,7 +77,7 @@ pub fn stub_5c7414() -> ! {
 }
 
 // 0x5c743c — __ZThn36_N3RBX13LocalBackpackD1Ev
-// demangled: `non-virtual thunk to'RBX::LocalBackpack::~LocalBackpack()
+// demangled: non-virtual thunk toRBX::LocalBackpack::~LocalBackpack()
 // type: void __fastcall(RBX::LocalBackpack *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::LocalBackpack::~LocalBackpack()")]
 #[doc(alias = "__ZThn36_N3RBX13LocalBackpackD1Ev")]
@@ -86,7 +86,7 @@ pub fn stub_5c743c() -> ! {
 }
 
 // 0x5c7444 — __ZThn36_N3RBX13LocalBackpackD0Ev
-// demangled: `non-virtual thunk to'RBX::LocalBackpack::~LocalBackpack()
+// demangled: non-virtual thunk toRBX::LocalBackpack::~LocalBackpack()
 // type: void __fastcall(RBX::LocalBackpack *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::LocalBackpack::~LocalBackpack()")]
 #[doc(alias = "__ZThn36_N3RBX13LocalBackpackD0Ev")]
@@ -198,7 +198,7 @@ pub fn stub_5c7b6c() -> ! {
 }
 
 // 0x5c7ba0 — __GLOBAL__I_a_225
-// demangled: `global constructor keyed to'_a_225
+// demangled: global constructor keyed to'_a_225
 #[doc(alias = "global constructor keyed to_a_225")]
 #[doc(alias = "__GLOBAL__I_a_225")]
 pub fn stub_5c7ba0() -> ! {
@@ -206,7 +206,7 @@ pub fn stub_5c7ba0() -> ! {
 }
 
 // 0x5c7e0c — __GLOBAL__I_a_226
-// demangled: `global constructor keyed to'_a_226
+// demangled: global constructor keyed to'_a_226
 #[doc(alias = "global constructor keyed to_a_226")]
 #[doc(alias = "__GLOBAL__I_a_226")]
 pub fn stub_5c7e0c() -> ! {
@@ -259,7 +259,7 @@ pub fn stub_5c8658() -> ! {
 }
 
 // 0x5c86e0 — __ZThn92_N3RBX7Message8render2dEPNS_5AdornE
-// demangled: `non-virtual thunk to'RBX::Message::render2d(RBX::Adorn *)
+// demangled: non-virtual thunk toRBX::Message::render2d(RBX::Adorn *)
 // type: _DWORD __fastcall(RBX::Message *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::Message::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn92_N3RBX7Message8render2dEPNS_5AdornE")]
@@ -277,7 +277,7 @@ pub fn stub_5c86e8() -> ! {
 }
 
 // 0x5c8814 — __ZThn92_N3RBX4Hint8render2dEPNS_5AdornE
-// demangled: `non-virtual thunk to'RBX::Hint::render2d(RBX::Adorn *)
+// demangled: non-virtual thunk toRBX::Hint::render2d(RBX::Adorn *)
 // type: _DWORD __fastcall(RBX::Hint *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::Hint::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn92_N3RBX4Hint8render2dEPNS_5AdornE")]
@@ -354,7 +354,7 @@ pub fn stub_5c8a7c() -> ! {
 }
 
 // 0x5c8a80 — __ZThn32_N3RBX7MessageD1Ev
-// demangled: `non-virtual thunk to'RBX::Message::~Message()
+// demangled: non-virtual thunk toRBX::Message::~Message()
 // type: void __fastcall(RBX::Message *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Message::~Message()")]
 #[doc(alias = "__ZThn32_N3RBX7MessageD1Ev")]
@@ -363,7 +363,7 @@ pub fn stub_5c8a80() -> ! {
 }
 
 // 0x5c8b74 — __ZThn32_N3RBX7MessageD0Ev
-// demangled: `non-virtual thunk to'RBX::Message::~Message()
+// demangled: non-virtual thunk toRBX::Message::~Message()
 // type: void __fastcall(RBX::Message *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Message::~Message()")]
 #[doc(alias = "__ZThn32_N3RBX7MessageD0Ev")]
@@ -378,7 +378,7 @@ pub fn stub_5c8c7c() -> ! {
 }
 
 // 0x5c8c8c — __ZThn36_N3RBX7MessageD1Ev
-// demangled: `non-virtual thunk to'RBX::Message::~Message()
+// demangled: non-virtual thunk toRBX::Message::~Message()
 // type: void __fastcall(RBX::Message *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Message::~Message()")]
 #[doc(alias = "__ZThn36_N3RBX7MessageD1Ev")]
@@ -387,7 +387,7 @@ pub fn stub_5c8c8c() -> ! {
 }
 
 // 0x5c8d7c — __ZThn36_N3RBX7MessageD0Ev
-// demangled: `non-virtual thunk to'RBX::Message::~Message()
+// demangled: non-virtual thunk toRBX::Message::~Message()
 // type: void __fastcall(RBX::Message *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Message::~Message()")]
 #[doc(alias = "__ZThn36_N3RBX7MessageD0Ev")]
@@ -396,7 +396,7 @@ pub fn stub_5c8d7c() -> ! {
 }
 
 // 0x5c8e84 — __ZThn92_NK3RBX7Message14shouldRender2dEv
-// demangled: `non-virtual thunk to'RBX::Message::shouldRender2d(void)const
+// demangled: non-virtual thunk toRBX::Message::shouldRender2d(void)const
 // type: _DWORD __fastcall(RBX::Message *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Message::shouldRender2d(void)const")]
 #[doc(alias = "__ZThn92_NK3RBX7Message14shouldRender2dEv")]
@@ -438,7 +438,7 @@ pub fn stub_5c9084() -> ! {
 }
 
 // 0x5c9094 — __ZThn32_N3RBX4HintD1Ev
-// demangled: `non-virtual thunk to'RBX::Hint::~Hint()
+// demangled: non-virtual thunk toRBX::Hint::~Hint()
 // type: void __fastcall(RBX::Hint *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Hint::~Hint()")]
 #[doc(alias = "__ZThn32_N3RBX4HintD1Ev")]
@@ -447,7 +447,7 @@ pub fn stub_5c9094() -> ! {
 }
 
 // 0x5c9188 — __ZThn32_N3RBX4HintD0Ev
-// demangled: `non-virtual thunk to'RBX::Hint::~Hint()
+// demangled: non-virtual thunk toRBX::Hint::~Hint()
 // type: void __fastcall(RBX::Hint *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Hint::~Hint()")]
 #[doc(alias = "__ZThn32_N3RBX4HintD0Ev")]
@@ -462,7 +462,7 @@ pub fn stub_5c9290() -> ! {
 }
 
 // 0x5c92a0 — __ZThn36_N3RBX4HintD1Ev
-// demangled: `non-virtual thunk to'RBX::Hint::~Hint()
+// demangled: non-virtual thunk toRBX::Hint::~Hint()
 // type: void __fastcall(RBX::Hint *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Hint::~Hint()")]
 #[doc(alias = "__ZThn36_N3RBX4HintD1Ev")]
@@ -471,7 +471,7 @@ pub fn stub_5c92a0() -> ! {
 }
 
 // 0x5c9390 — __ZThn36_N3RBX4HintD0Ev
-// demangled: `non-virtual thunk to'RBX::Hint::~Hint()
+// demangled: non-virtual thunk toRBX::Hint::~Hint()
 // type: void __fastcall(RBX::Hint *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Hint::~Hint()")]
 #[doc(alias = "__ZThn36_N3RBX4HintD0Ev")]

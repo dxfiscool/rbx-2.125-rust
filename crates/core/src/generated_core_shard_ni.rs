@@ -1,5 +1,5 @@
 //! core shard ni — 100 core stubs EA-sorted asc next uncovered fallback filtered not yet in rbx_core.
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc, next 100 filtered fallback excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|FMOD|Sound|Audio|Lua|Script|Yield (fallback 32196, 919 uncovered before batch, rbx_core::SharedPtr not boost).
+//! Source: ida/export.json (85545 funcs) EA-sorted asc, next 100 filtered fallback excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|FMOD|Sound|Audio|Lua|Script|Yield (fallback 32196, 919 uncovered before batch, rbx_core::SharedPtr not boost).
 //! Range: 0xf607a4..0xf6be14, lowest EA first.
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.

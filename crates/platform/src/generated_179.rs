@@ -750,7 +750,7 @@ pub fn stub_633e44() -> ! {
     todo!("0x633e44 RBX::Velocity::rotateBy(G3D::Matrix3 const&)const")
 }
 
-// 0x633f10 — `global constructor keyed to'_a_256
+// 0x633f10 — global constructor keyed to'_a_256
 // mangled: __GLOBAL__I_a_256
 #[doc(alias = "global constructor keyed to_a_256")]
 pub fn stub_633f10() -> ! {
@@ -1138,7 +1138,7 @@ pub fn stub_636e0c() -> ! {
     todo!("0x636e0c RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Sky>::setValue(RBX::Reflection::DescribedBase *,RBX::TextureId const&)const")
 }
 
-// 0x636e80 — `global constructor keyed to'_a_257
+// 0x636e80 — global constructor keyed to'_a_257
 // mangled: __GLOBAL__I_a_257
 #[doc(alias = "global constructor keyed to_a_257")]
 pub fn stub_636e80() -> ! {

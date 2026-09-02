@@ -1,5 +1,5 @@
 //! core shard C — 120 core stubs EA-sorted after 0x692234.
-//! Source: `ida/export.json` filtered where demangled contains boost|rbx::signals|Ogre, excluding Reflection/Instance/DataModel/Ogre/RakNet/RBX::Network, EA-sorted, next 120 after highest existing EA in generated_*.rs.
+//! Source: ida/export.json filtered where demangled contains boost|rbx::signals|Ogre, excluding Reflection/Instance/DataModel/Ogre/RakNet/RBX::Network, EA-sorted, next 120 after highest existing EA in generated_*.rs.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, single quotes removed.
 
 #[doc(alias = "RBX::VehicleController::onSteppedTouchInput(rbx_core::SharedPtr<RBX::VehicleSeat>)")]
@@ -237,7 +237,7 @@ pub fn stub_0x69b7dc() -> ! {
 }
 
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot,boost::function<void ()(RBX::Controller::Button)>,1,void ()(RBX::Controller::Button)>::call(RBX::Controller::Button)")]
-// 0x69b7e4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX10Controller6ButtonEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_ — `non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot,boost::function<void ()(RBX::Controller::Button)>,1,void ()(RBX::Controller::Button)>::call(RBX::Controller::Button)
+// 0x69b7e4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX10Controller6ButtonEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_ — non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot,boost::function<void ()(RBX::Controller::Button)>,1,void ()(RBX::Controller::Button)>::call(RBX::Controller::Button)
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot,boost::function<void ()(RBX::Controller::Button)>,1,void ()(RBX::Controller::Button)>::call(RBX::Controller::Button)
 pub fn stub_0x69b7e4() -> ! {
     todo!("0x69b7e4 __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX10Controller6ButtonEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_")
@@ -442,7 +442,7 @@ pub fn stub_0x6ade30() -> ! {
 }
 
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(int)>::slot,boost::function<void ()(int)>,1,void ()(int)>::call(int)")]
-// 0x6ade38 — __ZThn4_N3rbx8callableINS_7signals6signalIFviEE4slotEN5boost8functionIS3_EELi1ES3_E4callEi — `non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(int)>::slot,boost::function<void ()(int)>,1,void ()(int)>::call(int)
+// 0x6ade38 — __ZThn4_N3rbx8callableINS_7signals6signalIFviEE4slotEN5boost8functionIS3_EELi1ES3_E4callEi — non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(int)>::slot,boost::function<void ()(int)>,1,void ()(int)>::call(int)
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(int)>::slot,boost::function<void ()(int)>,1,void ()(int)>::call(int)
 pub fn stub_0x6ade38() -> ! {
     todo!("0x6ade38 __ZThn4_N3rbx8callableINS_7signals6signalIFviEE4slotEN5boost8functionIS3_EELi1ES3_E4callEi")
@@ -539,7 +539,7 @@ pub fn stub_0x6afd88() -> ! {
 }
 
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::BrickColor)>::slot,boost::function<void ()(RBX::BrickColor)>,1,void ()(RBX::BrickColor)>::call(RBX::BrickColor)")]
-// 0x6afd90 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX10BrickColorEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_ — `non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::BrickColor)>::slot,boost::function<void ()(RBX::BrickColor)>,1,void ()(RBX::BrickColor)>::call(RBX::BrickColor)
+// 0x6afd90 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX10BrickColorEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_ — non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::BrickColor)>::slot,boost::function<void ()(RBX::BrickColor)>,1,void ()(RBX::BrickColor)>::call(RBX::BrickColor)
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::BrickColor)>::slot,boost::function<void ()(RBX::BrickColor)>,1,void ()(RBX::BrickColor)>::call(RBX::BrickColor)
 pub fn stub_0x6afd90() -> ! {
     todo!("0x6afd90 __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX10BrickColorEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")
@@ -678,7 +678,7 @@ pub fn stub_0x6b1f80() -> ! {
 }
 
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::Color3)>::slot,boost::function<void ()(G3D::Color3)>,1,void ()(G3D::Color3)>::call(G3D::Color3)")]
-// 0x6b1fa0 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D6Color3EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_ — `non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::Color3)>::slot,boost::function<void ()(G3D::Color3)>,1,void ()(G3D::Color3)>::call(G3D::Color3)
+// 0x6b1fa0 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D6Color3EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_ — non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::Color3)>::slot,boost::function<void ()(G3D::Color3)>,1,void ()(G3D::Color3)>::call(G3D::Color3)
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::Color3)>::slot,boost::function<void ()(G3D::Color3)>,1,void ()(G3D::Color3)>::call(G3D::Color3)
 pub fn stub_0x6b1fa0() -> ! {
     todo!("0x6b1fa0 __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D6Color3EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")

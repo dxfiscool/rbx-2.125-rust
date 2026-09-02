@@ -1,5 +1,5 @@
 //! core shard lh — 120 core stubs EA-sorted, next uncovered fallback after shard lg (0x1f1e10..0x215e60, lowest EA first).
-//! Source: `ida/export.json` filtered where demangled/mangled excludes Reflection|Instance|Ogre|RakNet|FMOD|Lua (fallback 40811 filtered, 26163 uncovered before batch, 26043 after), EA-sorted asc, next 120 uncovered not yet in core.
+//! Source: ida/export.json filtered where demangled/mangled excludes Reflection|Instance|Ogre|RakNet|FMOD|Lua (fallback 40811 filtered, 26163 uncovered before batch, 26043 after), EA-sorted asc, next 120 uncovered not yet in core.
 //! Format: // 0xADDR — mangled + #[doc(alias = "mangled")] + pub fn stub_0xADDR todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 

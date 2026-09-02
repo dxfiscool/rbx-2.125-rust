@@ -1,5 +1,5 @@
 //! core gap-fill shard B — 120 core stubs EA-sorted, earliest gap (lowest unstubbed EA) from fallback set.
-//! Source: `ida/export.json` filtered where demangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted, next 120 uncovered (lowest EA first).
+//! Source: ida/export.json filtered where demangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted, next 120 uncovered (lowest EA first).
 //! Complements shard A (tail) by filling head/earliest gap.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 

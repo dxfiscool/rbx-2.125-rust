@@ -1,5 +1,5 @@
 //! core shard O — 100 core stubs EA-sorted, earliest uncovered gap (0x2415c..0x38720) after existing coverage.
-//! Source: `ida/export.json` filtered where demangled excludes Reflection/Instance/DataModel/Ogre/RakNet/Lua/Sound/Audio, EA-sorted, next 100 uncovered (lowest EA first).
+//! Source: ida/export.json filtered where demangled excludes Reflection/Instance/DataModel/Ogre/RakNet/Lua/Sound/Audio, EA-sorted, next 100 uncovered (lowest EA first).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]

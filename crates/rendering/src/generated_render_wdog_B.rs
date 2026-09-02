@@ -65,9 +65,9 @@ pub fn stub_68fec8() -> ! {
 
 // 0x690050 — __GLOBAL__I_a_279
 #[doc(alias = "global constructor keyed to_a_279")]
-// was: `global constructor keyed to'_a_279
+// was: global constructor keyed to'_a_279
 pub fn stub_690050() -> ! {
-    todo!("0x690050 `global constructor keyed to'_a_279")
+    todo!("0x690050 global constructor keyed to'_a_279")
 }
 
 // 0x6907e4 — __ZN3RBX10Controller9getButtonENS0_6ButtonE
@@ -156,23 +156,23 @@ pub fn stub_691814() -> ! {
 
 // 0x691818 — __ZThn32_N3RBX10ControllerD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Controller::~Controller()")]
-// was: `non-virtual thunk to'RBX::Controller::~Controller()
+// was: non-virtual thunk toRBX::Controller::~Controller()
 pub fn stub_691818() -> ! {
-    todo!("0x691818 `non-virtual thunk to'RBX::Controller::~Controller()")
+    todo!("0x691818 non-virtual thunk toRBX::Controller::~Controller()")
 }
 
 // 0x691820 — __ZThn36_N3RBX10ControllerD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Controller::~Controller()")]
-// was: `non-virtual thunk to'RBX::Controller::~Controller()
+// was: non-virtual thunk toRBX::Controller::~Controller()
 pub fn stub_691820() -> ! {
-    todo!("0x691820 `non-virtual thunk to'RBX::Controller::~Controller()")
+    todo!("0x691820 non-virtual thunk toRBX::Controller::~Controller()")
 }
 
 // 0x691828 — __ZThn92_N3RBX10ControllerD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Controller::~Controller()")]
-// was: `non-virtual thunk to'RBX::Controller::~Controller()
+// was: non-virtual thunk toRBX::Controller::~Controller()
 pub fn stub_691828() -> ! {
-    todo!("0x691828 `non-virtual thunk to'RBX::Controller::~Controller()")
+    todo!("0x691828 non-virtual thunk toRBX::Controller::~Controller()")
 }
 
 // 0x691830 — __ZN3RBX10ControllerD2Ev
@@ -184,23 +184,23 @@ pub fn stub_691830() -> ! {
 
 // 0x691a04 — __ZThn32_N3RBX10ControllerD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Controller::~Controller()")]
-// was: `non-virtual thunk to'RBX::Controller::~Controller()
+// was: non-virtual thunk toRBX::Controller::~Controller()
 pub fn stub_691a04() -> ! {
-    todo!("0x691a04 `non-virtual thunk to'RBX::Controller::~Controller()")
+    todo!("0x691a04 non-virtual thunk toRBX::Controller::~Controller()")
 }
 
 // 0x691a0c — __ZThn36_N3RBX10ControllerD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Controller::~Controller()")]
-// was: `non-virtual thunk to'RBX::Controller::~Controller()
+// was: non-virtual thunk toRBX::Controller::~Controller()
 pub fn stub_691a0c() -> ! {
-    todo!("0x691a0c `non-virtual thunk to'RBX::Controller::~Controller()")
+    todo!("0x691a0c non-virtual thunk toRBX::Controller::~Controller()")
 }
 
 // 0x691a14 — __ZThn92_N3RBX10ControllerD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Controller::~Controller()")]
-// was: `non-virtual thunk to'RBX::Controller::~Controller()
+// was: non-virtual thunk toRBX::Controller::~Controller()
 pub fn stub_691a14() -> ! {
-    todo!("0x691a14 `non-virtual thunk to'RBX::Controller::~Controller()")
+    todo!("0x691a14 non-virtual thunk toRBX::Controller::~Controller()")
 }
 
 // 0x691a1c — __ZNK3RBX10Controller13isButtonBoundENS0_6ButtonE
@@ -261,9 +261,9 @@ pub fn stub_692420() -> ! {
 
 // 0x6925f8 — __ZThn92_N3RBX17VehicleController9onSteppedERKNS_7SteppedE
 #[doc(alias = "non-virtual thunk toRBX::VehicleController::onStepped(RBX::Stepped const&)")]
-// was: `non-virtual thunk to'RBX::VehicleController::onStepped(RBX::Stepped const&)
+// was: non-virtual thunk toRBX::VehicleController::onStepped(RBX::Stepped const&)
 pub fn stub_6925f8() -> ! {
-    todo!("0x6925f8 `non-virtual thunk to'RBX::VehicleController::onStepped(RBX::Stepped const&)")
+    todo!("0x6925f8 non-virtual thunk toRBX::VehicleController::onStepped(RBX::Stepped const&)")
 }
 
 // 0x692604 — __ZN3RBX18HumanoidControllerC2Ev
@@ -296,9 +296,9 @@ pub fn stub_692a04() -> ! {
 
 // 0x692b9c — __ZThn92_N3RBX18HumanoidController9onSteppedERKNS_7SteppedE
 #[doc(alias = "non-virtual thunk toRBX::HumanoidController::onStepped(RBX::Stepped const&)")]
-// was: `non-virtual thunk to'RBX::HumanoidController::onStepped(RBX::Stepped const&)
+// was: non-virtual thunk toRBX::HumanoidController::onStepped(RBX::Stepped const&)
 pub fn stub_692b9c() -> ! {
-    todo!("0x692b9c `non-virtual thunk to'RBX::HumanoidController::onStepped(RBX::Stepped const&)")
+    todo!("0x692b9c non-virtual thunk toRBX::HumanoidController::onStepped(RBX::Stepped const&)")
 }
 
 // 0x692ba4 — __ZN3RBX17ControllerServiceC1Ev

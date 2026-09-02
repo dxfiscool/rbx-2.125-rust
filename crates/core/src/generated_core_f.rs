@@ -1,5 +1,5 @@
 //! generated_core_f — 100 core stubs EA-sorted, next after generated_core_e.
-//! Source: `ida/export.json` filtered demangled for core namespaces, sorted by EA, 100 stubs.
+//! Source: ida/export.json filtered demangled for core namespaces, sorted by EA, 100 stubs.
 //! Sanitized: single quotes removed, boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr.
 
 // 0x2c138 — ____ZL15presentGameViewv_block_invoke

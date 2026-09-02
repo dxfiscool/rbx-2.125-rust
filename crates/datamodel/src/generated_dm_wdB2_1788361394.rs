@@ -3,7 +3,7 @@
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x4ecef4..0x4f0c88 | workspace remaining 0, gap filler 100
 // Shard: generated_dm_wdB2_1788361394 EA-sorted asc gap filler [skeleton batch watchdog-dmB2]
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and single-quote stripped
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and single-quote stripped
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

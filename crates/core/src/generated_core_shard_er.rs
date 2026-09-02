@@ -1,5 +1,5 @@
 //! core shard ER — 100 core stubs EA-sorted, lowest uncovered 0xaabaf0..0xb1f5a8 (strict RBX|boost|std|rbx excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 after EQ 0xaab254).
-//! Source: `ida/export.json` filtered where demangled/mangled contains `RBX::`|`boost::`|`std::`|`rbx::` excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 lowest uncovered.
+//! Source: ida/export.json filtered where demangled/mangled contains RBX::|boost::|std::|rbx:: excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 lowest uncovered.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
@@ -12,7 +12,7 @@ pub fn stub_aabaf0() -> ! {
 
 #[doc(alias = "rbx::signals::signal<void ()(std::string,std::string,std::string)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot> &)")]
 // 0xaabe7c — __ZN3rbx7signals6signalIFvSsSsSsEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
-// was: `rbx::signals::signal<void ()(std::string,std::string,std::string)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot> &)`
+// was: rbx::signals::signal<void ()(std::string,std::string,std::string)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot> &)
 pub fn stub_aabe7c() -> ! {
     todo!("0xaabe7c __ZN3rbx7signals6signalIFvSsSsSsEE4nextERN5boost13intrusive_ptrINS3_4slotEEE")
 }
@@ -181,7 +181,7 @@ pub fn stub_adc470() -> ! {
 
 #[doc(alias = "RBX::TaskScheduler::remove(rbx_core::SharedPtr<RBX::TaskScheduler::Job>)")]
 // 0xb06f18 — __ZN3RBX13TaskScheduler6removeEN5boost10shared_ptrINS0_3JobEEE
-// was: `RBX::TaskScheduler::remove(boost::shared_ptr<RBX::TaskScheduler::Job>)`
+// was: RBX::TaskScheduler::remove(boost::shared_ptr<RBX::TaskScheduler::Job>)
 pub fn stub_b06f18() -> ! {
     todo!("0xb06f18 __ZN3RBX13TaskScheduler6removeEN5boost10shared_ptrINS0_3JobEEE")
 }
@@ -452,14 +452,14 @@ pub fn stub_b13940() -> ! {
 
 #[doc(alias = "rbx::signals::signal<void ()(std::string,bool)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,bool)>::slot> &)")]
 // 0xb19898 — __ZN3rbx7signals6signalIFvSsbEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
-// was: `rbx::signals::signal<void ()(std::string,bool)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,bool)>::slot> &)`
+// was: rbx::signals::signal<void ()(std::string,bool)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,bool)>::slot> &)
 pub fn stub_b19898() -> ! {
     todo!("0xb19898 __ZN3rbx7signals6signalIFvSsbEE4nextERN5boost13intrusive_ptrINS3_4slotEEE")
 }
 
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,bool)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,bool)>::slot> const&)")]
 // 0xb19ab0 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsbEE4slotEEaSERKS7_
-// was: `boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,bool)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,bool)>::slot> const&)`
+// was: boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,bool)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,bool)>::slot> const&)
 pub fn stub_b19ab0() -> ! {
     todo!("0xb19ab0 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsbEE4slotEEaSERKS7_")
 }

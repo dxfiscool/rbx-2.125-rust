@@ -74,7 +74,7 @@ pub fn stub_6089c4() -> ! {
 
 // 0x6089e8 — __GLOBAL__I_a_242
 #[doc(alias = "__GLOBAL__I_a_242")]
-// demangled: `global constructor keyed to'_a_242
+// demangled: global constructor keyed to'_a_242
 pub fn stub_6089e8() -> ! {
     todo!("0x6089e8 __GLOBAL__I_a_242")
 }
@@ -144,14 +144,14 @@ pub fn stub_6092d8() -> ! {
 
 // 0x6092dc — __ZThn32_N3RBX10PVInstanceD0Ev
 #[doc(alias = "__ZThn32_N3RBX10PVInstanceD0Ev")]
-// demangled: `non-virtual thunk to'RBX::PVInstance::~PVInstance()
+// demangled: non-virtual thunk toRBX::PVInstance::~PVInstance()
 pub fn stub_6092dc() -> ! {
     todo!("0x6092dc __ZThn32_N3RBX10PVInstanceD0Ev")
 }
 
 // 0x6092e4 — __ZThn36_N3RBX10PVInstanceD0Ev
 #[doc(alias = "__ZThn36_N3RBX10PVInstanceD0Ev")]
-// demangled: `non-virtual thunk to'RBX::PVInstance::~PVInstance()
+// demangled: non-virtual thunk toRBX::PVInstance::~PVInstance()
 pub fn stub_6092e4() -> ! {
     todo!("0x6092e4 __ZThn36_N3RBX10PVInstanceD0Ev")
 }
@@ -165,14 +165,14 @@ pub fn stub_6092ec() -> ! {
 
 // 0x6092f0 — __ZThn32_N3RBX10PVInstanceD1Ev
 #[doc(alias = "__ZThn32_N3RBX10PVInstanceD1Ev")]
-// demangled: `non-virtual thunk to'RBX::PVInstance::~PVInstance()
+// demangled: non-virtual thunk toRBX::PVInstance::~PVInstance()
 pub fn stub_6092f0() -> ! {
     todo!("0x6092f0 __ZThn32_N3RBX10PVInstanceD1Ev")
 }
 
 // 0x6092f8 — __ZThn36_N3RBX10PVInstanceD1Ev
 #[doc(alias = "__ZThn36_N3RBX10PVInstanceD1Ev")]
-// demangled: `non-virtual thunk to'RBX::PVInstance::~PVInstance()
+// demangled: non-virtual thunk toRBX::PVInstance::~PVInstance()
 pub fn stub_6092f8() -> ! {
     todo!("0x6092f8 __ZThn36_N3RBX10PVInstanceD1Ev")
 }
@@ -327,7 +327,7 @@ pub fn stub_609b58() -> ! {
 
 // 0x609c04 — __GLOBAL__I_a_243
 #[doc(alias = "__GLOBAL__I_a_243")]
-// demangled: `global constructor keyed to'_a_243
+// demangled: global constructor keyed to'_a_243
 pub fn stub_609c04() -> ! {
     todo!("0x609c04 __GLOBAL__I_a_243")
 }
@@ -530,14 +530,14 @@ pub fn stub_60aad0() -> ! {
 
 // 0x60aaf4 — __GLOBAL__I_a_244
 #[doc(alias = "__GLOBAL__I_a_244")]
-// demangled: `global constructor keyed to'_a_244
+// demangled: global constructor keyed to'_a_244
 pub fn stub_60aaf4() -> ! {
     todo!("0x60aaf4 __GLOBAL__I_a_244")
 }
 
 // 0x60aea8 — __GLOBAL__I_a_245
 #[doc(alias = "__GLOBAL__I_a_245")]
-// demangled: `global constructor keyed to'_a_245
+// demangled: global constructor keyed to'_a_245
 pub fn stub_60aea8() -> ! {
     todo!("0x60aea8 __GLOBAL__I_a_245")
 }
@@ -565,28 +565,28 @@ pub fn stub_60b468() -> ! {
 
 // 0x60b478 — __ZThn32_N3RBX12RootInstanceD0Ev
 #[doc(alias = "__ZThn32_N3RBX12RootInstanceD0Ev")]
-// demangled: `non-virtual thunk to'RBX::RootInstance::~RootInstance()
+// demangled: non-virtual thunk toRBX::RootInstance::~RootInstance()
 pub fn stub_60b478() -> ! {
     todo!("0x60b478 __ZThn32_N3RBX12RootInstanceD0Ev")
 }
 
 // 0x60b480 — __ZThn36_N3RBX12RootInstanceD0Ev
 #[doc(alias = "__ZThn36_N3RBX12RootInstanceD0Ev")]
-// demangled: `non-virtual thunk to'RBX::RootInstance::~RootInstance()
+// demangled: non-virtual thunk toRBX::RootInstance::~RootInstance()
 pub fn stub_60b480() -> ! {
     todo!("0x60b480 __ZThn36_N3RBX12RootInstanceD0Ev")
 }
 
 // 0x60b488 — __ZThn120_N3RBX12RootInstanceD0Ev
 #[doc(alias = "__ZThn120_N3RBX12RootInstanceD0Ev")]
-// demangled: `non-virtual thunk to'RBX::RootInstance::~RootInstance()
+// demangled: non-virtual thunk toRBX::RootInstance::~RootInstance()
 pub fn stub_60b488() -> ! {
     todo!("0x60b488 __ZThn120_N3RBX12RootInstanceD0Ev")
 }
 
 // 0x60b490 — __ZThn280_N3RBX12RootInstanceD0Ev
 #[doc(alias = "__ZThn280_N3RBX12RootInstanceD0Ev")]
-// demangled: `non-virtual thunk to'RBX::RootInstance::~RootInstance()
+// demangled: non-virtual thunk toRBX::RootInstance::~RootInstance()
 pub fn stub_60b490() -> ! {
     todo!("0x60b490 __ZThn280_N3RBX12RootInstanceD0Ev")
 }
@@ -600,28 +600,28 @@ pub fn stub_60b498() -> ! {
 
 // 0x60b5c0 — __ZThn32_N3RBX12RootInstanceD1Ev
 #[doc(alias = "__ZThn32_N3RBX12RootInstanceD1Ev")]
-// demangled: `non-virtual thunk to'RBX::RootInstance::~RootInstance()
+// demangled: non-virtual thunk toRBX::RootInstance::~RootInstance()
 pub fn stub_60b5c0() -> ! {
     todo!("0x60b5c0 __ZThn32_N3RBX12RootInstanceD1Ev")
 }
 
 // 0x60b5d0 — __ZThn36_N3RBX12RootInstanceD1Ev
 #[doc(alias = "__ZThn36_N3RBX12RootInstanceD1Ev")]
-// demangled: `non-virtual thunk to'RBX::RootInstance::~RootInstance()
+// demangled: non-virtual thunk toRBX::RootInstance::~RootInstance()
 pub fn stub_60b5d0() -> ! {
     todo!("0x60b5d0 __ZThn36_N3RBX12RootInstanceD1Ev")
 }
 
 // 0x60b5e0 — __ZThn120_N3RBX12RootInstanceD1Ev
 #[doc(alias = "__ZThn120_N3RBX12RootInstanceD1Ev")]
-// demangled: `non-virtual thunk to'RBX::RootInstance::~RootInstance()
+// demangled: non-virtual thunk toRBX::RootInstance::~RootInstance()
 pub fn stub_60b5e0() -> ! {
     todo!("0x60b5e0 __ZThn120_N3RBX12RootInstanceD1Ev")
 }
 
 // 0x60b5f0 — __ZThn280_N3RBX12RootInstanceD1Ev
 #[doc(alias = "__ZThn280_N3RBX12RootInstanceD1Ev")]
-// demangled: `non-virtual thunk to'RBX::RootInstance::~RootInstance()
+// demangled: non-virtual thunk toRBX::RootInstance::~RootInstance()
 pub fn stub_60b5f0() -> ! {
     todo!("0x60b5f0 __ZThn280_N3RBX12RootInstanceD1Ev")
 }

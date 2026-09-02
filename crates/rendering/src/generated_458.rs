@@ -16,7 +16,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "__ZThn36_N3RBX12AdvArrowToolD1Ev")]
 // was: __ZThn36_N3RBX12AdvArrowToolD1Ev
 pub fn stub_6dd054() -> ! {
-    todo!("0x6dd054 `non-virtual thunk to'RBX::AdvArrowTool::~AdvArrowTool()")
+    todo!("0x6dd054 non-virtual thunk toRBX::AdvArrowTool::~AdvArrowTool()")
 }
 
 // 0x6dd05c — __ZThn36_N3RBX12AdvArrowToolD0Ev
@@ -25,7 +25,7 @@ pub fn stub_6dd054() -> ! {
 #[doc(alias = "__ZThn36_N3RBX12AdvArrowToolD0Ev")]
 // was: __ZThn36_N3RBX12AdvArrowToolD0Ev
 pub fn stub_6dd05c() -> ! {
-    todo!("0x6dd05c `non-virtual thunk to'RBX::AdvArrowTool::~AdvArrowTool()")
+    todo!("0x6dd05c non-virtual thunk toRBX::AdvArrowTool::~AdvArrowTool()")
 }
 
 // 0x6dd100 — __ZN3RBX16AdvArrowToolBaseD2Ev
@@ -79,7 +79,7 @@ pub fn stub_6dd374() -> ! {
 #[doc(alias = "__ZThn36_N3RBX16AdvArrowToolBaseD1Ev")]
 // was: __ZThn36_N3RBX16AdvArrowToolBaseD1Ev
 pub fn stub_6dd378() -> ! {
-    todo!("0x6dd378 `non-virtual thunk to'RBX::AdvArrowToolBase::~AdvArrowToolBase()")
+    todo!("0x6dd378 non-virtual thunk toRBX::AdvArrowToolBase::~AdvArrowToolBase()")
 }
 
 // 0x6dd380 — __ZThn36_N3RBX16AdvArrowToolBaseD0Ev
@@ -88,7 +88,7 @@ pub fn stub_6dd378() -> ! {
 #[doc(alias = "__ZThn36_N3RBX16AdvArrowToolBaseD0Ev")]
 // was: __ZThn36_N3RBX16AdvArrowToolBaseD0Ev
 pub fn stub_6dd380() -> ! {
-    todo!("0x6dd380 `non-virtual thunk to'RBX::AdvArrowToolBase::~AdvArrowToolBase()")
+    todo!("0x6dd380 non-virtual thunk toRBX::AdvArrowToolBase::~AdvArrowToolBase()")
 }
 
 // 0x6dd388 — __ZN3RBX13ArrowToolBaseD1Ev
@@ -115,7 +115,7 @@ pub fn stub_6dd38c() -> ! {
 #[doc(alias = "__ZThn36_N3RBX13ArrowToolBaseD1Ev")]
 // was: __ZThn36_N3RBX13ArrowToolBaseD1Ev
 pub fn stub_6dd42c() -> ! {
-    todo!("0x6dd42c `non-virtual thunk to'RBX::ArrowToolBase::~ArrowToolBase()")
+    todo!("0x6dd42c non-virtual thunk toRBX::ArrowToolBase::~ArrowToolBase()")
 }
 
 // 0x6dd434 — __ZThn36_N3RBX13ArrowToolBaseD0Ev
@@ -124,7 +124,7 @@ pub fn stub_6dd42c() -> ! {
 #[doc(alias = "__ZThn36_N3RBX13ArrowToolBaseD0Ev")]
 // was: __ZThn36_N3RBX13ArrowToolBaseD0Ev
 pub fn stub_6dd434() -> ! {
-    todo!("0x6dd434 `non-virtual thunk to'RBX::ArrowToolBase::~ArrowToolBase()")
+    todo!("0x6dd434 non-virtual thunk toRBX::ArrowToolBase::~ArrowToolBase()")
 }
 
 // 0x6dd43c — __ZN3RBX4Name7declareILZNS_13sAdvArrowToolEEEERKS0_v
@@ -514,7 +514,7 @@ pub fn stub_6ded30() -> ! {
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemIiED1Ev")]
 // was: __ZThn32_N3RBX5Stats14TypedStatsItemIiED1Ev
 pub fn stub_6ded50() -> ! {
-    todo!("0x6ded50 `non-virtual thunk to'RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
+    todo!("0x6ded50 non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
 }
 
 // 0x6dee98 — __ZThn32_N3RBX5Stats14TypedStatsItemIiED0Ev
@@ -523,7 +523,7 @@ pub fn stub_6ded50() -> ! {
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemIiED0Ev")]
 // was: __ZThn32_N3RBX5Stats14TypedStatsItemIiED0Ev
 pub fn stub_6dee98() -> ! {
-    todo!("0x6dee98 `non-virtual thunk to'RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
+    todo!("0x6dee98 non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
 }
 
 // 0x6deff8 — __ZThn36_N3RBX5Stats14TypedStatsItemIiED1Ev
@@ -532,7 +532,7 @@ pub fn stub_6dee98() -> ! {
 #[doc(alias = "__ZThn36_N3RBX5Stats14TypedStatsItemIiED1Ev")]
 // was: __ZThn36_N3RBX5Stats14TypedStatsItemIiED1Ev
 pub fn stub_6deff8() -> ! {
-    todo!("0x6deff8 `non-virtual thunk to'RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
+    todo!("0x6deff8 non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
 }
 
 // 0x6df140 — __ZThn36_N3RBX5Stats14TypedStatsItemIiED0Ev
@@ -541,7 +541,7 @@ pub fn stub_6deff8() -> ! {
 #[doc(alias = "__ZThn36_N3RBX5Stats14TypedStatsItemIiED0Ev")]
 // was: __ZThn36_N3RBX5Stats14TypedStatsItemIiED0Ev
 pub fn stub_6df140() -> ! {
-    todo!("0x6df140 `non-virtual thunk to'RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
+    todo!("0x6df140 non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
 }
 
 // 0x6df368 — __ZN5boost10shared_ptrIN3RBX5Stats14TypedStatsItemIiEEEC2IS4_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -613,7 +613,7 @@ pub fn stub_6df7f8() -> ! {
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemIfED0Ev")]
 // was: __ZThn32_N3RBX5Stats14TypedStatsItemIfED0Ev
 pub fn stub_6df818() -> ! {
-    todo!("0x6df818 `non-virtual thunk to'RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")
+    todo!("0x6df818 non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")
 }
 
 // 0x6df974 — __ZN5boost10shared_ptrIN3RBX5Stats14TypedStatsItemIfEEEC2IS4_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -757,7 +757,7 @@ pub fn stub_6dffd0() -> ! {
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemIdED1Ev")]
 // was: __ZThn32_N3RBX5Stats14TypedStatsItemIdED1Ev
 pub fn stub_6e0130() -> ! {
-    todo!("0x6e0130 `non-virtual thunk to'RBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")
+    todo!("0x6e0130 non-virtual thunk toRBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")
 }
 
 // 0x6e0278 — __ZThn32_N3RBX5Stats14TypedStatsItemIdED0Ev
@@ -766,7 +766,7 @@ pub fn stub_6e0130() -> ! {
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemIdED0Ev")]
 // was: __ZThn32_N3RBX5Stats14TypedStatsItemIdED0Ev
 pub fn stub_6e0278() -> ! {
-    todo!("0x6e0278 `non-virtual thunk to'RBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")
+    todo!("0x6e0278 non-virtual thunk toRBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")
 }
 
 // 0x6e03d8 — __ZN5boost10shared_ptrIN3RBX5Stats14TypedStatsItemIdEEEC2IS4_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -838,7 +838,7 @@ pub fn stub_6e0890() -> ! {
 #[doc(alias = "__ZThn32_N3RBX18WorkspaceStatsItemD1Ev")]
 // was: __ZThn32_N3RBX18WorkspaceStatsItemD1Ev
 pub fn stub_6e0964() -> ! {
-    todo!("0x6e0964 `non-virtual thunk to'RBX::WorkspaceStatsItem::~WorkspaceStatsItem()")
+    todo!("0x6e0964 non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")
 }
 
 // 0x6e09a4 — __ZThn32_N3RBX18WorkspaceStatsItemD0Ev
@@ -847,7 +847,7 @@ pub fn stub_6e0964() -> ! {
 #[doc(alias = "__ZThn32_N3RBX18WorkspaceStatsItemD0Ev")]
 // was: __ZThn32_N3RBX18WorkspaceStatsItemD0Ev
 pub fn stub_6e09a4() -> ! {
-    todo!("0x6e09a4 `non-virtual thunk to'RBX::WorkspaceStatsItem::~WorkspaceStatsItem()")
+    todo!("0x6e09a4 non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")
 }
 
 // 0x6e0a78 — __ZThn36_N3RBX18WorkspaceStatsItemD1Ev
@@ -856,7 +856,7 @@ pub fn stub_6e09a4() -> ! {
 #[doc(alias = "__ZThn36_N3RBX18WorkspaceStatsItemD1Ev")]
 // was: __ZThn36_N3RBX18WorkspaceStatsItemD1Ev
 pub fn stub_6e0a78() -> ! {
-    todo!("0x6e0a78 `non-virtual thunk to'RBX::WorkspaceStatsItem::~WorkspaceStatsItem()")
+    todo!("0x6e0a78 non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")
 }
 
 // 0x6e0ab8 — __ZThn36_N3RBX18WorkspaceStatsItemD0Ev
@@ -865,7 +865,7 @@ pub fn stub_6e0a78() -> ! {
 #[doc(alias = "__ZThn36_N3RBX18WorkspaceStatsItemD0Ev")]
 // was: __ZThn36_N3RBX18WorkspaceStatsItemD0Ev
 pub fn stub_6e0ab8() -> ! {
-    todo!("0x6e0ab8 `non-virtual thunk to'RBX::WorkspaceStatsItem::~WorkspaceStatsItem()")
+    todo!("0x6e0ab8 non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")
 }
 
 // 0x6e0b8c — __ZN5boost10shared_ptrIN3RBX18WorkspaceStatsItemEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_

@@ -1,5 +1,5 @@
 //! core shard ID — 100 core stubs EA-sorted, continuation after IC 0x4428d0 (EA-sorted ascending, next 100 uncovered).
-//! Source: `ida/export.json` filtered where demangled/mangled excludes Reflection|Instance|DataModel|Workspace|Ogre|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted, next 100 uncovered after 0x4428d0.
+//! Source: ida/export.json filtered where demangled/mangled excludes Reflection|Instance|DataModel|Workspace|Ogre|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted, next 100 uncovered after 0x4428d0.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
@@ -443,28 +443,28 @@ pub fn stub_4597fc() -> ! {
 }
 
 #[doc(alias = "global constructor keyed to_a_178")]
-// was: `global constructor keyed to_a_178
+// was: global constructor keyed to_a_178
 // 0x470bf8 — __GLOBAL__I_a_178
 pub fn stub_470bf8() -> ! {
     todo!("0x470bf8 __GLOBAL__I_a_178")
 }
 
 #[doc(alias = "global constructor keyed to_a_179")]
-// was: `global constructor keyed to_a_179
+// was: global constructor keyed to_a_179
 // 0x474e24 — __GLOBAL__I_a_179
 pub fn stub_474e24() -> ! {
     todo!("0x474e24 __GLOBAL__I_a_179")
 }
 
 #[doc(alias = "global constructor keyed to_a_180")]
-// was: `global constructor keyed to_a_180
+// was: global constructor keyed to_a_180
 // 0x476cd8 — __GLOBAL__I_a_180
 pub fn stub_476cd8() -> ! {
     todo!("0x476cd8 __GLOBAL__I_a_180")
 }
 
 #[doc(alias = "global constructor keyed to_a_181")]
-// was: `global constructor keyed to_a_181
+// was: global constructor keyed to_a_181
 // 0x47a54c — __GLOBAL__I_a_181
 pub fn stub_47a54c() -> ! {
     todo!("0x47a54c __GLOBAL__I_a_181")

@@ -29,7 +29,7 @@ pub fn stub_248bdc() -> ! {
 // type: void __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "global constructor keyed to_a_50")]
 pub fn stub_248be0() -> ! {
-    todo!("0x248be0 `global constructor keyed to_a_50")
+    todo!("0x248be0 global constructor keyed to_a_50")
 }
 
 // 0x248e38 — __ZNK3RBX13TaskScheduler3Job16averageDutyCycleEv
@@ -243,21 +243,21 @@ pub fn stub_24b070() -> ! {
 // type: void __fastcall __noreturn(_DWORD *)
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::rethrow(void)const")]
 pub fn stub_24b120() -> ! {
-    todo!("0x24b120 `virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::rethrow(void)const")
+    todo!("0x24b120 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::rethrow(void)const")
 }
 
 // 0x24b130 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
 pub fn stub_24b130() -> ! {
-    todo!("0x24b130 `virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")
+    todo!("0x24b130 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")
 }
 
 // 0x24b208 — __ZThn8_N5boost16exception_detail19error_info_injectorISt12length_errorED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()")]
 pub fn stub_24b208() -> ! {
-    todo!("0x24b208 `non-virtual thunk toboost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()")
+    todo!("0x24b208 non-virtual thunk toboost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()")
 }
 
 // 0x24b2c8 — __ZN3RBX13WindowAverageIddE6sampleINS_13FOnBeforeDropEEEvdRT_
@@ -358,7 +358,7 @@ pub fn stub_24beb0() -> ! {
 // 0x24bf64 — __GLOBAL__I_a_51
 #[doc(alias = "global constructor keyed to_a_51")]
 pub fn stub_24bf64() -> ! {
-    todo!("0x24bf64 `global constructor keyed to_a_51")
+    todo!("0x24bf64 global constructor keyed to_a_51")
 }
 
 // 0x24c02c — __ZN3RBX13TaskScheduler13endAllThreadsEv

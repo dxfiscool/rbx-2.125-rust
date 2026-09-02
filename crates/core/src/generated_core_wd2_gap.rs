@@ -1,5 +1,5 @@
 //! core wd2 gap — 120 core stubs EA-sorted asc RBX-free gap filler not yet in core.
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc, next 120 RBX-free not yet in any crate (21388 uncovered before -> 21268 after, batch 0x9668..0x1cbac).
+//! Source: ida/export.json (85545 funcs) EA-sorted asc, next 120 RBX-free not yet in any crate (21388 uncovered before -> 21268 after, batch 0x9668..0x1cbac).
 //! Filter: RBX-free (no RBX substring), rbx_core::SharedPtr not boost.
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.

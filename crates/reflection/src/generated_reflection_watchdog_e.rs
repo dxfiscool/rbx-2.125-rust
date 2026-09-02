@@ -108,7 +108,7 @@ pub fn stub_0x53b298() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::UDim2)>::slot,boost::function<void ()(RBX::UDim2)>,1,void ()(RBX::UDim2)>::call(RBX::UDim2)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX5UDim2EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")]
 pub fn stub_0x53b2b0() -> ! {
-    todo!("0x53b2b0 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::UDim2)>::slot,boost::function<void ()(RBX::UDim2)>,1,void ()(RBX::UDim2)>::call(RBX::UDim2)")
+    todo!("0x53b2b0 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::UDim2)>::slot,boost::function<void ()(RBX::UDim2)>,1,void ()(RBX::UDim2)>::call(RBX::UDim2)")
 }
 
 // 0x53b2c8 — __ZNK5boost9function1IvN3RBX5UDim2EEclES2_
@@ -374,28 +374,28 @@ pub fn stub_0x546e70() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 #[doc(alias = "__ZThn32_N3RBX10GuiServiceD1Ev")]
 pub fn stub_0x546f38() -> ! {
-    todo!("0x546f38 `non-virtual thunk to'RBX::GuiService::~GuiService()")
+    todo!("0x546f38 non-virtual thunk toRBX::GuiService::~GuiService()")
 }
 
 // 0x546f40 — __ZThn32_N3RBX10GuiServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 #[doc(alias = "__ZThn32_N3RBX10GuiServiceD0Ev")]
 pub fn stub_0x546f40() -> ! {
-    todo!("0x546f40 `non-virtual thunk to'RBX::GuiService::~GuiService()")
+    todo!("0x546f40 non-virtual thunk toRBX::GuiService::~GuiService()")
 }
 
 // 0x54700c — __ZThn36_N3RBX10GuiServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 #[doc(alias = "__ZThn36_N3RBX10GuiServiceD1Ev")]
 pub fn stub_0x54700c() -> ! {
-    todo!("0x54700c `non-virtual thunk to'RBX::GuiService::~GuiService()")
+    todo!("0x54700c non-virtual thunk toRBX::GuiService::~GuiService()")
 }
 
 // 0x547014 — __ZThn36_N3RBX10GuiServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 #[doc(alias = "__ZThn36_N3RBX10GuiServiceD0Ev")]
 pub fn stub_0x547014() -> ! {
-    todo!("0x547014 `non-virtual thunk to'RBX::GuiService::~GuiService()")
+    todo!("0x547014 non-virtual thunk toRBX::GuiService::~GuiService()")
 }
 
 // 0x5470b8 — __ZN3RBX10GuiServiceD2Ev

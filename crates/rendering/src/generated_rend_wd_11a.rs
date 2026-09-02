@@ -12,7 +12,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0x7b3fa0 — __GLOBAL__I_a_371
 #[doc(alias = "global constructor keyed to_a_371")]
 #[doc(alias = "__GLOBAL__I_a_371")]
-// was: `global constructor keyed to'_a_371
+// was: global constructor keyed to'_a_371
 pub fn stub_7b3fa0() -> ! {
     todo!("0x7b3fa0 global constructor keyed to_a_371")
 }
@@ -100,7 +100,7 @@ pub fn stub_7b438c() -> ! {
 // type: void __fastcall(RBX::HUMAN::Dead *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Dead::~Dead()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN4DeadD1Ev")]
-// was: `non-virtual thunk to'RBX::HUMAN::Dead::~Dead()
+// was: non-virtual thunk toRBX::HUMAN::Dead::~Dead()
 pub fn stub_7b4390() -> ! {
     todo!("0x7b4390 non-virtual thunk toRBX::HUMAN::Dead::~Dead()")
 }
@@ -110,7 +110,7 @@ pub fn stub_7b4390() -> ! {
 // type: void __fastcall(RBX::HUMAN::Dead *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Dead::~Dead()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN4DeadD0Ev")]
-// was: `non-virtual thunk to'RBX::HUMAN::Dead::~Dead()
+// was: non-virtual thunk toRBX::HUMAN::Dead::~Dead()
 pub fn stub_7b4398() -> ! {
     todo!("0x7b4398 non-virtual thunk toRBX::HUMAN::Dead::~Dead()")
 }
@@ -164,7 +164,7 @@ pub fn stub_7b450c() -> ! {
 // type: void __fastcall(RBX::HUMAN::FallingDown *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::FallingDown::~FallingDown()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN11FallingDownD1Ev")]
-// was: `non-virtual thunk to'RBX::HUMAN::FallingDown::~FallingDown()
+// was: non-virtual thunk toRBX::HUMAN::FallingDown::~FallingDown()
 pub fn stub_7b4510() -> ! {
     todo!("0x7b4510 non-virtual thunk toRBX::HUMAN::FallingDown::~FallingDown()")
 }
@@ -174,7 +174,7 @@ pub fn stub_7b4510() -> ! {
 // type: void __fastcall(RBX::HUMAN::FallingDown *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::FallingDown::~FallingDown()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN11FallingDownD0Ev")]
-// was: `non-virtual thunk to'RBX::HUMAN::FallingDown::~FallingDown()
+// was: non-virtual thunk toRBX::HUMAN::FallingDown::~FallingDown()
 pub fn stub_7b4518() -> ! {
     todo!("0x7b4518 non-virtual thunk toRBX::HUMAN::FallingDown::~FallingDown()")
 }
@@ -215,7 +215,7 @@ pub fn stub_7b46a4() -> ! {
 // 0x7b4784 — __GLOBAL__I_a_372
 #[doc(alias = "global constructor keyed to_a_372")]
 #[doc(alias = "__GLOBAL__I_a_372")]
-// was: `global constructor keyed to'_a_372
+// was: global constructor keyed to'_a_372
 pub fn stub_7b4784() -> ! {
     todo!("0x7b4784 global constructor keyed to_a_372")
 }
@@ -294,7 +294,7 @@ pub fn stub_7b4b1c() -> ! {
 // type: void __fastcall(RBX::HUMAN::Flying *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Flying::~Flying()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN6FlyingD1Ev")]
-// was: `non-virtual thunk to'RBX::HUMAN::Flying::~Flying()
+// was: non-virtual thunk toRBX::HUMAN::Flying::~Flying()
 pub fn stub_7b4b20() -> ! {
     todo!("0x7b4b20 non-virtual thunk toRBX::HUMAN::Flying::~Flying()")
 }
@@ -304,7 +304,7 @@ pub fn stub_7b4b20() -> ! {
 // type: void __fastcall(RBX::HUMAN::Flying *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Flying::~Flying()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN6FlyingD0Ev")]
-// was: `non-virtual thunk to'RBX::HUMAN::Flying::~Flying()
+// was: non-virtual thunk toRBX::HUMAN::Flying::~Flying()
 pub fn stub_7b4b28() -> ! {
     todo!("0x7b4b28 non-virtual thunk toRBX::HUMAN::Flying::~Flying()")
 }
@@ -329,7 +329,7 @@ pub fn stub_7b4bd0() -> ! {
 // 0x7b4cb0 — __GLOBAL__I_a_373
 #[doc(alias = "global constructor keyed to_a_373")]
 #[doc(alias = "__GLOBAL__I_a_373")]
-// was: `global constructor keyed to'_a_373
+// was: global constructor keyed to'_a_373
 pub fn stub_7b4cb0() -> ! {
     todo!("0x7b4cb0 global constructor keyed to_a_373")
 }
@@ -373,7 +373,7 @@ pub fn stub_7b515c() -> ! {
 // type: void __fastcall(RBX::HUMAN::Freefall *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Freefall::~Freefall()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN8FreefallD0Ev")]
-// was: `non-virtual thunk to'RBX::HUMAN::Freefall::~Freefall()
+// was: non-virtual thunk toRBX::HUMAN::Freefall::~Freefall()
 pub fn stub_7b5160() -> ! {
     todo!("0x7b5160 non-virtual thunk toRBX::HUMAN::Freefall::~Freefall()")
 }
@@ -392,7 +392,7 @@ pub fn stub_7b5168() -> ! {
 // type: void __fastcall(RBX::HUMAN::Freefall *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Freefall::~Freefall()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN8FreefallD1Ev")]
-// was: `non-virtual thunk to'RBX::HUMAN::Freefall::~Freefall()
+// was: non-virtual thunk toRBX::HUMAN::Freefall::~Freefall()
 pub fn stub_7b5388() -> ! {
     todo!("0x7b5388 non-virtual thunk toRBX::HUMAN::Freefall::~Freefall()")
 }
@@ -470,7 +470,7 @@ pub fn stub_7b584c() -> ! {
 // 0x7b592c — __GLOBAL__I_a_374
 #[doc(alias = "global constructor keyed to_a_374")]
 #[doc(alias = "__GLOBAL__I_a_374")]
-// was: `global constructor keyed to'_a_374
+// was: global constructor keyed to'_a_374
 pub fn stub_7b592c() -> ! {
     todo!("0x7b592c global constructor keyed to_a_374")
 }
@@ -542,7 +542,7 @@ pub fn stub_7b5d14() -> ! {
 // type: void __fastcall(RBX::HUMAN::GettingUp *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::GettingUp::~GettingUp()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN9GettingUpD1Ev")]
-// was: `non-virtual thunk to'RBX::HUMAN::GettingUp::~GettingUp()
+// was: non-virtual thunk toRBX::HUMAN::GettingUp::~GettingUp()
 pub fn stub_7b5d18() -> ! {
     todo!("0x7b5d18 non-virtual thunk toRBX::HUMAN::GettingUp::~GettingUp()")
 }
@@ -552,7 +552,7 @@ pub fn stub_7b5d18() -> ! {
 // type: void __fastcall(RBX::HUMAN::GettingUp *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::GettingUp::~GettingUp()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN9GettingUpD0Ev")]
-// was: `non-virtual thunk to'RBX::HUMAN::GettingUp::~GettingUp()
+// was: non-virtual thunk toRBX::HUMAN::GettingUp::~GettingUp()
 pub fn stub_7b5d20() -> ! {
     todo!("0x7b5d20 non-virtual thunk toRBX::HUMAN::GettingUp::~GettingUp()")
 }
@@ -577,7 +577,7 @@ pub fn stub_7b5dc8() -> ! {
 // 0x7b5ea8 — __GLOBAL__I_a_375
 #[doc(alias = "global constructor keyed to_a_375")]
 #[doc(alias = "__GLOBAL__I_a_375")]
-// was: `global constructor keyed to'_a_375
+// was: global constructor keyed to'_a_375
 pub fn stub_7b5ea8() -> ! {
     todo!("0x7b5ea8 global constructor keyed to_a_375")
 }
@@ -853,7 +853,7 @@ pub fn stub_7b84a8() -> ! {
 // type: void __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn32_N3RBX8HumanoidD0Ev")]
-// was: `non-virtual thunk to'RBX::Humanoid::~Humanoid()
+// was: non-virtual thunk toRBX::Humanoid::~Humanoid()
 pub fn stub_7b84b8() -> ! {
     todo!("0x7b84b8 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
@@ -863,7 +863,7 @@ pub fn stub_7b84b8() -> ! {
 // type: void __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn36_N3RBX8HumanoidD0Ev")]
-// was: `non-virtual thunk to'RBX::Humanoid::~Humanoid()
+// was: non-virtual thunk toRBX::Humanoid::~Humanoid()
 pub fn stub_7b84c0() -> ! {
     todo!("0x7b84c0 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
@@ -873,7 +873,7 @@ pub fn stub_7b84c0() -> ! {
 // type: void __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn92_N3RBX8HumanoidD0Ev")]
-// was: `non-virtual thunk to'RBX::Humanoid::~Humanoid()
+// was: non-virtual thunk toRBX::Humanoid::~Humanoid()
 pub fn stub_7b84c8() -> ! {
     todo!("0x7b84c8 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
@@ -883,7 +883,7 @@ pub fn stub_7b84c8() -> ! {
 // type: void __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn124_N3RBX8HumanoidD0Ev")]
-// was: `non-virtual thunk to'RBX::Humanoid::~Humanoid()
+// was: non-virtual thunk toRBX::Humanoid::~Humanoid()
 pub fn stub_7b84d0() -> ! {
     todo!("0x7b84d0 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
@@ -893,7 +893,7 @@ pub fn stub_7b84d0() -> ! {
 // type: void __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn244_N3RBX8HumanoidD0Ev")]
-// was: `non-virtual thunk to'RBX::Humanoid::~Humanoid()
+// was: non-virtual thunk toRBX::Humanoid::~Humanoid()
 pub fn stub_7b84d8() -> ! {
     todo!("0x7b84d8 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }

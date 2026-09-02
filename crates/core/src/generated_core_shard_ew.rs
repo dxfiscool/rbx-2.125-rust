@@ -1,5 +1,5 @@
 //! core shard EW — 100 core stubs EA-sorted, lowest uncovered 0xbeef64..0xc08fec (strict RBX|boost|std|rbx excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 after EV 0xbeeab8).
-//! Source: `ida/export.json` filtered where demangled contains `RBX::`|`boost::`|`std::`|`rbx::` excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 lowest uncovered after 0xbeeab8.
+//! Source: ida/export.json filtered where demangled contains RBX::|boost::|std::|rbx:: excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 lowest uncovered after 0xbeeab8.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
@@ -491,7 +491,7 @@ pub fn stub_c06020() -> ! {
 
 #[doc(alias = "RBX::anonymous namespace::indexFromChunkPos(RBX::SpatialRegion::Id const&)")]
 // 0xc060d0 — __ZN3RBX12_GLOBAL__N_117indexFromChunkPosERKNS_13SpatialRegion2IdE
-// was: RBX::`anonymous namespace::indexFromChunkPos(RBX::SpatialRegion::Id const&)
+// was: RBX::anonymous namespace::indexFromChunkPos(RBX::SpatialRegion::Id const&)
 pub fn stub_c060d0() -> ! {
     todo!("0xc060d0 __ZN3RBX12_GLOBAL__N_117indexFromChunkPosERKNS_13SpatialRegion2IdE")
 }

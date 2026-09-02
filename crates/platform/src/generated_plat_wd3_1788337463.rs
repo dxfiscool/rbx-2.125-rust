@@ -438,11 +438,11 @@ pub fn stub_3f0948() -> ! {
     todo!("0x3f0948 rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::~remote_signal()")
 }
 
-// 0x3f0a94 — `global constructor keyed to'_a_170
+// 0x3f0a94 — global constructor keyed to'_a_170
 // type: 
 #[doc(alias = "global constructor keyed to_a_170")]
 pub fn stub_3f0a94() -> ! {
-    todo!("0x3f0a94 `global constructor keyed to'_a_170")
+    todo!("0x3f0a94 global constructor keyed to'_a_170")
 }
 
 // 0x3f0e0c — RBX::ClickDetector::ClickDetector(void)

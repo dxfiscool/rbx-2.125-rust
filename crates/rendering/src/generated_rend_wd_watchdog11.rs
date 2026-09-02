@@ -115,17 +115,17 @@ pub fn stub_801120() -> ! {
 }
 
 // 0x801124 — __ZThn32_N3RBX11TestServiceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::TestService::~TestService()")]
+#[doc(alias = "non-virtual thunk toRBX::TestService::~TestService()")]
 #[doc(alias = "__ZThn32_N3RBX11TestServiceD0Ev")]
 pub fn stub_801124() -> ! {
-    todo!("0x801124 `non-virtual thunk to'RBX::TestService::~TestService()")
+    todo!("0x801124 non-virtual thunk toRBX::TestService::~TestService()")
 }
 
 // 0x80112c — __ZThn36_N3RBX11TestServiceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::TestService::~TestService()")]
+#[doc(alias = "non-virtual thunk toRBX::TestService::~TestService()")]
 #[doc(alias = "__ZThn36_N3RBX11TestServiceD0Ev")]
 pub fn stub_80112c() -> ! {
-    todo!("0x80112c `non-virtual thunk to'RBX::TestService::~TestService()")
+    todo!("0x80112c non-virtual thunk toRBX::TestService::~TestService()")
 }
 
 // 0x801134 — __ZN3RBX11TestServiceD2Ev
@@ -136,17 +136,17 @@ pub fn stub_801134() -> ! {
 }
 
 // 0x80143c — __ZThn32_N3RBX11TestServiceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::TestService::~TestService()")]
+#[doc(alias = "non-virtual thunk toRBX::TestService::~TestService()")]
 #[doc(alias = "__ZThn32_N3RBX11TestServiceD1Ev")]
 pub fn stub_80143c() -> ! {
-    todo!("0x80143c `non-virtual thunk to'RBX::TestService::~TestService()")
+    todo!("0x80143c non-virtual thunk toRBX::TestService::~TestService()")
 }
 
 // 0x801444 — __ZThn36_N3RBX11TestServiceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::TestService::~TestService()")]
+#[doc(alias = "non-virtual thunk toRBX::TestService::~TestService()")]
 #[doc(alias = "__ZThn36_N3RBX11TestServiceD1Ev")]
 pub fn stub_801444() -> ! {
-    todo!("0x801444 `non-virtual thunk to'RBX::TestService::~TestService()")
+    todo!("0x801444 non-virtual thunk toRBX::TestService::~TestService()")
 }
 
 // 0x80144c — __ZN3RBX11TestService6outputENS_11MessageTypeEN5boost10shared_ptrINS_8InstanceEEEiRKSs
@@ -536,17 +536,17 @@ pub fn stub_804e3c() -> ! {
 }
 
 // 0x804e4c — __ZThn32_N3RBX14FunctionalTestD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::FunctionalTest::~FunctionalTest()")]
+#[doc(alias = "non-virtual thunk toRBX::FunctionalTest::~FunctionalTest()")]
 #[doc(alias = "__ZThn32_N3RBX14FunctionalTestD1Ev")]
 pub fn stub_804e4c() -> ! {
-    todo!("0x804e4c `non-virtual thunk to'RBX::FunctionalTest::~FunctionalTest()")
+    todo!("0x804e4c non-virtual thunk toRBX::FunctionalTest::~FunctionalTest()")
 }
 
 // 0x804f54 — __ZThn32_N3RBX14FunctionalTestD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::FunctionalTest::~FunctionalTest()")]
+#[doc(alias = "non-virtual thunk toRBX::FunctionalTest::~FunctionalTest()")]
 #[doc(alias = "__ZThn32_N3RBX14FunctionalTestD0Ev")]
 pub fn stub_804f54() -> ! {
-    todo!("0x804f54 `non-virtual thunk to'RBX::FunctionalTest::~FunctionalTest()")
+    todo!("0x804f54 non-virtual thunk toRBX::FunctionalTest::~FunctionalTest()")
 }
 
 // 0x805074 — __ZThn32_NK3RBX14FactoryProductINS_14FunctionalTestENS_8InstanceELZNS_15sFunctionalTestEES2_E12getClassNameEv
@@ -556,17 +556,17 @@ pub fn stub_805074() -> ! {
 }
 
 // 0x805084 — __ZThn36_N3RBX14FunctionalTestD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::FunctionalTest::~FunctionalTest()")]
+#[doc(alias = "non-virtual thunk toRBX::FunctionalTest::~FunctionalTest()")]
 #[doc(alias = "__ZThn36_N3RBX14FunctionalTestD1Ev")]
 pub fn stub_805084() -> ! {
-    todo!("0x805084 `non-virtual thunk to'RBX::FunctionalTest::~FunctionalTest()")
+    todo!("0x805084 non-virtual thunk toRBX::FunctionalTest::~FunctionalTest()")
 }
 
 // 0x80518c — __ZThn36_N3RBX14FunctionalTestD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::FunctionalTest::~FunctionalTest()")]
+#[doc(alias = "non-virtual thunk toRBX::FunctionalTest::~FunctionalTest()")]
 #[doc(alias = "__ZThn36_N3RBX14FunctionalTestD0Ev")]
 pub fn stub_80518c() -> ! {
-    todo!("0x80518c `non-virtual thunk to'RBX::FunctionalTest::~FunctionalTest()")
+    todo!("0x80518c non-virtual thunk toRBX::FunctionalTest::~FunctionalTest()")
 }
 
 // 0x8052ac — __ZN3RBX14FactoryProductINS_14FunctionalTestENS_8InstanceELZNS_15sFunctionalTestEES2_E7CreatorD1Ev
@@ -794,10 +794,10 @@ pub fn stub_80643c() -> ! {
 }
 
 // 0x806470 — __ZThn4_N3rbx8callableINS_7signals6signalIFvbSsN5boost10shared_ptrIN3RBX8InstanceEEEiEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf4IvNS5_11TestServiceEbSsS7_iEENSB_5list5INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEENSL_ILi3EEENSL_ILi4EEEEEEELi4ES8_E4callEbSsS7_i
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::TestService,bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int>,boost::_bi::list5<boost::_bi::value<RBX::TestService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::call(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::TestService,bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int>,boost::_bi::list5<boost::_bi::value<RBX::TestService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::call(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvbSsN5boost10shared_ptrIN3RBX8InstanceEEEiEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf4IvNS5_11TestServiceEbSsS7_iEENSB_5list5INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEENSL_ILi3EEENSL_ILi4EEEEEEELi4ES8_E4callEbSsS7_i")]
 pub fn stub_806470() -> ! {
-    todo!("0x806470 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::TestService,bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int>,boost::_bi::list5<boost::_bi::value<RBX::TestService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::call(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)")
+    todo!("0x806470 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::TestService,bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int>,boost::_bi::list5<boost::_bi::value<RBX::TestService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::call(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)")
 }
 
 // 0x8064a4 — __ZN5boost3_bi5list5INS0_5valueIPN3RBX11TestServiceEEENS_3argILi1EEENS7_ILi2EEENS7_ILi3EEENS7_ILi4EEEEclINS_4_mfi3mf4IvS4_bSsNS_10shared_ptrINS3_8InstanceEEEiEENS0_5list4IRbRSsRSI_RiEEEEvNS0_4typeIvEERT_RT0_i

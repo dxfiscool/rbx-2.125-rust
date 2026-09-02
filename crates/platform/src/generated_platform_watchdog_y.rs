@@ -11,7 +11,7 @@ const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
 
-// 0x39b100 — __GLOBAL__I_a_156 — `global constructor keyed to'_a_156
+// 0x39b100 — __GLOBAL__I_a_156 — global constructor keyed to'_a_156
 #[doc(alias = "global constructor keyed to_a_156")]
 #[doc(alias = "__GLOBAL__I_a_156")]
 pub fn stub_39b100() -> ! {
@@ -200,7 +200,7 @@ pub fn stub_39c414() -> ! {
     todo!("0x39c414 __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEE12getClassNameEv")
 }
 
-// 0x39c43c — __ZThn32_N3RBX19AnimationTrackStateD1Ev — `non-virtual thunk to'RBX::AnimationTrackState::~AnimationTrackState()
+// 0x39c43c — __ZThn32_N3RBX19AnimationTrackStateD1Ev — non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()
 // type: void __fastcall(RBX::AnimationTrackState *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
 #[doc(alias = "__ZThn32_N3RBX19AnimationTrackStateD1Ev")]
@@ -208,7 +208,7 @@ pub fn stub_39c43c() -> ! {
     todo!("0x39c43c __ZThn32_N3RBX19AnimationTrackStateD1Ev")
 }
 
-// 0x39c444 — __ZThn32_N3RBX19AnimationTrackStateD0Ev — `non-virtual thunk to'RBX::AnimationTrackState::~AnimationTrackState()
+// 0x39c444 — __ZThn32_N3RBX19AnimationTrackStateD0Ev — non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()
 // type: void __fastcall(RBX::AnimationTrackState *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
 #[doc(alias = "__ZThn32_N3RBX19AnimationTrackStateD0Ev")]
@@ -222,7 +222,7 @@ pub fn stub_39c44c() -> ! {
     todo!("0x39c44c __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEE12getClassNameEv")
 }
 
-// 0x39c474 — __ZThn36_N3RBX19AnimationTrackStateD1Ev — `non-virtual thunk to'RBX::AnimationTrackState::~AnimationTrackState()
+// 0x39c474 — __ZThn36_N3RBX19AnimationTrackStateD1Ev — non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()
 // type: void __fastcall(RBX::AnimationTrackState *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
 #[doc(alias = "__ZThn36_N3RBX19AnimationTrackStateD1Ev")]
@@ -230,7 +230,7 @@ pub fn stub_39c474() -> ! {
     todo!("0x39c474 __ZThn36_N3RBX19AnimationTrackStateD1Ev")
 }
 
-// 0x39c47c — __ZThn36_N3RBX19AnimationTrackStateD0Ev — `non-virtual thunk to'RBX::AnimationTrackState::~AnimationTrackState()
+// 0x39c47c — __ZThn36_N3RBX19AnimationTrackStateD0Ev — non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()
 // type: void __fastcall(RBX::AnimationTrackState *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
 #[doc(alias = "__ZThn36_N3RBX19AnimationTrackStateD0Ev")]
@@ -466,7 +466,7 @@ pub fn stub_39dbc0() -> ! {
     todo!("0x39dbc0 __ZN3rbx8callableINS_7signals6signalIFvfffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf3IvN3RBX19AnimationTrackStateEfffEENS7_5list4INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEEEEEELi3ES3_E4callEfff")
 }
 
-// 0x39dbec — __ZThn4_N3rbx8callableINS_7signals6signalIFvfffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf3IvN3RBX19AnimationTrackStateEfffEENS7_5list4INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEEEEEELi3ES3_E4callEfff — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::AnimationTrackState,float,float,float>,boost::_bi::list4<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(float,float,float)>::call(float,float,float)
+// 0x39dbec — __ZThn4_N3rbx8callableINS_7signals6signalIFvfffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf3IvN3RBX19AnimationTrackStateEfffEENS7_5list4INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEEEEEELi3ES3_E4callEfff — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::AnimationTrackState,float,float,float>,boost::_bi::list4<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(float,float,float)>::call(float,float,float)
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::AnimationTrackState,float,float,float>,boost::_bi::list4<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(float,float,float)>::call(float,float,float)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvfffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf3IvN3RBX19AnimationTrackStateEfffEENS7_5list4INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEEEEEELi3ES3_E4callEfff")]
@@ -569,7 +569,7 @@ pub fn stub_39e1ac() -> ! {
     todo!("0x39e1ac __ZN3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19AnimationTrackStateEffEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_E4callEff")
 }
 
-// 0x39e1d4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19AnimationTrackStateEffEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_E4callEff — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::AnimationTrackState,float,float>,boost::_bi::list3<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>>>,2,void ()(float,float)>::call(float,float)
+// 0x39e1d4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19AnimationTrackStateEffEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_E4callEff — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::AnimationTrackState,float,float>,boost::_bi::list3<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>>>,2,void ()(float,float)>::call(float,float)
 // type: int __fastcall(int, int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::AnimationTrackState,float,float>,boost::_bi::list3<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>>>,2,void ()(float,float)>::call(float,float)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19AnimationTrackStateEffEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_E4callEff")]
@@ -665,7 +665,7 @@ pub fn stub_39e7e8() -> ! {
     todo!("0x39e7e8 __ZN3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_E4callEffff")
 }
 
-// 0x39e824 — __ZThn4_N3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_E4callEffff — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(float,float,float,float)>::call(float,float,float,float)
+// 0x39e824 — __ZThn4_N3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_E4callEffff — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(float,float,float,float)>::call(float,float,float,float)
 // type: int __fastcall(int, int, int, int, float)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::AnimationTrackState,float,float,float,float>,boost::_bi::list5<boost::_bi::value<RBX::AnimationTrackState*>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(float,float,float,float)>::call(float,float,float,float)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX19AnimationTrackStateEffffEENS7_5list5INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEENSI_ILi3EEENSI_ILi4EEEEEEELi4ES3_E4callEffff")]

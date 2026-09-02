@@ -1,5 +1,5 @@
 //! core wd_watchdog9 — 120 core stubs EA-sorted asc global gap filler distinct not yet in any crate after wd_watchdog7.
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc, next 120 uncovered distinct not yet in any crate after 0x8c1de4 (watchdog7 max).
+//! Source: ida/export.json (85545 funcs) EA-sorted asc, next 120 uncovered distinct not yet in any crate after 0x8c1de4 (watchdog7 max).
 //! Filter: global gap filler EA-sorted asc distinct not yet in any crate, 30021 uncovered before -> 29901 after; range 0x8c1f14..0x8d049c EA-sorted asc.
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
@@ -29,7 +29,7 @@ pub fn stub_0x8c2030() -> ! {
     todo!("0x8c2030 __ZN3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost8functionIS3_EELi2ES3_E4callEff")
 }
 
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float)>::slot,boost::function<void ()(float,float)>,2,void ()(float,float)>::call(float,float)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float)>::slot,boost::function<void ()(float,float)>,2,void ()(float,float)>::call(float,float)")]
 // 0x8c2038 — __ZThn4_N3rbx8callableINS_7signals6signalIFvffEE4slotEN5boost8functionIS3_EELi2ES3_E4callEff
 // type: int __fastcall(int)
 pub fn stub_0x8c2038() -> ! {
@@ -133,7 +133,7 @@ pub fn stub_0x8c5140() -> ! {
     todo!("0x8c5140 __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost8functionIS3_EELi0ES3_E4callEv")
 }
 
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::function<void ()(void)>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::function<void ()(void)>,0,void ()(void)>::call(void)")]
 // 0x8c5148 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost8functionIS3_EELi0ES3_E4callEv
 // type: int __fastcall(int)
 pub fn stub_0x8c5148() -> ! {
@@ -397,14 +397,14 @@ pub fn stub_0x8c9120() -> ! {
     todo!("0x8c9120 __ZN3RBX9FWServiceD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::FWService::~FWService()")]
+#[doc(alias = "non-virtual thunk toRBX::FWService::~FWService()")]
 // 0x8c9124 — __ZThn32_N3RBX9FWServiceD0Ev
 // type: void __fastcall(RBX::FWService *__hidden this)
 pub fn stub_0x8c9124() -> ! {
     todo!("0x8c9124 __ZThn32_N3RBX9FWServiceD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::FWService::~FWService()")]
+#[doc(alias = "non-virtual thunk toRBX::FWService::~FWService()")]
 // 0x8c912c — __ZThn36_N3RBX9FWServiceD0Ev
 // type: void __fastcall(RBX::FWService *__hidden this)
 pub fn stub_0x8c912c() -> ! {
@@ -418,14 +418,14 @@ pub fn stub_0x8c9134() -> ! {
     todo!("0x8c9134 __ZN3RBX9FWServiceD2Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::FWService::~FWService()")]
+#[doc(alias = "non-virtual thunk toRBX::FWService::~FWService()")]
 // 0x8c9210 — __ZThn32_N3RBX9FWServiceD1Ev
 // type: void __fastcall(RBX::FWService *__hidden this)
 pub fn stub_0x8c9210() -> ! {
     todo!("0x8c9210 __ZThn32_N3RBX9FWServiceD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::FWService::~FWService()")]
+#[doc(alias = "non-virtual thunk toRBX::FWService::~FWService()")]
 // 0x8c9218 — __ZThn36_N3RBX9FWServiceD1Ev
 // type: void __fastcall(RBX::FWService *__hidden this)
 pub fn stub_0x8c9218() -> ! {
@@ -439,7 +439,7 @@ pub fn stub_0x8c9220() -> ! {
     todo!("0x8c9220 __ZN3RBX9FWService18getUniqueSharedPtrEv")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::FWService::getUniqueSharedPtr(void)")]
+#[doc(alias = "non-virtual thunk toRBX::FWService::getUniqueSharedPtr(void)")]
 // 0x8c92ec — __ZThn96_N3RBX9FWService18getUniqueSharedPtrEv
 // type: void __fastcall(RBX::FWService *this)
 pub fn stub_0x8c92ec() -> ! {
@@ -677,14 +677,14 @@ pub fn stub_0x8ce548() -> ! {
     todo!("0x8ce548 __ZNK3RBX14FactoryProductINS_18MarketplaceServiceENS_8InstanceELZNS_19sMarketplaceServiceEES2_E12getClassNameEv")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::MarketplaceService::~MarketplaceService()")]
+#[doc(alias = "non-virtual thunk toRBX::MarketplaceService::~MarketplaceService()")]
 // 0x8ce55c — __ZThn32_N3RBX18MarketplaceServiceD1Ev
 // type: void __fastcall(RBX::MarketplaceService *__hidden this)
 pub fn stub_0x8ce55c() -> ! {
     todo!("0x8ce55c __ZThn32_N3RBX18MarketplaceServiceD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::MarketplaceService::~MarketplaceService()")]
+#[doc(alias = "non-virtual thunk toRBX::MarketplaceService::~MarketplaceService()")]
 // 0x8ce564 — __ZThn32_N3RBX18MarketplaceServiceD0Ev
 // type: void __fastcall(RBX::MarketplaceService *__hidden this)
 pub fn stub_0x8ce564() -> ! {
@@ -698,14 +698,14 @@ pub fn stub_0x8ce608() -> ! {
     todo!("0x8ce608 __ZThn32_NK3RBX14FactoryProductINS_18MarketplaceServiceENS_8InstanceELZNS_19sMarketplaceServiceEES2_E12getClassNameEv")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::MarketplaceService::~MarketplaceService()")]
+#[doc(alias = "non-virtual thunk toRBX::MarketplaceService::~MarketplaceService()")]
 // 0x8ce618 — __ZThn36_N3RBX18MarketplaceServiceD1Ev
 // type: void __fastcall(RBX::MarketplaceService *__hidden this)
 pub fn stub_0x8ce618() -> ! {
     todo!("0x8ce618 __ZThn36_N3RBX18MarketplaceServiceD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::MarketplaceService::~MarketplaceService()")]
+#[doc(alias = "non-virtual thunk toRBX::MarketplaceService::~MarketplaceService()")]
 // 0x8ce620 — __ZThn36_N3RBX18MarketplaceServiceD0Ev
 // type: void __fastcall(RBX::MarketplaceService *__hidden this)
 pub fn stub_0x8ce620() -> ! {

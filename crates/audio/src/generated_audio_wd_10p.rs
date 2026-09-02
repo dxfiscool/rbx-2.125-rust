@@ -319,7 +319,7 @@ pub fn stub_5e62a8() -> ! {
 }
 
 // 0x5e6360 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED1Ev
-// demangled: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()
+// demangled: virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED1Ev")]
 pub fn stub_5e6360() -> ! {
@@ -516,7 +516,7 @@ pub fn stub_5e71c8() -> ! {
 }
 
 // 0x5e7280 — __ZThn8_N5boost16exception_detail19error_info_injectorINS_17bad_function_callEED1Ev
-// demangled: `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()
+// demangled: non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()")]
 #[doc(alias = "__ZThn8_N5boost16exception_detail19error_info_injectorINS_17bad_function_callEED1Ev")]
 pub fn stub_5e7280() -> ! {
@@ -524,7 +524,7 @@ pub fn stub_5e7280() -> ! {
 }
 
 // 0x5e7288 — __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED1Ev
-// demangled: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()
+// demangled: non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
 #[doc(alias = "__ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED1Ev")]
 pub fn stub_5e7288() -> ! {
@@ -532,7 +532,7 @@ pub fn stub_5e7288() -> ! {
 }
 
 // 0x5e7290 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED1Ev
-// demangled: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()
+// demangled: virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED1Ev")]
 pub fn stub_5e7290() -> ! {
@@ -548,7 +548,7 @@ pub fn stub_5e72a0() -> ! {
 }
 
 // 0x5e7360 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEE5cloneEv
-// demangled: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::clone(void)const
+// demangled: virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::clone(void)const
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::clone(void)const")]
 #[doc(alias = "__ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEE5cloneEv")]
 pub fn stub_5e7360() -> ! {

@@ -664,21 +664,21 @@ pub fn stub_4b0e94() -> ! {
 }
 
 // 0x4b0ea4 — __ZThn32_N3RBX11CustomEventD1Ev
-// demangled: `non-virtual thunk toRBX::CustomEvent::~CustomEvent()
+// demangled: non-virtual thunk toRBX::CustomEvent::~CustomEvent()
 // type: void __fastcall(RBX::CustomEvent *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CustomEvent::~CustomEvent()")]
 #[doc(alias = "__ZThn32_N3RBX11CustomEventD1Ev")]
 pub fn stub_4b0ea4() -> ! {
-    todo!("0x4b0ea4 `non-virtual thunk toRBX::CustomEvent::~CustomEvent()")
+    todo!("0x4b0ea4 non-virtual thunk toRBX::CustomEvent::~CustomEvent()")
 }
 
 // 0x4b0eac — __ZThn32_N3RBX11CustomEventD0Ev
-// demangled: `non-virtual thunk toRBX::CustomEvent::~CustomEvent()
+// demangled: non-virtual thunk toRBX::CustomEvent::~CustomEvent()
 // type: void __fastcall(RBX::CustomEvent *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CustomEvent::~CustomEvent()")]
 #[doc(alias = "__ZThn32_N3RBX11CustomEventD0Ev")]
 pub fn stub_4b0eac() -> ! {
-    todo!("0x4b0eac `non-virtual thunk toRBX::CustomEvent::~CustomEvent()")
+    todo!("0x4b0eac non-virtual thunk toRBX::CustomEvent::~CustomEvent()")
 }
 
 // 0x4b0f50 — __ZThn32_NK3RBX14FactoryProductINS_11CustomEventENS_8InstanceELZNS_12sCustomEventEES2_E12getClassNameEv
@@ -689,21 +689,21 @@ pub fn stub_4b0f50() -> ! {
 }
 
 // 0x4b0f60 — __ZThn36_N3RBX11CustomEventD1Ev
-// demangled: `non-virtual thunk toRBX::CustomEvent::~CustomEvent()
+// demangled: non-virtual thunk toRBX::CustomEvent::~CustomEvent()
 // type: void __fastcall(RBX::CustomEvent *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CustomEvent::~CustomEvent()")]
 #[doc(alias = "__ZThn36_N3RBX11CustomEventD1Ev")]
 pub fn stub_4b0f60() -> ! {
-    todo!("0x4b0f60 `non-virtual thunk toRBX::CustomEvent::~CustomEvent()")
+    todo!("0x4b0f60 non-virtual thunk toRBX::CustomEvent::~CustomEvent()")
 }
 
 // 0x4b0f68 — __ZThn36_N3RBX11CustomEventD0Ev
-// demangled: `non-virtual thunk toRBX::CustomEvent::~CustomEvent()
+// demangled: non-virtual thunk toRBX::CustomEvent::~CustomEvent()
 // type: void __fastcall(RBX::CustomEvent *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CustomEvent::~CustomEvent()")]
 #[doc(alias = "__ZThn36_N3RBX11CustomEventD0Ev")]
 pub fn stub_4b0f68() -> ! {
-    todo!("0x4b0f68 `non-virtual thunk toRBX::CustomEvent::~CustomEvent()")
+    todo!("0x4b0f68 non-virtual thunk toRBX::CustomEvent::~CustomEvent()")
 }
 
 // 0x4b100c — __ZN3RBX11CustomEventD2Ev

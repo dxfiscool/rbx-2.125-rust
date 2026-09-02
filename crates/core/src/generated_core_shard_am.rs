@@ -1,5 +1,5 @@
 //! core shard AM — 120 core stubs EA-sorted ascending earliest gap after 0x9b2c (0x9b2c..0x1637c).
-//! Source: `ida/export.json` filtered where demangled/mangled contains RBX::|boost::|std:: excluding Reflection|Instance|DataModel|Ogre|RakNet|Lua, EA-sorted, next 120 uncovered (lowest EA first).
+//! Source: ida/export.json filtered where demangled/mangled contains RBX::|boost::|std:: excluding Reflection|Instance|DataModel|Ogre|RakNet|Lua, EA-sorted, next 120 uncovered (lowest EA first).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]

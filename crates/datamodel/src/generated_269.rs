@@ -2,7 +2,7 @@
 // Filter: RBX::Instance|RBX::DataModel|Workspace (10215) complete — fallback global gap filler lowest uncovered EA asc not yet in datamodel
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x278c4c..0x2811cc | datamodel distinct 31164->31264 global uncovered 54381->54281, lowest gap EA-sorted asc
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias where needed
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -563,7 +563,7 @@ pub fn stub_0x27b4b4() -> ! {
 
 // 0x27b50c — __GLOBAL__I_a_65
 // type: void
-// was: `global constructor keyed to'_a_65
+// was: global constructor keyed to'_a_65
 #[doc(alias = "global constructor keyed to_a_65")]
 pub fn stub_0x27b50c() -> ! {
     todo!("0x27b50c global constructor keyed to_a_65")
@@ -662,7 +662,7 @@ pub fn stub_0x27bea8() -> ! {
 
 // 0x27bef0 — __GLOBAL__I_a_66
 // type: void
-// was: `global constructor keyed to'_a_66
+// was: global constructor keyed to'_a_66
 #[doc(alias = "global constructor keyed to_a_66")]
 pub fn stub_0x27bef0() -> ! {
     todo!("0x27bef0 global constructor keyed to_a_66")

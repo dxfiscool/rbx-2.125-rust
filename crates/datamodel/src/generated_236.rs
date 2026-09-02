@@ -2,7 +2,7 @@
 // Filter: RBX::Instance|DataModel|Workspace strict EA-sorted asc next 100 not yet in datamodel nor any crate
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x9771d8..0xa20ee4 | strict 10215 total, dm missing before 2505, not-in-any before 2234, after 2134
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; `'` stripped from alias; weak_ptr -> rbx_core::Weak
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias; weak_ptr -> rbx_core::Weak
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

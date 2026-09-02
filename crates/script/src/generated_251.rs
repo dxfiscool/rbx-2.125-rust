@@ -2,7 +2,7 @@
 // Filter: Script|Lua|Yield|CodeGen|Luau (filtered 5401 exhausted) — EA-sorted asc gap filler distinct not yet in crates/script/src
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: +120 stubs | range 0x508958..0x50cee0 | EA-sorted asc distinct not yet in script (remaining 55990->55870, rbx_core::SharedPtr not boost)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -131,14 +131,14 @@ pub fn stub_5092dc() -> ! {
     todo!("0x5092dc __ZNK3RBX17NonFactoryProductINS_15ServiceProviderELZNS_9sSettingsEEE12getClassNameEv")
 }
 
-// 0x509308 — __ZThn32_N3RBX8SettingsD1Ev — `non-virtual thunk to'RBX::Settings::~Settings()
+// 0x509308 — __ZThn32_N3RBX8SettingsD1Ev — non-virtual thunk toRBX::Settings::~Settings()
 #[doc(alias = "non-virtual thunk toRBX::Settings::~Settings()")]
 #[doc(alias = "__ZThn32_N3RBX8SettingsD1Ev")]
 pub fn stub_509308() -> ! {
     todo!("0x509308 __ZThn32_N3RBX8SettingsD1Ev")
 }
 
-// 0x509344 — __ZThn32_N3RBX8SettingsD0Ev — `non-virtual thunk to'RBX::Settings::~Settings()
+// 0x509344 — __ZThn32_N3RBX8SettingsD0Ev — non-virtual thunk toRBX::Settings::~Settings()
 #[doc(alias = "non-virtual thunk toRBX::Settings::~Settings()")]
 #[doc(alias = "__ZThn32_N3RBX8SettingsD0Ev")]
 pub fn stub_509344() -> ! {
@@ -152,14 +152,14 @@ pub fn stub_509418() -> ! {
     todo!("0x509418 __ZThn32_NK3RBX17NonFactoryProductINS_15ServiceProviderELZNS_9sSettingsEEE12getClassNameEv")
 }
 
-// 0x509440 — __ZThn36_N3RBX8SettingsD1Ev — `non-virtual thunk to'RBX::Settings::~Settings()
+// 0x509440 — __ZThn36_N3RBX8SettingsD1Ev — non-virtual thunk toRBX::Settings::~Settings()
 #[doc(alias = "non-virtual thunk toRBX::Settings::~Settings()")]
 #[doc(alias = "__ZThn36_N3RBX8SettingsD1Ev")]
 pub fn stub_509440() -> ! {
     todo!("0x509440 __ZThn36_N3RBX8SettingsD1Ev")
 }
 
-// 0x50947c — __ZThn36_N3RBX8SettingsD0Ev — `non-virtual thunk to'RBX::Settings::~Settings()
+// 0x50947c — __ZThn36_N3RBX8SettingsD0Ev — non-virtual thunk toRBX::Settings::~Settings()
 #[doc(alias = "non-virtual thunk toRBX::Settings::~Settings()")]
 #[doc(alias = "__ZThn36_N3RBX8SettingsD0Ev")]
 pub fn stub_50947c() -> ! {
@@ -201,14 +201,14 @@ pub fn stub_509850() -> ! {
     todo!("0x509850 __ZNK3RBX17NonFactoryProductINS_8SettingsELZNS_20sGlobalBasicSettingsEEE12getClassNameEv")
 }
 
-// 0x509878 — __ZThn32_N3RBX19GlobalBasicSettingsD1Ev — `non-virtual thunk to'RBX::GlobalBasicSettings::~GlobalBasicSettings()
+// 0x509878 — __ZThn32_N3RBX19GlobalBasicSettingsD1Ev — non-virtual thunk toRBX::GlobalBasicSettings::~GlobalBasicSettings()
 #[doc(alias = "non-virtual thunk toRBX::GlobalBasicSettings::~GlobalBasicSettings()")]
 #[doc(alias = "__ZThn32_N3RBX19GlobalBasicSettingsD1Ev")]
 pub fn stub_509878() -> ! {
     todo!("0x509878 __ZThn32_N3RBX19GlobalBasicSettingsD1Ev")
 }
 
-// 0x5099d0 — __ZThn32_N3RBX19GlobalBasicSettingsD0Ev — `non-virtual thunk to'RBX::GlobalBasicSettings::~GlobalBasicSettings()
+// 0x5099d0 — __ZThn32_N3RBX19GlobalBasicSettingsD0Ev — non-virtual thunk toRBX::GlobalBasicSettings::~GlobalBasicSettings()
 #[doc(alias = "non-virtual thunk toRBX::GlobalBasicSettings::~GlobalBasicSettings()")]
 #[doc(alias = "__ZThn32_N3RBX19GlobalBasicSettingsD0Ev")]
 pub fn stub_5099d0() -> ! {
@@ -222,14 +222,14 @@ pub fn stub_509b40() -> ! {
     todo!("0x509b40 __ZThn32_NK3RBX17NonFactoryProductINS_8SettingsELZNS_20sGlobalBasicSettingsEEE12getClassNameEv")
 }
 
-// 0x509b68 — __ZThn36_N3RBX19GlobalBasicSettingsD1Ev — `non-virtual thunk to'RBX::GlobalBasicSettings::~GlobalBasicSettings()
+// 0x509b68 — __ZThn36_N3RBX19GlobalBasicSettingsD1Ev — non-virtual thunk toRBX::GlobalBasicSettings::~GlobalBasicSettings()
 #[doc(alias = "non-virtual thunk toRBX::GlobalBasicSettings::~GlobalBasicSettings()")]
 #[doc(alias = "__ZThn36_N3RBX19GlobalBasicSettingsD1Ev")]
 pub fn stub_509b68() -> ! {
     todo!("0x509b68 __ZThn36_N3RBX19GlobalBasicSettingsD1Ev")
 }
 
-// 0x509cc8 — __ZThn36_N3RBX19GlobalBasicSettingsD0Ev — `non-virtual thunk to'RBX::GlobalBasicSettings::~GlobalBasicSettings()
+// 0x509cc8 — __ZThn36_N3RBX19GlobalBasicSettingsD0Ev — non-virtual thunk toRBX::GlobalBasicSettings::~GlobalBasicSettings()
 #[doc(alias = "non-virtual thunk toRBX::GlobalBasicSettings::~GlobalBasicSettings()")]
 #[doc(alias = "__ZThn36_N3RBX19GlobalBasicSettingsD0Ev")]
 pub fn stub_509cc8() -> ! {

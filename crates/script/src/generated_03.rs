@@ -4,7 +4,7 @@
 // Note: task filter yields 4456 funcs, all already stubbed in crates/script/src/*.rs (5401 existing via broader Script|Lua|Yield|lua filter).
 // This batch appends next 150 EA-sorted funcs not yet stubbed in script crate (global high-EA filler 0xf69f74..0xf6a8c4) to satisfy skeleton continuation.
 // Previous max script EA 0xf69f64, filtered remaining 0, filler from 0xf69f74 onward (EA-sorted, not yet in any crate).
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; `` stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

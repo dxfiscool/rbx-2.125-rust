@@ -21,7 +21,7 @@ pub fn stub_0x3beb14() -> ! {
 // 0x3beb38 — __GLOBAL__I_a_162
 #[doc(alias = "__GLOBAL__I_a_162")]
 pub fn stub_0x3beb38() -> ! {
-    todo!("0x3beb38 `global constructor keyed to'_a_162")
+    todo!("0x3beb38 global constructor keyed to'_a_162")
 }
 
 // 0x3befe4 — __ZNK3RBX9BevelMesh8getBevelEv
@@ -104,14 +104,14 @@ pub fn stub_0x3bf254() -> ! {
 // type: void __fastcall(RBX::BevelMesh *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX9BevelMeshD1Ev")]
 pub fn stub_0x3bf27c() -> ! {
-    todo!("0x3bf27c `non-virtual thunk to'RBX::BevelMesh::~BevelMesh()")
+    todo!("0x3bf27c non-virtual thunk toRBX::BevelMesh::~BevelMesh()")
 }
 
 // 0x3bf284 — __ZThn32_N3RBX9BevelMeshD0Ev
 // type: void __fastcall(RBX::BevelMesh *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX9BevelMeshD0Ev")]
 pub fn stub_0x3bf284() -> ! {
-    todo!("0x3bf284 `non-virtual thunk to'RBX::BevelMesh::~BevelMesh()")
+    todo!("0x3bf284 non-virtual thunk toRBX::BevelMesh::~BevelMesh()")
 }
 
 // 0x3bf328 — __ZThn32_NK3RBX17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEE12getClassNameEv
@@ -124,14 +124,14 @@ pub fn stub_0x3bf328() -> ! {
 // type: void __fastcall(RBX::BevelMesh *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX9BevelMeshD1Ev")]
 pub fn stub_0x3bf350() -> ! {
-    todo!("0x3bf350 `non-virtual thunk to'RBX::BevelMesh::~BevelMesh()")
+    todo!("0x3bf350 non-virtual thunk toRBX::BevelMesh::~BevelMesh()")
 }
 
 // 0x3bf358 — __ZThn36_N3RBX9BevelMeshD0Ev
 // type: void __fastcall(RBX::BevelMesh *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX9BevelMeshD0Ev")]
 pub fn stub_0x3bf358() -> ! {
-    todo!("0x3bf358 `non-virtual thunk to'RBX::BevelMesh::~BevelMesh()")
+    todo!("0x3bf358 non-virtual thunk toRBX::BevelMesh::~BevelMesh()")
 }
 
 // 0x3bf3fc — __ZN3RBX4Name13callDoDeclareILZNS_10sBevelMeshEEEEvv
@@ -234,7 +234,7 @@ pub fn stub_0x3bf844() -> ! {
 // 0x3bf868 — __GLOBAL__I_a_163
 #[doc(alias = "__GLOBAL__I_a_163")]
 pub fn stub_0x3bf868() -> ! {
-    todo!("0x3bf868 `global constructor keyed to'_a_163")
+    todo!("0x3bf868 global constructor keyed to'_a_163")
 }
 
 // 0x3bfaf4 — __ZN3RBX12BillboardGui10setAdorneeEPNS_8InstanceE
@@ -374,7 +374,7 @@ pub fn stub_0x3c0474() -> ! {
 // type: int __fastcall(int result)
 #[doc(alias = "__ZThn168_N3RBX12BillboardGui11onHeartbeatERKNS_9HeartbeatE")]
 pub fn stub_0x3c048c() -> ! {
-    todo!("0x3c048c `non-virtual thunk to'RBX::BillboardGui::onHeartbeat(RBX::Heartbeat const&)")
+    todo!("0x3c048c non-virtual thunk toRBX::BillboardGui::onHeartbeat(RBX::Heartbeat const&)")
 }
 
 // 0x3c04a8 — __ZNK3RBX12BillboardGui25shouldRender3dSortedAdornEv
@@ -395,7 +395,7 @@ pub fn stub_0x3c057c() -> ! {
 // type: bool __fastcall(RBX::BillboardGui *this)
 #[doc(alias = "__ZThn96_NK3RBX12BillboardGui25shouldRender3dSortedAdornEv")]
 pub fn stub_0x3c066c() -> ! {
-    todo!("0x3c066c `non-virtual thunk to'RBX::BillboardGui::shouldRender3dSortedAdorn(void)const")
+    todo!("0x3c066c non-virtual thunk toRBX::BillboardGui::shouldRender3dSortedAdorn(void)const")
 }
 
 // 0x3c0678 — __ZNK3RBX12BillboardGui13getModelAdornEv
@@ -423,7 +423,7 @@ pub fn stub_0x3c0850() -> ! {
 // type: void __fastcall(RBX::BillboardGui *this, int)
 #[doc(alias = "__ZThn96_NK3RBX12BillboardGui22render3dSortedPositionEv")]
 pub fn stub_0x3c0a28() -> ! {
-    todo!("0x3c0a28 `non-virtual thunk to'RBX::BillboardGui::render3dSortedPosition(void)const")
+    todo!("0x3c0a28 non-virtual thunk toRBX::BillboardGui::render3dSortedPosition(void)const")
 }
 
 // 0x3c0a34 — __ZN3RBX12BillboardGui19render3dSortedAdornEPNS_5AdornE
@@ -437,7 +437,7 @@ pub fn stub_0x3c0a34() -> ! {
 // type: void __fastcall(RBX::BillboardGui *this, RBX::Adorn *)
 #[doc(alias = "__ZThn96_N3RBX12BillboardGui19render3dSortedAdornEPNS_5AdornE")]
 pub fn stub_0x3c0e90() -> ! {
-    todo!("0x3c0e90 `non-virtual thunk to'RBX::BillboardGui::render3dSortedAdorn(RBX::Adorn *)")
+    todo!("0x3c0e90 non-virtual thunk toRBX::BillboardGui::render3dSortedAdorn(RBX::Adorn *)")
 }
 
 // 0x3c0e98 — __ZN3RBX12BillboardGui7processERKNS_8GuiEventE
@@ -451,7 +451,7 @@ pub fn stub_0x3c0e98() -> ! {
 // type: unsigned int __fastcall(_QWORD *, int, _DWORD *, int)
 #[doc(alias = "__ZThn92_N3RBX12BillboardGui7processERKNS_8GuiEventE")]
 pub fn stub_0x3c0f34() -> ! {
-    todo!("0x3c0f34 `non-virtual thunk to'RBX::BillboardGui::process(RBX::GuiEvent const&)")
+    todo!("0x3c0f34 non-virtual thunk toRBX::BillboardGui::process(RBX::GuiEvent const&)")
 }
 
 // 0x3c0f40 — __ZN3RBX12BillboardGui17onAncestorChangedERKNS_15AncestorChangedE
@@ -583,14 +583,14 @@ pub fn stub_0x3c12b8() -> ! {
 // type: void __fastcall(RBX::BillboardGui *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX12BillboardGuiD1Ev")]
 pub fn stub_0x3c12bc() -> ! {
-    todo!("0x3c12bc `non-virtual thunk to'RBX::BillboardGui::~BillboardGui()")
+    todo!("0x3c12bc non-virtual thunk toRBX::BillboardGui::~BillboardGui()")
 }
 
 // 0x3c12c4 — __ZThn32_N3RBX12BillboardGuiD0Ev
 // type: void __fastcall(RBX::BillboardGui *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX12BillboardGuiD0Ev")]
 pub fn stub_0x3c12c4() -> ! {
-    todo!("0x3c12c4 `non-virtual thunk to'RBX::BillboardGui::~BillboardGui()")
+    todo!("0x3c12c4 non-virtual thunk toRBX::BillboardGui::~BillboardGui()")
 }
 
 // 0x3c1368 — __ZThn32_NK3RBX14FactoryProductINS_12BillboardGuiENS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEE12getClassNameEv
@@ -604,35 +604,35 @@ pub fn stub_0x3c1368() -> ! {
 // type: void __fastcall(RBX::BillboardGui *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX12BillboardGuiD1Ev")]
 pub fn stub_0x3c1378() -> ! {
-    todo!("0x3c1378 `non-virtual thunk to'RBX::BillboardGui::~BillboardGui()")
+    todo!("0x3c1378 non-virtual thunk toRBX::BillboardGui::~BillboardGui()")
 }
 
 // 0x3c1380 — __ZThn36_N3RBX12BillboardGuiD0Ev
 // type: void __fastcall(RBX::BillboardGui *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX12BillboardGuiD0Ev")]
 pub fn stub_0x3c1380() -> ! {
-    todo!("0x3c1380 `non-virtual thunk to'RBX::BillboardGui::~BillboardGui()")
+    todo!("0x3c1380 non-virtual thunk toRBX::BillboardGui::~BillboardGui()")
 }
 
 // 0x3c1424 — __ZThn96_NK3RBX12BillboardGui9isVisibleERKN3G3D6Rect2DE
 // type: int()
 #[doc(alias = "__ZThn96_NK3RBX12BillboardGui9isVisibleERKN3G3D6Rect2DE")]
 pub fn stub_0x3c1424() -> ! {
-    todo!("0x3c1424 `non-virtual thunk to'RBX::BillboardGui::isVisible(G3D::Rect2D const&)const")
+    todo!("0x3c1424 non-virtual thunk toRBX::BillboardGui::isVisible(G3D::Rect2D const&)const")
 }
 
 // 0x3c1428 — __ZThn168_N3RBX12BillboardGuiD1Ev
 // type: void __fastcall(RBX::BillboardGui *__hidden this)
 #[doc(alias = "__ZThn168_N3RBX12BillboardGuiD1Ev")]
 pub fn stub_0x3c1428() -> ! {
-    todo!("0x3c1428 `non-virtual thunk to'RBX::BillboardGui::~BillboardGui()")
+    todo!("0x3c1428 non-virtual thunk toRBX::BillboardGui::~BillboardGui()")
 }
 
 // 0x3c1430 — __ZThn168_N3RBX12BillboardGuiD0Ev
 // type: void __fastcall(RBX::BillboardGui *__hidden this)
 #[doc(alias = "__ZThn168_N3RBX12BillboardGuiD0Ev")]
 pub fn stub_0x3c1430() -> ! {
-    todo!("0x3c1430 `non-virtual thunk to'RBX::BillboardGui::~BillboardGui()")
+    todo!("0x3c1430 non-virtual thunk toRBX::BillboardGui::~BillboardGui()")
 }
 
 // 0x3c14d4 — __ZN3RBX14FactoryProductINS_12BillboardGuiENS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEE7CreatorD1Ev

@@ -124,7 +124,7 @@ pub fn stub_61b048() -> ! {
 }
 
 // 0x61b050 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9SelectionEPS6_EENSB_5list2INSB_5valueIPSF_EENSJ_ISG_EEEEEELi2ES8_E4callES7_S7_
-// demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Selection,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<RBX::Selection*>,boost::_bi::value<RBX::Instance*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)
+// demangled: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Selection,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<RBX::Selection*>,boost::_bi::value<RBX::Instance*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Selection,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<RBX::Selection*>,boost::_bi::value<RBX::Instance*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9SelectionEPS6_EENSB_5list2INSB_5valueIPSF_EENSJ_ISG_EEEEEELi2ES8_E4callES7_S7_")]
 pub fn stub_61b050() -> ! {
@@ -220,7 +220,7 @@ pub fn stub_61b670() -> ! {
 }
 
 // 0x61b678 — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX16SelectionChangedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_9SelectionES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
-// demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Selection,RBX::SelectionChanged const&>,boost::_bi::list2<boost::_bi::value<RBX::Selection*>,boost::arg<1>>>,1,void ()(RBX::SelectionChanged const&)>::call(RBX::SelectionChanged const&)
+// demangled: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Selection,RBX::SelectionChanged const&>,boost::_bi::list2<boost::_bi::value<RBX::Selection*>,boost::arg<1>>>,1,void ()(RBX::SelectionChanged const&)>::call(RBX::SelectionChanged const&)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Selection,RBX::SelectionChanged const&>,boost::_bi::list2<boost::_bi::value<RBX::Selection*>,boost::arg<1>>>,1,void ()(RBX::SelectionChanged const&)>::call(RBX::SelectionChanged const&)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX16SelectionChangedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_9SelectionES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_")]
 pub fn stub_61b678() -> ! {
@@ -464,7 +464,7 @@ pub fn stub_61ca44() -> ! {
 }
 
 // 0x61ca68 — __GLOBAL__I_a_252
-// demangled: `global constructor keyed to'_a_252
+// demangled: global constructor keyed to'_a_252
 #[doc(alias = "global constructor keyed to_a_252")]
 #[doc(alias = "__GLOBAL__I_a_252")]
 pub fn stub_61ca68() -> ! {
@@ -488,7 +488,7 @@ pub fn stub_61cf00() -> ! {
 }
 
 // 0x61d0b4 — __ZThn96_N3RBX12SelectionBox13render3dAdornEPNS_5AdornE
-// demangled: `non-virtual thunk to'RBX::SelectionBox::render3dAdorn(RBX::Adorn *)
+// demangled: non-virtual thunk toRBX::SelectionBox::render3dAdorn(RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::SelectionBox::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX12SelectionBox13render3dAdornEPNS_5AdornE")]
 pub fn stub_61d0b4() -> ! {
@@ -526,7 +526,7 @@ pub fn stub_61d2a8() -> ! {
 }
 
 // 0x61d2b8 — __ZThn32_N3RBX12SelectionBoxD1Ev
-// demangled: `non-virtual thunk to'RBX::SelectionBox::~SelectionBox()
+// demangled: non-virtual thunk toRBX::SelectionBox::~SelectionBox()
 #[doc(alias = "non-virtual thunk toRBX::SelectionBox::~SelectionBox()")]
 #[doc(alias = "__ZThn32_N3RBX12SelectionBoxD1Ev")]
 pub fn stub_61d2b8() -> ! {
@@ -534,7 +534,7 @@ pub fn stub_61d2b8() -> ! {
 }
 
 // 0x61d400 — __ZThn32_N3RBX12SelectionBoxD0Ev
-// demangled: `non-virtual thunk to'RBX::SelectionBox::~SelectionBox()
+// demangled: non-virtual thunk toRBX::SelectionBox::~SelectionBox()
 #[doc(alias = "non-virtual thunk toRBX::SelectionBox::~SelectionBox()")]
 #[doc(alias = "__ZThn32_N3RBX12SelectionBoxD0Ev")]
 pub fn stub_61d400() -> ! {
@@ -548,7 +548,7 @@ pub fn stub_61d55c() -> ! {
 }
 
 // 0x61d56c — __ZThn36_N3RBX12SelectionBoxD1Ev
-// demangled: `non-virtual thunk to'RBX::SelectionBox::~SelectionBox()
+// demangled: non-virtual thunk toRBX::SelectionBox::~SelectionBox()
 #[doc(alias = "non-virtual thunk toRBX::SelectionBox::~SelectionBox()")]
 #[doc(alias = "__ZThn36_N3RBX12SelectionBoxD1Ev")]
 pub fn stub_61d56c() -> ! {
@@ -556,7 +556,7 @@ pub fn stub_61d56c() -> ! {
 }
 
 // 0x61d6b4 — __ZThn36_N3RBX12SelectionBoxD0Ev
-// demangled: `non-virtual thunk to'RBX::SelectionBox::~SelectionBox()
+// demangled: non-virtual thunk toRBX::SelectionBox::~SelectionBox()
 #[doc(alias = "non-virtual thunk toRBX::SelectionBox::~SelectionBox()")]
 #[doc(alias = "__ZThn36_N3RBX12SelectionBoxD0Ev")]
 pub fn stub_61d6b4() -> ! {
@@ -720,7 +720,7 @@ pub fn stub_61e798() -> ! {
 }
 
 // 0x61e8f4 — __GLOBAL__I_a_253
-// demangled: `global constructor keyed to'_a_253
+// demangled: global constructor keyed to'_a_253
 #[doc(alias = "global constructor keyed to_a_253")]
 #[doc(alias = "__GLOBAL__I_a_253")]
 pub fn stub_61e8f4() -> ! {
@@ -752,7 +752,7 @@ pub fn stub_61ee4c() -> ! {
 }
 
 // 0x61ee7c — __ZThn96_NK3RBX14SelectionLasso19shouldRender3dAdornEv
-// demangled: `non-virtual thunk to'RBX::SelectionLasso::shouldRender3dAdorn(void)const
+// demangled: non-virtual thunk toRBX::SelectionLasso::shouldRender3dAdorn(void)const
 #[doc(alias = "non-virtual thunk toRBX::SelectionLasso::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX14SelectionLasso19shouldRender3dAdornEv")]
 pub fn stub_61ee7c() -> ! {
@@ -776,7 +776,7 @@ pub fn stub_61ef74() -> ! {
 }
 
 // 0x61f17c — __ZThn96_N3RBX14SelectionLasso13render3dAdornEPNS_5AdornE
-// demangled: `non-virtual thunk to'RBX::SelectionLasso::render3dAdorn(RBX::Adorn *)
+// demangled: non-virtual thunk toRBX::SelectionLasso::render3dAdorn(RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::SelectionLasso::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX14SelectionLasso13render3dAdornEPNS_5AdornE")]
 pub fn stub_61f17c() -> ! {
@@ -808,7 +808,7 @@ pub fn stub_61f4b4() -> ! {
 }
 
 // 0x61f4e4 — __ZThn96_NK3RBX18SelectionPartLasso19shouldRender3dAdornEv
-// demangled: `non-virtual thunk to'RBX::SelectionPartLasso::shouldRender3dAdorn(void)const
+// demangled: non-virtual thunk toRBX::SelectionPartLasso::shouldRender3dAdorn(void)const
 #[doc(alias = "non-virtual thunk toRBX::SelectionPartLasso::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX18SelectionPartLasso19shouldRender3dAdornEv")]
 pub fn stub_61f4e4() -> ! {
@@ -910,7 +910,7 @@ pub fn stub_61fb08() -> ! {
 }
 
 // 0x61fb30 — __ZThn32_N3RBX14SelectionLassoD1Ev
-// demangled: `non-virtual thunk to'RBX::SelectionLasso::~SelectionLasso()
+// demangled: non-virtual thunk toRBX::SelectionLasso::~SelectionLasso()
 #[doc(alias = "non-virtual thunk toRBX::SelectionLasso::~SelectionLasso()")]
 #[doc(alias = "__ZThn32_N3RBX14SelectionLassoD1Ev")]
 pub fn stub_61fb30() -> ! {

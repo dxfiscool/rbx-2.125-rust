@@ -199,28 +199,28 @@ pub fn stub_0x52e6ac() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GuiButton::~GuiButton()")]
 #[doc(alias = "__ZThn32_N3RBX9GuiButtonD1Ev")]
 pub fn stub_0x52e6b0() -> ! {
-    todo!("0x52e6b0 `non-virtual thunk to'RBX::GuiButton::~GuiButton()")
+    todo!("0x52e6b0 non-virtual thunk toRBX::GuiButton::~GuiButton()")
 }
 
 // 0x52e6b8 — __ZThn32_N3RBX9GuiButtonD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiButton::~GuiButton()")]
 #[doc(alias = "__ZThn32_N3RBX9GuiButtonD0Ev")]
 pub fn stub_0x52e6b8() -> ! {
-    todo!("0x52e6b8 `non-virtual thunk to'RBX::GuiButton::~GuiButton()")
+    todo!("0x52e6b8 non-virtual thunk toRBX::GuiButton::~GuiButton()")
 }
 
 // 0x52e784 — __ZThn36_N3RBX9GuiButtonD1Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiButton::~GuiButton()")]
 #[doc(alias = "__ZThn36_N3RBX9GuiButtonD1Ev")]
 pub fn stub_0x52e784() -> ! {
-    todo!("0x52e784 `non-virtual thunk to'RBX::GuiButton::~GuiButton()")
+    todo!("0x52e784 non-virtual thunk toRBX::GuiButton::~GuiButton()")
 }
 
 // 0x52e78c — __ZThn36_N3RBX9GuiButtonD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiButton::~GuiButton()")]
 #[doc(alias = "__ZThn36_N3RBX9GuiButtonD0Ev")]
 pub fn stub_0x52e78c() -> ! {
-    todo!("0x52e78c `non-virtual thunk to'RBX::GuiButton::~GuiButton()")
+    todo!("0x52e78c non-virtual thunk toRBX::GuiButton::~GuiButton()")
 }
 
 // 0x52e830 — __ZN3RBX8GuiLabelD1Ev
@@ -241,28 +241,28 @@ pub fn stub_0x52e834() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
 #[doc(alias = "__ZThn32_N3RBX8GuiLabelD1Ev")]
 pub fn stub_0x52e8fc() -> ! {
-    todo!("0x52e8fc `non-virtual thunk to'RBX::GuiLabel::~GuiLabel()")
+    todo!("0x52e8fc non-virtual thunk toRBX::GuiLabel::~GuiLabel()")
 }
 
 // 0x52e904 — __ZThn32_N3RBX8GuiLabelD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
 #[doc(alias = "__ZThn32_N3RBX8GuiLabelD0Ev")]
 pub fn stub_0x52e904() -> ! {
-    todo!("0x52e904 `non-virtual thunk to'RBX::GuiLabel::~GuiLabel()")
+    todo!("0x52e904 non-virtual thunk toRBX::GuiLabel::~GuiLabel()")
 }
 
 // 0x52e9d0 — __ZThn36_N3RBX8GuiLabelD1Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
 #[doc(alias = "__ZThn36_N3RBX8GuiLabelD1Ev")]
 pub fn stub_0x52e9d0() -> ! {
-    todo!("0x52e9d0 `non-virtual thunk to'RBX::GuiLabel::~GuiLabel()")
+    todo!("0x52e9d0 non-virtual thunk toRBX::GuiLabel::~GuiLabel()")
 }
 
 // 0x52e9d8 — __ZThn36_N3RBX8GuiLabelD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
 #[doc(alias = "__ZThn36_N3RBX8GuiLabelD0Ev")]
 pub fn stub_0x52e9d8() -> ! {
-    todo!("0x52e9d8 `non-virtual thunk to'RBX::GuiLabel::~GuiLabel()")
+    todo!("0x52e9d8 non-virtual thunk toRBX::GuiLabel::~GuiLabel()")
 }
 
 // 0x52ee40 — __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonEFviiEEEEENS6_5list1INS6_5valueIPSE_EEEEEEEENS0_10connectionERKT_
@@ -304,7 +304,7 @@ pub fn stub_0x52f000() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonEFviiEEEEENS7_5list1INS7_5valueIPSF_EEEEEELi0ES3_E4callEv")]
 pub fn stub_0x52f008() -> ! {
-    todo!("0x52f008 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>*>>>,0,void ()(void)>::call(void)")
+    todo!("0x52f008 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>*>>>,0,void ()(void)>::call(void)")
 }
 
 // 0x52f010 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_9GuiButtonEFviiEEEEENS0_5list1INS0_5valueIPS8_EEEEEclEv
@@ -367,7 +367,7 @@ pub fn stub_0x52f2e8() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_9GuiButtonES3_EEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv")]
 pub fn stub_0x52f2f0() -> ! {
-    todo!("0x52f2f0 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>*>>>,0,void ()(void)>::call(void)")
+    todo!("0x52f2f0 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>*>>>,0,void ()(void)>::call(void)")
 }
 
 // 0x52f2f8 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_9GuiButtonEFvvEEEEENS0_5list1INS0_5valueIPS8_EEEEEclEv
@@ -472,7 +472,7 @@ pub fn stub_0x52fcfc() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::EventReplicatorImpl<2,RBX::GuiButton,void ()(int,int)>,int,int>,boost::_bi::list3<boost::_bi::value<RBX::EventReplicatorImpl<2,RBX::GuiButton,void ()(int,int)>*>,boost::arg<1>,boost::arg<2>>>,2,void ()(int,int)>::call(int,int)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFviiEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX19EventReplicatorImplILi2ENSB_9GuiButtonES3_EEiiEENS7_5list3INS7_5valueIPSE_EENS6_3argILi1EEENSK_ILi2EEEEEEELi2ES3_E4callEii")]
 pub fn stub_0x52fd24() -> ! {
-    todo!("0x52fd24 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(int,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::EventReplicatorImpl<2,RBX::GuiButton,void ()(int,int)>,int,int>,boost::_bi::list3<boost::_bi::value<RBX::EventReplicatorImpl<2,RBX::GuiButton,void ()(int,int)>*>,boost::arg<1>,boost::arg<2>>>,2,void ()(int,int)>::call(int,int)")
+    todo!("0x52fd24 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::EventReplicatorImpl<2,RBX::GuiButton,void ()(int,int)>,int,int>,boost::_bi::list3<boost::_bi::value<RBX::EventReplicatorImpl<2,RBX::GuiButton,void ()(int,int)>*>,boost::arg<1>,boost::arg<2>>>,2,void ()(int,int)>::call(int,int)")
 }
 
 // 0x52fd4c — __ZN5boost3_bi5list3INS0_5valueIPN3RBX19EventReplicatorImplILi2ENS3_9GuiButtonEFviiEEEEENS_3argILi1EEENSA_ILi2EEEEclINS_4_mfi3mf2IvS7_iiEENS0_5list2IRiSJ_EEEEvNS0_4typeIvEERT_RT0_i
@@ -584,7 +584,7 @@ pub fn stub_0x530564() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorImpl<0,RBX::GuiButton,void ()(void)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorImpl<0,RBX::GuiButton,void ()(void)>*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorImplILi0ENSB_9GuiButtonES3_EEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv")]
 pub fn stub_0x53056c() -> ! {
-    todo!("0x53056c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorImpl<0,RBX::GuiButton,void ()(void)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorImpl<0,RBX::GuiButton,void ()(void)>*>>>,0,void ()(void)>::call(void)")
+    todo!("0x53056c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorImpl<0,RBX::GuiButton,void ()(void)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorImpl<0,RBX::GuiButton,void ()(void)>*>>>,0,void ()(void)>::call(void)")
 }
 
 // 0x530574 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorImplILi0ENS4_9GuiButtonEFvvEEEEENS0_5list1INS0_5valueIPS8_EEEEEclEv

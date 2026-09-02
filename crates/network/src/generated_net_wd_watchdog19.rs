@@ -438,7 +438,7 @@ pub fn stub_482dd8() -> ! {
 
 // 0x482de8 — __ZThn36_N3RBX9BlockMeshD0Ev
 // type: void __fastcall(RBX::BlockMesh *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::BlockMesh::~BlockMesh()")]
+#[doc(alias = "non-virtual thunk toRBX::BlockMesh::~BlockMesh()")]
 #[doc(alias = "__ZThn36_N3RBX9BlockMeshD0Ev")]
 pub fn stub_482de8() -> ! {
     todo!("0x482de8 __ZThn36_N3RBX9BlockMeshD0Ev")

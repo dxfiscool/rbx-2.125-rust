@@ -1,5 +1,5 @@
 //! core shard AW — 100 core stubs EA-sorted, next uncovered after AV 0x3cb538..0x3d0014 (strict RBX|boost|std earliest gap, after AV 0x3c057c..0x3cb538).
-//! Source: `ida/export.json` filtered where demangled/mangled contains `RBX::`|`boost::`|`std::`|`rbx::` excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 uncovered after 0x3cb538.
+//! Source: ida/export.json filtered where demangled/mangled contains RBX::|boost::|std::|rbx:: excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 uncovered after 0x3cb538.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
@@ -456,42 +456,42 @@ pub fn stub_0x3e126c() -> ! {
 
 #[doc(alias = "non-virtual thunk to RBX::ShirtGraphic::~ShirtGraphic()")]
 // 0x3e1354 — __ZThn32_N3RBX12ShirtGraphicD1Ev
-// was: `non-virtual thunk to RBX::ShirtGraphic::~ShirtGraphic()`
+// was: non-virtual thunk to RBX::ShirtGraphic::~ShirtGraphic()
 pub fn stub_0x3e1354() -> ! {
     todo!("0x3e1354 __ZThn32_N3RBX12ShirtGraphicD1Ev")
 }
 
 #[doc(alias = "non-virtual thunk to RBX::ShirtGraphic::~ShirtGraphic()")]
 // 0x3e1394 — __ZThn32_N3RBX12ShirtGraphicD0Ev
-// was: `non-virtual thunk to RBX::ShirtGraphic::~ShirtGraphic()`
+// was: non-virtual thunk to RBX::ShirtGraphic::~ShirtGraphic()
 pub fn stub_0x3e1394() -> ! {
     todo!("0x3e1394 __ZThn32_N3RBX12ShirtGraphicD0Ev")
 }
 
 #[doc(alias = "non-virtual thunk to RBX::ShirtGraphic::~ShirtGraphic()")]
 // 0x3e1480 — __ZThn36_N3RBX12ShirtGraphicD1Ev
-// was: `non-virtual thunk to RBX::ShirtGraphic::~ShirtGraphic()`
+// was: non-virtual thunk to RBX::ShirtGraphic::~ShirtGraphic()
 pub fn stub_0x3e1480() -> ! {
     todo!("0x3e1480 __ZThn36_N3RBX12ShirtGraphicD1Ev")
 }
 
 #[doc(alias = "non-virtual thunk to RBX::ShirtGraphic::~ShirtGraphic()")]
 // 0x3e14c0 — __ZThn36_N3RBX12ShirtGraphicD0Ev
-// was: `non-virtual thunk to RBX::ShirtGraphic::~ShirtGraphic()`
+// was: non-virtual thunk to RBX::ShirtGraphic::~ShirtGraphic()
 pub fn stub_0x3e14c0() -> ! {
     todo!("0x3e14c0 __ZThn36_N3RBX12ShirtGraphicD0Ev")
 }
 
 #[doc(alias = "non-virtual thunk to RBX::ShirtGraphic::~ShirtGraphic()")]
 // 0x3e159c — __ZThn92_N3RBX12ShirtGraphicD1Ev
-// was: `non-virtual thunk to RBX::ShirtGraphic::~ShirtGraphic()`
+// was: non-virtual thunk to RBX::ShirtGraphic::~ShirtGraphic()
 pub fn stub_0x3e159c() -> ! {
     todo!("0x3e159c __ZThn92_N3RBX12ShirtGraphicD1Ev")
 }
 
 #[doc(alias = "non-virtual thunk to RBX::ShirtGraphic::~ShirtGraphic()")]
 // 0x3e15dc — __ZThn92_N3RBX12ShirtGraphicD0Ev
-// was: `non-virtual thunk to RBX::ShirtGraphic::~ShirtGraphic()`
+// was: non-virtual thunk to RBX::ShirtGraphic::~ShirtGraphic()
 pub fn stub_0x3e15dc() -> ! {
     todo!("0x3e15dc __ZThn92_N3RBX12ShirtGraphicD0Ev")
 }
@@ -516,42 +516,42 @@ pub fn stub_0x3e1808() -> ! {
 
 #[doc(alias = "non-virtual thunk to RBX::Clothing::~Clothing()")]
 // 0x3e1864 — __ZThn32_N3RBX8ClothingD1Ev
-// was: `non-virtual thunk to RBX::Clothing::~Clothing()`
+// was: non-virtual thunk to RBX::Clothing::~Clothing()
 pub fn stub_0x3e1864() -> ! {
     todo!("0x3e1864 __ZThn32_N3RBX8ClothingD1Ev")
 }
 
 #[doc(alias = "non-virtual thunk to RBX::Clothing::~Clothing()")]
 // 0x3e18b0 — __ZThn32_N3RBX8ClothingD0Ev
-// was: `non-virtual thunk to RBX::Clothing::~Clothing()`
+// was: non-virtual thunk to RBX::Clothing::~Clothing()
 pub fn stub_0x3e18b0() -> ! {
     todo!("0x3e18b0 __ZThn32_N3RBX8ClothingD0Ev")
 }
 
 #[doc(alias = "non-virtual thunk to RBX::Clothing::~Clothing()")]
 // 0x3e19bc — __ZThn36_N3RBX8ClothingD1Ev
-// was: `non-virtual thunk to RBX::Clothing::~Clothing()`
+// was: non-virtual thunk to RBX::Clothing::~Clothing()
 pub fn stub_0x3e19bc() -> ! {
     todo!("0x3e19bc __ZThn36_N3RBX8ClothingD1Ev")
 }
 
 #[doc(alias = "non-virtual thunk to RBX::Clothing::~Clothing()")]
 // 0x3e1a08 — __ZThn36_N3RBX8ClothingD0Ev
-// was: `non-virtual thunk to RBX::Clothing::~Clothing()`
+// was: non-virtual thunk to RBX::Clothing::~Clothing()
 pub fn stub_0x3e1a08() -> ! {
     todo!("0x3e1a08 __ZThn36_N3RBX8ClothingD0Ev")
 }
 
 #[doc(alias = "non-virtual thunk to RBX::Clothing::~Clothing()")]
 // 0x3e1aec — __ZThn92_N3RBX8ClothingD1Ev
-// was: `non-virtual thunk to RBX::Clothing::~Clothing()`
+// was: non-virtual thunk to RBX::Clothing::~Clothing()
 pub fn stub_0x3e1aec() -> ! {
     todo!("0x3e1aec __ZThn92_N3RBX8ClothingD1Ev")
 }
 
 #[doc(alias = "non-virtual thunk to RBX::Clothing::~Clothing()")]
 // 0x3e1b38 — __ZThn92_N3RBX8ClothingD0Ev
-// was: `non-virtual thunk to RBX::Clothing::~Clothing()`
+// was: non-virtual thunk to RBX::Clothing::~Clothing()
 pub fn stub_0x3e1b38() -> ! {
     todo!("0x3e1b38 __ZThn92_N3RBX8ClothingD0Ev")
 }
@@ -570,42 +570,42 @@ pub fn stub_0x3e1c20() -> ! {
 
 #[doc(alias = "non-virtual thunk to RBX::Skin::~Skin()")]
 // 0x3e1cd0 — __ZThn32_N3RBX4SkinD1Ev
-// was: `non-virtual thunk to RBX::Skin::~Skin()`
+// was: non-virtual thunk to RBX::Skin::~Skin()
 pub fn stub_0x3e1cd0() -> ! {
     todo!("0x3e1cd0 __ZThn32_N3RBX4SkinD1Ev")
 }
 
 #[doc(alias = "non-virtual thunk to RBX::Skin::~Skin()")]
 // 0x3e1cd8 — __ZThn32_N3RBX4SkinD0Ev
-// was: `non-virtual thunk to RBX::Skin::~Skin()`
+// was: non-virtual thunk to RBX::Skin::~Skin()
 pub fn stub_0x3e1cd8() -> ! {
     todo!("0x3e1cd8 __ZThn32_N3RBX4SkinD0Ev")
 }
 
 #[doc(alias = "non-virtual thunk to RBX::Skin::~Skin()")]
 // 0x3e1d8c — __ZThn36_N3RBX4SkinD1Ev
-// was: `non-virtual thunk to RBX::Skin::~Skin()`
+// was: non-virtual thunk to RBX::Skin::~Skin()
 pub fn stub_0x3e1d8c() -> ! {
     todo!("0x3e1d8c __ZThn36_N3RBX4SkinD1Ev")
 }
 
 #[doc(alias = "non-virtual thunk to RBX::Skin::~Skin()")]
 // 0x3e1d94 — __ZThn36_N3RBX4SkinD0Ev
-// was: `non-virtual thunk to RBX::Skin::~Skin()`
+// was: non-virtual thunk to RBX::Skin::~Skin()
 pub fn stub_0x3e1d94() -> ! {
     todo!("0x3e1d94 __ZThn36_N3RBX4SkinD0Ev")
 }
 
 #[doc(alias = "non-virtual thunk to RBX::Skin::~Skin()")]
 // 0x3e1e38 — __ZThn92_N3RBX4SkinD1Ev
-// was: `non-virtual thunk to RBX::Skin::~Skin()`
+// was: non-virtual thunk to RBX::Skin::~Skin()
 pub fn stub_0x3e1e38() -> ! {
     todo!("0x3e1e38 __ZThn92_N3RBX4SkinD1Ev")
 }
 
 #[doc(alias = "non-virtual thunk to RBX::Skin::~Skin()")]
 // 0x3e1e40 — __ZThn92_N3RBX4SkinD0Ev
-// was: `non-virtual thunk to RBX::Skin::~Skin()`
+// was: non-virtual thunk to RBX::Skin::~Skin()
 pub fn stub_0x3e1e40() -> ! {
     todo!("0x3e1e40 __ZThn92_N3RBX4SkinD0Ev")
 }

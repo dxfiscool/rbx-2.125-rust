@@ -337,7 +337,7 @@ pub fn stub_0x2c1f30() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Stats::Item::~Item()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats4ItemD1Ev")]
 pub fn stub_0x2c2008() -> ! {
-    todo!("0x2c2008 `non-virtual thunk to'RBX::Stats::Item::~Item()")
+    todo!("0x2c2008 non-virtual thunk toRBX::Stats::Item::~Item()")
 }
 
 // 0x2c2048 — __ZThn36_N3RBX5Stats4ItemD0Ev
@@ -345,7 +345,7 @@ pub fn stub_0x2c2008() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Stats::Item::~Item()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats4ItemD0Ev")]
 pub fn stub_0x2c2048() -> ! {
-    todo!("0x2c2048 `non-virtual thunk to'RBX::Stats::Item::~Item()")
+    todo!("0x2c2048 non-virtual thunk toRBX::Stats::Item::~Item()")
 }
 
 // 0x2c2338 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12LuaStatsItemES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -659,7 +659,7 @@ pub fn stub_0x2c4a50() -> ! {
 #[doc(alias = "global constructor keyed to_a_72")]
 #[doc(alias = "__GLOBAL__I_a_72")]
 pub fn stub_0x2c4a80() -> ! {
-    todo!("0x2c4a80 `global constructor keyed to'_a_72")
+    todo!("0x2c4a80 global constructor keyed to'_a_72")
 }
 
 // 0x2c5440 — __ZN3RBX3Lua15YieldingThreadsC1EPNS_13ScriptContextE

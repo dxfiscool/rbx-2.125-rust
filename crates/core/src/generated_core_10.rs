@@ -1,5 +1,5 @@
 //! core — generated_core_10 — 120 core stubs EA-sorted asc next uncovered gap not yet in core (fallback filter).
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc, 120 stubs 0x17b0ac..0x1dcc28 (fallback excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|Gfx|Render|Adorn|RakNet|Network|Replicator|FMOD|Sound|Audio|Lua|Script; 32885 fallback, 19939 uncovered before batch).
+//! Source: ida/export.json (85545 funcs) EA-sorted asc, 120 stubs 0x17b0ac..0x1dcc28 (fallback excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|Gfx|Render|Adorn|RakNet|Network|Replicator|FMOD|Sound|Audio|Lua|Script; 32885 fallback, 19939 uncovered before batch).
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 

@@ -244,7 +244,7 @@ pub fn stub_0x470bd0() -> ! {
 }
 
 // 0x470bf8 — __GLOBAL__I_a_178
-// was: `global constructor keyed to'_a_178
+// was: global constructor keyed to'_a_178
 #[doc(alias = "__GLOBAL__I_a_178")]
 #[doc(alias = "global constructor keyed to_a_178")] // sanitized: original had  or 
 pub fn stub_0x470bf8() -> ! {
@@ -708,7 +708,7 @@ pub fn stub_0x474dfc() -> ! {
 }
 
 // 0x474e24 — __GLOBAL__I_a_179
-// was: `global constructor keyed to'_a_179
+// was: global constructor keyed to'_a_179
 #[doc(alias = "__GLOBAL__I_a_179")]
 #[doc(alias = "global constructor keyed to_a_179")] // sanitized: original had  or 
 pub fn stub_0x474e24() -> ! {

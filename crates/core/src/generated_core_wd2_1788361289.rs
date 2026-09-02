@@ -158,7 +158,7 @@ pub fn stub_0x660ac0() -> ! {
 }
 
 #[doc(alias = "non-virtual thunk toRBX::SurfaceSelection::render3dAdorn(RBX::Adorn *)")]
-// 0x660bd8 - __ZThn96_N3RBX16SurfaceSelection13render3dAdornEPNS_5AdornE - `non-virtual thunk to'RBX::SurfaceSelection::render3dAdorn(RBX::Adorn *)
+// 0x660bd8 - __ZThn96_N3RBX16SurfaceSelection13render3dAdornEPNS_5AdornE - non-virtual thunk toRBX::SurfaceSelection::render3dAdorn(RBX::Adorn *)
 pub fn stub_0x660bd8() -> ! {
     todo!("0x660bd8 __ZThn96_N3RBX16SurfaceSelection13render3dAdornEPNS_5AdornE")
 }
@@ -182,25 +182,25 @@ pub fn stub_0x660d54() -> ! {
 }
 
 #[doc(alias = "non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")]
-// 0x660e04 - __ZThn32_N3RBX16SurfaceSelectionD1Ev - `non-virtual thunk to'RBX::SurfaceSelection::~SurfaceSelection()
+// 0x660e04 - __ZThn32_N3RBX16SurfaceSelectionD1Ev - non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()
 pub fn stub_0x660e04() -> ! {
     todo!("0x660e04 __ZThn32_N3RBX16SurfaceSelectionD1Ev")
 }
 
 #[doc(alias = "non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")]
-// 0x660f4c - __ZThn32_N3RBX16SurfaceSelectionD0Ev - `non-virtual thunk to'RBX::SurfaceSelection::~SurfaceSelection()
+// 0x660f4c - __ZThn32_N3RBX16SurfaceSelectionD0Ev - non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()
 pub fn stub_0x660f4c() -> ! {
     todo!("0x660f4c __ZThn32_N3RBX16SurfaceSelectionD0Ev")
 }
 
 #[doc(alias = "non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")]
-// 0x6610b8 - __ZThn36_N3RBX16SurfaceSelectionD1Ev - `non-virtual thunk to'RBX::SurfaceSelection::~SurfaceSelection()
+// 0x6610b8 - __ZThn36_N3RBX16SurfaceSelectionD1Ev - non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()
 pub fn stub_0x6610b8() -> ! {
     todo!("0x6610b8 __ZThn36_N3RBX16SurfaceSelectionD1Ev")
 }
 
 #[doc(alias = "non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()")]
-// 0x661200 - __ZThn36_N3RBX16SurfaceSelectionD0Ev - `non-virtual thunk to'RBX::SurfaceSelection::~SurfaceSelection()
+// 0x661200 - __ZThn36_N3RBX16SurfaceSelectionD0Ev - non-virtual thunk toRBX::SurfaceSelection::~SurfaceSelection()
 pub fn stub_0x661200() -> ! {
     todo!("0x661200 __ZThn36_N3RBX16SurfaceSelectionD0Ev")
 }
@@ -266,25 +266,25 @@ pub fn stub_0x663280() -> ! {
 }
 
 #[doc(alias = "non-virtual thunk toRBX::Team::~Team()")]
-// 0x663284 - __ZThn32_N3RBX4TeamD0Ev - `non-virtual thunk to'RBX::Team::~Team()
+// 0x663284 - __ZThn32_N3RBX4TeamD0Ev - non-virtual thunk toRBX::Team::~Team()
 pub fn stub_0x663284() -> ! {
     todo!("0x663284 __ZThn32_N3RBX4TeamD0Ev")
 }
 
 #[doc(alias = "non-virtual thunk toRBX::Team::~Team()")]
-// 0x66328c - __ZThn36_N3RBX4TeamD0Ev - `non-virtual thunk to'RBX::Team::~Team()
+// 0x66328c - __ZThn36_N3RBX4TeamD0Ev - non-virtual thunk toRBX::Team::~Team()
 pub fn stub_0x66328c() -> ! {
     todo!("0x66328c __ZThn36_N3RBX4TeamD0Ev")
 }
 
 #[doc(alias = "non-virtual thunk toRBX::Team::~Team()")]
-// 0x663294 - __ZThn32_N3RBX4TeamD1Ev - `non-virtual thunk to'RBX::Team::~Team()
+// 0x663294 - __ZThn32_N3RBX4TeamD1Ev - non-virtual thunk toRBX::Team::~Team()
 pub fn stub_0x663294() -> ! {
     todo!("0x663294 __ZThn32_N3RBX4TeamD1Ev")
 }
 
 #[doc(alias = "non-virtual thunk toRBX::Team::~Team()")]
-// 0x66329c - __ZThn36_N3RBX4TeamD1Ev - `non-virtual thunk to'RBX::Team::~Team()
+// 0x66329c - __ZThn36_N3RBX4TeamD1Ev - non-virtual thunk toRBX::Team::~Team()
 pub fn stub_0x66329c() -> ! {
     todo!("0x66329c __ZThn36_N3RBX4TeamD1Ev")
 }
@@ -356,13 +356,13 @@ pub fn stub_0x6648cc() -> ! {
 }
 
 #[doc(alias = "non-virtual thunk toRBX::Teams::~Teams()")]
-// 0x6648d0 - __ZThn32_N3RBX5TeamsD0Ev - `non-virtual thunk to'RBX::Teams::~Teams()
+// 0x6648d0 - __ZThn32_N3RBX5TeamsD0Ev - non-virtual thunk toRBX::Teams::~Teams()
 pub fn stub_0x6648d0() -> ! {
     todo!("0x6648d0 __ZThn32_N3RBX5TeamsD0Ev")
 }
 
 #[doc(alias = "non-virtual thunk toRBX::Teams::~Teams()")]
-// 0x6648d8 - __ZThn36_N3RBX5TeamsD0Ev - `non-virtual thunk to'RBX::Teams::~Teams()
+// 0x6648d8 - __ZThn36_N3RBX5TeamsD0Ev - non-virtual thunk toRBX::Teams::~Teams()
 pub fn stub_0x6648d8() -> ! {
     todo!("0x6648d8 __ZThn36_N3RBX5TeamsD0Ev")
 }
@@ -374,13 +374,13 @@ pub fn stub_0x6648e0() -> ! {
 }
 
 #[doc(alias = "non-virtual thunk toRBX::Teams::~Teams()")]
-// 0x6649c4 - __ZThn32_N3RBX5TeamsD1Ev - `non-virtual thunk to'RBX::Teams::~Teams()
+// 0x6649c4 - __ZThn32_N3RBX5TeamsD1Ev - non-virtual thunk toRBX::Teams::~Teams()
 pub fn stub_0x6649c4() -> ! {
     todo!("0x6649c4 __ZThn32_N3RBX5TeamsD1Ev")
 }
 
 #[doc(alias = "non-virtual thunk toRBX::Teams::~Teams()")]
-// 0x6649cc - __ZThn36_N3RBX5TeamsD1Ev - `non-virtual thunk to'RBX::Teams::~Teams()
+// 0x6649cc - __ZThn36_N3RBX5TeamsD1Ev - non-virtual thunk toRBX::Teams::~Teams()
 pub fn stub_0x6649cc() -> ! {
     todo!("0x6649cc __ZThn36_N3RBX5TeamsD1Ev")
 }
@@ -584,7 +584,7 @@ pub fn stub_0x667698() -> ! {
 }
 
 #[doc(alias = "non-virtual thunk toRBX::TextBox::onHeartbeat(RBX::Heartbeat const&)")]
-// 0x667b28 - __ZThn596_N3RBX7TextBox11onHeartbeatERKNS_9HeartbeatE - `non-virtual thunk to'RBX::TextBox::onHeartbeat(RBX::Heartbeat const&)
+// 0x667b28 - __ZThn596_N3RBX7TextBox11onHeartbeatERKNS_9HeartbeatE - non-virtual thunk toRBX::TextBox::onHeartbeat(RBX::Heartbeat const&)
 pub fn stub_0x667b28() -> ! {
     todo!("0x667b28 __ZThn596_N3RBX7TextBox11onHeartbeatERKNS_9HeartbeatE")
 }
@@ -620,7 +620,7 @@ pub fn stub_0x668088() -> ! {
 }
 
 #[doc(alias = "non-virtual thunk toRBX::TextBox::render2d(RBX::Adorn *)")]
-// 0x66856c - __ZThn96_N3RBX7TextBox8render2dEPNS_5AdornE - `non-virtual thunk to'RBX::TextBox::render2d(RBX::Adorn *)
+// 0x66856c - __ZThn96_N3RBX7TextBox8render2dEPNS_5AdornE - non-virtual thunk toRBX::TextBox::render2d(RBX::Adorn *)
 pub fn stub_0x66856c() -> ! {
     todo!("0x66856c __ZThn96_N3RBX7TextBox8render2dEPNS_5AdornE")
 }

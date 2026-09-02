@@ -1,5 +1,5 @@
 //! generated_watchdog_core_w3 — 120 core stubs EA-sorted, gap filler after watchdog_core_w1 0x5c0470.
-//! Source: `ida/export.json` (85545 funcs) filtered core namespace (excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|FMOD|Audio|Sound|lua|ObjC) EA-sorted asc.
+//! Source: ida/export.json (85545 funcs) filtered core namespace (excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|FMOD|Audio|Sound|lua|ObjC) EA-sorted asc.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]

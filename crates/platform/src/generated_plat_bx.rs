@@ -72,7 +72,7 @@ pub fn stub_0x3d0904() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 pub fn stub_0x3d09e4() -> ! {
-    todo!("0x3d09e4 `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0x3d09e4 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 // 0x3d09ec — __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -462,7 +462,7 @@ pub fn stub_0x3d199c() -> ! {
 #[doc(alias = "global constructor keyed to_a_166")]
 #[doc(alias = "__GLOBAL__I_a_166")]
 pub fn stub_0x3d19c4() -> ! {
-    todo!("0x3d19c4 `global constructor keyed to'_a_166")
+    todo!("0x3d19c4 global constructor keyed to'_a_166")
 }
 
 // 0x3d22c0 — __ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEEC1Ev
@@ -598,7 +598,7 @@ pub fn stub_0x3d3a6c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")]
 #[doc(alias = "__ZThn32_N3RBX20ChangeHistoryServiceD0Ev")]
 pub fn stub_0x3d3a70() -> ! {
-    todo!("0x3d3a70 `non-virtual thunk to'RBX::ChangeHistoryService::~ChangeHistoryService()")
+    todo!("0x3d3a70 non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")
 }
 
 // 0x3d3a78 — __ZThn36_N3RBX20ChangeHistoryServiceD0Ev
@@ -606,7 +606,7 @@ pub fn stub_0x3d3a70() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")]
 #[doc(alias = "__ZThn36_N3RBX20ChangeHistoryServiceD0Ev")]
 pub fn stub_0x3d3a78() -> ! {
-    todo!("0x3d3a78 `non-virtual thunk to'RBX::ChangeHistoryService::~ChangeHistoryService()")
+    todo!("0x3d3a78 non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")
 }
 
 // 0x3d3a80 — __ZN3RBX20ChangeHistoryServiceD2Ev
@@ -622,7 +622,7 @@ pub fn stub_0x3d3a80() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")]
 #[doc(alias = "__ZThn32_N3RBX20ChangeHistoryServiceD1Ev")]
 pub fn stub_0x3d3f08() -> ! {
-    todo!("0x3d3f08 `non-virtual thunk to'RBX::ChangeHistoryService::~ChangeHistoryService()")
+    todo!("0x3d3f08 non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")
 }
 
 // 0x3d3f10 — __ZThn36_N3RBX20ChangeHistoryServiceD1Ev
@@ -630,7 +630,7 @@ pub fn stub_0x3d3f08() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")]
 #[doc(alias = "__ZThn36_N3RBX20ChangeHistoryServiceD1Ev")]
 pub fn stub_0x3d3f10() -> ! {
-    todo!("0x3d3f10 `non-virtual thunk to'RBX::ChangeHistoryService::~ChangeHistoryService()")
+    todo!("0x3d3f10 non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")
 }
 
 // 0x3d3f18 — __ZN3RBX20ChangeHistoryService6attachEv
@@ -776,7 +776,7 @@ pub fn stub_0x3d582c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)")]
 #[doc(alias = "__ZThn96_N3RBX20ChangeHistoryService18terrainCellChangedERKNS_5Voxel14CellChangeInfoE")]
 pub fn stub_0x3d59b8() -> ! {
-    todo!("0x3d59b8 `non-virtual thunk to'RBX::ChangeHistoryService::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)")
+    todo!("0x3d59b8 non-virtual thunk toRBX::ChangeHistoryService::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)")
 }
 
 // 0x3d59c0 — __ZN3RBX20ChangeHistoryService13onItemRemovedEN5boost10shared_ptrINS_8InstanceEEE

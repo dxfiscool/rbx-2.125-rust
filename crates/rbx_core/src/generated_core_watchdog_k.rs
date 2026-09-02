@@ -182,7 +182,7 @@ pub fn stub_9ac8() -> ! {
     todo!("0x9ac8 __ZN19CRenderSettingsItem19setAutoQualityLevelEi")
 }
 
-#[doc(alias = "`non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int)")]
+#[doc(alias = "non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int)")]
 // 0x9ae8 — __ZThn96_N19CRenderSettingsItem19setAutoQualityLevelEi
 // type: int __fastcall(int this, int)
 pub fn stub_9ae8() -> ! {
@@ -497,14 +497,14 @@ pub fn stub_b8d0() -> ! {
     todo!("0xb8d0 __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")
 }
 
-#[doc(alias = "`non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
+#[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 // 0xb8e0 — __ZThn32_N19CRenderSettingsItemD1Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 pub fn stub_b8e0() -> ! {
     todo!("0xb8e0 __ZThn32_N19CRenderSettingsItemD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
+#[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 // 0xb8e8 — __ZThn32_N19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 pub fn stub_b8e8() -> ! {
@@ -518,14 +518,14 @@ pub fn stub_b900() -> ! {
     todo!("0xb900 __ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")
 }
 
-#[doc(alias = "`non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
+#[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 // 0xb910 — __ZThn36_N19CRenderSettingsItemD1Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 pub fn stub_b910() -> ! {
     todo!("0xb910 __ZThn36_N19CRenderSettingsItemD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
+#[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 // 0xb918 — __ZThn36_N19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 pub fn stub_b918() -> ! {

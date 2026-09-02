@@ -1,5 +1,5 @@
 //! core shard HU — 100 core stubs EA-sorted, 0x12f248..0x13c544 (continuation after HT 0x12ded0, core-local not yet in rbx_core, EA-sorted ascending, next 100 uncovered).
-//! Source: `ida/export.json` EA-sorted ascending, next 100 after 0x12ded0 not yet in rbx_core (global 0 uncovered, 85545 covered, 0 remaining; core 29528 covered, 56017 remaining core-local).
+//! Source: ida/export.json EA-sorted ascending, next 100 after 0x12ded0 not yet in rbx_core (global 0 uncovered, 85545 covered, 0 remaining; core 29528 covered, 56017 remaining core-local).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]

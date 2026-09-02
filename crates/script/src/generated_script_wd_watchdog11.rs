@@ -2,7 +2,7 @@
 // Filter: Script|Lua|Yield|CodeGen|Luau (filtered 4818 exhausted) — EA-sorted asc gap filler distinct not yet in crates/script/src
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: +120 stubs | range 0x53ce28..0x5477e4 | EA-sorted asc distinct not yet in script (remaining 55230->55110, rbx_core::SharedPtr not boost)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -320,7 +320,7 @@ pub fn stub_0x540278() -> ! {
     todo!("0x540278 __ZNK5boost9function1IvN3RBX9GuiObject11TweenStatusEEclES3_")
 }
 
-// 0x540634 — __GLOBAL__I_a_207 — `global constructor keyed to'_a_207
+// 0x540634 — __GLOBAL__I_a_207 — global constructor keyed to'_a_207
 #[doc(alias = "global constructor keyed to_a_207")]
 #[doc(alias = "__GLOBAL__I_a_207")]
 pub fn stub_0x540634() -> ! {
@@ -753,14 +753,14 @@ pub fn stub_0x546f10() -> ! {
     todo!("0x546f10 __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_11sGuiServiceEEE12getClassNameEv")
 }
 
-// 0x546f38 — __ZThn32_N3RBX10GuiServiceD1Ev — `non-virtual thunk to'RBX::GuiService::~GuiService()
+// 0x546f38 — __ZThn32_N3RBX10GuiServiceD1Ev — non-virtual thunk toRBX::GuiService::~GuiService()
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 #[doc(alias = "__ZThn32_N3RBX10GuiServiceD1Ev")]
 pub fn stub_0x546f38() -> ! {
     todo!("0x546f38 __ZThn32_N3RBX10GuiServiceD1Ev")
 }
 
-// 0x546f40 — __ZThn32_N3RBX10GuiServiceD0Ev — `non-virtual thunk to'RBX::GuiService::~GuiService()
+// 0x546f40 — __ZThn32_N3RBX10GuiServiceD0Ev — non-virtual thunk toRBX::GuiService::~GuiService()
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 #[doc(alias = "__ZThn32_N3RBX10GuiServiceD0Ev")]
 pub fn stub_0x546f40() -> ! {
@@ -773,14 +773,14 @@ pub fn stub_0x546fe4() -> ! {
     todo!("0x546fe4 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_11sGuiServiceEEE12getClassNameEv")
 }
 
-// 0x54700c — __ZThn36_N3RBX10GuiServiceD1Ev — `non-virtual thunk to'RBX::GuiService::~GuiService()
+// 0x54700c — __ZThn36_N3RBX10GuiServiceD1Ev — non-virtual thunk toRBX::GuiService::~GuiService()
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 #[doc(alias = "__ZThn36_N3RBX10GuiServiceD1Ev")]
 pub fn stub_0x54700c() -> ! {
     todo!("0x54700c __ZThn36_N3RBX10GuiServiceD1Ev")
 }
 
-// 0x547014 — __ZThn36_N3RBX10GuiServiceD0Ev — `non-virtual thunk to'RBX::GuiService::~GuiService()
+// 0x547014 — __ZThn36_N3RBX10GuiServiceD0Ev — non-virtual thunk toRBX::GuiService::~GuiService()
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 #[doc(alias = "__ZThn36_N3RBX10GuiServiceD0Ev")]
 pub fn stub_0x547014() -> ! {

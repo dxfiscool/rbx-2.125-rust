@@ -35,7 +35,7 @@ pub fn stub_35b88c() -> ! {
     todo!("0x35b88c __ZN3rbx14implementation12typed_holderIN3RBX6MeshIdEE13destruct_funcEPc")
 }
 
-// 0x35b890 — __GLOBAL__I_a_129 — `global constructor keyed to'_a_129
+// 0x35b890 — __GLOBAL__I_a_129 — global constructor keyed to'_a_129
 // type: 
 #[doc(alias = "__GLOBAL__I_a_129")]
 #[doc(alias = "global constructor keyed to_a_129")]
@@ -315,7 +315,7 @@ pub fn stub_35ccd0() -> ! {
     todo!("0x35ccd0 __ZN3RBX16queuing_rw_mutexC2Ev")
 }
 
-// 0x35ce18 — __GLOBAL__I_a_130 — `global constructor keyed to'_a_130
+// 0x35ce18 — __GLOBAL__I_a_130 — global constructor keyed to'_a_130
 // type: 
 #[doc(alias = "__GLOBAL__I_a_130")]
 #[doc(alias = "global constructor keyed to_a_130")]
@@ -419,7 +419,7 @@ pub fn stub_35db38() -> ! {
     todo!("0x35db38 __ZN3RBX17Matrix3ToNormalIdERKN3G3D7Matrix3E")
 }
 
-// 0x35db54 — __GLOBAL__I_a_131 — `global constructor keyed to'_a_131
+// 0x35db54 — __GLOBAL__I_a_131 — global constructor keyed to'_a_131
 // type: 
 #[doc(alias = "__GLOBAL__I_a_131")]
 #[doc(alias = "global constructor keyed to_a_131")]
@@ -587,7 +587,7 @@ pub fn stub_35e0dc() -> ! {
     todo!("0x35e0dc __ZNSt12_Vector_baseIiSaIiEE11_M_allocateEm")
 }
 
-// 0x35e0f4 — __GLOBAL__I_a_132 — `global constructor keyed to'_a_132
+// 0x35e0f4 — __GLOBAL__I_a_132 — global constructor keyed to'_a_132
 // type: 
 #[doc(alias = "__GLOBAL__I_a_132")]
 #[doc(alias = "global constructor keyed to_a_132")]

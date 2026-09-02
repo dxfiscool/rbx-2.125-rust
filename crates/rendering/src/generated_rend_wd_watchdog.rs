@@ -14,7 +14,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Jumping::~Jumping()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN7JumpingD0Ev")]
 pub fn stub_7d2e5c() -> ! {
-    todo!("0x7d2e5c `non-virtual thunk to'RBX::HUMAN::Jumping::~Jumping()")
+    todo!("0x7d2e5c non-virtual thunk toRBX::HUMAN::Jumping::~Jumping()")
 }
 
 
@@ -38,7 +38,7 @@ pub fn stub_7d2f04() -> ! {
 #[doc(alias = "global constructor keyed to_a_378")]
 #[doc(alias = "__GLOBAL__I_a_378")]
 pub fn stub_7d2fe4() -> ! {
-    todo!("0x7d2fe4 `global constructor keyed to'_a_378")
+    todo!("0x7d2fe4 global constructor keyed to'_a_378")
 }
 
 
@@ -84,7 +84,7 @@ pub fn stub_7d364c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::MovingNoPhysicsBase::~MovingNoPhysicsBase()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN19MovingNoPhysicsBaseD0Ev")]
 pub fn stub_7d3650() -> ! {
-    todo!("0x7d3650 `non-virtual thunk to'RBX::HUMAN::MovingNoPhysicsBase::~MovingNoPhysicsBase()")
+    todo!("0x7d3650 non-virtual thunk toRBX::HUMAN::MovingNoPhysicsBase::~MovingNoPhysicsBase()")
 }
 
 
@@ -102,7 +102,7 @@ pub fn stub_7d3658() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::MovingNoPhysicsBase::~MovingNoPhysicsBase()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN19MovingNoPhysicsBaseD1Ev")]
 pub fn stub_7d386c() -> ! {
-    todo!("0x7d386c `non-virtual thunk to'RBX::HUMAN::MovingNoPhysicsBase::~MovingNoPhysicsBase()")
+    todo!("0x7d386c non-virtual thunk toRBX::HUMAN::MovingNoPhysicsBase::~MovingNoPhysicsBase()")
 }
 
 
@@ -223,9 +223,9 @@ pub fn stub_7d410c() -> ! {
 // 0x7d4124 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf0IvNS5_5HUMAN19MovingNoPhysicsBaseEEENSB_5list1INSB_5valueIPSG_EEEEEELi2ES8_E4callES7_S7_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HUMAN::MovingNoPhysicsBase>,boost::_bi::list1<boost::_bi::value<RBX::HUMAN::MovingNoPhysicsBase*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf0IvNS5_5HUMAN19MovingNoPhysicsBaseEEENSB_5list1INSB_5valueIPSG_EEEEEELi2ES8_E4callES7_S7_")]
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HUMAN::MovingNoPhysicsBase>,boost::_bi::list1<boost::_bi::value<RBX::HUMAN::MovingNoPhysicsBase*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)
+// was: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HUMAN::MovingNoPhysicsBase>,boost::_bi::list1<boost::_bi::value<RBX::HUMAN::MovingNoPhysicsBase*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)
 pub fn stub_7d4124() -> ! {
-    todo!("0x7d4124 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HUMAN::MovingNoPhysicsBase>,boost::_bi::list1<boost::_bi::value<RBX::HUMAN::MovingNoPhysicsBase*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
+    todo!("0x7d4124 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::HUMAN::MovingNoPhysicsBase>,boost::_bi::list1<boost::_bi::value<RBX::HUMAN::MovingNoPhysicsBase*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
 }
 
 
@@ -251,7 +251,7 @@ pub fn stub_7d4168() -> ! {
 #[doc(alias = "global constructor keyed to_a_379")]
 #[doc(alias = "__GLOBAL__I_a_379")]
 pub fn stub_7d423c() -> ! {
-    todo!("0x7d423c `global constructor keyed to'_a_379")
+    todo!("0x7d423c global constructor keyed to'_a_379")
 }
 
 
@@ -329,7 +329,7 @@ pub fn stub_7d46c4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Climbing::~Climbing()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN8ClimbingD1Ev")]
 pub fn stub_7d4764() -> ! {
-    todo!("0x7d4764 `non-virtual thunk to'RBX::HUMAN::Climbing::~Climbing()")
+    todo!("0x7d4764 non-virtual thunk toRBX::HUMAN::Climbing::~Climbing()")
 }
 
 
@@ -338,7 +338,7 @@ pub fn stub_7d4764() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Climbing::~Climbing()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN8ClimbingD0Ev")]
 pub fn stub_7d476c() -> ! {
-    todo!("0x7d476c `non-virtual thunk to'RBX::HUMAN::Climbing::~Climbing()")
+    todo!("0x7d476c non-virtual thunk toRBX::HUMAN::Climbing::~Climbing()")
 }
 
 
@@ -382,7 +382,7 @@ pub fn stub_7d48dc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Running::~Running()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN7RunningD1Ev")]
 pub fn stub_7d48e0() -> ! {
-    todo!("0x7d48e0 `non-virtual thunk to'RBX::HUMAN::Running::~Running()")
+    todo!("0x7d48e0 non-virtual thunk toRBX::HUMAN::Running::~Running()")
 }
 
 
@@ -391,7 +391,7 @@ pub fn stub_7d48e0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Running::~Running()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN7RunningD0Ev")]
 pub fn stub_7d48e8() -> ! {
-    todo!("0x7d48e8 `non-virtual thunk to'RBX::HUMAN::Running::~Running()")
+    todo!("0x7d48e8 non-virtual thunk toRBX::HUMAN::Running::~Running()")
 }
 
 
@@ -426,7 +426,7 @@ pub fn stub_7d49b8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::RunningSlave::~RunningSlave()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN12RunningSlaveD1Ev")]
 pub fn stub_7d4a58() -> ! {
-    todo!("0x7d4a58 `non-virtual thunk to'RBX::HUMAN::RunningSlave::~RunningSlave()")
+    todo!("0x7d4a58 non-virtual thunk toRBX::HUMAN::RunningSlave::~RunningSlave()")
 }
 
 
@@ -435,7 +435,7 @@ pub fn stub_7d4a58() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::RunningSlave::~RunningSlave()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN12RunningSlaveD0Ev")]
 pub fn stub_7d4a60() -> ! {
-    todo!("0x7d4a60 `non-virtual thunk to'RBX::HUMAN::RunningSlave::~RunningSlave()")
+    todo!("0x7d4a60 non-virtual thunk toRBX::HUMAN::RunningSlave::~RunningSlave()")
 }
 
 
@@ -479,7 +479,7 @@ pub fn stub_7d4bd0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Landed::~Landed()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN6LandedD1Ev")]
 pub fn stub_7d4bd4() -> ! {
-    todo!("0x7d4bd4 `non-virtual thunk to'RBX::HUMAN::Landed::~Landed()")
+    todo!("0x7d4bd4 non-virtual thunk toRBX::HUMAN::Landed::~Landed()")
 }
 
 
@@ -488,7 +488,7 @@ pub fn stub_7d4bd4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Landed::~Landed()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN6LandedD0Ev")]
 pub fn stub_7d4bdc() -> ! {
-    todo!("0x7d4bdc `non-virtual thunk to'RBX::HUMAN::Landed::~Landed()")
+    todo!("0x7d4bdc non-virtual thunk toRBX::HUMAN::Landed::~Landed()")
 }
 
 
@@ -544,7 +544,7 @@ pub fn stub_7d4e4c() -> ! {
 #[doc(alias = "global constructor keyed to_a_380")]
 #[doc(alias = "__GLOBAL__I_a_380")]
 pub fn stub_7d4f2c() -> ! {
-    todo!("0x7d4f2c `global constructor keyed to'_a_380")
+    todo!("0x7d4f2c global constructor keyed to'_a_380")
 }
 
 
@@ -643,7 +643,7 @@ pub fn stub_7d6260() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::RunningBase::~RunningBase()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN11RunningBaseD1Ev")]
 pub fn stub_7d6300() -> ! {
-    todo!("0x7d6300 `non-virtual thunk to'RBX::HUMAN::RunningBase::~RunningBase()")
+    todo!("0x7d6300 non-virtual thunk toRBX::HUMAN::RunningBase::~RunningBase()")
 }
 
 
@@ -652,7 +652,7 @@ pub fn stub_7d6300() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::RunningBase::~RunningBase()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN11RunningBaseD0Ev")]
 pub fn stub_7d6308() -> ! {
-    todo!("0x7d6308 `non-virtual thunk to'RBX::HUMAN::RunningBase::~RunningBase()")
+    todo!("0x7d6308 non-virtual thunk toRBX::HUMAN::RunningBase::~RunningBase()")
 }
 
 
@@ -660,7 +660,7 @@ pub fn stub_7d6308() -> ! {
 #[doc(alias = "global constructor keyed to_a_381")]
 #[doc(alias = "__GLOBAL__I_a_381")]
 pub fn stub_7d63ac() -> ! {
-    todo!("0x7d63ac `global constructor keyed to'_a_381")
+    todo!("0x7d63ac global constructor keyed to'_a_381")
 }
 
 
@@ -739,7 +739,7 @@ pub fn stub_7d6834() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::RunningNoPhysics::~RunningNoPhysics()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN16RunningNoPhysicsD1Ev")]
 pub fn stub_7d6838() -> ! {
-    todo!("0x7d6838 `non-virtual thunk to'RBX::HUMAN::RunningNoPhysics::~RunningNoPhysics()")
+    todo!("0x7d6838 non-virtual thunk toRBX::HUMAN::RunningNoPhysics::~RunningNoPhysics()")
 }
 
 
@@ -748,7 +748,7 @@ pub fn stub_7d6838() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::RunningNoPhysics::~RunningNoPhysics()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN16RunningNoPhysicsD0Ev")]
 pub fn stub_7d6840() -> ! {
-    todo!("0x7d6840 `non-virtual thunk to'RBX::HUMAN::RunningNoPhysics::~RunningNoPhysics()")
+    todo!("0x7d6840 non-virtual thunk toRBX::HUMAN::RunningNoPhysics::~RunningNoPhysics()")
 }
 
 
@@ -772,7 +772,7 @@ pub fn stub_7d68e8() -> ! {
 #[doc(alias = "global constructor keyed to_a_382")]
 #[doc(alias = "__GLOBAL__I_a_382")]
 pub fn stub_7d69c8() -> ! {
-    todo!("0x7d69c8 `global constructor keyed to'_a_382")
+    todo!("0x7d69c8 global constructor keyed to'_a_382")
 }
 
 
@@ -815,7 +815,7 @@ pub fn stub_7d6d7c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Seated::~Seated()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN6SeatedD0Ev")]
 pub fn stub_7d6d80() -> ! {
-    todo!("0x7d6d80 `non-virtual thunk to'RBX::HUMAN::Seated::~Seated()")
+    todo!("0x7d6d80 non-virtual thunk toRBX::HUMAN::Seated::~Seated()")
 }
 
 
@@ -833,7 +833,7 @@ pub fn stub_7d6d88() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Seated::~Seated()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN6SeatedD1Ev")]
 pub fn stub_7d6e7c() -> ! {
-    todo!("0x7d6e7c `non-virtual thunk to'RBX::HUMAN::Seated::~Seated()")
+    todo!("0x7d6e7c non-virtual thunk toRBX::HUMAN::Seated::~Seated()")
 }
 
 
@@ -876,7 +876,7 @@ pub fn stub_7d6ffc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::PlatformStanding::~PlatformStanding()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN16PlatformStandingD0Ev")]
 pub fn stub_7d7000() -> ! {
-    todo!("0x7d7000 `non-virtual thunk to'RBX::HUMAN::PlatformStanding::~PlatformStanding()")
+    todo!("0x7d7000 non-virtual thunk toRBX::HUMAN::PlatformStanding::~PlatformStanding()")
 }
 
 
@@ -894,7 +894,7 @@ pub fn stub_7d7008() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::PlatformStanding::~PlatformStanding()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN16PlatformStandingD1Ev")]
 pub fn stub_7d70fc() -> ! {
-    todo!("0x7d70fc `non-virtual thunk to'RBX::HUMAN::PlatformStanding::~PlatformStanding()")
+    todo!("0x7d70fc non-virtual thunk toRBX::HUMAN::PlatformStanding::~PlatformStanding()")
 }
 
 
@@ -1022,7 +1022,7 @@ pub fn stub_7d725c() -> ! {
 #[doc(alias = "global constructor keyed to_a_383")]
 #[doc(alias = "__GLOBAL__I_a_383")]
 pub fn stub_7d733c() -> ! {
-    todo!("0x7d733c `global constructor keyed to'_a_383")
+    todo!("0x7d733c global constructor keyed to'_a_383")
 }
 
 

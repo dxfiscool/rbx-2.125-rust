@@ -90,7 +90,7 @@ pub fn stub_3970c0() -> ! {
     todo!("0x3970c0 __ZNK3RBX14FactoryProductINS_9AnimationENS_8InstanceELZNS_10sAnimationEES2_E12getClassNameEv")
 }
 
-// 0x3970d0 — __ZThn32_N3RBX9AnimationD1Ev — `non-virtual thunk to'RBX::Animation::~Animation()
+// 0x3970d0 — __ZThn32_N3RBX9AnimationD1Ev — non-virtual thunk toRBX::Animation::~Animation()
 // type: void __fastcall(RBX::Animation *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Animation::~Animation()")]
 #[doc(alias = "__ZThn32_N3RBX9AnimationD1Ev")]
@@ -98,7 +98,7 @@ pub fn stub_3970d0() -> ! {
     todo!("0x3970d0 __ZThn32_N3RBX9AnimationD1Ev")
 }
 
-// 0x3971b4 — __ZThn32_N3RBX9AnimationD0Ev — `non-virtual thunk to'RBX::Animation::~Animation()
+// 0x3971b4 — __ZThn32_N3RBX9AnimationD0Ev — non-virtual thunk toRBX::Animation::~Animation()
 // type: void __fastcall(RBX::Animation *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Animation::~Animation()")]
 #[doc(alias = "__ZThn32_N3RBX9AnimationD0Ev")]
@@ -113,7 +113,7 @@ pub fn stub_3972ac() -> ! {
     todo!("0x3972ac __ZThn32_NK3RBX14FactoryProductINS_9AnimationENS_8InstanceELZNS_10sAnimationEES2_E12getClassNameEv")
 }
 
-// 0x3972bc — __ZThn36_N3RBX9AnimationD1Ev — `non-virtual thunk to'RBX::Animation::~Animation()
+// 0x3972bc — __ZThn36_N3RBX9AnimationD1Ev — non-virtual thunk toRBX::Animation::~Animation()
 // type: void __fastcall(RBX::Animation *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Animation::~Animation()")]
 #[doc(alias = "__ZThn36_N3RBX9AnimationD1Ev")]
@@ -121,7 +121,7 @@ pub fn stub_3972bc() -> ! {
     todo!("0x3972bc __ZThn36_N3RBX9AnimationD1Ev")
 }
 
-// 0x3973a0 — __ZThn36_N3RBX9AnimationD0Ev — `non-virtual thunk to'RBX::Animation::~Animation()
+// 0x3973a0 — __ZThn36_N3RBX9AnimationD0Ev — non-virtual thunk toRBX::Animation::~Animation()
 // type: void __fastcall(RBX::Animation *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Animation::~Animation()")]
 #[doc(alias = "__ZThn36_N3RBX9AnimationD0Ev")]
@@ -306,7 +306,7 @@ pub fn stub_3980f8() -> ! {
     todo!("0x3980f8 __ZNK3RBX10Reflection14PropDescriptorINS_9AnimationENS_11AnimationIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")
 }
 
-// 0x398240 — __GLOBAL__I_a_155 — `global constructor keyed to'_a_155
+// 0x398240 — __GLOBAL__I_a_155 — global constructor keyed to'_a_155
 #[doc(alias = "global constructor keyed to_a_155")]
 #[doc(alias = "__GLOBAL__I_a_155")]
 pub fn stub_398240() -> ! {
@@ -385,7 +385,7 @@ pub fn stub_398f20() -> ! {
     todo!("0x398f20 __ZN3RBX14AnimationTrackD1Ev")
 }
 
-// 0x398f24 — __ZThn32_N3RBX14AnimationTrackD0Ev — `non-virtual thunk to'RBX::AnimationTrack::~AnimationTrack()
+// 0x398f24 — __ZThn32_N3RBX14AnimationTrackD0Ev — non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()
 // type: void __fastcall(RBX::AnimationTrack *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()")]
 #[doc(alias = "__ZThn32_N3RBX14AnimationTrackD0Ev")]
@@ -393,7 +393,7 @@ pub fn stub_398f24() -> ! {
     todo!("0x398f24 __ZThn32_N3RBX14AnimationTrackD0Ev")
 }
 
-// 0x398f2c — __ZThn36_N3RBX14AnimationTrackD0Ev — `non-virtual thunk to'RBX::AnimationTrack::~AnimationTrack()
+// 0x398f2c — __ZThn36_N3RBX14AnimationTrackD0Ev — non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()
 // type: void __fastcall(RBX::AnimationTrack *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()")]
 #[doc(alias = "__ZThn36_N3RBX14AnimationTrackD0Ev")]
@@ -409,7 +409,7 @@ pub fn stub_398f34() -> ! {
     todo!("0x398f34 __ZN3RBX14AnimationTrackD2Ev")
 }
 
-// 0x3991a8 — __ZThn32_N3RBX14AnimationTrackD1Ev — `non-virtual thunk to'RBX::AnimationTrack::~AnimationTrack()
+// 0x3991a8 — __ZThn32_N3RBX14AnimationTrackD1Ev — non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()
 // type: void __fastcall(RBX::AnimationTrack *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()")]
 #[doc(alias = "__ZThn32_N3RBX14AnimationTrackD1Ev")]
@@ -417,7 +417,7 @@ pub fn stub_3991a8() -> ! {
     todo!("0x3991a8 __ZThn32_N3RBX14AnimationTrackD1Ev")
 }
 
-// 0x3991b0 — __ZThn36_N3RBX14AnimationTrackD1Ev — `non-virtual thunk to'RBX::AnimationTrack::~AnimationTrack()
+// 0x3991b0 — __ZThn36_N3RBX14AnimationTrackD1Ev — non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()
 // type: void __fastcall(RBX::AnimationTrack *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()")]
 #[doc(alias = "__ZThn36_N3RBX14AnimationTrackD1Ev")]
@@ -530,7 +530,7 @@ pub fn stub_399600() -> ! {
     todo!("0x399600 __ZN3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX14AnimationTrackESsEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callESs")
 }
 
-// 0x39961c — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX14AnimationTrackESsEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callESs — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::AnimationTrack,std::string>,boost::_bi::list2<boost::_bi::value<RBX::AnimationTrack*>,boost::arg<1>>>,1,void ()(std::string)>::call(std::string)
+// 0x39961c — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX14AnimationTrackESsEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callESs — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::AnimationTrack,std::string>,boost::_bi::list2<boost::_bi::value<RBX::AnimationTrack*>,boost::arg<1>>>,1,void ()(std::string)>::call(std::string)
 // type: int __fastcall(int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::AnimationTrack,std::string>,boost::_bi::list2<boost::_bi::value<RBX::AnimationTrack*>,boost::arg<1>>>,1,void ()(std::string)>::call(std::string)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX14AnimationTrackESsEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callESs")]

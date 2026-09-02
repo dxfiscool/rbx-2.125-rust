@@ -2,7 +2,7 @@
 // Filter: demangled contains RBX::Instance|RBX::DataModel|RBX::Workspace (exact), EA-sorted asc high EA gap filler not yet in any crate
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 120 stubs | range 0xf342d4..0xf35614 | total filtered 10215, high EA >0xF40000 none remaining (all high covered), using gap filler highest remaining 0xf342d4..0xf35614 (250->130 remaining RBX filtered), EA-sorted asc
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

@@ -106,7 +106,7 @@ pub fn stub_72e338() -> ! {
 #[doc(alias = "__GLOBAL__I_a_311")]
 // was: __GLOBAL__I_a_311
 pub fn stub_72e484() -> ! {
-    todo!("0x72e484 `global constructor keyed to'_a_311")
+    todo!("0x72e484 global constructor keyed to'_a_311")
 }
 
 // 0x72f230 — __ZN3RBX11SpatialHashINS_9PrimitiveENS_7ContactENS_14ContactManagerELi4EE26getPrimitivesTouchingGridsERKNS_7ExtentsEPKS1_mRN5boost9unordered13unordered_setIPS1_NSA_4hashISD_EESt8equal_toISD_ESaISD_EEE
@@ -142,7 +142,7 @@ pub fn stub_72f888() -> ! {
 #[doc(alias = "__GLOBAL__I_a_312")]
 // was: __GLOBAL__I_a_312
 pub fn stub_72fcdc() -> ! {
-    todo!("0x72fcdc `global constructor keyed to'_a_312")
+    todo!("0x72fcdc global constructor keyed to'_a_312")
 }
 
 // 0x730384 — __GLOBAL__I_a_313
@@ -151,7 +151,7 @@ pub fn stub_72fcdc() -> ! {
 #[doc(alias = "__GLOBAL__I_a_313")]
 // was: __GLOBAL__I_a_313
 pub fn stub_730384() -> ! {
-    todo!("0x730384 `global constructor keyed to'_a_313")
+    todo!("0x730384 global constructor keyed to'_a_313")
 }
 
 // 0x7304b4 — __ZN3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEEC1Ev
@@ -187,7 +187,7 @@ pub fn stub_730774() -> ! {
 #[doc(alias = "__GLOBAL__I_a_314")]
 // was: __GLOBAL__I_a_314
 pub fn stub_730fc4() -> ! {
-    todo!("0x730fc4 `global constructor keyed to'_a_314")
+    todo!("0x730fc4 global constructor keyed to'_a_314")
 }
 
 // 0x7324f0 — __ZN5boost14singleton_poolIN3RBX4POLY15CornerWedgeMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv
@@ -214,7 +214,7 @@ pub fn stub_732520() -> ! {
 #[doc(alias = "__GLOBAL__I_a_315")]
 // was: __GLOBAL__I_a_315
 pub fn stub_7327c0() -> ! {
-    todo!("0x7327c0 `global constructor keyed to'_a_315")
+    todo!("0x7327c0 global constructor keyed to'_a_315")
 }
 
 // 0x732998 — __GLOBAL__I_a_316
@@ -223,7 +223,7 @@ pub fn stub_7327c0() -> ! {
 #[doc(alias = "__GLOBAL__I_a_316")]
 // was: __GLOBAL__I_a_316
 pub fn stub_732998() -> ! {
-    todo!("0x732998 `global constructor keyed to'_a_316")
+    todo!("0x732998 global constructor keyed to'_a_316")
 }
 
 // 0x733194 — __ZN3RBX8Assembly19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_10EdgeBufferEPNS_9PrimitiveEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvT_S9_
@@ -241,7 +241,7 @@ pub fn stub_733194() -> ! {
 #[doc(alias = "__GLOBAL__I_a_317")]
 // was: __GLOBAL__I_a_317
 pub fn stub_733288() -> ! {
-    todo!("0x733288 `global constructor keyed to'_a_317")
+    todo!("0x733288 global constructor keyed to'_a_317")
 }
 
 // 0x7336a8 — __GLOBAL__I_a_318
@@ -250,7 +250,7 @@ pub fn stub_733288() -> ! {
 #[doc(alias = "__GLOBAL__I_a_318")]
 // was: __GLOBAL__I_a_318
 pub fn stub_7336a8() -> ! {
-    todo!("0x7336a8 `global constructor keyed to'_a_318")
+    todo!("0x7336a8 global constructor keyed to'_a_318")
 }
 
 // 0x7382a4 — __ZNK3RBX5Joint14otherConstNodeEPKNS_12SpanningNodeE
@@ -268,7 +268,7 @@ pub fn stub_7382a4() -> ! {
 #[doc(alias = "__ZThn32_NK3RBX5Joint14otherConstNodeEPKNS_12SpanningNodeE")]
 // was: __ZThn32_NK3RBX5Joint14otherConstNodeEPKNS_12SpanningNodeE
 pub fn stub_7382c0() -> ! {
-    todo!("0x7382c0 `non-virtual thunk to'RBX::Joint::otherConstNode(RBX::SpanningNode const*)const")
+    todo!("0x7382c0 non-virtual thunk toRBX::Joint::otherConstNode(RBX::SpanningNode const*)const")
 }
 
 // 0x7382e0 — __ZN3RBX5Joint7getNodeEi
@@ -286,7 +286,7 @@ pub fn stub_7382e0() -> ! {
 #[doc(alias = "__ZThn32_N3RBX5Joint7getNodeEi")]
 // was: __ZThn32_N3RBX5Joint7getNodeEi
 pub fn stub_7382f0() -> ! {
-    todo!("0x7382f0 `non-virtual thunk to'RBX::Joint::getNode(int)")
+    todo!("0x7382f0 non-virtual thunk toRBX::Joint::getNode(int)")
 }
 
 // 0x738300 — __ZNK3RBX5Joint12getConstNodeEi
@@ -304,7 +304,7 @@ pub fn stub_738300() -> ! {
 #[doc(alias = "__ZThn32_NK3RBX5Joint12getConstNodeEi")]
 // was: __ZThn32_NK3RBX5Joint12getConstNodeEi
 pub fn stub_738310() -> ! {
-    todo!("0x738310 `non-virtual thunk to'RBX::Joint::getConstNode(int)const")
+    todo!("0x738310 non-virtual thunk toRBX::Joint::getConstNode(int)const")
 }
 
 // 0x738320 — __ZN3RBX5Joint22FaceVerticesOverlappedEPKNS_9PrimitiveEmS3_mf
@@ -565,7 +565,7 @@ pub fn stub_739a90() -> ! {
 #[doc(alias = "__GLOBAL__I_a_324")]
 // was: __GLOBAL__I_a_324
 pub fn stub_739adc() -> ! {
-    todo!("0x739adc `global constructor keyed to'_a_324")
+    todo!("0x739adc global constructor keyed to'_a_324")
 }
 
 // 0x739e3c — __ZN3RBX12JointBuilder7canJoinEPNS_9PrimitiveES2_
@@ -583,7 +583,7 @@ pub fn stub_739e3c() -> ! {
 #[doc(alias = "__GLOBAL__I_a_325")]
 // was: __GLOBAL__I_a_325
 pub fn stub_739f24() -> ! {
-    todo!("0x739f24 `global constructor keyed to'_a_325")
+    todo!("0x739f24 global constructor keyed to'_a_325")
 }
 
 // 0x73a0f0 — __ZN3RBX10JointStageC1EPNS_6IStageEPNS_5WorldE
@@ -826,7 +826,7 @@ pub fn stub_73b2a8() -> ! {
 #[doc(alias = "__GLOBAL__I_a_326")]
 // was: __GLOBAL__I_a_326
 pub fn stub_73b2d0() -> ! {
-    todo!("0x73b2d0 `global constructor keyed to'_a_326")
+    todo!("0x73b2d0 global constructor keyed to'_a_326")
 }
 
 // 0x73b398 — __ZN3RBX11KernelJoint11putInKernelEPNS_6KernelE
@@ -853,7 +853,7 @@ pub fn stub_73b3b4() -> ! {
 #[doc(alias = "__GLOBAL__I_a_327")]
 // was: __GLOBAL__I_a_327
 pub fn stub_73b3d0() -> ! {
-    todo!("0x73b3d0 `global constructor keyed to'_a_327")
+    todo!("0x73b3d0 global constructor keyed to'_a_327")
 }
 
 // 0x73b500 — __ZN3RBX10Reflection8EnumDescINS_11SurfaceTypeEEC1Ev

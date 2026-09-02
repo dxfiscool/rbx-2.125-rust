@@ -924,7 +924,7 @@ pub fn stub_25f028() -> ! {
 // 0x25f04c — __GLOBAL__I_a_56
 #[doc(alias = "global constructor keyed to_a_56")]
 pub fn stub_25f04c() -> ! {
-    todo!("0x25f04c `global constructor keyed to'_a_56")
+    todo!("0x25f04c global constructor keyed to'_a_56")
 }
 
 // 0x25f54c — __ZN3RBX10Reflection15EventDescriptorC2ERNS0_15ClassDescriptorEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE

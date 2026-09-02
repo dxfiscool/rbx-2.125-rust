@@ -14961,3 +14961,5 @@ pub mod generated_audio_wd_watchdog_Y;
 pub mod generated_audio_wd_watchdog23;
 pub mod generated_audio_wdcron_A;
 pub mod generated_audio_wdcron_B;
+pub mod generated_audio_wdog_B;
+pub mod generated_audio_wdcron_C;

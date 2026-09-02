@@ -1,5 +1,5 @@
 //! core gap wd watchdog — 120 stubs EA-sorted asc global gap filler next uncovered distinct not yet in crates/core/src.
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc, next 120 not yet in crates/core/src (48509 stubbed before, 48629 after, batch 0x4c7dc0..0x4ce260).
+//! Source: ida/export.json (85545 funcs) EA-sorted asc, next 120 not yet in crates/core/src (48509 stubbed before, 48629 after, batch 0x4c7dc0..0x4ce260).
 //! Filter: global (no filter) EA asc, distinct, sanitized uses rbx_core::SharedPtr not boost.
 //! Format: // 0xADDR — mangled + #[doc(alias)] + todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.

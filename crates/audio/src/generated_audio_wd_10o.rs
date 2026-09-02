@@ -194,7 +194,7 @@ pub fn stub_5e2b68() -> ! {
 }
 
 // 0x5e2b94 — __ZThn92_N3RBX12PartInstance14getPrimaryPartEv
-// demangled: `non-virtual thunk to'RBX::PartInstance::getPrimaryPart(void)
+// demangled: non-virtual thunk toRBX::PartInstance::getPrimaryPart(void)
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::getPrimaryPart(void)")]
 #[doc(alias = "__ZThn92_N3RBX12PartInstance14getPrimaryPartEv")]
@@ -261,7 +261,7 @@ pub fn stub_5e2bc0() -> ! {
 }
 
 // 0x5e2bd0 — __ZTv0_n12_N3RBX12PartInstance11getLocationEv
-// demangled: `virtual thunk to'RBX::PartInstance::getLocation(void)
+// demangled: virtual thunk to'RBX::PartInstance::getLocation(void)
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "virtual thunk toRBX::PartInstance::getLocation(void)")]
 #[doc(alias = "__ZTv0_n12_N3RBX12PartInstance11getLocationEv")]
@@ -279,7 +279,7 @@ pub fn stub_5e2c00() -> ! {
 }
 
 // 0x5e2c08 — __ZThn132_N3RBX12PartInstance17getRenderLocationEv
-// demangled: `non-virtual thunk to'RBX::PartInstance::getRenderLocation(void)
+// demangled: non-virtual thunk toRBX::PartInstance::getRenderLocation(void)
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::getRenderLocation(void)")]
 #[doc(alias = "__ZThn132_N3RBX12PartInstance17getRenderLocationEv")]
@@ -288,7 +288,7 @@ pub fn stub_5e2c08() -> ! {
 }
 
 // 0x5e2c14 — __ZThn132_N3RBX12PartInstance13getRenderSizeEv
-// demangled: `non-virtual thunk to'RBX::PartInstance::getRenderSize(void)
+// demangled: non-virtual thunk toRBX::PartInstance::getRenderSize(void)
 // type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::getRenderSize(void)")]
 #[doc(alias = "__ZThn132_N3RBX12PartInstance13getRenderSizeEv")]
@@ -297,7 +297,7 @@ pub fn stub_5e2c14() -> ! {
 }
 
 // 0x5e2c30 — __ZThn132_N3RBX12PartInstance25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE
-// demangled: `non-virtual thunk to'RBX::PartInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)
+// demangled: non-virtual thunk toRBX::PartInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
 #[doc(alias = "__ZThn132_N3RBX12PartInstance25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE")]
 pub fn stub_5e2c30() -> ! {
@@ -701,7 +701,7 @@ pub fn stub_5e4100() -> ! {
 }
 
 // 0x5e4228 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED0Ev
-// demangled: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()
+// demangled: non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED0Ev")]
 pub fn stub_5e4228() -> ! {
@@ -709,7 +709,7 @@ pub fn stub_5e4228() -> ! {
 }
 
 // 0x5e4240 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEE5cloneEv
-// demangled: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::clone(void)const
+// demangled: virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::clone(void)const
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::clone(void)const")]
 #[doc(alias = "__ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEE5cloneEv")]
 pub fn stub_5e4240() -> ! {

@@ -456,7 +456,7 @@ pub fn stub_1d84c() -> ! {
 }
 
 // 0x1d870 — __GLOBAL__I_a_4
-// demangled: `global constructor keyed to'_a_4
+// demangled: global constructor keyed to'_a_4
 // type: 
 #[doc(alias = "global constructor keyed to_a_4")]
 pub fn stub_1d870() -> ! {

@@ -152,7 +152,7 @@ pub fn stub_0x1050d4() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dspdelay_desc")]
 #[doc(alias = "__GLOBAL__I__ZN4FMOD13dspdelay_descE")]
 pub fn stub_0x105118() -> ! {
-    todo!("0x105118 `global constructor keyed to'FMOD::dspdelay_desc")
+    todo!("0x105118 global constructor keyed to'FMOD::dspdelay_desc")
 }
 
 // 0x105124 — __ZN4FMOD10DSPTremolo12readLFOTableEibPf
@@ -336,7 +336,7 @@ pub fn stub_0x106450() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dsptremolo_desc")]
 #[doc(alias = "__GLOBAL__I__ZN4FMOD15dsptremolo_descE")]
 pub fn stub_0x106494() -> ! {
-    todo!("0x106494 `global constructor keyed to'FMOD::dsptremolo_desc")
+    todo!("0x106494 global constructor keyed to'FMOD::dsptremolo_desc")
 }
 
 // 0x1064a0 — __ZN4FMOD17HistoryBufferPoolC2Ev
@@ -569,7 +569,7 @@ pub fn stub_0x1079e8() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::CodecAudioQueue::gCodecHead")]
 #[doc(alias = "__GLOBAL__I__ZN4FMOD15CodecAudioQueue10gCodecHeadE")]
 pub fn stub_0x107a1c() -> ! {
-    todo!("0x107a1c `global constructor keyed to'FMOD::CodecAudioQueue::gCodecHead")
+    todo!("0x107a1c global constructor keyed to'FMOD::CodecAudioQueue::gCodecHead")
 }
 
 // 0x107a28 — __ZL22FreeImage_GetImageSizeiii

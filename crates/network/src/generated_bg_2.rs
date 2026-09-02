@@ -145,7 +145,7 @@ pub fn stub_58a08() -> ! {
     todo!("0x58a08 -[UIWebViewCacheManager getPreloadedWebViewForUrl:]")
 }
 
-// 0x58bb0 — `global constructor keyed to'_a_30
+// 0x58bb0 — global constructor keyed to'_a_30
 #[doc(alias = "global constructor keyed to_a_30")]
 pub fn stub_58bb0() -> ! {
     todo!("0x58bb0 global constructor keyed to_a_30")
@@ -389,7 +389,7 @@ pub fn stub_5b150() -> ! {
     todo!("0x5b150 -[LoginManager processFailureLogoutResponse:]")
 }
 
-// 0x5b3d8 — `global constructor keyed to'_a_31
+// 0x5b3d8 — global constructor keyed to'_a_31
 #[doc(alias = "global constructor keyed to_a_31")]
 pub fn stub_5b3d8() -> ! {
     todo!("0x5b3d8 global constructor keyed to_a_31")

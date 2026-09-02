@@ -1,5 +1,5 @@
 //! core shard nu — 23 core stubs EA-sorted asc fallback not yet in core after nt (final core fallback).
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc, next 23 not yet in core (fallback excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound; 23 uncovered before -> 0 after, batch 0xf6e964..0xf6ea6c final).
+//! Source: ida/export.json (85545 funcs) EA-sorted asc, next 23 not yet in core (fallback excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound; 23 uncovered before -> 0 after, batch 0xf6e964..0xf6ea6c final).
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 

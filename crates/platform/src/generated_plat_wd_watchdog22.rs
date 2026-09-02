@@ -74,7 +74,7 @@ pub fn stub_4a50e4() -> ! {
     todo!("0x4a50e4 __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotENS3_8functionIS8_EELi2ES8_E4callES7_f")
 }
 
-// 0x4a51bc — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotENS3_8functionIS8_EELi2ES8_E4callES7_f — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::call(boost::shared_ptr<RBX::Instance>,float)
+// 0x4a51bc — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotENS3_8functionIS8_EELi2ES8_E4callES7_f — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::call(boost::shared_ptr<RBX::Instance>,float)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::call(boost::shared_ptr<RBX::Instance>,float)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotENS3_8functionIS8_EELi2ES8_E4callES7_f")]
 pub fn stub_4a51bc() -> ! {
@@ -494,7 +494,7 @@ pub fn stub_4a6870() -> ! {
     todo!("0x4a6870 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9Explosion13ExplosionTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
 }
 
-// 0x4a6898 — __GLOBAL__I_a_188 — `global constructor keyed to'_a_188
+// 0x4a6898 — __GLOBAL__I_a_188 — global constructor keyed to'_a_188
 #[doc(alias = "global constructor keyed to_a_188")]
 #[doc(alias = "__GLOBAL__I_a_188")]
 pub fn stub_4a6898() -> ! {
@@ -529,42 +529,42 @@ pub fn stub_4a7234() -> ! {
     todo!("0x4a7234 __ZN3RBX20ExtrudedPartInstanceD1Ev")
 }
 
-// 0x4a7244 — __ZThn32_N3RBX20ExtrudedPartInstanceD0Ev — `non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance() — void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
+// 0x4a7244 — __ZThn32_N3RBX20ExtrudedPartInstanceD0Ev — non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance() — void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 #[doc(alias = "__ZThn32_N3RBX20ExtrudedPartInstanceD0Ev")]
 pub fn stub_4a7244() -> ! {
     todo!("0x4a7244 __ZThn32_N3RBX20ExtrudedPartInstanceD0Ev")
 }
 
-// 0x4a724c — __ZThn36_N3RBX20ExtrudedPartInstanceD0Ev — `non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance() — void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
+// 0x4a724c — __ZThn36_N3RBX20ExtrudedPartInstanceD0Ev — non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance() — void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 #[doc(alias = "__ZThn36_N3RBX20ExtrudedPartInstanceD0Ev")]
 pub fn stub_4a724c() -> ! {
     todo!("0x4a724c __ZThn36_N3RBX20ExtrudedPartInstanceD0Ev")
 }
 
-// 0x4a7254 — __ZThn132_N3RBX20ExtrudedPartInstanceD0Ev — `non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance() — void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
+// 0x4a7254 — __ZThn132_N3RBX20ExtrudedPartInstanceD0Ev — non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance() — void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 #[doc(alias = "__ZThn132_N3RBX20ExtrudedPartInstanceD0Ev")]
 pub fn stub_4a7254() -> ! {
     todo!("0x4a7254 __ZThn132_N3RBX20ExtrudedPartInstanceD0Ev")
 }
 
-// 0x4a725c — __ZThn32_N3RBX20ExtrudedPartInstanceD1Ev — `non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance() — void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
+// 0x4a725c — __ZThn32_N3RBX20ExtrudedPartInstanceD1Ev — non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance() — void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 #[doc(alias = "__ZThn32_N3RBX20ExtrudedPartInstanceD1Ev")]
 pub fn stub_4a725c() -> ! {
     todo!("0x4a725c __ZThn32_N3RBX20ExtrudedPartInstanceD1Ev")
 }
 
-// 0x4a7270 — __ZThn36_N3RBX20ExtrudedPartInstanceD1Ev — `non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance() — void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
+// 0x4a7270 — __ZThn36_N3RBX20ExtrudedPartInstanceD1Ev — non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance() — void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 #[doc(alias = "__ZThn36_N3RBX20ExtrudedPartInstanceD1Ev")]
 pub fn stub_4a7270() -> ! {
     todo!("0x4a7270 __ZThn36_N3RBX20ExtrudedPartInstanceD1Ev")
 }
 
-// 0x4a7284 — __ZThn132_N3RBX20ExtrudedPartInstanceD1Ev — `non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance() — void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
+// 0x4a7284 — __ZThn132_N3RBX20ExtrudedPartInstanceD1Ev — non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance() — void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 #[doc(alias = "__ZThn132_N3RBX20ExtrudedPartInstanceD1Ev")]
 pub fn stub_4a7284() -> ! {

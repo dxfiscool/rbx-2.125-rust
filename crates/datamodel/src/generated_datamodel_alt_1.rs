@@ -3,7 +3,7 @@
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 120 stubs | range 0xf75b90..0xf76300 | EA-sorted asc distinct not in crates/datamodel/src synthetic 0x10 step after 0xf75b80 (rbx_core::SharedPtr not boost)
 // Shard: datamodel alt 120 synthetic after watchdog_dm_w2
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

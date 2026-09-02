@@ -1,5 +1,5 @@
 //! core shard lu — 150 core stubs EA-sorted, next uncovered fallback after shard lt (0xef3e7c..0xefa4fc, lowest EA first).
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc, filtered where demangled/mangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound (33260 remaining, 3503 uncovered before -> 3353 after, rbx_core::SharedPtr not boost) [skeleton batch].
+//! Source: ida/export.json (85545 funcs) EA-sorted asc, filtered where demangled/mangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound (33260 remaining, 3503 uncovered before -> 3353 after, rbx_core::SharedPtr not boost) [skeleton batch].
 //! Format: // 0xADDR — mangled + #[doc(alias = "mangled")] + pub fn stub_0xADDR todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 

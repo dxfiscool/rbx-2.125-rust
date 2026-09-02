@@ -403,7 +403,7 @@ pub fn stub_701f98() -> ! {
 #[doc(alias = "__ZThn32_N3RBX8InstanceD0Ev")]
 // was: __ZThn32_N3RBX8InstanceD0Ev
 pub fn stub_701f9c() -> ! {
-    todo!("0x701f9c `non-virtual thunk to'RBX::Instance::~Instance()")
+    todo!("0x701f9c non-virtual thunk toRBX::Instance::~Instance()")
 }
 
 // 0x701fa4 — __ZThn36_N3RBX8InstanceD0Ev
@@ -412,7 +412,7 @@ pub fn stub_701f9c() -> ! {
 #[doc(alias = "__ZThn36_N3RBX8InstanceD0Ev")]
 // was: __ZThn36_N3RBX8InstanceD0Ev
 pub fn stub_701fa4() -> ! {
-    todo!("0x701fa4 `non-virtual thunk to'RBX::Instance::~Instance()")
+    todo!("0x701fa4 non-virtual thunk toRBX::Instance::~Instance()")
 }
 
 // 0x701fac — __ZN3RBX8InstanceD2Ev
@@ -430,7 +430,7 @@ pub fn stub_701fac() -> ! {
 #[doc(alias = "__ZThn32_N3RBX8InstanceD1Ev")]
 // was: __ZThn32_N3RBX8InstanceD1Ev
 pub fn stub_7023a8() -> ! {
-    todo!("0x7023a8 `non-virtual thunk to'RBX::Instance::~Instance()")
+    todo!("0x7023a8 non-virtual thunk toRBX::Instance::~Instance()")
 }
 
 // 0x7023b0 — __ZThn36_N3RBX8InstanceD1Ev
@@ -439,7 +439,7 @@ pub fn stub_7023a8() -> ! {
 #[doc(alias = "__ZThn36_N3RBX8InstanceD1Ev")]
 // was: __ZThn36_N3RBX8InstanceD1Ev
 pub fn stub_7023b0() -> ! {
-    todo!("0x7023b0 `non-virtual thunk to'RBX::Instance::~Instance()")
+    todo!("0x7023b0 non-virtual thunk toRBX::Instance::~Instance()")
 }
 
 // 0x7023b8 — __ZN3RBX8Instance7destroyEv

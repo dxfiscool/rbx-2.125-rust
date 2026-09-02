@@ -2,7 +2,7 @@
 // Filter: RakNet|RBX::Network|Replicator|replica|remote (case-insensitive) -> 5974 funcs, all already stubbed (0 remaining)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: +100 stubs | range 0x25c0f0..0x293bd8 | existing 6359 -> 6459 total (filler global ascending, 0x25c0f0 gap)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

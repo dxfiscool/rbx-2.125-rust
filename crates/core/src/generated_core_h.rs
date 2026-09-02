@@ -1,5 +1,5 @@
 //! generated_core_h — 150 core stubs EA-sorted, next after generated_core_g.
-//! Source: `ida/export.json` filtered where demangled/mangled contains "boost" or "rbx::signals", excluding Reflection/Instance/Ogre/RakNet/Network, sorted by EA, next 150 uncovered (lowest EA first).
+//! Source: ida/export.json filtered where demangled/mangled contains "boost" or "rbx::signals", excluding Reflection/Instance/Ogre/RakNet/Network, sorted by EA, next 150 uncovered (lowest EA first).
 //! Sanitized: single quotes removed, boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr.
 
 #[doc(alias = "boost::exception_detail::refcount_ptr<boost::exception_detail::error_info_container>::~refcount_ptr()")]

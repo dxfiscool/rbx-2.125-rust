@@ -71,30 +71,30 @@ pub fn stub_0637708() -> ! {
 }
 
 // 0x063770c — __ZThn32_N3RBX5SmokeD0Ev
-// demangled: `non-virtual thunk to'RBX::Smoke::~Smoke()
+// demangled: non-virtual thunk toRBX::Smoke::~Smoke()
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
 #[doc(alias = "__ZThn32_N3RBX5SmokeD0Ev")]
 pub fn stub_063770c() -> ! {
-    todo!("0x063770c `non-virtual thunk to'RBX::Smoke::~Smoke()")
+    todo!("0x063770c non-virtual thunk toRBX::Smoke::~Smoke()")
 }
 
 // 0x0637714 — __ZThn36_N3RBX5SmokeD0Ev
-// demangled: `non-virtual thunk to'RBX::Smoke::~Smoke()
+// demangled: non-virtual thunk toRBX::Smoke::~Smoke()
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
 #[doc(alias = "__ZThn36_N3RBX5SmokeD0Ev")]
 pub fn stub_0637714() -> ! {
-    todo!("0x0637714 `non-virtual thunk to'RBX::Smoke::~Smoke()")
+    todo!("0x0637714 non-virtual thunk toRBX::Smoke::~Smoke()")
 }
 
 // 0x063771c — __ZThn92_N3RBX5SmokeD0Ev
-// demangled: `non-virtual thunk to'RBX::Smoke::~Smoke()
+// demangled: non-virtual thunk toRBX::Smoke::~Smoke()
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
 #[doc(alias = "__ZThn92_N3RBX5SmokeD0Ev")]
 pub fn stub_063771c() -> ! {
-    todo!("0x063771c `non-virtual thunk to'RBX::Smoke::~Smoke()")
+    todo!("0x063771c non-virtual thunk toRBX::Smoke::~Smoke()")
 }
 
 // 0x0637724 — __ZN3RBX5SmokeD2Ev
@@ -107,30 +107,30 @@ pub fn stub_0637724() -> ! {
 }
 
 // 0x06377e0 — __ZThn32_N3RBX5SmokeD1Ev
-// demangled: `non-virtual thunk to'RBX::Smoke::~Smoke()
+// demangled: non-virtual thunk toRBX::Smoke::~Smoke()
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
 #[doc(alias = "__ZThn32_N3RBX5SmokeD1Ev")]
 pub fn stub_06377e0() -> ! {
-    todo!("0x06377e0 `non-virtual thunk to'RBX::Smoke::~Smoke()")
+    todo!("0x06377e0 non-virtual thunk toRBX::Smoke::~Smoke()")
 }
 
 // 0x06377e8 — __ZThn36_N3RBX5SmokeD1Ev
-// demangled: `non-virtual thunk to'RBX::Smoke::~Smoke()
+// demangled: non-virtual thunk toRBX::Smoke::~Smoke()
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
 #[doc(alias = "__ZThn36_N3RBX5SmokeD1Ev")]
 pub fn stub_06377e8() -> ! {
-    todo!("0x06377e8 `non-virtual thunk to'RBX::Smoke::~Smoke()")
+    todo!("0x06377e8 non-virtual thunk toRBX::Smoke::~Smoke()")
 }
 
 // 0x06377f0 — __ZThn92_N3RBX5SmokeD1Ev
-// demangled: `non-virtual thunk to'RBX::Smoke::~Smoke()
+// demangled: non-virtual thunk toRBX::Smoke::~Smoke()
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
 #[doc(alias = "__ZThn92_N3RBX5SmokeD1Ev")]
 pub fn stub_06377f0() -> ! {
-    todo!("0x06377f0 `non-virtual thunk to'RBX::Smoke::~Smoke()")
+    todo!("0x06377f0 non-virtual thunk toRBX::Smoke::~Smoke()")
 }
 
 // 0x06377f8 — __ZNK3RBX5Smoke14getClampedSizeEv
@@ -674,39 +674,39 @@ pub fn stub_063ae44() -> ! {
 }
 
 // 0x063af0c — __ZThn32_N3RBX13SocialServiceD1Ev
-// demangled: `non-virtual thunk to'RBX::SocialService::~SocialService()
+// demangled: non-virtual thunk toRBX::SocialService::~SocialService()
 // type: void __fastcall(RBX::SocialService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SocialService::~SocialService()")]
 #[doc(alias = "__ZThn32_N3RBX13SocialServiceD1Ev")]
 pub fn stub_063af0c() -> ! {
-    todo!("0x063af0c `non-virtual thunk to'RBX::SocialService::~SocialService()")
+    todo!("0x063af0c non-virtual thunk toRBX::SocialService::~SocialService()")
 }
 
 // 0x063af80 — __ZThn32_N3RBX13SocialServiceD0Ev
-// demangled: `non-virtual thunk to'RBX::SocialService::~SocialService()
+// demangled: non-virtual thunk toRBX::SocialService::~SocialService()
 // type: void __fastcall(RBX::SocialService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SocialService::~SocialService()")]
 #[doc(alias = "__ZThn32_N3RBX13SocialServiceD0Ev")]
 pub fn stub_063af80() -> ! {
-    todo!("0x063af80 `non-virtual thunk to'RBX::SocialService::~SocialService()")
+    todo!("0x063af80 non-virtual thunk toRBX::SocialService::~SocialService()")
 }
 
 // 0x063b0ac — __ZThn36_N3RBX13SocialServiceD1Ev
-// demangled: `non-virtual thunk to'RBX::SocialService::~SocialService()
+// demangled: non-virtual thunk toRBX::SocialService::~SocialService()
 // type: void __fastcall(RBX::SocialService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SocialService::~SocialService()")]
 #[doc(alias = "__ZThn36_N3RBX13SocialServiceD1Ev")]
 pub fn stub_063b0ac() -> ! {
-    todo!("0x063b0ac `non-virtual thunk to'RBX::SocialService::~SocialService()")
+    todo!("0x063b0ac non-virtual thunk toRBX::SocialService::~SocialService()")
 }
 
 // 0x063b120 — __ZThn36_N3RBX13SocialServiceD0Ev
-// demangled: `non-virtual thunk to'RBX::SocialService::~SocialService()
+// demangled: non-virtual thunk toRBX::SocialService::~SocialService()
 // type: void __fastcall(RBX::SocialService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SocialService::~SocialService()")]
 #[doc(alias = "__ZThn36_N3RBX13SocialServiceD0Ev")]
 pub fn stub_063b120() -> ! {
-    todo!("0x063b120 `non-virtual thunk to'RBX::SocialService::~SocialService()")
+    todo!("0x063b120 non-virtual thunk toRBX::SocialService::~SocialService()")
 }
 
 // 0x063b420 — __ZNSt6vectorIN3RBX13SocialService9StuffTypeESaIS2_EE6resizeEmS2_

@@ -3,7 +3,7 @@
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x4faee8..0x5038a8 | Part/Model/Game/Lighting/Players EA-sorted ascending next 100 uncovered (distinct mangled, EA asc)
 // Shard: generated_dm_wd_watchdog20 EA-sorted asc next 100 uncovered not yet in crates/datamodel/src (Part/Model/Game/Lighting/Players > gap filler)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and single-quote stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and single-quote stripped from alias where needed
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

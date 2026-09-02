@@ -1,6 +1,6 @@
 //! generated — 150 boost stubs EA-sorted, lowest uncovered.
-//! Source: `ida/export.json` filtered where mangled/demangled contains "boost", sorted by EA, next 150 uncovered (lowest EA first).
-//! Each stub preserves IDA address, mangled symbol, and demangled spelling; sanitized alias uses `rbx_core::SharedPtr` not `boost::`.
+//! Source: ida/export.json filtered where mangled/demangled contains "boost", sorted by EA, next 150 uncovered (lowest EA first).
+//! Each stub preserves IDA address, mangled symbol, and demangled spelling; sanitized alias uses rbx_core::SharedPtr not boost::.
 //! Sanitized: single quotes removed, boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr.
 
 #[doc(
@@ -1070,7 +1070,7 @@ pub fn stub_5e4100() -> ! {
     alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()"
 )]
 // 0x5e4228 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED0Ev
-// was: `non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()
+// was: non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()
 pub fn stub_5e4228() -> ! {
     todo!("0x5e4228 __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED0Ev")
 }
@@ -1079,7 +1079,7 @@ pub fn stub_5e4228() -> ! {
     alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::clone(void)const"
 )]
 // 0x5e4240 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEE5cloneEv
-// was: `virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::clone(void)const
+// was: virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::clone(void)const
 pub fn stub_5e4240() -> ! {
     todo!("0x5e4240 __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEE5cloneEv")
 }

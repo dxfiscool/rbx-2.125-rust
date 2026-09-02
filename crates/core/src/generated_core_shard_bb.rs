@@ -1,5 +1,5 @@
 //! core shard BB — 100 core stubs EA-sorted, next uncovered after BA 0x40824c (strict RBX|boost|std earliest gap, after BA 0x404360..0x40824c).
-//! Source: `ida/export.json` filtered where demangled/mangled contains `RBX::`|`boost::`|`std::`|`rbx::` excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 uncovered after 0x40824c.
+//! Source: ida/export.json filtered where demangled/mangled contains RBX::|boost::|std::|rbx:: excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 uncovered after 0x40824c.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
@@ -587,15 +587,15 @@ pub fn stub_0x411c18() -> ! {
 }
 
 #[doc(alias = "non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()")]
-// 0x411cb8 — __ZThn36_N3RBX15AdvMoveToolBaseD1Ev — `non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()
-// was: `non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()
+// 0x411cb8 — __ZThn36_N3RBX15AdvMoveToolBaseD1Ev — non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()
+// was: non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()
 pub fn stub_0x411cb8() -> ! {
     todo!("0x411cb8 __ZThn36_N3RBX15AdvMoveToolBaseD1Ev")
 }
 
 #[doc(alias = "non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()")]
-// 0x411cc0 — __ZThn36_N3RBX15AdvMoveToolBaseD0Ev — `non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()
-// was: `non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()
+// 0x411cc0 — __ZThn36_N3RBX15AdvMoveToolBaseD0Ev — non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()
+// was: non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()
 pub fn stub_0x411cc0() -> ! {
     todo!("0x411cc0 __ZThn36_N3RBX15AdvMoveToolBaseD0Ev")
 }

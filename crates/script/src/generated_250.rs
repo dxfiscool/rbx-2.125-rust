@@ -2,7 +2,7 @@
 // Filter: Script|Lua|Yield|CodeGen|Luau (filtered 5401 exhausted) — EA-sorted asc gap filler distinct not yet in crates/script/src
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: +100 stubs | range 0x502ba0..0x50893c | EA-sorted asc distinct not yet in script (remaining 65904->65804, rbx_core::SharedPtr not boost)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -554,7 +554,7 @@ pub fn stub_507098() -> ! {
     todo!("0x507098 __ZN3RBX17FilterDescendentsD0Ev")
 }
 
-// 0x507150 — __GLOBAL__I_a_202 — `global constructor keyed to'_a_202
+// 0x507150 — __GLOBAL__I_a_202 — global constructor keyed to'_a_202
 #[doc(alias = "global constructor keyed to_a_202")]
 #[doc(alias = "__GLOBAL__I_a_202")]
 pub fn stub_507150() -> ! {
@@ -645,14 +645,14 @@ pub fn stub_50853c() -> ! {
     todo!("0x50853c __ZN3RBX22GlobalAdvancedSettingsD1Ev")
 }
 
-// 0x508540 — __ZThn32_N3RBX22GlobalAdvancedSettingsD0Ev — `non-virtual thunk to'RBX::GlobalAdvancedSettings::~GlobalAdvancedSettings() — void __fastcall(RBX::GlobalAdvancedSettings *__hidden this)
+// 0x508540 — __ZThn32_N3RBX22GlobalAdvancedSettingsD0Ev — non-virtual thunk toRBX::GlobalAdvancedSettings::~GlobalAdvancedSettings() — void __fastcall(RBX::GlobalAdvancedSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GlobalAdvancedSettings::~GlobalAdvancedSettings()")]
 #[doc(alias = "__ZThn32_N3RBX22GlobalAdvancedSettingsD0Ev")]
 pub fn stub_508540() -> ! {
     todo!("0x508540 __ZThn32_N3RBX22GlobalAdvancedSettingsD0Ev")
 }
 
-// 0x508548 — __ZThn36_N3RBX22GlobalAdvancedSettingsD0Ev — `non-virtual thunk to'RBX::GlobalAdvancedSettings::~GlobalAdvancedSettings() — void __fastcall(RBX::GlobalAdvancedSettings *__hidden this)
+// 0x508548 — __ZThn36_N3RBX22GlobalAdvancedSettingsD0Ev — non-virtual thunk toRBX::GlobalAdvancedSettings::~GlobalAdvancedSettings() — void __fastcall(RBX::GlobalAdvancedSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GlobalAdvancedSettings::~GlobalAdvancedSettings()")]
 #[doc(alias = "__ZThn36_N3RBX22GlobalAdvancedSettingsD0Ev")]
 pub fn stub_508548() -> ! {
@@ -666,14 +666,14 @@ pub fn stub_508550() -> ! {
     todo!("0x508550 __ZN3RBX22GlobalAdvancedSettingsD2Ev")
 }
 
-// 0x5086d0 — __ZThn32_N3RBX22GlobalAdvancedSettingsD1Ev — `non-virtual thunk to'RBX::GlobalAdvancedSettings::~GlobalAdvancedSettings() — void __fastcall(RBX::GlobalAdvancedSettings *__hidden this)
+// 0x5086d0 — __ZThn32_N3RBX22GlobalAdvancedSettingsD1Ev — non-virtual thunk toRBX::GlobalAdvancedSettings::~GlobalAdvancedSettings() — void __fastcall(RBX::GlobalAdvancedSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GlobalAdvancedSettings::~GlobalAdvancedSettings()")]
 #[doc(alias = "__ZThn32_N3RBX22GlobalAdvancedSettingsD1Ev")]
 pub fn stub_5086d0() -> ! {
     todo!("0x5086d0 __ZThn32_N3RBX22GlobalAdvancedSettingsD1Ev")
 }
 
-// 0x5086d8 — __ZThn36_N3RBX22GlobalAdvancedSettingsD1Ev — `non-virtual thunk to'RBX::GlobalAdvancedSettings::~GlobalAdvancedSettings() — void __fastcall(RBX::GlobalAdvancedSettings *__hidden this)
+// 0x5086d8 — __ZThn36_N3RBX22GlobalAdvancedSettingsD1Ev — non-virtual thunk toRBX::GlobalAdvancedSettings::~GlobalAdvancedSettings() — void __fastcall(RBX::GlobalAdvancedSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GlobalAdvancedSettings::~GlobalAdvancedSettings()")]
 #[doc(alias = "__ZThn36_N3RBX22GlobalAdvancedSettingsD1Ev")]
 pub fn stub_5086d8() -> ! {

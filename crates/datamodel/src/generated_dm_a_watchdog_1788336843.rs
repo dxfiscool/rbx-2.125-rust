@@ -1,7 +1,7 @@
 // Auto-generated skeletons for rbx-datamodel shard A — from ida/export.json
 // Filter: RBX::Instance|RBX::DataModel|Workspace complete (10215) — fallback global gap filler EA-sorted asc not yet in crates/datamodel/src
 // Source: ida/export.json (85545 funcs, base 0x4000) — batch 120, range 0x3a9ea0..0x3aee10 | dm gap before 50833, after 50713
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; `'` stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -123,7 +123,7 @@ pub fn stub_0x3aac24() -> ! {
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>,G3D::Vector3::Axis,float,float>,boost::_bi::list4<boost::_bi::value<RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)")]
 pub fn stub_0x3aac50() -> ! {
-    todo!("0x3aac50 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>,G3D::Vector3::Axis,float,float>,boost::_bi::list4<boost::_bi::value<RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)")
+    todo!("0x3aac50 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>,G3D::Vector3::Axis,float,float>,boost::_bi::list4<boost::_bi::value<RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)")
 }
 
 // 0x3aac7c — __ZN5boost3_bi5list4INS0_5valueIPN3RBX19EventReplicatorImplILi3ENS3_10ArcHandlesEFvN3G3D7Vector34AxisEffEEEEENS_3argILi1EEENSD_ILi2EEENSD_ILi3EEEEclINS_4_mfi3mf3IvSA_S8_ffEENS0_5list3IRS8_RfSO_EEEEvNS0_4typeIvEERT_RT0_i
@@ -276,7 +276,7 @@ pub fn stub_0x3ab820() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>,G3D::Vector3::Axis>,boost::_bi::list2<boost::_bi::value<RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>*>,boost::arg<1>>>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)")]
 pub fn stub_0x3ab834() -> ! {
-    todo!("0x3ab834 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>,G3D::Vector3::Axis>,boost::_bi::list2<boost::_bi::value<RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>*>,boost::arg<1>>>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)")
+    todo!("0x3ab834 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>,G3D::Vector3::Axis>,boost::_bi::list2<boost::_bi::value<RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>*>,boost::arg<1>>>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)")
 }
 
 // 0x3ab848 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX19EventReplicatorImplILi1ENS4_10ArcHandlesEFvN3G3D7Vector34AxisEEEES9_EENS0_5list2INS0_5valueIPSB_EENS_3argILi1EEEEEEclIS9_EEvRT_
@@ -387,14 +387,14 @@ pub fn stub_0x3ac13c() -> ! {
 // type: void __fastcall(RBX::HandlesBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 pub fn stub_0x3ac140() -> ! {
-    todo!("0x3ac140 `non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
+    todo!("0x3ac140 non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
 }
 
 // 0x3ac148 — __ZThn32_N3RBX11HandlesBaseD0Ev
 // type: void __fastcall(RBX::HandlesBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 pub fn stub_0x3ac148() -> ! {
-    todo!("0x3ac148 `non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
+    todo!("0x3ac148 non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
 }
 
 // 0x3ac1ec — __ZThn32_NK3RBX17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEE12getClassNameEv
@@ -408,14 +408,14 @@ pub fn stub_0x3ac1ec() -> ! {
 // type: void __fastcall(RBX::HandlesBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 pub fn stub_0x3ac1f0() -> ! {
-    todo!("0x3ac1f0 `non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
+    todo!("0x3ac1f0 non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
 }
 
 // 0x3ac1f8 — __ZThn36_N3RBX11HandlesBaseD0Ev
 // type: void __fastcall(RBX::HandlesBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 pub fn stub_0x3ac1f8() -> ! {
-    todo!("0x3ac1f8 `non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
+    todo!("0x3ac1f8 non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
 }
 
 // 0x3ac29c — __ZN3RBX4Name7declareILZNS_12sHandlesBaseEEEERKS0_v
@@ -684,7 +684,7 @@ pub fn stub_0x3adf40() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::function<void ()(G3D::Vector3::Axis,float,float)>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)")]
 pub fn stub_0x3adf48() -> ! {
-    todo!("0x3adf48 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::function<void ()(G3D::Vector3::Axis,float,float)>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)")
+    todo!("0x3adf48 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::function<void ()(G3D::Vector3::Axis,float,float)>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)")
 }
 
 // 0x3adf50 — __ZNK5boost9function3IvN3G3D7Vector34AxisEffEclES3_ff

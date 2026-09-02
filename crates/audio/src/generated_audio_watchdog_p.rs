@@ -8,7 +8,7 @@ use rbx_core::SharedPtr;
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
 // 0x57d280 — __ZThn36_N3RBX14GuiImageButtonD0Ev
-// demangled: `non-virtual thunk to'RBX::GuiImageButton::~GuiImageButton()
+// demangled: non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()
 // type: void __fastcall(RBX::GuiImageButton *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")]
 #[doc(alias = "__ZThn36_N3RBX14GuiImageButtonD0Ev")]
@@ -220,7 +220,7 @@ pub fn stub_57e064() -> ! {
 }
 
 // 0x57e108 — __GLOBAL__I_a_215
-// demangled: `global constructor keyed to'_a_215
+// demangled: global constructor keyed to'_a_215
 #[doc(alias = "global constructor keyed to_a_215")]
 #[doc(alias = "__GLOBAL__I_a_215")]
 pub fn stub_57e108() -> ! {
@@ -254,7 +254,7 @@ pub fn stub_57e5c8() -> ! {
 }
 
 // 0x57e608 — __ZThn536_N3RBX10ImageLabel8setImageENS_9TextureIdE
-// demangled: `non-virtual thunk to'RBX::ImageLabel::setImage(RBX::TextureId)
+// demangled: non-virtual thunk toRBX::ImageLabel::setImage(RBX::TextureId)
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::setImage(RBX::TextureId)")]
 #[doc(alias = "__ZThn536_N3RBX10ImageLabel8setImageENS_9TextureIdE")]
 pub fn stub_57e608() -> ! {
@@ -270,7 +270,7 @@ pub fn stub_57e610() -> ! {
 }
 
 // 0x57e65c — __ZThn536_N3RBX10ImageLabel18setImageRectOffsetEN3G3D7Vector2E
-// demangled: `non-virtual thunk to'RBX::ImageLabel::setImageRectOffset(G3D::Vector2)
+// demangled: non-virtual thunk toRBX::ImageLabel::setImageRectOffset(G3D::Vector2)
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::setImageRectOffset(G3D::Vector2)")]
 #[doc(alias = "__ZThn536_N3RBX10ImageLabel18setImageRectOffsetEN3G3D7Vector2E")]
 pub fn stub_57e65c() -> ! {
@@ -286,7 +286,7 @@ pub fn stub_57e664() -> ! {
 }
 
 // 0x57e6b0 — __ZThn536_N3RBX10ImageLabel16setImageRectSizeEN3G3D7Vector2E
-// demangled: `non-virtual thunk to'RBX::ImageLabel::setImageRectSize(G3D::Vector2)
+// demangled: non-virtual thunk toRBX::ImageLabel::setImageRectSize(G3D::Vector2)
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::setImageRectSize(G3D::Vector2)")]
 #[doc(alias = "__ZThn536_N3RBX10ImageLabel16setImageRectSizeEN3G3D7Vector2E")]
 pub fn stub_57e6b0() -> ! {
@@ -303,7 +303,7 @@ pub fn stub_57e6b8() -> ! {
 }
 
 // 0x57e7b4 — __ZThn96_N3RBX10ImageLabel8render2dEPNS_5AdornE
-// demangled: `non-virtual thunk to'RBX::ImageLabel::render2d(RBX::Adorn *)
+// demangled: non-virtual thunk toRBX::ImageLabel::render2d(RBX::Adorn *)
 // type: _DWORD __fastcall(RBX::ImageLabel *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX10ImageLabel8render2dEPNS_5AdornE")]
@@ -321,7 +321,7 @@ pub fn stub_57e7bc() -> ! {
 }
 
 // 0x57e7f0 — __ZThn96_N3RBX10ImageLabel18renderBackground2dEPNS_5AdornE
-// demangled: `non-virtual thunk to'RBX::ImageLabel::renderBackground2d(RBX::Adorn *)
+// demangled: non-virtual thunk toRBX::ImageLabel::renderBackground2d(RBX::Adorn *)
 // type: _DWORD __fastcall(RBX::ImageLabel *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::renderBackground2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX10ImageLabel18renderBackground2dEPNS_5AdornE")]
@@ -381,7 +381,7 @@ pub fn stub_57ea40() -> ! {
 }
 
 // 0x57ea44 — __ZThn32_N3RBX10ImageLabelD1Ev
-// demangled: `non-virtual thunk to'RBX::ImageLabel::~ImageLabel()
+// demangled: non-virtual thunk toRBX::ImageLabel::~ImageLabel()
 // type: void __fastcall(RBX::ImageLabel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::~ImageLabel()")]
 #[doc(alias = "__ZThn32_N3RBX10ImageLabelD1Ev")]
@@ -390,7 +390,7 @@ pub fn stub_57ea44() -> ! {
 }
 
 // 0x57eb3c — __ZThn32_N3RBX10ImageLabelD0Ev
-// demangled: `non-virtual thunk to'RBX::ImageLabel::~ImageLabel()
+// demangled: non-virtual thunk toRBX::ImageLabel::~ImageLabel()
 // type: void __fastcall(RBX::ImageLabel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::~ImageLabel()")]
 #[doc(alias = "__ZThn32_N3RBX10ImageLabelD0Ev")]
@@ -406,7 +406,7 @@ pub fn stub_57ec48() -> ! {
 }
 
 // 0x57ec58 — __ZThn36_N3RBX10ImageLabelD1Ev
-// demangled: `non-virtual thunk to'RBX::ImageLabel::~ImageLabel()
+// demangled: non-virtual thunk toRBX::ImageLabel::~ImageLabel()
 // type: void __fastcall(RBX::ImageLabel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::~ImageLabel()")]
 #[doc(alias = "__ZThn36_N3RBX10ImageLabelD1Ev")]
@@ -415,7 +415,7 @@ pub fn stub_57ec58() -> ! {
 }
 
 // 0x57ed50 — __ZThn36_N3RBX10ImageLabelD0Ev
-// demangled: `non-virtual thunk to'RBX::ImageLabel::~ImageLabel()
+// demangled: non-virtual thunk toRBX::ImageLabel::~ImageLabel()
 // type: void __fastcall(RBX::ImageLabel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::~ImageLabel()")]
 #[doc(alias = "__ZThn36_N3RBX10ImageLabelD0Ev")]
@@ -733,7 +733,7 @@ pub fn stub_5803ec() -> ! {
 }
 
 // 0x580490 — __GLOBAL__I_a_216
-// demangled: `global constructor keyed to'_a_216
+// demangled: global constructor keyed to'_a_216
 #[doc(alias = "global constructor keyed to_a_216")]
 #[doc(alias = "__GLOBAL__I_a_216")]
 pub fn stub_580490() -> ! {

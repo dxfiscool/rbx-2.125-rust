@@ -616,7 +616,7 @@ pub fn stub_35a448() -> ! {
     todo!("0x35a448 __ZN3G3D4LineD0Ev")
 }
 
-// 0x35a44c — __GLOBAL__I_a_127 — `global constructor keyed to'_a_127
+// 0x35a44c — __GLOBAL__I_a_127 — global constructor keyed to'_a_127
 #[doc(alias = "__GLOBAL__I_a_127")]
 #[doc(alias = "global constructor keyed to_a_127")]
 pub fn stub_35a44c() -> ! {
@@ -686,7 +686,7 @@ pub fn stub_35a7f4() -> ! {
     todo!("0x35a7f4 __ZN3RBX13MD5HasherImpl5c_strEv")
 }
 
-// 0x35a970 — __GLOBAL__I_a_128 — `global constructor keyed to'_a_128
+// 0x35a970 — __GLOBAL__I_a_128 — global constructor keyed to'_a_128
 #[doc(alias = "__GLOBAL__I_a_128")]
 #[doc(alias = "global constructor keyed to_a_128")]
 pub fn stub_35a970() -> ! {

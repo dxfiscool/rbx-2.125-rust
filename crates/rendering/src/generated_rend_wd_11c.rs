@@ -541,7 +541,7 @@ pub fn stub_7bf66c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::getEngineBody(void)")]
 #[doc(alias = "__ZThn92_N3RBX8Humanoid13getEngineBodyEv")]
 pub fn stub_7bf67c() -> ! {
-    todo!("0x7bf67c `non-virtual thunk to'RBX::Humanoid::getEngineBody(void)")
+    todo!("0x7bf67c non-virtual thunk toRBX::Humanoid::getEngineBody(void)")
 }
 
 
@@ -550,7 +550,7 @@ pub fn stub_7bf67c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::getConnectorKernelType(void)const")]
 #[doc(alias = "__ZThn92_NK3RBX8Humanoid22getConnectorKernelTypeEv")]
 pub fn stub_7bf694() -> ! {
-    todo!("0x7bf694 `non-virtual thunk to'RBX::Humanoid::getConnectorKernelType(void)const")
+    todo!("0x7bf694 non-virtual thunk toRBX::Humanoid::getConnectorKernelType(void)const")
 }
 
 
@@ -559,7 +559,7 @@ pub fn stub_7bf694() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::getConnectorKernelType(void)const")]
 #[doc(alias = "__ZThn244_NK3RBX8Humanoid22getConnectorKernelTypeEv")]
 pub fn stub_7bf698() -> ! {
-    todo!("0x7bf698 `non-virtual thunk to'RBX::Humanoid::getConnectorKernelType(void)const")
+    todo!("0x7bf698 non-virtual thunk toRBX::Humanoid::getConnectorKernelType(void)const")
 }
 
 
@@ -577,7 +577,7 @@ pub fn stub_7bf6a4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::hasFocusCoord(void)const")]
 #[doc(alias = "__ZThn292_NK3RBX8Humanoid13hasFocusCoordEv")]
 pub fn stub_7bf6ac() -> ! {
-    todo!("0x7bf6ac `non-virtual thunk to'RBX::Humanoid::hasFocusCoord(void)const")
+    todo!("0x7bf6ac non-virtual thunk toRBX::Humanoid::hasFocusCoord(void)const")
 }
 
 
@@ -775,11 +775,11 @@ pub fn stub_7c0184() -> ! {
 
 
 // 0x7c018c — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8HumanoidEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>,0,void ()(void)>::call(void) — uses rbx_core::SharedPtr not boost
+// was: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>,0,void ()(void)>::call(void) — uses rbx_core::SharedPtr not boost
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8HumanoidEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")]
 pub fn stub_7c018c() -> ! {
-    todo!("0x7c018c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RB...")
+    todo!("0x7c018c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RB...")
 }
 
 

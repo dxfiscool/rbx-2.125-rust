@@ -2,7 +2,7 @@
 // Filter: RBX::Instance|DataModel|Workspace first half EA-sorted asc next 150 uncovered not yet in datamodel — shard A
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 150 stubs | range 0x554cc..0x5d268 | total filtered 10774, half 5387, uncovered first half before 0, after 0, datamodel distinct before 21480, after 21630 (fallback global gaps dm 64065-> 63915 remaining)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; `'` stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

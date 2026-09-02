@@ -42,7 +42,7 @@ pub fn stub_2665e8() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev")]
 pub fn stub_2665f8() -> ! {
-    todo!("0x2665f8 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
+    todo!("0x2665f8 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
 }
 
 // 0x266600 — __ZN12XmlAttributeC2IPKN3RBX4NameEEERS3_T_
@@ -122,14 +122,14 @@ pub fn stub_267420() -> ! {
 #[doc(alias = "global constructor keyed to_a_60")]
 #[doc(alias = "__GLOBAL__I_a_60")]
 pub fn stub_2674b0() -> ! {
-    todo!("0x2674b0 `global constructor keyed to'_a_60")
+    todo!("0x2674b0 global constructor keyed to'_a_60")
 }
 
 // 0x268bf0 — __GLOBAL__I_a_61
 #[doc(alias = "global constructor keyed to_a_61")]
 #[doc(alias = "__GLOBAL__I_a_61")]
 pub fn stub_268bf0() -> ! {
-    todo!("0x268bf0 `global constructor keyed to'_a_61")
+    todo!("0x268bf0 global constructor keyed to'_a_61")
 }
 
 // 0x268cb8 — __ZN3RBX10CoreScriptC1ERKNS_9ContentIdE
@@ -205,14 +205,14 @@ pub fn stub_26a104() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript()")]
 #[doc(alias = "__ZThn32_N3RBX10CoreScriptD1Ev")]
 pub fn stub_26a12c() -> ! {
-    todo!("0x26a12c `non-virtual thunk to'RBX::CoreScript::~CoreScript()")
+    todo!("0x26a12c non-virtual thunk toRBX::CoreScript::~CoreScript()")
 }
 
 // 0x26a134 — __ZThn32_N3RBX10CoreScriptD0Ev
 #[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript()")]
 #[doc(alias = "__ZThn32_N3RBX10CoreScriptD0Ev")]
 pub fn stub_26a134() -> ! {
-    todo!("0x26a134 `non-virtual thunk to'RBX::CoreScript::~CoreScript()")
+    todo!("0x26a134 non-virtual thunk toRBX::CoreScript::~CoreScript()")
 }
 
 // 0x26a1d8 — __ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv
@@ -225,14 +225,14 @@ pub fn stub_26a1d8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript()")]
 #[doc(alias = "__ZThn36_N3RBX10CoreScriptD1Ev")]
 pub fn stub_26a200() -> ! {
-    todo!("0x26a200 `non-virtual thunk to'RBX::CoreScript::~CoreScript()")
+    todo!("0x26a200 non-virtual thunk toRBX::CoreScript::~CoreScript()")
 }
 
 // 0x26a208 — __ZThn36_N3RBX10CoreScriptD0Ev
 #[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript()")]
 #[doc(alias = "__ZThn36_N3RBX10CoreScriptD0Ev")]
 pub fn stub_26a208() -> ! {
-    todo!("0x26a208 `non-virtual thunk to'RBX::CoreScript::~CoreScript()")
+    todo!("0x26a208 non-virtual thunk toRBX::CoreScript::~CoreScript()")
 }
 
 // 0x26a2ac — __ZN3RBX13StarterScriptD1Ev
@@ -259,14 +259,14 @@ pub fn stub_26a350() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript()")]
 #[doc(alias = "__ZThn32_N3RBX13StarterScriptD1Ev")]
 pub fn stub_26a378() -> ! {
-    todo!("0x26a378 `non-virtual thunk to'RBX::StarterScript::~StarterScript()")
+    todo!("0x26a378 non-virtual thunk toRBX::StarterScript::~StarterScript()")
 }
 
 // 0x26a380 — __ZThn32_N3RBX13StarterScriptD0Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript()")]
 #[doc(alias = "__ZThn32_N3RBX13StarterScriptD0Ev")]
 pub fn stub_26a380() -> ! {
-    todo!("0x26a380 `non-virtual thunk to'RBX::StarterScript::~StarterScript()")
+    todo!("0x26a380 non-virtual thunk toRBX::StarterScript::~StarterScript()")
 }
 
 // 0x26a424 — __ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv
@@ -279,14 +279,14 @@ pub fn stub_26a424() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript()")]
 #[doc(alias = "__ZThn36_N3RBX13StarterScriptD1Ev")]
 pub fn stub_26a44c() -> ! {
-    todo!("0x26a44c `non-virtual thunk to'RBX::StarterScript::~StarterScript()")
+    todo!("0x26a44c non-virtual thunk toRBX::StarterScript::~StarterScript()")
 }
 
 // 0x26a454 — __ZThn36_N3RBX13StarterScriptD0Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript()")]
 #[doc(alias = "__ZThn36_N3RBX13StarterScriptD0Ev")]
 pub fn stub_26a454() -> ! {
-    todo!("0x26a454 `non-virtual thunk to'RBX::StarterScript::~StarterScript()")
+    todo!("0x26a454 non-virtual thunk toRBX::StarterScript::~StarterScript()")
 }
 
 // 0x26a4f8 — __ZN3RBX4Name13callDoDeclareILZNS_14sStarterScriptEEEEvv
@@ -376,7 +376,7 @@ pub fn stub_26aff4() -> ! {
 #[doc(alias = "global constructor keyed to_a_62")]
 #[doc(alias = "__GLOBAL__I_a_62")]
 pub fn stub_26b1f4() -> ! {
-    todo!("0x26b1f4 `global constructor keyed to'_a_62")
+    todo!("0x26b1f4 global constructor keyed to'_a_62")
 }
 
 // 0x26b464 — __ZNK3RBX3Lua12LuaArguments9getStringEiRSs
@@ -780,7 +780,7 @@ pub fn stub_26fb60() -> ! {
 #[doc(alias = "global constructor keyed to_a_63")]
 #[doc(alias = "__GLOBAL__I_a_63")]
 pub fn stub_270078() -> ! {
-    todo!("0x270078 `global constructor keyed to'_a_63")
+    todo!("0x270078 global constructor keyed to'_a_63")
 }
 
 // 0x270210 — __ZN3RBX3Lua17safe_lua_tostringEP9lua_Statei

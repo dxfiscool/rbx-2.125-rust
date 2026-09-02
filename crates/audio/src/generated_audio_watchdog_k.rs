@@ -357,7 +357,7 @@ pub fn stub_546e70() -> ! {
 }
 
 // 0x546f38 — __ZThn32_N3RBX10GuiServiceD1Ev
-// demangled: `non-virtual thunk to'RBX::GuiService::~GuiService()
+// demangled: non-virtual thunk toRBX::GuiService::~GuiService()
 // type: void __fastcall(RBX::GuiService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 #[doc(alias = "__ZThn32_N3RBX10GuiServiceD1Ev")]
@@ -366,7 +366,7 @@ pub fn stub_546f38() -> ! {
 }
 
 // 0x546f40 — __ZThn32_N3RBX10GuiServiceD0Ev
-// demangled: `non-virtual thunk to'RBX::GuiService::~GuiService()
+// demangled: non-virtual thunk toRBX::GuiService::~GuiService()
 // type: void __fastcall(RBX::GuiService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 #[doc(alias = "__ZThn32_N3RBX10GuiServiceD0Ev")]
@@ -375,7 +375,7 @@ pub fn stub_546f40() -> ! {
 }
 
 // 0x54700c — __ZThn36_N3RBX10GuiServiceD1Ev
-// demangled: `non-virtual thunk to'RBX::GuiService::~GuiService()
+// demangled: non-virtual thunk toRBX::GuiService::~GuiService()
 // type: void __fastcall(RBX::GuiService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 #[doc(alias = "__ZThn36_N3RBX10GuiServiceD1Ev")]
@@ -384,7 +384,7 @@ pub fn stub_54700c() -> ! {
 }
 
 // 0x547014 — __ZThn36_N3RBX10GuiServiceD0Ev
-// demangled: `non-virtual thunk to'RBX::GuiService::~GuiService()
+// demangled: non-virtual thunk toRBX::GuiService::~GuiService()
 // type: void __fastcall(RBX::GuiService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 #[doc(alias = "__ZThn36_N3RBX10GuiServiceD0Ev")]

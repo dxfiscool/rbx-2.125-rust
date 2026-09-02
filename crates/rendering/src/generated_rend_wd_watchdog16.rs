@@ -598,10 +598,10 @@ pub fn stub_82261c() -> ! {
 }
 
 // 0x8226f0 — __GLOBAL__I_a_398
-#[doc(alias = "`global constructor keyed to_a_398")]
+#[doc(alias = "global constructor keyed to_a_398")]
 #[doc(alias = "__GLOBAL__I_a_398")]
 pub fn stub_8226f0() -> ! {
-    todo!("0x8226f0 `global constructor keyed to_a_398")
+    todo!("0x8226f0 global constructor keyed to_a_398")
 }
 
 // 0x822960 — __Z15luaA_pushobjectP9lua_StatePK10lua_TValue

@@ -263,7 +263,7 @@ pub fn stub_cce0c() -> ! {
     todo!("0xcce0c __Z41__static_initialization_and_destruction_0ii_33")
 }
 
-// 0xcceb8 - __GLOBAL__I__ZN4FMOD7gGlobalE / `global constructor keyed to'FMOD::gGlobal
+// 0xcceb8 - __GLOBAL__I__ZN4FMOD7gGlobalE / global constructor keyed to'FMOD::gGlobal
 // type: 
 #[doc(alias = "global constructor keyed toFMOD::gGlobal")]
 pub fn stub_cceb8() -> ! {
@@ -690,7 +690,7 @@ pub fn stub_cef20() -> ! {
     todo!("0xcef20 __Z41__static_initialization_and_destruction_0ii_34")
 }
 
-// 0xcf00c - __GLOBAL__I__ZN4FMOD12gDummySampleE / `global constructor keyed to'FMOD::gDummySample
+// 0xcf00c - __GLOBAL__I__ZN4FMOD12gDummySampleE / global constructor keyed to'FMOD::gDummySample
 // type: 
 #[doc(alias = "global constructor keyed toFMOD::gDummySample")]
 pub fn stub_cf00c() -> ! {

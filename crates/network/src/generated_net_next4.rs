@@ -65,7 +65,7 @@ pub fn stub_38b584() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_146")]
 pub fn stub_38b740() -> ! {
-    todo!("0x38b740 `global constructor keyed to'_a_146")
+    todo!("0x38b740 global constructor keyed to'_a_146")
 }
 
 // 0x38b808 — __ZN3RBX15StringConverterINS_4UDimEE15convertToStringERKS1_
@@ -156,7 +156,7 @@ pub fn stub_38c264() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_147")]
 pub fn stub_38c294() -> ! {
-    todo!("0x38c294 `global constructor keyed to'_a_147")
+    todo!("0x38c294 global constructor keyed to'_a_147")
 }
 
 // 0x38c35c — __ZNK3RBX7UIEvent18isTextCharacterKeyEv
@@ -233,7 +233,7 @@ pub fn stub_38c3ec() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed to_a_148")]
 pub fn stub_38c3fc() -> ! {
-    todo!("0x38c3fc `global constructor keyed to'_a_148")
+    todo!("0x38c3fc global constructor keyed to'_a_148")
 }
 
 // 0x38c434 — __ZN3RBX5Units20kmsAccelerationToRbxERKN3G3D7Vector3E
@@ -254,7 +254,7 @@ pub fn stub_38c464() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed to_a_149")]
 pub fn stub_38c478() -> ! {
-    todo!("0x38c478 `global constructor keyed to'_a_149")
+    todo!("0x38c478 global constructor keyed to'_a_149")
 }
 
 // 0x38c4b0 — __ZN3RBX13UserInputBaseC2Ev
@@ -303,7 +303,7 @@ pub fn stub_38cb9c() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_150")]
 pub fn stub_38cba0() -> ! {
-    todo!("0x38cba0 `global constructor keyed to'_a_150")
+    todo!("0x38cba0 global constructor keyed to'_a_150")
 }
 
 // 0x38cc68 — __ZN3RBX5rot13ESs
@@ -422,7 +422,7 @@ pub fn stub_38da14() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_151")]
 pub fn stub_38da58() -> ! {
-    todo!("0x38da58 `global constructor keyed to'_a_151")
+    todo!("0x38da58 global constructor keyed to'_a_151")
 }
 
 // 0x38db20 — __ZN3RBX12Accoutrement18setAttachmentPointERKN3G3D15CoordinateFrameE
@@ -527,7 +527,7 @@ pub fn stub_38e9b8() -> ! {
 // type: void __fastcall(RBX::Accoutrement *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 pub fn stub_38e9c8() -> ! {
-    todo!("0x38e9c8 `non-virtual thunk to'RBX::Accoutrement::~Accoutrement()")
+    todo!("0x38e9c8 non-virtual thunk toRBX::Accoutrement::~Accoutrement()")
 }
 
 // 0x38efa0 — __ZN3RBX12Accoutrement14render3dSelectEPNS_5AdornENS_11SelectStateE
@@ -541,7 +541,7 @@ pub fn stub_38efa0() -> ! {
 // type: unsigned int __fastcall(int, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
 pub fn stub_38f014() -> ! {
-    todo!("0x38f014 `non-virtual thunk to'RBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)")
+    todo!("0x38f014 non-virtual thunk toRBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)")
 }
 
 // 0x38f01c — __ZN3RBX12Accoutrement7dropAllEPNS_13ModelInstanceE
@@ -693,14 +693,14 @@ pub fn stub_39067c() -> ! {
 // type: int __fastcall(RBX::Accoutrement *this, int)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::getRenderLocation(void)")]
 pub fn stub_3906b4() -> ! {
-    todo!("0x3906b4 `non-virtual thunk to'RBX::Accoutrement::getRenderLocation(void)")
+    todo!("0x3906b4 non-virtual thunk toRBX::Accoutrement::getRenderLocation(void)")
 }
 
 // 0x3906c4 — __ZThn128_N3RBX12Accoutrement13getRenderSizeEv
 // type: int __fastcall(RBX::Accoutrement *this)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::getRenderSize(void)")]
 pub fn stub_3906c4() -> ! {
-    todo!("0x3906c4 `non-virtual thunk to'RBX::Accoutrement::getRenderSize(void)")
+    todo!("0x3906c4 non-virtual thunk toRBX::Accoutrement::getRenderSize(void)")
 }
 
 // 0x390adc — __ZN3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev

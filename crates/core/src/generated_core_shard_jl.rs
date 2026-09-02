@@ -1,5 +1,5 @@
 //! core shard jl — 150 core stubs EA-sorted, 0x778d94..0x781e80 (EA-sorted ascending, next 150 uncovered after shard A 0x777a9c, rbx_core::SharedPtr not boost).
-//! Source: `ida/export.json` (85545 funcs) EA-sorted ascending, next 150 not yet in crates/core/src after shard A (0x777a9c), global filler.
+//! Source: ida/export.json (85545 funcs) EA-sorted ascending, next 150 not yet in crates/core/src after shard A (0x777a9c), global filler.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]

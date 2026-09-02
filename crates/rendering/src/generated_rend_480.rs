@@ -461,7 +461,7 @@ pub fn stub_774580() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch()")]
 #[doc(alias = "__ZThn32_N3RBX9Scripting13DebuggerWatchD1Ev")]
 pub fn stub_774584() -> ! {
-    todo!("0x774584 `non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch()")
+    todo!("0x774584 non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch()")
 }
 
 // 0x774664 — __ZThn32_N3RBX9Scripting13DebuggerWatchD0Ev
@@ -469,7 +469,7 @@ pub fn stub_774584() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch()")]
 #[doc(alias = "__ZThn32_N3RBX9Scripting13DebuggerWatchD0Ev")]
 pub fn stub_774664() -> ! {
-    todo!("0x774664 `non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch()")
+    todo!("0x774664 non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch()")
 }
 
 // 0x77475c — __ZThn36_N3RBX9Scripting13DebuggerWatchD1Ev
@@ -477,7 +477,7 @@ pub fn stub_774664() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch()")]
 #[doc(alias = "__ZThn36_N3RBX9Scripting13DebuggerWatchD1Ev")]
 pub fn stub_77475c() -> ! {
-    todo!("0x77475c `non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch()")
+    todo!("0x77475c non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch()")
 }
 
 // 0x77483c — __ZThn36_N3RBX9Scripting13DebuggerWatchD0Ev
@@ -485,7 +485,7 @@ pub fn stub_77475c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch()")]
 #[doc(alias = "__ZThn36_N3RBX9Scripting13DebuggerWatchD0Ev")]
 pub fn stub_77483c() -> ! {
-    todo!("0x77483c `non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch()")
+    todo!("0x77483c non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch()")
 }
 
 // 0x774938 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_9Scripting16sDebuggerManagerEEE12getClassNameEv

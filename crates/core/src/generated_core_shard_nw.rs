@@ -1,5 +1,5 @@
 //! core shard nw — 120 core stubs EA-sorted asc gap filler not yet in core after nv (next uncovered).
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc, next 120 not yet in rbx_core (37737 uncovered before -> 37617 after, batch 0x4ab5f4..0x4b6018).
+//! Source: ida/export.json (85545 funcs) EA-sorted asc, next 120 not yet in rbx_core (37737 uncovered before -> 37617 after, batch 0x4ab5f4..0x4b6018).
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 

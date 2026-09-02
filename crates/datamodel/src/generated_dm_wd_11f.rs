@@ -2,7 +2,7 @@
 // Filter: RBX::Instance|DataModel|ClassDescriptor|Workspace|World|DataModelJob — filtered EA-sorted asc gap filler
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x556140..0xb2cc60 | filtered 13672 total, remaining 254 after batch
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; `'` stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ' stripped from alias
 
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
@@ -17,7 +17,7 @@ pub fn stub_556140() -> ! {
 
 // 0x55627c — __ZThn92_N3RBX9BodyMover9stepWorldEv
 #[doc(alias = "non-virtual thunk toRBX::BodyMover::stepWorld(void)")]
-// was: `non-virtual thunk to'RBX::BodyMover::stepWorld(void)
+// was: non-virtual thunk toRBX::BodyMover::stepWorld(void)
 pub fn stub_55627c() -> ! {
     todo!("0x55627c non-virtual thunk toRBX::BodyMover::stepWorld(void)")
 }
@@ -30,7 +30,7 @@ pub fn stub_559938() -> ! {
 
 // 0x55a090 — __ZThn92_NK3RBX9BodyMover12canStepWorldEv
 #[doc(alias = "non-virtual thunk toRBX::BodyMover::canStepWorld(void)const")]
-// was: `non-virtual thunk to'RBX::BodyMover::canStepWorld(void)const
+// was: non-virtual thunk toRBX::BodyMover::canStepWorld(void)const
 pub fn stub_55a090() -> ! {
     todo!("0x55a090 non-virtual thunk toRBX::BodyMover::canStepWorld(void)const")
 }

@@ -1,5 +1,5 @@
 //! core wd_watchdog6 — 120 core stubs EA-sorted asc RBX-free gap filler distinct not yet in any crate.
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc, next 120 RBX-free uncovered distinct not yet in any crate after 0x731f04 (watchdog4 max).
+//! Source: ida/export.json (85545 funcs) EA-sorted asc, next 120 RBX-free uncovered distinct not yet in any crate after 0x731f04 (watchdog4 max).
 //! Filter: RBX-free (no RBX substring), RBX-free uncovered 12205 before, 12080 after; range 0x7df364..0x7f2db8 EA-sorted asc.
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.

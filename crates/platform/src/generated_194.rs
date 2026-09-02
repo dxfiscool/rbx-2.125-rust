@@ -147,7 +147,7 @@ pub fn stub_0x2780dc() -> ! {
 // 0x278164 — __GLOBAL__I_a_64
 #[doc(alias = "global constructor keyed to_a_64")]
 pub fn stub_0x278164() -> ! {
-    todo!("0x278164 `global constructor keyed to'_a_64")
+    todo!("0x278164 global constructor keyed to'_a_64")
 }
 
 // 0x27832c — __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE11on_tostringERKS3_P9lua_State

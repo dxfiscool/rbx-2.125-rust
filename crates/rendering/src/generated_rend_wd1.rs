@@ -139,7 +139,7 @@ pub fn stub_b79ec() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dsplowpass")]
 #[doc(alias = "__GLOBAL__I__ZN4FMOD10dsplowpassE")]
 pub fn stub_b7a30() -> ! {
-    todo!("0xb7a30 `global constructor keyed to'FMOD::dsplowpass")
+    todo!("0xb7a30 global constructor keyed to'FMOD::dsplowpass")
 }
 
 
@@ -279,7 +279,7 @@ pub fn stub_b8928() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dsplowpass2")]
 #[doc(alias = "__GLOBAL__I__ZN4FMOD11dsplowpass2E")]
 pub fn stub_b896c() -> ! {
-    todo!("0xb896c `global constructor keyed to'FMOD::dsplowpass2")
+    todo!("0xb896c global constructor keyed to'FMOD::dsplowpass2")
 }
 
 
@@ -414,7 +414,7 @@ pub fn stub_b9690() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dsplowpass_simple")]
 #[doc(alias = "__GLOBAL__I__ZN4FMOD17dsplowpass_simpleE")]
 pub fn stub_b96d4() -> ! {
-    todo!("0xb96d4 `global constructor keyed to'FMOD::dsplowpass_simple")
+    todo!("0xb96d4 global constructor keyed to'FMOD::dsplowpass_simple")
 }
 
 
@@ -558,7 +558,7 @@ pub fn stub_b9ba8() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dspnormalize")]
 #[doc(alias = "__GLOBAL__I__ZN4FMOD12dspnormalizeE")]
 pub fn stub_b9bec() -> ! {
-    todo!("0xb9bec `global constructor keyed to'FMOD::dspnormalize")
+    todo!("0xb9bec global constructor keyed to'FMOD::dspnormalize")
 }
 
 
@@ -678,7 +678,7 @@ pub fn stub_ba22c() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dsposcillator")]
 #[doc(alias = "__GLOBAL__I__ZN4FMOD13dsposcillatorE")]
 pub fn stub_ba270() -> ! {
-    todo!("0xba270 `global constructor keyed to'FMOD::dsposcillator")
+    todo!("0xba270 global constructor keyed to'FMOD::dsposcillator")
 }
 
 
@@ -814,7 +814,7 @@ pub fn stub_bb77c() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dspparameq")]
 #[doc(alias = "__GLOBAL__I__ZN4FMOD10dspparameqE")]
 pub fn stub_bb7c0() -> ! {
-    todo!("0xbb7c0 `global constructor keyed to'FMOD::dspparameq")
+    todo!("0xbb7c0 global constructor keyed to'FMOD::dspparameq")
 }
 
 

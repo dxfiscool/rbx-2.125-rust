@@ -252,14 +252,14 @@ pub fn stub_d44400() -> ! {
 
 // 0xd44408 — __ZThn12_NK4Ogre14ParticleSystem14getBoundingBoxEv
 #[doc(alias = "non-virtual thunk toOgre::ParticleSystem::getBoundingBox(void)const")]
-// was: `non-virtual thunk toOgre::ParticleSystem::getBoundingBox(void)const
+// was: non-virtual thunk toOgre::ParticleSystem::getBoundingBox(void)const
 pub fn stub_d44408() -> ! {
     todo!("0xd44408 non-virtual thunk toOgre::ParticleSystem::getBoundingBox(void)const")
 }
 
 // 0xd4440c — __ZThn12_NK4Ogre14ParticleSystem17getBoundingRadiusEv
 #[doc(alias = "non-virtual thunk toOgre::ParticleSystem::getBoundingRadius(void)const")]
-// was: `non-virtual thunk toOgre::ParticleSystem::getBoundingRadius(void)const
+// was: non-virtual thunk toOgre::ParticleSystem::getBoundingRadius(void)const
 pub fn stub_d4440c() -> ! {
     todo!("0xd4440c non-virtual thunk toOgre::ParticleSystem::getBoundingRadius(void)const")
 }

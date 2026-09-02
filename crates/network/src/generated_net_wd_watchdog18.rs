@@ -550,7 +550,7 @@ pub fn stub_47f908() -> ! {
 
 // 0x47f91c — __ZThn32_N3RBX13DebugSettingsD1Ev
 // type: void __fastcall(RBX::DebugSettings *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
 #[doc(alias = "__ZThn32_N3RBX13DebugSettingsD1Ev")]
 pub fn stub_47f91c() -> ! {
     todo!("0x47f91c __ZThn32_N3RBX13DebugSettingsD1Ev")
@@ -558,7 +558,7 @@ pub fn stub_47f91c() -> ! {
 
 // 0x47f960 — __ZThn32_N3RBX13DebugSettingsD0Ev
 // type: void __fastcall(RBX::DebugSettings *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
 #[doc(alias = "__ZThn32_N3RBX13DebugSettingsD0Ev")]
 pub fn stub_47f960() -> ! {
     todo!("0x47f960 __ZThn32_N3RBX13DebugSettingsD0Ev")
@@ -572,7 +572,7 @@ pub fn stub_47fa48() -> ! {
 
 // 0x47fa58 — __ZThn36_N3RBX13DebugSettingsD1Ev
 // type: void __fastcall(RBX::DebugSettings *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
 #[doc(alias = "__ZThn36_N3RBX13DebugSettingsD1Ev")]
 pub fn stub_47fa58() -> ! {
     todo!("0x47fa58 __ZThn36_N3RBX13DebugSettingsD1Ev")
@@ -580,7 +580,7 @@ pub fn stub_47fa58() -> ! {
 
 // 0x47fa9c — __ZThn36_N3RBX13DebugSettingsD0Ev
 // type: void __fastcall(RBX::DebugSettings *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
 #[doc(alias = "__ZThn36_N3RBX13DebugSettingsD0Ev")]
 pub fn stub_47fa9c() -> ! {
     todo!("0x47fa9c __ZThn36_N3RBX13DebugSettingsD0Ev")
@@ -610,7 +610,7 @@ pub fn stub_47fca8() -> ! {
 
 // 0x47fcb8 — __ZThn32_N3RBX21TaskSchedulerSettingsD1Ev
 // type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
 #[doc(alias = "__ZThn32_N3RBX21TaskSchedulerSettingsD1Ev")]
 pub fn stub_47fcb8() -> ! {
     todo!("0x47fcb8 __ZThn32_N3RBX21TaskSchedulerSettingsD1Ev")
@@ -618,7 +618,7 @@ pub fn stub_47fcb8() -> ! {
 
 // 0x47fcfc — __ZThn32_N3RBX21TaskSchedulerSettingsD0Ev
 // type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
 #[doc(alias = "__ZThn32_N3RBX21TaskSchedulerSettingsD0Ev")]
 pub fn stub_47fcfc() -> ! {
     todo!("0x47fcfc __ZThn32_N3RBX21TaskSchedulerSettingsD0Ev")
@@ -632,7 +632,7 @@ pub fn stub_47fddc() -> ! {
 
 // 0x47fdec — __ZThn36_N3RBX21TaskSchedulerSettingsD1Ev
 // type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
 #[doc(alias = "__ZThn36_N3RBX21TaskSchedulerSettingsD1Ev")]
 pub fn stub_47fdec() -> ! {
     todo!("0x47fdec __ZThn36_N3RBX21TaskSchedulerSettingsD1Ev")
@@ -640,7 +640,7 @@ pub fn stub_47fdec() -> ! {
 
 // 0x47fe30 — __ZThn36_N3RBX21TaskSchedulerSettingsD0Ev
 // type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
 #[doc(alias = "__ZThn36_N3RBX21TaskSchedulerSettingsD0Ev")]
 pub fn stub_47fe30() -> ! {
     todo!("0x47fe30 __ZThn36_N3RBX21TaskSchedulerSettingsD0Ev")

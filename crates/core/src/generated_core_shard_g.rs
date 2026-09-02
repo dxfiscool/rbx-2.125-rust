@@ -1,5 +1,5 @@
 //! core shard G — 100 boost core stubs EA-sorted, continuation after 0x791fb8.
-//! Source: `ida/export.json` filtered where mangled/demangled contains "boost" (excl Reflection/Instance/DataModel/Workspace/Ogre/RakNet/Network/Lua), EA-sorted, next 100 uncovered.
+//! Source: ida/export.json filtered where mangled/demangled contains "boost" (excl Reflection/Instance/DataModel/Workspace/Ogre/RakNet/Network/Lua), EA-sorted, next 100 uncovered.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 

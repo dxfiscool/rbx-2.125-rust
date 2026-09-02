@@ -2,7 +2,7 @@
 // Filter: demangled or mangled contains Instance|DataModel|Workspace — EA-sorted asc next uncovered
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 120 stubs | range 0x6a0754..0x6a8048 | total filtered ~19162, uncovered before 2938, after 2818, datamodel distinct before 22502, after 22622
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias
 // Shard: 221 EA-sorted ascending next uncovered gap
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]

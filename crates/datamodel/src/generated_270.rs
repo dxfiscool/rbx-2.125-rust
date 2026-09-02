@@ -318,14 +318,14 @@ pub fn stub_0x900f00() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")]
 #[doc(alias = "__ZThn32_N3RBX16OverlayDataModelD1Ev")]
 pub fn stub_0x900f38() -> ! {
-    todo!("0x900f38 `non-virtual thunk to'RBX::OverlayDataModel::~OverlayDataModel()")
+    todo!("0x900f38 non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")
 }
 
 // 0x900f40 — __ZThn32_N3RBX16OverlayDataModelD0Ev
 #[doc(alias = "non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")]
 #[doc(alias = "__ZThn32_N3RBX16OverlayDataModelD0Ev")]
 pub fn stub_0x900f40() -> ! {
-    todo!("0x900f40 `non-virtual thunk to'RBX::OverlayDataModel::~OverlayDataModel()")
+    todo!("0x900f40 non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")
 }
 
 // 0x900fe4 — __ZThn32_NK3RBX17NonFactoryProductINS_9DataModelELZNS_17sOverlayDataModelEEE12getClassNameEv
@@ -338,56 +338,56 @@ pub fn stub_0x900fe4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")]
 #[doc(alias = "__ZThn36_N3RBX16OverlayDataModelD1Ev")]
 pub fn stub_0x90100c() -> ! {
-    todo!("0x90100c `non-virtual thunk to'RBX::OverlayDataModel::~OverlayDataModel()")
+    todo!("0x90100c non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")
 }
 
 // 0x901014 — __ZThn36_N3RBX16OverlayDataModelD0Ev
 #[doc(alias = "non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")]
 #[doc(alias = "__ZThn36_N3RBX16OverlayDataModelD0Ev")]
 pub fn stub_0x901014() -> ! {
-    todo!("0x901014 `non-virtual thunk to'RBX::OverlayDataModel::~OverlayDataModel()")
+    todo!("0x901014 non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")
 }
 
 // 0x9010bc — __ZThn144_N3RBX16OverlayDataModelD1Ev
 #[doc(alias = "non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")]
 #[doc(alias = "__ZThn144_N3RBX16OverlayDataModelD1Ev")]
 pub fn stub_0x9010bc() -> ! {
-    todo!("0x9010bc `non-virtual thunk to'RBX::OverlayDataModel::~OverlayDataModel()")
+    todo!("0x9010bc non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")
 }
 
 // 0x9010c4 — __ZThn144_N3RBX16OverlayDataModelD0Ev
 #[doc(alias = "non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")]
 #[doc(alias = "__ZThn144_N3RBX16OverlayDataModelD0Ev")]
 pub fn stub_0x9010c4() -> ! {
-    todo!("0x9010c4 `non-virtual thunk to'RBX::OverlayDataModel::~OverlayDataModel()")
+    todo!("0x9010c4 non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")
 }
 
 // 0x901178 — __ZThn180_N3RBX16OverlayDataModelD1Ev
 #[doc(alias = "non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")]
 #[doc(alias = "__ZThn180_N3RBX16OverlayDataModelD1Ev")]
 pub fn stub_0x901178() -> ! {
-    todo!("0x901178 `non-virtual thunk to'RBX::OverlayDataModel::~OverlayDataModel()")
+    todo!("0x901178 non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")
 }
 
 // 0x901180 — __ZThn180_N3RBX16OverlayDataModelD0Ev
 #[doc(alias = "non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")]
 #[doc(alias = "__ZThn180_N3RBX16OverlayDataModelD0Ev")]
 pub fn stub_0x901180() -> ! {
-    todo!("0x901180 `non-virtual thunk to'RBX::OverlayDataModel::~OverlayDataModel()")
+    todo!("0x901180 non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")
 }
 
 // 0x901240 — __ZThn184_N3RBX16OverlayDataModelD1Ev
 #[doc(alias = "non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")]
 #[doc(alias = "__ZThn184_N3RBX16OverlayDataModelD1Ev")]
 pub fn stub_0x901240() -> ! {
-    todo!("0x901240 `non-virtual thunk to'RBX::OverlayDataModel::~OverlayDataModel()")
+    todo!("0x901240 non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")
 }
 
 // 0x901248 — __ZThn184_N3RBX16OverlayDataModelD0Ev
 #[doc(alias = "non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")]
 #[doc(alias = "__ZThn184_N3RBX16OverlayDataModelD0Ev")]
 pub fn stub_0x901248() -> ! {
-    todo!("0x901248 `non-virtual thunk to'RBX::OverlayDataModel::~OverlayDataModel()")
+    todo!("0x901248 non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")
 }
 
 // 0x9012f8 — __ZN3RBX4Name13callDoDeclareILZNS_17sOverlayDataModelEEEEvv

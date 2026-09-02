@@ -402,7 +402,7 @@ pub fn stub_4a9144() -> ! {
 }
 
 // 0x4a9168 — __GLOBAL__I_a_189
-// demangled: `global constructor keyed to'_a_189
+// demangled: global constructor keyed to'_a_189
 #[doc(alias = "global constructor keyed to_a_189")]
 pub fn stub_4a9168() -> ! {
     todo!("0x4a9168 global constructor keyed to_a_189")

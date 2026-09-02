@@ -1,5 +1,5 @@
 //! core shard U — 100 core stubs EA-sorted, RBX:: not Reflection/DataModel/Ogre/RakNet/Lua.
-//! Source: `ida/export.json` filtered where demangled contains RBX:: but not Reflection/DataModel/Ogre/RakNet/Lua/Instance/Workspace, EA-sorted, next 100 uncovered workspace-wide.
+//! Source: ida/export.json filtered where demangled contains RBX:: but not Reflection/DataModel/Ogre/RakNet/Lua/Instance/Workspace, EA-sorted, next 100 uncovered workspace-wide.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
@@ -365,25 +365,25 @@ pub fn stub_0x2580b0() {
 }
 
 #[doc(alias = "__ZThn32_N3RBX11HttpServiceD1Ev")]
-// 0x258160 — `non-virtual thunk toRBX::HttpService::~HttpService()
+// 0x258160 — non-virtual thunk toRBX::HttpService::~HttpService()
 pub fn stub_0x258160() {
     todo!("0x258160")
 }
 
 #[doc(alias = "__ZThn32_N3RBX11HttpServiceD0Ev")]
-// 0x258168 — `non-virtual thunk toRBX::HttpService::~HttpService()
+// 0x258168 — non-virtual thunk toRBX::HttpService::~HttpService()
 pub fn stub_0x258168() {
     todo!("0x258168")
 }
 
 #[doc(alias = "__ZThn36_N3RBX11HttpServiceD1Ev")]
-// 0x25821c — `non-virtual thunk toRBX::HttpService::~HttpService()
+// 0x25821c — non-virtual thunk toRBX::HttpService::~HttpService()
 pub fn stub_0x25821c() {
     todo!("0x25821c")
 }
 
 #[doc(alias = "__ZThn36_N3RBX11HttpServiceD0Ev")]
-// 0x258224 — `non-virtual thunk toRBX::HttpService::~HttpService()
+// 0x258224 — non-virtual thunk toRBX::HttpService::~HttpService()
 pub fn stub_0x258224() {
     todo!("0x258224")
 }
@@ -467,19 +467,19 @@ pub fn stub_0x25bb48() {
 }
 
 #[doc(alias = "__ZThn32_N3RBX5LightD0Ev")]
-// 0x25bb4c — `non-virtual thunk toRBX::Light::~Light()
+// 0x25bb4c — non-virtual thunk toRBX::Light::~Light()
 pub fn stub_0x25bb4c() {
     todo!("0x25bb4c")
 }
 
 #[doc(alias = "__ZThn36_N3RBX5LightD0Ev")]
-// 0x25bb54 — `non-virtual thunk toRBX::Light::~Light()
+// 0x25bb54 — non-virtual thunk toRBX::Light::~Light()
 pub fn stub_0x25bb54() {
     todo!("0x25bb54")
 }
 
 #[doc(alias = "__ZThn92_N3RBX5LightD0Ev")]
-// 0x25bb5c — `non-virtual thunk toRBX::Light::~Light()
+// 0x25bb5c — non-virtual thunk toRBX::Light::~Light()
 pub fn stub_0x25bb5c() {
     todo!("0x25bb5c")
 }
@@ -491,19 +491,19 @@ pub fn stub_0x25bb64() {
 }
 
 #[doc(alias = "__ZThn32_N3RBX5LightD1Ev")]
-// 0x25bc20 — `non-virtual thunk toRBX::Light::~Light()
+// 0x25bc20 — non-virtual thunk toRBX::Light::~Light()
 pub fn stub_0x25bc20() {
     todo!("0x25bc20")
 }
 
 #[doc(alias = "__ZThn36_N3RBX5LightD1Ev")]
-// 0x25bc28 — `non-virtual thunk toRBX::Light::~Light()
+// 0x25bc28 — non-virtual thunk toRBX::Light::~Light()
 pub fn stub_0x25bc28() {
     todo!("0x25bc28")
 }
 
 #[doc(alias = "__ZThn92_N3RBX5LightD1Ev")]
-// 0x25bc30 — `non-virtual thunk toRBX::Light::~Light()
+// 0x25bc30 — non-virtual thunk toRBX::Light::~Light()
 pub fn stub_0x25bc30() {
     todo!("0x25bc30")
 }
@@ -527,37 +527,37 @@ pub fn stub_0x25be58() {
 }
 
 #[doc(alias = "__ZThn32_N3RBX10PointLightD0Ev")]
-// 0x25be5c — `non-virtual thunk toRBX::PointLight::~PointLight()
+// 0x25be5c — non-virtual thunk toRBX::PointLight::~PointLight()
 pub fn stub_0x25be5c() {
     todo!("0x25be5c")
 }
 
 #[doc(alias = "__ZThn36_N3RBX10PointLightD0Ev")]
-// 0x25be64 — `non-virtual thunk toRBX::PointLight::~PointLight()
+// 0x25be64 — non-virtual thunk toRBX::PointLight::~PointLight()
 pub fn stub_0x25be64() {
     todo!("0x25be64")
 }
 
 #[doc(alias = "__ZThn92_N3RBX10PointLightD0Ev")]
-// 0x25be6c — `non-virtual thunk toRBX::PointLight::~PointLight()
+// 0x25be6c — non-virtual thunk toRBX::PointLight::~PointLight()
 pub fn stub_0x25be6c() {
     todo!("0x25be6c")
 }
 
 #[doc(alias = "__ZThn32_N3RBX10PointLightD1Ev")]
-// 0x25be74 — `non-virtual thunk toRBX::PointLight::~PointLight()
+// 0x25be74 — non-virtual thunk toRBX::PointLight::~PointLight()
 pub fn stub_0x25be74() {
     todo!("0x25be74")
 }
 
 #[doc(alias = "__ZThn36_N3RBX10PointLightD1Ev")]
-// 0x25be7c — `non-virtual thunk toRBX::PointLight::~PointLight()
+// 0x25be7c — non-virtual thunk toRBX::PointLight::~PointLight()
 pub fn stub_0x25be7c() {
     todo!("0x25be7c")
 }
 
 #[doc(alias = "__ZThn92_N3RBX10PointLightD1Ev")]
-// 0x25be84 — `non-virtual thunk toRBX::PointLight::~PointLight()
+// 0x25be84 — non-virtual thunk toRBX::PointLight::~PointLight()
 pub fn stub_0x25be84() {
     todo!("0x25be84")
 }
@@ -581,25 +581,25 @@ pub fn stub_0x25c090() {
 }
 
 #[doc(alias = "__ZThn32_N3RBX9SpotLightD0Ev")]
-// 0x25c094 — `non-virtual thunk toRBX::SpotLight::~SpotLight()
+// 0x25c094 — non-virtual thunk toRBX::SpotLight::~SpotLight()
 pub fn stub_0x25c094() {
     todo!("0x25c094")
 }
 
 #[doc(alias = "__ZThn36_N3RBX9SpotLightD0Ev")]
-// 0x25c09c — `non-virtual thunk toRBX::SpotLight::~SpotLight()
+// 0x25c09c — non-virtual thunk toRBX::SpotLight::~SpotLight()
 pub fn stub_0x25c09c() {
     todo!("0x25c09c")
 }
 
 #[doc(alias = "__ZThn92_N3RBX9SpotLightD0Ev")]
-// 0x25c0a4 — `non-virtual thunk toRBX::SpotLight::~SpotLight()
+// 0x25c0a4 — non-virtual thunk toRBX::SpotLight::~SpotLight()
 pub fn stub_0x25c0a4() {
     todo!("0x25c0a4")
 }
 
 #[doc(alias = "__ZThn32_N3RBX9SpotLightD1Ev")]
-// 0x25c0ac — `non-virtual thunk toRBX::SpotLight::~SpotLight()
+// 0x25c0ac — non-virtual thunk toRBX::SpotLight::~SpotLight()
 pub fn stub_0x25c0ac() {
     todo!("0x25c0ac")
 }

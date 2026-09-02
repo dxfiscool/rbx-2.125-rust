@@ -1,5 +1,5 @@
 //! core watchdog coreA — 120 core stubs EA-sorted, next uncovered fallback after watchdog_w 0x3e7298.
-//! Source: `ida/export.json` (85545 funcs) filtered for core namespace (RBX::Core, rbx_core, std, boost fallback) EA-sorted asc next 120 not yet in any crate — gap filler.
+//! Source: ida/export.json (85545 funcs) filtered for core namespace (RBX::Core, rbx_core, std, boost fallback) EA-sorted asc next 120 not yet in any crate — gap filler.
 //! Range: 0x54c9a8..0x5765ec | global gap 35432 remaining before, distinct cap, rbx_core::SharedPtr not boost.
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.

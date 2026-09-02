@@ -1,5 +1,5 @@
 //! core shard E — 100 boost core stubs EA-sorted, continuation after shard D (0x6dea08).
-//! Source: `ida/export.json` filtered where mangled/demangled contains "boost" (and crate core, Reflection/Instance/Ogre/RakNet/Network/Lua excluded), EA-sorted, next 100 uncovered.
+//! Source: ida/export.json filtered where mangled/demangled contains "boost" (and crate core, Reflection/Instance/Ogre/RakNet/Network/Lua excluded), EA-sorted, next 100 uncovered.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, single quotes removed.
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<int,boost::_mfi::cmf0<int,RBX::Kernel>,boost::_bi::list1<boost::_bi::value<RBX::Kernel const*>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]

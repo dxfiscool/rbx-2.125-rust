@@ -1,5 +1,5 @@
 //! core shard EL — 100 core stubs EA-sorted, lowest uncovered 0x9742b8..0x98dd5c (strict RBX|boost|std|rbx excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 after EK 0x940250).
-//! Source: `ida/export.json` filtered where demangled/mangled contains `RBX::`|`boost::`|`std::`|`rbx::` excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 lowest uncovered.
+//! Source: ida/export.json filtered where demangled/mangled contains RBX::|boost::|std::|rbx:: excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 lowest uncovered.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
@@ -67,28 +67,28 @@ pub fn stub_978fe8() -> ! {
 
 #[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::~clone_impl()")]
 // 0x979128 — __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt13runtime_errorEEED0Ev
-// was: `non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::~clone_impl()`
+// was: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::~clone_impl()
 pub fn stub_979128() -> ! {
     todo!("0x979128 __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt13runtime_errorEEED0Ev")
 }
 
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::rethrow(void)const")]
 // 0x9791e8 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorISt13runtime_errorEEE7rethrowEv
-// was: `virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::rethrow(void)const`
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::rethrow(void)const
 pub fn stub_9791e8() -> ! {
     todo!("0x9791e8 __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorISt13runtime_errorEEE7rethrowEv")
 }
 
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::~clone_impl()")]
 // 0x9791f8 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt13runtime_errorEEED0Ev
-// was: `virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::~clone_impl()`
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::~clone_impl()
 pub fn stub_9791f8() -> ! {
     todo!("0x9791f8 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt13runtime_errorEEED0Ev")
 }
 
 #[doc(alias = "non-virtual thunk to boost::exception_detail::error_info_injector<std::runtime_error>::~error_info_injector()")]
 // 0x9792d0 — __ZThn8_N5boost16exception_detail19error_info_injectorISt13runtime_errorED0Ev
-// was: `non-virtual thunk to boost::exception_detail::error_info_injector<std::runtime_error>::~error_info_injector()`
+// was: non-virtual thunk to boost::exception_detail::error_info_injector<std::runtime_error>::~error_info_injector()
 pub fn stub_9792d0() -> ! {
     todo!("0x9792d0 __ZThn8_N5boost16exception_detail19error_info_injectorISt13runtime_errorED0Ev")
 }
@@ -131,28 +131,28 @@ pub fn stub_979898() -> ! {
 
 #[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::~clone_impl()")]
 // 0x9798a8 — __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEED0Ev
-// was: `non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::~clone_impl()`
+// was: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::~clone_impl()
 pub fn stub_9798a8() -> ! {
     todo!("0x9798a8 __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEED0Ev")
 }
 
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::rethrow(void)const")]
 // 0x979968 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEE7rethrowEv
-// was: `virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::rethrow(void)const`
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::rethrow(void)const
 pub fn stub_979968() -> ! {
     todo!("0x979968 __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEE7rethrowEv")
 }
 
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::~clone_impl()")]
 // 0x979978 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEED0Ev
-// was: `virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::~clone_impl()`
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::~clone_impl()
 pub fn stub_979978() -> ! {
     todo!("0x979978 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEED0Ev")
 }
 
 #[doc(alias = "non-virtual thunk to boost::exception_detail::error_info_injector<boost::gregorian::bad_month>::~error_info_injector()")]
 // 0x979a50 — __ZThn8_N5boost16exception_detail19error_info_injectorINS_9gregorian9bad_monthEED0Ev
-// was: `non-virtual thunk to boost::exception_detail::error_info_injector<boost::gregorian::bad_month>::~error_info_injector()`
+// was: non-virtual thunk to boost::exception_detail::error_info_injector<boost::gregorian::bad_month>::~error_info_injector()
 pub fn stub_979a50() -> ! {
     todo!("0x979a50 __ZThn8_N5boost16exception_detail19error_info_injectorINS_9gregorian9bad_monthEED0Ev")
 }
@@ -231,14 +231,14 @@ pub fn stub_984350() -> ! {
 
 #[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned int>::~TypedStatsItem()")]
 // 0x9844d0 — __ZThn32_N3RBX5Stats14TypedStatsItemIjED0Ev
-// was: `non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned int>::~TypedStatsItem()`
+// was: non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned int>::~TypedStatsItem()
 pub fn stub_9844d0() -> ! {
     todo!("0x9844d0 __ZThn32_N3RBX5Stats14TypedStatsItemIjED0Ev")
 }
 
 #[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned int>::~TypedStatsItem()")]
 // 0x984578 — __ZThn36_N3RBX5Stats14TypedStatsItemIjED0Ev
-// was: `non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned int>::~TypedStatsItem()`
+// was: non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned int>::~TypedStatsItem()
 pub fn stub_984578() -> ! {
     todo!("0x984578 __ZThn36_N3RBX5Stats14TypedStatsItemIjED0Ev")
 }
@@ -257,7 +257,7 @@ pub fn stub_9851e0() -> ! {
 
 #[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
 // 0x985ad8 — __ZThn36_N3RBX5Stats14TypedStatsItemIfED1Ev
-// was: `non-virtual thunk to RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()`
+// was: non-virtual thunk to RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()
 pub fn stub_985ad8() -> ! {
     todo!("0x985ad8 __ZThn36_N3RBX5Stats14TypedStatsItemIfED1Ev")
 }
@@ -294,7 +294,7 @@ pub fn stub_986008() -> ! {
 
 #[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
 // 0x986188 — __ZThn36_N3RBX5Stats14TypedStatsItemIdED0Ev
-// was: `non-virtual thunk to RBX::Stats::TypedStatsItem<double>::~TypedStatsItem()`
+// was: non-virtual thunk to RBX::Stats::TypedStatsItem<double>::~TypedStatsItem()
 pub fn stub_986188() -> ! {
     todo!("0x986188 __ZThn36_N3RBX5Stats14TypedStatsItemIdED0Ev")
 }
@@ -313,7 +313,7 @@ pub fn stub_986260() -> ! {
 
 #[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
 // 0x9863e0 — __ZThn32_N3RBX5Stats14TypedStatsItemIbED0Ev
-// was: `non-virtual thunk to RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()`
+// was: non-virtual thunk to RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()
 pub fn stub_9863e0() -> ! {
     todo!("0x9863e0 __ZThn32_N3RBX5Stats14TypedStatsItemIbED0Ev")
 }
@@ -338,14 +338,14 @@ pub fn stub_986558() -> ! {
 
 #[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned long long>::~TypedStatsItem()")]
 // 0x9866d8 — __ZThn32_N3RBX5Stats14TypedStatsItemIyED0Ev
-// was: `non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned long long>::~TypedStatsItem()`
+// was: non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned long long>::~TypedStatsItem()
 pub fn stub_9866d8() -> ! {
     todo!("0x9866d8 __ZThn32_N3RBX5Stats14TypedStatsItemIyED0Ev")
 }
 
 #[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned long long>::~TypedStatsItem()")]
 // 0x986780 — __ZThn36_N3RBX5Stats14TypedStatsItemIyED0Ev
-// was: `non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned long long>::~TypedStatsItem()`
+// was: non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned long long>::~TypedStatsItem()
 pub fn stub_986780() -> ! {
     todo!("0x986780 __ZThn36_N3RBX5Stats14TypedStatsItemIyED0Ev")
 }
@@ -562,21 +562,21 @@ pub fn stub_98d6b0() -> ! {
 
 #[doc(alias = "non-virtual thunk to boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>::~error_info_injector()")]
 // 0x98d768 — __ZThn16_N5boost16exception_detail19error_info_injectorINS_9iostreams10gzip_errorEED1Ev
-// was: `non-virtual thunk to boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>::~error_info_injector()`
+// was: non-virtual thunk to boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>::~error_info_injector()
 pub fn stub_98d768() -> ! {
     todo!("0x98d768 __ZThn16_N5boost16exception_detail19error_info_injectorINS_9iostreams10gzip_errorEED1Ev")
 }
 
 #[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()")]
 // 0x98d820 — __ZThn16_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEED1Ev
-// was: `non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()`
+// was: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()
 pub fn stub_98d820() -> ! {
     todo!("0x98d820 __ZThn16_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEED1Ev")
 }
 
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()")]
 // 0x98d8d8 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEED1Ev
-// was: `virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()`
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()
 pub fn stub_98d8d8() -> ! {
     todo!("0x98d8d8 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEED1Ev")
 }
@@ -601,28 +601,28 @@ pub fn stub_98db1c() -> ! {
 
 #[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()")]
 // 0x98dbcc — __ZThn16_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEED0Ev
-// was: `non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()`
+// was: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()
 pub fn stub_98dbcc() -> ! {
     todo!("0x98dbcc __ZThn16_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEED0Ev")
 }
 
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::clone(void)const")]
 // 0x98dc88 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEE5cloneEv
-// was: `virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::clone(void)const`
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::clone(void)const
 pub fn stub_98dc88() -> ! {
     todo!("0x98dc88 __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEE5cloneEv")
 }
 
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::rethrow(void)const")]
 // 0x98dd4c — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEE7rethrowEv
-// was: `virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::rethrow(void)const`
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::rethrow(void)const
 pub fn stub_98dd4c() -> ! {
     todo!("0x98dd4c __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEE7rethrowEv")
 }
 
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()")]
 // 0x98dd5c — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEED0Ev
-// was: `virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()`
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()
 pub fn stub_98dd5c() -> ! {
     todo!("0x98dd5c __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEED0Ev")
 }

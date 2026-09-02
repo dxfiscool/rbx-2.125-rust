@@ -1,5 +1,5 @@
 //! core shard kx — 100 stubs EA-sorted asc fallback gap filler not yet in core.
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc, next 100 after kw 0xed7694..0xedaa2c — 0x318d7c..0x38aa6c (fallback excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound; 33887 filtered, 5301 remaining before -> 5201 after, rbx_core::SharedPtr not boost).
+//! Source: ida/export.json (85545 funcs) EA-sorted asc, next 100 after kw 0xed7694..0xedaa2c — 0x318d7c..0x38aa6c (fallback excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound; 33887 filtered, 5301 remaining before -> 5201 after, rbx_core::SharedPtr not boost).
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + #[doc(alias = mangled)] + todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 

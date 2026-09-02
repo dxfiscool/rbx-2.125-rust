@@ -164,7 +164,7 @@ pub fn stub_0x294cc4() -> ! {
 #[doc(alias = "global constructor keyed to_a_71")]
 #[doc(alias = "__GLOBAL__I_a_71")]
 pub fn stub_0x294e3c() -> ! {
-    todo!("0x294e3c `global constructor keyed to'_a_71")
+    todo!("0x294e3c global constructor keyed to'_a_71")
 }
 
 // 0x295320 — __ZN3RBX3Lua17protect_metatableEP9lua_Statei
@@ -523,7 +523,7 @@ pub fn stub_0x29bce4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext()")]
 #[doc(alias = "__ZThn32_N3RBX13ScriptContextD0Ev")]
 pub fn stub_0x29bce8() -> ! {
-    todo!("0x29bce8 `non-virtual thunk to'RBX::ScriptContext::~ScriptContext()")
+    todo!("0x29bce8 non-virtual thunk toRBX::ScriptContext::~ScriptContext()")
 }
 
 // 0x29bcf0 — __ZThn36_N3RBX13ScriptContextD0Ev
@@ -531,7 +531,7 @@ pub fn stub_0x29bce8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext()")]
 #[doc(alias = "__ZThn36_N3RBX13ScriptContextD0Ev")]
 pub fn stub_0x29bcf0() -> ! {
-    todo!("0x29bcf0 `non-virtual thunk to'RBX::ScriptContext::~ScriptContext()")
+    todo!("0x29bcf0 non-virtual thunk toRBX::ScriptContext::~ScriptContext()")
 }
 
 // 0x29bcf8 — __ZN3RBX13ScriptContextD2Ev
@@ -547,7 +547,7 @@ pub fn stub_0x29bcf8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext()")]
 #[doc(alias = "__ZThn32_N3RBX13ScriptContextD1Ev")]
 pub fn stub_0x29c364() -> ! {
-    todo!("0x29c364 `non-virtual thunk to'RBX::ScriptContext::~ScriptContext()")
+    todo!("0x29c364 non-virtual thunk toRBX::ScriptContext::~ScriptContext()")
 }
 
 // 0x29c36c — __ZThn36_N3RBX13ScriptContextD1Ev
@@ -555,7 +555,7 @@ pub fn stub_0x29c364() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext()")]
 #[doc(alias = "__ZThn36_N3RBX13ScriptContextD1Ev")]
 pub fn stub_0x29c36c() -> ! {
-    todo!("0x29c36c `non-virtual thunk to'RBX::ScriptContext::~ScriptContext()")
+    todo!("0x29c36c non-virtual thunk toRBX::ScriptContext::~ScriptContext()")
 }
 
 // 0x29c378 — __ZN3RBX13ScriptContext14onCheckTimeoutEv
@@ -759,7 +759,7 @@ pub fn stub_0x2a1430() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ScriptContext::scriptShouldRun(RBX::BaseScript *)")]
 #[doc(alias = "__ZThn96_N3RBX13ScriptContext15scriptShouldRunEPNS_10BaseScriptE")]
 pub fn stub_0x2a146c() -> ! {
-    todo!("0x2a146c `non-virtual thunk to'RBX::ScriptContext::scriptShouldRun(RBX::BaseScript *)")
+    todo!("0x2a146c non-virtual thunk toRBX::ScriptContext::scriptShouldRun(RBX::BaseScript *)")
 }
 
 // 0x2a1478 — __ZN3RBX13ScriptContext9addScriptEPNS_10BaseScriptENS0_18ScriptStartOptionsE

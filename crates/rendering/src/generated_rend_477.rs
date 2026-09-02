@@ -402,7 +402,7 @@ pub fn stub_75ae30() -> ! {
 #[doc(alias = "global constructor keyed to_a_350")]
 #[doc(alias = "__GLOBAL__I_a_350")]
 pub fn stub_75b0e8() -> ! {
-    todo!("0x75b0e8 `global constructor keyed to'_a_350")
+    todo!("0x75b0e8 global constructor keyed to'_a_350")
 }
 // 0x75b24c — __ZN3RBX9SnapJoint18compatibleSurfacesEPNS_9PrimitiveES2_NS_8NormalIdES3_
 #[doc(alias = "RBX::SnapJoint::compatibleSurfaces(RBX::Primitive *,RBX::Primitive *,RBX::NormalId,RBX::NormalId)")]
@@ -421,7 +421,7 @@ pub fn stub_75b2a0() -> ! {
 #[doc(alias = "global constructor keyed to_a_351")]
 #[doc(alias = "__GLOBAL__I_a_351")]
 pub fn stub_75b3e0() -> ! {
-    todo!("0x75b3e0 `global constructor keyed to'_a_351")
+    todo!("0x75b3e0 global constructor keyed to'_a_351")
 }
 // 0x75b4a8 — __ZN3RBX13SpatialFilterC1EPNS_6IStageEPNS_5WorldE
 // type: _DWORD __fastcall(RBX::SpatialFilter *__hidden this, RBX::IStage *, RBX::World *)
@@ -630,7 +630,7 @@ pub fn stub_75cf3c() -> ! {
 #[doc(alias = "global constructor keyed to_a_352")]
 #[doc(alias = "__GLOBAL__I_a_352")]
 pub fn stub_75d1b8() -> ! {
-    todo!("0x75d1b8 `global constructor keyed to'_a_352")
+    todo!("0x75d1b8 global constructor keyed to'_a_352")
 }
 // 0x75d45c — __ZN3RBX17SpatialHashStatic7getHashEiRKNS_12Vector3int32E
 // type: _DWORD __fastcall(RBX::SpatialHashStatic *__hidden this, int, const RBX::Vector3int32 *)
@@ -650,7 +650,7 @@ pub fn stub_75d534() -> ! {
 #[doc(alias = "global constructor keyed to_a_353")]
 #[doc(alias = "__GLOBAL__I_a_353")]
 pub fn stub_75d650() -> ! {
-    todo!("0x75d650 `global constructor keyed to'_a_353")
+    todo!("0x75d650 global constructor keyed to'_a_353")
 }
 // 0x75d8ec — __ZN3RBX15StepJointsStageC1EPNS_6IStageEPNS_5WorldE
 // type: _DWORD __fastcall(RBX::StepJointsStage *__hidden this, RBX::IStage *, RBX::World *)

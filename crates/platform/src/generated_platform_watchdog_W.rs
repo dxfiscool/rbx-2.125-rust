@@ -236,7 +236,7 @@ pub fn stub_3a9a90() -> ! {
     todo!("0x3a9a90 __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_10ArcHandlesEFvN3G3D7Vector34AxisEffEEEEENS7_5list1INS7_5valueIPSI_EEEEEELi0ES3_E4callEv")
 }
 
-// 0x3a9a98 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_10ArcHandlesEFvN3G3D7Vector34AxisEffEEEEENS7_5list1INS7_5valueIPSI_EEEEEELi0ES3_E4callEv — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>*>>>,0,void ()(void)>::call(void)
+// 0x3a9a98 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_10ArcHandlesEFvN3G3D7Vector34AxisEffEEEEENS7_5list1INS7_5valueIPSI_EEEEEELi0ES3_E4callEv — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>*>>>,0,void ()(void)>::call(void)
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_10ArcHandlesEFvN3G3D7Vector34AxisEffEEEEENS7_5list1INS7_5valueIPSI_EEEEEELi0ES3_E4callEv")]
@@ -308,7 +308,7 @@ pub fn stub_3a9d78() -> ! {
     todo!("0x3a9d78 __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_10ArcHandlesEFvN3G3D7Vector34AxisEEEEEENS7_5list1INS7_5valueIPSI_EEEEEELi0ES3_E4callEv")
 }
 
-// 0x3a9d80 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_10ArcHandlesEFvN3G3D7Vector34AxisEEEEEENS7_5list1INS7_5valueIPSI_EEEEEELi0ES3_E4callEv — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis)>*>>>,0,void ()(void)>::call(void)
+// 0x3a9d80 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_10ArcHandlesEFvN3G3D7Vector34AxisEEEEEENS7_5list1INS7_5valueIPSI_EEEEEELi0ES3_E4callEv — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis)>*>>>,0,void ()(void)>::call(void)
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis)>*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_10ArcHandlesEFvN3G3D7Vector34AxisEEEEEENS7_5list1INS7_5valueIPSI_EEEEEELi0ES3_E4callEv")]
@@ -467,7 +467,7 @@ pub fn stub_3aac24() -> ! {
     todo!("0x3aac24 __ZN3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEffEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf3IvN3RBX19EventReplicatorImplILi3ENSE_10ArcHandlesES6_EES5_ffEENSA_5list4INSA_5valueIPSH_EENS9_3argILi1EEENSN_ILi2EEENSN_ILi3EEEEEEELi3ES6_E4callES5_ff")
 }
 
-// 0x3aac50 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEffEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf3IvN3RBX19EventReplicatorImplILi3ENSE_10ArcHandlesES6_EES5_ffEENSA_5list4INSA_5valueIPSH_EENS9_3argILi1EEENSN_ILi2EEENSN_ILi3EEEEEEELi3ES6_E4callES5_ff — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>,G3D::Vector3::Axis,float,float>,boost::_bi::list4<boost::_bi::value<RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)
+// 0x3aac50 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEffEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf3IvN3RBX19EventReplicatorImplILi3ENSE_10ArcHandlesES6_EES5_ffEENSA_5list4INSA_5valueIPSH_EENS9_3argILi1EEENSN_ILi2EEENSN_ILi3EEEEEEELi3ES6_E4callES5_ff — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>,G3D::Vector3::Axis,float,float>,boost::_bi::list4<boost::_bi::value<RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>,G3D::Vector3::Axis,float,float>,boost::_bi::list4<boost::_bi::value<RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEffEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf3IvN3RBX19EventReplicatorImplILi3ENSE_10ArcHandlesES6_EES5_ffEENSA_5list4INSA_5valueIPSH_EENS9_3argILi1EEENSN_ILi2EEENSN_ILi3EEEEEEELi3ES6_E4callES5_ff")]
@@ -642,7 +642,7 @@ pub fn stub_3ab820() -> ! {
     todo!("0x3ab820 __ZN3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvN3RBX19EventReplicatorImplILi1ENSE_10ArcHandlesES6_EES5_EENSA_5list2INSA_5valueIPSH_EENS9_3argILi1EEEEEEELi1ES6_E4callES5_")
 }
 
-// 0x3ab834 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvN3RBX19EventReplicatorImplILi1ENSE_10ArcHandlesES6_EES5_EENSA_5list2INSA_5valueIPSH_EENS9_3argILi1EEEEEEELi1ES6_E4callES5_ — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>,G3D::Vector3::Axis>,boost::_bi::list2<boost::_bi::value<RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>*>,boost::arg<1>>>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)
+// 0x3ab834 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvN3RBX19EventReplicatorImplILi1ENSE_10ArcHandlesES6_EES5_EENSA_5list2INSA_5valueIPSH_EENS9_3argILi1EEEEEEELi1ES6_E4callES5_ — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>,G3D::Vector3::Axis>,boost::_bi::list2<boost::_bi::value<RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>*>,boost::arg<1>>>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)
 // type: int __fastcall(int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>,G3D::Vector3::Axis>,boost::_bi::list2<boost::_bi::value<RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>*>,boost::arg<1>>>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvN3RBX19EventReplicatorImplILi1ENSE_10ArcHandlesES6_EES5_EENSA_5list2INSA_5valueIPSH_EENS9_3argILi1EEEEEEELi1ES6_E4callES5_")]
@@ -810,7 +810,7 @@ pub fn stub_3ac13c() -> ! {
     todo!("0x3ac13c __ZNK3RBX17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEE12getClassNameEv")
 }
 
-// 0x3ac140 — __ZThn32_N3RBX11HandlesBaseD1Ev — `non-virtual thunk to'RBX::HandlesBase::~HandlesBase()
+// 0x3ac140 — __ZThn32_N3RBX11HandlesBaseD1Ev — non-virtual thunk toRBX::HandlesBase::~HandlesBase()
 // type: void __fastcall(RBX::HandlesBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 #[doc(alias = "__ZThn32_N3RBX11HandlesBaseD1Ev")]
@@ -818,7 +818,7 @@ pub fn stub_3ac140() -> ! {
     todo!("0x3ac140 __ZThn32_N3RBX11HandlesBaseD1Ev")
 }
 
-// 0x3ac148 — __ZThn32_N3RBX11HandlesBaseD0Ev — `non-virtual thunk to'RBX::HandlesBase::~HandlesBase()
+// 0x3ac148 — __ZThn32_N3RBX11HandlesBaseD0Ev — non-virtual thunk toRBX::HandlesBase::~HandlesBase()
 // type: void __fastcall(RBX::HandlesBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 #[doc(alias = "__ZThn32_N3RBX11HandlesBaseD0Ev")]
@@ -833,7 +833,7 @@ pub fn stub_3ac1ec() -> ! {
     todo!("0x3ac1ec __ZThn32_NK3RBX17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEE12getClassNameEv")
 }
 
-// 0x3ac1f0 — __ZThn36_N3RBX11HandlesBaseD1Ev — `non-virtual thunk to'RBX::HandlesBase::~HandlesBase()
+// 0x3ac1f0 — __ZThn36_N3RBX11HandlesBaseD1Ev — non-virtual thunk toRBX::HandlesBase::~HandlesBase()
 // type: void __fastcall(RBX::HandlesBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 #[doc(alias = "__ZThn36_N3RBX11HandlesBaseD1Ev")]
@@ -841,7 +841,7 @@ pub fn stub_3ac1f0() -> ! {
     todo!("0x3ac1f0 __ZThn36_N3RBX11HandlesBaseD1Ev")
 }
 
-// 0x3ac1f8 — __ZThn36_N3RBX11HandlesBaseD0Ev — `non-virtual thunk to'RBX::HandlesBase::~HandlesBase()
+// 0x3ac1f8 — __ZThn36_N3RBX11HandlesBaseD0Ev — non-virtual thunk toRBX::HandlesBase::~HandlesBase()
 // type: void __fastcall(RBX::HandlesBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 #[doc(alias = "__ZThn36_N3RBX11HandlesBaseD0Ev")]
@@ -891,7 +891,7 @@ pub fn stub_3ac5b0() -> ! {
     todo!("0x3ac5b0 __ZNK3RBX17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEE12getClassNameEv")
 }
 
-// 0x3ac5b4 — __ZThn32_N3RBX13PartAdornmentD1Ev — `non-virtual thunk to'RBX::PartAdornment::~PartAdornment()
+// 0x3ac5b4 — __ZThn32_N3RBX13PartAdornmentD1Ev — non-virtual thunk toRBX::PartAdornment::~PartAdornment()
 // type: void __fastcall(RBX::PartAdornment *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
 #[doc(alias = "__ZThn32_N3RBX13PartAdornmentD1Ev")]
@@ -899,7 +899,7 @@ pub fn stub_3ac5b4() -> ! {
     todo!("0x3ac5b4 __ZThn32_N3RBX13PartAdornmentD1Ev")
 }
 
-// 0x3ac6fc — __ZThn32_N3RBX13PartAdornmentD0Ev — `non-virtual thunk to'RBX::PartAdornment::~PartAdornment()
+// 0x3ac6fc — __ZThn32_N3RBX13PartAdornmentD0Ev — non-virtual thunk toRBX::PartAdornment::~PartAdornment()
 // type: void __fastcall(RBX::PartAdornment *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
 #[doc(alias = "__ZThn32_N3RBX13PartAdornmentD0Ev")]
@@ -914,7 +914,7 @@ pub fn stub_3ac858() -> ! {
     todo!("0x3ac858 __ZThn32_NK3RBX17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEE12getClassNameEv")
 }
 
-// 0x3ac85c — __ZThn36_N3RBX13PartAdornmentD1Ev — `non-virtual thunk to'RBX::PartAdornment::~PartAdornment()
+// 0x3ac85c — __ZThn36_N3RBX13PartAdornmentD1Ev — non-virtual thunk toRBX::PartAdornment::~PartAdornment()
 // type: void __fastcall(RBX::PartAdornment *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
 #[doc(alias = "__ZThn36_N3RBX13PartAdornmentD1Ev")]
@@ -922,7 +922,7 @@ pub fn stub_3ac85c() -> ! {
     todo!("0x3ac85c __ZThn36_N3RBX13PartAdornmentD1Ev")
 }
 
-// 0x3ac9a4 — __ZThn36_N3RBX13PartAdornmentD0Ev — `non-virtual thunk to'RBX::PartAdornment::~PartAdornment()
+// 0x3ac9a4 — __ZThn36_N3RBX13PartAdornmentD0Ev — non-virtual thunk toRBX::PartAdornment::~PartAdornment()
 // type: void __fastcall(RBX::PartAdornment *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
 #[doc(alias = "__ZThn36_N3RBX13PartAdornmentD0Ev")]

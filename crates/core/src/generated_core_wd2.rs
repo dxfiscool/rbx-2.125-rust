@@ -1,5 +1,5 @@
 //! core wd2 — 120 core stubs EA-sorted asc RBX-free next uncovered.
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc, next 120 RBX-free not yet in any crate (10750 uncovered before, 10630 after, batch 0x72d8d4..0xa55c38).
+//! Source: ida/export.json (85545 funcs) EA-sorted asc, next 120 RBX-free not yet in any crate (10750 uncovered before, 10630 after, batch 0x72d8d4..0xa55c38).
 //! Filter: RBX-free (no RBX substring), uses rbx_core::SharedPtr not boost.
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.

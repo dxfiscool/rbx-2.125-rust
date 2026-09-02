@@ -2,7 +2,7 @@
 // Filter: EA-sorted asc next 150 not yet in datamodel (strict RBX::Instance|RBX::DataModel|Workspace 0 remaining, global 0 gaps, per-crate gap fallback)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 150 stubs | range 0x266504..0x26d0ec | strict 10215 complete (0 remaining), datamodel distinct 30164->30314 (global 85545 all covered, fallback to per-crate gap)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias where needed
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -55,7 +55,7 @@ pub fn stub_0x2665e8() -> ! {
 
 // 0x2665f8 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev
 // type: int __fastcall(int)
-// was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()
+// was: non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
 pub fn stub_0x2665f8() -> ! {
     todo!("0x2665f8 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")

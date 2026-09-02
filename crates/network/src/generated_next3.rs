@@ -9,21 +9,21 @@ use rbx_core::SharedPtr;
 // type: void __fastcall(SoundServiceStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")]
 pub fn stub_37e384() -> ! {
-    todo!("0x37e384 `non-virtual thunk to'SoundServiceStatsItem::~SoundServiceStatsItem()")
+    todo!("0x37e384 non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")
 }
 
 // 0x37e458 — __ZThn36_N21SoundServiceStatsItemD1Ev
 // type: void __fastcall(SoundServiceStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")]
 pub fn stub_37e458() -> ! {
-    todo!("0x37e458 `non-virtual thunk to'SoundServiceStatsItem::~SoundServiceStatsItem()")
+    todo!("0x37e458 non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")
 }
 
 // 0x37e498 — __ZThn36_N21SoundServiceStatsItemD0Ev
 // type: void __fastcall(SoundServiceStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")]
 pub fn stub_37e498() -> ! {
-    todo!("0x37e498 `non-virtual thunk to'SoundServiceStatsItem::~SoundServiceStatsItem()")
+    todo!("0x37e498 non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")
 }
 
 // 0x37e56c — __ZN5boost10shared_ptrI21SoundServiceStatsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_

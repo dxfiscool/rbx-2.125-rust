@@ -694,7 +694,7 @@ pub fn stub_0x3de4b8() -> ! {
 #[doc(alias = "non-virtual thunk toChangeHistoryStatsItem::~ChangeHistoryStatsItem()")]
 #[doc(alias = "__ZThn32_N22ChangeHistoryStatsItemD1Ev")]
 pub fn stub_0x3de58c() -> ! {
-    todo!("0x3de58c `non-virtual thunk to'ChangeHistoryStatsItem::~ChangeHistoryStatsItem()")
+    todo!("0x3de58c non-virtual thunk toChangeHistoryStatsItem::~ChangeHistoryStatsItem()")
 }
 
 // 0x3de5cc — __ZThn32_N22ChangeHistoryStatsItemD0Ev
@@ -702,7 +702,7 @@ pub fn stub_0x3de58c() -> ! {
 #[doc(alias = "non-virtual thunk toChangeHistoryStatsItem::~ChangeHistoryStatsItem()")]
 #[doc(alias = "__ZThn32_N22ChangeHistoryStatsItemD0Ev")]
 pub fn stub_0x3de5cc() -> ! {
-    todo!("0x3de5cc `non-virtual thunk to'ChangeHistoryStatsItem::~ChangeHistoryStatsItem()")
+    todo!("0x3de5cc non-virtual thunk toChangeHistoryStatsItem::~ChangeHistoryStatsItem()")
 }
 
 // 0x3de6a0 — __ZThn36_N22ChangeHistoryStatsItemD1Ev
@@ -710,7 +710,7 @@ pub fn stub_0x3de5cc() -> ! {
 #[doc(alias = "non-virtual thunk toChangeHistoryStatsItem::~ChangeHistoryStatsItem()")]
 #[doc(alias = "__ZThn36_N22ChangeHistoryStatsItemD1Ev")]
 pub fn stub_0x3de6a0() -> ! {
-    todo!("0x3de6a0 `non-virtual thunk to'ChangeHistoryStatsItem::~ChangeHistoryStatsItem()")
+    todo!("0x3de6a0 non-virtual thunk toChangeHistoryStatsItem::~ChangeHistoryStatsItem()")
 }
 
 // 0x3de6e0 — __ZThn36_N22ChangeHistoryStatsItemD0Ev
@@ -718,7 +718,7 @@ pub fn stub_0x3de6a0() -> ! {
 #[doc(alias = "non-virtual thunk toChangeHistoryStatsItem::~ChangeHistoryStatsItem()")]
 #[doc(alias = "__ZThn36_N22ChangeHistoryStatsItemD0Ev")]
 pub fn stub_0x3de6e0() -> ! {
-    todo!("0x3de6e0 `non-virtual thunk to'ChangeHistoryStatsItem::~ChangeHistoryStatsItem()")
+    todo!("0x3de6e0 non-virtual thunk toChangeHistoryStatsItem::~ChangeHistoryStatsItem()")
 }
 
 // 0x3de7b4 — __ZN5boost10shared_ptrI22ChangeHistoryStatsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_

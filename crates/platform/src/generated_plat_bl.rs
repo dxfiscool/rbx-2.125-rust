@@ -57,7 +57,7 @@ pub fn stub_25529c() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed to_a_54")]
 pub fn stub_2552f0() -> ! {
-    todo!("0x2552f0 `global constructor keyed to'_a_54")
+    todo!("0x2552f0 global constructor keyed to'_a_54")
 }
 
 // 0x255320 — __Z11convert_w2sRKSbIwSt11char_traitsIwESaIwEE
@@ -744,7 +744,7 @@ pub fn stub_25adb4() -> ! {
 // 0x25afd8 — __GLOBAL__I_a_55
 #[doc(alias = "global constructor keyed to_a_55")]
 pub fn stub_25afd8() -> ! {
-    todo!("0x25afd8 `global constructor keyed to'_a_55")
+    todo!("0x25afd8 global constructor keyed to'_a_55")
 }
 
 // 0x25b4c0 — __ZN3RBX5Light10setEnabledEb

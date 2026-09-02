@@ -101,11 +101,11 @@ pub fn stub_49f1ac() -> ! {
 }
 
 // 0x49f33c — __GLOBAL__I_a_187
-// demangled: `global constructor keyed to'_a_187
+// demangled: global constructor keyed to'_a_187
 #[doc(alias = "global constructor keyed to_a_187")]
 #[doc(alias = "__GLOBAL__I_a_187")]
 pub fn stub_49f33c() -> ! {
-    todo!("0x49f33c `global constructor keyed to'_a_187")
+    todo!("0x49f33c global constructor keyed to'_a_187")
 }
 
 // 0x49f5ac — __ZN3RBX9Explosion14setBlastRadiusEf

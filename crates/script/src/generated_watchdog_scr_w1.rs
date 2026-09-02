@@ -185,7 +185,7 @@ pub fn stub_9ac8() -> ! {
     todo!("0x9ac8 __ZN19CRenderSettingsItem19setAutoQualityLevelEi")
 }
 
-// 0x9ae8 — __ZThn96_N19CRenderSettingsItem19setAutoQualityLevelEi — `non-virtual thunk to'CRenderSettingsItem::setAutoQualityLevel(int) — int __fastcall(int this, int)
+// 0x9ae8 — __ZThn96_N19CRenderSettingsItem19setAutoQualityLevelEi — non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int) — int __fastcall(int this, int)
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int)")]
 #[doc(alias = "__ZThn96_N19CRenderSettingsItem19setAutoQualityLevelEi")]
 pub fn stub_9ae8() -> ! {

@@ -173,7 +173,7 @@ pub fn stub_70e5c() -> ! {
 // 0x70f2c — __GLOBAL__I__ZN4FMOD11AsyncThread10gAsyncHeadE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::AsyncThread::gAsyncHead")]
-// was: `global constructor keyed to'FMOD::AsyncThread::gAsyncHead
+// was: global constructor keyed to'FMOD::AsyncThread::gAsyncHead
 pub fn stub_70f2c() -> ! {
     todo!("0x70f2c global constructor keyed toFMOD::AsyncThread::gAsyncHead")
 }

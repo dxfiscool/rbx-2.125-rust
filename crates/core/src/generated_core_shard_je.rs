@@ -1,5 +1,5 @@
 //! core shard je — 100 core stubs EA-sorted, 0x11f58..0x141b0 (EA-sorted asc not yet in rbx_core, next 100 after 0x11f58 (29872 distinct, 55573 remaining), rbx_core::SharedPtr not boost).
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc not in crates/core via `grep -r stub_ crates/core --include=*.rs` — next 100 uncovered.
+//! Source: ida/export.json (85545 funcs) EA-sorted asc not in crates/core via grep -r stub_ crates/core --include=*.rs — next 100 uncovered.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]

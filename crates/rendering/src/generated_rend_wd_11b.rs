@@ -855,7 +855,7 @@ pub fn stub_7bd180() -> ! {
 // 0x7bd198 — __ZThn292_NK3RBX8Humanoid26tellCameraSubjectDidChangeEN5boost10shared_ptrINS_8InstanceEEES4_
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::tellCameraSubjectDidChange(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)const")]
 #[doc(alias = "__ZThn292_NK3RBX8Humanoid26tellCameraSubjectDidChangeEN5boost10shared_ptrINS_8InstanceEEES4_")]
-// was: `non-virtual thunk to'RBX::Humanoid::tellCameraSubjectDidChange(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)const
+// was: non-virtual thunk toRBX::Humanoid::tellCameraSubjectDidChange(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)const
 pub fn stub_7bd198() -> ! {
     todo!("0x7bd198 non-virtual thunk toRBX::Humanoid::tellCameraSubjectDidChange(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)const")
 }

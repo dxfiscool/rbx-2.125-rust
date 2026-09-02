@@ -256,7 +256,7 @@ pub fn stub_d6100() -> ! {
     todo!("0xd6100 __Z41__static_initialization_and_destruction_0ii_37")
 }
 
-// 0xd6144 — __GLOBAL__I__ZN4FMOD15wavwriteroutputE / `global constructor keyed to'FMOD::wavwriteroutput
+// 0xd6144 — __GLOBAL__I__ZN4FMOD15wavwriteroutputE / global constructor keyed to'FMOD::wavwriteroutput
 // type: 
 #[doc(alias = "global constructor keyed toFMOD::wavwriteroutput")]
 pub fn stub_d6144() -> ! {
@@ -410,7 +410,7 @@ pub fn stub_d6978() -> ! {
     todo!("0xd6978 __Z41__static_initialization_and_destruction_0ii_38")
 }
 
-// 0xd69bc — __GLOBAL__I__ZN4FMOD19wavwriteroutput_nrtE / `global constructor keyed to'FMOD::wavwriteroutput_nrt
+// 0xd69bc — __GLOBAL__I__ZN4FMOD19wavwriteroutput_nrtE / global constructor keyed to'FMOD::wavwriteroutput_nrt
 // type: 
 #[doc(alias = "global constructor keyed toFMOD::wavwriteroutput_nrt")]
 pub fn stub_d69bc() -> ! {

@@ -2,7 +2,7 @@
 // Filter: Script|Lua|Yield|CodeGen|Luau (filtered 4818 exhausted) — EA-sorted asc gap filler distinct not yet in crates/script/src
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: +120 stubs | range 0x61054c..0x61f850 | EA-sorted asc distinct not yet in script (remaining 31981->31861, rbx_core::SharedPtr not boost)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -43,7 +43,7 @@ pub fn stub_0x6105c4() -> ! {
     todo!("0x6105c4 __ZN3RBX9ScreenGui8render2dEPNS_5AdornE")
 }
 
-// 0x6105d0 — __ZThn96_N3RBX9ScreenGui8render2dEPNS_5AdornE — `non-virtual thunk to'RBX::ScreenGui::render2d(RBX::Adorn *)
+// 0x6105d0 — __ZThn96_N3RBX9ScreenGui8render2dEPNS_5AdornE — non-virtual thunk toRBX::ScreenGui::render2d(RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX9ScreenGui8render2dEPNS_5AdornE")]
 pub fn stub_0x6105d0() -> ! {
@@ -57,7 +57,7 @@ pub fn stub_0x610668() -> ! {
     todo!("0x610668 __ZN3RBX9ScreenGui7processERKNS_8GuiEventE")
 }
 
-// 0x610674 — __ZThn92_N3RBX9ScreenGui7processERKNS_8GuiEventE — `non-virtual thunk to'RBX::ScreenGui::process(RBX::GuiEvent const&)
+// 0x610674 — __ZThn92_N3RBX9ScreenGui7processERKNS_8GuiEventE — non-virtual thunk toRBX::ScreenGui::process(RBX::GuiEvent const&)
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::process(RBX::GuiEvent const&)")]
 #[doc(alias = "__ZThn92_N3RBX9ScreenGui7processERKNS_8GuiEventE")]
 pub fn stub_0x610674() -> ! {
@@ -136,7 +136,7 @@ pub fn stub_0x610f4c() -> ! {
     todo!("0x610f4c __ZNK3RBX9ScreenGui14shouldRender2dEv")
 }
 
-// 0x610f54 — __ZThn32_N3RBX9ScreenGuiD1Ev — `non-virtual thunk to'RBX::ScreenGui::~ScreenGui()
+// 0x610f54 — __ZThn32_N3RBX9ScreenGuiD1Ev — non-virtual thunk toRBX::ScreenGui::~ScreenGui()
 // type: void __fastcall(RBX::ScreenGui *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui()")]
 #[doc(alias = "__ZThn32_N3RBX9ScreenGuiD1Ev")]
@@ -144,7 +144,7 @@ pub fn stub_0x610f54() -> ! {
     todo!("0x610f54 __ZThn32_N3RBX9ScreenGuiD1Ev")
 }
 
-// 0x611098 — __ZThn32_N3RBX9ScreenGuiD0Ev — `non-virtual thunk to'RBX::ScreenGui::~ScreenGui()
+// 0x611098 — __ZThn32_N3RBX9ScreenGuiD0Ev — non-virtual thunk toRBX::ScreenGui::~ScreenGui()
 // type: void __fastcall(RBX::ScreenGui *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui()")]
 #[doc(alias = "__ZThn32_N3RBX9ScreenGuiD0Ev")]
@@ -152,7 +152,7 @@ pub fn stub_0x611098() -> ! {
     todo!("0x611098 __ZThn32_N3RBX9ScreenGuiD0Ev")
 }
 
-// 0x611200 — __ZThn36_N3RBX9ScreenGuiD1Ev — `non-virtual thunk to'RBX::ScreenGui::~ScreenGui()
+// 0x611200 — __ZThn36_N3RBX9ScreenGuiD1Ev — non-virtual thunk toRBX::ScreenGui::~ScreenGui()
 // type: void __fastcall(RBX::ScreenGui *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui()")]
 #[doc(alias = "__ZThn36_N3RBX9ScreenGuiD1Ev")]
@@ -160,7 +160,7 @@ pub fn stub_0x611200() -> ! {
     todo!("0x611200 __ZThn36_N3RBX9ScreenGuiD1Ev")
 }
 
-// 0x611344 — __ZThn36_N3RBX9ScreenGuiD0Ev — `non-virtual thunk to'RBX::ScreenGui::~ScreenGui()
+// 0x611344 — __ZThn36_N3RBX9ScreenGuiD0Ev — non-virtual thunk toRBX::ScreenGui::~ScreenGui()
 // type: void __fastcall(RBX::ScreenGui *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui()")]
 #[doc(alias = "__ZThn36_N3RBX9ScreenGuiD0Ev")]
@@ -168,7 +168,7 @@ pub fn stub_0x611344() -> ! {
     todo!("0x611344 __ZThn36_N3RBX9ScreenGuiD0Ev")
 }
 
-// 0x61149c — __ZThn96_NK3RBX9ScreenGui14shouldRender2dEv — `non-virtual thunk to'RBX::ScreenGui::shouldRender2d(void)const
+// 0x61149c — __ZThn96_NK3RBX9ScreenGui14shouldRender2dEv — non-virtual thunk toRBX::ScreenGui::shouldRender2d(void)const
 // type: _DWORD __fastcall(RBX::ScreenGui *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::shouldRender2d(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX9ScreenGui14shouldRender2dEv")]
@@ -176,7 +176,7 @@ pub fn stub_0x61149c() -> ! {
     todo!("0x61149c __ZThn96_NK3RBX9ScreenGui14shouldRender2dEv")
 }
 
-// 0x6114a4 — __ZThn168_N3RBX9ScreenGuiD1Ev — `non-virtual thunk to'RBX::ScreenGui::~ScreenGui()
+// 0x6114a4 — __ZThn168_N3RBX9ScreenGuiD1Ev — non-virtual thunk toRBX::ScreenGui::~ScreenGui()
 // type: void __fastcall(RBX::ScreenGui *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui()")]
 #[doc(alias = "__ZThn168_N3RBX9ScreenGuiD1Ev")]
@@ -184,7 +184,7 @@ pub fn stub_0x6114a4() -> ! {
     todo!("0x6114a4 __ZThn168_N3RBX9ScreenGuiD1Ev")
 }
 
-// 0x6115e8 — __ZThn168_N3RBX9ScreenGuiD0Ev — `non-virtual thunk to'RBX::ScreenGui::~ScreenGui()
+// 0x6115e8 — __ZThn168_N3RBX9ScreenGuiD0Ev — non-virtual thunk toRBX::ScreenGui::~ScreenGui()
 // type: void __fastcall(RBX::ScreenGui *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui()")]
 #[doc(alias = "__ZThn168_N3RBX9ScreenGuiD0Ev")]
@@ -208,7 +208,7 @@ pub fn stub_0x611890() -> ! {
     todo!("0x611890 __ZN3RBX7GuiMainD0Ev")
 }
 
-// 0x611940 — __ZThn32_N3RBX7GuiMainD1Ev — `non-virtual thunk to'RBX::GuiMain::~GuiMain()
+// 0x611940 — __ZThn32_N3RBX7GuiMainD1Ev — non-virtual thunk toRBX::GuiMain::~GuiMain()
 // type: void __fastcall(RBX::GuiMain *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain()")]
 #[doc(alias = "__ZThn32_N3RBX7GuiMainD1Ev")]
@@ -216,7 +216,7 @@ pub fn stub_0x611940() -> ! {
     todo!("0x611940 __ZThn32_N3RBX7GuiMainD1Ev")
 }
 
-// 0x611a84 — __ZThn32_N3RBX7GuiMainD0Ev — `non-virtual thunk to'RBX::GuiMain::~GuiMain()
+// 0x611a84 — __ZThn32_N3RBX7GuiMainD0Ev — non-virtual thunk toRBX::GuiMain::~GuiMain()
 // type: void __fastcall(RBX::GuiMain *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain()")]
 #[doc(alias = "__ZThn32_N3RBX7GuiMainD0Ev")]
@@ -224,7 +224,7 @@ pub fn stub_0x611a84() -> ! {
     todo!("0x611a84 __ZThn32_N3RBX7GuiMainD0Ev")
 }
 
-// 0x611bec — __ZThn36_N3RBX7GuiMainD1Ev — `non-virtual thunk to'RBX::GuiMain::~GuiMain()
+// 0x611bec — __ZThn36_N3RBX7GuiMainD1Ev — non-virtual thunk toRBX::GuiMain::~GuiMain()
 // type: void __fastcall(RBX::GuiMain *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain()")]
 #[doc(alias = "__ZThn36_N3RBX7GuiMainD1Ev")]
@@ -232,7 +232,7 @@ pub fn stub_0x611bec() -> ! {
     todo!("0x611bec __ZThn36_N3RBX7GuiMainD1Ev")
 }
 
-// 0x611d30 — __ZThn36_N3RBX7GuiMainD0Ev — `non-virtual thunk to'RBX::GuiMain::~GuiMain()
+// 0x611d30 — __ZThn36_N3RBX7GuiMainD0Ev — non-virtual thunk toRBX::GuiMain::~GuiMain()
 // type: void __fastcall(RBX::GuiMain *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain()")]
 #[doc(alias = "__ZThn36_N3RBX7GuiMainD0Ev")]
@@ -240,7 +240,7 @@ pub fn stub_0x611d30() -> ! {
     todo!("0x611d30 __ZThn36_N3RBX7GuiMainD0Ev")
 }
 
-// 0x611e88 — __ZThn168_N3RBX7GuiMainD1Ev — `non-virtual thunk to'RBX::GuiMain::~GuiMain()
+// 0x611e88 — __ZThn168_N3RBX7GuiMainD1Ev — non-virtual thunk toRBX::GuiMain::~GuiMain()
 // type: void __fastcall(RBX::GuiMain *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain()")]
 #[doc(alias = "__ZThn168_N3RBX7GuiMainD1Ev")]
@@ -248,7 +248,7 @@ pub fn stub_0x611e88() -> ! {
     todo!("0x611e88 __ZThn168_N3RBX7GuiMainD1Ev")
 }
 
-// 0x611fcc — __ZThn168_N3RBX7GuiMainD0Ev — `non-virtual thunk to'RBX::GuiMain::~GuiMain()
+// 0x611fcc — __ZThn168_N3RBX7GuiMainD0Ev — non-virtual thunk toRBX::GuiMain::~GuiMain()
 // type: void __fastcall(RBX::GuiMain *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain()")]
 #[doc(alias = "__ZThn168_N3RBX7GuiMainD0Ev")]
@@ -296,7 +296,7 @@ pub fn stub_0x615b70() -> ! {
     todo!("0x615b70 __ZN3RBX4SeatD1Ev")
 }
 
-// 0x615b80 — __ZThn32_N3RBX4SeatD0Ev — `non-virtual thunk to'RBX::Seat::~Seat()
+// 0x615b80 — __ZThn32_N3RBX4SeatD0Ev — non-virtual thunk toRBX::Seat::~Seat()
 // type: void __fastcall(RBX::Seat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Seat::~Seat()")]
 #[doc(alias = "__ZThn32_N3RBX4SeatD0Ev")]
@@ -304,7 +304,7 @@ pub fn stub_0x615b80() -> ! {
     todo!("0x615b80 __ZThn32_N3RBX4SeatD0Ev")
 }
 
-// 0x615b88 — __ZThn36_N3RBX4SeatD0Ev — `non-virtual thunk to'RBX::Seat::~Seat()
+// 0x615b88 — __ZThn36_N3RBX4SeatD0Ev — non-virtual thunk toRBX::Seat::~Seat()
 // type: void __fastcall(RBX::Seat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Seat::~Seat()")]
 #[doc(alias = "__ZThn36_N3RBX4SeatD0Ev")]
@@ -312,7 +312,7 @@ pub fn stub_0x615b88() -> ! {
     todo!("0x615b88 __ZThn36_N3RBX4SeatD0Ev")
 }
 
-// 0x615b90 — __ZThn132_N3RBX4SeatD0Ev — `non-virtual thunk to'RBX::Seat::~Seat()
+// 0x615b90 — __ZThn132_N3RBX4SeatD0Ev — non-virtual thunk toRBX::Seat::~Seat()
 // type: void __fastcall(RBX::Seat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Seat::~Seat()")]
 #[doc(alias = "__ZThn132_N3RBX4SeatD0Ev")]
@@ -320,7 +320,7 @@ pub fn stub_0x615b90() -> ! {
     todo!("0x615b90 __ZThn132_N3RBX4SeatD0Ev")
 }
 
-// 0x615b98 — __ZThn32_N3RBX4SeatD1Ev — `non-virtual thunk to'RBX::Seat::~Seat()
+// 0x615b98 — __ZThn32_N3RBX4SeatD1Ev — non-virtual thunk toRBX::Seat::~Seat()
 // type: void __fastcall(RBX::Seat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Seat::~Seat()")]
 #[doc(alias = "__ZThn32_N3RBX4SeatD1Ev")]
@@ -328,7 +328,7 @@ pub fn stub_0x615b98() -> ! {
     todo!("0x615b98 __ZThn32_N3RBX4SeatD1Ev")
 }
 
-// 0x615bac — __ZThn36_N3RBX4SeatD1Ev — `non-virtual thunk to'RBX::Seat::~Seat()
+// 0x615bac — __ZThn36_N3RBX4SeatD1Ev — non-virtual thunk toRBX::Seat::~Seat()
 // type: void __fastcall(RBX::Seat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Seat::~Seat()")]
 #[doc(alias = "__ZThn36_N3RBX4SeatD1Ev")]
@@ -336,7 +336,7 @@ pub fn stub_0x615bac() -> ! {
     todo!("0x615bac __ZThn36_N3RBX4SeatD1Ev")
 }
 
-// 0x615bc0 — __ZThn132_N3RBX4SeatD1Ev — `non-virtual thunk to'RBX::Seat::~Seat()
+// 0x615bc0 — __ZThn132_N3RBX4SeatD1Ev — non-virtual thunk toRBX::Seat::~Seat()
 // type: void __fastcall(RBX::Seat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Seat::~Seat()")]
 #[doc(alias = "__ZThn132_N3RBX4SeatD1Ev")]
@@ -420,7 +420,7 @@ pub fn stub_0x619128() -> ! {
     todo!("0x619128 __ZN3RBX9SelectionD1Ev")
 }
 
-// 0x61912c — __ZThn32_N3RBX9SelectionD0Ev — `non-virtual thunk to'RBX::Selection::~Selection()
+// 0x61912c — __ZThn32_N3RBX9SelectionD0Ev — non-virtual thunk toRBX::Selection::~Selection()
 // type: void __fastcall(RBX::Selection *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Selection::~Selection()")]
 #[doc(alias = "__ZThn32_N3RBX9SelectionD0Ev")]
@@ -428,7 +428,7 @@ pub fn stub_0x61912c() -> ! {
     todo!("0x61912c __ZThn32_N3RBX9SelectionD0Ev")
 }
 
-// 0x619134 — __ZThn36_N3RBX9SelectionD0Ev — `non-virtual thunk to'RBX::Selection::~Selection()
+// 0x619134 — __ZThn36_N3RBX9SelectionD0Ev — non-virtual thunk toRBX::Selection::~Selection()
 // type: void __fastcall(RBX::Selection *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Selection::~Selection()")]
 #[doc(alias = "__ZThn36_N3RBX9SelectionD0Ev")]
@@ -444,7 +444,7 @@ pub fn stub_0x61913c() -> ! {
     todo!("0x61913c __ZN3RBX9SelectionD2Ev")
 }
 
-// 0x619444 — __ZThn32_N3RBX9SelectionD1Ev — `non-virtual thunk to'RBX::Selection::~Selection()
+// 0x619444 — __ZThn32_N3RBX9SelectionD1Ev — non-virtual thunk toRBX::Selection::~Selection()
 // type: void __fastcall(RBX::Selection *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Selection::~Selection()")]
 #[doc(alias = "__ZThn32_N3RBX9SelectionD1Ev")]
@@ -452,7 +452,7 @@ pub fn stub_0x619444() -> ! {
     todo!("0x619444 __ZThn32_N3RBX9SelectionD1Ev")
 }
 
-// 0x61944c — __ZThn36_N3RBX9SelectionD1Ev — `non-virtual thunk to'RBX::Selection::~Selection()
+// 0x61944c — __ZThn36_N3RBX9SelectionD1Ev — non-virtual thunk toRBX::Selection::~Selection()
 // type: void __fastcall(RBX::Selection *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Selection::~Selection()")]
 #[doc(alias = "__ZThn36_N3RBX9SelectionD1Ev")]
@@ -641,7 +641,7 @@ pub fn stub_0x61b670() -> ! {
     todo!("0x61b670 __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX16SelectionChangedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_9SelectionES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_")
 }
 
-// 0x61b678 — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX16SelectionChangedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_9SelectionES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_ — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Selection,RBX::SelectionChanged const&>,boost::_bi::list2<boost::_bi::value<RBX::Selection*>,boost::arg<1>>>,1,void ()(RBX::SelectionChanged const&)>::call(RBX::SelectionChanged const&)
+// 0x61b678 — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX16SelectionChangedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_9SelectionES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_ — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Selection,RBX::SelectionChanged const&>,boost::_bi::list2<boost::_bi::value<RBX::Selection*>,boost::arg<1>>>,1,void ()(RBX::SelectionChanged const&)>::call(RBX::SelectionChanged const&)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Selection,RBX::SelectionChanged const&>,boost::_bi::list2<boost::_bi::value<RBX::Selection*>,boost::arg<1>>>,1,void ()(RBX::SelectionChanged const&)>::call(RBX::SelectionChanged const&)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX16SelectionChangedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_9SelectionES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_")]
 pub fn stub_0x61b678() -> ! {
@@ -731,7 +731,7 @@ pub fn stub_0x61cf00() -> ! {
     todo!("0x61cf00 __ZN3RBX12SelectionBox13render3dAdornEPNS_5AdornE")
 }
 
-// 0x61d0b4 — __ZThn96_N3RBX12SelectionBox13render3dAdornEPNS_5AdornE — `non-virtual thunk to'RBX::SelectionBox::render3dAdorn(RBX::Adorn *)
+// 0x61d0b4 — __ZThn96_N3RBX12SelectionBox13render3dAdornEPNS_5AdornE — non-virtual thunk toRBX::SelectionBox::render3dAdorn(RBX::Adorn *)
 // type: _DWORD __fastcall(RBX::SelectionBox *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::SelectionBox::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX12SelectionBox13render3dAdornEPNS_5AdornE")]
@@ -761,7 +761,7 @@ pub fn stub_0x61d2a8() -> ! {
     todo!("0x61d2a8 __ZNK3RBX14FactoryProductINS_12SelectionBoxENS_11PVAdornmentELZNS_13sSelectionBoxEENS_8InstanceEE12getClassNameEv")
 }
 
-// 0x61d2b8 — __ZThn32_N3RBX12SelectionBoxD1Ev — `non-virtual thunk to'RBX::SelectionBox::~SelectionBox()
+// 0x61d2b8 — __ZThn32_N3RBX12SelectionBoxD1Ev — non-virtual thunk toRBX::SelectionBox::~SelectionBox()
 // type: void __fastcall(RBX::SelectionBox *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SelectionBox::~SelectionBox()")]
 #[doc(alias = "__ZThn32_N3RBX12SelectionBoxD1Ev")]
@@ -769,7 +769,7 @@ pub fn stub_0x61d2b8() -> ! {
     todo!("0x61d2b8 __ZThn32_N3RBX12SelectionBoxD1Ev")
 }
 
-// 0x61d400 — __ZThn32_N3RBX12SelectionBoxD0Ev — `non-virtual thunk to'RBX::SelectionBox::~SelectionBox()
+// 0x61d400 — __ZThn32_N3RBX12SelectionBoxD0Ev — non-virtual thunk toRBX::SelectionBox::~SelectionBox()
 // type: void __fastcall(RBX::SelectionBox *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SelectionBox::~SelectionBox()")]
 #[doc(alias = "__ZThn32_N3RBX12SelectionBoxD0Ev")]
@@ -783,7 +783,7 @@ pub fn stub_0x61d55c() -> ! {
     todo!("0x61d55c __ZThn32_NK3RBX14FactoryProductINS_12SelectionBoxENS_11PVAdornmentELZNS_13sSelectionBoxEENS_8InstanceEE12getClassNameEv")
 }
 
-// 0x61d56c — __ZThn36_N3RBX12SelectionBoxD1Ev — `non-virtual thunk to'RBX::SelectionBox::~SelectionBox()
+// 0x61d56c — __ZThn36_N3RBX12SelectionBoxD1Ev — non-virtual thunk toRBX::SelectionBox::~SelectionBox()
 // type: void __fastcall(RBX::SelectionBox *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SelectionBox::~SelectionBox()")]
 #[doc(alias = "__ZThn36_N3RBX12SelectionBoxD1Ev")]
@@ -791,7 +791,7 @@ pub fn stub_0x61d56c() -> ! {
     todo!("0x61d56c __ZThn36_N3RBX12SelectionBoxD1Ev")
 }
 
-// 0x61d6b4 — __ZThn36_N3RBX12SelectionBoxD0Ev — `non-virtual thunk to'RBX::SelectionBox::~SelectionBox()
+// 0x61d6b4 — __ZThn36_N3RBX12SelectionBoxD0Ev — non-virtual thunk toRBX::SelectionBox::~SelectionBox()
 // type: void __fastcall(RBX::SelectionBox *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SelectionBox::~SelectionBox()")]
 #[doc(alias = "__ZThn36_N3RBX12SelectionBoxD0Ev")]
@@ -863,7 +863,7 @@ pub fn stub_0x61ee4c() -> ! {
     todo!("0x61ee4c __ZNK3RBX14SelectionLasso19shouldRender3dAdornEv")
 }
 
-// 0x61ee7c — __ZThn96_NK3RBX14SelectionLasso19shouldRender3dAdornEv — `non-virtual thunk to'RBX::SelectionLasso::shouldRender3dAdorn(void)const
+// 0x61ee7c — __ZThn96_NK3RBX14SelectionLasso19shouldRender3dAdornEv — non-virtual thunk toRBX::SelectionLasso::shouldRender3dAdorn(void)const
 // type: _DWORD __fastcall(RBX::SelectionLasso *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SelectionLasso::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX14SelectionLasso19shouldRender3dAdornEv")]
@@ -879,7 +879,7 @@ pub fn stub_0x61ef74() -> ! {
     todo!("0x61ef74 __ZN3RBX14SelectionLasso13render3dAdornEPNS_5AdornE")
 }
 
-// 0x61f17c — __ZThn96_N3RBX14SelectionLasso13render3dAdornEPNS_5AdornE — `non-virtual thunk to'RBX::SelectionLasso::render3dAdorn(RBX::Adorn *)
+// 0x61f17c — __ZThn96_N3RBX14SelectionLasso13render3dAdornEPNS_5AdornE — non-virtual thunk toRBX::SelectionLasso::render3dAdorn(RBX::Adorn *)
 // type: _DWORD __fastcall(RBX::SelectionLasso *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::SelectionLasso::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX14SelectionLasso13render3dAdornEPNS_5AdornE")]
@@ -903,7 +903,7 @@ pub fn stub_0x61f4b4() -> ! {
     todo!("0x61f4b4 __ZNK3RBX18SelectionPartLasso19shouldRender3dAdornEv")
 }
 
-// 0x61f4e4 — __ZThn96_NK3RBX18SelectionPartLasso19shouldRender3dAdornEv — `non-virtual thunk to'RBX::SelectionPartLasso::shouldRender3dAdorn(void)const
+// 0x61f4e4 — __ZThn96_NK3RBX18SelectionPartLasso19shouldRender3dAdornEv — non-virtual thunk toRBX::SelectionPartLasso::shouldRender3dAdorn(void)const
 // type: _DWORD __fastcall(RBX::SelectionPartLasso *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SelectionPartLasso::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX18SelectionPartLasso19shouldRender3dAdornEv")]

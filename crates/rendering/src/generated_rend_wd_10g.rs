@@ -29,7 +29,7 @@ pub fn stub_7a9584() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_10ChatOutputES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_")]
 pub fn stub_7a958c() -> ! {
-    todo!("0x7a958c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")
+    todo!("0x7a958c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")
 }
 
 
@@ -293,7 +293,7 @@ pub fn stub_7aa438() -> ! {
 #[doc(alias = "global constructor keyed to_a_364")]
 #[doc(alias = "__GLOBAL__I_a_364")]
 pub fn stub_7aa43c() -> ! {
-    todo!("0x7aa43c `global constructor keyed to'_a_364")
+    todo!("0x7aa43c global constructor keyed to'_a_364")
 }
 
 
@@ -344,7 +344,7 @@ pub fn stub_7aa994() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ChatWidget::process(RBX::GuiEvent const&)")]
 #[doc(alias = "__ZThn92_N3RBX10ChatWidget7processERKNS_8GuiEventE")]
 pub fn stub_7aac2c() -> ! {
-    todo!("0x7aac2c `non-virtual thunk to'RBX::ChatWidget::process(RBX::GuiEvent const&)")
+    todo!("0x7aac2c non-virtual thunk toRBX::ChatWidget::process(RBX::GuiEvent const&)")
 }
 
 
@@ -387,7 +387,7 @@ pub fn stub_7aad78() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ChatButton::~ChatButton()")]
 #[doc(alias = "__ZThn32_N3RBX10ChatButtonD1Ev")]
 pub fn stub_7aae98() -> ! {
-    todo!("0x7aae98 `non-virtual thunk to'RBX::ChatButton::~ChatButton()")
+    todo!("0x7aae98 non-virtual thunk toRBX::ChatButton::~ChatButton()")
 }
 
 
@@ -396,7 +396,7 @@ pub fn stub_7aae98() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ChatButton::~ChatButton()")]
 #[doc(alias = "__ZThn32_N3RBX10ChatButtonD0Ev")]
 pub fn stub_7aafa8() -> ! {
-    todo!("0x7aafa8 `non-virtual thunk to'RBX::ChatButton::~ChatButton()")
+    todo!("0x7aafa8 non-virtual thunk toRBX::ChatButton::~ChatButton()")
 }
 
 
@@ -405,7 +405,7 @@ pub fn stub_7aafa8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ChatButton::~ChatButton()")]
 #[doc(alias = "__ZThn36_N3RBX10ChatButtonD1Ev")]
 pub fn stub_7ab0cc() -> ! {
-    todo!("0x7ab0cc `non-virtual thunk to'RBX::ChatButton::~ChatButton()")
+    todo!("0x7ab0cc non-virtual thunk toRBX::ChatButton::~ChatButton()")
 }
 
 
@@ -414,7 +414,7 @@ pub fn stub_7ab0cc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ChatButton::~ChatButton()")]
 #[doc(alias = "__ZThn36_N3RBX10ChatButtonD0Ev")]
 pub fn stub_7ab1dc() -> ! {
-    todo!("0x7ab1dc `non-virtual thunk to'RBX::ChatButton::~ChatButton()")
+    todo!("0x7ab1dc non-virtual thunk toRBX::ChatButton::~ChatButton()")
 }
 
 
@@ -441,7 +441,7 @@ pub fn stub_7ab3ec() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ChatWidget::~ChatWidget()")]
 #[doc(alias = "__ZThn32_N3RBX10ChatWidgetD1Ev")]
 pub fn stub_7ab4ec() -> ! {
-    todo!("0x7ab4ec `non-virtual thunk to'RBX::ChatWidget::~ChatWidget()")
+    todo!("0x7ab4ec non-virtual thunk toRBX::ChatWidget::~ChatWidget()")
 }
 
 
@@ -450,7 +450,7 @@ pub fn stub_7ab4ec() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ChatWidget::~ChatWidget()")]
 #[doc(alias = "__ZThn32_N3RBX10ChatWidgetD0Ev")]
 pub fn stub_7ab5d8() -> ! {
-    todo!("0x7ab5d8 `non-virtual thunk to'RBX::ChatWidget::~ChatWidget()")
+    todo!("0x7ab5d8 non-virtual thunk toRBX::ChatWidget::~ChatWidget()")
 }
 
 
@@ -459,7 +459,7 @@ pub fn stub_7ab5d8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ChatWidget::~ChatWidget()")]
 #[doc(alias = "__ZThn36_N3RBX10ChatWidgetD1Ev")]
 pub fn stub_7ab6d8() -> ! {
-    todo!("0x7ab6d8 `non-virtual thunk to'RBX::ChatWidget::~ChatWidget()")
+    todo!("0x7ab6d8 non-virtual thunk toRBX::ChatWidget::~ChatWidget()")
 }
 
 
@@ -468,7 +468,7 @@ pub fn stub_7ab6d8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ChatWidget::~ChatWidget()")]
 #[doc(alias = "__ZThn36_N3RBX10ChatWidgetD0Ev")]
 pub fn stub_7ab7c4() -> ! {
-    todo!("0x7ab7c4 `non-virtual thunk to'RBX::ChatWidget::~ChatWidget()")
+    todo!("0x7ab7c4 non-virtual thunk toRBX::ChatWidget::~ChatWidget()")
 }
 
 
@@ -476,7 +476,7 @@ pub fn stub_7ab7c4() -> ! {
 #[doc(alias = "global constructor keyed to_a_365")]
 #[doc(alias = "__GLOBAL__I_a_365")]
 pub fn stub_7ab8c4() -> ! {
-    todo!("0x7ab8c4 `global constructor keyed to'_a_365")
+    todo!("0x7ab8c4 global constructor keyed to'_a_365")
 }
 
 
@@ -530,7 +530,7 @@ pub fn stub_7ac150() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::EquationDisplay::~EquationDisplay()")]
 #[doc(alias = "__ZThn32_N3RBX15EquationDisplayD1Ev")]
 pub fn stub_7ac1f0() -> ! {
-    todo!("0x7ac1f0 `non-virtual thunk to'RBX::EquationDisplay::~EquationDisplay()")
+    todo!("0x7ac1f0 non-virtual thunk toRBX::EquationDisplay::~EquationDisplay()")
 }
 
 
@@ -539,7 +539,7 @@ pub fn stub_7ac1f0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::EquationDisplay::~EquationDisplay()")]
 #[doc(alias = "__ZThn32_N3RBX15EquationDisplayD0Ev")]
 pub fn stub_7ac38c() -> ! {
-    todo!("0x7ac38c `non-virtual thunk to'RBX::EquationDisplay::~EquationDisplay()")
+    todo!("0x7ac38c non-virtual thunk toRBX::EquationDisplay::~EquationDisplay()")
 }
 
 
@@ -548,7 +548,7 @@ pub fn stub_7ac38c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::EquationDisplay::~EquationDisplay()")]
 #[doc(alias = "__ZThn36_N3RBX15EquationDisplayD1Ev")]
 pub fn stub_7ac53c() -> ! {
-    todo!("0x7ac53c `non-virtual thunk to'RBX::EquationDisplay::~EquationDisplay()")
+    todo!("0x7ac53c non-virtual thunk toRBX::EquationDisplay::~EquationDisplay()")
 }
 
 
@@ -557,7 +557,7 @@ pub fn stub_7ac53c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::EquationDisplay::~EquationDisplay()")]
 #[doc(alias = "__ZThn36_N3RBX15EquationDisplayD0Ev")]
 pub fn stub_7ac6d8() -> ! {
-    todo!("0x7ac6d8 `non-virtual thunk to'RBX::EquationDisplay::~EquationDisplay()")
+    todo!("0x7ac6d8 non-virtual thunk toRBX::EquationDisplay::~EquationDisplay()")
 }
 
 
@@ -565,7 +565,7 @@ pub fn stub_7ac6d8() -> ! {
 #[doc(alias = "global constructor keyed to_a_366")]
 #[doc(alias = "__GLOBAL__I_a_366")]
 pub fn stub_7ac888() -> ! {
-    todo!("0x7ac888 `global constructor keyed to'_a_366")
+    todo!("0x7ac888 global constructor keyed to'_a_366")
 }
 
 
@@ -628,7 +628,7 @@ pub fn stub_7acdd0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GuiItem::~GuiItem()")]
 #[doc(alias = "__ZThn32_N3RBX7GuiItemD0Ev")]
 pub fn stub_7acdd4() -> ! {
-    todo!("0x7acdd4 `non-virtual thunk to'RBX::GuiItem::~GuiItem()")
+    todo!("0x7acdd4 non-virtual thunk toRBX::GuiItem::~GuiItem()")
 }
 
 
@@ -637,7 +637,7 @@ pub fn stub_7acdd4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GuiItem::~GuiItem()")]
 #[doc(alias = "__ZThn36_N3RBX7GuiItemD0Ev")]
 pub fn stub_7acddc() -> ! {
-    todo!("0x7acddc `non-virtual thunk to'RBX::GuiItem::~GuiItem()")
+    todo!("0x7acddc non-virtual thunk toRBX::GuiItem::~GuiItem()")
 }
 
 
@@ -655,7 +655,7 @@ pub fn stub_7acde4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GuiItem::~GuiItem()")]
 #[doc(alias = "__ZThn32_N3RBX7GuiItemD1Ev")]
 pub fn stub_7acf18() -> ! {
-    todo!("0x7acf18 `non-virtual thunk to'RBX::GuiItem::~GuiItem()")
+    todo!("0x7acf18 non-virtual thunk toRBX::GuiItem::~GuiItem()")
 }
 
 
@@ -664,7 +664,7 @@ pub fn stub_7acf18() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GuiItem::~GuiItem()")]
 #[doc(alias = "__ZThn36_N3RBX7GuiItemD1Ev")]
 pub fn stub_7acf20() -> ! {
-    todo!("0x7acf20 `non-virtual thunk to'RBX::GuiItem::~GuiItem()")
+    todo!("0x7acf20 non-virtual thunk toRBX::GuiItem::~GuiItem()")
 }
 
 
@@ -735,7 +735,7 @@ pub fn stub_7ad1d0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GuiItem::process(RBX::GuiEvent const&)")]
 #[doc(alias = "__ZThn92_N3RBX7GuiItem7processERKNS_8GuiEventE")]
 pub fn stub_7ad2a4() -> ! {
-    todo!("0x7ad2a4 `non-virtual thunk to'RBX::GuiItem::process(RBX::GuiEvent const&)")
+    todo!("0x7ad2a4 non-virtual thunk toRBX::GuiItem::process(RBX::GuiEvent const&)")
 }
 
 
@@ -804,7 +804,7 @@ pub fn stub_7ad9a0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TopMenuBar::process(RBX::GuiEvent const&)")]
 #[doc(alias = "__ZThn92_N3RBX10TopMenuBar7processERKNS_8GuiEventE")]
 pub fn stub_7ada88() -> ! {
-    todo!("0x7ada88 `non-virtual thunk to'RBX::TopMenuBar::process(RBX::GuiEvent const&)")
+    todo!("0x7ada88 non-virtual thunk toRBX::TopMenuBar::process(RBX::GuiEvent const&)")
 }
 
 

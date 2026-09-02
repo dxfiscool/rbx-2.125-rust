@@ -1,5 +1,5 @@
 //! core wd_10o — 100 core stubs EA-sorted asc not yet in crates/core/src (ordered filter residue 34186->1905 missed, next 100).
-//! Source: `ida/export.json` (85545 funcs) filtered residue (not Reflection/Instance/DataModel/Ogre/G3D/RakNet/FMOD/Lua/RobloxView), EA-sorted asc next 100 not yet in crates/core/src.
+//! Source: ida/export.json (85545 funcs) filtered residue (not Reflection/Instance/DataModel/Ogre/G3D/RakNet/FMOD/Lua/RobloxView), EA-sorted asc next 100 not yet in crates/core/src.
 //! Range: 0x8560a8..0x9ba158 | rbx_core::SharedPtr not boost.
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR") using rbx_core::SharedPtr.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.

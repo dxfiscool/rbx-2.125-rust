@@ -1,5 +1,5 @@
 //! core shard J — 100 core stubs EA-sorted, next uncovered after shard I.
-//! Source: `ida/export.json` filtered where demangled excludes Reflection/Instance/DataModel/Ogre/RakNet/Lua/Sound, EA-sorted, next 100 uncovered (lowest EA first).
+//! Source: ida/export.json filtered where demangled excludes Reflection/Instance/DataModel/Ogre/RakNet/Lua/Sound, EA-sorted, next 100 uncovered (lowest EA first).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #[doc(alias = "_jpeg_fdct_13x13")]

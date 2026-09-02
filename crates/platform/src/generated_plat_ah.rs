@@ -718,7 +718,7 @@ pub fn stub_d44a4() -> ! {
     todo!("0xd44a4 __Z41__static_initialization_and_destruction_0ii_35")
 }
 
-// 0xd44e8 - __GLOBAL__I__ZN4FMOD13nosoundoutputE / `global constructor keyed to'FMOD::nosoundoutput
+// 0xd44e8 - __GLOBAL__I__ZN4FMOD13nosoundoutputE / global constructor keyed to'FMOD::nosoundoutput
 // type: 
 #[doc(alias = "global constructor keyed toFMOD::nosoundoutput")]
 pub fn stub_d44e8() -> ! {
@@ -823,7 +823,7 @@ pub fn stub_d48a8() -> ! {
     todo!("0xd48a8 __Z41__static_initialization_and_destruction_0ii_36")
 }
 
-// 0xd48ec - __GLOBAL__I__ZN4FMOD17nosoundoutput_nrtE / `global constructor keyed to'FMOD::nosoundoutput_nrt
+// 0xd48ec - __GLOBAL__I__ZN4FMOD17nosoundoutput_nrtE / global constructor keyed to'FMOD::nosoundoutput_nrt
 // type: 
 #[doc(alias = "global constructor keyed toFMOD::nosoundoutput_nrt")]
 pub fn stub_d48ec() -> ! {

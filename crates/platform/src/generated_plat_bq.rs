@@ -210,7 +210,7 @@ pub fn stub_26b150() -> ! {
 // 0x26b1f4 — __GLOBAL__I_a_62
 #[doc(alias = "_global constructor keyed to__a_62")]
 pub fn stub_26b1f4() -> ! {
-    todo!("0x26b1f4 `global constructor keyed to'_a_62")
+    todo!("0x26b1f4 global constructor keyed to'_a_62")
 }
 
 // 0x26b464 — __ZNK3RBX3Lua12LuaArguments9getStringEiRSs

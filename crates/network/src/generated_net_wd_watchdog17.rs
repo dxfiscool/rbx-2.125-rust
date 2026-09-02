@@ -215,7 +215,7 @@ pub fn stub_47a528() -> ! {
 
 
 // 0x47a54c — __GLOBAL__I_a_181
-#[doc(alias = "`global constructor keyed to_a_181")]
+#[doc(alias = "global constructor keyed to_a_181")]
 #[doc(alias = "__GLOBAL__I_a_181")]
 pub fn stub_47a54c() -> ! {
     todo!("0x47a54c __GLOBAL__I_a_181")

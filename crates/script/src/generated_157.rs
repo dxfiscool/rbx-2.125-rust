@@ -2,7 +2,7 @@
 // Filter: Script|Lua (4456 filtered, exhausted) -> global gap filler
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: +100 stubs | range 0x47338..0x693f4 EA-sorted asc next 100 global not yet in any crate (missing 50098 before, 49998 after, rbx_core::SharedPtr not boost)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

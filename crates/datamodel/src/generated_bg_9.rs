@@ -2,7 +2,7 @@
 // Filter: RBX::Instance|RBX::DataModel (strict 9903) EA-sorted asc next 150 not yet in datamodel — fallback to global gap filler EA-sorted asc (strict filter 10215 including Workspace already complete, 0 remaining; using lowest uncovered EA asc)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 150 stubs | range 0x26dc28..0x273c2c | datamodel before 30514, after 30664, global 85545 all covered, fallback to datamodel gap EA-sorted asc, bg worker datamodel-bg1
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias where needed
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

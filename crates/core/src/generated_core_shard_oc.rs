@@ -1,5 +1,5 @@
 //! core — generated_core_shard_oc — 100 stubs EA-sorted asc global gap filler 0x4ce350..0x4d3588 (earliest uncovered after 48748 existing, 36797 gaps before, 36697 after).
-//! Source: `ida/export.json` (85545 funcs) EA asc not yet in crates/core/src — next 100 uncovered sorted asc.
+//! Source: ida/export.json (85545 funcs) EA asc not yet in crates/core/src — next 100 uncovered sorted asc.
 //! Preserves IDA ea + mangled + demangled for rg; sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]

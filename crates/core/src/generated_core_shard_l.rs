@@ -1,5 +1,5 @@
 //! core shard L — 120 core stubs EA-sorted, earliest uncovered gap (0x9608..0x1bbb0) after existing coverage.
-//! Source: `ida/export.json` filtered where demangled excludes Reflection/Instance/DataModel/Ogre/RakNet/Lua/Sound/Audio, EA-sorted, next 120 uncovered (lowest EA first).
+//! Source: ida/export.json filtered where demangled excludes Reflection/Instance/DataModel/Ogre/RakNet/Lua/Sound/Audio, EA-sorted, next 120 uncovered (lowest EA first).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #[doc(alias = "CRenderSettingsItem::setGraphicsMode(RBX::CRenderSettings::GraphicsMode)")]

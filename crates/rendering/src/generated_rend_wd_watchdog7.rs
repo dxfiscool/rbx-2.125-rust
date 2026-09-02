@@ -15,7 +15,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "non-virtual thunk toRBX::StatusInstance::~StatusInstance()")]
 #[doc(alias = "__ZThn32_N3RBX14StatusInstanceD0Ev")]
 pub fn stub_7e9008() -> ! {
-    todo!("0x7e9008 `non-virtual thunk to'RBX::StatusInstance::~StatusInstance()")
+    todo!("0x7e9008 non-virtual thunk toRBX::StatusInstance::~StatusInstance()")
 }
 
 // 0x7e90b8 — __ZThn32_NK3RBX14FactoryProductINS_14StatusInstanceENS_13ModelInstanceELZNS_15sStatusInstanceEENS_8InstanceEE12getClassNameEv
@@ -30,7 +30,7 @@ pub fn stub_7e90b8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::StatusInstance::~StatusInstance()")]
 #[doc(alias = "__ZThn36_N3RBX14StatusInstanceD1Ev")]
 pub fn stub_7e90c8() -> ! {
-    todo!("0x7e90c8 `non-virtual thunk to'RBX::StatusInstance::~StatusInstance()")
+    todo!("0x7e90c8 non-virtual thunk toRBX::StatusInstance::~StatusInstance()")
 }
 
 // 0x7e90dc — __ZThn36_N3RBX14StatusInstanceD0Ev
@@ -38,7 +38,7 @@ pub fn stub_7e90c8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::StatusInstance::~StatusInstance()")]
 #[doc(alias = "__ZThn36_N3RBX14StatusInstanceD0Ev")]
 pub fn stub_7e90dc() -> ! {
-    todo!("0x7e90dc `non-virtual thunk to'RBX::StatusInstance::~StatusInstance()")
+    todo!("0x7e90dc non-virtual thunk toRBX::StatusInstance::~StatusInstance()")
 }
 
 // 0x7e918c — __ZThn120_N3RBX14StatusInstanceD1Ev
@@ -46,7 +46,7 @@ pub fn stub_7e90dc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::StatusInstance::~StatusInstance()")]
 #[doc(alias = "__ZThn120_N3RBX14StatusInstanceD1Ev")]
 pub fn stub_7e918c() -> ! {
-    todo!("0x7e918c `non-virtual thunk to'RBX::StatusInstance::~StatusInstance()")
+    todo!("0x7e918c non-virtual thunk toRBX::StatusInstance::~StatusInstance()")
 }
 
 // 0x7e91a0 — __ZThn120_N3RBX14StatusInstanceD0Ev
@@ -54,7 +54,7 @@ pub fn stub_7e918c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::StatusInstance::~StatusInstance()")]
 #[doc(alias = "__ZThn120_N3RBX14StatusInstanceD0Ev")]
 pub fn stub_7e91a0() -> ! {
-    todo!("0x7e91a0 `non-virtual thunk to'RBX::StatusInstance::~StatusInstance()")
+    todo!("0x7e91a0 non-virtual thunk toRBX::StatusInstance::~StatusInstance()")
 }
 
 // 0x7e9250 — __ZN3RBX18DescribedCreatableINS_14StatusInstanceENS_13ModelInstanceELZNS_15sStatusInstanceEELNS_10Reflection15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EED1Ev
@@ -287,7 +287,7 @@ pub fn stub_7e9ef4() -> ! {
 #[doc(alias = "global constructor keyed to_a_392")]
 #[doc(alias = "__GLOBAL__I_a_392")]
 pub fn stub_7e9fa8() -> ! {
-    todo!("0x7e9fa8 `global constructor keyed to'_a_392")
+    todo!("0x7e9fa8 global constructor keyed to'_a_392")
 }
 
 // 0x7ea22c — __ZN3RBX15ContentProvider10setBaseUrlESs
@@ -404,7 +404,7 @@ pub fn stub_7eb380() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
 #[doc(alias = "__ZThn32_N3RBX15ContentProviderD0Ev")]
 pub fn stub_7eb384() -> ! {
-    todo!("0x7eb384 `non-virtual thunk to'RBX::ContentProvider::~ContentProvider()")
+    todo!("0x7eb384 non-virtual thunk toRBX::ContentProvider::~ContentProvider()")
 }
 
 // 0x7eb38c — __ZThn36_N3RBX15ContentProviderD0Ev
@@ -412,7 +412,7 @@ pub fn stub_7eb384() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
 #[doc(alias = "__ZThn36_N3RBX15ContentProviderD0Ev")]
 pub fn stub_7eb38c() -> ! {
-    todo!("0x7eb38c `non-virtual thunk to'RBX::ContentProvider::~ContentProvider()")
+    todo!("0x7eb38c non-virtual thunk toRBX::ContentProvider::~ContentProvider()")
 }
 
 // 0x7eb394 — __ZThn96_N3RBX15ContentProviderD0Ev
@@ -420,7 +420,7 @@ pub fn stub_7eb38c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
 #[doc(alias = "__ZThn96_N3RBX15ContentProviderD0Ev")]
 pub fn stub_7eb394() -> ! {
-    todo!("0x7eb394 `non-virtual thunk to'RBX::ContentProvider::~ContentProvider()")
+    todo!("0x7eb394 non-virtual thunk toRBX::ContentProvider::~ContentProvider()")
 }
 
 // 0x7eb39c — __ZN3RBX15ContentProviderD2Ev
@@ -436,7 +436,7 @@ pub fn stub_7eb39c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
 #[doc(alias = "__ZThn32_N3RBX15ContentProviderD1Ev")]
 pub fn stub_7eb534() -> ! {
-    todo!("0x7eb534 `non-virtual thunk to'RBX::ContentProvider::~ContentProvider()")
+    todo!("0x7eb534 non-virtual thunk toRBX::ContentProvider::~ContentProvider()")
 }
 
 // 0x7eb53c — __ZThn36_N3RBX15ContentProviderD1Ev
@@ -444,7 +444,7 @@ pub fn stub_7eb534() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
 #[doc(alias = "__ZThn36_N3RBX15ContentProviderD1Ev")]
 pub fn stub_7eb53c() -> ! {
-    todo!("0x7eb53c `non-virtual thunk to'RBX::ContentProvider::~ContentProvider()")
+    todo!("0x7eb53c non-virtual thunk toRBX::ContentProvider::~ContentProvider()")
 }
 
 // 0x7eb544 — __ZThn96_N3RBX15ContentProviderD1Ev
@@ -452,7 +452,7 @@ pub fn stub_7eb53c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ContentProvider::~ContentProvider()")]
 #[doc(alias = "__ZThn96_N3RBX15ContentProviderD1Ev")]
 pub fn stub_7eb544() -> ! {
-    todo!("0x7eb544 `non-virtual thunk to'RBX::ContentProvider::~ContentProvider()")
+    todo!("0x7eb544 non-virtual thunk toRBX::ContentProvider::~ContentProvider()")
 }
 
 // 0x7eb54c — __ZN3RBX15ContentProvider30verifyRequestedScriptSignatureEPKcRKSsb
@@ -482,7 +482,7 @@ pub fn stub_7ec044() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ContentProvider::onHeartbeat(RBX::Heartbeat const&)")]
 #[doc(alias = "__ZThn96_N3RBX15ContentProvider11onHeartbeatERKNS_9HeartbeatE")]
 pub fn stub_7ec04c() -> ! {
-    todo!("0x7ec04c `non-virtual thunk to'RBX::ContentProvider::onHeartbeat(RBX::Heartbeat const&)")
+    todo!("0x7ec04c non-virtual thunk toRBX::ContentProvider::onHeartbeat(RBX::Heartbeat const&)")
 }
 
 // 0x7ec054 — __ZN3RBX15ContentProvider12getAssetFileEPKc

@@ -59,7 +59,7 @@ pub fn stub_3818e0() -> ! {
     todo!("0x3818e0 __ZNSt8_Rb_treeIPN3RBX12SpanningNodeES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E")
 }
 
-// 0x381908 — __GLOBAL__I_a_142 — `global constructor keyed to'_a_142
+// 0x381908 — __GLOBAL__I_a_142 — global constructor keyed to'_a_142
 #[doc(alias = "global constructor keyed to_a_142")]
 #[doc(alias = "__GLOBAL__I_a_142")]
 pub fn stub_381908() -> ! {
@@ -245,7 +245,7 @@ pub fn stub_382bfc() -> ! {
     todo!("0x382bfc __ZN3RBX11StandardOutC2Ev")
 }
 
-// 0x382d18 — __GLOBAL__I_a_143 — `global constructor keyed to'_a_143
+// 0x382d18 — __GLOBAL__I_a_143 — global constructor keyed to'_a_143
 #[doc(alias = "global constructor keyed to_a_143")]
 #[doc(alias = "__GLOBAL__I_a_143")]
 pub fn stub_382d18() -> ! {
@@ -340,7 +340,7 @@ pub fn stub_384c3c() -> ! {
     todo!("0x384c3c __ZN5boost6detail8function22void_function_invoker2IPFvPSsPSt9exceptionEvS3_S5_E6invokeERNS1_15function_bufferES3_S5_")
 }
 
-// 0x384c44 — __GLOBAL__I_a_144 — `global constructor keyed to'_a_144
+// 0x384c44 — __GLOBAL__I_a_144 — global constructor keyed to'_a_144
 #[doc(alias = "global constructor keyed to_a_144")]
 #[doc(alias = "__GLOBAL__I_a_144")]
 pub fn stub_384c44() -> ! {
@@ -419,7 +419,7 @@ pub fn stub_385470() -> ! {
     todo!("0x385470 __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX7SteppedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_8ISteppedES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_")
 }
 
-// 0x385478 — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX7SteppedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_8ISteppedES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_ — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>,1,void ()(RBX::Stepped const&)>::call(RBX::Stepped const&)
+// 0x385478 — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX7SteppedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_8ISteppedES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_ — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>,1,void ()(RBX::Stepped const&)>::call(RBX::Stepped const&)
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>,1,void ()(RBX::Stepped const&)>::call(RBX::Stepped const&)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX7SteppedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_8ISteppedES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_")]
@@ -490,7 +490,7 @@ pub fn stub_3857a8() -> ! {
     todo!("0x3857a8 __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX7SteppedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_8ISteppedES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_ED0Ev")
 }
 
-// 0x38587c — __GLOBAL__I_a_145 — `global constructor keyed to'_a_145
+// 0x38587c — __GLOBAL__I_a_145 — global constructor keyed to'_a_145
 #[doc(alias = "global constructor keyed to_a_145")]
 #[doc(alias = "__GLOBAL__I_a_145")]
 pub fn stub_38587c() -> ! {

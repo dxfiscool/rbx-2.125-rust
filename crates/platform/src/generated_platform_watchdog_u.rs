@@ -75,7 +75,7 @@ pub fn stub_38c3ec() -> ! {
     todo!("0x38c3ec __ZNK3RBX7UIEvent15isRightArrowKeyEv")
 }
 
-// 0x38c3fc — __GLOBAL__I_a_148 — `global constructor keyed to'_a_148
+// 0x38c3fc — __GLOBAL__I_a_148 — global constructor keyed to'_a_148
 // type: int()
 #[doc(alias = "global constructor keyed to_a_148")]
 #[doc(alias = "__GLOBAL__I_a_148")]
@@ -99,7 +99,7 @@ pub fn stub_38c464() -> ! {
     todo!("0x38c464 __ZN3RBX5Units13kmsForceToRbxEf")
 }
 
-// 0x38c478 — __GLOBAL__I_a_149 — `global constructor keyed to'_a_149
+// 0x38c478 — __GLOBAL__I_a_149 — global constructor keyed to'_a_149
 // type: int()
 #[doc(alias = "global constructor keyed to_a_149")]
 #[doc(alias = "__GLOBAL__I_a_149")]
@@ -155,7 +155,7 @@ pub fn stub_38cb9c() -> ! {
     todo!("0x38cb9c __ZN3RBX13UserInputBase10removeJobsEv")
 }
 
-// 0x38cba0 — __GLOBAL__I_a_150 — `global constructor keyed to'_a_150
+// 0x38cba0 — __GLOBAL__I_a_150 — global constructor keyed to'_a_150
 // type: 
 #[doc(alias = "global constructor keyed to_a_150")]
 #[doc(alias = "__GLOBAL__I_a_150")]
@@ -267,7 +267,7 @@ pub fn stub_38d4c4() -> ! {
     todo!("0x38d4c4 __ZN3RBX15StringConverterIfE15convertToStringERKf")
 }
 
-// 0x38da58 — __GLOBAL__I_a_151 — `global constructor keyed to'_a_151
+// 0x38da58 — __GLOBAL__I_a_151 — global constructor keyed to'_a_151
 // type: 
 #[doc(alias = "global constructor keyed to_a_151")]
 #[doc(alias = "__GLOBAL__I_a_151")]
@@ -387,7 +387,7 @@ pub fn stub_38e9b8() -> ! {
     todo!("0x38e9b8 __ZN3RBX12AccoutrementD1Ev")
 }
 
-// 0x38e9c8 — __ZThn32_N3RBX12AccoutrementD0Ev — `non-virtual thunk to'RBX::Accoutrement::~Accoutrement()
+// 0x38e9c8 — __ZThn32_N3RBX12AccoutrementD0Ev — non-virtual thunk toRBX::Accoutrement::~Accoutrement()
 // type: void __fastcall(RBX::Accoutrement *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn32_N3RBX12AccoutrementD0Ev")]
@@ -395,7 +395,7 @@ pub fn stub_38e9c8() -> ! {
     todo!("0x38e9c8 __ZThn32_N3RBX12AccoutrementD0Ev")
 }
 
-// 0x38e9d0 — __ZThn36_N3RBX12AccoutrementD0Ev — `non-virtual thunk to'RBX::Accoutrement::~Accoutrement()
+// 0x38e9d0 — __ZThn36_N3RBX12AccoutrementD0Ev — non-virtual thunk toRBX::Accoutrement::~Accoutrement()
 // type: void __fastcall(RBX::Accoutrement *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn36_N3RBX12AccoutrementD0Ev")]
@@ -403,7 +403,7 @@ pub fn stub_38e9d0() -> ! {
     todo!("0x38e9d0 __ZThn36_N3RBX12AccoutrementD0Ev")
 }
 
-// 0x38e9d8 — __ZThn92_N3RBX12AccoutrementD0Ev — `non-virtual thunk to'RBX::Accoutrement::~Accoutrement()
+// 0x38e9d8 — __ZThn92_N3RBX12AccoutrementD0Ev — non-virtual thunk toRBX::Accoutrement::~Accoutrement()
 // type: void __fastcall(RBX::Accoutrement *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn92_N3RBX12AccoutrementD0Ev")]
@@ -411,7 +411,7 @@ pub fn stub_38e9d8() -> ! {
     todo!("0x38e9d8 __ZThn92_N3RBX12AccoutrementD0Ev")
 }
 
-// 0x38e9e0 — __ZThn128_N3RBX12AccoutrementD0Ev — `non-virtual thunk to'RBX::Accoutrement::~Accoutrement()
+// 0x38e9e0 — __ZThn128_N3RBX12AccoutrementD0Ev — non-virtual thunk toRBX::Accoutrement::~Accoutrement()
 // type: void __fastcall(RBX::Accoutrement *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn128_N3RBX12AccoutrementD0Ev")]
@@ -427,7 +427,7 @@ pub fn stub_38e9e8() -> ! {
     todo!("0x38e9e8 __ZN3RBX12AccoutrementD2Ev")
 }
 
-// 0x38ef1c — __ZThn32_N3RBX12AccoutrementD1Ev — `non-virtual thunk to'RBX::Accoutrement::~Accoutrement()
+// 0x38ef1c — __ZThn32_N3RBX12AccoutrementD1Ev — non-virtual thunk toRBX::Accoutrement::~Accoutrement()
 // type: void __fastcall(RBX::Accoutrement *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn32_N3RBX12AccoutrementD1Ev")]
@@ -435,7 +435,7 @@ pub fn stub_38ef1c() -> ! {
     todo!("0x38ef1c __ZThn32_N3RBX12AccoutrementD1Ev")
 }
 
-// 0x38ef2c — __ZThn36_N3RBX12AccoutrementD1Ev — `non-virtual thunk to'RBX::Accoutrement::~Accoutrement()
+// 0x38ef2c — __ZThn36_N3RBX12AccoutrementD1Ev — non-virtual thunk toRBX::Accoutrement::~Accoutrement()
 // type: void __fastcall(RBX::Accoutrement *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn36_N3RBX12AccoutrementD1Ev")]
@@ -443,7 +443,7 @@ pub fn stub_38ef2c() -> ! {
     todo!("0x38ef2c __ZThn36_N3RBX12AccoutrementD1Ev")
 }
 
-// 0x38ef3c — __ZThn92_N3RBX12AccoutrementD1Ev — `non-virtual thunk to'RBX::Accoutrement::~Accoutrement()
+// 0x38ef3c — __ZThn92_N3RBX12AccoutrementD1Ev — non-virtual thunk toRBX::Accoutrement::~Accoutrement()
 // type: void __fastcall(RBX::Accoutrement *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn92_N3RBX12AccoutrementD1Ev")]
@@ -451,7 +451,7 @@ pub fn stub_38ef3c() -> ! {
     todo!("0x38ef3c __ZThn92_N3RBX12AccoutrementD1Ev")
 }
 
-// 0x38ef4c — __ZThn128_N3RBX12AccoutrementD1Ev — `non-virtual thunk to'RBX::Accoutrement::~Accoutrement()
+// 0x38ef4c — __ZThn128_N3RBX12AccoutrementD1Ev — non-virtual thunk toRBX::Accoutrement::~Accoutrement()
 // type: void __fastcall(RBX::Accoutrement *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn128_N3RBX12AccoutrementD1Ev")]
@@ -467,7 +467,7 @@ pub fn stub_38ef5c() -> ! {
     todo!("0x38ef5c __ZN3RBX12Accoutrement12onCameraNearEf")
 }
 
-// 0x38ef98 — __ZThn128_N3RBX12Accoutrement12onCameraNearEf — `non-virtual thunk to'RBX::Accoutrement::onCameraNear(float)
+// 0x38ef98 — __ZThn128_N3RBX12Accoutrement12onCameraNearEf — non-virtual thunk toRBX::Accoutrement::onCameraNear(float)
 // type: unsigned int __fastcall(RBX::Accoutrement *this, float)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::onCameraNear(float)")]
 #[doc(alias = "__ZThn128_N3RBX12Accoutrement12onCameraNearEf")]
@@ -483,7 +483,7 @@ pub fn stub_38efa0() -> ! {
     todo!("0x38efa0 __ZN3RBX12Accoutrement14render3dSelectEPNS_5AdornENS_11SelectStateE")
 }
 
-// 0x38f014 — __ZThn104_N3RBX12Accoutrement14render3dSelectEPNS_5AdornENS_11SelectStateE — `non-virtual thunk to'RBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)
+// 0x38f014 — __ZThn104_N3RBX12Accoutrement14render3dSelectEPNS_5AdornENS_11SelectStateE — non-virtual thunk toRBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)
 // type: unsigned int __fastcall(int, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
 #[doc(alias = "__ZThn104_N3RBX12Accoutrement14render3dSelectEPNS_5AdornENS_11SelectStateE")]
@@ -523,7 +523,7 @@ pub fn stub_38f1c4() -> ! {
     todo!("0x38f1c4 __ZN3RBX12Accoutrement11getLocationEv")
 }
 
-// 0x38f1f8 — __ZTv0_n12_N3RBX12Accoutrement11getLocationEv — `virtual thunk to'RBX::Accoutrement::getLocation(void)
+// 0x38f1f8 — __ZTv0_n12_N3RBX12Accoutrement11getLocationEv — virtual thunk to'RBX::Accoutrement::getLocation(void)
 // type: int __fastcall(RBX::Accoutrement *this, _DWORD *)
 #[doc(alias = "virtual thunk toRBX::Accoutrement::getLocation(void)")]
 #[doc(alias = "__ZTv0_n12_N3RBX12Accoutrement11getLocationEv")]
@@ -792,7 +792,7 @@ pub fn stub_3906a4() -> ! {
     todo!("0x3906a4 __ZThn32_NK3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E12getClassNameEv")
 }
 
-// 0x3906b4 — __ZThn128_N3RBX12Accoutrement17getRenderLocationEv — `non-virtual thunk to'RBX::Accoutrement::getRenderLocation(void)
+// 0x3906b4 — __ZThn128_N3RBX12Accoutrement17getRenderLocationEv — non-virtual thunk toRBX::Accoutrement::getRenderLocation(void)
 // type: int __fastcall(RBX::Accoutrement *this, int)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::getRenderLocation(void)")]
 #[doc(alias = "__ZThn128_N3RBX12Accoutrement17getRenderLocationEv")]
@@ -800,7 +800,7 @@ pub fn stub_3906b4() -> ! {
     todo!("0x3906b4 __ZThn128_N3RBX12Accoutrement17getRenderLocationEv")
 }
 
-// 0x3906c4 — __ZThn128_N3RBX12Accoutrement13getRenderSizeEv — `non-virtual thunk to'RBX::Accoutrement::getRenderSize(void)
+// 0x3906c4 — __ZThn128_N3RBX12Accoutrement13getRenderSizeEv — non-virtual thunk toRBX::Accoutrement::getRenderSize(void)
 // type: int __fastcall(RBX::Accoutrement *this)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::getRenderSize(void)")]
 #[doc(alias = "__ZThn128_N3RBX12Accoutrement13getRenderSizeEv")]

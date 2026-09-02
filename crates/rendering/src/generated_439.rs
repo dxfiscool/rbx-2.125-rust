@@ -43,7 +43,7 @@ pub fn stub_6941c4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ButtonBindingWidget::~ButtonBindingWidget()")]
 // was: __ZThn32_N3RBX19ButtonBindingWidgetD1Ev
 pub fn stub_6941c8() -> ! {
-    todo!("0x6941c8 `non-virtual thunk to'RBX::ButtonBindingWidget::~ButtonBindingWidget()")
+    todo!("0x6941c8 non-virtual thunk toRBX::ButtonBindingWidget::~ButtonBindingWidget()")
 }
 
 // 0x6942fc — __ZThn32_N3RBX19ButtonBindingWidgetD0Ev
@@ -52,7 +52,7 @@ pub fn stub_6941c8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ButtonBindingWidget::~ButtonBindingWidget()")]
 // was: __ZThn32_N3RBX19ButtonBindingWidgetD0Ev
 pub fn stub_6942fc() -> ! {
-    todo!("0x6942fc `non-virtual thunk to'RBX::ButtonBindingWidget::~ButtonBindingWidget()")
+    todo!("0x6942fc non-virtual thunk toRBX::ButtonBindingWidget::~ButtonBindingWidget()")
 }
 
 // 0x694444 — __ZThn32_NK3RBX17NonFactoryProductINS_6WidgetELZNS_20sButtonBindingWidgetEEE12getClassNameEv
@@ -69,7 +69,7 @@ pub fn stub_694444() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ButtonBindingWidget::~ButtonBindingWidget()")]
 // was: __ZThn36_N3RBX19ButtonBindingWidgetD1Ev
 pub fn stub_69446c() -> ! {
-    todo!("0x69446c `non-virtual thunk to'RBX::ButtonBindingWidget::~ButtonBindingWidget()")
+    todo!("0x69446c non-virtual thunk toRBX::ButtonBindingWidget::~ButtonBindingWidget()")
 }
 
 // 0x6945a0 — __ZThn36_N3RBX19ButtonBindingWidgetD0Ev
@@ -78,7 +78,7 @@ pub fn stub_69446c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ButtonBindingWidget::~ButtonBindingWidget()")]
 // was: __ZThn36_N3RBX19ButtonBindingWidgetD0Ev
 pub fn stub_6945a0() -> ! {
-    todo!("0x6945a0 `non-virtual thunk to'RBX::ButtonBindingWidget::~ButtonBindingWidget()")
+    todo!("0x6945a0 non-virtual thunk toRBX::ButtonBindingWidget::~ButtonBindingWidget()")
 }
 
 // 0x6946e8 — __ZN3RBX17VehicleControllerD1Ev
@@ -113,7 +113,7 @@ pub fn stub_6948d8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::VehicleController::~VehicleController()")]
 // was: __ZThn32_N3RBX17VehicleControllerD1Ev
 pub fn stub_6948e8() -> ! {
-    todo!("0x6948e8 `non-virtual thunk to'RBX::VehicleController::~VehicleController()")
+    todo!("0x6948e8 non-virtual thunk toRBX::VehicleController::~VehicleController()")
 }
 
 // 0x6949d4 — __ZThn32_N3RBX17VehicleControllerD0Ev
@@ -122,7 +122,7 @@ pub fn stub_6948e8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::VehicleController::~VehicleController()")]
 // was: __ZThn32_N3RBX17VehicleControllerD0Ev
 pub fn stub_6949d4() -> ! {
-    todo!("0x6949d4 `non-virtual thunk to'RBX::VehicleController::~VehicleController()")
+    todo!("0x6949d4 non-virtual thunk toRBX::VehicleController::~VehicleController()")
 }
 
 // 0x694ad8 — __ZThn32_NK3RBX14FactoryProductINS_17VehicleControllerENS_10ControllerELZNS_18sVehicleControllerEENS_8InstanceEE12getClassNameEv
@@ -139,7 +139,7 @@ pub fn stub_694ad8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::VehicleController::~VehicleController()")]
 // was: __ZThn36_N3RBX17VehicleControllerD1Ev
 pub fn stub_694ae8() -> ! {
-    todo!("0x694ae8 `non-virtual thunk to'RBX::VehicleController::~VehicleController()")
+    todo!("0x694ae8 non-virtual thunk toRBX::VehicleController::~VehicleController()")
 }
 
 // 0x694bd4 — __ZThn36_N3RBX17VehicleControllerD0Ev
@@ -148,7 +148,7 @@ pub fn stub_694ae8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::VehicleController::~VehicleController()")]
 // was: __ZThn36_N3RBX17VehicleControllerD0Ev
 pub fn stub_694bd4() -> ! {
-    todo!("0x694bd4 `non-virtual thunk to'RBX::VehicleController::~VehicleController()")
+    todo!("0x694bd4 non-virtual thunk toRBX::VehicleController::~VehicleController()")
 }
 
 // 0x694cd8 — __ZThn92_N3RBX17VehicleControllerD1Ev
@@ -157,7 +157,7 @@ pub fn stub_694bd4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::VehicleController::~VehicleController()")]
 // was: __ZThn92_N3RBX17VehicleControllerD1Ev
 pub fn stub_694cd8() -> ! {
-    todo!("0x694cd8 `non-virtual thunk to'RBX::VehicleController::~VehicleController()")
+    todo!("0x694cd8 non-virtual thunk toRBX::VehicleController::~VehicleController()")
 }
 
 // 0x694dc4 — __ZThn92_N3RBX17VehicleControllerD0Ev
@@ -166,7 +166,7 @@ pub fn stub_694cd8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::VehicleController::~VehicleController()")]
 // was: __ZThn92_N3RBX17VehicleControllerD0Ev
 pub fn stub_694dc4() -> ! {
-    todo!("0x694dc4 `non-virtual thunk to'RBX::VehicleController::~VehicleController()")
+    todo!("0x694dc4 non-virtual thunk toRBX::VehicleController::~VehicleController()")
 }
 
 // 0x694ec8 — __ZN3RBX18HumanoidControllerD1Ev
@@ -201,7 +201,7 @@ pub fn stub_694f6c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HumanoidController::~HumanoidController()")]
 // was: __ZThn32_N3RBX18HumanoidControllerD1Ev
 pub fn stub_694f7c() -> ! {
-    todo!("0x694f7c `non-virtual thunk to'RBX::HumanoidController::~HumanoidController()")
+    todo!("0x694f7c non-virtual thunk toRBX::HumanoidController::~HumanoidController()")
 }
 
 // 0x694f84 — __ZThn32_N3RBX18HumanoidControllerD0Ev
@@ -210,7 +210,7 @@ pub fn stub_694f7c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HumanoidController::~HumanoidController()")]
 // was: __ZThn32_N3RBX18HumanoidControllerD0Ev
 pub fn stub_694f84() -> ! {
-    todo!("0x694f84 `non-virtual thunk to'RBX::HumanoidController::~HumanoidController()")
+    todo!("0x694f84 non-virtual thunk toRBX::HumanoidController::~HumanoidController()")
 }
 
 // 0x695028 — __ZThn32_NK3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE12getClassNameEv
@@ -227,7 +227,7 @@ pub fn stub_695028() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HumanoidController::~HumanoidController()")]
 // was: __ZThn36_N3RBX18HumanoidControllerD1Ev
 pub fn stub_695038() -> ! {
-    todo!("0x695038 `non-virtual thunk to'RBX::HumanoidController::~HumanoidController()")
+    todo!("0x695038 non-virtual thunk toRBX::HumanoidController::~HumanoidController()")
 }
 
 // 0x695040 — __ZThn36_N3RBX18HumanoidControllerD0Ev
@@ -236,7 +236,7 @@ pub fn stub_695038() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HumanoidController::~HumanoidController()")]
 // was: __ZThn36_N3RBX18HumanoidControllerD0Ev
 pub fn stub_695040() -> ! {
-    todo!("0x695040 `non-virtual thunk to'RBX::HumanoidController::~HumanoidController()")
+    todo!("0x695040 non-virtual thunk toRBX::HumanoidController::~HumanoidController()")
 }
 
 // 0x6950e4 — __ZThn92_N3RBX18HumanoidControllerD1Ev
@@ -245,7 +245,7 @@ pub fn stub_695040() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HumanoidController::~HumanoidController()")]
 // was: __ZThn92_N3RBX18HumanoidControllerD1Ev
 pub fn stub_6950e4() -> ! {
-    todo!("0x6950e4 `non-virtual thunk to'RBX::HumanoidController::~HumanoidController()")
+    todo!("0x6950e4 non-virtual thunk toRBX::HumanoidController::~HumanoidController()")
 }
 
 // 0x6950ec — __ZThn92_N3RBX18HumanoidControllerD0Ev
@@ -254,7 +254,7 @@ pub fn stub_6950e4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HumanoidController::~HumanoidController()")]
 // was: __ZThn92_N3RBX18HumanoidControllerD0Ev
 pub fn stub_6950ec() -> ! {
-    todo!("0x6950ec `non-virtual thunk to'RBX::HumanoidController::~HumanoidController()")
+    todo!("0x6950ec non-virtual thunk toRBX::HumanoidController::~HumanoidController()")
 }
 
 // 0x695194 — __ZN3RBX14FactoryProductINS_17VehicleControllerENS_10ControllerELZNS_18sVehicleControllerEENS_8InstanceEE7CreatorD1Ev
@@ -305,7 +305,7 @@ pub fn stub_6954ac() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ControllerService::~ControllerService()")]
 // was: __ZThn32_N3RBX17ControllerServiceD1Ev
 pub fn stub_6954d4() -> ! {
-    todo!("0x6954d4 `non-virtual thunk to'RBX::ControllerService::~ControllerService()")
+    todo!("0x6954d4 non-virtual thunk toRBX::ControllerService::~ControllerService()")
 }
 
 // 0x6954dc — __ZThn32_N3RBX17ControllerServiceD0Ev
@@ -314,7 +314,7 @@ pub fn stub_6954d4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ControllerService::~ControllerService()")]
 // was: __ZThn32_N3RBX17ControllerServiceD0Ev
 pub fn stub_6954dc() -> ! {
-    todo!("0x6954dc `non-virtual thunk to'RBX::ControllerService::~ControllerService()")
+    todo!("0x6954dc non-virtual thunk toRBX::ControllerService::~ControllerService()")
 }
 
 // 0x695580 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_18sControllerServiceEEE12getClassNameEv
@@ -331,7 +331,7 @@ pub fn stub_695580() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ControllerService::~ControllerService()")]
 // was: __ZThn36_N3RBX17ControllerServiceD1Ev
 pub fn stub_6955a8() -> ! {
-    todo!("0x6955a8 `non-virtual thunk to'RBX::ControllerService::~ControllerService()")
+    todo!("0x6955a8 non-virtual thunk toRBX::ControllerService::~ControllerService()")
 }
 
 // 0x6955b0 — __ZThn36_N3RBX17ControllerServiceD0Ev
@@ -340,7 +340,7 @@ pub fn stub_6955a8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ControllerService::~ControllerService()")]
 // was: __ZThn36_N3RBX17ControllerServiceD0Ev
 pub fn stub_6955b0() -> ! {
-    todo!("0x6955b0 `non-virtual thunk to'RBX::ControllerService::~ControllerService()")
+    todo!("0x6955b0 non-virtual thunk toRBX::ControllerService::~ControllerService()")
 }
 
 // 0x695654 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_10Controller6ButtonEEERS3_RKT_

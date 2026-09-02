@@ -2,7 +2,7 @@
 // Filter: RBX::Instance|RBX::DataModel|Workspace (10215) complete — fallback global gap filler lowest uncovered EA asc not yet in datamodel
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 120 stubs | range 0x2f23f4..0x2ff674 | datamodel distinct 33459->33579 global uncovered 52887->52767, lowest gap EA-sorted asc next 120 after shard 274 (0x2a44d8..0x2abbc4)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias where needed
 // Shard: 275 EA-sorted ascending next uncovered gap after shard 274 (distinct check via export.json sorted EA, no overlap)
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
@@ -132,7 +132,7 @@ pub fn stub_0x2f5c4c() -> ! {
 // 0x2f5d3c — __GLOBAL__I_a_102
 #[doc(alias = "global constructor keyed to_a_102")]
 pub fn stub_0x2f5d3c() -> ! {
-    todo!("0x2f5d3c `global constructor keyed to'_a_102")
+    todo!("0x2f5d3c global constructor keyed to'_a_102")
 }
 
 // 0x2f614c — __ZN3RBX13ArrowToolBase12onMouseHoverERKNS_7UIEventE
@@ -188,7 +188,7 @@ pub fn stub_0x2f6858() -> ! {
 // type: _DWORD __fastcall(RBX::ArrowToolBase *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::ArrowToolBase::render3dAdorn(RBX::Adorn *)")]
 pub fn stub_0x2f68c8() -> ! {
-    todo!("0x2f68c8 `non-virtual thunk to'RBX::ArrowToolBase::render3dAdorn(RBX::Adorn *)")
+    todo!("0x2f68c8 non-virtual thunk toRBX::ArrowToolBase::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x2f68d0 — __ZNK3RBX16AdvArrowToolBase13getCursorNameEv
@@ -251,7 +251,7 @@ pub fn stub_0x2f71d4() -> ! {
 // type: void __fastcall(RBX::BoxSelectCommand *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")]
 pub fn stub_0x2f71d8() -> ! {
-    todo!("0x2f71d8 `non-virtual thunk to'RBX::BoxSelectCommand::~BoxSelectCommand()")
+    todo!("0x2f71d8 non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")
 }
 
 // 0x2f71e0 — __ZN3RBX16BoxSelectCommandD2Ev
@@ -265,7 +265,7 @@ pub fn stub_0x2f71e0() -> ! {
 // type: void __fastcall(RBX::BoxSelectCommand *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")]
 pub fn stub_0x2f7324() -> ! {
-    todo!("0x2f7324 `non-virtual thunk to'RBX::BoxSelectCommand::~BoxSelectCommand()")
+    todo!("0x2f7324 non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")
 }
 
 // 0x2f73fc — __ZN3RBX16BoxSelectCommand11onMouseDownERKNS_7UIEventE
@@ -293,7 +293,7 @@ pub fn stub_0x2f7818() -> ! {
 // type: _DWORD __fastcall(RBX::BoxSelectCommand *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::BoxSelectCommand::render2d(RBX::Adorn *)")]
 pub fn stub_0x2f78d0() -> ! {
-    todo!("0x2f78d0 `non-virtual thunk to'RBX::BoxSelectCommand::render2d(RBX::Adorn *)")
+    todo!("0x2f78d0 non-virtual thunk toRBX::BoxSelectCommand::render2d(RBX::Adorn *)")
 }
 
 // 0x2f7ec0 — __ZNK3RBX5NamedINS_12MouseCommandELZNS_17sBoxSelectCommandEEE7getNameEv
@@ -375,7 +375,7 @@ pub fn stub_0x2f88f8() -> ! {
 // 0x2f8c2c — __GLOBAL__I_a_103
 #[doc(alias = "global constructor keyed to_a_103")]
 pub fn stub_0x2f8c2c() -> ! {
-    todo!("0x2f8c2c `global constructor keyed to'_a_103")
+    todo!("0x2f8c2c global constructor keyed to'_a_103")
 }
 
 // 0x2f8f04 — __ZN3RBX10Reflection8EnumDescINS_6Action10ActionTypeEEC1Ev
@@ -463,7 +463,7 @@ pub fn stub_0x2f97cc() -> ! {
 // 0x2f995c — __GLOBAL__I_a_104
 #[doc(alias = "global constructor keyed to_a_104")]
 pub fn stub_0x2f995c() -> ! {
-    todo!("0x2f995c `global constructor keyed to'_a_104")
+    todo!("0x2f995c global constructor keyed to'_a_104")
 }
 
 // 0x2f9a24 — __ZN3RBX15StringConverterINS_11AnimationIdEE14convertToValueERKSsRS1_
@@ -571,7 +571,7 @@ pub fn stub_0x2fa878() -> ! {
 // 0x2fa87c — __GLOBAL__I_a_105
 #[doc(alias = "global constructor keyed to_a_105")]
 pub fn stub_0x2fa87c() -> ! {
-    todo!("0x2fa87c `global constructor keyed to'_a_105")
+    todo!("0x2fa87c global constructor keyed to'_a_105")
 }
 
 // 0x2fad24 — __ZN3RBX14AsyncHttpQueue13setThreadPoolEi

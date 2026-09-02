@@ -858,7 +858,7 @@ pub fn stub_3f0948() -> ! {
 }
 
 // 0x3f0a94 — __GLOBAL__I_a_170
-// demangled: `global constructor keyed to'_a_170
+// demangled: global constructor keyed to'_a_170
 // type: 
 #[doc(alias = "__GLOBAL__I_a_170")]
 #[doc(alias = "__GLOBAL__I_a_170")]

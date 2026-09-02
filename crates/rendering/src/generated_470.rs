@@ -96,7 +96,7 @@ pub fn stub_7242dc() -> ! {
 #[doc(alias = "global constructor keyed to_a_310")]
 #[doc(alias = "__GLOBAL__I_a_310")]
 pub fn stub_72437c() -> ! {
-    todo!("0x72437c `global constructor keyed to'_a_310")
+    todo!("0x72437c global constructor keyed to'_a_310")
 }
 
 // 0x724650 — __ZN3RBX14ContactManagerC1EPNS_5WorldE

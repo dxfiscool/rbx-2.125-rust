@@ -1,7 +1,7 @@
 // Auto-generated skeletons for rbx-datamodel shard A — from ida/export.json
 // Filter: demangled contains Instance|DataModel|Workspace excluding Reflection/Ogre/RakNet/Lua/FMOD, EA-sorted asc gap filler
 // Source: ida/export.json (85545 funcs, base 0x4000) — batch 120, range 0x6d354c..0xa2cb38 | total filtered 12172, gap 1515, remaining 1395 after batch
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

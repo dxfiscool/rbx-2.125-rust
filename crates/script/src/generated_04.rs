@@ -3,7 +3,7 @@
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Note: task filter yields 4456 funcs, all already stubbed (5551 existing via broader filter); this batch appends next 120 EA-sorted funcs not yet stubbed (global filler 0xf6a8d4..0xf6b044)
 // Previous max script EA 0xf6a8c4, filtered remaining 0, filler from 0xf6a8d4 onward (EA-sorted, not yet in any crate).
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; `` stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

@@ -2,7 +2,7 @@
 // Filter: EA-sorted asc next 100 not yet in datamodel (high EA global gap above 0xf6f234, distinct global gap EA-sorted asc, high EA fallback)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0xf6f240..0xf6f6e4 | high EA global gap above 0xf6f234 EA-sorted asc not yet in datamodel (datamodel distinct 30972->31072, global 85545 all covered distinct, fallback to high EA gap), was 194 remaining high tail, now 94 remain
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias where needed
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

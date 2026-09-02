@@ -1,7 +1,7 @@
 // Auto-generated skeletons for rbx-platform — from ida/export.json
 // Filter: global gap filler EA-sorted asc next 150 uncovered not yet in platform
 // Batch: 150 stubs | range 0xd8788..0xe2c94 | src ida/export.json (85545 funcs) EA-sorted asc
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias where needed
 // Format: // 0xADDR — mangled + #[doc(alias = "mangled")] + pub fn stub_0xADDR todo!("0xADDR") using rbx_core::SharedPtr not boost.
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]

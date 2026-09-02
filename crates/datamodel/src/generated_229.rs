@@ -3,7 +3,7 @@
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0xbb628..0xcbd64 | datamodel distinct 25702->25802 (global 85545, dm-remaining 59743 after)
 // Shard: 229 EA-sorted asc next 100 uncovered not yet in datamodel (global gap filler)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  stripped from alias where needed
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -45,7 +45,7 @@ pub fn stub_0xbb77c() -> ! {
 
 // 0xbb7c0 — __GLOBAL__I__ZN4FMOD10dspparameqE
 #[doc(alias = "global constructor keyed toFMOD::dspparameq")]
-// was: `global constructor keyed to'FMOD::dspparameq
+// was: global constructor keyed to'FMOD::dspparameq
 pub fn stub_0xbb7c0() -> ! {
     todo!("0xbb7c0 global constructor keyed toFMOD::dspparameq")
 }
@@ -236,7 +236,7 @@ pub fn stub_0xbf318() -> ! {
 
 // 0xbf35c — __GLOBAL__I__ZN4FMOD13dsppitchshiftE
 #[doc(alias = "global constructor keyed toFMOD::dsppitchshift")]
-// was: `global constructor keyed to'FMOD::dsppitchshift
+// was: global constructor keyed to'FMOD::dsppitchshift
 pub fn stub_0xbf35c() -> ! {
     todo!("0xbf35c global constructor keyed toFMOD::dsppitchshift")
 }
@@ -428,7 +428,7 @@ pub fn stub_0xc1ac0() -> ! {
 
 // 0xc1b04 — __GLOBAL__I__ZN4FMOD9dspreverbE
 #[doc(alias = "global constructor keyed toFMOD::dspreverb")]
-// was: `global constructor keyed to'FMOD::dspreverb
+// was: global constructor keyed to'FMOD::dspreverb
 pub fn stub_0xc1b04() -> ! {
     todo!("0xc1b04 global constructor keyed toFMOD::dspreverb")
 }

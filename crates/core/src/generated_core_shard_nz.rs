@@ -1,5 +1,5 @@
 //! core shard nz — 120 core stubs EA-sorted asc gap filler not yet in core (global).
-//! Source: `ida/export.json` (85545 funcs) EA-sorted asc, next 120 foundation not yet in any crate (33162 uncovered before -> 33042 after, batch 0x603d10..0x7df2e0).
+//! Source: ida/export.json (85545 funcs) EA-sorted asc, next 120 foundation not yet in any crate (33162 uncovered before -> 33042 after, batch 0x603d10..0x7df2e0).
 //! Filter: RBX core utils, no RBX:: prefix but foundational. Excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound|Adorn|MeshContent|TextureContent|Material|Shader.
 //! Format: // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR") using rbx_core::SharedPtr not boost.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
@@ -406,7 +406,7 @@ pub fn stub_0x7c9800() -> ! {
 
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::function<void ()(float)>,1,void ()(float)>::call(float)")]
 // 0x7c9808 — __ZThn4_N3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost8functionIS3_EELi1ES3_E4callEf
-// was: `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::function<void ()(float)>,1,void ()(float)>::call(float)
+// was: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::function<void ()(float)>,1,void ()(float)>::call(float)
 pub fn stub_0x7c9808() -> ! {
     todo!("0x7c9808 __ZThn4_N3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost8functionIS3_EELi1ES3_E4callEf")
 }
@@ -686,21 +686,21 @@ pub fn stub_0x7ded20() -> ! {
 
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<std::ios_base::failure>::~error_info_injector()")]
 // 0x7dedd8 — __ZThn8_N5boost16exception_detail19error_info_injectorINSt8ios_base7failureEED1Ev
-// was: `non-virtual thunk toboost::exception_detail::error_info_injector<std::ios_base::failure>::~error_info_injector()
+// was: non-virtual thunk toboost::exception_detail::error_info_injector<std::ios_base::failure>::~error_info_injector()
 pub fn stub_0x7dedd8() -> ! {
     todo!("0x7dedd8 __ZThn8_N5boost16exception_detail19error_info_injectorINSt8ios_base7failureEED1Ev")
 }
 
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::~clone_impl()")]
 // 0x7dede0 — __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorINSt8ios_base7failureEEEED1Ev
-// was: `non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::~clone_impl()
+// was: non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::~clone_impl()
 pub fn stub_0x7dede0() -> ! {
     todo!("0x7dede0 __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorINSt8ios_base7failureEEEED1Ev")
 }
 
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::~clone_impl()")]
 // 0x7dede8 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINSt8ios_base7failureEEEED1Ev
-// was: `virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::~clone_impl()
+// was: virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::~clone_impl()
 pub fn stub_0x7dede8() -> ! {
     todo!("0x7dede8 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINSt8ios_base7failureEEEED1Ev")
 }
@@ -713,7 +713,7 @@ pub fn stub_0x7dedf4() -> ! {
 
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::clone(void)const")]
 // 0x7deeb0 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINSt8ios_base7failureEEEE5cloneEv
-// was: `virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::clone(void)const
+// was: virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::clone(void)const
 // type: int __fastcall(_DWORD *)
 pub fn stub_0x7deeb0() -> ! {
     todo!("0x7deeb0 __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINSt8ios_base7failureEEEE5cloneEv")

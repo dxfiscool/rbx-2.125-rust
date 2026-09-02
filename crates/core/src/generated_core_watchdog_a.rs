@@ -1,5 +1,5 @@
 //! core watchdog a — 100 core stubs EA-sorted, lowest uncovered core gap.
-//! Source: `ida/export.json` EA-sorted, next 100 uncovered not yet in rbx_core.
+//! Source: ida/export.json EA-sorted, next 100 uncovered not yet in rbx_core.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]

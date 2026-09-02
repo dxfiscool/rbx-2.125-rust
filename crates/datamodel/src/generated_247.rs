@@ -2,7 +2,7 @@
 // Filter: RBX::Instance|RBX::DataModel|RBX::Workspace|RBX::ServiceProvider EA-sorted asc next 150 not yet in datamodel
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 150 stubs | range 0xaa4bfc..0xf615c4 | primary 10751 total, 177->27 remaining, datamodel distinct 28002->28152
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias where needed
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

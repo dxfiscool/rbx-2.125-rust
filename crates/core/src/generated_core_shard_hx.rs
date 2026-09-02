@@ -1,5 +1,5 @@
 //! core shard HX — 100 core stubs EA-sorted, continuation after HW 0x1825b0 (EA-sorted ascending, next 100 uncovered).
-//! Source: `ida/export.json` EA-sorted ascending, next 100 after 0x1825b0 not yet in rbx_core.
+//! Source: ida/export.json EA-sorted ascending, next 100 after 0x1825b0 not yet in rbx_core.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]

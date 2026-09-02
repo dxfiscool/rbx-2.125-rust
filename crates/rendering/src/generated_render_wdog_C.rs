@@ -10,9 +10,9 @@ use rbx_core::SharedPtr;
 // 0x838cbc — __ZThn32_N3RBX5FrameD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Frame::~Frame()")]
 #[doc(alias = "__ZThn32_N3RBX5FrameD0Ev")]
-// was: `non-virtual thunk to'RBX::Frame::~Frame()
+// was: non-virtual thunk toRBX::Frame::~Frame()
 pub fn stub_838cbc() -> ! {
-    todo!("0x838cbc `non-virtual thunk to'RBX::Frame::~Frame()")
+    todo!("0x838cbc non-virtual thunk toRBX::Frame::~Frame()")
 }
 
 // 0x838dc8 — __ZThn32_NK3RBX14FactoryProductINS_5FrameENS_9GuiObjectELZNS_6sFrameEENS_8InstanceEE12getClassNameEv
@@ -25,17 +25,17 @@ pub fn stub_838dc8() -> ! {
 // 0x838dd8 — __ZThn36_N3RBX5FrameD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Frame::~Frame()")]
 #[doc(alias = "__ZThn36_N3RBX5FrameD1Ev")]
-// was: `non-virtual thunk to'RBX::Frame::~Frame()
+// was: non-virtual thunk toRBX::Frame::~Frame()
 pub fn stub_838dd8() -> ! {
-    todo!("0x838dd8 `non-virtual thunk to'RBX::Frame::~Frame()")
+    todo!("0x838dd8 non-virtual thunk toRBX::Frame::~Frame()")
 }
 
 // 0x838ecc — __ZThn36_N3RBX5FrameD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Frame::~Frame()")]
 #[doc(alias = "__ZThn36_N3RBX5FrameD0Ev")]
-// was: `non-virtual thunk to'RBX::Frame::~Frame()
+// was: non-virtual thunk toRBX::Frame::~Frame()
 pub fn stub_838ecc() -> ! {
-    todo!("0x838ecc `non-virtual thunk to'RBX::Frame::~Frame()")
+    todo!("0x838ecc non-virtual thunk toRBX::Frame::~Frame()")
 }
 
 // 0x838fd8 — __ZN3RBX14FactoryProductINS_5FrameENS_9GuiObjectELZNS_6sFrameEENS_8InstanceEE17static_getCreatorEv
@@ -56,9 +56,9 @@ pub fn stub_83904c() -> ! {
 // 0x8392b8 — __GLOBAL__I_a_425
 #[doc(alias = "global constructor keyed to_a_425")]
 #[doc(alias = "__GLOBAL__I_a_425")]
-// was: `global constructor keyed to'_a_425
+// was: global constructor keyed to'_a_425
 pub fn stub_8392b8() -> ! {
-    todo!("0x8392b8 `global constructor keyed to'_a_425")
+    todo!("0x8392b8 global constructor keyed to'_a_425")
 }
 
 // 0x839508 — __ZN3RBX13FriendService25setCreateFriendRequestUrlESs
@@ -407,17 +407,17 @@ pub fn stub_83e33c() -> ! {
 // 0x83e34c — __ZThn32_N3RBX13FriendServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::FriendService::~FriendService()")]
 #[doc(alias = "__ZThn32_N3RBX13FriendServiceD1Ev")]
-// was: `non-virtual thunk to'RBX::FriendService::~FriendService()
+// was: non-virtual thunk toRBX::FriendService::~FriendService()
 pub fn stub_83e34c() -> ! {
-    todo!("0x83e34c `non-virtual thunk to'RBX::FriendService::~FriendService()")
+    todo!("0x83e34c non-virtual thunk toRBX::FriendService::~FriendService()")
 }
 
 // 0x83e354 — __ZThn32_N3RBX13FriendServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::FriendService::~FriendService()")]
 #[doc(alias = "__ZThn32_N3RBX13FriendServiceD0Ev")]
-// was: `non-virtual thunk to'RBX::FriendService::~FriendService()
+// was: non-virtual thunk toRBX::FriendService::~FriendService()
 pub fn stub_83e354() -> ! {
-    todo!("0x83e354 `non-virtual thunk to'RBX::FriendService::~FriendService()")
+    todo!("0x83e354 non-virtual thunk toRBX::FriendService::~FriendService()")
 }
 
 // 0x83e3f8 — __ZThn32_NK3RBX14FactoryProductINS_13FriendServiceENS_8InstanceELZNS_14sFriendServiceEES2_E12getClassNameEv
@@ -430,17 +430,17 @@ pub fn stub_83e3f8() -> ! {
 // 0x83e408 — __ZThn36_N3RBX13FriendServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::FriendService::~FriendService()")]
 #[doc(alias = "__ZThn36_N3RBX13FriendServiceD1Ev")]
-// was: `non-virtual thunk to'RBX::FriendService::~FriendService()
+// was: non-virtual thunk toRBX::FriendService::~FriendService()
 pub fn stub_83e408() -> ! {
-    todo!("0x83e408 `non-virtual thunk to'RBX::FriendService::~FriendService()")
+    todo!("0x83e408 non-virtual thunk toRBX::FriendService::~FriendService()")
 }
 
 // 0x83e410 — __ZThn36_N3RBX13FriendServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::FriendService::~FriendService()")]
 #[doc(alias = "__ZThn36_N3RBX13FriendServiceD0Ev")]
-// was: `non-virtual thunk to'RBX::FriendService::~FriendService()
+// was: non-virtual thunk toRBX::FriendService::~FriendService()
 pub fn stub_83e410() -> ! {
-    todo!("0x83e410 `non-virtual thunk to'RBX::FriendService::~FriendService()")
+    todo!("0x83e410 non-virtual thunk toRBX::FriendService::~FriendService()")
 }
 
 // 0x83e4b4 — __ZNSt6vectorIN3RBX13FriendService15FriendEventTypeESaIS2_EE6resizeEmS2_

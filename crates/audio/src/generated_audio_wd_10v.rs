@@ -395,7 +395,7 @@ pub fn stub_5fa714() -> ! {
 }
 
 // 0x5fa738 — __GLOBAL__I_a_236
-// demangled: `global constructor keyed to'_a_236
+// demangled: global constructor keyed to'_a_236
 #[doc(alias = "global constructor keyed to_a_236")]
 #[doc(alias = "__GLOBAL__I_a_236")]
 pub fn stub_5fa738() -> ! {
@@ -403,7 +403,7 @@ pub fn stub_5fa738() -> ! {
 }
 
 // 0x5fb0ec — __GLOBAL__I_a_237
-// demangled: `global constructor keyed to'_a_237
+// demangled: global constructor keyed to'_a_237
 #[doc(alias = "global constructor keyed to_a_237")]
 #[doc(alias = "__GLOBAL__I_a_237")]
 pub fn stub_5fb0ec() -> ! {
@@ -435,7 +435,7 @@ pub fn stub_5fb654() -> ! {
 }
 
 // 0x5fb658 — __ZThn32_N3RBX13BasePlayerGuiD0Ev
-// demangled: `non-virtual thunk to'RBX::BasePlayerGui::~BasePlayerGui()
+// demangled: non-virtual thunk toRBX::BasePlayerGui::~BasePlayerGui()
 #[doc(alias = "non-virtual thunk toRBX::BasePlayerGui::~BasePlayerGui()")]
 #[doc(alias = "__ZThn32_N3RBX13BasePlayerGuiD0Ev")]
 pub fn stub_5fb658() -> ! {
@@ -443,7 +443,7 @@ pub fn stub_5fb658() -> ! {
 }
 
 // 0x5fb660 — __ZThn36_N3RBX13BasePlayerGuiD0Ev
-// demangled: `non-virtual thunk to'RBX::BasePlayerGui::~BasePlayerGui()
+// demangled: non-virtual thunk toRBX::BasePlayerGui::~BasePlayerGui()
 #[doc(alias = "non-virtual thunk toRBX::BasePlayerGui::~BasePlayerGui()")]
 #[doc(alias = "__ZThn36_N3RBX13BasePlayerGuiD0Ev")]
 pub fn stub_5fb660() -> ! {
@@ -459,7 +459,7 @@ pub fn stub_5fb668() -> ! {
 }
 
 // 0x5fb7a4 — __ZThn32_N3RBX13BasePlayerGuiD1Ev
-// demangled: `non-virtual thunk to'RBX::BasePlayerGui::~BasePlayerGui()
+// demangled: non-virtual thunk toRBX::BasePlayerGui::~BasePlayerGui()
 #[doc(alias = "non-virtual thunk toRBX::BasePlayerGui::~BasePlayerGui()")]
 #[doc(alias = "__ZThn32_N3RBX13BasePlayerGuiD1Ev")]
 pub fn stub_5fb7a4() -> ! {
@@ -467,7 +467,7 @@ pub fn stub_5fb7a4() -> ! {
 }
 
 // 0x5fb7ac — __ZThn36_N3RBX13BasePlayerGuiD1Ev
-// demangled: `non-virtual thunk to'RBX::BasePlayerGui::~BasePlayerGui()
+// demangled: non-virtual thunk toRBX::BasePlayerGui::~BasePlayerGui()
 #[doc(alias = "non-virtual thunk toRBX::BasePlayerGui::~BasePlayerGui()")]
 #[doc(alias = "__ZThn36_N3RBX13BasePlayerGuiD1Ev")]
 pub fn stub_5fb7ac() -> ! {
@@ -491,7 +491,7 @@ pub fn stub_5fb8e0() -> ! {
 }
 
 // 0x5fba7c — __ZThn92_N3RBX13BasePlayerGui15scriptShouldRunEPNS_10BaseScriptE
-// demangled: `non-virtual thunk to'RBX::BasePlayerGui::scriptShouldRun(RBX::BaseScript *)
+// demangled: non-virtual thunk toRBX::BasePlayerGui::scriptShouldRun(RBX::BaseScript *)
 #[doc(alias = "non-virtual thunk toRBX::BasePlayerGui::scriptShouldRun(RBX::BaseScript *)")]
 #[doc(alias = "__ZThn92_N3RBX13BasePlayerGui15scriptShouldRunEPNS_10BaseScriptE")]
 pub fn stub_5fba7c() -> ! {
@@ -555,7 +555,7 @@ pub fn stub_5fbb30() -> ! {
 }
 
 // 0x5fbcc4 — __ZThn96_N3RBX13BasePlayerGui7processERKNS_8GuiEventE
-// demangled: `non-virtual thunk to'RBX::BasePlayerGui::process(RBX::GuiEvent const&)
+// demangled: non-virtual thunk toRBX::BasePlayerGui::process(RBX::GuiEvent const&)
 #[doc(alias = "non-virtual thunk toRBX::BasePlayerGui::process(RBX::GuiEvent const&)")]
 #[doc(alias = "__ZThn96_N3RBX13BasePlayerGui7processERKNS_8GuiEventE")]
 pub fn stub_5fbcc4() -> ! {
@@ -699,7 +699,7 @@ pub fn stub_5fc784() -> ! {
 }
 
 // 0x5fc7a0 — __ZThn96_N3RBX17StarterGuiService7processERKNS_8GuiEventE
-// demangled: `non-virtual thunk to'RBX::StarterGuiService::process(RBX::GuiEvent const&)
+// demangled: non-virtual thunk toRBX::StarterGuiService::process(RBX::GuiEvent const&)
 #[doc(alias = "non-virtual thunk toRBX::StarterGuiService::process(RBX::GuiEvent const&)")]
 #[doc(alias = "__ZThn96_N3RBX17StarterGuiService7processERKNS_8GuiEventE")]
 pub fn stub_5fc7a0() -> ! {

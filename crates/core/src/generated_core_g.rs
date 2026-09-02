@@ -1,5 +1,5 @@
 //! generated_core_g — 100 core stubs EA-sorted, next after generated_core_f.
-//! Source: `ida/export.json` filtered demangled for core namespaces (excludes Reflection, Instance, DataModel, Ogre, RakNet), sorted by EA, 100 stubs.
+//! Source: ida/export.json filtered demangled for core namespaces (excludes Reflection, Instance, DataModel, Ogre, RakNet), sorted by EA, 100 stubs.
 //! Sanitized: single quotes removed, boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr.
 
 // 0x50c78 — ___destroy_helper_block_82

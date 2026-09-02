@@ -422,7 +422,7 @@ pub fn stub_2cdd74() -> ! {
 }
 
 // 0x2cde88 — __GLOBAL__I_a_75
-// was: `global constructor keyed to'_a_75
+// was: global constructor keyed to'_a_75
 #[doc(alias = "global constructor keyed to_a_75")]
 #[doc(alias = "__GLOBAL__I_a_75")]
 pub fn stub_2cde88() -> ! {
@@ -438,7 +438,7 @@ pub fn stub_2ce130() -> ! {
 }
 
 // 0x2ce1fc — __GLOBAL__I_a_76
-// was: `global constructor keyed to'_a_76
+// was: global constructor keyed to'_a_76
 #[doc(alias = "global constructor keyed to_a_76")]
 #[doc(alias = "__GLOBAL__I_a_76")]
 pub fn stub_2ce1fc() -> ! {
@@ -533,7 +533,7 @@ pub fn stub_2cead8() -> ! {
 }
 
 // 0x2ceadc — __GLOBAL__I_a_77
-// was: `global constructor keyed to'_a_77
+// was: global constructor keyed to'_a_77
 #[doc(alias = "global constructor keyed to_a_77")]
 #[doc(alias = "__GLOBAL__I_a_77")]
 pub fn stub_2ceadc() -> ! {
@@ -566,7 +566,7 @@ pub fn stub_2cefe0() -> ! {
 
 // 0x2cefe4 — __ZThn32_N3RBX13AdvLuaDraggerD0Ev
 // type: void __fastcall(RBX::AdvLuaDragger *__hidden this)
-// was: `non-virtual thunk to'RBX::AdvLuaDragger::~AdvLuaDragger()
+// was: non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()
 #[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
 #[doc(alias = "__ZThn32_N3RBX13AdvLuaDraggerD0Ev")]
 pub fn stub_2cefe4() -> ! {
@@ -575,7 +575,7 @@ pub fn stub_2cefe4() -> ! {
 
 // 0x2cefec — __ZThn36_N3RBX13AdvLuaDraggerD0Ev
 // type: void __fastcall(RBX::AdvLuaDragger *__hidden this)
-// was: `non-virtual thunk to'RBX::AdvLuaDragger::~AdvLuaDragger()
+// was: non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()
 #[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
 #[doc(alias = "__ZThn36_N3RBX13AdvLuaDraggerD0Ev")]
 pub fn stub_2cefec() -> ! {
@@ -592,7 +592,7 @@ pub fn stub_2ceff4() -> ! {
 
 // 0x2cf168 — __ZThn32_N3RBX13AdvLuaDraggerD1Ev
 // type: void __fastcall(RBX::AdvLuaDragger *__hidden this)
-// was: `non-virtual thunk to'RBX::AdvLuaDragger::~AdvLuaDragger()
+// was: non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()
 #[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
 #[doc(alias = "__ZThn32_N3RBX13AdvLuaDraggerD1Ev")]
 pub fn stub_2cf168() -> ! {
@@ -601,7 +601,7 @@ pub fn stub_2cf168() -> ! {
 
 // 0x2cf170 — __ZThn36_N3RBX13AdvLuaDraggerD1Ev
 // type: void __fastcall(RBX::AdvLuaDragger *__hidden this)
-// was: `non-virtual thunk to'RBX::AdvLuaDragger::~AdvLuaDragger()
+// was: non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()
 #[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
 #[doc(alias = "__ZThn36_N3RBX13AdvLuaDraggerD1Ev")]
 pub fn stub_2cf170() -> ! {

@@ -2,7 +2,7 @@
 // Filter: Script|Lua|Yield|CodeGen|Luau (filtered exhausted) — EA-sorted asc gap filler distinct not yet in crates/script/src
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: +100 stubs | range 0x4eb2a4..0x4f0004 | EA-sorted asc distinct not yet in script (remaining 56310->56210, rbx_core::SharedPtr not boost)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -418,7 +418,7 @@ pub fn stub_4ed4f8() -> ! {
     todo!("0x4ed4f8 __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")
 }
 
-// 0x4ed5d8 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE — `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
+// 0x4ed5d8 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE — non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 pub fn stub_4ed5d8() -> ! {

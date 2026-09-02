@@ -11,9 +11,9 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0x2d2634 — __GLOBAL__I_a_79
 #[doc(alias = "global constructor keyed to_a_79")]
 #[doc(alias = "__GLOBAL__I_a_79")]
-// was: `global constructor keyed to'_a_79
+// was: global constructor keyed to'_a_79
 pub fn stub_2d2634() -> ! {
-    todo!("0x2d2634 `global constructor keyed to_a_79")
+    todo!("0x2d2634 global constructor keyed to_a_79")
 }
 
 // 0x2d2a94 — __ZN3RBX15AdvMoveToolBase12onMouseHoverERKNS_7UIEventE
@@ -82,9 +82,9 @@ pub fn stub_2d45b8() -> ! {
 // 0x2d470c — __ZThn4_N3RBX15AdvMoveToolBase8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::AdvMoveToolBase::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX15AdvMoveToolBase8render2dEPNS_5AdornE")]
-// was: `non-virtual thunk to'RBX::AdvMoveToolBase::render2d(RBX::Adorn *)
+// was: non-virtual thunk toRBX::AdvMoveToolBase::render2d(RBX::Adorn *)
 pub fn stub_2d470c() -> ! {
-    todo!("0x2d470c `non-virtual thunk toRBX::AdvMoveToolBase::render2d(RBX::Adorn *)")
+    todo!("0x2d470c non-virtual thunk toRBX::AdvMoveToolBase::render2d(RBX::Adorn *)")
 }
 
 // 0x2d4714 — __ZN3RBX15AdvMoveToolBase13render3dAdornEPNS_5AdornE
@@ -97,9 +97,9 @@ pub fn stub_2d4714() -> ! {
 // 0x2d4874 — __ZThn4_N3RBX15AdvMoveToolBase13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX15AdvMoveToolBase13render3dAdornEPNS_5AdornE")]
-// was: `non-virtual thunk to'RBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)
+// was: non-virtual thunk toRBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)
 pub fn stub_2d4874() -> ! {
-    todo!("0x2d4874 `non-virtual thunk toRBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)")
+    todo!("0x2d4874 non-virtual thunk toRBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x2d487c — __ZNK3RBX15AdvMoveToolBase13getOverHandleERKNS_7UIEventERN3G3D7Vector3ERNS_8NormalIdE
@@ -126,9 +126,9 @@ pub fn stub_2d4ac4() -> ! {
 // 0x2d504c — __ZThn4_N3RBX11AdvMoveTool8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::AdvMoveTool::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX11AdvMoveTool8render2dEPNS_5AdornE")]
-// was: `non-virtual thunk to'RBX::AdvMoveTool::render2d(RBX::Adorn *)
+// was: non-virtual thunk toRBX::AdvMoveTool::render2d(RBX::Adorn *)
 pub fn stub_2d504c() -> ! {
-    todo!("0x2d504c `non-virtual thunk toRBX::AdvMoveTool::render2d(RBX::Adorn *)")
+    todo!("0x2d504c non-virtual thunk toRBX::AdvMoveTool::render2d(RBX::Adorn *)")
 }
 
 // 0x2d5054 — __ZN3RBX11shared_fromINS_15AdvMoveToolBaseEEEN5boost10shared_ptrIT_EEPS4_
@@ -149,9 +149,9 @@ pub fn stub_2d51bc() -> ! {
 // 0x2d55f8 — __GLOBAL__I_a_80
 #[doc(alias = "global constructor keyed to_a_80")]
 #[doc(alias = "__GLOBAL__I_a_80")]
-// was: `global constructor keyed to'_a_80
+// was: global constructor keyed to'_a_80
 pub fn stub_2d55f8() -> ! {
-    todo!("0x2d55f8 `global constructor keyed to_a_80")
+    todo!("0x2d55f8 global constructor keyed to_a_80")
 }
 
 // 0x2d5890 — __ZN3RBX13AdvRotateTool8render2dEPNS_5AdornE
@@ -164,9 +164,9 @@ pub fn stub_2d5890() -> ! {
 // 0x2d5a28 — __ZThn4_N3RBX13AdvRotateTool8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX13AdvRotateTool8render2dEPNS_5AdornE")]
-// was: `non-virtual thunk to'RBX::AdvRotateTool::render2d(RBX::Adorn *)
+// was: non-virtual thunk toRBX::AdvRotateTool::render2d(RBX::Adorn *)
 pub fn stub_2d5a28() -> ! {
-    todo!("0x2d5a28 `non-virtual thunk toRBX::AdvRotateTool::render2d(RBX::Adorn *)")
+    todo!("0x2d5a28 non-virtual thunk toRBX::AdvRotateTool::render2d(RBX::Adorn *)")
 }
 
 // 0x2d5a30 — __ZN3RBX13AdvRotateTool13render3dAdornEPNS_5AdornE
@@ -179,9 +179,9 @@ pub fn stub_2d5a30() -> ! {
 // 0x2d5d98 — __ZThn4_N3RBX13AdvRotateTool13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX13AdvRotateTool13render3dAdornEPNS_5AdornE")]
-// was: `non-virtual thunk to'RBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)
+// was: non-virtual thunk toRBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)
 pub fn stub_2d5d98() -> ! {
-    todo!("0x2d5d98 `non-virtual thunk toRBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)")
+    todo!("0x2d5d98 non-virtual thunk toRBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x2d5da0 — __ZNK3RBX13AdvRotateTool13getOverHandleERKNS_7UIEventERN3G3D7Vector3ERNS_8NormalIdE
@@ -208,25 +208,25 @@ pub fn stub_2d5fd4() -> ! {
 // 0x2d6074 — __ZThn36_N3RBX13AdvRotateToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")]
 #[doc(alias = "__ZThn36_N3RBX13AdvRotateToolD1Ev")]
-// was: `non-virtual thunk to'RBX::AdvRotateTool::~AdvRotateTool()
+// was: non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()
 pub fn stub_2d6074() -> ! {
-    todo!("0x2d6074 `non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")
+    todo!("0x2d6074 non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")
 }
 
 // 0x2d607c — __ZThn36_N3RBX13AdvRotateToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")]
 #[doc(alias = "__ZThn36_N3RBX13AdvRotateToolD0Ev")]
-// was: `non-virtual thunk to'RBX::AdvRotateTool::~AdvRotateTool()
+// was: non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()
 pub fn stub_2d607c() -> ! {
-    todo!("0x2d607c `non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")
+    todo!("0x2d607c non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")
 }
 
 // 0x2d6120 — __GLOBAL__I_a_81
 #[doc(alias = "global constructor keyed to_a_81")]
 #[doc(alias = "__GLOBAL__I_a_81")]
-// was: `global constructor keyed to'_a_81
+// was: global constructor keyed to'_a_81
 pub fn stub_2d6120() -> ! {
-    todo!("0x2d6120 `global constructor keyed to_a_81")
+    todo!("0x2d6120 global constructor keyed to_a_81")
 }
 
 // 0x2d6390 — __ZN3RBX13AdvRunDragger8SnapInfo20updateSurfaceFromHitEv
@@ -358,9 +358,9 @@ pub fn stub_2d9d4c() -> ! {
 // 0x2d9d50 — __GLOBAL__I_a_82
 #[doc(alias = "global constructor keyed to_a_82")]
 #[doc(alias = "__GLOBAL__I_a_82")]
-// was: `global constructor keyed to'_a_82
+// was: global constructor keyed to'_a_82
 pub fn stub_2d9d50() -> ! {
-    todo!("0x2d9d50 `global constructor keyed to_a_82")
+    todo!("0x2d9d50 global constructor keyed to_a_82")
 }
 
 // 0x2da2d0 — __ZN3RBX12AxisToolBase12onMouseHoverERKNS_7UIEventE
@@ -422,9 +422,9 @@ pub fn stub_2dad94() -> ! {
 // 0x2daee8 — __ZThn4_N3RBX12AxisToolBase8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::AxisToolBase::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX12AxisToolBase8render2dEPNS_5AdornE")]
-// was: `non-virtual thunk to'RBX::AxisToolBase::render2d(RBX::Adorn *)
+// was: non-virtual thunk toRBX::AxisToolBase::render2d(RBX::Adorn *)
 pub fn stub_2daee8() -> ! {
-    todo!("0x2daee8 `non-virtual thunk toRBX::AxisToolBase::render2d(RBX::Adorn *)")
+    todo!("0x2daee8 non-virtual thunk toRBX::AxisToolBase::render2d(RBX::Adorn *)")
 }
 
 // 0x2daef0 — __ZN3RBX12AxisToolBase13render3dAdornEPNS_5AdornE
@@ -437,9 +437,9 @@ pub fn stub_2daef0() -> ! {
 // 0x2db050 — __ZThn4_N3RBX12AxisToolBase13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::AxisToolBase::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX12AxisToolBase13render3dAdornEPNS_5AdornE")]
-// was: `non-virtual thunk to'RBX::AxisToolBase::render3dAdorn(RBX::Adorn *)
+// was: non-virtual thunk toRBX::AxisToolBase::render3dAdorn(RBX::Adorn *)
 pub fn stub_2db050() -> ! {
-    todo!("0x2db050 `non-virtual thunk toRBX::AxisToolBase::render3dAdorn(RBX::Adorn *)")
+    todo!("0x2db050 non-virtual thunk toRBX::AxisToolBase::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x2db058 — __ZN3RBX11shared_fromINS_12AxisToolBaseEEEN5boost10shared_ptrIT_EEPS4_
@@ -460,17 +460,17 @@ pub fn stub_2db1c0() -> ! {
 // 0x2db2c4 — __GLOBAL__I_a_83
 #[doc(alias = "global constructor keyed to_a_83")]
 #[doc(alias = "__GLOBAL__I_a_83")]
-// was: `global constructor keyed to'_a_83
+// was: global constructor keyed to'_a_83
 pub fn stub_2db2c4() -> ! {
-    todo!("0x2db2c4 `global constructor keyed to_a_83")
+    todo!("0x2db2c4 global constructor keyed to_a_83")
 }
 
 // 0x2db534 — __GLOBAL__I_a_84
 #[doc(alias = "global constructor keyed to_a_84")]
 #[doc(alias = "__GLOBAL__I_a_84")]
-// was: `global constructor keyed to'_a_84
+// was: global constructor keyed to'_a_84
 pub fn stub_2db534() -> ! {
-    todo!("0x2db534 `global constructor keyed to_a_84")
+    todo!("0x2db534 global constructor keyed to_a_84")
 }
 
 // 0x2db8b0 — __ZN3RBX9CloneToolD0Ev
@@ -490,9 +490,9 @@ pub fn stub_2db950() -> ! {
 // 0x2db954 — __ZThn36_N3RBX9CloneToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::CloneTool::~CloneTool()")]
 #[doc(alias = "__ZThn36_N3RBX9CloneToolD0Ev")]
-// was: `non-virtual thunk to'RBX::CloneTool::~CloneTool()
+// was: non-virtual thunk toRBX::CloneTool::~CloneTool()
 pub fn stub_2db954() -> ! {
-    todo!("0x2db954 `non-virtual thunk toRBX::CloneTool::~CloneTool()")
+    todo!("0x2db954 non-virtual thunk toRBX::CloneTool::~CloneTool()")
 }
 
 // 0x2db95c — __ZN3RBX9CloneToolD2Ev
@@ -505,9 +505,9 @@ pub fn stub_2db95c() -> ! {
 // 0x2dba78 — __ZThn36_N3RBX9CloneToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::CloneTool::~CloneTool()")]
 #[doc(alias = "__ZThn36_N3RBX9CloneToolD1Ev")]
-// was: `non-virtual thunk to'RBX::CloneTool::~CloneTool()
+// was: non-virtual thunk toRBX::CloneTool::~CloneTool()
 pub fn stub_2dba78() -> ! {
-    todo!("0x2dba78 `non-virtual thunk toRBX::CloneTool::~CloneTool()")
+    todo!("0x2dba78 non-virtual thunk toRBX::CloneTool::~CloneTool()")
 }
 
 // 0x2dba80 — __ZN3RBX9CloneTool11onMouseIdleERKNS_7UIEventE
@@ -555,9 +555,9 @@ pub fn stub_2dc078() -> ! {
 // 0x2dc354 — __GLOBAL__I_a_85
 #[doc(alias = "global constructor keyed to_a_85")]
 #[doc(alias = "__GLOBAL__I_a_85")]
-// was: `global constructor keyed to'_a_85
+// was: global constructor keyed to'_a_85
 pub fn stub_2dc354() -> ! {
-    todo!("0x2dc354 `global constructor keyed to_a_85")
+    todo!("0x2dc354 global constructor keyed to_a_85")
 }
 
 // 0x2dc604 — __ZN3RBX7Dragger14computeExtentsERKSt6vectorIPNS_9PrimitiveESaIS3_EE

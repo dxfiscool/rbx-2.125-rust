@@ -2,7 +2,7 @@
 // Filter: EA-sorted asc next 150 not yet in datamodel (strict RBX::Instance|RBX::DataModel|RBX::Workspace 0 remaining, fallback gap filler)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 150 stubs | range 0x23e5dc..0x248104 | strict 10215 complete (0 remaining), datamodel distinct 29652->29802
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias where needed
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -102,7 +102,7 @@ pub fn stub_23ef20() -> ! {
 
 // 0x23f068 — __GLOBAL__I_a_43
 // type: int()
-// was: `global constructor keyed to'_a_43
+// was: global constructor keyed to'_a_43
 #[doc(alias = "global constructor keyed to_a_43")]
 pub fn stub_23f068() -> ! {
     todo!("0x23f068 global constructor keyed to_a_43")
@@ -256,7 +256,7 @@ pub fn stub_241108() -> ! {
 
 // 0x241214 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_15condition_errorEED1Ev
 // type: void __fastcall(_DWORD *)
-// was: `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::condition_error>::~error_info_injector()
+// was: non-virtual thunk toboost::exception_detail::error_info_injector<boost::condition_error>::~error_info_injector()
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::condition_error>::~error_info_injector()")]
 pub fn stub_241214() -> ! {
     todo!("0x241214 non-virtual thunk toboost::exception_detail::error_info_injector<boost::condition_error>::~error_info_injector()")
@@ -264,14 +264,14 @@ pub fn stub_241214() -> ! {
 
 // 0x241324 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_15condition_errorEEEED1Ev
 // type: void __fastcall(_DWORD *)
-// was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::~clone_impl()
+// was: non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::~clone_impl()
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::~clone_impl()")]
 pub fn stub_241324() -> ! {
     todo!("0x241324 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::~clone_impl()")
 }
 
 // 0x241430 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_15condition_errorEEEE5cloneEv
-// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::clone(void)const
+// was: virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::clone(void)const
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::clone(void)const")]
 pub fn stub_241430() -> ! {
     todo!("0x241430 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::clone(void)const")
@@ -501,7 +501,7 @@ pub fn stub_243304() -> ! {
 }
 
 // 0x2434dc — __GLOBAL__I_a_44
-// was: `global constructor keyed to'_a_44
+// was: global constructor keyed to'_a_44
 #[doc(alias = "global constructor keyed to_a_44")]
 pub fn stub_2434dc() -> ! {
     todo!("0x2434dc global constructor keyed to_a_44")
@@ -564,7 +564,7 @@ pub fn stub_243b84() -> ! {
 }
 
 // 0x243dd0 — __GLOBAL__I_a_45
-// was: `global constructor keyed to'_a_45
+// was: global constructor keyed to'_a_45
 #[doc(alias = "global constructor keyed to_a_45")]
 pub fn stub_243dd0() -> ! {
     todo!("0x243dd0 global constructor keyed to_a_45")
@@ -723,7 +723,7 @@ pub fn stub_244cb0() -> ! {
 }
 
 // 0x244cb4 — __GLOBAL__I_a_46
-// was: `global constructor keyed to'_a_46
+// was: global constructor keyed to'_a_46
 #[doc(alias = "global constructor keyed to_a_46")]
 pub fn stub_244cb4() -> ! {
     todo!("0x244cb4 global constructor keyed to_a_46")
@@ -759,7 +759,7 @@ pub fn stub_244dcc() -> ! {
 
 // 0x244de0 — __GLOBAL__I_a_47
 // type: int()
-// was: `global constructor keyed to'_a_47
+// was: global constructor keyed to'_a_47
 #[doc(alias = "global constructor keyed to_a_47")]
 pub fn stub_244de0() -> ! {
     todo!("0x244de0 global constructor keyed to_a_47")
@@ -815,7 +815,7 @@ pub fn stub_245544() -> ! {
 }
 
 // 0x245548 — __GLOBAL__I_a_48
-// was: `global constructor keyed to'_a_48
+// was: global constructor keyed to'_a_48
 #[doc(alias = "global constructor keyed to_a_48")]
 pub fn stub_245548() -> ! {
     todo!("0x245548 global constructor keyed to_a_48")
@@ -857,7 +857,7 @@ pub fn stub_245848() -> ! {
 }
 
 // 0x245940 — __GLOBAL__I_a_49
-// was: `global constructor keyed to'_a_49
+// was: global constructor keyed to'_a_49
 #[doc(alias = "global constructor keyed to_a_49")]
 pub fn stub_245940() -> ! {
     todo!("0x245940 global constructor keyed to_a_49")

@@ -2,7 +2,7 @@
 // Filter: Script|Lua (4456 filtered, 1759 remaining global-free before batch, 1659 after)
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: +100 stubs | range 0x355d60..0x436c10 EA-sorted asc next 100 Script|Lua not yet in any crate (global-free 1759-> 1659, rbx_core::SharedPtr not boost)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 

@@ -1,5 +1,5 @@
 //! generated_core_j — 100 core stubs EA-sorted, next after generated_core_i.
-//! Source: `ida/export.json` filtered where demangled/mangled contains "boost" or "rbx::signals", excluding Reflection/Instance/Ogre/RakNet/Network, sorted by EA, next 100 uncovered (lowest EA first).
+//! Source: ida/export.json filtered where demangled/mangled contains "boost" or "rbx::signals", excluding Reflection/Instance/Ogre/RakNet/Network, sorted by EA, next 100 uncovered (lowest EA first).
 //! Sanitized: single quotes removed, boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr.
 
 

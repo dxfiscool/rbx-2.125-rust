@@ -2,7 +2,7 @@
 // Filter: global gap filler EA-sorted asc distinct not yet in crates/datamodel/src
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 120 stubs | range 0x4b98bc..0x4bdcd0 EA-sorted ascending next uncovered (global gap filler)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias, boost::shared_ptr -> rbx_core::SharedPtr
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias, boost::shared_ptr -> rbx_core::SharedPtr
 // Shard: dm_wd_watchdog14 EA-sorted ascending next uncovered (120 global gap filler)
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]

@@ -236,7 +236,7 @@ pub fn stub_5d3070() -> ! {
 }
 
 // 0x5d3150 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-// demangled: `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
+// demangled: non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 pub fn stub_5d3150() -> ! {
     todo!("0x5d3150 __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")
@@ -387,7 +387,7 @@ pub fn stub_5d3768() -> ! {
 }
 
 // 0x5d3848 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-// demangled: `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
+// demangled: non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 pub fn stub_5d3848() -> ! {
     todo!("0x5d3848 __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")
@@ -602,7 +602,7 @@ pub fn stub_5d47a0() -> ! {
 }
 
 // 0x5d47b4 — __GLOBAL__I_a_229
-// demangled: `global constructor keyed to'_a_229
+// demangled: global constructor keyed to'_a_229
 #[doc(alias = "__GLOBAL__I_a_229")]
 pub fn stub_5d47b4() -> ! {
     todo!("0x5d47b4 __GLOBAL__I_a_229")
@@ -633,7 +633,7 @@ pub fn stub_5d511c() -> ! {
 }
 
 // 0x5d5120 — __ZThn36_N3RBX12MouseCommandD0Ev
-// demangled: `non-virtual thunk to'RBX::MouseCommand::~MouseCommand()
+// demangled: non-virtual thunk toRBX::MouseCommand::~MouseCommand()
 #[doc(alias = "__ZThn36_N3RBX12MouseCommandD0Ev")]
 pub fn stub_5d5120() -> ! {
     todo!("0x5d5120 __ZThn36_N3RBX12MouseCommandD0Ev")
@@ -648,7 +648,7 @@ pub fn stub_5d5128() -> ! {
 }
 
 // 0x5d5258 — __ZThn36_N3RBX12MouseCommandD1Ev
-// demangled: `non-virtual thunk to'RBX::MouseCommand::~MouseCommand()
+// demangled: non-virtual thunk toRBX::MouseCommand::~MouseCommand()
 #[doc(alias = "__ZThn36_N3RBX12MouseCommandD1Ev")]
 pub fn stub_5d5258() -> ! {
     todo!("0x5d5258 __ZThn36_N3RBX12MouseCommandD1Ev")

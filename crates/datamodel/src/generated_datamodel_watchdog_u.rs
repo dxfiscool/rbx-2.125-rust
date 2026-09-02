@@ -2,7 +2,7 @@
 // Filter: RBX::Instance|DataModel|Workspace (10215) complete — fallback global gap filler lowest uncovered EA asc not yet in datamodel
 // Source: ida/export.json (85545 funcs, base 0x4000)
 // Batch: 100 stubs | range 0x322b78..0x3480fc | datamodel distinct 33939->34039 global uncovered 51606->51506, lowest gap EA-sorted asc next 100 after watchdog_t (0x317378..0x322b38)
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias where needed
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and ' stripped from alias where needed
 // Shard: watchdog_u EA-sorted ascending next uncovered gap after watchdog_t (distinct check via export.json sorted EA, no overlap)
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
@@ -27,14 +27,14 @@ pub fn stub_0x322bdc() -> ! {
 
 // 0x322e00 — __GLOBAL__I_a_117
 #[doc(alias = "global constructor keyed to_a_117")]
-// was: `global constructor keyed to'_a_117
+// was: global constructor keyed to'_a_117
 pub fn stub_0x322e00() -> ! {
     todo!("0x322e00 global constructor keyed to_a_117")
 }
 
 // 0x322ef8 — __GLOBAL__I_a_118
 #[doc(alias = "global constructor keyed to_a_118")]
-// was: `global constructor keyed to'_a_118
+// was: global constructor keyed to'_a_118
 pub fn stub_0x322ef8() -> ! {
     todo!("0x322ef8 global constructor keyed to_a_118")
 }
@@ -48,7 +48,7 @@ pub fn stub_0x323028() -> ! {
 
 // 0x3234d4 — __GLOBAL__I_a_119
 #[doc(alias = "global constructor keyed to_a_119")]
-// was: `global constructor keyed to'_a_119
+// was: global constructor keyed to'_a_119
 pub fn stub_0x3234d4() -> ! {
     todo!("0x3234d4 global constructor keyed to_a_119")
 }
@@ -62,7 +62,7 @@ pub fn stub_0x323768() -> ! {
 
 // 0x323b78 — __GLOBAL__I_a_120
 #[doc(alias = "global constructor keyed to_a_120")]
-// was: `global constructor keyed to'_a_120
+// was: global constructor keyed to'_a_120
 pub fn stub_0x323b78() -> ! {
     todo!("0x323b78 global constructor keyed to_a_120")
 }
@@ -104,7 +104,7 @@ pub fn stub_0x323fdc() -> ! {
 
 // 0x323fe0 — __GLOBAL__I_a_121
 #[doc(alias = "global constructor keyed to_a_121")]
-// was: `global constructor keyed to'_a_121
+// was: global constructor keyed to'_a_121
 pub fn stub_0x323fe0() -> ! {
     todo!("0x323fe0 global constructor keyed to_a_121")
 }
@@ -229,7 +229,7 @@ pub fn stub_0x3246ec() -> ! {
 
 // 0x324710 — __GLOBAL__I_a_122
 #[doc(alias = "global constructor keyed to_a_122")]
-// was: `global constructor keyed to'_a_122
+// was: global constructor keyed to'_a_122
 pub fn stub_0x324710() -> ! {
     todo!("0x324710 global constructor keyed to_a_122")
 }
@@ -314,7 +314,7 @@ pub fn stub_0x3250bc() -> ! {
 
 // 0x3251ac — __GLOBAL__I_a_123
 #[doc(alias = "global constructor keyed to_a_123")]
-// was: `global constructor keyed to'_a_123
+// was: global constructor keyed to'_a_123
 pub fn stub_0x3251ac() -> ! {
     todo!("0x3251ac global constructor keyed to_a_123")
 }
@@ -424,7 +424,7 @@ pub fn stub_0x3260d8() -> ! {
 
 // 0x326108 — __GLOBAL__I_a_124
 #[doc(alias = "global constructor keyed to_a_124")]
-// was: `global constructor keyed to'_a_124
+// was: global constructor keyed to'_a_124
 pub fn stub_0x326108() -> ! {
     todo!("0x326108 global constructor keyed to_a_124")
 }
@@ -493,7 +493,7 @@ pub fn stub_0x326bfc() -> ! {
 
 // 0x326d8c — __GLOBAL__I_a_125
 #[doc(alias = "global constructor keyed to_a_125")]
-// was: `global constructor keyed to'_a_125
+// was: global constructor keyed to'_a_125
 pub fn stub_0x326d8c() -> ! {
     todo!("0x326d8c global constructor keyed to_a_125")
 }
@@ -529,7 +529,7 @@ pub fn stub_0x34581c() -> ! {
 // 0x345950 — __ZN12_GLOBAL__N_112normalizeUrlERSs
 // type: _DWORD __fastcall(_anonymous_namespace_ *__hidden this, std::string *)
 #[doc(alias = "anonymous namespace::normalizeUrl(std::string &)")]
-// was: `anonymous namespace'::normalizeUrl(std::string &)
+// was: anonymous namespace'::normalizeUrl(std::string &)
 pub fn stub_0x345950() -> ! {
     todo!("0x345950 anonymous namespace::normalizeUrl(std::string &)")
 }

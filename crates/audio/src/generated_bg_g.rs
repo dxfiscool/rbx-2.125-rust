@@ -372,7 +372,7 @@ pub fn stub_26b150() -> ! {
 }
 
 // 0x26b1f4 — __GLOBAL__I_a_62
-// demangled: `global constructor keyed to'_a_62
+// demangled: global constructor keyed to'_a_62
 #[doc(alias = "global constructor keyed to_a_62")]
 #[doc(alias = "__GLOBAL__I_a_62")]
 pub fn stub_26b1f4() -> ! {

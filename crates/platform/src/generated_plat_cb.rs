@@ -48,7 +48,7 @@ pub fn stub_0x3e27e8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Pants::~Pants()")]
 #[doc(alias = "__ZThn32_N3RBX5PantsD1Ev")]
 pub fn stub_0x3e2800() -> ! {
-    todo!("0x3e2800 `non-virtual thunk to'RBX::Pants::~Pants()")
+    todo!("0x3e2800 non-virtual thunk toRBX::Pants::~Pants()")
 }
 
 // 0x3e284c — __ZThn32_N3RBX5PantsD0Ev
@@ -56,7 +56,7 @@ pub fn stub_0x3e2800() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Pants::~Pants()")]
 #[doc(alias = "__ZThn32_N3RBX5PantsD0Ev")]
 pub fn stub_0x3e284c() -> ! {
-    todo!("0x3e284c `non-virtual thunk to'RBX::Pants::~Pants()")
+    todo!("0x3e284c non-virtual thunk toRBX::Pants::~Pants()")
 }
 
 // 0x3e2930 — __ZThn32_NK3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE12getClassNameEv
@@ -72,7 +72,7 @@ pub fn stub_0x3e2930() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Pants::~Pants()")]
 #[doc(alias = "__ZThn36_N3RBX5PantsD1Ev")]
 pub fn stub_0x3e2940() -> ! {
-    todo!("0x3e2940 `non-virtual thunk to'RBX::Pants::~Pants()")
+    todo!("0x3e2940 non-virtual thunk toRBX::Pants::~Pants()")
 }
 
 // 0x3e298c — __ZThn36_N3RBX5PantsD0Ev
@@ -80,7 +80,7 @@ pub fn stub_0x3e2940() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Pants::~Pants()")]
 #[doc(alias = "__ZThn36_N3RBX5PantsD0Ev")]
 pub fn stub_0x3e298c() -> ! {
-    todo!("0x3e298c `non-virtual thunk to'RBX::Pants::~Pants()")
+    todo!("0x3e298c non-virtual thunk toRBX::Pants::~Pants()")
 }
 
 // 0x3e2a70 — __ZThn92_N3RBX5PantsD1Ev
@@ -88,7 +88,7 @@ pub fn stub_0x3e298c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Pants::~Pants()")]
 #[doc(alias = "__ZThn92_N3RBX5PantsD1Ev")]
 pub fn stub_0x3e2a70() -> ! {
-    todo!("0x3e2a70 `non-virtual thunk to'RBX::Pants::~Pants()")
+    todo!("0x3e2a70 non-virtual thunk toRBX::Pants::~Pants()")
 }
 
 // 0x3e2abc — __ZThn92_N3RBX5PantsD0Ev
@@ -96,7 +96,7 @@ pub fn stub_0x3e2a70() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Pants::~Pants()")]
 #[doc(alias = "__ZThn92_N3RBX5PantsD0Ev")]
 pub fn stub_0x3e2abc() -> ! {
-    todo!("0x3e2abc `non-virtual thunk to'RBX::Pants::~Pants()")
+    todo!("0x3e2abc non-virtual thunk toRBX::Pants::~Pants()")
 }
 
 // 0x3e2ba0 — __ZN3RBX14FactoryProductINS_5PantsENS_8ClothingELZNS_6sPantsEENS_8InstanceEE17static_getCreatorEv

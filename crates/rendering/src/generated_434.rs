@@ -713,7 +713,7 @@ pub fn stub_67d788() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TimerService::onHeartbeat(RBX::Heartbeat const&)")]
 // was: __ZThn96_N3RBX12TimerService11onHeartbeatERKNS_9HeartbeatE
 pub fn stub_67d8f4() -> ! {
-    todo!("0x67d8f4 `non-virtual thunk to'RBX::TimerService::onHeartbeat(RBX::Heartbeat const&)")
+    todo!("0x67d8f4 non-virtual thunk toRBX::TimerService::onHeartbeat(RBX::Heartbeat const&)")
 }
 
 // 0x67d8fc — __ZN5boost9function0IvEaSERKS1_
@@ -766,7 +766,7 @@ pub fn stub_67dc10() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TimerService::~TimerService()")]
 // was: __ZThn32_N3RBX12TimerServiceD1Ev
 pub fn stub_67dc20() -> ! {
-    todo!("0x67dc20 `non-virtual thunk to'RBX::TimerService::~TimerService()")
+    todo!("0x67dc20 non-virtual thunk toRBX::TimerService::~TimerService()")
 }
 
 // 0x67dd2c — __ZThn32_N3RBX12TimerServiceD0Ev
@@ -775,7 +775,7 @@ pub fn stub_67dc20() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TimerService::~TimerService()")]
 // was: __ZThn32_N3RBX12TimerServiceD0Ev
 pub fn stub_67dd2c() -> ! {
-    todo!("0x67dd2c `non-virtual thunk to'RBX::TimerService::~TimerService()")
+    todo!("0x67dd2c non-virtual thunk toRBX::TimerService::~TimerService()")
 }
 
 // 0x67de4c — __ZThn32_NK3RBX14FactoryProductINS_12TimerServiceENS_8InstanceELZNS_13sTimerServiceEES2_E12getClassNameEv
@@ -792,7 +792,7 @@ pub fn stub_67de4c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TimerService::~TimerService()")]
 // was: __ZThn36_N3RBX12TimerServiceD1Ev
 pub fn stub_67de5c() -> ! {
-    todo!("0x67de5c `non-virtual thunk to'RBX::TimerService::~TimerService()")
+    todo!("0x67de5c non-virtual thunk toRBX::TimerService::~TimerService()")
 }
 
 // 0x67df68 — __ZThn36_N3RBX12TimerServiceD0Ev
@@ -801,7 +801,7 @@ pub fn stub_67de5c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TimerService::~TimerService()")]
 // was: __ZThn36_N3RBX12TimerServiceD0Ev
 pub fn stub_67df68() -> ! {
-    todo!("0x67df68 `non-virtual thunk to'RBX::TimerService::~TimerService()")
+    todo!("0x67df68 non-virtual thunk toRBX::TimerService::~TimerService()")
 }
 
 // 0x67e088 — __ZThn96_N3RBX12TimerServiceD1Ev
@@ -810,7 +810,7 @@ pub fn stub_67df68() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TimerService::~TimerService()")]
 // was: __ZThn96_N3RBX12TimerServiceD1Ev
 pub fn stub_67e088() -> ! {
-    todo!("0x67e088 `non-virtual thunk to'RBX::TimerService::~TimerService()")
+    todo!("0x67e088 non-virtual thunk toRBX::TimerService::~TimerService()")
 }
 
 // 0x67e194 — __ZThn96_N3RBX12TimerServiceD0Ev
@@ -819,7 +819,7 @@ pub fn stub_67e088() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TimerService::~TimerService()")]
 // was: __ZThn96_N3RBX12TimerServiceD0Ev
 pub fn stub_67e194() -> ! {
-    todo!("0x67e194 `non-virtual thunk to'RBX::TimerService::~TimerService()")
+    todo!("0x67e194 non-virtual thunk toRBX::TimerService::~TimerService()")
 }
 
 // 0x67e2b4 — __ZNSt4listIN3RBX12TimerService4ItemESaIS2_EE14_M_create_nodeERKS2_
