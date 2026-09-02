@@ -425,3 +425,4 @@ pub mod generated_network_next102;
 pub mod generated_network_next103;
 pub mod generated_net_wdog_B_1788391139;
 pub mod generated_network_next104;
+pub mod generated_network_next105;
