@@ -627,4 +627,4 @@ pub mod generated_dm_wdog8J;
 pub mod generated_dm_wd3;
 pub mod generated_dm_wd2;
 pub mod generated_datamodel_shard_296;
-pub mod generated_datamodel_shard_297;
+pub mod generated_dm_wd_watchdog_a;
