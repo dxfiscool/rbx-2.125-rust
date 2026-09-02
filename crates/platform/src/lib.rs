@@ -377,6 +377,7 @@ pub mod generated_plat_wd_watchdog23;
 pub mod generated_plat_wdcron_C;
 pub mod generated_plat_wd_watchdog24;
 pub mod generated_plat_wdog_B;
+pub mod generated_plat_wdog_B_1788391168;
 pub mod generated_plat_wdog_C;
 pub mod generated_plat_watchdog_1788362712;
 pub mod generated_plat_watchdog_1788362714;
