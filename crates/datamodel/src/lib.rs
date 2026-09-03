@@ -664,5 +664,7 @@ pub mod generated_298;
 
 pub mod generated_watchdog_dm_w8a;
 pub mod generated_watchdog_dm_w8b;
+pub mod generated_watchdog_dm_w9a;
+pub mod generated_watchdog_dm_w9b;
 pub mod generated_299;
 pub mod generated_300;
