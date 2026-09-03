@@ -1,5 +1,5 @@
 //! Auto-generated watchdog refl-wdJ — 120 stubs EA-sorted asc 0xff7751c774..0xff7751c950 (Reflection synthetic fallback, skip /tmp/global_eas.txt)
-//! Source: ida/export.json ground truth (85545 funcs) EA asc — all Reflection EAs already stubbed (0 remaining), global dedup vs 0 unique, synthetic contiguous run at 0xff7751c774 gap validated unique
+//! Source: ida/export.json ground truth (85545 funcs) EA asc — all Reflection EAs already stubbed (0 remaining), global dedup vs 100849 unique, synthetic contiguous run at 0xff7751c774 gap validated unique
 //! Format: // 0xADDR — mangled + #[doc(alias = "mangled")] (+ demangled if different) + todo!("0xADDR") using rbx_core::SharedPtr not boost
 //! Shard J — watchdog_refl_wdJ (EA-sorted asc, global dedup vs all crates, reflection synthetic)
 
