@@ -625,6 +625,7 @@ pub mod generated_watchdog_rendering_w13a;
 pub mod generated_watchdog_rendering_w14b;
 pub mod generated_watchdog_rendering_w15;
 pub mod generated_watchdog_rendering_w15b;
+pub mod generated_watchdog_rendering_w15d2;
 pub mod generated_493;
 pub mod generated_494;
 pub mod generated_495;
