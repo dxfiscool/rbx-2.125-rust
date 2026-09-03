@@ -36,3 +36,4 @@ pub mod generated_watchdog_coreA;
 pub mod generated_core_bg8;
 pub mod generated_core_bg9;
 pub mod generated_gap_bg10;
+pub mod generated_core_bg11;
