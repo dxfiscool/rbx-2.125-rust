@@ -819,26 +819,26 @@ pub fn stub_0xfb20() -> ! {
 
 // 0xfb34 — __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0xfb34() -> ! {
-    todo!("0xfb34 __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0xfb34() {
+    // IDA 0xfb34: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xfb3c — __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0xfb3c() -> ! {
-    todo!("0xfb3c __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0xfb3c() {
+    // IDA 0xfb3c: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xfb54 — __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0xfb54() -> ! {
-    todo!("0xfb54 __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0xfb54() {
+    // IDA 0xfb54: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xfb5c — __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0xfb5c() -> ! {
-    todo!("0xfb5c __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0xfb5c() {
+    // IDA 0xfb5c: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x110ac — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEE13setIndexValueEPNS0_13DescribedBaseEm
@@ -2390,8 +2390,8 @@ pub fn stub_0x3d808() -> ! {
 // 0x3d81c — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 // was: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x3d81c() -> ! {
-    todo!("0x3d81c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x3d81c() {
+    // IDA 0x3d81c: __ZThn thunk: this-adjust + tail-call to base destructor in place (D1 base dtor). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3d830 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1Iv10RobloxViewPKN3RBX10Reflection18PropertyDescriptorEEENS0_5list2INS0_5valueIPS4_EENS_3argILi1EEEEEEclIS9_EEvRT_
@@ -2453,8 +2453,8 @@ pub fn stub_0x46de8() -> ! {
 // 0x46df8 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP13CharacterMoveEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 // was: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x46df8() -> ! {
-    todo!("0x46df8 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x46df8() {
+    // IDA 0x46df8: __ZThn thunk: this-adjust + tail-call to base destructor in place (D1 base dtor). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x46e08 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP13CharacterMoveEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_ED1Ev
@@ -2488,8 +2488,8 @@ pub fn stub_0x4a148() -> ! {
 // 0x4a150 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost8functionIS8_EELi1ES8_E4callES7_
 // was: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x4a150() -> ! {
-    todo!("0x4a150 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x4a150() {
+    // IDA 0x4a150: __ZThn thunk: this-adjust + tail-call to base destructor in place (D1 base dtor). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4a158 — __ZNK5boost9function1IvPKN3RBX10Reflection18PropertyDescriptorEEclES5_
@@ -2551,8 +2551,8 @@ pub fn stub_0x4f640() -> ! {
 // 0x4f650 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP10JumpButtonEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 // was: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x4f650() -> ! {
-    todo!("0x4f650 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x4f650() {
+    // IDA 0x4f650: __ZThn thunk: this-adjust + tail-call to base destructor in place (D1 base dtor). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4f660 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP10JumpButtonEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_ED1Ev
@@ -2638,26 +2638,26 @@ pub fn stub_0x258c7c() -> ! {
 
 // 0x258d1c — __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x258d1c() -> ! {
-    todo!("0x258d1c __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x258d1c() {
+    // IDA 0x258d1c: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x258d24 — __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x258d24() -> ! {
-    todo!("0x258d24 __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x258d24() {
+    // IDA 0x258d24: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x258dc8 — __ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x258dc8() -> ! {
-    todo!("0x258dc8 __ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x258dc8() {
+    // IDA 0x258dc8: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x258dd0 — __ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x258dd0() -> ! {
-    todo!("0x258dd0 __ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x258dd0() {
+    // IDA 0x258dd0: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x259984 — __ZNK3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -2798,38 +2798,38 @@ pub fn stub_0x25d6b0() -> ! {
 
 // 0x25d750 — __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25d750() -> ! {
-    todo!("0x25d750 __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25d750() {
+    // IDA 0x25d750: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x25d758 — __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25d758() -> ! {
-    todo!("0x25d758 __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25d758() {
+    // IDA 0x25d758: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x25d7fc — __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25d7fc() -> ! {
-    todo!("0x25d7fc __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25d7fc() {
+    // IDA 0x25d7fc: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x25d804 — __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25d804() -> ! {
-    todo!("0x25d804 __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25d804() {
+    // IDA 0x25d804: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x25d8a8 — __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25d8a8() -> ! {
-    todo!("0x25d8a8 __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25d8a8() {
+    // IDA 0x25d8a8: __ZThn thunk (D1 base dtor): `this -= 92`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x25d8b0 — __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25d8b0() -> ! {
-    todo!("0x25d8b0 __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25d8b0() {
+    // IDA 0x25d8b0: __ZThn thunk (D0 deleting dtor): `this -= 92`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x25d954 — __ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -2846,38 +2846,38 @@ pub fn stub_0x25d958() -> ! {
 
 // 0x25d9f8 — __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25d9f8() -> ! {
-    todo!("0x25d9f8 __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25d9f8() {
+    // IDA 0x25d9f8: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x25da00 — __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25da00() -> ! {
-    todo!("0x25da00 __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25da00() {
+    // IDA 0x25da00: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x25daa4 — __ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25daa4() -> ! {
-    todo!("0x25daa4 __ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25daa4() {
+    // IDA 0x25daa4: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x25daac — __ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25daac() -> ! {
-    todo!("0x25daac __ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25daac() {
+    // IDA 0x25daac: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x25db50 — __ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25db50() -> ! {
-    todo!("0x25db50 __ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25db50() {
+    // IDA 0x25db50: __ZThn thunk (D1 base dtor): `this -= 92`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x25db58 — __ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25db58() -> ! {
-    todo!("0x25db58 __ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25db58() {
+    // IDA 0x25db58: __ZThn thunk (D0 deleting dtor): `this -= 92`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x25dbfc — __ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -2894,26 +2894,26 @@ pub fn stub_0x25dc00() -> ! {
 
 // 0x25dca0 — __ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25dca0() -> ! {
-    todo!("0x25dca0 __ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25dca0() {
+    // IDA 0x25dca0: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x25dca8 — __ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25dca8() -> ! {
-    todo!("0x25dca8 __ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25dca8() {
+    // IDA 0x25dca8: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x25dd4c — __ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25dd4c() -> ! {
-    todo!("0x25dd4c __ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25dd4c() {
+    // IDA 0x25dd4c: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x25dd54 — __ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25dd54() -> ! {
-    todo!("0x25dd54 __ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25dd54() {
+    // IDA 0x25dd54: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x25ddf8 — __ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -2930,26 +2930,26 @@ pub fn stub_0x25ddfc() -> ! {
 
 // 0x25de9c — __ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25de9c() -> ! {
-    todo!("0x25de9c __ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25de9c() {
+    // IDA 0x25de9c: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x25dea4 — __ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25dea4() -> ! {
-    todo!("0x25dea4 __ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25dea4() {
+    // IDA 0x25dea4: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x25df48 — __ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25df48() -> ! {
-    todo!("0x25df48 __ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25df48() {
+    // IDA 0x25df48: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x25df50 — __ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25df50() -> ! {
-    todo!("0x25df50 __ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25df50() {
+    // IDA 0x25df50: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x25dff4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -5167,40 +5167,32 @@ pub fn stub_0x26a890() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x26a930() -> ! {
-    todo!(
-        "0x26a930 __ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x26a930() {
+    // IDA 0x26a930: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x26a938 — __ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x26a938() -> ! {
-    todo!(
-        "0x26a938 __ZThn32_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x26a938() {
+    // IDA 0x26a938: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x26a9dc — __ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x26a9dc() -> ! {
-    todo!(
-        "0x26a9dc __ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x26a9dc() {
+    // IDA 0x26a9dc: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x26a9e4 — __ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x26a9e4() -> ! {
-    todo!(
-        "0x26a9e4 __ZThn36_N3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x26a9e4() {
+    // IDA 0x26a9e4: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x26aa88 — __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -5237,40 +5229,32 @@ pub fn stub_0x26aba8() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x26ac48() -> ! {
-    todo!(
-        "0x26ac48 __ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x26ac48() {
+    // IDA 0x26ac48: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x26ac50 — __ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x26ac50() -> ! {
-    todo!(
-        "0x26ac50 __ZThn32_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x26ac50() {
+    // IDA 0x26ac50: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x26acf4 — __ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x26acf4() -> ! {
-    todo!(
-        "0x26acf4 __ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x26acf4() {
+    // IDA 0x26acf4: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x26acfc — __ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x26acfc() -> ! {
-    todo!(
-        "0x26acfc __ZThn36_N3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x26acfc() {
+    // IDA 0x26acfc: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x26aff8 — __ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
@@ -5297,40 +5281,32 @@ pub fn stub_0x26affc() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x26b09c() -> ! {
-    todo!(
-        "0x26b09c __ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x26b09c() {
+    // IDA 0x26b09c: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x26b0a4 — __ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x26b0a4() -> ! {
-    todo!(
-        "0x26b0a4 __ZThn32_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x26b0a4() {
+    // IDA 0x26b0a4: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x26b148 — __ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x26b148() -> ! {
-    todo!(
-        "0x26b148 __ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x26b148() {
+    // IDA 0x26b148: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x26b150 — __ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x26b150() -> ! {
-    todo!(
-        "0x26b150 __ZThn36_N3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x26b150() {
+    // IDA 0x26b150: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x26b55c — __ZNK3RBX3Lua12LuaArguments9getObjectEiRN5boost10shared_ptrINS_10Reflection13DescribedBaseEEE
@@ -6478,40 +6454,32 @@ pub fn stub_0x286d54() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x286df4() -> ! {
-    todo!(
-        "0x286df4 __ZThn32_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x286df4() {
+    // IDA 0x286df4: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x286dfc — __ZThn32_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x286dfc() -> ! {
-    todo!(
-        "0x286dfc __ZThn32_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x286dfc() {
+    // IDA 0x286dfc: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x286ea0 — __ZThn36_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x286ea0() -> ! {
-    todo!(
-        "0x286ea0 __ZThn36_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x286ea0() {
+    // IDA 0x286ea0: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x286ea8 — __ZThn36_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x286ea8() -> ! {
-    todo!(
-        "0x286ea8 __ZThn36_N3RBX10Reflection9DescribedINS_11LuaSettingsELZNS_12sLuaSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x286ea8() {
+    // IDA 0x286ea8: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x286f4c — __ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_11LuaSettingsEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -7093,40 +7061,32 @@ pub fn stub_0x28f434() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_20RuntimeScriptServiceELZNS_21sRuntimeScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x28f4d4() -> ! {
-    todo!(
-        "0x28f4d4 __ZThn32_N3RBX10Reflection9DescribedINS_20RuntimeScriptServiceELZNS_21sRuntimeScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x28f4d4() {
+    // IDA 0x28f4d4: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x28f4dc — __ZThn32_N3RBX10Reflection9DescribedINS_20RuntimeScriptServiceELZNS_21sRuntimeScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_20RuntimeScriptServiceELZNS_21sRuntimeScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x28f4dc() -> ! {
-    todo!(
-        "0x28f4dc __ZThn32_N3RBX10Reflection9DescribedINS_20RuntimeScriptServiceELZNS_21sRuntimeScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x28f4dc() {
+    // IDA 0x28f4dc: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x28f580 — __ZThn36_N3RBX10Reflection9DescribedINS_20RuntimeScriptServiceELZNS_21sRuntimeScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_20RuntimeScriptServiceELZNS_21sRuntimeScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x28f580() -> ! {
-    todo!(
-        "0x28f580 __ZThn36_N3RBX10Reflection9DescribedINS_20RuntimeScriptServiceELZNS_21sRuntimeScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x28f580() {
+    // IDA 0x28f580: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x28f588 — __ZThn36_N3RBX10Reflection9DescribedINS_20RuntimeScriptServiceELZNS_21sRuntimeScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_20RuntimeScriptServiceELZNS_21sRuntimeScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x28f588() -> ! {
-    todo!(
-        "0x28f588 __ZThn36_N3RBX10Reflection9DescribedINS_20RuntimeScriptServiceELZNS_21sRuntimeScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x28f588() {
+    // IDA 0x28f588: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x28f6f4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_20RuntimeScriptServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -7164,40 +7124,32 @@ pub fn stub_0x2929e8() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11LocalScriptELZNS_12sLocalScriptEENS_14FactoryProductIS2_NS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x292a88() -> ! {
-    todo!(
-        "0x292a88 __ZThn32_N3RBX10Reflection9DescribedINS_11LocalScriptELZNS_12sLocalScriptEENS_14FactoryProductIS2_NS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x292a88() {
+    // IDA 0x292a88: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x292a90 — __ZThn32_N3RBX10Reflection9DescribedINS_11LocalScriptELZNS_12sLocalScriptEENS_14FactoryProductIS2_NS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11LocalScriptELZNS_12sLocalScriptEENS_14FactoryProductIS2_NS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x292a90() -> ! {
-    todo!(
-        "0x292a90 __ZThn32_N3RBX10Reflection9DescribedINS_11LocalScriptELZNS_12sLocalScriptEENS_14FactoryProductIS2_NS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x292a90() {
+    // IDA 0x292a90: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x292b34 — __ZThn36_N3RBX10Reflection9DescribedINS_11LocalScriptELZNS_12sLocalScriptEENS_14FactoryProductIS2_NS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11LocalScriptELZNS_12sLocalScriptEENS_14FactoryProductIS2_NS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x292b34() -> ! {
-    todo!(
-        "0x292b34 __ZThn36_N3RBX10Reflection9DescribedINS_11LocalScriptELZNS_12sLocalScriptEENS_14FactoryProductIS2_NS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x292b34() {
+    // IDA 0x292b34: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x292b3c — __ZThn36_N3RBX10Reflection9DescribedINS_11LocalScriptELZNS_12sLocalScriptEENS_14FactoryProductIS2_NS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11LocalScriptELZNS_12sLocalScriptEENS_14FactoryProductIS2_NS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x292b3c() -> ! {
-    todo!(
-        "0x292b3c __ZThn36_N3RBX10Reflection9DescribedINS_11LocalScriptELZNS_12sLocalScriptEENS_14FactoryProductIS2_NS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x292b3c() {
+    // IDA 0x292b3c: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x292be0 — __ZN3RBX10Reflection9DescribedINS_6ScriptELZNS_7sScriptEENS_14FactoryProductIS2_NS_10BaseScriptELZNS_7sScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -7224,40 +7176,32 @@ pub fn stub_0x292be4() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_6ScriptELZNS_7sScriptEENS_14FactoryProductIS2_NS_10BaseScriptELZNS_7sScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x292c84() -> ! {
-    todo!(
-        "0x292c84 __ZThn32_N3RBX10Reflection9DescribedINS_6ScriptELZNS_7sScriptEENS_14FactoryProductIS2_NS_10BaseScriptELZNS_7sScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x292c84() {
+    // IDA 0x292c84: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x292c8c — __ZThn32_N3RBX10Reflection9DescribedINS_6ScriptELZNS_7sScriptEENS_14FactoryProductIS2_NS_10BaseScriptELZNS_7sScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_6ScriptELZNS_7sScriptEENS_14FactoryProductIS2_NS_10BaseScriptELZNS_7sScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x292c8c() -> ! {
-    todo!(
-        "0x292c8c __ZThn32_N3RBX10Reflection9DescribedINS_6ScriptELZNS_7sScriptEENS_14FactoryProductIS2_NS_10BaseScriptELZNS_7sScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x292c8c() {
+    // IDA 0x292c8c: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x292d30 — __ZThn36_N3RBX10Reflection9DescribedINS_6ScriptELZNS_7sScriptEENS_14FactoryProductIS2_NS_10BaseScriptELZNS_7sScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_6ScriptELZNS_7sScriptEENS_14FactoryProductIS2_NS_10BaseScriptELZNS_7sScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x292d30() -> ! {
-    todo!(
-        "0x292d30 __ZThn36_N3RBX10Reflection9DescribedINS_6ScriptELZNS_7sScriptEENS_14FactoryProductIS2_NS_10BaseScriptELZNS_7sScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x292d30() {
+    // IDA 0x292d30: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x292d38 — __ZThn36_N3RBX10Reflection9DescribedINS_6ScriptELZNS_7sScriptEENS_14FactoryProductIS2_NS_10BaseScriptELZNS_7sScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_6ScriptELZNS_7sScriptEENS_14FactoryProductIS2_NS_10BaseScriptELZNS_7sScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x292d38() -> ! {
-    todo!(
-        "0x292d38 __ZThn36_N3RBX10Reflection9DescribedINS_6ScriptELZNS_7sScriptEENS_14FactoryProductIS2_NS_10BaseScriptELZNS_7sScriptEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x292d38() {
+    // IDA 0x292d38: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x292ddc — __ZN3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -7284,40 +7228,32 @@ pub fn stub_0x292de0() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x292e80() -> ! {
-    todo!(
-        "0x292e80 __ZThn32_N3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x292e80() {
+    // IDA 0x292e80: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x292e88 — __ZThn32_N3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x292e88() -> ! {
-    todo!(
-        "0x292e88 __ZThn32_N3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x292e88() {
+    // IDA 0x292e88: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x292f2c — __ZThn36_N3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x292f2c() -> ! {
-    todo!(
-        "0x292f2c __ZThn36_N3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x292f2c() {
+    // IDA 0x292f2c: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x292f34 — __ZThn36_N3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x292f34() -> ! {
-    todo!(
-        "0x292f34 __ZThn36_N3RBX10Reflection9DescribedINS_10BaseScriptELZNS_11sBaseScriptEENS_17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x292f34() {
+    // IDA 0x292f34: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x292fd8 — __ZN3RBX10Reflection13BoundFuncDescINS_6ScriptEFSsvELi0EEC2EMS2_FSsvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -8038,40 +7974,32 @@ pub fn stub_0x2a8418() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev"
 )]
-pub fn stub_0x2a84b8() -> ! {
-    todo!(
-        "0x2a84b8 __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev"
-    )
+pub fn stub_0x2a84b8() {
+    // IDA 0x2a84b8: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2a84c0 — __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev"
 )]
-pub fn stub_0x2a84c0() -> ! {
-    todo!(
-        "0x2a84c0 __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev"
-    )
+pub fn stub_0x2a84c0() {
+    // IDA 0x2a84c0: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2a8564 — __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev"
 )]
-pub fn stub_0x2a8564() -> ! {
-    todo!(
-        "0x2a8564 __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev"
-    )
+pub fn stub_0x2a8564() {
+    // IDA 0x2a8564: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2a856c — __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev"
 )]
-pub fn stub_0x2a856c() -> ! {
-    todo!(
-        "0x2a856c __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev"
-    )
+pub fn stub_0x2a856c() {
+    // IDA 0x2a856c: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2a86d8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9Scripting13DebuggerWatchES7_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -8119,40 +8047,32 @@ pub fn stub_0x2a9c58() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev"
 )]
-pub fn stub_0x2a9cf8() -> ! {
-    todo!(
-        "0x2a9cf8 __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev"
-    )
+pub fn stub_0x2a9cf8() {
+    // IDA 0x2a9cf8: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2a9d00 — __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev"
 )]
-pub fn stub_0x2a9d00() -> ! {
-    todo!(
-        "0x2a9d00 __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev"
-    )
+pub fn stub_0x2a9d00() {
+    // IDA 0x2a9d00: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2a9da4 — __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev"
 )]
-pub fn stub_0x2a9da4() -> ! {
-    todo!(
-        "0x2a9da4 __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev"
-    )
+pub fn stub_0x2a9da4() {
+    // IDA 0x2a9da4: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2a9dac — __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev"
 )]
-pub fn stub_0x2a9dac() -> ! {
-    todo!(
-        "0x2a9dac __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev"
-    )
+pub fn stub_0x2a9dac() {
+    // IDA 0x2a9dac: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2a9f18 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9Scripting14ScriptDebuggerES7_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -8310,20 +8230,16 @@ pub fn stub_0x2b10d0() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5Stats12StatsServiceELZNS2_6sStatsEENS_17NonFactoryProductINS_8InstanceELZNS2_6sStatsEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev"
 )]
-pub fn stub_0x2b1170() -> ! {
-    todo!(
-        "0x2b1170 __ZThn32_N3RBX10Reflection9DescribedINS_5Stats12StatsServiceELZNS2_6sStatsEENS_17NonFactoryProductINS_8InstanceELZNS2_6sStatsEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev"
-    )
+pub fn stub_0x2b1170() {
+    // IDA 0x2b1170: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2b1178 — __ZThn32_N3RBX10Reflection9DescribedINS_5Stats12StatsServiceELZNS2_6sStatsEENS_17NonFactoryProductINS_8InstanceELZNS2_6sStatsEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5Stats12StatsServiceELZNS2_6sStatsEENS_17NonFactoryProductINS_8InstanceELZNS2_6sStatsEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev"
 )]
-pub fn stub_0x2b1178() -> ! {
-    todo!(
-        "0x2b1178 __ZThn32_N3RBX10Reflection9DescribedINS_5Stats12StatsServiceELZNS2_6sStatsEENS_17NonFactoryProductINS_8InstanceELZNS2_6sStatsEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev"
-    )
+pub fn stub_0x2b1178() {
+    // IDA 0x2b1178: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2b12e8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats12StatsServiceES7_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -8753,40 +8669,32 @@ pub fn stub_0x2b6d04() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x2b6da4() -> ! {
-    todo!(
-        "0x2b6da4 __ZThn32_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x2b6da4() {
+    // IDA 0x2b6da4: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2b6dac — __ZThn32_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x2b6dac() -> ! {
-    todo!(
-        "0x2b6dac __ZThn32_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x2b6dac() {
+    // IDA 0x2b6dac: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2b6e50 — __ZThn36_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x2b6e50() -> ! {
-    todo!(
-        "0x2b6e50 __ZThn36_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x2b6e50() {
+    // IDA 0x2b6e50: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2b6e58 — __ZThn36_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x2b6e58() -> ! {
-    todo!(
-        "0x2b6e58 __ZThn36_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x2b6e58() {
+    // IDA 0x2b6e58: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2b77c0 — __ZN3RBX10Reflection9DescribedINS_16OverlayDataModelELZNS_17sOverlayDataModelEENS_17NonFactoryProductINS_9DataModelELZNS_17sOverlayDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -11925,8 +11833,8 @@ pub fn stub_0x395538() -> ! {
 
 // 0x395618 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x395618() -> ! {
-    todo!("0x395618 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x395618() {
+    // IDA 0x395618: __ZThn thunk (D1 base dtor): `this -= 40`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x395620 — __ZNK3RBX10Reflection14PropDescriptorINS_11PVAdornmentEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -12057,8 +11965,8 @@ pub fn stub_0x396080() -> ! {
 
 // 0x396160 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x396160() -> ! {
-    todo!("0x396160 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x396160() {
+    // IDA 0x396160: __ZThn thunk (D1 base dtor): `this -= 40`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x396168 — __ZNK3RBX10Reflection14PropDescriptorINS_13PartAdornmentEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -14161,8 +14069,8 @@ pub fn stub_0x3c2a28() -> ! {
 
 // 0x3c2b08 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x3c2b08() -> ! {
-    todo!("0x3c2b08 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x3c2b08() {
+    // IDA 0x3c2b08: __ZThn thunk (D1 base dtor): `this -= 40`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3c2b10 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -14594,14 +14502,14 @@ pub fn stub_0x2c2120() -> ! {
 
 // 0x2c21c0 — __ZThn32_N3RBX10Reflection9DescribedINS_5Stats4ItemELZNS2_10sStatsItemEENS_17NonFactoryProductINS_8InstanceELZNS2_10sStatsItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5Stats4ItemELZNS2_10sStatsItemEENS_17NonFactoryProductINS_8InstanceELZNS2_10sStatsItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x2c21c0() -> ! {
-    todo!("0x2c21c0 __ZThn32_N3RBX10Reflection9DescribedINS_5Stats4ItemELZNS2_10sStatsItemEENS_17NonFactoryProductINS_8InstanceELZNS2_10sStatsItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x2c21c0() {
+    // IDA 0x2c21c0: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c21c8 — __ZThn32_N3RBX10Reflection9DescribedINS_5Stats4ItemELZNS2_10sStatsItemEENS_17NonFactoryProductINS_8InstanceELZNS2_10sStatsItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5Stats4ItemELZNS2_10sStatsItemEENS_17NonFactoryProductINS_8InstanceELZNS2_10sStatsItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x2c21c8() -> ! {
-    todo!("0x2c21c8 __ZThn32_N3RBX10Reflection9DescribedINS_5Stats4ItemELZNS2_10sStatsItemEENS_17NonFactoryProductINS_8InstanceELZNS2_10sStatsItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x2c21c8() {
+    // IDA 0x2c21c8: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2c7968 — __ZN3RBX10Reflection9DescribedINS_5Stats4ItemELZNS2_10sStatsItemEENS_17NonFactoryProductINS_8InstanceELZNS2_10sStatsItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -14612,14 +14520,14 @@ pub fn stub_0x2c7968() -> ! {
 
 // 0x2c7970 — __ZThn36_N3RBX10Reflection9DescribedINS_5Stats4ItemELZNS2_10sStatsItemEENS_17NonFactoryProductINS_8InstanceELZNS2_10sStatsItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5Stats4ItemELZNS2_10sStatsItemEENS_17NonFactoryProductINS_8InstanceELZNS2_10sStatsItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x2c7970() -> ! {
-    todo!("0x2c7970 __ZThn36_N3RBX10Reflection9DescribedINS_5Stats4ItemELZNS2_10sStatsItemEENS_17NonFactoryProductINS_8InstanceELZNS2_10sStatsItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x2c7970() {
+    // IDA 0x2c7970: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c7978 — __ZThn36_N3RBX10Reflection9DescribedINS_5Stats4ItemELZNS2_10sStatsItemEENS_17NonFactoryProductINS_8InstanceELZNS2_10sStatsItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5Stats4ItemELZNS2_10sStatsItemEENS_17NonFactoryProductINS_8InstanceELZNS2_10sStatsItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x2c7978() -> ! {
-    todo!("0x2c7978 __ZThn36_N3RBX10Reflection9DescribedINS_5Stats4ItemELZNS2_10sStatsItemEENS_17NonFactoryProductINS_8InstanceELZNS2_10sStatsItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x2c7978() {
+    // IDA 0x2c7978: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2d1260 — __ZN3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -14636,26 +14544,26 @@ pub fn stub_0x2d1264() -> ! {
 
 // 0x2d1304 — __ZThn32_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x2d1304() -> ! {
-    todo!("0x2d1304 __ZThn32_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x2d1304() {
+    // IDA 0x2d1304: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2d130c — __ZThn32_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x2d130c() -> ! {
-    todo!("0x2d130c __ZThn32_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x2d130c() {
+    // IDA 0x2d130c: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2d13b0 — __ZThn36_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x2d13b0() -> ! {
-    todo!("0x2d13b0 __ZThn36_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x2d13b0() {
+    // IDA 0x2d13b0: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2d13b8 — __ZThn36_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x2d13b8() -> ! {
-    todo!("0x2d13b8 __ZThn36_N3RBX10Reflection9DescribedINS_13AdvLuaDraggerELZNS_14sAdvLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sAdvLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x2d13b8() {
+    // IDA 0x2d13b8: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2e832c — __ZN3RBX10Reflection9DescribedINS_10LuaDraggerELZNS_11sLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -14672,26 +14580,26 @@ pub fn stub_0x2e8330() -> ! {
 
 // 0x2e83d0 — __ZThn32_N3RBX10Reflection9DescribedINS_10LuaDraggerELZNS_11sLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10LuaDraggerELZNS_11sLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x2e83d0() -> ! {
-    todo!("0x2e83d0 __ZThn32_N3RBX10Reflection9DescribedINS_10LuaDraggerELZNS_11sLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x2e83d0() {
+    // IDA 0x2e83d0: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e83d8 — __ZThn32_N3RBX10Reflection9DescribedINS_10LuaDraggerELZNS_11sLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10LuaDraggerELZNS_11sLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x2e83d8() -> ! {
-    todo!("0x2e83d8 __ZThn32_N3RBX10Reflection9DescribedINS_10LuaDraggerELZNS_11sLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x2e83d8() {
+    // IDA 0x2e83d8: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2e847c — __ZThn36_N3RBX10Reflection9DescribedINS_10LuaDraggerELZNS_11sLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10LuaDraggerELZNS_11sLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x2e847c() -> ! {
-    todo!("0x2e847c __ZThn36_N3RBX10Reflection9DescribedINS_10LuaDraggerELZNS_11sLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x2e847c() {
+    // IDA 0x2e847c: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e8484 — __ZThn36_N3RBX10Reflection9DescribedINS_10LuaDraggerELZNS_11sLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10LuaDraggerELZNS_11sLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x2e8484() -> ! {
-    todo!("0x2e8484 __ZThn36_N3RBX10Reflection9DescribedINS_10LuaDraggerELZNS_11sLuaDraggerEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sLuaDraggerEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x2e8484() {
+    // IDA 0x2e8484: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x312b1c — __ZN3RBX10Reflection9DescribedINS_13ContentFilterELZNS_14sContentFilterEENS_17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev
@@ -14708,26 +14616,26 @@ pub fn stub_0x312b20() -> ! {
 
 // 0x312bc0 — __ZThn32_N3RBX10Reflection9DescribedINS_13ContentFilterELZNS_14sContentFilterEENS_17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13ContentFilterELZNS_14sContentFilterEENS_17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x312bc0() -> ! {
-    todo!("0x312bc0 __ZThn32_N3RBX10Reflection9DescribedINS_13ContentFilterELZNS_14sContentFilterEENS_17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x312bc0() {
+    // IDA 0x312bc0: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x312bc8 — __ZThn32_N3RBX10Reflection9DescribedINS_13ContentFilterELZNS_14sContentFilterEENS_17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13ContentFilterELZNS_14sContentFilterEENS_17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x312bc8() -> ! {
-    todo!("0x312bc8 __ZThn32_N3RBX10Reflection9DescribedINS_13ContentFilterELZNS_14sContentFilterEENS_17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x312bc8() {
+    // IDA 0x312bc8: __ZThn thunk: this-adjust + tail-call to base destructor in place (D1 base dtor). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x312c6c — __ZThn36_N3RBX10Reflection9DescribedINS_13ContentFilterELZNS_14sContentFilterEENS_17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13ContentFilterELZNS_14sContentFilterEENS_17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x312c6c() -> ! {
-    todo!("0x312c6c __ZThn36_N3RBX10Reflection9DescribedINS_13ContentFilterELZNS_14sContentFilterEENS_17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x312c6c() {
+    // IDA 0x312c6c: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x312c74 — __ZThn36_N3RBX10Reflection9DescribedINS_13ContentFilterELZNS_14sContentFilterEENS_17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13ContentFilterELZNS_14sContentFilterEENS_17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x312c74() -> ! {
-    todo!("0x312c74 __ZThn36_N3RBX10Reflection9DescribedINS_13ContentFilterELZNS_14sContentFilterEENS_17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x312c74() {
+    // IDA 0x312c74: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x34f398 — __ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_13LuaWebServiceEEES3_SsNS0_IFvNS5_IKSt3mapISsNS1_10Reflection7VariantESt4lessISsESaISt4pairIS6_SI_EEEEEEEENS0_IFvSsEEEENSB_5list5INSB_5valueISF_EENS_3argILi1EEENSY_ISsEENSY_ISS_EENSY_ISU_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIS17_EE5valueEEE5valueEiE4typeE
@@ -14780,26 +14688,26 @@ pub fn stub_0x35638c() -> ! {
 
 // 0x35642c — __ZThn32_N3RBX10Reflection9DescribedINS_13LuaWebServiceELZNS_14sLuaWebServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13LuaWebServiceELZNS_14sLuaWebServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x35642c() -> ! {
-    todo!("0x35642c __ZThn32_N3RBX10Reflection9DescribedINS_13LuaWebServiceELZNS_14sLuaWebServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x35642c() {
+    // IDA 0x35642c: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x356434 — __ZThn32_N3RBX10Reflection9DescribedINS_13LuaWebServiceELZNS_14sLuaWebServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13LuaWebServiceELZNS_14sLuaWebServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x356434() -> ! {
-    todo!("0x356434 __ZThn32_N3RBX10Reflection9DescribedINS_13LuaWebServiceELZNS_14sLuaWebServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x356434() {
+    // IDA 0x356434: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3564d8 — __ZThn36_N3RBX10Reflection9DescribedINS_13LuaWebServiceELZNS_14sLuaWebServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13LuaWebServiceELZNS_14sLuaWebServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3564d8() -> ! {
-    todo!("0x3564d8 __ZThn36_N3RBX10Reflection9DescribedINS_13LuaWebServiceELZNS_14sLuaWebServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3564d8() {
+    // IDA 0x3564d8: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3564e0 — __ZThn36_N3RBX10Reflection9DescribedINS_13LuaWebServiceELZNS_14sLuaWebServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13LuaWebServiceELZNS_14sLuaWebServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3564e0() -> ! {
-    todo!("0x3564e0 __ZThn36_N3RBX10Reflection9DescribedINS_13LuaWebServiceELZNS_14sLuaWebServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3564e0() {
+    // IDA 0x3564e0: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x364280 — __ZN3RBX10Reflection9DescribedINS_10RunServiceELZNS_11sRunServiceEENS_17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -14822,26 +14730,26 @@ pub fn stub_0x3643a0() -> ! {
 
 // 0x364440 — __ZThn32_N3RBX10Reflection9DescribedINS_10RunServiceELZNS_11sRunServiceEENS_17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10RunServiceELZNS_11sRunServiceEENS_17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x364440() -> ! {
-    todo!("0x364440 __ZThn32_N3RBX10Reflection9DescribedINS_10RunServiceELZNS_11sRunServiceEENS_17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x364440() {
+    // IDA 0x364440: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x364448 — __ZThn32_N3RBX10Reflection9DescribedINS_10RunServiceELZNS_11sRunServiceEENS_17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10RunServiceELZNS_11sRunServiceEENS_17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x364448() -> ! {
-    todo!("0x364448 __ZThn32_N3RBX10Reflection9DescribedINS_10RunServiceELZNS_11sRunServiceEENS_17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x364448() {
+    // IDA 0x364448: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3644ec — __ZThn36_N3RBX10Reflection9DescribedINS_10RunServiceELZNS_11sRunServiceEENS_17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10RunServiceELZNS_11sRunServiceEENS_17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3644ec() -> ! {
-    todo!("0x3644ec __ZThn36_N3RBX10Reflection9DescribedINS_10RunServiceELZNS_11sRunServiceEENS_17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3644ec() {
+    // IDA 0x3644ec: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3644f4 — __ZThn36_N3RBX10Reflection9DescribedINS_10RunServiceELZNS_11sRunServiceEENS_17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10RunServiceELZNS_11sRunServiceEENS_17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3644f4() -> ! {
-    todo!("0x3644f4 __ZThn36_N3RBX10Reflection9DescribedINS_10RunServiceELZNS_11sRunServiceEENS_17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3644f4() {
+    // IDA 0x3644f4: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x365980 — __ZN5boost8functionIFvdEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS4_5list2INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
@@ -14882,26 +14790,26 @@ pub fn stub_0x370954() -> ! {
 
 // 0x3709f4 — __ZThn32_N3RBX10Reflection9DescribedINS_25ScriptInformationProviderELZNS_26sScriptInformationProviderEENS_17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_25ScriptInformationProviderELZNS_26sScriptInformationProviderEENS_17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3709f4() -> ! {
-    todo!("0x3709f4 __ZThn32_N3RBX10Reflection9DescribedINS_25ScriptInformationProviderELZNS_26sScriptInformationProviderEENS_17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3709f4() {
+    // IDA 0x3709f4: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3709fc — __ZThn32_N3RBX10Reflection9DescribedINS_25ScriptInformationProviderELZNS_26sScriptInformationProviderEENS_17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_25ScriptInformationProviderELZNS_26sScriptInformationProviderEENS_17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3709fc() -> ! {
-    todo!("0x3709fc __ZThn32_N3RBX10Reflection9DescribedINS_25ScriptInformationProviderELZNS_26sScriptInformationProviderEENS_17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3709fc() {
+    // IDA 0x3709fc: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x370aa0 — __ZThn36_N3RBX10Reflection9DescribedINS_25ScriptInformationProviderELZNS_26sScriptInformationProviderEENS_17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_25ScriptInformationProviderELZNS_26sScriptInformationProviderEENS_17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x370aa0() -> ! {
-    todo!("0x370aa0 __ZThn36_N3RBX10Reflection9DescribedINS_25ScriptInformationProviderELZNS_26sScriptInformationProviderEENS_17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x370aa0() {
+    // IDA 0x370aa0: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x370aa8 — __ZThn36_N3RBX10Reflection9DescribedINS_25ScriptInformationProviderELZNS_26sScriptInformationProviderEENS_17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_25ScriptInformationProviderELZNS_26sScriptInformationProviderEENS_17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x370aa8() -> ! {
-    todo!("0x370aa8 __ZThn36_N3RBX10Reflection9DescribedINS_25ScriptInformationProviderELZNS_26sScriptInformationProviderEENS_17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x370aa8() {
+    // IDA 0x370aa8: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3771a4 — __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -14930,26 +14838,26 @@ pub fn stub_0x37938c() -> ! {
 
 // 0x37942c — __ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x37942c() -> ! {
-    todo!("0x37942c __ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x37942c() {
+    // IDA 0x37942c: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x379434 — __ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x379434() -> ! {
-    todo!("0x379434 __ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x379434() {
+    // IDA 0x379434: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3794d8 — __ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3794d8() -> ! {
-    todo!("0x3794d8 __ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3794d8() {
+    // IDA 0x3794d8: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3794e0 — __ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3794e0() -> ! {
-    todo!("0x3794e0 __ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3794e0() {
+    // IDA 0x3794e0: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x379584 — __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -14966,26 +14874,26 @@ pub fn stub_0x379588() -> ! {
 
 // 0x379628 — __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x379628() -> ! {
-    todo!("0x379628 __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x379628() {
+    // IDA 0x379628: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x379630 — __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x379630() -> ! {
-    todo!("0x379630 __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x379630() {
+    // IDA 0x379630: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3796d4 — __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3796d4() -> ! {
-    todo!("0x3796d4 __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3796d4() {
+    // IDA 0x3796d4: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3796dc — __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3796dc() -> ! {
-    todo!("0x3796dc __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3796dc() {
+    // IDA 0x3796dc: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x37cbc4 — __ZN3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev
@@ -15002,26 +14910,26 @@ pub fn stub_0x37cbc8() -> ! {
 
 // 0x37cc68 — __ZThn32_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x37cc68() -> ! {
-    todo!("0x37cc68 __ZThn32_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x37cc68() {
+    // IDA 0x37cc68: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x37cc70 — __ZThn32_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x37cc70() -> ! {
-    todo!("0x37cc70 __ZThn32_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x37cc70() {
+    // IDA 0x37cc70: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x37cd14 — __ZThn36_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x37cd14() -> ! {
-    todo!("0x37cd14 __ZThn36_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x37cd14() {
+    // IDA 0x37cd14: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x37cd1c — __ZThn36_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x37cd1c() -> ! {
-    todo!("0x37cd1c __ZThn36_N3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x37cd1c() {
+    // IDA 0x37cd1c: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x37d2a0 — __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
@@ -15038,8 +14946,8 @@ pub fn stub_0x37d2a4() -> ! {
 
 // 0x37d344 — __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x37d344() -> ! {
-    todo!("0x37d344 __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x37d344() {
+    // IDA 0x37d344: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3ce4dc — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvN3G3D15CoordinateFrameES4_fELi3EEC2EMS2_FvS4_S4_fEPKcSA_SA_SA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -15370,8 +15278,8 @@ pub fn stub_0x3d0904() -> ! {
 
 // 0x3d09e4 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x3d09e4() -> ! {
-    todo!("0x3d09e4 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x3d09e4() {
+    // IDA 0x3d09e4: __ZThn thunk (D1 base dtor): `this -= 40`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3d09ec — __ZNK3RBX10Reflection14PropDescriptorINS_6CameraEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -15773,8 +15681,8 @@ pub fn stub_0x3d9d3c() -> ! {
 // 0x3d9d60 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_20ChangeHistoryServiceES7_SB_EENSF_5list3INSF_5valueIPSJ_EENS3_3argILi1EEENSP_ILi2EEEEEEELi2ESC_E4callES7_SB_
 // was: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::call(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::call(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x3d9d60() -> ! {
-    todo!("0x3d9d60 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::call(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x3d9d60() {
+    // IDA 0x3d9d60: __ZThn thunk: this-adjust + tail-call to base destructor in place (D1 base dtor). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3d9d84 — __ZN5boost3_bi5list3INS0_5valueIPN3RBX20ChangeHistoryServiceEEENS_3argILi1EEENS7_ILi2EEEEclINS_4_mfi3mf2IvS4_NS_10shared_ptrINS3_8InstanceEEEPKNS3_10Reflection18PropertyDescriptorEEENS0_5list2IRSG_RSK_EEEEvNS0_4typeIvEERT_RT0_i
@@ -15833,26 +15741,26 @@ pub fn stub_0x3da5d4() -> ! {
 
 // 0x3da674 — __ZThn32_N3RBX10Reflection9DescribedINS_20ChangeHistoryServiceELZNS_21sChangeHistoryServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_21sChangeHistoryServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_20ChangeHistoryServiceELZNS_21sChangeHistoryServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_21sChangeHistoryServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3da674() -> ! {
-    todo!("0x3da674 __ZThn32_N3RBX10Reflection9DescribedINS_20ChangeHistoryServiceELZNS_21sChangeHistoryServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_21sChangeHistoryServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3da674() {
+    // IDA 0x3da674: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3da67c — __ZThn32_N3RBX10Reflection9DescribedINS_20ChangeHistoryServiceELZNS_21sChangeHistoryServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_21sChangeHistoryServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_20ChangeHistoryServiceELZNS_21sChangeHistoryServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_21sChangeHistoryServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3da67c() -> ! {
-    todo!("0x3da67c __ZThn32_N3RBX10Reflection9DescribedINS_20ChangeHistoryServiceELZNS_21sChangeHistoryServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_21sChangeHistoryServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3da67c() {
+    // IDA 0x3da67c: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3da720 — __ZThn36_N3RBX10Reflection9DescribedINS_20ChangeHistoryServiceELZNS_21sChangeHistoryServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_21sChangeHistoryServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_20ChangeHistoryServiceELZNS_21sChangeHistoryServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_21sChangeHistoryServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3da720() -> ! {
-    todo!("0x3da720 __ZThn36_N3RBX10Reflection9DescribedINS_20ChangeHistoryServiceELZNS_21sChangeHistoryServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_21sChangeHistoryServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3da720() {
+    // IDA 0x3da720: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3da728 — __ZThn36_N3RBX10Reflection9DescribedINS_20ChangeHistoryServiceELZNS_21sChangeHistoryServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_21sChangeHistoryServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_20ChangeHistoryServiceELZNS_21sChangeHistoryServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_21sChangeHistoryServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3da728() -> ! {
-    todo!("0x3da728 __ZThn36_N3RBX10Reflection9DescribedINS_20ChangeHistoryServiceELZNS_21sChangeHistoryServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_21sChangeHistoryServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3da728() {
+    // IDA 0x3da728: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3dad08 — __ZNSt8_Rb_treeIPKN3RBX10Reflection18PropertyDescriptorESt4pairIKS4_NS1_7VariantEESt10_Select1stIS8_ESt4lessIS4_ESaIS8_EE4findERS6_
@@ -16139,38 +16047,38 @@ pub fn stub_0x3e5d44() -> ! {
 
 // 0x3e5de4 — __ZThn32_N3RBX10Reflection9DescribedINS_10BodyColorsELZNS_11sBodyColorsEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10BodyColorsELZNS_11sBodyColorsEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3e5de4() -> ! {
-    todo!("0x3e5de4 __ZThn32_N3RBX10Reflection9DescribedINS_10BodyColorsELZNS_11sBodyColorsEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3e5de4() {
+    // IDA 0x3e5de4: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e5dec — __ZThn32_N3RBX10Reflection9DescribedINS_10BodyColorsELZNS_11sBodyColorsEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10BodyColorsELZNS_11sBodyColorsEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3e5dec() -> ! {
-    todo!("0x3e5dec __ZThn32_N3RBX10Reflection9DescribedINS_10BodyColorsELZNS_11sBodyColorsEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3e5dec() {
+    // IDA 0x3e5dec: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e5e90 — __ZThn36_N3RBX10Reflection9DescribedINS_10BodyColorsELZNS_11sBodyColorsEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10BodyColorsELZNS_11sBodyColorsEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3e5e90() -> ! {
-    todo!("0x3e5e90 __ZThn36_N3RBX10Reflection9DescribedINS_10BodyColorsELZNS_11sBodyColorsEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3e5e90() {
+    // IDA 0x3e5e90: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e5e98 — __ZThn36_N3RBX10Reflection9DescribedINS_10BodyColorsELZNS_11sBodyColorsEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10BodyColorsELZNS_11sBodyColorsEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3e5e98() -> ! {
-    todo!("0x3e5e98 __ZThn36_N3RBX10Reflection9DescribedINS_10BodyColorsELZNS_11sBodyColorsEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3e5e98() {
+    // IDA 0x3e5e98: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e5f3c — __ZThn92_N3RBX10Reflection9DescribedINS_10BodyColorsELZNS_11sBodyColorsEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_10BodyColorsELZNS_11sBodyColorsEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3e5f3c() -> ! {
-    todo!("0x3e5f3c __ZThn92_N3RBX10Reflection9DescribedINS_10BodyColorsELZNS_11sBodyColorsEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3e5f3c() {
+    // IDA 0x3e5f3c: __ZThn thunk (D1 base dtor): `this -= 92`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e5f44 — __ZThn92_N3RBX10Reflection9DescribedINS_10BodyColorsELZNS_11sBodyColorsEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_10BodyColorsELZNS_11sBodyColorsEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3e5f44() -> ! {
-    todo!("0x3e5f44 __ZThn92_N3RBX10Reflection9DescribedINS_10BodyColorsELZNS_11sBodyColorsEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_11sBodyColorsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3e5f44() {
+    // IDA 0x3e5f44: __ZThn thunk (D0 deleting dtor): `this -= 92`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e5fe8 — __ZN3RBX10Reflection9BoundPropINS_10BrickColorELNS0_10MutabilityE1EEC2INS_10BodyColorsEEEPKcS8_MT_S2_MS9_FvRKNS0_18PropertyDescriptorEENSB_10AttributesENS_8Security11PermissionsE
@@ -16217,38 +16125,38 @@ pub fn stub_0x3e61e4() -> ! {
 
 // 0x3e6284 — __ZThn32_N3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3e6284() -> ! {
-    todo!("0x3e6284 __ZThn32_N3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3e6284() {
+    // IDA 0x3e6284: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e628c — __ZThn32_N3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3e628c() -> ! {
-    todo!("0x3e628c __ZThn32_N3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3e628c() {
+    // IDA 0x3e628c: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e6330 — __ZThn36_N3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3e6330() -> ! {
-    todo!("0x3e6330 __ZThn36_N3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3e6330() {
+    // IDA 0x3e6330: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e6338 — __ZThn36_N3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3e6338() -> ! {
-    todo!("0x3e6338 __ZThn36_N3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3e6338() {
+    // IDA 0x3e6338: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e63dc — __ZThn92_N3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3e63dc() -> ! {
-    todo!("0x3e63dc __ZThn92_N3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3e63dc() {
+    // IDA 0x3e63dc: __ZThn thunk (D1 base dtor): `this -= 92`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e63e4 — __ZThn92_N3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3e63e4() -> ! {
-    todo!("0x3e63e4 __ZThn92_N3RBX10Reflection9DescribedINS_4SkinELZNS_5sSkinEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_5sSkinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3e63e4() {
+    // IDA 0x3e63e4: __ZThn thunk (D0 deleting dtor): `this -= 92`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e6488 — __ZN3RBX10Reflection9BoundPropINS_10BrickColorELNS0_10MutabilityE1EEC2INS_4SkinEEEPKcS8_MT_S2_MS9_FvRKNS0_18PropertyDescriptorEENSB_10AttributesENS_8Security11PermissionsE
@@ -16325,60 +16233,48 @@ pub fn stub_0x3e66c8() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5PantsELZNS_6sPantsEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sPantsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3e67a8() -> ! {
-    todo!(
-        "0x3e67a8 __ZThn32_N3RBX10Reflection9DescribedINS_5PantsELZNS_6sPantsEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sPantsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3e67a8() {
+    // IDA 0x3e67a8: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e67f4 — __ZThn32_N3RBX10Reflection9DescribedINS_5PantsELZNS_6sPantsEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sPantsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5PantsELZNS_6sPantsEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sPantsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3e67f4() -> ! {
-    todo!(
-        "0x3e67f4 __ZThn32_N3RBX10Reflection9DescribedINS_5PantsELZNS_6sPantsEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sPantsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3e67f4() {
+    // IDA 0x3e67f4: __ZThn thunk (D0 deleting dtor): `this -= 8`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e68d8 — __ZThn36_N3RBX10Reflection9DescribedINS_5PantsELZNS_6sPantsEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sPantsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5PantsELZNS_6sPantsEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sPantsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3e68d8() -> ! {
-    todo!(
-        "0x3e68d8 __ZThn36_N3RBX10Reflection9DescribedINS_5PantsELZNS_6sPantsEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sPantsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3e68d8() {
+    // IDA 0x3e68d8: __ZThn thunk (D1 base dtor): `this -= 9`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e6924 — __ZThn36_N3RBX10Reflection9DescribedINS_5PantsELZNS_6sPantsEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sPantsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5PantsELZNS_6sPantsEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sPantsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3e6924() -> ! {
-    todo!(
-        "0x3e6924 __ZThn36_N3RBX10Reflection9DescribedINS_5PantsELZNS_6sPantsEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sPantsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3e6924() {
+    // IDA 0x3e6924: __ZThn thunk (D0 deleting dtor): `this -= 9`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e6a08 — __ZThn92_N3RBX10Reflection9DescribedINS_5PantsELZNS_6sPantsEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sPantsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn92_N3RBX10Reflection9DescribedINS_5PantsELZNS_6sPantsEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sPantsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3e6a08() -> ! {
-    todo!(
-        "0x3e6a08 __ZThn92_N3RBX10Reflection9DescribedINS_5PantsELZNS_6sPantsEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sPantsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3e6a08() {
+    // IDA 0x3e6a08: __ZThn thunk (D1 base dtor): `this -= 23`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e6a54 — __ZThn92_N3RBX10Reflection9DescribedINS_5PantsELZNS_6sPantsEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sPantsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn92_N3RBX10Reflection9DescribedINS_5PantsELZNS_6sPantsEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sPantsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3e6a54() -> ! {
-    todo!(
-        "0x3e6a54 __ZThn92_N3RBX10Reflection9DescribedINS_5PantsELZNS_6sPantsEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sPantsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3e6a54() {
+    // IDA 0x3e6a54: __ZThn thunk (D0 deleting dtor): `this -= 23`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e6b38 — __ZN3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -16405,60 +16301,48 @@ pub fn stub_0x3e6b80() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3e6c60() -> ! {
-    todo!(
-        "0x3e6c60 __ZThn32_N3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3e6c60() {
+    // IDA 0x3e6c60: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e6cac — __ZThn32_N3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3e6cac() -> ! {
-    todo!(
-        "0x3e6cac __ZThn32_N3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3e6cac() {
+    // IDA 0x3e6cac: __ZThn thunk (D0 deleting dtor): `this -= 8`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e6d90 — __ZThn36_N3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3e6d90() -> ! {
-    todo!(
-        "0x3e6d90 __ZThn36_N3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3e6d90() {
+    // IDA 0x3e6d90: __ZThn thunk (D1 base dtor): `this -= 9`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e6ddc — __ZThn36_N3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3e6ddc() -> ! {
-    todo!(
-        "0x3e6ddc __ZThn36_N3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3e6ddc() {
+    // IDA 0x3e6ddc: __ZThn thunk (D0 deleting dtor): `this -= 9`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e6ec0 — __ZThn92_N3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn92_N3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3e6ec0() -> ! {
-    todo!(
-        "0x3e6ec0 __ZThn92_N3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3e6ec0() {
+    // IDA 0x3e6ec0: __ZThn thunk (D1 base dtor): `this -= 23`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e6f0c — __ZThn92_N3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn92_N3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3e6f0c() -> ! {
-    todo!(
-        "0x3e6f0c __ZThn92_N3RBX10Reflection9DescribedINS_5ShirtELZNS_6sShirtEENS_14FactoryProductIS2_NS_8ClothingELZNS_6sShirtEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3e6f0c() {
+    // IDA 0x3e6f0c: __ZThn thunk (D0 deleting dtor): `this -= 23`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e6ff0 — __ZN3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -16485,60 +16369,48 @@ pub fn stub_0x3e6ff4() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3e7094() -> ! {
-    todo!(
-        "0x3e7094 __ZThn32_N3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3e7094() {
+    // IDA 0x3e7094: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e709c — __ZThn32_N3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3e709c() -> ! {
-    todo!(
-        "0x3e709c __ZThn32_N3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3e709c() {
+    // IDA 0x3e709c: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e7140 — __ZThn36_N3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3e7140() -> ! {
-    todo!(
-        "0x3e7140 __ZThn36_N3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3e7140() {
+    // IDA 0x3e7140: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e7148 — __ZThn36_N3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3e7148() -> ! {
-    todo!(
-        "0x3e7148 __ZThn36_N3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3e7148() {
+    // IDA 0x3e7148: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e71ec — __ZThn92_N3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn92_N3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3e71ec() -> ! {
-    todo!(
-        "0x3e71ec __ZThn92_N3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3e71ec() {
+    // IDA 0x3e71ec: __ZThn thunk (D1 base dtor): `this -= 92`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e71f4 — __ZThn92_N3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn92_N3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3e71f4() -> ! {
-    todo!(
-        "0x3e71f4 __ZThn92_N3RBX10Reflection9DescribedINS_8ClothingELZNS_9sClothingEENS_17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3e71f4() {
+    // IDA 0x3e71f4: __ZThn thunk (D0 deleting dtor): `this -= 92`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e7298 — __ZN3RBX10Reflection9DescribedINS_12ShirtGraphicELZNS_13sShirtGraphicEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -16565,60 +16437,48 @@ pub fn stub_0x3e729c() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12ShirtGraphicELZNS_13sShirtGraphicEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3e733c() -> ! {
-    todo!(
-        "0x3e733c __ZThn32_N3RBX10Reflection9DescribedINS_12ShirtGraphicELZNS_13sShirtGraphicEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3e733c() {
+    // IDA 0x3e733c: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e7344 — __ZThn32_N3RBX10Reflection9DescribedINS_12ShirtGraphicELZNS_13sShirtGraphicEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12ShirtGraphicELZNS_13sShirtGraphicEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3e7344() -> ! {
-    todo!(
-        "0x3e7344 __ZThn32_N3RBX10Reflection9DescribedINS_12ShirtGraphicELZNS_13sShirtGraphicEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3e7344() {
+    // IDA 0x3e7344: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e73e8 — __ZThn36_N3RBX10Reflection9DescribedINS_12ShirtGraphicELZNS_13sShirtGraphicEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_12ShirtGraphicELZNS_13sShirtGraphicEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3e73e8() -> ! {
-    todo!(
-        "0x3e73e8 __ZThn36_N3RBX10Reflection9DescribedINS_12ShirtGraphicELZNS_13sShirtGraphicEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3e73e8() {
+    // IDA 0x3e73e8: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e73f0 — __ZThn36_N3RBX10Reflection9DescribedINS_12ShirtGraphicELZNS_13sShirtGraphicEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_12ShirtGraphicELZNS_13sShirtGraphicEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3e73f0() -> ! {
-    todo!(
-        "0x3e73f0 __ZThn36_N3RBX10Reflection9DescribedINS_12ShirtGraphicELZNS_13sShirtGraphicEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3e73f0() {
+    // IDA 0x3e73f0: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e7494 — __ZThn92_N3RBX10Reflection9DescribedINS_12ShirtGraphicELZNS_13sShirtGraphicEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn92_N3RBX10Reflection9DescribedINS_12ShirtGraphicELZNS_13sShirtGraphicEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3e7494() -> ! {
-    todo!(
-        "0x3e7494 __ZThn92_N3RBX10Reflection9DescribedINS_12ShirtGraphicELZNS_13sShirtGraphicEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3e7494() {
+    // IDA 0x3e7494: __ZThn thunk (D1 base dtor): `this -= 92`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e749c — __ZThn92_N3RBX10Reflection9DescribedINS_12ShirtGraphicELZNS_13sShirtGraphicEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn92_N3RBX10Reflection9DescribedINS_12ShirtGraphicELZNS_13sShirtGraphicEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3e749c() -> ! {
-    todo!(
-        "0x3e749c __ZThn92_N3RBX10Reflection9DescribedINS_12ShirtGraphicELZNS_13sShirtGraphicEENS_14FactoryProductIS2_NS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3e749c() {
+    // IDA 0x3e749c: __ZThn thunk (D0 deleting dtor): `this -= 92`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e7540 — __ZN3RBX10Reflection14PropDescriptorINS_5PantsENS_9TextureIdEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -16916,60 +16776,48 @@ pub fn stub_0x3e9f30() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3e9fd0() -> ! {
-    todo!(
-        "0x3e9fd0 __ZThn32_N3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3e9fd0() {
+    // IDA 0x3e9fd0: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e9fd8 — __ZThn32_N3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3e9fd8() -> ! {
-    todo!(
-        "0x3e9fd8 __ZThn32_N3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3e9fd8() {
+    // IDA 0x3e9fd8: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3ea07c — __ZThn36_N3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3ea07c() -> ! {
-    todo!(
-        "0x3ea07c __ZThn36_N3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3ea07c() {
+    // IDA 0x3ea07c: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3ea084 — __ZThn36_N3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3ea084() -> ! {
-    todo!(
-        "0x3ea084 __ZThn36_N3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3ea084() {
+    // IDA 0x3ea084: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3ea128 — __ZThn92_N3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn92_N3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3ea128() -> ! {
-    todo!(
-        "0x3ea128 __ZThn92_N3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3ea128() {
+    // IDA 0x3ea128: __ZThn thunk (D1 base dtor): `this -= 92`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3ea130 — __ZThn92_N3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn92_N3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3ea130() -> ! {
-    todo!(
-        "0x3ea130 __ZThn92_N3RBX10Reflection9DescribedINS_13CharacterMeshELZNS_14sCharacterMeshEENS_14FactoryProductIS2_NS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3ea130() {
+    // IDA 0x3ea130: __ZThn thunk (D0 deleting dtor): `this -= 92`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3ea308 — __ZN3RBX10Reflection9DescribedINS_19CharacterAppearanceELZNS_20sCharacterAppearanceEENS_17NonFactoryProductINS_8InstanceELZNS_20sCharacterAppearanceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -16996,40 +16844,32 @@ pub fn stub_0x3ea30c() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_19CharacterAppearanceELZNS_20sCharacterAppearanceEENS_17NonFactoryProductINS_8InstanceELZNS_20sCharacterAppearanceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3ea3ac() -> ! {
-    todo!(
-        "0x3ea3ac __ZThn32_N3RBX10Reflection9DescribedINS_19CharacterAppearanceELZNS_20sCharacterAppearanceEENS_17NonFactoryProductINS_8InstanceELZNS_20sCharacterAppearanceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3ea3ac() {
+    // IDA 0x3ea3ac: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3ea3b4 — __ZThn32_N3RBX10Reflection9DescribedINS_19CharacterAppearanceELZNS_20sCharacterAppearanceEENS_17NonFactoryProductINS_8InstanceELZNS_20sCharacterAppearanceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_19CharacterAppearanceELZNS_20sCharacterAppearanceEENS_17NonFactoryProductINS_8InstanceELZNS_20sCharacterAppearanceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3ea3b4() -> ! {
-    todo!(
-        "0x3ea3b4 __ZThn32_N3RBX10Reflection9DescribedINS_19CharacterAppearanceELZNS_20sCharacterAppearanceEENS_17NonFactoryProductINS_8InstanceELZNS_20sCharacterAppearanceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3ea3b4() {
+    // IDA 0x3ea3b4: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3ea458 — __ZThn36_N3RBX10Reflection9DescribedINS_19CharacterAppearanceELZNS_20sCharacterAppearanceEENS_17NonFactoryProductINS_8InstanceELZNS_20sCharacterAppearanceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_19CharacterAppearanceELZNS_20sCharacterAppearanceEENS_17NonFactoryProductINS_8InstanceELZNS_20sCharacterAppearanceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3ea458() -> ! {
-    todo!(
-        "0x3ea458 __ZThn36_N3RBX10Reflection9DescribedINS_19CharacterAppearanceELZNS_20sCharacterAppearanceEENS_17NonFactoryProductINS_8InstanceELZNS_20sCharacterAppearanceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3ea458() {
+    // IDA 0x3ea458: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3ea460 — __ZThn36_N3RBX10Reflection9DescribedINS_19CharacterAppearanceELZNS_20sCharacterAppearanceEENS_17NonFactoryProductINS_8InstanceELZNS_20sCharacterAppearanceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_19CharacterAppearanceELZNS_20sCharacterAppearanceEENS_17NonFactoryProductINS_8InstanceELZNS_20sCharacterAppearanceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3ea460() -> ! {
-    todo!(
-        "0x3ea460 __ZThn36_N3RBX10Reflection9DescribedINS_19CharacterAppearanceELZNS_20sCharacterAppearanceEENS_17NonFactoryProductINS_8InstanceELZNS_20sCharacterAppearanceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3ea460() {
+    // IDA 0x3ea460: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3ea9f4 — __ZN3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EEC2INS_13CharacterMeshEEEPKcS7_MT_iNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -17443,40 +17283,32 @@ pub fn stub_0x3edca0() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11ChatServiceELZNS_12sChatServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sChatServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3edd40() -> ! {
-    todo!(
-        "0x3edd40 __ZThn32_N3RBX10Reflection9DescribedINS_11ChatServiceELZNS_12sChatServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sChatServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3edd40() {
+    // IDA 0x3edd40: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3edd48 — __ZThn32_N3RBX10Reflection9DescribedINS_11ChatServiceELZNS_12sChatServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sChatServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11ChatServiceELZNS_12sChatServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sChatServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3edd48() -> ! {
-    todo!(
-        "0x3edd48 __ZThn32_N3RBX10Reflection9DescribedINS_11ChatServiceELZNS_12sChatServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sChatServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3edd48() {
+    // IDA 0x3edd48: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3eddec — __ZThn36_N3RBX10Reflection9DescribedINS_11ChatServiceELZNS_12sChatServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sChatServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11ChatServiceELZNS_12sChatServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sChatServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3eddec() -> ! {
-    todo!(
-        "0x3eddec __ZThn36_N3RBX10Reflection9DescribedINS_11ChatServiceELZNS_12sChatServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sChatServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3eddec() {
+    // IDA 0x3eddec: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3eddf4 — __ZThn36_N3RBX10Reflection9DescribedINS_11ChatServiceELZNS_12sChatServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sChatServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11ChatServiceELZNS_12sChatServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sChatServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3eddf4() -> ! {
-    todo!(
-        "0x3eddf4 __ZThn36_N3RBX10Reflection9DescribedINS_11ChatServiceELZNS_12sChatServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sChatServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE3ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3eddf4() {
+    // IDA 0x3eddf4: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3ee4d0 — __ZN3RBX10Reflection15RemoteEventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEED0Ev
@@ -17866,40 +17698,32 @@ pub fn stub_0x3f1f38() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13ClickDetectorELZNS_14sClickDetectorEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sClickDetectorEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3f1fd8() -> ! {
-    todo!(
-        "0x3f1fd8 __ZThn32_N3RBX10Reflection9DescribedINS_13ClickDetectorELZNS_14sClickDetectorEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sClickDetectorEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3f1fd8() {
+    // IDA 0x3f1fd8: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3f1fe0 — __ZThn32_N3RBX10Reflection9DescribedINS_13ClickDetectorELZNS_14sClickDetectorEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sClickDetectorEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13ClickDetectorELZNS_14sClickDetectorEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sClickDetectorEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3f1fe0() -> ! {
-    todo!(
-        "0x3f1fe0 __ZThn32_N3RBX10Reflection9DescribedINS_13ClickDetectorELZNS_14sClickDetectorEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sClickDetectorEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3f1fe0() {
+    // IDA 0x3f1fe0: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3f2084 — __ZThn36_N3RBX10Reflection9DescribedINS_13ClickDetectorELZNS_14sClickDetectorEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sClickDetectorEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13ClickDetectorELZNS_14sClickDetectorEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sClickDetectorEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3f2084() -> ! {
-    todo!(
-        "0x3f2084 __ZThn36_N3RBX10Reflection9DescribedINS_13ClickDetectorELZNS_14sClickDetectorEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sClickDetectorEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3f2084() {
+    // IDA 0x3f2084: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3f208c — __ZThn36_N3RBX10Reflection9DescribedINS_13ClickDetectorELZNS_14sClickDetectorEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sClickDetectorEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13ClickDetectorELZNS_14sClickDetectorEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sClickDetectorEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3f208c() -> ! {
-    todo!(
-        "0x3f208c __ZThn36_N3RBX10Reflection9DescribedINS_13ClickDetectorELZNS_14sClickDetectorEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sClickDetectorEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3f208c() {
+    // IDA 0x3f208c: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3f2130 — __ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_13ClickDetectorEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -18108,40 +17932,32 @@ pub fn stub_0x3f4380() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_17CollectionServiceELZNS_18sCollectionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_18sCollectionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3f4420() -> ! {
-    todo!(
-        "0x3f4420 __ZThn32_N3RBX10Reflection9DescribedINS_17CollectionServiceELZNS_18sCollectionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_18sCollectionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3f4420() {
+    // IDA 0x3f4420: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3f4428 — __ZThn32_N3RBX10Reflection9DescribedINS_17CollectionServiceELZNS_18sCollectionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_18sCollectionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_17CollectionServiceELZNS_18sCollectionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_18sCollectionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3f4428() -> ! {
-    todo!(
-        "0x3f4428 __ZThn32_N3RBX10Reflection9DescribedINS_17CollectionServiceELZNS_18sCollectionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_18sCollectionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3f4428() {
+    // IDA 0x3f4428: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3f44cc — __ZThn36_N3RBX10Reflection9DescribedINS_17CollectionServiceELZNS_18sCollectionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_18sCollectionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_17CollectionServiceELZNS_18sCollectionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_18sCollectionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x3f44cc() -> ! {
-    todo!(
-        "0x3f44cc __ZThn36_N3RBX10Reflection9DescribedINS_17CollectionServiceELZNS_18sCollectionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_18sCollectionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x3f44cc() {
+    // IDA 0x3f44cc: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3f44d4 — __ZThn36_N3RBX10Reflection9DescribedINS_17CollectionServiceELZNS_18sCollectionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_18sCollectionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_17CollectionServiceELZNS_18sCollectionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_18sCollectionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x3f44d4() -> ! {
-    todo!(
-        "0x3f44d4 __ZThn36_N3RBX10Reflection9DescribedINS_17CollectionServiceELZNS_18sCollectionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_18sCollectionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x3f44d4() {
+    // IDA 0x3f44d4: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3f4578 — __ZN3RBX10Reflection9EventDescINS_17CollectionServiceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_EC2ESB_PKcSE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -18342,40 +18158,32 @@ pub fn stub_0x41754c() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x4175ec() -> ! {
-    todo!(
-        "0x4175ec __ZThn32_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x4175ec() {
+    // IDA 0x4175ec: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4175f4 — __ZThn32_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x4175f4() -> ! {
-    todo!(
-        "0x4175f4 __ZThn32_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x4175f4() {
+    // IDA 0x4175f4: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x417698 — __ZThn36_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x417698() -> ! {
-    todo!(
-        "0x417698 __ZThn36_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x417698() {
+    // IDA 0x417698: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4176a0 — __ZThn36_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x4176a0() -> ! {
-    todo!(
-        "0x4176a0 __ZThn36_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x4176a0() {
+    // IDA 0x4176a0: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x417eb0 — __ZN3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -18402,20 +18210,16 @@ pub fn stub_0x417ec4() -> ! {
 #[doc(
     alias = "__ZThn132_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x417f74() -> ! {
-    todo!(
-        "0x417f74 __ZThn132_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x417f74() {
+    // IDA 0x417f74: __ZThn thunk (D1 base dtor): `this -= 132`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x417f88 — __ZThn132_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn132_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x417f88() -> ! {
-    todo!(
-        "0x417f88 __ZThn132_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x417f88() {
+    // IDA 0x417f88: __ZThn thunk (D0 deleting dtor): `this -= 132`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x41803c — __ZN3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -18442,20 +18246,16 @@ pub fn stub_0x418050() -> ! {
 #[doc(
     alias = "__ZThn132_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x418100() -> ! {
-    todo!(
-        "0x418100 __ZThn132_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x418100() {
+    // IDA 0x418100: __ZThn thunk (D1 base dtor): `this -= 132`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x418114 — __ZThn132_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn132_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x418114() -> ! {
-    todo!(
-        "0x418114 __ZThn132_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x418114() {
+    // IDA 0x418114: __ZThn thunk (D0 deleting dtor): `this -= 132`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x418690 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19CornerWedgeInstanceES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -18473,80 +18273,64 @@ pub fn stub_0x418690() -> ! {
 #[doc(
     alias = "__ZThn32_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x418c98() -> ! {
-    todo!(
-        "0x418c98 __ZThn32_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x418c98() {
+    // IDA 0x418c98: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x418cac — __ZThn32_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x418cac() -> ! {
-    todo!(
-        "0x418cac __ZThn32_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x418cac() {
+    // IDA 0x418cac: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x418d60 — __ZThn36_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x418d60() -> ! {
-    todo!(
-        "0x418d60 __ZThn36_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x418d60() {
+    // IDA 0x418d60: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x418d74 — __ZThn36_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x418d74() -> ! {
-    todo!(
-        "0x418d74 __ZThn36_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x418d74() {
+    // IDA 0x418d74: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x418e94 — __ZThn32_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x418e94() -> ! {
-    todo!(
-        "0x418e94 __ZThn32_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x418e94() {
+    // IDA 0x418e94: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x418ea8 — __ZThn32_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn32_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x418ea8() -> ! {
-    todo!(
-        "0x418ea8 __ZThn32_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x418ea8() {
+    // IDA 0x418ea8: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x418f5c — __ZThn36_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
 )]
-pub fn stub_0x418f5c() -> ! {
-    todo!(
-        "0x418f5c __ZThn36_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
-    )
+pub fn stub_0x418f5c() {
+    // IDA 0x418f5c: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x418f70 — __ZThn36_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(
     alias = "__ZThn36_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
 )]
-pub fn stub_0x418f70() -> ! {
-    todo!(
-        "0x418f70 __ZThn36_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
-    )
+pub fn stub_0x418f70() {
+    // IDA 0x418f70: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x41d3d0 — __ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEEC2Ev
@@ -21313,8 +21097,8 @@ pub fn stub_0x460ab0() -> ! {
 
 // 0x460b90 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_9DataModelENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x460b90() -> ! {
-    todo!("0x460b90 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x460b90() {
+    // IDA 0x460b90: __ZThn thunk (D1 base dtor): `this -= 40`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x460b98 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
@@ -21445,8 +21229,8 @@ pub fn stub_0x4612ac() -> ! {
 
 // 0x46138c — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_9DataModelENS_9WorkspaceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Workspace>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x46138c() -> ! {
-    todo!("0x46138c non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Workspace>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x46138c() {
+    // IDA 0x46138c: __ZThn thunk (D1 base dtor): `this -= 40`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x461394 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelEPNS_9WorkspaceEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
@@ -22693,8 +22477,8 @@ pub fn stub_0x46c878() -> ! {
 // 0x46c950 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_8functionISC_EELi2ESC_E4callES7_SB_
 // was: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::call(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::call(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x46c950() -> ! {
-    todo!("0x46c950 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::call(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x46c950() {
+    // IDA 0x46c950: __ZThn thunk: this-adjust + tail-call to base destructor in place (D1 base dtor). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x46c958 — __ZNK5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS2_10Reflection18PropertyDescriptorEEclES4_S8_
@@ -26520,26 +26304,26 @@ pub fn stub_0x492550() -> ! {
 
 // 0x49262c — __ZThn32_N3RBX10Reflection9DescribedINS_7TextureELZNS_8sTextureEENS_14FactoryProductIS2_NS_5DecalELZNS_8sTextureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7TextureELZNS_8sTextureEENS_14FactoryProductIS2_NS_5DecalELZNS_8sTextureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x49262c() -> ! {
-    todo!("0x49262c __ZThn32_N3RBX10Reflection9DescribedINS_7TextureELZNS_8sTextureEENS_14FactoryProductIS2_NS_5DecalELZNS_8sTextureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x49262c() {
+    // IDA 0x49262c: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x492670 — __ZThn32_N3RBX10Reflection9DescribedINS_7TextureELZNS_8sTextureEENS_14FactoryProductIS2_NS_5DecalELZNS_8sTextureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7TextureELZNS_8sTextureEENS_14FactoryProductIS2_NS_5DecalELZNS_8sTextureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x492670() -> ! {
-    todo!("0x492670 __ZThn32_N3RBX10Reflection9DescribedINS_7TextureELZNS_8sTextureEENS_14FactoryProductIS2_NS_5DecalELZNS_8sTextureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x492670() {
+    // IDA 0x492670: __ZThn thunk (D0 deleting dtor): `this -= 8`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x49274c — __ZThn36_N3RBX10Reflection9DescribedINS_7TextureELZNS_8sTextureEENS_14FactoryProductIS2_NS_5DecalELZNS_8sTextureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7TextureELZNS_8sTextureEENS_14FactoryProductIS2_NS_5DecalELZNS_8sTextureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x49274c() -> ! {
-    todo!("0x49274c __ZThn36_N3RBX10Reflection9DescribedINS_7TextureELZNS_8sTextureEENS_14FactoryProductIS2_NS_5DecalELZNS_8sTextureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x49274c() {
+    // IDA 0x49274c: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x492790 — __ZThn36_N3RBX10Reflection9DescribedINS_7TextureELZNS_8sTextureEENS_14FactoryProductIS2_NS_5DecalELZNS_8sTextureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7TextureELZNS_8sTextureEENS_14FactoryProductIS2_NS_5DecalELZNS_8sTextureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x492790() -> ! {
-    todo!("0x492790 __ZThn36_N3RBX10Reflection9DescribedINS_7TextureELZNS_8sTextureEENS_14FactoryProductIS2_NS_5DecalELZNS_8sTextureEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x492790() {
+    // IDA 0x492790: __ZThn thunk (D0 deleting dtor): `this -= 9`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x49286c — __ZN3RBX10Reflection14PropDescriptorINS_7TextureEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -26592,26 +26376,26 @@ pub fn stub_0x492c00() -> ! {
 
 // 0x492ca0 — __ZThn32_N3RBX10Reflection9DescribedINS_5DecalELZNS_6sDecalEENS_14FactoryProductIS2_NS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5DecalELZNS_6sDecalEENS_14FactoryProductIS2_NS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x492ca0() -> ! {
-    todo!("0x492ca0 __ZThn32_N3RBX10Reflection9DescribedINS_5DecalELZNS_6sDecalEENS_14FactoryProductIS2_NS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x492ca0() {
+    // IDA 0x492ca0: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x492ca8 — __ZThn32_N3RBX10Reflection9DescribedINS_5DecalELZNS_6sDecalEENS_14FactoryProductIS2_NS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5DecalELZNS_6sDecalEENS_14FactoryProductIS2_NS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x492ca8() -> ! {
-    todo!("0x492ca8 __ZThn32_N3RBX10Reflection9DescribedINS_5DecalELZNS_6sDecalEENS_14FactoryProductIS2_NS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x492ca8() {
+    // IDA 0x492ca8: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x492d4c — __ZThn36_N3RBX10Reflection9DescribedINS_5DecalELZNS_6sDecalEENS_14FactoryProductIS2_NS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5DecalELZNS_6sDecalEENS_14FactoryProductIS2_NS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x492d4c() -> ! {
-    todo!("0x492d4c __ZThn36_N3RBX10Reflection9DescribedINS_5DecalELZNS_6sDecalEENS_14FactoryProductIS2_NS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x492d4c() {
+    // IDA 0x492d4c: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x492d54 — __ZThn36_N3RBX10Reflection9DescribedINS_5DecalELZNS_6sDecalEENS_14FactoryProductIS2_NS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5DecalELZNS_6sDecalEENS_14FactoryProductIS2_NS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x492d54() -> ! {
-    todo!("0x492d54 __ZThn36_N3RBX10Reflection9DescribedINS_5DecalELZNS_6sDecalEENS_14FactoryProductIS2_NS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x492d54() {
+    // IDA 0x492d54: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x492df8 — __ZN3RBX10Reflection14PropDescriptorINS_5DecalEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -26713,26 +26497,26 @@ pub fn stub_0x494cf0() -> ! {
 
 // 0x494d90 — __ZThn32_N3RBX10Reflection9DescribedINS_12DialogChoiceELZNS_13sDialogChoiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sDialogChoiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12DialogChoiceELZNS_13sDialogChoiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sDialogChoiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x494d90() -> ! {
-    todo!("0x494d90 __ZThn32_N3RBX10Reflection9DescribedINS_12DialogChoiceELZNS_13sDialogChoiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sDialogChoiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x494d90() {
+    // IDA 0x494d90: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x494d98 — __ZThn32_N3RBX10Reflection9DescribedINS_12DialogChoiceELZNS_13sDialogChoiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sDialogChoiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12DialogChoiceELZNS_13sDialogChoiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sDialogChoiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x494d98() -> ! {
-    todo!("0x494d98 __ZThn32_N3RBX10Reflection9DescribedINS_12DialogChoiceELZNS_13sDialogChoiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sDialogChoiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x494d98() {
+    // IDA 0x494d98: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x494e3c — __ZThn36_N3RBX10Reflection9DescribedINS_12DialogChoiceELZNS_13sDialogChoiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sDialogChoiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_12DialogChoiceELZNS_13sDialogChoiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sDialogChoiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x494e3c() -> ! {
-    todo!("0x494e3c __ZThn36_N3RBX10Reflection9DescribedINS_12DialogChoiceELZNS_13sDialogChoiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sDialogChoiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x494e3c() {
+    // IDA 0x494e3c: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x494e44 — __ZThn36_N3RBX10Reflection9DescribedINS_12DialogChoiceELZNS_13sDialogChoiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sDialogChoiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_12DialogChoiceELZNS_13sDialogChoiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sDialogChoiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x494e44() -> ! {
-    todo!("0x494e44 __ZThn36_N3RBX10Reflection9DescribedINS_12DialogChoiceELZNS_13sDialogChoiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sDialogChoiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x494e44() {
+    // IDA 0x494e44: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x494ee8 — __ZN3RBX10Reflection14PropDescriptorINS_12DialogChoiceESsEC2IMS2_KFSsvEMS2_FvSsEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -26893,26 +26677,26 @@ pub fn stub_0x497d04() -> ! {
 
 // 0x497da4 — __ZThn32_N3RBX10Reflection9DescribedINS_10DialogRootELZNS_11sDialogRootEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sDialogRootEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10DialogRootELZNS_11sDialogRootEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sDialogRootEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x497da4() -> ! {
-    todo!("0x497da4 __ZThn32_N3RBX10Reflection9DescribedINS_10DialogRootELZNS_11sDialogRootEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sDialogRootEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x497da4() {
+    // IDA 0x497da4: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x497dac — __ZThn32_N3RBX10Reflection9DescribedINS_10DialogRootELZNS_11sDialogRootEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sDialogRootEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10DialogRootELZNS_11sDialogRootEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sDialogRootEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x497dac() -> ! {
-    todo!("0x497dac __ZThn32_N3RBX10Reflection9DescribedINS_10DialogRootELZNS_11sDialogRootEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sDialogRootEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x497dac() {
+    // IDA 0x497dac: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x497e50 — __ZThn36_N3RBX10Reflection9DescribedINS_10DialogRootELZNS_11sDialogRootEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sDialogRootEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10DialogRootELZNS_11sDialogRootEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sDialogRootEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x497e50() -> ! {
-    todo!("0x497e50 __ZThn36_N3RBX10Reflection9DescribedINS_10DialogRootELZNS_11sDialogRootEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sDialogRootEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x497e50() {
+    // IDA 0x497e50: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x497e58 — __ZThn36_N3RBX10Reflection9DescribedINS_10DialogRootELZNS_11sDialogRootEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sDialogRootEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10DialogRootELZNS_11sDialogRootEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sDialogRootEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x497e58() -> ! {
-    todo!("0x497e58 __ZThn36_N3RBX10Reflection9DescribedINS_10DialogRootELZNS_11sDialogRootEENS_14FactoryProductIS2_NS_8InstanceELZNS_11sDialogRootEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x497e58() {
+    // IDA 0x497e58: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4988dc — __ZN3RBX10Reflection15RemoteEventDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx13remote_signalIS7_EEED0Ev
@@ -32434,8 +32218,8 @@ pub fn stub_0x4ed4f8() -> ! {
 
 // 0x4ed5d8 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x4ed5d8() -> ! {
-    todo!("0x4ed5d8 __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")
+pub fn stub_0x4ed5d8() {
+    // IDA 0x4ed5d8: __ZThn thunk (D1 base dtor): `this -= 40`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4ed5e0 — __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEPNS_4HoleEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -32506,26 +32290,26 @@ pub fn stub_0x4edf00() -> ! {
 
 // 0x4edfa0 — __ZThn32_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4edfa0() -> ! {
-    todo!("0x4edfa0 __ZThn32_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4edfa0() {
+    // IDA 0x4edfa0: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4edfa8 — __ZThn32_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4edfa8() -> ! {
-    todo!("0x4edfa8 __ZThn32_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4edfa8() {
+    // IDA 0x4edfa8: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4ee04c — __ZThn36_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4ee04c() -> ! {
-    todo!("0x4ee04c __ZThn36_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4ee04c() {
+    // IDA 0x4ee04c: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4ee054 — __ZThn36_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4ee054() -> ! {
-    todo!("0x4ee054 __ZThn36_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4ee054() {
+    // IDA 0x4ee054: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4ee0f8 — __ZN3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEEC2IMS2_KFRKS3_vEMS2_FvS7_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -32686,26 +32470,26 @@ pub fn stub_0x4f0750() -> ! {
 
 // 0x4f07f0 — __ZThn32_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4f07f0() -> ! {
-    todo!("0x4f07f0 __ZThn32_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4f07f0() {
+    // IDA 0x4f07f0: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4f07f8 — __ZThn32_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4f07f8() -> ! {
-    todo!("0x4f07f8 __ZThn32_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4f07f8() {
+    // IDA 0x4f07f8: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4f089c — __ZThn36_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4f089c() -> ! {
-    todo!("0x4f089c __ZThn36_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4f089c() {
+    // IDA 0x4f089c: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4f08a4 — __ZThn36_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4f08a4() -> ! {
-    todo!("0x4f08a4 __ZThn36_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4f08a4() {
+    // IDA 0x4f08a4: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4f0948 — __ZN3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -32722,26 +32506,26 @@ pub fn stub_0x4f094c() -> ! {
 
 // 0x4f09ec — __ZThn32_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4f09ec() -> ! {
-    todo!("0x4f09ec __ZThn32_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4f09ec() {
+    // IDA 0x4f09ec: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4f09f4 — __ZThn32_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4f09f4() -> ! {
-    todo!("0x4f09f4 __ZThn32_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4f09f4() {
+    // IDA 0x4f09f4: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4f0a98 — __ZThn36_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4f0a98() -> ! {
-    todo!("0x4f0a98 __ZThn36_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4f0a98() {
+    // IDA 0x4f0a98: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4f0aa0 — __ZThn36_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4f0aa0() -> ! {
-    todo!("0x4f0aa0 __ZThn36_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4f0aa0() {
+    // IDA 0x4f0aa0: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4f0b44 — __ZN3RBX10Reflection14PropDescriptorINS_4FireEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -32872,38 +32656,38 @@ pub fn stub_0x4f2c48() -> ! {
 
 // 0x4f2ce8 — __ZThn32_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4f2ce8() -> ! {
-    todo!("0x4f2ce8 __ZThn32_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4f2ce8() {
+    // IDA 0x4f2ce8: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4f2cf0 — __ZThn32_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4f2cf0() -> ! {
-    todo!("0x4f2cf0 __ZThn32_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4f2cf0() {
+    // IDA 0x4f2cf0: __ZThn thunk: this-adjust + tail-call to base destructor in place (D1 base dtor). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4f2d94 — __ZThn36_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4f2d94() -> ! {
-    todo!("0x4f2d94 __ZThn36_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4f2d94() {
+    // IDA 0x4f2d94: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4f2d9c — __ZThn36_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4f2d9c() -> ! {
-    todo!("0x4f2d9c __ZThn36_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4f2d9c() {
+    // IDA 0x4f2d9c: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4f2e40 — __ZThn292_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn292_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4f2e40() -> ! {
-    todo!("0x4f2e40 __ZThn292_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4f2e40() {
+    // IDA 0x4f2e40: __ZThn thunk (D1 base dtor): `this -= 292`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4f2e48 — __ZThn292_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn292_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4f2e48() -> ! {
-    todo!("0x4f2e48 __ZThn292_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4f2e48() {
+    // IDA 0x4f2e48: __ZThn thunk (D0 deleting dtor): `this -= 292`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4f2eec — __ZN3RBX10Reflection14PropDescriptorINS_4FlagENS_10BrickColorEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -32974,14 +32758,14 @@ pub fn stub_0x4f4ed4() -> ! {
 
 // 0x4f4f84 — __ZThn132_N3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn132_N3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4f4f84() -> ! {
-    todo!("0x4f4f84 __ZThn132_N3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4f4f84() {
+    // IDA 0x4f4f84: __ZThn thunk (D1 base dtor): `this -= 132`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4f4f98 — __ZThn132_N3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn132_N3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4f4f98() -> ! {
-    todo!("0x4f4f98 __ZThn132_N3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4f4f98() {
+    // IDA 0x4f4f98: __ZThn thunk (D0 deleting dtor): `this -= 132`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4f504c — __ZN3RBX10Reflection9DescribedINS_9FlagStandELZNS_10sFlagStandEENS_14FactoryProductIS2_NS_17BasicPartInstanceELZNS_10sFlagStandEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -32998,20 +32782,20 @@ pub fn stub_0x4f5060() -> ! {
 
 // 0x37d34c — __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x37d34c() -> ! {
-    todo!("0x37d34c __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x37d34c() {
+    // IDA 0x37d34c: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x37d3f0 — __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x37d3f0() -> ! {
-    todo!("0x37d3f0 __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x37d3f0() {
+    // IDA 0x37d3f0: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x37d3f8 — __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x37d3f8() -> ! {
-    todo!("0x37d3f8 __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundServiceELZNS2_13sSoundServiceEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundServiceEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x37d3f8() {
+    // IDA 0x37d3f8: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x390c68 — __ZN3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -33028,50 +32812,50 @@ pub fn stub_0x390c7c() -> ! {
 
 // 0x390d2c — __ZThn128_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn128_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x390d2c() -> ! {
-    todo!("0x390d2c __ZThn128_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x390d2c() {
+    // IDA 0x390d2c: __ZThn thunk (D1 base dtor): `this -= 128`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x390d40 — __ZThn128_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn128_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x390d40() -> ! {
-    todo!("0x390d40 __ZThn128_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x390d40() {
+    // IDA 0x390d40: __ZThn thunk (D0 deleting dtor): `this -= 128`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x390f28 — __ZThn32_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x390f28() -> ! {
-    todo!("0x390f28 __ZThn32_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x390f28() {
+    // IDA 0x390f28: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x390fdc — __ZThn36_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x390fdc() -> ! {
-    todo!("0x390fdc __ZThn36_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x390fdc() {
+    // IDA 0x390fdc: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x391090 — __ZThn92_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x391090() -> ! {
-    todo!("0x391090 __ZThn92_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x391090() {
+    // IDA 0x391090: __ZThn thunk (D0 deleting dtor): `this -= 92`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x391144 — __ZThn32_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x391144() -> ! {
-    todo!("0x391144 __ZThn32_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x391144() {
+    // IDA 0x391144: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x391158 — __ZThn36_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x391158() -> ! {
-    todo!("0x391158 __ZThn36_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x391158() {
+    // IDA 0x391158: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x39116c — __ZThn92_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x39116c() -> ! {
-    todo!("0x39116c __ZThn92_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x39116c() {
+    // IDA 0x39116c: __ZThn thunk (D1 base dtor): `this -= 92`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x392edc — __ZN3RBX10Reflection9DescribedINS_12AccoutrementELZNS_13sAccoutrementEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sAccoutrementEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -33088,26 +32872,26 @@ pub fn stub_0x392ee0() -> ! {
 
 // 0x392f80 — __ZThn32_N3RBX10Reflection9DescribedINS_12AccoutrementELZNS_13sAccoutrementEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sAccoutrementEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12AccoutrementELZNS_13sAccoutrementEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sAccoutrementEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x392f80() -> ! {
-    todo!("0x392f80 __ZThn32_N3RBX10Reflection9DescribedINS_12AccoutrementELZNS_13sAccoutrementEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sAccoutrementEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x392f80() {
+    // IDA 0x392f80: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x392f88 — __ZThn32_N3RBX10Reflection9DescribedINS_12AccoutrementELZNS_13sAccoutrementEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sAccoutrementEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12AccoutrementELZNS_13sAccoutrementEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sAccoutrementEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x392f88() -> ! {
-    todo!("0x392f88 __ZThn32_N3RBX10Reflection9DescribedINS_12AccoutrementELZNS_13sAccoutrementEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sAccoutrementEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x392f88() {
+    // IDA 0x392f88: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x39302c — __ZThn36_N3RBX10Reflection9DescribedINS_12AccoutrementELZNS_13sAccoutrementEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sAccoutrementEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_12AccoutrementELZNS_13sAccoutrementEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sAccoutrementEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x39302c() -> ! {
-    todo!("0x39302c __ZThn36_N3RBX10Reflection9DescribedINS_12AccoutrementELZNS_13sAccoutrementEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sAccoutrementEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x39302c() {
+    // IDA 0x39302c: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x393034 — __ZThn36_N3RBX10Reflection9DescribedINS_12AccoutrementELZNS_13sAccoutrementEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sAccoutrementEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_12AccoutrementELZNS_13sAccoutrementEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sAccoutrementEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x393034() -> ! {
-    todo!("0x393034 __ZThn36_N3RBX10Reflection9DescribedINS_12AccoutrementELZNS_13sAccoutrementEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sAccoutrementEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x393034() {
+    // IDA 0x393034: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x394ae0 — __ZN3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -33124,26 +32908,26 @@ pub fn stub_0x394b9c() -> ! {
 
 // 0x394c68 — __ZThn32_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x394c68() -> ! {
-    todo!("0x394c68 __ZThn32_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x394c68() {
+    // IDA 0x394c68: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x394d20 — __ZThn32_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x394d20() -> ! {
-    todo!("0x394d20 __ZThn32_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x394d20() {
+    // IDA 0x394d20: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x394df0 — __ZThn36_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x394df0() -> ! {
-    todo!("0x394df0 __ZThn36_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x394df0() {
+    // IDA 0x394df0: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x394ea8 — __ZThn36_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x394ea8() -> ! {
-    todo!("0x394ea8 __ZThn36_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x394ea8() {
+    // IDA 0x394ea8: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x395720 — __ZN3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -33160,26 +32944,26 @@ pub fn stub_0x3957dc() -> ! {
 
 // 0x3958a8 — __ZThn32_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3958a8() -> ! {
-    todo!("0x3958a8 __ZThn32_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3958a8() {
+    // IDA 0x3958a8: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x395960 — __ZThn32_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x395960() -> ! {
-    todo!("0x395960 __ZThn32_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x395960() {
+    // IDA 0x395960: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x395a30 — __ZThn36_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x395a30() -> ! {
-    todo!("0x395a30 __ZThn36_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x395a30() {
+    // IDA 0x395a30: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x395ae8 — __ZThn36_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x395ae8() -> ! {
-    todo!("0x395ae8 __ZThn36_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x395ae8() {
+    // IDA 0x395ae8: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x39750c — __ZN3RBX10Reflection9DescribedINS_9AnimationELZNS_10sAnimationEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sAnimationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -33196,26 +32980,26 @@ pub fn stub_0x397510() -> ! {
 
 // 0x3975b0 — __ZThn32_N3RBX10Reflection9DescribedINS_9AnimationELZNS_10sAnimationEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sAnimationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9AnimationELZNS_10sAnimationEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sAnimationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3975b0() -> ! {
-    todo!("0x3975b0 __ZThn32_N3RBX10Reflection9DescribedINS_9AnimationELZNS_10sAnimationEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sAnimationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3975b0() {
+    // IDA 0x3975b0: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3975b8 — __ZThn32_N3RBX10Reflection9DescribedINS_9AnimationELZNS_10sAnimationEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sAnimationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9AnimationELZNS_10sAnimationEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sAnimationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3975b8() -> ! {
-    todo!("0x3975b8 __ZThn32_N3RBX10Reflection9DescribedINS_9AnimationELZNS_10sAnimationEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sAnimationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3975b8() {
+    // IDA 0x3975b8: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x39765c — __ZThn36_N3RBX10Reflection9DescribedINS_9AnimationELZNS_10sAnimationEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sAnimationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9AnimationELZNS_10sAnimationEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sAnimationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x39765c() -> ! {
-    todo!("0x39765c __ZThn36_N3RBX10Reflection9DescribedINS_9AnimationELZNS_10sAnimationEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sAnimationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x39765c() {
+    // IDA 0x39765c: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x397664 — __ZThn36_N3RBX10Reflection9DescribedINS_9AnimationELZNS_10sAnimationEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sAnimationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9AnimationELZNS_10sAnimationEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sAnimationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x397664() -> ! {
-    todo!("0x397664 __ZThn36_N3RBX10Reflection9DescribedINS_9AnimationELZNS_10sAnimationEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sAnimationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x397664() {
+    // IDA 0x397664: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x39998c — __ZN3RBX10Reflection9DescribedINS_14AnimationTrackELZNS_15sAnimationTrackEENS_17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -33232,26 +33016,26 @@ pub fn stub_0x399990() -> ! {
 
 // 0x399a30 — __ZThn32_N3RBX10Reflection9DescribedINS_14AnimationTrackELZNS_15sAnimationTrackEENS_17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_14AnimationTrackELZNS_15sAnimationTrackEENS_17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x399a30() -> ! {
-    todo!("0x399a30 __ZThn32_N3RBX10Reflection9DescribedINS_14AnimationTrackELZNS_15sAnimationTrackEENS_17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x399a30() {
+    // IDA 0x399a30: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x399a38 — __ZThn32_N3RBX10Reflection9DescribedINS_14AnimationTrackELZNS_15sAnimationTrackEENS_17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_14AnimationTrackELZNS_15sAnimationTrackEENS_17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x399a38() -> ! {
-    todo!("0x399a38 __ZThn32_N3RBX10Reflection9DescribedINS_14AnimationTrackELZNS_15sAnimationTrackEENS_17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x399a38() {
+    // IDA 0x399a38: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x399adc — __ZThn36_N3RBX10Reflection9DescribedINS_14AnimationTrackELZNS_15sAnimationTrackEENS_17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_14AnimationTrackELZNS_15sAnimationTrackEENS_17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x399adc() -> ! {
-    todo!("0x399adc __ZThn36_N3RBX10Reflection9DescribedINS_14AnimationTrackELZNS_15sAnimationTrackEENS_17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x399adc() {
+    // IDA 0x399adc: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x399ae4 — __ZThn36_N3RBX10Reflection9DescribedINS_14AnimationTrackELZNS_15sAnimationTrackEENS_17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_14AnimationTrackELZNS_15sAnimationTrackEENS_17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x399ae4() -> ! {
-    todo!("0x399ae4 __ZThn36_N3RBX10Reflection9DescribedINS_14AnimationTrackELZNS_15sAnimationTrackEENS_17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x399ae4() {
+    // IDA 0x399ae4: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x39f398 — __ZN3RBX10Reflection9DescribedINS_19AnimationTrackStateELZNS_20sAnimationTrackStateEENS_17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -33268,26 +33052,26 @@ pub fn stub_0x39f39c() -> ! {
 
 // 0x39f43c — __ZThn32_N3RBX10Reflection9DescribedINS_19AnimationTrackStateELZNS_20sAnimationTrackStateEENS_17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_19AnimationTrackStateELZNS_20sAnimationTrackStateEENS_17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x39f43c() -> ! {
-    todo!("0x39f43c __ZThn32_N3RBX10Reflection9DescribedINS_19AnimationTrackStateELZNS_20sAnimationTrackStateEENS_17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x39f43c() {
+    // IDA 0x39f43c: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x39f444 — __ZThn32_N3RBX10Reflection9DescribedINS_19AnimationTrackStateELZNS_20sAnimationTrackStateEENS_17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_19AnimationTrackStateELZNS_20sAnimationTrackStateEENS_17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x39f444() -> ! {
-    todo!("0x39f444 __ZThn32_N3RBX10Reflection9DescribedINS_19AnimationTrackStateELZNS_20sAnimationTrackStateEENS_17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x39f444() {
+    // IDA 0x39f444: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x39f4e8 — __ZThn36_N3RBX10Reflection9DescribedINS_19AnimationTrackStateELZNS_20sAnimationTrackStateEENS_17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_19AnimationTrackStateELZNS_20sAnimationTrackStateEENS_17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x39f4e8() -> ! {
-    todo!("0x39f4e8 __ZThn36_N3RBX10Reflection9DescribedINS_19AnimationTrackStateELZNS_20sAnimationTrackStateEENS_17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x39f4e8() {
+    // IDA 0x39f4e8: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x39f4f0 — __ZThn36_N3RBX10Reflection9DescribedINS_19AnimationTrackStateELZNS_20sAnimationTrackStateEENS_17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_19AnimationTrackStateELZNS_20sAnimationTrackStateEENS_17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x39f4f0() -> ! {
-    todo!("0x39f4f0 __ZThn36_N3RBX10Reflection9DescribedINS_19AnimationTrackStateELZNS_20sAnimationTrackStateEENS_17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x39f4f0() {
+    // IDA 0x39f4f0: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3a01a8 — __ZN5boost8functionIFvfffEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKfSC_SC_EENS4_5list4INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEENSJ_ILi2EEENSJ_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
@@ -33328,26 +33112,26 @@ pub fn stub_0x3a6bc8() -> ! {
 
 // 0x3a6c68 — __ZThn32_N3RBX10Reflection9DescribedINS_8AnimatorELZNS_9sAnimatorEENS_17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_8AnimatorELZNS_9sAnimatorEENS_17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3a6c68() -> ! {
-    todo!("0x3a6c68 __ZThn32_N3RBX10Reflection9DescribedINS_8AnimatorELZNS_9sAnimatorEENS_17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3a6c68() {
+    // IDA 0x3a6c68: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3a6c70 — __ZThn32_N3RBX10Reflection9DescribedINS_8AnimatorELZNS_9sAnimatorEENS_17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_8AnimatorELZNS_9sAnimatorEENS_17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3a6c70() -> ! {
-    todo!("0x3a6c70 __ZThn32_N3RBX10Reflection9DescribedINS_8AnimatorELZNS_9sAnimatorEENS_17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3a6c70() {
+    // IDA 0x3a6c70: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3a6d14 — __ZThn36_N3RBX10Reflection9DescribedINS_8AnimatorELZNS_9sAnimatorEENS_17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_8AnimatorELZNS_9sAnimatorEENS_17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3a6d14() -> ! {
-    todo!("0x3a6d14 __ZThn36_N3RBX10Reflection9DescribedINS_8AnimatorELZNS_9sAnimatorEENS_17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3a6d14() {
+    // IDA 0x3a6d14: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3a6d1c — __ZThn36_N3RBX10Reflection9DescribedINS_8AnimatorELZNS_9sAnimatorEENS_17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_8AnimatorELZNS_9sAnimatorEENS_17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3a6d1c() -> ! {
-    todo!("0x3a6d1c __ZThn36_N3RBX10Reflection9DescribedINS_8AnimatorELZNS_9sAnimatorEENS_17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3a6d1c() {
+    // IDA 0x3a6d1c: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3abc50 — __ZN3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -33364,26 +33148,26 @@ pub fn stub_0x3abc54() -> ! {
 
 // 0x3abcf4 — __ZThn32_N3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3abcf4() -> ! {
-    todo!("0x3abcf4 __ZThn32_N3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3abcf4() {
+    // IDA 0x3abcf4: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3abcfc — __ZThn32_N3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3abcfc() -> ! {
-    todo!("0x3abcfc __ZThn32_N3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3abcfc() {
+    // IDA 0x3abcfc: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3abda0 — __ZThn36_N3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3abda0() -> ! {
-    todo!("0x3abda0 __ZThn36_N3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3abda0() {
+    // IDA 0x3abda0: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3abda8 — __ZThn36_N3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3abda8() -> ! {
-    todo!("0x3abda8 __ZThn36_N3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3abda8() {
+    // IDA 0x3abda8: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3ad3e8 — __ZN5boost8functionIFvN3G3D7Vector34AxisEffEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKS3_RKfSH_EENS7_5list4INS7_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSO_ILi2EEENSO_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE
@@ -33424,26 +33208,26 @@ pub fn stub_0x3b1ccc() -> ! {
 
 // 0x3b1d6c — __ZThn32_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3b1d6c() -> ! {
-    todo!("0x3b1d6c __ZThn32_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3b1d6c() {
+    // IDA 0x3b1d6c: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3b1d74 — __ZThn32_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3b1d74() -> ! {
-    todo!("0x3b1d74 __ZThn32_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3b1d74() {
+    // IDA 0x3b1d74: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3b1e18 — __ZThn36_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3b1e18() -> ! {
-    todo!("0x3b1e18 __ZThn36_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3b1e18() {
+    // IDA 0x3b1e18: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3b1e20 — __ZThn36_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3b1e20() -> ! {
-    todo!("0x3b1e20 __ZThn36_N3RBX10Reflection9DescribedINS_8BackpackELZNS_9sBackpackEENS_14FactoryProductIS2_NS_6HopperELZNS_9sBackpackEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3b1e20() {
+    // IDA 0x3b1e20: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3b9910 — __ZN3RBX10Reflection9DescribedINS_12BadgeServiceELZNS_13sBadgeServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sBadgeServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -33460,26 +33244,26 @@ pub fn stub_0x3b9914() -> ! {
 
 // 0x3b99b4 — __ZThn32_N3RBX10Reflection9DescribedINS_12BadgeServiceELZNS_13sBadgeServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sBadgeServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12BadgeServiceELZNS_13sBadgeServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sBadgeServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3b99b4() -> ! {
-    todo!("0x3b99b4 __ZThn32_N3RBX10Reflection9DescribedINS_12BadgeServiceELZNS_13sBadgeServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sBadgeServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3b99b4() {
+    // IDA 0x3b99b4: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3b99bc — __ZThn32_N3RBX10Reflection9DescribedINS_12BadgeServiceELZNS_13sBadgeServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sBadgeServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12BadgeServiceELZNS_13sBadgeServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sBadgeServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3b99bc() -> ! {
-    todo!("0x3b99bc __ZThn32_N3RBX10Reflection9DescribedINS_12BadgeServiceELZNS_13sBadgeServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sBadgeServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3b99bc() {
+    // IDA 0x3b99bc: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3b9a60 — __ZThn36_N3RBX10Reflection9DescribedINS_12BadgeServiceELZNS_13sBadgeServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sBadgeServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_12BadgeServiceELZNS_13sBadgeServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sBadgeServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3b9a60() -> ! {
-    todo!("0x3b9a60 __ZThn36_N3RBX10Reflection9DescribedINS_12BadgeServiceELZNS_13sBadgeServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sBadgeServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3b9a60() {
+    // IDA 0x3b9a60: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3b9a68 — __ZThn36_N3RBX10Reflection9DescribedINS_12BadgeServiceELZNS_13sBadgeServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sBadgeServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_12BadgeServiceELZNS_13sBadgeServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sBadgeServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3b9a68() -> ! {
-    todo!("0x3b9a68 __ZThn36_N3RBX10Reflection9DescribedINS_12BadgeServiceELZNS_13sBadgeServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_13sBadgeServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3b9a68() {
+    // IDA 0x3b9a68: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bc890 — __ZN3RBX10Reflection9DescribedINS_14FormFactorPartELZNS_15sFormFactorPartEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -33496,14 +33280,14 @@ pub fn stub_0x3bc8a4() -> ! {
 
 // 0x3bc954 — __ZThn132_N3RBX10Reflection9DescribedINS_14FormFactorPartELZNS_15sFormFactorPartEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn132_N3RBX10Reflection9DescribedINS_14FormFactorPartELZNS_15sFormFactorPartEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3bc954() -> ! {
-    todo!("0x3bc954 __ZThn132_N3RBX10Reflection9DescribedINS_14FormFactorPartELZNS_15sFormFactorPartEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3bc954() {
+    // IDA 0x3bc954: __ZThn thunk (D1 base dtor): `this -= 132`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bc968 — __ZThn132_N3RBX10Reflection9DescribedINS_14FormFactorPartELZNS_15sFormFactorPartEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn132_N3RBX10Reflection9DescribedINS_14FormFactorPartELZNS_15sFormFactorPartEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3bc968() -> ! {
-    todo!("0x3bc968 __ZThn132_N3RBX10Reflection9DescribedINS_14FormFactorPartELZNS_15sFormFactorPartEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3bc968() {
+    // IDA 0x3bc968: __ZThn thunk (D0 deleting dtor): `this -= 132`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bcd50 — __ZN3RBX10Reflection9DescribedINS_17BasicPartInstanceELZNS_10sBasicPartEENS_14FactoryProductIS2_NS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -33520,62 +33304,62 @@ pub fn stub_0x3bcd64() -> ! {
 
 // 0x3bce14 — __ZThn132_N3RBX10Reflection9DescribedINS_17BasicPartInstanceELZNS_10sBasicPartEENS_14FactoryProductIS2_NS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn132_N3RBX10Reflection9DescribedINS_17BasicPartInstanceELZNS_10sBasicPartEENS_14FactoryProductIS2_NS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3bce14() -> ! {
-    todo!("0x3bce14 __ZThn132_N3RBX10Reflection9DescribedINS_17BasicPartInstanceELZNS_10sBasicPartEENS_14FactoryProductIS2_NS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3bce14() {
+    // IDA 0x3bce14: __ZThn thunk (D1 base dtor): `this -= 132`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bce28 — __ZThn132_N3RBX10Reflection9DescribedINS_17BasicPartInstanceELZNS_10sBasicPartEENS_14FactoryProductIS2_NS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn132_N3RBX10Reflection9DescribedINS_17BasicPartInstanceELZNS_10sBasicPartEENS_14FactoryProductIS2_NS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3bce28() -> ! {
-    todo!("0x3bce28 __ZThn132_N3RBX10Reflection9DescribedINS_17BasicPartInstanceELZNS_10sBasicPartEENS_14FactoryProductIS2_NS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3bce28() {
+    // IDA 0x3bce28: __ZThn thunk (D0 deleting dtor): `this -= 132`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bd2dc — __ZThn32_N3RBX10Reflection9DescribedINS_17BasicPartInstanceELZNS_10sBasicPartEENS_14FactoryProductIS2_NS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_17BasicPartInstanceELZNS_10sBasicPartEENS_14FactoryProductIS2_NS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3bd2dc() -> ! {
-    todo!("0x3bd2dc __ZThn32_N3RBX10Reflection9DescribedINS_17BasicPartInstanceELZNS_10sBasicPartEENS_14FactoryProductIS2_NS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3bd2dc() {
+    // IDA 0x3bd2dc: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bd2f0 — __ZThn32_N3RBX10Reflection9DescribedINS_17BasicPartInstanceELZNS_10sBasicPartEENS_14FactoryProductIS2_NS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_17BasicPartInstanceELZNS_10sBasicPartEENS_14FactoryProductIS2_NS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3bd2f0() -> ! {
-    todo!("0x3bd2f0 __ZThn32_N3RBX10Reflection9DescribedINS_17BasicPartInstanceELZNS_10sBasicPartEENS_14FactoryProductIS2_NS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3bd2f0() {
+    // IDA 0x3bd2f0: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bd3a4 — __ZThn36_N3RBX10Reflection9DescribedINS_17BasicPartInstanceELZNS_10sBasicPartEENS_14FactoryProductIS2_NS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_17BasicPartInstanceELZNS_10sBasicPartEENS_14FactoryProductIS2_NS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3bd3a4() -> ! {
-    todo!("0x3bd3a4 __ZThn36_N3RBX10Reflection9DescribedINS_17BasicPartInstanceELZNS_10sBasicPartEENS_14FactoryProductIS2_NS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3bd3a4() {
+    // IDA 0x3bd3a4: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bd3b8 — __ZThn36_N3RBX10Reflection9DescribedINS_17BasicPartInstanceELZNS_10sBasicPartEENS_14FactoryProductIS2_NS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_17BasicPartInstanceELZNS_10sBasicPartEENS_14FactoryProductIS2_NS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3bd3b8() -> ! {
-    todo!("0x3bd3b8 __ZThn36_N3RBX10Reflection9DescribedINS_17BasicPartInstanceELZNS_10sBasicPartEENS_14FactoryProductIS2_NS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3bd3b8() {
+    // IDA 0x3bd3b8: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3be228 — __ZThn32_N3RBX10Reflection9DescribedINS_14FormFactorPartELZNS_15sFormFactorPartEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_14FormFactorPartELZNS_15sFormFactorPartEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3be228() -> ! {
-    todo!("0x3be228 __ZThn32_N3RBX10Reflection9DescribedINS_14FormFactorPartELZNS_15sFormFactorPartEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3be228() {
+    // IDA 0x3be228: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3be23c — __ZThn32_N3RBX10Reflection9DescribedINS_14FormFactorPartELZNS_15sFormFactorPartEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_14FormFactorPartELZNS_15sFormFactorPartEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3be23c() -> ! {
-    todo!("0x3be23c __ZThn32_N3RBX10Reflection9DescribedINS_14FormFactorPartELZNS_15sFormFactorPartEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3be23c() {
+    // IDA 0x3be23c: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3be2f0 — __ZThn36_N3RBX10Reflection9DescribedINS_14FormFactorPartELZNS_15sFormFactorPartEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_14FormFactorPartELZNS_15sFormFactorPartEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3be2f0() -> ! {
-    todo!("0x3be2f0 __ZThn36_N3RBX10Reflection9DescribedINS_14FormFactorPartELZNS_15sFormFactorPartEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3be2f0() {
+    // IDA 0x3be2f0: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3be304 — __ZThn36_N3RBX10Reflection9DescribedINS_14FormFactorPartELZNS_15sFormFactorPartEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_14FormFactorPartELZNS_15sFormFactorPartEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3be304() -> ! {
-    todo!("0x3be304 __ZThn36_N3RBX10Reflection9DescribedINS_14FormFactorPartELZNS_15sFormFactorPartEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3be304() {
+    // IDA 0x3be304: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bf4e0 — __ZN3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -33592,26 +33376,26 @@ pub fn stub_0x3bf4e4() -> ! {
 
 // 0x3bf584 — __ZThn32_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3bf584() -> ! {
-    todo!("0x3bf584 __ZThn32_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3bf584() {
+    // IDA 0x3bf584: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bf58c — __ZThn32_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3bf58c() -> ! {
-    todo!("0x3bf58c __ZThn32_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3bf58c() {
+    // IDA 0x3bf58c: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bf630 — __ZThn36_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3bf630() -> ! {
-    todo!("0x3bf630 __ZThn36_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3bf630() {
+    // IDA 0x3bf630: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bf638 — __ZThn36_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3bf638() -> ! {
-    todo!("0x3bf638 __ZThn36_N3RBX10Reflection9DescribedINS_9BevelMeshELZNS_10sBevelMeshEENS_17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3bf638() {
+    // IDA 0x3bf638: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3c1cf0 — __ZN3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -33628,26 +33412,26 @@ pub fn stub_0x3c1cf4() -> ! {
 
 // 0x3c1d94 — __ZThn32_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3c1d94() -> ! {
-    todo!("0x3c1d94 __ZThn32_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3c1d94() {
+    // IDA 0x3c1d94: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3c1d9c — __ZThn32_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3c1d9c() -> ! {
-    todo!("0x3c1d9c __ZThn32_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3c1d9c() {
+    // IDA 0x3c1d9c: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3c1e40 — __ZThn36_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3c1e40() -> ! {
-    todo!("0x3c1e40 __ZThn36_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3c1e40() {
+    // IDA 0x3c1e40: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3c1e48 — __ZThn36_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3c1e48() -> ! {
-    todo!("0x3c1e48 __ZThn36_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3c1e48() {
+    // IDA 0x3c1e48: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3cb8ec — __ZN3RBX10Reflection9DescribedINS_8HumanoidELZNS_9sHumanoidEENS_14FactoryProductIS2_NS_8InstanceELZNS_9sHumanoidEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -33670,26 +33454,26 @@ pub fn stub_0x3cbf54() -> ! {
 
 // 0x3cbff4 — __ZThn32_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3cbff4() -> ! {
-    todo!("0x3cbff4 __ZThn32_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3cbff4() {
+    // IDA 0x3cbff4: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3cbffc — __ZThn32_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3cbffc() -> ! {
-    todo!("0x3cbffc __ZThn32_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3cbffc() {
+    // IDA 0x3cbffc: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3cc0a0 — __ZThn36_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3cc0a0() -> ! {
-    todo!("0x3cc0a0 __ZThn36_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3cc0a0() {
+    // IDA 0x3cc0a0: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3cc0a8 — __ZThn36_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3cc0a8() -> ! {
-    todo!("0x3cc0a8 __ZThn36_N3RBX10Reflection9DescribedINS_6CameraELZNS_7sCameraEENS_14FactoryProductIS2_NS_8InstanceELZNS_7sCameraEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3cc0a8() {
+    // IDA 0x3cc0a8: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3cd6d4 — __ZN5boost8functionIFvbEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKbEENS4_5list2INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
@@ -33760,26 +33544,26 @@ pub fn stub_0x449918() -> ! {
 
 // 0x4499b8 — __ZThn32_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4499b8() -> ! {
-    todo!("0x4499b8 __ZThn32_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4499b8() {
+    // IDA 0x4499b8: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4499c0 — __ZThn32_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4499c0() -> ! {
-    todo!("0x4499c0 __ZThn32_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4499c0() {
+    // IDA 0x4499c0: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x449a64 — __ZThn36_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x449a64() -> ! {
-    todo!("0x449a64 __ZThn36_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x449a64() {
+    // IDA 0x449a64: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x449a6c — __ZThn36_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x449a6c() -> ! {
-    todo!("0x449a6c __ZThn36_N3RBX10Reflection9DescribedINS_13ScriptServiceELZNS_14sScriptServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sScriptServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x449a6c() {
+    // IDA 0x449a6c: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x450dc0 — __ZN3RBX10Reflection9DescribedINS_14PhysicsServiceELZNS_15sPhysicsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sPhysicsServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -33802,26 +33586,26 @@ pub fn stub_0x450ee4() -> ! {
 
 // 0x450f84 — __ZThn32_N3RBX10Reflection9DescribedINS_14PhysicsServiceELZNS_15sPhysicsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sPhysicsServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_14PhysicsServiceELZNS_15sPhysicsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sPhysicsServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x450f84() -> ! {
-    todo!("0x450f84 __ZThn32_N3RBX10Reflection9DescribedINS_14PhysicsServiceELZNS_15sPhysicsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sPhysicsServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x450f84() {
+    // IDA 0x450f84: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x450f8c — __ZThn32_N3RBX10Reflection9DescribedINS_14PhysicsServiceELZNS_15sPhysicsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sPhysicsServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_14PhysicsServiceELZNS_15sPhysicsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sPhysicsServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x450f8c() -> ! {
-    todo!("0x450f8c __ZThn32_N3RBX10Reflection9DescribedINS_14PhysicsServiceELZNS_15sPhysicsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sPhysicsServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x450f8c() {
+    // IDA 0x450f8c: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x451030 — __ZThn36_N3RBX10Reflection9DescribedINS_14PhysicsServiceELZNS_15sPhysicsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sPhysicsServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_14PhysicsServiceELZNS_15sPhysicsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sPhysicsServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x451030() -> ! {
-    todo!("0x451030 __ZThn36_N3RBX10Reflection9DescribedINS_14PhysicsServiceELZNS_15sPhysicsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sPhysicsServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x451030() {
+    // IDA 0x451030: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x451038 — __ZThn36_N3RBX10Reflection9DescribedINS_14PhysicsServiceELZNS_15sPhysicsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sPhysicsServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_14PhysicsServiceELZNS_15sPhysicsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sPhysicsServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x451038() -> ! {
-    todo!("0x451038 __ZThn36_N3RBX10Reflection9DescribedINS_14PhysicsServiceELZNS_15sPhysicsServiceEENS_17NonFactoryProductINS_8InstanceELZNS_15sPhysicsServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x451038() {
+    // IDA 0x451038: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x45764c — __ZN3RBX10Reflection9DescribedINS_9DataModelELZNS_10sDataModelEENS_17NonFactoryProductINS_15ServiceProviderELZNS_10sDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -33838,26 +33622,26 @@ pub fn stub_0x457650() -> ! {
 
 // 0x4576f0 — __ZThn32_N3RBX10Reflection9DescribedINS_9DataModelELZNS_10sDataModelEENS_17NonFactoryProductINS_15ServiceProviderELZNS_10sDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9DataModelELZNS_10sDataModelEENS_17NonFactoryProductINS_15ServiceProviderELZNS_10sDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4576f0() -> ! {
-    todo!("0x4576f0 __ZThn32_N3RBX10Reflection9DescribedINS_9DataModelELZNS_10sDataModelEENS_17NonFactoryProductINS_15ServiceProviderELZNS_10sDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4576f0() {
+    // IDA 0x4576f0: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4576f8 — __ZThn32_N3RBX10Reflection9DescribedINS_9DataModelELZNS_10sDataModelEENS_17NonFactoryProductINS_15ServiceProviderELZNS_10sDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9DataModelELZNS_10sDataModelEENS_17NonFactoryProductINS_15ServiceProviderELZNS_10sDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4576f8() -> ! {
-    todo!("0x4576f8 __ZThn32_N3RBX10Reflection9DescribedINS_9DataModelELZNS_10sDataModelEENS_17NonFactoryProductINS_15ServiceProviderELZNS_10sDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4576f8() {
+    // IDA 0x4576f8: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x45779c — __ZThn36_N3RBX10Reflection9DescribedINS_9DataModelELZNS_10sDataModelEENS_17NonFactoryProductINS_15ServiceProviderELZNS_10sDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9DataModelELZNS_10sDataModelEENS_17NonFactoryProductINS_15ServiceProviderELZNS_10sDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x45779c() -> ! {
-    todo!("0x45779c __ZThn36_N3RBX10Reflection9DescribedINS_9DataModelELZNS_10sDataModelEENS_17NonFactoryProductINS_15ServiceProviderELZNS_10sDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x45779c() {
+    // IDA 0x45779c: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4577a4 — __ZThn36_N3RBX10Reflection9DescribedINS_9DataModelELZNS_10sDataModelEENS_17NonFactoryProductINS_15ServiceProviderELZNS_10sDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9DataModelELZNS_10sDataModelEENS_17NonFactoryProductINS_15ServiceProviderELZNS_10sDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4577a4() -> ! {
-    todo!("0x4577a4 __ZThn36_N3RBX10Reflection9DescribedINS_9DataModelELZNS_10sDataModelEENS_17NonFactoryProductINS_15ServiceProviderELZNS_10sDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4577a4() {
+    // IDA 0x4577a4: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x45d228 — __ZN5boost9function1IvbEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKbEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE
@@ -33916,50 +33700,50 @@ pub fn stub_0x390af0() -> ! {
 
 // 0x390ba0 — __ZThn128_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn128_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x390ba0() -> ! {
-    todo!("0x390ba0 __ZThn128_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x390ba0() {
+    // IDA 0x390ba0: __ZThn thunk (D1 base dtor): `this -= 128`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x390bb4 — __ZThn128_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn128_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x390bb4() -> ! {
-    todo!("0x390bb4 __ZThn128_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x390bb4() {
+    // IDA 0x390bb4: __ZThn thunk (D0 deleting dtor): `this -= 128`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x391180 — __ZThn32_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x391180() -> ! {
-    todo!("0x391180 __ZThn32_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x391180() {
+    // IDA 0x391180: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x391234 — __ZThn36_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x391234() -> ! {
-    todo!("0x391234 __ZThn36_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x391234() {
+    // IDA 0x391234: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3912e8 — __ZThn92_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn92_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3912e8() -> ! {
-    todo!("0x3912e8 __ZThn92_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3912e8() {
+    // IDA 0x3912e8: __ZThn thunk (D0 deleting dtor): `this -= 92`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x39139c — __ZThn32_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x39139c() -> ! {
-    todo!("0x39139c __ZThn32_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x39139c() {
+    // IDA 0x39139c: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3913b0 — __ZThn36_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3913b0() -> ! {
-    todo!("0x3913b0 __ZThn36_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3913b0() {
+    // IDA 0x3913b0: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3913c4 — __ZThn92_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn92_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3913c4() -> ! {
-    todo!("0x3913c4 __ZThn92_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3913c4() {
+    // IDA 0x3913c4: __ZThn thunk (D1 base dtor): `this -= 92`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x392ce0 — __ZN3RBX18DescribedCreatableINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -33976,26 +33760,26 @@ pub fn stub_0x392ce4() -> ! {
 
 // 0x392d84 — __ZThn32_N3RBX18DescribedCreatableINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x392d84() -> ! {
-    todo!("0x392d84 __ZThn32_N3RBX18DescribedCreatableINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x392d84() {
+    // IDA 0x392d84: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x392d8c — __ZThn32_N3RBX18DescribedCreatableINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x392d8c() -> ! {
-    todo!("0x392d8c __ZThn32_N3RBX18DescribedCreatableINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x392d8c() {
+    // IDA 0x392d8c: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x392e30 — __ZThn36_N3RBX18DescribedCreatableINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x392e30() -> ! {
-    todo!("0x392e30 __ZThn36_N3RBX18DescribedCreatableINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x392e30() {
+    // IDA 0x392e30: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x392e38 — __ZThn36_N3RBX18DescribedCreatableINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x392e38() -> ! {
-    todo!("0x392e38 __ZThn36_N3RBX18DescribedCreatableINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x392e38() {
+    // IDA 0x392e38: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bc48c — __ZN3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EEC2Ev
@@ -34018,14 +33802,14 @@ pub fn stub_0x3bc718() -> ! {
 
 // 0x3bc7c8 — __ZThn132_N3RBX21DescribedNonCreatableINS_14FormFactorPartENS_12PartInstanceELZNS_15sFormFactorPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn132_N3RBX21DescribedNonCreatableINS_14FormFactorPartENS_12PartInstanceELZNS_15sFormFactorPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3bc7c8() -> ! {
-    todo!("0x3bc7c8 __ZThn132_N3RBX21DescribedNonCreatableINS_14FormFactorPartENS_12PartInstanceELZNS_15sFormFactorPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3bc7c8() {
+    // IDA 0x3bc7c8: __ZThn thunk (D1 base dtor): `this -= 132`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bc7dc — __ZThn132_N3RBX21DescribedNonCreatableINS_14FormFactorPartENS_12PartInstanceELZNS_15sFormFactorPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn132_N3RBX21DescribedNonCreatableINS_14FormFactorPartENS_12PartInstanceELZNS_15sFormFactorPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3bc7dc() -> ! {
-    todo!("0x3bc7dc __ZThn132_N3RBX21DescribedNonCreatableINS_14FormFactorPartENS_12PartInstanceELZNS_15sFormFactorPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3bc7dc() {
+    // IDA 0x3bc7dc: __ZThn thunk (D0 deleting dtor): `this -= 132`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bcbc4 — __ZN3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -34042,62 +33826,62 @@ pub fn stub_0x3bcbd8() -> ! {
 
 // 0x3bcc88 — __ZThn132_N3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn132_N3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3bcc88() -> ! {
-    todo!("0x3bcc88 __ZThn132_N3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3bcc88() {
+    // IDA 0x3bcc88: __ZThn thunk (D1 base dtor): `this -= 132`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bcc9c — __ZThn132_N3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn132_N3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3bcc9c() -> ! {
-    todo!("0x3bcc9c __ZThn132_N3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3bcc9c() {
+    // IDA 0x3bcc9c: __ZThn thunk (D0 deleting dtor): `this -= 132`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bd14c — __ZThn32_N3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3bd14c() -> ! {
-    todo!("0x3bd14c __ZThn32_N3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3bd14c() {
+    // IDA 0x3bd14c: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bd160 — __ZThn32_N3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3bd160() -> ! {
-    todo!("0x3bd160 __ZThn32_N3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3bd160() {
+    // IDA 0x3bd160: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bd214 — __ZThn36_N3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3bd214() -> ! {
-    todo!("0x3bd214 __ZThn36_N3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3bd214() {
+    // IDA 0x3bd214: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bd228 — __ZThn36_N3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3bd228() -> ! {
-    todo!("0x3bd228 __ZThn36_N3RBX18DescribedCreatableINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3bd228() {
+    // IDA 0x3bd228: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3be01c — __ZThn32_N3RBX21DescribedNonCreatableINS_14FormFactorPartENS_12PartInstanceELZNS_15sFormFactorPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_14FormFactorPartENS_12PartInstanceELZNS_15sFormFactorPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3be01c() -> ! {
-    todo!("0x3be01c __ZThn32_N3RBX21DescribedNonCreatableINS_14FormFactorPartENS_12PartInstanceELZNS_15sFormFactorPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3be01c() {
+    // IDA 0x3be01c: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3be030 — __ZThn32_N3RBX21DescribedNonCreatableINS_14FormFactorPartENS_12PartInstanceELZNS_15sFormFactorPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_14FormFactorPartENS_12PartInstanceELZNS_15sFormFactorPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3be030() -> ! {
-    todo!("0x3be030 __ZThn32_N3RBX21DescribedNonCreatableINS_14FormFactorPartENS_12PartInstanceELZNS_15sFormFactorPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3be030() {
+    // IDA 0x3be030: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3be0e4 — __ZThn36_N3RBX21DescribedNonCreatableINS_14FormFactorPartENS_12PartInstanceELZNS_15sFormFactorPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_14FormFactorPartENS_12PartInstanceELZNS_15sFormFactorPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3be0e4() -> ! {
-    todo!("0x3be0e4 __ZThn36_N3RBX21DescribedNonCreatableINS_14FormFactorPartENS_12PartInstanceELZNS_15sFormFactorPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x3be0e4() {
+    // IDA 0x3be0e4: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3be0f8 — __ZThn36_N3RBX21DescribedNonCreatableINS_14FormFactorPartENS_12PartInstanceELZNS_15sFormFactorPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_14FormFactorPartENS_12PartInstanceELZNS_15sFormFactorPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3be0f8() -> ! {
-    todo!("0x3be0f8 __ZThn36_N3RBX21DescribedNonCreatableINS_14FormFactorPartENS_12PartInstanceELZNS_15sFormFactorPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x3be0f8() {
+    // IDA 0x3be0f8: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x457450 — __ZN3RBX21DescribedNonCreatableINS_9DataModelENS_15ServiceProviderELZNS_10sDataModelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -34114,26 +33898,26 @@ pub fn stub_0x457454() -> ! {
 
 // 0x4574f4 — __ZThn32_N3RBX21DescribedNonCreatableINS_9DataModelENS_15ServiceProviderELZNS_10sDataModelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_9DataModelENS_15ServiceProviderELZNS_10sDataModelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4574f4() -> ! {
-    todo!("0x4574f4 __ZThn32_N3RBX21DescribedNonCreatableINS_9DataModelENS_15ServiceProviderELZNS_10sDataModelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4574f4() {
+    // IDA 0x4574f4: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4574fc — __ZThn32_N3RBX21DescribedNonCreatableINS_9DataModelENS_15ServiceProviderELZNS_10sDataModelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_9DataModelENS_15ServiceProviderELZNS_10sDataModelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4574fc() -> ! {
-    todo!("0x4574fc __ZThn32_N3RBX21DescribedNonCreatableINS_9DataModelENS_15ServiceProviderELZNS_10sDataModelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4574fc() {
+    // IDA 0x4574fc: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4575a0 — __ZThn36_N3RBX21DescribedNonCreatableINS_9DataModelENS_15ServiceProviderELZNS_10sDataModelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_9DataModelENS_15ServiceProviderELZNS_10sDataModelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4575a0() -> ! {
-    todo!("0x4575a0 __ZThn36_N3RBX21DescribedNonCreatableINS_9DataModelENS_15ServiceProviderELZNS_10sDataModelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4575a0() {
+    // IDA 0x4575a0: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4575a8 — __ZThn36_N3RBX21DescribedNonCreatableINS_9DataModelENS_15ServiceProviderELZNS_10sDataModelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_9DataModelENS_15ServiceProviderELZNS_10sDataModelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4575a8() -> ! {
-    todo!("0x4575a8 __ZThn36_N3RBX21DescribedNonCreatableINS_9DataModelENS_15ServiceProviderELZNS_10sDataModelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4575a8() {
+    // IDA 0x4575a8: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x46a454 — __ZN5boost8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEC2INS_3_bi6bind_tIvPFvNS0_IFvNS3_7VariantEEEES6_ENSA_5list2INSA_5valueISE_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
@@ -34174,26 +33958,26 @@ pub fn stub_0x475bd8() -> ! {
 
 // 0x475c78 — __ZThn32_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x475c78() -> ! {
-    todo!("0x475c78 __ZThn32_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x475c78() {
+    // IDA 0x475c78: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x475c80 — __ZThn32_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x475c80() -> ! {
-    todo!("0x475c80 __ZThn32_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x475c80() {
+    // IDA 0x475c80: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x475d24 — __ZThn36_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x475d24() -> ! {
-    todo!("0x475d24 __ZThn36_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x475d24() {
+    // IDA 0x475d24: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x475d2c — __ZThn36_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x475d2c() -> ! {
-    todo!("0x475d2c __ZThn36_N3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x475d2c() {
+    // IDA 0x475d2c: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x479984 — __ZN3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -34210,26 +33994,26 @@ pub fn stub_0x479988() -> ! {
 
 // 0x479a28 — __ZThn32_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x479a28() -> ! {
-    todo!("0x479a28 __ZThn32_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x479a28() {
+    // IDA 0x479a28: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x479a30 — __ZThn32_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x479a30() -> ! {
-    todo!("0x479a30 __ZThn32_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x479a30() {
+    // IDA 0x479a30: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x479ad4 — __ZThn36_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x479ad4() -> ! {
-    todo!("0x479ad4 __ZThn36_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x479ad4() {
+    // IDA 0x479ad4: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x479adc — __ZThn36_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x479adc() -> ! {
-    todo!("0x479adc __ZThn36_N3RBX10Reflection9DescribedINS_13DebrisServiceELZNS_14sDebrisServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x479adc() {
+    // IDA 0x479adc: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x482f00 — __ZN3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -34246,14 +34030,14 @@ pub fn stub_0x483020() -> ! {
 
 // 0x483028 — __ZThn36_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x483028() -> ! {
-    todo!("0x483028 __ZThn36_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x483028() {
+    // IDA 0x483028: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x483030 — __ZThn36_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x483030() -> ! {
-    todo!("0x483030 __ZThn36_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x483030() {
+    // IDA 0x483030: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4830d4 — __ZN3RBX10Reflection9DescribedINS_13DataModelMeshELZNS_14sDataModelMeshEENS_17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -34282,26 +34066,26 @@ pub fn stub_0x4837f8() -> ! {
 
 // 0x483898 — __ZThn32_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x483898() -> ! {
-    todo!("0x483898 __ZThn32_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x483898() {
+    // IDA 0x483898: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4838a0 — __ZThn32_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4838a0() -> ! {
-    todo!("0x4838a0 __ZThn32_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4838a0() {
+    // IDA 0x4838a0: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x483944 — __ZThn36_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x483944() -> ! {
-    todo!("0x483944 __ZThn36_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x483944() {
+    // IDA 0x483944: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x48394c — __ZThn36_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x48394c() -> ! {
-    todo!("0x48394c __ZThn36_N3RBX10Reflection9DescribedINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x48394c() {
+    // IDA 0x48394c: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x484254 — __ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -34324,26 +34108,26 @@ pub fn stub_0x484374() -> ! {
 
 // 0x484414 — __ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x484414() -> ! {
-    todo!("0x484414 __ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x484414() {
+    // IDA 0x484414: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x48441c — __ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x48441c() -> ! {
-    todo!("0x48441c __ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x48441c() {
+    // IDA 0x48441c: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4844c0 — __ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4844c0() -> ! {
-    todo!("0x4844c0 __ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4844c0() {
+    // IDA 0x4844c0: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4844c8 — __ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4844c8() -> ! {
-    todo!("0x4844c8 __ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4844c8() {
+    // IDA 0x4844c8: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4a2fb4 — __ZN3RBX18DescribedCreatableINS_9ExplosionENS_8InstanceELZNS_10sExplosionEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -34360,26 +34144,26 @@ pub fn stub_0x4a2fb8() -> ! {
 
 // 0x4a305c — __ZThn32_N3RBX18DescribedCreatableINS_9ExplosionENS_8InstanceELZNS_10sExplosionEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_9ExplosionENS_8InstanceELZNS_10sExplosionEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4a305c() -> ! {
-    todo!("0x4a305c __ZThn32_N3RBX18DescribedCreatableINS_9ExplosionENS_8InstanceELZNS_10sExplosionEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4a305c() {
+    // IDA 0x4a305c: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4a3064 — __ZThn32_N3RBX18DescribedCreatableINS_9ExplosionENS_8InstanceELZNS_10sExplosionEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_9ExplosionENS_8InstanceELZNS_10sExplosionEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4a3064() -> ! {
-    todo!("0x4a3064 __ZThn32_N3RBX18DescribedCreatableINS_9ExplosionENS_8InstanceELZNS_10sExplosionEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4a3064() {
+    // IDA 0x4a3064: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4a3108 — __ZThn36_N3RBX18DescribedCreatableINS_9ExplosionENS_8InstanceELZNS_10sExplosionEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_9ExplosionENS_8InstanceELZNS_10sExplosionEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4a3108() -> ! {
-    todo!("0x4a3108 __ZThn36_N3RBX18DescribedCreatableINS_9ExplosionENS_8InstanceELZNS_10sExplosionEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4a3108() {
+    // IDA 0x4a3108: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4a3110 — __ZThn36_N3RBX18DescribedCreatableINS_9ExplosionENS_8InstanceELZNS_10sExplosionEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_9ExplosionENS_8InstanceELZNS_10sExplosionEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4a3110() -> ! {
-    todo!("0x4a3110 __ZThn36_N3RBX18DescribedCreatableINS_9ExplosionENS_8InstanceELZNS_10sExplosionEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4a3110() {
+    // IDA 0x4a3110: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4a31b8 — __ZN3RBX10Reflection9DescribedINS_9ExplosionELZNS_10sExplosionEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sExplosionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -34396,26 +34180,26 @@ pub fn stub_0x4a31bc() -> ! {
 
 // 0x4a325c — __ZThn32_N3RBX10Reflection9DescribedINS_9ExplosionELZNS_10sExplosionEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sExplosionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9ExplosionELZNS_10sExplosionEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sExplosionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4a325c() -> ! {
-    todo!("0x4a325c __ZThn32_N3RBX10Reflection9DescribedINS_9ExplosionELZNS_10sExplosionEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sExplosionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4a325c() {
+    // IDA 0x4a325c: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4a3264 — __ZThn32_N3RBX10Reflection9DescribedINS_9ExplosionELZNS_10sExplosionEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sExplosionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9ExplosionELZNS_10sExplosionEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sExplosionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4a3264() -> ! {
-    todo!("0x4a3264 __ZThn32_N3RBX10Reflection9DescribedINS_9ExplosionELZNS_10sExplosionEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sExplosionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4a3264() {
+    // IDA 0x4a3264: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4a3308 — __ZThn36_N3RBX10Reflection9DescribedINS_9ExplosionELZNS_10sExplosionEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sExplosionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9ExplosionELZNS_10sExplosionEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sExplosionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4a3308() -> ! {
-    todo!("0x4a3308 __ZThn36_N3RBX10Reflection9DescribedINS_9ExplosionELZNS_10sExplosionEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sExplosionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4a3308() {
+    // IDA 0x4a3308: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4a3310 — __ZThn36_N3RBX10Reflection9DescribedINS_9ExplosionELZNS_10sExplosionEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sExplosionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9ExplosionELZNS_10sExplosionEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sExplosionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4a3310() -> ! {
-    todo!("0x4a3310 __ZThn36_N3RBX10Reflection9DescribedINS_9ExplosionELZNS_10sExplosionEENS_14FactoryProductIS2_NS_8InstanceELZNS_10sExplosionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4a3310() {
+    // IDA 0x4a3310: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4a4260 — __ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEEfEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS2_10Reflection18GenericSlotWrapperERKS4_RKfEENS8_5list3INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSN_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
@@ -34444,14 +34228,14 @@ pub fn stub_0x4a7790() -> ! {
 
 // 0x4a7840 — __ZThn132_N3RBX18DescribedCreatableINS_20ExtrudedPartInstanceENS_12PartInstanceELZNS_13sExtrudedPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn132_N3RBX18DescribedCreatableINS_20ExtrudedPartInstanceENS_12PartInstanceELZNS_13sExtrudedPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4a7840() -> ! {
-    todo!("0x4a7840 __ZThn132_N3RBX18DescribedCreatableINS_20ExtrudedPartInstanceENS_12PartInstanceELZNS_13sExtrudedPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4a7840() {
+    // IDA 0x4a7840: __ZThn thunk (D1 base dtor): `this -= 132`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4a7854 — __ZThn132_N3RBX18DescribedCreatableINS_20ExtrudedPartInstanceENS_12PartInstanceELZNS_13sExtrudedPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn132_N3RBX18DescribedCreatableINS_20ExtrudedPartInstanceENS_12PartInstanceELZNS_13sExtrudedPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4a7854() -> ! {
-    todo!("0x4a7854 __ZThn132_N3RBX18DescribedCreatableINS_20ExtrudedPartInstanceENS_12PartInstanceELZNS_13sExtrudedPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4a7854() {
+    // IDA 0x4a7854: __ZThn thunk (D0 deleting dtor): `this -= 132`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4a7908 — __ZN3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -34468,62 +34252,62 @@ pub fn stub_0x4a791c() -> ! {
 
 // 0x4a79cc — __ZThn132_N3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn132_N3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4a79cc() -> ! {
-    todo!("0x4a79cc __ZThn132_N3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4a79cc() {
+    // IDA 0x4a79cc: __ZThn thunk (D1 base dtor): `this -= 132`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4a79e0 — __ZThn132_N3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn132_N3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4a79e0() -> ! {
-    todo!("0x4a79e0 __ZThn132_N3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4a79e0() {
+    // IDA 0x4a79e0: __ZThn thunk (D0 deleting dtor): `this -= 132`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4a8564 — __ZThn32_N3RBX18DescribedCreatableINS_20ExtrudedPartInstanceENS_12PartInstanceELZNS_13sExtrudedPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_20ExtrudedPartInstanceENS_12PartInstanceELZNS_13sExtrudedPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4a8564() -> ! {
-    todo!("0x4a8564 __ZThn32_N3RBX18DescribedCreatableINS_20ExtrudedPartInstanceENS_12PartInstanceELZNS_13sExtrudedPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4a8564() {
+    // IDA 0x4a8564: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4a8578 — __ZThn32_N3RBX18DescribedCreatableINS_20ExtrudedPartInstanceENS_12PartInstanceELZNS_13sExtrudedPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_20ExtrudedPartInstanceENS_12PartInstanceELZNS_13sExtrudedPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4a8578() -> ! {
-    todo!("0x4a8578 __ZThn32_N3RBX18DescribedCreatableINS_20ExtrudedPartInstanceENS_12PartInstanceELZNS_13sExtrudedPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4a8578() {
+    // IDA 0x4a8578: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4a862c — __ZThn36_N3RBX18DescribedCreatableINS_20ExtrudedPartInstanceENS_12PartInstanceELZNS_13sExtrudedPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_20ExtrudedPartInstanceENS_12PartInstanceELZNS_13sExtrudedPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4a862c() -> ! {
-    todo!("0x4a862c __ZThn36_N3RBX18DescribedCreatableINS_20ExtrudedPartInstanceENS_12PartInstanceELZNS_13sExtrudedPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4a862c() {
+    // IDA 0x4a862c: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4a8640 — __ZThn36_N3RBX18DescribedCreatableINS_20ExtrudedPartInstanceENS_12PartInstanceELZNS_13sExtrudedPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_20ExtrudedPartInstanceENS_12PartInstanceELZNS_13sExtrudedPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4a8640() -> ! {
-    todo!("0x4a8640 __ZThn36_N3RBX18DescribedCreatableINS_20ExtrudedPartInstanceENS_12PartInstanceELZNS_13sExtrudedPartEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4a8640() {
+    // IDA 0x4a8640: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4a8760 — __ZThn32_N3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4a8760() -> ! {
-    todo!("0x4a8760 __ZThn32_N3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4a8760() {
+    // IDA 0x4a8760: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4a8774 — __ZThn32_N3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4a8774() -> ! {
-    todo!("0x4a8774 __ZThn32_N3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4a8774() {
+    // IDA 0x4a8774: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4a8828 — __ZThn36_N3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4a8828() -> ! {
-    todo!("0x4a8828 __ZThn36_N3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4a8828() {
+    // IDA 0x4a8828: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4a883c — __ZThn36_N3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4a883c() -> ! {
-    todo!("0x4a883c __ZThn36_N3RBX10Reflection9DescribedINS_20ExtrudedPartInstanceELZNS_13sExtrudedPartEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4a883c() {
+    // IDA 0x4a883c: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4a9be4 — __ZN3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -34540,26 +34324,26 @@ pub fn stub_0x4a9be8() -> ! {
 
 // 0x4a9c88 — __ZThn32_N3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4a9c88() -> ! {
-    todo!("0x4a9c88 __ZThn32_N3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4a9c88() {
+    // IDA 0x4a9c88: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4a9c90 — __ZThn32_N3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4a9c90() -> ! {
-    todo!("0x4a9c90 __ZThn32_N3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4a9c90() {
+    // IDA 0x4a9c90: __ZThn thunk: this-adjust + tail-call to base destructor in place (D1 base dtor). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4a9d34 — __ZThn36_N3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4a9d34() -> ! {
-    todo!("0x4a9d34 __ZThn36_N3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4a9d34() {
+    // IDA 0x4a9d34: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4a9d3c — __ZThn36_N3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4a9d3c() -> ! {
-    todo!("0x4a9d3c __ZThn36_N3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4a9d3c() {
+    // IDA 0x4a9d3c: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4abc24 — __ZN3RBX10Reflection9DescribedINS_13BindableEventELZNS_14sBindableEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sBindableEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -34582,26 +34366,26 @@ pub fn stub_0x4abd48() -> ! {
 
 // 0x4abde8 — __ZThn32_N3RBX10Reflection9DescribedINS_13BindableEventELZNS_14sBindableEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sBindableEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13BindableEventELZNS_14sBindableEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sBindableEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4abde8() -> ! {
-    todo!("0x4abde8 __ZThn32_N3RBX10Reflection9DescribedINS_13BindableEventELZNS_14sBindableEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sBindableEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4abde8() {
+    // IDA 0x4abde8: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4abdf0 — __ZThn32_N3RBX10Reflection9DescribedINS_13BindableEventELZNS_14sBindableEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sBindableEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13BindableEventELZNS_14sBindableEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sBindableEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4abdf0() -> ! {
-    todo!("0x4abdf0 __ZThn32_N3RBX10Reflection9DescribedINS_13BindableEventELZNS_14sBindableEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sBindableEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4abdf0() {
+    // IDA 0x4abdf0: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4abe94 — __ZThn36_N3RBX10Reflection9DescribedINS_13BindableEventELZNS_14sBindableEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sBindableEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13BindableEventELZNS_14sBindableEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sBindableEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4abe94() -> ! {
-    todo!("0x4abe94 __ZThn36_N3RBX10Reflection9DescribedINS_13BindableEventELZNS_14sBindableEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sBindableEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4abe94() {
+    // IDA 0x4abe94: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4abe9c — __ZThn36_N3RBX10Reflection9DescribedINS_13BindableEventELZNS_14sBindableEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sBindableEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13BindableEventELZNS_14sBindableEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sBindableEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4abe9c() -> ! {
-    todo!("0x4abe9c __ZThn36_N3RBX10Reflection9DescribedINS_13BindableEventELZNS_14sBindableEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sBindableEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4abe9c() {
+    // IDA 0x4abe9c: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4ad46c — __ZN3RBX10Reflection9DescribedINS_16BindableFunctionELZNS_17sBindableFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_17sBindableFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -34624,26 +34408,26 @@ pub fn stub_0x4ad590() -> ! {
 
 // 0x4ad630 — __ZThn32_N3RBX10Reflection9DescribedINS_16BindableFunctionELZNS_17sBindableFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_17sBindableFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_16BindableFunctionELZNS_17sBindableFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_17sBindableFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4ad630() -> ! {
-    todo!("0x4ad630 __ZThn32_N3RBX10Reflection9DescribedINS_16BindableFunctionELZNS_17sBindableFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_17sBindableFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4ad630() {
+    // IDA 0x4ad630: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4ad638 — __ZThn32_N3RBX10Reflection9DescribedINS_16BindableFunctionELZNS_17sBindableFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_17sBindableFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_16BindableFunctionELZNS_17sBindableFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_17sBindableFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4ad638() -> ! {
-    todo!("0x4ad638 __ZThn32_N3RBX10Reflection9DescribedINS_16BindableFunctionELZNS_17sBindableFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_17sBindableFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4ad638() {
+    // IDA 0x4ad638: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4ad6dc — __ZThn36_N3RBX10Reflection9DescribedINS_16BindableFunctionELZNS_17sBindableFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_17sBindableFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_16BindableFunctionELZNS_17sBindableFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_17sBindableFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4ad6dc() -> ! {
-    todo!("0x4ad6dc __ZThn36_N3RBX10Reflection9DescribedINS_16BindableFunctionELZNS_17sBindableFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_17sBindableFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4ad6dc() {
+    // IDA 0x4ad6dc: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4ad6e4 — __ZThn36_N3RBX10Reflection9DescribedINS_16BindableFunctionELZNS_17sBindableFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_17sBindableFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_16BindableFunctionELZNS_17sBindableFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_17sBindableFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4ad6e4() -> ! {
-    todo!("0x4ad6e4 __ZThn36_N3RBX10Reflection9DescribedINS_16BindableFunctionELZNS_17sBindableFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_17sBindableFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4ad6e4() {
+    // IDA 0x4ad6e4: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4ae7d4 — __ZN3RBX10Reflection9DescribedINS_11ObjectValueELZNS_12sObjectValueEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sObjectValueEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -34684,26 +34468,26 @@ pub fn stub_0x4b178c() -> ! {
 
 // 0x4b182c — __ZThn32_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4b182c() -> ! {
-    todo!("0x4b182c __ZThn32_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4b182c() {
+    // IDA 0x4b182c: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4b1834 — __ZThn32_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4b1834() -> ! {
-    todo!("0x4b1834 __ZThn32_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4b1834() {
+    // IDA 0x4b1834: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4b18d8 — __ZThn36_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4b18d8() -> ! {
-    todo!("0x4b18d8 __ZThn36_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4b18d8() {
+    // IDA 0x4b18d8: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4b18e0 — __ZThn36_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4b18e0() -> ! {
-    todo!("0x4b18e0 __ZThn36_N3RBX10Reflection9DescribedINS_11CustomEventELZNS_12sCustomEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sCustomEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4b18e0() {
+    // IDA 0x4b18e0: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4b334c — __ZN3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -34726,26 +34510,26 @@ pub fn stub_0x4b3470() -> ! {
 
 // 0x4b3510 — __ZThn32_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4b3510() -> ! {
-    todo!("0x4b3510 __ZThn32_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4b3510() {
+    // IDA 0x4b3510: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4b3518 — __ZThn32_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4b3518() -> ! {
-    todo!("0x4b3518 __ZThn32_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4b3518() {
+    // IDA 0x4b3518: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4b35bc — __ZThn36_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x4b35bc() -> ! {
-    todo!("0x4b35bc __ZThn36_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x4b35bc() {
+    // IDA 0x4b35bc: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4b35c4 — __ZThn36_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x4b35c4() -> ! {
-    todo!("0x4b35c4 __ZThn36_N3RBX10Reflection9DescribedINS_19CustomEventReceiverELZNS_20sCustomEventReceiverEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sCustomEventReceiverEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x4b35c4() {
+    // IDA 0x4b35c4: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x4d5c78 — __ZN3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -36644,26 +36428,26 @@ pub fn stub_0x5389d0() -> ! {
 
 // 0x538a9c — __ZThn32_N3RBX10Reflection9DescribedINS_9GuiObjectELZNS_10sGuiObjectEENS_17NonFactoryProductINS_9GuiBase2dELZNS_10sGuiObjectEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9GuiObjectELZNS_10sGuiObjectEENS_17NonFactoryProductINS_9GuiBase2dELZNS_10sGuiObjectEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x538a9c() -> ! {
-    todo!("0x538a9c __ZThn32_N3RBX10Reflection9DescribedINS_9GuiObjectELZNS_10sGuiObjectEENS_17NonFactoryProductINS_9GuiBase2dELZNS_10sGuiObjectEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x538a9c() {
+    // IDA 0x538a9c: __ZThn thunk (D1 base dtor): `this -= 32`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x538b54 — __ZThn32_N3RBX10Reflection9DescribedINS_9GuiObjectELZNS_10sGuiObjectEENS_17NonFactoryProductINS_9GuiBase2dELZNS_10sGuiObjectEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9GuiObjectELZNS_10sGuiObjectEENS_17NonFactoryProductINS_9GuiBase2dELZNS_10sGuiObjectEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x538b54() -> ! {
-    todo!("0x538b54 __ZThn32_N3RBX10Reflection9DescribedINS_9GuiObjectELZNS_10sGuiObjectEENS_17NonFactoryProductINS_9GuiBase2dELZNS_10sGuiObjectEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x538b54() {
+    // IDA 0x538b54: __ZThn thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x538c24 — __ZThn36_N3RBX10Reflection9DescribedINS_9GuiObjectELZNS_10sGuiObjectEENS_17NonFactoryProductINS_9GuiBase2dELZNS_10sGuiObjectEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9GuiObjectELZNS_10sGuiObjectEENS_17NonFactoryProductINS_9GuiBase2dELZNS_10sGuiObjectEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x538c24() -> ! {
-    todo!("0x538c24 __ZThn36_N3RBX10Reflection9DescribedINS_9GuiObjectELZNS_10sGuiObjectEENS_17NonFactoryProductINS_9GuiBase2dELZNS_10sGuiObjectEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x538c24() {
+    // IDA 0x538c24: __ZThn thunk (D1 base dtor): `this -= 36`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x538cdc — __ZThn36_N3RBX10Reflection9DescribedINS_9GuiObjectELZNS_10sGuiObjectEENS_17NonFactoryProductINS_9GuiBase2dELZNS_10sGuiObjectEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9GuiObjectELZNS_10sGuiObjectEENS_17NonFactoryProductINS_9GuiBase2dELZNS_10sGuiObjectEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x538cdc() -> ! {
-    todo!("0x538cdc __ZThn36_N3RBX10Reflection9DescribedINS_9GuiObjectELZNS_10sGuiObjectEENS_17NonFactoryProductINS_9GuiBase2dELZNS_10sGuiObjectEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x538cdc() {
+    // IDA 0x538cdc: __ZThn thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete`. Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x539f0c — __ZN3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EEC2INS_9GuiObjectEEEPKcS7_MT_iNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -39045,8 +38829,8 @@ pub fn stub_0x5623c4() -> ! {
 
 // 0x5624a4 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x5624a4() -> ! {
-    todo!("0x5624a4 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x5624a4() {
+    // IDA 0x5624a4: __ZThn thunk (D1 base dtor): `this -= 40`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x5624ac — __ZNK3RBX10Reflection14PropDescriptorINS_6RocketEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -41425,8 +41209,8 @@ pub fn stub_0x5aad08() -> ! {
 
 // 0x5aade8 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x5aade8() -> ! {
-    todo!("0x5aade8 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x5aade8() {
+    // IDA 0x5aade8: __ZThn thunk (D1 base dtor): `this -= 40`, run base-object dtor in place. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x5aadf0 — __ZNK3RBX10Reflection14PropDescriptorINS_13JointInstanceEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
