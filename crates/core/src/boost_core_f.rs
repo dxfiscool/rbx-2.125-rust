@@ -60,44 +60,50 @@ pub fn stub_4fde5c() -> ! {
 #[doc(alias = "rbx_core::SharedPtr<RBX::CommonVerbs>::shared_ptr<RBX::CommonVerbs>(RBX::CommonVerbs *)")]
 // 0x4fe078 — __ZN5boost10shared_ptrIN3RBX11CommonVerbsEEC2IS2_EEPT_
 // was: boost::shared_ptr<RBX::CommonVerbs>::shared_ptr<RBX::CommonVerbs>(RBX::CommonVerbs *)
-pub fn stub_4fe078() -> ! {
-    todo!("0x4fe078 __ZN5boost10shared_ptrIN3RBX11CommonVerbsEEC2IS2_EEPT_")
+pub fn stub_4fe078<T>(px: Box<T>) -> crate::SharedPtr<T> {
+    // IDA 0x4fe078: px = p; pi = new sp_counted_impl_p<CommonVerbs>(p), checked_delete(p) on throw.
+    crate::shared_ptr::shared_ptr_from_raw(px)
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::CommonVerbs>(RBX::CommonVerbs *)")]
 // 0x4fe14c — __ZN5boost6detail12shared_countC2IN3RBX11CommonVerbsEEEPT_
-pub fn stub_4fe14c() -> ! {
-    todo!("0x4fe14c __ZN5boost6detail12shared_countC2IN3RBX11CommonVerbsEEEPT_")
+pub fn stub_4fe14c<T>(px: Box<T>) -> crate::shared_ptr::ControlBlockP<T> {
+    // IDA 0x4fe14c: new 0x10; use = 1; weak = 1; vtable set; px = p.
+    crate::shared_ptr::ControlBlockP::new(px)
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::CommonVerbs>::~sp_counted_impl_p()")]
 // 0x4fec88 — __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEED1Ev
-pub fn stub_4fec88() -> ! {
-    todo!("0x4fec88 __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEED1Ev")
+pub fn stub_4fec88<T>(_block: &mut crate::shared_ptr::ControlBlockP<T>) {
+    // IDA 0x4fec88: empty — base class handles release.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::CommonVerbs>::~sp_counted_impl_p()")]
 // 0x4fec8c — __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEED0Ev
-pub fn stub_4fec8c() -> ! {
-    todo!("0x4fec8c __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEED0Ev")
+pub fn stub_4fec8c<T>(block: Box<crate::shared_ptr::ControlBlockP<T>>) {
+    // IDA 0x4fec8c (thunk): operator delete(this).
+    drop(block);
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::CommonVerbs>::dispose(void)")]
 // 0x4fec90 — __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEE7disposeEv
-pub fn stub_4fec90() -> ! {
-    todo!("0x4fec90 __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEE7disposeEv")
+pub fn stub_4fec90<T>(block: &mut crate::shared_ptr::ControlBlockP<T>) {
+    // IDA 0x4fec90: px = this+12; if (px) { CommonVerbs::~CommonVerbs(px); operator delete(px); }
+    block.dispose();
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::CommonVerbs>::get_deleter(std::type_info const&)")]
 // 0x4fed34 — __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEE11get_deleterERKSt9type_info
-pub fn stub_4fed34() -> ! {
-    todo!("0x4fed34 __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEE11get_deleterERKSt9type_info")
+pub fn stub_4fed34<T>(block: &crate::shared_ptr::ControlBlockP<T>) -> Option<crate::shared_ptr::CreatableInstanceDeleter> {
+    // IDA 0x4fed34: return 0 — a _p block never carries a deleter.
+    block.get_deleter()
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::CommonVerbs>::get_untyped_deleter(void)")]
 // 0x4fed38 — __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEE19get_untyped_deleterEv
-pub fn stub_4fed38() -> ! {
-    todo!("0x4fed38 __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEE19get_untyped_deleterEv")
+pub fn stub_4fed38<T>(block: &crate::shared_ptr::ControlBlockP<T>) -> Option<crate::shared_ptr::CreatableInstanceDeleter> {
+    // IDA 0x4fed38: return 0.
+    block.get_untyped_deleter()
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::ScriptInformationProvider> RBX::Creatable<RBX::Instance>::create<RBX::ScriptInformationProvider>(void)")]

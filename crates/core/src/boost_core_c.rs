@@ -77,36 +77,42 @@ pub fn stub_4919b0() -> ! {
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Texture *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // 0x491ab8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextureENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // was: boost::detail::sp_counted_impl_pd<RBX::Texture *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_491ab8() -> ! {
-    todo!("0x491ab8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextureENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+pub fn stub_491ab8<T>(block: &mut crate::shared_ptr::ControlBlockPd<T, crate::shared_ptr::CreatableInstanceDeleter>) {
+    // IDA 0x491ab8: empty — base class handles release.
+    let _ = block;
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Texture *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // 0x491abc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextureENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // was: boost::detail::sp_counted_impl_pd<RBX::Texture *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_491abc() -> ! {
-    todo!("0x491abc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextureENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+pub fn stub_491abc<T>(block: Box<crate::shared_ptr::ControlBlockPd<T, crate::shared_ptr::CreatableInstanceDeleter>>) {
+    // IDA 0x491abc (thunk): operator delete(this).
+    drop(block);
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Texture *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // 0x491ac0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextureENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // was: boost::detail::sp_counted_impl_pd<RBX::Texture *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_491ac0() -> ! {
-    todo!("0x491ac0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextureENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_491ac0<T>(block: &mut crate::shared_ptr::ControlBlockPd<T, crate::shared_ptr::CreatableInstanceDeleter>, predelete: impl FnOnce(Option<&T>)) {
+    // IDA 0x491ac0: v2 = px; Instance::predelete(v2); if (v2) virtual-delete(v2) via Deleter.
+    // `predelete` is the RBX::Instance::predelete hook (datamodel-owned, passed in).
+    block.dispose_with(predelete);
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Texture *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // 0x491ae0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextureENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_pd<RBX::Texture *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_491ae0() -> ! {
-    todo!("0x491ae0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextureENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_491ae0<T>(block: &crate::shared_ptr::ControlBlockPd<T, crate::shared_ptr::CreatableInstanceDeleter>, type_name: &str) -> Option<crate::shared_ptr::CreatableInstanceDeleter> {
+    // IDA 0x491ae0: if (ti.name != "N3RBX9CreatableINS_8InstanceEE7DeleterE") return 0; return this+16.
+    block.get_deleter(type_name)
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Texture *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // 0x491af8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextureENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_pd<RBX::Texture *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_491af8() -> ! {
-    todo!("0x491af8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7TextureENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_491af8<T>(block: &crate::shared_ptr::ControlBlockPd<T, crate::shared_ptr::CreatableInstanceDeleter>) -> crate::shared_ptr::CreatableInstanceDeleter {
+    // IDA 0x491af8: return this+16 — unconditionally the stored deleter.
+    block.get_untyped_deleter()
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::Decal> RBX::Creatable<RBX::Instance>::create<RBX::Decal>(void)")]

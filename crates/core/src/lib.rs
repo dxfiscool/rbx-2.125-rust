@@ -27,6 +27,7 @@ pub mod generated_core_e;
 pub mod generated_core_f;
 pub mod generated_core_g;
 pub mod intrusive;
+pub mod shared_ptr;
 pub mod signal;
 pub mod task_scheduler;
 pub mod worker;

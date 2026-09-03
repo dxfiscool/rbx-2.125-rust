@@ -77,29 +77,32 @@ pub fn stub_463b98() -> ! {
 #[doc(alias = "rbx_core::SharedPtr<RBX::Reflection::Tuple>::shared_ptr<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)")]
 // 0x463ce8 — __ZN5boost10shared_ptrIN3RBX10Reflection5TupleEEC2IS3_EEPT_
 // was: boost::shared_ptr<RBX::Reflection::Tuple>::shared_ptr<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)
-pub fn stub_463ce8() -> ! {
-    todo!("0x463ce8 __ZN5boost10shared_ptrIN3RBX10Reflection5TupleEEC2IS3_EEPT_")
+pub fn stub_463ce8<T>(px: Box<T>) -> crate::SharedPtr<T> {
+    // IDA 0x463ce8: px = p; pi = new sp_counted_impl_p<Tuple>(p), checked_delete(p) on throw.
+    crate::shared_ptr::shared_ptr_from_raw(px)
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Reflection::Tuple>::~sp_counted_impl_p()")]
 // 0x463dc0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Reflection5TupleEED1Ev
 // was: boost::detail::sp_counted_impl_p<RBX::Reflection::Tuple>::~sp_counted_impl_p()
-pub fn stub_463dc0() -> ! {
-    todo!("0x463dc0 __ZN5boost6detail17sp_counted_impl_pIN3RBX10Reflection5TupleEED1Ev")
+pub fn stub_463dc0<T>(_block: &mut crate::shared_ptr::ControlBlockP<T>) {
+    // IDA 0x463dc0: empty — base class handles release.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Reflection::Tuple>::dispose(void)")]
 // 0x463dc8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Reflection5TupleEE7disposeEv
 // was: boost::detail::sp_counted_impl_p<RBX::Reflection::Tuple>::dispose(void)
-pub fn stub_463dc8() -> ! {
-    todo!("0x463dc8 __ZN5boost6detail17sp_counted_impl_pIN3RBX10Reflection5TupleEE7disposeEv")
+pub fn stub_463dc8<T>(block: &mut crate::shared_ptr::ControlBlockP<T>) {
+    // IDA 0x463dc8: px = this+12; if (px) { Tuple::~Tuple(px); operator delete(px); }
+    block.dispose();
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Reflection::Tuple>::get_untyped_deleter(void)")]
 // 0x463e70 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Reflection5TupleEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_p<RBX::Reflection::Tuple>::get_untyped_deleter(void)
-pub fn stub_463e70() -> ! {
-    todo!("0x463e70 __ZN5boost6detail17sp_counted_impl_pIN3RBX10Reflection5TupleEE19get_untyped_deleterEv")
+pub fn stub_463e70<T>(block: &crate::shared_ptr::ControlBlockP<T>) -> Option<crate::shared_ptr::CreatableInstanceDeleter> {
+    // IDA 0x463e70: return 0 — a _p block never carries a deleter.
+    block.get_untyped_deleter()
 }
 
 #[doc(alias = "boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>>::list1(boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>)")]
