@@ -1,962 +1,960 @@
 // Auto-generated skeletons for rbx-datamodel — from ida/export.json
-// Filter: RBX::Instance|Workspace|DataModel gap-filler EA-sorted asc after datamodel-a (dm_a 0xdb4988); global dedup
+// Filter: demangled starts with RBX:: (or thunk to RBX::) — other RBX classes not yet covered, global dedup across all crates
 // Source: ida/export.json (85545 funcs, base 0x4000)
-// Batch: 120 stubs | range 0xe435ac..0xf67554 | EA-sorted asc next 120 uncovered after dm_a (wd2a/wd2b dedup)
+// Batch: 120 stubs | range 0x5cb594..0x5db3a8 | EA-sorted asc next 120 strict RBX uncovered after global dedup
 // SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; //0xADDR pattern + doc(alias) + todo!
-// Shard: watchdog_dm_wdB EA-sorted asc second datamodel shard gap filler UNIQUE global dedup
+// Shard: watchdog dm-wdB 120 stubs EA-sorted asc strict RBX global dedup
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, unused_attributes, clippy::all)]
 
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
-// 0xe435ac — __ZNK4Ogre22TextAreaOverlayElement11getMaterialEv
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement *__hidden this)
-#[doc(alias = "Ogre::TextAreaOverlayElement::getMaterial(void)const")]
-#[doc(alias = "__ZNK4Ogre22TextAreaOverlayElement11getMaterialEv")]
-pub fn stub_e435ac() -> ! {
-    todo!("0xe435ac Ogre::TextAreaOverlayElement::getMaterial(void)const")
-}
-
-// 0xe435ec — __ZThn12_NK4Ogre22TextAreaOverlayElement11getMaterialEv
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::TextAreaOverlayElement::getMaterial(void)const")]
-#[doc(alias = "__ZThn12_NK4Ogre22TextAreaOverlayElement11getMaterialEv")]
-pub fn stub_e435ec() -> ! {
-    todo!("0xe435ec `non-virtual thunk to'Ogre::TextAreaOverlayElement::getMaterial(void)const")
-}
-
-// 0xe4362c — __ZN4Ogre22TextAreaOverlayElement18getRenderOperationERNS_15RenderOperationE
-#[doc(alias = "Ogre::TextAreaOverlayElement::getRenderOperation(Ogre::RenderOperation &)")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement18getRenderOperationERNS_15RenderOperationE")]
-pub fn stub_e4362c() -> ! {
-    todo!("0xe4362c Ogre::TextAreaOverlayElement::getRenderOperation(Ogre::RenderOperation &)")
-}
-
-// 0xe4364c — __ZThn12_N4Ogre22TextAreaOverlayElement18getRenderOperationERNS_15RenderOperationE
-#[doc(alias = "`non-virtual thunk toOgre::TextAreaOverlayElement::getRenderOperation(Ogre::RenderOperation &)")]
-#[doc(alias = "__ZThn12_N4Ogre22TextAreaOverlayElement18getRenderOperationERNS_15RenderOperationE")]
-pub fn stub_e4364c() -> ! {
-    todo!("0xe4364c `non-virtual thunk to'Ogre::TextAreaOverlayElement::getRenderOperation(Ogre::RenderOperation &)")
+// 0x5cb594 — __ZNK3RBX13ModelInstance23getPrimaryPartSetByUserEv
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::getPrimaryPartSetByUser(void)const")]
+#[doc(alias = "__ZNK3RBX13ModelInstance23getPrimaryPartSetByUserEv")]
+pub fn stub_5cb594() -> ! {
+    todo!("0x5cb594 RBX::ModelInstance::getPrimaryPartSetByUser(void)const")
+}
+
+// 0x5cb5b8 — __ZN3RBX13ModelInstance23setPrimaryPartSetByUserEPNS_12PartInstanceE
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this, RBX::PartInstance *)
+#[doc(alias = "RBX::ModelInstance::setPrimaryPartSetByUser(RBX::PartInstance *)")]
+#[doc(alias = "__ZN3RBX13ModelInstance23setPrimaryPartSetByUserEPNS_12PartInstanceE")]
+pub fn stub_5cb5b8() -> ! {
+    todo!("0x5cb5b8 RBX::ModelInstance::setPrimaryPartSetByUser(RBX::PartInstance *)")
+}
+
+// 0x5cb690 — __ZN3RBX13ModelInstance11breakJointsEv
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::breakJoints(void)")]
+#[doc(alias = "__ZN3RBX13ModelInstance11breakJointsEv")]
+pub fn stub_5cb690() -> ! {
+    todo!("0x5cb690 RBX::ModelInstance::breakJoints(void)")
+}
+
+// 0x5cb6ac — __ZN3RBX13ModelInstance10makeJointsEv
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::makeJoints(void)")]
+#[doc(alias = "__ZN3RBX13ModelInstance10makeJointsEv")]
+pub fn stub_5cb6ac() -> ! {
+    todo!("0x5cb6ac RBX::ModelInstance::makeJoints(void)")
+}
+
+// 0x5cb6c8 — __ZN3RBX13ModelInstance18calculateModelSizeEv
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::calculateModelSize(void)")]
+#[doc(alias = "__ZN3RBX13ModelInstance18calculateModelSizeEv")]
+pub fn stub_5cb6c8() -> ! {
+    todo!("0x5cb6c8 RBX::ModelInstance::calculateModelSize(void)")
+}
+
+// 0x5cb73c — __ZN3RBX13ModelInstance20calculateModelCFrameEv
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::calculateModelCFrame(void)")]
+#[doc(alias = "__ZN3RBX13ModelInstance20calculateModelCFrameEv")]
+pub fn stub_5cb73c() -> ! {
+    todo!("0x5cb73c RBX::ModelInstance::calculateModelCFrame(void)")
+}
+
+// 0x5cb994 — __ZN3RBX13ModelInstance22setIdentityOrientationEv
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::setIdentityOrientation(void)")]
+#[doc(alias = "__ZN3RBX13ModelInstance22setIdentityOrientationEv")]
+pub fn stub_5cb994() -> ! {
+    todo!("0x5cb994 RBX::ModelInstance::setIdentityOrientation(void)")
+}
+
+// 0x5cbbf8 — __ZN3RBX13ModelInstance26resetOrientationToIdentityEv
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::resetOrientationToIdentity(void)")]
+#[doc(alias = "__ZN3RBX13ModelInstance26resetOrientationToIdentityEv")]
+pub fn stub_5cbbf8() -> ! {
+    todo!("0x5cbbf8 RBX::ModelInstance::resetOrientationToIdentity(void)")
+}
+
+// 0x5cbe18 — __ZN3RBX13ModelInstanceC1Ev
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::ModelInstance(void)")]
+#[doc(alias = "__ZN3RBX13ModelInstanceC1Ev")]
+pub fn stub_5cbe18() -> ! {
+    todo!("0x5cbe18 RBX::ModelInstance::ModelInstance(void)")
+}
+
+// 0x5cc128 — __ZN3RBX13ModelInstanceC2Ev
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::ModelInstance(void)")]
+#[doc(alias = "__ZN3RBX13ModelInstanceC2Ev")]
+pub fn stub_5cc128() -> ! {
+    todo!("0x5cc128 RBX::ModelInstance::ModelInstance(void)")
+}
+
+// 0x5cc458 — __ZN3RBX13ModelInstanceD0Ev
+// type: void __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::~ModelInstance()")]
+#[doc(alias = "__ZN3RBX13ModelInstanceD0Ev")]
+pub fn stub_5cc458() -> ! {
+    todo!("0x5cc458 RBX::ModelInstance::~ModelInstance()")
+}
+
+// 0x5cc504 — __ZN3RBX13ModelInstanceD1Ev
+// type: void __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::~ModelInstance()")]
+#[doc(alias = "__ZN3RBX13ModelInstanceD1Ev")]
+pub fn stub_5cc504() -> ! {
+    todo!("0x5cc504 RBX::ModelInstance::~ModelInstance()")
+}
+
+// 0x5cc514 — __ZThn32_N3RBX13ModelInstanceD0Ev
+// type: void __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
+#[doc(alias = "__ZThn32_N3RBX13ModelInstanceD0Ev")]
+pub fn stub_5cc514() -> ! {
+    todo!("0x5cc514 `non-virtual thunk to'RBX::ModelInstance::~ModelInstance()")
 }
-
-// 0xe4366c — __ZN4Ogre22TextAreaOverlayElement15setMaterialNameERKSs
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement *__hidden this, const std::string *)
-#[doc(alias = "Ogre::TextAreaOverlayElement::setMaterialName(std::string const&)")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement15setMaterialNameERKSs")]
-pub fn stub_e4366c() -> ! {
-    todo!("0xe4366c Ogre::TextAreaOverlayElement::setMaterialName(std::string const&)")
-}
-
-// 0xe43678 — __ZN4Ogre22TextAreaOverlayElement17addBaseParametersEv
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement *__hidden this)
-#[doc(alias = "Ogre::TextAreaOverlayElement::addBaseParameters(void)")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement17addBaseParametersEv")]
-pub fn stub_e43678() -> ! {
-    todo!("0xe43678 Ogre::TextAreaOverlayElement::addBaseParameters(void)")
-}
-
-// 0xe4493c — __ZN4Ogre22TextAreaOverlayElement9setColourERKNS_11ColourValueE
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement *__hidden this, const Ogre::ColourValue *)
-#[doc(alias = "Ogre::TextAreaOverlayElement::setColour(Ogre::ColourValue const&)")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement9setColourERKNS_11ColourValueE")]
-pub fn stub_e4493c() -> ! {
-    todo!("0xe4493c Ogre::TextAreaOverlayElement::setColour(Ogre::ColourValue const&)")
-}
-
-// 0xe4495c — __ZNK4Ogre22TextAreaOverlayElement9getColourEv
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement *__hidden this)
-#[doc(alias = "Ogre::TextAreaOverlayElement::getColour(void)const")]
-#[doc(alias = "__ZNK4Ogre22TextAreaOverlayElement9getColourEv")]
-pub fn stub_e4495c() -> ! {
-    todo!("0xe4495c Ogre::TextAreaOverlayElement::getColour(void)const")
-}
-
-// 0xe44964 — __ZN4Ogre22TextAreaOverlayElement13updateColoursEv
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement *__hidden this)
-#[doc(alias = "Ogre::TextAreaOverlayElement::updateColours(void)")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement13updateColoursEv")]
-pub fn stub_e44964() -> ! {
-    todo!("0xe44964 Ogre::TextAreaOverlayElement::updateColours(void)")
-}
-
-// 0xe44c08 — __ZN4Ogre22TextAreaOverlayElement7_updateEv
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement *__hidden this)
-#[doc(alias = "Ogre::TextAreaOverlayElement::_update(void)")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement7_updateEv")]
-pub fn stub_e44c08() -> ! {
-    todo!("0xe44c08 Ogre::TextAreaOverlayElement::_update(void)")
-}
-
-// 0xe44cf8 — __ZNK4Ogre22TextAreaOverlayElement13CmdCharHeight5doGetEPKv
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement::CmdCharHeight *__hidden this, const void *)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdCharHeight::doGet(void const*)const")]
-#[doc(alias = "__ZNK4Ogre22TextAreaOverlayElement13CmdCharHeight5doGetEPKv")]
-pub fn stub_e44cf8() -> ! {
-    todo!("0xe44cf8 Ogre::TextAreaOverlayElement::CmdCharHeight::doGet(void const*)const")
-}
-
-// 0xe44d30 — __ZN4Ogre22TextAreaOverlayElement13CmdCharHeight5doSetEPvRKSs
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement::CmdCharHeight *__hidden this, void *, const std::string *)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdCharHeight::doSet(void *,std::string const&)")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement13CmdCharHeight5doSetEPvRKSs")]
-pub fn stub_e44d30() -> ! {
-    todo!("0xe44d30 Ogre::TextAreaOverlayElement::CmdCharHeight::doSet(void *,std::string const&)")
-}
-
-// 0xe44d68 — __ZNK4Ogre22TextAreaOverlayElement13CmdSpaceWidth5doGetEPKv
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement::CmdSpaceWidth *__hidden this, const void *)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdSpaceWidth::doGet(void const*)const")]
-#[doc(alias = "__ZNK4Ogre22TextAreaOverlayElement13CmdSpaceWidth5doGetEPKv")]
-pub fn stub_e44d68() -> ! {
-    todo!("0xe44d68 Ogre::TextAreaOverlayElement::CmdSpaceWidth::doGet(void const*)const")
-}
 
-// 0xe44da0 — __ZN4Ogre22TextAreaOverlayElement13CmdSpaceWidth5doSetEPvRKSs
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement::CmdSpaceWidth *__hidden this, void *, const std::string *)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdSpaceWidth::doSet(void *,std::string const&)")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement13CmdSpaceWidth5doSetEPvRKSs")]
-pub fn stub_e44da0() -> ! {
-    todo!("0xe44da0 Ogre::TextAreaOverlayElement::CmdSpaceWidth::doSet(void *,std::string const&)")
+// 0x5cc51c — __ZThn36_N3RBX13ModelInstanceD0Ev
+// type: void __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
+#[doc(alias = "__ZThn36_N3RBX13ModelInstanceD0Ev")]
+pub fn stub_5cc51c() -> ! {
+    todo!("0x5cc51c `non-virtual thunk to'RBX::ModelInstance::~ModelInstance()")
 }
 
-// 0xe44dd8 — __ZNK4Ogre22TextAreaOverlayElement11CmdFontName5doGetEPKv
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement::CmdFontName *__hidden this, const void *)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdFontName::doGet(void const*)const")]
-#[doc(alias = "__ZNK4Ogre22TextAreaOverlayElement11CmdFontName5doGetEPKv")]
-pub fn stub_e44dd8() -> ! {
-    todo!("0xe44dd8 Ogre::TextAreaOverlayElement::CmdFontName::doGet(void const*)const")
+// 0x5cc524 — __ZThn120_N3RBX13ModelInstanceD0Ev
+// type: void __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
+#[doc(alias = "__ZThn120_N3RBX13ModelInstanceD0Ev")]
+pub fn stub_5cc524() -> ! {
+    todo!("0x5cc524 `non-virtual thunk to'RBX::ModelInstance::~ModelInstance()")
 }
 
-// 0xe44df4 — __ZN4Ogre22TextAreaOverlayElement11CmdFontName5doSetEPvRKSs
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement::CmdFontName *__hidden this, Ogre::TextAreaOverlayElement *, const std::string *)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdFontName::doSet(void *,std::string const&)")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement11CmdFontName5doSetEPvRKSs")]
-pub fn stub_e44df4() -> ! {
-    todo!("0xe44df4 Ogre::TextAreaOverlayElement::CmdFontName::doSet(void *,std::string const&)")
+// 0x5cc52c — __ZN3RBX13ModelInstanceD2Ev
+// type: void __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::~ModelInstance()")]
+#[doc(alias = "__ZN3RBX13ModelInstanceD2Ev")]
+pub fn stub_5cc52c() -> ! {
+    todo!("0x5cc52c RBX::ModelInstance::~ModelInstance()")
 }
 
-// 0xe44e04 — __ZNK4Ogre22TextAreaOverlayElement9CmdColour5doGetEPKv
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement::CmdColour *__hidden this, const void *)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdColour::doGet(void const*)const")]
-#[doc(alias = "__ZNK4Ogre22TextAreaOverlayElement9CmdColour5doGetEPKv")]
-pub fn stub_e44e04() -> ! {
-    todo!("0xe44e04 Ogre::TextAreaOverlayElement::CmdColour::doGet(void const*)const")
+// 0x5cc6b0 — __ZThn32_N3RBX13ModelInstanceD1Ev
+// type: void __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
+#[doc(alias = "__ZThn32_N3RBX13ModelInstanceD1Ev")]
+pub fn stub_5cc6b0() -> ! {
+    todo!("0x5cc6b0 `non-virtual thunk to'RBX::ModelInstance::~ModelInstance()")
 }
 
-// 0xe44e20 — __ZN4Ogre22TextAreaOverlayElement9CmdColour5doSetEPvRKSs
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement::CmdColour *__hidden this, void *, const std::string *)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdColour::doSet(void *,std::string const&)")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement9CmdColour5doSetEPvRKSs")]
-pub fn stub_e44e20() -> ! {
-    todo!("0xe44e20 Ogre::TextAreaOverlayElement::CmdColour::doSet(void *,std::string const&)")
+// 0x5cc6c0 — __ZThn36_N3RBX13ModelInstanceD1Ev
+// type: void __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
+#[doc(alias = "__ZThn36_N3RBX13ModelInstanceD1Ev")]
+pub fn stub_5cc6c0() -> ! {
+    todo!("0x5cc6c0 `non-virtual thunk to'RBX::ModelInstance::~ModelInstance()")
 }
 
-// 0xe44e50 — __ZNK4Ogre22TextAreaOverlayElement12CmdColourTop5doGetEPKv
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement::CmdColourTop *__hidden this, const void *)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdColourTop::doGet(void const*)const")]
-#[doc(alias = "__ZNK4Ogre22TextAreaOverlayElement12CmdColourTop5doGetEPKv")]
-pub fn stub_e44e50() -> ! {
-    todo!("0xe44e50 Ogre::TextAreaOverlayElement::CmdColourTop::doGet(void const*)const")
+// 0x5cc6d0 — __ZThn120_N3RBX13ModelInstanceD1Ev
+// type: void __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
+#[doc(alias = "__ZThn120_N3RBX13ModelInstanceD1Ev")]
+pub fn stub_5cc6d0() -> ! {
+    todo!("0x5cc6d0 `non-virtual thunk to'RBX::ModelInstance::~ModelInstance()")
 }
 
-// 0xe44e60 — __ZN4Ogre22TextAreaOverlayElement12CmdColourTop5doSetEPvRKSs
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement::CmdColourTop *__hidden this, void *, const std::string *)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdColourTop::doSet(void *,std::string const&)")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement12CmdColourTop5doSetEPvRKSs")]
-pub fn stub_e44e60() -> ! {
-    todo!("0xe44e60 Ogre::TextAreaOverlayElement::CmdColourTop::doSet(void *,std::string const&)")
+// 0x5cc6e0 — __ZN3RBX13ModelInstance21hackPhysicalCharacterEv
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::hackPhysicalCharacter(void)")]
+#[doc(alias = "__ZN3RBX13ModelInstance21hackPhysicalCharacterEv")]
+pub fn stub_5cc6e0() -> ! {
+    todo!("0x5cc6e0 RBX::ModelInstance::hackPhysicalCharacter(void)")
 }
 
-// 0xe44e98 — __ZNK4Ogre22TextAreaOverlayElement15CmdColourBottom5doGetEPKv
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement::CmdColourBottom *__hidden this, const void *)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdColourBottom::doGet(void const*)const")]
-#[doc(alias = "__ZNK4Ogre22TextAreaOverlayElement15CmdColourBottom5doGetEPKv")]
-pub fn stub_e44e98() -> ! {
-    todo!("0xe44e98 Ogre::TextAreaOverlayElement::CmdColourBottom::doGet(void const*)const")
+// 0x5cc728 — __ZN3RBX13ModelInstance7setNameERKSs
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this, const std::string *)
+#[doc(alias = "RBX::ModelInstance::setName(std::string const&)")]
+#[doc(alias = "__ZN3RBX13ModelInstance7setNameERKSs")]
+pub fn stub_5cc728() -> ! {
+    todo!("0x5cc728 RBX::ModelInstance::setName(std::string const&)")
 }
 
-// 0xe44ea8 — __ZN4Ogre22TextAreaOverlayElement15CmdColourBottom5doSetEPvRKSs
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement::CmdColourBottom *__hidden this, void *, const std::string *)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdColourBottom::doSet(void *,std::string const&)")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement15CmdColourBottom5doSetEPvRKSs")]
-pub fn stub_e44ea8() -> ! {
-    todo!("0xe44ea8 Ogre::TextAreaOverlayElement::CmdColourBottom::doSet(void *,std::string const&)")
+// 0x5cc8ec — __ZN3RBX13ModelInstance15setExtentsDirtyEv
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::setExtentsDirty(void)")]
+#[doc(alias = "__ZN3RBX13ModelInstance15setExtentsDirtyEv")]
+pub fn stub_5cc8ec() -> ! {
+    todo!("0x5cc8ec RBX::ModelInstance::setExtentsDirty(void)")
 }
 
-// 0xe44ee0 — __ZNK4Ogre22TextAreaOverlayElement12CmdAlignment5doGetEPKv
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement::CmdAlignment *__hidden this, const void *)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdAlignment::doGet(void const*)const")]
-#[doc(alias = "__ZNK4Ogre22TextAreaOverlayElement12CmdAlignment5doGetEPKv")]
-pub fn stub_e44ee0() -> ! {
-    todo!("0xe44ee0 Ogre::TextAreaOverlayElement::CmdAlignment::doGet(void const*)const")
+// 0x5cc934 — __ZN3RBX13ModelInstance12onChildAddedEPNS_8InstanceE
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this, RBX::Instance *lpsrc)
+#[doc(alias = "RBX::ModelInstance::onChildAdded(RBX::Instance *)")]
+#[doc(alias = "__ZN3RBX13ModelInstance12onChildAddedEPNS_8InstanceE")]
+pub fn stub_5cc934() -> ! {
+    todo!("0x5cc934 RBX::ModelInstance::onChildAdded(RBX::Instance *)")
 }
 
-// 0xe44fd4 — __ZN4Ogre22TextAreaOverlayElement12CmdAlignment5doSetEPvRKSs
-// type: _DWORD __fastcall(Ogre::TextAreaOverlayElement::CmdAlignment *__hidden this, void *, const std::string *)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdAlignment::doSet(void *,std::string const&)")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement12CmdAlignment5doSetEPvRKSs")]
-pub fn stub_e44fd4() -> ! {
-    todo!("0xe44fd4 Ogre::TextAreaOverlayElement::CmdAlignment::doSet(void *,std::string const&)")
+// 0x5cc984 — __ZN3RBX13ModelInstance15onChildRemovingEPNS_8InstanceE
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this, RBX::Instance *lpsrc)
+#[doc(alias = "RBX::ModelInstance::onChildRemoving(RBX::Instance *)")]
+#[doc(alias = "__ZN3RBX13ModelInstance15onChildRemovingEPNS_8InstanceE")]
+pub fn stub_5cc984() -> ! {
+    todo!("0x5cc984 RBX::ModelInstance::onChildRemoving(RBX::Instance *)")
 }
 
-// 0xe45020 — __ZN4Ogre22TextAreaOverlayElement13CmdCharHeightD1Ev
-// type: void __fastcall(Ogre::TextAreaOverlayElement::CmdCharHeight *__hidden this)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdCharHeight::~CmdCharHeight()")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement13CmdCharHeightD1Ev")]
-pub fn stub_e45020() -> ! {
-    todo!("0xe45020 Ogre::TextAreaOverlayElement::CmdCharHeight::~CmdCharHeight()")
+// 0x5cca4c — __ZN3RBX13ModelInstance14onChildChangedEPNS_8InstanceERKNS_15PropertyChangedE
+#[doc(alias = "RBX::ModelInstance::onChildChanged(RBX::Instance *,RBX::PropertyChanged const&)")]
+#[doc(alias = "__ZN3RBX13ModelInstance14onChildChangedEPNS_8InstanceERKNS_15PropertyChangedE")]
+pub fn stub_5cca4c() -> ! {
+    todo!("0x5cca4c RBX::ModelInstance::onChildChanged(RBX::Instance *,RBX::PropertyChanged const&)")
 }
 
-// 0xe45024 — __ZN4Ogre22TextAreaOverlayElement13CmdSpaceWidthD1Ev
-// type: void __fastcall(Ogre::TextAreaOverlayElement::CmdSpaceWidth *__hidden this)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdSpaceWidth::~CmdSpaceWidth()")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement13CmdSpaceWidthD1Ev")]
-pub fn stub_e45024() -> ! {
-    todo!("0xe45024 Ogre::TextAreaOverlayElement::CmdSpaceWidth::~CmdSpaceWidth()")
+// 0x5cca68 — __ZNK3RBX13ModelInstance12askSetParentEPKNS_8InstanceE
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this, const RBX::Instance *)
+#[doc(alias = "RBX::ModelInstance::askSetParent(RBX::Instance const*)const")]
+#[doc(alias = "__ZNK3RBX13ModelInstance12askSetParentEPKNS_8InstanceE")]
+pub fn stub_5cca68() -> ! {
+    todo!("0x5cca68 RBX::ModelInstance::askSetParent(RBX::Instance const*)const")
 }
 
-// 0xe45028 — __ZN4Ogre22TextAreaOverlayElement11CmdFontNameD1Ev
-// type: void __fastcall(Ogre::TextAreaOverlayElement::CmdFontName *__hidden this)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdFontName::~CmdFontName()")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement11CmdFontNameD1Ev")]
-pub fn stub_e45028() -> ! {
-    todo!("0xe45028 Ogre::TextAreaOverlayElement::CmdFontName::~CmdFontName()")
+// 0x5ccaa4 — __ZN3RBX13ModelInstance17onDescendantAddedEPNS_8InstanceE
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this, RBX::Instance *)
+#[doc(alias = "RBX::ModelInstance::onDescendantAdded(RBX::Instance *)")]
+#[doc(alias = "__ZN3RBX13ModelInstance17onDescendantAddedEPNS_8InstanceE")]
+pub fn stub_5ccaa4() -> ! {
+    todo!("0x5ccaa4 RBX::ModelInstance::onDescendantAdded(RBX::Instance *)")
 }
 
-// 0xe4502c — __ZN4Ogre22TextAreaOverlayElement9CmdColourD1Ev
-// type: void __fastcall(Ogre::TextAreaOverlayElement::CmdColour *__hidden this)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdColour::~CmdColour()")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement9CmdColourD1Ev")]
-pub fn stub_e4502c() -> ! {
-    todo!("0xe4502c Ogre::TextAreaOverlayElement::CmdColour::~CmdColour()")
+// 0x5ccac0 — __ZN3RBX13ModelInstance20onDescendantRemovingERKN5boost10shared_ptrINS_8InstanceEEE
+#[doc(alias = "RBX::ModelInstance::onDescendantRemoving(boost::shared_ptr<RBX::Instance> const&)")]
+#[doc(alias = "__ZN3RBX13ModelInstance20onDescendantRemovingERKN5boost10shared_ptrINS_8InstanceEEE")]
+pub fn stub_5ccac0() -> ! {
+    todo!("0x5ccac0 RBX::ModelInstance::onDescendantRemoving(boost::shared_ptr<RBX::Instance> const&)")
 }
 
-// 0xe45030 — __ZN4Ogre22TextAreaOverlayElement15CmdColourBottomD1Ev
-// type: void __fastcall(Ogre::TextAreaOverlayElement::CmdColourBottom *__hidden this)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdColourBottom::~CmdColourBottom()")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement15CmdColourBottomD1Ev")]
-pub fn stub_e45030() -> ! {
-    todo!("0xe45030 Ogre::TextAreaOverlayElement::CmdColourBottom::~CmdColourBottom()")
+// 0x5ccb5c — __ZN3RBX13ModelInstance14getPrimaryPartEv
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::getPrimaryPart(void)")]
+#[doc(alias = "__ZN3RBX13ModelInstance14getPrimaryPartEv")]
+pub fn stub_5ccb5c() -> ! {
+    todo!("0x5ccb5c RBX::ModelInstance::getPrimaryPart(void)")
 }
 
-// 0xe45034 — __ZN4Ogre22TextAreaOverlayElement12CmdColourTopD1Ev
-// type: void __fastcall(Ogre::TextAreaOverlayElement::CmdColourTop *__hidden this)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdColourTop::~CmdColourTop()")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement12CmdColourTopD1Ev")]
-pub fn stub_e45034() -> ! {
-    todo!("0xe45034 Ogre::TextAreaOverlayElement::CmdColourTop::~CmdColourTop()")
+// 0x5ccca4 — __ZN3RBX13ModelInstance18computePrimaryPartEv
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::computePrimaryPart(void)")]
+#[doc(alias = "__ZN3RBX13ModelInstance18computePrimaryPartEv")]
+pub fn stub_5ccca4() -> ! {
+    todo!("0x5ccca4 RBX::ModelInstance::computePrimaryPart(void)")
 }
 
-// 0xe45038 — __ZN4Ogre22TextAreaOverlayElement12CmdAlignmentD1Ev
-// type: void __fastcall(Ogre::TextAreaOverlayElement::CmdAlignment *__hidden this)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdAlignment::~CmdAlignment()")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement12CmdAlignmentD1Ev")]
-pub fn stub_e45038() -> ! {
-    todo!("0xe45038 Ogre::TextAreaOverlayElement::CmdAlignment::~CmdAlignment()")
+// 0x5cce34 — __ZThn92_N3RBX13ModelInstance14getPrimaryPartEv
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::ModelInstance::getPrimaryPart(void)")]
+#[doc(alias = "__ZThn92_N3RBX13ModelInstance14getPrimaryPartEv")]
+pub fn stub_5cce34() -> ! {
+    todo!("0x5cce34 `non-virtual thunk to'RBX::ModelInstance::getPrimaryPart(void)")
 }
 
-// 0xe4503c — __ZN4Ogre22TextAreaOverlayElement13CmdCharHeightD0Ev
-// type: void __fastcall(Ogre::TextAreaOverlayElement::CmdCharHeight *__hidden this)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdCharHeight::~CmdCharHeight()")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement13CmdCharHeightD0Ev")]
-pub fn stub_e4503c() -> ! {
-    todo!("0xe4503c Ogre::TextAreaOverlayElement::CmdCharHeight::~CmdCharHeight()")
+// 0x5cce3c — __ZN3RBX21VisitModelDescendantsEN5boost10shared_ptrINS_8InstanceEEEPPNS_12PartInstanceEPf
+#[doc(alias = "RBX::VisitModelDescendants(boost::shared_ptr<RBX::Instance>,RBX::PartInstance **,float *)")]
+#[doc(alias = "__ZN3RBX21VisitModelDescendantsEN5boost10shared_ptrINS_8InstanceEEEPPNS_12PartInstanceEPf")]
+pub fn stub_5cce3c() -> ! {
+    todo!("0x5cce3c RBX::VisitModelDescendants(boost::shared_ptr<RBX::Instance>,RBX::PartInstance **,float *)")
 }
 
-// 0xe45048 — __ZN4Ogre22TextAreaOverlayElement13CmdSpaceWidthD0Ev
-// type: void __fastcall(Ogre::TextAreaOverlayElement::CmdSpaceWidth *__hidden this)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdSpaceWidth::~CmdSpaceWidth()")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement13CmdSpaceWidthD0Ev")]
-pub fn stub_e45048() -> ! {
-    todo!("0xe45048 Ogre::TextAreaOverlayElement::CmdSpaceWidth::~CmdSpaceWidth()")
+// 0x5ccebc — __ZN3RBXL5makeJEN5boost10shared_ptrINS_8InstanceEEE
+#[doc(alias = "RBX::makeJ(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "__ZN3RBXL5makeJEN5boost10shared_ptrINS_8InstanceEEE")]
+pub fn stub_5ccebc() -> ! {
+    todo!("0x5ccebc RBX::makeJ(boost::shared_ptr<RBX::Instance>)")
 }
 
-// 0xe45054 — __ZN4Ogre22TextAreaOverlayElement11CmdFontNameD0Ev
-// type: void __fastcall(Ogre::TextAreaOverlayElement::CmdFontName *__hidden this)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdFontName::~CmdFontName()")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement11CmdFontNameD0Ev")]
-pub fn stub_e45054() -> ! {
-    todo!("0xe45054 Ogre::TextAreaOverlayElement::CmdFontName::~CmdFontName()")
+// 0x5ccf3c — __ZN3RBXL6breakJEN5boost10shared_ptrINS_8InstanceEEE
+#[doc(alias = "RBX::breakJ(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "__ZN3RBXL6breakJEN5boost10shared_ptrINS_8InstanceEEE")]
+pub fn stub_5ccf3c() -> ! {
+    todo!("0x5ccf3c RBX::breakJ(boost::shared_ptr<RBX::Instance>)")
 }
 
-// 0xe45060 — __ZN4Ogre22TextAreaOverlayElement9CmdColourD0Ev
-// type: void __fastcall(Ogre::TextAreaOverlayElement::CmdColour *__hidden this)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdColour::~CmdColour()")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement9CmdColourD0Ev")]
-pub fn stub_e45060() -> ! {
-    todo!("0xe45060 Ogre::TextAreaOverlayElement::CmdColour::~CmdColour()")
+// 0x5cd060 — __ZN3RBX13ModelInstance11getLocationEv
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::getLocation(void)")]
+#[doc(alias = "__ZN3RBX13ModelInstance11getLocationEv")]
+pub fn stub_5cd060() -> ! {
+    todo!("0x5cd060 RBX::ModelInstance::getLocation(void)")
 }
 
-// 0xe4506c — __ZN4Ogre22TextAreaOverlayElement15CmdColourBottomD0Ev
-// type: void __fastcall(Ogre::TextAreaOverlayElement::CmdColourBottom *__hidden this)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdColourBottom::~CmdColourBottom()")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement15CmdColourBottomD0Ev")]
-pub fn stub_e4506c() -> ! {
-    todo!("0xe4506c Ogre::TextAreaOverlayElement::CmdColourBottom::~CmdColourBottom()")
+// 0x5cd1f4 — __ZTv0_n12_N3RBX13ModelInstance11getLocationEv
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "virtual thunk toRBX::ModelInstance::getLocation(void)")]
+#[doc(alias = "__ZTv0_n12_N3RBX13ModelInstance11getLocationEv")]
+pub fn stub_5cd1f4() -> ! {
+    todo!("0x5cd1f4 `virtual thunk to'RBX::ModelInstance::getLocation(void)")
 }
 
-// 0xe45078 — __ZN4Ogre22TextAreaOverlayElement12CmdColourTopD0Ev
-// type: void __fastcall(Ogre::TextAreaOverlayElement::CmdColourTop *__hidden this)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdColourTop::~CmdColourTop()")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement12CmdColourTopD0Ev")]
-pub fn stub_e45078() -> ! {
-    todo!("0xe45078 Ogre::TextAreaOverlayElement::CmdColourTop::~CmdColourTop()")
+// 0x5cd254 — __ZNK3RBX13ModelInstance19shouldRender3dAdornEv
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::shouldRender3dAdorn(void)const")]
+#[doc(alias = "__ZNK3RBX13ModelInstance19shouldRender3dAdornEv")]
+pub fn stub_5cd254() -> ! {
+    todo!("0x5cd254 RBX::ModelInstance::shouldRender3dAdorn(void)const")
 }
 
-// 0xe45084 — __ZN4Ogre22TextAreaOverlayElement12CmdAlignmentD0Ev
-// type: void __fastcall(Ogre::TextAreaOverlayElement::CmdAlignment *__hidden this)
-#[doc(alias = "Ogre::TextAreaOverlayElement::CmdAlignment::~CmdAlignment()")]
-#[doc(alias = "__ZN4Ogre22TextAreaOverlayElement12CmdAlignmentD0Ev")]
-pub fn stub_e45084() -> ! {
-    todo!("0xe45084 Ogre::TextAreaOverlayElement::CmdAlignment::~CmdAlignment()")
+// 0x5cd274 — __ZThn96_NK3RBX13ModelInstance19shouldRender3dAdornEv
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::ModelInstance::shouldRender3dAdorn(void)const")]
+#[doc(alias = "__ZThn96_NK3RBX13ModelInstance19shouldRender3dAdornEv")]
+pub fn stub_5cd274() -> ! {
+    todo!("0x5cd274 `non-virtual thunk to'RBX::ModelInstance::shouldRender3dAdorn(void)const")
 }
 
-// 0xe45090 — __ZNK4Ogre14OverlayElement11isContainerEv
-// type: _DWORD __fastcall(Ogre::OverlayElement *__hidden this)
-#[doc(alias = "Ogre::OverlayElement::isContainer(void)const")]
-#[doc(alias = "__ZNK4Ogre14OverlayElement11isContainerEv")]
-pub fn stub_e45090() -> ! {
-    todo!("0xe45090 Ogre::OverlayElement::isContainer(void)const")
+// 0x5cd294 — __ZN3RBX13ModelInstance13render3dAdornEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this, RBX::Adorn *)
+#[doc(alias = "RBX::ModelInstance::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "__ZN3RBX13ModelInstance13render3dAdornEPNS_5AdornE")]
+pub fn stub_5cd294() -> ! {
+    todo!("0x5cd294 RBX::ModelInstance::render3dAdorn(RBX::Adorn *)")
 }
 
-// 0xe451b8 — __ZN4Ogre7TextureC2EPNS_15ResourceManagerERKSsyS4_bPNS_20ManualResourceLoaderE
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this, Ogre::ResourceManager *, const std::string *, unsigned __int64, const std::string *, bool, Ogre::ManualResourceLoader *)
-#[doc(alias = "Ogre::Texture::Texture(Ogre::ResourceManager *,std::string const&,unsigned long long,std::string const&,bool,Ogre::ManualResourceLoader *)")]
-#[doc(alias = "__ZN4Ogre7TextureC2EPNS_15ResourceManagerERKSsyS4_bPNS_20ManualResourceLoaderE")]
-pub fn stub_e451b8() -> ! {
-    todo!("0xe451b8 Ogre::Texture::Texture(Ogre::ResourceManager *,std::string const&,unsigned long long,std::string const&,bool,Ogre::ManualResourceLoader *)")
+// 0x5cd2c8 — __ZThn96_N3RBX13ModelInstance13render3dAdornEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this, RBX::Adorn *)
+#[doc(alias = "non-virtual thunk toRBX::ModelInstance::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "__ZThn96_N3RBX13ModelInstance13render3dAdornEPNS_5AdornE")]
+pub fn stub_5cd2c8() -> ! {
+    todo!("0x5cd2c8 `non-virtual thunk to'RBX::ModelInstance::render3dAdorn(RBX::Adorn *)")
 }
 
-// 0xe454fc — __ZN4Ogre7Texture9loadImageERKNS_5ImageE
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this, const Ogre::Image *)
-#[doc(alias = "Ogre::Texture::loadImage(Ogre::Image const&)")]
-#[doc(alias = "__ZN4Ogre7Texture9loadImageERKNS_5ImageE")]
-pub fn stub_e454fc() -> ! {
-    todo!("0xe454fc Ogre::Texture::loadImage(Ogre::Image const&)")
+// 0x5cd2d0 — __ZNK3RBX13ModelInstance19computeExtentsWorldEv
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::computeExtentsWorld(void)const")]
+#[doc(alias = "__ZNK3RBX13ModelInstance19computeExtentsWorldEv")]
+pub fn stub_5cd2d0() -> ! {
+    todo!("0x5cd2d0 RBX::ModelInstance::computeExtentsWorld(void)const")
 }
 
-// 0xe45650 — __ZN4Ogre7Texture9setFormatENS_11PixelFormatE
-#[doc(alias = "Ogre::Texture::setFormat(Ogre::PixelFormat)")]
-#[doc(alias = "__ZN4Ogre7Texture9setFormatENS_11PixelFormatE")]
-pub fn stub_e45650() -> ! {
-    todo!("0xe45650 Ogre::Texture::setFormat(Ogre::PixelFormat)")
+// 0x5cd44c — __ZN3RBXL21unionPartExtentsWorldEN5boost10shared_ptrINS_8InstanceEEERNS_7ExtentsE
+#[doc(alias = "RBX::unionPartExtentsWorld(boost::shared_ptr<RBX::Instance>,RBX::Extents &)")]
+#[doc(alias = "__ZN3RBXL21unionPartExtentsWorldEN5boost10shared_ptrINS_8InstanceEEERNS_7ExtentsE")]
+pub fn stub_5cd44c() -> ! {
+    todo!("0x5cd44c RBX::unionPartExtentsWorld(boost::shared_ptr<RBX::Instance>,RBX::Extents &)")
 }
 
-// 0xe45660 — __ZNK4Ogre7Texture8hasAlphaEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::hasAlpha(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture8hasAlphaEv")]
-pub fn stub_e45660() -> ! {
-    todo!("0xe45660 Ogre::Texture::hasAlpha(void)const")
+// 0x5cd7ac — __ZN3RBX13ModelInstance11computePartEv
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::computePart(void)")]
+#[doc(alias = "__ZN3RBX13ModelInstance11computePartEv")]
+pub fn stub_5cd7ac() -> ! {
+    todo!("0x5cd7ac RBX::ModelInstance::computePart(void)")
 }
 
-// 0xe45670 — __ZN4Ogre7Texture25setDesiredIntegerBitDepthEt
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this, unsigned __int16)
-#[doc(alias = "Ogre::Texture::setDesiredIntegerBitDepth(unsigned short)")]
-#[doc(alias = "__ZN4Ogre7Texture25setDesiredIntegerBitDepthEt")]
-pub fn stub_e45670() -> ! {
-    todo!("0xe45670 Ogre::Texture::setDesiredIntegerBitDepth(unsigned short)")
+// 0x5cda08 — __ZN3RBX13ModelInstance14render3dSelectEPNS_5AdornENS_11SelectStateE
+#[doc(alias = "RBX::ModelInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
+#[doc(alias = "__ZN3RBX13ModelInstance14render3dSelectEPNS_5AdornENS_11SelectStateE")]
+pub fn stub_5cda08() -> ! {
+    todo!("0x5cda08 RBX::ModelInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")
 }
 
-// 0xe45678 — __ZNK4Ogre7Texture25getDesiredIntegerBitDepthEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getDesiredIntegerBitDepth(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture25getDesiredIntegerBitDepthEv")]
-pub fn stub_e45678() -> ! {
-    todo!("0xe45678 Ogre::Texture::getDesiredIntegerBitDepth(void)const")
+// 0x5cda34 — __ZThn96_N3RBX13ModelInstance14render3dSelectEPNS_5AdornENS_11SelectStateE
+#[doc(alias = "non-virtual thunk toRBX::ModelInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
+#[doc(alias = "__ZThn96_N3RBX13ModelInstance14render3dSelectEPNS_5AdornENS_11SelectStateE")]
+pub fn stub_5cda34() -> ! {
+    todo!("0x5cda34 `non-virtual thunk to'RBX::ModelInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")
 }
 
-// 0xe45680 — __ZN4Ogre7Texture23setDesiredFloatBitDepthEt
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this, unsigned __int16)
-#[doc(alias = "Ogre::Texture::setDesiredFloatBitDepth(unsigned short)")]
-#[doc(alias = "__ZN4Ogre7Texture23setDesiredFloatBitDepthEt")]
-pub fn stub_e45680() -> ! {
-    todo!("0xe45680 Ogre::Texture::setDesiredFloatBitDepth(unsigned short)")
+// 0x5cda60 — __ZN3RBX13ModelInstance12onCameraNearEf
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this, float)
+#[doc(alias = "RBX::ModelInstance::onCameraNear(float)")]
+#[doc(alias = "__ZN3RBX13ModelInstance12onCameraNearEf")]
+pub fn stub_5cda60() -> ! {
+    todo!("0x5cda60 RBX::ModelInstance::onCameraNear(float)")
 }
 
-// 0xe45688 — __ZNK4Ogre7Texture23getDesiredFloatBitDepthEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getDesiredFloatBitDepth(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture23getDesiredFloatBitDepthEv")]
-pub fn stub_e45688() -> ! {
-    todo!("0xe45688 Ogre::Texture::getDesiredFloatBitDepth(void)const")
+// 0x5cda9c — __ZThn120_N3RBX13ModelInstance12onCameraNearEf
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this, float)
+#[doc(alias = "non-virtual thunk toRBX::ModelInstance::onCameraNear(float)")]
+#[doc(alias = "__ZThn120_N3RBX13ModelInstance12onCameraNearEf")]
+pub fn stub_5cda9c() -> ! {
+    todo!("0x5cda9c `non-virtual thunk to'RBX::ModelInstance::onCameraNear(float)")
 }
 
-// 0xe45690 — __ZN4Ogre7Texture19setDesiredBitDepthsEtt
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this, unsigned __int16, unsigned __int16)
-#[doc(alias = "Ogre::Texture::setDesiredBitDepths(unsigned short,unsigned short)")]
-#[doc(alias = "__ZN4Ogre7Texture19setDesiredBitDepthsEtt")]
-pub fn stub_e45690() -> ! {
-    todo!("0xe45690 Ogre::Texture::setDesiredBitDepths(unsigned short,unsigned short)")
+// 0x5cdaa4 — __ZN3RBX13ModelInstance25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE
+#[doc(alias = "RBX::ModelInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
+#[doc(alias = "__ZN3RBX13ModelInstance25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE")]
+pub fn stub_5cdaa4() -> ! {
+    todo!("0x5cdaa4 RBX::ModelInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")
 }
 
-// 0xe4569c — __ZN4Ogre7Texture24setTreatLuminanceAsAlphaEb
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this, bool)
-#[doc(alias = "Ogre::Texture::setTreatLuminanceAsAlpha(bool)")]
-#[doc(alias = "__ZN4Ogre7Texture24setTreatLuminanceAsAlphaEb")]
-pub fn stub_e4569c() -> ! {
-    todo!("0xe4569c Ogre::Texture::setTreatLuminanceAsAlpha(bool)")
+// 0x5cdacc — __ZThn120_N3RBX13ModelInstance25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE
+#[doc(alias = "non-virtual thunk toRBX::ModelInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
+#[doc(alias = "__ZThn120_N3RBX13ModelInstance25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE")]
+pub fn stub_5cdacc() -> ! {
+    todo!("0x5cdacc `non-virtual thunk to'RBX::ModelInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")
 }
 
-// 0xe456a4 — __ZNK4Ogre7Texture24getTreatLuminanceAsAlphaEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getTreatLuminanceAsAlpha(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture24getTreatLuminanceAsAlphaEv")]
-pub fn stub_e456a4() -> ! {
-    todo!("0xe456a4 Ogre::Texture::getTreatLuminanceAsAlpha(void)const")
+// 0x5cdad4 — __ZNK3RBX13ModelInstance17getModelInPrimaryEv
+// type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
+#[doc(alias = "RBX::ModelInstance::getModelInPrimary(void)const")]
+#[doc(alias = "__ZNK3RBX13ModelInstance17getModelInPrimaryEv")]
+pub fn stub_5cdad4() -> ! {
+    todo!("0x5cdad4 RBX::ModelInstance::getModelInPrimary(void)const")
 }
 
-// 0xe456ac — __ZNK4Ogre7Texture13calculateSizeEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::calculateSize(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture13calculateSizeEv")]
-pub fn stub_e456ac() -> ! {
-    todo!("0xe456ac Ogre::Texture::calculateSize(void)const")
+// 0x5d112c — __ZN3RBX5Mouse15setTargetFilterEPNS_10PVInstanceE
+// type: _DWORD __fastcall(RBX::Mouse *__hidden this, RBX::PVInstance *)
+#[doc(alias = "RBX::Mouse::setTargetFilter(RBX::PVInstance *)")]
+#[doc(alias = "__ZN3RBX5Mouse15setTargetFilterEPNS_10PVInstanceE")]
+pub fn stub_5d112c() -> ! {
+    todo!("0x5d112c RBX::Mouse::setTargetFilter(RBX::PVInstance *)")
 }
 
-// 0xe456d0 — __ZNK4Ogre7Texture11getNumFacesEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getNumFaces(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture11getNumFacesEv")]
-pub fn stub_e456d0() -> ! {
-    todo!("0xe456d0 Ogre::Texture::getNumFaces(void)const")
+// 0x5d113c — __ZN3RBX5Mouse21setTargetFilterUnsafeEPNS_10PVInstanceE
+// type: _DWORD __fastcall(RBX::Mouse *__hidden this, RBX::PVInstance *)
+#[doc(alias = "RBX::Mouse::setTargetFilterUnsafe(RBX::PVInstance *)")]
+#[doc(alias = "__ZN3RBX5Mouse21setTargetFilterUnsafeEPNS_10PVInstanceE")]
+pub fn stub_5d113c() -> ! {
+    todo!("0x5d113c RBX::Mouse::setTargetFilterUnsafe(RBX::PVInstance *)")
 }
 
-// 0xe456e8 — __ZN4Ogre7Texture11_loadImagesERKSt6vectorIPKNS_5ImageENS_12STLAllocatorIS4_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
-#[doc(alias = "Ogre::Texture::_loadImages(std::vector<Ogre::Image const*,Ogre::STLAllocator<Ogre::Image const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
-#[doc(alias = "__ZN4Ogre7Texture11_loadImagesERKSt6vectorIPKNS_5ImageENS_12STLAllocatorIS4_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE")]
-pub fn stub_e456e8() -> ! {
-    todo!("0xe456e8 Ogre::Texture::_loadImages(std::vector<Ogre::Image const*,Ogre::STLAllocator<Ogre::Image const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
+// 0x5d5038 — __ZN3RBX12MouseCommandC2EPNS_9WorkspaceE
+// type: _DWORD __fastcall(RBX::MouseCommand *__hidden this, Workspace *)
+#[doc(alias = "RBX::MouseCommand::MouseCommand(RBX::Workspace *)")]
+#[doc(alias = "__ZN3RBX12MouseCommandC2EPNS_9WorkspaceE")]
+pub fn stub_5d5038() -> ! {
+    todo!("0x5d5038 RBX::MouseCommand::MouseCommand(RBX::Workspace *)")
 }
 
-// 0xe46568 — __ZN4Ogre7Texture23createInternalResourcesEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::createInternalResources(void)")]
-#[doc(alias = "__ZN4Ogre7Texture23createInternalResourcesEv")]
-pub fn stub_e46568() -> ! {
-    todo!("0xe46568 Ogre::Texture::createInternalResources(void)")
+// 0x5d5260 — __ZNK3RBX12MouseCommand18getTopSelectable3dEPNS_12PartInstanceE
+// type: _DWORD __fastcall(RBX::MouseCommand *__hidden this, RBX::PartInstance *)
+#[doc(alias = "RBX::MouseCommand::getTopSelectable3d(RBX::PartInstance *)const")]
+#[doc(alias = "__ZNK3RBX12MouseCommand18getTopSelectable3dEPNS_12PartInstanceE")]
+pub fn stub_5d5260() -> ! {
+    todo!("0x5d5260 RBX::MouseCommand::getTopSelectable3d(RBX::PartInstance *)const")
 }
 
-// 0xe4658c — __ZN4Ogre7Texture21freeInternalResourcesEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::freeInternalResources(void)")]
-#[doc(alias = "__ZN4Ogre7Texture21freeInternalResourcesEv")]
-pub fn stub_e4658c() -> ! {
-    todo!("0xe4658c Ogre::Texture::freeInternalResources(void)")
+// 0x5d5940 — __ZN3RBX12MouseCommand10getSurfaceERKNS_7UIEventEPKNS_13HitTestFilterERPNS_12PartInstanceERi
+#[doc(alias = "RBX::MouseCommand::getSurface(RBX::UIEvent const&,RBX::HitTestFilter const*,RBX::PartInstance *&,int &)")]
+#[doc(alias = "__ZN3RBX12MouseCommand10getSurfaceERKNS_7UIEventEPKNS_13HitTestFilterERPNS_12PartInstanceERi")]
+pub fn stub_5d5940() -> ! {
+    todo!("0x5d5940 RBX::MouseCommand::getSurface(RBX::UIEvent const&,RBX::HitTestFilter const*,RBX::PartInstance *&,int &)")
 }
 
-// 0xe465b0 — __ZN4Ogre7Texture10unloadImplEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::unloadImpl(void)")]
-#[doc(alias = "__ZN4Ogre7Texture10unloadImplEv")]
-pub fn stub_e465b0() -> ! {
-    todo!("0xe465b0 Ogre::Texture::unloadImpl(void)")
+// 0x5d6be8 — __ZN3RBX4PART22ParametricPartInstanceD0Ev
+// type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
+#[doc(alias = "RBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
+#[doc(alias = "__ZN3RBX4PART22ParametricPartInstanceD0Ev")]
+pub fn stub_5d6be8() -> ! {
+    todo!("0x5d6be8 RBX::PART::ParametricPartInstance::~ParametricPartInstance()")
 }
 
-// 0xe465c0 — __ZN4Ogre7Texture13copyToTextureERNS_10TexturePtrE
-#[doc(alias = "Ogre::Texture::copyToTexture(Ogre::TexturePtr &)")]
-#[doc(alias = "__ZN4Ogre7Texture13copyToTextureERNS_10TexturePtrE")]
-pub fn stub_e465c0() -> ! {
-    todo!("0xe465c0 Ogre::Texture::copyToTexture(Ogre::TexturePtr &)")
+// 0x5d6c94 — __ZN3RBX4PART22ParametricPartInstanceD1Ev
+// type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
+#[doc(alias = "RBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
+#[doc(alias = "__ZN3RBX4PART22ParametricPartInstanceD1Ev")]
+pub fn stub_5d6c94() -> ! {
+    todo!("0x5d6c94 RBX::PART::ParametricPartInstance::~ParametricPartInstance()")
 }
 
-// 0xe46a3c — __ZNK4Ogre7Texture17getSourceFileTypeEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getSourceFileType(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture17getSourceFileTypeEv")]
-pub fn stub_e46a3c() -> ! {
-    todo!("0xe46a3c Ogre::Texture::getSourceFileType(void)const")
+// 0x5d6ca4 — __ZThn32_N3RBX4PART22ParametricPartInstanceD0Ev
+// type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
+#[doc(alias = "__ZThn32_N3RBX4PART22ParametricPartInstanceD0Ev")]
+pub fn stub_5d6ca4() -> ! {
+    todo!("0x5d6ca4 `non-virtual thunk to'RBX::PART::ParametricPartInstance::~ParametricPartInstance()")
 }
 
-// 0xe471a8 — __ZN4Ogre7Texture14convertToImageERNS_5ImageEb
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this, Ogre::Image *, bool)
-#[doc(alias = "Ogre::Texture::convertToImage(Ogre::Image &,bool)")]
-#[doc(alias = "__ZN4Ogre7Texture14convertToImageERNS_5ImageEb")]
-pub fn stub_e471a8() -> ! {
-    todo!("0xe471a8 Ogre::Texture::convertToImage(Ogre::Image &,bool)")
+// 0x5d6cac — __ZThn36_N3RBX4PART22ParametricPartInstanceD0Ev
+// type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
+#[doc(alias = "__ZThn36_N3RBX4PART22ParametricPartInstanceD0Ev")]
+pub fn stub_5d6cac() -> ! {
+    todo!("0x5d6cac `non-virtual thunk to'RBX::PART::ParametricPartInstance::~ParametricPartInstance()")
 }
 
-// 0xe4754c — __ZN4Ogre7TextureD1Ev
-// type: void __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::~Texture()")]
-#[doc(alias = "__ZN4Ogre7TextureD1Ev")]
-pub fn stub_e4754c() -> ! {
-    todo!("0xe4754c Ogre::Texture::~Texture()")
+// 0x5d6cb4 — __ZThn132_N3RBX4PART22ParametricPartInstanceD0Ev
+// type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
+#[doc(alias = "__ZThn132_N3RBX4PART22ParametricPartInstanceD0Ev")]
+pub fn stub_5d6cb4() -> ! {
+    todo!("0x5d6cb4 `non-virtual thunk to'RBX::PART::ParametricPartInstance::~ParametricPartInstance()")
 }
 
-// 0xe475ac — __ZN4Ogre7TextureD0Ev
-// type: void __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::~Texture()")]
-#[doc(alias = "__ZN4Ogre7TextureD0Ev")]
-pub fn stub_e475ac() -> ! {
-    todo!("0xe475ac Ogre::Texture::~Texture()")
+// 0x5d6cbc — __ZThn32_N3RBX4PART22ParametricPartInstanceD1Ev
+// type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
+#[doc(alias = "__ZThn32_N3RBX4PART22ParametricPartInstanceD1Ev")]
+pub fn stub_5d6cbc() -> ! {
+    todo!("0x5d6cbc `non-virtual thunk to'RBX::PART::ParametricPartInstance::~ParametricPartInstance()")
 }
 
-// 0xe4768c — __ZN4Ogre7Texture14setTextureTypeENS_11TextureTypeE
-#[doc(alias = "Ogre::Texture::setTextureType(Ogre::TextureType)")]
-#[doc(alias = "__ZN4Ogre7Texture14setTextureTypeENS_11TextureTypeE")]
-pub fn stub_e4768c() -> ! {
-    todo!("0xe4768c Ogre::Texture::setTextureType(Ogre::TextureType)")
+// 0x5d6cd0 — __ZThn36_N3RBX4PART22ParametricPartInstanceD1Ev
+// type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
+#[doc(alias = "__ZThn36_N3RBX4PART22ParametricPartInstanceD1Ev")]
+pub fn stub_5d6cd0() -> ! {
+    todo!("0x5d6cd0 `non-virtual thunk to'RBX::PART::ParametricPartInstance::~ParametricPartInstance()")
 }
 
-// 0xe47694 — __ZNK4Ogre7Texture14getTextureTypeEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getTextureType(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture14getTextureTypeEv")]
-pub fn stub_e47694() -> ! {
-    todo!("0xe47694 Ogre::Texture::getTextureType(void)const")
+// 0x5d6ce4 — __ZThn132_N3RBX4PART22ParametricPartInstanceD1Ev
+// type: void __fastcall(RBX::PART::ParametricPartInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
+#[doc(alias = "__ZThn132_N3RBX4PART22ParametricPartInstanceD1Ev")]
+pub fn stub_5d6ce4() -> ! {
+    todo!("0x5d6ce4 `non-virtual thunk to'RBX::PART::ParametricPartInstance::~ParametricPartInstance()")
 }
 
-// 0xe4769c — __ZNK4Ogre7Texture13getNumMipmapsEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getNumMipmaps(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture13getNumMipmapsEv")]
-pub fn stub_e4769c() -> ! {
-    todo!("0xe4769c Ogre::Texture::getNumMipmaps(void)const")
+// 0x5d8534 — __ZNK3RBX12PartInstance18getCoordinateFrameEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::getCoordinateFrame(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance18getCoordinateFrameEv")]
+pub fn stub_5d8534() -> ! {
+    todo!("0x5d8534 RBX::PartInstance::getCoordinateFrame(void)const")
 }
 
-// 0xe476a0 — __ZN4Ogre7Texture13setNumMipmapsEm
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this, unsigned int)
-#[doc(alias = "Ogre::Texture::setNumMipmaps(unsigned long)")]
-#[doc(alias = "__ZN4Ogre7Texture13setNumMipmapsEm")]
-pub fn stub_e476a0() -> ! {
-    todo!("0xe476a0 Ogre::Texture::setNumMipmaps(unsigned long)")
+// 0x5d8594 — __ZNK3RBX12PartInstance17getLinearVelocityEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::getLinearVelocity(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance17getLinearVelocityEv")]
+pub fn stub_5d8594() -> ! {
+    todo!("0x5d8594 RBX::PartInstance::getLinearVelocity(void)const")
 }
 
-// 0xe476a8 — __ZNK4Ogre7Texture27getMipmapsHardwareGeneratedEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getMipmapsHardwareGenerated(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture27getMipmapsHardwareGeneratedEv")]
-pub fn stub_e476a8() -> ! {
-    todo!("0xe476a8 Ogre::Texture::getMipmapsHardwareGenerated(void)const")
+// 0x5d85a4 — __ZNK3RBX12PartInstance21getRotationalVelocityEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::getRotationalVelocity(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance21getRotationalVelocityEv")]
+pub fn stub_5d85a4() -> ! {
+    todo!("0x5d85a4 RBX::PartInstance::getRotationalVelocity(void)const")
 }
 
-// 0xe476b0 — __ZNK4Ogre7Texture8getGammaEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getGamma(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture8getGammaEv")]
-pub fn stub_e476b0() -> ! {
-    todo!("0xe476b0 Ogre::Texture::getGamma(void)const")
+// 0x5d860c — __ZNK3RBX12PartInstance18getSpecificGravityEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::getSpecificGravity(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance18getSpecificGravityEv")]
+pub fn stub_5d860c() -> ! {
+    todo!("0x5d860c RBX::PartInstance::getSpecificGravity(void)const")
 }
 
-// 0xe476b4 — __ZN4Ogre7Texture8setGammaEf
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this, float)
-#[doc(alias = "Ogre::Texture::setGamma(float)")]
-#[doc(alias = "__ZN4Ogre7Texture8setGammaEf")]
-pub fn stub_e476b4() -> ! {
-    todo!("0xe476b4 Ogre::Texture::setGamma(float)")
+// 0x5d8b08 — __ZN3RBX12PartInstance10isGroundedEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::isGrounded(void)")]
+#[doc(alias = "__ZN3RBX12PartInstance10isGroundedEv")]
+pub fn stub_5d8b08() -> ! {
+    todo!("0x5d8b08 RBX::PartInstance::isGrounded(void)")
 }
 
-// 0xe476b8 — __ZN4Ogre7Texture23setHardwareGammaEnabledEb
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this, bool)
-#[doc(alias = "Ogre::Texture::setHardwareGammaEnabled(bool)")]
-#[doc(alias = "__ZN4Ogre7Texture23setHardwareGammaEnabledEb")]
-pub fn stub_e476b8() -> ! {
-    todo!("0xe476b8 Ogre::Texture::setHardwareGammaEnabled(bool)")
+// 0x5d8b20 — __ZN3RBX12PartInstance17getConnectedPartsEb
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this, bool)
+#[doc(alias = "RBX::PartInstance::getConnectedParts(bool)")]
+#[doc(alias = "__ZN3RBX12PartInstance17getConnectedPartsEb")]
+pub fn stub_5d8b20() -> ! {
+    todo!("0x5d8b20 RBX::PartInstance::getConnectedParts(bool)")
 }
 
-// 0xe476c0 — __ZNK4Ogre7Texture22isHardwareGammaEnabledEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::isHardwareGammaEnabled(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture22isHardwareGammaEnabledEv")]
-pub fn stub_e476c0() -> ! {
-    todo!("0xe476c0 Ogre::Texture::isHardwareGammaEnabled(void)const")
+// 0x5d8f64 — __ZNK3RBX12PartInstance14getPartSizeXmlEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::getPartSizeXml(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance14getPartSizeXmlEv")]
+pub fn stub_5d8f64() -> ! {
+    todo!("0x5d8f64 RBX::PartInstance::getPartSizeXml(void)const")
 }
 
-// 0xe476c8 — __ZN4Ogre7Texture7setFSAAEjRKSs
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this, unsigned int, const std::string *)
-#[doc(alias = "Ogre::Texture::setFSAA(unsigned int,std::string const&)")]
-#[doc(alias = "__ZN4Ogre7Texture7setFSAAEjRKSs")]
-pub fn stub_e476c8() -> ! {
-    todo!("0xe476c8 Ogre::Texture::setFSAA(unsigned int,std::string const&)")
+// 0x5d8f6c — __ZNK3RBX12PartInstance13getPartSizeUiEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::getPartSizeUi(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance13getPartSizeUiEv")]
+pub fn stub_5d8f6c() -> ! {
+    todo!("0x5d8f6c RBX::PartInstance::getPartSizeUi(void)const")
 }
 
-// 0xe476d8 — __ZNK4Ogre7Texture7getFSAAEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getFSAA(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture7getFSAAEv")]
-pub fn stub_e476d8() -> ! {
-    todo!("0xe476d8 Ogre::Texture::getFSAA(void)const")
+// 0x5d9094 — __ZNK3RBX12PartInstance13getElasticityEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::getElasticity(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance13getElasticityEv")]
+pub fn stub_5d9094() -> ! {
+    todo!("0x5d9094 RBX::PartInstance::getElasticity(void)const")
 }
 
-// 0xe476dc — __ZNK4Ogre7Texture11getFSAAHintEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getFSAAHint(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture11getFSAAHintEv")]
-pub fn stub_e476dc() -> ! {
-    todo!("0xe476dc Ogre::Texture::getFSAAHint(void)const")
+// 0x5d90a0 — __ZNK3RBX12PartInstance11getFrictionEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::getFriction(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance11getFrictionEv")]
+pub fn stub_5d90a0() -> ! {
+    todo!("0x5d90a0 RBX::PartInstance::getFriction(void)const")
 }
 
-// 0xe476e0 — __ZNK4Ogre7Texture9getHeightEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getHeight(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture9getHeightEv")]
-pub fn stub_e476e0() -> ! {
-    todo!("0xe476e0 Ogre::Texture::getHeight(void)const")
+// 0x5d90ac — __ZN3RBX12PartInstance16setAlphaModifierEf
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this, float)
+#[doc(alias = "RBX::PartInstance::setAlphaModifier(float)")]
+#[doc(alias = "__ZN3RBX12PartInstance16setAlphaModifierEf")]
+pub fn stub_5d90ac() -> ! {
+    todo!("0x5d90ac RBX::PartInstance::setAlphaModifier(float)")
 }
 
-// 0xe476e4 — __ZNK4Ogre7Texture8getWidthEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getWidth(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture8getWidthEv")]
-pub fn stub_e476e4() -> ! {
-    todo!("0xe476e4 Ogre::Texture::getWidth(void)const")
+// 0x5d90ec — __ZNK3RBX12PartInstance11getAnchoredEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::getAnchored(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance11getAnchoredEv")]
+pub fn stub_5d90ec() -> ! {
+    todo!("0x5d90ec RBX::PartInstance::getAnchored(void)const")
 }
 
-// 0xe476e8 — __ZNK4Ogre7Texture8getDepthEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getDepth(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture8getDepthEv")]
-pub fn stub_e476e8() -> ! {
-    todo!("0xe476e8 Ogre::Texture::getDepth(void)const")
+// 0x5d90f8 — __ZNK3RBX12PartInstance13getCanCollideEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::getCanCollide(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance13getCanCollideEv")]
+pub fn stub_5d90f8() -> ! {
+    todo!("0x5d90f8 RBX::PartInstance::getCanCollide(void)const")
 }
 
-// 0xe476ec — __ZNK4Ogre7Texture12getSrcHeightEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getSrcHeight(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture12getSrcHeightEv")]
-pub fn stub_e476ec() -> ! {
-    todo!("0xe476ec Ogre::Texture::getSrcHeight(void)const")
+// 0x5d910c — __ZNK3RBX12PartInstance15getNetworkOwnerEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::getNetworkOwner(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance15getNetworkOwnerEv")]
+pub fn stub_5d910c() -> ! {
+    todo!("0x5d910c RBX::PartInstance::getNetworkOwner(void)const")
 }
 
-// 0xe476f4 — __ZNK4Ogre7Texture11getSrcWidthEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getSrcWidth(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture11getSrcWidthEv")]
-pub fn stub_e476f4() -> ! {
-    todo!("0xe476f4 Ogre::Texture::getSrcWidth(void)const")
+// 0x5d9174 — __ZN3RBX12PartInstance15setNetworkOwnerENS_13SystemAddressE
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "RBX::PartInstance::setNetworkOwner(RBX::SystemAddress)")]
+#[doc(alias = "__ZN3RBX12PartInstance15setNetworkOwnerENS_13SystemAddressE")]
+pub fn stub_5d9174() -> ! {
+    todo!("0x5d9174 RBX::PartInstance::setNetworkOwner(RBX::SystemAddress)")
 }
 
-// 0xe476fc — __ZNK4Ogre7Texture11getSrcDepthEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getSrcDepth(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture11getSrcDepthEv")]
-pub fn stub_e476fc() -> ! {
-    todo!("0xe476fc Ogre::Texture::getSrcDepth(void)const")
+// 0x5d9244 — __ZNK3RBX12PartInstance20getNetworkIsSleepingEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::getNetworkIsSleeping(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance20getNetworkIsSleepingEv")]
+pub fn stub_5d9244() -> ! {
+    todo!("0x5d9244 RBX::PartInstance::getNetworkIsSleeping(void)const")
 }
 
-// 0xe47704 — __ZN4Ogre7Texture9setHeightEm
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this, unsigned int)
-#[doc(alias = "Ogre::Texture::setHeight(unsigned long)")]
-#[doc(alias = "__ZN4Ogre7Texture9setHeightEm")]
-pub fn stub_e47704() -> ! {
-    todo!("0xe47704 Ogre::Texture::setHeight(unsigned long)")
+// 0x5d9250 — __ZN3RBX12PartInstance20setNetworkIsSleepingEb
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this, bool)
+#[doc(alias = "RBX::PartInstance::setNetworkIsSleeping(bool)")]
+#[doc(alias = "__ZN3RBX12PartInstance20setNetworkIsSleepingEb")]
+pub fn stub_5d9250() -> ! {
+    todo!("0x5d9250 RBX::PartInstance::setNetworkIsSleeping(bool)")
 }
 
-// 0xe4770c — __ZN4Ogre7Texture8setWidthEm
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this, unsigned int)
-#[doc(alias = "Ogre::Texture::setWidth(unsigned long)")]
-#[doc(alias = "__ZN4Ogre7Texture8setWidthEm")]
-pub fn stub_e4770c() -> ! {
-    todo!("0xe4770c Ogre::Texture::setWidth(unsigned long)")
+// 0x5d9258 — __ZNK3RBX12PartInstance11getDraggingEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::getDragging(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance11getDraggingEv")]
+pub fn stub_5d9258() -> ! {
+    todo!("0x5d9258 RBX::PartInstance::getDragging(void)const")
 }
 
-// 0xe47714 — __ZN4Ogre7Texture8setDepthEm
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this, unsigned int)
-#[doc(alias = "Ogre::Texture::setDepth(unsigned long)")]
-#[doc(alias = "__ZN4Ogre7Texture8setDepthEm")]
-pub fn stub_e47714() -> ! {
-    todo!("0xe47714 Ogre::Texture::setDepth(unsigned long)")
+// 0x5d9264 — __ZN3RBX12PartInstance11setDraggingEb
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this, bool)
+#[doc(alias = "RBX::PartInstance::setDragging(bool)")]
+#[doc(alias = "__ZN3RBX12PartInstance11setDraggingEb")]
+pub fn stub_5d9264() -> ! {
+    todo!("0x5d9264 RBX::PartInstance::setDragging(bool)")
 }
 
-// 0xe4771c — __ZNK4Ogre7Texture8getUsageEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getUsage(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture8getUsageEv")]
-pub fn stub_e4771c() -> ! {
-    todo!("0xe4771c Ogre::Texture::getUsage(void)const")
+// 0x5d929c — __ZNK3RBX12PartInstance19computeExtentsWorldEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::computeExtentsWorld(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance19computeExtentsWorldEv")]
+pub fn stub_5d929c() -> ! {
+    todo!("0x5d929c RBX::PartInstance::computeExtentsWorld(void)const")
 }
 
-// 0xe47724 — __ZN4Ogre7Texture8setUsageEi
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this, int)
-#[doc(alias = "Ogre::Texture::setUsage(int)")]
-#[doc(alias = "__ZN4Ogre7Texture8setUsageEi")]
-pub fn stub_e47724() -> ! {
-    todo!("0xe47724 Ogre::Texture::setUsage(int)")
+// 0x5d92ac — __ZN3RBX12PartInstance19addTouchTransmitterEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::addTouchTransmitter(void)")]
+#[doc(alias = "__ZN3RBX12PartInstance19addTouchTransmitterEv")]
+pub fn stub_5d92ac() -> ! {
+    todo!("0x5d92ac RBX::PartInstance::addTouchTransmitter(void)")
 }
 
-// 0xe4772c — __ZNK4Ogre7Texture9getFormatEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getFormat(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture9getFormatEv")]
-pub fn stub_e4772c() -> ! {
-    todo!("0xe4772c Ogre::Texture::getFormat(void)const")
+// 0x5d9400 — __ZN3RBX12PartInstance22removeTouchTransmitterEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::removeTouchTransmitter(void)")]
+#[doc(alias = "__ZN3RBX12PartInstance22removeTouchTransmitterEv")]
+pub fn stub_5d9400() -> ! {
+    todo!("0x5d9400 RBX::PartInstance::removeTouchTransmitter(void)")
 }
 
-// 0xe47734 — __ZNK4Ogre7Texture16getDesiredFormatEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getDesiredFormat(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture16getDesiredFormatEv")]
-pub fn stub_e47734() -> ! {
-    todo!("0xe47734 Ogre::Texture::getDesiredFormat(void)const")
+// 0x5d9438 — __ZN3RBX12PartInstance25incrementTouchedSlotCountEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::incrementTouchedSlotCount(void)")]
+#[doc(alias = "__ZN3RBX12PartInstance25incrementTouchedSlotCountEv")]
+pub fn stub_5d9438() -> ! {
+    todo!("0x5d9438 RBX::PartInstance::incrementTouchedSlotCount(void)")
 }
 
-// 0xe4773c — __ZNK4Ogre7Texture12getSrcFormatEv
-// type: _DWORD __fastcall(Ogre::Texture *__hidden this)
-#[doc(alias = "Ogre::Texture::getSrcFormat(void)const")]
-#[doc(alias = "__ZNK4Ogre7Texture12getSrcFormatEv")]
-pub fn stub_e4773c() -> ! {
-    todo!("0xe4773c Ogre::Texture::getSrcFormat(void)const")
+// 0x5d94f4 — __ZN3RBX12PartInstance25decrementTouchedSlotCountEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::decrementTouchedSlotCount(void)")]
+#[doc(alias = "__ZN3RBX12PartInstance25decrementTouchedSlotCountEv")]
+pub fn stub_5d94f4() -> ! {
+    todo!("0x5d94f4 RBX::PartInstance::decrementTouchedSlotCount(void)")
 }
 
-// 0xe47744 — __ZN4Ogre7Texture18getCustomAttributeERKSsPv
-#[doc(alias = "Ogre::Texture::getCustomAttribute(std::string const&,void *)")]
-#[doc(alias = "__ZN4Ogre7Texture18getCustomAttributeERKSsPv")]
-pub fn stub_e47744() -> ! {
-    todo!("0xe47744 Ogre::Texture::getCustomAttribute(std::string const&,void *)")
+// 0x5d95b0 — __ZN3RBX12PartInstance14onChildRemovedEPNS_8InstanceE
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this, RBX::Instance *)
+#[doc(alias = "RBX::PartInstance::onChildRemoved(RBX::Instance *)")]
+#[doc(alias = "__ZN3RBX12PartInstance14onChildRemovedEPNS_8InstanceE")]
+pub fn stub_5d95b0() -> ! {
+    todo!("0x5d95b0 RBX::PartInstance::onChildRemoved(RBX::Instance *)")
 }
 
-// 0xe4777c — __ZN4Ogre14TextureManager15getSingletonPtrEv
-// type: _DWORD __fastcall(Ogre::TextureManager *__hidden this)
-#[doc(alias = "Ogre::TextureManager::getSingletonPtr(void)")]
-#[doc(alias = "__ZN4Ogre14TextureManager15getSingletonPtrEv")]
-pub fn stub_e4777c() -> ! {
-    todo!("0xe4777c Ogre::TextureManager::getSingletonPtr(void)")
+// 0x5d95d8 — __ZN3RBX12PartInstance20OnDemandPartInstanceC2EPS0_
+// type: _DWORD __fastcall(RBX::PartInstance::OnDemandPartInstance *__hidden this, pthread_mutex_t *)
+#[doc(alias = "RBX::PartInstance::OnDemandPartInstance::OnDemandPartInstance(RBX::PartInstance*)")]
+#[doc(alias = "__ZN3RBX12PartInstance20OnDemandPartInstanceC2EPS0_")]
+pub fn stub_5d95d8() -> ! {
+    todo!("0x5d95d8 RBX::PartInstance::OnDemandPartInstance::OnDemandPartInstance(RBX::PartInstance*)")
 }
 
-// 0xe4778c — __ZN4Ogre14TextureManager12getSingletonEv
-// type: _DWORD __fastcall(Ogre::TextureManager *__hidden this)
-#[doc(alias = "Ogre::TextureManager::getSingleton(void)")]
-#[doc(alias = "__ZN4Ogre14TextureManager12getSingletonEv")]
-pub fn stub_e4778c() -> ! {
-    todo!("0xe4778c Ogre::TextureManager::getSingleton(void)")
+// 0x5d9c44 — __ZN3RBX12PartInstance20OnDemandPartInstance21computePersistentPartEv
+// type: _DWORD __fastcall(RBX::PartInstance::OnDemandPartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::OnDemandPartInstance::computePersistentPart(void)")]
+#[doc(alias = "__ZN3RBX12PartInstance20OnDemandPartInstance21computePersistentPartEv")]
+pub fn stub_5d9c44() -> ! {
+    todo!("0x5d9c44 RBX::PartInstance::OnDemandPartInstance::computePersistentPart(void)")
 }
 
-// 0xe4779c — __ZN4Ogre14TextureManagerC2Ev
-// type: _DWORD __fastcall(Ogre::TextureManager *__hidden this)
-#[doc(alias = "Ogre::TextureManager::TextureManager(void)")]
-#[doc(alias = "__ZN4Ogre14TextureManagerC2Ev")]
-pub fn stub_e4779c() -> ! {
-    todo!("0xe4779c Ogre::TextureManager::TextureManager(void)")
+// 0x5d9d60 — __ZNK3RBX12PartInstance27getRenderingCoordinateFrameEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::getRenderingCoordinateFrame(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance27getRenderingCoordinateFrameEv")]
+pub fn stub_5d9d60() -> ! {
+    todo!("0x5d9d60 RBX::PartInstance::getRenderingCoordinateFrame(void)const")
 }
 
-// 0xe4789c — __ZN4Ogre14TextureManagerD0Ev
-// type: void __fastcall(Ogre::TextureManager *__hidden this)
-#[doc(alias = "Ogre::TextureManager::~TextureManager()")]
-#[doc(alias = "__ZN4Ogre14TextureManagerD0Ev")]
-pub fn stub_e4789c() -> ! {
-    todo!("0xe4789c Ogre::TextureManager::~TextureManager()")
+// 0x5da3f8 — __ZN3RBX12PartInstanceD0Ev
+// type: void __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::~PartInstance()")]
+#[doc(alias = "__ZN3RBX12PartInstanceD0Ev")]
+pub fn stub_5da3f8() -> ! {
+    todo!("0x5da3f8 RBX::PartInstance::~PartInstance()")
 }
 
-// 0xe4793c — __ZN4Ogre14TextureManagerD1Ev
-// type: void __fastcall(Ogre::TextureManager *__hidden this)
-#[doc(alias = "Ogre::TextureManager::~TextureManager()")]
-#[doc(alias = "__ZN4Ogre14TextureManagerD1Ev")]
-pub fn stub_e4793c() -> ! {
-    todo!("0xe4793c Ogre::TextureManager::~TextureManager()")
+// 0x5da4a4 — __ZN3RBX12PartInstanceD1Ev
+// type: void __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::~PartInstance()")]
+#[doc(alias = "__ZN3RBX12PartInstanceD1Ev")]
+pub fn stub_5da4a4() -> ! {
+    todo!("0x5da4a4 RBX::PartInstance::~PartInstance()")
 }
 
-// 0xe47954 — __ZN4Ogre14TextureManagerD2Ev
-// type: void __fastcall(Ogre::TextureManager *__hidden this)
-#[doc(alias = "Ogre::TextureManager::~TextureManager()")]
-#[doc(alias = "__ZN4Ogre14TextureManagerD2Ev")]
-pub fn stub_e47954() -> ! {
-    todo!("0xe47954 Ogre::TextureManager::~TextureManager()")
+// 0x5da4b4 — __ZThn32_N3RBX12PartInstanceD0Ev
+// type: void __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
+#[doc(alias = "__ZThn32_N3RBX12PartInstanceD0Ev")]
+pub fn stub_5da4b4() -> ! {
+    todo!("0x5da4b4 `non-virtual thunk to'RBX::PartInstance::~PartInstance()")
 }
 
-// 0xe4796c — __ZN4Ogre14TextureManager16createOrRetrieveERKSsS2_bPNS_20ManualResourceLoaderEPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEENS_11TextureTypeEifbNS_11PixelFormatEb
-// type: int __fastcall(Ogre::NedPoolingImpl *, Ogre::NedPoolingImpl *, int, int, int, Ogre::NedPoolingImpl *, int, int, int, float, int, int, int)
-#[doc(alias = "Ogre::TextureManager::createOrRetrieve(std::string const&,std::string const&,bool,Ogre::ManualResourceLoader *,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*,Ogre::TextureType,int,float,bool,Ogre::PixelFormat,bool)")]
-#[doc(alias = "__ZN4Ogre14TextureManager16createOrRetrieveERKSsS2_bPNS_20ManualResourceLoaderEPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEENS_11TextureTypeEifbNS_11PixelFormatEb")]
-pub fn stub_e4796c() -> ! {
-    todo!("0xe4796c Ogre::TextureManager::createOrRetrieve(std::string const&,std::string const&,bool,Ogre::ManualResourceLoader *,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*,Ogre::TextureType,int,float,bool,Ogre::PixelFormat,bool)")
+// 0x5da4bc — __ZThn36_N3RBX12PartInstanceD0Ev
+// type: void __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
+#[doc(alias = "__ZThn36_N3RBX12PartInstanceD0Ev")]
+pub fn stub_5da4bc() -> ! {
+    todo!("0x5da4bc `non-virtual thunk to'RBX::PartInstance::~PartInstance()")
 }
 
-// 0xe47b8c — __ZN4Ogre14TextureManager7prepareERKSsS2_NS_11TextureTypeEifbNS_11PixelFormatEb
-// type: int __fastcall(int, int, int, int, int, int, float, int, int, struct _Unwind_Exception *lpuexcpt, int, Ogre::NedPoolingImpl *, Ogre::NedPoolingImpl *, int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, int)
-#[doc(alias = "Ogre::TextureManager::prepare(std::string const&,std::string const&,Ogre::TextureType,int,float,bool,Ogre::PixelFormat,bool)")]
-#[doc(alias = "__ZN4Ogre14TextureManager7prepareERKSsS2_NS_11TextureTypeEifbNS_11PixelFormatEb")]
-pub fn stub_e47b8c() -> ! {
-    todo!("0xe47b8c Ogre::TextureManager::prepare(std::string const&,std::string const&,Ogre::TextureType,int,float,bool,Ogre::PixelFormat,bool)")
+// 0x5da4c4 — __ZThn132_N3RBX12PartInstanceD0Ev
+// type: void __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
+#[doc(alias = "__ZThn132_N3RBX12PartInstanceD0Ev")]
+pub fn stub_5da4c4() -> ! {
+    todo!("0x5da4c4 `non-virtual thunk to'RBX::PartInstance::~PartInstance()")
 }
 
-// 0xe47da8 — __ZN4Ogre14TextureManager4loadERKSsS2_NS_11TextureTypeEifbNS_11PixelFormatEb
-// type: int __fastcall(int, int, int, int, int, int, float, int, int, struct _Unwind_Exception *lpuexcpt, int, Ogre::NedPoolingImpl *, Ogre::NedPoolingImpl *, int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, int)
-#[doc(alias = "Ogre::TextureManager::load(std::string const&,std::string const&,Ogre::TextureType,int,float,bool,Ogre::PixelFormat,bool)")]
-#[doc(alias = "__ZN4Ogre14TextureManager4loadERKSsS2_NS_11TextureTypeEifbNS_11PixelFormatEb")]
-pub fn stub_e47da8() -> ! {
-    todo!("0xe47da8 Ogre::TextureManager::load(std::string const&,std::string const&,Ogre::TextureType,int,float,bool,Ogre::PixelFormat,bool)")
+// 0x5da4cc — __ZN3RBX12PartInstanceD2Ev
+// type: void __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::~PartInstance()")]
+#[doc(alias = "__ZN3RBX12PartInstanceD2Ev")]
+pub fn stub_5da4cc() -> ! {
+    todo!("0x5da4cc RBX::PartInstance::~PartInstance()")
 }
 
-// 0xe47fc4 — __ZN4Ogre14TextureManager9loadImageERKSsS2_RKNS_5ImageENS_11TextureTypeEifbNS_11PixelFormatEb
-// type: int __fastcall(int, int, int, int, int, int, int, float, int, Ogre::NedPoolingImpl *, int, int, int, int)
-#[doc(alias = "Ogre::TextureManager::loadImage(std::string const&,std::string const&,Ogre::Image const&,Ogre::TextureType,int,float,bool,Ogre::PixelFormat,bool)")]
-#[doc(alias = "__ZN4Ogre14TextureManager9loadImageERKSsS2_RKNS_5ImageENS_11TextureTypeEifbNS_11PixelFormatEb")]
-pub fn stub_e47fc4() -> ! {
-    todo!("0xe47fc4 Ogre::TextureManager::loadImage(std::string const&,std::string const&,Ogre::Image const&,Ogre::TextureType,int,float,bool,Ogre::PixelFormat,bool)")
+// 0x5da890 — __ZThn32_N3RBX12PartInstanceD1Ev
+// type: void __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
+#[doc(alias = "__ZThn32_N3RBX12PartInstanceD1Ev")]
+pub fn stub_5da890() -> ! {
+    todo!("0x5da890 `non-virtual thunk to'RBX::PartInstance::~PartInstance()")
 }
 
-// 0xe4840c — __ZN4Ogre14TextureManager12createManualERKSsS2_NS_11TextureTypeEjjjiNS_11PixelFormatEiPNS_20ManualResourceLoaderEbjS2_
-// type: int __fastcall(int, int, int, int, int, int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, int, int)
-#[doc(alias = "Ogre::TextureManager::createManual(std::string const&,std::string const&,Ogre::TextureType,unsigned int,unsigned int,unsigned int,int,Ogre::PixelFormat,int,Ogre::ManualResourceLoader *,bool,unsigned int,std::string const&)")]
-#[doc(alias = "__ZN4Ogre14TextureManager12createManualERKSsS2_NS_11TextureTypeEjjjiNS_11PixelFormatEiPNS_20ManualResourceLoaderEbjS2_")]
-pub fn stub_e4840c() -> ! {
-    todo!("0xe4840c Ogre::TextureManager::createManual(std::string const&,std::string const&,Ogre::TextureType,unsigned int,unsigned int,unsigned int,int,Ogre::PixelFormat,int,Ogre::ManualResourceLoader *,bool,unsigned int,std::string const&)")
+// 0x5da8a0 — __ZThn36_N3RBX12PartInstanceD1Ev
+// type: void __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
+#[doc(alias = "__ZThn36_N3RBX12PartInstanceD1Ev")]
+pub fn stub_5da8a0() -> ! {
+    todo!("0x5da8a0 `non-virtual thunk to'RBX::PartInstance::~PartInstance()")
 }
 
-// 0xe48674 — __ZN4Ogre14TextureManager27setPreferredIntegerBitDepthEtb
-// type: _DWORD __fastcall(Ogre::TextureManager *__hidden this, unsigned __int16, bool)
-#[doc(alias = "Ogre::TextureManager::setPreferredIntegerBitDepth(unsigned short,bool)")]
-#[doc(alias = "__ZN4Ogre14TextureManager27setPreferredIntegerBitDepthEtb")]
-pub fn stub_e48674() -> ! {
-    todo!("0xe48674 Ogre::TextureManager::setPreferredIntegerBitDepth(unsigned short,bool)")
+// 0x5da8b0 — __ZThn132_N3RBX12PartInstanceD1Ev
+// type: void __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
+#[doc(alias = "__ZThn132_N3RBX12PartInstanceD1Ev")]
+pub fn stub_5da8b0() -> ! {
+    todo!("0x5da8b0 `non-virtual thunk to'RBX::PartInstance::~PartInstance()")
 }
 
-// 0xe486e8 — __ZNK4Ogre14TextureManager27getPreferredIntegerBitDepthEv
-// type: _DWORD __fastcall(Ogre::TextureManager *__hidden this)
-#[doc(alias = "Ogre::TextureManager::getPreferredIntegerBitDepth(void)const")]
-#[doc(alias = "__ZNK4Ogre14TextureManager27getPreferredIntegerBitDepthEv")]
-pub fn stub_e486e8() -> ! {
-    todo!("0xe486e8 Ogre::TextureManager::getPreferredIntegerBitDepth(void)const")
+// 0x5da8c0 — __ZNK3RBX12PartInstance2fwEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::fw(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance2fwEv")]
+pub fn stub_5da8c0() -> ! {
+    todo!("0x5da8c0 RBX::PartInstance::fw(void)const")
 }
 
-// 0xe486f0 — __ZN4Ogre14TextureManager25setPreferredFloatBitDepthEtb
-// type: _DWORD __fastcall(Ogre::TextureManager *__hidden this, unsigned __int16, bool)
-#[doc(alias = "Ogre::TextureManager::setPreferredFloatBitDepth(unsigned short,bool)")]
-#[doc(alias = "__ZN4Ogre14TextureManager25setPreferredFloatBitDepthEtb")]
-pub fn stub_e486f0() -> ! {
-    todo!("0xe486f0 Ogre::TextureManager::setPreferredFloatBitDepth(unsigned short,bool)")
+// 0x5da8c4 — __ZN3RBX12PartInstance12initOnDemandEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::initOnDemand(void)")]
+#[doc(alias = "__ZN3RBX12PartInstance12initOnDemandEv")]
+pub fn stub_5da8c4() -> ! {
+    todo!("0x5da8c4 RBX::PartInstance::initOnDemand(void)")
 }
 
-// 0xe48764 — __ZNK4Ogre14TextureManager25getPreferredFloatBitDepthEv
-// type: _DWORD __fastcall(Ogre::TextureManager *__hidden this)
-#[doc(alias = "Ogre::TextureManager::getPreferredFloatBitDepth(void)const")]
-#[doc(alias = "__ZNK4Ogre14TextureManager25getPreferredFloatBitDepthEv")]
-pub fn stub_e48764() -> ! {
-    todo!("0xe48764 Ogre::TextureManager::getPreferredFloatBitDepth(void)const")
+// 0x5da97c — __ZN3RBX12PartInstance21resetNetworkOwnerTimeEd
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this, double)
+#[doc(alias = "RBX::PartInstance::resetNetworkOwnerTime(double)")]
+#[doc(alias = "__ZN3RBX12PartInstance21resetNetworkOwnerTimeEd")]
+pub fn stub_5da97c() -> ! {
+    todo!("0x5da97c RBX::PartInstance::resetNetworkOwnerTime(double)")
 }
 
-// 0xe4876c — __ZN4Ogre14TextureManager21setPreferredBitDepthsEttb
-// type: _DWORD __fastcall(Ogre::TextureManager *__hidden this, unsigned __int16, unsigned __int16, bool)
-#[doc(alias = "Ogre::TextureManager::setPreferredBitDepths(unsigned short,unsigned short,bool)")]
-#[doc(alias = "__ZN4Ogre14TextureManager21setPreferredBitDepthsEttb")]
-pub fn stub_e4876c() -> ! {
-    todo!("0xe4876c Ogre::TextureManager::setPreferredBitDepths(unsigned short,unsigned short,bool)")
+// 0x5da9a4 — __ZNK3RBX12PartInstance18networkOwnerTimeUpEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::networkOwnerTimeUp(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance18networkOwnerTimeUpEv")]
+pub fn stub_5da9a4() -> ! {
+    todo!("0x5da9a4 RBX::PartInstance::networkOwnerTimeUp(void)const")
 }
 
-// 0xe487f0 — __ZN4Ogre14TextureManager20setDefaultNumMipmapsEm
-// type: _DWORD __fastcall(Ogre::TextureManager *__hidden this, unsigned int)
-#[doc(alias = "Ogre::TextureManager::setDefaultNumMipmaps(unsigned long)")]
-#[doc(alias = "__ZN4Ogre14TextureManager20setDefaultNumMipmapsEm")]
-pub fn stub_e487f0() -> ! {
-    todo!("0xe487f0 Ogre::TextureManager::setDefaultNumMipmaps(unsigned long)")
+// 0x5da9cc — __ZN3RBX12PartInstance7setNameERKSs
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this, const std::string *)
+#[doc(alias = "RBX::PartInstance::setName(std::string const&)")]
+#[doc(alias = "__ZN3RBX12PartInstance7setNameERKSs")]
+pub fn stub_5da9cc() -> ! {
+    todo!("0x5da9cc RBX::PartInstance::setName(std::string const&)")
 }
 
-// 0xe487f8 — __ZN4Ogre14TextureManager17isFormatSupportedENS_11TextureTypeENS_11PixelFormatEi
-#[doc(alias = "Ogre::TextureManager::isFormatSupported(Ogre::TextureType,Ogre::PixelFormat,int)")]
-#[doc(alias = "__ZN4Ogre14TextureManager17isFormatSupportedENS_11TextureTypeENS_11PixelFormatEi")]
-pub fn stub_e487f8() -> ! {
-    todo!("0xe487f8 Ogre::TextureManager::isFormatSupported(Ogre::TextureType,Ogre::PixelFormat,int)")
+// 0x5daa58 — __ZN3RBX12PartInstance13onGuidChangedEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::onGuidChanged(void)")]
+#[doc(alias = "__ZN3RBX12PartInstance13onGuidChangedEv")]
+pub fn stub_5daa58() -> ! {
+    todo!("0x5daa58 RBX::PartInstance::onGuidChanged(void)")
 }
 
-// 0xe48814 — __ZN4Ogre14TextureManager27isEquivalentFormatSupportedENS_11TextureTypeENS_11PixelFormatEi
-#[doc(alias = "Ogre::TextureManager::isEquivalentFormatSupported(Ogre::TextureType,Ogre::PixelFormat,int)")]
-#[doc(alias = "__ZN4Ogre14TextureManager27isEquivalentFormatSupportedENS_11TextureTypeENS_11PixelFormatEi")]
-pub fn stub_e48814() -> ! {
-    todo!("0xe48814 Ogre::TextureManager::isEquivalentFormatSupported(Ogre::TextureType,Ogre::PixelFormat,int)")
+// 0x5daac0 — __ZThn12_N3RBX12PartInstance13onGuidChangedEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::onGuidChanged(void)")]
+#[doc(alias = "__ZThn12_N3RBX12PartInstance13onGuidChangedEv")]
+pub fn stub_5daac0() -> ! {
+    todo!("0x5daac0 `non-virtual thunk to'RBX::PartInstance::onGuidChanged(void)")
 }
 
-// 0xe4883c — __ZN4Ogre14TextureManager20getDefaultNumMipmapsEv
-// type: _DWORD __fastcall(Ogre::TextureManager *__hidden this)
-#[doc(alias = "Ogre::TextureManager::getDefaultNumMipmaps(void)")]
-#[doc(alias = "__ZN4Ogre14TextureManager20getDefaultNumMipmapsEv")]
-pub fn stub_e4883c() -> ! {
-    todo!("0xe4883c Ogre::TextureManager::getDefaultNumMipmaps(void)")
+// 0x5daac8 — __ZNK3RBX12PartInstance17worldSnapLocationEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::worldSnapLocation(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance17worldSnapLocationEv")]
+pub fn stub_5daac8() -> ! {
+    todo!("0x5daac8 RBX::PartInstance::worldSnapLocation(void)const")
 }
 
-// 0xe48878 — __ZN4Ogre16TextureUnitStateC1EPNS_4PassE
-// type: _DWORD __fastcall(Ogre::TextureUnitState *__hidden this, Ogre::Pass *)
-#[doc(alias = "Ogre::TextureUnitState::TextureUnitState(Ogre::Pass *)")]
-#[doc(alias = "__ZN4Ogre16TextureUnitStateC1EPNS_4PassE")]
-pub fn stub_e48878() -> ! {
-    todo!("0xe48878 Ogre::TextureUnitState::TextureUnitState(Ogre::Pass *)")
+// 0x5dabac — __ZNK3RBX12PartInstance7alignedEb
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this, bool)
+#[doc(alias = "RBX::PartInstance::aligned(bool)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance7alignedEb")]
+pub fn stub_5dabac() -> ! {
+    todo!("0x5dabac RBX::PartInstance::aligned(bool)const")
 }
 
-// 0xe48884 — __ZN4Ogre16TextureUnitStateC2EPNS_4PassE
-// type: _DWORD __fastcall(Ogre::TextureUnitState *__hidden this, Ogre::Pass *)
-#[doc(alias = "Ogre::TextureUnitState::TextureUnitState(Ogre::Pass *)")]
-#[doc(alias = "__ZN4Ogre16TextureUnitStateC2EPNS_4PassE")]
-pub fn stub_e48884() -> ! {
-    todo!("0xe48884 Ogre::TextureUnitState::TextureUnitState(Ogre::Pass *)")
+// 0x5dad14 — __ZNK3RBX12PartInstance13lockedInPlaceEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::lockedInPlace(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance13lockedInPlaceEv")]
+pub fn stub_5dad14() -> ! {
+    todo!("0x5dad14 RBX::PartInstance::lockedInPlace(void)const")
 }
 
-// 0xe48d44 — __ZN4Ogre16TextureUnitState18setColourOperationENS_19LayerBlendOperationE
-// type: int __fastcall(int result, int)
-#[doc(alias = "Ogre::TextureUnitState::setColourOperation(Ogre::LayerBlendOperation)")]
-#[doc(alias = "__ZN4Ogre16TextureUnitState18setColourOperationENS_19LayerBlendOperationE")]
-pub fn stub_e48d44() -> ! {
-    todo!("0xe48d44 Ogre::TextureUnitState::setColourOperation(Ogre::LayerBlendOperation)")
+// 0x5dadb8 — __ZNK3RBX12PartInstance13reportTouchesEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::reportTouches(void)const")]
+#[doc(alias = "__ZNK3RBX12PartInstance13reportTouchesEv")]
+pub fn stub_5dadb8() -> ! {
+    todo!("0x5dadb8 RBX::PartInstance::reportTouches(void)const")
 }
 
-// 0xe48e4c — __ZN4Ogre16TextureUnitState24setTextureAddressingModeENS0_21TextureAddressingModeE
-// type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "Ogre::TextureUnitState::setTextureAddressingMode(Ogre::TextureUnitState::TextureAddressingMode)")]
-#[doc(alias = "__ZN4Ogre16TextureUnitState24setTextureAddressingModeENS0_21TextureAddressingModeE")]
-pub fn stub_e48e4c() -> ! {
-    todo!("0xe48e4c Ogre::TextureUnitState::setTextureAddressingMode(Ogre::TextureUnitState::TextureAddressingMode)")
+// 0x5dae34 — __ZThn96_NK3RBX12PartInstance13reportTouchesEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::reportTouches(void)const")]
+#[doc(alias = "__ZThn96_NK3RBX12PartInstance13reportTouchesEv")]
+pub fn stub_5dae34() -> ! {
+    todo!("0x5dae34 `non-virtual thunk to'RBX::PartInstance::reportTouches(void)const")
 }
 
-// 0xe48e54 — __ZN4Ogre16TextureUnitStateC1EPNS_4PassERKS0_
-// type: _DWORD __fastcall(Ogre::TextureUnitState *__hidden this, Ogre::Pass *, const Ogre::TextureUnitState *)
-#[doc(alias = "Ogre::TextureUnitState::TextureUnitState(Ogre::Pass *,Ogre::TextureUnitState const&)")]
-#[doc(alias = "__ZN4Ogre16TextureUnitStateC1EPNS_4PassERKS0_")]
-pub fn stub_e48e54() -> ! {
-    todo!("0xe48e54 Ogre::TextureUnitState::TextureUnitState(Ogre::Pass *,Ogre::TextureUnitState const&)")
+// 0x5daf38 — __ZN3RBX12PartInstance13fromPrimitiveEPNS_9PrimitiveE
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this, RBX::Primitive *)
+#[doc(alias = "RBX::PartInstance::fromPrimitive(RBX::Primitive *)")]
+#[doc(alias = "__ZN3RBX12PartInstance13fromPrimitiveEPNS_9PrimitiveE")]
+pub fn stub_5daf38() -> ! {
+    todo!("0x5daf38 RBX::PartInstance::fromPrimitive(RBX::Primitive *)")
 }
 
-// 0xe48e60 — __ZN4Ogre16TextureUnitStateC2EPNS_4PassERKS0_
-// type: _DWORD __fastcall(Ogre::TextureUnitState *__hidden this, Ogre::Pass *, const Ogre::TextureUnitState *)
-#[doc(alias = "Ogre::TextureUnitState::TextureUnitState(Ogre::Pass *,Ogre::TextureUnitState const&)")]
-#[doc(alias = "__ZN4Ogre16TextureUnitStateC2EPNS_4PassERKS0_")]
-pub fn stub_e48e60() -> ! {
-    todo!("0xe48e60 Ogre::TextureUnitState::TextureUnitState(Ogre::Pass *,Ogre::TextureUnitState const&)")
+// 0x5daf54 — __ZN3RBX12PartInstance9findPartsEPNS_8InstanceERSt6vectorIN5boost8weak_ptrIS0_EESaIS6_EE
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "RBX::PartInstance::findParts(RBX::Instance *,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &)")]
+#[doc(alias = "__ZN3RBX12PartInstance9findPartsEPNS_8InstanceERSt6vectorIN5boost8weak_ptrIS0_EESaIS6_EE")]
+pub fn stub_5daf54() -> ! {
+    todo!("0x5daf54 RBX::PartInstance::findParts(RBX::Instance *,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &)")
 }
 
-// 0xe491a8 — __ZN4Ogre16TextureUnitStateaSERKS0_
-// type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "Ogre::TextureUnitState::operator=(Ogre::TextureUnitState const&)")]
-#[doc(alias = "__ZN4Ogre16TextureUnitStateaSERKS0_")]
-pub fn stub_e491a8() -> ! {
-    todo!("0xe491a8 Ogre::TextureUnitState::operator=(Ogre::TextureUnitState const&)")
+// 0x5db0c8 — __ZN3RBX12PartInstance18nonNullInWorkspaceEN5boost10shared_ptrIS0_EE
+// type: int __fastcall(_DWORD)
+#[doc(alias = "RBX::PartInstance::nonNullInWorkspace(boost::shared_ptr<RBX::PartInstance>)")]
+#[doc(alias = "__ZN3RBX12PartInstance18nonNullInWorkspaceEN5boost10shared_ptrIS0_EE")]
+pub fn stub_5db0c8() -> ! {
+    todo!("0x5db0c8 RBX::PartInstance::nonNullInWorkspace(boost::shared_ptr<RBX::PartInstance>)")
 }
 
-// 0xe492bc — __ZN4Ogre16TextureUnitState14setTextureNameERKSsNS_11TextureTypeE
-// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, Ogre::NedPoolingImpl *, int, Ogre::NedPoolingImpl *, int, int, int, int, char, int, int, int, int)
-#[doc(alias = "Ogre::TextureUnitState::setTextureName(std::string const&,Ogre::TextureType)")]
-#[doc(alias = "__ZN4Ogre16TextureUnitState14setTextureNameERKSsNS_11TextureTypeE")]
-pub fn stub_e492bc() -> ! {
-    todo!("0xe492bc Ogre::TextureUnitState::setTextureName(std::string const&,Ogre::TextureType)")
+// 0x5db334 — __ZN3RBX12PartInstance12onCameraNearEf
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this, float)
+#[doc(alias = "RBX::PartInstance::onCameraNear(float)")]
+#[doc(alias = "__ZN3RBX12PartInstance12onCameraNearEf")]
+pub fn stub_5db334() -> ! {
+    todo!("0x5db334 RBX::PartInstance::onCameraNear(float)")
 }
 
-// 0xe4964c — __ZN4Ogre16TextureUnitState18setTextureCoordSetEj
-// type: _DWORD __fastcall(Ogre::TextureUnitState *__hidden this, unsigned int)
-#[doc(alias = "Ogre::TextureUnitState::setTextureCoordSet(unsigned int)")]
-#[doc(alias = "__ZN4Ogre16TextureUnitState18setTextureCoordSetEj")]
-pub fn stub_e4964c() -> ! {
-    todo!("0xe4964c Ogre::TextureUnitState::setTextureCoordSet(unsigned int)")
+// 0x5db36c — __ZThn132_N3RBX12PartInstance12onCameraNearEf
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this, float)
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::onCameraNear(float)")]
+#[doc(alias = "__ZThn132_N3RBX12PartInstance12onCameraNearEf")]
+pub fn stub_5db36c() -> ! {
+    todo!("0x5db36c `non-virtual thunk to'RBX::PartInstance::onCameraNear(float)")
 }
 
-// 0xe49650 — __ZN4Ogre16TextureUnitStateD1Ev
-// type: void __fastcall(Ogre::TextureUnitState *__hidden this)
-#[doc(alias = "Ogre::TextureUnitState::~TextureUnitState()")]
-#[doc(alias = "__ZN4Ogre16TextureUnitStateD1Ev")]
-pub fn stub_e49650() -> ! {
-    todo!("0xe49650 Ogre::TextureUnitState::~TextureUnitState()")
+// 0x5db374 — __ZN3RBX12PartInstance14onClumpChangedEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "RBX::PartInstance::onClumpChanged(void)")]
+#[doc(alias = "__ZN3RBX12PartInstance14onClumpChangedEv")]
+pub fn stub_5db374() -> ! {
+    todo!("0x5db374 RBX::PartInstance::onClumpChanged(void)")
 }
 
-// 0xe4965c — __ZN4Ogre16TextureUnitStateD2Ev
-// type: void __fastcall(Ogre::TextureUnitState *__hidden this)
-#[doc(alias = "Ogre::TextureUnitState::~TextureUnitState()")]
-#[doc(alias = "__ZN4Ogre16TextureUnitStateD2Ev")]
-pub fn stub_e4965c() -> ! {
-    todo!("0xe4965c Ogre::TextureUnitState::~TextureUnitState()")
+// 0x5db3a0 — __ZThn96_N3RBX12PartInstance14onClumpChangedEv
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::onClumpChanged(void)")]
+#[doc(alias = "__ZThn96_N3RBX12PartInstance14onClumpChangedEv")]
+pub fn stub_5db3a0() -> ! {
+    todo!("0x5db3a0 `non-virtual thunk to'RBX::PartInstance::onClumpChanged(void)")
 }
 
-// 0xf67554 — j___ZNSt8_Rb_treeIPN4Ogre17VertexDeclarationES2_St9_IdentityIS2_ESt4lessIS2_ENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS2_
-// type: int __fastcall(char *)
-#[doc(alias = "std::_Rb_tree<Ogre::VertexDeclaration *,Ogre::VertexDeclaration *,std::_Identity<Ogre::VertexDeclaration *>,std::less<Ogre::VertexDeclaration *>,Ogre::STLAllocator<Ogre::VertexDeclaration *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(Ogre::VertexDeclaration * const&)")]
-#[doc(alias = "j___ZNSt8_Rb_treeIPN4Ogre17VertexDeclarationES2_St9_IdentityIS2_ESt4lessIS2_ENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS2_")]
-pub fn stub_f67554() -> ! {
-    todo!("0xf67554 std::_Rb_tree<Ogre::VertexDeclaration *,Ogre::VertexDeclaration *,std::_Identity<Ogre::VertexDeclaration *>,std::less<Ogre::VertexDeclaration *>,Ogre::STLAllocator<Ogre::VertexDeclaration *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(Ogre::VertexDeclaration * const&)")
+// 0x5db3a8 — __ZN3RBX12PartInstance17onSleepingChangedEb
+// type: _DWORD __fastcall(RBX::PartInstance *__hidden this, bool)
+#[doc(alias = "RBX::PartInstance::onSleepingChanged(bool)")]
+#[doc(alias = "__ZN3RBX12PartInstance17onSleepingChangedEb")]
+pub fn stub_5db3a8() -> ! {
+    todo!("0x5db3a8 RBX::PartInstance::onSleepingChanged(bool)")
 }
