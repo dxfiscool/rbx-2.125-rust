@@ -1,725 +1,726 @@
-//! generated_wdog_coreA2 — 120 core stubs EA-sorted asc global dedup 0xa6c7d0..0xa7d1d8 (core/rbx_core no RBX EA>=0x90000)
+//! generated_wdog_coreA2 — 120 core stubs EA-sorted asc global dedup 0xb21004..0xb374c8 (core/RBX+boost->SharedPtr gap-fill)
 #![allow(unused_attributes, dead_code, unused_variables, non_snake_case, non_camel_case_types, clippy::all)]
 
 use crate::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
-// 0xa6c7d0 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE8AllocateEPKcj
-#[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE8AllocateEPKcj")]
-pub fn stub_0xa6c7d0() -> ! {
-    todo!("0xa6c7d0 __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE8AllocateEPKcj")
+// 0xb21004 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEED1Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEED1Ev")]
+pub fn stub_0xb21004() -> ! {
+    todo!("0xb21004 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEED1Ev")
 }
 
-// 0xa6c8e4 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE7ReleaseEPS3_PKcj
-#[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE7ReleaseEPS3_PKcj")]
-pub fn stub_0xa6c8e4() -> ! {
-    todo!("0xa6c8e4 __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE7ReleaseEPS3_PKcj")
+// 0xb21008 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEED0Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEED0Ev")]
+pub fn stub_0xb21008() -> ! {
+    todo!("0xb21008 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEED0Ev")
 }
 
-// 0xa6c9ac — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer14RecvFromStructEE7ReleaseEPS3_PKcj
-#[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer14RecvFromStructEE7ReleaseEPS3_PKcj")]
-pub fn stub_0xa6c9ac() -> ! {
-    todo!("0xa6c9ac __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer14RecvFromStructEE7ReleaseEPS3_PKcj")
+// 0xb21014 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEE7disposeEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEE7disposeEv")]
+pub fn stub_0xb21014() -> ! {
+    todo!("0xb21014 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEE7disposeEv")
 }
 
-// 0xa6ca84 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE7ReleaseEPS3_PKcj
-#[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE7ReleaseEPS3_PKcj")]
-pub fn stub_0xa6ca84() -> ! {
-    todo!("0xa6ca84 __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE7ReleaseEPS3_PKcj")
+// 0xb21028 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEE11get_deleterERKSt9type_info
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEE11get_deleterERKSt9type_info")]
+pub fn stub_0xb21028() -> ! {
+    todo!("0xb21028 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEE11get_deleterERKSt9type_info")
 }
 
-// 0xa6cb5c — __ZN6RakNet15OP_DELETE_ARRAYINS_14RakNetSmartPtrINS_12RakNetSocketEEEEEvPT_PKcj
-#[doc(alias = "__ZN6RakNet15OP_DELETE_ARRAYINS_14RakNetSmartPtrINS_12RakNetSocketEEEEEvPT_PKcj")]
-pub fn stub_0xa6cb5c() -> ! {
-    todo!("0xa6cb5c __ZN6RakNet15OP_DELETE_ARRAYINS_14RakNetSmartPtrINS_12RakNetSocketEEEEEvPT_PKcj")
+// 0xb2102c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEE19get_untyped_deleterEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEE19get_untyped_deleterEv")]
+pub fn stub_0xb2102c() -> ! {
+    todo!("0xb2102c __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEE19get_untyped_deleterEv")
 }
 
-// 0xa6ccdc — __ZN14DataStructures5QueueIPN6RakNet7RakPeer21BufferedCommandStructEE4PushERKS4_PKcj
-#[doc(alias = "__ZN14DataStructures5QueueIPN6RakNet7RakPeer21BufferedCommandStructEE4PushERKS4_PKcj")]
-pub fn stub_0xa6ccdc() -> ! {
-    todo!("0xa6ccdc __ZN14DataStructures5QueueIPN6RakNet7RakPeer21BufferedCommandStructEE4PushERKS4_PKcj")
+// 0xb21030 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_23RoundRobinPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+#[doc(alias = "__ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_23RoundRobinPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_0xb21030() -> ! {
+    todo!("0xb21030 __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_23RoundRobinPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
 }
 
-// 0xa6cdb0 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE8AllocateEPKcj
-#[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE8AllocateEPKcj")]
-pub fn stub_0xa6cdb0() -> ! {
-    todo!("0xa6cdb0 __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE8AllocateEPKcj")
+// 0xb211c8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEED1Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEED1Ev")]
+pub fn stub_0xb211c8() -> ! {
+    todo!("0xb211c8 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEED1Ev")
 }
 
-// 0xa6ced8 — __ZN14DataStructures4ListIN6RakNet10RakNetGUIDEE6InsertERKS2_PKcj
-#[doc(alias = "__ZN14DataStructures4ListIN6RakNet10RakNetGUIDEE6InsertERKS2_PKcj")]
-pub fn stub_0xa6ced8() -> ! {
-    todo!("0xa6ced8 __ZN14DataStructures4ListIN6RakNet10RakNetGUIDEE6InsertERKS2_PKcj")
+// 0xb211cc — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEED0Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEED0Ev")]
+pub fn stub_0xb211cc() -> ! {
+    todo!("0xb211cc __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEED0Ev")
 }
 
-// 0xa6d030 — __ZN14DataStructures4ListIN6RakNet13SystemAddressEE6InsertERKS2_PKcj
-#[doc(alias = "__ZN14DataStructures4ListIN6RakNet13SystemAddressEE6InsertERKS2_PKcj")]
-pub fn stub_0xa6d030() -> ! {
-    todo!("0xa6d030 __ZN14DataStructures4ListIN6RakNet13SystemAddressEE6InsertERKS2_PKcj")
+// 0xb211d8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEE7disposeEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEE7disposeEv")]
+pub fn stub_0xb211d8() -> ! {
+    todo!("0xb211d8 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEE7disposeEv")
 }
 
-// 0xa6d194 — __ZN6RakNet7RakPeer18RemoteSystemStructC2Ev
-#[doc(alias = "__ZN6RakNet7RakPeer18RemoteSystemStructC2Ev")]
-pub fn stub_0xa6d194() -> ! {
-    todo!("0xa6d194 __ZN6RakNet7RakPeer18RemoteSystemStructC2Ev")
+// 0xb211ec — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEE11get_deleterERKSt9type_info
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEE11get_deleterERKSt9type_info")]
+pub fn stub_0xb211ec() -> ! {
+    todo!("0xb211ec __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEE11get_deleterERKSt9type_info")
 }
 
-// 0xa6d2bc — __ZN14DataStructures4ListIN6RakNet14RakNetSmartPtrINS1_12RakNetSocketEEEE6InsertERKS4_PKcj
-#[doc(alias = "__ZN14DataStructures4ListIN6RakNet14RakNetSmartPtrINS1_12RakNetSocketEEEE6InsertERKS4_PKcj")]
-pub fn stub_0xa6d2bc() -> ! {
-    todo!("0xa6d2bc __ZN14DataStructures4ListIN6RakNet14RakNetSmartPtrINS1_12RakNetSocketEEEE6InsertERKS4_PKcj")
+// 0xb211f0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEE19get_untyped_deleterEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEE19get_untyped_deleterEv")]
+pub fn stub_0xb211f0() -> ! {
+    todo!("0xb211f0 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEE19get_untyped_deleterEv")
 }
 
-// 0xa6d4c0 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer21BufferedCommandStructEED2Ev
-#[doc(alias = "__ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer21BufferedCommandStructEED2Ev")]
-pub fn stub_0xa6d4c0() -> ! {
-    todo!("0xa6d4c0 __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer21BufferedCommandStructEED2Ev")
+// 0xb211f4 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_23ErrorCompPhysicsSender2EEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+#[doc(alias = "__ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_23ErrorCompPhysicsSender2EEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_0xb211f4() -> ! {
+    todo!("0xb211f4 __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_23ErrorCompPhysicsSender2EEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
 }
 
-// 0xa6d7a0 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer14RecvFromStructEED2Ev
-#[doc(alias = "__ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer14RecvFromStructEED2Ev")]
-pub fn stub_0xa6d7a0() -> ! {
-    todo!("0xa6d7a0 __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer14RecvFromStructEED2Ev")
+// 0xb2138c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EED1Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EED1Ev")]
+pub fn stub_0xb2138c() -> ! {
+    todo!("0xb2138c __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EED1Ev")
 }
 
-// 0xa6da80 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer17SocketQueryOutputEED2Ev
-#[doc(alias = "__ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer17SocketQueryOutputEED2Ev")]
-pub fn stub_0xa6da80() -> ! {
-    todo!("0xa6da80 __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer17SocketQueryOutputEED2Ev")
+// 0xb21390 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EED0Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EED0Ev")]
+pub fn stub_0xb21390() -> ! {
+    todo!("0xb21390 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EED0Ev")
 }
 
-// 0xa6eaa4 — __ZN6RakNet9RakStringC1Ev
-#[doc(alias = "__ZN6RakNet9RakStringC1Ev")]
-pub fn stub_0xa6eaa4() -> ! {
-    todo!("0xa6eaa4 __ZN6RakNet9RakStringC1Ev")
+// 0xb2139c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EE7disposeEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EE7disposeEv")]
+pub fn stub_0xb2139c() -> ! {
+    todo!("0xb2139c __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EE7disposeEv")
 }
 
-// 0xa6eab4 — __ZN6RakNet9RakString6AssignEPKcPv
-#[doc(alias = "__ZN6RakNet9RakString6AssignEPKcPv")]
-pub fn stub_0xa6eab4() -> ! {
-    todo!("0xa6eab4 __ZN6RakNet9RakString6AssignEPKcPv")
+// 0xb213b0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EE11get_deleterERKSt9type_info
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EE11get_deleterERKSt9type_info")]
+pub fn stub_0xb213b0() -> ! {
+    todo!("0xb213b0 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EE11get_deleterERKSt9type_info")
 }
 
-// 0xa6ec58 — __ZN6RakNet9RakStringC1EPKcz
-#[doc(alias = "__ZN6RakNet9RakStringC1EPKcz")]
-pub fn stub_0xa6ec58() -> ! {
-    todo!("0xa6ec58 __ZN6RakNet9RakStringC1EPKcz")
+// 0xb213b4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EE19get_untyped_deleterEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EE19get_untyped_deleterEv")]
+pub fn stub_0xb213b4() -> ! {
+    todo!("0xb213b4 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EE19get_untyped_deleterEv")
 }
 
-// 0xa6ec7c — __ZN6RakNet9RakStringD1Ev
-#[doc(alias = "__ZN6RakNet9RakStringD1Ev")]
-pub fn stub_0xa6ec7c() -> ! {
-    todo!("0xa6ec7c __ZN6RakNet9RakStringD1Ev")
+// 0xb213b8 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_22ErrorCompPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+#[doc(alias = "__ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_22ErrorCompPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_0xb213b8() -> ! {
+    todo!("0xb213b8 __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_22ErrorCompPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
 }
 
-// 0xa6ec8c — __ZN6RakNet9RakString4FreeEv
-#[doc(alias = "__ZN6RakNet9RakString4FreeEv")]
-pub fn stub_0xa6ec8c() -> ! {
-    todo!("0xa6ec8c __ZN6RakNet9RakString4FreeEv")
+// 0xb21550 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEED1Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEED1Ev")]
+pub fn stub_0xb21550() -> ! {
+    todo!("0xb21550 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEED1Ev")
 }
 
-// 0xa6eed4 — __ZN6RakNet9RakStringaSERKS0_
-#[doc(alias = "__ZN6RakNet9RakStringaSERKS0_")]
-pub fn stub_0xa6eed4() -> ! {
-    todo!("0xa6eed4 __ZN6RakNet9RakStringaSERKS0_")
+// 0xb21554 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEED0Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEED0Ev")]
+pub fn stub_0xb21554() -> ! {
+    todo!("0xb21554 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEED0Ev")
 }
 
-// 0xa6ef14 — __ZN6RakNet9RakString8AllocateEm
-#[doc(alias = "__ZN6RakNet9RakString8AllocateEm")]
-pub fn stub_0xa6ef14() -> ! {
-    todo!("0xa6ef14 __ZN6RakNet9RakString8AllocateEm")
+// 0xb21560 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEE7disposeEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEE7disposeEv")]
+pub fn stub_0xb21560() -> ! {
+    todo!("0xb21560 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEE7disposeEv")
 }
 
-// 0xa6f1ac — __ZN6RakNet9RakString14IPAddressMatchEPKc
-#[doc(alias = "__ZN6RakNet9RakString14IPAddressMatchEPKc")]
-pub fn stub_0xa6f1ac() -> ! {
-    todo!("0xa6f1ac __ZN6RakNet9RakString14IPAddressMatchEPKc")
+// 0xb21574 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEE11get_deleterERKSt9type_info
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEE11get_deleterERKSt9type_info")]
+pub fn stub_0xb21574() -> ! {
+    todo!("0xb21574 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEE11get_deleterERKSt9type_info")
 }
 
-// 0xa6f210 — __ZN6RakNet9RakString17FreeMemoryNoMutexEv
-#[doc(alias = "__ZN6RakNet9RakString17FreeMemoryNoMutexEv")]
-pub fn stub_0xa6f210() -> ! {
-    todo!("0xa6f210 __ZN6RakNet9RakString17FreeMemoryNoMutexEv")
+// 0xb21578 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEE19get_untyped_deleterEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEE19get_untyped_deleterEv")]
+pub fn stub_0xb21578() -> ! {
+    todo!("0xb21578 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEE19get_untyped_deleterEv")
 }
 
-// 0xa6f328 — __ZNK6RakNet9RakString9SerializeEPNS_9BitStreamE
-#[doc(alias = "__ZNK6RakNet9RakString9SerializeEPNS_9BitStreamE")]
-pub fn stub_0xa6f328() -> ! {
-    todo!("0xa6f328 __ZNK6RakNet9RakString9SerializeEPNS_9BitStreamE")
+// 0xb21844 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSEPSH_
+#[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSEPSH_")]
+pub fn stub_0xb21844() -> ! {
+    todo!("0xb21844 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSEPSH_")
 }
 
-// 0xa6f358 — __ZN6RakNet9RakString11DeserializeEPNS_9BitStreamE
-#[doc(alias = "__ZN6RakNet9RakString11DeserializeEPNS_9BitStreamE")]
-pub fn stub_0xa6f358() -> ! {
-    todo!("0xa6f358 __ZN6RakNet9RakString11DeserializeEPNS_9BitStreamE")
+// 0xb218f8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSERKSI_
+#[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSERKSI_")]
+pub fn stub_0xb218f8() -> ! {
+    todo!("0xb218f8 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSERKSI_")
 }
 
-// 0xa6f3c0 — __ZN14DataStructures4ListIPN6RakNet9RakString12SharedStringEED1Ev
-#[doc(alias = "__ZN14DataStructures4ListIPN6RakNet9RakString12SharedStringEED1Ev")]
-pub fn stub_0xa6f3c0() -> ! {
-    todo!("0xa6f3c0 __ZN14DataStructures4ListIPN6RakNet9RakString12SharedStringEED1Ev")
+// 0xb21bec — __ZNK3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slot9connectedEv
+#[doc(alias = "__ZNK3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slot9connectedEv")]
+pub fn stub_0xb21bec() -> ! {
+    todo!("0xb21bec __ZNK3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slot9connectedEv")
 }
 
-// 0xa6fa3c — __ZN6RakNet9RakThread6CreateEPFPvS1_ES1_i
-#[doc(alias = "__ZN6RakNet9RakThread6CreateEPFPvS1_ES1_i")]
-pub fn stub_0xa6fa3c() -> ! {
-    todo!("0xa6fa3c __ZN6RakNet9RakThread6CreateEPFPvS1_ES1_i")
+// 0xb21bf8 — __ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_E4callES6_SC_SE_SE_
+#[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_E4callES6_SC_SE_SE_")]
+pub fn stub_0xb21bf8() -> ! {
+    todo!("0xb21bf8 __ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_E4callES6_SC_SE_SE_")
 }
 
-// 0xa70260 — __ZN6RakNet12RakNetRandomC1Ev
-#[doc(alias = "__ZN6RakNet12RakNetRandomC1Ev")]
-pub fn stub_0xa70260() -> ! {
-    todo!("0xa70260 __ZN6RakNet12RakNetRandomC1Ev")
+// 0xb21c28 — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_E4callES6_SC_SE_SE_
+#[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_E4callES6_SC_SE_SE_")]
+pub fn stub_0xb21c28() -> ! {
+    todo!("0xb21c28 __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_E4callES6_SC_SE_SE_")
 }
 
-// 0xa70270 — __ZN6RakNet12RakNetRandomD1Ev
-#[doc(alias = "__ZN6RakNet12RakNetRandomD1Ev")]
-pub fn stub_0xa70270() -> ! {
-    todo!("0xa70270 __ZN6RakNet12RakNetRandomD1Ev")
+// 0xb21c58 — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE6removeEPNSF_4slotE
+#[doc(alias = "__ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE6removeEPNSF_4slotE")]
+pub fn stub_0xb21c58() -> ! {
+    todo!("0xb21c58 __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE6removeEPNSF_4slotE")
 }
 
-// 0xa70278 — __ZN6RakNet12RakNetRandom6SeedMTEj
-#[doc(alias = "__ZN6RakNet12RakNetRandom6SeedMTEj")]
-pub fn stub_0xa70278() -> ! {
-    todo!("0xa70278 __ZN6RakNet12RakNetRandom6SeedMTEj")
+// 0xb21d44 — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slot22safe_static_init_mutexEv
+#[doc(alias = "__ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slot22safe_static_init_mutexEv")]
+pub fn stub_0xb21d44() -> ! {
+    todo!("0xb21d44 __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slot22safe_static_init_mutexEv")
 }
 
-// 0xa702a4 — __ZN6RakNet12RakNetRandom8RandomMTEv
-#[doc(alias = "__ZN6RakNet12RakNetRandom8RandomMTEv")]
-pub fn stub_0xa702a4() -> ! {
-    todo!("0xa702a4 __ZN6RakNet12RakNetRandom8RandomMTEv")
+// 0xb21e28 — __ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED2Ev
+#[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED2Ev")]
+pub fn stub_0xb21e28() -> ! {
+    todo!("0xb21e28 __ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED2Ev")
 }
 
-// 0xa7090c — __ZN6RakNet22SplitPacketChannelCompERKtRKPNS_18SplitPacketChannelE
-#[doc(alias = "__ZN6RakNet22SplitPacketChannelCompERKtRKPNS_18SplitPacketChannelE")]
-pub fn stub_0xa7090c() -> ! {
-    todo!("0xa7090c __ZN6RakNet22SplitPacketChannelCompERKtRKPNS_18SplitPacketChannelE")
+// 0xb21fa4 — __ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED1Ev
+#[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED1Ev")]
+pub fn stub_0xb21fa4() -> ! {
+    todo!("0xb21fa4 __ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED1Ev")
 }
 
-// 0xa7092c — __ZN6RakNet16ReliabilityLayerC1Ev
-#[doc(alias = "__ZN6RakNet16ReliabilityLayerC1Ev")]
-pub fn stub_0xa7092c() -> ! {
-    todo!("0xa7092c __ZN6RakNet16ReliabilityLayerC1Ev")
+// 0xb21fb0 — __ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED0Ev
+#[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED0Ev")]
+pub fn stub_0xb21fb0() -> ! {
+    todo!("0xb21fb0 __ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED0Ev")
 }
 
-// 0xa70938 — __ZN6RakNet16ReliabilityLayerC2Ev
-#[doc(alias = "__ZN6RakNet16ReliabilityLayerC2Ev")]
-pub fn stub_0xa70938() -> ! {
-    todo!("0xa70938 __ZN6RakNet16ReliabilityLayerC2Ev")
+// 0xb22064 — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slotD1Ev
+#[doc(alias = "__ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slotD1Ev")]
+pub fn stub_0xb22064() -> ! {
+    todo!("0xb22064 __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slotD1Ev")
 }
 
-// 0xa7142c — __ZN6RakNet16ReliabilityLayer19InitializeVariablesEv
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer19InitializeVariablesEv")]
-pub fn stub_0xa7142c() -> ! {
-    todo!("0xa7142c __ZN6RakNet16ReliabilityLayer19InitializeVariablesEv")
+// 0xb220c0 — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slotD0Ev
+#[doc(alias = "__ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slotD0Ev")]
+pub fn stub_0xb220c0() -> ! {
+    todo!("0xb220c0 __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slotD0Ev")
 }
 
-// 0xa715f8 — __ZN6RakNet16ReliabilityLayerD1Ev
-#[doc(alias = "__ZN6RakNet16ReliabilityLayerD1Ev")]
-pub fn stub_0xa715f8() -> ! {
-    todo!("0xa715f8 __ZN6RakNet16ReliabilityLayerD1Ev")
+// 0xb221c8 — __ZN5boost3_bi5list5INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEENS9_ILi4EEEEC2ES8_SA_SB_SC_SD_
+#[doc(alias = "__ZN5boost3_bi5list5INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEENS9_ILi4EEEEC2ES8_SA_SB_SC_SD_")]
+pub fn stub_0xb221c8() -> ! {
+    todo!("0xb221c8 __ZN5boost3_bi5list5INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEENS9_ILi4EEEEC2ES8_SA_SB_SC_SD_")
 }
 
-// 0xa71604 — __ZN6RakNet16ReliabilityLayerD2Ev
-#[doc(alias = "__ZN6RakNet16ReliabilityLayerD2Ev")]
-pub fn stub_0xa71604() -> ! {
-    todo!("0xa71604 __ZN6RakNet16ReliabilityLayerD2Ev")
+// 0xb22618 — __ZN5boost3_bi8storage4INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEEEC2ES8_SA_SB_SC_
+#[doc(alias = "__ZN5boost3_bi8storage4INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEEEC2ES8_SA_SB_SC_")]
+pub fn stub_0xb22618() -> ! {
+    todo!("0xb22618 __ZN5boost3_bi8storage4INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEEEC2ES8_SA_SB_SC_")
 }
 
-// 0xa723c0 — __ZN6RakNet16ReliabilityLayer5ResetEbib
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer5ResetEbib")]
-pub fn stub_0xa723c0() -> ! {
-    todo!("0xa723c0 __ZN6RakNet16ReliabilityLayer5ResetEbib")
+// 0xb22a68 — __ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEEEC2ES8_SA_
+#[doc(alias = "__ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEEEC2ES8_SA_")]
+pub fn stub_0xb22a68() -> ! {
+    todo!("0xb22a68 __ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEEEC2ES8_SA_")
 }
 
-// 0xa723f8 — __ZN6RakNet16ReliabilityLayer14SetTimeoutTimeEj
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer14SetTimeoutTimeEj")]
-pub fn stub_0xa723f8() -> ! {
-    todo!("0xa723f8 __ZN6RakNet16ReliabilityLayer14SetTimeoutTimeEj")
+// 0xb2332c — __ZN3RBX4Name13callDoDeclareILZNS_7Network19sClusterPacketCacheEEEEvv
+#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_7Network19sClusterPacketCacheEEEEvv")]
+pub fn stub_0xb2332c() -> ! {
+    todo!("0xb2332c __ZN3RBX4Name13callDoDeclareILZNS_7Network19sClusterPacketCacheEEEEvv")
 }
 
-// 0xa72400 — __ZN6RakNet16ReliabilityLayer14GetTimeoutTimeEv
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer14GetTimeoutTimeEv")]
-pub fn stub_0xa72400() -> ! {
-    todo!("0xa72400 __ZN6RakNet16ReliabilityLayer14GetTimeoutTimeEv")
+// 0xb23cd8 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator7PingJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+#[doc(alias = "__ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator7PingJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_0xb23cd8() -> ! {
+    todo!("0xb23cd8 __ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator7PingJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
 }
 
-// 0xa72408 — __ZN6RakNet16ReliabilityLayer20FreeThreadSafeMemoryEv
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer20FreeThreadSafeMemoryEv")]
-pub fn stub_0xa72408() -> ! {
-    todo!("0xa72408 __ZN6RakNet16ReliabilityLayer20FreeThreadSafeMemoryEv")
+// 0xb23e88 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network10Replicator7PingJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network10Replicator7PingJobES8_EEvPKNS_10shared_ptrIT_EEPT0_")]
+pub fn stub_0xb23e88() -> ! {
+    todo!("0xb23e88 __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network10Replicator7PingJobES8_EEvPKNS_10shared_ptrIT_EEPT0_")
 }
 
-// 0xa72d5c — __ZN6RakNet16ReliabilityLayer24ClearPacketsAndDatagramsEv
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer24ClearPacketsAndDatagramsEv")]
-pub fn stub_0xa72d5c() -> ! {
-    todo!("0xa72d5c __ZN6RakNet16ReliabilityLayer24ClearPacketsAndDatagramsEv")
+// 0xb24134 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator7PingJobEED1Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator7PingJobEED1Ev")]
+pub fn stub_0xb24134() -> ! {
+    todo!("0xb24134 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator7PingJobEED1Ev")
 }
 
-// 0xa72e94 — __ZN6RakNet16ReliabilityLayer38HandleSocketReceiveFromConnectedPlayerEPKcjRNS_13SystemAddressERN14DataStructures4ListIPNS_16PluginInterface2EEEiiPNS_12RakNetRandomEtjyRNS_9BitStreamE
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer38HandleSocketReceiveFromConnectedPlayerEPKcjRNS_13SystemAddressERN14DataStructures4ListIPNS_16PluginInterface2EEEiiPNS_12RakNetRandomEtjyRNS_9BitStreamE")]
-pub fn stub_0xa72e94() -> ! {
-    todo!("0xa72e94 __ZN6RakNet16ReliabilityLayer38HandleSocketReceiveFromConnectedPlayerEPKcjRNS_13SystemAddressERN14DataStructures4ListIPNS_16PluginInterface2EEEiiPNS_12RakNetRandomEtjyRNS_9BitStreamE")
+// 0xb24138 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator7PingJobEED0Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator7PingJobEED0Ev")]
+pub fn stub_0xb24138() -> ! {
+    todo!("0xb24138 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator7PingJobEED0Ev")
 }
 
-// 0xa74514 — __ZN6RakNet16ReliabilityLayer57RemovePacketFromResendListAndDeleteOlderReliableSequencedENS_8uint24_tEyRN14DataStructures4ListIPNS_16PluginInterface2EEERKNS_13SystemAddressE
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer57RemovePacketFromResendListAndDeleteOlderReliableSequencedENS_8uint24_tEyRN14DataStructures4ListIPNS_16PluginInterface2EEERKNS_13SystemAddressE")]
-pub fn stub_0xa74514() -> ! {
-    todo!("0xa74514 __ZN6RakNet16ReliabilityLayer57RemovePacketFromResendListAndDeleteOlderReliableSequencedENS_8uint24_tEyRN14DataStructures4ListIPNS_16PluginInterface2EEERKNS_13SystemAddressE")
+// 0xb24144 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator7PingJobEE7disposeEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator7PingJobEE7disposeEv")]
+pub fn stub_0xb24144() -> ! {
+    todo!("0xb24144 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator7PingJobEE7disposeEv")
 }
 
-// 0xa74750 — __ZN6RakNet16ReliabilityLayer33CreateInternalPacketFromBitStreamEPNS_9BitStreamEy
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer33CreateInternalPacketFromBitStreamEPNS_9BitStreamEy")]
-pub fn stub_0xa74750() -> ! {
-    todo!("0xa74750 __ZN6RakNet16ReliabilityLayer33CreateInternalPacketFromBitStreamEPNS_9BitStreamEy")
+// 0xb24158 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator7PingJobEE11get_deleterERKSt9type_info
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator7PingJobEE11get_deleterERKSt9type_info")]
+pub fn stub_0xb24158() -> ! {
+    todo!("0xb24158 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator7PingJobEE11get_deleterERKSt9type_info")
 }
 
-// 0xa749fc — __ZN6RakNet16ReliabilityLayer25InsertIntoSplitPacketListEPNS_14InternalPacketEy
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer25InsertIntoSplitPacketListEPNS_14InternalPacketEy")]
-pub fn stub_0xa749fc() -> ! {
-    todo!("0xa749fc __ZN6RakNet16ReliabilityLayer25InsertIntoSplitPacketListEPNS_14InternalPacketEy")
+// 0xb2415c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator7PingJobEE19get_untyped_deleterEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator7PingJobEE19get_untyped_deleterEv")]
+pub fn stub_0xb2415c() -> ! {
+    todo!("0xb2415c __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator7PingJobEE19get_untyped_deleterEv")
 }
 
-// 0xa74c88 — __ZN6RakNet16ReliabilityLayer30BuildPacketFromSplitPacketListEtyiRNS_13SystemAddressEPNS_12RakNetRandomEtjRNS_9BitStreamE
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer30BuildPacketFromSplitPacketListEtyiRNS_13SystemAddressEPNS_12RakNetRandomEtjRNS_9BitStreamE")]
-pub fn stub_0xa74c88() -> ! {
-    todo!("0xa74c88 __ZN6RakNet16ReliabilityLayer30BuildPacketFromSplitPacketListEtyiRNS_13SystemAddressEPNS_12RakNetRandomEtjRNS_9BitStreamE")
+// 0xb24160 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator17ProcessPacketsJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+#[doc(alias = "__ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator17ProcessPacketsJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_0xb24160() -> ! {
+    todo!("0xb24160 __ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator17ProcessPacketsJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
 }
 
-// 0xa74d64 — __ZN6RakNet16ReliabilityLayer7ReceiveEPPh
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer7ReceiveEPPh")]
-pub fn stub_0xa74d64() -> ! {
-    todo!("0xa74d64 __ZN6RakNet16ReliabilityLayer7ReceiveEPPh")
+// 0xb24310 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network10Replicator17ProcessPacketsJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network10Replicator17ProcessPacketsJobES8_EEvPKNS_10shared_ptrIT_EEPT0_")]
+pub fn stub_0xb24310() -> ! {
+    todo!("0xb24310 __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network10Replicator17ProcessPacketsJobES8_EEvPKNS_10shared_ptrIT_EEPT0_")
 }
 
-// 0xa74dc0 — __ZN6RakNet16ReliabilityLayer4SendEPcj14PacketPriority17PacketReliabilityhbiyj
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer4SendEPcj14PacketPriority17PacketReliabilityhbiyj")]
-pub fn stub_0xa74dc0() -> ! {
-    todo!("0xa74dc0 __ZN6RakNet16ReliabilityLayer4SendEPcj14PacketPriority17PacketReliabilityhbiyj")
+// 0xb245bc — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator17ProcessPacketsJobEED1Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator17ProcessPacketsJobEED1Ev")]
+pub fn stub_0xb245bc() -> ! {
+    todo!("0xb245bc __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator17ProcessPacketsJobEED1Ev")
 }
 
-// 0xa75100 — __ZN6RakNet16ReliabilityLayer11SplitPacketEPNS_14InternalPacketE
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer11SplitPacketEPNS_14InternalPacketE")]
-pub fn stub_0xa75100() -> ! {
-    todo!("0xa75100 __ZN6RakNet16ReliabilityLayer11SplitPacketEPNS_14InternalPacketE")
+// 0xb245c0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator17ProcessPacketsJobEED0Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator17ProcessPacketsJobEED0Ev")]
+pub fn stub_0xb245c0() -> ! {
+    todo!("0xb245c0 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator17ProcessPacketsJobEED0Ev")
 }
 
-// 0xa75548 — __ZN6RakNet16ReliabilityLayer6UpdateEiRNS_13SystemAddressEiyjRN14DataStructures4ListIPNS_16PluginInterface2EEEPNS_12RakNetRandomEtjRNS_9BitStreamE
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer6UpdateEiRNS_13SystemAddressEiyjRN14DataStructures4ListIPNS_16PluginInterface2EEEPNS_12RakNetRandomEtjRNS_9BitStreamE")]
-pub fn stub_0xa75548() -> ! {
-    todo!("0xa75548 __ZN6RakNet16ReliabilityLayer6UpdateEiRNS_13SystemAddressEiyjRN14DataStructures4ListIPNS_16PluginInterface2EEEPNS_12RakNetRandomEtjRNS_9BitStreamE")
+// 0xb245cc — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator17ProcessPacketsJobEE7disposeEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator17ProcessPacketsJobEE7disposeEv")]
+pub fn stub_0xb245cc() -> ! {
+    todo!("0xb245cc __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator17ProcessPacketsJobEE7disposeEv")
 }
 
-// 0xa7641c — __ZN6RakNet16ReliabilityLayer10AckTimeoutEy
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer10AckTimeoutEy")]
-pub fn stub_0xa7641c() -> ! {
-    todo!("0xa7641c __ZN6RakNet16ReliabilityLayer10AckTimeoutEy")
+// 0xb245e0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator17ProcessPacketsJobEE11get_deleterERKSt9type_info
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator17ProcessPacketsJobEE11get_deleterERKSt9type_info")]
+pub fn stub_0xb245e0() -> ! {
+    todo!("0xb245e0 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator17ProcessPacketsJobEE11get_deleterERKSt9type_info")
 }
 
-// 0xa76468 — __ZN6RakNet16ReliabilityLayer8SendACKsEiRNS_13SystemAddressEyPNS_12RakNetRandomEtjRNS_9BitStreamE
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer8SendACKsEiRNS_13SystemAddressEyPNS_12RakNetRandomEtjRNS_9BitStreamE")]
-pub fn stub_0xa76468() -> ! {
-    todo!("0xa76468 __ZN6RakNet16ReliabilityLayer8SendACKsEiRNS_13SystemAddressEyPNS_12RakNetRandomEtjRNS_9BitStreamE")
+// 0xb245e4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator17ProcessPacketsJobEE19get_untyped_deleterEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator17ProcessPacketsJobEE19get_untyped_deleterEv")]
+pub fn stub_0xb245e4() -> ! {
+    todo!("0xb245e4 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator17ProcessPacketsJobEE19get_untyped_deleterEv")
 }
 
-// 0xa765e0 — __ZN6RakNet16ReliabilityLayer24ResetPacketsAndDatagramsEv
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer24ResetPacketsAndDatagramsEv")]
-pub fn stub_0xa765e0() -> ! {
-    todo!("0xa765e0 __ZN6RakNet16ReliabilityLayer24ResetPacketsAndDatagramsEv")
+// 0xb245e8 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator14SendClusterJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+#[doc(alias = "__ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator14SendClusterJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_0xb245e8() -> ! {
+    todo!("0xb245e8 __ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator14SendClusterJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
 }
 
-// 0xa766b8 — __ZN6RakNet16ReliabilityLayer12PushDatagramEv
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer12PushDatagramEv")]
-pub fn stub_0xa766b8() -> ! {
-    todo!("0xa766b8 __ZN6RakNet16ReliabilityLayer12PushDatagramEv")
+// 0xb24798 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network10Replicator14SendClusterJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network10Replicator14SendClusterJobES8_EEvPKNS_10shared_ptrIT_EEPT0_")]
+pub fn stub_0xb24798() -> ! {
+    todo!("0xb24798 __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network10Replicator14SendClusterJobES8_EEvPKNS_10shared_ptrIT_EEPT0_")
 }
 
-// 0xa76828 — __ZN6RakNet16ReliabilityLayer10PushPacketEyPNS_14InternalPacketEb
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer10PushPacketEyPNS_14InternalPacketEb")]
-pub fn stub_0xa76828() -> ! {
-    todo!("0xa76828 __ZN6RakNet16ReliabilityLayer10PushPacketEyPNS_14InternalPacketEb")
+// 0xb24a44 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator14SendClusterJobEED1Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator14SendClusterJobEED1Ev")]
+pub fn stub_0xb24a44() -> ! {
+    todo!("0xb24a44 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator14SendClusterJobEED1Ev")
 }
 
-// 0xa7696c — __ZN6RakNet16ReliabilityLayer25AddFirstToDatagramHistoryENS_8uint24_tES1_y
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer25AddFirstToDatagramHistoryENS_8uint24_tES1_y")]
-pub fn stub_0xa7696c() -> ! {
-    todo!("0xa7696c __ZN6RakNet16ReliabilityLayer25AddFirstToDatagramHistoryENS_8uint24_tES1_y")
+// 0xb24a48 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator14SendClusterJobEED0Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator14SendClusterJobEED0Ev")]
+pub fn stub_0xb24a48() -> ! {
+    todo!("0xb24a48 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator14SendClusterJobEED0Ev")
 }
 
-// 0xa76a68 — __ZN6RakNet16ReliabilityLayer34WriteToBitStreamFromInternalPacketEPNS_9BitStreamEPKNS_14InternalPacketEy
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer34WriteToBitStreamFromInternalPacketEPNS_9BitStreamEPKNS_14InternalPacketEy")]
-pub fn stub_0xa76a68() -> ! {
-    todo!("0xa76a68 __ZN6RakNet16ReliabilityLayer34WriteToBitStreamFromInternalPacketEPNS_9BitStreamEPKNS_14InternalPacketEy")
+// 0xb24a54 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator14SendClusterJobEE7disposeEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator14SendClusterJobEE7disposeEv")]
+pub fn stub_0xb24a54() -> ! {
+    todo!("0xb24a54 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator14SendClusterJobEE7disposeEv")
 }
 
-// 0xa76b88 — __ZN6RakNet16ReliabilityLayer25AddFirstToDatagramHistoryENS_8uint24_tEy
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer25AddFirstToDatagramHistoryENS_8uint24_tEy")]
-pub fn stub_0xa76b88() -> ! {
-    todo!("0xa76b88 __ZN6RakNet16ReliabilityLayer25AddFirstToDatagramHistoryENS_8uint24_tEy")
+// 0xb24a68 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator14SendClusterJobEE11get_deleterERKSt9type_info
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator14SendClusterJobEE11get_deleterERKSt9type_info")]
+pub fn stub_0xb24a68() -> ! {
+    todo!("0xb24a68 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator14SendClusterJobEE11get_deleterERKSt9type_info")
 }
 
-// 0xa76c68 — __ZN6RakNet16ReliabilityLayer21IsOutgoingDataWaitingEv
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer21IsOutgoingDataWaitingEv")]
-pub fn stub_0xa76c68() -> ! {
-    todo!("0xa76c68 __ZN6RakNet16ReliabilityLayer21IsOutgoingDataWaitingEv")
+// 0xb24a6c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator14SendClusterJobEE19get_untyped_deleterEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator14SendClusterJobEE19get_untyped_deleterEv")]
+pub fn stub_0xb24a6c() -> ! {
+    todo!("0xb24a6c __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator14SendClusterJobEE19get_untyped_deleterEv")
 }
 
-// 0xa76c84 — __ZN6RakNet16ReliabilityLayer14AreAcksWaitingEv
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer14AreAcksWaitingEv")]
-pub fn stub_0xa76c84() -> ! {
-    todo!("0xa76c84 __ZN6RakNet16ReliabilityLayer14AreAcksWaitingEv")
+// 0xb24a70 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator11SendDataJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+#[doc(alias = "__ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator11SendDataJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_0xb24a70() -> ! {
+    todo!("0xb24a70 __ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator11SendDataJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
 }
 
-// 0xa76c90 — __ZN6RakNet16ReliabilityLayer31SetSplitMessageProgressIntervalEi
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer31SetSplitMessageProgressIntervalEi")]
-pub fn stub_0xa76c90() -> ! {
-    todo!("0xa76c90 __ZN6RakNet16ReliabilityLayer31SetSplitMessageProgressIntervalEi")
+// 0xb24c20 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network10Replicator11SendDataJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network10Replicator11SendDataJobES8_EEvPKNS_10shared_ptrIT_EEPT0_")]
+pub fn stub_0xb24c20() -> ! {
+    todo!("0xb24c20 __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network10Replicator11SendDataJobES8_EEvPKNS_10shared_ptrIT_EEPT0_")
 }
 
-// 0xa76c94 — __ZN6RakNet16ReliabilityLayer20SetUnreliableTimeoutEj
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer20SetUnreliableTimeoutEj")]
-pub fn stub_0xa76c94() -> ! {
-    todo!("0xa76c94 __ZN6RakNet16ReliabilityLayer20SetUnreliableTimeoutEj")
+// 0xb24ecc — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator11SendDataJobEED1Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator11SendDataJobEED1Ev")]
+pub fn stub_0xb24ecc() -> ! {
+    todo!("0xb24ecc __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator11SendDataJobEED1Ev")
 }
 
-// 0xa76ca4 — __ZN6RakNet16ReliabilityLayer30BuildPacketFromSplitPacketListEPNS_18SplitPacketChannelEy
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer30BuildPacketFromSplitPacketListEPNS_18SplitPacketChannelEy")]
-pub fn stub_0xa76ca4() -> ! {
-    todo!("0xa76ca4 __ZN6RakNet16ReliabilityLayer30BuildPacketFromSplitPacketListEPNS_18SplitPacketChannelEy")
+// 0xb24ed0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator11SendDataJobEED0Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator11SendDataJobEED0Ev")]
+pub fn stub_0xb24ed0() -> ! {
+    todo!("0xb24ed0 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator11SendDataJobEED0Ev")
 }
 
-// 0xa76e6c — __ZNK6RakNet16ReliabilityLayer16IsDeadConnectionEv
-#[doc(alias = "__ZNK6RakNet16ReliabilityLayer16IsDeadConnectionEv")]
-pub fn stub_0xa76e6c() -> ! {
-    todo!("0xa76e6c __ZNK6RakNet16ReliabilityLayer16IsDeadConnectionEv")
+// 0xb24edc — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator11SendDataJobEE7disposeEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator11SendDataJobEE7disposeEv")]
+pub fn stub_0xb24edc() -> ! {
+    todo!("0xb24edc __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator11SendDataJobEE7disposeEv")
 }
 
-// 0xa76e74 — __ZN6RakNet16ReliabilityLayer13GetStatisticsEPNS_16RakNetStatisticsE
-#[doc(alias = "__ZN6RakNet16ReliabilityLayer13GetStatisticsEPNS_16RakNetStatisticsE")]
-pub fn stub_0xa76e74() -> ! {
-    todo!("0xa76e74 __ZN6RakNet16ReliabilityLayer13GetStatisticsEPNS_16RakNetStatisticsE")
+// 0xb24ef0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator11SendDataJobEE11get_deleterERKSt9type_info
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator11SendDataJobEE11get_deleterERKSt9type_info")]
+pub fn stub_0xb24ef0() -> ! {
+    todo!("0xb24ef0 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator11SendDataJobEE11get_deleterERKSt9type_info")
 }
 
-// 0xa77058 — __ZN20DatagramHeaderFormat11DeserializeEPN6RakNet9BitStreamE
-#[doc(alias = "__ZN20DatagramHeaderFormat11DeserializeEPN6RakNet9BitStreamE")]
-pub fn stub_0xa77058() -> ! {
-    todo!("0xa77058 __ZN20DatagramHeaderFormat11DeserializeEPN6RakNet9BitStreamE")
+// 0xb24ef4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator11SendDataJobEE19get_untyped_deleterEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator11SendDataJobEE19get_untyped_deleterEv")]
+pub fn stub_0xb24ef4() -> ! {
+    todo!("0xb24ef4 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network10Replicator11SendDataJobEE19get_untyped_deleterEv")
 }
 
-// 0xa771e8 — __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE11DeserializeEPNS1_9BitStreamE
-#[doc(alias = "__ZN14DataStructures9RangeListIN6RakNet8uint24_tEE11DeserializeEPNS1_9BitStreamE")]
-pub fn stub_0xa771e8() -> ! {
-    todo!("0xa771e8 __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE11DeserializeEPNS1_9BitStreamE")
+// 0xb2bfa0 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network15PhysicsReceiverENS3_21DirectPhysicsReceiverEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+#[doc(alias = "__ZN5boost6detail20sp_pointer_constructIN3RBX7Network15PhysicsReceiverENS3_21DirectPhysicsReceiverEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_0xb2bfa0() -> ! {
+    todo!("0xb2bfa0 __ZN5boost6detail20sp_pointer_constructIN3RBX7Network15PhysicsReceiverENS3_21DirectPhysicsReceiverEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
 }
 
-// 0xa772b8 — __ZN14DataStructures5QueueIPN6RakNet14InternalPacketEE4PushERKS3_PKcj
-#[doc(alias = "__ZN14DataStructures5QueueIPN6RakNet14InternalPacketEE4PushERKS3_PKcj")]
-pub fn stub_0xa772b8() -> ! {
-    todo!("0xa772b8 __ZN14DataStructures5QueueIPN6RakNet14InternalPacketEE4PushERKS3_PKcj")
+// 0xb2c138 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network21DirectPhysicsReceiverEED1Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network21DirectPhysicsReceiverEED1Ev")]
+pub fn stub_0xb2c138() -> ! {
+    todo!("0xb2c138 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network21DirectPhysicsReceiverEED1Ev")
 }
 
-// 0xa7738c — __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE6InsertES2_
-#[doc(alias = "__ZN14DataStructures9RangeListIN6RakNet8uint24_tEE6InsertES2_")]
-pub fn stub_0xa7738c() -> ! {
-    todo!("0xa7738c __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE6InsertES2_")
+// 0xb2c13c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network21DirectPhysicsReceiverEED0Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network21DirectPhysicsReceiverEED0Ev")]
+pub fn stub_0xb2c13c() -> ! {
+    todo!("0xb2c13c __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network21DirectPhysicsReceiverEED0Ev")
 }
 
-// 0xa77784 — __ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE3PopEj
-#[doc(alias = "__ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE3PopEj")]
-pub fn stub_0xa77784() -> ! {
-    todo!("0xa77784 __ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE3PopEj")
+// 0xb2c148 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network21DirectPhysicsReceiverEE7disposeEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network21DirectPhysicsReceiverEE7disposeEv")]
+pub fn stub_0xb2c148() -> ! {
+    todo!("0xb2c148 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network21DirectPhysicsReceiverEE7disposeEv")
 }
 
-// 0xa77950 — __ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE4PushERKyRKS3_PKcj
-#[doc(alias = "__ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE4PushERKyRKS3_PKcj")]
-pub fn stub_0xa77950() -> ! {
-    todo!("0xa77950 __ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE4PushERKyRKS3_PKcj")
+// 0xb2c15c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network21DirectPhysicsReceiverEE11get_deleterERKSt9type_info
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network21DirectPhysicsReceiverEE11get_deleterERKSt9type_info")]
+pub fn stub_0xb2c15c() -> ! {
+    todo!("0xb2c15c __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network21DirectPhysicsReceiverEE11get_deleterERKSt9type_info")
 }
 
-// 0xa77a84 — __ZN20DatagramHeaderFormat9SerializeEPN6RakNet9BitStreamE
-#[doc(alias = "__ZN20DatagramHeaderFormat9SerializeEPN6RakNet9BitStreamE")]
-pub fn stub_0xa77a84() -> ! {
-    todo!("0xa77a84 __ZN20DatagramHeaderFormat9SerializeEPN6RakNet9BitStreamE")
+// 0xb2c160 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network21DirectPhysicsReceiverEE19get_untyped_deleterEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network21DirectPhysicsReceiverEE19get_untyped_deleterEv")]
+pub fn stub_0xb2c160() -> ! {
+    todo!("0xb2c160 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network21DirectPhysicsReceiverEE19get_untyped_deleterEv")
 }
 
-// 0xa77b3c — __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE9SerializeEPNS1_9BitStreamEjb
-#[doc(alias = "__ZN14DataStructures9RangeListIN6RakNet8uint24_tEE9SerializeEPNS1_9BitStreamEjb")]
-pub fn stub_0xa77b3c() -> ! {
-    todo!("0xa77b3c __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE9SerializeEPNS1_9BitStreamEjb")
+// 0xb2c164 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network15PhysicsReceiverENS3_28InterpolatingPhysicsReceiverEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+#[doc(alias = "__ZN5boost6detail20sp_pointer_constructIN3RBX7Network15PhysicsReceiverENS3_28InterpolatingPhysicsReceiverEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_0xb2c164() -> ! {
+    todo!("0xb2c164 __ZN5boost6detail20sp_pointer_constructIN3RBX7Network15PhysicsReceiverENS3_28InterpolatingPhysicsReceiverEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
 }
 
-// 0xa77d60 — __ZN6RakNet9BitStream5WriteINS_8uint24_tEEEvRKT_
-#[doc(alias = "__ZN6RakNet9BitStream5WriteINS_8uint24_tEEEvRKT_")]
-pub fn stub_0xa77d60() -> ! {
-    todo!("0xa77d60 __ZN6RakNet9BitStream5WriteINS_8uint24_tEEEvRKT_")
+// 0xb2c2fc — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network28InterpolatingPhysicsReceiverEED1Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network28InterpolatingPhysicsReceiverEED1Ev")]
+pub fn stub_0xb2c2fc() -> ! {
+    todo!("0xb2c2fc __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network28InterpolatingPhysicsReceiverEED1Ev")
 }
 
-// 0xa77ea4 — __ZN6RakNet9BitStream4ReadINS_8uint24_tEEEbRT_
-#[doc(alias = "__ZN6RakNet9BitStream4ReadINS_8uint24_tEEEbRT_")]
-pub fn stub_0xa77ea4() -> ! {
-    todo!("0xa77ea4 __ZN6RakNet9BitStream4ReadINS_8uint24_tEEEbRT_")
+// 0xb2c300 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network28InterpolatingPhysicsReceiverEED0Ev
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network28InterpolatingPhysicsReceiverEED0Ev")]
+pub fn stub_0xb2c300() -> ! {
+    todo!("0xb2c300 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network28InterpolatingPhysicsReceiverEED0Ev")
 }
 
-// 0xa77ff4 — __ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE10PushSeriesERKyRKS3_PKcj
-#[doc(alias = "__ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE10PushSeriesERKyRKS3_PKcj")]
-pub fn stub_0xa77ff4() -> ! {
-    todo!("0xa77ff4 __ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE10PushSeriesERKyRKS3_PKcj")
+// 0xb2c30c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network28InterpolatingPhysicsReceiverEE7disposeEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network28InterpolatingPhysicsReceiverEE7disposeEv")]
+pub fn stub_0xb2c30c() -> ! {
+    todo!("0xb2c30c __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network28InterpolatingPhysicsReceiverEE7disposeEv")
 }
 
-// 0xa781a4 — __ZN14DataStructures11OrderedListItPN6RakNet18SplitPacketChannelEXadL_ZNS1_22SplitPacketChannelCompERKtRKS3_EEE6InsertES5_S7_bPKcjPFiS5_S7_E
-#[doc(alias = "__ZN14DataStructures11OrderedListItPN6RakNet18SplitPacketChannelEXadL_ZNS1_22SplitPacketChannelCompERKtRKS3_EEE6InsertES5_S7_bPKcjPFiS5_S7_E")]
-pub fn stub_0xa781a4() -> ! {
-    todo!("0xa781a4 __ZN14DataStructures11OrderedListItPN6RakNet18SplitPacketChannelEXadL_ZNS1_22SplitPacketChannelCompERKtRKS3_EEE6InsertES5_S7_bPKcjPFiS5_S7_E")
+// 0xb2c320 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network28InterpolatingPhysicsReceiverEE11get_deleterERKSt9type_info
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network28InterpolatingPhysicsReceiverEE11get_deleterERKSt9type_info")]
+pub fn stub_0xb2c320() -> ! {
+    todo!("0xb2c320 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network28InterpolatingPhysicsReceiverEE11get_deleterERKSt9type_info")
 }
 
-// 0xa7828c — __ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE8AllocateEPKcj
-#[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE8AllocateEPKcj")]
-pub fn stub_0xa7828c() -> ! {
-    todo!("0xa7828c __ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE8AllocateEPKcj")
+// 0xb2c324 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network28InterpolatingPhysicsReceiverEE19get_untyped_deleterEv
+#[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network28InterpolatingPhysicsReceiverEE19get_untyped_deleterEv")]
+pub fn stub_0xb2c324() -> ! {
+    todo!("0xb2c324 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network28InterpolatingPhysicsReceiverEE19get_untyped_deleterEv")
 }
 
-// 0xa783b4 — __ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE7ReleaseEPS2_PKcj
-#[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE7ReleaseEPS2_PKcj")]
-pub fn stub_0xa783b4() -> ! {
-    todo!("0xa783b4 __ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE7ReleaseEPS2_PKcj")
+// 0xb2c400 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX7Network10ReplicatorERKNS8_22ConcurrentRakPeerStatsEEENS3_5list2INS3_5valueIPS9_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX7Network10ReplicatorERKNS8_22ConcurrentRakPeerStatsEEENS3_5list2INS3_5valueIPS9_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE")]
+pub fn stub_0xb2c400() -> ! {
+    todo!("0xb2c400 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX7Network10ReplicatorERKNS8_22ConcurrentRakPeerStatsEEENS3_5list2INS3_5valueIPS9_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE")
 }
 
-// 0xa7848c — __ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE7ReleaseEPS3_PKcj
-#[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE7ReleaseEPS3_PKcj")]
-pub fn stub_0xa7848c() -> ! {
-    todo!("0xa7848c __ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE7ReleaseEPS3_PKcj")
+// 0xb2c460 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX7Network10ReplicatorERKNS8_22ConcurrentRakPeerStatsEEENS3_5list2INS3_5valueIPS9_EENS_3argILi1EEEEEEEvSC_E6invokeERNS1_15function_bufferESC_
+#[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX7Network10ReplicatorERKNS8_22ConcurrentRakPeerStatsEEENS3_5list2INS3_5valueIPS9_EENS_3argILi1EEEEEEEvSC_E6invokeERNS1_15function_bufferESC_")]
+pub fn stub_0xb2c460() -> ! {
+    todo!("0xb2c460 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX7Network10ReplicatorERKNS8_22ConcurrentRakPeerStatsEEENS3_5list2INS3_5valueIPS9_EENS_3argILi1EEEEEEEvSC_E6invokeERNS1_15function_bufferESC_")
 }
 
-// 0xa78560 — __ZN14DataStructures5QueueIN6RakNet16ReliabilityLayer19DatagramHistoryNodeEE4PushERKS3_PKcj
-#[doc(alias = "__ZN14DataStructures5QueueIN6RakNet16ReliabilityLayer19DatagramHistoryNodeEE4PushERKS3_PKcj")]
-pub fn stub_0xa78560() -> ! {
-    todo!("0xa78560 __ZN14DataStructures5QueueIN6RakNet16ReliabilityLayer19DatagramHistoryNodeEE4PushERKS3_PKcj")
+// 0xb2c47c — __ZNSt5dequeIN5boost10shared_ptrIN3RBX7Network6MarkerEEESaIS5_EEC2ERKS7_
+#[doc(alias = "__ZNSt5dequeIN5boost10shared_ptrIN3RBX7Network6MarkerEEESaIS5_EEC2ERKS7_")]
+pub fn stub_0xb2c47c() -> ! {
+    todo!("0xb2c47c __ZNSt5dequeIN5boost10shared_ptrIN3RBX7Network6MarkerEEESaIS5_EEC2ERKS7_")
 }
 
-// 0xa78670 — __ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE8AllocateEPKcj
-#[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE8AllocateEPKcj")]
-pub fn stub_0xa78670() -> ! {
-    todo!("0xa78670 __ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE8AllocateEPKcj")
+// 0xb2c5c4 — __ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN5boost10shared_ptrIN3RBX7Network6MarkerEEERKS6_PS7_ES0_IS6_RS6_PS6_EET0_T_SF_SE_St12__false_type
+#[doc(alias = "__ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN5boost10shared_ptrIN3RBX7Network6MarkerEEERKS6_PS7_ES0_IS6_RS6_PS6_EET0_T_SF_SE_St12__false_type")]
+pub fn stub_0xb2c5c4() -> ! {
+    todo!("0xb2c5c4 __ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN5boost10shared_ptrIN3RBX7Network6MarkerEEERKS6_PS7_ES0_IS6_RS6_PS6_EET0_T_SF_SE_St12__false_type")
 }
 
-// 0xa7879c — __ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE8AllocateEPKcj
-#[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE8AllocateEPKcj")]
-pub fn stub_0xa7879c() -> ! {
-    todo!("0xa7879c __ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE8AllocateEPKcj")
+// 0xb2c7a4 — __ZNSt11_Deque_baseIN5boost10shared_ptrIN3RBX7Network6MarkerEEESaIS5_EE17_M_initialize_mapEm
+#[doc(alias = "__ZNSt11_Deque_baseIN5boost10shared_ptrIN3RBX7Network6MarkerEEESaIS5_EE17_M_initialize_mapEm")]
+pub fn stub_0xb2c7a4() -> ! {
+    todo!("0xb2c7a4 __ZNSt11_Deque_baseIN5boost10shared_ptrIN3RBX7Network6MarkerEEESaIS5_EE17_M_initialize_mapEm")
 }
 
-// 0xa788c8 — __ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE7ReleaseEPS2_PKcj
-#[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE7ReleaseEPS2_PKcj")]
-pub fn stub_0xa788c8() -> ! {
-    todo!("0xa788c8 __ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE7ReleaseEPS2_PKcj")
+// 0xb2c960 — __ZNSt5dequeIN5boost10shared_ptrIN3RBX7Network6MarkerEEESaIS5_EED2Ev
+#[doc(alias = "__ZNSt5dequeIN5boost10shared_ptrIN3RBX7Network6MarkerEEESaIS5_EED2Ev")]
+pub fn stub_0xb2c960() -> ! {
+    todo!("0xb2c960 __ZNSt5dequeIN5boost10shared_ptrIN3RBX7Network6MarkerEEESaIS5_EED2Ev")
 }
 
-// 0xa7899c — __ZN14DataStructures4ListIPN6RakNet18SplitPacketChannelEE6InsertERKS3_jPKcj
-#[doc(alias = "__ZN14DataStructures4ListIPN6RakNet18SplitPacketChannelEE6InsertERKS3_jPKcj")]
-pub fn stub_0xa7899c() -> ! {
-    todo!("0xa7899c __ZN14DataStructures4ListIPN6RakNet18SplitPacketChannelEE6InsertERKS3_jPKcj")
+// 0xb2cd00 — __ZNK3RBX17NonFactoryProductINS_7Network12IdSerializerELZNS1_11sReplicatorEEE12getClassNameEv
+#[doc(alias = "__ZNK3RBX17NonFactoryProductINS_7Network12IdSerializerELZNS1_11sReplicatorEEE12getClassNameEv")]
+pub fn stub_0xb2cd00() -> ! {
+    todo!("0xb2cd00 __ZNK3RBX17NonFactoryProductINS_7Network12IdSerializerELZNS1_11sReplicatorEEE12getClassNameEv")
 }
 
-// 0xa78a2c — __ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_jPKcj
-#[doc(alias = "__ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_jPKcj")]
-pub fn stub_0xa78a2c() -> ! {
-    todo!("0xa78a2c __ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_jPKcj")
+// 0xb2ceac — __ZThn32_NK3RBX17NonFactoryProductINS_7Network12IdSerializerELZNS1_11sReplicatorEEE12getClassNameEv
+#[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_7Network12IdSerializerELZNS1_11sReplicatorEEE12getClassNameEv")]
+pub fn stub_0xb2ceac() -> ! {
+    todo!("0xb2ceac __ZThn32_NK3RBX17NonFactoryProductINS_7Network12IdSerializerELZNS1_11sReplicatorEEE12getClassNameEv")
 }
 
-// 0xa78b08 — __ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_PKcj
-#[doc(alias = "__ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_PKcj")]
-pub fn stub_0xa78b08() -> ! {
-    todo!("0xa78b08 __ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_PKcj")
+// 0xb2d058 — __ZN3RBX4Name13callDoDeclareILZNS_7Network11sReplicatorEEEEvv
+#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_7Network11sReplicatorEEEEvv")]
+pub fn stub_0xb2d058() -> ! {
+    todo!("0xb2d058 __ZN3RBX4Name13callDoDeclareILZNS_7Network11sReplicatorEEEEvv")
 }
 
-// 0xa78bbc — __ZN14DataStructures5QueueIN6RakNet10BPSTracker13TimeAndValue2EE4PushERKS3_PKcj
-#[doc(alias = "__ZN14DataStructures5QueueIN6RakNet10BPSTracker13TimeAndValue2EE4PushERKS3_PKcj")]
-pub fn stub_0xa78bbc() -> ! {
-    todo!("0xa78bbc __ZN14DataStructures5QueueIN6RakNet10BPSTracker13TimeAndValue2EE4PushERKS3_PKcj")
+// 0xb2d334 — __ZN3RBX7Network12IdSerializerD2Ev
+#[doc(alias = "__ZN3RBX7Network12IdSerializerD2Ev")]
+pub fn stub_0xb2d334() -> ! {
+    todo!("0xb2d334 __ZN3RBX7Network12IdSerializerD2Ev")
 }
 
-// 0xa79900 — __ZN6RakNet13SignaledEventC1Ev
-#[doc(alias = "__ZN6RakNet13SignaledEventC1Ev")]
-pub fn stub_0xa79900() -> ! {
-    todo!("0xa79900 __ZN6RakNet13SignaledEventC1Ev")
+// 0xb2d584 — __ZN3RBX7Network12IdSerializerD1Ev
+#[doc(alias = "__ZN3RBX7Network12IdSerializerD1Ev")]
+pub fn stub_0xb2d584() -> ! {
+    todo!("0xb2d584 __ZN3RBX7Network12IdSerializerD1Ev")
 }
 
-// 0xa79914 — __ZN6RakNet13SignaledEventD1Ev
-#[doc(alias = "__ZN6RakNet13SignaledEventD1Ev")]
-pub fn stub_0xa79914() -> ! {
-    todo!("0xa79914 __ZN6RakNet13SignaledEventD1Ev")
+// 0xb2d590 — __ZN3RBX7Network12IdSerializerD0Ev
+#[doc(alias = "__ZN3RBX7Network12IdSerializerD0Ev")]
+pub fn stub_0xb2d590() -> ! {
+    todo!("0xb2d590 __ZN3RBX7Network12IdSerializerD0Ev")
 }
 
-// 0xa79924 — __ZN6RakNet13SignaledEvent9InitEventEv
-#[doc(alias = "__ZN6RakNet13SignaledEvent9InitEventEv")]
-pub fn stub_0xa79924() -> ! {
-    todo!("0xa79924 __ZN6RakNet13SignaledEvent9InitEventEv")
+// 0xb2d630 — __ZThn32_N3RBX7Network12IdSerializerD1Ev
+#[doc(alias = "__ZThn32_N3RBX7Network12IdSerializerD1Ev")]
+pub fn stub_0xb2d630() -> ! {
+    todo!("0xb2d630 __ZThn32_N3RBX7Network12IdSerializerD1Ev")
 }
 
-// 0xa79954 — __ZN6RakNet13SignaledEvent10CloseEventEv
-#[doc(alias = "__ZN6RakNet13SignaledEvent10CloseEventEv")]
-pub fn stub_0xa79954() -> ! {
-    todo!("0xa79954 __ZN6RakNet13SignaledEvent10CloseEventEv")
+// 0xb2d63c — __ZThn32_N3RBX7Network12IdSerializerD0Ev
+#[doc(alias = "__ZThn32_N3RBX7Network12IdSerializerD0Ev")]
+pub fn stub_0xb2d63c() -> ! {
+    todo!("0xb2d63c __ZThn32_N3RBX7Network12IdSerializerD0Ev")
 }
 
-// 0xa7997c — __ZN6RakNet13SignaledEvent8SetEventEv
-#[doc(alias = "__ZN6RakNet13SignaledEvent8SetEventEv")]
-pub fn stub_0xa7997c() -> ! {
-    todo!("0xa7997c __ZN6RakNet13SignaledEvent8SetEventEv")
+// 0xb2d6e0 — __ZThn36_N3RBX7Network12IdSerializerD1Ev
+#[doc(alias = "__ZThn36_N3RBX7Network12IdSerializerD1Ev")]
+pub fn stub_0xb2d6e0() -> ! {
+    todo!("0xb2d6e0 __ZThn36_N3RBX7Network12IdSerializerD1Ev")
 }
 
-// 0xa7999c — __ZN6RakNet13SignaledEvent11WaitOnEventEi
-#[doc(alias = "__ZN6RakNet13SignaledEvent11WaitOnEventEi")]
-pub fn stub_0xa7999c() -> ! {
-    todo!("0xa7999c __ZN6RakNet13SignaledEvent11WaitOnEventEi")
+// 0xb2d6ec — __ZThn36_N3RBX7Network12IdSerializerD0Ev
+#[doc(alias = "__ZThn36_N3RBX7Network12IdSerializerD0Ev")]
+pub fn stub_0xb2d6ec() -> ! {
+    todo!("0xb2d6ec __ZThn36_N3RBX7Network12IdSerializerD0Ev")
 }
 
-// 0xa7a0b4 — __ZN6RakNet11SimpleMutexC1Ev
-#[doc(alias = "__ZN6RakNet11SimpleMutexC1Ev")]
-pub fn stub_0xa7a0b4() -> ! {
-    todo!("0xa7a0b4 __ZN6RakNet11SimpleMutexC1Ev")
+// 0xb2d790 — __ZNSt8_Rb_treeIN3RBX4Guid4DataESt4pairIKS2_St6vectorINS0_7Network12IdSerializer8WaitItemESaIS8_EEESt10_Select1stISB_ESt4lessIS2_ESaISB_EE8_M_eraseEPSt13_Rb_tree_nodeISB_E
+#[doc(alias = "__ZNSt8_Rb_treeIN3RBX4Guid4DataESt4pairIKS2_St6vectorINS0_7Network12IdSerializer8WaitItemESaIS8_EEESt10_Select1stISB_ESt4lessIS2_ESaISB_EE8_M_eraseEPSt13_Rb_tree_nodeISB_E")]
+pub fn stub_0xb2d790() -> ! {
+    todo!("0xb2d790 __ZNSt8_Rb_treeIN3RBX4Guid4DataESt4pairIKS2_St6vectorINS0_7Network12IdSerializer8WaitItemESaIS8_EEESt10_Select1stISB_ESt4lessIS2_ESaISB_EE8_M_eraseEPSt13_Rb_tree_nodeISB_E")
 }
 
-// 0xa7a0c4 — __ZN6RakNet11SimpleMutexD1Ev
-#[doc(alias = "__ZN6RakNet11SimpleMutexD1Ev")]
-pub fn stub_0xa7a0c4() -> ! {
-    todo!("0xa7a0c4 __ZN6RakNet11SimpleMutexD1Ev")
+// 0xb32510 — __ZN3RBX7Network10Replicator7PingJobC2ERS1_
+#[doc(alias = "__ZN3RBX7Network10Replicator7PingJobC2ERS1_")]
+pub fn stub_0xb32510() -> ! {
+    todo!("0xb32510 __ZN3RBX7Network10Replicator7PingJobC2ERS1_")
 }
 
-// 0xa7a0d4 — __ZN6RakNet11SimpleMutex4LockEv
-#[doc(alias = "__ZN6RakNet11SimpleMutex4LockEv")]
-pub fn stub_0xa7a0d4() -> ! {
-    todo!("0xa7a0d4 __ZN6RakNet11SimpleMutex4LockEv")
+// 0xb32864 — __ZN3RBX7Network10Replicator7PingJobD1Ev
+#[doc(alias = "__ZN3RBX7Network10Replicator7PingJobD1Ev")]
+pub fn stub_0xb32864() -> ! {
+    todo!("0xb32864 __ZN3RBX7Network10Replicator7PingJobD1Ev")
 }
 
-// 0xa7a0e0 — __ZN6RakNet11SimpleMutex6UnlockEv
-#[doc(alias = "__ZN6RakNet11SimpleMutex6UnlockEv")]
-pub fn stub_0xa7a0e0() -> ! {
-    todo!("0xa7a0e0 __ZN6RakNet11SimpleMutex6UnlockEv")
+// 0xb32930 — __ZN3RBX7Network10Replicator7PingJobD0Ev
+#[doc(alias = "__ZN3RBX7Network10Replicator7PingJobD0Ev")]
+pub fn stub_0xb32930() -> ! {
+    todo!("0xb32930 __ZN3RBX7Network10Replicator7PingJobD0Ev")
 }
 
-// 0xa7a700 — __ZN6RakNet11SocketLayer11IsPortInUseEtPKct
-#[doc(alias = "__ZN6RakNet11SocketLayer11IsPortInUseEtPKct")]
-pub fn stub_0xa7a700() -> ! {
-    todo!("0xa7a700 __ZN6RakNet11SocketLayer11IsPortInUseEtPKct")
+// 0xb32a10 — __ZN3RBX7Network10Replicator7PingJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE
+#[doc(alias = "__ZN3RBX7Network10Replicator7PingJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE")]
+pub fn stub_0xb32a10() -> ! {
+    todo!("0xb32a10 __ZN3RBX7Network10Replicator7PingJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE")
 }
 
-// 0xa7a788 — __ZN6RakNet11SocketLayer16SetDoNotFragmentEiii
-#[doc(alias = "__ZN6RakNet11SocketLayer16SetDoNotFragmentEiii")]
-pub fn stub_0xa7a788() -> ! {
-    todo!("0xa7a788 __ZN6RakNet11SocketLayer16SetDoNotFragmentEiii")
+// 0xb32a2c — __ZN3RBX7Network10Replicator7PingJob5errorERKNS_13TaskScheduler3Job5StatsE
+#[doc(alias = "__ZN3RBX7Network10Replicator7PingJob5errorERKNS_13TaskScheduler3Job5StatsE")]
+pub fn stub_0xb32a2c() -> ! {
+    todo!("0xb32a2c __ZN3RBX7Network10Replicator7PingJob5errorERKNS_13TaskScheduler3Job5StatsE")
 }
 
-// 0xa7a78c — __ZN6RakNet11SocketLayer21CreateBoundSocket_OldEtbPKcjj
-#[doc(alias = "__ZN6RakNet11SocketLayer21CreateBoundSocket_OldEtbPKcjj")]
-pub fn stub_0xa7a78c() -> ! {
-    todo!("0xa7a78c __ZN6RakNet11SocketLayer21CreateBoundSocket_OldEtbPKcjj")
+// 0xb32b18 — __ZN3RBX7Network10Replicator17ProcessPacketsJobC2ERS1_
+#[doc(alias = "__ZN3RBX7Network10Replicator17ProcessPacketsJobC2ERS1_")]
+pub fn stub_0xb32b18() -> ! {
+    todo!("0xb32b18 __ZN3RBX7Network10Replicator17ProcessPacketsJobC2ERS1_")
 }
 
-// 0xa7a898 — __ZN6RakNet11SocketLayer17CreateBoundSocketEtbPKcjjt
-#[doc(alias = "__ZN6RakNet11SocketLayer17CreateBoundSocketEtbPKcjjt")]
-pub fn stub_0xa7a898() -> ! {
-    todo!("0xa7a898 __ZN6RakNet11SocketLayer17CreateBoundSocketEtbPKcjjt")
+// 0xb32ed4 — __ZN3RBX7Network10Replicator17ProcessPacketsJobD1Ev
+#[doc(alias = "__ZN3RBX7Network10Replicator17ProcessPacketsJobD1Ev")]
+pub fn stub_0xb32ed4() -> ! {
+    todo!("0xb32ed4 __ZN3RBX7Network10Replicator17ProcessPacketsJobD1Ev")
 }
 
-// 0xa7a8ac — __ZN6RakNet11SocketLayer14DomainNameToIPEPKc
-#[doc(alias = "__ZN6RakNet11SocketLayer14DomainNameToIPEPKc")]
-pub fn stub_0xa7a8ac() -> ! {
-    todo!("0xa7a8ac __ZN6RakNet11SocketLayer14DomainNameToIPEPKc")
+// 0xb32fa0 — __ZN3RBX7Network10Replicator17ProcessPacketsJobD0Ev
+#[doc(alias = "__ZN3RBX7Network10Replicator17ProcessPacketsJobD0Ev")]
+pub fn stub_0xb32fa0() -> ! {
+    todo!("0xb32fa0 __ZN3RBX7Network10Replicator17ProcessPacketsJobD0Ev")
 }
 
-// 0xa7a8d0 — __ZN6RakNet11SocketLayer16RecvFromBlockingEiPNS_7RakPeerEtjPcPiPNS_13SystemAddressEPy
-#[doc(alias = "__ZN6RakNet11SocketLayer16RecvFromBlockingEiPNS_7RakPeerEtjPcPiPNS_13SystemAddressEPy")]
-pub fn stub_0xa7a8d0() -> ! {
-    todo!("0xa7a8d0 __ZN6RakNet11SocketLayer16RecvFromBlockingEiPNS_7RakPeerEtjPcPiPNS_13SystemAddressEPy")
+// 0xb33080 — __ZN3RBX7Network10Replicator17ProcessPacketsJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE
+#[doc(alias = "__ZN3RBX7Network10Replicator17ProcessPacketsJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE")]
+pub fn stub_0xb33080() -> ! {
+    todo!("0xb33080 __ZN3RBX7Network10Replicator17ProcessPacketsJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE")
 }
 
-// 0xa7a944 — __ZN6RakNet11SocketLayer6SendToEiPKciRNS_13SystemAddressEtjS2_l
-#[doc(alias = "__ZN6RakNet11SocketLayer6SendToEiPKciRNS_13SystemAddressEtjS2_l")]
-pub fn stub_0xa7a944() -> ! {
-    todo!("0xa7a944 __ZN6RakNet11SocketLayer6SendToEiPKciRNS_13SystemAddressEtjS2_l")
+// 0xb33128 — __ZN3RBX7Network10Replicator17ProcessPacketsJob5errorERKNS_13TaskScheduler3Job5StatsE
+#[doc(alias = "__ZN3RBX7Network10Replicator17ProcessPacketsJob5errorERKNS_13TaskScheduler3Job5StatsE")]
+pub fn stub_0xb33128() -> ! {
+    todo!("0xb33128 __ZN3RBX7Network10Replicator17ProcessPacketsJob5errorERKNS_13TaskScheduler3Job5StatsE")
 }
 
-// 0xa7a9ec — __ZN6RakNet11SocketLayer9SendToTTLEiPKciRNS_13SystemAddressEi
-#[doc(alias = "__ZN6RakNet11SocketLayer9SendToTTLEiPKciRNS_13SystemAddressEi")]
-pub fn stub_0xa7a9ec() -> ! {
-    todo!("0xa7a9ec __ZN6RakNet11SocketLayer9SendToTTLEiPKciRNS_13SystemAddressEi")
+// 0xb33f20 — __ZN3RBX7Network10Replicator12JoinDataItemD1Ev
+#[doc(alias = "__ZN3RBX7Network10Replicator12JoinDataItemD1Ev")]
+pub fn stub_0xb33f20() -> ! {
+    todo!("0xb33f20 __ZN3RBX7Network10Replicator12JoinDataItemD1Ev")
 }
 
-// 0xa7aae0 — __Z13GetMyIP_LinuxPN6RakNet13SystemAddressE
-#[doc(alias = "__Z13GetMyIP_LinuxPN6RakNet13SystemAddressE")]
-pub fn stub_0xa7aae0() -> ! {
-    todo!("0xa7aae0 __Z13GetMyIP_LinuxPN6RakNet13SystemAddressE")
+// 0xb34060 — __ZN3RBX7Network10Replicator12JoinDataItem5writeERN6RakNet9BitStreamE
+#[doc(alias = "__ZN3RBX7Network10Replicator12JoinDataItem5writeERN6RakNet9BitStreamE")]
+pub fn stub_0xb34060() -> ! {
+    todo!("0xb34060 __ZN3RBX7Network10Replicator12JoinDataItem5writeERN6RakNet9BitStreamE")
 }
 
-// 0xa7abd8 — __ZN6RakNet11SocketLayer7GetMyIPEPNS_13SystemAddressE
-#[doc(alias = "__ZN6RakNet11SocketLayer7GetMyIPEPNS_13SystemAddressE")]
-pub fn stub_0xa7abd8() -> ! {
-    todo!("0xa7abd8 __ZN6RakNet11SocketLayer7GetMyIPEPNS_13SystemAddressE")
+// 0xb34b1c — __ZN3RBX7Network15PhysicsReceiver5startEN5boost10shared_ptrIS1_EE
+#[doc(alias = "__ZN3RBX7Network15PhysicsReceiver5startEN5boost10shared_ptrIS1_EE")]
+pub fn stub_0xb34b1c() -> ! {
+    todo!("0xb34b1c __ZN3RBX7Network15PhysicsReceiver5startEN5boost10shared_ptrIS1_EE")
 }
 
-// 0xa7abe4 — __ZN6RakNet11SocketLayer16GetSystemAddressEiPNS_13SystemAddressE
-#[doc(alias = "__ZN6RakNet11SocketLayer16GetSystemAddressEiPNS_13SystemAddressE")]
-pub fn stub_0xa7abe4() -> ! {
-    todo!("0xa7abe4 __ZN6RakNet11SocketLayer16GetSystemAddressEiPNS_13SystemAddressE")
+// 0xb34b20 — __ZN3RBX7Network21DirectPhysicsReceiverD1Ev
+#[doc(alias = "__ZN3RBX7Network21DirectPhysicsReceiverD1Ev")]
+pub fn stub_0xb34b20() -> ! {
+    todo!("0xb34b20 __ZN3RBX7Network21DirectPhysicsReceiverD1Ev")
 }
 
-// 0xa7b268 — __ZN6RakNet16StringCompressor12AddReferenceEv
-#[doc(alias = "__ZN6RakNet16StringCompressor12AddReferenceEv")]
-pub fn stub_0xa7b268() -> ! {
-    todo!("0xa7b268 __ZN6RakNet16StringCompressor12AddReferenceEv")
+// 0xb34b44 — __ZN3RBX7Network21DirectPhysicsReceiverD0Ev
+#[doc(alias = "__ZN3RBX7Network21DirectPhysicsReceiverD0Ev")]
+pub fn stub_0xb34b44() -> ! {
+    todo!("0xb34b44 __ZN3RBX7Network21DirectPhysicsReceiverD0Ev")
 }
 
-// 0xa7b39c — __ZN6RakNet16StringCompressor15RemoveReferenceEv
-#[doc(alias = "__ZN6RakNet16StringCompressor15RemoveReferenceEv")]
-pub fn stub_0xa7b39c() -> ! {
-    todo!("0xa7b39c __ZN6RakNet16StringCompressor15RemoveReferenceEv")
+// 0xb34f70 — __ZN3RBX7Network15ReplicatorStatsD2Ev
+#[doc(alias = "__ZN3RBX7Network15ReplicatorStatsD2Ev")]
+pub fn stub_0xb34f70() -> ! {
+    todo!("0xb34f70 __ZN3RBX7Network15ReplicatorStatsD2Ev")
 }
 
-// 0xa7b480 — __ZN6RakNet16StringCompressorD2Ev
-#[doc(alias = "__ZN6RakNet16StringCompressorD2Ev")]
-pub fn stub_0xa7b480() -> ! {
-    todo!("0xa7b480 __ZN6RakNet16StringCompressorD2Ev")
+// 0xb35228 — __ZN3RBX7Network15ReplicatorStats18PhysicsSenderStatsD2Ev
+#[doc(alias = "__ZN3RBX7Network15ReplicatorStats18PhysicsSenderStatsD2Ev")]
+pub fn stub_0xb35228() -> ! {
+    todo!("0xb35228 __ZN3RBX7Network15ReplicatorStats18PhysicsSenderStatsD2Ev")
 }
 
-// 0xa7b594 — __ZN6RakNet16StringCompressor12EncodeStringEPKciPNS_9BitStreamEh
-#[doc(alias = "__ZN6RakNet16StringCompressor12EncodeStringEPKciPNS_9BitStreamEh")]
-pub fn stub_0xa7b594() -> ! {
-    todo!("0xa7b594 __ZN6RakNet16StringCompressor12EncodeStringEPKciPNS_9BitStreamEh")
+// 0xb36ae0 — __ZN3RBX7Network19PersistentDataStore15saveLeaderboardERSs
+#[doc(alias = "__ZN3RBX7Network19PersistentDataStore15saveLeaderboardERSs")]
+pub fn stub_0xb36ae0() -> ! {
+    todo!("0xb36ae0 __ZN3RBX7Network19PersistentDataStore15saveLeaderboardERSs")
 }
 
-// 0xa7b764 — __ZN6RakNet16StringCompressor12DecodeStringEPciPNS_9BitStreamEh
-#[doc(alias = "__ZN6RakNet16StringCompressor12DecodeStringEPciPNS_9BitStreamEh")]
-pub fn stub_0xa7b764() -> ! {
-    todo!("0xa7b764 __ZN6RakNet16StringCompressor12DecodeStringEPciPNS_9BitStreamEh")
+// 0xb36cd8 — __ZN3RBX7Network19PersistentDataStore9getNumberERKSs
+#[doc(alias = "__ZN3RBX7Network19PersistentDataStore9getNumberERKSs")]
+pub fn stub_0xb36cd8() -> ! {
+    todo!("0xb36cd8 __ZN3RBX7Network19PersistentDataStore9getNumberERKSs")
 }
 
-// 0xa7b854 — __ZN14DataStructures3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S7_EEE3SetERKiRKS3_
-#[doc(alias = "__ZN14DataStructures3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S7_EEE3SetERKiRKS3_")]
-pub fn stub_0xa7b854() -> ! {
-    todo!("0xa7b854 __ZN14DataStructures3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S7_EEE3SetERKiRKS3_")
+// 0xb36dc0 — __ZN3RBX7Network19PersistentDataStore4saveERSs
+#[doc(alias = "__ZN3RBX7Network19PersistentDataStore4saveERSs")]
+pub fn stub_0xb36dc0() -> ! {
+    todo!("0xb36dc0 __ZN3RBX7Network19PersistentDataStore4saveERSs")
 }
 
-// 0xa7b9b4 — __ZN6RakNet9BitStream15WriteCompressedIjEEvRKT_
-#[doc(alias = "__ZN6RakNet9BitStream15WriteCompressedIjEEvRKT_")]
-pub fn stub_0xa7b9b4() -> ! {
-    todo!("0xa7b9b4 __ZN6RakNet9BitStream15WriteCompressedIjEEvRKT_")
+// 0xb36dd0 — __ZN3RBX7Network19PersistentDataStore18setComplexityLimitEi
+#[doc(alias = "__ZN3RBX7Network19PersistentDataStore18setComplexityLimitEi")]
+pub fn stub_0xb36dd0() -> ! {
+    todo!("0xb36dd0 __ZN3RBX7Network19PersistentDataStore18setComplexityLimitEi")
 }
 
-// 0xa7bac8 — __ZN6RakNet9BitStream14ReadCompressedIjEEbRT_
-#[doc(alias = "__ZN6RakNet9BitStream14ReadCompressedIjEEbRT_")]
-pub fn stub_0xa7bac8() -> ! {
-    todo!("0xa7bac8 __ZN6RakNet9BitStream14ReadCompressedIjEEbRT_")
+// 0xb36dd4 — __ZN3RBX7Network19PersistentDataStore9removeKeyERKSs
+#[doc(alias = "__ZN3RBX7Network19PersistentDataStore9removeKeyERKSs")]
+pub fn stub_0xb36dd4() -> ! {
+    todo!("0xb36dd4 __ZN3RBX7Network19PersistentDataStore9removeKeyERKSs")
 }
 
-// 0xa7bbf0 — __ZN14DataStructures4ListINS_3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S8_EEE7MapNodeEE6InsertERKSA_jPKcj
-#[doc(alias = "__ZN14DataStructures4ListINS_3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S8_EEE7MapNodeEE6InsertERKSA_jPKcj")]
-pub fn stub_0xa7bbf0() -> ! {
-    todo!("0xa7bbf0 __ZN14DataStructures4ListINS_3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S8_EEE7MapNodeEE6InsertERKSA_jPKcj")
+// 0xb37448 — __ZN3RBX7Network19PersistentDataStore17enforceComplexityERKSs
+#[doc(alias = "__ZN3RBX7Network19PersistentDataStore17enforceComplexityERKSs")]
+pub fn stub_0xb37448() -> ! {
+    todo!("0xb37448 __ZN3RBX7Network19PersistentDataStore17enforceComplexityERKSs")
 }
 
-// 0xa7d1d8 — __ZN14DataStructures5QueueIPN6RakNet6PacketEE4PushERKS3_PKcj
-#[doc(alias = "__ZN14DataStructures5QueueIPN6RakNet6PacketEE4PushERKS3_PKcj")]
-pub fn stub_0xa7d1d8() -> ! {
-    todo!("0xa7d1d8 __ZN14DataStructures5QueueIPN6RakNet6PacketEE4PushERKS3_PKcj")
+// 0xb374c8 — __ZN3RBX7Network19PersistentDataStore8isNumberERKSs
+#[doc(alias = "__ZN3RBX7Network19PersistentDataStore8isNumberERKSs")]
+pub fn stub_0xb374c8() -> ! {
+    todo!("0xb374c8 __ZN3RBX7Network19PersistentDataStore8isNumberERKSs")
 }
+
