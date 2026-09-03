@@ -362,3 +362,5 @@ pub mod generated_watchdog_refl_w4b;
 pub mod generated_refl_44;
 pub mod generated_refl_45;
 pub mod generated_watchdog_refl_w6;
+pub mod generated_watchdog_refl_w8;
+pub mod generated_watchdog_refl_w9;
