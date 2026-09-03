@@ -566,3 +566,5 @@ pub mod generated_core_shard_ou;
 pub mod generated_core_shard_ov;
 pub mod generated_core_shard_ow;
 pub mod generated_wdog_gap_1788392241;
+pub mod generated_wdog_cron_coreB;
+pub mod generated_wdog_cron_coreA;
