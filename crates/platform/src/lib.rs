@@ -456,4 +456,5 @@ pub mod generated_watchdog_plat_wd2a;
 pub mod generated_platform_part_a;
 pub mod generated_watchdog_platform_wdA;
 pub mod generated_watchdog_plat_wdb;
+pub mod generated_watchdog_plat_wdc;
 pub mod generated_watchdog_plat_wda;
