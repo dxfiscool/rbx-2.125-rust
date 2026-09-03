@@ -567,15 +567,15 @@ pub fn stub_45dafc() {
 // 0x45db28 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelESsE7GetImplIMS2_KFSsvEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,std::string>::GetImpl<std::string (RBX::DataModel::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9DataModelESsE7GetImplIMS2_KFSsvEE10isReadOnlyEv")]
-pub fn stub_45db28() -> ! {
-    todo!("0x45db28 RBX::Reflection::PropDescriptor<RBX::DataModel,std::string>::GetImpl<std::string (RBX::DataModel::*)(void)const>::isReadOnly(void)const")
+pub fn stub_45db28() {
+    // IDA 0x45db28: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x45db2c — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelESsE7GetImplIMS2_KFSsvEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,std::string>::GetImpl<std::string (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9DataModelESsE7GetImplIMS2_KFSsvEE11isWriteOnlyEv")]
-pub fn stub_45db2c() -> ! {
-    todo!("0x45db2c RBX::Reflection::PropDescriptor<RBX::DataModel,std::string>::GetImpl<std::string (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_45db2c() {
+    // IDA 0x45db2c: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x45db30 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelESsE7GetImplIMS2_KFSsvEE8getValueEPKNS0_13DescribedBaseE
@@ -688,15 +688,15 @@ pub fn stub_45e87c() {
 // 0x45e8a8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_16GearGenreSettingEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_16GearGenreSettingEE10isReadOnlyEv")]
-pub fn stub_45e8a8() -> ! {
-    todo!("0x45e8a8 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::isReadOnly(void)const")
+pub fn stub_45e8a8() {
+    // IDA 0x45e8a8: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x45e8b8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_16GearGenreSettingEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_16GearGenreSettingEE11isWriteOnlyEv")]
-pub fn stub_45e8b8() -> ! {
-    todo!("0x45e8b8 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::isWriteOnly(void)const")
+pub fn stub_45e8b8() {
+    // IDA 0x45e8b8: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x45e8c8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_16GearGenreSettingEE11equalValuesEPKNS0_13DescribedBaseES7_
@@ -730,8 +730,9 @@ pub fn stub_45ea60() -> ! {
 // 0x45ea88 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_16GearGenreSettingEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_16GearGenreSettingEE14hasStringValueEv")]
-pub fn stub_45ea88() -> ! {
-    todo!("0x45ea88 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::hasStringValue(void)const")
+pub fn stub_45ea88() -> bool {
+    // IDA 0x45ea88: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x45ea8c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_16GearGenreSettingEE14getStringValueEPKNS0_13DescribedBaseE

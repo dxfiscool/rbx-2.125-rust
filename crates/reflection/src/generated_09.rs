@@ -108,14 +108,14 @@ pub fn stub_0x5ffd88() {
 
 // 0x5ffdb4 — __ZNK3RBX10Reflection14PropDescriptorINS_14CoreGuiServiceEiE7GetImplIMS2_KFivEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::CoreGuiService,int>::GetImpl<int (RBX::CoreGuiService::*)(void)const>::isReadOnly(void)const")]
-pub fn stub_0x5ffdb4() -> ! {
-    todo!("0x5ffdb4 RBX::Reflection::PropDescriptor<RBX::CoreGuiService,int>::GetImpl<int (RBX::CoreGuiService::*)(void)const>::isReadOnly(void)const")
+pub fn stub_0x5ffdb4() {
+    // IDA 0x5ffdb4: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x5ffdb8 — __ZNK3RBX10Reflection14PropDescriptorINS_14CoreGuiServiceEiE7GetImplIMS2_KFivEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::CoreGuiService,int>::GetImpl<int (RBX::CoreGuiService::*)(void)const>::isWriteOnly(void)const")]
-pub fn stub_0x5ffdb8() -> ! {
-    todo!("0x5ffdb8 RBX::Reflection::PropDescriptor<RBX::CoreGuiService,int>::GetImpl<int (RBX::CoreGuiService::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_0x5ffdb8() {
+    // IDA 0x5ffdb8: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x5ffdbc — __ZNK3RBX10Reflection14PropDescriptorINS_14CoreGuiServiceEiE7GetImplIMS2_KFivEE8getValueEPKNS0_13DescribedBaseE
@@ -313,14 +313,16 @@ pub fn stub_0x603658() {
 
 // 0x603680 — __ZNK3RBX10Reflection14PropDescriptorINS_17StarterGuiServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::StarterGuiService,bool>::GetSetImpl<bool (RBX::StarterGuiService::*)(void)const,void (RBX::StarterGuiService::*)(bool)>::isReadOnly(void)const")]
-pub fn stub_0x603680() -> ! {
-    todo!("0x603680 RBX::Reflection::PropDescriptor<RBX::StarterGuiService,bool>::GetSetImpl<bool (RBX::StarterGuiService::*)(void)const,void (RBX::StarterGuiService::*)(bool)>::isReadOnly(void)const")
+pub fn stub_0x603680() -> bool {
+    // IDA 0x603680: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x603684 — __ZNK3RBX10Reflection14PropDescriptorINS_17StarterGuiServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::StarterGuiService,bool>::GetSetImpl<bool (RBX::StarterGuiService::*)(void)const,void (RBX::StarterGuiService::*)(bool)>::isWriteOnly(void)const")]
-pub fn stub_0x603684() -> ! {
-    todo!("0x603684 RBX::Reflection::PropDescriptor<RBX::StarterGuiService,bool>::GetSetImpl<bool (RBX::StarterGuiService::*)(void)const,void (RBX::StarterGuiService::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_0x603684() -> bool {
+    // IDA 0x603684: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x603688 — __ZNK3RBX10Reflection14PropDescriptorINS_17StarterGuiServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
@@ -379,14 +381,16 @@ pub fn stub_0x607054() {
 
 // 0x607080 — __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Pose,float>::GetSetImpl<float (RBX::Pose::*)(void)const,void (RBX::Pose::*)(float)>::isReadOnly(void)const")]
-pub fn stub_0x607080() -> ! {
-    todo!("0x607080 RBX::Reflection::PropDescriptor<RBX::Pose,float>::GetSetImpl<float (RBX::Pose::*)(void)const,void (RBX::Pose::*)(float)>::isReadOnly(void)const")
+pub fn stub_0x607080() -> bool {
+    // IDA 0x607080: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x607084 — __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Pose,float>::GetSetImpl<float (RBX::Pose::*)(void)const,void (RBX::Pose::*)(float)>::isWriteOnly(void)const")]
-pub fn stub_0x607084() -> ! {
-    todo!("0x607084 RBX::Reflection::PropDescriptor<RBX::Pose,float>::GetSetImpl<float (RBX::Pose::*)(void)const,void (RBX::Pose::*)(float)>::isWriteOnly(void)const")
+pub fn stub_0x607084() -> bool {
+    // IDA 0x607084: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x607088 — __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
@@ -415,14 +419,16 @@ pub fn stub_0x6071e0() {
 
 // 0x60720c — __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Pose,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Pose::*)(void)const,void (RBX::Pose::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")]
-pub fn stub_0x60720c() -> ! {
-    todo!("0x60720c RBX::Reflection::PropDescriptor<RBX::Pose,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Pose::*)(void)const,void (RBX::Pose::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")
+pub fn stub_0x60720c() -> bool {
+    // IDA 0x60720c: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x607210 — __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Pose,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Pose::*)(void)const,void (RBX::Pose::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")]
-pub fn stub_0x607210() -> ! {
-    todo!("0x607210 RBX::Reflection::PropDescriptor<RBX::Pose,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Pose::*)(void)const,void (RBX::Pose::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")
+pub fn stub_0x607210() -> bool {
+    // IDA 0x607210: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x607214 — __ZNK3RBX10Reflection14PropDescriptorINS_4PoseEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8getValueEPKNS0_13DescribedBaseE
@@ -511,14 +517,14 @@ pub fn stub_0x608324() {
 
 // 0x608350 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::isReadOnly(void)const")]
-pub fn stub_0x608350() -> ! {
-    todo!("0x608350 RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::isReadOnly(void)const")
+pub fn stub_0x608350() {
+    // IDA 0x608350: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x608360 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::isWriteOnly(void)const")]
-pub fn stub_0x608360() -> ! {
-    todo!("0x608360 RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::isWriteOnly(void)const")
+pub fn stub_0x608360() {
+    // IDA 0x608360: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x608370 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE11equalValuesEPKNS0_13DescribedBaseES7_
@@ -547,8 +553,9 @@ pub fn stub_0x608508() -> ! {
 
 // 0x60852c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::hasStringValue(void)const")]
-pub fn stub_0x60852c() -> ! {
-    todo!("0x60852c RBX::Reflection::EnumPropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::hasStringValue(void)const")
+pub fn stub_0x60852c() -> bool {
+    // IDA 0x60852c: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x608530 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE14getStringValueEPKNS0_13DescribedBaseE
@@ -627,14 +634,16 @@ pub fn stub_0x60895c() -> ! {
 
 // 0x60899c — __ZNK3RBX10Reflection14PropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::GetSetImpl<RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum)>::isReadOnly(void)const")]
-pub fn stub_0x60899c() -> ! {
-    todo!("0x60899c RBX::Reflection::PropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::GetSetImpl<RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum)>::isReadOnly(void)const")
+pub fn stub_0x60899c() -> bool {
+    // IDA 0x60899c: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x6089a0 — __ZNK3RBX10Reflection14PropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::GetSetImpl<RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum)>::isWriteOnly(void)const")]
-pub fn stub_0x6089a0() -> ! {
-    todo!("0x6089a0 RBX::Reflection::PropDescriptor<RBX::PrismInstance,RBX::PrismInstance::NumSidesEnum>::GetSetImpl<RBX::PrismInstance::NumSidesEnum (RBX::PrismInstance::*)(void)const,void (RBX::PrismInstance::*)(RBX::PrismInstance::NumSidesEnum)>::isWriteOnly(void)const")
+pub fn stub_0x6089a0() -> bool {
+    // IDA 0x6089a0: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x6089a4 — __ZNK3RBX10Reflection14PropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -669,14 +678,14 @@ pub fn stub_0x6099e0() {
 
 // 0x609a0c — __ZNK3RBX10Reflection14PropDescriptorINS_10PVInstanceEN3G3D15CoordinateFrameEE7SetImplIMS2_FvRKS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::SetImpl<void (RBX::PVInstance::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")]
-pub fn stub_0x609a0c() -> ! {
-    todo!("0x609a0c RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::SetImpl<void (RBX::PVInstance::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")
+pub fn stub_0x609a0c() {
+    // IDA 0x609a0c: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x609a10 — __ZNK3RBX10Reflection14PropDescriptorINS_10PVInstanceEN3G3D15CoordinateFrameEE7SetImplIMS2_FvRKS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::SetImpl<void (RBX::PVInstance::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")]
-pub fn stub_0x609a10() -> ! {
-    todo!("0x609a10 RBX::Reflection::PropDescriptor<RBX::PVInstance,G3D::CoordinateFrame>::SetImpl<void (RBX::PVInstance::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")
+pub fn stub_0x609a10() {
+    // IDA 0x609a10: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x609a14 — __ZNK3RBX10Reflection14PropDescriptorINS_10PVInstanceEN3G3D15CoordinateFrameEE7SetImplIMS2_FvRKS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -711,14 +720,14 @@ pub fn stub_0x60a430() {
 
 // 0x60a45c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::isReadOnly(void)const")]
-pub fn stub_0x60a45c() -> ! {
-    todo!("0x60a45c RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::isReadOnly(void)const")
+pub fn stub_0x60a45c() {
+    // IDA 0x60a45c: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x60a46c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::isWriteOnly(void)const")]
-pub fn stub_0x60a46c() -> ! {
-    todo!("0x60a46c RBX::Reflection::EnumPropDescriptor<RBX::PyramidInstance,RBX::PyramidInstance::NumSidesEnum>::isWriteOnly(void)const")
+pub fn stub_0x60a46c() {
+    // IDA 0x60a46c: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x60a47c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE11equalValuesEPKNS0_13DescribedBaseES7_

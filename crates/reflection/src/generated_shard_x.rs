@@ -42,15 +42,15 @@ pub fn stub_782418() {
 // 0x782448 — __ZNK3RBX10Reflection17RefPropDescriptorINS_9Scripting14ScriptDebuggerENS_6ScriptEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Scripting::ScriptDebugger,RBX::Script>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_9Scripting14ScriptDebuggerENS_6ScriptEE10isReadOnlyEv")]
-pub fn stub_782448() -> ! {
-    todo!("0x782448 RBX::Reflection::RefPropDescriptor<RBX::Scripting::ScriptDebugger,RBX::Script>::isReadOnly(void)const")
+pub fn stub_782448() {
+    // IDA 0x782448: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x782458 — __ZNK3RBX10Reflection17RefPropDescriptorINS_9Scripting14ScriptDebuggerENS_6ScriptEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Scripting::ScriptDebugger,RBX::Script>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_9Scripting14ScriptDebuggerENS_6ScriptEE11isWriteOnlyEv")]
-pub fn stub_782458() -> ! {
-    todo!("0x782458 RBX::Reflection::RefPropDescriptor<RBX::Scripting::ScriptDebugger,RBX::Script>::isWriteOnly(void)const")
+pub fn stub_782458() {
+    // IDA 0x782458: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x782468 — __ZNK3RBX10Reflection17RefPropDescriptorINS_9Scripting14ScriptDebuggerENS_6ScriptEE11equalValuesEPKNS0_13DescribedBaseES8_
@@ -150,15 +150,15 @@ pub fn stub_782998() -> ! {
 // 0x7829a4 — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEPNS_6ScriptEE7GetImplIMS3_KFS5_vEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,RBX::Script *>::GetImpl<RBX::Script * (RBX::Scripting::ScriptDebugger::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEPNS_6ScriptEE7GetImplIMS3_KFS5_vEE10isReadOnlyEv")]
-pub fn stub_7829a4() -> ! {
-    todo!("0x7829a4 RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,RBX::Script *>::GetImpl<RBX::Script * (RBX::Scripting::ScriptDebugger::*)(void)const>::isReadOnly(void)const")
+pub fn stub_7829a4() {
+    // IDA 0x7829a4: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x7829a8 — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEPNS_6ScriptEE7GetImplIMS3_KFS5_vEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,RBX::Script *>::GetImpl<RBX::Script * (RBX::Scripting::ScriptDebugger::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEPNS_6ScriptEE7GetImplIMS3_KFS5_vEE11isWriteOnlyEv")]
-pub fn stub_7829a8() -> ! {
-    todo!("0x7829a8 RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,RBX::Script *>::GetImpl<RBX::Script * (RBX::Scripting::ScriptDebugger::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_7829a8() {
+    // IDA 0x7829a8: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x7829ac — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEPNS_6ScriptEE7GetImplIMS3_KFS5_vEE8getValueEPKNS0_13DescribedBaseE
@@ -671,15 +671,15 @@ pub fn stub_78640c() {
 // 0x786438 — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting15DebuggerManagerEbE7GetImplIMS3_KFbvEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scripting::DebuggerManager,bool>::GetImpl<bool (RBX::Scripting::DebuggerManager::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9Scripting15DebuggerManagerEbE7GetImplIMS3_KFbvEE10isReadOnlyEv")]
-pub fn stub_786438() -> ! {
-    todo!("0x786438 RBX::Reflection::PropDescriptor<RBX::Scripting::DebuggerManager,bool>::GetImpl<bool (RBX::Scripting::DebuggerManager::*)(void)const>::isReadOnly(void)const")
+pub fn stub_786438() {
+    // IDA 0x786438: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x78643c — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting15DebuggerManagerEbE7GetImplIMS3_KFbvEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scripting::DebuggerManager,bool>::GetImpl<bool (RBX::Scripting::DebuggerManager::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9Scripting15DebuggerManagerEbE7GetImplIMS3_KFbvEE11isWriteOnlyEv")]
-pub fn stub_78643c() -> ! {
-    todo!("0x78643c RBX::Reflection::PropDescriptor<RBX::Scripting::DebuggerManager,bool>::GetImpl<bool (RBX::Scripting::DebuggerManager::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_78643c() {
+    // IDA 0x78643c: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x786440 — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting15DebuggerManagerEbE7GetImplIMS3_KFbvEE8getValueEPKNS0_13DescribedBaseE

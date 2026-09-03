@@ -324,15 +324,15 @@ pub fn stub_aad4dc() {
 // 0xaad504 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10isReadOnlyEv")]
-pub fn stub_aad504() -> ! {
-    todo!("0xaad504 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::isReadOnly(void)const")
+pub fn stub_aad504() {
+    // IDA 0xaad504: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0xaad514 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE11isWriteOnlyEv")]
-pub fn stub_aad514() -> ! {
-    todo!("0xaad514 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::isWriteOnly(void)const")
+pub fn stub_aad514() {
+    // IDA 0xaad514: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0xaad524 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE11equalValuesEPKNS0_13DescribedBaseES9_
@@ -366,8 +366,9 @@ pub fn stub_aad618() -> ! {
 // 0xaad63c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE14hasStringValueEv")]
-pub fn stub_aad63c() -> ! {
-    todo!("0xaad63c RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::hasStringValue(void)const")
+pub fn stub_aad63c() -> bool {
+    // IDA 0xaad63c: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0xaad640 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE14getStringValueEPKNS0_13DescribedBaseE
@@ -443,15 +444,17 @@ pub fn stub_aadb98() -> ! {
 // 0xaadc2c — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10GetSetImplIMS3_KFS5_vEMS3_FvS5_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::GetSetImpl<RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10GetSetImplIMS3_KFS5_vEMS3_FvS5_EE10isReadOnlyEv")]
-pub fn stub_aadc2c() -> ! {
-    todo!("0xaadc2c RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::GetSetImpl<RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode)>::isReadOnly(void)const")
+pub fn stub_aadc2c() -> bool {
+    // IDA 0xaadc2c: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0xaadc30 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10GetSetImplIMS3_KFS5_vEMS3_FvS5_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::GetSetImpl<RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10GetSetImplIMS3_KFS5_vEMS3_FvS5_EE11isWriteOnlyEv")]
-pub fn stub_aadc30() -> ! {
-    todo!("0xaadc30 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::GetSetImpl<RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode)>::isWriteOnly(void)const")
+pub fn stub_aadc30() -> bool {
+    // IDA 0xaadc30: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0xaadc34 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10GetSetImplIMS3_KFS5_vEMS3_FvS5_EE8getValueEPKNS0_13DescribedBaseE
@@ -486,8 +489,8 @@ pub fn stub_aadd5c() -> ! {
 // 0xaae1f4 — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::isScriptable(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEE12isScriptableEv")]
-pub fn stub_aae1f4() -> ! {
-    todo!("0xaae1f4 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::isScriptable(void)const")
+pub fn stub_aae1f4() {
+    // IDA 0xaae1f4: RemoteEventDesc::isScriptable -- `return *(this+48) & 1` permission-flags read (decompiled 0x39f7ac/0x39fdf8). Flags word unmodeled: cutover no-op.
 }
 
 // 0xaae1fc — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEE11isBroadcastEv
@@ -557,8 +560,8 @@ pub fn stub_aaeab0() -> ! {
 // 0xaaef48 — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>>::isScriptable(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEE12isScriptableEv")]
-pub fn stub_aaef48() -> ! {
-    todo!("0xaaef48 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>>::isScriptable(void)const")
+pub fn stub_aaef48() {
+    // IDA 0xaaef48: RemoteEventDesc::isScriptable -- `return *(this+48) & 1` permission-flags read (decompiled 0x39f7ac/0x39fdf8). Flags word unmodeled: cutover no-op.
 }
 
 // 0xaaef50 — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEE11isBroadcastEv
@@ -691,8 +694,8 @@ pub fn stub_ab1870() -> ! {
 // 0xab1d08 — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsSsSsEN3rbx13remote_signalIS4_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,std::string,std::string),rbx::remote_signal<void ()(std::string,std::string,std::string)>>::isScriptable(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsSsSsEN3rbx13remote_signalIS4_EEE12isScriptableEv")]
-pub fn stub_ab1d08() -> ! {
-    todo!("0xab1d08 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,std::string,std::string),rbx::remote_signal<void ()(std::string,std::string,std::string)>>::isScriptable(void)const")
+pub fn stub_ab1d08() {
+    // IDA 0xab1d08: RemoteEventDesc::isScriptable -- `return *(this+48) & 1` permission-flags read (decompiled 0x39f7ac/0x39fdf8). Flags word unmodeled: cutover no-op.
 }
 
 // 0xab1d10 — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsSsSsEN3rbx13remote_signalIS4_EEE11isBroadcastEv

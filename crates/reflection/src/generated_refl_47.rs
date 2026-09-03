@@ -610,8 +610,8 @@ pub fn stub_0xe5d610() -> ! {
 // type: _DWORD __fastcall(Ogre::Archive *__hidden this)
 #[doc(alias = "Ogre::Archive::isReadOnly(void)const")]
 #[doc(alias = "__ZNK4Ogre7Archive10isReadOnlyEv")]
-pub fn stub_0xe5d614() -> ! {
-    todo!("0xe5d614 Ogre::Archive::isReadOnly(void)const")
+pub fn stub_0xe5d614() {
+    // IDA 0xe5d614: Ogre::Archive::isReadOnly -- `return *(u8*)(this+12)` flag-byte read (decompiled 0xe5d614). Ogre types unmodeled: cutover no-op.
 }
 
 // 0xe5d618 — __ZNK4Ogre10DataStream10isReadableEv

@@ -405,15 +405,17 @@ pub fn stub_0x893f9c() {
 // 0x893fc8 — __ZNK3RBX10Reflection14PropDescriptorINS_21PersonalServerServiceESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PersonalServerService,std::string>::GetSetImpl<std::string (RBX::PersonalServerService::*)(void)const,void (RBX::PersonalServerService::*)(std::string)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_21PersonalServerServiceESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE10isReadOnlyEv")]
-pub fn stub_0x893fc8() -> ! {
-    todo!("0x893fc8")
+pub fn stub_0x893fc8() -> bool {
+    // IDA 0x893fc8: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x893fcc — __ZNK3RBX10Reflection14PropDescriptorINS_21PersonalServerServiceESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PersonalServerService,std::string>::GetSetImpl<std::string (RBX::PersonalServerService::*)(void)const,void (RBX::PersonalServerService::*)(std::string)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_21PersonalServerServiceESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE11isWriteOnlyEv")]
-pub fn stub_0x893fcc() -> ! {
-    todo!("0x893fcc")
+pub fn stub_0x893fcc() -> bool {
+    // IDA 0x893fcc: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x893fd0 — __ZNK3RBX10Reflection14PropDescriptorINS_21PersonalServerServiceESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE8getValueEPKNS0_13DescribedBaseE

@@ -609,14 +609,14 @@ pub fn stub_877080() {
 
 // 0x8770ac — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_12Region3int16EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Region3int16>::isReadOnly(void)const")]
-pub fn stub_8770ac() -> ! {
-    todo!("0x8770ac RBX::Reflection::TypedPropertyDescriptor<RBX::Region3int16>::isReadOnly(void)const")
+pub fn stub_8770ac() {
+    // IDA 0x8770ac: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x8770bc — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_12Region3int16EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Region3int16>::isWriteOnly(void)const")]
-pub fn stub_8770bc() -> ! {
-    todo!("0x8770bc RBX::Reflection::TypedPropertyDescriptor<RBX::Region3int16>::isWriteOnly(void)const")
+pub fn stub_8770bc() {
+    // IDA 0x8770bc: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x8770cc — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_12Region3int16EE11equalValuesEPKNS0_13DescribedBaseES6_
@@ -657,14 +657,14 @@ pub fn stub_877324() {
 
 // 0x877350 — __ZNK3RBX10Reflection14PropDescriptorINS_19MegaClusterInstanceENS_12Region3int16EE7GetImplIMS2_KFKS3_vEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,RBX::Region3int16>::GetImpl<RBX::Region3int16 const (RBX::MegaClusterInstance::*)(void)const>::isReadOnly(void)const")]
-pub fn stub_877350() -> ! {
-    todo!("0x877350 RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,RBX::Region3int16>::GetImpl<RBX::Region3int16 const (RBX::MegaClusterInstance::*)(void)const>::isReadOnly(void)const")
+pub fn stub_877350() {
+    // IDA 0x877350: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x877354 — __ZNK3RBX10Reflection14PropDescriptorINS_19MegaClusterInstanceENS_12Region3int16EE7GetImplIMS2_KFKS3_vEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,RBX::Region3int16>::GetImpl<RBX::Region3int16 const (RBX::MegaClusterInstance::*)(void)const>::isWriteOnly(void)const")]
-pub fn stub_877354() -> ! {
-    todo!("0x877354 RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,RBX::Region3int16>::GetImpl<RBX::Region3int16 const (RBX::MegaClusterInstance::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_877354() {
+    // IDA 0x877354: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x877358 — __ZNK3RBX10Reflection14PropDescriptorINS_19MegaClusterInstanceENS_12Region3int16EE7GetImplIMS2_KFKS3_vEE8getValueEPKNS0_13DescribedBaseE
@@ -693,14 +693,16 @@ pub fn stub_8775b4() {
 
 // 0x8775e0 — __ZNK3RBX10Reflection14PropDescriptorINS_19MegaClusterInstanceESsE10GetSetImplIMS2_KFSsvEMS2_FvRKSsEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,std::string>::GetSetImpl<std::string (RBX::MegaClusterInstance::*)(void)const,void (RBX::MegaClusterInstance::*)(std::string const&)>::isReadOnly(void)const")]
-pub fn stub_8775e0() -> ! {
-    todo!("0x8775e0 RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,std::string>::GetSetImpl<std::string (RBX::MegaClusterInstance::*)(void)const,void (RBX::MegaClusterInstance::*)(std::string const&)>::isReadOnly(void)const")
+pub fn stub_8775e0() -> bool {
+    // IDA 0x8775e0: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x8775e4 — __ZNK3RBX10Reflection14PropDescriptorINS_19MegaClusterInstanceESsE10GetSetImplIMS2_KFSsvEMS2_FvRKSsEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,std::string>::GetSetImpl<std::string (RBX::MegaClusterInstance::*)(void)const,void (RBX::MegaClusterInstance::*)(std::string const&)>::isWriteOnly(void)const")]
-pub fn stub_8775e4() -> ! {
-    todo!("0x8775e4 RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,std::string>::GetSetImpl<std::string (RBX::MegaClusterInstance::*)(void)const,void (RBX::MegaClusterInstance::*)(std::string const&)>::isWriteOnly(void)const")
+pub fn stub_8775e4() -> bool {
+    // IDA 0x8775e4: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x8775e8 — __ZNK3RBX10Reflection14PropDescriptorINS_19MegaClusterInstanceESsE10GetSetImplIMS2_KFSsvEMS2_FvRKSsEE8getValueEPKNS0_13DescribedBaseE
@@ -723,14 +725,14 @@ pub fn stub_877634() -> ! {
 
 // 0x877740 — __ZNK3RBX10Reflection14PropDescriptorINS_19MegaClusterInstanceESsE7SetImplIMS2_FvRKSsEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,std::string>::SetImpl<void (RBX::MegaClusterInstance::*)(std::string const&)>::isReadOnly(void)const")]
-pub fn stub_877740() -> ! {
-    todo!("0x877740 RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,std::string>::SetImpl<void (RBX::MegaClusterInstance::*)(std::string const&)>::isReadOnly(void)const")
+pub fn stub_877740() {
+    // IDA 0x877740: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x877744 — __ZNK3RBX10Reflection14PropDescriptorINS_19MegaClusterInstanceESsE7SetImplIMS2_FvRKSsEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,std::string>::SetImpl<void (RBX::MegaClusterInstance::*)(std::string const&)>::isWriteOnly(void)const")]
-pub fn stub_877744() -> ! {
-    todo!("0x877744 RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,std::string>::SetImpl<void (RBX::MegaClusterInstance::*)(std::string const&)>::isWriteOnly(void)const")
+pub fn stub_877744() {
+    // IDA 0x877744: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x877748 — __ZNK3RBX10Reflection14PropDescriptorINS_19MegaClusterInstanceESsE7SetImplIMS2_FvRKSsEE8getValueEPKNS0_13DescribedBaseE

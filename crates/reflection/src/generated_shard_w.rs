@@ -291,15 +291,17 @@ pub fn stub_77f688() -> ! {
 // 0x77f81c — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting13DebuggerWatchEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Scripting::DebuggerWatch>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting13DebuggerWatchEE10isReadOnlyEv")]
-pub fn stub_77f81c() -> ! {
-    todo!("0x77f81c RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Scripting::DebuggerWatch>::isReadOnly(void)const")
+pub fn stub_77f81c() -> bool {
+    // IDA 0x77f81c: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x77f820 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting13DebuggerWatchEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Scripting::DebuggerWatch>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting13DebuggerWatchEE11isWriteOnlyEv")]
-pub fn stub_77f820() -> ! {
-    todo!("0x77f820 RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Scripting::DebuggerWatch>::isWriteOnly(void)const")
+pub fn stub_77f820() -> bool {
+    // IDA 0x77f820: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x77f824 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting13DebuggerWatchEE8getValueEPKNS0_13DescribedBaseE
@@ -326,15 +328,17 @@ pub fn stub_77f8a4() -> ! {
 // 0x77fa34 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting18DebuggerBreakpointEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Scripting::DebuggerBreakpoint>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting18DebuggerBreakpointEE10isReadOnlyEv")]
-pub fn stub_77fa34() -> ! {
-    todo!("0x77fa34 RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Scripting::DebuggerBreakpoint>::isReadOnly(void)const")
+pub fn stub_77fa34() -> bool {
+    // IDA 0x77fa34: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x77fa38 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting18DebuggerBreakpointEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Scripting::DebuggerBreakpoint>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting18DebuggerBreakpointEE11isWriteOnlyEv")]
-pub fn stub_77fa38() -> ! {
-    todo!("0x77fa38 RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Scripting::DebuggerBreakpoint>::isWriteOnly(void)const")
+pub fn stub_77fa38() -> bool {
+    // IDA 0x77fa38: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x77fa3c — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting18DebuggerBreakpointEE8getValueEPKNS0_13DescribedBaseE
@@ -361,15 +365,17 @@ pub fn stub_77fabc() -> ! {
 // 0x77fc50 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting18DebuggerBreakpointEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Scripting::DebuggerBreakpoint>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting18DebuggerBreakpointEE10isReadOnlyEv")]
-pub fn stub_77fc50() -> ! {
-    todo!("0x77fc50 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Scripting::DebuggerBreakpoint>::isReadOnly(void)const")
+pub fn stub_77fc50() -> bool {
+    // IDA 0x77fc50: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x77fc54 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting18DebuggerBreakpointEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Scripting::DebuggerBreakpoint>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting18DebuggerBreakpointEE11isWriteOnlyEv")]
-pub fn stub_77fc54() -> ! {
-    todo!("0x77fc54 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Scripting::DebuggerBreakpoint>::isWriteOnly(void)const")
+pub fn stub_77fc54() -> bool {
+    // IDA 0x77fc54: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x77fc58 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting18DebuggerBreakpointEE8getValueEPKNS0_13DescribedBaseE
@@ -396,15 +402,17 @@ pub fn stub_77fcb4() -> ! {
 // 0x77fe48 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting18DebuggerBreakpointEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Scripting::DebuggerBreakpoint>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting18DebuggerBreakpointEE10isReadOnlyEv")]
-pub fn stub_77fe48() -> ! {
-    todo!("0x77fe48 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Scripting::DebuggerBreakpoint>::isReadOnly(void)const")
+pub fn stub_77fe48() -> bool {
+    // IDA 0x77fe48: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x77fe4c — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting18DebuggerBreakpointEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Scripting::DebuggerBreakpoint>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting18DebuggerBreakpointEE11isWriteOnlyEv")]
-pub fn stub_77fe4c() -> ! {
-    todo!("0x77fe4c RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Scripting::DebuggerBreakpoint>::isWriteOnly(void)const")
+pub fn stub_77fe4c() -> bool {
+    // IDA 0x77fe4c: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x77fe50 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_9Scripting18DebuggerBreakpointEE8getValueEPKNS0_13DescribedBaseE
@@ -438,15 +446,15 @@ pub fn stub_77ffb8() {
 // 0x77ffe4 — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting18DebuggerBreakpointEiE7GetImplIMS3_KFivEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scripting::DebuggerBreakpoint,int>::GetImpl<int (RBX::Scripting::DebuggerBreakpoint::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9Scripting18DebuggerBreakpointEiE7GetImplIMS3_KFivEE10isReadOnlyEv")]
-pub fn stub_77ffe4() -> ! {
-    todo!("0x77ffe4 RBX::Reflection::PropDescriptor<RBX::Scripting::DebuggerBreakpoint,int>::GetImpl<int (RBX::Scripting::DebuggerBreakpoint::*)(void)const>::isReadOnly(void)const")
+pub fn stub_77ffe4() {
+    // IDA 0x77ffe4: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x77ffe8 — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting18DebuggerBreakpointEiE7GetImplIMS3_KFivEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scripting::DebuggerBreakpoint,int>::GetImpl<int (RBX::Scripting::DebuggerBreakpoint::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9Scripting18DebuggerBreakpointEiE7GetImplIMS3_KFivEE11isWriteOnlyEv")]
-pub fn stub_77ffe8() -> ! {
-    todo!("0x77ffe8 RBX::Reflection::PropDescriptor<RBX::Scripting::DebuggerBreakpoint,int>::GetImpl<int (RBX::Scripting::DebuggerBreakpoint::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_77ffe8() {
+    // IDA 0x77ffe8: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x77ffec — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting18DebuggerBreakpointEiE7GetImplIMS3_KFivEE8getValueEPKNS0_13DescribedBaseE
@@ -641,15 +649,15 @@ pub fn stub_781bd0() {
 // 0x781bfc — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEiE7GetImplIMS3_KFivEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,int>::GetImpl<int (RBX::Scripting::ScriptDebugger::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEiE7GetImplIMS3_KFivEE10isReadOnlyEv")]
-pub fn stub_781bfc() -> ! {
-    todo!("0x781bfc RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,int>::GetImpl<int (RBX::Scripting::ScriptDebugger::*)(void)const>::isReadOnly(void)const")
+pub fn stub_781bfc() {
+    // IDA 0x781bfc: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x781c00 — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEiE7GetImplIMS3_KFivEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,int>::GetImpl<int (RBX::Scripting::ScriptDebugger::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEiE7GetImplIMS3_KFivEE11isWriteOnlyEv")]
-pub fn stub_781c00() -> ! {
-    todo!("0x781c00 RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,int>::GetImpl<int (RBX::Scripting::ScriptDebugger::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_781c00() {
+    // IDA 0x781c00: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x781c04 — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEiE7GetImplIMS3_KFivEE8getValueEPKNS0_13DescribedBaseE
@@ -683,15 +691,15 @@ pub fn stub_781e50() {
 // 0x781e7c — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEbE7GetImplIMS3_KFbvEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,bool>::GetImpl<bool (RBX::Scripting::ScriptDebugger::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEbE7GetImplIMS3_KFbvEE10isReadOnlyEv")]
-pub fn stub_781e7c() -> ! {
-    todo!("0x781e7c RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,bool>::GetImpl<bool (RBX::Scripting::ScriptDebugger::*)(void)const>::isReadOnly(void)const")
+pub fn stub_781e7c() {
+    // IDA 0x781e7c: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x781e80 — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEbE7GetImplIMS3_KFbvEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,bool>::GetImpl<bool (RBX::Scripting::ScriptDebugger::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEbE7GetImplIMS3_KFbvEE11isWriteOnlyEv")]
-pub fn stub_781e80() -> ! {
-    todo!("0x781e80 RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,bool>::GetImpl<bool (RBX::Scripting::ScriptDebugger::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_781e80() {
+    // IDA 0x781e80: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x781e84 — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEbE7GetImplIMS3_KFbvEE8getValueEPKNS0_13DescribedBaseE
@@ -725,13 +733,15 @@ pub fn stub_7820dc() {
 // 0x782108 — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerESsE10GetSetImplIMS3_KFSsvEMS3_FvSsEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,std::string>::GetSetImpl<std::string (RBX::Scripting::ScriptDebugger::*)(void)const,void (RBX::Scripting::ScriptDebugger::*)(std::string)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerESsE10GetSetImplIMS3_KFSsvEMS3_FvSsEE10isReadOnlyEv")]
-pub fn stub_782108() -> ! {
-    todo!("0x782108 RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,std::string>::GetSetImpl<std::string (RBX::Scripting::ScriptDebugger::*)(void)const,void (RBX::Scripting::ScriptDebugger::*)(std::string)>::isReadOnly(void)const")
+pub fn stub_782108() -> bool {
+    // IDA 0x782108: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x78210c — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerESsE10GetSetImplIMS3_KFSsvEMS3_FvSsEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,std::string>::GetSetImpl<std::string (RBX::Scripting::ScriptDebugger::*)(void)const,void (RBX::Scripting::ScriptDebugger::*)(std::string)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerESsE10GetSetImplIMS3_KFSsvEMS3_FvSsEE11isWriteOnlyEv")]
-pub fn stub_78210c() -> ! {
-    todo!("0x78210c RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,std::string>::GetSetImpl<std::string (RBX::Scripting::ScriptDebugger::*)(void)const,void (RBX::Scripting::ScriptDebugger::*)(std::string)>::isWriteOnly(void)const")
+pub fn stub_78210c() -> bool {
+    // IDA 0x78210c: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }

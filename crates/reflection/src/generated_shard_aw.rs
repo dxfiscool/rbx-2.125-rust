@@ -196,15 +196,15 @@ pub fn stub_9d4888() {
 // 0x9d48b0 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6ServerEiE7GetImplIMS3_KFivEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::GetImpl<int (RBX::Network::Server::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network6ServerEiE7GetImplIMS3_KFivEE10isReadOnlyEv")]
-pub fn stub_9d48b0() -> ! {
-    todo!("0x9d48b0 RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::GetImpl<int (RBX::Network::Server::*)(void)const>::isReadOnly(void)const")
+pub fn stub_9d48b0() {
+    // IDA 0x9d48b0: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x9d48b4 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6ServerEiE7GetImplIMS3_KFivEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::GetImpl<int (RBX::Network::Server::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network6ServerEiE7GetImplIMS3_KFivEE11isWriteOnlyEv")]
-pub fn stub_9d48b4() -> ! {
-    todo!("0x9d48b4 RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::GetImpl<int (RBX::Network::Server::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_9d48b4() {
+    // IDA 0x9d48b4: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x9d48b8 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6ServerEiE7GetImplIMS3_KFivEE8getValueEPKNS0_13DescribedBaseE

@@ -80,8 +80,8 @@ pub fn stub_0x80b2f0() -> ! {
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::TestService,void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int),rbx::remote_signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>>::isScriptable(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection15RemoteEventDescINS_11TestServiceEFvbSsN5boost10shared_ptrINS_8InstanceEEEiEN3rbx13remote_signalIS7_EEE12isScriptableEv")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::TestService,void ()(bool,std::string,boost::shared_ptr<RBX::Instance>,int),rbx::remote_signal<void ()(bool,std::string,boost::shared_ptr<RBX::Instance>,int)>>::isScriptable(void)const
-pub fn stub_0x80b454() -> ! {
-    todo!("0x80b454 RBX::Reflection::RemoteEventDesc<RBX::TestService,void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int),rbx::remote_signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>>::isScriptable(void)const")
+pub fn stub_0x80b454() {
+    // IDA 0x80b454: RemoteEventDesc::isScriptable -- `return *(this+48) & 1` permission-flags read (decompiled 0x39f7ac/0x39fdf8). Flags word unmodeled: cutover no-op.
 }
 
 // 0x80b45c — __ZNK3RBX10Reflection15RemoteEventDescINS_11TestServiceEFvbSsN5boost10shared_ptrINS_8InstanceEEEiEN3rbx13remote_signalIS7_EEE11isBroadcastEv
@@ -240,8 +240,8 @@ pub fn stub_0x80cd2c() -> ! {
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::TestService,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>,int),rbx::remote_signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>,int)>>::isScriptable(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection15RemoteEventDescINS_11TestServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEiEN3rbx13remote_signalIS7_EEE12isScriptableEv")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::TestService,void ()(std::string,boost::shared_ptr<RBX::Instance>,int),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>,int)>>::isScriptable(void)const
-pub fn stub_0x80ce90() -> ! {
-    todo!("0x80ce90 RBX::Reflection::RemoteEventDesc<RBX::TestService,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>,int),rbx::remote_signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>,int)>>::isScriptable(void)const")
+pub fn stub_0x80ce90() {
+    // IDA 0x80ce90: RemoteEventDesc::isScriptable -- `return *(this+48) & 1` permission-flags read (decompiled 0x39f7ac/0x39fdf8). Flags word unmodeled: cutover no-op.
 }
 
 // 0x80ce98 — __ZNK3RBX10Reflection15RemoteEventDescINS_11TestServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEiEN3rbx13remote_signalIS7_EEE11isBroadcastEv
@@ -637,15 +637,17 @@ pub fn stub_0x810ce0() {
 // 0x810d0c — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE0EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)0>::BoundPropGetSet<RBX::TestService>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE0EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv")]
-pub fn stub_0x810d0c() -> ! {
-    todo!("0x810d0c RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)0>::BoundPropGetSet<RBX::TestService>::isReadOnly(void)const")
+pub fn stub_0x810d0c() -> bool {
+    // IDA 0x810d0c: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x810d10 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE0EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)0>::BoundPropGetSet<RBX::TestService>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE0EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv")]
-pub fn stub_0x810d10() -> ! {
-    todo!("0x810d10 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)0>::BoundPropGetSet<RBX::TestService>::isWriteOnly(void)const")
+pub fn stub_0x810d10() -> bool {
+    // IDA 0x810d10: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x810d14 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE0EE15BoundPropGetSetINS_11TestServiceEE8getValueEPKNS0_13DescribedBaseE
@@ -672,15 +674,17 @@ pub fn stub_0x810e40() -> ! {
 // 0x810fd0 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv")]
-pub fn stub_0x810fd0() -> ! {
-    todo!("0x810fd0 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isReadOnly(void)const")
+pub fn stub_0x810fd0() -> bool {
+    // IDA 0x810fd0: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x810fd4 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv")]
-pub fn stub_0x810fd4() -> ! {
-    todo!("0x810fd4 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isWriteOnly(void)const")
+pub fn stub_0x810fd4() -> bool {
+    // IDA 0x810fd4: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x810fd8 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE8getValueEPKNS0_13DescribedBaseE
@@ -707,15 +711,17 @@ pub fn stub_0x811034() -> ! {
 // 0x8111c4 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv")]
-pub fn stub_0x8111c4() -> ! {
-    todo!("0x8111c4 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isReadOnly(void)const")
+pub fn stub_0x8111c4() -> bool {
+    // IDA 0x8111c4: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x8111c8 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv")]
-pub fn stub_0x8111c8() -> ! {
-    todo!("0x8111c8 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isWriteOnly(void)const")
+pub fn stub_0x8111c8() -> bool {
+    // IDA 0x8111c8: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x8111cc — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE8getValueEPKNS0_13DescribedBaseE
@@ -742,15 +748,17 @@ pub fn stub_0x811228() -> ! {
 // 0x8113b8 — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE10isReadOnlyEv")]
-pub fn stub_0x8113b8() -> ! {
-    todo!("0x8113b8 RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isReadOnly(void)const")
+pub fn stub_0x8113b8() -> bool {
+    // IDA 0x8113b8: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x8113bc — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE11isWriteOnlyEv")]
-pub fn stub_0x8113bc() -> ! {
-    todo!("0x8113bc RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::TestService>::isWriteOnly(void)const")
+pub fn stub_0x8113bc() -> bool {
+    // IDA 0x8113bc: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x8113c0 — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_11TestServiceEE8getValueEPKNS0_13DescribedBaseE

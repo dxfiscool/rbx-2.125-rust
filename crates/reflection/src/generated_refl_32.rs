@@ -177,36 +177,39 @@ pub fn stub_0x6595b4() {
 // 0x6595e0 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_16LegacyController9InputTypeEE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::LegacyController::InputType>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_16LegacyController9InputTypeEE10isReadOnlyEv")]
-pub fn stub_0x6595e0() -> ! {
-    todo!("0x6595e0 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::LegacyController::InputType>::isReadOnly(void)const")
+pub fn stub_0x6595e0() {
+    // IDA 0x6595e0: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x6595f0 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_16LegacyController9InputTypeEE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::LegacyController::InputType>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_16LegacyController9InputTypeEE11isWriteOnlyEv")]
-pub fn stub_0x6595f0() -> ! {
-    todo!("0x6595f0 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::LegacyController::InputType>::isWriteOnly(void)const")
+pub fn stub_0x6595f0() {
+    // IDA 0x6595f0: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x6597cc — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_16LegacyController9InputTypeEE14hasStringValueEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::LegacyController::InputType>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_16LegacyController9InputTypeEE14hasStringValueEv")]
-pub fn stub_0x6597cc() -> ! {
-    todo!("0x6597cc RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::LegacyController::InputType>::hasStringValue(void)const")
+pub fn stub_0x6597cc() -> bool {
+    // IDA 0x6597cc: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x659d38 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE2ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)2,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE2ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE10isReadOnlyEv")]
-pub fn stub_0x659d38() -> ! {
-    todo!("0x659d38 RBX::SurfaceGetSet<(RBX::NormalId)2,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isReadOnly(void)const")
+pub fn stub_0x659d38() -> bool {
+    // IDA 0x659d38: SurfaceGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x659d3c — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE2ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)2,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE2ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE11isWriteOnlyEv")]
-pub fn stub_0x659d3c() -> ! {
-    todo!("0x659d3c RBX::SurfaceGetSet<(RBX::NormalId)2,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isWriteOnly(void)const")
+pub fn stub_0x659d3c() -> bool {
+    // IDA 0x659d3c: SurfaceGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x659e30 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_11SurfaceTypeEED0Ev
@@ -219,36 +222,39 @@ pub fn stub_0x659e30() {
 // 0x659e5c — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_11SurfaceTypeEE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::SurfaceType>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_11SurfaceTypeEE10isReadOnlyEv")]
-pub fn stub_0x659e5c() -> ! {
-    todo!("0x659e5c RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::SurfaceType>::isReadOnly(void)const")
+pub fn stub_0x659e5c() {
+    // IDA 0x659e5c: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x659e6c — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_11SurfaceTypeEE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::SurfaceType>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_11SurfaceTypeEE11isWriteOnlyEv")]
-pub fn stub_0x659e6c() -> ! {
-    todo!("0x659e6c RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::SurfaceType>::isWriteOnly(void)const")
+pub fn stub_0x659e6c() {
+    // IDA 0x659e6c: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65a048 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_11SurfaceTypeEE14hasStringValueEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::SurfaceType>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_11SurfaceTypeEE14hasStringValueEv")]
-pub fn stub_0x65a048() -> ! {
-    todo!("0x65a048 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::SurfaceType>::hasStringValue(void)const")
+pub fn stub_0x65a048() -> bool {
+    // IDA 0x65a048: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x65a5b4 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE2ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)2,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE2ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE10isReadOnlyEv")]
-pub fn stub_0x65a5b4() -> ! {
-    todo!("0x65a5b4 RBX::SurfaceGetSet<(RBX::NormalId)2,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isReadOnly(void)const")
+pub fn stub_0x65a5b4() -> bool {
+    // IDA 0x65a5b4: SurfaceGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65a5b8 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE2ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)2,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE2ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE11isWriteOnlyEv")]
-pub fn stub_0x65a5b8() -> ! {
-    todo!("0x65a5b8 RBX::SurfaceGetSet<(RBX::NormalId)2,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isWriteOnly(void)const")
+pub fn stub_0x65a5b8() -> bool {
+    // IDA 0x65a5b8: SurfaceGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65a838 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_16LegacyController9InputTypeEED0Ev
@@ -261,36 +267,39 @@ pub fn stub_0x65a838() {
 // 0x65a864 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_16LegacyController9InputTypeEE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::LegacyController::InputType>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_16LegacyController9InputTypeEE10isReadOnlyEv")]
-pub fn stub_0x65a864() -> ! {
-    todo!("0x65a864 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::LegacyController::InputType>::isReadOnly(void)const")
+pub fn stub_0x65a864() {
+    // IDA 0x65a864: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65a874 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_16LegacyController9InputTypeEE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::LegacyController::InputType>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_16LegacyController9InputTypeEE11isWriteOnlyEv")]
-pub fn stub_0x65a874() -> ! {
-    todo!("0x65a874 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::LegacyController::InputType>::isWriteOnly(void)const")
+pub fn stub_0x65a874() {
+    // IDA 0x65a874: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65aa50 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_16LegacyController9InputTypeEE14hasStringValueEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::LegacyController::InputType>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_16LegacyController9InputTypeEE14hasStringValueEv")]
-pub fn stub_0x65aa50() -> ! {
-    todo!("0x65aa50 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::LegacyController::InputType>::hasStringValue(void)const")
+pub fn stub_0x65aa50() -> bool {
+    // IDA 0x65aa50: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x65af4c — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE5ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)5,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE5ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE10isReadOnlyEv")]
-pub fn stub_0x65af4c() -> ! {
-    todo!("0x65af4c RBX::SurfaceGetSet<(RBX::NormalId)5,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isReadOnly(void)const")
+pub fn stub_0x65af4c() -> bool {
+    // IDA 0x65af4c: SurfaceGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65af50 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE5ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)5,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE5ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE11isWriteOnlyEv")]
-pub fn stub_0x65af50() -> ! {
-    todo!("0x65af50 RBX::SurfaceGetSet<(RBX::NormalId)5,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isWriteOnly(void)const")
+pub fn stub_0x65af50() -> bool {
+    // IDA 0x65af50: SurfaceGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65b044 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_11SurfaceTypeEED0Ev
@@ -303,36 +312,39 @@ pub fn stub_0x65b044() {
 // 0x65b070 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_11SurfaceTypeEE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::SurfaceType>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_11SurfaceTypeEE10isReadOnlyEv")]
-pub fn stub_0x65b070() -> ! {
-    todo!("0x65b070 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::SurfaceType>::isReadOnly(void)const")
+pub fn stub_0x65b070() {
+    // IDA 0x65b070: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65b080 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_11SurfaceTypeEE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::SurfaceType>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_11SurfaceTypeEE11isWriteOnlyEv")]
-pub fn stub_0x65b080() -> ! {
-    todo!("0x65b080 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::SurfaceType>::isWriteOnly(void)const")
+pub fn stub_0x65b080() {
+    // IDA 0x65b080: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65b25c — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_11SurfaceTypeEE14hasStringValueEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::SurfaceType>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_11SurfaceTypeEE14hasStringValueEv")]
-pub fn stub_0x65b25c() -> ! {
-    todo!("0x65b25c RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::SurfaceType>::hasStringValue(void)const")
+pub fn stub_0x65b25c() -> bool {
+    // IDA 0x65b25c: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x65b758 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE5ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)5,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE5ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE10isReadOnlyEv")]
-pub fn stub_0x65b758() -> ! {
-    todo!("0x65b758 RBX::SurfaceGetSet<(RBX::NormalId)5,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isReadOnly(void)const")
+pub fn stub_0x65b758() -> bool {
+    // IDA 0x65b758: SurfaceGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65b75c — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE5ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)5,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE5ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE11isWriteOnlyEv")]
-pub fn stub_0x65b75c() -> ! {
-    todo!("0x65b75c RBX::SurfaceGetSet<(RBX::NormalId)5,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isWriteOnly(void)const")
+pub fn stub_0x65b75c() -> bool {
+    // IDA 0x65b75c: SurfaceGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65b9dc — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_16LegacyController9InputTypeEED0Ev
@@ -345,36 +357,39 @@ pub fn stub_0x65b9dc() {
 // 0x65ba08 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_16LegacyController9InputTypeEE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::LegacyController::InputType>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_16LegacyController9InputTypeEE10isReadOnlyEv")]
-pub fn stub_0x65ba08() -> ! {
-    todo!("0x65ba08 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::LegacyController::InputType>::isReadOnly(void)const")
+pub fn stub_0x65ba08() {
+    // IDA 0x65ba08: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65ba18 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_16LegacyController9InputTypeEE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::LegacyController::InputType>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_16LegacyController9InputTypeEE11isWriteOnlyEv")]
-pub fn stub_0x65ba18() -> ! {
-    todo!("0x65ba18 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::LegacyController::InputType>::isWriteOnly(void)const")
+pub fn stub_0x65ba18() {
+    // IDA 0x65ba18: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65bbf4 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_16LegacyController9InputTypeEE14hasStringValueEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::LegacyController::InputType>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_16LegacyController9InputTypeEE14hasStringValueEv")]
-pub fn stub_0x65bbf4() -> ! {
-    todo!("0x65bbf4 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::LegacyController::InputType>::hasStringValue(void)const")
+pub fn stub_0x65bbf4() -> bool {
+    // IDA 0x65bbf4: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x65c0f0 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE0ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)0,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE0ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE10isReadOnlyEv")]
-pub fn stub_0x65c0f0() -> ! {
-    todo!("0x65c0f0 RBX::SurfaceGetSet<(RBX::NormalId)0,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isReadOnly(void)const")
+pub fn stub_0x65c0f0() -> bool {
+    // IDA 0x65c0f0: SurfaceGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65c0f4 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE0ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)0,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE0ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE11isWriteOnlyEv")]
-pub fn stub_0x65c0f4() -> ! {
-    todo!("0x65c0f4 RBX::SurfaceGetSet<(RBX::NormalId)0,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isWriteOnly(void)const")
+pub fn stub_0x65c0f4() -> bool {
+    // IDA 0x65c0f4: SurfaceGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65c1e8 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_11SurfaceTypeEED0Ev
@@ -387,36 +402,39 @@ pub fn stub_0x65c1e8() {
 // 0x65c214 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_11SurfaceTypeEE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::SurfaceType>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_11SurfaceTypeEE10isReadOnlyEv")]
-pub fn stub_0x65c214() -> ! {
-    todo!("0x65c214 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::SurfaceType>::isReadOnly(void)const")
+pub fn stub_0x65c214() {
+    // IDA 0x65c214: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65c224 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_11SurfaceTypeEE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::SurfaceType>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_11SurfaceTypeEE11isWriteOnlyEv")]
-pub fn stub_0x65c224() -> ! {
-    todo!("0x65c224 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::SurfaceType>::isWriteOnly(void)const")
+pub fn stub_0x65c224() {
+    // IDA 0x65c224: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65c400 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_11SurfaceTypeEE14hasStringValueEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::SurfaceType>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_11SurfaceTypeEE14hasStringValueEv")]
-pub fn stub_0x65c400() -> ! {
-    todo!("0x65c400 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::SurfaceType>::hasStringValue(void)const")
+pub fn stub_0x65c400() -> bool {
+    // IDA 0x65c400: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x65c8fc — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE0ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)0,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE0ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE10isReadOnlyEv")]
-pub fn stub_0x65c8fc() -> ! {
-    todo!("0x65c8fc RBX::SurfaceGetSet<(RBX::NormalId)0,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isReadOnly(void)const")
+pub fn stub_0x65c8fc() -> bool {
+    // IDA 0x65c8fc: SurfaceGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65c900 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE0ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)0,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE0ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE11isWriteOnlyEv")]
-pub fn stub_0x65c900() -> ! {
-    todo!("0x65c900 RBX::SurfaceGetSet<(RBX::NormalId)0,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isWriteOnly(void)const")
+pub fn stub_0x65c900() -> bool {
+    // IDA 0x65c900: SurfaceGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65cb80 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_16LegacyController9InputTypeEED0Ev
@@ -429,36 +447,39 @@ pub fn stub_0x65cb80() {
 // 0x65cbac — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_16LegacyController9InputTypeEE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::LegacyController::InputType>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_16LegacyController9InputTypeEE10isReadOnlyEv")]
-pub fn stub_0x65cbac() -> ! {
-    todo!("0x65cbac RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::LegacyController::InputType>::isReadOnly(void)const")
+pub fn stub_0x65cbac() {
+    // IDA 0x65cbac: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65cbbc — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_16LegacyController9InputTypeEE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::LegacyController::InputType>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_16LegacyController9InputTypeEE11isWriteOnlyEv")]
-pub fn stub_0x65cbbc() -> ! {
-    todo!("0x65cbbc RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::LegacyController::InputType>::isWriteOnly(void)const")
+pub fn stub_0x65cbbc() {
+    // IDA 0x65cbbc: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65cd98 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_16LegacyController9InputTypeEE14hasStringValueEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::LegacyController::InputType>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_16LegacyController9InputTypeEE14hasStringValueEv")]
-pub fn stub_0x65cd98() -> ! {
-    todo!("0x65cd98 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::LegacyController::InputType>::hasStringValue(void)const")
+pub fn stub_0x65cd98() -> bool {
+    // IDA 0x65cd98: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x65d294 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE3ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)3,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE3ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE10isReadOnlyEv")]
-pub fn stub_0x65d294() -> ! {
-    todo!("0x65d294 RBX::SurfaceGetSet<(RBX::NormalId)3,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isReadOnly(void)const")
+pub fn stub_0x65d294() -> bool {
+    // IDA 0x65d294: SurfaceGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65d298 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE3ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)3,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE3ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE11isWriteOnlyEv")]
-pub fn stub_0x65d298() -> ! {
-    todo!("0x65d298 RBX::SurfaceGetSet<(RBX::NormalId)3,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isWriteOnly(void)const")
+pub fn stub_0x65d298() -> bool {
+    // IDA 0x65d298: SurfaceGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65d38c — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_11SurfaceTypeEED0Ev
@@ -471,36 +492,39 @@ pub fn stub_0x65d38c() {
 // 0x65d3b8 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_11SurfaceTypeEE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::SurfaceType>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_11SurfaceTypeEE10isReadOnlyEv")]
-pub fn stub_0x65d3b8() -> ! {
-    todo!("0x65d3b8 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::SurfaceType>::isReadOnly(void)const")
+pub fn stub_0x65d3b8() {
+    // IDA 0x65d3b8: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65d3c8 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_11SurfaceTypeEE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::SurfaceType>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_11SurfaceTypeEE11isWriteOnlyEv")]
-pub fn stub_0x65d3c8() -> ! {
-    todo!("0x65d3c8 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::SurfaceType>::isWriteOnly(void)const")
+pub fn stub_0x65d3c8() {
+    // IDA 0x65d3c8: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65d5a4 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_11SurfaceTypeEE14hasStringValueEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::SurfaceType>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_11SurfaceTypeEE14hasStringValueEv")]
-pub fn stub_0x65d5a4() -> ! {
-    todo!("0x65d5a4 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::SurfaceType>::hasStringValue(void)const")
+pub fn stub_0x65d5a4() -> bool {
+    // IDA 0x65d5a4: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x65daa0 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE3ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)3,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE3ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE10isReadOnlyEv")]
-pub fn stub_0x65daa0() -> ! {
-    todo!("0x65daa0 RBX::SurfaceGetSet<(RBX::NormalId)3,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isReadOnly(void)const")
+pub fn stub_0x65daa0() -> bool {
+    // IDA 0x65daa0: SurfaceGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65daa4 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE3ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)3,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE3ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE11isWriteOnlyEv")]
-pub fn stub_0x65daa4() -> ! {
-    todo!("0x65daa4 RBX::SurfaceGetSet<(RBX::NormalId)3,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isWriteOnly(void)const")
+pub fn stub_0x65daa4() -> bool {
+    // IDA 0x65daa4: SurfaceGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65dd24 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_16LegacyController9InputTypeEED0Ev
@@ -513,36 +537,39 @@ pub fn stub_0x65dd24() {
 // 0x65dd50 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_16LegacyController9InputTypeEE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::LegacyController::InputType>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_16LegacyController9InputTypeEE10isReadOnlyEv")]
-pub fn stub_0x65dd50() -> ! {
-    todo!("0x65dd50 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::LegacyController::InputType>::isReadOnly(void)const")
+pub fn stub_0x65dd50() {
+    // IDA 0x65dd50: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65dd60 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_16LegacyController9InputTypeEE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::LegacyController::InputType>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_16LegacyController9InputTypeEE11isWriteOnlyEv")]
-pub fn stub_0x65dd60() -> ! {
-    todo!("0x65dd60 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::LegacyController::InputType>::isWriteOnly(void)const")
+pub fn stub_0x65dd60() {
+    // IDA 0x65dd60: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65df3c — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_16LegacyController9InputTypeEE14hasStringValueEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::LegacyController::InputType>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_16LegacyController9InputTypeEE14hasStringValueEv")]
-pub fn stub_0x65df3c() -> ! {
-    todo!("0x65df3c RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::LegacyController::InputType>::hasStringValue(void)const")
+pub fn stub_0x65df3c() -> bool {
+    // IDA 0x65df3c: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x65e438 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE4ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)4,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE4ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE10isReadOnlyEv")]
-pub fn stub_0x65e438() -> ! {
-    todo!("0x65e438 RBX::SurfaceGetSet<(RBX::NormalId)4,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isReadOnly(void)const")
+pub fn stub_0x65e438() -> bool {
+    // IDA 0x65e438: SurfaceGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65e43c — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE4ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)4,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE4ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE11isWriteOnlyEv")]
-pub fn stub_0x65e43c() -> ! {
-    todo!("0x65e43c RBX::SurfaceGetSet<(RBX::NormalId)4,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isWriteOnly(void)const")
+pub fn stub_0x65e43c() -> bool {
+    // IDA 0x65e43c: SurfaceGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65e530 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_11SurfaceTypeEED0Ev
@@ -555,36 +582,39 @@ pub fn stub_0x65e530() {
 // 0x65e55c — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_11SurfaceTypeEE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::SurfaceType>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_11SurfaceTypeEE10isReadOnlyEv")]
-pub fn stub_0x65e55c() -> ! {
-    todo!("0x65e55c RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::SurfaceType>::isReadOnly(void)const")
+pub fn stub_0x65e55c() {
+    // IDA 0x65e55c: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65e56c — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_11SurfaceTypeEE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::SurfaceType>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_11SurfaceTypeEE11isWriteOnlyEv")]
-pub fn stub_0x65e56c() -> ! {
-    todo!("0x65e56c RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::SurfaceType>::isWriteOnly(void)const")
+pub fn stub_0x65e56c() {
+    // IDA 0x65e56c: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65e748 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_11SurfaceTypeEE14hasStringValueEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::SurfaceType>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_11SurfaceTypeEE14hasStringValueEv")]
-pub fn stub_0x65e748() -> ! {
-    todo!("0x65e748 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::SurfaceType>::hasStringValue(void)const")
+pub fn stub_0x65e748() -> bool {
+    // IDA 0x65e748: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x65ec44 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE4ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)4,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE4ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE10isReadOnlyEv")]
-pub fn stub_0x65ec44() -> ! {
-    todo!("0x65ec44 RBX::SurfaceGetSet<(RBX::NormalId)4,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isReadOnly(void)const")
+pub fn stub_0x65ec44() -> bool {
+    // IDA 0x65ec44: SurfaceGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65ec48 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE4ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)4,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE4ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE11isWriteOnlyEv")]
-pub fn stub_0x65ec48() -> ! {
-    todo!("0x65ec48 RBX::SurfaceGetSet<(RBX::NormalId)4,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isWriteOnly(void)const")
+pub fn stub_0x65ec48() -> bool {
+    // IDA 0x65ec48: SurfaceGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65eec8 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_16LegacyController9InputTypeEED0Ev
@@ -597,36 +627,39 @@ pub fn stub_0x65eec8() {
 // 0x65eef4 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_16LegacyController9InputTypeEE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::LegacyController::InputType>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_16LegacyController9InputTypeEE10isReadOnlyEv")]
-pub fn stub_0x65eef4() -> ! {
-    todo!("0x65eef4 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::LegacyController::InputType>::isReadOnly(void)const")
+pub fn stub_0x65eef4() {
+    // IDA 0x65eef4: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65ef04 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_16LegacyController9InputTypeEE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::LegacyController::InputType>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_16LegacyController9InputTypeEE11isWriteOnlyEv")]
-pub fn stub_0x65ef04() -> ! {
-    todo!("0x65ef04 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::LegacyController::InputType>::isWriteOnly(void)const")
+pub fn stub_0x65ef04() {
+    // IDA 0x65ef04: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65f0e0 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_16LegacyController9InputTypeEE14hasStringValueEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::LegacyController::InputType>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_16LegacyController9InputTypeEE14hasStringValueEv")]
-pub fn stub_0x65f0e0() -> ! {
-    todo!("0x65f0e0 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::LegacyController::InputType>::hasStringValue(void)const")
+pub fn stub_0x65f0e0() -> bool {
+    // IDA 0x65f0e0: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x65f5dc — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE1ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE1ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE10isReadOnlyEv")]
-pub fn stub_0x65f5dc() -> ! {
-    todo!("0x65f5dc RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isReadOnly(void)const")
+pub fn stub_0x65f5dc() -> bool {
+    // IDA 0x65f5dc: SurfaceGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65f5e0 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE1ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE1ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE11isWriteOnlyEv")]
-pub fn stub_0x65f5e0() -> ! {
-    todo!("0x65f5e0 RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::LegacyController::InputType,RBX::LegacyController::InputType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::LegacyController::InputType)>::isWriteOnly(void)const")
+pub fn stub_0x65f5e0() -> bool {
+    // IDA 0x65f5e0: SurfaceGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65f6d4 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEED0Ev
@@ -639,36 +672,39 @@ pub fn stub_0x65f6d4() {
 // 0x65f700 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE10isReadOnlyEv")]
-pub fn stub_0x65f700() -> ! {
-    todo!("0x65f700 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::isReadOnly(void)const")
+pub fn stub_0x65f700() {
+    // IDA 0x65f700: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65f710 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE11isWriteOnlyEv")]
-pub fn stub_0x65f710() -> ! {
-    todo!("0x65f710 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::isWriteOnly(void)const")
+pub fn stub_0x65f710() {
+    // IDA 0x65f710: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x65f8ec — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE14hasStringValueEv
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE14hasStringValueEv")]
-pub fn stub_0x65f8ec() -> ! {
-    todo!("0x65f8ec RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::hasStringValue(void)const")
+pub fn stub_0x65f8ec() -> bool {
+    // IDA 0x65f8ec: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x65fde8 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE1ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE10isReadOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE1ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE10isReadOnlyEv")]
-pub fn stub_0x65fde8() -> ! {
-    todo!("0x65fde8 RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isReadOnly(void)const")
+pub fn stub_0x65fde8() -> bool {
+    // IDA 0x65fde8: SurfaceGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65fdec — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE1ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE11isWriteOnlyEv
 #[doc(alias = "RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX13SurfaceGetSetILNS_8NormalIdE1ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE11isWriteOnlyEv")]
-pub fn stub_0x65fdec() -> ! {
-    todo!("0x65fdec RBX::SurfaceGetSet<(RBX::NormalId)1,RBX::SurfaceType,RBX::SurfaceType (RBX::PartInstance::*)(RBX::NormalId)const,void (RBX::PartInstance::*)(RBX::NormalId,RBX::SurfaceType)>::isWriteOnly(void)const")
+pub fn stub_0x65fdec() -> bool {
+    // IDA 0x65fdec: SurfaceGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65fe34 — __ZN3rbx8any_castIN3RBX16LegacyController9InputTypeENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE

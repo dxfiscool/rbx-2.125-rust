@@ -58,16 +58,18 @@ pub fn stub_0x8e7a64() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ContextActionService,bool>::GetSetImpl<bool (RBX::ContextActionService::*)(void)const,void (RBX::ContextActionService::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_20ContextActionServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_0x8e7a90() -> ! {
-    todo!("0x8e7a90 __ZNK3RBX10Reflection14PropDescriptorINS_20ContextActionServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")
+pub fn stub_0x8e7a90() -> bool {
+    // IDA 0x8e7a90: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x8e7a94 — __ZNK3RBX10Reflection14PropDescriptorINS_20ContextActionServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ContextActionService,bool>::GetSetImpl<bool (RBX::ContextActionService::*)(void)const,void (RBX::ContextActionService::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_20ContextActionServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_0x8e7a94() -> ! {
-    todo!("0x8e7a94 __ZNK3RBX10Reflection14PropDescriptorINS_20ContextActionServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")
+pub fn stub_0x8e7a94() -> bool {
+    // IDA 0x8e7a94: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x8e7a98 — __ZNK3RBX10Reflection14PropDescriptorINS_20ContextActionServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE

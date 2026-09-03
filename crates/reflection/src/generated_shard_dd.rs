@@ -8,14 +8,14 @@ use rbx_core::SharedPtr;
 
 // 0x294014 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_15ProtectedStringEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::isReadOnly(void)const")]
-pub fn stub_294014() -> ! {
-    todo!("0x294014 __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_15ProtectedStringEE10isReadOnlyEv")
+pub fn stub_294014() {
+    // IDA 0x294014: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x294024 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_15ProtectedStringEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::isWriteOnly(void)const")]
-pub fn stub_294024() -> ! {
-    todo!("0x294024 __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_15ProtectedStringEE11isWriteOnlyEv")
+pub fn stub_294024() {
+    // IDA 0x294024: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x294034 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_15ProtectedStringEE11equalValuesEPKNS0_13DescribedBaseES6_
@@ -56,14 +56,16 @@ pub fn stub_294954() {
 
 // 0x294980 — __ZNK3RBX10Reflection14PropDescriptorINS_6ScriptENS_15ProtectedStringEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::GetSetImpl<RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&)>::isReadOnly(void)const")]
-pub fn stub_294980() -> ! {
-    todo!("0x294980 __ZNK3RBX10Reflection14PropDescriptorINS_6ScriptENS_15ProtectedStringEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE10isReadOnlyEv")
+pub fn stub_294980() -> bool {
+    // IDA 0x294980: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x294984 — __ZNK3RBX10Reflection14PropDescriptorINS_6ScriptENS_15ProtectedStringEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::GetSetImpl<RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&)>::isWriteOnly(void)const")]
-pub fn stub_294984() -> ! {
-    todo!("0x294984 __ZNK3RBX10Reflection14PropDescriptorINS_6ScriptENS_15ProtectedStringEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE11isWriteOnlyEv")
+pub fn stub_294984() -> bool {
+    // IDA 0x294984: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x294988 — __ZNK3RBX10Reflection14PropDescriptorINS_6ScriptENS_15ProtectedStringEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE8getValueEPKNS0_13DescribedBaseE
@@ -548,14 +550,16 @@ pub fn stub_3e6488() -> ! {
 
 // 0x3e661c — __ZNK3RBX10Reflection9BoundPropINS_10BrickColorELNS0_10MutabilityE1EE15BoundPropGetSetINS_4SkinEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<RBX::BrickColor,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Skin>::isReadOnly(void)const")]
-pub fn stub_3e661c() -> ! {
-    todo!("0x3e661c __ZNK3RBX10Reflection9BoundPropINS_10BrickColorELNS0_10MutabilityE1EE15BoundPropGetSetINS_4SkinEE10isReadOnlyEv")
+pub fn stub_3e661c() -> bool {
+    // IDA 0x3e661c: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x3e6620 — __ZNK3RBX10Reflection9BoundPropINS_10BrickColorELNS0_10MutabilityE1EE15BoundPropGetSetINS_4SkinEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<RBX::BrickColor,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Skin>::isWriteOnly(void)const")]
-pub fn stub_3e6620() -> ! {
-    todo!("0x3e6620 __ZNK3RBX10Reflection9BoundPropINS_10BrickColorELNS0_10MutabilityE1EE15BoundPropGetSetINS_4SkinEE11isWriteOnlyEv")
+pub fn stub_3e6620() -> bool {
+    // IDA 0x3e6620: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x3e6624 — __ZNK3RBX10Reflection9BoundPropINS_10BrickColorELNS0_10MutabilityE1EE15BoundPropGetSetINS_4SkinEE8getValueEPKNS0_13DescribedBaseE
@@ -578,14 +582,16 @@ pub fn stub_3e7540() -> ! {
 
 // 0x3e7680 — __ZNK3RBX10Reflection14PropDescriptorINS_5PantsENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Pants,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::Pants::*)(void)const,void (RBX::Pants::*)(RBX::TextureId)>::isReadOnly(void)const")]
-pub fn stub_3e7680() -> ! {
-    todo!("0x3e7680 __ZNK3RBX10Reflection14PropDescriptorINS_5PantsENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_3e7680() -> bool {
+    // IDA 0x3e7680: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x3e7684 — __ZNK3RBX10Reflection14PropDescriptorINS_5PantsENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Pants,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::Pants::*)(void)const,void (RBX::Pants::*)(RBX::TextureId)>::isWriteOnly(void)const")]
-pub fn stub_3e7684() -> ! {
-    todo!("0x3e7684 __ZNK3RBX10Reflection14PropDescriptorINS_5PantsENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+pub fn stub_3e7684() -> bool {
+    // IDA 0x3e7684: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x3e7688 — __ZNK3RBX10Reflection14PropDescriptorINS_5PantsENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE

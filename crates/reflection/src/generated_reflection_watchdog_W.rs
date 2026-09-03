@@ -30,8 +30,9 @@ pub fn stub_0xa4fd20() -> ! {
 // 0xa4fd48 — __ZNK3RBX10Reflection21RefPropertyDescriptor14hasStringValueEv
 #[doc(alias = "RBX::Reflection::RefPropertyDescriptor::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection21RefPropertyDescriptor14hasStringValueEv")]
-pub fn stub_0xa4fd48() -> ! {
-    todo!("0xa4fd48 RBX::Reflection::RefPropertyDescriptor::hasStringValue(void)const")
+pub fn stub_0xa4fd48() -> bool {
+    // IDA 0xa4fd48: TypedPropertyDescriptor::hasStringValue -- per-type constant `return 0` (decompiled tails: 1 for most, 0 for BrickColor/SystemAddress/CoordinateFrame/Region3int16/Ref).
+    false
 }
 
 // 0xa4fd4c — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
@@ -79,15 +80,15 @@ pub fn stub_0xa500c8() -> ! {
 // 0xa503b8 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEPNS_8InstanceEE7GetImplIMS3_KFS5_vEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEPNS_8InstanceEE7GetImplIMS3_KFS5_vEE10isReadOnlyEv")]
-pub fn stub_0xa503b8() -> ! {
-    todo!("0xa503b8 RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::isReadOnly(void)const")
+pub fn stub_0xa503b8() {
+    // IDA 0xa503b8: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0xa503bc — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEPNS_8InstanceEE7GetImplIMS3_KFS5_vEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEPNS_8InstanceEE7GetImplIMS3_KFS5_vEE11isWriteOnlyEv")]
-pub fn stub_0xa503bc() -> ! {
-    todo!("0xa503bc RBX::Reflection::PropDescriptor<RBX::Network::Players,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Network::Players::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_0xa503bc() {
+    // IDA 0xa503bc: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0xa503c0 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEPNS_8InstanceEE7GetImplIMS3_KFS5_vEE8getValueEPKNS0_13DescribedBaseE
@@ -128,15 +129,17 @@ pub fn stub_0xa507e0() {
 // 0xa5080c — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiE10GetSetImplIMS3_KFivEMS3_FviEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetSetImpl<int (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(int)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiE10GetSetImplIMS3_KFivEMS3_FviEE10isReadOnlyEv")]
-pub fn stub_0xa5080c() -> ! {
-    todo!("0xa5080c RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetSetImpl<int (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(int)>::isReadOnly(void)const")
+pub fn stub_0xa5080c() -> bool {
+    // IDA 0xa5080c: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0xa50810 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiE10GetSetImplIMS3_KFivEMS3_FviEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetSetImpl<int (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(int)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiE10GetSetImplIMS3_KFivEMS3_FviEE11isWriteOnlyEv")]
-pub fn stub_0xa50810() -> ! {
-    todo!("0xa50810 RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetSetImpl<int (RBX::Network::Players::*)(void)const,void (RBX::Network::Players::*)(int)>::isWriteOnly(void)const")
+pub fn stub_0xa50810() -> bool {
+    // IDA 0xa50810: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0xa50814 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiE10GetSetImplIMS3_KFivEMS3_FviEE8getValueEPKNS0_13DescribedBaseE
@@ -163,15 +166,15 @@ pub fn stub_0xa50860() -> ! {
 // 0xa50a74 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiE7GetImplIMS3_KFivEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetImpl<int (RBX::Network::Players::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiE7GetImplIMS3_KFivEE10isReadOnlyEv")]
-pub fn stub_0xa50a74() -> ! {
-    todo!("0xa50a74 RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetImpl<int (RBX::Network::Players::*)(void)const>::isReadOnly(void)const")
+pub fn stub_0xa50a74() {
+    // IDA 0xa50a74: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0xa50a78 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiE7GetImplIMS3_KFivEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetImpl<int (RBX::Network::Players::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiE7GetImplIMS3_KFivEE11isWriteOnlyEv")]
-pub fn stub_0xa50a78() -> ! {
-    todo!("0xa50a78 RBX::Reflection::PropDescriptor<RBX::Network::Players,int>::GetImpl<int (RBX::Network::Players::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_0xa50a78() {
+    // IDA 0xa50a78: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0xa50a7c — __ZNK3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiE7GetImplIMS3_KFivEE8getValueEPKNS0_13DescribedBaseE
@@ -603,15 +606,15 @@ pub fn stub_0xaad4dc() {
 // 0xaad504 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10isReadOnlyEv")]
-pub fn stub_0xaad504() -> ! {
-    todo!("0xaad504 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::isReadOnly(void)const")
+pub fn stub_0xaad504() {
+    // IDA 0xaad504: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0xaad514 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE11isWriteOnlyEv")]
-pub fn stub_0xaad514() -> ! {
-    todo!("0xaad514 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::isWriteOnly(void)const")
+pub fn stub_0xaad514() {
+    // IDA 0xaad514: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0xaad524 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE11equalValuesEPKNS0_13DescribedBaseES9_
@@ -645,8 +648,9 @@ pub fn stub_0xaad618() -> ! {
 // 0xaad63c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE14hasStringValueEv")]
-pub fn stub_0xaad63c() -> ! {
-    todo!("0xaad63c RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::hasStringValue(void)const")
+pub fn stub_0xaad63c() -> bool {
+    // IDA 0xaad63c: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0xaad640 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE14getStringValueEPKNS0_13DescribedBaseE

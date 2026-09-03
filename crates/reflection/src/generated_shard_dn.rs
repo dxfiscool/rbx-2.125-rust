@@ -72,15 +72,15 @@ pub fn stub_25e1a8() {
 // 0x25e1d4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE10isReadOnlyEv")]
-pub fn stub_25e1d4() -> ! {
-    todo!("0x25e1d4 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::isReadOnly(void)const")
+pub fn stub_25e1d4() {
+    // IDA 0x25e1d4: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x25e1e4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE11isWriteOnlyEv")]
-pub fn stub_25e1e4() -> ! {
-    todo!("0x25e1e4 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::isWriteOnly(void)const")
+pub fn stub_25e1e4() {
+    // IDA 0x25e1e4: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x25e1f4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE11equalValuesEPKNS0_13DescribedBaseES7_
@@ -114,8 +114,9 @@ pub fn stub_25e38c() -> ! {
 // 0x25e3b0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE14hasStringValueEv")]
-pub fn stub_25e3b0() -> ! {
-    todo!("0x25e3b0 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::hasStringValue(void)const")
+pub fn stub_25e3b0() -> bool {
+    // IDA 0x25e3b0: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x25e3b4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE14getStringValueEPKNS0_13DescribedBaseE
@@ -207,15 +208,17 @@ pub fn stub_25e7e0() -> ! {
 // 0x25e820 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_25e820() -> ! {
-    todo!("0x25e820 RBX::Reflection::PropDescriptor<RBX::SpotLight,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>::isReadOnly(void)const")
+pub fn stub_25e820() -> bool {
+    // IDA 0x25e820: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x25e824 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_25e824() -> ! {
-    todo!("0x25e824 RBX::Reflection::PropDescriptor<RBX::SpotLight,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>::isWriteOnly(void)const")
+pub fn stub_25e824() -> bool {
+    // IDA 0x25e824: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x25e828 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -249,15 +252,17 @@ pub fn stub_25e980() {
 // 0x25e9ac — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv")]
-pub fn stub_25e9ac() -> ! {
-    todo!("0x25e9ac RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::isReadOnly(void)const")
+pub fn stub_25e9ac() -> bool {
+    // IDA 0x25e9ac: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x25e9b0 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv")]
-pub fn stub_25e9b0() -> ! {
-    todo!("0x25e9b0 RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::isWriteOnly(void)const")
+pub fn stub_25e9b0() -> bool {
+    // IDA 0x25e9b0: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x25e9b4 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
@@ -291,15 +296,17 @@ pub fn stub_25eb0c() {
 // 0x25eb38 — __ZNK3RBX10Reflection14PropDescriptorINS_10PointLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10PointLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv")]
-pub fn stub_25eb38() -> ! {
-    todo!("0x25eb38 RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::isReadOnly(void)const")
+pub fn stub_25eb38() -> bool {
+    // IDA 0x25eb38: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x25eb3c — __ZNK3RBX10Reflection14PropDescriptorINS_10PointLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10PointLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv")]
-pub fn stub_25eb3c() -> ! {
-    todo!("0x25eb3c RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::isWriteOnly(void)const")
+pub fn stub_25eb3c() -> bool {
+    // IDA 0x25eb3c: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x25eb40 — __ZNK3RBX10Reflection14PropDescriptorINS_10PointLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
@@ -333,15 +340,17 @@ pub fn stub_25ec98() {
 // 0x25ecc4 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5LightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv")]
-pub fn stub_25ecc4() -> ! {
-    todo!("0x25ecc4 RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::isReadOnly(void)const")
+pub fn stub_25ecc4() -> bool {
+    // IDA 0x25ecc4: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x25ecc8 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5LightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv")]
-pub fn stub_25ecc8() -> ! {
-    todo!("0x25ecc8 RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::isWriteOnly(void)const")
+pub fn stub_25ecc8() -> bool {
+    // IDA 0x25ecc8: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x25eccc — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
@@ -375,15 +384,17 @@ pub fn stub_25ee24() {
 // 0x25ee50 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_25ee50() -> ! {
-    todo!("0x25ee50 RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::isReadOnly(void)const")
+pub fn stub_25ee50() -> bool {
+    // IDA 0x25ee50: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x25ee54 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_25ee54() -> ! {
-    todo!("0x25ee54 RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::isWriteOnly(void)const")
+pub fn stub_25ee54() -> bool {
+    // IDA 0x25ee54: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x25ee58 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -417,15 +428,17 @@ pub fn stub_25efd0() {
 // 0x25effc — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5LightEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_25effc() -> ! {
-    todo!("0x25effc RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::isReadOnly(void)const")
+pub fn stub_25effc() -> bool {
+    // IDA 0x25effc: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x25f000 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_5LightEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_25f000() -> ! {
-    todo!("0x25f000 RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_25f000() -> bool {
+    // IDA 0x25f000: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x25f004 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
@@ -487,8 +500,9 @@ pub fn stub_25f810() {
 // 0x25f838 — __ZNK3RBX10Reflection15EventDescriptor12isScriptableEv
 #[doc(alias = "RBX::Reflection::EventDescriptor::isScriptable(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection15EventDescriptor12isScriptableEv")]
-pub fn stub_25f838() -> ! {
-    todo!("0x25f838 RBX::Reflection::EventDescriptor::isScriptable(void)const")
+pub fn stub_25f838() -> bool {
+    // IDA 0x25f838: EventDescriptor::isScriptable -- hardcoded `return 1` (decompiled 0x25f838).
+    true
 }
 
 // 0x25f840 — __ZNK3RBX10Reflection15EventDescriptor9sendEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaIS5_EE

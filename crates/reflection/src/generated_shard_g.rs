@@ -12,14 +12,16 @@ pub fn stub_0x66ef18() {
 
 // 0x66ef44 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,float>::GetSetImpl<float (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(float)>::isReadOnly(void)const")]
-pub fn stub_0x66ef44() -> ! {
-    todo!("0x66ef44 RBX::Reflection::PropDescriptor<RBX::TextBox,float>::GetSetImpl<float (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(float)>::isReadOnly(void)const")
+pub fn stub_0x66ef44() -> bool {
+    // IDA 0x66ef44: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x66ef48 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,float>::GetSetImpl<float (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(float)>::isWriteOnly(void)const")]
-pub fn stub_0x66ef48() -> ! {
-    todo!("0x66ef48 RBX::Reflection::PropDescriptor<RBX::TextBox,float>::GetSetImpl<float (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(float)>::isWriteOnly(void)const")
+pub fn stub_0x66ef48() -> bool {
+    // IDA 0x66ef48: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x66ef4c — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
@@ -48,14 +50,16 @@ pub fn stub_0x66f0b0() {
 
 // 0x66f0dc — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(G3D::Color3)>::isReadOnly(void)const")]
-pub fn stub_0x66f0dc() -> ! {
-    todo!("0x66f0dc RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(G3D::Color3)>::isReadOnly(void)const")
+pub fn stub_0x66f0dc() -> bool {
+    // IDA 0x66f0dc: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x66f0e0 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(G3D::Color3)>::isWriteOnly(void)const")]
-pub fn stub_0x66f0e0() -> ! {
-    todo!("0x66f0e0 RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(G3D::Color3)>::isWriteOnly(void)const")
+pub fn stub_0x66f0e0() -> bool {
+    // IDA 0x66f0e0: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x66f0e4 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -84,14 +88,16 @@ pub fn stub_0x66f26c() {
 
 // 0x66f298 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::BrickColor)>::isReadOnly(void)const")]
-pub fn stub_0x66f298() -> ! {
-    todo!("0x66f298 RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::BrickColor)>::isReadOnly(void)const")
+pub fn stub_0x66f298() -> bool {
+    // IDA 0x66f298: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x66f29c — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::BrickColor)>::isWriteOnly(void)const")]
-pub fn stub_0x66f29c() -> ! {
-    todo!("0x66f29c RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::BrickColor)>::isWriteOnly(void)const")
+pub fn stub_0x66f29c() -> bool {
+    // IDA 0x66f29c: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x66f2a0 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -120,14 +126,14 @@ pub fn stub_0x66f4b0() {
 
 // 0x66f4dc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::isReadOnly(void)const")]
-pub fn stub_0x66f4dc() -> ! {
-    todo!("0x66f4dc RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::isReadOnly(void)const")
+pub fn stub_0x66f4dc() {
+    // IDA 0x66f4dc: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x66f4ec — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::isWriteOnly(void)const")]
-pub fn stub_0x66f4ec() -> ! {
-    todo!("0x66f4ec RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::isWriteOnly(void)const")
+pub fn stub_0x66f4ec() {
+    // IDA 0x66f4ec: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x66f4fc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE11equalValuesEPKNS0_13DescribedBaseES8_
@@ -156,8 +162,9 @@ pub fn stub_0x66f694() -> ! {
 
 // 0x66f6b8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::hasStringValue(void)const")]
-pub fn stub_0x66f6b8() -> ! {
-    todo!("0x66f6b8 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::Font>::hasStringValue(void)const")
+pub fn stub_0x66f6b8() -> bool {
+    // IDA 0x66f6b8: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x66f6bc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE14getStringValueEPKNS0_13DescribedBaseE
@@ -264,14 +271,16 @@ pub fn stub_0x66fc70(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
 
 // 0x66fe10 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::Font)>::isReadOnly(void)const")]
-pub fn stub_0x66fe10() -> ! {
-    todo!("0x66fe10 RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::Font)>::isReadOnly(void)const")
+pub fn stub_0x66fe10() -> bool {
+    // IDA 0x66fe10: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x66fe14 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::Font)>::isWriteOnly(void)const")]
-pub fn stub_0x66fe14() -> ! {
-    todo!("0x66fe14 RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::Font)>::isWriteOnly(void)const")
+pub fn stub_0x66fe14() -> bool {
+    // IDA 0x66fe14: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x66fe18 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -367,14 +376,14 @@ pub fn stub_0x670734() {
 
 // 0x670760 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::isReadOnly(void)const")]
-pub fn stub_0x670760() -> ! {
-    todo!("0x670760 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::isReadOnly(void)const")
+pub fn stub_0x670760() {
+    // IDA 0x670760: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x670770 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::isWriteOnly(void)const")]
-pub fn stub_0x670770() -> ! {
-    todo!("0x670770 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::isWriteOnly(void)const")
+pub fn stub_0x670770() {
+    // IDA 0x670770: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x670780 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE11equalValuesEPKNS0_13DescribedBaseES8_
@@ -403,8 +412,9 @@ pub fn stub_0x670918() -> ! {
 
 // 0x67093c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::hasStringValue(void)const")]
-pub fn stub_0x67093c() -> ! {
-    todo!("0x67093c RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::hasStringValue(void)const")
+pub fn stub_0x67093c() -> bool {
+    // IDA 0x67093c: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x670940 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE14getStringValueEPKNS0_13DescribedBaseE
@@ -511,14 +521,16 @@ pub fn stub_0x670ef4(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
 
 // 0x671094 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::FontSize)>::isReadOnly(void)const")]
-pub fn stub_0x671094() -> ! {
-    todo!("0x671094 RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::FontSize)>::isReadOnly(void)const")
+pub fn stub_0x671094() -> bool {
+    // IDA 0x671094: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x671098 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::FontSize)>::isWriteOnly(void)const")]
-pub fn stub_0x671098() -> ! {
-    todo!("0x671098 RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::FontSize)>::isWriteOnly(void)const")
+pub fn stub_0x671098() -> bool {
+    // IDA 0x671098: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x67109c — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -614,14 +626,16 @@ pub fn stub_0x671918() {
 
 // 0x671944 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(std::string)>::isReadOnly(void)const")]
-pub fn stub_0x671944() -> ! {
-    todo!("0x671944 RBX::Reflection::PropDescriptor<RBX::TextBox,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(std::string)>::isReadOnly(void)const")
+pub fn stub_0x671944() -> bool {
+    // IDA 0x671944: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x671948 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(std::string)>::isWriteOnly(void)const")]
-pub fn stub_0x671948() -> ! {
-    todo!("0x671948 RBX::Reflection::PropDescriptor<RBX::TextBox,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(std::string)>::isWriteOnly(void)const")
+pub fn stub_0x671948() -> bool {
+    // IDA 0x671948: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x67194c — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8getValueEPKNS0_13DescribedBaseE
@@ -693,14 +707,16 @@ pub fn stub_0x6720cc() -> ! {
 
 // 0x6721e0 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetSetImpl<bool (RBX::TextBox::*)(void)const,void (RBX::TextBox::*)(bool)>::isReadOnly(void)const")]
-pub fn stub_0x6721e0() -> ! {
-    todo!("0x6721e0 RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetSetImpl<bool (RBX::TextBox::*)(void)const,void (RBX::TextBox::*)(bool)>::isReadOnly(void)const")
+pub fn stub_0x6721e0() -> bool {
+    // IDA 0x6721e0: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x6721e4 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetSetImpl<bool (RBX::TextBox::*)(void)const,void (RBX::TextBox::*)(bool)>::isWriteOnly(void)const")]
-pub fn stub_0x6721e4() -> ! {
-    todo!("0x6721e4 RBX::Reflection::PropDescriptor<RBX::TextBox,bool>::GetSetImpl<bool (RBX::TextBox::*)(void)const,void (RBX::TextBox::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_0x6721e4() -> bool {
+    // IDA 0x6721e4: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x6721e8 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE

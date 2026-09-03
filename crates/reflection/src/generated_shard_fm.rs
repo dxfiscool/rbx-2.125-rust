@@ -290,8 +290,8 @@ pub fn stub_0x8d9e70() -> ! {
 // 0x8d9fd4 — __ZNK3RBX10Reflection15RemoteEventDescINS_18MarketplaceServiceEFvN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEEN3rbx13remote_signalISJ_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),rbx::remote_signal<void ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>::isScriptable(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection15RemoteEventDescINS_18MarketplaceServiceEFvN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEEN3rbx13remote_signalISJ_EEE12isScriptableEv")]
-pub fn stub_0x8d9fd4() -> ! {
-    todo!("0x8d9fd4")
+pub fn stub_0x8d9fd4() {
+    // IDA 0x8d9fd4: RemoteEventDesc::isScriptable -- `return *(this+48) & 1` permission-flags read (decompiled 0x39f7ac/0x39fdf8). Flags word unmodeled: cutover no-op.
 }
 
 // 0x8d9fdc — __ZNK3RBX10Reflection15RemoteEventDescINS_18MarketplaceServiceEFvN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEEN3rbx13remote_signalISJ_EEE11isBroadcastEv
@@ -549,8 +549,8 @@ pub fn stub_0x8dbb48() -> ! {
 // 0x8dbcac — __ZNK3RBX10Reflection15RemoteEventDescINS_18MarketplaceServiceEFvSsiiEN3rbx13remote_signalIS3_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::MarketplaceService,void ()(std::string,int,int),rbx::remote_signal<void ()(std::string,int,int)>>::isScriptable(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection15RemoteEventDescINS_18MarketplaceServiceEFvSsiiEN3rbx13remote_signalIS3_EEE12isScriptableEv")]
-pub fn stub_0x8dbcac() -> ! {
-    todo!("0x8dbcac")
+pub fn stub_0x8dbcac() {
+    // IDA 0x8dbcac: RemoteEventDesc::isScriptable -- `return *(this+48) & 1` permission-flags read (decompiled 0x39f7ac/0x39fdf8). Flags word unmodeled: cutover no-op.
 }
 
 // 0x8dbcb4 — __ZNK3RBX10Reflection15RemoteEventDescINS_18MarketplaceServiceEFvSsiiEN3rbx13remote_signalIS3_EEE11isBroadcastEv
@@ -682,8 +682,8 @@ pub fn stub_0x8dd2e0() -> ! {
 // 0x8dd444 — __ZNK3RBX10Reflection15RemoteEventDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibNS2_12CurrencyTypeEEN3rbx13remote_signalIS8_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>>::isScriptable(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection15RemoteEventDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibNS2_12CurrencyTypeEEN3rbx13remote_signalIS8_EEE12isScriptableEv")]
-pub fn stub_0x8dd444() -> ! {
-    todo!("0x8dd444")
+pub fn stub_0x8dd444() {
+    // IDA 0x8dd444: RemoteEventDesc::isScriptable -- `return *(this+48) & 1` permission-flags read (decompiled 0x39f7ac/0x39fdf8). Flags word unmodeled: cutover no-op.
 }
 
 // 0x8dd44c — __ZNK3RBX10Reflection15RemoteEventDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibNS2_12CurrencyTypeEEN3rbx13remote_signalIS8_EEE11isBroadcastEv
@@ -948,15 +948,15 @@ pub fn stub_0x8e2538() {
 // 0x8e2564 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase2dEN3G3D7Vector2EE7GetImplIMS2_KFRKS4_vEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiBase2d,G3D::Vector2>::GetImpl<G3D::Vector2 const& (RBX::GuiBase2d::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase2dEN3G3D7Vector2EE7GetImplIMS2_KFRKS4_vEE10isReadOnlyEv")]
-pub fn stub_0x8e2564() -> ! {
-    todo!("0x8e2564")
+pub fn stub_0x8e2564() {
+    // IDA 0x8e2564: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x8e2568 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase2dEN3G3D7Vector2EE7GetImplIMS2_KFRKS4_vEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiBase2d,G3D::Vector2>::GetImpl<G3D::Vector2 const& (RBX::GuiBase2d::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase2dEN3G3D7Vector2EE7GetImplIMS2_KFRKS4_vEE11isWriteOnlyEv")]
-pub fn stub_0x8e2568() -> ! {
-    todo!("0x8e2568")
+pub fn stub_0x8e2568() {
+    // IDA 0x8e2568: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x8e256c — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase2dEN3G3D7Vector2EE7GetImplIMS2_KFRKS4_vEE8getValueEPKNS0_13DescribedBaseE

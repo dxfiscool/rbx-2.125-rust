@@ -105,8 +105,8 @@ pub fn stub_930270() -> ! {
 // 0x9303d4 — __ZNK3RBX10Reflection15RemoteEventDescINS_14RemoteFunctionEFviN5boost10shared_ptrIKNS0_5TupleEEEEN3rbx13remote_signalIS8_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::RemoteFunction,void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),rbx::remote_signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>::isScriptable(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection15RemoteEventDescINS_14RemoteFunctionEFviN5boost10shared_ptrIKNS0_5TupleEEEEN3rbx13remote_signalIS8_EEE12isScriptableEv")]
-pub fn stub_9303d4() -> ! {
-    todo!("0x9303d4 RBX::Reflection::RemoteEventDesc<RBX::RemoteFunction,void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),rbx::remote_signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>::isScriptable(void)const")
+pub fn stub_9303d4() {
+    // IDA 0x9303d4: RemoteEventDesc::isScriptable -- `return *(this+48) & 1` permission-flags read (decompiled 0x39f7ac/0x39fdf8). Flags word unmodeled: cutover no-op.
 }
 
 // 0x9303dc — __ZNK3RBX10Reflection15RemoteEventDescINS_14RemoteFunctionEFviN5boost10shared_ptrIKNS0_5TupleEEEEN3rbx13remote_signalIS8_EEE11isBroadcastEv
@@ -343,8 +343,8 @@ pub fn stub_931eb0() -> ! {
 // 0x932014 — __ZNK3RBX10Reflection15RemoteEventDescINS_14RemoteFunctionEFviN5boost10shared_ptrINS_8InstanceEEENS4_IKNS0_5TupleEEEEN3rbx13remote_signalISA_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::RemoteFunction,void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),rbx::remote_signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>::isScriptable(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection15RemoteEventDescINS_14RemoteFunctionEFviN5boost10shared_ptrINS_8InstanceEEENS4_IKNS0_5TupleEEEEN3rbx13remote_signalISA_EEE12isScriptableEv")]
-pub fn stub_932014() -> ! {
-    todo!("0x932014 RBX::Reflection::RemoteEventDesc<RBX::RemoteFunction,void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),rbx::remote_signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>::isScriptable(void)const")
+pub fn stub_932014() {
+    // IDA 0x932014: RemoteEventDesc::isScriptable -- `return *(this+48) & 1` permission-flags read (decompiled 0x39f7ac/0x39fdf8). Flags word unmodeled: cutover no-op.
 }
 
 // 0x93201c — __ZNK3RBX10Reflection15RemoteEventDescINS_14RemoteFunctionEFviN5boost10shared_ptrINS_8InstanceEEENS4_IKNS0_5TupleEEEEN3rbx13remote_signalISA_EEE11isBroadcastEv

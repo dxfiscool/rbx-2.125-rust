@@ -14,15 +14,17 @@ pub fn stub_0x6d8394() {
 // 0x6d83a0 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_6CameraEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Workspace,RBX::Camera *>::GetSetImpl<RBX::Camera * (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(RBX::Camera *)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_6CameraEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_0x6d83a0() -> ! {
-    todo!("0x6d83a0 RBX::Reflection::PropDescriptor<RBX::Workspace,RBX::Camera *>::GetSetImpl<RBX::Camera * (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(RBX::Camera *)>::isReadOnly(void)const")
+pub fn stub_0x6d83a0() -> bool {
+    // IDA 0x6d83a0: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x6d83a4 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_6CameraEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Workspace,RBX::Camera *>::GetSetImpl<RBX::Camera * (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(RBX::Camera *)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_6CameraEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_0x6d83a4() -> ! {
-    todo!("0x6d83a4 RBX::Reflection::PropDescriptor<RBX::Workspace,RBX::Camera *>::GetSetImpl<RBX::Camera * (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(RBX::Camera *)>::isWriteOnly(void)const")
+pub fn stub_0x6d83a4() -> bool {
+    // IDA 0x6d83a4: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x6d83a8 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_6CameraEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -126,15 +128,15 @@ pub fn stub_0x6d89d4() {
 // 0x6d8a04 — __ZNK3RBX10Reflection17RefPropDescriptorINS_9WorkspaceENS_8InstanceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Instance>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_9WorkspaceENS_8InstanceEE10isReadOnlyEv")]
-pub fn stub_0x6d8a04() -> ! {
-    todo!("0x6d8a04 RBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Instance>::isReadOnly(void)const")
+pub fn stub_0x6d8a04() {
+    // IDA 0x6d8a04: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x6d8a14 — __ZNK3RBX10Reflection17RefPropDescriptorINS_9WorkspaceENS_8InstanceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Instance>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_9WorkspaceENS_8InstanceEE11isWriteOnlyEv")]
-pub fn stub_0x6d8a14() -> ! {
-    todo!("0x6d8a14 RBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Instance>::isWriteOnly(void)const")
+pub fn stub_0x6d8a14() {
+    // IDA 0x6d8a14: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x6d8a24 — __ZNK3RBX10Reflection17RefPropDescriptorINS_9WorkspaceENS_8InstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
@@ -217,15 +219,15 @@ pub fn stub_0x6d8ed8() {
 // 0x6d8ee0 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Workspace,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Workspace::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv")]
-pub fn stub_0x6d8ee0() -> ! {
-    todo!("0x6d8ee0 RBX::Reflection::PropDescriptor<RBX::Workspace,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Workspace::*)(void)const>::isReadOnly(void)const")
+pub fn stub_0x6d8ee0() {
+    // IDA 0x6d8ee0: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x6d8ee4 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Workspace,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Workspace::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv")]
-pub fn stub_0x6d8ee4() -> ! {
-    todo!("0x6d8ee4 RBX::Reflection::PropDescriptor<RBX::Workspace,RBX::Instance *>::GetImpl<RBX::Instance * (RBX::Workspace::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_0x6d8ee4() {
+    // IDA 0x6d8ee4: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x6d8ee8 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE
@@ -574,15 +576,17 @@ pub fn stub_0x6dccc4() {
 // 0x6dccf4 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Workspace,bool>::GetSetImpl<bool (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_0x6dccf4() -> ! {
-    todo!("0x6dccf4 RBX::Reflection::PropDescriptor<RBX::Workspace,bool>::GetSetImpl<bool (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(bool)>::isReadOnly(void)const")
+pub fn stub_0x6dccf4() -> bool {
+    // IDA 0x6dccf4: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x6dccf8 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Workspace,bool>::GetSetImpl<bool (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_0x6dccf8() -> ! {
-    todo!("0x6dccf8 RBX::Reflection::PropDescriptor<RBX::Workspace,bool>::GetSetImpl<bool (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_0x6dccf8() -> bool {
+    // IDA 0x6dccf8: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x6dccfc — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
@@ -616,15 +620,17 @@ pub fn stub_0x6dce5c() {
 // 0x6dce8c — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEdE10GetSetImplIMS2_KFdvEMS2_FvdEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Workspace,double>::GetSetImpl<double (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(double)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEdE10GetSetImplIMS2_KFdvEMS2_FvdEE10isReadOnlyEv")]
-pub fn stub_0x6dce8c() -> ! {
-    todo!("0x6dce8c RBX::Reflection::PropDescriptor<RBX::Workspace,double>::GetSetImpl<double (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(double)>::isReadOnly(void)const")
+pub fn stub_0x6dce8c() -> bool {
+    // IDA 0x6dce8c: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x6dce90 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEdE10GetSetImplIMS2_KFdvEMS2_FvdEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Workspace,double>::GetSetImpl<double (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(double)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEdE10GetSetImplIMS2_KFdvEMS2_FvdEE11isWriteOnlyEv")]
-pub fn stub_0x6dce90() -> ! {
-    todo!("0x6dce90 RBX::Reflection::PropDescriptor<RBX::Workspace,double>::GetSetImpl<double (RBX::Workspace::*)(void)const,void (RBX::Workspace::*)(double)>::isWriteOnly(void)const")
+pub fn stub_0x6dce90() -> bool {
+    // IDA 0x6dce90: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x6dce94 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEdE10GetSetImplIMS2_KFdvEMS2_FvdEE8getValueEPKNS0_13DescribedBaseE
@@ -695,8 +701,9 @@ pub fn stub_0x6f2b90() -> ! {
 // 0x6f2be8 — __ZNK3RBX10Reflection23TypedPropertyDescriptorISsE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<std::string>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorISsE14hasStringValueEv")]
-pub fn stub_0x6f2be8() -> ! {
-    todo!("0x6f2be8 RBX::Reflection::TypedPropertyDescriptor<std::string>::hasStringValue(void)const")
+pub fn stub_0x6f2be8() -> bool {
+    // IDA 0x6f2be8: TypedPropertyDescriptor::hasStringValue -- per-type constant `return 1` (decompiled tails: 1 for most, 0 for BrickColor/SystemAddress/CoordinateFrame/Region3int16/Ref).
+    true
 }
 
 // 0x6f2bec — __ZNK3RBX10Reflection23TypedPropertyDescriptorISsE14getStringValueEPKNS0_13DescribedBaseE
@@ -723,8 +730,9 @@ pub fn stub_0x6f2c0c() -> ! {
 // 0x6f2c10 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIbE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<bool>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorIbE14hasStringValueEv")]
-pub fn stub_0x6f2c10() -> ! {
-    todo!("0x6f2c10 RBX::Reflection::TypedPropertyDescriptor<bool>::hasStringValue(void)const")
+pub fn stub_0x6f2c10() -> bool {
+    // IDA 0x6f2c10: TypedPropertyDescriptor::hasStringValue -- per-type constant `return 1` (decompiled tails: 1 for most, 0 for BrickColor/SystemAddress/CoordinateFrame/Region3int16/Ref).
+    true
 }
 
 // 0x6f2c14 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIbE14getStringValueEPKNS0_13DescribedBaseE
@@ -751,8 +759,9 @@ pub fn stub_0x6f2c64() -> ! {
 // 0x6f2c68 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIfE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<float>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorIfE14hasStringValueEv")]
-pub fn stub_0x6f2c68() -> ! {
-    todo!("0x6f2c68 RBX::Reflection::TypedPropertyDescriptor<float>::hasStringValue(void)const")
+pub fn stub_0x6f2c68() -> bool {
+    // IDA 0x6f2c68: TypedPropertyDescriptor::hasStringValue -- per-type constant `return 1` (decompiled tails: 1 for most, 0 for BrickColor/SystemAddress/CoordinateFrame/Region3int16/Ref).
+    true
 }
 
 // 0x6f2c6c — __ZNK3RBX10Reflection23TypedPropertyDescriptorIfE14getStringValueEPKNS0_13DescribedBaseE
@@ -779,8 +788,9 @@ pub fn stub_0x6f2cb8() -> ! {
 // 0x6f2cbc — __ZNK3RBX10Reflection23TypedPropertyDescriptorIdE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<double>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorIdE14hasStringValueEv")]
-pub fn stub_0x6f2cbc() -> ! {
-    todo!("0x6f2cbc RBX::Reflection::TypedPropertyDescriptor<double>::hasStringValue(void)const")
+pub fn stub_0x6f2cbc() -> bool {
+    // IDA 0x6f2cbc: TypedPropertyDescriptor::hasStringValue -- per-type constant `return 1` (decompiled tails: 1 for most, 0 for BrickColor/SystemAddress/CoordinateFrame/Region3int16/Ref).
+    true
 }
 
 // 0x6f2cc0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIdE14getStringValueEPKNS0_13DescribedBaseE
@@ -807,8 +817,9 @@ pub fn stub_0x6f2d24() -> ! {
 // 0x6f2d28 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIiE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<int>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorIiE14hasStringValueEv")]
-pub fn stub_0x6f2d28() -> ! {
-    todo!("0x6f2d28 RBX::Reflection::TypedPropertyDescriptor<int>::hasStringValue(void)const")
+pub fn stub_0x6f2d28() -> bool {
+    // IDA 0x6f2d28: TypedPropertyDescriptor::hasStringValue -- per-type constant `return 1` (decompiled tails: 1 for most, 0 for BrickColor/SystemAddress/CoordinateFrame/Region3int16/Ref).
+    true
 }
 
 // 0x6f2d2c — __ZNK3RBX10Reflection23TypedPropertyDescriptorIiE14getStringValueEPKNS0_13DescribedBaseE
@@ -835,8 +846,9 @@ pub fn stub_0x6f2d78() -> ! {
 // 0x6f2d7c — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_12Region3int16EE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Region3int16>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorINS_12Region3int16EE14hasStringValueEv")]
-pub fn stub_0x6f2d7c() -> ! {
-    todo!("0x6f2d7c RBX::Reflection::TypedPropertyDescriptor<RBX::Region3int16>::hasStringValue(void)const")
+pub fn stub_0x6f2d7c() -> bool {
+    // IDA 0x6f2d7c: TypedPropertyDescriptor::hasStringValue -- per-type constant `return 0` (decompiled tails: 1 for most, 0 for BrickColor/SystemAddress/CoordinateFrame/Region3int16/Ref).
+    false
 }
 
 // 0x6f2d80 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_12Region3int16EE14getStringValueEPKNS0_13DescribedBaseE

@@ -651,15 +651,17 @@ pub fn stub_7caa34() {
 // 0x7caa60 — __ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidEfE10GetSetImplIMS2_KFfvEMS2_FvRKfEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Humanoid,float>::GetSetImpl<float (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(float const&)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidEfE10GetSetImplIMS2_KFfvEMS2_FvRKfEE10isReadOnlyEv")]
-pub fn stub_7caa60() -> ! {
-    todo!("0x7caa60 RBX::Reflection::PropDescriptor<RBX::Humanoid,float>::GetSetImpl<float (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(float const&)>::isReadOnly(void)const")
+pub fn stub_7caa60() -> bool {
+    // IDA 0x7caa60: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x7caa64 — __ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidEfE10GetSetImplIMS2_KFfvEMS2_FvRKfEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Humanoid,float>::GetSetImpl<float (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(float const&)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidEfE10GetSetImplIMS2_KFfvEMS2_FvRKfEE11isWriteOnlyEv")]
-pub fn stub_7caa64() -> ! {
-    todo!("0x7caa64 RBX::Reflection::PropDescriptor<RBX::Humanoid,float>::GetSetImpl<float (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(float const&)>::isWriteOnly(void)const")
+pub fn stub_7caa64() -> bool {
+    // IDA 0x7caa64: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x7caa68 — __ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidEfE10GetSetImplIMS2_KFfvEMS2_FvRKfEE8getValueEPKNS0_13DescribedBaseE
@@ -693,15 +695,17 @@ pub fn stub_7cabc0() {
 // 0x7cabec — __ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvRKS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Humanoid,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(G3D::Vector3 const&)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvRKS4_EE10isReadOnlyEv")]
-pub fn stub_7cabec() -> ! {
-    todo!("0x7cabec RBX::Reflection::PropDescriptor<RBX::Humanoid,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(G3D::Vector3 const&)>::isReadOnly(void)const")
+pub fn stub_7cabec() -> bool {
+    // IDA 0x7cabec: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x7cabf0 — __ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvRKS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Humanoid,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(G3D::Vector3 const&)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvRKS4_EE11isWriteOnlyEv")]
-pub fn stub_7cabf0() -> ! {
-    todo!("0x7cabf0 RBX::Reflection::PropDescriptor<RBX::Humanoid,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(G3D::Vector3 const&)>::isWriteOnly(void)const")
+pub fn stub_7cabf0() -> bool {
+    // IDA 0x7cabf0: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x7cabf4 — __ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvRKS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -735,13 +739,15 @@ pub fn stub_7cad54() {
 // 0x7cad80 — __ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Humanoid,bool>::GetSetImpl<bool (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_7cad80() -> ! {
-    todo!("0x7cad80 RBX::Reflection::PropDescriptor<RBX::Humanoid,bool>::GetSetImpl<bool (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(bool)>::isReadOnly(void)const")
+pub fn stub_7cad80() -> bool {
+    // IDA 0x7cad80: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x7cad84 — __ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Humanoid,bool>::GetSetImpl<bool (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_7cad84() -> ! {
-    todo!("0x7cad84 RBX::Reflection::PropDescriptor<RBX::Humanoid,bool>::GetSetImpl<bool (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_7cad84() -> bool {
+    // IDA 0x7cad84: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }

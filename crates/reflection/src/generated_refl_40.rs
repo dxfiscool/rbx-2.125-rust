@@ -528,8 +528,9 @@ pub fn stub_0xf4cf14() -> ! {
 
 // 0xf4cf94 — j___ZN3RBX10Reflection21RefPropertyDescriptor23isRefPropertyDescriptorERKNS0_18PropertyDescriptorE
 #[doc(alias = "j___ZN3RBX10Reflection21RefPropertyDescriptor23isRefPropertyDescriptorERKNS0_18PropertyDescriptorE")]
-pub fn stub_0xf4cf94() -> ! {
-    todo!("0xf4cf94 j___ZN3RBX10Reflection21RefPropertyDescriptor23isRefPropertyDescriptorERKNS0_18PropertyDescriptorE")
+pub fn stub_0xf4cf94() {
+    // IDA 0xf4cf94: jump-thunk straight to 0x70fe98 (decompiled: tail-call). Rust: delegate.
+    crate::generated_shard_t::stub_70fe98()
 }
 
 // 0xf4cfc4 — j___ZN3RBX10Reflection9ArgHelper6getArgIiLi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS3_EEPNS7_10disable_ifINS7_7is_sameIS3_NS7_10shared_ptrIKNS0_5TupleEEEEEvE4typeE

@@ -33,16 +33,18 @@ pub fn stub_0x9b7a60() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::GetSetImpl<RBX::NetworkSettings::PhysicsSendMethod (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(RBX::NetworkSettings::PhysicsSendMethod const&)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE10isReadOnlyEv")]
-pub fn stub_0x9b7af4() -> ! {
-    todo!("0x9b7af4 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::GetSetImpl<RBX::NetworkSettings::PhysicsSendMethod (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(RBX::NetworkSettings::PhysicsSendMethod const&)>::isReadOnly(void)const")
+pub fn stub_0x9b7af4() -> bool {
+    // IDA 0x9b7af4: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x9b7af8 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::GetSetImpl<RBX::NetworkSettings::PhysicsSendMethod (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(RBX::NetworkSettings::PhysicsSendMethod const&)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE11isWriteOnlyEv")]
-pub fn stub_0x9b7af8() -> ! {
-    todo!("0x9b7af8 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::GetSetImpl<RBX::NetworkSettings::PhysicsSendMethod (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(RBX::NetworkSettings::PhysicsSendMethod const&)>::isWriteOnly(void)const")
+pub fn stub_0x9b7af8() -> bool {
+    // IDA 0x9b7af8: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x9b7afc — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -81,16 +83,18 @@ pub fn stub_0x9b7d60() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE10isReadOnlyEv")]
-pub fn stub_0x9b7ee4() -> ! {
-    todo!("0x9b7ee4 RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isReadOnly(void)const")
+pub fn stub_0x9b7ee4() -> bool {
+    // IDA 0x9b7ee4: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x9b7ee8 — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE11isWriteOnlyEv")]
-pub fn stub_0x9b7ee8() -> ! {
-    todo!("0x9b7ee8 RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isWriteOnly(void)const")
+pub fn stub_0x9b7ee8() -> bool {
+    // IDA 0x9b7ee8: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x9b7eec — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE8getValueEPKNS0_13DescribedBaseE
@@ -129,16 +133,18 @@ pub fn stub_0x9b8180() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::GetSetImpl<std::string const (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(std::string const&)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsESsE10GetSetImplIMS2_KFKSsvEMS2_FvRS5_EE10isReadOnlyEv")]
-pub fn stub_0x9b81a8() -> ! {
-    todo!("0x9b81a8 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::GetSetImpl<std::string const (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(std::string const&)>::isReadOnly(void)const")
+pub fn stub_0x9b81a8() -> bool {
+    // IDA 0x9b81a8: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x9b81ac — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsESsE10GetSetImplIMS2_KFKSsvEMS2_FvRS5_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::GetSetImpl<std::string const (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(std::string const&)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsESsE10GetSetImplIMS2_KFKSsvEMS2_FvRS5_EE11isWriteOnlyEv")]
-pub fn stub_0x9b81ac() -> ! {
-    todo!("0x9b81ac RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::GetSetImpl<std::string const (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(std::string const&)>::isWriteOnly(void)const")
+pub fn stub_0x9b81ac() -> bool {
+    // IDA 0x9b81ac: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x9b81b0 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsESsE10GetSetImplIMS2_KFKSsvEMS2_FvRS5_EE8getValueEPKNS0_13DescribedBaseE
@@ -177,16 +183,18 @@ pub fn stub_0x9b8428() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::GetSetImpl<double (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(double)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE10isReadOnlyEv")]
-pub fn stub_0x9b8450() -> ! {
-    todo!("0x9b8450 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::GetSetImpl<double (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(double)>::isReadOnly(void)const")
+pub fn stub_0x9b8450() -> bool {
+    // IDA 0x9b8450: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x9b8454 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::GetSetImpl<double (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(double)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE11isWriteOnlyEv")]
-pub fn stub_0x9b8454() -> ! {
-    todo!("0x9b8454 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::GetSetImpl<double (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(double)>::isWriteOnly(void)const")
+pub fn stub_0x9b8454() -> bool {
+    // IDA 0x9b8454: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x9b8458 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE8getValueEPKNS0_13DescribedBaseE
@@ -217,16 +225,18 @@ pub fn stub_0x9b84ac() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE10isReadOnlyEv")]
-pub fn stub_0x9b86c4() -> ! {
-    todo!("0x9b86c4 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isReadOnly(void)const")
+pub fn stub_0x9b86c4() -> bool {
+    // IDA 0x9b86c4: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x9b86c8 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE11isWriteOnlyEv")]
-pub fn stub_0x9b86c8() -> ! {
-    todo!("0x9b86c8 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isWriteOnly(void)const")
+pub fn stub_0x9b86c8() -> bool {
+    // IDA 0x9b86c8: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x9b86cc — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE8getValueEPKNS0_13DescribedBaseE
@@ -257,16 +267,18 @@ pub fn stub_0x9b8724() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE10isReadOnlyEv")]
-pub fn stub_0x9b893c() -> ! {
-    todo!("0x9b893c RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isReadOnly(void)const")
+pub fn stub_0x9b893c() -> bool {
+    // IDA 0x9b893c: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x9b8940 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE11isWriteOnlyEv")]
-pub fn stub_0x9b8940() -> ! {
-    todo!("0x9b8940 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isWriteOnly(void)const")
+pub fn stub_0x9b8940() -> bool {
+    // IDA 0x9b8940: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x9b8944 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE8getValueEPKNS0_13DescribedBaseE
@@ -297,16 +309,18 @@ pub fn stub_0x9b89ac() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetSetImpl<float (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(float)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv")]
-pub fn stub_0x9b8bd4() -> ! {
-    todo!("0x9b8bd4 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetSetImpl<float (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(float)>::isReadOnly(void)const")
+pub fn stub_0x9b8bd4() -> bool {
+    // IDA 0x9b8bd4: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x9b8bd8 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetSetImpl<float (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(float)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv")]
-pub fn stub_0x9b8bd8() -> ! {
-    todo!("0x9b8bd8 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetSetImpl<float (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(float)>::isWriteOnly(void)const")
+pub fn stub_0x9b8bd8() -> bool {
+    // IDA 0x9b8bd8: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x9b8bdc — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
@@ -337,16 +351,18 @@ pub fn stub_0x9b8c28() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE10isReadOnlyEv")]
-pub fn stub_0x9b8e40() -> ! {
-    todo!("0x9b8e40 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isReadOnly(void)const")
+pub fn stub_0x9b8e40() -> bool {
+    // IDA 0x9b8e40: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x9b8e44 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE11isWriteOnlyEv")]
-pub fn stub_0x9b8e44() -> ! {
-    todo!("0x9b8e44 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isWriteOnly(void)const")
+pub fn stub_0x9b8e44() -> bool {
+    // IDA 0x9b8e44: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x9b8e48 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE8getValueEPKNS0_13DescribedBaseE
@@ -473,16 +489,16 @@ pub fn stub_0x9d4888() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::GetImpl<int (RBX::Network::Server::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network6ServerEiE7GetImplIMS3_KFivEE10isReadOnlyEv")]
-pub fn stub_0x9d48b0() -> ! {
-    todo!("0x9d48b0 RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::GetImpl<int (RBX::Network::Server::*)(void)const>::isReadOnly(void)const")
+pub fn stub_0x9d48b0() {
+    // IDA 0x9d48b0: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x9d48b4 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6ServerEiE7GetImplIMS3_KFivEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::GetImpl<int (RBX::Network::Server::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network6ServerEiE7GetImplIMS3_KFivEE11isWriteOnlyEv")]
-pub fn stub_0x9d48b4() -> ! {
-    todo!("0x9d48b4 RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::GetImpl<int (RBX::Network::Server::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_0x9d48b4() {
+    // IDA 0x9d48b4: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x9d48b8 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6ServerEiE7GetImplIMS3_KFivEE8getValueEPKNS0_13DescribedBaseE

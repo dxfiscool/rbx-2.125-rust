@@ -79,15 +79,17 @@ pub fn stub_84e1e8() -> ! {
 // 0x84e228 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::RenderQualitySetting>::GetSetImpl<RBX::GameBasicSettings::RenderQualitySetting (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(RBX::GameBasicSettings::RenderQualitySetting)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_84e228() -> ! {
-    todo!("0x84e228 RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::RenderQualitySetting>::GetSetImpl<RBX::GameBasicSettings::RenderQualitySetting (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(RBX::GameBasicSettings::RenderQualitySetting)>::isReadOnly(void)const")
+pub fn stub_84e228() -> bool {
+    // IDA 0x84e228: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x84e22c — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::RenderQualitySetting>::GetSetImpl<RBX::GameBasicSettings::RenderQualitySetting (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(RBX::GameBasicSettings::RenderQualitySetting)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_84e22c() -> ! {
-    todo!("0x84e22c RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::RenderQualitySetting>::GetSetImpl<RBX::GameBasicSettings::RenderQualitySetting (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(RBX::GameBasicSettings::RenderQualitySetting)>::isWriteOnly(void)const")
+pub fn stub_84e22c() -> bool {
+    // IDA 0x84e22c: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x84e230 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -121,15 +123,15 @@ pub fn stub_84e428() {
 // 0x84e454 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameSettings::UploadSetting>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE10isReadOnlyEv")]
-pub fn stub_84e454() -> ! {
-    todo!("0x84e454 RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameSettings::UploadSetting>::isReadOnly(void)const")
+pub fn stub_84e454() {
+    // IDA 0x84e454: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x84e464 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameSettings::UploadSetting>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE11isWriteOnlyEv")]
-pub fn stub_84e464() -> ! {
-    todo!("0x84e464 RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameSettings::UploadSetting>::isWriteOnly(void)const")
+pub fn stub_84e464() {
+    // IDA 0x84e464: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x84e474 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE11equalValuesEPKNS0_13DescribedBaseES8_
@@ -163,8 +165,9 @@ pub fn stub_84e60c() -> ! {
 // 0x84e630 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameSettings::UploadSetting>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE14hasStringValueEv")]
-pub fn stub_84e630() -> ! {
-    todo!("0x84e630 RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameSettings::UploadSetting>::hasStringValue(void)const")
+pub fn stub_84e630() -> bool {
+    // IDA 0x84e630: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x84e634 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE14getStringValueEPKNS0_13DescribedBaseE
@@ -247,15 +250,17 @@ pub fn stub_84e9f0() -> ! {
 // 0x84ea30 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,RBX::GameSettings::UploadSetting>::GetSetImpl<RBX::GameSettings::UploadSetting (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(RBX::GameSettings::UploadSetting)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_84ea30() -> ! {
-    todo!("0x84ea30 RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,RBX::GameSettings::UploadSetting>::GetSetImpl<RBX::GameSettings::UploadSetting (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(RBX::GameSettings::UploadSetting)>::isReadOnly(void)const")
+pub fn stub_84ea30() -> bool {
+    // IDA 0x84ea30: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x84ea34 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,RBX::GameSettings::UploadSetting>::GetSetImpl<RBX::GameSettings::UploadSetting (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(RBX::GameSettings::UploadSetting)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_84ea34() -> ! {
-    todo!("0x84ea34 RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,RBX::GameSettings::UploadSetting>::GetSetImpl<RBX::GameSettings::UploadSetting (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(RBX::GameSettings::UploadSetting)>::isWriteOnly(void)const")
+pub fn stub_84ea34() -> bool {
+    // IDA 0x84ea34: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x84ea38 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS_12GameSettings13UploadSettingEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -289,15 +294,15 @@ pub fn stub_84ec30() {
 // 0x84ec5c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::ControlMode>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE10isReadOnlyEv")]
-pub fn stub_84ec5c() -> ! {
-    todo!("0x84ec5c RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::ControlMode>::isReadOnly(void)const")
+pub fn stub_84ec5c() {
+    // IDA 0x84ec5c: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x84ec6c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::ControlMode>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE11isWriteOnlyEv")]
-pub fn stub_84ec6c() -> ! {
-    todo!("0x84ec6c RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::ControlMode>::isWriteOnly(void)const")
+pub fn stub_84ec6c() {
+    // IDA 0x84ec6c: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x84ec7c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE11equalValuesEPKNS0_13DescribedBaseES7_
@@ -331,8 +336,9 @@ pub fn stub_84ee14() -> ! {
 // 0x84ee38 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::ControlMode>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE14hasStringValueEv")]
-pub fn stub_84ee38() -> ! {
-    todo!("0x84ee38 RBX::Reflection::EnumPropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::ControlMode>::hasStringValue(void)const")
+pub fn stub_84ee38() -> bool {
+    // IDA 0x84ee38: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x84ee3c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE14getStringValueEPKNS0_13DescribedBaseE
@@ -424,15 +430,17 @@ pub fn stub_84f268() -> ! {
 // 0x84f2a8 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::ControlMode>::GetSetImpl<RBX::GameBasicSettings::ControlMode (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(RBX::GameBasicSettings::ControlMode)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_84f2a8() -> ! {
-    todo!("0x84f2a8 RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::ControlMode>::GetSetImpl<RBX::GameBasicSettings::ControlMode (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(RBX::GameBasicSettings::ControlMode)>::isReadOnly(void)const")
+pub fn stub_84f2a8() -> bool {
+    // IDA 0x84f2a8: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x84f2ac — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::ControlMode>::GetSetImpl<RBX::GameBasicSettings::ControlMode (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(RBX::GameBasicSettings::ControlMode)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_84f2ac() -> ! {
-    todo!("0x84f2ac RBX::Reflection::PropDescriptor<RBX::GameBasicSettings,RBX::GameBasicSettings::ControlMode>::GetSetImpl<RBX::GameBasicSettings::ControlMode (RBX::GameBasicSettings::*)(void)const,void (RBX::GameBasicSettings::*)(RBX::GameBasicSettings::ControlMode)>::isWriteOnly(void)const")
+pub fn stub_84f2ac() -> bool {
+    // IDA 0x84f2ac: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x84f2b0 — __ZNK3RBX10Reflection14PropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE

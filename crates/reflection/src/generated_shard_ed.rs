@@ -87,14 +87,16 @@ pub fn stub_2bb218() {
 
 // 0x2bb330 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_13ScriptContextEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::ScriptContext>::isReadOnly(void)const")]
-pub fn stub_2bb330() -> ! {
-    todo!("0x2bb330 __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_13ScriptContextEE10isReadOnlyEv")
+pub fn stub_2bb330() -> bool {
+    // IDA 0x2bb330: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x2bb334 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_13ScriptContextEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::ScriptContext>::isWriteOnly(void)const")]
-pub fn stub_2bb334() -> ! {
-    todo!("0x2bb334 __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_13ScriptContextEE11isWriteOnlyEv")
+pub fn stub_2bb334() -> bool {
+    // IDA 0x2bb334: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x2bb338 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_13ScriptContextEE8getValueEPKNS0_13DescribedBaseE
@@ -237,14 +239,16 @@ pub fn stub_2bc0f8() -> ! {
 
 // 0x2bc244 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_13ScriptContextEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::ScriptContext>::isReadOnly(void)const")]
-pub fn stub_2bc244() -> ! {
-    todo!("0x2bc244 __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_13ScriptContextEE10isReadOnlyEv")
+pub fn stub_2bc244() -> bool {
+    // IDA 0x2bc244: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x2bc248 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_13ScriptContextEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::ScriptContext>::isWriteOnly(void)const")]
-pub fn stub_2bc248() -> ! {
-    todo!("0x2bc248 __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_13ScriptContextEE11isWriteOnlyEv")
+pub fn stub_2bc248() -> bool {
+    // IDA 0x2bc248: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x2bc24c — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_13ScriptContextEE8getValueEPKNS0_13DescribedBaseE

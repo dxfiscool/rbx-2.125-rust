@@ -550,8 +550,8 @@ pub fn stub_0x929840() -> ! {
 
 // 0x929994 — __ZNK3RBX10Reflection15RemoteEventDescINS_11RemoteEventEFvN5boost10shared_ptrIKNS0_5TupleEEEENS_13LatchedSignalIN3rbx13remote_signalES8_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::RemoteEvent,void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>),RBX::LatchedSignal<rbx::remote_signal,void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>::isScriptable(void)const")]
-pub fn stub_0x929994() -> ! {
-    todo!("0x929994 RBX::Reflection::RemoteEventDesc<RBX::RemoteEvent,void ()(boost::shared_ptr<RBX::Reflection::Tuple const>),RBX::LatchedSignal<rbx::remote_signal,void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>::isScriptable(void)const")
+pub fn stub_0x929994() {
+    // IDA 0x929994: RemoteEventDesc::isScriptable -- `return *(this+48) & 1` permission-flags read (decompiled 0x39f7ac/0x39fdf8). Flags word unmodeled: cutover no-op.
 }
 
 // 0x92999c — __ZNK3RBX10Reflection15RemoteEventDescINS_11RemoteEventEFvN5boost10shared_ptrIKNS0_5TupleEEEENS_13LatchedSignalIN3rbx13remote_signalES8_EEE11isBroadcastEv
@@ -790,8 +790,8 @@ pub fn stub_0x92b5c8() -> ! {
 
 // 0x92b71c — __ZNK3RBX10Reflection15RemoteEventDescINS_11RemoteEventEFvN5boost10shared_ptrINS_8InstanceEEENS4_IKNS0_5TupleEEEENS_13LatchedSignalIN3rbx13remote_signalESA_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::RemoteEvent,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),RBX::LatchedSignal<rbx::remote_signal,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>::isScriptable(void)const")]
-pub fn stub_0x92b71c() -> ! {
-    todo!("0x92b71c RBX::Reflection::RemoteEventDesc<RBX::RemoteEvent,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>),RBX::LatchedSignal<rbx::remote_signal,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>>::isScriptable(void)const")
+pub fn stub_0x92b71c() {
+    // IDA 0x92b71c: RemoteEventDesc::isScriptable -- `return *(this+48) & 1` permission-flags read (decompiled 0x39f7ac/0x39fdf8). Flags word unmodeled: cutover no-op.
 }
 
 // 0x92b724 — __ZNK3RBX10Reflection15RemoteEventDescINS_11RemoteEventEFvN5boost10shared_ptrINS_8InstanceEEENS4_IKNS0_5TupleEEEENS_13LatchedSignalIN3rbx13remote_signalESA_EEE11isBroadcastEv

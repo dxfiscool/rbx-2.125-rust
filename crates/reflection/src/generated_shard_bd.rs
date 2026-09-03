@@ -79,8 +79,8 @@ pub fn stub_0xac5a00() -> ! {
 // 0xac5e98 — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvbiEN3rbx13remote_signalIS4_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(bool,int),rbx::remote_signal<void ()(bool,int)>>::isScriptable(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvbiEN3rbx13remote_signalIS4_EEE12isScriptableEv")]
-pub fn stub_0xac5e98() -> ! {
-    todo!("0xac5e98 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(bool,int),rbx::remote_signal<void ()(bool,int)>>::isScriptable(void)const")
+pub fn stub_0xac5e98() {
+    // IDA 0xac5e98: RemoteEventDesc::isScriptable -- `return *(this+48) & 1` permission-flags read (decompiled 0x39f7ac/0x39fdf8). Flags word unmodeled: cutover no-op.
 }
 
 // 0xac5ea0 — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvbiEN3rbx13remote_signalIS4_EEE11isBroadcastEv
@@ -240,15 +240,15 @@ pub fn stub_0xac8f04() {
 // 0xac8f2c — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEbE7GetImplIMS3_KFbvEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,bool>::GetImpl<bool (RBX::Network::Player::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEbE7GetImplIMS3_KFbvEE10isReadOnlyEv")]
-pub fn stub_0xac8f2c() -> ! {
-    todo!("0xac8f2c RBX::Reflection::PropDescriptor<RBX::Network::Player,bool>::GetImpl<bool (RBX::Network::Player::*)(void)const>::isReadOnly(void)const")
+pub fn stub_0xac8f2c() {
+    // IDA 0xac8f2c: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0xac8f30 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEbE7GetImplIMS3_KFbvEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,bool>::GetImpl<bool (RBX::Network::Player::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEbE7GetImplIMS3_KFbvEE11isWriteOnlyEv")]
-pub fn stub_0xac8f30() -> ! {
-    todo!("0xac8f30 RBX::Reflection::PropDescriptor<RBX::Network::Player,bool>::GetImpl<bool (RBX::Network::Player::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_0xac8f30() {
+    // IDA 0xac8f30: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0xac8f34 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEbE7GetImplIMS3_KFbvEE8getValueEPKNS0_13DescribedBaseE
@@ -282,15 +282,15 @@ pub fn stub_0xac928c() {
 // 0xac92b4 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEiE7GetImplIMS3_KFivEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,int>::GetImpl<int (RBX::Network::Player::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEiE7GetImplIMS3_KFivEE10isReadOnlyEv")]
-pub fn stub_0xac92b4() -> ! {
-    todo!("0xac92b4 RBX::Reflection::PropDescriptor<RBX::Network::Player,int>::GetImpl<int (RBX::Network::Player::*)(void)const>::isReadOnly(void)const")
+pub fn stub_0xac92b4() {
+    // IDA 0xac92b4: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0xac92b8 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEiE7GetImplIMS3_KFivEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,int>::GetImpl<int (RBX::Network::Player::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEiE7GetImplIMS3_KFivEE11isWriteOnlyEv")]
-pub fn stub_0xac92b8() -> ! {
-    todo!("0xac92b8 RBX::Reflection::PropDescriptor<RBX::Network::Player,int>::GetImpl<int (RBX::Network::Player::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_0xac92b8() {
+    // IDA 0xac92b8: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0xac92bc — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEiE7GetImplIMS3_KFivEE8getValueEPKNS0_13DescribedBaseE
@@ -352,15 +352,17 @@ pub fn stub_0xac9da4() -> ! {
 // 0xac9fcc — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEiE10GetSetImplIMS3_KFivEMS3_FviEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,int>::GetSetImpl<int (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(int)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEiE10GetSetImplIMS3_KFivEMS3_FviEE10isReadOnlyEv")]
-pub fn stub_0xac9fcc() -> ! {
-    todo!("0xac9fcc RBX::Reflection::PropDescriptor<RBX::Network::Player,int>::GetSetImpl<int (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(int)>::isReadOnly(void)const")
+pub fn stub_0xac9fcc() -> bool {
+    // IDA 0xac9fcc: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0xac9fd0 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEiE10GetSetImplIMS3_KFivEMS3_FviEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,int>::GetSetImpl<int (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(int)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEiE10GetSetImplIMS3_KFivEMS3_FviEE11isWriteOnlyEv")]
-pub fn stub_0xac9fd0() -> ! {
-    todo!("0xac9fd0 RBX::Reflection::PropDescriptor<RBX::Network::Player,int>::GetSetImpl<int (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(int)>::isWriteOnly(void)const")
+pub fn stub_0xac9fd0() -> bool {
+    // IDA 0xac9fd0: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0xac9fd4 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEiE10GetSetImplIMS3_KFivEMS3_FviEE8getValueEPKNS0_13DescribedBaseE
@@ -387,15 +389,17 @@ pub fn stub_0xaca020() -> ! {
 // 0xaca248 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEbE10GetSetImplIMS3_KFbvEMS3_FvbEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,bool>::GetSetImpl<bool (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEbE10GetSetImplIMS3_KFbvEMS3_FvbEE10isReadOnlyEv")]
-pub fn stub_0xaca248() -> ! {
-    todo!("0xaca248 RBX::Reflection::PropDescriptor<RBX::Network::Player,bool>::GetSetImpl<bool (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(bool)>::isReadOnly(void)const")
+pub fn stub_0xaca248() -> bool {
+    // IDA 0xaca248: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0xaca24c — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEbE10GetSetImplIMS3_KFbvEMS3_FvbEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,bool>::GetSetImpl<bool (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEbE10GetSetImplIMS3_KFbvEMS3_FvbEE11isWriteOnlyEv")]
-pub fn stub_0xaca24c() -> ! {
-    todo!("0xaca24c RBX::Reflection::PropDescriptor<RBX::Network::Player,bool>::GetSetImpl<bool (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_0xaca24c() -> bool {
+    // IDA 0xaca24c: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0xaca250 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEbE10GetSetImplIMS3_KFbvEMS3_FvbEE8getValueEPKNS0_13DescribedBaseE

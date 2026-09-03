@@ -56,8 +56,9 @@ pub fn stub_0x6f7354() -> ! {
 // 0x6f73b0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9ContentIdEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9ContentIdEE14hasStringValueEv")]
-pub fn stub_0x6f73b0() -> ! {
-    todo!("0x6f73b0 RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::hasStringValue(void)const")
+pub fn stub_0x6f73b0() -> bool {
+    // IDA 0x6f73b0: TypedPropertyDescriptor::hasStringValue -- per-type constant `return 1` (decompiled tails: 1 for most, 0 for BrickColor/SystemAddress/CoordinateFrame/Region3int16/Ref).
+    true
 }
 
 // 0x6f73b4 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9ContentIdEE14getStringValueEPKNS0_13DescribedBaseE

@@ -6,14 +6,16 @@ use rbx_core::SharedPtr;
 
 // 0x654550 — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_5Stats12StatsServiceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Stats::StatsService>::isReadOnly(void)const")]
-pub fn stub_0x654550() -> ! {
-    todo!("0x654550 RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Stats::StatsService>::isReadOnly(void)const")
+pub fn stub_0x654550() -> bool {
+    // IDA 0x654550: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x654554 — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_5Stats12StatsServiceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Stats::StatsService>::isWriteOnly(void)const")]
-pub fn stub_0x654554() -> ! {
-    todo!("0x654554 RBX::Reflection::BoundProp<double,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Stats::StatsService>::isWriteOnly(void)const")
+pub fn stub_0x654554() -> bool {
+    // IDA 0x654554: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x654558 — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_5Stats12StatsServiceEE8getValueEPKNS0_13DescribedBaseE
@@ -42,14 +44,16 @@ pub fn stub_0x654758() {
 
 // 0x654788 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_5Stats12StatsServiceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Stats::StatsService>::isReadOnly(void)const")]
-pub fn stub_0x654788() -> ! {
-    todo!("0x654788 RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Stats::StatsService>::isReadOnly(void)const")
+pub fn stub_0x654788() -> bool {
+    // IDA 0x654788: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x65478c — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_5Stats12StatsServiceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Stats::StatsService>::isWriteOnly(void)const")]
-pub fn stub_0x65478c() -> ! {
-    todo!("0x65478c RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Stats::StatsService>::isWriteOnly(void)const")
+pub fn stub_0x65478c() -> bool {
+    // IDA 0x65478c: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x654790 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_5Stats12StatsServiceEE8getValueEPKNS0_13DescribedBaseE
@@ -264,14 +268,16 @@ pub fn stub_0x657ae4() {
 
 // 0x657b10 — __ZNK3RBX10Reflection14PropDescriptorINS_10StudioToolEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::StudioTool,bool>::GetSetImpl<bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool)>::isReadOnly(void)const")]
-pub fn stub_0x657b10() -> ! {
-    todo!("0x657b10 RBX::Reflection::PropDescriptor<RBX::StudioTool,bool>::GetSetImpl<bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool)>::isReadOnly(void)const")
+pub fn stub_0x657b10() -> bool {
+    // IDA 0x657b10: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x657b14 — __ZNK3RBX10Reflection14PropDescriptorINS_10StudioToolEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::StudioTool,bool>::GetSetImpl<bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool)>::isWriteOnly(void)const")]
-pub fn stub_0x657b14() -> ! {
-    todo!("0x657b14 RBX::Reflection::PropDescriptor<RBX::StudioTool,bool>::GetSetImpl<bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_0x657b14() -> bool {
+    // IDA 0x657b14: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x657b18 — __ZNK3RBX10Reflection14PropDescriptorINS_10StudioToolEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE

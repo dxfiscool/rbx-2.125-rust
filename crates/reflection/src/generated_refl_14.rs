@@ -680,16 +680,18 @@ pub fn stub_0x97896c() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Client>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_7Network6ClientEE10isReadOnlyEv")]
-pub fn stub_0x978b08() -> ! {
-    todo!("0x978b08 RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Client>::isReadOnly(void)const")
+pub fn stub_0x978b08() -> bool {
+    // IDA 0x978b08: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x978b0c — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_7Network6ClientEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Client>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_7Network6ClientEE11isWriteOnlyEv")]
-pub fn stub_0x978b0c() -> ! {
-    todo!("0x978b0c RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Client>::isWriteOnly(void)const")
+pub fn stub_0x978b0c() -> bool {
+    // IDA 0x978b0c: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x978b10 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_7Network6ClientEE8getValueEPKNS0_13DescribedBaseE

@@ -534,15 +534,15 @@ pub fn stub_7c3f90() {
 // 0x7c3fbc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_8HumanoidENS2_13NameOcclusionEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Humanoid,RBX::Humanoid::NameOcclusion>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_8HumanoidENS2_13NameOcclusionEE10isReadOnlyEv")]
-pub fn stub_7c3fbc() -> ! {
-    todo!("0x7c3fbc RBX::Reflection::EnumPropDescriptor<RBX::Humanoid,RBX::Humanoid::NameOcclusion>::isReadOnly(void)const")
+pub fn stub_7c3fbc() {
+    // IDA 0x7c3fbc: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x7c3fcc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_8HumanoidENS2_13NameOcclusionEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Humanoid,RBX::Humanoid::NameOcclusion>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_8HumanoidENS2_13NameOcclusionEE11isWriteOnlyEv")]
-pub fn stub_7c3fcc() -> ! {
-    todo!("0x7c3fcc RBX::Reflection::EnumPropDescriptor<RBX::Humanoid,RBX::Humanoid::NameOcclusion>::isWriteOnly(void)const")
+pub fn stub_7c3fcc() {
+    // IDA 0x7c3fcc: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x7c3fdc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_8HumanoidENS2_13NameOcclusionEE11equalValuesEPKNS0_13DescribedBaseES7_
@@ -576,8 +576,9 @@ pub fn stub_7c4174() -> ! {
 // 0x7c4198 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_8HumanoidENS2_13NameOcclusionEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Humanoid,RBX::Humanoid::NameOcclusion>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_8HumanoidENS2_13NameOcclusionEE14hasStringValueEv")]
-pub fn stub_7c4198() -> ! {
-    todo!("0x7c4198 RBX::Reflection::EnumPropDescriptor<RBX::Humanoid,RBX::Humanoid::NameOcclusion>::hasStringValue(void)const")
+pub fn stub_7c4198() -> bool {
+    // IDA 0x7c4198: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x7c419c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_8HumanoidENS2_13NameOcclusionEE14getStringValueEPKNS0_13DescribedBaseE
@@ -669,15 +670,17 @@ pub fn stub_7c45c8() -> ! {
 // 0x7c4608 — __ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidENS2_13NameOcclusionEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Humanoid,RBX::Humanoid::NameOcclusion>::GetSetImpl<RBX::Humanoid::NameOcclusion (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(RBX::Humanoid::NameOcclusion)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidENS2_13NameOcclusionEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_7c4608() -> ! {
-    todo!("0x7c4608 RBX::Reflection::PropDescriptor<RBX::Humanoid,RBX::Humanoid::NameOcclusion>::GetSetImpl<RBX::Humanoid::NameOcclusion (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(RBX::Humanoid::NameOcclusion)>::isReadOnly(void)const")
+pub fn stub_7c4608() -> bool {
+    // IDA 0x7c4608: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x7c460c — __ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidENS2_13NameOcclusionEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Humanoid,RBX::Humanoid::NameOcclusion>::GetSetImpl<RBX::Humanoid::NameOcclusion (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(RBX::Humanoid::NameOcclusion)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidENS2_13NameOcclusionEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_7c460c() -> ! {
-    todo!("0x7c460c RBX::Reflection::PropDescriptor<RBX::Humanoid,RBX::Humanoid::NameOcclusion>::GetSetImpl<RBX::Humanoid::NameOcclusion (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(RBX::Humanoid::NameOcclusion)>::isWriteOnly(void)const")
+pub fn stub_7c460c() -> bool {
+    // IDA 0x7c460c: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x7c4610 — __ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidENS2_13NameOcclusionEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -714,8 +717,8 @@ pub fn stub_7c4708() -> ! {
 // was: RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>>::isScriptable(void)const
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::isScriptable(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection15RemoteEventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE12isScriptableEv")]
-pub fn stub_7c486c() -> ! {
-    todo!("0x7c486c RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::isScriptable(void)const")
+pub fn stub_7c486c() {
+    // IDA 0x7c486c: RemoteEventDesc::isScriptable -- `return *(this+48) & 1` permission-flags read (decompiled 0x39f7ac/0x39fdf8). Flags word unmodeled: cutover no-op.
 }
 
 // 0x7c4874 — __ZNK3RBX10Reflection15RemoteEventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE11isBroadcastEv

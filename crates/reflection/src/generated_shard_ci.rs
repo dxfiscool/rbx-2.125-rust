@@ -739,6 +739,7 @@ pub fn stub_f4cf84() -> ! {
 // 0xf4cf94 — j___ZN3RBX10Reflection21RefPropertyDescriptor23isRefPropertyDescriptorERKNS0_18PropertyDescriptorE
 #[doc(alias = "RBX::Reflection::RefPropertyDescriptor::isRefPropertyDescriptor(RBX::Reflection::PropertyDescriptor const&)")]
 #[doc(alias = "j___ZN3RBX10Reflection21RefPropertyDescriptor23isRefPropertyDescriptorERKNS0_18PropertyDescriptorE")]
-pub fn stub_f4cf94() -> ! {
-    todo!("0xf4cf94 RBX::Reflection::RefPropertyDescriptor::isRefPropertyDescriptor(RBX::Reflection::PropertyDescriptor const&)")
+pub fn stub_f4cf94() {
+    // IDA 0xf4cf94: jump-thunk straight to 0x70fe98 (decompiled: tail-call). Rust: delegate.
+    crate::generated_shard_t::stub_70fe98()
 }

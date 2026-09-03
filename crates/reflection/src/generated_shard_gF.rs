@@ -9,15 +9,15 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0x90c9e4 — __ZNK3RBX10Reflection14PropDescriptorINS_16OverlayDataModelEiE7GetImplIMS2_KFivEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::OverlayDataModel,int>::GetImpl<int (RBX::OverlayDataModel::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_16OverlayDataModelEiE7GetImplIMS2_KFivEE10isReadOnlyEv")]
-pub fn stub_0x90c9e4() -> ! {
-    todo!("0x90c9e4 __ZNK3RBX10Reflection14PropDescriptorINS_16OverlayDataModelEiE7GetImplIMS2_KFivEE10isReadOnlyEv")
+pub fn stub_0x90c9e4() {
+    // IDA 0x90c9e4: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x90c9e8 — __ZNK3RBX10Reflection14PropDescriptorINS_16OverlayDataModelEiE7GetImplIMS2_KFivEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::OverlayDataModel,int>::GetImpl<int (RBX::OverlayDataModel::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_16OverlayDataModelEiE7GetImplIMS2_KFivEE11isWriteOnlyEv")]
-pub fn stub_0x90c9e8() -> ! {
-    todo!("0x90c9e8 __ZNK3RBX10Reflection14PropDescriptorINS_16OverlayDataModelEiE7GetImplIMS2_KFivEE11isWriteOnlyEv")
+pub fn stub_0x90c9e8() {
+    // IDA 0x90c9e8: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x90c9ec — __ZNK3RBX10Reflection14PropDescriptorINS_16OverlayDataModelEiE7GetImplIMS2_KFivEE8getValueEPKNS0_13DescribedBaseE

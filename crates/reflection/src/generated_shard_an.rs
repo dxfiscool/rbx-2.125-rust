@@ -700,6 +700,6 @@ pub fn stub_90c9b8() {
 // 0x90c9e4 — __ZNK3RBX10Reflection14PropDescriptorINS_16OverlayDataModelEiE7GetImplIMS2_KFivEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::OverlayDataModel,int>::GetImpl<int (RBX::OverlayDataModel::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_16OverlayDataModelEiE7GetImplIMS2_KFivEE10isReadOnlyEv")]
-pub fn stub_90c9e4() -> ! {
-    todo!("0x90c9e4 RBX::Reflection::PropDescriptor<RBX::OverlayDataModel,int>::GetImpl<int (RBX::OverlayDataModel::*)(void)const>::isReadOnly(void)const")
+pub fn stub_90c9e4() {
+    // IDA 0x90c9e4: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }

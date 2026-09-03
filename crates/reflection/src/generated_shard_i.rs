@@ -55,14 +55,16 @@ pub fn stub_0x677440() -> ! {
 
 // 0x677480 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::FontSize)>::isReadOnly(void)const")]
-pub fn stub_0x677480() -> ! {
-    todo!("0x677480 RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::FontSize)>::isReadOnly(void)const")
+pub fn stub_0x677480() -> bool {
+    // IDA 0x677480: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x677484 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::FontSize)>::isWriteOnly(void)const")]
-pub fn stub_0x677484() -> ! {
-    todo!("0x677484 RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::FontSize)>::isWriteOnly(void)const")
+pub fn stub_0x677484() -> bool {
+    // IDA 0x677484: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x677488 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -91,14 +93,16 @@ pub fn stub_0x6775ec() {
 
 // 0x677618 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(std::string)>::isReadOnly(void)const")]
-pub fn stub_0x677618() -> ! {
-    todo!("0x677618 RBX::Reflection::PropDescriptor<RBX::GuiTextButton,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(std::string)>::isReadOnly(void)const")
+pub fn stub_0x677618() -> bool {
+    // IDA 0x677618: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x67761c — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(std::string)>::isWriteOnly(void)const")]
-pub fn stub_0x67761c() -> ! {
-    todo!("0x67761c RBX::Reflection::PropDescriptor<RBX::GuiTextButton,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(std::string)>::isWriteOnly(void)const")
+pub fn stub_0x67761c() -> bool {
+    // IDA 0x67761c: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x677620 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8getValueEPKNS0_13DescribedBaseE
@@ -187,14 +191,14 @@ pub fn stub_0x679c24() {
 
 // 0x679c50 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE7GetImplIMS2_KFbvEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::GetImpl<bool (RBX::TextLabel::*)(void)const>::isReadOnly(void)const")]
-pub fn stub_0x679c50() -> ! {
-    todo!("0x679c50 RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::GetImpl<bool (RBX::TextLabel::*)(void)const>::isReadOnly(void)const")
+pub fn stub_0x679c50() {
+    // IDA 0x679c50: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x679c54 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE7GetImplIMS2_KFbvEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::GetImpl<bool (RBX::TextLabel::*)(void)const>::isWriteOnly(void)const")]
-pub fn stub_0x679c54() -> ! {
-    todo!("0x679c54 RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::GetImpl<bool (RBX::TextLabel::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_0x679c54() {
+    // IDA 0x679c54: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x679c58 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE7GetImplIMS2_KFbvEE8getValueEPKNS0_13DescribedBaseE
@@ -223,14 +227,14 @@ pub fn stub_0x679ea8() {
 
 // 0x679ed4 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Vector2>::GetImpl<G3D::Vector2 (RBX::TextLabel::*)(void)const>::isReadOnly(void)const")]
-pub fn stub_0x679ed4() -> ! {
-    todo!("0x679ed4 RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Vector2>::GetImpl<G3D::Vector2 (RBX::TextLabel::*)(void)const>::isReadOnly(void)const")
+pub fn stub_0x679ed4() {
+    // IDA 0x679ed4: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x679ed8 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Vector2>::GetImpl<G3D::Vector2 (RBX::TextLabel::*)(void)const>::isWriteOnly(void)const")]
-pub fn stub_0x679ed8() -> ! {
-    todo!("0x679ed8 RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Vector2>::GetImpl<G3D::Vector2 (RBX::TextLabel::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_0x679ed8() {
+    // IDA 0x679ed8: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x679edc — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE
@@ -259,14 +263,14 @@ pub fn stub_0x67a1d8() {
 
 // 0x67a204 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::isReadOnly(void)const")]
-pub fn stub_0x67a204() -> ! {
-    todo!("0x67a204 RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::isReadOnly(void)const")
+pub fn stub_0x67a204() {
+    // IDA 0x67a204: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x67a214 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::isWriteOnly(void)const")]
-pub fn stub_0x67a214() -> ! {
-    todo!("0x67a214 RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::isWriteOnly(void)const")
+pub fn stub_0x67a214() {
+    // IDA 0x67a214: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x67a224 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE11equalValuesEPKNS0_13DescribedBaseES8_
@@ -295,8 +299,9 @@ pub fn stub_0x67a3bc() -> ! {
 
 // 0x67a3e0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::hasStringValue(void)const")]
-pub fn stub_0x67a3e0() -> ! {
-    todo!("0x67a3e0 RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::hasStringValue(void)const")
+pub fn stub_0x67a3e0() -> bool {
+    // IDA 0x67a3e0: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x67a3e4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE14getStringValueEPKNS0_13DescribedBaseE
@@ -367,14 +372,16 @@ pub fn stub_0x67a7a0() -> ! {
 
 // 0x67a7e0 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::YAlignment)>::isReadOnly(void)const")]
-pub fn stub_0x67a7e0() -> ! {
-    todo!("0x67a7e0 RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::YAlignment)>::isReadOnly(void)const")
+pub fn stub_0x67a7e0() -> bool {
+    // IDA 0x67a7e0: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x67a7e4 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::YAlignment)>::isWriteOnly(void)const")]
-pub fn stub_0x67a7e4() -> ! {
-    todo!("0x67a7e4 RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::GetSetImpl<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::YAlignment)>::isWriteOnly(void)const")
+pub fn stub_0x67a7e4() -> bool {
+    // IDA 0x67a7e4: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x67a7e8 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -403,14 +410,14 @@ pub fn stub_0x67a9ec() {
 
 // 0x67aa18 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::isReadOnly(void)const")]
-pub fn stub_0x67aa18() -> ! {
-    todo!("0x67aa18 RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::isReadOnly(void)const")
+pub fn stub_0x67aa18() {
+    // IDA 0x67aa18: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x67aa28 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::isWriteOnly(void)const")]
-pub fn stub_0x67aa28() -> ! {
-    todo!("0x67aa28 RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::isWriteOnly(void)const")
+pub fn stub_0x67aa28() {
+    // IDA 0x67aa28: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x67aa38 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE11equalValuesEPKNS0_13DescribedBaseES8_
@@ -439,8 +446,9 @@ pub fn stub_0x67abd0() -> ! {
 
 // 0x67abf4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::hasStringValue(void)const")]
-pub fn stub_0x67abf4() -> ! {
-    todo!("0x67abf4 RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::hasStringValue(void)const")
+pub fn stub_0x67abf4() -> bool {
+    // IDA 0x67abf4: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x67abf8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE14getStringValueEPKNS0_13DescribedBaseE
@@ -511,14 +519,16 @@ pub fn stub_0x67afb4() -> ! {
 
 // 0x67aff4 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::GetSetImpl<RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::XAlignment)>::isReadOnly(void)const")]
-pub fn stub_0x67aff4() -> ! {
-    todo!("0x67aff4 RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::GetSetImpl<RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::XAlignment)>::isReadOnly(void)const")
+pub fn stub_0x67aff4() -> bool {
+    // IDA 0x67aff4: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x67aff8 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::GetSetImpl<RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::XAlignment)>::isWriteOnly(void)const")]
-pub fn stub_0x67aff8() -> ! {
-    todo!("0x67aff8 RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::GetSetImpl<RBX::TextService::XAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::XAlignment)>::isWriteOnly(void)const")
+pub fn stub_0x67aff8() -> bool {
+    // IDA 0x67aff8: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x67affc — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -541,14 +551,16 @@ pub fn stub_0x67b04c() -> ! {
 
 // 0x67b160 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE10GetSetImplIMNS_12GuiTextMixinEKFbvEMS2_FvbEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::GetSetImpl<bool (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(bool)>::isReadOnly(void)const")]
-pub fn stub_0x67b160() -> ! {
-    todo!("0x67b160 RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::GetSetImpl<bool (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(bool)>::isReadOnly(void)const")
+pub fn stub_0x67b160() -> bool {
+    // IDA 0x67b160: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x67b164 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE10GetSetImplIMNS_12GuiTextMixinEKFbvEMS2_FvbEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::GetSetImpl<bool (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(bool)>::isWriteOnly(void)const")]
-pub fn stub_0x67b164() -> ! {
-    todo!("0x67b164 RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::GetSetImpl<bool (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_0x67b164() -> bool {
+    // IDA 0x67b164: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x67b168 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE10GetSetImplIMNS_12GuiTextMixinEKFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
@@ -577,14 +589,16 @@ pub fn stub_0x67b2d4() {
 
 // 0x67b300 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,float>::GetSetImpl<float (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(float)>::isReadOnly(void)const")]
-pub fn stub_0x67b300() -> ! {
-    todo!("0x67b300 RBX::Reflection::PropDescriptor<RBX::TextLabel,float>::GetSetImpl<float (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(float)>::isReadOnly(void)const")
+pub fn stub_0x67b300() -> bool {
+    // IDA 0x67b300: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x67b304 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,float>::GetSetImpl<float (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(float)>::isWriteOnly(void)const")]
-pub fn stub_0x67b304() -> ! {
-    todo!("0x67b304 RBX::Reflection::PropDescriptor<RBX::TextLabel,float>::GetSetImpl<float (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(float)>::isWriteOnly(void)const")
+pub fn stub_0x67b304() -> bool {
+    // IDA 0x67b304: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x67b308 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE

@@ -40,14 +40,16 @@ pub fn stub_0x6b92b0() -> ! {
 
 // 0x6b9444 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE10isReadOnlyEv")]
-pub fn stub_0x6b9444() -> ! {
-    todo!("0x6b9444 __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE10isReadOnlyEv")
+pub fn stub_0x6b9444() -> bool {
+    // IDA 0x6b9444: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x6b9448 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE11isWriteOnlyEv")]
-pub fn stub_0x6b9448() -> ! {
-    todo!("0x6b9448 __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE11isWriteOnlyEv")
+pub fn stub_0x6b9448() -> bool {
+    // IDA 0x6b9448: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x6b944c — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIS3_LZNS_13sVector3ValueEEEEE8getValueEPKNS0_13DescribedBaseE
@@ -106,14 +108,16 @@ pub fn stub_0x6ba394() -> ! {
 
 // 0x6ba528 — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIdLZNS_12sDoubleValueEEEEE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIdLZNS_12sDoubleValueEEEEE10isReadOnlyEv")]
-pub fn stub_0x6ba528() -> ! {
-    todo!("0x6ba528 __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIdLZNS_12sDoubleValueEEEEE10isReadOnlyEv")
+pub fn stub_0x6ba528() -> bool {
+    // IDA 0x6ba528: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x6ba52c — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIdLZNS_12sDoubleValueEEEEE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIdLZNS_12sDoubleValueEEEEE11isWriteOnlyEv")]
-pub fn stub_0x6ba52c() -> ! {
-    todo!("0x6ba52c __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIdLZNS_12sDoubleValueEEEEE11isWriteOnlyEv")
+pub fn stub_0x6ba52c() -> bool {
+    // IDA 0x6ba52c: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x6ba530 — __ZNK3RBX10Reflection9BoundPropIdLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIdLZNS_12sDoubleValueEEEEE8getValueEPKNS0_13DescribedBaseE
@@ -172,14 +176,16 @@ pub fn stub_0x6bab4c() -> ! {
 
 // 0x6bace0 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIbLZNS_10sBoolValueEEEEE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIbLZNS_10sBoolValueEEEEE10isReadOnlyEv")]
-pub fn stub_0x6bace0() -> ! {
-    todo!("0x6bace0 __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIbLZNS_10sBoolValueEEEEE10isReadOnlyEv")
+pub fn stub_0x6bace0() -> bool {
+    // IDA 0x6bace0: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x6bace4 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIbLZNS_10sBoolValueEEEEE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIbLZNS_10sBoolValueEEEEE11isWriteOnlyEv")]
-pub fn stub_0x6bace4() -> ! {
-    todo!("0x6bace4 __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIbLZNS_10sBoolValueEEEEE11isWriteOnlyEv")
+pub fn stub_0x6bace4() -> bool {
+    // IDA 0x6bace4: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x6bace8 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIbLZNS_10sBoolValueEEEEE8getValueEPKNS0_13DescribedBaseE
@@ -238,14 +244,16 @@ pub fn stub_0x6bb2f4() -> ! {
 
 // 0x6bb488 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIiLZNS_9sIntValueEEEEE10isReadOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIiLZNS_9sIntValueEEEEE10isReadOnlyEv")]
-pub fn stub_0x6bb488() -> ! {
-    todo!("0x6bb488 __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIiLZNS_9sIntValueEEEEE10isReadOnlyEv")
+pub fn stub_0x6bb488() -> bool {
+    // IDA 0x6bb488: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x6bb48c — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIiLZNS_9sIntValueEEEEE11isWriteOnlyEv
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIiLZNS_9sIntValueEEEEE11isWriteOnlyEv")]
-pub fn stub_0x6bb48c() -> ! {
-    todo!("0x6bb48c __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIiLZNS_9sIntValueEEEEE11isWriteOnlyEv")
+pub fn stub_0x6bb48c() -> bool {
+    // IDA 0x6bb48c: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x6bb490 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_5ValueIiLZNS_9sIntValueEEEEE8getValueEPKNS0_13DescribedBaseE

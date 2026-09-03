@@ -432,14 +432,14 @@ pub fn stub_0x6625f4() {
 
 // 0x662620 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::isReadOnly(void)const")]
-pub fn stub_0x662620() -> ! {
-    todo!("0x662620 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::isReadOnly(void)const")
+pub fn stub_0x662620() {
+    // IDA 0x662620: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x662630 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::isWriteOnly(void)const")]
-pub fn stub_0x662630() -> ! {
-    todo!("0x662630 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::isWriteOnly(void)const")
+pub fn stub_0x662630() {
+    // IDA 0x662630: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x662640 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE11equalValuesEPKNS0_13DescribedBaseES7_
@@ -468,8 +468,9 @@ pub fn stub_0x6627d8() -> ! {
 
 // 0x6627fc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::hasStringValue(void)const")]
-pub fn stub_0x6627fc() -> ! {
-    todo!("0x6627fc RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::hasStringValue(void)const")
+pub fn stub_0x6627fc() -> bool {
+    // IDA 0x6627fc: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x662800 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE14getStringValueEPKNS0_13DescribedBaseE
@@ -540,14 +541,16 @@ pub fn stub_0x662bbc() -> ! {
 
 // 0x662bfc — __ZNK3RBX10Reflection14PropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SurfaceSelection::*)(void)const,void (RBX::SurfaceSelection::*)(RBX::NormalId)>::isReadOnly(void)const")]
-pub fn stub_0x662bfc() -> ! {
-    todo!("0x662bfc RBX::Reflection::PropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SurfaceSelection::*)(void)const,void (RBX::SurfaceSelection::*)(RBX::NormalId)>::isReadOnly(void)const")
+pub fn stub_0x662bfc() -> bool {
+    // IDA 0x662bfc: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x662c00 — __ZNK3RBX10Reflection14PropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SurfaceSelection::*)(void)const,void (RBX::SurfaceSelection::*)(RBX::NormalId)>::isWriteOnly(void)const")]
-pub fn stub_0x662c00() -> ! {
-    todo!("0x662c00 RBX::Reflection::PropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SurfaceSelection::*)(void)const,void (RBX::SurfaceSelection::*)(RBX::NormalId)>::isWriteOnly(void)const")
+pub fn stub_0x662c00() -> bool {
+    // IDA 0x662c00: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x662c04 — __ZNK3RBX10Reflection14PropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -588,14 +591,16 @@ pub fn stub_0x663b74() -> ! {
 
 // 0x663d04 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4TeamEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Team>::isReadOnly(void)const")]
-pub fn stub_0x663d04() -> ! {
-    todo!("0x663d04 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Team>::isReadOnly(void)const")
+pub fn stub_0x663d04() -> bool {
+    // IDA 0x663d04: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x663d08 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4TeamEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Team>::isWriteOnly(void)const")]
-pub fn stub_0x663d08() -> ! {
-    todo!("0x663d08 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Team>::isWriteOnly(void)const")
+pub fn stub_0x663d08() -> bool {
+    // IDA 0x663d08: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x663d0c — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4TeamEE8getValueEPKNS0_13DescribedBaseE

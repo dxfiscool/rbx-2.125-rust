@@ -8,14 +8,16 @@ use rbx_core::SharedPtr;
 
 // 0x3e7938 — __ZNK3RBX10Reflection14PropDescriptorINS_5ShirtENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Shirt,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::Shirt::*)(void)const,void (RBX::Shirt::*)(RBX::TextureId)>::isReadOnly(void)const")]
-pub fn stub_3e7938() -> ! {
-    todo!("0x3e7938 __ZNK3RBX10Reflection14PropDescriptorINS_5ShirtENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_3e7938() -> bool {
+    // IDA 0x3e7938: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x3e793c — __ZNK3RBX10Reflection14PropDescriptorINS_5ShirtENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Shirt,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::Shirt::*)(void)const,void (RBX::Shirt::*)(RBX::TextureId)>::isWriteOnly(void)const")]
-pub fn stub_3e793c() -> ! {
-    todo!("0x3e793c __ZNK3RBX10Reflection14PropDescriptorINS_5ShirtENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+pub fn stub_3e793c() -> bool {
+    // IDA 0x3e793c: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x3e7940 — __ZNK3RBX10Reflection14PropDescriptorINS_5ShirtENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -44,14 +46,16 @@ pub fn stub_3e7c44() {
 
 // 0x3e7c70 — __ZNK3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EE15BoundPropGetSetINS_8ClothingEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Clothing>::isReadOnly(void)const")]
-pub fn stub_3e7c70() -> ! {
-    todo!("0x3e7c70 __ZNK3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EE15BoundPropGetSetINS_8ClothingEE10isReadOnlyEv")
+pub fn stub_3e7c70() -> bool {
+    // IDA 0x3e7c70: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x3e7c74 — __ZNK3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EE15BoundPropGetSetINS_8ClothingEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Clothing>::isWriteOnly(void)const")]
-pub fn stub_3e7c74() -> ! {
-    todo!("0x3e7c74 __ZNK3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EE15BoundPropGetSetINS_8ClothingEE11isWriteOnlyEv")
+pub fn stub_3e7c74() -> bool {
+    // IDA 0x3e7c74: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x3e7c78 — __ZNK3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EE15BoundPropGetSetINS_8ClothingEE8getValueEPKNS0_13DescribedBaseE
@@ -74,14 +78,16 @@ pub fn stub_3e7d10() -> ! {
 
 // 0x3e7ea4 — __ZNK3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EE15BoundPropGetSetINS_12ShirtGraphicEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::ShirtGraphic>::isReadOnly(void)const")]
-pub fn stub_3e7ea4() -> ! {
-    todo!("0x3e7ea4 __ZNK3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EE15BoundPropGetSetINS_12ShirtGraphicEE10isReadOnlyEv")
+pub fn stub_3e7ea4() -> bool {
+    // IDA 0x3e7ea4: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x3e7ea8 — __ZNK3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EE15BoundPropGetSetINS_12ShirtGraphicEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<RBX::TextureId,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::ShirtGraphic>::isWriteOnly(void)const")]
-pub fn stub_3e7ea8() -> ! {
-    todo!("0x3e7ea8 __ZNK3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EE15BoundPropGetSetINS_12ShirtGraphicEE11isWriteOnlyEv")
+pub fn stub_3e7ea8() -> bool {
+    // IDA 0x3e7ea8: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x3e7eac — __ZNK3RBX10Reflection9BoundPropINS_9TextureIdELNS0_10MutabilityE1EE15BoundPropGetSetINS_12ShirtGraphicEE8getValueEPKNS0_13DescribedBaseE
@@ -129,14 +135,16 @@ pub fn stub_3ea9f4() -> ! {
 
 // 0x3eab84 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_13CharacterMeshEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::CharacterMesh>::isReadOnly(void)const")]
-pub fn stub_3eab84() -> ! {
-    todo!("0x3eab84 __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_13CharacterMeshEE10isReadOnlyEv")
+pub fn stub_3eab84() -> bool {
+    // IDA 0x3eab84: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x3eab88 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_13CharacterMeshEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::CharacterMesh>::isWriteOnly(void)const")]
-pub fn stub_3eab88() -> ! {
-    todo!("0x3eab88 __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_13CharacterMeshEE11isWriteOnlyEv")
+pub fn stub_3eab88() -> bool {
+    // IDA 0x3eab88: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x3eab8c — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_13CharacterMeshEE8getValueEPKNS0_13DescribedBaseE
@@ -165,14 +173,14 @@ pub fn stub_3ead9c() {
 
 // 0x3eadc8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13CharacterMeshENS2_8BodyPartEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::CharacterMesh,RBX::CharacterMesh::BodyPart>::isReadOnly(void)const")]
-pub fn stub_3eadc8() -> ! {
-    todo!("0x3eadc8 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13CharacterMeshENS2_8BodyPartEE10isReadOnlyEv")
+pub fn stub_3eadc8() {
+    // IDA 0x3eadc8: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x3eadd8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13CharacterMeshENS2_8BodyPartEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::CharacterMesh,RBX::CharacterMesh::BodyPart>::isWriteOnly(void)const")]
-pub fn stub_3eadd8() -> ! {
-    todo!("0x3eadd8 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13CharacterMeshENS2_8BodyPartEE11isWriteOnlyEv")
+pub fn stub_3eadd8() {
+    // IDA 0x3eadd8: EnumPropDescriptor::isReadOnly/isWriteOnly -- forwards through the bound member descriptor at +44 (`(**(this+44))(this+44)`, decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x3eade8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13CharacterMeshENS2_8BodyPartEE11equalValuesEPKNS0_13DescribedBaseES7_
@@ -201,8 +209,9 @@ pub fn stub_3eaf80() -> ! {
 
 // 0x3eafa4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13CharacterMeshENS2_8BodyPartEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::CharacterMesh,RBX::CharacterMesh::BodyPart>::hasStringValue(void)const")]
-pub fn stub_3eafa4() -> ! {
-    todo!("0x3eafa4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13CharacterMeshENS2_8BodyPartEE14hasStringValueEv")
+pub fn stub_3eafa4() -> bool {
+    // IDA 0x3eafa4: EnumPropDescriptor::hasStringValue -- hardcoded `return 1` (decompiled 0x10244/0x10dc8/0x11650).
+    true
 }
 
 // 0x3eafa8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13CharacterMeshENS2_8BodyPartEE14getStringValueEPKNS0_13DescribedBaseE
@@ -281,14 +290,16 @@ pub fn stub_3eb3d4() -> ! {
 
 // 0x3eb414 — __ZNK3RBX10Reflection14PropDescriptorINS_13CharacterMeshENS2_8BodyPartEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::CharacterMesh,RBX::CharacterMesh::BodyPart>::GetSetImpl<RBX::CharacterMesh::BodyPart (RBX::CharacterMesh::*)(void)const,void (RBX::CharacterMesh::*)(RBX::CharacterMesh::BodyPart)>::isReadOnly(void)const")]
-pub fn stub_3eb414() -> ! {
-    todo!("0x3eb414 __ZNK3RBX10Reflection14PropDescriptorINS_13CharacterMeshENS2_8BodyPartEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_3eb414() -> bool {
+    // IDA 0x3eb414: GetSetImpl::isReadOnly -- hardcoded `return 0` (decompiled 0xfcb4/0x106b4/0x1084c). Get/set-bound props are never read-only.
+    false
 }
 
 // 0x3eb418 — __ZNK3RBX10Reflection14PropDescriptorINS_13CharacterMeshENS2_8BodyPartEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::CharacterMesh,RBX::CharacterMesh::BodyPart>::GetSetImpl<RBX::CharacterMesh::BodyPart (RBX::CharacterMesh::*)(void)const,void (RBX::CharacterMesh::*)(RBX::CharacterMesh::BodyPart)>::isWriteOnly(void)const")]
-pub fn stub_3eb418() -> ! {
-    todo!("0x3eb418 __ZNK3RBX10Reflection14PropDescriptorINS_13CharacterMeshENS2_8BodyPartEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+pub fn stub_3eb418() -> bool {
+    // IDA 0x3eb418: GetSetImpl::isWriteOnly -- hardcoded `return 0` (decompiled 0xfcb8/0x106b8/0x10850). Get/set-bound props are never write-only.
+    false
 }
 
 // 0x3eb41c — __ZNK3RBX10Reflection14PropDescriptorINS_13CharacterMeshENS2_8BodyPartEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -360,8 +371,8 @@ pub fn stub_3ee584() -> ! {
 
 // 0x3ee6e8 — __ZNK3RBX10Reflection15RemoteEventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::isScriptable(void)const")]
-pub fn stub_3ee6e8() -> ! {
-    todo!("0x3ee6e8 __ZNK3RBX10Reflection15RemoteEventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEE12isScriptableEv")
+pub fn stub_3ee6e8() {
+    // IDA 0x3ee6e8: RemoteEventDesc::isScriptable -- `return *(this+48) & 1` permission-flags read (decompiled 0x39f7ac/0x39fdf8). Flags word unmodeled: cutover no-op.
 }
 
 // 0x3ee6f0 — __ZNK3RBX10Reflection15RemoteEventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEE11isBroadcastEv
@@ -540,14 +551,16 @@ pub fn stub_3f2130() -> ! {
 
 // 0x3f22c0 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_13ClickDetectorEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::ClickDetector>::isReadOnly(void)const")]
-pub fn stub_3f22c0() -> ! {
-    todo!("0x3f22c0 __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_13ClickDetectorEE10isReadOnlyEv")
+pub fn stub_3f22c0() -> bool {
+    // IDA 0x3f22c0: BoundPropGetSet::isReadOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x3f22c4 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_13ClickDetectorEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::ClickDetector>::isWriteOnly(void)const")]
-pub fn stub_3f22c4() -> ! {
-    todo!("0x3f22c4 __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_13ClickDetectorEE11isWriteOnlyEv")
+pub fn stub_3f22c4() -> bool {
+    // IDA 0x3f22c4: BoundPropGetSet::isWriteOnly -- hardcoded `return 0` (decompiled 0x659d38/0x659d3c SurfaceGetSet, 0x6ba528/0x6ba52c BoundPropGetSet).
+    false
 }
 
 // 0x3f22c8 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_13ClickDetectorEE8getValueEPKNS0_13DescribedBaseE
@@ -576,8 +589,8 @@ pub fn stub_3f23e4() -> ! {
 
 // 0x3f2548 — __ZNK3RBX10Reflection15RemoteEventDescINS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::isScriptable(void)const")]
-pub fn stub_3f2548() -> ! {
-    todo!("0x3f2548 __ZNK3RBX10Reflection15RemoteEventDescINS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE12isScriptableEv")
+pub fn stub_3f2548() {
+    // IDA 0x3f2548: RemoteEventDesc::isScriptable -- `return *(this+48) & 1` permission-flags read (decompiled 0x39f7ac/0x39fdf8). Flags word unmodeled: cutover no-op.
 }
 
 // 0x3f2550 — __ZNK3RBX10Reflection15RemoteEventDescINS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE11isBroadcastEv

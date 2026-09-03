@@ -49,8 +49,9 @@ pub fn stub_0x6f3000() -> ! {
 // 0x6f3004 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector3EE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector3EE14hasStringValueEv")]
-pub fn stub_0x6f3004() -> ! {
-    todo!("0x6f3004 RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3>::hasStringValue(void)const")
+pub fn stub_0x6f3004() -> bool {
+    // IDA 0x6f3004: TypedPropertyDescriptor::hasStringValue -- per-type constant `return 1` (decompiled tails: 1 for most, 0 for BrickColor/SystemAddress/CoordinateFrame/Region3int16/Ref).
+    true
 }
 
 // 0x6f3008 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector3EE14getStringValueEPKNS0_13DescribedBaseE
@@ -77,8 +78,9 @@ pub fn stub_0x6f3060() -> ! {
 // 0x6f3064 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE14hasStringValueEv")]
-pub fn stub_0x6f3064() -> ! {
-    todo!("0x6f3064 RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2>::hasStringValue(void)const")
+pub fn stub_0x6f3064() -> bool {
+    // IDA 0x6f3064: TypedPropertyDescriptor::hasStringValue -- per-type constant `return 1` (decompiled tails: 1 for most, 0 for BrickColor/SystemAddress/CoordinateFrame/Region3int16/Ref).
+    true
 }
 
 // 0x6f3068 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE14getStringValueEPKNS0_13DescribedBaseE
@@ -434,8 +436,9 @@ pub fn stub_0x6f5f50() -> ! {
 // 0x6f5f54 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D12Vector2int16EE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2int16>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D12Vector2int16EE14hasStringValueEv")]
-pub fn stub_0x6f5f54() -> ! {
-    todo!("0x6f5f54 RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2int16>::hasStringValue(void)const")
+pub fn stub_0x6f5f54() -> bool {
+    // IDA 0x6f5f54: TypedPropertyDescriptor::hasStringValue -- per-type constant `return 1` (decompiled tails: 1 for most, 0 for BrickColor/SystemAddress/CoordinateFrame/Region3int16/Ref).
+    true
 }
 
 // 0x6f5f58 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D12Vector2int16EE14getStringValueEPKNS0_13DescribedBaseE
@@ -504,8 +507,9 @@ pub fn stub_0x6f6354() -> ! {
 // 0x6f6358 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_5UDim2EE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::UDim2>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorINS_5UDim2EE14hasStringValueEv")]
-pub fn stub_0x6f6358() -> ! {
-    todo!("0x6f6358 RBX::Reflection::TypedPropertyDescriptor<RBX::UDim2>::hasStringValue(void)const")
+pub fn stub_0x6f6358() -> bool {
+    // IDA 0x6f6358: TypedPropertyDescriptor::hasStringValue -- per-type constant `return 1` (decompiled tails: 1 for most, 0 for BrickColor/SystemAddress/CoordinateFrame/Region3int16/Ref).
+    true
 }
 
 // 0x6f635c — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_5UDim2EE14getStringValueEPKNS0_13DescribedBaseE
@@ -560,8 +564,9 @@ pub fn stub_0x6f661c() -> ! {
 // 0x6f6620 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_5FacesEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Faces>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorINS_5FacesEE14hasStringValueEv")]
-pub fn stub_0x6f6620() -> ! {
-    todo!("0x6f6620 RBX::Reflection::TypedPropertyDescriptor<RBX::Faces>::hasStringValue(void)const")
+pub fn stub_0x6f6620() -> bool {
+    // IDA 0x6f6620: TypedPropertyDescriptor::hasStringValue -- per-type constant `return 1` (decompiled tails: 1 for most, 0 for BrickColor/SystemAddress/CoordinateFrame/Region3int16/Ref).
+    true
 }
 
 // 0x6f6624 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_5FacesEE14getStringValueEPKNS0_13DescribedBaseE
@@ -616,8 +621,9 @@ pub fn stub_0x6f67c4() -> ! {
 // 0x6f67c8 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_4AxesEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Axes>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorINS_4AxesEE14hasStringValueEv")]
-pub fn stub_0x6f67c8() -> ! {
-    todo!("0x6f67c8 RBX::Reflection::TypedPropertyDescriptor<RBX::Axes>::hasStringValue(void)const")
+pub fn stub_0x6f67c8() -> bool {
+    // IDA 0x6f67c8: TypedPropertyDescriptor::hasStringValue -- per-type constant `return 1` (decompiled tails: 1 for most, 0 for BrickColor/SystemAddress/CoordinateFrame/Region3int16/Ref).
+    true
 }
 
 // 0x6f67cc — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_4AxesEE14getStringValueEPKNS0_13DescribedBaseE
@@ -672,8 +678,9 @@ pub fn stub_0x6f696c() -> ! {
 // 0x6f6970 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D6Color3EE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Color3>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D6Color3EE14hasStringValueEv")]
-pub fn stub_0x6f6970() -> ! {
-    todo!("0x6f6970 RBX::Reflection::TypedPropertyDescriptor<G3D::Color3>::hasStringValue(void)const")
+pub fn stub_0x6f6970() -> bool {
+    // IDA 0x6f6970: TypedPropertyDescriptor::hasStringValue -- per-type constant `return 1` (decompiled tails: 1 for most, 0 for BrickColor/SystemAddress/CoordinateFrame/Region3int16/Ref).
+    true
 }
 
 // 0x6f6974 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D6Color3EE14getStringValueEPKNS0_13DescribedBaseE
@@ -728,8 +735,9 @@ pub fn stub_0x6f6bbc() -> ! {
 // 0x6f6bc0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6RbxRayEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::RbxRay>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6RbxRayEE14hasStringValueEv")]
-pub fn stub_0x6f6bc0() -> ! {
-    todo!("0x6f6bc0 RBX::Reflection::TypedPropertyDescriptor<RBX::RbxRay>::hasStringValue(void)const")
+pub fn stub_0x6f6bc0() -> bool {
+    // IDA 0x6f6bc0: TypedPropertyDescriptor::hasStringValue -- per-type constant `return 1` (decompiled tails: 1 for most, 0 for BrickColor/SystemAddress/CoordinateFrame/Region3int16/Ref).
+    true
 }
 
 // 0x6f6bc4 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6RbxRayEE14getStringValueEPKNS0_13DescribedBaseE
@@ -784,8 +792,9 @@ pub fn stub_0x6f6e44() -> ! {
 // 0x6f6e48 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10BrickColorEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10BrickColorEE14hasStringValueEv")]
-pub fn stub_0x6f6e48() -> ! {
-    todo!("0x6f6e48 RBX::Reflection::TypedPropertyDescriptor<RBX::BrickColor>::hasStringValue(void)const")
+pub fn stub_0x6f6e48() -> bool {
+    // IDA 0x6f6e48: TypedPropertyDescriptor::hasStringValue -- per-type constant `return 0` (decompiled tails: 1 for most, 0 for BrickColor/SystemAddress/CoordinateFrame/Region3int16/Ref).
+    false
 }
 
 // 0x6f6e4c — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10BrickColorEE14getStringValueEPKNS0_13DescribedBaseE
@@ -840,7 +849,8 @@ pub fn stub_0x6f6fd4() -> ! {
 // 0x6f6fd8 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_13SystemAddressEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::SystemAddress>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorINS_13SystemAddressEE14hasStringValueEv")]
-pub fn stub_0x6f6fd8() -> ! {
-    todo!("0x6f6fd8 RBX::Reflection::TypedPropertyDescriptor<RBX::SystemAddress>::hasStringValue(void)const")
+pub fn stub_0x6f6fd8() -> bool {
+    // IDA 0x6f6fd8: TypedPropertyDescriptor::hasStringValue -- per-type constant `return 0` (decompiled tails: 1 for most, 0 for BrickColor/SystemAddress/CoordinateFrame/Region3int16/Ref).
+    false
 }
 

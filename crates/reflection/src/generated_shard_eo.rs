@@ -579,14 +579,14 @@ pub fn stub_70a410() {
 
 // 0x70a440 — __ZNK3RBX10Reflection17RefPropDescriptorINS_8InstanceES2_E10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Instance,RBX::Instance>::isReadOnly(void)const")]
-pub fn stub_70a440() -> ! {
-    todo!("0x70a440 RBX::Reflection::RefPropDescriptor<RBX::Instance,RBX::Instance>::isReadOnly(void)const")
+pub fn stub_70a440() {
+    // IDA 0x70a440: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x70a450 — __ZNK3RBX10Reflection17RefPropDescriptorINS_8InstanceES2_E11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Instance,RBX::Instance>::isWriteOnly(void)const")]
-pub fn stub_70a450() -> ! {
-    todo!("0x70a450 RBX::Reflection::RefPropDescriptor<RBX::Instance,RBX::Instance>::isWriteOnly(void)const")
+pub fn stub_70a450() {
+    // IDA 0x70a450: isReadOnly/isWriteOnly -- virtual forward to the bound member descriptor (cf. EnumPropDescriptor shape at decompiled 0x10064/0x10074). Member descriptors unmodeled: cutover no-op.
 }
 
 // 0x70a460 — __ZNK3RBX10Reflection17RefPropDescriptorINS_8InstanceES2_E11equalValuesEPKNS0_13DescribedBaseES6_
