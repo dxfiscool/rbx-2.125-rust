@@ -269,22 +269,33 @@ pub fn stub_988140() -> ! {
 // 0x988ad8 — __ZN3RBX7Network10Compressor13writeRotationERN6RakNet9BitStreamERKN3G3D7Matrix3ENS1_15CompressionTypeE
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::Network::Compressor::writeRotation(RakNet::BitStream &,G3D::Matrix3 const&,RBX::Network::Compressor::CompressionType)")]
-pub fn stub_988ad8() -> ! {
-    todo!("0x988ad8 __ZN3RBX7Network10Compressor13writeRotationERN6RakNet9BitStreamERKN3G3D7Matrix3ENS1_15CompressionTypeE")
+pub fn stub_988ad8(
+    stream: &mut crate::bitstream::BitStream,
+    quat: [f32; 4],
+    compression: crate::physics::CompressionType,
+) {
+    // IDA 0x988ad8: normalize the primitive quaternion, then `WriteNormQuat` or custom `writeNormQuat` by type.
+    crate::physics::write_rotation(stream, quat, compression);
 }
 
 // 0x988c40 — __ZN3RBX7Network10Compressor16writeTranslationERN6RakNet9BitStreamERKN3G3D7Vector3ENS1_15CompressionTypeE
 // type: unsigned int __fastcall(RakNet::BitStream *this, __guard **, int)
 #[doc(alias = "RBX::Network::Compressor::writeTranslation(RakNet::BitStream &,G3D::Vector3 const&,RBX::Network::Compressor::CompressionType)")]
-pub fn stub_988c40() -> ! {
-    todo!("0x988c40 __ZN3RBX7Network10Compressor16writeTranslationERN6RakNet9BitStreamERKN3G3D7Vector3ENS1_15CompressionTypeE")
+pub fn stub_988c40(
+    stream: &mut crate::bitstream::BitStream,
+    v: [f32; 3],
+    requested: crate::physics::CompressionType,
+) {
+    // IDA 0x988c40: `Quantized` downgrades to `Vector` unless x/z fit +/-1024 and y fits +/-512.
+    crate::physics::write_translation(stream, v, requested);
 }
 
 // 0x988e14 — __ZN3RBX7Network10Compressor12readRotationERN6RakNet9BitStreamERN3G3D7Matrix3E
 // type: void __fastcall(RBX::Network::Compressor *this, RakNet::BitStream *, G3D::Matrix3 *)
 #[doc(alias = "RBX::Network::Compressor::readRotation(RakNet::BitStream &,G3D::Matrix3 &)")]
-pub fn stub_988e14() -> ! {
-    todo!("0x988e14 __ZN3RBX7Network10Compressor12readRotationERN6RakNet9BitStreamERN3G3D7Matrix3E")
+pub fn stub_988e14(stream: &mut crate::bitstream::BitStream, out: &mut [f32; 4]) {
+    // IDA 0x988e14: `readNormQuat`-family read into the quaternion; the trailing `toRotationMatrix` stays engine-side.
+    crate::physics::read_rotation(stream, out);
 }
 
 // 0x989114 — __ZN3RBX7Network10Compressor19readCompressionTypeERN6RakNet9BitStreamE
@@ -297,8 +308,9 @@ pub fn stub_989114() -> ! {
 // 0x989268 — __ZN3RBX7Network10Compressor15readTranslationERN6RakNet9BitStreamERN3G3D7Vector3E
 // type: void __fastcall(RBX::Network::Compressor *this, RakNet::BitStream *, G3D::Vector3 *)
 #[doc(alias = "RBX::Network::Compressor::readTranslation(RakNet::BitStream &,G3D::Vector3 &)")]
-pub fn stub_989268() -> ! {
-    todo!("0x989268 __ZN3RBX7Network10Compressor15readTranslationERN6RakNet9BitStreamERN3G3D7Vector3E")
+pub fn stub_989268(stream: &mut crate::bitstream::BitStream, out: &mut [f32; 3]) {
+    // IDA 0x989268: 2-bit compression tag, then the matching translation layout.
+    crate::physics::read_translation(stream, out);
 }
 
 // 0x989738 — __ZN3RBX7Network10Compressor15writeCompressedERN6RakNet9BitStreamEPKcj
@@ -318,57 +330,78 @@ pub fn stub_98a0e0() -> ! {
 // 0x98a7e0 — __ZN6RakNet9BitStream13WriteNormQuatIfEEvT_S2_S2_S2_
 // type: int __fastcall(RakNet::BitStream *, float, int, int, float32_t)
 #[doc(alias = "void RakNet::BitStream::WriteNormQuat<float>(float,float,float,float)")]
-pub fn stub_98a7e0() -> ! {
-    todo!("0x98a7e0 __ZN6RakNet9BitStream13WriteNormQuatIfEEvT_S2_S2_S2_")
+pub fn stub_98a7e0(stream: &mut crate::bitstream::BitStream, w: f32, x: f32, y: f32, z: f32) {
+    // IDA 0x98a7e0: four sign bits, then `u16(|c| * 65535)` magnitudes for x, y, z (w rebuilt on read).
+    stream.write_norm_quat(w, x, y, z);
 }
 
 // 0x98ae20 — __ZN3RBX7Network16CustomSerializer13writeNormQuatEbRKfS3_S3_S3_RN6RakNet9BitStreamE
 // type: unsigned int __fastcall(RBX::Network::CustomSerializer *this, float *, float *, float *, const float *, RakNet::BitStream *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::CustomSerializer::writeNormQuat(bool,float const&,float const&,float const&,float const&,RakNet::BitStream &)")]
-pub fn stub_98ae20() -> ! {
-    todo!("0x98ae20 __ZN3RBX7Network16CustomSerializer13writeNormQuatEbRKfS3_S3_S3_RN6RakNet9BitStreamE")
+pub fn stub_98ae20(
+    heavy: bool,
+    w: f32,
+    x: f32,
+    y: f32,
+    z: f32,
+    stream: &mut crate::bitstream::BitStream,
+) {
+    // IDA 0x98ae20: heavy flag + w sign, then per-component sign + biased magnitude (8 bits over 255 heavy, 16 over 32767).
+    crate::custom_serializer::write_norm_quat(heavy, w, x, y, z, stream);
 }
 
 // 0x98afec — __ZN6RakNet9BitStream11WriteVectorIfEEvT_S2_S2_
 // type: int __fastcall(int, __int32, int, int)
 #[doc(alias = "void RakNet::BitStream::WriteVector<float>(float,float,float)")]
-pub fn stub_98afec() -> ! {
-    todo!("0x98afec __ZN6RakNet9BitStream11WriteVectorIfEEvT_S2_S2_")
+pub fn stub_98afec(stream: &mut crate::bitstream::BitStream, x: f32, y: f32, z: f32) {
+    // IDA 0x98afec: three `Write<float>` (big-endian) in order.
+    stream.write_vector3([x, y, z]);
 }
 
 // 0x98b0e8 — __ZN6RakNet9BitStream12ReadNormQuatIfEEbRT_S3_S3_S3_
 // type: int __fastcall(unsigned int *, int, float *, __guard *, __int32 *)
 #[doc(alias = "bool RakNet::BitStream::ReadNormQuat<float>(float &,float &,float &,float &)")]
-pub fn stub_98b0e8() -> ! {
-    todo!("0x98b0e8 __ZN6RakNet9BitStream12ReadNormQuatIfEEbRT_S3_S3_S3_")
+pub fn stub_98b0e8(stream: &mut crate::bitstream::BitStream) -> Option<[f32; 4]> {
+    // IDA 0x98b0e8: four sign bits (clear on short read), three u16 magnitudes, w from the unit constraint.
+    stream.read_norm_quat()
 }
 
 // 0x98b2a8 — __ZN3RBX7Network16CustomSerializer12readNormQuatERfS2_S2_S2_RN6RakNet9BitStreamE
 // type: int __fastcall(__guard *this, float *, float *, int, RakNet::BitStream *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::CustomSerializer::readNormQuat(float &,float &,float &,float &,RakNet::BitStream &)")]
-pub fn stub_98b2a8() -> ! {
-    todo!("0x98b2a8 __ZN3RBX7Network16CustomSerializer12readNormQuatERfS2_S2_S2_RN6RakNet9BitStreamE")
+pub fn stub_98b2a8(
+    stream: &mut crate::bitstream::BitStream,
+    w: &mut f32,
+    x: &mut f32,
+    y: &mut f32,
+    z: &mut f32,
+) {
+    // IDA 0x98b2a8: heavy flag, w sign, per-component sign + biased magnitude; short reads leave that out-param untouched.
+    crate::custom_serializer::read_norm_quat(stream, w, x, y, z);
 }
 
 // 0x98b51c — __ZN6RakNet9BitStream10ReadVectorIfEEbRT_S3_S3_
 // type: int __fastcall(int, __int32 *, __int32 *, unsigned __int32 *)
 #[doc(alias = "bool RakNet::BitStream::ReadVector<float>(float &,float &,float &)")]
-pub fn stub_98b51c() -> ! {
-    todo!("0x98b51c __ZN6RakNet9BitStream10ReadVectorIfEEbRT_S3_S3_")
+pub fn stub_98b51c(stream: &mut crate::bitstream::BitStream) -> Option<[f32; 3]> {
+    // IDA 0x98b51c: three `Read<float>` in order; short reads fail without a partial out.
+    stream.read_vector3()
 }
 
 // 0x998364 — __ZN6RakNet9BitStream4ReadIfEEbRT_
 // type: int __fastcall(RakNet::BitStream *, unsigned __int8 *, int, int, __guard *, int, int, int, int)
 #[doc(alias = "bool RakNet::BitStream::Read<float>(float &)")]
-pub fn stub_998364() -> ! {
-    todo!("0x998364 __ZN6RakNet9BitStream4ReadIfEEbRT_")
+pub fn stub_998364(stream: &mut crate::bitstream::BitStream) -> Option<f32> {
+    // IDA 0x998364: `ReadBits(..., 32, 1)` + `ReverseBytes` — big-endian `f32` bits.
+    stream.read_f32()
 }
 
 // 0x998490 — __ZN6RakNet9BitStream5WriteItEEvRKT_
 // type: void __fastcall(RakNet::BitStream *, unsigned __int8 *, int, unsigned int, __guard *, int, int, int, int)
 #[doc(alias = "void RakNet::BitStream::Write<unsigned short>(unsigned short const&)")]
-pub fn stub_998490() -> ! {
-    todo!("0x998490 __ZN6RakNet9BitStream5WriteItEEvRKT_")
+pub fn stub_998490(stream: &mut crate::bitstream::BitStream, value: u16) {
+    // IDA 0x998490: `ReverseBytes` + `WriteBits(..., 16, 1)` — big-endian.
+    stream.write_u16(value);
 }
 
 // 0x9985a8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15NetworkSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_

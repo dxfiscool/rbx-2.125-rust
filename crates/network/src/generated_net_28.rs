@@ -127,43 +127,49 @@ pub fn stub_f5ee54() -> ! {
 // 0xf5f384 — j___ZN6RakNet9BitStream10ReadVectorIfEEbRT_S3_S3_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RakNet::BitStream::ReadVector<float>(float &,float &,float &)")]
-pub fn stub_f5f384() -> ! {
-    todo!("0xf5f384 bool RakNet::BitStream::ReadVector<float>(float &,float &,float &)")
+pub fn stub_f5f384(stream: &mut crate::bitstream::BitStream) -> Option<[f32; 3]> {
+    // Thunk (IDA 0xf5f384 `LDR PC`): tail-jumps to `ReadVector<float>` (0x98b51c).
+    stream.read_vector3()
 }
 
 // 0xf5f394 — j___ZN6RakNet9BitStream11WriteVectorIfEEvT_S2_S2_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "void RakNet::BitStream::WriteVector<float>(float,float,float)")]
-pub fn stub_f5f394() -> ! {
-    todo!("0xf5f394 void RakNet::BitStream::WriteVector<float>(float,float,float)")
+pub fn stub_f5f394(stream: &mut crate::bitstream::BitStream, x: f32, y: f32, z: f32) {
+    // Thunk (IDA 0xf5f394): tail-jumps to `WriteVector<float>` (0x98afec).
+    stream.write_vector3([x, y, z]);
 }
 
 // 0xf5f3a4 — j___ZN6RakNet9BitStream12ReadNormQuatIfEEbRT_S3_S3_S3_
 // type: int __fastcall(int, int, int, __guard *, int)
 #[doc(alias = "bool RakNet::BitStream::ReadNormQuat<float>(float &,float &,float &,float &)")]
-pub fn stub_f5f3a4() -> ! {
-    todo!("0xf5f3a4 bool RakNet::BitStream::ReadNormQuat<float>(float &,float &,float &,float &)")
+pub fn stub_f5f3a4(stream: &mut crate::bitstream::BitStream) -> Option<[f32; 4]> {
+    // Thunk (IDA 0xf5f3a4): tail-jumps to `ReadNormQuat<float>` (0x98b0e8).
+    stream.read_norm_quat()
 }
 
 // 0xf5f3b4 — j___ZN6RakNet9BitStream13WriteNormQuatIfEEvT_S2_S2_S2_
 // type: int __fastcall(int, int, int, int, float)
 #[doc(alias = "void RakNet::BitStream::WriteNormQuat<float>(float,float,float,float)")]
-pub fn stub_f5f3b4() -> ! {
-    todo!("0xf5f3b4 void RakNet::BitStream::WriteNormQuat<float>(float,float,float,float)")
+pub fn stub_f5f3b4(stream: &mut crate::bitstream::BitStream, w: f32, x: f32, y: f32, z: f32) {
+    // Thunk (IDA 0xf5f3b4): tail-jumps to `WriteNormQuat<float>` (0x98a7e0).
+    stream.write_norm_quat(w, x, y, z);
 }
 
 // 0xf5f3c4 — j___ZN6RakNet9BitStream4ReadIfEEbRT_
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
 #[doc(alias = "bool RakNet::BitStream::Read<float>(float &)")]
-pub fn stub_f5f3c4() -> ! {
-    todo!("0xf5f3c4 bool RakNet::BitStream::Read<float>(float &)")
+pub fn stub_f5f3c4(stream: &mut crate::bitstream::BitStream) -> Option<f32> {
+    // Thunk (IDA 0xf5f3c4): tail-jumps to `Read<float>` (0x998364).
+    stream.read_f32()
 }
 
 // 0xf5f3d4 — j___ZN6RakNet9BitStream5WriteItEEvRKT_
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
 #[doc(alias = "void RakNet::BitStream::Write<unsigned short>(unsigned short const&)")]
-pub fn stub_f5f3d4() -> ! {
-    todo!("0xf5f3d4 void RakNet::BitStream::Write<unsigned short>(unsigned short const&)")
+pub fn stub_f5f3d4(stream: &mut crate::bitstream::BitStream, value: u16) {
+    // Thunk (IDA 0xf5f3d4): tail-jumps to `Write<unsigned short>` (0x998490).
+    stream.write_u16(value);
 }
 
 // 0xf5f414 — j___ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob11updateStatsERSt4pairIKN6RakNet13SystemAddressENS2_15ConnectionStatsEE
@@ -372,8 +378,9 @@ pub fn stub_f5fc34() -> ! {
 // 0xf5fd14 — j___ZN6RakNet9BitStream5WriteIfEEvRKT_
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
 #[doc(alias = "void RakNet::BitStream::Write<float>(float const&)")]
-pub fn stub_f5fd14() -> ! {
-    todo!("0xf5fd14 void RakNet::BitStream::Write<float>(float const&)")
+pub fn stub_f5fd14(stream: &mut crate::bitstream::BitStream, value: f32) {
+    // Thunk (IDA 0xf5fd14): tail-jumps to `Write<float>` (0x9c3488).
+    stream.write_f32(value);
 }
 
 // 0xf60104 — j___ZN3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EEC2IN6RakNet13SystemAddressEN5boost10shared_ptrINS2_17ConcurrentRakPeerEEEPNS_15NetworkSettingsEbEET_T0_T1_T2_

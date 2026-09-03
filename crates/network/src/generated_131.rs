@@ -44,8 +44,9 @@ pub fn stub_9bebd8() -> ! {
 // 0x9bedec — __ZN3RBX7Network16CustomSerializer10readVectorERfS2_S2_RN6RakNet9BitStreamE
 // type: int __fastcall(RBX::Network::CustomSerializer *this, float *, float *, float *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::CustomSerializer::readVector(float &,float &,float &,RakNet::BitStream &)")]
-pub fn stub_9bedec() -> ! {
-    todo!("0x9bedec __ZN3RBX7Network16CustomSerializer10readVectorERfS2_S2_RN6RakNet9BitStreamE")
+pub fn stub_9bedec(stream: &mut crate::bitstream::BitStream, out: &mut [f32; 3]) -> bool {
+    // IDA 0x9bedec: `CustomSerializer::readVector` — compression-gated component read into `out`.
+    crate::custom_serializer::read_vector(stream, out)
 }
 
 // 0x9bfa90 — __ZN3RBX7Network13PhysicsSender11sendTouchesE14PacketPriority
@@ -191,15 +192,23 @@ pub fn stub_9c300c() -> ! {
 // 0x9c30ac — __ZN3RBX7Network16CustomSerializer11writeVectorEbRKfS3_S3_RN6RakNet9BitStreamE
 // type: unsigned int __fastcall(RBX::Network::CustomSerializer *this, __int32 *, float *, float *, RakNet::BitStream *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::CustomSerializer::writeVector(bool,float const&,float const&,float const&,RakNet::BitStream &)")]
-pub fn stub_9c30ac() -> ! {
-    todo!("0x9c30ac __ZN3RBX7Network16CustomSerializer11writeVectorEbRKfS3_S3_RN6RakNet9BitStreamE")
+pub fn stub_9c30ac(
+    heavy: bool,
+    x: f32,
+    y: f32,
+    z: f32,
+    stream: &mut crate::bitstream::BitStream,
+) {
+    // IDA 0x9c30ac: `CustomSerializer::writeVector` — heavy/light component packing.
+    crate::custom_serializer::write_vector(heavy, x, y, z, stream);
 }
 
 // 0x9c3488 — __ZN6RakNet9BitStream5WriteIfEEvRKT_
 // type: void __fastcall(RakNet::BitStream *, unsigned __int8 *, int, unsigned int, __guard *, int, int, int, int)
 #[doc(alias = "void RakNet::BitStream::Write<float>(float const&)")]
-pub fn stub_9c3488() -> ! {
-    todo!("0x9c3488 __ZN6RakNet9BitStream5WriteIfEEvRKT_")
+pub fn stub_9c3488(stream: &mut crate::bitstream::BitStream, value: f32) {
+    // IDA 0x9c3488: `Write<float>` template — `ReverseBytes` + `WriteBits(..., 32, 1)`, big-endian.
+    stream.write_f32(value);
 }
 
 // 0x9c35a0 — __ZN3RBX11IndexedTree23visitConstMeAndChildrenINS_8AssemblyEN5boost3_bi6bind_tIvNS3_4_mfi3mf2IvNS_7Network13PhysicsSenderEPN6RakNet9BitStreamEPKS2_EENS4_5list3INS4_5valueIPS9_EENSH_ISC_EENS3_3argILi1EEEEEEEEEvT0_
