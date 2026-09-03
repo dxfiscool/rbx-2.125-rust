@@ -1,0 +1,682 @@
+// Auto-generated skeletons for rbx-datamodel — from ida/export.json
+// Filter: RBX Tool/MouseCommand/FactoryProduct<Tool|Flag|Toolbar|ModelInstance>/FWPVInstance remainder (datamodel-adjacent, outside main Instance|DataModel|Workspace|Part|Model|Humanoid|Game filter); EA-sorted asc, NOT stubbed in any crate
+// Source: ida/export.json (85545 funcs, base 0x4000)
+// Batch: 100 stubs | range 0xf22f18..0xf4bd14 | union remainder after batch: 12
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; stripped from alias
+
+#![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
+
+use rbx_core::SharedPtr;
+
+// 0xf22f18 — __ZN3RBX7FWFinalINS_12FWPVInstanceEED2Ev$shim
+#[doc(alias = "__ZN3RBX7FWFinalINS_12FWPVInstanceEED2Ev$shim")]
+pub fn stub_0xf22f18() -> ! {
+    todo!("0xf22f18 __ZN3RBX7FWFinalINS_12FWPVInstanceEED2Ev$shim")
+}
+
+// 0xf235f0 — __ZNK3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7Creator12getClassNameEv$shim
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7Creator12getClassNameEv$shim")]
+pub fn stub_0xf235f0() -> ! {
+    todo!("0xf235f0 __ZNK3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7Creator12getClassNameEv$shim")
+}
+
+// 0xf235fc — __ZN3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7CreatorD2Ev$shim
+#[doc(alias = "__ZN3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7CreatorD2Ev$shim")]
+pub fn stub_0xf235fc() -> ! {
+    todo!("0xf235fc __ZN3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7CreatorD2Ev$shim")
+}
+
+// 0xf23c20 — __ZNK3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7Creator12getClassNameEv$shim
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7Creator12getClassNameEv$shim")]
+pub fn stub_0xf23c20() -> ! {
+    todo!("0xf23c20 __ZNK3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7Creator12getClassNameEv$shim")
+}
+
+// 0xf23c2c — __ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7CreatorD2Ev$shim
+#[doc(alias = "__ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7CreatorD2Ev$shim")]
+pub fn stub_0xf23c2c() -> ! {
+    todo!("0xf23c2c __ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7CreatorD2Ev$shim")
+}
+
+// 0xf23c38 — __ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED0Ev$shim
+#[doc(alias = "__ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED0Ev$shim")]
+pub fn stub_0xf23c38() -> ! {
+    todo!("0xf23c38 __ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED0Ev$shim")
+}
+
+// 0xf24fa0 — __ZN3RBX14FactoryProductINS_7ToolbarENS_8InstanceELZNS_8sToolbarEES2_E7CreatorD2Ev$shim
+#[doc(alias = "__ZN3RBX14FactoryProductINS_7ToolbarENS_8InstanceELZNS_8sToolbarEES2_E7CreatorD2Ev$shim")]
+pub fn stub_0xf24fa0() -> ! {
+    todo!("0xf24fa0 __ZN3RBX14FactoryProductINS_7ToolbarENS_8InstanceELZNS_8sToolbarEES2_E7CreatorD2Ev$shim")
+}
+
+// 0xf24fc4 — __ZNK3RBX14FactoryProductINS_7ToolbarENS_8InstanceELZNS_8sToolbarEES2_E7Creator12getClassNameEv$shim
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_7ToolbarENS_8InstanceELZNS_8sToolbarEES2_E7Creator12getClassNameEv$shim")]
+pub fn stub_0xf24fc4() -> ! {
+    todo!("0xf24fc4 __ZNK3RBX14FactoryProductINS_7ToolbarENS_8InstanceELZNS_8sToolbarEES2_E7Creator12getClassNameEv$shim")
+}
+
+// 0xf35114 — j___ZN5boost10shared_ptrIN3RBX8GlueToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX8GlueToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")]
+// was: j___ZN5boost10shared_ptrIN3RBX8GlueToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+pub fn stub_0xf35114() -> ! {
+    todo!("0xf35114 j___ZN5boost10shared_ptrIN3RBX8GlueToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+// 0xf35124 — j___ZN5boost10shared_ptrIN3RBX8GrabToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX8GrabToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")]
+// was: j___ZN5boost10shared_ptrIN3RBX8GrabToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+pub fn stub_0xf35124() -> ! {
+    todo!("0xf35124 j___ZN5boost10shared_ptrIN3RBX8GrabToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+// 0xf35134 — j___ZN5boost10shared_ptrIN3RBX8LockToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX8LockToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")]
+// was: j___ZN5boost10shared_ptrIN3RBX8LockToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+pub fn stub_0xf35134() -> ! {
+    todo!("0xf35134 j___ZN5boost10shared_ptrIN3RBX8LockToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+// 0xf35144 — j___ZN5boost10shared_ptrIN3RBX8NullToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX8NullToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")]
+// was: j___ZN5boost10shared_ptrIN3RBX8NullToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+pub fn stub_0xf35144() -> ! {
+    todo!("0xf35144 j___ZN5boost10shared_ptrIN3RBX8NullToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+// 0xf35154 — j___ZN5boost10shared_ptrIN3RBX8WeldToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX8WeldToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")]
+// was: j___ZN5boost10shared_ptrIN3RBX8WeldToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+pub fn stub_0xf35154() -> ! {
+    todo!("0xf35154 j___ZN5boost10shared_ptrIN3RBX8WeldToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+// 0xf35164 — j___ZN5boost10shared_ptrIN3RBX9CloneToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX9CloneToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")]
+// was: j___ZN5boost10shared_ptrIN3RBX9CloneToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+pub fn stub_0xf35164() -> ! {
+    todo!("0xf35164 j___ZN5boost10shared_ptrIN3RBX9CloneToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+// 0xf35174 — j___ZN5boost10shared_ptrIN3RBX9HingeToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX9HingeToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")]
+// was: j___ZN5boost10shared_ptrIN3RBX9HingeToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+pub fn stub_0xf35174() -> ! {
+    todo!("0xf35174 j___ZN5boost10shared_ptrIN3RBX9HingeToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+// 0xf35184 — j___ZN5boost10shared_ptrIN3RBX9InletToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX9InletToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")]
+// was: j___ZN5boost10shared_ptrIN3RBX9InletToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+pub fn stub_0xf35184() -> ! {
+    todo!("0xf35184 j___ZN5boost10shared_ptrIN3RBX9InletToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+// 0xf35194 — j___ZN5boost10shared_ptrIN3RBX9StudsToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX9StudsToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")]
+// was: j___ZN5boost10shared_ptrIN3RBX9StudsToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+pub fn stub_0xf35194() -> ! {
+    todo!("0xf35194 j___ZN5boost10shared_ptrIN3RBX9StudsToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+// 0xf351a4 — j___ZN5boost6detail12shared_countC2IPN3RBX10AnchorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX10AnchorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX10AnchorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf351a4() -> ! {
+    todo!("0xf351a4 j___ZN5boost6detail12shared_countC2IPN3RBX10AnchorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf351b4 — j___ZN5boost6detail12shared_countC2IPN3RBX10HammerToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX10HammerToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX10HammerToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf351b4() -> ! {
+    todo!("0xf351b4 j___ZN5boost6detail12shared_countC2IPN3RBX10HammerToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf351c4 — j___ZN5boost6detail12shared_countC2IPN3RBX11AdvMoveToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX11AdvMoveToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX11AdvMoveToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf351c4() -> ! {
+    todo!("0xf351c4 j___ZN5boost6detail12shared_countC2IPN3RBX11AdvMoveToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf351d4 — j___ZN5boost6detail12shared_countC2IPN3RBX11DropperToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX11DropperToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX11DropperToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf351d4() -> ! {
+    todo!("0xf351d4 j___ZN5boost6detail12shared_countC2IPN3RBX11DropperToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf351e4 — j___ZN5boost6detail12shared_countC2IPN3RBX12MaterialToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX12MaterialToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX12MaterialToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf351e4() -> ! {
+    todo!("0xf351e4 j___ZN5boost6detail12shared_countC2IPN3RBX12MaterialToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf351f4 — j___ZN5boost6detail12shared_countC2IPN3RBX13AdvRotateToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX13AdvRotateToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX13AdvRotateToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf351f4() -> ! {
+    todo!("0xf351f4 j___ZN5boost6detail12shared_countC2IPN3RBX13AdvRotateToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf35204 — j___ZN5boost6detail12shared_countC2IPN3RBX13LeftMotorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX13LeftMotorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX13LeftMotorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf35204() -> ! {
+    todo!("0xf35204 j___ZN5boost6detail12shared_countC2IPN3RBX13LeftMotorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf35214 — j___ZN5boost6detail12shared_countC2IPN3RBX13UniversalToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX13UniversalToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX13UniversalToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf35214() -> ! {
+    todo!("0xf35214 j___ZN5boost6detail12shared_countC2IPN3RBX13UniversalToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf35224 — j___ZN5boost6detail12shared_countC2IPN3RBX14AxisRotateToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX14AxisRotateToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX14AxisRotateToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf35224() -> ! {
+    todo!("0xf35224 j___ZN5boost6detail12shared_countC2IPN3RBX14AxisRotateToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf35234 — j___ZN5boost6detail12shared_countC2IPN3RBX14RightMotorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX14RightMotorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX14RightMotorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf35234() -> ! {
+    todo!("0xf35234 j___ZN5boost6detail12shared_countC2IPN3RBX14RightMotorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf35244 — j___ZN5boost6detail12shared_countC2IPN3RBX18MoveResizeJoinToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX18MoveResizeJoinToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX18MoveResizeJoinToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf35244() -> ! {
+    todo!("0xf35244 j___ZN5boost6detail12shared_countC2IPN3RBX18MoveResizeJoinToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf35254 — j___ZN5boost6detail12shared_countC2IPN3RBX18OscillateMotorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX18OscillateMotorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX18OscillateMotorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf35254() -> ! {
+    todo!("0xf35254 j___ZN5boost6detail12shared_countC2IPN3RBX18OscillateMotorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf35264 — j___ZN5boost6detail12shared_countC2IPN3RBX20SmoothNoOutlinesToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX20SmoothNoOutlinesToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX20SmoothNoOutlinesToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf35264() -> ! {
+    todo!("0xf35264 j___ZN5boost6detail12shared_countC2IPN3RBX20SmoothNoOutlinesToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf35274 — j___ZN5boost6detail12shared_countC2IPN3RBX8FillToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX8FillToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX8FillToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf35274() -> ! {
+    todo!("0xf35274 j___ZN5boost6detail12shared_countC2IPN3RBX8FillToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf35284 — j___ZN5boost6detail12shared_countC2IPN3RBX8FlatToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX8FlatToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX8FlatToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf35284() -> ! {
+    todo!("0xf35284 j___ZN5boost6detail12shared_countC2IPN3RBX8FlatToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf352a4 — j___ZN5boost6detail12shared_countC2IPN3RBX8GlueToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX8GlueToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX8GlueToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf352a4() -> ! {
+    todo!("0xf352a4 j___ZN5boost6detail12shared_countC2IPN3RBX8GlueToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf352b4 — j___ZN5boost6detail12shared_countC2IPN3RBX8GrabToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX8GrabToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX8GrabToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf352b4() -> ! {
+    todo!("0xf352b4 j___ZN5boost6detail12shared_countC2IPN3RBX8GrabToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf352c4 — j___ZN5boost6detail12shared_countC2IPN3RBX8LockToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX8LockToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX8LockToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf352c4() -> ! {
+    todo!("0xf352c4 j___ZN5boost6detail12shared_countC2IPN3RBX8LockToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf352d4 — j___ZN5boost6detail12shared_countC2IPN3RBX8NullToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX8NullToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX8NullToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf352d4() -> ! {
+    todo!("0xf352d4 j___ZN5boost6detail12shared_countC2IPN3RBX8NullToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf352e4 — j___ZN5boost6detail12shared_countC2IPN3RBX8WeldToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX8WeldToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX8WeldToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf352e4() -> ! {
+    todo!("0xf352e4 j___ZN5boost6detail12shared_countC2IPN3RBX8WeldToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf352f4 — j___ZN5boost6detail12shared_countC2IPN3RBX9CloneToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX9CloneToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX9CloneToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf352f4() -> ! {
+    todo!("0xf352f4 j___ZN5boost6detail12shared_countC2IPN3RBX9CloneToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf35304 — j___ZN5boost6detail12shared_countC2IPN3RBX9HingeToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX9HingeToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX9HingeToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf35304() -> ! {
+    todo!("0xf35304 j___ZN5boost6detail12shared_countC2IPN3RBX9HingeToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf35314 — j___ZN5boost6detail12shared_countC2IPN3RBX9InletToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX9InletToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX9InletToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf35314() -> ! {
+    todo!("0xf35314 j___ZN5boost6detail12shared_countC2IPN3RBX9InletToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf35324 — j___ZN5boost6detail12shared_countC2IPN3RBX9StudsToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX9StudsToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX9StudsToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf35324() -> ! {
+    todo!("0xf35324 j___ZN5boost6detail12shared_countC2IPN3RBX9StudsToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf35334 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_10AnchorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_10AnchorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_10AnchorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf35334() -> ! {
+    todo!("0xf35334 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_10AnchorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf35344 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_10HammerToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_10HammerToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_10HammerToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf35344() -> ! {
+    todo!("0xf35344 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_10HammerToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf35354 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_11AdvMoveToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_11AdvMoveToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_11AdvMoveToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf35354() -> ! {
+    todo!("0xf35354 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_11AdvMoveToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf35364 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_11DropperToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_11DropperToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_11DropperToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf35364() -> ! {
+    todo!("0xf35364 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_11DropperToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf35374 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_12MaterialToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_12MaterialToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_12MaterialToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf35374() -> ! {
+    todo!("0xf35374 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_12MaterialToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf35384 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_13AdvRotateToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_13AdvRotateToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_13AdvRotateToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf35384() -> ! {
+    todo!("0xf35384 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_13AdvRotateToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf35394 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_13LeftMotorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_13LeftMotorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_13LeftMotorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf35394() -> ! {
+    todo!("0xf35394 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_13LeftMotorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf353a4 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_13UniversalToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_13UniversalToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_13UniversalToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf353a4() -> ! {
+    todo!("0xf353a4 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_13UniversalToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf353b4 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_14AxisRotateToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_14AxisRotateToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_14AxisRotateToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf353b4() -> ! {
+    todo!("0xf353b4 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_14AxisRotateToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf353c4 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_14RightMotorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_14RightMotorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_14RightMotorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf353c4() -> ! {
+    todo!("0xf353c4 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_14RightMotorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf353d4 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_18MoveResizeJoinToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_18MoveResizeJoinToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_18MoveResizeJoinToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf353d4() -> ! {
+    todo!("0xf353d4 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_18MoveResizeJoinToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf353e4 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_18OscillateMotorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_18OscillateMotorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_18OscillateMotorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf353e4() -> ! {
+    todo!("0xf353e4 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_18OscillateMotorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf353f4 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_20SmoothNoOutlinesToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_20SmoothNoOutlinesToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_20SmoothNoOutlinesToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf353f4() -> ! {
+    todo!("0xf353f4 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_20SmoothNoOutlinesToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf35404 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8FillToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8FillToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8FillToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf35404() -> ! {
+    todo!("0xf35404 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8FillToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf35414 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8FlatToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8FlatToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8FlatToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf35414() -> ! {
+    todo!("0xf35414 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8FlatToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf35434 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8GlueToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8GlueToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8GlueToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf35434() -> ! {
+    todo!("0xf35434 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8GlueToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf35444 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8GrabToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8GrabToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8GrabToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf35444() -> ! {
+    todo!("0xf35444 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8GrabToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf35454 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8LockToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8LockToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8LockToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf35454() -> ! {
+    todo!("0xf35454 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8LockToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf35464 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8NullToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8NullToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8NullToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf35464() -> ! {
+    todo!("0xf35464 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8NullToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf35474 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8WeldToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8WeldToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8WeldToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf35474() -> ! {
+    todo!("0xf35474 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8WeldToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf35484 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9CloneToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9CloneToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9CloneToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf35484() -> ! {
+    todo!("0xf35484 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9CloneToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf35494 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9HingeToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9HingeToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9HingeToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf35494() -> ! {
+    todo!("0xf35494 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9HingeToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf354a4 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9InletToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9InletToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9InletToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf354a4() -> ! {
+    todo!("0xf354a4 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9InletToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf354b4 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9StudsToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9StudsToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9StudsToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf354b4() -> ! {
+    todo!("0xf354b4 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9StudsToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf3e534 — j___ZN3RBX14FactoryProductINS_4FlagENS_4ToolELZNS_5sFlagEENS_8InstanceEE17static_getCreatorEv
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_4FlagENS_4ToolELZNS_5sFlagEENS_8InstanceEE17static_getCreatorEv")]
+pub fn stub_0xf3e534() -> ! {
+    todo!("0xf3e534 j___ZN3RBX14FactoryProductINS_4FlagENS_4ToolELZNS_5sFlagEENS_8InstanceEE17static_getCreatorEv")
+}
+
+// 0xf3e544 — j___ZN3RBX14FactoryProductINS_4FlagENS_4ToolELZNS_5sFlagEENS_8InstanceEE7CreatorC2Ev
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_4FlagENS_4ToolELZNS_5sFlagEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_0xf3e544() -> ! {
+    todo!("0xf3e544 j___ZN3RBX14FactoryProductINS_4FlagENS_4ToolELZNS_5sFlagEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0xf3e554 — j___ZN3RBX14FactoryProductINS_4FlagENS_4ToolELZNS_5sFlagEENS_8InstanceEE7CreatorD2Ev
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_4FlagENS_4ToolELZNS_5sFlagEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_0xf3e554() -> ! {
+    todo!("0xf3e554 j___ZN3RBX14FactoryProductINS_4FlagENS_4ToolELZNS_5sFlagEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0xf3e5b4 — j___ZNK3RBX14FactoryProductINS_4FlagENS_4ToolELZNS_5sFlagEENS_8InstanceEE7Creator12getClassNameEv
+#[doc(alias = "j___ZNK3RBX14FactoryProductINS_4FlagENS_4ToolELZNS_5sFlagEENS_8InstanceEE7Creator12getClassNameEv")]
+pub fn stub_0xf3e5b4() -> ! {
+    todo!("0xf3e5b4 j___ZNK3RBX14FactoryProductINS_4FlagENS_4ToolELZNS_5sFlagEENS_8InstanceEE7Creator12getClassNameEv")
+}
+
+// 0xf49254 — j___ZN3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE17static_getCreatorEv
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE17static_getCreatorEv")]
+pub fn stub_0xf49254() -> ! {
+    todo!("0xf49254 j___ZN3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE17static_getCreatorEv")
+}
+
+// 0xf49264 — j___ZN3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7CreatorC2Ev
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_0xf49264() -> ! {
+    todo!("0xf49264 j___ZN3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0xf49274 — j___ZN3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7CreatorD2Ev
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_0xf49274() -> ! {
+    todo!("0xf49274 j___ZN3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0xf492a4 — j___ZN3RBX4Tool23special_equipped_signalD2Ev
+#[doc(alias = "j___ZN3RBX4Tool23special_equipped_signalD2Ev")]
+pub fn stub_0xf492a4() -> ! {
+    todo!("0xf492a4 j___ZN3RBX4Tool23special_equipped_signalD2Ev")
+}
+
+// 0xf49304 — j___ZN5boost10shared_ptrIN3RBX16ToolMouseCommandEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX16ToolMouseCommandEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")]
+// was: j___ZN5boost10shared_ptrIN3RBX16ToolMouseCommandEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+pub fn stub_0xf49304() -> ! {
+    todo!("0xf49304 j___ZN5boost10shared_ptrIN3RBX16ToolMouseCommandEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+// 0xf49354 — j___ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX4ToolEEEEENS_3argILi1EEEEC2ES7_S9_
+#[doc(alias = "j___ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX4ToolEEEEENS_3argILi1EEEEC2ES7_S9_")]
+// was: j___ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX4ToolEEEEENS_3argILi1EEEEC2ES7_S9_
+pub fn stub_0xf49354() -> ! {
+    todo!("0xf49354 j___ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX4ToolEEEEENS_3argILi1EEEEC2ES7_S9_")
+}
+
+// 0xf493a4 — j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX4ToolEEEEENS_3argILi1EEEEC2ES7_S9_
+#[doc(alias = "j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX4ToolEEEEENS_3argILi1EEEEC2ES7_S9_")]
+// was: j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX4ToolEEEEENS_3argILi1EEEEC2ES7_S9_
+pub fn stub_0xf493a4() -> ! {
+    todo!("0xf493a4 j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX4ToolEEEEENS_3argILi1EEEEC2ES7_S9_")
+}
+
+// 0xf493d4 — j___ZN5boost6detail12shared_countC2IPN3RBX16ToolMouseCommandENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX16ToolMouseCommandENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+// was: j___ZN5boost6detail12shared_countC2IPN3RBX16ToolMouseCommandENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+pub fn stub_0xf493d4() -> ! {
+    todo!("0xf493d4 j___ZN5boost6detail12shared_countC2IPN3RBX16ToolMouseCommandENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf49424 — j___ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_4ToolES4_EENS8_5list2INS8_5valueINS1_ISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE
+#[doc(alias = "j___ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_4ToolES4_EENS8_5list2INS8_5valueINS1_ISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")]
+// was: j___ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_4ToolES4_EENS8_5list2INS8_5valueINS1_ISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE
+pub fn stub_0xf49424() -> ! {
+    todo!("0xf49424 j___ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_4ToolES4_EENS8_5list2INS8_5valueINS1_ISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf49474 — j___ZN5boost9function1IvNS_10shared_ptrIN3RBX8InstanceEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_4ToolES4_EENS7_5list2INS7_5valueINS1_ISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
+#[doc(alias = "j___ZN5boost9function1IvNS_10shared_ptrIN3RBX8InstanceEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_4ToolES4_EENS7_5list2INS7_5valueINS1_ISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")]
+// was: j___ZN5boost9function1IvNS_10shared_ptrIN3RBX8InstanceEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_4ToolES4_EENS7_5list2INS7_5valueINS1_ISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
+pub fn stub_0xf49474() -> ! {
+    todo!("0xf49474 j___ZN5boost9function1IvNS_10shared_ptrIN3RBX8InstanceEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_4ToolES4_EENS7_5list2INS7_5valueINS1_ISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf49484 — j___ZNK3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7Creator12getClassNameEv
+#[doc(alias = "j___ZNK3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7Creator12getClassNameEv")]
+pub fn stub_0xf49484() -> ! {
+    todo!("0xf49484 j___ZNK3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7Creator12getClassNameEv")
+}
+
+// 0xf494c4 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_16ToolMouseCommandES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_16ToolMouseCommandES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+// was: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_16ToolMouseCommandES5_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf494c4() -> ! {
+    todo!("0xf494c4 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_16ToolMouseCommandES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf49554 — j___ZN3RBX16ToolMouseCommandD0Ev
+#[doc(alias = "j___ZN3RBX16ToolMouseCommandD0Ev")]
+pub fn stub_0xf49554() -> ! {
+    todo!("0xf49554 j___ZN3RBX16ToolMouseCommandD0Ev")
+}
+
+// 0xf49564 — j___ZN3RBX16ToolMouseCommandD2Ev
+#[doc(alias = "j___ZN3RBX16ToolMouseCommandD2Ev")]
+pub fn stub_0xf49564() -> ! {
+    todo!("0xf49564 j___ZN3RBX16ToolMouseCommandD2Ev")
+}
+
+// 0xf49584 — j___ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS6_5list1INS6_5valueIPSB_EEEEEEEENS0_10connectionERKT_
+#[doc(alias = "j___ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS6_5list1INS6_5valueIPSB_EEEEEEEENS0_10connectionERKT_")]
+// was: j___ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS6_5list1INS6_5valueIPSB_EEEEEEEENS0_10connectionERKT_
+pub fn stub_0xf49584() -> ! {
+    todo!("0xf49584 j___ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS6_5list1INS6_5valueIPSB_EEEEEEEENS0_10connectionERKT_")
+}
+
+// 0xf49594 — j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS0_5list1INS0_5valueIPS5_EEEEEclEv
+#[doc(alias = "j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS0_5list1INS0_5valueIPS5_EEEEEclEv")]
+// was: j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS0_5list1INS0_5valueIPS5_EEEEEclEv
+pub fn stub_0xf49594() -> ! {
+    todo!("0xf49594 j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS0_5list1INS0_5valueIPS5_EEEEEclEv")
+}
+
+// 0xf495c4 — j___ZN3RBX11shared_fromINS_9DecalToolEEEN5boost10shared_ptrIT_EEPS4_
+#[doc(alias = "j___ZN3RBX11shared_fromINS_9DecalToolEEEN5boost10shared_ptrIT_EEPS4_")]
+// was: j___ZN3RBX11shared_fromINS_9DecalToolEEEN5boost10shared_ptrIT_EEPS4_
+pub fn stub_0xf495c4() -> ! {
+    todo!("0xf495c4 j___ZN3RBX11shared_fromINS_9DecalToolEEEN5boost10shared_ptrIT_EEPS4_")
+}
+
+// 0xf4b8f4 — j___ZN3RBX11shared_fromINS_12MouseCommandEEEN5boost10shared_ptrIT_EEPS4_
+#[doc(alias = "j___ZN3RBX11shared_fromINS_12MouseCommandEEEN5boost10shared_ptrIT_EEPS4_")]
+// was: j___ZN3RBX11shared_fromINS_12MouseCommandEEEN5boost10shared_ptrIT_EEPS4_
+pub fn stub_0xf4b8f4() -> ! {
+    todo!("0xf4b8f4 j___ZN3RBX11shared_fromINS_12MouseCommandEEEN5boost10shared_ptrIT_EEPS4_")
+}
+
+// 0xf4b934 — j___ZN3RBX13ArrowToolBaseD0Ev
+#[doc(alias = "j___ZN3RBX13ArrowToolBaseD0Ev")]
+pub fn stub_0xf4b934() -> ! {
+    todo!("0xf4b934 j___ZN3RBX13ArrowToolBaseD0Ev")
+}
+
+// 0xf4b944 — j___ZN3RBX13ArrowToolBaseD2Ev
+#[doc(alias = "j___ZN3RBX13ArrowToolBaseD2Ev")]
+pub fn stub_0xf4b944() -> ! {
+    todo!("0xf4b944 j___ZN3RBX13ArrowToolBaseD2Ev")
+}
+
+// 0xf4b954 — j___ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE17static_getCreatorEv
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE17static_getCreatorEv")]
+pub fn stub_0xf4b954() -> ! {
+    todo!("0xf4b954 j___ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE17static_getCreatorEv")
+}
+
+// 0xf4b964 — j___ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7CreatorC2Ev
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_0xf4b964() -> ! {
+    todo!("0xf4b964 j___ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0xf4b974 — j___ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7CreatorD2Ev
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_0xf4b974() -> ! {
+    todo!("0xf4b974 j___ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0xf4b984 — j___ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED0Ev
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED0Ev")]
+pub fn stub_0xf4b984() -> ! {
+    todo!("0xf4b984 j___ZN3RBX14FactoryProductINS_13ModelInstanceENS_10PVInstanceELZNS_6sModelEENS_8InstanceEED0Ev")
+}
+
+// 0xf4ba24 — j___ZN3RBX16AdvArrowToolBaseD0Ev
+#[doc(alias = "j___ZN3RBX16AdvArrowToolBaseD0Ev")]
+pub fn stub_0xf4ba24() -> ! {
+    todo!("0xf4ba24 j___ZN3RBX16AdvArrowToolBaseD0Ev")
+}
+
+// 0xf4ba34 — j___ZN3RBX16AdvArrowToolBaseD2Ev
+#[doc(alias = "j___ZN3RBX16AdvArrowToolBaseD2Ev")]
+pub fn stub_0xf4ba34() -> ! {
+    todo!("0xf4ba34 j___ZN3RBX16AdvArrowToolBaseD2Ev")
+}
+
+// 0xf4bcd4 — j___ZN5boost10shared_ptrIN3RBX11NewNullToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX11NewNullToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")]
+// was: j___ZN5boost10shared_ptrIN3RBX11NewNullToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+pub fn stub_0xf4bcd4() -> ! {
+    todo!("0xf4bcd4 j___ZN5boost10shared_ptrIN3RBX11NewNullToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+// 0xf4bce4 — j___ZN5boost10shared_ptrIN3RBX12AdvArrowToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX12AdvArrowToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")]
+// was: j___ZN5boost10shared_ptrIN3RBX12AdvArrowToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+pub fn stub_0xf4bce4() -> ! {
+    todo!("0xf4bce4 j___ZN5boost10shared_ptrIN3RBX12AdvArrowToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+// 0xf4bcf4 — j___ZN5boost10shared_ptrIN3RBX12MouseCommandEEaSERKS3_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX12MouseCommandEEaSERKS3_")]
+// was: j___ZN5boost10shared_ptrIN3RBX12MouseCommandEEaSERKS3_
+pub fn stub_0xf4bcf4() -> ! {
+    todo!("0xf4bcf4 j___ZN5boost10shared_ptrIN3RBX12MouseCommandEEaSERKS3_")
+}
+
+// 0xf4bd04 — j___ZN5boost10shared_ptrIN3RBX12MouseCommandEEaSINS1_11NewNullToolEEERS3_RKNS0_IT_EE
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX12MouseCommandEEaSINS1_11NewNullToolEEERS3_RKNS0_IT_EE")]
+// was: j___ZN5boost10shared_ptrIN3RBX12MouseCommandEEaSINS1_11NewNullToolEEERS3_RKNS0_IT_EE
+pub fn stub_0xf4bd04() -> ! {
+    todo!("0xf4bd04 j___ZN5boost10shared_ptrIN3RBX12MouseCommandEEaSINS1_11NewNullToolEEERS3_RKNS0_IT_EE")
+}
+
+// 0xf4bd14 — j___ZN5boost10shared_ptrIN3RBX12MouseCommandEEaSINS1_12AdvArrowToolEEERS3_RKNS0_IT_EE
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX12MouseCommandEEaSINS1_12AdvArrowToolEEERS3_RKNS0_IT_EE")]
+// was: j___ZN5boost10shared_ptrIN3RBX12MouseCommandEEaSINS1_12AdvArrowToolEEERS3_RKNS0_IT_EE
+pub fn stub_0xf4bd14() -> ! {
+    todo!("0xf4bd14 j___ZN5boost10shared_ptrIN3RBX12MouseCommandEEaSINS1_12AdvArrowToolEEERS3_RKNS0_IT_EE")
+}
