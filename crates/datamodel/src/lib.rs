@@ -658,3 +658,6 @@ pub mod generated_wdog_dmB2;
 pub mod generated_296;
 pub mod generated_wdog_dm3;
 pub mod generated_297;
+pub mod generated_watchdog_dm_w6;
+pub mod generated_watchdog_dm_w7;
+pub mod generated_298;
