@@ -12,6 +12,7 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: int __fastcall(RBX::Network::CustomSerializer *this, float *, float *, float *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::CustomSerializer::readVector(float &,float &,float &,RakNet::BitStream &)")]
 #[doc(alias = "__ZN3RBX7Network16CustomSerializer10readVectorERfS2_S2_RN6RakNet9BitStreamE")]
-pub fn stub_9bedec() -> ! {
-    todo!("0x9bedec __ZN3RBX7Network16CustomSerializer10readVectorERfS2_S2_RN6RakNet9BitStreamE")
+pub fn stub_9bedec(stream: &mut crate::bitstream::BitStream, out: &mut [f32; 3]) -> bool {
+    // IDA 0x9bedec: the first (`this`) param is the x out-param.
+    crate::custom_serializer::read_vector(stream, out)
 }

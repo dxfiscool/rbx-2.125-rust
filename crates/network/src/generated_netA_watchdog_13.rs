@@ -12,6 +12,7 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: int __fastcall(RBX::Network::SharedStringDictionary *this, std::string *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::SharedStringDictionary::deserializeString(std::string &,RakNet::BitStream &)")]
 #[doc(alias = "__ZN3RBX7Network22SharedStringDictionary17deserializeStringERSsRN6RakNet9BitStreamE")]
-pub fn stub_9a2294() -> ! {
-    todo!("0x9a2294 __ZN3RBX7Network22SharedStringDictionary17deserializeStringERSsRN6RakNet9BitStreamE")
+pub fn stub_9a2294(dict: &mut crate::string_dictionary::SharedStringDictionary, out: &mut String, stream: &mut crate::bitstream::BitStream) -> bool {
+    // IDA 0x9a22a6: tail-calls `ReceiverDictionary<std::string>::receive`.
+    dict.deserialize_string(out, stream)
 }

@@ -12,6 +12,6 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: unsigned int __fastcall(double this, const RBX::CompactCFrame *)
 #[doc(alias = "RBX::Network::PhysicsSender::writeCompactCFrame(RakNet::BitStream &,RBX::CompactCFrame const&)")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender18writeCompactCFrameERN6RakNet9BitStreamERKNS_13CompactCFrameE")]
-pub fn stub_9c2b10() -> ! {
-    todo!("0x9c2b10 __ZN3RBX7Network13PhysicsSender18writeCompactCFrameERN6RakNet9BitStreamERKNS_13CompactCFrameE")
+pub fn stub_9c2b10(sender: &crate::physics::PhysicsSender, stream: &mut crate::bitstream::BitStream, frame: &crate::physics::CompactCFrame) {
+    sender.write_compact_cframe(stream, frame);
 }

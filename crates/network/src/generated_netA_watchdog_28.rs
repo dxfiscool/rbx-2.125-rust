@@ -12,6 +12,7 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: int __fastcall(RBX::Network::PhysicsReceiver *this, RakNet::BitStream *, RBX::CompactCFrame *)
 #[doc(alias = "RBX::Network::PhysicsReceiver::readCompactCFrame(RakNet::BitStream &,RBX::CompactCFrame &)")]
 #[doc(alias = "__ZN3RBX7Network15PhysicsReceiver17readCompactCFrameERN6RakNet9BitStreamERNS_13CompactCFrameE")]
-pub fn stub_9be2ec() -> ! {
-    todo!("0x9be2ec __ZN3RBX7Network15PhysicsReceiver17readCompactCFrameERN6RakNet9BitStreamERNS_13CompactCFrameE")
+pub fn stub_9be2ec(receiver: &crate::physics::PhysicsReceiver, stream: &mut crate::bitstream::BitStream, frame: &mut crate::physics::CompactCFrame) {
+    // IDA 0x9be620: the original returns the asserts-flag echo; no caller uses it.
+    receiver.read_compact_cframe(stream, frame);
 }

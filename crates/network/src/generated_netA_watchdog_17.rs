@@ -12,6 +12,6 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: int __fastcall(int, RakNet::BitStream *this, std::string *)
 #[doc(alias = "RBX::Network::ReceiverDictionary<std::string>::receive(RakNet::BitStream &,std::string &)")]
 #[doc(alias = "__ZN3RBX7Network18ReceiverDictionaryISsE7receiveERN6RakNet9BitStreamERSs")]
-pub fn stub_9a2990() -> ! {
-    todo!("0x9a2990 __ZN3RBX7Network18ReceiverDictionaryISsE7receiveERN6RakNet9BitStreamERSs")
+pub fn stub_9a2990(dict: &mut crate::string_dictionary::ReceiverDictionary, stream: &mut crate::bitstream::BitStream, out: &mut String) -> bool {
+    dict.receive(stream, out)
 }

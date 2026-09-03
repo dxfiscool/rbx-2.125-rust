@@ -12,6 +12,6 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: int __fastcall(RakNet::BitStream *this, unsigned __int8 *)
 #[doc(alias = "RBX::Network::Item::readItemType(RakNet::BitStream &,RBX::Network::Item::ItemType &)")]
 #[doc(alias = "__ZN3RBX7Network4Item12readItemTypeERN6RakNet9BitStreamERNS1_8ItemTypeE")]
-pub fn stub_9addcc() -> ! {
-    todo!("0x9addcc __ZN3RBX7Network4Item12readItemTypeERN6RakNet9BitStreamERNS1_8ItemTypeE")
+pub fn stub_9addcc(stream: &mut crate::bitstream::BitStream) -> u8 {
+    crate::item::read_item_type(stream)
 }

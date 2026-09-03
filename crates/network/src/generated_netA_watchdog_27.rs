@@ -12,6 +12,6 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: void __fastcall(RBX::Network::PhysicsReceiver *this, RakNet::BitStream *, RBX::Velocity *)
 #[doc(alias = "RBX::Network::PhysicsReceiver::readVelocity(RakNet::BitStream &,RBX::Velocity &)")]
 #[doc(alias = "__ZN3RBX7Network15PhysicsReceiver12readVelocityERN6RakNet9BitStreamERNS_8VelocityE")]
-pub fn stub_9be164() -> ! {
-    todo!("0x9be164 __ZN3RBX7Network15PhysicsReceiver12readVelocityERN6RakNet9BitStreamERNS_8VelocityE")
+pub fn stub_9be164(receiver: &crate::physics::PhysicsReceiver, stream: &mut crate::bitstream::BitStream, velocity: &mut crate::physics::Velocity) {
+    receiver.read_velocity(stream, velocity);
 }

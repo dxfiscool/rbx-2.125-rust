@@ -12,6 +12,8 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: _DWORD __fastcall(RBX::Network::PhysicsSender *__hidden this, RakNet::BitStream *, const RBX::Assembly *)
 #[doc(alias = "RBX::Network::PhysicsSender::writeMotorAngles(RakNet::BitStream &,RBX::Assembly const*)")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender16writeMotorAnglesERN6RakNet9BitStreamEPKNS_8AssemblyE")]
-pub fn stub_9c29c0() -> ! {
-    todo!("0x9c29c0 __ZN3RBX7Network13PhysicsSender16writeMotorAnglesERN6RakNet9BitStreamEPKNS_8AssemblyE")
+pub fn stub_9c29c0(sender: &mut crate::physics::PhysicsSender, stream: &mut crate::bitstream::BitStream, physics: &[crate::physics::CompactCFrame]) {
+    // IDA 0x9c2a1e: the original pulls `Assembly::getPhysics` into its
+    // +0x30 scratch array; the caller passes that slice directly.
+    sender.write_motor_angles(stream, physics);
 }
