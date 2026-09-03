@@ -633,3 +633,4 @@ pub mod generated_watchdog_core_wdD;
 pub mod generated_watchdog_core_wdE;
 pub mod generated_watchdog_core_wdC;
 pub mod generated_watchdog_core_wdN2;
+pub mod generated_watchdog_core_wdP;
