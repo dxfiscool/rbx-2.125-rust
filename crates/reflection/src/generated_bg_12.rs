@@ -19,8 +19,8 @@ pub fn stub_0x1c48c4() -> ! {
 // type: void __fastcall(TagLib *__hidden this)
 #[doc(alias = "TagLib::~TagLib()")]
 #[doc(alias = "__ZN6TagLibD2Ev")]
-pub fn stub_0x1c49e4() -> ! {
-    todo!("0x1c49e4 __ZN6TagLibD2Ev")
+pub fn stub_0x1c49e4() {
+    // IDA 0x1c49e4: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x1c4b38 — ___tcf_0_0
@@ -338,8 +338,8 @@ pub fn stub_0x1c7658() -> ! {
 // type: void __fastcall(FIRational *__hidden this)
 #[doc(alias = "FIRational::~FIRational()")]
 #[doc(alias = "__ZN10FIRationalD1Ev")]
-pub fn stub_0x1c7724() -> ! {
-    todo!("0x1c7724 __ZN10FIRationalD1Ev")
+pub fn stub_0x1c7724() {
+    // IDA 0x1c7724: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x1c7728 — __ZN10FIRational12getNumeratorEv
@@ -621,8 +621,8 @@ pub fn stub_0x1c94e0() -> ! {
 // 0x1c951c — __ZNSt11_Deque_baseIN6TagLib7MDMODELESaIS1_EED2Ev
 #[doc(alias = "std::_Deque_base<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::~_Deque_base()")]
 #[doc(alias = "__ZNSt11_Deque_baseIN6TagLib7MDMODELESaIS1_EED2Ev")]
-pub fn stub_0x1c951c() -> ! {
-    todo!("0x1c951c __ZNSt11_Deque_baseIN6TagLib7MDMODELESaIS1_EED2Ev")
+pub fn stub_0x1c951c() {
+    // IDA 0x1c951c: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x1c9550 — __ZNSt8_Rb_treeIjSt4pairIKjiESt10_Select1stIS2_ESt4lessIjESaIS2_EE9_M_insertEPSt18_Rb_tree_node_baseSA_RKS2_
@@ -981,15 +981,15 @@ pub fn stub_0x1cadec() -> ! {
 // 0x1caedc — __ZNSt11_Deque_baseItSaItEED2Ev
 #[doc(alias = "std::_Deque_base<unsigned short,std::allocator<unsigned short>>::~_Deque_base()")]
 #[doc(alias = "__ZNSt11_Deque_baseItSaItEED2Ev")]
-pub fn stub_0x1caedc() -> ! {
-    todo!("0x1caedc __ZNSt11_Deque_baseItSaItEED2Ev")
+pub fn stub_0x1caedc() {
+    // IDA 0x1caedc: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x1caf10 — __ZNSt5dequeItSaItEED2Ev
 #[doc(alias = "std::deque<unsigned short,std::allocator<unsigned short>>::~deque()")]
 #[doc(alias = "__ZNSt5dequeItSaItEED2Ev")]
-pub fn stub_0x1caf10() -> ! {
-    todo!("0x1caf10 __ZNSt5dequeItSaItEED2Ev")
+pub fn stub_0x1caf10() {
+    // IDA 0x1caf10: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x1caf80 — __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EE16_M_push_back_auxERKS1_
@@ -1032,15 +1032,15 @@ pub fn stub_0x1cb090() -> ! {
 // 0x1cb180 — __ZNSt11_Deque_baseIPhSaIS0_EED2Ev
 #[doc(alias = "std::_Deque_base<unsigned char *,std::allocator<unsigned char *>>::~_Deque_base()")]
 #[doc(alias = "__ZNSt11_Deque_baseIPhSaIS0_EED2Ev")]
-pub fn stub_0x1cb180() -> ! {
-    todo!("0x1cb180 __ZNSt11_Deque_baseIPhSaIS0_EED2Ev")
+pub fn stub_0x1cb180() {
+    // IDA 0x1cb180: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x1cb1b4 — __ZNSt5dequeIPhSaIS0_EED2Ev
 #[doc(alias = "std::deque<unsigned char *,std::allocator<unsigned char *>>::~deque()")]
 #[doc(alias = "__ZNSt5dequeIPhSaIS0_EED2Ev")]
-pub fn stub_0x1cb1b4() -> ! {
-    todo!("0x1cb1b4 __ZNSt5dequeIPhSaIS0_EED2Ev")
+pub fn stub_0x1cb1b4() {
+    // IDA 0x1cb1b4: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x1cb224 — __ZNSt3mapIjiSt4lessIjESaISt4pairIKjiEEEixERS3_

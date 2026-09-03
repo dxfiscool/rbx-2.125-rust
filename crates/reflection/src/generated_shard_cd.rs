@@ -338,8 +338,8 @@ pub fn stub_f44d64() -> ! {
 // 0xf44d74 — j___ZN3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEED2Ev")]
-pub fn stub_f44d74() -> ! {
-    todo!("0xf44d74 RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::~EnumDesc()")
+pub fn stub_f44d74() {
+    // IDA 0xf44d74: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf44d84 — j___ZN3RBX10Reflection8EnumDescINS_8MaterialEE7addPairES2_PKc
@@ -352,8 +352,8 @@ pub fn stub_f44d84() -> ! {
 // 0xf44d94 — j___ZN3RBX10Reflection8EnumDescINS_8MaterialEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Material>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_8MaterialEED2Ev")]
-pub fn stub_f44d94() -> ! {
-    todo!("0xf44d94 RBX::Reflection::EnumDesc<RBX::Material>::~EnumDesc()")
+pub fn stub_f44d94() {
+    // IDA 0xf44d94: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf44da4 — j___ZN3RBX10Reflection9ArgHelper6getArgINS_8NormalIdELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS4_EEPNS8_10disable_ifINS8_7is_sameIS4_NS8_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
@@ -604,8 +604,8 @@ pub fn stub_f45a54() -> ! {
 // 0xf45b14 — j___ZNSt6vectorIN3RBX10Reflection7VariantESaIS2_EED2Ev
 #[doc(alias = "std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>::~vector()")]
 #[doc(alias = "j___ZNSt6vectorIN3RBX10Reflection7VariantESaIS2_EED2Ev")]
-pub fn stub_f45b14() -> ! {
-    todo!("0xf45b14 std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>::~vector()")
+pub fn stub_f45b14() {
+    // IDA 0xf45b14: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf45c04 — j___ZNSt6vectorIPKN3RBX10Reflection14EnumDescriptor4ItemESaIS5_EE9push_backERKS5_

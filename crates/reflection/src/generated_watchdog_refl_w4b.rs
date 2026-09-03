@@ -23,15 +23,15 @@ pub fn stub_0xbb8cb8() -> ! {
 // 0xbb8f2c — __ZN4Ogre14VertexStreamer17VertexBufferBatchINS0_15Vertex3DTextureEED1Ev
 #[doc(alias = "Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3DTexture>::~VertexBufferBatch()")]
 #[doc(alias = "__ZN4Ogre14VertexStreamer17VertexBufferBatchINS0_15Vertex3DTextureEED1Ev")]
-pub fn stub_0xbb8f2c() -> ! {
-    todo!("0xbb8f2c Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3DTexture>::~VertexBufferBatch()")
+pub fn stub_0xbb8f2c() {
+    // IDA 0xbb8f2c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xbb9178 — __ZN4Ogre14VertexStreamer17VertexBufferBatchINS0_8Vertex3DEED1Ev
 #[doc(alias = "Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3D>::~VertexBufferBatch()")]
 #[doc(alias = "__ZN4Ogre14VertexStreamer17VertexBufferBatchINS0_8Vertex3DEED1Ev")]
-pub fn stub_0xbb9178() -> ! {
-    todo!("0xbb9178 Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3D>::~VertexBufferBatch()")
+pub fn stub_0xbb9178() {
+    // IDA 0xbb9178: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf62c54 — j___ZNK5boost6detail8function13basic_vtable2IvSsN3G3D7Vector3EE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsRKS4_EENS7_5list3INS7_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
@@ -364,8 +364,8 @@ pub fn stub_0xf63ab4() -> ! {
 // 0xf63ac4 — j___ZN5boost9unordered13unordered_mapIN3RBX10Reflection13ConstPropertyENS_9intrusive13list_iteratorINS5_9list_implINS5_7listoptINS5_6detail16base_hook_traitsINS2_7Network4ItemENS5_16list_node_traitsIPvEELNS5_14link_mode_typeE1ENSB_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS4_EESt8equal_toIS4_ENS_19fast_pool_allocatorIS4_NS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEEED1Ev
 #[doc(alias = "boost::unordered::unordered_map<RBX::Reflection::ConstProperty,boost::intrusive::list_iterator<boost::intrusive::list_impl<boost::intrusive::listopt<boost::intrusive::detail::base_hook_traits<RBX::Network::Item,boost::intrusive::list_node_traits<void *>,(boost::intrusive::link_mode_type)1,RBX::Network::ItemTag,1>,unsigned long,true>>,false>,boost::hash<RBX::Reflection::ConstProperty>,std::equal_to<RBX::Reflection::ConstProperty>,boost::fast_pool_allocator<RBX::Reflection::ConstProperty,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>>::~unordered_map()")]
 #[doc(alias = "j___ZN5boost9unordered13unordered_mapIN3RBX10Reflection13ConstPropertyENS_9intrusive13list_iteratorINS5_9list_implINS5_7listoptINS5_6detail16base_hook_traitsINS2_7Network4ItemENS5_16list_node_traitsIPvEELNS5_14link_mode_typeE1ENSB_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS4_EESt8equal_toIS4_ENS_19fast_pool_allocatorIS4_NS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEEED1Ev")]
-pub fn stub_0xf63ac4() -> ! {
-    todo!("0xf63ac4 boost::unordered::unordered_map<RBX::Reflection::ConstProperty,boost::intrusive::list_iterator<boost::intrusive::list_impl<boost::intrusive::listopt<boost::intrusive::detail::base_hook_traits<RBX::Network::Item,boost::intrusive::list_node_traits<void *>,(boost::intrusive::link_mode_type)1,RBX::Network::ItemTag,1>,unsigned long,true>>,false>,boost::hash<RBX::Reflection::ConstProperty>,std::equal_to<RBX::Reflection::ConstProperty>,boost::fast_pool_allocator<RBX::Reflection::ConstProperty,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>>::~unordered_map()")
+pub fn stub_0xf63ac4() {
+    // IDA 0xf63ac4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf63ad4 — j___ZN5boost9unordered6detail10table_implINS1_3mapINS_19fast_pool_allocatorIN3RBX10Reflection13ConstPropertyENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES7_NS_9intrusive13list_iteratorINSB_9list_implINSB_7listoptINSB_6detail16base_hook_traitsINS5_7Network4ItemENSB_16list_node_traitsIPvEELNSB_14link_mode_typeE1ENSH_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS7_EESt8equal_toIS7_EEEE12emplace_implINS1_13emplace_args1ISt4pairIKS7_SR_EEEEES10_INS0_15iterator_detail8iteratorINS1_8ptr_nodeIS12_EEEEbERS11_RKT_

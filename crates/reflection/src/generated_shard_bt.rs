@@ -23,8 +23,8 @@ pub fn stub_f39554() -> ! {
 // 0xf39564 — j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEED2Ev")]
-pub fn stub_f39564() -> ! {
-    todo!("0xf39564 RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::~EnumDesc()")
+pub fn stub_f39564() {
+    // IDA 0xf39564: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf39574 — j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE7addPairES4_PKc
@@ -37,8 +37,8 @@ pub fn stub_f39574() -> ! {
 // 0xf39584 — j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEED2Ev")]
-pub fn stub_f39584() -> ! {
-    todo!("0xf39584 RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumDesc()")
+pub fn stub_f39584() {
+    // IDA 0xf39584: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf39594 — j___ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE7addPairES3_PKc
@@ -51,8 +51,8 @@ pub fn stub_f39594() -> ! {
 // 0xf395a4 — j___ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEED2Ev")]
-pub fn stub_f395a4() -> ! {
-    todo!("0xf395a4 RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::~EnumDesc()")
+pub fn stub_f395a4() {
+    // IDA 0xf395a4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf395b4 — j___ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE7addPairES3_PKc
@@ -65,8 +65,8 @@ pub fn stub_f395b4() -> ! {
 // 0xf395c4 — j___ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEED2Ev")]
-pub fn stub_f395c4() -> ! {
-    todo!("0xf395c4 RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::~EnumDesc()")
+pub fn stub_f395c4() {
+    // IDA 0xf395c4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf395d4 — j___ZN3RBX10Reflection9ArgHelper6getArgIdLi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS3_EEPNS7_10disable_ifINS7_7is_sameIS3_NS7_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
@@ -640,8 +640,8 @@ pub fn stub_f3a9d4() -> ! {
 // 0xf3a9e4 — j___ZN3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEED2Ev")]
-pub fn stub_f3a9e4() -> ! {
-    todo!("0xf3a9e4 RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::~EnumDesc()")
+pub fn stub_f3a9e4() {
+    // IDA 0xf3a9e4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3a9f4 — j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_9ExplosionEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE

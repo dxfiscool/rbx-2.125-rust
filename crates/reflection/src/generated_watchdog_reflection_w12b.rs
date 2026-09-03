@@ -149,16 +149,16 @@ pub fn stub_ccf9b4() -> ! {
 // 0xcd0648 — __ZN4Ogre12STLAllocatorINS_18PlaneBoundedVolumeENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED1Ev
 #[doc(alias = "Ogre::STLAllocator<Ogre::PlaneBoundedVolume,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")]
 #[doc(alias = "__ZN4Ogre12STLAllocatorINS_18PlaneBoundedVolumeENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED1Ev")]
-pub fn stub_cd0648() -> ! {
-    todo!("0xcd0648 Ogre::STLAllocator<Ogre::PlaneBoundedVolume,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")
+pub fn stub_cd0648() {
+    // IDA 0xcd0648: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcd064c — __ZN4Ogre14AxisAlignedBoxD1Ev
 // type: void __fastcall(Ogre::AxisAlignedBox *__hidden this)
 #[doc(alias = "Ogre::AxisAlignedBox::~AxisAlignedBox()")]
 #[doc(alias = "__ZN4Ogre14AxisAlignedBoxD1Ev")]
-pub fn stub_cd064c() -> ! {
-    todo!("0xcd064c Ogre::AxisAlignedBox::~AxisAlignedBox()")
+pub fn stub_cd064c() {
+    // IDA 0xcd064c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcd06e0 — __ZNK4Ogre5Light17getBoundingRadiusEv
@@ -188,15 +188,15 @@ pub fn stub_cd093c() -> ! {
 // 0xcd0a4c — __ZN4Ogre9SharedPtrINS_13AnimableValueEED1Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::AnimableValue>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_13AnimableValueEED1Ev")]
-pub fn stub_cd0a4c() -> ! {
-    todo!("0xcd0a4c Ogre::SharedPtr<Ogre::AnimableValue>::~SharedPtr()")
+pub fn stub_cd0a4c() {
+    // IDA 0xcd0a4c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcd0afc — __ZN4Ogre9SharedPtrINS_13AnimableValueEED0Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::AnimableValue>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_13AnimableValueEED0Ev")]
-pub fn stub_cd0afc() -> ! {
-    todo!("0xcd0afc Ogre::SharedPtr<Ogre::AnimableValue>::~SharedPtr()")
+pub fn stub_cd0afc() {
+    // IDA 0xcd0afc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xcd0bf0 — __ZN4Ogre9SharedPtrINS_13AnimableValueEE7destroyEv
@@ -232,37 +232,37 @@ pub fn stub_cd0f04() -> ! {
 // 0xcd103c — __ZN4Ogre12STLAllocatorINS_18PlaneBoundedVolumeENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED0Ev
 #[doc(alias = "Ogre::STLAllocator<Ogre::PlaneBoundedVolume,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")]
 #[doc(alias = "__ZN4Ogre12STLAllocatorINS_18PlaneBoundedVolumeENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED0Ev")]
-pub fn stub_cd103c() -> ! {
-    todo!("0xcd103c Ogre::STLAllocator<Ogre::PlaneBoundedVolume,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")
+pub fn stub_cd103c() {
+    // IDA 0xcd103c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xcd1048 — __ZNSt12_Vector_baseIN4Ogre18PlaneBoundedVolumeENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
 #[doc(alias = "std::_Vector_base<Ogre::PlaneBoundedVolume,Ogre::STLAllocator<Ogre::PlaneBoundedVolume,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIN4Ogre18PlaneBoundedVolumeENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")]
-pub fn stub_cd1048() -> ! {
-    todo!("0xcd1048 std::_Vector_base<Ogre::PlaneBoundedVolume,Ogre::STLAllocator<Ogre::PlaneBoundedVolume,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+pub fn stub_cd1048() {
+    // IDA 0xcd1048: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcd104c — __ZNSt8_Rb_treeItSt4pairIKtN4Ogre7Vector4EESt10_Select1stIS4_ESt4lessItENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED1Ev
 // type: void()
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::Vector4>,std::_Select1st<std::pair<unsigned short const,Ogre::Vector4>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::Vector4>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtN4Ogre7Vector4EESt10_Select1stIS4_ESt4lessItENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED1Ev")]
-pub fn stub_cd104c() -> ! {
-    todo!("0xcd104c std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::Vector4>,std::_Select1st<std::pair<unsigned short const,Ogre::Vector4>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::Vector4>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+pub fn stub_cd104c() {
+    // IDA 0xcd104c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcd1050 — __ZNSt8_Rb_treeItSt4pairIKtN4Ogre7Vector4EESt10_Select1stIS4_ESt4lessItENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED0Ev
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::Vector4>,std::_Select1st<std::pair<unsigned short const,Ogre::Vector4>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::Vector4>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtN4Ogre7Vector4EESt10_Select1stIS4_ESt4lessItENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED0Ev")]
-pub fn stub_cd1050() -> ! {
-    todo!("0xcd1050 std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::Vector4>,std::_Select1st<std::pair<unsigned short const,Ogre::Vector4>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::Vector4>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+pub fn stub_cd1050() {
+    // IDA 0xcd1050: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xcd105c — __ZNSt12_Vector_baseIN4Ogre18PlaneBoundedVolumeENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 #[doc(alias = "std::_Vector_base<Ogre::PlaneBoundedVolume,Ogre::STLAllocator<Ogre::PlaneBoundedVolume,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIN4Ogre18PlaneBoundedVolumeENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
-pub fn stub_cd105c() -> ! {
-    todo!("0xcd105c std::_Vector_base<Ogre::PlaneBoundedVolume,Ogre::STLAllocator<Ogre::PlaneBoundedVolume,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+pub fn stub_cd105c() {
+    // IDA 0xcd105c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xcd1068 — __ZN4Ogre13AnimableValue14setAsBaseValueEi
@@ -337,16 +337,16 @@ pub fn stub_cd10c0() -> ! {
 // type: void __fastcall(Ogre::LightSpotlightFalloffValue *__hidden this)
 #[doc(alias = "Ogre::LightSpotlightFalloffValue::~LightSpotlightFalloffValue()")]
 #[doc(alias = "__ZN4Ogre26LightSpotlightFalloffValueD1Ev")]
-pub fn stub_cd10e4() -> ! {
-    todo!("0xcd10e4 Ogre::LightSpotlightFalloffValue::~LightSpotlightFalloffValue()")
+pub fn stub_cd10e4() {
+    // IDA 0xcd10e4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcd10e8 — __ZN4Ogre26LightSpotlightFalloffValueD0Ev
 // type: void __fastcall(Ogre::LightSpotlightFalloffValue *__hidden this)
 #[doc(alias = "Ogre::LightSpotlightFalloffValue::~LightSpotlightFalloffValue()")]
 #[doc(alias = "__ZN4Ogre26LightSpotlightFalloffValueD0Ev")]
-pub fn stub_cd10e8() -> ! {
-    todo!("0xcd10e8 Ogre::LightSpotlightFalloffValue::~LightSpotlightFalloffValue()")
+pub fn stub_cd10e8() {
+    // IDA 0xcd10e8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xcd1174 — __ZN4Ogre26LightSpotlightFalloffValue26setCurrentStateAsBaseValueEv
@@ -515,16 +515,16 @@ pub fn stub_cd2e60() -> ! {
 // type: void __fastcall(Ogre::LightSpotlightOuterValue *__hidden this)
 #[doc(alias = "Ogre::LightSpotlightOuterValue::~LightSpotlightOuterValue()")]
 #[doc(alias = "__ZN4Ogre24LightSpotlightOuterValueD1Ev")]
-pub fn stub_cd3010() -> ! {
-    todo!("0xcd3010 Ogre::LightSpotlightOuterValue::~LightSpotlightOuterValue()")
+pub fn stub_cd3010() {
+    // IDA 0xcd3010: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcd3014 — __ZN4Ogre24LightSpotlightOuterValueD0Ev
 // type: void __fastcall(Ogre::LightSpotlightOuterValue *__hidden this)
 #[doc(alias = "Ogre::LightSpotlightOuterValue::~LightSpotlightOuterValue()")]
 #[doc(alias = "__ZN4Ogre24LightSpotlightOuterValueD0Ev")]
-pub fn stub_cd3014() -> ! {
-    todo!("0xcd3014 Ogre::LightSpotlightOuterValue::~LightSpotlightOuterValue()")
+pub fn stub_cd3014() {
+    // IDA 0xcd3014: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xcd30a0 — __ZN4Ogre24LightSpotlightOuterValue26setCurrentStateAsBaseValueEv
@@ -555,16 +555,16 @@ pub fn stub_cd30bc() -> ! {
 // type: void __fastcall(Ogre::LightSpotlightInnerValue *__hidden this)
 #[doc(alias = "Ogre::LightSpotlightInnerValue::~LightSpotlightInnerValue()")]
 #[doc(alias = "__ZN4Ogre24LightSpotlightInnerValueD1Ev")]
-pub fn stub_cd30dc() -> ! {
-    todo!("0xcd30dc Ogre::LightSpotlightInnerValue::~LightSpotlightInnerValue()")
+pub fn stub_cd30dc() {
+    // IDA 0xcd30dc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcd30e0 — __ZN4Ogre24LightSpotlightInnerValueD0Ev
 // type: void __fastcall(Ogre::LightSpotlightInnerValue *__hidden this)
 #[doc(alias = "Ogre::LightSpotlightInnerValue::~LightSpotlightInnerValue()")]
 #[doc(alias = "__ZN4Ogre24LightSpotlightInnerValueD0Ev")]
-pub fn stub_cd30e0() -> ! {
-    todo!("0xcd30e0 Ogre::LightSpotlightInnerValue::~LightSpotlightInnerValue()")
+pub fn stub_cd30e0() {
+    // IDA 0xcd30e0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xcd316c — __ZN4Ogre24LightSpotlightInnerValue26setCurrentStateAsBaseValueEv
@@ -595,16 +595,16 @@ pub fn stub_cd3188() -> ! {
 // type: void __fastcall(Ogre::LightAttenuationValue *__hidden this)
 #[doc(alias = "Ogre::LightAttenuationValue::~LightAttenuationValue()")]
 #[doc(alias = "__ZN4Ogre21LightAttenuationValueD1Ev")]
-pub fn stub_cd31a8() -> ! {
-    todo!("0xcd31a8 Ogre::LightAttenuationValue::~LightAttenuationValue()")
+pub fn stub_cd31a8() {
+    // IDA 0xcd31a8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcd31ac — __ZN4Ogre21LightAttenuationValueD0Ev
 // type: void __fastcall(Ogre::LightAttenuationValue *__hidden this)
 #[doc(alias = "Ogre::LightAttenuationValue::~LightAttenuationValue()")]
 #[doc(alias = "__ZN4Ogre21LightAttenuationValueD0Ev")]
-pub fn stub_cd31ac() -> ! {
-    todo!("0xcd31ac Ogre::LightAttenuationValue::~LightAttenuationValue()")
+pub fn stub_cd31ac() {
+    // IDA 0xcd31ac: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xcd3238 — __ZN4Ogre21LightAttenuationValue26setCurrentStateAsBaseValueEv
@@ -633,16 +633,16 @@ pub fn stub_cd32c0() -> ! {
 // type: void __fastcall(Ogre::LightSpecularColourValue *__hidden this)
 #[doc(alias = "Ogre::LightSpecularColourValue::~LightSpecularColourValue()")]
 #[doc(alias = "__ZN4Ogre24LightSpecularColourValueD1Ev")]
-pub fn stub_cd335c() -> ! {
-    todo!("0xcd335c Ogre::LightSpecularColourValue::~LightSpecularColourValue()")
+pub fn stub_cd335c() {
+    // IDA 0xcd335c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcd3360 — __ZN4Ogre24LightSpecularColourValueD0Ev
 // type: void __fastcall(Ogre::LightSpecularColourValue *__hidden this)
 #[doc(alias = "Ogre::LightSpecularColourValue::~LightSpecularColourValue()")]
 #[doc(alias = "__ZN4Ogre24LightSpecularColourValueD0Ev")]
-pub fn stub_cd3360() -> ! {
-    todo!("0xcd3360 Ogre::LightSpecularColourValue::~LightSpecularColourValue()")
+pub fn stub_cd3360() {
+    // IDA 0xcd3360: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xcd33ec — __ZN4Ogre24LightSpecularColourValue26setCurrentStateAsBaseValueEv
@@ -673,16 +673,16 @@ pub fn stub_cd340c() -> ! {
 // type: void __fastcall(Ogre::LightDiffuseColourValue *__hidden this)
 #[doc(alias = "Ogre::LightDiffuseColourValue::~LightDiffuseColourValue()")]
 #[doc(alias = "__ZN4Ogre23LightDiffuseColourValueD1Ev")]
-pub fn stub_cd3464() -> ! {
-    todo!("0xcd3464 Ogre::LightDiffuseColourValue::~LightDiffuseColourValue()")
+pub fn stub_cd3464() {
+    // IDA 0xcd3464: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcd3468 — __ZN4Ogre23LightDiffuseColourValueD0Ev
 // type: void __fastcall(Ogre::LightDiffuseColourValue *__hidden this)
 #[doc(alias = "Ogre::LightDiffuseColourValue::~LightDiffuseColourValue()")]
 #[doc(alias = "__ZN4Ogre23LightDiffuseColourValueD0Ev")]
-pub fn stub_cd3468() -> ! {
-    todo!("0xcd3468 Ogre::LightDiffuseColourValue::~LightDiffuseColourValue()")
+pub fn stub_cd3468() {
+    // IDA 0xcd3468: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xcd34f4 — __ZN4Ogre23LightDiffuseColourValue26setCurrentStateAsBaseValueEv
@@ -729,24 +729,24 @@ pub fn stub_cd3600() -> ! {
 // type: void __fastcall(Ogre::LodStrategy *__hidden this)
 #[doc(alias = "Ogre::LodStrategy::~LodStrategy()")]
 #[doc(alias = "__ZN4Ogre11LodStrategyD0Ev")]
-pub fn stub_cd3624() -> ! {
-    todo!("0xcd3624 Ogre::LodStrategy::~LodStrategy()")
+pub fn stub_cd3624() {
+    // IDA 0xcd3624: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xcd36fc — __ZN4Ogre11LodStrategyD1Ev
 // type: void __fastcall(Ogre::LodStrategy *__hidden this)
 #[doc(alias = "Ogre::LodStrategy::~LodStrategy()")]
 #[doc(alias = "__ZN4Ogre11LodStrategyD1Ev")]
-pub fn stub_cd36fc() -> ! {
-    todo!("0xcd36fc Ogre::LodStrategy::~LodStrategy()")
+pub fn stub_cd36fc() {
+    // IDA 0xcd36fc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcd3758 — __ZN4Ogre11LodStrategyD2Ev
 // type: void __fastcall(Ogre::LodStrategy *__hidden this)
 #[doc(alias = "Ogre::LodStrategy::~LodStrategy()")]
 #[doc(alias = "__ZN4Ogre11LodStrategyD2Ev")]
-pub fn stub_cd3758() -> ! {
-    todo!("0xcd3758 Ogre::LodStrategy::~LodStrategy()")
+pub fn stub_cd3758() {
+    // IDA 0xcd3758: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcd37b4 — __ZNK4Ogre11LodStrategy18transformUserValueEf

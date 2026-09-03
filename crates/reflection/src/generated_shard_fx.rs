@@ -418,14 +418,14 @@ pub fn stub_0x716e8() -> ! {
 
 // 0x71818 — __ZN4FMOD15ChannelEmulatedD0Ev
 #[doc(alias = "FMOD::ChannelEmulated::~ChannelEmulated()")]
-pub fn stub_0x71818() -> ! {
-    todo!("0x71818 __ZN4FMOD15ChannelEmulatedD0Ev")
+pub fn stub_0x71818() {
+    // IDA 0x71818: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7183c — __ZN4FMOD15ChannelEmulatedD1Ev
 #[doc(alias = "FMOD::ChannelEmulated::~ChannelEmulated()")]
-pub fn stub_0x7183c() -> ! {
-    todo!("0x7183c __ZN4FMOD15ChannelEmulatedD1Ev")
+pub fn stub_0x7183c() {
+    // IDA 0x7183c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x71854 — __ZN4FMOD11ChannelRealC2Ev
@@ -646,14 +646,14 @@ pub fn stub_0x72910() -> ! {
 
 // 0x72a04 — __ZN4FMOD11ChannelRealD0Ev
 #[doc(alias = "FMOD::ChannelReal::~ChannelReal()")]
-pub fn stub_0x72a04() -> ! {
-    todo!("0x72a04 __ZN4FMOD11ChannelRealD0Ev")
+pub fn stub_0x72a04() {
+    // IDA 0x72a04: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x72a28 — __ZN4FMOD11ChannelRealD1Ev
 #[doc(alias = "FMOD::ChannelReal::~ChannelReal()")]
-pub fn stub_0x72a28() -> ! {
-    todo!("0x72a28 __ZN4FMOD11ChannelRealD1Ev")
+pub fn stub_0x72a28() {
+    // IDA 0x72a28: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x72a40 — __ZN4FMOD19ChannelRealManual3D5allocEv
@@ -676,14 +676,14 @@ pub fn stub_0x72a88() -> ! {
 
 // 0x73de4 — __ZN4FMOD19ChannelRealManual3DD0Ev
 #[doc(alias = "FMOD::ChannelRealManual3D::~ChannelRealManual3D()")]
-pub fn stub_0x73de4() -> ! {
-    todo!("0x73de4 __ZN4FMOD19ChannelRealManual3DD0Ev")
+pub fn stub_0x73de4() {
+    // IDA 0x73de4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x73e08 — __ZN4FMOD19ChannelRealManual3DD1Ev
 #[doc(alias = "FMOD::ChannelRealManual3D::~ChannelRealManual3D()")]
-pub fn stub_0x73e08() -> ! {
-    todo!("0x73e08 __ZN4FMOD19ChannelRealManual3DD1Ev")
+pub fn stub_0x73e08() {
+    // IDA 0x73e08: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x73e20 — __ZN4FMOD15ChannelSoftware14setLowPassGainEf

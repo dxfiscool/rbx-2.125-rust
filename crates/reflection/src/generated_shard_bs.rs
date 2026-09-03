@@ -386,8 +386,8 @@ pub fn stub_f38e84() -> ! {
 // 0xf38e94 — j___ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEED2Ev")]
-pub fn stub_f38e94() -> ! {
-    todo!("0xf38e94 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::~EnumDesc()")
+pub fn stub_f38e94() {
+    // IDA 0xf38e94: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf38f04 — j___ZNK3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEE13convertToItemERKS3_
@@ -734,8 +734,8 @@ pub fn stub_f39504() -> ! {
 // 0xf39514 — j___ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEED2Ev")]
-pub fn stub_f39514() -> ! {
-    todo!("0xf39514 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")
+pub fn stub_f39514() {
+    // IDA 0xf39514: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf39524 — j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE7addPairES3_PKc
@@ -748,6 +748,6 @@ pub fn stub_f39524() -> ! {
 // 0xf39534 — j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEED2Ev")]
-pub fn stub_f39534() -> ! {
-    todo!("0xf39534 RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::~EnumDesc()")
+pub fn stub_f39534() {
+    // IDA 0xf39534: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }

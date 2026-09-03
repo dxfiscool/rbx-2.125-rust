@@ -35,16 +35,16 @@ pub fn stub_25323c() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEED0Ev")]
-pub fn stub_25324c() -> ! {
-    todo!("0x25324c virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()")
+pub fn stub_25324c() {
+    // IDA 0x25324c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x253320 — __ZN5boost16exception_detail19error_info_injectorINS_9gregorian8bad_yearEED0Ev
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::gregorian::bad_year>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_9gregorian8bad_yearEED0Ev")]
-pub fn stub_253320() -> ! {
-    todo!("0x253320 boost::exception_detail::error_info_injector<boost::gregorian::bad_year>::~error_info_injector()")
+pub fn stub_253320() {
+    // IDA 0x253320: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2533dc — __ZThn8_N5boost16exception_detail19error_info_injectorINS_9gregorian8bad_yearEED0Ev
@@ -322,8 +322,8 @@ pub fn stub_254bb4() -> ! {
 // 0x254bb8 — __ZN3RBX5CryptD1Ev
 #[doc(alias = "RBX::Crypt::~Crypt()")]
 #[doc(alias = "__ZN3RBX5CryptD1Ev")]
-pub fn stub_254bb8() -> ! {
-    todo!("0x254bb8 RBX::Crypt::~Crypt()")
+pub fn stub_254bb8() {
+    // IDA 0x254bb8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x254bbc — __ZN3RBX5Crypt21verifySignatureBase64ESsSs
@@ -521,22 +521,22 @@ pub fn stub_2577c0() -> ! {
 
 // 0x2580a8 — __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD1Ev")]
-pub fn stub_2580a8() -> ! {
-    todo!("0x2580a8 __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD1Ev")
+pub fn stub_2580a8() {
+    // IDA 0x2580a8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2580ac — __ZN3RBX11HttpServiceD1Ev
 #[doc(alias = "RBX::HttpService::~HttpService()")]
 #[doc(alias = "__ZN3RBX11HttpServiceD1Ev")]
-pub fn stub_2580ac() -> ! {
-    todo!("0x2580ac RBX::HttpService::~HttpService()")
+pub fn stub_2580ac() {
+    // IDA 0x2580ac: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2580b0 — __ZN3RBX11HttpServiceD0Ev
 #[doc(alias = "RBX::HttpService::~HttpService()")]
 #[doc(alias = "__ZN3RBX11HttpServiceD0Ev")]
-pub fn stub_2580b0() -> ! {
-    todo!("0x2580b0 RBX::HttpService::~HttpService()")
+pub fn stub_2580b0() {
+    // IDA 0x2580b0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x258150 — __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv
@@ -606,8 +606,8 @@ pub fn stub_2583c8() -> ! {
 
 // 0x2584a8 — __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD2Ev")]
-pub fn stub_2584a8() -> ! {
-    todo!("0x2584a8 __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD2Ev")
+pub fn stub_2584a8() {
+    // IDA 0x2584a8: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x258544 — __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator6createEv
@@ -644,16 +644,16 @@ pub fn stub_2588e8() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_2589f0() -> ! {
-    todo!("0x2589f0 boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_2589f0() {
+    // IDA 0x2589f0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2589f4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_2589f4() -> ! {
-    todo!("0x2589f4 boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_2589f4() {
+    // IDA 0x2589f4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2589f8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
@@ -850,14 +850,14 @@ pub fn stub_25b8c8() -> ! {
 // 0x25baa8 — __ZN3RBX5LightD0Ev
 #[doc(alias = "RBX::Light::~Light()")]
 #[doc(alias = "__ZN3RBX5LightD0Ev")]
-pub fn stub_25baa8() -> ! {
-    todo!("0x25baa8 RBX::Light::~Light()")
+pub fn stub_25baa8() {
+    // IDA 0x25baa8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x25bb48 — __ZN3RBX5LightD1Ev
 #[doc(alias = "RBX::Light::~Light()")]
 #[doc(alias = "__ZN3RBX5LightD1Ev")]
-pub fn stub_25bb48() -> ! {
-    todo!("0x25bb48 RBX::Light::~Light()")
+pub fn stub_25bb48() {
+    // IDA 0x25bb48: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 

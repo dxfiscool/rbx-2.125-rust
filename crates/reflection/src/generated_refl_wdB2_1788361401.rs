@@ -89,8 +89,8 @@ pub fn stub_0x36fe24() -> ! {
 // 0x36fe74 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEEEEED2Ev
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>>>::~node_constructor()")]
 #[doc(alias = "__ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEEEEED2Ev")]
-pub fn stub_0x36fe74() -> ! {
-    todo!("0x36fe74 boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>>>::~node_constructor()")
+pub fn stub_0x36fe74() {
+    // IDA 0x36fe74: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x36fe90 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm
@@ -138,8 +138,8 @@ pub fn stub_0x370108() -> ! {
 // 0x3701ec — __ZN3RBX8LRUCacheISsNS_25ScriptInformationProvider16CachedScriptInfoEED2Ev
 #[doc(alias = "RBX::LRUCache<std::string,RBX::ScriptInformationProvider::CachedScriptInfo>::~LRUCache()")]
 #[doc(alias = "__ZN3RBX8LRUCacheISsNS_25ScriptInformationProvider16CachedScriptInfoEED2Ev")]
-pub fn stub_0x3701ec() -> ! {
-    todo!("0x3701ec RBX::LRUCache<std::string,RBX::ScriptInformationProvider::CachedScriptInfo>::~LRUCache()")
+pub fn stub_0x3701ec() {
+    // IDA 0x3701ec: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x370300 — __ZN3RBX8LRUCacheISsNS_25ScriptInformationProvider16CachedScriptInfoEE6resizeEm
@@ -194,8 +194,8 @@ pub fn stub_0x370530() -> ! {
 // 0x3705a0 — __ZN3RBX8LRUCacheISsSsED2Ev
 #[doc(alias = "RBX::LRUCache<std::string,std::string>::~LRUCache()")]
 #[doc(alias = "__ZN3RBX8LRUCacheISsSsED2Ev")]
-pub fn stub_0x3705a0() -> ! {
-    todo!("0x3705a0 RBX::LRUCache<std::string,std::string>::~LRUCache()")
+pub fn stub_0x3705a0() {
+    // IDA 0x3705a0: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3706b4 — __ZN3RBX8LRUCacheISsSsE6resizeEm
@@ -250,8 +250,8 @@ pub fn stub_0x3708e4() -> ! {
 // 0x371070 — __ZN3RBX25ScriptInformationProviderD2Ev
 #[doc(alias = "RBX::ScriptInformationProvider::~ScriptInformationProvider()")]
 #[doc(alias = "__ZN3RBX25ScriptInformationProviderD2Ev")]
-pub fn stub_0x371070() -> ! {
-    todo!("0x371070 RBX::ScriptInformationProvider::~ScriptInformationProvider()")
+pub fn stub_0x371070() {
+    // IDA 0x371070: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x371220 — __ZN5boost9function5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbE5clearEv
@@ -264,8 +264,8 @@ pub fn stub_0x371220() -> ! {
 // 0x371250 — __ZN3RBX17HeartbeatInstanceD1Ev
 #[doc(alias = "RBX::HeartbeatInstance::~HeartbeatInstance()")]
 #[doc(alias = "__ZN3RBX17HeartbeatInstanceD1Ev")]
-pub fn stub_0x371250() -> ! {
-    todo!("0x371250 RBX::HeartbeatInstance::~HeartbeatInstance()")
+pub fn stub_0x371250() {
+    // IDA 0x371250: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x371254 — __GLOBAL__I_a_137
@@ -327,15 +327,15 @@ pub fn stub_0x372414() -> ! {
 // 0x372460 — __ZN3RBX10Soundscape12SoundServiceD0Ev
 #[doc(alias = "RBX::Soundscape::SoundService::~SoundService()")]
 #[doc(alias = "__ZN3RBX10Soundscape12SoundServiceD0Ev")]
-pub fn stub_0x372460() -> ! {
-    todo!("0x372460 RBX::Soundscape::SoundService::~SoundService()")
+pub fn stub_0x372460() {
+    // IDA 0x372460: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x372500 — __ZN3RBX10Soundscape12SoundServiceD1Ev
 #[doc(alias = "RBX::Soundscape::SoundService::~SoundService()")]
 #[doc(alias = "__ZN3RBX10Soundscape12SoundServiceD1Ev")]
-pub fn stub_0x372500() -> ! {
-    todo!("0x372500 RBX::Soundscape::SoundService::~SoundService()")
+pub fn stub_0x372500() {
+    // IDA 0x372500: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x372504 — __ZThn32_N3RBX10Soundscape12SoundServiceD0Ev
@@ -355,8 +355,8 @@ pub fn stub_0x37250c() {
 // 0x372514 — __ZN3RBX10Soundscape12SoundServiceD2Ev
 #[doc(alias = "RBX::Soundscape::SoundService::~SoundService()")]
 #[doc(alias = "__ZN3RBX10Soundscape12SoundServiceD2Ev")]
-pub fn stub_0x372514() -> ! {
-    todo!("0x372514 RBX::Soundscape::SoundService::~SoundService()")
+pub fn stub_0x372514() {
+    // IDA 0x372514: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3728b0 — __ZThn32_N3RBX10Soundscape12SoundServiceD1Ev
@@ -551,15 +551,15 @@ pub fn stub_0x374cc4() -> ! {
 // 0x374ff4 — __ZN3RBX10Soundscape12SoundChannelD0Ev
 #[doc(alias = "RBX::Soundscape::SoundChannel::~SoundChannel()")]
 #[doc(alias = "__ZN3RBX10Soundscape12SoundChannelD0Ev")]
-pub fn stub_0x374ff4() -> ! {
-    todo!("0x374ff4 RBX::Soundscape::SoundChannel::~SoundChannel()")
+pub fn stub_0x374ff4() {
+    // IDA 0x374ff4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x375094 — __ZN3RBX10Soundscape12SoundChannelD1Ev
 #[doc(alias = "RBX::Soundscape::SoundChannel::~SoundChannel()")]
 #[doc(alias = "__ZN3RBX10Soundscape12SoundChannelD1Ev")]
-pub fn stub_0x375094() -> ! {
-    todo!("0x375094 RBX::Soundscape::SoundChannel::~SoundChannel()")
+pub fn stub_0x375094() {
+    // IDA 0x375094: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x375098 — __ZThn32_N3RBX10Soundscape12SoundChannelD0Ev
@@ -579,8 +579,8 @@ pub fn stub_0x3750a0() {
 // 0x3750a8 — __ZN3RBX10Soundscape12SoundChannelD2Ev
 #[doc(alias = "RBX::Soundscape::SoundChannel::~SoundChannel()")]
 #[doc(alias = "__ZN3RBX10Soundscape12SoundChannelD2Ev")]
-pub fn stub_0x3750a8() -> ! {
-    todo!("0x3750a8 RBX::Soundscape::SoundChannel::~SoundChannel()")
+pub fn stub_0x3750a8() {
+    // IDA 0x3750a8: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x375330 — __ZThn32_N3RBX10Soundscape12SoundChannelD1Ev

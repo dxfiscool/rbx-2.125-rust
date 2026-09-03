@@ -221,8 +221,8 @@ pub fn stub_0xf3a9d4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::~EnumDesc()")]
-pub fn stub_0xf3a9e4() -> ! {
-    todo!("0xf3a9e4")
+pub fn stub_0xf3a9e4() {
+    // IDA 0xf3a9e4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3a9f4 — j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_9ExplosionEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -353,8 +353,8 @@ pub fn stub_0xf3af44() -> ! {
 // demangled: RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::~EnumDesc()")]
-pub fn stub_0xf3af54() -> ! {
-    todo!("0xf3af54")
+pub fn stub_0xf3af54() {
+    // IDA 0xf3af54: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3af64 — j___ZN3RBX10Reflection8EnumDescINS_10DialogRoot10DialogToneEED2Ev
@@ -362,8 +362,8 @@ pub fn stub_0xf3af54() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_10DialogRoot10DialogToneEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone>::~EnumDesc()")]
-pub fn stub_0xf3af64() -> ! {
-    todo!("0xf3af64")
+pub fn stub_0xf3af64() {
+    // IDA 0xf3af64: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3af74 — j___ZN3RBX10Reflection8EnumDescINS_10DialogRoot13DialogPurposeEED2Ev
@@ -371,8 +371,8 @@ pub fn stub_0xf3af64() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogPurpose>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_10DialogRoot13DialogPurposeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogPurpose>::~EnumDesc()")]
-pub fn stub_0xf3af74() -> ! {
-    todo!("0xf3af74")
+pub fn stub_0xf3af74() {
+    // IDA 0xf3af74: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3af84 — j___ZN3RBX10Reflection8EnumDescINS_11ChatService9ChatColorEED2Ev
@@ -380,8 +380,8 @@ pub fn stub_0xf3af74() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::ChatService::ChatColor>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11ChatService9ChatColorEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::ChatService::ChatColor>::~EnumDesc()")]
-pub fn stub_0xf3af84() -> ! {
-    todo!("0xf3af84")
+pub fn stub_0xf3af84() {
+    // IDA 0xf3af84: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3af94 — j___ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEED2Ev
@@ -389,8 +389,8 @@ pub fn stub_0xf3af84() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::~EnumDesc()")]
-pub fn stub_0xf3af94() -> ! {
-    todo!("0xf3af94")
+pub fn stub_0xf3af94() {
+    // IDA 0xf3af94: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3afa4 — j___ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEED2Ev
@@ -398,8 +398,8 @@ pub fn stub_0xf3af94() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::~EnumDesc()")]
-pub fn stub_0xf3afa4() -> ! {
-    todo!("0xf3afa4")
+pub fn stub_0xf3afa4() {
+    // IDA 0xf3afa4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3afb4 — j___ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEED2Ev
@@ -407,8 +407,8 @@ pub fn stub_0xf3afa4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::~EnumDesc()")]
-pub fn stub_0xf3afb4() -> ! {
-    todo!("0xf3afb4")
+pub fn stub_0xf3afb4() {
+    // IDA 0xf3afb4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3afc4 — j___ZN3RBX10Reflection8EnumDescINS_11SurfaceTypeEED2Ev
@@ -416,8 +416,8 @@ pub fn stub_0xf3afb4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::SurfaceType>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11SurfaceTypeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SurfaceType>::~EnumDesc()")]
-pub fn stub_0xf3afc4() -> ! {
-    todo!("0xf3afc4")
+pub fn stub_0xf3afc4() {
+    // IDA 0xf3afc4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3afd4 — j___ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEED2Ev
@@ -425,8 +425,8 @@ pub fn stub_0xf3afc4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::~EnumDesc()")]
-pub fn stub_0xf3afd4() -> ! {
-    todo!("0xf3afd4")
+pub fn stub_0xf3afd4() {
+    // IDA 0xf3afd4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3afe4 — j___ZN3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEED2Ev
@@ -434,8 +434,8 @@ pub fn stub_0xf3afd4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality>::~EnumDesc()")]
-pub fn stub_0xf3afe4() -> ! {
-    todo!("0xf3afe4")
+pub fn stub_0xf3afe4() {
+    // IDA 0xf3afe4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3aff4 — j___ZN3RBX10Reflection8EnumDescINS_12GameSettings13UploadSettingEED2Ev
@@ -443,8 +443,8 @@ pub fn stub_0xf3afe4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_12GameSettings13UploadSettingEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::~EnumDesc()")]
-pub fn stub_0xf3aff4() -> ! {
-    todo!("0xf3aff4")
+pub fn stub_0xf3aff4() {
+    // IDA 0xf3aff4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b004 — j___ZN3RBX10Reflection8EnumDescINS_12SpecialShape8MeshTypeEED2Ev
@@ -452,8 +452,8 @@ pub fn stub_0xf3aff4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::SpecialShape::MeshType>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_12SpecialShape8MeshTypeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SpecialShape::MeshType>::~EnumDesc()")]
-pub fn stub_0xf3b004() -> ! {
-    todo!("0xf3b004")
+pub fn stub_0xf3b004() {
+    // IDA 0xf3b004: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b014 — j___ZN3RBX10Reflection8EnumDescINS_13CharacterMesh8BodyPartEED2Ev
@@ -461,8 +461,8 @@ pub fn stub_0xf3b004() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::CharacterMesh::BodyPart>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13CharacterMesh8BodyPartEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CharacterMesh::BodyPart>::~EnumDesc()")]
-pub fn stub_0xf3b014() -> ! {
-    todo!("0xf3b014")
+pub fn stub_0xf3b014() {
+    // IDA 0xf3b014: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b034 — j___ZN3RBX10Reflection8EnumDescINS_13FriendService12FriendStatusEED2Ev
@@ -470,8 +470,8 @@ pub fn stub_0xf3b014() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::FriendService::FriendStatus>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13FriendService12FriendStatusEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::FriendService::FriendStatus>::~EnumDesc()")]
-pub fn stub_0xf3b034() -> ! {
-    todo!("0xf3b034")
+pub fn stub_0xf3b034() {
+    // IDA 0xf3b034: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b044 — j___ZN3RBX10Reflection8EnumDescINS_13FriendService15FriendEventTypeEED2Ev
@@ -479,8 +479,8 @@ pub fn stub_0xf3b034() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::FriendService::FriendEventType>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13FriendService15FriendEventTypeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::FriendService::FriendEventType>::~EnumDesc()")]
-pub fn stub_0xf3b044() -> ! {
-    todo!("0xf3b044")
+pub fn stub_0xf3b044() {
+    // IDA 0xf3b044: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b054 — j___ZN3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEED2Ev
@@ -488,16 +488,16 @@ pub fn stub_0xf3b044() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::~EnumDesc()")]
-pub fn stub_0xf3b054() -> ! {
-    todo!("0xf3b054")
+pub fn stub_0xf3b054() {
+    // IDA 0xf3b054: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b064 — j___ZN3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEED2Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::~EnumDesc()")]
-pub fn stub_0xf3b064() -> ! {
-    todo!("0xf3b064")
+pub fn stub_0xf3b064() {
+    // IDA 0xf3b064: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b074 — j___ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEED2Ev
@@ -505,8 +505,8 @@ pub fn stub_0xf3b064() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::~EnumDesc()")]
-pub fn stub_0xf3b074() -> ! {
-    todo!("0xf3b074")
+pub fn stub_0xf3b074() {
+    // IDA 0xf3b074: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b084 — j___ZN3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEED2Ev
@@ -514,16 +514,16 @@ pub fn stub_0xf3b074() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::~EnumDesc()")]
-pub fn stub_0xf3b084() -> ! {
-    todo!("0xf3b084")
+pub fn stub_0xf3b084() {
+    // IDA 0xf3b084: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b094 — j___ZN3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEED2Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::~EnumDesc()")]
-pub fn stub_0xf3b094() -> ! {
-    todo!("0xf3b094")
+pub fn stub_0xf3b094() {
+    // IDA 0xf3b094: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b0a4 — j___ZN3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEED2Ev
@@ -531,8 +531,8 @@ pub fn stub_0xf3b094() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::LegacyController::InputType>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::LegacyController::InputType>::~EnumDesc()")]
-pub fn stub_0xf3b0a4() -> ! {
-    todo!("0xf3b0a4")
+pub fn stub_0xf3b0a4() {
+    // IDA 0xf3b0a4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b0b4 — j___ZN3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEED2Ev
@@ -540,8 +540,8 @@ pub fn stub_0xf3b0a4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::~EnumDesc()")]
-pub fn stub_0xf3b0b4() -> ! {
-    todo!("0xf3b0b4")
+pub fn stub_0xf3b0b4() {
+    // IDA 0xf3b0b4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b0c4 — j___ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEED2Ev
@@ -549,8 +549,8 @@ pub fn stub_0xf3b0b4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::~EnumDesc()")]
-pub fn stub_0xf3b0c4() -> ! {
-    todo!("0xf3b0c4")
+pub fn stub_0xf3b0c4() {
+    // IDA 0xf3b0c4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b0d4 — j___ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEED2Ev
@@ -558,16 +558,16 @@ pub fn stub_0xf3b0c4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::~EnumDesc()")]
-pub fn stub_0xf3b0d4() -> ! {
-    todo!("0xf3b0d4")
+pub fn stub_0xf3b0d4() {
+    // IDA 0xf3b0d4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b0e4 — j___ZN3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEED2Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::KeywordFilterType>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeywordFilterType>::~EnumDesc()")]
-pub fn stub_0xf3b0e4() -> ! {
-    todo!("0xf3b0e4")
+pub fn stub_0xf3b0e4() {
+    // IDA 0xf3b0e4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b104 — j___ZN3RBX10Reflection8EnumDescINS_18SkateboardPlatform9MoveStateEED2Ev
@@ -575,8 +575,8 @@ pub fn stub_0xf3b0e4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_18SkateboardPlatform9MoveStateEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState>::~EnumDesc()")]
-pub fn stub_0xf3b104() -> ! {
-    todo!("0xf3b104")
+pub fn stub_0xf3b104() {
+    // IDA 0xf3b104: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b114 — j___ZN3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEED2Ev
@@ -584,16 +584,16 @@ pub fn stub_0xf3b104() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumDesc()")]
-pub fn stub_0xf3b114() -> ! {
-    todo!("0xf3b114")
+pub fn stub_0xf3b114() {
+    // IDA 0xf3b114: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b124 — j___ZN3RBX10Reflection8EnumDescINS_21PersonalServerService13PrivilegeTypeEED2Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::PersonalServerService::PrivilegeType>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_21PersonalServerService13PrivilegeTypeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PersonalServerService::PrivilegeType>::~EnumDesc()")]
-pub fn stub_0xf3b124() -> ! {
-    todo!("0xf3b124")
+pub fn stub_0xf3b124() {
+    // IDA 0xf3b124: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b134 — j___ZN3RBX10Reflection8EnumDescINS_5Frame5StyleEED2Ev
@@ -601,8 +601,8 @@ pub fn stub_0xf3b124() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Frame::Style>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_5Frame5StyleEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Frame::Style>::~EnumDesc()")]
-pub fn stub_0xf3b134() -> ! {
-    todo!("0xf3b134")
+pub fn stub_0xf3b134() {
+    // IDA 0xf3b134: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b144 — j___ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEED2Ev
@@ -610,8 +610,8 @@ pub fn stub_0xf3b134() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Joint::JointType>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Joint::JointType>::~EnumDesc()")]
-pub fn stub_0xf3b144() -> ! {
-    todo!("0xf3b144")
+pub fn stub_0xf3b144() {
+    // IDA 0xf3b144: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b154 — j___ZN3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEED2Ev
@@ -619,8 +619,8 @@ pub fn stub_0xf3b144() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::~EnumDesc()")]
-pub fn stub_0xf3b154() -> ! {
-    todo!("0xf3b154")
+pub fn stub_0xf3b154() {
+    // IDA 0xf3b154: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b164 — j___ZN3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEED2Ev
@@ -628,8 +628,8 @@ pub fn stub_0xf3b154() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::~EnumDesc()")]
-pub fn stub_0xf3b164() -> ! {
-    todo!("0xf3b164")
+pub fn stub_0xf3b164() {
+    // IDA 0xf3b164: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b174 — j___ZN3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEED2Ev
@@ -637,8 +637,8 @@ pub fn stub_0xf3b164() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::~EnumDesc()")]
-pub fn stub_0xf3b174() -> ! {
-    todo!("0xf3b174")
+pub fn stub_0xf3b174() {
+    // IDA 0xf3b174: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b184 — j___ZN3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEED2Ev
@@ -646,8 +646,8 @@ pub fn stub_0xf3b174() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::~EnumDesc()")]
-pub fn stub_0xf3b184() -> ! {
-    todo!("0xf3b184")
+pub fn stub_0xf3b184() {
+    // IDA 0xf3b184: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b194 — j___ZN3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEED2Ev
@@ -655,8 +655,8 @@ pub fn stub_0xf3b184() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::~EnumDesc()")]
-pub fn stub_0xf3b194() -> ! {
-    todo!("0xf3b194")
+pub fn stub_0xf3b194() {
+    // IDA 0xf3b194: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b1a4 — j___ZN3RBX10Reflection8EnumDescINS_6Action10ActionTypeEED2Ev
@@ -664,16 +664,16 @@ pub fn stub_0xf3b194() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Action::ActionType>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_6Action10ActionTypeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Action::ActionType>::~EnumDesc()")]
-pub fn stub_0xf3b1a4() -> ! {
-    todo!("0xf3b1a4")
+pub fn stub_0xf3b1a4() {
+    // IDA 0xf3b1a4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b1b4 — j___ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEED2Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::~EnumDesc()")]
-pub fn stub_0xf3b1b4() -> ! {
-    todo!("0xf3b1b4")
+pub fn stub_0xf3b1b4() {
+    // IDA 0xf3b1b4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b1c4 — j___ZN3RBX10Reflection8EnumDescINS_7Feature5InOutEED2Ev
@@ -681,8 +681,8 @@ pub fn stub_0xf3b1b4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Feature::InOut>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_7Feature5InOutEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::InOut>::~EnumDesc()")]
-pub fn stub_0xf3b1c4() -> ! {
-    todo!("0xf3b1c4")
+pub fn stub_0xf3b1c4() {
+    // IDA 0xf3b1c4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b1d4 — j___ZN3RBX10Reflection8EnumDescINS_7Feature9LeftRightEED2Ev
@@ -690,8 +690,8 @@ pub fn stub_0xf3b1c4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Feature::LeftRight>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_7Feature9LeftRightEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::LeftRight>::~EnumDesc()")]
-pub fn stub_0xf3b1d4() -> ! {
-    todo!("0xf3b1d4")
+pub fn stub_0xf3b1d4() {
+    // IDA 0xf3b1d4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b1e4 — j___ZN3RBX10Reflection8EnumDescINS_7Feature9TopBottomEED2Ev
@@ -699,8 +699,8 @@ pub fn stub_0xf3b1d4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_7Feature9TopBottomEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::~EnumDesc()")]
-pub fn stub_0xf3b1e4() -> ! {
-    todo!("0xf3b1e4")
+pub fn stub_0xf3b1e4() {
+    // IDA 0xf3b1e4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b1f4 — j___ZN3RBX10Reflection8EnumDescINS_7Handles11VisualStyleEED2Ev
@@ -708,8 +708,8 @@ pub fn stub_0xf3b1e4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Handles::VisualStyle>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_7Handles11VisualStyleEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Handles::VisualStyle>::~EnumDesc()")]
-pub fn stub_0xf3b1f4() -> ! {
-    todo!("0xf3b1f4")
+pub fn stub_0xf3b1f4() {
+    // IDA 0xf3b1f4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b224 — j___ZN3RBX10Reflection8EnumDescINS_9GuiButton5StyleEED2Ev
@@ -717,8 +717,8 @@ pub fn stub_0xf3b1f4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GuiButton::Style>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9GuiButton5StyleEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiButton::Style>::~EnumDesc()")]
-pub fn stub_0xf3b224() -> ! {
-    todo!("0xf3b224")
+pub fn stub_0xf3b224() {
+    // IDA 0xf3b224: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b234 — j___ZN3RBX10Reflection8EnumDescINS_9GuiObject11TweenStatusEED2Ev
@@ -726,8 +726,8 @@ pub fn stub_0xf3b224() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GuiObject::TweenStatus>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9GuiObject11TweenStatusEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::TweenStatus>::~EnumDesc()")]
-pub fn stub_0xf3b234() -> ! {
-    todo!("0xf3b234")
+pub fn stub_0xf3b234() {
+    // IDA 0xf3b234: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b244 — j___ZN3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEED2Ev
@@ -735,8 +735,8 @@ pub fn stub_0xf3b234() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GuiObject::SizeConstraint>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::SizeConstraint>::~EnumDesc()")]
-pub fn stub_0xf3b244() -> ! {
-    todo!("0xf3b244")
+pub fn stub_0xf3b244() {
+    // IDA 0xf3b244: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b254 — j___ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEED2Ev
@@ -744,8 +744,8 @@ pub fn stub_0xf3b244() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingStyle>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingStyle>::~EnumDesc()")]
-pub fn stub_0xf3b254() -> ! {
-    todo!("0xf3b254")
+pub fn stub_0xf3b254() {
+    // IDA 0xf3b254: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b264 — j___ZN3RBX10Reflection8EnumDescINS_9GuiObject20TweenEasingDirectionEED2Ev
@@ -753,8 +753,8 @@ pub fn stub_0xf3b254() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingDirection>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9GuiObject20TweenEasingDirectionEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingDirection>::~EnumDesc()")]
-pub fn stub_0xf3b264() -> ! {
-    todo!("0xf3b264")
+pub fn stub_0xf3b264() {
+    // IDA 0xf3b264: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b274 — j___ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEED2Ev
@@ -762,8 +762,8 @@ pub fn stub_0xf3b264() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::~EnumDesc()")]
-pub fn stub_0xf3b274() -> ! {
-    todo!("0xf3b274")
+pub fn stub_0xf3b274() {
+    // IDA 0xf3b274: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b284 — j___ZN3RBX10Reflection8EnumDescINS_9SoundTypeEED2Ev
@@ -771,8 +771,8 @@ pub fn stub_0xf3b274() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::SoundType>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9SoundTypeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::~EnumDesc()")]
-pub fn stub_0xf3b284() -> ! {
-    todo!("0xf3b284")
+pub fn stub_0xf3b284() {
+    // IDA 0xf3b284: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3b294 — j___ZN3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv

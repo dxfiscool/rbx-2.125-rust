@@ -364,16 +364,16 @@ pub fn stub_0xd1d0ac() -> ! {
 // type: void __fastcall(Ogre::MeshSerializerImpl_v1_41 *__hidden this)
 #[doc(alias = "Ogre::MeshSerializerImpl_v1_41::~MeshSerializerImpl_v1_41()")]
 #[doc(alias = "__ZN4Ogre24MeshSerializerImpl_v1_41D0Ev")]
-pub fn stub_0xd1d198() -> ! {
-    todo!("0xd1d198 Ogre::MeshSerializerImpl_v1_41::~MeshSerializerImpl_v1_41()")
+pub fn stub_0xd1d198() {
+    // IDA 0xd1d198: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd1d228 — __ZN4Ogre24MeshSerializerImpl_v1_41D1Ev
 // type: void __fastcall(Ogre::MeshSerializerImpl_v1_41 *__hidden this)
 #[doc(alias = "Ogre::MeshSerializerImpl_v1_41::~MeshSerializerImpl_v1_41()")]
 #[doc(alias = "__ZN4Ogre24MeshSerializerImpl_v1_41D1Ev")]
-pub fn stub_0xd1d228() -> ! {
-    todo!("0xd1d228 Ogre::MeshSerializerImpl_v1_41::~MeshSerializerImpl_v1_41()")
+pub fn stub_0xd1d228() {
+    // IDA 0xd1d228: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd1d234 — __ZN4Ogre24MeshSerializerImpl_v1_4118writeMorphKeyframeEPKNS_19VertexMorphKeyFrameEm
@@ -419,16 +419,16 @@ pub fn stub_0xd1d740() -> ! {
 // type: void __fastcall(Ogre::MeshSerializerImpl_v1_4 *__hidden this)
 #[doc(alias = "Ogre::MeshSerializerImpl_v1_4::~MeshSerializerImpl_v1_4()")]
 #[doc(alias = "__ZN4Ogre23MeshSerializerImpl_v1_4D0Ev")]
-pub fn stub_0xd1d858() -> ! {
-    todo!("0xd1d858 Ogre::MeshSerializerImpl_v1_4::~MeshSerializerImpl_v1_4()")
+pub fn stub_0xd1d858() {
+    // IDA 0xd1d858: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd1d8e8 — __ZN4Ogre23MeshSerializerImpl_v1_4D1Ev
 // type: void __fastcall(Ogre::MeshSerializerImpl_v1_4 *__hidden this)
 #[doc(alias = "Ogre::MeshSerializerImpl_v1_4::~MeshSerializerImpl_v1_4()")]
 #[doc(alias = "__ZN4Ogre23MeshSerializerImpl_v1_4D1Ev")]
-pub fn stub_0xd1d8e8() -> ! {
-    todo!("0xd1d8e8 Ogre::MeshSerializerImpl_v1_4::~MeshSerializerImpl_v1_4()")
+pub fn stub_0xd1d8e8() {
+    // IDA 0xd1d8e8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd1d8f4 — __ZN4Ogre23MeshSerializerImpl_v1_415writeLodSummaryEtbPKNS_11LodStrategyE
@@ -474,16 +474,16 @@ pub fn stub_0xd1e1f0() -> ! {
 // type: void __fastcall(Ogre::MeshSerializerImpl_v1_3 *__hidden this)
 #[doc(alias = "Ogre::MeshSerializerImpl_v1_3::~MeshSerializerImpl_v1_3()")]
 #[doc(alias = "__ZN4Ogre23MeshSerializerImpl_v1_3D0Ev")]
-pub fn stub_0xd1e330() -> ! {
-    todo!("0xd1e330 Ogre::MeshSerializerImpl_v1_3::~MeshSerializerImpl_v1_3()")
+pub fn stub_0xd1e330() {
+    // IDA 0xd1e330: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd1e3c0 — __ZN4Ogre23MeshSerializerImpl_v1_3D1Ev
 // type: void __fastcall(Ogre::MeshSerializerImpl_v1_3 *__hidden this)
 #[doc(alias = "Ogre::MeshSerializerImpl_v1_3::~MeshSerializerImpl_v1_3()")]
 #[doc(alias = "__ZN4Ogre23MeshSerializerImpl_v1_3D1Ev")]
-pub fn stub_0xd1e3c0() -> ! {
-    todo!("0xd1e3c0 Ogre::MeshSerializerImpl_v1_3::~MeshSerializerImpl_v1_3()")
+pub fn stub_0xd1e3c0() {
+    // IDA 0xd1e3c0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd1e970 — __ZN4Ogre23MeshSerializerImpl_v1_319reorganiseTrianglesEPNS_8EdgeDataE
@@ -514,16 +514,16 @@ pub fn stub_0xd1ef1c() -> ! {
 // type: void __fastcall(Ogre::MeshSerializerImpl_v1_2 *__hidden this)
 #[doc(alias = "Ogre::MeshSerializerImpl_v1_2::~MeshSerializerImpl_v1_2()")]
 #[doc(alias = "__ZN4Ogre23MeshSerializerImpl_v1_2D0Ev")]
-pub fn stub_0xd1efe0() -> ! {
-    todo!("0xd1efe0 Ogre::MeshSerializerImpl_v1_2::~MeshSerializerImpl_v1_2()")
+pub fn stub_0xd1efe0() {
+    // IDA 0xd1efe0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd1f070 — __ZN4Ogre23MeshSerializerImpl_v1_2D1Ev
 // type: void __fastcall(Ogre::MeshSerializerImpl_v1_2 *__hidden this)
 #[doc(alias = "Ogre::MeshSerializerImpl_v1_2::~MeshSerializerImpl_v1_2()")]
 #[doc(alias = "__ZN4Ogre23MeshSerializerImpl_v1_2D1Ev")]
-pub fn stub_0xd1f070() -> ! {
-    todo!("0xd1f070 Ogre::MeshSerializerImpl_v1_2::~MeshSerializerImpl_v1_2()")
+pub fn stub_0xd1f070() {
+    // IDA 0xd1f070: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd1fdc0 — __ZN4Ogre23MeshSerializerImpl_v1_1C1Ev
@@ -538,16 +538,16 @@ pub fn stub_0xd1fdc0() -> ! {
 // type: void __fastcall(Ogre::MeshSerializerImpl_v1_1 *__hidden this)
 #[doc(alias = "Ogre::MeshSerializerImpl_v1_1::~MeshSerializerImpl_v1_1()")]
 #[doc(alias = "__ZN4Ogre23MeshSerializerImpl_v1_1D0Ev")]
-pub fn stub_0xd1feac() -> ! {
-    todo!("0xd1feac Ogre::MeshSerializerImpl_v1_1::~MeshSerializerImpl_v1_1()")
+pub fn stub_0xd1feac() {
+    // IDA 0xd1feac: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd1ff3c — __ZN4Ogre23MeshSerializerImpl_v1_1D1Ev
 // type: void __fastcall(Ogre::MeshSerializerImpl_v1_1 *__hidden this)
 #[doc(alias = "Ogre::MeshSerializerImpl_v1_1::~MeshSerializerImpl_v1_1()")]
 #[doc(alias = "__ZN4Ogre23MeshSerializerImpl_v1_1D1Ev")]
-pub fn stub_0xd1ff3c() -> ! {
-    todo!("0xd1ff3c Ogre::MeshSerializerImpl_v1_1::~MeshSerializerImpl_v1_1()")
+pub fn stub_0xd1ff3c() {
+    // IDA 0xd1ff3c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd202a8 — __ZNSt3mapItSsSt4lessItEN4Ogre12STLAllocatorISt4pairIKtSsENS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEEixERS5_
@@ -614,15 +614,15 @@ pub fn stub_0xd20f70() -> ! {
 // 0xd20fdc — __ZNSt8_Rb_treeItSt4pairIKtSsESt10_Select1stIS2_ESt4lessItEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS6_Lb0EED1Ev
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtSsESt10_Select1stIS2_ESt4lessItEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS6_Lb0EED1Ev")]
-pub fn stub_0xd20fdc() -> ! {
-    todo!("0xd20fdc std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+pub fn stub_0xd20fdc() {
+    // IDA 0xd20fdc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd20fe0 — __ZNSt8_Rb_treeItSt4pairIKtSsESt10_Select1stIS2_ESt4lessItEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS6_Lb0EED0Ev
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtSsESt10_Select1stIS2_ESt4lessItEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS6_Lb0EED0Ev")]
-pub fn stub_0xd20fe0() -> ! {
-    todo!("0xd20fe0 std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+pub fn stub_0xd20fe0() {
+    // IDA 0xd20fe0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd20fec — __ZNSt8_Rb_treeItSt4pairIKtSsESt10_Select1stIS2_ESt4lessItEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS2_E
@@ -652,16 +652,16 @@ pub fn stub_0xd21384() -> ! {
 // type: void __fastcall(Ogre::MovableObject *__hidden this)
 #[doc(alias = "Ogre::MovableObject::~MovableObject()")]
 #[doc(alias = "__ZN4Ogre13MovableObjectD0Ev")]
-pub fn stub_0xd2166c() -> ! {
-    todo!("0xd2166c Ogre::MovableObject::~MovableObject()")
+pub fn stub_0xd2166c() {
+    // IDA 0xd2166c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd216fc — __ZN4Ogre13MovableObjectD1Ev
 // type: void __fastcall(Ogre::MovableObject *__hidden this)
 #[doc(alias = "Ogre::MovableObject::~MovableObject()")]
 #[doc(alias = "__ZN4Ogre13MovableObjectD1Ev")]
-pub fn stub_0xd216fc() -> ! {
-    todo!("0xd216fc Ogre::MovableObject::~MovableObject()")
+pub fn stub_0xd216fc() {
+    // IDA 0xd216fc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd21708 — __ZThn4_N4Ogre13MovableObjectD0Ev
@@ -676,8 +676,8 @@ pub fn stub_0xd21708() {
 // type: void __fastcall(Ogre::MovableObject *__hidden this)
 #[doc(alias = "Ogre::MovableObject::~MovableObject()")]
 #[doc(alias = "__ZN4Ogre13MovableObjectD2Ev")]
-pub fn stub_0xd2179c() -> ! {
-    todo!("0xd2179c Ogre::MovableObject::~MovableObject()")
+pub fn stub_0xd2179c() {
+    // IDA 0xd2179c: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd21990 — __ZThn4_N4Ogre13MovableObjectD1Ev

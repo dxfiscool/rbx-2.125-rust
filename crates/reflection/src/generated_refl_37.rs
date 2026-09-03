@@ -164,8 +164,8 @@ pub fn stub_0xf40824() -> ! {
 
 // 0xf40834 — j___ZN3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEED2Ev
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEED2Ev")]
-pub fn stub_0xf40834() -> ! {
-    todo!("0xf40834 j___ZN3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEED2Ev")
+pub fn stub_0xf40834() {
+    // IDA 0xf40834: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf40844 — j___ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEE7addPairES3_PKc
@@ -176,8 +176,8 @@ pub fn stub_0xf40844() -> ! {
 
 // 0xf40854 — j___ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEED2Ev
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEED2Ev")]
-pub fn stub_0xf40854() -> ! {
-    todo!("0xf40854 j___ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEED2Ev")
+pub fn stub_0xf40854() {
+    // IDA 0xf40854: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf40864 — j___ZN3RBX10Reflection9ArgHelper6getArgINS_10GuiService10SpecialKeyELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
@@ -422,8 +422,8 @@ pub fn stub_0xf410a4() -> ! {
 
 // 0xf413d4 — j___ZNSt8auto_ptrIN3RBX10Reflection5TupleEED2Ev
 #[doc(alias = "j___ZNSt8auto_ptrIN3RBX10Reflection5TupleEED2Ev")]
-pub fn stub_0xf413d4() -> ! {
-    todo!("0xf413d4 j___ZNSt8auto_ptrIN3RBX10Reflection5TupleEED2Ev")
+pub fn stub_0xf413d4() {
+    // IDA 0xf413d4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf413e4 — j___ZN3RBX10Reflection11Call0HelperINS_12BodyPositionEMS2_FN3G3D7Vector3EvES4_E4callEPS2_S6_RNS0_7VariantE

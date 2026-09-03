@@ -33,8 +33,8 @@ pub fn stub_6acf98() -> ! {
 
 // 0x6ad0ac — __ZN3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEdED0Ev
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEdED0Ev")]
-pub fn stub_6ad0ac() -> ! {
-    todo!("0x6ad0ac __ZN3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEdED0Ev")
+pub fn stub_6ad0ac() {
+    // IDA 0x6ad0ac: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6ad0d8 — __ZNK3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEEdE10GetSetImplIMS3_KFdvEMS3_FvdEE10isReadOnlyEv
@@ -99,8 +99,8 @@ pub fn stub_6ad32c() -> ! {
 
 // 0x6ad4b0 — __ZN3RBX10Reflection9EventDescINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEFviEN3rbx6signalIS4_EEMS3_S7_ED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEFviEN3rbx6signalIS4_EEMS3_S7_ED0Ev")]
-pub fn stub_6ad4b0() -> ! {
-    todo!("0x6ad4b0 __ZN3RBX10Reflection9EventDescINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEFviEN3rbx6signalIS4_EEMS3_S7_ED0Ev")
+pub fn stub_6ad4b0() {
+    // IDA 0x6ad4b0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6ad564 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEFviEN3rbx6signalIS4_EEMS3_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -141,8 +141,8 @@ pub fn stub_6ae204() -> ! {
 
 // 0x6ae318 — __ZN3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEiED0Ev
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEiED0Ev")]
-pub fn stub_6ae318() -> ! {
-    todo!("0x6ae318 __ZN3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEiED0Ev")
+pub fn stub_6ae318() {
+    // IDA 0x6ae318: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6ae344 — __ZNK3RBX10Reflection14PropDescriptorINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEEiE10GetSetImplIMS3_KFivEMS3_FviEE10isReadOnlyEv
@@ -207,8 +207,8 @@ pub fn stub_6ae584() -> ! {
 
 // 0x6ae708 — __ZN3RBX10Reflection9EventDescINS_5ValueINS_10BrickColorELZNS_16sBrickColorValueEEEEFvS3_EN3rbx6signalIS5_EEMS4_S8_ED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueINS_10BrickColorELZNS_16sBrickColorValueEEEEFvS3_EN3rbx6signalIS5_EEMS4_S8_ED0Ev")]
-pub fn stub_6ae708() -> ! {
-    todo!("0x6ae708 __ZN3RBX10Reflection9EventDescINS_5ValueINS_10BrickColorELZNS_16sBrickColorValueEEEEFvS3_EN3rbx6signalIS5_EEMS4_S8_ED0Ev")
+pub fn stub_6ae708() {
+    // IDA 0x6ae708: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6ae7bc — __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueINS_10BrickColorELZNS_16sBrickColorValueEEEEFvS3_EN3rbx6signalIS5_EEMS4_S8_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -285,8 +285,8 @@ pub fn stub_6b0758() -> ! {
 
 // 0x6b08dc — __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev")]
-pub fn stub_6b08dc() -> ! {
-    todo!("0x6b08dc __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev")
+pub fn stub_6b08dc() {
+    // IDA 0x6b08dc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6b0990 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D6Color3ELZNS_12sColor3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -363,8 +363,8 @@ pub fn stub_6b29f0() -> ! {
 
 // 0x6b2b74 — __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev")]
-pub fn stub_6b2b74() -> ! {
-    todo!("0x6b2b74 __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev")
+pub fn stub_6b2b74() {
+    // IDA 0x6b2b74: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6b2c28 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D15CoordinateFrameELZNS_12sCFrameValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -441,8 +441,8 @@ pub fn stub_6b4d38() -> ! {
 
 // 0x6b4ebc — __ZN3RBX10Reflection9EventDescINS_5ValueINS_6RbxRayELZNS_9sRayValueEEEEFvS3_EN3rbx6signalIS5_EEMS4_S8_ED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueINS_6RbxRayELZNS_9sRayValueEEEEFvS3_EN3rbx6signalIS5_EEMS4_S8_ED0Ev")]
-pub fn stub_6b4ebc() -> ! {
-    todo!("0x6b4ebc __ZN3RBX10Reflection9EventDescINS_5ValueINS_6RbxRayELZNS_9sRayValueEEEEFvS3_EN3rbx6signalIS5_EEMS4_S8_ED0Ev")
+pub fn stub_6b4ebc() {
+    // IDA 0x6b4ebc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6b4f70 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueINS_6RbxRayELZNS_9sRayValueEEEEFvS3_EN3rbx6signalIS5_EEMS4_S8_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -519,8 +519,8 @@ pub fn stub_6b75e0() -> ! {
 
 // 0x6b7764 — __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev")]
-pub fn stub_6b7764() -> ! {
-    todo!("0x6b7764 __ZN3RBX10Reflection9EventDescINS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_ED0Ev")
+pub fn stub_6b7764() {
+    // IDA 0x6b7764: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6b7818 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIN3G3D7Vector3ELZNS_13sVector3ValueEEEEFvS4_EN3rbx6signalIS6_EEMS5_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -597,8 +597,8 @@ pub fn stub_6b9de0() -> ! {
 
 // 0x6b9f64 — __ZN3RBX10Reflection9EventDescINS_5ValueIdLZNS_12sDoubleValueEEEEFvdEN3rbx6signalIS4_EEMS3_S7_ED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_5ValueIdLZNS_12sDoubleValueEEEEFvdEN3rbx6signalIS4_EEMS3_S7_ED0Ev")]
-pub fn stub_6b9f64() -> ! {
-    todo!("0x6b9f64 __ZN3RBX10Reflection9EventDescINS_5ValueIdLZNS_12sDoubleValueEEEEFvdEN3rbx6signalIS4_EEMS3_S7_ED0Ev")
+pub fn stub_6b9f64() {
+    // IDA 0x6b9f64: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6ba018 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_5ValueIdLZNS_12sDoubleValueEEEEFvdEN3rbx6signalIS4_EEMS3_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE

@@ -387,15 +387,15 @@ pub fn stub_0x323238() -> ! {
 // 0x3232ac — __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_17HeartbeatInstanceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_17HeartbeatInstanceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEED1Ev")]
-pub fn stub_0x3232ac() -> ! {
-    todo!("0x3232ac rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_0x3232ac() {
+    // IDA 0x3232ac: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3232d8 — __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_17HeartbeatInstanceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_17HeartbeatInstanceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEED0Ev")]
-pub fn stub_0x3232d8() -> ! {
-    todo!("0x3232d8 rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_0x3232d8() {
+    // IDA 0x3232d8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3233ac — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_17HeartbeatInstanceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
@@ -422,15 +422,15 @@ pub fn stub_0x3233bc() -> ! {
 // 0x3233d4 — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_17HeartbeatInstanceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_17HeartbeatInstanceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_ED1Ev")]
-pub fn stub_0x3233d4() -> ! {
-    todo!("0x3233d4 rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()")
+pub fn stub_0x3233d4() {
+    // IDA 0x3233d4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x323400 — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_17HeartbeatInstanceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_17HeartbeatInstanceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_ED0Ev")]
-pub fn stub_0x323400() -> ! {
-    todo!("0x323400 rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()")
+pub fn stub_0x323400() {
+    // IDA 0x323400: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3234d4 — __GLOBAL__I_a_119
@@ -492,15 +492,15 @@ pub fn stub_0x323efc() -> ! {
 // 0x323fd8 — __ZN3RBX8IndexBoxD1Ev
 #[doc(alias = "RBX::IndexBox::~IndexBox()")]
 #[doc(alias = "__ZN3RBX8IndexBoxD1Ev")]
-pub fn stub_0x323fd8() -> ! {
-    todo!("0x323fd8 RBX::IndexBox::~IndexBox()")
+pub fn stub_0x323fd8() {
+    // IDA 0x323fd8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x323fdc — __ZN3RBX8IndexBoxD0Ev
 #[doc(alias = "RBX::IndexBox::~IndexBox()")]
 #[doc(alias = "__ZN3RBX8IndexBoxD0Ev")]
-pub fn stub_0x323fdc() -> ! {
-    todo!("0x323fdc RBX::IndexBox::~IndexBox()")
+pub fn stub_0x323fdc() {
+    // IDA 0x323fdc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x323fe0 — __GLOBAL__I_a_121
@@ -520,22 +520,22 @@ pub fn stub_0x324018() -> ! {
 // 0x32403c — __ZN3RBX11IndexedMeshD0Ev
 #[doc(alias = "RBX::IndexedMesh::~IndexedMesh()")]
 #[doc(alias = "__ZN3RBX11IndexedMeshD0Ev")]
-pub fn stub_0x32403c() -> ! {
-    todo!("0x32403c RBX::IndexedMesh::~IndexedMesh()")
+pub fn stub_0x32403c() {
+    // IDA 0x32403c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3240dc — __ZN3RBX11IndexedMeshD1Ev
 #[doc(alias = "RBX::IndexedMesh::~IndexedMesh()")]
 #[doc(alias = "__ZN3RBX11IndexedMeshD1Ev")]
-pub fn stub_0x3240dc() -> ! {
-    todo!("0x3240dc RBX::IndexedMesh::~IndexedMesh()")
+pub fn stub_0x3240dc() {
+    // IDA 0x3240dc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3240e0 — __ZN3RBX11IndexedMeshD2Ev
 #[doc(alias = "RBX::IndexedMesh::~IndexedMesh()")]
 #[doc(alias = "__ZN3RBX11IndexedMeshD2Ev")]
-pub fn stub_0x3240e0() -> ! {
-    todo!("0x3240e0 RBX::IndexedMesh::~IndexedMesh()")
+pub fn stub_0x3240e0() {
+    // IDA 0x3240e0: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x324354 — __ZN3RBX11IndexedMesh16setComputedUpperEPS0_
@@ -646,22 +646,22 @@ pub fn stub_0x3247d8() -> ! {
 // 0x324800 — __ZN3RBX11IndexedTreeD0Ev
 #[doc(alias = "RBX::IndexedTree::~IndexedTree()")]
 #[doc(alias = "__ZN3RBX11IndexedTreeD0Ev")]
-pub fn stub_0x324800() -> ! {
-    todo!("0x324800 RBX::IndexedTree::~IndexedTree()")
+pub fn stub_0x324800() {
+    // IDA 0x324800: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3248a0 — __ZN3RBX11IndexedTreeD1Ev
 #[doc(alias = "RBX::IndexedTree::~IndexedTree()")]
 #[doc(alias = "__ZN3RBX11IndexedTreeD1Ev")]
-pub fn stub_0x3248a0() -> ! {
-    todo!("0x3248a0 RBX::IndexedTree::~IndexedTree()")
+pub fn stub_0x3248a0() {
+    // IDA 0x3248a0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3248a4 — __ZN3RBX11IndexedTreeD2Ev
 #[doc(alias = "RBX::IndexedTree::~IndexedTree()")]
 #[doc(alias = "__ZN3RBX11IndexedTreeD2Ev")]
-pub fn stub_0x3248a4() -> ! {
-    todo!("0x3248a4 RBX::IndexedTree::~IndexedTree()")
+pub fn stub_0x3248a4() {
+    // IDA 0x3248a4: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x324a74 — __ZN3RBX11IndexedTree20setIndexedTreeParentEPS0_

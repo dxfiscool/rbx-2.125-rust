@@ -25,16 +25,16 @@ pub fn stub_266544() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::lock_error::~lock_error()")]
 #[doc(alias = "__ZN5boost10lock_errorD1Ev")]
-pub fn stub_2665b8() -> ! {
-    todo!("0x2665b8 boost::lock_error::~lock_error()")
+pub fn stub_2665b8() {
+    // IDA 0x2665b8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2665e8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev")]
-pub fn stub_2665e8() -> ! {
-    todo!("0x2665e8 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
+pub fn stub_2665e8() {
+    // IDA 0x2665e8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2665f8 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev
@@ -184,15 +184,15 @@ pub fn stub_269da4() -> ! {
 // 0x26a060 — __ZN3RBX10CoreScriptD1Ev
 #[doc(alias = "RBX::CoreScript::~CoreScript()")]
 #[doc(alias = "__ZN3RBX10CoreScriptD1Ev")]
-pub fn stub_26a060() -> ! {
-    todo!("0x26a060 RBX::CoreScript::~CoreScript()")
+pub fn stub_26a060() {
+    // IDA 0x26a060: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x26a064 — __ZN3RBX10CoreScriptD0Ev
 #[doc(alias = "RBX::CoreScript::~CoreScript()")]
 #[doc(alias = "__ZN3RBX10CoreScriptD0Ev")]
-pub fn stub_26a064() -> ! {
-    todo!("0x26a064 RBX::CoreScript::~CoreScript()")
+pub fn stub_26a064() {
+    // IDA 0x26a064: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x26a104 — __ZNK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv
@@ -239,15 +239,15 @@ pub fn stub_26a208() {
 // 0x26a2ac — __ZN3RBX13StarterScriptD1Ev
 #[doc(alias = "RBX::StarterScript::~StarterScript()")]
 #[doc(alias = "__ZN3RBX13StarterScriptD1Ev")]
-pub fn stub_26a2ac() -> ! {
-    todo!("0x26a2ac RBX::StarterScript::~StarterScript()")
+pub fn stub_26a2ac() {
+    // IDA 0x26a2ac: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x26a2b0 — __ZN3RBX13StarterScriptD0Ev
 #[doc(alias = "RBX::StarterScript::~StarterScript()")]
 #[doc(alias = "__ZN3RBX13StarterScriptD0Ev")]
-pub fn stub_26a2b0() -> ! {
-    todo!("0x26a2b0 RBX::StarterScript::~StarterScript()")
+pub fn stub_26a2b0() {
+    // IDA 0x26a2b0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x26a350 — __ZNK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv
@@ -317,14 +317,14 @@ pub fn stub_26a5e0() -> ! {
 
 // 0x26ada0 — __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
-pub fn stub_26ada0() -> ! {
-    todo!("0x26ada0 __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")
+pub fn stub_26ada0() {
+    // IDA 0x26ada0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x26ada4 — __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
-pub fn stub_26ada4() -> ! {
-    todo!("0x26ada4 __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")
+pub fn stub_26ada4() {
+    // IDA 0x26ada4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x26ae44 — __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev

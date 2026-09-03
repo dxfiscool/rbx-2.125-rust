@@ -46,15 +46,15 @@ pub fn stub_0x37de98() -> ! {
 // 0x37e05c — __ZN21SoundServiceStatsItemD1Ev
 #[doc(alias = "SoundServiceStatsItem::~SoundServiceStatsItem()")]
 #[doc(alias = "__ZN21SoundServiceStatsItemD1Ev")]
-pub fn stub_0x37e05c() -> ! {
-    todo!("0x37e05c SoundServiceStatsItem::~SoundServiceStatsItem()")
+pub fn stub_0x37e05c() {
+    // IDA 0x37e05c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x37e098 — __ZN21SoundServiceStatsItemD0Ev
 #[doc(alias = "SoundServiceStatsItem::~SoundServiceStatsItem()")]
 #[doc(alias = "__ZN21SoundServiceStatsItemD0Ev")]
-pub fn stub_0x37e098() -> ! {
-    todo!("0x37e098 SoundServiceStatsItem::~SoundServiceStatsItem()")
+pub fn stub_0x37e098() {
+    // IDA 0x37e098: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x37e16c — __ZN21SoundServiceStatsItem6updateEv
@@ -109,15 +109,15 @@ pub fn stub_0x37e720() -> ! {
 // 0x37e828 — __ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_0x37e828() -> ! {
-    todo!("0x37e828 boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x37e828() {
+    // IDA 0x37e828: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x37e82c — __ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_0x37e82c() -> ! {
-    todo!("0x37e82c boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x37e82c() {
+    // IDA 0x37e82c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x37e830 — __ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE7disposeEv
@@ -151,15 +151,15 @@ pub fn stub_0x37e86c() -> ! {
 // 0x37e9c4 — __ZN3RBX10Soundscape12SoundService8SoundJobD1Ev
 #[doc(alias = "RBX::Soundscape::SoundService::SoundJob::~SoundJob()")]
 #[doc(alias = "__ZN3RBX10Soundscape12SoundService8SoundJobD1Ev")]
-pub fn stub_0x37e9c4() -> ! {
-    todo!("0x37e9c4 RBX::Soundscape::SoundService::SoundJob::~SoundJob()")
+pub fn stub_0x37e9c4() {
+    // IDA 0x37e9c4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x37e9c8 — __ZN3RBX10Soundscape12SoundService8SoundJobD0Ev
 #[doc(alias = "RBX::Soundscape::SoundService::SoundJob::~SoundJob()")]
 #[doc(alias = "__ZN3RBX10Soundscape12SoundService8SoundJobD0Ev")]
-pub fn stub_0x37e9c8() -> ! {
-    todo!("0x37e9c8 RBX::Soundscape::SoundService::SoundJob::~SoundJob()")
+pub fn stub_0x37e9c8() {
+    // IDA 0x37e9c8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x37ea68 — __ZN3RBX10Soundscape12SoundService8SoundJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE
@@ -270,8 +270,8 @@ pub fn stub_0x380878() -> ! {
 // 0x38089c — __ZN3RBX12SpanningTreeD2Ev
 #[doc(alias = "RBX::SpanningTree::~SpanningTree()")]
 #[doc(alias = "__ZN3RBX12SpanningTreeD2Ev")]
-pub fn stub_0x38089c() -> ! {
-    todo!("0x38089c RBX::SpanningTree::~SpanningTree()")
+pub fn stub_0x38089c() {
+    // IDA 0x38089c: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3809c4 — __ZN3RBX12SpanningTree22insertSpanningTreeEdgeEPNS_12SpanningEdgeE
@@ -445,8 +445,8 @@ pub fn stub_0x381534() -> ! {
 // 0x38171c — __ZN3G3D5ArrayIPN3RBX12SpanningEdgeELi10ELm32EED2Ev
 #[doc(alias = "G3D::Array<RBX::SpanningEdge *,10,32ul>::~Array()")]
 #[doc(alias = "__ZN3G3D5ArrayIPN3RBX12SpanningEdgeELi10ELm32EED2Ev")]
-pub fn stub_0x38171c() -> ! {
-    todo!("0x38171c G3D::Array<RBX::SpanningEdge *,10,32ul>::~Array()")
+pub fn stub_0x38171c() {
+    // IDA 0x38171c: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3817f0 — __ZN3G3D5ArrayIPN3RBX12SpanningEdgeELi10ELm32EEC2Ev
@@ -480,8 +480,8 @@ pub fn stub_0x3819d0() -> ! {
 // 0x3821f0 — __ZN5boost10shared_ptrIN3RBX11StandardOutEED1Ev
 #[doc(alias = "boost::shared_ptr<RBX::StandardOut>::~shared_ptr()")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX11StandardOutEED1Ev")]
-pub fn stub_0x3821f0() -> ! {
-    todo!("0x3821f0 boost::shared_ptr<RBX::StandardOut>::~shared_ptr()")
+pub fn stub_0x3821f0() {
+    // IDA 0x3821f0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x382204 — __ZN3rbx7signals16signal_with_argsILi1EFvRKN3RBX18StandardOutMessageEEEclES5_

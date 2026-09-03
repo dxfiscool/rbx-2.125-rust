@@ -27,8 +27,8 @@ pub fn stub_0xd5764c() -> ! {
 // type: void __fastcall(Ogre::ProfileGPU *__hidden this)
 #[doc(alias = "Ogre::ProfileGPU::~ProfileGPU()")]
 #[doc(alias = "__ZN4Ogre10ProfileGPUD1Ev")]
-pub fn stub_0xd576a8() -> ! {
-    todo!("0xd576a8 __ZN4Ogre10ProfileGPUD1Ev")
+pub fn stub_0xd576a8() {
+    // IDA 0xd576a8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd57740 — __GLOBAL__I_a_748
@@ -111,8 +111,8 @@ pub fn stub_0xd585d8() -> ! {
 // type: void __fastcall(Ogre::UnimplementedException *__hidden this)
 #[doc(alias = "Ogre::UnimplementedException::~UnimplementedException()")]
 #[doc(alias = "__ZN4Ogre22UnimplementedExceptionD1Ev")]
-pub fn stub_0xd58710() -> ! {
-    todo!("0xd58710 __ZN4Ogre22UnimplementedExceptionD1Ev")
+pub fn stub_0xd58710() {
+    // IDA 0xd58710: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd5871c — __ZN4Ogre9SharedPtrINS_16MemoryDataStreamEEaSERKS2_
@@ -134,31 +134,31 @@ pub fn stub_0xd5889c() -> ! {
 // 0xd58a1c — __ZN4Ogre9SharedPtrINS_5Codec9CodecDataEED1Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::Codec::CodecData>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_5Codec9CodecDataEED1Ev")]
-pub fn stub_0xd58a1c() -> ! {
-    todo!("0xd58a1c __ZN4Ogre9SharedPtrINS_5Codec9CodecDataEED1Ev")
+pub fn stub_0xd58a1c() {
+    // IDA 0xd58a1c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd58b0c — __ZN4Ogre9SharedPtrINS_16MemoryDataStreamEED1Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::MemoryDataStream>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_16MemoryDataStreamEED1Ev")]
-pub fn stub_0xd58b0c() -> ! {
-    todo!("0xd58b0c __ZN4Ogre9SharedPtrINS_16MemoryDataStreamEED1Ev")
+pub fn stub_0xd58b0c() {
+    // IDA 0xd58b0c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd58bfc — __ZN4Ogre10PVRTCCodecD1Ev
 // type: void __fastcall(Ogre::PVRTCCodec *__hidden this)
 #[doc(alias = "Ogre::PVRTCCodec::~PVRTCCodec()")]
 #[doc(alias = "__ZN4Ogre10PVRTCCodecD1Ev")]
-pub fn stub_0xd58bfc() -> ! {
-    todo!("0xd58bfc __ZN4Ogre10PVRTCCodecD1Ev")
+pub fn stub_0xd58bfc() {
+    // IDA 0xd58bfc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd58c5c — __ZN4Ogre10PVRTCCodecD0Ev
 // type: void __fastcall(Ogre::PVRTCCodec *__hidden this)
 #[doc(alias = "Ogre::PVRTCCodec::~PVRTCCodec()")]
 #[doc(alias = "__ZN4Ogre10PVRTCCodecD0Ev")]
-pub fn stub_0xd58c5c() -> ! {
-    todo!("0xd58c5c __ZN4Ogre10PVRTCCodecD0Ev")
+pub fn stub_0xd58c5c() {
+    // IDA 0xd58c5c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd58d3c — __ZNK4Ogre10ImageCodec11getDataTypeEv
@@ -180,8 +180,8 @@ pub fn stub_0xd58d58() -> ! {
 // 0xd58db8 — __ZN4Ogre9SharedPtrINS_5Codec9CodecDataEED0Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::Codec::CodecData>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_5Codec9CodecDataEED0Ev")]
-pub fn stub_0xd58db8() -> ! {
-    todo!("0xd58db8 __ZN4Ogre9SharedPtrINS_5Codec9CodecDataEED0Ev")
+pub fn stub_0xd58db8() {
+    // IDA 0xd58db8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd58eac — __ZN4Ogre9SharedPtrINS_5Codec9CodecDataEE7destroyEv
@@ -201,8 +201,8 @@ pub fn stub_0xd58ee4() -> ! {
 // 0xd58f00 — __ZN4Ogre9SharedPtrINS_16MemoryDataStreamEED0Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::MemoryDataStream>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_16MemoryDataStreamEED0Ev")]
-pub fn stub_0xd58f00() -> ! {
-    todo!("0xd58f00 __ZN4Ogre9SharedPtrINS_16MemoryDataStreamEED0Ev")
+pub fn stub_0xd58f00() {
+    // IDA 0xd58f00: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd58ff4 — __ZN4Ogre9SharedPtrINS_16MemoryDataStreamEE7destroyEv
@@ -222,24 +222,24 @@ pub fn stub_0xd5902c() -> ! {
 // 0xd59048 — __ZNSt4pairIN4Ogre9SharedPtrINS0_16MemoryDataStreamEEENS1_INS0_5Codec9CodecDataEEEED2Ev
 #[doc(alias = "std::pair<Ogre::SharedPtr<Ogre::MemoryDataStream>,Ogre::SharedPtr<Ogre::Codec::CodecData>>::~pair()")]
 #[doc(alias = "__ZNSt4pairIN4Ogre9SharedPtrINS0_16MemoryDataStreamEEENS1_INS0_5Codec9CodecDataEEEED2Ev")]
-pub fn stub_0xd59048() -> ! {
-    todo!("0xd59048 __ZNSt4pairIN4Ogre9SharedPtrINS0_16MemoryDataStreamEEENS1_INS0_5Codec9CodecDataEEEED2Ev")
+pub fn stub_0xd59048() {
+    // IDA 0xd59048: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd591a8 — __ZN4Ogre10ImageCodec9ImageDataD1Ev
 // type: void __fastcall(Ogre::ImageCodec::ImageData *__hidden this)
 #[doc(alias = "Ogre::ImageCodec::ImageData::~ImageData()")]
 #[doc(alias = "__ZN4Ogre10ImageCodec9ImageDataD1Ev")]
-pub fn stub_0xd591a8() -> ! {
-    todo!("0xd591a8 __ZN4Ogre10ImageCodec9ImageDataD1Ev")
+pub fn stub_0xd591a8() {
+    // IDA 0xd591a8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd591ac — __ZN4Ogre10ImageCodec9ImageDataD0Ev
 // type: void __fastcall(Ogre::ImageCodec::ImageData *__hidden this)
 #[doc(alias = "Ogre::ImageCodec::ImageData::~ImageData()")]
 #[doc(alias = "__ZN4Ogre10ImageCodec9ImageDataD0Ev")]
-pub fn stub_0xd591ac() -> ! {
-    todo!("0xd591ac __ZN4Ogre10ImageCodec9ImageDataD0Ev")
+pub fn stub_0xd591ac() {
+    // IDA 0xd591ac: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd59238 — __ZNK4Ogre10ImageCodec9ImageData8dataTypeEv
@@ -254,8 +254,8 @@ pub fn stub_0xd59238() -> ! {
 // type: void __fastcall(Ogre::UnimplementedException *__hidden this)
 #[doc(alias = "Ogre::UnimplementedException::~UnimplementedException()")]
 #[doc(alias = "__ZN4Ogre22UnimplementedExceptionD0Ev")]
-pub fn stub_0xd59254() -> ! {
-    todo!("0xd59254 __ZN4Ogre22UnimplementedExceptionD0Ev")
+pub fn stub_0xd59254() {
+    // IDA 0xd59254: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd59268 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre5CodecEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE11equal_rangeERS1_
@@ -503,16 +503,16 @@ pub fn stub_0xd5a8fc() -> ! {
 // type: void __fastcall(Ogre::Rectangle2D *__hidden this)
 #[doc(alias = "Ogre::Rectangle2D::~Rectangle2D()")]
 #[doc(alias = "__ZN4Ogre11Rectangle2DD0Ev")]
-pub fn stub_0xd5af08() -> ! {
-    todo!("0xd5af08 __ZN4Ogre11Rectangle2DD0Ev")
+pub fn stub_0xd5af08() {
+    // IDA 0xd5af08: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd5afd8 — __ZN4Ogre11Rectangle2DD1Ev
 // type: void __fastcall(Ogre::Rectangle2D *__hidden this)
 #[doc(alias = "Ogre::Rectangle2D::~Rectangle2D()")]
 #[doc(alias = "__ZN4Ogre11Rectangle2DD1Ev")]
-pub fn stub_0xd5afd8() -> ! {
-    todo!("0xd5afd8 __ZN4Ogre11Rectangle2DD1Ev")
+pub fn stub_0xd5afd8() {
+    // IDA 0xd5afd8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd5b09c — __ZThn4_N4Ogre11Rectangle2DD0Ev
@@ -630,24 +630,24 @@ pub fn stub_0xd5b8e8() -> ! {
 // type: void __fastcall(Ogre::RenderQueue *__hidden this)
 #[doc(alias = "Ogre::RenderQueue::~RenderQueue()")]
 #[doc(alias = "__ZN4Ogre11RenderQueueD0Ev")]
-pub fn stub_0xd5ba98() -> ! {
-    todo!("0xd5ba98 __ZN4Ogre11RenderQueueD0Ev")
+pub fn stub_0xd5ba98() {
+    // IDA 0xd5ba98: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd5bb28 — __ZN4Ogre11RenderQueueD1Ev
 // type: void __fastcall(Ogre::RenderQueue *__hidden this)
 #[doc(alias = "Ogre::RenderQueue::~RenderQueue()")]
 #[doc(alias = "__ZN4Ogre11RenderQueueD1Ev")]
-pub fn stub_0xd5bb28() -> ! {
-    todo!("0xd5bb28 __ZN4Ogre11RenderQueueD1Ev")
+pub fn stub_0xd5bb28() {
+    // IDA 0xd5bb28: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd5bb34 — __ZN4Ogre11RenderQueueD2Ev
 // type: void __fastcall(Ogre::RenderQueue *__hidden this)
 #[doc(alias = "Ogre::RenderQueue::~RenderQueue()")]
 #[doc(alias = "__ZN4Ogre11RenderQueueD2Ev")]
-pub fn stub_0xd5bb34() -> ! {
-    todo!("0xd5bb34 __ZN4Ogre11RenderQueueD2Ev")
+pub fn stub_0xd5bb34() {
+    // IDA 0xd5bb34: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd5bc90 — __ZN4Ogre11RenderQueue13addRenderableEPNS_10RenderableEht
@@ -810,36 +810,36 @@ pub fn stub_0xd5c8d0() -> ! {
 // type: void __fastcall(Ogre::RenderQueueGroup *__hidden this)
 #[doc(alias = "Ogre::RenderQueueGroup::~RenderQueueGroup()")]
 #[doc(alias = "__ZN4Ogre16RenderQueueGroupD2Ev")]
-pub fn stub_0xd5cab8() -> ! {
-    todo!("0xd5cab8 __ZN4Ogre16RenderQueueGroupD2Ev")
+pub fn stub_0xd5cab8() {
+    // IDA 0xd5cab8: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd5cbd4 — __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre19RenderPriorityGroupEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::RenderPriorityGroup *>,std::_Select1st<std::pair<unsigned short const,Ogre::RenderPriorityGroup *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::RenderPriorityGroup *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtPN4Ogre19RenderPriorityGroupEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev")]
-pub fn stub_0xd5cbd4() -> ! {
-    todo!("0xd5cbd4 __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre19RenderPriorityGroupEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev")
+pub fn stub_0xd5cbd4() {
+    // IDA 0xd5cbd4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd5cbd8 — __ZNSt12_Vector_baseIN4Ogre11RenderQueue19RenderQueueGroupMap10value_typeENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
 #[doc(alias = "std::_Vector_base<Ogre::RenderQueue::RenderQueueGroupMap::value_type,Ogre::STLAllocator<Ogre::RenderQueue::RenderQueueGroupMap::value_type,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIN4Ogre11RenderQueue19RenderQueueGroupMap10value_typeENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")]
-pub fn stub_0xd5cbd8() -> ! {
-    todo!("0xd5cbd8 __ZNSt12_Vector_baseIN4Ogre11RenderQueue19RenderQueueGroupMap10value_typeENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")
+pub fn stub_0xd5cbd8() {
+    // IDA 0xd5cbd8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd5cbdc — __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre19RenderPriorityGroupEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::RenderPriorityGroup *>,std::_Select1st<std::pair<unsigned short const,Ogre::RenderPriorityGroup *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::RenderPriorityGroup *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtPN4Ogre19RenderPriorityGroupEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev")]
-pub fn stub_0xd5cbdc() -> ! {
-    todo!("0xd5cbdc __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre19RenderPriorityGroupEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev")
+pub fn stub_0xd5cbdc() {
+    // IDA 0xd5cbdc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd5cbe8 — __ZNSt12_Vector_baseIN4Ogre11RenderQueue19RenderQueueGroupMap10value_typeENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 #[doc(alias = "std::_Vector_base<Ogre::RenderQueue::RenderQueueGroupMap::value_type,Ogre::STLAllocator<Ogre::RenderQueue::RenderQueueGroupMap::value_type,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIN4Ogre11RenderQueue19RenderQueueGroupMap10value_typeENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
-pub fn stub_0xd5cbe8() -> ! {
-    todo!("0xd5cbe8 __ZNSt12_Vector_baseIN4Ogre11RenderQueue19RenderQueueGroupMap10value_typeENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")
+pub fn stub_0xd5cbe8() {
+    // IDA 0xd5cbe8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd5cbf4 — __GLOBAL__I_a_752
@@ -883,8 +883,8 @@ pub fn stub_0xd5cdcc() -> ! {
 // type: void __fastcall(Ogre::QueuedRenderableCollection *__hidden this)
 #[doc(alias = "Ogre::QueuedRenderableCollection::~QueuedRenderableCollection()")]
 #[doc(alias = "__ZN4Ogre26QueuedRenderableCollectionD1Ev")]
-pub fn stub_0xd5cde4() -> ! {
-    todo!("0xd5cde4 __ZN4Ogre26QueuedRenderableCollectionD1Ev")
+pub fn stub_0xd5cde4() {
+    // IDA 0xd5cde4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd5cdf0 — __ZN4Ogre19RenderPriorityGroup22resetOrganisationModesEv

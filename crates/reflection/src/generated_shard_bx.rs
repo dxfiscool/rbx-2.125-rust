@@ -562,8 +562,8 @@ pub fn stub_f3f824() -> ! {
 // 0xf3f834 — j___ZN3RBX10Reflection13BoundFuncDescINS_9GuiObjectEFbNS_5UDim2ENS2_20TweenEasingDirectionENS2_16TweenEasingStyleEfbNS_3Lua15WeakFunctionRefEELi6EED2Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiObject,bool ()(RBX::UDim2,RBX::GuiObject::TweenEasingDirection,RBX::GuiObject::TweenEasingStyle,float,bool,RBX::Lua::WeakFunctionRef),6>::~BoundFuncDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_9GuiObjectEFbNS_5UDim2ENS2_20TweenEasingDirectionENS2_16TweenEasingStyleEfbNS_3Lua15WeakFunctionRefEELi6EED2Ev")]
-pub fn stub_f3f834() -> ! {
-    todo!("0xf3f834 RBX::Reflection::BoundFuncDesc<RBX::GuiObject,bool ()(RBX::UDim2,RBX::GuiObject::TweenEasingDirection,RBX::GuiObject::TweenEasingStyle,float,bool,RBX::Lua::WeakFunctionRef),6>::~BoundFuncDesc()")
+pub fn stub_f3f834() {
+    // IDA 0xf3f834: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3f844 — j___ZN3RBX10Reflection13BoundFuncDescINS_9GuiObjectEFbNS_5UDim2ES3_NS2_20TweenEasingDirectionENS2_16TweenEasingStyleEfbNS_3Lua15WeakFunctionRefEELi7EE16declareSignatureEPKcNS0_7VariantESB_SC_SB_SC_SB_SC_SB_SC_SB_SC_SB_SC_
@@ -583,8 +583,8 @@ pub fn stub_f3f854() -> ! {
 // 0xf3f864 — j___ZN3RBX10Reflection13BoundFuncDescINS_9GuiObjectEFbNS_5UDim2ES3_NS2_20TweenEasingDirectionENS2_16TweenEasingStyleEfbNS_3Lua15WeakFunctionRefEELi7EED2Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiObject,bool ()(RBX::UDim2,RBX::UDim2,RBX::GuiObject::TweenEasingDirection,RBX::GuiObject::TweenEasingStyle,float,bool,RBX::Lua::WeakFunctionRef),7>::~BoundFuncDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_9GuiObjectEFbNS_5UDim2ES3_NS2_20TweenEasingDirectionENS2_16TweenEasingStyleEfbNS_3Lua15WeakFunctionRefEELi7EED2Ev")]
-pub fn stub_f3f864() -> ! {
-    todo!("0xf3f864 RBX::Reflection::BoundFuncDesc<RBX::GuiObject,bool ()(RBX::UDim2,RBX::UDim2,RBX::GuiObject::TweenEasingDirection,RBX::GuiObject::TweenEasingStyle,float,bool,RBX::Lua::WeakFunctionRef),7>::~BoundFuncDesc()")
+pub fn stub_f3f864() {
+    // IDA 0xf3f864: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf3f874 — j___ZN3RBX10Reflection14PropDescriptorINS_9GuiButtonEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE

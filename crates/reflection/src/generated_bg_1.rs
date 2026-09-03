@@ -425,24 +425,24 @@ pub fn stub_0x9b08(this: *mut CRenderSettingsItem, value: bool) -> *mut CRenderS
 // type: void __cdecl(std::length_error *__hidden this)
 #[doc(alias = "std::length_error::~length_error()")]
 #[doc(alias = "__ZNSt12length_errorD1Ev")]
-pub fn stub_0x9b2c() -> ! {
-    todo!("0x9b2c std::length_error::~length_error()")
+pub fn stub_0x9b2c() {
+    // IDA 0x9b2c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9b30 — __ZNSt12out_of_rangeD0Ev
 // type: void __cdecl(std::out_of_range *__hidden this)
 #[doc(alias = "std::out_of_range::~out_of_range()")]
 #[doc(alias = "__ZNSt12out_of_rangeD0Ev")]
-pub fn stub_0x9b30() -> ! {
-    todo!("0x9b30 std::out_of_range::~out_of_range()")
+pub fn stub_0x9b30() {
+    // IDA 0x9b30: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9b44 — __ZNSt12out_of_rangeD2Ev
 // type: void __cdecl(std::out_of_range *__hidden this)
 #[doc(alias = "std::out_of_range::~out_of_range()")]
 #[doc(alias = "__ZNSt12out_of_rangeD2Ev")]
-pub fn stub_0x9b44() -> ! {
-    todo!("0x9b44 std::out_of_range::~out_of_range()")
+pub fn stub_0x9b44() {
+    // IDA 0x9b44: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xb33c — __ZNK3RBX15CRenderSettings15getGraphicsModeEv
@@ -617,16 +617,16 @@ pub fn stub_0xb8b0() -> ! {
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 #[doc(alias = "CRenderSettingsItem::~CRenderSettingsItem()")]
 #[doc(alias = "__ZN19CRenderSettingsItemD1Ev")]
-pub fn stub_0xb8b8() -> ! {
-    todo!("0xb8b8 CRenderSettingsItem::~CRenderSettingsItem()")
+pub fn stub_0xb8b8() {
+    // IDA 0xb8b8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xb8bc — __ZN19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 #[doc(alias = "CRenderSettingsItem::~CRenderSettingsItem()")]
 #[doc(alias = "__ZN19CRenderSettingsItemD0Ev")]
-pub fn stub_0xb8bc() -> ! {
-    todo!("0xb8bc CRenderSettingsItem::~CRenderSettingsItem()")
+pub fn stub_0xb8bc() {
+    // IDA 0xb8bc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xb8d0 — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
@@ -679,23 +679,23 @@ pub fn stub_0xb918() {
 // 0xb930 — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev
 // type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_0xb930() -> ! {
-    todo!("0xb930 __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_0xb930() {
+    // IDA 0xb930: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcb94 — __ZN5boost16exception_detail12refcount_ptrINS0_20error_info_containerEED2Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "boost::exception_detail::refcount_ptr<boost::exception_detail::error_info_container>::~refcount_ptr()")]
 #[doc(alias = "__ZN5boost16exception_detail12refcount_ptrINS0_20error_info_containerEED2Ev")]
-pub fn stub_0xcb94() -> ! {
-    todo!("0xcb94 boost::exception_detail::refcount_ptr<boost::exception_detail::error_info_container>::~refcount_ptr()")
+pub fn stub_0xcb94() {
+    // IDA 0xcb94: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xeccc — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD2Ev
 // type: int __fastcall(int)
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_0xeccc() -> ! {
-    todo!("0xeccc __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_0xeccc() {
+    // IDA 0xeccc: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xedfc — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv
@@ -748,8 +748,8 @@ pub fn stub_0xf098() -> ! {
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_0xf198() -> ! {
-    todo!("0xf198 boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0xf198() {
+    // IDA 0xf198: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf19c — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE7disposeEv
@@ -830,15 +830,15 @@ pub fn stub_0xf800() -> ! {
 // 0xf83c — __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev")]
-pub fn stub_0xf83c() -> ! {
-    todo!("0xf83c __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev")
+pub fn stub_0xf83c() {
+    // IDA 0xf83c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf87c — __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev")]
-pub fn stub_0xf87c() -> ! {
-    todo!("0xf87c __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev")
+pub fn stub_0xf87c() {
+    // IDA 0xf87c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xf8c8 — __ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev

@@ -184,15 +184,15 @@ pub fn stub_0x3dddb8() -> ! {
 // 0x3de020 — __ZN3RBX5Stats14TypedStatsItemIiED1Ev
 #[doc(alias = "RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
 #[doc(alias = "__ZN3RBX5Stats14TypedStatsItemIiED1Ev")]
-pub fn stub_0x3de020() -> ! {
-    todo!("0x3de020")
+pub fn stub_0x3de020() {
+    // IDA 0x3de020: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3de168 — __ZN3RBX5Stats14TypedStatsItemIiED0Ev
 #[doc(alias = "RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
 #[doc(alias = "__ZN3RBX5Stats14TypedStatsItemIiED0Ev")]
-pub fn stub_0x3de168() -> ! {
-    todo!("0x3de168")
+pub fn stub_0x3de168() {
+    // IDA 0x3de168: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e11f4 — __ZN3RBX13ModelInstance23findFirstModifierOfTypeINS_4SkinEEEPT_PNS_8InstanceE

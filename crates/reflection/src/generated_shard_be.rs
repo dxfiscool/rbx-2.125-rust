@@ -9,29 +9,29 @@ use rbx_core::SharedPtr;
 // 0xb05540 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFvdELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,void ()(double),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFvdELi1EED1Ev")]
-pub fn stub_b05540() -> ! {
-    todo!("0xb05540 RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,void ()(double),1>::~BoundFuncDesc()")
+pub fn stub_b05540() {
+    // IDA 0xb05540: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xb055a8 — __ZN3RBX10Reflection14PropDescriptorINS_7Network10ReplicatorEiED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Replicator,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7Network10ReplicatorEiED1Ev")]
-pub fn stub_b055a8() -> ! {
-    todo!("0xb055a8 RBX::Reflection::PropDescriptor<RBX::Network::Replicator,int>::~PropDescriptor()")
+pub fn stub_b055a8() {
+    // IDA 0xb055a8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xb055cc — __ZN3RBX10Reflection14PropDescriptorINS_7Network10ReplicatorESsED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Replicator,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7Network10ReplicatorESsED1Ev")]
-pub fn stub_b055cc() -> ! {
-    todo!("0xb055cc RBX::Reflection::PropDescriptor<RBX::Network::Replicator,std::string>::~PropDescriptor()")
+pub fn stub_b055cc() {
+    // IDA 0xb055cc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xb05fac — __ZN5boost9unordered13unordered_mapIN3RBX10Reflection13ConstPropertyENS_9intrusive13list_iteratorINS5_9list_implINS5_7listoptINS5_6detail16base_hook_traitsINS2_7Network4ItemENS5_16list_node_traitsIPvEELNS5_14link_mode_typeE1ENSB_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS4_EESt8equal_toIS4_ENS_19fast_pool_allocatorIS4_NS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEEED1Ev
 #[doc(alias = "boost::unordered::unordered_map<RBX::Reflection::ConstProperty,boost::intrusive::list_iterator<boost::intrusive::list_impl<boost::intrusive::listopt<boost::intrusive::detail::base_hook_traits<RBX::Network::Item,boost::intrusive::list_node_traits<void *>,(boost::intrusive::link_mode_type)1,RBX::Network::ItemTag,1>,unsigned long,true>>,false>,boost::hash<RBX::Reflection::ConstProperty>,std::equal_to<RBX::Reflection::ConstProperty>,boost::fast_pool_allocator<RBX::Reflection::ConstProperty,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>>::~unordered_map()")]
 #[doc(alias = "__ZN5boost9unordered13unordered_mapIN3RBX10Reflection13ConstPropertyENS_9intrusive13list_iteratorINS5_9list_implINS5_7listoptINS5_6detail16base_hook_traitsINS2_7Network4ItemENS5_16list_node_traitsIPvEELNS5_14link_mode_typeE1ENSB_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS4_EESt8equal_toIS4_ENS_19fast_pool_allocatorIS4_NS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEEED1Ev")]
-pub fn stub_b05fac() -> ! {
-    todo!("0xb05fac boost::unordered::unordered_map<RBX::Reflection::ConstProperty,boost::intrusive::list_iterator<boost::intrusive::list_impl<boost::intrusive::listopt<boost::intrusive::detail::base_hook_traits<RBX::Network::Item,boost::intrusive::list_node_traits<void *>,(boost::intrusive::link_mode_type)1,RBX::Network::ItemTag,1>,unsigned long,true>>,false>,boost::hash<RBX::Reflection::ConstProperty>,std::equal_to<RBX::Reflection::ConstProperty>,boost::fast_pool_allocator<RBX::Reflection::ConstProperty,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>>::~unordered_map()")
+pub fn stub_b05fac() {
+    // IDA 0xb05fac: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xb080e0 — __ZNSt3mapIPKN3RBX10Reflection15EventDescriptorEN5boost10shared_ptrINS0_7Network22SharedStringDictionaryEEESt4lessIS4_ESaISt4pairIKS4_S9_EEEixERSD_
@@ -487,15 +487,15 @@ pub fn stub_b1ea38() -> ! {
 // 0xb1eb7c — __ZN5boost6detail17sp_counted_impl_pISt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS5_EEEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pISt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS5_EEEED1Ev")]
-pub fn stub_b1eb7c() -> ! {
-    todo!("0xb1eb7c boost::detail::sp_counted_impl_p<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::~sp_counted_impl_p()")
+pub fn stub_b1eb7c() {
+    // IDA 0xb1eb7c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xb1eb80 — __ZN5boost6detail17sp_counted_impl_pISt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS5_EEEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pISt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS5_EEEED0Ev")]
-pub fn stub_b1eb80() -> ! {
-    todo!("0xb1eb80 boost::detail::sp_counted_impl_p<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::~sp_counted_impl_p()")
+pub fn stub_b1eb80() {
+    // IDA 0xb1eb80: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xb1eb8c — __ZN5boost6detail17sp_counted_impl_pISt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS5_EEEE7disposeEv
@@ -538,15 +538,15 @@ pub fn stub_b1ede8() -> ! {
 // 0xb1efcc — __ZN5boost6detail17sp_counted_impl_pISt6vectorIN3RBX10Reflection7VariantESaIS5_EEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pISt6vectorIN3RBX10Reflection7VariantESaIS5_EEED1Ev")]
-pub fn stub_b1efcc() -> ! {
-    todo!("0xb1efcc boost::detail::sp_counted_impl_p<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>::~sp_counted_impl_p()")
+pub fn stub_b1efcc() {
+    // IDA 0xb1efcc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xb1efd0 — __ZN5boost6detail17sp_counted_impl_pISt6vectorIN3RBX10Reflection7VariantESaIS5_EEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pISt6vectorIN3RBX10Reflection7VariantESaIS5_EEED0Ev")]
-pub fn stub_b1efd0() -> ! {
-    todo!("0xb1efd0 boost::detail::sp_counted_impl_p<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>::~sp_counted_impl_p()")
+pub fn stub_b1efd0() {
+    // IDA 0xb1efd0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xb1efdc — __ZN5boost6detail17sp_counted_impl_pISt6vectorIN3RBX10Reflection7VariantESaIS5_EEE7disposeEv

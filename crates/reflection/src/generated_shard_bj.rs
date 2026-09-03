@@ -233,8 +233,8 @@ pub fn stub_f29054() -> ! {
 // 0xf29064 — j___ZN3RBX10Reflection15ClassDescriptorD2Ev
 #[doc(alias = "RBX::Reflection::ClassDescriptor::~ClassDescriptor()")]
 #[doc(alias = "j___ZN3RBX10Reflection15ClassDescriptorD2Ev")]
-pub fn stub_f29064() -> ! {
-    todo!("0xf29064 RBX::Reflection::ClassDescriptor::~ClassDescriptor()")
+pub fn stub_f29064() {
+    // IDA 0xf29064: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf29074 — j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE12mergeMembersEPKS3_

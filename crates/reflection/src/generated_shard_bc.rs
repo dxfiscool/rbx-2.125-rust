@@ -80,8 +80,8 @@ pub fn stub_abd144() -> ! {
 // was: RBX::Reflection::PropDescriptor<RBX::Network::Player,float>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerEfED0Ev")]
-pub fn stub_abd36c() -> ! {
-    todo!("0xabd36c RBX::Reflection::PropDescriptor<RBX::Network::Player,float>::~PropDescriptor()")
+pub fn stub_abd36c() {
+    // IDA 0xabd36c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xabd394 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerEfE10GetSetImplIMS3_KFfvEMS3_FvfEE10isReadOnlyEv
@@ -168,8 +168,8 @@ pub fn stub_abd670() -> ! {
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,std::string ()(int),std::string,1>::~BoundYieldFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,std::string ()(int),std::string,1>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFSsiESsLi1EED0Ev")]
-pub fn stub_abd8dc() -> ! {
-    todo!("0xabd8dc RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,std::string ()(int),std::string,1>::~BoundYieldFuncDesc()")
+pub fn stub_abd8dc() {
+    // IDA 0xabd8dc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xabd9d8 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFSsiESsLi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSC_IFvSsEEE
@@ -192,8 +192,8 @@ pub fn stub_abdc94() -> ! {
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,int ()(int),int,1>::~BoundYieldFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,int ()(int),int,1>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFiiEiLi1EED0Ev")]
-pub fn stub_abdf00() -> ! {
-    todo!("0xabdf00 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,int ()(int),int,1>::~BoundYieldFuncDesc()")
+pub fn stub_abdf00() {
+    // IDA 0xabdf00: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xabdffc — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFiiEiLi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSC_IFvSsEEE
@@ -216,8 +216,8 @@ pub fn stub_abe2b8() -> ! {
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>::~BoundYieldFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int),rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFN5boost10shared_ptrIKNS4_9unordered13unordered_mapISsNS0_7VariantENS4_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEiESJ_Li1EED0Ev")]
-pub fn stub_abe5ac() -> ! {
-    todo!("0xabe5ac RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int),rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>::~BoundYieldFuncDesc()")
+pub fn stub_abe5ac() {
+    // IDA 0xabe5ac: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xabe6a8 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFN5boost10shared_ptrIKNS4_9unordered13unordered_mapISsNS0_7VariantENS4_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEiESJ_Li1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsENS4_8functionIFvS8_EEENSR_IFvSsEEE
@@ -240,8 +240,8 @@ pub fn stub_abe964() -> ! {
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFNS_13FriendService12FriendStatusEN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev")]
-pub fn stub_abebf4() -> ! {
-    todo!("0xabebf4 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_abebf4() {
+    // IDA 0xabebf4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xabec94 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFNS_13FriendService12FriendStatusEN5boost10shared_ptrINS_8InstanceEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -272,8 +272,8 @@ pub fn stub_abf1f0() -> ! {
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,float ()(G3D::Vector3),1>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,float ()(G3D::Vector3),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFfN3G3D7Vector3EELi1EED0Ev")]
-pub fn stub_abf45c() -> ! {
-    todo!("0xabf45c RBX::Reflection::BoundFuncDesc<RBX::Network::Player,float ()(G3D::Vector3),1>::~BoundFuncDesc()")
+pub fn stub_abf45c() {
+    // IDA 0xabf45c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xabf558 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFfN3G3D7Vector3EELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -296,8 +296,8 @@ pub fn stub_abf648() -> ! {
 // was: RBX::Reflection::PropDescriptor<RBX::Network::Player,std::string>::~PropDescriptor()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerESsED0Ev")]
-pub fn stub_abf870() -> ! {
-    todo!("0xabf870 RBX::Reflection::PropDescriptor<RBX::Network::Player,std::string>::~PropDescriptor()")
+pub fn stub_abf870() {
+    // IDA 0xabf870: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xabf898 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerESsE10GetSetImplIMS3_KFSsvEMS3_FvRKSsEE10isReadOnlyEv
@@ -344,8 +344,8 @@ pub fn stub_abf8f0() -> ! {
 // was: RBX::Reflection::RefPropDescriptor<RBX::Network::Player,RBX::ModelInstance>::~RefPropDescriptor()
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Player,RBX::ModelInstance>::~RefPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection17RefPropDescriptorINS_7Network6PlayerENS_13ModelInstanceEED0Ev")]
-pub fn stub_abfb0c() -> ! {
-    todo!("0xabfb0c RBX::Reflection::RefPropDescriptor<RBX::Network::Player,RBX::ModelInstance>::~RefPropDescriptor()")
+pub fn stub_abfb0c() {
+    // IDA 0xabfb0c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xabfb3c — __ZNK3RBX10Reflection17RefPropDescriptorINS_7Network6PlayerENS_13ModelInstanceEE10isReadOnlyEv
@@ -488,8 +488,8 @@ pub fn stub_ac07c8() -> ! {
 // was: RBX::Reflection::RefType<RBX::ModelInstance *>::~RefType()
 #[doc(alias = "RBX::Reflection::RefType<RBX::ModelInstance *>::~RefType()")]
 #[doc(alias = "__ZN3RBX10Reflection7RefTypeIPNS_13ModelInstanceEED1Ev")]
-pub fn stub_ac07f0() -> ! {
-    todo!("0xac07f0 RBX::Reflection::RefType<RBX::ModelInstance *>::~RefType()")
+pub fn stub_ac07f0() {
+    // IDA 0xac07f0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xac07f4 — __ZN3RBX10Reflection4TypeC2IPNS_13ModelInstanceEEEPKcS6_PT_
@@ -504,8 +504,8 @@ pub fn stub_ac07f4() -> ! {
 // was: RBX::Reflection::RefType<RBX::ModelInstance *>::~RefType()
 #[doc(alias = "RBX::Reflection::RefType<RBX::ModelInstance *>::~RefType()")]
 #[doc(alias = "__ZN3RBX10Reflection7RefTypeIPNS_13ModelInstanceEED0Ev")]
-pub fn stub_ac08a0() -> ! {
-    todo!("0xac08a0 RBX::Reflection::RefType<RBX::ModelInstance *>::~RefType()")
+pub fn stub_ac08a0() {
+    // IDA 0xac08a0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xac08ac — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFviELi1EEC2EMS3_FviEPKcS9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -520,8 +520,8 @@ pub fn stub_ac08ac() -> ! {
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(int),1>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(int),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFviELi1EED0Ev")]
-pub fn stub_ac0b18() -> ! {
-    todo!("0xac0b18 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(int),1>::~BoundFuncDesc()")
+pub fn stub_ac0b18() {
+    // IDA 0xac0b18: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xac0c14 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFviELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -544,8 +544,8 @@ pub fn stub_ac0c50() -> ! {
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(RBX::Network::Player::MembershipType),1>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(RBX::Network::Player::MembershipType),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvNS3_14MembershipTypeEELi1EED0Ev")]
-pub fn stub_ac0ebc() -> ! {
-    todo!("0xac0ebc RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(RBX::Network::Player::MembershipType),1>::~BoundFuncDesc()")
+pub fn stub_ac0ebc() {
+    // IDA 0xac0ebc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xac0fb8 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvNS3_14MembershipTypeEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -568,8 +568,8 @@ pub fn stub_ac0ff4() -> ! {
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,bool ()(void),0>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,bool ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFbvELi0EED0Ev")]
-pub fn stub_ac1248() -> ! {
-    todo!("0xac1248 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,bool ()(void),0>::~BoundFuncDesc()")
+pub fn stub_ac1248() {
+    // IDA 0xac1248: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xac1324 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFbvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -592,8 +592,8 @@ pub fn stub_ac13d4() -> ! {
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(bool),1>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(bool),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvbELi1EED0Ev")]
-pub fn stub_ac1640() -> ! {
-    todo!("0xac1640 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(bool),1>::~BoundFuncDesc()")
+pub fn stub_ac1640() {
+    // IDA 0xac1640: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xac173c — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvbELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -624,8 +624,8 @@ pub fn stub_ac1a6c() -> ! {
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EED0Ev")]
-pub fn stub_ac1dac() -> ! {
-    todo!("0xac1dac RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")
+pub fn stub_ac1dac() {
+    // IDA 0xac1dac: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xac1e4c — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -656,8 +656,8 @@ pub fn stub_ac245c() -> ! {
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,boost::shared_ptr<RBX::Instance> ()(std::string),1>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance> ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFN5boost10shared_ptrINS_8InstanceEEESsELi1EED0Ev")]
-pub fn stub_ac2704() -> ! {
-    todo!("0xac2704 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,rbx_core::SharedPtr<RBX::Instance> ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_ac2704() {
+    // IDA 0xac2704: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xac283c — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFN5boost10shared_ptrINS_8InstanceEEESsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -688,8 +688,8 @@ pub fn stub_ac2c60() -> ! {
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,double),2>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,double),2>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsdELi2EED0Ev")]
-pub fn stub_ac2f7c() -> ! {
-    todo!("0xac2f7c RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,double),2>::~BoundFuncDesc()")
+pub fn stub_ac2f7c() {
+    // IDA 0xac2f7c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xac30c0 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsdELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -712,8 +712,8 @@ pub fn stub_ac32b0() -> ! {
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,double ()(std::string),1>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,double ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFdSsELi1EED0Ev")]
-pub fn stub_ac3558() -> ! {
-    todo!("0xac3558 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,double ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_ac3558() {
+    // IDA 0xac3558: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xac3690 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFdSsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -744,8 +744,8 @@ pub fn stub_ac39b8() -> ! {
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,bool),2>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,bool),2>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsbELi2EED0Ev")]
-pub fn stub_ac3cd4() -> ! {
-    todo!("0xac3cd4 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,bool),2>::~BoundFuncDesc()")
+pub fn stub_ac3cd4() {
+    // IDA 0xac3cd4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xac3e18 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsbELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -768,8 +768,8 @@ pub fn stub_ac4004() -> ! {
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,bool ()(std::string),1>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,bool ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFbSsELi1EED0Ev")]
-pub fn stub_ac42ac() -> ! {
-    todo!("0xac42ac RBX::Reflection::BoundFuncDesc<RBX::Network::Player,bool ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_ac42ac() {
+    // IDA 0xac42ac: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xac43e4 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFbSsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -800,6 +800,6 @@ pub fn stub_ac46f4() -> ! {
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,std::string),2>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,std::string),2>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsSsELi2EED0Ev")]
-pub fn stub_ac4a4c() -> ! {
-    todo!("0xac4a4c RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,std::string),2>::~BoundFuncDesc()")
+pub fn stub_ac4a4c() {
+    // IDA 0xac4a4c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }

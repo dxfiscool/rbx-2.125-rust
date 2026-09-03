@@ -60,29 +60,29 @@ pub fn stub_0x36886c() -> ! {
 // 0x36895c — __ZN3rbx8callableINS_7signals6signalIFvddEE4slotEN5boost8functionIS3_EELi2ES3_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvddEE4slotEN5boost8functionIS3_EELi2ES3_ED1Ev")]
-pub fn stub_0x36895c() -> ! {
-    todo!("0x36895c rbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::~callable()")
+pub fn stub_0x36895c() {
+    // IDA 0x36895c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x368a6c — __ZN3rbx8callableINS_7signals6signalIFvddEE4slotEN5boost8functionIS3_EELi2ES3_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvddEE4slotEN5boost8functionIS3_EELi2ES3_ED0Ev")]
-pub fn stub_0x368a6c() -> ! {
-    todo!("0x368a6c rbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::~callable()")
+pub fn stub_0x368a6c() {
+    // IDA 0x368a6c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x368b9c — __ZN3rbx7signals6signalIFvddEE4slotD1Ev
 #[doc(alias = "rbx::signals::signal<void ()(double,double)>::slot::~slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvddEE4slotD1Ev")]
-pub fn stub_0x368b9c() -> ! {
-    todo!("0x368b9c rbx::signals::signal<void ()(double,double)>::slot::~slot()")
+pub fn stub_0x368b9c() {
+    // IDA 0x368b9c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x368bc8 — __ZN3rbx7signals6signalIFvddEE4slotD0Ev
 #[doc(alias = "rbx::signals::signal<void ()(double,double)>::slot::~slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvddEE4slotD0Ev")]
-pub fn stub_0x368bc8() -> ! {
-    todo!("0x368bc8 rbx::signals::signal<void ()(double,double)>::slot::~slot()")
+pub fn stub_0x368bc8() {
+    // IDA 0x368bc8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x368c9c — __ZN5boost9function2IvddE13assign_to_ownERKS1_
@@ -102,15 +102,15 @@ pub fn stub_0x3690cc() -> ! {
 // 0x3692bc — __ZN3RBX13HeartbeatTaskD1Ev
 #[doc(alias = "RBX::HeartbeatTask::~HeartbeatTask()")]
 #[doc(alias = "__ZN3RBX13HeartbeatTaskD1Ev")]
-pub fn stub_0x3692bc() -> ! {
-    todo!("0x3692bc RBX::HeartbeatTask::~HeartbeatTask()")
+pub fn stub_0x3692bc() {
+    // IDA 0x3692bc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3693b8 — __ZN3RBX13HeartbeatTaskD0Ev
 #[doc(alias = "RBX::HeartbeatTask::~HeartbeatTask()")]
 #[doc(alias = "__ZN3RBX13HeartbeatTaskD0Ev")]
-pub fn stub_0x3693b8() -> ! {
-    todo!("0x3693b8 RBX::HeartbeatTask::~HeartbeatTask()")
+pub fn stub_0x3693b8() {
+    // IDA 0x3693b8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3694c8 — __ZN3RBX13HeartbeatTask9sleepTimeERKNS_13TaskScheduler3Job5StatsE
@@ -158,15 +158,15 @@ pub fn stub_0x369764() -> ! {
 // 0x3698b8 — __ZN3RBX10PhysicsJobD1Ev
 #[doc(alias = "RBX::PhysicsJob::~PhysicsJob()")]
 #[doc(alias = "__ZN3RBX10PhysicsJobD1Ev")]
-pub fn stub_0x3698b8() -> ! {
-    todo!("0x3698b8 RBX::PhysicsJob::~PhysicsJob()")
+pub fn stub_0x3698b8() {
+    // IDA 0x3698b8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x369988 — __ZN3RBX10PhysicsJobD0Ev
 #[doc(alias = "RBX::PhysicsJob::~PhysicsJob()")]
 #[doc(alias = "__ZN3RBX10PhysicsJobD0Ev")]
-pub fn stub_0x369988() -> ! {
-    todo!("0x369988 RBX::PhysicsJob::~PhysicsJob()")
+pub fn stub_0x369988() {
+    // IDA 0x369988: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x369a70 — __ZN3RBX10PhysicsJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE
@@ -305,8 +305,8 @@ pub fn stub_0x36b344() -> ! {
 // 0x36b370 — __ZN3RBX17HeartbeatInstanceD2Ev
 #[doc(alias = "RBX::HeartbeatInstance::~HeartbeatInstance()")]
 #[doc(alias = "__ZN3RBX17HeartbeatInstanceD2Ev")]
-pub fn stub_0x36b370() -> ! {
-    todo!("0x36b370 RBX::HeartbeatInstance::~HeartbeatInstance()")
+pub fn stub_0x36b370() {
+    // IDA 0x36b370: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x36b454 — __ZN3RBX14AsyncHttpCacheINS_25ScriptInformationProvider16CachedScriptInfoELb0EE13findCacheItemERKSsPS2_
@@ -354,15 +354,15 @@ pub fn stub_0x36bac4() -> ! {
 // 0x36bcbc — __ZN3RBX25ScriptInformationProviderD1Ev
 #[doc(alias = "RBX::ScriptInformationProvider::~ScriptInformationProvider()")]
 #[doc(alias = "__ZN3RBX25ScriptInformationProviderD1Ev")]
-pub fn stub_0x36bcbc() -> ! {
-    todo!("0x36bcbc RBX::ScriptInformationProvider::~ScriptInformationProvider()")
+pub fn stub_0x36bcbc() {
+    // IDA 0x36bcbc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x36bcc0 — __ZN3RBX25ScriptInformationProviderD0Ev
 #[doc(alias = "RBX::ScriptInformationProvider::~ScriptInformationProvider()")]
 #[doc(alias = "__ZN3RBX25ScriptInformationProviderD0Ev")]
-pub fn stub_0x36bcc0() -> ! {
-    todo!("0x36bcc0 RBX::ScriptInformationProvider::~ScriptInformationProvider()")
+pub fn stub_0x36bcc0() {
+    // IDA 0x36bcc0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x36bd64 — __ZN3RBX25ScriptInformationProvider17onServiceProviderEPNS_15ServiceProviderES2_
@@ -698,8 +698,8 @@ pub fn stub_0x36e898() -> ! {
 // 0x36e8e8 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEEEEED2Ev
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>>>::~node_constructor()")]
 #[doc(alias = "__ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEEEEED2Ev")]
-pub fn stub_0x36e8e8() -> ! {
-    todo!("0x36e8e8 boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>>>::~node_constructor()")
+pub fn stub_0x36e8e8() {
+    // IDA 0x36e8e8: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x36e908 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm
@@ -789,15 +789,15 @@ pub fn stub_0x36f018() -> ! {
 // 0x36f110 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_25ScriptInformationProvider16CachedScriptInfoELb0EEEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_25ScriptInformationProvider16CachedScriptInfoELb0EEEED1Ev")]
-pub fn stub_0x36f110() -> ! {
-    todo!("0x36f110 boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::~sp_counted_impl_p()")
+pub fn stub_0x36f110() {
+    // IDA 0x36f110: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x36f114 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_25ScriptInformationProvider16CachedScriptInfoELb0EEEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_25ScriptInformationProvider16CachedScriptInfoELb0EEEED0Ev")]
-pub fn stub_0x36f114() -> ! {
-    todo!("0x36f114 boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::~sp_counted_impl_p()")
+pub fn stub_0x36f114() {
+    // IDA 0x36f114: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x36f118 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_25ScriptInformationProvider16CachedScriptInfoELb0EEEE7disposeEv
@@ -831,13 +831,13 @@ pub fn stub_0x36f134() -> ! {
 // 0x36f284 — __ZN3RBX14AsyncHttpCacheINS_25ScriptInformationProvider16CachedScriptInfoELb0EED1Ev
 #[doc(alias = "RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>::~AsyncHttpCache()")]
 #[doc(alias = "__ZN3RBX14AsyncHttpCacheINS_25ScriptInformationProvider16CachedScriptInfoELb0EED1Ev")]
-pub fn stub_0x36f284() -> ! {
-    todo!("0x36f284 RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>::~AsyncHttpCache()")
+pub fn stub_0x36f284() {
+    // IDA 0x36f284: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x36f38c — __ZN3RBX14AsyncHttpCacheINS_25ScriptInformationProvider16CachedScriptInfoELb0EED0Ev
 #[doc(alias = "RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>::~AsyncHttpCache()")]
 #[doc(alias = "__ZN3RBX14AsyncHttpCacheINS_25ScriptInformationProvider16CachedScriptInfoELb0EED0Ev")]
-pub fn stub_0x36f38c() -> ! {
-    todo!("0x36f38c RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>::~AsyncHttpCache()")
+pub fn stub_0x36f38c() {
+    // IDA 0x36f38c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }

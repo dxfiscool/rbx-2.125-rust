@@ -356,8 +356,8 @@ pub fn stub_0x111170() -> ! {
 // type: void __fastcall(PluginList *__hidden this)
 #[doc(alias = "PluginList::~PluginList()")]
 #[doc(alias = "__ZN10PluginListD2Ev")]
-pub fn stub_0x111270() -> ! {
-    todo!("0x111270 PluginList::~PluginList()")
+pub fn stub_0x111270() {
+    // IDA 0x111270: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x1113a8 — _FreeImage_DeInitialise

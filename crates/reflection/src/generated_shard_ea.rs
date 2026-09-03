@@ -10,14 +10,14 @@ use rbx_core::SharedPtr;
 
 // 0x8e1f94 — __ZN3RBX10Reflection9DescribedINS_9GuiBase2dELZNS_10sGuiBase2dEENS_17NonFactoryProductINS_7GuiBaseELZNS_10sGuiBase2dEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9GuiBase2dELZNS_10sGuiBase2dEENS_17NonFactoryProductINS_7GuiBaseELZNS_10sGuiBase2dEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_8e1f94() -> ! {
-    todo!("0x8e1f94 __ZN3RBX10Reflection9DescribedINS_9GuiBase2dELZNS_10sGuiBase2dEENS_17NonFactoryProductINS_7GuiBaseELZNS_10sGuiBase2dEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_8e1f94() {
+    // IDA 0x8e1f94: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8e2050 — __ZN3RBX10Reflection9DescribedINS_9GuiBase2dELZNS_10sGuiBase2dEENS_17NonFactoryProductINS_7GuiBaseELZNS_10sGuiBase2dEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9GuiBase2dELZNS_10sGuiBase2dEENS_17NonFactoryProductINS_7GuiBaseELZNS_10sGuiBase2dEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_8e2050() -> ! {
-    todo!("0x8e2050 __ZN3RBX10Reflection9DescribedINS_9GuiBase2dELZNS_10sGuiBase2dEENS_17NonFactoryProductINS_7GuiBaseELZNS_10sGuiBase2dEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_8e2050() {
+    // IDA 0x8e2050: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8e211c — __ZThn32_N3RBX10Reflection9DescribedINS_9GuiBase2dELZNS_10sGuiBase2dEENS_17NonFactoryProductINS_7GuiBaseELZNS_10sGuiBase2dEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -46,14 +46,14 @@ pub fn stub_8e235c() {
 
 // 0x8e5038 — __ZN3RBX10Reflection9DescribedINS_17GuiLayerCollectorELZNS_15sLayerCollectorEENS_17NonFactoryProductINS_9GuiBase2dELZNS_15sLayerCollectorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_17GuiLayerCollectorELZNS_15sLayerCollectorEENS_17NonFactoryProductINS_9GuiBase2dELZNS_15sLayerCollectorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_8e5038() -> ! {
-    todo!("0x8e5038 __ZN3RBX10Reflection9DescribedINS_17GuiLayerCollectorELZNS_15sLayerCollectorEENS_17NonFactoryProductINS_9GuiBase2dELZNS_15sLayerCollectorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_8e5038() {
+    // IDA 0x8e5038: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8e50f4 — __ZN3RBX10Reflection9DescribedINS_17GuiLayerCollectorELZNS_15sLayerCollectorEENS_17NonFactoryProductINS_9GuiBase2dELZNS_15sLayerCollectorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_17GuiLayerCollectorELZNS_15sLayerCollectorEENS_17NonFactoryProductINS_9GuiBase2dELZNS_15sLayerCollectorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_8e50f4() -> ! {
-    todo!("0x8e50f4 __ZN3RBX10Reflection9DescribedINS_17GuiLayerCollectorELZNS_15sLayerCollectorEENS_17NonFactoryProductINS_9GuiBase2dELZNS_15sLayerCollectorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_8e50f4() {
+    // IDA 0x8e50f4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8e51c0 — __ZThn32_N3RBX10Reflection9DescribedINS_17GuiLayerCollectorELZNS_15sLayerCollectorEENS_17NonFactoryProductINS_9GuiBase2dELZNS_15sLayerCollectorEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -82,14 +82,14 @@ pub fn stub_8e5400() {
 
 // 0x8e6d64 — __ZN3RBX10Reflection9DescribedINS_20ContextActionServiceELZNS_21sContextActionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sContextActionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_20ContextActionServiceELZNS_21sContextActionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sContextActionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_8e6d64() -> ! {
-    todo!("0x8e6d64 __ZN3RBX10Reflection9DescribedINS_20ContextActionServiceELZNS_21sContextActionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sContextActionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_8e6d64() {
+    // IDA 0x8e6d64: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8e6d68 — __ZN3RBX10Reflection9DescribedINS_20ContextActionServiceELZNS_21sContextActionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sContextActionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_20ContextActionServiceELZNS_21sContextActionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sContextActionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_8e6d68() -> ! {
-    todo!("0x8e6d68 __ZN3RBX10Reflection9DescribedINS_20ContextActionServiceELZNS_21sContextActionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sContextActionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_8e6d68() {
+    // IDA 0x8e6d68: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8e6e08 — __ZThn32_N3RBX10Reflection9DescribedINS_20ContextActionServiceELZNS_21sContextActionServiceEENS_17NonFactoryProductINS_8InstanceELZNS_21sContextActionServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -124,14 +124,14 @@ pub fn stub_8f9318() -> ! {
 
 // 0x8f9434 — __ZN3RBX10Reflection9DescribedINS_12LoginServiceELZNS_13sLoginServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sLoginServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_12LoginServiceELZNS_13sLoginServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sLoginServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_8f9434() -> ! {
-    todo!("0x8f9434 __ZN3RBX10Reflection9DescribedINS_12LoginServiceELZNS_13sLoginServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sLoginServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_8f9434() {
+    // IDA 0x8f9434: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8f9438 — __ZN3RBX10Reflection9DescribedINS_12LoginServiceELZNS_13sLoginServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sLoginServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_12LoginServiceELZNS_13sLoginServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sLoginServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_8f9438() -> ! {
-    todo!("0x8f9438 __ZN3RBX10Reflection9DescribedINS_12LoginServiceELZNS_13sLoginServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sLoginServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_8f9438() {
+    // IDA 0x8f9438: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8f94d8 — __ZThn32_N3RBX10Reflection9DescribedINS_12LoginServiceELZNS_13sLoginServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sLoginServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -202,14 +202,14 @@ pub fn stub_9037b0() -> ! {
 
 // 0x908678 — __ZN3RBX10Reflection9DescribedINS_16OverlayDataModelELZNS_17sOverlayDataModelEENS_17NonFactoryProductINS_9DataModelELZNS_17sOverlayDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_16OverlayDataModelELZNS_17sOverlayDataModelEENS_17NonFactoryProductINS_9DataModelELZNS_17sOverlayDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_908678() -> ! {
-    todo!("0x908678 __ZN3RBX10Reflection9DescribedINS_16OverlayDataModelELZNS_17sOverlayDataModelEENS_17NonFactoryProductINS_9DataModelELZNS_17sOverlayDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_908678() {
+    // IDA 0x908678: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x90867c — __ZN3RBX10Reflection9DescribedINS_16OverlayDataModelELZNS_17sOverlayDataModelEENS_17NonFactoryProductINS_9DataModelELZNS_17sOverlayDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_16OverlayDataModelELZNS_17sOverlayDataModelEENS_17NonFactoryProductINS_9DataModelELZNS_17sOverlayDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_90867c() -> ! {
-    todo!("0x90867c __ZN3RBX10Reflection9DescribedINS_16OverlayDataModelELZNS_17sOverlayDataModelEENS_17NonFactoryProductINS_9DataModelELZNS_17sOverlayDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_90867c() {
+    // IDA 0x90867c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x90871c — __ZThn32_N3RBX10Reflection9DescribedINS_16OverlayDataModelELZNS_17sOverlayDataModelEENS_17NonFactoryProductINS_9DataModelELZNS_17sOverlayDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -304,14 +304,14 @@ pub fn stub_90b138() -> ! {
 
 // 0x90e130 — __ZN3RBX10Reflection9DescribedINS_17ReplicatedStorageELZNS_18sReplicatedStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_18sReplicatedStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_17ReplicatedStorageELZNS_18sReplicatedStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_18sReplicatedStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_90e130() -> ! {
-    todo!("0x90e130 __ZN3RBX10Reflection9DescribedINS_17ReplicatedStorageELZNS_18sReplicatedStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_18sReplicatedStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_90e130() {
+    // IDA 0x90e130: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x90e134 — __ZN3RBX10Reflection9DescribedINS_17ReplicatedStorageELZNS_18sReplicatedStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_18sReplicatedStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_17ReplicatedStorageELZNS_18sReplicatedStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_18sReplicatedStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_90e134() -> ! {
-    todo!("0x90e134 __ZN3RBX10Reflection9DescribedINS_17ReplicatedStorageELZNS_18sReplicatedStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_18sReplicatedStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_90e134() {
+    // IDA 0x90e134: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x90e1d4 — __ZThn32_N3RBX10Reflection9DescribedINS_17ReplicatedStorageELZNS_18sReplicatedStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_18sReplicatedStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -340,14 +340,14 @@ pub fn stub_90e288() {
 
 // 0x90ea7c — __ZN3RBX10Reflection9DescribedINS_19ServerScriptServiceELZNS_20sServerScriptServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sServerScriptServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_19ServerScriptServiceELZNS_20sServerScriptServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sServerScriptServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_90ea7c() -> ! {
-    todo!("0x90ea7c __ZN3RBX10Reflection9DescribedINS_19ServerScriptServiceELZNS_20sServerScriptServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sServerScriptServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_90ea7c() {
+    // IDA 0x90ea7c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x90ea80 — __ZN3RBX10Reflection9DescribedINS_19ServerScriptServiceELZNS_20sServerScriptServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sServerScriptServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_19ServerScriptServiceELZNS_20sServerScriptServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sServerScriptServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_90ea80() -> ! {
-    todo!("0x90ea80 __ZN3RBX10Reflection9DescribedINS_19ServerScriptServiceELZNS_20sServerScriptServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sServerScriptServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_90ea80() {
+    // IDA 0x90ea80: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x90eb20 — __ZThn32_N3RBX10Reflection9DescribedINS_19ServerScriptServiceELZNS_20sServerScriptServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_20sServerScriptServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -376,14 +376,14 @@ pub fn stub_90ebd4() {
 
 // 0x90f350 — __ZN3RBX10Reflection9DescribedINS_13ServerStorageELZNS_14sServerStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sServerStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13ServerStorageELZNS_14sServerStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sServerStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_90f350() -> ! {
-    todo!("0x90f350 __ZN3RBX10Reflection9DescribedINS_13ServerStorageELZNS_14sServerStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sServerStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_90f350() {
+    // IDA 0x90f350: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x90f354 — __ZN3RBX10Reflection9DescribedINS_13ServerStorageELZNS_14sServerStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sServerStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13ServerStorageELZNS_14sServerStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sServerStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_90f354() -> ! {
-    todo!("0x90f354 __ZN3RBX10Reflection9DescribedINS_13ServerStorageELZNS_14sServerStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sServerStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_90f354() {
+    // IDA 0x90f354: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x90f3f4 — __ZThn32_N3RBX10Reflection9DescribedINS_13ServerStorageELZNS_14sServerStorageEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sServerStorageEES4_EELNS0_15ClassDescriptor13FunctionalityE25ELNS_8Security11PermissionsE0EED1Ev
@@ -442,14 +442,14 @@ pub fn stub_9162e4() -> ! {
 
 // 0x916f9c — __ZN3RBX10Reflection9DescribedINS_12AssetServiceELZNS_13sAssetServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sAssetServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_12AssetServiceELZNS_13sAssetServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sAssetServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_916f9c() -> ! {
-    todo!("0x916f9c __ZN3RBX10Reflection9DescribedINS_12AssetServiceELZNS_13sAssetServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sAssetServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_916f9c() {
+    // IDA 0x916f9c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x916fa0 — __ZN3RBX10Reflection9DescribedINS_12AssetServiceELZNS_13sAssetServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sAssetServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_12AssetServiceELZNS_13sAssetServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sAssetServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_916fa0() -> ! {
-    todo!("0x916fa0 __ZN3RBX10Reflection9DescribedINS_12AssetServiceELZNS_13sAssetServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sAssetServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_916fa0() {
+    // IDA 0x916fa0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x917040 — __ZThn32_N3RBX10Reflection9DescribedINS_12AssetServiceELZNS_13sAssetServiceEENS_17NonFactoryProductINS_8InstanceELZNS_13sAssetServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -508,14 +508,14 @@ pub fn stub_921c0c() -> ! {
 
 // 0x922f8c — __ZN3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_922f8c() -> ! {
-    todo!("0x922f8c __ZN3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_922f8c() {
+    // IDA 0x922f8c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x922f90 — __ZN3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_922f90() -> ! {
-    todo!("0x922f90 __ZN3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_922f90() {
+    // IDA 0x922f90: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x923030 — __ZThn32_N3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -568,14 +568,14 @@ pub fn stub_9248c0() -> ! {
 
 // 0x929104 — __ZN3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_929104() -> ! {
-    todo!("0x929104 __ZN3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_929104() {
+    // IDA 0x929104: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x929108 — __ZN3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_929108() -> ! {
-    todo!("0x929108 __ZN3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_929108() {
+    // IDA 0x929108: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9291a8 — __ZThn32_N3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev

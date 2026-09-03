@@ -61,15 +61,15 @@ pub fn stub_77c8b8() -> ! {
 // 0x77c9c0 — __ZN5boost6detail18sp_counted_impl_pdIPSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS5_EEEN3rbx6detail13sp_ms_deleterISC_EEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *,rbx::detail::sp_ms_deleter<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS5_EEEN3rbx6detail13sp_ms_deleterISC_EEED1Ev")]
-pub fn stub_77c9c0() -> ! {
-    todo!("0x77c9c0 boost::detail::sp_counted_impl_pd<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *,rbx::detail::sp_ms_deleter<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>>::~sp_counted_impl_pd()")
+pub fn stub_77c9c0() {
+    // IDA 0x77c9c0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x77c9ec — __ZN5boost6detail18sp_counted_impl_pdIPSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS5_EEEN3rbx6detail13sp_ms_deleterISC_EEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *,rbx::detail::sp_ms_deleter<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS5_EEEN3rbx6detail13sp_ms_deleterISC_EEED0Ev")]
-pub fn stub_77c9ec() -> ! {
-    todo!("0x77c9ec boost::detail::sp_counted_impl_pd<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *,rbx::detail::sp_ms_deleter<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>>::~sp_counted_impl_pd()")
+pub fn stub_77c9ec() {
+    // IDA 0x77c9ec: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x77caa8 — __ZN5boost6detail18sp_counted_impl_pdIPSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS5_EEEN3rbx6detail13sp_ms_deleterISC_EEE7disposeEv
@@ -270,8 +270,8 @@ pub fn stub_77f4ac() -> ! {
 // 0x77f5b0 — __ZN3RBX10Reflection13BoundFuncDescINS_9Scripting13DebuggerWatchEFvvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Scripting::DebuggerWatch,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9Scripting13DebuggerWatchEFvvELi0EED0Ev")]
-pub fn stub_77f5b0() -> ! {
-    todo!("0x77f5b0 RBX::Reflection::BoundFuncDesc<RBX::Scripting::DebuggerWatch,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_77f5b0() {
+    // IDA 0x77f5b0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x77f664 — __ZNK3RBX10Reflection13BoundFuncDescINS_9Scripting13DebuggerWatchEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -431,8 +431,8 @@ pub fn stub_77feac() -> ! {
 // 0x77ffb8 — __ZN3RBX10Reflection14PropDescriptorINS_9Scripting18DebuggerBreakpointEiED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scripting::DebuggerBreakpoint,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9Scripting18DebuggerBreakpointEiED0Ev")]
-pub fn stub_77ffb8() -> ! {
-    todo!("0x77ffb8 RBX::Reflection::PropDescriptor<RBX::Scripting::DebuggerBreakpoint,int>::~PropDescriptor()")
+pub fn stub_77ffb8() {
+    // IDA 0x77ffb8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x77ffe4 — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting18DebuggerBreakpointEiE7GetImplIMS3_KFivEE10isReadOnlyEv
@@ -475,8 +475,8 @@ pub fn stub_78012c() -> ! {
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Scripting::ScriptDebugger,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Scripting::ScriptDebugger::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_9Scripting14ScriptDebuggerEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_ED0Ev")]
 // was: RBX::Reflection::EventDesc<RBX::Scripting::ScriptDebugger,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Scripting::ScriptDebugger::*>::~EventDesc()
-pub fn stub_7802b0() -> ! {
-    todo!("0x7802b0 RBX::Reflection::EventDesc<RBX::Scripting::ScriptDebugger,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Scripting::ScriptDebugger::*>::~EventDesc()")
+pub fn stub_7802b0() {
+    // IDA 0x7802b0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x780364 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_9Scripting14ScriptDebuggerEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E14connectGenericEPNS0_11EventSourceENS5_INS0_18GenericSlotWrapperEEE
@@ -506,8 +506,8 @@ pub fn stub_780618() -> ! {
 // 0x780744 — __ZN3RBX10Reflection9EventDescINS_9Scripting14ScriptDebuggerEFvvEN3rbx6signalIS4_EEMS3_S7_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Scripting::ScriptDebugger,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Scripting::ScriptDebugger::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_9Scripting14ScriptDebuggerEFvvEN3rbx6signalIS4_EEMS3_S7_ED0Ev")]
-pub fn stub_780744() -> ! {
-    todo!("0x780744 RBX::Reflection::EventDesc<RBX::Scripting::ScriptDebugger,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Scripting::ScriptDebugger::*>::~EventDesc()")
+pub fn stub_780744() {
+    // IDA 0x780744: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7807f8 — __ZNK3RBX10Reflection13EventDescImplILi0ENS_9Scripting14ScriptDebuggerEFvvEN3rbx6signalIS4_EEMS3_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -542,8 +542,8 @@ pub fn stub_780a84() -> ! {
 // 0x780c08 — __ZN3RBX10Reflection9EventDescINS_9Scripting14ScriptDebuggerEFviEN3rbx6signalIS4_EEMS3_S7_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Scripting::ScriptDebugger,void ()(int),rbx::signal<void ()(int)>,rbx::signal<void ()(int)> RBX::Scripting::ScriptDebugger::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_9Scripting14ScriptDebuggerEFviEN3rbx6signalIS4_EEMS3_S7_ED0Ev")]
-pub fn stub_780c08() -> ! {
-    todo!("0x780c08 RBX::Reflection::EventDesc<RBX::Scripting::ScriptDebugger,void ()(int),rbx::signal<void ()(int)>,rbx::signal<void ()(int)> RBX::Scripting::ScriptDebugger::*>::~EventDesc()")
+pub fn stub_780c08() {
+    // IDA 0x780c08: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x780cbc — __ZNK3RBX10Reflection13EventDescImplILi1ENS_9Scripting14ScriptDebuggerEFviEN3rbx6signalIS4_EEMS3_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -634,8 +634,8 @@ pub fn stub_781ac4() -> ! {
 // 0x781bd0 — __ZN3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEiED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEiED0Ev")]
-pub fn stub_781bd0() -> ! {
-    todo!("0x781bd0 RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,int>::~PropDescriptor()")
+pub fn stub_781bd0() {
+    // IDA 0x781bd0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x781bfc — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEiE7GetImplIMS3_KFivEE10isReadOnlyEv
@@ -676,8 +676,8 @@ pub fn stub_781d44() -> ! {
 // 0x781e50 — __ZN3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEbED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEbED0Ev")]
-pub fn stub_781e50() -> ! {
-    todo!("0x781e50 RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,bool>::~PropDescriptor()")
+pub fn stub_781e50() {
+    // IDA 0x781e50: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x781e7c — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerEbE7GetImplIMS3_KFbvEE10isReadOnlyEv
@@ -718,8 +718,8 @@ pub fn stub_781fc8() -> ! {
 // 0x7820dc — __ZN3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerESsED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerESsED0Ev")]
-pub fn stub_7820dc() -> ! {
-    todo!("0x7820dc RBX::Reflection::PropDescriptor<RBX::Scripting::ScriptDebugger,std::string>::~PropDescriptor()")
+pub fn stub_7820dc() {
+    // IDA 0x7820dc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x782108 — __ZNK3RBX10Reflection14PropDescriptorINS_9Scripting14ScriptDebuggerESsE10GetSetImplIMS3_KFSsvEMS3_FvSsEE10isReadOnlyEv

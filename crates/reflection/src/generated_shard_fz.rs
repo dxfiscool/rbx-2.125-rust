@@ -196,8 +196,8 @@ pub fn stub_0xd4ff8() {
 
 // 0xd5000 — __ZN4FMOD12OutputPolledD0Ev
 #[doc(alias = "FMOD::OutputPolled::~OutputPolled()")]
-pub fn stub_0xd5000() -> ! {
-    todo!("0xd5000 __ZN4FMOD12OutputPolledD0Ev")
+pub fn stub_0xd5000() {
+    // IDA 0xd5000: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd5038 — __ZThn360_N4FMOD12OutputPolledD1Ev
@@ -208,8 +208,8 @@ pub fn stub_0xd5038() {
 
 // 0xd5040 — __ZN4FMOD12OutputPolledD1Ev
 #[doc(alias = "FMOD::OutputPolled::~OutputPolled()")]
-pub fn stub_0xd5040() -> ! {
-    todo!("0xd5040 __ZN4FMOD12OutputPolledD1Ev")
+pub fn stub_0xd5040() {
+    // IDA 0xd5040: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd506c — __ZN4FMOD14OutputSoftware20getSampleMaxChannelsEj17FMOD_SOUND_FORMAT

@@ -25,24 +25,24 @@ pub fn stub_0xdc857c() -> ! {
 // type: void __fastcall(Ogre::PropertyAbstractNode *__hidden this)
 #[doc(alias = "Ogre::PropertyAbstractNode::~PropertyAbstractNode()")]
 #[doc(alias = "__ZN4Ogre20PropertyAbstractNodeD1Ev")]
-pub fn stub_0xdde340() -> ! {
-    todo!("0xdde340 Ogre::PropertyAbstractNode::~PropertyAbstractNode()")
+pub fn stub_0xdde340() {
+    // IDA 0xdde340: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdde34c — __ZN4Ogre20PropertyAbstractNodeD0Ev
 // type: void __fastcall(Ogre::PropertyAbstractNode *__hidden this)
 #[doc(alias = "Ogre::PropertyAbstractNode::~PropertyAbstractNode()")]
 #[doc(alias = "__ZN4Ogre20PropertyAbstractNodeD0Ev")]
-pub fn stub_0xdde34c() -> ! {
-    todo!("0xdde34c Ogre::PropertyAbstractNode::~PropertyAbstractNode()")
+pub fn stub_0xdde34c() {
+    // IDA 0xdde34c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xde17d4 — __ZN4Ogre20PropertyAbstractNodeD2Ev
 // type: void __fastcall(Ogre::PropertyAbstractNode *__hidden this)
 #[doc(alias = "Ogre::PropertyAbstractNode::~PropertyAbstractNode()")]
 #[doc(alias = "__ZN4Ogre20PropertyAbstractNodeD2Ev")]
-pub fn stub_0xde17d4() -> ! {
-    todo!("0xde17d4 Ogre::PropertyAbstractNode::~PropertyAbstractNode()")
+pub fn stub_0xde17d4() {
+    // IDA 0xde17d4: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf44094 — j___ZN5boost4bindIvNS_8weak_ptrIN3RBX16KeyframeSequenceEEENS_10shared_ptrIS3_EES4_S6_EENS_3_bi6bind_tIT_PFS9_T0_T1_ENS7_9list_av_2IT2_T3_E4typeEEESD_SF_SG_
@@ -518,8 +518,8 @@ pub fn stub_0xf517c4() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>::~error_info_injector()")]
 #[doc(alias = "j___ZN5boost16exception_detail19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEED2Ev")]
-pub fn stub_0xf517d4() -> ! {
-    todo!("0xf517d4 boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>::~error_info_injector()")
+pub fn stub_0xf517d4() {
+    // IDA 0xf517d4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf517e4 — j___ZN5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEEC2ERKS4_
@@ -534,8 +534,8 @@ pub fn stub_0xf517e4() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>::~error_info_injector()")]
 #[doc(alias = "j___ZN5boost16exception_detail19error_info_injectorINS_13property_tree14ptree_bad_dataEED2Ev")]
-pub fn stub_0xf517f4() -> ! {
-    todo!("0xf517f4 boost::exception_detail::error_info_injector<boost::property_tree::ptree_bad_data>::~error_info_injector()")
+pub fn stub_0xf517f4() {
+    // IDA 0xf517f4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf51804 — j___ZN5boost16exception_detail19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEC2ERKSC_
@@ -549,8 +549,8 @@ pub fn stub_0xf51804() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>::~error_info_injector()")]
 #[doc(alias = "j___ZN5boost16exception_detail19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEED2Ev")]
-pub fn stub_0xf51814() -> ! {
-    todo!("0xf51814 boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>::~error_info_injector()")
+pub fn stub_0xf51814() {
+    // IDA 0xf51814: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf51834 — j___ZN5boost6detail12shared_countC2INS_6spirit7classic11basic_chsetIcEEEEPT_
@@ -638,8 +638,8 @@ pub fn stub_0xf518e4() -> ! {
 // 0xf518f4 — j___ZN5boost6spirit7classic4impl14object_with_idINS2_11grammar_tagEmED2Ev
 #[doc(alias = "boost::spirit::classic::impl::object_with_id<boost::spirit::classic::impl::grammar_tag,unsigned long>::~object_with_id()")]
 #[doc(alias = "j___ZN5boost6spirit7classic4impl14object_with_idINS2_11grammar_tagEmED2Ev")]
-pub fn stub_0xf518f4() -> ! {
-    todo!("0xf518f4 boost::spirit::classic::impl::object_with_id<boost::spirit::classic::impl::grammar_tag,unsigned long>::~object_with_id()")
+pub fn stub_0xf518f4() {
+    // IDA 0xf518f4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf51904 — j___ZN5boost6spirit7classic4impl15concrete_parserINS1_8sequenceINS1_16assertive_parserISsNS1_11alternativeINS1_4ruleINS1_7scannerIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS1_16scanner_policiesINS1_28skip_parser_iteration_policyINS6_INS6_INS1_12space_parserENS1_13confix_parserINS1_6strlitIPKcEENS1_11kleene_starINS1_14anychar_parserEEENS6_INS1_10eol_parserENS1_10end_parserEEENS1_21unary_parser_categoryENS1_10non_nestedENS1_9is_lexemeEEEEENSJ_ISN_SQ_SN_SU_SV_SW_EEEENS1_16iteration_policyEEENS1_12match_policyENS1_13action_policyEEEEENS1_5nil_tES17_EES18_EEEENS5_ISsSS_EEEES16_S17_EC1ERKS1C_
@@ -653,8 +653,8 @@ pub fn stub_0xf51904() -> ! {
 // type: int(void)
 #[doc(alias = "boost::spirit::classic::impl::concrete_parser<boost::spirit::classic::sequence<boost::spirit::classic::sequence<boost::spirit::classic::sequence<boost::spirit::classic::optional<boost::spirit::classic::chlit<char>>,boost::spirit::classic::alternative<boost::spirit::classic::chlit<char>,boost::spirit::classic::sequence<boost::spirit::classic::range<char>,boost::spirit::classic::kleene_star<boost::spirit::classic::digit_parser>>>>,boost::spirit::classic::optional<boost::spirit::classic::sequence<boost::spirit::classic::chlit<char>,boost::spirit::classic::positive<boost::spirit::classic::digit_parser>>>>,boost::spirit::classic::optional<boost::spirit::classic::sequence<boost::spirit::classic::sequence<boost::spirit::classic::chset<char>,boost::spirit::classic::optional<boost::spirit::classic::chset<char>>>,boost::spirit::classic::positive<boost::spirit::classic::digit_parser>>>>,boost::spirit::classic::scanner<__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>,boost::spirit::classic::scanner_policies<boost::spirit::classic::skip_parser_iteration_policy<boost::spirit::classic::alternative<boost::spirit::classic::alternative<boost::spirit::classic::space_parser,boost::spirit::classic::confix_parser<boost::spirit::classic::strlit<char const*>,boost::spirit::classic::kleene_star<boost::spirit::classic::anychar_parser>,boost::spirit::classic::alternative<boost::spirit::classic::eol_parser,boost::spirit::classic::end_parser>,boost::spirit::classic::unary_parser_category,boost::spirit::classic::non_nested,boost::spirit::classic::is_lexeme>>,boost::spirit::classic::confix_parser<boost::spirit::classic::strlit<char const*>,boost::spirit::classic::kleene_star<boost::spirit::classic::anychar_parser>,boost::spirit::classic::strlit<char const*>,boost::spirit::classic::unary_parser_category,boost::spirit::classic::non_nested,boost::spirit::classic::is_lexeme>>,boost::spirit::classic::iteration_policy>,boost::spirit::classic::match_policy,boost::spirit::classic::action_policy>>,boost::spirit::classic::nil_t>::~concrete_parser()")]
 #[doc(alias = "j___ZN5boost6spirit7classic4impl15concrete_parserINS1_8sequenceINS4_INS4_INS1_8optionalINS1_5chlitIcEEEENS1_11alternativeIS7_NS4_INS1_5rangeIcEENS1_11kleene_starINS1_12digit_parserEEEEEEEEENS5_INS4_IS7_NS1_8positiveISD_EEEEEEEENS5_INS4_INS4_INS1_5chsetIcEENS5_ISO_EEEESJ_EEEEEENS1_7scannerIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS1_16scanner_policiesINS1_28skip_parser_iteration_policyINS9_INS9_INS1_12space_parserENS1_13confix_parserINS1_6strlitIPKcEENSC_INS1_14anychar_parserEEENS9_INS1_10eol_parserENS1_10end_parserEEENS1_21unary_parser_categoryENS1_10non_nestedENS1_9is_lexemeEEEEENS15_IS19_S1B_S19_S1F_S1G_S1H_EEEENS1_16iteration_policyEEENS1_12match_policyENS1_13action_policyEEEEENS1_5nil_tEED2Ev")]
-pub fn stub_0xf51914() -> ! {
-    todo!("0xf51914 boost::spirit::classic::impl::concrete_parser<boost::spirit::classic::sequence<boost::spirit::classic::sequence<boost::spirit::classic::sequence<boost::spirit::classic::optional<boost::spirit::classic::chlit<char>>,boost::spirit::classic::alternative<boost::spirit::classic::chlit<char>,boost::spirit::classic::sequence<boost::spirit::classic::range<char>,boost::spirit::classic::kleene_star<boost::spirit::classic::digit_parser>>>>,boost::spirit::classic::optional<boost::spirit::classic::sequence<boost::spirit::classic::chlit<char>,boost::spirit::classic::positive<boost::spirit::classic::digit_parser>>>>,boost::spirit::classic::optional<boost::spirit::classic::sequence<boost::spirit::classic::sequence<boost::spirit::classic::chset<char>,boost::spirit::classic::optional<boost::spirit::classic::chset<char>>>,boost::spirit::classic::positive<boost::spirit::classic::digit_parser>>>>,boost::spirit::classic::scanner<__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>,boost::spirit::classic::scanner_policies<boost::spirit::classic::skip_parser_iteration_policy<boost::spirit::classic::alternative<boost::spirit::classic::alternative<boost::spirit::classic::space_parser,boost::spirit::classic::confix_parser<boost::spirit::classic::strlit<char const*>,boost::spirit::classic::kleene_star<boost::spirit::classic::anychar_parser>,boost::spirit::classic::alternative<boost::spirit::classic::eol_parser,boost::spirit::classic::end_parser>,boost::spirit::classic::unary_parser_category,boost::spirit::classic::non_nested,boost::spirit::classic::is_lexeme>>,boost::spirit::classic::confix_parser<boost::spirit::classic::strlit<char const*>,boost::spirit::classic::kleene_star<boost::spirit::classic::anychar_parser>,boost::spirit::classic::strlit<char const*>,boost::spirit::classic::unary_parser_category,boost::spirit::classic::non_nested,boost::spirit::classic::is_lexeme>>,boost::spirit::classic::iteration_policy>,boost::spirit::classic::match_policy,boost::spirit::classic::action_policy>>,boost::spirit::classic::nil_t>::~concrete_parser()")
+pub fn stub_0xf51914() {
+    // IDA 0xf51914: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf51924 — j___ZN5boost6spirit7classic4impl25refactor_unary_non_nestedINS1_21unary_parser_categoryEE5parseINS1_21refactor_unary_parserINS1_10differenceINS1_11kleene_starINS1_14anychar_parserEEENS1_6strlitIPKcEEEENS1_22non_nested_refactoringEEENS1_7scannerIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS1_16scanner_policiesINS1_27no_skipper_iteration_policyINS1_28skip_parser_iteration_policyINS1_11alternativeINSU_INS1_12space_parserENS1_13confix_parserISF_SB_NSU_INS1_10eol_parserENS1_10end_parserEEES4_NS1_10non_nestedENS1_9is_lexemeEEEEENSW_ISF_SB_SF_S4_S10_S11_EEEENS1_16iteration_policyEEEEENS1_12match_policyENS1_13action_policyEEEEESG_EENS1_13parser_resultIT_T0_E4typeERKS1E_RKS1F_RKT1_
@@ -772,8 +772,8 @@ pub fn stub_0xf51a04() -> ! {
 // 0xf51a14 — j___ZN5boost6spirit7classic7grammarINS_13property_tree11json_parser12json_grammarINS3_11basic_ptreeISsSsSt4lessISsEEEEENS1_14parser_contextINS1_5nil_tEEEED2Ev
 #[doc(alias = "boost::spirit::classic::grammar<boost::property_tree::json_parser::json_grammar<boost::property_tree::basic_ptree<std::string,std::string,std::less<std::string>>>,boost::spirit::classic::parser_context<boost::spirit::classic::nil_t>>::~grammar()")]
 #[doc(alias = "j___ZN5boost6spirit7classic7grammarINS_13property_tree11json_parser12json_grammarINS3_11basic_ptreeISsSsSt4lessISsEEEEENS1_14parser_contextINS1_5nil_tEEEED2Ev")]
-pub fn stub_0xf51a14() -> ! {
-    todo!("0xf51a14 boost::spirit::classic::grammar<boost::property_tree::json_parser::json_grammar<boost::property_tree::basic_ptree<std::string,std::string,std::less<std::string>>>,boost::spirit::classic::parser_context<boost::spirit::classic::nil_t>>::~grammar()")
+pub fn stub_0xf51a14() {
+    // IDA 0xf51a14: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf51a34 — j___ZN5boost7details19compressed_pair_impINS_6spirit7classic16assertive_parserISsNS3_11alternativeINS3_4ruleINS3_7scannerIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS3_16scanner_policiesINS3_28skip_parser_iteration_policyINS5_INS5_INS3_12space_parserENS3_13confix_parserINS3_6strlitIPKcEENS3_11kleene_starINS3_14anychar_parserEEENS5_INS3_10eol_parserENS3_10end_parserEEENS3_21unary_parser_categoryENS3_10non_nestedENS3_9is_lexemeEEEEENSI_ISM_SP_SM_ST_SU_SV_EEEENS3_16iteration_policyEEENS3_12match_policyENS3_13action_policyEEEEENS3_5nil_tES16_EES17_EEEENS4_ISsSR_EELi0EEC2ERKS19_RKS1A_

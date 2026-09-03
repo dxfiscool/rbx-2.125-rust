@@ -256,16 +256,16 @@ pub fn stub_0x23344c() -> ! {
 // type: void __fastcall(OIS::MultiTouchEvent *__hidden this)
 #[doc(alias = "OIS::MultiTouchEvent::~MultiTouchEvent()")]
 #[doc(alias = "__ZN3OIS15MultiTouchEventD0Ev")]
-pub fn stub_0x233664() -> ! {
-    todo!("0x233664 OIS::MultiTouchEvent::~MultiTouchEvent()")
+pub fn stub_0x233664() {
+    // IDA 0x233664: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x233688 — __ZN3OIS15MultiTouchEventD1Ev
 // type: void __fastcall(OIS::MultiTouchEvent *__hidden this)
 #[doc(alias = "OIS::MultiTouchEvent::~MultiTouchEvent()")]
 #[doc(alias = "__ZN3OIS15MultiTouchEventD1Ev")]
-pub fn stub_0x233688() -> ! {
-    todo!("0x233688 OIS::MultiTouchEvent::~MultiTouchEvent()")
+pub fn stub_0x233688() {
+    // IDA 0x233688: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2336a0 — __ZN9__gnu_cxx13new_allocatorIN3OIS15MultiTouchStateEE8allocateEmPKv
@@ -536,24 +536,24 @@ pub fn stub_0x2358f0() -> ! {
 // type: void __fastcall(boost::detail::thread_data_base *__hidden this)
 #[doc(alias = "boost::detail::thread_data_base::~thread_data_base()")]
 #[doc(alias = "__ZN5boost6detail16thread_data_baseD0Ev")]
-pub fn stub_0x2358fc() -> ! {
-    todo!("0x2358fc boost::detail::thread_data_base::~thread_data_base()")
+pub fn stub_0x2358fc() {
+    // IDA 0x2358fc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x235910 — __ZN5boost6detail16thread_data_baseD1Ev
 // type: void __fastcall(boost::detail::thread_data_base *__hidden this)
 #[doc(alias = "boost::detail::thread_data_base::~thread_data_base()")]
 #[doc(alias = "__ZN5boost6detail16thread_data_baseD1Ev")]
-pub fn stub_0x235910() -> ! {
-    todo!("0x235910 boost::detail::thread_data_base::~thread_data_base()")
+pub fn stub_0x235910() {
+    // IDA 0x235910: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x23591c — __ZN5boost6detail16thread_data_baseD2Ev
 // type: void __fastcall(boost::detail::thread_data_base *__hidden this)
 #[doc(alias = "boost::detail::thread_data_base::~thread_data_base()")]
 #[doc(alias = "__ZN5boost6detail16thread_data_baseD2Ev")]
-pub fn stub_0x23591c() -> ! {
-    todo!("0x23591c boost::detail::thread_data_base::~thread_data_base()")
+pub fn stub_0x23591c() {
+    // IDA 0x23591c: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x235d7c — __ZN5boost6detail23get_current_thread_dataEv
@@ -647,8 +647,8 @@ pub fn stub_0x236b14() -> ! {
 // type: void __fastcall(boost::this_thread::disable_interruption *this, int, int, int)
 #[doc(alias = "boost::this_thread::disable_interruption::~disable_interruption()")]
 #[doc(alias = "__ZN5boost11this_thread20disable_interruptionD1Ev")]
-pub fn stub_0x236c14() -> ! {
-    todo!("0x236c14 boost::this_thread::disable_interruption::~disable_interruption()")
+pub fn stub_0x236c14() {
+    // IDA 0x236c14: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x236d04 — __ZN5boost12_GLOBAL__N_131get_or_make_current_thread_dataEv
@@ -687,16 +687,16 @@ pub fn stub_0x237130() -> ! {
 // type: void __fastcall(boost::_anonymous_namespace_::externally_launched_thread *__hidden this)
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")]
 #[doc(alias = "__ZN5boost12_GLOBAL__N_126externally_launched_threadD1Ev")]
-pub fn stub_0x237348() -> ! {
-    todo!("0x237348 boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")
+pub fn stub_0x237348() {
+    // IDA 0x237348: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x237354 — __ZN5boost12_GLOBAL__N_126externally_launched_threadD0Ev
 // type: void __fastcall(boost::_anonymous_namespace_::externally_launched_thread *__hidden this)
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")]
 #[doc(alias = "__ZN5boost12_GLOBAL__N_126externally_launched_threadD0Ev")]
-pub fn stub_0x237354() -> ! {
-    todo!("0x237354 boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")
+pub fn stub_0x237354() {
+    // IDA 0x237354: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x237368 — __ZN5boost12_GLOBAL__N_126externally_launched_thread3runEv

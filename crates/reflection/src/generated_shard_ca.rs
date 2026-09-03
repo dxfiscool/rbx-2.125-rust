@@ -16,22 +16,22 @@ pub fn stub_9100() -> ! {
 // 0xbd44 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED1Ev")]
-pub fn stub_bd44() -> ! {
-    todo!("0xbd44 RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")
+pub fn stub_bd44() {
+    // IDA 0xbd44: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xbd48 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED0Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED0Ev")]
-pub fn stub_bd48() -> ! {
-    todo!("0xbd48 RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")
+pub fn stub_bd48() {
+    // IDA 0xbd48: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xe1b0 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED2Ev")]
-pub fn stub_e1b0() -> ! {
-    todo!("0xe1b0 RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")
+pub fn stub_e1b0() {
+    // IDA 0xe1b0: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2638e8 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE14initStaticDataEv
@@ -128,8 +128,8 @@ pub fn stub_263db0() -> ! {
 // 0x263ddc — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18FunctionDescriptorEE10CollectionD1Ev
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::FunctionDescriptor>::Collection::~Collection()")]
 #[doc(alias = "__ZN3RBX10Reflection25MemberDescriptorContainerINS0_18FunctionDescriptorEE10CollectionD1Ev")]
-pub fn stub_263ddc() -> ! {
-    todo!("0x263ddc RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::FunctionDescriptor>::Collection::~Collection()")
+pub fn stub_263ddc() {
+    // IDA 0x263ddc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x263df0 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18FunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14delete_bucketsEv
@@ -261,8 +261,8 @@ pub fn stub_2645c8() -> ! {
 // 0x2645f4 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18PropertyDescriptorEE10CollectionD1Ev
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>::Collection::~Collection()")]
 #[doc(alias = "__ZN3RBX10Reflection25MemberDescriptorContainerINS0_18PropertyDescriptorEE10CollectionD1Ev")]
-pub fn stub_2645f4() -> ! {
-    todo!("0x2645f4 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>::Collection::~Collection()")
+pub fn stub_2645f4() {
+    // IDA 0x2645f4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x264608 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14delete_bucketsEv
@@ -443,22 +443,22 @@ pub fn stub_26629c() -> ! {
 // 0x26633c — __ZNSt3mapIPKN3RBX4NameEPKNS0_10Reflection14EnumDescriptorESt4lessIS3_ESaISt4pairIKS3_S7_EEED1Ev
 #[doc(alias = "std::map<RBX::Name const*,RBX::Reflection::EnumDescriptor const*,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*>>>::~map()")]
 #[doc(alias = "__ZNSt3mapIPKN3RBX4NameEPKNS0_10Reflection14EnumDescriptorESt4lessIS3_ESaISt4pairIKS3_S7_EEED1Ev")]
-pub fn stub_26633c() -> ! {
-    todo!("0x26633c std::map<RBX::Name const*,RBX::Reflection::EnumDescriptor const*,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Reflection::EnumDescriptor const*>>>::~map()")
+pub fn stub_26633c() {
+    // IDA 0x26633c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x26634c — __ZN5boost9unordered13unordered_mapIPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorENS7_8TypeHashENS7_9TypeEqualESaISt4pairIKS4_S9_EEED1Ev
 #[doc(alias = "boost::unordered::unordered_map<std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual,std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>>::~unordered_map()")]
 #[doc(alias = "__ZN5boost9unordered13unordered_mapIPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorENS7_8TypeHashENS7_9TypeEqualESaISt4pairIKS4_S9_EEED1Ev")]
-pub fn stub_26634c() -> ! {
-    todo!("0x26634c boost::unordered::unordered_map<std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual,std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>>::~unordered_map()")
+pub fn stub_26634c() {
+    // IDA 0x26634c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x26635c — __ZNSt6vectorIPKN3RBX10Reflection14EnumDescriptorESaIS4_EED1Ev
 #[doc(alias = "std::vector<RBX::Reflection::EnumDescriptor const*,std::allocator<RBX::Reflection::EnumDescriptor const*>>::~vector()")]
 #[doc(alias = "__ZNSt6vectorIPKN3RBX10Reflection14EnumDescriptorESaIS4_EED1Ev")]
-pub fn stub_26635c() -> ! {
-    todo!("0x26635c std::vector<RBX::Reflection::EnumDescriptor const*,std::allocator<RBX::Reflection::EnumDescriptor const*>>::~vector()")
+pub fn stub_26635c() {
+    // IDA 0x26635c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x266370 — __ZN3RBX10Reflection4TypeC2EPKcS3_RKSt9type_infobb

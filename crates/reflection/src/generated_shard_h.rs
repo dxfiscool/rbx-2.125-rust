@@ -19,8 +19,8 @@ pub fn stub_0x674910() -> ! {
 
 // 0x674a1c — __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEbED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,bool>::~PropDescriptor()")]
-pub fn stub_0x674a1c() -> ! {
-    todo!("0x674a1c RBX::Reflection::PropDescriptor<RBX::GuiTextButton,bool>::~PropDescriptor()")
+pub fn stub_0x674a1c() {
+    // IDA 0x674a1c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x674a48 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEbE7GetImplIMS2_KFbvEE10isReadOnlyEv
@@ -55,8 +55,8 @@ pub fn stub_0x674b94() -> ! {
 
 // 0x674ca0 — __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D7Vector2EED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,G3D::Vector2>::~PropDescriptor()")]
-pub fn stub_0x674ca0() -> ! {
-    todo!("0x674ca0 RBX::Reflection::PropDescriptor<RBX::GuiTextButton,G3D::Vector2>::~PropDescriptor()")
+pub fn stub_0x674ca0() {
+    // IDA 0x674ca0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x674ccc — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
@@ -91,8 +91,8 @@ pub fn stub_0x674e1c() -> ! {
 
 // 0x674fd0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::~EnumPropDescriptor()")]
-pub fn stub_0x674fd0() -> ! {
-    todo!("0x674fd0 RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::YAlignment>::~EnumPropDescriptor()")
+pub fn stub_0x674fd0() {
+    // IDA 0x674fd0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x674ffc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10YAlignmentEE10isReadOnlyEv
@@ -235,8 +235,8 @@ pub fn stub_0x675630() -> ! {
 
 // 0x6757e4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::XAlignment>::~EnumPropDescriptor()")]
-pub fn stub_0x6757e4() -> ! {
-    todo!("0x6757e4 RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::XAlignment>::~EnumPropDescriptor()")
+pub fn stub_0x6757e4() {
+    // IDA 0x6757e4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x675810 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService10XAlignmentEE10isReadOnlyEv
@@ -409,8 +409,8 @@ pub fn stub_0x675fb8() -> ! {
 
 // 0x6760cc — __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEfED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,float>::~PropDescriptor()")]
-pub fn stub_0x6760cc() -> ! {
-    todo!("0x6760cc RBX::Reflection::PropDescriptor<RBX::GuiTextButton,float>::~PropDescriptor()")
+pub fn stub_0x6760cc() {
+    // IDA 0x6760cc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6760f8 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE10isReadOnlyEv
@@ -445,8 +445,8 @@ pub fn stub_0x676150() -> ! {
 
 // 0x676264 — __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D6Color3EED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,G3D::Color3>::~PropDescriptor()")]
-pub fn stub_0x676264() -> ! {
-    todo!("0x676264 RBX::Reflection::PropDescriptor<RBX::GuiTextButton,G3D::Color3>::~PropDescriptor()")
+pub fn stub_0x676264() {
+    // IDA 0x676264: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x676290 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -481,8 +481,8 @@ pub fn stub_0x67630c() -> ! {
 
 // 0x676420 — __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::BrickColor>::~PropDescriptor()")]
-pub fn stub_0x676420() -> ! {
-    todo!("0x676420 RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::BrickColor>::~PropDescriptor()")
+pub fn stub_0x676420() {
+    // IDA 0x676420: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x67644c — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE10isReadOnlyEv
@@ -517,8 +517,8 @@ pub fn stub_0x6764b0() -> ! {
 
 // 0x676664 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::~EnumPropDescriptor()")]
-pub fn stub_0x676664() -> ! {
-    todo!("0x676664 RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::~EnumPropDescriptor()")
+pub fn stub_0x676664() {
+    // IDA 0x676664: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x676690 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10isReadOnlyEv
@@ -661,8 +661,8 @@ pub fn stub_0x676cc4() -> ! {
 
 // 0x676e78 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::~EnumPropDescriptor()")]
-pub fn stub_0x676e78() -> ! {
-    todo!("0x676e78 RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::~EnumPropDescriptor()")
+pub fn stub_0x676e78() {
+    // IDA 0x676e78: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x676ea4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10isReadOnlyEv

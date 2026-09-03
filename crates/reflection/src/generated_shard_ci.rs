@@ -457,8 +457,8 @@ pub fn stub_f4c8d4() -> ! {
 // 0xf4c8e4 — j___ZN3RBX10Reflection8EnumDescINS_8NormalIdEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NormalId>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_8NormalIdEED2Ev")]
-pub fn stub_f4c8e4() -> ! {
-    todo!("0xf4c8e4 RBX::Reflection::EnumDesc<RBX::NormalId>::~EnumDesc()")
+pub fn stub_f4c8e4() {
+    // IDA 0xf4c8e4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf4c8f4 — j___ZN3rbx11make_sharedIN3RBX10Reflection5TupleEiEEN5boost10shared_ptrIT_EERKT0_

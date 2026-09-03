@@ -226,15 +226,15 @@ pub fn stub_0x2811cc() -> ! {
 // 0x281354 — __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectED1Ev")]
-pub fn stub_0x281354() -> ! {
-    todo!("0x281354 boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::~sp_counted_impl_p()")
+pub fn stub_0x281354() {
+    // IDA 0x281354: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x281358 — __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectED0Ev")]
-pub fn stub_0x281358() -> ! {
-    todo!("0x281358 boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::~sp_counted_impl_p()")
+pub fn stub_0x281358() {
+    // IDA 0x281358: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x28135c — __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectE7disposeEv
@@ -516,15 +516,15 @@ pub fn stub_0x285c34() -> ! {
 // 0x285d3c — __ZN3RBX12LuaAllocatorD1Ev
 #[doc(alias = "RBX::LuaAllocator::~LuaAllocator()")]
 #[doc(alias = "__ZN3RBX12LuaAllocatorD1Ev")]
-pub fn stub_0x285d3c() -> ! {
-    todo!("0x285d3c RBX::LuaAllocator::~LuaAllocator()")
+pub fn stub_0x285d3c() {
+    // IDA 0x285d3c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x285d40 — __ZN3RBX12LuaAllocatorD2Ev
 #[doc(alias = "RBX::LuaAllocator::~LuaAllocator()")]
 #[doc(alias = "__ZN3RBX12LuaAllocatorD2Ev")]
-pub fn stub_0x285d40() -> ! {
-    todo!("0x285d40 RBX::LuaAllocator::~LuaAllocator()")
+pub fn stub_0x285d40() {
+    // IDA 0x285d40: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x285da0 — __ZN3RBX12LuaAllocator12clearHeapMaxEv
@@ -620,15 +620,15 @@ pub fn stub_0x28652c() -> ! {
 // 0x28679c — __ZN3RBX11LuaSettingsD1Ev
 #[doc(alias = "RBX::LuaSettings::~LuaSettings()")]
 #[doc(alias = "__ZN3RBX11LuaSettingsD1Ev")]
-pub fn stub_0x28679c() -> ! {
-    todo!("0x28679c RBX::LuaSettings::~LuaSettings()")
+pub fn stub_0x28679c() {
+    // IDA 0x28679c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2867dc — __ZN3RBX11LuaSettingsD0Ev
 #[doc(alias = "RBX::LuaSettings::~LuaSettings()")]
 #[doc(alias = "__ZN3RBX11LuaSettingsD0Ev")]
-pub fn stub_0x2867dc() -> ! {
-    todo!("0x2867dc RBX::LuaSettings::~LuaSettings()")
+pub fn stub_0x2867dc() {
+    // IDA 0x2867dc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2868bc — __ZNK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE12getClassNameEv
@@ -680,14 +680,14 @@ pub fn stub_0x286b24() -> ! {
 
 // 0x286b98 — __ZN3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED1Ev
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED1Ev")]
-pub fn stub_0x286b98() -> ! {
-    todo!("0x286b98 __ZN3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED1Ev")
+pub fn stub_0x286b98() {
+    // IDA 0x286b98: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x286bd8 — __ZN3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED0Ev
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED0Ev")]
-pub fn stub_0x286bd8() -> ! {
-    todo!("0x286bd8 __ZN3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED0Ev")
+pub fn stub_0x286bd8() {
+    // IDA 0x286bd8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x286cb8 — __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED1Ev

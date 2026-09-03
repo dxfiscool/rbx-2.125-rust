@@ -61,16 +61,16 @@ pub fn stub_2c8968() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::InvocationMeter<2>>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX15InvocationMeterILi2EEEED1Ev")]
-pub fn stub_2c8a54() -> ! {
-    todo!("0x2c8a54 boost::detail::sp_counted_impl_p<RBX::InvocationMeter<2>>::~sp_counted_impl_p()")
+pub fn stub_2c8a54() {
+    // IDA 0x2c8a54: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c8a58 — __ZN5boost6detail17sp_counted_impl_pIN3RBX15InvocationMeterILi2EEEED0Ev
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::InvocationMeter<2>>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX15InvocationMeterILi2EEEED0Ev")]
-pub fn stub_2c8a58() -> ! {
-    todo!("0x2c8a58 boost::detail::sp_counted_impl_p<RBX::InvocationMeter<2>>::~sp_counted_impl_p()")
+pub fn stub_2c8a58() {
+    // IDA 0x2c8a58: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2c8a5c — __ZN5boost6detail17sp_counted_impl_pIN3RBX15InvocationMeterILi2EEEE7disposeEv
@@ -117,16 +117,16 @@ pub fn stub_2c8b44() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ActivityMeter<2>>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX13ActivityMeterILi2EEEED1Ev")]
-pub fn stub_2c8c30() -> ! {
-    todo!("0x2c8c30 boost::detail::sp_counted_impl_p<RBX::ActivityMeter<2>>::~sp_counted_impl_p()")
+pub fn stub_2c8c30() {
+    // IDA 0x2c8c30: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c8c34 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13ActivityMeterILi2EEEED0Ev
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ActivityMeter<2>>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX13ActivityMeterILi2EEEED0Ev")]
-pub fn stub_2c8c34() -> ! {
-    todo!("0x2c8c34 boost::detail::sp_counted_impl_p<RBX::ActivityMeter<2>>::~sp_counted_impl_p()")
+pub fn stub_2c8c34() {
+    // IDA 0x2c8c34: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2c8c38 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13ActivityMeterILi2EEEE7disposeEv
@@ -261,22 +261,22 @@ pub fn stub_2c9804() -> ! {
 // 0x2c99c4 — __ZN3RBX3Lua13WeakThreadRefD0Ev
 #[doc(alias = "RBX::Lua::WeakThreadRef::~WeakThreadRef()")]
 #[doc(alias = "__ZN3RBX3Lua13WeakThreadRefD0Ev")]
-pub fn stub_2c99c4() -> ! {
-    todo!("0x2c99c4 RBX::Lua::WeakThreadRef::~WeakThreadRef()")
+pub fn stub_2c99c4() {
+    // IDA 0x2c99c4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2c9a64 — __ZN3RBX3Lua13WeakThreadRefD1Ev
 #[doc(alias = "RBX::Lua::WeakThreadRef::~WeakThreadRef()")]
 #[doc(alias = "__ZN3RBX3Lua13WeakThreadRefD1Ev")]
-pub fn stub_2c9a64() -> ! {
-    todo!("0x2c9a64 RBX::Lua::WeakThreadRef::~WeakThreadRef()")
+pub fn stub_2c9a64() {
+    // IDA 0x2c9a64: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c9a68 — __ZN3RBX3Lua13WeakThreadRefD2Ev
 #[doc(alias = "RBX::Lua::WeakThreadRef::~WeakThreadRef()")]
 #[doc(alias = "__ZN3RBX3Lua13WeakThreadRefD2Ev")]
-pub fn stub_2c9a68() -> ! {
-    todo!("0x2c9a68 RBX::Lua::WeakThreadRef::~WeakThreadRef()")
+pub fn stub_2c9a68() {
+    // IDA 0x2c9a68: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c9b74 — __ZN3RBX3Lua13WeakThreadRef5resetEv
@@ -324,15 +324,15 @@ pub fn stub_2c9df8() -> ! {
 // 0x2c9ee8 — __ZN3RBX3Lua13WeakThreadRef4NodeD1Ev
 #[doc(alias = "RBX::Lua::WeakThreadRef::Node::~Node()")]
 #[doc(alias = "__ZN3RBX3Lua13WeakThreadRef4NodeD1Ev")]
-pub fn stub_2c9ee8() -> ! {
-    todo!("0x2c9ee8 RBX::Lua::WeakThreadRef::Node::~Node()")
+pub fn stub_2c9ee8() {
+    // IDA 0x2c9ee8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c9eec — __ZN3RBX3Lua13WeakThreadRef4NodeD2Ev
 #[doc(alias = "RBX::Lua::WeakThreadRef::Node::~Node()")]
 #[doc(alias = "__ZN3RBX3Lua13WeakThreadRef4NodeD2Ev")]
-pub fn stub_2c9eec() -> ! {
-    todo!("0x2c9eec RBX::Lua::WeakThreadRef::Node::~Node()")
+pub fn stub_2c9eec() {
+    // IDA 0x2c9eec: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c9f1c — __ZN3RBX3Lua13WeakThreadRef4Node6createEP9lua_State
@@ -410,22 +410,22 @@ pub fn stub_2ca908() -> ! {
 // 0x2cad6c — __ZN3RBX3Lua15WeakFunctionRefD0Ev
 #[doc(alias = "RBX::Lua::WeakFunctionRef::~WeakFunctionRef()")]
 #[doc(alias = "__ZN3RBX3Lua15WeakFunctionRefD0Ev")]
-pub fn stub_2cad6c() -> ! {
-    todo!("0x2cad6c RBX::Lua::WeakFunctionRef::~WeakFunctionRef()")
+pub fn stub_2cad6c() {
+    // IDA 0x2cad6c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2cae0c — __ZN3RBX3Lua15WeakFunctionRefD1Ev
 #[doc(alias = "RBX::Lua::WeakFunctionRef::~WeakFunctionRef()")]
 #[doc(alias = "__ZN3RBX3Lua15WeakFunctionRefD1Ev")]
-pub fn stub_2cae0c() -> ! {
-    todo!("0x2cae0c RBX::Lua::WeakFunctionRef::~WeakFunctionRef()")
+pub fn stub_2cae0c() {
+    // IDA 0x2cae0c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2cae10 — __ZN3RBX3Lua15WeakFunctionRefD2Ev
 #[doc(alias = "RBX::Lua::WeakFunctionRef::~WeakFunctionRef()")]
 #[doc(alias = "__ZN3RBX3Lua15WeakFunctionRefD2Ev")]
-pub fn stub_2cae10() -> ! {
-    todo!("0x2cae10 RBX::Lua::WeakFunctionRef::~WeakFunctionRef()")
+pub fn stub_2cae10() {
+    // IDA 0x2cae10: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2caf24 — __ZN3RBX3Lua15WeakFunctionRef9removeRefEv
@@ -459,15 +459,15 @@ pub fn stub_2cb0fc() -> ! {
 // 0x2cb2ec — __ZN3RBX3Lua6detail13LiveThreadRefD1Ev
 #[doc(alias = "RBX::Lua::detail::LiveThreadRef::~LiveThreadRef()")]
 #[doc(alias = "__ZN3RBX3Lua6detail13LiveThreadRefD1Ev")]
-pub fn stub_2cb2ec() -> ! {
-    todo!("0x2cb2ec RBX::Lua::detail::LiveThreadRef::~LiveThreadRef()")
+pub fn stub_2cb2ec() {
+    // IDA 0x2cb2ec: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2cb2f0 — __ZN3RBX3Lua6detail13LiveThreadRefD2Ev
 #[doc(alias = "RBX::Lua::detail::LiveThreadRef::~LiveThreadRef()")]
 #[doc(alias = "__ZN3RBX3Lua6detail13LiveThreadRefD2Ev")]
-pub fn stub_2cb2f0() -> ! {
-    todo!("0x2cb2f0 RBX::Lua::detail::LiveThreadRef::~LiveThreadRef()")
+pub fn stub_2cb2f0() {
+    // IDA 0x2cb2f0: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2cb3fc — __ZN3RBX3Lua15WeakFunctionRefaSERKS1_
@@ -745,7 +745,7 @@ pub fn stub_2ce9b0() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AdvLuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")]
-pub fn stub_2ceaa8() -> ! {
-    todo!("0x2ceaa8 boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_2ceaa8() {
+    // IDA 0x2ceaa8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 

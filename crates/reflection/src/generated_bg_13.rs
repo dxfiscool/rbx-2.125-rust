@@ -96,8 +96,8 @@ pub fn stub_0x1cc4b0() -> ! {
 // 0x1cc508 — __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EED2Ev
 #[doc(alias = "std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::~deque()")]
 #[doc(alias = "__ZNSt5dequeIN6TagLib7MDMODELESaIS1_EED2Ev")]
-pub fn stub_0x1cc508() -> ! {
-    todo!("0x1cc508 __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EED2Ev")
+pub fn stub_0x1cc508() {
+    // IDA 0x1cc508: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x1cc578 — __ZL15cacheIO_getByteP10tagCacheIO

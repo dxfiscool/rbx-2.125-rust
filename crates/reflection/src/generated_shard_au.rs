@@ -38,8 +38,8 @@ pub fn stub_9744e0() -> ! {
 // 0x9746ec — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_ED0Ev")]
-pub fn stub_9746ec() -> ! {
-    todo!("0x9746ec RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::~EventDesc()")
+pub fn stub_9746ec() {
+    // IDA 0x9746ec: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9747c8 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -83,8 +83,8 @@ pub fn stub_975238() -> ! {
 // was: RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::~EventDesc()
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Client::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_ED0Ev")]
-pub fn stub_975530() -> ! {
-    todo!("0x975530 RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Client::*>::~EventDesc()")
+pub fn stub_975530() {
+    // IDA 0x975530: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x97560c — __ZNK3RBX10Reflection13EventDescImplILi2ENS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E14connectGenericEPNS0_11EventSourceENS5_INS0_18GenericSlotWrapperEEE
@@ -145,8 +145,8 @@ pub fn stub_977bdc() -> ! {
 // 0x977e30 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFviELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Client,void ()(int),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFviELi1EED0Ev")]
-pub fn stub_977e30() -> ! {
-    todo!("0x977e30 RBX::Reflection::BoundFuncDesc<RBX::Network::Client,void ()(int),1>::~BoundFuncDesc()")
+pub fn stub_977e30() {
+    // IDA 0x977e30: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x977f2c — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFviELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -176,8 +176,8 @@ pub fn stub_978388() -> ! {
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Client,boost::shared_ptr<RBX::Instance> ()(int,std::string,int,int,int),5>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Client,rbx_core::SharedPtr<RBX::Instance> ()(int,std::string,int,int,int),5>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFN5boost10shared_ptrINS_8InstanceEEEiSsiiiELi5EED0Ev")]
-pub fn stub_978428() -> ! {
-    todo!("0x978428 RBX::Reflection::BoundFuncDesc<RBX::Network::Client,rbx_core::SharedPtr<RBX::Instance> ()(int,std::string,int,int,int),5>::~BoundFuncDesc()")
+pub fn stub_978428() {
+    // IDA 0x978428: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9784c8 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFN5boost10shared_ptrINS_8InstanceEEEiSsiiiELi5EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -236,8 +236,8 @@ pub fn stub_978b28() -> ! {
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Client,boost::shared_ptr<RBX::Instance> ()(int,std::string,int,int,int),5>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Client,rbx_core::SharedPtr<RBX::Instance> ()(int,std::string,int,int,int),5>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFN5boost10shared_ptrINS_8InstanceEEEiSsiiiELi5EED2Ev")]
-pub fn stub_97a028() -> ! {
-    todo!("0x97a028 RBX::Reflection::BoundFuncDesc<RBX::Network::Client,rbx_core::SharedPtr<RBX::Instance> ()(int,std::string,int,int,int),5>::~BoundFuncDesc()")
+pub fn stub_97a028() {
+    // IDA 0x97a028: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x97be30 — __ZN3RBX7Network16ClientReplicator19isLegalSendPropertyEPNS_8InstanceERKNS_10Reflection18PropertyDescriptorE
@@ -451,57 +451,57 @@ pub fn stub_9b3b54() -> ! {
 // 0x9b4084 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfED1Ev")]
-pub fn stub_9b4084() -> ! {
-    todo!("0x9b4084 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::~PropDescriptor()")
+pub fn stub_9b4084() {
+    // IDA 0x9b4084: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9b40c4 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEdED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEdED1Ev")]
-pub fn stub_9b40c4() -> ! {
-    todo!("0x9b40c4 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::~PropDescriptor()")
+pub fn stub_9b40c4() {
+    // IDA 0x9b40c4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9b4108 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsESsED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsESsED1Ev")]
-pub fn stub_9b4108() -> ! {
-    todo!("0x9b4108 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::~PropDescriptor()")
+pub fn stub_9b4108() {
+    // IDA 0x9b4108: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9b4134 — __ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEED1Ev")]
-pub fn stub_9b4134() -> ! {
-    todo!("0x9b4134 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::~EnumPropDescriptor()")
+pub fn stub_9b4134() {
+    // IDA 0x9b4134: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9b4160 — __ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_20PhysicsReceiveMethodEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsReceiveMethod>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_20PhysicsReceiveMethodEED1Ev")]
-pub fn stub_9b4160() -> ! {
-    todo!("0x9b4160 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsReceiveMethod>::~EnumPropDescriptor()")
+pub fn stub_9b4160() {
+    // IDA 0x9b4160: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9b418c — __ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityED1Ev")]
-pub fn stub_9b418c() -> ! {
-    todo!("0x9b418c RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::~EnumPropDescriptor()")
+pub fn stub_9b418c() {
+    // IDA 0x9b418c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9b41b8 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiED1Ev")]
-pub fn stub_9b41b8() -> ! {
-    todo!("0x9b41b8 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,int>::~PropDescriptor()")
+pub fn stub_9b41b8() {
+    // IDA 0x9b41b8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9b41f4 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbED1Ev")]
-pub fn stub_9b41f4() -> ! {
-    todo!("0x9b41f4 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,bool>::~PropDescriptor()")
+pub fn stub_9b41f4() {
+    // IDA 0x9b41f4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9b528c — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -514,8 +514,8 @@ pub fn stub_9b528c() -> ! {
 // 0x9b54b4 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbED0Ev")]
-pub fn stub_9b54b4() -> ! {
-    todo!("0x9b54b4 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,bool>::~PropDescriptor()")
+pub fn stub_9b54b4() {
+    // IDA 0x9b54b4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9b54dc — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
@@ -556,8 +556,8 @@ pub fn stub_9b5530() -> ! {
 // 0x9b5744 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfED0Ev")]
-pub fn stub_9b5744() -> ! {
-    todo!("0x9b5744 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::~PropDescriptor()")
+pub fn stub_9b5744() {
+    // IDA 0x9b5744: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9b576c — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE7GetImplIMS2_KFfvEE10isReadOnlyEv
@@ -598,8 +598,8 @@ pub fn stub_9b58b8() -> ! {
 // 0x9b5ae0 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiED0Ev")]
-pub fn stub_9b5ae0() -> ! {
-    todo!("0x9b5ae0 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,int>::~PropDescriptor()")
+pub fn stub_9b5ae0() {
+    // IDA 0x9b5ae0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9b5b08 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv
@@ -640,8 +640,8 @@ pub fn stub_9b5b5c() -> ! {
 // 0x9b5e5c — __ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityED0Ev")]
-pub fn stub_9b5e5c() -> ! {
-    todo!("0x9b5e5c RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::~EnumPropDescriptor()")
+pub fn stub_9b5e5c() {
+    // IDA 0x9b5e5c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9b5e84 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE10isReadOnlyEv

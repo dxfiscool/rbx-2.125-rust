@@ -499,8 +499,8 @@ pub fn stub_f59154() -> ! {
 // 0xf59164 — j___ZN3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::UserInputService::SwipeDirection>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEED2Ev")]
-pub fn stub_f59164() -> ! {
-    todo!("0xf59164 RBX::Reflection::EnumDesc<RBX::UserInputService::SwipeDirection>::~EnumDesc()")
+pub fn stub_f59164() {
+    // IDA 0xf59164: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf59184 — j___ZN3RBX10Reflection9EventDescINS_16UserInputServiceEFvN3G3D7Vector2EEN3rbx6signalIS5_EEMS2_S8_EC2ES9_PKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE

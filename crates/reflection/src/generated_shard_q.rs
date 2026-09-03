@@ -42,8 +42,8 @@ pub fn stub_0x6d83c8() -> ! {
 // 0x6d83ec — __ZN3RBX10Reflection7RefTypeIPNS_6CameraEED1Ev
 #[doc(alias = "RBX::Reflection::RefType<RBX::Camera *>::~RefType()")]
 #[doc(alias = "__ZN3RBX10Reflection7RefTypeIPNS_6CameraEED1Ev")]
-pub fn stub_0x6d83ec() -> ! {
-    todo!("0x6d83ec RBX::Reflection::RefType<RBX::Camera *>::~RefType()")
+pub fn stub_0x6d83ec() {
+    // IDA 0x6d83ec: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x6d83f0 — __ZN3RBX10Reflection4TypeC2IPNS_6CameraEEEPKcS6_PT_
@@ -56,8 +56,8 @@ pub fn stub_0x6d83f0() -> ! {
 // 0x6d849c — __ZN3RBX10Reflection7RefTypeIPNS_6CameraEED0Ev
 #[doc(alias = "RBX::Reflection::RefType<RBX::Camera *>::~RefType()")]
 #[doc(alias = "__ZN3RBX10Reflection7RefTypeIPNS_6CameraEED0Ev")]
-pub fn stub_0x6d849c() -> ! {
-    todo!("0x6d849c RBX::Reflection::RefType<RBX::Camera *>::~RefType()")
+pub fn stub_0x6d849c() {
+    // IDA 0x6d849c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6d84a4 — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -70,8 +70,8 @@ pub fn stub_0x6d84a4() -> ! {
 // 0x6d85a8 — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFvvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFvvELi0EED0Ev")]
-pub fn stub_0x6d85a8() -> ! {
-    todo!("0x6d85a8 RBX::Reflection::BoundFuncDesc<RBX::Workspace,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_0x6d85a8() {
+    // IDA 0x6d85a8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6d865c — __ZNK3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -98,8 +98,8 @@ pub fn stub_0x6d87f4() -> ! {
 // 0x6d8824 — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFvbELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,void ()(bool),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFvbELi1EED0Ev")]
-pub fn stub_0x6d8824() -> ! {
-    todo!("0x6d8824 RBX::Reflection::BoundFuncDesc<RBX::Workspace,void ()(bool),1>::~BoundFuncDesc()")
+pub fn stub_0x6d8824() {
+    // IDA 0x6d8824: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6d88f8 — __ZNK3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFvbELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -119,8 +119,8 @@ pub fn stub_0x6d8930() -> ! {
 // 0x6d89d4 — __ZN3RBX10Reflection17RefPropDescriptorINS_9WorkspaceENS_8InstanceEED0Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Instance>::~RefPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection17RefPropDescriptorINS_9WorkspaceENS_8InstanceEED0Ev")]
-pub fn stub_0x6d89d4() -> ! {
-    todo!("0x6d89d4 RBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Instance>::~RefPropDescriptor()")
+pub fn stub_0x6d89d4() {
+    // IDA 0x6d89d4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6d8a04 — __ZNK3RBX10Reflection17RefPropDescriptorINS_9WorkspaceENS_8InstanceEE10isReadOnlyEv
@@ -259,8 +259,8 @@ pub fn stub_0x6d9284() -> ! {
 // 0x6d9398 — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKNS0_5TupleEEENS_6RbxRayENS4_IKSt6vectorINS4_INS_8InstanceEEESaISB_EEEEbELi3EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(RBX::RbxRay,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>,bool),3>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKNS0_5TupleEEENS_6RbxRayENS4_IKSt6vectorINS4_INS_8InstanceEEESaISB_EEEEbELi3EED0Ev")]
-pub fn stub_0x6d9398() -> ! {
-    todo!("0x6d9398 RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<RBX::Reflection::Tuple const> ()(RBX::RbxRay,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>,bool),3>::~BoundFuncDesc()")
+pub fn stub_0x6d9398() {
+    // IDA 0x6d9398: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6d94d8 — __ZNK3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKNS0_5TupleEEENS_6RbxRayENS4_IKSt6vectorINS4_INS_8InstanceEEESaISB_EEEEbELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -315,8 +315,8 @@ pub fn stub_0x6d9ef8() -> ! {
 // 0x6d9f44 — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFbNS_7Region3EN5boost10shared_ptrIKSt6vectorINS5_INS_8InstanceEEESaIS8_EEEEELi2EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,bool ()(RBX::Region3,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),2>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFbNS_7Region3EN5boost10shared_ptrIKSt6vectorINS5_INS_8InstanceEEESaIS8_EEEEELi2EED0Ev")]
-pub fn stub_0x6d9f44() -> ! {
-    todo!("0x6d9f44 RBX::Reflection::BoundFuncDesc<RBX::Workspace,bool ()(RBX::Region3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),2>::~BoundFuncDesc()")
+pub fn stub_0x6d9f44() {
+    // IDA 0x6d9f44: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6da064 — __ZNK3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFbNS_7Region3EN5boost10shared_ptrIKSt6vectorINS5_INS_8InstanceEEESaIS8_EEEEELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -357,8 +357,8 @@ pub fn stub_0x6da73c() -> ! {
 // 0x6da7a4 — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEENS_7Region3ESB_iELi3EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(RBX::Region3,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>,int),3>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEENS_7Region3ESB_iELi3EED0Ev")]
-pub fn stub_0x6da7a4() -> ! {
-    todo!("0x6da7a4 RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::Region3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>,int),3>::~BoundFuncDesc()")
+pub fn stub_0x6da7a4() {
+    // IDA 0x6da7a4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6da8d0 — __ZNK3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEENS_7Region3ESB_iELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -392,8 +392,8 @@ pub fn stub_0x6dae38() -> ! {
 // 0x6daf4c — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKNS0_5TupleEEENS_6RbxRayENS4_INS_8InstanceEEEbELi3EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(RBX::RbxRay,rbx_core::SharedPtr<RBX::Instance>,bool),3>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKNS0_5TupleEEENS_6RbxRayENS4_INS_8InstanceEEEbELi3EED0Ev")]
-pub fn stub_0x6daf4c() -> ! {
-    todo!("0x6daf4c RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<RBX::Reflection::Tuple const> ()(RBX::RbxRay,boost::shared_ptr<RBX::Instance>,bool),3>::~BoundFuncDesc()")
+pub fn stub_0x6daf4c() {
+    // IDA 0x6daf4c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6db08c — __ZNK3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKNS0_5TupleEEENS_6RbxRayENS4_INS_8InstanceEEEbELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -427,8 +427,8 @@ pub fn stub_0x6db574() -> ! {
 // 0x6db5c0 — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFbNS_7Region3EN5boost10shared_ptrINS_8InstanceEEEELi2EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,bool ()(RBX::Region3,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFbNS_7Region3EN5boost10shared_ptrINS_8InstanceEEEELi2EED0Ev")]
-pub fn stub_0x6db5c0() -> ! {
-    todo!("0x6db5c0 RBX::Reflection::BoundFuncDesc<RBX::Workspace,bool ()(RBX::Region3,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()")
+pub fn stub_0x6db5c0() {
+    // IDA 0x6db5c0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6db6e0 — __ZNK3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFbNS_7Region3EN5boost10shared_ptrINS_8InstanceEEEELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -462,8 +462,8 @@ pub fn stub_0x6dbc08() -> ! {
 // 0x6dbc70 — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEENS_7Region3ES7_iELi3EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(RBX::Region3,rbx_core::SharedPtr<RBX::Instance>,int),3>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEENS_7Region3ES7_iELi3EED0Ev")]
-pub fn stub_0x6dbc70() -> ! {
-    todo!("0x6dbc70 RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::Region3,boost::shared_ptr<RBX::Instance>,int),3>::~BoundFuncDesc()")
+pub fn stub_0x6dbc70() {
+    // IDA 0x6dbc70: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6dbd9c — __ZNK3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEENS_7Region3ES7_iELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -497,8 +497,8 @@ pub fn stub_0x6dc1ac() -> ! {
 // 0x6dc1dc — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFvN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,void ()(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFvN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEELi1EED0Ev")]
-pub fn stub_0x6dc1dc() -> ! {
-    todo!("0x6dc1dc RBX::Reflection::BoundFuncDesc<RBX::Workspace,void ()(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),1>::~BoundFuncDesc()")
+pub fn stub_0x6dc1dc() {
+    // IDA 0x6dc1dc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6dc2e4 — __ZNK3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFvN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -539,8 +539,8 @@ pub fn stub_0x6dc7e8() -> ! {
 // 0x6dc818 — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEENS_9ContentIdEELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(RBX::ContentId),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEENS_9ContentIdEELi1EED0Ev")]
-pub fn stub_0x6dc818() -> ! {
-    todo!("0x6dc818 RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::ContentId),1>::~BoundFuncDesc()")
+pub fn stub_0x6dc818() {
+    // IDA 0x6dc818: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6dc8e4 — __ZNK3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEENS_9ContentIdEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -567,8 +567,8 @@ pub fn stub_0x6dcbac() -> ! {
 // 0x6dccc4 — __ZN3RBX10Reflection14PropDescriptorINS_9WorkspaceEbED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Workspace,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9WorkspaceEbED0Ev")]
-pub fn stub_0x6dccc4() -> ! {
-    todo!("0x6dccc4 RBX::Reflection::PropDescriptor<RBX::Workspace,bool>::~PropDescriptor()")
+pub fn stub_0x6dccc4() {
+    // IDA 0x6dccc4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6dccf4 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
@@ -609,8 +609,8 @@ pub fn stub_0x6dcd44() -> ! {
 // 0x6dce5c — __ZN3RBX10Reflection14PropDescriptorINS_9WorkspaceEdED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Workspace,double>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9WorkspaceEdED0Ev")]
-pub fn stub_0x6dce5c() -> ! {
-    todo!("0x6dce5c RBX::Reflection::PropDescriptor<RBX::Workspace,double>::~PropDescriptor()")
+pub fn stub_0x6dce5c() {
+    // IDA 0x6dce5c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6dce8c — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEdE10GetSetImplIMS2_KFdvEMS2_FvdEE10isReadOnlyEv

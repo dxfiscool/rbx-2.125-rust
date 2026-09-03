@@ -45,8 +45,8 @@ pub fn stub_f5d0d4() -> ! {
 // 0xf5d104 — j___ZN5boost10scoped_ptrINS_10shared_ptrIKN3RBX10Reflection5TupleEEEED1Ev
 #[doc(alias = "boost::scoped_ptr<rbx_core::SharedPtr<RBX::Reflection::Tuple const>>::~scoped_ptr()")]
 #[doc(alias = "j___ZN5boost10scoped_ptrINS_10shared_ptrIKN3RBX10Reflection5TupleEEEED1Ev")]
-pub fn stub_f5d104() -> ! {
-    todo!("0xf5d104 boost::scoped_ptr<boost::shared_ptr<RBX::Reflection::Tuple const>>::~scoped_ptr()")
+pub fn stub_f5d104() {
+    // IDA 0xf5d104: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5d134 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotEEaSEPSC_
@@ -283,8 +283,8 @@ pub fn stub_f5d374() -> ! {
 // 0xf5d384 — j___ZN5boost3_bi8storage4INS0_5valueIPN3RBX14RemoteFunctionEEENS2_INS_10shared_ptrINS3_8InstanceEEEEENS2_INS7_IKNS3_10Reflection5TupleEEEEENS2_INS_8functionIFvSE_EEEEEED2Ev
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<RBX::RemoteFunction *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>::~storage4()")]
 #[doc(alias = "j___ZN5boost3_bi8storage4INS0_5valueIPN3RBX14RemoteFunctionEEENS2_INS_10shared_ptrINS3_8InstanceEEEEENS2_INS7_IKNS3_10Reflection5TupleEEEEENS2_INS_8functionIFvSE_EEEEEED2Ev")]
-pub fn stub_f5d384() -> ! {
-    todo!("0xf5d384 boost::_bi::storage4<boost::_bi::value<RBX::RemoteFunction *>,boost::_bi::value<boost::shared_ptr<RBX::Instance>>,boost::_bi::value<boost::shared_ptr<RBX::Reflection::Tuple const>>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>::~storage4()")
+pub fn stub_f5d384() {
+    // IDA 0xf5d384: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5d394 — j___ZN5boost3_bi8storage5INS0_5valueIPN3RBX14RemoteFunctionEEENS2_INS_10shared_ptrINS3_8InstanceEEEEENS2_INS7_IKNS3_10Reflection5TupleEEEEENS2_INS_8functionIFvSE_EEEEENS2_INSG_IFvSsEEEEEEC2ES6_SA_SF_SJ_SM_

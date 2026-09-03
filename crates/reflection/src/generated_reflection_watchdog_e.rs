@@ -86,15 +86,15 @@ pub fn stub_0x53af5c() -> ! {
 // 0x53b058 — __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE13callable_slotIN5boost8functionIS4_EEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::UDim2)>::callable_slot<boost::function<void ()(RBX::UDim2)>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX5UDim2EEE13callable_slotIN5boost8functionIS4_EEED1Ev")]
-pub fn stub_0x53b058() -> ! {
-    todo!("0x53b058 rbx::signals::signal<void ()(RBX::UDim2)>::callable_slot<boost::function<void ()(RBX::UDim2)>>::~callable_slot()")
+pub fn stub_0x53b058() {
+    // IDA 0x53b058: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x53b168 — __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE13callable_slotIN5boost8functionIS4_EEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::UDim2)>::callable_slot<boost::function<void ()(RBX::UDim2)>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX5UDim2EEE13callable_slotIN5boost8functionIS4_EEED0Ev")]
-pub fn stub_0x53b168() -> ! {
-    todo!("0x53b168 rbx::signals::signal<void ()(RBX::UDim2)>::callable_slot<boost::function<void ()(RBX::UDim2)>>::~callable_slot()")
+pub fn stub_0x53b168() {
+    // IDA 0x53b168: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x53b298 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX5UDim2EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_
@@ -121,15 +121,15 @@ pub fn stub_0x53b2c8() -> ! {
 // 0x53b398 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX5UDim2EEE4slotEN5boost8functionIS5_EELi1ES5_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::UDim2)>::slot,boost::function<void ()(RBX::UDim2)>,1,void ()(RBX::UDim2)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN3RBX5UDim2EEE4slotEN5boost8functionIS5_EELi1ES5_ED1Ev")]
-pub fn stub_0x53b398() -> ! {
-    todo!("0x53b398 rbx::callable<rbx::signals::signal<void ()(RBX::UDim2)>::slot,boost::function<void ()(RBX::UDim2)>,1,void ()(RBX::UDim2)>::~callable()")
+pub fn stub_0x53b398() {
+    // IDA 0x53b398: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x53b4a8 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX5UDim2EEE4slotEN5boost8functionIS5_EELi1ES5_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::UDim2)>::slot,boost::function<void ()(RBX::UDim2)>,1,void ()(RBX::UDim2)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN3RBX5UDim2EEE4slotEN5boost8functionIS5_EELi1ES5_ED0Ev")]
-pub fn stub_0x53b4a8() -> ! {
-    todo!("0x53b4a8 rbx::callable<rbx::signals::signal<void ()(RBX::UDim2)>::slot,boost::function<void ()(RBX::UDim2)>,1,void ()(RBX::UDim2)>::~callable()")
+pub fn stub_0x53b4a8() {
+    // IDA 0x53b4a8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x53b5d8 — __ZN5boost9function1IvN3RBX5UDim2EE13assign_to_ownERKS3_
@@ -142,29 +142,29 @@ pub fn stub_0x53b5d8() -> ! {
 // 0x53fb5c — __ZN3RBX9GuiButtonD2Ev
 #[doc(alias = "RBX::GuiButton::~GuiButton()")]
 #[doc(alias = "__ZN3RBX9GuiButtonD2Ev")]
-pub fn stub_0x53fb5c() -> ! {
-    todo!("0x53fb5c RBX::GuiButton::~GuiButton()")
+pub fn stub_0x53fb5c() {
+    // IDA 0x53fb5c: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x53fea0 — __ZN3rbx13remote_signalIFvvEED2Ev
 #[doc(alias = "rbx::remote_signal<void ()(void)>::~remote_signal()")]
 #[doc(alias = "__ZN3rbx13remote_signalIFvvEED2Ev")]
-pub fn stub_0x53fea0() -> ! {
-    todo!("0x53fea0 rbx::remote_signal<void ()(void)>::~remote_signal()")
+pub fn stub_0x53fea0() {
+    // IDA 0x53fea0: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x53ffec — __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFvvEED2Ev
 #[doc(alias = "RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>::~EventReplicatorBase()")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFvvEED2Ev")]
-pub fn stub_0x53ffec() -> ! {
-    todo!("0x53ffec RBX::EventReplicatorBase<RBX::GuiButton,void ()(void)>::~EventReplicatorBase()")
+pub fn stub_0x53ffec() {
+    // IDA 0x53ffec: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x54011c — __ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEED2Ev
 #[doc(alias = "RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>::~EventReplicatorBase()")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_9GuiButtonEFviiEED2Ev")]
-pub fn stub_0x54011c() -> ! {
-    todo!("0x54011c RBX::EventReplicatorBase<RBX::GuiButton,void ()(int,int)>::~EventReplicatorBase()")
+pub fn stub_0x54011c() {
+    // IDA 0x54011c: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x54024c — __ZN5boost9function2IvPN3RBX9GuiObjectENS1_5UDim2EE5clearEv
@@ -359,15 +359,15 @@ pub fn stub_0x54678c() -> ! {
 // 0x546e6c — __ZN3RBX10GuiServiceD1Ev
 #[doc(alias = "RBX::GuiService::~GuiService()")]
 #[doc(alias = "__ZN3RBX10GuiServiceD1Ev")]
-pub fn stub_0x546e6c() -> ! {
-    todo!("0x546e6c RBX::GuiService::~GuiService()")
+pub fn stub_0x546e6c() {
+    // IDA 0x546e6c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x546e70 — __ZN3RBX10GuiServiceD0Ev
 #[doc(alias = "RBX::GuiService::~GuiService()")]
 #[doc(alias = "__ZN3RBX10GuiServiceD0Ev")]
-pub fn stub_0x546e70() -> ! {
-    todo!("0x546e70 RBX::GuiService::~GuiService()")
+pub fn stub_0x546e70() {
+    // IDA 0x546e70: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x546f38 — __ZThn32_N3RBX10GuiServiceD1Ev
@@ -401,8 +401,8 @@ pub fn stub_0x547014() {
 // 0x5470b8 — __ZN3RBX10GuiServiceD2Ev
 #[doc(alias = "RBX::GuiService::~GuiService()")]
 #[doc(alias = "__ZN3RBX10GuiServiceD2Ev")]
-pub fn stub_0x5470b8() -> ! {
-    todo!("0x5470b8 RBX::GuiService::~GuiService()")
+pub fn stub_0x5470b8() {
+    // IDA 0x5470b8: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x547484 — __ZNSt8_Rb_treeIN3RBX10GuiService10SpecialKeyES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E

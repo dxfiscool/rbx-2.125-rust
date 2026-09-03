@@ -12,8 +12,8 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // type: int __fastcall(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_ED1Ev")]
-pub fn stub_0x3219c() -> ! {
-    todo!("0x3219c rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::~callable()")
+pub fn stub_0x3219c() {
+    // IDA 0x3219c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x32270 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorSsENS3_5list3INS3_5valueIS6_EENSB_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE
@@ -85,8 +85,8 @@ pub fn stub_0x325fc() -> ! {
 // 0x326fc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX21TaskSchedulerSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX21TaskSchedulerSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_0x326fc() -> ! {
-    todo!("0x326fc boost::detail::sp_counted_impl_pd<RBX::TaskSchedulerSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x326fc() {
+    // IDA 0x326fc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x32700 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX21TaskSchedulerSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
@@ -279,16 +279,16 @@ pub fn stub_0x3353c() -> ! {
 // type: void __fastcall(Teleporter *__hidden this)
 #[doc(alias = "Teleporter::~Teleporter()")]
 #[doc(alias = "__ZN10TeleporterD1Ev")]
-pub fn stub_0x33548() -> ! {
-    todo!("0x33548 Teleporter::~Teleporter()")
+pub fn stub_0x33548() {
+    // IDA 0x33548: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3354c — __ZN10TeleporterD0Ev
 // type: void __fastcall(Teleporter *__hidden this)
 #[doc(alias = "Teleporter::~Teleporter()")]
 #[doc(alias = "__ZN10TeleporterD0Ev")]
-pub fn stub_0x3354c() -> ! {
-    todo!("0x3354c Teleporter::~Teleporter()")
+pub fn stub_0x3354c() {
+    // IDA 0x3354c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x33550 — __ZN10Teleporter10doTeleportERKSsS1_S1_
@@ -785,16 +785,16 @@ pub fn stub_0x39018() -> ! {
 // type: void __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::~RobloxView()")]
 #[doc(alias = "__ZN10RobloxViewD1Ev")]
-pub fn stub_0x39020() -> ! {
-    todo!("0x39020 RobloxView::~RobloxView()")
+pub fn stub_0x39020() {
+    // IDA 0x39020: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x39024 — __ZN10RobloxViewD2Ev
 // type: void __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::~RobloxView()")]
 #[doc(alias = "__ZN10RobloxViewD2Ev")]
-pub fn stub_0x39024() -> ! {
-    todo!("0x39024 RobloxView::~RobloxView()")
+pub fn stub_0x39024() {
+    // IDA 0x39024: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x39674 — __ZN10RobloxView11create_viewEN5boost10shared_ptrIN3RBX4GameEEEjjSsSsSs
@@ -817,80 +817,80 @@ pub fn stub_0x39920() -> ! {
 // type: void __cdecl(std::domain_error *__hidden this)
 #[doc(alias = "std::domain_error::~domain_error()")]
 #[doc(alias = "__ZNSt12domain_errorD0Ev")]
-pub fn stub_0x39be0() -> ! {
-    todo!("0x39be0 std::domain_error::~domain_error()")
+pub fn stub_0x39be0() {
+    // IDA 0x39be0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x39bf8 — __ZNSt12domain_errorD2Ev
 // type: void __cdecl(std::domain_error *__hidden this)
 #[doc(alias = "std::domain_error::~domain_error()")]
 #[doc(alias = "__ZNSt12domain_errorD2Ev")]
-pub fn stub_0x39bf8() -> ! {
-    todo!("0x39bf8 std::domain_error::~domain_error()")
+pub fn stub_0x39bf8() {
+    // IDA 0x39bf8: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x39c00 — __ZNSt16invalid_argumentD1Ev
 // type: void __cdecl(std::invalid_argument *__hidden this)
 #[doc(alias = "std::invalid_argument::~invalid_argument()")]
 #[doc(alias = "__ZNSt16invalid_argumentD1Ev")]
-pub fn stub_0x39c00() -> ! {
-    todo!("0x39c00 std::invalid_argument::~invalid_argument()")
+pub fn stub_0x39c00() {
+    // IDA 0x39c00: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x39c08 — __ZNSt12length_errorD0Ev
 // type: void __cdecl(std::length_error *__hidden this)
 #[doc(alias = "std::length_error::~length_error()")]
 #[doc(alias = "__ZNSt12length_errorD0Ev")]
-pub fn stub_0x39c08() -> ! {
-    todo!("0x39c08 std::length_error::~length_error()")
+pub fn stub_0x39c08() {
+    // IDA 0x39c08: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x39c20 — __ZNSt12out_of_rangeD1Ev
 // type: void __cdecl(std::out_of_range *__hidden this)
 #[doc(alias = "std::out_of_range::~out_of_range()")]
 #[doc(alias = "__ZNSt12out_of_rangeD1Ev")]
-pub fn stub_0x39c20() -> ! {
-    todo!("0x39c20 std::out_of_range::~out_of_range()")
+pub fn stub_0x39c20() {
+    // IDA 0x39c20: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x39c28 — __ZNSt11range_errorD0Ev
 // type: void __cdecl(std::range_error *__hidden this)
 #[doc(alias = "std::range_error::~range_error()")]
 #[doc(alias = "__ZNSt11range_errorD0Ev")]
-pub fn stub_0x39c28() -> ! {
-    todo!("0x39c28 std::range_error::~range_error()")
+pub fn stub_0x39c28() {
+    // IDA 0x39c28: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x39c40 — __ZNSt11range_errorD2Ev
 // type: void __cdecl(std::range_error *__hidden this)
 #[doc(alias = "std::range_error::~range_error()")]
 #[doc(alias = "__ZNSt11range_errorD2Ev")]
-pub fn stub_0x39c40() -> ! {
-    todo!("0x39c40 std::range_error::~range_error()")
+pub fn stub_0x39c40() {
+    // IDA 0x39c40: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x39c48 — __ZNSt14overflow_errorD1Ev
 // type: void __cdecl(std::overflow_error *__hidden this)
 #[doc(alias = "std::overflow_error::~overflow_error()")]
 #[doc(alias = "__ZNSt14overflow_errorD1Ev")]
-pub fn stub_0x39c48() -> ! {
-    todo!("0x39c48 std::overflow_error::~overflow_error()")
+pub fn stub_0x39c48() {
+    // IDA 0x39c48: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x39c50 — __ZNSt15underflow_errorD0Ev
 // type: void __cdecl(std::underflow_error *__hidden this)
 #[doc(alias = "std::underflow_error::~underflow_error()")]
 #[doc(alias = "__ZNSt15underflow_errorD0Ev")]
-pub fn stub_0x39c50() -> ! {
-    todo!("0x39c50 std::underflow_error::~underflow_error()")
+pub fn stub_0x39c50() {
+    // IDA 0x39c50: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x39c68 — __ZNSt15underflow_errorD2Ev
 // type: void __cdecl(std::underflow_error *__hidden this)
 #[doc(alias = "std::underflow_error::~underflow_error()")]
 #[doc(alias = "__ZNSt15underflow_errorD2Ev")]
-pub fn stub_0x39c68() -> ! {
-    todo!("0x39c68 std::underflow_error::~underflow_error()")
+pub fn stub_0x39c68() {
+    // IDA 0x39c68: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x39c6c — __ZN3RBX13TaskScheduler14removeBlockingEN5boost10shared_ptrINS0_3JobEEENS1_8functionIFvvEEE
@@ -949,8 +949,8 @@ pub fn stub_0x3a0d4() -> ! {
 // type: void __fastcall(QuitEventListener *__hidden this)
 #[doc(alias = "QuitEventListener::~QuitEventListener()")]
 #[doc(alias = "__ZN17QuitEventListenerD1Ev")]
-pub fn stub_0x3a1b8() -> ! {
-    todo!("0x3a1b8 QuitEventListener::~QuitEventListener()")
+pub fn stub_0x3a1b8() {
+    // IDA 0x3a1b8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3a1bc — __ZN5boost10shared_ptrIN3RBX4GameEEaSERKS3_
@@ -1000,14 +1000,14 @@ pub fn stub_0x3a660() -> ! {
 // type: void __fastcall(boost::exception_ptr *__hidden this)
 #[doc(alias = "boost::exception_ptr::~exception_ptr()")]
 #[doc(alias = "__ZN5boost13exception_ptrD1Ev")]
-pub fn stub_0x3a6f8() -> ! {
-    todo!("0x3a6f8 boost::exception_ptr::~exception_ptr()")
+pub fn stub_0x3a6f8() {
+    // IDA 0x3a6f8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3a790 — __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorD1Ev")]
-pub fn stub_0x3a790() -> ! {
-    todo!("0x3a790 __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorD1Ev")
+pub fn stub_0x3a790() {
+    // IDA 0x3a790: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3a798 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_6CameraEEEN5boost10shared_ptrIT_EEv
@@ -1028,8 +1028,8 @@ pub fn stub_0x3a850() -> ! {
 // 0x3aa10 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6CameraENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Camera *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX6CameraENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_0x3aa10() -> ! {
-    todo!("0x3aa10 boost::detail::sp_counted_impl_pd<RBX::Camera *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x3aa10() {
+    // IDA 0x3aa10: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3aa18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6CameraENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
@@ -1050,8 +1050,8 @@ pub fn stub_0x3aa30() -> ! {
 // 0x3aa90 — __ZNSt3mapIPKN3RBX4NameEPKNS0_8ICreatorESt4lessIS3_ESaISt4pairIKS3_S6_EEED1Ev
 #[doc(alias = "std::map<RBX::Name const*,RBX::ICreator const*,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::~map()")]
 #[doc(alias = "__ZNSt3mapIPKN3RBX4NameEPKNS0_8ICreatorESt4lessIS3_ESaISt4pairIKS3_S6_EEED1Ev")]
-pub fn stub_0x3aa90() -> ! {
-    todo!("0x3aa90 std::map<RBX::Name const*,RBX::ICreator const*,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ICreator const*>>>::~map()")
+pub fn stub_0x3aa90() {
+    // IDA 0x3aa90: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3aaa0 — __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorC2Ev

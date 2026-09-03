@@ -4,14 +4,14 @@
 
 // 0x77a5ac — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX9Scripting14ScriptDebuggerEEENS6_5list1INS6_5valueIPSC_EEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Scripting::ScriptDebugger>,boost::_bi::list1<boost::_bi::value<RBX::Scripting::ScriptDebugger*>>>>::~callable_slot()")]
-pub fn stub_77a5ac() -> ! {
-    todo!("0x77a5ac rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Scripting::ScriptDebugger>,boost::_bi::list1<boost::_bi::value<RBX::Scripting::ScriptDebugger*>>>>::~callable_slot()")
+pub fn stub_77a5ac() {
+    // IDA 0x77a5ac: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x77a5d8 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX9Scripting14ScriptDebuggerEEENS6_5list1INS6_5valueIPSC_EEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Scripting::ScriptDebugger>,boost::_bi::list1<boost::_bi::value<RBX::Scripting::ScriptDebugger*>>>>::~callable_slot()")]
-pub fn stub_77a5d8() -> ! {
-    todo!("0x77a5d8 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Scripting::ScriptDebugger>,boost::_bi::list1<boost::_bi::value<RBX::Scripting::ScriptDebugger*>>>>::~callable_slot()")
+pub fn stub_77a5d8() {
+    // IDA 0x77a5d8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x77a6b0 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9Scripting14ScriptDebuggerEEENS7_5list1INS7_5valueIPSD_EEEEEELi0ES3_E4callEv
@@ -34,14 +34,14 @@ pub fn stub_77a6c0() -> ! {
 
 // 0x77a6d8 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9Scripting14ScriptDebuggerEEENS7_5list1INS7_5valueIPSD_EEEEEELi0ES3_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Scripting::ScriptDebugger>,boost::_bi::list1<boost::_bi::value<RBX::Scripting::ScriptDebugger*>>>,0,void ()(void)>::~callable()")]
-pub fn stub_77a6d8() -> ! {
-    todo!("0x77a6d8 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Scripting::ScriptDebugger>,boost::_bi::list1<boost::_bi::value<RBX::Scripting::ScriptDebugger*>>>,0,void ()(void)>::~callable()")
+pub fn stub_77a6d8() {
+    // IDA 0x77a6d8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x77a704 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9Scripting14ScriptDebuggerEEENS7_5list1INS7_5valueIPSD_EEEEEELi0ES3_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Scripting::ScriptDebugger>,boost::_bi::list1<boost::_bi::value<RBX::Scripting::ScriptDebugger*>>>,0,void ()(void)>::~callable()")]
-pub fn stub_77a704() -> ! {
-    todo!("0x77a704 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Scripting::ScriptDebugger>,boost::_bi::list1<boost::_bi::value<RBX::Scripting::ScriptDebugger*>>>,0,void ()(void)>::~callable()")
+pub fn stub_77a704() {
+    // IDA 0x77a704: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x77a7dc — __ZN3rbx7signals6signalIFvP9lua_StateEE6insertEPNS5_4slotE
@@ -64,14 +64,14 @@ pub fn stub_77aa10() -> ! {
 
 // 0x77aa14 — __ZN3rbx7signals6signalIFvP9lua_StateEE13callable_slotIN5boost3_bi6bind_tIvNS7_4_mfi3mf1IvN3RBX9Scripting14ScriptDebuggerES3_EENS8_5list2INS8_5valueIPSE_EENS7_3argILi1EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(lua_State *)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Scripting::ScriptDebugger,lua_State *>,boost::_bi::list2<boost::_bi::value<RBX::Scripting::ScriptDebugger*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_77aa14() -> ! {
-    todo!("0x77aa14 rbx::signals::signal<void ()(lua_State *)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Scripting::ScriptDebugger,lua_State *>,boost::_bi::list2<boost::_bi::value<RBX::Scripting::ScriptDebugger*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_77aa14() {
+    // IDA 0x77aa14: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x77aa40 — __ZN3rbx7signals6signalIFvP9lua_StateEE13callable_slotIN5boost3_bi6bind_tIvNS7_4_mfi3mf1IvN3RBX9Scripting14ScriptDebuggerES3_EENS8_5list2INS8_5valueIPSE_EENS7_3argILi1EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(lua_State *)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Scripting::ScriptDebugger,lua_State *>,boost::_bi::list2<boost::_bi::value<RBX::Scripting::ScriptDebugger*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_77aa40() -> ! {
-    todo!("0x77aa40 rbx::signals::signal<void ()(lua_State *)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Scripting::ScriptDebugger,lua_State *>,boost::_bi::list2<boost::_bi::value<RBX::Scripting::ScriptDebugger*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_77aa40() {
+    // IDA 0x77aa40: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x77ab14 — __ZN3rbx7signals6signalIFvP9lua_StateEE4slot10disconnectEv
@@ -124,26 +124,26 @@ pub fn stub_77ad64() -> ! {
 
 // 0x77ae54 — __ZN3rbx7signals6signalIFvP9lua_StateEE4slotD1Ev
 #[doc(alias = "rbx::signals::signal<void ()(lua_State *)>::slot::~slot()")]
-pub fn stub_77ae54() -> ! {
-    todo!("0x77ae54 rbx::signals::signal<void ()(lua_State *)>::slot::~slot()")
+pub fn stub_77ae54() {
+    // IDA 0x77ae54: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x77ae80 — __ZN3rbx7signals6signalIFvP9lua_StateEE4slotD0Ev
 #[doc(alias = "rbx::signals::signal<void ()(lua_State *)>::slot::~slot()")]
-pub fn stub_77ae80() -> ! {
-    todo!("0x77ae80 rbx::signals::signal<void ()(lua_State *)>::slot::~slot()")
+pub fn stub_77ae80() {
+    // IDA 0x77ae80: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x77af54 — __ZN3rbx8callableINS_7signals6signalIFvP9lua_StateEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvN3RBX9Scripting14ScriptDebuggerES4_EENS9_5list2INS9_5valueIPSF_EENS8_3argILi1EEEEEEELi1ES5_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(lua_State *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Scripting::ScriptDebugger,lua_State *>,boost::_bi::list2<boost::_bi::value<RBX::Scripting::ScriptDebugger*>,boost::arg<1>>>,1,void ()(lua_State *)>::~callable()")]
-pub fn stub_77af54() -> ! {
-    todo!("0x77af54 rbx::callable<rbx::signals::signal<void ()(lua_State *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Scripting::ScriptDebugger,lua_State *>,boost::_bi::list2<boost::_bi::value<RBX::Scripting::ScriptDebugger*>,boost::arg<1>>>,1,void ()(lua_State *)>::~callable()")
+pub fn stub_77af54() {
+    // IDA 0x77af54: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x77af80 — __ZN3rbx8callableINS_7signals6signalIFvP9lua_StateEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvN3RBX9Scripting14ScriptDebuggerES4_EENS9_5list2INS9_5valueIPSF_EENS8_3argILi1EEEEEEELi1ES5_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(lua_State *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Scripting::ScriptDebugger,lua_State *>,boost::_bi::list2<boost::_bi::value<RBX::Scripting::ScriptDebugger*>,boost::arg<1>>>,1,void ()(lua_State *)>::~callable()")]
-pub fn stub_77af80() -> ! {
-    todo!("0x77af80 rbx::callable<rbx::signals::signal<void ()(lua_State *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Scripting::ScriptDebugger,lua_State *>,boost::_bi::list2<boost::_bi::value<RBX::Scripting::ScriptDebugger*>,boost::arg<1>>>,1,void ()(lua_State *)>::~callable()")
+pub fn stub_77af80() {
+    // IDA 0x77af80: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x77b058 — __ZNSt6vectorIPN3RBX9Scripting13DebuggerWatchESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
@@ -262,8 +262,8 @@ pub fn stub_77c538() -> ! {
 
 // 0x77c594 — __ZNSt6vectorIN3RBX9Scripting14ScriptDebugger12FunctionInfoESaIS3_EED2Ev
 #[doc(alias = "std::vector<RBX::Scripting::ScriptDebugger::FunctionInfo,std::allocator<RBX::Scripting::ScriptDebugger::FunctionInfo>>::~vector()")]
-pub fn stub_77c594() -> ! {
-    todo!("0x77c594 std::vector<RBX::Scripting::ScriptDebugger::FunctionInfo,std::allocator<RBX::Scripting::ScriptDebugger::FunctionInfo>>::~vector()")
+pub fn stub_77c594() {
+    // IDA 0x77c594: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x77e528 — __ZN5boost3_bi5list2INS0_5valueISsEENS_3argILi1EEEEC2ES3_S5_
@@ -382,14 +382,14 @@ pub fn stub_77eff4() -> ! {
 
 // 0x77f0f8 — __ZN5boost6detail18sp_counted_impl_pdIPSt6vectorINS_10shared_ptrIN3RBX8InstanceEEESaIS6_EEN3rbx6detail13sp_ms_deleterIS8_EEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> *,rbx::detail::sp_ms_deleter<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::~sp_counted_impl_pd()")]
-pub fn stub_77f0f8() -> ! {
-    todo!("0x77f0f8 boost::detail::sp_counted_impl_pd<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> *,rbx::detail::sp_ms_deleter<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::~sp_counted_impl_pd()")
+pub fn stub_77f0f8() {
+    // IDA 0x77f0f8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x77f124 — __ZN5boost6detail18sp_counted_impl_pdIPSt6vectorINS_10shared_ptrIN3RBX8InstanceEEESaIS6_EEN3rbx6detail13sp_ms_deleterIS8_EEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> *,rbx::detail::sp_ms_deleter<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::~sp_counted_impl_pd()")]
-pub fn stub_77f124() -> ! {
-    todo!("0x77f124 boost::detail::sp_counted_impl_pd<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> *,rbx::detail::sp_ms_deleter<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::~sp_counted_impl_pd()")
+pub fn stub_77f124() {
+    // IDA 0x77f124: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x77f1dc — __ZN5boost6detail18sp_counted_impl_pdIPSt6vectorINS_10shared_ptrIN3RBX8InstanceEEESaIS6_EEN3rbx6detail13sp_ms_deleterIS8_EEE7disposeEv
@@ -448,20 +448,20 @@ pub fn stub_7816b8() -> ! {
 
 // 0x7817b0 — __ZN3rbx7signals6signalIFviEE13callable_slotIN5boost8functionIS2_EEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(int)>::callable_slot<boost::function<void ()(int)>>::~callable_slot()")]
-pub fn stub_7817b0() -> ! {
-    todo!("0x7817b0 rbx::signals::signal<void ()(int)>::callable_slot<boost::function<void ()(int)>>::~callable_slot()")
+pub fn stub_7817b0() {
+    // IDA 0x7817b0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x7818c0 — __ZN3rbx7signals6signalIFviEE13callable_slotIN5boost8functionIS2_EEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(int)>::callable_slot<boost::function<void ()(int)>>::~callable_slot()")]
-pub fn stub_7818c0() -> ! {
-    todo!("0x7818c0 rbx::signals::signal<void ()(int)>::callable_slot<boost::function<void ()(int)>>::~callable_slot()")
+pub fn stub_7818c0() {
+    // IDA 0x7818c0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7819f0 — __ZN3rbx7signals6signalIFviEE4slotD0Ev
 #[doc(alias = "rbx::signals::signal<void ()(int)>::slot::~slot()")]
-pub fn stub_7819f0() -> ! {
-    todo!("0x7819f0 rbx::signals::signal<void ()(int)>::slot::~slot()")
+pub fn stub_7819f0() {
+    // IDA 0x7819f0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x786c28 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKiPN3RBX9Scripting18DebuggerBreakpointEEEiS9_NS_4hashIiEESt8equal_toIiEEEE14delete_bucketsEv
@@ -472,14 +472,14 @@ pub fn stub_786c28() -> ! {
 
 // 0x786c5c — __ZN3RBX9Scripting14ScriptDebugger18StepOverBreakpointD1Ev
 #[doc(alias = "RBX::Scripting::ScriptDebugger::StepOverBreakpoint::~StepOverBreakpoint()")]
-pub fn stub_786c5c() -> ! {
-    todo!("0x786c5c RBX::Scripting::ScriptDebugger::StepOverBreakpoint::~StepOverBreakpoint()")
+pub fn stub_786c5c() {
+    // IDA 0x786c5c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x786c60 — __ZN3RBX9Scripting14ScriptDebugger18StepOverBreakpointD0Ev
 #[doc(alias = "RBX::Scripting::ScriptDebugger::StepOverBreakpoint::~StepOverBreakpoint()")]
-pub fn stub_786c60() -> ! {
-    todo!("0x786c60 RBX::Scripting::ScriptDebugger::StepOverBreakpoint::~StepOverBreakpoint()")
+pub fn stub_786c60() {
+    // IDA 0x786c60: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x786c64 — __ZN3RBX9Scripting14ScriptDebugger18StepOverBreakpoint7hitTestEP9lua_StateP9lua_Debug
@@ -490,14 +490,14 @@ pub fn stub_786c64() -> ! {
 
 // 0x786d28 — __ZN3RBX9Scripting14ScriptDebugger17StepOutBreakpointD1Ev
 #[doc(alias = "RBX::Scripting::ScriptDebugger::StepOutBreakpoint::~StepOutBreakpoint()")]
-pub fn stub_786d28() -> ! {
-    todo!("0x786d28 RBX::Scripting::ScriptDebugger::StepOutBreakpoint::~StepOutBreakpoint()")
+pub fn stub_786d28() {
+    // IDA 0x786d28: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x786d2c — __ZN3RBX9Scripting14ScriptDebugger17StepOutBreakpointD0Ev
 #[doc(alias = "RBX::Scripting::ScriptDebugger::StepOutBreakpoint::~StepOutBreakpoint()")]
-pub fn stub_786d2c() -> ! {
-    todo!("0x786d2c RBX::Scripting::ScriptDebugger::StepOutBreakpoint::~StepOutBreakpoint()")
+pub fn stub_786d2c() {
+    // IDA 0x786d2c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x786d30 — __ZN3RBX9Scripting14ScriptDebugger17StepOutBreakpoint7hitTestEP9lua_StateP9lua_Debug
@@ -508,14 +508,14 @@ pub fn stub_786d30() -> ! {
 
 // 0x786e24 — __ZN3RBX9Scripting14ScriptDebugger16StepInBreakpointD1Ev
 #[doc(alias = "RBX::Scripting::ScriptDebugger::StepInBreakpoint::~StepInBreakpoint()")]
-pub fn stub_786e24() -> ! {
-    todo!("0x786e24 RBX::Scripting::ScriptDebugger::StepInBreakpoint::~StepInBreakpoint()")
+pub fn stub_786e24() {
+    // IDA 0x786e24: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x786e28 — __ZN3RBX9Scripting14ScriptDebugger16StepInBreakpointD0Ev
 #[doc(alias = "RBX::Scripting::ScriptDebugger::StepInBreakpoint::~StepInBreakpoint()")]
-pub fn stub_786e28() -> ! {
-    todo!("0x786e28 RBX::Scripting::ScriptDebugger::StepInBreakpoint::~StepInBreakpoint()")
+pub fn stub_786e28() {
+    // IDA 0x786e28: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x786e2c — __ZN3RBX9Scripting14ScriptDebugger16StepInBreakpoint7hitTestEP9lua_StateP9lua_Debug
@@ -568,14 +568,14 @@ pub fn stub_787294() -> ! {
 
 // 0x78739c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting15DebuggerManagerENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerManager *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_78739c() -> ! {
-    todo!("0x78739c boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerManager *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_78739c() {
+    // IDA 0x78739c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x7873a0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting15DebuggerManagerENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerManager *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_7873a0() -> ! {
-    todo!("0x7873a0 boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerManager *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_7873a0() {
+    // IDA 0x7873a0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7873a4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting15DebuggerManagerENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv

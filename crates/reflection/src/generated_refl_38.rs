@@ -200,8 +200,8 @@ pub fn stub_0xf41f14() {
 
 // 0xf41fa4 — j___ZN3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "j___ZN3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0xf41fa4() -> ! {
-    todo!("0xf41fa4 j___ZN3RBX10Reflection9DescribedINS_11HandlesBaseELZNS_12sHandlesBaseEENS_17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0xf41fa4() {
+    // IDA 0xf41fa4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf42c54 — j___ZN5boost8functionIFvNS_10shared_ptrIKSt6vectorIN3RBX10Reflection7VariantESaIS5_EEEEEEC2INS_3_bi6bind_tIvPFvNS0_IFvS5_EEES9_ENSD_5list2INSD_5valueISG_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE
@@ -356,8 +356,8 @@ pub fn stub_0xf44d84() -> ! {
 
 // 0xf44d94 — j___ZN3RBX10Reflection8EnumDescINS_8MaterialEED2Ev
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_8MaterialEED2Ev")]
-pub fn stub_0xf44d94() -> ! {
-    todo!("0xf44d94 j___ZN3RBX10Reflection8EnumDescINS_8MaterialEED2Ev")
+pub fn stub_0xf44d94() {
+    // IDA 0xf44d94: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf44da4 — j___ZN3RBX10Reflection9ArgHelper6getArgINS_8NormalIdELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS4_EEPNS8_10disable_ifINS8_7is_sameIS4_NS8_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
@@ -536,8 +536,8 @@ pub fn stub_0xf45a54() -> ! {
 
 // 0xf45b14 — j___ZNSt6vectorIN3RBX10Reflection7VariantESaIS2_EED2Ev
 #[doc(alias = "j___ZNSt6vectorIN3RBX10Reflection7VariantESaIS2_EED2Ev")]
-pub fn stub_0xf45b14() -> ! {
-    todo!("0xf45b14 j___ZNSt6vectorIN3RBX10Reflection7VariantESaIS2_EED2Ev")
+pub fn stub_0xf45b14() {
+    // IDA 0xf45b14: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf45c04 — j___ZNSt6vectorIPKN3RBX10Reflection14EnumDescriptor4ItemESaIS5_EE9push_backERKS5_

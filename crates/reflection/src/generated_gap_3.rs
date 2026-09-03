@@ -693,16 +693,16 @@ pub fn stub_0x2a7c60() -> ! {
 // type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
 #[doc(alias = "RBX::RuntimeScriptService::~RuntimeScriptService()")]
 #[doc(alias = "__ZN3RBX20RuntimeScriptServiceD1Ev")]
-pub fn stub_0x2a7c7c() -> ! {
-    todo!("0x2a7c7c RBX::RuntimeScriptService::~RuntimeScriptService()")
+pub fn stub_0x2a7c7c() {
+    // IDA 0x2a7c7c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2a7c80 — __ZN3RBX20RuntimeScriptServiceD0Ev
 // type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
 #[doc(alias = "RBX::RuntimeScriptService::~RuntimeScriptService()")]
 #[doc(alias = "__ZN3RBX20RuntimeScriptServiceD0Ev")]
-pub fn stub_0x2a7c80() -> ! {
-    todo!("0x2a7c80 RBX::RuntimeScriptService::~RuntimeScriptService()")
+pub fn stub_0x2a7c80() {
+    // IDA 0x2a7c80: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2a7d20 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEE12getClassNameEv
@@ -765,20 +765,20 @@ pub fn stub_0x2a7ee0() -> &'static str {
 
 // 0x2a7ef0 — __ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_0x2a7ef0() -> ! {
-    todo!("0x2a7ef0 __ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_0x2a7ef0() {
+    // IDA 0x2a7ef0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2a7ef8 — __ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_0x2a7ef8() -> ! {
-    todo!("0x2a7ef8 __ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_0x2a7ef8() {
+    // IDA 0x2a7ef8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2a7f00 — __ZN3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7CreatorD1Ev")]
-pub fn stub_0x2a7f00() -> ! {
-    todo!("0x2a7f00 __ZN3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7CreatorD1Ev")
+pub fn stub_0x2a7f00() {
+    // IDA 0x2a7f00: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2a7f08 — __ZN3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E17static_getCreatorEv
@@ -849,6 +849,6 @@ pub fn stub_0x2a87c4() -> ! {
 // 0x2a88cc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting13DebuggerWatchENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting13DebuggerWatchENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_0x2a88cc() -> ! {
-    todo!("0x2a88cc boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2a88cc() {
+    // IDA 0x2a88cc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }

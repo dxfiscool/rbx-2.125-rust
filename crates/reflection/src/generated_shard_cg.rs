@@ -9,29 +9,29 @@ use rbx_core::SharedPtr;
 // 0xf48914 — j___ZN3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEED2Ev")]
-pub fn stub_f48914() -> ! {
-    todo!("0xf48914 RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::~EnumDesc()")
+pub fn stub_f48914() {
+    // IDA 0xf48914: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf48924 — j___ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEED2Ev")]
-pub fn stub_f48924() -> ! {
-    todo!("0xf48924 RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::~EnumDesc()")
+pub fn stub_f48924() {
+    // IDA 0xf48924: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf48934 — j___ZN3RBX10Reflection8EnumDescINS_11TextService4FontEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11TextService4FontEED2Ev")]
-pub fn stub_f48934() -> ! {
-    todo!("0xf48934 RBX::Reflection::EnumDesc<RBX::TextService::Font>::~EnumDesc()")
+pub fn stub_f48934() {
+    // IDA 0xf48934: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf48944 — j___ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEED2Ev")]
-pub fn stub_f48944() -> ! {
-    todo!("0xf48944 RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::~EnumDesc()")
+pub fn stub_f48944() {
+    // IDA 0xf48944: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf48964 — j___ZN3RBX10Reflection9EventDescINS_7TextBoxEFvbEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -569,8 +569,8 @@ pub fn stub_f49764() -> ! {
 // 0xf49774 — j___ZN3RBX10Reflection8EnumDescINS_10Controller6ButtonEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Controller::Button>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_10Controller6ButtonEED2Ev")]
-pub fn stub_f49774() -> ! {
-    todo!("0xf49774 RBX::Reflection::EnumDesc<RBX::Controller::Button>::~EnumDesc()")
+pub fn stub_f49774() {
+    // IDA 0xf49774: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf49784 — j___ZN3RBX10Reflection9ArgHelper6getArgINS_10Controller6ButtonELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE

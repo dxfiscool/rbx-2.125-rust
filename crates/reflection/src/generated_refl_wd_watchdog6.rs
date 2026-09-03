@@ -123,8 +123,8 @@ pub fn stub_0x31530c() -> ! {
 // 0x315514 — __ZN3RBX18LegacyContentTableD1Ev
 #[doc(alias = "RBX::LegacyContentTable::~LegacyContentTable()")]
 #[doc(alias = "__ZN3RBX18LegacyContentTableD1Ev")]
-pub fn stub_0x315514() -> ! {
-    todo!("0x315514 RBX::LegacyContentTable::~LegacyContentTable()")
+pub fn stub_0x315514() {
+    // IDA 0x315514: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x31552c — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSsEESsSsNS_4hashISsEESt8equal_toISsEEEE14delete_bucketsEv
@@ -214,22 +214,22 @@ pub fn stub_0x316258() -> ! {
 // 0x316364 — __ZN5boost10filesystem6detail11dir_itr_impD2Ev
 #[doc(alias = "boost::filesystem::detail::dir_itr_imp::~dir_itr_imp()")]
 #[doc(alias = "__ZN5boost10filesystem6detail11dir_itr_impD2Ev")]
-pub fn stub_0x316364() -> ! {
-    todo!("0x316364 boost::filesystem::detail::dir_itr_imp::~dir_itr_imp()")
+pub fn stub_0x316364() {
+    // IDA 0x316364: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x316414 — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::detail::dir_itr_imp>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEED1Ev")]
-pub fn stub_0x316414() -> ! {
-    todo!("0x316414 boost::detail::sp_counted_impl_p<boost::filesystem::detail::dir_itr_imp>::~sp_counted_impl_p()")
+pub fn stub_0x316414() {
+    // IDA 0x316414: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x316418 — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::detail::dir_itr_imp>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEED0Ev")]
-pub fn stub_0x316418() -> ! {
-    todo!("0x316418 boost::detail::sp_counted_impl_p<boost::filesystem::detail::dir_itr_imp>::~sp_counted_impl_p()")
+pub fn stub_0x316418() {
+    // IDA 0x316418: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x31641c — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEE7disposeEv
@@ -368,22 +368,22 @@ pub fn stub_0x3180ec() -> ! {
 // 0x3180f0 — __ZN3RBX13WindowAverageIddED1Ev
 #[doc(alias = "RBX::WindowAverage<double,double>::~WindowAverage()")]
 #[doc(alias = "__ZN3RBX13WindowAverageIddED1Ev")]
-pub fn stub_0x3180f0() -> ! {
-    todo!("0x3180f0 RBX::WindowAverage<double,double>::~WindowAverage()")
+pub fn stub_0x3180f0() {
+    // IDA 0x3180f0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x318100 — __ZN3RBX4Http10MutexGuardD1Ev
 #[doc(alias = "RBX::Http::MutexGuard::~MutexGuard()")]
 #[doc(alias = "__ZN3RBX4Http10MutexGuardD1Ev")]
-pub fn stub_0x318100() -> ! {
-    todo!("0x318100 RBX::Http::MutexGuard::~MutexGuard()")
+pub fn stub_0x318100() {
+    // IDA 0x318100: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x318104 — __ZN5boost10scoped_ptrIN3RBX10ThreadPoolEED1Ev
 #[doc(alias = "boost::scoped_ptr<RBX::ThreadPool>::~scoped_ptr()")]
 #[doc(alias = "__ZN5boost10scoped_ptrIN3RBX10ThreadPoolEED1Ev")]
-pub fn stub_0x318104() -> ! {
-    todo!("0x318104 boost::scoped_ptr<RBX::ThreadPool>::~scoped_ptr()")
+pub fn stub_0x318104() {
+    // IDA 0x318104: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x318118 — __ZN5boost4bindIvSsbNS_8functionIFvPSsPSt9exceptionEEESsbS6_EENS_3_bi6bind_tIT_PFS9_T0_T1_T2_ENS7_9list_av_3IT3_T4_T5_E4typeEEESE_SG_SH_SI_
@@ -726,15 +726,15 @@ pub fn stub_0x31e344() -> ! {
 // 0x31e43c — __ZN5boost6detail17sp_counted_impl_pISt19basic_istringstreamIcSt11char_traitsIcESaIcEEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pISt19basic_istringstreamIcSt11char_traitsIcESaIcEEED1Ev")]
-pub fn stub_0x31e43c() -> ! {
-    todo!("0x31e43c boost::detail::sp_counted_impl_p<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>::~sp_counted_impl_p()")
+pub fn stub_0x31e43c() {
+    // IDA 0x31e43c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x31e440 — __ZN5boost6detail17sp_counted_impl_pISt19basic_istringstreamIcSt11char_traitsIcESaIcEEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pISt19basic_istringstreamIcSt11char_traitsIcESaIcEEED0Ev")]
-pub fn stub_0x31e440() -> ! {
-    todo!("0x31e440 boost::detail::sp_counted_impl_p<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>::~sp_counted_impl_p()")
+pub fn stub_0x31e440() {
+    // IDA 0x31e440: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x31e444 — __ZN5boost6detail17sp_counted_impl_pISt19basic_istringstreamIcSt11char_traitsIcESaIcEEE7disposeEv
@@ -761,8 +761,8 @@ pub fn stub_0x31e458() -> ! {
 // 0x31e45c — __ZN3RBX4Http10MutexGuardD2Ev
 #[doc(alias = "RBX::Http::MutexGuard::~MutexGuard()")]
 #[doc(alias = "__ZN3RBX4Http10MutexGuardD2Ev")]
-pub fn stub_0x31e45c() -> ! {
-    todo!("0x31e45c RBX::Http::MutexGuard::~MutexGuard()")
+pub fn stub_0x31e45c() {
+    // IDA 0x31e45c: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x31e558 — __ZN3RBX4Http10MutexGuardC2Ev

@@ -201,22 +201,22 @@ pub fn stub_0x362950() -> ! {
 // 0x362a98 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED1Ev
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED1Ev")]
-pub fn stub_0x362a98() -> ! {
-    todo!("0x362a98 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")
+pub fn stub_0x362a98() {
+    // IDA 0x362a98: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x362aa8 — __ZN5boost16exception_detail19error_info_injectorINS_17bad_function_callEED1Ev
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_17bad_function_callEED1Ev")]
-pub fn stub_0x362aa8() -> ! {
-    todo!("0x362aa8 boost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()")
+pub fn stub_0x362aa8() {
+    // IDA 0x362aa8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x362ab0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED0Ev
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED0Ev")]
-pub fn stub_0x362ab0() -> ! {
-    todo!("0x362ab0 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")
+pub fn stub_0x362ab0() {
+    // IDA 0x362ab0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x362ac8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEEC1ERKS5_NS5_9clone_tagE
@@ -257,8 +257,8 @@ pub fn stub_0x362f88() -> ! {
 // 0x362f98 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev")]
-pub fn stub_0x362f98() -> ! {
-    todo!("0x362f98 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
+pub fn stub_0x362f98() {
+    // IDA 0x362f98: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x362fb8 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev
@@ -439,15 +439,15 @@ pub fn stub_0x363d78() -> ! {
 // 0x363e70 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13HeartbeatTaskEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::HeartbeatTask>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX13HeartbeatTaskEED1Ev")]
-pub fn stub_0x363e70() -> ! {
-    todo!("0x363e70 boost::detail::sp_counted_impl_p<RBX::HeartbeatTask>::~sp_counted_impl_p()")
+pub fn stub_0x363e70() {
+    // IDA 0x363e70: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x363e74 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13HeartbeatTaskEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::HeartbeatTask>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX13HeartbeatTaskEED0Ev")]
-pub fn stub_0x363e74() -> ! {
-    todo!("0x363e74 boost::detail::sp_counted_impl_p<RBX::HeartbeatTask>::~sp_counted_impl_p()")
+pub fn stub_0x363e74() {
+    // IDA 0x363e74: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x363e78 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13HeartbeatTaskEE7disposeEv
@@ -481,8 +481,8 @@ pub fn stub_0x363e90() -> ! {
 // 0x363f78 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev")]
-pub fn stub_0x363f78() -> ! {
-    todo!("0x363f78 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
+pub fn stub_0x363f78() {
+    // IDA 0x363f78: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x363f90 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE5cloneEv
@@ -516,15 +516,15 @@ pub fn stub_0x364168() -> ! {
 // 0x364260 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10PhysicsJobEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::PhysicsJob>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX10PhysicsJobEED1Ev")]
-pub fn stub_0x364260() -> ! {
-    todo!("0x364260 boost::detail::sp_counted_impl_p<RBX::PhysicsJob>::~sp_counted_impl_p()")
+pub fn stub_0x364260() {
+    // IDA 0x364260: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x364264 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10PhysicsJobEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::PhysicsJob>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX10PhysicsJobEED0Ev")]
-pub fn stub_0x364264() -> ! {
-    todo!("0x364264 boost::detail::sp_counted_impl_p<RBX::PhysicsJob>::~sp_counted_impl_p()")
+pub fn stub_0x364264() {
+    // IDA 0x364264: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x364268 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10PhysicsJobEE7disposeEv
@@ -558,8 +558,8 @@ pub fn stub_0x364cdc() -> ! {
 // 0x364e58 — __ZN3rbx22bad_placement_any_castD1Ev
 #[doc(alias = "rbx::bad_placement_any_cast::~bad_placement_any_cast()")]
 #[doc(alias = "__ZN3rbx22bad_placement_any_castD1Ev")]
-pub fn stub_0x364e58() -> ! {
-    todo!("0x364e58 rbx::bad_placement_any_cast::~bad_placement_any_cast()")
+pub fn stub_0x364e58() {
+    // IDA 0x364e58: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x364e60 — __ZNK3rbx22bad_placement_any_cast4whatEv
@@ -572,8 +572,8 @@ pub fn stub_0x364e60() -> ! {
 // 0x364e70 — __ZN5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED2Ev
 #[doc(alias = "boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED2Ev")]
-pub fn stub_0x364e70() -> ! {
-    todo!("0x364e70 boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()")
+pub fn stub_0x364e70() {
+    // IDA 0x364e70: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x364f28 — __ZThn4_N5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED1Ev
@@ -593,8 +593,8 @@ pub fn stub_0x364f30() {
 // 0x364f38 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED1Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED1Ev")]
-pub fn stub_0x364f38() -> ! {
-    todo!("0x364f38 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")
+pub fn stub_0x364f38() {
+    // IDA 0x364f38: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x364f48 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEE5cloneEv
@@ -614,8 +614,8 @@ pub fn stub_0x365008() -> ! {
 // 0x365018 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED0Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED0Ev")]
-pub fn stub_0x365018() -> ! {
-    todo!("0x365018 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")
+pub fn stub_0x365018() {
+    // IDA 0x365018: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x365038 — __ZThn4_N5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED0Ev
@@ -684,15 +684,15 @@ pub fn stub_0x3663b4() -> ! {
 // 0x3664b0 — __ZN3rbx7signals6signalIFvdEE13callable_slotIN5boost8functionIS2_EEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(double)>::callable_slot<boost::function<void ()(double)>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvdEE13callable_slotIN5boost8functionIS2_EEED1Ev")]
-pub fn stub_0x3664b0() -> ! {
-    todo!("0x3664b0 rbx::signals::signal<void ()(double)>::callable_slot<boost::function<void ()(double)>>::~callable_slot()")
+pub fn stub_0x3664b0() {
+    // IDA 0x3664b0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3665c0 — __ZN3rbx7signals6signalIFvdEE13callable_slotIN5boost8functionIS2_EEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(double)>::callable_slot<boost::function<void ()(double)>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvdEE13callable_slotIN5boost8functionIS2_EEED0Ev")]
-pub fn stub_0x3665c0() -> ! {
-    todo!("0x3665c0 rbx::signals::signal<void ()(double)>::callable_slot<boost::function<void ()(double)>>::~callable_slot()")
+pub fn stub_0x3665c0() {
+    // IDA 0x3665c0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3666f0 — __ZN3rbx7signals6signalIFvdEE4slot10disconnectEv
@@ -754,29 +754,29 @@ pub fn stub_0x3669dc() -> ! {
 // 0x366ad0 — __ZN3rbx8callableINS_7signals6signalIFvdEE4slotEN5boost8functionIS3_EELi1ES3_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvdEE4slotEN5boost8functionIS3_EELi1ES3_ED1Ev")]
-pub fn stub_0x366ad0() -> ! {
-    todo!("0x366ad0 rbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::~callable()")
+pub fn stub_0x366ad0() {
+    // IDA 0x366ad0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x366be0 — __ZN3rbx8callableINS_7signals6signalIFvdEE4slotEN5boost8functionIS3_EELi1ES3_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvdEE4slotEN5boost8functionIS3_EELi1ES3_ED0Ev")]
-pub fn stub_0x366be0() -> ! {
-    todo!("0x366be0 rbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::~callable()")
+pub fn stub_0x366be0() {
+    // IDA 0x366be0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x366d10 — __ZN3rbx7signals6signalIFvdEE4slotD1Ev
 #[doc(alias = "rbx::signals::signal<void ()(double)>::slot::~slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvdEE4slotD1Ev")]
-pub fn stub_0x366d10() -> ! {
-    todo!("0x366d10 rbx::signals::signal<void ()(double)>::slot::~slot()")
+pub fn stub_0x366d10() {
+    // IDA 0x366d10: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x366d3c — __ZN3rbx7signals6signalIFvdEE4slotD0Ev
 #[doc(alias = "rbx::signals::signal<void ()(double)>::slot::~slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvdEE4slotD0Ev")]
-pub fn stub_0x366d3c() -> ! {
-    todo!("0x366d3c rbx::signals::signal<void ()(double)>::slot::~slot()")
+pub fn stub_0x366d3c() {
+    // IDA 0x366d3c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x366e10 — __ZN5boost9function1IvdE13assign_to_ownERKS1_
@@ -831,15 +831,15 @@ pub fn stub_0x368218() -> ! {
 // 0x368314 — __ZN3rbx7signals6signalIFvddEE13callable_slotIN5boost8functionIS2_EEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(double,double)>::callable_slot<boost::function<void ()(double,double)>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvddEE13callable_slotIN5boost8functionIS2_EEED1Ev")]
-pub fn stub_0x368314() -> ! {
-    todo!("0x368314 rbx::signals::signal<void ()(double,double)>::callable_slot<boost::function<void ()(double,double)>>::~callable_slot()")
+pub fn stub_0x368314() {
+    // IDA 0x368314: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x368424 — __ZN3rbx7signals6signalIFvddEE13callable_slotIN5boost8functionIS2_EEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(double,double)>::callable_slot<boost::function<void ()(double,double)>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvddEE13callable_slotIN5boost8functionIS2_EEED0Ev")]
-pub fn stub_0x368424() -> ! {
-    todo!("0x368424 rbx::signals::signal<void ()(double,double)>::callable_slot<boost::function<void ()(double,double)>>::~callable_slot()")
+pub fn stub_0x368424() {
+    // IDA 0x368424: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x368554 — __ZN3rbx7signals6signalIFvddEE4slot10disconnectEv

@@ -16,8 +16,8 @@ pub fn stub_6df368() -> ! {
 // 0x6df520 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats14TypedStatsItemIiEENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<int> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats14TypedStatsItemIiEENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_6df520() -> ! {
-    todo!("0x6df520")
+pub fn stub_6df520() {
+    // IDA 0x6df520: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6df5a0 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_5Stats14TypedStatsItemIfEEN5boost9function0IfEEEENS7_10shared_ptrIT_EET0_
@@ -65,8 +65,8 @@ pub fn stub_6dfa40() -> ! {
 // 0x6dfb48 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats14TypedStatsItemIfEENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<float> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats14TypedStatsItemIfEENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_6dfb48() -> ! {
-    todo!("0x6dfb48")
+pub fn stub_6dfb48() {
+    // IDA 0x6dfb48: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x6dfb50 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats14TypedStatsItemIfEENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
@@ -107,15 +107,15 @@ pub fn stub_6dfd70() -> ! {
 // 0x6dfe88 — __ZN3RBX5Stats14TypedStatsItemIdED1Ev
 #[doc(alias = "RBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
 #[doc(alias = "__ZN3RBX5Stats14TypedStatsItemIdED1Ev")]
-pub fn stub_6dfe88() -> ! {
-    todo!("0x6dfe88")
+pub fn stub_6dfe88() {
+    // IDA 0x6dfe88: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x6dffd0 — __ZN3RBX5Stats14TypedStatsItemIdED0Ev
 #[doc(alias = "RBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
 #[doc(alias = "__ZN3RBX5Stats14TypedStatsItemIdED0Ev")]
-pub fn stub_6dffd0() -> ! {
-    todo!("0x6dffd0")
+pub fn stub_6dffd0() {
+    // IDA 0x6dffd0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6e0130 — __ZThn32_N3RBX5Stats14TypedStatsItemIdED1Ev
@@ -149,8 +149,8 @@ pub fn stub_6e058c() -> ! {
 // 0x6e0698 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats14TypedStatsItemIdEENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<double> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats14TypedStatsItemIdEENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_6e0698() -> ! {
-    todo!("0x6e0698")
+pub fn stub_6e0698() {
+    // IDA 0x6e0698: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6e73d0 — __ZNK3RBX16ContactConnector22getConnectorKernelTypeEv

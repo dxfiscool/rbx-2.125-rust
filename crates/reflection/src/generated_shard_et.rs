@@ -105,8 +105,8 @@ pub fn stub_f66bf4() -> ! {
 
 // 0xf66c04 — j___ZN4Ogre9ExceptionD2Ev
 #[doc(alias = "Ogre::Exception::~Exception()")]
-pub fn stub_f66c04() -> ! {
-    todo!("0xf66c04 j___ZN4Ogre9ExceptionD2Ev")
+pub fn stub_f66c04() {
+    // IDA 0xf66c04: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf66c14 — j___ZNK4Ogre7Vector313getRotationToERKS0_S2_
@@ -357,8 +357,8 @@ pub fn stub_f66e94() -> ! {
 
 // 0xf66ea4 — j___ZN4Ogre10ControllerIfED2Ev
 #[doc(alias = "Ogre::Controller<float>::~Controller()")]
-pub fn stub_f66ea4() -> ! {
-    todo!("0xf66ea4 j___ZN4Ogre10ControllerIfED2Ev")
+pub fn stub_f66ea4() {
+    // IDA 0xf66ea4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf66eb4 — j___ZNSt8_Rb_treeIPN4Ogre10ControllerIfEES3_St9_IdentityIS3_ESt4lessIS3_ENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS3_

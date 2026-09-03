@@ -11,8 +11,8 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0x2e32d4 — __ZN3RBX8GameToolD1Ev
 #[doc(alias = "RBX::GameTool::~GameTool()")]
 #[doc(alias = "__ZN3RBX8GameToolD1Ev")]
-pub fn stub_0x2e32d4() -> ! {
-    todo!("0x2e32d4 RBX::GameTool::~GameTool()")
+pub fn stub_0x2e32d4() {
+    // IDA 0x2e32d4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e32d8 — __ZThn36_N3RBX8GameToolD0Ev
@@ -25,8 +25,8 @@ pub fn stub_0x2e32d8() {
 // 0x2e32e0 — __ZN3RBX8GameToolD2Ev
 #[doc(alias = "RBX::GameTool::~GameTool()")]
 #[doc(alias = "__ZN3RBX8GameToolD2Ev")]
-pub fn stub_0x2e32e0() -> ! {
-    todo!("0x2e32e0 RBX::GameTool::~GameTool()")
+pub fn stub_0x2e32e0() {
+    // IDA 0x2e32e0: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e33e4 — __ZThn36_N3RBX8GameToolD1Ev
@@ -108,15 +108,15 @@ pub fn stub_0x2e395c() -> ! {
 // 0x2e3aa8 — __ZN3RBX8GrabToolD0Ev
 #[doc(alias = "RBX::GrabTool::~GrabTool()")]
 #[doc(alias = "__ZN3RBX8GrabToolD0Ev")]
-pub fn stub_0x2e3aa8() -> ! {
-    todo!("0x2e3aa8 RBX::GrabTool::~GrabTool()")
+pub fn stub_0x2e3aa8() {
+    // IDA 0x2e3aa8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2e3b48 — __ZN3RBX8GrabToolD1Ev
 #[doc(alias = "RBX::GrabTool::~GrabTool()")]
 #[doc(alias = "__ZN3RBX8GrabToolD1Ev")]
-pub fn stub_0x2e3b48() -> ! {
-    todo!("0x2e3b48 RBX::GrabTool::~GrabTool()")
+pub fn stub_0x2e3b48() {
+    // IDA 0x2e3b48: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e3b4c — __ZThn36_N3RBX8GrabToolD0Ev
@@ -129,8 +129,8 @@ pub fn stub_0x2e3b4c() {
 // 0x2e3b54 — __ZN3RBX8GrabToolD2Ev
 #[doc(alias = "RBX::GrabTool::~GrabTool()")]
 #[doc(alias = "__ZN3RBX8GrabToolD2Ev")]
-pub fn stub_0x2e3b54() -> ! {
-    todo!("0x2e3b54 RBX::GrabTool::~GrabTool()")
+pub fn stub_0x2e3b54() {
+    // IDA 0x2e3b54: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e3c58 — __ZThn36_N3RBX8GrabToolD1Ev
@@ -205,15 +205,15 @@ pub fn stub_0x2e451c() -> ! {
 // 0x2e4624 — __ZN3RBX10HammerToolD0Ev
 #[doc(alias = "RBX::HammerTool::~HammerTool()")]
 #[doc(alias = "__ZN3RBX10HammerToolD0Ev")]
-pub fn stub_0x2e4624() -> ! {
-    todo!("0x2e4624 RBX::HammerTool::~HammerTool()")
+pub fn stub_0x2e4624() {
+    // IDA 0x2e4624: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2e46c4 — __ZN3RBX10HammerToolD1Ev
 #[doc(alias = "RBX::HammerTool::~HammerTool()")]
 #[doc(alias = "__ZN3RBX10HammerToolD1Ev")]
-pub fn stub_0x2e46c4() -> ! {
-    todo!("0x2e46c4 RBX::HammerTool::~HammerTool()")
+pub fn stub_0x2e46c4() {
+    // IDA 0x2e46c4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e46c8 — __ZThn36_N3RBX10HammerToolD0Ev
@@ -226,8 +226,8 @@ pub fn stub_0x2e46c8() {
 // 0x2e46d0 — __ZN3RBX10HammerToolD2Ev
 #[doc(alias = "RBX::HammerTool::~HammerTool()")]
 #[doc(alias = "__ZN3RBX10HammerToolD2Ev")]
-pub fn stub_0x2e46d0() -> ! {
-    todo!("0x2e46d0 RBX::HammerTool::~HammerTool()")
+pub fn stub_0x2e46d0() {
+    // IDA 0x2e46d0: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e47ec — __ZThn36_N3RBX10HammerToolD1Ev
@@ -309,8 +309,8 @@ pub fn stub_0x2e4dd8() -> ! {
 // 0x2e4ee0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ExplosionENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ExplosionENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_0x2e4ee0() -> ! {
-    todo!("0x2e4ee0 boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2e4ee0() {
+    // IDA 0x2e4ee0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e4ee4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ExplosionENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
@@ -379,15 +379,15 @@ pub fn stub_0x2e5c24() -> ! {
 // 0x2e5e10 — __ZN3RBX10LuaDraggerD0Ev
 #[doc(alias = "RBX::LuaDragger::~LuaDragger()")]
 #[doc(alias = "__ZN3RBX10LuaDraggerD0Ev")]
-pub fn stub_0x2e5e10() -> ! {
-    todo!("0x2e5e10 RBX::LuaDragger::~LuaDragger()")
+pub fn stub_0x2e5e10() {
+    // IDA 0x2e5e10: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2e5eb0 — __ZN3RBX10LuaDraggerD1Ev
 #[doc(alias = "RBX::LuaDragger::~LuaDragger()")]
 #[doc(alias = "__ZN3RBX10LuaDraggerD1Ev")]
-pub fn stub_0x2e5eb0() -> ! {
-    todo!("0x2e5eb0 RBX::LuaDragger::~LuaDragger()")
+pub fn stub_0x2e5eb0() {
+    // IDA 0x2e5eb0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e5eb4 — __ZThn32_N3RBX10LuaDraggerD0Ev
@@ -407,8 +407,8 @@ pub fn stub_0x2e5ebc() {
 // 0x2e5ec4 — __ZN3RBX10LuaDraggerD2Ev
 #[doc(alias = "RBX::LuaDragger::~LuaDragger()")]
 #[doc(alias = "__ZN3RBX10LuaDraggerD2Ev")]
-pub fn stub_0x2e5ec4() -> ! {
-    todo!("0x2e5ec4 RBX::LuaDragger::~LuaDragger()")
+pub fn stub_0x2e5ec4() {
+    // IDA 0x2e5ec4: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e6060 — __ZThn32_N3RBX10LuaDraggerD1Ev
@@ -517,14 +517,14 @@ pub fn stub_0x2e74f0() -> &'static str {
 
 // 0x2e7500 — __ZN3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E7CreatorD1Ev")]
-pub fn stub_0x2e7500() -> ! {
-    todo!("0x2e7500 __ZN3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E7CreatorD1Ev")
+pub fn stub_0x2e7500() {
+    // IDA 0x2e7500: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e7504 — __ZN3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E7CreatorD2Ev")]
-pub fn stub_0x2e7504() -> ! {
-    todo!("0x2e7504 __ZN3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E7CreatorD2Ev")
+pub fn stub_0x2e7504() {
+    // IDA 0x2e7504: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e75a0 — __ZNK3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E7Creator12getClassNameEv
@@ -563,15 +563,15 @@ pub fn stub_0x2e79cc() -> ! {
 // 0x2e7ad4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_0x2e7ad4() -> ! {
-    todo!("0x2e7ad4 boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2e7ad4() {
+    // IDA 0x2e7ad4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e7ad8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_0x2e7ad8() -> ! {
-    todo!("0x2e7ad8 boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2e7ad8() {
+    // IDA 0x2e7ad8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2e7adc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
@@ -650,15 +650,15 @@ pub fn stub_0x2e8128() -> ! {
 // 0x2e81b8 — __ZNSt8auto_ptrIN3RBX10RunDraggerEED2Ev
 #[doc(alias = "std::auto_ptr<RBX::RunDragger>::~auto_ptr()")]
 #[doc(alias = "__ZNSt8auto_ptrIN3RBX10RunDraggerEED2Ev")]
-pub fn stub_0x2e81b8() -> ! {
-    todo!("0x2e81b8 std::auto_ptr<RBX::RunDragger>::~auto_ptr()")
+pub fn stub_0x2e81b8() {
+    // IDA 0x2e81b8: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e8260 — __ZNSt6vectorIN5boost10shared_ptrIN3RBX5JointEEESaIS4_EED2Ev
 #[doc(alias = "std::vector<boost::shared_ptr<RBX::Joint>,std::allocator<boost::shared_ptr<RBX::Joint>>>::~vector()")]
 #[doc(alias = "__ZNSt6vectorIN5boost10shared_ptrIN3RBX5JointEEESaIS4_EED2Ev")]
-pub fn stub_0x2e8260() -> ! {
-    todo!("0x2e8260 std::vector<boost::shared_ptr<RBX::Joint>,std::allocator<boost::shared_ptr<RBX::Joint>>>::~vector()")
+pub fn stub_0x2e8260() {
+    // IDA 0x2e8260: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e9870 — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS2_3_bi6bind_tIvPFvS6_PS9_INS2_8weak_ptrINS4_12PartInstanceEEESaISH_EEENSD_5list2INS2_3argILi1EEENSD_5valueISK_EEEEEEET0_T_SV_SU_
@@ -706,15 +706,15 @@ pub fn stub_0x2e9f84() -> ! {
 // 0x2ea20c — __ZN3RBX11LuaDragToolD0Ev
 #[doc(alias = "RBX::LuaDragTool::~LuaDragTool()")]
 #[doc(alias = "__ZN3RBX11LuaDragToolD0Ev")]
-pub fn stub_0x2ea20c() -> ! {
-    todo!("0x2ea20c RBX::LuaDragTool::~LuaDragTool()")
+pub fn stub_0x2ea20c() {
+    // IDA 0x2ea20c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2ea2ac — __ZN3RBX11LuaDragToolD1Ev
 #[doc(alias = "RBX::LuaDragTool::~LuaDragTool()")]
 #[doc(alias = "__ZN3RBX11LuaDragToolD1Ev")]
-pub fn stub_0x2ea2ac() -> ! {
-    todo!("0x2ea2ac RBX::LuaDragTool::~LuaDragTool()")
+pub fn stub_0x2ea2ac() {
+    // IDA 0x2ea2ac: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2ea2b0 — __ZThn36_N3RBX11LuaDragToolD0Ev
@@ -727,8 +727,8 @@ pub fn stub_0x2ea2b0() {
 // 0x2ea2b8 — __ZN3RBX11LuaDragToolD2Ev
 #[doc(alias = "RBX::LuaDragTool::~LuaDragTool()")]
 #[doc(alias = "__ZN3RBX11LuaDragToolD2Ev")]
-pub fn stub_0x2ea2b8() -> ! {
-    todo!("0x2ea2b8 RBX::LuaDragTool::~LuaDragTool()")
+pub fn stub_0x2ea2b8() {
+    // IDA 0x2ea2b8: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2ea3f8 — __ZThn36_N3RBX11LuaDragToolD1Ev

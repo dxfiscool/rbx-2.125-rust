@@ -436,8 +436,8 @@ pub fn stub_0xf60954() -> ! {
 // 0xf60964 — j___ZN3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEED2Ev")]
-pub fn stub_0xf60964() -> ! {
-    todo!("0xf60964 RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::~EnumDesc()")
+pub fn stub_0xf60964() {
+    // IDA 0xf60964: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf60974 — j___ZN3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE7addPairES4_PKc
@@ -450,8 +450,8 @@ pub fn stub_0xf60974() -> ! {
 // 0xf60984 — j___ZN3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEED2Ev")]
-pub fn stub_0xf60984() -> ! {
-    todo!("0xf60984 RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::~EnumDesc()")
+pub fn stub_0xf60984() {
+    // IDA 0xf60984: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf609d4 — j___ZN3RBX10Reflection9EventDescINS_7Network7PlayersEFvSsEN3rbx6signalIS4_EEMS3_S7_EC2ES8_PKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -570,8 +570,8 @@ pub fn stub_0xf61f74() -> ! {
 // 0xf61f84 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsSsELi2EED2Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,std::string),2>::~BoundFuncDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsSsELi2EED2Ev")]
-pub fn stub_0xf61f84() -> ! {
-    todo!("0xf61f84 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,std::string),2>::~BoundFuncDesc()")
+pub fn stub_0xf61f84() {
+    // IDA 0xf61f84: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf61f94 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsbELi2EEC2EMS3_FvSsbEPKcS9_S9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE

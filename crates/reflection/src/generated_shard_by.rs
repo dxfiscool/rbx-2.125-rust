@@ -429,8 +429,8 @@ pub fn stub_f40724() -> ! {
 // 0xf40734 — j___ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEENS2_16CenterDialogTypeENS_3Lua15WeakFunctionRefES9_ELi4EED2Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),4>::~BoundFuncDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEENS2_16CenterDialogTypeENS_3Lua15WeakFunctionRefES9_ELi4EED2Ev")]
-pub fn stub_f40734() -> ! {
-    todo!("0xf40734 RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),4>::~BoundFuncDesc()")
+pub fn stub_f40734() {
+    // IDA 0xf40734: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf40744 — j___ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvNS2_10SpecialKeyEELi1EE16declareSignatureEPKcNS0_7VariantE
@@ -478,8 +478,8 @@ pub fn stub_f40794() -> ! {
 // 0xf407a4 — j___ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvSsSsSsiNS_3Lua15WeakFunctionRefEELi5EED2Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(std::string,std::string,std::string,int,RBX::Lua::WeakFunctionRef),5>::~BoundFuncDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvSsSsSsiNS_3Lua15WeakFunctionRefEELi5EED2Ev")]
-pub fn stub_f407a4() -> ! {
-    todo!("0xf407a4 RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(std::string,std::string,std::string,int,RBX::Lua::WeakFunctionRef),5>::~BoundFuncDesc()")
+pub fn stub_f407a4() {
+    // IDA 0xf407a4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf407b4 — j___ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFviiiiELi4EE16declareSignatureEPKcNS0_7VariantES6_S7_S6_S7_S6_S7_
@@ -541,8 +541,8 @@ pub fn stub_f40824() -> ! {
 // 0xf40834 — j___ZN3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiService::SpecialKey>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEED2Ev")]
-pub fn stub_f40834() -> ! {
-    todo!("0xf40834 RBX::Reflection::EnumDesc<RBX::GuiService::SpecialKey>::~EnumDesc()")
+pub fn stub_f40834() {
+    // IDA 0xf40834: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf40844 — j___ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEE7addPairES3_PKc
@@ -555,8 +555,8 @@ pub fn stub_f40844() -> ! {
 // 0xf40854 — j___ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiService::CenterDialogType>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEED2Ev")]
-pub fn stub_f40854() -> ! {
-    todo!("0xf40854 RBX::Reflection::EnumDesc<RBX::GuiService::CenterDialogType>::~EnumDesc()")
+pub fn stub_f40854() {
+    // IDA 0xf40854: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf40864 — j___ZN3RBX10Reflection9ArgHelper6getArgINS_10GuiService10SpecialKeyELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE

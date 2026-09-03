@@ -172,8 +172,8 @@ pub fn stub_0x2ff91c() -> ! {
 // 0x2ff978 — __ZNSt6vectorIN3RBX14AsyncHttpQueue15CallbackWrapperESaIS2_EED2Ev
 #[doc(alias = "std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>::~vector()")]
 #[doc(alias = "__ZNSt6vectorIN3RBX14AsyncHttpQueue15CallbackWrapperESaIS2_EED2Ev")]
-pub fn stub_0x2ff978() -> ! {
-    todo!("0x2ff978 std::vector<RBX::AsyncHttpQueue::CallbackWrapper,std::allocator<RBX::AsyncHttpQueue::CallbackWrapper>>::~vector()")
+pub fn stub_0x2ff978() {
+    // IDA 0x2ff978: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2ffa44 — __ZNSt4listIN3RBX14AsyncHttpQueue9FailedUrlESaIS2_EE14_M_create_nodeERKS2_
@@ -200,15 +200,15 @@ pub fn stub_0x2ffbfc() -> ! {
 // 0x2ffd34 — __ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Http>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEED1Ev")]
-pub fn stub_0x2ffd34() -> ! {
-    todo!("0x2ffd34 boost::detail::sp_counted_impl_p<RBX::Http>::~sp_counted_impl_p()")
+pub fn stub_0x2ffd34() {
+    // IDA 0x2ffd34: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2ffd38 — __ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Http>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEED0Ev")]
-pub fn stub_0x2ffd38() -> ! {
-    todo!("0x2ffd38 boost::detail::sp_counted_impl_p<RBX::Http>::~sp_counted_impl_p()")
+pub fn stub_0x2ffd38() {
+    // IDA 0x2ffd38: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2ffd3c — __ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEE7disposeEv
@@ -249,8 +249,8 @@ pub fn stub_0x2ffe98() -> ! {
 // 0x2fff70 — __ZN5boost6detail17sp_counted_impl_pISsED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<std::string>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pISsED0Ev")]
-pub fn stub_0x2fff70() -> ! {
-    todo!("0x2fff70 boost::detail::sp_counted_impl_p<std::string>::~sp_counted_impl_p()")
+pub fn stub_0x2fff70() {
+    // IDA 0x2fff70: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2fff78 — __ZN5boost6detail17sp_counted_impl_pISsE11get_deleterERKSt9type_info
@@ -476,8 +476,8 @@ pub fn stub_0x301f74() -> ! {
 // 0x302028 — __ZNSt11_Deque_baseIN3RBX14AsyncHttpQueue14AsyncRetryTaskESaIS2_EED2Ev
 #[doc(alias = "std::_Deque_base<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::~_Deque_base()")]
 #[doc(alias = "__ZNSt11_Deque_baseIN3RBX14AsyncHttpQueue14AsyncRetryTaskESaIS2_EED2Ev")]
-pub fn stub_0x302028() -> ! {
-    todo!("0x302028 std::_Deque_base<RBX::AsyncHttpQueue::AsyncRetryTask,std::allocator<RBX::AsyncHttpQueue::AsyncRetryTask>>::~_Deque_base()")
+pub fn stub_0x302028() {
+    // IDA 0x302028: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x302054 — __ZNSt11_Deque_baseIN3RBX14AsyncHttpQueue14AsyncRetryTaskESaIS2_EE17_M_initialize_mapEm
@@ -532,15 +532,15 @@ pub fn stub_0x302418() -> ! {
 // 0x30266c — __ZN3RBX18HttpQueueStatsItemD1Ev
 #[doc(alias = "RBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
 #[doc(alias = "__ZN3RBX18HttpQueueStatsItemD1Ev")]
-pub fn stub_0x30266c() -> ! {
-    todo!("0x30266c RBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
+pub fn stub_0x30266c() {
+    // IDA 0x30266c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3026a8 — __ZN3RBX18HttpQueueStatsItemD0Ev
 #[doc(alias = "RBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
 #[doc(alias = "__ZN3RBX18HttpQueueStatsItemD0Ev")]
-pub fn stub_0x3026a8() -> ! {
-    todo!("0x3026a8 RBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
+pub fn stub_0x3026a8() {
+    // IDA 0x3026a8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x30277c — __ZN3RBX18HttpQueueStatsItem6updateEv
@@ -595,15 +595,15 @@ pub fn stub_0x302bac() -> ! {
 // 0x302cb4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18HttpQueueStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX18HttpQueueStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_0x302cb4() -> ! {
-    todo!("0x302cb4 boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x302cb4() {
+    // IDA 0x302cb4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x302cb8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18HttpQueueStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX18HttpQueueStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_0x302cb8() -> ! {
-    todo!("0x302cb8 boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x302cb8() {
+    // IDA 0x302cb8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x302cbc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18HttpQueueStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv

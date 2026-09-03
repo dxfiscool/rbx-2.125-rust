@@ -18,8 +18,8 @@ pub fn stub_0x3bb1dc() -> ! {
 // type: _DWORD *__fastcall(int, int, int, int, int, int)
 #[doc(alias = "rbx::remote_signal<void ()(std::string)>::~remote_signal()")]
 #[doc(alias = "__ZN3rbx13remote_signalIFvSsEED2Ev")]
-pub fn stub_0x3bb204() -> ! {
-    todo!("0x3bb204")
+pub fn stub_0x3bb204() {
+    // IDA 0x3bb204: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bb350 — __GLOBAL__I_a_161
@@ -57,16 +57,16 @@ pub fn stub_0x3bb99c() -> ! {
 // type: void __fastcall(RBX::FormFactorPart *__hidden this)
 #[doc(alias = "RBX::FormFactorPart::~FormFactorPart()")]
 #[doc(alias = "__ZN3RBX14FormFactorPartD0Ev")]
-pub fn stub_0x3bbbb8() -> ! {
-    todo!("0x3bbbb8")
+pub fn stub_0x3bbbb8() {
+    // IDA 0x3bbbb8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bbc68 — __ZN3RBX14FormFactorPartD1Ev
 // type: void __fastcall(RBX::FormFactorPart *__hidden this)
 #[doc(alias = "RBX::FormFactorPart::~FormFactorPart()")]
 #[doc(alias = "__ZN3RBX14FormFactorPartD1Ev")]
-pub fn stub_0x3bbc68() -> ! {
-    todo!("0x3bbc68")
+pub fn stub_0x3bbc68() {
+    // IDA 0x3bbc68: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bbc78 — __ZThn32_N3RBX14FormFactorPartD0Ev
@@ -97,8 +97,8 @@ pub fn stub_0x3bbc88() {
 // type: void __fastcall(RBX::FormFactorPart *__hidden this)
 #[doc(alias = "RBX::FormFactorPart::~FormFactorPart()")]
 #[doc(alias = "__ZN3RBX14FormFactorPartD2Ev")]
-pub fn stub_0x3bbc90() -> ! {
-    todo!("0x3bbc90")
+pub fn stub_0x3bbc90() {
+    // IDA 0x3bbc90: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bbc98 — __ZThn32_N3RBX14FormFactorPartD1Ev
@@ -145,16 +145,16 @@ pub fn stub_0x3bbff0() -> ! {
 // type: void __fastcall(RBX::BasicPartInstance *__hidden this)
 #[doc(alias = "RBX::BasicPartInstance::~BasicPartInstance()")]
 #[doc(alias = "__ZN3RBX17BasicPartInstanceD0Ev")]
-pub fn stub_0x3bc054() -> ! {
-    todo!("0x3bc054")
+pub fn stub_0x3bc054() {
+    // IDA 0x3bc054: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bc104 — __ZN3RBX17BasicPartInstanceD1Ev
 // type: void __fastcall(RBX::BasicPartInstance *__hidden this)
 #[doc(alias = "RBX::BasicPartInstance::~BasicPartInstance()")]
 #[doc(alias = "__ZN3RBX17BasicPartInstanceD1Ev")]
-pub fn stub_0x3bc104() -> ! {
-    todo!("0x3bc104")
+pub fn stub_0x3bc104() {
+    // IDA 0x3bc104: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bc114 — __ZThn32_N3RBX17BasicPartInstanceD0Ev
@@ -185,8 +185,8 @@ pub fn stub_0x3bc124() {
 // type: void __fastcall(RBX::BasicPartInstance *__hidden this)
 #[doc(alias = "RBX::BasicPartInstance::~BasicPartInstance()")]
 #[doc(alias = "__ZN3RBX17BasicPartInstanceD2Ev")]
-pub fn stub_0x3bc12c() -> ! {
-    todo!("0x3bc12c")
+pub fn stub_0x3bc12c() {
+    // IDA 0x3bc12c: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bc134 — __ZThn32_N3RBX17BasicPartInstanceD1Ev
@@ -269,15 +269,15 @@ pub fn stub_0x3bc6dc() -> &'static str {
 // 0x3bca1c — __ZN3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEED1Ev
 // type: void __fastcall(RBX::PartInstance *)
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEED1Ev")]
-pub fn stub_0x3bca1c() -> ! {
-    todo!("0x3bca1c")
+pub fn stub_0x3bca1c() {
+    // IDA 0x3bca1c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bca30 — __ZN3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEED0Ev
 // type: void __fastcall(RBX::PartInstance *)
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEED0Ev")]
-pub fn stub_0x3bca30() -> ! {
-    todo!("0x3bca30")
+pub fn stub_0x3bca30() {
+    // IDA 0x3bca30: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bcae0 — __ZThn132_N3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEED1Ev
@@ -312,15 +312,15 @@ pub fn stub_0x3bcbb4() -> &'static str {
 // 0x3bcedc — __ZN3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEED1Ev
 // type: void __fastcall(RBX::PartInstance *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEED1Ev")]
-pub fn stub_0x3bcedc() -> ! {
-    todo!("0x3bcedc")
+pub fn stub_0x3bcedc() {
+    // IDA 0x3bcedc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bcef0 — __ZN3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEED0Ev
 // type: void __fastcall(RBX::PartInstance *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEED0Ev")]
-pub fn stub_0x3bcef0() -> ! {
-    todo!("0x3bcef0")
+pub fn stub_0x3bcef0() {
+    // IDA 0x3bcef0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bcfa0 — __ZThn132_N3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEED1Ev
@@ -487,16 +487,16 @@ pub fn stub_0x3bf044() -> ! {
 // type: void __fastcall(RBX::BevelMesh *__hidden this)
 #[doc(alias = "RBX::BevelMesh::~BevelMesh()")]
 #[doc(alias = "__ZN3RBX9BevelMeshD1Ev")]
-pub fn stub_0x3bf1b0() -> ! {
-    todo!("0x3bf1b0")
+pub fn stub_0x3bf1b0() {
+    // IDA 0x3bf1b0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bf1b4 — __ZN3RBX9BevelMeshD0Ev
 // type: void __fastcall(RBX::BevelMesh *__hidden this)
 #[doc(alias = "RBX::BevelMesh::~BevelMesh()")]
 #[doc(alias = "__ZN3RBX9BevelMeshD0Ev")]
-pub fn stub_0x3bf1b4() -> ! {
-    todo!("0x3bf1b4")
+pub fn stub_0x3bf1b4() {
+    // IDA 0x3bf1b4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bf254 — __ZNK3RBX17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEE12getClassNameEv
@@ -871,16 +871,16 @@ pub fn stub_0x3c1130() -> ! {
 // type: void __fastcall(RBX::BillboardGui *__hidden this)
 #[doc(alias = "RBX::BillboardGui::~BillboardGui()")]
 #[doc(alias = "__ZN3RBX12BillboardGuiD1Ev")]
-pub fn stub_0x3c11f8() -> ! {
-    todo!("0x3c11f8")
+pub fn stub_0x3c11f8() {
+    // IDA 0x3c11f8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3c11fc — __ZN3RBX12BillboardGuiD0Ev
 // type: void __fastcall(RBX::BillboardGui *__hidden this)
 #[doc(alias = "RBX::BillboardGui::~BillboardGui()")]
 #[doc(alias = "__ZN3RBX12BillboardGuiD0Ev")]
-pub fn stub_0x3c11fc() -> ! {
-    todo!("0x3c11fc")
+pub fn stub_0x3c11fc() {
+    // IDA 0x3c11fc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3c129c — __ZN3RBX12BillboardGui17onServiceProviderEPNS_15ServiceProviderES2_

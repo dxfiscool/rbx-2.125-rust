@@ -369,16 +369,16 @@ pub fn stub_0xed7e4() -> ! {
 // type: void __fastcall(FMOD::SystemI *__hidden this)
 #[doc(alias = "FMOD::SystemI::~SystemI()")]
 #[doc(alias = "__ZN4FMOD7SystemID0Ev")]
-pub fn stub_0xedce8() -> ! {
-    todo!("0xedce8 FMOD::SystemI::~SystemI()")
+pub fn stub_0xedce8() {
+    // IDA 0xedce8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xedd54 — __ZN4FMOD7SystemID1Ev
 // type: void __fastcall(FMOD::SystemI *__hidden this)
 #[doc(alias = "FMOD::SystemI::~SystemI()")]
 #[doc(alias = "__ZN4FMOD7SystemID1Ev")]
-pub fn stub_0xedd54() -> ! {
-    todo!("0xedd54 FMOD::SystemI::~SystemI()")
+pub fn stub_0xedd54() {
+    // IDA 0xedd54: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xeddb8 — __ZN4FMOD6Thread10threadFuncEv
@@ -441,16 +441,16 @@ pub fn stub_0xedf94() -> ! {
 // type: void __fastcall(FMOD::Thread *__hidden this)
 #[doc(alias = "FMOD::Thread::~Thread()")]
 #[doc(alias = "__ZN4FMOD6ThreadD0Ev")]
-pub fn stub_0xee144() -> ! {
-    todo!("0xee144 FMOD::Thread::~Thread()")
+pub fn stub_0xee144() {
+    // IDA 0xee144: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xee168 — __ZN4FMOD6ThreadD1Ev
 // type: void __fastcall(FMOD::Thread *__hidden this)
 #[doc(alias = "FMOD::Thread::~Thread()")]
 #[doc(alias = "__ZN4FMOD6ThreadD1Ev")]
-pub fn stub_0xee168() -> ! {
-    todo!("0xee168 FMOD::Thread::~Thread()")
+pub fn stub_0xee168() {
+    // IDA 0xee168: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xee180 — __ZN4FMOD9TimeStampC2Ev

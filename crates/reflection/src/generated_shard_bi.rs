@@ -93,8 +93,8 @@ pub fn stub_f25b54() -> ! {
 // 0xf25b64 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED2Ev")]
-pub fn stub_f25b64() -> ! {
-    todo!("0xf25b64 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::~EnumDesc()")
+pub fn stub_f25b64() {
+    // IDA 0xf25b64: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf25b74 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE7addPairES3_PKc
@@ -114,8 +114,8 @@ pub fn stub_f25b84() -> ! {
 // 0xf25b94 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED2Ev")]
-pub fn stub_f25b94() -> ! {
-    todo!("0xf25b94 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::~EnumDesc()")
+pub fn stub_f25b94() {
+    // IDA 0xf25b94: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf25ba4 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE7addPairES3_PKc
@@ -128,8 +128,8 @@ pub fn stub_f25ba4() -> ! {
 // 0xf25bb4 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED2Ev")]
-pub fn stub_f25bb4() -> ! {
-    todo!("0xf25bb4 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::~EnumDesc()")
+pub fn stub_f25bb4() {
+    // IDA 0xf25bb4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf25bc4 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE7addPairES3_PKc
@@ -142,8 +142,8 @@ pub fn stub_f25bc4() -> ! {
 // 0xf25bd4 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED2Ev")]
-pub fn stub_f25bd4() -> ! {
-    todo!("0xf25bd4 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::~EnumDesc()")
+pub fn stub_f25bd4() {
+    // IDA 0xf25bd4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf25be4 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE7addPairES3_PKc
@@ -156,8 +156,8 @@ pub fn stub_f25be4() -> ! {
 // 0xf25bf4 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED2Ev")]
-pub fn stub_f25bf4() -> ! {
-    todo!("0xf25bf4 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()")
+pub fn stub_f25bf4() {
+    // IDA 0xf25bf4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf25c04 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE7addPairES3_PKc
@@ -170,8 +170,8 @@ pub fn stub_f25c04() -> ! {
 // 0xf25c14 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED2Ev")]
-pub fn stub_f25c14() -> ! {
-    todo!("0xf25c14 RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")
+pub fn stub_f25c14() {
+    // IDA 0xf25c14: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf25c24 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE7addPairES3_PKc
@@ -184,8 +184,8 @@ pub fn stub_f25c24() -> ! {
 // 0xf25c34 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED2Ev")]
-pub fn stub_f25c34() -> ! {
-    todo!("0xf25c34 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::~EnumDesc()")
+pub fn stub_f25c34() {
+    // IDA 0xf25c34: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf25c44 — j___ZN3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EEC2I19CRenderSettingsItemEEPKcS7_MT_SsNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE

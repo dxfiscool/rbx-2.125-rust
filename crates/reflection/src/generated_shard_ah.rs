@@ -138,74 +138,74 @@ pub fn stub_871104() -> ! {
 
 // 0x8712f0 — __ZN3RBX10Reflection14PropDescriptorINS_19MegaClusterInstanceESsED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,std::string>::~PropDescriptor()")]
-pub fn stub_8712f0() -> ! {
-    todo!("0x8712f0 RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,std::string>::~PropDescriptor()")
+pub fn stub_8712f0() {
+    // IDA 0x8712f0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x871314 — __ZN3RBX10Reflection14PropDescriptorINS_19MegaClusterInstanceENS_12Region3int16EED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,RBX::Region3int16>::~PropDescriptor()")]
-pub fn stub_871314() -> ! {
-    todo!("0x871314 RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,RBX::Region3int16>::~PropDescriptor()")
+pub fn stub_871314() {
+    // IDA 0x871314: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x871338 — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFN5boost10shared_ptrIKNS0_5TupleEEEiiiELi3EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(int,int,int),3>::~BoundFuncDesc()")]
-pub fn stub_871338() -> ! {
-    todo!("0x871338 RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,boost::shared_ptr<RBX::Reflection::Tuple const> ()(int,int,int),3>::~BoundFuncDesc()")
+pub fn stub_871338() {
+    // IDA 0x871338: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x87138c — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFviiiNS_5Voxel12CellMaterialENS3_9CellBlockENS3_15CellOrientationEELi6EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(int,int,int,RBX::Voxel::CellMaterial,RBX::Voxel::CellBlock,RBX::Voxel::CellOrientation),6>::~BoundFuncDesc()")]
-pub fn stub_87138c() -> ! {
-    todo!("0x87138c RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(int,int,int,RBX::Voxel::CellMaterial,RBX::Voxel::CellBlock,RBX::Voxel::CellOrientation),6>::~BoundFuncDesc()")
+pub fn stub_87138c() {
+    // IDA 0x87138c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x871390 — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFvNS_12Region3int16ENS_5Voxel12CellMaterialENS4_9CellBlockENS4_15CellOrientationEELi4EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(RBX::Region3int16,RBX::Voxel::CellMaterial,RBX::Voxel::CellBlock,RBX::Voxel::CellOrientation),4>::~BoundFuncDesc()")]
-pub fn stub_871390() -> ! {
-    todo!("0x871390 RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(RBX::Region3int16,RBX::Voxel::CellMaterial,RBX::Voxel::CellBlock,RBX::Voxel::CellOrientation),4>::~BoundFuncDesc()")
+pub fn stub_871390() {
+    // IDA 0x871390: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8713ec — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFviiiNS_5Voxel14WaterCellForceENS3_18WaterCellDirectionEELi5EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(int,int,int,RBX::Voxel::WaterCellForce,RBX::Voxel::WaterCellDirection),5>::~BoundFuncDesc()")]
-pub fn stub_8713ec() -> ! {
-    todo!("0x8713ec RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(int,int,int,RBX::Voxel::WaterCellForce,RBX::Voxel::WaterCellDirection),5>::~BoundFuncDesc()")
+pub fn stub_8713ec() {
+    // IDA 0x8713ec: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x871454 — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFbiiiELi3EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,bool ()(int,int,int),3>::~BoundFuncDesc()")]
-pub fn stub_871454() -> ! {
-    todo!("0x871454 RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,bool ()(int,int,int),3>::~BoundFuncDesc()")
+pub fn stub_871454() {
+    // IDA 0x871454: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8714a8 — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFvNS_12Region3int16EELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(RBX::Region3int16),1>::~BoundFuncDesc()")]
-pub fn stub_8714a8() -> ! {
-    todo!("0x8714a8 RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(RBX::Region3int16),1>::~BoundFuncDesc()")
+pub fn stub_8714a8() {
+    // IDA 0x8714a8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x871508 — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFN3G3D7Vector3EiiiELi3EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,G3D::Vector3 ()(int,int,int),3>::~BoundFuncDesc()")]
-pub fn stub_871508() -> ! {
-    todo!("0x871508 RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,G3D::Vector3 ()(int,int,int),3>::~BoundFuncDesc()")
+pub fn stub_871508() {
+    // IDA 0x871508: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x87155c — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFN3G3D7Vector3ES4_ELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,G3D::Vector3 ()(G3D::Vector3),1>::~BoundFuncDesc()")]
-pub fn stub_87155c() -> ! {
-    todo!("0x87155c RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,G3D::Vector3 ()(G3D::Vector3),1>::~BoundFuncDesc()")
+pub fn stub_87155c() {
+    // IDA 0x87155c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x87159c — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFvvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_87159c() -> ! {
-    todo!("0x87159c RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_87159c() {
+    // IDA 0x87159c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8715c0 — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFivELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,int ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_8715c0() -> ! {
-    todo!("0x8715c0 RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,int ()(void),0>::~BoundFuncDesc()")
+pub fn stub_8715c0() {
+    // IDA 0x8715c0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8736a0 — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFivELi0EEC2EMS2_FivEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -216,8 +216,8 @@ pub fn stub_8736a0() -> ! {
 
 // 0x8737a4 — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFivELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,int ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_8737a4() -> ! {
-    todo!("0x8737a4 RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,int ()(void),0>::~BoundFuncDesc()")
+pub fn stub_8737a4() {
+    // IDA 0x8737a4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x873858 — __ZNK3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFivELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -240,8 +240,8 @@ pub fn stub_8738ac() -> ! {
 
 // 0x8739b0 — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFvvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_8739b0() -> ! {
-    todo!("0x8739b0 RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_8739b0() {
+    // IDA 0x8739b0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x873a64 — __ZNK3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -264,8 +264,8 @@ pub fn stub_873bfc() -> ! {
 
 // 0x873c2c — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFN3G3D7Vector3ES4_ELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,G3D::Vector3 ()(G3D::Vector3),1>::~BoundFuncDesc()")]
-pub fn stub_873c2c() -> ! {
-    todo!("0x873c2c RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,G3D::Vector3 ()(G3D::Vector3),1>::~BoundFuncDesc()")
+pub fn stub_873c2c() {
+    // IDA 0x873c2c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x873d00 — __ZNK3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFN3G3D7Vector3ES4_ELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -300,8 +300,8 @@ pub fn stub_874168() -> ! {
 
 // 0x8741d0 — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFN3G3D7Vector3EiiiELi3EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,G3D::Vector3 ()(int,int,int),3>::~BoundFuncDesc()")]
-pub fn stub_8741d0() -> ! {
-    todo!("0x8741d0 RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,G3D::Vector3 ()(int,int,int),3>::~BoundFuncDesc()")
+pub fn stub_8741d0() {
+    // IDA 0x8741d0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8742bc — __ZNK3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFN3G3D7Vector3EiiiELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -330,8 +330,8 @@ pub fn stub_8744d8() -> ! {
 
 // 0x874508 — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFvNS_12Region3int16EELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(RBX::Region3int16),1>::~BoundFuncDesc()")]
-pub fn stub_874508() -> ! {
-    todo!("0x874508 RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(RBX::Region3int16),1>::~BoundFuncDesc()")
+pub fn stub_874508() {
+    // IDA 0x874508: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8745dc — __ZNK3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFvNS_12Region3int16EELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -360,8 +360,8 @@ pub fn stub_874a08() -> ! {
 
 // 0x874a70 — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFbiiiELi3EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,bool ()(int,int,int),3>::~BoundFuncDesc()")]
-pub fn stub_874a70() -> ! {
-    todo!("0x874a70 RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,bool ()(int,int,int),3>::~BoundFuncDesc()")
+pub fn stub_874a70() {
+    // IDA 0x874a70: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x874b5c — __ZNK3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFbiiiELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -390,8 +390,8 @@ pub fn stub_874ec4() -> ! {
 
 // 0x874f64 — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFviiiNS_5Voxel14WaterCellForceENS3_18WaterCellDirectionEELi5EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(int,int,int,RBX::Voxel::WaterCellForce,RBX::Voxel::WaterCellDirection),5>::~BoundFuncDesc()")]
-pub fn stub_874f64() -> ! {
-    todo!("0x874f64 RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(int,int,int,RBX::Voxel::WaterCellForce,RBX::Voxel::WaterCellDirection),5>::~BoundFuncDesc()")
+pub fn stub_874f64() {
+    // IDA 0x874f64: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x875068 — __ZNK3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFviiiNS_5Voxel14WaterCellForceENS3_18WaterCellDirectionEELi5EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -438,8 +438,8 @@ pub fn stub_875728() -> ! {
 
 // 0x8757a8 — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFvNS_12Region3int16ENS_5Voxel12CellMaterialENS4_9CellBlockENS4_15CellOrientationEELi4EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(RBX::Region3int16,RBX::Voxel::CellMaterial,RBX::Voxel::CellBlock,RBX::Voxel::CellOrientation),4>::~BoundFuncDesc()")]
-pub fn stub_8757a8() -> ! {
-    todo!("0x8757a8 RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(RBX::Region3int16,RBX::Voxel::CellMaterial,RBX::Voxel::CellBlock,RBX::Voxel::CellOrientation),4>::~BoundFuncDesc()")
+pub fn stub_8757a8() {
+    // IDA 0x8757a8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8758a0 — __ZNK3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFvNS_12Region3int16ENS_5Voxel12CellMaterialENS4_9CellBlockENS4_15CellOrientationEELi4EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -498,8 +498,8 @@ pub fn stub_8761ec() -> ! {
 
 // 0x8762ac — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFviiiNS_5Voxel12CellMaterialENS3_9CellBlockENS3_15CellOrientationEELi6EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(int,int,int,RBX::Voxel::CellMaterial,RBX::Voxel::CellBlock,RBX::Voxel::CellOrientation),6>::~BoundFuncDesc()")]
-pub fn stub_8762ac() -> ! {
-    todo!("0x8762ac RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,void ()(int,int,int,RBX::Voxel::CellMaterial,RBX::Voxel::CellBlock,RBX::Voxel::CellOrientation),6>::~BoundFuncDesc()")
+pub fn stub_8762ac() {
+    // IDA 0x8762ac: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x87634c — __ZNK3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFviiiNS_5Voxel12CellMaterialENS3_9CellBlockENS3_15CellOrientationEELi6EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -558,8 +558,8 @@ pub fn stub_876ba8() -> ! {
 
 // 0x876c10 — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFN5boost10shared_ptrIKNS0_5TupleEEEiiiELi3EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(int,int,int),3>::~BoundFuncDesc()")]
-pub fn stub_876c10() -> ! {
-    todo!("0x876c10 RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,boost::shared_ptr<RBX::Reflection::Tuple const> ()(int,int,int),3>::~BoundFuncDesc()")
+pub fn stub_876c10() {
+    // IDA 0x876c10: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x876cfc — __ZNK3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFN5boost10shared_ptrIKNS0_5TupleEEEiiiELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -588,8 +588,8 @@ pub fn stub_876f5c() -> ! {
 
 // 0x877080 — __ZN3RBX10Reflection14PropDescriptorINS_19MegaClusterInstanceENS_12Region3int16EED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,RBX::Region3int16>::~PropDescriptor()")]
-pub fn stub_877080() -> ! {
-    todo!("0x877080 RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,RBX::Region3int16>::~PropDescriptor()")
+pub fn stub_877080() {
+    // IDA 0x877080: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8770ac — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_12Region3int16EE10isReadOnlyEv
@@ -630,14 +630,14 @@ pub fn stub_8772d8() -> ! {
 
 // 0x877300 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_12Region3int16EED1Ev
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Region3int16>::~TypedPropertyDescriptor()")]
-pub fn stub_877300() -> ! {
-    todo!("0x877300 RBX::Reflection::TypedPropertyDescriptor<RBX::Region3int16>::~TypedPropertyDescriptor()")
+pub fn stub_877300() {
+    // IDA 0x877300: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x877324 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_12Region3int16EED0Ev
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Region3int16>::~TypedPropertyDescriptor()")]
-pub fn stub_877324() -> ! {
-    todo!("0x877324 RBX::Reflection::TypedPropertyDescriptor<RBX::Region3int16>::~TypedPropertyDescriptor()")
+pub fn stub_877324() {
+    // IDA 0x877324: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x877350 — __ZNK3RBX10Reflection14PropDescriptorINS_19MegaClusterInstanceENS_12Region3int16EE7GetImplIMS2_KFKS3_vEE10isReadOnlyEv
@@ -672,8 +672,8 @@ pub fn stub_8774a0() -> ! {
 
 // 0x8775b4 — __ZN3RBX10Reflection14PropDescriptorINS_19MegaClusterInstanceESsED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,std::string>::~PropDescriptor()")]
-pub fn stub_8775b4() -> ! {
-    todo!("0x8775b4 RBX::Reflection::PropDescriptor<RBX::MegaClusterInstance,std::string>::~PropDescriptor()")
+pub fn stub_8775b4() {
+    // IDA 0x8775b4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8775e0 — __ZNK3RBX10Reflection14PropDescriptorINS_19MegaClusterInstanceESsE10GetSetImplIMS2_KFSsvEMS2_FvRKSsEE10isReadOnlyEv

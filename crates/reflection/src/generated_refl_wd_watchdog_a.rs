@@ -32,16 +32,16 @@ pub fn stub_0xb5f6f8() {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator::StreamJob,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS2_7Network10Replicator9StreamJobES6_EENSB_5list2INSB_5valueIPSH_EENSA_3argILi1EEEEEEEED1Ev")]
-pub fn stub_0xb5fd70() -> ! {
-    todo!("0xb5fd70")
+pub fn stub_0xb5fd70() {
+    // IDA 0xb5fd70: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xb5fdcc — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS2_7Network10Replicator9StreamJobES6_EENSB_5list2INSB_5valueIPSH_EENSA_3argILi1EEEEEEEED0Ev
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator::StreamJob,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS2_7Network10Replicator9StreamJobES6_EENSB_5list2INSB_5valueIPSH_EENSA_3argILi1EEEEEEEED0Ev")]
-pub fn stub_0xb5fdcc() -> ! {
-    todo!("0xb5fdcc")
+pub fn stub_0xb5fdcc() {
+    // IDA 0xb5fdcc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xb5fed4 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_7Network10Replicator9StreamJobES7_EENSC_5list2INSC_5valueIPSI_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
@@ -87,15 +87,15 @@ pub fn stub_0xbf3778() {
 // 0xc2d180 — __ZN3RBX10Reflection15ClassDescriptorD1Ev
 #[doc(alias = "RBX::Reflection::ClassDescriptor::~ClassDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection15ClassDescriptorD1Ev")]
-pub fn stub_0xc2d180() -> ! {
-    todo!("0xc2d180")
+pub fn stub_0xc2d180() {
+    // IDA 0xc2d180: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc2d190 — __ZN3RBX10Reflection15ClassDescriptorD0Ev
 #[doc(alias = "RBX::Reflection::ClassDescriptor::~ClassDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection15ClassDescriptorD0Ev")]
-pub fn stub_0xc2d190() -> ! {
-    todo!("0xc2d190")
+pub fn stub_0xc2d190() {
+    // IDA 0xc2d190: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xc2d3b0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12CylinderMeshES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -207,8 +207,8 @@ pub fn stub_0xf25b54() -> ! {
 // 0xf25b64 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED2Ev")]
-pub fn stub_0xf25b64() -> ! {
-    todo!("0xf25b64")
+pub fn stub_0xf25b64() {
+    // IDA 0xf25b64: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf25b74 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE7addPairES3_PKc
@@ -228,8 +228,8 @@ pub fn stub_0xf25b84() -> ! {
 // 0xf25b94 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED2Ev")]
-pub fn stub_0xf25b94() -> ! {
-    todo!("0xf25b94")
+pub fn stub_0xf25b94() {
+    // IDA 0xf25b94: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf25ba4 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE7addPairES3_PKc
@@ -242,8 +242,8 @@ pub fn stub_0xf25ba4() -> ! {
 // 0xf25bb4 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED2Ev")]
-pub fn stub_0xf25bb4() -> ! {
-    todo!("0xf25bb4")
+pub fn stub_0xf25bb4() {
+    // IDA 0xf25bb4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf25bc4 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE7addPairES3_PKc
@@ -256,8 +256,8 @@ pub fn stub_0xf25bc4() -> ! {
 // 0xf25bd4 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED2Ev")]
-pub fn stub_0xf25bd4() -> ! {
-    todo!("0xf25bd4")
+pub fn stub_0xf25bd4() {
+    // IDA 0xf25bd4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf25be4 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE7addPairES3_PKc
@@ -270,8 +270,8 @@ pub fn stub_0xf25be4() -> ! {
 // 0xf25bf4 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED2Ev")]
-pub fn stub_0xf25bf4() -> ! {
-    todo!("0xf25bf4")
+pub fn stub_0xf25bf4() {
+    // IDA 0xf25bf4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf25c04 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE7addPairES3_PKc
@@ -284,8 +284,8 @@ pub fn stub_0xf25c04() -> ! {
 // 0xf25c14 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED2Ev")]
-pub fn stub_0xf25c14() -> ! {
-    todo!("0xf25c14")
+pub fn stub_0xf25c14() {
+    // IDA 0xf25c14: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf25c24 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE7addPairES3_PKc
@@ -298,8 +298,8 @@ pub fn stub_0xf25c24() -> ! {
 // 0xf25c34 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED2Ev")]
-pub fn stub_0xf25c34() -> ! {
-    todo!("0xf25c34")
+pub fn stub_0xf25c34() {
+    // IDA 0xf25c34: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf25c44 — j___ZN3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EEC2I19CRenderSettingsItemEEPKcS7_MT_SsNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE

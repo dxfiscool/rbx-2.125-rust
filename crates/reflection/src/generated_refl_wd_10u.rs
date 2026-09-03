@@ -468,15 +468,15 @@ pub fn stub_38e4b4() -> ! {
 // 0x38e90c — __ZN3RBX12AccoutrementD0Ev
 #[doc(alias = "RBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZN3RBX12AccoutrementD0Ev")]
-pub fn stub_38e90c() -> ! {
-    todo!("0x38e90c RBX::Accoutrement::~Accoutrement()")
+pub fn stub_38e90c() {
+    // IDA 0x38e90c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x38e9b8 — __ZN3RBX12AccoutrementD1Ev
 #[doc(alias = "RBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZN3RBX12AccoutrementD1Ev")]
-pub fn stub_38e9b8() -> ! {
-    todo!("0x38e9b8 RBX::Accoutrement::~Accoutrement()")
+pub fn stub_38e9b8() {
+    // IDA 0x38e9b8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x38e9c8 — __ZThn32_N3RBX12AccoutrementD0Ev
@@ -510,8 +510,8 @@ pub fn stub_38e9e0() {
 // 0x38e9e8 — __ZN3RBX12AccoutrementD2Ev
 #[doc(alias = "RBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZN3RBX12AccoutrementD2Ev")]
-pub fn stub_38e9e8() -> ! {
-    todo!("0x38e9e8 RBX::Accoutrement::~Accoutrement()")
+pub fn stub_38e9e8() {
+    // IDA 0x38e9e8: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x38ef1c — __ZThn32_N3RBX12AccoutrementD1Ev
@@ -821,28 +821,28 @@ pub fn stub_3906c4() {
 
 // 0x3906d0 — __ZN3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E7CreatorD1Ev")]
-pub fn stub_3906d0() -> ! {
-    todo!("0x3906d0 __ZN3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E7CreatorD1Ev")
+pub fn stub_3906d0() {
+    // IDA 0x3906d0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3906d4 — __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_3906d4() -> ! {
-    todo!("0x3906d4 __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_3906d4() {
+    // IDA 0x3906d4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3906d8 — __ZN3RBX3HatD1Ev
 #[doc(alias = "RBX::Hat::~Hat()")]
 #[doc(alias = "__ZN3RBX3HatD1Ev")]
-pub fn stub_3906d8() -> ! {
-    todo!("0x3906d8 RBX::Hat::~Hat()")
+pub fn stub_3906d8() {
+    // IDA 0x3906d8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3906ec — __ZN3RBX3HatD0Ev
 #[doc(alias = "RBX::Hat::~Hat()")]
 #[doc(alias = "__ZN3RBX3HatD0Ev")]
-pub fn stub_3906ec() -> ! {
-    todo!("0x3906ec RBX::Hat::~Hat()")
+pub fn stub_3906ec() {
+    // IDA 0x3906ec: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x39079c — __ZNK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE12getClassNameEv

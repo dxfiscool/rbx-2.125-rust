@@ -236,15 +236,15 @@ pub fn stub_2db7a8() -> ! {
 // 0x2db8b0 — __ZN3RBX9CloneToolD0Ev
 #[doc(alias = "RBX::CloneTool::~CloneTool()")]
 #[doc(alias = "__ZN3RBX9CloneToolD0Ev")]
-pub fn stub_2db8b0() -> ! {
-    todo!("0x2db8b0 RBX::CloneTool::~CloneTool()")
+pub fn stub_2db8b0() {
+    // IDA 0x2db8b0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2db950 — __ZN3RBX9CloneToolD1Ev
 #[doc(alias = "RBX::CloneTool::~CloneTool()")]
 #[doc(alias = "__ZN3RBX9CloneToolD1Ev")]
-pub fn stub_2db950() -> ! {
-    todo!("0x2db950 RBX::CloneTool::~CloneTool()")
+pub fn stub_2db950() {
+    // IDA 0x2db950: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2db954 — __ZThn36_N3RBX9CloneToolD0Ev
@@ -257,8 +257,8 @@ pub fn stub_2db954() {
 // 0x2db95c — __ZN3RBX9CloneToolD2Ev
 #[doc(alias = "RBX::CloneTool::~CloneTool()")]
 #[doc(alias = "__ZN3RBX9CloneToolD2Ev")]
-pub fn stub_2db95c() -> ! {
-    todo!("0x2db95c RBX::CloneTool::~CloneTool()")
+pub fn stub_2db95c() {
+    // IDA 0x2db95c: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2dba78 — __ZThn36_N3RBX9CloneToolD1Ev
@@ -345,16 +345,16 @@ pub fn stub_2dc228() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12PartDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")]
-pub fn stub_2dc320() -> ! {
-    todo!("0x2dc320 boost::detail::sp_counted_impl_pd<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_2dc320() {
+    // IDA 0x2dc320: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2dc324 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12PartDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12PartDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")]
-pub fn stub_2dc324() -> ! {
-    todo!("0x2dc324 boost::detail::sp_counted_impl_pd<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_2dc324() {
+    // IDA 0x2dc324: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2dc328 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12PartDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
@@ -677,8 +677,8 @@ pub fn stub_2e01b0() -> ! {
 // 0x2e02d0 — __ZN3G3D6SphereD0Ev
 #[doc(alias = "G3D::Sphere::~Sphere()")]
 #[doc(alias = "__ZN3G3D6SphereD0Ev")]
-pub fn stub_2e02d0() -> ! {
-    todo!("0x2e02d0 G3D::Sphere::~Sphere()")
+pub fn stub_2e02d0() {
+    // IDA 0x2e02d0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2e02d4 — __GLOBAL__I_a_86
@@ -732,16 +732,16 @@ pub fn stub_2e0b98() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")]
-pub fn stub_2e0c90() -> ! {
-    todo!("0x2e0c90 boost::detail::sp_counted_impl_pd<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_2e0c90() {
+    // IDA 0x2e0c90: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e0c94 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")]
-pub fn stub_2e0c94() -> ! {
-    todo!("0x2e0c94 boost::detail::sp_counted_impl_pd<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_2e0c94() {
+    // IDA 0x2e0c94: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2e0c98 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv

@@ -16,8 +16,8 @@ pub fn stub_b2d880() -> ! {
 // 0xb2da94 — __ZN3RBX10Reflection14PropDescriptorINS_7Network10ReplicatorESsED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Replicator,std::string>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7Network10ReplicatorESsED0Ev")]
-pub fn stub_b2da94() -> ! {
-    todo!("0xb2da94 RBX::Reflection::PropDescriptor<RBX::Network::Replicator,std::string>::~PropDescriptor()")
+pub fn stub_b2da94() {
+    // IDA 0xb2da94: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xb2dac0 — __ZNK3RBX10Reflection7Variant3getISsEET_v
@@ -65,8 +65,8 @@ pub fn stub_b2ddc8() -> ! {
 // 0xb2dfdc — __ZN3RBX10Reflection14PropDescriptorINS_7Network10ReplicatorEiED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Replicator,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7Network10ReplicatorEiED0Ev")]
-pub fn stub_b2dfdc() -> ! {
-    todo!("0xb2dfdc RBX::Reflection::PropDescriptor<RBX::Network::Replicator,int>::~PropDescriptor()")
+pub fn stub_b2dfdc() {
+    // IDA 0xb2dfdc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xb2e008 — __ZNK3RBX10Reflection7Variant3getIiEET_v
@@ -114,8 +114,8 @@ pub fn stub_b2e2d4() -> ! {
 // 0xb2e540 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFvdELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,void ()(double),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFvdELi1EED0Ev")]
-pub fn stub_b2e540() -> ! {
-    todo!("0xb2e540 RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,void ()(double),1>::~BoundFuncDesc()")
+pub fn stub_b2e540() {
+    // IDA 0xb2e540: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xb2e63c — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFvdELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -135,8 +135,8 @@ pub fn stub_b2e67c() -> ! {
 // 0xb2e970 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFSsiELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,std::string ()(int),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFSsiELi1EED0Ev")]
-pub fn stub_b2e970() -> ! {
-    todo!("0xb2e970 RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,std::string ()(int),1>::~BoundFuncDesc()")
+pub fn stub_b2e970() {
+    // IDA 0xb2e970: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xb2ea6c — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFSsiELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -149,8 +149,8 @@ pub fn stub_b2ea6c() -> ! {
 // 0xb2ec78 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFvvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFvvELi0EED0Ev")]
-pub fn stub_b2ec78() -> ! {
-    todo!("0xb2ec78 RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_b2ec78() {
+    // IDA 0xb2ec78: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xb2ed54 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -164,8 +164,8 @@ pub fn stub_b2ed54() -> ! {
 // was: RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,boost::shared_ptr<RBX::Instance> ()(void),0>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance> ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFN5boost10shared_ptrINS_8InstanceEEEvELi0EED0Ev")]
-pub fn stub_b2ed78() -> ! {
-    todo!("0xb2ed78 RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance> ()(void),0>::~BoundFuncDesc()")
+pub fn stub_b2ed78() {
+    // IDA 0xb2ed78: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xb2ee54 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFN5boost10shared_ptrINS_8InstanceEEEvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -186,8 +186,8 @@ pub fn stub_b2f098() -> ! {
 // 0xb2f434 — __ZN3RBX10Reflection9EventDescINS_7Network10ReplicatorEFvSsbEN3rbx6signalIS4_EEMS3_S7_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Replicator,void ()(std::string,bool),rbx::signal<void ()(std::string,bool)>,rbx::signal<void ()(std::string,bool)> RBX::Network::Replicator::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_7Network10ReplicatorEFvSsbEN3rbx6signalIS4_EEMS3_S7_ED0Ev")]
-pub fn stub_b2f434() -> ! {
-    todo!("0xb2f434 RBX::Reflection::EventDesc<RBX::Network::Replicator,void ()(std::string,bool),rbx::signal<void ()(std::string,bool)>,rbx::signal<void ()(std::string,bool)> RBX::Network::Replicator::*>::~EventDesc()")
+pub fn stub_b2f434() {
+    // IDA 0xb2f434: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xb2f510 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_7Network10ReplicatorEFvSsbEN3rbx6signalIS4_EEMS3_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -430,16 +430,16 @@ pub fn stub_b3edb8() -> ! {
 // was: rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>>::~callable_slot()
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS2_7Network19InstancePacketCache15CachedBitStreamES6_EENSB_5list2INSB_5valueINSA_10shared_ptrISH_EEEENSA_3argILi1EEEEEEEED1Ev")]
-pub fn stub_b40350() -> ! {
-    todo!("0xb40350 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_b40350() {
+    // IDA 0xb40350: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xb4035c — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS2_7Network19InstancePacketCache15CachedBitStreamES6_EENSB_5list2INSB_5valueINSA_10shared_ptrISH_EEEENSA_3argILi1EEEEEEEED0Ev
 // was: rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>>::~callable_slot()
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS2_7Network19InstancePacketCache15CachedBitStreamES6_EENSB_5list2INSB_5valueINSA_10shared_ptrISH_EEEENSA_3argILi1EEEEEEEED0Ev")]
-pub fn stub_b4035c() -> ! {
-    todo!("0xb4035c rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_b4035c() {
+    // IDA 0xb4035c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xb40414 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_7Network19InstancePacketCache15CachedBitStreamES7_EENSC_5list2INSC_5valueINSB_10shared_ptrISI_EEEENSB_3argILi1EEEEEEELi1ES8_E4callES7_
@@ -461,24 +461,24 @@ pub fn stub_b40430() {
 // was: rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_7Network19InstancePacketCache15CachedBitStreamES7_EENSC_5list2INSC_5valueINSB_10shared_ptrISI_EEEENSB_3argILi1EEEEEEELi1ES8_ED2Ev")]
-pub fn stub_b4044c() -> ! {
-    todo!("0xb4044c rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_b4044c() {
+    // IDA 0xb4044c: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xb405c8 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_7Network19InstancePacketCache15CachedBitStreamES7_EENSC_5list2INSC_5valueINSB_10shared_ptrISI_EEEENSB_3argILi1EEEEEEELi1ES8_ED1Ev
 // was: rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_7Network19InstancePacketCache15CachedBitStreamES7_EENSC_5list2INSC_5valueINSB_10shared_ptrISI_EEEENSB_3argILi1EEEEEEELi1ES8_ED1Ev")]
-pub fn stub_b405c8() -> ! {
-    todo!("0xb405c8 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_b405c8() {
+    // IDA 0xb405c8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xb405d4 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_7Network19InstancePacketCache15CachedBitStreamES7_EENSC_5list2INSC_5valueINSB_10shared_ptrISI_EEEENSB_3argILi1EEEEEEELi1ES8_ED0Ev
 // was: rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_7Network19InstancePacketCache15CachedBitStreamES7_EENSC_5list2INSC_5valueINSB_10shared_ptrISI_EEEENSB_3argILi1EEEEEEELi1ES8_ED0Ev")]
-pub fn stub_b405d4() -> ! {
-    todo!("0xb405d4 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_b405d4() {
+    // IDA 0xb405d4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xb52254 — __ZN3RBX7Network10Replicator18ChangePropertyItemC1EPS1_RKN5boost10shared_ptrIKNS_8InstanceEEERKNS_10Reflection18PropertyDescriptorE
@@ -545,15 +545,15 @@ pub fn stub_b5f6f8() -> ! {
 // 0xb5fd70 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS2_7Network10Replicator9StreamJobES6_EENSB_5list2INSB_5valueIPSH_EENSA_3argILi1EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator::StreamJob,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS2_7Network10Replicator9StreamJobES6_EENSB_5list2INSB_5valueIPSH_EENSA_3argILi1EEEEEEEED1Ev")]
-pub fn stub_b5fd70() -> ! {
-    todo!("0xb5fd70 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator::StreamJob,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_b5fd70() {
+    // IDA 0xb5fd70: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xb5fdcc — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS2_7Network10Replicator9StreamJobES6_EENSB_5list2INSB_5valueIPSH_EENSA_3argILi1EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator::StreamJob,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS2_7Network10Replicator9StreamJobES6_EENSB_5list2INSB_5valueIPSH_EENSA_3argILi1EEEEEEEED0Ev")]
-pub fn stub_b5fdcc() -> ! {
-    todo!("0xb5fdcc rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator::StreamJob,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_b5fdcc() {
+    // IDA 0xb5fdcc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xb5fed4 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_7Network10Replicator9StreamJobES7_EENSC_5list2INSC_5valueIPSI_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
@@ -626,15 +626,15 @@ pub fn stub_c2c270() {
 // 0xc2d180 — __ZN3RBX10Reflection15ClassDescriptorD1Ev
 #[doc(alias = "RBX::Reflection::ClassDescriptor::~ClassDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection15ClassDescriptorD1Ev")]
-pub fn stub_c2d180() -> ! {
-    todo!("0xc2d180 RBX::Reflection::ClassDescriptor::~ClassDescriptor()")
+pub fn stub_c2d180() {
+    // IDA 0xc2d180: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc2d190 — __ZN3RBX10Reflection15ClassDescriptorD0Ev
 #[doc(alias = "RBX::Reflection::ClassDescriptor::~ClassDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection15ClassDescriptorD0Ev")]
-pub fn stub_c2d190() -> ! {
-    todo!("0xc2d190 RBX::Reflection::ClassDescriptor::~ClassDescriptor()")
+pub fn stub_c2d190() {
+    // IDA 0xc2d190: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xc2d3b0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12CylinderMeshES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -669,15 +669,15 @@ pub fn stub_eb0a48() -> ! {
 // 0xeb0cb4 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS2_10GfxBindingES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::GfxBinding,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RBX::GfxBinding*>,boost::arg<1>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS2_10GfxBindingES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEED1Ev")]
-pub fn stub_eb0cb4() -> ! {
-    todo!("0xeb0cb4 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::GfxBinding,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RBX::GfxBinding*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_eb0cb4() {
+    // IDA 0xeb0cb4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xeb0d10 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS2_10GfxBindingES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::GfxBinding,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RBX::GfxBinding*>,boost::arg<1>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS2_10GfxBindingES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEED0Ev")]
-pub fn stub_eb0d10() -> ! {
-    todo!("0xeb0d10 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::GfxBinding,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RBX::GfxBinding*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_eb0d10() {
+    // IDA 0xeb0d10: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xeb0e18 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_10GfxBindingES7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
@@ -696,15 +696,15 @@ pub fn stub_eb0e34() {
 // 0xeb0e50 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf0IvNS2_10GfxBindingEEENSB_5list1INSB_5valueIPSF_EEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::GfxBinding>,boost::_bi::list1<boost::_bi::value<RBX::GfxBinding*>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf0IvNS2_10GfxBindingEEENSB_5list1INSB_5valueIPSF_EEEEEEED1Ev")]
-pub fn stub_eb0e50() -> ! {
-    todo!("0xeb0e50 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::GfxBinding>,boost::_bi::list1<boost::_bi::value<RBX::GfxBinding*>>>>::~callable_slot()")
+pub fn stub_eb0e50() {
+    // IDA 0xeb0e50: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xeb0eac — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf0IvNS2_10GfxBindingEEENSB_5list1INSB_5valueIPSF_EEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::GfxBinding>,boost::_bi::list1<boost::_bi::value<RBX::GfxBinding*>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf0IvNS2_10GfxBindingEEENSB_5list1INSB_5valueIPSF_EEEEEEED0Ev")]
-pub fn stub_eb0eac() -> ! {
-    todo!("0xeb0eac rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::GfxBinding>,boost::_bi::list1<boost::_bi::value<RBX::GfxBinding*>>>>::~callable_slot()")
+pub fn stub_eb0eac() {
+    // IDA 0xeb0eac: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xeb0fb4 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf0IvNS3_10GfxBindingEEENSC_5list1INSC_5valueIPSG_EEEEEELi1ES8_E4callES7_

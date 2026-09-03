@@ -64,16 +64,16 @@ pub fn stub_0xdc045c() -> ! {
 // type: void __fastcall(Ogre::SceneManagerEnumerator *__hidden this)
 #[doc(alias = "Ogre::SceneManagerEnumerator::~SceneManagerEnumerator()")]
 #[doc(alias = "__ZN4Ogre22SceneManagerEnumeratorD1Ev")]
-pub fn stub_0xdc0700() -> ! {
-    todo!("0xdc0700 Ogre::SceneManagerEnumerator::~SceneManagerEnumerator()")
+pub fn stub_0xdc0700() {
+    // IDA 0xdc0700: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc070c — __ZN4Ogre22SceneManagerEnumeratorD2Ev
 // type: void __fastcall(Ogre::SceneManagerEnumerator *__hidden this)
 #[doc(alias = "Ogre::SceneManagerEnumerator::~SceneManagerEnumerator()")]
 #[doc(alias = "__ZN4Ogre22SceneManagerEnumeratorD2Ev")]
-pub fn stub_0xdc070c() -> ! {
-    todo!("0xdc070c Ogre::SceneManagerEnumerator::~SceneManagerEnumerator()")
+pub fn stub_0xdc070c() {
+    // IDA 0xdc070c: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc0ad0 — __ZN4Ogre22SceneManagerEnumerator18createSceneManagerERKSsS2_
@@ -128,16 +128,16 @@ pub fn stub_0xdc1528() -> ! {
 // type: void __fastcall(Ogre::DefaultSceneManager *__hidden this)
 #[doc(alias = "Ogre::DefaultSceneManager::~DefaultSceneManager()")]
 #[doc(alias = "__ZN4Ogre19DefaultSceneManagerD0Ev")]
-pub fn stub_0xdc1574() -> ! {
-    todo!("0xdc1574 Ogre::DefaultSceneManager::~DefaultSceneManager()")
+pub fn stub_0xdc1574() {
+    // IDA 0xdc1574: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xdc1604 — __ZN4Ogre19DefaultSceneManagerD1Ev
 // type: void __fastcall(Ogre::DefaultSceneManager *__hidden this)
 #[doc(alias = "Ogre::DefaultSceneManager::~DefaultSceneManager()")]
 #[doc(alias = "__ZN4Ogre19DefaultSceneManagerD1Ev")]
-pub fn stub_0xdc1604() -> ! {
-    todo!("0xdc1604 Ogre::DefaultSceneManager::~DefaultSceneManager()")
+pub fn stub_0xdc1604() {
+    // IDA 0xdc1604: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc1610 — __ZNK4Ogre19DefaultSceneManager11getTypeNameEv
@@ -152,8 +152,8 @@ pub fn stub_0xdc1610() -> ! {
 // type: void __fastcall(Ogre::DefaultSceneManagerFactory *__hidden this)
 #[doc(alias = "Ogre::DefaultSceneManagerFactory::~DefaultSceneManagerFactory()")]
 #[doc(alias = "__ZN4Ogre26DefaultSceneManagerFactoryD1Ev")]
-pub fn stub_0xdc161c() -> ! {
-    todo!("0xdc161c Ogre::DefaultSceneManagerFactory::~DefaultSceneManagerFactory()")
+pub fn stub_0xdc161c() {
+    // IDA 0xdc161c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc16b4 — __ZNSt3mapISsPN4Ogre12SceneManagerESt4lessISsENS0_12STLAllocatorISt4pairIKSsS2_ENS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEixERS7_
@@ -167,8 +167,8 @@ pub fn stub_0xdc16b4() -> ! {
 // type: void __fastcall(Ogre::DefaultSceneManagerFactory *__hidden this)
 #[doc(alias = "Ogre::DefaultSceneManagerFactory::~DefaultSceneManagerFactory()")]
 #[doc(alias = "__ZN4Ogre26DefaultSceneManagerFactoryD0Ev")]
-pub fn stub_0xdc1870() -> ! {
-    todo!("0xdc1870 Ogre::DefaultSceneManagerFactory::~DefaultSceneManagerFactory()")
+pub fn stub_0xdc1870() {
+    // IDA 0xdc1870: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xdc1984 — __ZNK4Ogre19SceneManagerFactory11getMetaDataEv
@@ -252,59 +252,59 @@ pub fn stub_0xdc2144() -> ! {
 // 0xdc2330 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre12SceneManagerEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SceneManager *>,std::_Select1st<std::pair<std::string const,Ogre::SceneManager *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SceneManager *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre12SceneManagerEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev")]
-pub fn stub_0xdc2330() -> ! {
-    todo!("0xdc2330 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SceneManager *>,std::_Select1st<std::pair<std::string const,Ogre::SceneManager *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SceneManager *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+pub fn stub_0xdc2330() {
+    // IDA 0xdc2330: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc2334 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre12SceneManagerEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SceneManager *>,std::_Select1st<std::pair<std::string const,Ogre::SceneManager *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SceneManager *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre12SceneManagerEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev")]
-pub fn stub_0xdc2334() -> ! {
-    todo!("0xdc2334 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SceneManager *>,std::_Select1st<std::pair<std::string const,Ogre::SceneManager *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SceneManager *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+pub fn stub_0xdc2334() {
+    // IDA 0xdc2334: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xdc2340 — __ZNSt12_Vector_baseIPKN4Ogre20SceneManagerMetaDataENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
 #[doc(alias = "std::_Vector_base<Ogre::SceneManagerMetaData const*,Ogre::STLAllocator<Ogre::SceneManagerMetaData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIPKN4Ogre20SceneManagerMetaDataENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")]
-pub fn stub_0xdc2340() -> ! {
-    todo!("0xdc2340 std::_Vector_base<Ogre::SceneManagerMetaData const*,Ogre::STLAllocator<Ogre::SceneManagerMetaData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+pub fn stub_0xdc2340() {
+    // IDA 0xdc2340: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc2344 — __ZNSt12_Vector_baseIPKN4Ogre20SceneManagerMetaDataENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 #[doc(alias = "std::_Vector_base<Ogre::SceneManagerMetaData const*,Ogre::STLAllocator<Ogre::SceneManagerMetaData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIPKN4Ogre20SceneManagerMetaDataENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
-pub fn stub_0xdc2344() -> ! {
-    todo!("0xdc2344 std::_Vector_base<Ogre::SceneManagerMetaData const*,Ogre::STLAllocator<Ogre::SceneManagerMetaData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+pub fn stub_0xdc2344() {
+    // IDA 0xdc2344: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xdc2350 — __ZNSt10_List_baseIPN4Ogre19SceneManagerFactoryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev
 #[doc(alias = "std::_List_base<Ogre::SceneManagerFactory *,Ogre::STLAllocator<Ogre::SceneManagerFactory *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
 #[doc(alias = "__ZNSt10_List_baseIPN4Ogre19SceneManagerFactoryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev")]
-pub fn stub_0xdc2350() -> ! {
-    todo!("0xdc2350 std::_List_base<Ogre::SceneManagerFactory *,Ogre::STLAllocator<Ogre::SceneManagerFactory *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")
+pub fn stub_0xdc2350() {
+    // IDA 0xdc2350: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc2354 — __ZNSt10_List_baseIPN4Ogre19SceneManagerFactoryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev
 #[doc(alias = "std::_List_base<Ogre::SceneManagerFactory *,Ogre::STLAllocator<Ogre::SceneManagerFactory *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
 #[doc(alias = "__ZNSt10_List_baseIPN4Ogre19SceneManagerFactoryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev")]
-pub fn stub_0xdc2354() -> ! {
-    todo!("0xdc2354 std::_List_base<Ogre::SceneManagerFactory *,Ogre::STLAllocator<Ogre::SceneManagerFactory *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")
+pub fn stub_0xdc2354() {
+    // IDA 0xdc2354: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xdc2360 — __ZN4Ogre19SceneManagerFactoryD1Ev
 // type: void __fastcall(Ogre::SceneManagerFactory *__hidden this)
 #[doc(alias = "Ogre::SceneManagerFactory::~SceneManagerFactory()")]
 #[doc(alias = "__ZN4Ogre19SceneManagerFactoryD1Ev")]
-pub fn stub_0xdc2360() -> ! {
-    todo!("0xdc2360 Ogre::SceneManagerFactory::~SceneManagerFactory()")
+pub fn stub_0xdc2360() {
+    // IDA 0xdc2360: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc23f8 — __ZN4Ogre19SceneManagerFactoryD0Ev
 // type: void __fastcall(Ogre::SceneManagerFactory *__hidden this)
 #[doc(alias = "Ogre::SceneManagerFactory::~SceneManagerFactory()")]
 #[doc(alias = "__ZN4Ogre19SceneManagerFactoryD0Ev")]
-pub fn stub_0xdc23f8() -> ! {
-    todo!("0xdc23f8 Ogre::SceneManagerFactory::~SceneManagerFactory()")
+pub fn stub_0xdc23f8() {
+    // IDA 0xdc23f8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xdc2578 — __ZN4Ogre9SceneNodeC1EPNS_12SceneManagerE
@@ -343,24 +343,24 @@ pub fn stub_0xdc2760() -> ! {
 // type: void __fastcall(Ogre::SceneNode *__hidden this)
 #[doc(alias = "Ogre::SceneNode::~SceneNode()")]
 #[doc(alias = "__ZN4Ogre9SceneNodeD0Ev")]
-pub fn stub_0xdc2930() -> ! {
-    todo!("0xdc2930 Ogre::SceneNode::~SceneNode()")
+pub fn stub_0xdc2930() {
+    // IDA 0xdc2930: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xdc29c0 — __ZN4Ogre9SceneNodeD1Ev
 // type: void __fastcall(Ogre::SceneNode *__hidden this)
 #[doc(alias = "Ogre::SceneNode::~SceneNode()")]
 #[doc(alias = "__ZN4Ogre9SceneNodeD1Ev")]
-pub fn stub_0xdc29c0() -> ! {
-    todo!("0xdc29c0 Ogre::SceneNode::~SceneNode()")
+pub fn stub_0xdc29c0() {
+    // IDA 0xdc29c0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc29cc — __ZN4Ogre9SceneNodeD2Ev
 // type: void __fastcall(Ogre::SceneNode *__hidden this)
 #[doc(alias = "Ogre::SceneNode::~SceneNode()")]
 #[doc(alias = "__ZN4Ogre9SceneNodeD2Ev")]
-pub fn stub_0xdc29cc() -> ! {
-    todo!("0xdc29cc Ogre::SceneNode::~SceneNode()")
+pub fn stub_0xdc29cc() {
+    // IDA 0xdc29cc: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc2b04 — __ZN4Ogre9SceneNode7_updateEbb
@@ -695,24 +695,24 @@ pub fn stub_0xdc4ea8() -> ! {
 // type: void __fastcall(Ogre::InvalidParametersException *__hidden this)
 #[doc(alias = "Ogre::InvalidParametersException::~InvalidParametersException()")]
 #[doc(alias = "__ZN4Ogre26InvalidParametersExceptionD0Ev")]
-pub fn stub_0xdc4eb8() -> ! {
-    todo!("0xdc4eb8 Ogre::InvalidParametersException::~InvalidParametersException()")
+pub fn stub_0xdc4eb8() {
+    // IDA 0xdc4eb8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xdc4f00 — __ZN4Ogre10SceneQueryD0Ev
 // type: void __fastcall(Ogre::SceneQuery *__hidden this)
 #[doc(alias = "Ogre::SceneQuery::~SceneQuery()")]
 #[doc(alias = "__ZN4Ogre10SceneQueryD0Ev")]
-pub fn stub_0xdc4f00() -> ! {
-    todo!("0xdc4f00 Ogre::SceneQuery::~SceneQuery()")
+pub fn stub_0xdc4f00() {
+    // IDA 0xdc4f00: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xdc4fb0 — __ZN4Ogre10SceneQueryD1Ev
 // type: void __fastcall(Ogre::SceneQuery *__hidden this)
 #[doc(alias = "Ogre::SceneQuery::~SceneQuery()")]
 #[doc(alias = "__ZN4Ogre10SceneQueryD1Ev")]
-pub fn stub_0xdc4fb0() -> ! {
-    todo!("0xdc4fb0 Ogre::SceneQuery::~SceneQuery()")
+pub fn stub_0xdc4fb0() {
+    // IDA 0xdc4fb0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc5054 — __ZN4Ogre10SceneQuery12setQueryMaskEj
@@ -751,16 +751,16 @@ pub fn stub_0xdc5060() -> ! {
 // type: void __fastcall(Ogre::RegionSceneQuery *__hidden this)
 #[doc(alias = "Ogre::RegionSceneQuery::~RegionSceneQuery()")]
 #[doc(alias = "__ZN4Ogre16RegionSceneQueryD0Ev")]
-pub fn stub_0xdc5268() -> ! {
-    todo!("0xdc5268 Ogre::RegionSceneQuery::~RegionSceneQuery()")
+pub fn stub_0xdc5268() {
+    // IDA 0xdc5268: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xdc52f8 — __ZN4Ogre16RegionSceneQueryD1Ev
 // type: void __fastcall(Ogre::RegionSceneQuery *__hidden this)
 #[doc(alias = "Ogre::RegionSceneQuery::~RegionSceneQuery()")]
 #[doc(alias = "__ZN4Ogre16RegionSceneQueryD1Ev")]
-pub fn stub_0xdc52f8() -> ! {
-    todo!("0xdc52f8 Ogre::RegionSceneQuery::~RegionSceneQuery()")
+pub fn stub_0xdc52f8() {
+    // IDA 0xdc52f8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc5304 — __ZThn48_N4Ogre16RegionSceneQueryD0Ev
@@ -775,8 +775,8 @@ pub fn stub_0xdc5304() {
 // type: void __fastcall(Ogre::RegionSceneQuery *__hidden this)
 #[doc(alias = "Ogre::RegionSceneQuery::~RegionSceneQuery()")]
 #[doc(alias = "__ZN4Ogre16RegionSceneQueryD2Ev")]
-pub fn stub_0xdc5398() -> ! {
-    todo!("0xdc5398 Ogre::RegionSceneQuery::~RegionSceneQuery()")
+pub fn stub_0xdc5398() {
+    // IDA 0xdc5398: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc54ac — __ZThn48_N4Ogre16RegionSceneQueryD1Ev
@@ -839,16 +839,16 @@ pub fn stub_0xdc569c() -> ! {
 // type: void __fastcall(Ogre::AxisAlignedBoxSceneQuery *__hidden this)
 #[doc(alias = "Ogre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")]
 #[doc(alias = "__ZN4Ogre24AxisAlignedBoxSceneQueryD0Ev")]
-pub fn stub_0xdc5754() -> ! {
-    todo!("0xdc5754 Ogre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")
+pub fn stub_0xdc5754() {
+    // IDA 0xdc5754: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xdc5810 — __ZN4Ogre24AxisAlignedBoxSceneQueryD1Ev
 // type: void __fastcall(Ogre::AxisAlignedBoxSceneQuery *__hidden this)
 #[doc(alias = "Ogre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")]
 #[doc(alias = "__ZN4Ogre24AxisAlignedBoxSceneQueryD1Ev")]
-pub fn stub_0xdc5810() -> ! {
-    todo!("0xdc5810 Ogre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")
+pub fn stub_0xdc5810() {
+    // IDA 0xdc5810: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc58c4 — __ZThn48_N4Ogre24AxisAlignedBoxSceneQueryD0Ev
@@ -863,8 +863,8 @@ pub fn stub_0xdc58c4() {
 // type: void __fastcall(Ogre::AxisAlignedBoxSceneQuery *__hidden this)
 #[doc(alias = "Ogre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")]
 #[doc(alias = "__ZN4Ogre24AxisAlignedBoxSceneQueryD2Ev")]
-pub fn stub_0xdc5984() -> ! {
-    todo!("0xdc5984 Ogre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")
+pub fn stub_0xdc5984() {
+    // IDA 0xdc5984: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc5a38 — __ZThn48_N4Ogre24AxisAlignedBoxSceneQueryD1Ev
@@ -895,16 +895,16 @@ pub fn stub_0xdc5b20() -> ! {
 // type: void __fastcall(Ogre::SphereSceneQuery *__hidden this)
 #[doc(alias = "Ogre::SphereSceneQuery::~SphereSceneQuery()")]
 #[doc(alias = "__ZN4Ogre16SphereSceneQueryD0Ev")]
-pub fn stub_0xdc5bb8() -> ! {
-    todo!("0xdc5bb8 Ogre::SphereSceneQuery::~SphereSceneQuery()")
+pub fn stub_0xdc5bb8() {
+    // IDA 0xdc5bb8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xdc5c48 — __ZN4Ogre16SphereSceneQueryD1Ev
 // type: void __fastcall(Ogre::SphereSceneQuery *__hidden this)
 #[doc(alias = "Ogre::SphereSceneQuery::~SphereSceneQuery()")]
 #[doc(alias = "__ZN4Ogre16SphereSceneQueryD1Ev")]
-pub fn stub_0xdc5c48() -> ! {
-    todo!("0xdc5c48 Ogre::SphereSceneQuery::~SphereSceneQuery()")
+pub fn stub_0xdc5c48() {
+    // IDA 0xdc5c48: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc5c54 — __ZThn48_N4Ogre16SphereSceneQueryD0Ev
@@ -919,8 +919,8 @@ pub fn stub_0xdc5c54() {
 // type: void __fastcall(Ogre::SphereSceneQuery *__hidden this)
 #[doc(alias = "Ogre::SphereSceneQuery::~SphereSceneQuery()")]
 #[doc(alias = "__ZN4Ogre16SphereSceneQueryD2Ev")]
-pub fn stub_0xdc5ce8() -> ! {
-    todo!("0xdc5ce8 Ogre::SphereSceneQuery::~SphereSceneQuery()")
+pub fn stub_0xdc5ce8() {
+    // IDA 0xdc5ce8: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc5cf4 — __ZThn48_N4Ogre16SphereSceneQueryD1Ev

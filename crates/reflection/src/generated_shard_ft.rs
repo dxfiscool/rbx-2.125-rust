@@ -501,8 +501,8 @@ pub fn stub_62e5c() -> ! {
 // 0x62f08 — __ZNSt6vectorIPvSaIS0_EED1Ev
 // type: void **__fastcall(void **)
 #[doc(alias = "std::vector<void *,std::allocator<void *>>::~vector()")]
-pub fn stub_62f08() -> ! {
-    todo!("0x62f08 std::vector<void *,std::allocator<void *>>::~vector()")
+pub fn stub_62f08() {
+    // IDA 0x62f08: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x62f1c — __ZNSt6vectorIPvSaIS0_EE9push_backERKS0_

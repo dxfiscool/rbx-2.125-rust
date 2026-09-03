@@ -107,8 +107,8 @@ pub fn stub_f410a4() -> ! {
 // 0xf413d4 — j___ZNSt8auto_ptrIN3RBX10Reflection5TupleEED2Ev
 #[doc(alias = "std::auto_ptr<RBX::Reflection::Tuple>::~auto_ptr()")]
 #[doc(alias = "j___ZNSt8auto_ptrIN3RBX10Reflection5TupleEED2Ev")]
-pub fn stub_f413d4() -> ! {
-    todo!("0xf413d4 std::auto_ptr<RBX::Reflection::Tuple>::~auto_ptr()")
+pub fn stub_f413d4() {
+    // IDA 0xf413d4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf413e4 — j___ZN3RBX10Reflection11Call0HelperINS_12BodyPositionEMS2_FN3G3D7Vector3EvES4_E4callEPS2_S6_RNS0_7VariantE

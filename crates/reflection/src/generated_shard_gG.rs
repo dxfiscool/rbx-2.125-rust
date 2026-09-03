@@ -110,8 +110,8 @@ pub fn stub_0x92274c() -> ! {
 // 0x9228a8 — __ZN3rbx13remote_signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEED2Ev
 // type: int __fastcall(int, int, int, int, char, int)
 #[doc(alias = "rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::~remote_signal()")]
-pub fn stub_0x9228a8() -> ! {
-    todo!("0x9228a8 rbx::remote_signal<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::~remote_signal()")
+pub fn stub_0x9228a8() {
+    // IDA 0x9228a8: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9229f4 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE13disconnectAllEv
@@ -131,8 +131,8 @@ pub fn stub_0x922b6c() -> ! {
 // 0x922cc8 — __ZN3rbx13remote_signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS2_IKNS3_10Reflection5TupleEEEEED2Ev
 // type: int __fastcall(int, int, int, int, char, int)
 #[doc(alias = "rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::~remote_signal()")]
-pub fn stub_0x922cc8() -> ! {
-    todo!("0x922cc8 rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::~remote_signal()")
+pub fn stub_0x922cc8() {
+    // IDA 0x922cc8: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x922e14 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS3_IKNS4_10Reflection5TupleEEEEE13disconnectAllEv
@@ -237,8 +237,8 @@ pub fn stub_0x924c9c() -> ! {
 
 // 0x924de0 — __ZN5boost3_bi8storage4INS0_5valueIPN3RBX14RemoteFunctionEEENS2_INS_10shared_ptrINS3_8InstanceEEEEENS2_INS7_IKNS3_10Reflection5TupleEEEEENS2_INS_8functionIFvSE_EEEEEED2Ev
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<RBX::RemoteFunction *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>::~storage4()")]
-pub fn stub_0x924de0() -> ! {
-    todo!("0x924de0 boost::_bi::storage4<boost::_bi::value<RBX::RemoteFunction *>,boost::_bi::value<boost::shared_ptr<RBX::Instance>>,boost::_bi::value<boost::shared_ptr<RBX::Reflection::Tuple const>>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>::~storage4()")
+pub fn stub_0x924de0() {
+    // IDA 0x924de0: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x924efc — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf4IvN3RBX14RemoteFunctionENS_10shared_ptrINS7_8InstanceEEENS9_IKNS7_10Reflection5TupleEEENS_8functionIFvSF_EEENSG_IFvSsEEEEENS3_5list5INS3_5valueIPS8_EENSN_ISB_EENSN_ISF_EENSN_ISI_EENSN_ISK_EEEEEEEEvT_
@@ -399,14 +399,14 @@ pub fn stub_0x927e5c() -> ! {
 
 // 0x927f54 — __ZN3rbx7signals6signalIFviN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf2IvNS4_14RemoteFunctionEiS8_EENSC_5list3INSC_5valueIPSG_EENS2_3argILi1EEENSM_ILi2EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RemoteFunction,int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,boost::_bi::list3<boost::_bi::value<RBX::RemoteFunction*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
-pub fn stub_0x927f54() -> ! {
-    todo!("0x927f54 rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RemoteFunction,int,boost::shared_ptr<RBX::Reflection::Tuple const>>,boost::_bi::list3<boost::_bi::value<RBX::RemoteFunction*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")
+pub fn stub_0x927f54() {
+    // IDA 0x927f54: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x927f80 — __ZN3rbx7signals6signalIFviN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf2IvNS4_14RemoteFunctionEiS8_EENSC_5list3INSC_5valueIPSG_EENS2_3argILi1EEENSM_ILi2EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RemoteFunction,int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,boost::_bi::list3<boost::_bi::value<RBX::RemoteFunction*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
-pub fn stub_0x927f80() -> ! {
-    todo!("0x927f80 rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RemoteFunction,int,boost::shared_ptr<RBX::Reflection::Tuple const>>,boost::_bi::list3<boost::_bi::value<RBX::RemoteFunction*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")
+pub fn stub_0x927f80() {
+    // IDA 0x927f80: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x928054 — __ZN3rbx7signals6signalIFviN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slot10disconnectEv
@@ -466,26 +466,26 @@ pub fn stub_0x928478() -> ! {
 
 // 0x928568 — __ZN3rbx7signals6signalIFviN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotD1Ev
 #[doc(alias = "rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot::~slot()")]
-pub fn stub_0x928568() -> ! {
-    todo!("0x928568 rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot::~slot()")
+pub fn stub_0x928568() {
+    // IDA 0x928568: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x928594 — __ZN3rbx7signals6signalIFviN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotD0Ev
 #[doc(alias = "rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot::~slot()")]
-pub fn stub_0x928594() -> ! {
-    todo!("0x928594 rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot::~slot()")
+pub fn stub_0x928594() {
+    // IDA 0x928594: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x928668 — __ZN3rbx8callableINS_7signals6signalIFviN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_14RemoteFunctionEiS9_EENSD_5list3INSD_5valueIPSH_EENS3_3argILi1EEENSN_ILi2EEEEEEELi2ESA_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RemoteFunction,int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,boost::_bi::list3<boost::_bi::value<RBX::RemoteFunction*>,boost::arg<1>,boost::arg<2>>>,2,void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::~callable()")]
-pub fn stub_0x928668() -> ! {
-    todo!("0x928668 rbx::callable<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RemoteFunction,int,boost::shared_ptr<RBX::Reflection::Tuple const>>,boost::_bi::list3<boost::_bi::value<RBX::RemoteFunction*>,boost::arg<1>,boost::arg<2>>>,2,void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::~callable()")
+pub fn stub_0x928668() {
+    // IDA 0x928668: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x928694 — __ZN3rbx8callableINS_7signals6signalIFviN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_14RemoteFunctionEiS9_EENSD_5list3INSD_5valueIPSH_EENS3_3argILi1EEENSN_ILi2EEEEEEELi2ESA_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RemoteFunction,int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,boost::_bi::list3<boost::_bi::value<RBX::RemoteFunction*>,boost::arg<1>,boost::arg<2>>>,2,void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::~callable()")]
-pub fn stub_0x928694() -> ! {
-    todo!("0x928694 rbx::callable<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RemoteFunction,int,boost::shared_ptr<RBX::Reflection::Tuple const>>,boost::_bi::list3<boost::_bi::value<RBX::RemoteFunction*>,boost::arg<1>,boost::arg<2>>>,2,void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::~callable()")
+pub fn stub_0x928694() {
+    // IDA 0x928694: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x928a3c — __ZN3rbx13remote_signalIFviN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEEC2Ev
@@ -537,8 +537,8 @@ pub fn stub_0x92900c() -> ! {
 
 // 0x92978c — __ZN3RBX10Reflection15RemoteEventDescINS_11RemoteEventEFvN5boost10shared_ptrIKNS0_5TupleEEEENS_13LatchedSignalIN3rbx13remote_signalES8_EEED0Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::RemoteEvent,void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>),RBX::LatchedSignal<rbx::remote_signal,void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>::~RemoteEventDesc()")]
-pub fn stub_0x92978c() -> ! {
-    todo!("0x92978c RBX::Reflection::RemoteEventDesc<RBX::RemoteEvent,void ()(boost::shared_ptr<RBX::Reflection::Tuple const>),RBX::LatchedSignal<rbx::remote_signal,void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>::~RemoteEventDesc()")
+pub fn stub_0x92978c() {
+    // IDA 0x92978c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x929840 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_11RemoteEventEFvN5boost10shared_ptrIKNS0_5TupleEEEENS_13LatchedSignalIN3rbx13remote_signalES8_EEMS2_SC_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
@@ -679,14 +679,14 @@ pub fn stub_0x92a864() -> ! {
 
 // 0x92a960 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE13callable_slotINS2_8functionIS9_EEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::callable_slot<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>::~callable_slot()")]
-pub fn stub_0x92a960() -> ! {
-    todo!("0x92a960 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>::~callable_slot()")
+pub fn stub_0x92a960() {
+    // IDA 0x92a960: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x92aa70 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE13callable_slotINS2_8functionIS9_EEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::callable_slot<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>::~callable_slot()")]
-pub fn stub_0x92aa70() -> ! {
-    todo!("0x92aa70 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>::~callable_slot()")
+pub fn stub_0x92aa70() {
+    // IDA 0x92aa70: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x92aba0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slot10disconnectEv
@@ -735,26 +735,26 @@ pub fn stub_0x92ae88() -> ! {
 // 0x92af78 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotENS3_8functionISA_EELi1ESA_ED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,1,void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::~callable()")]
-pub fn stub_0x92af78() -> ! {
-    todo!("0x92af78 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,1,void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::~callable()")
+pub fn stub_0x92af78() {
+    // IDA 0x92af78: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x92b088 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotENS3_8functionISA_EELi1ESA_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,1,void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::~callable()")]
-pub fn stub_0x92b088() -> ! {
-    todo!("0x92b088 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,1,void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::~callable()")
+pub fn stub_0x92b088() {
+    // IDA 0x92b088: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x92b1b8 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotD1Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot::~slot()")]
-pub fn stub_0x92b1b8() -> ! {
-    todo!("0x92b1b8 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot::~slot()")
+pub fn stub_0x92b1b8() {
+    // IDA 0x92b1b8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x92b1e4 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotD0Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot::~slot()")]
-pub fn stub_0x92b1e4() -> ! {
-    todo!("0x92b1e4 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot::~slot()")
+pub fn stub_0x92b1e4() {
+    // IDA 0x92b1e4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x92b2b8 — __ZN3RBX10Reflection9EventDescINS_11RemoteEventEFvN5boost10shared_ptrIKNS0_5TupleEEEENS_13LatchedSignalIN3rbx13remote_signalES8_EEMS2_SC_EC2ESD_PKcSG_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -765,20 +765,20 @@ pub fn stub_0x92b2b8() -> ! {
 
 // 0x92b43c — __ZN3RBX10Reflection9EventDescINS_11RemoteEventEFvN5boost10shared_ptrIKNS0_5TupleEEEENS_13LatchedSignalIN3rbx13remote_signalES8_EEMS2_SC_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::RemoteEvent,void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>),RBX::LatchedSignal<rbx::remote_signal,void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,RBX::LatchedSignal<rbx::remote_signal,void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)> RBX::RemoteEvent::*>::~EventDesc()")]
-pub fn stub_0x92b43c() -> ! {
-    todo!("0x92b43c RBX::Reflection::EventDesc<RBX::RemoteEvent,void ()(boost::shared_ptr<RBX::Reflection::Tuple const>),RBX::LatchedSignal<rbx::remote_signal,void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,RBX::LatchedSignal<rbx::remote_signal,void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)> RBX::RemoteEvent::*>::~EventDesc()")
+pub fn stub_0x92b43c() {
+    // IDA 0x92b43c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x92b460 — __ZN3RBX10Reflection9EventDescINS_11RemoteEventEFvN5boost10shared_ptrIKNS0_5TupleEEEENS_13LatchedSignalIN3rbx13remote_signalES8_EEMS2_SC_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::RemoteEvent,void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>),RBX::LatchedSignal<rbx::remote_signal,void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,RBX::LatchedSignal<rbx::remote_signal,void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)> RBX::RemoteEvent::*>::~EventDesc()")]
-pub fn stub_0x92b460() -> ! {
-    todo!("0x92b460 RBX::Reflection::EventDesc<RBX::RemoteEvent,void ()(boost::shared_ptr<RBX::Reflection::Tuple const>),RBX::LatchedSignal<rbx::remote_signal,void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,RBX::LatchedSignal<rbx::remote_signal,void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)> RBX::RemoteEvent::*>::~EventDesc()")
+pub fn stub_0x92b460() {
+    // IDA 0x92b460: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x92b514 — __ZN3RBX10Reflection15RemoteEventDescINS_11RemoteEventEFvN5boost10shared_ptrINS_8InstanceEEENS4_IKNS0_5TupleEEEENS_13LatchedSignalIN3rbx13remote_signalESA_EEED0Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::RemoteEvent,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>),RBX::LatchedSignal<rbx::remote_signal,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>::~RemoteEventDesc()")]
-pub fn stub_0x92b514() -> ! {
-    todo!("0x92b514 RBX::Reflection::RemoteEventDesc<RBX::RemoteEvent,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>),RBX::LatchedSignal<rbx::remote_signal,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>>::~RemoteEventDesc()")
+pub fn stub_0x92b514() {
+    // IDA 0x92b514: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x92b5c8 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_11RemoteEventEFvN5boost10shared_ptrINS_8InstanceEEENS4_IKNS0_5TupleEEEENS_13LatchedSignalIN3rbx13remote_signalESA_EEMS2_SE_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
@@ -926,14 +926,14 @@ pub fn stub_0x92c690() -> ! {
 
 // 0x92c78c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS3_IKNS4_10Reflection5TupleEEEEE13callable_slotINS2_8functionISB_EEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::callable_slot<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>::~callable_slot()")]
-pub fn stub_0x92c78c() -> ! {
-    todo!("0x92c78c rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>>::~callable_slot()")
+pub fn stub_0x92c78c() {
+    // IDA 0x92c78c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x92c89c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS3_IKNS4_10Reflection5TupleEEEEE13callable_slotINS2_8functionISB_EEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::callable_slot<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>::~callable_slot()")]
-pub fn stub_0x92c89c() -> ! {
-    todo!("0x92c89c rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>>::~callable_slot()")
+pub fn stub_0x92c89c() {
+    // IDA 0x92c89c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x92c9cc — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS3_IKNS4_10Reflection5TupleEEEEE4slot10disconnectEv

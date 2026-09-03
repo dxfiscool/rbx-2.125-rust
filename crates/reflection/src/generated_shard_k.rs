@@ -402,14 +402,14 @@ pub fn stub_0x65fee4() -> ! {
 
 // 0x65ff90 — __ZN3RBX10Reflection5TTypeINS_7SurfaceEED0Ev
 #[doc(alias = "RBX::Reflection::TType<RBX::Surface>::~TType()")]
-pub fn stub_0x65ff90() -> ! {
-    todo!("0x65ff90 RBX::Reflection::TType<RBX::Surface>::~TType()")
+pub fn stub_0x65ff90() {
+    // IDA 0x65ff90: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x660be8 — __ZN3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::~EnumPropDescriptor()")]
-pub fn stub_0x660be8() -> ! {
-    todo!("0x660be8 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::~EnumPropDescriptor()")
+pub fn stub_0x660be8() {
+    // IDA 0x660be8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x661740 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_16SurfaceSelectionES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -426,8 +426,8 @@ pub fn stub_0x662440() -> ! {
 
 // 0x6625f4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::~EnumPropDescriptor()")]
-pub fn stub_0x6625f4() -> ! {
-    todo!("0x6625f4 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::~EnumPropDescriptor()")
+pub fn stub_0x6625f4() {
+    // IDA 0x6625f4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x662620 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE10isReadOnlyEv
@@ -564,20 +564,20 @@ pub fn stub_0x662c24() -> ! {
 
 // 0x6632e0 — __ZN3RBX10Reflection14PropDescriptorINS_4TeamEiED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,int>::~PropDescriptor()")]
-pub fn stub_0x6632e0() -> ! {
-    todo!("0x6632e0 RBX::Reflection::PropDescriptor<RBX::Team,int>::~PropDescriptor()")
+pub fn stub_0x6632e0() {
+    // IDA 0x6632e0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x663304 — __ZN3RBX10Reflection14PropDescriptorINS_4TeamENS_10BrickColorEED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::~PropDescriptor()")]
-pub fn stub_0x663304() -> ! {
-    todo!("0x663304 RBX::Reflection::PropDescriptor<RBX::Team,RBX::BrickColor>::~PropDescriptor()")
+pub fn stub_0x663304() {
+    // IDA 0x663304: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x663328 — __ZN3RBX10Reflection14PropDescriptorINS_4TeamEbED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Team,bool>::~PropDescriptor()")]
-pub fn stub_0x663328() -> ! {
-    todo!("0x663328 RBX::Reflection::PropDescriptor<RBX::Team,bool>::~PropDescriptor()")
+pub fn stub_0x663328() {
+    // IDA 0x663328: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x663b74 — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_4TeamEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE

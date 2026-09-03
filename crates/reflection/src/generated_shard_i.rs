@@ -85,8 +85,8 @@ pub fn stub_0x6774d8() -> ! {
 
 // 0x6775ec — __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,std::string>::~PropDescriptor()")]
-pub fn stub_0x6775ec() -> ! {
-    todo!("0x6775ec RBX::Reflection::PropDescriptor<RBX::GuiTextButton,std::string>::~PropDescriptor()")
+pub fn stub_0x6775ec() {
+    // IDA 0x6775ec: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x677618 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE10isReadOnlyEv
@@ -115,62 +115,62 @@ pub fn stub_0x677658() -> ! {
 
 // 0x679134 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelESsED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,std::string>::~PropDescriptor()")]
-pub fn stub_0x679134() -> ! {
-    todo!("0x679134 RBX::Reflection::PropDescriptor<RBX::TextLabel,std::string>::~PropDescriptor()")
+pub fn stub_0x679134() {
+    // IDA 0x679134: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x679158 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::~EnumPropDescriptor()")]
-pub fn stub_0x679158() -> ! {
-    todo!("0x679158 RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::~EnumPropDescriptor()")
+pub fn stub_0x679158() {
+    // IDA 0x679158: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x67917c — __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::~EnumPropDescriptor()")]
-pub fn stub_0x67917c() -> ! {
-    todo!("0x67917c RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::~EnumPropDescriptor()")
+pub fn stub_0x67917c() {
+    // IDA 0x67917c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x6791a0 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::BrickColor>::~PropDescriptor()")]
-pub fn stub_0x6791a0() -> ! {
-    todo!("0x6791a0 RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::BrickColor>::~PropDescriptor()")
+pub fn stub_0x6791a0() {
+    // IDA 0x6791a0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x6791c4 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D6Color3EED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Color3>::~PropDescriptor()")]
-pub fn stub_0x6791c4() -> ! {
-    todo!("0x6791c4 RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Color3>::~PropDescriptor()")
+pub fn stub_0x6791c4() {
+    // IDA 0x6791c4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x6791e8 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEfED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,float>::~PropDescriptor()")]
-pub fn stub_0x6791e8() -> ! {
-    todo!("0x6791e8 RBX::Reflection::PropDescriptor<RBX::TextLabel,float>::~PropDescriptor()")
+pub fn stub_0x6791e8() {
+    // IDA 0x6791e8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x67920c — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEbED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::~PropDescriptor()")]
-pub fn stub_0x67920c() -> ! {
-    todo!("0x67920c RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::~PropDescriptor()")
+pub fn stub_0x67920c() {
+    // IDA 0x67920c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x679230 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::~EnumPropDescriptor()")]
-pub fn stub_0x679230() -> ! {
-    todo!("0x679230 RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::~EnumPropDescriptor()")
+pub fn stub_0x679230() {
+    // IDA 0x679230: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x679254 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEED1Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::~EnumPropDescriptor()")]
-pub fn stub_0x679254() -> ! {
-    todo!("0x679254 RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::~EnumPropDescriptor()")
+pub fn stub_0x679254() {
+    // IDA 0x679254: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x679278 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Vector2>::~PropDescriptor()")]
-pub fn stub_0x679278() -> ! {
-    todo!("0x679278 RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Vector2>::~PropDescriptor()")
+pub fn stub_0x679278() {
+    // IDA 0x679278: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x679b18 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEbEC2IMS2_KFbvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -181,8 +181,8 @@ pub fn stub_0x679b18() -> ! {
 
 // 0x679c24 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEbED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::~PropDescriptor()")]
-pub fn stub_0x679c24() -> ! {
-    todo!("0x679c24 RBX::Reflection::PropDescriptor<RBX::TextLabel,bool>::~PropDescriptor()")
+pub fn stub_0x679c24() {
+    // IDA 0x679c24: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x679c50 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEbE7GetImplIMS2_KFbvEE10isReadOnlyEv
@@ -217,8 +217,8 @@ pub fn stub_0x679d9c() -> ! {
 
 // 0x679ea8 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Vector2>::~PropDescriptor()")]
-pub fn stub_0x679ea8() -> ! {
-    todo!("0x679ea8 RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Vector2>::~PropDescriptor()")
+pub fn stub_0x679ea8() {
+    // IDA 0x679ea8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x679ed4 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
@@ -253,8 +253,8 @@ pub fn stub_0x67a024() -> ! {
 
 // 0x67a1d8 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::~EnumPropDescriptor()")]
-pub fn stub_0x67a1d8() -> ! {
-    todo!("0x67a1d8 RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::YAlignment>::~EnumPropDescriptor()")
+pub fn stub_0x67a1d8() {
+    // IDA 0x67a1d8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x67a204 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10YAlignmentEE10isReadOnlyEv
@@ -397,8 +397,8 @@ pub fn stub_0x67a838() -> ! {
 
 // 0x67a9ec — __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::~EnumPropDescriptor()")]
-pub fn stub_0x67a9ec() -> ! {
-    todo!("0x67a9ec RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::XAlignment>::~EnumPropDescriptor()")
+pub fn stub_0x67a9ec() {
+    // IDA 0x67a9ec: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x67aa18 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService10XAlignmentEE10isReadOnlyEv
@@ -571,8 +571,8 @@ pub fn stub_0x67b1c0() -> ! {
 
 // 0x67b2d4 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelEfED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,float>::~PropDescriptor()")]
-pub fn stub_0x67b2d4() -> ! {
-    todo!("0x67b2d4 RBX::Reflection::PropDescriptor<RBX::TextLabel,float>::~PropDescriptor()")
+pub fn stub_0x67b2d4() {
+    // IDA 0x67b2d4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x67b300 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEfE10GetSetImplIMNS_12GuiTextMixinEKFfvEMS2_FvfEE10isReadOnlyEv

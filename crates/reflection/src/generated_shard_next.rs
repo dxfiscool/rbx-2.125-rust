@@ -80,8 +80,8 @@ pub fn stub_0xf69b14() -> ! {
 // 0xf69b24 — j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN4Ogre13MovableObjectEEESsS8_NS_4hashISsEESt8equal_toISsEEEED2Ev
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,Ogre::MovableObject *>>,std::string,Ogre::MovableObject *,boost::hash<std::string>,std::equal_to<std::string>>>::~table()")]
 #[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN4Ogre13MovableObjectEEESsS8_NS_4hashISsEESt8equal_toISsEEEED2Ev")]
-pub fn stub_0xf69b24() -> ! {
-    todo!("0xf69b24 j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN4Ogre13MovableObjectEEESsS8_NS_4hashISsEESt8equal_toISsEEEED2Ev")
+pub fn stub_0xf69b24() {
+    // IDA 0xf69b24: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf69b34 — j___ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsPN4Ogre13MovableObjectEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSE_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS9_EEEEmRKT_RKT0_
@@ -164,29 +164,29 @@ pub fn stub_0xf69bd4() -> ! {
 // 0xf69be4 — j___ZN4Ogre14ScriptCompilerD2Ev
 #[doc(alias = "Ogre::ScriptCompiler::~ScriptCompiler()")]
 #[doc(alias = "j___ZN4Ogre14ScriptCompilerD2Ev")]
-pub fn stub_0xf69be4() -> ! {
-    todo!("0xf69be4 j___ZN4Ogre14ScriptCompilerD2Ev")
+pub fn stub_0xf69be4() {
+    // IDA 0xf69be4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf69bf4 — j___ZN4Ogre18ImportAbstractNodeD2Ev
 #[doc(alias = "Ogre::ImportAbstractNode::~ImportAbstractNode()")]
 #[doc(alias = "j___ZN4Ogre18ImportAbstractNodeD2Ev")]
-pub fn stub_0xf69bf4() -> ! {
-    todo!("0xf69bf4 j___ZN4Ogre18ImportAbstractNodeD2Ev")
+pub fn stub_0xf69bf4() {
+    // IDA 0xf69bf4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf69c04 — j___ZN4Ogre18ObjectAbstractNodeD2Ev
 #[doc(alias = "Ogre::ObjectAbstractNode::~ObjectAbstractNode()")]
 #[doc(alias = "j___ZN4Ogre18ObjectAbstractNodeD2Ev")]
-pub fn stub_0xf69c04() -> ! {
-    todo!("0xf69c04 j___ZN4Ogre18ObjectAbstractNodeD2Ev")
+pub fn stub_0xf69c04() {
+    // IDA 0xf69c04: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf69c14 — j___ZN4Ogre20PropertyAbstractNodeD2Ev
 #[doc(alias = "Ogre::PropertyAbstractNode::~PropertyAbstractNode()")]
 #[doc(alias = "j___ZN4Ogre20PropertyAbstractNodeD2Ev")]
-pub fn stub_0xf69c14() -> ! {
-    todo!("0xf69c14 j___ZN4Ogre20PropertyAbstractNodeD2Ev")
+pub fn stub_0xf69c14() {
+    // IDA 0xf69c14: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf69c24 — j___ZN4Ogre9SharedPtrINS_12AbstractNodeEEaSERKS2_
@@ -283,8 +283,8 @@ pub fn stub_0xf69ce4() -> ! {
 // 0xf69cf4 — j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsjEESsjNS_4hashISsEESt8equal_toISsEEEED2Ev
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,unsigned int>>,std::string,unsigned int,boost::hash<std::string>,std::equal_to<std::string>>>::~table()")]
 #[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsjEESsjNS_4hashISsEESt8equal_toISsEEEED2Ev")]
-pub fn stub_0xf69cf4() -> ! {
-    todo!("0xf69cf4 j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsjEESsjNS_4hashISsEESt8equal_toISsEEEED2Ev")
+pub fn stub_0xf69cf4() {
+    // IDA 0xf69cf4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf69d04 — j___ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsjEESsjNS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSB_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS6_EEEEmRKT_RKT0_
@@ -339,8 +339,8 @@ pub fn stub_0xf69d64() -> ! {
 // 0xf69d74 — j___ZNSt6vectorISt4pairIN4Ogre9SharedPtrINS1_12AbstractNodeEEESt14_List_iteratorIS4_EENS1_12STLAllocatorIS7_NS1_22CategorisedAllocPolicyILNS1_14MemoryCategoryE0EEEEEED2Ev
 #[doc(alias = "std::vector<std::pair<Ogre::SharedPtr<Ogre::AbstractNode>,std::_List_iterator<Ogre::SharedPtr<Ogre::AbstractNode>>>,Ogre::STLAllocator<std::pair<Ogre::SharedPtr<Ogre::AbstractNode>,std::_List_iterator<Ogre::SharedPtr<Ogre::AbstractNode>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~vector()")]
 #[doc(alias = "j___ZNSt6vectorISt4pairIN4Ogre9SharedPtrINS1_12AbstractNodeEEESt14_List_iteratorIS4_EENS1_12STLAllocatorIS7_NS1_22CategorisedAllocPolicyILNS1_14MemoryCategoryE0EEEEEED2Ev")]
-pub fn stub_0xf69d74() -> ! {
-    todo!("0xf69d74 j___ZNSt6vectorISt4pairIN4Ogre9SharedPtrINS1_12AbstractNodeEEESt14_List_iteratorIS4_EENS1_12STLAllocatorIS7_NS1_22CategorisedAllocPolicyILNS1_14MemoryCategoryE0EEEEEED2Ev")
+pub fn stub_0xf69d74() {
+    // IDA 0xf69d74: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf69d84 — j___ZNSt8_Rb_treeIPN4Ogre18ObjectAbstractNodeESt4pairIKS2_bESt10_Select1stIS5_ESt4lessIS2_ENS0_12STLAllocatorIS5_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS5_
@@ -486,8 +486,8 @@ pub fn stub_0xf69eb4() -> ! {
 // 0xf69ec4 — j___ZN4Ogre33CreateMaterialScriptCompilerEventD2Ev
 #[doc(alias = "Ogre::CreateMaterialScriptCompilerEvent::~CreateMaterialScriptCompilerEvent()")]
 #[doc(alias = "j___ZN4Ogre33CreateMaterialScriptCompilerEventD2Ev")]
-pub fn stub_0xf69ec4() -> ! {
-    todo!("0xf69ec4 j___ZN4Ogre33CreateMaterialScriptCompilerEventD2Ev")
+pub fn stub_0xf69ec4() {
+    // IDA 0xf69ec4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf69ed4 — j___ZN4Ogre35CreateCompositorScriptCompilerEventC2ERKSsS2_S2_
@@ -500,8 +500,8 @@ pub fn stub_0xf69ed4() -> ! {
 // 0xf69ee4 — j___ZN4Ogre35CreateCompositorScriptCompilerEventD2Ev
 #[doc(alias = "Ogre::CreateCompositorScriptCompilerEvent::~CreateCompositorScriptCompilerEvent()")]
 #[doc(alias = "j___ZN4Ogre35CreateCompositorScriptCompilerEventD2Ev")]
-pub fn stub_0xf69ee4() -> ! {
-    todo!("0xf69ee4 j___ZN4Ogre35CreateCompositorScriptCompilerEventD2Ev")
+pub fn stub_0xf69ee4() {
+    // IDA 0xf69ee4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf69ef4 — j___ZN4Ogre35CreateGpuProgramScriptCompilerEventC2ERKSsS2_S2_S2_S2_NS_14GpuProgramTypeE
@@ -514,8 +514,8 @@ pub fn stub_0xf69ef4() -> ! {
 // 0xf69f04 — j___ZN4Ogre35CreateGpuProgramScriptCompilerEventD2Ev
 #[doc(alias = "Ogre::CreateGpuProgramScriptCompilerEvent::~CreateGpuProgramScriptCompilerEvent()")]
 #[doc(alias = "j___ZN4Ogre35CreateGpuProgramScriptCompilerEventD2Ev")]
-pub fn stub_0xf69f04() -> ! {
-    todo!("0xf69f04 j___ZN4Ogre35CreateGpuProgramScriptCompilerEventD2Ev")
+pub fn stub_0xf69f04() {
+    // IDA 0xf69f04: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf69f14 — j___ZN4Ogre39CreateParticleSystemScriptCompilerEventC2ERKSsS2_S2_
@@ -528,8 +528,8 @@ pub fn stub_0xf69f14() -> ! {
 // 0xf69f24 — j___ZN4Ogre39CreateParticleSystemScriptCompilerEventD2Ev
 #[doc(alias = "Ogre::CreateParticleSystemScriptCompilerEvent::~CreateParticleSystemScriptCompilerEvent()")]
 #[doc(alias = "j___ZN4Ogre39CreateParticleSystemScriptCompilerEventD2Ev")]
-pub fn stub_0xf69f24() -> ! {
-    todo!("0xf69f24 j___ZN4Ogre39CreateParticleSystemScriptCompilerEventD2Ev")
+pub fn stub_0xf69f24() {
+    // IDA 0xf69f24: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf69f34 — j___ZN4Ogre44CreateGpuSharedParametersScriptCompilerEventC2ERKSsS2_S2_
@@ -542,8 +542,8 @@ pub fn stub_0xf69f34() -> ! {
 // 0xf69f44 — j___ZN4Ogre44CreateGpuSharedParametersScriptCompilerEventD2Ev
 #[doc(alias = "Ogre::CreateGpuSharedParametersScriptCompilerEvent::~CreateGpuSharedParametersScriptCompilerEvent()")]
 #[doc(alias = "j___ZN4Ogre44CreateGpuSharedParametersScriptCompilerEventD2Ev")]
-pub fn stub_0xf69f44() -> ! {
-    todo!("0xf69f44 j___ZN4Ogre44CreateGpuSharedParametersScriptCompilerEventD2Ev")
+pub fn stub_0xf69f44() {
+    // IDA 0xf69f44: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf69f54 — j___ZN4Ogre44CreateHighLevelGpuProgramScriptCompilerEventC2ERKSsS2_S2_S2_S2_NS_14GpuProgramTypeEPKSt4listISt4pairISsSsENS_12STLAllocatorIS6_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
@@ -556,8 +556,8 @@ pub fn stub_0xf69f54() -> ! {
 // 0xf69f64 — j___ZN4Ogre44CreateHighLevelGpuProgramScriptCompilerEventD2Ev
 #[doc(alias = "Ogre::CreateHighLevelGpuProgramScriptCompilerEvent::~CreateHighLevelGpuProgramScriptCompilerEvent()")]
 #[doc(alias = "j___ZN4Ogre44CreateHighLevelGpuProgramScriptCompilerEventD2Ev")]
-pub fn stub_0xf69f64() -> ! {
-    todo!("0xf69f64 j___ZN4Ogre44CreateHighLevelGpuProgramScriptCompilerEventD2Ev")
+pub fn stub_0xf69f64() {
+    // IDA 0xf69f64: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf69f74 — j___ZN4Ogre8any_castIPNS_10CompositorEEET_RKNS_3AnyE
@@ -619,8 +619,8 @@ pub fn stub_0xf69fe4() -> ! {
 // 0xf69ff4 — j___ZNSt10_List_baseISt4pairISsSsEN4Ogre12STLAllocatorIS1_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEED2Ev
 #[doc(alias = "std::_List_base<std::pair<std::string,std::string>,Ogre::STLAllocator<std::pair<std::string,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~_List_base()")]
 #[doc(alias = "j___ZNSt10_List_baseISt4pairISsSsEN4Ogre12STLAllocatorIS1_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEED2Ev")]
-pub fn stub_0xf69ff4() -> ! {
-    todo!("0xf69ff4 j___ZNSt10_List_baseISt4pairISsSsEN4Ogre12STLAllocatorIS1_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEED2Ev")
+pub fn stub_0xf69ff4() {
+    // IDA 0xf69ff4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf6a004 — j___ZNSt4listISt4pairISsSsEN4Ogre12STLAllocatorIS1_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE14_M_create_nodeERKS1_

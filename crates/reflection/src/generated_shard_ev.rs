@@ -597,13 +597,13 @@ pub fn stub_f67d94() -> ! {
 
 // 0xf67da4 — j___ZN4Ogre18MaterialSerializerD2Ev
 #[doc(alias = "Ogre::MaterialSerializer::~MaterialSerializer()")]
-pub fn stub_f67da4() -> ! {
-    todo!("0xf67da4 j___ZN4Ogre18MaterialSerializerD2Ev")
+pub fn stub_f67da4() {
+    // IDA 0xf67da4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf67db4 — j___ZN4Ogre21MaterialScriptContextD2Ev
 #[doc(alias = "Ogre::MaterialScriptContext::~MaterialScriptContext()")]
-pub fn stub_f67db4() -> ! {
-    todo!("0xf67db4 j___ZN4Ogre21MaterialScriptContextD2Ev")
+pub fn stub_f67db4() {
+    // IDA 0xf67db4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 

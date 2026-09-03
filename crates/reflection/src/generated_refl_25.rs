@@ -42,16 +42,16 @@ pub fn stub_0x2379ec() {
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEED1Ev")]
-pub fn stub_0x237b40() -> ! {
-    todo!("0x237b40 boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::~sp_counted_impl_p()")
+pub fn stub_0x237b40() {
+    // IDA 0x237b40: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x237b44 — __ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEED0Ev")]
-pub fn stub_0x237b44() -> ! {
-    todo!("0x237b44 boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::~sp_counted_impl_p()")
+pub fn stub_0x237b44() {
+    // IDA 0x237b44: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x237b50 — __ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEE7disposeEv
@@ -201,16 +201,16 @@ pub fn stub_0x239668() -> ! {
 // type: void __fastcall(boost::filesystem::directory_iterator *__hidden this)
 #[doc(alias = "boost::filesystem::directory_iterator::~directory_iterator()")]
 #[doc(alias = "__ZN5boost10filesystem18directory_iteratorD1Ev")]
-pub fn stub_0x239b34() -> ! {
-    todo!("0x239b34 boost::filesystem::directory_iterator::~directory_iterator()")
+pub fn stub_0x239b34() {
+    // IDA 0x239b34: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x239bc8 — __ZN5boost10filesystem16filesystem_errorD1Ev
 // type: void __fastcall(std::runtime_error *this)
 #[doc(alias = "boost::filesystem::filesystem_error::~filesystem_error()")]
 #[doc(alias = "__ZN5boost10filesystem16filesystem_errorD1Ev")]
-pub fn stub_0x239bc8() -> ! {
-    todo!("0x239bc8 boost::filesystem::filesystem_error::~filesystem_error()")
+pub fn stub_0x239bc8() {
+    // IDA 0x239bc8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x239cc8 — __ZN5boost10filesystem16filesystem_errorC2ERKSsNS_6system10error_codeE
@@ -225,8 +225,8 @@ pub fn stub_0x239cc8() -> ! {
 // type: void __fastcall(std::runtime_error *this)
 #[doc(alias = "boost::filesystem::filesystem_error::~filesystem_error()")]
 #[doc(alias = "__ZN5boost10filesystem16filesystem_errorD0Ev")]
-pub fn stub_0x239e90() -> ! {
-    todo!("0x239e90 boost::filesystem::filesystem_error::~filesystem_error()")
+pub fn stub_0x239e90() {
+    // IDA 0x239e90: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x239f94 — __ZNK5boost10filesystem16filesystem_error4whatEv
@@ -249,16 +249,16 @@ pub fn stub_0x23a11c() -> ! {
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::filesystem_error::m_imp>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_10filesystem16filesystem_error5m_impEED1Ev")]
-pub fn stub_0x23a2bc() -> ! {
-    todo!("0x23a2bc boost::detail::sp_counted_impl_p<boost::filesystem::filesystem_error::m_imp>::~sp_counted_impl_p()")
+pub fn stub_0x23a2bc() {
+    // IDA 0x23a2bc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x23a2c0 — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem16filesystem_error5m_impEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::filesystem_error::m_imp>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_10filesystem16filesystem_error5m_impEED0Ev")]
-pub fn stub_0x23a2c0() -> ! {
-    todo!("0x23a2c0 boost::detail::sp_counted_impl_p<boost::filesystem::filesystem_error::m_imp>::~sp_counted_impl_p()")
+pub fn stub_0x23a2c0() {
+    // IDA 0x23a2c0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x23a2cc — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem16filesystem_error5m_impEE7disposeEv
@@ -377,8 +377,8 @@ pub fn stub_0x23ac1c() -> ! {
 // type: void __fastcall(boost::filesystem::path *__hidden this)
 #[doc(alias = "boost::filesystem::path::~path()")]
 #[doc(alias = "__ZN5boost10filesystem4pathD1Ev")]
-pub fn stub_0x23ac2c() -> ! {
-    todo!("0x23ac2c boost::filesystem::path::~path()")
+pub fn stub_0x23ac2c() {
+    // IDA 0x23ac2c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x23ac78 — __ZNSt6localeC2IN5boost10filesystem6detail18utf8_codecvt_facetEEERKS_PT_
@@ -465,16 +465,16 @@ pub fn stub_0x23b43c() -> ! {
 // type: void __fastcall(boost::filesystem::detail::utf8_codecvt_facet *__hidden this)
 #[doc(alias = "boost::filesystem::detail::utf8_codecvt_facet::~utf8_codecvt_facet()")]
 #[doc(alias = "__ZN5boost10filesystem6detail18utf8_codecvt_facetD1Ev")]
-pub fn stub_0x23b4ac() -> ! {
-    todo!("0x23b4ac boost::filesystem::detail::utf8_codecvt_facet::~utf8_codecvt_facet()")
+pub fn stub_0x23b4ac() {
+    // IDA 0x23b4ac: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x23b4b8 — __ZN5boost10filesystem6detail18utf8_codecvt_facetD0Ev
 // type: void __fastcall(boost::filesystem::detail::utf8_codecvt_facet *__hidden this)
 #[doc(alias = "boost::filesystem::detail::utf8_codecvt_facet::~utf8_codecvt_facet()")]
 #[doc(alias = "__ZN5boost10filesystem6detail18utf8_codecvt_facetD0Ev")]
-pub fn stub_0x23b4b8() -> ! {
-    todo!("0x23b4b8 boost::filesystem::detail::utf8_codecvt_facet::~utf8_codecvt_facet()")
+pub fn stub_0x23b4b8() {
+    // IDA 0x23b4b8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x23b4cc — __ZN5boost6system16generic_categoryEv
@@ -497,24 +497,24 @@ pub fn stub_0x23b508() -> ! {
 // type: void __fastcall(_anonymous_namespace_::system_error_category *__hidden this)
 #[doc(alias = "anonymous namespace::system_error_category::~system_error_category()")]
 #[doc(alias = "__ZN12_GLOBAL__N_121system_error_categoryD1Ev")]
-pub fn stub_0x23b544() -> ! {
-    todo!("0x23b544 anonymous namespace::system_error_category::~system_error_category()")
+pub fn stub_0x23b544() {
+    // IDA 0x23b544: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x23b548 — __ZN12_GLOBAL__N_122generic_error_categoryD1Ev
 // type: void __fastcall(_anonymous_namespace_::generic_error_category *__hidden this)
 #[doc(alias = "anonymous namespace::generic_error_category::~generic_error_category()")]
 #[doc(alias = "__ZN12_GLOBAL__N_122generic_error_categoryD1Ev")]
-pub fn stub_0x23b548() -> ! {
-    todo!("0x23b548 anonymous namespace::generic_error_category::~generic_error_category()")
+pub fn stub_0x23b548() {
+    // IDA 0x23b548: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x23b54c — __ZN12_GLOBAL__N_122generic_error_categoryD0Ev
 // type: void __fastcall(_anonymous_namespace_::generic_error_category *__hidden this)
 #[doc(alias = "anonymous namespace::generic_error_category::~generic_error_category()")]
 #[doc(alias = "__ZN12_GLOBAL__N_122generic_error_categoryD0Ev")]
-pub fn stub_0x23b54c() -> ! {
-    todo!("0x23b54c anonymous namespace::generic_error_category::~generic_error_category()")
+pub fn stub_0x23b54c() {
+    // IDA 0x23b54c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x23b558 — __ZNK12_GLOBAL__N_122generic_error_category4nameEv
@@ -537,8 +537,8 @@ pub fn stub_0x23b564() -> ! {
 // type: void __fastcall(_anonymous_namespace_::system_error_category *__hidden this)
 #[doc(alias = "anonymous namespace::system_error_category::~system_error_category()")]
 #[doc(alias = "__ZN12_GLOBAL__N_121system_error_categoryD0Ev")]
-pub fn stub_0x23b7cc() -> ! {
-    todo!("0x23b7cc anonymous namespace::system_error_category::~system_error_category()")
+pub fn stub_0x23b7cc() {
+    // IDA 0x23b7cc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x23b7d8 — __ZNK12_GLOBAL__N_121system_error_category4nameEv
@@ -649,8 +649,8 @@ pub fn stub_0x23d0c8() -> ! {
 // type: void __fastcall(void **this)
 #[doc(alias = "boost::iostreams::detail::zlib_base::~zlib_base()")]
 #[doc(alias = "__ZN5boost9iostreams6detail9zlib_baseD2Ev")]
-pub fn stub_0x23d0e8() -> ! {
-    todo!("0x23d0e8 boost::iostreams::detail::zlib_base::~zlib_base()")
+pub fn stub_0x23d0e8() {
+    // IDA 0x23d0e8: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x23d0fc — __ZN5boost9iostreams6detail9zlib_base6beforeERPKcS4_RPcS6_
@@ -713,32 +713,32 @@ pub fn stub_0x23d238() -> ! {
 // type: void __fastcall(boost::iostreams::zlib_error *__hidden this)
 #[doc(alias = "boost::iostreams::zlib_error::~zlib_error()")]
 #[doc(alias = "__ZN5boost9iostreams10zlib_errorD1Ev")]
-pub fn stub_0x23d390() -> ! {
-    todo!("0x23d390 boost::iostreams::zlib_error::~zlib_error()")
+pub fn stub_0x23d390() {
+    // IDA 0x23d390: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x23d39c — __ZN5boost9iostreams10zlib_errorD0Ev
 // type: void __fastcall(boost::iostreams::zlib_error *__hidden this)
 #[doc(alias = "boost::iostreams::zlib_error::~zlib_error()")]
 #[doc(alias = "__ZN5boost9iostreams10zlib_errorD0Ev")]
-pub fn stub_0x23d39c() -> ! {
-    todo!("0x23d39c boost::iostreams::zlib_error::~zlib_error()")
+pub fn stub_0x23d39c() {
+    // IDA 0x23d39c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x23d3b0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED1Ev
 // type: std::ios_base::failure *__fastcall(std::ios_base::failure *)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED1Ev")]
-pub fn stub_0x23d3b0() -> ! {
-    todo!("0x23d3b0 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+pub fn stub_0x23d3b0() {
+    // IDA 0x23d3b0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x23d468 — __ZN5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED1Ev
 // type: int __fastcall(std::ios_base::failure *)
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED1Ev")]
-pub fn stub_0x23d468() -> ! {
-    todo!("0x23d468 boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
+pub fn stub_0x23d468() {
+    // IDA 0x23d468: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x23d520 — __ZThn12_N5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED1Ev
@@ -761,16 +761,16 @@ pub fn stub_0x23d5d8() {
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED1Ev")]
-pub fn stub_0x23d690() -> ! {
-    todo!("0x23d690 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+pub fn stub_0x23d690() {
+    // IDA 0x23d690: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x23d75c — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
 // type: void __fastcall(std::ios_base::failure *)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev")]
-pub fn stub_0x23d75c() -> ! {
-    todo!("0x23d75c boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+pub fn stub_0x23d75c() {
+    // IDA 0x23d75c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x23d818 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEE5cloneEv

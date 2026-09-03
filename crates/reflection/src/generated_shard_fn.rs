@@ -33,8 +33,8 @@ pub fn stub_3e558() -> ! {
 // 0x3e640 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_14bad_exception_EEEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_14bad_exception_EEEED1Ev")]
-pub fn stub_3e640() -> ! {
-    todo!("0x3e640 boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>::~sp_counted_impl_p()")
+pub fn stub_3e640() {
+    // IDA 0x3e640: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e648 — __ZN5boost16exception_detail10clone_implINS0_10bad_alloc_EEC1ERKS2_
@@ -49,8 +49,8 @@ pub fn stub_3e648() -> ! {
 // type: void __fastcall(boost::exception_detail::bad_alloc_ *__hidden this)
 #[doc(alias = "boost::exception_detail::bad_alloc_::~bad_alloc_()")]
 #[doc(alias = "__ZN5boost16exception_detail10bad_alloc_D1Ev")]
-pub fn stub_3e7c8() -> ! {
-    todo!("0x3e7c8 boost::exception_detail::bad_alloc_::~bad_alloc_()")
+pub fn stub_3e7c8() {
+    // IDA 0x3e7c8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3e7f8 — __ZNK5boost16exception_detail10clone_implINS0_10bad_alloc_EE5cloneEv
@@ -68,8 +68,8 @@ pub fn stub_3e8b8() -> ! {
 
 // 0x3e8c8 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED0Ev
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED0Ev")]
-pub fn stub_3e8c8() -> ! {
-    todo!("0x3e8c8 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
+pub fn stub_3e8c8() {
+    // IDA 0x3e8c8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e900 — __ZN5boost16exception_detail10clone_implINS0_10bad_alloc_EEC1ERKS3_NS3_9clone_tagE
@@ -135,23 +135,23 @@ pub fn stub_3ebb8() -> ! {
 // 0x3ec30 — __ZN5boost10scoped_ptrIN4Ogre10LogManagerEED1Ev
 #[doc(alias = "boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr()")]
 #[doc(alias = "__ZN5boost10scoped_ptrIN4Ogre10LogManagerEED1Ev")]
-pub fn stub_3ec30() -> ! {
-    todo!("0x3ec30 boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr()")
+pub fn stub_3ec30() {
+    // IDA 0x3ec30: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3ec34 — __ZN5boost10scoped_ptrIN4Ogre10LogManagerEED2Ev
 #[doc(alias = "boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr()")]
 #[doc(alias = "__ZN5boost10scoped_ptrIN4Ogre10LogManagerEED2Ev")]
-pub fn stub_3ec34() -> ! {
-    todo!("0x3ec34 boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr()")
+pub fn stub_3ec34() {
+    // IDA 0x3ec34: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3eccc — __ZN17QuitEventListenerD0Ev
 // type: void __fastcall(QuitEventListener *__hidden this)
 #[doc(alias = "QuitEventListener::~QuitEventListener()")]
 #[doc(alias = "__ZN17QuitEventListenerD0Ev")]
-pub fn stub_3eccc() -> ! {
-    todo!("0x3eccc QuitEventListener::~QuitEventListener()")
+pub fn stub_3eccc() {
+    // IDA 0x3eccc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3ecd0 — __ZN4Ogre19WindowEventListener11windowMovedEPNS_12RenderWindowE
@@ -206,16 +206,16 @@ pub fn stub_3ecf0() -> ! {
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "RobloxView::RenderJob::~RenderJob()")]
 #[doc(alias = "__ZN10RobloxView9RenderJobD1Ev")]
-pub fn stub_3ee80() -> ! {
-    todo!("0x3ee80 RobloxView::RenderJob::~RenderJob()")
+pub fn stub_3ee80() {
+    // IDA 0x3ee80: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3ef40 — __ZN10RobloxView9RenderJobD0Ev
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "RobloxView::RenderJob::~RenderJob()")]
 #[doc(alias = "__ZN10RobloxView9RenderJobD0Ev")]
-pub fn stub_3ef40() -> ! {
-    todo!("0x3ef40 RobloxView::RenderJob::~RenderJob()")
+pub fn stub_3ef40() {
+    // IDA 0x3ef40: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3f008 — __ZN10RobloxView9RenderJob9sleepTimeERKN3RBX13TaskScheduler3Job5StatsE
@@ -322,22 +322,22 @@ pub fn stub_3fb9c() -> ! {
 // type: void __fastcall(boost::bad_weak_ptr *__hidden this)
 #[doc(alias = "boost::bad_weak_ptr::~bad_weak_ptr()")]
 #[doc(alias = "__ZN5boost12bad_weak_ptrD0Ev")]
-pub fn stub_3fcf8() -> ! {
-    todo!("0x3fcf8 boost::bad_weak_ptr::~bad_weak_ptr()")
+pub fn stub_3fcf8() {
+    // IDA 0x3fcf8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3fd10 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED1Ev
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED1Ev")]
-pub fn stub_3fd10() -> ! {
-    todo!("0x3fd10 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
+pub fn stub_3fd10() {
+    // IDA 0x3fd10: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3fd38 — __ZN5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED1Ev
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED1Ev")]
-pub fn stub_3fd38() -> ! {
-    todo!("0x3fd38 boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
+pub fn stub_3fd38() {
+    // IDA 0x3fd38: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3fd60 — __ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED1Ev
@@ -374,15 +374,15 @@ pub fn stub_3ff18() -> ! {
 
 // 0x3ff28 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev")]
-pub fn stub_3ff28() -> ! {
-    todo!("0x3ff28 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
+pub fn stub_3ff28() {
+    // IDA 0x3ff28: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3ff60 — __ZN5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED0Ev
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED0Ev")]
-pub fn stub_3ff60() -> ! {
-    todo!("0x3ff60 boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
+pub fn stub_3ff60() {
+    // IDA 0x3ff60: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3ff90 — __ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED0Ev
@@ -468,16 +468,16 @@ pub fn stub_403f0() -> ! {
 // type: void __fastcall(RobloxView::ViewUpdateJob *__hidden this)
 #[doc(alias = "RobloxView::ViewUpdateJob::~ViewUpdateJob()")]
 #[doc(alias = "__ZN10RobloxView13ViewUpdateJobD1Ev")]
-pub fn stub_404f0() -> ! {
-    todo!("0x404f0 RobloxView::ViewUpdateJob::~ViewUpdateJob()")
+pub fn stub_404f0() {
+    // IDA 0x404f0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x4059c — __ZN10RobloxView13ViewUpdateJobD0Ev
 // type: void __fastcall(RobloxView::ViewUpdateJob *__hidden this)
 #[doc(alias = "RobloxView::ViewUpdateJob::~ViewUpdateJob()")]
 #[doc(alias = "__ZN10RobloxView13ViewUpdateJobD0Ev")]
-pub fn stub_4059c() -> ! {
-    todo!("0x4059c RobloxView::ViewUpdateJob::~ViewUpdateJob()")
+pub fn stub_4059c() {
+    // IDA 0x4059c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x40650 — __ZN10RobloxView13ViewUpdateJob9sleepTimeERKN3RBX13TaskScheduler3Job5StatsE
@@ -976,40 +976,40 @@ pub fn stub_43180() -> ! {
 // type: void __fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
 #[doc(alias = "__ZN18iOSSettingsServiceD1Ev")]
-pub fn stub_432b0() -> ! {
-    todo!("0x432b0 iOSSettingsService::~iOSSettingsService()")
+pub fn stub_432b0() {
+    // IDA 0x432b0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x432b4 — __ZN18iOSSettingsServiceD0Ev
 // type: void __fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
 #[doc(alias = "__ZN18iOSSettingsServiceD0Ev")]
-pub fn stub_432b4() -> ! {
-    todo!("0x432b4 iOSSettingsService::~iOSSettingsService()")
+pub fn stub_432b4() {
+    // IDA 0x432b4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x432c8 — __ZN18iOSSettingsServiceD2Ev
 // type: void __fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
 #[doc(alias = "__ZN18iOSSettingsServiceD2Ev")]
-pub fn stub_432c8() -> ! {
-    todo!("0x432c8 iOSSettingsService::~iOSSettingsService()")
+pub fn stub_432c8() {
+    // IDA 0x432c8: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x43314 — __ZN10SimpleJSOND1Ev
 // type: void __fastcall(SimpleJSON *__hidden this)
 #[doc(alias = "SimpleJSON::~SimpleJSON()")]
 #[doc(alias = "__ZN10SimpleJSOND1Ev")]
-pub fn stub_43314() -> ! {
-    todo!("0x43314 SimpleJSON::~SimpleJSON()")
+pub fn stub_43314() {
+    // IDA 0x43314: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x43338 — __ZN10SimpleJSOND0Ev
 // type: void __fastcall(SimpleJSON *__hidden this)
 #[doc(alias = "SimpleJSON::~SimpleJSON()")]
 #[doc(alias = "__ZN10SimpleJSOND0Ev")]
-pub fn stub_43338() -> ! {
-    todo!("0x43338 SimpleJSON::~SimpleJSON()")
+pub fn stub_43338() {
+    // IDA 0x43338: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x43360 — __ZN10SimpleJSON14DefaultHandlerERKSsS1_

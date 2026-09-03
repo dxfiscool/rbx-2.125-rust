@@ -42,16 +42,16 @@ pub fn stub_0xcbd64() -> ! {
 // type: void __fastcall(FMOD::GeometryMgr *__hidden this)
 #[doc(alias = "FMOD::GeometryMgr::~GeometryMgr()")]
 #[doc(alias = "__ZN4FMOD11GeometryMgrD2Ev")]
-pub fn stub_0xcbe8c() -> ! {
-    todo!("0xcbe8c FMOD::GeometryMgr::~GeometryMgr()")
+pub fn stub_0xcbe8c() {
+    // IDA 0xcbe8c: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcbeb8 — __ZN4FMOD11GeometryMgrD1Ev
 // type: void __fastcall(FMOD::GeometryMgr *__hidden this)
 #[doc(alias = "FMOD::GeometryMgr::~GeometryMgr()")]
 #[doc(alias = "__ZN4FMOD11GeometryMgrD1Ev")]
-pub fn stub_0xcbeb8() -> ! {
-    todo!("0xcbeb8 FMOD::GeometryMgr::~GeometryMgr()")
+pub fn stub_0xcbeb8() {
+    // IDA 0xcbeb8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcbebc — __ZN4FMOD11GeometryMgr11lineTestAllEPK11FMOD_VECTORS3_PfS4_
@@ -97,16 +97,16 @@ pub fn stub_0xcc1d4() -> ! {
 // type: void __fastcall(FMOD::OcclusionThread *__hidden this)
 #[doc(alias = "FMOD::OcclusionThread::~OcclusionThread()")]
 #[doc(alias = "__ZN4FMOD15OcclusionThreadD0Ev")]
-pub fn stub_0xcc22c() -> ! {
-    todo!("0xcc22c FMOD::OcclusionThread::~OcclusionThread()")
+pub fn stub_0xcc22c() {
+    // IDA 0xcc22c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xcc250 — __ZN4FMOD15OcclusionThreadD1Ev
 // type: void __fastcall(FMOD::OcclusionThread *__hidden this)
 #[doc(alias = "FMOD::OcclusionThread::~OcclusionThread()")]
 #[doc(alias = "__ZN4FMOD15OcclusionThreadD1Ev")]
-pub fn stub_0xcc250() -> ! {
-    todo!("0xcc250 FMOD::OcclusionThread::~OcclusionThread()")
+pub fn stub_0xcc250() {
+    // IDA 0xcc250: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcc268 — __ZN4FMODL10matrixMultEPA4_KfPK11FMOD_VECTORPS3_
@@ -288,16 +288,16 @@ pub fn stub_0xcd394() -> ! {
 // type: void __fastcall(FMOD::MemPool *__hidden this)
 #[doc(alias = "FMOD::MemPool::~MemPool()")]
 #[doc(alias = "__ZN4FMOD7MemPoolD2Ev")]
-pub fn stub_0xcd454() -> ! {
-    todo!("0xcd454 FMOD::MemPool::~MemPool()")
+pub fn stub_0xcd454() {
+    // IDA 0xcd454: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcd458 — __ZN4FMOD7MemPoolD1Ev
 // type: void __fastcall(FMOD::MemPool *__hidden this)
 #[doc(alias = "FMOD::MemPool::~MemPool()")]
 #[doc(alias = "__ZN4FMOD7MemPoolD1Ev")]
-pub fn stub_0xcd458() -> ! {
-    todo!("0xcd458 FMOD::MemPool::~MemPool()")
+pub fn stub_0xcd458() {
+    // IDA 0xcd458: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcd45c — __ZN4FMOD12MemSingleton4freeEPKci
@@ -655,16 +655,16 @@ pub fn stub_0xceed8() -> ! {
 // type: void __fastcall(FMOD::ChannelMusic *__hidden this)
 #[doc(alias = "FMOD::ChannelMusic::~ChannelMusic()")]
 #[doc(alias = "__ZN4FMOD12ChannelMusicD0Ev")]
-pub fn stub_0xceee4() -> ! {
-    todo!("0xceee4 FMOD::ChannelMusic::~ChannelMusic()")
+pub fn stub_0xceee4() {
+    // IDA 0xceee4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xcef08 — __ZN4FMOD12ChannelMusicD1Ev
 // type: void __fastcall(FMOD::ChannelMusic *__hidden this)
 #[doc(alias = "FMOD::ChannelMusic::~ChannelMusic()")]
 #[doc(alias = "__ZN4FMOD12ChannelMusicD1Ev")]
-pub fn stub_0xcef08() -> ! {
-    todo!("0xcef08 FMOD::ChannelMusic::~ChannelMusic()")
+pub fn stub_0xcef08() {
+    // IDA 0xcef08: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcef20 — __Z41__static_initialization_and_destruction_0ii_34

@@ -115,8 +115,8 @@ pub fn stub_0x7c3a90() -> ! {
 // 0x7c3ac0 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFN5boost10shared_ptrINS_8InstanceEEES6_ELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFN5boost10shared_ptrINS_8InstanceEEES6_ELi1EED0Ev")]
-pub fn stub_0x7c3ac0() -> ! {
-    todo!("0x7c3ac0")
+pub fn stub_0x7c3ac0() {
+    // IDA 0x7c3ac0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7c3bc8 — __ZNK3RBX10Reflection13BoundFuncDescINS_8HumanoidEFN5boost10shared_ptrINS_8InstanceEEES6_ELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -143,8 +143,8 @@ pub fn stub_0x7c3ddc() -> ! {
 // 0x7c3f90 — __ZN3RBX10Reflection18EnumPropDescriptorINS_8HumanoidENS2_13NameOcclusionEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Humanoid,RBX::Humanoid::NameOcclusion>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_8HumanoidENS2_13NameOcclusionEED0Ev")]
-pub fn stub_0x7c3f90() -> ! {
-    todo!("0x7c3f90")
+pub fn stub_0x7c3f90() {
+    // IDA 0x7c3f90: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7c3fbc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_8HumanoidENS2_13NameOcclusionEE10isReadOnlyEv
@@ -311,8 +311,8 @@ pub fn stub_0x7c4630() -> ! {
 // 0x7c4654 — __ZN3RBX10Reflection15RemoteEventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEED0Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::~RemoteEventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEED0Ev")]
-pub fn stub_0x7c4654() -> ! {
-    todo!("0x7c4654")
+pub fn stub_0x7c4654() {
+    // IDA 0x7c4654: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7c4708 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
@@ -367,15 +367,15 @@ pub fn stub_0x7c4a00() -> ! {
 // 0x7c4b84 — __ZN3RBX10Reflection9EventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED1Ev")]
-pub fn stub_0x7c4b84() -> ! {
-    todo!("0x7c4b84")
+pub fn stub_0x7c4b84() {
+    // IDA 0x7c4b84: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x7c4ba8 — __ZN3RBX10Reflection9EventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED0Ev")]
-pub fn stub_0x7c4ba8() -> ! {
-    todo!("0x7c4ba8")
+pub fn stub_0x7c4ba8() {
+    // IDA 0x7c4ba8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7c4c5c — __ZN3RBX10Reflection9EventDescINS_8HumanoidEFvSsEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -388,8 +388,8 @@ pub fn stub_0x7c4c5c() -> ! {
 // 0x7c4de0 — __ZN3RBX10Reflection9EventDescINS_8HumanoidEFvSsEN3rbx6signalIS3_EEMS2_S6_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Humanoid,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Humanoid::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_8HumanoidEFvSsEN3rbx6signalIS3_EEMS2_S6_ED0Ev")]
-pub fn stub_0x7c4de0() -> ! {
-    todo!("0x7c4de0")
+pub fn stub_0x7c4de0() {
+    // IDA 0x7c4de0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7c4e94 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_8HumanoidEFvSsEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -423,8 +423,8 @@ pub fn stub_0x7c51a0() -> ! {
 // 0x7c5324 — __ZN3RBX10Reflection9EventDescINS_8HumanoidEFvNS2_6StatusEEN3rbx6signalIS4_EEMS2_S7_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Humanoid,void ()(RBX::Humanoid::Status),rbx::signal<void ()(RBX::Humanoid::Status)>,rbx::signal<void ()(RBX::Humanoid::Status)> RBX::Humanoid::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_8HumanoidEFvNS2_6StatusEEN3rbx6signalIS4_EEMS2_S7_ED0Ev")]
-pub fn stub_0x7c5324() -> ! {
-    todo!("0x7c5324")
+pub fn stub_0x7c5324() {
+    // IDA 0x7c5324: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7c53d8 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_8HumanoidEFvNS2_6StatusEEN3rbx6signalIS4_EEMS2_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -528,8 +528,8 @@ pub fn stub_0x7c6e78() -> ! {
 // 0x7c6f7c — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EED0Ev")]
-pub fn stub_0x7c6f7c() -> ! {
-    todo!("0x7c6f7c")
+pub fn stub_0x7c6f7c() {
+    // IDA 0x7c6f7c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7c7030 — __ZNK3RBX10Reflection13BoundFuncDescINS_8HumanoidEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -556,8 +556,8 @@ pub fn stub_0x7c713c() -> ! {
 // 0x7c7240 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvvELi0EED0Ev")]
-pub fn stub_0x7c7240() -> ! {
-    todo!("0x7c7240")
+pub fn stub_0x7c7240() {
+    // IDA 0x7c7240: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7c72f4 — __ZNK3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -584,8 +584,8 @@ pub fn stub_0x7c7490() -> ! {
 // 0x7c74c0 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev")]
-pub fn stub_0x7c74c0() -> ! {
-    todo!("0x7c74c0")
+pub fn stub_0x7c74c0() {
+    // IDA 0x7c74c0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7c75c8 — __ZNK3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -619,8 +619,8 @@ pub fn stub_0x7c7910() -> ! {
 // 0x7c7940 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFbSsELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,bool ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFbSsELi1EED0Ev")]
-pub fn stub_0x7c7940() -> ! {
-    todo!("0x7c7940")
+pub fn stub_0x7c7940() {
+    // IDA 0x7c7940: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7c7a48 — __ZNK3RBX10Reflection13BoundFuncDescINS_8HumanoidEFbSsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -654,8 +654,8 @@ pub fn stub_0x7c7e88() -> ! {
 // 0x7c7eb8 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFbNS2_6StatusEELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,bool ()(RBX::Humanoid::Status),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFbNS2_6StatusEELi1EED0Ev")]
-pub fn stub_0x7c7eb8() -> ! {
-    todo!("0x7c7eb8")
+pub fn stub_0x7c7eb8() {
+    // IDA 0x7c7eb8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7c7f8c — __ZNK3RBX10Reflection13BoundFuncDescINS_8HumanoidEFbNS2_6StatusEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -696,8 +696,8 @@ pub fn stub_0x7c81e8() -> ! {
 // 0x7c836c — __ZN3RBX10Reflection9EventDescINS_8HumanoidEFvbEN3rbx6signalIS3_EEMS2_S6_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Humanoid,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Humanoid::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_8HumanoidEFvbEN3rbx6signalIS3_EEMS2_S6_ED0Ev")]
-pub fn stub_0x7c836c() -> ! {
-    todo!("0x7c836c")
+pub fn stub_0x7c836c() {
+    // IDA 0x7c836c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7c8420 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_8HumanoidEFvbEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -731,8 +731,8 @@ pub fn stub_0x7c8614() -> ! {
 // 0x7c8798 — __ZN3RBX10Reflection9EventDescINS_8HumanoidEFvfEN3rbx6signalIS3_EEMS2_S6_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Humanoid,void ()(float),rbx::signal<void ()(float)>,rbx::signal<void ()(float)> RBX::Humanoid::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_8HumanoidEFvfEN3rbx6signalIS3_EEMS2_S6_ED0Ev")]
-pub fn stub_0x7c8798() -> ! {
-    todo!("0x7c8798")
+pub fn stub_0x7c8798() {
+    // IDA 0x7c8798: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7c884c — __ZNK3RBX10Reflection13EventDescImplILi1ENS_8HumanoidEFvfEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -829,8 +829,8 @@ pub fn stub_0x7c9278() -> ! {
 // 0x7c9b48 — __ZN3RBX10Reflection9EventDescINS_8HumanoidEFvvEN3rbx6signalIS3_EEMS2_S6_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Humanoid,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Humanoid::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_8HumanoidEFvvEN3rbx6signalIS3_EEMS2_S6_ED0Ev")]
-pub fn stub_0x7c9b48() -> ! {
-    todo!("0x7c9b48")
+pub fn stub_0x7c9b48() {
+    // IDA 0x7c9b48: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7c9bfc — __ZNK3RBX10Reflection13EventDescImplILi0ENS_8HumanoidEFvvEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -871,8 +871,8 @@ pub fn stub_0x7ca054() -> ! {
 // 0x7ca0a0 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvN3G3D7Vector3EN5boost10shared_ptrINS_8InstanceEEEELi2EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvN3G3D7Vector3EN5boost10shared_ptrINS_8InstanceEEEELi2EED0Ev")]
-pub fn stub_0x7ca0a0() -> ! {
-    todo!("0x7ca0a0")
+pub fn stub_0x7ca0a0() {
+    // IDA 0x7ca0a0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7ca1c0 — __ZNK3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvN3G3D7Vector3EN5boost10shared_ptrINS_8InstanceEEEELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -906,8 +906,8 @@ pub fn stub_0x7ca530() -> ! {
 // 0x7ca560 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvbELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(bool),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvbELi1EED0Ev")]
-pub fn stub_0x7ca560() -> ! {
-    todo!("0x7ca560")
+pub fn stub_0x7ca560() {
+    // IDA 0x7ca560: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7ca634 — __ZNK3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvbELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -934,8 +934,8 @@ pub fn stub_0x7ca7e0() -> ! {
 // 0x7ca810 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvfELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(float),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvfELi1EED0Ev")]
-pub fn stub_0x7ca810() -> ! {
-    todo!("0x7ca810")
+pub fn stub_0x7ca810() {
+    // IDA 0x7ca810: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7ca8e4 — __ZNK3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvfELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -955,8 +955,8 @@ pub fn stub_0x7ca920() -> ! {
 // 0x7caa34 — __ZN3RBX10Reflection14PropDescriptorINS_8HumanoidEfED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Humanoid,float>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_8HumanoidEfED0Ev")]
-pub fn stub_0x7caa34() -> ! {
-    todo!("0x7caa34")
+pub fn stub_0x7caa34() {
+    // IDA 0x7caa34: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7caa60 — __ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidEfE10GetSetImplIMS2_KFfvEMS2_FvRKfEE10isReadOnlyEv
@@ -997,8 +997,8 @@ pub fn stub_0x7caaac() -> ! {
 // 0x7cabc0 — __ZN3RBX10Reflection14PropDescriptorINS_8HumanoidEN3G3D7Vector3EED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Humanoid,G3D::Vector3>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_8HumanoidEN3G3D7Vector3EED0Ev")]
-pub fn stub_0x7cabc0() -> ! {
-    todo!("0x7cabc0")
+pub fn stub_0x7cabc0() {
+    // IDA 0x7cabc0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7cabec — __ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvRKS4_EE10isReadOnlyEv
@@ -1039,8 +1039,8 @@ pub fn stub_0x7cac40() -> ! {
 // 0x7cad54 — __ZN3RBX10Reflection14PropDescriptorINS_8HumanoidEbED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Humanoid,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_8HumanoidEbED0Ev")]
-pub fn stub_0x7cad54() -> ! {
-    todo!("0x7cad54")
+pub fn stub_0x7cad54() {
+    // IDA 0x7cad54: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x7cad80 — __ZNK3RBX10Reflection14PropDescriptorINS_8HumanoidEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv

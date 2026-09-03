@@ -563,15 +563,15 @@ pub fn stub_8429f8() -> ! {
 // 0x842a1c — __ZN3rbx7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE13callable_slotIN5boost3_bi6bind_tIvNS8_4_mfi3mf3IvS3_iiS4_EENS9_5list4INS9_5valueIPS3_EENS8_3argILi1EEENSI_ILi2EEENSI_ILi3EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(int,int,RBX::FriendService::FriendEventType)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::FriendService,int,int,RBX::FriendService::FriendEventType>,boost::_bi::list4<boost::_bi::value<RBX::FriendService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE13callable_slotIN5boost3_bi6bind_tIvNS8_4_mfi3mf3IvS3_iiS4_EENS9_5list4INS9_5valueIPS3_EENS8_3argILi1EEENSI_ILi2EEENSI_ILi3EEEEEEEED1Ev")]
-pub fn stub_842a1c() -> ! {
-    todo!("0x842a1c")
+pub fn stub_842a1c() {
+    // IDA 0x842a1c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x842a48 — __ZN3rbx7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE13callable_slotIN5boost3_bi6bind_tIvNS8_4_mfi3mf3IvS3_iiS4_EENS9_5list4INS9_5valueIPS3_EENS8_3argILi1EEENSI_ILi2EEENSI_ILi3EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(int,int,RBX::FriendService::FriendEventType)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::FriendService,int,int,RBX::FriendService::FriendEventType>,boost::_bi::list4<boost::_bi::value<RBX::FriendService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE13callable_slotIN5boost3_bi6bind_tIvNS8_4_mfi3mf3IvS3_iiS4_EENS9_5list4INS9_5valueIPS3_EENS8_3argILi1EEENSI_ILi2EEENSI_ILi3EEEEEEEED0Ev")]
-pub fn stub_842a48() -> ! {
-    todo!("0x842a48")
+pub fn stub_842a48() {
+    // IDA 0x842a48: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x842b1c — __ZN3rbx7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slot10disconnectEv
@@ -633,29 +633,29 @@ pub fn stub_842db8() -> ! {
 // 0x842ea8 — __ZN3rbx7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slotD1Ev
 #[doc(alias = "rbx::signals::signal<void ()(int,int,RBX::FriendService::FriendEventType)>::slot::~slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slotD1Ev")]
-pub fn stub_842ea8() -> ! {
-    todo!("0x842ea8")
+pub fn stub_842ea8() {
+    // IDA 0x842ea8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x842ed4 — __ZN3rbx7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slotD0Ev
 #[doc(alias = "rbx::signals::signal<void ()(int,int,RBX::FriendService::FriendEventType)>::slot::~slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slotD0Ev")]
-pub fn stub_842ed4() -> ! {
-    todo!("0x842ed4")
+pub fn stub_842ed4() {
+    // IDA 0x842ed4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x842fa8 — __ZN3rbx8callableINS_7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf3IvS4_iiS5_EENSA_5list4INSA_5valueIPS4_EENS9_3argILi1EEENSJ_ILi2EEENSJ_ILi3EEEEEEELi3ES6_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(int,int,RBX::FriendService::FriendEventType)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::FriendService,int,int,RBX::FriendService::FriendEventType>,boost::_bi::list4<boost::_bi::value<RBX::FriendService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(int,int,RBX::FriendService::FriendEventType)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf3IvS4_iiS5_EENSA_5list4INSA_5valueIPS4_EENS9_3argILi1EEENSJ_ILi2EEENSJ_ILi3EEEEEEELi3ES6_ED1Ev")]
-pub fn stub_842fa8() -> ! {
-    todo!("0x842fa8")
+pub fn stub_842fa8() {
+    // IDA 0x842fa8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x842fd4 — __ZN3rbx8callableINS_7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf3IvS4_iiS5_EENSA_5list4INSA_5valueIPS4_EENS9_3argILi1EEENSJ_ILi2EEENSJ_ILi3EEEEEEELi3ES6_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(int,int,RBX::FriendService::FriendEventType)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::FriendService,int,int,RBX::FriendService::FriendEventType>,boost::_bi::list4<boost::_bi::value<RBX::FriendService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(int,int,RBX::FriendService::FriendEventType)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf3IvS4_iiS5_EENSA_5list4INSA_5valueIPS4_EENS9_3argILi1EEENSJ_ILi2EEENSJ_ILi3EEEEEEELi3ES6_ED0Ev")]
-pub fn stub_842fd4() -> ! {
-    todo!("0x842fd4")
+pub fn stub_842fd4() {
+    // IDA 0x842fd4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x844b94 — __ZN3rbx13remote_signalIFviiN3RBX13FriendService15FriendEventTypeEEEC2Ev
@@ -696,15 +696,15 @@ pub fn stub_8475e8() -> ! {
 // 0x8476e4 — __ZN3rbx7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE13callable_slotIN5boost8functionIS5_EEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(int,int,RBX::FriendService::FriendEventType)>::callable_slot<boost::function<void ()(int,int,RBX::FriendService::FriendEventType)>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE13callable_slotIN5boost8functionIS5_EEED1Ev")]
-pub fn stub_8476e4() -> ! {
-    todo!("0x8476e4")
+pub fn stub_8476e4() {
+    // IDA 0x8476e4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8477f4 — __ZN3rbx7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE13callable_slotIN5boost8functionIS5_EEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(int,int,RBX::FriendService::FriendEventType)>::callable_slot<boost::function<void ()(int,int,RBX::FriendService::FriendEventType)>>::~callable_slot()")]
 #[doc(alias = "__ZN3rbx7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE13callable_slotIN5boost8functionIS5_EEED0Ev")]
-pub fn stub_8477f4() -> ! {
-    todo!("0x8477f4")
+pub fn stub_8477f4() {
+    // IDA 0x8477f4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x847924 — __ZN3rbx8callableINS_7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEiiS5_
@@ -731,15 +731,15 @@ pub fn stub_847934() -> ! {
 // 0x847a00 — __ZN3rbx8callableINS_7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slotEN5boost8functionIS6_EELi3ES6_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(int,int,RBX::FriendService::FriendEventType)>::slot,boost::function<void ()(int,int,RBX::FriendService::FriendEventType)>,3,void ()(int,int,RBX::FriendService::FriendEventType)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slotEN5boost8functionIS6_EELi3ES6_ED1Ev")]
-pub fn stub_847a00() -> ! {
-    todo!("0x847a00")
+pub fn stub_847a00() {
+    // IDA 0x847a00: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x847b10 — __ZN3rbx8callableINS_7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slotEN5boost8functionIS6_EELi3ES6_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(int,int,RBX::FriendService::FriendEventType)>::slot,boost::function<void ()(int,int,RBX::FriendService::FriendEventType)>,3,void ()(int,int,RBX::FriendService::FriendEventType)>::~callable()")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slotEN5boost8functionIS6_EELi3ES6_ED0Ev")]
-pub fn stub_847b10() -> ! {
-    todo!("0x847b10")
+pub fn stub_847b10() {
+    // IDA 0x847b10: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x847c40 — __ZN5boost9function3IviiN3RBX13FriendService15FriendEventTypeEE13assign_to_ownERKS4_
@@ -752,8 +752,8 @@ pub fn stub_847c40() -> ! {
 // 0x848974 — __ZN3rbx13remote_signalIFviiN3RBX13FriendService15FriendEventTypeEEED2Ev
 #[doc(alias = "rbx::remote_signal<void ()(int,int,RBX::FriendService::FriendEventType)>::~remote_signal()")]
 #[doc(alias = "__ZN3rbx13remote_signalIFviiN3RBX13FriendService15FriendEventTypeEEED2Ev")]
-pub fn stub_848974() -> ! {
-    todo!("0x848974")
+pub fn stub_848974() {
+    // IDA 0x848974: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x854a64 — __ZN3RBX11FastLogJSON15ProcessVariableERKSsS2_11FastVarType

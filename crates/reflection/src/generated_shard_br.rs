@@ -30,8 +30,8 @@ pub fn stub_f35b04() -> ! {
 // 0xf35b14 — j___ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEED2Ev")]
-pub fn stub_f35b14() -> ! {
-    todo!("0xf35b14 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()")
+pub fn stub_f35b14() {
+    // IDA 0xf35b14: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf35b24 — j___ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE7addPairES3_PKc
@@ -44,8 +44,8 @@ pub fn stub_f35b24() -> ! {
 // 0xf35b34 — j___ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEED2Ev")]
-pub fn stub_f35b34() -> ! {
-    todo!("0xf35b34 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc()")
+pub fn stub_f35b34() {
+    // IDA 0xf35b34: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf35b44 — j___ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE7addPairES3_PKc
@@ -58,8 +58,8 @@ pub fn stub_f35b44() -> ! {
 // 0xf35b54 — j___ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED2Ev")]
-pub fn stub_f35b54() -> ! {
-    todo!("0xf35b54 RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()")
+pub fn stub_f35b54() {
+    // IDA 0xf35b54: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf35b64 — j___ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEE7addPairES3_PKc
@@ -72,8 +72,8 @@ pub fn stub_f35b64() -> ! {
 // 0xf35b74 — j___ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED2Ev")]
-pub fn stub_f35b74() -> ! {
-    todo!("0xf35b74 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")
+pub fn stub_f35b74() {
+    // IDA 0xf35b74: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf35b84 — j___ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE7addPairES3_PKc
@@ -86,8 +86,8 @@ pub fn stub_f35b84() -> ! {
 // 0xf35b94 — j___ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED2Ev")]
-pub fn stub_f35b94() -> ! {
-    todo!("0xf35b94 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()")
+pub fn stub_f35b94() {
+    // IDA 0xf35b94: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf35ba4 — j___ZN3RBX10Reflection9ArgHelper6getArgINS_8Instance10SaveFilterELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE

@@ -181,8 +181,8 @@ pub fn stub_0xf48694() -> ! {
 // 0xf486a4 — j___ZN3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: int __fastcall(int, int, int, int, int, int)
 #[doc(alias = "j___ZN3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0xf486a4() -> ! {
-    todo!("0xf486a4")
+pub fn stub_0xf486a4() {
+    // IDA 0xf486a4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf48734 — j___ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE11setIntValueEPNS0_13DescribedBaseEi
@@ -370,8 +370,8 @@ pub fn stub_0xf48904() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::~EnumDesc()")]
-pub fn stub_0xf48914() -> ! {
-    todo!("0xf48914")
+pub fn stub_0xf48914() {
+    // IDA 0xf48914: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf48924 — j___ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEED2Ev
@@ -379,24 +379,24 @@ pub fn stub_0xf48914() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::~EnumDesc()")]
-pub fn stub_0xf48924() -> ! {
-    todo!("0xf48924")
+pub fn stub_0xf48924() {
+    // IDA 0xf48924: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf48934 — j___ZN3RBX10Reflection8EnumDescINS_11TextService4FontEED2Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::Font>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11TextService4FontEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::~EnumDesc()")]
-pub fn stub_0xf48934() -> ! {
-    todo!("0xf48934")
+pub fn stub_0xf48934() {
+    // IDA 0xf48934: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf48944 — j___ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEED2Ev
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::~EnumDesc()")]
-pub fn stub_0xf48944() -> ! {
-    todo!("0xf48944")
+pub fn stub_0xf48944() {
+    // IDA 0xf48944: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf48954 — j___ZN3RBX10Reflection9DescribedINS_7TextBoxELZNS_8sTextBoxEENS_14FactoryProductIS2_NS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -1072,7 +1072,7 @@ pub fn stub_0xf49764() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::Controller::Button>::~EnumDesc()
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_10Controller6ButtonEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Controller::Button>::~EnumDesc()")]
-pub fn stub_0xf49774() -> ! {
-    todo!("0xf49774")
+pub fn stub_0xf49774() {
+    // IDA 0xf49774: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 

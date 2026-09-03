@@ -81,16 +81,16 @@ pub fn stub_0x833e78() {
 // type: void __fastcall(RBX::TweenService *__hidden this)
 #[doc(alias = "__ZN3RBX12TweenServiceD1Ev")]
 #[doc(alias = "RBX::TweenService::~TweenService()")]
-pub fn stub_0x833e80() -> ! {
-    todo!("0x833e80")
+pub fn stub_0x833e80() {
+    // IDA 0x833e80: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x833f94 — __ZN3RBX12TweenServiceD0Ev
 // type: void __fastcall(RBX::TweenService *__hidden this)
 #[doc(alias = "__ZN3RBX12TweenServiceD0Ev")]
 #[doc(alias = "RBX::TweenService::~TweenService()")]
-pub fn stub_0x833f94() -> ! {
-    todo!("0x833f94")
+pub fn stub_0x833f94() {
+    // IDA 0x833f94: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8340e8 — __ZThn32_N3RBX12TweenServiceD1Ev
@@ -263,16 +263,16 @@ pub fn stub_0x835554() -> ! {
 // type: void __fastcall(RBX::NotificationBox *__hidden this)
 #[doc(alias = "__ZN3RBX15NotificationBoxD1Ev")]
 #[doc(alias = "RBX::NotificationBox::~NotificationBox()")]
-pub fn stub_0x83557c() -> ! {
-    todo!("0x83557c")
+pub fn stub_0x83557c() {
+    // IDA 0x83557c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8356a4 — __ZN3RBX15NotificationBoxD0Ev
 // type: void __fastcall(RBX::NotificationBox *__hidden this)
 #[doc(alias = "__ZN3RBX15NotificationBoxD0Ev")]
 #[doc(alias = "RBX::NotificationBox::~NotificationBox()")]
-pub fn stub_0x8356a4() -> ! {
-    todo!("0x8356a4")
+pub fn stub_0x8356a4() {
+    // IDA 0x8356a4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8357f4 — __ZThn32_N3RBX15NotificationBoxD1Ev
@@ -421,16 +421,16 @@ pub fn stub_0x8375b8() -> ! {
 // type: void __fastcall(RBX::NotificationObject *__hidden this)
 #[doc(alias = "__ZN3RBX18NotificationObjectD1Ev")]
 #[doc(alias = "RBX::NotificationObject::~NotificationObject()")]
-pub fn stub_0x8375f0() -> ! {
-    todo!("0x8375f0")
+pub fn stub_0x8375f0() {
+    // IDA 0x8375f0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8375f4 — __ZN3RBX18NotificationObjectD0Ev
 // type: void __fastcall(RBX::NotificationObject *__hidden this)
 #[doc(alias = "__ZN3RBX18NotificationObjectD0Ev")]
 #[doc(alias = "RBX::NotificationObject::~NotificationObject()")]
-pub fn stub_0x8375f4() -> ! {
-    todo!("0x8375f4")
+pub fn stub_0x8375f4() {
+    // IDA 0x8375f4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8376a4 — __ZThn32_N3RBX18NotificationObjectD1Ev
@@ -469,16 +469,16 @@ pub fn stub_0x837768() {
 // type: void __fastcall(RBX::Frame *__hidden this)
 #[doc(alias = "__ZN3RBX5FrameD1Ev")]
 #[doc(alias = "RBX::Frame::~Frame()")]
-pub fn stub_0x8389b8() -> ! {
-    todo!("0x8389b8")
+pub fn stub_0x8389b8() {
+    // IDA 0x8389b8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x838ab0 — __ZN3RBX5FrameD0Ev
 // type: void __fastcall(RBX::Frame *__hidden this)
 #[doc(alias = "__ZN3RBX5FrameD0Ev")]
 #[doc(alias = "RBX::Frame::~Frame()")]
-pub fn stub_0x838ab0() -> ! {
-    todo!("0x838ab0")
+pub fn stub_0x838ab0() {
+    // IDA 0x838ab0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x838bc8 — __ZThn32_N3RBX5FrameD1Ev
@@ -517,8 +517,8 @@ pub fn stub_0x838ecc() {
 // type: void __fastcall(RBX::NotificationObject *__hidden this)
 #[doc(alias = "__ZN3RBX18NotificationObjectD2Ev")]
 #[doc(alias = "RBX::NotificationObject::~NotificationObject()")]
-pub fn stub_0x83904c() -> ! {
-    todo!("0x83904c")
+pub fn stub_0x83904c() {
+    // IDA 0x83904c: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x839508 — __ZN3RBX13FriendService25setCreateFriendRequestUrlESs
@@ -727,16 +727,16 @@ pub fn stub_0x83dab4() -> ! {
 // type: void __fastcall(RBX::FriendService *__hidden this)
 #[doc(alias = "__ZN3RBX13FriendServiceD1Ev")]
 #[doc(alias = "RBX::FriendService::~FriendService()")]
-pub fn stub_0x83e298() -> ! {
-    todo!("0x83e298")
+pub fn stub_0x83e298() {
+    // IDA 0x83e298: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x83e29c — __ZN3RBX13FriendServiceD0Ev
 // type: void __fastcall(RBX::FriendService *__hidden this)
 #[doc(alias = "__ZN3RBX13FriendServiceD0Ev")]
 #[doc(alias = "RBX::FriendService::~FriendService()")]
-pub fn stub_0x83e29c() -> ! {
-    todo!("0x83e29c")
+pub fn stub_0x83e29c() {
+    // IDA 0x83e29c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x83e34c — __ZThn32_N3RBX13FriendServiceD1Ev

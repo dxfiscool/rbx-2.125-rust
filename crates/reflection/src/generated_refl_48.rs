@@ -560,8 +560,8 @@ pub fn stub_0xf68764() -> ! {
 // 0xf68774 — j___ZNSt4pairIN4Ogre9SharedPtrINS0_16MemoryDataStreamEEENS1_INS0_5Codec9CodecDataEEEED2Ev
 #[doc(alias = "std::pair<Ogre::SharedPtr<Ogre::MemoryDataStream>,Ogre::SharedPtr<Ogre::Codec::CodecData>>::~pair()")]
 #[doc(alias = "j___ZNSt4pairIN4Ogre9SharedPtrINS0_16MemoryDataStreamEEENS1_INS0_5Codec9CodecDataEEEED2Ev")]
-pub fn stub_0xf68774() -> ! {
-    todo!("0xf68774 std::pair<Ogre::SharedPtr<Ogre::MemoryDataStream>,Ogre::SharedPtr<Ogre::Codec::CodecData>>::~pair()")
+pub fn stub_0xf68774() {
+    // IDA 0xf68774: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf68784 — j___ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre5CodecEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE11equal_rangeERS1_
@@ -637,8 +637,8 @@ pub fn stub_0xf68804() -> ! {
 // type: void __fastcall(Ogre::RenderQueueGroup *__hidden this)
 #[doc(alias = "Ogre::RenderQueueGroup::~RenderQueueGroup()")]
 #[doc(alias = "j___ZN4Ogre16RenderQueueGroupD2Ev")]
-pub fn stub_0xf68814() -> ! {
-    todo!("0xf68814 Ogre::RenderQueueGroup::~RenderQueueGroup()")
+pub fn stub_0xf68814() {
+    // IDA 0xf68814: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf68824 — j___ZNSt6vectorIN4Ogre11RenderQueue19RenderQueueGroupMap10value_typeENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS3_S9_EEmRKS3_

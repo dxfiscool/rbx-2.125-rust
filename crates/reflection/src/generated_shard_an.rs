@@ -7,8 +7,8 @@ use rbx_core::SharedPtr;
 // 0x8f97b4 — __ZN3RBX10Reflection9EventDescINS_12LoginServiceEFvSsEN3rbx6signalIS3_EEMS2_S6_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::LoginService,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::LoginService::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_12LoginServiceEFvSsEN3rbx6signalIS3_EEMS2_S6_ED0Ev")]
-pub fn stub_8f97b4() -> ! {
-    todo!("0x8f97b4 RBX::Reflection::EventDesc<RBX::LoginService,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::LoginService::*>::~EventDesc()")
+pub fn stub_8f97b4() {
+    // IDA 0x8f97b4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8f9868 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_12LoginServiceEFvSsEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -84,8 +84,8 @@ pub fn stub_8fa18c() -> ! {
 // 0x8fa290 — __ZN3RBX10Reflection13BoundFuncDescINS_12LoginServiceEFvvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LoginService,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_12LoginServiceEFvvELi0EED0Ev")]
-pub fn stub_8fa290() -> ! {
-    todo!("0x8fa290 RBX::Reflection::BoundFuncDesc<RBX::LoginService,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_8fa290() {
+    // IDA 0x8fa290: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8fa344 — __ZNK3RBX10Reflection13BoundFuncDescINS_12LoginServiceEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -133,50 +133,50 @@ pub fn stub_8ffbe0() -> ! {
 // 0x8ffea0 — __ZN3RBX10Reflection14PropDescriptorINS_16OverlayDataModelEiED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::OverlayDataModel,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_16OverlayDataModelEiED1Ev")]
-pub fn stub_8ffea0() -> ! {
-    todo!("0x8ffea0 RBX::Reflection::PropDescriptor<RBX::OverlayDataModel,int>::~PropDescriptor()")
+pub fn stub_8ffea0() {
+    // IDA 0x8ffea0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8ffec4 — __ZN3RBX10Reflection13BoundFuncDescINS_16OverlayDataModelEFviELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::OverlayDataModel,void ()(int),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_16OverlayDataModelEFviELi1EED1Ev")]
-pub fn stub_8ffec4() -> ! {
-    todo!("0x8ffec4 RBX::Reflection::BoundFuncDesc<RBX::OverlayDataModel,void ()(int),1>::~BoundFuncDesc()")
+pub fn stub_8ffec4() {
+    // IDA 0x8ffec4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8fff04 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFviSsEvLi2EED1Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,void ()(int,std::string),void,2>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFviSsEvLi2EED1Ev")]
-pub fn stub_8fff04() -> ! {
-    todo!("0x8fff04 RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,void ()(int,std::string),void,2>::~BoundYieldFuncDesc()")
+pub fn stub_8fff04() {
+    // IDA 0x8fff04: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8fff4c — __ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFviEvLi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,void ()(int),void,1>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFviEvLi1EED1Ev")]
-pub fn stub_8fff4c() -> ! {
-    todo!("0x8fff4c RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,void ()(int),void,1>::~BoundYieldFuncDesc()")
+pub fn stub_8fff4c() {
+    // IDA 0x8fff4c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8fff8c — __ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFvvEvLi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,void ()(void),void,0>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFvvEvLi0EED1Ev")]
-pub fn stub_8fff8c() -> ! {
-    todo!("0x8fff8c RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,void ()(void),void,0>::~BoundYieldFuncDesc()")
+pub fn stub_8fff8c() {
+    // IDA 0x8fff8c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8fffb0 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEiiESI_Li2EED1Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int,int),rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,2>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEiiESI_Li2EED1Ev")]
-pub fn stub_8fffb0() -> ! {
-    todo!("0x8fffb0 RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int,int),rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,2>::~BoundYieldFuncDesc()")
+pub fn stub_8fffb0() {
+    // IDA 0x8fffb0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8ffff8 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFiSsSsiEiLi3EED1Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,int ()(std::string,std::string,int),int,3>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFiSsSsiEiLi3EED1Ev")]
-pub fn stub_8ffff8() -> ! {
-    todo!("0x8ffff8 RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,int ()(std::string,std::string,int),int,3>::~BoundYieldFuncDesc()")
+pub fn stub_8ffff8() {
+    // IDA 0x8ffff8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x900b40 — __ZN5boost4bindIvPKSsPKSt9exceptionNS_8weak_ptrIN3RBX9DataModelEEENS_8functionIFvNS_10shared_ptrIKNS_9unordered13unordered_mapISsNS7_10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIS1_SF_EEEEEEEEENSA_IFvSsEEENS_3argILi1EEENSU_ILi2EEENSB_IS8_EESR_ST_EENS_3_bi6bind_tIT_PFS10_T0_T1_T2_T3_T4_ENSY_9list_av_5IT5_T6_T7_T8_T9_E4typeEEES17_S19_S1A_S1B_S1C_S1D_
@@ -315,8 +315,8 @@ pub fn stub_908c90() -> ! {
 // 0x908cf8 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFiSsSsiEiLi3EED0Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,int ()(std::string,std::string,int),int,3>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFiSsSsiEiLi3EED0Ev")]
-pub fn stub_908cf8() -> ! {
-    todo!("0x908cf8 RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,int ()(std::string,std::string,int),int,3>::~BoundYieldFuncDesc()")
+pub fn stub_908cf8() {
+    // IDA 0x908cf8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x908ddc — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFiSsSsiEiLi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSB_IFvSsEEE
@@ -434,8 +434,8 @@ pub fn stub_909eb4() -> ! {
 // 0x909f00 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEiiESI_Li2EED0Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int,int),rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,2>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEiiESI_Li2EED0Ev")]
-pub fn stub_909f00() -> ! {
-    todo!("0x909f00 RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int,int),rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,2>::~BoundYieldFuncDesc()")
+pub fn stub_909f00() {
+    // IDA 0x909f00: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x909fe0 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEiiESI_Li2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsENS3_8functionIFvS7_EEENSQ_IFvSsEEE
@@ -511,8 +511,8 @@ pub fn stub_90a850() -> ! {
 // 0x90a954 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFvvEvLi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,void ()(void),void,0>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFvvEvLi0EED0Ev")]
-pub fn stub_90a954() -> ! {
-    todo!("0x90a954 RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,void ()(void),void,0>::~BoundYieldFuncDesc()")
+pub fn stub_90a954() {
+    // IDA 0x90a954: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x90aa08 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFvvEvLi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSB_IFvSsEEE
@@ -616,8 +616,8 @@ pub fn stub_90bc84() -> ! {
 // 0x90bcb4 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFviEvLi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,void ()(int),void,1>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFviEvLi1EED0Ev")]
-pub fn stub_90bcb4() -> ! {
-    todo!("0x90bcb4 RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,void ()(int),void,1>::~BoundYieldFuncDesc()")
+pub fn stub_90bcb4() {
+    // IDA 0x90bcb4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x90bd88 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFviEvLi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSB_IFvSsEEE
@@ -644,8 +644,8 @@ pub fn stub_90c1f0() -> ! {
 // 0x90c23c — __ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFviSsEvLi2EED0Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,void ()(int,std::string),void,2>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFviSsEvLi2EED0Ev")]
-pub fn stub_90c23c() -> ! {
-    todo!("0x90c23c RBX::Reflection::BoundYieldFuncDesc<RBX::OverlayDataModel,void ()(int,std::string),void,2>::~BoundYieldFuncDesc()")
+pub fn stub_90c23c() {
+    // IDA 0x90c23c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x90c318 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_16OverlayDataModelEFviSsEvLi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSB_IFvSsEEE
@@ -672,8 +672,8 @@ pub fn stub_90c770() -> ! {
 // 0x90c7a0 — __ZN3RBX10Reflection13BoundFuncDescINS_16OverlayDataModelEFviELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::OverlayDataModel,void ()(int),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_16OverlayDataModelEFviELi1EED0Ev")]
-pub fn stub_90c7a0() -> ! {
-    todo!("0x90c7a0 RBX::Reflection::BoundFuncDesc<RBX::OverlayDataModel,void ()(int),1>::~BoundFuncDesc()")
+pub fn stub_90c7a0() {
+    // IDA 0x90c7a0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x90c874 — __ZNK3RBX10Reflection13BoundFuncDescINS_16OverlayDataModelEFviELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -693,8 +693,8 @@ pub fn stub_90c8a8() -> ! {
 // 0x90c9b8 — __ZN3RBX10Reflection14PropDescriptorINS_16OverlayDataModelEiED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::OverlayDataModel,int>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_16OverlayDataModelEiED0Ev")]
-pub fn stub_90c9b8() -> ! {
-    todo!("0x90c9b8 RBX::Reflection::PropDescriptor<RBX::OverlayDataModel,int>::~PropDescriptor()")
+pub fn stub_90c9b8() {
+    // IDA 0x90c9b8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x90c9e4 — __ZNK3RBX10Reflection14PropDescriptorINS_16OverlayDataModelEiE7GetImplIMS2_KFivEE10isReadOnlyEv

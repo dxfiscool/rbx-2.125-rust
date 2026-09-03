@@ -57,14 +57,14 @@ pub fn stub_261da8() -> ! {
 
 // 0x261de0 — __ZNSt6vectorIPN3RBX10Reflection15ClassDescriptorESaIS3_EED1Ev
 #[doc(alias = "std::vector<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>::~vector()")]
-pub fn stub_261de0() -> ! {
-    todo!("0x261de0 __ZNSt6vectorIPN3RBX10Reflection15ClassDescriptorESaIS3_EED1Ev")
+pub fn stub_261de0() {
+    // IDA 0x261de0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2623e8 — __ZN3RBX10Reflection15ClassDescriptorD2Ev
 #[doc(alias = "RBX::Reflection::ClassDescriptor::~ClassDescriptor()")]
-pub fn stub_2623e8() -> ! {
-    todo!("0x2623e8 __ZN3RBX10Reflection15ClassDescriptorD2Ev")
+pub fn stub_2623e8() {
+    // IDA 0x2623e8: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2624b4 — __ZNSt6vectorIPN3RBX10Reflection15ClassDescriptorESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
@@ -93,8 +93,8 @@ pub fn stub_2625d4() -> ! {
 
 // 0x262600 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE10CollectionD1Ev
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::Collection::~Collection()")]
-pub fn stub_262600() -> ! {
-    todo!("0x262600 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE10CollectionD1Ev")
+pub fn stub_262600() {
+    // IDA 0x262600: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x262618 — __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18CallbackDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_
@@ -339,8 +339,8 @@ pub fn stub_2638cc() -> ! {
 
 // 0x2657a0 — __ZN3RBX10Reflection10DescriptorD1Ev
 #[doc(alias = "RBX::Reflection::Descriptor::~Descriptor()")]
-pub fn stub_2657a0() -> ! {
-    todo!("0x2657a0 __ZN3RBX10Reflection10DescriptorD1Ev")
+pub fn stub_2657a0() {
+    // IDA 0x2657a0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2658d4 — __ZN3RBX10Reflection10hash_valueERKNS0_13ConstPropertyE
@@ -369,56 +369,56 @@ pub fn stub_265b34() -> ! {
 
 // 0x265cd4 — __ZN3RBX10Reflection14EnumDescriptorD0Ev
 #[doc(alias = "RBX::Reflection::EnumDescriptor::~EnumDescriptor()")]
-pub fn stub_265cd4() -> ! {
-    todo!("0x265cd4 __ZN3RBX10Reflection14EnumDescriptorD0Ev")
+pub fn stub_265cd4() {
+    // IDA 0x265cd4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x265d74 — __ZN3RBX10Reflection14EnumDescriptorD1Ev
 #[doc(alias = "RBX::Reflection::EnumDescriptor::~EnumDescriptor()")]
-pub fn stub_265d74() -> ! {
-    todo!("0x265d74 __ZN3RBX10Reflection14EnumDescriptorD1Ev")
+pub fn stub_265d74() {
+    // IDA 0x265d74: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x265d78 — __ZN3RBX10Reflection14EnumDescriptorD2Ev
 #[doc(alias = "RBX::Reflection::EnumDescriptor::~EnumDescriptor()")]
-pub fn stub_265d78() -> ! {
-    todo!("0x265d78 __ZN3RBX10Reflection14EnumDescriptorD2Ev")
+pub fn stub_265d78() {
+    // IDA 0x265d78: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x266338 — __ZN3RBX10Reflection5TTypeIPKNS0_18PropertyDescriptorEED1Ev
 #[doc(alias = "RBX::Reflection::TType<RBX::Reflection::PropertyDescriptor const*>::~TType()")]
-pub fn stub_266338() -> ! {
-    todo!("0x266338 __ZN3RBX10Reflection5TTypeIPKNS0_18PropertyDescriptorEED1Ev")
+pub fn stub_266338() {
+    // IDA 0x266338: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x266500 — __ZN3RBX10Reflection18PropertyDescriptorD1Ev
 #[doc(alias = "RBX::Reflection::PropertyDescriptor::~PropertyDescriptor()")]
-pub fn stub_266500() -> ! {
-    todo!("0x266500 __ZN3RBX10Reflection18PropertyDescriptorD1Ev")
+pub fn stub_266500() {
+    // IDA 0x266500: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x266504 — __ZN3RBX10Reflection18PropertyDescriptorD0Ev
 #[doc(alias = "RBX::Reflection::PropertyDescriptor::~PropertyDescriptor()")]
-pub fn stub_266504() -> ! {
-    todo!("0x266504 __ZN3RBX10Reflection18PropertyDescriptorD0Ev")
+pub fn stub_266504() {
+    // IDA 0x266504: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x26733c — __ZN3RBX10Reflection5TTypeIPKNS0_18PropertyDescriptorEED0Ev
 #[doc(alias = "RBX::Reflection::TType<RBX::Reflection::PropertyDescriptor const*>::~TType()")]
-pub fn stub_26733c() -> ! {
-    todo!("0x26733c __ZN3RBX10Reflection5TTypeIPKNS0_18PropertyDescriptorEED0Ev")
+pub fn stub_26733c() {
+    // IDA 0x26733c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x267340 — __ZN3RBX10Reflection4TypeD0Ev
 #[doc(alias = "RBX::Reflection::Type::~Type()")]
-pub fn stub_267340() -> ! {
-    todo!("0x267340 __ZN3RBX10Reflection4TypeD0Ev")
+pub fn stub_267340() {
+    // IDA 0x267340: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x267348 — __ZN3RBX10Reflection10DescriptorD0Ev
 #[doc(alias = "RBX::Reflection::Descriptor::~Descriptor()")]
-pub fn stub_267348() -> ! {
-    todo!("0x267348 __ZN3RBX10Reflection10DescriptorD0Ev")
+pub fn stub_267348() {
+    // IDA 0x267348: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x267e5c — __ZN3RBX10Reflection4Type12getSingletonIvEERKS1_v
@@ -447,8 +447,8 @@ pub fn stub_267fc0() -> ! {
 
 // 0x268540 — __ZN3RBX10Reflection5TTypeIvED1Ev
 #[doc(alias = "RBX::Reflection::TType<void>::~TType()")]
-pub fn stub_268540() -> ! {
-    todo!("0x268540 __ZN3RBX10Reflection5TTypeIvED1Ev")
+pub fn stub_268540() {
+    // IDA 0x268540: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x26867c — __ZN3RBX10Reflection4TypeC2IvEEPKcPT_
@@ -459,8 +459,8 @@ pub fn stub_26867c() -> ! {
 
 // 0x268728 — __ZN3RBX10Reflection5TTypeIvED0Ev
 #[doc(alias = "RBX::Reflection::TType<void>::~TType()")]
-pub fn stub_268728() -> ! {
-    todo!("0x268728 __ZN3RBX10Reflection5TTypeIvED0Ev")
+pub fn stub_268728() {
+    // IDA 0x268728: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x26b788 — __ZN3RBX3Lua12LuaArguments3getEP9lua_StateiRNS_10Reflection7VariantEb
@@ -507,14 +507,14 @@ pub fn stub_281620() -> ! {
 
 // 0x289268 — __ZN3RBX10Reflection18GenericSlotWrapperD1Ev
 #[doc(alias = "RBX::Reflection::GenericSlotWrapper::~GenericSlotWrapper()")]
-pub fn stub_289268() -> ! {
-    todo!("0x289268 __ZN3RBX10Reflection18GenericSlotWrapperD1Ev")
+pub fn stub_289268() {
+    // IDA 0x289268: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x289284 — __ZN3RBX10Reflection18GenericSlotWrapperD0Ev
 #[doc(alias = "RBX::Reflection::GenericSlotWrapper::~GenericSlotWrapper()")]
-pub fn stub_289284() -> ! {
-    todo!("0x289284 __ZN3RBX10Reflection18GenericSlotWrapperD0Ev")
+pub fn stub_289284() {
+    // IDA 0x289284: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2b7d10 — __ZN3RBX3Lua6BridgeIPKNS_10Reflection14EnumDescriptorELb1EE13pushNewObjectIS5_EEPS5_P9lua_StateT_
@@ -561,8 +561,8 @@ pub fn stub_2b8838() -> ! {
 
 // 0x2b8a94 — __ZN3RBX10Reflection9EventDescINS_13ScriptContextEFvSsSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::ScriptContext::*>::~EventDesc()")]
-pub fn stub_2b8a94() -> ! {
-    todo!("0x2b8a94 __ZN3RBX10Reflection9EventDescINS_13ScriptContextEFvSsSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED0Ev")
+pub fn stub_2b8a94() {
+    // IDA 0x2b8a94: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2b8b48 — __ZNK3RBX10Reflection13EventDescImplILi3ENS_13ScriptContextEFvSsSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE

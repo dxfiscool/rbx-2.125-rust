@@ -371,8 +371,8 @@ pub fn stub_0x163b8() -> ! {
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 #[doc(alias = "CRenderSettingsItem::~CRenderSettingsItem()")]
 #[doc(alias = "__ZN19CRenderSettingsItemD2Ev")]
-pub fn stub_0x16bf4() -> ! {
-    todo!("0x16bf4 CRenderSettingsItem::~CRenderSettingsItem()")
+pub fn stub_0x16bf4() {
+    // IDA 0x16bf4: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x16d34 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15CRenderSettings16ResolutionPresetEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E

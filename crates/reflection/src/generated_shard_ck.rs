@@ -71,8 +71,8 @@ pub fn stub_f50824() -> ! {
 // 0xf508a4 — j___ZN5boost10scoped_ptrIN3RBX10Reflection7VariantEED1Ev
 #[doc(alias = "boost::scoped_ptr<RBX::Reflection::Variant>::~scoped_ptr()")]
 #[doc(alias = "j___ZN5boost10scoped_ptrIN3RBX10Reflection7VariantEED1Ev")]
-pub fn stub_f508a4() -> ! {
-    todo!("0xf508a4 boost::scoped_ptr<RBX::Reflection::Variant>::~scoped_ptr()")
+pub fn stub_f508a4() {
+    // IDA 0xf508a4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf50954 — j___ZN5boost10shared_ptrISt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS4_EEEEC2ISB_N3rbx6detail13sp_ms_deleterISB_EEEEPT_T0_

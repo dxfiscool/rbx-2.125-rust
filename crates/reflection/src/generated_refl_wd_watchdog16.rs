@@ -522,8 +522,8 @@ pub fn stub_0x35a058() -> ! {
 // 0x35a0f4 — __ZN3G3D4LineD1Ev
 #[doc(alias = "G3D::Line::~Line()")]
 #[doc(alias = "__ZN3G3D4LineD1Ev")]
-pub fn stub_0x35a0f4() -> ! {
-    todo!("0x35a0f4 G3D::Line::~Line()")
+pub fn stub_0x35a0f4() {
+    // IDA 0x35a0f4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x35a0f8 — __ZNSt6vectorIN3G3D7Vector3ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_
@@ -571,8 +571,8 @@ pub fn stub_0x35a3fc() -> ! {
 // 0x35a448 — __ZN3G3D4LineD0Ev
 #[doc(alias = "G3D::Line::~Line()")]
 #[doc(alias = "__ZN3G3D4LineD0Ev")]
-pub fn stub_0x35a448() -> ! {
-    todo!("0x35a448 G3D::Line::~Line()")
+pub fn stub_0x35a448() {
+    // IDA 0x35a448: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x35a44c — __GLOBAL__I_a_127
@@ -592,15 +592,15 @@ pub fn stub_0x35a620() -> ! {
 // 0x35a6f4 — __ZN3RBX13MD5HasherImplD1Ev
 #[doc(alias = "RBX::MD5HasherImpl::~MD5HasherImpl()")]
 #[doc(alias = "__ZN3RBX13MD5HasherImplD1Ev")]
-pub fn stub_0x35a6f4() -> ! {
-    todo!("0x35a6f4 RBX::MD5HasherImpl::~MD5HasherImpl()")
+pub fn stub_0x35a6f4() {
+    // IDA 0x35a6f4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x35a718 — __ZN3RBX13MD5HasherImplD0Ev
 #[doc(alias = "RBX::MD5HasherImpl::~MD5HasherImpl()")]
 #[doc(alias = "__ZN3RBX13MD5HasherImplD0Ev")]
-pub fn stub_0x35a718() -> ! {
-    todo!("0x35a718 RBX::MD5HasherImpl::~MD5HasherImpl()")
+pub fn stub_0x35a718() {
+    // IDA 0x35a718: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x35a744 — __ZN3RBX13MD5HasherImpl7addDataERSi
@@ -739,15 +739,15 @@ pub fn stub_0x35bebc() -> ! {
 // 0x35bfe8 — __ZN3RBX4Name7NameMapD1Ev
 #[doc(alias = "RBX::Name::NameMap::~NameMap()")]
 #[doc(alias = "__ZN3RBX4Name7NameMapD1Ev")]
-pub fn stub_0x35bfe8() -> ! {
-    todo!("0x35bfe8 RBX::Name::NameMap::~NameMap()")
+pub fn stub_0x35bfe8() {
+    // IDA 0x35bfe8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x35bfec — __ZN3RBX4Name7NameMapD2Ev
 #[doc(alias = "RBX::Name::NameMap::~NameMap()")]
 #[doc(alias = "__ZN3RBX4Name7NameMapD2Ev")]
-pub fn stub_0x35bfec() -> ! {
-    todo!("0x35bfec RBX::Name::NameMap::~NameMap()")
+pub fn stub_0x35bfec() {
+    // IDA 0x35bfec: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x35c02c — __ZL7initMoov
@@ -802,8 +802,8 @@ pub fn stub_0x35c258() -> ! {
 // 0x35c4b8 — __ZNSt6vectorIPN3RBX4NameESaIS2_EED1Ev
 #[doc(alias = "std::vector<RBX::Name *,std::allocator<RBX::Name *>>::~vector()")]
 #[doc(alias = "__ZNSt6vectorIPN3RBX4NameESaIS2_EED1Ev")]
-pub fn stub_0x35c4b8() -> ! {
-    todo!("0x35c4b8 std::vector<RBX::Name *,std::allocator<RBX::Name *>>::~vector()")
+pub fn stub_0x35c4b8() {
+    // IDA 0x35c4b8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x35c4cc — __ZNSt6vectorIPN3RBX4NameESaIS2_EE6insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
@@ -837,8 +837,8 @@ pub fn stub_0x35c764() -> ! {
 // 0x35c7b4 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsPN3RBX4NameEEEEEED2Ev
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,RBX::Name *>>>>::~node_constructor()")]
 #[doc(alias = "__ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsPN3RBX4NameEEEEEED2Ev")]
-pub fn stub_0x35c7b4() -> ! {
-    todo!("0x35c7b4 boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,RBX::Name *>>>>::~node_constructor()")
+pub fn stub_0x35c7b4() {
+    // IDA 0x35c7b4: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x35c7d0 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm

@@ -449,15 +449,15 @@ pub fn stub_8df0c4() -> ! {
 // 0x8df390 — __ZN3RBX10Reflection9EventDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibNS2_12CurrencyTypeEEN3rbx13remote_signalIS8_EEMS2_SB_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)> RBX::MarketplaceService::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibNS2_12CurrencyTypeEEN3rbx13remote_signalIS8_EEMS2_SB_ED1Ev")]
-pub fn stub_8df390() -> ! {
-    todo!("0x8df390 RBX::Reflection::EventDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)> RBX::MarketplaceService::*>::~EventDesc()")
+pub fn stub_8df390() {
+    // IDA 0x8df390: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8df3b4 — __ZN3RBX10Reflection9EventDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibNS2_12CurrencyTypeEEN3rbx13remote_signalIS8_EEMS2_SB_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)> RBX::MarketplaceService::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibNS2_12CurrencyTypeEEN3rbx13remote_signalIS8_EEMS2_SB_ED0Ev")]
-pub fn stub_8df3b4() -> ! {
-    todo!("0x8df3b4 RBX::Reflection::EventDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool,RBX::MarketplaceService::CurrencyType)> RBX::MarketplaceService::*>::~EventDesc()")
+pub fn stub_8df3b4() {
+    // IDA 0x8df3b4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8df468 — __ZN3RBX10Reflection13BoundFuncDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibELi3EEC2EMS2_FvS6_ibEPKcSC_SC_SC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -477,8 +477,8 @@ pub fn stub_8df684() -> ! {
 // 0x8df6ec — __ZN3RBX10Reflection13BoundFuncDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibELi3EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool),3>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibELi3EED0Ev")]
-pub fn stub_8df6ec() -> ! {
-    todo!("0x8df6ec RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool),3>::~BoundFuncDesc()")
+pub fn stub_8df6ec() {
+    // IDA 0x8df6ec: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8df80c — __ZNK3RBX10Reflection13BoundFuncDescINS_18MarketplaceServiceEFvN5boost10shared_ptrINS_8InstanceEEEibELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -512,8 +512,8 @@ pub fn stub_8dfc38() -> ! {
 // 0x8dfca0 — __ZN3RBX10Reflection13BoundFuncDescINS_18MarketplaceServiceEFviibELi3EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(int,int,bool),3>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_18MarketplaceServiceEFviibELi3EED0Ev")]
-pub fn stub_8dfca0() -> ! {
-    todo!("0x8dfca0 RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(int,int,bool),3>::~BoundFuncDesc()")
+pub fn stub_8dfca0() {
+    // IDA 0x8dfca0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8dfd8c — __ZNK3RBX10Reflection13BoundFuncDescINS_18MarketplaceServiceEFviibELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -540,8 +540,8 @@ pub fn stub_8dff6c() -> ! {
 // 0x8dff9c — __ZN3RBX10Reflection13BoundFuncDescINS_18MarketplaceServiceEFvSsELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(std::string),1>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_18MarketplaceServiceEFvSsELi1EED0Ev")]
-pub fn stub_8dff9c() -> ! {
-    todo!("0x8dff9c RBX::Reflection::BoundFuncDesc<RBX::MarketplaceService,void ()(std::string),1>::~BoundFuncDesc()")
+pub fn stub_8dff9c() {
+    // IDA 0x8dff9c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8e0068 — __ZNK3RBX10Reflection13BoundFuncDescINS_18MarketplaceServiceEFvSsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -561,15 +561,15 @@ pub fn stub_8e01a4() -> ! {
 // 0x8e0804 — __ZN3rbx13remote_signalIFvN5boost10shared_ptrIKNS1_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS1_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEEED2Ev
 #[doc(alias = "rbx::remote_signal<void ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>::~remote_signal()")]
 #[doc(alias = "__ZN3rbx13remote_signalIFvN5boost10shared_ptrIKNS1_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS1_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEEED2Ev")]
-pub fn stub_8e0804() -> ! {
-    todo!("0x8e0804 rbx::remote_signal<void ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>::~remote_signal()")
+pub fn stub_8e0804() {
+    // IDA 0x8e0804: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8e17d8 — __ZN3RBX10Reflection14PropDescriptorINS_9GuiBase2dEN3G3D7Vector2EED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiBase2d,G3D::Vector2>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9GuiBase2dEN3G3D7Vector2EED1Ev")]
-pub fn stub_8e17d8() -> ! {
-    todo!("0x8e17d8 RBX::Reflection::PropDescriptor<RBX::GuiBase2d,G3D::Vector2>::~PropDescriptor()")
+pub fn stub_8e17d8() {
+    // IDA 0x8e17d8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8e242c — __ZN3RBX10Reflection14PropDescriptorINS_9GuiBase2dEN3G3D7Vector2EEC2IMS2_KFRKS4_vEiEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -582,8 +582,8 @@ pub fn stub_8e242c() -> ! {
 // 0x8e2538 — __ZN3RBX10Reflection14PropDescriptorINS_9GuiBase2dEN3G3D7Vector2EED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiBase2d,G3D::Vector2>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9GuiBase2dEN3G3D7Vector2EED0Ev")]
-pub fn stub_8e2538() -> ! {
-    todo!("0x8e2538 RBX::Reflection::PropDescriptor<RBX::GuiBase2d,G3D::Vector2>::~PropDescriptor()")
+pub fn stub_8e2538() {
+    // IDA 0x8e2538: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8e2564 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiBase2dEN3G3D7Vector2EE7GetImplIMS2_KFRKS4_vEE10isReadOnlyEv
@@ -617,29 +617,29 @@ pub fn stub_8e259c() -> ! {
 // 0x8e642c — __ZN3RBX10Reflection14PropDescriptorINS_20ContextActionServiceEbED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ContextActionService,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_20ContextActionServiceEbED1Ev")]
-pub fn stub_8e642c() -> ! {
-    todo!("0x8e642c RBX::Reflection::PropDescriptor<RBX::ContextActionService,bool>::~PropDescriptor()")
+pub fn stub_8e642c() {
+    // IDA 0x8e642c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8e6450 — __ZN3RBX10Reflection13BoundFuncDescINS_20ContextActionServiceEFSsvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ContextActionService,std::string ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_20ContextActionServiceEFSsvELi0EED1Ev")]
-pub fn stub_8e6450() -> ! {
-    todo!("0x8e6450 RBX::Reflection::BoundFuncDesc<RBX::ContextActionService,std::string ()(void),0>::~BoundFuncDesc()")
+pub fn stub_8e6450() {
+    // IDA 0x8e6450: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8e6474 — __ZN3RBX10Reflection13BoundFuncDescINS_20ContextActionServiceEFvvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ContextActionService,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_20ContextActionServiceEFvvELi0EED1Ev")]
-pub fn stub_8e6474() -> ! {
-    todo!("0x8e6474 RBX::Reflection::BoundFuncDesc<RBX::ContextActionService,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_8e6474() {
+    // IDA 0x8e6474: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8e6498 — __ZN3RBX10Reflection9EventDescINS_20ContextActionServiceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::ContextActionService,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ContextActionService::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_20ContextActionServiceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED1Ev")]
-pub fn stub_8e6498() -> ! {
-    todo!("0x8e6498 RBX::Reflection::EventDesc<RBX::ContextActionService,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ContextActionService::*>::~EventDesc()")
+pub fn stub_8e6498() {
+    // IDA 0x8e6498: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8e6f60 — __ZN3RBX10Reflection9EventDescINS_20ContextActionServiceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_EC2ESB_PKcSE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -652,8 +652,8 @@ pub fn stub_8e6f60() -> ! {
 // 0x8e70e4 — __ZN3RBX10Reflection9EventDescINS_20ContextActionServiceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::ContextActionService,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ContextActionService::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_20ContextActionServiceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED0Ev")]
-pub fn stub_8e70e4() -> ! {
-    todo!("0x8e70e4 RBX::Reflection::EventDesc<RBX::ContextActionService,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ContextActionService::*>::~EventDesc()")
+pub fn stub_8e70e4() {
+    // IDA 0x8e70e4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8e7198 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_20ContextActionServiceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
@@ -687,8 +687,8 @@ pub fn stub_8e7460() -> ! {
 // 0x8e7564 — __ZN3RBX10Reflection13BoundFuncDescINS_20ContextActionServiceEFvvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ContextActionService,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_20ContextActionServiceEFvvELi0EED0Ev")]
-pub fn stub_8e7564() -> ! {
-    todo!("0x8e7564 RBX::Reflection::BoundFuncDesc<RBX::ContextActionService,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_8e7564() {
+    // IDA 0x8e7564: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8e7618 — __ZNK3RBX10Reflection13BoundFuncDescINS_20ContextActionServiceEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -708,8 +708,8 @@ pub fn stub_8e7638() -> ! {
 // 0x8e773c — __ZN3RBX10Reflection13BoundFuncDescINS_20ContextActionServiceEFSsvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ContextActionService,std::string ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_20ContextActionServiceEFSsvELi0EED0Ev")]
-pub fn stub_8e773c() -> ! {
-    todo!("0x8e773c RBX::Reflection::BoundFuncDesc<RBX::ContextActionService,std::string ()(void),0>::~BoundFuncDesc()")
+pub fn stub_8e773c() {
+    // IDA 0x8e773c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8e77f0 — __ZNK3RBX10Reflection13BoundFuncDescINS_20ContextActionServiceEFSsvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -736,8 +736,8 @@ pub fn stub_8e7950() -> ! {
 // 0x8e7a64 — __ZN3RBX10Reflection14PropDescriptorINS_20ContextActionServiceEbED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ContextActionService,bool>::~PropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_20ContextActionServiceEbED0Ev")]
-pub fn stub_8e7a64() -> ! {
-    todo!("0x8e7a64 RBX::Reflection::PropDescriptor<RBX::ContextActionService,bool>::~PropDescriptor()")
+pub fn stub_8e7a64() {
+    // IDA 0x8e7a64: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8e7a90 — __ZNK3RBX10Reflection14PropDescriptorINS_20ContextActionServiceEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
@@ -827,15 +827,15 @@ pub fn stub_8f7998() -> ! {
 // 0x8f8df0 — __ZN3RBX10Reflection13BoundFuncDescINS_12LoginServiceEFvvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LoginService,void ()(void),0>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_12LoginServiceEFvvELi0EED1Ev")]
-pub fn stub_8f8df0() -> ! {
-    todo!("0x8f8df0 RBX::Reflection::BoundFuncDesc<RBX::LoginService,void ()(void),0>::~BoundFuncDesc()")
+pub fn stub_8f8df0() {
+    // IDA 0x8f8df0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8f8e14 — __ZN3RBX10Reflection9EventDescINS_12LoginServiceEFvSsEN3rbx6signalIS3_EEMS2_S6_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::LoginService,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::LoginService::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_12LoginServiceEFvSsEN3rbx6signalIS3_EEMS2_S6_ED1Ev")]
-pub fn stub_8f8e14() -> ! {
-    todo!("0x8f8e14 RBX::Reflection::EventDesc<RBX::LoginService,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::LoginService::*>::~EventDesc()")
+pub fn stub_8f8e14() {
+    // IDA 0x8f8e14: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8f9630 — __ZN3RBX10Reflection9EventDescINS_12LoginServiceEFvSsEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE

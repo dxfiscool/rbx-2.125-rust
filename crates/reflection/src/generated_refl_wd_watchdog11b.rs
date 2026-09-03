@@ -180,8 +180,8 @@ pub fn stub_0xf6a9b4() -> ! {
 // 0xf6a9c4 — j___ZN4Ogre24GpuSharedParametersUsageD2Ev
 #[doc(alias = "Ogre::GpuSharedParametersUsage::~GpuSharedParametersUsage()")]
 #[doc(alias = "j___ZN4Ogre24GpuSharedParametersUsageD2Ev")]
-pub fn stub_0xf6a9c4() -> ! {
-    todo!("0xf6a9c4 Ogre::GpuSharedParametersUsage::~GpuSharedParametersUsage()")
+pub fn stub_0xf6a9c4() {
+    // IDA 0xf6a9c4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf6a9d4 — j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKjjEEjjNS_4hashIjEESt8equal_toIjEEEE11erase_nodesEPNS1_8ptr_nodeIS6_EESG_
@@ -285,15 +285,15 @@ pub fn stub_0xf6aaa4() -> ! {
 // 0xf6aab4 — j___ZN4Ogre12GLES2SupportD2Ev
 #[doc(alias = "Ogre::GLES2Support::~GLES2Support()")]
 #[doc(alias = "j___ZN4Ogre12GLES2SupportD2Ev")]
-pub fn stub_0xf6aab4() -> ! {
-    todo!("0xf6aab4 Ogre::GLES2Support::~GLES2Support()")
+pub fn stub_0xf6aab4() {
+    // IDA 0xf6aab4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf6aac4 — j___ZN4Ogre13_ConfigOptionD2Ev
 #[doc(alias = "Ogre::_ConfigOption::~_ConfigOption()")]
 #[doc(alias = "j___ZN4Ogre13_ConfigOptionD2Ev")]
-pub fn stub_0xf6aac4() -> ! {
-    todo!("0xf6aac4 Ogre::_ConfigOption::~_ConfigOption()")
+pub fn stub_0xf6aac4() {
+    // IDA 0xf6aac4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf6aad4 — j___ZNSt3mapISsN4Ogre13_ConfigOptionESt4lessISsENS0_12STLAllocatorISt4pairIKSsS1_ENS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEixERS6_
@@ -439,8 +439,8 @@ pub fn stub_0xf6ac04() -> ! {
 // 0xf6ac14 — j___ZN4Ogre13CPreprocessor5MacroD2Ev
 #[doc(alias = "Ogre::CPreprocessor::Macro::~Macro()")]
 #[doc(alias = "j___ZN4Ogre13CPreprocessor5MacroD2Ev")]
-pub fn stub_0xf6ac14() -> ! {
-    todo!("0xf6ac14 Ogre::CPreprocessor::Macro::~Macro()")
+pub fn stub_0xf6ac14() {
+    // IDA 0xf6ac14: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf6ac24 — j___ZNSt6vectorIN4Ogre18GLUniformReferenceENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S7_EERKS1_
@@ -572,8 +572,8 @@ pub fn stub_0xf6ad34() -> ! {
 // 0xf6ad44 — j___ZN3G3D5ArrayIPN3RBX10IAdornableELi10ELm32EED2Ev
 #[doc(alias = "G3D::Array<RBX::IAdornable *,10,32ul>::~Array()")]
 #[doc(alias = "j___ZN3G3D5ArrayIPN3RBX10IAdornableELi10ELm32EED2Ev")]
-pub fn stub_0xf6ad44() -> ! {
-    todo!("0xf6ad44 G3D::Array<RBX::IAdornable *,10,32ul>::~Array()")
+pub fn stub_0xf6ad44() {
+    // IDA 0xf6ad44: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf6ad54 — j___ZN3RBX10IndexArrayINS_10IAdornableEXadL_ZNS1_11indexFunc2dEvEEE10fastRemoveEPS1_

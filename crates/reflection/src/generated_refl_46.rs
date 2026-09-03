@@ -152,24 +152,24 @@ pub fn stub_0xd06994() -> ! {
 // type: void __fastcall(Ogre::Mesh *__hidden this)
 #[doc(alias = "Ogre::Mesh::~Mesh()")]
 #[doc(alias = "__ZN4Ogre4MeshD0Ev")]
-pub fn stub_0xd07120() -> ! {
-    todo!("0xd07120 Ogre::Mesh::~Mesh()")
+pub fn stub_0xd07120() {
+    // IDA 0xd07120: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd071b0 — __ZN4Ogre4MeshD1Ev
 // type: void __fastcall(Ogre::Mesh *__hidden this)
 #[doc(alias = "Ogre::Mesh::~Mesh()")]
 #[doc(alias = "__ZN4Ogre4MeshD1Ev")]
-pub fn stub_0xd071b0() -> ! {
-    todo!("0xd071b0 Ogre::Mesh::~Mesh()")
+pub fn stub_0xd071b0() {
+    // IDA 0xd071b0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd071bc — __ZN4Ogre4MeshD2Ev
 // type: void __fastcall(Ogre::Mesh *__hidden this)
 #[doc(alias = "Ogre::Mesh::~Mesh()")]
 #[doc(alias = "__ZN4Ogre4MeshD2Ev")]
-pub fn stub_0xd071bc() -> ! {
-    todo!("0xd071bc Ogre::Mesh::~Mesh()")
+pub fn stub_0xd071bc() {
+    // IDA 0xd071bc: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd07670 — __ZN4Ogre4Mesh13createSubMeshEv
@@ -658,8 +658,8 @@ pub fn stub_0xd0d000() -> ! {
 // type: void __fastcall(Ogre::InvalidStateException *__hidden this)
 #[doc(alias = "Ogre::InvalidStateException::~InvalidStateException()")]
 #[doc(alias = "__ZN4Ogre21InvalidStateExceptionD1Ev")]
-pub fn stub_0xd0d1c0() -> ! {
-    todo!("0xd0d1c0 Ogre::InvalidStateException::~InvalidStateException()")
+pub fn stub_0xd0d1c0() {
+    // IDA 0xd0d1c0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd0d1d0 — __ZNSt6vectorItN4Ogre12STLAllocatorItNS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEaSERKS6_
@@ -680,8 +680,8 @@ pub fn stub_0xd0d290() -> ! {
 // type: void __fastcall(Ogre::HardwareVertexBufferSharedPtr *__hidden this)
 #[doc(alias = "Ogre::HardwareVertexBufferSharedPtr::~HardwareVertexBufferSharedPtr()")]
 #[doc(alias = "__ZN4Ogre29HardwareVertexBufferSharedPtrD1Ev")]
-pub fn stub_0xd0d450() -> ! {
-    todo!("0xd0d450 Ogre::HardwareVertexBufferSharedPtr::~HardwareVertexBufferSharedPtr()")
+pub fn stub_0xd0d450() {
+    // IDA 0xd0d450: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd0d540 — __ZNK4Ogre15StringInterface16copyParametersToEPS0_

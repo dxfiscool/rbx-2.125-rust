@@ -33,8 +33,8 @@ pub fn stub_2c256c() -> ! {
 // 0x2c2570 — __ZN3RBX13ScriptContext11ScriptStartD2Ev
 #[doc(alias = "RBX::ScriptContext::ScriptStart::~ScriptStart()")]
 #[doc(alias = "__ZN3RBX13ScriptContext11ScriptStartD2Ev")]
-pub fn stub_2c2570() -> ! {
-    todo!("0x2c2570 RBX::ScriptContext::ScriptStart::~ScriptStart()")
+pub fn stub_2c2570() {
+    // IDA 0x2c2570: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c26b0 — __ZN3RBX9ContentIdC2EPKc
@@ -118,15 +118,15 @@ pub fn stub_2c2ca0() -> ! {
 // 0x2c2f9c — __ZNSt5dequeIN3RBX13ScriptContext13WaitingThreadESaIS2_EED2Ev
 #[doc(alias = "std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::~deque()")]
 #[doc(alias = "__ZNSt5dequeIN3RBX13ScriptContext13WaitingThreadESaIS2_EED2Ev")]
-pub fn stub_2c2f9c() -> ! {
-    todo!("0x2c2f9c std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::~deque()")
+pub fn stub_2c2f9c() {
+    // IDA 0x2c2f9c: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c3084 — __ZNSt11_Deque_baseIN3RBX13ScriptContext13WaitingThreadESaIS2_EED2Ev
 #[doc(alias = "std::_Deque_base<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::~_Deque_base()")]
 #[doc(alias = "__ZNSt11_Deque_baseIN3RBX13ScriptContext13WaitingThreadESaIS2_EED2Ev")]
-pub fn stub_2c3084() -> ! {
-    todo!("0x2c3084 std::_Deque_base<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::~_Deque_base()")
+pub fn stub_2c3084() {
+    // IDA 0x2c3084: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c30b0 — __ZNSt5dequeIN3RBX13ScriptContext13WaitingThreadESaIS2_EE19_M_destroy_data_auxESt15_Deque_iteratorIS2_RS2_PS2_ES8_
@@ -196,15 +196,15 @@ pub fn stub_2c3fb0() -> ! {
 // 0x2c4130 — __ZN3RBX17WaitingScriptsJobD1Ev
 #[doc(alias = "RBX::WaitingScriptsJob::~WaitingScriptsJob()")]
 #[doc(alias = "__ZN3RBX17WaitingScriptsJobD1Ev")]
-pub fn stub_2c4130() -> ! {
-    todo!("0x2c4130 RBX::WaitingScriptsJob::~WaitingScriptsJob()")
+pub fn stub_2c4130() {
+    // IDA 0x2c4130: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c4200 — __ZN3RBX17WaitingScriptsJobD0Ev
 #[doc(alias = "RBX::WaitingScriptsJob::~WaitingScriptsJob()")]
 #[doc(alias = "__ZN3RBX17WaitingScriptsJobD0Ev")]
-pub fn stub_2c4200() -> ! {
-    todo!("0x2c4200 RBX::WaitingScriptsJob::~WaitingScriptsJob()")
+pub fn stub_2c4200() {
+    // IDA 0x2c4200: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2c42e8 — __ZN3RBX17WaitingScriptsJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE
@@ -247,15 +247,15 @@ pub fn stub_2c453c() -> ! {
 // 0x2c46d0 — __ZN3RBX5GcJobD1Ev
 #[doc(alias = "RBX::GcJob::~GcJob()")]
 #[doc(alias = "__ZN3RBX5GcJobD1Ev")]
-pub fn stub_2c46d0() -> ! {
-    todo!("0x2c46d0 RBX::GcJob::~GcJob()")
+pub fn stub_2c46d0() {
+    // IDA 0x2c46d0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c47a0 — __ZN3RBX5GcJobD0Ev
 #[doc(alias = "RBX::GcJob::~GcJob()")]
 #[doc(alias = "__ZN3RBX5GcJobD0Ev")]
-pub fn stub_2c47a0() -> ! {
-    todo!("0x2c47a0 RBX::GcJob::~GcJob()")
+pub fn stub_2c47a0() {
+    // IDA 0x2c47a0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2c4884 — __ZN3RBX5GcJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE
@@ -445,8 +445,8 @@ pub fn stub_2c66c4() -> ! {
 // 0x2c66f8 — __ZNSt6vectorIN3RBX3Lua15YieldingThreads13WaitingThreadESaIS3_EED2Ev
 #[doc(alias = "std::vector<RBX::Lua::YieldingThreads::WaitingThread,std::allocator<RBX::Lua::YieldingThreads::WaitingThread>>::~vector()")]
 #[doc(alias = "__ZNSt6vectorIN3RBX3Lua15YieldingThreads13WaitingThreadESaIS3_EED2Ev")]
-pub fn stub_2c66f8() -> ! {
-    todo!("0x2c66f8 std::vector<RBX::Lua::YieldingThreads::WaitingThread,std::allocator<RBX::Lua::YieldingThreads::WaitingThread>>::~vector()")
+pub fn stub_2c66f8() {
+    // IDA 0x2c66f8: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c67c8 — __ZN3RBX3Lua15YieldingThreads13WaitingThreadC2EP9lua_StateNS_4Time8IntervalE
@@ -545,15 +545,15 @@ pub fn stub_2c73b8() -> ! {
 // 0x2c756c — __ZN3RBX12LuaStatsItemD1Ev
 #[doc(alias = "RBX::LuaStatsItem::~LuaStatsItem()")]
 #[doc(alias = "__ZN3RBX12LuaStatsItemD1Ev")]
-pub fn stub_2c756c() -> ! {
-    todo!("0x2c756c RBX::LuaStatsItem::~LuaStatsItem()")
+pub fn stub_2c756c() {
+    // IDA 0x2c756c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c75a8 — __ZN3RBX12LuaStatsItemD0Ev
 #[doc(alias = "RBX::LuaStatsItem::~LuaStatsItem()")]
 #[doc(alias = "__ZN3RBX12LuaStatsItemD0Ev")]
-pub fn stub_2c75a8() -> ! {
-    todo!("0x2c75a8 RBX::LuaStatsItem::~LuaStatsItem()")
+pub fn stub_2c75a8() {
+    // IDA 0x2c75a8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2c767c — __ZThn32_N3RBX12LuaStatsItemD1Ev
@@ -649,15 +649,15 @@ pub fn stub_2c7a3c() -> ! {
 // 0x2c7b48 — __ZN3RBX5Stats14TypedStatsItemIbED1Ev
 #[doc(alias = "RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
 #[doc(alias = "__ZN3RBX5Stats14TypedStatsItemIbED1Ev")]
-pub fn stub_2c7b48() -> ! {
-    todo!("0x2c7b48 RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")
+pub fn stub_2c7b48() {
+    // IDA 0x2c7b48: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c7c90 — __ZN3RBX5Stats14TypedStatsItemIbED0Ev
 #[doc(alias = "RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
 #[doc(alias = "__ZN3RBX5Stats14TypedStatsItemIbED0Ev")]
-pub fn stub_2c7c90() -> ! {
-    todo!("0x2c7c90 RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")
+pub fn stub_2c7c90() {
+    // IDA 0x2c7c90: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2c7df0 — __ZThn36_N3RBX5Stats14TypedStatsItemIbED1Ev
@@ -694,8 +694,8 @@ pub fn stub_2c815c() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<bool> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats14TypedStatsItemIbEENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_2c8268() -> ! {
-    todo!("0x2c8268 boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<bool> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_2c8268() {
+    // IDA 0x2c8268: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2c8270 — __ZNSt5dequeISsSaISsEE8pop_backEv

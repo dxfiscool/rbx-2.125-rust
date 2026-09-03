@@ -56,14 +56,14 @@ pub fn stub_0xf5e344() -> ! {
 
 // 0xf5e394 — j___ZN3RBX10Reflection8EnumDescI14PacketPriorityED2Ev
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescI14PacketPriorityED2Ev")]
-pub fn stub_0xf5e394() -> ! {
-    todo!("0xf5e394 j___ZN3RBX10Reflection8EnumDescI14PacketPriorityED2Ev")
+pub fn stub_0xf5e394() {
+    // IDA 0xf5e394: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5e3a4 — j___ZN3RBX10Reflection8EnumDescI17PacketReliabilityED2Ev
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescI17PacketReliabilityED2Ev")]
-pub fn stub_0xf5e3a4() -> ! {
-    todo!("0xf5e3a4 j___ZN3RBX10Reflection8EnumDescI17PacketReliabilityED2Ev")
+pub fn stub_0xf5e3a4() {
+    // IDA 0xf5e3a4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5e404 — j___ZNK3RBX10Reflection8EnumDescI14PacketPriorityE13convertToItemERKS2_
@@ -458,8 +458,8 @@ pub fn stub_0xf600c4() -> ! {
 
 // 0xf600d4 — j___ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEED2Ev
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEED2Ev")]
-pub fn stub_0xf600d4() -> ! {
-    todo!("0xf600d4 j___ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEED2Ev")
+pub fn stub_0xf600d4() {
+    // IDA 0xf600d4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf600f4 — j___ZN3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv

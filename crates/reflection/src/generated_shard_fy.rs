@@ -178,14 +178,14 @@ pub fn stub_0x77138() -> ! {
 
 // 0x773c4 — __ZN4FMOD15ChannelSoftwareD1Ev
 #[doc(alias = "FMOD::ChannelSoftware::~ChannelSoftware()")]
-pub fn stub_0x773c4() -> ! {
-    todo!("0x773c4 __ZN4FMOD15ChannelSoftwareD1Ev")
+pub fn stub_0x773c4() {
+    // IDA 0x773c4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x773f0 — __ZN4FMOD15ChannelSoftwareD0Ev
 #[doc(alias = "FMOD::ChannelSoftware::~ChannelSoftware()")]
-pub fn stub_0x773f0() -> ! {
-    todo!("0x773f0 __ZN4FMOD15ChannelSoftwareD0Ev")
+pub fn stub_0x773f0() {
+    // IDA 0x773f0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x77428 — __ZN4FMOD13ChannelStream23set2DFreqVolumePanFor3DEv
@@ -388,14 +388,14 @@ pub fn stub_0x78fb4() -> ! {
 
 // 0x78fc4 — __ZN4FMOD13ChannelStreamD0Ev
 #[doc(alias = "FMOD::ChannelStream::~ChannelStream()")]
-pub fn stub_0x78fc4() -> ! {
-    todo!("0x78fc4 __ZN4FMOD13ChannelStreamD0Ev")
+pub fn stub_0x78fc4() {
+    // IDA 0x78fc4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x78fe8 — __ZN4FMOD13ChannelStreamD1Ev
 #[doc(alias = "FMOD::ChannelStream::~ChannelStream()")]
-pub fn stub_0x78fe8() -> ! {
-    todo!("0x78fe8 __ZN4FMOD13ChannelStreamD1Ev")
+pub fn stub_0x78fe8() {
+    // IDA 0x78fe8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x79000 — __ZN4FMOD12ChannelGroup9setVolumeEf

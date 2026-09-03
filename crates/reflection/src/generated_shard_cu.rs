@@ -430,8 +430,8 @@ pub fn stub_f600c4() -> ! {
 // 0xf600d4 — j___ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEED2Ev")]
-pub fn stub_f600d4() -> ! {
-    todo!("0xf600d4 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::~EnumDesc()")
+pub fn stub_f600d4() {
+    // IDA 0xf600d4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf60114 — j___ZN3RBX10Reflection9EventDescINS_7Network16ServerReplicatorEFvibiEN3rbx6signalIS4_EEMS3_S7_EC2ES8_PKcSB_SB_SB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE

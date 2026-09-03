@@ -109,8 +109,8 @@ pub fn stub_0xf59154() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::UserInputService::SwipeDirection>::~EnumDesc()")]
-pub fn stub_0xf59164() -> ! {
-    todo!("0xf59164")
+pub fn stub_0xf59164() {
+    // IDA 0xf59164: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf59184 — j___ZN3RBX10Reflection9EventDescINS_16UserInputServiceEFvN3G3D7Vector2EEN3rbx6signalIS5_EEMS2_S8_EC2ES9_PKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -662,8 +662,8 @@ pub fn stub_0xf5a564() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_18MarketplaceService12CurrencyTypeEED2Ev")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::MarketplaceService::CurrencyType>::~EnumDesc()")]
-pub fn stub_0xf5a574() -> ! {
-    todo!("0xf5a574")
+pub fn stub_0xf5a574() {
+    // IDA 0xf5a574: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5a584 — j___ZN3RBX10Reflection9ArgHelper6getArgINS_18MarketplaceService12CurrencyTypeELi4EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
@@ -741,8 +741,8 @@ pub fn stub_0xf5a684() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZN3rbx13remote_signalIFvN5boost10shared_ptrIKNS1_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS1_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEEED2Ev")]
 #[doc(alias = "rbx::remote_signal<void ()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>::~remote_signal()")]
-pub fn stub_0xf5a694() -> ! {
-    todo!("0xf5a694")
+pub fn stub_0xf5a694() {
+    // IDA 0xf5a694: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5a724 — j___ZN3rbx7signals16signal_with_argsILi1EFvN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEEEclESJ_

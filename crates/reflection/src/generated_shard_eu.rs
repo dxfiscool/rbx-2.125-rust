@@ -75,8 +75,8 @@ pub fn stub_f671e4() -> ! {
 
 // 0xf671f4 — j___ZN4Ogre7FontPtrD1Ev
 #[doc(alias = "Ogre::FontPtr::~FontPtr()")]
-pub fn stub_f671f4() -> ! {
-    todo!("0xf671f4 j___ZN4Ogre7FontPtrD1Ev")
+pub fn stub_f671f4() {
+    // IDA 0xf671f4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf67204 — j___ZN4Ogre9SharedPtrINS_4FontEE7destroyEv
@@ -123,8 +123,8 @@ pub fn stub_f67264() -> ! {
 
 // 0xf67274 — j___ZN4Ogre10GpuProgramD2Ev
 #[doc(alias = "Ogre::GpuProgram::~GpuProgram()")]
-pub fn stub_f67274() -> ! {
-    todo!("0xf67274 j___ZN4Ogre10GpuProgramD2Ev")
+pub fn stub_f67274() {
+    // IDA 0xf67274: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf67284 — j___ZN4Ogre9SharedPtrINS_17GpuNamedConstantsEEaSERKS2_

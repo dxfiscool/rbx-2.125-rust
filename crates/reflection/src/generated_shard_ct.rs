@@ -283,43 +283,43 @@ pub fn stub_f5e384() -> ! {
 // 0xf5e394 — j___ZN3RBX10Reflection8EnumDescI14PacketPriorityED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<PacketPriority>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescI14PacketPriorityED2Ev")]
-pub fn stub_f5e394() -> ! {
-    todo!("0xf5e394 RBX::Reflection::EnumDesc<PacketPriority>::~EnumDesc()")
+pub fn stub_f5e394() {
+    // IDA 0xf5e394: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5e3a4 — j___ZN3RBX10Reflection8EnumDescI17PacketReliabilityED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<PacketReliability>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescI17PacketReliabilityED2Ev")]
-pub fn stub_f5e3a4() -> ! {
-    todo!("0xf5e3a4 RBX::Reflection::EnumDesc<PacketReliability>::~EnumDesc()")
+pub fn stub_f5e3a4() {
+    // IDA 0xf5e3a4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5e3b4 — j___ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEED2Ev")]
-pub fn stub_f5e3b4() -> ! {
-    todo!("0xf5e3b4 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::~EnumDesc()")
+pub fn stub_f5e3b4() {
+    // IDA 0xf5e3b4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5e3c4 — j___ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEED2Ev")]
-pub fn stub_f5e3c4() -> ! {
-    todo!("0xf5e3c4 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::~EnumDesc()")
+pub fn stub_f5e3c4() {
+    // IDA 0xf5e3c4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5e3d4 — j___ZN3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEED2Ev")]
-pub fn stub_f5e3d4() -> ! {
-    todo!("0xf5e3d4 RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::~EnumDesc()")
+pub fn stub_f5e3d4() {
+    // IDA 0xf5e3d4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5e3e4 — j___ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEED2Ev")]
-pub fn stub_f5e3e4() -> ! {
-    todo!("0xf5e3e4 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::~EnumDesc()")
+pub fn stub_f5e3e4() {
+    // IDA 0xf5e3e4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5e404 — j___ZNK3RBX10Reflection8EnumDescI14PacketPriorityE13convertToItemERKS2_
@@ -591,8 +591,8 @@ pub fn stub_f5e814() -> ! {
 // 0xf5e824 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFN5boost10shared_ptrINS_8InstanceEEEiSsiiiELi5EED2Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Client,rbx_core::SharedPtr<RBX::Instance> ()(int,std::string,int,int,int),5>::~BoundFuncDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFN5boost10shared_ptrINS_8InstanceEEEiSsiiiELi5EED2Ev")]
-pub fn stub_f5e824() -> ! {
-    todo!("0xf5e824 RBX::Reflection::BoundFuncDesc<RBX::Network::Client,boost::shared_ptr<RBX::Instance> ()(int,std::string,int,int,int),5>::~BoundFuncDesc()")
+pub fn stub_f5e824() {
+    // IDA 0xf5e824: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5e834 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFviELi1EEC2EMS3_FviEPKcS9_iNS_8Security11PermissionsENS0_10Descriptor10AttributesE

@@ -652,8 +652,8 @@ pub fn stub_f549f4() -> ! {
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::TestService,void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int),4>::~BoundFuncDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFvbSsN5boost10shared_ptrINS_8InstanceEEEiELi4EED2Ev")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::TestService,void ()(bool,std::string,boost::shared_ptr<RBX::Instance>,int),4>::~BoundFuncDesc()
-pub fn stub_f54a04() -> ! {
-    todo!("0xf54a04 RBX::Reflection::BoundFuncDesc<RBX::TestService,void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int),4>::~BoundFuncDesc()")
+pub fn stub_f54a04() {
+    // IDA 0xf54a04: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf54a14 — j___ZN3RBX10Reflection13BoundFuncDescINS_11TestServiceEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE

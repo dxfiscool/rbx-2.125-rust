@@ -492,8 +492,8 @@ pub fn stub_f303e4() -> ! {
 // 0xf303f4 — j___ZN3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEED2Ev")]
-pub fn stub_f303f4() -> ! {
-    todo!("0xf303f4 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::~EnumDesc()")
+pub fn stub_f303f4() {
+    // IDA 0xf303f4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf30404 — j___ZN3RBX10Reflection9ArgHelper6getArgINS_9SoundTypeELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS4_EEPNS8_10disable_ifINS8_7is_sameIS4_NS8_10shared_ptrIKNS0_5TupleEEEEEvE4typeE

@@ -26,16 +26,16 @@ pub fn stub_0x64e668() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Stats::TypedMemItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats12TypedMemItemENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_0x64e770() -> ! {
-    todo!("0x64e770 boost::detail::sp_counted_impl_pd<RBX::Stats::TypedMemItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x64e770() {
+    // IDA 0x64e770: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x64e774 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats12TypedMemItemENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Stats::TypedMemItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats12TypedMemItemENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_0x64e774() -> ! {
-    todo!("0x64e774 boost::detail::sp_counted_impl_pd<RBX::Stats::TypedMemItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x64e774() {
+    // IDA 0x64e774: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x64e778 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats12TypedMemItemENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
@@ -86,92 +86,92 @@ pub fn stub_0x658be0() -> ! {
 // 0x6590f4 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEED1Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEED1Ev")]
-pub fn stub_0x6590f4() -> ! {
-    todo!("0x6590f4 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x6590f4() {
+    // IDA 0x6590f4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x659118 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_16LegacyController9InputTypeEED1Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_16LegacyController9InputTypeEED1Ev")]
-pub fn stub_0x659118() -> ! {
-    todo!("0x659118 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x659118() {
+    // IDA 0x659118: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x659160 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_11SurfaceTypeEED1Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_11SurfaceTypeEED1Ev")]
-pub fn stub_0x659160() -> ! {
-    todo!("0x659160 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x659160() {
+    // IDA 0x659160: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x659184 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_16LegacyController9InputTypeEED1Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_16LegacyController9InputTypeEED1Ev")]
-pub fn stub_0x659184() -> ! {
-    todo!("0x659184 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x659184() {
+    // IDA 0x659184: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x6591cc — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_11SurfaceTypeEED1Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_11SurfaceTypeEED1Ev")]
-pub fn stub_0x6591cc() -> ! {
-    todo!("0x6591cc RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x6591cc() {
+    // IDA 0x6591cc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x6591f0 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_16LegacyController9InputTypeEED1Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_16LegacyController9InputTypeEED1Ev")]
-pub fn stub_0x6591f0() -> ! {
-    todo!("0x6591f0 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x6591f0() {
+    // IDA 0x6591f0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x659238 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_11SurfaceTypeEED1Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_11SurfaceTypeEED1Ev")]
-pub fn stub_0x659238() -> ! {
-    todo!("0x659238 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x659238() {
+    // IDA 0x659238: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x65925c — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_16LegacyController9InputTypeEED1Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_16LegacyController9InputTypeEED1Ev")]
-pub fn stub_0x65925c() -> ! {
-    todo!("0x65925c RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x65925c() {
+    // IDA 0x65925c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x6592a4 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_11SurfaceTypeEED1Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_11SurfaceTypeEED1Ev")]
-pub fn stub_0x6592a4() -> ! {
-    todo!("0x6592a4 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x6592a4() {
+    // IDA 0x6592a4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x6592c8 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_16LegacyController9InputTypeEED1Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_16LegacyController9InputTypeEED1Ev")]
-pub fn stub_0x6592c8() -> ! {
-    todo!("0x6592c8 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x6592c8() {
+    // IDA 0x6592c8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x659310 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_11SurfaceTypeEED1Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_11SurfaceTypeEED1Ev")]
-pub fn stub_0x659310() -> ! {
-    todo!("0x659310 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x659310() {
+    // IDA 0x659310: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x659334 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_16LegacyController9InputTypeEED1Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_16LegacyController9InputTypeEED1Ev")]
-pub fn stub_0x659334() -> ! {
-    todo!("0x659334 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x659334() {
+    // IDA 0x659334: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x6595b4 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_16LegacyController9InputTypeEED0Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_16LegacyController9InputTypeEED0Ev")]
-pub fn stub_0x6595b4() -> ! {
-    todo!("0x6595b4 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x6595b4() {
+    // IDA 0x6595b4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6595e0 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_16LegacyController9InputTypeEE10isReadOnlyEv
@@ -212,8 +212,8 @@ pub fn stub_0x659d3c() -> ! {
 // 0x659e30 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_11SurfaceTypeEED0Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_11SurfaceTypeEED0Ev")]
-pub fn stub_0x659e30() -> ! {
-    todo!("0x659e30 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)2,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x659e30() {
+    // IDA 0x659e30: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x659e5c — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE2ENS_11SurfaceTypeEE10isReadOnlyEv
@@ -254,8 +254,8 @@ pub fn stub_0x65a5b8() -> ! {
 // 0x65a838 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_16LegacyController9InputTypeEED0Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_16LegacyController9InputTypeEED0Ev")]
-pub fn stub_0x65a838() -> ! {
-    todo!("0x65a838 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x65a838() {
+    // IDA 0x65a838: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x65a864 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_16LegacyController9InputTypeEE10isReadOnlyEv
@@ -296,8 +296,8 @@ pub fn stub_0x65af50() -> ! {
 // 0x65b044 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_11SurfaceTypeEED0Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_11SurfaceTypeEED0Ev")]
-pub fn stub_0x65b044() -> ! {
-    todo!("0x65b044 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)5,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x65b044() {
+    // IDA 0x65b044: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x65b070 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE5ENS_11SurfaceTypeEE10isReadOnlyEv
@@ -338,8 +338,8 @@ pub fn stub_0x65b75c() -> ! {
 // 0x65b9dc — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_16LegacyController9InputTypeEED0Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_16LegacyController9InputTypeEED0Ev")]
-pub fn stub_0x65b9dc() -> ! {
-    todo!("0x65b9dc RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x65b9dc() {
+    // IDA 0x65b9dc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x65ba08 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_16LegacyController9InputTypeEE10isReadOnlyEv
@@ -380,8 +380,8 @@ pub fn stub_0x65c0f4() -> ! {
 // 0x65c1e8 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_11SurfaceTypeEED0Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_11SurfaceTypeEED0Ev")]
-pub fn stub_0x65c1e8() -> ! {
-    todo!("0x65c1e8 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)0,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x65c1e8() {
+    // IDA 0x65c1e8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x65c214 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE0ENS_11SurfaceTypeEE10isReadOnlyEv
@@ -422,8 +422,8 @@ pub fn stub_0x65c900() -> ! {
 // 0x65cb80 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_16LegacyController9InputTypeEED0Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_16LegacyController9InputTypeEED0Ev")]
-pub fn stub_0x65cb80() -> ! {
-    todo!("0x65cb80 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x65cb80() {
+    // IDA 0x65cb80: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x65cbac — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_16LegacyController9InputTypeEE10isReadOnlyEv
@@ -464,8 +464,8 @@ pub fn stub_0x65d298() -> ! {
 // 0x65d38c — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_11SurfaceTypeEED0Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_11SurfaceTypeEED0Ev")]
-pub fn stub_0x65d38c() -> ! {
-    todo!("0x65d38c RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)3,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x65d38c() {
+    // IDA 0x65d38c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x65d3b8 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE3ENS_11SurfaceTypeEE10isReadOnlyEv
@@ -506,8 +506,8 @@ pub fn stub_0x65daa4() -> ! {
 // 0x65dd24 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_16LegacyController9InputTypeEED0Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_16LegacyController9InputTypeEED0Ev")]
-pub fn stub_0x65dd24() -> ! {
-    todo!("0x65dd24 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x65dd24() {
+    // IDA 0x65dd24: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x65dd50 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_16LegacyController9InputTypeEE10isReadOnlyEv
@@ -548,8 +548,8 @@ pub fn stub_0x65e43c() -> ! {
 // 0x65e530 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_11SurfaceTypeEED0Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_11SurfaceTypeEED0Ev")]
-pub fn stub_0x65e530() -> ! {
-    todo!("0x65e530 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)4,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x65e530() {
+    // IDA 0x65e530: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x65e55c — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE4ENS_11SurfaceTypeEE10isReadOnlyEv
@@ -590,8 +590,8 @@ pub fn stub_0x65ec48() -> ! {
 // 0x65eec8 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_16LegacyController9InputTypeEED0Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_16LegacyController9InputTypeEED0Ev")]
-pub fn stub_0x65eec8() -> ! {
-    todo!("0x65eec8 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::LegacyController::InputType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x65eec8() {
+    // IDA 0x65eec8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x65eef4 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_16LegacyController9InputTypeEE10isReadOnlyEv
@@ -632,8 +632,8 @@ pub fn stub_0x65f5e0() -> ! {
 // 0x65f6d4 — __ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEED0Ev
 #[doc(alias = "RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEED0Ev")]
-pub fn stub_0x65f6d4() -> ! {
-    todo!("0x65f6d4 RBX::SurfaceEnumPropDescriptor<(RBX::NormalId)1,RBX::SurfaceType>::~SurfaceEnumPropDescriptor()")
+pub fn stub_0x65f6d4() {
+    // IDA 0x65f6d4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x65f700 — __ZNK3RBX25SurfaceEnumPropDescriptorILNS_8NormalIdE1ENS_11SurfaceTypeEE10isReadOnlyEv

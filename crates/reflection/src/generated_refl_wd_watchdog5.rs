@@ -75,8 +75,8 @@ pub fn stub_0x3047f0() -> ! {
 // 0x304b70 — __ZN3RBX10BrickColor8BrickMapD1Ev
 #[doc(alias = "RBX::BrickColor::BrickMap::~BrickMap()")]
 #[doc(alias = "__ZN3RBX10BrickColor8BrickMapD1Ev")]
-pub fn stub_0x304b70() -> ! {
-    todo!("0x304b70 RBX::BrickColor::BrickMap::~BrickMap()")
+pub fn stub_0x304b70() {
+    // IDA 0x304b70: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x304b74 — __ZNSt3mapIN3RBX10BrickColor6NumberEiSt4lessIS2_ESaISt4pairIKS2_iEEEixERS6_
@@ -110,15 +110,15 @@ pub fn stub_0x304cd8() -> ! {
 // 0x304d40 — __ZN3RBX10BrickColor8BrickMapD2Ev
 #[doc(alias = "RBX::BrickColor::BrickMap::~BrickMap()")]
 #[doc(alias = "__ZN3RBX10BrickColor8BrickMapD2Ev")]
-pub fn stub_0x304d40() -> ! {
-    todo!("0x304d40 RBX::BrickColor::BrickMap::~BrickMap()")
+pub fn stub_0x304d40() {
+    // IDA 0x304d40: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x304e3c — __ZNSt6vectorIN3RBX10BrickColor8BrickMap9ColorInfoESaIS3_EED2Ev
 #[doc(alias = "std::vector<RBX::BrickColor::BrickMap::ColorInfo,std::allocator<RBX::BrickColor::BrickMap::ColorInfo>>::~vector()")]
 #[doc(alias = "__ZNSt6vectorIN3RBX10BrickColor8BrickMap9ColorInfoESaIS3_EED2Ev")]
-pub fn stub_0x304e3c() -> ! {
-    todo!("0x304e3c std::vector<RBX::BrickColor::BrickMap::ColorInfo,std::allocator<RBX::BrickColor::BrickMap::ColorInfo>>::~vector()")
+pub fn stub_0x304e3c() {
+    // IDA 0x304e3c: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x304f0c — __ZNSt8_Rb_treeIN3RBX10BrickColor6NumberESt4pairIKS2_iESt10_Select1stIS5_ESt4lessIS2_ESaIS5_EE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
@@ -362,15 +362,15 @@ pub fn stub_0x30e6cc() -> ! {
 // 0x30e868 — __ZN3RBX13ContentFilterD0Ev
 #[doc(alias = "RBX::ContentFilter::~ContentFilter()")]
 #[doc(alias = "__ZN3RBX13ContentFilterD0Ev")]
-pub fn stub_0x30e868() -> ! {
-    todo!("0x30e868 RBX::ContentFilter::~ContentFilter()")
+pub fn stub_0x30e868() {
+    // IDA 0x30e868: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x30e908 — __ZN3RBX13ContentFilterD1Ev
 #[doc(alias = "RBX::ContentFilter::~ContentFilter()")]
 #[doc(alias = "__ZN3RBX13ContentFilterD1Ev")]
-pub fn stub_0x30e908() -> ! {
-    todo!("0x30e908 RBX::ContentFilter::~ContentFilter()")
+pub fn stub_0x30e908() {
+    // IDA 0x30e908: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x30e90c — __ZThn32_N3RBX13ContentFilterD0Ev
@@ -390,8 +390,8 @@ pub fn stub_0x30e914() {
 // 0x30e91c — __ZN3RBX13ContentFilterD2Ev
 #[doc(alias = "RBX::ContentFilter::~ContentFilter()")]
 #[doc(alias = "__ZN3RBX13ContentFilterD2Ev")]
-pub fn stub_0x30e91c() -> ! {
-    todo!("0x30e91c RBX::ContentFilter::~ContentFilter()")
+pub fn stub_0x30e91c() {
+    // IDA 0x30e91c: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x30e96c — __ZThn32_N3RBX13ContentFilterD1Ev

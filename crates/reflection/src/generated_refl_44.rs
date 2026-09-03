@@ -404,8 +404,8 @@ pub fn stub_0xf61434() -> ! {
 
 // 0xf61444 — j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsN3RBX10Reflection7VariantEEESsS8_NS_4hashISsEESt8equal_toISsEEEED2Ev
 #[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsN3RBX10Reflection7VariantEEESsS8_NS_4hashISsEESt8equal_toISsEEEED2Ev")]
-pub fn stub_0xf61444() -> ! {
-    todo!("0xf61444 j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsN3RBX10Reflection7VariantEEESsS8_NS_4hashISsEESt8equal_toISsEEEED2Ev")
+pub fn stub_0xf61444() {
+    // IDA 0xf61444: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf614e4 — j___ZNK3RBX10Reflection7Variant3getIbEET_v

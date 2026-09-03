@@ -31,8 +31,8 @@ pub fn stub_f5c614() -> ! {
 // 0xf5c624 — j___ZN3RBX10Reflection18BoundYieldFuncDescINS_12AssetServiceEFbiNS2_10AccessTypeEN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS7_EEEEEbLi3EED2Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::AssetService,bool ()(int,RBX::AssetService::AccessType,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>),bool,3>::~BoundYieldFuncDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection18BoundYieldFuncDescINS_12AssetServiceEFbiNS2_10AccessTypeEN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS7_EEEEEbLi3EED2Ev")]
-pub fn stub_f5c624() -> ! {
-    todo!("0xf5c624 RBX::Reflection::BoundYieldFuncDesc<RBX::AssetService,bool ()(int,RBX::AssetService::AccessType,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>),bool,3>::~BoundYieldFuncDesc()")
+pub fn stub_f5c624() {
+    // IDA 0xf5c624: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5c634 — j___ZN3RBX10Reflection18BoundYieldFuncDescINS_12AssetServiceEFbiiEbLi2EE16declareSignatureEPKcNS0_7VariantES6_S7_
@@ -388,8 +388,8 @@ pub fn stub_f5cce4() -> ! {
 // 0xf5ccf4 — j___ZN3rbx13remote_signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEED2Ev
 #[doc(alias = "rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::~remote_signal()")]
 #[doc(alias = "j___ZN3rbx13remote_signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEED2Ev")]
-pub fn stub_f5ccf4() -> ! {
-    todo!("0xf5ccf4 rbx::remote_signal<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::~remote_signal()")
+pub fn stub_f5ccf4() {
+    // IDA 0xf5ccf4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5cd04 — j___ZN3rbx13remote_signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS2_IKNS3_10Reflection5TupleEEEEEC2Ev
@@ -402,8 +402,8 @@ pub fn stub_f5cd04() -> ! {
 // 0xf5cd14 — j___ZN3rbx13remote_signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS2_IKNS3_10Reflection5TupleEEEEED2Ev
 #[doc(alias = "rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::~remote_signal()")]
 #[doc(alias = "j___ZN3rbx13remote_signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS2_IKNS3_10Reflection5TupleEEEEED2Ev")]
-pub fn stub_f5cd14() -> ! {
-    todo!("0xf5cd14 rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::~remote_signal()")
+pub fn stub_f5cd14() {
+    // IDA 0xf5cd14: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5cd24 — j___ZN3rbx13remote_signalIFviN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEEC2Ev
@@ -416,8 +416,8 @@ pub fn stub_f5cd24() -> ! {
 // 0xf5cd34 — j___ZN3rbx13remote_signalIFviN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEED2Ev
 #[doc(alias = "rbx::remote_signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::~remote_signal()")]
 #[doc(alias = "j___ZN3rbx13remote_signalIFviN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEED2Ev")]
-pub fn stub_f5cd34() -> ! {
-    todo!("0xf5cd34 rbx::remote_signal<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::~remote_signal()")
+pub fn stub_f5cd34() {
+    // IDA 0xf5cd34: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5cd44 — j___ZN3rbx13remote_signalIFviN5boost10shared_ptrIN3RBX8InstanceEEENS2_IKNS3_10Reflection5TupleEEEEEC2Ev
@@ -430,8 +430,8 @@ pub fn stub_f5cd44() -> ! {
 // 0xf5cd54 — j___ZN3rbx13remote_signalIFviN5boost10shared_ptrIN3RBX8InstanceEEENS2_IKNS3_10Reflection5TupleEEEEED2Ev
 #[doc(alias = "rbx::remote_signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::~remote_signal()")]
 #[doc(alias = "j___ZN3rbx13remote_signalIFviN5boost10shared_ptrIN3RBX8InstanceEEENS2_IKNS3_10Reflection5TupleEEEEED2Ev")]
-pub fn stub_f5cd54() -> ! {
-    todo!("0xf5cd54 rbx::remote_signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::~remote_signal()")
+pub fn stub_f5cd54() {
+    // IDA 0xf5cd54: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5cd84 — j___ZN3rbx7signals16signal_with_argsILi1EFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEEclES8_

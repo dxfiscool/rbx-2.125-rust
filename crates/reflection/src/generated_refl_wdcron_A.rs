@@ -89,8 +89,8 @@ pub fn stub_0x35cc54() -> ! {
 // type: void __fastcall(RBX::queuing_rw_mutex *__hidden this)
 #[doc(alias = "RBX::queuing_rw_mutex::~queuing_rw_mutex()")]
 #[doc(alias = "__ZN3RBX16queuing_rw_mutexD1Ev")]
-pub fn stub_0x35ccc0() -> ! {
-    todo!("0x35ccc0 RBX::queuing_rw_mutex::~queuing_rw_mutex()")
+pub fn stub_0x35ccc0() {
+    // IDA 0x35ccc0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x35ccd0 — __ZN3RBX16queuing_rw_mutexC2Ev
@@ -314,48 +314,48 @@ pub fn stub_0x35df64() -> ! {
 // type: void __fastcall(RBX::Profiling::Mark *__hidden this)
 #[doc(alias = "RBX::Profiling::Mark::~Mark()")]
 #[doc(alias = "__ZN3RBX9Profiling4MarkD1Ev")]
-pub fn stub_0x35dfcc() -> ! {
-    todo!("0x35dfcc RBX::Profiling::Mark::~Mark()")
+pub fn stub_0x35dfcc() {
+    // IDA 0x35dfcc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x35dfd0 — __ZN3RBX9Profiling4MarkD2Ev
 // type: void __fastcall(RBX::Profiling::Mark *__hidden this)
 #[doc(alias = "RBX::Profiling::Mark::~Mark()")]
 #[doc(alias = "__ZN3RBX9Profiling4MarkD2Ev")]
-pub fn stub_0x35dfd0() -> ! {
-    todo!("0x35dfd0 RBX::Profiling::Mark::~Mark()")
+pub fn stub_0x35dfd0() {
+    // IDA 0x35dfd0: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x35e03c — __ZN3RBX9Profiling8ProfilerD1Ev
 // type: void __fastcall(RBX::Profiling::Profiler *__hidden this)
 #[doc(alias = "RBX::Profiling::Profiler::~Profiler()")]
 #[doc(alias = "__ZN3RBX9Profiling8ProfilerD1Ev")]
-pub fn stub_0x35e03c() -> ! {
-    todo!("0x35e03c RBX::Profiling::Profiler::~Profiler()")
+pub fn stub_0x35e03c() {
+    // IDA 0x35e03c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x35e060 — __ZN3RBX9Profiling8ProfilerD0Ev
 // type: void __fastcall(RBX::Profiling::Profiler *__hidden this)
 #[doc(alias = "RBX::Profiling::Profiler::~Profiler()")]
 #[doc(alias = "__ZN3RBX9Profiling8ProfilerD0Ev")]
-pub fn stub_0x35e060() -> ! {
-    todo!("0x35e060 RBX::Profiling::Profiler::~Profiler()")
+pub fn stub_0x35e060() {
+    // IDA 0x35e060: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x35e08c — __ZN3RBX9Profiling12CodeProfilerD1Ev
 // type: void __fastcall(RBX::Profiling::CodeProfiler *__hidden this)
 #[doc(alias = "RBX::Profiling::CodeProfiler::~CodeProfiler()")]
 #[doc(alias = "__ZN3RBX9Profiling12CodeProfilerD1Ev")]
-pub fn stub_0x35e08c() -> ! {
-    todo!("0x35e08c RBX::Profiling::CodeProfiler::~CodeProfiler()")
+pub fn stub_0x35e08c() {
+    // IDA 0x35e08c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x35e0b0 — __ZN3RBX9Profiling12CodeProfilerD0Ev
 // type: void __fastcall(RBX::Profiling::CodeProfiler *__hidden this)
 #[doc(alias = "RBX::Profiling::CodeProfiler::~CodeProfiler()")]
 #[doc(alias = "__ZN3RBX9Profiling12CodeProfilerD0Ev")]
-pub fn stub_0x35e0b0() -> ! {
-    todo!("0x35e0b0 RBX::Profiling::CodeProfiler::~CodeProfiler()")
+pub fn stub_0x35e0b0() {
+    // IDA 0x35e0b0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x35e0dc — __ZNSt12_Vector_baseIiSaIiEE11_M_allocateEm
@@ -487,8 +487,8 @@ pub fn stub_0x35eba0() -> ! {
 // type: void __fastcall(RBX::ProtectedString *__hidden this)
 #[doc(alias = "RBX::ProtectedString::~ProtectedString()")]
 #[doc(alias = "__ZN3RBX15ProtectedStringD1Ev")]
-pub fn stub_0x35f9ec() -> ! {
-    todo!("0x35f9ec RBX::ProtectedString::~ProtectedString()")
+pub fn stub_0x35f9ec() {
+    // IDA 0x35f9ec: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x35fdd0 — __ZN3rbx8any_castIN3RBX15ProtectedStringENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE
@@ -636,16 +636,16 @@ pub fn stub_0x360f34() -> ! {
 // type: void __fastcall(RBX::RunService *__hidden this)
 #[doc(alias = "RBX::RunService::~RunService()")]
 #[doc(alias = "__ZN3RBX10RunServiceD0Ev")]
-pub fn stub_0x3611ec() -> ! {
-    todo!("0x3611ec RBX::RunService::~RunService()")
+pub fn stub_0x3611ec() {
+    // IDA 0x3611ec: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x36128c — __ZN3RBX10RunServiceD1Ev
 // type: void __fastcall(RBX::RunService *__hidden this)
 #[doc(alias = "RBX::RunService::~RunService()")]
 #[doc(alias = "__ZN3RBX10RunServiceD1Ev")]
-pub fn stub_0x36128c() -> ! {
-    todo!("0x36128c RBX::RunService::~RunService()")
+pub fn stub_0x36128c() {
+    // IDA 0x36128c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x361290 — __ZThn32_N3RBX10RunServiceD0Ev
@@ -668,8 +668,8 @@ pub fn stub_0x361298() {
 // type: void __fastcall(RBX::RunService *__hidden this)
 #[doc(alias = "RBX::RunService::~RunService()")]
 #[doc(alias = "__ZN3RBX10RunServiceD2Ev")]
-pub fn stub_0x3612a0() -> ! {
-    todo!("0x3612a0 RBX::RunService::~RunService()")
+pub fn stub_0x3612a0() {
+    // IDA 0x3612a0: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3616a8 — __ZThn32_N3RBX10RunServiceD1Ev

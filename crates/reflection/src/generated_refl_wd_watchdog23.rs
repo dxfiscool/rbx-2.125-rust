@@ -74,43 +74,43 @@ pub fn stub_0x387290() -> ! {
 // 0x387354 — __ZN3RBX18PriorityThreadPool22PriorityThreadPoolDataD1Ev
 #[doc(alias = "RBX::PriorityThreadPool::PriorityThreadPoolData::~PriorityThreadPoolData()")]
 #[doc(alias = "__ZN3RBX18PriorityThreadPool22PriorityThreadPoolDataD1Ev")]
-pub fn stub_0x387354() -> ! {
-    todo!("0x387354 RBX::PriorityThreadPool::PriorityThreadPoolData::~PriorityThreadPoolData()")
+pub fn stub_0x387354() {
+    // IDA 0x387354: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x387448 — __ZN3RBX18PriorityThreadPool22PriorityThreadPoolDataD0Ev
 #[doc(alias = "RBX::PriorityThreadPool::PriorityThreadPoolData::~PriorityThreadPoolData()")]
 #[doc(alias = "__ZN3RBX18PriorityThreadPool22PriorityThreadPoolDataD0Ev")]
-pub fn stub_0x387448() -> ! {
-    todo!("0x387448 RBX::PriorityThreadPool::PriorityThreadPoolData::~PriorityThreadPoolData()")
+pub fn stub_0x387448() {
+    // IDA 0x387448: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x38754c — __ZN3RBX10ThreadPoolD1Ev
 #[doc(alias = "RBX::ThreadPool::~ThreadPool()")]
 #[doc(alias = "__ZN3RBX10ThreadPoolD1Ev")]
-pub fn stub_0x38754c() -> ! {
-    todo!("0x38754c RBX::ThreadPool::~ThreadPool()")
+pub fn stub_0x38754c() {
+    // IDA 0x38754c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x387550 — __ZN3RBX10ThreadPoolD0Ev
 #[doc(alias = "RBX::ThreadPool::~ThreadPool()")]
 #[doc(alias = "__ZN3RBX10ThreadPoolD0Ev")]
-pub fn stub_0x387550() -> ! {
-    todo!("0x387550 RBX::ThreadPool::~ThreadPool()")
+pub fn stub_0x387550() {
+    // IDA 0x387550: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3875f0 — __ZN3RBX18PriorityThreadPoolD1Ev
 #[doc(alias = "RBX::PriorityThreadPool::~PriorityThreadPool()")]
 #[doc(alias = "__ZN3RBX18PriorityThreadPoolD1Ev")]
-pub fn stub_0x3875f0() -> ! {
-    todo!("0x3875f0 RBX::PriorityThreadPool::~PriorityThreadPool()")
+pub fn stub_0x3875f0() {
+    // IDA 0x3875f0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3875f4 — __ZN3RBX18PriorityThreadPoolD0Ev
 #[doc(alias = "RBX::PriorityThreadPool::~PriorityThreadPool()")]
 #[doc(alias = "__ZN3RBX18PriorityThreadPoolD0Ev")]
-pub fn stub_0x3875f4() -> ! {
-    todo!("0x3875f4 RBX::PriorityThreadPool::~PriorityThreadPool()")
+pub fn stub_0x3875f4() {
+    // IDA 0x3875f4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x387694 — __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEE4swapERS5_
@@ -249,15 +249,15 @@ pub fn stub_0x3885e0() -> ! {
 // 0x3886ec — __ZN5boost6detail17sp_counted_impl_pINS_6threadEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::thread>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_6threadEED1Ev")]
-pub fn stub_0x3886ec() -> ! {
-    todo!("0x3886ec boost::detail::sp_counted_impl_p<boost::thread>::~sp_counted_impl_p()")
+pub fn stub_0x3886ec() {
+    // IDA 0x3886ec: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3886f0 — __ZN5boost6detail17sp_counted_impl_pINS_6threadEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::thread>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_6threadEED0Ev")]
-pub fn stub_0x3886f0() -> ! {
-    todo!("0x3886f0 boost::detail::sp_counted_impl_p<boost::thread>::~sp_counted_impl_p()")
+pub fn stub_0x3886f0() {
+    // IDA 0x3886f0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3886f4 — __ZN5boost6detail17sp_counted_impl_pINS_6threadEE7disposeEv
@@ -304,15 +304,15 @@ pub fn stub_0x388ab8() -> ! {
 // 0x388bec — __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS4_INS5_5mutexEEEENS2_5list2INS2_5valueIS8_EENSE_ISA_EEEEEEED1Ev
 #[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>::~thread_data()")]
 #[doc(alias = "__ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS4_INS5_5mutexEEEENS2_5list2INS2_5valueIS8_EENSE_ISA_EEEEEEED1Ev")]
-pub fn stub_0x388bec() -> ! {
-    todo!("0x388bec boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>::~thread_data()")
+pub fn stub_0x388bec() {
+    // IDA 0x388bec: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x388cec — __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS4_INS5_5mutexEEEENS2_5list2INS2_5valueIS8_EENSE_ISA_EEEEEEED0Ev
 #[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>::~thread_data()")]
 #[doc(alias = "__ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS4_INS5_5mutexEEEENS2_5list2INS2_5valueIS8_EENSE_ISA_EEEEEEED0Ev")]
-pub fn stub_0x388cec() -> ! {
-    todo!("0x388cec boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>::~thread_data()")
+pub fn stub_0x388cec() {
+    // IDA 0x388cec: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x388dfc — __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS4_INS5_5mutexEEEENS2_5list2INS2_5valueIS8_EENSE_ISA_EEEEEEE3runEv
@@ -353,15 +353,15 @@ pub fn stub_0x389134() -> ! {
 // 0x38922c — __ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS5_INS6_5mutexEEEENS3_5list2INS3_5valueIS9_EENSF_ISB_EEEEEEEEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS5_INS6_5mutexEEEENS3_5list2INS3_5valueIS9_EENSF_ISB_EEEEEEEEED1Ev")]
-pub fn stub_0x38922c() -> ! {
-    todo!("0x38922c boost::detail::sp_counted_impl_p<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>::~sp_counted_impl_p()")
+pub fn stub_0x38922c() {
+    // IDA 0x38922c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x389230 — __ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS5_INS6_5mutexEEEENS3_5list2INS3_5valueIS9_EENSF_ISB_EEEEEEEEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS5_INS6_5mutexEEEENS3_5list2INS3_5valueIS9_EENSF_ISB_EEEEEEEEED0Ev")]
-pub fn stub_0x389230() -> ! {
-    todo!("0x389230 boost::detail::sp_counted_impl_p<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>::~sp_counted_impl_p()")
+pub fn stub_0x389230() {
+    // IDA 0x389230: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x389234 — __ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS5_INS6_5mutexEEEENS3_5list2INS3_5valueIS9_EENSF_ISB_EEEEEEEEE7disposeEv
@@ -416,15 +416,15 @@ pub fn stub_0x389554() -> ! {
 // 0x389660 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5mutexEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::mutex>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX5mutexEED1Ev")]
-pub fn stub_0x389660() -> ! {
-    todo!("0x389660 boost::detail::sp_counted_impl_p<RBX::mutex>::~sp_counted_impl_p()")
+pub fn stub_0x389660() {
+    // IDA 0x389660: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x389664 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5mutexEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::mutex>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX5mutexEED0Ev")]
-pub fn stub_0x389664() -> ! {
-    todo!("0x389664 boost::detail::sp_counted_impl_p<RBX::mutex>::~sp_counted_impl_p()")
+pub fn stub_0x389664() {
+    // IDA 0x389664: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x389668 — __ZN5boost6detail17sp_counted_impl_pIN3RBX5mutexEE7disposeEv
@@ -535,15 +535,15 @@ pub fn stub_0x38a6b4() -> ! {
 // 0x38a704 — __ZNSt6vectorIN5boost10shared_ptrINS0_6threadEEESaIS3_EED2Ev
 #[doc(alias = "std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>::~vector()")]
 #[doc(alias = "__ZNSt6vectorIN5boost10shared_ptrINS0_6threadEEESaIS3_EED2Ev")]
-pub fn stub_0x38a704() -> ! {
-    todo!("0x38a704 std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>::~vector()")
+pub fn stub_0x38a704() {
+    // IDA 0x38a704: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x38a7d0 — __ZNSt6vectorIN5boost10shared_ptrIN3RBX5mutexEEESaIS4_EED2Ev
 #[doc(alias = "std::vector<boost::shared_ptr<RBX::mutex>,std::allocator<boost::shared_ptr<RBX::mutex>>>::~vector()")]
 #[doc(alias = "__ZNSt6vectorIN5boost10shared_ptrIN3RBX5mutexEEESaIS4_EED2Ev")]
-pub fn stub_0x38a7d0() -> ! {
-    todo!("0x38a7d0 std::vector<boost::shared_ptr<RBX::mutex>,std::allocator<boost::shared_ptr<RBX::mutex>>>::~vector()")
+pub fn stub_0x38a7d0() {
+    // IDA 0x38a7d0: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x38a89c — __ZN5boost10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEC2IS3_EEPT_
@@ -563,15 +563,15 @@ pub fn stub_0x38a970() -> ! {
 // 0x38aa68 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14BaseThreadPool8PoolDataEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::BaseThreadPool::PoolData>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX14BaseThreadPool8PoolDataEED1Ev")]
-pub fn stub_0x38aa68() -> ! {
-    todo!("0x38aa68 boost::detail::sp_counted_impl_p<RBX::BaseThreadPool::PoolData>::~sp_counted_impl_p()")
+pub fn stub_0x38aa68() {
+    // IDA 0x38aa68: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x38aa6c — __ZN5boost6detail17sp_counted_impl_pIN3RBX14BaseThreadPool8PoolDataEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::BaseThreadPool::PoolData>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX14BaseThreadPool8PoolDataEED0Ev")]
-pub fn stub_0x38aa6c() -> ! {
-    todo!("0x38aa6c boost::detail::sp_counted_impl_p<RBX::BaseThreadPool::PoolData>::~sp_counted_impl_p()")
+pub fn stub_0x38aa6c() {
+    // IDA 0x38aa6c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x38aa70 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14BaseThreadPool8PoolDataEE7disposeEv
@@ -605,29 +605,29 @@ pub fn stub_0x38aa88() -> ! {
 // 0x38aab8 — __ZN3RBX14BaseThreadPool8PoolDataD2Ev
 #[doc(alias = "RBX::BaseThreadPool::PoolData::~PoolData()")]
 #[doc(alias = "__ZN3RBX14BaseThreadPool8PoolDataD2Ev")]
-pub fn stub_0x38aab8() -> ! {
-    todo!("0x38aab8 RBX::BaseThreadPool::PoolData::~PoolData()")
+pub fn stub_0x38aab8() {
+    // IDA 0x38aab8: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x38ab90 — __ZN3RBX14BaseThreadPool8PoolDataD1Ev
 #[doc(alias = "RBX::BaseThreadPool::PoolData::~PoolData()")]
 #[doc(alias = "__ZN3RBX14BaseThreadPool8PoolDataD1Ev")]
-pub fn stub_0x38ab90() -> ! {
-    todo!("0x38ab90 RBX::BaseThreadPool::PoolData::~PoolData()")
+pub fn stub_0x38ab90() {
+    // IDA 0x38ab90: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x38ab94 — __ZN3RBX14BaseThreadPool8PoolDataD0Ev
 #[doc(alias = "RBX::BaseThreadPool::PoolData::~PoolData()")]
 #[doc(alias = "__ZN3RBX14BaseThreadPool8PoolDataD0Ev")]
-pub fn stub_0x38ab94() -> ! {
-    todo!("0x38ab94 RBX::BaseThreadPool::PoolData::~PoolData()")
+pub fn stub_0x38ab94() {
+    // IDA 0x38ab94: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x38ac34 — __ZNSt6vectorIN3RBX18PriorityThreadPool12PriorityTaskESaIS2_EED2Ev
 #[doc(alias = "std::vector<RBX::PriorityThreadPool::PriorityTask,std::allocator<RBX::PriorityThreadPool::PriorityTask>>::~vector()")]
 #[doc(alias = "__ZNSt6vectorIN3RBX18PriorityThreadPool12PriorityTaskESaIS2_EED2Ev")]
-pub fn stub_0x38ac34() -> ! {
-    todo!("0x38ac34 std::vector<RBX::PriorityThreadPool::PriorityTask,std::allocator<RBX::PriorityThreadPool::PriorityTask>>::~vector()")
+pub fn stub_0x38ac34() {
+    // IDA 0x38ac34: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x38ad00 — __ZN3RBX14BaseThreadPool8PoolDataC2Ev
@@ -640,15 +640,15 @@ pub fn stub_0x38ad00() -> ! {
 // 0x38add0 — __ZN3RBX10ThreadPool14ThreadPoolDataD1Ev
 #[doc(alias = "RBX::ThreadPool::ThreadPoolData::~ThreadPoolData()")]
 #[doc(alias = "__ZN3RBX10ThreadPool14ThreadPoolDataD1Ev")]
-pub fn stub_0x38add0() -> ! {
-    todo!("0x38add0 RBX::ThreadPool::ThreadPoolData::~ThreadPoolData()")
+pub fn stub_0x38add0() {
+    // IDA 0x38add0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x38aec4 — __ZN3RBX10ThreadPool14ThreadPoolDataD0Ev
 #[doc(alias = "RBX::ThreadPool::ThreadPoolData::~ThreadPoolData()")]
 #[doc(alias = "__ZN3RBX10ThreadPool14ThreadPoolDataD0Ev")]
-pub fn stub_0x38aec4() -> ! {
-    todo!("0x38aec4 RBX::ThreadPool::ThreadPoolData::~ThreadPoolData()")
+pub fn stub_0x38aec4() {
+    // IDA 0x38aec4: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x38afc8 — __ZN3RBX10ThreadPool14ThreadPoolData11getNextTaskERN5boost8functionIFvNS2_10shared_ptrINS_5mutexEEEEEE
@@ -675,15 +675,15 @@ pub fn stub_0x38b0b4() -> ! {
 // 0x38b0ec — __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EED2Ev
 #[doc(alias = "std::deque<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::~deque()")]
 #[doc(alias = "__ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EED2Ev")]
-pub fn stub_0x38b0ec() -> ! {
-    todo!("0x38b0ec std::deque<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::~deque()")
+pub fn stub_0x38b0ec() {
+    // IDA 0x38b0ec: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x38b1d4 — __ZNSt11_Deque_baseIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EED2Ev
 #[doc(alias = "std::_Deque_base<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::~_Deque_base()")]
 #[doc(alias = "__ZNSt11_Deque_baseIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EED2Ev")]
-pub fn stub_0x38b1d4() -> ! {
-    todo!("0x38b1d4 std::_Deque_base<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::~_Deque_base()")
+pub fn stub_0x38b1d4() {
+    // IDA 0x38b1d4: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x38b200 — __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE19_M_destroy_data_auxESt15_Deque_iteratorIS7_RS7_PS7_ESD_

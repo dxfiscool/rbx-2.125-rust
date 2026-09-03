@@ -212,8 +212,8 @@ pub fn stub_0xc2fdb0() -> ! {
 // type: void __fastcall(G3D::Plane *__hidden this)
 #[doc(alias = "G3D::Plane::~Plane()")]
 #[doc(alias = "__ZN3G3D5PlaneD0Ev")]
-pub fn stub_0xc2ffe8() -> ! {
-    todo!("0xc2ffe8 G3D::Plane::~Plane()")
+pub fn stub_0xc2ffe8() {
+    // IDA 0xc2ffe8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xc2ffec — __ZNK3RBX27CornerWedgeDistanceFunctionclERKN3G3D7Vector3E
@@ -226,8 +226,8 @@ pub fn stub_0xc2ffec() -> ! {
 // 0xc30bf0 — __ZN3G3D5ArrayINS_5PlaneELi10ELm32EED2Ev
 #[doc(alias = "G3D::Array<G3D::Plane,10,32ul>::~Array()")]
 #[doc(alias = "__ZN3G3D5ArrayINS_5PlaneELi10ELm32EED2Ev")]
-pub fn stub_0xc30bf0() -> ! {
-    todo!("0xc30bf0 G3D::Array<G3D::Plane,10,32ul>::~Array()")
+pub fn stub_0xc30bf0() {
+    // IDA 0xc30bf0: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc30d54 — __ZN3G3D5ArrayINS_5PlaneELi10ELm32EE5_copyERKS2_
@@ -240,23 +240,23 @@ pub fn stub_0xc30d54() -> ! {
 // 0xc30f00 — __ZN4Ogre9SharedPtrINS_7TextureEED1Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::Texture>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_7TextureEED1Ev")]
-pub fn stub_0xc30f00() -> ! {
-    todo!("0xc30f00 Ogre::SharedPtr<Ogre::Texture>::~SharedPtr()")
+pub fn stub_0xc30f00() {
+    // IDA 0xc30f00: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc30f58 — __ZN4Ogre10TexturePtrD0Ev
 // type: void __fastcall(Ogre::TexturePtr *__hidden this)
 #[doc(alias = "Ogre::TexturePtr::~TexturePtr()")]
 #[doc(alias = "__ZN4Ogre10TexturePtrD0Ev")]
-pub fn stub_0xc30f58() -> ! {
-    todo!("0xc30f58 Ogre::TexturePtr::~TexturePtr()")
+pub fn stub_0xc30f58() {
+    // IDA 0xc30f58: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xc31068 — __ZN4Ogre9SharedPtrINS_19HardwarePixelBufferEED1Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::HardwarePixelBuffer>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_19HardwarePixelBufferEED1Ev")]
-pub fn stub_0xc31068() -> ! {
-    todo!("0xc31068 Ogre::SharedPtr<Ogre::HardwarePixelBuffer>::~SharedPtr()")
+pub fn stub_0xc31068() {
+    // IDA 0xc31068: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc31984 — __ZN3RBX11LightObjectC1EPN4Ogre12SceneManagerE
@@ -415,15 +415,15 @@ pub fn stub_0xc35f84() -> ! {
 // type: void __fastcall(Ogre::GpuProgramParameters *__hidden this)
 #[doc(alias = "Ogre::GpuProgramParameters::~GpuProgramParameters()")]
 #[doc(alias = "__ZN4Ogre20GpuProgramParametersD2Ev")]
-pub fn stub_0xc37440() -> ! {
-    todo!("0xc37440 Ogre::GpuProgramParameters::~GpuProgramParameters()")
+pub fn stub_0xc37440() {
+    // IDA 0xc37440: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc376b8 — __ZN4Ogre9SharedPtrINS_22GpuLogicalBufferStructEED1Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_22GpuLogicalBufferStructEED1Ev")]
-pub fn stub_0xc376b8() -> ! {
-    todo!("0xc376b8 Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct>::~SharedPtr()")
+pub fn stub_0xc376b8() {
+    // IDA 0xc376b8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc376e8 — __ZNSt8_Rb_treeImSt4pairIKmN4Ogre18GpuLogicalIndexUseEESt10_Select1stIS4_ESt4lessImENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS4_E
@@ -436,8 +436,8 @@ pub fn stub_0xc376e8() -> ! {
 // 0xc37710 — __ZN4Ogre9SharedPtrINS_17GpuNamedConstantsEED0Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::GpuNamedConstants>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_17GpuNamedConstantsEED0Ev")]
-pub fn stub_0xc37710() -> ! {
-    todo!("0xc37710 Ogre::SharedPtr<Ogre::GpuNamedConstants>::~SharedPtr()")
+pub fn stub_0xc37710() {
+    // IDA 0xc37710: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xc377d0 — __ZN4Ogre9SharedPtrINS_17GpuNamedConstantsEE7destroyEv
@@ -457,23 +457,23 @@ pub fn stub_0xc378d8() -> ! {
 // 0xc37950 — __ZNSt6vectorIN4Ogre24GpuSharedParametersUsageENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEED2Ev
 #[doc(alias = "std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~vector()")]
 #[doc(alias = "__ZNSt6vectorIN4Ogre24GpuSharedParametersUsageENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEED2Ev")]
-pub fn stub_0xc37950() -> ! {
-    todo!("0xc37950 std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~vector()")
+pub fn stub_0xc37950() {
+    // IDA 0xc37950: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc37aa8 — __ZN4Ogre9SharedPtrINS_19GpuSharedParametersEED1Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::GpuSharedParameters>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_19GpuSharedParametersEED1Ev")]
-pub fn stub_0xc37aa8() -> ! {
-    todo!("0xc37aa8 Ogre::SharedPtr<Ogre::GpuSharedParameters>::~SharedPtr()")
+pub fn stub_0xc37aa8() {
+    // IDA 0xc37aa8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc37b00 — __ZN4Ogre3AnyD0Ev
 // type: void __fastcall(Ogre::Any *__hidden this)
 #[doc(alias = "Ogre::Any::~Any()")]
 #[doc(alias = "__ZN4Ogre3AnyD0Ev")]
-pub fn stub_0xc37b00() -> ! {
-    todo!("0xc37b00 Ogre::Any::~Any()")
+pub fn stub_0xc37b00() {
+    // IDA 0xc37b00: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xc37bc8 — __ZNSt8_Rb_treeISsSt4pairIKSsSsESt10_Select1stIS2_ESt4lessISsEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS2_
@@ -532,16 +532,16 @@ pub fn stub_0xc3955c() -> ! {
 // type: void __fastcall(G3D::BinaryInput *__hidden this)
 #[doc(alias = "G3D::BinaryInput::~BinaryInput()")]
 #[doc(alias = "__ZN3G3D11BinaryInputD0Ev")]
-pub fn stub_0xc3978c() -> ! {
-    todo!("0xc3978c G3D::BinaryInput::~BinaryInput()")
+pub fn stub_0xc3978c() {
+    // IDA 0xc3978c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xc398cc — __ZN3G3D11BinaryInputD1Ev
 // type: void __fastcall(G3D::BinaryInput *__hidden this)
 #[doc(alias = "G3D::BinaryInput::~BinaryInput()")]
 #[doc(alias = "__ZN3G3D11BinaryInputD1Ev")]
-pub fn stub_0xc398cc() -> ! {
-    todo!("0xc398cc G3D::BinaryInput::~BinaryInput()")
+pub fn stub_0xc398cc() {
+    // IDA 0xc398cc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc39a04 — __ZN3G3D11BinaryInput10readStringEx
@@ -583,8 +583,8 @@ pub fn stub_0xc3a3e0() -> ! {
 // 0xc3a5e4 — __ZN3G3D5ArrayISsLi10ELm32EED2Ev
 #[doc(alias = "G3D::Array<std::string,10,32ul>::~Array()")]
 #[doc(alias = "__ZN3G3D5ArrayISsLi10ELm32EED2Ev")]
-pub fn stub_0xc3a5e4() -> ! {
-    todo!("0xc3a5e4 G3D::Array<std::string,10,32ul>::~Array()")
+pub fn stub_0xc3a5e4() {
+    // IDA 0xc3a5e4: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc3a760 — __ZN3G3D5ArrayISsLi10ELm32EEC2Ev
@@ -643,23 +643,23 @@ pub fn stub_0xc3b0b0() -> ! {
 // 0xc3b868 — __ZN3G3D5ArrayINS_7Vector3ELi10ELm32EED1Ev
 #[doc(alias = "G3D::Array<G3D::Vector3,10,32ul>::~Array()")]
 #[doc(alias = "__ZN3G3D5ArrayINS_7Vector3ELi10ELm32EED1Ev")]
-pub fn stub_0xc3b868() -> ! {
-    todo!("0xc3b868 G3D::Array<G3D::Vector3,10,32ul>::~Array()")
+pub fn stub_0xc3b868() {
+    // IDA 0xc3b868: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc3b874 — __ZN3G3D11LineSegmentD1Ev
 // type: void __fastcall(G3D::LineSegment *__hidden this)
 #[doc(alias = "G3D::LineSegment::~LineSegment()")]
 #[doc(alias = "__ZN3G3D11LineSegmentD1Ev")]
-pub fn stub_0xc3b874() -> ! {
-    todo!("0xc3b874 G3D::LineSegment::~LineSegment()")
+pub fn stub_0xc3b874() {
+    // IDA 0xc3b874: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc3b878 — __ZN3G3D5ArrayINS_7Vector3ELi10ELm32EED2Ev
 #[doc(alias = "G3D::Array<G3D::Vector3,10,32ul>::~Array()")]
 #[doc(alias = "__ZN3G3D5ArrayINS_7Vector3ELi10ELm32EED2Ev")]
-pub fn stub_0xc3b878() -> ! {
-    todo!("0xc3b878 G3D::Array<G3D::Vector3,10,32ul>::~Array()")
+pub fn stub_0xc3b878() {
+    // IDA 0xc3b878: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc3b998 — __ZN3G3D5ArrayINS_7Vector3ELi10ELm32EEC2Ev
@@ -673,8 +673,8 @@ pub fn stub_0xc3b998() -> ! {
 // type: void __fastcall(G3D::LineSegment *__hidden this)
 #[doc(alias = "G3D::LineSegment::~LineSegment()")]
 #[doc(alias = "__ZN3G3D11LineSegmentD0Ev")]
-pub fn stub_0xc3bb50() -> ! {
-    todo!("0xc3bb50 G3D::LineSegment::~LineSegment()")
+pub fn stub_0xc3bb50() {
+    // IDA 0xc3bb50: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xc3bbcc — __ZN3G3D6Color34zeroEv

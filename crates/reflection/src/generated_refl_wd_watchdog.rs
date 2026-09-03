@@ -95,8 +95,8 @@ pub fn stub_0x2f5990() -> ! {
 // 0x2f5b78 — __ZN3G3D5ArrayImLi10ELm32EED2Ev
 #[doc(alias = "G3D::Array<unsigned long,10,32ul>::~Array()")]
 #[doc(alias = "__ZN3G3D5ArrayImLi10ELm32EED2Ev")]
-pub fn stub_0x2f5b78() -> ! {
-    todo!("0x2f5b78 G3D::Array<unsigned long,10,32ul>::~Array()")
+pub fn stub_0x2f5b78() {
+    // IDA 0x2f5b78: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2f5c4c — __ZN3G3D5ArrayImLi10ELm32EEC2Ev
@@ -228,15 +228,15 @@ pub fn stub_0x2f6ff4() -> ! {
 // 0x2f7134 — __ZN3RBX16BoxSelectCommandD0Ev
 #[doc(alias = "RBX::BoxSelectCommand::~BoxSelectCommand()")]
 #[doc(alias = "__ZN3RBX16BoxSelectCommandD0Ev")]
-pub fn stub_0x2f7134() -> ! {
-    todo!("0x2f7134 RBX::BoxSelectCommand::~BoxSelectCommand()")
+pub fn stub_0x2f7134() {
+    // IDA 0x2f7134: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2f71d4 — __ZN3RBX16BoxSelectCommandD1Ev
 #[doc(alias = "RBX::BoxSelectCommand::~BoxSelectCommand()")]
 #[doc(alias = "__ZN3RBX16BoxSelectCommandD1Ev")]
-pub fn stub_0x2f71d4() -> ! {
-    todo!("0x2f71d4 RBX::BoxSelectCommand::~BoxSelectCommand()")
+pub fn stub_0x2f71d4() {
+    // IDA 0x2f71d4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2f71d8 — __ZThn36_N3RBX16BoxSelectCommandD0Ev
@@ -249,8 +249,8 @@ pub fn stub_0x2f71d8() {
 // 0x2f71e0 — __ZN3RBX16BoxSelectCommandD2Ev
 #[doc(alias = "RBX::BoxSelectCommand::~BoxSelectCommand()")]
 #[doc(alias = "__ZN3RBX16BoxSelectCommandD2Ev")]
-pub fn stub_0x2f71e0() -> ! {
-    todo!("0x2f71e0 RBX::BoxSelectCommand::~BoxSelectCommand()")
+pub fn stub_0x2f71e0() {
+    // IDA 0x2f71e0: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2f7324 — __ZThn36_N3RBX16BoxSelectCommandD1Ev
@@ -463,15 +463,15 @@ pub fn stub_0x2f87d0() -> ! {
 // 0x2f88c8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16BoxSelectCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX16BoxSelectCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")]
-pub fn stub_0x2f88c8() -> ! {
-    todo!("0x2f88c8 boost::detail::sp_counted_impl_pd<RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2f88c8() {
+    // IDA 0x2f88c8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2f88cc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16BoxSelectCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX16BoxSelectCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")]
-pub fn stub_0x2f88cc() -> ! {
-    todo!("0x2f88cc boost::detail::sp_counted_impl_pd<RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2f88cc() {
+    // IDA 0x2f88cc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2f88d0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16BoxSelectCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
@@ -701,22 +701,22 @@ pub fn stub_0x2faf2c() -> ! {
 // 0x2faf68 — __ZN3RBX14AsyncHttpQueueD0Ev
 #[doc(alias = "RBX::AsyncHttpQueue::~AsyncHttpQueue()")]
 #[doc(alias = "__ZN3RBX14AsyncHttpQueueD0Ev")]
-pub fn stub_0x2faf68() -> ! {
-    todo!("0x2faf68 RBX::AsyncHttpQueue::~AsyncHttpQueue()")
+pub fn stub_0x2faf68() {
+    // IDA 0x2faf68: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2fb008 — __ZN3RBX14AsyncHttpQueueD1Ev
 #[doc(alias = "RBX::AsyncHttpQueue::~AsyncHttpQueue()")]
 #[doc(alias = "__ZN3RBX14AsyncHttpQueueD1Ev")]
-pub fn stub_0x2fb008() -> ! {
-    todo!("0x2fb008 RBX::AsyncHttpQueue::~AsyncHttpQueue()")
+pub fn stub_0x2fb008() {
+    // IDA 0x2fb008: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2fb00c — __ZN3RBX14AsyncHttpQueueD2Ev
 #[doc(alias = "RBX::AsyncHttpQueue::~AsyncHttpQueue()")]
 #[doc(alias = "__ZN3RBX14AsyncHttpQueueD2Ev")]
-pub fn stub_0x2fb00c() -> ! {
-    todo!("0x2fb00c RBX::AsyncHttpQueue::~AsyncHttpQueue()")
+pub fn stub_0x2fb00c() {
+    // IDA 0x2fb00c: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2fb2ac — __ZN3RBX14AsyncHttpQueue11onHeartbeatERKNS_9HeartbeatE

@@ -279,8 +279,8 @@ pub fn stub_0xc59bac() -> ! {
 // type: void __fastcall(Ogre::Billboard *__hidden this)
 #[doc(alias = "Ogre::Billboard::~Billboard()")]
 #[doc(alias = "__ZN4Ogre9BillboardD1Ev")]
-pub fn stub_0xc59bfc() -> ! {
-    todo!("0xc59bfc Ogre::Billboard::~Billboard()")
+pub fn stub_0xc59bfc() {
+    // IDA 0xc59bfc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc59c00 — __ZN4Ogre9Billboard11setRotationERKNS_6RadianE
@@ -347,16 +347,16 @@ pub fn stub_0xc59cb8() -> ! {
 // type: void __fastcall(Ogre::BillboardChain *__hidden this)
 #[doc(alias = "Ogre::BillboardChain::~BillboardChain()")]
 #[doc(alias = "__ZN4Ogre14BillboardChainD0Ev")]
-pub fn stub_0xc5a21c() -> ! {
-    todo!("0xc5a21c Ogre::BillboardChain::~BillboardChain()")
+pub fn stub_0xc5a21c() {
+    // IDA 0xc5a21c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xc5a2ac — __ZN4Ogre14BillboardChainD1Ev
 // type: void __fastcall(Ogre::BillboardChain *__hidden this)
 #[doc(alias = "Ogre::BillboardChain::~BillboardChain()")]
 #[doc(alias = "__ZN4Ogre14BillboardChainD1Ev")]
-pub fn stub_0xc5a2ac() -> ! {
-    todo!("0xc5a2ac Ogre::BillboardChain::~BillboardChain()")
+pub fn stub_0xc5a2ac() {
+    // IDA 0xc5a2ac: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc5a2b8 — __ZThn4_N4Ogre14BillboardChainD0Ev
@@ -379,8 +379,8 @@ pub fn stub_0xc5a34c() {
 // type: void __fastcall(Ogre::BillboardChain *__hidden this)
 #[doc(alias = "Ogre::BillboardChain::~BillboardChain()")]
 #[doc(alias = "__ZN4Ogre14BillboardChainD2Ev")]
-pub fn stub_0xc5a3e0() -> ! {
-    todo!("0xc5a3e0 Ogre::BillboardChain::~BillboardChain()")
+pub fn stub_0xc5a3e0() {
+    // IDA 0xc5a3e0: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc5a600 — __ZThn4_N4Ogre14BillboardChainD1Ev
@@ -718,30 +718,30 @@ pub fn stub_0xc5d89c() -> ! {
 // 0xc5dc7c — __ZNSt12_Vector_baseIN4Ogre14BillboardChain12ChainSegmentENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
 #[doc(alias = "std::_Vector_base<Ogre::BillboardChain::ChainSegment,Ogre::STLAllocator<Ogre::BillboardChain::ChainSegment,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIN4Ogre14BillboardChain12ChainSegmentENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")]
-pub fn stub_0xc5dc7c() -> ! {
-    todo!("0xc5dc7c std::_Vector_base<Ogre::BillboardChain::ChainSegment,Ogre::STLAllocator<Ogre::BillboardChain::ChainSegment,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+pub fn stub_0xc5dc7c() {
+    // IDA 0xc5dc7c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc5dc80 — __ZNSt12_Vector_baseIN4Ogre14BillboardChain7ElementENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
 // type: void()
 #[doc(alias = "std::_Vector_base<Ogre::BillboardChain::Element,Ogre::STLAllocator<Ogre::BillboardChain::Element,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIN4Ogre14BillboardChain7ElementENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")]
-pub fn stub_0xc5dc80() -> ! {
-    todo!("0xc5dc80 std::_Vector_base<Ogre::BillboardChain::Element,Ogre::STLAllocator<Ogre::BillboardChain::Element,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+pub fn stub_0xc5dc80() {
+    // IDA 0xc5dc80: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc5dc84 — __ZNSt12_Vector_baseIN4Ogre14BillboardChain12ChainSegmentENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 #[doc(alias = "std::_Vector_base<Ogre::BillboardChain::ChainSegment,Ogre::STLAllocator<Ogre::BillboardChain::ChainSegment,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIN4Ogre14BillboardChain12ChainSegmentENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
-pub fn stub_0xc5dc84() -> ! {
-    todo!("0xc5dc84 std::_Vector_base<Ogre::BillboardChain::ChainSegment,Ogre::STLAllocator<Ogre::BillboardChain::ChainSegment,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+pub fn stub_0xc5dc84() {
+    // IDA 0xc5dc84: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xc5dc90 — __ZNSt12_Vector_baseIN4Ogre14BillboardChain7ElementENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 #[doc(alias = "std::_Vector_base<Ogre::BillboardChain::Element,Ogre::STLAllocator<Ogre::BillboardChain::Element,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIN4Ogre14BillboardChain7ElementENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
-pub fn stub_0xc5dc90() -> ! {
-    todo!("0xc5dc90 std::_Vector_base<Ogre::BillboardChain::Element,Ogre::STLAllocator<Ogre::BillboardChain::Element,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+pub fn stub_0xc5dc90() {
+    // IDA 0xc5dc90: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xc6072c — __ZN4Ogre12BillboardSetC1ERKSsjb
@@ -764,16 +764,16 @@ pub fn stub_0xc60738() -> ! {
 // type: void __fastcall(Ogre::BillboardSet *__hidden this)
 #[doc(alias = "Ogre::BillboardSet::~BillboardSet()")]
 #[doc(alias = "__ZN4Ogre12BillboardSetD0Ev")]
-pub fn stub_0xc60dc0() -> ! {
-    todo!("0xc60dc0 Ogre::BillboardSet::~BillboardSet()")
+pub fn stub_0xc60dc0() {
+    // IDA 0xc60dc0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xc60e50 — __ZN4Ogre12BillboardSetD1Ev
 // type: void __fastcall(Ogre::BillboardSet *__hidden this)
 #[doc(alias = "Ogre::BillboardSet::~BillboardSet()")]
 #[doc(alias = "__ZN4Ogre12BillboardSetD1Ev")]
-pub fn stub_0xc60e50() -> ! {
-    todo!("0xc60e50 Ogre::BillboardSet::~BillboardSet()")
+pub fn stub_0xc60e50() {
+    // IDA 0xc60e50: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc60e5c — __ZThn4_N4Ogre12BillboardSetD0Ev
@@ -796,8 +796,8 @@ pub fn stub_0xc60ef0() {
 // type: void __fastcall(Ogre::BillboardSet *__hidden this)
 #[doc(alias = "Ogre::BillboardSet::~BillboardSet()")]
 #[doc(alias = "__ZN4Ogre12BillboardSetD2Ev")]
-pub fn stub_0xc60f84() -> ! {
-    todo!("0xc60f84 Ogre::BillboardSet::~BillboardSet()")
+pub fn stub_0xc60f84() {
+    // IDA 0xc60f84: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc614d8 — __ZThn4_N4Ogre12BillboardSetD1Ev

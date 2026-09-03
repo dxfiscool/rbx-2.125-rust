@@ -32,8 +32,8 @@ pub fn stub_0xf5cce4() -> ! {
 // 0xf5ccf4 — j___ZN3rbx13remote_signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEED2Ev
 #[doc(alias = "rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::~remote_signal()")]
 #[doc(alias = "j___ZN3rbx13remote_signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEED2Ev")]
-pub fn stub_0xf5ccf4() -> ! {
-    todo!("0xf5ccf4")
+pub fn stub_0xf5ccf4() {
+    // IDA 0xf5ccf4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5cd24 — j___ZN3rbx13remote_signalIFviN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEEC2Ev
@@ -46,8 +46,8 @@ pub fn stub_0xf5cd24() -> ! {
 // 0xf5cd34 — j___ZN3rbx13remote_signalIFviN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEED2Ev
 #[doc(alias = "rbx::remote_signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::~remote_signal()")]
 #[doc(alias = "j___ZN3rbx13remote_signalIFviN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEED2Ev")]
-pub fn stub_0xf5cd34() -> ! {
-    todo!("0xf5cd34")
+pub fn stub_0xf5cd34() {
+    // IDA 0xf5cd34: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5cd84 — j___ZN3rbx7signals16signal_with_argsILi1EFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEEclES8_
@@ -208,8 +208,8 @@ pub fn stub_0xf5d0b4() -> ! {
 // was: boost::scoped_ptr<boost::shared_ptr<RBX::Reflection::Tuple const>>::~scoped_ptr()
 #[doc(alias = "boost::scoped_ptr<rbx_core::SharedPtr<RBX::Reflection::Tuple const>>::~scoped_ptr()")]
 #[doc(alias = "j___ZN5boost10scoped_ptrINS_10shared_ptrIKN3RBX10Reflection5TupleEEEED1Ev")]
-pub fn stub_0xf5d104() -> ! {
-    todo!("0xf5d104")
+pub fn stub_0xf5d104() {
+    // IDA 0xf5d104: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf5d134 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotEEaSEPSC_

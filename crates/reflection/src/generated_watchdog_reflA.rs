@@ -549,8 +549,8 @@ pub fn stub_0xf32984() -> ! {
 // 0xf32994 — j___ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEED2Ev")]
-pub fn stub_0xf32994() -> ! {
-    todo!("0xf32994")
+pub fn stub_0xf32994() {
+    // IDA 0xf32994: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf329a4 — j___ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE7addPairES3_PKc
@@ -563,8 +563,8 @@ pub fn stub_0xf329a4() -> ! {
 // 0xf329b4 — j___ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEED2Ev")]
-pub fn stub_0xf329b4() -> ! {
-    todo!("0xf329b4")
+pub fn stub_0xf329b4() {
+    // IDA 0xf329b4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf329c4 — j___ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE7addPairES3_PKc
@@ -577,8 +577,8 @@ pub fn stub_0xf329c4() -> ! {
 // 0xf329d4 — j___ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEED2Ev")]
-pub fn stub_0xf329d4() -> ! {
-    todo!("0xf329d4")
+pub fn stub_0xf329d4() {
+    // IDA 0xf329d4: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf329e4 — j___ZN3RBX10Reflection9ArgHelper6getArgIN3G3D15CoordinateFrameELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
@@ -815,8 +815,8 @@ pub fn stub_0xf33024() -> ! {
 // 0xf33034 — j___ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::~EnumDesc()")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEED2Ev")]
-pub fn stub_0xf33034() -> ! {
-    todo!("0xf33034")
+pub fn stub_0xf33034() {
+    // IDA 0xf33034: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf33104 — j___ZN3RBX20ChangeHistoryService4Item14recordPropertyEPKNS_10Reflection18PropertyDescriptorE

@@ -290,8 +290,8 @@ pub fn stub_0xf57564() -> ! {
 
 // 0xf57574 — j___ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFviiiNS_5Voxel12CellMaterialENS3_9CellBlockENS3_15CellOrientationEELi6EED2Ev
 #[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFviiiNS_5Voxel12CellMaterialENS3_9CellBlockENS3_15CellOrientationEELi6EED2Ev")]
-pub fn stub_0xf57574() -> ! {
-    todo!("0xf57574 j___ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFviiiNS_5Voxel12CellMaterialENS3_9CellBlockENS3_15CellOrientationEELi6EED2Ev")
+pub fn stub_0xf57574() {
+    // IDA 0xf57574: jump stub to the D2 base destructor (verified pattern: straight branch; e.g. 0xf3b144 family). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf57584 — j___ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFviiiNS_5Voxel14WaterCellForceENS3_18WaterCellDirectionEELi5EE16declareSignatureEPKcNS0_7VariantES9_SA_S9_SA_S9_SA_S9_SA_

@@ -162,23 +162,23 @@ pub fn stub_0xe50004() -> ! {
 // type: void __fastcall(Ogre::UnifiedHighLevelGpuProgramFactory *__hidden this)
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgramFactory::~UnifiedHighLevelGpuProgramFactory()")]
 #[doc(alias = "__ZN4Ogre33UnifiedHighLevelGpuProgramFactoryD0Ev")]
-pub fn stub_0xe50014() -> ! {
-    todo!("0xe50014 Ogre::UnifiedHighLevelGpuProgramFactory::~UnifiedHighLevelGpuProgramFactory()")
+pub fn stub_0xe50014() {
+    // IDA 0xe50014: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xe59934 — __ZNSt10_List_baseIPN4Ogre9WorkQueue15ResponseHandlerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev
 #[doc(alias = "std::_List_base<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
 #[doc(alias = "__ZNSt10_List_baseIPN4Ogre9WorkQueue15ResponseHandlerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev")]
-pub fn stub_0xe59934() -> ! {
-    todo!("0xe59934 std::_List_base<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")
+pub fn stub_0xe59934() {
+    // IDA 0xe59934: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe59938 — __ZNSt10_List_baseIPN4Ogre9WorkQueue15ResponseHandlerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "std::_List_base<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
 #[doc(alias = "__ZNSt10_List_baseIPN4Ogre9WorkQueue15ResponseHandlerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev")]
-pub fn stub_0xe59938() -> ! {
-    todo!("0xe59938 std::_List_base<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")
+pub fn stub_0xe59938() {
+    // IDA 0xe59938: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xe59ad4 — __ZNSt8_Rb_treeItSt4pairIKtSt4listIN4Ogre9SharedPtrINS3_20DefaultWorkQueueBase20RequestHandlerHolderEEENS3_12STLAllocatorIS7_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ESt4lessItENS8_ISE_SB_EEE16_M_insert_uniqueERKSE_
@@ -200,43 +200,43 @@ pub fn stub_0xe59b40() -> ! {
 // 0xe59c78 — __ZNSt11_Deque_baseIPN4Ogre9WorkQueue8ResponseENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE11_Deque_implD1Ev
 #[doc(alias = "std::_Deque_base<Ogre::WorkQueue::Response *,Ogre::STLAllocator<Ogre::WorkQueue::Response *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()")]
 #[doc(alias = "__ZNSt11_Deque_baseIPN4Ogre9WorkQueue8ResponseENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE11_Deque_implD1Ev")]
-pub fn stub_0xe59c78() -> ! {
-    todo!("0xe59c78 std::_Deque_base<Ogre::WorkQueue::Response *,Ogre::STLAllocator<Ogre::WorkQueue::Response *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()")
+pub fn stub_0xe59c78() {
+    // IDA 0xe59c78: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe59c7c — __ZNSt11_Deque_baseIPN4Ogre9WorkQueue7RequestENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE11_Deque_implD1Ev
 #[doc(alias = "std::_Deque_base<Ogre::WorkQueue::Request *,Ogre::STLAllocator<Ogre::WorkQueue::Request *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()")]
 #[doc(alias = "__ZNSt11_Deque_baseIPN4Ogre9WorkQueue7RequestENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE11_Deque_implD1Ev")]
-pub fn stub_0xe59c7c() -> ! {
-    todo!("0xe59c7c std::_Deque_base<Ogre::WorkQueue::Request *,Ogre::STLAllocator<Ogre::WorkQueue::Request *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()")
+pub fn stub_0xe59c7c() {
+    // IDA 0xe59c7c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe59c80 — __ZNSt8_Rb_treeItSt4pairIKtSt4listIPN4Ogre9WorkQueue15ResponseHandlerENS3_12STLAllocatorIS6_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISD_ESt4lessItENS7_ISD_SA_EEE13_Rb_tree_implISH_Lb0EED1Ev
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtSt4listIPN4Ogre9WorkQueue15ResponseHandlerENS3_12STLAllocatorIS6_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISD_ESt4lessItENS7_ISD_SA_EEE13_Rb_tree_implISH_Lb0EED1Ev")]
-pub fn stub_0xe59c80() -> ! {
-    todo!("0xe59c80 std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+pub fn stub_0xe59c80() {
+    // IDA 0xe59c80: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe59c84 — __ZNSt8_Rb_treeItSt4pairIKtSt4listIPN4Ogre9WorkQueue15ResponseHandlerENS3_12STLAllocatorIS6_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISD_ESt4lessItENS7_ISD_SA_EEE13_Rb_tree_implISH_Lb0EED0Ev
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtSt4listIPN4Ogre9WorkQueue15ResponseHandlerENS3_12STLAllocatorIS6_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISD_ESt4lessItENS7_ISD_SA_EEE13_Rb_tree_implISH_Lb0EED0Ev")]
-pub fn stub_0xe59c84() -> ! {
-    todo!("0xe59c84 std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+pub fn stub_0xe59c84() {
+    // IDA 0xe59c84: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xe59c90 — __ZNSt8_Rb_treeItSt4pairIKtSt4listIN4Ogre9SharedPtrINS3_20DefaultWorkQueueBase20RequestHandlerHolderEEENS3_12STLAllocatorIS7_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ESt4lessItENS8_ISE_SB_EEE13_Rb_tree_implISI_Lb0EED1Ev
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtSt4listIN4Ogre9SharedPtrINS3_20DefaultWorkQueueBase20RequestHandlerHolderEEENS3_12STLAllocatorIS7_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ESt4lessItENS8_ISE_SB_EEE13_Rb_tree_implISI_Lb0EED1Ev")]
-pub fn stub_0xe59c90() -> ! {
-    todo!("0xe59c90 std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+pub fn stub_0xe59c90() {
+    // IDA 0xe59c90: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe59c94 — __ZNSt8_Rb_treeItSt4pairIKtSt4listIN4Ogre9SharedPtrINS3_20DefaultWorkQueueBase20RequestHandlerHolderEEENS3_12STLAllocatorIS7_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ESt4lessItENS8_ISE_SB_EEE13_Rb_tree_implISI_Lb0EED0Ev
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtSt4listIN4Ogre9SharedPtrINS3_20DefaultWorkQueueBase20RequestHandlerHolderEEENS3_12STLAllocatorIS7_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ESt4lessItENS8_ISE_SB_EEE13_Rb_tree_implISI_Lb0EED0Ev")]
-pub fn stub_0xe59c94() -> ! {
-    todo!("0xe59c94 std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+pub fn stub_0xe59c94() {
+    // IDA 0xe59c94: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xe59ca0 — __ZNSt11_Deque_baseIPN4Ogre9WorkQueue8ResponseENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE17_M_initialize_mapEm
@@ -250,8 +250,8 @@ pub fn stub_0xe59ca0() -> ! {
 // 0xe59e70 — __ZNSt11_Deque_baseIPN4Ogre9WorkQueue8ResponseENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE11_Deque_implD0Ev
 #[doc(alias = "std::_Deque_base<Ogre::WorkQueue::Response *,Ogre::STLAllocator<Ogre::WorkQueue::Response *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()")]
 #[doc(alias = "__ZNSt11_Deque_baseIPN4Ogre9WorkQueue8ResponseENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE11_Deque_implD0Ev")]
-pub fn stub_0xe59e70() -> ! {
-    todo!("0xe59e70 std::_Deque_base<Ogre::WorkQueue::Response *,Ogre::STLAllocator<Ogre::WorkQueue::Response *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()")
+pub fn stub_0xe59e70() {
+    // IDA 0xe59e70: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xe59e7c — __ZNSt11_Deque_baseIPN4Ogre9WorkQueue7RequestENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE17_M_initialize_mapEm
@@ -265,8 +265,8 @@ pub fn stub_0xe59e7c() -> ! {
 // 0xe5a04c — __ZNSt11_Deque_baseIPN4Ogre9WorkQueue7RequestENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE11_Deque_implD0Ev
 #[doc(alias = "std::_Deque_base<Ogre::WorkQueue::Request *,Ogre::STLAllocator<Ogre::WorkQueue::Request *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()")]
 #[doc(alias = "__ZNSt11_Deque_baseIPN4Ogre9WorkQueue7RequestENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE11_Deque_implD0Ev")]
-pub fn stub_0xe5a04c() -> ! {
-    todo!("0xe5a04c std::_Deque_base<Ogre::WorkQueue::Request *,Ogre::STLAllocator<Ogre::WorkQueue::Request *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()")
+pub fn stub_0xe5a04c() {
+    // IDA 0xe5a04c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xe5a328 — __ZNSt8_Rb_treeItSt4pairIKtSt4listIPN4Ogre9WorkQueue15ResponseHandlerENS3_12STLAllocatorIS6_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISD_ESt4lessItENS7_ISD_SA_EEE8_M_eraseEPSt13_Rb_tree_nodeISD_E
@@ -288,24 +288,24 @@ pub fn stub_0xe5a4a4() -> ! {
 // type: void __fastcall(Ogre::ZipArchive *__hidden this)
 #[doc(alias = "Ogre::ZipArchive::~ZipArchive()")]
 #[doc(alias = "__ZN4Ogre10ZipArchiveD0Ev")]
-pub fn stub_0xe5a5e0() -> ! {
-    todo!("0xe5a5e0 Ogre::ZipArchive::~ZipArchive()")
+pub fn stub_0xe5a5e0() {
+    // IDA 0xe5a5e0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xe5a670 — __ZN4Ogre10ZipArchiveD1Ev
 // type: void __fastcall(Ogre::ZipArchive *__hidden this)
 #[doc(alias = "Ogre::ZipArchive::~ZipArchive()")]
 #[doc(alias = "__ZN4Ogre10ZipArchiveD1Ev")]
-pub fn stub_0xe5a670() -> ! {
-    todo!("0xe5a670 Ogre::ZipArchive::~ZipArchive()")
+pub fn stub_0xe5a670() {
+    // IDA 0xe5a670: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe5a67c — __ZN4Ogre10ZipArchiveD2Ev
 // type: void __fastcall(Ogre::ZipArchive *__hidden this)
 #[doc(alias = "Ogre::ZipArchive::~ZipArchive()")]
 #[doc(alias = "__ZN4Ogre10ZipArchiveD2Ev")]
-pub fn stub_0xe5a67c() -> ! {
-    todo!("0xe5a67c Ogre::ZipArchive::~ZipArchive()")
+pub fn stub_0xe5a67c() {
+    // IDA 0xe5a67c: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe5a8c4 — __ZN4Ogre10ZipArchive4loadEv
@@ -405,24 +405,24 @@ pub fn stub_0xe5c72c() -> ! {
 // type: void __fastcall(Ogre::ZipDataStream *__hidden this)
 #[doc(alias = "Ogre::ZipDataStream::~ZipDataStream()")]
 #[doc(alias = "__ZN4Ogre13ZipDataStreamD0Ev")]
-pub fn stub_0xe5c748() -> ! {
-    todo!("0xe5c748 Ogre::ZipDataStream::~ZipDataStream()")
+pub fn stub_0xe5c748() {
+    // IDA 0xe5c748: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xe5c7d8 — __ZN4Ogre13ZipDataStreamD1Ev
 // type: void __fastcall(Ogre::ZipDataStream *__hidden this)
 #[doc(alias = "Ogre::ZipDataStream::~ZipDataStream()")]
 #[doc(alias = "__ZN4Ogre13ZipDataStreamD1Ev")]
-pub fn stub_0xe5c7d8() -> ! {
-    todo!("0xe5c7d8 Ogre::ZipDataStream::~ZipDataStream()")
+pub fn stub_0xe5c7d8() {
+    // IDA 0xe5c7d8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe5c7e4 — __ZN4Ogre13ZipDataStreamD2Ev
 // type: void __fastcall(Ogre::ZipDataStream *__hidden this)
 #[doc(alias = "Ogre::ZipDataStream::~ZipDataStream()")]
 #[doc(alias = "__ZN4Ogre13ZipDataStreamD2Ev")]
-pub fn stub_0xe5c7e4() -> ! {
-    todo!("0xe5c7e4 Ogre::ZipDataStream::~ZipDataStream()")
+pub fn stub_0xe5c7e4() {
+    // IDA 0xe5c7e4: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe5c944 — __ZN4Ogre13ZipDataStream4readEPvm
@@ -541,16 +541,16 @@ pub fn stub_0xe5d0fc() -> ! {
 // type: void __fastcall(Ogre::EmbeddedZipArchiveFactory *__hidden this)
 #[doc(alias = "Ogre::EmbeddedZipArchiveFactory::~EmbeddedZipArchiveFactory()")]
 #[doc(alias = "__ZN4Ogre25EmbeddedZipArchiveFactoryD0Ev")]
-pub fn stub_0xe5d184() -> ! {
-    todo!("0xe5d184 Ogre::EmbeddedZipArchiveFactory::~EmbeddedZipArchiveFactory()")
+pub fn stub_0xe5d184() {
+    // IDA 0xe5d184: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xe5d210 — __ZN4Ogre25EmbeddedZipArchiveFactoryD1Ev
 // type: void __fastcall(Ogre::EmbeddedZipArchiveFactory *__hidden this)
 #[doc(alias = "Ogre::EmbeddedZipArchiveFactory::~EmbeddedZipArchiveFactory()")]
 #[doc(alias = "__ZN4Ogre25EmbeddedZipArchiveFactoryD1Ev")]
-pub fn stub_0xe5d210() -> ! {
-    todo!("0xe5d210 Ogre::EmbeddedZipArchiveFactory::~EmbeddedZipArchiveFactory()")
+pub fn stub_0xe5d210() {
+    // IDA 0xe5d210: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe5d214 — __ZNK4Ogre25EmbeddedZipArchiveFactory7getTypeEv
@@ -564,8 +564,8 @@ pub fn stub_0xe5d214() -> ! {
 // 0xe5d30c — __ZN4Ogre12STLAllocatorINS_8FileInfoENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED1Ev
 #[doc(alias = "Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")]
 #[doc(alias = "__ZN4Ogre12STLAllocatorINS_8FileInfoENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED1Ev")]
-pub fn stub_0xe5d30c() -> ! {
-    todo!("0xe5d30c Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")
+pub fn stub_0xe5d30c() {
+    // IDA 0xe5d30c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe5d310 — __ZNSt6vectorIN4Ogre8FileInfoENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE9push_backERKS1_
@@ -579,23 +579,23 @@ pub fn stub_0xe5d310() -> ! {
 // 0xe5d4a4 — __ZN4Ogre9SharedPtrISt6vectorINS_8FileInfoENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED1Ev
 #[doc(alias = "Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrISt6vectorINS_8FileInfoENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED1Ev")]
-pub fn stub_0xe5d4a4() -> ! {
-    todo!("0xe5d4a4 Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")
+pub fn stub_0xe5d4a4() {
+    // IDA 0xe5d4a4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe5d554 — __ZN4Ogre9SharedPtrISt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED1Ev
 #[doc(alias = "Ogre::SharedPtr<std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrISt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED1Ev")]
-pub fn stub_0xe5d554() -> ! {
-    todo!("0xe5d554 Ogre::SharedPtr<std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")
+pub fn stub_0xe5d554() {
+    // IDA 0xe5d554: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe5d604 — __ZN4Ogre22InternalErrorExceptionD1Ev
 // type: void __fastcall(Ogre::InternalErrorException *__hidden this)
 #[doc(alias = "Ogre::InternalErrorException::~InternalErrorException()")]
 #[doc(alias = "__ZN4Ogre22InternalErrorExceptionD1Ev")]
-pub fn stub_0xe5d604() -> ! {
-    todo!("0xe5d604 Ogre::InternalErrorException::~InternalErrorException()")
+pub fn stub_0xe5d604() {
+    // IDA 0xe5d604: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe5d610 — __ZNK4Ogre10ZipArchive15isCaseSensitiveEv
@@ -649,8 +649,8 @@ pub fn stub_0xe5d84c() -> ! {
 // 0xe5d8f0 — __ZN4Ogre9SharedPtrISt6vectorINS_8FileInfoENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED0Ev
 #[doc(alias = "Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrISt6vectorINS_8FileInfoENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED0Ev")]
-pub fn stub_0xe5d8f0() -> ! {
-    todo!("0xe5d8f0 Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")
+pub fn stub_0xe5d8f0() {
+    // IDA 0xe5d8f0: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xe5d9a4 — __ZN4Ogre9SharedPtrISt6vectorINS_8FileInfoENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEE7destroyEv
@@ -670,8 +670,8 @@ pub fn stub_0xe5dac0() -> ! {
 // 0xe5dadc — __ZN4Ogre9SharedPtrISt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED0Ev
 #[doc(alias = "Ogre::SharedPtr<std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrISt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED0Ev")]
-pub fn stub_0xe5dadc() -> ! {
-    todo!("0xe5dadc Ogre::SharedPtr<std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")
+pub fn stub_0xe5dadc() {
+    // IDA 0xe5dadc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xe5db90 — __ZN4Ogre9SharedPtrISt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEE7destroyEv
@@ -692,8 +692,8 @@ pub fn stub_0xe5dd2c() -> ! {
 // 0xe5dd48 — __ZN4Ogre12STLAllocatorINS_8FileInfoENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED0Ev
 #[doc(alias = "Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")]
 #[doc(alias = "__ZN4Ogre12STLAllocatorINS_8FileInfoENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED0Ev")]
-pub fn stub_0xe5dd48() -> ! {
-    todo!("0xe5dd48 Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")
+pub fn stub_0xe5dd48() {
+    // IDA 0xe5dd48: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xe5dd54 — __ZN4Ogre12STLAllocatorINS_8FileInfoENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEE7destroyEPS1_
@@ -724,47 +724,47 @@ pub fn stub_0xe5e4b8() -> ! {
 // type: void()
 #[doc(alias = "std::_Vector_base<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIN4Ogre8FileInfoENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")]
-pub fn stub_0xe5e6d8() -> ! {
-    todo!("0xe5e6d8 std::_Vector_base<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+pub fn stub_0xe5e6d8() {
+    // IDA 0xe5e6d8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe5e6dc — __ZNSt12_Vector_baseIN4Ogre8FileInfoENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 #[doc(alias = "std::_Vector_base<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIN4Ogre8FileInfoENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
-pub fn stub_0xe5e6dc() -> ! {
-    todo!("0xe5e6dc std::_Vector_base<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+pub fn stub_0xe5e6dc() {
+    // IDA 0xe5e6dc: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xe5e6e8 — __ZN4Ogre10DataStreamD1Ev
 // type: void __fastcall(Ogre::DataStream *__hidden this)
 #[doc(alias = "Ogre::DataStream::~DataStream()")]
 #[doc(alias = "__ZN4Ogre10DataStreamD1Ev")]
-pub fn stub_0xe5e6e8() -> ! {
-    todo!("0xe5e6e8 Ogre::DataStream::~DataStream()")
+pub fn stub_0xe5e6e8() {
+    // IDA 0xe5e6e8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe5e744 — __ZN4Ogre10DataStreamD0Ev
 // type: void __fastcall(Ogre::DataStream *__hidden this)
 #[doc(alias = "Ogre::DataStream::~DataStream()")]
 #[doc(alias = "__ZN4Ogre10DataStreamD0Ev")]
-pub fn stub_0xe5e744() -> ! {
-    todo!("0xe5e744 Ogre::DataStream::~DataStream()")
+pub fn stub_0xe5e744() {
+    // IDA 0xe5e744: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xe5e820 — __ZN4Ogre7ArchiveD1Ev
 // type: void __fastcall(Ogre::Archive *__hidden this)
 #[doc(alias = "Ogre::Archive::~Archive()")]
 #[doc(alias = "__ZN4Ogre7ArchiveD1Ev")]
-pub fn stub_0xe5e820() -> ! {
-    todo!("0xe5e820 Ogre::Archive::~Archive()")
+pub fn stub_0xe5e820() {
+    // IDA 0xe5e820: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe5e8b8 — __ZN4Ogre7ArchiveD0Ev
 // type: void __fastcall(Ogre::Archive *__hidden this)
 #[doc(alias = "Ogre::Archive::~Archive()")]
 #[doc(alias = "__ZN4Ogre7ArchiveD0Ev")]
-pub fn stub_0xe5e8b8() -> ! {
-    todo!("0xe5e8b8 Ogre::Archive::~Archive()")
+pub fn stub_0xe5e8b8() {
+    // IDA 0xe5e8b8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xe5e9cc — __ZNK4Ogre7Archive6createERKSs
@@ -803,8 +803,8 @@ pub fn stub_0xe5ee58() -> ! {
 // type: void __fastcall(Ogre::Timer *__hidden this)
 #[doc(alias = "Ogre::Timer::~Timer()")]
 #[doc(alias = "__ZN4Ogre5TimerD1Ev")]
-pub fn stub_0xe5ee70() -> ! {
-    todo!("0xe5ee70 Ogre::Timer::~Timer()")
+pub fn stub_0xe5ee70() {
+    // IDA 0xe5ee70: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe5ee78 — __ZN4Ogre5Timer15getMillisecondsEv
@@ -835,24 +835,24 @@ pub fn stub_0xe629ec() -> ! {
 // type: void __fastcall(Ogre::DepthBuffer *__hidden this)
 #[doc(alias = "Ogre::DepthBuffer::~DepthBuffer()")]
 #[doc(alias = "__ZN4Ogre11DepthBufferD0Ev")]
-pub fn stub_0xe62a50() -> ! {
-    todo!("0xe62a50 Ogre::DepthBuffer::~DepthBuffer()")
+pub fn stub_0xe62a50() {
+    // IDA 0xe62a50: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xe62ae0 — __ZN4Ogre11DepthBufferD1Ev
 // type: void __fastcall(Ogre::DepthBuffer *__hidden this)
 #[doc(alias = "Ogre::DepthBuffer::~DepthBuffer()")]
 #[doc(alias = "__ZN4Ogre11DepthBufferD1Ev")]
-pub fn stub_0xe62ae0() -> ! {
-    todo!("0xe62ae0 Ogre::DepthBuffer::~DepthBuffer()")
+pub fn stub_0xe62ae0() {
+    // IDA 0xe62ae0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe62aec — __ZN4Ogre11DepthBufferD2Ev
 // type: void __fastcall(Ogre::DepthBuffer *__hidden this)
 #[doc(alias = "Ogre::DepthBuffer::~DepthBuffer()")]
 #[doc(alias = "__ZN4Ogre11DepthBufferD2Ev")]
-pub fn stub_0xe62aec() -> ! {
-    todo!("0xe62aec Ogre::DepthBuffer::~DepthBuffer()")
+pub fn stub_0xe62aec() {
+    // IDA 0xe62aec: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xe62ca0 — __ZN4Ogre11DepthBuffer10_setPoolIdEt

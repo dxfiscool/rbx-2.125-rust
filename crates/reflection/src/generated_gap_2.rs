@@ -506,16 +506,16 @@ pub fn stub_0x29b38c() -> ! {
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
 #[doc(alias = "RBX::ScriptContext::~ScriptContext()")]
 #[doc(alias = "__ZN3RBX13ScriptContextD0Ev")]
-pub fn stub_0x29bc44() -> ! {
-    todo!("0x29bc44 RBX::ScriptContext::~ScriptContext()")
+pub fn stub_0x29bc44() {
+    // IDA 0x29bc44: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x29bce4 — __ZN3RBX13ScriptContextD1Ev
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
 #[doc(alias = "RBX::ScriptContext::~ScriptContext()")]
 #[doc(alias = "__ZN3RBX13ScriptContextD1Ev")]
-pub fn stub_0x29bce4() -> ! {
-    todo!("0x29bce4 RBX::ScriptContext::~ScriptContext()")
+pub fn stub_0x29bce4() {
+    // IDA 0x29bce4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x29bce8 — __ZThn32_N3RBX13ScriptContextD0Ev
@@ -538,8 +538,8 @@ pub fn stub_0x29bcf0() {
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
 #[doc(alias = "RBX::ScriptContext::~ScriptContext()")]
 #[doc(alias = "__ZN3RBX13ScriptContextD2Ev")]
-pub fn stub_0x29bcf8() -> ! {
-    todo!("0x29bcf8 RBX::ScriptContext::~ScriptContext()")
+pub fn stub_0x29bcf8() {
+    // IDA 0x29bcf8: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x29c364 — __ZThn32_N3RBX13ScriptContextD1Ev
@@ -851,8 +851,8 @@ pub fn stub_0x2a36f8() -> ! {
 // type: void __fastcall(LuaProfiler::StringCache *__hidden this)
 #[doc(alias = "LuaProfiler::StringCache::~StringCache()")]
 #[doc(alias = "__ZN11LuaProfiler11StringCacheD1Ev")]
-pub fn stub_0x2a383c() -> ! {
-    todo!("0x2a383c LuaProfiler::StringCache::~StringCache()")
+pub fn stub_0x2a383c() {
+    // IDA 0x2a383c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2a3c4c — __ZN11LuaProfiler8hookCallEP9lua_StateP9lua_Debug

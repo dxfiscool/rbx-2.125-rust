@@ -197,16 +197,16 @@ pub fn stub_24efe0() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED1Ev")]
-pub fn stub_24f0d8() -> ! {
-    todo!("0x24f0d8 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")
+pub fn stub_24f0d8() {
+    // IDA 0x24f0d8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x24f190 — __ZN5boost16exception_detail19error_info_injectorISt12length_errorED1Ev
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorISt12length_errorED1Ev")]
-pub fn stub_24f190() -> ! {
-    todo!("0x24f190 boost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()")
+pub fn stub_24f190() {
+    // IDA 0x24f190: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x24f248 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEEC1ERKS5_
@@ -300,8 +300,8 @@ pub fn stub_24fdac() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data<boost::function0<void>>>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_9function0IvEEEEED0Ev")]
-pub fn stub_24ff48() -> ! {
-    todo!("0x24ff48 boost::detail::sp_counted_impl_p<boost::detail::thread_data<boost::function0<void>>>::~sp_counted_impl_p()")
+pub fn stub_24ff48() {
+    // IDA 0x24ff48: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x24ff58 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler6ThreadEE22_internal_accept_ownerIS3_S3_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -323,24 +323,24 @@ pub fn stub_2500b0() -> ! {
 // 0x2501bc — __ZN3RBX13TaskScheduler6ThreadD2Ev
 #[doc(alias = "RBX::TaskScheduler::Thread::~Thread()")]
 #[doc(alias = "__ZN3RBX13TaskScheduler6ThreadD2Ev")]
-pub fn stub_2501bc() -> ! {
-    todo!("0x2501bc RBX::TaskScheduler::Thread::~Thread()")
+pub fn stub_2501bc() {
+    // IDA 0x2501bc: D2 base-object destructor: destroy members in place, no delete (decompiled 0x111270 PluginList map-node loop, 0x35bfec NameMap, 0xdc29cc Ogre::SceneNode; 0x4a15b0 EnumDesc). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2503f4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13TaskScheduler6ThreadEED1Ev
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::TaskScheduler::Thread>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX13TaskScheduler6ThreadEED1Ev")]
-pub fn stub_2503f4() -> ! {
-    todo!("0x2503f4 boost::detail::sp_counted_impl_p<RBX::TaskScheduler::Thread>::~sp_counted_impl_p()")
+pub fn stub_2503f4() {
+    // IDA 0x2503f4: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2503f8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13TaskScheduler6ThreadEED0Ev
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::TaskScheduler::Thread>::~sp_counted_impl_p()")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX13TaskScheduler6ThreadEED0Ev")]
-pub fn stub_2503f8() -> ! {
-    todo!("0x2503f8 boost::detail::sp_counted_impl_p<RBX::TaskScheduler::Thread>::~sp_counted_impl_p()")
+pub fn stub_2503f8() {
+    // IDA 0x2503f8: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x250404 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13TaskScheduler6ThreadEE7disposeEv
@@ -395,16 +395,16 @@ pub fn stub_2506f8() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorISt13runtime_errorEEED1Ev")]
-pub fn stub_250848() -> ! {
-    todo!("0x250848 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::~clone_impl()")
+pub fn stub_250848() {
+    // IDA 0x250848: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x250900 — __ZN5boost16exception_detail19error_info_injectorISt13runtime_errorED1Ev
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::exception_detail::error_info_injector<std::runtime_error>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorISt13runtime_errorED1Ev")]
-pub fn stub_250900() -> ! {
-    todo!("0x250900 boost::exception_detail::error_info_injector<std::runtime_error>::~error_info_injector()")
+pub fn stub_250900() {
+    // IDA 0x250900: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2509b8 — __ZThn8_N5boost16exception_detail19error_info_injectorISt13runtime_errorED1Ev
@@ -427,8 +427,8 @@ pub fn stub_250a70() {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt13runtime_errorEEED1Ev")]
-pub fn stub_250b28() -> ! {
-    todo!("0x250b28 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::~clone_impl()")
+pub fn stub_250b28() {
+    // IDA 0x250b28: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x250bf8 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorISt13runtime_errorEEE5cloneEv
@@ -451,8 +451,8 @@ pub fn stub_250cb8() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::exception_detail::error_info_injector<std::runtime_error>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorISt13runtime_errorED0Ev")]
-pub fn stub_250d80() -> ! {
-    todo!("0x250d80 boost::exception_detail::error_info_injector<std::runtime_error>::~error_info_injector()")
+pub fn stub_250d80() {
+    // IDA 0x250d80: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x250e40 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorISt13runtime_errorEEEC1ERKS5_NS5_9clone_tagE
@@ -475,8 +475,8 @@ pub fn stub_250fc8() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::gregorian::bad_day_of_month::~bad_day_of_month()")]
 #[doc(alias = "__ZN5boost9gregorian16bad_day_of_monthD1Ev")]
-pub fn stub_25104c() -> ! {
-    todo!("0x25104c boost::gregorian::bad_day_of_month::~bad_day_of_month()")
+pub fn stub_25104c() {
+    // IDA 0x25104c: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x251058 — __ZN5boost9gregorian16bad_day_of_monthC2Ev
@@ -491,16 +491,16 @@ pub fn stub_251058() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian16bad_day_of_monthEEEED1Ev")]
-pub fn stub_2511a0() -> ! {
-    todo!("0x2511a0 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>>::~clone_impl()")
+pub fn stub_2511a0() {
+    // IDA 0x2511a0: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x251258 — __ZN5boost16exception_detail19error_info_injectorINS_9gregorian16bad_day_of_monthEED1Ev
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_9gregorian16bad_day_of_monthEED1Ev")]
-pub fn stub_251258() -> ! {
-    todo!("0x251258 boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>::~error_info_injector()")
+pub fn stub_251258() {
+    // IDA 0x251258: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x251310 — __ZThn8_N5boost16exception_detail19error_info_injectorINS_9gregorian16bad_day_of_monthEED1Ev
@@ -523,8 +523,8 @@ pub fn stub_2513c8() {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian16bad_day_of_monthEEEED1Ev")]
-pub fn stub_251480() -> ! {
-    todo!("0x251480 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>>::~clone_impl()")
+pub fn stub_251480() {
+    // IDA 0x251480: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x251550 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian16bad_day_of_monthEEEE5cloneEv
@@ -563,16 +563,16 @@ pub fn stub_25178c() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian16bad_day_of_monthEEEED0Ev")]
-pub fn stub_25179c() -> ! {
-    todo!("0x25179c virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>>::~clone_impl()")
+pub fn stub_25179c() {
+    // IDA 0x25179c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x251870 — __ZN5boost16exception_detail19error_info_injectorINS_9gregorian16bad_day_of_monthEED0Ev
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_9gregorian16bad_day_of_monthEED0Ev")]
-pub fn stub_251870() -> ! {
-    todo!("0x251870 boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>::~error_info_injector()")
+pub fn stub_251870() {
+    // IDA 0x251870: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x25192c — __ZThn8_N5boost16exception_detail19error_info_injectorINS_9gregorian16bad_day_of_monthEED0Ev
@@ -627,24 +627,24 @@ pub fn stub_251ee8() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::gregorian::bad_month::~bad_month()")]
 #[doc(alias = "__ZN5boost9gregorian9bad_monthD0Ev")]
-pub fn stub_25202c() -> ! {
-    todo!("0x25202c boost::gregorian::bad_month::~bad_month()")
+pub fn stub_25202c() {
+    // IDA 0x25202c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x252040 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEED1Ev
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEED1Ev")]
-pub fn stub_252040() -> ! {
-    todo!("0x252040 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::~clone_impl()")
+pub fn stub_252040() {
+    // IDA 0x252040: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2520f8 — __ZN5boost16exception_detail19error_info_injectorINS_9gregorian9bad_monthEED1Ev
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::gregorian::bad_month>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_9gregorian9bad_monthEED1Ev")]
-pub fn stub_2520f8() -> ! {
-    todo!("0x2520f8 boost::exception_detail::error_info_injector<boost::gregorian::bad_month>::~error_info_injector()")
+pub fn stub_2520f8() {
+    // IDA 0x2520f8: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2521b0 — __ZThn8_N5boost16exception_detail19error_info_injectorINS_9gregorian9bad_monthEED1Ev
@@ -667,16 +667,16 @@ pub fn stub_252268() {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEED1Ev")]
-pub fn stub_252320() -> ! {
-    todo!("0x252320 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::~clone_impl()")
+pub fn stub_252320() {
+    // IDA 0x252320: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2523ec — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEED0Ev
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEED0Ev")]
-pub fn stub_2523ec() -> ! {
-    todo!("0x2523ec boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::~clone_impl()")
+pub fn stub_2523ec() {
+    // IDA 0x2523ec: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2524a8 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEE5cloneEv
@@ -715,8 +715,8 @@ pub fn stub_2526e0() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::gregorian::bad_month>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_9gregorian9bad_monthEED0Ev")]
-pub fn stub_252820() -> ! {
-    todo!("0x252820 boost::exception_detail::error_info_injector<boost::gregorian::bad_month>::~error_info_injector()")
+pub fn stub_252820() {
+    // IDA 0x252820: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2528e0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEEC1ERKS6_NS6_9clone_tagE
@@ -739,8 +739,8 @@ pub fn stub_252a78() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::gregorian::bad_year::~bad_year()")]
 #[doc(alias = "__ZN5boost9gregorian8bad_yearD1Ev")]
-pub fn stub_252afc() -> ! {
-    todo!("0x252afc boost::gregorian::bad_year::~bad_year()")
+pub fn stub_252afc() {
+    // IDA 0x252afc: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x252b08 — __ZN5boost9gregorian8bad_yearC2Ev
@@ -755,16 +755,16 @@ pub fn stub_252b08() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEED1Ev")]
-pub fn stub_252c50() -> ! {
-    todo!("0x252c50 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()")
+pub fn stub_252c50() {
+    // IDA 0x252c50: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x252d08 — __ZN5boost16exception_detail19error_info_injectorINS_9gregorian8bad_yearEED1Ev
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::gregorian::bad_year>::~error_info_injector()")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_9gregorian8bad_yearEED1Ev")]
-pub fn stub_252d08() -> ! {
-    todo!("0x252d08 boost::exception_detail::error_info_injector<boost::gregorian::bad_year>::~error_info_injector()")
+pub fn stub_252d08() {
+    // IDA 0x252d08: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x252dc0 — __ZThn8_N5boost16exception_detail19error_info_injectorINS_9gregorian8bad_yearEED1Ev
@@ -787,8 +787,8 @@ pub fn stub_252e78() {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEED1Ev")]
-pub fn stub_252f30() -> ! {
-    todo!("0x252f30 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()")
+pub fn stub_252f30() {
+    // IDA 0x252f30: D1 complete-object destructor: reset vtable, destroy owned member (decompiled 0xb3bc PropDescriptor, 0x4a7734 EnumPropDescriptor; trivial cases like 0x1c7724 FIRational compile to an empty body). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x253000 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEE5cloneEv
