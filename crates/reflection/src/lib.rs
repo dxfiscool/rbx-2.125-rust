@@ -383,3 +383,4 @@ pub mod generated_watchdog_refl_wd3;
 pub mod generated_watchdog_refl_wdY;
 pub mod generated_watchdog_refl_wdZ;
 pub mod generated_watchdog_refl_wdAA;
+pub mod generated_watchdog_reflection_wdG2;
