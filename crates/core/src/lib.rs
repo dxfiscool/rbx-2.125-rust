@@ -586,6 +586,7 @@ pub mod generated_watchdog_core_w7;
 pub mod generated_watchdog_core_w8;
 pub mod generated_watchdog_gap_w8;
 pub mod generated_watchdog_core_w9;
+pub mod generated_watchdog_core_w11;
 pub mod generated_watchdog_gap_w9;
 pub mod generated_watchdog_gap_w10;
 pub mod generated_watchdog_gap_w11;
