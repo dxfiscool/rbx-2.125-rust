@@ -571,3 +571,4 @@ pub mod generated_wdog_gap_1788392241;
 pub mod generated_wdog_cron_coreB;
 pub mod generated_wdog_cron_coreA;
 pub mod generated_core_bg10;
+pub mod generated_core_shard_ox;
