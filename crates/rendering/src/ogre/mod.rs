@@ -31203,3 +31203,309 @@ pub fn stub_ce8dbc() -> ! {
 pub fn stub_ce8dd4() -> ! {
     todo!("0xce8dd4 Ogre::parseFogging(std::string &,Ogre::MaterialScriptContext &)")
 }
+
+// ── Ogre::Pass render-state leaves (decompounded from IDA) ──
+// Offsets below are byte offsets from `this` observed in disasm/decomp.
+// Only the 0x60..0x9c window touched by the implemented leaves is modelled;
+// the rest of the C++ object is opaque padding.
+
+/// was: `Ogre::SceneBlendOperation` (SBO_ADD..SBO_MAX).
+#[doc(alias = "Ogre::SceneBlendOperation")]
+#[repr(u32)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum SceneBlendOperation {
+    #[default]
+    Add = 0,
+    Subtract = 1,
+    ReverseSubtract = 2,
+    Min = 3,
+    Max = 4,
+}
+
+/// was: `Ogre::SceneBlendFactor` (SBF_ONE..SBF_ONE_MINUS_SOURCE_ALPHA).
+#[doc(alias = "Ogre::SceneBlendFactor")]
+#[repr(u32)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum SceneBlendFactor {
+    #[default]
+    One = 1,
+    Zero = 2,
+    DestColour = 3,
+    SourceColour = 4,
+    OneMinusDestColour = 5,
+    OneMinusSourceColour = 6,
+    DestAlpha = 7,
+    SourceAlpha = 8,
+    OneMinusDestAlpha = 9,
+    OneMinusSourceAlpha = 10,
+}
+
+/// was: `Ogre::CompareFunction` (CMPF_ALWAYS_FAIL..CMPF_GREATER).
+#[doc(alias = "Ogre::CompareFunction")]
+#[repr(u32)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum CompareFunction {
+    #[default]
+    AlwaysFail = 0,
+    AlwaysPass = 1,
+    Less = 2,
+    LessEqual = 3,
+    Equal = 4,
+    NotEqual = 5,
+    GreaterEqual = 6,
+    Greater = 7,
+}
+
+/// was: `Ogre::Pass` — render-state block for one pass of a technique.
+/// Models only the field window observed in the implemented leaves
+/// (byte offsets 0x60..0x9c); the rest of the C++ object is opaque.
+#[doc(alias = "Ogre::Pass")]
+#[repr(C)]
+#[derive(Clone, Debug)]
+pub struct Pass {
+    _opaque_0x00: [u8; 0x60],
+    /// +0x60 source blend factor.
+    pub source_blend_factor: SceneBlendFactor,
+    /// +0x64 dest blend factor.
+    pub dest_blend_factor: SceneBlendFactor,
+    _opaque_0x68: [u8; 0x08],
+    /// +0x70 separate scene blending flag.
+    pub separate_scene_blending: bool,
+    _opaque_0x71: [u8; 0x03],
+    /// +0x74 colour scene-blend operation.
+    pub scene_blending_operation: SceneBlendOperation,
+    /// +0x78 alpha scene-blend operation.
+    pub scene_blending_operation_alpha: SceneBlendOperation,
+    /// +0x7c separate colour/alpha blend-operation flag.
+    pub separate_scene_blending_operations: bool,
+    /// +0x7d depth check enable.
+    pub depth_check_enabled: bool,
+    /// +0x7e depth write enable.
+    pub depth_write_enabled: bool,
+    _opaque_0x7f: [u8; 0x01],
+    /// +0x80 depth compare function.
+    pub depth_function: CompareFunction,
+    _opaque_0x84: [u8; 0x10],
+    /// +0x94 alpha reject function.
+    pub alpha_reject_function: CompareFunction,
+    /// +0x98 alpha reject threshold value.
+    pub alpha_reject_value: u8,
+    /// +0x99 alpha-to-coverage enable (shared with setAlphaRejectSettings 3rd arg).
+    pub alpha_to_coverage_enabled: bool,
+    /// +0x9a transparent sorting enable.
+    pub transparent_sorting_enabled: bool,
+    /// +0x9b transparent sorting forced.
+    pub transparent_sorting_forced: bool,
+}
+impl Default for Pass {
+    fn default() -> Self {
+        Self {
+            _opaque_0x00: [0; 0x60],
+            source_blend_factor: SceneBlendFactor::default(),
+            dest_blend_factor: SceneBlendFactor::default(),
+            _opaque_0x68: [0; 0x08],
+            separate_scene_blending: false,
+            _opaque_0x71: [0; 0x03],
+            scene_blending_operation: SceneBlendOperation::default(),
+            scene_blending_operation_alpha: SceneBlendOperation::default(),
+            separate_scene_blending_operations: false,
+            depth_check_enabled: false,
+            depth_write_enabled: false,
+            _opaque_0x7f: [0; 0x01],
+            depth_function: CompareFunction::default(),
+            _opaque_0x84: [0; 0x10],
+            alpha_reject_function: CompareFunction::default(),
+            alpha_reject_value: 0,
+            alpha_to_coverage_enabled: false,
+            transparent_sorting_enabled: false,
+            transparent_sorting_forced: false,
+        }
+    }
+}
+
+impl Pass {
+    // IDA 0xd4be40: LDRB.W R0,[R0,#0x70]; BX LR.
+    pub fn has_separate_scene_blending(&self) -> bool {
+        self.separate_scene_blending
+    }
+    // IDA 0xd4be48: STR R1,[R0,#0x74]; STRB #0,[R0,#0x7C]; BX LR.
+    // Original returns `this` in R0; semantically a void setter.
+    pub fn set_scene_blending_operation(&mut self, op: SceneBlendOperation) {
+        self.scene_blending_operation = op;
+        self.separate_scene_blending_operations = false;
+    }
+    // IDA 0xd4be54: STRD.W R1,R2,[R0,#0x74]; STRB #1,[R0,#0x7C]; BX LR.
+    pub fn set_separate_scene_blending_operation(
+        &mut self,
+        colour_op: SceneBlendOperation,
+        alpha_op: SceneBlendOperation,
+    ) {
+        self.scene_blending_operation = colour_op;
+        self.scene_blending_operation_alpha = alpha_op;
+        self.separate_scene_blending_operations = true;
+    }
+    // IDA 0xd4be64: LDR R0,[R0,#0x74]; BX LR.
+    pub fn scene_blending_operation(&self) -> SceneBlendOperation {
+        self.scene_blending_operation
+    }
+    // IDA 0xd4be68: LDR R0,[R0,#0x78]; BX LR.
+    pub fn scene_blending_operation_alpha(&self) -> SceneBlendOperation {
+        self.scene_blending_operation_alpha
+    }
+    // IDA 0xd4be6c: LDRB.W R0,[R0,#0x7C]; BX LR.
+    pub fn has_separate_scene_blending_operations(&self) -> bool {
+        self.separate_scene_blending_operations
+    }
+    // IDA 0xd4be74: if dest(+0x64) != SBF_ONE return true; else
+    // v = src(+0x60) - 2; v > 6 returns false, else bit (0x55 >> v) & 1.
+    pub fn is_transparent(&self) -> bool {
+        if self.dest_blend_factor != SceneBlendFactor::One {
+            return true;
+        }
+        let v = (self.source_blend_factor as u32).wrapping_sub(2);
+        if v > 6 {
+            return false;
+        }
+        // 0x55 == 0b1010101: set for v in {0,2,4,6}, i.e. src in
+        // {ZERO, SOURCE_COLOUR, ONE_MINUS_SOURCE_COLOUR, SOURCE_ALPHA}.
+        ((0x55u32 >> (v & 0x7f)) & 1) != 0
+    }
+    // IDA 0xd4be9c: STRB.W R1,[R0,#0x7D]; BX LR.
+    pub fn set_depth_check_enabled(&mut self, enabled: bool) {
+        self.depth_check_enabled = enabled;
+    }
+    // IDA 0xd4bea4: LDRB.W R0,[R0,#0x7D]; BX LR.
+    pub fn depth_check_enabled(&self) -> bool {
+        self.depth_check_enabled
+    }
+    // IDA 0xd4beac: STRB.W R1,[R0,#0x7E]; BX LR.
+    pub fn set_depth_write_enabled(&mut self, enabled: bool) {
+        self.depth_write_enabled = enabled;
+    }
+    // IDA 0xd4beb4: LDRB.W R0,[R0,#0x7E]; BX LR.
+    pub fn depth_write_enabled(&self) -> bool {
+        self.depth_write_enabled
+    }
+    // IDA 0xd4bebc: STR.W R1,[R0,#0x80]; BX LR.
+    pub fn set_depth_function(&mut self, func: CompareFunction) {
+        self.depth_function = func;
+    }
+    // IDA 0xd4bec4: LDR.W R0,[R0,#0x80]; BX LR.
+    pub fn depth_function(&self) -> CompareFunction {
+        self.depth_function
+    }
+    // IDA 0xd4becc: STR.W R1,[R0,#0x94]; STRB R2,[R0,#0x98]; STRB R3,[R0,#0x99].
+    pub fn set_alpha_reject_settings(
+        &mut self,
+        func: CompareFunction,
+        value: u8,
+        alpha_to_coverage: bool,
+    ) {
+        self.alpha_reject_function = func;
+        self.alpha_reject_value = value;
+        self.alpha_to_coverage_enabled = alpha_to_coverage;
+    }
+    // IDA 0xd4bedc: STR.W R1,[R0,#0x94]; BX LR.
+    pub fn set_alpha_reject_function(&mut self, func: CompareFunction) {
+        self.alpha_reject_function = func;
+    }
+    // IDA 0xd4bee4: STRB.W R1,[R0,#0x99]; BX LR.
+    pub fn set_alpha_to_coverage_enabled(&mut self, enabled: bool) {
+        self.alpha_to_coverage_enabled = enabled;
+    }
+    // IDA 0xd4beec: STRB.W R1,[R0,#0x9A]; BX LR.
+    pub fn set_transparent_sorting_enabled(&mut self, enabled: bool) {
+        self.transparent_sorting_enabled = enabled;
+    }
+    // IDA 0xd4bef4: LDRB.W R0,[R0,#0x9A]; BX LR.
+    pub fn transparent_sorting_enabled(&self) -> bool {
+        self.transparent_sorting_enabled
+    }
+    // IDA 0xd4befc: STRB.W R1,[R0,#0x9B]; BX LR.
+    pub fn set_transparent_sorting_forced(&mut self, enabled: bool) {
+        self.transparent_sorting_forced = enabled;
+    }
+    // IDA 0xd4bf04: LDRB.W R0,[R0,#0x9B]; BX LR.
+    pub fn transparent_sorting_forced(&self) -> bool {
+        self.transparent_sorting_forced
+    }
+}
+
+#[cfg(test)]
+mod pass_tests {
+    use super::{CompareFunction, Pass, SceneBlendFactor, SceneBlendOperation};
+
+    #[test]
+    fn blend_operation_setters_clear_and_set_separate_flag() {
+        let mut p = Pass::default();
+        p.set_scene_blending_operation(SceneBlendOperation::Add);
+        assert_eq!(p.scene_blending_operation(), SceneBlendOperation::Add);
+        assert!(!p.has_separate_scene_blending_operations());
+        p.set_separate_scene_blending_operation(
+            SceneBlendOperation::Min,
+            SceneBlendOperation::Max,
+        );
+        assert_eq!(p.scene_blending_operation(), SceneBlendOperation::Min);
+        assert_eq!(
+            p.scene_blending_operation_alpha(),
+            SceneBlendOperation::Max
+        );
+        assert!(p.has_separate_scene_blending_operations());
+    }
+
+    #[test]
+    fn depth_and_reject_state_round_trips() {
+        let mut p = Pass::default();
+        p.set_depth_check_enabled(true);
+        p.set_depth_write_enabled(true);
+        p.set_depth_function(CompareFunction::LessEqual);
+        p.set_alpha_reject_settings(CompareFunction::Greater, 128, true);
+        p.set_transparent_sorting_enabled(true);
+        assert!(p.depth_check_enabled());
+        assert!(p.depth_write_enabled());
+        assert_eq!(p.depth_function(), CompareFunction::LessEqual);
+        assert_eq!(p.alpha_reject_function, CompareFunction::Greater);
+        assert_eq!(p.alpha_reject_value, 128);
+        assert!(p.alpha_to_coverage_enabled);
+        assert!(p.transparent_sorting_enabled());
+        p.set_alpha_reject_function(CompareFunction::AlwaysPass);
+        p.set_alpha_to_coverage_enabled(false);
+        p.set_transparent_sorting_forced(true);
+        assert_eq!(p.alpha_reject_function, CompareFunction::AlwaysPass);
+        assert!(!p.alpha_to_coverage_enabled);
+        assert!(p.transparent_sorting_forced());
+    }
+
+    #[test]
+    fn is_transparent_matches_original_bit_table() {
+        let mut p = Pass::default();
+        // dest != SBF_ONE forces transparent regardless of src.
+        p.dest_blend_factor = SceneBlendFactor::Zero;
+        p.source_blend_factor = SceneBlendFactor::One;
+        assert!(p.is_transparent());
+        p.dest_blend_factor = SceneBlendFactor::One;
+        // 0x55 mask: transparent src offsets v in {0,2,4,6}.
+        let transparent = [
+            SceneBlendFactor::Zero, // v=0
+            SceneBlendFactor::SourceColour, // v=2
+            SceneBlendFactor::OneMinusSourceColour, // v=4
+            SceneBlendFactor::SourceAlpha, // v=6
+        ];
+        for src in transparent {
+            p.source_blend_factor = src;
+            assert!(p.is_transparent(), "src {src:?} should be transparent");
+        }
+        let opaque = [
+            SceneBlendFactor::One, // v wraps to u32::MAX > 6
+            SceneBlendFactor::DestColour, // v=1
+            SceneBlendFactor::OneMinusDestColour, // v=3
+            SceneBlendFactor::DestAlpha, // v=5
+            SceneBlendFactor::OneMinusDestAlpha, // v=7 > 6
+            SceneBlendFactor::OneMinusSourceAlpha, // v=8 > 6
+        ];
+        for src in opaque {
+            p.source_blend_factor = src;
+            assert!(!p.is_transparent(), "src {src:?} should be opaque");
+        }
+    }
+}

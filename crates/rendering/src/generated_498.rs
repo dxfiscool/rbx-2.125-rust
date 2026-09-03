@@ -6,6 +6,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::ogre::{CompareFunction, Pass, SceneBlendOperation};
 
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
@@ -14,24 +15,24 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "Ogre::Pass::hasSeparateSceneBlending(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass24hasSeparateSceneBlendingEv")]
 // was: Ogre::Pass::hasSeparateSceneBlending(void)const
-pub fn stub_0xd4be40() -> ! {
-    todo!("0xd4be40 Ogre::Pass::hasSeparateSceneBlending(void)const")
+pub fn stub_0xd4be40(pass: &Pass) -> bool {
+    pass.has_separate_scene_blending() // IDA 0xd4be40: LDRB.W R0,[R0,#0x70]
 }
 
 // 0xd4be48 — __ZN4Ogre4Pass25setSceneBlendingOperationENS_19SceneBlendOperationE
 #[doc(alias = "Ogre::Pass::setSceneBlendingOperation(Ogre::SceneBlendOperation)")]
 #[doc(alias = "__ZN4Ogre4Pass25setSceneBlendingOperationENS_19SceneBlendOperationE")]
 // was: Ogre::Pass::setSceneBlendingOperation(Ogre::SceneBlendOperation)
-pub fn stub_0xd4be48() -> ! {
-    todo!("0xd4be48 Ogre::Pass::setSceneBlendingOperation(Ogre::SceneBlendOperation)")
+pub fn stub_0xd4be48(pass: &mut Pass, op: SceneBlendOperation) {
+    pass.set_scene_blending_operation(op) // IDA 0xd4be48: STR R1,[R0,#0x74]; STRB #0,[R0,#0x7C]
 }
 
 // 0xd4be54 — __ZN4Ogre4Pass33setSeparateSceneBlendingOperationENS_19SceneBlendOperationES1_
 #[doc(alias = "Ogre::Pass::setSeparateSceneBlendingOperation(Ogre::SceneBlendOperation,Ogre::SceneBlendOperation)")]
 #[doc(alias = "__ZN4Ogre4Pass33setSeparateSceneBlendingOperationENS_19SceneBlendOperationES1_")]
 // was: Ogre::Pass::setSeparateSceneBlendingOperation(Ogre::SceneBlendOperation,Ogre::SceneBlendOperation)
-pub fn stub_0xd4be54() -> ! {
-    todo!("0xd4be54 Ogre::Pass::setSeparateSceneBlendingOperation(Ogre::SceneBlendOperation,Ogre::SceneBlendOperation)")
+pub fn stub_0xd4be54(pass: &mut Pass, colour_op: SceneBlendOperation, alpha_op: SceneBlendOperation) {
+    pass.set_separate_scene_blending_operation(colour_op, alpha_op) // IDA 0xd4be54: STRD.W R1,R2,[R0,#0x74]; STRB #1,[R0,#0x7C]
 }
 
 // 0xd4be64 — __ZNK4Ogre4Pass25getSceneBlendingOperationEv
@@ -39,8 +40,8 @@ pub fn stub_0xd4be54() -> ! {
 #[doc(alias = "Ogre::Pass::getSceneBlendingOperation(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass25getSceneBlendingOperationEv")]
 // was: Ogre::Pass::getSceneBlendingOperation(void)const
-pub fn stub_0xd4be64() -> ! {
-    todo!("0xd4be64 Ogre::Pass::getSceneBlendingOperation(void)const")
+pub fn stub_0xd4be64(pass: &Pass) -> SceneBlendOperation {
+    pass.scene_blending_operation() // IDA 0xd4be64: LDR R0,[R0,#0x74]
 }
 
 // 0xd4be68 — __ZNK4Ogre4Pass30getSceneBlendingOperationAlphaEv
@@ -48,8 +49,8 @@ pub fn stub_0xd4be64() -> ! {
 #[doc(alias = "Ogre::Pass::getSceneBlendingOperationAlpha(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass30getSceneBlendingOperationAlphaEv")]
 // was: Ogre::Pass::getSceneBlendingOperationAlpha(void)const
-pub fn stub_0xd4be68() -> ! {
-    todo!("0xd4be68 Ogre::Pass::getSceneBlendingOperationAlpha(void)const")
+pub fn stub_0xd4be68(pass: &Pass) -> SceneBlendOperation {
+    pass.scene_blending_operation_alpha() // IDA 0xd4be68: LDR R0,[R0,#0x78]
 }
 
 // 0xd4be6c — __ZNK4Ogre4Pass34hasSeparateSceneBlendingOperationsEv
@@ -57,8 +58,8 @@ pub fn stub_0xd4be68() -> ! {
 #[doc(alias = "Ogre::Pass::hasSeparateSceneBlendingOperations(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass34hasSeparateSceneBlendingOperationsEv")]
 // was: Ogre::Pass::hasSeparateSceneBlendingOperations(void)const
-pub fn stub_0xd4be6c() -> ! {
-    todo!("0xd4be6c Ogre::Pass::hasSeparateSceneBlendingOperations(void)const")
+pub fn stub_0xd4be6c(pass: &Pass) -> bool {
+    pass.has_separate_scene_blending_operations() // IDA 0xd4be6c: LDRB.W R0,[R0,#0x7C]
 }
 
 // 0xd4be74 — __ZNK4Ogre4Pass13isTransparentEv
@@ -66,8 +67,8 @@ pub fn stub_0xd4be6c() -> ! {
 #[doc(alias = "Ogre::Pass::isTransparent(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass13isTransparentEv")]
 // was: Ogre::Pass::isTransparent(void)const
-pub fn stub_0xd4be74() -> ! {
-    todo!("0xd4be74 Ogre::Pass::isTransparent(void)const")
+pub fn stub_0xd4be74(pass: &Pass) -> bool {
+    pass.is_transparent() // IDA 0xd4be74: dest(+0x64)!=1 -> true; else (0x55 >> (src(+0x60)-2)) & 1
 }
 
 // 0xd4be9c — __ZN4Ogre4Pass20setDepthCheckEnabledEb
@@ -75,8 +76,8 @@ pub fn stub_0xd4be74() -> ! {
 #[doc(alias = "Ogre::Pass::setDepthCheckEnabled(bool)")]
 #[doc(alias = "__ZN4Ogre4Pass20setDepthCheckEnabledEb")]
 // was: Ogre::Pass::setDepthCheckEnabled(bool)
-pub fn stub_0xd4be9c() -> ! {
-    todo!("0xd4be9c Ogre::Pass::setDepthCheckEnabled(bool)")
+pub fn stub_0xd4be9c(pass: &mut Pass, enabled: bool) {
+    pass.set_depth_check_enabled(enabled) // IDA 0xd4be9c: STRB.W R1,[R0,#0x7D]
 }
 
 // 0xd4bea4 — __ZNK4Ogre4Pass20getDepthCheckEnabledEv
@@ -84,8 +85,8 @@ pub fn stub_0xd4be9c() -> ! {
 #[doc(alias = "Ogre::Pass::getDepthCheckEnabled(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass20getDepthCheckEnabledEv")]
 // was: Ogre::Pass::getDepthCheckEnabled(void)const
-pub fn stub_0xd4bea4() -> ! {
-    todo!("0xd4bea4 Ogre::Pass::getDepthCheckEnabled(void)const")
+pub fn stub_0xd4bea4(pass: &Pass) -> bool {
+    pass.depth_check_enabled() // IDA 0xd4bea4: LDRB.W R0,[R0,#0x7D]
 }
 
 // 0xd4beac — __ZN4Ogre4Pass20setDepthWriteEnabledEb
@@ -93,8 +94,8 @@ pub fn stub_0xd4bea4() -> ! {
 #[doc(alias = "Ogre::Pass::setDepthWriteEnabled(bool)")]
 #[doc(alias = "__ZN4Ogre4Pass20setDepthWriteEnabledEb")]
 // was: Ogre::Pass::setDepthWriteEnabled(bool)
-pub fn stub_0xd4beac() -> ! {
-    todo!("0xd4beac Ogre::Pass::setDepthWriteEnabled(bool)")
+pub fn stub_0xd4beac(pass: &mut Pass, enabled: bool) {
+    pass.set_depth_write_enabled(enabled) // IDA 0xd4beac: STRB.W R1,[R0,#0x7E]
 }
 
 // 0xd4beb4 — __ZNK4Ogre4Pass20getDepthWriteEnabledEv
@@ -102,16 +103,16 @@ pub fn stub_0xd4beac() -> ! {
 #[doc(alias = "Ogre::Pass::getDepthWriteEnabled(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass20getDepthWriteEnabledEv")]
 // was: Ogre::Pass::getDepthWriteEnabled(void)const
-pub fn stub_0xd4beb4() -> ! {
-    todo!("0xd4beb4 Ogre::Pass::getDepthWriteEnabled(void)const")
+pub fn stub_0xd4beb4(pass: &Pass) -> bool {
+    pass.depth_write_enabled() // IDA 0xd4beb4: LDRB.W R0,[R0,#0x7E]
 }
 
 // 0xd4bebc — __ZN4Ogre4Pass16setDepthFunctionENS_15CompareFunctionE
 #[doc(alias = "Ogre::Pass::setDepthFunction(Ogre::CompareFunction)")]
 #[doc(alias = "__ZN4Ogre4Pass16setDepthFunctionENS_15CompareFunctionE")]
 // was: Ogre::Pass::setDepthFunction(Ogre::CompareFunction)
-pub fn stub_0xd4bebc() -> ! {
-    todo!("0xd4bebc Ogre::Pass::setDepthFunction(Ogre::CompareFunction)")
+pub fn stub_0xd4bebc(pass: &mut Pass, func: CompareFunction) {
+    pass.set_depth_function(func) // IDA 0xd4bebc: STR.W R1,[R0,#0x80]
 }
 
 // 0xd4bec4 — __ZNK4Ogre4Pass16getDepthFunctionEv
@@ -119,8 +120,8 @@ pub fn stub_0xd4bebc() -> ! {
 #[doc(alias = "Ogre::Pass::getDepthFunction(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass16getDepthFunctionEv")]
 // was: Ogre::Pass::getDepthFunction(void)const
-pub fn stub_0xd4bec4() -> ! {
-    todo!("0xd4bec4 Ogre::Pass::getDepthFunction(void)const")
+pub fn stub_0xd4bec4(pass: &Pass) -> CompareFunction {
+    pass.depth_function() // IDA 0xd4bec4: LDR.W R0,[R0,#0x80]
 }
 
 // 0xd4becc — __ZN4Ogre4Pass22setAlphaRejectSettingsENS_15CompareFunctionEhb
@@ -128,35 +129,32 @@ pub fn stub_0xd4bec4() -> ! {
 #[doc(alias = "Ogre::Pass::setAlphaRejectSettings(Ogre::CompareFunction,unsigned char,bool)")]
 #[doc(alias = "__ZN4Ogre4Pass22setAlphaRejectSettingsENS_15CompareFunctionEhb")]
 // was: Ogre::Pass::setAlphaRejectSettings(Ogre::CompareFunction,unsigned char,bool)
-pub fn stub_0xd4becc() -> ! {
-    todo!("0xd4becc Ogre::Pass::setAlphaRejectSettings(Ogre::CompareFunction,unsigned char,bool)")
+pub fn stub_0xd4becc(pass: &mut Pass, func: CompareFunction, value: u8, alpha_to_coverage: bool) {
+    pass.set_alpha_reject_settings(func, value, alpha_to_coverage) // IDA 0xd4becc: STR.W R1,[R0,#0x94]; STRB R2,[R0,#0x98]; STRB R3,[R0,#0x99]
 }
-
 // 0xd4bedc — __ZN4Ogre4Pass22setAlphaRejectFunctionENS_15CompareFunctionE
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "Ogre::Pass::setAlphaRejectFunction(Ogre::CompareFunction)")]
 #[doc(alias = "__ZN4Ogre4Pass22setAlphaRejectFunctionENS_15CompareFunctionE")]
 // was: Ogre::Pass::setAlphaRejectFunction(Ogre::CompareFunction)
-pub fn stub_0xd4bedc() -> ! {
-    todo!("0xd4bedc Ogre::Pass::setAlphaRejectFunction(Ogre::CompareFunction)")
+pub fn stub_0xd4bedc(pass: &mut Pass, func: CompareFunction) {
+    pass.set_alpha_reject_function(func) // IDA 0xd4bedc: STR.W R1,[R0,#0x94]
 }
-
 // 0xd4bee4 — __ZN4Ogre4Pass25setAlphaToCoverageEnabledEb
 // type: _DWORD __fastcall(Ogre::Pass *__hidden this, bool)
 #[doc(alias = "Ogre::Pass::setAlphaToCoverageEnabled(bool)")]
 #[doc(alias = "__ZN4Ogre4Pass25setAlphaToCoverageEnabledEb")]
 // was: Ogre::Pass::setAlphaToCoverageEnabled(bool)
-pub fn stub_0xd4bee4() -> ! {
-    todo!("0xd4bee4 Ogre::Pass::setAlphaToCoverageEnabled(bool)")
+pub fn stub_0xd4bee4(pass: &mut Pass, enabled: bool) {
+    pass.set_alpha_to_coverage_enabled(enabled) // IDA 0xd4bee4: STRB.W R1,[R0,#0x99]
 }
-
 // 0xd4beec — __ZN4Ogre4Pass28setTransparentSortingEnabledEb
 // type: _DWORD __fastcall(Ogre::Pass *__hidden this, bool)
 #[doc(alias = "Ogre::Pass::setTransparentSortingEnabled(bool)")]
 #[doc(alias = "__ZN4Ogre4Pass28setTransparentSortingEnabledEb")]
 // was: Ogre::Pass::setTransparentSortingEnabled(bool)
-pub fn stub_0xd4beec() -> ! {
-    todo!("0xd4beec Ogre::Pass::setTransparentSortingEnabled(bool)")
+pub fn stub_0xd4beec(pass: &mut Pass, enabled: bool) {
+    pass.set_transparent_sorting_enabled(enabled) // IDA 0xd4beec: STRB.W R1,[R0,#0x9A]
 }
 
 // 0xd4bef4 — __ZNK4Ogre4Pass28getTransparentSortingEnabledEv
@@ -164,8 +162,8 @@ pub fn stub_0xd4beec() -> ! {
 #[doc(alias = "Ogre::Pass::getTransparentSortingEnabled(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass28getTransparentSortingEnabledEv")]
 // was: Ogre::Pass::getTransparentSortingEnabled(void)const
-pub fn stub_0xd4bef4() -> ! {
-    todo!("0xd4bef4 Ogre::Pass::getTransparentSortingEnabled(void)const")
+pub fn stub_0xd4bef4(pass: &Pass) -> bool {
+    pass.transparent_sorting_enabled() // IDA 0xd4bef4: LDRB.W R0,[R0,#0x9A]
 }
 
 // 0xd4befc — __ZN4Ogre4Pass27setTransparentSortingForcedEb
@@ -173,8 +171,8 @@ pub fn stub_0xd4bef4() -> ! {
 #[doc(alias = "Ogre::Pass::setTransparentSortingForced(bool)")]
 #[doc(alias = "__ZN4Ogre4Pass27setTransparentSortingForcedEb")]
 // was: Ogre::Pass::setTransparentSortingForced(bool)
-pub fn stub_0xd4befc() -> ! {
-    todo!("0xd4befc Ogre::Pass::setTransparentSortingForced(bool)")
+pub fn stub_0xd4befc(pass: &mut Pass, enabled: bool) {
+    pass.set_transparent_sorting_forced(enabled) // IDA 0xd4befc: STRB.W R1,[R0,#0x9B]
 }
 
 // 0xd4bf04 — __ZNK4Ogre4Pass27getTransparentSortingForcedEv
@@ -182,8 +180,8 @@ pub fn stub_0xd4befc() -> ! {
 #[doc(alias = "Ogre::Pass::getTransparentSortingForced(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass27getTransparentSortingForcedEv")]
 // was: Ogre::Pass::getTransparentSortingForced(void)const
-pub fn stub_0xd4bf04() -> ! {
-    todo!("0xd4bf04 Ogre::Pass::getTransparentSortingForced(void)const")
+pub fn stub_0xd4bf04(pass: &Pass) -> bool {
+    pass.transparent_sorting_forced() // IDA 0xd4bf04: LDRB.W R0,[R0,#0x9B]
 }
 
 // 0xd4bf0c — __ZN4Ogre4Pass21setColourWriteEnabledEb
