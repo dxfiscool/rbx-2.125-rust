@@ -271,7 +271,7 @@ pub fn stub_0xd3432c() -> ! {
 // 0xd343e8 — __ZThn12_N4Ogre19PanelOverlayElementD0Ev
 // type: void __fastcall(Ogre::PanelOverlayElement *__hidden this)
 #[doc(alias = "__ZThn12_N4Ogre19PanelOverlayElementD0Ev")]
-#[doc(alias = "`non-virtual thunk toOgre::PanelOverlayElement::~PanelOverlayElement()")]
+#[doc(alias = "non-virtual thunk toOgre::PanelOverlayElement::~PanelOverlayElement()")]
 pub fn stub_0xd343e8() -> ! {
     todo!("0xd343e8 __ZThn12_N4Ogre19PanelOverlayElementD0Ev")
 }
@@ -287,7 +287,7 @@ pub fn stub_0xd344b4() -> ! {
 // 0xd34570 — __ZThn12_N4Ogre19PanelOverlayElementD1Ev
 // type: void __fastcall(Ogre::PanelOverlayElement *__hidden this)
 #[doc(alias = "__ZThn12_N4Ogre19PanelOverlayElementD1Ev")]
-#[doc(alias = "`non-virtual thunk toOgre::PanelOverlayElement::~PanelOverlayElement()")]
+#[doc(alias = "non-virtual thunk toOgre::PanelOverlayElement::~PanelOverlayElement()")]
 pub fn stub_0xd34570() -> ! {
     todo!("0xd34570 __ZThn12_N4Ogre19PanelOverlayElementD1Ev")
 }
@@ -317,7 +317,7 @@ pub fn stub_0xd34870() -> ! {
 
 // 0xd34890 — __ZThn12_N4Ogre19PanelOverlayElement18getRenderOperationERNS_15RenderOperationE
 #[doc(alias = "__ZThn12_N4Ogre19PanelOverlayElement18getRenderOperationERNS_15RenderOperationE")]
-#[doc(alias = "`non-virtual thunk toOgre::PanelOverlayElement::getRenderOperation(Ogre::RenderOperation &)")]
+#[doc(alias = "non-virtual thunk toOgre::PanelOverlayElement::getRenderOperation(Ogre::RenderOperation &)")]
 pub fn stub_0xd34890() -> ! {
     todo!("0xd34890 __ZThn12_N4Ogre19PanelOverlayElement18getRenderOperationERNS_15RenderOperationE")
 }
@@ -533,7 +533,7 @@ pub fn stub_0xd36e2c() -> ! {
 // 0xd36e30 — __ZThn12_NK4Ogre14OverlayElement19getSquaredViewDepthEPKNS_6CameraE
 // type: unsigned __int32 __fastcall(Ogre::OverlayElement *this, const Ogre::Camera *)
 #[doc(alias = "__ZThn12_NK4Ogre14OverlayElement19getSquaredViewDepthEPKNS_6CameraE")]
-#[doc(alias = "`non-virtual thunk toOgre::OverlayElement::getSquaredViewDepth(Ogre::Camera const*)const")]
+#[doc(alias = "non-virtual thunk toOgre::OverlayElement::getSquaredViewDepth(Ogre::Camera const*)const")]
 pub fn stub_0xd36e30() -> ! {
     todo!("0xd36e30 __ZThn12_NK4Ogre14OverlayElement19getSquaredViewDepthEPKNS_6CameraE")
 }
@@ -541,7 +541,7 @@ pub fn stub_0xd36e30() -> ! {
 // 0xd36e50 — __ZThn12_NK4Ogre14OverlayElement9getLightsEv
 // type: int *__fastcall(Ogre::OverlayElement *this)
 #[doc(alias = "__ZThn12_NK4Ogre14OverlayElement9getLightsEv")]
-#[doc(alias = "`non-virtual thunk toOgre::OverlayElement::getLights(void)const")]
+#[doc(alias = "non-virtual thunk toOgre::OverlayElement::getLights(void)const")]
 pub fn stub_0xd36e50() -> ! {
     todo!("0xd36e50 __ZThn12_NK4Ogre14OverlayElement9getLightsEv")
 }

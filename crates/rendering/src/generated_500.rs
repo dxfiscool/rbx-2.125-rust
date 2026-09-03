@@ -268,7 +268,7 @@ pub fn stub_0xd8fb18() -> ! {
 
 // 0xd8fb24 — __ZThn4_N4Ogre11RibbonTrailD0Ev
 // type: void __fastcall(Ogre::RibbonTrail *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
+#[doc(alias = "non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
 #[doc(alias = "__ZThn4_N4Ogre11RibbonTrailD0Ev")]
 // was: `non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()
 pub fn stub_0xd8fb24() -> ! {
@@ -277,7 +277,7 @@ pub fn stub_0xd8fb24() -> ! {
 
 // 0xd8fbb8 — __ZThn188_N4Ogre11RibbonTrailD0Ev
 // type: void __fastcall(Ogre::RibbonTrail *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
+#[doc(alias = "non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
 #[doc(alias = "__ZThn188_N4Ogre11RibbonTrailD0Ev")]
 // was: `non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()
 pub fn stub_0xd8fbb8() -> ! {
@@ -286,7 +286,7 @@ pub fn stub_0xd8fbb8() -> ! {
 
 // 0xd8fc4c — __ZThn376_N4Ogre11RibbonTrailD0Ev
 // type: void __fastcall(Ogre::RibbonTrail *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
+#[doc(alias = "non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
 #[doc(alias = "__ZThn376_N4Ogre11RibbonTrailD0Ev")]
 // was: `non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()
 pub fn stub_0xd8fc4c() -> ! {
@@ -304,7 +304,7 @@ pub fn stub_0xd8fce0() -> ! {
 
 // 0xd9003c — __ZThn4_N4Ogre11RibbonTrailD1Ev
 // type: void __fastcall(Ogre::RibbonTrail *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
+#[doc(alias = "non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
 #[doc(alias = "__ZThn4_N4Ogre11RibbonTrailD1Ev")]
 // was: `non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()
 pub fn stub_0xd9003c() -> ! {
@@ -313,7 +313,7 @@ pub fn stub_0xd9003c() -> ! {
 
 // 0xd90048 — __ZThn188_N4Ogre11RibbonTrailD1Ev
 // type: void __fastcall(Ogre::RibbonTrail *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
+#[doc(alias = "non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
 #[doc(alias = "__ZThn188_N4Ogre11RibbonTrailD1Ev")]
 // was: `non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()
 pub fn stub_0xd90048() -> ! {
@@ -322,7 +322,7 @@ pub fn stub_0xd90048() -> ! {
 
 // 0xd90054 — __ZThn376_N4Ogre11RibbonTrailD1Ev
 // type: void __fastcall(Ogre::RibbonTrail *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
+#[doc(alias = "non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
 #[doc(alias = "__ZThn376_N4Ogre11RibbonTrailD1Ev")]
 // was: `non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()
 pub fn stub_0xd90054() -> ! {
@@ -511,7 +511,7 @@ pub fn stub_0xd91f48() -> ! {
 
 // 0xd91f6c — __ZThn376_N4Ogre11RibbonTrail11nodeUpdatedEPKNS_4NodeE
 // type: _DWORD __fastcall(Ogre::RibbonTrail *__hidden this, const Ogre::Node *)
-#[doc(alias = "`non-virtual thunk toOgre::RibbonTrail::nodeUpdated(Ogre::Node const*)")]
+#[doc(alias = "non-virtual thunk toOgre::RibbonTrail::nodeUpdated(Ogre::Node const*)")]
 #[doc(alias = "__ZThn376_N4Ogre11RibbonTrail11nodeUpdatedEPKNS_4NodeE")]
 // was: `non-virtual thunk toOgre::RibbonTrail::nodeUpdated(Ogre::Node const*)
 pub fn stub_0xd91f6c() -> ! {
@@ -529,7 +529,7 @@ pub fn stub_0xd91fa8() -> ! {
 
 // 0xd91fb8 — __ZThn376_N4Ogre11RibbonTrail13nodeDestroyedEPKNS_4NodeE
 // type: _DWORD __fastcall(Ogre::RibbonTrail *__hidden this, const Ogre::Node *)
-#[doc(alias = "`non-virtual thunk toOgre::RibbonTrail::nodeDestroyed(Ogre::Node const*)")]
+#[doc(alias = "non-virtual thunk toOgre::RibbonTrail::nodeDestroyed(Ogre::Node const*)")]
 #[doc(alias = "__ZThn376_N4Ogre11RibbonTrail13nodeDestroyedEPKNS_4NodeE")]
 // was: `non-virtual thunk toOgre::RibbonTrail::nodeDestroyed(Ogre::Node const*)
 pub fn stub_0xd91fb8() -> ! {
@@ -592,7 +592,7 @@ pub fn stub_0xd92678() -> ! {
 
 // 0xd92974 — __ZN4Ogre12_GLOBAL__N_119TimeControllerValueD1Ev
 // type: void __fastcall(Ogre::_anonymous_namespace_::TimeControllerValue *__hidden this)
-#[doc(alias = "Ogre::`anonymous namespace::TimeControllerValue::~TimeControllerValue()")]
+#[doc(alias = "Ogre::anonymous namespace::TimeControllerValue::~TimeControllerValue()")]
 #[doc(alias = "__ZN4Ogre12_GLOBAL__N_119TimeControllerValueD1Ev")]
 // was: Ogre::`anonymous namespace::TimeControllerValue::~TimeControllerValue()
 pub fn stub_0xd92974() -> ! {
@@ -601,7 +601,7 @@ pub fn stub_0xd92974() -> ! {
 
 // 0xd92978 — __ZN4Ogre12_GLOBAL__N_119TimeControllerValueD0Ev
 // type: void __fastcall(Ogre::_anonymous_namespace_::TimeControllerValue *__hidden this)
-#[doc(alias = "Ogre::`anonymous namespace::TimeControllerValue::~TimeControllerValue()")]
+#[doc(alias = "Ogre::anonymous namespace::TimeControllerValue::~TimeControllerValue()")]
 #[doc(alias = "__ZN4Ogre12_GLOBAL__N_119TimeControllerValueD0Ev")]
 // was: Ogre::`anonymous namespace::TimeControllerValue::~TimeControllerValue()
 pub fn stub_0xd92978() -> ! {
@@ -610,7 +610,7 @@ pub fn stub_0xd92978() -> ! {
 
 // 0xd92a04 — __ZNK4Ogre12_GLOBAL__N_119TimeControllerValue8getValueEv
 // type: _DWORD __fastcall(Ogre::_anonymous_namespace_::TimeControllerValue *__hidden this)
-#[doc(alias = "Ogre::`anonymous namespace::TimeControllerValue::getValue(void)const")]
+#[doc(alias = "Ogre::anonymous namespace::TimeControllerValue::getValue(void)const")]
 #[doc(alias = "__ZNK4Ogre12_GLOBAL__N_119TimeControllerValue8getValueEv")]
 // was: Ogre::`anonymous namespace::TimeControllerValue::getValue(void)const
 pub fn stub_0xd92a04() -> ! {
@@ -619,7 +619,7 @@ pub fn stub_0xd92a04() -> ! {
 
 // 0xd92a08 — __ZN4Ogre12_GLOBAL__N_119TimeControllerValue8setValueEf
 // type: _DWORD __fastcall(Ogre::_anonymous_namespace_::TimeControllerValue *__hidden this, float)
-#[doc(alias = "Ogre::`anonymous namespace::TimeControllerValue::setValue(float)")]
+#[doc(alias = "Ogre::anonymous namespace::TimeControllerValue::setValue(float)")]
 #[doc(alias = "__ZN4Ogre12_GLOBAL__N_119TimeControllerValue8setValueEf")]
 // was: Ogre::`anonymous namespace::TimeControllerValue::setValue(float)
 pub fn stub_0xd92a08() -> ! {

@@ -544,7 +544,7 @@ pub fn stub_0xd44400() -> ! {
 
 // 0xd44408 — __ZThn12_NK4Ogre14ParticleSystem14getBoundingBoxEv
 // type: _DWORD __fastcall(Ogre::ParticleSystem *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::ParticleSystem::getBoundingBox(void)const")]
+#[doc(alias = "non-virtual thunk toOgre::ParticleSystem::getBoundingBox(void)const")]
 #[doc(alias = "__ZThn12_NK4Ogre14ParticleSystem14getBoundingBoxEv")]
 // was: `non-virtual thunk toOgre::ParticleSystem::getBoundingBox(void)const
 pub fn stub_0xd44408() -> ! {
@@ -553,7 +553,7 @@ pub fn stub_0xd44408() -> ! {
 
 // 0xd4440c — __ZThn12_NK4Ogre14ParticleSystem17getBoundingRadiusEv
 // type: _DWORD __fastcall(Ogre::ParticleSystem *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::ParticleSystem::getBoundingRadius(void)const")]
+#[doc(alias = "non-virtual thunk toOgre::ParticleSystem::getBoundingRadius(void)const")]
 #[doc(alias = "__ZThn12_NK4Ogre14ParticleSystem17getBoundingRadiusEv")]
 // was: `non-virtual thunk toOgre::ParticleSystem::getBoundingRadius(void)const
 pub fn stub_0xd4440c() -> ! {

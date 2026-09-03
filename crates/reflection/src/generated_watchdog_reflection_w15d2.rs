@@ -9,7 +9,7 @@ use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
 // 0xd57618 — __GLOBAL__I_a_747
-#[doc(alias = "`global constructor keyed to_a_747")]
+#[doc(alias = "global constructor keyed to_a_747")]
 #[doc(alias = "__GLOBAL__I_a_747")]
 pub fn stub_0xd57618() -> ! {
     todo!("0xd57618 __GLOBAL__I_a_747")
@@ -32,7 +32,7 @@ pub fn stub_0xd576a8() -> ! {
 }
 
 // 0xd57740 — __GLOBAL__I_a_748
-#[doc(alias = "`global constructor keyed to_a_748")]
+#[doc(alias = "global constructor keyed to_a_748")]
 #[doc(alias = "__GLOBAL__I_a_748")]
 pub fn stub_0xd57740() -> ! {
     todo!("0xd57740 __GLOBAL__I_a_748")
@@ -320,7 +320,7 @@ pub fn stub_0xd59a2c() -> ! {
 }
 
 // 0xd59ad0 — __GLOBAL__I_a_749
-#[doc(alias = "`global constructor keyed to_a_749")]
+#[doc(alias = "global constructor keyed to_a_749")]
 #[doc(alias = "__GLOBAL__I_a_749")]
 pub fn stub_0xd59ad0() -> ! {
     todo!("0xd59ad0 __GLOBAL__I_a_749")
@@ -477,7 +477,7 @@ pub fn stub_0xd5a6c0() -> ! {
 }
 
 // 0xd5a7cc — __GLOBAL__I_a_750
-#[doc(alias = "`global constructor keyed to_a_750")]
+#[doc(alias = "global constructor keyed to_a_750")]
 #[doc(alias = "__GLOBAL__I_a_750")]
 pub fn stub_0xd5a7cc() -> ! {
     todo!("0xd5a7cc __GLOBAL__I_a_750")
@@ -517,7 +517,7 @@ pub fn stub_0xd5afd8() -> ! {
 
 // 0xd5b09c — __ZThn4_N4Ogre11Rectangle2DD0Ev
 // type: void __fastcall(Ogre::Rectangle2D *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")]
+#[doc(alias = "non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")]
 #[doc(alias = "__ZThn4_N4Ogre11Rectangle2DD0Ev")]
 pub fn stub_0xd5b09c() -> ! {
     todo!("0xd5b09c __ZThn4_N4Ogre11Rectangle2DD0Ev")
@@ -525,7 +525,7 @@ pub fn stub_0xd5b09c() -> ! {
 
 // 0xd5b170 — __ZThn188_N4Ogre11Rectangle2DD0Ev
 // type: void __fastcall(Ogre::Rectangle2D *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")]
+#[doc(alias = "non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")]
 #[doc(alias = "__ZThn188_N4Ogre11Rectangle2DD0Ev")]
 pub fn stub_0xd5b170() -> ! {
     todo!("0xd5b170 __ZThn188_N4Ogre11Rectangle2DD0Ev")
@@ -533,7 +533,7 @@ pub fn stub_0xd5b170() -> ! {
 
 // 0xd5b240 — __ZThn4_N4Ogre11Rectangle2DD1Ev
 // type: void __fastcall(Ogre::Rectangle2D *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")]
+#[doc(alias = "non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")]
 #[doc(alias = "__ZThn4_N4Ogre11Rectangle2DD1Ev")]
 pub fn stub_0xd5b240() -> ! {
     todo!("0xd5b240 __ZThn4_N4Ogre11Rectangle2DD1Ev")
@@ -541,7 +541,7 @@ pub fn stub_0xd5b240() -> ! {
 
 // 0xd5b304 — __ZThn188_N4Ogre11Rectangle2DD1Ev
 // type: void __fastcall(Ogre::Rectangle2D *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")]
+#[doc(alias = "non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")]
 #[doc(alias = "__ZThn188_N4Ogre11Rectangle2DD1Ev")]
 pub fn stub_0xd5b304() -> ! {
     todo!("0xd5b304 __ZThn188_N4Ogre11Rectangle2DD1Ev")
@@ -573,7 +573,7 @@ pub fn stub_0xd5b814() -> ! {
 
 // 0xd5b858 — __ZThn188_NK4Ogre11Rectangle2D18getWorldTransformsEPNS_7Matrix4E
 // type: char *__fastcall(Ogre::Rectangle2D *this, Ogre::Matrix4 *)
-#[doc(alias = "`non-virtual thunk toOgre::Rectangle2D::getWorldTransforms(Ogre::Matrix4 *)const")]
+#[doc(alias = "non-virtual thunk toOgre::Rectangle2D::getWorldTransforms(Ogre::Matrix4 *)const")]
 #[doc(alias = "__ZThn188_NK4Ogre11Rectangle2D18getWorldTransformsEPNS_7Matrix4E")]
 pub fn stub_0xd5b858() -> ! {
     todo!("0xd5b858 __ZThn188_NK4Ogre11Rectangle2D18getWorldTransformsEPNS_7Matrix4E")
@@ -597,14 +597,14 @@ pub fn stub_0xd5b8a0() -> ! {
 
 // 0xd5b8a4 — __ZThn188_NK4Ogre11Rectangle2D19getSquaredViewDepthEPKNS_6CameraE
 // type: _DWORD __fastcall(Ogre::Rectangle2D *__hidden this, const Ogre::Camera *)
-#[doc(alias = "`non-virtual thunk toOgre::Rectangle2D::getSquaredViewDepth(Ogre::Camera const*)const")]
+#[doc(alias = "non-virtual thunk toOgre::Rectangle2D::getSquaredViewDepth(Ogre::Camera const*)const")]
 #[doc(alias = "__ZThn188_NK4Ogre11Rectangle2D19getSquaredViewDepthEPKNS_6CameraE")]
 pub fn stub_0xd5b8a4() -> ! {
     todo!("0xd5b8a4 __ZThn188_NK4Ogre11Rectangle2D19getSquaredViewDepthEPKNS_6CameraE")
 }
 
 // 0xd5b8a8 — __GLOBAL__I_a_751
-#[doc(alias = "`global constructor keyed to_a_751")]
+#[doc(alias = "global constructor keyed to_a_751")]
 #[doc(alias = "__GLOBAL__I_a_751")]
 pub fn stub_0xd5b8a8() -> ! {
     todo!("0xd5b8a8 __GLOBAL__I_a_751")
@@ -843,7 +843,7 @@ pub fn stub_0xd5cbe8() -> ! {
 }
 
 // 0xd5cbf4 — __GLOBAL__I_a_752
-#[doc(alias = "`global constructor keyed to_a_752")]
+#[doc(alias = "global constructor keyed to_a_752")]
 #[doc(alias = "__GLOBAL__I_a_752")]
 pub fn stub_0xd5cbf4() -> ! {
     todo!("0xd5cbf4 __GLOBAL__I_a_752")
@@ -858,7 +858,7 @@ pub fn stub_0xd5cc28() -> ! {
 }
 
 // 0xd5cc34 — __GLOBAL__I_a_753
-#[doc(alias = "`global constructor keyed to_a_753")]
+#[doc(alias = "global constructor keyed to_a_753")]
 #[doc(alias = "__GLOBAL__I_a_753")]
 pub fn stub_0xd5cc34() -> ! {
     todo!("0xd5cc34 __GLOBAL__I_a_753")

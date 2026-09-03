@@ -645,7 +645,7 @@ pub fn stub_0x490f50() -> ! {
 
 // 0x490f60 — __ZThn32_N3RBX7TextureD1Ev
 // type: void __fastcall(RBX::Texture *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Texture::~Texture()")]
+#[doc(alias = "non-virtual thunk toRBX::Texture::~Texture()")]
 #[doc(alias = "__ZThn32_N3RBX7TextureD1Ev")]
 pub fn stub_0x490f60() -> ! {
     todo!("0x490f60 `non-virtual thunk to'RBX::Texture::~Texture()")
@@ -653,7 +653,7 @@ pub fn stub_0x490f60() -> ! {
 
 // 0x490fa4 — __ZThn32_N3RBX7TextureD0Ev
 // type: void __fastcall(RBX::Texture *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Texture::~Texture()")]
+#[doc(alias = "non-virtual thunk toRBX::Texture::~Texture()")]
 #[doc(alias = "__ZThn32_N3RBX7TextureD0Ev")]
 pub fn stub_0x490fa4() -> ! {
     todo!("0x490fa4 `non-virtual thunk to'RBX::Texture::~Texture()")
@@ -668,7 +668,7 @@ pub fn stub_0x491080() -> ! {
 
 // 0x491090 — __ZThn36_N3RBX7TextureD1Ev
 // type: void __fastcall(RBX::Texture *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Texture::~Texture()")]
+#[doc(alias = "non-virtual thunk toRBX::Texture::~Texture()")]
 #[doc(alias = "__ZThn36_N3RBX7TextureD1Ev")]
 pub fn stub_0x491090() -> ! {
     todo!("0x491090 `non-virtual thunk to'RBX::Texture::~Texture()")
@@ -676,7 +676,7 @@ pub fn stub_0x491090() -> ! {
 
 // 0x4910d4 — __ZThn36_N3RBX7TextureD0Ev
 // type: void __fastcall(RBX::Texture *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Texture::~Texture()")]
+#[doc(alias = "non-virtual thunk toRBX::Texture::~Texture()")]
 #[doc(alias = "__ZThn36_N3RBX7TextureD0Ev")]
 pub fn stub_0x4910d4() -> ! {
     todo!("0x4910d4 `non-virtual thunk to'RBX::Texture::~Texture()")
