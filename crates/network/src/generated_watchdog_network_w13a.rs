@@ -11,7 +11,7 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
 // 0xa279dc — __ZThn4_N3rbx8callableINS_7signals6signalIFvbiEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf3IvN3RBX7Network7PlayersEbNS6_8weak_ptrINSC_6PlayerEEEiEENS7_5list4INS7_5valueIPSD_EENS6_3argILi1EEENSJ_ISG_EENSM_ILi2EEEEEEELi2ES3_E4callEbi
 // type: int __fastcall(int, pthread_mutex_t *, int)
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,bool,rbx_core::WeakPtr<RBX::Network::Player>,int>,boost::_bi::list4<boost::_bi::value<RBX::Network::Players*>,boost::arg<1>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<2>>>,2,void ()(bool,int)>::call(bool,int)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool,int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,bool,rbx_core::WeakPtr<RBX::Network::Player>,int>,boost::_bi::list4<boost::_bi::value<RBX::Network::Players*>,boost::arg<1>,boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::arg<2>>>,2,void ()(bool,int)>::call(bool,int)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvbiEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf3IvN3RBX7Network7PlayersEbNS6_8weak_ptrINSC_6PlayerEEEiEENS7_5list4INS7_5valueIPSD_EENS6_3argILi1EEENSJ_ISG_EENSM_ILi2EEEEEEELi2ES3_E4callEbi")]
 pub fn stub_0xa279dc() -> ! { todo!("0xa279dc __ZThn4_N3rbx8callableINS_7signals6signalIFvbiEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf3IvN3RBX7Network7PlayersEbNS6_8weak_ptrINSC_6PlayerEEEiEENS7_5list4INS7_5valueIPSD_EENS6_3argILi1EEENSJ_ISG_EENSM_ILi2EEEEEEELi2ES3_E4callEbi") }
 
@@ -77,7 +77,7 @@ pub fn stub_0xa28fc4() -> ! { todo!("0xa28fc4 __ZN3rbx8callableINS_7signals6sign
 
 // 0xa28fe0 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX7Network7PlayersEiRKSsSF_bEENS7_5list5INS7_5valueIPSD_EENSI_IiEENSI_IPKcEENS6_3argILi1EEENSI_IbEEEEEELi1ES3_E4callESs
 // type: int __fastcall(int, int)
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Players,int,std::string const&,std::string const&,bool>,boost::_bi::list5<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::_bi::value<char const*>,boost::arg<1>,boost::_bi::value<bool>>>,1,void ()(std::string)>::call(std::string)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Players,int,std::string const&,std::string const&,bool>,boost::_bi::list5<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::_bi::value<char const*>,boost::arg<1>,boost::_bi::value<bool>>>,1,void ()(std::string)>::call(std::string)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX7Network7PlayersEiRKSsSF_bEENS7_5list5INS7_5valueIPSD_EENSI_IiEENSI_IPKcEENS6_3argILi1EEENSI_IbEEEEEELi1ES3_E4callESs")]
 pub fn stub_0xa28fe0() -> ! { todo!("0xa28fe0 __ZThn4_N3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX7Network7PlayersEiRKSsSF_bEENS7_5list5INS7_5valueIPSD_EENSI_IiEENSI_IPKcEENS6_3argILi1EEENSI_IbEEEEEELi1ES3_E4callESs") }
 
@@ -107,7 +107,7 @@ pub fn stub_0xa29410() -> ! { todo!("0xa29410 __ZN3rbx8callableINS_7signals6sign
 
 // 0xa29430 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX7Network7PlayersEiEENS7_5list2INS7_5valueIPSD_EENSG_IiEEEEEELi0ES3_E4callEv
 // type: int __fastcall(_DWORD *)
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Players,int>,boost::_bi::list2<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>>>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Players,int>,boost::_bi::list2<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX7Network7PlayersEiEENS7_5list2INS7_5valueIPSD_EENSG_IiEEEEEELi0ES3_E4callEv")]
 pub fn stub_0xa29430() -> ! { todo!("0xa29430 __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX7Network7PlayersEiEENS7_5list2INS7_5valueIPSD_EENSG_IiEEEEEELi0ES3_E4callEv") }
 
@@ -131,7 +131,7 @@ pub fn stub_0xa29d68() -> ! { todo!("0xa29d68 __ZN3rbx8callableINS_7signals6sign
 
 // 0xa29d90 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsN3G3D7Vector3EEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf3IvN3RBX7Network7PlayersEiSsS4_EENS9_5list4INS9_5valueIPSF_EENSI_IiEENS8_3argILi1EEENSM_ILi2EEEEEEELi2ES5_E4callESsS4_
 // type: int __fastcall(int, int, int, int, int)
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,int,std::string,G3D::Vector3>,boost::_bi::list4<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,G3D::Vector3)>::call(std::string,G3D::Vector3)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,int,std::string,G3D::Vector3>,boost::_bi::list4<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,G3D::Vector3)>::call(std::string,G3D::Vector3)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvSsN3G3D7Vector3EEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf3IvN3RBX7Network7PlayersEiSsS4_EENS9_5list4INS9_5valueIPSF_EENSI_IiEENS8_3argILi1EEENSM_ILi2EEEEEEELi2ES5_E4callESsS4_")]
 pub fn stub_0xa29d90() -> ! { todo!("0xa29d90 __ZThn4_N3rbx8callableINS_7signals6signalIFvSsN3G3D7Vector3EEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf3IvN3RBX7Network7PlayersEiSsS4_EENS9_5list4INS9_5valueIPSF_EENSI_IiEENS8_3argILi1EEENSM_ILi2EEEEEEELi2ES5_E4callESsS4_") }
 
@@ -161,7 +161,7 @@ pub fn stub_0xa2abd8() -> ! { todo!("0xa2abd8 __ZN3rbx8callableINS_7signals6sign
 
 // 0xa2abf4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsSsSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX7Network7PlayersEiSsSsSsEENS7_5list5INS7_5valueIPSD_EENSG_IiEENS6_3argILi1EEENSK_ILi2EEENSK_ILi3EEEEEEELi3ES3_E4callESsSsSs
 // type: int __fastcall(int, int, int, int)
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Players,int,std::string,std::string,std::string>,boost::_bi::list5<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(std::string,std::string,std::string)>::call(std::string,std::string,std::string)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Players,int,std::string,std::string,std::string>,boost::_bi::list5<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(std::string,std::string,std::string)>::call(std::string,std::string,std::string)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvSsSsSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX7Network7PlayersEiSsSsSsEENS7_5list5INS7_5valueIPSD_EENSG_IiEENS6_3argILi1EEENSK_ILi2EEENSK_ILi3EEEEEEELi3ES3_E4callESsSsSs")]
 pub fn stub_0xa2abf4() -> ! { todo!("0xa2abf4 __ZThn4_N3rbx8callableINS_7signals6signalIFvSsSsSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf4IvN3RBX7Network7PlayersEiSsSsSsEENS7_5list5INS7_5valueIPSD_EENSG_IiEENS6_3argILi1EEENSK_ILi2EEENSK_ILi3EEEEEEELi3ES3_E4callESsSsSs") }
 

@@ -408,7 +408,7 @@ pub fn stub_0xcda1c0() -> ! {
 
 // 0xcda1cc — __ZThn4_N4Ogre12ManualObjectD0Ev
 // type: void __fastcall(Ogre::ManualObject *__hidden this)
-#[doc(alias = "`non-virtual thunk to'Ogre::ManualObject::~ManualObject()")]
+#[doc(alias = "non-virtual thunk toOgre::ManualObject::~ManualObject()")]
 #[doc(alias = "__ZThn4_N4Ogre12ManualObjectD0Ev")]
 pub fn stub_0xcda1cc() -> ! {
     todo!("0xcda1cc `non-virtual thunk to'Ogre::ManualObject::~ManualObject()")
@@ -424,7 +424,7 @@ pub fn stub_0xcda260() -> ! {
 
 // 0xcda394 — __ZThn4_N4Ogre12ManualObjectD1Ev
 // type: void __fastcall(Ogre::ManualObject *__hidden this)
-#[doc(alias = "`non-virtual thunk to'Ogre::ManualObject::~ManualObject()")]
+#[doc(alias = "non-virtual thunk toOgre::ManualObject::~ManualObject()")]
 #[doc(alias = "__ZThn4_N4Ogre12ManualObjectD1Ev")]
 pub fn stub_0xcda394() -> ! {
     todo!("0xcda394 `non-virtual thunk to'Ogre::ManualObject::~ManualObject()")

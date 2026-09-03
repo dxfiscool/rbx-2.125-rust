@@ -107,7 +107,7 @@ pub fn stub_be75bc() -> ! {
 // 0xbe75c4 — __ZThn4_N3RBX10ViewRbxGfx12enableAdornsEb — `non-virtual thunk toRBX::ViewRbxGfx::enableAdorns(bool)
 // type: _DWORD __fastcall(RBX::ViewRbxGfx *__hidden this, bool)
 #[doc(alias = "__ZThn4_N3RBX10ViewRbxGfx12enableAdornsEb")]
-#[doc(alias = "`non-virtual thunk toRBX::ViewRbxGfx::enableAdorns(bool)")]
+#[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::enableAdorns(bool)")]
 pub fn stub_be75c4() -> ! {
     todo!("0xbe75c4 __ZThn4_N3RBX10ViewRbxGfx12enableAdornsEb")
 }
@@ -171,7 +171,7 @@ pub fn stub_be8794() -> ! {
 // 0xbe8798 — __ZThn8_N3RBX10ViewRbxGfxD0Ev — `non-virtual thunk toRBX::ViewRbxGfx::~ViewRbxGfx()
 // type: void __fastcall(RBX::ViewRbxGfx *__hidden this)
 #[doc(alias = "__ZThn8_N3RBX10ViewRbxGfxD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::ViewRbxGfx::~ViewRbxGfx()")]
+#[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::~ViewRbxGfx()")]
 pub fn stub_be8798() -> ! {
     todo!("0xbe8798 __ZThn8_N3RBX10ViewRbxGfxD0Ev")
 }
@@ -187,7 +187,7 @@ pub fn stub_be883c() -> ! {
 // 0xbe8e20 — __ZThn8_N3RBX10ViewRbxGfxD1Ev — `non-virtual thunk toRBX::ViewRbxGfx::~ViewRbxGfx()
 // type: void __fastcall(RBX::ViewRbxGfx *__hidden this)
 #[doc(alias = "__ZThn8_N3RBX10ViewRbxGfxD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::ViewRbxGfx::~ViewRbxGfx()")]
+#[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::~ViewRbxGfx()")]
 pub fn stub_be8e20() -> ! {
     todo!("0xbe8e20 __ZThn8_N3RBX10ViewRbxGfxD1Ev")
 }
@@ -297,7 +297,7 @@ pub fn stub_bec1a0() -> ! {
 
 // 0xbec240 — __ZThn4_N3RBX10ViewRbxGfx14captureMetricsERNS_13RenderMetricsE — `non-virtual thunk toRBX::ViewRbxGfx::captureMetrics(RBX::RenderMetrics &)
 #[doc(alias = "__ZThn4_N3RBX10ViewRbxGfx14captureMetricsERNS_13RenderMetricsE")]
-#[doc(alias = "`non-virtual thunk toRBX::ViewRbxGfx::captureMetrics(RBX::RenderMetrics &)")]
+#[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::captureMetrics(RBX::RenderMetrics &)")]
 pub fn stub_bec240() -> ! {
     todo!("0xbec240 __ZThn4_N3RBX10ViewRbxGfx14captureMetricsERNS_13RenderMetricsE")
 }
@@ -313,7 +313,7 @@ pub fn stub_bec65c() -> ! {
 // 0xbec7fc — __ZThn4_N3RBX10ViewRbxGfx10printSceneEv — `non-virtual thunk toRBX::ViewRbxGfx::printScene(void)
 // type: _DWORD __fastcall(RBX::ViewRbxGfx *__hidden this)
 #[doc(alias = "__ZThn4_N3RBX10ViewRbxGfx10printSceneEv")]
-#[doc(alias = "`non-virtual thunk toRBX::ViewRbxGfx::printScene(void)")]
+#[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::printScene(void)")]
 pub fn stub_bec7fc() -> ! {
     todo!("0xbec7fc __ZThn4_N3RBX10ViewRbxGfx10printSceneEv")
 }
@@ -408,7 +408,7 @@ pub fn stub_bef0f8() -> ! {
 // 0xbef138 — __ZThn8_N3RBX10ViewRbxGfx13eventOccurredERKSsPKSt3mapISsSsSt4lessISsEN4Ogre12STLAllocatorISt4pairIS1_SsENS6_22CategorisedAllocPolicyILNS6_14MemoryCategoryE0EEEEEE — `non-virtual thunk toRBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)
 // type: int __fastcall(int, std::string *this)
 #[doc(alias = "__ZThn8_N3RBX10ViewRbxGfx13eventOccurredERKSsPKSt3mapISsSsSt4lessISsEN4Ogre12STLAllocatorISt4pairIS1_SsENS6_22CategorisedAllocPolicyILNS6_14MemoryCategoryE0EEEEEE")]
-#[doc(alias = "`non-virtual thunk toRBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
+#[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
 pub fn stub_bef138() -> ! {
     todo!("0xbef138 __ZThn8_N3RBX10ViewRbxGfx13eventOccurredERKSsPKSt3mapISsSsSt4lessISsEN4Ogre12STLAllocatorISt4pairIS1_SsENS6_22CategorisedAllocPolicyILNS6_14MemoryCategoryE0EEEEEE")
 }
@@ -499,7 +499,7 @@ pub fn stub_bf10f4() -> ! {
 
 // 0xbf110c — __ZThn4_N3rbx8callableINS_7signals6signalIFviEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX10ViewRbxGfxEiEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEi — `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ViewRbxGfx,int>,boost::_bi::list2<boost::_bi::value<RBX::ViewRbxGfx*>,boost::arg<1>>>,1,void ()(int)>::call(int)
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFviEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX10ViewRbxGfxEiEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEi")]
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ViewRbxGfx,int>,boost::_bi::list2<boost::_bi::value<RBX::ViewRbxGfx*>,boost::arg<1>>>,1,void ()(int)>::call(int)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ViewRbxGfx,int>,boost::_bi::list2<boost::_bi::value<RBX::ViewRbxGfx*>,boost::arg<1>>>,1,void ()(int)>::call(int)")]
 pub fn stub_bf110c() -> ! {
     todo!("0xbf110c __ZThn4_N3rbx8callableINS_7signals6signalIFviEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX10ViewRbxGfxEiEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEi")
 }
@@ -528,7 +528,7 @@ pub fn stub_bf1a14() -> ! {
 // 0xbf1a2c — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX10ViewRbxGfxEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv — `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ViewRbxGfx>,boost::_bi::list1<boost::_bi::value<RBX::ViewRbxGfx*>>>,0,void ()(void)>::call(void)
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX10ViewRbxGfxEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")]
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ViewRbxGfx>,boost::_bi::list1<boost::_bi::value<RBX::ViewRbxGfx*>>>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ViewRbxGfx>,boost::_bi::list1<boost::_bi::value<RBX::ViewRbxGfx*>>>,0,void ()(void)>::call(void)")]
 pub fn stub_bf1a2c() -> ! {
     todo!("0xbf1a2c __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX10ViewRbxGfxEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")
 }
@@ -556,7 +556,7 @@ pub fn stub_bf1d5c() -> ! {
 
 // 0xbf1d74 — __ZThn4_N3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX10ViewRbxGfxEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb — `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ViewRbxGfx,bool>,boost::_bi::list2<boost::_bi::value<RBX::ViewRbxGfx*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX10ViewRbxGfxEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb")]
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ViewRbxGfx,bool>,boost::_bi::list2<boost::_bi::value<RBX::ViewRbxGfx*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ViewRbxGfx,bool>,boost::_bi::list2<boost::_bi::value<RBX::ViewRbxGfx*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")]
 pub fn stub_bf1d74() -> ! {
     todo!("0xbf1d74 __ZThn4_N3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX10ViewRbxGfxEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb")
 }
@@ -803,7 +803,7 @@ pub fn stub_c5c4e8() -> ! {
 // 0xc5c590 — __ZThn188_NK4Ogre14BillboardChain19getSquaredViewDepthEPKNS_6CameraE — `non-virtual thunk toOgre::BillboardChain::getSquaredViewDepth(Ogre::Camera const*)const
 // type: _DWORD __fastcall(Ogre::BillboardChain *__hidden this, const Ogre::Camera *)
 #[doc(alias = "__ZThn188_NK4Ogre14BillboardChain19getSquaredViewDepthEPKNS_6CameraE")]
-#[doc(alias = "`non-virtual thunk toOgre::BillboardChain::getSquaredViewDepth(Ogre::Camera const*)const")]
+#[doc(alias = "non-virtual thunk toOgre::BillboardChain::getSquaredViewDepth(Ogre::Camera const*)const")]
 pub fn stub_c5c590() -> ! {
     todo!("0xc5c590 __ZThn188_NK4Ogre14BillboardChain19getSquaredViewDepthEPKNS_6CameraE")
 }
@@ -817,7 +817,7 @@ pub fn stub_c642dc() -> ! {
 
 // 0xc642ec — __ZThn188_NK4Ogre12BillboardSet19getSquaredViewDepthEPKNS_6CameraE — `non-virtual thunk toOgre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const
 #[doc(alias = "__ZThn188_NK4Ogre12BillboardSet19getSquaredViewDepthEPKNS_6CameraE")]
-#[doc(alias = "`non-virtual thunk toOgre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const")]
+#[doc(alias = "non-virtual thunk toOgre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const")]
 pub fn stub_c642ec() -> ! {
     todo!("0xc642ec __ZThn188_NK4Ogre12BillboardSet19getSquaredViewDepthEPKNS_6CameraE")
 }
