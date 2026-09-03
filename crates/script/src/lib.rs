@@ -363,5 +363,6 @@ pub mod generated_watchdog_script_wd2;
 pub mod generated_lua_gap_e9f794;
 pub mod generated_watchdog_script_wdA;
 pub mod generated_watchdog_script_wdB;
+pub mod generated_watchdog_script_wdC;
 pub mod generated_watchdog_sna_wda;
 pub mod generated_watchdog_sna_A;
