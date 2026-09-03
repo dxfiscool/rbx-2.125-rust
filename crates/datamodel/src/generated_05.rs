@@ -24,6 +24,9 @@ pub struct Instance {
     pub name: InstanceName,
     /// Original flag byte at name store `+ 0x16`.
     pub roblox_locked: bool,
+    /// Parent-lock flag at name store `+ 21` (IDA `0x6ffcfc`); distinct from
+    /// `roblox_locked` (`+ 22`). Throws out of `setParentInternal`.
+    pub parent_locked: bool,
     /// Class name behind the instance vtable's `classDescriptor` slot
     /// (read as `*(this + 12)` words at e.g. IDA `0x70376e`); drives the
     /// `ClassDescriptor::isA` checks until a hierarchy model exists.
@@ -32,11 +35,127 @@ pub struct Instance {
     /// `visitDescendants` (IDA `0x70430c`) and the `ServiceProvider::find`
     /// scan (IDA `0x7039cc`).
     pub children: Vec<SharedPtr<Instance>>,
+    /// Re-entrancy guard at byte `+64` (IDA `0x6ffe86`); set for the body of
+    /// `setParentInternal`.
+    pub in_set_parent: bool,
+    /// Combined child-added/removed signal at `+80` (IDA `0x70013e` kind `1`,
+    /// IDA `0x7001d6` kind `0`; see `CombinedSignal`).
+    pub combined: CombinedSignal,
+    /// Virtual-hook table for the reparenting path (`setParentInternal`,
+    /// IDA `0x6ffc98`) and the tree queries; base-class slots are no-ops
+    /// (`None`) until subclass overrides are modelled.
+    pub hooks: InstanceHooks,
     /// Lazily allocated block from `RBX::Instance::onDemandWrite` (IDA `0x7010ac`).
     pub write: Option<Box<InstanceWrite>>,
     /// Embedded `boost::enable_shared_from_this` weak owner at `this + 40`
     /// (IDA `0x7039e4` reads px at `+40`, pi at `+44`).
     pub weak_owner: WeakPtr<Instance>,
+}
+/// Two-pointer virtual hook (`RBX::Instance` vtable slots `+56`, `+64`,
+/// `+100`, `+104`, `+108` in `setParentInternal`, IDA `0x6ffc98`).
+pub type Hook2 = fn(*mut Instance, *const Instance);
+/// Three-pointer virtual hook (slots `+60`, `+68`, `+88`).
+pub type Hook3 = fn(*mut Instance, *const Instance, *const Instance);
+/// overridable `getPersistentDataCost` virtual (slot `+32`, IDA `0x6ff898`).
+pub type CostHook = fn(*const Instance) -> i32;
+/// `onChildChanged` propagation virtual (slot `+112`, IDA `0x6ff8ac`).
+pub type ChildChangedHook = fn(*mut Instance) -> i32;
+/// Subclass `readProperty`/`read` virtual (slot `+120`, IDA `0x6ff02c`).
+pub type ReadNodeHook = fn(*mut Instance, &XmlElement, &mut ReferenceBinder);
+/// Property identity for `raisePropertyChanged` (IDA `0x700222`,
+/// `0x6fee64`): only the descriptors referenced so far are modelled.
+#[derive(Clone, Copy, PartialEq, Eq)]
+pub enum PropertyKind {
+    Parent,
+    RobloxLocked,
+}
+/// Virtual-hook table; see `Instance::hooks`.
+#[derive(Default)]
+pub struct InstanceHooks {
+    pub changing: Option<Hook2>,
+    pub ancestry_changing: Option<Hook3>,
+    pub child_added: Option<Hook2>,
+    pub descendant_added: Option<Hook3>,
+    pub added: Option<Hook2>,
+    pub removing: Option<Hook2>,
+    pub child_removed: Option<Hook2>,
+    pub ancestry_changed: Option<Hook3>,
+    pub property_changed: Option<fn(*mut Instance, PropertyKind)>,
+    pub on_child_changed: Option<ChildChangedHook>,
+    pub data_cost: Option<CostHook>,
+    pub read_node: Option<ReadNodeHook>,
+}
+/// XML tag/attribute names used by the `Instance::read*` family
+/// (IDA `0x6feebc`, `0x6ff018`, `0x6ff03e`, `0x6ff092`).
+pub const TAG_ITEM: &str = "Item";
+pub const TAG_PROPERTIES: &str = "Properties";
+pub const ATTR_CLASS: &str = "class";
+pub const ATTR_REFERENT: &str = "referent";
+/// Rust model of one `XmlElement` for the `Instance::read*` family (IDA
+/// `0x6fefd0` et al.): tag word at `+12`, attribute list, child list.
+/// `Name*` tag identity collapses into interned strings.
+#[derive(Default)]
+pub struct XmlElement {
+    pub tag: String,
+    pub attrs: Vec<XmlAttr>,
+    pub children: Vec<XmlElement>,
+}
+/// Rust model of one `XmlElement` attribute (`XmlNameValuePair`, IDA
+/// `0x6feebc`): presence is resolution (`getValue() == 1`).
+#[derive(Default)]
+pub struct XmlAttr {
+    pub name: String,
+    pub value: String,
+}
+impl XmlElement {
+    /// Rust model of `XmlElement::findAttribute` (IDA `0x6feebc`,
+    /// `0x6feff0`): linear scan by name.
+    pub fn find_attribute(&self, name: &str) -> Option<&XmlAttr> {
+        self.attrs.iter().find(|a| a.name == name)
+    }
+    /// Rust model of `XmlElement::findFirstChildByTag` (IDA `0x6ff092`).
+    pub fn find_first_child_by_tag(&self, tag: &str) -> Option<&XmlElement> {
+        self.children.iter().find(|c| c.tag == tag)
+    }
+    /// Rust model of `XmlElement::findNextChildWithSameTag` (IDA `0x6ff0a0`):
+    /// first same-tag sibling after `prev` by identity.
+    pub fn find_next_child_with_same_tag(&self, prev: *const XmlElement, tag: &str) -> Option<&XmlElement> {
+        let mut after = false;
+        for child in self.children.iter() {
+            if after && child.tag == tag {
+                return Some(child);
+            }
+            if (child as *const XmlElement) == prev {
+                after = true;
+            }
+        }
+        None
+    }
+}
+/// Rust model of `RBX::IReferenceBinder` (IDA `0x6ff002`, `0x6fef64`): maps
+/// `referent` names to instances. The `(**a3)(a3, name, target)` calls are
+/// `bind`.
+#[derive(Default)]
+pub struct ReferenceBinder {
+    pub entries: HashMap<String, *const Instance>,
+}
+impl ReferenceBinder {
+    pub fn bind(&mut self, name: &str, inst: *const Instance) {
+        self.entries.insert(name.to_string(), inst);
+    }
+}
+/// Collapse of `RBX::shared_from<Instance>` retains (IDA `0x6ffeba`,
+/// `0x6ffec6`): mints a borrower `SharedPtr` from a pointer the caller
+/// guarantees comes from a live `Arc`. The `from_raw` ownership is
+/// immediately forgotten, so the net effect is exactly one clone.
+/// # Safety
+/// `ptr` must point into a live `SharedPtr<Instance>` allocation that
+/// outlives the returned handle's clones.
+pub unsafe fn borrow_shared(ptr: *const Instance) -> SharedPtr<Instance> {
+    let owned = SharedPtr::from_raw(ptr);
+    let out = owned.clone();
+    core::mem::forget(owned);
+    out
 }
 
 /// Embedded name store. Original `getName` returns `*(this + 17) + 24`
@@ -407,8 +526,11 @@ pub fn stub_0x70348c(this: *const Instance) -> *const Instance {
 }
 // 0x703490 — __ZN3RBX8Instance9setParentEPS0_
 #[doc(alias = "RBX::Instance::setParent(RBX::Instance*)")]
-pub fn stub_0x703490() -> ! {
-    todo!("0x703490 RBX::Instance::setParent(RBX::Instance*)")
+pub fn stub_0x703490(this: *mut Instance, new_parent: *const Instance) -> bool {
+    // IDA 0x703490: `MOVS R2,#0; B.W setParentInternal` — pure delegation
+    // with `a3 = 0` (lock check enabled).
+    // SAFETY: same contract as `crate::generated_86::stub_6ffc98`.
+    crate::generated_86::stub_6ffc98(this, new_parent, false)
 }
 // 0x703498 — __ZN3RBX10Reflection17RefPropDescriptorINS_8InstanceES2_ED1Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Instance,RBX::Instance>::~RefPropDescriptor()")]

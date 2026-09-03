@@ -8,6 +8,31 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::generated_05::{
+    ATTR_CLASS, ATTR_REFERENT, TAG_ITEM, TAG_PROPERTIES, CombinedSignal, CreatorRole, Instance,
+    PropertyKind, ReferenceBinder, XmlElement, borrow_shared, instance_is_a, stub_0x703568,
+    stub_0x703cc0, stub_0x703dc8, stub_0x703fb0,
+};
+use std::collections::HashMap;
+/// Rust model of `RBX::Security::Context` (IDA `0x6ffb52`,
+/// `0x6ffb78`): `current()` snapshots the calling context,
+/// `requirePermission` enforces one class-permission word. No permission
+/// table is modelled yet, so every requirement is granted; the ancestry
+/// walk itself (the observable control flow) is preserved.
+pub struct SecurityContext;
+impl SecurityContext {
+    pub fn current() -> Self {
+        SecurityContext
+    }
+    pub fn require_permission(&self, _permission: u32) -> bool {
+        true
+    }
+}
+/// Class permission word behind `*(classDesc + 276)` (IDA `0x6ffb5c`):
+/// unmodelled classes default to `0` (granted, see `SecurityContext`).
+pub fn class_permission(_class: &str) -> u32 {
+    0
+}
 
 // 0x6dfb70 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats14TypedStatsItemIfEENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<float> *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
@@ -173,15 +198,32 @@ pub fn stub_6fdff8() -> ! {
 // 0x6fe8a4 — __ZN3RBX8Instance6removeEv
 #[doc(alias = "RBX::Instance::remove(void)")]
 // was: RBX::Instance::remove(void)
-pub fn stub_6fe8a4() -> ! {
-    todo!("0x6fe8a4 RBX::Instance::remove(void)")
+pub fn stub_6fe8a4(child: &SharedPtr<Instance>) {
+    // IDA 0x6fe8a4: `setParentInternal(this, 0, 0)` (disasm 0x6fe906), then
+    // `for_each` over the pre-detach child snapshot (disasm 0x6fe92a) with
+    // the `mf0` remove binder — i.e. recursive `remove` of every child.
+    // The snapshot clone is the pre-detach vector read (disasm 0x6fe8c8).
+    stub_6ffc98(SharedPtr::as_ptr(child) as *mut Instance, core::ptr::null(), false);
+    let snapshot = child.children.clone();
+    for grand in snapshot.iter() {
+        stub_6fe8a4(grand);
+    }
 }
 
 // 0x6fe994 — __ZN3RBX8Instance17removeAllChildrenEv
 #[doc(alias = "RBX::Instance::removeAllChildren(void)")]
 // was: RBX::Instance::removeAllChildren(void)
-pub fn stub_6fe994() -> ! {
-    todo!("0x6fe994 RBX::Instance::removeAllChildren(void)")
+pub fn stub_6fe994(this: *mut Instance) {
+    // IDA 0x6fe994: loop while the `+56` holder is set (disasm 0x6fe9be):
+    // retain one child (`shared_count` copy, disasm 0x6fea04), `remove` it
+    // (disasm 0x6fea12), release, repeat. Each `remove` detaches from this
+    // vector, so looping until empty is the same iteration.
+    // SAFETY: `this` must point to a valid `Instance` outliving the call.
+    unsafe {
+        while let Some(last) = (*this).children.last().cloned() {
+            stub_6fe8a4(&last);
+        }
+    }
 }
 
 // 0x6fea84 — __ZN3RBX8Instance12waitForChildESsN5boost8functionIFvNS1_10shared_ptrIS0_EEEEENS2_IFvSsEEE
@@ -194,36 +236,130 @@ pub fn stub_6fea84() -> ! {
 // 0x6fee38 — __ZN3RBX8Instance15setRobloxLockedEb
 #[doc(alias = "RBX::Instance::setRobloxLocked(bool)")]
 // was: RBX::Instance::setRobloxLocked(bool)
-pub fn stub_6fee38() -> ! {
-    todo!("0x6fee38 RBX::Instance::setRobloxLocked(bool)")
+pub fn stub_6fee38(this: *mut Instance, value: bool) -> bool {
+    // IDA 0x6fee38: unchanged (`store + 22 == a2`, disasm 0x6fee4a) returns
+    // the store word; else `FWValue<bool>::set(store + 22)` (disasm 0x6fee54,
+    // collapses to the plain store) and
+    // `raisePropertyChanged(propRobloxLocked)` (disasm 0x6fee64). Nonzero
+    // returns map to `true`.
+    // SAFETY: `this` must point to a valid `Instance`.
+    unsafe {
+        if (*this).roblox_locked != value {
+            (*this).roblox_locked = value;
+            if let Some(hook) = (*this).hooks.property_changed {
+                hook(this, PropertyKind::RobloxLocked);
+            }
+        }
+        true
+    }
 }
 
 // 0x6fee6c — __ZN3RBX8Instance11createChildERKNS_4NameENS_11CreatorRoleE
 #[doc(alias = "RBX::Instance::createChild(RBX::Name const&,RBX::CreatorRole)")]
 // was: RBX::Instance::createChild(RBX::Name const&,RBX::CreatorRole)
-pub fn stub_6fee6c() -> ! {
-    todo!("0x6fee6c RBX::Instance::createChild(RBX::Name const&,RBX::CreatorRole)")
+pub fn stub_6fee6c(_this: *mut Instance, name: &str, role: CreatorRole) -> Option<SharedPtr<Instance>> {
+    // IDA 0x6fee6c: pure forward of `(name, role)` to
+    // `AbstractFactoryProduct<Instance>::create` (disasm 0x6fee78); the
+    // member `this` (a2) is unused and nothing auto-parents the product.
+    let mut out = None;
+    stub_0x703568(&mut out as *mut _, name, role);
+    out
 }
 
 // 0x6fee7c — __ZN3RBX8Instance9readChildEPK10XmlElementRNS_16IReferenceBinderENS_11CreatorRoleE
 #[doc(alias = "RBX::Instance::readChild(XmlElement const*,RBX::IReferenceBinder &,RBX::CreatorRole)")]
 // was: RBX::Instance::readChild(XmlElement const*,RBX::IReferenceBinder &,RBX::CreatorRole)
-pub fn stub_6fee7c() -> ! {
-    todo!("0x6fee7c RBX::Instance::readChild(XmlElement const*,RBX::IReferenceBinder &,RBX::CreatorRole)")
+pub fn stub_6fee7c(
+    parent: *mut Instance,
+    elem: &XmlElement,
+    binder: &mut ReferenceBinder,
+    role: CreatorRole,
+) {
+    // IDA 0x6fee7c: `class` attribute lookup (disasm 0x6feebc); resolved
+    // (`getValue() == 1`, disasm 0x6feefa) drives the `+44` factory virtual
+    // (disasm 0x6fef0c — collapses to the creator-table lookup), then
+    // `read(child)` (disasm 0x6fef1e) and `setParentInternal(child, parent,
+    // 0)` (disasm 0x6fef2e). A failed create falls to the `referent`
+    // attribute + binder path (disasm 0x6fef4c-0x6fef64).
+    // SAFETY: `parent` must point to a valid `Instance` outliving the call.
+    if let Some(class_attr) = elem.find_attribute(ATTR_CLASS) {
+        let mut out = None;
+        stub_0x703568(&mut out as *mut _, &class_attr.value, role);
+        match out {
+            Some(child) => {
+                let raw = SharedPtr::as_ptr(&child) as *mut Instance;
+                stub_6fefd0(raw, elem, binder, role);
+                stub_6ffc98(raw, parent as *const Instance, false);
+            }
+            None => {
+                if let Some(referent) = elem.find_attribute(ATTR_REFERENT) {
+                    binder.bind(&referent.value, core::ptr::null());
+                }
+            }
+        }
+    }
 }
 
 // 0x6fefd0 — __ZN3RBX8Instance4readEPK10XmlElementRNS_16IReferenceBinderENS_11CreatorRoleE
 #[doc(alias = "RBX::Instance::read(XmlElement const*,RBX::IReferenceBinder &,RBX::CreatorRole)")]
 // was: RBX::Instance::read(XmlElement const*,RBX::IReferenceBinder &,RBX::CreatorRole)
-pub fn stub_6fefd0() -> ! {
-    todo!("0x6fefd0 RBX::Instance::read(XmlElement const*,RBX::IReferenceBinder &,RBX::CreatorRole)")
+pub fn stub_6fefd0(
+    this: *mut Instance,
+    elem: &XmlElement,
+    binder: &mut ReferenceBinder,
+    role: CreatorRole,
+) {
+    // IDA 0x6fefd0: `referent` attribute binds `(name, this + 36)` (disasm
+    // 0x6feff0-0x6ff002 — the `+36` member offset collapses to `this`);
+    // non-`Item` tags delegate to the `+120` subclass virtual (disasm
+    // 0x6ff018-0x6ff02c); `Item` tags run each `Properties` sub-element
+    // through the same `+120` slot (disasm 0x6ff03e-0x6ff052) and finish
+    // with `readChildren` (disasm 0x6ff052-tail).
+    // SAFETY: `this` must point to a valid `Instance` outliving the call.
+    unsafe {
+        if let Some(referent) = elem.find_attribute(ATTR_REFERENT) {
+            binder.bind(&referent.value, this as *const Instance);
+        }
+        if elem.tag != TAG_ITEM {
+            if let Some(hook) = (*this).hooks.read_node {
+                hook(this, elem, binder);
+            }
+            return;
+        }
+        if let Some(props) = elem.find_first_child_by_tag(TAG_PROPERTIES) {
+            for prop in props.children.iter() {
+                if let Some(hook) = (*this).hooks.read_node {
+                    hook(this, prop, binder);
+                }
+            }
+        }
+        stub_6ff070(this, elem, binder, role);
+    }
 }
 
 // 0x6ff070 — __ZN3RBX8Instance12readChildrenEPK10XmlElementRNS_16IReferenceBinderENS_11CreatorRoleE
 #[doc(alias = "RBX::Instance::readChildren(XmlElement const*,RBX::IReferenceBinder &,RBX::CreatorRole)")]
 // was: RBX::Instance::readChildren(XmlElement const*,RBX::IReferenceBinder &,RBX::CreatorRole)
-pub fn stub_6ff070() -> ! {
-    todo!("0x6ff070 RBX::Instance::readChildren(XmlElement const*,RBX::IReferenceBinder &,RBX::CreatorRole)")
+pub fn stub_6ff070(
+    this: *mut Instance,
+    elem: &XmlElement,
+    binder: &mut ReferenceBinder,
+    role: CreatorRole,
+) {
+    // IDA 0x6ff070: null element returns at once (disasm 0x6ff080);
+    // `findFirstChildByTag(Item)` (disasm 0x6ff092) then
+    // `findNextChildWithSameTag` (disasm 0x6ff0a0) until null (disasm
+    // 0x6ff0b0), `readChild` per item (disasm 0x6ff0a0-call).
+    // SAFETY: `this` must point to a valid `Instance` outliving the call.
+    let mut next = elem.find_first_child_by_tag(TAG_ITEM).map(|e| e as *const XmlElement);
+    while let Some(current) = next {
+        unsafe {
+            stub_6fee7c(this, &*current, binder, role);
+        }
+        next = elem
+            .find_next_child_with_same_tag(current, TAG_ITEM)
+            .map(|found| found as *const XmlElement);
+    }
 }
 
 // 0x6ff0b8 — __ZN3RBX8Instance12readPropertyEPK10XmlElementRNS_16IReferenceBinderE
@@ -264,85 +400,474 @@ pub fn stub_6ff48c() -> ! {
 // 0x6ff77c — __ZNK3RBX8Instance21getPersistentDataCostEv
 #[doc(alias = "RBX::Instance::getPersistentDataCost(void)const")]
 // was: RBX::Instance::getPersistentDataCost(void)const
-pub fn stub_6ff77c() -> ! {
-    todo!("0x6ff77c RBX::Instance::getPersistentDataCost(void)const")
+pub fn stub_6ff77c(this: &SharedPtr<Instance>) -> i32 {
+    // IDA 0x6ff77c: `computeChildCost` binder over the children (disasm
+    // 0x6ff7b2-0x6ff81e) accumulating from `4` (disasm 0x6ff7b6); the
+    // `shared_count` copy/release pair is a borrow.
+    persistent_data_cost(SharedPtr::as_ptr(this))
 }
 
 // 0x6ff888 — __ZN3RBXL16computeChildCostEN5boost10shared_ptrINS_8InstanceEEEPi
 #[doc(alias = "RBX::computeChildCost(rbx_core::SharedPtr<RBX::Instance>,int *)")]
 // was: RBX::computeChildCost(boost::shared_ptr<RBX::Instance>,int *)
-pub fn stub_6ff888() -> ! {
-    todo!("0x6ff888 RBX::computeChildCost(rbx_core::SharedPtr<RBX::Instance>,int *)")
+pub fn stub_6ff888(child: &SharedPtr<Instance>, acc: &mut i32) -> i32 {
+    // IDA 0x6ff888: `*a2 += child->vf32()` (disasm 0x6ff898, slot `+32` =
+    // `getPersistentDataCost` virtual) and store back (disasm 0x6ff89a).
+    // The virtual collapses into `persistent_data_cost`, which honors the
+    // `data_cost` override hook.
+    *acc += persistent_data_cost(SharedPtr::as_ptr(child));
+    *acc
 }
 
 // 0x6ff8a0 — __ZN3RBX8Instance14onChildChangedEPS0_RKNS_15PropertyChangedE
 #[doc(alias = "RBX::Instance::onChildChanged(RBX::Instance*,RBX::PropertyChanged const&)")]
 // was: RBX::Instance::onChildChanged(RBX::Instance*,RBX::PropertyChanged const&)
-pub fn stub_6ff8a0() -> ! {
-    todo!("0x6ff8a0 RBX::Instance::onChildChanged(RBX::Instance*,RBX::PropertyChanged const&)")
+pub fn stub_6ff8a0(child: *mut Instance) -> i32 {
+    // IDA 0x6ff8a0: `parent = *(a1 + 52)` (disasm 0x6ff8a0); null parent
+    // returns `0` (disasm 0x6ff8a6), else the `+112` virtual on the parent
+    // (disasm 0x6ff8ac). The `PropertyChanged` arg has no model yet.
+    // SAFETY: `child` must be null or point to a valid `Instance`.
+    unsafe {
+        let parent = if child.is_null() {
+            core::ptr::null_mut()
+        } else {
+            (*child).parent as *mut Instance
+        };
+        if parent.is_null() {
+            0
+        } else {
+            (*parent).hooks.on_child_changed.map_or(0, |hook| hook(parent))
+        }
+    }
 }
 
 // 0x6ff8b0 — __ZNK3RBX8Instance14findChildIndexEPKS0_
 #[doc(alias = "RBX::Instance::findChildIndex(RBX::Instance const*)const")]
 // was: RBX::Instance::findChildIndex(RBX::Instance const*)const
-pub fn stub_6ff8b0() -> ! {
-    todo!("0x6ff8b0 RBX::Instance::findChildIndex(RBX::Instance const*)const")
+pub fn stub_6ff8b0(owner: &SharedPtr<Instance>, child: *const Instance) -> usize {
+    // IDA 0x6ff8b0: `ReleaseAssert` on the `+56` holder (Instance.cpp,
+    // disasm 0x6ff8ea), weak-lock of the owner (`bad_weak_ptr` throw,
+    // disasm 0x6ffa10-0x6ffa4a — unreachable for a live borrow), then
+    // `std::find` over the children by `shared_ptr` identity (disasm
+    // 0x6ff9d6) returning `(found - begin) >> 3` (disasm 0x6ffa02) — the
+    // child count on miss, no `-1` sentinel.
+    let children = &owner.children;
+    debug_assert!(!children.is_empty(), "0x6ff8b0: children holder");
+    children
+        .iter()
+        .position(|candidate| SharedPtr::as_ptr(candidate) == child)
+        .unwrap_or(children.len())
 }
 
 // 0x6ffa58 — __ZN3RBX8Instance29findFirstChildByNameRecursiveERKSs
 #[doc(alias = "RBX::Instance::findFirstChildByNameRecursive(std::string const&)")]
 // was: RBX::Instance::findFirstChildByNameRecursive(std::string const&)
-pub fn stub_6ffa58() -> ! {
-    todo!("0x6ffa58 RBX::Instance::findFirstChildByNameRecursive(std::string const&)")
+pub fn stub_6ffa58(this: *const Instance, name: &str) -> *const Instance {
+    // IDA 0x6ffa58: direct `findConstFirstChildByName` first (disasm
+    // 0x6ffa60); on miss recurse into each `+56` child in order via the
+    // `copy_on_write` snapshot (disasm 0x6ffa66-0x6ffa98), first hit wins,
+    // null when the subtree has no match.
+    // SAFETY: `this` must point to a valid `Instance` whose subtree outlives
+    // the call.
+    unsafe {
+        let direct = stub_6ffa9c(this, name);
+        if !direct.is_null() {
+            return direct;
+        }
+        for child in (*this).children.clone().iter() {
+            let hit = stub_6ffa58(SharedPtr::as_ptr(child), name);
+            if !hit.is_null() {
+                return hit;
+            }
+        }
+        core::ptr::null()
+    }
 }
 
 // 0x6ffa9c — __ZNK3RBX8Instance25findConstFirstChildByNameERKSs
 #[doc(alias = "RBX::Instance::findConstFirstChildByName(std::string const&)const")]
 // was: RBX::Instance::findConstFirstChildByName(std::string const&)const
-pub fn stub_6ffa9c() -> ! {
-    todo!("0x6ffa9c RBX::Instance::findConstFirstChildByName(std::string const&)const")
+pub fn stub_6ffa9c(this: *const Instance, name: &str) -> *const Instance {
+    // IDA 0x6ffa9c: linear scan of the `+56` snapshot (disasm 0x6ffaa6-0x6fface)
+    // comparing `string::compare(*(child + 68) + 24, name)` — the embedded
+    // name — first match wins, null on miss (disasm 0x6ffade).
+    // SAFETY: `this` must point to a valid `Instance` whose subtree outlives
+    // the call.
+    unsafe {
+        for child in (*this).children.iter() {
+            if (*SharedPtr::as_ptr(child)).name.text == name {
+                return SharedPtr::as_ptr(child);
+            }
+        }
+        core::ptr::null()
+    }
 }
 
 // 0x6ffae0 — __ZNK3RBX8Instance19findFirstAncestorOfEPKS0_
 #[doc(alias = "RBX::Instance::findFirstAncestorOf(RBX::Instance const*)const")]
 // was: RBX::Instance::findFirstAncestorOf(RBX::Instance const*)const
-pub fn stub_6ffae0() -> ! {
-    todo!("0x6ffae0 RBX::Instance::findFirstAncestorOf(RBX::Instance const*)const")
+pub fn stub_6ffae0(this: *const Instance, target: *const Instance) -> *const Instance {
+    // IDA 0x6ffae0: for each direct child `c` of `this` (disasm 0x6ffb00-0x6ffb1e),
+    // walk `target`'s ancestry via `+52` (disasm 0x6ffb0a-0x6ffb0c); a hit
+    // retains into the out `shared_ptr` and returns `c` (disasm 0x6ffb2c-0x6ffb3e —
+    // the retain collapses to the borrow). Miss zeroes the out holder and
+    // returns null (disasm 0x6ffb24-0x6ffb44).
+    // SAFETY: both must point to valid `Instance`s whose trees outlive the call.
+    unsafe {
+        for child in (*this).children.iter() {
+            let candidate = SharedPtr::as_ptr(child);
+            let mut cursor = target;
+            while !cursor.is_null() {
+                cursor = (*cursor).parent;
+                if cursor == candidate {
+                    return candidate;
+                }
+            }
+        }
+        core::ptr::null()
+    }
 }
 
 // 0x6ffb48 — __ZNK3RBX8Instance13securityCheckEv
 #[doc(alias = "RBX::Instance::securityCheck(void)const")]
 // was: RBX::Instance::securityCheck(void)const
-pub fn stub_6ffb48() -> ! {
-    todo!("0x6ffb48 RBX::Instance::securityCheck(void)const")
+pub fn stub_6ffb48(this: *const Instance) -> bool {
+    // IDA 0x6ffb48: `Context::current()` snapshot (disasm 0x6ffb52), then the
+    // `securityCheck(Context &)` walk below.
+    // SAFETY: `this` must point to a valid `Instance` ancestry.
+    stub_6ffb68(this, &SecurityContext::current())
 }
 
 // 0x6ffb68 — __ZNK3RBX8Instance13securityCheckERNS_8Security7ContextE
 #[doc(alias = "RBX::Instance::securityCheck(RBX::Security::Context &)const")]
 // was: RBX::Instance::securityCheck(RBX::Security::Context &)const
-pub fn stub_6ffb68() -> ! {
-    todo!("0x6ffb68 RBX::Instance::securityCheck(RBX::Security::Context &)const")
+pub fn stub_6ffb68(this: *const Instance, context: &SecurityContext) -> bool {
+    // IDA 0x6ffb68: walk `this` to the root via `+52` (disasm 0x6ffb7c-0x6ffb80),
+    // `requirePermission(ctx, *(classDesc + 276))` per instance (disasm
+    // 0x6ffb78), returning the last result. Permission words default via
+    // `class_permission` (see `SecurityContext`).
+    // SAFETY: `this` must point to a valid `Instance` ancestry.
+    unsafe {
+        let mut cursor = this;
+        let mut granted = true;
+        while !cursor.is_null() {
+            granted = context.require_permission(class_permission((*cursor).class_name));
+            cursor = (*cursor).parent;
+        }
+        granted
+    }
 }
 
 // 0x6ffb84 — __ZNK3RBX8Instance17verifySetAncestorEPKS0_S2_
 #[doc(alias = "RBX::Instance::verifySetAncestor(RBX::Instance const*,RBX::Instance const*)const")]
 // was: RBX::Instance::verifySetAncestor(RBX::Instance const*,RBX::Instance const*)const
-pub fn stub_6ffb84() -> ! {
-    todo!("0x6ffb84 RBX::Instance::verifySetAncestor(RBX::Instance const*,RBX::Instance const*)const")
+pub fn stub_6ffb84(this: *const Instance, ancestor: *const Instance, descendant: *const Instance) {
+    // IDA 0x6ffb84: base implementation iterated by the `Keyframe` /
+    // `KeyframeSequence` / `Pose` overrides (xrefs 0x5b1ea8, 0x5b5670,
+    // 0x605f18): walk the `+56` vector, calling each entry's `+60` virtual
+    // with `(entry, a2, a3)` (disasm 0x6ffbf6-0x6ffc0e) — the slot is
+    // `verifySetAncestor` itself, i.e. recursion into the children. The
+    // `shared_count` copy/release pair is a snapshot clone; virtual dispatch
+    // collapses until subclass overrides are modelled.
+    // SAFETY: `this` must point to a valid `Instance` whose subtree outlives
+    // the call.
+    unsafe {
+        let snapshot = (*this).children.clone();
+        for child in snapshot.iter() {
+            stub_6ffb84(SharedPtr::as_ptr(child), ancestor, descendant);
+        }
+    }
 }
 
 // 0x6ffc74 — __ZNK3RBX8Instance19verifyAddDescendantEPKS0_S2_
 #[doc(alias = "RBX::Instance::verifyAddDescendant(RBX::Instance const*,RBX::Instance const*)const")]
 // was: RBX::Instance::verifyAddDescendant(RBX::Instance const*,RBX::Instance const*)const
-pub fn stub_6ffc74() -> ! {
-    todo!("0x6ffc74 RBX::Instance::verifyAddDescendant(RBX::Instance const*,RBX::Instance const*)const")
+pub fn stub_6ffc74(this: *const Instance, descendant: *const Instance) -> *const Instance {
+    // IDA 0x6ffc74: `parent = *(this + 13)` (disasm 0x6ffc74); null parent
+    // returns null (disasm 0x6ffc76-0x6ffc80). When the descendant sits
+    // directly under that parent (`a3->parent == parent`, disasm 0x6ffc7a-0x6ffc7e)
+    // — or anywhere beneath it (chain walk, disasm 0x6ffc82-0x6ffc86) — the
+    // parent is returned; otherwise the check delegates to the parent's
+    // `+68` virtual (`(result, result, a3)`, disasm 0x6ffc96), i.e.
+    // recursion, since the overwritten `a2` is unused. Returns the
+    // conflicting ancestor or null.
+    // SAFETY: both must point to valid `Instance`s whose trees outlive the call.
+    unsafe {
+        let parent = (*this).parent;
+        if parent.is_null() {
+            return core::ptr::null();
+        }
+        if (*descendant).parent == parent {
+            return parent;
+        }
+        let mut cursor = (*descendant).parent;
+        while !cursor.is_null() {
+            cursor = (*cursor).parent;
+            if cursor == parent {
+                return parent;
+            }
+        }
+        stub_6ffc74(parent, descendant)
+    }
 }
 
 // 0x6ffc98 — __ZN3RBX8Instance17setParentInternalEPS0_b
 #[doc(alias = "RBX::Instance::setParentInternal(RBX::Instance*,bool)")]
 // was: RBX::Instance::setParentInternal(RBX::Instance*,bool)
-pub fn stub_6ffc98() -> ! {
-    todo!("0x6ffc98 RBX::Instance::setParentInternal(RBX::Instance*,bool)")
+/// Fan-out behind `RBX::Instance::signalDescendantRemoving` (IDA `0x6fff30`):
+/// every ancestor from `old` to the root loses a descendant, so each live
+/// (write-allocated, cf. `*(a1 + 19)` in `childRemovedSignal`) signal fires
+/// with the removed child.
+fn signal_descendant_removing_chain(old: *const Instance, child: &SharedPtr<Instance>) {
+    // SAFETY: `old` must head a valid `Instance` ancestry outliving the call.
+    unsafe {
+        let mut cursor = old;
+        while !cursor.is_null() {
+            let ancestor = cursor as *mut Instance;
+            if (*ancestor).write.is_some() {
+                (*ancestor)
+                    .write
+                    .as_mut()
+                    .unwrap()
+                    .descendant_removing
+                    .fire(child.clone());
+            }
+            cursor = (*ancestor).parent;
+        }
+    }
+}
+/// Fan-out behind `RBX::Instance::signalDescendantAdded` (IDA `0x700194`):
+/// mirror image of `signal_descendant_removing_chain` along the new chain.
+fn signal_descendant_added_chain(new_parent: *const Instance, child: &SharedPtr<Instance>) {
+    // SAFETY: `new_parent` must head a valid `Instance` ancestry outliving the call.
+    unsafe {
+        let mut cursor = new_parent;
+        while !cursor.is_null() {
+            let ancestor = cursor as *mut Instance;
+            if (*ancestor).write.is_some() {
+                (*ancestor)
+                    .write
+                    .as_mut()
+                    .unwrap()
+                    .descendant_added
+                    .fire(child.clone());
+            }
+            cursor = (*ancestor).parent;
+        }
+    }
+}
+/// Collapse of the `RBX::shared_from<Instance>` retains (IDA `0x6ffeba`,
+/// `0x6ffec6`): the caller-held borrows already keep both ends alive, so the
+/// retain/release pairs vanish; per-fire retains use `borrow_shared`.
+pub fn stub_6ffc98(this: *mut Instance, new_parent: *const Instance, skip_lock_check: bool) -> bool {
+    // IDA 0x6ffc98 (Client/App/v8tree/Instance.cpp): same-parent fast path
+    // (`v11 == a2`, disasm 0x6ffcf2) returns true; locked `Parent` property
+    // (`name_store + 21`, disasm 0x6ffcfc) throws `runtime_error`
+    // ("The Parent property of %s is locked"); self-parent throws
+    // ("Attempt to set %s as its own parent", disasm 0x6ffd08); a `this`
+    // found walking the new ancestry throws the circular-reference error
+    // after `ReleaseAssert(newParent)` (Instance.cpp:454, disasm 0x6ffd0c-0x6ffe52).
+    // `runtime_error` throws map to panics with the same messages.
+    // SAFETY: `this` must point to a valid `Instance`; both trees must
+    // outlive the call with caller-held ownership (the `shared_from`
+    // retains); `new_parent` must be null or valid.
+    unsafe {
+        let old = (*this).parent;
+        if old == new_parent {
+            return true;
+        }
+        if !skip_lock_check && (*this).parent_locked {
+            panic!(
+                "The Parent property of {} is locked",
+                (*this).name.text
+            );
+        }
+        if this as *const Instance == new_parent {
+            panic!(
+                "Attempt to set {} as its own parent",
+                (*this).name.text
+            );
+        }
+        let mut cursor = new_parent;
+        while !cursor.is_null() {
+            cursor = (*cursor).parent;
+            if cursor == this as *const Instance {
+                debug_assert!(!new_parent.is_null(), "0x6ffc98: newParent Instance.cpp:454");
+                panic!(
+                    "Attempt to set parent of {} to {} would result in circular reference",
+                    (*this).name.text,
+                    (*new_parent).name.text
+                );
+            }
+        }
+        // `FLog::InstanceTreeManipulation` line (disasm 0x6ffe7a) collapses.
+        // Re-entrancy guard (byte `+64`, disasm 0x6ffe86): a live guard with
+        // a changed target logs to `StandardOut` (collapses) and either
+        // throws ("Something unexpectedly tried to set the parent of %s...",
+        // `RBX::runtime_error`) or — under `FFlag::NoThrowOnReparenting`
+        // (default false, hence `NO_THROW_ON_REPARENTING`) — unwinds to a
+        // `false` return (disasm 0x6ffe8e-0x70008c).
+        if (*this).in_set_parent {
+            if old != new_parent {
+                if !NO_THROW_ON_REPARENTING {
+                    panic!(
+                        "Something unexpectedly tried to set the parent of {} to {} while trying to set the parent of {}. Current parent is {}.",
+                        (*this).name.text,
+                        if new_parent.is_null() {
+                            "NULL".to_string()
+                        } else {
+                            (*new_parent).name.text.clone()
+                        },
+                        (*this).name.text,
+                        if old.is_null() {
+                            "NULL".to_string()
+                        } else {
+                            (*old).name.text.clone()
+                        },
+                    );
+                }
+                return false;
+            }
+            return true;
+        }
+        (*this).in_set_parent = true;
+        // Pre-move virtuals: `+56` (this, new) and `+60` (this, new, this)
+        // (disasm 0x6ffee0-0x6ffef2).
+        if let Some(hook) = (*this).hooks.changing {
+            hook(this, new_parent);
+        }
+        if let Some(hook) = (*this).hooks.ancestry_changing {
+            hook(this, new_parent, this as *const Instance);
+        }
+        if !new_parent.is_null() {
+            let adoptive = new_parent as *mut Instance;
+            // `+64` (new, this) and `+68` (new, new, this) (disasm 0x6fff04-0x6fff14).
+            if let Some(hook) = (*adoptive).hooks.child_added {
+                hook(adoptive, this as *const Instance);
+            }
+            if let Some(hook) = (*adoptive).hooks.descendant_added {
+                hook(adoptive, new_parent, this as *const Instance);
+            }
+        }
+        // Old-chain detach (disasm 0x6fff16-0x7000e0): when the new parent is
+        // null or lies outside the old subtree (ancestry walk, disasm
+        // 0x6fff22-0x6fff2e), the descendant-removing fan-out fires; the old
+        // `+104` virtual runs; the child is erased from the old
+        // copy-on-write vector — size `1` clears it (disasm 0x6fff6a-0x6fff88),
+        // `>= 0x15` swap-removes (disasm 0x7000a4-0x7000c4), else ordered
+        // erase (disasm 0x7000d8) — then `this->parent` zeroes (disasm 0x7000e0).
+        let owned = borrow_shared(this as *const Instance);
+        if !old.is_null() {
+            let mut outside = new_parent.is_null();
+            if !outside {
+                let mut probe = new_parent;
+                let mut found = false;
+                while !probe.is_null() {
+                    if probe == old {
+                        found = true;
+                        break;
+                    }
+                    probe = (*probe).parent;
+                }
+                outside = !found;
+            }
+            if outside {
+                signal_descendant_removing_chain(old, &owned);
+            }
+            let previous = old as *mut Instance;
+            if let Some(hook) = (*previous).hooks.removing {
+                hook(previous, this as *const Instance);
+            }
+            let siblings = &mut (*previous).children;
+            if siblings.len() == 1 {
+                siblings.clear();
+            } else if let Some(index) = siblings
+                .iter()
+                .position(|candidate| SharedPtr::as_ptr(candidate) == this as *const Instance)
+            {
+                if siblings.len() >= 0x15 {
+                    siblings.swap_remove(index);
+                } else {
+                    siblings.remove(index);
+                }
+            }
+            (*this).parent = core::ptr::null();
+        }
+        // Attach under the new parent (copy-on-write `push_back`, disasm
+        // 0x7000e4-0x700102), then the old-side combined `kind = 1` +
+        // `childRemovedSignal` + `+108` virtual (disasm 0x700106-0x70015a).
+        if !new_parent.is_null() {
+            (* (new_parent as *mut Instance))
+                .children
+                .push(owned.clone());
+        }
+        (*this).parent = new_parent;
+        if !old.is_null() {
+            let previous = old as *mut Instance;
+            stub_0x703fb0(&mut (*previous).combined, 1, &owned);
+            stub_0x703cc0(previous, &owned);
+            if let Some(hook) = (*previous).hooks.child_removed {
+                hook(previous, this as *const Instance);
+            }
+        }
+        // New-side finish (disasm 0x700170-0x7001f2): the new `+100` virtual;
+        // the old ancestry is walked for the new parent (disasm 0x700184-0x700192)
+        // and only a miss fires the descendant-added fan-out; then the
+        // combined `kind = 0` + `childAddedSignal`.
+        if !new_parent.is_null() {
+            let adoptive = new_parent as *mut Instance;
+            if let Some(hook) = (*adoptive).hooks.added {
+                hook(adoptive, this as *const Instance);
+            }
+            let mut outside = old.is_null();
+            if !outside {
+                let mut probe = old;
+                let mut found = false;
+                while !probe.is_null() {
+                    if probe == new_parent {
+                        found = true;
+                        break;
+                    }
+                    probe = (*probe).parent;
+                }
+                outside = !found;
+            }
+            if outside {
+                signal_descendant_added_chain(new_parent, &owned);
+            }
+            stub_0x703fb0(&mut (*adoptive).combined, 0, &owned);
+            stub_0x703dc8(adoptive, &owned);
+        }
+        // `+88` ancestry-changed virtual `(this, old, new)` (disasm 0x7001fc-0x700210),
+        // `raisePropertyChanged(propParent)` (disasm 0x700222), guard release
+        // (disasm 0x70022a). The trailing retains release (disasm 0x700230-0x70024a).
+        if let Some(hook) = (*this).hooks.ancestry_changed {
+            hook(this, old, new_parent);
+        }
+        if let Some(hook) = (*this).hooks.property_changed {
+            hook(this, PropertyKind::Parent);
+        }
+        (*this).in_set_parent = false;
+        true
+    }
+}
+/// `FFlag::NoThrowOnReparenting` (IDA `0x70002c`): default `false`, so the
+/// re-entrant path throws.
+const NO_THROW_ON_REPARENTING: bool = false;
+/// `RBX::Instance::getPersistentDataCost` helper shared by `stub_6ff77c` and
+/// `stub_6ff888`: the `data_cost` override or `4 + Σ children` (IDA `0x6ff77c`).
+fn persistent_data_cost(this: *const Instance) -> i32 {
+    // SAFETY: `this` must point to a valid `Instance` subtree.
+    unsafe {
+        if let Some(hook) = (*this).hooks.data_cost {
+            return hook(this);
+        }
+        let mut total = 4;
+        for child in (*this).children.iter() {
+            stub_6ff888(child, &mut total);
+        }
+        total
+    }
 }
 
 // 0xf5de64 — j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPN3RBX8InstanceENS_8weak_ptrIS6_EEEES7_SA_NS_4hashIS7_EESt8equal_toIS7_EEEE12fill_bucketsINS1_10copy_nodesISaINS1_8ptr_nodeISB_EEEEEEEvNS0_15iterator_detail8iteratorISM_EERNS1_5tableISH_EERT_
