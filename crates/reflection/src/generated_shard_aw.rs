@@ -287,15 +287,17 @@ pub fn stub_9d53b4() {
 // 0x9d631c — __ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEEC1Ev")]
-pub fn stub_9d631c() -> ! {
-    todo!("0x9d631c RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::EnumDesc(void)")
+pub fn stub_9d631c() -> crate::enum_desc::EnumDesc {
+    // IDA 0x9d631c: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x9d6328 — __ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEEC2Ev")]
-pub fn stub_9d6328() -> ! {
-    todo!("0x9d6328 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::EnumDesc(void)")
+pub fn stub_9d6328() -> crate::enum_desc::EnumDesc {
+    // IDA 0x9d6328: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "FilterResult", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("FilterResult")
 }
 
 // 0x9d66dc — __ZN3RBX7Network13NetworkFilter21filterChangedPropertyEPNS_8InstanceERKNS_10Reflection18PropertyDescriptorERNS0_12FilterResultE

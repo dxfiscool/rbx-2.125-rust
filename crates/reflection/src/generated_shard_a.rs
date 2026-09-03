@@ -698,14 +698,16 @@ pub fn stub_0x5fa714() -> ! {
 
 // 0x5fc1f4 — __ZN3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::EnumDesc(void)")]
-pub fn stub_0x5fc1f4() -> ! {
-    todo!("0x5fc1f4 RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::EnumDesc(void)")
+pub fn stub_0x5fc1f4() -> crate::enum_desc::EnumDesc {
+    // IDA 0x5fc1f4: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x5fc1f8 — __ZN3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::EnumDesc(void)")]
-pub fn stub_0x5fc1f8() -> ! {
-    todo!("0x5fc1f8 RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::EnumDesc(void)")
+pub fn stub_0x5fc1f8() -> crate::enum_desc::EnumDesc {
+    // IDA 0x5fc1f8: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "CoreGuiType", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("CoreGuiType")
 }
 
 // 0x5fcc38 — __ZN3RBX10Reflection14PropDescriptorINS_17StarterGuiServiceEbED1Ev
@@ -1612,14 +1614,16 @@ pub fn stub_0x626bdc() -> ! {
 
 // 0x627234 — __ZN3RBX10Reflection8EnumDescINS_18SkateboardPlatform9MoveStateEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState>::EnumDesc(void)")]
-pub fn stub_0x627234() -> ! {
-    todo!("0x627234 RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState>::EnumDesc(void)")
+pub fn stub_0x627234() -> crate::enum_desc::EnumDesc {
+    // IDA 0x627234: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x627238 — __ZN3RBX10Reflection8EnumDescINS_18SkateboardPlatform9MoveStateEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState>::EnumDesc(void)")]
-pub fn stub_0x627238() -> ! {
-    todo!("0x627238 RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState>::EnumDesc(void)")
+pub fn stub_0x627238() -> crate::enum_desc::EnumDesc {
+    // IDA 0x627238: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "MoveState", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("MoveState")
 }
 
 // 0x6295fc — __ZN3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEiED1Ev
@@ -3309,14 +3313,17 @@ pub fn stub_0x66d2d0() -> ! {
 
 // 0x66d2f4 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10YAlignmentEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::YAlignment> const>::initSingleton(void)")]
-pub fn stub_0x66d2f4() -> ! {
-    todo!("0x66d2f4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::YAlignment> const>::initSingleton(void)")
+pub fn stub_0x66d2f4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x66d2f4: Singleton<EnumDesc<T>>::initSingleton -- thunk to doGetSingleton (decompiled 0x4a60b8). Rust: forward to the singleton.
+    crate::generated_shard_a::stub_0x66d2f8()
 }
 
 // 0x66d2f8 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10YAlignmentEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::YAlignment> const>::doGetSingleton(void)")]
-pub fn stub_0x66d2f8() -> ! {
-    todo!("0x66d2f8 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::YAlignment> const>::doGetSingleton(void)")
+pub fn stub_0x66d2f8() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x66d2f8: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_aa::stub_0x7d8720)
 }
 
 // 0x66d3e8 — __ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEED1Ev
@@ -3553,14 +3560,17 @@ pub fn stub_0x66e554() -> ! {
 
 // 0x66e578 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10XAlignmentEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::XAlignment> const>::initSingleton(void)")]
-pub fn stub_0x66e578() -> ! {
-    todo!("0x66e578 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::XAlignment> const>::initSingleton(void)")
+pub fn stub_0x66e578() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x66e578: Singleton<EnumDesc<T>>::initSingleton -- thunk to doGetSingleton (decompiled 0x4a60b8). Rust: forward to the singleton.
+    crate::generated_shard_a::stub_0x66e57c()
 }
 
 // 0x66e57c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10XAlignmentEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::XAlignment> const>::doGetSingleton(void)")]
-pub fn stub_0x66e57c() -> ! {
-    todo!("0x66e57c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::XAlignment> const>::doGetSingleton(void)")
+pub fn stub_0x66e57c() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x66e57c: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_aa::stub_0x7d8544)
 }
 
 // 0x66e66c — __ZN3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEED1Ev

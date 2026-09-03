@@ -665,15 +665,17 @@ pub fn stub_0x6e0c54() {
 // 0x6f296c — __ZN3RBX10Reflection8EnumDescINS_8NormalIdEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NormalId>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_8NormalIdEEC1Ev")]
-pub fn stub_0x6f296c() -> ! {
-    todo!("0x6f296c RBX::Reflection::EnumDesc<RBX::NormalId>::EnumDesc(void)")
+pub fn stub_0x6f296c() -> crate::enum_desc::EnumDesc {
+    // IDA 0x6f296c: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x6f2970 — __ZN3RBX10Reflection8EnumDescINS_8NormalIdEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NormalId>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_8NormalIdEEC2Ev")]
-pub fn stub_0x6f2970() -> ! {
-    todo!("0x6f2970 RBX::Reflection::EnumDesc<RBX::NormalId>::EnumDesc(void)")
+pub fn stub_0x6f2970() -> crate::enum_desc::EnumDesc {
+    // IDA 0x6f2970: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "NormalId", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("NormalId")
 }
 
 // 0x6f2b8c — __ZN3RBX10Reflection7Variant7convertINS_8NormalIdEEERT_v

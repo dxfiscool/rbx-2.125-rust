@@ -519,29 +519,33 @@ pub fn stub_a934b0() -> ! {
 // 0xa939c8 — __ZN3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEEC1Ev")]
-pub fn stub_a939c8() -> ! {
-    todo!("0xa939c8 RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::EnumDesc(void)")
+pub fn stub_a939c8() -> crate::enum_desc::EnumDesc {
+    // IDA 0xa939c8: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0xa939d4 — __ZN3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEEC2Ev")]
-pub fn stub_a939d4() -> ! {
-    todo!("0xa939d4 RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::EnumDesc(void)")
+pub fn stub_a939d4() -> crate::enum_desc::EnumDesc {
+    // IDA 0xa939d4: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "MembershipType", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("MembershipType")
 }
 
 // 0xa93c18 — __ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEEC1Ev")]
-pub fn stub_a93c18() -> ! {
-    todo!("0xa93c18 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::EnumDesc(void)")
+pub fn stub_a93c18() -> crate::enum_desc::EnumDesc {
+    // IDA 0xa93c18: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0xa93c24 — __ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEEC2Ev")]
-pub fn stub_a93c24() -> ! {
-    todo!("0xa93c24 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::EnumDesc(void)")
+pub fn stub_a93c24() -> crate::enum_desc::EnumDesc {
+    // IDA 0xa93c24: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "ChatMode", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("ChatMode")
 }
 
 // 0xa96084 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvvELi0EEC1EMS3_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE

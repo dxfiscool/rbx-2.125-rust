@@ -121,29 +121,33 @@ pub fn stub_0x9fea88() {
 // 0xa1a77c — __ZN3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEEC1Ev")]
-pub fn stub_0xa1a77c() -> ! {
-    todo!("0xa1a77c RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::EnumDesc(void)")
+pub fn stub_0xa1a77c() -> crate::enum_desc::EnumDesc {
+    // IDA 0xa1a77c: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0xa1a788 — __ZN3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEEC2Ev")]
-pub fn stub_0xa1a788() -> ! {
-    todo!("0xa1a788 RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::EnumDesc(void)")
+pub fn stub_0xa1a788() -> crate::enum_desc::EnumDesc {
+    // IDA 0xa1a788: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "ChatStyle", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("ChatStyle")
 }
 
 // 0xa1a9b0 — __ZN3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEEC1Ev")]
-pub fn stub_0xa1a9b0() -> ! {
-    todo!("0xa1a9b0 RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::EnumDesc(void)")
+pub fn stub_0xa1a9b0() -> crate::enum_desc::EnumDesc {
+    // IDA 0xa1a9b0: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0xa1a9bc — __ZN3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEEC2Ev")]
-pub fn stub_0xa1a9bc() -> ! {
-    todo!("0xa1a9bc RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::EnumDesc(void)")
+pub fn stub_0xa1a9bc() -> crate::enum_desc::EnumDesc {
+    // IDA 0xa1a9bc: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "PlayerChatType", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("PlayerChatType")
 }
 
 // 0xa1ae1c — __ZN3RBX10Reflection14PropDescriptorINS_7Network7PlayersEiED1Ev
@@ -428,15 +432,15 @@ pub fn stub_0xa23500() {
 // 0xa24e24 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network7Players14PlayerChatTypeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network7Players14PlayerChatTypeEEEE13initSingletonEv")]
-pub fn stub_0xa24e24() -> ! {
-    todo!("0xa24e24 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType> const>::initSingleton(void)")
+pub fn stub_0xa24e24() {
+    // IDA 0xa24e24: Singleton<EnumDesc<T>>::initSingleton (no doGet stub found in-crate): cutover no-op.
 }
 
 // 0xa24f08 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network7Players10ChatOptionEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network7Players10ChatOptionEEEE13initSingletonEv")]
-pub fn stub_0xa24f08() -> ! {
-    todo!("0xa24f08 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption> const>::initSingleton(void)")
+pub fn stub_0xa24f08() {
+    // IDA 0xa24f08: Singleton<EnumDesc<T>>::initSingleton (no doGet stub found in-crate): cutover no-op.
 }
 
 // 0xa3f9f0 — __ZN3RBX10Reflection14PropDescriptorINS_7Network7PlayersEbEC2IMS3_KFbvEiEEPKcS9_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE

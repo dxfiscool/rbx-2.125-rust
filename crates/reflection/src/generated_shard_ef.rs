@@ -447,44 +447,44 @@ pub fn stub_f1efc4() -> ! {
 
 // 0xf1f018 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED2Ev$shim
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED2Ev$shim")]
-pub fn stub_f1f018() -> ! {
-    todo!("0xf1f018 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED2Ev$shim")
+pub fn stub_f1f018() {
+    // IDA 0xf1f018: D2 base-destructor branch shim (cf. decompiled D2 0x111270/0x35bfec). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf1f024 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED2Ev$shim
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED2Ev$shim")]
-pub fn stub_f1f024() -> ! {
-    todo!("0xf1f024 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED2Ev$shim")
+pub fn stub_f1f024() {
+    // IDA 0xf1f024: D2 base-destructor branch shim (cf. decompiled D2 0x111270/0x35bfec). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf1f030 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED2Ev$shim
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED2Ev$shim")]
-pub fn stub_f1f030() -> ! {
-    todo!("0xf1f030 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED2Ev$shim")
+pub fn stub_f1f030() {
+    // IDA 0xf1f030: D2 base-destructor branch shim (cf. decompiled D2 0x111270/0x35bfec). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf1f03c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED2Ev$shim
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED2Ev$shim")]
-pub fn stub_f1f03c() -> ! {
-    todo!("0xf1f03c __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED2Ev$shim")
+pub fn stub_f1f03c() {
+    // IDA 0xf1f03c: D2 base-destructor branch shim (cf. decompiled D2 0x111270/0x35bfec). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf1f048 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED2Ev$shim
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED2Ev$shim")]
-pub fn stub_f1f048() -> ! {
-    todo!("0xf1f048 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED2Ev$shim")
+pub fn stub_f1f048() {
+    // IDA 0xf1f048: D2 base-destructor branch shim (cf. decompiled D2 0x111270/0x35bfec). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf1f054 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED2Ev$shim
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED2Ev$shim")]
-pub fn stub_f1f054() -> ! {
-    todo!("0xf1f054 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED2Ev$shim")
+pub fn stub_f1f054() {
+    // IDA 0xf1f054: D2 base-destructor branch shim (cf. decompiled D2 0x111270/0x35bfec). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf1f060 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED2Ev$shim
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED2Ev$shim")]
-pub fn stub_f1f060() -> ! {
-    todo!("0xf1f060 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED2Ev$shim")
+pub fn stub_f1f060() {
+    // IDA 0xf1f060: D2 base-destructor branch shim (cf. decompiled D2 0x111270/0x35bfec). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf1f090 — __ZN3RBX10Reflection11Call0HelperI19CRenderSettingsItemMS2_FivEiE4callEPS2_S4_RNS0_7VariantE$shim
@@ -551,44 +551,58 @@ pub fn stub_f1f0e4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 
 // 0xf1f144 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings10ShadowModeEEEE14doGetSingletonEv$shim
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings10ShadowModeEEEE14doGetSingletonEv$shim")]
-pub fn stub_f1f144() -> ! {
-    todo!("0xf1f144 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings10ShadowModeEEEE14doGetSingletonEv$shim")
+pub fn stub_f1f144() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf1f144: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_gap_low::stub_0x8c4c)
 }
 
 // 0xf1f150 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16ResolutionPresetEEEE14doGetSingletonEv$shim
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16ResolutionPresetEEEE14doGetSingletonEv$shim")]
-pub fn stub_f1f150() -> ! {
-    todo!("0xf1f150 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16ResolutionPresetEEEE14doGetSingletonEv$shim")
+pub fn stub_f1f150() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf1f150: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_ca::stub_9100)
 }
 
 // 0xf1f15c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12QualityLevelEEEE14doGetSingletonEv$shim
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12QualityLevelEEEE14doGetSingletonEv$shim")]
-pub fn stub_f1f15c() -> ! {
-    todo!("0xf1f15c __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12QualityLevelEEEE14doGetSingletonEv$shim")
+pub fn stub_f1f15c() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf1f15c: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_gap_low::stub_0x8e24)
 }
 
 // 0xf1f168 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16AntialiasingModeEEEE14doGetSingletonEv$shim
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16AntialiasingModeEEEE14doGetSingletonEv$shim")]
-pub fn stub_f1f168() -> ! {
-    todo!("0xf1f168 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings16AntialiasingModeEEEE14doGetSingletonEv$shim")
+pub fn stub_f1f168() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf1f168: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_gap_low::stub_0x8a88)
 }
 
 // 0xf1f174 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings20FrameRateManagerModeEEEE14doGetSingletonEv$shim
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings20FrameRateManagerModeEEEE14doGetSingletonEv$shim")]
-pub fn stub_f1f174() -> ! {
-    todo!("0xf1f174 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings20FrameRateManagerModeEEEE14doGetSingletonEv$shim")
+pub fn stub_f1f174() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf1f174: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_gap_low::stub_0x88c4)
 }
 
 // 0xf1f180 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12GraphicsModeEEEE14doGetSingletonEv$shim
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12GraphicsModeEEEE14doGetSingletonEv$shim")]
-pub fn stub_f1f180() -> ! {
-    todo!("0xf1f180 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings12GraphicsModeEEEE14doGetSingletonEv$shim")
+pub fn stub_f1f180() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf1f180: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_gap_low::stub_0x86d0)
 }
 
 // 0xf1f18c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings9AASamplesEEEE14doGetSingletonEv$shim
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings9AASamplesEEEE14doGetSingletonEv$shim")]
-pub fn stub_f1f18c() -> ! {
-    todo!("0xf1f18c __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings9AASamplesEEEE14doGetSingletonEv$shim")
+pub fn stub_f1f18c() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf1f18c: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_gap_low::stub_0x850c)
 }
 
 // 0xf1f30c — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slot24safe_static_do_get_mutexEv$shim

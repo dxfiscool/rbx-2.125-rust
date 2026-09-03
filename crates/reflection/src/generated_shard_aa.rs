@@ -301,57 +301,65 @@ pub fn stub_0x7d7f60() -> ! {
 // 0x7d80c0 — __ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEEC1Ev")]
-pub fn stub_0x7d80c0() -> ! {
-    todo!("0x7d80c0 RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::EnumDesc(void)")
+pub fn stub_0x7d80c0() -> crate::enum_desc::EnumDesc {
+    // IDA 0x7d80c0: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x7d80c4 — __ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEEC2Ev")]
-pub fn stub_0x7d80c4() -> ! {
-    todo!("0x7d80c4 RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::EnumDesc(void)")
+pub fn stub_0x7d80c4() -> crate::enum_desc::EnumDesc {
+    // IDA 0x7d80c4: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "FontSize", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("FontSize")
 }
 
 // 0x7d833c — __ZN3RBX10Reflection8EnumDescINS_11TextService4FontEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService4FontEEC1Ev")]
-pub fn stub_0x7d833c() -> ! {
-    todo!("0x7d833c RBX::Reflection::EnumDesc<RBX::TextService::Font>::EnumDesc(void)")
+pub fn stub_0x7d833c() -> crate::enum_desc::EnumDesc {
+    // IDA 0x7d833c: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x7d8340 — __ZN3RBX10Reflection8EnumDescINS_11TextService4FontEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService4FontEEC2Ev")]
-pub fn stub_0x7d8340() -> ! {
-    todo!("0x7d8340 RBX::Reflection::EnumDesc<RBX::TextService::Font>::EnumDesc(void)")
+pub fn stub_0x7d8340() -> crate::enum_desc::EnumDesc {
+    // IDA 0x7d8340: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "Font", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Font")
 }
 
 // 0x7d8544 — __ZN3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEEC1Ev")]
-pub fn stub_0x7d8544() -> ! {
-    todo!("0x7d8544 RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::EnumDesc(void)")
+pub fn stub_0x7d8544() -> crate::enum_desc::EnumDesc {
+    // IDA 0x7d8544: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x7d8548 — __ZN3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEEC2Ev")]
-pub fn stub_0x7d8548() -> ! {
-    todo!("0x7d8548 RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::EnumDesc(void)")
+pub fn stub_0x7d8548() -> crate::enum_desc::EnumDesc {
+    // IDA 0x7d8548: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "TextXAlignment", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("TextXAlignment")
 }
 
 // 0x7d8720 — __ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEEC1Ev")]
-pub fn stub_0x7d8720() -> ! {
-    todo!("0x7d8720 RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::EnumDesc(void)")
+pub fn stub_0x7d8720() -> crate::enum_desc::EnumDesc {
+    // IDA 0x7d8720: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x7d8724 — __ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEEC2Ev")]
-pub fn stub_0x7d8724() -> ! {
-    todo!("0x7d8724 RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::EnumDesc(void)")
+pub fn stub_0x7d8724() -> crate::enum_desc::EnumDesc {
+    // IDA 0x7d8724: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "TextYAlignment", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("TextYAlignment")
 }
 
 // 0x7d8f38 — __ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE7addPairES3_PKc
@@ -697,15 +705,17 @@ pub fn stub_0x7f87f4() -> ! {
 // 0x7fe50c — __ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEEC1Ev")]
-pub fn stub_0x7fe50c() -> ! {
-    todo!("0x7fe50c RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::EnumDesc(void)")
+pub fn stub_0x7fe50c() -> crate::enum_desc::EnumDesc {
+    // IDA 0x7fe50c: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x7fe510 — __ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEEC2Ev")]
-pub fn stub_0x7fe510() -> ! {
-    todo!("0x7fe510 RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::EnumDesc(void)")
+pub fn stub_0x7fe510() -> crate::enum_desc::EnumDesc {
+    // IDA 0x7fe510: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "FunctionalTestResult", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("FunctionalTestResult")
 }
 
 // 0x802e90 — __ZN3RBXL7addNameEPSt6vectorINS_10Reflection7VariantESaIS2_EEPKNS_4NameE

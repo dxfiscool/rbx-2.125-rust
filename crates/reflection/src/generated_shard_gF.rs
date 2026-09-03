@@ -118,15 +118,17 @@ pub fn stub_0x910b44() -> ! {
 // 0x9117ac — __ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEEC1Ev")]
-pub fn stub_0x9117ac() -> ! {
-    todo!("0x9117ac __ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEEC1Ev")
+pub fn stub_0x9117ac() -> crate::enum_desc::EnumDesc {
+    // IDA 0x9117ac: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x9117b0 — __ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEEC2Ev")]
-pub fn stub_0x9117b0() -> ! {
-    todo!("0x9117b0 __ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEEC2Ev")
+pub fn stub_0x9117b0() -> crate::enum_desc::EnumDesc {
+    // IDA 0x9117b0: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "AccessType", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("AccessType")
 }
 
 // 0x911d88 — __ZN3RBX12AssetService21processServiceResultsEPSsPKSt9exceptionN5boost8functionIFvNS5_10shared_ptrIKNS5_9unordered13unordered_mapISsNS_10Reflection7VariantENS5_4hashISsEESt8equal_toISsESaISt4pairIKSsSB_EEEEEEEEENS6_IFvSsEEE

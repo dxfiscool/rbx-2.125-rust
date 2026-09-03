@@ -339,15 +339,17 @@ pub fn stub_0x88dafc() {
 // 0x891ebc — __ZN3RBX10Reflection8EnumDescINS_21PersonalServerService13PrivilegeTypeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PersonalServerService::PrivilegeType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_21PersonalServerService13PrivilegeTypeEEC1Ev")]
-pub fn stub_0x891ebc() -> ! {
-    todo!("0x891ebc")
+pub fn stub_0x891ebc() -> crate::enum_desc::EnumDesc {
+    // IDA 0x891ebc: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x891ec0 — __ZN3RBX10Reflection8EnumDescINS_21PersonalServerService13PrivilegeTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PersonalServerService::PrivilegeType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_21PersonalServerService13PrivilegeTypeEEC2Ev")]
-pub fn stub_0x891ec0() -> ! {
-    todo!("0x891ec0")
+pub fn stub_0x891ec0() -> crate::enum_desc::EnumDesc {
+    // IDA 0x891ec0: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "PrivilegeType", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("PrivilegeType")
 }
 
 // 0x892908 — __ZN3RBX10Reflection13BoundFuncDescINS_21PersonalServerServiceEFvSsELi1EED1Ev
@@ -823,15 +825,17 @@ pub fn stub_0x8ae310() -> ! {
 // 0x8ae6ec — __ZN3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::UserInputService::SwipeDirection>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEEC1Ev")]
-pub fn stub_0x8ae6ec() -> ! {
-    todo!("0x8ae6ec")
+pub fn stub_0x8ae6ec() -> crate::enum_desc::EnumDesc {
+    // IDA 0x8ae6ec: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x8ae6f0 — __ZN3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::UserInputService::SwipeDirection>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEEC2Ev")]
-pub fn stub_0x8ae6f0() -> ! {
-    todo!("0x8ae6f0")
+pub fn stub_0x8ae6f0() -> crate::enum_desc::EnumDesc {
+    // IDA 0x8ae6f0: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "SwipeDirection", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("SwipeDirection")
 }
 
 // 0x8b1c10 — __ZN3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEE7addPairES3_PKc

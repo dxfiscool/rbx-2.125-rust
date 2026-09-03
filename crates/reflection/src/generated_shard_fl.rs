@@ -493,8 +493,9 @@ pub fn stub_0x8ca8bc() -> ! {
 // 0x8cbc60 — __ZN3RBX10Reflection8EnumDescINS_18MarketplaceService12CurrencyTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::MarketplaceService::CurrencyType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_18MarketplaceService12CurrencyTypeEEC2Ev")]
-pub fn stub_0x8cbc60() -> ! {
-    todo!("0x8cbc60")
+pub fn stub_0x8cbc60() -> crate::enum_desc::EnumDesc {
+    // IDA 0x8cbc60: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "CurrencyType", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("CurrencyType")
 }
 
 // 0x8cc684 — __ZN3RBX18MarketplaceService24onReceivedRawProductInfoESsN5boost8functionIFvNS1_10shared_ptrIKNS1_9unordered13unordered_mapISsNS_10Reflection7VariantENS1_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEEEENS2_IFvSsEEE
@@ -886,8 +887,10 @@ pub fn stub_0x8d3290() -> ! {
 // 0x8d4000 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_18MarketplaceService12CurrencyTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::MarketplaceService::CurrencyType> const>::doGetSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_18MarketplaceService12CurrencyTypeEEEE14doGetSingletonEv")]
-pub fn stub_0x8d4000() -> ! {
-    todo!("0x8d4000")
+pub fn stub_0x8d4000() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x8d4000: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_fl::stub_0x8cbc60)
 }
 
 // 0x8d4740 — __ZN3RBX10Reflection15RemoteEventDescINS_18MarketplaceServiceEFviibEN3rbx13remote_signalIS3_EEED0Ev

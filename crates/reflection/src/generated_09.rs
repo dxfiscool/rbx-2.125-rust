@@ -132,8 +132,9 @@ pub fn stub_0x5ffddc() -> ! {
 
 // 0x600910 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17StarterGuiService11CoreGuiTypeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType> const>::initSingleton(void)")]
-pub fn stub_0x600910() -> ! {
-    todo!("0x600910 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType> const>::initSingleton(void)")
+pub fn stub_0x600910() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x600910: Singleton<EnumDesc<T>>::initSingleton -- thunk to doGetSingleton (decompiled 0x4a60b8). Rust: forward to the singleton.
+    crate::generated::stub_0x4b3cb8()
 }
 
 // 0x600f64 — __ZN3RBX10Reflection9EventDescINS_17StarterGuiServiceEFvNS2_11CoreGuiTypeEbEN3rbx6signalIS4_EEMS2_S7_EC2ES8_PKcSB_SB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE

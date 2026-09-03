@@ -419,14 +419,18 @@ pub fn stub_0xf44e24() -> ! {
 
 // 0xf44e64 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8MaterialEEEE14doGetSingletonEv
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8MaterialEEEE14doGetSingletonEv")]
-pub fn stub_0xf44e64() -> ! {
-    todo!("0xf44e64 j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8MaterialEEEE14doGetSingletonEv")
+pub fn stub_0xf44e64() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf44e64: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_next::stub_0x5d8838)
 }
 
 // 0xf44e74 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8NormalIdEEEE14doGetSingletonEv
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8NormalIdEEEE14doGetSingletonEv")]
-pub fn stub_0xf44e74() -> ! {
-    todo!("0xf44e74 j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8NormalIdEEEE14doGetSingletonEv")
+pub fn stub_0xf44e74() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf44e74: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_q::stub_0x6f296c)
 }
 
 // 0xf45624 — j___ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX10Reflection18GenericSlotWrapperEEEEENS2_ISt6vectorINS5_7VariantESaISA_EEEEEC2ES8_SD_

@@ -442,272 +442,350 @@ pub fn stub_f3b284() {
 // 0xf3bd54 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescIN3G3D7Vector34AxisEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<G3D::Vector3::Axis> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescIN3G3D7Vector34AxisEEEE14doGetSingletonEv")]
-pub fn stub_f3bd54() -> ! {
-    todo!("0xf3bd54 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<G3D::Vector3::Axis> const>::doGetSingleton(void)")
+pub fn stub_f3bd54() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bd54: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x303124)
 }
 
 // 0xf3bd64 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10DialogRoot10DialogToneEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10DialogRoot10DialogToneEEEE14doGetSingletonEv")]
-pub fn stub_f3bd64() -> ! {
-    todo!("0xf3bd64 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone> const>::doGetSingleton(void)")
+pub fn stub_f3bd64() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bd64: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x495ab8)
 }
 
 // 0xf3bd74 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10DialogRoot13DialogPurposeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogPurpose> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10DialogRoot13DialogPurposeEEEE14doGetSingletonEv")]
-pub fn stub_f3bd74() -> ! {
-    todo!("0xf3bd74 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogPurpose> const>::doGetSingleton(void)")
+pub fn stub_f3bd74() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bd74: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x4958dc)
 }
 
 // 0xf3bd84 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11ChatService9ChatColorEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::ChatService::ChatColor> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11ChatService9ChatColorEEEE14doGetSingletonEv")]
-pub fn stub_f3bd84() -> ! {
-    todo!("0xf3bd84 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::ChatService::ChatColor> const>::doGetSingleton(void)")
+pub fn stub_f3bd84() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bd84: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x3ebe88)
 }
 
 // 0xf3bd94 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11HttpService15HttpContentTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11HttpService15HttpContentTypeEEEE14doGetSingletonEv")]
-pub fn stub_f3bd94() -> ! {
-    todo!("0xf3bd94 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType> const>::doGetSingleton(void)")
+pub fn stub_f3bd94() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bd94: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_dm::stub_256ef8)
 }
 
 // 0xf3bda4 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11InputObject13UserInputTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11InputObject13UserInputTypeEEEE14doGetSingletonEv")]
-pub fn stub_f3bda4() -> ! {
-    todo!("0xf3bda4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType> const>::doGetSingleton(void)")
+pub fn stub_f3bda4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bda4: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_am::stub_8eb034)
 }
 
 // 0xf3bdb4 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11InputObject14UserInputStateEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11InputObject14UserInputStateEEEE14doGetSingletonEv")]
-pub fn stub_f3bdb4() -> ! {
-    todo!("0xf3bdb4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState> const>::doGetSingleton(void)")
+pub fn stub_f3bdb4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bdb4: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_am::stub_8eb280)
 }
 
 // 0xf3bdc4 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11SurfaceTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::SurfaceType> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11SurfaceTypeEEEE14doGetSingletonEv")]
-pub fn stub_f3bdc4() -> ! {
-    todo!("0xf3bdc4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::SurfaceType> const>::doGetSingleton(void)")
+pub fn stub_f3bdc4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bdc4: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_u::stub_73b500)
 }
 
 // 0xf3bdd4 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_12AssetService10AccessTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::AssetService::AccessType> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_12AssetService10AccessTypeEEEE14doGetSingletonEv")]
-pub fn stub_f3bdd4() -> ! {
-    todo!("0xf3bdd4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::AssetService::AccessType> const>::doGetSingleton(void)")
+pub fn stub_f3bdd4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bdd4: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_gF::stub_0x9117ac)
 }
 
 // 0xf3bde4 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_12GameSettings12VideoQualityEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_12GameSettings12VideoQualityEEEE14doGetSingletonEv")]
-pub fn stub_f3bde4() -> ! {
-    todo!("0xf3bde4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality> const>::doGetSingleton(void)")
+pub fn stub_f3bde4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bde4: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x500768)
 }
 
 // 0xf3bdf4 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_12GameSettings13UploadSettingEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_12GameSettings13UploadSettingEEEE14doGetSingletonEv")]
-pub fn stub_f3bdf4() -> ! {
-    todo!("0xf3bdf4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting> const>::doGetSingleton(void)")
+pub fn stub_f3bdf4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bdf4: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x5009c4)
 }
 
 // 0xf3be04 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_12PartInstance10FormFactorEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_12PartInstance10FormFactorEEEE14doGetSingletonEv")]
-pub fn stub_f3be04() -> ! {
-    todo!("0xf3be04 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor> const>::doGetSingleton(void)")
+pub fn stub_f3be04() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3be04: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_next::stub_0x5d8618)
 }
 
 // 0xf3be14 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_12SpecialShape8MeshTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::SpecialShape::MeshType> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_12SpecialShape8MeshTypeEEEE14doGetSingletonEv")]
-pub fn stub_f3be14() -> ! {
-    todo!("0xf3be14 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::SpecialShape::MeshType> const>::doGetSingleton(void)")
+pub fn stub_f3be14() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3be14: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_d::stub_0x640f14)
 }
 
 // 0xf3be24 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13CharacterMesh8BodyPartEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CharacterMesh::BodyPart> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13CharacterMesh8BodyPartEEEE14doGetSingletonEv")]
-pub fn stub_f3be24() -> ! {
-    todo!("0xf3be24 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CharacterMesh::BodyPart> const>::doGetSingleton(void)")
+pub fn stub_f3be24() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3be24: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x3e8684)
 }
 
 // 0xf3be34 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13DataModelMesh7LODTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13DataModelMesh7LODTypeEEEE14doGetSingletonEv")]
-pub fn stub_f3be34() -> ! {
-    todo!("0xf3be34 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType> const>::doGetSingleton(void)")
+pub fn stub_f3be34() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3be34: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x474eec)
 }
 
 // 0xf3be44 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13FriendService12FriendStatusEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::FriendService::FriendStatus> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13FriendService12FriendStatusEEEE14doGetSingletonEv")]
-pub fn stub_f3be44() -> ! {
-    todo!("0xf3be44 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::FriendService::FriendStatus> const>::doGetSingleton(void)")
+pub fn stub_f3be44() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3be44: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_cb::stub_83cd38)
 }
 
 // 0xf3be54 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13FriendService15FriendEventTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::FriendService::FriendEventType> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13FriendService15FriendEventTypeEEEE14doGetSingletonEv")]
-pub fn stub_f3be54() -> ! {
-    todo!("0xf3be54 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::FriendService::FriendEventType> const>::doGetSingleton(void)")
+pub fn stub_f3be54() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3be54: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_cb::stub_83cf40)
 }
 
 // 0xf3be64 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13PrismInstance12NumSidesEnumEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13PrismInstance12NumSidesEnumEEEE14doGetSingletonEv")]
-pub fn stub_f3be64() -> ! {
-    todo!("0xf3be64 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum> const>::doGetSingleton(void)")
+pub fn stub_f3be64() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3be64: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x49b964)
 }
 
 // 0xf3be74 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13SocialService9StuffTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::SocialService::StuffType> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13SocialService9StuffTypeEEEE14doGetSingletonEv")]
-pub fn stub_f3be74() -> ! {
-    todo!("0xf3be74 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::SocialService::StuffType> const>::doGetSingleton(void)")
+pub fn stub_f3be74() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3be74: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_c::stub_0x639170)
 }
 
 // 0xf3be84 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_14FunctionalTest6ResultEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_14FunctionalTest6ResultEEEE14doGetSingletonEv")]
-pub fn stub_f3be84() -> ! {
-    todo!("0xf3be84 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result> const>::doGetSingleton(void)")
+pub fn stub_f3be84() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3be84: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_aa::stub_0x7fe50c)
 }
 
 // 0xf3be94 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15PyramidInstance12NumSidesEnumEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15PyramidInstance12NumSidesEnumEEEE14doGetSingletonEv")]
-pub fn stub_f3be94() -> ! {
-    todo!("0xf3be94 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum> const>::doGetSingleton(void)")
+pub fn stub_f3be94() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3be94: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x49bb84)
 }
 
 // 0xf3bea4 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_16KeyframeSequence8PriorityEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_16KeyframeSequence8PriorityEEEE14doGetSingletonEv")]
-pub fn stub_f3bea4() -> ! {
-    todo!("0xf3bea4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority> const>::doGetSingleton(void)")
+pub fn stub_f3bea4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bea4: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x5b3b7c)
 }
 
 // 0xf3beb4 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_16LegacyController9InputTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::LegacyController::InputType> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_16LegacyController9InputTypeEEEE14doGetSingletonEv")]
-pub fn stub_f3beb4() -> ! {
-    todo!("0xf3beb4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::LegacyController::InputType> const>::doGetSingleton(void)")
+pub fn stub_f3beb4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3beb4: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_u::stub_7304b4)
 }
 
 // 0xf3bec4 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_16UserInputService14SwipeDirectionEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::UserInputService::SwipeDirection> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_16UserInputService14SwipeDirectionEEEE14doGetSingletonEv")]
-pub fn stub_f3bec4() -> ! {
-    todo!("0xf3bec4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::UserInputService::SwipeDirection> const>::doGetSingleton(void)")
+pub fn stub_f3bec4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bec4: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_fk::stub_0x8ae6ec)
 }
 
 // 0xf3bed4 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17BasicPartInstance14LegacyPartTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17BasicPartInstance14LegacyPartTypeEEEE14doGetSingletonEv")]
-pub fn stub_f3bed4() -> ! {
-    todo!("0xf3bed4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType> const>::doGetSingleton(void)")
+pub fn stub_f3bed4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bed4: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x49b52c)
 }
 
 // 0xf3bee4 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17GameBasicSettings11ControlModeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17GameBasicSettings11ControlModeEEEE14doGetSingletonEv")]
-pub fn stub_f3bee4() -> ! {
-    todo!("0xf3bee4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode> const>::doGetSingleton(void)")
+pub fn stub_f3bee4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bee4: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_ad::stub_0x849788)
 }
 
 // 0xf3bef4 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17GameBasicSettings20RenderQualitySettingEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17GameBasicSettings20RenderQualitySettingEEEE14doGetSingletonEv")]
-pub fn stub_f3bef4() -> ! {
-    todo!("0xf3bef4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting> const>::doGetSingleton(void)")
+pub fn stub_f3bef4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bef4: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_ad::stub_0x849978)
 }
 
 // 0xf3bf04 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17KeywordFilterTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::KeywordFilterType> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17KeywordFilterTypeEEEE14doGetSingletonEv")]
-pub fn stub_f3bf04() -> ! {
-    todo!("0xf3bf04 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::KeywordFilterType> const>::doGetSingleton(void)")
+pub fn stub_f3bf04() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bf04: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x326378)
 }
 
 // 0xf3bf14 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17StarterGuiService11CoreGuiTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17StarterGuiService11CoreGuiTypeEEEE14doGetSingletonEv")]
-pub fn stub_f3bf14() -> ! {
-    todo!("0xf3bf14 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType> const>::doGetSingleton(void)")
+pub fn stub_f3bf14() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bf14: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_a::stub_0x5fc1f4)
 }
 
 // 0xf3bf24 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_18SkateboardPlatform9MoveStateEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_18SkateboardPlatform9MoveStateEEEE14doGetSingletonEv")]
-pub fn stub_f3bf24() -> ! {
-    todo!("0xf3bf24 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState> const>::doGetSingleton(void)")
+pub fn stub_f3bf24() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bf24: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_a::stub_0x627234)
 }
 
 // 0xf3bf34 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEEEE14doGetSingletonEv")]
-pub fn stub_f3bf34() -> ! {
-    todo!("0xf3bf34 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior> const>::doGetSingleton(void)")
+pub fn stub_f3bf34() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bf34: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x3d22c0)
 }
 
 // 0xf3bf44 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEEEE14doGetSingletonEv")]
-pub fn stub_f3bf44() -> ! {
-    todo!("0xf3bf44 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle> const>::doGetSingleton(void)")
+pub fn stub_f3bf44() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bf44: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x49b708)
 }
 
 // 0xf3bf54 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_21PersonalServerService13PrivilegeTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PersonalServerService::PrivilegeType> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_21PersonalServerService13PrivilegeTypeEEEE14doGetSingletonEv")]
-pub fn stub_f3bf54() -> ! {
-    todo!("0xf3bf54 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::PersonalServerService::PrivilegeType> const>::doGetSingleton(void)")
+pub fn stub_f3bf54() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bf54: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_ai::stub_891ebc)
 }
 
 // 0xf3bf64 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Frame5StyleEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Frame::Style> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Frame5StyleEEEE14doGetSingletonEv")]
-pub fn stub_f3bf64() -> ! {
-    todo!("0xf3bf64 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Frame::Style> const>::doGetSingleton(void)")
+pub fn stub_f3bf64() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bf64: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x4f910c)
 }
 
 // 0xf3bf74 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Joint9JointTypeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Joint::JointType> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Joint9JointTypeEEEE14doGetSingletonEv")]
-pub fn stub_f3bf74() -> ! {
-    todo!("0xf3bf74 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Joint::JointType> const>::doGetSingleton(void)")
+pub fn stub_f3bf74() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bf74: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_u::stub_736f30)
 }
 
 // 0xf3bf84 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel12CellMaterialEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel12CellMaterialEEEE14doGetSingletonEv")]
-pub fn stub_f3bf84() -> ! {
-    todo!("0xf3bf84 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial> const>::doGetSingleton(void)")
+pub fn stub_f3bf84() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bf84: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_ah::stub_86af70)
 }
 
 // 0xf3bf94 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel14WaterCellForceEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel14WaterCellForceEEEE14doGetSingletonEv")]
-pub fn stub_f3bf94() -> ! {
-    todo!("0xf3bf94 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce> const>::doGetSingleton(void)")
+pub fn stub_f3bf94() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bf94: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_ah::stub_86b69c)
 }
 
 // 0xf3bfa4 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel15CellOrientationEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel15CellOrientationEEEE14doGetSingletonEv")]
-pub fn stub_f3bfa4() -> ! {
-    todo!("0xf3bfa4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation> const>::doGetSingleton(void)")
+pub fn stub_f3bfa4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bfa4: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_ah::stub_86b4ac)
 }
 
 // 0xf3bfb4 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel18WaterCellDirectionEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection> const>::doGetSingleton(void)")]
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel18WaterCellDirectionEEEE14doGetSingletonEv")]
-pub fn stub_f3bfb4() -> ! {
-    todo!("0xf3bfb4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection> const>::doGetSingleton(void)")
+pub fn stub_f3bfb4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf3bfb4: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_ah::stub_86b8a4)
 }

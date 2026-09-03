@@ -233,29 +233,33 @@ pub fn stub_83a374() -> ! {
 // 0x83cd38 — __ZN3RBX10Reflection8EnumDescINS_13FriendService12FriendStatusEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::FriendService::FriendStatus>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13FriendService12FriendStatusEEC1Ev")]
-pub fn stub_83cd38() -> ! {
-    todo!("0x83cd38 RBX::Reflection::EnumDesc<RBX::FriendService::FriendStatus>::EnumDesc(void)")
+pub fn stub_83cd38() -> crate::enum_desc::EnumDesc {
+    // IDA 0x83cd38: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x83cd3c — __ZN3RBX10Reflection8EnumDescINS_13FriendService12FriendStatusEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::FriendService::FriendStatus>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13FriendService12FriendStatusEEC2Ev")]
-pub fn stub_83cd3c() -> ! {
-    todo!("0x83cd3c RBX::Reflection::EnumDesc<RBX::FriendService::FriendStatus>::EnumDesc(void)")
+pub fn stub_83cd3c() -> crate::enum_desc::EnumDesc {
+    // IDA 0x83cd3c: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "FriendStatus", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("FriendStatus")
 }
 
 // 0x83cf40 — __ZN3RBX10Reflection8EnumDescINS_13FriendService15FriendEventTypeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::FriendService::FriendEventType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13FriendService15FriendEventTypeEEC1Ev")]
-pub fn stub_83cf40() -> ! {
-    todo!("0x83cf40 RBX::Reflection::EnumDesc<RBX::FriendService::FriendEventType>::EnumDesc(void)")
+pub fn stub_83cf40() -> crate::enum_desc::EnumDesc {
+    // IDA 0x83cf40: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x83cf44 — __ZN3RBX10Reflection8EnumDescINS_13FriendService15FriendEventTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::FriendService::FriendEventType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13FriendService15FriendEventTypeEEC2Ev")]
-pub fn stub_83cf44() -> ! {
-    todo!("0x83cf44 RBX::Reflection::EnumDesc<RBX::FriendService::FriendEventType>::EnumDesc(void)")
+pub fn stub_83cf44() -> crate::enum_desc::EnumDesc {
+    // IDA 0x83cf44: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "FriendRequestEvent", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("FriendRequestEvent")
 }
 
 // 0x83d130 — __ZN3RBX10Reflection13BoundFuncDescINS_13FriendServiceEFvSsELi1EED1Ev

@@ -559,15 +559,17 @@ pub fn stub_88f748() {
 // 0x891ebc — __ZN3RBX10Reflection8EnumDescINS_21PersonalServerService13PrivilegeTypeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PersonalServerService::PrivilegeType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_21PersonalServerService13PrivilegeTypeEEC1Ev")]
-pub fn stub_891ebc() -> ! {
-    todo!("0x891ebc RBX::Reflection::EnumDesc<RBX::PersonalServerService::PrivilegeType>::EnumDesc(void)")
+pub fn stub_891ebc() -> crate::enum_desc::EnumDesc {
+    // IDA 0x891ebc: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x891ec0 — __ZN3RBX10Reflection8EnumDescINS_21PersonalServerService13PrivilegeTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PersonalServerService::PrivilegeType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_21PersonalServerService13PrivilegeTypeEEC2Ev")]
-pub fn stub_891ec0() -> ! {
-    todo!("0x891ec0 RBX::Reflection::EnumDesc<RBX::PersonalServerService::PrivilegeType>::EnumDesc(void)")
+pub fn stub_891ec0() -> crate::enum_desc::EnumDesc {
+    // IDA 0x891ec0: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "PrivilegeType", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("PrivilegeType")
 }
 
 // 0x8927b0 — __ZN3RBX10ReflectionL14resume_adapterISsEEvN5boost8functionIFvNS0_7VariantEEEET__1

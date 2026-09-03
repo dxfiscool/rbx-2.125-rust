@@ -256,8 +256,8 @@ pub fn stub_0x955d98() -> ! {
 // 0x95760c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEEEE13initSingletonEv")]
-pub fn stub_0x95760c() -> ! {
-    todo!("0x95760c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod> const>::initSingleton(void)")
+pub fn stub_0x95760c() {
+    // IDA 0x95760c: Singleton<EnumDesc<T>>::initSingleton (no doGet stub found in-crate): cutover no-op.
 }
 
 // 0x9576f0 — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEED1Ev
@@ -351,8 +351,8 @@ pub fn stub_0x95807c(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
 // 0x958170 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15NetworkSettings17PhysicsSendMethodEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15NetworkSettings17PhysicsSendMethodEEEE13initSingletonEv")]
-pub fn stub_0x958170() -> ! {
-    todo!("0x958170 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod> const>::initSingleton(void)")
+pub fn stub_0x958170() {
+    // IDA 0x958170: Singleton<EnumDesc<T>>::initSingleton (no doGet stub found in-crate): cutover no-op.
 }
 
 // 0x958254 — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEED1Ev
@@ -446,8 +446,8 @@ pub fn stub_0x958be0(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
 // 0x958cd4 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network6Player8ChatModeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network6Player8ChatModeEEEE13initSingletonEv")]
-pub fn stub_0x958cd4() -> ! {
-    todo!("0x958cd4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode> const>::initSingleton(void)")
+pub fn stub_0x958cd4() {
+    // IDA 0x958cd4: Singleton<EnumDesc<T>>::initSingleton (no doGet stub found in-crate): cutover no-op.
 }
 
 // 0x958db8 — __ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEED1Ev
@@ -541,8 +541,8 @@ pub fn stub_0x959744(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
 // 0x959838 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network6Player14MembershipTypeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network6Player14MembershipTypeEEEE13initSingletonEv")]
-pub fn stub_0x959838() -> ! {
-    todo!("0x959838 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType> const>::initSingleton(void)")
+pub fn stub_0x959838() {
+    // IDA 0x959838: Singleton<EnumDesc<T>>::initSingleton (no doGet stub found in-crate): cutover no-op.
 }
 
 // 0x95991c — __ZN3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEED1Ev
@@ -636,8 +636,8 @@ pub fn stub_0x95a2a8(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
 // 0x95a39c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network12FilterResultEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::FilterResult> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network12FilterResultEEEE13initSingletonEv")]
-pub fn stub_0x95a39c() -> ! {
-    todo!("0x95a39c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::FilterResult> const>::initSingleton(void)")
+pub fn stub_0x95a39c() {
+    // IDA 0x95a39c: Singleton<EnumDesc<T>>::initSingleton (no doGet stub found in-crate): cutover no-op.
 }
 
 // 0x95a480 — __ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEED0Ev
@@ -689,8 +689,8 @@ pub fn stub_0x95a860(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
 // 0x95a92c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescI17PacketReliabilityEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<PacketReliability> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescI17PacketReliabilityEEE13initSingletonEv")]
-pub fn stub_0x95a92c() -> ! {
-    todo!("0x95a92c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<PacketReliability> const>::initSingleton(void)")
+pub fn stub_0x95a92c() {
+    // IDA 0x95a92c: Singleton<EnumDesc<T>>::initSingleton (no doGet stub found in-crate): cutover no-op.
 }
 
 // 0x95aa10 — __ZN3RBX10Reflection8EnumDescI17PacketReliabilityED1Ev
@@ -784,8 +784,8 @@ pub fn stub_0x95b39c(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
 // 0x95b490 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescI14PacketPriorityEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<PacketPriority> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescI14PacketPriorityEEE13initSingletonEv")]
-pub fn stub_0x95b490() -> ! {
-    todo!("0x95b490 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<PacketPriority> const>::initSingleton(void)")
+pub fn stub_0x95b490() {
+    // IDA 0x95b490: Singleton<EnumDesc<T>>::initSingleton (no doGet stub found in-crate): cutover no-op.
 }
 
 // 0x95b574 — __ZN3RBX10Reflection8EnumDescI14PacketPriorityED1Ev

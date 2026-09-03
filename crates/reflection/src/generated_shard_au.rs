@@ -367,57 +367,65 @@ pub fn stub_9a265c() -> ! {
 // 0x9b1c00 — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEEC1Ev")]
-pub fn stub_9b1c00() -> ! {
-    todo!("0x9b1c00 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::EnumDesc(void)")
+pub fn stub_9b1c00() -> crate::enum_desc::EnumDesc {
+    // IDA 0x9b1c00: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x9b1c0c — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEEC2Ev")]
-pub fn stub_9b1c0c() -> ! {
-    todo!("0x9b1c0c RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::EnumDesc(void)")
+pub fn stub_9b1c0c() -> crate::enum_desc::EnumDesc {
+    // IDA 0x9b1c0c: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "PhysicsSendMethod", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("PhysicsSendMethod")
 }
 
 // 0x9b1e50 — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEEC1Ev")]
-pub fn stub_9b1e50() -> ! {
-    todo!("0x9b1e50 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::EnumDesc(void)")
+pub fn stub_9b1e50() -> crate::enum_desc::EnumDesc {
+    // IDA 0x9b1e50: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x9b1e5c — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEEC2Ev")]
-pub fn stub_9b1e5c() -> ! {
-    todo!("0x9b1e5c RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::EnumDesc(void)")
+pub fn stub_9b1e5c() -> crate::enum_desc::EnumDesc {
+    // IDA 0x9b1e5c: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "PhysicsReceiveMethod", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("PhysicsReceiveMethod")
 }
 
 // 0x9b2070 — __ZN3RBX10Reflection8EnumDescI17PacketReliabilityEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<PacketReliability>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescI17PacketReliabilityEC1Ev")]
-pub fn stub_9b2070() -> ! {
-    todo!("0x9b2070 RBX::Reflection::EnumDesc<PacketReliability>::EnumDesc(void)")
+pub fn stub_9b2070() -> crate::enum_desc::EnumDesc {
+    // IDA 0x9b2070: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x9b207c — __ZN3RBX10Reflection8EnumDescI17PacketReliabilityEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<PacketReliability>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescI17PacketReliabilityEC2Ev")]
-pub fn stub_9b207c() -> ! {
-    todo!("0x9b207c RBX::Reflection::EnumDesc<PacketReliability>::EnumDesc(void)")
+pub fn stub_9b207c() -> crate::enum_desc::EnumDesc {
+    // IDA 0x9b207c: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "PacketReliability", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("PacketReliability")
 }
 
 // 0x9b22d4 — __ZN3RBX10Reflection8EnumDescI14PacketPriorityEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<PacketPriority>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescI14PacketPriorityEC1Ev")]
-pub fn stub_9b22d4() -> ! {
-    todo!("0x9b22d4 RBX::Reflection::EnumDesc<PacketPriority>::EnumDesc(void)")
+pub fn stub_9b22d4() -> crate::enum_desc::EnumDesc {
+    // IDA 0x9b22d4: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x9b22e0 — __ZN3RBX10Reflection8EnumDescI14PacketPriorityEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<PacketPriority>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescI14PacketPriorityEC2Ev")]
-pub fn stub_9b22e0() -> ! {
-    todo!("0x9b22e0 RBX::Reflection::EnumDesc<PacketPriority>::EnumDesc(void)")
+pub fn stub_9b22e0() -> crate::enum_desc::EnumDesc {
+    // IDA 0x9b22e0: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "PacketPriority", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("PacketPriority")
 }
 
 // 0x9b2bdc — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE7addPairES3_PKc

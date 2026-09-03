@@ -288,14 +288,17 @@ pub fn stub_0x66fe44() -> ! {
 
 // 0x66fe68 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService4FontEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::Font> const>::initSingleton(void)")]
-pub fn stub_0x66fe68() -> ! {
-    todo!("0x66fe68 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::Font> const>::initSingleton(void)")
+pub fn stub_0x66fe68() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x66fe68: Singleton<EnumDesc<T>>::initSingleton -- thunk to doGetSingleton (decompiled 0x4a60b8). Rust: forward to the singleton.
+    crate::generated_shard_g::stub_0x66fe6c()
 }
 
 // 0x66fe6c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService4FontEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::Font> const>::doGetSingleton(void)")]
-pub fn stub_0x66fe6c() -> ! {
-    todo!("0x66fe6c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::Font> const>::doGetSingleton(void)")
+pub fn stub_0x66fe6c() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x66fe6c: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_aa::stub_0x7d833c)
 }
 
 // 0x66ff5c — __ZN3RBX10Reflection8EnumDescINS_11TextService4FontEED1Ev
@@ -532,14 +535,17 @@ pub fn stub_0x6710c8() -> ! {
 
 // 0x6710ec — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService8FontSizeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::FontSize> const>::initSingleton(void)")]
-pub fn stub_0x6710ec() -> ! {
-    todo!("0x6710ec RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::FontSize> const>::initSingleton(void)")
+pub fn stub_0x6710ec() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x6710ec: Singleton<EnumDesc<T>>::initSingleton -- thunk to doGetSingleton (decompiled 0x4a60b8). Rust: forward to the singleton.
+    crate::generated_shard_g::stub_0x6710f0()
 }
 
 // 0x6710f0 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService8FontSizeEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::FontSize> const>::doGetSingleton(void)")]
-pub fn stub_0x6710f0() -> ! {
-    todo!("0x6710f0 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::FontSize> const>::doGetSingleton(void)")
+pub fn stub_0x6710f0() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x6710f0: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_aa::stub_0x7d80c0)
 }
 
 // 0x6711e0 — __ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEED1Ev

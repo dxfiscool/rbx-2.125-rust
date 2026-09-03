@@ -246,8 +246,9 @@ pub fn stub_0x6881dc() -> ! {
 
 // 0x6907f4 — __ZN3RBX10Reflection8EnumDescINS_10Controller6ButtonEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Controller::Button>::EnumDesc(void)")]
-pub fn stub_0x6907f4() -> ! {
-    todo!("0x6907f4 RBX::Reflection::EnumDesc<RBX::Controller::Button>::EnumDesc(void)")
+pub fn stub_0x6907f4() -> crate::enum_desc::EnumDesc {
+    // IDA 0x6907f4: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "Button", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Button")
 }
 
 // 0x692d40 — __ZN3RBX10Reflection13BoundFuncDescINS_10ControllerEFvNS2_6ButtonESsELi2EED1Ev
@@ -390,14 +391,17 @@ pub fn stub_0x697560() {
 
 // 0x697f7c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10Controller6ButtonEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Controller::Button> const>::initSingleton(void)")]
-pub fn stub_0x697f7c() -> ! {
-    todo!("0x697f7c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Controller::Button> const>::initSingleton(void)")
+pub fn stub_0x697f7c() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x697f7c: Singleton<EnumDesc<T>>::initSingleton -- thunk to doGetSingleton (decompiled 0x4a60b8). Rust: forward to the singleton.
+    crate::generated_shard_m::stub_0x697f80()
 }
 
 // 0x697f80 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10Controller6ButtonEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Controller::Button> const>::doGetSingleton(void)")]
-pub fn stub_0x697f80() -> ! {
-    todo!("0x697f80 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Controller::Button> const>::doGetSingleton(void)")
+pub fn stub_0x697f80() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x697f80: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_m::stub_0x6907f4)
 }
 
 // 0x698138 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19ButtonBindingWidgetES6_EEvPKNS_10shared_ptrIT_EEPT0_

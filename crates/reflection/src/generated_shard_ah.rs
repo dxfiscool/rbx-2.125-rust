@@ -18,62 +18,72 @@ pub fn stub_86a9fc() -> ! {
 
 // 0x86af70 — __ZN3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::EnumDesc(void)")]
-pub fn stub_86af70() -> ! {
-    todo!("0x86af70 RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::EnumDesc(void)")
+pub fn stub_86af70() -> crate::enum_desc::EnumDesc {
+    // IDA 0x86af70: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x86af74 — __ZN3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::EnumDesc(void)")]
-pub fn stub_86af74() -> ! {
-    todo!("0x86af74 RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::EnumDesc(void)")
+pub fn stub_86af74() -> crate::enum_desc::EnumDesc {
+    // IDA 0x86af74: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "CellMaterial", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("CellMaterial")
 }
 
 // 0x86b2a4 — __ZN3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::EnumDesc(void)")]
-pub fn stub_86b2a4() -> ! {
-    todo!("0x86b2a4 RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::EnumDesc(void)")
+pub fn stub_86b2a4() -> crate::enum_desc::EnumDesc {
+    // IDA 0x86b2a4: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x86b2a8 — __ZN3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::EnumDesc(void)")]
-pub fn stub_86b2a8() -> ! {
-    todo!("0x86b2a8 RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::EnumDesc(void)")
+pub fn stub_86b2a8() -> crate::enum_desc::EnumDesc {
+    // IDA 0x86b2a8: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "CellBlock", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("CellBlock")
 }
 
 // 0x86b4ac — __ZN3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::EnumDesc(void)")]
-pub fn stub_86b4ac() -> ! {
-    todo!("0x86b4ac RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::EnumDesc(void)")
+pub fn stub_86b4ac() -> crate::enum_desc::EnumDesc {
+    // IDA 0x86b4ac: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x86b4b0 — __ZN3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::EnumDesc(void)")]
-pub fn stub_86b4b0() -> ! {
-    todo!("0x86b4b0 RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::EnumDesc(void)")
+pub fn stub_86b4b0() -> crate::enum_desc::EnumDesc {
+    // IDA 0x86b4b0: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "CellOrientation", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("CellOrientation")
 }
 
 // 0x86b69c — __ZN3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::EnumDesc(void)")]
-pub fn stub_86b69c() -> ! {
-    todo!("0x86b69c RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::EnumDesc(void)")
+pub fn stub_86b69c() -> crate::enum_desc::EnumDesc {
+    // IDA 0x86b69c: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x86b6a0 — __ZN3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::EnumDesc(void)")]
-pub fn stub_86b6a0() -> ! {
-    todo!("0x86b6a0 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::EnumDesc(void)")
+pub fn stub_86b6a0() -> crate::enum_desc::EnumDesc {
+    // IDA 0x86b6a0: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "WaterForce", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("WaterForce")
 }
 
 // 0x86b8a4 — __ZN3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::EnumDesc(void)")]
-pub fn stub_86b8a4() -> ! {
-    todo!("0x86b8a4 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::EnumDesc(void)")
+pub fn stub_86b8a4() -> crate::enum_desc::EnumDesc {
+    // IDA 0x86b8a4: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x86b8a8 — __ZN3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::EnumDesc(void)")]
-pub fn stub_86b8a8() -> ! {
-    todo!("0x86b8a8 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::EnumDesc(void)")
+pub fn stub_86b8a8() -> crate::enum_desc::EnumDesc {
+    // IDA 0x86b8a8: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "WaterDirection", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("WaterDirection")
 }
 
 // 0x86f874 — __ZN3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEE7addPairES3_PKc

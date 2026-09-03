@@ -733,8 +733,10 @@ pub fn stub_0xf5a5e4() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_18MarketplaceService12CurrencyTypeEEEE14doGetSingletonEv")]
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::MarketplaceService::CurrencyType> const>::doGetSingleton(void)")]
-pub fn stub_0xf5a5f4() -> ! {
-    todo!("0xf5a5f4")
+pub fn stub_0xf5a5f4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf5a5f4: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_fl::stub_0x8cbc60)
 }
 
 // 0xf5a684 — j___ZN3rbx13remote_signalIFvN5boost10shared_ptrIKNS1_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS1_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEEEC2Ev

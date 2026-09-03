@@ -434,14 +434,16 @@ pub fn stub_0x638bac() -> ! {
 
 // 0x639170 — __ZN3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::EnumDesc(void)")]
-pub fn stub_0x639170() -> ! {
-    todo!("0x639170 RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::EnumDesc(void)")
+pub fn stub_0x639170() -> crate::enum_desc::EnumDesc {
+    // IDA 0x639170: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x639174 — __ZN3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::EnumDesc(void)")]
-pub fn stub_0x639174() -> ! {
-    todo!("0x639174 RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::EnumDesc(void)")
+pub fn stub_0x639174() -> crate::enum_desc::EnumDesc {
+    // IDA 0x639174: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "Stuff", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Stuff")
 }
 
 // 0x63a240 — __ZN3RBX10Reflection13BoundFuncDescINS_13SocialServiceEFvSsELi1EED1Ev

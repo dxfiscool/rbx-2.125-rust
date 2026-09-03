@@ -90,14 +90,16 @@ pub fn stub_0x640a2c() -> ! {
 
 // 0x640f14 — __ZN3RBX10Reflection8EnumDescINS_12SpecialShape8MeshTypeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SpecialShape::MeshType>::EnumDesc(void)")]
-pub fn stub_0x640f14() -> ! {
-    todo!("0x640f14 RBX::Reflection::EnumDesc<RBX::SpecialShape::MeshType>::EnumDesc(void)")
+pub fn stub_0x640f14() -> crate::enum_desc::EnumDesc {
+    // IDA 0x640f14: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x640f18 — __ZN3RBX10Reflection8EnumDescINS_12SpecialShape8MeshTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SpecialShape::MeshType>::EnumDesc(void)")]
-pub fn stub_0x640f18() -> ! {
-    todo!("0x640f18 RBX::Reflection::EnumDesc<RBX::SpecialShape::MeshType>::EnumDesc(void)")
+pub fn stub_0x640f18() -> crate::enum_desc::EnumDesc {
+    // IDA 0x640f18: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "MeshType", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("MeshType")
 }
 
 // 0x64154c — __ZN3RBX10Reflection8EnumDescINS_12SpecialShape8MeshTypeEE7addPairES3_PKc

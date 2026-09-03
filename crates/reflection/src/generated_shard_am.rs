@@ -771,29 +771,33 @@ pub fn stub_8e7abc() -> ! {
 // 0x8eb034 — __ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEEC1Ev")]
-pub fn stub_8eb034() -> ! {
-    todo!("0x8eb034 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::EnumDesc(void)")
+pub fn stub_8eb034() -> crate::enum_desc::EnumDesc {
+    // IDA 0x8eb034: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x8eb038 — __ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEEC2Ev")]
-pub fn stub_8eb038() -> ! {
-    todo!("0x8eb038 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::EnumDesc(void)")
+pub fn stub_8eb038() -> crate::enum_desc::EnumDesc {
+    // IDA 0x8eb038: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "UserInputType", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("UserInputType")
 }
 
 // 0x8eb280 — __ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEEC1Ev")]
-pub fn stub_8eb280() -> ! {
-    todo!("0x8eb280 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::EnumDesc(void)")
+pub fn stub_8eb280() -> crate::enum_desc::EnumDesc {
+    // IDA 0x8eb280: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x8eb284 — __ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEEC2Ev")]
-pub fn stub_8eb284() -> ! {
-    todo!("0x8eb284 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::EnumDesc(void)")
+pub fn stub_8eb284() -> crate::enum_desc::EnumDesc {
+    // IDA 0x8eb284: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "UserInputState", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("UserInputState")
 }
 
 // 0x8eb4d8 — __ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEE7addPairES3_PKc

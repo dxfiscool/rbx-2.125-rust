@@ -4,14 +4,16 @@
 
 // 0x5c16f0 — __ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::EnumDesc(void)")]
-pub fn stub_0x5c16f0() -> ! {
-    todo!("0x5c16f0 RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::EnumDesc(void)")
+pub fn stub_0x5c16f0() -> crate::enum_desc::EnumDesc {
+    // IDA 0x5c16f0: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x5c16f4 — __ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::EnumDesc(void)")]
-pub fn stub_0x5c16f4() -> ! {
-    todo!("0x5c16f4 RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::EnumDesc(void)")
+pub fn stub_0x5c16f4() -> crate::enum_desc::EnumDesc {
+    // IDA 0x5c16f4: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "SurfaceConstraint", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("SurfaceConstraint")
 }
 
 // 0x5c18e0 — __ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEE7addPairES3_PKc
@@ -1493,19 +1495,22 @@ pub fn stub_0x5d78b4() {
 
 // 0x5d8618 — __ZN3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::EnumDesc(void)")]
-pub fn stub_0x5d8618() -> ! {
-    todo!("0x5d8618 RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::EnumDesc(void)")
+pub fn stub_0x5d8618() -> crate::enum_desc::EnumDesc {
+    // IDA 0x5d8618: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x5d861c — __ZN3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::EnumDesc(void)")]
-pub fn stub_0x5d861c() -> ! {
-    todo!("0x5d861c RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::EnumDesc(void)")
+pub fn stub_0x5d861c() -> crate::enum_desc::EnumDesc {
+    // IDA 0x5d861c: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "FormFactor", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("FormFactor")
 }
 // 0x5d8838 — __ZN3RBX10Reflection8EnumDescINS_8MaterialEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Material>::EnumDesc(void)")]
-pub fn stub_0x5d8838() -> ! {
-    todo!("0x5d8838 RBX::Reflection::EnumDesc<RBX::Material>::EnumDesc(void)")
+pub fn stub_0x5d8838() -> crate::enum_desc::EnumDesc {
+    // IDA 0x5d8838: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "Material", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Material")
 }
 
 // 0x5dfa14 — __ZN3RBX10Reflection4Type12getSingletonIN3G3D15CoordinateFrameEEERKS1_v
@@ -2206,14 +2211,17 @@ pub fn stub_0x5ed998() -> ! {
 
 // 0x5ed9ec — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8NormalIdEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::NormalId> const>::initSingleton(void)")]
-pub fn stub_0x5ed9ec() -> ! {
-    todo!("0x5ed9ec RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::NormalId> const>::initSingleton(void)")
+pub fn stub_0x5ed9ec() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x5ed9ec: Singleton<EnumDesc<T>>::initSingleton -- thunk to doGetSingleton (decompiled 0x4a60b8). Rust: forward to the singleton.
+    crate::generated_next::stub_0x5ed9f0()
 }
 
 // 0x5ed9f0 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8NormalIdEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::NormalId> const>::doGetSingleton(void)")]
-pub fn stub_0x5ed9f0() -> ! {
-    todo!("0x5ed9f0 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::NormalId> const>::doGetSingleton(void)")
+pub fn stub_0x5ed9f0() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x5ed9f0: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_q::stub_0x6f296c)
 }
 
 // 0x5edae0 — __ZN3RBX10Reflection8EnumDescINS_8NormalIdEED1Ev
@@ -2681,14 +2689,17 @@ pub fn stub_0x5efa90() -> ! {
 
 // 0x5efab4 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8MaterialEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Material> const>::initSingleton(void)")]
-pub fn stub_0x5efab4() -> ! {
-    todo!("0x5efab4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Material> const>::initSingleton(void)")
+pub fn stub_0x5efab4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x5efab4: Singleton<EnumDesc<T>>::initSingleton -- thunk to doGetSingleton (decompiled 0x4a60b8). Rust: forward to the singleton.
+    crate::generated_next::stub_0x5efab8()
 }
 
 // 0x5efab8 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8MaterialEEEE14doGetSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Material> const>::doGetSingleton(void)")]
-pub fn stub_0x5efab8() -> ! {
-    todo!("0x5efab8 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Material> const>::doGetSingleton(void)")
+pub fn stub_0x5efab8() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0x5efab8: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_next::stub_0x5d8838)
 }
 
 // 0x5efba8 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceENS_10BrickColorEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -4288,15 +4299,17 @@ pub fn stub_0x715950() -> ! {
 // 0x7304b4 — __ZN3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::LegacyController::InputType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEEC1Ev")]
-pub fn stub_0x7304b4() -> ! {
-    todo!("0x7304b4 RBX::Reflection::EnumDesc<RBX::LegacyController::InputType>::EnumDesc(void)")
+pub fn stub_0x7304b4() -> crate::enum_desc::EnumDesc {
+    // IDA 0x7304b4: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x7304b8 — __ZN3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::LegacyController::InputType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEEC2Ev")]
-pub fn stub_0x7304b8() -> ! {
-    todo!("0x7304b8 RBX::Reflection::EnumDesc<RBX::LegacyController::InputType>::EnumDesc(void)")
+pub fn stub_0x7304b8() -> crate::enum_desc::EnumDesc {
+    // IDA 0x7304b8: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "InputType", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("InputType")
 }
 
 // 0x730774 — __ZN3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEE7addPairES3_PKc
@@ -4310,15 +4323,17 @@ pub fn stub_0x730774(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &s
 // 0x736f30 — __ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Joint::JointType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEEC1Ev")]
-pub fn stub_0x736f30() -> ! {
-    todo!("0x736f30 RBX::Reflection::EnumDesc<RBX::Joint::JointType>::EnumDesc(void)")
+pub fn stub_0x736f30() -> crate::enum_desc::EnumDesc {
+    // IDA 0x736f30: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x736f34 — __ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Joint::JointType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEEC2Ev")]
-pub fn stub_0x736f34() -> ! {
-    todo!("0x736f34 RBX::Reflection::EnumDesc<RBX::Joint::JointType>::EnumDesc(void)")
+pub fn stub_0x736f34() -> crate::enum_desc::EnumDesc {
+    // IDA 0x736f34: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "JointType", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("JointType")
 }
 
 // 0x73904c — __ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE7addPairES3_PKc
@@ -4332,15 +4347,17 @@ pub fn stub_0x73904c(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &s
 // 0x73b500 — __ZN3RBX10Reflection8EnumDescINS_11SurfaceTypeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SurfaceType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11SurfaceTypeEEC1Ev")]
-pub fn stub_0x73b500() -> ! {
-    todo!("0x73b500 RBX::Reflection::EnumDesc<RBX::SurfaceType>::EnumDesc(void)")
+pub fn stub_0x73b500() -> crate::enum_desc::EnumDesc {
+    // IDA 0x73b500: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x73b504 — __ZN3RBX10Reflection8EnumDescINS_11SurfaceTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SurfaceType>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11SurfaceTypeEEC2Ev")]
-pub fn stub_0x73b504() -> ! {
-    todo!("0x73b504 RBX::Reflection::EnumDesc<RBX::SurfaceType>::EnumDesc(void)")
+pub fn stub_0x73b504() -> crate::enum_desc::EnumDesc {
+    // IDA 0x73b504: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "SurfaceType", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("SurfaceType")
 }
 
 // 0x73b7ec — __ZN3RBX10Reflection8EnumDescINS_11SurfaceTypeEE7addPairES2_PKc

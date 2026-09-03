@@ -10,43 +10,49 @@ use rbx_core::SharedPtr;
 // 0x850c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEEC2Ev")]
-pub fn stub_850c() -> ! {
-    todo!("0x850c RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::EnumDesc(void)")
+pub fn stub_850c() -> crate::enum_desc::EnumDesc {
+    // IDA 0x850c: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "AASamples", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("AASamples")
 }
 
 // 0x86d0 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEEC2Ev")]
-pub fn stub_86d0() -> ! {
-    todo!("0x86d0 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::EnumDesc(void)")
+pub fn stub_86d0() -> crate::enum_desc::EnumDesc {
+    // IDA 0x86d0: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "GraphicsMode", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("GraphicsMode")
 }
 
 // 0x88c4 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEEC2Ev")]
-pub fn stub_88c4() -> ! {
-    todo!("0x88c4 RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::EnumDesc(void)")
+pub fn stub_88c4() -> crate::enum_desc::EnumDesc {
+    // IDA 0x88c4: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "FramerateManagerMode", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("FramerateManagerMode")
 }
 
 // 0x8a88 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEEC2Ev")]
-pub fn stub_8a88() -> ! {
-    todo!("0x8a88 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::EnumDesc(void)")
+pub fn stub_8a88() -> crate::enum_desc::EnumDesc {
+    // IDA 0x8a88: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "Antialiasing", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Antialiasing")
 }
 
 // 0x8c4c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEEC2Ev")]
-pub fn stub_8c4c() -> ! {
-    todo!("0x8c4c RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::EnumDesc(void)")
+pub fn stub_8c4c() -> crate::enum_desc::EnumDesc {
+    // IDA 0x8c4c: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "Shadow", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Shadow")
 }
 
 // 0x8e24 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEEC2Ev")]
-pub fn stub_8e24() -> ! {
-    todo!("0x8e24 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::EnumDesc(void)")
+pub fn stub_8e24() -> crate::enum_desc::EnumDesc {
+    // IDA 0x8e24: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "QualityLevel", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("QualityLevel")
 }
 
 // 0x9b48 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE7addPairES3_PKc

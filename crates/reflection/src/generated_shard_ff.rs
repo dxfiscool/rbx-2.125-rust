@@ -878,29 +878,33 @@ pub fn stub_0x7b9634() -> ! {
 // 0x7bd57c — __ZN3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEEC1Ev")]
-pub fn stub_0x7bd57c() -> ! {
-    todo!("0x7bd57c")
+pub fn stub_0x7bd57c() -> crate::enum_desc::EnumDesc {
+    // IDA 0x7bd57c: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x7bd580 — __ZN3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEEC2Ev")]
-pub fn stub_0x7bd580() -> ! {
-    todo!("0x7bd580")
+pub fn stub_0x7bd580() -> crate::enum_desc::EnumDesc {
+    // IDA 0x7bd580: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "NameOcclusion", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("NameOcclusion")
 }
 
 // 0x7bd75c — __ZN3RBX10Reflection8EnumDescINS_8Humanoid6StatusEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::Status>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_8Humanoid6StatusEEC1Ev")]
-pub fn stub_0x7bd75c() -> ! {
-    todo!("0x7bd75c")
+pub fn stub_0x7bd75c() -> crate::enum_desc::EnumDesc {
+    // IDA 0x7bd75c: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x7bd760 — __ZN3RBX10Reflection8EnumDescINS_8Humanoid6StatusEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::Status>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_8Humanoid6StatusEEC2Ev")]
-pub fn stub_0x7bd760() -> ! {
-    todo!("0x7bd760")
+pub fn stub_0x7bd760() -> crate::enum_desc::EnumDesc {
+    // IDA 0x7bd760: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "Status", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Status")
 }
 
 // 0x7bdb10 — __ZNK3RBX8Humanoid24isLegalForClientToChangeERKNS_10Reflection18PropertyDescriptorE

@@ -289,15 +289,15 @@ pub fn stub_a23500() {
 // 0xa24e24 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network7Players14PlayerChatTypeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network7Players14PlayerChatTypeEEEE13initSingletonEv")]
-pub fn stub_a24e24() -> ! {
-    todo!("0xa24e24 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType> const>::initSingleton(void)")
+pub fn stub_a24e24() {
+    // IDA 0xa24e24: Singleton<EnumDesc<T>>::initSingleton (no doGet stub found in-crate): cutover no-op.
 }
 
 // 0xa24f08 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network7Players10ChatOptionEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network7Players10ChatOptionEEEE13initSingletonEv")]
-pub fn stub_a24f08() -> ! {
-    todo!("0xa24f08 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption> const>::initSingleton(void)")
+pub fn stub_a24f08() {
+    // IDA 0xa24f08: Singleton<EnumDesc<T>>::initSingleton (no doGet stub found in-crate): cutover no-op.
 }
 
 // 0xa2bb60 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsN3RBX10Reflection7VariantEEESsS8_NS_4hashISsEESt8equal_toISsEEEEixERS5_

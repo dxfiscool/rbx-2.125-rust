@@ -98,8 +98,8 @@ pub fn stub_f2509c() -> ! {
 
 // 0xf25120 — __ZN3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEED2Ev$shim
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEED2Ev$shim")]
-pub fn stub_f25120() -> ! {
-    todo!("0xf25120 __ZN3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEED2Ev$shim")
+pub fn stub_f25120() {
+    // IDA 0xf25120: D2 base-destructor branch shim (cf. decompiled D2 0x111270/0x35bfec). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf2521c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_11InputObjectEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim

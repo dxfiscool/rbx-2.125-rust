@@ -260,14 +260,18 @@ pub fn stub_0xf40944() -> ! {
 
 // 0xf40954 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10GuiService10SpecialKeyEEEE14doGetSingletonEv
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10GuiService10SpecialKeyEEEE14doGetSingletonEv")]
-pub fn stub_0xf40954() -> ! {
-    todo!("0xf40954 j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10GuiService10SpecialKeyEEEE14doGetSingletonEv")
+pub fn stub_0xf40954() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf40954: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x543264)
 }
 
 // 0xf40964 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10GuiService16CenterDialogTypeEEEE14doGetSingletonEv
 #[doc(alias = "j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10GuiService16CenterDialogTypeEEEE14doGetSingletonEv")]
-pub fn stub_0xf40964() -> ! {
-    todo!("0xf40964 j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10GuiService16CenterDialogTypeEEEE14doGetSingletonEv")
+pub fn stub_0xf40964() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf40964: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x543480)
 }
 
 // 0xf409e4 — j___ZN3rbx11make_sharedIN3RBX10Reflection5TupleEEEN5boost10shared_ptrIT_EEv

@@ -656,8 +656,10 @@ pub fn stub_0xf213e8(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 // 0xf213f4 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13TaskScheduler16ThreadPoolConfigEEEE14doGetSingletonEv$shim
 // demangled: __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13TaskScheduler16ThreadPoolConfigEEEE14doGetSingletonEv$shim
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13TaskScheduler16ThreadPoolConfigEEEE14doGetSingletonEv$shim")]
-pub fn stub_0xf213f4() -> ! {
-    todo!("0xf213f4 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13TaskScheduler16ThreadPoolConfigEEEE14doGetSingletonEv$shim")
+pub fn stub_0xf213f4() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf213f4: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x47a87c)
 }
 
 // 0xf21400 — __ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE14convertToIndexES3_$shim
@@ -672,8 +674,10 @@ pub fn stub_0xf21400(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 // 0xf2140c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13DebugSettings14ErrorReportingEEEE14doGetSingletonEv$shim
 // demangled: __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13DebugSettings14ErrorReportingEEEE14doGetSingletonEv$shim
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13DebugSettings14ErrorReportingEEEE14doGetSingletonEv$shim")]
-pub fn stub_0xf2140c() -> ! {
-    todo!("0xf2140c __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13DebugSettings14ErrorReportingEEEE14doGetSingletonEv$shim")
+pub fn stub_0xf2140c() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf2140c: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x47aee0)
 }
 
 // 0xf21418 — __ZN3RBX10Reflection11Call0HelperINS_13DebugSettingsEMS2_FN5boost10shared_ptrIKNS0_5TupleEEEvES7_E4callEPS2_S9_RNS0_7VariantE$shim
@@ -704,8 +708,8 @@ pub fn stub_0xf21544(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 // 0xf215c8 — __ZN3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEED2Ev$shim
 // demangled: __ZN3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEED2Ev$shim
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEED2Ev$shim")]
-pub fn stub_0xf215c8() -> ! {
-    todo!("0xf215c8 __ZN3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEED2Ev$shim")
+pub fn stub_0xf215c8() {
+    // IDA 0xf215c8: D2 base-destructor branch shim (cf. decompiled D2 0x111270/0x35bfec). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf21640 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKfEENS3_5list3INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSM_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
@@ -727,8 +731,10 @@ pub fn stub_0xf21664(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 // 0xf21670 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9Explosion13ExplosionTypeEEEE14doGetSingletonEv$shim
 // demangled: __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9Explosion13ExplosionTypeEEEE14doGetSingletonEv$shim
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9Explosion13ExplosionTypeEEEE14doGetSingletonEv$shim")]
-pub fn stub_0xf21670() -> ! {
-    todo!("0xf21670 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9Explosion13ExplosionTypeEEEE14doGetSingletonEv$shim")
+pub fn stub_0xf21670() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf21670: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated::stub_0x49f610)
 }
 
 // 0xf216ac — __ZNK3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEE14convertToIndexES3_$shim
@@ -750,111 +756,127 @@ pub fn stub_0xf21724() -> ! {
 // 0xf21814 — __ZN3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEED2Ev$shim
 // demangled: __ZN3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEED2Ev$shim
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEED2Ev$shim")]
-pub fn stub_0xf21814() -> ! {
-    todo!("0xf21814 __ZN3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEED2Ev$shim")
+pub fn stub_0xf21814() {
+    // IDA 0xf21814: D2 base-destructor branch shim (cf. decompiled D2 0x111270/0x35bfec). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf21820 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11HttpService15HttpContentTypeEEEE14doGetSingletonEv$shim
 // demangled: __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11HttpService15HttpContentTypeEEEE14doGetSingletonEv$shim
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11HttpService15HttpContentTypeEEEE14doGetSingletonEv$shim")]
-pub fn stub_0xf21820() -> ! {
-    todo!("0xf21820 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11HttpService15HttpContentTypeEEEE14doGetSingletonEv$shim")
+pub fn stub_0xf21820() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf21820: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_dm::stub_256ef8)
 }
 
 // 0xf2182c — __ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEED2Ev$shim
 // demangled: __ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEED2Ev$shim
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEED2Ev$shim")]
-pub fn stub_0xf2182c() -> ! {
-    todo!("0xf2182c __ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEED2Ev$shim")
+pub fn stub_0xf2182c() {
+    // IDA 0xf2182c: D2 base-destructor branch shim (cf. decompiled D2 0x111270/0x35bfec). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf21838 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_12AssetService10AccessTypeEEEE14doGetSingletonEv$shim
 // demangled: __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_12AssetService10AccessTypeEEEE14doGetSingletonEv$shim
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_12AssetService10AccessTypeEEEE14doGetSingletonEv$shim")]
-pub fn stub_0xf21838() -> ! {
-    todo!("0xf21838 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_12AssetService10AccessTypeEEEE14doGetSingletonEv$shim")
+pub fn stub_0xf21838() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf21838: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_gF::stub_0x9117ac)
 }
 
 // 0xf21844 — __ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEED2Ev$shim
 // demangled: __ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEED2Ev$shim
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEED2Ev$shim")]
-pub fn stub_0xf21844() -> ! {
-    todo!("0xf21844 __ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEED2Ev$shim")
+pub fn stub_0xf21844() {
+    // IDA 0xf21844: D2 base-destructor branch shim (cf. decompiled D2 0x111270/0x35bfec). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf21850 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11InputObject14UserInputStateEEEE14doGetSingletonEv$shim
 // demangled: __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11InputObject14UserInputStateEEEE14doGetSingletonEv$shim
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11InputObject14UserInputStateEEEE14doGetSingletonEv$shim")]
-pub fn stub_0xf21850() -> ! {
-    todo!("0xf21850 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11InputObject14UserInputStateEEEE14doGetSingletonEv$shim")
+pub fn stub_0xf21850() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf21850: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_am::stub_8eb280)
 }
 
 // 0xf2185c — __ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEED2Ev$shim
 // demangled: __ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEED2Ev$shim
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEED2Ev$shim")]
-pub fn stub_0xf2185c() -> ! {
-    todo!("0xf2185c __ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEED2Ev$shim")
+pub fn stub_0xf2185c() {
+    // IDA 0xf2185c: D2 base-destructor branch shim (cf. decompiled D2 0x111270/0x35bfec). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf21868 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11InputObject13UserInputTypeEEEE14doGetSingletonEv$shim
 // demangled: __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11InputObject13UserInputTypeEEEE14doGetSingletonEv$shim
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11InputObject13UserInputTypeEEEE14doGetSingletonEv$shim")]
-pub fn stub_0xf21868() -> ! {
-    todo!("0xf21868 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11InputObject13UserInputTypeEEEE14doGetSingletonEv$shim")
+pub fn stub_0xf21868() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf21868: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_am::stub_8eb034)
 }
 
 // 0xf21874 — __ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEED2Ev$shim
 // demangled: __ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEED2Ev$shim
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEED2Ev$shim")]
-pub fn stub_0xf21874() -> ! {
-    todo!("0xf21874 __ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEED2Ev$shim")
+pub fn stub_0xf21874() {
+    // IDA 0xf21874: D2 base-destructor branch shim (cf. decompiled D2 0x111270/0x35bfec). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf21880 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel18WaterCellDirectionEEEE14doGetSingletonEv$shim
 // demangled: __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel18WaterCellDirectionEEEE14doGetSingletonEv$shim
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel18WaterCellDirectionEEEE14doGetSingletonEv$shim")]
-pub fn stub_0xf21880() -> ! {
-    todo!("0xf21880 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel18WaterCellDirectionEEEE14doGetSingletonEv$shim")
+pub fn stub_0xf21880() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf21880: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_ah::stub_86b8a4)
 }
 
 // 0xf2188c — __ZN3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEED2Ev$shim
 // type: int()
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEED2Ev$shim")]
-pub fn stub_0xf2188c() -> ! {
-    todo!("0xf2188c __ZN3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEED2Ev$shim")
+pub fn stub_0xf2188c() {
+    // IDA 0xf2188c: D2 base-destructor branch shim (cf. decompiled D2 0x111270/0x35bfec). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf21898 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel14WaterCellForceEEEE14doGetSingletonEv$shim
 // demangled: __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel14WaterCellForceEEEE14doGetSingletonEv$shim
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel14WaterCellForceEEEE14doGetSingletonEv$shim")]
-pub fn stub_0xf21898() -> ! {
-    todo!("0xf21898 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel14WaterCellForceEEEE14doGetSingletonEv$shim")
+pub fn stub_0xf21898() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf21898: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_ah::stub_86b69c)
 }
 
 // 0xf218a4 — __ZN3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEED2Ev$shim
 // demangled: __ZN3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEED2Ev$shim
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEED2Ev$shim")]
-pub fn stub_0xf218a4() -> ! {
-    todo!("0xf218a4 __ZN3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEED2Ev$shim")
+pub fn stub_0xf218a4() {
+    // IDA 0xf218a4: D2 base-destructor branch shim (cf. decompiled D2 0x111270/0x35bfec). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf218b0 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel15CellOrientationEEEE14doGetSingletonEv$shim
 // demangled: __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel15CellOrientationEEEE14doGetSingletonEv$shim
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel15CellOrientationEEEE14doGetSingletonEv$shim")]
-pub fn stub_0xf218b0() -> ! {
-    todo!("0xf218b0 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel15CellOrientationEEEE14doGetSingletonEv$shim")
+pub fn stub_0xf218b0() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf218b0: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_ah::stub_86b4ac)
 }
 
 // 0xf218bc — __ZN3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEED2Ev$shim
 // type: int(void)
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEED2Ev$shim")]
-pub fn stub_0xf218bc() -> ! {
-    todo!("0xf218bc __ZN3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEED2Ev$shim")
+pub fn stub_0xf218bc() {
+    // IDA 0xf218bc: D2 base-destructor branch shim (cf. decompiled D2 0x111270/0x35bfec). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf218c8 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel9CellBlockEEEE14doGetSingletonEv$shim
 // demangled: __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel9CellBlockEEEE14doGetSingletonEv$shim
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel9CellBlockEEEE14doGetSingletonEv$shim")]
-pub fn stub_0xf218c8() -> ! {
-    todo!("0xf218c8 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel9CellBlockEEEE14doGetSingletonEv$shim")
+pub fn stub_0xf218c8() -> &'static crate::enum_desc::EnumDesc {
+    // IDA 0xf218c8: Singleton<EnumDesc<T>>::doGetSingleton -- guard-once construct via the C2 ctor + __cxa_atexit (decompiled 0x1654c). Rust: OnceLock; destructor runs at process exit.
+    static S: std::sync::OnceLock<crate::enum_desc::EnumDesc> = std::sync::OnceLock::new();
+    S.get_or_init(crate::generated_shard_ah::stub_86b2a4)
 }

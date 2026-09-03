@@ -264,29 +264,33 @@ pub fn stub_0x848604() -> ! {
 // 0x849788 — __ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEEC1Ev")]
-pub fn stub_0x849788() -> ! {
-    todo!("0x849788 RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::EnumDesc(void)")
+pub fn stub_0x849788() -> crate::enum_desc::EnumDesc {
+    // IDA 0x849788: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x84978c — __ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEEC2Ev")]
-pub fn stub_0x84978c() -> ! {
-    todo!("0x84978c RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::EnumDesc(void)")
+pub fn stub_0x84978c() -> crate::enum_desc::EnumDesc {
+    // IDA 0x84978c: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "ControlMode", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("ControlMode")
 }
 
 // 0x849978 — __ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEEC1Ev")]
-pub fn stub_0x849978() -> ! {
-    todo!("0x849978 RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::EnumDesc(void)")
+pub fn stub_0x849978() -> crate::enum_desc::EnumDesc {
+    // IDA 0x849978: EnumDesc<T>::C1 -- EnumDescriptor base ctor with name "Enum", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("Enum")
 }
 
 // 0x84997c — __ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::EnumDesc(void)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEEC2Ev")]
-pub fn stub_0x84997c() -> ! {
-    todo!("0x84997c RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::EnumDesc(void)")
+pub fn stub_0x84997c() -> crate::enum_desc::EnumDesc {
+    // IDA 0x84997c: EnumDesc<T>::C2 -- EnumDescriptor base ctor with name "SavedQualitySetting", vtable install, empty tables (decompiled; cf. 0x37148c). Pairs are registered by the addPair stubs.
+    crate::enum_desc::EnumDesc::new("SavedQualitySetting")
 }
 
 // 0x849f94 — __ZN3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEED1Ev

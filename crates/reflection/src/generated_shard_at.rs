@@ -24,8 +24,8 @@ pub fn stub_95a2a8(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
 // 0x95a39c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network12FilterResultEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::FilterResult> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network12FilterResultEEEE13initSingletonEv")]
-pub fn stub_95a39c() -> ! {
-    todo!("0x95a39c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::FilterResult> const>::initSingleton(void)")
+pub fn stub_95a39c() {
+    // IDA 0x95a39c: Singleton<EnumDesc<T>>::initSingleton (no doGet stub found in-crate): cutover no-op.
 }
 
 // 0x95a480 — __ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEED0Ev
@@ -76,8 +76,8 @@ pub fn stub_95a860(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
 // 0x95a92c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescI17PacketReliabilityEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<PacketReliability> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescI17PacketReliabilityEEE13initSingletonEv")]
-pub fn stub_95a92c() -> ! {
-    todo!("0x95a92c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<PacketReliability> const>::initSingleton(void)")
+pub fn stub_95a92c() {
+    // IDA 0x95a92c: Singleton<EnumDesc<T>>::initSingleton (no doGet stub found in-crate): cutover no-op.
 }
 
 // 0x95aa10 — __ZN3RBX10Reflection8EnumDescI17PacketReliabilityED1Ev
@@ -169,8 +169,8 @@ pub fn stub_95b39c(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
 // 0x95b490 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescI14PacketPriorityEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<PacketPriority> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescI14PacketPriorityEEE13initSingletonEv")]
-pub fn stub_95b490() -> ! {
-    todo!("0x95b490 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<PacketPriority> const>::initSingleton(void)")
+pub fn stub_95b490() {
+    // IDA 0x95b490: Singleton<EnumDesc<T>>::initSingleton (no doGet stub found in-crate): cutover no-op.
 }
 
 // 0x95b574 — __ZN3RBX10Reflection8EnumDescI14PacketPriorityED1Ev
