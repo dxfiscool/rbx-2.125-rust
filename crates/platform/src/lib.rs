@@ -460,3 +460,4 @@ pub mod generated_watchdog_plat_wdc;
 pub mod generated_watchdog_plat_wda;
 pub mod generated_watchdog_plat_wdD;
 pub mod generated_watchdog_plat_wdE;
+pub mod generated_watchdog_platform_wdG2;
