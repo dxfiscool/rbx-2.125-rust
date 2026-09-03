@@ -382,3 +382,4 @@ pub mod generated_watchdog_refl_wda;
 pub mod generated_watchdog_refl_wd3;
 pub mod generated_watchdog_refl_wdY;
 pub mod generated_watchdog_refl_wdZ;
+pub mod generated_watchdog_refl_wdAA;
