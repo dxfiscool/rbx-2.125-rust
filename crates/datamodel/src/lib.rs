@@ -718,3 +718,5 @@ pub mod generated_watchdog_dm_wdI;
 pub mod generated_watchdog_dm_wdJ;
 pub mod generated_watchdog_dm_wdK;
 pub mod generated_watchdog_dm_wdK2;
+pub mod generated_watchdog_dm_wdL;
+pub mod generated_watchdog_dm_wdM;
