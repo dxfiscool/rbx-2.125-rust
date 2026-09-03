@@ -73,7 +73,7 @@ pub fn stub_5254d8() -> ! {
 
 // 0x525994 — __GLOBAL__I_a_206 — `global constructor keyed to'_a_206
 #[doc(alias = "__GLOBAL__I_a_206")]
-#[doc(alias = "`global constructor keyed to'_a_206")]
+#[doc(alias = "`global constructor keyed to_a_206")]
 pub fn stub_525994() -> ! {
     todo!("0x525994 __GLOBAL__I_a_206")
 }
@@ -325,7 +325,7 @@ pub fn stub_532a4c() -> ! {
 
 // 0x532a54 — __ZThn4_N3rbx8callableINS_7signals6signalIFviiEE4slotEN5boost8functionIS3_EELi2ES3_E4callEii — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(int,int)>::slot,boost::function<void ()(int,int)>,2,void ()(int,int)>::call(int,int)
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFviiEE4slotEN5boost8functionIS3_EELi2ES3_E4callEii")]
-#[doc(alias = "`non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(int,int)>::slot,boost::function<void ()(int,int)>,2,void ()(int,int)>::call(int,int)")]
+#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,int)>::slot,boost::function<void ()(int,int)>,2,void ()(int,int)>::call(int,int)")]
 pub fn stub_532a54() -> ! {
     todo!("0x532a54 __ZThn4_N3rbx8callableINS_7signals6signalIFviiEE4slotEN5boost8functionIS3_EELi2ES3_E4callEii")
 }
@@ -729,7 +729,7 @@ pub fn stub_53b298() -> ! {
 
 // 0x53b2b0 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX5UDim2EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_ — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::UDim2)>::slot,boost::function<void ()(RBX::UDim2)>,1,void ()(RBX::UDim2)>::call(RBX::UDim2)
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX5UDim2EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")]
-#[doc(alias = "`non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::UDim2)>::slot,boost::function<void ()(RBX::UDim2)>,1,void ()(RBX::UDim2)>::call(RBX::UDim2)")]
+#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::UDim2)>::slot,boost::function<void ()(RBX::UDim2)>,1,void ()(RBX::UDim2)>::call(RBX::UDim2)")]
 pub fn stub_53b2b0() -> ! {
     todo!("0x53b2b0 __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX5UDim2EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")
 }
