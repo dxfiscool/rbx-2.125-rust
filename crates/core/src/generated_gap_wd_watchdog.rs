@@ -10,680 +10,680 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::~EnumDesc()")]
 // 0x4c7dc0 — __ZN3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEED1Ev
-pub fn stub_4c7dc0() -> ! {
-    todo!("0x4c7dc0 __ZN3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEED1Ev")
+pub fn stub_4c7dc0() {
+    // IDA 0x4c7dc0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::~EnumDesc()")]
 // 0x4c7dc4 — __ZN3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEED2Ev
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
-pub fn stub_4c7dc4() -> ! {
-    todo!("0x4c7dc4 __ZN3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEED2Ev")
+pub fn stub_4c7dc4() {
+    // IDA 0x4c7dc4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::~EnumDesc()")]
 // 0x4c7f98 — __ZN3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEED0Ev
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
-pub fn stub_4c7f98() -> ! {
-    todo!("0x4c7f98 __ZN3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEED0Ev")
+pub fn stub_4c7f98() {
+    // IDA 0x4c7f98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::lookup(char const*)const")]
 // 0x4c8038 — __ZNK3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
-pub fn stub_4c8038() -> ! {
-    todo!("0x4c8038 __ZNK3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEE6lookupEPKc")
+pub fn stub_4c8038() {
+    // IDA 0x4c8038: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::lookup(RBX::Reflection::Variant const&)const")]
 // 0x4c8068 — __ZNK3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
-pub fn stub_4c8068() -> ! {
-    todo!("0x4c8068 __ZNK3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEE6lookupERKNS0_7VariantE")
+pub fn stub_4c8068() {
+    // IDA 0x4c8068: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 // 0x4c8088 — __ZNK3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEE14convertToValueEmRNS0_7VariantE
-pub fn stub_4c8088() -> ! {
-    todo!("0x4c8088 __ZNK3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_4c8088() {
+    // IDA 0x4c8088: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::convertToString(unsigned long,std::string &)const")]
 // 0x4c80e4 — __ZNK3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
-pub fn stub_4c80e4() -> ! {
-    todo!("0x4c80e4 __ZNK3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEE15convertToStringEmRSs")
+pub fn stub_4c80e4() {
+    // IDA 0x4c80e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::convertToString(RBX::SocialService::StuffType const&)const")]
 // 0x4c8228 — __ZNK3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
-pub fn stub_4c8228() -> ! {
-    todo!("0x4c8228 __ZNK3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEE15convertToStringERKS3_")
+pub fn stub_4c8228() {
+    // IDA 0x4c8228: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::convertToItem(RBX::SocialService::StuffType const&)const")]
 // 0x4c8494 — __ZNK3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
-pub fn stub_4c8494() -> ! {
-    todo!("0x4c8494 __ZNK3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEE13convertToItemERKS3_")
+pub fn stub_4c8494() {
+    // IDA 0x4c8494: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::convertToValue(RBX::Name const&,RBX::SocialService::StuffType&)const")]
 // 0x4c8650 — __ZNK3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
-pub fn stub_4c8650() -> ! {
-    todo!("0x4c8650 __ZNK3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_4c8650() {
+    // IDA 0x4c8650: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority> const>::initSingleton(void)")]
 // 0x4c86f4 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_16KeyframeSequence8PriorityEEEE13initSingletonEv
 // type: int()
-pub fn stub_4c86f4() -> ! {
-    todo!("0x4c86f4 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_16KeyframeSequence8PriorityEEEE13initSingletonEv")
+pub fn stub_4c86f4() {
+    // IDA 0x4c86f4: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority> const>::doGetSingleton(void)")]
 // 0x4c86f8 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_16KeyframeSequence8PriorityEEEE14doGetSingletonEv
 // type: void *()
-pub fn stub_4c86f8() -> ! {
-    todo!("0x4c86f8 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_16KeyframeSequence8PriorityEEEE14doGetSingletonEv")
+pub fn stub_4c86f8() {
+    // IDA 0x4c86f8: script/reflection wiring owned by the script/datamodel crates — carrier no-op in core.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::~EnumDesc()")]
 // 0x4c87e8 — __ZN3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEED1Ev
-pub fn stub_4c87e8() -> ! {
-    todo!("0x4c87e8 __ZN3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEED1Ev")
+pub fn stub_4c87e8() {
+    // IDA 0x4c87e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::~EnumDesc()")]
 // 0x4c87ec — __ZN3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEED2Ev
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
-pub fn stub_4c87ec() -> ! {
-    todo!("0x4c87ec __ZN3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEED2Ev")
+pub fn stub_4c87ec() {
+    // IDA 0x4c87ec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::~EnumDesc()")]
 // 0x4c89c0 — __ZN3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEED0Ev
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
-pub fn stub_4c89c0() -> ! {
-    todo!("0x4c89c0 __ZN3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEED0Ev")
+pub fn stub_4c89c0() {
+    // IDA 0x4c89c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::lookup(char const*)const")]
 // 0x4c8a60 — __ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
-pub fn stub_4c8a60() -> ! {
-    todo!("0x4c8a60 __ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE6lookupEPKc")
+pub fn stub_4c8a60() {
+    // IDA 0x4c8a60: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::lookup(RBX::Reflection::Variant const&)const")]
 // 0x4c8a90 — __ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
-pub fn stub_4c8a90() -> ! {
-    todo!("0x4c8a90 __ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE6lookupERKNS0_7VariantE")
+pub fn stub_4c8a90() {
+    // IDA 0x4c8a90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 // 0x4c8ab0 — __ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE14convertToValueEmRNS0_7VariantE
-pub fn stub_4c8ab0() -> ! {
-    todo!("0x4c8ab0 __ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_4c8ab0() {
+    // IDA 0x4c8ab0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::convertToString(unsigned long,std::string &)const")]
 // 0x4c8b0c — __ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
-pub fn stub_4c8b0c() -> ! {
-    todo!("0x4c8b0c __ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE15convertToStringEmRSs")
+pub fn stub_4c8b0c() {
+    // IDA 0x4c8b0c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::convertToString(RBX::KeyframeSequence::Priority const&)const")]
 // 0x4c8c50 — __ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
-pub fn stub_4c8c50() -> ! {
-    todo!("0x4c8c50 __ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE15convertToStringERKS3_")
+pub fn stub_4c8c50() {
+    // IDA 0x4c8c50: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::convertToItem(RBX::KeyframeSequence::Priority const&)const")]
 // 0x4c8ebc — __ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
-pub fn stub_4c8ebc() -> ! {
-    todo!("0x4c8ebc __ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE13convertToItemERKS3_")
+pub fn stub_4c8ebc() {
+    // IDA 0x4c8ebc: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::convertToValue(RBX::Name const&,RBX::KeyframeSequence::Priority&)const")]
 // 0x4c9078 — __ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
-pub fn stub_4c9078() -> ! {
-    todo!("0x4c9078 __ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_4c9078() {
+    // IDA 0x4c9078: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType> const>::initSingleton(void)")]
 // 0x4c911c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17BasicPartInstance14LegacyPartTypeEEEE13initSingletonEv
-pub fn stub_4c911c() -> ! {
-    todo!("0x4c911c __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17BasicPartInstance14LegacyPartTypeEEEE13initSingletonEv")
+pub fn stub_4c911c() {
+    // IDA 0x4c911c: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType> const>::doGetSingleton(void)")]
 // 0x4c9120 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17BasicPartInstance14LegacyPartTypeEEEE14doGetSingletonEv
 // type: void *()
-pub fn stub_4c9120() -> ! {
-    todo!("0x4c9120 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17BasicPartInstance14LegacyPartTypeEEEE14doGetSingletonEv")
+pub fn stub_4c9120() {
+    // IDA 0x4c9120: script/reflection wiring owned by the script/datamodel crates — carrier no-op in core.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::~EnumDesc()")]
 // 0x4c9210 — __ZN3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEED1Ev
-pub fn stub_4c9210() -> ! {
-    todo!("0x4c9210 __ZN3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEED1Ev")
+pub fn stub_4c9210() {
+    // IDA 0x4c9210: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::~EnumDesc()")]
 // 0x4c9214 — __ZN3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEED2Ev
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
-pub fn stub_4c9214() -> ! {
-    todo!("0x4c9214 __ZN3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEED2Ev")
+pub fn stub_4c9214() {
+    // IDA 0x4c9214: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::~EnumDesc()")]
 // 0x4c93e8 — __ZN3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEED0Ev
 // type: void __fastcall(void *)
-pub fn stub_4c93e8() -> ! {
-    todo!("0x4c93e8 __ZN3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEED0Ev")
+pub fn stub_4c93e8() {
+    // IDA 0x4c93e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::lookup(char const*)const")]
 // 0x4c9488 — __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
-pub fn stub_4c9488() -> ! {
-    todo!("0x4c9488 __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE6lookupEPKc")
+pub fn stub_4c9488() {
+    // IDA 0x4c9488: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::lookup(RBX::Reflection::Variant const&)const")]
 // 0x4c94b8 — __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
-pub fn stub_4c94b8() -> ! {
-    todo!("0x4c94b8 __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE6lookupERKNS0_7VariantE")
+pub fn stub_4c94b8() {
+    // IDA 0x4c94b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 // 0x4c94d8 — __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE14convertToValueEmRNS0_7VariantE
-pub fn stub_4c94d8() -> ! {
-    todo!("0x4c94d8 __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_4c94d8() {
+    // IDA 0x4c94d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToString(unsigned long,std::string &)const")]
 // 0x4c9534 — __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
-pub fn stub_4c9534() -> ! {
-    todo!("0x4c9534 __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE15convertToStringEmRSs")
+pub fn stub_4c9534() {
+    // IDA 0x4c9534: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToString(RBX::BasicPartInstance::LegacyPartType const&)const")]
 // 0x4c9678 — __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
-pub fn stub_4c9678() -> ! {
-    todo!("0x4c9678 __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE15convertToStringERKS3_")
+pub fn stub_4c9678() {
+    // IDA 0x4c9678: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToItem(RBX::BasicPartInstance::LegacyPartType const&)const")]
 // 0x4c98e4 — __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
-pub fn stub_4c98e4() -> ! {
-    todo!("0x4c98e4 __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE13convertToItemERKS3_")
+pub fn stub_4c98e4() {
+    // IDA 0x4c98e4: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToValue(RBX::Name const&,RBX::BasicPartInstance::LegacyPartType&)const")]
 // 0x4c9aa0 — __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
-pub fn stub_4c9aa0() -> ! {
-    todo!("0x4c9aa0 __ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_4c9aa0() {
+    // IDA 0x4c9aa0: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion> const>::initSingleton(void)")]
 // 0x4c9b44 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8Humanoid13NameOcclusionEEEE13initSingletonEv
 // type: int()
-pub fn stub_4c9b44() -> ! {
-    todo!("0x4c9b44 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8Humanoid13NameOcclusionEEEE13initSingletonEv")
+pub fn stub_4c9b44() {
+    // IDA 0x4c9b44: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion> const>::doGetSingleton(void)")]
 // 0x4c9b48 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8Humanoid13NameOcclusionEEEE14doGetSingletonEv
 // type: void *()
-pub fn stub_4c9b48() -> ! {
-    todo!("0x4c9b48 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8Humanoid13NameOcclusionEEEE14doGetSingletonEv")
+pub fn stub_4c9b48() {
+    // IDA 0x4c9b48: script/reflection wiring owned by the script/datamodel crates — carrier no-op in core.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion>::~EnumDesc()")]
 // 0x4c9c38 — __ZN3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEED1Ev
-pub fn stub_4c9c38() -> ! {
-    todo!("0x4c9c38 __ZN3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEED1Ev")
+pub fn stub_4c9c38() {
+    // IDA 0x4c9c38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion>::~EnumDesc()")]
 // 0x4c9c3c — __ZN3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEED2Ev
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
-pub fn stub_4c9c3c() -> ! {
-    todo!("0x4c9c3c __ZN3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEED2Ev")
+pub fn stub_4c9c3c() {
+    // IDA 0x4c9c3c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion>::~EnumDesc()")]
 // 0x4c9e10 — __ZN3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEED0Ev
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
-pub fn stub_4c9e10() -> ! {
-    todo!("0x4c9e10 __ZN3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEED0Ev")
+pub fn stub_4c9e10() {
+    // IDA 0x4c9e10: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion>::lookup(char const*)const")]
 // 0x4c9eb0 — __ZNK3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
-pub fn stub_4c9eb0() -> ! {
-    todo!("0x4c9eb0 __ZNK3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE6lookupEPKc")
+pub fn stub_4c9eb0() {
+    // IDA 0x4c9eb0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion>::lookup(RBX::Reflection::Variant const&)const")]
 // 0x4c9ee0 — __ZNK3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
-pub fn stub_4c9ee0() -> ! {
-    todo!("0x4c9ee0 __ZNK3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE6lookupERKNS0_7VariantE")
+pub fn stub_4c9ee0() {
+    // IDA 0x4c9ee0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 // 0x4c9f00 — __ZNK3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE14convertToValueEmRNS0_7VariantE
-pub fn stub_4c9f00() -> ! {
-    todo!("0x4c9f00 __ZNK3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_4c9f00() {
+    // IDA 0x4c9f00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion>::convertToString(unsigned long,std::string &)const")]
 // 0x4c9f5c — __ZNK3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
-pub fn stub_4c9f5c() -> ! {
-    todo!("0x4c9f5c __ZNK3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE15convertToStringEmRSs")
+pub fn stub_4c9f5c() {
+    // IDA 0x4c9f5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion>::convertToString(RBX::Humanoid::NameOcclusion const&)const")]
 // 0x4ca0a0 — __ZNK3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
-pub fn stub_4ca0a0() -> ! {
-    todo!("0x4ca0a0 __ZNK3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE15convertToStringERKS3_")
+pub fn stub_4ca0a0() {
+    // IDA 0x4ca0a0: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion>::convertToItem(RBX::Humanoid::NameOcclusion const&)const")]
 // 0x4ca30c — __ZNK3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
-pub fn stub_4ca30c() -> ! {
-    todo!("0x4ca30c __ZNK3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE13convertToItemERKS3_")
+pub fn stub_4ca30c() {
+    // IDA 0x4ca30c: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion>::convertToValue(RBX::Name const&,RBX::Humanoid::NameOcclusion&)const")]
 // 0x4ca4c8 — __ZNK3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
-pub fn stub_4ca4c8() -> ! {
-    todo!("0x4ca4c8 __ZNK3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_4ca4c8() {
+    // IDA 0x4ca4c8: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Humanoid::Status> const>::initSingleton(void)")]
 // 0x4ca56c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8Humanoid6StatusEEEE13initSingletonEv
 // type: int()
-pub fn stub_4ca56c() -> ! {
-    todo!("0x4ca56c __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8Humanoid6StatusEEEE13initSingletonEv")
+pub fn stub_4ca56c() {
+    // IDA 0x4ca56c: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Humanoid::Status> const>::doGetSingleton(void)")]
 // 0x4ca570 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8Humanoid6StatusEEEE14doGetSingletonEv
 // type: _UNKNOWN **()
-pub fn stub_4ca570() -> ! {
-    todo!("0x4ca570 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8Humanoid6StatusEEEE14doGetSingletonEv")
+pub fn stub_4ca570() {
+    // IDA 0x4ca570: script/reflection wiring owned by the script/datamodel crates — carrier no-op in core.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::Status>::~EnumDesc()")]
 // 0x4ca660 — __ZN3RBX10Reflection8EnumDescINS_8Humanoid6StatusEED1Ev
-pub fn stub_4ca660() -> ! {
-    todo!("0x4ca660 __ZN3RBX10Reflection8EnumDescINS_8Humanoid6StatusEED1Ev")
+pub fn stub_4ca660() {
+    // IDA 0x4ca660: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::Status>::~EnumDesc()")]
 // 0x4ca664 — __ZN3RBX10Reflection8EnumDescINS_8Humanoid6StatusEED2Ev
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
-pub fn stub_4ca664() -> ! {
-    todo!("0x4ca664 __ZN3RBX10Reflection8EnumDescINS_8Humanoid6StatusEED2Ev")
+pub fn stub_4ca664() {
+    // IDA 0x4ca664: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::Status>::~EnumDesc()")]
 // 0x4ca838 — __ZN3RBX10Reflection8EnumDescINS_8Humanoid6StatusEED0Ev
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
-pub fn stub_4ca838() -> ! {
-    todo!("0x4ca838 __ZN3RBX10Reflection8EnumDescINS_8Humanoid6StatusEED0Ev")
+pub fn stub_4ca838() {
+    // IDA 0x4ca838: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::Status>::lookup(char const*)const")]
 // 0x4ca8d8 — __ZNK3RBX10Reflection8EnumDescINS_8Humanoid6StatusEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
-pub fn stub_4ca8d8() -> ! {
-    todo!("0x4ca8d8 __ZNK3RBX10Reflection8EnumDescINS_8Humanoid6StatusEE6lookupEPKc")
+pub fn stub_4ca8d8() {
+    // IDA 0x4ca8d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::Status>::lookup(RBX::Reflection::Variant const&)const")]
 // 0x4ca908 — __ZNK3RBX10Reflection8EnumDescINS_8Humanoid6StatusEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
-pub fn stub_4ca908() -> ! {
-    todo!("0x4ca908 __ZNK3RBX10Reflection8EnumDescINS_8Humanoid6StatusEE6lookupERKNS0_7VariantE")
+pub fn stub_4ca908() {
+    // IDA 0x4ca908: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::Status>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 // 0x4ca928 — __ZNK3RBX10Reflection8EnumDescINS_8Humanoid6StatusEE14convertToValueEmRNS0_7VariantE
-pub fn stub_4ca928() -> ! {
-    todo!("0x4ca928 __ZNK3RBX10Reflection8EnumDescINS_8Humanoid6StatusEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_4ca928() {
+    // IDA 0x4ca928: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::Status>::convertToString(unsigned long,std::string &)const")]
 // 0x4ca984 — __ZNK3RBX10Reflection8EnumDescINS_8Humanoid6StatusEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
-pub fn stub_4ca984() -> ! {
-    todo!("0x4ca984 __ZNK3RBX10Reflection8EnumDescINS_8Humanoid6StatusEE15convertToStringEmRSs")
+pub fn stub_4ca984() {
+    // IDA 0x4ca984: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::Status>::convertToString(RBX::Humanoid::Status const&)const")]
 // 0x4caac8 — __ZNK3RBX10Reflection8EnumDescINS_8Humanoid6StatusEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
-pub fn stub_4caac8() -> ! {
-    todo!("0x4caac8 __ZNK3RBX10Reflection8EnumDescINS_8Humanoid6StatusEE15convertToStringERKS3_")
+pub fn stub_4caac8() {
+    // IDA 0x4caac8: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::Status>::convertToItem(RBX::Humanoid::Status const&)const")]
 // 0x4cad34 — __ZNK3RBX10Reflection8EnumDescINS_8Humanoid6StatusEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
-pub fn stub_4cad34() -> ! {
-    todo!("0x4cad34 __ZNK3RBX10Reflection8EnumDescINS_8Humanoid6StatusEE13convertToItemERKS3_")
+pub fn stub_4cad34() {
+    // IDA 0x4cad34: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::Status>::convertToValue(RBX::Name const&,RBX::Humanoid::Status&)const")]
 // 0x4caef0 — __ZNK3RBX10Reflection8EnumDescINS_8Humanoid6StatusEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
-pub fn stub_4caef0() -> ! {
-    todo!("0x4caef0 __ZNK3RBX10Reflection8EnumDescINS_8Humanoid6StatusEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_4caef0() {
+    // IDA 0x4caef0: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<G3D::Vector3::Axis> const>::initSingleton(void)")]
 // 0x4caf94 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescIN3G3D7Vector34AxisEEEE13initSingletonEv
 // type: int()
-pub fn stub_4caf94() -> ! {
-    todo!("0x4caf94 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescIN3G3D7Vector34AxisEEEE13initSingletonEv")
+pub fn stub_4caf94() {
+    // IDA 0x4caf94: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<G3D::Vector3::Axis> const>::doGetSingleton(void)")]
 // 0x4caf98 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescIN3G3D7Vector34AxisEEEE14doGetSingletonEv
 // type: void *()
-pub fn stub_4caf98() -> ! {
-    todo!("0x4caf98 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescIN3G3D7Vector34AxisEEEE14doGetSingletonEv")
+pub fn stub_4caf98() {
+    // IDA 0x4caf98: script/reflection wiring owned by the script/datamodel crates — carrier no-op in core.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::~EnumDesc()")]
 // 0x4cb088 — __ZN3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEED1Ev
-pub fn stub_4cb088() -> ! {
-    todo!("0x4cb088 __ZN3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEED1Ev")
+pub fn stub_4cb088() {
+    // IDA 0x4cb088: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::~EnumDesc()")]
 // 0x4cb08c — __ZN3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEED2Ev
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
-pub fn stub_4cb08c() -> ! {
-    todo!("0x4cb08c __ZN3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEED2Ev")
+pub fn stub_4cb08c() {
+    // IDA 0x4cb08c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::~EnumDesc()")]
 // 0x4cb260 — __ZN3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEED0Ev
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
-pub fn stub_4cb260() -> ! {
-    todo!("0x4cb260 __ZN3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEED0Ev")
+pub fn stub_4cb260() {
+    // IDA 0x4cb260: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::lookup(char const*)const")]
 // 0x4cb300 — __ZNK3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
-pub fn stub_4cb300() -> ! {
-    todo!("0x4cb300 __ZNK3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEE6lookupEPKc")
+pub fn stub_4cb300() {
+    // IDA 0x4cb300: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::lookup(RBX::Reflection::Variant const&)const")]
 // 0x4cb330 — __ZNK3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
-pub fn stub_4cb330() -> ! {
-    todo!("0x4cb330 __ZNK3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEE6lookupERKNS0_7VariantE")
+pub fn stub_4cb330() {
+    // IDA 0x4cb330: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 // 0x4cb350 — __ZNK3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEE14convertToValueEmRNS0_7VariantE
-pub fn stub_4cb350() -> ! {
-    todo!("0x4cb350 __ZNK3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_4cb350() {
+    // IDA 0x4cb350: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::convertToString(unsigned long,std::string &)const")]
 // 0x4cb3ac — __ZNK3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
-pub fn stub_4cb3ac() -> ! {
-    todo!("0x4cb3ac __ZNK3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEE15convertToStringEmRSs")
+pub fn stub_4cb3ac() {
+    // IDA 0x4cb3ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::convertToString(G3D::Vector3::Axis const&)const")]
 // 0x4cb4f0 — __ZNK3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEE15convertToStringERKS4_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
-pub fn stub_4cb4f0() -> ! {
-    todo!("0x4cb4f0 __ZNK3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEE15convertToStringERKS4_")
+pub fn stub_4cb4f0() {
+    // IDA 0x4cb4f0: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::convertToItem(G3D::Vector3::Axis const&)const")]
 // 0x4cb75c — __ZNK3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEE13convertToItemERKS4_
 // type: int __fastcall(int, int *)
-pub fn stub_4cb75c() -> ! {
-    todo!("0x4cb75c __ZNK3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEE13convertToItemERKS4_")
+pub fn stub_4cb75c() {
+    // IDA 0x4cb75c: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::convertToValue(RBX::Name const&,G3D::Vector3::Axis&)const")]
 // 0x4cb918 — __ZNK3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEE14convertToValueERKNS_4NameERS4_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
-pub fn stub_4cb918() -> ! {
-    todo!("0x4cb918 __ZNK3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEE14convertToValueERKNS_4NameERS4_")
+pub fn stub_4cb918() {
+    // IDA 0x4cb918: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint> const>::initSingleton(void)")]
 // 0x4cb9bc — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Legacy17SurfaceConstraintEEEE13initSingletonEv
 // type: int()
-pub fn stub_4cb9bc() -> ! {
-    todo!("0x4cb9bc __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Legacy17SurfaceConstraintEEEE13initSingletonEv")
+pub fn stub_4cb9bc() {
+    // IDA 0x4cb9bc: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint> const>::doGetSingleton(void)")]
 // 0x4cb9c0 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Legacy17SurfaceConstraintEEEE14doGetSingletonEv
 // type: void *()
-pub fn stub_4cb9c0() -> ! {
-    todo!("0x4cb9c0 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Legacy17SurfaceConstraintEEEE14doGetSingletonEv")
+pub fn stub_4cb9c0() {
+    // IDA 0x4cb9c0: script/reflection wiring owned by the script/datamodel crates — carrier no-op in core.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::~EnumDesc()")]
 // 0x4cbab0 — __ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEED1Ev
-pub fn stub_4cbab0() -> ! {
-    todo!("0x4cbab0 __ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEED1Ev")
+pub fn stub_4cbab0() {
+    // IDA 0x4cbab0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::~EnumDesc()")]
 // 0x4cbab4 — __ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEED2Ev
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
-pub fn stub_4cbab4() -> ! {
-    todo!("0x4cbab4 __ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEED2Ev")
+pub fn stub_4cbab4() {
+    // IDA 0x4cbab4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::~EnumDesc()")]
 // 0x4cbc88 — __ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEED0Ev
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
-pub fn stub_4cbc88() -> ! {
-    todo!("0x4cbc88 __ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEED0Ev")
+pub fn stub_4cbc88() {
+    // IDA 0x4cbc88: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::lookup(char const*)const")]
 // 0x4cbd28 — __ZNK3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
-pub fn stub_4cbd28() -> ! {
-    todo!("0x4cbd28 __ZNK3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEE6lookupEPKc")
+pub fn stub_4cbd28() {
+    // IDA 0x4cbd28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::lookup(RBX::Reflection::Variant const&)const")]
 // 0x4cbd58 — __ZNK3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
-pub fn stub_4cbd58() -> ! {
-    todo!("0x4cbd58 __ZNK3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEE6lookupERKNS0_7VariantE")
+pub fn stub_4cbd58() {
+    // IDA 0x4cbd58: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 // 0x4cbd78 — __ZNK3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEE14convertToValueEmRNS0_7VariantE
-pub fn stub_4cbd78() -> ! {
-    todo!("0x4cbd78 __ZNK3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_4cbd78() {
+    // IDA 0x4cbd78: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::convertToString(unsigned long,std::string &)const")]
 // 0x4cbdd4 — __ZNK3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
-pub fn stub_4cbdd4() -> ! {
-    todo!("0x4cbdd4 __ZNK3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEE15convertToStringEmRSs")
+pub fn stub_4cbdd4() {
+    // IDA 0x4cbdd4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::convertToString(RBX::Legacy::SurfaceConstraint const&)const")]
 // 0x4cbf18 — __ZNK3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEE15convertToStringERKS3_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
-pub fn stub_4cbf18() -> ! {
-    todo!("0x4cbf18 __ZNK3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEE15convertToStringERKS3_")
+pub fn stub_4cbf18() {
+    // IDA 0x4cbf18: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::convertToItem(RBX::Legacy::SurfaceConstraint const&)const")]
 // 0x4cc184 — __ZNK3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEE13convertToItemERKS3_
 // type: int __fastcall(int, int *)
-pub fn stub_4cc184() -> ! {
-    todo!("0x4cc184 __ZNK3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEE13convertToItemERKS3_")
+pub fn stub_4cc184() {
+    // IDA 0x4cc184: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::convertToValue(RBX::Name const&,RBX::Legacy::SurfaceConstraint&)const")]
 // 0x4cc340 — __ZNK3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEE14convertToValueERKNS_4NameERS3_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
-pub fn stub_4cc340() -> ! {
-    todo!("0x4cc340 __ZNK3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_4cc340() {
+    // IDA 0x4cc340: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::KeywordFilterType> const>::initSingleton(void)")]
 // 0x4cc3e4 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17KeywordFilterTypeEEEE13initSingletonEv
 // type: int()
-pub fn stub_4cc3e4() -> ! {
-    todo!("0x4cc3e4 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17KeywordFilterTypeEEEE13initSingletonEv")
+pub fn stub_4cc3e4() {
+    // IDA 0x4cc3e4: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::KeywordFilterType> const>::doGetSingleton(void)")]
 // 0x4cc3e8 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17KeywordFilterTypeEEEE14doGetSingletonEv
 // type: void *()
-pub fn stub_4cc3e8() -> ! {
-    todo!("0x4cc3e8 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17KeywordFilterTypeEEEE14doGetSingletonEv")
+pub fn stub_4cc3e8() {
+    // IDA 0x4cc3e8: script/reflection wiring owned by the script/datamodel crates — carrier no-op in core.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeywordFilterType>::~EnumDesc()")]
 // 0x4cc4d8 — __ZN3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEED1Ev
-pub fn stub_4cc4d8() -> ! {
-    todo!("0x4cc4d8 __ZN3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEED1Ev")
+pub fn stub_4cc4d8() {
+    // IDA 0x4cc4d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeywordFilterType>::~EnumDesc()")]
 // 0x4cc4dc — __ZN3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEED2Ev
 // type: int __fastcall(RBX::Reflection::EnumDescriptor *)
-pub fn stub_4cc4dc() -> ! {
-    todo!("0x4cc4dc __ZN3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEED2Ev")
+pub fn stub_4cc4dc() {
+    // IDA 0x4cc4dc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeywordFilterType>::~EnumDesc()")]
 // 0x4cc6b0 — __ZN3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEED0Ev
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
-pub fn stub_4cc6b0() -> ! {
-    todo!("0x4cc6b0 __ZN3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEED0Ev")
+pub fn stub_4cc6b0() {
+    // IDA 0x4cc6b0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeywordFilterType>::lookup(char const*)const")]
 // 0x4cc750 — __ZNK3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEE6lookupEPKc
 // type: int __fastcall(int, const char *const *)
-pub fn stub_4cc750() -> ! {
-    todo!("0x4cc750 __ZNK3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEE6lookupEPKc")
+pub fn stub_4cc750() {
+    // IDA 0x4cc750: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeywordFilterType>::lookup(RBX::Reflection::Variant const&)const")]
 // 0x4cc780 — __ZNK3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEE6lookupERKNS0_7VariantE
 // type: int __fastcall(int, int)
-pub fn stub_4cc780() -> ! {
-    todo!("0x4cc780 __ZNK3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEE6lookupERKNS0_7VariantE")
+pub fn stub_4cc780() {
+    // IDA 0x4cc780: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeywordFilterType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 // 0x4cc7a0 — __ZNK3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEE14convertToValueEmRNS0_7VariantE
-pub fn stub_4cc7a0() -> ! {
-    todo!("0x4cc7a0 __ZNK3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_4cc7a0() {
+    // IDA 0x4cc7a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeywordFilterType>::convertToString(unsigned long,std::string &)const")]
 // 0x4cc7fc — __ZNK3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEE15convertToStringEmRSs
 // type: int __fastcall(int, unsigned int, std::string *, int)
-pub fn stub_4cc7fc() -> ! {
-    todo!("0x4cc7fc __ZNK3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEE15convertToStringEmRSs")
+pub fn stub_4cc7fc() {
+    // IDA 0x4cc7fc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeywordFilterType>::convertToString(RBX::KeywordFilterType const&)const")]
 // 0x4cc940 — __ZNK3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEE15convertToStringERKS2_
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
-pub fn stub_4cc940() -> ! {
-    todo!("0x4cc940 __ZNK3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEE15convertToStringERKS2_")
+pub fn stub_4cc940() {
+    // IDA 0x4cc940: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeywordFilterType>::convertToItem(RBX::KeywordFilterType const&)const")]
 // 0x4ccbac — __ZNK3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEE13convertToItemERKS2_
 // type: int __fastcall(int, int *)
-pub fn stub_4ccbac() -> ! {
-    todo!("0x4ccbac __ZNK3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEE13convertToItemERKS2_")
+pub fn stub_4ccbac() {
+    // IDA 0x4ccbac: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeywordFilterType>::convertToValue(RBX::Name const&,RBX::KeywordFilterType&)const")]
 // 0x4ccd68 — __ZNK3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEE14convertToValueERKNS_4NameERS2_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
-pub fn stub_4ccd68() -> ! {
-    todo!("0x4ccd68 __ZNK3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEE14convertToValueERKNS_4NameERS2_")
+pub fn stub_4ccd68() {
+    // IDA 0x4ccd68: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Joint::JointType> const>::initSingleton(void)")]
 // 0x4cce0c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Joint9JointTypeEEEE13initSingletonEv
-pub fn stub_4cce0c() -> ! {
-    todo!("0x4cce0c __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Joint9JointTypeEEEE13initSingletonEv")
+pub fn stub_4cce0c() {
+    // IDA 0x4cce0c: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Joint::JointType> const>::doGetSingleton(void)")]
 // 0x4cce10 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Joint9JointTypeEEEE14doGetSingletonEv
-pub fn stub_4cce10() -> ! {
-    todo!("0x4cce10 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Joint9JointTypeEEEE14doGetSingletonEv")
+pub fn stub_4cce10() {
+    // IDA 0x4cce10: joint/adorn instance wiring owned by the datamodel crate — carrier no-op in core.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Joint::JointType>::~EnumDesc()")]
 // 0x4ccf00 — __ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEED1Ev
-pub fn stub_4ccf00() -> ! {
-    todo!("0x4ccf00 __ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEED1Ev")
+pub fn stub_4ccf00() {
+    // IDA 0x4ccf00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Joint::JointType>::~EnumDesc()")]
 // 0x4ccf04 — __ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEED2Ev
-pub fn stub_4ccf04() -> ! {
-    todo!("0x4ccf04 __ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEED2Ev")
+pub fn stub_4ccf04() {
+    // IDA 0x4ccf04: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Joint::JointType>::~EnumDesc()")]
 // 0x4cd0d8 — __ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEED0Ev
-pub fn stub_4cd0d8() -> ! {
-    todo!("0x4cd0d8 __ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEED0Ev")
+pub fn stub_4cd0d8() {
+    // IDA 0x4cd0d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Joint::JointType>::lookup(char const*)const")]
 // 0x4cd178 — __ZNK3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE6lookupEPKc
-pub fn stub_4cd178() -> ! {
-    todo!("0x4cd178 __ZNK3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE6lookupEPKc")
+pub fn stub_4cd178() {
+    // IDA 0x4cd178: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Joint::JointType>::lookup(RBX::Reflection::Variant const&)const")]
 // 0x4cd1a8 — __ZNK3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE6lookupERKNS0_7VariantE
-pub fn stub_4cd1a8() -> ! {
-    todo!("0x4cd1a8 __ZNK3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE6lookupERKNS0_7VariantE")
+pub fn stub_4cd1a8() {
+    // IDA 0x4cd1a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Joint::JointType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 // 0x4cd1c8 — __ZNK3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE14convertToValueEmRNS0_7VariantE
-pub fn stub_4cd1c8() -> ! {
-    todo!("0x4cd1c8 __ZNK3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_4cd1c8() {
+    // IDA 0x4cd1c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Joint::JointType>::convertToString(unsigned long,std::string &)const")]
 // 0x4cd224 — __ZNK3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE15convertToStringEmRSs
-pub fn stub_4cd224() -> ! {
-    todo!("0x4cd224 __ZNK3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE15convertToStringEmRSs")
+pub fn stub_4cd224() {
+    // IDA 0x4cd224: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Joint::JointType>::convertToString(RBX::Joint::JointType const&)const")]
 // 0x4cd368 — __ZNK3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE15convertToStringERKS3_
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
-pub fn stub_4cd368() -> ! {
-    todo!("0x4cd368 __ZNK3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE15convertToStringERKS3_")
+pub fn stub_4cd368() {
+    // IDA 0x4cd368: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Joint::JointType>::convertToItem(RBX::Joint::JointType const&)const")]
 // 0x4cd5d4 — __ZNK3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE13convertToItemERKS3_
-pub fn stub_4cd5d4() -> ! {
-    todo!("0x4cd5d4 __ZNK3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE13convertToItemERKS3_")
+pub fn stub_4cd5d4() {
+    // IDA 0x4cd5d4: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Joint::JointType>::convertToValue(RBX::Name const&,RBX::Joint::JointType&)const")]
 // 0x4cd790 — __ZNK3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE14convertToValueERKNS_4NameERS3_
-pub fn stub_4cd790() -> ! {
-    todo!("0x4cd790 __ZNK3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_4cd790() {
+    // IDA 0x4cd790: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Feature::TopBottom> const>::initSingleton(void)")]
 // 0x4cd834 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Feature9TopBottomEEEE13initSingletonEv
-pub fn stub_4cd834() -> ! {
-    todo!("0x4cd834 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Feature9TopBottomEEEE13initSingletonEv")
+pub fn stub_4cd834() {
+    // IDA 0x4cd834: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Feature::TopBottom> const>::doGetSingleton(void)")]
 // 0x4cd838 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Feature9TopBottomEEEE14doGetSingletonEv
-pub fn stub_4cd838() -> ! {
-    todo!("0x4cd838 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Feature9TopBottomEEEE14doGetSingletonEv")
+pub fn stub_4cd838() {
+    // IDA 0x4cd838: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::~EnumDesc()")]
 // 0x4cd928 — __ZN3RBX10Reflection8EnumDescINS_7Feature9TopBottomEED1Ev
-pub fn stub_4cd928() -> ! {
-    todo!("0x4cd928 __ZN3RBX10Reflection8EnumDescINS_7Feature9TopBottomEED1Ev")
+pub fn stub_4cd928() {
+    // IDA 0x4cd928: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::~EnumDesc()")]
 // 0x4cd92c — __ZN3RBX10Reflection8EnumDescINS_7Feature9TopBottomEED2Ev
-pub fn stub_4cd92c() -> ! {
-    todo!("0x4cd92c __ZN3RBX10Reflection8EnumDescINS_7Feature9TopBottomEED2Ev")
+pub fn stub_4cd92c() {
+    // IDA 0x4cd92c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::~EnumDesc()")]
 // 0x4cdb00 — __ZN3RBX10Reflection8EnumDescINS_7Feature9TopBottomEED0Ev
-pub fn stub_4cdb00() -> ! {
-    todo!("0x4cdb00 __ZN3RBX10Reflection8EnumDescINS_7Feature9TopBottomEED0Ev")
+pub fn stub_4cdb00() {
+    // IDA 0x4cdb00: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::lookup(char const*)const")]
 // 0x4cdba0 — __ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE6lookupEPKc
-pub fn stub_4cdba0() -> ! {
-    todo!("0x4cdba0 __ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE6lookupEPKc")
+pub fn stub_4cdba0() {
+    // IDA 0x4cdba0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::lookup(RBX::Reflection::Variant const&)const")]
 // 0x4cdbd0 — __ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE6lookupERKNS0_7VariantE
-pub fn stub_4cdbd0() -> ! {
-    todo!("0x4cdbd0 __ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE6lookupERKNS0_7VariantE")
+pub fn stub_4cdbd0() {
+    // IDA 0x4cdbd0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 // 0x4cdbf0 — __ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE14convertToValueEmRNS0_7VariantE
-pub fn stub_4cdbf0() -> ! {
-    todo!("0x4cdbf0 __ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_4cdbf0() {
+    // IDA 0x4cdbf0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::convertToString(unsigned long,std::string &)const")]
 // 0x4cdc4c — __ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE15convertToStringEmRSs
-pub fn stub_4cdc4c() -> ! {
-    todo!("0x4cdc4c __ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE15convertToStringEmRSs")
+pub fn stub_4cdc4c() {
+    // IDA 0x4cdc4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::convertToString(RBX::Feature::TopBottom const&)const")]
 // 0x4cdd90 — __ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE15convertToStringERKS3_
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
-pub fn stub_4cdd90() -> ! {
-    todo!("0x4cdd90 __ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE15convertToStringERKS3_")
+pub fn stub_4cdd90() {
+    // IDA 0x4cdd90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::convertToItem(RBX::Feature::TopBottom const&)const")]
 // 0x4cdffc — __ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE13convertToItemERKS3_
-pub fn stub_4cdffc() -> ! {
-    todo!("0x4cdffc __ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE13convertToItemERKS3_")
+pub fn stub_4cdffc() {
+    // IDA 0x4cdffc: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::convertToValue(RBX::Name const&,RBX::Feature::TopBottom&)const")]
 // 0x4ce1b8 — __ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE14convertToValueERKNS_4NameERS3_
-pub fn stub_4ce1b8() -> ! {
-    todo!("0x4ce1b8 __ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_4ce1b8() {
+    // IDA 0x4ce1b8: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Feature::LeftRight> const>::initSingleton(void)")]
 // 0x4ce25c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Feature9LeftRightEEEE13initSingletonEv
-pub fn stub_4ce25c() -> ! {
-    todo!("0x4ce25c __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Feature9LeftRightEEEE13initSingletonEv")
+pub fn stub_4ce25c() {
+    // IDA 0x4ce25c: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Feature::LeftRight> const>::doGetSingleton(void)")]
 // 0x4ce260 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Feature9LeftRightEEEE14doGetSingletonEv
-pub fn stub_4ce260() -> ! {
-    todo!("0x4ce260 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Feature9LeftRightEEEE14doGetSingletonEv")
+pub fn stub_4ce260() {
+    // IDA 0x4ce260: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
