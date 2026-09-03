@@ -448,5 +448,6 @@ pub mod generated_plat_globaldedup_112;
 pub mod generated_plat_globaldedup_113;
 pub mod generated_plat_globaldedup_114;
 pub mod generated_plat_globaldedup_115;
+pub mod generated_plat_globaldedup_116;
 pub mod generated_watchdog_plat_a;
 pub mod generated_watchdog_plat_b;
