@@ -366,6 +366,7 @@ pub mod generated_watchdog_script_wdB;
 pub mod generated_watchdog_script_wdC;
 pub mod generated_watchdog_sna_wda;
 pub mod generated_watchdog_sna_A;
+pub mod generated_watchdog_sna_wdb;
 pub mod generated_watchdog_script_wdG2;
 pub mod generated_watchdog_script_wdH;
 pub mod generated_watchdog_script_wdI;
