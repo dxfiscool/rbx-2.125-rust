@@ -348,3 +348,4 @@ pub mod generated_wdog_script3;
 pub mod generated_watchdog_script_w6;
 pub mod generated_watchdog_script_w8;
 pub mod generated_watchdog_script_w9;
+pub mod generated_watchdog_script_w11;
