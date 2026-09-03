@@ -458,3 +458,4 @@ pub mod generated_network_skeleton_60;
 pub mod generated_watchdog_net_wdA;
 pub mod generated_watchdog_sna_wda;
 pub mod generated_watchdog_sna_A;
+pub mod generated_watchdog_net_wdX;
