@@ -141,6 +141,7 @@ pub mod generated_watchdog_audio_w4;
 pub mod generated_watchdog_audio_w4b;
 pub mod generated_watchdog_audio_w6;
 pub mod generated_228;
+pub mod vorbis_data;
 // FMOD profile-cluster model (IDA 0x686a4..0x69280, fmod_profile*.cpp).
 // Field order mirrors the 32-bit ARM target; link words are host-sized raw
 // pointers so the intrusive lists actually link on the host.
@@ -1480,52 +1481,509 @@ pub fn stub_6a04c(profile: &mut Profile, flag: bool, run_impl: impl FnOnce() -> 
     }
 }
 
+// Vorbis/oggpack cluster model (IDA 0x6d26c..0x701fc, Xiph bitwise.c /
+// sharedbook.c / block.c / floor1.c as compiled into FMOD). Layouts below
+// mirror the 32-bit ARM target word-for-word; host pointers are wide, so
+// pointer words use host-sized raw pointers at the same word offsets.
+//
+///// oggpack_buffer — 5 words (IDA 0x6d26c): [endbyte, headbit, buffer, ptr,
+///// storage]. `buffer` is the base; `ptr` is the current byte window.
+#[repr(C)]
+pub struct OggpackBuffer {
+    pub endbyte: i32,
+    pub headbit: i32,
+    pub buffer: *const u8,
+    pub ptr: *const u8,
+    pub storage: i32,
+}
+//
+///// vorbis_dsp_state view (IDA 0x6d4b4/0x6d538/0x6d5c8): only the words the
+///// originals touch are named; the rest is padding at the right offsets.
+///// +0 vi, +4 pcm (float**), +8 pcmret (float**), +16 pcm_current,
+///// +20 pcm_returned, +28 W-ish word cleared by restart, +44 centerW,
+///// +48..+60 the four -1 words, +96 backend_state.
+#[repr(C)]
+pub struct VorbisDspState {
+    pub vi: *const u8,
+    pub pcm: *const *mut f32,
+    pub pcmret: *mut *mut f32,
+    pub _w03: i32,
+    pub pcm_current: i32,
+    pub pcm_returned: i32,
+    pub _w06: i32,
+    pub w: i32,
+    pub _w08_0a: [i32; 3],
+    pub center_w: i32,
+    pub _w12_15: [i32; 4],
+    pub _w16_23: [u32; 8],
+    pub backend_state: *mut u8,
+}
+//
+///// vorbis_block — 0x68 bytes / 26 words (IDA 0x6dee8..0x6e6c0, block.c).
+///// +0 pcm, +4 opb, +24 lW, +28 W, +32 nW, +36 pcmend, +40 mode,
+///// +44 eofflag, +48 granulepos, +56 sequence, +64 vd, +68 localstore,
+///// +72 localtop, +76 localalloc, +80 totaluse, +84 reap,
+///// +88 glue/time/floor/res_bits.
+#[repr(C)]
+pub struct VorbisBlock {
+    pub pcm: *mut *mut f32,
+    pub opb: OggpackBuffer,
+    pub l_w: i32,
+    pub w: i32,
+    pub n_w: i32,
+    pub pcmend: i32,
+    pub mode: i32,
+    pub eofflag: i32,
+    pub granulepos: i64,
+    pub sequence: i64,
+    pub vd: *mut VorbisDspState,
+    pub localstore: *mut u8,
+    pub localtop: i32,
+    pub localalloc: i32,
+    pub totaluse: i32,
+    pub reap: *mut AllocChain,
+    pub glue_bits: i32,
+    pub time_bits: i32,
+    pub floor_bits: i32,
+    pub res_bits: i32,
+}
+//
+///// vorbis_block bump-chain node (IDA 0x6dee8): [0] retired buffer,
+///// [1] previous head.
+#[repr(C)]
+pub struct AllocChain {
+    pub buf: *mut u8,
+    pub next: *mut AllocChain,
+}
+//
+///// vorbis codebook — 11 words / 44 bytes (IDA 0x6e778, codebook.c):
+///// dim, entries, used_entries, valuelist (floats), codelist (u32),
+///// dec_index, dec_codelengths (bytes), dec_firsttable (i32),
+///// dec_firsttablen, dec_maxlength.
+#[repr(C)]
+pub struct VorbisCodebook {
+    pub dim: i32,
+    pub entries: i32,
+    pub used_entries: i32,
+    pub valuelist: *const f32,
+    pub codelist: *const u32,
+    pub dec_index: *const i32,
+    pub dec_codelengths: *const u8,
+    pub dec_firsttable: *const i32,
+    pub dec_firsttablen: i32,
+    pub dec_maxlength: i32,
+}
+//
+///// static_codebook — 10 words (IDA 0x6e8c4/0xf61b4, sharedbook.c): dim,
+///// entries, lengthlist, maptype, q_min, q_delta, q_quant, q_sequencep,
+///// quantlist, allocedp.
+#[repr(C)]
+pub struct VorbisStaticBook {
+    pub dim: i32,
+    pub entries: i32,
+    pub lengthlist: *mut i32,
+    pub maptype: i32,
+    pub q_min: i32,
+    pub q_delta: i32,
+    pub q_quant: i32,
+    pub q_sequencep: i32,
+    pub quantlist: *mut i32,
+    pub allocedp: i32,
+}
+//
+///// floor1 info — 1120 bytes / 280 words (IDA 0x6fe9c, floor1.c):
+///// [0] post count; [1..] per-post class; [32+c]/[48+c]/[64+c] class
+///// dim/subs/masterbook; [80+8c+k] subclass books; [208] mult ([208] selects
+///// 256/128/86/64 in look); [209..] post positions ([209]=0, [210]=1<<range).
+#[repr(C)]
+pub struct Floor1Info {
+    pub w: [i32; 280],
+}
+//
+///// floor1 look — 1052 bytes / 263 words (IDA 0x6fbe0, floor1.c):
+///// [0..64] sorted post order, [65..129] reverse map, [130..192] high
+///// neighbours, [193..255] low neighbours, [256] post count, [257] spare
+///// (info[210]), [258] mult, [259] info back-pointer.
+#[repr(C)]
+pub struct Floor1Look {
+    pub order: [i32; 65],
+    pub reverse: [i32; 65],
+    pub high: [i32; 63],
+    pub low: [i32; 63],
+    pub n: i32,
+    pub w257: i32,
+    pub mult: i32,
+    pub info: *const Floor1Info,
+    pub _tail: [i32; 3],
+}
+//
+///// Host heap seam for the vorbis cluster. FMOD_OggVorbis_Malloc / Calloc /
+///// ReAlloc / Free (IDA call sites 0x6dee8/0x6df94/0x6e8c4/0x6fbe0/…) live
+///// outside the image; each method cites its call-site behaviour. Null
+///// means OOM, exactly like the original fallible allocator.
+pub trait VorbisHeap {
+    fn ogg_malloc(&mut self, bytes: usize) -> *mut u8;
+    fn ogg_calloc(&mut self, n: usize, bytes: usize) -> *mut u8;
+    fn ogg_realloc(&mut self, ptr: *mut u8, bytes: usize) -> *mut u8;
+    fn ogg_free(&mut self, ptr: *mut u8);
+}
+//
+///// Simplest `VorbisHeap`: 8-aligned boxed blocks with an address registry
+///// so realloc/free resolve. `malloc` zeroes (the original leaves garbage;
+///// every in-crate caller writes before reading, so this is unobservable).
+#[derive(Default)]
+pub struct VecHeap {
+    blocks: Vec<Block>,
+}
+struct Block {
+    ptr: *mut u8,
+    store: Box<[u64]>,
+}
+impl VecHeap {
+    fn find(&mut self, ptr: *mut u8) -> Option<usize> {
+        self.blocks.iter().position(|b| b.ptr == ptr)
+    }
+    fn insert(&mut self, words: usize) -> *mut u8 {
+        let mut v = Vec::new();
+        if v.try_reserve_exact(words).is_err() {
+            return core::ptr::null_mut();
+        }
+        v.resize(words, 0u64);
+        let mut store = v.into_boxed_slice();
+        let ptr = store.as_mut_ptr() as *mut u8;
+        self.blocks.push(Block { ptr, store });
+        ptr
+    }
+}
+impl VorbisHeap for VecHeap {
+    fn ogg_malloc(&mut self, bytes: usize) -> *mut u8 {
+        self.insert(bytes.div_ceil(8).max(1))
+    }
+    fn ogg_calloc(&mut self, n: usize, bytes: usize) -> *mut u8 {
+        match n.checked_mul(bytes) {
+            Some(total) => self.insert(total.div_ceil(8).max(1)),
+            None => core::ptr::null_mut(),
+        }
+    }
+    fn ogg_realloc(&mut self, ptr: *mut u8, bytes: usize) -> *mut u8 {
+        if ptr.is_null() {
+            return self.ogg_malloc(bytes);
+        }
+        let Some(idx) = self.find(ptr) else {
+            return core::ptr::null_mut();
+        };
+        let words = bytes.div_ceil(8).max(1);
+        let mut v = Vec::from(self.blocks[idx].store.clone());
+        if v.try_reserve_exact(words).is_err() {
+            return core::ptr::null_mut();
+        }
+        v.resize(words, 0u64);
+        let mut store = v.into_boxed_slice();
+        let new_ptr = store.as_mut_ptr() as *mut u8;
+        self.blocks[idx] = Block { ptr: new_ptr, store };
+        new_ptr
+    }
+    fn ogg_free(&mut self, ptr: *mut u8) {
+        if let Some(idx) = self.find(ptr) {
+            self.blocks.remove(idx);
+        }
+    }
+}
+//
+///// `_ilog` (IDA 0x6f804): bit-length of `v`, 0 for 0.
+fn ogg_ilog(mut v: u32) -> i32 {
+    // IDA 0x6f804: do { v >>= 1; ++n } while (v).
+    if v == 0 {
+        return 0;
+    }
+    let mut n = 0;
+    loop {
+        v >>= 1;
+        n += 1;
+        if v == 0 {
+            break;
+        }
+    }
+    n
+}
+//
+///// `bitreverse` (IDA 0x6e708): full 32-bit reversal (ARM-optimized in the
+///// image; `reverse_bits` is the same operation).
+fn ogg_bitreverse(x: u32) -> u32 {
+    x.reverse_bits()
+}
+//
+///// `abs32` (no IDA symbol — file-static; call site IDA 0x6f840):
+///// `x > 0 ? x : -x` with wrapping negation.
+fn vorbis_abs32(x: i32) -> i32 {
+    if x > 0 {
+        x
+    } else {
+        x.wrapping_neg()
+    }
+}
+//
+///// `_book_maptype1_quantvals` (no IDA symbol — file-static in sharedbook.c;
+///// call site IDA 0x6e8c4 with maptype == 1 && dim != 0): lattice size for
+///// the maptype-1 quant grid. Xiph sharedbook.c body, mirrored exactly
+///// (wrapping multiply mirrors the ARM MUL wrap).
+unsafe fn book_maptype1_quantvals(book: *const VorbisStaticBook) -> i32 {
+    let entries = (*book).entries;
+    let dim = (*book).dim;
+    let mut vals = (entries as f32).powf(1.0 / dim as f32) as i32;
+    loop {
+        let mut acc = 1i32;
+        let mut acci = 1i32;
+        for _ in 0..dim {
+            acc = acc.wrapping_mul(vals);
+            acci = acci.wrapping_mul(vals + 1);
+        }
+        if acc <= entries && acci > entries {
+            return vals;
+        } else if acc > entries {
+            vals -= 1;
+        } else {
+            vals += 1;
+        }
+    }
+}
+//
+///// Shared codebook entry resolution (IDA 0x6e778 `_FMOD_vorbis_book_decode`
+///// entry half): firsttable fast path, then shrinking-`look` fallback with
+///// `bitreverse` + binary search over the codelist. All bitstream advances
+///// happen inside, exactly as the original; returns the entry id or -1.
+unsafe fn codebook_decode_entry(bk: *const VorbisCodebook, opb: *mut OggpackBuffer) -> i32 {
+    if (*bk).used_entries <= 0 {
+        return -1;
+    }
+    let mut maxlen = (*bk).dec_maxlength;
+    let firstlen = (*bk).dec_firsttablen;
+    let look = stub_6d26c(opb, firstlen);
+    if look < 0 {
+        return -1;
+    }
+    let slot = *(*bk).dec_firsttable.add(look as usize);
+    if slot >= 0 {
+        let len = *(*bk).dec_codelengths.add((slot - 1) as usize) as i8 as i32;
+        stub_6d318(opb, len);
+        return slot - 1;
+    }
+    let mut entry = ((slot >> 15) & 0x7FFF) as i32;
+    let mut total = (*bk).used_entries - (slot & 0x7FFF) as i32;
+    loop {
+        let l = stub_6d26c(opb, maxlen);
+        if maxlen <= 1 || (l as u32) >> 31 == 0 {
+            if l < 0 {
+                return -1;
+            }
+            let rev = ogg_bitreverse(l as u32);
+            while total - entry > 1 {
+                let half = (total - entry) >> 1;
+                let probe = *(*bk).codelist.add((half + entry) as usize);
+                // IDA 0x6e778: rev < probe shrinks the top, else bumps the base.
+                if rev < probe {
+                    total -= half;
+                } else {
+                    entry += half;
+                }
+            }
+            let len = *(*bk).dec_codelengths.add(entry as usize) as i8 as i32;
+            if len > maxlen {
+                stub_6d318(opb, maxlen);
+                return -1;
+            }
+            stub_6d318(opb, len);
+            return entry;
+        }
+        maxlen -= 1;
+    }
+}
 // 0x6d26c — _FMOD_oggpack_look
 #[doc(alias = "_FMOD_oggpack_look")]
-pub fn stub_6d26c() -> ! {
-    todo!("0x6d26c _FMOD_oggpack_look")
+pub unsafe fn stub_6d26c(b: *mut OggpackBuffer, bits: i32) -> i32 {
+    // IDA 0x6d26c (Xiph bitwise.c oggpack_look): peek `bits` without advancing.
+    // Returns -1 past the end; the disasm (ADD R1,R1,LR / masked gather /
+    // AND R0,R0,R9) matches the decompile exactly.
+    use crate::vorbis_data::OGGPACK_MASK;
+    let endbyte = (*b).endbyte;
+    let storage = (*b).storage;
+    let headbit = (*b).headbit;
+    let mask = OGGPACK_MASK[bits as usize];
+    let end = bits + headbit;
+    if endbyte + 4 >= storage && end + 8 * endbyte > 8 * storage {
+        return -1;
+    }
+    let ptr = (*b).ptr;
+    // IDA 0x6d2a0..0x6d2f0: little-endian gather up the bytes the window
+    // spans; the 5th byte only matters when headbit != 0 and end > 32.
+    let mut ret = ((*ptr as i32) >> headbit) & 0xff;
+    if end > 8 {
+        ret |= (*ptr.add(1) as i32) << (8 - headbit);
+        if end > 16 {
+            ret |= (*ptr.add(2) as i32) << (16 - headbit);
+            if end > 24 {
+                ret |= (*ptr.add(3) as i32) << (24 - headbit);
+                if end > 32 && headbit != 0 {
+                    ret |= (*ptr.add(4) as i32) << (32 - headbit);
+                }
+            }
+        }
+    }
+    ret & mask as i32
 }
 
 // 0x6d318 — _FMOD_oggpack_adv
 #[doc(alias = "_FMOD_oggpack_adv")]
-pub fn stub_6d318() -> ! {
-    todo!("0x6d318 _FMOD_oggpack_adv")
+pub unsafe fn stub_6d318(b: *mut OggpackBuffer, bits: i32) -> *mut OggpackBuffer {
+    // IDA 0x6d318 (Xiph bitwise.c oggpack_adv): consume `bits`.
+    let end = bits + (*b).headbit;
+    (*b).headbit = end & 7;
+    (*b).ptr = (*b).ptr.add((end / 8) as usize);
+    (*b).endbyte += end / 8;
+    b
 }
-
 // 0x6d354 — _FMOD_oggpack_read
 #[doc(alias = "_FMOD_oggpack_read")]
-pub fn stub_6d354() -> ! {
-    todo!("0x6d354 _FMOD_oggpack_read")
+pub unsafe fn stub_6d354(b: *mut OggpackBuffer, bits: i32) -> i32 {
+    // IDA 0x6d354 (Xiph bitwise.c oggpack_read): look + advance, -1 past the
+    // end. The disasm settles the Hex-Rays `v9` ambiguity: both the normal
+    // path (0x6d384..0x6d3a8) and the overrun path (0x6d414..0x6d42c) join at
+    // 0x6d3ac, which advances ptr/endbyte by end/8 and headbit to end&7 with
+    // end = bits+headbit (ADD R1,R1,LR once at 0x6d37c).
+    use crate::vorbis_data::OGGPACK_MASK;
+    let endbyte = (*b).endbyte;
+    let storage = (*b).storage;
+    let headbit = (*b).headbit;
+    let mask = OGGPACK_MASK[bits as usize];
+    let end = bits + headbit;
+    let ptr = (*b).ptr;
+    let ret = if endbyte + 4 < storage || end + 8 * endbyte <= 8 * storage {
+        let mut val = (*ptr as i32) >> headbit;
+        if end > 8 {
+            val |= (*ptr.add(1) as i32) << (8 - headbit);
+            if end > 16 {
+                val |= (*ptr.add(2) as i32) << (16 - headbit);
+                if end > 24 {
+                    val |= (*ptr.add(3) as i32) << (24 - headbit);
+                    if end > 32 && headbit != 0 {
+                        val |= (*ptr.add(4) as i32) << (32 - headbit);
+                    }
+                }
+            }
+        }
+        val & mask as i32
+    } else {
+        -1
+    };
+    // IDA 0x6d3ac..0x6d3d4: advance even on overrun (then the caller sees -1).
+    let step = if end >= 0 { end } else { end + 7 };
+    (*b).ptr = ptr.add((step >> 3) as usize);
+    (*b).headbit = end & 7;
+    (*b).endbyte = endbyte + (step >> 3);
+    ret
 }
 
 // 0x6d434 — _FMOD_oggpack_bytes
 #[doc(alias = "_FMOD_oggpack_bytes")]
-pub fn stub_6d434() -> ! {
-    todo!("0x6d434 _FMOD_oggpack_bytes")
+pub unsafe fn stub_6d434(b: *const OggpackBuffer) -> i32 {
+    // IDA 0x6d434 (Xiph bitwise.c oggpack_bytes): endbyte + ceil(headbit/8)
+    // via the branchy round-up (headbit+7, or +14 when headbit+7 < 0).
+    let headbit = (*b).headbit;
+    let round = if headbit + 7 >= 0 { headbit + 7 } else { headbit + 14 };
+    (*b).endbyte + (round >> 3)
 }
 
 // 0x6d44c — _FMOD_oggpack_readinit
 #[doc(alias = "_FMOD_oggpack_readinit")]
-pub fn stub_6d44c() -> ! {
-    todo!("0x6d44c _FMOD_oggpack_readinit")
+pub unsafe fn stub_6d44c(b: *mut OggpackBuffer, buf: *const u8, bytes: i32) -> *mut OggpackBuffer {
+    // IDA 0x6d44c (Xiph bitwise.c oggpack_readinit): five zeroed words, then
+    // buffer/ptr = buf, storage = bytes.
+    (*b).endbyte = 0;
+    (*b).headbit = 0;
+    (*b).buffer = buf;
+    (*b).ptr = buf;
+    (*b).storage = bytes;
+    b
 }
 
 // 0x6d4b4 — _FMOD_vorbis_synthesis_restart
 #[doc(alias = "_FMOD_vorbis_synthesis_restart")]
-pub fn stub_6d4b4() -> ! {
-    todo!("0x6d4b4 _FMOD_vorbis_synthesis_restart")
+pub unsafe fn stub_6d4b4(v: *mut VorbisDspState) -> i32 {
+    // IDA 0x6d4b4 (Xiph block.c vorbis_synthesis_restart): null backend,
+    // null vi, or null codec_setup (vi word 7) returns -1. Else centerW =
+    // blocksizes[1] >> (halfrate+1) (words 1/712 of the setup), W-ish word
+    // a1[7] = 0, pcm_current = centerW >> halfrate, pcm_returned and the
+    // four words at +48..+60 = -1, backend words 7/8 (sequence/granulepos)
+    // = -1. BUG-compat: none — all paths mirrored.
+    let backend = (*v).backend_state as *mut i32;
+    if backend.is_null() {
+        return -1;
+    }
+    let vi = (*v).vi as *const *const i32;
+    if vi.is_null() {
+        return -1;
+    }
+    let ci = *vi.add(7);
+    if ci.is_null() {
+        return -1;
+    }
+    let halfrate = *ci.add(712);
+    let center = *ci.add(1) >> (halfrate + 1);
+    (*v).center_w = center;
+    (*v).w = 0;
+    (*v).pcm_current = center >> halfrate;
+    (*v).pcm_returned = -1;
+    (*v)._w12_15 = [-1; 4];
+    *backend.add(7) = -1;
+    *backend.add(8) = -1;
+    0
 }
 
 // 0x6d538 — _FMOD_vorbis_synthesis_pcmout
 #[doc(alias = "_FMOD_vorbis_synthesis_pcmout")]
-pub fn stub_6d538() -> ! {
-    todo!("0x6d538 _FMOD_vorbis_synthesis_pcmout")
+pub unsafe fn stub_6d538(v: *const VorbisDspState, pcm: *mut *mut *mut f32) -> i32 {
+    // IDA 0x6d538 (Xiph block.c vorbis_synthesis_pcmout): nothing buffered
+    // (pcm_returned <= -1) or nothing new (pcm_returned >= pcm_current)
+    // returns 0. Else each channel pointer is rebased by pcm_returned and
+    // *pcm is set; the available count (current - returned) returns either
+    // way, even when pcm is null.
+    let returned = (*v).pcm_returned;
+    if returned <= -1 {
+        return 0;
+    }
+    let current = (*v).pcm_current;
+    if returned >= current {
+        return 0;
+    }
+    if !pcm.is_null() {
+        let channels = *((*v).vi.add(4) as *const i32);
+        if channels > 0 {
+            let mut i = 0usize;
+            // IDA 0x6d538: pcmret[i] = pcm[i] + pcm_returned; the reloaded
+            // pcm_returned never changes inside the loop.
+            while i < channels as usize {
+                *(*v).pcmret.add(i) = (*(*v).pcm.add(i)).add(returned as usize);
+                i += 1;
+            }
+        }
+        *pcm = (*v).pcmret as *mut *mut f32;
+    }
+    current - returned
 }
 
 // 0x6d5c8 — _FMOD_vorbis_synthesis_read
 #[doc(alias = "_FMOD_vorbis_synthesis_read")]
-pub fn stub_6d5c8() -> ! {
-    todo!("0x6d5c8 _FMOD_vorbis_synthesis_read")
+pub unsafe fn stub_6d5c8(v: *mut VorbisDspState, n: i32) -> i32 {
+    // IDA 0x6d5c8 (Xiph block.c vorbis_synthesis_read): consume `n` samples.
+    // The null-read path still stores pcm_returned + 0 and returns 0; a read
+    // past pcm_current returns OV_EINVAL (-131).
+    let returned = (*v).pcm_returned;
+    if n == 0 || n + returned <= (*v).pcm_current {
+        (*v).pcm_returned = returned + n;
+        0
+    } else {
+        -131
+    }
 }
 
 // 0x6d600 — _FMOD_vorbis_synthesis_blockin
@@ -1536,20 +1994,82 @@ pub fn stub_6d600() -> ! {
 
 // 0x6dee8 — __FMOD_vorbis_block_alloc
 #[doc(alias = "__FMOD_vorbis_block_alloc")]
-pub fn stub_6dee8() -> ! {
-    todo!("0x6dee8 __FMOD_vorbis_block_alloc")
+pub unsafe fn stub_6dee8(vb: *mut VorbisBlock, bytes: i32, heap: &mut impl VorbisHeap) -> *mut u8 {
+    // IDA 0x6dee8 (Xiph block.c vorbis_block_alloc): bump `bytes` (rounded
+    // up to a multiple of 8, wrapping like the ARM ADD) out of localstore.
+    // When it no longer fits, the live buffer is chained (unless none was
+    // ever allocated) and a fresh one is malloc'd; null on OOM.
+    let used = (*vb).localtop;
+    let grow = bytes.wrapping_add(7) & !7i32;
+    if grow.wrapping_add(used) > (*vb).localalloc {
+        if !(*vb).localstore.is_null() {
+            let node = heap.ogg_malloc(8) as *mut AllocChain;
+            if node.is_null() {
+                return core::ptr::null_mut();
+            }
+            (*vb).totaluse = (*vb).totaluse.wrapping_add((*vb).localtop);
+            (*node).next = (*vb).reap;
+            (*node).buf = (*vb).localstore;
+            (*vb).reap = node;
+        }
+        (*vb).localalloc = grow;
+        let buf = heap.ogg_malloc(grow as usize);
+        (*vb).localstore = buf;
+        if buf.is_null() {
+            return core::ptr::null_mut();
+        }
+        (*vb).localtop = 0;
+        // LABEL_7 with used = 0.
+        (*vb).localtop = grow;
+        return buf;
+    }
+    (*vb).localtop = grow.wrapping_add(used);
+    (*vb).localstore.add(used as usize)
 }
-
 // 0x6df94 — __FMOD_vorbis_block_ripcord
 #[doc(alias = "__FMOD_vorbis_block_ripcord")]
-pub fn stub_6df94() -> ! {
-    todo!("0x6df94 __FMOD_vorbis_block_ripcord")
+pub unsafe fn stub_6df94(vb: *mut VorbisBlock, heap: &mut impl VorbisHeap) -> i32 {
+    // IDA 0x6df94 (Xiph block.c vorbis_block_ripcord): free the whole bump
+    // chain, then fold it back into one buffer. The disasm settles the
+    // decompiler's arg rendering: first Free takes the retired buffer
+    // (LDM R4,{R1,R6} at 0x6dfb4, BL at 0x6dfbc), the node is zeroed, then
+    // the second Free takes the node itself (MOV R1,R4 at 0x6dfc0, BL at
+    // 0x6dfd4). ReAlloc failure returns OV_ENOMEM-style -139 (0x6e02c).
+    let mut node = (*vb).reap;
+    while !node.is_null() {
+        let next = (*node).next;
+        heap.ogg_free((*node).buf);
+        (*node).buf = core::ptr::null_mut();
+        (*node).next = core::ptr::null_mut();
+        heap.ogg_free(node as *mut u8);
+        node = next;
+    }
+    let totaluse = (*vb).totaluse;
+    let rc = if totaluse != 0 {
+        let buf = heap.ogg_realloc((*vb).localstore, (totaluse + (*vb).localalloc) as usize);
+        (*vb).localalloc += totaluse;
+        (*vb).totaluse = 0;
+        (*vb).localstore = buf;
+        if buf.is_null() { -139 } else { 0 }
+    } else {
+        0
+    };
+    (*vb).localtop = 0;
+    (*vb).reap = core::ptr::null_mut();
+    rc
 }
 
 // 0x6e044 — _FMOD_vorbis_block_init
 #[doc(alias = "_FMOD_vorbis_block_init")]
-pub fn stub_6e044() -> ! {
-    todo!("0x6e044 _FMOD_vorbis_block_init")
+pub unsafe fn stub_6e044(vb: *mut VorbisBlock, vd: *mut VorbisDspState) -> i32 {
+    // IDA 0x6e044 (Xiph block.c vorbis_block_init): zero the 0x68-byte block,
+    // link the dsp state (word 16), clear localalloc/localstore words.
+    // The two stores after memset are redundant but mirrored.
+    core::ptr::write_bytes(vb as *mut u8, 0, 0x68);
+    (*vb).vd = vd;
+    (*vb).localalloc = 0;
+    (*vb).localstore = core::ptr::null_mut();
+    0
 }
 
 // 0x6e078 — _FMOD_vorbis_dsp_clear
@@ -1566,74 +2086,884 @@ pub fn stub_6e2c4() -> ! {
 
 // 0x6e6c0 — _FMOD_vorbis_block_clear
 #[doc(alias = "_FMOD_vorbis_block_clear")]
-pub fn stub_6e6c0() -> ! {
-    todo!("0x6e6c0 _FMOD_vorbis_block_clear")
+pub unsafe fn stub_6e6c0(vb: *mut VorbisBlock, heap: &mut impl VorbisHeap) -> i32 {
+    // IDA 0x6e6c0 (Xiph block.c vorbis_block_clear): ripcord first; on
+    // success free the store and zero the 0x68-byte block. The ripcord code
+    // passes through (0 included).
+    let rc = stub_6df94(vb, heap);
+    if rc == 0 {
+        if !(*vb).localstore.is_null() {
+            heap.ogg_free((*vb).localstore);
+        }
+        core::ptr::write_bytes(vb as *mut u8, 0, 0x68);
+    }
+    rc
 }
 
 // 0x6e778 — _FMOD_vorbis_book_decode
 #[doc(alias = "_FMOD_vorbis_book_decode")]
-pub fn stub_6e778() -> ! {
-    todo!("0x6e778 _FMOD_vorbis_book_decode")
+pub unsafe fn stub_6e778(bk: *const VorbisCodebook, opb: *mut OggpackBuffer) -> i32 {
+    // IDA 0x6e778 (Xiph codebook.c vorbis_book_decode): resolve one entry and
+    // return its dec_index, or -1. The entry half is shared (see
+    // codebook_decode_entry); only the index translation lives here.
+    let entry = codebook_decode_entry(bk, opb);
+    if entry >= 0 {
+        *(*bk).dec_index.add(entry as usize)
+    } else {
+        -1
+    }
 }
 
 // 0x6e8c4 — _FMOD_vorbis_staticbook_unpack
 #[doc(alias = "_FMOD_vorbis_staticbook_unpack")]
-pub fn stub_6e8c4() -> ! {
-    todo!("0x6e8c4 _FMOD_vorbis_staticbook_unpack")
+pub unsafe fn stub_6e8c4(
+    heap: &mut impl VorbisHeap,
+    opb: *mut OggpackBuffer,
+    book: *mut VorbisStaticBook,
+) -> i32 {
+    // IDA 0x6e8c4 (Xiph sharedbook.c vorbis_staticbook_unpack): read the
+    // "BCV" (5653314) magic, dimensions, ordered/sparse length list, maptype
+    // and quant values. Any failure clears via 0xf61b4 and returns -1, except
+    // OOM which returns -139. Intermediate short reads inside the quant loop
+    // are stored unchecked like the original; only the last one gates.
+    (*book).dim = 0;
+    (*book).entries = 0;
+    (*book).lengthlist = core::ptr::null_mut();
+    (*book).maptype = 0;
+    (*book).q_min = 0;
+    (*book).q_delta = 0;
+    (*book).q_quant = 0;
+    (*book).q_sequencep = 0;
+    (*book).quantlist = core::ptr::null_mut();
+    (*book).allocedp = 0;
+    (*book).allocedp = 1;
+    if stub_6d354(opb, 24) != 5_653_314 {
+        stub_f61b4(heap, book);
+        return -1;
+    }
+    (*book).dim = stub_6d354(opb, 16);
+    (*book).entries = stub_6d354(opb, 24);
+    if (*book).entries == -1 {
+        stub_f61b4(heap, book);
+        return -1;
+    }
+    if ogg_ilog((*book).dim as u32) + ogg_ilog((*book).entries as u32) > 24 {
+        stub_f61b4(heap, book);
+        return -1;
+    }
+    let ordered = stub_6d354(opb, 1);
+    if ordered != 0 {
+        if ordered != 1 {
+            stub_f61b4(heap, book);
+            return -1;
+        }
+        // IDA 0x6e8c4 ordered run-lengths: initial length +1 per run, each
+        // run length read with ilog(remaining) bits.
+        let mut len = stub_6d354(opb, 5);
+        let list = heap.ogg_malloc((4 * (*book).entries) as usize) as *mut i32;
+        (*book).lengthlist = list;
+        if list.is_null() {
+            stub_f61b4(heap, book);
+            return -139;
+        }
+        if (*book).entries > 0 {
+            let mut done = 0i32;
+            loop {
+                len += 1;
+                let run = stub_6d354(opb, ogg_ilog((*book).entries.wrapping_sub(done) as u32));
+                if run == -1 {
+                    break;
+                }
+                if run > 0 {
+                    if done >= (*book).entries {
+                        break;
+                    }
+                    let mut k = 0i32;
+                    while k != run {
+                        *list.add(done as usize) = len;
+                        k += 1;
+                        done += 1;
+                        if k == run {
+                            break;
+                        }
+                        if (*book).entries <= done {
+                            break;
+                        }
+                    }
+                    if (*book).entries <= done && k != run {
+                        break;
+                    }
+                }
+                if (*book).entries <= done {
+                    break;
+                }
+            }
+        }
+    } else {
+        let list = heap.ogg_malloc((4 * (*book).entries) as usize) as *mut i32;
+        (*book).lengthlist = list;
+        if list.is_null() {
+            stub_f61b4(heap, book);
+            return -139;
+        }
+        if stub_6d354(opb, 1) != 0 {
+            // IDA 0x6e8c4 sparse: per-entry present bit + 5-bit length.
+            let mut i = 0i32;
+            while i < (*book).entries {
+                if stub_6d354(opb, 1) != 0 {
+                    let l = stub_6d354(opb, 5);
+                    if l == -1 {
+                        stub_f61b4(heap, book);
+                        return -1;
+                    }
+                    *list.add(i as usize) = l + 1;
+                } else {
+                    *list.add(i as usize) = 0;
+                }
+                i += 1;
+            }
+        } else {
+            if (*book).entries <= 0 {
+                // IDA 0x6e8c4: empty non-sparse book keeps the (possibly null)
+                // list and continues at the maptype below.
+            } else {
+                let mut i = 0i32;
+                loop {
+                    let l = stub_6d354(opb, 5);
+                    if l == -1 {
+                        break;
+                    }
+                    *list.add(i as usize) = l + 1;
+                    i += 1;
+                    if (*book).entries <= i {
+                        break;
+                    }
+                }
+                if (*book).entries > i {
+                    stub_f61b4(heap, book);
+                    return -1;
+                }
+            }
+        }
+    }
+    let maptype = stub_6d354(opb, 4) as u32;
+    (*book).maptype = maptype as i32;
+    if maptype == 0 {
+        return 0;
+    }
+    if maptype > 2 {
+        stub_f61b4(heap, book);
+        return -1;
+    }
+    (*book).q_min = stub_6d354(opb, 32);
+    (*book).q_delta = stub_6d354(opb, 32);
+    (*book).q_quant = stub_6d354(opb, 4) + 1;
+    (*book).q_sequencep = stub_6d354(opb, 1);
+    if (*book).q_sequencep == -1 {
+        stub_f61b4(heap, book);
+        return -1;
+    }
+    let nvals = if maptype == 1 {
+        if (*book).dim != 0 {
+            book_maptype1_quantvals(book)
+        } else {
+            0
+        }
+    } else if maptype == 2 {
+        (*book).entries * (*book).dim
+    } else {
+        0
+    };
+    let qlist = heap.ogg_malloc((4 * nvals) as usize) as *mut i32;
+    (*book).quantlist = qlist;
+    if qlist.is_null() {
+        stub_f61b4(heap, book);
+        return -139;
+    }
+    if nvals == 0 {
+        return 0;
+    }
+    for i in 0..nvals as usize {
+        *qlist.add(i) = stub_6d354(opb, (*book).q_quant);
+    }
+    if *qlist.add(nvals as usize - 1) != -1 {
+        return 0;
+    }
+    stub_f61b4(heap, book);
+    -1
 }
 
 // 0x6ec78 — _FMOD_vorbis_book_decodevv_add
 #[doc(alias = "_FMOD_vorbis_book_decodevv_add")]
-pub fn stub_6ec78() -> ! {
-    todo!("0x6ec78 _FMOD_vorbis_book_decodevv_add")
+pub unsafe fn stub_6ec78(
+    bk: *const VorbisCodebook,
+    chans: *const *mut f32,
+    off: i32,
+    nch: i32,
+    opb: *mut OggpackBuffer,
+    count: i32,
+) -> i32 {
+    // IDA 0x6ec78 (Xiph codebook.c vorbis_book_decodevv_add): decode
+    // vectors and scatter-add them across `nch` channel buffers. a2 is the
+    // channel-pointer array, a3/a4 the first-sample offset/channel count,
+    // a6 the sample count; v9/v30 walk vector slots round-robin (v29 wraps
+    // at a4). A zero firsttable hit returns -1 like the -1 entry below it.
+    if (*bk).used_entries <= 0 {
+        return 0;
+    }
+    let dim = (*bk).dim;
+    let mut vec = off / nch;
+    let last = (count + off) / nch;
+    let mut ch = 0i32;
+    while vec < last {
+        let entry = codebook_decode_entry(bk, opb);
+        if entry == -1 {
+            return -1;
+        }
+        let vals = (*bk).valuelist.add((dim * entry) as usize);
+        let mut k = 0i32;
+        while k < dim {
+            let slot = *chans.add(ch as usize);
+            *slot.add(vec as usize) += *vals.add(k as usize);
+            k += 1;
+            ch += 1;
+            if ch == nch {
+                vec += 1;
+                ch = 0;
+            }
+        }
+        if vec >= last {
+            return 0;
+        }
+    }
+    0
 }
 
 // 0x6ee98 — _FMOD_vorbis_book_decodev_add
 #[doc(alias = "_FMOD_vorbis_book_decodev_add")]
-pub fn stub_6ee98() -> ! {
-    todo!("0x6ee98 _FMOD_vorbis_book_decodev_add")
+pub unsafe fn stub_6ee98(
+    bk: *const VorbisCodebook,
+    out: *mut f32,
+    opb: *mut OggpackBuffer,
+    n: i32,
+) -> i32 {
+    // IDA 0x6ee98 (Xiph codebook.c vorbis_book_decodev_add): decode `n`
+    // vectors and add them onto `out` in place. dim > 8 takes the looped
+    // path; dim <= 8 takes the Duff-style unrolled switch, which writes the
+    // same dim sequential adds in the same order — the loop below covers
+    // both (and the default case writes nothing, like an empty range).
+    if (*bk).used_entries <= 0 {
+        return 0;
+    }
+    let dim = (*bk).dim;
+    if dim > 8 {
+        let mut done = 0i32;
+        while done < n {
+            let entry = codebook_decode_entry(bk, opb);
+            if entry == -1 {
+                return -1;
+            }
+            let vals = (*bk).valuelist.add((dim * entry) as usize);
+            let mut k = 0i32;
+            while k < dim {
+                *out.add(done as usize) += *vals.add(k as usize);
+                done += 1;
+                k += 1;
+            }
+        }
+        return 0;
+    }
+    if n <= 0 {
+        return 0;
+    }
+    let mut done = 0i32;
+    loop {
+        let entry = codebook_decode_entry(bk, opb);
+        if entry == -1 {
+            return -1;
+        }
+        let vals = (*bk).valuelist.add((dim * entry) as usize);
+        // IDA 0x6ee98 switch (*a1) cases 8..1 fall through, adding vals[0..]
+        // in order; default adds nothing.
+        let mut k = 0i32;
+        while k < dim {
+            *out.add(done as usize) += *vals.add(k as usize);
+            k += 1;
+            done += 1;
+        }
+        if done >= n {
+            return 0;
+        }
+    }
 }
 
 // 0x6f37c — _FMOD_vorbis_book_decodevs_add
 #[doc(alias = "_FMOD_vorbis_book_decodevs_add")]
-pub fn stub_6f37c() -> ! {
-    todo!("0x6f37c _FMOD_vorbis_book_decodevs_add")
+pub unsafe fn stub_6f37c(
+    bk: *const VorbisCodebook,
+    out: *mut f32,
+    opb: *mut OggpackBuffer,
+    total: i32,
+) -> i32 {
+    // IDA 0x6f37c (Xiph codebook.c vorbis_book_decodevs_add): decode step
+    // vectors, then add them strided. nvec = total/dim vectors are resolved
+    // first (their valuelist rows latched); a -1 entry aborts with -1 after
+    // marking the step slot, exactly like the original's stack arrays. The
+    // -1 stores are stack-local and unobservable, but mirrored anyway.
+    if (*bk).used_entries <= 0 {
+        return 0;
+    }
+    let dim = (*bk).dim;
+    // ARM SDIV-by-zero yields 0 (no trap); the add phase below is empty for
+    // nvec <= 0 either way.
+    let nvec = total.checked_div(dim).unwrap_or(0);
+    // IDA 0x6f37c: the step/pointer arrays live on the stack (v36/v37); the
+    // stride between dim rows is 4 * nvec bytes.
+    let mut steps: Vec<i32> = Vec::new();
+    let mut rows: Vec<*const f32> = Vec::new();
+    if nvec > 0 {
+        let mut got = 0i32;
+        loop {
+            let entry = codebook_decode_entry(bk, opb);
+            steps.push(entry);
+            if entry == -1 {
+                return -1;
+            }
+            rows.push((*bk).valuelist.add((dim * entry) as usize));
+            got += 1;
+            if got == nvec {
+                break;
+            }
+        }
+    }
+    let stride = (4 * nvec) as usize;
+    let mut d = 0i32;
+    while d < dim {
+        // Wrapping mirrors the ARM pointer wrap; the slot is only dereferenced
+        // when nvec > 0, so a huge stride here is never observed.
+        let mut p = (out as usize).wrapping_add((d as usize).wrapping_mul(stride)) as *mut f32;
+        let mut s = 0i32;
+        while s < nvec {
+            *p += *rows[s as usize].add(d as usize);
+            p = p.add(1);
+            s += 1;
+        }
+        d += 1;
+    }
+    0
 }
 
 // 0x6f840 — _FMOD_floor1_inverse1
 #[doc(alias = "_FMOD_floor1_inverse1")]
-pub fn stub_6f840() -> ! {
-    todo!("0x6f840 _FMOD_floor1_inverse1")
+pub unsafe fn stub_6f840(
+    heap: &mut impl VorbisHeap,
+    vb: *mut VorbisBlock,
+    look: *const Floor1Look,
+) -> *mut i32 {
+    // IDA 0x6f840 (Xiph floor1.c floor1_inverse1): decode the residue-selected
+    // fit vector (one int per post, 0x8000 = fitted-unused). Null unless the
+    // stream carries fit data (present bit) and every read succeeds.
+    let null = core::ptr::null_mut();
+    let info = (*look).info;
+    let opb = &mut (*vb).opb as *mut OggpackBuffer;
+    let vd = (*vb).vd;
+    let vi = *(vd as *const *const i32);
+    let cs = *(vi.add(7) as *const *const i32);
+    let books = *(cs.add(711)) as *const VorbisCodebook;
+    if stub_6d354(opb, 1) != 1 {
+        return null;
+    }
+    let n = (*look).n;
+    let fit = heap.ogg_malloc((4 * n) as usize) as *mut i32;
+    if fit.is_null() {
+        // IDA 0x6f840: block_alloc failure yields null here; the original
+        // would dereference it, which has no host mapping — null returns.
+        return null;
+    }
+    let range = (*look).mult;
+    *fit = stub_6d354(opb, ogg_ilog(range as u32 - 1));
+    *fit.add(1) = stub_6d354(opb, ogg_ilog(range as u32 - 1));
+    let nposts = (*info).w[0];
+    if nposts > 0 {
+        let mut post = 1i32;
+        let mut slot = 2i32;
+        loop {
+            let class = *(*info).w.as_ptr().add(post as usize);
+            let class_dim = (*info).w[32 + class as usize];
+            let class_subs = (*info).w[48 + class as usize];
+            // IDA 0x6f840: one masterbook decode per post (skipped, code 0,
+            // when the class has no subclasses).
+            let mut code = 0i32;
+            if class_subs != 0 {
+                let master = (*info).w[64 + class as usize];
+                code = codebook_decode_entry(books.add(master as usize), opb);
+                if code == -1 {
+                    return null;
+                }
+            }
+            if class_dim > 0 {
+                let mut out = fit.add(slot as usize);
+                let mut j = 0i32;
+                let cascade = 8 * class;
+                while j != class_dim {
+                    // IDA 0x6f840: walk the cascade, consuming code bits and
+                    // emitting 0 for dead-end slots, until a live sub-book.
+                    let sub = loop {
+                        let idx = cascade + (code & ((1 << class_subs) - 1));
+                        code >>= class_subs;
+                        let sub = (*info).w[80 + idx as usize];
+                        if sub >= 0 {
+                            break sub;
+                        }
+                        *out = 0;
+                        j += 1;
+                        out = out.add(1);
+                        if j == class_dim {
+                            break -1;
+                        }
+                    };
+                    if j == class_dim {
+                        break;
+                    }
+                    let v = codebook_decode_entry(books.add(sub as usize), opb);
+                    *out = v;
+                    if v == -1 {
+                        return null;
+                    }
+                    j += 1;
+                    out = out.add(1);
+                }
+            }
+            let done = post;
+            post += 1;
+            slot += class_dim;
+            if nposts <= done {
+                break;
+            }
+        }
+    }
+    if n > 2 {
+        let mut post = 2i32;
+        let mut f = fit;
+        let mut li = look as *const i32;
+        while post < n {
+            // IDA 0x6f840: predict from the low/high anchor posts, then fold
+            // the residue in with the two's-complement dance; a zero residue
+            // keeps the prediction and flags the post unused (0x8000). v22
+            // walks the look words, so low/high advance one word per post.
+            let lo = *li.add(193);
+            let hi = *li.add(130);
+            let y0 = *fit.add(lo as usize) & 0x7FFF;
+            let y1 = *fit.add(hi as usize) & 0x7FFF;
+            let x0 = (*info).w[209 + lo as usize];
+            let x1 = (*info).w[209 + hi as usize];
+            let x = (*info).w[209 + post as usize];
+            let dy = y1 - y0;
+            let adist = (x - x0) as i64;
+            let bdist = (x1 - x0) as i64;
+            let step = (vorbis_abs32(dy) as i64 * adist / bdist) as i32;
+            let predicted = if dy >= 0 { y0 + step } else { y0 - step };
+            let residue = *f.add(2);
+            let value = if residue != 0 {
+                let slack = range - predicted;
+                let min = if slack < predicted { slack } else { predicted };
+                if residue >= 2 * min {
+                    if predicted < slack {
+                        residue
+                    } else {
+                        predicted - (residue - slack) - 1
+                    }
+                } else if residue & 1 != 0 {
+                    predicted - ((residue + 1) >> 1)
+                } else {
+                    predicted + (residue >> 1)
+                }
+            } else {
+                predicted | 0x8000
+            };
+            if residue != 0 {
+                *fit.add(lo as usize) &= 0x7FFF;
+                *fit.add(hi as usize) &= 0x7FFF;
+            }
+            *f.add(2) = value;
+            post += 1;
+            f = f.add(1);
+            li = li.add(1);
+        }
+    }
+    fit
 }
 
 // 0x6fbac — _FMOD_floor1_free_look
 #[doc(alias = "_FMOD_floor1_free_look")]
-pub fn stub_6fbac() -> ! {
-    todo!("0x6fbac _FMOD_floor1_free_look")
+pub unsafe fn stub_6fbac(heap: &mut impl VorbisHeap, look: *mut Floor1Look) -> i32 {
+    // IDA 0x6fbac (Xiph floor1.c floor1_free_look): zero the 1052-byte look,
+    // then free it. Same ctx-threading note as 0x6fe68: 0 returns.
+    if look.is_null() {
+        return 0;
+    }
+    core::ptr::write_bytes(look as *mut u8, 0, 0x41c);
+    heap.ogg_free(look as *mut u8);
+    0
 }
 
 // 0x6fbe0 — _FMOD_floor1_look
 #[doc(alias = "_FMOD_floor1_look")]
-pub fn stub_6fbe0() -> ! {
-    todo!("0x6fbe0 _FMOD_floor1_look")
+pub unsafe fn stub_6fbe0(heap: &mut impl VorbisHeap, info: *const Floor1Info) -> *mut Floor1Look {
+    // IDA 0x6fbe0 (Xiph floor1.c floor1_look): build the 1052-byte lookup:
+    // post count (class dims summed + 2), position order sorted with the
+    // qsort comparator (0x6f828), the reverse map, the mult selector, and the
+    // per-post low/high neighbours. Null on OOM.
+    let null = core::ptr::null_mut();
+    let look = heap.ogg_calloc(1, 1052) as *mut Floor1Look;
+    if look.is_null() {
+        return null;
+    }
+    (*look).info = info;
+    (*look).w257 = (*info).w[210];
+    let nposts = (*info).w[0];
+    let n = if nposts <= 0 {
+        2
+    } else {
+        let mut total = 0i32;
+        let mut post = 0i32;
+        while post != nposts {
+            total += (*info).w[(*info).w[1 + post as usize] as usize + 32];
+            post += 1;
+        }
+        total + 2
+    };
+    (*look).n = n;
+    if n > 0 {
+        // IDA 0x6fbe0: order[c] = post index (pointer difference >> 2), then
+        // reverse[order[i]] = i. Guarded by n > 0 like the original, which
+        // would otherwise sort garbage (n <= 0 is unreachable: n >= 2).
+        let mut order: [*const i32; 65] = [core::ptr::null(); 65];
+        for i in 0..n as usize {
+            order[i] = (*info).w.as_ptr().add(i + 209);
+        }
+        order[..n as usize].sort_by(|a, b| unsafe { (**a).cmp(&(**b)) });
+        let base = (*info).w.as_ptr().add(209);
+        for (i, &p) in order[..n as usize].iter().enumerate() {
+            (*look).order[i] = ((p as usize - base as usize) >> 2) as i32;
+        }
+        for i in 0..n {
+            let post = (*look).order[i as usize];
+            (*look).reverse[post as usize] = i;
+        }
+    }
+    (*look).mult = match (*info).w[208] {
+        1 => 256,
+        2 => 128,
+        3 => 86,
+        4 => 64,
+        _ => (*look).mult,
+    };
+    let count = n - 2;
+    if count > 0 {
+        let mut i = 0i32;
+        let mut cur = (*info).w[211];
+        let mut himax = (*look).w257;
+        while i < count {
+            let mut lo = 0i32;
+            let mut lo_val = 0i32;
+            let mut hi = 1i32;
+            let mut hi_val = himax;
+            let mut j = 0i32;
+            while j < i + 2 {
+                let v = (*info).w[209 + j as usize];
+                if v > lo_val && v < cur {
+                    lo = j;
+                    lo_val = v;
+                }
+                if v < hi_val && v > cur {
+                    hi = j;
+                    hi_val = v;
+                }
+                j += 1;
+            }
+            (*look).low[i as usize] = lo;
+            (*look).high[i as usize] = hi;
+            i += 1;
+            if i >= count {
+                break;
+            }
+            cur = (*info).w[211 + i as usize];
+            himax = (*look).w257;
+        }
+    }
+    look
 }
 
 // 0x6fe68 — _FMOD_floor1_free_info
 #[doc(alias = "_FMOD_floor1_free_info")]
-pub fn stub_6fe68() -> ! {
-    todo!("0x6fe68 _FMOD_floor1_free_info")
+pub unsafe fn stub_6fe68(heap: &mut impl VorbisHeap, info: *mut Floor1Info) -> i32 {
+    // IDA 0x6fe68 (Xiph floor1.c floor1_free_info): zero the 1120-byte info,
+    // then free it. The ctx int threads through FMOD_OggVorbis_Free untouched
+    // by every caller, so 0 returns here (null info included).
+    if info.is_null() {
+        return 0;
+    }
+    core::ptr::write_bytes(info as *mut u8, 0, 0x460);
+    heap.ogg_free(info as *mut u8);
+    0
 }
 
 // 0x6fe9c — _FMOD_floor1_unpack
 #[doc(alias = "_FMOD_floor1_unpack")]
-pub fn stub_6fe9c() -> ! {
-    todo!("0x6fe9c _FMOD_floor1_unpack")
+pub unsafe fn stub_6fe9c(
+    heap: &mut impl VorbisHeap,
+    vi: *const u32,
+    opb: *mut OggpackBuffer,
+) -> *mut Floor1Info {
+    // IDA 0x6fe9c (Xiph floor1.c floor1_unpack): read the floor1 setup into a
+    // fresh 1120-byte info. a2 is the vorbis_info: codec_setup is vi word 7,
+    // book count its word 6. Any overrun/illegal value frees the info (via
+    // 0x6fe68) and returns null; duplicate post positions fail the same way.
+    let null = core::ptr::null_mut();
+    let ci = *(vi.add(7) as *const *const i32);
+    let nbooks = *ci.add(6);
+    let info = heap.ogg_calloc(1, 1120) as *mut Floor1Info;
+    if info.is_null() {
+        return null;
+    }
+    let w = (*info).w.as_mut_ptr();
+    let posts = stub_6d354(opb, 5);
+    *w = posts;
+    if posts > 0 {
+        let mut maxclass = -1i32;
+        let mut c = 1i32;
+        while c <= *w {
+            let class = stub_6d354(opb, 4);
+            *w.add(c as usize) = class;
+            if class < 0 {
+                stub_6fe68(heap, info);
+                return null;
+            }
+            if maxclass < class {
+                maxclass = class;
+            }
+            c += 1;
+        }
+        let mut class = 0i32;
+        let mut base = info as *mut i32;
+        loop {
+            *base.add(32) = stub_6d354(opb, 3) + 1;
+            let subs = stub_6d354(opb, 2);
+            *base.add(48) = subs;
+            if subs < 0 {
+                stub_6fe68(heap, info);
+                return null;
+            }
+            if subs != 0 {
+                *base.add(64) = stub_6d354(opb, 8);
+            }
+            let master = *base.add(64);
+            if master < 0 || master >= nbooks {
+                stub_6fe68(heap, info);
+                return null;
+            }
+            if (1 << subs) > 0 {
+                let mut k = 0i32;
+                let mut slot = (info as *mut i32).add(8 * class as usize + 80);
+                while k < (1 << subs) {
+                    let b = stub_6d354(opb, 8) - 1;
+                    *slot = b;
+                    if b < -1 || b >= nbooks {
+                        stub_6fe68(heap, info);
+                        return null;
+                    }
+                    k += 1;
+                    slot = slot.add(1);
+                }
+            }
+            base = base.add(1);
+            class += 1;
+            if class == maxclass + 1 {
+                break;
+            }
+        }
+    }
+    *w.add(208) = stub_6d354(opb, 2) + 1;
+    let rangebits = stub_6d354(opb, 4);
+    if rangebits < 0 {
+        stub_6fe68(heap, info);
+        return null;
+    }
+    let nposts = *w;
+    if nposts > 0 {
+        let mut total = 0i32;
+        let mut done = 0i32;
+        let mut post = 1i32;
+        while post <= nposts {
+            total += *w.add(*w.add(post as usize) as usize + 32);
+            if total > done {
+                let mut slot = w.add(done as usize + 209);
+                loop {
+                    let v = stub_6d354(opb, rangebits);
+                    *slot.add(2) = v;
+                    if v < 0 || v >= 1 << rangebits {
+                        stub_6fe68(heap, info);
+                        return null;
+                    }
+                    done += 1;
+                    slot = slot.add(1);
+                    if done == total {
+                        break;
+                    }
+                }
+            }
+            post += 1;
+        }
+        let n = total + 2;
+        *w.add(209) = 0;
+        *w.add(210) = 1 << rangebits;
+        if n <= 0 {
+            // IDA 0x6fe9c: qsort over <= 0 elements is a no-op; return as-is.
+            // (Unreachable: total >= posts >= 1 here, so n >= 3.)
+            return info;
+        }
+        // IDA 0x6fe9c: sort post-position pointers, reject duplicates.
+        let mut order: [*const i32; 65] = [core::ptr::null(); 65];
+        for i in 0..n as usize {
+            order[i] = w.add(i + 209);
+        }
+        order[..n as usize].sort_by(|a, b| unsafe { (**a).cmp(&(**b)) });
+        if n > 1 {
+            if *order[0] == *order[1] {
+                stub_6fe68(heap, info);
+                return null;
+            }
+            let mut k = 1usize;
+            while (k as i32) + 1 != n {
+                if *order[k] == *order[k + 1] {
+                    stub_6fe68(heap, info);
+                    return null;
+                }
+                k += 1;
+            }
+            return info;
+        }
+        return info;
+    }
+    *w.add(209) = 0;
+    *w.add(210) = 1 << rangebits;
+    let n = 2i32;
+    let mut order: [*const i32; 65] = [core::ptr::null(); 65];
+    for i in 0..n as usize {
+        order[i] = w.add(i + 209);
+    }
+    order[..n as usize].sort_by(|a, b| unsafe { (**a).cmp(&(**b)) });
+    info
 }
 
 // 0x701fc — _FMOD_floor1_inverse2
 #[doc(alias = "_FMOD_floor1_inverse2")]
-pub fn stub_701fc() -> ! {
-    todo!("0x701fc _FMOD_floor1_inverse2")
+pub unsafe fn stub_701fc(
+    vb: *mut VorbisBlock,
+    look: *const Floor1Look,
+    fit: *const i32,
+    out: *mut f32,
+) -> i32 {
+    // IDA 0x701fc (Xiph floor1.c floor1_inverse2): render the envelope.
+    // n = blocksizes[W]/2 (codec_setup word 0/1 via vd->vi word 7, vb word 7).
+    // Null fit zeroes the output and returns 0. Else each used post (0x8000
+    // clear in fit, scanned in sorted order from 1) anchors a Bresenham-ish
+    // segment through FLOOR1_fromdB_LOOKUP (image 0xF744A4); the tail runs to
+    // n. Returns 1.
+    use crate::vorbis_data::FLOOR1_FROM_DB_LOOKUP;
+    let info = (*look).info;
+    let vd = (*vb).vd;
+    let vi = *(vd as *const *const i32);
+    let cs = *(vi.add(7) as *const *const i32);
+    let n = *cs.add((*vb).w as usize) / 2;
+    if fit.is_null() {
+        core::ptr::write_bytes(out as *mut u8, 0, (4 * n) as usize);
+        return 0;
+    }
+    let imult = (*info).w[208];
+    let nposts = (*look).n;
+    let mut y = imult * *fit;
+    let mut x0 = 0i32;
+    let mut last_x = 0i32;
+    if nposts > 1 {
+        let mut i = 1i32;
+        while i < nposts {
+            // IDA 0x701fc: skip posts flagged unused (0x8000 set).
+            let mut x = (*look).order[i as usize];
+            loop {
+                let f = *fit.add(x as usize);
+                if f == (f & 0x7FFF) {
+                    break;
+                }
+                i += 1;
+                if i >= nposts {
+                    // LABEL_30 with a stale v34 in the original (unreadable
+                    // stack slot when every scanned post is unused); 0 is the
+                    // no-progress value, matching the n <= 1 path.
+                    last_x = 0;
+                    break;
+                }
+                x = (*look).order[i as usize];
+            }
+            if i >= nposts {
+                break;
+            }
+            let fx = *fit.add(x as usize);
+            let x1 = (*info).w[209 + x as usize];
+            let y1 = imult * fx;
+            let dy = y1 - y;
+            let dx = x1 - x0;
+            // ARM SDIV truncates toward zero like `/`; divide-by-zero yields 0
+            // on ARM (unreachable: unpack rejects duplicate positions).
+            let q = dy.checked_div(dx).unwrap_or(0);
+            let step = if dy >= 0 { q + 1 } else { q - 1 };
+            // IDA 0x701fc: segment end clamps at the output length.
+            let mut xend = n;
+            if n >= x1 {
+                xend = x1;
+            }
+            if x0 < xend {
+                *out.add(x0 as usize) *= FLOOR1_FROM_DB_LOOKUP[y as usize];
+            }
+            let mut xx = x0 + 1;
+            if xend > x0 + 1 {
+                let ady = if dy < 0 { y - y1 } else { dy };
+                let mut adx_step = dx * q;
+                if adx_step < 0 {
+                    adx_step = -adx_step;
+                }
+                let base = ady - adx_step;
+                let mut err = 0i32;
+                let mut yy = y;
+                while xx < xend {
+                    err += base;
+                    // `v26 = &loc_F04124` is dead: the step-int use below is
+                    // always preceded by `v26 = v35` in the same iteration,
+                    // and the float use always reloads &fromdB[yy] first.
+                    if dx > err {
+                        yy += q;
+                    }
+                    xx += 1;
+                    if dx <= err {
+                        err -= dx;
+                        yy += step;
+                    }
+                    *out.add((xx - 1) as usize) *= FLOOR1_FROM_DB_LOOKUP[yy as usize];
+                }
+            }
+            i += 1;
+            x0 = x1;
+            y = y1;
+            last_x = x1;
+        }
+    }
+    // IDA 0x701fc tail: run the last level out to n.
+    while last_x != n {
+        *out.add(last_x as usize) *= FLOOR1_FROM_DB_LOOKUP[y as usize];
+        last_x += 1;
+    }
+    1
 }
 
 // 0x70458 — _FMOD_Channel_GetUserData
@@ -12049,8 +13379,30 @@ pub fn stub_f5f08() -> ! {
 
 // 0xf61b4 — _FMOD_vorbis_staticbook_clear
 #[doc(alias = "_FMOD_vorbis_staticbook_clear")]
-pub fn stub_f61b4() -> ! {
-    todo!("0xf61b4 _FMOD_vorbis_staticbook_clear")
+pub unsafe fn stub_f61b4(heap: &mut impl VorbisHeap, book: *mut VorbisStaticBook) -> i32 {
+    // IDA 0xf61b4 (Xiph sharedbook.c vorbis_staticbook_clear): when allocedp
+    // is set, free quantlist then lengthlist and zero all ten words. The
+    // decompiler threads FMOD_OggVorbis_Free's return value through, but
+    // every in-crate caller ignores it, so 0 returns here.
+    if (*book).allocedp != 0 {
+        if !(*book).quantlist.is_null() {
+            heap.ogg_free((*book).quantlist as *mut u8);
+        }
+        if !(*book).lengthlist.is_null() {
+            heap.ogg_free((*book).lengthlist as *mut u8);
+        }
+        (*book).dim = 0;
+        (*book).entries = 0;
+        (*book).lengthlist = core::ptr::null_mut();
+        (*book).maptype = 0;
+        (*book).q_min = 0;
+        (*book).q_delta = 0;
+        (*book).q_quant = 0;
+        (*book).q_sequencep = 0;
+        (*book).quantlist = core::ptr::null_mut();
+        (*book).allocedp = 0;
+    }
+    0
 }
 
 // 0xf622c — _FMOD_vorbis_staticbook_destroy
@@ -14053,50 +15405,58 @@ pub fn stub_6a04c_wd046() -> ! {
 
 // 0x6d26c — _FMOD_oggpack_look
 #[doc(alias = "_FMOD_oggpack_look")]
-pub fn stub_6d26c_wd047() -> ! {
-    todo!("0x6d26c _FMOD_oggpack_look")
+pub unsafe fn stub_6d26c_wd047(b: *mut OggpackBuffer, bits: i32) -> i32 {
+    // Watchdog copy of IDA 0x6d26c; single implementation lives in stub_6d26c.
+    stub_6d26c(b, bits)
 }
 
 // 0x6d318 — _FMOD_oggpack_adv
 #[doc(alias = "_FMOD_oggpack_adv")]
-pub fn stub_6d318_wd048() -> ! {
-    todo!("0x6d318 _FMOD_oggpack_adv")
+pub unsafe fn stub_6d318_wd048(b: *mut OggpackBuffer, bits: i32) -> *mut OggpackBuffer {
+    // Watchdog copy of IDA 0x6d318; see stub_6d318.
+    stub_6d318(b, bits)
 }
 
 // 0x6d354 — _FMOD_oggpack_read
 #[doc(alias = "_FMOD_oggpack_read")]
-pub fn stub_6d354_wd049() -> ! {
-    todo!("0x6d354 _FMOD_oggpack_read")
+pub unsafe fn stub_6d354_wd049(b: *mut OggpackBuffer, bits: i32) -> i32 {
+    // Watchdog copy of IDA 0x6d354; see stub_6d354.
+    stub_6d354(b, bits)
 }
 
 // 0x6d434 — _FMOD_oggpack_bytes
 #[doc(alias = "_FMOD_oggpack_bytes")]
-pub fn stub_6d434_wd050() -> ! {
-    todo!("0x6d434 _FMOD_oggpack_bytes")
+pub unsafe fn stub_6d434_wd050(b: *const OggpackBuffer) -> i32 {
+    // Watchdog copy of IDA 0x6d434; see stub_6d434.
+    stub_6d434(b)
 }
 
 // 0x6d44c — _FMOD_oggpack_readinit
 #[doc(alias = "_FMOD_oggpack_readinit")]
-pub fn stub_6d44c_wd051() -> ! {
-    todo!("0x6d44c _FMOD_oggpack_readinit")
+pub unsafe fn stub_6d44c_wd051(b: *mut OggpackBuffer, buf: *const u8, bytes: i32) -> *mut OggpackBuffer {
+    // Watchdog copy of IDA 0x6d44c; see stub_6d44c.
+    stub_6d44c(b, buf, bytes)
 }
 
 // 0x6d4b4 — _FMOD_vorbis_synthesis_restart
 #[doc(alias = "_FMOD_vorbis_synthesis_restart")]
-pub fn stub_6d4b4_wd052() -> ! {
-    todo!("0x6d4b4 _FMOD_vorbis_synthesis_restart")
+pub unsafe fn stub_6d4b4_wd052(v: *mut VorbisDspState) -> i32 {
+    // Watchdog copy of IDA 0x6d4b4; see stub_6d4b4.
+    stub_6d4b4(v)
 }
 
 // 0x6d538 — _FMOD_vorbis_synthesis_pcmout
 #[doc(alias = "_FMOD_vorbis_synthesis_pcmout")]
-pub fn stub_6d538_wd053() -> ! {
-    todo!("0x6d538 _FMOD_vorbis_synthesis_pcmout")
+pub unsafe fn stub_6d538_wd053(v: *const VorbisDspState, pcm: *mut *mut *mut f32) -> i32 {
+    // Watchdog copy of IDA 0x6d538; see stub_6d538.
+    stub_6d538(v, pcm)
 }
 
 // 0x6d5c8 — _FMOD_vorbis_synthesis_read
 #[doc(alias = "_FMOD_vorbis_synthesis_read")]
-pub fn stub_6d5c8_wd054() -> ! {
-    todo!("0x6d5c8 _FMOD_vorbis_synthesis_read")
+pub unsafe fn stub_6d5c8_wd054(v: *mut VorbisDspState, n: i32) -> i32 {
+    // Watchdog copy of IDA 0x6d5c8; see stub_6d5c8.
+    stub_6d5c8(v, n)
 }
 
 // 0x6d600 — _FMOD_vorbis_synthesis_blockin
@@ -14107,20 +15467,23 @@ pub fn stub_6d600_wd055() -> ! {
 
 // 0x6dee8 — __FMOD_vorbis_block_alloc
 #[doc(alias = "__FMOD_vorbis_block_alloc")]
-pub fn stub_6dee8_wd056() -> ! {
-    todo!("0x6dee8 __FMOD_vorbis_block_alloc")
+pub unsafe fn stub_6dee8_wd056(vb: *mut VorbisBlock, bytes: i32, heap: &mut impl VorbisHeap) -> *mut u8 {
+    // Watchdog copy of IDA 0x6dee8; see stub_6dee8.
+    stub_6dee8(vb, bytes, heap)
 }
 
 // 0x6df94 — __FMOD_vorbis_block_ripcord
 #[doc(alias = "__FMOD_vorbis_block_ripcord")]
-pub fn stub_6df94_wd057() -> ! {
-    todo!("0x6df94 __FMOD_vorbis_block_ripcord")
+pub unsafe fn stub_6df94_wd057(vb: *mut VorbisBlock, heap: &mut impl VorbisHeap) -> i32 {
+    // Watchdog copy of IDA 0x6df94; see stub_6df94.
+    stub_6df94(vb, heap)
 }
 
 // 0x6e044 — _FMOD_vorbis_block_init
 #[doc(alias = "_FMOD_vorbis_block_init")]
-pub fn stub_6e044_wd058() -> ! {
-    todo!("0x6e044 _FMOD_vorbis_block_init")
+pub unsafe fn stub_6e044_wd058(vb: *mut VorbisBlock, vd: *mut VorbisDspState) -> i32 {
+    // Watchdog copy of IDA 0x6e044; see stub_6e044.
+    stub_6e044(vb, vd)
 }
 
 // 0x6e078 — _FMOD_vorbis_dsp_clear
@@ -14137,74 +15500,120 @@ pub fn stub_6e2c4_wd060() -> ! {
 
 // 0x6e6c0 — _FMOD_vorbis_block_clear
 #[doc(alias = "_FMOD_vorbis_block_clear")]
-pub fn stub_6e6c0_wd061() -> ! {
-    todo!("0x6e6c0 _FMOD_vorbis_block_clear")
+pub unsafe fn stub_6e6c0_wd061(vb: *mut VorbisBlock, heap: &mut impl VorbisHeap) -> i32 {
+    // Watchdog copy of IDA 0x6e6c0; see stub_6e6c0.
+    stub_6e6c0(vb, heap)
 }
 
 // 0x6e778 — _FMOD_vorbis_book_decode
 #[doc(alias = "_FMOD_vorbis_book_decode")]
-pub fn stub_6e778_wd062() -> ! {
-    todo!("0x6e778 _FMOD_vorbis_book_decode")
+pub unsafe fn stub_6e778_wd062(bk: *const VorbisCodebook, opb: *mut OggpackBuffer) -> i32 {
+    // Watchdog copy of IDA 0x6e778; see stub_6e778.
+    stub_6e778(bk, opb)
 }
 
 // 0x6e8c4 — _FMOD_vorbis_staticbook_unpack
 #[doc(alias = "_FMOD_vorbis_staticbook_unpack")]
-pub fn stub_6e8c4_wd063() -> ! {
-    todo!("0x6e8c4 _FMOD_vorbis_staticbook_unpack")
+pub unsafe fn stub_6e8c4_wd063(
+    heap: &mut impl VorbisHeap,
+    opb: *mut OggpackBuffer,
+    book: *mut VorbisStaticBook,
+) -> i32 {
+    // Watchdog copy of IDA 0x6e8c4; see stub_6e8c4.
+    stub_6e8c4(heap, opb, book)
 }
 
 // 0x6ec78 — _FMOD_vorbis_book_decodevv_add
 #[doc(alias = "_FMOD_vorbis_book_decodevv_add")]
-pub fn stub_6ec78_wd064() -> ! {
-    todo!("0x6ec78 _FMOD_vorbis_book_decodevv_add")
+pub unsafe fn stub_6ec78_wd064(
+    bk: *const VorbisCodebook,
+    chans: *const *mut f32,
+    off: i32,
+    nch: i32,
+    opb: *mut OggpackBuffer,
+    count: i32,
+) -> i32 {
+    // Watchdog copy of IDA 0x6ec78; see stub_6ec78.
+    stub_6ec78(bk, chans, off, nch, opb, count)
 }
 
 // 0x6ee98 — _FMOD_vorbis_book_decodev_add
 #[doc(alias = "_FMOD_vorbis_book_decodev_add")]
-pub fn stub_6ee98_wd065() -> ! {
-    todo!("0x6ee98 _FMOD_vorbis_book_decodev_add")
+pub unsafe fn stub_6ee98_wd065(
+    bk: *const VorbisCodebook,
+    out: *mut f32,
+    opb: *mut OggpackBuffer,
+    n: i32,
+) -> i32 {
+    // Watchdog copy of IDA 0x6ee98; see stub_6ee98.
+    stub_6ee98(bk, out, opb, n)
 }
 
 // 0x6f37c — _FMOD_vorbis_book_decodevs_add
 #[doc(alias = "_FMOD_vorbis_book_decodevs_add")]
-pub fn stub_6f37c_wd066() -> ! {
-    todo!("0x6f37c _FMOD_vorbis_book_decodevs_add")
+pub unsafe fn stub_6f37c_wd066(
+    bk: *const VorbisCodebook,
+    out: *mut f32,
+    opb: *mut OggpackBuffer,
+    total: i32,
+) -> i32 {
+    // Watchdog copy of IDA 0x6f37c; see stub_6f37c.
+    stub_6f37c(bk, out, opb, total)
 }
 
 // 0x6f840 — _FMOD_floor1_inverse1
 #[doc(alias = "_FMOD_floor1_inverse1")]
-pub fn stub_6f840_wd067() -> ! {
-    todo!("0x6f840 _FMOD_floor1_inverse1")
+pub unsafe fn stub_6f840_wd067(
+    heap: &mut impl VorbisHeap,
+    vb: *mut VorbisBlock,
+    look: *const Floor1Look,
+) -> *mut i32 {
+    // Watchdog copy of IDA 0x6f840; see stub_6f840.
+    stub_6f840(heap, vb, look)
 }
 
 // 0x6fbac — _FMOD_floor1_free_look
 #[doc(alias = "_FMOD_floor1_free_look")]
-pub fn stub_6fbac_wd068() -> ! {
-    todo!("0x6fbac _FMOD_floor1_free_look")
+pub unsafe fn stub_6fbac_wd068(heap: &mut impl VorbisHeap, look: *mut Floor1Look) -> i32 {
+    // Watchdog copy of IDA 0x6fbac; see stub_6fbac.
+    stub_6fbac(heap, look)
 }
 
 // 0x6fbe0 — _FMOD_floor1_look
 #[doc(alias = "_FMOD_floor1_look")]
-pub fn stub_6fbe0_wd069() -> ! {
-    todo!("0x6fbe0 _FMOD_floor1_look")
+pub unsafe fn stub_6fbe0_wd069(heap: &mut impl VorbisHeap, info: *const Floor1Info) -> *mut Floor1Look {
+    // Watchdog copy of IDA 0x6fbe0; see stub_6fbe0.
+    stub_6fbe0(heap, info)
 }
 
 // 0x6fe68 — _FMOD_floor1_free_info
 #[doc(alias = "_FMOD_floor1_free_info")]
-pub fn stub_6fe68_wd070() -> ! {
-    todo!("0x6fe68 _FMOD_floor1_free_info")
+pub unsafe fn stub_6fe68_wd070(heap: &mut impl VorbisHeap, info: *mut Floor1Info) -> i32 {
+    // Watchdog copy of IDA 0x6fe68; see stub_6fe68.
+    stub_6fe68(heap, info)
 }
 
 // 0x6fe9c — _FMOD_floor1_unpack
 #[doc(alias = "_FMOD_floor1_unpack")]
-pub fn stub_6fe9c_wd071() -> ! {
-    todo!("0x6fe9c _FMOD_floor1_unpack")
+pub unsafe fn stub_6fe9c_wd071(
+    heap: &mut impl VorbisHeap,
+    vi: *const u32,
+    opb: *mut OggpackBuffer,
+) -> *mut Floor1Info {
+    // Watchdog copy of IDA 0x6fe9c; see stub_6fe9c.
+    stub_6fe9c(heap, vi, opb)
 }
 
 // 0x701fc — _FMOD_floor1_inverse2
 #[doc(alias = "_FMOD_floor1_inverse2")]
-pub fn stub_701fc_wd072() -> ! {
-    todo!("0x701fc _FMOD_floor1_inverse2")
+pub unsafe fn stub_701fc_wd072(
+    vb: *mut VorbisBlock,
+    look: *const Floor1Look,
+    fit: *const i32,
+    out: *mut f32,
+) -> i32 {
+    // Watchdog copy of IDA 0x701fc; see stub_701fc.
+    stub_701fc(vb, look, fit, out)
 }
 
 // 0x70458 — _FMOD_Channel_GetUserData
