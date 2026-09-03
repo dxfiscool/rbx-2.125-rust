@@ -603,3 +603,4 @@ pub mod generated_wdog_rend2;
 pub mod generated_wdog_rend3;
 pub mod generated_482;
 pub mod generated_483;
+pub mod generated_watchdog_rend_w4;
