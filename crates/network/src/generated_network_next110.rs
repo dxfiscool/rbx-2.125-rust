@@ -58,57 +58,78 @@ pub fn stub_f5ee14() -> ! {
 // 0xf5ee44 — j___ZN3RBX7Network16CustomSerializer12readNormQuatERfS2_S2_S2_RN6RakNet9BitStreamE
 // type: _DWORD __fastcall(RBX::Network::CustomSerializer *__hidden this, float *, float *, float *, RakNet::BitStream *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::CustomSerializer::readNormQuat(float &,float &,float &,float &,RakNet::BitStream &)")]
-pub fn stub_f5ee44() -> ! {
-    todo!("0xf5ee44 RBX::Network::CustomSerializer::readNormQuat(float &,float &,float &,float &,RakNet::BitStream &)")
+pub fn stub_f5ee44(
+    stream: &mut crate::bitstream::BitStream,
+    w: &mut f32,
+    x: &mut f32,
+    y: &mut f32,
+    z: &mut f32,
+) {
+    // Thunk (IDA 0xf5ee44): tail-jumps to `CustomSerializer::readNormQuat` (0x98b2a8).
+    crate::custom_serializer::read_norm_quat(stream, w, x, y, z);
 }
 
 // 0xf5ee54 — j___ZN3RBX7Network16CustomSerializer13writeNormQuatEbRKfS3_S3_S3_RN6RakNet9BitStreamE
 // type: _DWORD __fastcall(RBX::Network::CustomSerializer *__hidden this, bool, const float *, const float *, const float *, RakNet::BitStream *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::CustomSerializer::writeNormQuat(bool,float const&,float const&,float const&,float const&,RakNet::BitStream &)")]
-pub fn stub_f5ee54() -> ! {
-    todo!("0xf5ee54 RBX::Network::CustomSerializer::writeNormQuat(bool,float const&,float const&,float const&,float const&,RakNet::BitStream &)")
+pub fn stub_f5ee54(
+    heavy: bool,
+    w: f32,
+    x: f32,
+    y: f32,
+    z: f32,
+    stream: &mut crate::bitstream::BitStream,
+) {
+    // Thunk (IDA 0xf5ee54): tail-jumps to `CustomSerializer::writeNormQuat` (0x98ae20).
+    crate::custom_serializer::write_norm_quat(heavy, w, x, y, z, stream);
 }
 
 // 0xf5f384 — j___ZN6RakNet9BitStream10ReadVectorIfEEbRT_S3_S3_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RakNet::BitStream::ReadVector<float>(float &,float &,float &)")]
-pub fn stub_f5f384() -> ! {
-    todo!("0xf5f384 bool RakNet::BitStream::ReadVector<float>(float &,float &,float &)")
+pub fn stub_f5f384(stream: &mut crate::bitstream::BitStream) -> Option<[f32; 3]> {
+    // Thunk (IDA 0xf5f384 `LDR PC`): tail-jumps to `ReadVector<float>` (0x98b51c).
+    stream.read_vector3()
 }
 
 // 0xf5f394 — j___ZN6RakNet9BitStream11WriteVectorIfEEvT_S2_S2_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "void RakNet::BitStream::WriteVector<float>(float,float,float)")]
-pub fn stub_f5f394() -> ! {
-    todo!("0xf5f394 void RakNet::BitStream::WriteVector<float>(float,float,float)")
+pub fn stub_f5f394(stream: &mut crate::bitstream::BitStream, x: f32, y: f32, z: f32) {
+    // Thunk (IDA 0xf5f394): tail-jumps to `WriteVector<float>` (0x98afec).
+    stream.write_vector3([x, y, z]);
 }
 
 // 0xf5f3a4 — j___ZN6RakNet9BitStream12ReadNormQuatIfEEbRT_S3_S3_S3_
 // type: int __fastcall(int, int, int, __guard *, int)
 #[doc(alias = "bool RakNet::BitStream::ReadNormQuat<float>(float &,float &,float &,float &)")]
-pub fn stub_f5f3a4() -> ! {
-    todo!("0xf5f3a4 bool RakNet::BitStream::ReadNormQuat<float>(float &,float &,float &,float &)")
+pub fn stub_f5f3a4(stream: &mut crate::bitstream::BitStream) -> Option<[f32; 4]> {
+    // Thunk (IDA 0xf5f3a4): tail-jumps to `ReadNormQuat<float>` (0x98b0e8).
+    stream.read_norm_quat()
 }
 
 // 0xf5f3b4 — j___ZN6RakNet9BitStream13WriteNormQuatIfEEvT_S2_S2_S2_
 // type: int __fastcall(int, int, int, int, float)
 #[doc(alias = "void RakNet::BitStream::WriteNormQuat<float>(float,float,float,float)")]
-pub fn stub_f5f3b4() -> ! {
-    todo!("0xf5f3b4 void RakNet::BitStream::WriteNormQuat<float>(float,float,float,float)")
+pub fn stub_f5f3b4(stream: &mut crate::bitstream::BitStream, w: f32, x: f32, y: f32, z: f32) {
+    // Thunk (IDA 0xf5f3b4): tail-jumps to `WriteNormQuat<float>` (0x98a7e0).
+    stream.write_norm_quat(w, x, y, z);
 }
 
 // 0xf5f3c4 — j___ZN6RakNet9BitStream4ReadIfEEbRT_
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
 #[doc(alias = "bool RakNet::BitStream::Read<float>(float &)")]
-pub fn stub_f5f3c4() -> ! {
-    todo!("0xf5f3c4 bool RakNet::BitStream::Read<float>(float &)")
+pub fn stub_f5f3c4(stream: &mut crate::bitstream::BitStream) -> Option<f32> {
+    // Thunk (IDA 0xf5f3c4): tail-jumps to `Read<float>` (0x998364).
+    stream.read_f32()
 }
 
 // 0xf5f3d4 — j___ZN6RakNet9BitStream5WriteItEEvRKT_
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
 #[doc(alias = "void RakNet::BitStream::Write<unsigned short>(unsigned short const&)")]
-pub fn stub_f5f3d4() -> ! {
-    todo!("0xf5f3d4 void RakNet::BitStream::Write<unsigned short>(unsigned short const&)")
+pub fn stub_f5f3d4(stream: &mut crate::bitstream::BitStream, value: u16) {
+    // Thunk (IDA 0xf5f3d4): tail-jumps to `Write<unsigned short>` (0x998490).
+    stream.write_u16(value);
 }
 
 // 0xf5f404 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15NetworkSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -450,8 +471,9 @@ pub fn stub_f5fb34() -> ! {
 // 0xf5fb54 — j___ZN3RBX7Network16CustomSerializer10readVectorERfS2_S2_RN6RakNet9BitStreamE
 // type: _DWORD __fastcall(RBX::Network::CustomSerializer *__hidden this, float *, float *, float *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::CustomSerializer::readVector(float &,float &,float &,RakNet::BitStream &)")]
-pub fn stub_f5fb54() -> ! {
-    todo!("0xf5fb54 RBX::Network::CustomSerializer::readVector(float &,float &,float &,RakNet::BitStream &)")
+pub fn stub_f5fb54(stream: &mut crate::bitstream::BitStream, out: &mut [f32; 3]) -> bool {
+    // Thunk (IDA 0xf5fb54): tail-jumps to `CustomSerializer::readVector` (0x9bedec).
+    crate::custom_serializer::read_vector(stream, out)
 }
 
 // 0xf5fbc4 — j___ZN3RBX11IndexedTree23visitConstMeAndChildrenINS_8AssemblyEN5boost3_bi6bind_tIvNS3_4_mfi3mf2IvNS_7Network13PhysicsSenderEPN6RakNet9BitStreamEPKS2_EENS4_5list3INS4_5valueIPS9_EENSH_ISC_EENS3_3argILi1EEEEEEEEEvT0_
@@ -492,8 +514,15 @@ pub fn stub_f5fc04() -> ! {
 // 0xf5fc14 — j___ZN3RBX7Network16CustomSerializer11writeVectorEbRKfS3_S3_RN6RakNet9BitStreamE
 // type: _DWORD __fastcall(RBX::Network::CustomSerializer *__hidden this, bool, const float *, const float *, RakNet::BitStream *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::CustomSerializer::writeVector(bool,float const&,float const&,float const&,RakNet::BitStream &)")]
-pub fn stub_f5fc14() -> ! {
-    todo!("0xf5fc14 RBX::Network::CustomSerializer::writeVector(bool,float const&,float const&,float const&,RakNet::BitStream &)")
+pub fn stub_f5fc14(
+    heavy: bool,
+    x: f32,
+    y: f32,
+    z: f32,
+    stream: &mut crate::bitstream::BitStream,
+) {
+    // Thunk (IDA 0xf5fc14): tail-jumps to `CustomSerializer::writeVector` (0x9c30ac).
+    crate::custom_serializer::write_vector(heavy, x, y, z, stream);
 }
 
 // 0xf5fc24 — j___ZN3RBX8Assembly19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf3IvNS_7Network13PhysicsSenderEPNS_9PrimitiveEPN6RakNet9BitStreamEPNS7_10ReplicatorEEENS3_5list4INS3_5valueIPS8_EENS2_3argILi1EEENSI_ISD_EENSI_ISF_EEEEEEEEvT_SA_
@@ -541,8 +570,9 @@ pub fn stub_f5fcc4() -> ! {
 // 0xf5fd14 — j___ZN6RakNet9BitStream5WriteIfEEvRKT_
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
 #[doc(alias = "void RakNet::BitStream::Write<float>(float const&)")]
-pub fn stub_f5fd14() -> ! {
-    todo!("0xf5fd14 void RakNet::BitStream::Write<float>(float const&)")
+pub fn stub_f5fd14(stream: &mut crate::bitstream::BitStream, value: f32) {
+    // Thunk (IDA 0xf5fd14): tail-jumps to `Write<float>` (0x9c3488).
+    stream.write_f32(value);
 }
 
 // 0xf5fd24 — j___ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network13PhysicsSender3JobES8_EEvPKNS_10shared_ptrIT_EEPT0_
