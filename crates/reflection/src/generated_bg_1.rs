@@ -31,6 +31,10 @@ pub struct CRenderSettingsItem {
     pub frame_rate_manager_mode: i32,
     /// +0x74 dword. IDA 0x9648 `LDR R2,[R0,#0x74]` / `STR R1,[R0,#0x74]`.
     pub quality_level: i32,
+    /// +0x78 dword. IDA 0x97a4 `LDR R2,[R0,#0x78]` / `STR R1,[R0,#0x78]`.
+    pub resolution_preset: i32,
+    /// +0x7C dword. IDA 0x9ac8 `LDR R2,[R0,#0x7C]` / `STR R1,[R0,#0x7C]`.
+    pub auto_quality_level: i32,
     /// +0x88 byte. IDA 0x973c `LDRB.W R2,[R0,#0x88]` / `STRB.W R1,[R0,#0x88]`.
     pub debug_show_bounding_boxes: bool,
     /// +0x89 byte. IDA 0x9760 `LDRB.W R2,[R0,#0x89]` / `STRB.W R1,[R0,#0x89]`.
@@ -42,6 +46,12 @@ pub struct CRenderSettingsItem {
     /// +0x9C byte: second input of the 0x9668 effective-value compare.
     /// Role inferred from the compare logic (override clear => effective tracks this byte).
     pub always_draw_connectors_base: bool,
+    /// +0x9D byte. IDA 0x9b08 `LDRB.W R2,[R0,#0x9D]` / `STRB.W R1,[R0,#0x9D]`.
+    pub eager_bulk_execution: bool,
+    /// +0xA0 dword, no signal. IDA 0x97c0 `STR.W R1,[R0,#0xA0]` / `BX LR`.
+    pub texture_cache_size: u32,
+    /// +0xA4 dword, no signal. IDA 0x97c8 `STR.W R1,[R0,#0xA4]` / `BX LR`.
+    pub mesh_cache_size: u32,
     /// +0xC0: `rbx::signals::signal_with_args<1, void(const PropertyDescriptor*)>`.
     /// Every setter below tail-calls it (`ADDS R0,#0xC0`) with its own
     /// `PropertyDescriptor` (`unk_130Cxxx`); modelled by descriptor name.
@@ -58,6 +68,39 @@ pub static DISABLE_INTERPOLATION: AtomicBool = AtomicBool::new(false);
 /// Fields here are already `bool`, so this documents the original fold.
 fn normalize_flag(value: bool) -> i32 {
     i32::from(value)
+}
+
+/// IDA 0xb33c..0xb4a4: `RBX::CRenderSettings` slots read by this shard's getters.
+/// IDA 0x97d0 constructs the settings subobject at item offset +96
+/// (`RBX::CRenderSettings::CRenderSettings((char *)this + 96)`), so settings
+/// offset +N is item offset +96+N: settings +4 == item +0x64 (`graphics_mode`),
+/// +0x10 == +0x70, +0x14 == +0x74, +0x18 == +0x78, +0x1C == +0x7C,
+/// +0x28 == +0x88, +0x29 == +0x89, +0x3A == +0x9A, +0x3B == +0x9B.
+/// Byte offsets below are settings-relative, from the getter disassembly.
+#[derive(Default)]
+pub struct CRenderSettings {
+    /// +4 dword. IDA 0xb33c `LDR R0,[R0,#4]`.
+    pub graphics_mode: i32,
+    /// +8 dword. IDA 0xb444 `LDR R0,[R0,#8]`.
+    pub antialiasing_mode: i32,
+    /// +0xC dword. IDA 0xb41c `LDR R0,[R0,#0xC]`.
+    pub shadow_mode: i32,
+    /// +0x10 dword. IDA 0xb364 `LDR R0,[R0,#0x10]`.
+    pub frame_rate_manager_mode: i32,
+    /// +0x14 dword. IDA 0xb38c `LDR R0,[R0,#0x14]`.
+    pub quality_level: i32,
+    /// +0x18 dword. IDA 0xb4a4 `LDR R0,[R0,#0x18]`.
+    pub resolution_preference: i32,
+    /// +0x1C dword. IDA 0xb474 `LDR R0,[R0,#0x1C]`.
+    pub auto_quality_level: i32,
+    /// +0x28 byte, zero-extended into R0. IDA 0xb46c `LDRB.W R0,[R0,#0x28]`.
+    pub debug_show_bounding_boxes: bool,
+    /// +0x29 byte, zero-extended into R0. IDA 0xb49c `LDRB.W R0,[R0,#0x29]`.
+    pub enable_frm: bool,
+    /// +0x3A byte, zero-extended into R0. IDA 0xb3e0 `LDRB.W R0,[R0,#0x3A]`.
+    pub show_aggregation: bool,
+    /// +0x3B byte, zero-extended into R0. IDA 0xb3b4 `LDRB.W R0,[R0,#0x3B]`.
+    pub always_draw_connectors: bool,
 }
 
 // 0x9608 — __ZN19CRenderSettingsItem15setGraphicsModeEN3RBX15CRenderSettings12GraphicsModeE
@@ -272,26 +315,47 @@ pub fn stub_0x9794(this: *mut CRenderSettingsItem, value: bool) -> *mut bool {
 
 // 0x97a4 — __ZN19CRenderSettingsItem23setResolutionPreferenceEN3RBX15CRenderSettings16ResolutionPresetE
 // type: int __fastcall(int result, int)
+// IDA 0x97a4: store +0x78 then fire(+0xC0, &CRenderSettingsItem::prop_resolution) iff changed; return this.
 #[doc(alias = "CRenderSettingsItem::setResolutionPreference(RBX::CRenderSettings::ResolutionPreset)")]
 #[doc(alias = "__ZN19CRenderSettingsItem23setResolutionPreferenceEN3RBX15CRenderSettings16ResolutionPresetE")]
-pub fn stub_0x97a4() -> ! {
-    todo!("0x97a4 CRenderSettingsItem::setResolutionPreference(RBX::CRenderSettings::ResolutionPreset)")
+pub fn stub_0x97a4(this: *mut CRenderSettingsItem, value: i32) -> *mut CRenderSettingsItem {
+    // SAFETY: `this` must point to a valid `CRenderSettingsItem`.
+    unsafe {
+        let item = &mut *this;
+        if item.resolution_preset != value {
+            item.resolution_preset = value;
+            item.property_changed.fire("ResolutionPreference");
+        }
+        this
+    }
 }
 
 // 0x97c0 — __ZN19CRenderSettingsItem19setTextureCacheSizeEj
 // type: int __fastcall(int this, unsigned int)
+// IDA 0x97c0: unconditional store +0xA0, no signal; return this.
 #[doc(alias = "CRenderSettingsItem::setTextureCacheSize(unsigned int)")]
 #[doc(alias = "__ZN19CRenderSettingsItem19setTextureCacheSizeEj")]
-pub fn stub_0x97c0() -> ! {
-    todo!("0x97c0 CRenderSettingsItem::setTextureCacheSize(unsigned int)")
+pub fn stub_0x97c0(this: *mut CRenderSettingsItem, value: u32) -> *mut CRenderSettingsItem {
+    // SAFETY: `this` must point to a valid `CRenderSettingsItem`.
+    // IDA 0x97c0: unconditional `STR.W R1,[R0,#0xA0]`; no compare, no signal.
+    unsafe {
+        (*this).texture_cache_size = value;
+        this
+    }
 }
 
 // 0x97c8 — __ZN19CRenderSettingsItem16setMeshCacheSizeEj
 // type: int __fastcall(int this, unsigned int)
+// IDA 0x97c8: unconditional store +0xA4, no signal; return this.
 #[doc(alias = "CRenderSettingsItem::setMeshCacheSize(unsigned int)")]
 #[doc(alias = "__ZN19CRenderSettingsItem16setMeshCacheSizeEj")]
-pub fn stub_0x97c8() -> ! {
-    todo!("0x97c8 CRenderSettingsItem::setMeshCacheSize(unsigned int)")
+pub fn stub_0x97c8(this: *mut CRenderSettingsItem, value: u32) -> *mut CRenderSettingsItem {
+    // SAFETY: `this` must point to a valid `CRenderSettingsItem`.
+    // IDA 0x97c8: unconditional `STR.W R1,[R0,#0xA4]`; no compare, no signal.
+    unsafe {
+        (*this).mesh_cache_size = value;
+        this
+    }
 }
 
 // 0x97d0 — __ZN19CRenderSettingsItemC2Ev
@@ -304,26 +368,57 @@ pub fn stub_0x97d0() -> ! {
 
 // 0x9ac8 — __ZN19CRenderSettingsItem19setAutoQualityLevelEi
 // type: int __fastcall(int this, int)
+// IDA 0x9ac8: store +0x7C then fire(+0xC0, &unk_130C2AC) iff changed; return this.
 #[doc(alias = "CRenderSettingsItem::setAutoQualityLevel(int)")]
 #[doc(alias = "__ZN19CRenderSettingsItem19setAutoQualityLevelEi")]
-pub fn stub_0x9ac8() -> ! {
-    todo!("0x9ac8 CRenderSettingsItem::setAutoQualityLevel(int)")
+pub fn stub_0x9ac8(this: *mut CRenderSettingsItem, value: i32) -> *mut CRenderSettingsItem {
+    // SAFETY: `this` must point to a valid `CRenderSettingsItem`.
+    unsafe {
+        let item = &mut *this;
+        if item.auto_quality_level != value {
+            item.auto_quality_level = value;
+            // IDA 0x9ade fires &unk_130C2AC — the same descriptor 0x9648
+            // (`setQualityLevel`) fires, so the notification name matches.
+            item.property_changed.fire("QualityLevel");
+        }
+        this
+    }
 }
 
 // 0x9ae8 — __ZThn96_N19CRenderSettingsItem19setAutoQualityLevelEi
 // type: int __fastcall(int this, int)
+// IDA 0x9ae8: compare [R0,#0x1C], then `SUBS R0,#0x60` and 0x9ac8's body on the adjusted pointer; return original this.
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int)")]
 #[doc(alias = "__ZThn96_N19CRenderSettingsItem19setAutoQualityLevelEi")]
-pub fn stub_0x9ae8() -> ! {
-    todo!("0x9ae8 non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int)")
+pub fn stub_0x9ae8(this: *mut u8, value: i32) -> *mut u8 {
+    // SAFETY: `this` must point to a valid `CRenderSettingsItem` viewed through
+    // a base subobject 0x60 bytes in (`SUBS R0,#0x60` after the +0x1C compare,
+    // which is the same slot as the adjusted +0x7C compare in 0x9ac8).
+    // IDA 0x9ae8 body is 0x9ac8's body on the adjusted pointer, same &unk_130C2AC.
+    unsafe {
+        let adjusted = this.sub(0x60) as *mut CRenderSettingsItem;
+        stub_0x9ac8(adjusted, value);
+        this
+    }
 }
 
 // 0x9b08 — __ZN19CRenderSettingsItem21setEagerBulkExecutionEb
 // type: int __fastcall(int this, int)
+// IDA 0x9b08: store +0x9D then fire(+0xC0, &unk_130C1E8) iff changed; return this.
 #[doc(alias = "CRenderSettingsItem::setEagerBulkExecution(bool)")]
 #[doc(alias = "__ZN19CRenderSettingsItem21setEagerBulkExecutionEb")]
-pub fn stub_0x9b08() -> ! {
-    todo!("0x9b08 CRenderSettingsItem::setEagerBulkExecution(bool)")
+pub fn stub_0x9b08(this: *mut CRenderSettingsItem, value: bool) -> *mut CRenderSettingsItem {
+    // SAFETY: `this` must point to a valid `CRenderSettingsItem`.
+    unsafe {
+        let item = &mut *this;
+        if item.eager_bulk_execution != value {
+            item.eager_bulk_execution = value;
+            // IDA 0x9b22 fires &unk_130C1E8; name follows the property-name
+            // convention used by every other setter in this file.
+            item.property_changed.fire("EagerBulkExecution");
+        }
+        this
+    }
 }
 
 // 0x9b2c — __ZNSt12length_errorD1Ev
@@ -354,96 +449,121 @@ pub fn stub_0x9b44() -> ! {
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getGraphicsMode(void)const")]
 #[doc(alias = "__ZNK3RBX15CRenderSettings15getGraphicsModeEv")]
-pub fn stub_0xb33c() -> ! {
-    todo!("0xb33c RBX::CRenderSettings::getGraphicsMode(void)const")
+pub fn stub_0xb33c(this: *const CRenderSettings) -> i32 {
+    // SAFETY: `this` must point to a valid `CRenderSettings`.
+    // IDA 0xb33c `LDR R0,[R0,#4]`: plain +4 field load.
+    unsafe { (*this).graphics_mode }
 }
 
 // 0xb364 — __ZNK3RBX15CRenderSettings23getFrameRateManagerModeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getFrameRateManagerMode(void)const")]
 #[doc(alias = "__ZNK3RBX15CRenderSettings23getFrameRateManagerModeEv")]
-pub fn stub_0xb364() -> ! {
-    todo!("0xb364 RBX::CRenderSettings::getFrameRateManagerMode(void)const")
+pub fn stub_0xb364(this: *const CRenderSettings) -> i32 {
+    // SAFETY: `this` must point to a valid `CRenderSettings`.
+    // IDA 0xb364 `LDR R0,[R0,#0x10]`: plain +0x10 field load.
+    unsafe { (*this).frame_rate_manager_mode }
 }
 
 // 0xb38c — __ZNK3RBX15CRenderSettings15getQualityLevelEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getQualityLevel(void)const")]
 #[doc(alias = "__ZNK3RBX15CRenderSettings15getQualityLevelEv")]
-pub fn stub_0xb38c() -> ! {
-    todo!("0xb38c RBX::CRenderSettings::getQualityLevel(void)const")
+pub fn stub_0xb38c(this: *const CRenderSettings) -> i32 {
+    // SAFETY: `this` must point to a valid `CRenderSettings`.
+    // IDA 0xb38c `LDR R0,[R0,#0x14]`: plain +0x14 field load.
+    unsafe { (*this).quality_level }
 }
 
 // 0xb3b4 — __ZNK3RBX15CRenderSettings23getAlwaysDrawConnectorsEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getAlwaysDrawConnectors(void)const")]
 #[doc(alias = "__ZNK3RBX15CRenderSettings23getAlwaysDrawConnectorsEv")]
-pub fn stub_0xb3b4() -> ! {
-    todo!("0xb3b4 RBX::CRenderSettings::getAlwaysDrawConnectors(void)const")
+pub fn stub_0xb3b4(this: *const CRenderSettings) -> i32 {
+    // SAFETY: `this` must point to a valid `CRenderSettings`.
+    // IDA 0xb3b4 `LDRB.W R0,[R0,#0x3B]`: byte load, zero-extended into R0.
+    unsafe { i32::from((*this).always_draw_connectors) }
 }
 
 // 0xb3e0 — __ZNK3RBX15CRenderSettings18getShowAggregationEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getShowAggregation(void)const")]
 #[doc(alias = "__ZNK3RBX15CRenderSettings18getShowAggregationEv")]
-pub fn stub_0xb3e0() -> ! {
-    todo!("0xb3e0 RBX::CRenderSettings::getShowAggregation(void)const")
+pub fn stub_0xb3e0(this: *const CRenderSettings) -> i32 {
+    // SAFETY: `this` must point to a valid `CRenderSettings`.
+    // IDA 0xb3e0 `LDRB.W R0,[R0,#0x3A]`: byte load, zero-extended into R0.
+    unsafe { i32::from((*this).show_aggregation) }
 }
 
 // 0xb3e8 — __ZNK3RBX15CRenderSettings12getAASamplesEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getAASamples(void)const")]
 #[doc(alias = "__ZNK3RBX15CRenderSettings12getAASamplesEv")]
-pub fn stub_0xb3e8() -> ! {
-    todo!("0xb3e8 RBX::CRenderSettings::getAASamples(void)const")
+pub fn stub_0xb3e8(this: *const CRenderSettings) -> i32 {
+    // IDA 0xb3e8 double-indirects the `aaSamples` global (`LDR R0,[R0]` twice
+    // via the `_ptr` slot); `this` is unused. Modelled by `AA_SAMPLES`.
+    let _ = this;
+    AA_SAMPLES.load(Ordering::SeqCst)
 }
 
 // 0xb41c — __ZNK3RBX15CRenderSettings13getShadowModeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getShadowMode(void)const")]
 #[doc(alias = "__ZNK3RBX15CRenderSettings13getShadowModeEv")]
-pub fn stub_0xb41c() -> ! {
-    todo!("0xb41c RBX::CRenderSettings::getShadowMode(void)const")
+pub fn stub_0xb41c(this: *const CRenderSettings) -> i32 {
+    // SAFETY: `this` must point to a valid `CRenderSettings`.
+    // IDA 0xb41c `LDR R0,[R0,#0xC]`: plain +0xC field load.
+    unsafe { (*this).shadow_mode }
 }
 
 // 0xb444 — __ZNK3RBX15CRenderSettings19getAntialiasingModeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getAntialiasingMode(void)const")]
 #[doc(alias = "__ZNK3RBX15CRenderSettings19getAntialiasingModeEv")]
-pub fn stub_0xb444() -> ! {
-    todo!("0xb444 RBX::CRenderSettings::getAntialiasingMode(void)const")
+pub fn stub_0xb444(this: *const CRenderSettings) -> i32 {
+    // SAFETY: `this` must point to a valid `CRenderSettings`.
+    // IDA 0xb444 `LDR R0,[R0,#8]`: plain +8 field load.
+    unsafe { (*this).antialiasing_mode }
 }
 
 // 0xb46c — __ZNK3RBX15CRenderSettings25getDebugShowBoundingBoxesEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getDebugShowBoundingBoxes(void)const")]
 #[doc(alias = "__ZNK3RBX15CRenderSettings25getDebugShowBoundingBoxesEv")]
-pub fn stub_0xb46c() -> ! {
-    todo!("0xb46c RBX::CRenderSettings::getDebugShowBoundingBoxes(void)const")
+pub fn stub_0xb46c(this: *const CRenderSettings) -> i32 {
+    // SAFETY: `this` must point to a valid `CRenderSettings`.
+    // IDA 0xb46c `LDRB.W R0,[R0,#0x28]`: byte load, zero-extended into R0.
+    unsafe { i32::from((*this).debug_show_bounding_boxes) }
 }
 
 // 0xb474 — __ZNK3RBX15CRenderSettings19getAutoQualityLevelEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getAutoQualityLevel(void)const")]
 #[doc(alias = "__ZNK3RBX15CRenderSettings19getAutoQualityLevelEv")]
-pub fn stub_0xb474() -> ! {
-    todo!("0xb474 RBX::CRenderSettings::getAutoQualityLevel(void)const")
+pub fn stub_0xb474(this: *const CRenderSettings) -> i32 {
+    // SAFETY: `this` must point to a valid `CRenderSettings`.
+    // IDA 0xb474 `LDR R0,[R0,#0x1C]`: plain +0x1C field load.
+    unsafe { (*this).auto_quality_level }
 }
 
 // 0xb49c — __ZNK3RBX15CRenderSettings12getEnableFRMEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getEnableFRM(void)const")]
 #[doc(alias = "__ZNK3RBX15CRenderSettings12getEnableFRMEv")]
-pub fn stub_0xb49c() -> ! {
-    todo!("0xb49c RBX::CRenderSettings::getEnableFRM(void)const")
+pub fn stub_0xb49c(this: *const CRenderSettings) -> i32 {
+    // SAFETY: `this` must point to a valid `CRenderSettings`.
+    // IDA 0xb49c `LDRB.W R0,[R0,#0x29]`: byte load, zero-extended into R0.
+    unsafe { i32::from((*this).enable_frm) }
 }
 
 // 0xb4a4 — __ZNK3RBX15CRenderSettings23getResolutionPreferenceEv
 // type: int __fastcall(RBX::CRenderSettings *this)
 #[doc(alias = "RBX::CRenderSettings::getResolutionPreference(void)const")]
 #[doc(alias = "__ZNK3RBX15CRenderSettings23getResolutionPreferenceEv")]
-pub fn stub_0xb4a4() -> ! {
-    todo!("0xb4a4 RBX::CRenderSettings::getResolutionPreference(void)const")
+pub fn stub_0xb4a4(this: *const CRenderSettings) -> i32 {
+    // SAFETY: `this` must point to a valid `CRenderSettings`.
+    // IDA 0xb4a4 `LDR R0,[R0,#0x18]`: plain +0x18 field load.
+    unsafe { (*this).resolution_preference }
 }
 
 // 0xb4cc — __ZN3RBX15CRenderSettings18getMaxQualityLevelEv
@@ -1045,5 +1165,105 @@ mod render_settings_item_tests {
             stub_0x9794(this, false);
             assert!(!stub_0x9784(this));
         }
+    }
+
+    #[test]
+    fn resolution_preset_and_auto_quality_store_if_changed() {
+        let mut item = CRenderSettingsItem::default();
+        let (log, _slot) = connect_log(&item);
+        let this = &mut item as *mut CRenderSettingsItem;
+        unsafe {
+            assert_eq!(stub_0x97a4(this, 3), this);
+            assert_eq!((*this).resolution_preset, 3);
+            assert_eq!(stub_0x97a4(this, 3), this);
+            assert_eq!(stub_0x9ac8(this, 7), this);
+            assert_eq!((*this).auto_quality_level, 7);
+            assert_eq!(stub_0x9ac8(this, 7), this);
+        }
+        // IDA 0x9ac8 fires &unk_130C2AC — the QualityLevel descriptor.
+        assert_eq!(*log.lock(), vec!["ResolutionPreference", "QualityLevel"]);
+    }
+
+    #[test]
+    fn cache_size_setters_store_unconditionally_without_signal() {
+        let mut item = CRenderSettingsItem::default();
+        let (log, _slot) = connect_log(&item);
+        let this = &mut item as *mut CRenderSettingsItem;
+        unsafe {
+            assert_eq!(stub_0x97c0(this, 100), this);
+            assert_eq!(stub_0x97c0(this, 100), this);
+            assert_eq!(stub_0x97c8(this, 200), this);
+            assert_eq!(stub_0x97c8(this, 200), this);
+            assert_eq!((*this).texture_cache_size, 100);
+            assert_eq!((*this).mesh_cache_size, 200);
+        }
+        // IDA 0x97c0/0x97c8 are bare `STR.W` + `BX LR`: never fire.
+        assert!(log.lock().is_empty());
+    }
+
+    #[test]
+    fn eager_bulk_execution_fires_only_on_change() {
+        let mut item = CRenderSettingsItem::default();
+        let (log, _slot) = connect_log(&item);
+        let this = &mut item as *mut CRenderSettingsItem;
+        unsafe {
+            stub_0x9b08(this, true);
+            stub_0x9b08(this, true);
+            assert!((*this).eager_bulk_execution);
+            stub_0x9b08(this, false);
+            assert!(!(*this).eager_bulk_execution);
+        }
+        assert_eq!(*log.lock(), vec!["EagerBulkExecution", "EagerBulkExecution"]);
+    }
+
+    #[test]
+    fn auto_quality_thunk_adjusts_this_and_delegates() {
+        let mut item = CRenderSettingsItem::default();
+        let (log, _slot) = connect_log(&item);
+        // The thunk views the item through a base 0x60 bytes in.
+        let base = (&mut item as *mut CRenderSettingsItem) as *mut u8;
+        unsafe {
+            let viewed = base.add(0x60);
+            assert_eq!(stub_0x9ae8(viewed, 5), viewed);
+            assert_eq!(item.auto_quality_level, 5);
+            assert_eq!(stub_0x9ae8(viewed, 5), viewed);
+        }
+        assert_eq!(*log.lock(), vec!["QualityLevel"]);
+    }
+
+    #[test]
+    fn render_settings_getters_read_their_slots() {
+        let mut settings = CRenderSettings {
+            graphics_mode: 1,
+            antialiasing_mode: 2,
+            shadow_mode: 3,
+            frame_rate_manager_mode: 4,
+            quality_level: 5,
+            resolution_preference: 6,
+            auto_quality_level: 7,
+            debug_show_bounding_boxes: true,
+            enable_frm: true,
+            show_aggregation: false,
+            always_draw_connectors: true,
+        };
+        let this = &settings as *const CRenderSettings;
+        unsafe {
+            assert_eq!(stub_0xb33c(this), 1);
+            assert_eq!(stub_0xb444(this), 2);
+            assert_eq!(stub_0xb41c(this), 3);
+            assert_eq!(stub_0xb364(this), 4);
+            assert_eq!(stub_0xb38c(this), 5);
+            assert_eq!(stub_0xb4a4(this), 6);
+            assert_eq!(stub_0xb474(this), 7);
+            assert_eq!(stub_0xb46c(this), 1);
+            assert_eq!(stub_0xb49c(this), 1);
+            assert_eq!(stub_0xb3e0(this), 0);
+            assert_eq!(stub_0xb3b4(this), 1);
+        }
+        // The aaSamples getter reads the global, ignoring `this`.
+        AA_SAMPLES.store(9, Ordering::SeqCst);
+        assert_eq!(stub_0xb3e8(this), 9);
+        AA_SAMPLES.store(0, Ordering::SeqCst);
+        let _ = &mut settings;
     }
 }
