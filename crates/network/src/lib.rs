@@ -444,3 +444,4 @@ pub mod generated_watchdog_net_w9;
 pub mod generated_watchdog_net_w10;
 pub mod generated_watchdog_net_w11;
 pub mod generated_watchdog_net_w12;
+pub mod generated_watchdog_network_w12b;
