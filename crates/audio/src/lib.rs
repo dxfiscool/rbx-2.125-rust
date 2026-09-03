@@ -15080,3 +15080,4 @@ pub mod generated_watchdog_audio_wdB;
 pub mod generated_watchdog_audio_wdC;
 pub mod generated_watchdog_sna_wda;
 pub mod generated_watchdog_sna_A;
+pub mod generated_watchdog_audio_wdG2;
