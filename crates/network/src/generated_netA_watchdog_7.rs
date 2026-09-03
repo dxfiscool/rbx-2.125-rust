@@ -12,6 +12,11 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: int __fastcall(int, _DWORD *, int)
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::StatsUpdateJob::updateStats(std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats> &,RakNet::RakPeerInterface *)")]
 #[doc(alias = "__ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob11updateStatsERSt4pairIKN6RakNet13SystemAddressENS2_15ConnectionStatsEEPNS4_16RakPeerInterfaceE")]
-pub fn stub_99f428() -> ! {
-    todo!("0x99f428 __ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob11updateStatsERSt4pairIKN6RakNet13SystemAddressENS2_15ConnectionStatsEEPNS4_16RakPeerInterfaceE")
+pub fn stub_99f428(
+    stats: &mut crate::server::ConnectionStats,
+    snap: &crate::server::PeerSnapshot,
+) {
+    // IDA 0x99f462..0x99f57c: four peer queries, optional 212-byte block copy,
+    // and the two 1.0/0.0 average samples.
+    stats.update_stats(snap);
 }

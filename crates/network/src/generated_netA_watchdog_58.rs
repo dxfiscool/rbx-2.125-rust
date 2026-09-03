@@ -12,6 +12,11 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: int __fastcall(RBX::Network::ConcurrentRakPeer **this, unsigned __int16, int, const void *)
 #[doc(alias = "RBX::Network::Server::start(int,int)")]
 #[doc(alias = "__ZN3RBX7Network6Server5startEii")]
-pub fn stub_9c6da4() -> ! {
-    todo!("0x9c6da4 __ZN3RBX7Network6Server5startEii")
+pub fn stub_9c6da4(
+    server: &mut crate::server::Server,
+    startup: Result<u16, i32>,
+) -> Result<u16, String> {
+    // IDA 0x9c6e64..0x9c6e90: `Startup(128, ...)` failure throws, success
+    // stores the bound `GetPort` at +684.
+    server.start(startup)
 }

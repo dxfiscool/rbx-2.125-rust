@@ -12,6 +12,13 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: unsigned int __fastcall(int, RakNet::BitStream *this, int)
 #[doc(alias = "RBX::Network::SenderDictionary<RBX::Name const*>::send(RakNet::BitStream &,RBX::Name const*)")]
 #[doc(alias = "__ZN3RBX7Network16SenderDictionaryIPKNS_4NameEE4sendERN6RakNet9BitStreamES4_")]
-pub fn stub_9a1930() -> ! {
-    todo!("0x9a1930 __ZN3RBX7Network16SenderDictionaryIPKNS_4NameEE4sendERN6RakNet9BitStreamES4_")
+pub fn stub_9a1930(
+    dict: &mut crate::string_dictionary::NameSenderDictionary,
+    stream: &mut crate::bitstream::BitStream,
+    id: usize,
+    text: &str,
+) {
+    // IDA 0x9a1962..0x9a19ca: emplace-or-recall into the Name-keyed map with
+    // the `next % 127 + 1` slot rotation.
+    dict.send(stream, id, text);
 }

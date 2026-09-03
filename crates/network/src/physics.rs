@@ -13,6 +13,7 @@
 
 #![allow(dead_code)]
 
+use std::collections::HashSet;
 use std::f32::consts::{PI, TAU};
 
 use super::bitstream::BitStream;
@@ -378,6 +379,275 @@ pub struct PhysicsSender {
     pub packet_compression: bool,
     pub translation_compression: CompressionType,
     pub temp_motor_angles: Vec<CompactCFrame>,
+    /// Touch-pair set at +20 (IDA 0x9c0a9c).
+    pub touches: HashSet<TouchPair>,
+    /// Live `Workspace` touch-signal connection (`scoped_connection` at +44,
+    /// IDA 0x9c0ab8/0x9c2230).
+    pub touches_connected: bool,
+    /// Double at +80, bits `0x3FA999999999999A` = 0.05 (IDA 0x9c09fe..0x9c0a00).
+    pub interval_80: f64,
+    /// Byte at +108 set to 1 (IDA 0x9c0a12).
+    pub flag_108: bool,
+    /// Dword at +112 set to 1 (IDA 0x9c0a18).
+    pub field_112: u32,
+}
+
+impl PhysicsSender {
+    /// `RBX::Network::PhysicsSender::PhysicsSender` (IDA 0x9c0908, C2):
+    /// vtable + cleared touch set with prime-sized buckets (IDA 0x9c0976..0x9c09b0;
+    /// `HashSet` manages its own buckets), zeroed job slots, the 0.05
+    /// interval, and the +108/+112 flags. The `Replicator &` link (IDA
+    pub fn new() -> Self {
+        Self {
+            packet_compression: false,
+            translation_compression: CompressionType::default(),
+            temp_motor_angles: Vec::new(),
+            touches: HashSet::new(),
+            touches_connected: false,
+            interval_80: 0.05, // IDA 0x9c09fe..0x9c0a00
+            flag_108: true,    // IDA 0x9c0a12
+            field_112: 1,      // IDA 0x9c0a18
+        }
+    }
+
+    /// `RBX::Network::PhysicsSender::onTouchStep` (IDA 0x9c0a9c): emplaces
+    /// the pair into the set at +20 (disasm `ADD R1, R0, #0x14` + unordered
+    /// `emplace`). Returns whether it was newly inserted.
+    pub fn on_touch_step(&mut self, pair: TouchPair) -> bool {
+        self.touches.insert(pair)
+    }
+
+    /// `RBX::Network::PhysicsSender::connectTouches` (IDA 0x9c0ab8): walks
+    /// the replicator to its root `ServiceProvider`, requires the
+    /// `Workspace`, and inserts an `onTouchStep` slot into its touch signal
+    /// at +588 (IDA 0x9c0bd4..0x9c0c2a), storing the `scoped_connection` at
+    /// +44 and replacing any previous one (IDA 0x9c0c40..0x9c0c5e). With no
+    /// crate-side `Workspace` type, this records the live connection.
+    pub fn connect_touches(&mut self) {
+        self.touches_connected = true;
+    }
+
+    /// `RBX::Network::PhysicsSender::~PhysicsSender` (IDA 0x9c1f50, D2):
+    /// removes both scheduler jobs (IDA 0x9c2016/0x9c2148), resets the job
+    /// pointers (IDA 0x9c20da/0x9c220c), disconnects the touch connection
+    /// (IDA 0x9c2230), and clears the touch set (IDA 0x9c223c).
+    pub fn tear_down(&mut self) {
+        self.touches.clear();
+        self.touches_connected = false;
+    }
+}
+
+impl Drop for PhysicsSender {
+    /// D0 (IDA 0x9c1ea4) is D2 plus `operator delete`; D1 (IDA 0x9c1f44)
+    /// tail-calls D2 (IDA 0x9c1f48). Rust runs this then frees the box,
+    /// covering all three.
+    fn drop(&mut self) {
+        self.tear_down();
+    }
+}
+
+/// `RBX::TouchPair`: the two touching primitives. The original stores
+/// pointers (IDA 0x9c0a9c emplaces into the set at sender +20); the ids
+/// stand in for them.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Hash)]
+pub struct TouchPair {
+    pub first: u32,
+    pub second: u32,
+}
+
+impl TouchPair {
+    pub fn new(first: u32, second: u32) -> Self {
+        Self { first, second }
+    }
+}
+
+/// `RBX::TaskScheduler::Job::computeStandardSleepTime` inputs (IDA 0x24a210).
+#[derive(Clone, Copy, Debug)]
+pub struct SleepContext {
+    /// Throttle floor: `throttledSleepTime` when the job's data is throttled,
+    /// else `0.0` (IDA 0x24a2c2..0x24a2e0).
+    pub throttled_floor: f64,
+    /// `RBX::TaskScheduler::Job::sleepAdjustMethod` (IDA 0x24a2fc).
+    pub adjust_method: u32,
+    /// `*(stats + 35)` double used by adjust method 1 (IDA 0x24a314).
+    pub avg_sleep: f64,
+    /// `*(stats + 36)` double used by adjust method 2 (IDA 0x24a346).
+    pub avg_run: f64,
+    /// `now - *(stats + 252)` used by adjust method 2 (IDA 0x24a338).
+    pub since_last_run: f64,
+}
+
+impl Default for SleepContext {
+    fn default() -> Self {
+        Self {
+            throttled_floor: 0.0,
+            adjust_method: 0,
+            avg_sleep: 0.0,
+            avg_run: 0.0,
+            since_last_run: 0.0,
+        }
+    }
+}
+
+/// `RBX::TaskScheduler::Job::computeStandardSleepTime` (IDA 0x24a210),
+/// reduced to its pure inputs. `elapsed` arrives packed in the low dword of
+/// the rate double (IDA 0x24a230); the rate itself is the float at stats+496
+/// (IDA 0x9c58ea, 0x9c6222).
+pub fn standard_sleep_time(elapsed: f64, rate_hz: f32, ctx: &SleepContext) -> f64 {
+    // IDA 0x24a2f4: desired period.
+    let desired = 1.0 / f64::from(rate_hz);
+    if ctx.adjust_method == 1 {
+        // IDA 0x24a314..0x24a31a: overrunning average sleeps the floor.
+        if ctx.avg_sleep > desired * 1.05 {
+            return ctx.throttled_floor;
+        }
+    } else if ctx.adjust_method == 2 {
+        // IDA 0x24a35a..0x24a36c: overrunning run time sleeps the floor.
+        let run = if ctx.since_last_run > ctx.avg_run + ctx.avg_run {
+            ctx.since_last_run
+        } else {
+            ctx.avg_run
+        };
+        if run > desired * 1.05 {
+            return ctx.throttled_floor;
+        }
+    }
+    // IDA 0x24a372..0x24a38a: `max(floor, desired - elapsed)`.
+    (desired - elapsed).max(ctx.throttled_floor)
+}
+
+/// The 12-byte scheduler error output written to `this` by
+/// `TouchJob::error` / `Job::error` (IDA 0x9c5afe..0x9c5b18) and filled by
+/// `computeStandardError` (IDA 0x24a208..0x24a20c): an error double plus a
+/// zero flag; the tail bytes are padding.
+#[derive(Clone, Copy, Debug, Default)]
+#[repr(C)]
+pub struct StandardError {
+    pub value: f64,
+    pub flag: u8,
+    pub _pad: [u8; 3],
+}
+
+impl StandardError {
+    /// The gated-off shape (IDA 0x9c5afe..0x9c5b18).
+    // BUG: the original copies uninitialized stack bytes into the padding
+    // (IDA 0x9c5b14..0x9c5b18); this zeroes it instead.
+    pub fn zero() -> Self {
+        Self {
+            value: 0.0,
+            flag: 0,
+            _pad: [0; 3],
+        }
+    }
+
+    /// `RBX::TaskScheduler::Job::computeStandardError` (IDA 0x24a1f8):
+    /// `value = error * rate`, flag cleared.
+    pub fn compute(error: f64, rate_hz: f32) -> Self {
+        Self {
+            value: error * f64::from(rate_hz), // IDA 0x24a208
+            flag: 0,                           // IDA 0x24a20c
+            _pad: [0; 3],
+        }
+    }
+}
+
+/// `RBX::Network::ReplicatorJob::canSendPacket` gate (IDA 0xae1000),
+/// reduced to its pure inputs.
+#[derive(Clone, Copy, Debug, Default)]
+pub struct SendGate {
+    /// Replicator pointer non-null (IDA 0xae1004).
+    pub replicator_alive: bool,
+    /// `*(replicator + 1200)` connection present (IDA 0xae1006).
+    pub connected: bool,
+    /// `*(replicator + 3344 + 132)` draining (IDA 0xae1026).
+    pub draining: bool,
+    /// `*(settings + 184)` draining (IDA 0xae1026).
+    pub settings_draining: bool,
+    /// `*(replicator + 3344 + 120)` paused (IDA 0xae102e).
+    pub paused: bool,
+    /// `*(settings + 185)` paused (IDA 0xae1034).
+    pub settings_paused: bool,
+    /// `*(settings + 172)` budget (IDA 0xae102e..0xae1052).
+    pub budget: i32,
+    /// `*(replicator + 3344 + 144 + 4 * priority)` used (IDA 0xae102e).
+    pub used: i32,
+}
+
+/// `RBX::Network::ReplicatorJob::canSendPacket` (IDA 0xae1000).
+pub fn can_send_packet(gate: &SendGate) -> bool {
+    if !gate.replicator_alive || !gate.connected {
+        return false; // IDA 0xae1002..0xae100a
+    }
+    if gate.draining && gate.settings_draining {
+        return false; // IDA 0xae1026: both draining flags set
+    }
+    if gate.paused && gate.settings_paused {
+        return false; // IDA 0xae1034..0xae1038
+    }
+    // IDA 0xae102e/0xae1052: remaining budget for this priority.
+    gate.budget - gate.used > 0
+}
+
+/// `RBX::Network::PhysicsSender::TouchJob` (IDA 0x9c58dc..0x9c5e38).
+/// Stateless: the original's fields are scheduler bookkeeping.
+#[derive(Clone, Copy, Debug, Default)]
+pub struct TouchJob;
+
+impl TouchJob {
+    /// `RBX::Network::PhysicsSender::TouchJob::sleepTime` (IDA 0x9c58dc):
+    /// forwards the stats rate at +496 to `computeStandardSleepTime`
+    /// (IDA 0x9c58f2).
+    pub fn sleep_time(elapsed: f64, rate_hz: f32, ctx: &SleepContext) -> f64 {
+        standard_sleep_time(elapsed, rate_hz, ctx)
+    }
+
+    /// `RBX::Network::PhysicsSender::TouchJob::error` (IDA 0x9c58fc).
+    /// `replicator_present` is the stats +123 job-data pointer (IDA 0x9c5960),
+    /// `job_pending` the stats +122 liveness check (IDA 0x9c59c2..0x9c59ca).
+    pub fn error(
+        gate: &SendGate,
+        replicator_present: bool,
+        job_pending: bool,
+        error: f64,
+        rate_hz: f32,
+    ) -> StandardError {
+        // IDA 0x9c5958/0x9c5966: gated off or no replicator => zero shape.
+        if !can_send_packet(gate) || !replicator_present {
+            return StandardError::zero();
+        }
+        // IDA 0x9c59c2..0x9c59ca: replicator job gone => zero shape.
+        if !job_pending {
+            return StandardError::zero();
+        }
+        // IDA 0x9c59e4: `computeStandardError(this, stats, err, rate)`.
+        StandardError::compute(error, rate_hz)
+    }
+}
+
+/// `RBX::Network::PhysicsSender::Job` (IDA 0x9c6214..0x9c6568).
+/// Stateless: the original's fields are scheduler bookkeeping.
+#[derive(Clone, Copy, Debug, Default)]
+pub struct SendJob;
+
+impl SendJob {
+    /// `RBX::Network::PhysicsSender::Job::sleepTime` (IDA 0x9c6214):
+    /// same forwarding as [`TouchJob::sleep_time`] (IDA 0x9c622a).
+    pub fn sleep_time(elapsed: f64, rate_hz: f32, ctx: &SleepContext) -> f64 {
+        standard_sleep_time(elapsed, rate_hz, ctx)
+    }
+
+    /// `RBX::Network::PhysicsSender::Job::error` (IDA 0x9c6234): gates only
+    /// on `canSendPacket` (IDA 0x9c6248), then `computeStandardError`
+    /// (IDA 0x9c6264), else the zero shape (IDA 0x9c6272..0x9c627e).
+    // BUG: the original also returns an uninitialized stack byte
+    // (IDA 0x9c626a); only the `this` shape is observable, so this returns
+    // the shape.
+    pub fn error(gate: &SendGate, error: f64, rate_hz: f32) -> StandardError {
+        if !can_send_packet(gate) {
+            return StandardError::zero();
+        }
+        StandardError::compute(error, rate_hz)
+    }
 }
 
 /// Approximate-zero test used by `writeCompactCFrame` (IDA 0x9c2b54..0x9c2b8e):
@@ -521,10 +791,8 @@ mod tests {
 
     #[test]
     fn cframe_identity_roundtrip() {
-        let sender = PhysicsSender {
-            packet_compression: true,
-            ..Default::default()
-        };
+        let mut sender = PhysicsSender::new();
+        sender.packet_compression = true;
         let receiver = PhysicsReceiver {
             compression_enabled: true,
             packet_compression_allowed: true,
@@ -548,10 +816,8 @@ mod tests {
 
     #[test]
     fn motor_angles_roundtrip() {
-        let mut sender = PhysicsSender {
-            packet_compression: true,
-            ..Default::default()
-        };
+        let mut sender = PhysicsSender::new();
+        sender.packet_compression = true;
         let receiver = PhysicsReceiver {
             compression_enabled: true,
             packet_compression_allowed: true,
@@ -572,5 +838,97 @@ mod tests {
         receiver.read_motor_angles(&mut r, &mut out);
         assert_eq!(out.len(), 2);
         assert!((out[0].translation[0] - 1.0).abs() < 0.2);
+    }
+}
+
+#[cfg(test)]
+mod sender_tests {
+    use super::*;
+
+    fn open_gate() -> SendGate {
+        SendGate {
+            replicator_alive: true,
+            connected: true,
+            budget: 100,
+            used: 10,
+            ..Default::default()
+        }
+    }
+
+    #[test]
+    fn ctor_sets_interval_and_flags() {
+        let sender = PhysicsSender::new();
+        assert_eq!(sender.interval_80, 0.05);
+        assert!(sender.flag_108);
+        assert_eq!(sender.field_112, 1);
+        assert!(sender.touches.is_empty());
+        assert!(!sender.touches_connected);
+    }
+
+    #[test]
+    fn touch_step_dedups() {
+        let mut sender = PhysicsSender::new();
+        let pair = TouchPair::new(1, 2);
+        assert!(sender.on_touch_step(pair));
+        assert!(!sender.on_touch_step(pair));
+        sender.connect_touches();
+        assert!(sender.touches_connected);
+        sender.tear_down();
+        assert!(sender.touches.is_empty());
+        assert!(!sender.touches_connected);
+    }
+
+    #[test]
+    fn sleep_time_defaults_to_period_minus_elapsed() {
+        let ctx = SleepContext::default();
+        let sleep = TouchJob::sleep_time(0.01, 20.0, &ctx);
+        assert!((sleep - 0.04).abs() < 1e-9);
+        assert_eq!(SendJob::sleep_time(0.01, 20.0, &ctx), sleep);
+    }
+
+    #[test]
+    fn sleep_time_overrun_sleeps_floor() {
+        let ctx = SleepContext {
+            adjust_method: 1,
+            avg_sleep: 1.0,
+            throttled_floor: 0.25,
+            ..Default::default()
+        };
+        assert_eq!(TouchJob::sleep_time(0.0, 20.0, &ctx), 0.25);
+    }
+
+    #[test]
+    fn touch_error_gating() {
+        let err = TouchJob::error(&open_gate(), true, true, 2.0, 20.0);
+        assert_eq!(err.value, 40.0);
+        assert_eq!(err.flag, 0);
+        let closed = SendGate::default();
+        assert_eq!(TouchJob::error(&closed, true, true, 2.0, 20.0).value, 0.0);
+        assert_eq!(TouchJob::error(&open_gate(), false, true, 2.0, 20.0).value, 0.0);
+        assert_eq!(TouchJob::error(&open_gate(), true, false, 2.0, 20.0).value, 0.0);
+    }
+
+    #[test]
+    fn send_job_error_gates_on_packet_only() {
+        let err = SendJob::error(&open_gate(), 3.0, 10.0);
+        assert_eq!(err.value, 30.0);
+        let starved = SendGate {
+            budget: 5,
+            used: 5,
+            ..open_gate()
+        };
+        assert_eq!(SendJob::error(&starved, 3.0, 10.0).value, 0.0);
+    }
+
+    #[test]
+    fn gate_requires_budget() {
+        let draining = SendGate {
+            draining: true,
+            settings_draining: true,
+            ..open_gate()
+        };
+        assert!(!can_send_packet(&draining));
+        assert!(can_send_packet(&open_gate()));
+        assert!(!can_send_packet(&SendGate::default()));
     }
 }

@@ -12,6 +12,7 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Network::PhysicsSender::onTouchStep(RBX::TouchPair const&)")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender11onTouchStepERKNS_9TouchPairE")]
-pub fn stub_9c0a9c() -> ! {
-    todo!("0x9c0a9c __ZN3RBX7Network13PhysicsSender11onTouchStepERKNS_9TouchPairE")
+pub fn stub_9c0a9c(sender: &mut crate::physics::PhysicsSender, pair: crate::physics::TouchPair) -> bool {
+    // IDA 0x9c0ab4: emplace into the unordered set at +20.
+    sender.on_touch_step(pair)
 }

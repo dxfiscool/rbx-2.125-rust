@@ -12,6 +12,8 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: void __fastcall(RBX::Network::PhysicsSender *this)
 #[doc(alias = "RBX::Network::PhysicsSender::connectTouches(void)")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender14connectTouchesEv")]
-pub fn stub_9c0ab8() -> ! {
-    todo!("0x9c0ab8 __ZN3RBX7Network13PhysicsSender14connectTouchesEv")
+pub fn stub_9c0ab8(sender: &mut crate::physics::PhysicsSender) {
+    // IDA 0x9c0bd4..0x9c0c5e: insert the `onTouchStep` slot into the
+    // workspace touch signal, keeping the `scoped_connection` at +44.
+    sender.connect_touches();
 }

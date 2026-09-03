@@ -12,6 +12,11 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: void __fastcall(RBX::Network::PhysicsSender::TouchJob *this, const RBX::TaskScheduler::Job::Stats *, double)
 #[doc(alias = "RBX::Network::PhysicsSender::TouchJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender8TouchJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE")]
-pub fn stub_9c58dc() -> ! {
-    todo!("0x9c58dc __ZN3RBX7Network13PhysicsSender8TouchJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE")
+pub fn stub_9c58dc(
+    elapsed: f64,
+    rate_hz: f32,
+    ctx: &crate::physics::SleepContext,
+) -> f64 {
+    // IDA 0x9c58ea..0x9c58f2: stats rate at +496 into `computeStandardSleepTime`.
+    crate::physics::TouchJob::sleep_time(elapsed, rate_hz, ctx)
 }

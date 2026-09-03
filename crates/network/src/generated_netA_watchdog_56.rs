@@ -12,6 +12,12 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: int __fastcall(RBX::Network::PhysicsSender::Job *this, const RBX::TaskScheduler::Job::Stats *, double *)
 #[doc(alias = "RBX::Network::PhysicsSender::Job::error(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender3Job5errorERKNS_13TaskScheduler3Job5StatsE")]
-pub fn stub_9c6234() -> ! {
-    todo!("0x9c6234 __ZN3RBX7Network13PhysicsSender3Job5errorERKNS_13TaskScheduler3Job5StatsE")
+pub fn stub_9c6234(
+    gate: &crate::physics::SendGate,
+    error: f64,
+    rate_hz: f32,
+) -> crate::physics::StandardError {
+    // IDA 0x9c6248..0x9c627e: `canSendPacket` selects the zero shape or
+    // `computeStandardError`.
+    crate::physics::SendJob::error(gate, error, rate_hz)
 }

@@ -12,6 +12,8 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: void __fastcall(RBX::Network::PhysicsSender *__hidden this)
 #[doc(alias = "RBX::Network::PhysicsSender::~PhysicsSender()")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSenderD0Ev")]
-pub fn stub_9c1ea4() -> ! {
-    todo!("0x9c1ea4 __ZN3RBX7Network13PhysicsSenderD0Ev")
+pub fn stub_9c1ea4(sender: crate::physics::PhysicsSender) {
+    // IDA 0x9c1ef4..0x9c1efa: D2 then `operator delete`; dropping by value
+    // runs `tear_down` and frees, covering both.
+    drop(sender);
 }

@@ -12,6 +12,11 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: void __fastcall(RBX::Network::PhysicsSender::Job *this, const RBX::TaskScheduler::Job::Stats *, double)
 #[doc(alias = "RBX::Network::PhysicsSender::Job::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender3Job9sleepTimeERKNS_13TaskScheduler3Job5StatsE")]
-pub fn stub_9c6214() -> ! {
-    todo!("0x9c6214 __ZN3RBX7Network13PhysicsSender3Job9sleepTimeERKNS_13TaskScheduler3Job5StatsE")
+pub fn stub_9c6214(
+    elapsed: f64,
+    rate_hz: f32,
+    ctx: &crate::physics::SleepContext,
+) -> f64 {
+    // IDA 0x9c6222..0x9c622a: stats rate at +496 into `computeStandardSleepTime`.
+    crate::physics::SendJob::sleep_time(elapsed, rate_hz, ctx)
 }

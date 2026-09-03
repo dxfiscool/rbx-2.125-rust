@@ -12,6 +12,7 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: void __fastcall(RBX::Network::PhysicsSender *__hidden this)
 #[doc(alias = "RBX::Network::PhysicsSender::~PhysicsSender()")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSenderD1Ev")]
-pub fn stub_9c1f44() -> ! {
-    todo!("0x9c1f44 __ZN3RBX7Network13PhysicsSenderD1Ev")
+pub fn stub_9c1f44(sender: &mut crate::physics::PhysicsSender) {
+    // IDA 0x9c1f48: tail-calls D2.
+    sender.tear_down();
 }

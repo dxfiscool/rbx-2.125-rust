@@ -12,6 +12,7 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: int __fastcall(RBX::Network::ConcurrentRakPeer **this, char *, int, const void *)
 #[doc(alias = "RBX::Network::Server::stop(int)")]
 #[doc(alias = "__ZN3RBX7Network6Server4stopEi")]
-pub fn stub_9c7234() -> ! {
-    todo!("0x9c7234 __ZN3RBX7Network6Server4stopEi")
+pub fn stub_9c7234(server: &mut crate::server::Server, block_duration_ms: i32) -> bool {
+    // IDA 0x9c7274..0x9c72a2: unlock children, drop them, disconnect when active.
+    server.stop(block_duration_ms)
 }

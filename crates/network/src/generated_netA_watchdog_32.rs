@@ -12,6 +12,8 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: RBX::Network::PhysicsSender *__fastcall(RBX::Network::PhysicsSender *this, RBX::Network::Replicator *)
 #[doc(alias = "RBX::Network::PhysicsSender::PhysicsSender(RBX::Network::Replicator &)")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSenderC2ERNS0_10ReplicatorE")]
-pub fn stub_9c0908() -> ! {
-    todo!("0x9c0908 __ZN3RBX7Network13PhysicsSenderC2ERNS0_10ReplicatorE")
+pub fn stub_9c0908() -> crate::physics::PhysicsSender {
+    // IDA 0x9c0940..0x9c0a18: vtable, touch set, job slots, 0.05 interval,
+    // and the +108/+112 flags.
+    crate::physics::PhysicsSender::new()
 }

@@ -131,6 +131,115 @@ impl SharedStringDictionary {
     }
 }
 
+/// `RBX::Network::SenderDictionary<RBX::Name const*>`: the `std::string`
+/// sender keyed by `Name` identity instead of string contents.
+///
+/// Decompiled from 0x9a1930. Slot counter at +536, slots at +24, and the
+/// `next = next % 127 + 1` rotation (IDA 0x9a19b0..0x9a19c8) match
+/// [`SenderDictionary`]; only the key (a `Name` pointer) and the emitted
+/// payload (that `Name`'s text via `RBX::operator<<`, IDA 0x9a19a8) differ.
+/// The empty-text encodes as one zero byte (IDA 0x9a19d0..0x9a19d4),
+/// exactly like the empty-string case of [`SenderDictionary::send`].
+#[derive(Clone, Debug, Default)]
+pub struct NameSenderDictionary {
+    map: HashMap<usize, u8>,
+    slots: Vec<Option<(usize, String)>>,
+    // BUG: same slot-0 recall quirk as `SenderDictionary::next`.
+    next: u8,
+}
+
+impl NameSenderDictionary {
+    pub fn new() -> Self {
+        Self {
+            map: HashMap::new(),
+            slots: vec![None; SLOT_COUNT],
+            next: 0,
+        }
+    }
+
+    /// `RBX::Network::SenderDictionary<RBX::Name const*>::send` (IDA 0x9a1930).
+    ///
+    /// `id` stands in for the `RBX::Name const*` key, `text` for its string
+    /// contents.
+    pub fn send(&mut self, stream: &mut BitStream, id: usize, text: &str) {
+        if text.is_empty() {
+            // IDA 0x9a19d0: empty names encode as one zero byte.
+            stream.write_u8(0);
+            return;
+        }
+        if let Some(&code) = self.map.get(&id) {
+            // IDA 0x9a19da..0x9a19f4: known name recalls its code byte.
+            stream.write_u8(code);
+            return;
+        }
+        // IDA 0x9a196e..0x9a198e: evict the rotating slot's occupant.
+        let idx = self.next as usize % SLOT_COUNT;
+        if let Some((old_id, _)) = self.slots[idx].replace((id, text.to_owned())) {
+            self.map.remove(&old_id);
+        }
+        self.map.insert(id, idx as u8);
+        // IDA 0x9a199a..0x9a19a8: `slot | 0x80` + full name text.
+        stream.write_u8(idx as u8 | 0x80);
+        stream.write_string(text);
+        // IDA 0x9a19b0..0x9a19ca: `next = next % 127 + 1`.
+        self.next = self.next % 127 + 1;
+    }
+}
+
+/// `RBX::Network::ReceiverStringDictionary`: owns a
+/// `ReceiverDictionary<std::string>` at +0.
+#[derive(Clone, Debug, Default)]
+pub struct ReceiverStringDictionary {
+    inner: ReceiverDictionary,
+}
+
+impl ReceiverStringDictionary {
+    pub fn new() -> Self {
+        Self {
+            inner: ReceiverDictionary::new(),
+        }
+    }
+
+    /// `RBX::Network::ReceiverStringDictionary::receive<std::string>`
+    /// (IDA 0x9a29f4): code byte 0 clears (IDA 0x9a2a34), `< 0x80` recalls
+    /// the slot (IDA 0x9a2a26 `get`), otherwise the fresh string follows on
+    /// the wire and is published to `slot & 0x7F` (IDA 0x9a2a3e..0x9a2a4e
+    /// `learn`). Always returns `true`. This is the same wire protocol as
+    /// [`ReceiverDictionary::receive`] (IDA 0x9a2990), so it delegates.
+    pub fn receive(&mut self, stream: &mut BitStream, out: &mut String) -> bool {
+        self.inner.receive(stream, out)
+    }
+}
+
+/// `RBX::Network::SharedStringProtectedDictionary`: sender inline, receiver
+/// at +540 (IDA 0x9a265a).
+#[derive(Clone, Debug, Default)]
+pub struct SharedStringProtectedDictionary {
+    pub sender: SenderDictionary,
+    pub receiver: ReceiverDictionary,
+}
+
+impl SharedStringProtectedDictionary {
+    pub fn new() -> Self {
+        Self {
+            sender: SenderDictionary::new(),
+            receiver: ReceiverDictionary::new(),
+        }
+    }
+
+    /// `serializeString` (IDA 0x9a2514): tail-calls
+    /// `SenderDictionary<std::string>::send`.
+    pub fn serialize_string(&mut self, s: &str, stream: &mut BitStream) {
+        self.sender.send(stream, s); // IDA 0x9a2522
+    }
+
+    /// `deserializeString` (IDA 0x9a2648): tail-calls
+    /// `ReceiverStringDictionary::receive` on the +540 sub-object.
+    pub fn deserialize_string(&mut self, out: &mut String, stream: &mut BitStream) -> bool {
+        self.receiver.receive(stream, out) // IDA 0x9a265a
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -168,5 +277,54 @@ mod tests {
         assert_eq!(out, "mortar");
         assert!(rx.deserialize_string(&mut out, &mut r));
         assert_eq!(out, "mortar");
+    }
+}
+
+#[cfg(test)]
+mod name_dict_tests {
+    use super::*;
+
+    #[test]
+    fn empty_name_codes_zero() {
+        let mut dict = NameSenderDictionary::new();
+        let mut s = BitStream::new();
+        dict.send(&mut s, 1, "");
+        assert_eq!(s.into_bytes(), vec![0]);
+    }
+
+    #[test]
+    fn fresh_then_recalled_name() {
+        let mut dict = NameSenderDictionary::new();
+        let mut s = BitStream::new();
+        dict.send(&mut s, 7, "Workspace");
+        dict.send(&mut s, 9, "Lighting");
+        dict.send(&mut s, 9, "Lighting");
+        let bytes = s.into_bytes();
+        // Fresh emits are `slot | 0x80` + text; the recall is one bare byte.
+        assert_eq!(bytes[0], 0x80);
+        assert_eq!(*bytes.last().unwrap(), 1);
+    }
+
+    #[test]
+    fn protected_dict_roundtrip() {
+        let mut tx = SharedStringProtectedDictionary::new();
+        let mut rx = SharedStringProtectedDictionary::new();
+        let mut s = BitStream::new();
+        tx.serialize_string("secret", &mut s);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        let mut out = String::new();
+        assert!(rx.deserialize_string(&mut out, &mut r));
+        assert_eq!(out, "secret");
+    }
+
+    #[test]
+    fn receiver_string_dict_clears_on_zero() {
+        let mut dict = ReceiverStringDictionary::new();
+        let mut s = BitStream::new();
+        s.write_u8(0);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        let mut out = String::from("leftover");
+        assert!(dict.receive(&mut r, &mut out));
+        assert_eq!(out, "");
     }
 }
