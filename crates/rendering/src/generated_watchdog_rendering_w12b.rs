@@ -774,7 +774,7 @@ pub fn stub_cce020() -> ! {
 #[doc(alias = "__ZThn4_N4Ogre5LightD0Ev")]
 // was: __ZThn4_N4Ogre5LightD0Ev
 pub fn stub_cce02c() -> ! {
-    todo!("0xcce02c `non-virtual thunk to'Ogre::Light::~Light()")
+    todo!("0xcce02c non-virtual thunk toOgre::Light::~Light()")
 }
 
 
@@ -793,7 +793,7 @@ pub fn stub_cce0c0() -> ! {
 #[doc(alias = "__ZThn4_N4Ogre5LightD1Ev")]
 // was: __ZThn4_N4Ogre5LightD1Ev
 pub fn stub_cce24c() -> ! {
-    todo!("0xcce24c `non-virtual thunk to'Ogre::Light::~Light()")
+    todo!("0xcce24c non-virtual thunk toOgre::Light::~Light()")
 }
 
 
@@ -1062,4 +1062,3 @@ pub fn stub_cce554() -> ! {
 pub fn stub_cce5d8() -> ! {
     todo!("0xcce5d8 Ogre::Light::_getNearClipVolume(Ogre::Camera const*)const")
 }
-

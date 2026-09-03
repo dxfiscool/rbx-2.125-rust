@@ -308,7 +308,7 @@ pub fn stub_0x57caf4() -> ! {
 // 0x57cb34 — __ZThn800_N3RBX14GuiImageButton8setImageENS_9TextureIdE
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::setImage(RBX::TextureId)")]
 pub fn stub_0x57cb34() -> ! {
-    todo!("0x57cb34 `non-virtual thunk to'RBX::GuiImageButton::setImage(RBX::TextureId)")
+    todo!("0x57cb34 non-virtual thunk toRBX::GuiImageButton::setImage(RBX::TextureId)")
 }
 
 // 0x57cb3c — __ZN3RBX14GuiImageButton18setImageRectOffsetEN3G3D7Vector2E
@@ -320,7 +320,7 @@ pub fn stub_0x57cb3c() -> ! {
 // 0x57cb88 — __ZThn800_N3RBX14GuiImageButton18setImageRectOffsetEN3G3D7Vector2E
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")]
 pub fn stub_0x57cb88() -> ! {
-    todo!("0x57cb88 `non-virtual thunk to'RBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")
+    todo!("0x57cb88 non-virtual thunk toRBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")
 }
 
 // 0x57cb90 — __ZN3RBX14GuiImageButton16setImageRectSizeEN3G3D7Vector2E
@@ -332,7 +332,7 @@ pub fn stub_0x57cb90() -> ! {
 // 0x57cbdc — __ZThn800_N3RBX14GuiImageButton16setImageRectSizeEN3G3D7Vector2E
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::setImageRectSize(G3D::Vector2)")]
 pub fn stub_0x57cbdc() -> ! {
-    todo!("0x57cbdc `non-virtual thunk to'RBX::GuiImageButton::setImageRectSize(G3D::Vector2)")
+    todo!("0x57cbdc non-virtual thunk toRBX::GuiImageButton::setImageRectSize(G3D::Vector2)")
 }
 
 // 0x57cbe4 — __ZN3RBX14GuiImageButton8render2dEPNS_5AdornE
@@ -344,7 +344,7 @@ pub fn stub_0x57cbe4() -> ! {
 // 0x57cd38 — __ZThn96_N3RBX14GuiImageButton8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::render2d(RBX::Adorn *)")]
 pub fn stub_0x57cd38() -> ! {
-    todo!("0x57cd38 `non-virtual thunk to'RBX::GuiImageButton::render2d(RBX::Adorn *)")
+    todo!("0x57cd38 non-virtual thunk toRBX::GuiImageButton::render2d(RBX::Adorn *)")
 }
 
 // 0x57cd40 — __ZN3RBX10Reflection14PropDescriptorINS_14GuiImageButtonENS_9TextureIdEED1Ev
@@ -368,25 +368,25 @@ pub fn stub_0x57ce5c() -> ! {
 // 0x57cf74 — __ZThn32_N3RBX14GuiImageButtonD1Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")]
 pub fn stub_0x57cf74() -> ! {
-    todo!("0x57cf74 `non-virtual thunk to'RBX::GuiImageButton::~GuiImageButton()")
+    todo!("0x57cf74 non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")
 }
 
 // 0x57d06c — __ZThn32_N3RBX14GuiImageButtonD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")]
 pub fn stub_0x57d06c() -> ! {
-    todo!("0x57d06c `non-virtual thunk to'RBX::GuiImageButton::~GuiImageButton()")
+    todo!("0x57d06c non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")
 }
 
 // 0x57d188 — __ZThn36_N3RBX14GuiImageButtonD1Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")]
 pub fn stub_0x57d188() -> ! {
-    todo!("0x57d188 `non-virtual thunk to'RBX::GuiImageButton::~GuiImageButton()")
+    todo!("0x57d188 non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")
 }
 
 // 0x57d280 — __ZThn36_N3RBX14GuiImageButtonD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")]
 pub fn stub_0x57d280() -> ! {
-    todo!("0x57d280 `non-virtual thunk to'RBX::GuiImageButton::~GuiImageButton()")
+    todo!("0x57d280 non-virtual thunk toRBX::GuiImageButton::~GuiImageButton()")
 }
 
 // 0x57d6ac — __ZN3RBX4Name13callDoDeclareILZNS_15sGuiImageButtonEEEEvv
@@ -458,7 +458,7 @@ pub fn stub_0x57e5c8() -> ! {
 // 0x57e608 — __ZThn536_N3RBX10ImageLabel8setImageENS_9TextureIdE
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::setImage(RBX::TextureId)")]
 pub fn stub_0x57e608() -> ! {
-    todo!("0x57e608 `non-virtual thunk to'RBX::ImageLabel::setImage(RBX::TextureId)")
+    todo!("0x57e608 non-virtual thunk toRBX::ImageLabel::setImage(RBX::TextureId)")
 }
 
 // 0x57e610 — __ZN3RBX10ImageLabel18setImageRectOffsetEN3G3D7Vector2E
@@ -470,7 +470,7 @@ pub fn stub_0x57e610() -> ! {
 // 0x57e65c — __ZThn536_N3RBX10ImageLabel18setImageRectOffsetEN3G3D7Vector2E
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::setImageRectOffset(G3D::Vector2)")]
 pub fn stub_0x57e65c() -> ! {
-    todo!("0x57e65c `non-virtual thunk to'RBX::ImageLabel::setImageRectOffset(G3D::Vector2)")
+    todo!("0x57e65c non-virtual thunk toRBX::ImageLabel::setImageRectOffset(G3D::Vector2)")
 }
 
 // 0x57e664 — __ZN3RBX10ImageLabel16setImageRectSizeEN3G3D7Vector2E
@@ -482,7 +482,7 @@ pub fn stub_0x57e664() -> ! {
 // 0x57e6b0 — __ZThn536_N3RBX10ImageLabel16setImageRectSizeEN3G3D7Vector2E
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::setImageRectSize(G3D::Vector2)")]
 pub fn stub_0x57e6b0() -> ! {
-    todo!("0x57e6b0 `non-virtual thunk to'RBX::ImageLabel::setImageRectSize(G3D::Vector2)")
+    todo!("0x57e6b0 non-virtual thunk toRBX::ImageLabel::setImageRectSize(G3D::Vector2)")
 }
 
 // 0x57e6b8 — __ZN3RBX10ImageLabel8render2dEPNS_5AdornE
@@ -494,7 +494,7 @@ pub fn stub_0x57e6b8() -> ! {
 // 0x57e7b4 — __ZThn96_N3RBX10ImageLabel8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::render2d(RBX::Adorn *)")]
 pub fn stub_0x57e7b4() -> ! {
-    todo!("0x57e7b4 `non-virtual thunk to'RBX::ImageLabel::render2d(RBX::Adorn *)")
+    todo!("0x57e7b4 non-virtual thunk toRBX::ImageLabel::render2d(RBX::Adorn *)")
 }
 
 // 0x57e7bc — __ZN3RBX10ImageLabel18renderBackground2dEPNS_5AdornE
@@ -506,7 +506,7 @@ pub fn stub_0x57e7bc() -> ! {
 // 0x57e7f0 — __ZThn96_N3RBX10ImageLabel18renderBackground2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::renderBackground2d(RBX::Adorn *)")]
 pub fn stub_0x57e7f0() -> ! {
-    todo!("0x57e7f0 `non-virtual thunk to'RBX::ImageLabel::renderBackground2d(RBX::Adorn *)")
+    todo!("0x57e7f0 non-virtual thunk toRBX::ImageLabel::renderBackground2d(RBX::Adorn *)")
 }
 
 // 0x57e7f8 — __ZNK3RBX13GuiImageMixin8getImageEv
@@ -542,25 +542,25 @@ pub fn stub_0x57ea40() -> ! {
 // 0x57ea44 — __ZThn32_N3RBX10ImageLabelD1Ev
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::~ImageLabel()")]
 pub fn stub_0x57ea44() -> ! {
-    todo!("0x57ea44 `non-virtual thunk to'RBX::ImageLabel::~ImageLabel()")
+    todo!("0x57ea44 non-virtual thunk toRBX::ImageLabel::~ImageLabel()")
 }
 
 // 0x57eb3c — __ZThn32_N3RBX10ImageLabelD0Ev
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::~ImageLabel()")]
 pub fn stub_0x57eb3c() -> ! {
-    todo!("0x57eb3c `non-virtual thunk to'RBX::ImageLabel::~ImageLabel()")
+    todo!("0x57eb3c non-virtual thunk toRBX::ImageLabel::~ImageLabel()")
 }
 
 // 0x57ec58 — __ZThn36_N3RBX10ImageLabelD1Ev
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::~ImageLabel()")]
 pub fn stub_0x57ec58() -> ! {
-    todo!("0x57ec58 `non-virtual thunk to'RBX::ImageLabel::~ImageLabel()")
+    todo!("0x57ec58 non-virtual thunk toRBX::ImageLabel::~ImageLabel()")
 }
 
 // 0x57ed50 — __ZThn36_N3RBX10ImageLabelD0Ev
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::~ImageLabel()")]
 pub fn stub_0x57ed50() -> ! {
-    todo!("0x57ed50 `non-virtual thunk to'RBX::ImageLabel::~ImageLabel()")
+    todo!("0x57ed50 non-virtual thunk toRBX::ImageLabel::~ImageLabel()")
 }
 
 // 0x57f0c8 — __ZN3RBX4Name13callDoDeclareILZNS_11sImageLabelEEEEvv

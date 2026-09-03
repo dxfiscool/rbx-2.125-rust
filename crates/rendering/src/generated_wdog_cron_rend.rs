@@ -711,7 +711,7 @@ pub fn stub_ba8750() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxCullableSceneNode::getFastFuzzyExtents(void)")]
 #[doc(alias = "__ZThn392_N4Ogre20RbxCullableSceneNode19getFastFuzzyExtentsEv")]
 pub fn stub_ba876c() -> ! {
-    todo!("0xba876c `non-virtual thunk to'Ogre::RbxCullableSceneNode::getFastFuzzyExtents(void)")
+    todo!("0xba876c non-virtual thunk toOgre::RbxCullableSceneNode::getFastFuzzyExtents(void)")
 }
 
 // 0xba8e18 — __ZN4Ogre9RbxEntityC1Ev
@@ -799,7 +799,7 @@ pub fn stub_ba936c() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
 #[doc(alias = "__ZThn4_N4Ogre9RbxEntityD0Ev")]
 pub fn stub_ba9370() -> ! {
-    todo!("0xba9370 `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()")
+    todo!("0xba9370 non-virtual thunk toOgre::RbxEntity::~RbxEntity()")
 }
 
 // 0xba9428 — __ZThn188_N4Ogre9RbxEntityD0Ev
@@ -807,7 +807,7 @@ pub fn stub_ba9370() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
 #[doc(alias = "__ZThn188_N4Ogre9RbxEntityD0Ev")]
 pub fn stub_ba9428() -> ! {
-    todo!("0xba9428 `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()")
+    todo!("0xba9428 non-virtual thunk toOgre::RbxEntity::~RbxEntity()")
 }
 
 // 0xba94e0 — __ZN4Ogre9RbxEntityD2Ev
@@ -823,7 +823,7 @@ pub fn stub_ba94e0() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
 #[doc(alias = "__ZThn4_N4Ogre9RbxEntityD1Ev")]
 pub fn stub_ba9694() -> ! {
-    todo!("0xba9694 `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()")
+    todo!("0xba9694 non-virtual thunk toOgre::RbxEntity::~RbxEntity()")
 }
 
 // 0xba969c — __ZThn188_N4Ogre9RbxEntityD1Ev
@@ -831,7 +831,7 @@ pub fn stub_ba9694() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
 #[doc(alias = "__ZThn188_N4Ogre9RbxEntityD1Ev")]
 pub fn stub_ba969c() -> ! {
-    todo!("0xba969c `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()")
+    todo!("0xba969c non-virtual thunk toOgre::RbxEntity::~RbxEntity()")
 }
 
 // 0xba96a4 — __ZNSt6vectorIN4Ogre9BlockSortESaIS1_EE7reserveEm

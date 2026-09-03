@@ -669,7 +669,7 @@ pub fn stub_0xd216fc() -> ! {
 #[doc(alias = "non-virtual thunk to Ogre::MovableObject::~MovableObject()")]
 #[doc(alias = "__ZThn4_N4Ogre13MovableObjectD0Ev")]
 pub fn stub_0xd21708() -> ! {
-    todo!("0xd21708 `non-virtual thunk to'Ogre::MovableObject::~MovableObject()")
+    todo!("0xd21708 non-virtual thunk toOgre::MovableObject::~MovableObject()")
 }
 
 // 0xd2179c — __ZN4Ogre13MovableObjectD2Ev
@@ -685,7 +685,7 @@ pub fn stub_0xd2179c() -> ! {
 #[doc(alias = "non-virtual thunk to Ogre::MovableObject::~MovableObject()")]
 #[doc(alias = "__ZThn4_N4Ogre13MovableObjectD1Ev")]
 pub fn stub_0xd21990() -> ! {
-    todo!("0xd21990 `non-virtual thunk to'Ogre::MovableObject::~MovableObject()")
+    todo!("0xd21990 non-virtual thunk toOgre::MovableObject::~MovableObject()")
 }
 
 // 0xd2199c — __ZN4Ogre13MovableObject15_notifyAttachedEPNS_4NodeEb

@@ -272,7 +272,7 @@ pub fn stub_0xb3c778() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Network::InstancePacketCache::~InstancePacketCache()")]
 #[doc(alias = "__ZThn32_N3RBX7Network19InstancePacketCacheD0Ev")]
 pub fn stub_0xb3c784() -> ! {
-    todo!("0xb3c784 `non-virtual thunk to'RBX::Network::InstancePacketCache::~InstancePacketCache()")
+    todo!("0xb3c784 non-virtual thunk toRBX::Network::InstancePacketCache::~InstancePacketCache()")
 }
 
 // 0xb3c828 — __ZThn36_N3RBX7Network19InstancePacketCacheD0Ev
@@ -280,7 +280,7 @@ pub fn stub_0xb3c784() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Network::InstancePacketCache::~InstancePacketCache()")]
 #[doc(alias = "__ZThn36_N3RBX7Network19InstancePacketCacheD0Ev")]
 pub fn stub_0xb3c828() -> ! {
-    todo!("0xb3c828 `non-virtual thunk to'RBX::Network::InstancePacketCache::~InstancePacketCache()")
+    todo!("0xb3c828 non-virtual thunk toRBX::Network::InstancePacketCache::~InstancePacketCache()")
 }
 
 // 0xb3c8cc — __ZN3RBX7Network19InstancePacketCacheD2Ev
@@ -296,7 +296,7 @@ pub fn stub_0xb3c8cc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Network::InstancePacketCache::~InstancePacketCache()")]
 #[doc(alias = "__ZThn32_N3RBX7Network19InstancePacketCacheD1Ev")]
 pub fn stub_0xb3caa4() -> ! {
-    todo!("0xb3caa4 `non-virtual thunk to'RBX::Network::InstancePacketCache::~InstancePacketCache()")
+    todo!("0xb3caa4 non-virtual thunk toRBX::Network::InstancePacketCache::~InstancePacketCache()")
 }
 
 // 0xb3cab0 — __ZThn36_N3RBX7Network19InstancePacketCacheD1Ev
@@ -304,7 +304,7 @@ pub fn stub_0xb3caa4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Network::InstancePacketCache::~InstancePacketCache()")]
 #[doc(alias = "__ZThn36_N3RBX7Network19InstancePacketCacheD1Ev")]
 pub fn stub_0xb3cab0() -> ! {
-    todo!("0xb3cab0 `non-virtual thunk to'RBX::Network::InstancePacketCache::~InstancePacketCache()")
+    todo!("0xb3cab0 non-virtual thunk toRBX::Network::InstancePacketCache::~InstancePacketCache()")
 }
 
 // 0xb3cabc — __ZN3RBX7Network19InstancePacketCache17onServiceProviderEPNS_15ServiceProviderES3_

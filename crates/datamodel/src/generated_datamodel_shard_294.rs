@@ -254,7 +254,7 @@ pub fn stub_0xd3fda8() -> ! {
 #[doc(alias = "__ZThn12_N4Ogre14ParticleSystemD0Ev")]
 // was: `non-virtual thunk to'Ogre::ParticleSystem::~ParticleSystem()
 pub fn stub_0xd3fdb4() -> ! {
-    todo!("0xd3fdb4 `non-virtual thunk to'Ogre::ParticleSystem::~ParticleSystem()")
+    todo!("0xd3fdb4 non-virtual thunk toOgre::ParticleSystem::~ParticleSystem()")
 }
 
 // 0xd3fe48 — __ZThn16_N4Ogre14ParticleSystemD0Ev
@@ -262,7 +262,7 @@ pub fn stub_0xd3fdb4() -> ! {
 #[doc(alias = "__ZThn16_N4Ogre14ParticleSystemD0Ev")]
 // was: `non-virtual thunk to'Ogre::ParticleSystem::~ParticleSystem()
 pub fn stub_0xd3fe48() -> ! {
-    todo!("0xd3fe48 `non-virtual thunk to'Ogre::ParticleSystem::~ParticleSystem()")
+    todo!("0xd3fe48 non-virtual thunk toOgre::ParticleSystem::~ParticleSystem()")
 }
 
 // 0xd3fedc — __ZN4Ogre14ParticleSystemD2Ev
@@ -278,7 +278,7 @@ pub fn stub_0xd3fedc() -> ! {
 #[doc(alias = "__ZThn12_N4Ogre14ParticleSystemD1Ev")]
 // was: `non-virtual thunk to'Ogre::ParticleSystem::~ParticleSystem()
 pub fn stub_0xd406d4() -> ! {
-    todo!("0xd406d4 `non-virtual thunk to'Ogre::ParticleSystem::~ParticleSystem()")
+    todo!("0xd406d4 non-virtual thunk toOgre::ParticleSystem::~ParticleSystem()")
 }
 
 // 0xd406e0 — __ZThn16_N4Ogre14ParticleSystemD1Ev
@@ -286,7 +286,7 @@ pub fn stub_0xd406d4() -> ! {
 #[doc(alias = "__ZThn16_N4Ogre14ParticleSystemD1Ev")]
 // was: `non-virtual thunk to'Ogre::ParticleSystem::~ParticleSystem()
 pub fn stub_0xd406e0() -> ! {
-    todo!("0xd406e0 `non-virtual thunk to'Ogre::ParticleSystem::~ParticleSystem()")
+    todo!("0xd406e0 non-virtual thunk toOgre::ParticleSystem::~ParticleSystem()")
 }
 
 // 0xd406ec — __ZN4Ogre14ParticleSystem17removeAllEmittersEv
@@ -486,7 +486,7 @@ pub fn stub_0xd41e64() -> ! {
 #[doc(alias = "__ZThn12_N4Ogre14ParticleSystem18_updateRenderQueueEPNS_11RenderQueueE")]
 // was: `non-virtual thunk to'Ogre::ParticleSystem::_updateRenderQueue(Ogre::RenderQueue *)
 pub fn stub_0xd41e88() -> ! {
-    todo!("0xd41e88 `non-virtual thunk to'Ogre::ParticleSystem::_updateRenderQueue(Ogre::RenderQueue *)")
+    todo!("0xd41e88 non-virtual thunk toOgre::ParticleSystem::_updateRenderQueue(Ogre::RenderQueue *)")
 }
 
 // 0xd41eb0 — __ZN4Ogre14ParticleSystem16visitRenderablesEPNS_10Renderable7VisitorEb
@@ -502,7 +502,7 @@ pub fn stub_0xd41eb0() -> ! {
 #[doc(alias = "__ZThn12_N4Ogre14ParticleSystem16visitRenderablesEPNS_10Renderable7VisitorEb")]
 // was: `non-virtual thunk to'Ogre::ParticleSystem::visitRenderables(Ogre::Renderable::Visitor *,bool)
 pub fn stub_0xd41ec8() -> ! {
-    todo!("0xd41ec8 `non-virtual thunk to'Ogre::ParticleSystem::visitRenderables(Ogre::Renderable::Visitor *,bool)")
+    todo!("0xd41ec8 non-virtual thunk toOgre::ParticleSystem::visitRenderables(Ogre::Renderable::Visitor *,bool)")
 }
 
 // 0xd41ee0 — __ZNK4Ogre14ParticleSystem14getMovableTypeEv
@@ -518,7 +518,7 @@ pub fn stub_0xd41ee0() -> ! {
 #[doc(alias = "__ZThn12_NK4Ogre14ParticleSystem14getMovableTypeEv")]
 // was: `non-virtual thunk to'Ogre::ParticleSystem::getMovableType(void)const
 pub fn stub_0xd41ef0() -> ! {
-    todo!("0xd41ef0 `non-virtual thunk to'Ogre::ParticleSystem::getMovableType(void)const")
+    todo!("0xd41ef0 non-virtual thunk toOgre::ParticleSystem::getMovableType(void)const")
 }
 
 // 0xd41f00 — __ZN4Ogre14ParticleSystem22_notifyParticleResizedEv
@@ -598,7 +598,7 @@ pub fn stub_0xd42024() -> ! {
 #[doc(alias = "__ZThn12_N4Ogre14ParticleSystem20_notifyCurrentCameraEPNS_6CameraE")]
 // was: `non-virtual thunk to'Ogre::ParticleSystem::_notifyCurrentCamera(Ogre::Camera *)
 pub fn stub_0xd421a8() -> ! {
-    todo!("0xd421a8 `non-virtual thunk to'Ogre::ParticleSystem::_notifyCurrentCamera(Ogre::Camera *)")
+    todo!("0xd421a8 non-virtual thunk toOgre::ParticleSystem::_notifyCurrentCamera(Ogre::Camera *)")
 }
 
 // 0xd421b4 — __ZN4Ogre14ParticleSystem15_notifyAttachedEPNS_4NodeEb
@@ -614,7 +614,7 @@ pub fn stub_0xd421b4() -> ! {
 #[doc(alias = "__ZThn12_N4Ogre14ParticleSystem15_notifyAttachedEPNS_4NodeEb")]
 // was: `non-virtual thunk to'Ogre::ParticleSystem::_notifyAttached(Ogre::Node *,bool)
 pub fn stub_0xd423e4() -> ! {
-    todo!("0xd423e4 `non-virtual thunk to'Ogre::ParticleSystem::_notifyAttached(Ogre::Node *,bool)")
+    todo!("0xd423e4 non-virtual thunk toOgre::ParticleSystem::_notifyAttached(Ogre::Node *,bool)")
 }
 
 // 0xd423f0 — __ZN4Ogre14ParticleSystem15setMaterialNameERKSsS2_
@@ -662,7 +662,7 @@ pub fn stub_0xd42640() -> ! {
 #[doc(alias = "__ZThn12_N4Ogre14ParticleSystem19setRenderQueueGroupEh")]
 // was: `non-virtual thunk to'Ogre::ParticleSystem::setRenderQueueGroup(unsigned char)
 pub fn stub_0xd42664() -> ! {
-    todo!("0xd42664 `non-virtual thunk to'Ogre::ParticleSystem::setRenderQueueGroup(unsigned char)")
+    todo!("0xd42664 non-virtual thunk toOgre::ParticleSystem::setRenderQueueGroup(unsigned char)")
 }
 
 // 0xd42684 — __ZNK4Ogre14ParticleSystem12getTypeFlagsEv
@@ -678,7 +678,7 @@ pub fn stub_0xd42684() -> ! {
 #[doc(alias = "__ZThn12_NK4Ogre14ParticleSystem12getTypeFlagsEv")]
 // was: `non-virtual thunk to'Ogre::ParticleSystem::getTypeFlags(void)const
 pub fn stub_0xd42694() -> ! {
-    todo!("0xd42694 `non-virtual thunk to'Ogre::ParticleSystem::getTypeFlags(void)const")
+    todo!("0xd42694 non-virtual thunk toOgre::ParticleSystem::getTypeFlags(void)const")
 }
 
 // 0xd426a4 — __ZN4Ogre14ParticleSystem28initialiseEmittedEmitterPoolEv
@@ -968,4 +968,3 @@ pub fn stub_0xd43b50() -> ! {
 pub fn stub_0xd43b54() -> ! {
     todo!("0xd43b54 Ogre::ParticleSystem::CmdQuota::~CmdQuota()")
 }
-

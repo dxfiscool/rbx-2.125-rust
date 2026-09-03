@@ -517,7 +517,7 @@ pub fn stub_0xc90074() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Font::~Font()")]
 #[doc(alias = "__ZThn88_N4Ogre4FontD0Ev")]
 pub fn stub_0xc90080() -> ! {
-    todo!("0xc90080 `non-virtual thunk to'Ogre::Font::~Font()")
+    todo!("0xc90080 non-virtual thunk toOgre::Font::~Font()")
 }
 
 // 0xc90114 — __ZN4Ogre4FontD2Ev
@@ -533,7 +533,7 @@ pub fn stub_0xc90114() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Font::~Font()")]
 #[doc(alias = "__ZThn88_N4Ogre4FontD1Ev")]
 pub fn stub_0xc90534() -> ! {
-    todo!("0xc90534 `non-virtual thunk to'Ogre::Font::~Font()")
+    todo!("0xc90534 non-virtual thunk toOgre::Font::~Font()")
 }
 
 // 0xc90540 — __ZN4Ogre4Font7setTypeENS_8FontTypeE
@@ -620,7 +620,7 @@ pub fn stub_0xc913ac() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Font::loadResource(Ogre::Resource *)")]
 #[doc(alias = "__ZThn88_N4Ogre4Font12loadResourceEPNS_8ResourceE")]
 pub fn stub_0xc92bf8() -> ! {
-    todo!("0xc92bf8 `non-virtual thunk to'Ogre::Font::loadResource(Ogre::Resource *)")
+    todo!("0xc92bf8 non-virtual thunk toOgre::Font::loadResource(Ogre::Resource *)")
 }
 
 // 0xc92c04 — __ZNK4Ogre4Font7CmdType5doGetEPKv
@@ -939,4 +939,3 @@ pub fn stub_0xc93728() -> ! {
 pub fn stub_0xc9372c() -> ! {
     todo!("0xc9372c std::_Vector_base<Ogre::Image const*,Ogre::STLAllocator<Ogre::Image const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
-

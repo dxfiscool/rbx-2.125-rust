@@ -67,14 +67,14 @@ pub fn stub_0x991af4() -> ! {
 #[doc(alias = "virtual thunk toboost::iostreams::stream<boost::iostreams::basic_array_source<char>,std::char_traits<char>,std::allocator<char>>::~stream()")]
 #[doc(alias = "__ZTv0_n12_N5boost9iostreams6streamINS0_18basic_array_sourceIcEESt11char_traitsIcESaIcEED1Ev")]
 pub fn stub_0x991be4() -> ! {
-    todo!("0x991be4 `virtual thunk to'boost::iostreams::stream<boost::iostreams::basic_array_source<char>,std::char_traits<char>,std::allocator<char>>::~stream()")
+    todo!("0x991be4 virtual thunk toboost::iostreams::stream<boost::iostreams::basic_array_source<char>,std::char_traits<char>,std::allocator<char>>::~stream()")
 }
 
 // 0x991cc0 — __ZTv0_n12_N5boost9iostreams6streamINS0_18basic_array_sourceIcEESt11char_traitsIcESaIcEED0Ev
 #[doc(alias = "virtual thunk toboost::iostreams::stream<boost::iostreams::basic_array_source<char>,std::char_traits<char>,std::allocator<char>>::~stream()")]
 #[doc(alias = "__ZTv0_n12_N5boost9iostreams6streamINS0_18basic_array_sourceIcEESt11char_traitsIcESaIcEED0Ev")]
 pub fn stub_0x991cc0() -> ! {
-    todo!("0x991cc0 `virtual thunk to'boost::iostreams::stream<boost::iostreams::basic_array_source<char>,std::char_traits<char>,std::allocator<char>>::~stream()")
+    todo!("0x991cc0 virtual thunk toboost::iostreams::stream<boost::iostreams::basic_array_source<char>,std::char_traits<char>,std::allocator<char>>::~stream()")
 }
 
 // 0x991db8 — __ZN5boost9iostreams13stream_bufferINS0_18basic_array_sourceIcEESt11char_traitsIcESaIcENS0_14input_seekableEED1Ev

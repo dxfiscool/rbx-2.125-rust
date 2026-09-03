@@ -404,7 +404,7 @@ pub fn stub_7aa994() -> ! {
 // 0x7aac2c — __ZThn92_N3RBX10ChatWidget7processERKNS_8GuiEventE
 #[doc(alias = "non-virtual thunk toRBX::ChatWidget::process(RBX::GuiEvent const&)")]
 pub fn stub_7aac2c() -> ! {
-    todo!("0x7aac2c `non-virtual thunk to'RBX::ChatWidget::process(RBX::GuiEvent const&)")
+    todo!("0x7aac2c non-virtual thunk toRBX::ChatWidget::process(RBX::GuiEvent const&)")
 }
 
 // 0x7aac68 — __ZN3RBX10ChatButtonD1Ev
@@ -425,28 +425,28 @@ pub fn stub_7aad78() -> ! {
 // type: void __fastcall(RBX::ChatButton *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ChatButton::~ChatButton()")]
 pub fn stub_7aae98() -> ! {
-    todo!("0x7aae98 `non-virtual thunk to'RBX::ChatButton::~ChatButton()")
+    todo!("0x7aae98 non-virtual thunk toRBX::ChatButton::~ChatButton()")
 }
 
 // 0x7aafa8 — __ZThn32_N3RBX10ChatButtonD0Ev
 // type: void __fastcall(RBX::ChatButton *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ChatButton::~ChatButton()")]
 pub fn stub_7aafa8() -> ! {
-    todo!("0x7aafa8 `non-virtual thunk to'RBX::ChatButton::~ChatButton()")
+    todo!("0x7aafa8 non-virtual thunk toRBX::ChatButton::~ChatButton()")
 }
 
 // 0x7ab0cc — __ZThn36_N3RBX10ChatButtonD1Ev
 // type: void __fastcall(RBX::ChatButton *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ChatButton::~ChatButton()")]
 pub fn stub_7ab0cc() -> ! {
-    todo!("0x7ab0cc `non-virtual thunk to'RBX::ChatButton::~ChatButton()")
+    todo!("0x7ab0cc non-virtual thunk toRBX::ChatButton::~ChatButton()")
 }
 
 // 0x7ab1dc — __ZThn36_N3RBX10ChatButtonD0Ev
 // type: void __fastcall(RBX::ChatButton *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ChatButton::~ChatButton()")]
 pub fn stub_7ab1dc() -> ! {
-    todo!("0x7ab1dc `non-virtual thunk to'RBX::ChatButton::~ChatButton()")
+    todo!("0x7ab1dc non-virtual thunk toRBX::ChatButton::~ChatButton()")
 }
 
 // 0x7ab300 — __ZN3RBX10ChatWidgetD1Ev
@@ -467,28 +467,28 @@ pub fn stub_7ab3ec() -> ! {
 // type: void __fastcall(RBX::ChatWidget *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ChatWidget::~ChatWidget()")]
 pub fn stub_7ab4ec() -> ! {
-    todo!("0x7ab4ec `non-virtual thunk to'RBX::ChatWidget::~ChatWidget()")
+    todo!("0x7ab4ec non-virtual thunk toRBX::ChatWidget::~ChatWidget()")
 }
 
 // 0x7ab5d8 — __ZThn32_N3RBX10ChatWidgetD0Ev
 // type: void __fastcall(RBX::ChatWidget *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ChatWidget::~ChatWidget()")]
 pub fn stub_7ab5d8() -> ! {
-    todo!("0x7ab5d8 `non-virtual thunk to'RBX::ChatWidget::~ChatWidget()")
+    todo!("0x7ab5d8 non-virtual thunk toRBX::ChatWidget::~ChatWidget()")
 }
 
 // 0x7ab6d8 — __ZThn36_N3RBX10ChatWidgetD1Ev
 // type: void __fastcall(RBX::ChatWidget *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ChatWidget::~ChatWidget()")]
 pub fn stub_7ab6d8() -> ! {
-    todo!("0x7ab6d8 `non-virtual thunk to'RBX::ChatWidget::~ChatWidget()")
+    todo!("0x7ab6d8 non-virtual thunk toRBX::ChatWidget::~ChatWidget()")
 }
 
 // 0x7ab7c4 — __ZThn36_N3RBX10ChatWidgetD0Ev
 // type: void __fastcall(RBX::ChatWidget *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ChatWidget::~ChatWidget()")]
 pub fn stub_7ab7c4() -> ! {
-    todo!("0x7ab7c4 `non-virtual thunk to'RBX::ChatWidget::~ChatWidget()")
+    todo!("0x7ab7c4 non-virtual thunk toRBX::ChatWidget::~ChatWidget()")
 }
 
 // 0x7abad8 — __ZN3RBX15EquationDisplayC1ERKSsS2_
@@ -530,28 +530,28 @@ pub fn stub_7ac150() -> ! {
 // type: void __fastcall(RBX::EquationDisplay *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::EquationDisplay::~EquationDisplay()")]
 pub fn stub_7ac1f0() -> ! {
-    todo!("0x7ac1f0 `non-virtual thunk to'RBX::EquationDisplay::~EquationDisplay()")
+    todo!("0x7ac1f0 non-virtual thunk toRBX::EquationDisplay::~EquationDisplay()")
 }
 
 // 0x7ac38c — __ZThn32_N3RBX15EquationDisplayD0Ev
 // type: void __fastcall(RBX::EquationDisplay *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::EquationDisplay::~EquationDisplay()")]
 pub fn stub_7ac38c() -> ! {
-    todo!("0x7ac38c `non-virtual thunk to'RBX::EquationDisplay::~EquationDisplay()")
+    todo!("0x7ac38c non-virtual thunk toRBX::EquationDisplay::~EquationDisplay()")
 }
 
 // 0x7ac53c — __ZThn36_N3RBX15EquationDisplayD1Ev
 // type: void __fastcall(RBX::EquationDisplay *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::EquationDisplay::~EquationDisplay()")]
 pub fn stub_7ac53c() -> ! {
-    todo!("0x7ac53c `non-virtual thunk to'RBX::EquationDisplay::~EquationDisplay()")
+    todo!("0x7ac53c non-virtual thunk toRBX::EquationDisplay::~EquationDisplay()")
 }
 
 // 0x7ac6d8 — __ZThn36_N3RBX15EquationDisplayD0Ev
 // type: void __fastcall(RBX::EquationDisplay *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::EquationDisplay::~EquationDisplay()")]
 pub fn stub_7ac6d8() -> ! {
-    todo!("0x7ac6d8 `non-virtual thunk to'RBX::EquationDisplay::~EquationDisplay()")
+    todo!("0x7ac6d8 non-virtual thunk toRBX::EquationDisplay::~EquationDisplay()")
 }
 
 // 0x7aca20 — __ZN3RBX7GuiItem12disabledFillEv
@@ -600,14 +600,14 @@ pub fn stub_7acdd0() -> ! {
 // type: void __fastcall(RBX::GuiItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiItem::~GuiItem()")]
 pub fn stub_7acdd4() -> ! {
-    todo!("0x7acdd4 `non-virtual thunk to'RBX::GuiItem::~GuiItem()")
+    todo!("0x7acdd4 non-virtual thunk toRBX::GuiItem::~GuiItem()")
 }
 
 // 0x7acddc — __ZThn36_N3RBX7GuiItemD0Ev
 // type: void __fastcall(RBX::GuiItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiItem::~GuiItem()")]
 pub fn stub_7acddc() -> ! {
-    todo!("0x7acddc `non-virtual thunk to'RBX::GuiItem::~GuiItem()")
+    todo!("0x7acddc non-virtual thunk toRBX::GuiItem::~GuiItem()")
 }
 
 // 0x7acde4 — __ZN3RBX7GuiItemD2Ev
@@ -621,14 +621,14 @@ pub fn stub_7acde4() -> ! {
 // type: void __fastcall(RBX::GuiItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiItem::~GuiItem()")]
 pub fn stub_7acf18() -> ! {
-    todo!("0x7acf18 `non-virtual thunk to'RBX::GuiItem::~GuiItem()")
+    todo!("0x7acf18 non-virtual thunk toRBX::GuiItem::~GuiItem()")
 }
 
 // 0x7acf20 — __ZThn36_N3RBX7GuiItemD1Ev
 // type: void __fastcall(RBX::GuiItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GuiItem::~GuiItem()")]
 pub fn stub_7acf20() -> ! {
-    todo!("0x7acf20 `non-virtual thunk to'RBX::GuiItem::~GuiItem()")
+    todo!("0x7acf20 non-virtual thunk toRBX::GuiItem::~GuiItem()")
 }
 
 // 0x7acf28 — __ZNK3RBX7GuiItem12getGuiParentEv
@@ -676,7 +676,7 @@ pub fn stub_7ad1d0() -> ! {
 // 0x7ad2a4 — __ZThn92_N3RBX7GuiItem7processERKNS_8GuiEventE
 #[doc(alias = "non-virtual thunk toRBX::GuiItem::process(RBX::GuiEvent const&)")]
 pub fn stub_7ad2a4() -> ! {
-    todo!("0x7ad2a4 `non-virtual thunk to'RBX::GuiItem::process(RBX::GuiEvent const&)")
+    todo!("0x7ad2a4 non-virtual thunk toRBX::GuiItem::process(RBX::GuiEvent const&)")
 }
 
 // 0x7ad3dc — __ZN3RBX7GuiRootC1Ev

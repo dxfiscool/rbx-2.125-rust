@@ -470,7 +470,7 @@ pub fn stub_c99428() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Frustum::~Frustum()")]
 // was: __ZThn4_N4Ogre7FrustumD0Ev
 pub fn stub_c99434() -> ! {
-    todo!("0xc99434 `non-virtual thunk to'Ogre::Frustum::~Frustum()")
+    todo!("0xc99434 non-virtual thunk toOgre::Frustum::~Frustum()")
 }
 
 
@@ -479,7 +479,7 @@ pub fn stub_c99434() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Frustum::~Frustum()")]
 // was: __ZThn188_N4Ogre7FrustumD0Ev
 pub fn stub_c994c8() -> ! {
-    todo!("0xc994c8 `non-virtual thunk to'Ogre::Frustum::~Frustum()")
+    todo!("0xc994c8 non-virtual thunk toOgre::Frustum::~Frustum()")
 }
 
 
@@ -497,7 +497,7 @@ pub fn stub_c9955c() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Frustum::~Frustum()")]
 // was: __ZThn4_N4Ogre7FrustumD1Ev
 pub fn stub_c996e0() -> ! {
-    todo!("0xc996e0 `non-virtual thunk to'Ogre::Frustum::~Frustum()")
+    todo!("0xc996e0 non-virtual thunk toOgre::Frustum::~Frustum()")
 }
 
 
@@ -506,7 +506,7 @@ pub fn stub_c996e0() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Frustum::~Frustum()")]
 // was: __ZThn188_N4Ogre7FrustumD1Ev
 pub fn stub_c996ec() -> ! {
-    todo!("0xc996ec `non-virtual thunk to'Ogre::Frustum::~Frustum()")
+    todo!("0xc996ec non-virtual thunk toOgre::Frustum::~Frustum()")
 }
 
 
@@ -835,7 +835,7 @@ pub fn stub_c9b4cc() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Frustum::getMaterial(void)const")]
 // was: __ZThn188_NK4Ogre7Frustum11getMaterialEv
 pub fn stub_c9b4d4() -> ! {
-    todo!("0xc9b4d4 `non-virtual thunk to'Ogre::Frustum::getMaterial(void)const")
+    todo!("0xc9b4d4 non-virtual thunk toOgre::Frustum::getMaterial(void)const")
 }
 
 
@@ -851,7 +851,7 @@ pub fn stub_c9b4dc() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Frustum::getRenderOperation(Ogre::RenderOperation &)")]
 // was: __ZThn188_N4Ogre7Frustum18getRenderOperationERNS_15RenderOperationE
 pub fn stub_c9b500() -> ! {
-    todo!("0xc9b500 `non-virtual thunk to'Ogre::Frustum::getRenderOperation(Ogre::RenderOperation &)")
+    todo!("0xc9b500 non-virtual thunk toOgre::Frustum::getRenderOperation(Ogre::RenderOperation &)")
 }
 
 
@@ -867,7 +867,7 @@ pub fn stub_c9b524() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Frustum::getWorldTransforms(Ogre::Matrix4 *)const")]
 // was: __ZThn188_NK4Ogre7Frustum18getWorldTransformsEPNS_7Matrix4E
 pub fn stub_c9b57c() -> ! {
-    todo!("0xc9b57c `non-virtual thunk to'Ogre::Frustum::getWorldTransforms(Ogre::Matrix4 *)const")
+    todo!("0xc9b57c non-virtual thunk toOgre::Frustum::getWorldTransforms(Ogre::Matrix4 *)const")
 }
 
 
@@ -876,6 +876,5 @@ pub fn stub_c9b57c() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Frustum::getSquaredViewDepth(Ogre::Camera const*)const")]
 // was: __ZThn188_NK4Ogre7Frustum19getSquaredViewDepthEPKNS_6CameraE
 pub fn stub_c9b638() -> ! {
-    todo!("0xc9b638 `non-virtual thunk to'Ogre::Frustum::getSquaredViewDepth(Ogre::Camera const*)const")
+    todo!("0xc9b638 non-virtual thunk toOgre::Frustum::getSquaredViewDepth(Ogre::Camera const*)const")
 }
-

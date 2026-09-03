@@ -184,7 +184,7 @@ pub fn stub_0xb02e30() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::OnReceive(RakNet::Packet *)")]
 #[doc(alias = "__ZThn1180_N3RBX7Network10Replicator9OnReceiveEPN6RakNet6PacketE")]
 pub fn stub_0xb04818() -> ! {
-    todo!("0xb04818 `non-virtual thunk toRBX::Network::Replicator::OnReceive(RakNet::Packet *)")
+    todo!("0xb04818 non-virtual thunk toRBX::Network::Replicator::OnReceive(RakNet::Packet *)")
 }
 
 // 0xb04828 — __ZN3RBX7Network10Replicator16OnInternalPacketEPN6RakNet14InternalPacketEjNS2_13SystemAddressEji
@@ -200,7 +200,7 @@ pub fn stub_0xb04828() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::OnInternalPacket(RakNet::InternalPacket *,unsigned int,RakNet::SystemAddress,unsigned int,int)")]
 #[doc(alias = "__ZThn1180_N3RBX7Network10Replicator16OnInternalPacketEPN6RakNet14InternalPacketEjNS2_13SystemAddressEji")]
 pub fn stub_0xb04a98() -> ! {
-    todo!("0xb04a98 `non-virtual thunk toRBX::Network::Replicator::OnInternalPacket(RakNet::InternalPacket *,unsigned int,RakNet::SystemAddress,unsigned int,int)")
+    todo!("0xb04a98 non-virtual thunk toRBX::Network::Replicator::OnInternalPacket(RakNet::InternalPacket *,unsigned int,RakNet::SystemAddress,unsigned int,int)")
 }
 
 // 0xb07980 — __ZN5boost4bindIvN3RBX7Network10ReplicatorERKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_NS8_IS3_EENS_3argILi1EEENSG_ILi2EEENSG_ILi3EEENSG_ILi4EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf4ISN_T0_T1_T2_T3_T4_EENSL_9list_av_5IT5_T6_T7_T8_T9_E4typeEEEMSQ_FSN_SR_SS_ST_SU_ESX_SY_SZ_S10_S11_

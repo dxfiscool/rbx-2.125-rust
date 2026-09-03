@@ -869,4 +869,3 @@ pub fn stub_691a1c() -> ! {
 pub fn stub_691a40() -> ! {
     todo!("0x691a40 __ZNK3RBX10Controller9getButtonENS0_6ButtonE")
 }
-

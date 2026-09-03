@@ -749,4 +749,3 @@ pub fn stub_29e978() -> ! {
 pub fn stub_29ecbc() -> ! {
     todo!("0x29ecbc __ZN3RBX13ScriptContext6resumeENS_3Lua9ThreadRefEi")
 }
-

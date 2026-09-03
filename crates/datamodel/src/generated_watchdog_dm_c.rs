@@ -911,7 +911,7 @@ pub fn stub_dc52f8() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RegionSceneQuery::~RegionSceneQuery()")]
 #[doc(alias = "__ZThn48_N4Ogre16RegionSceneQueryD0Ev")]
 pub fn stub_dc5304() -> ! {
-    todo!("0xdc5304 `non-virtual thunk to'Ogre::RegionSceneQuery::~RegionSceneQuery()")
+    todo!("0xdc5304 non-virtual thunk toOgre::RegionSceneQuery::~RegionSceneQuery()")
 }
 
 
@@ -929,7 +929,7 @@ pub fn stub_dc5398() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RegionSceneQuery::~RegionSceneQuery()")]
 #[doc(alias = "__ZThn48_N4Ogre16RegionSceneQueryD1Ev")]
 pub fn stub_dc54ac() -> ! {
-    todo!("0xdc54ac `non-virtual thunk to'Ogre::RegionSceneQuery::~RegionSceneQuery()")
+    todo!("0xdc54ac non-virtual thunk toOgre::RegionSceneQuery::~RegionSceneQuery()")
 }
 
 
@@ -974,7 +974,7 @@ pub fn stub_dc5614() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RegionSceneQuery::queryResult(Ogre::MovableObject *)")]
 #[doc(alias = "__ZThn48_N4Ogre16RegionSceneQuery11queryResultEPNS_13MovableObjectE")]
 pub fn stub_dc5634() -> ! {
-    todo!("0xdc5634 `non-virtual thunk to'Ogre::RegionSceneQuery::queryResult(Ogre::MovableObject *)")
+    todo!("0xdc5634 non-virtual thunk toOgre::RegionSceneQuery::queryResult(Ogre::MovableObject *)")
 }
 
 
@@ -1010,7 +1010,7 @@ pub fn stub_dc5810() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")]
 #[doc(alias = "__ZThn48_N4Ogre24AxisAlignedBoxSceneQueryD0Ev")]
 pub fn stub_dc58c4() -> ! {
-    todo!("0xdc58c4 `non-virtual thunk to'Ogre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")
+    todo!("0xdc58c4 non-virtual thunk toOgre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")
 }
 
 
@@ -1028,7 +1028,7 @@ pub fn stub_dc5984() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")]
 #[doc(alias = "__ZThn48_N4Ogre24AxisAlignedBoxSceneQueryD1Ev")]
 pub fn stub_dc5a38() -> ! {
-    todo!("0xdc5a38 `non-virtual thunk to'Ogre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")
+    todo!("0xdc5a38 non-virtual thunk toOgre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")
 }
 
 

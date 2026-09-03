@@ -710,7 +710,7 @@ pub fn stub_8a7418() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Swimming::~Swimming()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN8SwimmingD1Ev")]
 pub fn stub_8a741c() -> ! {
-    todo!("0x8a741c `non-virtual thunk to'RBX::HUMAN::Swimming::~Swimming()")
+    todo!("0x8a741c non-virtual thunk toRBX::HUMAN::Swimming::~Swimming()")
 }
 
 // 0x8a7424 — __ZThn4_N3RBX5HUMAN8SwimmingD0Ev
@@ -718,7 +718,7 @@ pub fn stub_8a741c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::Swimming::~Swimming()")]
 #[doc(alias = "__ZThn4_N3RBX5HUMAN8SwimmingD0Ev")]
 pub fn stub_8a7424() -> ! {
-    todo!("0x8a7424 `non-virtual thunk to'RBX::HUMAN::Swimming::~Swimming()")
+    todo!("0x8a7424 non-virtual thunk toRBX::HUMAN::Swimming::~Swimming()")
 }
 
 // 0x8a781c — __ZN3RBX7UintSetC1Ev

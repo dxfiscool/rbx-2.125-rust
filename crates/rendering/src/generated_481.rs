@@ -619,7 +619,7 @@ pub fn stub_ba8750() -> ! {
 #[doc(alias = "non-virtual thunk to Ogre::RbxCullableSceneNode::getFastFuzzyExtents(void)")]
 // was: `non-virtual thunk to'Ogre::RbxCullableSceneNode::getFastFuzzyExtents(void)
 pub fn stub_ba876c() -> ! {
-    todo!("0xba876c `non-virtual thunk to'Ogre::RbxCullableSceneNode::getFastFuzzyExtents(void)")
+    todo!("0xba876c non-virtual thunk toOgre::RbxCullableSceneNode::getFastFuzzyExtents(void)")
 }
 
 // 0xba8e18 — __ZN4Ogre9RbxEntityC1Ev
@@ -696,12 +696,12 @@ pub fn stub_ba936c() -> ! {
 #[doc(alias = "non-virtual thunk to Ogre::RbxEntity::~RbxEntity()")]
 // was: `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()
 pub fn stub_ba9370() -> ! {
-    todo!("0xba9370 `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()")
+    todo!("0xba9370 non-virtual thunk toOgre::RbxEntity::~RbxEntity()")
 }
 
 // 0xba9428 — __ZThn188_N4Ogre9RbxEntityD0Ev
 #[doc(alias = "non-virtual thunk to Ogre::RbxEntity::~RbxEntity()")]
 // was: `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()
 pub fn stub_ba9428() -> ! {
-    todo!("0xba9428 `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()")
+    todo!("0xba9428 non-virtual thunk toOgre::RbxEntity::~RbxEntity()")
 }

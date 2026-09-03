@@ -70,7 +70,7 @@ pub fn stub_0x7e6ac4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MeshContentProvider::~MeshContentProvider()")]
 #[doc(alias = "__ZThn32_N3RBX19MeshContentProviderD1Ev")]
 pub fn stub_0x7e6b8c() -> ! {
-    todo!("0x7e6b8c `non-virtual thunk to'RBX::MeshContentProvider::~MeshContentProvider()")
+    todo!("0x7e6b8c non-virtual thunk toRBX::MeshContentProvider::~MeshContentProvider()")
 }
 
 // 0x7e6b94 — __ZThn32_N3RBX19MeshContentProviderD0Ev
@@ -78,7 +78,7 @@ pub fn stub_0x7e6b8c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MeshContentProvider::~MeshContentProvider()")]
 #[doc(alias = "__ZThn32_N3RBX19MeshContentProviderD0Ev")]
 pub fn stub_0x7e6b94() -> ! {
-    todo!("0x7e6b94 `non-virtual thunk to'RBX::MeshContentProvider::~MeshContentProvider()")
+    todo!("0x7e6b94 non-virtual thunk toRBX::MeshContentProvider::~MeshContentProvider()")
 }
 
 // 0x7e6bc4 — __ZThn36_N3RBX19MeshContentProviderD1Ev
@@ -86,7 +86,7 @@ pub fn stub_0x7e6b94() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MeshContentProvider::~MeshContentProvider()")]
 #[doc(alias = "__ZThn36_N3RBX19MeshContentProviderD1Ev")]
 pub fn stub_0x7e6bc4() -> ! {
-    todo!("0x7e6bc4 `non-virtual thunk to'RBX::MeshContentProvider::~MeshContentProvider()")
+    todo!("0x7e6bc4 non-virtual thunk toRBX::MeshContentProvider::~MeshContentProvider()")
 }
 
 // 0x7e6bcc — __ZThn36_N3RBX19MeshContentProviderD0Ev
@@ -94,7 +94,7 @@ pub fn stub_0x7e6bc4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MeshContentProvider::~MeshContentProvider()")]
 #[doc(alias = "__ZThn36_N3RBX19MeshContentProviderD0Ev")]
 pub fn stub_0x7e6bcc() -> ! {
-    todo!("0x7e6bcc `non-virtual thunk to'RBX::MeshContentProvider::~MeshContentProvider()")
+    todo!("0x7e6bcc non-virtual thunk toRBX::MeshContentProvider::~MeshContentProvider()")
 }
 
 // 0x7e6bd4 — __ZThn96_N3RBX19MeshContentProviderD1Ev
@@ -102,7 +102,7 @@ pub fn stub_0x7e6bcc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MeshContentProvider::~MeshContentProvider()")]
 #[doc(alias = "__ZThn96_N3RBX19MeshContentProviderD1Ev")]
 pub fn stub_0x7e6bd4() -> ! {
-    todo!("0x7e6bd4 `non-virtual thunk to'RBX::MeshContentProvider::~MeshContentProvider()")
+    todo!("0x7e6bd4 non-virtual thunk toRBX::MeshContentProvider::~MeshContentProvider()")
 }
 
 // 0x7e6bdc — __ZThn96_N3RBX19MeshContentProviderD0Ev
@@ -110,7 +110,7 @@ pub fn stub_0x7e6bd4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MeshContentProvider::~MeshContentProvider()")]
 #[doc(alias = "__ZThn96_N3RBX19MeshContentProviderD0Ev")]
 pub fn stub_0x7e6bdc() -> ! {
-    todo!("0x7e6bdc `non-virtual thunk to'RBX::MeshContentProvider::~MeshContentProvider()")
+    todo!("0x7e6bdc non-virtual thunk toRBX::MeshContentProvider::~MeshContentProvider()")
 }
 
 // 0x7e6ee4 — __ZN5boost10shared_ptrIvEC2IN3RBX12FileMeshDataEEEPT_
@@ -302,21 +302,21 @@ pub fn stub_0xea7378() -> ! {
 #[doc(alias = "anonymous namespace::computeAABB(RBX::FileMeshData *)")]
 #[doc(alias = "__ZN12_GLOBAL__N_111computeAABBEPN3RBX12FileMeshDataE")]
 pub fn stub_0xea7dac() -> ! {
-    todo!("0xea7dac `anonymous namespace'::computeAABB(RBX::FileMeshData *)")
+    todo!("0xea7dac anonymous namespace::computeAABB(RBX::FileMeshData *)")
 }
 
 // 0xea85d8 — __ZN12_GLOBAL__N_112optimizeMeshERN3RBX12FileMeshDataE
 #[doc(alias = "anonymous namespace::optimizeMesh(RBX::FileMeshData &)")]
 #[doc(alias = "__ZN12_GLOBAL__N_112optimizeMeshERN3RBX12FileMeshDataE")]
 pub fn stub_0xea85d8() -> ! {
-    todo!("0xea85d8 `anonymous namespace'::optimizeMesh(RBX::FileMeshData &)")
+    todo!("0xea85d8 anonymous namespace::optimizeMesh(RBX::FileMeshData &)")
 }
 
 // 0xea8a30 — __ZNSt8_Rb_treeIN3RBX29FileMeshVertexNormalTexture3dESt4pairIKS1_jESt10_Select1stIS4_EN12_GLOBAL__N_120MeshVertexComparatorESaIS4_EE8_M_eraseEPSt13_Rb_tree_nodeIS4_E
 #[doc(alias = "std::_Rb_tree<RBX::FileMeshVertexNormalTexture3d,std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>,std::_Select1st<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>>,anonymous namespace::MeshVertexComparator,std::allocator<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIN3RBX29FileMeshVertexNormalTexture3dESt4pairIKS1_jESt10_Select1stIS4_EN12_GLOBAL__N_120MeshVertexComparatorESaIS4_EE8_M_eraseEPSt13_Rb_tree_nodeIS4_E")]
 pub fn stub_0xea8a30() -> ! {
-    todo!("0xea8a30 std::_Rb_tree<RBX::FileMeshVertexNormalTexture3d,std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>,std::_Select1st<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>>,`anonymous namespace'::MeshVertexComparator,std::allocator<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>> *)")
+    todo!("0xea8a30 std::_Rb_tree<RBX::FileMeshVertexNormalTexture3d,std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>,std::_Select1st<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>>,anonymous namespace::MeshVertexComparator,std::allocator<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>> *)")
 }
 
 // 0xea8bb8 — __ZNSt6vectorIN3RBX29FileMeshVertexNormalTexture3dESaIS1_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS1_S3_EEmRKS1_

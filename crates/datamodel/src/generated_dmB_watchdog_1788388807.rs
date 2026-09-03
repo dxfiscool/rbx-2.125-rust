@@ -31,7 +31,7 @@ pub fn stub_614bf8() -> ! {
 #[doc(alias = "__ZThn36_N3RBX18ScriptMouseCommandD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::ScriptMouseCommand::~ScriptMouseCommand()")]
 pub fn stub_614bfc() -> ! {
-    todo!("0x614bfc `non-virtual thunk to'RBX::ScriptMouseCommand::~ScriptMouseCommand()")
+    todo!("0x614bfc non-virtual thunk toRBX::ScriptMouseCommand::~ScriptMouseCommand()")
 }
 
 // 0x614c04 — __ZN3RBX18ScriptMouseCommandD2Ev
@@ -47,7 +47,7 @@ pub fn stub_614c04() -> ! {
 #[doc(alias = "__ZThn36_N3RBX18ScriptMouseCommandD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::ScriptMouseCommand::~ScriptMouseCommand()")]
 pub fn stub_614d30() -> ! {
-    todo!("0x614d30 `non-virtual thunk to'RBX::ScriptMouseCommand::~ScriptMouseCommand()")
+    todo!("0x614d30 non-virtual thunk toRBX::ScriptMouseCommand::~ScriptMouseCommand()")
 }
 
 // 0x614d38 — __ZNK3RBX18ScriptMouseCommand11getCursorIdEv
@@ -347,7 +347,7 @@ pub fn stub_76af64() -> ! {
 #[doc(alias = "__ZThn32_N3RBX9Scripting15DebuggerManagerD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerManager::~DebuggerManager()")]
 pub fn stub_76af68() -> ! {
-    todo!("0x76af68 `non-virtual thunk to'RBX::Scripting::DebuggerManager::~DebuggerManager()")
+    todo!("0x76af68 non-virtual thunk toRBX::Scripting::DebuggerManager::~DebuggerManager()")
 }
 
 // 0x76af70 — __ZThn36_N3RBX9Scripting15DebuggerManagerD0Ev
@@ -355,7 +355,7 @@ pub fn stub_76af68() -> ! {
 #[doc(alias = "__ZThn36_N3RBX9Scripting15DebuggerManagerD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerManager::~DebuggerManager()")]
 pub fn stub_76af70() -> ! {
-    todo!("0x76af70 `non-virtual thunk to'RBX::Scripting::DebuggerManager::~DebuggerManager()")
+    todo!("0x76af70 non-virtual thunk toRBX::Scripting::DebuggerManager::~DebuggerManager()")
 }
 
 // 0x76af78 — __ZN3RBX9Scripting15DebuggerManagerD2Ev
@@ -371,7 +371,7 @@ pub fn stub_76af78() -> ! {
 #[doc(alias = "__ZThn32_N3RBX9Scripting15DebuggerManagerD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerManager::~DebuggerManager()")]
 pub fn stub_76b128() -> ! {
-    todo!("0x76b128 `non-virtual thunk to'RBX::Scripting::DebuggerManager::~DebuggerManager()")
+    todo!("0x76b128 non-virtual thunk toRBX::Scripting::DebuggerManager::~DebuggerManager()")
 }
 
 // 0x76b130 — __ZThn36_N3RBX9Scripting15DebuggerManagerD1Ev
@@ -379,7 +379,7 @@ pub fn stub_76b128() -> ! {
 #[doc(alias = "__ZThn36_N3RBX9Scripting15DebuggerManagerD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerManager::~DebuggerManager()")]
 pub fn stub_76b130() -> ! {
-    todo!("0x76b130 `non-virtual thunk to'RBX::Scripting::DebuggerManager::~DebuggerManager()")
+    todo!("0x76b130 non-virtual thunk toRBX::Scripting::DebuggerManager::~DebuggerManager()")
 }
 
 // 0x76b13c — __ZN3RBX9Scripting15DebuggerManager12findDebuggerEP9lua_State
@@ -443,7 +443,7 @@ pub fn stub_76c444() -> ! {
 #[doc(alias = "__ZThn32_N3RBX9Scripting14ScriptDebuggerD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Scripting::ScriptDebugger::~ScriptDebugger()")]
 pub fn stub_76c448() -> ! {
-    todo!("0x76c448 `non-virtual thunk to'RBX::Scripting::ScriptDebugger::~ScriptDebugger()")
+    todo!("0x76c448 non-virtual thunk toRBX::Scripting::ScriptDebugger::~ScriptDebugger()")
 }
 
 // 0x76c450 — __ZThn36_N3RBX9Scripting14ScriptDebuggerD0Ev
@@ -451,7 +451,7 @@ pub fn stub_76c448() -> ! {
 #[doc(alias = "__ZThn36_N3RBX9Scripting14ScriptDebuggerD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Scripting::ScriptDebugger::~ScriptDebugger()")]
 pub fn stub_76c450() -> ! {
-    todo!("0x76c450 `non-virtual thunk to'RBX::Scripting::ScriptDebugger::~ScriptDebugger()")
+    todo!("0x76c450 non-virtual thunk toRBX::Scripting::ScriptDebugger::~ScriptDebugger()")
 }
 
 // 0x76c458 — __ZN3RBX9Scripting14ScriptDebuggerD2Ev
@@ -467,7 +467,7 @@ pub fn stub_76c458() -> ! {
 #[doc(alias = "__ZThn32_N3RBX9Scripting14ScriptDebuggerD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Scripting::ScriptDebugger::~ScriptDebugger()")]
 pub fn stub_76ca0c() -> ! {
-    todo!("0x76ca0c `non-virtual thunk to'RBX::Scripting::ScriptDebugger::~ScriptDebugger()")
+    todo!("0x76ca0c non-virtual thunk toRBX::Scripting::ScriptDebugger::~ScriptDebugger()")
 }
 
 // 0x76ca14 — __ZThn36_N3RBX9Scripting14ScriptDebuggerD1Ev
@@ -475,7 +475,7 @@ pub fn stub_76ca0c() -> ! {
 #[doc(alias = "__ZThn36_N3RBX9Scripting14ScriptDebuggerD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Scripting::ScriptDebugger::~ScriptDebugger()")]
 pub fn stub_76ca14() -> ! {
-    todo!("0x76ca14 `non-virtual thunk to'RBX::Scripting::ScriptDebugger::~ScriptDebugger()")
+    todo!("0x76ca14 non-virtual thunk toRBX::Scripting::ScriptDebugger::~ScriptDebugger()")
 }
 
 // 0x76ca1c — __ZN3RBX9Scripting14ScriptDebugger8addWatchESs
@@ -635,7 +635,7 @@ pub fn stub_770804() -> ! {
 #[doc(alias = "__ZThn32_N3RBX9Scripting18DebuggerBreakpointD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")]
 pub fn stub_770808() -> ! {
-    todo!("0x770808 `non-virtual thunk to'RBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")
+    todo!("0x770808 non-virtual thunk toRBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")
 }
 
 // 0x770810 — __ZThn36_N3RBX9Scripting18DebuggerBreakpointD0Ev
@@ -643,7 +643,7 @@ pub fn stub_770808() -> ! {
 #[doc(alias = "__ZThn36_N3RBX9Scripting18DebuggerBreakpointD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")]
 pub fn stub_770810() -> ! {
-    todo!("0x770810 `non-virtual thunk to'RBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")
+    todo!("0x770810 non-virtual thunk toRBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")
 }
 
 // 0x770818 — __ZN3RBX9Scripting18DebuggerBreakpointD2Ev
@@ -659,7 +659,7 @@ pub fn stub_770818() -> ! {
 #[doc(alias = "__ZThn32_N3RBX9Scripting18DebuggerBreakpointD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")]
 pub fn stub_7708fc() -> ! {
-    todo!("0x7708fc `non-virtual thunk to'RBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")
+    todo!("0x7708fc non-virtual thunk toRBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")
 }
 
 // 0x770904 — __ZThn36_N3RBX9Scripting18DebuggerBreakpointD1Ev
@@ -667,7 +667,7 @@ pub fn stub_7708fc() -> ! {
 #[doc(alias = "__ZThn36_N3RBX9Scripting18DebuggerBreakpointD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")]
 pub fn stub_770904() -> ! {
-    todo!("0x770904 `non-virtual thunk to'RBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")
+    todo!("0x770904 non-virtual thunk toRBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")
 }
 
 // 0x770910 — __ZN3RBX9Scripting13DebuggerWatchC2ESs
@@ -939,4 +939,3 @@ pub fn stub_773018() -> ! {
 pub fn stub_773188() -> ! {
     todo!("0x773188 rbx::signals::connection rbx::signals::signal<void ()(lua_State *)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Scripting::ScriptDebugger,lua_State *>,boost::_bi::list2<boost::_bi::value<RBX::Scripting::ScriptDebugger*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Scripting::ScriptDebugger,lua_State *>,boost::_bi::list2<boost::_bi::value<RBX::Scripting::ScriptDebugger*>,boost::arg<1>>> const&)")
 }
-

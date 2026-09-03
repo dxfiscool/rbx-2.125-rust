@@ -602,7 +602,7 @@ pub fn stub_38f1c4() -> ! {
 #[doc(alias = "virtual thunk toRBX::Accoutrement::getLocation(void)")]
 #[doc(alias = "__ZTv0_n12_N3RBX12Accoutrement11getLocationEv")]
 pub fn stub_38f1f8() -> ! {
-    todo!("0x38f1f8 `virtual thunk to'RBX::Accoutrement::getLocation(void)")
+    todo!("0x38f1f8 virtual thunk toRBX::Accoutrement::getLocation(void)")
 }
 
 // 0x38f20c — __ZN3RBX12Accoutrement17connectTouchEventEv

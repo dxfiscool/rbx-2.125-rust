@@ -375,7 +375,7 @@ pub fn stub_d0fef8() -> ! {
 #[doc(alias = "__ZThn152_N4Ogre11MeshManagerD0Ev")]
 // was: `non-virtual thunk to'Ogre::MeshManager::~MeshManager()
 pub fn stub_d0ff04() -> ! {
-    todo!("0xd0ff04 `non-virtual thunk to'Ogre::MeshManager::~MeshManager()")
+    todo!("0xd0ff04 non-virtual thunk toOgre::MeshManager::~MeshManager()")
 }
 
 // 0xd0ff98 — __ZN4Ogre11MeshManagerD2Ev
@@ -391,7 +391,7 @@ pub fn stub_d0ff98() -> ! {
 #[doc(alias = "__ZThn152_N4Ogre11MeshManagerD1Ev")]
 // was: `non-virtual thunk to'Ogre::MeshManager::~MeshManager()
 pub fn stub_d100a8() -> ! {
-    todo!("0xd100a8 `non-virtual thunk to'Ogre::MeshManager::~MeshManager()")
+    todo!("0xd100a8 non-virtual thunk toOgre::MeshManager::~MeshManager()")
 }
 
 // 0xd100b4 — __ZN4Ogre11MeshManager11_initialiseEv
@@ -527,7 +527,7 @@ pub fn stub_d136f0() -> ! {
 #[doc(alias = "__ZThn152_N4Ogre11MeshManager12loadResourceEPNS_8ResourceE")]
 // was: `non-virtual thunk to'Ogre::MeshManager::loadResource(Ogre::Resource *)
 pub fn stub_d14398() -> ! {
-    todo!("0xd14398 `non-virtual thunk to'Ogre::MeshManager::loadResource(Ogre::Resource *)")
+    todo!("0xd14398 non-virtual thunk toOgre::MeshManager::loadResource(Ogre::Resource *)")
 }
 
 // 0xd143a4 — __ZN4Ogre11MeshManager35setPrepareAllMeshesForShadowVolumesEb
@@ -809,4 +809,3 @@ pub fn stub_d17258() -> ! {
 pub fn stub_d172c4() -> ! {
     todo!("0xd172c4 Ogre::MeshSerializerImpl::writeSubMesh(Ogre::SubMesh const*)")
 }
-

@@ -311,7 +311,7 @@ pub fn stub_d3432c() -> ! {
 #[doc(alias = "__ZThn12_N4Ogre19PanelOverlayElementD0Ev")]
 // was: `non-virtual thunk toOgre::PanelOverlayElement::~PanelOverlayElement()
 pub fn stub_d343e8() -> ! {
-    todo!("0xd343e8 `non-virtual thunk toOgre::PanelOverlayElement::~PanelOverlayElement()")
+    todo!("0xd343e8 non-virtual thunk toOgre::PanelOverlayElement::~PanelOverlayElement()")
 }
 
 // 0xd344b4 — __ZN4Ogre19PanelOverlayElementD2Ev
@@ -329,7 +329,7 @@ pub fn stub_d344b4() -> ! {
 #[doc(alias = "__ZThn12_N4Ogre19PanelOverlayElementD1Ev")]
 // was: `non-virtual thunk toOgre::PanelOverlayElement::~PanelOverlayElement()
 pub fn stub_d34570() -> ! {
-    todo!("0xd34570 `non-virtual thunk toOgre::PanelOverlayElement::~PanelOverlayElement()")
+    todo!("0xd34570 non-virtual thunk toOgre::PanelOverlayElement::~PanelOverlayElement()")
 }
 
 // 0xd3462c — __ZN4Ogre19PanelOverlayElement10initialiseEv
@@ -363,7 +363,7 @@ pub fn stub_d34870() -> ! {
 #[doc(alias = "__ZThn12_N4Ogre19PanelOverlayElement18getRenderOperationERNS_15RenderOperationE")]
 // was: `non-virtual thunk toOgre::PanelOverlayElement::getRenderOperation(Ogre::RenderOperation &)
 pub fn stub_d34890() -> ! {
-    todo!("0xd34890 `non-virtual thunk toOgre::PanelOverlayElement::getRenderOperation(Ogre::RenderOperation &)")
+    todo!("0xd34890 non-virtual thunk toOgre::PanelOverlayElement::getRenderOperation(Ogre::RenderOperation &)")
 }
 
 // 0xd348b0 — __ZN4Ogre19PanelOverlayElement15setMaterialNameERKSs
@@ -606,7 +606,7 @@ pub fn stub_d36e2c() -> ! {
 #[doc(alias = "__ZThn12_NK4Ogre14OverlayElement19getSquaredViewDepthEPKNS_6CameraE")]
 // was: `non-virtual thunk toOgre::OverlayElement::getSquaredViewDepth(Ogre::Camera const*)const
 pub fn stub_d36e30() -> ! {
-    todo!("0xd36e30 `non-virtual thunk toOgre::OverlayElement::getSquaredViewDepth(Ogre::Camera const*)const")
+    todo!("0xd36e30 non-virtual thunk toOgre::OverlayElement::getSquaredViewDepth(Ogre::Camera const*)const")
 }
 
 // 0xd36e50 — __ZThn12_NK4Ogre14OverlayElement9getLightsEv
@@ -615,7 +615,7 @@ pub fn stub_d36e30() -> ! {
 #[doc(alias = "__ZThn12_NK4Ogre14OverlayElement9getLightsEv")]
 // was: `non-virtual thunk toOgre::OverlayElement::getLights(void)const
 pub fn stub_d36e50() -> ! {
-    todo!("0xd36e50 `non-virtual thunk toOgre::OverlayElement::getLights(void)const")
+    todo!("0xd36e50 non-virtual thunk toOgre::OverlayElement::getLights(void)const")
 }
 
 // 0xd36ecc — __ZNK4Ogre10Renderable15getCastsShadowsEv

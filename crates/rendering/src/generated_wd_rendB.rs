@@ -185,7 +185,7 @@ pub fn stub_0x8ad4e0() -> ! {
 #[doc(alias = "__ZThn32_N3RBX15GamePassServiceD1Ev")]
 // was: __ZThn32_N3RBX15GamePassServiceD1Ev
 pub fn stub_0x8ad5dc() -> ! {
-    todo!("0x8ad5dc `non-virtual thunk to'RBX::GamePassService::~GamePassService()")
+    todo!("0x8ad5dc non-virtual thunk toRBX::GamePassService::~GamePassService()")
 }
 
 // 0x8ad61c — __ZThn32_N3RBX15GamePassServiceD0Ev
@@ -193,7 +193,7 @@ pub fn stub_0x8ad5dc() -> ! {
 #[doc(alias = "__ZThn32_N3RBX15GamePassServiceD0Ev")]
 // was: __ZThn32_N3RBX15GamePassServiceD0Ev
 pub fn stub_0x8ad61c() -> ! {
-    todo!("0x8ad61c `non-virtual thunk to'RBX::GamePassService::~GamePassService()")
+    todo!("0x8ad61c non-virtual thunk toRBX::GamePassService::~GamePassService()")
 }
 
 // 0x8ad718 — __ZThn36_N3RBX15GamePassServiceD1Ev
@@ -201,7 +201,7 @@ pub fn stub_0x8ad61c() -> ! {
 #[doc(alias = "__ZThn36_N3RBX15GamePassServiceD1Ev")]
 // was: __ZThn36_N3RBX15GamePassServiceD1Ev
 pub fn stub_0x8ad718() -> ! {
-    todo!("0x8ad718 `non-virtual thunk to'RBX::GamePassService::~GamePassService()")
+    todo!("0x8ad718 non-virtual thunk toRBX::GamePassService::~GamePassService()")
 }
 
 // 0x8ad758 — __ZThn36_N3RBX15GamePassServiceD0Ev
@@ -209,7 +209,7 @@ pub fn stub_0x8ad718() -> ! {
 #[doc(alias = "__ZThn36_N3RBX15GamePassServiceD0Ev")]
 // was: __ZThn36_N3RBX15GamePassServiceD0Ev
 pub fn stub_0x8ad758() -> ! {
-    todo!("0x8ad758 `non-virtual thunk to'RBX::GamePassService::~GamePassService()")
+    todo!("0x8ad758 non-virtual thunk toRBX::GamePassService::~GamePassService()")
 }
 
 // 0x8ae8dc — __ZNK3RBX16UserInputService15getTouchEnabledEv
@@ -329,7 +329,7 @@ pub fn stub_0x8b0380() -> ! {
 #[doc(alias = "__ZThn96_N3RBX16UserInputService9onSteppedERKNS_7SteppedE")]
 // was: __ZThn96_N3RBX16UserInputService9onSteppedERKNS_7SteppedE
 pub fn stub_0x8b0784() -> ! {
-    todo!("0x8b0784 `non-virtual thunk to'RBX::UserInputService::onStepped(RBX::Stepped const&)")
+    todo!("0x8b0784 non-virtual thunk toRBX::UserInputService::onStepped(RBX::Stepped const&)")
 }
 
 // 0x8b0944 — __ZN3RBX16UserInputService18jumpLocalCharacterEb
@@ -441,7 +441,7 @@ pub fn stub_0x8b2e1c() -> ! {
 #[doc(alias = "__ZThn32_N3RBX16UserInputServiceD1Ev")]
 // was: __ZThn32_N3RBX16UserInputServiceD1Ev
 pub fn stub_0x8b2ed0() -> ! {
-    todo!("0x8b2ed0 `non-virtual thunk to'RBX::UserInputService::~UserInputService()")
+    todo!("0x8b2ed0 non-virtual thunk toRBX::UserInputService::~UserInputService()")
 }
 
 // 0x8b2ed8 — __ZThn32_N3RBX16UserInputServiceD0Ev
@@ -449,7 +449,7 @@ pub fn stub_0x8b2ed0() -> ! {
 #[doc(alias = "__ZThn32_N3RBX16UserInputServiceD0Ev")]
 // was: __ZThn32_N3RBX16UserInputServiceD0Ev
 pub fn stub_0x8b2ed8() -> ! {
-    todo!("0x8b2ed8 `non-virtual thunk to'RBX::UserInputService::~UserInputService()")
+    todo!("0x8b2ed8 non-virtual thunk toRBX::UserInputService::~UserInputService()")
 }
 
 // 0x8b2ef0 — __ZThn36_N3RBX16UserInputServiceD1Ev
@@ -457,7 +457,7 @@ pub fn stub_0x8b2ed8() -> ! {
 #[doc(alias = "__ZThn36_N3RBX16UserInputServiceD1Ev")]
 // was: __ZThn36_N3RBX16UserInputServiceD1Ev
 pub fn stub_0x8b2ef0() -> ! {
-    todo!("0x8b2ef0 `non-virtual thunk to'RBX::UserInputService::~UserInputService()")
+    todo!("0x8b2ef0 non-virtual thunk toRBX::UserInputService::~UserInputService()")
 }
 
 // 0x8b2ef8 — __ZThn36_N3RBX16UserInputServiceD0Ev
@@ -465,7 +465,7 @@ pub fn stub_0x8b2ef0() -> ! {
 #[doc(alias = "__ZThn36_N3RBX16UserInputServiceD0Ev")]
 // was: __ZThn36_N3RBX16UserInputServiceD0Ev
 pub fn stub_0x8b2ef8() -> ! {
-    todo!("0x8b2ef8 `non-virtual thunk to'RBX::UserInputService::~UserInputService()")
+    todo!("0x8b2ef8 non-virtual thunk toRBX::UserInputService::~UserInputService()")
 }
 
 // 0x8b2f04 — __ZThn96_N3RBX16UserInputServiceD1Ev
@@ -473,7 +473,7 @@ pub fn stub_0x8b2ef8() -> ! {
 #[doc(alias = "__ZThn96_N3RBX16UserInputServiceD1Ev")]
 // was: __ZThn96_N3RBX16UserInputServiceD1Ev
 pub fn stub_0x8b2f04() -> ! {
-    todo!("0x8b2f04 `non-virtual thunk to'RBX::UserInputService::~UserInputService()")
+    todo!("0x8b2f04 non-virtual thunk toRBX::UserInputService::~UserInputService()")
 }
 
 // 0x8b2f0c — __ZThn96_N3RBX16UserInputServiceD0Ev
@@ -481,7 +481,7 @@ pub fn stub_0x8b2f04() -> ! {
 #[doc(alias = "__ZThn96_N3RBX16UserInputServiceD0Ev")]
 // was: __ZThn96_N3RBX16UserInputServiceD0Ev
 pub fn stub_0x8b2f0c() -> ! {
-    todo!("0x8b2f0c `non-virtual thunk to'RBX::UserInputService::~UserInputService()")
+    todo!("0x8b2f0c non-virtual thunk toRBX::UserInputService::~UserInputService()")
 }
 
 // 0x8b3330 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_16UserInputService14SwipeDirectionEEERS3_RKT_
@@ -753,7 +753,7 @@ pub fn stub_0x8bdbf0() -> ! {
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX11InputObjectEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX11InputObjectEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_
 pub fn stub_0x8bdc18() -> ! {
-    todo!("0x8bdc18 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::InputObject)>::slot,boost::function<void ()(RBX::InputObject)>,1,void ()(RBX::InputObject)>::call(RBX::InputObject)")
+    todo!("0x8bdc18 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::InputObject)>::slot,boost::function<void ()(RBX::InputObject)>,1,void ()(RBX::InputObject)>::call(RBX::InputObject)")
 }
 
 // 0x8bdc40 — __ZNK5boost9function1IvN3RBX11InputObjectEEclES2_

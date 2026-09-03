@@ -970,4 +970,3 @@ pub fn stub_0xff7636ec0() -> ! {
 pub fn stub_0xff7636ed0() -> ! {
     todo!("0xff7636ed0 RBX::Script::synthetic_ff7636ed0::get(void)")
 }
-

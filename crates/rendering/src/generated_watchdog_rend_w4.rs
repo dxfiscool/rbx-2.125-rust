@@ -335,7 +335,7 @@ pub fn stub_bc5864() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")]
 #[doc(alias = "__ZThn17800_N4Ogre15RbxSceneManagerD0Ev")]
 pub fn stub_bc5868() -> ! {
-    todo!("0xbc5868 `non-virtual thunk to'Ogre::RbxSceneManager::~RbxSceneManager()")
+    todo!("0xbc5868 non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")
 }
 
 // 0xbc5924 — __ZN4Ogre15RbxSceneManagerD2Ev
@@ -351,7 +351,7 @@ pub fn stub_bc5924() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")]
 #[doc(alias = "__ZThn17800_N4Ogre15RbxSceneManagerD1Ev")]
 pub fn stub_bc5fbc() -> ! {
-    todo!("0xbc5fbc `non-virtual thunk to'Ogre::RbxSceneManager::~RbxSceneManager()")
+    todo!("0xbc5fbc non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")
 }
 
 // 0xbc5fc8 — __ZN4Ogre15RbxSceneManager15initSpatialHashEv
@@ -551,7 +551,7 @@ pub fn stub_bca050() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&)")]
 #[doc(alias = "__ZThn17800_N4Ogre15RbxSceneManager21preRenderTargetUpdateERKNS_17RenderTargetEventE")]
 pub fn stub_bca17c() -> ! {
-    todo!("0xbca17c `non-virtual thunk to'Ogre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&)")
+    todo!("0xbca17c non-virtual thunk toOgre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&)")
 }
 
 // 0xbca188 — __ZN4Ogre15RbxSceneManager22postRenderTargetUpdateERKNS_17RenderTargetEventE
@@ -567,7 +567,7 @@ pub fn stub_bca188() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&)")]
 #[doc(alias = "__ZThn17800_N4Ogre15RbxSceneManager22postRenderTargetUpdateERKNS_17RenderTargetEventE")]
 pub fn stub_bca240() -> ! {
-    todo!("0xbca240 `non-virtual thunk to'Ogre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&)")
+    todo!("0xbca240 non-virtual thunk toOgre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&)")
 }
 
 // 0xbca2f4 — __ZN4Ogre15RbxSceneManager15setShadowColourERKNS_11ColourValueE
@@ -679,7 +679,7 @@ pub fn stub_bd7264() -> ! {
 #[doc(alias = "anonymous namespace::replaceMaterialTextures(unsigned long long const&,Ogre::TexturePtr)")]
 #[doc(alias = "__ZN12_GLOBAL__N_123replaceMaterialTexturesERKyN4Ogre10TexturePtrE")]
 pub fn stub_bde2d4() -> ! {
-    todo!("0xbde2d4 `anonymous namespace'::replaceMaterialTextures(unsigned long long const&,Ogre::TexturePtr)")
+    todo!("0xbde2d4 anonymous namespace::replaceMaterialTextures(unsigned long long const&,Ogre::TexturePtr)")
 }
 
 // 0xbe0ba8 — __ZNSt6vectorIN4Ogre10TexturePtrESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_
@@ -783,7 +783,7 @@ pub fn stub_bef0f8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
 #[doc(alias = "__ZThn8_N3RBX10ViewRbxGfx13eventOccurredERKSsPKSt3mapISsSsSt4lessISsEN4Ogre12STLAllocatorISt4pairIS1_SsENS6_22CategorisedAllocPolicyILNS6_14MemoryCategoryE0EEEEEE")]
 pub fn stub_bef138() -> ! {
-    todo!("0xbef138 `non-virtual thunk to'RBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+    todo!("0xbef138 non-virtual thunk toRBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
 }
 
 // 0xbef328 — __ZN4Ogre9SharedPtrINS_8ResourceEED1Ev

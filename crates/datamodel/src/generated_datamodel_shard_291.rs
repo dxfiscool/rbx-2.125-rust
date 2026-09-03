@@ -217,7 +217,7 @@ pub fn stub_0x56dd20() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::call(RBX::NormalId)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")]
 pub fn stub_0x56dd28() -> ! {
-    todo!("0x56dd28 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::call(RBX::NormalId)")
+    todo!("0x56dd28 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::call(RBX::NormalId)")
 }
 
 // 0x56dd30 — __ZNK5boost9function1IvN3RBX8NormalIdEEclES2_
@@ -592,7 +592,7 @@ pub fn stub_0x5704c4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX11HandlesBase8render2dEPNS_5AdornE")]
 pub fn stub_0x570614() -> ! {
-    todo!("0x570614 `non-virtual thunk to'RBX::HandlesBase::render2d(RBX::Adorn *)")
+    todo!("0x570614 non-virtual thunk toRBX::HandlesBase::render2d(RBX::Adorn *)")
 }
 
 // 0x57061c — __ZN3RBX11HandlesBase13render3dAdornEPNS_5AdornE
@@ -608,7 +608,7 @@ pub fn stub_0x57061c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX11HandlesBase13render3dAdornEPNS_5AdornE")]
 pub fn stub_0x57079c() -> ! {
-    todo!("0x57079c `non-virtual thunk to'RBX::HandlesBase::render3dAdorn(RBX::Adorn *)")
+    todo!("0x57079c non-virtual thunk toRBX::HandlesBase::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x5707a4 — __ZN3RBX11HandlesBase18setServerGuiObjectEv

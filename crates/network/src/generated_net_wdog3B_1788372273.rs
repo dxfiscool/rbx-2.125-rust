@@ -143,7 +143,7 @@ pub fn stub_4e14f8() -> ! {
 // 0x4e1618 — __GLOBAL__I_a_191
 #[doc(alias = "global constructor keyed to_a_191")]
 pub fn stub_4e1618() -> ! {
-    todo!("0x4e1618 `global constructor keyed to'_a_191")
+    todo!("0x4e1618 global constructor keyed to_a_191")
 }
 
 // 0x4e46a8 — __ZNK3RBX13VelocityMotor7getHoleEv
@@ -287,14 +287,14 @@ pub fn stub_4e51d8() -> ! {
 // type: void __fastcall(RBX::Feature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Feature::~Feature()")]
 pub fn stub_4e51dc() -> ! {
-    todo!("0x4e51dc `non-virtual thunk to'RBX::Feature::~Feature()")
+    todo!("0x4e51dc non-virtual thunk toRBX::Feature::~Feature()")
 }
 
 // 0x4e51e4 — __ZThn36_N3RBX7FeatureD0Ev
 // type: void __fastcall(RBX::Feature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Feature::~Feature()")]
 pub fn stub_4e51e4() -> ! {
-    todo!("0x4e51e4 `non-virtual thunk to'RBX::Feature::~Feature()")
+    todo!("0x4e51e4 non-virtual thunk toRBX::Feature::~Feature()")
 }
 
 // 0x4e51ec — __ZN3RBX7FeatureD2Ev
@@ -308,14 +308,14 @@ pub fn stub_4e51ec() -> ! {
 // type: void __fastcall(RBX::Feature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Feature::~Feature()")]
 pub fn stub_4e52a8() -> ! {
-    todo!("0x4e52a8 `non-virtual thunk to'RBX::Feature::~Feature()")
+    todo!("0x4e52a8 non-virtual thunk toRBX::Feature::~Feature()")
 }
 
 // 0x4e52b0 — __ZThn36_N3RBX7FeatureD1Ev
 // type: void __fastcall(RBX::Feature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Feature::~Feature()")]
 pub fn stub_4e52b0() -> ! {
-    todo!("0x4e52b0 `non-virtual thunk to'RBX::Feature::~Feature()")
+    todo!("0x4e52b0 non-virtual thunk toRBX::Feature::~Feature()")
 }
 
 // 0x4e52b8 — __ZNK3RBX7Feature14getRenderCoordERN3G3D15CoordinateFrameE
@@ -341,7 +341,7 @@ pub fn stub_4e555c() -> ! {
 // 0x4e55ac — __ZThn92_N3RBX7Feature14render3dSelectEPNS_5AdornENS_11SelectStateE
 #[doc(alias = "non-virtual thunk toRBX::Feature::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
 pub fn stub_4e55ac() -> ! {
-    todo!("0x4e55ac `non-virtual thunk to'RBX::Feature::render3dSelect(RBX::Adorn *,RBX::SelectState)")
+    todo!("0x4e55ac non-virtual thunk toRBX::Feature::render3dSelect(RBX::Adorn *,RBX::SelectState)")
 }
 
 // 0x4e55b4 — __ZN3RBX4HoleC2Ev
@@ -362,7 +362,7 @@ pub fn stub_4e57b4() -> ! {
 // type: _DWORD __fastcall(RBX::Hole *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::Hole::render3dAdorn(RBX::Adorn *)")]
 pub fn stub_4e5810() -> ! {
-    todo!("0x4e5810 `non-virtual thunk to'RBX::Hole::render3dAdorn(RBX::Adorn *)")
+    todo!("0x4e5810 non-virtual thunk toRBX::Hole::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x4e5818 — __ZN3RBX12MotorFeatureC2Ev
@@ -383,7 +383,7 @@ pub fn stub_4e5a18() -> ! {
 // type: _DWORD __fastcall(RBX::MotorFeature *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::MotorFeature::render3dAdorn(RBX::Adorn *)")]
 pub fn stub_4e5a70() -> ! {
-    todo!("0x4e5a70 `non-virtual thunk to'RBX::MotorFeature::render3dAdorn(RBX::Adorn *)")
+    todo!("0x4e5a70 non-virtual thunk toRBX::MotorFeature::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x4e5a78 — __ZN3RBX12MotorFeature7canJoinEPNS_8InstanceES2_
@@ -425,14 +425,14 @@ pub fn stub_4e5fbc() -> ! {
 // type: void __fastcall(RBX::VelocityMotor *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VelocityMotor::~VelocityMotor()")]
 pub fn stub_4e5fc0() -> ! {
-    todo!("0x4e5fc0 `non-virtual thunk to'RBX::VelocityMotor::~VelocityMotor()")
+    todo!("0x4e5fc0 non-virtual thunk toRBX::VelocityMotor::~VelocityMotor()")
 }
 
 // 0x4e5fc8 — __ZThn36_N3RBX13VelocityMotorD0Ev
 // type: void __fastcall(RBX::VelocityMotor *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VelocityMotor::~VelocityMotor()")]
 pub fn stub_4e5fc8() -> ! {
-    todo!("0x4e5fc8 `non-virtual thunk to'RBX::VelocityMotor::~VelocityMotor()")
+    todo!("0x4e5fc8 non-virtual thunk toRBX::VelocityMotor::~VelocityMotor()")
 }
 
 // 0x4e5fd0 — __ZN3RBX13VelocityMotorD2Ev
@@ -446,14 +446,14 @@ pub fn stub_4e5fd0() -> ! {
 // type: void __fastcall(RBX::VelocityMotor *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VelocityMotor::~VelocityMotor()")]
 pub fn stub_4e6114() -> ! {
-    todo!("0x4e6114 `non-virtual thunk to'RBX::VelocityMotor::~VelocityMotor()")
+    todo!("0x4e6114 non-virtual thunk toRBX::VelocityMotor::~VelocityMotor()")
 }
 
 // 0x4e611c — __ZThn36_N3RBX13VelocityMotorD1Ev
 // type: void __fastcall(RBX::VelocityMotor *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::VelocityMotor::~VelocityMotor()")]
 pub fn stub_4e611c() -> ! {
-    todo!("0x4e611c `non-virtual thunk to'RBX::VelocityMotor::~VelocityMotor()")
+    todo!("0x4e611c non-virtual thunk toRBX::VelocityMotor::~VelocityMotor()")
 }
 
 // 0x4e6124 — __ZN3RBX13VelocityMotor7setPartEiPNS_7FeatureE
@@ -619,7 +619,7 @@ pub fn stub_4e7168() -> ! {
 // type: _DWORD __fastcall(RBX::Feature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Feature::shouldRender3dAdorn(void)const")]
 pub fn stub_4e7190() -> ! {
-    todo!("0x4e7190 `non-virtual thunk to'RBX::Feature::shouldRender3dAdorn(void)const")
+    todo!("0x4e7190 non-virtual thunk toRBX::Feature::shouldRender3dAdorn(void)const")
 }
 
 // 0x4e7194 — __ZN3RBX4HoleD1Ev
@@ -653,14 +653,14 @@ pub fn stub_4e7248() -> ! {
 // type: void __fastcall(RBX::Hole *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Hole::~Hole()")]
 pub fn stub_4e724c() -> ! {
-    todo!("0x4e724c `non-virtual thunk to'RBX::Hole::~Hole()")
+    todo!("0x4e724c non-virtual thunk toRBX::Hole::~Hole()")
 }
 
 // 0x4e7254 — __ZThn32_N3RBX4HoleD0Ev
 // type: void __fastcall(RBX::Hole *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Hole::~Hole()")]
 pub fn stub_4e7254() -> ! {
-    todo!("0x4e7254 `non-virtual thunk to'RBX::Hole::~Hole()")
+    todo!("0x4e7254 non-virtual thunk toRBX::Hole::~Hole()")
 }
 
 // 0x4e72f8 — __ZThn32_NK3RBX14FactoryProductINS_4HoleENS_7FeatureELZNS_5sHoleEENS_8InstanceEE12getClassNameEv
@@ -673,14 +673,14 @@ pub fn stub_4e72f8() -> ! {
 // type: void __fastcall(RBX::Hole *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Hole::~Hole()")]
 pub fn stub_4e7308() -> ! {
-    todo!("0x4e7308 `non-virtual thunk to'RBX::Hole::~Hole()")
+    todo!("0x4e7308 non-virtual thunk toRBX::Hole::~Hole()")
 }
 
 // 0x4e7310 — __ZThn36_N3RBX4HoleD0Ev
 // type: void __fastcall(RBX::Hole *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Hole::~Hole()")]
 pub fn stub_4e7310() -> ! {
-    todo!("0x4e7310 `non-virtual thunk to'RBX::Hole::~Hole()")
+    todo!("0x4e7310 non-virtual thunk toRBX::Hole::~Hole()")
 }
 
 // 0x4e73b4 — __ZN3RBX12MotorFeatureD1Ev
@@ -707,14 +707,14 @@ pub fn stub_4e7458() -> ! {
 // type: void __fastcall(RBX::MotorFeature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MotorFeature::~MotorFeature()")]
 pub fn stub_4e7468() -> ! {
-    todo!("0x4e7468 `non-virtual thunk to'RBX::MotorFeature::~MotorFeature()")
+    todo!("0x4e7468 non-virtual thunk toRBX::MotorFeature::~MotorFeature()")
 }
 
 // 0x4e7470 — __ZThn32_N3RBX12MotorFeatureD0Ev
 // type: void __fastcall(RBX::MotorFeature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MotorFeature::~MotorFeature()")]
 pub fn stub_4e7470() -> ! {
-    todo!("0x4e7470 `non-virtual thunk to'RBX::MotorFeature::~MotorFeature()")
+    todo!("0x4e7470 non-virtual thunk toRBX::MotorFeature::~MotorFeature()")
 }
 
 // 0x4e7514 — __ZThn32_NK3RBX14FactoryProductINS_12MotorFeatureENS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEE12getClassNameEv
@@ -727,14 +727,14 @@ pub fn stub_4e7514() -> ! {
 // type: void __fastcall(RBX::MotorFeature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MotorFeature::~MotorFeature()")]
 pub fn stub_4e7524() -> ! {
-    todo!("0x4e7524 `non-virtual thunk to'RBX::MotorFeature::~MotorFeature()")
+    todo!("0x4e7524 non-virtual thunk toRBX::MotorFeature::~MotorFeature()")
 }
 
 // 0x4e752c — __ZThn36_N3RBX12MotorFeatureD0Ev
 // type: void __fastcall(RBX::MotorFeature *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MotorFeature::~MotorFeature()")]
 pub fn stub_4e752c() -> ! {
-    todo!("0x4e752c `non-virtual thunk to'RBX::MotorFeature::~MotorFeature()")
+    todo!("0x4e752c non-virtual thunk toRBX::MotorFeature::~MotorFeature()")
 }
 
 // 0x4e75d0 — __ZNK3RBX13JointInstance21getPersistentDataCostEv

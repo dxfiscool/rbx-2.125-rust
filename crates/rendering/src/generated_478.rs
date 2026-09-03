@@ -252,7 +252,7 @@ pub fn stub_0x7bc720() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn268_N3RBX8Humanoid13render3dAdornEPNS_5AdornE")]
 pub fn stub_0x7bc79c() -> ! {
-    todo!("0x7bc79c `non-virtual thunk to'RBX::Humanoid::render3dAdorn(RBX::Adorn *)")
+    todo!("0x7bc79c non-virtual thunk toRBX::Humanoid::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x7bc7a4 — __ZN3RBX8Humanoid17renderMultiplayerEPNS_5AdornERKNS_6CameraE
@@ -273,7 +273,7 @@ pub fn stub_0x7bcc68() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::render3dSortedPosition(void)const")]
 #[doc(alias = "__ZThn268_NK3RBX8Humanoid22render3dSortedPositionEv")]
 pub fn stub_0x7bcc9c() -> ! {
-    todo!("0x7bcc9c `non-virtual thunk to'RBX::Humanoid::render3dSortedPosition(void)const")
+    todo!("0x7bcc9c non-virtual thunk toRBX::Humanoid::render3dSortedPosition(void)const")
 }
 
 // 0x7bccac — __ZN3RBX8Humanoid19render3dSortedAdornEPNS_5AdornE
@@ -287,7 +287,7 @@ pub fn stub_0x7bccac() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::render3dSortedAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn268_N3RBX8Humanoid19render3dSortedAdornEPNS_5AdornE")]
 pub fn stub_0x7bcce0() -> ! {
-    todo!("0x7bcce0 `non-virtual thunk to'RBX::Humanoid::render3dSortedAdorn(RBX::Adorn *)")
+    todo!("0x7bcce0 non-virtual thunk toRBX::Humanoid::render3dSortedAdorn(RBX::Adorn *)")
 }
 
 // 0x7bce4c — __ZN3RBX8Humanoid17getRenderLocationEv
@@ -301,7 +301,7 @@ pub fn stub_0x7bce4c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::getRenderLocation(void)")]
 #[doc(alias = "__ZThn292_N3RBX8Humanoid17getRenderLocationEv")]
 pub fn stub_0x7bcee4() -> ! {
-    todo!("0x7bcee4 `non-virtual thunk to'RBX::Humanoid::getRenderLocation(void)")
+    todo!("0x7bcee4 non-virtual thunk toRBX::Humanoid::getRenderLocation(void)")
 }
 
 // 0x7bcef4 — __ZN3RBX8Humanoid13getRenderSizeEv
@@ -315,7 +315,7 @@ pub fn stub_0x7bcef4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::getRenderSize(void)")]
 #[doc(alias = "__ZThn292_N3RBX8Humanoid13getRenderSizeEv")]
 pub fn stub_0x7bcf1c() -> ! {
-    todo!("0x7bcf1c `non-virtual thunk to'RBX::Humanoid::getRenderSize(void)")
+    todo!("0x7bcf1c non-virtual thunk toRBX::Humanoid::getRenderSize(void)")
 }
 
 // 0x7bd338 — __ZN3RBX8Humanoid32setFirstPersonRotationalVelocityERKN3G3D7Vector3Eb
@@ -329,7 +329,7 @@ pub fn stub_0x7bd338() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::setFirstPersonRotationalVelocity(G3D::Vector3 const&,bool)")]
 #[doc(alias = "__ZThn292_N3RBX8Humanoid32setFirstPersonRotationalVelocityERKN3G3D7Vector3Eb")]
 pub fn stub_0x7bd574() -> ! {
-    todo!("0x7bd574 `non-virtual thunk to'RBX::Humanoid::setFirstPersonRotationalVelocity(G3D::Vector3 const&,bool)")
+    todo!("0x7bd574 non-virtual thunk toRBX::Humanoid::setFirstPersonRotationalVelocity(G3D::Vector3 const&,bool)")
 }
 
 // 0x7bf638 — __ZNK3RBX8Humanoid19shouldRender3dAdornEv
@@ -350,14 +350,14 @@ pub fn stub_0x7bf63c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZThn268_NK3RBX8Humanoid19shouldRender3dAdornEv")]
 pub fn stub_0x7bf69c() -> ! {
-    todo!("0x7bf69c `non-virtual thunk to'RBX::Humanoid::shouldRender3dAdorn(void)const")
+    todo!("0x7bf69c non-virtual thunk toRBX::Humanoid::shouldRender3dAdorn(void)const")
 }
 
 // 0x7bf6a0 — __ZThn268_NK3RBX8Humanoid25shouldRender3dSortedAdornEv
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::shouldRender3dSortedAdorn(void)const")]
 #[doc(alias = "__ZThn268_NK3RBX8Humanoid25shouldRender3dSortedAdornEv")]
 pub fn stub_0x7bf6a0() -> ! {
-    todo!("0x7bf6a0 `non-virtual thunk to'RBX::Humanoid::shouldRender3dSortedAdorn(void)const")
+    todo!("0x7bf6a0 non-virtual thunk toRBX::Humanoid::shouldRender3dSortedAdorn(void)const")
 }
 
 // 0x7cdba4 — __ZN3RBX5HUMAN13HumanoidState13render3dAdornEPNS_5AdornE
@@ -448,7 +448,7 @@ pub fn stub_0x83548c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::NotificationBox::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX15NotificationBox8render2dEPNS_5AdornE")]
 pub fn stub_0x835490() -> ! {
-    todo!("0x835490 `non-virtual thunk to'RBX::NotificationBox::render2d(RBX::Adorn *)")
+    todo!("0x835490 non-virtual thunk toRBX::NotificationBox::render2d(RBX::Adorn *)")
 }
 
 // 0x83753c — __ZN3RBX18NotificationObject8render2dEPNS_5AdornE
@@ -462,7 +462,7 @@ pub fn stub_0x83753c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::NotificationObject::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX18NotificationObject8render2dEPNS_5AdornE")]
 pub fn stub_0x837540() -> ! {
-    todo!("0x837540 `non-virtual thunk to'RBX::NotificationObject::render2d(RBX::Adorn *)")
+    todo!("0x837540 non-virtual thunk toRBX::NotificationObject::render2d(RBX::Adorn *)")
 }
 
 // 0x84fa9c — __ZN3RBX18RenderHooksService14captureMetricsEv
@@ -595,28 +595,28 @@ pub fn stub_0x850024() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RenderHooksService::~RenderHooksService()")]
 #[doc(alias = "__ZThn32_N3RBX18RenderHooksServiceD1Ev")]
 pub fn stub_0x8500ec() -> ! {
-    todo!("0x8500ec `non-virtual thunk to'RBX::RenderHooksService::~RenderHooksService()")
+    todo!("0x8500ec non-virtual thunk toRBX::RenderHooksService::~RenderHooksService()")
 }
 
 // 0x8500f4 — __ZThn32_N3RBX18RenderHooksServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::RenderHooksService::~RenderHooksService()")]
 #[doc(alias = "__ZThn32_N3RBX18RenderHooksServiceD0Ev")]
 pub fn stub_0x8500f4() -> ! {
-    todo!("0x8500f4 `non-virtual thunk to'RBX::RenderHooksService::~RenderHooksService()")
+    todo!("0x8500f4 non-virtual thunk toRBX::RenderHooksService::~RenderHooksService()")
 }
 
 // 0x8501c0 — __ZThn36_N3RBX18RenderHooksServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::RenderHooksService::~RenderHooksService()")]
 #[doc(alias = "__ZThn36_N3RBX18RenderHooksServiceD1Ev")]
 pub fn stub_0x8501c0() -> ! {
-    todo!("0x8501c0 `non-virtual thunk to'RBX::RenderHooksService::~RenderHooksService()")
+    todo!("0x8501c0 non-virtual thunk toRBX::RenderHooksService::~RenderHooksService()")
 }
 
 // 0x8501c8 — __ZThn36_N3RBX18RenderHooksServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::RenderHooksService::~RenderHooksService()")]
 #[doc(alias = "__ZThn36_N3RBX18RenderHooksServiceD0Ev")]
 pub fn stub_0x8501c8() -> ! {
-    todo!("0x8501c8 `non-virtual thunk to'RBX::RenderHooksService::~RenderHooksService()")
+    todo!("0x8501c8 non-virtual thunk toRBX::RenderHooksService::~RenderHooksService()")
 }
 
 // 0x85026c — __ZN3RBX18RenderHooksServiceD2Ev
@@ -651,7 +651,7 @@ pub fn stub_0x85e2bc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TextureTrail::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX12TextureTrail13render3dAdornEPNS_5AdornE")]
 pub fn stub_0x85e7f0() -> ! {
-    todo!("0x85e7f0 `non-virtual thunk to'RBX::TextureTrail::render3dAdorn(RBX::Adorn *)")
+    todo!("0x85e7f0 non-virtual thunk toRBX::TextureTrail::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x867a90 — __ZN3RBX9FloorWire14setTextureSizeEN3G3D7Vector2E
@@ -672,7 +672,7 @@ pub fn stub_0x867de4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::FloorWire::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX9FloorWire13render3dAdornEPNS_5AdornE")]
 pub fn stub_0x8685d8() -> ! {
-    todo!("0x8685d8 `non-virtual thunk to'RBX::FloorWire::render3dAdorn(RBX::Adorn *)")
+    todo!("0x8685d8 non-virtual thunk toRBX::FloorWire::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x868ce0 — __ZNK3RBX9GuiBase3d19shouldRender3dAdornEv
@@ -686,7 +686,7 @@ pub fn stub_0x868ce0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GuiBase3d::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX9GuiBase3d19shouldRender3dAdornEv")]
 pub fn stub_0x8691c8() -> ! {
-    todo!("0x8691c8 `non-virtual thunk to'RBX::GuiBase3d::shouldRender3dAdorn(void)const")
+    todo!("0x8691c8 non-virtual thunk toRBX::GuiBase3d::shouldRender3dAdorn(void)const")
 }
 
 // 0x86f1ac — __ZN3RBX12MovePositionERN3G3D12Vector3int16ENS_5Voxel13FaceDirectionE

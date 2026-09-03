@@ -746,7 +746,7 @@ pub fn stub_0x6bec10() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::KernelJoint::getConnectorKernelType(void)const")]
 #[doc(alias = "__ZThn152_NK3RBX11KernelJoint22getConnectorKernelTypeEv")]
 pub fn stub_0x6bec14() -> ! {
-    todo!("0x6bec14 `non-virtual thunk to'RBX::KernelJoint::getConnectorKernelType(void)const")
+    todo!("0x6bec14 non-virtual thunk toRBX::KernelJoint::getConnectorKernelType(void)const")
 }
 
 // 0x6c2b88 — __ZNK3RBX10IPipelined7inStageENS_6IStage9StageTypeE
@@ -834,26 +834,26 @@ pub fn stub_0x6ded30() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemIiED1Ev")]
 pub fn stub_0x6ded50() -> ! {
-    todo!("0x6ded50 `non-virtual thunk to'RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
+    todo!("0x6ded50 non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
 }
 
 // 0x6dee98 — __ZThn32_N3RBX5Stats14TypedStatsItemIiED0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemIiED0Ev")]
 pub fn stub_0x6dee98() -> ! {
-    todo!("0x6dee98 `non-virtual thunk to'RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
+    todo!("0x6dee98 non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
 }
 
 // 0x6deff8 — __ZThn36_N3RBX5Stats14TypedStatsItemIiED1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats14TypedStatsItemIiED1Ev")]
 pub fn stub_0x6deff8() -> ! {
-    todo!("0x6deff8 `non-virtual thunk to'RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
+    todo!("0x6deff8 non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
 }
 
 // 0x6df140 — __ZThn36_N3RBX5Stats14TypedStatsItemIiED0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats14TypedStatsItemIiED0Ev")]
 pub fn stub_0x6df140() -> ! {
-    todo!("0x6df140 `non-virtual thunk to'RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
+    todo!("0x6df140 non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
 }

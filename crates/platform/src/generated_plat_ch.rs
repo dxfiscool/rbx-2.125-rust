@@ -21,14 +21,14 @@ pub fn stub_5092dc() -> ! {
 // type: void __fastcall(RBX::Settings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Settings::~Settings()")]
 pub fn stub_509308() -> ! {
-    todo!("0x509308 `non-virtual thunk to'RBX::Settings::~Settings()")
+    todo!("0x509308 non-virtual thunk toRBX::Settings::~Settings()")
 }
 
 // 0x509344 - __ZThn32_N3RBX8SettingsD0Ev / `non-virtual thunk to'RBX::Settings::~Settings()
 // type: void __fastcall(RBX::Settings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Settings::~Settings()")]
 pub fn stub_509344() -> ! {
-    todo!("0x509344 `non-virtual thunk to'RBX::Settings::~Settings()")
+    todo!("0x509344 non-virtual thunk toRBX::Settings::~Settings()")
 }
 
 // 0x509418 - __ZThn32_NK3RBX17NonFactoryProductINS_15ServiceProviderELZNS_9sSettingsEEE12getClassNameEv
@@ -41,14 +41,14 @@ pub fn stub_509418() -> ! {
 // type: void __fastcall(RBX::Settings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Settings::~Settings()")]
 pub fn stub_509440() -> ! {
-    todo!("0x509440 `non-virtual thunk to'RBX::Settings::~Settings()")
+    todo!("0x509440 non-virtual thunk toRBX::Settings::~Settings()")
 }
 
 // 0x50947c - __ZThn36_N3RBX8SettingsD0Ev / `non-virtual thunk to'RBX::Settings::~Settings()
 // type: void __fastcall(RBX::Settings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Settings::~Settings()")]
 pub fn stub_50947c() -> ! {
-    todo!("0x50947c `non-virtual thunk to'RBX::Settings::~Settings()")
+    todo!("0x50947c non-virtual thunk toRBX::Settings::~Settings()")
 }
 
 // 0x509554 - __ZNK3RBX17NonFactoryProductINS_8SettingsELZNS_23sGlobalAdvancedSettingsEEE12getClassNameEv
@@ -87,14 +87,14 @@ pub fn stub_509850() -> ! {
 // type: void __fastcall(RBX::GlobalBasicSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GlobalBasicSettings::~GlobalBasicSettings()")]
 pub fn stub_509878() -> ! {
-    todo!("0x509878 `non-virtual thunk to'RBX::GlobalBasicSettings::~GlobalBasicSettings()")
+    todo!("0x509878 non-virtual thunk toRBX::GlobalBasicSettings::~GlobalBasicSettings()")
 }
 
 // 0x5099d0 - __ZThn32_N3RBX19GlobalBasicSettingsD0Ev / `non-virtual thunk to'RBX::GlobalBasicSettings::~GlobalBasicSettings()
 // type: void __fastcall(RBX::GlobalBasicSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GlobalBasicSettings::~GlobalBasicSettings()")]
 pub fn stub_5099d0() -> ! {
-    todo!("0x5099d0 `non-virtual thunk to'RBX::GlobalBasicSettings::~GlobalBasicSettings()")
+    todo!("0x5099d0 non-virtual thunk toRBX::GlobalBasicSettings::~GlobalBasicSettings()")
 }
 
 // 0x509b40 - __ZThn32_NK3RBX17NonFactoryProductINS_8SettingsELZNS_20sGlobalBasicSettingsEEE12getClassNameEv
@@ -107,14 +107,14 @@ pub fn stub_509b40() -> ! {
 // type: void __fastcall(RBX::GlobalBasicSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GlobalBasicSettings::~GlobalBasicSettings()")]
 pub fn stub_509b68() -> ! {
-    todo!("0x509b68 `non-virtual thunk to'RBX::GlobalBasicSettings::~GlobalBasicSettings()")
+    todo!("0x509b68 non-virtual thunk toRBX::GlobalBasicSettings::~GlobalBasicSettings()")
 }
 
 // 0x509cc8 - __ZThn36_N3RBX19GlobalBasicSettingsD0Ev / `non-virtual thunk to'RBX::GlobalBasicSettings::~GlobalBasicSettings()
 // type: void __fastcall(RBX::GlobalBasicSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GlobalBasicSettings::~GlobalBasicSettings()")]
 pub fn stub_509cc8() -> ! {
-    todo!("0x509cc8 `non-virtual thunk to'RBX::GlobalBasicSettings::~GlobalBasicSettings()")
+    todo!("0x509cc8 non-virtual thunk toRBX::GlobalBasicSettings::~GlobalBasicSettings()")
 }
 
 // 0x509e3c - __ZN3RBX4Name13callDoDeclareILZNS_20sGlobalBasicSettingsEEEEvv

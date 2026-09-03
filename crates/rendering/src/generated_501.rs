@@ -117,11 +117,11 @@ pub fn stub_0xe243d4() -> ! {
 
 // 0xe243dc — __ZThn188_NK4Ogre16SimpleRenderable11getMaterialEv
 // type: _DWORD __fastcall(Ogre::SimpleRenderable *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::SimpleRenderable::getMaterial(void)const")]
+#[doc(alias = "non-virtual thunk toOgre::SimpleRenderable::getMaterial(void)const")]
 #[doc(alias = "__ZThn188_NK4Ogre16SimpleRenderable11getMaterialEv")]
 // was: `non-virtual thunk toOgre::SimpleRenderable::getMaterial(void)const
 pub fn stub_0xe243dc() -> ! {
-    todo!("0xe243dc `non-virtual thunk toOgre::SimpleRenderable::getMaterial(void)const")
+    todo!("0xe243dc non-virtual thunk toOgre::SimpleRenderable::getMaterial(void)const")
 }
 
 // 0xe243e0 — __ZN4Ogre16SimpleRenderable18getRenderOperationERNS_15RenderOperationE
@@ -133,11 +133,11 @@ pub fn stub_0xe243e0() -> ! {
 }
 
 // 0xe243fc — __ZThn188_N4Ogre16SimpleRenderable18getRenderOperationERNS_15RenderOperationE
-#[doc(alias = "`non-virtual thunk toOgre::SimpleRenderable::getRenderOperation(Ogre::RenderOperation &)")]
+#[doc(alias = "non-virtual thunk toOgre::SimpleRenderable::getRenderOperation(Ogre::RenderOperation &)")]
 #[doc(alias = "__ZThn188_N4Ogre16SimpleRenderable18getRenderOperationERNS_15RenderOperationE")]
 // was: `non-virtual thunk toOgre::SimpleRenderable::getRenderOperation(Ogre::RenderOperation &)
 pub fn stub_0xe243fc() -> ! {
-    todo!("0xe243fc `non-virtual thunk toOgre::SimpleRenderable::getRenderOperation(Ogre::RenderOperation &)")
+    todo!("0xe243fc non-virtual thunk toOgre::SimpleRenderable::getRenderOperation(Ogre::RenderOperation &)")
 }
 
 // 0xe24418 — __ZN4Ogre16SimpleRenderable18setRenderOperationERKNS_15RenderOperationE
@@ -211,20 +211,20 @@ pub fn stub_0xe24624() -> ! {
 
 // 0xe24630 — __ZThn4_N4Ogre16SimpleRenderableD0Ev
 // type: void __fastcall(Ogre::SimpleRenderable *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")]
+#[doc(alias = "non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")]
 #[doc(alias = "__ZThn4_N4Ogre16SimpleRenderableD0Ev")]
 // was: `non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()
 pub fn stub_0xe24630() -> ! {
-    todo!("0xe24630 `non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")
+    todo!("0xe24630 non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")
 }
 
 // 0xe246c4 — __ZThn188_N4Ogre16SimpleRenderableD0Ev
 // type: void __fastcall(Ogre::SimpleRenderable *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")]
+#[doc(alias = "non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")]
 #[doc(alias = "__ZThn188_N4Ogre16SimpleRenderableD0Ev")]
 // was: `non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()
 pub fn stub_0xe246c4() -> ! {
-    todo!("0xe246c4 `non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")
+    todo!("0xe246c4 non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")
 }
 
 // 0xe24758 — __ZN4Ogre16SimpleRenderableD2Ev
@@ -238,20 +238,20 @@ pub fn stub_0xe24758() -> ! {
 
 // 0xe24918 — __ZThn4_N4Ogre16SimpleRenderableD1Ev
 // type: void __fastcall(Ogre::SimpleRenderable *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")]
+#[doc(alias = "non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")]
 #[doc(alias = "__ZThn4_N4Ogre16SimpleRenderableD1Ev")]
 // was: `non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()
 pub fn stub_0xe24918() -> ! {
-    todo!("0xe24918 `non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")
+    todo!("0xe24918 non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")
 }
 
 // 0xe24924 — __ZThn188_N4Ogre16SimpleRenderableD1Ev
 // type: void __fastcall(Ogre::SimpleRenderable *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")]
+#[doc(alias = "non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")]
 #[doc(alias = "__ZThn188_N4Ogre16SimpleRenderableD1Ev")]
 // was: `non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()
 pub fn stub_0xe24924() -> ! {
-    todo!("0xe24924 `non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")
+    todo!("0xe24924 non-virtual thunk toOgre::SimpleRenderable::~SimpleRenderable()")
 }
 
 // 0xe24930 — __ZNK4Ogre16SimpleRenderable14getMovableTypeEv
@@ -274,11 +274,11 @@ pub fn stub_0xe24a24() -> ! {
 
 // 0xe24a34 — __ZThn188_NK4Ogre16SimpleRenderable9getLightsEv
 // type: _DWORD __fastcall(Ogre::SimpleRenderable *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::SimpleRenderable::getLights(void)const")]
+#[doc(alias = "non-virtual thunk toOgre::SimpleRenderable::getLights(void)const")]
 #[doc(alias = "__ZThn188_NK4Ogre16SimpleRenderable9getLightsEv")]
 // was: `non-virtual thunk toOgre::SimpleRenderable::getLights(void)const
 pub fn stub_0xe24a34() -> ! {
-    todo!("0xe24a34 `non-virtual thunk toOgre::SimpleRenderable::getLights(void)const")
+    todo!("0xe24a34 non-virtual thunk toOgre::SimpleRenderable::getLights(void)const")
 }
 
 // 0xe24a78 — __ZN4Ogre12SimpleSplineC1Ev
@@ -462,11 +462,11 @@ pub fn stub_0xe2fcc8() -> ! {
 
 // 0xe2fcd4 — __ZThn4_N4Ogre14StaticGeometry6RegionD0Ev
 // type: void __fastcall(Ogre::StaticGeometry::Region *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::StaticGeometry::Region::~Region()")]
+#[doc(alias = "non-virtual thunk toOgre::StaticGeometry::Region::~Region()")]
 #[doc(alias = "__ZThn4_N4Ogre14StaticGeometry6RegionD0Ev")]
 // was: `non-virtual thunk toOgre::StaticGeometry::Region::~Region()
 pub fn stub_0xe2fcd4() -> ! {
-    todo!("0xe2fcd4 `non-virtual thunk toOgre::StaticGeometry::Region::~Region()")
+    todo!("0xe2fcd4 non-virtual thunk toOgre::StaticGeometry::Region::~Region()")
 }
 
 // 0xe2fd68 — __ZN4Ogre14StaticGeometry6RegionD2Ev
@@ -480,11 +480,11 @@ pub fn stub_0xe2fd68() -> ! {
 
 // 0xe2ff6c — __ZThn4_N4Ogre14StaticGeometry6RegionD1Ev
 // type: void __fastcall(Ogre::StaticGeometry::Region *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::StaticGeometry::Region::~Region()")]
+#[doc(alias = "non-virtual thunk toOgre::StaticGeometry::Region::~Region()")]
 #[doc(alias = "__ZThn4_N4Ogre14StaticGeometry6RegionD1Ev")]
 // was: `non-virtual thunk toOgre::StaticGeometry::Region::~Region()
 pub fn stub_0xe2ff6c() -> ! {
-    todo!("0xe2ff6c `non-virtual thunk toOgre::StaticGeometry::Region::~Region()")
+    todo!("0xe2ff6c non-virtual thunk toOgre::StaticGeometry::Region::~Region()")
 }
 
 // 0xe2ff78 — __ZNK4Ogre14StaticGeometry6Region12getTypeFlagsEv

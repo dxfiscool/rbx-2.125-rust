@@ -23,7 +23,7 @@ pub fn stub_bef0f8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
 #[doc(alias = "__ZThn8_N3RBX10ViewRbxGfx13eventOccurredERKSsPKSt3mapISsSsSt4lessISsEN4Ogre12STLAllocatorISt4pairIS1_SsENS6_22CategorisedAllocPolicyILNS6_14MemoryCategoryE0EEEEEE")]
 pub fn stub_bef138() -> ! {
-    todo!("0xbef138 `non-virtual thunk to'RBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+    todo!("0xbef138 non-virtual thunk toRBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
 }
 
 // 0xbef328 — __ZN4Ogre9SharedPtrINS_8ResourceEED1Ev
@@ -969,4 +969,3 @@ pub fn stub_c24f80() -> ! {
 pub fn stub_c25514() -> ! {
     todo!("0xc25514 void RBX::LightGrid::occupancyFillDF<RBX::CylinderXDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::CylinderXDistanceFunction &)")
 }
-

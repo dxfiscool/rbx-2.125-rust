@@ -34,14 +34,14 @@ pub fn stub_0xe69ae4() -> ! {
 #[doc(alias = "non-virtual thunk to_Ogre::BaseInstanceBatchVTF::~BaseInstanceBatchVTF()")]
 #[doc(alias = "__ZThn48_N4Ogre20BaseInstanceBatchVTFD0Ev")]
 pub fn stub_0xe69af0() -> ! {
-    todo!("0xe69af0 `non-virtual thunk to'Ogre::BaseInstanceBatchVTF::~BaseInstanceBatchVTF()")
+    todo!("0xe69af0 non-virtual thunk toOgre::BaseInstanceBatchVTF::~BaseInstanceBatchVTF()")
 }
 
 // 0xe69b84 — __ZThn52_N4Ogre20BaseInstanceBatchVTFD0Ev
 #[doc(alias = "non-virtual thunk to_Ogre::BaseInstanceBatchVTF::~BaseInstanceBatchVTF()")]
 #[doc(alias = "__ZThn52_N4Ogre20BaseInstanceBatchVTFD0Ev")]
 pub fn stub_0xe69b84() -> ! {
-    todo!("0xe69b84 `non-virtual thunk to'Ogre::BaseInstanceBatchVTF::~BaseInstanceBatchVTF()")
+    todo!("0xe69b84 non-virtual thunk toOgre::BaseInstanceBatchVTF::~BaseInstanceBatchVTF()")
 }
 
 // 0xe69c18 — __ZN4Ogre20BaseInstanceBatchVTFD2Ev
@@ -55,14 +55,14 @@ pub fn stub_0xe69c18() -> ! {
 #[doc(alias = "non-virtual thunk to_Ogre::BaseInstanceBatchVTF::~BaseInstanceBatchVTF()")]
 #[doc(alias = "__ZThn48_N4Ogre20BaseInstanceBatchVTFD1Ev")]
 pub fn stub_0xe6a010() -> ! {
-    todo!("0xe6a010 `non-virtual thunk to'Ogre::BaseInstanceBatchVTF::~BaseInstanceBatchVTF()")
+    todo!("0xe6a010 non-virtual thunk toOgre::BaseInstanceBatchVTF::~BaseInstanceBatchVTF()")
 }
 
 // 0xe6a01c — __ZThn52_N4Ogre20BaseInstanceBatchVTFD1Ev
 #[doc(alias = "non-virtual thunk to_Ogre::BaseInstanceBatchVTF::~BaseInstanceBatchVTF()")]
 #[doc(alias = "__ZThn52_N4Ogre20BaseInstanceBatchVTFD1Ev")]
 pub fn stub_0xe6a01c() -> ! {
-    todo!("0xe6a01c `non-virtual thunk to'Ogre::BaseInstanceBatchVTF::~BaseInstanceBatchVTF()")
+    todo!("0xe6a01c non-virtual thunk toOgre::BaseInstanceBatchVTF::~BaseInstanceBatchVTF()")
 }
 
 // 0xe6a028 — __ZN4Ogre20BaseInstanceBatchVTF9buildFromEPKNS_7SubMeshERKNS_15RenderOperationE
@@ -153,7 +153,7 @@ pub fn stub_0xe6b498() -> ! {
 #[doc(alias = "non-virtual thunk to_Ogre::BaseInstanceBatchVTF::_updateRenderQueue(Ogre::RenderQueue *)")]
 #[doc(alias = "__ZThn48_N4Ogre20BaseInstanceBatchVTF18_updateRenderQueueEPNS_11RenderQueueE")]
 pub fn stub_0xe6b4cc() -> ! {
-    todo!("0xe6b4cc `non-virtual thunk to'Ogre::BaseInstanceBatchVTF::_updateRenderQueue(Ogre::RenderQueue *)")
+    todo!("0xe6b4cc non-virtual thunk toOgre::BaseInstanceBatchVTF::_updateRenderQueue(Ogre::RenderQueue *)")
 }
 
 // 0xe6b504 — __ZN4Ogre16InstanceBatchVTFC1EPNS_15InstanceManagerERNS_7MeshPtrERKNS_11MaterialPtrEmPKSt6vectorItNS_12STLAllocatorItNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEERKSs
@@ -181,28 +181,28 @@ pub fn stub_0xe6b5d0() -> ! {
 #[doc(alias = "non-virtual thunk to_Ogre::InstanceBatchVTF::~InstanceBatchVTF()")]
 #[doc(alias = "__ZThn48_N4Ogre16InstanceBatchVTFD0Ev")]
 pub fn stub_0xe6b5dc() -> ! {
-    todo!("0xe6b5dc `non-virtual thunk to'Ogre::InstanceBatchVTF::~InstanceBatchVTF()")
+    todo!("0xe6b5dc non-virtual thunk toOgre::InstanceBatchVTF::~InstanceBatchVTF()")
 }
 
 // 0xe6b670 — __ZThn52_N4Ogre16InstanceBatchVTFD0Ev
 #[doc(alias = "non-virtual thunk to_Ogre::InstanceBatchVTF::~InstanceBatchVTF()")]
 #[doc(alias = "__ZThn52_N4Ogre16InstanceBatchVTFD0Ev")]
 pub fn stub_0xe6b670() -> ! {
-    todo!("0xe6b670 `non-virtual thunk to'Ogre::InstanceBatchVTF::~InstanceBatchVTF()")
+    todo!("0xe6b670 non-virtual thunk toOgre::InstanceBatchVTF::~InstanceBatchVTF()")
 }
 
 // 0xe6b704 — __ZThn48_N4Ogre16InstanceBatchVTFD1Ev
 #[doc(alias = "non-virtual thunk to_Ogre::InstanceBatchVTF::~InstanceBatchVTF()")]
 #[doc(alias = "__ZThn48_N4Ogre16InstanceBatchVTFD1Ev")]
 pub fn stub_0xe6b704() -> ! {
-    todo!("0xe6b704 `non-virtual thunk to'Ogre::InstanceBatchVTF::~InstanceBatchVTF()")
+    todo!("0xe6b704 non-virtual thunk toOgre::InstanceBatchVTF::~InstanceBatchVTF()")
 }
 
 // 0xe6b710 — __ZThn52_N4Ogre16InstanceBatchVTFD1Ev
 #[doc(alias = "non-virtual thunk to_Ogre::InstanceBatchVTF::~InstanceBatchVTF()")]
 #[doc(alias = "__ZThn52_N4Ogre16InstanceBatchVTFD1Ev")]
 pub fn stub_0xe6b710() -> ! {
-    todo!("0xe6b710 `non-virtual thunk to'Ogre::InstanceBatchVTF::~InstanceBatchVTF()")
+    todo!("0xe6b710 non-virtual thunk toOgre::InstanceBatchVTF::~InstanceBatchVTF()")
 }
 
 // 0xe6b71c — __ZN4Ogre16InstanceBatchVTF13setupVerticesEPKNS_7SubMeshE
@@ -307,7 +307,7 @@ pub fn stub_0xe6e540() -> ! {
 #[doc(alias = "non-virtual thunk to_Ogre::InstancedEntity::~InstancedEntity()")]
 #[doc(alias = "__ZThn4_N4Ogre15InstancedEntityD0Ev")]
 pub fn stub_0xe6e54c() -> ! {
-    todo!("0xe6e54c `non-virtual thunk to'Ogre::InstancedEntity::~InstancedEntity()")
+    todo!("0xe6e54c non-virtual thunk toOgre::InstancedEntity::~InstancedEntity()")
 }
 
 // 0xe6e5e0 — __ZN4Ogre15InstancedEntityD2Ev
@@ -321,7 +321,7 @@ pub fn stub_0xe6e5e0() -> ! {
 #[doc(alias = "non-virtual thunk to_Ogre::InstancedEntity::~InstancedEntity()")]
 #[doc(alias = "__ZThn4_N4Ogre15InstancedEntityD1Ev")]
 pub fn stub_0xe6e718() -> ! {
-    todo!("0xe6e718 `non-virtual thunk to'Ogre::InstancedEntity::~InstancedEntity()")
+    todo!("0xe6e718 non-virtual thunk toOgre::InstancedEntity::~InstancedEntity()")
 }
 
 // 0xe6e724 — __ZN4Ogre15InstancedEntity23destroySkeletonInstanceEv

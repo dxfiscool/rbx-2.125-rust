@@ -28,14 +28,14 @@ pub fn stub_501aa0() -> ! {
 // type: void __fastcall(RBX::GameSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings()")]
 pub fn stub_501ab0() -> ! {
-    todo!("0x501ab0 `non-virtual thunk to'RBX::GameSettings::~GameSettings()")
+    todo!("0x501ab0 non-virtual thunk toRBX::GameSettings::~GameSettings()")
 }
 
 // 0x501c34 - __ZThn32_N3RBX12GameSettingsD0Ev / `non-virtual thunk to'RBX::GameSettings::~GameSettings()
 // type: void __fastcall(RBX::GameSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings()")]
 pub fn stub_501c34() -> ! {
-    todo!("0x501c34 `non-virtual thunk to'RBX::GameSettings::~GameSettings()")
+    todo!("0x501c34 non-virtual thunk toRBX::GameSettings::~GameSettings()")
 }
 
 // 0x501dd0 - __ZThn32_NK3RBX14FactoryProductINS_12GameSettingsENS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEE12getClassNameEv
@@ -48,14 +48,14 @@ pub fn stub_501dd0() -> ! {
 // type: void __fastcall(RBX::GameSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings()")]
 pub fn stub_501de0() -> ! {
-    todo!("0x501de0 `non-virtual thunk to'RBX::GameSettings::~GameSettings()")
+    todo!("0x501de0 non-virtual thunk toRBX::GameSettings::~GameSettings()")
 }
 
 // 0x501f64 - __ZThn36_N3RBX12GameSettingsD0Ev / `non-virtual thunk to'RBX::GameSettings::~GameSettings()
 // type: void __fastcall(RBX::GameSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings()")]
 pub fn stub_501f64() -> ! {
-    todo!("0x501f64 `non-virtual thunk to'RBX::GameSettings::~GameSettings()")
+    todo!("0x501f64 non-virtual thunk toRBX::GameSettings::~GameSettings()")
 }
 
 // 0x502100 - __ZN3RBX14FactoryProductINS_12GameSettingsENS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEE17static_getCreatorEv
@@ -269,7 +269,7 @@ pub fn stub_50487c() -> ! {
 // 0x504a0c - __GLOBAL__I_a_201 / `global constructor keyed to'_a_201
 #[doc(alias = "global constructor keyed to_a_201")]
 pub fn stub_504a0c() -> ! {
-    todo!("0x504a0c `global constructor keyed to'_a_201")
+    todo!("0x504a0c global constructor keyed to_a_201")
 }
 
 // 0x505018 - __ZN3RBX15GeometryServiceC1Ev / RBX::GeometryService::GeometryService(void)
@@ -389,14 +389,14 @@ pub fn stub_50603c() -> ! {
 // type: void __fastcall(RBX::GeometryService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService()")]
 pub fn stub_506068() -> ! {
-    todo!("0x506068 `non-virtual thunk to'RBX::GeometryService::~GeometryService()")
+    todo!("0x506068 non-virtual thunk toRBX::GeometryService::~GeometryService()")
 }
 
 // 0x506148 - __ZThn32_N3RBX15GeometryServiceD0Ev / `non-virtual thunk to'RBX::GeometryService::~GeometryService()
 // type: void __fastcall(RBX::GeometryService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService()")]
 pub fn stub_506148() -> ! {
-    todo!("0x506148 `non-virtual thunk to'RBX::GeometryService::~GeometryService()")
+    todo!("0x506148 non-virtual thunk toRBX::GeometryService::~GeometryService()")
 }
 
 // 0x506240 - __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEE12getClassNameEv
@@ -409,14 +409,14 @@ pub fn stub_506240() -> ! {
 // type: void __fastcall(RBX::GeometryService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService()")]
 pub fn stub_506268() -> ! {
-    todo!("0x506268 `non-virtual thunk to'RBX::GeometryService::~GeometryService()")
+    todo!("0x506268 non-virtual thunk toRBX::GeometryService::~GeometryService()")
 }
 
 // 0x506348 - __ZThn36_N3RBX15GeometryServiceD0Ev / `non-virtual thunk to'RBX::GeometryService::~GeometryService()
 // type: void __fastcall(RBX::GeometryService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService()")]
 pub fn stub_506348() -> ! {
-    todo!("0x506348 `non-virtual thunk to'RBX::GeometryService::~GeometryService()")
+    todo!("0x506348 non-virtual thunk toRBX::GeometryService::~GeometryService()")
 }
 
 // 0x506440 - __ZN3RBX4Name9doDeclareILZNS_16sGeometryServiceEEEERKS0_v
@@ -550,7 +550,7 @@ pub fn stub_507098() -> ! {
 // 0x507150 - __GLOBAL__I_a_202 / `global constructor keyed to'_a_202
 #[doc(alias = "global constructor keyed to_a_202")]
 pub fn stub_507150() -> ! {
-    todo!("0x507150 `global constructor keyed to'_a_202")
+    todo!("0x507150 global constructor keyed to_a_202")
 }
 
 // 0x5073c0 - __ZN3RBX22GlobalAdvancedSettings12getFVariableESs / RBX::GlobalAdvancedSettings::getFVariable(std::string)
@@ -639,14 +639,14 @@ pub fn stub_50853c() -> ! {
 // type: void __fastcall(RBX::GlobalAdvancedSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GlobalAdvancedSettings::~GlobalAdvancedSettings()")]
 pub fn stub_508540() -> ! {
-    todo!("0x508540 `non-virtual thunk to'RBX::GlobalAdvancedSettings::~GlobalAdvancedSettings()")
+    todo!("0x508540 non-virtual thunk toRBX::GlobalAdvancedSettings::~GlobalAdvancedSettings()")
 }
 
 // 0x508548 - __ZThn36_N3RBX22GlobalAdvancedSettingsD0Ev / `non-virtual thunk to'RBX::GlobalAdvancedSettings::~GlobalAdvancedSettings()
 // type: void __fastcall(RBX::GlobalAdvancedSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GlobalAdvancedSettings::~GlobalAdvancedSettings()")]
 pub fn stub_508548() -> ! {
-    todo!("0x508548 `non-virtual thunk to'RBX::GlobalAdvancedSettings::~GlobalAdvancedSettings()")
+    todo!("0x508548 non-virtual thunk toRBX::GlobalAdvancedSettings::~GlobalAdvancedSettings()")
 }
 
 // 0x508550 - __ZN3RBX22GlobalAdvancedSettingsD2Ev / RBX::GlobalAdvancedSettings::~GlobalAdvancedSettings()
@@ -660,14 +660,14 @@ pub fn stub_508550() -> ! {
 // type: void __fastcall(RBX::GlobalAdvancedSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GlobalAdvancedSettings::~GlobalAdvancedSettings()")]
 pub fn stub_5086d0() -> ! {
-    todo!("0x5086d0 `non-virtual thunk to'RBX::GlobalAdvancedSettings::~GlobalAdvancedSettings()")
+    todo!("0x5086d0 non-virtual thunk toRBX::GlobalAdvancedSettings::~GlobalAdvancedSettings()")
 }
 
 // 0x5086d8 - __ZThn36_N3RBX22GlobalAdvancedSettingsD1Ev / `non-virtual thunk to'RBX::GlobalAdvancedSettings::~GlobalAdvancedSettings()
 // type: void __fastcall(RBX::GlobalAdvancedSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GlobalAdvancedSettings::~GlobalAdvancedSettings()")]
 pub fn stub_5086d8() -> ! {
-    todo!("0x5086d8 `non-virtual thunk to'RBX::GlobalAdvancedSettings::~GlobalAdvancedSettings()")
+    todo!("0x5086d8 non-virtual thunk toRBX::GlobalAdvancedSettings::~GlobalAdvancedSettings()")
 }
 
 // 0x5086e0 - __Z18initBasicSingletonv / initBasicSingleton(void)

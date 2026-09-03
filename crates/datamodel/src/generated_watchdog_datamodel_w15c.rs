@@ -85,7 +85,7 @@ pub fn stub_0xd2a8b4() -> ! {
 #[doc(alias = "non-virtual thunk to Ogre::OverlayElement::getMaterial(void)const")]
 #[doc(alias = "__ZThn12_NK4Ogre14OverlayElement11getMaterialEv")]
 pub fn stub_0xd2a8b8() -> ! {
-    todo!("0xd2a8b8 `non-virtual thunk to'Ogre::OverlayElement::getMaterial(void)const")
+    todo!("0xd2a8b8 non-virtual thunk toOgre::OverlayElement::getMaterial(void)const")
 }
 
 // 0xd2a8dc -- __ZN4Ogre14OverlayElement19_positionsOutOfDateEv

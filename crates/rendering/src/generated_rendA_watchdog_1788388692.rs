@@ -535,7 +535,7 @@ pub fn stub_b86c08() -> ! {
 #[doc(alias = "anonymous namespace::createHumanoidTextureComposit(Ogre::VisualEngine *,RBX::HumanoidIdentifier const&,anonymous namespace::AccoutrementMesh const(&)[4],RBX::CharacterMesh *)")]
 // was: __ZN12_GLOBAL__N_129createHumanoidTextureCompositEPN4Ogre12VisualEngineERKN3RBX18HumanoidIdentifierERA4_KNS_16AccoutrementMeshEPNS3_13CharacterMeshE
 pub fn stub_b8ab5c() -> ! {
-    todo!("0xb8ab5c `anonymous namespace'::createHumanoidTextureComposit(Ogre::VisualEngine *,RBX::HumanoidIdentifier const&,`anonymous namespace'::AccoutrementMesh const(&)[4],RBX::CharacterMesh *)")
+    todo!("0xb8ab5c anonymous namespace::createHumanoidTextureComposit(Ogre::VisualEngine *,RBX::HumanoidIdentifier const&,anonymous namespace::AccoutrementMesh const(&)[4],RBX::CharacterMesh *)")
 }
 
 // 0xb8df78 — __ZN3RBX11AdornRbxGfxC1EPN4Ogre12VisualEngineEPKNS_9DataModelE

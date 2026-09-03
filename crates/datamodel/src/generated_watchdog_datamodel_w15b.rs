@@ -221,7 +221,7 @@ pub fn stub_0xe26f40() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Skeleton::createAnimation(std::string const&,float)")]
 #[doc(alias = "__ZThn88_N4Ogre8Skeleton15createAnimationERKSsf")]
 pub fn stub_0xe272bc() -> ! {
-    todo!("0xe272bc `non-virtual thunk to'Ogre::Skeleton::createAnimation(std::string const&,float)")
+    todo!("0xe272bc non-virtual thunk toOgre::Skeleton::createAnimation(std::string const&,float)")
 }
 
 // 0xe272c8 -- __ZNK4Ogre8Skeleton12getAnimationERKSsPPKNS_29LinkedSkeletonAnimationSourceE
@@ -248,7 +248,7 @@ pub fn stub_0xe27500() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Skeleton::getAnimation(std::string const&)const")]
 #[doc(alias = "__ZThn88_NK4Ogre8Skeleton12getAnimationERKSs")]
 pub fn stub_0xe27510() -> ! {
-    todo!("0xe27510 `non-virtual thunk to'Ogre::Skeleton::getAnimation(std::string const&)const")
+    todo!("0xe27510 non-virtual thunk toOgre::Skeleton::getAnimation(std::string const&)const")
 }
 
 // 0xe27524 -- __ZNK4Ogre8Skeleton12hasAnimationERKSs
@@ -266,7 +266,7 @@ pub fn stub_0xe27524() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Skeleton::hasAnimation(std::string const&)const")]
 #[doc(alias = "__ZThn88_NK4Ogre8Skeleton12hasAnimationERKSs")]
 pub fn stub_0xe2753c() -> ! {
-    todo!("0xe2753c `non-virtual thunk to'Ogre::Skeleton::hasAnimation(std::string const&)const")
+    todo!("0xe2753c non-virtual thunk toOgre::Skeleton::hasAnimation(std::string const&)const")
 }
 
 // 0xe27554 -- __ZNK4Ogre8Skeleton17_getAnimationImplERKSsPPKNS_29LinkedSkeletonAnimationSourceE
@@ -293,7 +293,7 @@ pub fn stub_0xe275bc() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Skeleton::removeAnimation(std::string const&)")]
 #[doc(alias = "__ZThn88_N4Ogre8Skeleton15removeAnimationERKSs")]
 pub fn stub_0xe2785c() -> ! {
-    todo!("0xe2785c `non-virtual thunk to'Ogre::Skeleton::removeAnimation(std::string const&)")
+    todo!("0xe2785c non-virtual thunk toOgre::Skeleton::removeAnimation(std::string const&)")
 }
 
 // 0xe27868 -- __ZN4Ogre8Skeleton19_initAnimationStateEPNS_17AnimationStateSetE
@@ -365,7 +365,7 @@ pub fn stub_0xe27a68() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Skeleton::getNumAnimations(void)const")]
 #[doc(alias = "__ZThn88_NK4Ogre8Skeleton16getNumAnimationsEv")]
 pub fn stub_0xe27a70() -> ! {
-    todo!("0xe27a70 `non-virtual thunk to'Ogre::Skeleton::getNumAnimations(void)const")
+    todo!("0xe27a70 non-virtual thunk toOgre::Skeleton::getNumAnimations(void)const")
 }
 
 // 0xe27a78 -- __ZNK4Ogre8Skeleton12getAnimationEt
@@ -383,7 +383,7 @@ pub fn stub_0xe27a78() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Skeleton::getAnimation(unsigned short)const")]
 #[doc(alias = "__ZThn88_NK4Ogre8Skeleton12getAnimationEt")]
 pub fn stub_0xe27a90() -> ! {
-    todo!("0xe27a90 `non-virtual thunk to'Ogre::Skeleton::getAnimation(unsigned short)const")
+    todo!("0xe27a90 non-virtual thunk toOgre::Skeleton::getAnimation(unsigned short)const")
 }
 
 // 0xe27aa8 -- __ZNK4Ogre8Skeleton7getBoneEt

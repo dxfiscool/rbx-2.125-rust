@@ -198,7 +198,7 @@ pub fn stub_0xc63808() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::getMaterial(void)const")]
 #[doc(alias = "__ZThn188_NK4Ogre12BillboardSet11getMaterialEv")]
 pub fn stub_0xc63810() -> ! {
-    todo!("0xc63810 `non-virtual thunk toOgre::BillboardSet::getMaterial(void)const")
+    todo!("0xc63810 non-virtual thunk toOgre::BillboardSet::getMaterial(void)const")
 }
 
 // 0xc63814 — __ZN4Ogre12BillboardSet11setMaterialERKNS_11MaterialPtrE
@@ -222,7 +222,7 @@ pub fn stub_0xc63f28() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::getRenderOperation(Ogre::RenderOperation &)")]
 #[doc(alias = "__ZThn188_N4Ogre12BillboardSet18getRenderOperationERNS_15RenderOperationE")]
 pub fn stub_0xc63f88() -> ! {
-    todo!("0xc63f88 `non-virtual thunk toOgre::BillboardSet::getRenderOperation(Ogre::RenderOperation &)")
+    todo!("0xc63f88 non-virtual thunk toOgre::BillboardSet::getRenderOperation(Ogre::RenderOperation &)")
 }
 
 // 0xc63fe8 — __ZNK4Ogre12BillboardSet18getWorldTransformsEPNS_7Matrix4E
@@ -238,7 +238,7 @@ pub fn stub_0xc63fe8() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::getWorldTransforms(Ogre::Matrix4 *)const")]
 #[doc(alias = "__ZThn188_NK4Ogre12BillboardSet18getWorldTransformsEPNS_7Matrix4E")]
 pub fn stub_0xc64044() -> ! {
-    todo!("0xc64044 `non-virtual thunk toOgre::BillboardSet::getWorldTransforms(Ogre::Matrix4 *)const")
+    todo!("0xc64044 non-virtual thunk toOgre::BillboardSet::getWorldTransforms(Ogre::Matrix4 *)const")
 }
 
 // 0xc640a0 — __ZN4Ogre12BillboardSet13setAutoextendEb
@@ -406,7 +406,7 @@ pub fn stub_0xc642dc() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const")]
 #[doc(alias = "__ZThn188_NK4Ogre12BillboardSet19getSquaredViewDepthEPKNS_6CameraE")]
 pub fn stub_0xc642ec() -> ! {
-    todo!("0xc642ec `non-virtual thunk toOgre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const")
+    todo!("0xc642ec non-virtual thunk toOgre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const")
 }
 
 // 0xc64300 — __ZNK4Ogre12BillboardSet17getBoundingRadiusEv
@@ -430,7 +430,7 @@ pub fn stub_0xc64308() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::getLights(void)const")]
 #[doc(alias = "__ZThn188_NK4Ogre12BillboardSet9getLightsEv")]
 pub fn stub_0xc64318() -> ! {
-    todo!("0xc64318 `non-virtual thunk toOgre::BillboardSet::getLights(void)const")
+    todo!("0xc64318 non-virtual thunk toOgre::BillboardSet::getLights(void)const")
 }
 
 // 0xc64328 — __ZN4Ogre12BillboardSet16visitRenderablesEPNS_10Renderable7VisitorEb
@@ -798,7 +798,7 @@ pub fn stub_0xc662a8() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")]
 #[doc(alias = "__ZThn12_N4Ogre25BorderPanelOverlayElementD0Ev")]
 pub fn stub_0xc662b4() -> ! {
-    todo!("0xc662b4 `non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")
+    todo!("0xc662b4 non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")
 }
 
 // 0xc66348 — __ZN4Ogre25BorderPanelOverlayElementD2Ev
@@ -814,7 +814,7 @@ pub fn stub_0xc66348() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")]
 #[doc(alias = "__ZThn12_N4Ogre25BorderPanelOverlayElementD1Ev")]
 pub fn stub_0xc664ec() -> ! {
-    todo!("0xc664ec `non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")
+    todo!("0xc664ec non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")
 }
 
 // 0xc664f8 — __ZN4Ogre25BorderPanelOverlayElement10initialiseEv

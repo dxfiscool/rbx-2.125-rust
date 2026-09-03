@@ -52,7 +52,7 @@ pub fn stub_91ea1c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RemoteEvent::~RemoteEvent()")]
 #[doc(alias = "__ZThn32_N3RBX11RemoteEventD1Ev")]
 pub fn stub_91ea2c() -> ! {
-    todo!("0x91ea2c `non-virtual thunk to'RBX::RemoteEvent::~RemoteEvent()")
+    todo!("0x91ea2c non-virtual thunk toRBX::RemoteEvent::~RemoteEvent()")
 }
 
 // 0x91ea34 — __ZThn32_N3RBX11RemoteEventD0Ev
@@ -60,7 +60,7 @@ pub fn stub_91ea2c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RemoteEvent::~RemoteEvent()")]
 #[doc(alias = "__ZThn32_N3RBX11RemoteEventD0Ev")]
 pub fn stub_91ea34() -> ! {
-    todo!("0x91ea34 `non-virtual thunk to'RBX::RemoteEvent::~RemoteEvent()")
+    todo!("0x91ea34 non-virtual thunk toRBX::RemoteEvent::~RemoteEvent()")
 }
 
 // 0x91ead8 — __ZThn32_NK3RBX14FactoryProductINS_11RemoteEventENS_8InstanceELZNS_12sRemoteEventEES2_E12getClassNameEv
@@ -74,7 +74,7 @@ pub fn stub_91ead8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RemoteEvent::~RemoteEvent()")]
 #[doc(alias = "__ZThn36_N3RBX11RemoteEventD1Ev")]
 pub fn stub_91eae8() -> ! {
-    todo!("0x91eae8 `non-virtual thunk to'RBX::RemoteEvent::~RemoteEvent()")
+    todo!("0x91eae8 non-virtual thunk toRBX::RemoteEvent::~RemoteEvent()")
 }
 
 // 0x91eaf0 — __ZThn36_N3RBX11RemoteEventD0Ev
@@ -82,7 +82,7 @@ pub fn stub_91eae8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RemoteEvent::~RemoteEvent()")]
 #[doc(alias = "__ZThn36_N3RBX11RemoteEventD0Ev")]
 pub fn stub_91eaf0() -> ! {
-    todo!("0x91eaf0 `non-virtual thunk to'RBX::RemoteEvent::~RemoteEvent()")
+    todo!("0x91eaf0 non-virtual thunk toRBX::RemoteEvent::~RemoteEvent()")
 }
 
 // 0x91eb98 — __ZN3RBX14FactoryProductINS_11RemoteEventENS_8InstanceELZNS_12sRemoteEventEES2_E7CreatorD1Ev
@@ -640,7 +640,7 @@ pub fn stub_968fb0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")]
 #[doc(alias = "__ZThn92_N3RBX7Network6Client25OnFailedConnectionAttemptEPN6RakNet6PacketENS2_33PI2_FailedConnectionAttemptReasonE")]
 pub fn stub_9694b4() -> ! {
-    todo!("0x9694b4 `non-virtual thunk to'RBX::Network::Client::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")
+    todo!("0x9694b4 non-virtual thunk toRBX::Network::Client::OnFailedConnectionAttempt(RakNet::Packet *,RakNet::PI2_FailedConnectionAttemptReason)")
 }
 
 // 0x969704 — __ZN3RBX7Network6Client9OnReceiveEPN6RakNet6PacketE
@@ -656,7 +656,7 @@ pub fn stub_969704() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::OnReceive(RakNet::Packet *)")]
 #[doc(alias = "__ZThn92_N3RBX7Network6Client9OnReceiveEPN6RakNet6PacketE")]
 pub fn stub_96c474() -> ! {
-    todo!("0x96c474 `non-virtual thunk to'RBX::Network::Client::OnReceive(RakNet::Packet *)")
+    todo!("0x96c474 non-virtual thunk toRBX::Network::Client::OnReceive(RakNet::Packet *)")
 }
 
 // 0x96d6d0 — __ZNK3RBX14FactoryProductINS_7Network6ClientENS1_4PeerELZNS1_7sClientEENS_8InstanceEE12getClassNameEv
@@ -709,7 +709,7 @@ pub fn stub_97be3c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::OnReceive(RakNet::Packet *)")]
 #[doc(alias = "__ZThn1180_N3RBX7Network16ClientReplicator9OnReceiveEPN6RakNet6PacketE")]
 pub fn stub_97c3ec() -> ! {
-    todo!("0x97c3ec `non-virtual thunk to'RBX::Network::ClientReplicator::OnReceive(RakNet::Packet *)")
+    todo!("0x97c3ec non-virtual thunk toRBX::Network::ClientReplicator::OnReceive(RakNet::Packet *)")
 }
 
 // 0x97c3fc — __ZN3RBX7Network16ClientReplicator13processPacketEPN6RakNet6PacketE

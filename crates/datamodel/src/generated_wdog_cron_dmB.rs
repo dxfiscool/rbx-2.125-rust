@@ -101,7 +101,7 @@ pub fn stub_a9da64() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>::~error_info_injector()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEED1Ev")]
 pub fn stub_a9db70() -> ! {
-    todo!("0xa9db70 `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>::~error_info_injector()")
+    todo!("0xa9db70 non-virtual thunk toboost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>::~error_info_injector()")
 }
 
 // 0xa9dc7c — __ZN5boost16exception_detail19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEED0Ev
@@ -141,7 +141,7 @@ pub fn stub_a9e0a4() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEED0Ev")]
 pub fn stub_a9e154() -> ! {
-    todo!("0xa9e154 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()")
+    todo!("0xa9e154 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::~clone_impl()")
 }
 
 // 0xa9e268 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEE5cloneEv
@@ -149,7 +149,7 @@ pub fn stub_a9e154() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::clone(void)const")]
 #[doc(alias = "__ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEE5cloneEv")]
 pub fn stub_a9e268() -> ! {
-    todo!("0xa9e268 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::clone(void)const")
+    todo!("0xa9e268 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::classic::parser_error<std::string,__gnu_cxx::__normal_iterator<char *,std::vector<char,std::allocator<char>>>>>>::clone(void)const")
 }
 
 // 0xa9e27c — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_6spirit7classic12parser_errorISsN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEEEEEEEC1ERKSF_
@@ -656,7 +656,7 @@ pub fn stub_aa176c() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>::~error_info_injector()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEED1Ev")]
 pub fn stub_aa1778() -> ! {
-    todo!("0xaa1778 `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>::~error_info_injector()")
+    todo!("0xaa1778 non-virtual thunk toboost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>::~error_info_injector()")
 }
 
 // 0xaa1784 — __ZN5boost16exception_detail19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEED0Ev
@@ -688,7 +688,7 @@ pub fn stub_aa17ac() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>>::rethrow(void)const")]
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEE7rethrowEv")]
 pub fn stub_aa1890() -> ! {
-    todo!("0xaa1890 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>>::rethrow(void)const")
+    todo!("0xaa1890 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>>::rethrow(void)const")
 }
 
 // 0xaa18a0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED0Ev
@@ -696,7 +696,7 @@ pub fn stub_aa1890() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_13property_tree11json_parser17json_parser_errorEEEED0Ev")]
 pub fn stub_aa18a0() -> ! {
-    todo!("0xaa18a0 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>>::~clone_impl()")
+    todo!("0xaa18a0 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::property_tree::json_parser::json_parser_error>>::~clone_impl()")
 }
 
 // 0xaa18bc — __ZNSt6vectorIcSaIcEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPcS1_EERKc
@@ -728,7 +728,7 @@ pub fn stub_aab254() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot,boost::function<void ()(std::string,std::string,std::string)>,3,void ()(std::string,std::string,std::string)>::call(std::string,std::string,std::string)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvSsSsSsEE4slotEN5boost8functionIS3_EELi3ES3_E4callESsSsSs")]
 pub fn stub_ab3bb8() -> ! {
-    todo!("0xab3bb8 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot,boost::function<void ()(std::string,std::string,std::string)>,3,void ()(std::string,std::string,std::string)>::call(std::string,std::string,std::string)")
+    todo!("0xab3bb8 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot,boost::function<void ()(std::string,std::string,std::string)>,3,void ()(std::string,std::string,std::string)>::call(std::string,std::string,std::string)")
 }
 
 // 0xab3bc4 — __ZNK5boost9function3IvSsSsSsEclESsSsSs
@@ -744,7 +744,7 @@ pub fn stub_ab3bc4() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool,int)>::slot,boost::function<void ()(bool,int)>,2,void ()(bool,int)>::call(bool,int)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvbiEE4slotEN5boost8functionIS3_EELi2ES3_E4callEbi")]
 pub fn stub_ac7904() -> ! {
-    todo!("0xac7904 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(bool,int)>::slot,boost::function<void ()(bool,int)>,2,void ()(bool,int)>::call(bool,int)")
+    todo!("0xac7904 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool,int)>::slot,boost::function<void ()(bool,int)>,2,void ()(bool,int)>::call(bool,int)")
 }
 
 // 0xad5300 — __ZN6RakNet16PluginInterface216OnRakPeerStartupEv

@@ -50,7 +50,7 @@ pub fn stub_ccf140() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Light::getAnimableDictionaryName(void)const")]
 // was: __ZThn4_NK4Ogre5Light25getAnimableDictionaryNameEv
 pub fn stub_ccf14c() -> ! {
-    todo!("0xccf14c `non-virtual thunk to'Ogre::Light::getAnimableDictionaryName(void)const")
+    todo!("0xccf14c non-virtual thunk toOgre::Light::getAnimableDictionaryName(void)const")
 }
 
 
@@ -66,7 +66,7 @@ pub fn stub_ccf158() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Light::initialiseAnimableDictionary(std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const")]
 // was: __ZThn4_NK4Ogre5Light28initialiseAnimableDictionaryERSt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
 pub fn stub_ccf684() -> ! {
-    todo!("0xccf684 `non-virtual thunk to'Ogre::Light::initialiseAnimableDictionary(std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const")
+    todo!("0xccf684 non-virtual thunk toOgre::Light::initialiseAnimableDictionary(std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const")
 }
 
 
@@ -84,7 +84,7 @@ pub fn stub_ccf690() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Light::createAnimableValue(std::string const&)")]
 // was: __ZThn4_N4Ogre5Light19createAnimableValueERKSs
 pub fn stub_ccf824() -> ! {
-    todo!("0xccf824 `non-virtual thunk to'Ogre::Light::createAnimableValue(std::string const&)")
+    todo!("0xccf824 non-virtual thunk toOgre::Light::createAnimableValue(std::string const&)")
 }
 
 
@@ -881,4 +881,3 @@ pub fn stub_cd37d8() -> ! {
 pub fn stub_cd3804() -> ! {
     todo!("0xcd3804 Ogre::LodStrategy::isSortedDescending(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
 }
-

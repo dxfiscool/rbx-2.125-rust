@@ -943,4 +943,3 @@ pub fn stub_697970() -> ! {
 pub fn stub_697978() -> ! {
     todo!("0x697978 __ZThn92_N3RBX10Reflection9DescribedINS_18HumanoidControllerELZNS_19sHumanoidControllerEENS_14FactoryProductIS2_NS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
 }
-

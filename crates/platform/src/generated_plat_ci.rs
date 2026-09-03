@@ -252,28 +252,28 @@ pub fn stub_85c3bc() -> ! {
 // type: void __fastcall(RBX::CustomEventReceiver *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CustomEventReceiver::~CustomEventReceiver()")]
 pub fn stub_85c45c() -> ! {
-    todo!("0x85c45c `non-virtual thunk to'RBX::CustomEventReceiver::~CustomEventReceiver()")
+    todo!("0x85c45c non-virtual thunk toRBX::CustomEventReceiver::~CustomEventReceiver()")
 }
 
 // 0x85c464 - __ZThn32_N3RBX19CustomEventReceiverD0Ev / `non-virtual thunk to'RBX::CustomEventReceiver::~CustomEventReceiver()
 // type: void __fastcall(RBX::CustomEventReceiver *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CustomEventReceiver::~CustomEventReceiver()")]
 pub fn stub_85c464() -> ! {
-    todo!("0x85c464 `non-virtual thunk to'RBX::CustomEventReceiver::~CustomEventReceiver()")
+    todo!("0x85c464 non-virtual thunk toRBX::CustomEventReceiver::~CustomEventReceiver()")
 }
 
 // 0x85c508 - __ZThn36_N3RBX19CustomEventReceiverD1Ev / `non-virtual thunk to'RBX::CustomEventReceiver::~CustomEventReceiver()
 // type: void __fastcall(RBX::CustomEventReceiver *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CustomEventReceiver::~CustomEventReceiver()")]
 pub fn stub_85c508() -> ! {
-    todo!("0x85c508 `non-virtual thunk to'RBX::CustomEventReceiver::~CustomEventReceiver()")
+    todo!("0x85c508 non-virtual thunk toRBX::CustomEventReceiver::~CustomEventReceiver()")
 }
 
 // 0x85c510 - __ZThn36_N3RBX19CustomEventReceiverD0Ev / `non-virtual thunk to'RBX::CustomEventReceiver::~CustomEventReceiver()
 // type: void __fastcall(RBX::CustomEventReceiver *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CustomEventReceiver::~CustomEventReceiver()")]
 pub fn stub_85c510() -> ! {
-    todo!("0x85c510 `non-virtual thunk to'RBX::CustomEventReceiver::~CustomEventReceiver()")
+    todo!("0x85c510 non-virtual thunk toRBX::CustomEventReceiver::~CustomEventReceiver()")
 }
 
 // 0x85d6e8 - __ZN5boost10shared_ptrIN3RBX11CustomEventEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE / boost::shared_ptr<RBX::CustomEvent>::shared_ptr<RBX::CustomEvent>(boost::weak_ptr<RBX::CustomEvent> const&,boost::detail::sp_nothrow_tag)
@@ -403,28 +403,28 @@ pub fn stub_85e9bc() -> ! {
 // type: void __fastcall(RBX::TextureTrail *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TextureTrail::~TextureTrail()")]
 pub fn stub_85eb0c() -> ! {
-    todo!("0x85eb0c `non-virtual thunk to'RBX::TextureTrail::~TextureTrail()")
+    todo!("0x85eb0c non-virtual thunk toRBX::TextureTrail::~TextureTrail()")
 }
 
 // 0x85ec34 - __ZThn32_N3RBX12TextureTrailD0Ev / `non-virtual thunk to'RBX::TextureTrail::~TextureTrail()
 // type: void __fastcall(RBX::TextureTrail *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TextureTrail::~TextureTrail()")]
 pub fn stub_85ec34() -> ! {
-    todo!("0x85ec34 `non-virtual thunk to'RBX::TextureTrail::~TextureTrail()")
+    todo!("0x85ec34 non-virtual thunk toRBX::TextureTrail::~TextureTrail()")
 }
 
 // 0x85ed84 - __ZThn36_N3RBX12TextureTrailD1Ev / `non-virtual thunk to'RBX::TextureTrail::~TextureTrail()
 // type: void __fastcall(RBX::TextureTrail *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TextureTrail::~TextureTrail()")]
 pub fn stub_85ed84() -> ! {
-    todo!("0x85ed84 `non-virtual thunk to'RBX::TextureTrail::~TextureTrail()")
+    todo!("0x85ed84 non-virtual thunk toRBX::TextureTrail::~TextureTrail()")
 }
 
 // 0x85eeac - __ZThn36_N3RBX12TextureTrailD0Ev / `non-virtual thunk to'RBX::TextureTrail::~TextureTrail()
 // type: void __fastcall(RBX::TextureTrail *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TextureTrail::~TextureTrail()")]
 pub fn stub_85eeac() -> ! {
-    todo!("0x85eeac `non-virtual thunk to'RBX::TextureTrail::~TextureTrail()")
+    todo!("0x85eeac non-virtual thunk toRBX::TextureTrail::~TextureTrail()")
 }
 
 // 0x860d98 - __ZN3RBX15TeleportService21TeleportToSpawnByNameEiSs / RBX::TeleportService::TeleportToSpawnByName(int,std::string)
@@ -505,28 +505,28 @@ pub fn stub_86294c() -> ! {
 // type: void __fastcall(RBX::TeleportService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TeleportService::~TeleportService()")]
 pub fn stub_862a8c() -> ! {
-    todo!("0x862a8c `non-virtual thunk to'RBX::TeleportService::~TeleportService()")
+    todo!("0x862a8c non-virtual thunk toRBX::TeleportService::~TeleportService()")
 }
 
 // 0x862b94 - __ZThn32_N3RBX15TeleportServiceD0Ev / `non-virtual thunk to'RBX::TeleportService::~TeleportService()
 // type: void __fastcall(RBX::TeleportService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TeleportService::~TeleportService()")]
 pub fn stub_862b94() -> ! {
-    todo!("0x862b94 `non-virtual thunk to'RBX::TeleportService::~TeleportService()")
+    todo!("0x862b94 non-virtual thunk toRBX::TeleportService::~TeleportService()")
 }
 
 // 0x862cd8 - __ZThn36_N3RBX15TeleportServiceD1Ev / `non-virtual thunk to'RBX::TeleportService::~TeleportService()
 // type: void __fastcall(RBX::TeleportService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TeleportService::~TeleportService()")]
 pub fn stub_862cd8() -> ! {
-    todo!("0x862cd8 `non-virtual thunk to'RBX::TeleportService::~TeleportService()")
+    todo!("0x862cd8 non-virtual thunk toRBX::TeleportService::~TeleportService()")
 }
 
 // 0x862de0 - __ZThn36_N3RBX15TeleportServiceD0Ev / `non-virtual thunk to'RBX::TeleportService::~TeleportService()
 // type: void __fastcall(RBX::TeleportService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::TeleportService::~TeleportService()")]
 pub fn stub_862de0() -> ! {
-    todo!("0x862de0 `non-virtual thunk to'RBX::TeleportService::~TeleportService()")
+    todo!("0x862de0 non-virtual thunk toRBX::TeleportService::~TeleportService()")
 }
 
 // 0x8679e0 - __ZNK3RBX9FloorWire7getFromEv / RBX::FloorWire::getFrom(void)const
@@ -644,28 +644,28 @@ pub fn stub_868b80() -> ! {
 // type: void __fastcall(RBX::FloorWire *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FloorWire::~FloorWire()")]
 pub fn stub_868ce8() -> ! {
-    todo!("0x868ce8 `non-virtual thunk to'RBX::FloorWire::~FloorWire()")
+    todo!("0x868ce8 non-virtual thunk toRBX::FloorWire::~FloorWire()")
 }
 
 // 0x868e10 - __ZThn32_N3RBX9FloorWireD0Ev / `non-virtual thunk to'RBX::FloorWire::~FloorWire()
 // type: void __fastcall(RBX::FloorWire *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FloorWire::~FloorWire()")]
 pub fn stub_868e10() -> ! {
-    todo!("0x868e10 `non-virtual thunk to'RBX::FloorWire::~FloorWire()")
+    todo!("0x868e10 non-virtual thunk toRBX::FloorWire::~FloorWire()")
 }
 
 // 0x868f60 - __ZThn36_N3RBX9FloorWireD1Ev / `non-virtual thunk to'RBX::FloorWire::~FloorWire()
 // type: void __fastcall(RBX::FloorWire *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FloorWire::~FloorWire()")]
 pub fn stub_868f60() -> ! {
-    todo!("0x868f60 `non-virtual thunk to'RBX::FloorWire::~FloorWire()")
+    todo!("0x868f60 non-virtual thunk toRBX::FloorWire::~FloorWire()")
 }
 
 // 0x869088 - __ZThn36_N3RBX9FloorWireD0Ev / `non-virtual thunk to'RBX::FloorWire::~FloorWire()
 // type: void __fastcall(RBX::FloorWire *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FloorWire::~FloorWire()")]
 pub fn stub_869088() -> ! {
-    todo!("0x869088 `non-virtual thunk to'RBX::FloorWire::~FloorWire()")
+    todo!("0x869088 non-virtual thunk toRBX::FloorWire::~FloorWire()")
 }
 
 // 0x86bac4 - __ZN3RBX15StringConverterINS_5Voxel12CellMaterialEE14convertToValueERKSsRS2_ / RBX::StringConverter<RBX::Voxel::CellMaterial>::convertToValue(std::string const&,RBX::Voxel::CellMaterial&)

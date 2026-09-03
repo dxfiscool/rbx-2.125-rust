@@ -608,7 +608,7 @@ pub fn stub_8e32c8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GuiLayerCollector::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX17GuiLayerCollector8render2dEPNS_5AdornE")]
 pub fn stub_8e32d4() -> ! {
-    todo!("0x8e32d4 `non-virtual thunk to'RBX::GuiLayerCollector::render2d(RBX::Adorn *)")
+    todo!("0x8e32d4 non-virtual thunk toRBX::GuiLayerCollector::render2d(RBX::Adorn *)")
 }
 
 // 0x8e997c — __ZNK3RBX5Voxel4Grid23getVoxelLikelyThisChunkERKNS_13SpatialRegion2IdERKNS1_5ChunkERKN3G3D12Vector3int16E

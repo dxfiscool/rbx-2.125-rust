@@ -214,7 +214,7 @@ pub fn stub_86752c() -> ! {
 #[doc(alias = "__GLOBAL__I_a_434")]
 // was: `global constructor keyed to'_a_434
 pub fn stub_867664() -> ! {
-    todo!("0x867664 `global constructor keyed to'_a_434")
+    todo!("0x867664 global constructor keyed to_a_434")
 }
 
 // 0x8679e0 — __ZNK3RBX9FloorWire7getFromEv
@@ -381,7 +381,7 @@ pub fn stub_868cdc() -> ! {
 #[doc(alias = "__ZThn32_N3RBX9FloorWireD1Ev")]
 // was: `non-virtual thunk to'RBX::FloorWire::~FloorWire()
 pub fn stub_868ce8() -> ! {
-    todo!("0x868ce8 `non-virtual thunk to'RBX::FloorWire::~FloorWire()")
+    todo!("0x868ce8 non-virtual thunk toRBX::FloorWire::~FloorWire()")
 }
 
 // 0x868e10 — __ZThn32_N3RBX9FloorWireD0Ev
@@ -389,7 +389,7 @@ pub fn stub_868ce8() -> ! {
 #[doc(alias = "__ZThn32_N3RBX9FloorWireD0Ev")]
 // was: `non-virtual thunk to'RBX::FloorWire::~FloorWire()
 pub fn stub_868e10() -> ! {
-    todo!("0x868e10 `non-virtual thunk to'RBX::FloorWire::~FloorWire()")
+    todo!("0x868e10 non-virtual thunk toRBX::FloorWire::~FloorWire()")
 }
 
 // 0x868f50 — __ZThn32_NK3RBX14FactoryProductINS_9FloorWireENS_9GuiBase3dELZNS_10sFloorWireEENS_8InstanceEE12getClassNameEv
@@ -404,7 +404,7 @@ pub fn stub_868f50() -> ! {
 #[doc(alias = "__ZThn36_N3RBX9FloorWireD1Ev")]
 // was: `non-virtual thunk to'RBX::FloorWire::~FloorWire()
 pub fn stub_868f60() -> ! {
-    todo!("0x868f60 `non-virtual thunk to'RBX::FloorWire::~FloorWire()")
+    todo!("0x868f60 non-virtual thunk toRBX::FloorWire::~FloorWire()")
 }
 
 // 0x869088 — __ZThn36_N3RBX9FloorWireD0Ev
@@ -412,7 +412,7 @@ pub fn stub_868f60() -> ! {
 #[doc(alias = "__ZThn36_N3RBX9FloorWireD0Ev")]
 // was: `non-virtual thunk to'RBX::FloorWire::~FloorWire()
 pub fn stub_869088() -> ! {
-    todo!("0x869088 `non-virtual thunk to'RBX::FloorWire::~FloorWire()")
+    todo!("0x869088 non-virtual thunk toRBX::FloorWire::~FloorWire()")
 }
 
 // 0x8691d0 — __ZN3RBX14FactoryProductINS_9FloorWireENS_9GuiBase3dELZNS_10sFloorWireEENS_8InstanceEE7CreatorD1Ev
@@ -757,7 +757,7 @@ pub fn stub_86a8ec() -> ! {
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_9FloorWireENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 // was: `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::FloorWire,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
 pub fn stub_86a9cc() -> ! {
-    todo!("0x86a9cc `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::FloorWire,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0x86a9cc non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::FloorWire,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 // 0x86a9d4 — __ZNK3RBX10Reflection14PropDescriptorINS_9FloorWireEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -797,7 +797,7 @@ pub fn stub_86a9fc() -> ! {
 #[doc(alias = "__GLOBAL__I_a_435")]
 // was: `global constructor keyed to'_a_435
 pub fn stub_86aa20() -> ! {
-    todo!("0x86aa20 `global constructor keyed to'_a_435")
+    todo!("0x86aa20 global constructor keyed to_a_435")
 }
 
 // 0x86b2a4 — __ZN3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEEC1Ev

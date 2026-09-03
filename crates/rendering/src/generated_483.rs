@@ -695,7 +695,7 @@ pub fn stub_bc5864() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")]
 // was: __ZThn17800_N4Ogre15RbxSceneManagerD0Ev
 pub fn stub_bc5868() -> ! {
-    todo!("0xbc5868 `non-virtual thunk to'Ogre::RbxSceneManager::~RbxSceneManager()")
+    todo!("0xbc5868 non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")
 }
 
 
@@ -713,7 +713,7 @@ pub fn stub_bc5924() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")]
 // was: __ZThn17800_N4Ogre15RbxSceneManagerD1Ev
 pub fn stub_bc5fbc() -> ! {
-    todo!("0xbc5fbc `non-virtual thunk to'Ogre::RbxSceneManager::~RbxSceneManager()")
+    todo!("0xbc5fbc non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")
 }
 
 
@@ -885,4 +885,3 @@ pub fn stub_bc9bd0() -> ! {
 pub fn stub_bc9c0c() -> ! {
     todo!("0xbc9c0c Ogre::RbxSceneManager::_queueSkiesForRendering(Ogre::Camera *)")
 }
-

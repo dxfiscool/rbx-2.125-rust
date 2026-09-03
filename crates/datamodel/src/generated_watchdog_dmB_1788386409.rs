@@ -242,56 +242,56 @@ pub fn stub_0x7b84a8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn32_N3RBX8HumanoidD0Ev")]
 pub fn stub_0x7b84b8() -> ! {
-    todo!("0x7b84b8 `non-virtual thunk to'RBX::Humanoid::~Humanoid()")
+    todo!("0x7b84b8 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
 // 0x7b84c0 — __ZThn36_N3RBX8HumanoidD0Ev
 // type: void __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn36_N3RBX8HumanoidD0Ev")]
 pub fn stub_0x7b84c0() -> ! {
-    todo!("0x7b84c0 `non-virtual thunk to'RBX::Humanoid::~Humanoid()")
+    todo!("0x7b84c0 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
 // 0x7b84c8 — __ZThn92_N3RBX8HumanoidD0Ev
 // type: void __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn92_N3RBX8HumanoidD0Ev")]
 pub fn stub_0x7b84c8() -> ! {
-    todo!("0x7b84c8 `non-virtual thunk to'RBX::Humanoid::~Humanoid()")
+    todo!("0x7b84c8 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
 // 0x7b84d0 — __ZThn124_N3RBX8HumanoidD0Ev
 // type: void __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn124_N3RBX8HumanoidD0Ev")]
 pub fn stub_0x7b84d0() -> ! {
-    todo!("0x7b84d0 `non-virtual thunk to'RBX::Humanoid::~Humanoid()")
+    todo!("0x7b84d0 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
 // 0x7b84d8 — __ZThn244_N3RBX8HumanoidD0Ev
 // type: void __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn244_N3RBX8HumanoidD0Ev")]
 pub fn stub_0x7b84d8() -> ! {
-    todo!("0x7b84d8 `non-virtual thunk to'RBX::Humanoid::~Humanoid()")
+    todo!("0x7b84d8 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
 // 0x7b84e0 — __ZThn292_N3RBX8HumanoidD0Ev
 // type: void __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn292_N3RBX8HumanoidD0Ev")]
 pub fn stub_0x7b84e0() -> ! {
-    todo!("0x7b84e0 `non-virtual thunk to'RBX::Humanoid::~Humanoid()")
+    todo!("0x7b84e0 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
 // 0x7b84e8 — __ZThn364_N3RBX8HumanoidD0Ev
 // type: void __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn364_N3RBX8HumanoidD0Ev")]
 pub fn stub_0x7b84e8() -> ! {
-    todo!("0x7b84e8 `non-virtual thunk to'RBX::Humanoid::~Humanoid()")
+    todo!("0x7b84e8 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
 // 0x7b84f0 — __ZThn368_N3RBX8HumanoidD0Ev
 // type: void __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn368_N3RBX8HumanoidD0Ev")]
 pub fn stub_0x7b84f0() -> ! {
-    todo!("0x7b84f0 `non-virtual thunk to'RBX::Humanoid::~Humanoid()")
+    todo!("0x7b84f0 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
 // 0x7b84f8 — __ZN3RBX8HumanoidD2Ev
 // type: void __fastcall(RBX::Humanoid *__hidden this)
@@ -305,56 +305,56 @@ pub fn stub_0x7b84f8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn32_N3RBX8HumanoidD1Ev")]
 pub fn stub_0x7b95a8() -> ! {
-    todo!("0x7b95a8 `non-virtual thunk to'RBX::Humanoid::~Humanoid()")
+    todo!("0x7b95a8 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
 // 0x7b95b8 — __ZThn36_N3RBX8HumanoidD1Ev
 // type: void __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn36_N3RBX8HumanoidD1Ev")]
 pub fn stub_0x7b95b8() -> ! {
-    todo!("0x7b95b8 `non-virtual thunk to'RBX::Humanoid::~Humanoid()")
+    todo!("0x7b95b8 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
 // 0x7b95c8 — __ZThn92_N3RBX8HumanoidD1Ev
 // type: void __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn92_N3RBX8HumanoidD1Ev")]
 pub fn stub_0x7b95c8() -> ! {
-    todo!("0x7b95c8 `non-virtual thunk to'RBX::Humanoid::~Humanoid()")
+    todo!("0x7b95c8 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
 // 0x7b95d8 — __ZThn124_N3RBX8HumanoidD1Ev
 // type: void __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn124_N3RBX8HumanoidD1Ev")]
 pub fn stub_0x7b95d8() -> ! {
-    todo!("0x7b95d8 `non-virtual thunk to'RBX::Humanoid::~Humanoid()")
+    todo!("0x7b95d8 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
 // 0x7b95e8 — __ZThn244_N3RBX8HumanoidD1Ev
 // type: void __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn244_N3RBX8HumanoidD1Ev")]
 pub fn stub_0x7b95e8() -> ! {
-    todo!("0x7b95e8 `non-virtual thunk to'RBX::Humanoid::~Humanoid()")
+    todo!("0x7b95e8 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
 // 0x7b95f8 — __ZThn292_N3RBX8HumanoidD1Ev
 // type: void __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn292_N3RBX8HumanoidD1Ev")]
 pub fn stub_0x7b95f8() -> ! {
-    todo!("0x7b95f8 `non-virtual thunk to'RBX::Humanoid::~Humanoid()")
+    todo!("0x7b95f8 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
 // 0x7b960c — __ZThn364_N3RBX8HumanoidD1Ev
 // type: void __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn364_N3RBX8HumanoidD1Ev")]
 pub fn stub_0x7b960c() -> ! {
-    todo!("0x7b960c `non-virtual thunk to'RBX::Humanoid::~Humanoid()")
+    todo!("0x7b960c non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
 // 0x7b9620 — __ZThn368_N3RBX8HumanoidD1Ev
 // type: void __fastcall(RBX::Humanoid *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::~Humanoid()")]
 #[doc(alias = "__ZThn368_N3RBX8HumanoidD1Ev")]
 pub fn stub_0x7b9620() -> ! {
-    todo!("0x7b9620 `non-virtual thunk to'RBX::Humanoid::~Humanoid()")
+    todo!("0x7b9620 non-virtual thunk toRBX::Humanoid::~Humanoid()")
 }
 // 0x7b9818 — __ZN3RBX8Humanoid13getStatusFastEv
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
@@ -487,7 +487,7 @@ pub fn stub_0x7bb3e8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::calcDesiredWalkVelocity(void)const")]
 #[doc(alias = "__ZThn292_NK3RBX8Humanoid23calcDesiredWalkVelocityEv")]
 pub fn stub_0x7bb434() -> ! {
-    todo!("0x7bb434 `non-virtual thunk to'RBX::Humanoid::calcDesiredWalkVelocity(void)const")
+    todo!("0x7bb434 non-virtual thunk toRBX::Humanoid::calcDesiredWalkVelocity(void)const")
 }
 // 0x7bb444 — __ZN3RBX8Humanoid12stepWalkModeEv
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this)
@@ -515,7 +515,7 @@ pub fn stub_0x7bb4e4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::getYAxisRotationalVelocity(void)const")]
 #[doc(alias = "__ZThn292_NK3RBX8Humanoid26getYAxisRotationalVelocityEv")]
 pub fn stub_0x7bb4f8() -> ! {
-    todo!("0x7bb4f8 `non-virtual thunk to'RBX::Humanoid::getYAxisRotationalVelocity(void)const")
+    todo!("0x7bb4f8 non-virtual thunk toRBX::Humanoid::getYAxisRotationalVelocity(void)const")
 }
 // 0x7bb50c — __ZN3RBX8Humanoid11setAutoJumpEb
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this, bool)
@@ -669,7 +669,7 @@ pub fn stub_0x7bbe14() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::computeForce(bool)")]
 #[doc(alias = "__ZThn244_N3RBX8Humanoid12computeForceEb")]
 pub fn stub_0x7bbe28() -> ! {
-    todo!("0x7bbe28 `non-virtual thunk to'RBX::Humanoid::computeForce(bool)")
+    todo!("0x7bbe28 non-virtual thunk toRBX::Humanoid::computeForce(bool)")
 }
 // 0x7bbe3c — __ZN3RBX8Humanoid17onAncestorChangedERKNS_15AncestorChangedE
 // type: 
@@ -704,7 +704,7 @@ pub fn stub_0x7bc1f8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::onStepped(RBX::Stepped const&)")]
 #[doc(alias = "__ZThn368_N3RBX8Humanoid9onSteppedERKNS_7SteppedE")]
 pub fn stub_0x7bc6b4() -> ! {
-    todo!("0x7bc6b4 `non-virtual thunk to'RBX::Humanoid::onStepped(RBX::Stepped const&)")
+    todo!("0x7bc6b4 non-virtual thunk toRBX::Humanoid::onStepped(RBX::Stepped const&)")
 }
 // 0x7bcce8 — __ZNK3RBX8Humanoid13getPrimitivesERSt6vectorIPNS_9PrimitiveESaIS3_EE
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
@@ -725,7 +725,7 @@ pub fn stub_0x7bcf2c() -> ! {
 #[doc(alias = "virtual thunk toRBX::Humanoid::getLocation(void)")]
 #[doc(alias = "__ZTv0_n12_N3RBX8Humanoid11getLocationEv")]
 pub fn stub_0x7bcf60() -> ! {
-    todo!("0x7bcf60 `virtual thunk to'RBX::Humanoid::getLocation(void)")
+    todo!("0x7bcf60 virtual thunk toRBX::Humanoid::getLocation(void)")
 }
 // 0x7bcf74 — __ZN3RBX8Humanoid28getSelectionIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE
 // type: 
@@ -739,7 +739,7 @@ pub fn stub_0x7bcf74() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::getSelectionIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
 #[doc(alias = "__ZThn292_N3RBX8Humanoid28getSelectionIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE")]
 pub fn stub_0x7bcf78() -> ! {
-    todo!("0x7bcf78 `non-virtual thunk to'RBX::Humanoid::getSelectionIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")
+    todo!("0x7bcf78 non-virtual thunk toRBX::Humanoid::getSelectionIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")
 }
 // 0x7bcf80 — __ZN3RBX8Humanoid25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE
 // type: 
@@ -753,7 +753,7 @@ pub fn stub_0x7bcf80() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
 #[doc(alias = "__ZThn292_N3RBX8Humanoid25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE")]
 pub fn stub_0x7bcfcc() -> ! {
-    todo!("0x7bcfcc `non-virtual thunk to'RBX::Humanoid::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")
+    todo!("0x7bcfcc non-virtual thunk toRBX::Humanoid::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")
 }
 // 0x7bcfd4 — __ZNK3RBX8Humanoid16setAlphaModifierEf
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this, float)
@@ -774,7 +774,7 @@ pub fn stub_0x7bd114() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::tellCameraNear(float)const")]
 #[doc(alias = "__ZThn292_NK3RBX8Humanoid14tellCameraNearEf")]
 pub fn stub_0x7bd178() -> ! {
-    todo!("0x7bd178 `non-virtual thunk to'RBX::Humanoid::tellCameraNear(float)const")
+    todo!("0x7bd178 non-virtual thunk toRBX::Humanoid::tellCameraNear(float)const")
 }
 // 0x7bd1b4 — __ZNK3RBX8Humanoid14tellCursorOverEf
 // type: _DWORD __fastcall(RBX::Humanoid *__hidden this, float)
@@ -788,7 +788,7 @@ pub fn stub_0x7bd1b4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::tellCursorOver(float)const")]
 #[doc(alias = "__ZThn292_NK3RBX8Humanoid14tellCursorOverEf")]
 pub fn stub_0x7bd330() -> ! {
-    todo!("0x7bd330 `non-virtual thunk to'RBX::Humanoid::tellCursorOver(float)const")
+    todo!("0x7bd330 non-virtual thunk toRBX::Humanoid::tellCursorOver(float)const")
 }
 // 0x7bd924 — __ZN3RBX15StringConverterINS_8Humanoid6StatusEE14convertToValueERKSsRS2_
 // type: 
