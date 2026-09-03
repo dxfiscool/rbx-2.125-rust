@@ -614,3 +614,4 @@ pub mod generated_wdog_rend_w9;
 pub mod generated_487;
 pub mod generated_watchdog_rend_w10;
 pub mod generated_488;
+pub mod generated_489;
