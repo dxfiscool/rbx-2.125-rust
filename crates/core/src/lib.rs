@@ -580,3 +580,4 @@ pub mod generated_wdog_coreB3;
 pub mod generated_core_shard_oz;
 pub mod generated_watchdog_core_w2;
 pub mod generated_core_shard_pa;
+pub mod generated_core_shard_pb;
