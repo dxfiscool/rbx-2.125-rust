@@ -706,3 +706,4 @@ pub mod generated_datamodel_part_a;
 pub mod generated_watchdog_dm_wdA;
 pub mod generated_watchdog_dm_wdB;
 pub mod generated_watchdog_dm_wdb;
+pub mod generated_watchdog_dm_wda;
