@@ -358,3 +358,4 @@ pub mod generated_watchdog_script_w15b;
 pub mod generated_watchdog_script_w15d;
 pub mod generated_watchdog_script_w15d2;
 pub mod generated_watchdog_script_a;
+pub mod generated_watchdog_script_b;
