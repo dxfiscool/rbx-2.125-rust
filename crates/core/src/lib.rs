@@ -596,6 +596,8 @@ pub mod generated_core_bg19;
 pub mod generated_core_bg20;
 pub mod generated_core_bg21;
 pub mod generated_core_bg22;
+pub mod generated_core_bg23;
+pub mod generated_core_bg24;
 pub mod generated_watchdog_core_w12;
 pub mod generated_watchdog_gap_w12;
 pub mod generated_watchdog_gap_w12b;
