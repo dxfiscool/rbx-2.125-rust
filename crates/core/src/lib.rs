@@ -599,6 +599,7 @@ pub mod generated_core_bg22;
 pub mod generated_core_bg23;
 pub mod generated_core_bg24;
 pub mod generated_core_bg25;
+pub mod generated_core_bg26;
 pub mod generated_core2_delta;
 pub mod generated_core_delta;
 pub mod generated_watchdog_core_w12;
