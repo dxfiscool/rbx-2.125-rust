@@ -615,7 +615,7 @@ pub fn stub_0xe55a90() -> ! {
 
 // 0xe55b54 — __ZThn4_N4Ogre15WireBoundingBoxD0Ev
 // type: void __fastcall(Ogre::WireBoundingBox *__hidden this)
-#[doc(alias = "`non-virtual thunk to'Ogre::WireBoundingBox::~WireBoundingBox()")]
+#[doc(alias = "non-virtual thunk to Ogre::WireBoundingBox::~WireBoundingBox()")]
 #[doc(alias = "__ZThn4_N4Ogre15WireBoundingBoxD0Ev")]
 pub fn stub_0xe55b54() -> ! {
     todo!("0xe55b54 `non-virtual thunk to'Ogre::WireBoundingBox::~WireBoundingBox()")
@@ -623,7 +623,7 @@ pub fn stub_0xe55b54() -> ! {
 
 // 0xe55c28 — __ZThn188_N4Ogre15WireBoundingBoxD0Ev
 // type: void __fastcall(Ogre::WireBoundingBox *__hidden this)
-#[doc(alias = "`non-virtual thunk to'Ogre::WireBoundingBox::~WireBoundingBox()")]
+#[doc(alias = "non-virtual thunk to Ogre::WireBoundingBox::~WireBoundingBox()")]
 #[doc(alias = "__ZThn188_N4Ogre15WireBoundingBoxD0Ev")]
 pub fn stub_0xe55c28() -> ! {
     todo!("0xe55c28 `non-virtual thunk to'Ogre::WireBoundingBox::~WireBoundingBox()")
@@ -631,7 +631,7 @@ pub fn stub_0xe55c28() -> ! {
 
 // 0xe55cf8 — __ZThn4_N4Ogre15WireBoundingBoxD1Ev
 // type: void __fastcall(Ogre::WireBoundingBox *__hidden this)
-#[doc(alias = "`non-virtual thunk to'Ogre::WireBoundingBox::~WireBoundingBox()")]
+#[doc(alias = "non-virtual thunk to Ogre::WireBoundingBox::~WireBoundingBox()")]
 #[doc(alias = "__ZThn4_N4Ogre15WireBoundingBoxD1Ev")]
 pub fn stub_0xe55cf8() -> ! {
     todo!("0xe55cf8 `non-virtual thunk to'Ogre::WireBoundingBox::~WireBoundingBox()")
@@ -639,7 +639,7 @@ pub fn stub_0xe55cf8() -> ! {
 
 // 0xe55dbc — __ZThn188_N4Ogre15WireBoundingBoxD1Ev
 // type: void __fastcall(Ogre::WireBoundingBox *__hidden this)
-#[doc(alias = "`non-virtual thunk to'Ogre::WireBoundingBox::~WireBoundingBox()")]
+#[doc(alias = "non-virtual thunk to Ogre::WireBoundingBox::~WireBoundingBox()")]
 #[doc(alias = "__ZThn188_N4Ogre15WireBoundingBoxD1Ev")]
 pub fn stub_0xe55dbc() -> ! {
     todo!("0xe55dbc `non-virtual thunk to'Ogre::WireBoundingBox::~WireBoundingBox()")
@@ -663,7 +663,7 @@ pub fn stub_0xe55e98() -> ! {
 
 // 0xe562e4 — __ZThn188_NK4Ogre15WireBoundingBox19getSquaredViewDepthEPKNS_6CameraE
 // type: _DWORD __fastcall(Ogre::WireBoundingBox *__hidden this, const Ogre::Camera *)
-#[doc(alias = "`non-virtual thunk to'Ogre::WireBoundingBox::getSquaredViewDepth(Ogre::Camera const*)const")]
+#[doc(alias = "non-virtual thunk to Ogre::WireBoundingBox::getSquaredViewDepth(Ogre::Camera const*)const")]
 #[doc(alias = "__ZThn188_NK4Ogre15WireBoundingBox19getSquaredViewDepthEPKNS_6CameraE")]
 pub fn stub_0xe562e4() -> ! {
     todo!("0xe562e4 `non-virtual thunk to'Ogre::WireBoundingBox::getSquaredViewDepth(Ogre::Camera const*)const")

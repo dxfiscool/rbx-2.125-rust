@@ -648,3 +648,4 @@ pub mod generated_503;
 pub mod generated_504;
 pub mod generated_rbx_rendering_part_a;
 pub mod generated_505;
+pub mod generated_506;
