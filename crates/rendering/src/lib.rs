@@ -608,3 +608,4 @@ pub mod generated_watchdog_rend_w4b;
 pub mod generated_watchdog_rend_w6;
 pub mod generated_484;
 pub mod generated_485;
+pub mod generated_486;
