@@ -15076,5 +15076,6 @@ pub mod generated_watchdog_audio_a;
 pub mod generated_watchdog_audio_wd2;
 pub mod generated_audio_skeleton_60;
 pub mod generated_watchdog_audio_wdA;
+pub mod generated_watchdog_audio_wdB;
 pub mod generated_watchdog_sna_wda;
 pub mod generated_watchdog_sna_A;
