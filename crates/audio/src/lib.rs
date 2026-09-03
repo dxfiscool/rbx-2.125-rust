@@ -180,6 +180,7 @@ pub struct ProfileCpu {
 
 /// FMOD::ProfileDsp — 52 bytes (IDA 0x69028). The heap buffers behind +24/+32
 /// are Vecs here; cursor/end (+36/+40) are offsets into packet_space.
+/// Word +44 is the live node tally (IDA 0x68b9c/0x68c04).
 pub struct ProfileDsp {
     pub base: ProfileModule,
     pub node_space: Vec<u32>,
@@ -187,8 +188,71 @@ pub struct ProfileDsp {
     pub packet_space: Vec<u8>,
     pub packet_cursor: usize,
     pub packet_end: usize,
-    pub reserved: u32,
+    pub node_count: u32,
     pub packet_grow: u32,
+}
+
+/// One FMOD::ProfileClient data subscription — 12 bytes (IDA 0x69284).
+/// `ty_a == 0xFF` marks a free slot (IDA 0x69324/0x692fc).
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct ClientDataReq {
+    pub ty_a: u8,
+    pub ty_b: u8,
+    pub pad: [u8; 2],
+    pub interval: u32,
+    pub last: u32,
+}
+
+/// FMOD::ProfileClient — 420 bytes (IDA 0x69214): an 8-byte self-linked
+/// intrusive node, flags (bit0 = dead, IDA 0x69364), the OS socket
+/// (-1 = none), a send buffer kept as a Vec with end/cursor offsets plus
+/// its capacity word, and 32 subscription slots at +36.
+pub struct ProfileClient {
+    pub link: ModuleLink,
+    pub u8_field: u32,
+    pub flags: u32,
+    pub socket: i32,
+    pub send_buf: Vec<u8>,
+    pub send_end: usize,
+    pub send_cursor: usize,
+    pub send_capacity: u32,
+    pub requests: [ClientDataReq; 32],
+}
+
+// IDA 0x68de8 / 0x69534 / 0x69614: FMOD_OS net calls report 55 when no data
+// is available; both update loops treat it as success.
+const NET_WOULDBLOCK: i32 = 55;
+
+/// Host socket seam for ProfileClient::sendData/readData (IDA 0x693f4 /
+/// 0x69480). FMOD_OS_Net_Write / FMOD_OS_Net_Read / FMOD_OS_Time_Sleep are
+/// OS calls with no image-side body to decompile; each returns an
+/// FMOD_RESULT alongside the bytes moved (55 = would-block).
+pub trait ClientNet {
+    fn write(&mut self, data: &[u8]) -> (i32, usize);
+    fn read(&mut self, buf: &mut [u8]) -> (i32, usize);
+    fn sleep_ms(&mut self, ms: u32);
+}
+
+/// Host view of one FMOD::DSPI for ProfileDsp::update (IDA 0x68b68): exactly
+/// the words the original reads off each node — the getInfo() block
+/// (vtable +0x3C, 32 bytes at record+8), its result code, the input-edge
+/// list getInput() walks with its result code, the flag word +0x110, the
+/// channel bytes +0x54/+0x55/+0x56/+0x57/+0x64 and the name at +0x5A.
+/// `key` stands in for the DSPI* identity the original stores at record+0.
+pub struct DspSnapshot {
+    pub key: u64,
+    pub info_result: i32,
+    pub info: [u8; 32],
+    pub inputs_result: i32,
+    pub inputs: Vec<usize>,
+    pub flags: u32,
+    pub b84: u8,
+    pub b85: u8,
+    pub b86: u8,
+    pub b87: u8,
+    pub b100: u8,
+    pub name: [u8; 10],
 }
 
 /// FMOD::Profile — 48 bytes (IDA 0x6914c). Word +4 is never written by the
@@ -232,8 +296,24 @@ pub fn stub_686a4(_cpu: &mut ProfileCpu) -> i32 {
 
 // 0x686ac — __ZN4FMOD10ProfileCpu6updateEPNS_7SystemIEj
 #[doc(alias = "FMOD::ProfileCpu::update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_686ac() -> ! {
-    todo!("0x686ac FMOD::ProfileCpu::update(FMOD::SystemI *,unsigned int)")
+pub fn stub_686ac(usage: Result<[f32; 4], i32>, add_packet: impl FnOnce(&[u8]) -> i32) -> i32 {
+    // IDA 0x686ac: getCPUUsage fills v15/v14/v12/v13 (0x686c0-0x686ec) and its
+    // code is returned on failure (0x686f4). On success a 28-byte packet
+    // [size=28, 3,0,1,pad, f0..f3] goes to Profile::addPacket (0x686fc-0x68748).
+    // Host seam: SystemI::getCPUUsage and Profile::addPacket live outside the
+    // image; the caller supplies the readings (or the error) and the sink.
+    let u = match usage {
+        Ok(u) => u,
+        Err(code) => return code,
+    };
+    let mut packet = [0u8; 28];
+    packet[0..4].copy_from_slice(&28u32.to_le_bytes());
+    packet[4] = 3;
+    packet[6] = 1;
+    for (i, f) in u.iter().enumerate() {
+        packet[8 + 4 * i..12 + 4 * i].copy_from_slice(&f.to_le_bytes());
+    }
+    add_packet(&packet)
 }
 
 // 0x68758 — __ZN4FMOD10ProfileCpu7releaseEv
@@ -262,38 +342,225 @@ pub fn stub_687bc(cpu: &mut ProfileCpu) -> &mut ProfileCpu {
 
 // 0x687c0 — __ZN4FMOD22FMOD_ProfileCpu_CreateEv
 #[doc(alias = "FMOD::FMOD_ProfileCpu_Create(void)")]
-pub fn stub_687c0() -> ! {
-    todo!("0x687c0 FMOD::FMOD_ProfileCpu_Create(void)")
+pub fn stub_687c0(slot: &mut Option<Box<ProfileCpu>>, profile: &mut Profile) -> i32 {
+    // IDA 0x687c0: singleton guard on dword_130F4A8 (0x687e0); MemPool::alloc
+    // 24 bytes (0x68804, 44 on failure at 0x68824); C1 (0x68810); init via the
+    // vtable (0x68834) whose code is returned on failure (0x68844); else the
+    // module is registered (0x68854). The globals become the slot/profile
+    // params; a Box never fails to allocate, so the 44 path is documented
+    // but unrepresentable. BUG-compat: on init failure the slot stays set —
+    // the original never clears dword_130F4A8 (unlike 0x6907c, which does).
+    if slot.is_some() {
+        return FMOD_OK;
+    }
+    let mut cpu = Box::new(ProfileCpu {
+        base: ProfileModule {
+            vtable: 0,
+            link: ModuleLink {
+                next: core::ptr::null_mut(),
+                prev: core::ptr::null_mut(),
+            },
+            u12: 0,
+            u16: 0,
+            u20: 0,
+        },
+    });
+    stub_687bc(&mut cpu);
+    *slot = Some(cpu);
+    let rc = stub_686a4(slot.as_mut().unwrap());
+    if rc != FMOD_OK {
+        return rc;
+    }
+    stub_691a0(profile, &mut slot.as_mut().unwrap().base)
 }
 
 // 0x68864 — __ZN4FMOD10ProfileDsp15isNodeDuplicateEy
 #[doc(alias = "FMOD::ProfileDsp::isNodeDuplicate(unsigned long long)")]
-pub fn stub_68864() -> ! {
-    todo!("0x68864 FMOD::ProfileDsp::isNodeDuplicate(unsigned long long)")
+pub fn stub_68864(dsp: &ProfileDsp, id: u64) -> i32 {
+    // IDA 0x68864: with exactly one node there is nothing earlier to match,
+    // so 0 is returned with no compare (0x6887c). Otherwise the LE u64 at
+    // each 61-byte node head is compared against nodes 0..count-1, i.e. every
+    // node except the just-written last one (0x68880-0x68924).
+    // (count == 0 would read OOB below; unreachable — update() pre-increments
+    // the tally before calling.)
+    let count = dsp.node_count as usize;
+    if count <= 1 {
+        return 0;
+    }
+    let want = id.to_le_bytes();
+    for i in 0..count - 1 {
+        let off = dsp.packet_end + 61 * i;
+        let Some(node) = dsp.packet_space.get(off..off + 8) else {
+            break;
+        };
+        if node == want {
+            return 1;
+        }
+    }
+    0
 }
 
 // 0x68944 — __ZN4FMOD10ProfileDsp10sendPacketEPNS_7SystemIE
 #[doc(alias = "FMOD::ProfileDsp::sendPacket(FMOD::SystemI *)")]
-pub fn stub_68944() -> ! {
-    todo!("0x68944 FMOD::ProfileDsp::sendPacket(FMOD::SystemI *)")
+pub fn stub_68944(
+    dsp: &mut ProfileDsp,
+    usage: Result<f32, i32>,
+    max_channels: u8,
+    add_packet: impl FnOnce(&[u8]) -> i32,
+) -> i32 {
+    // IDA 0x68944: getCPUUsage (first float only, 0x68964-0x68978) whose code
+    // is returned on failure (0x68980). On success the 17-byte header at the
+    // packet base is stamped: size = 61*count+17 (0x689a8-0x689c0), zeros at
+    // +4..7, [1,0,2,0] at +8..11, usage/100.0 as f32 at +12 (0x68a20), the
+    // wider of SystemI words +0x540/+0x544 at +16 (0x68a14-0x68a40), then
+    // Profile::addPacket (0x68a58). Host seam: the readings and the sink are
+    // caller-supplied; init() sizes packet_space, so the header always fits.
+    let u = match usage {
+        Ok(u) => u,
+        Err(code) => return code,
+    };
+    let size = 61 * dsp.node_count + 17;
+    dsp.packet_space[0..4].copy_from_slice(&size.to_le_bytes());
+    dsp.packet_space[4..8].copy_from_slice(&[0; 4]);
+    dsp.packet_space[8..12].copy_from_slice(&[1, 0, 2, 0]);
+    dsp.packet_space[12..16].copy_from_slice(&(u / 100.0).to_le_bytes());
+    dsp.packet_space[16] = max_channels;
+    add_packet(&dsp.packet_space[..17])
 }
 
 // 0x68a6c — __ZN4FMOD10ProfileDsp18growNodeStackSpaceEv
 #[doc(alias = "FMOD::ProfileDsp::growNodeStackSpace(void)")]
-pub fn stub_68a6c() -> ! {
-    todo!("0x68a6c FMOD::ProfileDsp::growNodeStackSpace(void)")
+pub fn stub_68a6c(dsp: &mut ProfileDsp) -> i32 {
+    // IDA 0x68a6c: capacity doubles (0x68a88, LSL#1 wraps); realloc for
+    // 8*old bytes = 4 per slot (0x68ab8); null → 44 (0x68ac4), else 0.
+    // BUG-compat: on failure the original still stores the null word,
+    // dropping the old buffer — the Vec is cleared to match.
+    let old = dsp.node_capacity;
+    dsp.node_capacity = old.wrapping_mul(2);
+    if dsp.node_space.try_reserve_exact(dsp.node_capacity as usize).is_err() {
+        dsp.node_space = Vec::new();
+        return FMOD_ERR_MEMORY;
+    }
+    if dsp.node_space.len() < dsp.node_capacity as usize {
+        dsp.node_space.resize(dsp.node_capacity as usize, 0);
+    }
+    FMOD_OK
 }
 
 // 0x68adc — __ZN4FMOD10ProfileDsp15growPacketSpaceEv
 #[doc(alias = "FMOD::ProfileDsp::growPacketSpace(void)")]
-pub fn stub_68adc() -> ! {
-    todo!("0x68adc FMOD::ProfileDsp::growPacketSpace(void)")
+pub fn stub_68adc(dsp: &mut ProfileDsp) -> i32 {
+    // IDA 0x68adc: grow doubles (0x68b00, LSL#1 wraps); realloc for
+    // 122*old+17 bytes = 61*new+17 (0x68b10-0x68b2c); null → 44 with the base
+    // word nulled (0x68b3c-0x68b48), else cursor = base, node base = base+17
+    // (0x68b44-0x68b50), return 0. BUG-compat: on failure the base Vec is
+    // cleared to match the nulled word (cursors go stale in the original).
+    // Note the cursors reset even though realloc preserves the bytes —
+    // update() re-derives node slots from the count, so this is consistent.
+    let old = dsp.packet_grow;
+    dsp.packet_grow = old.wrapping_mul(2);
+    let want = 122 * old as usize + 17;
+    if dsp.packet_space.try_reserve_exact(want).is_err() {
+        dsp.packet_space = Vec::new();
+        return FMOD_ERR_MEMORY;
+    }
+    dsp.packet_space.resize(want, 0);
+    dsp.packet_cursor = 0;
+    dsp.packet_end = 17;
+    FMOD_OK
 }
 
 // 0x68b68 — __ZN4FMOD10ProfileDsp6updateEPNS_7SystemIEj
 #[doc(alias = "FMOD::ProfileDsp::update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_68b68() -> ! {
-    todo!("0x68b68 FMOD::ProfileDsp::update(FMOD::SystemI *,unsigned int)")
+pub fn stub_68b68(
+    dsp: &mut ProfileDsp,
+    head: Result<usize, i32>,
+    graph: &[DspSnapshot],
+    dsp_usage: f32,
+    max_channels: u8,
+    add_packet: impl FnOnce(&[u8]) -> i32,
+) -> i32 {
+    // IDA 0x68b68: critical-section-guarded iterative DFS over the live DSP
+    // graph (0x68b8c/0x68dac are host no-ops here). getDSPHead seeds stack
+    // slot 0 and zeroes the node tally (0x68b94-0x68b9c); its code is
+    // returned on failure (0x68ba8). Each pop encodes one 61-byte node
+    // record, pushes its inputs back LIFO, and finally sendPacket ships the
+    // buffer — 55 or 0 from sendPacket becomes 0 (0x68dd8-0x68df0).
+    // Host seam: the graph reads come from `graph` snapshots; a slot holds
+    // a graph index where the original holds a DSPI*.
+    let Ok(head) = head else {
+        return head.unwrap_err();
+    };
+    if dsp.node_space.is_empty() {
+        dsp.node_space.resize(1, 0);
+    }
+    dsp.node_space[0] = head as u32;
+    dsp.node_count = 0;
+    let mut i: usize = 1;
+    loop {
+        if dsp.node_count + 1 >= dsp.packet_grow {
+            let rc = stub_68adc(dsp);
+            if rc != FMOD_OK {
+                return rc;
+            }
+        }
+        let pop = i - 1;
+        let snap = &graph[dsp.node_space[pop] as usize];
+        let count = dsp.node_count;
+        dsp.node_count += 1;
+        let base = dsp.packet_end + 61 * count as usize;
+        if snap.info_result != 0 {
+            return snap.info_result;
+        }
+        if snap.inputs_result != 0 {
+            return snap.inputs_result;
+        }
+        let key = snap.key.to_le_bytes();
+        dsp.packet_space[base..base + 8].copy_from_slice(&key);
+        dsp.packet_space[base + 8..base + 40].copy_from_slice(&snap.info);
+        dsp.packet_space[base + 40..base + 44]
+            .copy_from_slice(&(snap.inputs.len() as u32).to_le_bytes());
+        let bypassed = snap.flags & 2 != 0;
+        let mixed = snap.flags & 4 != 0;
+        dsp.packet_space[base + 44] = bypassed as u8;
+        dsp.packet_space[base + 45] = mixed as u8;
+        dsp.packet_space[base + 46] = snap.b84;
+        dsp.packet_space[base + 47] = snap.b85;
+        // IDA 0x68cac-0x68cc8: without bypass, +48/+49/+50 echo the bypass
+        // flag (0); with bypass they carry +0x56/+0x57/+0x64.
+        dsp.packet_space[base + 48] = if bypassed { snap.b86 } else { 0 };
+        dsp.packet_space[base + 49] = if bypassed { snap.b87 } else { 0 };
+        dsp.packet_space[base + 50] = if bypassed { snap.b100 } else { 0 };
+        dsp.packet_space[base + 51..base + 61].copy_from_slice(&snap.name);
+        // IDA 0x68d14-0x68d68: fresh nodes push their inputs LIFO over the
+        // popped slot; duplicates and childless nodes shrink the depth.
+        let mut next = pop;
+        if stub_68864(dsp, snap.key) == 0 {
+            for k in (0..snap.inputs.len()).rev() {
+                if next as u32 >= dsp.node_capacity {
+                    let rc = stub_68a6c(dsp);
+                    if rc != FMOD_OK {
+                        return rc;
+                    }
+                }
+                if dsp.node_space.len() <= next {
+                    dsp.node_space.resize(next + 1, 0);
+                }
+                dsp.node_space[next] = snap.inputs[k] as u32;
+                next += 1;
+            }
+        }
+        if next == 0 {
+            break;
+        }
+        i = next;
+    }
+    let rc = stub_68944(dsp, Ok(dsp_usage), max_channels, add_packet);
+    if rc == NET_WOULDBLOCK || rc == FMOD_OK {
+        FMOD_OK
+    } else {
+        rc
+    }
 }
 
 // 0x68dfc — __ZN4FMOD10ProfileDsp7releaseEv
@@ -341,7 +608,7 @@ pub fn stub_69028(dsp: &mut ProfileDsp) -> &mut ProfileDsp {
     dsp.packet_space = Vec::new();
     dsp.packet_cursor = 0;
     dsp.packet_end = 0;
-    dsp.reserved = 0;
+    dsp.node_count = 0;
     dsp.packet_grow = 300;
     dsp
 }
@@ -355,8 +622,44 @@ pub fn stub_69078(dsp: &mut ProfileDsp) -> &mut ProfileDsp {
 
 // 0x6907c — __ZN4FMOD22FMOD_ProfileDsp_CreateEv
 #[doc(alias = "FMOD::FMOD_ProfileDsp_Create(void)")]
-pub fn stub_6907c() -> ! {
-    todo!("0x6907c FMOD::FMOD_ProfileDsp_Create(void)")
+pub fn stub_6907c(slot: &mut Option<Box<ProfileDsp>>, profile: &mut Profile) -> i32 {
+    // IDA 0x6907c: singleton guard on dword_130F4AC (0x690a0); MemPool::alloc
+    // 52 bytes (0x690c4, 44 on failure at 0x690e4); C1 (0x690d0); init via the
+    // vtable (0x690f8); on init failure release via vtable+4 and clear the
+    // slot (0x69100-0x69118) — unlike 0x687c0, which leaks the slot; else
+    // registerModule (0x6913c). The globals become the slot/profile params;
+    // a Box never fails to allocate, so the 44 path is unrepresentable.
+    if slot.is_some() {
+        return FMOD_OK;
+    }
+    let mut dsp = Box::new(ProfileDsp {
+        base: ProfileModule {
+            vtable: 0,
+            link: ModuleLink {
+                next: core::ptr::null_mut(),
+                prev: core::ptr::null_mut(),
+            },
+            u12: 0,
+            u16: 0,
+            u20: 0,
+        },
+        node_space: Vec::new(),
+        node_capacity: 0,
+        packet_space: Vec::new(),
+        packet_cursor: 0,
+        packet_end: 0,
+        node_count: 0,
+        packet_grow: 0,
+    });
+    stub_69078(&mut dsp);
+    *slot = Some(dsp);
+    let rc = stub_68ebc(slot.as_mut().unwrap());
+    if rc != FMOD_OK {
+        let dsp = slot.take().unwrap();
+        stub_68dfc(dsp);
+        return rc;
+    }
+    stub_691a0(profile, &mut slot.as_mut().unwrap().base)
 }
 
 // 0x6914c — __ZN4FMOD7ProfileC2Ev
@@ -437,50 +740,252 @@ pub fn stub_6920c() -> i32 {
 
 // 0x69214 — __ZN4FMOD13ProfileClientC2Ev
 #[doc(alias = "FMOD::ProfileClient::ProfileClient(void)")]
-pub fn stub_69214() -> ! {
-    todo!("0x69214 FMOD::ProfileClient::ProfileClient(void)")
+pub fn stub_69214(client: &mut ProfileClient) -> &mut ProfileClient {
+    // IDA 0x69214: self-links the intrusive node (0x6921c/0x69228); socket =
+    // -1 (0x69220); the +8/+12/+20..+32 words are zeroed (0x69228-0x69248);
+    // all 32 subscription slots become {0xFF, 0, 0, 0} (0x6924c-0x69278).
+    unsafe {
+        let link = core::ptr::addr_of_mut!(client.link);
+        (*link).next = link;
+        (*link).prev = link;
+    }
+    client.u8_field = 0;
+    client.flags = 0;
+    client.socket = -1;
+    client.send_buf = Vec::new();
+    client.send_end = 0;
+    client.send_cursor = 0;
+    client.send_capacity = 0;
+    client.requests = [ClientDataReq {
+        ty_a: 0xFF,
+        ty_b: 0,
+        pad: [0; 2],
+        interval: 0,
+        last: 0,
+    }; 32];
+    client
 }
 
 // 0x69280 — __ZN4FMOD13ProfileClientC1Ev
 #[doc(alias = "FMOD::ProfileClient::ProfileClient(void)")]
-pub fn stub_69280() -> ! {
-    todo!("0x69280 FMOD::ProfileClient::ProfileClient(void)")
+pub fn stub_69280(client: &mut ProfileClient) -> &mut ProfileClient {
+    // IDA 0x69280: single B to C2.
+    stub_69214(client)
 }
 
 // 0x69284 — __ZN4FMOD13ProfileClient15requestDataTypeEhhj
 #[doc(alias = "FMOD::ProfileClient::requestDataType(unsigned char,unsigned char,unsigned int)")]
-pub fn stub_69284() -> ! {
-    todo!("0x69284 FMOD::ProfileClient::requestDataType(unsigned char,unsigned char,unsigned int)")
+pub fn stub_69284(client: &mut ProfileClient, ty_a: u8, ty_b: u8, interval: u32) -> i32 {
+    // IDA 0x69284: linear scan of the 32 slots (0x692a0-0x692cc). On a type
+    // match, a nonzero interval stores the rate (0x692f8) while zero
+    // unsubscribes by writing ty_a = 0xFF (0x692f4-0x692fc). With no match
+    // the first free slot is claimed (0x69308-0x6934c); a full table falls
+    // through unchanged. Every path returns 0 (0x69300/0x69304).
+    if let Some(slot) = client
+        .requests
+        .iter_mut()
+        .find(|r| r.ty_a == ty_a && r.ty_b == ty_b)
+    {
+        if interval != 0 {
+            slot.interval = interval;
+        } else {
+            slot.ty_a = 0xFF;
+        }
+        return FMOD_OK;
+    }
+    if let Some(slot) = client.requests.iter_mut().find(|r| r.ty_a == 0xFF) {
+        slot.ty_a = ty_a;
+        slot.ty_b = ty_b;
+        slot.interval = interval;
+        slot.last = 0;
+    }
+    FMOD_OK
 }
 
 // 0x69358 — __ZN4FMOD13ProfileClient9wantsDataEPNS_19ProfilePacketHeaderE
 #[doc(alias = "FMOD::ProfileClient::wantsData(FMOD::ProfilePacketHeader *)")]
-pub fn stub_69358() -> ! {
-    todo!("0x69358 FMOD::ProfileClient::wantsData(FMOD::ProfilePacketHeader *)")
+pub fn stub_69358(client: &ProfileClient, packet: &[u8]) -> bool {
+    // IDA 0x69358: dead clients never want data (0x69364-0x69368). Otherwise
+    // the slot matching header bytes 8/9 is found (0x69370-0x693a0); no match
+    // in all 32 → false (0x69384). Wanted when the unsigned gap between the
+    // header sequence (LE u32 at +4) and the slot's last exceeds its rate
+    // (0x693e8, unsigned HI comparison). Short headers read OOB in the
+    // original; false here.
+    if client.flags & 1 != 0 || packet.len() < 12 {
+        return false;
+    }
+    let pa = packet[8];
+    let pb = packet[9];
+    let Some(slot) = client
+        .requests
+        .iter()
+        .find(|r| r.ty_a == pa && r.ty_b == pb)
+    else {
+        return false;
+    };
+    let seq = u32::from_le_bytes([packet[4], packet[5], packet[6], packet[7]]);
+    seq.wrapping_sub(slot.last) > slot.interval
 }
 
 // 0x693f4 — __ZN4FMOD13ProfileClient8sendDataEv
 #[doc(alias = "FMOD::ProfileClient::sendData(void)")]
-pub fn stub_693f4() -> ! {
-    todo!("0x693f4 FMOD::ProfileClient::sendData(void)")
+pub fn stub_693f4(client: &mut ProfileClient, net: &mut impl ClientNet) -> i32 {
+    // IDA 0x693f4: dead (0x6941c) or drained (0x69424) clients return 0. The
+    // pending window ships in 0x4000-byte chunks (0x6944c-0x69460); a nonzero
+    // write code aborts with that code (0x69468), while a drained buffer
+    // rewinds both offsets to base (0x69470-0x69478). Like the original, a
+    // zero-progress write spins rather than errors.
+    if client.flags & 1 != 0 {
+        return FMOD_OK;
+    }
+    while client.send_cursor != client.send_end {
+        let chunk = (client.send_end - client.send_cursor).min(0x4000);
+        let (rc, wrote) = net.write(&client.send_buf[client.send_cursor..client.send_cursor + chunk]);
+        if rc != FMOD_OK {
+            return rc;
+        }
+        client.send_cursor += wrote;
+    }
+    client.send_end = 0;
+    client.send_cursor = 0;
+    FMOD_OK
 }
 
 // 0x69480 — __ZN4FMOD13ProfileClient8readDataEv
 #[doc(alias = "FMOD::ProfileClient::readData(void)")]
-pub fn stub_69480() -> ! {
-    todo!("0x69480 FMOD::ProfileClient::readData(void)")
+pub fn stub_69480(client: &mut ProfileClient, net: &mut impl ClientNet) -> i32 {
+    // IDA 0x69480: dead clients return 0 immediately (0x694a8). Each 12-byte
+    // header read: 55 ends the pump with 0 (0x69534); any other nonzero code
+    // or a short read kills the client but still returns 0 (0x6953c/0x6954c).
+    // The payload follows (55 → sleep 1ms and retry, 0x69554-0x69560); a
+    // short payload kills the client, still returning 0 (0x694cc). A (0, 0)
+    // type header feeds its triplet to requestDataType (0x694d4-0x69510).
+    // BUG-compat: every error path returns 0, so update() can never observe
+    // a failure here; requestDataType likewise always returns 0, leaving the
+    // `return v2` at 0x69514 dead. BUG (0x69588-0x69594): the wire length is
+    // trusted into a 16372-byte stack buffer with no bound check — oversized
+    // lengths smash the stack in the original and kill the client here.
+    // Non-triplet payloads are consumed and dropped, as in the original.
+    if client.flags & 1 != 0 {
+        return FMOD_OK;
+    }
+    let mut header = [0u8; 12];
+    let mut payload = [0u8; 16372];
+    loop {
+        let (rc, got) = net.read(&mut header);
+        if rc == NET_WOULDBLOCK {
+            break;
+        }
+        if rc != FMOD_OK || got != 12 {
+            client.flags |= 1;
+            return FMOD_OK;
+        }
+        let size = u32::from_le_bytes([header[0], header[1], header[2], header[3]]) as usize;
+        let Some(payload_len) = size.checked_sub(12).filter(|&n| n <= payload.len()) else {
+            client.flags |= 1;
+            return FMOD_OK;
+        };
+        let got = loop {
+            let (rc, got) = net.read(&mut payload[..payload_len]);
+            if rc == FMOD_OK {
+                break got;
+            }
+            if rc != NET_WOULDBLOCK {
+                client.flags |= 1;
+                return FMOD_OK;
+            }
+            net.sleep_ms(1);
+        };
+        if got != payload_len {
+            client.flags |= 1;
+            return FMOD_OK;
+        }
+        // A short triplet cannot be parsed (the original would read OOB);
+        // it is dropped with the payload.
+        if header[8] == 0 && header[9] == 0 && payload_len >= 6 {
+            let rate = u32::from_le_bytes([payload[2], payload[3], payload[4], payload[5]]);
+            let rc = stub_69284(client, payload[0], payload[1], rate);
+            if rc != FMOD_OK {
+                return rc;
+            }
+        }
+    }
+    FMOD_OK
 }
 
 // 0x695dc — __ZN4FMOD13ProfileClient6updateEj
 #[doc(alias = "FMOD::ProfileClient::update(unsigned int)")]
-pub fn stub_695dc() -> ! {
-    todo!("0x695dc FMOD::ProfileClient::update(unsigned int)")
+pub fn stub_695dc(client: &mut ProfileClient, net: &mut impl ClientNet) -> i32 {
+    // IDA 0x695dc: dead → 0 (0x695f0; the tick arg is never read).
+    // readData's code is returned when nonzero (0x69608 — dead in practice,
+    // since readData only returns 0); sendData's 55/0 pass through as 0,
+    // anything else kills the client and is returned (0x69614-0x6962c).
+    if client.flags & 1 != 0 {
+        return FMOD_OK;
+    }
+    let rc = stub_69480(client, net);
+    if rc != FMOD_OK {
+        return rc;
+    }
+    let rc = stub_693f4(client, net);
+    if rc == NET_WOULDBLOCK || rc == FMOD_OK {
+        return FMOD_OK;
+    }
+    client.flags |= 1;
+    rc
 }
 
 // 0x69634 — __ZN4FMOD13ProfileClient9addPacketEPNS_19ProfilePacketHeaderE
 #[doc(alias = "FMOD::ProfileClient::addPacket(FMOD::ProfilePacketHeader *)")]
-pub fn stub_69634() -> ! {
-    todo!("0x69634 FMOD::ProfileClient::addPacket(FMOD::ProfilePacketHeader *)")
+pub fn stub_69634(client: &mut ProfileClient, packet: &[u8], net: &mut impl ClientNet) -> i32 {
+    // IDA 0x69634: dead → 0 (0x69654). Oversized packets round the capacity
+    // up to a 16K multiple and rebase both offsets onto the new base
+    // (0x6967c-0x696ec); realloc failure → 44 without killing (0x696d0). If
+    // the packet fits, or a sendData drain makes it fit, the slot matching
+    // header bytes 8/9 gets its last-sequence stamped (0x69728-0x69790;
+    // unknown types skip the stamp), the bytes are appended (0x69794-0x697e0)
+    // and 0 returns. Otherwise the drain failed: dead, 0 (0x697f4-0x69810).
+    // Truncated slices read OOB in the original and kill the client here.
+    if client.flags & 1 != 0 {
+        return FMOD_OK;
+    }
+    let Some(header) = packet.get(..12) else {
+        client.flags |= 1;
+        return FMOD_OK;
+    };
+    let size = u32::from_le_bytes([header[0], header[1], header[2], header[3]]) as usize;
+    if size > client.send_capacity as usize {
+        let new_cap = ((size >> 14) + 1) << 14;
+        let mut grown = Vec::new();
+        if grown.try_reserve_exact(new_cap).is_err() {
+            return FMOD_ERR_MEMORY;
+        }
+        grown.resize(new_cap, 0);
+        grown[..client.send_buf.len()].copy_from_slice(&client.send_buf);
+        client.send_buf = grown;
+        client.send_capacity = new_cap as u32;
+    }
+    if size + client.send_end > client.send_capacity as usize
+        && stub_693f4(client, net) != FMOD_OK
+    {
+        client.flags |= 1;
+        return FMOD_OK;
+    }
+    if let Some(slot) = client
+        .requests
+        .iter_mut()
+        .find(|r| r.ty_a == header[8] && r.ty_b == header[9])
+    {
+        slot.last = u32::from_le_bytes([header[4], header[5], header[6], header[7]]);
+    }
+    let Some(body) = packet.get(..size) else {
+        client.flags |= 1;
+        return FMOD_OK;
+    };
+    let end = client.send_end;
+    client.send_buf[end..end + size].copy_from_slice(body);
+    client.send_end = end + size;
+    FMOD_OK
 }
 
 // 0x69820 — __ZN4FMOD13ProfileClient7releaseEv
@@ -15248,3 +15753,395 @@ pub mod generated_watchdog_audio_wdM;
 pub mod generated_watchdog_audio_wdN;
 pub mod generated_watchdog_audio_wdB2;
 pub mod generated_watchdog_audio_wdC2;
+
+#[cfg(test)]
+mod profile_cluster_tests {
+    use super::*;
+    use std::collections::VecDeque;
+
+    fn zeroed_module() -> ProfileModule {
+        ProfileModule {
+            vtable: 0,
+            link: ModuleLink {
+                next: core::ptr::null_mut(),
+                prev: core::ptr::null_mut(),
+            },
+            u12: 0,
+            u16: 0,
+            u20: 0,
+        }
+    }
+
+    fn fresh_client() -> Box<ProfileClient> {
+        let mut client = Box::new(ProfileClient {
+            link: ModuleLink {
+                next: core::ptr::null_mut(),
+                prev: core::ptr::null_mut(),
+            },
+            u8_field: 0xdead,
+            flags: 0xdead,
+            socket: 0,
+            send_buf: Vec::new(),
+            send_end: 0,
+            send_cursor: 0,
+            send_capacity: 0,
+            requests: [ClientDataReq {
+                ty_a: 0,
+                ty_b: 0,
+                pad: [0; 2],
+                interval: 0,
+                last: 0,
+            }; 32],
+        });
+        // Boxed: the heap address is stable, so the C2 self-link survives
+        // the return — a by-value return would invalidate it, exactly as a
+        // memmove would invalidate the original's intrusive node.
+        stub_69214(&mut client);
+        client
+    }
+
+    fn fresh_dsp() -> ProfileDsp {
+        let mut dsp = ProfileDsp {
+            base: zeroed_module(),
+            node_space: Vec::new(),
+            node_capacity: 0,
+            packet_space: Vec::new(),
+            packet_cursor: 0,
+            packet_end: 0,
+            node_count: 0,
+            packet_grow: 0,
+        };
+        stub_69028(&mut dsp);
+        assert_eq!(stub_68ebc(&mut dsp), FMOD_OK);
+        dsp
+    }
+
+    fn snap(key: u64, inputs: Vec<usize>, flags: u32) -> DspSnapshot {
+        DspSnapshot {
+            key,
+            info_result: 0,
+            info: [0xAA; 32],
+            inputs_result: 0,
+            inputs,
+            flags,
+            b84: 1,
+            b85: 2,
+            b86: 3,
+            b87: 4,
+            b100: 5,
+            name: *b"0123456789",
+        }
+    }
+
+    struct ScriptNet {
+        reads: VecDeque<(i32, Vec<u8>)>,
+        writes: VecDeque<(i32, usize)>,
+        written: Vec<u8>,
+        write_sizes: Vec<usize>,
+        sleeps: u32,
+    }
+
+    impl ScriptNet {
+        fn new() -> Self {
+            ScriptNet {
+                reads: VecDeque::new(),
+                writes: VecDeque::new(),
+                written: Vec::new(),
+                write_sizes: Vec::new(),
+                sleeps: 0,
+            }
+        }
+    }
+
+    impl ClientNet for ScriptNet {
+        fn write(&mut self, data: &[u8]) -> (i32, usize) {
+            let (code, cap) = self.writes.pop_front().unwrap_or((FMOD_OK, data.len()));
+            let n = data.len().min(cap);
+            self.write_sizes.push(data.len());
+            self.written.extend_from_slice(&data[..n]);
+            (code, n)
+        }
+        fn read(&mut self, buf: &mut [u8]) -> (i32, usize) {
+            let (code, bytes) = self.reads.pop_front().unwrap_or((NET_WOULDBLOCK, Vec::new()));
+            let n = bytes.len().min(buf.len());
+            buf[..n].copy_from_slice(&bytes[..n]);
+            (code, n)
+        }
+        fn sleep_ms(&mut self, ms: u32) {
+            self.sleeps += ms;
+        }
+    }
+
+    #[test]
+    fn client_c2_state() {
+        let client = fresh_client();
+        assert_eq!(client.flags, 0);
+        assert_eq!(client.socket, -1);
+        assert_eq!(client.send_capacity, 0);
+        assert!(client.requests.iter().all(|r| r.ty_a == 0xFF && r.interval == 0 && r.last == 0));
+        let link = &client.link as *const ModuleLink as *mut ModuleLink;
+        assert_eq!(client.link.next, link);
+        assert_eq!(client.link.prev, link);
+        let mut c2 = fresh_client();
+        let back: *mut ProfileClient = stub_69280(&mut c2);
+        assert_eq!(back, &mut *c2 as *mut _);
+    }
+
+    #[test]
+    fn request_datatype_lifecycle() {
+        let mut client = fresh_client();
+        assert_eq!(stub_69284(&mut client, 3, 7, 100), FMOD_OK);
+        assert_eq!(client.requests[0].ty_a, 3);
+        assert_eq!(client.requests[0].interval, 100);
+        assert_eq!(stub_69284(&mut client, 3, 7, 250), FMOD_OK);
+        assert_eq!(client.requests[0].interval, 250);
+        assert_eq!(stub_69284(&mut client, 3, 7, 0), FMOD_OK);
+        assert_eq!(client.requests[0].ty_a, 0xFF);
+        for i in 0..32u8 {
+            assert_eq!(stub_69284(&mut client, i, i, 1), FMOD_OK);
+        }
+        assert!(client.requests.iter().all(|r| r.ty_a != 0xFF));
+        assert_eq!(stub_69284(&mut client, 9, 9, 1), FMOD_OK);
+        assert!(client.requests.iter().all(|r| r.ty_a != 0xFF));
+    }
+
+    #[test]
+    fn wants_data_gap() {
+        let mut client = fresh_client();
+        stub_69284(&mut client, 2, 0, 10);
+        let mut packet = [0u8; 12];
+        packet[4..8].copy_from_slice(&100u32.to_le_bytes());
+        packet[8] = 2;
+        client.requests[0].last = 95;
+        assert!(!stub_69358(&client, &packet));
+        client.requests[0].last = 89;
+        assert!(stub_69358(&client, &packet));
+        client.requests[0].last = 0xFFFF_FFFA;
+        packet[4..8].copy_from_slice(&5u32.to_le_bytes());
+        assert!(stub_69358(&client, &packet));
+        client.flags |= 1;
+        assert!(!stub_69358(&client, &packet));
+        client.flags = 0;
+        assert!(!stub_69358(&client, &[0u8; 4]));
+        assert!(!stub_69358(&client, &[0xFFu8; 12]));
+    }
+
+    #[test]
+    fn growers_double() {
+        let mut dsp = fresh_dsp();
+        assert_eq!(stub_68a6c(&mut dsp), FMOD_OK);
+        assert_eq!(dsp.node_capacity, 64);
+        assert_eq!(stub_68adc(&mut dsp), FMOD_OK);
+        assert_eq!(dsp.packet_grow, 600);
+        assert_eq!(dsp.packet_space.len(), 61 * 600 + 17);
+        assert_eq!((dsp.packet_cursor, dsp.packet_end), (0, 17));
+    }
+
+    #[test]
+    fn dup_needs_two_nodes() {
+        let mut dsp = fresh_dsp();
+        dsp.packet_space[17..25].copy_from_slice(&0xABu64.to_le_bytes());
+        dsp.packet_space[78..86].copy_from_slice(&0xCDu64.to_le_bytes());
+        dsp.node_count = 1;
+        assert_eq!(stub_68864(&dsp, 0xAB), 0);
+        dsp.node_count = 2;
+        assert_eq!(stub_68864(&dsp, 0xAB), 1);
+        assert_eq!(stub_68864(&dsp, 0xCD), 0);
+        dsp.node_count = 0;
+        assert_eq!(stub_68864(&dsp, 0xAB), 0);
+    }
+
+    #[test]
+    fn cpu_update_packet_layout() {
+        let mut seen = Vec::new();
+        let rc = stub_686ac(Ok([1.0, 2.0, 3.0, 4.0]), |p: &[u8]| {
+            seen.extend_from_slice(p);
+            7
+        });
+        assert_eq!(rc, 7);
+        assert_eq!(seen.len(), 28);
+        assert_eq!(&seen[0..7], &[28, 0, 0, 0, 3, 0, 1]);
+        assert_eq!(&seen[8..12], &1.0f32.to_le_bytes());
+        assert_eq!(&seen[12..16], &2.0f32.to_le_bytes());
+        assert_eq!(&seen[16..20], &3.0f32.to_le_bytes());
+        assert_eq!(&seen[20..24], &4.0f32.to_le_bytes());
+        let rc = stub_686ac(Err(9), |_: &[u8]| panic!("sink must not run"));
+        assert_eq!(rc, 9);
+    }
+
+    #[test]
+    fn dsp_send_packet_header() {
+        let mut dsp = fresh_dsp();
+        dsp.node_count = 2;
+        let mut seen = Vec::new();
+        let rc = stub_68944(&mut dsp, Ok(50.0), 7, |p: &[u8]| {
+            seen.extend_from_slice(p);
+            FMOD_OK
+        });
+        assert_eq!(rc, FMOD_OK);
+        assert_eq!(seen.len(), 17);
+        assert_eq!(&seen[0..4], &(61 * 2 + 17u32).to_le_bytes());
+        assert_eq!(&seen[4..12], &[0, 0, 0, 0, 1, 0, 2, 0]);
+        assert_eq!(&seen[12..16], &0.5f32.to_le_bytes());
+        assert_eq!(seen[16], 7);
+        assert_eq!(stub_68944(&mut dsp, Err(11), 0, |_: &[u8]| panic!("sink must not run")), 11);
+    }
+
+    #[test]
+    fn client_send_chunks_and_rewinds() {
+        let mut client = fresh_client();
+        client.send_buf = vec![0x5Au8; 0x5000];
+        client.send_capacity = 0x5000;
+        client.send_end = 0x5000;
+        let mut net = ScriptNet::new();
+        assert_eq!(stub_693f4(&mut client, &mut net), FMOD_OK);
+        assert_eq!(net.write_sizes, vec![0x4000, 0x1000]);
+        assert_eq!(net.written.len(), 0x5000);
+        assert_eq!((client.send_end, client.send_cursor), (0, 0));
+        client.send_buf = vec![0u8; 8];
+        client.send_capacity = 8;
+        client.send_end = 8;
+        net.writes.push_back((3, 8));
+        assert_eq!(stub_693f4(&mut client, &mut net), 3);
+        client.flags |= 1;
+        let n = net.written.len();
+        assert_eq!(stub_693f4(&mut client, &mut net), FMOD_OK);
+        assert_eq!(net.written.len(), n);
+    }
+
+    fn sub_packet(size: u32, seq: u32, ty_a: u8, ty_b: u8, rate: u32) -> Vec<u8> {
+        let mut v = Vec::new();
+        v.extend_from_slice(&size.to_le_bytes());
+        v.extend_from_slice(&seq.to_le_bytes());
+        v.push(ty_a);
+        v.push(ty_b);
+        v.push(0);
+        v.push(0);
+        v.extend_from_slice(&rate.to_le_bytes());
+        v.resize(size as usize, 0);
+        v
+    }
+
+    #[test]
+    fn client_read_subscription_pump() {
+        let mut client = fresh_client();
+        let mut net = ScriptNet::new();
+        net.reads.push_back((FMOD_OK, sub_packet(12 + 6, 0, 0, 0, 0)[..12].to_vec()));
+        let body = vec![5u8, 6, 40, 0, 0, 0];
+        net.reads.push_back((FMOD_OK, body));
+        assert_eq!(stub_69480(&mut client, &mut net), FMOD_OK);
+        assert_eq!(client.requests[0].ty_a, 5);
+        assert_eq!(client.requests[0].ty_b, 6);
+        assert_eq!(client.requests[0].interval, 40);
+        assert_eq!(client.flags & 1, 0);
+    }
+
+    #[test]
+    fn client_read_corrupt_kills() {
+        let mut client = fresh_client();
+        let mut net = ScriptNet::new();
+        net.reads.push_back((FMOD_OK, vec![1, 2, 3, 4, 5]));
+        assert_eq!(stub_69480(&mut client, &mut net), FMOD_OK);
+        assert_eq!(client.flags & 1, 1);
+        assert_eq!(stub_69480(&mut client, &mut net), FMOD_OK);
+    }
+
+    #[test]
+    fn client_update_marks_dead_on_drain_failure() {
+        let mut client = fresh_client();
+        client.send_buf = vec![0u8; 16];
+        client.send_capacity = 16;
+        client.send_end = 16;
+        let mut net = ScriptNet::new();
+        net.writes.push_back((4, 16));
+        assert_eq!(stub_695dc(&mut client, &mut net), 4);
+        assert_eq!(client.flags & 1, 1);
+        assert_eq!(stub_695dc(&mut client, &mut net), FMOD_OK);
+    }
+
+    #[test]
+    fn client_add_packet_fit_and_grow() {
+        let mut client = fresh_client();
+        stub_69284(&mut client, 2, 0, 100);
+        let mut net = ScriptNet::new();
+        let packet = sub_packet(20, 7, 2, 0, 0);
+        assert_eq!(stub_69634(&mut client, &packet, &mut net), FMOD_OK);
+        assert_eq!(client.send_capacity, 16384);
+        assert_eq!(client.send_end, 20);
+        assert_eq!(client.requests[0].last, 7);
+        assert!(stub_69358(&client, &sub_packet(20, 200, 2, 0, 0)));
+        client.send_end = 16384;
+        net.writes.push_back((6, 0));
+        let big = sub_packet(20, 8, 2, 0, 0);
+        assert_eq!(stub_69634(&mut client, &big, &mut net), FMOD_OK);
+        assert_eq!(client.flags & 1, 1);
+    }
+
+    #[test]
+    fn dsp_update_walks_and_encodes() {
+        let mut dsp = fresh_dsp();
+        let graph = [snap(0xAAAA, vec![1], 6), snap(0xBBBB, vec![], 0)];
+        let mut seen = Vec::new();
+        let rc = stub_68b68(&mut dsp, Ok(0), &graph, 50.0, 7, |p: &[u8]| {
+            seen.extend_from_slice(p);
+            FMOD_OK
+        });
+        assert_eq!(rc, FMOD_OK);
+        assert_eq!(dsp.node_count, 2);
+        assert_eq!(&seen[0..4], &(61 * 2 + 17u32).to_le_bytes());
+        let n0 = dsp.packet_end;
+        assert_eq!(&dsp.packet_space[n0..n0 + 8], &0xAAAAu64.to_le_bytes());
+        assert_eq!(&dsp.packet_space[n0 + 8..n0 + 40], &[0xAA; 32]);
+        assert_eq!(&dsp.packet_space[n0 + 40..n0 + 44], &1u32.to_le_bytes());
+        assert_eq!(&dsp.packet_space[n0 + 44..n0 + 51], &[1, 1, 1, 2, 3, 4, 5]);
+        assert_eq!(&dsp.packet_space[n0 + 51..n0 + 61], b"0123456789");
+        let n1 = n0 + 61;
+        assert_eq!(&dsp.packet_space[n1..n1 + 8], &0xBBBBu64.to_le_bytes());
+        assert_eq!(&dsp.packet_space[n1 + 44..n1 + 51], &[0, 0, 1, 2, 0, 0, 0]);
+    }
+
+    #[test]
+    fn dsp_update_diamond_dedups() {
+        let mut dsp = fresh_dsp();
+        let graph = [snap(1, vec![1, 2], 0), snap(9, vec![], 0), snap(9, vec![], 0)];
+        let rc = stub_68b68(&mut dsp, Ok(0), &graph, 10.0, 1, |_| FMOD_OK);
+        assert_eq!(rc, FMOD_OK);
+        assert_eq!(dsp.node_count, 3);
+        assert_eq!(stub_68b68(&mut dsp, Err(12), &graph, 10.0, 1, |_| panic!("no packet")), 12);
+        let mut bad = snap(1, vec![], 0);
+        bad.info_result = 5;
+        let graph = [bad];
+        assert_eq!(stub_68b68(&mut dsp, Ok(0), &graph, 10.0, 1, |_| panic!("no packet")), 5);
+    }
+
+    #[test]
+    fn creates_guard_and_register() {
+        let mut profile = Profile {
+            vtable: 0,
+            u4: 0,
+            listen_socket: 0,
+            client_list: ModuleLink {
+                next: core::ptr::null_mut(),
+                prev: core::ptr::null_mut(),
+            },
+            u20: 0,
+            module_list: ModuleLink {
+                next: core::ptr::null_mut(),
+                prev: core::ptr::null_mut(),
+            },
+            u32_field: 0,
+            critical_section: 0,
+            max_clients: 0,
+            last_tick_ms: 0,
+        };
+        stub_6914c(&mut profile);
+        let mut cpu_slot: Option<Box<ProfileCpu>> = None;
+        assert_eq!(stub_687c0(&mut cpu_slot, &mut profile), FMOD_OK);
+        assert!(cpu_slot.is_some());
+        assert_eq!(stub_687c0(&mut cpu_slot, &mut profile), FMOD_OK);
+        let mut dsp_slot: Option<Box<ProfileDsp>> = None;
+        assert_eq!(stub_6907c(&mut dsp_slot, &mut profile), FMOD_OK);
+        assert!(dsp_slot.is_some());
+        assert_eq!(stub_6907c(&mut dsp_slot, &mut profile), FMOD_OK);
+    }
+}
