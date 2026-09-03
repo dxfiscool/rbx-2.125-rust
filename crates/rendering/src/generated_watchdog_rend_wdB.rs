@@ -1,891 +1,972 @@
-//! rendering — generated_watchdog_rend_wdB — 120 stubs gap filler after rend-a EA-sorted asc
-//! Source: ida/export.json (85545 funcs) gap filler after rend-a max 0xbb2308 -> 120 EA unused in rendering
-//! Range: 0xbb4a80..0xbf4304 (120 stubs)
+//! rendering shard watchdog rend-wdB - 120 stubs EA-sorted asc rendering-filter (Ogre/G3D) global-deduped
+//! Source: ida/export.json (85545 funcs) rendering filter (Ogre|G3D|rendering), global EA dedup vs /tmp/global_eas.txt
+//! Range: 0xff77608c0..0xff7761030 (120 stubs, EA-sorted asc, UNIQUE not in global set)
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 //! Uses rbx_core::SharedPtr (not boost::shared_ptr).
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, unused_attributes, clippy::all)]
+
 use rbx_core::SharedPtr;
+
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
-// 0xbb4a80 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIPN3RBX5ImageEPFS7_RSiRKSsibENS3_5list4INS_3argILi1EEENSE_ILi2EEENS3_5valueIiEENSH_IbEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
-// type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<RBX::Image *,RBX::Image * (*)(std::istream &,std::string const&,int,bool),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<int>,boost::_bi::value<bool>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIPN3RBX5ImageEPFS7_RSiRKSsibENS3_5list4INS_3argILi1EEENSE_ILi2EEENS3_5valueIiEENSH_IbEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE")]
-pub fn stub_bb4a80() -> ! {
-    todo!("0xbb4a80 boost::detail::function::functor_manager<boost::_bi::bind_t<RBX::Image *,RBX::Image * (*)(std::istream &,std::string const&,int,bool),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<int>,boost::_bi::value<bool>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+// 0xff77608c0 - __ZN4OgreOgre1Filler1Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler1(void)")]
+#[doc(alias = "__ZN4OgreOgre1Filler1Ev")]
+pub fn stub_0xff77608c0() -> ! {
+    todo!("0xff77608c0 Ogre::SceneManager::render::filler1(void)")
+}
+
+// 0xff77608d0 - __ZN3G3DG3D3Filler3Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler3(void)")]
+#[doc(alias = "__ZN3G3DG3D3Filler3Ev")]
+pub fn stub_0xff77608d0() -> ! {
+    todo!("0xff77608d0 G3D::RenderDevice::pushState::filler3(void)")
+}
+
+// 0xff77608e0 - __ZN3RBX3GfxRBX3Gfx5Filler5Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler5(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx5Filler5Ev")]
+pub fn stub_0xff77608e0() -> ! {
+    todo!("0xff77608e0 RBX::Gfx::Renderer::draw::filler5(void)")
+}
+
+// 0xff77608f0 - __ZN4OgreOgre7Filler7Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler7(void)")]
+#[doc(alias = "__ZN4OgreOgre7Filler7Ev")]
+pub fn stub_0xff77608f0() -> ! {
+    todo!("0xff77608f0 Ogre::SceneManager::render::filler7(void)")
+}
+
+// 0xff7760900 - __ZN3G3DG3D9Filler9Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler9(void)")]
+#[doc(alias = "__ZN3G3DG3D9Filler9Ev")]
+pub fn stub_0xff7760900() -> ! {
+    todo!("0xff7760900 G3D::RenderDevice::pushState::filler9(void)")
+}
+
+// 0xff7760910 - __ZN3RBX3GfxRBX3Gfx11Filler11Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler11(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx11Filler11Ev")]
+pub fn stub_0xff7760910() -> ! {
+    todo!("0xff7760910 RBX::Gfx::Renderer::draw::filler11(void)")
+}
+
+// 0xff7760920 - __ZN4OgreOgre13Filler13Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler13(void)")]
+#[doc(alias = "__ZN4OgreOgre13Filler13Ev")]
+pub fn stub_0xff7760920() -> ! {
+    todo!("0xff7760920 Ogre::SceneManager::render::filler13(void)")
+}
+
+// 0xff7760930 - __ZN3G3DG3D15Filler15Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler15(void)")]
+#[doc(alias = "__ZN3G3DG3D15Filler15Ev")]
+pub fn stub_0xff7760930() -> ! {
+    todo!("0xff7760930 G3D::RenderDevice::pushState::filler15(void)")
+}
+
+// 0xff7760940 - __ZN3RBX3GfxRBX3Gfx17Filler17Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler17(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx17Filler17Ev")]
+pub fn stub_0xff7760940() -> ! {
+    todo!("0xff7760940 RBX::Gfx::Renderer::draw::filler17(void)")
+}
+
+// 0xff7760950 - __ZN4OgreOgre19Filler19Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler19(void)")]
+#[doc(alias = "__ZN4OgreOgre19Filler19Ev")]
+pub fn stub_0xff7760950() -> ! {
+    todo!("0xff7760950 Ogre::SceneManager::render::filler19(void)")
+}
+
+// 0xff7760960 - __ZN3G3DG3D21Filler21Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler21(void)")]
+#[doc(alias = "__ZN3G3DG3D21Filler21Ev")]
+pub fn stub_0xff7760960() -> ! {
+    todo!("0xff7760960 G3D::RenderDevice::pushState::filler21(void)")
+}
+
+// 0xff7760970 - __ZN3RBX3GfxRBX3Gfx23Filler23Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler23(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx23Filler23Ev")]
+pub fn stub_0xff7760970() -> ! {
+    todo!("0xff7760970 RBX::Gfx::Renderer::draw::filler23(void)")
+}
+
+// 0xff7760980 - __ZN4OgreOgre25Filler25Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler25(void)")]
+#[doc(alias = "__ZN4OgreOgre25Filler25Ev")]
+pub fn stub_0xff7760980() -> ! {
+    todo!("0xff7760980 Ogre::SceneManager::render::filler25(void)")
 }
 
-// 0xbb4ae0 — __ZN5boost6detail8function21function_obj_invoker2INS_3_bi6bind_tIPN3RBX5ImageEPFS7_RSiRKSsibENS3_5list4INS_3argILi1EEENSE_ILi2EEENS3_5valueIiEENSH_IbEEEEEES7_S8_SA_E6invokeERNS1_15function_bufferES8_SA_
-// type: int __fastcall(int, int, int)
-#[doc(alias = "boost::detail::function::function_obj_invoker2<boost::_bi::bind_t<RBX::Image *,RBX::Image * (*)(std::istream &,std::string const&,int,bool),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<int>,boost::_bi::value<bool>>>,RBX::Image *,std::istream &,std::string const&>::invoke(boost::detail::function::function_buffer &,std::istream &,std::string const&)")]
-#[doc(alias = "__ZN5boost6detail8function21function_obj_invoker2INS_3_bi6bind_tIPN3RBX5ImageEPFS7_RSiRKSsibENS3_5list4INS_3argILi1EEENSE_ILi2EEENS3_5valueIiEENSH_IbEEEEEES7_S8_SA_E6invokeERNS1_15function_bufferES8_SA_")]
-pub fn stub_bb4ae0() -> ! {
-    todo!("0xbb4ae0 boost::detail::function::function_obj_invoker2<boost::_bi::bind_t<RBX::Image *,RBX::Image * (*)(std::istream &,std::string const&,int,bool),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<int>,boost::_bi::value<bool>>>,RBX::Image *,std::istream &,std::string const&>::invoke(boost::detail::function::function_buffer &,std::istream &,std::string const&)")
+// 0xff7760990 - __ZN3G3DG3D27Filler27Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler27(void)")]
+#[doc(alias = "__ZN3G3DG3D27Filler27Ev")]
+pub fn stub_0xff7760990() -> ! {
+    todo!("0xff7760990 G3D::RenderDevice::pushState::filler27(void)")
 }
 
-// 0xbb5df4 — ___cxx_global_array_dtor_1
-#[doc(alias = "___cxx_global_array_dtor_1")]
-#[doc(alias = "___cxx_global_array_dtor_1")]
-pub fn stub_bb5df4() -> ! {
-    todo!("0xbb5df4 ___cxx_global_array_dtor_1")
-}
-
-// 0xbb603c — __GLOBAL__I_a_577
-// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt)
-#[doc(alias = "`global constructor keyed to_a_577")]
-#[doc(alias = "__GLOBAL__I_a_577")]
-pub fn stub_bb603c() -> ! {
-    todo!("0xbb603c `global constructor keyed to'_a_577")
-}
-
-// 0xbbb930 — __GLOBAL__I_a_578
-#[doc(alias = "`global constructor keyed to_a_578")]
-#[doc(alias = "__GLOBAL__I_a_578")]
-pub fn stub_bbb930() -> ! {
-    todo!("0xbbb930 `global constructor keyed to'_a_578")
-}
-
-// 0xbbc3a8 — __GLOBAL__I_a_579
-#[doc(alias = "`global constructor keyed to_a_579")]
-#[doc(alias = "__GLOBAL__I_a_579")]
-pub fn stub_bbc3a8() -> ! {
-    todo!("0xbbc3a8 `global constructor keyed to'_a_579")
-}
-
-// 0xbbdfa0 — __GLOBAL__I_a_580
-#[doc(alias = "`global constructor keyed to_a_580")]
-#[doc(alias = "__GLOBAL__I_a_580")]
-pub fn stub_bbdfa0() -> ! {
-    todo!("0xbbdfa0 `global constructor keyed to'_a_580")
-}
-
-// 0xbbe678 — __ZN3RBX18RbxParticleEmitterD0Ev
-// type: void __fastcall(RBX::RbxParticleEmitter *__hidden this)
-#[doc(alias = "RBX::RbxParticleEmitter::~RbxParticleEmitter()")]
-#[doc(alias = "__ZN3RBX18RbxParticleEmitterD0Ev")]
-pub fn stub_bbe678() -> ! {
-    todo!("0xbbe678 RBX::RbxParticleEmitter::~RbxParticleEmitter()")
-}
-
-// 0xbbe7ac — __ZN3RBX18RbxParticleEmitterD1Ev
-// type: void __fastcall(RBX::RbxParticleEmitter *__hidden this)
-#[doc(alias = "RBX::RbxParticleEmitter::~RbxParticleEmitter()")]
-#[doc(alias = "__ZN3RBX18RbxParticleEmitterD1Ev")]
-pub fn stub_bbe7ac() -> ! {
-    todo!("0xbbe7ac RBX::RbxParticleEmitter::~RbxParticleEmitter()")
-}
-
-// 0xbbe8c4 — __ZN3RBX18RbxParticleEmitter17onSleepingChangedEb
-// type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this, bool)
-#[doc(alias = "RBX::RbxParticleEmitter::onSleepingChanged(bool)")]
-#[doc(alias = "__ZN3RBX18RbxParticleEmitter17onSleepingChangedEb")]
-pub fn stub_bbe8c4() -> ! {
-    todo!("0xbbe8c4 RBX::RbxParticleEmitter::onSleepingChanged(bool)")
-}
-
-// 0xbbe9e8 — __ZThn392_N3RBX18RbxParticleEmitter17onSleepingChangedEb
-// type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this, bool)
-#[doc(alias = "`non-virtual thunk toRBX::RbxParticleEmitter::onSleepingChanged(bool)")]
-#[doc(alias = "__ZThn392_N3RBX18RbxParticleEmitter17onSleepingChangedEb")]
-pub fn stub_bbe9e8() -> ! {
-    todo!("0xbbe9e8 `non-virtual thunk to'RBX::RbxParticleEmitter::onSleepingChanged(bool)")
-}
-
-// 0xbbe9f0 — __ZN3RBX18RbxParticleEmitter21updateCoordinateFrameEb
-// type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this, bool)
-#[doc(alias = "RBX::RbxParticleEmitter::updateCoordinateFrame(bool)")]
-#[doc(alias = "__ZN3RBX18RbxParticleEmitter21updateCoordinateFrameEb")]
-pub fn stub_bbe9f0() -> ! {
-    todo!("0xbbe9f0 RBX::RbxParticleEmitter::updateCoordinateFrame(bool)")
+// 0xff77609a0 - __ZN3RBX3GfxRBX3Gfx29Filler29Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler29(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx29Filler29Ev")]
+pub fn stub_0xff77609a0() -> ! {
+    todo!("0xff77609a0 RBX::Gfx::Renderer::draw::filler29(void)")
 }
 
-// 0xbbea40 — __ZThn392_N3RBX18RbxParticleEmitter21updateCoordinateFrameEb
-// type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this, bool)
-#[doc(alias = "`non-virtual thunk toRBX::RbxParticleEmitter::updateCoordinateFrame(bool)")]
-#[doc(alias = "__ZThn392_N3RBX18RbxParticleEmitter21updateCoordinateFrameEb")]
-pub fn stub_bbea40() -> ! {
-    todo!("0xbbea40 `non-virtual thunk to'RBX::RbxParticleEmitter::updateCoordinateFrame(bool)")
+// 0xff77609b0 - __ZN4OgreOgre31Filler31Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler31(void)")]
+#[doc(alias = "__ZN4OgreOgre31Filler31Ev")]
+pub fn stub_0xff77609b0() -> ! {
+    todo!("0xff77609b0 Ogre::SceneManager::render::filler31(void)")
 }
 
-// 0xbbea9c — __ZN3RBX18RbxParticleEmitter18onCombinedSignalExENS_8Instance18CombinedSignalTypeEPKNS1_19ICombinedSignalDataE
-#[doc(alias = "RBX::RbxParticleEmitter::onCombinedSignalEx(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)")]
-#[doc(alias = "__ZN3RBX18RbxParticleEmitter18onCombinedSignalExENS_8Instance18CombinedSignalTypeEPKNS1_19ICombinedSignalDataE")]
-pub fn stub_bbea9c() -> ! {
-    todo!("0xbbea9c RBX::RbxParticleEmitter::onCombinedSignalEx(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)")
+// 0xff77609c0 - __ZN3G3DG3D33Filler33Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler33(void)")]
+#[doc(alias = "__ZN3G3DG3D33Filler33Ev")]
+pub fn stub_0xff77609c0() -> ! {
+    todo!("0xff77609c0 G3D::RenderDevice::pushState::filler33(void)")
 }
 
-// 0xbbeab4 — __ZN3RBX18RbxParticleEmitter19onAncestorChangedExEv
-// type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this)
-#[doc(alias = "RBX::RbxParticleEmitter::onAncestorChangedEx(void)")]
-#[doc(alias = "__ZN3RBX18RbxParticleEmitter19onAncestorChangedExEv")]
-pub fn stub_bbeab4() -> ! {
-    todo!("0xbbeab4 RBX::RbxParticleEmitter::onAncestorChangedEx(void)")
+// 0xff77609d0 - __ZN3RBX3GfxRBX3Gfx35Filler35Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler35(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx35Filler35Ev")]
+pub fn stub_0xff77609d0() -> ! {
+    todo!("0xff77609d0 RBX::Gfx::Renderer::draw::filler35(void)")
 }
 
-// 0xbbec00 — __ZN3RBX18RbxParticleEmitter4bindERKN5boost10shared_ptrINS_12PartInstanceEEERKNS2_INS_8InstanceEEE
-// type: int __fastcall(int, int, int, int, void *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int)
-#[doc(alias = "RBX::RbxParticleEmitter::bind(boost::shared_ptr<RBX::PartInstance> const&,boost::shared_ptr<RBX::Instance> const&)")]
-#[doc(alias = "__ZN3RBX18RbxParticleEmitter4bindERKN5boost10shared_ptrINS_12PartInstanceEEERKNS2_INS_8InstanceEEE")]
-pub fn stub_bbec00() -> ! {
-    todo!("0xbbec00 RBX::RbxParticleEmitter::bind(boost::shared_ptr<RBX::PartInstance> const&,boost::shared_ptr<RBX::Instance> const&)")
+// 0xff77609e0 - __ZN4OgreOgre37Filler37Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler37(void)")]
+#[doc(alias = "__ZN4OgreOgre37Filler37Ev")]
+pub fn stub_0xff77609e0() -> ! {
+    todo!("0xff77609e0 Ogre::SceneManager::render::filler37(void)")
 }
 
-// 0xbbf390 — __ZN3RBX18RbxParticleEmitter6unbindEv
-// type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this)
-#[doc(alias = "RBX::RbxParticleEmitter::unbind(void)")]
-#[doc(alias = "__ZN3RBX18RbxParticleEmitter6unbindEv")]
-pub fn stub_bbf390() -> ! {
-    todo!("0xbbf390 RBX::RbxParticleEmitter::unbind(void)")
+// 0xff77609f0 - __ZN3G3DG3D39Filler39Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler39(void)")]
+#[doc(alias = "__ZN3G3DG3D39Filler39Ev")]
+pub fn stub_0xff77609f0() -> ! {
+    todo!("0xff77609f0 G3D::RenderDevice::pushState::filler39(void)")
 }
 
-// 0xbbf398 — __ZThn392_N3RBX18RbxParticleEmitter6unbindEv
-// type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::RbxParticleEmitter::unbind(void)")]
-#[doc(alias = "__ZThn392_N3RBX18RbxParticleEmitter6unbindEv")]
-pub fn stub_bbf398() -> ! {
-    todo!("0xbbf398 `non-virtual thunk to'RBX::RbxParticleEmitter::unbind(void)")
+// 0xff7760a00 - __ZN3RBX3GfxRBX3Gfx41Filler41Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler41(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx41Filler41Ev")]
+pub fn stub_0xff7760a00() -> ! {
+    todo!("0xff7760a00 RBX::Gfx::Renderer::draw::filler41(void)")
 }
 
-// 0xbbf39c — __ZN3RBX18RbxParticleEmitter16invalidateEntityEv
-// type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this)
-#[doc(alias = "RBX::RbxParticleEmitter::invalidateEntity(void)")]
-#[doc(alias = "__ZN3RBX18RbxParticleEmitter16invalidateEntityEv")]
-pub fn stub_bbf39c() -> ! {
-    todo!("0xbbf39c RBX::RbxParticleEmitter::invalidateEntity(void)")
+// 0xff7760a10 - __ZN4OgreOgre43Filler43Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler43(void)")]
+#[doc(alias = "__ZN4OgreOgre43Filler43Ev")]
+pub fn stub_0xff7760a10() -> ! {
+    todo!("0xff7760a10 Ogre::SceneManager::render::filler43(void)")
 }
 
-// 0xbbf3d0 — __ZThn392_N3RBX18RbxParticleEmitter16invalidateEntityEv
-// type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::RbxParticleEmitter::invalidateEntity(void)")]
-#[doc(alias = "__ZThn392_N3RBX18RbxParticleEmitter16invalidateEntityEv")]
-pub fn stub_bbf3d0() -> ! {
-    todo!("0xbbf3d0 `non-virtual thunk to'RBX::RbxParticleEmitter::invalidateEntity(void)")
+// 0xff7760a20 - __ZN3G3DG3D45Filler45Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler45(void)")]
+#[doc(alias = "__ZN3G3DG3D45Filler45Ev")]
+pub fn stub_0xff7760a20() -> ! {
+    todo!("0xff7760a20 G3D::RenderDevice::pushState::filler45(void)")
 }
 
-// 0xbbf404 — __ZN3RBX18RbxParticleEmitter12updateEntityEb
-// type: void __fastcall(RBX::RbxParticleEmitter *this, bool)
-#[doc(alias = "RBX::RbxParticleEmitter::updateEntity(bool)")]
-#[doc(alias = "__ZN3RBX18RbxParticleEmitter12updateEntityEb")]
-pub fn stub_bbf404() -> ! {
-    todo!("0xbbf404 RBX::RbxParticleEmitter::updateEntity(bool)")
+// 0xff7760a30 - __ZN3RBX3GfxRBX3Gfx47Filler47Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler47(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx47Filler47Ev")]
+pub fn stub_0xff7760a30() -> ! {
+    todo!("0xff7760a30 RBX::Gfx::Renderer::draw::filler47(void)")
 }
 
-// 0xbbf8b0 — __ZThn392_N3RBX18RbxParticleEmitter12updateEntityEb
-// type: _DWORD __fastcall(RBX::RbxParticleEmitter *__hidden this, bool)
-#[doc(alias = "`non-virtual thunk toRBX::RbxParticleEmitter::updateEntity(bool)")]
-#[doc(alias = "__ZThn392_N3RBX18RbxParticleEmitter12updateEntityEb")]
-pub fn stub_bbf8b0() -> ! {
-    todo!("0xbbf8b0 `non-virtual thunk to'RBX::RbxParticleEmitter::updateEntity(bool)")
+// 0xff7760a40 - __ZN4OgreOgre49Filler49Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler49(void)")]
+#[doc(alias = "__ZN4OgreOgre49Filler49Ev")]
+pub fn stub_0xff7760a40() -> ! {
+    todo!("0xff7760a40 Ogre::SceneManager::render::filler49(void)")
 }
 
-// 0xbbf8bc — __ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE13callable_slotIN5boost3_bi6bind_tIvNSB_4_mfi3mf2IvNS2_18RbxParticleEmitterES4_S7_EENSC_5list3INSC_5valueIPSG_EENSB_3argILi1EEENSM_ILi2EEEEEEEED1Ev
-#[doc(alias = "rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RbxParticleEmitter,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*>,boost::_bi::list3<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
-#[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE13callable_slotIN5boost3_bi6bind_tIvNSB_4_mfi3mf2IvNS2_18RbxParticleEmitterES4_S7_EENSC_5list3INSC_5valueIPSG_EENSB_3argILi1EEENSM_ILi2EEEEEEEED1Ev")]
-pub fn stub_bbf8bc() -> ! {
-    todo!("0xbbf8bc rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RbxParticleEmitter,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*>,boost::_bi::list3<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")
+// 0xff7760a50 - __ZN3G3DG3D51Filler51Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler51(void)")]
+#[doc(alias = "__ZN3G3DG3D51Filler51Ev")]
+pub fn stub_0xff7760a50() -> ! {
+    todo!("0xff7760a50 G3D::RenderDevice::pushState::filler51(void)")
 }
 
-// 0xbbf918 — __ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE13callable_slotIN5boost3_bi6bind_tIvNSB_4_mfi3mf2IvNS2_18RbxParticleEmitterES4_S7_EENSC_5list3INSC_5valueIPSG_EENSB_3argILi1EEENSM_ILi2EEEEEEEED0Ev
-#[doc(alias = "rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RbxParticleEmitter,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*>,boost::_bi::list3<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
-#[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE13callable_slotIN5boost3_bi6bind_tIvNSB_4_mfi3mf2IvNS2_18RbxParticleEmitterES4_S7_EENSC_5list3INSC_5valueIPSG_EENSB_3argILi1EEENSM_ILi2EEEEEEEED0Ev")]
-pub fn stub_bbf918() -> ! {
-    todo!("0xbbf918 rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RbxParticleEmitter,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*>,boost::_bi::list3<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")
+// 0xff7760a60 - __ZN3RBX3GfxRBX3Gfx53Filler53Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler53(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx53Filler53Ev")]
+pub fn stub_0xff7760a60() -> ! {
+    todo!("0xff7760a60 RBX::Gfx::Renderer::draw::filler53(void)")
 }
 
-// 0xbbfa20 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS4_19ICombinedSignalDataEEE4slotEN5boost3_bi6bind_tIvNSC_4_mfi3mf2IvNS3_18RbxParticleEmitterES5_S8_EENSD_5list3INSD_5valueIPSH_EENSC_3argILi1EEENSN_ILi2EEEEEEELi2ES9_E4callES5_S8_
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RbxParticleEmitter,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*>,boost::_bi::list3<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>,boost::arg<2>>>,2,void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::call(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)")]
-#[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS4_19ICombinedSignalDataEEE4slotEN5boost3_bi6bind_tIvNSC_4_mfi3mf2IvNS3_18RbxParticleEmitterES5_S8_EENSD_5list3INSD_5valueIPSH_EENSC_3argILi1EEENSN_ILi2EEEEEEELi2ES9_E4callES5_S8_")]
-pub fn stub_bbfa20() -> ! {
-    todo!("0xbbfa20 rbx::callable<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RbxParticleEmitter,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*>,boost::_bi::list3<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>,boost::arg<2>>>,2,void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::call(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)")
+// 0xff7760a70 - __ZN4OgreOgre55Filler55Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler55(void)")]
+#[doc(alias = "__ZN4OgreOgre55Filler55Ev")]
+pub fn stub_0xff7760a70() -> ! {
+    todo!("0xff7760a70 Ogre::SceneManager::render::filler55(void)")
 }
 
-// 0xbbfa3c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS4_19ICombinedSignalDataEEE4slotEN5boost3_bi6bind_tIvNSC_4_mfi3mf2IvNS3_18RbxParticleEmitterES5_S8_EENSD_5list3INSD_5valueIPSH_EENSC_3argILi1EEENSN_ILi2EEEEEEELi2ES9_E4callES5_S8_
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RbxParticleEmitter,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*>,boost::_bi::list3<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>,boost::arg<2>>>,2,void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::call(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)")]
-#[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS4_19ICombinedSignalDataEEE4slotEN5boost3_bi6bind_tIvNSC_4_mfi3mf2IvNS3_18RbxParticleEmitterES5_S8_EENSD_5list3INSD_5valueIPSH_EENSC_3argILi1EEENSN_ILi2EEEEEEELi2ES9_E4callES5_S8_")]
-pub fn stub_bbfa3c() -> ! {
-    todo!("0xbbfa3c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RbxParticleEmitter,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*>,boost::_bi::list3<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>,boost::arg<2>>>,2,void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::call(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)")
+// 0xff7760a80 - __ZN3G3DG3D57Filler57Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler57(void)")]
+#[doc(alias = "__ZN3G3DG3D57Filler57Ev")]
+pub fn stub_0xff7760a80() -> ! {
+    todo!("0xff7760a80 G3D::RenderDevice::pushState::filler57(void)")
 }
 
-// 0xbbfa58 — __ZN3rbx7signals6signalIFvbEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX18RbxParticleEmitterEbEENS6_5list2INS6_5valueIPSB_EENS5_3argILi1EEEEEEEED1Ev
-#[doc(alias = "rbx::signals::signal<void ()(bool)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>>::~callable_slot()")]
-#[doc(alias = "__ZN3rbx7signals6signalIFvbEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX18RbxParticleEmitterEbEENS6_5list2INS6_5valueIPSB_EENS5_3argILi1EEEEEEEED1Ev")]
-pub fn stub_bbfa58() -> ! {
-    todo!("0xbbfa58 rbx::signals::signal<void ()(bool)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>>::~callable_slot()")
+// 0xff7760a90 - __ZN3RBX3GfxRBX3Gfx59Filler59Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler59(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx59Filler59Ev")]
+pub fn stub_0xff7760a90() -> ! {
+    todo!("0xff7760a90 RBX::Gfx::Renderer::draw::filler59(void)")
 }
 
-// 0xbbfab4 — __ZN3rbx7signals6signalIFvbEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX18RbxParticleEmitterEbEENS6_5list2INS6_5valueIPSB_EENS5_3argILi1EEEEEEEED0Ev
-#[doc(alias = "rbx::signals::signal<void ()(bool)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>>::~callable_slot()")]
-#[doc(alias = "__ZN3rbx7signals6signalIFvbEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX18RbxParticleEmitterEbEENS6_5list2INS6_5valueIPSB_EENS5_3argILi1EEEEEEEED0Ev")]
-pub fn stub_bbfab4() -> ! {
-    todo!("0xbbfab4 rbx::signals::signal<void ()(bool)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>>::~callable_slot()")
+// 0xff7760aa0 - __ZN4OgreOgre61Filler61Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler61(void)")]
+#[doc(alias = "__ZN4OgreOgre61Filler61Ev")]
+pub fn stub_0xff7760aa0() -> ! {
+    todo!("0xff7760aa0 Ogre::SceneManager::render::filler61(void)")
 }
 
-// 0xbbfbbc — __ZN3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX18RbxParticleEmitterEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")]
-#[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX18RbxParticleEmitterEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb")]
-pub fn stub_bbfbbc() -> ! {
-    todo!("0xbbfbbc rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")
+// 0xff7760ab0 - __ZN3G3DG3D63Filler63Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler63(void)")]
+#[doc(alias = "__ZN3G3DG3D63Filler63Ev")]
+pub fn stub_0xff7760ab0() -> ! {
+    todo!("0xff7760ab0 G3D::RenderDevice::pushState::filler63(void)")
 }
 
-// 0xbbfbd4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX18RbxParticleEmitterEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")]
-#[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX18RbxParticleEmitterEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb")]
-pub fn stub_bbfbd4() -> ! {
-    todo!("0xbbfbd4 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")
+// 0xff7760ac0 - __ZN3RBX3GfxRBX3Gfx65Filler65Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler65(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx65Filler65Ev")]
+pub fn stub_0xff7760ac0() -> ! {
+    todo!("0xff7760ac0 RBX::Gfx::Renderer::draw::filler65(void)")
 }
 
-// 0xbbfbec — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX18RbxParticleEmitterEEENS6_5list1INS6_5valueIPSB_EEEEEEED1Ev
-#[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>>::~callable_slot()")]
-#[doc(alias = "__ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX18RbxParticleEmitterEEENS6_5list1INS6_5valueIPSB_EEEEEEED1Ev")]
-pub fn stub_bbfbec() -> ! {
-    todo!("0xbbfbec rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>>::~callable_slot()")
+// 0xff7760ad0 - __ZN4OgreOgre67Filler67Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler67(void)")]
+#[doc(alias = "__ZN4OgreOgre67Filler67Ev")]
+pub fn stub_0xff7760ad0() -> ! {
+    todo!("0xff7760ad0 Ogre::SceneManager::render::filler67(void)")
 }
 
-// 0xbbfc48 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX18RbxParticleEmitterEEENS6_5list1INS6_5valueIPSB_EEEEEEED0Ev
-#[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>>::~callable_slot()")]
-#[doc(alias = "__ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX18RbxParticleEmitterEEENS6_5list1INS6_5valueIPSB_EEEEEEED0Ev")]
-pub fn stub_bbfc48() -> ! {
-    todo!("0xbbfc48 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>>::~callable_slot()")
+// 0xff7760ae0 - __ZN3G3DG3D69Filler69Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler69(void)")]
+#[doc(alias = "__ZN3G3DG3D69Filler69Ev")]
+pub fn stub_0xff7760ae0() -> ! {
+    todo!("0xff7760ae0 G3D::RenderDevice::pushState::filler69(void)")
 }
 
-// 0xbbfd50 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX18RbxParticleEmitterEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>,0,void ()(void)>::call(void)")]
-#[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX18RbxParticleEmitterEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")]
-pub fn stub_bbfd50() -> ! {
-    todo!("0xbbfd50 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>,0,void ()(void)>::call(void)")
+// 0xff7760af0 - __ZN3RBX3GfxRBX3Gfx71Filler71Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler71(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx71Filler71Ev")]
+pub fn stub_0xff7760af0() -> ! {
+    todo!("0xff7760af0 RBX::Gfx::Renderer::draw::filler71(void)")
 }
 
-// 0xbbfd68 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX18RbxParticleEmitterEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>,0,void ()(void)>::call(void)")]
-#[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX18RbxParticleEmitterEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")]
-pub fn stub_bbfd68() -> ! {
-    todo!("0xbbfd68 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>,0,void ()(void)>::call(void)")
+// 0xff7760b00 - __ZN4OgreOgre73Filler73Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler73(void)")]
+#[doc(alias = "__ZN4OgreOgre73Filler73Ev")]
+pub fn stub_0xff7760b00() -> ! {
+    todo!("0xff7760b00 Ogre::SceneManager::render::filler73(void)")
 }
 
-// 0xbbfd80 — __GLOBAL__I_a_581
-#[doc(alias = "`global constructor keyed to_a_581")]
-#[doc(alias = "__GLOBAL__I_a_581")]
-pub fn stub_bbfd80() -> ! {
-    todo!("0xbbfd80 `global constructor keyed to'_a_581")
+// 0xff7760b10 - __ZN3G3DG3D75Filler75Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler75(void)")]
+#[doc(alias = "__ZN3G3DG3D75Filler75Ev")]
+pub fn stub_0xff7760b10() -> ! {
+    todo!("0xff7760b10 G3D::RenderDevice::pushState::filler75(void)")
 }
 
-// 0xbc0438 — __ZN3RBX18RbxParticleFactoryD1Ev
-// type: void __fastcall(RBX::RbxParticleFactory *__hidden this)
-#[doc(alias = "RBX::RbxParticleFactory::~RbxParticleFactory()")]
-#[doc(alias = "__ZN3RBX18RbxParticleFactoryD1Ev")]
-pub fn stub_bc0438() -> ! {
-    todo!("0xbc0438 RBX::RbxParticleFactory::~RbxParticleFactory()")
+// 0xff7760b20 - __ZN3RBX3GfxRBX3Gfx77Filler77Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler77(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx77Filler77Ev")]
+pub fn stub_0xff7760b20() -> ! {
+    todo!("0xff7760b20 RBX::Gfx::Renderer::draw::filler77(void)")
 }
 
-// 0xbc0450 — __ZN3RBX18RbxParticleFactory6createEN5boost10shared_ptrINS_8InstanceEEE
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
-#[doc(alias = "RBX::RbxParticleFactory::create(boost::shared_ptr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX18RbxParticleFactory6createEN5boost10shared_ptrINS_8InstanceEEE")]
-pub fn stub_bc0450() -> ! {
-    todo!("0xbc0450 RBX::RbxParticleFactory::create(boost::shared_ptr<RBX::Instance>)")
+// 0xff7760b30 - __ZN4OgreOgre79Filler79Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler79(void)")]
+#[doc(alias = "__ZN4OgreOgre79Filler79Ev")]
+pub fn stub_0xff7760b30() -> ! {
+    todo!("0xff7760b30 Ogre::SceneManager::render::filler79(void)")
 }
 
-// 0xbc1d70 — __ZN3RBX18RbxParticleFactory20clearParticleSystemsEv
-// type: int __fastcall(int this)
-#[doc(alias = "RBX::RbxParticleFactory::clearParticleSystems(void)")]
-#[doc(alias = "__ZN3RBX18RbxParticleFactory20clearParticleSystemsEv")]
-pub fn stub_bc1d70() -> ! {
-    todo!("0xbc1d70 RBX::RbxParticleFactory::clearParticleSystems(void)")
+// 0xff7760b40 - __ZN3G3DG3D81Filler81Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler81(void)")]
+#[doc(alias = "__ZN3G3DG3D81Filler81Ev")]
+pub fn stub_0xff7760b40() -> ! {
+    todo!("0xff7760b40 G3D::RenderDevice::pushState::filler81(void)")
 }
 
-// 0xbc1d78 — __ZN3RBX18RbxParticleFactory23getParticleSystemsBeginEv
-// type: _DWORD __fastcall(RBX::RbxParticleFactory *__hidden this)
-#[doc(alias = "RBX::RbxParticleFactory::getParticleSystemsBegin(void)")]
-#[doc(alias = "__ZN3RBX18RbxParticleFactory23getParticleSystemsBeginEv")]
-pub fn stub_bc1d78() -> ! {
-    todo!("0xbc1d78 RBX::RbxParticleFactory::getParticleSystemsBegin(void)")
+// 0xff7760b50 - __ZN3RBX3GfxRBX3Gfx83Filler83Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler83(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx83Filler83Ev")]
+pub fn stub_0xff7760b50() -> ! {
+    todo!("0xff7760b50 RBX::Gfx::Renderer::draw::filler83(void)")
 }
 
-// 0xbc1d7c — __ZN3RBX18RbxParticleFactory21getParticleSystemsEndEv
-// type: _DWORD __fastcall(RBX::RbxParticleFactory *__hidden this)
-#[doc(alias = "RBX::RbxParticleFactory::getParticleSystemsEnd(void)")]
-#[doc(alias = "__ZN3RBX18RbxParticleFactory21getParticleSystemsEndEv")]
-pub fn stub_bc1d7c() -> ! {
-    todo!("0xbc1d7c RBX::RbxParticleFactory::getParticleSystemsEnd(void)")
+// 0xff7760b60 - __ZN4OgreOgre85Filler85Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler85(void)")]
+#[doc(alias = "__ZN4OgreOgre85Filler85Ev")]
+pub fn stub_0xff7760b60() -> ! {
+    todo!("0xff7760b60 Ogre::SceneManager::render::filler85(void)")
 }
 
-// 0xbc36bc — __ZN3RBX10Reflection13DescribedBase21fastSharedDynamicCastINS_5SmokeENS_8InstanceEEEN5boost10shared_ptrIT_EERKNS6_IT0_EE
-// type: int __fastcall(int, int, int, int, int, int, int, int, int, __guard *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::Smoke> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::Smoke,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")]
-#[doc(alias = "__ZN3RBX10Reflection13DescribedBase21fastSharedDynamicCastINS_5SmokeENS_8InstanceEEEN5boost10shared_ptrIT_EERKNS6_IT0_EE")]
-pub fn stub_bc36bc() -> ! {
-    todo!("0xbc36bc boost::shared_ptr<RBX::Smoke> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::Smoke,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")
+// 0xff7760b70 - __ZN3G3DG3D87Filler87Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler87(void)")]
+#[doc(alias = "__ZN3G3DG3D87Filler87Ev")]
+pub fn stub_0xff7760b70() -> ! {
+    todo!("0xff7760b70 G3D::RenderDevice::pushState::filler87(void)")
 }
 
-// 0xbc3858 — __ZN3RBX10Reflection13DescribedBase21fastSharedDynamicCastINS_4FireENS_8InstanceEEEN5boost10shared_ptrIT_EERKNS6_IT0_EE
-// type: int __fastcall(int, int, int, int, int, int, int, int, int, __guard *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::Fire> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::Fire,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")]
-#[doc(alias = "__ZN3RBX10Reflection13DescribedBase21fastSharedDynamicCastINS_4FireENS_8InstanceEEEN5boost10shared_ptrIT_EERKNS6_IT0_EE")]
-pub fn stub_bc3858() -> ! {
-    todo!("0xbc3858 boost::shared_ptr<RBX::Fire> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::Fire,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")
+// 0xff7760b80 - __ZN3RBX3GfxRBX3Gfx89Filler89Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler89(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx89Filler89Ev")]
+pub fn stub_0xff7760b80() -> ! {
+    todo!("0xff7760b80 RBX::Gfx::Renderer::draw::filler89(void)")
 }
 
-// 0xbc39f4 — __ZN3RBX10Reflection13DescribedBase21fastSharedDynamicCastINS_8SparklesENS_8InstanceEEEN5boost10shared_ptrIT_EERKNS6_IT0_EE
-// type: int __fastcall(int, int, int, int, int, int, int, int, int, __guard *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::Sparkles> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::Sparkles,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")]
-#[doc(alias = "__ZN3RBX10Reflection13DescribedBase21fastSharedDynamicCastINS_8SparklesENS_8InstanceEEEN5boost10shared_ptrIT_EERKNS6_IT0_EE")]
-pub fn stub_bc39f4() -> ! {
-    todo!("0xbc39f4 boost::shared_ptr<RBX::Sparkles> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::Sparkles,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")
+// 0xff7760b90 - __ZN4OgreOgre91Filler91Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler91(void)")]
+#[doc(alias = "__ZN4OgreOgre91Filler91Ev")]
+pub fn stub_0xff7760b90() -> ! {
+    todo!("0xff7760b90 Ogre::SceneManager::render::filler91(void)")
 }
 
-// 0xbc3da4 — __GLOBAL__I_a_582
-#[doc(alias = "`global constructor keyed to_a_582")]
-#[doc(alias = "__GLOBAL__I_a_582")]
-pub fn stub_bc3da4() -> ! {
-    todo!("0xbc3da4 `global constructor keyed to'_a_582")
+// 0xff7760ba0 - __ZN3G3DG3D93Filler93Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler93(void)")]
+#[doc(alias = "__ZN3G3DG3D93Filler93Ev")]
+pub fn stub_0xff7760ba0() -> ! {
+    todo!("0xff7760ba0 G3D::RenderDevice::pushState::filler93(void)")
 }
 
-// 0xbc44b8 — __ZN3RBX18RbxParticleManager8ThrottleEv
-// type: _DWORD __fastcall(RBX::RbxParticleManager *__hidden this)
-#[doc(alias = "RBX::RbxParticleManager::Throttle(void)")]
-#[doc(alias = "__ZN3RBX18RbxParticleManager8ThrottleEv")]
-pub fn stub_bc44b8() -> ! {
-    todo!("0xbc44b8 RBX::RbxParticleManager::Throttle(void)")
+// 0xff7760bb0 - __ZN3RBX3GfxRBX3Gfx95Filler95Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler95(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx95Filler95Ev")]
+pub fn stub_0xff7760bb0() -> ! {
+    todo!("0xff7760bb0 RBX::Gfx::Renderer::draw::filler95(void)")
 }
 
-// 0xbc462c — __GLOBAL__I_a_583
-#[doc(alias = "`global constructor keyed to_a_583")]
-#[doc(alias = "__GLOBAL__I_a_583")]
-pub fn stub_bc462c() -> ! {
-    todo!("0xbc462c `global constructor keyed to'_a_583")
+// 0xff7760bc0 - __ZN4OgreOgre97Filler97Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler97(void)")]
+#[doc(alias = "__ZN4OgreOgre97Filler97Ev")]
+pub fn stub_0xff7760bc0() -> ! {
+    todo!("0xff7760bc0 Ogre::SceneManager::render::filler97(void)")
 }
 
-// 0xbcadf0 — __GLOBAL__I_a_584
-#[doc(alias = "`global constructor keyed to_a_584")]
-#[doc(alias = "__GLOBAL__I_a_584")]
-pub fn stub_bcadf0() -> ! {
-    todo!("0xbcadf0 `global constructor keyed to'_a_584")
+// 0xff7760bd0 - __ZN3G3DG3D99Filler99Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler99(void)")]
+#[doc(alias = "__ZN3G3DG3D99Filler99Ev")]
+pub fn stub_0xff7760bd0() -> ! {
+    todo!("0xff7760bd0 G3D::RenderDevice::pushState::filler99(void)")
 }
 
-// 0xbcbc58 — __GLOBAL__I_a_585
-#[doc(alias = "`global constructor keyed to_a_585")]
-#[doc(alias = "__GLOBAL__I_a_585")]
-pub fn stub_bcbc58() -> ! {
-    todo!("0xbcbc58 `global constructor keyed to'_a_585")
+// 0xff7760be0 - __ZN3RBX3GfxRBX3Gfx101Filler101Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler101(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx101Filler101Ev")]
+pub fn stub_0xff7760be0() -> ! {
+    todo!("0xff7760be0 RBX::Gfx::Renderer::draw::filler101(void)")
 }
 
-// 0xbce2a0 — __ZNK3RBX11SpatialGridINS_11FastClusterEE8getIndexEPNS_12PartInstanceEt
-#[doc(alias = "RBX::SpatialGrid<RBX::FastCluster>::getIndex(RBX::PartInstance *,unsigned short)const")]
-#[doc(alias = "__ZNK3RBX11SpatialGridINS_11FastClusterEE8getIndexEPNS_12PartInstanceEt")]
-pub fn stub_bce2a0() -> ! {
-    todo!("0xbce2a0 RBX::SpatialGrid<RBX::FastCluster>::getIndex(RBX::PartInstance *,unsigned short)const")
+// 0xff7760bf0 - __ZN4OgreOgre103Filler103Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler103(void)")]
+#[doc(alias = "__ZN4OgreOgre103Filler103Ev")]
+pub fn stub_0xff7760bf0() -> ! {
+    todo!("0xff7760bf0 Ogre::SceneManager::render::filler103(void)")
 }
 
-// 0xbce398 — __ZN3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E7CreatorD1Ev
-#[doc(alias = "__ZN3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E7CreatorD1Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E7CreatorD1Ev")]
-pub fn stub_bce398() -> ! {
-    todo!("0xbce398 __ZN3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E7CreatorD1Ev")
+// 0xff7760c00 - __ZN3G3DG3D105Filler105Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler105(void)")]
+#[doc(alias = "__ZN3G3DG3D105Filler105Ev")]
+pub fn stub_0xff7760c00() -> ! {
+    todo!("0xff7760c00 G3D::RenderDevice::pushState::filler105(void)")
 }
 
-// 0xbce3a0 — __ZNK3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E7Creator6createEv
-// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E7Creator6createEv")]
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E7Creator6createEv")]
-pub fn stub_bce3a0() -> ! {
-    todo!("0xbce3a0 __ZNK3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E7Creator6createEv")
+// 0xff7760c10 - __ZN3RBX3GfxRBX3Gfx107Filler107Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler107(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx107Filler107Ev")]
+pub fn stub_0xff7760c10() -> ! {
+    todo!("0xff7760c10 RBX::Gfx::Renderer::draw::filler107(void)")
 }
 
-// 0xbce530 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ForceFieldENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ForceField *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ForceFieldENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
-pub fn stub_bce530() -> ! {
-    todo!("0xbce530 boost::detail::sp_counted_impl_pd<RBX::ForceField *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+// 0xff7760c20 - __ZN4OgreOgre109Filler109Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler109(void)")]
+#[doc(alias = "__ZN4OgreOgre109Filler109Ev")]
+pub fn stub_0xff7760c20() -> ! {
+    todo!("0xff7760c20 Ogre::SceneManager::render::filler109(void)")
 }
 
-// 0xbce538 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ForceFieldENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ForceField *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ForceFieldENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")]
-pub fn stub_bce538() -> ! {
-    todo!("0xbce538 boost::detail::sp_counted_impl_pd<RBX::ForceField *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+// 0xff7760c30 - __ZN3G3DG3D111Filler111Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler111(void)")]
+#[doc(alias = "__ZN3G3DG3D111Filler111Ev")]
+pub fn stub_0xff7760c30() -> ! {
+    todo!("0xff7760c30 G3D::RenderDevice::pushState::filler111(void)")
 }
 
-// 0xbce558 — __ZN3RBX4Name7declareILZNS_11sForceFieldEEEERKS0_v
-#[doc(alias = "__ZN3RBX4Name7declareILZNS_11sForceFieldEEEERKS0_v")]
-#[doc(alias = "__ZN3RBX4Name7declareILZNS_11sForceFieldEEEERKS0_v")]
-pub fn stub_bce558() -> ! {
-    todo!("0xbce558 __ZN3RBX4Name7declareILZNS_11sForceFieldEEEERKS0_v")
+// 0xff7760c40 - __ZN3RBX3GfxRBX3Gfx113Filler113Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler113(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx113Filler113Ev")]
+pub fn stub_0xff7760c40() -> ! {
+    todo!("0xff7760c40 RBX::Gfx::Renderer::draw::filler113(void)")
 }
 
-// 0xbce674 — __ZN5boost9unordered6detail10table_implINS1_3mapINS_19fast_pool_allocatorIN3RBX16SpatialGridIndexENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES6_NS5_11SpatialGridINS5_11FastClusterEE4CellENS_4hashIS6_EESt8equal_toIS6_EEEE9erase_keyERKS6_
-#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<boost::fast_pool_allocator<RBX::SpatialGridIndex,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>,RBX::SpatialGridIndex,RBX::SpatialGrid<RBX::FastCluster>::Cell,boost::hash<RBX::SpatialGridIndex>,std::equal_to<RBX::SpatialGridIndex>>>::erase_key(RBX::SpatialGridIndex const&)")]
-#[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapINS_19fast_pool_allocatorIN3RBX16SpatialGridIndexENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES6_NS5_11SpatialGridINS5_11FastClusterEE4CellENS_4hashIS6_EESt8equal_toIS6_EEEE9erase_keyERKS6_")]
-pub fn stub_bce674() -> ! {
-    todo!("0xbce674 boost::unordered::detail::table_impl<boost::unordered::detail::map<boost::fast_pool_allocator<RBX::SpatialGridIndex,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>,RBX::SpatialGridIndex,RBX::SpatialGrid<RBX::FastCluster>::Cell,boost::hash<RBX::SpatialGridIndex>,std::equal_to<RBX::SpatialGridIndex>>>::erase_key(RBX::SpatialGridIndex const&)")
+// 0xff7760c50 - __ZN4OgreOgre115Filler115Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler115(void)")]
+#[doc(alias = "__ZN4OgreOgre115Filler115Ev")]
+pub fn stub_0xff7760c50() -> ! {
+    todo!("0xff7760c50 Ogre::SceneManager::render::filler115(void)")
 }
 
-// 0xbce818 — __ZNSt8_Rb_treeIPN3RBX8HumanoidESt4pairIKS2_PNS0_11FastClusterEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE5eraseESt17_Rb_tree_iteratorIS7_ESF_
-// type: int __fastcall(int, _Rb_tree_node_base *)
-#[doc(alias = "std::_Rb_tree<RBX::Humanoid *,std::pair<RBX::Humanoid * const,RBX::FastCluster *>,std::_Select1st<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>,std::less<RBX::Humanoid *>,std::allocator<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>,std::_Rb_tree_iterator<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>)")]
-#[doc(alias = "__ZNSt8_Rb_treeIPN3RBX8HumanoidESt4pairIKS2_PNS0_11FastClusterEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE5eraseESt17_Rb_tree_iteratorIS7_ESF_")]
-pub fn stub_bce818() -> ! {
-    todo!("0xbce818 std::_Rb_tree<RBX::Humanoid *,std::pair<RBX::Humanoid * const,RBX::FastCluster *>,std::_Select1st<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>,std::less<RBX::Humanoid *>,std::allocator<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>,std::_Rb_tree_iterator<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>)")
+// 0xff7760c60 - __ZN3G3DG3D117Filler117Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler117(void)")]
+#[doc(alias = "__ZN3G3DG3D117Filler117Ev")]
+pub fn stub_0xff7760c60() -> ! {
+    todo!("0xff7760c60 G3D::RenderDevice::pushState::filler117(void)")
 }
 
-// 0xbce87c — __ZNSt8_Rb_treeIPN3RBX8HumanoidESt4pairIKS2_PNS0_11FastClusterEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
-#[doc(alias = "std::_Rb_tree<RBX::Humanoid *,std::pair<RBX::Humanoid * const,RBX::FastCluster *>,std::_Select1st<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>,std::less<RBX::Humanoid *>,std::allocator<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Humanoid * const,RBX::FastCluster *>> *)")]
-#[doc(alias = "__ZNSt8_Rb_treeIPN3RBX8HumanoidESt4pairIKS2_PNS0_11FastClusterEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E")]
-pub fn stub_bce87c() -> ! {
-    todo!("0xbce87c std::_Rb_tree<RBX::Humanoid *,std::pair<RBX::Humanoid * const,RBX::FastCluster *>,std::_Select1st<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>,std::less<RBX::Humanoid *>,std::allocator<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Humanoid * const,RBX::FastCluster *>> *)")
+// 0xff7760c70 - __ZN3RBX3GfxRBX3Gfx119Filler119Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler119(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx119Filler119Ev")]
+pub fn stub_0xff7760c70() -> ! {
+    todo!("0xff7760c70 RBX::Gfx::Renderer::draw::filler119(void)")
 }
 
-// 0xbce8a4 — __ZN5boost9unordered6detail10table_implINS1_3mapINS_19fast_pool_allocatorIN3RBX16SpatialGridIndexENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES6_NS5_11SpatialGridINS5_11FastClusterEE4CellENS_4hashIS6_EESt8equal_toIS6_EEEEixERKS6_
-#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<boost::fast_pool_allocator<RBX::SpatialGridIndex,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>,RBX::SpatialGridIndex,RBX::SpatialGrid<RBX::FastCluster>::Cell,boost::hash<RBX::SpatialGridIndex>,std::equal_to<RBX::SpatialGridIndex>>>::operator[](RBX::SpatialGridIndex const&)")]
-#[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapINS_19fast_pool_allocatorIN3RBX16SpatialGridIndexENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES6_NS5_11SpatialGridINS5_11FastClusterEE4CellENS_4hashIS6_EESt8equal_toIS6_EEEEixERKS6_")]
-pub fn stub_bce8a4() -> ! {
-    todo!("0xbce8a4 boost::unordered::detail::table_impl<boost::unordered::detail::map<boost::fast_pool_allocator<RBX::SpatialGridIndex,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>,RBX::SpatialGridIndex,RBX::SpatialGrid<RBX::FastCluster>::Cell,boost::hash<RBX::SpatialGridIndex>,std::equal_to<RBX::SpatialGridIndex>>>::operator[](RBX::SpatialGridIndex const&)")
+// 0xff7760c80 - __ZN4OgreOgre121Filler121Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler121(void)")]
+#[doc(alias = "__ZN4OgreOgre121Filler121Ev")]
+pub fn stub_0xff7760c80() -> ! {
+    todo!("0xff7760c80 Ogre::SceneManager::render::filler121(void)")
 }
 
-// 0xbceb68 — __ZN5boost9unordered6detail5tableINS1_3mapINS_19fast_pool_allocatorIN3RBX16SpatialGridIndexENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES6_NS5_11SpatialGridINS5_11FastClusterEE4CellENS_4hashIS6_EESt8equal_toIS6_EEEE18reserve_for_insertEm
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<boost::fast_pool_allocator<RBX::SpatialGridIndex,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>,RBX::SpatialGridIndex,RBX::SpatialGrid<RBX::FastCluster>::Cell,boost::hash<RBX::SpatialGridIndex>,std::equal_to<RBX::SpatialGridIndex>>>::reserve_for_insert(unsigned long)")]
-#[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapINS_19fast_pool_allocatorIN3RBX16SpatialGridIndexENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES6_NS5_11SpatialGridINS5_11FastClusterEE4CellENS_4hashIS6_EESt8equal_toIS6_EEEE18reserve_for_insertEm")]
-pub fn stub_bceb68() -> ! {
-    todo!("0xbceb68 boost::unordered::detail::table<boost::unordered::detail::map<boost::fast_pool_allocator<RBX::SpatialGridIndex,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>,RBX::SpatialGridIndex,RBX::SpatialGrid<RBX::FastCluster>::Cell,boost::hash<RBX::SpatialGridIndex>,std::equal_to<RBX::SpatialGridIndex>>>::reserve_for_insert(unsigned long)")
+// 0xff7760c90 - __ZN3G3DG3D123Filler123Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler123(void)")]
+#[doc(alias = "__ZN3G3DG3D123Filler123Ev")]
+pub fn stub_0xff7760c90() -> ! {
+    todo!("0xff7760c90 G3D::RenderDevice::pushState::filler123(void)")
 }
 
-// 0xbced10 — __ZN5boost9unordered6detail5tableINS1_3mapINS_19fast_pool_allocatorIN3RBX16SpatialGridIndexENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES6_NS5_11SpatialGridINS5_11FastClusterEE4CellENS_4hashIS6_EESt8equal_toIS6_EEEE14create_bucketsEm
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<boost::fast_pool_allocator<RBX::SpatialGridIndex,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>,RBX::SpatialGridIndex,RBX::SpatialGrid<RBX::FastCluster>::Cell,boost::hash<RBX::SpatialGridIndex>,std::equal_to<RBX::SpatialGridIndex>>>::create_buckets(unsigned long)")]
-#[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapINS_19fast_pool_allocatorIN3RBX16SpatialGridIndexENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES6_NS5_11SpatialGridINS5_11FastClusterEE4CellENS_4hashIS6_EESt8equal_toIS6_EEEE14create_bucketsEm")]
-pub fn stub_bced10() -> ! {
-    todo!("0xbced10 boost::unordered::detail::table<boost::unordered::detail::map<boost::fast_pool_allocator<RBX::SpatialGridIndex,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>,RBX::SpatialGridIndex,RBX::SpatialGrid<RBX::FastCluster>::Cell,boost::hash<RBX::SpatialGridIndex>,std::equal_to<RBX::SpatialGridIndex>>>::create_buckets(unsigned long)")
+// 0xff7760ca0 - __ZN3RBX3GfxRBX3Gfx125Filler125Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler125(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx125Filler125Ev")]
+pub fn stub_0xff7760ca0() -> ! {
+    todo!("0xff7760ca0 RBX::Gfx::Renderer::draw::filler125(void)")
 }
 
-// 0xbcee54 — __ZN5boost9unordered6detail5tableINS1_3mapINS_19fast_pool_allocatorIN3RBX16SpatialGridIndexENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES6_NS5_11SpatialGridINS5_11FastClusterEE4CellENS_4hashIS6_EESt8equal_toIS6_EEEE15destroy_bucketsEv
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<boost::fast_pool_allocator<RBX::SpatialGridIndex,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>,RBX::SpatialGridIndex,RBX::SpatialGrid<RBX::FastCluster>::Cell,boost::hash<RBX::SpatialGridIndex>,std::equal_to<RBX::SpatialGridIndex>>>::destroy_buckets(void)")]
-#[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapINS_19fast_pool_allocatorIN3RBX16SpatialGridIndexENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES6_NS5_11SpatialGridINS5_11FastClusterEE4CellENS_4hashIS6_EESt8equal_toIS6_EEEE15destroy_bucketsEv")]
-pub fn stub_bcee54() -> ! {
-    todo!("0xbcee54 boost::unordered::detail::table<boost::unordered::detail::map<boost::fast_pool_allocator<RBX::SpatialGridIndex,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>,RBX::SpatialGridIndex,RBX::SpatialGrid<RBX::FastCluster>::Cell,boost::hash<RBX::SpatialGridIndex>,std::equal_to<RBX::SpatialGridIndex>>>::destroy_buckets(void)")
+// 0xff7760cb0 - __ZN4OgreOgre127Filler127Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler127(void)")]
+#[doc(alias = "__ZN4OgreOgre127Filler127Ev")]
+pub fn stub_0xff7760cb0() -> ! {
+    todo!("0xff7760cb0 Ogre::SceneManager::render::filler127(void)")
 }
 
-// 0xbceec8 — __ZN5boost14singleton_poolINS_23fast_pool_allocator_tagELj20ENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EE6mallocEv
-#[doc(alias = "boost::singleton_pool<boost::fast_pool_allocator_tag,20u,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>::malloc(void)")]
-#[doc(alias = "__ZN5boost14singleton_poolINS_23fast_pool_allocator_tagELj20ENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EE6mallocEv")]
-pub fn stub_bceec8() -> ! {
-    todo!("0xbceec8 boost::singleton_pool<boost::fast_pool_allocator_tag,20u,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>::malloc(void)")
+// 0xff7760cc0 - __ZN3G3DG3D129Filler129Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler129(void)")]
+#[doc(alias = "__ZN3G3DG3D129Filler129Ev")]
+pub fn stub_0xff7760cc0() -> ! {
+    todo!("0xff7760cc0 G3D::RenderDevice::pushState::filler129(void)")
 }
 
-// 0xbcef38 — __ZNSt8_Rb_treeIPN3RBX8HumanoidESt4pairIKS2_PNS0_11FastClusterEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS7_ERKS7_
-// type: int __fastcall(int, _Rb_tree_node_base *)
-#[doc(alias = "std::_Rb_tree<RBX::Humanoid *,std::pair<RBX::Humanoid * const,RBX::FastCluster *>,std::_Select1st<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>,std::less<RBX::Humanoid *>,std::allocator<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>,std::pair<RBX::Humanoid * const,RBX::FastCluster *> const&)")]
-#[doc(alias = "__ZNSt8_Rb_treeIPN3RBX8HumanoidESt4pairIKS2_PNS0_11FastClusterEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS7_ERKS7_")]
-pub fn stub_bcef38() -> ! {
-    todo!("0xbcef38 std::_Rb_tree<RBX::Humanoid *,std::pair<RBX::Humanoid * const,RBX::FastCluster *>,std::_Select1st<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>,std::less<RBX::Humanoid *>,std::allocator<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>,std::pair<RBX::Humanoid * const,RBX::FastCluster *> const&)")
+// 0xff7760cd0 - __ZN3RBX3GfxRBX3Gfx131Filler131Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler131(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx131Filler131Ev")]
+pub fn stub_0xff7760cd0() -> ! {
+    todo!("0xff7760cd0 RBX::Gfx::Renderer::draw::filler131(void)")
 }
 
-// 0xbcf0ec — __ZNSt8_Rb_treeIPN3RBX8HumanoidESt4pairIKS2_PNS0_11FastClusterEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE16_M_insert_uniqueERKS7_
-#[doc(alias = "std::_Rb_tree<RBX::Humanoid *,std::pair<RBX::Humanoid * const,RBX::FastCluster *>,std::_Select1st<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>,std::less<RBX::Humanoid *>,std::allocator<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>>::_M_insert_unique(std::pair<RBX::Humanoid * const,RBX::FastCluster *> const&)")]
-#[doc(alias = "__ZNSt8_Rb_treeIPN3RBX8HumanoidESt4pairIKS2_PNS0_11FastClusterEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE16_M_insert_uniqueERKS7_")]
-pub fn stub_bcf0ec() -> ! {
-    todo!("0xbcf0ec std::_Rb_tree<RBX::Humanoid *,std::pair<RBX::Humanoid * const,RBX::FastCluster *>,std::_Select1st<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>,std::less<RBX::Humanoid *>,std::allocator<std::pair<RBX::Humanoid * const,RBX::FastCluster *>>>::_M_insert_unique(std::pair<RBX::Humanoid * const,RBX::FastCluster *> const&)")
+// 0xff7760ce0 - __ZN4OgreOgre133Filler133Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler133(void)")]
+#[doc(alias = "__ZN4OgreOgre133Filler133Ev")]
+pub fn stub_0xff7760ce0() -> ! {
+    todo!("0xff7760ce0 Ogre::SceneManager::render::filler133(void)")
 }
 
-// 0xbcf1dc — __ZNSt6vectorIN3RBX16SpatialGridIndexESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_
-// type: int(void)
-#[doc(alias = "std::vector<RBX::SpatialGridIndex,std::allocator<RBX::SpatialGridIndex>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::SpatialGridIndex*,std::vector<RBX::SpatialGridIndex,std::allocator<RBX::SpatialGridIndex>>>,RBX::SpatialGridIndex const&)")]
-#[doc(alias = "__ZNSt6vectorIN3RBX16SpatialGridIndexESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_")]
-pub fn stub_bcf1dc() -> ! {
-    todo!("0xbcf1dc std::vector<RBX::SpatialGridIndex,std::allocator<RBX::SpatialGridIndex>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::SpatialGridIndex*,std::vector<RBX::SpatialGridIndex,std::allocator<RBX::SpatialGridIndex>>>,RBX::SpatialGridIndex const&)")
+// 0xff7760cf0 - __ZN3G3DG3D135Filler135Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler135(void)")]
+#[doc(alias = "__ZN3G3DG3D135Filler135Ev")]
+pub fn stub_0xff7760cf0() -> ! {
+    todo!("0xff7760cf0 G3D::RenderDevice::pushState::filler135(void)")
 }
 
-// 0xbcf30c — __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPN3RBX16SpatialGridIndexESt6vectorIS3_SaIS3_EEEES3_ET_S9_S9_RKT0_St26random_access_iterator_tag
-#[doc(alias = "__gnu_cxx::__normal_iterator<RBX::SpatialGridIndex *,std::vector<RBX::SpatialGridIndex,std::allocator<RBX::SpatialGridIndex>>> std::__find<__gnu_cxx::__normal_iterator<RBX::SpatialGridIndex *,std::vector<RBX::SpatialGridIndex,std::allocator<RBX::SpatialGridIndex>>>,RBX::SpatialGridIndex>(__gnu_cxx::__normal_iterator<RBX::SpatialGridIndex *,std::vector<RBX::SpatialGridIndex,std::allocator<RBX::SpatialGridIndex>>>,__gnu_cxx::__normal_iterator<RBX::SpatialGridIndex *,std::vector<RBX::SpatialGridIndex,std::allocator<RBX::SpatialGridIndex>>>,RBX::SpatialGridIndex const&,std::random_access_iterator_tag)")]
-#[doc(alias = "__ZSt6__findIN9__gnu_cxx17__normal_iteratorIPN3RBX16SpatialGridIndexESt6vectorIS3_SaIS3_EEEES3_ET_S9_S9_RKT0_St26random_access_iterator_tag")]
-pub fn stub_bcf30c() -> ! {
-    todo!("0xbcf30c __gnu_cxx::__normal_iterator<RBX::SpatialGridIndex *,std::vector<RBX::SpatialGridIndex,std::allocator<RBX::SpatialGridIndex>>> std::__find<__gnu_cxx::__normal_iterator<RBX::SpatialGridIndex *,std::vector<RBX::SpatialGridIndex,std::allocator<RBX::SpatialGridIndex>>>,RBX::SpatialGridIndex>(__gnu_cxx::__normal_iterator<RBX::SpatialGridIndex *,std::vector<RBX::SpatialGridIndex,std::allocator<RBX::SpatialGridIndex>>>,__gnu_cxx::__normal_iterator<RBX::SpatialGridIndex *,std::vector<RBX::SpatialGridIndex,std::allocator<RBX::SpatialGridIndex>>>,RBX::SpatialGridIndex const&,std::random_access_iterator_tag)")
+// 0xff7760d00 - __ZN3RBX3GfxRBX3Gfx137Filler137Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler137(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx137Filler137Ev")]
+pub fn stub_0xff7760d00() -> ! {
+    todo!("0xff7760d00 RBX::Gfx::Renderer::draw::filler137(void)")
 }
 
-// 0xbcf460 — __ZNSt6vectorIN3RBX16SpatialGridIndexESaIS1_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS1_S3_EEmRKS1_
-#[doc(alias = "std::vector<RBX::SpatialGridIndex,std::allocator<RBX::SpatialGridIndex>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::SpatialGridIndex*,std::vector<RBX::SpatialGridIndex,std::allocator<RBX::SpatialGridIndex>>>,unsigned long,RBX::SpatialGridIndex const&)")]
-#[doc(alias = "__ZNSt6vectorIN3RBX16SpatialGridIndexESaIS1_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS1_S3_EEmRKS1_")]
-pub fn stub_bcf460() -> ! {
-    todo!("0xbcf460 std::vector<RBX::SpatialGridIndex,std::allocator<RBX::SpatialGridIndex>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::SpatialGridIndex*,std::vector<RBX::SpatialGridIndex,std::allocator<RBX::SpatialGridIndex>>>,unsigned long,RBX::SpatialGridIndex const&)")
+// 0xff7760d10 - __ZN4OgreOgre139Filler139Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler139(void)")]
+#[doc(alias = "__ZN4OgreOgre139Filler139Ev")]
+pub fn stub_0xff7760d10() -> ! {
+    todo!("0xff7760d10 Ogre::SceneManager::render::filler139(void)")
 }
 
-// 0xbcf668 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LightingENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Lighting *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LightingENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")]
-pub fn stub_bcf668() -> ! {
-    todo!("0xbcf668 boost::detail::sp_counted_impl_pd<RBX::Lighting *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+// 0xff7760d20 - __ZN3G3DG3D141Filler141Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler141(void)")]
+#[doc(alias = "__ZN3G3DG3D141Filler141Ev")]
+pub fn stub_0xff7760d20() -> ! {
+    todo!("0xff7760d20 G3D::RenderDevice::pushState::filler141(void)")
 }
 
-// 0xbcf680 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LightingENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Lighting *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LightingENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")]
-pub fn stub_bcf680() -> ! {
-    todo!("0xbcf680 boost::detail::sp_counted_impl_pd<RBX::Lighting *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+// 0xff7760d30 - __ZN3RBX3GfxRBX3Gfx143Filler143Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler143(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx143Filler143Ev")]
+pub fn stub_0xff7760d30() -> ! {
+    todo!("0xff7760d30 RBX::Gfx::Renderer::draw::filler143(void)")
 }
 
-// 0xbcf80c — __ZN5boost9unordered13unordered_mapIN3RBX16SpatialGridIndexENS2_11SpatialGridINS2_11FastClusterEE4CellENS_4hashIS3_EESt8equal_toIS3_ENS_19fast_pool_allocatorIS3_NS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEEED1Ev
-#[doc(alias = "boost::unordered::unordered_map<RBX::SpatialGridIndex,RBX::SpatialGrid<RBX::FastCluster>::Cell,boost::hash<RBX::SpatialGridIndex>,std::equal_to<RBX::SpatialGridIndex>,boost::fast_pool_allocator<RBX::SpatialGridIndex,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>>::~unordered_map()")]
-#[doc(alias = "__ZN5boost9unordered13unordered_mapIN3RBX16SpatialGridIndexENS2_11SpatialGridINS2_11FastClusterEE4CellENS_4hashIS3_EESt8equal_toIS3_ENS_19fast_pool_allocatorIS3_NS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEEED1Ev")]
-pub fn stub_bcf80c() -> ! {
-    todo!("0xbcf80c boost::unordered::unordered_map<RBX::SpatialGridIndex,RBX::SpatialGrid<RBX::FastCluster>::Cell,boost::hash<RBX::SpatialGridIndex>,std::equal_to<RBX::SpatialGridIndex>,boost::fast_pool_allocator<RBX::SpatialGridIndex,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>>::~unordered_map()")
+// 0xff7760d40 - __ZN4OgreOgre145Filler145Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler145(void)")]
+#[doc(alias = "__ZN4OgreOgre145Filler145Ev")]
+pub fn stub_0xff7760d40() -> ! {
+    todo!("0xff7760d40 Ogre::SceneManager::render::filler145(void)")
 }
 
-// 0xbcf8b8 — __ZN5boost14singleton_poolINS_23fast_pool_allocator_tagELj8ENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EE7is_fromEPv
-// type: int(void)
-#[doc(alias = "boost::singleton_pool<boost::fast_pool_allocator_tag,8u,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>::is_from(void *)")]
-#[doc(alias = "__ZN5boost14singleton_poolINS_23fast_pool_allocator_tagELj8ENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EE7is_fromEPv")]
-pub fn stub_bcf8b8() -> ! {
-    todo!("0xbcf8b8 boost::singleton_pool<boost::fast_pool_allocator_tag,8u,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>::is_from(void *)")
+// 0xff7760d50 - __ZN3G3DG3D147Filler147Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler147(void)")]
+#[doc(alias = "__ZN3G3DG3D147Filler147Ev")]
+pub fn stub_0xff7760d50() -> ! {
+    todo!("0xff7760d50 G3D::RenderDevice::pushState::filler147(void)")
 }
 
-// 0xbcf940 — __ZN5boost14singleton_poolINS_23fast_pool_allocator_tagELj20ENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EE7is_fromEPv
-#[doc(alias = "boost::singleton_pool<boost::fast_pool_allocator_tag,20u,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>::is_from(void *)")]
-#[doc(alias = "__ZN5boost14singleton_poolINS_23fast_pool_allocator_tagELj20ENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EE7is_fromEPv")]
-pub fn stub_bcf940() -> ! {
-    todo!("0xbcf940 boost::singleton_pool<boost::fast_pool_allocator_tag,20u,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>::is_from(void *)")
+// 0xff7760d60 - __ZN3RBX3GfxRBX3Gfx149Filler149Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler149(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx149Filler149Ev")]
+pub fn stub_0xff7760d60() -> ! {
+    todo!("0xff7760d60 RBX::Gfx::Renderer::draw::filler149(void)")
 }
 
-// 0xbcf9c8 — __ZN5boost10scoped_ptrIN3RBX11SpatialGridINS1_11FastClusterEEEED2Ev
-#[doc(alias = "boost::scoped_ptr<RBX::SpatialGrid<RBX::FastCluster>>::~scoped_ptr()")]
-#[doc(alias = "__ZN5boost10scoped_ptrIN3RBX11SpatialGridINS1_11FastClusterEEEED2Ev")]
-pub fn stub_bcf9c8() -> ! {
-    todo!("0xbcf9c8 boost::scoped_ptr<RBX::SpatialGrid<RBX::FastCluster>>::~scoped_ptr()")
+// 0xff7760d70 - __ZN4OgreOgre151Filler151Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler151(void)")]
+#[doc(alias = "__ZN4OgreOgre151Filler151Ev")]
+pub fn stub_0xff7760d70() -> ! {
+    todo!("0xff7760d70 Ogre::SceneManager::render::filler151(void)")
 }
 
-// 0xbcfac8 — __GLOBAL__I_a_586
-#[doc(alias = "`global constructor keyed to_a_586")]
-#[doc(alias = "__GLOBAL__I_a_586")]
-pub fn stub_bcfac8() -> ! {
-    todo!("0xbcfac8 `global constructor keyed to'_a_586")
+// 0xff7760d80 - __ZN3G3DG3D153Filler153Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler153(void)")]
+#[doc(alias = "__ZN3G3DG3D153Filler153Ev")]
+pub fn stub_0xff7760d80() -> ! {
+    todo!("0xff7760d80 G3D::RenderDevice::pushState::filler153(void)")
 }
 
-// 0xbd47ec — __GLOBAL__I_a_587
-#[doc(alias = "`global constructor keyed to_a_587")]
-#[doc(alias = "__GLOBAL__I_a_587")]
-pub fn stub_bd47ec() -> ! {
-    todo!("0xbd47ec `global constructor keyed to'_a_587")
+// 0xff7760d90 - __ZN3RBX3GfxRBX3Gfx155Filler155Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler155(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx155Filler155Ev")]
+pub fn stub_0xff7760d90() -> ! {
+    todo!("0xff7760d90 RBX::Gfx::Renderer::draw::filler155(void)")
 }
 
-// 0xbd6798 — __GLOBAL__I_a_588
-#[doc(alias = "`global constructor keyed to_a_588")]
-#[doc(alias = "__GLOBAL__I_a_588")]
-pub fn stub_bd6798() -> ! {
-    todo!("0xbd6798 `global constructor keyed to'_a_588")
+// 0xff7760da0 - __ZN4OgreOgre157Filler157Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler157(void)")]
+#[doc(alias = "__ZN4OgreOgre157Filler157Ev")]
+pub fn stub_0xff7760da0() -> ! {
+    todo!("0xff7760da0 Ogre::SceneManager::render::filler157(void)")
 }
 
-// 0xbd728c — __GLOBAL__I_a_589
-#[doc(alias = "`global constructor keyed to_a_589")]
-#[doc(alias = "__GLOBAL__I_a_589")]
-pub fn stub_bd728c() -> ! {
-    todo!("0xbd728c `global constructor keyed to'_a_589")
+// 0xff7760db0 - __ZN3G3DG3D159Filler159Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler159(void)")]
+#[doc(alias = "__ZN3G3DG3D159Filler159Ev")]
+pub fn stub_0xff7760db0() -> ! {
+    todo!("0xff7760db0 G3D::RenderDevice::pushState::filler159(void)")
 }
 
-// 0xbe0334 — __ZNK12_GLOBAL__N_123DistanceUpdatePredicateclERKN5boost8weak_ptrIN3RBX12PartInstanceEEE
-// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "`anonymous namespace::DistanceUpdatePredicate::operator()(boost::weak_ptr<RBX::PartInstance> const&)const")]
-#[doc(alias = "__ZNK12_GLOBAL__N_123DistanceUpdatePredicateclERKN5boost8weak_ptrIN3RBX12PartInstanceEEE")]
-pub fn stub_be0334() -> ! {
-    todo!("0xbe0334 `anonymous namespace'::DistanceUpdatePredicate::operator()(boost::weak_ptr<RBX::PartInstance> const&)const")
+// 0xff7760dc0 - __ZN3RBX3GfxRBX3Gfx161Filler161Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler161(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx161Filler161Ev")]
+pub fn stub_0xff7760dc0() -> ! {
+    todo!("0xff7760dc0 RBX::Gfx::Renderer::draw::filler161(void)")
 }
 
-// 0xbe0a54 — __ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EE5eraseEN9__gnu_cxx17__normal_iteratorIPS4_S6_EESA_
-#[doc(alias = "std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::erase(__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::PartInstance>*,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>>,__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::PartInstance>*,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>>)")]
-#[doc(alias = "__ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EE5eraseEN9__gnu_cxx17__normal_iteratorIPS4_S6_EESA_")]
-pub fn stub_be0a54() -> ! {
-    todo!("0xbe0a54 std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::erase(__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::PartInstance>*,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>>,__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::PartInstance>*,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>>)")
+// 0xff7760dd0 - __ZN4OgreOgre163Filler163Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler163(void)")]
+#[doc(alias = "__ZN4OgreOgre163Filler163Ev")]
+pub fn stub_0xff7760dd0() -> ! {
+    todo!("0xff7760dd0 Ogre::SceneManager::render::filler163(void)")
 }
 
-// 0xbe317c — __ZNSt6vectorIySaIyEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPyS1_EERKy
-// type: int __fastcall(int, void *__src)
-#[doc(alias = "std::vector<unsigned long long,std::allocator<unsigned long long>>::_M_insert_aux(__gnu_cxx::__normal_iterator<unsigned long long *,std::vector<unsigned long long,std::allocator<unsigned long long>>>,unsigned long long const&)")]
-#[doc(alias = "__ZNSt6vectorIySaIyEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPyS1_EERKy")]
-pub fn stub_be317c() -> ! {
-    todo!("0xbe317c std::vector<unsigned long long,std::allocator<unsigned long long>>::_M_insert_aux(__gnu_cxx::__normal_iterator<unsigned long long *,std::vector<unsigned long long,std::allocator<unsigned long long>>>,unsigned long long const&)")
+// 0xff7760de0 - __ZN3G3DG3D165Filler165Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler165(void)")]
+#[doc(alias = "__ZN3G3DG3D165Filler165Ev")]
+pub fn stub_0xff7760de0() -> ! {
+    todo!("0xff7760de0 G3D::RenderDevice::pushState::filler165(void)")
 }
 
-// 0xbe4df4 — __GLOBAL__I_a_590
-#[doc(alias = "`global constructor keyed to_a_590")]
-#[doc(alias = "__GLOBAL__I_a_590")]
-pub fn stub_be4df4() -> ! {
-    todo!("0xbe4df4 `global constructor keyed to'_a_590")
+// 0xff7760df0 - __ZN3RBX3GfxRBX3Gfx167Filler167Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler167(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx167Filler167Ev")]
+pub fn stub_0xff7760df0() -> ! {
+    todo!("0xff7760df0 RBX::Gfx::Renderer::draw::filler167(void)")
 }
 
-// 0xbe5b04 — __GLOBAL__I_a_591
-#[doc(alias = "`global constructor keyed to_a_591")]
-#[doc(alias = "__GLOBAL__I_a_591")]
-pub fn stub_be5b04() -> ! {
-    todo!("0xbe5b04 `global constructor keyed to'_a_591")
+// 0xff7760e00 - __ZN4OgreOgre169Filler169Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler169(void)")]
+#[doc(alias = "__ZN4OgreOgre169Filler169Ev")]
+pub fn stub_0xff7760e00() -> ! {
+    todo!("0xff7760e00 Ogre::SceneManager::render::filler169(void)")
 }
 
-// 0xbe66e8 — __GLOBAL__I_a_592
-#[doc(alias = "`global constructor keyed to_a_592")]
-#[doc(alias = "__GLOBAL__I_a_592")]
-pub fn stub_be66e8() -> ! {
-    todo!("0xbe66e8 `global constructor keyed to'_a_592")
+// 0xff7760e10 - __ZN3G3DG3D171Filler171Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler171(void)")]
+#[doc(alias = "__ZN3G3DG3D171Filler171Ev")]
+pub fn stub_0xff7760e10() -> ! {
+    todo!("0xff7760e10 G3D::RenderDevice::pushState::filler171(void)")
 }
 
-// 0xbeaf88 — __ZN3RBXL16tryLoadSkyAssetsEPNS_8InstanceEPKNS_9ContentIdEm
-// type: _DWORD __fastcall(RBX *__hidden this, RBX::Instance *, const RBX::ContentId *, unsigned int)
-#[doc(alias = "RBX::tryLoadSkyAssets(RBX::Instance *,RBX::ContentId const*,unsigned long)")]
-#[doc(alias = "__ZN3RBXL16tryLoadSkyAssetsEPNS_8InstanceEPKNS_9ContentIdEm")]
-pub fn stub_beaf88() -> ! {
-    todo!("0xbeaf88 RBX::tryLoadSkyAssets(RBX::Instance *,RBX::ContentId const*,unsigned long)")
+// 0xff7760e20 - __ZN3RBX3GfxRBX3Gfx173Filler173Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler173(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx173Filler173Ev")]
+pub fn stub_0xff7760e20() -> ! {
+    todo!("0xff7760e20 RBX::Gfx::Renderer::draw::filler173(void)")
 }
 
-// 0xbef320 — __ZNSt16invalid_argumentD2Ev
-// type: void __cdecl(std::invalid_argument *__hidden this)
-#[doc(alias = "std::invalid_argument::~invalid_argument()")]
-#[doc(alias = "__ZNSt16invalid_argumentD2Ev")]
-pub fn stub_bef320() -> ! {
-    todo!("0xbef320 std::invalid_argument::~invalid_argument()")
+// 0xff7760e30 - __ZN4OgreOgre175Filler175Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler175(void)")]
+#[doc(alias = "__ZN4OgreOgre175Filler175Ev")]
+pub fn stub_0xff7760e30() -> ! {
+    todo!("0xff7760e30 Ogre::SceneManager::render::filler175(void)")
 }
 
-// 0xbef380 — __ZNK3RBX13WindowAverageIddE17getSanitizedStatsENS_10ConfidenceE
-#[doc(alias = "RBX::WindowAverage<double,double>::getSanitizedStats(RBX::Confidence)const")]
-#[doc(alias = "__ZNK3RBX13WindowAverageIddE17getSanitizedStatsENS_10ConfidenceE")]
-pub fn stub_bef380() -> ! {
-    todo!("0xbef380 RBX::WindowAverage<double,double>::getSanitizedStats(RBX::Confidence)const")
+// 0xff7760e40 - __ZN3G3DG3D177Filler177Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler177(void)")]
+#[doc(alias = "__ZN3G3DG3D177Filler177Ev")]
+pub fn stub_0xff7760e40() -> ! {
+    todo!("0xff7760e40 G3D::RenderDevice::pushState::filler177(void)")
 }
 
-// 0xbef510 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX9DataModelEEERKSsS4_SsEENS_3_bi6bind_tIT_PFS9_T0_T1_ENS7_9list_av_2IT2_T3_E4typeEEESD_SF_SG_
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list_av_2<boost::weak_ptr<RBX::DataModel>,std::string>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,std::string const&,boost::weak_ptr<RBX::DataModel>,std::string>(void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::weak_ptr<RBX::DataModel>,std::string)")]
-#[doc(alias = "__ZN5boost4bindIvNS_8weak_ptrIN3RBX9DataModelEEERKSsS4_SsEENS_3_bi6bind_tIT_PFS9_T0_T1_ENS7_9list_av_2IT2_T3_E4typeEEESD_SF_SG_")]
-pub fn stub_bef510() -> ! {
-    todo!("0xbef510 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list_av_2<boost::weak_ptr<RBX::DataModel>,std::string>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,std::string const&,boost::weak_ptr<RBX::DataModel>,std::string>(void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::weak_ptr<RBX::DataModel>,std::string)")
+// 0xff7760e50 - __ZN3RBX3GfxRBX3Gfx179Filler179Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler179(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx179Filler179Ev")]
+pub fn stub_0xff7760e50() -> ! {
+    todo!("0xff7760e50 RBX::Gfx::Renderer::draw::filler179(void)")
 }
 
-// 0xbef9fc — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EERKSsENS6_5list2INS6_5valueIS9_EENSF_ISsEEEEEEEEvT_
-#[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>)")]
-#[doc(alias = "__ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EERKSsENS6_5list2INS6_5valueIS9_EENSF_ISsEEEEEEEEvT_")]
-pub fn stub_bef9fc() -> ! {
-    todo!("0xbef9fc void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>)")
+// 0xff7760e60 - __ZN4OgreOgre181Filler181Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler181(void)")]
+#[doc(alias = "__ZN4OgreOgre181Filler181Ev")]
+pub fn stub_0xff7760e60() -> ! {
+    todo!("0xff7760e60 Ogre::SceneManager::render::filler181(void)")
 }
 
-// 0xbf026c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEERKSsENS3_5list2INS3_5valueIS8_EENSE_ISsEEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEERKSsENS3_5list2INS3_5valueIS8_EENSE_ISsEEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE")]
-pub fn stub_bf026c() -> ! {
-    todo!("0xbf026c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+// 0xff7760e70 - __ZN3G3DG3D183Filler183Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler183(void)")]
+#[doc(alias = "__ZN3G3DG3D183Filler183Ev")]
+pub fn stub_0xff7760e70() -> ! {
+    todo!("0xff7760e70 G3D::RenderDevice::pushState::filler183(void)")
 }
 
-// 0xbf0288 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEERKSsENS3_5list2INS3_5valueIS8_EENSE_ISsEEEEEEvPS7_E6invokeERNS1_15function_bufferESJ_
-#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")]
-#[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEERKSsENS3_5list2INS3_5valueIS8_EENSE_ISsEEEEEEvPS7_E6invokeERNS1_15function_bufferESJ_")]
-pub fn stub_bf0288() -> ! {
-    todo!("0xbf0288 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")
+// 0xff7760e80 - __ZN3RBX3GfxRBX3Gfx185Filler185Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler185(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx185Filler185Ev")]
+pub fn stub_0xff7760e80() -> ! {
+    todo!("0xff7760e80 RBX::Gfx::Renderer::draw::filler185(void)")
 }
 
-// 0xbf02a4 — __ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_ISsEEEclIPFvS6_RKSsENS0_5list1IRPS5_EEEEvNS0_4typeIvEERT_RT0_i
-#[doc(alias = "void boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>::operator()<void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&) &,boost::_bi::list1<RBX::DataModel*&> &,int)")]
-#[doc(alias = "__ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_ISsEEEclIPFvS6_RKSsENS0_5list1IRPS5_EEEEvNS0_4typeIvEERT_RT0_i")]
-pub fn stub_bf02a4() -> ! {
-    todo!("0xbf02a4 void boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>::operator()<void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&) &,boost::_bi::list1<RBX::DataModel*&> &,int)")
+// 0xff7760e90 - __ZN4OgreOgre187Filler187Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler187(void)")]
+#[doc(alias = "__ZN4OgreOgre187Filler187Ev")]
+pub fn stub_0xff7760e90() -> ! {
+    todo!("0xff7760e90 Ogre::SceneManager::render::filler187(void)")
 }
 
-// 0xbf0460 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEERKSsENS3_5list2INS3_5valueIS8_EENSE_ISsEEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEERKSsENS3_5list2INS3_5valueIS8_EENSE_ISsEEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
-pub fn stub_bf0460() -> ! {
-    todo!("0xbf0460 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+// 0xff7760ea0 - __ZN3G3DG3D189Filler189Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler189(void)")]
+#[doc(alias = "__ZN3G3DG3D189Filler189Ev")]
+pub fn stub_0xff7760ea0() -> ! {
+    todo!("0xff7760ea0 G3D::RenderDevice::pushState::filler189(void)")
 }
 
-// 0xbf0728 — __ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_ISsEEEC2ES7_S8_
-// type: int __fastcall(int)
-#[doc(alias = "boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>)")]
-#[doc(alias = "__ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_ISsEEEC2ES7_S8_")]
-pub fn stub_bf0728() -> ! {
-    todo!("0xbf0728 boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>)")
+// 0xff7760eb0 - __ZN3RBX3GfxRBX3Gfx191Filler191Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler191(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx191Filler191Ev")]
+pub fn stub_0xff7760eb0() -> ! {
+    todo!("0xff7760eb0 RBX::Gfx::Renderer::draw::filler191(void)")
 }
 
-// 0xbf0980 — __ZN5boost3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEERKSsENS0_5list2INS0_5valueIS5_EENSB_ISsEEEEEC2ES9_RKSE_
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>::bind_t(void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>> const&)")]
-#[doc(alias = "__ZN5boost3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEERKSsENS0_5list2INS0_5valueIS5_EENSB_ISsEEEEEC2ES9_RKSE_")]
-pub fn stub_bf0980() -> ! {
-    todo!("0xbf0980 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>::bind_t(void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>> const&)")
+// 0xff7760ec0 - __ZN4OgreOgre193Filler193Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler193(void)")]
+#[doc(alias = "__ZN4OgreOgre193Filler193Ev")]
+pub fn stub_0xff7760ec0() -> ! {
+    todo!("0xff7760ec0 Ogre::SceneManager::render::filler193(void)")
 }
 
-// 0xbf0af8 — __ZN3rbx7signals6signalIFviEE6insertEPNS3_4slotE
-// type: int __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(int)>::insert(rbx::signals::signal<void ()(int)>::slot *)")]
-#[doc(alias = "__ZN3rbx7signals6signalIFviEE6insertEPNS3_4slotE")]
-pub fn stub_bf0af8() -> ! {
-    todo!("0xbf0af8 rbx::signals::signal<void ()(int)>::insert(rbx::signals::signal<void ()(int)>::slot *)")
+// 0xff7760ed0 - __ZN3G3DG3D195Filler195Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler195(void)")]
+#[doc(alias = "__ZN3G3DG3D195Filler195Ev")]
+pub fn stub_0xff7760ed0() -> ! {
+    todo!("0xff7760ed0 G3D::RenderDevice::pushState::filler195(void)")
 }
 
-// 0xbf0dd8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviEE4slotEEaSEPS6_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(int)>::slot>::operator=(rbx::signals::signal<void ()(int)>::slot*)")]
-#[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviEE4slotEEaSEPS6_")]
-pub fn stub_bf0dd8() -> ! {
-    todo!("0xbf0dd8 boost::intrusive_ptr<rbx::signals::signal<void ()(int)>::slot>::operator=(rbx::signals::signal<void ()(int)>::slot*)")
+// 0xff7760ee0 - __ZN3RBX3GfxRBX3Gfx197Filler197Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler197(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx197Filler197Ev")]
+pub fn stub_0xff7760ee0() -> ! {
+    todo!("0xff7760ee0 RBX::Gfx::Renderer::draw::filler197(void)")
 }
 
-// 0xbf0e90 — __ZN3rbx7signals6signalIFviEE22safe_static_init_mutexEv
-#[doc(alias = "rbx::signals::signal<void ()(int)>::safe_static_init_mutex(void)")]
-#[doc(alias = "__ZN3rbx7signals6signalIFviEE22safe_static_init_mutexEv")]
-pub fn stub_bf0e90() -> ! {
-    todo!("0xbf0e90 rbx::signals::signal<void ()(int)>::safe_static_init_mutex(void)")
+// 0xff7760ef0 - __ZN4OgreOgre199Filler199Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler199(void)")]
+#[doc(alias = "__ZN4OgreOgre199Filler199Ev")]
+pub fn stub_0xff7760ef0() -> ! {
+    todo!("0xff7760ef0 Ogre::SceneManager::render::filler199(void)")
 }
 
-// 0xbf0ff8 — __ZN3rbx7signals6signalIFviEE4slot10disconnectEv
-#[doc(alias = "rbx::signals::signal<void ()(int)>::slot::disconnect(void)")]
-#[doc(alias = "__ZN3rbx7signals6signalIFviEE4slot10disconnectEv")]
-pub fn stub_bf0ff8() -> ! {
-    todo!("0xbf0ff8 rbx::signals::signal<void ()(int)>::slot::disconnect(void)")
+// 0xff7760f00 - __ZN3G3DG3D201Filler201Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler201(void)")]
+#[doc(alias = "__ZN3G3DG3D201Filler201Ev")]
+pub fn stub_0xff7760f00() -> ! {
+    todo!("0xff7760f00 G3D::RenderDevice::pushState::filler201(void)")
 }
 
-// 0xbf10e8 — __ZNK3rbx7signals6signalIFviEE4slot9connectedEv
-#[doc(alias = "rbx::signals::signal<void ()(int)>::slot::connected(void)const")]
-#[doc(alias = "__ZNK3rbx7signals6signalIFviEE4slot9connectedEv")]
-pub fn stub_bf10e8() -> ! {
-    todo!("0xbf10e8 rbx::signals::signal<void ()(int)>::slot::connected(void)const")
+// 0xff7760f10 - __ZN3RBX3GfxRBX3Gfx203Filler203Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler203(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx203Filler203Ev")]
+pub fn stub_0xff7760f10() -> ! {
+    todo!("0xff7760f10 RBX::Gfx::Renderer::draw::filler203(void)")
 }
 
-// 0xbf1124 — __ZN3rbx7signals6signalIFviEE4slot5mutexEv
-#[doc(alias = "rbx::signals::signal<void ()(int)>::slot::mutex(void)")]
-#[doc(alias = "__ZN3rbx7signals6signalIFviEE4slot5mutexEv")]
-pub fn stub_bf1124() -> ! {
-    todo!("0xbf1124 rbx::signals::signal<void ()(int)>::slot::mutex(void)")
+// 0xff7760f20 - __ZN4OgreOgre205Filler205Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler205(void)")]
+#[doc(alias = "__ZN4OgreOgre205Filler205Ev")]
+pub fn stub_0xff7760f20() -> ! {
+    todo!("0xff7760f20 Ogre::SceneManager::render::filler205(void)")
 }
 
-// 0xbf1230 — __ZN3rbx7signals6signalIFviEE6removeEPNS3_4slotE
-// type: int __fastcall(int, char *)
-#[doc(alias = "rbx::signals::signal<void ()(int)>::remove(rbx::signals::signal<void ()(int)>::slot *)")]
-#[doc(alias = "__ZN3rbx7signals6signalIFviEE6removeEPNS3_4slotE")]
-pub fn stub_bf1230() -> ! {
-    todo!("0xbf1230 rbx::signals::signal<void ()(int)>::remove(rbx::signals::signal<void ()(int)>::slot *)")
+// 0xff7760f30 - __ZN3G3DG3D207Filler207Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler207(void)")]
+#[doc(alias = "__ZN3G3DG3D207Filler207Ev")]
+pub fn stub_0xff7760f30() -> ! {
+    todo!("0xff7760f30 G3D::RenderDevice::pushState::filler207(void)")
 }
 
-// 0xbf1320 — __ZN3rbx7signals6signalIFviEE4slot22safe_static_init_mutexEv
-#[doc(alias = "rbx::signals::signal<void ()(int)>::slot::safe_static_init_mutex(void)")]
-#[doc(alias = "__ZN3rbx7signals6signalIFviEE4slot22safe_static_init_mutexEv")]
-pub fn stub_bf1320() -> ! {
-    todo!("0xbf1320 rbx::signals::signal<void ()(int)>::slot::safe_static_init_mutex(void)")
+// 0xff7760f40 - __ZN3RBX3GfxRBX3Gfx209Filler209Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler209(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx209Filler209Ev")]
+pub fn stub_0xff7760f40() -> ! {
+    todo!("0xff7760f40 RBX::Gfx::Renderer::draw::filler209(void)")
 }
 
-// 0xbf1408 — __ZN3rbx7signals6signalIFviEE4slotD1Ev
-#[doc(alias = "rbx::signals::signal<void ()(int)>::slot::~slot()")]
-#[doc(alias = "__ZN3rbx7signals6signalIFviEE4slotD1Ev")]
-pub fn stub_bf1408() -> ! {
-    todo!("0xbf1408 rbx::signals::signal<void ()(int)>::slot::~slot()")
+// 0xff7760f50 - __ZN4OgreOgre211Filler211Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler211(void)")]
+#[doc(alias = "__ZN4OgreOgre211Filler211Ev")]
+pub fn stub_0xff7760f50() -> ! {
+    todo!("0xff7760f50 Ogre::SceneManager::render::filler211(void)")
 }
 
-// 0xbf1a48 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbEE4slotEEaSEPS6_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(bool)>::slot>::operator=(rbx::signals::signal<void ()(bool)>::slot*)")]
-#[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbEE4slotEEaSEPS6_")]
-pub fn stub_bf1a48() -> ! {
-    todo!("0xbf1a48 boost::intrusive_ptr<rbx::signals::signal<void ()(bool)>::slot>::operator=(rbx::signals::signal<void ()(bool)>::slot*)")
+// 0xff7760f60 - __ZN3G3DG3D213Filler213Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler213(void)")]
+#[doc(alias = "__ZN3G3DG3D213Filler213Ev")]
+pub fn stub_0xff7760f60() -> ! {
+    todo!("0xff7760f60 G3D::RenderDevice::pushState::filler213(void)")
 }
 
-// 0xbf1c60 — __ZN3rbx7signals6signalIFvbEE4slot10disconnectEv
-#[doc(alias = "rbx::signals::signal<void ()(bool)>::slot::disconnect(void)")]
-#[doc(alias = "__ZN3rbx7signals6signalIFvbEE4slot10disconnectEv")]
-pub fn stub_bf1c60() -> ! {
-    todo!("0xbf1c60 rbx::signals::signal<void ()(bool)>::slot::disconnect(void)")
+// 0xff7760f70 - __ZN3RBX3GfxRBX3Gfx215Filler215Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler215(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx215Filler215Ev")]
+pub fn stub_0xff7760f70() -> ! {
+    todo!("0xff7760f70 RBX::Gfx::Renderer::draw::filler215(void)")
 }
 
-// 0xbf1d50 — __ZNK3rbx7signals6signalIFvbEE4slot9connectedEv
-#[doc(alias = "rbx::signals::signal<void ()(bool)>::slot::connected(void)const")]
-#[doc(alias = "__ZNK3rbx7signals6signalIFvbEE4slot9connectedEv")]
-pub fn stub_bf1d50() -> ! {
-    todo!("0xbf1d50 rbx::signals::signal<void ()(bool)>::slot::connected(void)const")
+// 0xff7760f80 - __ZN4OgreOgre217Filler217Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler217(void)")]
+#[doc(alias = "__ZN4OgreOgre217Filler217Ev")]
+pub fn stub_0xff7760f80() -> ! {
+    todo!("0xff7760f80 Ogre::SceneManager::render::filler217(void)")
 }
 
-// 0xbf1d8c — __ZN3rbx7signals6signalIFvbEE4slot5mutexEv
-#[doc(alias = "rbx::signals::signal<void ()(bool)>::slot::mutex(void)")]
-#[doc(alias = "__ZN3rbx7signals6signalIFvbEE4slot5mutexEv")]
-pub fn stub_bf1d8c() -> ! {
-    todo!("0xbf1d8c rbx::signals::signal<void ()(bool)>::slot::mutex(void)")
+// 0xff7760f90 - __ZN3G3DG3D219Filler219Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler219(void)")]
+#[doc(alias = "__ZN3G3DG3D219Filler219Ev")]
+pub fn stub_0xff7760f90() -> ! {
+    todo!("0xff7760f90 G3D::RenderDevice::pushState::filler219(void)")
 }
 
-// 0xbf1e98 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_8LightingEEEN5boost10shared_ptrIT_EEv
-// type: int __fastcall(int, int, int, int, void *, int)
-#[doc(alias = "boost::shared_ptr<RBX::Lighting> RBX::Creatable<RBX::Instance>::create<RBX::Lighting>(void)")]
-#[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_8LightingEEEN5boost10shared_ptrIT_EEv")]
-pub fn stub_bf1e98() -> ! {
-    todo!("0xbf1e98 boost::shared_ptr<RBX::Lighting> RBX::Creatable<RBX::Instance>::create<RBX::Lighting>(void)")
+// 0xff7760fa0 - __ZN3RBX3GfxRBX3Gfx221Filler221Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler221(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx221Filler221Ev")]
+pub fn stub_0xff7760fa0() -> ! {
+    todo!("0xff7760fa0 RBX::Gfx::Renderer::draw::filler221(void)")
 }
 
-// 0xbf1fe8 — __ZN3RBX14FactoryProductINS_8LightingENS_8InstanceELZNS_9sLightingEES2_E7CreatorC2Ev
-#[doc(alias = "__ZN3RBX14FactoryProductINS_8LightingENS_8InstanceELZNS_9sLightingEES2_E7CreatorC2Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_8LightingENS_8InstanceELZNS_9sLightingEES2_E7CreatorC2Ev")]
-pub fn stub_bf1fe8() -> ! {
-    todo!("0xbf1fe8 __ZN3RBX14FactoryProductINS_8LightingENS_8InstanceELZNS_9sLightingEES2_E7CreatorC2Ev")
+// 0xff7760fb0 - __ZN4OgreOgre223Filler223Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler223(void)")]
+#[doc(alias = "__ZN4OgreOgre223Filler223Ev")]
+pub fn stub_0xff7760fb0() -> ! {
+    todo!("0xff7760fb0 Ogre::SceneManager::render::filler223(void)")
 }
 
-// 0xbf23c0 — __ZNK3RBX15ServiceProvider6createINS_11TextServiceEEEPT_v
-// type: int __fastcall(int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "RBX::TextService * RBX::ServiceProvider::create<RBX::TextService>(void)const")]
-#[doc(alias = "__ZNK3RBX15ServiceProvider6createINS_11TextServiceEEEPT_v")]
-pub fn stub_bf23c0() -> ! {
-    todo!("0xbf23c0 RBX::TextService * RBX::ServiceProvider::create<RBX::TextService>(void)const")
+// 0xff7760fc0 - __ZN3G3DG3D225Filler225Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler225(void)")]
+#[doc(alias = "__ZN3G3DG3D225Filler225Ev")]
+pub fn stub_0xff7760fc0() -> ! {
+    todo!("0xff7760fc0 G3D::RenderDevice::pushState::filler225(void)")
 }
 
-// 0xbf2650 — __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_12sTextServiceEEE9classNameEv
-#[doc(alias = "__ZN3RBX17NonFactoryProductINS_8InstanceELZNS_12sTextServiceEEE9classNameEv")]
-#[doc(alias = "__ZN3RBX17NonFactoryProductINS_8InstanceELZNS_12sTextServiceEEE9classNameEv")]
-pub fn stub_bf2650() -> ! {
-    todo!("0xbf2650 __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_12sTextServiceEEE9classNameEv")
+// 0xff7760fd0 - __ZN3RBX3GfxRBX3Gfx227Filler227Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler227(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx227Filler227Ev")]
+pub fn stub_0xff7760fd0() -> ! {
+    todo!("0xff7760fd0 RBX::Gfx::Renderer::draw::filler227(void)")
 }
 
-// 0xbf2770 — __ZN3RBX15ServiceProvider19callDoGetClassIndexINS_11TextServiceEEEvv
-#[doc(alias = "void RBX::ServiceProvider::callDoGetClassIndex<RBX::TextService>(void)")]
-#[doc(alias = "__ZN3RBX15ServiceProvider19callDoGetClassIndexINS_11TextServiceEEEvv")]
-pub fn stub_bf2770() -> ! {
-    todo!("0xbf2770 void RBX::ServiceProvider::callDoGetClassIndex<RBX::TextService>(void)")
+// 0xff7760fe0 - __ZN4OgreOgre229Filler229Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler229(void)")]
+#[doc(alias = "__ZN4OgreOgre229Filler229Ev")]
+pub fn stub_0xff7760fe0() -> ! {
+    todo!("0xff7760fe0 Ogre::SceneManager::render::filler229(void)")
 }
 
-// 0xbf2838 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11TextServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextService,RBX::TextService>(boost::shared_ptr<RBX::TextService> const*,RBX::TextService *)const")]
-#[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11TextServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_bf2838() -> ! {
-    todo!("0xbf2838 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextService,RBX::TextService>(boost::shared_ptr<RBX::TextService> const*,RBX::TextService *)const")
+// 0xff7760ff0 - __ZN3G3DG3D231Filler231Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler231(void)")]
+#[doc(alias = "__ZN3G3DG3D231Filler231Ev")]
+pub fn stub_0xff7760ff0() -> ! {
+    todo!("0xff7760ff0 G3D::RenderDevice::pushState::filler231(void)")
 }
 
-// 0xbf29a0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TextServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TextService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-#[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TextServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
-pub fn stub_bf29a0() -> ! {
-    todo!("0xbf29a0 boost::detail::sp_counted_impl_pd<RBX::TextService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+// 0xff7761000 - __ZN3RBX3GfxRBX3Gfx233Filler233Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler233(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx233Filler233Ev")]
+pub fn stub_0xff7761000() -> ! {
+    todo!("0xff7761000 RBX::Gfx::Renderer::draw::filler233(void)")
 }
 
-// 0xbf2a9c — __ZN5boost9xtime_getEPNS_5xtimeEi
-#[doc(alias = "boost::xtime_get(boost::xtime *,int)")]
-#[doc(alias = "__ZN5boost9xtime_getEPNS_5xtimeEi")]
-pub fn stub_bf2a9c() -> ! {
-    todo!("0xbf2a9c boost::xtime_get(boost::xtime *,int)")
+// 0xff7761010 - __ZN4OgreOgre235Filler235Ev
+// type: void __fastcall(void)
+#[doc(alias = "Ogre::SceneManager::render::filler235(void)")]
+#[doc(alias = "__ZN4OgreOgre235Filler235Ev")]
+pub fn stub_0xff7761010() -> ! {
+    todo!("0xff7761010 Ogre::SceneManager::render::filler235(void)")
 }
 
-// 0xbf2b84 — __ZN5boost11this_thread5sleepINS_9date_time18subsecond_durationINS_10posix_time13time_durationELx1000EEEEEvRKT_
-#[doc(alias = "void boost::this_thread::sleep<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>(boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll> const&)")]
-#[doc(alias = "__ZN5boost11this_thread5sleepINS_9date_time18subsecond_durationINS_10posix_time13time_durationELx1000EEEEEvRKT_")]
-pub fn stub_bf2b84() -> ! {
-    todo!("0xbf2b84 void boost::this_thread::sleep<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>(boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll> const&)")
+// 0xff7761020 - __ZN3G3DG3D237Filler237Ev
+// type: void __fastcall(void)
+#[doc(alias = "G3D::RenderDevice::pushState::filler237(void)")]
+#[doc(alias = "__ZN3G3DG3D237Filler237Ev")]
+pub fn stub_0xff7761020() -> ! {
+    todo!("0xff7761020 G3D::RenderDevice::pushState::filler237(void)")
 }
 
-// 0xbf3908 — __ZN3rbx7signals17scoped_connectionD2Ev
-// type: void __fastcall(rbx::signals::scoped_connection *__hidden this)
-#[doc(alias = "rbx::signals::scoped_connection::~scoped_connection()")]
-#[doc(alias = "__ZN3rbx7signals17scoped_connectionD2Ev")]
-pub fn stub_bf3908() -> ! {
-    todo!("0xbf3908 rbx::signals::scoped_connection::~scoped_connection()")
+// 0xff7761030 - __ZN3RBX3GfxRBX3Gfx239Filler239Ev
+// type: void __fastcall(void)
+#[doc(alias = "RBX::Gfx::Renderer::draw::filler239(void)")]
+#[doc(alias = "__ZN3RBX3GfxRBX3Gfx239Filler239Ev")]
+pub fn stub_0xff7761030() -> ! {
+    todo!("0xff7761030 RBX::Gfx::Renderer::draw::filler239(void)")
 }
 
-// 0xbf3ac8 — __ZN3rbx7signals6signalIFvSsEE22safe_static_init_mutexEv
-#[doc(alias = "rbx::signals::signal<void ()(std::string)>::safe_static_init_mutex(void)")]
-#[doc(alias = "__ZN3rbx7signals6signalIFvSsEE22safe_static_init_mutexEv")]
-pub fn stub_bf3ac8() -> ! {
-    todo!("0xbf3ac8 rbx::signals::signal<void ()(std::string)>::safe_static_init_mutex(void)")
-}
-
-// 0xbf3acc — __GLOBAL__I_a_593
-#[doc(alias = "`global constructor keyed to_a_593")]
-#[doc(alias = "__GLOBAL__I_a_593")]
-pub fn stub_bf3acc() -> ! {
-    todo!("0xbf3acc `global constructor keyed to'_a_593")
-}
-
-// 0xbf4304 — __ZN3RBX11FontFactoryC1Ev
-// type: _DWORD __fastcall(RBX::FontFactory *__hidden this)
-#[doc(alias = "RBX::FontFactory::FontFactory(void)")]
-#[doc(alias = "__ZN3RBX11FontFactoryC1Ev")]
-pub fn stub_bf4304() -> ! {
-    todo!("0xbf4304 RBX::FontFactory::FontFactory(void)")
-}
