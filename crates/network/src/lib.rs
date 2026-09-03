@@ -429,3 +429,6 @@ pub mod generated_network_next105;
 pub mod generated_network_next106;
 pub mod generated_wdog_cron_netaudio;
 pub mod generated_network_next107;
+pub mod generated_wdog_net2;
+pub mod generated_wdog_net3;
+pub mod generated_network_next108;
