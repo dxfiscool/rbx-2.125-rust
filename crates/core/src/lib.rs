@@ -464,6 +464,7 @@ pub mod generated_watchdog_core_w1;
 pub mod generated_watchdog_core_w3;
 pub mod generated_watchdog_core_w4;
 pub mod generated_watchdog_core_w5;
+pub mod generated_watchdog_core_w5b;
 pub mod generated_core_b_watchdog_1788336813;
 pub mod generated_core_watchdog_1788336888;
 pub mod generated_core_wd3a_1788337499;

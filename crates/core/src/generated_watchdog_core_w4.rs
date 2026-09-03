@@ -1,485 +1,486 @@
-//! generated_watchdog_core_w4 — 120 core stubs EA-sorted, gap filler after watchdog_core_w3 0x5f7b48.
-//! Source: ida/export.json (85545 funcs) filtered core namespace (excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|FMOD|Audio|Sound|lua|ObjC) EA-sorted asc.
+//! generated_watchdog_core_w4 — 120 core stubs EA-sorted, watchdog core w4.
+//! Source: ida/export.json (85545 funcs) filtered core namespace (RBX::Tasks, rbx_core, SharedPtr, Signal, atomic, boost core) EA-sorted asc global-dedup vs /tmp/global_eas.txt.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
 
-#[doc(alias="RBX::Intrusive::Set<RBX::PartInstance,RBX::PhysicsService>::insert(RBX::PartInstance&)")]
-// 0x5f7bbc — __ZN3RBX9Intrusive3SetINS_12PartInstanceENS_14PhysicsServiceEE6insertERS2_
-pub fn stub_0x5f7bbc() { todo!("0x5f7bbc") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,bool>::~PropDescriptor()")]
-// 0x5f9108 — __ZN3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbED1Ev
-pub fn stub_0x5f9108() { todo!("0x5f9108") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::~EnumPropDescriptor()")]
-// 0x5f912c — __ZN3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEED1Ev
-pub fn stub_0x5f912c() { todo!("0x5f912c") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,double>::~PropDescriptor()")]
-// 0x5f915c — __ZN3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEdED1Ev
-pub fn stub_0x5f915c() { todo!("0x5f915c") }
-
-#[doc(alias="__ZNK3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE12getClassNameEv")]
-// 0x5f9510 — __ZNK3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE12getClassNameEv
-pub fn stub_0x5f9510() { todo!("0x5f9510") }
-
-#[doc(alias="__ZThn32_NK3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE12getClassNameEv")]
-// 0x5f9644 — __ZThn32_NK3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE12getClassNameEv
-pub fn stub_0x5f9644() { todo!("0x5f9644") }
-
-#[doc(alias="__ZN3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE17static_getCreatorEv")]
-// 0x5f9778 — __ZN3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE17static_getCreatorEv
-pub fn stub_0x5f9778() { todo!("0x5f9778") }
-
-#[doc(alias="__ZN3RBX10Reflection9DescribedINS_15PhysicsSettingsELZNS_16sPhysicsSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-// 0x5f99a4 — __ZN3RBX10Reflection9DescribedINS_15PhysicsSettingsELZNS_16sPhysicsSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x5f99a4() { todo!("0x5f99a4") }
-
-#[doc(alias="__ZN3RBX10Reflection9DescribedINS_15PhysicsSettingsELZNS_16sPhysicsSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-// 0x5f99a8 — __ZN3RBX10Reflection9DescribedINS_15PhysicsSettingsELZNS_16sPhysicsSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x5f99a8() { todo!("0x5f99a8") }
-
-#[doc(alias="__ZThn32_N3RBX10Reflection9DescribedINS_15PhysicsSettingsELZNS_16sPhysicsSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-// 0x5f9a48 — __ZThn32_N3RBX10Reflection9DescribedINS_15PhysicsSettingsELZNS_16sPhysicsSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x5f9a48() { todo!("0x5f9a48") }
-
-#[doc(alias="__ZThn32_N3RBX10Reflection9DescribedINS_15PhysicsSettingsELZNS_16sPhysicsSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-// 0x5f9a50 — __ZThn32_N3RBX10Reflection9DescribedINS_15PhysicsSettingsELZNS_16sPhysicsSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x5f9a50() { todo!("0x5f9a50") }
-
-#[doc(alias="__ZThn36_N3RBX10Reflection9DescribedINS_15PhysicsSettingsELZNS_16sPhysicsSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-// 0x5f9af4 — __ZThn36_N3RBX10Reflection9DescribedINS_15PhysicsSettingsELZNS_16sPhysicsSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x5f9af4() { todo!("0x5f9af4") }
-
-#[doc(alias="__ZThn36_N3RBX10Reflection9DescribedINS_15PhysicsSettingsELZNS_16sPhysicsSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-// 0x5f9afc — __ZThn36_N3RBX10Reflection9DescribedINS_15PhysicsSettingsELZNS_16sPhysicsSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x5f9afc() { todo!("0x5f9afc") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,double>::PropDescriptor<double (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(double)>(char const*,char const*,double (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(double),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-// 0x5f9ba0 — __ZN3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEdEC2IMS2_KFdvEMS2_FvdEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-pub fn stub_0x5f9ba0() { todo!("0x5f9ba0") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,double>::~PropDescriptor()")]
-// 0x5f9cb4 — __ZN3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEdED0Ev
-pub fn stub_0x5f9cb4() { todo!("0x5f9cb4") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,double>::GetSetImpl<double (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(double)>::isReadOnly(void)const")]
-// 0x5f9ce0 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE10isReadOnlyEv
-pub fn stub_0x5f9ce0() { todo!("0x5f9ce0") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,double>::GetSetImpl<double (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(double)>::isWriteOnly(void)const")]
-// 0x5f9ce4 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE11isWriteOnlyEv
-pub fn stub_0x5f9ce4() { todo!("0x5f9ce4") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,double>::GetSetImpl<double (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(double)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-// 0x5f9ce8 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE8getValueEPKNS0_13DescribedBaseE
-pub fn stub_0x5f9ce8() { todo!("0x5f9ce8") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,double>::GetSetImpl<double (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(double)>::setValue(RBX::Reflection::DescribedBase *,double const&)const")]
-// 0x5f9d08 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE8setValueEPNS0_13DescribedBaseERKd
-pub fn stub_0x5f9d08() { todo!("0x5f9d08") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::EnumPropDescriptor<RBX::EThrottle::EThrottleType (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(RBX::EThrottle::EThrottleType)>(char const*,char const*,RBX::EThrottle::EThrottleType (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(RBX::EThrottle::EThrottleType),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-// 0x5f9d30 — __ZN3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-pub fn stub_0x5f9d30() { todo!("0x5f9d30") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::~EnumPropDescriptor()")]
-// 0x5f9ee4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEED0Ev
-pub fn stub_0x5f9ee4() { todo!("0x5f9ee4") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::isReadOnly(void)const")]
-// 0x5f9f10 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10isReadOnlyEv
-pub fn stub_0x5f9f10() { todo!("0x5f9f10") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::isWriteOnly(void)const")]
-// 0x5f9f20 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE11isWriteOnlyEv
-pub fn stub_0x5f9f20() { todo!("0x5f9f20") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-// 0x5f9f30 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE11equalValuesEPKNS0_13DescribedBaseES8_
-pub fn stub_0x5f9f30() { todo!("0x5f9f30") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-// 0x5f9f58 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
-pub fn stub_0x5f9f58() { todo!("0x5f9f58") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-// 0x5f9f7c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
-pub fn stub_0x5f9f7c() { todo!("0x5f9f7c") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-// 0x5fa0c8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE9copyValueEPKNS0_13DescribedBaseEPS6_
-pub fn stub_0x5fa0c8() { todo!("0x5fa0c8") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::hasStringValue(void)const")]
-// 0x5fa0ec — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE14hasStringValueEv
-pub fn stub_0x5fa0ec() { todo!("0x5fa0ec") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-// 0x5fa0f0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE14getStringValueEPKNS0_13DescribedBaseE
-pub fn stub_0x5fa0f0() { todo!("0x5fa0f0") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-// 0x5fa114 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE14setStringValueEPNS0_13DescribedBaseERKSs
-pub fn stub_0x5fa114() { todo!("0x5fa114") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-// 0x5fa154 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
-pub fn stub_0x5fa154() { todo!("0x5fa154") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-// 0x5fa174 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
-pub fn stub_0x5fa174() { todo!("0x5fa174") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-// 0x5fa3b4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE13getIndexValueEPKNS0_13DescribedBaseE
-pub fn stub_0x5fa3b4() { todo!("0x5fa3b4") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-// 0x5fa3d0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE13setIndexValueEPNS0_13DescribedBaseEm
-pub fn stub_0x5fa3d0() { todo!("0x5fa3d0") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-// 0x5fa404 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE12getEnumValueEPKNS0_13DescribedBaseE
-pub fn stub_0x5fa404() { todo!("0x5fa404") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-// 0x5fa40c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE12setEnumValueEPNS0_13DescribedBaseEi
-pub fn stub_0x5fa40c() { todo!("0x5fa40c") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-// 0x5fa458 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE11getEnumItemEPKNS0_13DescribedBaseE
-pub fn stub_0x5fa458() { todo!("0x5fa458") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-// 0x5fa478 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
-pub fn stub_0x5fa478() { todo!("0x5fa478") }
-
-#[doc(alias="RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToIndex(RBX::EThrottle::EThrottleType)const")]
-// 0x5fa4ac — __ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE14convertToIndexES3_
-pub fn stub_0x5fa4ac() { todo!("0x5fa4ac") }
-
-#[doc(alias="RBX::Reflection::EnumPropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-// 0x5fa51c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE11setIntValueEPNS0_13DescribedBaseEi
-pub fn stub_0x5fa51c() { todo!("0x5fa51c") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::GetSetImpl<RBX::EThrottle::EThrottleType (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(RBX::EThrottle::EThrottleType)>::isReadOnly(void)const")]
-// 0x5fa55c — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
-pub fn stub_0x5fa55c() { todo!("0x5fa55c") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::GetSetImpl<RBX::EThrottle::EThrottleType (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(RBX::EThrottle::EThrottleType)>::isWriteOnly(void)const")]
-// 0x5fa560 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
-pub fn stub_0x5fa560() { todo!("0x5fa560") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::GetSetImpl<RBX::EThrottle::EThrottleType (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(RBX::EThrottle::EThrottleType)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-// 0x5fa564 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
-pub fn stub_0x5fa564() { todo!("0x5fa564") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,RBX::EThrottle::EThrottleType>::GetSetImpl<RBX::EThrottle::EThrottleType (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(RBX::EThrottle::EThrottleType)>::setValue(RBX::Reflection::DescribedBase *,RBX::EThrottle::EThrottleType const&)const")]
-// 0x5fa584 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
-pub fn stub_0x5fa584() { todo!("0x5fa584") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,bool>::PropDescriptor<bool (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(bool)>(char const*,char const*,bool (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-// 0x5fa5a8 — __ZN3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-pub fn stub_0x5fa5a8() { todo!("0x5fa5a8") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,bool>::~PropDescriptor()")]
-// 0x5fa6bc — __ZN3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbED0Ev
-pub fn stub_0x5fa6bc() { todo!("0x5fa6bc") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,bool>::GetSetImpl<bool (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(bool)>::isReadOnly(void)const")]
-// 0x5fa6e8 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
-pub fn stub_0x5fa6e8() { todo!("0x5fa6e8") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,bool>::GetSetImpl<bool (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(bool)>::isWriteOnly(void)const")]
-// 0x5fa6ec — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
-pub fn stub_0x5fa6ec() { todo!("0x5fa6ec") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,bool>::GetSetImpl<bool (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-// 0x5fa6f0 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
-pub fn stub_0x5fa6f0() { todo!("0x5fa6f0") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::PhysicsSettings,bool>::GetSetImpl<bool (RBX::PhysicsSettings::*)(void)const,void (RBX::PhysicsSettings::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-// 0x5fa714 — __ZNK3RBX10Reflection14PropDescriptorINS_15PhysicsSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
-pub fn stub_0x5fa714() { todo!("0x5fa714") }
-
-#[doc(alias="RBX::BasePlayerGui::askAddChild(RBX::Instance const*)const")]
-// 0x5fba88 — __ZNK3RBX13BasePlayerGui11askAddChildEPKNS_8InstanceE
-pub fn stub_0x5fba88() { todo!("0x5fba88") }
-
-#[doc(alias="RBX::BasePlayerGui::onDescendantAdded(RBX::Instance *)")]
-// 0x5fba8c — __ZN3RBX13BasePlayerGui17onDescendantAddedEPNS_8InstanceE
-pub fn stub_0x5fba8c() { todo!("0x5fba8c") }
-
-#[doc(alias="RBX::PlayerGui::askSetParent(RBX::Instance const*)const")]
-// 0x5fbee0 — __ZNK3RBX9PlayerGui12askSetParentEPKNS_8InstanceE
-pub fn stub_0x5fbee0() { todo!("0x5fbee0") }
-
-#[doc(alias="RBX::PlayerGui::askForbidParent(RBX::Instance const*)const")]
-// 0x5fbf1c — __ZNK3RBX9PlayerGui15askForbidParentEPKNS_8InstanceE
-pub fn stub_0x5fbf1c() { todo!("0x5fbf1c") }
-
-#[doc(alias="RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::EnumDesc(void)")]
-// 0x5fc1f4 — __ZN3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEEC1Ev
-pub fn stub_0x5fc1f4() { todo!("0x5fc1f4") }
-
-#[doc(alias="RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::EnumDesc(void)")]
-// 0x5fc1f8 — __ZN3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEEC2Ev
-pub fn stub_0x5fc1f8() { todo!("0x5fc1f8") }
-
-#[doc(alias="RBX::CoreGuiService::onDescendantAdded(RBX::Instance *)")]
-// 0x5fcbf8 — __ZN3RBX14CoreGuiService17onDescendantAddedEPNS_8InstanceE
-pub fn stub_0x5fcbf8() { todo!("0x5fcbf8") }
-
-#[doc(alias="RBX::CoreGuiService::addChild(RBX::Instance *)")]
-// 0x5fcc18 — __ZN3RBX14CoreGuiService8addChildEPNS_8InstanceE
-pub fn stub_0x5fcc18() { todo!("0x5fcc18") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::StarterGuiService,bool>::~PropDescriptor()")]
-// 0x5fcc38 — __ZN3RBX10Reflection14PropDescriptorINS_17StarterGuiServiceEbED1Ev
-pub fn stub_0x5fcc38() { todo!("0x5fcc38") }
-
-#[doc(alias="RBX::Reflection::BoundFuncDesc<RBX::StarterGuiService,void ()(RBX::StarterGuiService::CoreGuiType,bool),2>::~BoundFuncDesc()")]
-// 0x5fcc64 — __ZN3RBX10Reflection13BoundFuncDescINS_17StarterGuiServiceEFvNS2_11CoreGuiTypeEbELi2EED1Ev
-pub fn stub_0x5fcc64() { todo!("0x5fcc64") }
-
-#[doc(alias="RBX::Reflection::BoundFuncDesc<RBX::StarterGuiService,bool ()(RBX::StarterGuiService::CoreGuiType),1>::~BoundFuncDesc()")]
-// 0x5fccac — __ZN3RBX10Reflection13BoundFuncDescINS_17StarterGuiServiceEFbNS2_11CoreGuiTypeEELi1EED1Ev
-pub fn stub_0x5fccac() { todo!("0x5fccac") }
-
-#[doc(alias="RBX::Reflection::EventDesc<RBX::StarterGuiService,void ()(RBX::StarterGuiService::CoreGuiType,bool),rbx::signal<void ()(RBX::StarterGuiService::CoreGuiType,bool)>,rbx::signal<void ()(RBX::StarterGuiService::CoreGuiType,bool)> RBX::StarterGuiService::*>::~EventDesc()")]
-// 0x5fccec — __ZN3RBX10Reflection9EventDescINS_17StarterGuiServiceEFvNS2_11CoreGuiTypeEbEN3rbx6signalIS4_EEMS2_S7_ED1Ev
-pub fn stub_0x5fccec() { todo!("0x5fccec") }
-
-#[doc(alias="RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::addPair(RBX::StarterGuiService::CoreGuiType,char const*)")]
-// 0x5fcd10 — __ZN3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEE7addPairES3_PKc
-pub fn stub_0x5fcd10() { todo!("0x5fcd10") }
-
-#[doc(alias="RBX::StarterGuiService::CoreGuiType & RBX::Reflection::Variant::genericConvert<RBX::StarterGuiService::CoreGuiType>(void)")]
-// 0x5fd070 — __ZN3RBX10Reflection7Variant14genericConvertINS_17StarterGuiService11CoreGuiTypeEEERT_v
-pub fn stub_0x5fd070() { todo!("0x5fd070") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::CoreGuiService,int>::~PropDescriptor()")]
-// 0x5fd3ac — __ZN3RBX10Reflection14PropDescriptorINS_14CoreGuiServiceEiED1Ev
-pub fn stub_0x5fd3ac() { todo!("0x5fd3ac") }
-
-#[doc(alias="rbx_core::SharedPtr<RBX::TextLabel> RBX::Creatable<RBX::Instance>::create<RBX::TextLabel>(void)")]
-// 0x5fd4bc — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9TextLabelEEEN5boost10shared_ptrIT_EEv
-pub fn stub_0x5fd4bc() { todo!("0x5fd4bc") }
-
-#[doc(alias="__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sBasePlayerGuiEEE12getClassNameEv")]
-// 0x5fd570 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sBasePlayerGuiEEE12getClassNameEv
-pub fn stub_0x5fd570() { todo!("0x5fd570") }
-
-#[doc(alias="__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sBasePlayerGuiEEE12getClassNameEv")]
-// 0x5fd59c — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sBasePlayerGuiEEE12getClassNameEv
-pub fn stub_0x5fd59c() { todo!("0x5fd59c") }
-
-#[doc(alias="__ZNK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE12getClassNameEv")]
-// 0x5fd66c — __ZNK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE12getClassNameEv
-pub fn stub_0x5fd66c() { todo!("0x5fd66c") }
-
-#[doc(alias="__ZThn32_NK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE12getClassNameEv")]
-// 0x5fd728 — __ZThn32_NK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE12getClassNameEv
-pub fn stub_0x5fd728() { todo!("0x5fd728") }
-
-#[doc(alias="__ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorD1Ev")]
-// 0x5fe178 — __ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorD1Ev
-pub fn stub_0x5fe178() { todo!("0x5fe178") }
-
-#[doc(alias="RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::~EnumDesc()")]
-// 0x5fe180 — __ZN3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEED0Ev
-pub fn stub_0x5fe180() { todo!("0x5fe180") }
-
-#[doc(alias="RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::lookup(char const*)const")]
-// 0x5fe220 — __ZNK3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEE6lookupEPKc
-pub fn stub_0x5fe220() { todo!("0x5fe220") }
-
-#[doc(alias="RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::lookup(RBX::Reflection::Variant const&)const")]
-// 0x5fe250 — __ZNK3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEE6lookupERKNS0_7VariantE
-pub fn stub_0x5fe250() { todo!("0x5fe250") }
-
-#[doc(alias="RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-// 0x5fe270 — __ZNK3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEE14convertToValueEmRNS0_7VariantE
-pub fn stub_0x5fe270() { todo!("0x5fe270") }
-
-#[doc(alias="RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::convertToString(RBX::StarterGuiService::CoreGuiType const&)const")]
-// 0x5fe2a8 — __ZNK3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEE15convertToStringERKS3_
-pub fn stub_0x5fe2a8() { todo!("0x5fe2a8") }
-
-#[doc(alias="RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::convertToValue(RBX::Name const&,RBX::StarterGuiService::CoreGuiType&)const")]
-// 0x5fe600 — __ZNK3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEE14convertToValueERKNS_4NameERS3_
-pub fn stub_0x5fe600() { todo!("0x5fe600") }
-
-#[doc(alias="__ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorD2Ev")]
-// 0x5fe67c — __ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorD2Ev
-pub fn stub_0x5fe67c() { todo!("0x5fe67c") }
-
-#[doc(alias="__ZNK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7Creator12getClassNameEv")]
-// 0x5fe718 — __ZNK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7Creator12getClassNameEv
-pub fn stub_0x5fe718() { todo!("0x5fe718") }
-
-#[doc(alias="__ZNK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7Creator6createEv")]
-// 0x5fe7a0 — __ZNK3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7Creator6createEv
-pub fn stub_0x5fe7a0() { todo!("0x5fe7a0") }
-
-#[doc(alias="rbx_core::SharedPtr<RBX::PlayerGui> RBX::Creatable<RBX::Instance>::create<RBX::PlayerGui>(void)")]
-// 0x5fe8e4 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9PlayerGuiEEEN5boost10shared_ptrIT_EEv
-pub fn stub_0x5fe8e4() { todo!("0x5fe8e4") }
-
-#[doc(alias="rbx_core::SharedPtr<RBX::PlayerGui>::shared_ptr<RBX::PlayerGui,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter)")]
-// 0x5fe998 — __ZN5boost10shared_ptrIN3RBX9PlayerGuiEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-pub fn stub_0x5fe998() { todo!("0x5fe998") }
-
-#[doc(alias="void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PlayerGui,RBX::PlayerGui>(rbx_core::SharedPtr<RBX::PlayerGui> const*,RBX::PlayerGui *)const")]
-// 0x5fea60 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9PlayerGuiES6_EEvPKNS_10shared_ptrIT_EEPT0_
-pub fn stub_0x5fea60() { todo!("0x5fea60") }
-
-#[doc(alias="boost::detail::shared_count::shared_count<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter)")]
-// 0x5feb48 — __ZN5boost6detail12shared_countC2IPN3RBX9PlayerGuiENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
-pub fn stub_0x5feb48() { todo!("0x5feb48") }
-
-#[doc(alias="boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-// 0x5fec50 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9PlayerGuiENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
-pub fn stub_0x5fec50() { todo!("0x5fec50") }
-
-#[doc(alias="boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-// 0x5fec54 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9PlayerGuiENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-pub fn stub_0x5fec54() { todo!("0x5fec54") }
-
-#[doc(alias="boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-// 0x5fec58 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9PlayerGuiENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
-pub fn stub_0x5fec58() { todo!("0x5fec58") }
-
-#[doc(alias="boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-// 0x5fec7c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9PlayerGuiENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
-pub fn stub_0x5fec7c() { todo!("0x5fec7c") }
-
-#[doc(alias="boost::detail::sp_counted_impl_pd<RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-// 0x5fec94 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9PlayerGuiENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
-pub fn stub_0x5fec94() { todo!("0x5fec94") }
-
-#[doc(alias="__ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorC2Ev")]
-// 0x5fed80 — __ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE7CreatorC2Ev
-pub fn stub_0x5fed80() { todo!("0x5fed80") }
-
-#[doc(alias="__ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE17static_getCreatorEv")]
-// 0x5fefc8 — __ZN3RBX14FactoryProductINS_9PlayerGuiENS_13BasePlayerGuiELZNS_10sPlayerGuiEENS_8InstanceEE17static_getCreatorEv
-pub fn stub_0x5fefc8() { todo!("0x5fefc8") }
-
-#[doc(alias="__ZN3RBX10Reflection9DescribedINS_9TextLabelELZNS_10sTextLabelEENS_14FactoryProductIS2_NS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-// 0x5ff120 — __ZN3RBX10Reflection9DescribedINS_9TextLabelELZNS_10sTextLabelEENS_14FactoryProductIS2_NS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_0x5ff120() { todo!("0x5ff120") }
-
-#[doc(alias="__ZN3RBX10Reflection9DescribedINS_8GuiLabelELZNS_9sGuiLabelEENS_17NonFactoryProductINS_9GuiObjectELZNS_9sGuiLabelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-// 0x5ff240 — __ZN3RBX10Reflection9DescribedINS_8GuiLabelELZNS_9sGuiLabelEENS_17NonFactoryProductINS_9GuiObjectELZNS_9sGuiLabelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_0x5ff240() { todo!("0x5ff240") }
-
-#[doc(alias="__ZN3RBX10Reflection9DescribedINS_5FrameELZNS_6sFrameEENS_14FactoryProductIS2_NS_9GuiObjectELZNS_6sFrameEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-// 0x5ff360 — __ZN3RBX10Reflection9DescribedINS_5FrameELZNS_6sFrameEENS_14FactoryProductIS2_NS_9GuiObjectELZNS_6sFrameEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_0x5ff360() { todo!("0x5ff360") }
-
-#[doc(alias="rbx_core::SharedPtr<RBX::TextLabel>::shared_ptr<RBX::TextLabel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TextLabel *,RBX::Creatable<RBX::Instance>::Deleter)")]
-// 0x5ff480 — __ZN5boost10shared_ptrIN3RBX9TextLabelEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-pub fn stub_0x5ff480() { todo!("0x5ff480") }
-
-#[doc(alias="void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextLabel,RBX::TextLabel>(rbx_core::SharedPtr<RBX::TextLabel> const*,RBX::TextLabel *)const")]
-// 0x5ff548 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9TextLabelES6_EEvPKNS_10shared_ptrIT_EEPT0_
-pub fn stub_0x5ff548() { todo!("0x5ff548") }
-
-#[doc(alias="boost::detail::shared_count::shared_count<RBX::TextLabel *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TextLabel *,RBX::Creatable<RBX::Instance>::Deleter)")]
-// 0x5ff630 — __ZN5boost6detail12shared_countC2IPN3RBX9TextLabelENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
-pub fn stub_0x5ff630() { todo!("0x5ff630") }
-
-#[doc(alias="boost::detail::sp_counted_impl_pd<RBX::TextLabel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-// 0x5ff738 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9TextLabelENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
-pub fn stub_0x5ff738() { todo!("0x5ff738") }
-
-#[doc(alias="boost::detail::sp_counted_impl_pd<RBX::TextLabel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-// 0x5ff73c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9TextLabelENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-pub fn stub_0x5ff73c() { todo!("0x5ff73c") }
-
-#[doc(alias="boost::detail::sp_counted_impl_pd<RBX::TextLabel *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-// 0x5ff740 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9TextLabelENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
-pub fn stub_0x5ff740() { todo!("0x5ff740") }
-
-#[doc(alias="boost::detail::sp_counted_impl_pd<RBX::TextLabel *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-// 0x5ff760 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9TextLabelENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
-pub fn stub_0x5ff760() { todo!("0x5ff760") }
-
-#[doc(alias="boost::detail::sp_counted_impl_pd<RBX::TextLabel *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-// 0x5ff778 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9TextLabelENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
-pub fn stub_0x5ff778() { todo!("0x5ff778") }
-
-#[doc(alias="rbx_core::SharedPtr<RBX::ScreenGui>::shared_ptr<RBX::ScreenGui,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ScreenGui *,RBX::Creatable<RBX::Instance>::Deleter)")]
-// 0x5ff77c — __ZN5boost10shared_ptrIN3RBX9ScreenGuiEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-pub fn stub_0x5ff77c() { todo!("0x5ff77c") }
-
-#[doc(alias="void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ScreenGui,RBX::ScreenGui>(rbx_core::SharedPtr<RBX::ScreenGui> const*,RBX::ScreenGui *)const")]
-// 0x5ff844 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9ScreenGuiES6_EEvPKNS_10shared_ptrIT_EEPT0_
-pub fn stub_0x5ff844() { todo!("0x5ff844") }
-
-#[doc(alias="boost::detail::shared_count::shared_count<RBX::ScreenGui *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ScreenGui *,RBX::Creatable<RBX::Instance>::Deleter)")]
-// 0x5ff92c — __ZN5boost6detail12shared_countC2IPN3RBX9ScreenGuiENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
-pub fn stub_0x5ff92c() { todo!("0x5ff92c") }
-
-#[doc(alias="boost::detail::sp_counted_impl_pd<RBX::ScreenGui *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-// 0x5ffa34 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ScreenGuiENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
-pub fn stub_0x5ffa34() { todo!("0x5ffa34") }
-
-#[doc(alias="boost::detail::sp_counted_impl_pd<RBX::ScreenGui *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-// 0x5ffa38 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ScreenGuiENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-pub fn stub_0x5ffa38() { todo!("0x5ffa38") }
-
-#[doc(alias="boost::detail::sp_counted_impl_pd<RBX::ScreenGui *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-// 0x5ffa3c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ScreenGuiENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
-pub fn stub_0x5ffa3c() { todo!("0x5ffa3c") }
-
-#[doc(alias="boost::detail::sp_counted_impl_pd<RBX::ScreenGui *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-// 0x5ffa5c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ScreenGuiENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
-pub fn stub_0x5ffa5c() { todo!("0x5ffa5c") }
-
-#[doc(alias="boost::detail::sp_counted_impl_pd<RBX::ScreenGui *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-// 0x5ffa74 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ScreenGuiENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
-pub fn stub_0x5ffa74() { todo!("0x5ffa74") }
-
-#[doc(alias="__ZN3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev")]
-// 0x5ffa78 — __ZN3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev
-pub fn stub_0x5ffa78() { todo!("0x5ffa78") }
-
-#[doc(alias="__ZN3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev")]
-// 0x5ffa7c — __ZN3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev
-pub fn stub_0x5ffa7c() { todo!("0x5ffa7c") }
-
-#[doc(alias="__ZThn32_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev")]
-// 0x5ffb1c — __ZThn32_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev
-pub fn stub_0x5ffb1c() { todo!("0x5ffb1c") }
-
-#[doc(alias="__ZThn32_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev")]
-// 0x5ffb24 — __ZThn32_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev
-pub fn stub_0x5ffb24() { todo!("0x5ffb24") }
-
-#[doc(alias="__ZThn36_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev")]
-// 0x5ffbc8 — __ZThn36_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev
-pub fn stub_0x5ffbc8() { todo!("0x5ffbc8") }
-
-#[doc(alias="__ZThn36_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev")]
-// 0x5ffbd0 — __ZThn36_N3RBX10Reflection9DescribedINS_14CoreGuiServiceELZNS_15sCoreGuiServiceEENS_17NonFactoryProductINS_13BasePlayerGuiELZNS_15sCoreGuiServiceEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev
-pub fn stub_0x5ffbd0() { todo!("0x5ffbd0") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::CoreGuiService,int>::PropDescriptor<int (RBX::CoreGuiService::*)(void)const,int>(char const*,char const*,int (RBX::CoreGuiService::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-// 0x5ffc78 — __ZN3RBX10Reflection14PropDescriptorINS_14CoreGuiServiceEiEC2IMS2_KFivEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-pub fn stub_0x5ffc78() { todo!("0x5ffc78") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::CoreGuiService,int>::~PropDescriptor()")]
-// 0x5ffd88 — __ZN3RBX10Reflection14PropDescriptorINS_14CoreGuiServiceEiED0Ev
-pub fn stub_0x5ffd88() { todo!("0x5ffd88") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::CoreGuiService,int>::GetImpl<int (RBX::CoreGuiService::*)(void)const>::isReadOnly(void)const")]
-// 0x5ffdb4 — __ZNK3RBX10Reflection14PropDescriptorINS_14CoreGuiServiceEiE7GetImplIMS2_KFivEE10isReadOnlyEv
-pub fn stub_0x5ffdb4() { todo!("0x5ffdb4") }
-
-#[doc(alias="RBX::Reflection::PropDescriptor<RBX::CoreGuiService,int>::GetImpl<int (RBX::CoreGuiService::*)(void)const>::isWriteOnly(void)const")]
-// 0x5ffdb8 — __ZNK3RBX10Reflection14PropDescriptorINS_14CoreGuiServiceEiE7GetImplIMS2_KFivEE11isWriteOnlyEv
-pub fn stub_0x5ffdb8() { todo!("0x5ffdb8") }
+#[doc(alias="__ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE24safe_static_do_get_mutexEv$shim")]
+// 0xf22d80 — __ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE24safe_static_do_get_mutexEv$shim
+pub fn stub_0xf22d80() { todo!("0xf22d80") }
+
+#[doc(alias="void rbx_core::SharedPtr_add_weak_ref<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
+// 0xf27144 — j___ZN5boost26intrusive_ptr_add_weak_refIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE
+pub fn stub_0xf27144() { todo!("0xf27144") }
+
+#[doc(alias="void rbx_core::SharedPtr_weak_release<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
+// 0xf27154 — j___ZN5boost26intrusive_ptr_weak_releaseIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE
+pub fn stub_0xf27154() { todo!("0xf27154") }
+
+#[doc(alias="boost::mutex::unlock(void)")]
+// 0xf271a4 — j___ZN5boost5mutex6unlockEv
+pub fn stub_0xf271a4() { todo!("0xf271a4") }
+
+#[doc(alias="boost::detail::sp_counted_base::weak_release(void)")]
+// 0xf27224 — j___ZN5boost6detail15sp_counted_base12weak_releaseEv
+pub fn stub_0xf27224() { todo!("0xf27224") }
+
+#[doc(alias="boost::function0<void>::assign_to_own(boost::function0<void> const&)")]
+// 0xf27244 — j___ZN5boost9function0IvE13assign_to_ownERKS1_
+pub fn stub_0xf27244() { todo!("0xf27244") }
+
+#[doc(alias="boost::function0<void>::clear(void)")]
+// 0xf27254 — j___ZN5boost9function0IvE5clearEv
+pub fn stub_0xf27254() { todo!("0xf27254") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone(void)const")]
+// 0xf27294 — j___ZNK5boost16exception_detail10clone_implINS0_10bad_alloc_EE5cloneEv
+pub fn stub_0xf27294() { todo!("0xf27294") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone(void)const")]
+// 0xf272a4 — j___ZNK5boost16exception_detail10clone_implINS0_14bad_exception_EE5cloneEv
+pub fn stub_0xf272a4() { todo!("0xf272a4") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone(void)const")]
+// 0xf272b4 — j___ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE5cloneEv
+pub fn stub_0xf272b4() { todo!("0xf272b4") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")]
+// 0xf272c4 — j___ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv
+pub fn stub_0xf272c4() { todo!("0xf272c4") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const")]
+// 0xf272d4 — j___ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE5cloneEv
+pub fn stub_0xf272d4() { todo!("0xf272d4") }
+
+#[doc(alias="boost::unique_lock<boost::recursive_mutex>::lock(void)")]
+// 0xf27394 — j___ZN5boost11unique_lockINS_15recursive_mutexEE4lockEv
+pub fn stub_0xf27394() { todo!("0xf27394") }
+
+#[doc(alias="boost::recursive_mutex::recursive_mutex(void)")]
+// 0xf273a4 — j___ZN5boost15recursive_mutexC2Ev
+pub fn stub_0xf273a4() { todo!("0xf273a4") }
+
+#[doc(alias="std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_allocate_map(unsigned long)")]
+// 0xf273b4 — j___ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE15_M_allocate_mapEm
+pub fn stub_0xf273b4() { todo!("0xf273b4") }
+
+#[doc(alias="std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_create_nodes(boost::function<void ()(void)> ***,boost::function<void ()(void)> ***)")]
+// 0xf273c4 — j___ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE15_M_create_nodesEPPS4_S8_
+pub fn stub_0xf273c4() { todo!("0xf273c4") }
+
+#[doc(alias="std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::_M_initialize_map(unsigned long)")]
+// 0xf273d4 — j___ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EE17_M_initialize_mapEm
+pub fn stub_0xf273d4() { todo!("0xf273d4") }
+
+#[doc(alias="std::_Deque_base<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::~_Deque_base()")]
+// 0xf273e4 — j___ZNSt11_Deque_baseIPN5boost8functionIFvvEEESaIS4_EED2Ev
+pub fn stub_0xf273e4() { todo!("0xf273e4") }
+
+#[doc(alias="std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>>::deque(std::deque<boost::function<void ()(void)> *,std::allocator<boost::function<void ()(void)> *>> const&)")]
+// 0xf27404 — j___ZNSt5dequeIPN5boost8functionIFvvEEESaIS4_EEC2ERKS6_
+pub fn stub_0xf27404() { todo!("0xf27404") }
+
+#[doc(alias="std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **> std::__copy<false,std::random_access_iterator_tag>::copy<std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>>(std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> * const&,boost::function<void ()(void)> * const*>,std::_Deque_iterator<boost::function<void ()(void)> *,boost::function<void ()(void)> *&,boost::function<void ()(void)> **>)")]
+// 0xf27414 — j___ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyISt15_Deque_iteratorIPN5boost8functionIFvvEEERKS8_PS9_ES3_IS8_RS8_PS8_EEET0_T_SH_SG_
+pub fn stub_0xf27414() { todo!("0xf27414") }
+
+#[doc(alias="rbx::signals::signal<void ()(std::string)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string)>::slot> &)")]
+// 0xf276f4 — j___ZN3rbx7signals6signalIFvSsEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
+pub fn stub_0xf276f4() { todo!("0xf276f4") }
+
+#[doc(alias="rbx_core::SharedPtr<boost::detail::thread_data_base>::operator=(rbx_core::SharedPtr<boost::detail::thread_data_base> const&)")]
+// 0xf28334 — j___ZN5boost10shared_ptrINS_6detail16thread_data_baseEEaSERKS3_
+pub fn stub_0xf28334() { todo!("0xf28334") }
+
+#[doc(alias="rbx_core::SharedPtr<boost::detail::tss_cleanup_function>::operator=(rbx_core::SharedPtr<boost::detail::tss_cleanup_function> const&)")]
+// 0xf28344 — j___ZN5boost10shared_ptrINS_6detail20tss_cleanup_functionEEaSERKS3_
+pub fn stub_0xf28344() { todo!("0xf28344") }
+
+#[doc(alias="boost::detail::future_object_base::mark_finished_internal(boost::unique_lock<boost::mutex> &)")]
+// 0xf28354 — j___ZN5boost6detail18future_object_base22mark_finished_internalERNS_11unique_lockINS_5mutexEEE
+pub fn stub_0xf28354() { todo!("0xf28354") }
+
+#[doc(alias="void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data_base>(rbx_core::SharedPtr<boost::detail::thread_data_base> const*,boost::detail::thread_data_base *)const")]
+// 0xf28364 — j___ZNK5boost23enable_shared_from_thisINS_6detail16thread_data_baseEE22_internal_accept_ownerIS2_S2_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf28364() { todo!("0xf28364") }
+
+#[doc(alias="std::_Rb_tree<void const*,std::pair<void const* const,boost::detail::tss_data_node>,std::_Select1st<std::pair<void const* const,boost::detail::tss_data_node>>,std::less<void const*>,std::allocator<std::pair<void const* const,boost::detail::tss_data_node>>>::_M_create_node(std::pair<void const* const,boost::detail::tss_data_node> const&)")]
+// 0xf28374 — j___ZNSt8_Rb_treeIPKvSt4pairIKS1_N5boost6detail13tss_data_nodeEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE14_M_create_nodeERKS7_
+pub fn stub_0xf28374() { todo!("0xf28374") }
+
+#[doc(alias="std::_Rb_tree<void const*,std::pair<void const* const,boost::detail::tss_data_node>,std::_Select1st<std::pair<void const* const,boost::detail::tss_data_node>>,std::less<void const*>,std::allocator<std::pair<void const* const,boost::detail::tss_data_node>>>::_M_insert_unique(std::pair<void const* const,boost::detail::tss_data_node> const&)")]
+// 0xf28384 — j___ZNSt8_Rb_treeIPKvSt4pairIKS1_N5boost6detail13tss_data_nodeEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE16_M_insert_uniqueERKS7_
+pub fn stub_0xf28384() { todo!("0xf28384") }
+
+#[doc(alias="std::_Rb_tree<void const*,std::pair<void const* const,boost::detail::tss_data_node>,std::_Select1st<std::pair<void const* const,boost::detail::tss_data_node>>,std::less<void const*>,std::allocator<std::pair<void const* const,boost::detail::tss_data_node>>>::erase(std::_Rb_tree_iterator<std::pair<void const* const,boost::detail::tss_data_node>>,std::_Rb_tree_iterator<std::pair<void const* const,boost::detail::tss_data_node>>)")]
+// 0xf28394 — j___ZNSt8_Rb_treeIPKvSt4pairIKS1_N5boost6detail13tss_data_nodeEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE5eraseESt17_Rb_tree_iteratorIS7_ESF_
+pub fn stub_0xf28394() { todo!("0xf28394") }
+
+#[doc(alias="std::_Rb_tree<void const*,std::pair<void const* const,boost::detail::tss_data_node>,std::_Select1st<std::pair<void const* const,boost::detail::tss_data_node>>,std::less<void const*>,std::allocator<std::pair<void const* const,boost::detail::tss_data_node>>>::_M_erase(std::_Rb_tree_node<std::pair<void const* const,boost::detail::tss_data_node>> *)")]
+// 0xf283a4 — j___ZNSt8_Rb_treeIPKvSt4pairIKS1_N5boost6detail13tss_data_nodeEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
+pub fn stub_0xf283a4() { todo!("0xf283a4") }
+
+#[doc(alias="boost::filesystem::filesystem_error::filesystem_error(std::string const&,boost::system::error_code)")]
+// 0xf283b4 — j___ZN5boost10filesystem16filesystem_errorC2ERKSsNS_6system10error_codeE
+pub fn stub_0xf283b4() { todo!("0xf283b4") }
+
+#[doc(alias="boost::filesystem::filesystem_error::filesystem_error(std::string const&,boost::filesystem::path const&,boost::system::error_code)")]
+// 0xf283c4 — j___ZN5boost10filesystem16filesystem_errorC2ERKSsRKNS0_4pathENS_6system10error_codeE
+pub fn stub_0xf283c4() { todo!("0xf283c4") }
+
+#[doc(alias="void boost::detail::sp_pointer_construct<boost::filesystem::filesystem_error::m_imp,boost::filesystem::filesystem_error::m_imp>(rbx_core::SharedPtr<boost::filesystem::filesystem_error::m_imp> *,boost::filesystem::filesystem_error::m_imp *,boost::detail::shared_count &)")]
+// 0xf283d4 — j___ZN5boost6detail20sp_pointer_constructINS_10filesystem16filesystem_error5m_impES4_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+pub fn stub_0xf283d4() { todo!("0xf283d4") }
+
+#[doc(alias="boost::filesystem::path::path<char const*>(char const*,char const*)")]
+// 0xf283e4 — j___ZN5boost10filesystem4pathC2IPKcEET_S5_
+pub fn stub_0xf283e4() { todo!("0xf283e4") }
+
+#[doc(alias="std::locale::locale<boost::filesystem::detail::utf8_codecvt_facet>(std::locale const&,boost::filesystem::detail::utf8_codecvt_facet *)")]
+// 0xf283f4 — j___ZNSt6localeC2IN5boost10filesystem6detail18utf8_codecvt_facetEEERKS_PT_
+pub fn stub_0xf283f4() { todo!("0xf283f4") }
+
+#[doc(alias="boost::date_time::second_clock<boost::posix_time::ptime>::create_time(tm *)")]
+// 0xf28464 — j___ZN5boost9date_time12second_clockINS_10posix_time5ptimeEE11create_timeEP2tm
+pub fn stub_0xf28464() { todo!("0xf28464") }
+
+#[doc(alias="boost::date_time::gregorian_calendar_base<boost::date_time::year_month_day_base<boost::gregorian::greg_year,boost::gregorian::greg_month,boost::gregorian::greg_day>,unsigned int>::from_day_number(unsigned int)")]
+// 0xf28474 — j___ZN5boost9date_time23gregorian_calendar_baseINS0_19year_month_day_baseINS_9gregorian9greg_yearENS3_10greg_monthENS3_8greg_dayEEEjE15from_day_numberEj
+pub fn stub_0xf28474() { todo!("0xf28474") }
+
+#[doc(alias="boost::date_time::counted_time_rep<boost::posix_time::millisec_posix_time_system_config>::date(void)const")]
+// 0xf28484 — j___ZNK5boost9date_time16counted_time_repINS_10posix_time33millisec_posix_time_system_configEE4dateEv
+pub fn stub_0xf28484() { todo!("0xf28484") }
+
+#[doc(alias="void boost::throw_exception<boost::condition_error>(boost::condition_error const&)")]
+// 0xf28494 — j___ZN5boost15throw_exceptionINS_15condition_errorEEEvRKT_
+pub fn stub_0xf28494() { todo!("0xf28494") }
+
+#[doc(alias="boost::thread_specific_ptr<std::string>::reset(std::string *)")]
+// 0xf284a4 — j___ZN5boost19thread_specific_ptrISsE5resetEPSs
+pub fn stub_0xf284a4() { todo!("0xf284a4") }
+
+#[doc(alias="boost::thread_specific_ptr<std::string>::~thread_specific_ptr()")]
+// 0xf284b4 — j___ZN5boost19thread_specific_ptrISsED2Ev
+pub fn stub_0xf284b4() { todo!("0xf284b4") }
+
+#[doc(alias="void boost::condition_variable_any::wait<boost::unique_lock<boost::mutex>>(boost::unique_lock<boost::mutex> &)")]
+// 0xf284c4 — j___ZN5boost22condition_variable_any4waitINS_11unique_lockINS_5mutexEEEEEvRT_
+pub fn stub_0xf284c4() { todo!("0xf284c4") }
+
+#[doc(alias="boost::condition_variable_any::condition_variable_any(void)")]
+// 0xf284d4 — j___ZN5boost22condition_variable_anyC2Ev
+pub fn stub_0xf284d4() { todo!("0xf284d4") }
+
+#[doc(alias="boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>)")]
+// 0xf28504 — j___ZN5boost3_bi5list2INS0_5valueINS_9function0IvEEEENS2_ISsEEEC2ES5_S6_
+pub fn stub_0xf28504() { todo!("0xf28504") }
+
+#[doc(alias="boost::_bi::storage2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>)")]
+// 0xf28534 — j___ZN5boost3_bi8storage2INS0_5valueINS_9function0IvEEEENS2_ISsEEEC2ES5_S6_
+pub fn stub_0xf28534() { todo!("0xf28534") }
+
+#[doc(alias="boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list_av_2<boost::function0<void>,std::string>::type> boost::bind<void,boost::function0<void> const&,std::string,boost::function0<void>,std::string>(void (*)(boost::function0<void> const&,std::string),boost::function0<void>,std::string)")]
+// 0xf28554 — j___ZN5boost4bindIvRKNS_9function0IvEESsS2_SsEENS_3_bi6bind_tIT_PFS7_T0_T1_ENS5_9list_av_2IT2_T3_E4typeEEESB_SD_SE_
+pub fn stub_0xf28554() { todo!("0xf28554") }
+
+#[doc(alias="boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+// 0xf28584 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRKNS_9function0IvEESsENS3_5list2INS3_5valueIS6_EENSC_ISsEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+pub fn stub_0xf28584() { todo!("0xf28584") }
+
+#[doc(alias="void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>)")]
+// 0xf285a4 — j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvRKS1_SsENS3_5list2INS3_5valueIS1_EENSA_ISsEEEEEEEEvT_
+pub fn stub_0xf285a4() { todo!("0xf285a4") }
+
+#[doc(alias="bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+// 0xf285c4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvRKNS_9function0IvEESsENS5_5list2INS5_5valueIS8_EENSE_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+pub fn stub_0xf285c4() { todo!("0xf285c4") }
+
+#[doc(alias="boost::condition_variable::do_wait_until(boost::unique_lock<boost::mutex> &,timespec const&)")]
+// 0xf285d4 — j___ZN5boost18condition_variable13do_wait_untilERNS_11unique_lockINS_5mutexEEERK8timespec
+pub fn stub_0xf285d4() { todo!("0xf285d4") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>> const&)")]
+// 0xf28654 — j___ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEEC1ERKS5_
+pub fn stub_0xf28654() { todo!("0xf28654") }
+
+#[doc(alias="boost::condition_variable::condition_variable(void)")]
+// 0xf28664 — j___ZN5boost18condition_variableC2Ev
+pub fn stub_0xf28664() { todo!("0xf28664") }
+
+#[doc(alias="void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data<boost::function0<void>>>(rbx_core::SharedPtr<boost::detail::thread_data_base> const*,boost::detail::thread_data<boost::function0<void>> *)const")]
+// 0xf286a4 — j___ZNK5boost23enable_shared_from_thisINS_6detail16thread_data_baseEE22_internal_accept_ownerIS2_NS1_11thread_dataINS_9function0IvEEEEEEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf286a4() { todo!("0xf286a4") }
+
+#[doc(alias="boost::circular_buffer<double,std::allocator<double>>::allocate(unsigned long)")]
+// 0xf28744 — j___ZN5boost15circular_bufferIdSaIdEE8allocateEm
+pub fn stub_0xf28744() { todo!("0xf28744") }
+
+#[doc(alias="boost::detail::shared_count::shared_count<boost::circular_buffer<double,std::allocator<double>>>(boost::circular_buffer<double,std::allocator<double>> *)")]
+// 0xf28754 — j___ZN5boost6detail12shared_countC2INS_15circular_bufferIdSaIdEEEEEPT_
+pub fn stub_0xf28754() { todo!("0xf28754") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::rethrow(void)const")]
+// 0xf28764 — j___ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEE7rethrowEv
+pub fn stub_0xf28764() { todo!("0xf28764") }
+
+#[doc(alias="boost::circular_buffer<double,std::allocator<double>>::set_capacity(unsigned long)")]
+// 0xf28814 — j___ZN5boost15circular_bufferIdSaIdEE12set_capacityEm
+pub fn stub_0xf28814() { todo!("0xf28814") }
+
+#[doc(alias="void boost::throw_exception<boost::gregorian::bad_month>(boost::gregorian::bad_month const&)")]
+// 0xf28824 — j___ZN5boost15throw_exceptionINS_9gregorian9bad_monthEEEvRKT_
+pub fn stub_0xf28824() { todo!("0xf28824") }
+
+#[doc(alias="void boost::throw_exception<std::runtime_error>(std::runtime_error const&)")]
+// 0xf28834 — j___ZN5boost15throw_exceptionISt13runtime_errorEEvRKT_
+pub fn stub_0xf28834() { todo!("0xf28834") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>>::clone_impl(boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month> const&)")]
+// 0xf28844 — j___ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian16bad_day_of_monthEEEEC1ERKS5_
+pub fn stub_0xf28844() { todo!("0xf28844") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>>::clone_tag)")]
+// 0xf28854 — j___ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian16bad_day_of_monthEEEEC1ERKS6_NS6_9clone_tagE
+pub fn stub_0xf28854() { todo!("0xf28854") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::clone_impl(boost::exception_detail::error_info_injector<boost::gregorian::bad_year> const&)")]
+// 0xf28864 — j___ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEEC1ERKS5_
+pub fn stub_0xf28864() { todo!("0xf28864") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::clone_tag)")]
+// 0xf28874 — j___ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEEC1ERKS6_NS6_9clone_tagE
+pub fn stub_0xf28874() { todo!("0xf28874") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>> const&)")]
+// 0xf28884 — j___ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEEC1ERKS6_
+pub fn stub_0xf28884() { todo!("0xf28884") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::clone_tag)")]
+// 0xf28894 — j___ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEEC1ERKS6_NS6_9clone_tagE
+pub fn stub_0xf28894() { todo!("0xf28894") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>> const&)")]
+// 0xf288a4 — j___ZN5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEEC1ERKS5_
+pub fn stub_0xf288a4() { todo!("0xf288a4") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::clone_tag)")]
+// 0xf288b4 — j___ZN5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEEC1ERKS5_NS5_9clone_tagE
+pub fn stub_0xf288b4() { todo!("0xf288b4") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::clone_tag)")]
+// 0xf288c4 — j___ZN5boost16exception_detail10clone_implINS0_19error_info_injectorISt13runtime_errorEEEC1ERKS5_NS5_9clone_tagE
+pub fn stub_0xf288c4() { todo!("0xf288c4") }
+
+#[doc(alias="boost::CV::simple_exception_policy<unsigned short,(unsigned short)1400,(unsigned short)10000,boost::gregorian::bad_year>::on_error(unsigned short,unsigned short,boost::CV::violation_enum)")]
+// 0xf288e4 — j___ZN5boost2CV23simple_exception_policyItLt1400ELt10000ENS_9gregorian8bad_yearEE8on_errorEttNS0_14violation_enumE
+pub fn stub_0xf288e4() { todo!("0xf288e4") }
+
+#[doc(alias="boost::CV::simple_exception_policy<unsigned short,(unsigned short)1,(unsigned short)12,boost::gregorian::bad_month>::on_error(unsigned short,unsigned short,boost::CV::violation_enum)")]
+// 0xf288f4 — j___ZN5boost2CV23simple_exception_policyItLt1ELt12ENS_9gregorian9bad_monthEE8on_errorEttNS0_14violation_enumE
+pub fn stub_0xf288f4() { todo!("0xf288f4") }
+
+#[doc(alias="boost::CV::simple_exception_policy<unsigned short,(unsigned short)1,(unsigned short)31,boost::gregorian::bad_day_of_month>::on_error(unsigned short,unsigned short,boost::CV::violation_enum)")]
+// 0xf28904 — j___ZN5boost2CV23simple_exception_policyItLt1ELt31ENS_9gregorian16bad_day_of_monthEE8on_errorEttNS0_14violation_enumE
+pub fn stub_0xf28904() { todo!("0xf28904") }
+
+#[doc(alias="void boost::_bi::list2<boost::arg<1>,boost::_bi::value<double>>::operator()<void (*)(rbx_core::SharedPtr<RBX::TaskScheduler::Job>,double),boost::_bi::list1<rbx_core::SharedPtr<RBX::TaskScheduler::Job>&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::TaskScheduler::Job>,double) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::TaskScheduler::Job>&> &,int)")]
+// 0xf28924 — j___ZN5boost3_bi5list2INS_3argILi1EEENS0_5valueIdEEEclIPFvNS_10shared_ptrIN3RBX13TaskScheduler3JobEEEdENS0_5list1IRSC_EEEEvNS0_4typeIvEERT_RT0_i
+pub fn stub_0xf28924() { todo!("0xf28924") }
+
+#[doc(alias="boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::TaskScheduler::Thread>,boost::_bi::list_av_1<rbx_core::SharedPtr<RBX::TaskScheduler::Thread>>::type> boost::bind<void,RBX::TaskScheduler::Thread,rbx_core::SharedPtr<RBX::TaskScheduler::Thread>>(void (RBX::TaskScheduler::Thread::*)(void),rbx_core::SharedPtr<RBX::TaskScheduler::Thread>)")]
+// 0xf28934 — j___ZN5boost4bindIvN3RBX13TaskScheduler6ThreadENS_10shared_ptrIS3_EEEENS_3_bi6bind_tIT_NS_4_mfi3mf0IS8_T0_EENS6_9list_av_1IT1_E4typeEEEMSB_FS8_vESE_
+pub fn stub_0xf28934() { todo!("0xf28934") }
+
+#[doc(alias="boost::detail::shared_count::shared_count<RBX::TaskScheduler::Thread>(RBX::TaskScheduler::Thread *)")]
+// 0xf28944 — j___ZN5boost6detail12shared_countC2IN3RBX13TaskScheduler6ThreadEEEPT_
+pub fn stub_0xf28944() { todo!("0xf28944") }
+
+#[doc(alias="boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::TaskScheduler::Thread>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::TaskScheduler::Thread>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+// 0xf28954 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13TaskScheduler6ThreadEEENS3_5list1INS3_5valueINS_10shared_ptrIS9_EEEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+pub fn stub_0xf28954() { todo!("0xf28954") }
+
+#[doc(alias="boost::thread::timed_join(boost::posix_time::ptime const&)")]
+// 0xf28964 — j___ZN5boost6thread10timed_joinERKNS_10posix_time5ptimeE
+pub fn stub_0xf28964() { todo!("0xf28964") }
+
+#[doc(alias="boost::thread::do_try_join_until(timespec const&)")]
+// 0xf28974 — j___ZN5boost6thread17do_try_join_untilERK8timespec
+pub fn stub_0xf28974() { todo!("0xf28974") }
+
+#[doc(alias="boost::date_time::counted_time_system<boost::date_time::counted_time_rep<boost::posix_time::millisec_posix_time_system_config>>::subtract_times(boost::date_time::counted_time_rep<boost::posix_time::millisec_posix_time_system_config> const&,boost::date_time::counted_time_rep<boost::posix_time::millisec_posix_time_system_config> const&)")]
+// 0xf28984 — j___ZN5boost9date_time19counted_time_systemINS0_16counted_time_repINS_10posix_time33millisec_posix_time_system_configEEEE14subtract_timesERKS5_S8_
+pub fn stub_0xf28984() { todo!("0xf28984") }
+
+#[doc(alias="boost::date_time::counted_time_system<boost::date_time::counted_time_rep<boost::posix_time::millisec_posix_time_system_config>>::add_time_duration(boost::date_time::counted_time_rep<boost::posix_time::millisec_posix_time_system_config> const&,boost::posix_time::time_duration)")]
+// 0xf28994 — j___ZN5boost9date_time19counted_time_systemINS0_16counted_time_repINS_10posix_time33millisec_posix_time_system_configEEEE17add_time_durationERKS5_NS3_13time_durationE
+pub fn stub_0xf28994() { todo!("0xf28994") }
+
+#[doc(alias="void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::TaskScheduler::Thread>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::TaskScheduler::Thread>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::TaskScheduler::Thread>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::TaskScheduler::Thread>>>>)")]
+// 0xf289a4 — j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13TaskScheduler6ThreadEEENS3_5list1INS3_5valueINS_10shared_ptrIS9_EEEEEEEEEEvT_
+pub fn stub_0xf289a4() { todo!("0xf289a4") }
+
+#[doc(alias="boost::gregorian::bad_day_of_month::bad_day_of_month(void)")]
+// 0xf289c4 — j___ZN5boost9gregorian16bad_day_of_monthC2Ev
+pub fn stub_0xf289c4() { todo!("0xf289c4") }
+
+#[doc(alias="boost::gregorian::date::date(boost::gregorian::greg_year,boost::gregorian::greg_month,boost::gregorian::greg_day)")]
+// 0xf289d4 — j___ZN5boost9gregorian4dateC2ENS0_9greg_yearENS0_10greg_monthENS0_8greg_dayE
+pub fn stub_0xf289d4() { todo!("0xf289d4") }
+
+#[doc(alias="boost::gregorian::bad_year::bad_year(void)")]
+// 0xf289e4 — j___ZN5boost9gregorian8bad_yearC2Ev
+pub fn stub_0xf289e4() { todo!("0xf289e4") }
+
+#[doc(alias="boost::gregorian::bad_month::bad_month(void)")]
+// 0xf289f4 — j___ZN5boost9gregorian9bad_monthC2Ev
+pub fn stub_0xf289f4() { todo!("0xf289f4") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::rethrow(void)const")]
+// 0xf28a04 — j___ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEE7rethrowEv
+pub fn stub_0xf28a04() { todo!("0xf28a04") }
+
+#[doc(alias="void boost::enable_shared_from_this<RBX::TaskScheduler::Thread>::_internal_accept_owner<RBX::TaskScheduler::Thread,RBX::TaskScheduler::Thread>(rbx_core::SharedPtr<RBX::TaskScheduler::Thread> const*,RBX::TaskScheduler::Thread *)const")]
+// 0xf28a14 — j___ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler6ThreadEE22_internal_accept_ownerIS3_S3_EEvPKNS_10shared_ptrIT_EEPT0_
+pub fn stub_0xf28a14() { todo!("0xf28a14") }
+
+#[doc(alias="bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::TaskScheduler::Thread>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::TaskScheduler::Thread>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::TaskScheduler::Thread>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::TaskScheduler::Thread>>>>,boost::detail::function::function_buffer &)const")]
+// 0xf28a24 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13TaskScheduler6ThreadEEENS5_5list1INS5_5valueINS_10shared_ptrISB_EEEEEEEEEEbT_RNS1_15function_bufferE
+pub fn stub_0xf28a24() { todo!("0xf28a24") }
+
+#[doc(alias="bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::TaskScheduler::Thread>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::TaskScheduler::Thread>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::TaskScheduler::Thread>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::TaskScheduler::Thread>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+// 0xf28a34 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13TaskScheduler6ThreadEEENS5_5list1INS5_5valueINS_10shared_ptrISB_EEEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+pub fn stub_0xf28a34() { todo!("0xf28a34") }
+
+#[doc(alias="rbx_core::SharedPtr<RBX::TaskScheduler::Job const> * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<rbx_core::SharedPtr<RBX::TaskScheduler::Job const> *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const> *>(rbx_core::SharedPtr<RBX::TaskScheduler::Job const> *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const> *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const> *)")]
+// 0xf28a44 — j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN5boost10shared_ptrIKN3RBX13TaskScheduler3JobEEESA_EET0_T_SC_SB_
+pub fn stub_0xf28a44() { todo!("0xf28a44") }
+
+#[doc(alias="rbx_core::SharedPtr<RBX::TaskScheduler::Job> * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<rbx_core::SharedPtr<RBX::TaskScheduler::Job> *,rbx_core::SharedPtr<RBX::TaskScheduler::Job> *>(rbx_core::SharedPtr<RBX::TaskScheduler::Job> *,rbx_core::SharedPtr<RBX::TaskScheduler::Job> *,rbx_core::SharedPtr<RBX::TaskScheduler::Job> *)")]
+// 0xf28a54 — j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEES9_EET0_T_SB_SA_
+pub fn stub_0xf28a54() { todo!("0xf28a54") }
+
+#[doc(alias="rbx_core::SharedPtr<RBX::TaskScheduler::Thread> * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<rbx_core::SharedPtr<RBX::TaskScheduler::Thread> *,rbx_core::SharedPtr<RBX::TaskScheduler::Thread> *>(rbx_core::SharedPtr<RBX::TaskScheduler::Thread> *,rbx_core::SharedPtr<RBX::TaskScheduler::Thread> *,rbx_core::SharedPtr<RBX::TaskScheduler::Thread> *)")]
+// 0xf28a64 — j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN5boost10shared_ptrIN3RBX13TaskScheduler6ThreadEEES9_EET0_T_SB_SA_
+pub fn stub_0xf28a64() { todo!("0xf28a64") }
+
+#[doc(alias="rbx_core::SharedPtr<RBX::TaskScheduler::Thread> * std::__copy<false,std::random_access_iterator_tag>::copy<rbx_core::SharedPtr<RBX::TaskScheduler::Thread> *,rbx_core::SharedPtr<RBX::TaskScheduler::Thread> *>(rbx_core::SharedPtr<RBX::TaskScheduler::Thread> *,rbx_core::SharedPtr<RBX::TaskScheduler::Thread> *,rbx_core::SharedPtr<RBX::TaskScheduler::Thread> *)")]
+// 0xf28a74 — j___ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyIPN5boost10shared_ptrIN3RBX13TaskScheduler6ThreadEEES9_EET0_T_SB_SA_
+pub fn stub_0xf28a74() { todo!("0xf28a74") }
+
+#[doc(alias="std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>*,std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>>>>,rbx_core::SharedPtr<RBX::TaskScheduler::Job const> const&)")]
+// 0xf28a84 — j___ZNSt6vectorIN5boost10shared_ptrIKN3RBX13TaskScheduler3JobEEESaIS6_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS6_S8_EERKS6_
+pub fn stub_0xf28a84() { todo!("0xf28a84") }
+
+#[doc(alias="std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>>>::push_back(rbx_core::SharedPtr<RBX::TaskScheduler::Job const> const&)")]
+// 0xf28a94 — j___ZNSt6vectorIN5boost10shared_ptrIKN3RBX13TaskScheduler3JobEEESaIS6_EE9push_backERKS6_
+pub fn stub_0xf28a94() { todo!("0xf28a94") }
+
+#[doc(alias="std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Job>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TaskScheduler::Job>*,std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Job>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job>>>>,rbx_core::SharedPtr<RBX::TaskScheduler::Job> const&)")]
+// 0xf28aa4 — j___ZNSt6vectorIN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_
+pub fn stub_0xf28aa4() { todo!("0xf28aa4") }
+
+#[doc(alias="std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Job>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job>>>::push_back(rbx_core::SharedPtr<RBX::TaskScheduler::Job> const&)")]
+// 0xf28ab4 — j___ZNSt6vectorIN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEESaIS5_EE9push_backERKS5_
+pub fn stub_0xf28ab4() { todo!("0xf28ab4") }
+
+#[doc(alias="std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Thread>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Thread>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TaskScheduler::Thread>*,std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Thread>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Thread>>>>,rbx_core::SharedPtr<RBX::TaskScheduler::Thread> const&)")]
+// 0xf28ac4 — j___ZNSt6vectorIN5boost10shared_ptrIN3RBX13TaskScheduler6ThreadEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_
+pub fn stub_0xf28ac4() { todo!("0xf28ac4") }
+
+#[doc(alias="std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Thread>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Thread>>>::push_back(rbx_core::SharedPtr<RBX::TaskScheduler::Thread> const&)")]
+// 0xf28ad4 — j___ZNSt6vectorIN5boost10shared_ptrIN3RBX13TaskScheduler6ThreadEEESaIS5_EE9push_backERKS5_
+pub fn stub_0xf28ad4() { todo!("0xf28ad4") }
+
+#[doc(alias="void boost::algorithm::trim_if<std::string,bool (*)(char)>(std::string &,bool (*)(char))")]
+// 0xf28af4 — j___ZN5boost9algorithm7trim_ifISsPFbcEEEvRT_T0_
+pub fn stub_0xf28af4() { todo!("0xf28af4") }
+
+#[doc(alias="boost::singleton_pool<XmlAttribute,20u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
+// 0xf28f34 — j___ZN5boost14singleton_poolI12XmlAttributeLj20ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
+pub fn stub_0xf28f34() { todo!("0xf28f34") }
+
+#[doc(alias="void boost::throw_exception<boost::thread_resource_error>(boost::thread_resource_error const&)")]
+// 0xf28f44 — j___ZN5boost15throw_exceptionINS_21thread_resource_errorEEEvRKT_
+pub fn stub_0xf28f44() { todo!("0xf28f44") }
+
+#[doc(alias="boost::exception_detail::copy_boost_exception(boost::exception *,boost::exception const*)")]
+// 0xf28f54 — j___ZN5boost16exception_detail20copy_boost_exceptionEPNS_9exceptionEPKS1_
+pub fn stub_0xf28f54() { todo!("0xf28f54") }
+
+#[doc(alias="boost::detail::shared_count::shared_count(boost::detail::shared_count const&)")]
+// 0xf28f64 — j___ZN5boost6detail12shared_countC1ERKS1_
+pub fn stub_0xf28f64() { todo!("0xf28f64") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::rethrow(void)const")]
+// 0xf28f84 — j___ZNK5boost16exception_detail10clone_implINS0_14bad_exception_EE7rethrowEv
+pub fn stub_0xf28f84() { todo!("0xf28f84") }
+
+#[doc(alias="boost::detail::shared_count::shared_count<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> *)")]
+// 0xf28ff4 — j___ZN5boost6detail12shared_countC2INS_16exception_detail10clone_implINS3_10bad_alloc_EEEEEPT_
+pub fn stub_0xf28ff4() { todo!("0xf28ff4") }
+
+#[doc(alias="boost::detail::sp_counted_base::release(void)")]
+// 0xf29004 — j___ZN5boost6detail15sp_counted_base7releaseEv
+pub fn stub_0xf29004() { todo!("0xf29004") }
+
+#[doc(alias="boost::exception_detail::bad_alloc_::~bad_alloc_()")]
+// 0xf29194 — j___ZN5boost16exception_detail10bad_alloc_D2Ev
+pub fn stub_0xf29194() { todo!("0xf29194") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone_tag)")]
+// 0xf291a4 — j___ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEEC1ERKS5_NS5_9clone_tagE
+pub fn stub_0xf291a4() { todo!("0xf291a4") }
+
+#[doc(alias="boost::exception_detail::bad_exception_::~bad_exception_()")]
+// 0xf291b4 — j___ZN5boost16exception_detail14bad_exception_D2Ev
+pub fn stub_0xf291b4() { todo!("0xf291b4") }
+
+#[doc(alias="boost::exception_ptr boost::exception_detail::get_static_exception_object<boost::exception_detail::bad_alloc_>(void)")]
+// 0xf291c4 — j___ZN5boost16exception_detail27get_static_exception_objectINS0_10bad_alloc_EEENS_13exception_ptrEv
+pub fn stub_0xf291c4() { todo!("0xf291c4") }
+
+#[doc(alias="boost::exception_ptr boost::exception_detail::get_static_exception_object<boost::exception_detail::bad_exception_>(void)")]
+// 0xf291d4 — j___ZN5boost16exception_detail27get_static_exception_objectINS0_14bad_exception_EEENS_13exception_ptrEv
+pub fn stub_0xf291d4() { todo!("0xf291d4") }
+
+#[doc(alias="boost::detail::shared_count::shared_count<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> *)")]
+// 0xf291e4 — j___ZN5boost6detail12shared_countC2INS_16exception_detail10clone_implINS3_14bad_exception_EEEEEPT_
+pub fn stub_0xf291e4() { todo!("0xf291e4") }
+
+#[doc(alias="boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::rethrow(void)const")]
+// 0xf29424 — j___ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE7rethrowEv
+pub fn stub_0xf29424() { todo!("0xf29424") }
+
+#[doc(alias="boost::singleton_pool<XmlAttribute,20u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
+// 0xf29744 — j___ZN5boost14singleton_poolI12XmlAttributeLj20ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv
+pub fn stub_0xf29744() { todo!("0xf29744") }
+
+#[doc(alias="boost::simple_segregated_storage<unsigned long>::segregate(void *,unsigned long,unsigned long,void *)")]
+// 0xf29754 — j___ZN5boost25simple_segregated_storageImE9segregateEPvmmS2_
+pub fn stub_0xf29754() { todo!("0xf29754") }
+
+#[doc(alias="boost::pool<boost::default_user_allocator_malloc_free>::release_memory(void)")]
+// 0xf29764 — j___ZN5boost4poolINS_34default_user_allocator_malloc_freeEE14release_memoryEv
+pub fn stub_0xf29764() { todo!("0xf29764") }
+
+#[doc(alias="boost::pool<boost::default_user_allocator_new_delete>::purge_memory(void)")]
+// 0xf2a6d4 — j___ZN5boost4poolINS_33default_user_allocator_new_deleteEE12purge_memoryEv
+pub fn stub_0xf2a6d4() { todo!("0xf2a6d4") }
+
+#[doc(alias="std::_Vector_base<boost::pool<boost::default_user_allocator_new_delete> *,std::allocator<boost::pool<boost::default_user_allocator_new_delete> *>>::_M_allocate(unsigned long)")]
+// 0xf2a6e4 — j___ZNSt12_Vector_baseIPN5boost4poolINS0_33default_user_allocator_new_deleteEEESaIS4_EE11_M_allocateEm
+pub fn stub_0xf2a6e4() { todo!("0xf2a6e4") }
+
+#[doc(alias="std::vector<boost::pool<boost::default_user_allocator_new_delete> *,std::allocator<boost::pool<boost::default_user_allocator_new_delete> *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<boost::pool<boost::default_user_allocator_new_delete> **,std::vector<boost::pool<boost::default_user_allocator_new_delete> *,std::allocator<boost::pool<boost::default_user_allocator_new_delete> *>>>,boost::pool<boost::default_user_allocator_new_delete> * const&)")]
+// 0xf2a6f4 — j___ZNSt6vectorIPN5boost4poolINS0_33default_user_allocator_new_deleteEEESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_
+pub fn stub_0xf2a6f4() { todo!("0xf2a6f4") }
+
+#[doc(alias="std::vector<boost::pool<boost::default_user_allocator_new_delete> *,std::allocator<boost::pool<boost::default_user_allocator_new_delete> *>>::push_back(boost::pool<boost::default_user_allocator_new_delete> * const&)")]
+// 0xf2a704 — j___ZNSt6vectorIPN5boost4poolINS0_33default_user_allocator_new_deleteEEESaIS4_EE9push_backERKS4_
+pub fn stub_0xf2a704() { todo!("0xf2a704") }
+
+#[doc(alias="rbx_core::SharedPtr<RBX::Stats::StatsService> RBX::shared_from<RBX::Stats::StatsService>(RBX::Stats::StatsService*)")]
+// 0xf2afc4 — j___ZN3RBX11shared_fromINS_5Stats12StatsServiceEEEN5boost10shared_ptrIT_EEPS5_
+pub fn stub_0xf2afc4() { todo!("0xf2afc4") }
+
