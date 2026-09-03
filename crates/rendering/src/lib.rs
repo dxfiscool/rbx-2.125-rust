@@ -659,3 +659,4 @@ pub mod generated_watchdog_rend_wdd;
 pub mod generated_watchdog_rend_wdY;
 pub mod generated_watchdog_rend_wdE;
 pub mod generated_watchdog_rend_wdF;
+pub mod generated_watchdog_rend_wdG;
