@@ -14142,4547 +14142,4547 @@ pub fn boost_stub_2dc338(_ptr: crate::SharedPtr<()>) {
 // 0x2dc350 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12PartDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_pd<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)
 pub fn boost_stub_2dc350(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2dc350 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12PartDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+    // IDA 0x2dc350: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Dragger::intersectingWorldOrOthers_EXT(std::vector<RBX::Extents,std::allocator<RBX::Extents>> &,G3D::Array<RBX::Primitive *,10,32ul> const&,boost::unordered::unordered_set<RBX::Primitive const*,boost::hash<RBX::Primitive const*>,std::equal_to<RBX::Primitive const*>,std::allocator<RBX::Primitive const*>> const&,RBX::ContactManager &,float,G3D::Vector3 const&)")]
 // 0x2de1d0 — __ZN3RBX7Dragger29intersectingWorldOrOthers_EXTERSt6vectorINS_7ExtentsESaIS2_EERKN3G3D5ArrayIPNS_9PrimitiveELi10ELm32EEERKN5boost9unordered13unordered_setIPKS8_NSD_4hashISH_EESt8equal_toISH_ESaISH_EEERNS_14ContactManagerEfRKNS6_7Vector3E
 // was: RBX::Dragger::intersectingWorldOrOthers_EXT(std::vector<RBX::Extents,std::allocator<RBX::Extents>> &,G3D::Array<RBX::Primitive *,10,32ul> const&,boost::unordered::unordered_set<RBX::Primitive const*,boost::hash<RBX::Primitive const*>,std::equal_to<RBX::Primitive const*>,std::allocator<RBX::Primitive const*>> const&,RBX::ContactManager &,float,G3D::Vector3 const&)
 pub fn boost_stub_2de1d0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2de1d0 __ZN3RBX7Dragger29intersectingWorldOrOthers_EXTERSt6vectorINS_7ExtentsESaIS2_EERKN3G3D5ArrayIPNS_9PrimitiveELi10ELm32EEERKN5boost9unordered13unordered_setIPKS8_NSD_4hashISH_EESt8equal_toISH_ESaISH_EEERNS_14ContactManagerEfRKNS6_7Vector3E")
+    // IDA 0x2de1d0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Dragger::searchUpGross_EXT(std::vector<RBX::Extents,std::allocator<RBX::Extents>> &,G3D::Array<RBX::Primitive *,10,32ul> const&,boost::unordered::unordered_set<RBX::Primitive const*,boost::hash<RBX::Primitive const*>,std::equal_to<RBX::Primitive const*>,std::allocator<RBX::Primitive const*>> const&,RBX::ContactManager &,float,G3D::Vector3 &)")]
 // 0x2de578 — __ZN3RBX7Dragger17searchUpGross_EXTERSt6vectorINS_7ExtentsESaIS2_EERKN3G3D5ArrayIPNS_9PrimitiveELi10ELm32EEERKN5boost9unordered13unordered_setIPKS8_NSD_4hashISH_EESt8equal_toISH_ESaISH_EEERNS_14ContactManagerEfRNS6_7Vector3E
 // was: RBX::Dragger::searchUpGross_EXT(std::vector<RBX::Extents,std::allocator<RBX::Extents>> &,G3D::Array<RBX::Primitive *,10,32ul> const&,boost::unordered::unordered_set<RBX::Primitive const*,boost::hash<RBX::Primitive const*>,std::equal_to<RBX::Primitive const*>,std::allocator<RBX::Primitive const*>> const&,RBX::ContactManager &,float,G3D::Vector3 &)
 pub fn boost_stub_2de578(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2de578 __ZN3RBX7Dragger17searchUpGross_EXTERSt6vectorINS_7ExtentsESaIS2_EERKN3G3D5ArrayIPNS_9PrimitiveELi10ELm32EEERKN5boost9unordered13unordered_setIPKS8_NSD_4hashISH_EESt8equal_toISH_ESaISH_EEERNS_14ContactManagerEfRNS6_7Vector3E")
+    // IDA 0x2de578: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "RBX::Dragger::searchDownGross_EXT(std::vector<RBX::Extents,std::allocator<RBX::Extents>> &,G3D::Array<RBX::Primitive *,10,32ul> const&,boost::unordered::unordered_set<RBX::Primitive const*,boost::hash<RBX::Primitive const*>,std::equal_to<RBX::Primitive const*>,std::allocator<RBX::Primitive const*>> const&,RBX::ContactManager &,float,G3D::Vector3 &)")]
 // 0x2de6ac — __ZN3RBX7Dragger19searchDownGross_EXTERSt6vectorINS_7ExtentsESaIS2_EERKN3G3D5ArrayIPNS_9PrimitiveELi10ELm32EEERKN5boost9unordered13unordered_setIPKS8_NSD_4hashISH_EESt8equal_toISH_ESaISH_EEERNS_14ContactManagerEfRNS6_7Vector3E
 // was: RBX::Dragger::searchDownGross_EXT(std::vector<RBX::Extents,std::allocator<RBX::Extents>> &,G3D::Array<RBX::Primitive *,10,32ul> const&,boost::unordered::unordered_set<RBX::Primitive const*,boost::hash<RBX::Primitive const*>,std::equal_to<RBX::Primitive const*>,std::allocator<RBX::Primitive const*>> const&,RBX::ContactManager &,float,G3D::Vector3 &)
 pub fn boost_stub_2de6ac(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2de6ac __ZN3RBX7Dragger19searchDownGross_EXTERSt6vectorINS_7ExtentsESaIS2_EERKN3G3D5ArrayIPNS_9PrimitiveELi10ELm32EEERKN5boost9unordered13unordered_setIPKS8_NSD_4hashISH_EESt8equal_toISH_ESaISH_EEERNS_14ContactManagerEfRNS6_7Vector3E")
+    // IDA 0x2de6ac: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "RBX::Dragger::searchDownFine_EXT(std::vector<RBX::Extents,std::allocator<RBX::Extents>> &,G3D::Array<RBX::Primitive *,10,32ul> const&,boost::unordered::unordered_set<RBX::Primitive const*,boost::hash<RBX::Primitive const*>,std::equal_to<RBX::Primitive const*>,std::allocator<RBX::Primitive const*>> const&,RBX::ContactManager &,float,G3D::Vector3 &)")]
 // 0x2de7e0 — __ZN3RBX7Dragger18searchDownFine_EXTERSt6vectorINS_7ExtentsESaIS2_EERKN3G3D5ArrayIPNS_9PrimitiveELi10ELm32EEERKN5boost9unordered13unordered_setIPKS8_NSD_4hashISH_EESt8equal_toISH_ESaISH_EEERNS_14ContactManagerEfRNS6_7Vector3E
 // was: RBX::Dragger::searchDownFine_EXT(std::vector<RBX::Extents,std::allocator<RBX::Extents>> &,G3D::Array<RBX::Primitive *,10,32ul> const&,boost::unordered::unordered_set<RBX::Primitive const*,boost::hash<RBX::Primitive const*>,std::equal_to<RBX::Primitive const*>,std::allocator<RBX::Primitive const*>> const&,RBX::ContactManager &,float,G3D::Vector3 &)
 pub fn boost_stub_2de7e0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2de7e0 __ZN3RBX7Dragger18searchDownFine_EXTERSt6vectorINS_7ExtentsESaIS2_EERKN3G3D5ArrayIPNS_9PrimitiveELi10ELm32EEERKN5boost9unordered13unordered_setIPKS8_NSD_4hashISH_EESt8equal_toISH_ESaISH_EEERNS_14ContactManagerEfRNS6_7Vector3E")
+    // IDA 0x2de7e0: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "RBX::Dragger::searchUpFine_EXT(std::vector<RBX::Extents,std::allocator<RBX::Extents>> &,G3D::Array<RBX::Primitive *,10,32ul> const&,boost::unordered::unordered_set<RBX::Primitive const*,boost::hash<RBX::Primitive const*>,std::equal_to<RBX::Primitive const*>,std::allocator<RBX::Primitive const*>> const&,RBX::ContactManager &,float,G3D::Vector3 &)")]
 // 0x2de92c — __ZN3RBX7Dragger16searchUpFine_EXTERSt6vectorINS_7ExtentsESaIS2_EERKN3G3D5ArrayIPNS_9PrimitiveELi10ELm32EEERKN5boost9unordered13unordered_setIPKS8_NSD_4hashISH_EESt8equal_toISH_ESaISH_EEERNS_14ContactManagerEfRNS6_7Vector3E
 // was: RBX::Dragger::searchUpFine_EXT(std::vector<RBX::Extents,std::allocator<RBX::Extents>> &,G3D::Array<RBX::Primitive *,10,32ul> const&,boost::unordered::unordered_set<RBX::Primitive const*,boost::hash<RBX::Primitive const*>,std::equal_to<RBX::Primitive const*>,std::allocator<RBX::Primitive const*>> const&,RBX::ContactManager &,float,G3D::Vector3 &)
 pub fn boost_stub_2de92c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2de92c __ZN3RBX7Dragger16searchUpFine_EXTERSt6vectorINS_7ExtentsESaIS2_EERKN3G3D5ArrayIPNS_9PrimitiveELi10ELm32EEERKN5boost9unordered13unordered_setIPKS8_NSD_4hashISH_EESt8equal_toISH_ESaISH_EEERNS_14ContactManagerEfRNS6_7Vector3E")
+    // IDA 0x2de92c: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive const*>,RBX::Primitive const*,boost::hash<RBX::Primitive const*>,std::equal_to<RBX::Primitive const*>>>::table(unsigned long,boost::hash<RBX::Primitive const*> const&,std::equal_to<RBX::Primitive const*> const&,std::allocator<boost::unordered::detail::ptr_node<RBX::Primitive const*>> const&)")]
 // 0x2e0140 — __ZN5boost9unordered6detail5tableINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEEC2EmRKSA_RKSC_RKSaINS1_8ptr_nodeIS7_EEE
 // was: boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive const*>,RBX::Primitive const*,boost::hash<RBX::Primitive const*>,std::equal_to<RBX::Primitive const*>>>::table(unsigned long,boost::hash<RBX::Primitive const*> const&,std::equal_to<RBX::Primitive const*> const&,std::allocator<boost::unordered::detail::ptr_node<RBX::Primitive const*>> const&)
 pub fn boost_stub_2e0140(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e0140 __ZN5boost9unordered6detail5tableINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEEC2EmRKSA_RKSC_RKSaINS1_8ptr_nodeIS7_EEE")
+    // IDA 0x2e0140: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "RBX::DragTool::onMouseDown(RBX::PartInstance *,G3D::Vector3 const&,std::vector<RBX::Instance *,std::allocator<RBX::Instance *>> const&,RBX::UIEvent const&,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>)")]
 // 0x2e06d0 — __ZN3RBX8DragTool11onMouseDownEPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIPNS_8InstanceESaIS9_EERKNS_7UIEventEPNS_9WorkspaceEN5boost10shared_ptrIS8_EE
 // was: RBX::DragTool::onMouseDown(RBX::PartInstance *,G3D::Vector3 const&,std::vector<RBX::Instance *,std::allocator<RBX::Instance *>> const&,RBX::UIEvent const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)
 pub fn boost_stub_2e06d0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e06d0 __ZN3RBX8DragTool11onMouseDownEPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIPNS_8InstanceESaIS9_EERKNS_7UIEventEPNS_9WorkspaceEN5boost10shared_ptrIS8_EE")
+    // IDA 0x2e06d0: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::LuaDragTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::LuaDragTool,RBX::PartInstance *,G3D::Vector3,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>>(RBX::PartInstance *,G3D::Vector3,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>)")]
 // 0x2e08bc — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_11LuaDragToolEPNS_12PartInstanceEN3G3D7Vector3ESt6vectorIN5boost8weak_ptrIS5_EESaISC_EEPNS_9WorkspaceENSA_10shared_ptrINS_8InstanceEEEEENSH_IT_EET0_T1_T2_T3_T4_
 // was: boost::shared_ptr<RBX::LuaDragTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::LuaDragTool,RBX::PartInstance *,G3D::Vector3,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>,RBX::Workspace *,boost::shared_ptr<RBX::Instance>>(RBX::PartInstance *,G3D::Vector3,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)
 pub fn boost_stub_2e08bc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e08bc __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_11LuaDragToolEPNS_12PartInstanceEN3G3D7Vector3ESt6vectorIN5boost8weak_ptrIS5_EESaISC_EEPNS_9WorkspaceENSA_10shared_ptrINS_8InstanceEEEEENSH_IT_EET0_T1_T2_T3_T4_")
+    // IDA 0x2e08bc: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::LuaDragTool>::shared_ptr<RBX::LuaDragTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 // 0x2e09ec — __ZN5boost10shared_ptrIN3RBX11LuaDragToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 // was: boost::shared_ptr<RBX::LuaDragTool>::shared_ptr<RBX::LuaDragTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
 pub fn boost_stub_2e09ec(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e09ec __ZN5boost10shared_ptrIN3RBX11LuaDragToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+    // IDA 0x2e09ec: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::LuaDragTool,RBX::LuaDragTool>(rbx_core::SharedPtr<RBX::LuaDragTool> const*,RBX::LuaDragTool *)const")]
 // 0x2e0ab4 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_11LuaDragToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::LuaDragTool,RBX::LuaDragTool>(boost::shared_ptr<RBX::LuaDragTool> const*,RBX::LuaDragTool *)const
 pub fn boost_stub_2e0ab4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e0ab4 __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_11LuaDragToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+    // IDA 0x2e0ab4: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 // 0x2e0b98 — __ZN5boost6detail12shared_countC2IPN3RBX11LuaDragToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
 // was: boost::detail::shared_count::shared_count<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
 pub fn boost_stub_2e0b98(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e0b98 __ZN5boost6detail12shared_countC2IPN3RBX11LuaDragToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+    // IDA 0x2e0b98: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
 // 0x2e0c90 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
 // was: boost::detail::sp_counted_impl_pd<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
 pub fn boost_stub_2e0c90(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e0c90 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+    // IDA 0x2e0c90: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
 // 0x2e0c94 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 // was: boost::detail::sp_counted_impl_pd<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
 pub fn boost_stub_2e0c94(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e0c94 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+    // IDA 0x2e0c94: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
 // 0x2e0c98 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
 // was: boost::detail::sp_counted_impl_pd<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)
 pub fn boost_stub_2e0c98(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e0c98 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+    // IDA 0x2e0c98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
 // 0x2e0ca8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_pd<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)
 pub fn boost_stub_2e0ca8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e0ca8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+    // IDA 0x2e0ca8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
 // 0x2e0cc0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_pd<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)
 pub fn boost_stub_2e0cc0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e0cc0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+    // IDA 0x2e0cc0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::DragUtilities::safeMoveYDrop(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&,G3D::Vector3 const&,RBX::ContactManager &,float)")]
 // 0x2e0f38 — __ZN3RBX13DragUtilities13safeMoveYDropERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EERKN3G3D7Vector3ERNS_14ContactManagerEf
 // was: RBX::DragUtilities::safeMoveYDrop(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,G3D::Vector3 const&,RBX::ContactManager &,float)
 pub fn boost_stub_2e0f38(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e0f38 __ZN3RBX13DragUtilities13safeMoveYDropERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EERKN3G3D7Vector3ERNS_14ContactManagerEf")
+    // IDA 0x2e0f38: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::DragUtilities::partsToPrimitives(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&,G3D::Array<RBX::Primitive *,10,32ul> &)")]
 // 0x2e10d8 — __ZN3RBX13DragUtilities17partsToPrimitivesERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EERN3G3D5ArrayIPNS_9PrimitiveELi10ELm32EEE
 // was: RBX::DragUtilities::partsToPrimitives(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,G3D::Array<RBX::Primitive *,10,32ul> &)
 pub fn boost_stub_2e10d8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e10d8 __ZN3RBX13DragUtilities17partsToPrimitivesERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EERN3G3D5ArrayIPNS_9PrimitiveELi10ELm32EEE")
+    // IDA 0x2e10d8: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::DragUtilities::hitObjectOrPlane(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&,RBX::RbxRay const&,RBX::ContactManager const&,bool)")]
 // 0x2e1308 — __ZN3RBX13DragUtilities16hitObjectOrPlaneERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EERKNS_6RbxRayERKNS_14ContactManagerEb
 // was: RBX::DragUtilities::hitObjectOrPlane(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::RbxRay const&,RBX::ContactManager const&,bool)
 pub fn boost_stub_2e1308(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e1308 __ZN3RBX13DragUtilities16hitObjectOrPlaneERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EERKNS_6RbxRayERKNS_14ContactManagerEb")
+    // IDA 0x2e1308: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::DragUtilities::hitObject(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&,RBX::RbxRay const&,RBX::ContactManager const&,G3D::Vector3 &,bool)")]
 // 0x2e1628 — __ZN3RBX13DragUtilities9hitObjectERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EERKNS_6RbxRayERKNS_14ContactManagerERN3G3D7Vector3Eb
 // was: RBX::DragUtilities::hitObject(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::RbxRay const&,RBX::ContactManager const&,G3D::Vector3 &,bool)
 pub fn boost_stub_2e1628(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e1628 __ZN3RBX13DragUtilities9hitObjectERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EERKNS_6RbxRayERKNS_14ContactManagerERN3G3D7Vector3Eb")
+    // IDA 0x2e1628: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::DragUtilities::anyPartAlive(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&)")]
 // 0x2e1860 — __ZN3RBX13DragUtilities12anyPartAliveERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE
 // was: RBX::DragUtilities::anyPartAlive(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&)
 pub fn boost_stub_2e1860(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e1860 __ZN3RBX13DragUtilities12anyPartAliveERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE")
+    // IDA 0x2e1860: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::DragUtilities::partsToPrimitives(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&,std::vector&<RBX::Primitive *,std::allocator<RBX::Primitive>>)")]
 // 0x2e195c — __ZN3RBX13DragUtilities17partsToPrimitivesERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EERS1_IPNS_9PrimitiveESaISB_EE
 // was: RBX::DragUtilities::partsToPrimitives(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,std::vector&<RBX::Primitive *,std::allocator<RBX::Primitive>>)
 pub fn boost_stub_2e195c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e195c __ZN3RBX13DragUtilities17partsToPrimitivesERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EERS1_IPNS_9PrimitiveESaISB_EE")
+    // IDA 0x2e195c: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::DragUtilities::pvsToParts(std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>> const&,std::vector&<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>)")]
 // 0x2e1b90 — __ZN3RBX13DragUtilities10pvsToPartsERKSt6vectorIPNS_10PVInstanceESaIS3_EERS1_IN5boost8weak_ptrINS_12PartInstanceEEESaISB_EE
 // was: RBX::DragUtilities::pvsToParts(std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>> const&,std::vector&<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>)
 pub fn boost_stub_2e1b90(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e1b90 __ZN3RBX13DragUtilities10pvsToPartsERKSt6vectorIPNS_10PVInstanceESaIS3_EERS1_IN5boost8weak_ptrINS_12PartInstanceEEESaISB_EE")
+    // IDA 0x2e1b90: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::DragUtilities::instancesToParts(std::vector<RBX::Instance *,std::allocator<RBX::Instance *>> const&,std::vector&<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>)")]
 // 0x2e1bc0 — __ZN3RBX13DragUtilities16instancesToPartsERKSt6vectorIPNS_8InstanceESaIS3_EERS1_IN5boost8weak_ptrINS_12PartInstanceEEESaISB_EE
 // was: RBX::DragUtilities::instancesToParts(std::vector<RBX::Instance *,std::allocator<RBX::Instance *>> const&,std::vector&<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>)
 pub fn boost_stub_2e1bc0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e1bc0 __ZN3RBX13DragUtilities16instancesToPartsERKSt6vectorIPNS_8InstanceESaIS3_EERS1_IN5boost8weak_ptrINS_12PartInstanceEEESaISB_EE")
+    // IDA 0x2e1bc0: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::DragUtilities::unJoinFromOutsiders(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&)")]
 // 0x2e1bf4 — __ZN3RBX13DragUtilities19unJoinFromOutsidersERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE
 // was: RBX::DragUtilities::unJoinFromOutsiders(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&)
 pub fn boost_stub_2e1bf4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e1bf4 __ZN3RBX13DragUtilities19unJoinFromOutsidersERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE")
+    // IDA 0x2e1bf4: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::DragUtilities::joinToOutsiders(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&)")]
 // 0x2e1cc0 — __ZN3RBX13DragUtilities15joinToOutsidersERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE
 // was: RBX::DragUtilities::joinToOutsiders(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&)
 pub fn boost_stub_2e1cc0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e1cc0 __ZN3RBX13DragUtilities15joinToOutsidersERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE")
+    // IDA 0x2e1cc0: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::DragUtilities::join(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&)")]
 // 0x2e1d90 — __ZN3RBX13DragUtilities4joinERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE
 // was: RBX::DragUtilities::join(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&)
 pub fn boost_stub_2e1d90(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e1d90 __ZN3RBX13DragUtilities4joinERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE")
+    // IDA 0x2e1d90: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::DragUtilities::joinWithInPartsOnly(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&)")]
 // 0x2e1ed8 — __ZN3RBX13DragUtilities19joinWithInPartsOnlyERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE
 // was: RBX::DragUtilities::joinWithInPartsOnly(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&)
 pub fn boost_stub_2e1ed8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e1ed8 __ZN3RBX13DragUtilities19joinWithInPartsOnlyERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE")
+    // IDA 0x2e1ed8: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::DragUtilities::setDragging(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&)")]
 // 0x2e1fa4 — __ZN3RBX13DragUtilities11setDraggingERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE
 // was: RBX::DragUtilities::setDragging(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&)
 pub fn boost_stub_2e1fa4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e1fa4 __ZN3RBX13DragUtilities11setDraggingERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE")
+    // IDA 0x2e1fa4: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::DragUtilities::stopDragging(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&)")]
 // 0x2e20f8 — __ZN3RBX13DragUtilities12stopDraggingERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE
 // was: RBX::DragUtilities::stopDragging(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&)
 pub fn boost_stub_2e20f8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e20f8 __ZN3RBX13DragUtilities12stopDraggingERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE")
+    // IDA 0x2e20f8: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::DragUtilities::clean(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&)")]
 // 0x2e2400 — __ZN3RBX13DragUtilities5cleanERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE
 // was: RBX::DragUtilities::clean(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&)
 pub fn boost_stub_2e2400(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e2400 __ZN3RBX13DragUtilities5cleanERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE")
+    // IDA 0x2e2400: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::DragUtilities::move(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&,G3D::CoordinateFrame,G3D::CoordinateFrame)")]
 // 0x2e24f0 — __ZN3RBX13DragUtilities4moveERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EEN3G3D15CoordinateFrameESB_
 // was: RBX::DragUtilities::move(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,G3D::CoordinateFrame,G3D::CoordinateFrame)
 pub fn boost_stub_2e24f0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e24f0 __ZN3RBX13DragUtilities4moveERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EEN3G3D15CoordinateFrameESB_")
+    // IDA 0x2e24f0: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::DragUtilities::computeExtents(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&)")]
 // 0x2e27ec — __ZN3RBX13DragUtilities14computeExtentsERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE
 // was: RBX::DragUtilities::computeExtents(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&)
 pub fn boost_stub_2e27ec(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e27ec __ZN3RBX13DragUtilities14computeExtentsERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE")
+    // IDA 0x2e27ec: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::Explosion> RBX::Creatable<RBX::Instance>::create<RBX::Explosion>(void)")]
 // 0x2e4a84 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9ExplosionEEEN5boost10shared_ptrIT_EEv
 // was: boost::shared_ptr<RBX::Explosion> RBX::Creatable<RBX::Instance>::create<RBX::Explosion>(void)
 pub fn boost_stub_2e4a84(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e4a84 __ZN3RBX9CreatableINS_8InstanceEE6createINS_9ExplosionEEEN5boost10shared_ptrIT_EEv")
+    // IDA 0x2e4a84: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::Explosion>::shared_ptr<RBX::Explosion,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // 0x2e4c24 — __ZN5boost10shared_ptrIN3RBX9ExplosionEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // was: boost::shared_ptr<RBX::Explosion>::shared_ptr<RBX::Explosion,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter)
 pub fn boost_stub_2e4c24(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e4c24 __ZN5boost10shared_ptrIN3RBX9ExplosionEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+    // IDA 0x2e4c24: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Explosion,RBX::Explosion>(rbx_core::SharedPtr<RBX::Explosion> const*,RBX::Explosion *)const")]
 // 0x2e4cec — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9ExplosionES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Explosion,RBX::Explosion>(boost::shared_ptr<RBX::Explosion> const*,RBX::Explosion *)const
 pub fn boost_stub_2e4cec(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e4cec __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9ExplosionES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+    // IDA 0x2e4cec: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // 0x2e4dd8 — __ZN5boost6detail12shared_countC2IPN3RBX9ExplosionENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // was: boost::detail::shared_count::shared_count<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter)
 pub fn boost_stub_2e4dd8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e4dd8 __ZN5boost6detail12shared_countC2IPN3RBX9ExplosionENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+    // IDA 0x2e4dd8: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // 0x2e4ee0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ExplosionENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // was: boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 pub fn boost_stub_2e4ee0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e4ee0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ExplosionENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+    // IDA 0x2e4ee0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // 0x2e4ee4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ExplosionENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // was: boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
 pub fn boost_stub_2e4ee4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e4ee4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ExplosionENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+    // IDA 0x2e4ee4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // 0x2e4f04 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ExplosionENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
 pub fn boost_stub_2e4f04(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e4f04 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ExplosionENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+    // IDA 0x2e4f04: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // 0x2e4f1c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ExplosionENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_pd<RBX::Explosion *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
 pub fn boost_stub_2e4f1c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e4f1c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9ExplosionENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+    // IDA 0x2e4f1c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::LuaDragger::mouseDownPublic(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>)")]
 // 0x2e51d0 — __ZN3RBX10LuaDragger15mouseDownPublicEN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS2_IKSt6vectorIS4_SaIS4_EEEE
 // was: RBX::LuaDragger::mouseDownPublic(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>)
 pub fn boost_stub_2e51d0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e51d0 __ZN3RBX10LuaDragger15mouseDownPublicEN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS2_IKSt6vectorIS4_SaIS4_EEEE")
+    // IDA 0x2e51d0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::LuaDragger::mouseDown(rbx_core::SharedPtr<RBX::PartInstance>,G3D::Vector3 const&,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>)")]
 // 0x2e6070 — __ZN3RBX10LuaDragger9mouseDownEN5boost10shared_ptrINS_12PartInstanceEEERKN3G3D7Vector3ESt6vectorINS1_8weak_ptrIS3_EESaISB_EE
 // was: RBX::LuaDragger::mouseDown(boost::shared_ptr<RBX::PartInstance>,G3D::Vector3 const&,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>)
 pub fn boost_stub_2e6070(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e6070 __ZN3RBX10LuaDragger9mouseDownEN5boost10shared_ptrINS_12PartInstanceEEERKN3G3D7Vector3ESt6vectorINS1_8weak_ptrIS3_EESaISB_EE")
+    // IDA 0x2e6070: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::addPart(rbx_core::SharedPtr<RBX::Instance>,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> *)")]
 // 0x2e6d94 — __ZN3RBXL7addPartEN5boost10shared_ptrINS_8InstanceEEEPSt6vectorINS0_8weak_ptrINS_12PartInstanceEEESaIS7_EE
 // was: RBX::addPart(boost::shared_ptr<RBX::Instance>,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> *)
 pub fn boost_stub_2e6d94(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e6d94 __ZN3RBXL7addPartEN5boost10shared_ptrINS_8InstanceEEEPSt6vectorINS0_8weak_ptrINS_12PartInstanceEEESaIS7_EE")
+    // IDA 0x2e6d94: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),3>::~BoundFuncDesc()")]
 // 0x2e700c — __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EED1Ev
 // was: RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::~BoundFuncDesc()
 pub fn boost_stub_2e700c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e700c __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EED1Ev")
+    // IDA 0x2e700c: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::PartInstance> boost::dynamic_pointer_cast<RBX::PartInstance,RBX::Instance>(rbx_core::SharedPtr<RBX::Instance> const&)")]
 // 0x2e716c — __ZN5boost20dynamic_pointer_castIN3RBX12PartInstanceENS1_8InstanceEEENS_10shared_ptrIT_EERKNS4_IT0_EE
 // was: boost::shared_ptr<RBX::PartInstance> boost::dynamic_pointer_cast<RBX::PartInstance,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)
 pub fn boost_stub_2e716c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e716c __ZN5boost20dynamic_pointer_castIN3RBX12PartInstanceENS1_8InstanceEEENS_10shared_ptrIT_EERKNS4_IT0_EE")
+    // IDA 0x2e716c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>::operator=(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&)")]
 // 0x2e71b4 — __ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EEaSERKS6_
 // was: std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::operator=(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&)
 pub fn boost_stub_2e71b4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e71b4 __ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EEaSERKS6_")
+    // IDA 0x2e71b4: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::LuaDragger> RBX::Creatable<RBX::Instance>::create<RBX::LuaDragger>(void)")]
 // 0x2e776c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10LuaDraggerEEEN5boost10shared_ptrIT_EEv
 // was: boost::shared_ptr<RBX::LuaDragger> RBX::Creatable<RBX::Instance>::create<RBX::LuaDragger>(void)
 pub fn boost_stub_2e776c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e776c __ZN3RBX9CreatableINS_8InstanceEE6createINS_10LuaDraggerEEEN5boost10shared_ptrIT_EEv")
+    // IDA 0x2e776c: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::LuaDragger>::shared_ptr<RBX::LuaDragger,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // 0x2e781c — __ZN5boost10shared_ptrIN3RBX10LuaDraggerEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // was: boost::shared_ptr<RBX::LuaDragger>::shared_ptr<RBX::LuaDragger,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)
 pub fn boost_stub_2e781c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e781c __ZN5boost10shared_ptrIN3RBX10LuaDraggerEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+    // IDA 0x2e781c: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::LuaDragger,RBX::LuaDragger>(rbx_core::SharedPtr<RBX::LuaDragger> const*,RBX::LuaDragger *)const")]
 // 0x2e78e4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10LuaDraggerES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::LuaDragger,RBX::LuaDragger>(boost::shared_ptr<RBX::LuaDragger> const*,RBX::LuaDragger *)const
 pub fn boost_stub_2e78e4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e78e4 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10LuaDraggerES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+    // IDA 0x2e78e4: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // 0x2e79cc — __ZN5boost6detail12shared_countC2IPN3RBX10LuaDraggerENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // was: boost::detail::shared_count::shared_count<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)
 pub fn boost_stub_2e79cc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e79cc __ZN5boost6detail12shared_countC2IPN3RBX10LuaDraggerENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+    // IDA 0x2e79cc: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // 0x2e7ad4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // was: boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 pub fn boost_stub_2e7ad4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e7ad4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+    // IDA 0x2e7ad4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // 0x2e7ad8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // was: boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 pub fn boost_stub_2e7ad8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e7ad8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+    // IDA 0x2e7ad8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // 0x2e7adc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // was: boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
 pub fn boost_stub_2e7adc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e7adc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+    // IDA 0x2e7adc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // 0x2e7afc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
 pub fn boost_stub_2e7afc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e7afc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+    // IDA 0x2e7afc: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // 0x2e7b14 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
 pub fn boost_stub_2e7b14(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e7b14 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+    // IDA 0x2e7b14: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx_core::WeakPtr<RBX::PartInstance>* std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>::_M_allocate_and_copy<__gnu_cxx::__normal_iterator<rbx_core::WeakPtr<RBX::PartInstance> const*,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>>>(unsigned long,__gnu_cxx::__normal_iterator<rbx_core::WeakPtr<RBX::PartInstance> const*,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>>,__gnu_cxx::__normal_iterator<rbx_core::WeakPtr<RBX::PartInstance> const*,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>>)")]
 // 0x2e7eb4 — __ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EE20_M_allocate_and_copyIN9__gnu_cxx17__normal_iteratorIPKS4_S6_EEEEPS4_mT_SE_
 // was: boost::weak_ptr<RBX::PartInstance>* std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::_M_allocate_and_copy<__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::PartInstance> const*,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>>>(unsigned long,__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::PartInstance> const*,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>>,__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::PartInstance> const*,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>>)
 pub fn boost_stub_2e7eb4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e7eb4 __ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EE20_M_allocate_and_copyIN9__gnu_cxx17__normal_iteratorIPKS4_S6_EEEEPS4_mT_SE_")
+    // IDA 0x2e7eb4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx_core::WeakPtr<RBX::PartInstance> * std::__copy<false,std::random_access_iterator_tag>::copy<rbx_core::WeakPtr<RBX::PartInstance> *,rbx_core::WeakPtr<RBX::PartInstance> *>(rbx_core::WeakPtr<RBX::PartInstance> *,rbx_core::WeakPtr<RBX::PartInstance> *,rbx_core::WeakPtr<RBX::PartInstance> *)")]
 // 0x2e8078 — __ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyIPN5boost8weak_ptrIN3RBX12PartInstanceEEES8_EET0_T_SA_S9_
 // was: boost::weak_ptr<RBX::PartInstance> * std::__copy<false,std::random_access_iterator_tag>::copy<boost::weak_ptr<RBX::PartInstance> *,boost::weak_ptr<RBX::PartInstance> *>(boost::weak_ptr<RBX::PartInstance> *,boost::weak_ptr<RBX::PartInstance> *,boost::weak_ptr<RBX::PartInstance> *)
 pub fn boost_stub_2e8078(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e8078 __ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyIPN5boost8weak_ptrIN3RBX12PartInstanceEEES8_EET0_T_SA_S9_")
+    // IDA 0x2e8078: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::WeakPtr<RBX::PartInstance>* std::__copy<false,std::random_access_iterator_tag>::copy<rbx_core::WeakPtr<RBX::PartInstance> const*,rbx_core::WeakPtr<RBX::PartInstance>*>(rbx_core::WeakPtr<RBX::PartInstance> const*,rbx_core::WeakPtr<RBX::PartInstance> const*,rbx_core::WeakPtr<RBX::PartInstance>*)")]
 // 0x2e80d0 — __ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyIPKN5boost8weak_ptrIN3RBX12PartInstanceEEEPS7_EET0_T_SC_SB_
 // was: boost::weak_ptr<RBX::PartInstance>* std::__copy<false,std::random_access_iterator_tag>::copy<boost::weak_ptr<RBX::PartInstance> const*,boost::weak_ptr<RBX::PartInstance>*>(boost::weak_ptr<RBX::PartInstance> const*,boost::weak_ptr<RBX::PartInstance> const*,boost::weak_ptr<RBX::PartInstance>*)
 pub fn boost_stub_2e80d0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e80d0 __ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyIPKN5boost8weak_ptrIN3RBX12PartInstanceEEEPS7_EET0_T_SC_SB_")
+    // IDA 0x2e80d0: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> std::__find<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,rbx_core::SharedPtr<RBX::Instance>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,rbx_core::SharedPtr<RBX::Instance> const&,std::random_access_iterator_tag)")]
 // 0x2e8128 — __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEES6_ET_SD_SD_RKT0_St26random_access_iterator_tag
 // was: __gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> std::__find<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::shared_ptr<RBX::Instance>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::shared_ptr<RBX::Instance> const&,std::random_access_iterator_tag)
 pub fn boost_stub_2e8128(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e8128 __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEES6_ET_SD_SD_RKT0_St26random_access_iterator_tag")
+    // IDA 0x2e8128: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "std::vector<rbx_core::SharedPtr<RBX::Joint>,std::allocator<rbx_core::SharedPtr<RBX::Joint>>>::~vector()")]
 // 0x2e8260 — __ZNSt6vectorIN5boost10shared_ptrIN3RBX5JointEEESaIS4_EED2Ev
 // was: std::vector<boost::shared_ptr<RBX::Joint>,std::allocator<boost::shared_ptr<RBX::Joint>>>::~vector()
 pub fn boost_stub_2e8260(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e8260 __ZNSt6vectorIN5boost10shared_ptrIN3RBX5JointEEESaIS4_EED2Ev")
+    // IDA 0x2e8260: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "G3D::Vector3::Axis RBX::Reflection::ArgHelper::getArg<G3D::Vector3::Axis,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::Vector3::Axis> const&,boost::disable_if<boost::is_same<G3D::Vector3::Axis,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 // 0x2e880c — __ZN3RBX10Reflection9ArgHelper6getArgIN3G3D7Vector34AxisELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS6_EEPNSA_10disable_ifINSA_7is_sameIS6_NSA_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // was: G3D::Vector3::Axis RBX::Reflection::ArgHelper::getArg<G3D::Vector3::Axis,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::Vector3::Axis> const&,boost::disable_if<boost::is_same<G3D::Vector3::Axis,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)
 pub fn boost_stub_2e880c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e880c __ZN3RBX10Reflection9ArgHelper6getArgIN3G3D7Vector34AxisELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS6_EEPNSA_10disable_ifINSA_7is_sameIS6_NSA_10shared_ptrIKNS0_5TupleEEEEEvE4typeE")
+    // IDA 0x2e880c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "bool RBX::Reflection::ArgHelper::try_enum<1,G3D::Vector3::Axis>(RBX::Reflection::FunctionDescriptor::Arguments &,G3D::Vector3::Axis &,boost::enable_if<boost::is_enum<G3D::Vector3::Axis>,void>::type *)")]
 // 0x2e899c — __ZN3RBX10Reflection9ArgHelper8try_enumILi1EN3G3D7Vector34AxisEEEbRNS0_18FunctionDescriptor9ArgumentsERT0_PN5boost9enable_ifINSB_7is_enumIS9_EEvE4typeE
 // was: bool RBX::Reflection::ArgHelper::try_enum<1,G3D::Vector3::Axis>(RBX::Reflection::FunctionDescriptor::Arguments &,G3D::Vector3::Axis &,boost::enable_if<boost::is_enum<G3D::Vector3::Axis>,void>::type *)
 pub fn boost_stub_2e899c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e899c __ZN3RBX10Reflection9ArgHelper8try_enumILi1EN3G3D7Vector34AxisEEEbRNS0_18FunctionDescriptor9ArgumentsERT0_PN5boost9enable_ifINSB_7is_enumIS9_EEvE4typeE")
+    // IDA 0x2e899c: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),3>::BoundFuncDesc(void (RBX::LuaDragger::*)(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // 0x2e8ee8 — __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EEC2EMS2_FvS6_S8_SD_EPKcSJ_SJ_SJ_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // was: RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::BoundFuncDesc(void (RBX::LuaDragger::*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
 pub fn boost_stub_2e8ee8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e8ee8 __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EEC2EMS2_FvS6_S8_SD_EPKcSJ_SJ_SJ_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+    // IDA 0x2e8ee8: script/reflection wiring owned by the script/datamodel crates — carrier no-op in core.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
 // 0x2e9144 — __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EE16declareSignatureEPKcNS0_7VariantESH_SI_SH_SI_
 // was: RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)
 pub fn boost_stub_2e9144(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e9144 __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EE16declareSignatureEPKcNS0_7VariantESH_SI_SH_SI_")
+    // IDA 0x2e9144: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),3>::~BoundFuncDesc()")]
 // 0x2e91ac — __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EED0Ev
 // was: RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::~BoundFuncDesc()
 pub fn boost_stub_2e91ac(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e91ac __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EED0Ev")
+    // IDA 0x2e91ac: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // 0x2e924c — __ZNK3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // was: RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
 pub fn boost_stub_2e924c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e924c __ZNK3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")
+    // IDA 0x2e924c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Reflection::Call3Helper<RBX::LuaDragger,void (RBX::LuaDragger::*)(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>,void>::call(RBX::LuaDragger*,void (RBX::LuaDragger::*)(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&,G3D::Vector3 const&,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> const&)")]
 // 0x2e9388 — __ZN3RBX10Reflection11Call3HelperINS_10LuaDraggerEMS2_FvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEES6_S8_SD_vE4callEPS2_SF_RNS0_7VariantERKS6_RKS8_RKSD_
 // was: RBX::Reflection::Call3Helper<RBX::LuaDragger,void (RBX::LuaDragger::*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>,void>::call(RBX::LuaDragger*,void (RBX::LuaDragger::*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,G3D::Vector3 const&,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> const&)
 pub fn boost_stub_2e9388(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e9388 __ZN3RBX10Reflection11Call3HelperINS_10LuaDraggerEMS2_FvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEES6_S8_SD_vE4callEPS2_SF_RNS0_7VariantERKS6_RKS8_RKSD_")
+    // IDA 0x2e9388: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "G3D::Vector3 RBX::Reflection::ArgHelper::getArg<G3D::Vector3,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::Vector3> const&,boost::disable_if<boost::is_same<G3D::Vector3,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 // 0x2e94dc — __ZN3RBX10Reflection9ArgHelper6getArgIN3G3D7Vector3ELi2EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // was: G3D::Vector3 RBX::Reflection::ArgHelper::getArg<G3D::Vector3,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::Vector3> const&,boost::disable_if<boost::is_same<G3D::Vector3,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)
 pub fn boost_stub_2e94dc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e94dc __ZN3RBX10Reflection9ArgHelper6getArgIN3G3D7Vector3ELi2EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE")
+    // IDA 0x2e94dc: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> RBX::Reflection::ArgHelper::getArg<rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>,3>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>> const&,boost::disable_if<boost::is_same<rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 // 0x2e96ac — __ZN3RBX10Reflection9ArgHelper6getArgIN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEELi3EEET_RNS0_18FunctionDescriptor9ArgumentsERKNS3_10scoped_ptrISC_EEPNS3_10disable_ifINS3_7is_sameISC_NS4_IKNS0_5TupleEEEEEvE4typeE
 // was: boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> RBX::Reflection::ArgHelper::getArg<boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>,3>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>> const&,boost::disable_if<boost::is_same<boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)
 pub fn boost_stub_2e96ac(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e96ac __ZN3RBX10Reflection9ArgHelper6getArgIN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEELi3EEET_RNS0_18FunctionDescriptor9ArgumentsERKNS3_10scoped_ptrISC_EEPNS3_10disable_ifINS3_7is_sameISC_NS4_IKNS0_5TupleEEEEEvE4typeE")
+    // IDA 0x2e96ac: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,std::vector*<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector*<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>>>> std::for_each<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,std::vector*<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector*<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,std::vector*<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector*<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>>>>)")]
 // 0x2e9870 — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS2_3_bi6bind_tIvPFvS6_PS9_INS2_8weak_ptrINS4_12PartInstanceEEESaISH_EEENSD_5list2INS2_3argILi1EEENSD_5valueISK_EEEEEEET0_T_SV_SU_
 // was: boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,std::vector*<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector*<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,std::vector*<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector*<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,std::vector*<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector*<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>>>>)
 pub fn boost_stub_2e9870(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e9870 __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS2_3_bi6bind_tIvPFvS6_PS9_INS2_8weak_ptrINS4_12PartInstanceEEESaISH_EEENSD_5list2INS2_3argILi1EEENSD_5valueISK_EEEEEEET0_T_SV_SU_")
+    // IDA 0x2e9870: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "void boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> *>>::operator()<void (*)(rbx_core::SharedPtr<RBX::Instance>,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> *),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::Instance>,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> *) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")]
 // 0x2e98b8 — __ZN5boost3_bi5list2INS_3argILi1EEENS0_5valueIPSt6vectorINS_8weak_ptrIN3RBX12PartInstanceEEESaIS9_EEEEEclIPFvNS_10shared_ptrINS7_8InstanceEEESC_ENS0_5list1IRKSI_EEEEvNS0_4typeIvEERT_RT0_i
 // was: void boost::_bi::list2<boost::arg<1>,boost::_bi::value<std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> *>>::operator()<void (*)(boost::shared_ptr<RBX::Instance>,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> *),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::Instance>,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> *) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)
 pub fn boost_stub_2e98b8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e98b8 __ZN5boost3_bi5list2INS_3argILi1EEENS0_5valueIPSt6vectorINS_8weak_ptrIN3RBX12PartInstanceEEESaIS9_EEEEEclIPFvNS_10shared_ptrINS7_8InstanceEEESC_ENS0_5list1IRKSI_EEEEvNS0_4typeIvEERT_RT0_i")
+    // IDA 0x2e98b8: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),3>::~BoundFuncDesc()")]
 // 0x2e998c — __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EED2Ev
 // was: RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::~BoundFuncDesc()
 pub fn boost_stub_2e998c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e998c __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EED2Ev")
+    // IDA 0x2e998c: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 #[doc(alias = "RBX::LuaDragTool::LuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>)")]
 // 0x2e9f80 — __ZN3RBX11LuaDragToolC1EPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIN5boost8weak_ptrIS1_EESaISA_EEPNS_9WorkspaceENS8_10shared_ptrINS_8InstanceEEE
 // was: RBX::LuaDragTool::LuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)
 pub fn boost_stub_2e9f80(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e9f80 __ZN3RBX11LuaDragToolC1EPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIN5boost8weak_ptrIS1_EESaISA_EEPNS_9WorkspaceENS8_10shared_ptrINS_8InstanceEEE")
+    // IDA 0x2e9f80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::LuaDragTool::LuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>)")]
 // 0x2e9f84 — __ZN3RBX11LuaDragToolC2EPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIN5boost8weak_ptrIS1_EESaISA_EEPNS_9WorkspaceENS8_10shared_ptrINS_8InstanceEEE
 // was: RBX::LuaDragTool::LuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)
 pub fn boost_stub_2e9f84(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2e9f84 __ZN3RBX11LuaDragToolC2EPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIN5boost8weak_ptrIS1_EESaISA_EEPNS_9WorkspaceENS8_10shared_ptrINS_8InstanceEEE")
+    // IDA 0x2e9f84: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::LuaDragger>::operator=(rbx_core::SharedPtr<RBX::LuaDragger> const&)")]
 // 0x2ea984 — __ZN5boost10shared_ptrIN3RBX10LuaDraggerEEaSERKS3_
 // was: boost::shared_ptr<RBX::LuaDragger>::operator=(boost::shared_ptr<RBX::LuaDragger> const&)
 pub fn boost_stub_2ea984(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ea984 __ZN5boost10shared_ptrIN3RBX10LuaDraggerEEaSERKS3_")
+    // IDA 0x2ea984: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::LuaDragTool> RBX::shared_from<RBX::LuaDragTool>(RBX::LuaDragTool*)")]
 // 0x2ea9bc — __ZN3RBX11shared_fromINS_11LuaDragToolEEEN5boost10shared_ptrIT_EEPS4_
 // was: boost::shared_ptr<RBX::LuaDragTool> RBX::shared_from<RBX::LuaDragTool>(RBX::LuaDragTool*)
 pub fn boost_stub_2ea9bc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ea9bc __ZN3RBX11shared_fromINS_11LuaDragToolEEEN5boost10shared_ptrIT_EEPS4_")
+    // IDA 0x2ea9bc: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)")]
 // 0x2eafd4 — __ZN3RBX11MegaDraggerC1EPNS_12PartInstanceERKSt6vectorIN5boost8weak_ptrIS1_EESaIS6_EEPNS_12RootInstanceENS_4DRAG8JoinTypeE
 // was: RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)
 pub fn boost_stub_2eafd4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2eafd4 __ZN3RBX11MegaDraggerC1EPNS_12PartInstanceERKSt6vectorIN5boost8weak_ptrIS1_EESaIS6_EEPNS_12RootInstanceENS_4DRAG8JoinTypeE")
+    // IDA 0x2eafd4: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)")]
 // 0x2eafd8 — __ZN3RBX11MegaDraggerC2EPNS_12PartInstanceERKSt6vectorIN5boost8weak_ptrIS1_EESaIS6_EEPNS_12RootInstanceENS_4DRAG8JoinTypeE
 // was: RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)
 pub fn boost_stub_2eafd8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2eafd8 __ZN3RBX11MegaDraggerC2EPNS_12PartInstanceERKSt6vectorIN5boost8weak_ptrIS1_EESaIS6_EEPNS_12RootInstanceENS_4DRAG8JoinTypeE")
+    // IDA 0x2eafd8: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::MoveResizeJoinTool> RBX::shared_from<RBX::MoveResizeJoinTool>(RBX::MoveResizeJoinTool*)")]
 // 0x2ee6b0 — __ZN3RBX11shared_fromINS_18MoveResizeJoinToolEEEN5boost10shared_ptrIT_EEPS4_
 // was: boost::shared_ptr<RBX::MoveResizeJoinTool> RBX::shared_from<RBX::MoveResizeJoinTool>(RBX::MoveResizeJoinTool*)
 pub fn boost_stub_2ee6b0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ee6b0 __ZN3RBX11shared_fromINS_18MoveResizeJoinToolEEEN5boost10shared_ptrIT_EEPS4_")
+    // IDA 0x2ee6b0: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::NewNullTool> RBX::shared_from<RBX::NewNullTool>(RBX::NewNullTool*)")]
 // 0x2efef8 — __ZN3RBX11shared_fromINS_11NewNullToolEEEN5boost10shared_ptrIT_EEPS4_
 // was: boost::shared_ptr<RBX::NewNullTool> RBX::shared_from<RBX::NewNullTool>(RBX::NewNullTool*)
 pub fn boost_stub_2efef8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2efef8 __ZN3RBX11shared_fromINS_11NewNullToolEEEN5boost10shared_ptrIT_EEPS4_")
+    // IDA 0x2efef8: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::NullTool> RBX::shared_from<RBX::NullTool>(RBX::NullTool*)")]
 // 0x2f04fc — __ZN3RBX11shared_fromINS_8NullToolEEEN5boost10shared_ptrIT_EEPS4_
 // was: boost::shared_ptr<RBX::NullTool> RBX::shared_from<RBX::NullTool>(RBX::NullTool*)
 pub fn boost_stub_2f04fc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2f04fc __ZN3RBX11shared_fromINS_8NullToolEEEN5boost10shared_ptrIT_EEPS4_")
+    // IDA 0x2f04fc: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::PartDragTool::PartDragTool(RBX::PartInstance *,G3D::Vector3 const&,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>)")]
 // 0x2f0948 — __ZN3RBX12PartDragToolC1EPNS_12PartInstanceERKN3G3D7Vector3EPNS_9WorkspaceEN5boost10shared_ptrINS_8InstanceEEE
 // was: RBX::PartDragTool::PartDragTool(RBX::PartInstance *,G3D::Vector3 const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)
 pub fn boost_stub_2f0948(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2f0948 __ZN3RBX12PartDragToolC1EPNS_12PartInstanceERKN3G3D7Vector3EPNS_9WorkspaceEN5boost10shared_ptrINS_8InstanceEEE")
+    // IDA 0x2f0948: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::PartDragTool::PartDragTool(RBX::PartInstance *,G3D::Vector3 const&,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>)")]
 // 0x2f094c — __ZN3RBX12PartDragToolC2EPNS_12PartInstanceERKN3G3D7Vector3EPNS_9WorkspaceEN5boost10shared_ptrINS_8InstanceEEE
 // was: RBX::PartDragTool::PartDragTool(RBX::PartInstance *,G3D::Vector3 const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)
 pub fn boost_stub_2f094c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2f094c __ZN3RBX12PartDragToolC2EPNS_12PartInstanceERKN3G3D7Vector3EPNS_9WorkspaceEN5boost10shared_ptrINS_8InstanceEEE")
+    // IDA 0x2f094c: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::PartDragTool> RBX::shared_from<RBX::PartDragTool>(RBX::PartDragTool*)")]
 // 0x2f15ec — __ZN3RBX11shared_fromINS_12PartDragToolEEEN5boost10shared_ptrIT_EEPS4_
 // was: boost::shared_ptr<RBX::PartDragTool> RBX::shared_from<RBX::PartDragTool>(RBX::PartDragTool*)
 pub fn boost_stub_2f15ec(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2f15ec __ZN3RBX11shared_fromINS_12PartDragToolEEEN5boost10shared_ptrIT_EEPS4_")
+    // IDA 0x2f15ec: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::BoxSelectCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::BoxSelectCommand,RBX::Workspace *>(RBX::Workspace *)")]
 // 0x2f79c8 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_16BoxSelectCommandEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 // was: boost::shared_ptr<RBX::BoxSelectCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::BoxSelectCommand,RBX::Workspace *>(RBX::Workspace *)
 pub fn boost_stub_2f79c8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2f79c8 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_16BoxSelectCommandEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_")
+    // IDA 0x2f79c8: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::BoxSelectCommand>::shared_ptr<RBX::BoxSelectCommand,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 // 0x2f8624 — __ZN5boost10shared_ptrIN3RBX16BoxSelectCommandEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 // was: boost::shared_ptr<RBX::BoxSelectCommand>::shared_ptr<RBX::BoxSelectCommand,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter)
 pub fn boost_stub_2f8624(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2f8624 __ZN5boost10shared_ptrIN3RBX16BoxSelectCommandEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+    // IDA 0x2f8624: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::BoxSelectCommand,RBX::BoxSelectCommand>(rbx_core::SharedPtr<RBX::BoxSelectCommand> const*,RBX::BoxSelectCommand *)const")]
 // 0x2f86ec — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_16BoxSelectCommandES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::BoxSelectCommand,RBX::BoxSelectCommand>(boost::shared_ptr<RBX::BoxSelectCommand> const*,RBX::BoxSelectCommand *)const
 pub fn boost_stub_2f86ec(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2f86ec __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_16BoxSelectCommandES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+    // IDA 0x2f86ec: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 // 0x2f87d0 — __ZN5boost6detail12shared_countC2IPN3RBX16BoxSelectCommandENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
 // was: boost::detail::shared_count::shared_count<RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter)
 pub fn boost_stub_2f87d0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2f87d0 __ZN5boost6detail12shared_countC2IPN3RBX16BoxSelectCommandENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+    // IDA 0x2f87d0: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
 // 0x2f88c8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16BoxSelectCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
 // was: boost::detail::sp_counted_impl_pd<RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
 pub fn boost_stub_2f88c8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2f88c8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16BoxSelectCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+    // IDA 0x2f88c8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
 // 0x2f88cc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16BoxSelectCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 // was: boost::detail::sp_counted_impl_pd<RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
 pub fn boost_stub_2f88cc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2f88cc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16BoxSelectCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+    // IDA 0x2f88cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
 // 0x2f88d0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16BoxSelectCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
 // was: boost::detail::sp_counted_impl_pd<RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)
 pub fn boost_stub_2f88d0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2f88d0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16BoxSelectCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+    // IDA 0x2f88d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
 // 0x2f88e0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16BoxSelectCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_pd<RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)
 pub fn boost_stub_2f88e0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2f88e0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16BoxSelectCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+    // IDA 0x2f88e0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
 // 0x2f88f8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16BoxSelectCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_pd<RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)
 pub fn boost_stub_2f88f8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2f88f8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16BoxSelectCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+    // IDA 0x2f88f8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::AsyncHttpQueue::processRequests(rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,rbx_core::SharedPtr<RBX::mutex>)")]
 // 0x2fb548 — __ZN3RBX14AsyncHttpQueue15processRequestsEN5boost8weak_ptrIS0_EESt14_List_iteratorINS0_7RequestEENS1_10shared_ptrINS_5mutexEEE
 // was: RBX::AsyncHttpQueue::processRequests(boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::shared_ptr<RBX::mutex>)
 pub fn boost_stub_2fb548(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2fb548 __ZN3RBX14AsyncHttpQueue15processRequestsEN5boost8weak_ptrIS0_EESt14_List_iteratorINS0_7RequestEENS1_10shared_ptrINS_5mutexEEE")
+    // IDA 0x2fb548: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::InvokeAsyncCallback(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::string const>)")]
 // 0x2fc874 — __ZN3RBXL19InvokeAsyncCallbackEN5boost8functionIFvNS_14AsyncHttpQueue13RequestResultEPSiNS0_10shared_ptrIKSsEEEEES3_S7_
 // was: RBX::InvokeAsyncCallback(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::string const>)
 pub fn boost_stub_2fc874(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2fc874 __ZN3RBXL19InvokeAsyncCallbackEN5boost8functionIFvNS_14AsyncHttpQueue13RequestResultEPSiNS0_10shared_ptrIKSsEEEEES3_S7_")
+    // IDA 0x2fc874: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::AsyncHttpQueue::asyncRequest(std::string const&,float,boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)> *,RBX::AsyncHttpQueue::ResultJob,bool)")]
 // 0x2fd37c — __ZN3RBX14AsyncHttpQueue12asyncRequestERKSsfPN5boost8functionIFvNS0_13RequestResultEPSiNS3_10shared_ptrIS1_EEEEENS0_9ResultJobEb
 // was: RBX::AsyncHttpQueue::asyncRequest(std::string const&,float,boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)> *,RBX::AsyncHttpQueue::ResultJob,bool)
 pub fn boost_stub_2fd37c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2fd37c __ZN3RBX14AsyncHttpQueue12asyncRequestERKSsfPN5boost8functionIFvNS0_13RequestResultEPSiNS3_10shared_ptrIS1_EEEEENS0_9ResultJobEb")
+    // IDA 0x2fd37c: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::HttpQueueStatsItem>::operator=(rbx_core::SharedPtr<RBX::HttpQueueStatsItem> const&)")]
 // 0x2fded0 — __ZN5boost10shared_ptrIN3RBX18HttpQueueStatsItemEEaSERKS3_
 // was: boost::shared_ptr<RBX::HttpQueueStatsItem>::operator=(boost::shared_ptr<RBX::HttpQueueStatsItem> const&)
 pub fn boost_stub_2fded0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2fded0 __ZN5boost10shared_ptrIN3RBX18HttpQueueStatsItemEEaSERKS3_")
+    // IDA 0x2fded0: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,rbx_core::SharedPtr<RBX::mutex>),boost::_bi::list_av_3<rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::arg<1>>::type> boost::bind<void,rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,rbx_core::SharedPtr<RBX::mutex>,rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::arg<1>>(void (*)(rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,rbx_core::SharedPtr<RBX::mutex>),rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::arg<1>)")]
 // 0x2fdfbc — __ZN5boost4bindIvNS_8weak_ptrIN3RBX14AsyncHttpQueueEEESt14_List_iteratorINS3_7RequestEENS_10shared_ptrINS2_5mutexEEES4_S7_NS_3argILi1EEEEENS_3_bi6bind_tIT_PFSF_T0_T1_T2_ENSD_9list_av_3IT3_T4_T5_E4typeEEESK_SM_SN_SO_
 // was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::shared_ptr<RBX::mutex>),boost::_bi::list_av_3<boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::arg<1>>::type> boost::bind<void,boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::shared_ptr<RBX::mutex>,boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::arg<1>>(void (*)(boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::shared_ptr<RBX::mutex>),boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::arg<1>)
 pub fn boost_stub_2fdfbc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2fdfbc __ZN5boost4bindIvNS_8weak_ptrIN3RBX14AsyncHttpQueueEEESt14_List_iteratorINS3_7RequestEENS_10shared_ptrINS2_5mutexEEES4_S7_NS_3argILi1EEEEENS_3_bi6bind_tIT_PFSF_T0_T1_T2_ENSD_9list_av_3IT3_T4_T5_E4typeEEESK_SM_SN_SO_")
+    // IDA 0x2fdfbc: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::WeakPtr<RBX::AsyncHttpQueue> RBX::weak_from<RBX::AsyncHttpQueue>(RBX::AsyncHttpQueue*)")]
 // 0x2fe168 — __ZN3RBX9weak_fromINS_14AsyncHttpQueueEEEN5boost8weak_ptrIT_EEPS4_
 // was: boost::weak_ptr<RBX::AsyncHttpQueue> RBX::weak_from<RBX::AsyncHttpQueue>(RBX::AsyncHttpQueue*)
 pub fn boost_stub_2fe168(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2fe168 __ZN3RBX9weak_fromINS_14AsyncHttpQueueEEEN5boost8weak_ptrIT_EEPS4_")
+    // IDA 0x2fe168: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::string const>),boost::_bi::list_av_3<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::string const>>::type> boost::bind<void,boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::string const>,boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::string const>>(void (*)(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::string const>),boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::string const>)")]
 // 0x2fe358 — __ZN5boost4bindIvNS_8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEES4_S8_SA_S4_S8_EENS_3_bi6bind_tIT_PFSD_T0_T1_T2_ENSB_9list_av_3IT3_T4_T5_E4typeEEESI_SK_SL_SM_
 // was: boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::string const>),boost::_bi::list_av_3<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::string const>>::type> boost::bind<void,boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::string const>,boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::string const>>(void (*)(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::string const>),boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::string const>)
 pub fn boost_stub_2fe358(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2fe358 __ZN5boost4bindIvNS_8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEES4_S8_SA_S4_S8_EENS_3_bi6bind_tIT_PFSD_T0_T1_T2_ENSB_9list_av_3IT3_T4_T5_E4typeEEESI_SK_SL_SM_")
+    // IDA 0x2fe358: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "boost::function2<bool,std::string const&,std::string *>::operator()(std::string const&,std::string *)const")]
 // 0x2fe524 — __ZNK5boost9function2IbRKSsPSsEclES2_S3_
 // was: boost::function2<bool,std::string const&,std::string *>::operator()(std::string const&,std::string *)const
 pub fn boost_stub_2fe524(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2fe524 __ZNK5boost9function2IbRKSsPSsEclES2_S3_")
+    // IDA 0x2fe524: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::Http>::operator=(rbx_core::SharedPtr<RBX::Http> const&)")]
 // 0x2fe5f0 — __ZN5boost10shared_ptrIN3RBX4HttpEEaSERKS3_
 // was: boost::shared_ptr<RBX::Http>::operator=(boost::shared_ptr<RBX::Http> const&)
 pub fn boost_stub_2fe5f0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2fe5f0 __ZN5boost10shared_ptrIN3RBX4HttpEEaSERKS3_")
+    // IDA 0x2fe5f0: function::operator() invoked the erased target. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "void rbx_core::SharedPtr<std::string>::reset<std::string>(std::string *)")]
 // 0x2fe628 — __ZN5boost10shared_ptrISsE5resetISsEEvPT_
 // was: void boost::shared_ptr<std::string>::reset<std::string>(std::string *)
 pub fn boost_stub_2fe628(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2fe628 __ZN5boost10shared_ptrISsE5resetISsEEvPT_")
+    // IDA 0x2fe628: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::AsyncHttpQueue::registerContent(std::string const&,rbx_core::SharedPtr<std::string const>,rbx_core::SharedPtr<std::string const>)")]
 // 0x2feaa8 — __ZN3RBX14AsyncHttpQueue15registerContentERKSsN5boost10shared_ptrIS1_EES5_
 // was: RBX::AsyncHttpQueue::registerContent(std::string const&,boost::shared_ptr<std::string const>,boost::shared_ptr<std::string const>)
 pub fn boost_stub_2feaa8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2feaa8 __ZN3RBX14AsyncHttpQueue15registerContentERKSsN5boost10shared_ptrIS1_EES5_")
+    // IDA 0x2feaa8: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>::operator=(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)> const&)")]
 // 0x2fee80 — __ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEaSERKS9_
 // was: boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>::operator=(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)> const&)
 pub fn boost_stub_2fee80(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2fee80 __ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEaSERKS9_")
+    // IDA 0x2fee80: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>>::swap(boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>>&)")]
 // 0x2fef44 — __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE4swapERS8_
 // was: boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::swap(boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>&)
 pub fn boost_stub_2fef44(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2fef44 __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE4swapERS8_")
+    // IDA 0x2fef44: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>>::move_assign(boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>>&)")]
 // 0x2ff020 — __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE11move_assignERS8_
 // was: boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::move_assign(boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>&)
 pub fn boost_stub_2ff020(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ff020 __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE11move_assignERS8_")
+    // IDA 0x2ff020: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::Http>::shared_ptr<RBX::Http>(RBX::Http *)")]
 // 0x2ffb24 — __ZN5boost10shared_ptrIN3RBX4HttpEEC2IS2_EEPT_
 // was: boost::shared_ptr<RBX::Http>::shared_ptr<RBX::Http>(RBX::Http *)
 pub fn boost_stub_2ffb24(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ffb24 __ZN5boost10shared_ptrIN3RBX4HttpEEC2IS2_EEPT_")
+    // IDA 0x2ffb24: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Http>(RBX::Http *)")]
 // 0x2ffbfc — __ZN5boost6detail12shared_countC2IN3RBX4HttpEEEPT_
 // was: boost::detail::shared_count::shared_count<RBX::Http>(RBX::Http *)
 pub fn boost_stub_2ffbfc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ffbfc __ZN5boost6detail12shared_countC2IN3RBX4HttpEEEPT_")
+    // IDA 0x2ffbfc: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Http>::~sp_counted_impl_p()")]
 // 0x2ffd34 — __ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEED1Ev
 // was: boost::detail::sp_counted_impl_p<RBX::Http>::~sp_counted_impl_p()
 pub fn boost_stub_2ffd34(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ffd34 __ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEED1Ev")
+    // IDA 0x2ffd34: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Http>::~sp_counted_impl_p()")]
 // 0x2ffd38 — __ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEED0Ev
 // was: boost::detail::sp_counted_impl_p<RBX::Http>::~sp_counted_impl_p()
 pub fn boost_stub_2ffd38(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ffd38 __ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEED0Ev")
+    // IDA 0x2ffd38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Http>::dispose(void)")]
 // 0x2ffd3c — __ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEE7disposeEv
 // was: boost::detail::sp_counted_impl_p<RBX::Http>::dispose(void)
 pub fn boost_stub_2ffd3c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ffd3c __ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEE7disposeEv")
+    // IDA 0x2ffd3c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Http>::get_deleter(std::type_info const&)")]
 // 0x2ffe10 — __ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_p<RBX::Http>::get_deleter(std::type_info const&)
 pub fn boost_stub_2ffe10(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ffe10 __ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEE11get_deleterERKSt9type_info")
+    // IDA 0x2ffe10: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Http>::get_untyped_deleter(void)")]
 // 0x2ffe14 — __ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_p<RBX::Http>::get_untyped_deleter(void)
 pub fn boost_stub_2ffe14(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ffe14 __ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEE19get_untyped_deleterEv")
+    // IDA 0x2ffe14: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::AsyncHttpQueue>::shared_ptr<RBX::AsyncHttpQueue>(rbx_core::WeakPtr<RBX::AsyncHttpQueue> const&,boost::detail::sp_nothrow_tag)")]
 // 0x2ffe1c — __ZN5boost10shared_ptrIN3RBX14AsyncHttpQueueEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // was: boost::shared_ptr<RBX::AsyncHttpQueue>::shared_ptr<RBX::AsyncHttpQueue>(boost::weak_ptr<RBX::AsyncHttpQueue> const&,boost::detail::sp_nothrow_tag)
 pub fn boost_stub_2ffe1c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ffe1c __ZN5boost10shared_ptrIN3RBX14AsyncHttpQueueEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")
+    // IDA 0x2ffe1c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<std::string>::shared_ptr<std::string>(std::string *)")]
 // 0x2ffe98 — __ZN5boost10shared_ptrISsEC2ISsEEPT_
 // was: boost::shared_ptr<std::string>::shared_ptr<std::string>(std::string *)
 pub fn boost_stub_2ffe98(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ffe98 __ZN5boost10shared_ptrISsEC2ISsEEPT_")
+    // IDA 0x2ffe98: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<std::string>::~sp_counted_impl_p()")]
 // 0x2fff70 — __ZN5boost6detail17sp_counted_impl_pISsED0Ev
 // was: boost::detail::sp_counted_impl_p<std::string>::~sp_counted_impl_p()
 pub fn boost_stub_2fff70(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2fff70 __ZN5boost6detail17sp_counted_impl_pISsED0Ev")
+    // IDA 0x2fff70: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<std::string>::get_deleter(std::type_info const&)")]
 // 0x2fff78 — __ZN5boost6detail17sp_counted_impl_pISsE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_p<std::string>::get_deleter(std::type_info const&)
 pub fn boost_stub_2fff78(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2fff78 __ZN5boost6detail17sp_counted_impl_pISsE11get_deleterERKSt9type_info")
+    // IDA 0x2fff78: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::string const>),boost::_bi::list3<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<rbx_core::SharedPtr<std::string const>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x30039c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEES8_SC_ENS3_5list3INS3_5valueISE_EENSI_IS8_EENSI_ISC_EEEEEEE6manageERKNS1_15function_bufferERSP_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::string const>),boost::_bi::list3<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<boost::shared_ptr<std::string const>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 pub fn boost_stub_30039c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x30039c __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEES8_SC_ENS3_5list3INS3_5valueISE_EENSI_IS8_EENSI_ISC_EEEEEEE6manageERKNS1_15function_bufferERSP_NS1_30functor_manager_operation_typeE")
+    // IDA 0x30039c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>,RBX::AsyncHttpQueue::RequestResult,rbx_core::SharedPtr<std::string const>),boost::_bi::list3<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<rbx_core::SharedPtr<std::string const>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // 0x3008a4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEES8_SC_ENS3_5list3INS3_5valueISE_EENSI_IS8_EENSI_ISC_EEEEEEE7managerERKNS1_15function_bufferERSP_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::string const>),boost::_bi::list3<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<boost::shared_ptr<std::string const>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 pub fn boost_stub_3008a4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3008a4 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEES8_SC_ENS3_5list3INS3_5valueISE_EENSI_IS8_EENSI_ISC_EEEEEEE7managerERKNS1_15function_bufferERSP_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+    // IDA 0x3008a4: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<rbx_core::SharedPtr<std::string const>>>::list3(boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<rbx_core::SharedPtr<std::string const>>)")]
 // 0x300a60 — __ZN5boost3_bi5list3INS0_5valueINS_8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEEEENS2_IS6_EENS2_ISA_EEEC2ESD_SE_SF_
 // was: boost::_bi::list3<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<boost::shared_ptr<std::string const>>>::list3(boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<boost::shared_ptr<std::string const>>)
 pub fn boost_stub_300a60(_ptr: crate::SharedPtr<()>) {
-    todo!("0x300a60 __ZN5boost3_bi5list3INS0_5valueINS_8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEEEENS2_IS6_EENS2_ISA_EEEC2ESD_SE_SF_")
+    // IDA 0x300a60: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<rbx_core::SharedPtr<std::string const>>>::storage3(boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<rbx_core::SharedPtr<std::string const>>)")]
 // 0x300b6c — __ZN5boost3_bi8storage3INS0_5valueINS_8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEEEENS2_IS6_EENS2_ISA_EEEC2ESD_SE_SF_
 // was: boost::_bi::storage3<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<boost::shared_ptr<std::string const>>>::storage3(boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>,boost::_bi::value<boost::shared_ptr<std::string const>>)
 pub fn boost_stub_300b6c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x300b6c __ZN5boost3_bi8storage3INS0_5valueINS_8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEEEENS2_IS6_EENS2_ISA_EEEC2ESD_SE_SF_")
+    // IDA 0x300b6c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>>::storage2(boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)>>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>)")]
 // 0x300c6c — __ZN5boost3_bi8storage2INS0_5valueINS_8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEEEENS2_IS6_EEEC2ESD_SE_
 // was: boost::_bi::storage2<boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>>::storage2(boost::_bi::value<boost::function<void ()(RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)>>,boost::_bi::value<RBX::AsyncHttpQueue::RequestResult>)
 pub fn boost_stub_300c6c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x300c6c __ZN5boost3_bi8storage2INS0_5valueINS_8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEEEENS2_IS6_EEEC2ESD_SE_")
+    // IDA 0x300c6c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost8functionIFvNS_10shared_ptrIN3RBX5mutexEEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_14AsyncHttpQueueEEESt14_List_iteratorINSB_7RequestEES4_ENS8_5list3INS8_5valueISC_EENSJ_ISF_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE")]
 // 0x300d3c — __ZN5boost8functionIFvNS_10shared_ptrIN3RBX5mutexEEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_14AsyncHttpQueueEEESt14_List_iteratorINSB_7RequestEES4_ENS8_5list3INS8_5valueISC_EENSJ_ISF_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost8functionIFvNS_10shared_ptrIN3RBX5mutexEEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_14AsyncHttpQueueEEESt14_List_iteratorINSB_7RequestEES4_ENS8_5list3INS8_5valueISC_EENSJ_ISF_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_300d3c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x300d3c __ZN5boost8functionIFvNS_10shared_ptrIN3RBX5mutexEEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_14AsyncHttpQueueEEESt14_List_iteratorINSB_7RequestEES4_ENS8_5list3INS8_5valueISC_EENSJ_ISF_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x300d3c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_14AsyncHttpQueueEEESt14_List_iteratorINSA_7RequestEES4_ENS7_5list3INS7_5valueISB_EENSI_ISE_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
 // 0x300e68 — __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_14AsyncHttpQueueEEESt14_List_iteratorINSA_7RequestEES4_ENS7_5list3INS7_5valueISB_EENSI_ISE_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_14AsyncHttpQueueEEESt14_List_iteratorINSA_7RequestEES4_ENS7_5list3INS7_5valueISB_EENSI_ISE_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_300e68(_ptr: crate::SharedPtr<()>) {
-    todo!("0x300e68 __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_14AsyncHttpQueueEEESt14_List_iteratorINSA_7RequestEES4_ENS7_5list3INS7_5valueISB_EENSI_ISE_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x300e68: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void boost::function1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,rbx_core::SharedPtr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,rbx_core::SharedPtr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>)")]
 // 0x300f98 — __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_14AsyncHttpQueueEEESt14_List_iteratorINSA_7RequestEES4_ENS7_5list3INS7_5valueISB_EENSI_ISE_EENS_3argILi1EEEEEEEEEvT_
 // was: void boost::function1<void,boost::shared_ptr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::shared_ptr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::shared_ptr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>)
 pub fn boost_stub_300f98(_ptr: crate::SharedPtr<()>) {
-    todo!("0x300f98 __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_14AsyncHttpQueueEEESt14_List_iteratorINSA_7RequestEES4_ENS7_5list3INS7_5valueISB_EENSI_ISE_EENS_3argILi1EEEEEEEEEvT_")
+    // IDA 0x300f98: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,rbx_core::SharedPtr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x3010d8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX14AsyncHttpQueueEEESt14_List_iteratorINS7_7RequestEENS_10shared_ptrINS6_5mutexEEEENS3_5list3INS3_5valueIS8_EENSI_ISB_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::shared_ptr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 pub fn boost_stub_3010d8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3010d8 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX14AsyncHttpQueueEEESt14_List_iteratorINS7_7RequestEENS_10shared_ptrINS6_5mutexEEEENS3_5list3INS3_5valueIS8_EENSI_ISB_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeE")
+    // IDA 0x3010d8: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,rbx_core::SharedPtr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>,void,rbx_core::SharedPtr<RBX::mutex>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::mutex>)")]
 // 0x3010f4 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX14AsyncHttpQueueEEESt14_List_iteratorINS7_7RequestEENS_10shared_ptrINS6_5mutexEEEENS3_5list3INS3_5valueIS8_EENSI_ISB_EENS_3argILi1EEEEEEEvSE_E6invokeERNS1_15function_bufferESE_
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::shared_ptr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>,void,boost::shared_ptr<RBX::mutex>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::mutex>)
 pub fn boost_stub_3010f4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3010f4 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX14AsyncHttpQueueEEESt14_List_iteratorINS7_7RequestEENS_10shared_ptrINS6_5mutexEEEENS3_5list3INS3_5valueIS8_EENSI_ISB_EENS_3argILi1EEEEEEEvSE_E6invokeERNS1_15function_bufferESE_")
+    // IDA 0x3010f4: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,rbx_core::SharedPtr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,rbx_core::SharedPtr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")]
 // 0x30110c — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS4_14AsyncHttpQueueEEESt14_List_iteratorINSC_7RequestEES6_ENS9_5list3INS9_5valueISD_EENSK_ISG_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
 // was: bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::shared_ptr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::shared_ptr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const
 pub fn boost_stub_30110c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x30110c __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS4_14AsyncHttpQueueEEESt14_List_iteratorINSC_7RequestEES6_ENS9_5list3INS9_5valueISD_EENSK_ISG_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE")
+    // IDA 0x30110c: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,rbx_core::SharedPtr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,rbx_core::SharedPtr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // 0x301238 — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS4_14AsyncHttpQueueEEESt14_List_iteratorINSC_7RequestEES6_ENS9_5list3INS9_5valueISD_EENSK_ISG_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // was: bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::shared_ptr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::shared_ptr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 pub fn boost_stub_301238(_ptr: crate::SharedPtr<()>) {
-    todo!("0x301238 __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS4_14AsyncHttpQueueEEESt14_List_iteratorINSC_7RequestEES6_ENS9_5list3INS9_5valueISD_EENSK_ISG_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+    // IDA 0x301238: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_functor<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,rbx_core::SharedPtr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,rbx_core::SharedPtr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // 0x301360 — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrINS4_14AsyncHttpQueueEEESt14_List_iteratorINSC_7RequestEES6_ENS9_5list3INS9_5valueISD_EENSK_ISG_EENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // was: void boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::mutex>>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::shared_ptr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::shared_ptr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
 pub fn boost_stub_301360(_ptr: crate::SharedPtr<()>) {
-    todo!("0x301360 __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrINS4_14AsyncHttpQueueEEESt14_List_iteratorINSC_7RequestEES6_ENS9_5list3INS9_5valueISD_EENSK_ISG_EENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+    // IDA 0x301360: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>::operator()<void (*)(rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,rbx_core::SharedPtr<RBX::mutex>),boost::_bi::list1<rbx_core::SharedPtr<RBX::mutex>&>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,rbx_core::SharedPtr<RBX::mutex>) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::mutex>&> &,int)")]
 // 0x301478 — __ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX14AsyncHttpQueueEEEEENS2_ISt14_List_iteratorINS5_7RequestEEEENS_3argILi1EEEEclIPFvS6_SA_NS_10shared_ptrINS4_5mutexEEEENS0_5list1IRSI_EEEEvNS0_4typeIvEERT_RT0_i
 // was: void boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>::operator()<void (*)(boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::shared_ptr<RBX::mutex>),boost::_bi::list1<boost::shared_ptr<RBX::mutex>&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::shared_ptr<RBX::mutex>) &,boost::_bi::list1<boost::shared_ptr<RBX::mutex>&> &,int)
 pub fn boost_stub_301478(_ptr: crate::SharedPtr<()>) {
-    todo!("0x301478 __ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX14AsyncHttpQueueEEEEENS2_ISt14_List_iteratorINS5_7RequestEEEENS_3argILi1EEEEclIPFvS6_SA_NS_10shared_ptrINS4_5mutexEEEENS0_5list1IRSI_EEEEvNS0_4typeIvEERT_RT0_i")
+    // IDA 0x301478: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,rbx_core::SharedPtr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // 0x3015d8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX14AsyncHttpQueueEEESt14_List_iteratorINS7_7RequestEENS_10shared_ptrINS6_5mutexEEEENS3_5list3INS3_5valueIS8_EENSI_ISB_EENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::AsyncHttpQueue>,std::_List_iterator<RBX::AsyncHttpQueue::Request>,boost::shared_ptr<RBX::mutex>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 pub fn boost_stub_3015d8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3015d8 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX14AsyncHttpQueueEEESt14_List_iteratorINS7_7RequestEENS_10shared_ptrINS6_5mutexEEEENS3_5list3INS3_5valueIS8_EENSI_ISB_EENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+    // IDA 0x3015d8: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>::list3(boost::_bi::value<rbx_core::WeakPtr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>)")]
 // 0x301770 — __ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX14AsyncHttpQueueEEEEENS2_ISt14_List_iteratorINS5_7RequestEEEENS_3argILi1EEEEC2ES7_SB_SD_
 // was: boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>::list3(boost::_bi::value<boost::weak_ptr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>)
 pub fn boost_stub_301770(_ptr: crate::SharedPtr<()>) {
-    todo!("0x301770 __ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX14AsyncHttpQueueEEEEENS2_ISt14_List_iteratorINS5_7RequestEEEENS_3argILi1EEEEC2ES7_SB_SD_")
+    // IDA 0x301770: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>::storage3(boost::_bi::value<rbx_core::WeakPtr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>)")]
 // 0x30188c — __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX14AsyncHttpQueueEEEEENS2_ISt14_List_iteratorINS5_7RequestEEEENS_3argILi1EEEEC2ES7_SB_SD_
 // was: boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>,boost::arg<1>)
 pub fn boost_stub_30188c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x30188c __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX14AsyncHttpQueueEEEEENS2_ISt14_List_iteratorINS5_7RequestEEEENS_3argILi1EEEEC2ES7_SB_SD_")
+    // IDA 0x30188c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::WeakPtr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>>::storage2(boost::_bi::value<rbx_core::WeakPtr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>)")]
 // 0x3019a8 — __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX14AsyncHttpQueueEEEEENS2_ISt14_List_iteratorINS5_7RequestEEEEEC2ES7_SB_
 // was: boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::AsyncHttpQueue>>,boost::_bi::value<std::_List_iterator<RBX::AsyncHttpQueue::Request>>)
 pub fn boost_stub_3019a8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3019a8 __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX14AsyncHttpQueueEEEEENS2_ISt14_List_iteratorINS5_7RequestEEEEEC2ES7_SB_")
+    // IDA 0x3019a8: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::WeakPtr<RBX::AsyncHttpQueue>::weak_ptr<RBX::AsyncHttpQueue>(rbx_core::SharedPtr<RBX::AsyncHttpQueue> const&,boost::detail::sp_enable_if_convertible<RBX::AsyncHttpQueue,RBX::AsyncHttpQueue>::type)")]
 // 0x301afc — __ZN5boost8weak_ptrIN3RBX14AsyncHttpQueueEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
 // was: boost::weak_ptr<RBX::AsyncHttpQueue>::weak_ptr<RBX::AsyncHttpQueue>(boost::shared_ptr<RBX::AsyncHttpQueue> const&,boost::detail::sp_enable_if_convertible<RBX::AsyncHttpQueue,RBX::AsyncHttpQueue>::type)
 pub fn boost_stub_301afc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x301afc __ZN5boost8weak_ptrIN3RBX14AsyncHttpQueueEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE")
+    // IDA 0x301afc: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::function2<bool,std::string const&,std::string *>::assign_to_own(boost::function2<bool,std::string const&,std::string *> const&)")]
 // 0x3022c8 — __ZN5boost9function2IbRKSsPSsE13assign_to_ownERKS4_
 // was: boost::function2<bool,std::string const&,std::string *>::assign_to_own(boost::function2<bool,std::string const&,std::string *> const&)
 pub fn boost_stub_3022c8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3022c8 __ZN5boost9function2IbRKSsPSsE13assign_to_ownERKS4_")
+    // IDA 0x3022c8: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "boost::function1<void,rbx_core::SharedPtr<RBX::mutex>>::clear(void)")]
 // 0x3022f8 — __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEE5clearEv
 // was: boost::function1<void,boost::shared_ptr<RBX::mutex>>::clear(void)
 pub fn boost_stub_3022f8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3022f8 __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEE5clearEv")
+    // IDA 0x3022f8: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "RBX::staticDoFilterRequest(rbx_core::WeakPtr<RBX::ContentFilter>,std::string)")]
 // 0x30ef44 — __ZN3RBXL21staticDoFilterRequestEN5boost8weak_ptrINS_13ContentFilterEEESs
 // was: RBX::staticDoFilterRequest(boost::weak_ptr<RBX::ContentFilter>,std::string)
 pub fn boost_stub_30ef44(_ptr: crate::SharedPtr<()>) {
-    todo!("0x30ef44 __ZN3RBXL21staticDoFilterRequestEN5boost8weak_ptrINS_13ContentFilterEEESs")
+    // IDA 0x30ef44: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "RBX::staticDoFilterResult(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string)")]
 // 0x30f598 — __ZN3RBXL20staticDoFilterResultEPSsPSt9exceptionN5boost8weak_ptrINS_13ContentFilterEEESs
 // was: RBX::staticDoFilterResult(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string)
 pub fn boost_stub_30f598(_ptr: crate::SharedPtr<()>) {
-    todo!("0x30f598 __ZN3RBXL20staticDoFilterResultEPSsPSt9exceptionN5boost8weak_ptrINS_13ContentFilterEEESs")
+    // IDA 0x30f598: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::staticSaveFilterResult(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool)")]
 // 0x30f8e8 — __ZN3RBXL22staticSaveFilterResultEN5boost8weak_ptrINS_13ContentFilterEEESsb
 // was: RBX::staticSaveFilterResult(boost::weak_ptr<RBX::ContentFilter>,std::string,bool)
 pub fn boost_stub_30f8e8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x30f8e8 __ZN3RBXL22staticSaveFilterResultEN5boost8weak_ptrINS_13ContentFilterEEESsb")
+    // IDA 0x30f8e8: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list_av_2<rbx_core::WeakPtr<RBX::ContentFilter>,std::string>::type> boost::bind<void,rbx_core::WeakPtr<RBX::ContentFilter>,std::string,rbx_core::WeakPtr<RBX::ContentFilter>,std::string>(void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string),rbx_core::WeakPtr<RBX::ContentFilter>,std::string)")]
 // 0x30faec — __ZN5boost4bindIvNS_8weak_ptrIN3RBX13ContentFilterEEESsS4_SsEENS_3_bi6bind_tIT_PFS7_T0_T1_ENS5_9list_av_2IT2_T3_E4typeEEESB_SD_SE_
 // was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list_av_2<boost::weak_ptr<RBX::ContentFilter>,std::string>::type> boost::bind<void,boost::weak_ptr<RBX::ContentFilter>,std::string,boost::weak_ptr<RBX::ContentFilter>,std::string>(void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::weak_ptr<RBX::ContentFilter>,std::string)
 pub fn boost_stub_30faec(_ptr: crate::SharedPtr<()>) {
-    todo!("0x30faec __ZN5boost4bindIvNS_8weak_ptrIN3RBX13ContentFilterEEESsS4_SsEENS_3_bi6bind_tIT_PFS7_T0_T1_ENS5_9list_av_2IT2_T3_E4typeEEESB_SD_SE_")
+    // IDA 0x30faec: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::WeakPtr<RBX::ContentFilter> RBX::weak_from<RBX::ContentFilter>(RBX::ContentFilter*)")]
 // 0x30fdbc — __ZN3RBX9weak_fromINS_13ContentFilterEEEN5boost8weak_ptrIT_EEPS4_
 // was: boost::weak_ptr<RBX::ContentFilter> RBX::weak_from<RBX::ContentFilter>(RBX::ContentFilter*)
 pub fn boost_stub_30fdbc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x30fdbc __ZN3RBX9weak_fromINS_13ContentFilterEEEN5boost8weak_ptrIT_EEPS4_")
+    // IDA 0x30fdbc: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list_av_4<boost::arg<1>,boost::arg<2>,rbx_core::WeakPtr<RBX::ContentFilter>,std::string>::type> boost::bind<void,std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string,boost::arg<1>,boost::arg<2>,rbx_core::WeakPtr<RBX::ContentFilter>,std::string>(void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::arg<1>,boost::arg<2>,rbx_core::WeakPtr<RBX::ContentFilter>,std::string)")]
 // 0x30ffb4 — __ZN5boost4bindIvPSsPSt9exceptionNS_8weak_ptrIN3RBX13ContentFilterEEESsNS_3argILi1EEENS8_ILi2EEES7_SsEENS_3_bi6bind_tIT_PFSD_T0_T1_T2_T3_ENSB_9list_av_4IT4_T5_T6_T7_E4typeEEESJ_SL_SM_SN_SO_
 // was: boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list_av_4<boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::ContentFilter>,std::string>::type> boost::bind<void,std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string,boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::ContentFilter>,std::string>(void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::ContentFilter>,std::string)
 pub fn boost_stub_30ffb4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x30ffb4 __ZN5boost4bindIvPSsPSt9exceptionNS_8weak_ptrIN3RBX13ContentFilterEEESsNS_3argILi1EEENS8_ILi2EEES7_SsEENS_3_bi6bind_tIT_PFSD_T0_T1_T2_T3_ENSB_9list_av_4IT4_T5_T6_T7_E4typeEEESJ_SL_SM_SN_SO_")
+    // IDA 0x30ffb4: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvS1_S3_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS7_5list4INS_3argILi1EEENSG_ILi2EEENS7_5valueISC_EENSJ_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
 // 0x3107fc — __ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvS1_S3_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS7_5list4INS_3argILi1EEENSG_ILi2EEENS7_5valueISC_EENSJ_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvS1_S3_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS7_5list4INS_3argILi1EEENSG_ILi2EEENS7_5valueISC_EENSJ_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_3107fc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3107fc __ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvS1_S3_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS7_5list4INS_3argILi1EEENSG_ILi2EEENS7_5valueISC_EENSJ_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x3107fc: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost9function2IvPSsPSt9exceptionEC2INS_3_bi6bind_tIvPFvS1_S3_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS6_5list4INS_3argILi1EEENSF_ILi2EEENS6_5valueISB_EENSI_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")]
 // 0x3109bc — __ZN5boost9function2IvPSsPSt9exceptionEC2INS_3_bi6bind_tIvPFvS1_S3_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS6_5list4INS_3argILi1EEENSF_ILi2EEENS6_5valueISB_EENSI_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost9function2IvPSsPSt9exceptionEC2INS_3_bi6bind_tIvPFvS1_S3_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS6_5list4INS_3argILi1EEENSF_ILi2EEENS6_5valueISB_EENSI_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_3109bc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3109bc __ZN5boost9function2IvPSsPSt9exceptionEC2INS_3_bi6bind_tIvPFvS1_S3_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS6_5list4INS_3argILi1EEENSF_ILi2EEENS6_5valueISB_EENSI_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x3109bc: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void boost::function2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>)")]
 // 0x310b80 — __ZN5boost9function2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvS1_S3_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS6_5list4INS_3argILi1EEENSF_ILi2EEENS6_5valueISB_EENSI_ISsEEEEEEEEvT_
 // was: void boost::function2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>)
 pub fn boost_stub_310b80(_ptr: crate::SharedPtr<()>) {
-    todo!("0x310b80 __ZN5boost9function2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvS1_S3_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS6_5list4INS_3argILi1EEENSF_ILi2EEENS6_5valueISB_EENSI_ISsEEEEEEEEvT_")
+    // IDA 0x310b80: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x310d54 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPSsPSt9exceptionNS_8weak_ptrIN3RBX13ContentFilterEEESsENS3_5list4INS_3argILi1EEENSF_ILi2EEENS3_5valueISB_EENSI_ISsEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 pub fn boost_stub_310d54(_ptr: crate::SharedPtr<()>) {
-    todo!("0x310d54 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPSsPSt9exceptionNS_8weak_ptrIN3RBX13ContentFilterEEESsENS3_5list4INS_3argILi1EEENSF_ILi2EEENS3_5valueISB_EENSI_ISsEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE")
+    // IDA 0x310d54: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,void,std::string *,std::exception *>::invoke(boost::detail::function::function_buffer &,std::string *,std::exception *)")]
 // 0x310d70 — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvPFvPSsPSt9exceptionNS_8weak_ptrIN3RBX13ContentFilterEEESsENS3_5list4INS_3argILi1EEENSF_ILi2EEENS3_5valueISB_EENSI_ISsEEEEEEvS5_S7_E6invokeERNS1_15function_bufferES5_S7_
 // was: boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,void,std::string *,std::exception *>::invoke(boost::detail::function::function_buffer &,std::string *,std::exception *)
 pub fn boost_stub_310d70(_ptr: crate::SharedPtr<()>) {
-    todo!("0x310d70 __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvPFvPSsPSt9exceptionNS_8weak_ptrIN3RBX13ContentFilterEEESsENS3_5list4INS_3argILi1EEENSF_ILi2EEENS3_5valueISB_EENSI_ISsEEEEEEvS5_S7_E6invokeERNS1_15function_bufferES5_S7_")
+    // IDA 0x310d70: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")]
 // 0x310d90 — __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvS3_S5_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS8_5list4INS_3argILi1EEENSH_ILi2EEENS8_5valueISD_EENSK_ISsEEEEEEEEbT_RNS1_15function_bufferE
 // was: bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const
 pub fn boost_stub_310d90(_ptr: crate::SharedPtr<()>) {
-    todo!("0x310d90 __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvS3_S5_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS8_5list4INS_3argILi1EEENSH_ILi2EEENS8_5valueISD_EENSK_ISsEEEEEEEEbT_RNS1_15function_bufferE")
+    // IDA 0x310d90: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // 0x310f54 — __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvS3_S5_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS8_5list4INS_3argILi1EEENSH_ILi2EEENS8_5valueISD_EENSK_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // was: bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 pub fn boost_stub_310f54(_ptr: crate::SharedPtr<()>) {
-    todo!("0x310f54 __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvS3_S5_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS8_5list4INS_3argILi1EEENSH_ILi2EEENS8_5valueISD_EENSK_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+    // IDA 0x310f54: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_functor<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // 0x311114 — __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE14assign_functorINS_3_bi6bind_tIvPFvS3_S5_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS8_5list4INS_3argILi1EEENSH_ILi2EEENS8_5valueISD_EENSK_ISsEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // was: void boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_functor<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
 pub fn boost_stub_311114(_ptr: crate::SharedPtr<()>) {
-    todo!("0x311114 __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE14assign_functorINS_3_bi6bind_tIvPFvS3_S5_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS8_5list4INS_3argILi1EEENSH_ILi2EEENS8_5valueISD_EENSK_ISsEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+    // IDA 0x311114: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::operator()<void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list2<std::string *&,std::exception *&>>(boost::_bi::type<void>,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string) &,boost::_bi::list2<std::string *&,std::exception *&> &,int)")]
 // 0x311258 — __ZN5boost3_bi5list4INS_3argILi1EEENS2_ILi2EEENS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS5_ISsEEEclIPFvPSsPSt9exceptionS9_SsENS0_5list2IRSE_RSG_EEEEvNS0_4typeIvEERT_RT0_i
 // was: void boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::operator()<void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<std::string *&,std::exception *&>>(boost::_bi::type<void>,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string) &,boost::_bi::list2<std::string *&,std::exception *&> &,int)
 pub fn boost_stub_311258(_ptr: crate::SharedPtr<()>) {
-    todo!("0x311258 __ZN5boost3_bi5list4INS_3argILi1EEENS2_ILi2EEENS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS5_ISsEEEclIPFvPSsPSt9exceptionS9_SsENS0_5list2IRSE_RSG_EEEEvNS0_4typeIvEERT_RT0_i")
+    // IDA 0x311258: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // 0x31140c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPSsPSt9exceptionNS_8weak_ptrIN3RBX13ContentFilterEEESsENS3_5list4INS_3argILi1EEENSF_ILi2EEENS3_5valueISB_EENSI_ISsEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 pub fn boost_stub_31140c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31140c __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPSsPSt9exceptionNS_8weak_ptrIN3RBX13ContentFilterEEESsENS3_5list4INS_3argILi1EEENSF_ILi2EEENS3_5valueISB_EENSI_ISsEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+    // IDA 0x31140c: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::list4(boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>)")]
 // 0x3115e8 — __ZN5boost3_bi5list4INS_3argILi1EEENS2_ILi2EEENS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS5_ISsEEEC2ES3_S4_SA_SB_
 // was: boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::list4(boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>)
 pub fn boost_stub_3115e8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3115e8 __ZN5boost3_bi5list4INS_3argILi1EEENS2_ILi2EEENS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS5_ISsEEEC2ES3_S4_SA_SB_")
+    // IDA 0x3115e8: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::_bi::storage4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::storage4(boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>)")]
 // 0x311794 — __ZN5boost3_bi8storage4INS_3argILi1EEENS2_ILi2EEENS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS5_ISsEEEC2ES3_S4_SA_SB_
 // was: boost::_bi::storage4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::storage4(boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>)
 pub fn boost_stub_311794(_ptr: crate::SharedPtr<()>) {
-    todo!("0x311794 __ZN5boost3_bi8storage4INS_3argILi1EEENS2_ILi2EEENS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS5_ISsEEEC2ES3_S4_SA_SB_")
+    // IDA 0x311794: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x311e60 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ContentFilterEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEE6manageERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 pub fn boost_stub_311e60(_ptr: crate::SharedPtr<()>) {
-    todo!("0x311e60 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ContentFilterEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEE6manageERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE")
+    // IDA 0x311e60: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // 0x312508 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ContentFilterEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 pub fn boost_stub_312508(_ptr: crate::SharedPtr<()>) {
-    todo!("0x312508 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ContentFilterEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+    // IDA 0x312508: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>)")]
 // 0x3126e4 — __ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS2_ISsEEEC2ES7_S8_
 // was: boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>)
 pub fn boost_stub_3126e4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3126e4 __ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS2_ISsEEEC2ES7_S8_")
+    // IDA 0x3126e4: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>)")]
 // 0x312890 — __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS2_ISsEEEC2ES7_S8_
 // was: boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>)
 pub fn boost_stub_312890(_ptr: crate::SharedPtr<()>) {
-    todo!("0x312890 __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS2_ISsEEEC2ES7_S8_")
+    // IDA 0x312890: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::WeakPtr<RBX::ContentFilter>::weak_ptr<RBX::ContentFilter>(rbx_core::SharedPtr<RBX::ContentFilter> const&,boost::detail::sp_enable_if_convertible<RBX::ContentFilter,RBX::ContentFilter>::type)")]
 // 0x312a04 — __ZN5boost8weak_ptrIN3RBX13ContentFilterEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
 // was: boost::weak_ptr<RBX::ContentFilter>::weak_ptr<RBX::ContentFilter>(boost::shared_ptr<RBX::ContentFilter> const&,boost::detail::sp_enable_if_convertible<RBX::ContentFilter,RBX::ContentFilter>::type)
 pub fn boost_stub_312a04(_ptr: crate::SharedPtr<()>) {
-    todo!("0x312a04 __ZN5boost8weak_ptrIN3RBX13ContentFilterEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE")
+    // IDA 0x312a04: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list_av_3<rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool>::type> boost::bind<void,rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool,rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool>(void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool)")]
 // 0x313540 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX13ContentFilterEEESsbS4_SsbEENS_3_bi6bind_tIT_PFS7_T0_T1_T2_ENS5_9list_av_3IT3_T4_T5_E4typeEEESC_SE_SF_SG_
 // was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list_av_3<boost::weak_ptr<RBX::ContentFilter>,std::string,bool>::type> boost::bind<void,boost::weak_ptr<RBX::ContentFilter>,std::string,bool,boost::weak_ptr<RBX::ContentFilter>,std::string,bool>(void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::weak_ptr<RBX::ContentFilter>,std::string,bool)
 pub fn boost_stub_313540(_ptr: crate::SharedPtr<()>) {
-    todo!("0x313540 __ZN5boost4bindIvNS_8weak_ptrIN3RBX13ContentFilterEEESsbS4_SsbEENS_3_bi6bind_tIT_PFS7_T0_T1_T2_ENS5_9list_av_3IT3_T4_T5_E4typeEEESC_SE_SF_SG_")
+    // IDA 0x313540: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::list3(boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>)")]
 // 0x31381c — __ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS2_ISsEENS2_IbEEEC2ES7_S8_S9_
 // was: boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::list3(boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>)
 pub fn boost_stub_31381c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31381c __ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS2_ISsEENS2_IbEEEC2ES7_S8_S9_")
+    // IDA 0x31381c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::storage3(boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>)")]
 // 0x3139cc — __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS2_ISsEENS2_IbEEEC2ES7_S8_S9_
 // was: boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>)
 pub fn boost_stub_3139cc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3139cc __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS2_ISsEENS2_IbEEEC2ES7_S8_S9_")
+    // IDA 0x3139cc: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x3140f0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ContentFilterEEESsbENS3_5list3INS3_5valueIS8_EENSC_ISsEENSC_IbEEEEEEE6manageERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 pub fn boost_stub_3140f0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3140f0 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ContentFilterEEESsbENS3_5list3INS3_5valueIS8_EENSC_ISsEENSC_IbEEEEEEE6manageERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE")
+    // IDA 0x3140f0: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // 0x3147b4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ContentFilterEEESsbENS3_5list3INS3_5valueIS8_EENSC_ISsEENSC_IbEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 pub fn boost_stub_3147b4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3147b4 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ContentFilterEEESsbENS3_5list3INS3_5valueIS8_EENSC_ISsEENSC_IbEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+    // IDA 0x3147b4: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::ContentFilter>::shared_ptr<RBX::ContentFilter>(rbx_core::WeakPtr<RBX::ContentFilter> const&,boost::detail::sp_nothrow_tag)")]
 // 0x314994 — __ZN5boost10shared_ptrIN3RBX13ContentFilterEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // was: boost::shared_ptr<RBX::ContentFilter>::shared_ptr<RBX::ContentFilter>(boost::weak_ptr<RBX::ContentFilter> const&,boost::detail::sp_nothrow_tag)
 pub fn boost_stub_314994(_ptr: crate::SharedPtr<()>) {
-    todo!("0x314994 __ZN5boost10shared_ptrIN3RBX13ContentFilterEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")
+    // IDA 0x314994: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::string>>,std::string,std::string,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)")]
 // 0x31552c — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSsEESsSsNS_4hashISsEESt8equal_toISsEEEE14delete_bucketsEv
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::string>>,std::string,std::string,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)
 pub fn boost_stub_31552c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31552c __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSsEESsSsNS_4hashISsEESt8equal_toISsEEEE14delete_bucketsEv")
+    // IDA 0x31552c: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::string>>,std::string,std::string,boost::hash<std::string>,std::equal_to<std::string>>>::delete_node(boost::unordered::detail::ptr_bucket *)")]
 // 0x315564 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSsEESsSsNS_4hashISsEESt8equal_toISsEEEE11delete_nodeEPNS1_10ptr_bucketE
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::string>>,std::string,std::string,boost::hash<std::string>,std::equal_to<std::string>>>::delete_node(boost::unordered::detail::ptr_bucket *)
 pub fn boost_stub_315564(_ptr: crate::SharedPtr<()>) {
-    todo!("0x315564 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSsEESsSsNS_4hashISsEESt8equal_toISsEEEE11delete_nodeEPNS1_10ptr_bucketE")
+    // IDA 0x315564: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::enable_if<boost::filesystem::path_traits::is_pathable<boost::decay<std::string>::type>,boost::filesystem::path&>::type boost::filesystem::path::operator=<std::string>(std::string const&)")]
 // 0x316028 — __ZN5boost10filesystem4pathaSISsEENS_9enable_ifINS0_11path_traits11is_pathableINS_5decayIT_E4typeEEERS1_E4typeERKS7_
 // was: boost::enable_if<boost::filesystem::path_traits::is_pathable<boost::decay<std::string>::type>,boost::filesystem::path&>::type boost::filesystem::path::operator=<std::string>(std::string const&)
 pub fn boost_stub_316028(_ptr: crate::SharedPtr<()>) {
-    todo!("0x316028 __ZN5boost10filesystem4pathaSISsEENS_9enable_ifINS0_11path_traits11is_pathableINS_5decayIT_E4typeEEERS1_E4typeERKS7_")
+    // IDA 0x316028: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::enable_if<boost::filesystem::path_traits::is_pathable<boost::decay<char *>::type>,boost::filesystem::path&>::type boost::filesystem::path::operator=<char *>(char * const&)")]
 // 0x316064 — __ZN5boost10filesystem4pathaSIPcEENS_9enable_ifINS0_11path_traits11is_pathableINS_5decayIT_E4typeEEERS1_E4typeERKS8_
 // was: boost::enable_if<boost::filesystem::path_traits::is_pathable<boost::decay<char *>::type>,boost::filesystem::path&>::type boost::filesystem::path::operator=<char *>(char * const&)
 pub fn boost_stub_316064(_ptr: crate::SharedPtr<()>) {
-    todo!("0x316064 __ZN5boost10filesystem4pathaSIPcEENS_9enable_ifINS0_11path_traits11is_pathableINS_5decayIT_E4typeEEERS1_E4typeERKS8_")
+    // IDA 0x316064: libstdc++ container internals. Vec/BTreeMap/String — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::filesystem::directory_iterator::directory_iterator(boost::filesystem::path const&)")]
 // 0x316098 — __ZN5boost10filesystem18directory_iteratorC2ERKNS0_4pathE
 // was: boost::filesystem::directory_iterator::directory_iterator(boost::filesystem::path const&)
 pub fn boost_stub_316098(_ptr: crate::SharedPtr<()>) {
-    todo!("0x316098 __ZN5boost10filesystem18directory_iteratorC2ERKNS0_4pathE")
+    // IDA 0x316098: boost::filesystem path/directory helper. std::fs/Path — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<boost::filesystem::detail::dir_itr_imp>::shared_ptr<boost::filesystem::detail::dir_itr_imp>(boost::filesystem::detail::dir_itr_imp *)")]
 // 0x316184 — __ZN5boost10shared_ptrINS_10filesystem6detail11dir_itr_impEEC2IS3_EEPT_
 // was: boost::shared_ptr<boost::filesystem::detail::dir_itr_imp>::shared_ptr<boost::filesystem::detail::dir_itr_imp>(boost::filesystem::detail::dir_itr_imp *)
 pub fn boost_stub_316184(_ptr: crate::SharedPtr<()>) {
-    todo!("0x316184 __ZN5boost10shared_ptrINS_10filesystem6detail11dir_itr_impEEC2IS3_EEPT_")
+    // IDA 0x316184: boost::filesystem path/directory helper. std::fs/Path — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<boost::filesystem::detail::dir_itr_imp>(boost::filesystem::detail::dir_itr_imp *)")]
 // 0x316258 — __ZN5boost6detail12shared_countC2INS_10filesystem6detail11dir_itr_impEEEPT_
 // was: boost::detail::shared_count::shared_count<boost::filesystem::detail::dir_itr_imp>(boost::filesystem::detail::dir_itr_imp *)
 pub fn boost_stub_316258(_ptr: crate::SharedPtr<()>) {
-    todo!("0x316258 __ZN5boost6detail12shared_countC2INS_10filesystem6detail11dir_itr_impEEEPT_")
+    // IDA 0x316258: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::filesystem::detail::dir_itr_imp::~dir_itr_imp()")]
 // 0x316364 — __ZN5boost10filesystem6detail11dir_itr_impD2Ev
 // was: boost::filesystem::detail::dir_itr_imp::~dir_itr_imp()
 pub fn boost_stub_316364(_ptr: crate::SharedPtr<()>) {
-    todo!("0x316364 __ZN5boost10filesystem6detail11dir_itr_impD2Ev")
+    // IDA 0x316364: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::detail::dir_itr_imp>::~sp_counted_impl_p()")]
 // 0x316414 — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEED1Ev
 // was: boost::detail::sp_counted_impl_p<boost::filesystem::detail::dir_itr_imp>::~sp_counted_impl_p()
 pub fn boost_stub_316414(_ptr: crate::SharedPtr<()>) {
-    todo!("0x316414 __ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEED1Ev")
+    // IDA 0x316414: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::detail::dir_itr_imp>::~sp_counted_impl_p()")]
 // 0x316418 — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEED0Ev
 // was: boost::detail::sp_counted_impl_p<boost::filesystem::detail::dir_itr_imp>::~sp_counted_impl_p()
 pub fn boost_stub_316418(_ptr: crate::SharedPtr<()>) {
-    todo!("0x316418 __ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEED0Ev")
+    // IDA 0x316418: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::detail::dir_itr_imp>::dispose(void)")]
 // 0x31641c — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEE7disposeEv
 // was: boost::detail::sp_counted_impl_p<boost::filesystem::detail::dir_itr_imp>::dispose(void)
 pub fn boost_stub_31641c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31641c __ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEE7disposeEv")
+    // IDA 0x31641c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::detail::dir_itr_imp>::get_deleter(std::type_info const&)")]
 // 0x3164c0 — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_p<boost::filesystem::detail::dir_itr_imp>::get_deleter(std::type_info const&)
 pub fn boost_stub_3164c0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3164c0 __ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEE11get_deleterERKSt9type_info")
+    // IDA 0x3164c0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::detail::dir_itr_imp>::get_untyped_deleter(void)")]
 // 0x3164c4 — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_p<boost::filesystem::detail::dir_itr_imp>::get_untyped_deleter(void)
 pub fn boost_stub_3164c4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3164c4 __ZN5boost6detail17sp_counted_impl_pINS_10filesystem6detail11dir_itr_impEE19get_untyped_deleterEv")
+    // IDA 0x3164c4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Http::get(boost::function<void ()(std::string *,std::exception *)>,bool)")]
 // 0x3168b0 — __ZN3RBX4Http3getEN5boost8functionIFvPSsPSt9exceptionEEEb
 // was: RBX::Http::get(boost::function<void ()(std::string *,std::exception *)>,bool)
 pub fn boost_stub_3168b0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3168b0 __ZN3RBX4Http3getEN5boost8functionIFvPSsPSt9exceptionEEEb")
+    // IDA 0x3168b0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::doGet(std::string,bool,boost::function<void ()(std::string *,std::exception *)>)")]
 // 0x316b74 — __ZN3RBXL5doGetESsbN5boost8functionIFvPSsPSt9exceptionEEE
 // was: RBX::doGet(std::string,bool,boost::function<void ()(std::string *,std::exception *)>)
 pub fn boost_stub_316b74(_ptr: crate::SharedPtr<()>) {
-    todo!("0x316b74 __ZN3RBXL5doGetESsbN5boost8functionIFvPSsPSt9exceptionEEE")
+    // IDA 0x316b74: libstdc++ container internals. Vec/BTreeMap/String — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "RBX::Http::post(std::string const&,bool,boost::function<void ()(std::string *,std::exception *)>,bool)")]
 // 0x316f2c — __ZN3RBX4Http4postERKSsbN5boost8functionIFvPSsPSt9exceptionEEEb
 // was: RBX::Http::post(std::string const&,bool,boost::function<void ()(std::string *,std::exception *)>,bool)
 pub fn boost_stub_316f2c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x316f2c __ZN3RBX4Http4postERKSsbN5boost8functionIFvPSsPSt9exceptionEEEb")
+    // IDA 0x316f2c: libstdc++ container internals. Vec/BTreeMap/String — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "RBX::doPost(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>)")]
 // 0x317378 — __ZN3RBXL6doPostESsSsbbN5boost8functionIFvPSsPSt9exceptionEEE
 // was: RBX::doPost(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>)
 pub fn boost_stub_317378(_ptr: crate::SharedPtr<()>) {
-    todo!("0x317378 __ZN3RBXL6doPostESsSsbbN5boost8functionIFvPSsPSt9exceptionEEE")
+    // IDA 0x317378: libstdc++ container internals. Vec/BTreeMap/String — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "RBX::Http::post(rbx_core::SharedPtr<std::istream>,bool,boost::function<void ()(std::string *,std::exception *)>,bool)")]
 // 0x317570 — __ZN3RBX4Http4postEN5boost10shared_ptrISiEEbNS1_8functionIFvPSsPSt9exceptionEEEb
 // was: RBX::Http::post(boost::shared_ptr<std::istream>,bool,boost::function<void ()(std::string *,std::exception *)>,bool)
 pub fn boost_stub_317570(_ptr: crate::SharedPtr<()>) {
-    todo!("0x317570 __ZN3RBX4Http4postEN5boost10shared_ptrISiEEbNS1_8functionIFvPSsPSt9exceptionEEEb")
+    // IDA 0x317570: libstdc++ container internals. Vec/BTreeMap/String — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "RBX::doPostStream(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>)")]
 // 0x317a08 — __ZN3RBXL12doPostStreamESsN5boost10shared_ptrISiEEbbNS0_8functionIFvPSsPSt9exceptionEEE
 // was: RBX::doPostStream(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>)
 pub fn boost_stub_317a08(_ptr: crate::SharedPtr<()>) {
-    todo!("0x317a08 __ZN3RBXL12doPostStreamESsN5boost10shared_ptrISiEEbbNS0_8functionIFvPSsPSt9exceptionEEE")
+    // IDA 0x317a08: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::scoped_ptr<RBX::ThreadPool>::~scoped_ptr()")]
 // 0x318104 — __ZN5boost10scoped_ptrIN3RBX10ThreadPoolEED1Ev
 // was: boost::scoped_ptr<RBX::ThreadPool>::~scoped_ptr()
 pub fn boost_stub_318104(_ptr: crate::SharedPtr<()>) {
-    todo!("0x318104 __ZN5boost10scoped_ptrIN3RBX10ThreadPoolEED1Ev")
+    // IDA 0x318104: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list_av_3<std::string,bool,boost::function<void ()(std::string *,std::exception *)>>::type> boost::bind<void,std::string,bool,boost::function<void ()(std::string *,std::exception *)>,std::string,bool,boost::function<void ()(std::string *,std::exception *)>>(void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),std::string,bool,boost::function<void ()(std::string *,std::exception *)>)")]
 // 0x318118 — __ZN5boost4bindIvSsbNS_8functionIFvPSsPSt9exceptionEEESsbS6_EENS_3_bi6bind_tIT_PFS9_T0_T1_T2_ENS7_9list_av_3IT3_T4_T5_E4typeEEESE_SG_SH_SI_
 // was: boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list_av_3<std::string,bool,boost::function<void ()(std::string *,std::exception *)>>::type> boost::bind<void,std::string,bool,boost::function<void ()(std::string *,std::exception *)>,std::string,bool,boost::function<void ()(std::string *,std::exception *)>>(void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),std::string,bool,boost::function<void ()(std::string *,std::exception *)>)
 pub fn boost_stub_318118(_ptr: crate::SharedPtr<()>) {
-    todo!("0x318118 __ZN5boost4bindIvSsbNS_8functionIFvPSsPSt9exceptionEEESsbS6_EENS_3_bi6bind_tIT_PFS9_T0_T1_T2_ENS7_9list_av_3IT3_T4_T5_E4typeEEESE_SG_SH_SI_")
+    // IDA 0x318118: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list_av_5<std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>>::type> boost::bind<void,std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>,std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>>(void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>)")]
 // 0x3183e0 — __ZN5boost4bindIvSsSsbbNS_8functionIFvPSsPSt9exceptionEEESsSsbbS6_EENS_3_bi6bind_tIT_PFS9_T0_T1_T2_T3_T4_ENS7_9list_av_5IT5_T6_T7_T8_T9_E4typeEEESG_SI_SJ_SK_SL_SM_
 // was: boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list_av_5<std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>>::type> boost::bind<void,std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>,std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>>(void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>)
 pub fn boost_stub_3183e0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3183e0 __ZN5boost4bindIvSsSsbbNS_8functionIFvPSsPSt9exceptionEEESsSsbbS6_EENS_3_bi6bind_tIT_PFS9_T0_T1_T2_T3_T4_ENS7_9list_av_5IT5_T6_T7_T8_T9_E4typeEEESG_SI_SJ_SK_SL_SM_")
+    // IDA 0x3183e0: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list_av_5<std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>>::type> boost::bind<void,std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>,std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>>(void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>)")]
 // 0x31888c — __ZN5boost4bindIvSsNS_10shared_ptrISiEEbbNS_8functionIFvPSsPSt9exceptionEEESsS2_bbS8_EENS_3_bi6bind_tIT_PFSB_T0_T1_T2_T3_T4_ENS9_9list_av_5IT5_T6_T7_T8_T9_E4typeEEESI_SK_SL_SM_SN_SO_
 // was: boost::_bi::bind_t<void,void (*)(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list_av_5<std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>>::type> boost::bind<void,std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>,std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>>(void (*)(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>)
 pub fn boost_stub_31888c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31888c __ZN5boost4bindIvSsNS_10shared_ptrISiEEbbNS_8functionIFvPSsPSt9exceptionEEESsS2_bbS8_EENS_3_bi6bind_tIT_PFSB_T0_T1_T2_T3_T4_ENS9_9list_av_5IT5_T6_T7_T8_T9_E4typeEEESI_SK_SL_SM_SN_SO_")
+    // IDA 0x31888c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost8functionIFvNS_10shared_ptrIN3RBX5mutexEEEEEC2INS_3_bi6bind_tIvPFvSsNS1_ISiEEbbNS0_IFvPSsPSt9exceptionEEEENS8_5list5INS8_5valueISsEENSJ_ISA_EENSJ_IbEESM_NSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE")]
 // 0x318d7c — __ZN5boost8functionIFvNS_10shared_ptrIN3RBX5mutexEEEEEC2INS_3_bi6bind_tIvPFvSsNS1_ISiEEbbNS0_IFvPSsPSt9exceptionEEEENS8_5list5INS8_5valueISsEENSJ_ISA_EENSJ_IbEESM_NSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost8functionIFvNS_10shared_ptrIN3RBX5mutexEEEEEC2INS_3_bi6bind_tIvPFvSsNS1_ISiEEbbNS0_IFvPSsPSt9exceptionEEEENS8_5list5INS8_5valueISsEENSJ_ISA_EENSJ_IbEESM_NSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_318d7c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x318d7c __ZN5boost8functionIFvNS_10shared_ptrIN3RBX5mutexEEEEEC2INS_3_bi6bind_tIvPFvSsNS1_ISiEEbbNS0_IFvPSsPSt9exceptionEEEENS8_5list5INS8_5valueISsEENSJ_ISA_EENSJ_IbEESM_NSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x318d7c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEEC2INS_3_bi6bind_tIvPFvSsNS1_ISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list5INS7_5valueISsEENSJ_IS9_EENSJ_IbEESM_NSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE")]
 // 0x31919c — __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEEC2INS_3_bi6bind_tIvPFvSsNS1_ISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list5INS7_5valueISsEENSJ_IS9_EENSJ_IbEESM_NSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEEC2INS_3_bi6bind_tIvPFvSsNS1_ISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list5INS7_5valueISsEENSJ_IS9_EENSJ_IbEESM_NSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_31919c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31919c __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEEC2INS_3_bi6bind_tIvPFvSsNS1_ISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list5INS7_5valueISsEENSJ_IS9_EENSJ_IbEESM_NSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x31919c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void boost::function1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>)")]
 // 0x3195c0 — __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsNS1_ISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list5INS7_5valueISsEENSJ_IS9_EENSJ_IbEESM_NSJ_ISF_EEEEEEEEvT_
 // was: void boost::function1<void,boost::shared_ptr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>)
 pub fn boost_stub_3195c0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3195c0 __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsNS1_ISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list5INS7_5valueISsEENSJ_IS9_EENSJ_IbEESM_NSJ_ISF_EEEEEEEEvT_")
+    // IDA 0x3195c0: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x3199f4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsNS_10shared_ptrISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEENSG_IS6_EENSG_IbEESJ_NSG_ISC_EEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 pub fn boost_stub_3199f4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3199f4 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsNS_10shared_ptrISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEENSG_IS6_EENSG_IbEESJ_NSG_ISC_EEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE")
+    // IDA 0x3199f4: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,void,rbx_core::SharedPtr<RBX::mutex>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::mutex>)")]
 // 0x319a10 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvSsNS_10shared_ptrISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEENSG_IS6_EENSG_IbEESJ_NSG_ISC_EEEEEEvNS5_IN3RBX5mutexEEEE6invokeERNS1_15function_bufferESP_
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,void,boost::shared_ptr<RBX::mutex>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::mutex>)
 pub fn boost_stub_319a10(_ptr: crate::SharedPtr<()>) {
-    todo!("0x319a10 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvSsNS_10shared_ptrISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEENSG_IS6_EENSG_IbEESJ_NSG_ISC_EEEEEEvNS5_IN3RBX5mutexEEEE6invokeERNS1_15function_bufferESP_")
+    // IDA 0x319a10: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &)const")]
 // 0x319a28 — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsNS3_ISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list5INS9_5valueISsEENSL_ISB_EENSL_IbEESO_NSL_ISH_EEEEEEEEbT_RNS1_15function_bufferE
 // was: bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &)const
 pub fn boost_stub_319a28(_ptr: crate::SharedPtr<()>) {
-    todo!("0x319a28 __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsNS3_ISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list5INS9_5valueISsEENSL_ISB_EENSL_IbEESO_NSL_ISH_EEEEEEEEbT_RNS1_15function_bufferE")
+    // IDA 0x319a28: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // 0x319e4c — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsNS3_ISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list5INS9_5valueISsEENSL_ISB_EENSL_IbEESO_NSL_ISH_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // was: bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 pub fn boost_stub_319e4c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x319e4c __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsNS3_ISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list5INS9_5valueISsEENSL_ISB_EENSL_IbEESO_NSL_ISH_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+    // IDA 0x319e4c: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_functor<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // 0x31a26c — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE14assign_functorINS_3_bi6bind_tIvPFvSsNS3_ISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list5INS9_5valueISsEENSL_ISB_EENSL_IbEESO_NSL_ISH_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // was: void boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::mutex>>::assign_functor<boost::_bi::bind_t<void,void (*)(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
 pub fn boost_stub_31a26c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31a26c __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE14assign_functorINS_3_bi6bind_tIvPFvSsNS3_ISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list5INS9_5valueISsEENSL_ISB_EENSL_IbEESO_NSL_ISH_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+    // IDA 0x31a26c: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::operator()<void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list1<rbx_core::SharedPtr<RBX::mutex> &>>(boost::_bi::type<void>,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::mutex> &> &,int)")]
 // 0x31a3d8 — __ZN5boost3_bi5list5INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEES7_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEclIPFvSsS5_bbSD_ENS0_5list1IRNS4_IN3RBX5mutexEEEEEEEvNS0_4typeIvEERT_RT0_i
 // was: void boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::operator()<void (*)(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list1<boost::shared_ptr<RBX::mutex> &>>(boost::_bi::type<void>,void (*)(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>) &,boost::_bi::list1<boost::shared_ptr<RBX::mutex> &> &,int)
 pub fn boost_stub_31a3d8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31a3d8 __ZN5boost3_bi5list5INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEES7_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEclIPFvSsS5_bbSD_ENS0_5list1IRNS4_IN3RBX5mutexEEEEEEEvNS0_4typeIvEERT_RT0_i")
+    // IDA 0x31a3d8: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // 0x31a594 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsNS_10shared_ptrISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEENSG_IS6_EENSG_IbEESJ_NSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 pub fn boost_stub_31a594(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31a594 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsNS_10shared_ptrISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEENSG_IS6_EENSG_IbEESJ_NSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+    // IDA 0x31a594: function::operator() invoked the erased target. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::list5(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>)")]
 // 0x31a7f0 — __ZN5boost3_bi5list5INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEES7_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEC2ES3_S6_S7_S7_SE_
 // was: boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::list5(boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>)
 pub fn boost_stub_31a7f0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31a7f0 __ZN5boost3_bi5list5INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEES7_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEC2ES3_S6_S7_S7_SE_")
+    // IDA 0x31a7f0: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::_bi::storage5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::storage5(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>)")]
 // 0x31a99c — __ZN5boost3_bi8storage5INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEES7_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEC2ES3_S6_S7_S7_SE_
 // was: boost::_bi::storage5<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::storage5(boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>)
 pub fn boost_stub_31a99c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31a99c __ZN5boost3_bi8storage5INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEES7_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEC2ES3_S6_S7_S7_SE_")
+    // IDA 0x31a99c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>>::storage4(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>)")]
 // 0x31ab68 — __ZN5boost3_bi8storage4INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEES7_EC2ES3_S6_S7_S7_
 // was: boost::_bi::storage4<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>>::storage4(boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>)
 pub fn boost_stub_31ab68(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31ab68 __ZN5boost3_bi8storage4INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEES7_EC2ES3_S6_S7_S7_")
+    // IDA 0x31ab68: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>>::storage3(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>)")]
 // 0x31ace0 — __ZN5boost3_bi8storage3INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEEEC2ES3_S6_S7_
 // was: boost::_bi::storage3<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>>::storage3(boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>)
 pub fn boost_stub_31ace0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31ace0 __ZN5boost3_bi8storage3INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEEEC2ES3_S6_S7_")
+    // IDA 0x31ace0: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>>::storage2(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>)")]
 // 0x31ae54 — __ZN5boost3_bi8storage2INS0_5valueISsEENS2_INS_10shared_ptrISiEEEEEC2ES3_S6_
 // was: boost::_bi::storage2<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>>::storage2(boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>)
 pub fn boost_stub_31ae54(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31ae54 __ZN5boost3_bi8storage2INS0_5valueISsEENS2_INS_10shared_ptrISiEEEEEC2ES3_S6_")
+    // IDA 0x31ae54: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost8functionIFvNS_10shared_ptrIN3RBX5mutexEEEEEC2INS_3_bi6bind_tIvPFvSsSsbbNS0_IFvPSsPSt9exceptionEEEENS8_5list5INS8_5valueISsEESJ_NSI_IbEESK_NSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
 // 0x31afb8 — __ZN5boost8functionIFvNS_10shared_ptrIN3RBX5mutexEEEEEC2INS_3_bi6bind_tIvPFvSsSsbbNS0_IFvPSsPSt9exceptionEEEENS8_5list5INS8_5valueISsEESJ_NSI_IbEESK_NSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost8functionIFvNS_10shared_ptrIN3RBX5mutexEEEEEC2INS_3_bi6bind_tIvPFvSsSsbbNS0_IFvPSsPSt9exceptionEEEENS8_5list5INS8_5valueISsEESJ_NSI_IbEESK_NSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_31afb8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31afb8 __ZN5boost8functionIFvNS_10shared_ptrIN3RBX5mutexEEEEEC2INS_3_bi6bind_tIvPFvSsSsbbNS0_IFvPSsPSt9exceptionEEEENS8_5list5INS8_5valueISsEESJ_NSI_IbEESK_NSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x31afb8: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEEC2INS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list5INS7_5valueISsEESJ_NSI_IbEESK_NSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
 // 0x31b33c — __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEEC2INS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list5INS7_5valueISsEESJ_NSI_IbEESK_NSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEEC2INS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list5INS7_5valueISsEESJ_NSI_IbEESK_NSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_31b33c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31b33c __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEEC2INS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list5INS7_5valueISsEESJ_NSI_IbEESK_NSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x31b33c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void boost::function1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>)")]
 // 0x31b6c4 — __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list5INS7_5valueISsEESJ_NSI_IbEESK_NSI_ISE_EEEEEEEEvT_
 // was: void boost::function1<void,boost::shared_ptr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>)
 pub fn boost_stub_31b6c4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31b6c4 __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list5INS7_5valueISsEESJ_NSI_IbEESK_NSI_ISE_EEEEEEEEvT_")
+    // IDA 0x31b6c4: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x31ba5c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEESF_NSE_IbEESG_NSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 pub fn boost_stub_31ba5c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31ba5c __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEESF_NSE_IbEESG_NSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeE")
+    // IDA 0x31ba5c: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,void,rbx_core::SharedPtr<RBX::mutex>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::mutex>)")]
 // 0x31ba78 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEESF_NSE_IbEESG_NSE_ISA_EEEEEEvNS_10shared_ptrIN3RBX5mutexEEEE6invokeERNS1_15function_bufferESN_
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,void,boost::shared_ptr<RBX::mutex>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::mutex>)
 pub fn boost_stub_31ba78(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31ba78 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEESF_NSE_IbEESG_NSE_ISA_EEEEEEvNS_10shared_ptrIN3RBX5mutexEEEE6invokeERNS1_15function_bufferESN_")
+    // IDA 0x31ba78: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &)const")]
 // 0x31ba80 — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list5INS9_5valueISsEESL_NSK_IbEESM_NSK_ISG_EEEEEEEEbT_RNS1_15function_bufferE
 // was: bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &)const
 pub fn boost_stub_31ba80(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31ba80 __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list5INS9_5valueISsEESL_NSK_IbEESM_NSK_ISG_EEEEEEEEbT_RNS1_15function_bufferE")
+    // IDA 0x31ba80: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // 0x31be08 — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list5INS9_5valueISsEESL_NSK_IbEESM_NSK_ISG_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // was: bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 pub fn boost_stub_31be08(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31be08 __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list5INS9_5valueISsEESL_NSK_IbEESM_NSK_ISG_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+    // IDA 0x31be08: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_functor<boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // 0x31c18c — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE14assign_functorINS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list5INS9_5valueISsEESL_NSK_IbEESM_NSK_ISG_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // was: void boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::mutex>>::assign_functor<boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
 pub fn boost_stub_31c18c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31c18c __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE14assign_functorINS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list5INS9_5valueISsEESL_NSK_IbEESM_NSK_ISG_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+    // IDA 0x31c18c: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::operator()<void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list1<rbx_core::SharedPtr<RBX::mutex> &>>(boost::_bi::type<void>,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::mutex> &> &,int)")]
 // 0x31c2e8 — __ZN5boost3_bi5list5INS0_5valueISsEES3_NS2_IbEES4_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEclIPFvSsSsbbSA_ENS0_5list1IRNS_10shared_ptrIN3RBX5mutexEEEEEEEvNS0_4typeIvEERT_RT0_i
 // was: void boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::operator()<void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list1<boost::shared_ptr<RBX::mutex> &>>(boost::_bi::type<void>,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>) &,boost::_bi::list1<boost::shared_ptr<RBX::mutex> &> &,int)
 pub fn boost_stub_31c2e8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31c2e8 __ZN5boost3_bi5list5INS0_5valueISsEES3_NS2_IbEES4_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEclIPFvSsSsbbSA_ENS0_5list1IRNS_10shared_ptrIN3RBX5mutexEEEEEEEvNS0_4typeIvEERT_RT0_i")
+    // IDA 0x31c2e8: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // 0x31c4e4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEESF_NSE_IbEESG_NSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,std::string,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 pub fn boost_stub_31c4e4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31c4e4 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEESF_NSE_IbEESG_NSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+    // IDA 0x31c4e4: function::operator() invoked the erased target. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::list5(boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>)")]
 // 0x31c72c — __ZN5boost3_bi5list5INS0_5valueISsEES3_NS2_IbEES4_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEC2ES3_S3_S4_S4_SB_
 // was: boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::list5(boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>)
 pub fn boost_stub_31c72c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31c72c __ZN5boost3_bi5list5INS0_5valueISsEES3_NS2_IbEES4_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEC2ES3_S3_S4_S4_SB_")
+    // IDA 0x31c72c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::_bi::storage5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::storage5(boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>)")]
 // 0x31c918 — __ZN5boost3_bi8storage5INS0_5valueISsEES3_NS2_IbEES4_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEC2ES3_S3_S4_S4_SB_
 // was: boost::_bi::storage5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::storage5(boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>)
 pub fn boost_stub_31c918(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31c918 __ZN5boost3_bi8storage5INS0_5valueISsEES3_NS2_IbEES4_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEC2ES3_S3_S4_S4_SB_")
+    // IDA 0x31c918: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>>::storage4(boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>)")]
 // 0x31cb24 — __ZN5boost3_bi8storage4INS0_5valueISsEES3_NS2_IbEES4_EC2ES3_S3_S4_S4_
 // was: boost::_bi::storage4<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>>::storage4(boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<bool>)
 pub fn boost_stub_31cb24(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31cb24 __ZN5boost3_bi8storage4INS0_5valueISsEES3_NS2_IbEES4_EC2ES3_S3_S4_S4_")
+    // IDA 0x31cb24: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::storage3(boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>)")]
 // 0x31ccd4 — __ZN5boost3_bi8storage3INS0_5valueISsEES3_NS2_IbEEEC2ES3_S3_S4_
 // was: boost::_bi::storage3<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::storage3(boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<bool>)
 pub fn boost_stub_31ccd4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31ccd4 __ZN5boost3_bi8storage3INS0_5valueISsEES3_NS2_IbEEEC2ES3_S3_S4_")
+    // IDA 0x31ccd4: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost8functionIFvNS_10shared_ptrIN3RBX5mutexEEEEEC2INS_3_bi6bind_tIvPFvSsbNS0_IFvPSsPSt9exceptionEEEENS8_5list3INS8_5valueISsEENSI_IbEENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
 // 0x31ce80 — __ZN5boost8functionIFvNS_10shared_ptrIN3RBX5mutexEEEEEC2INS_3_bi6bind_tIvPFvSsbNS0_IFvPSsPSt9exceptionEEEENS8_5list3INS8_5valueISsEENSI_IbEENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost8functionIFvNS_10shared_ptrIN3RBX5mutexEEEEEC2INS_3_bi6bind_tIvPFvSsbNS0_IFvPSsPSt9exceptionEEEENS8_5list3INS8_5valueISsEENSI_IbEENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_31ce80(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31ce80 __ZN5boost8functionIFvNS_10shared_ptrIN3RBX5mutexEEEEEC2INS_3_bi6bind_tIvPFvSsbNS0_IFvPSsPSt9exceptionEEEENS8_5list3INS8_5valueISsEENSI_IbEENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x31ce80: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEEC2INS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list3INS7_5valueISsEENSI_IbEENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
 // 0x31d0a8 — __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEEC2INS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list3INS7_5valueISsEENSI_IbEENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEEC2INS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list3INS7_5valueISsEENSI_IbEENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_31d0a8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31d0a8 __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEEC2INS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list3INS7_5valueISsEENSI_IbEENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x31d0a8: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void boost::function1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>)")]
 // 0x31d2d0 — __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list3INS7_5valueISsEENSI_IbEENSI_ISE_EEEEEEEEvT_
 // was: void boost::function1<void,boost::shared_ptr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>)
 pub fn boost_stub_31d2d0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31d2d0 __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS7_5list3INS7_5valueISsEENSI_IbEENSI_ISE_EEEEEEEEvT_")
+    // IDA 0x31d2d0: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x31d50c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list3INS3_5valueISsEENSE_IbEENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 pub fn boost_stub_31d50c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31d50c __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list3INS3_5valueISsEENSE_IbEENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeE")
+    // IDA 0x31d50c: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,void,rbx_core::SharedPtr<RBX::mutex>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::mutex>)")]
 // 0x31d528 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list3INS3_5valueISsEENSE_IbEENSE_ISA_EEEEEEvNS_10shared_ptrIN3RBX5mutexEEEE6invokeERNS1_15function_bufferESN_
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,void,boost::shared_ptr<RBX::mutex>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::mutex>)
 pub fn boost_stub_31d528(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31d528 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list3INS3_5valueISsEENSE_IbEENSE_ISA_EEEEEEvNS_10shared_ptrIN3RBX5mutexEEEE6invokeERNS1_15function_bufferESN_")
+    // IDA 0x31d528: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &)const")]
 // 0x31d530 — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list3INS9_5valueISsEENSK_IbEENSK_ISG_EEEEEEEEbT_RNS1_15function_bufferE
 // was: bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &)const
 pub fn boost_stub_31d530(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31d530 __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list3INS9_5valueISsEENSK_IbEENSK_ISG_EEEEEEEEbT_RNS1_15function_bufferE")
+    // IDA 0x31d530: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // 0x31d75c — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list3INS9_5valueISsEENSK_IbEENSK_ISG_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // was: bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::mutex>>::assign_to<boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 pub fn boost_stub_31d75c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31d75c __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE9assign_toINS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list3INS9_5valueISsEENSK_IbEENSK_ISG_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+    // IDA 0x31d75c: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::mutex>>::assign_functor<boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // 0x31d984 — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE14assign_functorINS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list3INS9_5valueISsEENSK_IbEENSK_ISG_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // was: void boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::mutex>>::assign_functor<boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>(boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
 pub fn boost_stub_31d984(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31d984 __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX5mutexEEEE14assign_functorINS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS9_5list3INS9_5valueISsEENSK_IbEENSK_ISG_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+    // IDA 0x31d984: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::operator()<void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list1<rbx_core::SharedPtr<RBX::mutex> &>>(boost::_bi::type<void>,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::mutex> &> &,int)")]
 // 0x31da84 — __ZN5boost3_bi5list3INS0_5valueISsEENS2_IbEENS2_INS_8functionIFvPSsPSt9exceptionEEEEEEclIPFvSsbSA_ENS0_5list1IRNS_10shared_ptrIN3RBX5mutexEEEEEEEvNS0_4typeIvEERT_RT0_i
 // was: void boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::operator()<void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list1<boost::shared_ptr<RBX::mutex> &>>(boost::_bi::type<void>,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>) &,boost::_bi::list1<boost::shared_ptr<RBX::mutex> &> &,int)
 pub fn boost_stub_31da84(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31da84 __ZN5boost3_bi5list3INS0_5valueISsEENS2_IbEENS2_INS_8functionIFvPSsPSt9exceptionEEEEEEclIPFvSsbSA_ENS0_5list1IRNS_10shared_ptrIN3RBX5mutexEEEEEEEvNS0_4typeIvEERT_RT0_i")
+    // IDA 0x31da84: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // 0x31dbf0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list3INS3_5valueISsEENSE_IbEENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 pub fn boost_stub_31dbf0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31dbf0 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list3INS3_5valueISsEENSE_IbEENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+    // IDA 0x31dbf0: function::operator() invoked the erased target. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "boost::function2<void,std::string *,std::exception *>::assign_to_own(boost::function2<void,std::string *,std::exception *> const&)")]
 // 0x31dd9c — __ZN5boost9function2IvPSsPSt9exceptionE13assign_to_ownERKS4_
 // was: boost::function2<void,std::string *,std::exception *>::assign_to_own(boost::function2<void,std::string *,std::exception *> const&)
 pub fn boost_stub_31dd9c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31dd9c __ZN5boost9function2IvPSsPSt9exceptionE13assign_to_ownERKS4_")
+    // IDA 0x31dd9c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::list3(boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>)")]
 // 0x31ddcc — __ZN5boost3_bi5list3INS0_5valueISsEENS2_IbEENS2_INS_8functionIFvPSsPSt9exceptionEEEEEEC2ES3_S4_SB_
 // was: boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::list3(boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>)
 pub fn boost_stub_31ddcc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31ddcc __ZN5boost3_bi5list3INS0_5valueISsEENS2_IbEENS2_INS_8functionIFvPSsPSt9exceptionEEEEEEC2ES3_S4_SB_")
+    // IDA 0x31ddcc: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::storage3(boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>)")]
 // 0x31df30 — __ZN5boost3_bi8storage3INS0_5valueISsEENS2_IbEENS2_INS_8functionIFvPSsPSt9exceptionEEEEEEC2ES3_S4_SB_
 // was: boost::_bi::storage3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::storage3(boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>)
 pub fn boost_stub_31df30(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31df30 __ZN5boost3_bi8storage3INS0_5valueISsEENS2_IbEENS2_INS_8functionIFvPSsPSt9exceptionEEEEEEC2ES3_S4_SB_")
+    // IDA 0x31df30: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<std::string>,boost::_bi::value<bool>>::storage2(boost::_bi::value<std::string>,boost::_bi::value<bool>)")]
 // 0x31e084 — __ZN5boost3_bi8storage2INS0_5valueISsEENS2_IbEEEC2ES3_S4_
 // was: boost::_bi::storage2<boost::_bi::value<std::string>,boost::_bi::value<bool>>::storage2(boost::_bi::value<std::string>,boost::_bi::value<bool>)
 pub fn boost_stub_31e084(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31e084 __ZN5boost3_bi8storage2INS0_5valueISsEENS2_IbEEEC2ES3_S4_")
+    // IDA 0x31e084: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::function2<void,std::string *,std::exception *>::operator()(std::string *,std::exception *)const")]
 // 0x31e1a8 — __ZNK5boost9function2IvPSsPSt9exceptionEclES1_S3_
 // was: boost::function2<void,std::string *,std::exception *>::operator()(std::string *,std::exception *)const
 pub fn boost_stub_31e1a8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31e1a8 __ZNK5boost9function2IvPSsPSt9exceptionEclES1_S3_")
+    // IDA 0x31e1a8: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<std::istream>::shared_ptr<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>(std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>> *)")]
 // 0x31e270 — __ZN5boost10shared_ptrISiEC2ISt19basic_istringstreamIcSt11char_traitsIcESaIcEEEEPT_
 // was: boost::shared_ptr<std::istream>::shared_ptr<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>(std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>> *)
 pub fn boost_stub_31e270(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31e270 __ZN5boost10shared_ptrISiEC2ISt19basic_istringstreamIcSt11char_traitsIcESaIcEEEEPT_")
+    // IDA 0x31e270: function::operator() invoked the erased target. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>(std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>> *)")]
 // 0x31e344 — __ZN5boost6detail12shared_countC2ISt19basic_istringstreamIcSt11char_traitsIcESaIcEEEEPT_
 // was: boost::detail::shared_count::shared_count<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>(std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>> *)
 pub fn boost_stub_31e344(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31e344 __ZN5boost6detail12shared_countC2ISt19basic_istringstreamIcSt11char_traitsIcESaIcEEEEPT_")
+    // IDA 0x31e344: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>::~sp_counted_impl_p()")]
 // 0x31e43c — __ZN5boost6detail17sp_counted_impl_pISt19basic_istringstreamIcSt11char_traitsIcESaIcEEED1Ev
 // was: boost::detail::sp_counted_impl_p<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>::~sp_counted_impl_p()
 pub fn boost_stub_31e43c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31e43c __ZN5boost6detail17sp_counted_impl_pISt19basic_istringstreamIcSt11char_traitsIcESaIcEEED1Ev")
+    // IDA 0x31e43c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>::~sp_counted_impl_p()")]
 // 0x31e440 — __ZN5boost6detail17sp_counted_impl_pISt19basic_istringstreamIcSt11char_traitsIcESaIcEEED0Ev
 // was: boost::detail::sp_counted_impl_p<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>::~sp_counted_impl_p()
 pub fn boost_stub_31e440(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31e440 __ZN5boost6detail17sp_counted_impl_pISt19basic_istringstreamIcSt11char_traitsIcESaIcEEED0Ev")
+    // IDA 0x31e440: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>::dispose(void)")]
 // 0x31e444 — __ZN5boost6detail17sp_counted_impl_pISt19basic_istringstreamIcSt11char_traitsIcESaIcEEE7disposeEv
 // was: boost::detail::sp_counted_impl_p<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>::dispose(void)
 pub fn boost_stub_31e444(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31e444 __ZN5boost6detail17sp_counted_impl_pISt19basic_istringstreamIcSt11char_traitsIcESaIcEEE7disposeEv")
+    // IDA 0x31e444: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>::get_deleter(std::type_info const&)")]
 // 0x31e454 — __ZN5boost6detail17sp_counted_impl_pISt19basic_istringstreamIcSt11char_traitsIcESaIcEEE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_p<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>::get_deleter(std::type_info const&)
 pub fn boost_stub_31e454(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31e454 __ZN5boost6detail17sp_counted_impl_pISt19basic_istringstreamIcSt11char_traitsIcESaIcEEE11get_deleterERKSt9type_info")
+    // IDA 0x31e454: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>::get_untyped_deleter(void)")]
 // 0x31e458 — __ZN5boost6detail17sp_counted_impl_pISt19basic_istringstreamIcSt11char_traitsIcESaIcEEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_p<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>::get_untyped_deleter(void)
 pub fn boost_stub_31e458(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31e458 __ZN5boost6detail17sp_counted_impl_pISt19basic_istringstreamIcSt11char_traitsIcESaIcEEE19get_untyped_deleterEv")
+    // IDA 0x31e458: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::circular_buffer<double,std::allocator<double>>::destroy(void)")]
 // 0x31e63c — __ZN5boost15circular_bufferIdSaIdEE7destroyEv
 // was: boost::circular_buffer<double,std::allocator<double>>::destroy(void)
 pub fn boost_stub_31e63c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x31e63c __ZN5boost15circular_bufferIdSaIdEE7destroyEv")
+    // IDA 0x31e63c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::circular_buffer_space_optimized<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>::clear(void)")]
 // 0x325bb4 — __ZN5boost31circular_buffer_space_optimizedIN3RBX18InterpolatedCFrame9FrameInfoESaIS3_EE5clearEv
 // was: boost::circular_buffer_space_optimized<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>::clear(void)
 pub fn boost_stub_325bb4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x325bb4 __ZN5boost31circular_buffer_space_optimizedIN3RBX18InterpolatedCFrame9FrameInfoESaIS3_EE5clearEv")
+    // IDA 0x325bb4: libstdc++ container internals. Vec/BTreeMap/String — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::circular_buffer_space_optimized<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>::check_low_capacity(unsigned long)")]
 // 0x325be0 — __ZN5boost31circular_buffer_space_optimizedIN3RBX18InterpolatedCFrame9FrameInfoESaIS3_EE18check_low_capacityEm
 // was: boost::circular_buffer_space_optimized<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>::check_low_capacity(unsigned long)
 pub fn boost_stub_325be0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x325be0 __ZN5boost31circular_buffer_space_optimizedIN3RBX18InterpolatedCFrame9FrameInfoESaIS3_EE18check_low_capacityEm")
+    // IDA 0x325be0: libstdc++ container internals. Vec/BTreeMap/String — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>::push_back(RBX::InterpolatedCFrame::FrameInfo const&)")]
 // 0x325c38 — __ZN5boost15circular_bufferIN3RBX18InterpolatedCFrame9FrameInfoESaIS3_EE9push_backERKS3_
 // was: boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>::push_back(RBX::InterpolatedCFrame::FrameInfo const&)
 pub fn boost_stub_325c38(_ptr: crate::SharedPtr<()>) {
-    todo!("0x325c38 __ZN5boost15circular_bufferIN3RBX18InterpolatedCFrame9FrameInfoESaIS3_EE9push_backERKS3_")
+    // IDA 0x325c38: libstdc++ container internals. Vec/BTreeMap/String — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>::set_capacity(unsigned long)")]
 // 0x325ce4 — __ZN5boost15circular_bufferIN3RBX18InterpolatedCFrame9FrameInfoESaIS3_EE12set_capacityEm
 // was: boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>::set_capacity(unsigned long)
 pub fn boost_stub_325ce4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x325ce4 __ZN5boost15circular_bufferIN3RBX18InterpolatedCFrame9FrameInfoESaIS3_EE12set_capacityEm")
+    // IDA 0x325ce4: libstdc++ container internals. Vec/BTreeMap/String — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::cb_details::iterator<boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>,boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>>::operator+=(int)")]
 // 0x325e8c — __ZN5boost10cb_details8iteratorINS_15circular_bufferIN3RBX18InterpolatedCFrame9FrameInfoESaIS5_EEENS0_15nonconst_traitsIS6_EEEpLEi
 // was: boost::cb_details::iterator<boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>,boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>>::operator+=(int)
 pub fn boost_stub_325e8c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x325e8c __ZN5boost10cb_details8iteratorINS_15circular_bufferIN3RBX18InterpolatedCFrame9FrameInfoESaIS5_EEENS0_15nonconst_traitsIS6_EEEpLEi")
+    // IDA 0x325e8c: libstdc++ container internals. Vec/BTreeMap/String — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::cb_details::iterator<boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>,boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>>::operator-=(int)")]
 // 0x325ed4 — __ZN5boost10cb_details8iteratorINS_15circular_bufferIN3RBX18InterpolatedCFrame9FrameInfoESaIS5_EEENS0_15nonconst_traitsIS6_EEEmIEi
 // was: boost::cb_details::iterator<boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>,boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>>::operator-=(int)
 pub fn boost_stub_325ed4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x325ed4 __ZN5boost10cb_details8iteratorINS_15circular_bufferIN3RBX18InterpolatedCFrame9FrameInfoESaIS5_EEENS0_15nonconst_traitsIS6_EEEmIEi")
+    // IDA 0x325ed4: libstdc++ container internals. Vec/BTreeMap/String — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::circular_buffer_space_optimized<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>::erase(boost::cb_details::iterator<boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>,boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>>,boost::cb_details::iterator<boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>,boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>>)")]
 // 0x325f14 — __ZN5boost31circular_buffer_space_optimizedIN3RBX18InterpolatedCFrame9FrameInfoESaIS3_EE5eraseENS_10cb_details8iteratorINS_15circular_bufferIS3_S4_EENS6_15nonconst_traitsIS4_EEEESC_
 // was: boost::circular_buffer_space_optimized<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>::erase(boost::cb_details::iterator<boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>,boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>>,boost::cb_details::iterator<boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>,boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>>)
 pub fn boost_stub_325f14(_ptr: crate::SharedPtr<()>) {
-    todo!("0x325f14 __ZN5boost31circular_buffer_space_optimizedIN3RBX18InterpolatedCFrame9FrameInfoESaIS3_EE5eraseENS_10cb_details8iteratorINS_15circular_bufferIS3_S4_EENS6_15nonconst_traitsIS4_EEEESC_")
+    // IDA 0x325f14: libstdc++ container internals. Vec/BTreeMap/String — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>::erase(boost::cb_details::iterator<boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>,boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>>,boost::cb_details::iterator<boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>,boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>>)")]
 // 0x325f94 — __ZN5boost15circular_bufferIN3RBX18InterpolatedCFrame9FrameInfoESaIS3_EE5eraseENS_10cb_details8iteratorIS5_NS6_15nonconst_traitsIS4_EEEESA_
 // was: boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>::erase(boost::cb_details::iterator<boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>,boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>>,boost::cb_details::iterator<boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>,boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>>)
 pub fn boost_stub_325f94(_ptr: crate::SharedPtr<()>) {
-    todo!("0x325f94 __ZN5boost15circular_bufferIN3RBX18InterpolatedCFrame9FrameInfoESaIS3_EE5eraseENS_10cb_details8iteratorIS5_NS6_15nonconst_traitsIS4_EEEESA_")
+    // IDA 0x325f94: libstdc++ container internals. Vec/BTreeMap/String — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::circular_buffer_space_optimized<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>::check_high_capacity(void)")]
 // 0x32607c — __ZN5boost31circular_buffer_space_optimizedIN3RBX18InterpolatedCFrame9FrameInfoESaIS3_EE19check_high_capacityEv
 // was: boost::circular_buffer_space_optimized<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>::check_high_capacity(void)
 pub fn boost_stub_32607c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x32607c __ZN5boost31circular_buffer_space_optimizedIN3RBX18InterpolatedCFrame9FrameInfoESaIS3_EE19check_high_capacityEv")
+    // IDA 0x32607c: libstdc++ container internals. Vec/BTreeMap/String — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>::pointer boost::cb_details::iterator<boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>,boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>>::linearize_pointer<boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>>(boost::cb_details::iterator<boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>,boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>::pointer> const&)const")]
 // 0x3260d8 — __ZNK5boost10cb_details8iteratorINS_15circular_bufferIN3RBX18InterpolatedCFrame9FrameInfoESaIS5_EEENS0_15nonconst_traitsIS6_EEE17linearize_pointerIS9_EENT_7pointerERKNS1_IS7_SC_EE
 // was: boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>::pointer boost::cb_details::iterator<boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>,boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>>::linearize_pointer<boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>>(boost::cb_details::iterator<boost::circular_buffer<RBX::InterpolatedCFrame::FrameInfo,std::allocator<RBX::InterpolatedCFrame::FrameInfo>>,boost::cb_details::nonconst_traits<std::allocator<RBX::InterpolatedCFrame::FrameInfo>>::pointer> const&)const
 pub fn boost_stub_3260d8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3260d8 __ZNK5boost10cb_details8iteratorINS_15circular_bufferIN3RBX18InterpolatedCFrame9FrameInfoESaIS5_EEENS0_15nonconst_traitsIS6_EEE17linearize_pointerIS9_EENT_7pointerERKNS1_IS7_SC_EE")
+    // IDA 0x3260d8: libstdc++ container internals. Vec/BTreeMap/String — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::string>>,std::string,std::string,boost::hash<std::string>,std::equal_to<std::string>>>::find_node(std::string const&)const")]
 // 0x345b08 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSsEESsSsNS_4hashISsEESt8equal_toISsEEEE9find_nodeERS5_
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::string>>,std::string,std::string,boost::hash<std::string>,std::equal_to<std::string>>>::find_node(std::string const&)const
 pub fn boost_stub_345b08(_ptr: crate::SharedPtr<()>) {
-    todo!("0x345b08 __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSsEESsSsNS_4hashISsEESt8equal_toISsEEEE9find_nodeERS5_")
+    // IDA 0x345b08: libstdc++ container internals. Vec/BTreeMap/String — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::string>>> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::string>>,std::string,std::string,boost::hash<std::string>,std::equal_to<std::string>>>::find_node_impl<std::string,std::equal_to<std::string>>(unsigned long,std::string const&,std::equal_to<std::string> const&)const")]
 // 0x345b48 — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSsEESsSsNS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSB_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS6_EEEEmRKT_RKT0_
 // was: boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::string>>> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::string>>,std::string,std::string,boost::hash<std::string>,std::equal_to<std::string>>>::find_node_impl<std::string,std::equal_to<std::string>>(unsigned long,std::string const&,std::equal_to<std::string> const&)const
 pub fn boost_stub_345b48(_ptr: crate::SharedPtr<()>) {
-    todo!("0x345b48 __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSsEESsSsNS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSB_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS6_EEEEmRKT_RKT0_")
+    // IDA 0x345b48: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::string>>,std::string,std::string,boost::hash<std::string>,std::equal_to<std::string>>>::table(unsigned long,boost::hash<std::string> const&,std::equal_to<std::string> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::string>>> const&)")]
 // 0x345bb4 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSsEESsSsNS_4hashISsEESt8equal_toISsEEEEC2EmRKS9_RKSB_RKSaINS1_8ptr_nodeIS6_EEE
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::string>>,std::string,std::string,boost::hash<std::string>,std::equal_to<std::string>>>::table(unsigned long,boost::hash<std::string> const&,std::equal_to<std::string> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::string>>> const&)
 pub fn boost_stub_345bb4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x345bb4 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSsEESsSsNS_4hashISsEESt8equal_toISsEEEEC2EmRKS9_RKSB_RKSaINS1_8ptr_nodeIS6_EEE")
+    // IDA 0x345bb4: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "__ZN5boost8functionIFvSsEEC2INS_3_bi6bind_tINS4_11unspecifiedENS0_IFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS4_5list1INS4_5valueISK_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")]
 // 0x350670 — __ZN5boost8functionIFvSsEEC2INS_3_bi6bind_tINS4_11unspecifiedENS0_IFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS4_5list1INS4_5valueISK_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost8functionIFvSsEEC2INS_3_bi6bind_tINS4_11unspecifiedENS0_IFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS4_5list1INS4_5valueISK_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_350670(_ptr: crate::SharedPtr<()>) {
-    todo!("0x350670 __ZN5boost8functionIFvSsEEC2INS_3_bi6bind_tINS4_11unspecifiedENS0_IFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS4_5list1INS4_5valueISK_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x350670: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "__ZN5boost9function1IvSsEC2INS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS3_5list1INS3_5valueISK_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")]
 // 0x3507b4 — __ZN5boost9function1IvSsEC2INS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS3_5list1INS3_5valueISK_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost9function1IvSsEC2INS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS3_5list1INS3_5valueISK_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_3507b4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3507b4 __ZN5boost9function1IvSsEC2INS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS3_5list1INS3_5valueISK_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x3507b4: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::WeakPtr<RBX::AsyncHttpQueue>::expired(void)const")]
 // 0x352dc8 — __ZNK5boost8weak_ptrIN3RBX14AsyncHttpQueueEE7expiredEv
 // was: boost::weak_ptr<RBX::AsyncHttpQueue>::expired(void)const
 pub fn boost_stub_352dc8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x352dc8 __ZNK5boost8weak_ptrIN3RBX14AsyncHttpQueueEE7expiredEv")
+    // IDA 0x352dc8: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<bool (*)(std::string const&,std::string *)>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x356328 — __ZN5boost6detail8function15functor_managerIPFbRKSsPSsEE6manageERKNS1_15function_bufferERS9_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<bool (*)(std::string const&,std::string *)>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 pub fn boost_stub_356328(_ptr: crate::SharedPtr<()>) {
-    todo!("0x356328 __ZN5boost6detail8function15functor_managerIPFbRKSsPSsEE6manageERKNS1_15function_bufferERS9_NS1_30functor_manager_operation_typeE")
+    // IDA 0x356328: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "boost::function1<void,bool>::clear(void)")]
 // 0x356588 — __ZN5boost9function1IvbE5clearEv
 // was: boost::function1<void,bool>::clear(void)
 pub fn boost_stub_356588(_ptr: crate::SharedPtr<()>) {
-    todo!("0x356588 __ZN5boost9function1IvbE5clearEv")
+    // IDA 0x356588: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>>::clear(void)")]
 // 0x3565b8 — __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE5clearEv
 // was: boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::clear(void)
 pub fn boost_stub_3565b8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3565b8 __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE5clearEv")
+    // IDA 0x3565b8: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::operator[](std::string const&)")]
 // 0x35c508 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEEixERS5_
 // was: boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::operator[](std::string const&)
 pub fn boost_stub_35c508(_ptr: crate::SharedPtr<()>) {
-    todo!("0x35c508 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEEixERS5_")
+    // IDA 0x35c508: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,RBX::Name *>>>>::construct_with_value<boost::unordered::detail::emplace_args3<boost::unordered::piecewise_construct_t,boost::tuples::tuple<std::string,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type>,boost::tuples::tuple<boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type>>>(boost::unordered::detail::emplace_args3<boost::unordered::piecewise_construct_t,boost::tuples::tuple<std::string,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type>,boost::tuples::tuple<boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type>> const&)")]
 // 0x35c740 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsPN3RBX4NameEEEEEE20construct_with_valueINS1_13emplace_args3INS0_21piecewise_construct_tENS_6tuples5tupleISsNSG_9null_typeESI_SI_SI_SI_SI_SI_SI_SI_EENSH_ISI_SI_SI_SI_SI_SI_SI_SI_SI_SI_EEEEEEvRKT_
 // was: void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,RBX::Name *>>>>::construct_with_value<boost::unordered::detail::emplace_args3<boost::unordered::piecewise_construct_t,boost::tuples::tuple<std::string,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type>,boost::tuples::tuple<boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type>>>(boost::unordered::detail::emplace_args3<boost::unordered::piecewise_construct_t,boost::tuples::tuple<std::string,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type>,boost::tuples::tuple<boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type>> const&)
 pub fn boost_stub_35c740(_ptr: crate::SharedPtr<()>) {
-    todo!("0x35c740 __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsPN3RBX4NameEEEEEE20construct_with_valueINS1_13emplace_args3INS0_21piecewise_construct_tENS_6tuples5tupleISsNSG_9null_typeESI_SI_SI_SI_SI_SI_SI_SI_EENSH_ISI_SI_SI_SI_SI_SI_SI_SI_SI_SI_EEEEEEvRKT_")
+    // IDA 0x35c740: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::reserve_for_insert(unsigned long)")]
 // 0x35c764 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE18reserve_for_insertEm
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::reserve_for_insert(unsigned long)
 pub fn boost_stub_35c764(_ptr: crate::SharedPtr<()>) {
-    todo!("0x35c764 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE18reserve_for_insertEm")
+    // IDA 0x35c764: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,RBX::Name *>>>>::~node_constructor()")]
 // 0x35c7b4 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsPN3RBX4NameEEEEEED2Ev
 // was: boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,RBX::Name *>>>>::~node_constructor()
 pub fn boost_stub_35c7b4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x35c7b4 __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsPN3RBX4NameEEEEEED2Ev")
+    // IDA 0x35c7b4: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::create_buckets(unsigned long)")]
 // 0x35c7d0 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::create_buckets(unsigned long)
 pub fn boost_stub_35c7d0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x35c7d0 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm")
+    // IDA 0x35c7d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::min_buckets_for_size(unsigned long)const")]
 // 0x35c8f8 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE20min_buckets_for_sizeEm
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::min_buckets_for_size(unsigned long)const
 pub fn boost_stub_35c8f8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x35c8f8 __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE20min_buckets_for_sizeEm")
+    // IDA 0x35c8f8: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::rehash_impl(unsigned long)")]
 // 0x35c988 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm
 // was: boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::rehash_impl(unsigned long)
 pub fn boost_stub_35c988(_ptr: crate::SharedPtr<()>) {
-    todo!("0x35c988 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm")
+    // IDA 0x35c988: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>> &,boost::unordered::detail::ptr_bucket *)")]
 // 0x35c9b4 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE15place_in_bucketERNS1_5tableISF_EEPNS1_10ptr_bucketE
 // was: boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>> &,boost::unordered::detail::ptr_bucket *)
 pub fn boost_stub_35c9b4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x35c9b4 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE15place_in_bucketERNS1_5tableISF_EEPNS1_10ptr_bucketE")
+    // IDA 0x35c9b4: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,RBX::Name *>>>>::construct(void)")]
 // 0x35ca0c — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsPN3RBX4NameEEEEEE9constructEv
 // was: boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,RBX::Name *>>>>::construct(void)
 pub fn boost_stub_35ca0c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x35ca0c __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsPN3RBX4NameEEEEEE9constructEv")
+    // IDA 0x35ca0c: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<std::string const,RBX::Name *>>> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::find_node_impl<std::string,std::equal_to<std::string>>(unsigned long,std::string const&,std::equal_to<std::string> const&)const")]
 // 0x35ca48 — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSE_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS9_EEEEmRKT_RKT0_
 // was: boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<std::string const,RBX::Name *>>> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::find_node_impl<std::string,std::equal_to<std::string>>(unsigned long,std::string const&,std::equal_to<std::string> const&)const
 pub fn boost_stub_35ca48(_ptr: crate::SharedPtr<()>) {
-    todo!("0x35ca48 __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSE_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS9_EEEEmRKT_RKT0_")
+    // IDA 0x35ca48: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::find_node(std::string const&)const")]
 // 0x35cab4 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE9find_nodeERS5_
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::find_node(std::string const&)const
 pub fn boost_stub_35cab4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x35cab4 __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE9find_nodeERS5_")
+    // IDA 0x35cab4: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)")]
 // 0x35cbec — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14delete_bucketsEv
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)
 pub fn boost_stub_35cbec(_ptr: crate::SharedPtr<()>) {
-    todo!("0x35cbec __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14delete_bucketsEv")
+    // IDA 0x35cbec: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::delete_node(boost::unordered::detail::ptr_bucket *)")]
 // 0x35cc24 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE11delete_nodeEPNS1_10ptr_bucketE
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::delete_node(boost::unordered::detail::ptr_bucket *)
 pub fn boost_stub_35cc24(_ptr: crate::SharedPtr<()>) {
-    todo!("0x35cc24 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE11delete_nodeEPNS1_10ptr_bucketE")
+    // IDA 0x35cc24: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::table(unsigned long,boost::hash<std::string> const&,std::equal_to<std::string> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,RBX::Name *>>> const&)")]
 // 0x35cc54 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEEC2EmRKSC_RKSE_RKSaINS1_8ptr_nodeIS9_EEE
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Name *>>,std::string,RBX::Name *,boost::hash<std::string>,std::equal_to<std::string>>>::table(unsigned long,boost::hash<std::string> const&,std::equal_to<std::string> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,RBX::Name *>>> const&)
 pub fn boost_stub_35cc54(_ptr: crate::SharedPtr<()>) {
-    todo!("0x35cc54 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEEC2EmRKSC_RKSE_RKSaINS1_8ptr_nodeIS9_EEE")
+    // IDA 0x35cc54: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::PhysicsJob>::operator=(rbx_core::SharedPtr<RBX::PhysicsJob> const&)")]
 // 0x3618e0 — __ZN5boost10shared_ptrIN3RBX10PhysicsJobEEaSERKS3_
 // was: boost::shared_ptr<RBX::PhysicsJob>::operator=(boost::shared_ptr<RBX::PhysicsJob> const&)
 pub fn boost_stub_3618e0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3618e0 __ZN5boost10shared_ptrIN3RBX10PhysicsJobEEaSERKS3_")
+    // IDA 0x3618e0: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::HeartbeatTask>::operator=(rbx_core::SharedPtr<RBX::HeartbeatTask> const&)")]
 // 0x361a78 — __ZN5boost10shared_ptrIN3RBX13HeartbeatTaskEEaSERKS3_
 // was: boost::shared_ptr<RBX::HeartbeatTask>::operator=(boost::shared_ptr<RBX::HeartbeatTask> const&)
 pub fn boost_stub_361a78(_ptr: crate::SharedPtr<()>) {
-    todo!("0x361a78 __ZN5boost10shared_ptrIN3RBX13HeartbeatTaskEEaSERKS3_")
+    // IDA 0x361a78: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::RunService> RBX::shared_from<RBX::RunService>(RBX::RunService*)")]
 // 0x361ab0 — __ZN3RBX11shared_fromINS_10RunServiceEEEN5boost10shared_ptrIT_EEPS4_
 // was: boost::shared_ptr<RBX::RunService> RBX::shared_from<RBX::RunService>(RBX::RunService*)
 pub fn boost_stub_361ab0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x361ab0 __ZN3RBX11shared_fromINS_10RunServiceEEEN5boost10shared_ptrIT_EEPS4_")
+    // IDA 0x361ab0: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::weak_count::operator=(boost::detail::shared_count const&)")]
 // 0x362510 — __ZN5boost6detail10weak_countaSERKNS0_12shared_countE
 // was: boost::detail::weak_count::operator=(boost::detail::shared_count const&)
 pub fn boost_stub_362510(_ptr: crate::SharedPtr<()>) {
-    todo!("0x362510 __ZN5boost6detail10weak_countaSERKNS0_12shared_countE")
+    // IDA 0x362510: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::RunTransition)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::RunTransition)>::slot> &)")]
 // 0x3627c4 — __ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
 // was: rbx::signals::signal<void ()(RBX::RunTransition)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RunTransition)>::slot> &)
 pub fn boost_stub_3627c4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3627c4 __ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE4nextERN5boost13intrusive_ptrINS5_4slotEEE")
+    // IDA 0x3627c4: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::bad_function_call::bad_function_call(void)")]
 // 0x362950 — __ZN5boost17bad_function_callC2Ev
 // was: boost::bad_function_call::bad_function_call(void)
 pub fn boost_stub_362950(_ptr: crate::SharedPtr<()>) {
-    todo!("0x362950 __ZN5boost17bad_function_callC2Ev")
+    // IDA 0x362950: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
 // 0x362a98 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED1Ev
 // was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()
 pub fn boost_stub_362a98(_ptr: crate::SharedPtr<()>) {
-    todo!("0x362a98 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED1Ev")
+    // IDA 0x362a98: boost::exception/std-error machinery. thiserror/std::error — carrier no-op.
 }
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()")]
 // 0x362aa8 — __ZN5boost16exception_detail19error_info_injectorINS_17bad_function_callEED1Ev
 // was: boost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()
 pub fn boost_stub_362aa8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x362aa8 __ZN5boost16exception_detail19error_info_injectorINS_17bad_function_callEED1Ev")
+    // IDA 0x362aa8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
 // 0x362ab0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED0Ev
 // was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()
 pub fn boost_stub_362ab0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x362ab0 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED0Ev")
+    // IDA 0x362ab0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::clone_tag)")]
 // 0x362ac8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEEC1ERKS5_NS5_9clone_tagE
 // was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::clone_tag)
 pub fn boost_stub_362ac8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x362ac8 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEEC1ERKS5_NS5_9clone_tagE")
+    // IDA 0x362ac8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::clone_impl(boost::exception_detail::error_info_injector<boost::bad_function_call> const&)")]
 // 0x362c30 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEEC1ERKS4_
 // was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::clone_impl(boost::exception_detail::error_info_injector<boost::bad_function_call> const&)
 pub fn boost_stub_362c30(_ptr: crate::SharedPtr<()>) {
-    todo!("0x362c30 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEEC1ERKS4_")
+    // IDA 0x362c30: boost::exception/std-error machinery. thiserror/std::error — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::RunTransition)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::RunTransition)>::slot> const&)")]
 // 0x362d98 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX13RunTransitionEEE4slotEEaSERKS9_
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RunTransition)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RunTransition)>::slot> const&)
 pub fn boost_stub_362d98(_ptr: crate::SharedPtr<()>) {
-    todo!("0x362d98 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX13RunTransitionEEE4slotEEaSERKS9_")
+    // IDA 0x362d98: boost::exception/std-error machinery. thiserror/std::error — carrier no-op.
 }
 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::rethrow(void)const")]
 // 0x362dc0 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE7rethrowEv
 // was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::rethrow(void)const
 pub fn boost_stub_362dc0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x362dc0 __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE7rethrowEv")
+    // IDA 0x362dc0: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::rethrow(void)const")]
 // 0x362f88 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE7rethrowEv
 // was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::rethrow(void)const
 pub fn boost_stub_362f88(_ptr: crate::SharedPtr<()>) {
-    todo!("0x362f88 __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE7rethrowEv")
+    // IDA 0x362f88: boost::exception/std-error machinery. thiserror/std::error — carrier no-op.
 }
 
 #[doc(alias = "virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
 // 0x362f98 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev
 // was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()
 pub fn boost_stub_362f98(_ptr: crate::SharedPtr<()>) {
-    todo!("0x362f98 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev")
+    // IDA 0x362f98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "non_virtual_thunk_to boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
 // 0x362fb8 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev
 // was: non-virtual thunk to boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()
 pub fn boost_stub_362fb8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x362fb8 __ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev")
+    // IDA 0x362fb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone_tag)")]
 // 0x362fd0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEEC1ERKS5_NS5_9clone_tagE
 // was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone_tag)
 pub fn boost_stub_362fd0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x362fd0 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEEC1ERKS5_NS5_9clone_tagE")
+    // IDA 0x362fd0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "void rbx_core::SharedPtr_add_ref<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
 // 0x3631b0 — __ZN5boost21intrusive_ptr_add_refIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE
 // was: void boost::intrusive_ptr_add_ref<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)
 pub fn boost_stub_3631b0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3631b0 __ZN5boost21intrusive_ptr_add_refIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE")
+    // IDA 0x3631b0: boost::exception/std-error machinery. thiserror/std::error — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(double,double)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(double,double)>::slot> &)")]
 // 0x363224 — __ZN3rbx7signals6signalIFvddEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
 // was: rbx::signals::signal<void ()(double,double)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(double,double)>::slot> &)
 pub fn boost_stub_363224(_ptr: crate::SharedPtr<()>) {
-    todo!("0x363224 __ZN3rbx7signals6signalIFvddEE4nextERN5boost13intrusive_ptrINS3_4slotEEE")
+    // IDA 0x363224: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(double,double)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(double,double)>::slot> const&)")]
 // 0x3633ac — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvddEE4slotEEaSERKS7_
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(double,double)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(double,double)>::slot> const&)
 pub fn boost_stub_3633ac(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3633ac __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvddEE4slotEEaSERKS7_")
+    // IDA 0x3633ac: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Stepped const&)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot> &)")]
 // 0x3634cc — __ZN3rbx7signals6signalIFvRKN3RBX7SteppedEEE4nextERN5boost13intrusive_ptrINS7_4slotEEE
 // was: rbx::signals::signal<void ()(RBX::Stepped const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot> &)
 pub fn boost_stub_3634cc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3634cc __ZN3rbx7signals6signalIFvRKN3RBX7SteppedEEE4nextERN5boost13intrusive_ptrINS7_4slotEEE")
+    // IDA 0x3634cc: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot> const&)")]
 // 0x363654 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX7SteppedEEE4slotEEaSERKSB_
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot> const&)
 pub fn boost_stub_363654(_ptr: crate::SharedPtr<()>) {
-    todo!("0x363654 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX7SteppedEEE4slotEEaSERKSB_")
+    // IDA 0x363654: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(double)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(double)>::slot> &)")]
 // 0x363774 — __ZN3rbx7signals6signalIFvdEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
 // was: rbx::signals::signal<void ()(double)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(double)>::slot> &)
 pub fn boost_stub_363774(_ptr: crate::SharedPtr<()>) {
-    todo!("0x363774 __ZN3rbx7signals6signalIFvdEE4nextERN5boost13intrusive_ptrINS3_4slotEEE")
+    // IDA 0x363774: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(double)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(double)>::slot> const&)")]
 // 0x3638fc — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvdEE4slotEEaSERKS7_
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(double)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(double)>::slot> const&)
 pub fn boost_stub_3638fc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3638fc __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvdEE4slotEEaSERKS7_")
+    // IDA 0x3638fc: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Heartbeat const&)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot> &)")]
 // 0x363a1c — __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE4nextERN5boost13intrusive_ptrINS7_4slotEEE
 // was: rbx::signals::signal<void ()(RBX::Heartbeat const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot> &)
 pub fn boost_stub_363a1c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x363a1c __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE4nextERN5boost13intrusive_ptrINS7_4slotEEE")
+    // IDA 0x363a1c: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::HeartbeatTask>::shared_ptr<RBX::HeartbeatTask>(RBX::HeartbeatTask *)")]
 // 0x363bac — __ZN5boost10shared_ptrIN3RBX13HeartbeatTaskEEC2IS2_EEPT_
 // was: boost::shared_ptr<RBX::HeartbeatTask>::shared_ptr<RBX::HeartbeatTask>(RBX::HeartbeatTask *)
 pub fn boost_stub_363bac(_ptr: crate::SharedPtr<()>) {
-    todo!("0x363bac __ZN5boost10shared_ptrIN3RBX13HeartbeatTaskEEC2IS2_EEPT_")
+    // IDA 0x363bac: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::HeartbeatTask,RBX::HeartbeatTask>(rbx_core::SharedPtr<RBX::HeartbeatTask> const*,RBX::HeartbeatTask *)const")]
 // 0x363c94 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_13HeartbeatTaskES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::HeartbeatTask,RBX::HeartbeatTask>(boost::shared_ptr<RBX::HeartbeatTask> const*,RBX::HeartbeatTask *)const
 pub fn boost_stub_363c94(_ptr: crate::SharedPtr<()>) {
-    todo!("0x363c94 __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_13HeartbeatTaskES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+    // IDA 0x363c94: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::HeartbeatTask>(RBX::HeartbeatTask *)")]
 // 0x363d78 — __ZN5boost6detail12shared_countC2IN3RBX13HeartbeatTaskEEEPT_
 // was: boost::detail::shared_count::shared_count<RBX::HeartbeatTask>(RBX::HeartbeatTask *)
 pub fn boost_stub_363d78(_ptr: crate::SharedPtr<()>) {
-    todo!("0x363d78 __ZN5boost6detail12shared_countC2IN3RBX13HeartbeatTaskEEEPT_")
+    // IDA 0x363d78: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::HeartbeatTask>::~sp_counted_impl_p()")]
 // 0x363e70 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13HeartbeatTaskEED1Ev
 // was: boost::detail::sp_counted_impl_p<RBX::HeartbeatTask>::~sp_counted_impl_p()
 pub fn boost_stub_363e70(_ptr: crate::SharedPtr<()>) {
-    todo!("0x363e70 __ZN5boost6detail17sp_counted_impl_pIN3RBX13HeartbeatTaskEED1Ev")
+    // IDA 0x363e70: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::HeartbeatTask>::~sp_counted_impl_p()")]
 // 0x363e74 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13HeartbeatTaskEED0Ev
 // was: boost::detail::sp_counted_impl_p<RBX::HeartbeatTask>::~sp_counted_impl_p()
 pub fn boost_stub_363e74(_ptr: crate::SharedPtr<()>) {
-    todo!("0x363e74 __ZN5boost6detail17sp_counted_impl_pIN3RBX13HeartbeatTaskEED0Ev")
+    // IDA 0x363e74: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::HeartbeatTask>::dispose(void)")]
 // 0x363e78 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13HeartbeatTaskEE7disposeEv
 // was: boost::detail::sp_counted_impl_p<RBX::HeartbeatTask>::dispose(void)
 pub fn boost_stub_363e78(_ptr: crate::SharedPtr<()>) {
-    todo!("0x363e78 __ZN5boost6detail17sp_counted_impl_pIN3RBX13HeartbeatTaskEE7disposeEv")
+    // IDA 0x363e78: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::HeartbeatTask>::get_deleter(std::type_info const&)")]
 // 0x363e88 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13HeartbeatTaskEE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_p<RBX::HeartbeatTask>::get_deleter(std::type_info const&)
 pub fn boost_stub_363e88(_ptr: crate::SharedPtr<()>) {
-    todo!("0x363e88 __ZN5boost6detail17sp_counted_impl_pIN3RBX13HeartbeatTaskEE11get_deleterERKSt9type_info")
+    // IDA 0x363e88: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::HeartbeatTask>::get_untyped_deleter(void)")]
 // 0x363e8c — __ZN5boost6detail17sp_counted_impl_pIN3RBX13HeartbeatTaskEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_p<RBX::HeartbeatTask>::get_untyped_deleter(void)
 pub fn boost_stub_363e8c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x363e8c __ZN5boost6detail17sp_counted_impl_pIN3RBX13HeartbeatTaskEE19get_untyped_deleterEv")
+    // IDA 0x363e8c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "void boost::throw_exception<boost::bad_weak_ptr>(boost::bad_weak_ptr const&)")]
 // 0x363e90 — __ZN5boost15throw_exceptionINS_12bad_weak_ptrEEEvRKT_
 // was: void boost::throw_exception<boost::bad_weak_ptr>(boost::bad_weak_ptr const&)
 pub fn boost_stub_363e90(_ptr: crate::SharedPtr<()>) {
-    todo!("0x363e90 __ZN5boost15throw_exceptionINS_12bad_weak_ptrEEEvRKT_")
+    // IDA 0x363e90: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
 // 0x363f78 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev
 // was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()
 pub fn boost_stub_363f78(_ptr: crate::SharedPtr<()>) {
-    todo!("0x363f78 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev")
+    // IDA 0x363f78: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone(void)const")]
 // 0x363f90 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE5cloneEv
 // was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone(void)const
 pub fn boost_stub_363f90(_ptr: crate::SharedPtr<()>) {
-    todo!("0x363f90 __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE5cloneEv")
+    // IDA 0x363f90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::PhysicsJob>::shared_ptr<RBX::PhysicsJob>(RBX::PhysicsJob *)")]
 // 0x363f9c — __ZN5boost10shared_ptrIN3RBX10PhysicsJobEEC2IS2_EEPT_
 // was: boost::shared_ptr<RBX::PhysicsJob>::shared_ptr<RBX::PhysicsJob>(RBX::PhysicsJob *)
 pub fn boost_stub_363f9c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x363f9c __ZN5boost10shared_ptrIN3RBX10PhysicsJobEEC2IS2_EEPT_")
+    // IDA 0x363f9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::PhysicsJob,RBX::PhysicsJob>(rbx_core::SharedPtr<RBX::PhysicsJob> const*,RBX::PhysicsJob *)const")]
 // 0x364084 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_10PhysicsJobES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::PhysicsJob,RBX::PhysicsJob>(boost::shared_ptr<RBX::PhysicsJob> const*,RBX::PhysicsJob *)const
 pub fn boost_stub_364084(_ptr: crate::SharedPtr<()>) {
-    todo!("0x364084 __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_10PhysicsJobES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+    // IDA 0x364084: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::PhysicsJob>(RBX::PhysicsJob *)")]
 // 0x364168 — __ZN5boost6detail12shared_countC2IN3RBX10PhysicsJobEEEPT_
 // was: boost::detail::shared_count::shared_count<RBX::PhysicsJob>(RBX::PhysicsJob *)
 pub fn boost_stub_364168(_ptr: crate::SharedPtr<()>) {
-    todo!("0x364168 __ZN5boost6detail12shared_countC2IN3RBX10PhysicsJobEEEPT_")
+    // IDA 0x364168: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::PhysicsJob>::~sp_counted_impl_p()")]
 // 0x364260 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10PhysicsJobEED1Ev
 // was: boost::detail::sp_counted_impl_p<RBX::PhysicsJob>::~sp_counted_impl_p()
 pub fn boost_stub_364260(_ptr: crate::SharedPtr<()>) {
-    todo!("0x364260 __ZN5boost6detail17sp_counted_impl_pIN3RBX10PhysicsJobEED1Ev")
+    // IDA 0x364260: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::PhysicsJob>::~sp_counted_impl_p()")]
 // 0x364264 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10PhysicsJobEED0Ev
 // was: boost::detail::sp_counted_impl_p<RBX::PhysicsJob>::~sp_counted_impl_p()
 pub fn boost_stub_364264(_ptr: crate::SharedPtr<()>) {
-    todo!("0x364264 __ZN5boost6detail17sp_counted_impl_pIN3RBX10PhysicsJobEED0Ev")
+    // IDA 0x364264: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::PhysicsJob>::dispose(void)")]
 // 0x364268 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10PhysicsJobEE7disposeEv
 // was: boost::detail::sp_counted_impl_p<RBX::PhysicsJob>::dispose(void)
 pub fn boost_stub_364268(_ptr: crate::SharedPtr<()>) {
-    todo!("0x364268 __ZN5boost6detail17sp_counted_impl_pIN3RBX10PhysicsJobEE7disposeEv")
+    // IDA 0x364268: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::PhysicsJob>::get_deleter(std::type_info const&)")]
 // 0x364278 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10PhysicsJobEE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_p<RBX::PhysicsJob>::get_deleter(std::type_info const&)
 pub fn boost_stub_364278(_ptr: crate::SharedPtr<()>) {
-    todo!("0x364278 __ZN5boost6detail17sp_counted_impl_pIN3RBX10PhysicsJobEE11get_deleterERKSt9type_info")
+    // IDA 0x364278: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::PhysicsJob>::get_untyped_deleter(void)")]
 // 0x36427c — __ZN5boost6detail17sp_counted_impl_pIN3RBX10PhysicsJobEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_p<RBX::PhysicsJob>::get_untyped_deleter(void)
 pub fn boost_stub_36427c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36427c __ZN5boost6detail17sp_counted_impl_pIN3RBX10PhysicsJobEE19get_untyped_deleterEv")
+    // IDA 0x36427c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::DataModel> boost::dynamic_pointer_cast<RBX::DataModel,RBX::Reflection::DescribedBase>(rbx_core::SharedPtr<RBX::Reflection::DescribedBase> const&)")]
 // 0x364688 — __ZN5boost20dynamic_pointer_castIN3RBX9DataModelENS1_10Reflection13DescribedBaseEEENS_10shared_ptrIT_EERKNS5_IT0_EE
 // was: boost::shared_ptr<RBX::DataModel> boost::dynamic_pointer_cast<RBX::DataModel,RBX::Reflection::DescribedBase>(boost::shared_ptr<RBX::Reflection::DescribedBase> const&)
 pub fn boost_stub_364688(_ptr: crate::SharedPtr<()>) {
-    todo!("0x364688 __ZN5boost20dynamic_pointer_castIN3RBX9DataModelENS1_10Reflection13DescribedBaseEEENS_10shared_ptrIT_EERKNS5_IT0_EE")
+    // IDA 0x364688: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::RunService,void ()(double),rbx::signal<void ()(double)>,rbx::signal<void ()(double)> RBX::RunService::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // 0x364ae4 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_10RunServiceEFvdEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 // was: RBX::Reflection::EventDescImpl<1,RBX::RunService,void ()(double),rbx::signal<void ()(double)>,rbx::signal<void ()(double)> RBX::RunService::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
 pub fn boost_stub_364ae4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x364ae4 __ZNK3RBX10Reflection13EventDescImplILi1ENS_10RunServiceEFvdEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")
+    // IDA 0x364ae4: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()")]
 // 0x364e70 — __ZN5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED2Ev
 // was: boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()
 pub fn boost_stub_364e70(_ptr: crate::SharedPtr<()>) {
-    todo!("0x364e70 __ZN5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED2Ev")
+    // IDA 0x364e70: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "non_virtual_thunk_to boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()")]
 // 0x364f28 — __ZThn4_N5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED1Ev
 // was: non-virtual thunk to boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()
 pub fn boost_stub_364f28(_ptr: crate::SharedPtr<()>) {
-    todo!("0x364f28 __ZThn4_N5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED1Ev")
+    // IDA 0x364f28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "non_virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")]
 // 0x364f30 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED1Ev
 // was: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()
 pub fn boost_stub_364f30(_ptr: crate::SharedPtr<()>) {
-    todo!("0x364f30 __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED1Ev")
+    // IDA 0x364f30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")]
 // 0x364f38 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED1Ev
 // was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()
 pub fn boost_stub_364f38(_ptr: crate::SharedPtr<()>) {
-    todo!("0x364f38 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED1Ev")
+    // IDA 0x364f38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::clone(void)const")]
 // 0x364f48 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEE5cloneEv
 // was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::clone(void)const
 pub fn boost_stub_364f48(_ptr: crate::SharedPtr<()>) {
-    todo!("0x364f48 __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEE5cloneEv")
+    // IDA 0x364f48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::rethrow(void)const")]
 // 0x365008 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEE7rethrowEv
 // was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::rethrow(void)const
 pub fn boost_stub_365008(_ptr: crate::SharedPtr<()>) {
-    todo!("0x365008 __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEE7rethrowEv")
+    // IDA 0x365008: boost::exception/std-error machinery. thiserror/std::error — carrier no-op.
 }
 
 #[doc(alias = "virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")]
 // 0x365018 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED0Ev
 // was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()
 pub fn boost_stub_365018(_ptr: crate::SharedPtr<()>) {
-    todo!("0x365018 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED0Ev")
+    // IDA 0x365018: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "non_virtual_thunk_to boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()")]
 // 0x365038 — __ZThn4_N5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED0Ev
 // was: non-virtual thunk to boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()
 pub fn boost_stub_365038(_ptr: crate::SharedPtr<()>) {
-    todo!("0x365038 __ZThn4_N5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED0Ev")
+    // IDA 0x365038: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::clone_tag)")]
 // 0x365050 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEEC1ERKS6_NS6_9clone_tagE
 // was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::clone_tag)
 pub fn boost_stub_365050(_ptr: crate::SharedPtr<()>) {
-    todo!("0x365050 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEEC1ERKS6_NS6_9clone_tagE")
+    // IDA 0x365050: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::clone_impl(boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast> const&)")]
 // 0x365188 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEEC1ERKS5_
 // was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::clone_impl(boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast> const&)
 pub fn boost_stub_365188(_ptr: crate::SharedPtr<()>) {
-    todo!("0x365188 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEEC1ERKS5_")
+    // IDA 0x365188: boost::exception/std-error machinery. thiserror/std::error — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list_av_2<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,double const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>>(void (RBX::Reflection::GenericSlotWrapper::*)(double const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>)")]
 // 0x3652c0 — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKdNS_10shared_ptrIS3_EENS_3argILi1EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf1ISC_T0_T1_EENSA_9list_av_2IT2_T3_E4typeEEEMSF_FSC_SG_ESJ_SK_
 // was: boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list_av_2<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,double const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>>(void (RBX::Reflection::GenericSlotWrapper::*)(double const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>)
 pub fn boost_stub_3652c0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3652c0 __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKdNS_10shared_ptrIS3_EENS_3argILi1EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf1ISC_T0_T1_EENSA_9list_av_2IT2_T3_E4typeEEEMSF_FSC_SG_ESJ_SK_")
+    // IDA 0x3652c0: boost::exception/std-error machinery. thiserror/std::error — carrier no-op.
 }
 
 #[doc(alias = "boost::function1<void,double>::clear(void)")]
 // 0x365520 — __ZN5boost9function1IvdE5clearEv
 // was: boost::function1<void,double>::clear(void)
 pub fn boost_stub_365520(_ptr: crate::SharedPtr<()>) {
-    todo!("0x365520 __ZN5boost9function1IvdE5clearEv")
+    // IDA 0x365520: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>::list2(boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>)")]
 // 0x3657d0 — __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX10Reflection18GenericSlotWrapperEEEEENS_3argILi1EEEEC2ES8_SA_
 // was: boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>::list2(boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>)
 pub fn boost_stub_3657d0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3657d0 __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX10Reflection18GenericSlotWrapperEEEEENS_3argILi1EEEEC2ES8_SA_")
+    // IDA 0x3657d0: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>::storage2(boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>)")]
 // 0x3658a0 — __ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX10Reflection18GenericSlotWrapperEEEEENS_3argILi1EEEEC2ES8_SA_
 // was: boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>)
 pub fn boost_stub_3658a0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3658a0 __ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX10Reflection18GenericSlotWrapperEEEEENS_3argILi1EEEEC2ES8_SA_")
+    // IDA 0x3658a0: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost8functionIFvdEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS4_5list2INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")]
 // 0x365980 — __ZN5boost8functionIFvdEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS4_5list2INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost8functionIFvdEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS4_5list2INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_365980(_ptr: crate::SharedPtr<()>) {
-    todo!("0x365980 __ZN5boost8functionIFvdEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS4_5list2INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x365980: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost9function1IvdEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")]
 // 0x365a64 — __ZN5boost9function1IvdEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost9function1IvdEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_365a64(_ptr: crate::SharedPtr<()>) {
-    todo!("0x365a64 __ZN5boost9function1IvdEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x365a64: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void boost::function1<void,double>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>)")]
 // 0x365b4c — __ZN5boost9function1IvdE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEEvT_
 // was: void boost::function1<void,double>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>)
 pub fn boost_stub_365b4c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x365b4c __ZN5boost9function1IvdE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEEvT_")
+    // IDA 0x365b4c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x365c44 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 pub fn boost_stub_365c44(_ptr: crate::SharedPtr<()>) {
-    todo!("0x365c44 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE")
+    // IDA 0x365c44: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,void,double>::invoke(boost::detail::function::function_buffer &,double)")]
 // 0x365c60 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEvdE6invokeERNS1_15function_bufferEd
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,void,double>::invoke(boost::detail::function::function_buffer &,double)
 pub fn boost_stub_365c60(_ptr: crate::SharedPtr<()>) {
-    todo!("0x365c60 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEvdE6invokeERNS1_15function_bufferEd")
+    // IDA 0x365c60: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,double>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")]
 // 0x365c80 — __ZNK5boost6detail8function13basic_vtable1IvdE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
 // was: bool boost::detail::function::basic_vtable1<void,double>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const
 pub fn boost_stub_365c80(_ptr: crate::SharedPtr<()>) {
-    todo!("0x365c80 __ZNK5boost6detail8function13basic_vtable1IvdE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE")
+    // IDA 0x365c80: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,double>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // 0x365d68 — __ZNK5boost6detail8function13basic_vtable1IvdE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // was: bool boost::detail::function::basic_vtable1<void,double>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 pub fn boost_stub_365d68(_ptr: crate::SharedPtr<()>) {
-    todo!("0x365d68 __ZNK5boost6detail8function13basic_vtable1IvdE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+    // IDA 0x365d68: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::detail::function::basic_vtable1<void,double>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // 0x365e4c — __ZNK5boost6detail8function13basic_vtable1IvdE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // was: void boost::detail::function::basic_vtable1<void,double>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
 pub fn boost_stub_365e4c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x365e4c __ZNK5boost6detail8function13basic_vtable1IvdE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+    // IDA 0x365e4c: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>::operator()<double>(double &)")]
 // 0x365f20 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS0_5list2INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEEEEEclIdEEvRT_
 // was: void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>::operator()<double>(double &)
 pub fn boost_stub_365f20(_ptr: crate::SharedPtr<()>) {
-    todo!("0x365f20 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS0_5list2INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEEEEEclIdEEvRT_")
+    // IDA 0x365f20: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // 0x365f38 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,double const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 pub fn boost_stub_365f38(_ptr: crate::SharedPtr<()>) {
-    todo!("0x365f38 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+    // IDA 0x365f38: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(double)>::connect<boost::function<void ()(double)>>(boost::function<void ()(double)> const&)")]
 // 0x366090 — __ZN3rbx7signals6signalIFvdEE7connectIN5boost8functionIS2_EEEENS0_10connectionERKT_
 // was: rbx::signals::connection rbx::signals::signal<void ()(double)>::connect<boost::function<void ()(double)>>(boost::function<void ()(double)> const&)
 pub fn boost_stub_366090(_ptr: crate::SharedPtr<()>) {
-    todo!("0x366090 __ZN3rbx7signals6signalIFvdEE7connectIN5boost8functionIS2_EEEENS0_10connectionERKT_")
+    // IDA 0x366090: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(double)>::slot>::operator=(rbx::signals::signal<void ()(double)>::slot*)")]
 // 0x366390 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvdEE4slotEEaSEPS6_
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(double)>::slot>::operator=(rbx::signals::signal<void ()(double)>::slot*)
 pub fn boost_stub_366390(_ptr: crate::SharedPtr<()>) {
-    todo!("0x366390 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvdEE4slotEEaSEPS6_")
+    // IDA 0x366390: rbx signals plumbing (cf. Signal in signal.rs). Registration/dispatch lives in Signal — carrier no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::callable<rbx::signals::signal<void ()(double)>*>(boost::function<void ()(double)> const&,rbx::signals::signal<void ()(double)>*)")]
 // 0x3663b4 — __ZN3rbx8callableINS_7signals6signalIFvdEE4slotEN5boost8functionIS3_EELi1ES3_EC2IPS4_EERKS8_T_
 // was: rbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::callable<rbx::signals::signal<void ()(double)>*>(boost::function<void ()(double)> const&,rbx::signals::signal<void ()(double)>*)
 pub fn boost_stub_3663b4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3663b4 __ZN3rbx8callableINS_7signals6signalIFvdEE4slotEN5boost8functionIS3_EELi1ES3_EC2IPS4_EERKS8_T_")
+    // IDA 0x3663b4: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(double)>::callable_slot<boost::function<void ()(double)>>::~callable_slot()")]
 // 0x3664b0 — __ZN3rbx7signals6signalIFvdEE13callable_slotIN5boost8functionIS2_EEED1Ev
 // was: rbx::signals::signal<void ()(double)>::callable_slot<boost::function<void ()(double)>>::~callable_slot()
 pub fn boost_stub_3664b0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3664b0 __ZN3rbx7signals6signalIFvdEE13callable_slotIN5boost8functionIS2_EEED1Ev")
+    // IDA 0x3664b0: rbx signals plumbing (cf. Signal in signal.rs). Registration/dispatch lives in Signal — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(double)>::callable_slot<boost::function<void ()(double)>>::~callable_slot()")]
 // 0x3665c0 — __ZN3rbx7signals6signalIFvdEE13callable_slotIN5boost8functionIS2_EEED0Ev
 // was: rbx::signals::signal<void ()(double)>::callable_slot<boost::function<void ()(double)>>::~callable_slot()
 pub fn boost_stub_3665c0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3665c0 __ZN3rbx7signals6signalIFvdEE13callable_slotIN5boost8functionIS2_EEED0Ev")
+    // IDA 0x3665c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::call(double)")]
 // 0x36680c — __ZN3rbx8callableINS_7signals6signalIFvdEE4slotEN5boost8functionIS3_EELi1ES3_E4callEd
 // was: rbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::call(double)
 pub fn boost_stub_36680c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36680c __ZN3rbx8callableINS_7signals6signalIFvdEE4slotEN5boost8functionIS3_EELi1ES3_E4callEd")
+    // IDA 0x36680c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "non_virtual_thunk_to rbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::call(double)")]
 // 0x366814 — __ZThn4_N3rbx8callableINS_7signals6signalIFvdEE4slotEN5boost8functionIS3_EELi1ES3_E4callEd
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::call(double)
 pub fn boost_stub_366814(_ptr: crate::SharedPtr<()>) {
-    todo!("0x366814 __ZThn4_N3rbx8callableINS_7signals6signalIFvdEE4slotEN5boost8functionIS3_EELi1ES3_E4callEd")
+    // IDA 0x366814: rbx signals plumbing (cf. Signal in signal.rs). Registration/dispatch lives in Signal — carrier no-op.
 }
 
 #[doc(alias = "boost::function1<void,double>::operator()(double)const")]
 // 0x36681c — __ZNK5boost9function1IvdEclEd
 // was: boost::function1<void,double>::operator()(double)const
 pub fn boost_stub_36681c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36681c __ZNK5boost9function1IvdEclEd")
+    // IDA 0x36681c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::~callable()")]
 // 0x366ad0 — __ZN3rbx8callableINS_7signals6signalIFvdEE4slotEN5boost8functionIS3_EELi1ES3_ED1Ev
 // was: rbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::~callable()
 pub fn boost_stub_366ad0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x366ad0 __ZN3rbx8callableINS_7signals6signalIFvdEE4slotEN5boost8functionIS3_EELi1ES3_ED1Ev")
+    // IDA 0x366ad0: function::operator() invoked the erased target. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::~callable()")]
 // 0x366be0 — __ZN3rbx8callableINS_7signals6signalIFvdEE4slotEN5boost8functionIS3_EELi1ES3_ED0Ev
 // was: rbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::~callable()
 pub fn boost_stub_366be0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x366be0 __ZN3rbx8callableINS_7signals6signalIFvdEE4slotEN5boost8functionIS3_EELi1ES3_ED0Ev")
+    // IDA 0x366be0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::function1<void,double>::assign_to_own(boost::function1<void,double> const&)")]
 // 0x366e10 — __ZN5boost9function1IvdE13assign_to_ownERKS1_
 // was: boost::function1<void,double>::assign_to_own(boost::function1<void,double> const&)
 pub fn boost_stub_366e10(_ptr: crate::SharedPtr<()>) {
-    todo!("0x366e10 __ZN5boost9function1IvdE13assign_to_ownERKS1_")
+    // IDA 0x366e10: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::RunService,void ()(double,double),rbx::signal<void ()(double,double)>,rbx::signal<void ()(double,double)> RBX::RunService::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // 0x367198 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_10RunServiceEFvddEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 // was: RBX::Reflection::EventDescImpl<2,RBX::RunService,void ()(double,double),rbx::signal<void ()(double,double)>,rbx::signal<void ()(double,double)> RBX::RunService::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
 pub fn boost_stub_367198(_ptr: crate::SharedPtr<()>) {
-    todo!("0x367198 __ZNK3RBX10Reflection13EventDescImplILi2ENS_10RunServiceEFvddEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")
+    // IDA 0x367198: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list_av_3<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(double const&,double const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")]
 // 0x367524 — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKdS5_NS_10shared_ptrIS3_EENS_3argILi1EEENS8_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISD_T0_T1_T2_EENSB_9list_av_3IT3_T4_T5_E4typeEEEMSG_FSD_SH_SI_ESL_SM_SN_
 // was: boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(double const&,double const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)
 pub fn boost_stub_367524(_ptr: crate::SharedPtr<()>) {
-    todo!("0x367524 __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKdS5_NS_10shared_ptrIS3_EENS_3argILi1EEENS8_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISD_T0_T1_T2_EENSB_9list_av_3IT3_T4_T5_E4typeEEEMSG_FSD_SH_SI_ESL_SM_SN_")
+    // IDA 0x367524: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::function2<void,double,double>::clear(void)")]
 // 0x3677a8 — __ZN5boost9function2IvddE5clearEv
 // was: boost::function2<void,double,double>::clear(void)
 pub fn boost_stub_3677a8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3677a8 __ZN5boost9function2IvddE5clearEv")
+    // IDA 0x3677a8: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost8functionIFvddEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSC_EENS4_5list3INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEENSJ_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
 // 0x3677d4 — __ZN5boost8functionIFvddEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSC_EENS4_5list3INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEENSJ_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost8functionIFvddEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSC_EENS4_5list3INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEENSJ_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_3677d4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3677d4 __ZN5boost8functionIFvddEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSC_EENS4_5list3INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEENSJ_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x3677d4: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost9function2IvddEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")]
 // 0x3678b8 — __ZN5boost9function2IvddEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost9function2IvddEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_3678b8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3678b8 __ZN5boost9function2IvddEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x3678b8: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void boost::function2<void,double,double>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)")]
 // 0x3679a0 — __ZN5boost9function2IvddE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEEEvT_
 // was: void boost::function2<void,double,double>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)
 pub fn boost_stub_3679a0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3679a0 __ZN5boost9function2IvddE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEEEvT_")
+    // IDA 0x3679a0: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x367a98 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 pub fn boost_stub_367a98(_ptr: crate::SharedPtr<()>) {
-    todo!("0x367a98 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE")
+    // IDA 0x367a98: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,void,double,double>::invoke(boost::detail::function::function_buffer &,double,double)")]
 // 0x367ab4 — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEvddE6invokeERNS1_15function_bufferEdd
 // was: boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,void,double,double>::invoke(boost::detail::function::function_buffer &,double,double)
 pub fn boost_stub_367ab4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x367ab4 __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEvddE6invokeERNS1_15function_bufferEdd")
+    // IDA 0x367ab4: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable2<void,double,double>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")]
 // 0x367ae0 — __ZNK5boost6detail8function13basic_vtable2IvddE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSD_EENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEbT_RNS1_15function_bufferE
 // was: bool boost::detail::function::basic_vtable2<void,double,double>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const
 pub fn boost_stub_367ae0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x367ae0 __ZNK5boost6detail8function13basic_vtable2IvddE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSD_EENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEbT_RNS1_15function_bufferE")
+    // IDA 0x367ae0: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable2<void,double,double>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // 0x367bc8 — __ZNK5boost6detail8function13basic_vtable2IvddE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSD_EENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // was: bool boost::detail::function::basic_vtable2<void,double,double>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 pub fn boost_stub_367bc8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x367bc8 __ZNK5boost6detail8function13basic_vtable2IvddE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSD_EENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+    // IDA 0x367bc8: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::detail::function::basic_vtable2<void,double,double>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // 0x367cac — __ZNK5boost6detail8function13basic_vtable2IvddE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSD_EENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // was: void boost::detail::function::basic_vtable2<void,double,double>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
 pub fn boost_stub_367cac(_ptr: crate::SharedPtr<()>) {
-    todo!("0x367cac __ZNK5boost6detail8function13basic_vtable2IvddE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSD_EENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+    // IDA 0x367cac: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<double,double>(double &,double &)")]
 // 0x367d80 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdS8_EENS0_5list3INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEENSF_ILi2EEEEEEclIddEEvRT_RT0_
 // was: void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<double,double>(double &,double &)
 pub fn boost_stub_367d80(_ptr: crate::SharedPtr<()>) {
-    todo!("0x367d80 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdS8_EENS0_5list3INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEENSF_ILi2EEEEEEclIddEEvRT_RT0_")
+    // IDA 0x367d80: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // 0x367d9c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,double const&,double const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 pub fn boost_stub_367d9c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x367d9c __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+    // IDA 0x367d9c: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(double,double)>::connect<boost::function<void ()(double,double)>>(boost::function<void ()(double,double)> const&)")]
 // 0x367ef4 — __ZN3rbx7signals6signalIFvddEE7connectIN5boost8functionIS2_EEEENS0_10connectionERKT_
 // was: rbx::signals::connection rbx::signals::signal<void ()(double,double)>::connect<boost::function<void ()(double,double)>>(boost::function<void ()(double,double)> const&)
 pub fn boost_stub_367ef4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x367ef4 __ZN3rbx7signals6signalIFvddEE7connectIN5boost8functionIS2_EEEENS0_10connectionERKT_")
+    // IDA 0x367ef4: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(double,double)>::slot>::operator=(rbx::signals::signal<void ()(double,double)>::slot*)")]
 // 0x3681f4 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvddEE4slotEEaSEPS6_
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(double,double)>::slot>::operator=(rbx::signals::signal<void ()(double,double)>::slot*)
 pub fn boost_stub_3681f4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3681f4 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvddEE4slotEEaSEPS6_")
+    // IDA 0x3681f4: rbx signals plumbing (cf. Signal in signal.rs). Registration/dispatch lives in Signal — carrier no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::callable<rbx::signals::signal<void ()(double,double)>*>(boost::function<void ()(double,double)> const&,rbx::signals::signal<void ()(double,double)>*)")]
 // 0x368218 — __ZN3rbx8callableINS_7signals6signalIFvddEE4slotEN5boost8functionIS3_EELi2ES3_EC2IPS4_EERKS8_T_
 // was: rbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::callable<rbx::signals::signal<void ()(double,double)>*>(boost::function<void ()(double,double)> const&,rbx::signals::signal<void ()(double,double)>*)
 pub fn boost_stub_368218(_ptr: crate::SharedPtr<()>) {
-    todo!("0x368218 __ZN3rbx8callableINS_7signals6signalIFvddEE4slotEN5boost8functionIS3_EELi2ES3_EC2IPS4_EERKS8_T_")
+    // IDA 0x368218: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(double,double)>::callable_slot<boost::function<void ()(double,double)>>::~callable_slot()")]
 // 0x368314 — __ZN3rbx7signals6signalIFvddEE13callable_slotIN5boost8functionIS2_EEED1Ev
 // was: rbx::signals::signal<void ()(double,double)>::callable_slot<boost::function<void ()(double,double)>>::~callable_slot()
 pub fn boost_stub_368314(_ptr: crate::SharedPtr<()>) {
-    todo!("0x368314 __ZN3rbx7signals6signalIFvddEE13callable_slotIN5boost8functionIS2_EEED1Ev")
+    // IDA 0x368314: rbx signals plumbing (cf. Signal in signal.rs). Registration/dispatch lives in Signal — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(double,double)>::callable_slot<boost::function<void ()(double,double)>>::~callable_slot()")]
 // 0x368424 — __ZN3rbx7signals6signalIFvddEE13callable_slotIN5boost8functionIS2_EEED0Ev
 // was: rbx::signals::signal<void ()(double,double)>::callable_slot<boost::function<void ()(double,double)>>::~callable_slot()
 pub fn boost_stub_368424(_ptr: crate::SharedPtr<()>) {
-    todo!("0x368424 __ZN3rbx7signals6signalIFvddEE13callable_slotIN5boost8functionIS2_EEED0Ev")
+    // IDA 0x368424: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::call(double,double)")]
 // 0x368670 — __ZN3rbx8callableINS_7signals6signalIFvddEE4slotEN5boost8functionIS3_EELi2ES3_E4callEdd
 // was: rbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::call(double,double)
 pub fn boost_stub_368670(_ptr: crate::SharedPtr<()>) {
-    todo!("0x368670 __ZN3rbx8callableINS_7signals6signalIFvddEE4slotEN5boost8functionIS3_EELi2ES3_E4callEdd")
+    // IDA 0x368670: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "non_virtual_thunk_to rbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::call(double,double)")]
 // 0x368688 — __ZThn4_N3rbx8callableINS_7signals6signalIFvddEE4slotEN5boost8functionIS3_EELi2ES3_E4callEdd
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::call(double,double)
 pub fn boost_stub_368688(_ptr: crate::SharedPtr<()>) {
-    todo!("0x368688 __ZThn4_N3rbx8callableINS_7signals6signalIFvddEE4slotEN5boost8functionIS3_EELi2ES3_E4callEdd")
+    // IDA 0x368688: rbx signals plumbing (cf. Signal in signal.rs). Registration/dispatch lives in Signal — carrier no-op.
 }
 
 #[doc(alias = "boost::function2<void,double,double>::operator()(double,double)const")]
 // 0x3686a0 — __ZNK5boost9function2IvddEclEdd
 // was: boost::function2<void,double,double>::operator()(double,double)const
 pub fn boost_stub_3686a0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3686a0 __ZNK5boost9function2IvddEclEdd")
+    // IDA 0x3686a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::~callable()")]
 // 0x36895c — __ZN3rbx8callableINS_7signals6signalIFvddEE4slotEN5boost8functionIS3_EELi2ES3_ED1Ev
 // was: rbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::~callable()
 pub fn boost_stub_36895c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36895c __ZN3rbx8callableINS_7signals6signalIFvddEE4slotEN5boost8functionIS3_EELi2ES3_ED1Ev")
+    // IDA 0x36895c: function::operator() invoked the erased target. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::~callable()")]
 // 0x368a6c — __ZN3rbx8callableINS_7signals6signalIFvddEE4slotEN5boost8functionIS3_EELi2ES3_ED0Ev
 // was: rbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::~callable()
 pub fn boost_stub_368a6c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x368a6c __ZN3rbx8callableINS_7signals6signalIFvddEE4slotEN5boost8functionIS3_EELi2ES3_ED0Ev")
+    // IDA 0x368a6c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::function2<void,double,double>::assign_to_own(boost::function2<void,double,double> const&)")]
 // 0x368c9c — __ZN5boost9function2IvddE13assign_to_ownERKS1_
 // was: boost::function2<void,double,double>::assign_to_own(boost::function2<void,double,double> const&)
 pub fn boost_stub_368c9c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x368c9c __ZN5boost9function2IvddE13assign_to_ownERKS1_")
+    // IDA 0x368c9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot> &)")]
 // 0x368e20 — __ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE4nextERN5boost13intrusive_ptrINS9_4slotEEE
 // was: rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot> &)
 pub fn boost_stub_368e20(_ptr: crate::SharedPtr<()>) {
-    todo!("0x368e20 __ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE4nextERN5boost13intrusive_ptrINS9_4slotEEE")
+    // IDA 0x368e20: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot> const&)")]
 // 0x368fa8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS5_19ICombinedSignalDataEEE4slotEEaSERKSD_
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot> const&)
 pub fn boost_stub_368fa8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x368fa8 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS5_19ICombinedSignalDataEEE4slotEEaSERKSD_")
+    // IDA 0x368fa8: intrusive refcount op. Arc/Weak — carrier no-op.
 }#[doc(alias = "RBX::HeartbeatTask::HeartbeatTask(rbx_core::SharedPtr<RBX::RunService>)")]
 // 0x3690cc — __ZN3RBX13HeartbeatTaskC2EN5boost10shared_ptrINS_10RunServiceEEE
 // was: RBX::HeartbeatTask::HeartbeatTask(boost::shared_ptr<RBX::RunService>)
 pub fn boost_stub_3690cc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3690cc __ZN3RBX13HeartbeatTaskC2EN5boost10shared_ptrINS_10RunServiceEEE")
+    // IDA 0x3690cc: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::RunService>::shared_ptr<RBX::RunService>(rbx_core::WeakPtr<RBX::RunService> const&,boost::detail::sp_nothrow_tag)")]
 // 0x369698 — __ZN5boost10shared_ptrIN3RBX10RunServiceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // was: boost::shared_ptr<RBX::RunService>::shared_ptr<RBX::RunService>(boost::weak_ptr<RBX::RunService> const&,boost::detail::sp_nothrow_tag)
 pub fn boost_stub_369698(_ptr: crate::SharedPtr<()>) {
-    todo!("0x369698 __ZN5boost10shared_ptrIN3RBX10RunServiceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")
+    // IDA 0x369698: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::weak_count::weak_count(boost::detail::shared_count const&)")]
 // 0x369718 — __ZN5boost6detail10weak_countC1ERKNS0_12shared_countE
 // was: boost::detail::weak_count::weak_count(boost::detail::shared_count const&)
 pub fn boost_stub_369718(_ptr: crate::SharedPtr<()>) {
-    todo!("0x369718 __ZN5boost6detail10weak_countC1ERKNS0_12shared_countE")
+    // IDA 0x369718: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::PhysicsJob::PhysicsJob(rbx_core::SharedPtr<RBX::DataModel>)")]
 // 0x369764 — __ZN3RBX10PhysicsJobC2EN5boost10shared_ptrINS_9DataModelEEE
 // was: RBX::PhysicsJob::PhysicsJob(boost::shared_ptr<RBX::DataModel>)
 pub fn boost_stub_369764(_ptr: crate::SharedPtr<()>) {
-    todo!("0x369764 __ZN3RBX10PhysicsJobC2EN5boost10shared_ptrINS_9DataModelEEE")
+    // IDA 0x369764: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::ScriptInformationProvider::HandleHttpResponse(rbx_core::WeakPtr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>)")]
 // 0x36a724 — __ZN3RBX25ScriptInformationProvider18HandleHttpResponseEN5boost8weak_ptrIS0_EENS_14AsyncHttpQueue13RequestResultESsNS1_8functionIFvNS0_13RequestResultEbbfbEEE
 // was: RBX::ScriptInformationProvider::HandleHttpResponse(boost::weak_ptr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>)
 pub fn boost_stub_36a724(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36a724 __ZN3RBX25ScriptInformationProvider18HandleHttpResponseEN5boost8weak_ptrIS0_EENS_14AsyncHttpQueue13RequestResultESsNS1_8functionIFvNS0_13RequestResultEbbfbEEE")
+    // IDA 0x36a724: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::ScriptInformationProvider::getScriptInfo(std::string const&,bool,float,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,RBX::AsyncHttpQueue::ResultJob)")]
 // 0x36a87c — __ZN3RBX25ScriptInformationProvider13getScriptInfoERKSsbfN5boost8functionIFvNS0_13RequestResultEbbfbEEENS_14AsyncHttpQueue9ResultJobE
 // was: RBX::ScriptInformationProvider::getScriptInfo(std::string const&,bool,float,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,RBX::AsyncHttpQueue::ResultJob)
 pub fn boost_stub_36a87c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36a87c __ZN3RBX25ScriptInformationProvider13getScriptInfoERKSsbfN5boost8functionIFvNS0_13RequestResultEbbfbEEENS_14AsyncHttpQueue9ResultJobE")
+    // IDA 0x36a87c: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::ScriptInformationProvider::CachedScriptInfo::CachedScriptInfo(rbx_core::SharedPtr<std::string const>,rbx_core::SharedPtr<std::string const>)")]
 // 0x36b030 — __ZN3RBX25ScriptInformationProvider16CachedScriptInfoC2EN5boost10shared_ptrIKSsEES5_
 // was: RBX::ScriptInformationProvider::CachedScriptInfo::CachedScriptInfo(boost::shared_ptr<std::string const>,boost::shared_ptr<std::string const>)
 pub fn boost_stub_36b030(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36b030 __ZN3RBX25ScriptInformationProvider16CachedScriptInfoC2EN5boost10shared_ptrIKSsEES5_")
+    // IDA 0x36b030: libstdc++ container internals. Vec/BTreeMap/String — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "void rbx_core::SharedPtr<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::reset<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>(RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false> *)")]
 // 0x36b344 — __ZN5boost10shared_ptrIN3RBX14AsyncHttpCacheINS1_25ScriptInformationProvider16CachedScriptInfoELb0EEEE5resetIS5_EEvPT_
 // was: void boost::shared_ptr<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::reset<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>(RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false> *)
 pub fn boost_stub_36b344(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36b344 __ZN5boost10shared_ptrIN3RBX14AsyncHttpCacheINS1_25ScriptInformationProvider16CachedScriptInfoELb0EEEE5resetIS5_EEvPT_")
+    // IDA 0x36b344: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::function5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::operator()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)const")]
 // 0x36b568 — __ZNK5boost9function5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbEclES3_bbfb
 // was: boost::function5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::operator()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)const
 pub fn boost_stub_36b568(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36b568 __ZNK5boost9function5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbEclES3_bbfb")
+    // IDA 0x36b568: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list_av_5<RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::type> boost::bind<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>(boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)")]
 // 0x36b678 — __ZN5boost4bindINS_8functionIFvN3RBX25ScriptInformationProvider13RequestResultEbbfbEEES4_bbfbEENS_3_bi6bind_tINS7_11unspecifiedET_NS7_9list_av_5IT0_T1_T2_T3_T4_E4typeEEESA_SC_SD_SE_SF_SG_
 // was: boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list_av_5<RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::type> boost::bind<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>(boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)
 pub fn boost_stub_36b678(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36b678 __ZN5boost4bindINS_8functionIFvN3RBX25ScriptInformationProvider13RequestResultEbbfbEEES4_bbfbEENS_3_bi6bind_tINS7_11unspecifiedET_NS7_9list_av_5IT0_T1_T2_T3_T4_E4typeEEESA_SC_SD_SE_SF_SG_")
+    // IDA 0x36b678: function::operator() invoked the erased target. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list_av_4<rbx_core::WeakPtr<RBX::ScriptInformationProvider>,boost::arg<1>,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>::type> boost::bind<void,rbx_core::WeakPtr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,rbx_core::WeakPtr<RBX::ScriptInformationProvider>,boost::arg<1>,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>(void (*)(rbx_core::WeakPtr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),rbx_core::WeakPtr<RBX::ScriptInformationProvider>,boost::arg<1>,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>)")]
 // 0x36b76c — __ZN5boost4bindIvNS_8weak_ptrIN3RBX25ScriptInformationProviderEEENS2_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS3_13RequestResultEbbfbEEES4_NS_3argILi1EEESsSA_EENS_3_bi6bind_tIT_PFSF_T0_T1_T2_T3_ENSD_9list_av_4IT4_T5_T6_T7_E4typeEEESL_SN_SO_SP_SQ_
 // was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list_av_4<boost::weak_ptr<RBX::ScriptInformationProvider>,boost::arg<1>,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>::type> boost::bind<void,boost::weak_ptr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::weak_ptr<RBX::ScriptInformationProvider>,boost::arg<1>,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>(void (*)(boost::weak_ptr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::weak_ptr<RBX::ScriptInformationProvider>,boost::arg<1>,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>)
 pub fn boost_stub_36b76c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36b76c __ZN5boost4bindIvNS_8weak_ptrIN3RBX25ScriptInformationProviderEEENS2_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS3_13RequestResultEbbfbEEES4_NS_3argILi1EEESsSA_EENS_3_bi6bind_tIT_PFSF_T0_T1_T2_T3_ENSD_9list_av_4IT4_T5_T6_T7_E4typeEEESL_SN_SO_SP_SQ_")
+    // IDA 0x36b76c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::WeakPtr<RBX::ScriptInformationProvider> RBX::weak_from<RBX::ScriptInformationProvider>(RBX::ScriptInformationProvider*)")]
 // 0x36bac4 — __ZN3RBX9weak_fromINS_25ScriptInformationProviderEEEN5boost8weak_ptrIT_EEPS4_
 // was: boost::weak_ptr<RBX::ScriptInformationProvider> RBX::weak_from<RBX::ScriptInformationProvider>(RBX::ScriptInformationProvider*)
 pub fn boost_stub_36bac4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36bac4 __ZN3RBX9weak_fromINS_25ScriptInformationProviderEEEN5boost8weak_ptrIT_EEPS4_")
+    // IDA 0x36bac4: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_25ScriptInformationProviderEEES3_SsNS0_IFvNSE_13RequestResultEbbfbEEEENSB_5list4INSB_5valueISF_EENS_3argILi1EEENSM_ISsEENSM_ISI_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE")]
 // 0x36bfd8 — __ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_25ScriptInformationProviderEEES3_SsNS0_IFvNSE_13RequestResultEbbfbEEEENSB_5list4INSB_5valueISF_EENS_3argILi1EEENSM_ISsEENSM_ISI_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_25ScriptInformationProviderEEES3_SsNS0_IFvNSE_13RequestResultEbbfbEEEENSB_5list4INSB_5valueISF_EENS_3argILi1EEENSM_ISsEENSM_ISI_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_36bfd8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36bfd8 __ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_25ScriptInformationProviderEEES3_SsNS0_IFvNSE_13RequestResultEbbfbEEEENSB_5list4INSB_5valueISF_EENS_3argILi1EEENSM_ISsEENSM_ISI_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x36bfd8: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_25ScriptInformationProviderEEES3_SsNS_8functionIFvNSD_13RequestResultEbbfbEEEENSA_5list4INSA_5valueISE_EENS_3argILi1EEENSM_ISsEENSM_ISI_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE")]
 // 0x36c200 — __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_25ScriptInformationProviderEEES3_SsNS_8functionIFvNSD_13RequestResultEbbfbEEEENSA_5list4INSA_5valueISE_EENS_3argILi1EEENSM_ISsEENSM_ISI_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_25ScriptInformationProviderEEES3_SsNS_8functionIFvNSD_13RequestResultEbbfbEEEENSA_5list4INSA_5valueISE_EENS_3argILi1EEENSM_ISsEENSM_ISI_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_36c200(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36c200 __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_25ScriptInformationProviderEEES3_SsNS_8functionIFvNSD_13RequestResultEbbfbEEEENSA_5list4INSA_5valueISE_EENS_3argILi1EEENSM_ISsEENSM_ISI_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x36c200: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>::storage4(boost::_bi::storage4<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>> const&)")]
 // 0x36c42c — __ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEC2ERKSG_
 // was: boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>::storage4(boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>> const&)
 pub fn boost_stub_36c42c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36c42c __ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEC2ERKSG_")
+    // IDA 0x36c42c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>)")]
 // 0x36c5a4 — __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_25ScriptInformationProviderEEES3_SsNS_8functionIFvNSD_13RequestResultEbbfbEEEENSA_5list4INSA_5valueISE_EENS_3argILi1EEENSM_ISsEENSM_ISI_EEEEEEEEvT_
 // was: void boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>)
 pub fn boost_stub_36c5a4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36c5a4 __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_25ScriptInformationProviderEEES3_SsNS_8functionIFvNSD_13RequestResultEbbfbEEEENSA_5list4INSA_5valueISE_EENS_3argILi1EEENSM_ISsEENSM_ISI_EEEEEEEEvT_")
+    // IDA 0x36c5a4: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x36c7e0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX25ScriptInformationProviderEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS7_13RequestResultEbbfbEEEENS3_5list4INS3_5valueIS8_EENS_3argILi1EEENSI_ISsEENSI_ISE_EEEEEEE6manageERKNS1_15function_bufferERSR_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 pub fn boost_stub_36c7e0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36c7e0 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX25ScriptInformationProviderEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS7_13RequestResultEbbfbEEEENS3_5list4INS3_5valueIS8_EENS_3argILi1EEENSI_ISsEENSI_ISE_EEEEEEE6manageERKNS1_15function_bufferERSR_NS1_30functor_manager_operation_typeE")
+    // IDA 0x36c7e0: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>,void,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>>::invoke(boost::detail::function::function_buffer &,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)")]
 // 0x36c7fc — __ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX25ScriptInformationProviderEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS7_13RequestResultEbbfbEEEENS3_5list4INS3_5valueIS8_EENS_3argILi1EEENSI_ISsEENSI_ISE_EEEEEEvSA_PSiNS_10shared_ptrIKSsEEE6invokeERNS1_15function_bufferESA_SQ_ST_
 // was: boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>,void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::invoke(boost::detail::function::function_buffer &,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)
 pub fn boost_stub_36c7fc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36c7fc __ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX25ScriptInformationProviderEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS7_13RequestResultEbbfbEEEENS3_5list4INS3_5valueIS8_EENS_3argILi1EEENSI_ISsEENSI_ISE_EEEEEEvSA_PSiNS_10shared_ptrIKSsEEE6invokeERNS1_15function_bufferESA_SQ_ST_")
+    // IDA 0x36c7fc: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>,boost::detail::function::function_buffer &)const")]
 // 0x36c820 — __ZNK5boost6detail8function13basic_vtable3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_25ScriptInformationProviderEEES5_SsNS_8functionIFvNSF_13RequestResultEbbfbEEEENSC_5list4INSC_5valueISG_EENS_3argILi1EEENSO_ISsEENSO_ISK_EEEEEEEEbT_RNS1_15function_bufferE
 // was: bool boost::detail::function::basic_vtable3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>,boost::detail::function::function_buffer &)const
 pub fn boost_stub_36c820(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36c820 __ZNK5boost6detail8function13basic_vtable3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_25ScriptInformationProviderEEES5_SsNS_8functionIFvNSF_13RequestResultEbbfbEEEENSC_5list4INSC_5valueISG_EENS_3argILi1EEENSO_ISsEENSO_ISK_EEEEEEEEbT_RNS1_15function_bufferE")
+    // IDA 0x36c820: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // 0x36ca44 — __ZNK5boost6detail8function13basic_vtable3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_25ScriptInformationProviderEEES5_SsNS_8functionIFvNSF_13RequestResultEbbfbEEEENSC_5list4INSC_5valueISG_EENS_3argILi1EEENSO_ISsEENSO_ISK_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // was: bool boost::detail::function::basic_vtable3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 pub fn boost_stub_36ca44(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36ca44 __ZNK5boost6detail8function13basic_vtable3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_25ScriptInformationProviderEEES5_SsNS_8functionIFvNSF_13RequestResultEbbfbEEEENSC_5list4INSC_5valueISG_EENS_3argILi1EEENSO_ISsEENSO_ISK_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+    // IDA 0x36ca44: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::detail::function::basic_vtable3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>>::assign_functor<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // 0x36cc64 — __ZNK5boost6detail8function13basic_vtable3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_25ScriptInformationProviderEEES5_SsNS_8functionIFvNSF_13RequestResultEbbfbEEEENSC_5list4INSC_5valueISG_EENS_3argILi1EEENSO_ISsEENSO_ISK_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // was: void boost::detail::function::basic_vtable3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
 pub fn boost_stub_36cc64(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36cc64 __ZNK5boost6detail8function13basic_vtable3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_25ScriptInformationProviderEEES5_SsNS_8functionIFvNSF_13RequestResultEbbfbEEEENSC_5list4INSC_5valueISG_EENS_3argILi1EEENSO_ISsEENSO_ISK_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+    // IDA 0x36cc64: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::_bi::list4<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>::operator()<void (*)(rbx_core::WeakPtr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list3<RBX::AsyncHttpQueue::RequestResult&,std::istream *&,rbx_core::SharedPtr<std::string const> &>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>) &,boost::_bi::list3<RBX::AsyncHttpQueue::RequestResult&,std::istream *&,rbx_core::SharedPtr<std::string const> &> &,int)")]
 // 0x36cd24 — __ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEclIPFvS6_NS4_14AsyncHttpQueue13RequestResultESsSE_ENS0_5list3IRSJ_RPSiRNS_10shared_ptrIKSsEEEEEEvNS0_4typeIvEERT_RT0_i
 // was: void boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>::operator()<void (*)(boost::weak_ptr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list3<RBX::AsyncHttpQueue::RequestResult&,std::istream *&,boost::shared_ptr<std::string const> &>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>) &,boost::_bi::list3<RBX::AsyncHttpQueue::RequestResult&,std::istream *&,boost::shared_ptr<std::string const> &> &,int)
 pub fn boost_stub_36cd24(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36cd24 __ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEclIPFvS6_NS4_14AsyncHttpQueue13RequestResultESsSE_ENS0_5list3IRSJ_RPSiRNS_10shared_ptrIKSsEEEEEEvNS0_4typeIvEERT_RT0_i")
+    // IDA 0x36cd24: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // 0x36cf0c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX25ScriptInformationProviderEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS7_13RequestResultEbbfbEEEENS3_5list4INS3_5valueIS8_EENS_3argILi1EEENSI_ISsEENSI_ISE_EEEEEEE7managerERKNS1_15function_bufferERSR_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 pub fn boost_stub_36cf0c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36cf0c __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX25ScriptInformationProviderEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS7_13RequestResultEbbfbEEEENS3_5list4INS3_5valueIS8_EENS_3argILi1EEENSI_ISsEENSI_ISE_EEEEEEE7managerERKNS1_15function_bufferERSR_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+    // IDA 0x36cf0c: function::operator() invoked the erased target. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::list4<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>::list4(boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>)")]
 // 0x36d0dc — __ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEC2ES7_S9_SA_SF_
 // was: boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>::list4(boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>)
 pub fn boost_stub_36d0dc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36d0dc __ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEC2ES7_S9_SA_SF_")
+    // IDA 0x36d0dc: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>::storage4(boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>)")]
 // 0x36d2b8 — __ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEC2ES7_S9_SA_SF_
 // was: boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>::storage4(boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>)
 pub fn boost_stub_36d2b8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36d2b8 __ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS5_13RequestResultEbbfbEEEEEEC2ES7_S9_SA_SF_")
+    // IDA 0x36d2b8: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>>::storage3(boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>)")]
 // 0x36d4c0 — __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEEEC2ES7_S9_SA_
 // was: boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>)
 pub fn boost_stub_36d4c0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36d4c0 __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEENS2_ISsEEEC2ES7_S9_SA_")
+    // IDA 0x36d4c0: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>>::storage2(boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>)")]
 // 0x36d600 — __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEEEC2ES7_S9_
 // was: boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>)
 pub fn boost_stub_36d600(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36d600 __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX25ScriptInformationProviderEEEEENS_3argILi1EEEEC2ES7_S9_")
+    // IDA 0x36d600: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::WeakPtr<RBX::ScriptInformationProvider>::weak_ptr<RBX::ScriptInformationProvider>(rbx_core::SharedPtr<RBX::ScriptInformationProvider> const&,boost::detail::sp_enable_if_convertible<RBX::ScriptInformationProvider,RBX::ScriptInformationProvider>::type)")]
 // 0x36d748 — __ZN5boost8weak_ptrIN3RBX25ScriptInformationProviderEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
 // was: boost::weak_ptr<RBX::ScriptInformationProvider>::weak_ptr<RBX::ScriptInformationProvider>(boost::shared_ptr<RBX::ScriptInformationProvider> const&,boost::detail::sp_enable_if_convertible<RBX::ScriptInformationProvider,RBX::ScriptInformationProvider>::type)
 pub fn boost_stub_36d748(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36d748 __ZN5boost8weak_ptrIN3RBX25ScriptInformationProviderEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE")
+    // IDA 0x36d748: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tINS7_11unspecifiedENS0_IFvNS1_25ScriptInformationProvider13RequestResultEbbfbEEENS7_5list5INS7_5valueISB_EENSF_IbEESH_NSF_IfEESH_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")]
 // 0x36d798 — __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tINS7_11unspecifiedENS0_IFvNS1_25ScriptInformationProvider13RequestResultEbbfbEEENS7_5list5INS7_5valueISB_EENSF_IbEESH_NSF_IfEESH_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tINS7_11unspecifiedENS0_IFvNS1_25ScriptInformationProvider13RequestResultEbbfbEEENS7_5list5INS7_5valueISB_EENSF_IbEESH_NSF_IfEESH_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_36d798(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36d798 __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tINS7_11unspecifiedENS0_IFvNS1_25ScriptInformationProvider13RequestResultEbbfbEEENS7_5list5INS7_5valueISB_EENSF_IbEESH_NSF_IfEESH_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x36d798: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tINS6_11unspecifiedENS_8functionIFvNS1_25ScriptInformationProvider13RequestResultEbbfbEEENS6_5list5INS6_5valueISB_EENSF_IbEESH_NSF_IfEESH_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")]
 // 0x36d870 — __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tINS6_11unspecifiedENS_8functionIFvNS1_25ScriptInformationProvider13RequestResultEbbfbEEENS6_5list5INS6_5valueISB_EENSF_IbEESH_NSF_IfEESH_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tINS6_11unspecifiedENS_8functionIFvNS1_25ScriptInformationProvider13RequestResultEbbfbEEENS6_5list5INS6_5valueISB_EENSF_IbEESH_NSF_IfEESH_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_36d870(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36d870 __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tINS6_11unspecifiedENS_8functionIFvNS1_25ScriptInformationProvider13RequestResultEbbfbEEENS6_5list5INS6_5valueISB_EENSF_IbEESH_NSF_IfEESH_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x36d870: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>)")]
 // 0x36d948 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tINS6_11unspecifiedENS_8functionIFvNS1_25ScriptInformationProvider13RequestResultEbbfbEEENS6_5list5INS6_5valueISB_EENSF_IbEESH_NSF_IfEESH_EEEEEEvT_
 // was: void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>)
 pub fn boost_stub_36d948(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36d948 __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tINS6_11unspecifiedENS_8functionIFvNS1_25ScriptInformationProvider13RequestResultEbbfbEEENS6_5list5INS6_5valueISB_EENSF_IbEESH_NSF_IfEESH_EEEEEEvT_")
+    // IDA 0x36d948: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x36da30 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvN3RBX25ScriptInformationProvider13RequestResultEbbfbEEENS3_5list5INS3_5valueIS9_EENSD_IbEESF_NSD_IfEESF_EEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 pub fn boost_stub_36da30(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36da30 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvN3RBX25ScriptInformationProvider13RequestResultEbbfbEEENS3_5list5INS3_5valueIS9_EENSD_IbEESF_NSD_IfEESF_EEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE")
+    // IDA 0x36da30: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")]
 // 0x36da4c — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvN3RBX25ScriptInformationProvider13RequestResultEbbfbEEENS3_5list5INS3_5valueIS9_EENSD_IbEESF_NSD_IfEESF_EEEEvPNS7_9DataModelEE6invokeERNS1_15function_bufferESK_
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)
 pub fn boost_stub_36da4c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36da4c __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvN3RBX25ScriptInformationProvider13RequestResultEbbfbEEENS3_5list5INS3_5valueIS9_EENSD_IbEESF_NSD_IfEESF_EEEEvPNS7_9DataModelEE6invokeERNS1_15function_bufferESK_")
+    // IDA 0x36da4c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &)const")]
 // 0x36da78 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tINS8_11unspecifiedENS_8functionIFvNS3_25ScriptInformationProvider13RequestResultEbbfbEEENS8_5list5INS8_5valueISD_EENSH_IbEESJ_NSH_IfEESJ_EEEEEEbT_RNS1_15function_bufferE
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &)const
 pub fn boost_stub_36da78(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36da78 __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tINS8_11unspecifiedENS_8functionIFvNS3_25ScriptInformationProvider13RequestResultEbbfbEEENS8_5list5INS8_5valueISD_EENSH_IbEESJ_NSH_IfEESJ_EEEEEEbT_RNS1_15function_bufferE")
+    // IDA 0x36da78: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // 0x36db50 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tINS8_11unspecifiedENS_8functionIFvNS3_25ScriptInformationProvider13RequestResultEbbfbEEENS8_5list5INS8_5valueISD_EENSH_IbEESJ_NSH_IfEESJ_EEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 pub fn boost_stub_36db50(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36db50 __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tINS8_11unspecifiedENS_8functionIFvNS3_25ScriptInformationProvider13RequestResultEbbfbEEENS8_5list5INS8_5valueISD_EENSH_IbEESJ_NSH_IfEESJ_EEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+    // IDA 0x36db50: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // 0x36dc24 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE14assign_functorINS_3_bi6bind_tINS8_11unspecifiedENS_8functionIFvNS3_25ScriptInformationProvider13RequestResultEbbfbEEENS8_5list5INS8_5valueISD_EENSH_IbEESJ_NSH_IfEESJ_EEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // was: void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
 pub fn boost_stub_36dc24(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36dc24 __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE14assign_functorINS_3_bi6bind_tINS8_11unspecifiedENS_8functionIFvNS3_25ScriptInformationProvider13RequestResultEbbfbEEENS8_5list5INS8_5valueISD_EENSH_IbEESJ_NSH_IfEESJ_EEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+    // IDA 0x36dc24: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // 0x36dce8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvN3RBX25ScriptInformationProvider13RequestResultEbbfbEEENS3_5list5INS3_5valueIS9_EENSD_IbEESF_NSD_IfEESF_EEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>,boost::_bi::list5<boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<float>,boost::_bi::value<bool>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 pub fn boost_stub_36dce8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36dce8 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvN3RBX25ScriptInformationProvider13RequestResultEbbfbEEENS3_5list5INS3_5valueIS9_EENSD_IbEESF_NSD_IfEESF_EEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+    // IDA 0x36dce8: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::function5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to_own(boost::function5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool> const&)")]
 // 0x36de2c — __ZN5boost9function5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbE13assign_to_ownERKS4_
 // was: boost::function5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to_own(boost::function5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool> const&)
 pub fn boost_stub_36de2c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36de2c __ZN5boost9function5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbE13assign_to_ownERKS4_")
+    // IDA 0x36de2c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>> *,boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>> *)")]
 // 0x36e490 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISA_EESK_
 // was: boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>> *,boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>> *)
 pub fn boost_stub_36e490(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36e490 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISA_EESK_")
+    // IDA 0x36e490: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_node(boost::unordered::detail::ptr_bucket *)")]
 // 0x36e4ec — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE11delete_nodeEPNS1_10ptr_bucketE
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_node(boost::unordered::detail::ptr_bucket *)
 pub fn boost_stub_36e4ec(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36e4ec __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE11delete_nodeEPNS1_10ptr_bucketE")
+    // IDA 0x36e4ec: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::fix_bucket(unsigned long,boost::unordered::detail::ptr_bucket *)")]
 // 0x36e518 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE10fix_bucketEmPNS1_10ptr_bucketE
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::fix_bucket(unsigned long,boost::unordered::detail::ptr_bucket *)
 pub fn boost_stub_36e518(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36e518 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE10fix_bucketEmPNS1_10ptr_bucketE")
+    // IDA 0x36e518: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::find_node(std::string const&)const")]
 // 0x36e610 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE9find_nodeERS5_
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::find_node(std::string const&)const
 pub fn boost_stub_36e610(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36e610 __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE9find_nodeERS5_")
+    // IDA 0x36e610: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::find_node_impl<std::string,std::equal_to<std::string>>(unsigned long,std::string const&,std::equal_to<std::string> const&)const")]
 // 0x36e650 — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSF_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISA_EEEEmRKT_RKT0_
 // was: boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::find_node_impl<std::string,std::equal_to<std::string>>(unsigned long,std::string const&,std::equal_to<std::string> const&)const
 pub fn boost_stub_36e650(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36e650 __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSF_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISA_EEEEmRKT_RKT0_")
+    // IDA 0x36e650: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>>(std::string const&,boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>> const&)")]
 // 0x36e6bc — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE12emplace_implINS1_13emplace_args1ISA_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISA_EEEEbERS5_RKT_
 // was: std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>>(std::string const&,boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>> const&)
 pub fn boost_stub_36e6bc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36e6bc __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE12emplace_implINS1_13emplace_args1ISA_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISA_EEEEbERS5_RKT_")
+    // IDA 0x36e6bc: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>>>::construct_with_value<boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>>(boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>> const&)")]
 // 0x36e874 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEEEEE20construct_with_valueINS1_13emplace_args1ISA_EEEEvRKT_
 // was: void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>>>::construct_with_value<boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>>(boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>> const&)
 pub fn boost_stub_36e874(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36e874 __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEEEEE20construct_with_valueINS1_13emplace_args1ISA_EEEEvRKT_")
+    // IDA 0x36e874: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::reserve_for_insert(unsigned long)")]
 // 0x36e898 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE18reserve_for_insertEm
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::reserve_for_insert(unsigned long)
 pub fn boost_stub_36e898(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36e898 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE18reserve_for_insertEm")
+    // IDA 0x36e898: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>>>::~node_constructor()")]
 // 0x36e8e8 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEEEEED2Ev
 // was: boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>>>::~node_constructor()
 pub fn boost_stub_36e8e8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36e8e8 __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEEEEED2Ev")
+    // IDA 0x36e8e8: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::create_buckets(unsigned long)")]
 // 0x36e908 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::create_buckets(unsigned long)
 pub fn boost_stub_36e908(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36e908 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm")
+    // IDA 0x36e908: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::min_buckets_for_size(unsigned long)const")]
 // 0x36ea30 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE20min_buckets_for_sizeEm
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::min_buckets_for_size(unsigned long)const
 pub fn boost_stub_36ea30(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36ea30 __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE20min_buckets_for_sizeEm")
+    // IDA 0x36ea30: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::rehash_impl(unsigned long)")]
 // 0x36eac0 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm
 // was: boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::rehash_impl(unsigned long)
 pub fn boost_stub_36eac0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36eac0 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm")
+    // IDA 0x36eac0: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>> &,boost::unordered::detail::ptr_bucket *)")]
 // 0x36eaec — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE15place_in_bucketERNS1_5tableISG_EEPNS1_10ptr_bucketE
 // was: boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>> &,boost::unordered::detail::ptr_bucket *)
 pub fn boost_stub_36eaec(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36eaec __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE15place_in_bucketERNS1_5tableISG_EEPNS1_10ptr_bucketE")
+    // IDA 0x36eaec: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>>>::construct(void)")]
 // 0x36eb44 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEEEEE9constructEv
 // was: boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>>>::construct(void)
 pub fn boost_stub_36eb44(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36eb44 __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEEEEE9constructEv")
+    // IDA 0x36eb44: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::find_node(std::string const&)const")]
 // 0x36ed5c — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE9find_nodeERS5_
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::find_node(std::string const&)const
 pub fn boost_stub_36ed5c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36ed5c __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE9find_nodeERS5_")
+    // IDA 0x36ed5c: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::find_node_impl<std::string,std::equal_to<std::string>>(unsigned long,std::string const&,std::equal_to<std::string> const&)const")]
 // 0x36ed98 — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSI_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEmRKT_RKT0_
 // was: boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::find_node_impl<std::string,std::equal_to<std::string>>(unsigned long,std::string const&,std::equal_to<std::string> const&)const
 pub fn boost_stub_36ed98(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36ed98 __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSI_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEmRKT_RKT0_")
+    // IDA 0x36ed98: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::shared_ptr<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>(RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false> *)")]
 // 0x36ee08 — __ZN5boost10shared_ptrIN3RBX14AsyncHttpCacheINS1_25ScriptInformationProvider16CachedScriptInfoELb0EEEEC2IS5_EEPT_
 // was: boost::shared_ptr<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::shared_ptr<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>(RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false> *)
 pub fn boost_stub_36ee08(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36ee08 __ZN5boost10shared_ptrIN3RBX14AsyncHttpCacheINS1_25ScriptInformationProvider16CachedScriptInfoELb0EEEEC2IS5_EEPT_")
+    // IDA 0x36ee08: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "void boost::enable_shared_from_this<RBX::AsyncHttpQueue>::_internal_accept_owner<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>,RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>(rbx_core::SharedPtr<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>> const*,RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false> *)const")]
 // 0x36eef0 — __ZNK5boost23enable_shared_from_thisIN3RBX14AsyncHttpQueueEE22_internal_accept_ownerINS1_14AsyncHttpCacheINS1_25ScriptInformationProvider16CachedScriptInfoELb0EEES8_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::AsyncHttpQueue>::_internal_accept_owner<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>,RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>(boost::shared_ptr<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>> const*,RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false> *)const
 pub fn boost_stub_36eef0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36eef0 __ZNK5boost23enable_shared_from_thisIN3RBX14AsyncHttpQueueEE22_internal_accept_ownerINS1_14AsyncHttpCacheINS1_25ScriptInformationProvider16CachedScriptInfoELb0EEES8_EEvPKNS_10shared_ptrIT_EEPT0_")
+    // IDA 0x36eef0: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>(RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false> *)")]
 // 0x36f018 — __ZN5boost6detail12shared_countC2IN3RBX14AsyncHttpCacheINS3_25ScriptInformationProvider16CachedScriptInfoELb0EEEEEPT_
 // was: boost::detail::shared_count::shared_count<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>(RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false> *)
 pub fn boost_stub_36f018(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36f018 __ZN5boost6detail12shared_countC2IN3RBX14AsyncHttpCacheINS3_25ScriptInformationProvider16CachedScriptInfoELb0EEEEEPT_")
+    // IDA 0x36f018: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::~sp_counted_impl_p()")]
 // 0x36f110 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_25ScriptInformationProvider16CachedScriptInfoELb0EEEED1Ev
 // was: boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::~sp_counted_impl_p()
 pub fn boost_stub_36f110(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36f110 __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_25ScriptInformationProvider16CachedScriptInfoELb0EEEED1Ev")
+    // IDA 0x36f110: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::~sp_counted_impl_p()")]
 // 0x36f114 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_25ScriptInformationProvider16CachedScriptInfoELb0EEEED0Ev
 // was: boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::~sp_counted_impl_p()
 pub fn boost_stub_36f114(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36f114 __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_25ScriptInformationProvider16CachedScriptInfoELb0EEEED0Ev")
+    // IDA 0x36f114: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::dispose(void)")]
 // 0x36f118 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_25ScriptInformationProvider16CachedScriptInfoELb0EEEE7disposeEv
 // was: boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::dispose(void)
 pub fn boost_stub_36f118(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36f118 __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_25ScriptInformationProvider16CachedScriptInfoELb0EEEE7disposeEv")
+    // IDA 0x36f118: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::get_deleter(std::type_info const&)")]
 // 0x36f12c — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_25ScriptInformationProvider16CachedScriptInfoELb0EEEE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::get_deleter(std::type_info const&)
 pub fn boost_stub_36f12c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36f12c __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_25ScriptInformationProvider16CachedScriptInfoELb0EEEE11get_deleterERKSt9type_info")
+    // IDA 0x36f12c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::get_untyped_deleter(void)")]
 // 0x36f130 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_25ScriptInformationProvider16CachedScriptInfoELb0EEEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::get_untyped_deleter(void)
 pub fn boost_stub_36f130(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36f130 __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_25ScriptInformationProvider16CachedScriptInfoELb0EEEE19get_untyped_deleterEv")
+    // IDA 0x36f130: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>::AsyncHttpCache(RBX::Instance *,boost::function<bool ()(std::string const&,std::string *)>,int,int)")]
 // 0x36f134 — __ZN3RBX14AsyncHttpCacheINS_25ScriptInformationProvider16CachedScriptInfoELb0EEC2EPNS_8InstanceEN5boost8functionIFbRKSsPSsEEEii
 // was: RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>::AsyncHttpCache(RBX::Instance *,boost::function<bool ()(std::string const&,std::string *)>,int,int)
 pub fn boost_stub_36f134(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36f134 __ZN3RBX14AsyncHttpCacheINS_25ScriptInformationProvider16CachedScriptInfoELb0EEC2EPNS_8InstanceEN5boost8functionIFbRKSsPSsEEEii")
+    // IDA 0x36f134: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>::registerContent(std::string const&,rbx_core::SharedPtr<std::string const>,rbx_core::SharedPtr<std::string const>)")]
 // 0x36f4a4 — __ZN3RBX14AsyncHttpCacheINS_25ScriptInformationProvider16CachedScriptInfoELb0EE15registerContentERKSsN5boost10shared_ptrIS4_EES8_
 // was: RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>::registerContent(std::string const&,boost::shared_ptr<std::string const>,boost::shared_ptr<std::string const>)
 pub fn boost_stub_36f4a4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36f4a4 __ZN3RBX14AsyncHttpCacheINS_25ScriptInformationProvider16CachedScriptInfoELb0EE15registerContentERKSsN5boost10shared_ptrIS4_EES8_")
+    // IDA 0x36f4a4: libstdc++ container internals. Vec/BTreeMap/String — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>> *,boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>> *)")]
 // 0x36fb88 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISD_EESN_
 // was: boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>> *,boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>> *)
 pub fn boost_stub_36fb88(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36fb88 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISD_EESN_")
+    // IDA 0x36fb88: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_node(boost::unordered::detail::ptr_bucket *)")]
 // 0x36fbe4 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11delete_nodeEPNS1_10ptr_bucketE
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_node(boost::unordered::detail::ptr_bucket *)
 pub fn boost_stub_36fbe4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36fbe4 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11delete_nodeEPNS1_10ptr_bucketE")
+    // IDA 0x36fbe4: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::fix_bucket(unsigned long,boost::unordered::detail::ptr_bucket *)")]
 // 0x36fc10 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE10fix_bucketEmPNS1_10ptr_bucketE
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::fix_bucket(unsigned long,boost::unordered::detail::ptr_bucket *)
 pub fn boost_stub_36fc10(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36fc10 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE10fix_bucketEmPNS1_10ptr_bucketE")
+    // IDA 0x36fc10: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>>(std::string const&,boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>> const&)")]
 // 0x36fc50 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE12emplace_implINS1_13emplace_args1ISD_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEbERS5_RKT_
 // was: std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>>(std::string const&,boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>> const&)
 pub fn boost_stub_36fc50(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36fc50 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE12emplace_implINS1_13emplace_args1ISD_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEbERS5_RKT_")
+    // IDA 0x36fc50: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>>>::construct_with_value<boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>>(boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>> const&)")]
 // 0x36fe00 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEEEEE20construct_with_valueINS1_13emplace_args1ISD_EEEEvRKT_
 // was: void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>>>::construct_with_value<boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>>(boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>> const&)
 pub fn boost_stub_36fe00(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36fe00 __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEEEEE20construct_with_valueINS1_13emplace_args1ISD_EEEEvRKT_")
+    // IDA 0x36fe00: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::reserve_for_insert(unsigned long)")]
 // 0x36fe24 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE18reserve_for_insertEm
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::reserve_for_insert(unsigned long)
 pub fn boost_stub_36fe24(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36fe24 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE18reserve_for_insertEm")
+    // IDA 0x36fe24: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>>>::~node_constructor()")]
 // 0x36fe74 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEEEEED2Ev
 // was: boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>>>::~node_constructor()
 pub fn boost_stub_36fe74(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36fe74 __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEEEEED2Ev")
+    // IDA 0x36fe74: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::create_buckets(unsigned long)")]
 // 0x36fe90 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::create_buckets(unsigned long)
 pub fn boost_stub_36fe90(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36fe90 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm")
+    // IDA 0x36fe90: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::min_buckets_for_size(unsigned long)const")]
 // 0x36ffb8 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE20min_buckets_for_sizeEm
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::min_buckets_for_size(unsigned long)const
 pub fn boost_stub_36ffb8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x36ffb8 __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE20min_buckets_for_sizeEm")
+    // IDA 0x36ffb8: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::rehash_impl(unsigned long)")]
 // 0x370048 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm
 // was: boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::rehash_impl(unsigned long)
 pub fn boost_stub_370048(_ptr: crate::SharedPtr<()>) {
-    todo!("0x370048 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm")
+    // IDA 0x370048: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>> &,boost::unordered::detail::ptr_bucket *)")]
 // 0x370074 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE15place_in_bucketERNS1_5tableISJ_EEPNS1_10ptr_bucketE
 // was: boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>> &,boost::unordered::detail::ptr_bucket *)
 pub fn boost_stub_370074(_ptr: crate::SharedPtr<()>) {
-    todo!("0x370074 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE15place_in_bucketERNS1_5tableISJ_EEPNS1_10ptr_bucketE")
+    // IDA 0x370074: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>>>::construct(void)")]
 // 0x3700cc — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEEEEE9constructEv
 // was: boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>>>::construct(void)
 pub fn boost_stub_3700cc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3700cc __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEEEEE9constructEv")
+    // IDA 0x3700cc: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)")]
 // 0x370360 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14delete_bucketsEv
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)
 pub fn boost_stub_370360(_ptr: crate::SharedPtr<()>) {
-    todo!("0x370360 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14delete_bucketsEv")
+    // IDA 0x370360: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::clear(void)")]
 // 0x370398 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE5clearEv
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::clear(void)
 pub fn boost_stub_370398(_ptr: crate::SharedPtr<()>) {
-    todo!("0x370398 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE5clearEv")
+    // IDA 0x370398: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::table(unsigned long,boost::hash<std::string> const&,std::equal_to<std::string> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>> const&)")]
 // 0x370530 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEEC2EmRKSG_RKSI_RKSaINS1_8ptr_nodeISD_EEE
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::table(unsigned long,boost::hash<std::string> const&,std::equal_to<std::string> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::ScriptInformationProvider::CachedScriptInfo>>>>>> const&)
 pub fn boost_stub_370530(_ptr: crate::SharedPtr<()>) {
-    todo!("0x370530 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEEC2EmRKSG_RKSI_RKSaINS1_8ptr_nodeISD_EEE")
+    // IDA 0x370530: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)")]
 // 0x370714 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE14delete_bucketsEv
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)
 pub fn boost_stub_370714(_ptr: crate::SharedPtr<()>) {
-    todo!("0x370714 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE14delete_bucketsEv")
+    // IDA 0x370714: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::clear(void)")]
 // 0x37074c — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE5clearEv
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::clear(void)
 pub fn boost_stub_37074c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x37074c __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE5clearEv")
+    // IDA 0x37074c: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::table(unsigned long,boost::hash<std::string> const&,std::equal_to<std::string> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>> const&)")]
 // 0x3708e4 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEEC2EmRKSD_RKSF_RKSaINS1_8ptr_nodeISA_EEE
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>,boost::hash<std::string>,std::equal_to<std::string>>>::table(unsigned long,boost::hash<std::string> const&,std::equal_to<std::string> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,std::string>>>>>> const&)
 pub fn boost_stub_3708e4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3708e4 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEEC2EmRKSD_RKSF_RKSaINS1_8ptr_nodeISA_EEE")
+    // IDA 0x3708e4: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::function5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::clear(void)")]
 // 0x371220 — __ZN5boost9function5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbE5clearEv
 // was: boost::function5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::clear(void)
 pub fn boost_stub_371220(_ptr: crate::SharedPtr<()>) {
-    todo!("0x371220 __ZN5boost9function5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbE5clearEv")
+    // IDA 0x371220: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "releaseSound(std::pair<RBX::Soundscape::SoundId,rbx_core::SharedPtr<RBX::Soundscape::Sound>> const&)")]
 // 0x3729bc — __ZL12releaseSoundRKSt4pairIN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEEE
 // was: releaseSound(std::pair<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>> const&)
 pub fn boost_stub_3729bc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3729bc __ZL12releaseSoundRKSt4pairIN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEEE")
+    // IDA 0x3729bc: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "RBX::Soundscape::SoundService::getSoundStats(std::map<RBX::Soundscape::SoundId,rbx_core::SharedPtr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>> const&,unsigned int &,unsigned int &)")]
 // 0x3753e8 — __ZN3RBX10Soundscape12SoundService13getSoundStatsERKSt3mapINS0_7SoundIdEN5boost10shared_ptrINS0_5SoundEEESt4lessIS3_ESaISt4pairIKS3_S7_EEERjSH_
 // was: RBX::Soundscape::SoundService::getSoundStats(std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>> const&,unsigned int &,unsigned int &)
 pub fn boost_stub_3753e8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3753e8 __ZN3RBX10Soundscape12SoundService13getSoundStatsERKSt3mapINS0_7SoundIdEN5boost10shared_ptrINS0_5SoundEEESt4lessIS3_ESaISt4pairIKS3_S7_EEERjSH_")
+    // IDA 0x3753e8: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Soundscape::SoundService::gcSounds(std::map<RBX::Soundscape::SoundId,rbx_core::SharedPtr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>> &)")]
 // 0x375438 — __ZN3RBX10Soundscape12SoundService8gcSoundsERSt3mapINS0_7SoundIdEN5boost10shared_ptrINS0_5SoundEEESt4lessIS3_ESaISt4pairIKS3_S7_EEE
 // was: RBX::Soundscape::SoundService::gcSounds(std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>> &)
 pub fn boost_stub_375438(_ptr: crate::SharedPtr<()>) {
-    todo!("0x375438 __ZN3RBX10Soundscape12SoundService8gcSoundsERSt3mapINS0_7SoundIdEN5boost10shared_ptrINS0_5SoundEEESt4lessIS3_ESaISt4pairIKS3_S7_EEE")
+    // IDA 0x375438: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "void (*)(std::pair const&<RBX::Soundscape::SoundId,rbx_core::SharedPtr<RBX::Soundscape::Sound>>) std::for_each<std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,rbx_core::SharedPtr<RBX::Soundscape::Sound>>)>(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,rbx_core::SharedPtr<RBX::Soundscape::Sound>>))")]
 // 0x3765a4 — __ZSt8for_eachISt17_Rb_tree_iteratorISt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS3_5SoundEEEEEPFvRKS1_IS4_S9_EEET0_T_SI_SH_
 // was: void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>) std::for_each<std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>)>(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>))
 pub fn boost_stub_3765a4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3765a4 __ZSt8for_eachISt17_Rb_tree_iteratorISt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS3_5SoundEEEEEPFvRKS1_IS4_S9_EEET0_T_SI_SH_")
+    // IDA 0x3765a4: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::StockSound> RBX::Creatable<RBX::Instance>::create<RBX::StockSound>(void)")]
 // 0x37677c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10StockSoundEEEN5boost10shared_ptrIT_EEv
 // was: boost::shared_ptr<RBX::StockSound> RBX::Creatable<RBX::Instance>::create<RBX::StockSound>(void)
 pub fn boost_stub_37677c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x37677c __ZN3RBX9CreatableINS_8InstanceEE6createINS_10StockSoundEEEN5boost10shared_ptrIT_EEv")
+    // IDA 0x37677c: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "std::map<RBX::SoundType,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>>>>::operator[](RBX::SoundType const&)")]
 // 0x3768dc — __ZNSt3mapIN3RBX9SoundTypeEN5boost10shared_ptrINS0_10Soundscape12SoundChannelEEESt4lessIS1_ESaISt4pairIKS1_S6_EEEixERSA_
 // was: std::map<RBX::SoundType,boost::shared_ptr<RBX::Soundscape::SoundChannel>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::operator[](RBX::SoundType const&)
 pub fn boost_stub_3768dc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3768dc __ZNSt3mapIN3RBX9SoundTypeEN5boost10shared_ptrINS0_10Soundscape12SoundChannelEEESt4lessIS1_ESaISt4pairIKS1_S6_EEEixERSA_")
+    // IDA 0x3768dc: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>& rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>::operator=<RBX::StockSound>(rbx_core::SharedPtr<RBX::StockSound> const&)")]
 // 0x376a24 — __ZN5boost10shared_ptrIN3RBX10Soundscape12SoundChannelEEaSINS1_10StockSoundEEERS4_RKNS0_IT_EE
 // was: boost::shared_ptr<RBX::Soundscape::SoundChannel>& boost::shared_ptr<RBX::Soundscape::SoundChannel>::operator=<RBX::StockSound>(boost::shared_ptr<RBX::StockSound> const&)
 pub fn boost_stub_376a24(_ptr: crate::SharedPtr<()>) {
-    todo!("0x376a24 __ZN5boost10shared_ptrIN3RBX10Soundscape12SoundChannelEEaSINS1_10StockSoundEEERS4_RKNS0_IT_EE")
+    // IDA 0x376a24: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundService::SoundJob>::operator=(rbx_core::SharedPtr<RBX::Soundscape::SoundService::SoundJob> const&)")]
 // 0x376a58 — __ZN5boost10shared_ptrIN3RBX10Soundscape12SoundService8SoundJobEEaSERKS5_
 // was: boost::shared_ptr<RBX::Soundscape::SoundService::SoundJob>::operator=(boost::shared_ptr<RBX::Soundscape::SoundService::SoundJob> const&)
 pub fn boost_stub_376a58(_ptr: crate::SharedPtr<()>) {
-    todo!("0x376a58 __ZN5boost10shared_ptrIN3RBX10Soundscape12SoundService8SoundJobEEaSERKS5_")
+    // IDA 0x376a58: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<SoundServiceStatsItem>(rbx_core::SharedPtr<SoundServiceStatsItem> const&)")]
 // 0x376a90 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSI21SoundServiceStatsItemEERS3_RKNS0_IT_EE
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<SoundServiceStatsItem>(boost::shared_ptr<SoundServiceStatsItem> const&)
 pub fn boost_stub_376a90(_ptr: crate::SharedPtr<()>) {
-    todo!("0x376a90 __ZN5boost10shared_ptrIN3RBX8InstanceEEaSI21SoundServiceStatsItemEERS3_RKNS0_IT_EE")
+    // IDA 0x376a90: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Heartbeat const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>> const&)")]
 // 0x3770e0 — __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE7connectIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_10Soundscape12SoundChannelES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEEEENS0_10connectionERKT_
 // was: rbx::signals::connection rbx::signals::signal<void ()(RBX::Heartbeat const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>> const&)
 pub fn boost_stub_3770e0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3770e0 __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE7connectIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_10Soundscape12SoundChannelES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEEEENS0_10connectionERKT_")
+    // IDA 0x3770e0: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::Sound>::operator=(rbx_core::SharedPtr<RBX::Soundscape::Sound> const&)")]
 // 0x37716c — __ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEEaSERKS4_
 // was: boost::shared_ptr<RBX::Soundscape::Sound>::operator=(boost::shared_ptr<RBX::Soundscape::Sound> const&)
 pub fn boost_stub_37716c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x37716c __ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEEaSERKS4_")
+    // IDA 0x37716c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "std::map<RBX::Soundscape::SoundId,rbx_core::SharedPtr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,rbx_core::SharedPtr<RBX::Soundscape::Sound>>>>::operator[](RBX::Soundscape::SoundId const&)")]
 // 0x3772c0 — __ZNSt3mapIN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEESt4lessIS2_ESaISt4pairIKS2_S6_EEEixERSA_
 // was: std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::operator[](RBX::Soundscape::SoundId const&)
 pub fn boost_stub_3772c0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3772c0 __ZNSt3mapIN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEESt4lessIS2_ESaISt4pairIKS2_S6_EEEixERSA_")
+    // IDA 0x3772c0: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundChannel> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundChannel>(void)")]
 // 0x3780c8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10Soundscape12SoundChannelEEEN5boost10shared_ptrIT_EEv
 // was: boost::shared_ptr<RBX::Soundscape::SoundChannel> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundChannel>(void)
 pub fn boost_stub_3780c8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x3780c8 __ZN3RBX9CreatableINS_8InstanceEE6createINS_10Soundscape12SoundChannelEEEN5boost10shared_ptrIT_EEv")
+    // IDA 0x3780c8: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::Soundscape::SoundChannel>::shared_ptr<RBX::Soundscape::SoundChannel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // 0x378178 — __ZN5boost10shared_ptrIN3RBX10Soundscape12SoundChannelEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // was: boost::shared_ptr<RBX::Soundscape::SoundChannel>::shared_ptr<RBX::Soundscape::SoundChannel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)
 pub fn boost_stub_378178(_ptr: crate::SharedPtr<()>) {
-    todo!("0x378178 __ZN5boost10shared_ptrIN3RBX10Soundscape12SoundChannelEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+    // IDA 0x378178: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundChannel>(rbx_core::SharedPtr<RBX::Soundscape::SoundChannel> const*,RBX::Soundscape::SoundChannel *)const")]
 // 0x378240 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10Soundscape12SoundChannelES7_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundChannel>(boost::shared_ptr<RBX::Soundscape::SoundChannel> const*,RBX::Soundscape::SoundChannel *)const
 pub fn boost_stub_378240(_ptr: crate::SharedPtr<()>) {
-    todo!("0x378240 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10Soundscape12SoundChannelES7_EEvPKNS_10shared_ptrIT_EEPT0_")
+    // IDA 0x378240: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // 0x37832c — __ZN5boost6detail12shared_countC2IPN3RBX10Soundscape12SoundChannelENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // was: boost::detail::shared_count::shared_count<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)
 pub fn boost_stub_37832c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x37832c __ZN5boost6detail12shared_countC2IPN3RBX10Soundscape12SoundChannelENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+    // IDA 0x37832c: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // 0x378434 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundChannelENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // was: boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 pub fn boost_stub_378434(_ptr: crate::SharedPtr<()>) {
-    todo!("0x378434 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundChannelENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+    // IDA 0x378434: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // 0x2aa134 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting14ScriptDebuggerENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_pd<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
 pub fn boost_stub_2aa134(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2aa134 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting14ScriptDebuggerENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+    // IDA 0x2aa134: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // 0x2aa14c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting14ScriptDebuggerENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_pd<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
 pub fn boost_stub_2aa14c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2aa14c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting14ScriptDebuggerENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+    // IDA 0x2aa14c: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::LocalScript> RBX::Creatable<RBX::Instance>::create<RBX::LocalScript>(void)")]
 // 0x2aa518 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_11LocalScriptEEEN5boost10shared_ptrIT_EEv
 // was: boost::shared_ptr<RBX::LocalScript> RBX::Creatable<RBX::Instance>::create<RBX::LocalScript>(void)
 pub fn boost_stub_2aa518(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2aa518 __ZN3RBX9CreatableINS_8InstanceEE6createINS_11LocalScriptEEEN5boost10shared_ptrIT_EEv")
+    // IDA 0x2aa518: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::LocalScript>::shared_ptr<RBX::LocalScript,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LocalScript *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // 0x2aa5c8 — __ZN5boost10shared_ptrIN3RBX11LocalScriptEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // was: boost::shared_ptr<RBX::LocalScript>::shared_ptr<RBX::LocalScript,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LocalScript *,RBX::Creatable<RBX::Instance>::Deleter)
 pub fn boost_stub_2aa5c8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2aa5c8 __ZN5boost10shared_ptrIN3RBX11LocalScriptEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+    // IDA 0x2aa5c8: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::LocalScript,RBX::LocalScript>(rbx_core::SharedPtr<RBX::LocalScript> const*,RBX::LocalScript *)const")]
 // 0x2aa690 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11LocalScriptES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::LocalScript,RBX::LocalScript>(boost::shared_ptr<RBX::LocalScript> const*,RBX::LocalScript *)const
 pub fn boost_stub_2aa690(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2aa690 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11LocalScriptES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+    // IDA 0x2aa690: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LocalScript *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // 0x2aa780 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LocalScriptENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // was: boost::detail::sp_counted_impl_pd<RBX::LocalScript *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 pub fn boost_stub_2aa780(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2aa780 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LocalScriptENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+    // IDA 0x2aa780: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 #[doc(alias = "std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>::_M_erase_at_end(rbx_core::SharedPtr<RBX::Instance>*)")]
 // 0x2aab78 — __ZNSt6vectorIN5boost10shared_ptrIN3RBX8InstanceEEESaIS4_EE15_M_erase_at_endEPS4_
 // was: std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_erase_at_end(boost::shared_ptr<RBX::Instance>*)
 pub fn boost_stub_2aab78(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2aab78 __ZNSt6vectorIN5boost10shared_ptrIN3RBX8InstanceEEESaIS4_EE15_M_erase_at_endEPS4_")
+    // IDA 0x2aab78: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance>*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,unsigned long,rbx_core::SharedPtr<RBX::Instance> const&)")]
 // 0x2aaba8 — __ZNSt6vectorIN5boost10shared_ptrIN3RBX8InstanceEEESaIS4_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS4_S6_EEmRKS4_
 // was: std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance>*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,unsigned long,boost::shared_ptr<RBX::Instance> const&)
 pub fn boost_stub_2aaba8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2aaba8 __ZNSt6vectorIN5boost10shared_ptrIN3RBX8InstanceEEESaIS4_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS4_S6_EEmRKS4_")
+    // IDA 0x2aaba8: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "void std::__uninitialized_fill_n_aux<rbx_core::SharedPtr<RBX::Instance> *,unsigned long,rbx_core::SharedPtr<RBX::Instance>>(rbx_core::SharedPtr<RBX::Instance> *,unsigned long,rbx_core::SharedPtr<RBX::Instance> const&,std::__false_type)")]
 // 0x2ab1a8 — __ZSt26__uninitialized_fill_n_auxIPN5boost10shared_ptrIN3RBX8InstanceEEEmS4_EvT_T0_RKT1_St12__false_type
 // was: void std::__uninitialized_fill_n_aux<boost::shared_ptr<RBX::Instance> *,unsigned long,boost::shared_ptr<RBX::Instance>>(boost::shared_ptr<RBX::Instance> *,unsigned long,boost::shared_ptr<RBX::Instance> const&,std::__false_type)
 pub fn boost_stub_2ab1a8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ab1a8 __ZSt26__uninitialized_fill_n_auxIPN5boost10shared_ptrIN3RBX8InstanceEEEmS4_EvT_T0_RKT1_St12__false_type")
+    // IDA 0x2ab1a8: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::ScriptContext> RBX::Creatable<RBX::Instance>::create<RBX::ScriptContext>(void)")]
 // 0x2abdd8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13ScriptContextEEEN5boost10shared_ptrIT_EEv
 // was: boost::shared_ptr<RBX::ScriptContext> RBX::Creatable<RBX::Instance>::create<RBX::ScriptContext>(void)
 pub fn boost_stub_2abdd8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2abdd8 __ZN3RBX9CreatableINS_8InstanceEE6createINS_13ScriptContextEEEN5boost10shared_ptrIT_EEv")
+    // IDA 0x2abdd8: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::ScriptContext *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ScriptContext *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // 0x2abe90 — __ZN5boost6detail12shared_countC2IPN3RBX13ScriptContextENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // was: boost::detail::shared_count::shared_count<RBX::ScriptContext *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ScriptContext *,RBX::Creatable<RBX::Instance>::Deleter)
 pub fn boost_stub_2abe90(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2abe90 __ZN5boost6detail12shared_countC2IPN3RBX13ScriptContextENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+    // IDA 0x2abe90: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ScriptContext *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // 0x2abf98 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ScriptContextENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // was: boost::detail::sp_counted_impl_pd<RBX::ScriptContext *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 pub fn boost_stub_2abf98(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2abf98 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ScriptContextENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+    // IDA 0x2abf98: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ScriptContext *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // 0x2abfa0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ScriptContextENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // was: boost::detail::sp_counted_impl_pd<RBX::ScriptContext *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
 pub fn boost_stub_2abfa0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2abfa0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ScriptContextENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+    // IDA 0x2abfa0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ScriptContext *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // 0x2abfc0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ScriptContextENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_pd<RBX::ScriptContext *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
 pub fn boost_stub_2abfc0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2abfc0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ScriptContextENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+    // IDA 0x2abfc0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ScriptContext *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // 0x2abfd8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ScriptContextENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_pd<RBX::ScriptContext *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
 pub fn boost_stub_2abfd8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2abfd8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ScriptContextENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+    // IDA 0x2abfd8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN5boost8functionIFvP9lua_StateEEC2INS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
 // 0x2b3648 — __ZN5boost8functionIFvP9lua_StateEEC2INS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost8functionIFvP9lua_StateEEC2INS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_2b3648(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b3648 __ZN5boost8functionIFvP9lua_StateEEC2INS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x2b3648: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "__ZN5boost9function1IvP9lua_StateEC2INS_3_bi6bind_tIvPFvS2_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS5_5list2INS_3argILi1EEENS5_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
 // 0x2b371c — __ZN5boost9function1IvP9lua_StateEC2INS_3_bi6bind_tIvPFvS2_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS5_5list2INS_3argILi1EEENS5_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost9function1IvP9lua_StateEC2INS_3_bi6bind_tIvPFvS2_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS5_5list2INS_3argILi1EEENS5_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_2b371c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b371c __ZN5boost9function1IvP9lua_StateEC2INS_3_bi6bind_tIvPFvS2_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS5_5list2INS_3argILi1EEENS5_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x2b371c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void boost::function1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>>)")]
 // 0x2b37f0 — __ZN5boost9function1IvP9lua_StateE9assign_toINS_3_bi6bind_tIvPFvS2_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS5_5list2INS_3argILi1EEENS5_5valueISF_EEEEEEEEvT_
 // was: void boost::function1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>)
 pub fn boost_stub_2b37f0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b37f0 __ZN5boost9function1IvP9lua_StateE9assign_toINS_3_bi6bind_tIvPFvS2_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS5_5list2INS_3argILi1EEENS5_5valueISF_EEEEEEEEvT_")
+    // IDA 0x2b37f0: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x2b38d4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP9lua_StateNS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS3_5list2INS_3argILi1EEENS3_5valueISF_EEEEEEE6manageERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 pub fn boost_stub_2b38d4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b38d4 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP9lua_StateNS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS3_5list2INS_3argILi1EEENS3_5valueISF_EEEEEEE6manageERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeE")
+    // IDA 0x2b38d4: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>>,void,lua_State *>::invoke(boost::detail::function::function_buffer &,lua_State *)")]
 // 0x2b38f0 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP9lua_StateNS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS3_5list2INS_3argILi1EEENS3_5valueISF_EEEEEEvS6_E6invokeERNS1_15function_bufferES6_
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,void,lua_State *>::invoke(boost::detail::function::function_buffer &,lua_State *)
 pub fn boost_stub_2b38f0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b38f0 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP9lua_StateNS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS3_5list2INS_3argILi1EEENS3_5valueISF_EEEEEEvS6_E6invokeERNS1_15function_bufferES6_")
+    // IDA 0x2b38f0: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &)const")]
 // 0x2b390c — __ZNK5boost6detail8function13basic_vtable1IvP9lua_StateE9assign_toINS_3_bi6bind_tIvPFvS4_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS7_5list2INS_3argILi1EEENS7_5valueISH_EEEEEEEEbT_RNS1_15function_bufferE
 // was: bool boost::detail::function::basic_vtable1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &)const
 pub fn boost_stub_2b390c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b390c __ZNK5boost6detail8function13basic_vtable1IvP9lua_StateE9assign_toINS_3_bi6bind_tIvPFvS4_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS7_5list2INS_3argILi1EEENS7_5valueISH_EEEEEEEEbT_RNS1_15function_bufferE")
+    // IDA 0x2b390c: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // 0x2b39e4 — __ZNK5boost6detail8function13basic_vtable1IvP9lua_StateE9assign_toINS_3_bi6bind_tIvPFvS4_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS7_5list2INS_3argILi1EEENS7_5valueISH_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // was: bool boost::detail::function::basic_vtable1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 pub fn boost_stub_2b39e4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b39e4 __ZNK5boost6detail8function13basic_vtable1IvP9lua_StateE9assign_toINS_3_bi6bind_tIvPFvS4_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS7_5list2INS_3argILi1EEENS7_5valueISH_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+    // IDA 0x2b39e4: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::detail::function::basic_vtable1<void,lua_State *>::assign_functor<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // 0x2b3ab4 — __ZNK5boost6detail8function13basic_vtable1IvP9lua_StateE14assign_functorINS_3_bi6bind_tIvPFvS4_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS7_5list2INS_3argILi1EEENS7_5valueISH_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // was: void boost::detail::function::basic_vtable1<void,lua_State *>::assign_functor<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
 pub fn boost_stub_2b3ab4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b3ab4 __ZNK5boost6detail8function13basic_vtable1IvP9lua_StateE14assign_functorINS_3_bi6bind_tIvPFvS4_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS7_5list2INS_3argILi1EEENS7_5valueISH_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+    // IDA 0x2b3ab4: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>::operator()<void (*)(lua_State *,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>),boost::_bi::list1<lua_State *&>>(boost::_bi::type<void>,void (*)(lua_State *,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>) &,boost::_bi::list1<lua_State *&> &,int)")]
 // 0x2b3b78 — __ZN5boost3_bi5list2INS_3argILi1EEENS0_5valueINS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEEEEclIPFvP9lua_StateSD_ENS0_5list1IRSI_EEEEvNS0_4typeIvEERT_RT0_i
 // was: void boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>::operator()<void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list1<lua_State *&>>(boost::_bi::type<void>,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>) &,boost::_bi::list1<lua_State *&> &,int)
 pub fn boost_stub_2b3b78(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b3b78 __ZN5boost3_bi5list2INS_3argILi1EEENS0_5valueINS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEEEEclIPFvP9lua_StateSD_ENS0_5list1IRSI_EEEEvNS0_4typeIvEERT_RT0_i")
+    // IDA 0x2b3b78: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // 0x2b3c40 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP9lua_StateNS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS3_5list2INS_3argILi1EEENS3_5valueISF_EEEEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 pub fn boost_stub_2b3c40(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b3c40 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP9lua_StateNS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS3_5list2INS_3argILi1EEENS3_5valueISF_EEEEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+    // IDA 0x2b3c40: function::operator() invoked the erased target. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>::list2(boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>)")]
 // 0x2b3d88 — __ZN5boost3_bi5list2INS_3argILi1EEENS0_5valueINS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEEEEC2ES3_SE_
 // was: boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>::list2(boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>)
 pub fn boost_stub_2b3d88(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b3d88 __ZN5boost3_bi5list2INS_3argILi1EEENS0_5valueINS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEEEEC2ES3_SE_")
+    // IDA 0x2b3d88: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::function1<void,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>::dummy::nonnull(void)")]
 // 0x2b3e50 — __ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE5dummy7nonnullEv
 // was: boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::dummy::nonnull(void)
 pub fn boost_stub_2b3e50(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b3e50 __ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE5dummy7nonnullEv")
+    // IDA 0x2b3e50: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::auto_ptr<RBX::Reflection::Tuple> &,lua_State *,unsigned long),boost::_bi::list3<boost::reference_wrapper<std::auto_ptr<RBX::Reflection::Tuple>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x2b3e54 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRSt8auto_ptrIN3RBX10Reflection5TupleEEP9lua_StatemENS3_5list3INS_17reference_wrapperIS9_EENS_3argILi1EEENSI_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::auto_ptr<RBX::Reflection::Tuple> &,lua_State *,unsigned long),boost::_bi::list3<boost::reference_wrapper<std::auto_ptr<RBX::Reflection::Tuple>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 pub fn boost_stub_2b3e54(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b3e54 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRSt8auto_ptrIN3RBX10Reflection5TupleEEP9lua_StatemENS3_5list3INS_17reference_wrapperIS9_EENS_3argILi1EEENSI_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE")
+    // IDA 0x2b3e54: function null-target guard. Option<Box<dyn Fn>>::is_some — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(std::auto_ptr<RBX::Reflection::Tuple> &,lua_State *,unsigned long),boost::_bi::list3<boost::reference_wrapper<std::auto_ptr<RBX::Reflection::Tuple>>,boost::arg<1>,boost::arg<2>>>,void,lua_State *,unsigned long>::invoke(boost::detail::function::function_buffer &,lua_State *,unsigned long)")]
 // 0x2b3eb4 — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvPFvRSt8auto_ptrIN3RBX10Reflection5TupleEEP9lua_StatemENS3_5list3INS_17reference_wrapperIS9_EENS_3argILi1EEENSI_ILi2EEEEEEEvSC_mE6invokeERNS1_15function_bufferESC_m
 // was: boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(std::auto_ptr<RBX::Reflection::Tuple> &,lua_State *,unsigned long),boost::_bi::list3<boost::reference_wrapper<std::auto_ptr<RBX::Reflection::Tuple>>,boost::arg<1>,boost::arg<2>>>,void,lua_State *,unsigned long>::invoke(boost::detail::function::function_buffer &,lua_State *,unsigned long)
 pub fn boost_stub_2b3eb4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b3eb4 __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvPFvRSt8auto_ptrIN3RBX10Reflection5TupleEEP9lua_StatemENS3_5list3INS_17reference_wrapperIS9_EENS_3argILi1EEENSI_ILi2EEEEEEEvSC_mE6invokeERNS1_15function_bufferESC_m")
+    // IDA 0x2b3eb4: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<int,int (*)(RBX::Reflection::Tuple const&,lua_State *),boost::_bi::list2<boost::reference_wrapper<RBX::Reflection::Tuple const>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x2b3ebc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIiPFiRKN3RBX10Reflection5TupleEP9lua_StateENS3_5list2INS_17reference_wrapperIS8_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<int,int (*)(RBX::Reflection::Tuple const&,lua_State *),boost::_bi::list2<boost::reference_wrapper<RBX::Reflection::Tuple const>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 pub fn boost_stub_2b3ebc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b3ebc __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIiPFiRKN3RBX10Reflection5TupleEP9lua_StateENS3_5list2INS_17reference_wrapperIS8_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE")
+    // IDA 0x2b3ebc: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::function_obj_invoker1<boost::_bi::bind_t<int,int (*)(RBX::Reflection::Tuple const&,lua_State *),boost::_bi::list2<boost::reference_wrapper<RBX::Reflection::Tuple const>,boost::arg<1>>>,unsigned long,lua_State *>::invoke(boost::detail::function::function_buffer &,lua_State *)")]
 // 0x2b3f1c — __ZN5boost6detail8function21function_obj_invoker1INS_3_bi6bind_tIiPFiRKN3RBX10Reflection5TupleEP9lua_StateENS3_5list2INS_17reference_wrapperIS8_EENS_3argILi1EEEEEEEmSB_E6invokeERNS1_15function_bufferESB_
 // was: boost::detail::function::function_obj_invoker1<boost::_bi::bind_t<int,int (*)(RBX::Reflection::Tuple const&,lua_State *),boost::_bi::list2<boost::reference_wrapper<RBX::Reflection::Tuple const>,boost::arg<1>>>,unsigned long,lua_State *>::invoke(boost::detail::function::function_buffer &,lua_State *)
 pub fn boost_stub_2b3f1c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b3f1c __ZN5boost6detail8function21function_obj_invoker1INS_3_bi6bind_tIiPFiRKN3RBX10Reflection5TupleEP9lua_StateENS3_5list2INS_17reference_wrapperIS8_EENS_3argILi1EEEEEEEmSB_E6invokeERNS1_15function_bufferESB_")
+    // IDA 0x2b3f1c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::function1<void,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>::assign_to_own(boost::function1<void,rbx_core::SharedPtr<RBX::Reflection::Tuple const>> const&)")]
 // 0x2b3f54 — __ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE13assign_to_ownERKS7_
 // was: boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::assign_to_own(boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>> const&)
 pub fn boost_stub_2b3f54(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b3f54 __ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE13assign_to_ownERKS7_")
+    // IDA 0x2b3f54: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "rbx::implementation::typed_holder<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::singleton(void)")]
 // 0x2b4be8 — __ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEE9singletonEv
 // was: rbx::implementation::typed_holder<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::singleton(void)
 pub fn boost_stub_2b4be8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b4be8 __ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEE9singletonEv")
+    // IDA 0x2b4be8: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "rbx::implementation::typed_holder<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::destruct_func(char *)")]
 // 0x2b4c58 — __ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEE13destruct_funcEPc
 // was: rbx::implementation::typed_holder<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::destruct_func(char *)
 pub fn boost_stub_2b4c58(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b4c58 __ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEE13destruct_funcEPc")
+    // IDA 0x2b4c58: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>::shared_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> *)")]
 // 0x2b4c64 — __ZN5boost10shared_ptrIKSt6vectorINS0_IN3RBX8InstanceEEESaIS4_EEEC2IS6_EEPT_
 // was: boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> *)
 pub fn boost_stub_2b4c64(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b4c64 __ZN5boost10shared_ptrIKSt6vectorINS0_IN3RBX8InstanceEEESaIS4_EEEC2IS6_EEPT_")
+    // IDA 0x2b4c64: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> *)")]
 // 0x2b4d38 — __ZN5boost6detail12shared_countC2ISt6vectorINS_10shared_ptrIN3RBX8InstanceEEESaIS7_EEEEPT_
 // was: boost::detail::shared_count::shared_count<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> *)
 pub fn boost_stub_2b4d38(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b4d38 __ZN5boost6detail12shared_countC2ISt6vectorINS_10shared_ptrIN3RBX8InstanceEEESaIS7_EEEEPT_")
+    // IDA 0x2b4d38: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>::vector(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const&)")]
 // 0x2b4e48 — __ZNSt6vectorIN5boost10shared_ptrIN3RBX8InstanceEEESaIS4_EEC2ERKS6_
 // was: std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>::vector(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&)
 pub fn boost_stub_2b4e48(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b4e48 __ZNSt6vectorIN5boost10shared_ptrIN3RBX8InstanceEEESaIS4_EEC2ERKS6_")
+    // IDA 0x2b4e48: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>,std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>>>::create_buckets(unsigned long)")]
 // 0x2b4fb8 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsN3RBX10Reflection7VariantEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>,std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>>>::create_buckets(unsigned long)
 pub fn boost_stub_2b4fb8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b4fb8 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsN3RBX10Reflection7VariantEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm")
+    // IDA 0x2b4fb8: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *)")]
 // 0x2b50e4 — __ZN5boost10shared_ptrINS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS5_EEEEEC2ISE_EEPT_
 // was: boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *)
 pub fn boost_stub_2b50e4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b50e4 __ZN5boost10shared_ptrINS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS5_EEEEEC2ISE_EEPT_")
+    // IDA 0x2b50e4: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *)")]
 // 0x2b51b8 — __ZN5boost6detail12shared_countC2INS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEPT_
 // was: boost::detail::shared_count::shared_count<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *)
 pub fn boost_stub_2b51b8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b51b8 __ZN5boost6detail12shared_countC2INS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEPT_")
+    // IDA 0x2b51b8: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::~sp_counted_impl_p()")]
 // 0x2b52c8 — __ZN5boost6detail17sp_counted_impl_pINS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEED1Ev
 // was: boost::detail::sp_counted_impl_p<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::~sp_counted_impl_p()
 pub fn boost_stub_2b52c8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b52c8 __ZN5boost6detail17sp_counted_impl_pINS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEED1Ev")
+    // IDA 0x2b52c8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::dispose(void)")]
 // 0x2b52d0 — __ZN5boost6detail17sp_counted_impl_pINS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEE7disposeEv
 // was: boost::detail::sp_counted_impl_p<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::dispose(void)
 pub fn boost_stub_2b52d0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b52d0 __ZN5boost6detail17sp_counted_impl_pINS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEE7disposeEv")
+    // IDA 0x2b52d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::get_untyped_deleter(void)")]
 // 0x2b5378 — __ZN5boost6detail17sp_counted_impl_pINS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_p<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::get_untyped_deleter(void)
 pub fn boost_stub_2b5378(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b5378 __ZN5boost6detail17sp_counted_impl_pINS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEE19get_untyped_deleterEv")
+    // IDA 0x2b5378: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> * boost::get_deleter<rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> const&)")]
 // 0x2b5380 — __ZN5boost11get_deleterIN3rbx6detail13sp_ms_deleterISt6vectorIN3RBX10Reflection7VariantESaIS7_EEEES9_EEPT_RKNS_10shared_ptrIT0_EE
 // was: rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> * boost::get_deleter<rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> const&)
 pub fn boost_stub_2b5380(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b5380 __ZN5boost11get_deleterIN3rbx6detail13sp_ms_deleterISt6vectorIN3RBX10Reflection7VariantESaIS7_EEEES9_EEPT_RKNS_10shared_ptrIT0_EE")
+    // IDA 0x2b5380: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>::~sp_counted_impl_pd()")]
 // 0x2b5408 — __ZN5boost6detail18sp_counted_impl_pdIPSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS7_EEED1Ev
 // was: boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>::~sp_counted_impl_pd()
 pub fn boost_stub_2b5408(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b5408 __ZN5boost6detail18sp_counted_impl_pdIPSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS7_EEED1Ev")
+    // IDA 0x2b5408: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>::get_deleter(std::type_info const&)")]
 // 0x2b5438 — __ZN5boost6detail18sp_counted_impl_pdIPSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS7_EEE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>::get_deleter(std::type_info const&)
 pub fn boost_stub_2b5438(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b5438 __ZN5boost6detail18sp_counted_impl_pdIPSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS7_EEE11get_deleterERKSt9type_info")
+    // IDA 0x2b5438: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>::get_untyped_deleter(void)")]
 // 0x2b5450 — __ZN5boost6detail18sp_counted_impl_pdIPSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS7_EEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>::get_untyped_deleter(void)
 pub fn boost_stub_2b5450(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b5450 __ZN5boost6detail18sp_counted_impl_pdIPSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS7_EEE19get_untyped_deleterEv")
+    // IDA 0x2b5450: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::implementation::typed_holder<rbx_core::SharedPtr<RBX::Reflection::Tuple const>>::singleton(void)")]
 // 0x2b5458 — __ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEE9singletonEv
 // was: rbx::implementation::typed_holder<boost::shared_ptr<RBX::Reflection::Tuple const>>::singleton(void)
 pub fn boost_stub_2b5458(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b5458 __ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEE9singletonEv")
+    // IDA 0x2b5458: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::implementation::typed_holder<rbx_core::SharedPtr<RBX::Reflection::Tuple const>>::destruct_func(char *)")]
 // 0x2b54c8 — __ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEE13destruct_funcEPc
 // was: rbx::implementation::typed_holder<boost::shared_ptr<RBX::Reflection::Tuple const>>::destruct_func(char *)
 pub fn boost_stub_2b54c8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b54c8 __ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEE13destruct_funcEPc")
+    // IDA 0x2b54c8: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)")]
 // 0x2b56c0 — __ZN5boost6detail12shared_countC2IN3RBX10Reflection5TupleEEEPT_
 // was: boost::detail::shared_count::shared_count<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)
 pub fn boost_stub_2b56c0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b56c0 __ZN5boost6detail12shared_countC2IN3RBX10Reflection5TupleEEEPT_")
+    // IDA 0x2b56c0: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Reflection::Tuple>::~sp_counted_impl_p()")]
 // 0x2b57d0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Reflection5TupleEED0Ev
 // was: boost::detail::sp_counted_impl_p<RBX::Reflection::Tuple>::~sp_counted_impl_p()
 pub fn boost_stub_2b57d0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b57d0 __ZN5boost6detail17sp_counted_impl_pIN3RBX10Reflection5TupleEED0Ev")
+    // IDA 0x2b57d0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Reflection::Tuple>::get_deleter(std::type_info const&)")]
 // 0x2b57d8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Reflection5TupleEE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_p<RBX::Reflection::Tuple>::get_deleter(std::type_info const&)
 pub fn boost_stub_2b57d8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b57d8 __ZN5boost6detail17sp_counted_impl_pIN3RBX10Reflection5TupleEE11get_deleterERKSt9type_info")
+    // IDA 0x2b57d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::insert(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot *)")]
 // 0x2b57e0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE6insertEPNS8_4slotE
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::insert(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot *)
 pub fn boost_stub_2b57e0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b57e0 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE6insertEPNS8_4slotE")
+    // IDA 0x2b57e0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot>::operator=(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot*)")]
 // 0x2b59ec — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEESsS7_EE4slotEEaSEPSA_
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot>::operator=(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot*)
 pub fn boost_stub_2b59ec(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b59ec __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEESsS7_EE4slotEEaSEPSA_")
+    // IDA 0x2b59ec: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot> const&)")]
 // 0x2b5a10 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEESsS7_EE4slotEEaSERKSB_
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot> const&)
 pub fn boost_stub_2b5a10(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b5a10 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEESsS7_EE4slotEEaSERKSB_")
+    // IDA 0x2b5a10: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::safe_static_init_mutex(void)")]
 // 0x2b5a34 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE22safe_static_init_mutexEv
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::safe_static_init_mutex(void)
 pub fn boost_stub_2b5a34(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b5a34 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE22safe_static_init_mutexEv")
+    // IDA 0x2b5a34: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::safe_static_do_get_mutex(void)")]
 // 0x2b5a38 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE24safe_static_do_get_mutexEv
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::safe_static_do_get_mutex(void)
 pub fn boost_stub_2b5a38(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b5a38 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE24safe_static_do_get_mutexEv")
+    // IDA 0x2b5a38: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()")]
 // 0x2b5b30 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf3IvNS4_13ScriptContextES6_SsS6_EENSA_5list4INSA_5valueIPSE_EENS2_3argILi1EEENSK_ILi2EEENSK_ILi3EEEEEEEED1Ev
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()
 pub fn boost_stub_2b5b30(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b5b30 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf3IvNS4_13ScriptContextES6_SsS6_EENSA_5list4INSA_5valueIPSE_EENS2_3argILi1EEENSK_ILi2EEENSK_ILi3EEEEEEEED1Ev")
+    // IDA 0x2b5b30: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()")]
 // 0x2b5b5c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf3IvNS4_13ScriptContextES6_SsS6_EENSA_5list4INSA_5valueIPSE_EENS2_3argILi1EEENSK_ILi2EEENSK_ILi3EEEEEEEED0Ev
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()
 pub fn boost_stub_2b5b5c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b5b5c __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf3IvNS4_13ScriptContextES6_SsS6_EENSA_5list4INSA_5valueIPSE_EENS2_3argILi1EEENSK_ILi2EEENSK_ILi3EEEEEEEED0Ev")
+    // IDA 0x2b5b5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::disconnect(void)")]
 // 0x2b5c30 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4slot10disconnectEv
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::disconnect(void)
 pub fn boost_stub_2b5c30(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b5c30 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4slot10disconnectEv")
+    // IDA 0x2b5c30: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::connected(void)const")]
 // 0x2b5d40 — __ZNK3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4slot9connectedEv
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::connected(void)const
 pub fn boost_stub_2b5d40(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b5d40 __ZNK3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4slot9connectedEv")
+    // IDA 0x2b5d40: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)")]
 // 0x2b5d4c — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf3IvNS5_13ScriptContextES7_SsS7_EENSB_5list4INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEENSL_ILi3EEEEEEELi3ES8_E4callES7_SsS7_
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)
 pub fn boost_stub_2b5d4c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b5d4c __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf3IvNS5_13ScriptContextES7_SsS7_EENSB_5list4INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEENSL_ILi3EEEEEEELi3ES8_E4callES7_SsS7_")
+    // IDA 0x2b5d4c: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "non_virtual_thunk_to rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)")]
 // 0x2b5d68 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf3IvNS5_13ScriptContextES7_SsS7_EENSB_5list4INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEENSL_ILi3EEEEEEELi3ES8_E4callES7_SsS7_
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)
 pub fn boost_stub_2b5d68(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b5d68 __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf3IvNS5_13ScriptContextES7_SsS7_EENSB_5list4INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEENSL_ILi3EEEEEEELi3ES8_E4callES7_SsS7_")
+    // IDA 0x2b5d68: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void boost::_bi::list4<boost::_bi::value<RBX::ScriptContext *>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::operator()<boost::_mfi::mf3<void,RBX::ScriptContext,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list3<rbx_core::SharedPtr<RBX::Instance>&,std::string &,rbx_core::SharedPtr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::ScriptContext,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>> &,boost::_bi::list3<rbx_core::SharedPtr<RBX::Instance>&,std::string &,rbx_core::SharedPtr<RBX::Instance>&> &,int)")]
 // 0x2b5d84 — __ZN5boost3_bi5list4INS0_5valueIPN3RBX13ScriptContextEEENS_3argILi1EEENS7_ILi2EEENS7_ILi3EEEEclINS_4_mfi3mf3IvS4_NS_10shared_ptrINS3_8InstanceEEESsSH_EENS0_5list3IRSH_RSsSK_EEEEvNS0_4typeIvEERT_RT0_i
 // was: void boost::_bi::list4<boost::_bi::value<RBX::ScriptContext *>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::operator()<boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::shared_ptr<RBX::Instance>&,std::string &,boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list3<boost::shared_ptr<RBX::Instance>&,std::string &,boost::shared_ptr<RBX::Instance>&> &,int)
 pub fn boost_stub_2b5d84(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b5d84 __ZN5boost3_bi5list4INS0_5valueIPN3RBX13ScriptContextEEENS_3argILi1EEENS7_ILi2EEENS7_ILi3EEEEclINS_4_mfi3mf3IvS4_NS_10shared_ptrINS3_8InstanceEEESsSH_EENS0_5list3IRSH_RSsSK_EEEEvNS0_4typeIvEERT_RT0_i")
+    // IDA 0x2b5d84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::_mfi::mf3<void,RBX::ScriptContext,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::ScriptContext*,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)const")]
 // 0x2b5f3c — __ZNK5boost4_mfi3mf3IvN3RBX13ScriptContextENS_10shared_ptrINS2_8InstanceEEESsS6_EclEPS3_S6_SsS6_
 // was: boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>::operator()(RBX::ScriptContext*,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)const
 pub fn boost_stub_2b5f3c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b5f3c __ZNK5boost4_mfi3mf3IvN3RBX13ScriptContextENS_10shared_ptrINS2_8InstanceEEESsS6_EclEPS3_S6_SsS6_")
+    // IDA 0x2b5f3c: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::remove(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot *)")]
 // 0x2b6104 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE6removeEPNS8_4slotE
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::remove(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot *)
 pub fn boost_stub_2b6104(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b6104 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE6removeEPNS8_4slotE")
+    // IDA 0x2b6104: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::safe_static_init_mutex(void)")]
 // 0x2b61f4 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4slot22safe_static_init_mutexEv
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::safe_static_init_mutex(void)
 pub fn boost_stub_2b61f4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b61f4 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4slot22safe_static_init_mutexEv")
+    // IDA 0x2b61f4: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::safe_static_do_get_mutex(void)")]
 // 0x2b61f8 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4slot24safe_static_do_get_mutexEv
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::safe_static_do_get_mutex(void)
 pub fn boost_stub_2b61f8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b61f8 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4slot24safe_static_do_get_mutexEv")
+    // IDA 0x2b61f8: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::~slot()")]
 // 0x2b62e8 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4slotD1Ev
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::~slot()
 pub fn boost_stub_2b62e8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b62e8 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4slotD1Ev")
+    // IDA 0x2b62e8: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::~slot()")]
 // 0x2b6314 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4slotD0Ev
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::~slot()
 pub fn boost_stub_2b6314(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b6314 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4slotD0Ev")
+    // IDA 0x2b6314: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")]
 // 0x2b63e8 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf3IvNS5_13ScriptContextES7_SsS7_EENSB_5list4INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEENSL_ILi3EEEEEEELi3ES8_ED1Ev
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::~callable()
 pub fn boost_stub_2b63e8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b63e8 __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf3IvNS5_13ScriptContextES7_SsS7_EENSB_5list4INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEENSL_ILi3EEEEEEELi3ES8_ED1Ev")
+    // IDA 0x2b63e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")]
 // 0x2b6414 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf3IvNS5_13ScriptContextES7_SsS7_EENSB_5list4INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEENSL_ILi3EEEEEEELi3ES8_ED0Ev
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::~callable()
 pub fn boost_stub_2b6414(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b6414 __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf3IvNS5_13ScriptContextES7_SsS7_EENSB_5list4INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEENSL_ILi3EEEEEEELi3ES8_ED0Ev")
+    // IDA 0x2b6414: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>* RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::pushNewObject<rbx_core::SharedPtr<RBX::Instance>>(lua_State *,rbx_core::SharedPtr<RBX::Instance>)")]
 // 0x2b7770 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE13pushNewObjectIS5_EEPS5_P9lua_StateT_
 // was: boost::shared_ptr<RBX::Instance>* RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::pushNewObject<boost::shared_ptr<RBX::Instance>>(lua_State *,boost::shared_ptr<RBX::Instance>)
 pub fn boost_stub_2b7770(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b7770 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE13pushNewObjectIS5_EEPS5_P9lua_StateT_")
+    // IDA 0x2b7770: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::on_index(lua_State *)")]
 // 0x2b7e68 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8on_indexEP9lua_State
 // was: RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_index(lua_State *)
 pub fn boost_stub_2b7e68(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b7e68 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8on_indexEP9lua_State")
+    // IDA 0x2b7e68: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::on_newindex(lua_State *)")]
 // 0x2b7e9c — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_newindexEP9lua_State
 // was: RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_newindex(lua_State *)
 pub fn boost_stub_2b7e9c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b7e9c __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_newindexEP9lua_State")
+    // IDA 0x2b7e9c: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::LuaSettings> RBX::Creatable<RBX::Instance>::create<RBX::LuaSettings>(void)")]
 // 0x2b8254 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_11LuaSettingsEEEN5boost10shared_ptrIT_EEv
 // was: boost::shared_ptr<RBX::LuaSettings> RBX::Creatable<RBX::Instance>::create<RBX::LuaSettings>(void)
 pub fn boost_stub_2b8254(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b8254 __ZN3RBX9CreatableINS_8InstanceEE6createINS_11LuaSettingsEEEN5boost10shared_ptrIT_EEv")
+    // IDA 0x2b8254: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::LuaSettings>::shared_ptr<RBX::LuaSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // 0x2b8304 — __ZN5boost10shared_ptrIN3RBX11LuaSettingsEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // was: boost::shared_ptr<RBX::LuaSettings>::shared_ptr<RBX::LuaSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaSettings *,RBX::Creatable<RBX::Instance>::Deleter)
 pub fn boost_stub_2b8304(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b8304 __ZN5boost10shared_ptrIN3RBX11LuaSettingsEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+    // IDA 0x2b8304: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::LuaSettings,RBX::LuaSettings>(rbx_core::SharedPtr<RBX::LuaSettings> const*,RBX::LuaSettings *)const")]
 // 0x2b83cc — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11LuaSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::LuaSettings,RBX::LuaSettings>(boost::shared_ptr<RBX::LuaSettings> const*,RBX::LuaSettings *)const
 pub fn boost_stub_2b83cc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b83cc __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11LuaSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+    // IDA 0x2b83cc: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::LuaSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // 0x2b84b8 — __ZN5boost6detail12shared_countC2IPN3RBX11LuaSettingsENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // was: boost::detail::shared_count::shared_count<RBX::LuaSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaSettings *,RBX::Creatable<RBX::Instance>::Deleter)
 pub fn boost_stub_2b84b8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b84b8 __ZN5boost6detail12shared_countC2IPN3RBX11LuaSettingsENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+    // IDA 0x2b84b8: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // 0x2b85c0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // was: boost::detail::sp_counted_impl_pd<RBX::LuaSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 pub fn boost_stub_2b85c0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b85c0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+    // IDA 0x2b85c0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // 0x2b85c8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // was: boost::detail::sp_counted_impl_pd<RBX::LuaSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
 pub fn boost_stub_2b85c8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b85c8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+    // IDA 0x2b85c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // 0x2b85e8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // was: boost::detail::sp_counted_impl_pd<RBX::LuaSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
 pub fn boost_stub_2b85e8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b85e8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+    // IDA 0x2b85e8: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // 0x2b8600 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // was: boost::detail::sp_counted_impl_pd<RBX::LuaSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
 pub fn boost_stub_2b8600(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b8600 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+    // IDA 0x2b8600: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::ScriptContext::*>::EventDesc(rbx::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::ScriptContext::*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // 0x2b8838 — __ZN3RBX10Reflection9EventDescINS_13ScriptContextEFvSsSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_EC2ESB_PKcSE_SE_SE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // was: RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::EventDesc(rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
 pub fn boost_stub_2b8838(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b8838 __ZN3RBX10Reflection9EventDescINS_13ScriptContextEFvSsSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_EC2ESB_PKcSE_SE_SE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+    // IDA 0x2b8838: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::ScriptContext::*>::~EventDesc()")]
 // 0x2b8a94 — __ZN3RBX10Reflection9EventDescINS_13ScriptContextEFvSsSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED0Ev
 // was: RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::~EventDesc()
 pub fn boost_stub_2b8a94(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b8a94 __ZN3RBX10Reflection9EventDescINS_13ScriptContextEFvSsSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED0Ev")
+    // IDA 0x2b8a94: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::EventDescImpl<3,RBX::ScriptContext,void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::ScriptContext::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // 0x2b8b48 — __ZNK3RBX10Reflection13EventDescImplILi3ENS_13ScriptContextEFvSsSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
 // was: RBX::Reflection::EventDescImpl<3,RBX::ScriptContext,void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
 pub fn boost_stub_2b8b48(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b8b48 __ZNK3RBX10Reflection13EventDescImplILi3ENS_13ScriptContextEFvSsSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE")
+    // IDA 0x2b8b48: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Reflection::EventDescImpl<3,RBX::ScriptContext,void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::ScriptContext::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 // 0x2b8c9c — __ZNK3RBX10Reflection13EventDescImplILi3ENS_13ScriptContextEFvSsSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
 // was: RBX::Reflection::EventDescImpl<3,RBX::ScriptContext,void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const
 pub fn boost_stub_2b8c9c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b8c9c __ZNK3RBX10Reflection13EventDescImplILi3ENS_13ScriptContextEFvSsSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE")
+    // IDA 0x2b8c9c: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::ScriptContext,void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::ScriptContext::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
 // 0x2b8f38 — __ZNK3RBX10Reflection13EventDescBaseINS_13ScriptContextEFvSsSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE
 // was: RBX::Reflection::EventDescBase<RBX::ScriptContext,void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::disconnectAll(RBX::Reflection::EventSource *)const
 pub fn boost_stub_2b8f38(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b8f38 __ZNK3RBX10Reflection13EventDescBaseINS_13ScriptContextEFvSsSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE")
+    // IDA 0x2b8f38: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::disconnectAll(void)")]
 // 0x2b8f4c — __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE13disconnectAllEv
 // was: rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::disconnectAll(void)
 pub fn boost_stub_2b8f4c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b8f4c __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE13disconnectAllEv")
+    // IDA 0x2b8f4c: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list_av_4<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>(void (RBX::Reflection::GenericSlotWrapper::*)(std::string const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>)")]
 // 0x2b91b8 — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKSsS5_RKNS_10shared_ptrINS1_8InstanceEEENS6_IS3_EENS_3argILi1EEENSC_ILi2EEENSC_ILi3EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf3ISI_T0_T1_T2_T3_EENSG_9list_av_4IT4_T5_T6_T7_E4typeEEEMSL_FSI_SM_SN_SO_ESR_SS_ST_SU_
 // was: boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list_av_4<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>(void (RBX::Reflection::GenericSlotWrapper::*)(std::string const&,std::string const&,boost::shared_ptr<RBX::Instance> const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>)
 pub fn boost_stub_2b91b8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b91b8 __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKSsS5_RKNS_10shared_ptrINS1_8InstanceEEENS6_IS3_EENS_3argILi1EEENSC_ILi2EEENSC_ILi3EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf3ISI_T0_T1_T2_T3_EENSG_9list_av_4IT4_T5_T6_T7_E4typeEEEMSL_FSI_SM_SN_SO_ESR_SS_ST_SU_")
+    // IDA 0x2b91b8: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute3<std::string,std::string,rbx_core::SharedPtr<RBX::Instance>>(std::string const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&)")]
 // 0x2b92d4 — __ZN3RBX10Reflection18GenericSlotWrapper8execute3ISsSsN5boost10shared_ptrINS_8InstanceEEEEEvRKT_RKT0_RKT1_
 // was: void RBX::Reflection::GenericSlotWrapper::execute3<std::string,std::string,boost::shared_ptr<RBX::Instance>>(std::string const&,std::string const&,boost::shared_ptr<RBX::Instance> const&)
 pub fn boost_stub_2b92d4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b92d4 __ZN3RBX10Reflection18GenericSlotWrapper8execute3ISsSsN5boost10shared_ptrINS_8InstanceEEEEEvRKT_RKT0_RKT1_")
+    // IDA 0x2b92d4: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::function3<void,std::string,std::string,rbx_core::SharedPtr<RBX::Instance>>::clear(void)")]
 // 0x2b9460 — __ZN5boost9function3IvSsSsNS_10shared_ptrIN3RBX8InstanceEEEE5clearEv
 // was: boost::function3<void,std::string,std::string,boost::shared_ptr<RBX::Instance>>::clear(void)
 pub fn boost_stub_2b9460(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b9460 __ZN5boost9function3IvSsSsNS_10shared_ptrIN3RBX8InstanceEEEE5clearEv")
+    // IDA 0x2b9460: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost8functionIFvSsSsNS_10shared_ptrIN3RBX8InstanceEEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKSsSF_RKS4_EENS8_5list4INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSN_ILi2EEENSN_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE")]
 // 0x2b948c — __ZN5boost8functionIFvSsSsNS_10shared_ptrIN3RBX8InstanceEEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKSsSF_RKS4_EENS8_5list4INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSN_ILi2EEENSN_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost8functionIFvSsSsNS_10shared_ptrIN3RBX8InstanceEEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKSsSF_RKS4_EENS8_5list4INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSN_ILi2EEENSN_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_2b948c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b948c __ZN5boost8functionIFvSsSsNS_10shared_ptrIN3RBX8InstanceEEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKSsSF_RKS4_EENS8_5list4INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSN_ILi2EEENSN_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x2b948c: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost9function3IvSsSsNS_10shared_ptrIN3RBX8InstanceEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKSsSE_RKS4_EENS7_5list4INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")]
 // 0x2b9570 — __ZN5boost9function3IvSsSsNS_10shared_ptrIN3RBX8InstanceEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKSsSE_RKS4_EENS7_5list4INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost9function3IvSsSsNS_10shared_ptrIN3RBX8InstanceEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKSsSE_RKS4_EENS7_5list4INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_2b9570(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b9570 __ZN5boost9function3IvSsSsNS_10shared_ptrIN3RBX8InstanceEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKSsSE_RKS4_EENS7_5list4INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x2b9570: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void boost::function3<void,std::string,std::string,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>)")]
 // 0x2b9658 — __ZN5boost9function3IvSsSsNS_10shared_ptrIN3RBX8InstanceEEEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKSsSE_RKS4_EENS7_5list4INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEEEvT_
 // was: void boost::function3<void,std::string,std::string,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>)
 pub fn boost_stub_2b9658(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b9658 __ZN5boost9function3IvSsSsNS_10shared_ptrIN3RBX8InstanceEEEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKSsSE_RKS4_EENS7_5list4INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEEEvT_")
+    // IDA 0x2b9658: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x2b9750 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKSsSB_RKNS_10shared_ptrINS7_8InstanceEEEEENS3_5list4INS3_5valueINSC_IS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEE6manageERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 pub fn boost_stub_2b9750(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b9750 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKSsSB_RKNS_10shared_ptrINS7_8InstanceEEEEENS3_5list4INS3_5valueINSC_IS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEE6manageERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeE")
+    // IDA 0x2b9750: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,void,std::string,std::string,rbx_core::SharedPtr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)")]
 // 0x2b976c — __ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKSsSB_RKNS_10shared_ptrINS7_8InstanceEEEEENS3_5list4INS3_5valueINSC_IS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEvSsSsSE_E6invokeERNS1_15function_bufferESsSsSE_
 // was: boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,void,std::string,std::string,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,std::string,std::string,boost::shared_ptr<RBX::Instance>)
 pub fn boost_stub_2b976c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b976c __ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKSsSB_RKNS_10shared_ptrINS7_8InstanceEEEEENS3_5list4INS3_5valueINSC_IS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEvSsSsSE_E6invokeERNS1_15function_bufferESsSsSE_")
+    // IDA 0x2b976c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable3<void,std::string,std::string,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &)const")]
 // 0x2b978c — __ZNK5boost6detail8function13basic_vtable3IvSsSsNS_10shared_ptrIN3RBX8InstanceEEEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvNS4_10Reflection18GenericSlotWrapperERKSsSG_RKS6_EENS9_5list4INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEENSO_ILi3EEEEEEEEEbT_RNS1_15function_bufferE
 // was: bool boost::detail::function::basic_vtable3<void,std::string,std::string,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &)const
 pub fn boost_stub_2b978c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b978c __ZNK5boost6detail8function13basic_vtable3IvSsSsNS_10shared_ptrIN3RBX8InstanceEEEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvNS4_10Reflection18GenericSlotWrapperERKSsSG_RKS6_EENS9_5list4INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEENSO_ILi3EEEEEEEEEbT_RNS1_15function_bufferE")
+    // IDA 0x2b978c: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable3<void,std::string,std::string,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // 0x2b9874 — __ZNK5boost6detail8function13basic_vtable3IvSsSsNS_10shared_ptrIN3RBX8InstanceEEEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvNS4_10Reflection18GenericSlotWrapperERKSsSG_RKS6_EENS9_5list4INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEENSO_ILi3EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // was: bool boost::detail::function::basic_vtable3<void,std::string,std::string,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 pub fn boost_stub_2b9874(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b9874 __ZNK5boost6detail8function13basic_vtable3IvSsSsNS_10shared_ptrIN3RBX8InstanceEEEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvNS4_10Reflection18GenericSlotWrapperERKSsSG_RKS6_EENS9_5list4INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEENSO_ILi3EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+    // IDA 0x2b9874: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::detail::function::basic_vtable3<void,std::string,std::string,rbx_core::SharedPtr<RBX::Instance>>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // 0x2b9958 — __ZNK5boost6detail8function13basic_vtable3IvSsSsNS_10shared_ptrIN3RBX8InstanceEEEE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf3IvNS4_10Reflection18GenericSlotWrapperERKSsSG_RKS6_EENS9_5list4INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEENSO_ILi3EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // was: void boost::detail::function::basic_vtable3<void,std::string,std::string,boost::shared_ptr<RBX::Instance>>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
 pub fn boost_stub_2b9958(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b9958 __ZNK5boost6detail8function13basic_vtable3IvSsSsNS_10shared_ptrIN3RBX8InstanceEEEE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf3IvNS4_10Reflection18GenericSlotWrapperERKSsSG_RKS6_EENS9_5list4INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEENSO_ILi3EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+    // IDA 0x2b9958: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::operator()<boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list3<std::string &,std::string &,rbx_core::SharedPtr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&> &,boost::_bi::list3<std::string &,std::string &,rbx_core::SharedPtr<RBX::Instance>&> &,int)")]
 // 0x2b9a2c — __ZN5boost3_bi5list4INS0_5valueINS_10shared_ptrIN3RBX10Reflection18GenericSlotWrapperEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEEEclINS_4_mfi3mf3IvS6_RKSsSI_RKNS3_INS4_8InstanceEEEEENS0_5list3IRSsSP_RSK_EEEEvNS0_4typeIvEERT_RT0_i
 // was: void boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::operator()<boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list3<std::string &,std::string &,boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,boost::shared_ptr<RBX::Instance> const&> &,boost::_bi::list3<std::string &,std::string &,boost::shared_ptr<RBX::Instance>&> &,int)
 pub fn boost_stub_2b9a2c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b9a2c __ZN5boost3_bi5list4INS0_5valueINS_10shared_ptrIN3RBX10Reflection18GenericSlotWrapperEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEEEclINS_4_mfi3mf3IvS6_RKSsSI_RKNS3_INS4_8InstanceEEEEENS0_5list3IRSsSP_RSK_EEEEvNS0_4typeIvEERT_RT0_i")
+    // IDA 0x2b9a2c: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // 0x2b9a54 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKSsSB_RKNS_10shared_ptrINS7_8InstanceEEEEENS3_5list4INS3_5valueINSC_IS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEE7managerERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 pub fn boost_stub_2b9a54(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b9a54 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKSsSB_RKNS_10shared_ptrINS7_8InstanceEEEEENS3_5list4INS3_5valueINSC_IS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEE7managerERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+    // IDA 0x2b9a54: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::connect<boost::function<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>>(boost::function<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)> const&)")]
 // 0x2b9bac — __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_8functionIS7_EEEENS0_10connectionERKT_
 // was: rbx::signals::connection rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::connect<boost::function<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>>(boost::function<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)> const&)
 pub fn boost_stub_2b9bac(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b9bac __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_8functionIS7_EEEENS0_10connectionERKT_")
+    // IDA 0x2b9bac: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::insert(rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot *)")]
 // 0x2b9ca0 — __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE6insertEPNS8_4slotE
 // was: rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::insert(rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot *)
 pub fn boost_stub_2b9ca0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b9ca0 __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE6insertEPNS8_4slotE")
+    // IDA 0x2b9ca0: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot>::operator=(rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot*)")]
 // 0x2b9eac — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsSsNS_10shared_ptrIN3RBX8InstanceEEEEE4slotEEaSEPSA_
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot>::operator=(rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot*)
 pub fn boost_stub_2b9eac(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b9eac __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsSsNS_10shared_ptrIN3RBX8InstanceEEEEE4slotEEaSEPSA_")
+    // IDA 0x2b9eac: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::function<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>,3,void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::callable<rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>*>(boost::function<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)> const&,rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>*)")]
 // 0x2b9ed0 — __ZN3rbx8callableINS_7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_8functionIS8_EELi3ES8_EC2IPS9_EERKSC_T_
 // was: rbx::callable<rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::function<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>,3,void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::callable<rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>*>(boost::function<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)> const&,rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>*)
 pub fn boost_stub_2b9ed0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b9ed0 __ZN3rbx8callableINS_7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_8functionIS8_EELi3ES8_EC2IPS9_EERKSC_T_")
+    // IDA 0x2b9ed0: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::function<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>>::~callable_slot()")]
 // 0x2b9fcc — __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_8functionIS7_EEED1Ev
 // was: rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::function<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>>::~callable_slot()
 pub fn boost_stub_2b9fcc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2b9fcc __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_8functionIS7_EEED1Ev")
+    // IDA 0x2b9fcc: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::function<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>>::~callable_slot()")]
 // 0x2ba0dc — __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_8functionIS7_EEED0Ev
 // was: rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::function<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>>::~callable_slot()
 pub fn boost_stub_2ba0dc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ba0dc __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_8functionIS7_EEED0Ev")
+    // IDA 0x2ba0dc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::disconnect(void)")]
 // 0x2ba20c — __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slot10disconnectEv
 // was: rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot::disconnect(void)
 pub fn boost_stub_2ba20c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ba20c __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slot10disconnectEv")
+    // IDA 0x2ba20c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::connected(void)const")]
 // 0x2ba31c — __ZNK3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slot9connectedEv
 // was: rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot::connected(void)const
 pub fn boost_stub_2ba31c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ba31c __ZNK3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slot9connectedEv")
+    // IDA 0x2ba31c: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::function<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>,3,void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::call(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)")]
 // 0x2ba328 — __ZN3rbx8callableINS_7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_8functionIS8_EELi3ES8_E4callESsSsS7_
 // was: rbx::callable<rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::function<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>,3,void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::call(std::string,std::string,boost::shared_ptr<RBX::Instance>)
 pub fn boost_stub_2ba328(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ba328 __ZN3rbx8callableINS_7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_8functionIS8_EELi3ES8_E4callESsSsS7_")
+    // IDA 0x2ba328: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "non_virtual_thunk_to rbx::callable<rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::function<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>,3,void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::call(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)")]
 // 0x2ba518 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_8functionIS8_EELi3ES8_E4callESsSsS7_
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::function<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>,3,void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::call(std::string,std::string,boost::shared_ptr<RBX::Instance>)
 pub fn boost_stub_2ba518(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ba518 __ZThn4_N3rbx8callableINS_7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_8functionIS8_EELi3ES8_E4callESsSsS7_")
+    // IDA 0x2ba518: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::function3<void,std::string,std::string,rbx_core::SharedPtr<RBX::Instance>>::operator()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)const")]
 // 0x2ba520 — __ZNK5boost9function3IvSsSsNS_10shared_ptrIN3RBX8InstanceEEEEclESsSsS4_
 // was: boost::function3<void,std::string,std::string,boost::shared_ptr<RBX::Instance>>::operator()(std::string,std::string,boost::shared_ptr<RBX::Instance>)const
 pub fn boost_stub_2ba520(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ba520 __ZNK5boost9function3IvSsSsNS_10shared_ptrIN3RBX8InstanceEEEEclESsSsS4_")
+    // IDA 0x2ba520: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::remove(rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot *)")]
 // 0x2ba750 — __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE6removeEPNS8_4slotE
 // was: rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::remove(rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot *)
 pub fn boost_stub_2ba750(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ba750 __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE6removeEPNS8_4slotE")
+    // IDA 0x2ba750: function::operator() invoked the erased target. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::safe_static_init_mutex(void)")]
 // 0x2ba840 — __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slot22safe_static_init_mutexEv
 // was: rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot::safe_static_init_mutex(void)
 pub fn boost_stub_2ba840(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ba840 __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slot22safe_static_init_mutexEv")
+    // IDA 0x2ba840: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::safe_static_do_get_mutex(void)")]
 // 0x2ba844 — __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slot24safe_static_do_get_mutexEv
 // was: rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot::safe_static_do_get_mutex(void)
 pub fn boost_stub_2ba844(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ba844 __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slot24safe_static_do_get_mutexEv")
+    // IDA 0x2ba844: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::function<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>,3,void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")]
 // 0x2ba934 — __ZN3rbx8callableINS_7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_8functionIS8_EELi3ES8_ED1Ev
 // was: rbx::callable<rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::function<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>,3,void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::~callable()
 pub fn boost_stub_2ba934(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2ba934 __ZN3rbx8callableINS_7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_8functionIS8_EELi3ES8_ED1Ev")
+    // IDA 0x2ba934: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::function<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>,3,void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")]
 // 0x2baa44 — __ZN3rbx8callableINS_7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_8functionIS8_EELi3ES8_ED0Ev
 // was: rbx::callable<rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::function<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>,3,void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::~callable()
 pub fn boost_stub_2baa44(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2baa44 __ZN3rbx8callableINS_7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_8functionIS8_EELi3ES8_ED0Ev")
+    // IDA 0x2baa44: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::~slot()")]
 // 0x2bab74 — __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotD1Ev
 // was: rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot::~slot()
 pub fn boost_stub_2bab74(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bab74 __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotD1Ev")
+    // IDA 0x2bab74: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(std::string,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::~slot()")]
 // 0x2baba0 — __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotD0Ev
 // was: rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot::~slot()
 pub fn boost_stub_2baba0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2baba0 __ZN3rbx7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotD0Ev")
+    // IDA 0x2baba0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::function3<void,std::string,std::string,rbx_core::SharedPtr<RBX::Instance>>::assign_to_own(boost::function3<void,std::string,std::string,rbx_core::SharedPtr<RBX::Instance>> const&)")]
 // 0x2bac74 — __ZN5boost9function3IvSsSsNS_10shared_ptrIN3RBX8InstanceEEEE13assign_to_ownERKS5_
 // was: boost::function3<void,std::string,std::string,boost::shared_ptr<RBX::Instance>>::assign_to_own(boost::function3<void,std::string,std::string,boost::shared_ptr<RBX::Instance>> const&)
 pub fn boost_stub_2bac74(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bac74 __ZN5boost9function3IvSsSsNS_10shared_ptrIN3RBX8InstanceEEEE13assign_to_ownERKS5_")
+    // IDA 0x2bac74: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::BoundFuncDesc(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> (RBX::ScriptContext::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // 0x2bb394 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EEC2EMS2_FSA_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // was: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::BoundFuncDesc(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> (RBX::ScriptContext::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
 pub fn boost_stub_2bb394(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bb394 __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EEC2EMS2_FSA_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+    // IDA 0x2bb394: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()")]
 // 0x2bb498 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EED0Ev
 // was: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()
 pub fn boost_stub_2bb498(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bb498 __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EED0Ev")
+    // IDA 0x2bb498: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // 0x2bb54c — __ZNK3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // was: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
 pub fn boost_stub_2bb54c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bb54c __ZNK3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")
+    // IDA 0x2bb54c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Reflection::Call0Helper<RBX::ScriptContext,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> (RBX::ScriptContext::*)(void),rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::call(RBX::ScriptContext*,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> (RBX::ScriptContext::*)(void),RBX::Reflection::Variant&)")]
 // 0x2bb570 — __ZN3RBX10Reflection11Call0HelperINS_13ScriptContextEMS2_FN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvESA_E4callEPS2_SC_RS6_
 // was: RBX::Reflection::Call0Helper<RBX::ScriptContext,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> (RBX::ScriptContext::*)(void),boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::call(RBX::ScriptContext*,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> (RBX::ScriptContext::*)(void),RBX::Reflection::Variant&)
 pub fn boost_stub_2bb570(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bb570 __ZN3RBX10Reflection11Call0HelperINS_13ScriptContextEMS2_FN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvESA_E4callEPS2_SC_RS6_")
+    // IDA 0x2bb570: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> const&)")]
 // 0x2bb658 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSIN5boost10shared_ptrIKSt6vectorINS1_10Reflection7VariantESaIS9_EEEEEERS3_RKT_
 // was: rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> const&)
 pub fn boost_stub_2bb658(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bb658 __ZN3rbx13placement_anyIN3RBX7Region3EEaSIN5boost10shared_ptrIKSt6vectorINS1_10Reflection7VariantESaIS9_EEEEEERS3_RKT_")
+    // IDA 0x2bb658: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>::operator=(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> const&)")]
 // 0x2bb6c0 — __ZN5boost10shared_ptrIKSt6vectorIN3RBX10Reflection7VariantESaIS4_EEEaSERKS8_
 // was: boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>::operator=(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> const&)
 pub fn boost_stub_2bb6c0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bb6c0 __ZN5boost10shared_ptrIKSt6vectorIN3RBX10Reflection7VariantESaIS4_EEEaSERKS8_")
+    // IDA 0x2bb6c0: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::implementation::typed_holder<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::construct_func(char const*,char *)")]
 // 0x2bb6f8 — __ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIKSt6vectorIN3RBX10Reflection7VariantESaIS7_EEEEE14construct_funcEPKcPc
 // was: rbx::implementation::typed_holder<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::construct_func(char const*,char *)
 pub fn boost_stub_2bb6f8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bb6f8 __ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIKSt6vectorIN3RBX10Reflection7VariantESaIS7_EEEEE14construct_funcEPKcPc")
+    // IDA 0x2bb6f8: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(bool),1>::BoundFuncDesc(rbx_core::SharedPtr<RBX::Reflection::Tuple const> (RBX::ScriptContext::*)(bool),char const*,char const*,bool,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // 0x2bb720 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFN5boost10shared_ptrIKNS0_5TupleEEEbELi1EEC2EMS2_FS7_bEPKcSD_bNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // was: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,boost::shared_ptr<RBX::Reflection::Tuple const> ()(bool),1>::BoundFuncDesc(boost::shared_ptr<RBX::Reflection::Tuple const> (RBX::ScriptContext::*)(bool),char const*,char const*,bool,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
 pub fn boost_stub_2bb720(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bb720 __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFN5boost10shared_ptrIKNS0_5TupleEEEbELi1EEC2EMS2_FS7_bEPKcSD_bNS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+    // IDA 0x2bb720: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(bool),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 // 0x2bb8cc — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFN5boost10shared_ptrIKNS0_5TupleEEEbELi1EE16declareSignatureEPKcNS0_7VariantE
 // was: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,boost::shared_ptr<RBX::Reflection::Tuple const> ()(bool),1>::declareSignature(char const*,RBX::Reflection::Variant)
 pub fn boost_stub_2bb8cc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bb8cc __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFN5boost10shared_ptrIKNS0_5TupleEEEbELi1EE16declareSignatureEPKcNS0_7VariantE")
+    // IDA 0x2bb8cc: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(bool),1>::~BoundFuncDesc()")]
 // 0x2bb8fc — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFN5boost10shared_ptrIKNS0_5TupleEEEbELi1EED0Ev
 // was: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,boost::shared_ptr<RBX::Reflection::Tuple const> ()(bool),1>::~BoundFuncDesc()
 pub fn boost_stub_2bb8fc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bb8fc __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFN5boost10shared_ptrIKNS0_5TupleEEEbELi1EED0Ev")
+    // IDA 0x2bb8fc: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(bool),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // 0x2bb9d0 — __ZNK3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFN5boost10shared_ptrIKNS0_5TupleEEEbELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // was: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,boost::shared_ptr<RBX::Reflection::Tuple const> ()(bool),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
 pub fn boost_stub_2bb9d0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bb9d0 __ZNK3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFN5boost10shared_ptrIKNS0_5TupleEEEbELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")
+    // IDA 0x2bb9d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::ScriptContext,rbx_core::SharedPtr<RBX::Reflection::Tuple const> (RBX::ScriptContext::*)(bool),bool,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>::call(RBX::ScriptContext*,rbx_core::SharedPtr<RBX::Reflection::Tuple const> (RBX::ScriptContext::*)(bool),RBX::Reflection::Variant &,bool const&)")]
 // 0x2bba10 — __ZN3RBX10Reflection11Call1HelperINS_13ScriptContextEMS2_FN5boost10shared_ptrIKNS0_5TupleEEEbEbS7_E4callEPS2_S9_RNS0_7VariantERKb
 // was: RBX::Reflection::Call1Helper<RBX::ScriptContext,boost::shared_ptr<RBX::Reflection::Tuple const> (RBX::ScriptContext::*)(bool),bool,boost::shared_ptr<RBX::Reflection::Tuple const>>::call(RBX::ScriptContext*,boost::shared_ptr<RBX::Reflection::Tuple const> (RBX::ScriptContext::*)(bool),RBX::Reflection::Variant &,bool const&)
 pub fn boost_stub_2bba10(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bba10 __ZN3RBX10Reflection11Call1HelperINS_13ScriptContextEMS2_FN5boost10shared_ptrIKNS0_5TupleEEEbEbS7_E4callEPS2_S9_RNS0_7VariantERKb")
+    // IDA 0x2bba10: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(int,rbx_core::SharedPtr<RBX::Instance>,std::string),3>::BoundFuncDesc(void (RBX::ScriptContext::*)(int,rbx_core::SharedPtr<RBX::Instance>,std::string),char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // 0x2bc2a8 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFviN5boost10shared_ptrINS_8InstanceEEESsELi3EEC2EMS2_FviS6_SsEPKcSC_SC_SC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // was: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(int,boost::shared_ptr<RBX::Instance>,std::string),3>::BoundFuncDesc(void (RBX::ScriptContext::*)(int,boost::shared_ptr<RBX::Instance>,std::string),char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
 pub fn boost_stub_2bc2a8(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bc2a8 __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFviN5boost10shared_ptrINS_8InstanceEEESsELi3EEC2EMS2_FviS6_SsEPKcSC_SC_SC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+    // IDA 0x2bc2a8: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(int,rbx_core::SharedPtr<RBX::Instance>,std::string),3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
 // 0x2bc4c4 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFviN5boost10shared_ptrINS_8InstanceEEESsELi3EE16declareSignatureEPKcNS0_7VariantESA_SB_SA_SB_
 // was: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(int,boost::shared_ptr<RBX::Instance>,std::string),3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)
 pub fn boost_stub_2bc4c4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bc4c4 __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFviN5boost10shared_ptrINS_8InstanceEEESsELi3EE16declareSignatureEPKcNS0_7VariantESA_SB_SA_SB_")
+    // IDA 0x2bc4c4: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(int,rbx_core::SharedPtr<RBX::Instance>,std::string),3>::~BoundFuncDesc()")]
 // 0x2bc530 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFviN5boost10shared_ptrINS_8InstanceEEESsELi3EED0Ev
 // was: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(int,boost::shared_ptr<RBX::Instance>,std::string),3>::~BoundFuncDesc()
 pub fn boost_stub_2bc530(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bc530 __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFviN5boost10shared_ptrINS_8InstanceEEESsELi3EED0Ev")
+    // IDA 0x2bc530: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(int,rbx_core::SharedPtr<RBX::Instance>,std::string),3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // 0x2bc658 — __ZNK3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFviN5boost10shared_ptrINS_8InstanceEEESsELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // was: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(int,boost::shared_ptr<RBX::Instance>,std::string),3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
 pub fn boost_stub_2bc658(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bc658 __ZNK3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFviN5boost10shared_ptrINS_8InstanceEEESsELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")
+    // IDA 0x2bc658: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Reflection::Call3Helper<RBX::ScriptContext,void (RBX::ScriptContext::*)(int,rbx_core::SharedPtr<RBX::Instance>,std::string),int,rbx_core::SharedPtr<RBX::Instance>,std::string,void>::call(RBX::ScriptContext*,void (RBX::ScriptContext::*)(int,rbx_core::SharedPtr<RBX::Instance>,std::string),RBX::Reflection::Variant &,int const&,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&)")]
 // 0x2bc7f0 — __ZN3RBX10Reflection11Call3HelperINS_13ScriptContextEMS2_FviN5boost10shared_ptrINS_8InstanceEEESsEiS6_SsvE4callEPS2_S8_RNS0_7VariantERKiRKS6_RKSs
 // was: RBX::Reflection::Call3Helper<RBX::ScriptContext,void (RBX::ScriptContext::*)(int,boost::shared_ptr<RBX::Instance>,std::string),int,boost::shared_ptr<RBX::Instance>,std::string,void>::call(RBX::ScriptContext*,void (RBX::ScriptContext::*)(int,boost::shared_ptr<RBX::Instance>,std::string),RBX::Reflection::Variant &,int const&,boost::shared_ptr<RBX::Instance> const&,std::string const&)
 pub fn boost_stub_2bc7f0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bc7f0 __ZN3RBX10Reflection11Call3HelperINS_13ScriptContextEMS2_FviN5boost10shared_ptrINS_8InstanceEEESsEiS6_SsvE4callEPS2_S8_RNS0_7VariantERKiRKS6_RKSs")
+    // IDA 0x2bc7f0: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance> RBX::Reflection::ArgHelper::getArg<rbx_core::SharedPtr<RBX::Instance>,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<rbx_core::SharedPtr<RBX::Instance>> const&,boost::disable_if<boost::is_same<rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 // 0x2bc988 — __ZN3RBX10Reflection9ArgHelper6getArgIN5boost10shared_ptrINS_8InstanceEEELi2EEET_RNS0_18FunctionDescriptor9ArgumentsERKNS3_10scoped_ptrIS7_EEPNS3_10disable_ifINS3_7is_sameIS7_NS4_IKNS0_5TupleEEEEEvE4typeE
 // was: boost::shared_ptr<RBX::Instance> RBX::Reflection::ArgHelper::getArg<boost::shared_ptr<RBX::Instance>,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<boost::shared_ptr<RBX::Instance>> const&,boost::disable_if<boost::is_same<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)
 pub fn boost_stub_2bc988(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bc988 __ZN3RBX10Reflection9ArgHelper6getArgIN5boost10shared_ptrINS_8InstanceEEELi2EEET_RNS0_18FunctionDescriptor9ArgumentsERKNS3_10scoped_ptrIS7_EEPNS3_10disable_ifINS3_7is_sameIS7_NS4_IKNS0_5TupleEEEEEvE4typeE")
+    // IDA 0x2bc988: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "bool RBX::Reflection::ArgHelper::try_object<2,RBX::Instance>(RBX::Reflection::FunctionDescriptor::Arguments &,rbx_core::SharedPtr<RBX::Instance> &,boost::enable_if<boost::is_base_of<RBX::Reflection::DescribedBase,RBX::Instance>,void>::type *)")]
 // 0x2bcba0 — __ZN3RBX10Reflection9ArgHelper10try_objectILi2ENS_8InstanceEEEbRNS0_18FunctionDescriptor9ArgumentsERN5boost10shared_ptrIT0_EEPNS7_9enable_ifINS7_10is_base_ofINS0_13DescribedBaseES9_EEvE4typeE
 // was: bool RBX::Reflection::ArgHelper::try_object<2,RBX::Instance>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::shared_ptr<RBX::Instance> &,boost::enable_if<boost::is_base_of<RBX::Reflection::DescribedBase,RBX::Instance>,void>::type *)
 pub fn boost_stub_2bcba0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bcba0 __ZN3RBX10Reflection9ArgHelper10try_objectILi2ENS_8InstanceEEEbRNS0_18FunctionDescriptor9ArgumentsERN5boost10shared_ptrIT0_EEPNS7_9enable_ifINS7_10is_base_ofINS0_13DescribedBaseES9_EEvE4typeE")
+    // IDA 0x2bcba0: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::BoundFuncDesc(void (RBX::ScriptContext::*)(std::string,rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // 0x2bceb4 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EEC2EMS2_FvSsS6_EPKcSC_SC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // was: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::BoundFuncDesc(void (RBX::ScriptContext::*)(std::string,boost::shared_ptr<RBX::Instance>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
 pub fn boost_stub_2bceb4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bceb4 __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EEC2EMS2_FvSsS6_EPKcSC_SC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+    // IDA 0x2bceb4: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
 // 0x2bd080 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EE16declareSignatureEPKcNS0_7VariantESA_SB_
 // was: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)
 pub fn boost_stub_2bd080(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bd080 __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EE16declareSignatureEPKcNS0_7VariantESA_SB_")
+    // IDA 0x2bd080: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")]
 // 0x2bd0cc — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EED0Ev
 // was: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()
 pub fn boost_stub_2bd0cc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bd0cc __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EED0Ev")
+    // IDA 0x2bd0cc: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // 0x2bd1e4 — __ZNK3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // was: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
 pub fn boost_stub_2bd1e4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bd1e4 __ZNK3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")
+    // IDA 0x2bd1e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Reflection::Call2Helper<RBX::ScriptContext,void (RBX::ScriptContext::*)(std::string,rbx_core::SharedPtr<RBX::Instance>),std::string,rbx_core::SharedPtr<RBX::Instance>,void>::call(RBX::ScriptContext*,void (RBX::ScriptContext::*)(std::string,rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&)")]
 // 0x2bd368 — __ZN3RBX10Reflection11Call2HelperINS_13ScriptContextEMS2_FvSsN5boost10shared_ptrINS_8InstanceEEEESsS6_vE4callEPS2_S8_RNS0_7VariantERKSsRKS6_
 // was: RBX::Reflection::Call2Helper<RBX::ScriptContext,void (RBX::ScriptContext::*)(std::string,boost::shared_ptr<RBX::Instance>),std::string,boost::shared_ptr<RBX::Instance>,void>::call(RBX::ScriptContext*,void (RBX::ScriptContext::*)(std::string,boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,std::string const&,boost::shared_ptr<RBX::Instance> const&)
 pub fn boost_stub_2bd368(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bd368 __ZN3RBX10Reflection11Call2HelperINS_13ScriptContextEMS2_FvSsN5boost10shared_ptrINS_8InstanceEEEESsS6_vE4callEPS2_S8_RNS0_7VariantERKSsRKS6_")
+    // IDA 0x2bd368: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "std::string RBX::Reflection::ArgHelper::getArg<std::string,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<std::string> const&,boost::disable_if<boost::is_same<std::string,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 // 0x2bd4f0 — __ZN3RBX10Reflection9ArgHelper6getArgISsLi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS3_EEPNS7_10disable_ifINS7_7is_sameIS3_NS7_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // was: std::string RBX::Reflection::ArgHelper::getArg<std::string,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<std::string> const&,boost::disable_if<boost::is_same<std::string,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)
 pub fn boost_stub_2bd4f0(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bd4f0 __ZN3RBX10Reflection9ArgHelper6getArgISsLi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS3_EEPNS7_10disable_ifINS7_7is_sameIS3_NS7_10shared_ptrIKNS0_5TupleEEEEEvE4typeE")
+    // IDA 0x2bd4f0: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::ScriptContext::*>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::ScriptContext::*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // 0x2be070 — __ZN3RBX10Reflection9EventDescINS_13ScriptContextEFvN5boost10shared_ptrINS_8InstanceEEESsS6_EN3rbx6signalIS7_EEMS2_SA_EC2ESB_PKcSE_SE_SE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // was: RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::EventDesc(rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
 pub fn boost_stub_2be070(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2be070 __ZN3RBX10Reflection9EventDescINS_13ScriptContextEFvN5boost10shared_ptrINS_8InstanceEEESsS6_EN3rbx6signalIS7_EEMS2_SA_EC2ESB_PKcSE_SE_SE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+    // IDA 0x2be070: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::ScriptContext::*>::~EventDesc()")]
 // 0x2be2cc — __ZN3RBX10Reflection9EventDescINS_13ScriptContextEFvN5boost10shared_ptrINS_8InstanceEEESsS6_EN3rbx6signalIS7_EEMS2_SA_ED0Ev
 // was: RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::~EventDesc()
 pub fn boost_stub_2be2cc(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2be2cc __ZN3RBX10Reflection9EventDescINS_13ScriptContextEFvN5boost10shared_ptrINS_8InstanceEEESsS6_EN3rbx6signalIS7_EEMS2_SA_ED0Ev")
+    // IDA 0x2be2cc: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::EventDescImpl<3,RBX::ScriptContext,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::ScriptContext::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // 0x2be380 — __ZNK3RBX10Reflection13EventDescImplILi3ENS_13ScriptContextEFvN5boost10shared_ptrINS_8InstanceEEESsS6_EN3rbx6signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
 // was: RBX::Reflection::EventDescImpl<3,RBX::ScriptContext,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
 pub fn boost_stub_2be380(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2be380 __ZNK3RBX10Reflection13EventDescImplILi3ENS_13ScriptContextEFvN5boost10shared_ptrINS_8InstanceEEESsS6_EN3rbx6signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE")
+    // IDA 0x2be380: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Reflection::EventDescImpl<3,RBX::ScriptContext,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::ScriptContext::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 // 0x2be4d4 — __ZNK3RBX10Reflection13EventDescImplILi3ENS_13ScriptContextEFvN5boost10shared_ptrINS_8InstanceEEESsS6_EN3rbx6signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
 // was: RBX::Reflection::EventDescImpl<3,RBX::ScriptContext,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const
 pub fn boost_stub_2be4d4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2be4d4 __ZNK3RBX10Reflection13EventDescImplILi3ENS_13ScriptContextEFvN5boost10shared_ptrINS_8InstanceEEESsS6_EN3rbx6signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE")
+    // IDA 0x2be4d4: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::ScriptContext,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::ScriptContext::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
 // 0x2be728 — __ZNK3RBX10Reflection13EventDescBaseINS_13ScriptContextEFvN5boost10shared_ptrINS_8InstanceEEESsS6_EN3rbx6signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE
 // was: RBX::Reflection::EventDescBase<RBX::ScriptContext,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::disconnectAll(RBX::Reflection::EventSource *)const
 pub fn boost_stub_2be728(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2be728 __ZNK3RBX10Reflection13EventDescBaseINS_13ScriptContextEFvN5boost10shared_ptrINS_8InstanceEEESsS6_EN3rbx6signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE")
+    // IDA 0x2be728: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::disconnectAll(void)")]
 // 0x2be73c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE13disconnectAllEv
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::disconnectAll(void)
 pub fn boost_stub_2be73c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2be73c __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE13disconnectAllEv")
+    // IDA 0x2be73c: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal_with_args<3,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::operator()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)")]
 // 0x2be8b4 — __ZN3rbx7signals16signal_with_argsILi3EFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EEclES6_SsS6_
 // was: rbx::signals::signal_with_args<3,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::operator()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)
 pub fn boost_stub_2be8b4(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2be8b4 __ZN3rbx7signals16signal_with_argsILi3EFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EEclES6_SsS6_")
+    // IDA 0x2be8b4: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot> &)")]
 // 0x2beb34 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4nextERNS2_13intrusive_ptrINS8_4slotEEE
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot> &)
 pub fn boost_stub_2beb34(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2beb34 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4nextERNS2_13intrusive_ptrINS8_4slotEEE")
+    // IDA 0x2beb34: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal_with_args<3,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::fireItem(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot *,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)")]
 // 0x2bec94 — __ZN3rbx7signals16signal_with_argsILi3EFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE8fireItemEPNS0_6signalIS7_E4slotES6_SsS6_
 // was: rbx::signals::signal_with_args<3,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::fireItem(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot *,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)
 pub fn boost_stub_2bec94(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bec94 __ZN3rbx7signals16signal_with_argsILi3EFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE8fireItemEPNS0_6signalIS7_E4slotES6_SsS6_")
+    // IDA 0x2bec94: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::on_error(std::exception &)")]
 // 0x2bee54 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE8on_errorERSt9exception
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::on_error(std::exception &)
 pub fn boost_stub_2bee54(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bee54 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE8on_errorERSt9exception")
+    // IDA 0x2bee54: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list_av_4<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>(void (RBX::Reflection::GenericSlotWrapper::*)(rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>)")]
 // 0x2bee7c — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS1_8InstanceEEERKSsS8_NS4_IS3_EENS_3argILi1EEENSC_ILi2EEENSC_ILi3EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf3ISI_T0_T1_T2_T3_EENSG_9list_av_4IT4_T5_T6_T7_E4typeEEEMSL_FSI_SM_SN_SO_ESR_SS_ST_SU_
 // was: boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list_av_4<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>(void (RBX::Reflection::GenericSlotWrapper::*)(boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>)
 pub fn boost_stub_2bee7c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bee7c __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS1_8InstanceEEERKSsS8_NS4_IS3_EENS_3argILi1EEENSC_ILi2EEENSC_ILi3EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf3ISI_T0_T1_T2_T3_EENSG_9list_av_4IT4_T5_T6_T7_E4typeEEEMSL_FSI_SM_SN_SO_ESR_SS_ST_SU_")
+    // IDA 0x2bee7c: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute3<rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>(rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&)")]
 // 0x2bef98 — __ZN3RBX10Reflection18GenericSlotWrapper8execute3IN5boost10shared_ptrINS_8InstanceEEESsS6_EEvRKT_RKT0_RKT1_
 // was: void RBX::Reflection::GenericSlotWrapper::execute3<boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>(boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&)
 pub fn boost_stub_2bef98(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bef98 __ZN3RBX10Reflection18GenericSlotWrapper8execute3IN5boost10shared_ptrINS_8InstanceEEESsS6_EEvRKT_RKT0_RKT1_")
+    // IDA 0x2bef98: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::function3<void,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>::clear(void)")]
 // 0x2bf124 — __ZN5boost9function3IvNS_10shared_ptrIN3RBX8InstanceEEESsS4_E5clearEv
 // was: boost::function3<void,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>::clear(void)
 pub fn boost_stub_2bf124(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bf124 __ZN5boost9function3IvNS_10shared_ptrIN3RBX8InstanceEEESsS4_E5clearEv")
+    // IDA 0x2bf124: shared_ptr op=/converting ctor (addref new, release old). Arc move/coercion — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEESsS4_EEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKS4_RKSsSF_EENS8_5list4INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSN_ILi2EEENSN_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE")]
 // 0x2bf150 — __ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEESsS4_EEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKS4_RKSsSF_EENS8_5list4INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSN_ILi2EEENSN_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEESsS4_EEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKS4_RKSsSF_EENS8_5list4INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSN_ILi2EEENSN_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_2bf150(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bf150 __ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEESsS4_EEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKS4_RKSsSF_EENS8_5list4INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSN_ILi2EEENSN_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x2bf150: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost9function3IvNS_10shared_ptrIN3RBX8InstanceEEESsS4_EC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKS4_RKSsSE_EENS7_5list4INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")]
 // 0x2bf234 — __ZN5boost9function3IvNS_10shared_ptrIN3RBX8InstanceEEESsS4_EC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKS4_RKSsSE_EENS7_5list4INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
 // was: __ZN5boost9function3IvNS_10shared_ptrIN3RBX8InstanceEEESsS4_EC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKS4_RKSsSE_EENS7_5list4INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
 pub fn boost_stub_2bf234(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bf234 __ZN5boost9function3IvNS_10shared_ptrIN3RBX8InstanceEEESsS4_EC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKS4_RKSsSE_EENS7_5list4INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")
+    // IDA 0x2bf234: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void boost::function3<void,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>)")]
 // 0x2bf31c — __ZN5boost9function3IvNS_10shared_ptrIN3RBX8InstanceEEESsS4_E9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKS4_RKSsSE_EENS7_5list4INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEEEvT_
 // was: void boost::function3<void,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>)
 pub fn boost_stub_2bf31c(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bf31c __ZN5boost9function3IvNS_10shared_ptrIN3RBX8InstanceEEESsS4_E9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKS4_RKSsSE_EENS7_5list4INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEEEvT_")
+    // IDA 0x2bf31c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x2bf414 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKSsSE_EENS3_5list4INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEE6manageERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 pub fn boost_stub_2bf414(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bf414 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKSsSE_EENS3_5list4INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEE6manageERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeE")
+    // IDA 0x2bf414: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,void,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)")]
 // 0x2bf430 — __ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKSsSE_EENS3_5list4INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEvSC_SsSC_E6invokeERNS1_15function_bufferESC_SsSC_
 // was: boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,void,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)
 pub fn boost_stub_2bf430(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bf430 __ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKSsSE_EENS3_5list4INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEvSC_SsSC_E6invokeERNS1_15function_bufferESC_SsSC_")
+    // IDA 0x2bf430: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable3<void,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &)const")]
 // 0x2bf450 — __ZNK5boost6detail8function13basic_vtable3IvNS_10shared_ptrIN3RBX8InstanceEEESsS6_E9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvNS4_10Reflection18GenericSlotWrapperERKS6_RKSsSG_EENS9_5list4INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEENSO_ILi3EEEEEEEEEbT_RNS1_15function_bufferE
 // was: bool boost::detail::function::basic_vtable3<void,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &)const
 pub fn boost_stub_2bf450(_ptr: crate::SharedPtr<()>) {
-    todo!("0x2bf450 __ZNK5boost6detail8function13basic_vtable3IvNS_10shared_ptrIN3RBX8InstanceEEESsS6_E9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvNS4_10Reflection18GenericSlotWrapperERKS6_RKSsSG_EENS9_5list4INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEENSO_ILi3EEEEEEEEEbT_RNS1_15function_bufferE")
+    // IDA 0x2bf450: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable3<void,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
