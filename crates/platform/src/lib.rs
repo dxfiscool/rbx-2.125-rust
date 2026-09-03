@@ -420,4 +420,5 @@ pub mod generated_wdog_cron_plat2;
 pub mod generated_plat_globaldedup_100;
 pub mod generated_plat_globaldedup_101;
 pub mod generated_plat_globaldedup_102;
+pub mod generated_plat_globaldedup_103;
 pub mod generated_watchdog_plat_w4;
