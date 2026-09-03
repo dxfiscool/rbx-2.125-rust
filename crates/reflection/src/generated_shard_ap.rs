@@ -581,8 +581,8 @@ pub fn stub_928170() -> ! {
 // 0x928194 — __ZThn4_N3rbx8callableINS_7signals6signalIFviN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_14RemoteFunctionEiS9_EENSD_5list3INSD_5valueIPSH_EENS3_3argILi1EEENSN_ILi2EEEEEEELi2ESA_E4callEiS9_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RemoteFunction,int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,boost::_bi::list3<boost::_bi::value<RBX::RemoteFunction*>,boost::arg<1>,boost::arg<2>>>,2,void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::call(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFviN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_14RemoteFunctionEiS9_EENSD_5list3INSD_5valueIPSH_EENS3_3argILi1EEENSN_ILi2EEEEEEELi2ESA_E4callEiS9_")]
-pub fn stub_928194() -> ! {
-    todo!("0x928194 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RemoteFunction,int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,boost::_bi::list3<boost::_bi::value<RBX::RemoteFunction*>,boost::arg<1>,boost::arg<2>>>,2,void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::call(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")
+pub fn stub_928194() {
+    // IDA 0x928194: non-virtual thunk to `"'rbx::callable<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x9281b8 — __ZN5boost3_bi5list3INS0_5valueIPN3RBX14RemoteFunctionEEENS_3argILi1EEENS7_ILi2EEEEclINS_4_mfi3mf2IvS4_iNS_10shared_ptrIKNS3_10Reflection5TupleEEEEENS0_5list2IRiRSI_EEEEvNS0_4typeIvEERT_RT0_i

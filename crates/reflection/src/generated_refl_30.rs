@@ -11,8 +11,8 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()")]
 #[doc(alias = "__ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEED0Ev")]
-pub fn stub_2530bc() -> ! {
-    todo!("0x2530bc non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()")
+pub fn stub_2530bc() {
+    // IDA 0x2530bc: __ZThn8 thunk (D0 deleting dtor): `this -= 8`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x253178 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEE5cloneEv
@@ -51,8 +51,8 @@ pub fn stub_253320() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::gregorian::bad_year>::~error_info_injector()")]
 #[doc(alias = "__ZThn8_N5boost16exception_detail19error_info_injectorINS_9gregorian8bad_yearEED0Ev")]
-pub fn stub_2533dc() -> ! {
-    todo!("0x2533dc non-virtual thunk toboost::exception_detail::error_info_injector<boost::gregorian::bad_year>::~error_info_injector()")
+pub fn stub_2533dc() {
+    // IDA 0x2533dc: __ZThn8 thunk (D0 deleting dtor): `this -= 8`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x253498 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEEC1ERKS6_NS6_9clone_tagE
@@ -548,35 +548,36 @@ pub fn stub_258150() -> ! {
 // 0x258160 — __ZThn32_N3RBX11HttpServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::HttpService::~HttpService()")]
 #[doc(alias = "__ZThn32_N3RBX11HttpServiceD1Ev")]
-pub fn stub_258160() -> ! {
-    todo!("0x258160 non-virtual thunk toRBX::HttpService::~HttpService()")
+pub fn stub_258160() {
+    // IDA 0x258160: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x258168 — __ZThn32_N3RBX11HttpServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::HttpService::~HttpService()")]
 #[doc(alias = "__ZThn32_N3RBX11HttpServiceD0Ev")]
-pub fn stub_258168() -> ! {
-    todo!("0x258168 non-virtual thunk toRBX::HttpService::~HttpService()")
+pub fn stub_258168() {
+    // IDA 0x258168: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x25820c — __ZThn32_NK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv")]
-pub fn stub_25820c() -> ! {
-    todo!("0x25820c __ZThn32_NK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv")
+pub fn stub_25820c() -> &'static str {
+    // IDA 0x25820c: __ZThn getClassName -- `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x28e128 family) -- the Creator name is the class name. Rust: no vtable/Creator needed.
+    "HttpService"
 }
 
 // 0x25821c — __ZThn36_N3RBX11HttpServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::HttpService::~HttpService()")]
 #[doc(alias = "__ZThn36_N3RBX11HttpServiceD1Ev")]
-pub fn stub_25821c() -> ! {
-    todo!("0x25821c non-virtual thunk toRBX::HttpService::~HttpService()")
+pub fn stub_25821c() {
+    // IDA 0x25821c: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x258224 — __ZThn36_N3RBX11HttpServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::HttpService::~HttpService()")]
 #[doc(alias = "__ZThn36_N3RBX11HttpServiceD0Ev")]
-pub fn stub_258224() -> ! {
-    todo!("0x258224 non-virtual thunk toRBX::HttpService::~HttpService()")
+pub fn stub_258224() {
+    // IDA 0x258224: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2582c8 — __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E17static_getCreatorEv

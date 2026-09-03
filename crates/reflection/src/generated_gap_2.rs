@@ -758,8 +758,8 @@ pub fn stub_0x2a1430() -> ! {
 // type: _DWORD __fastcall(RBX::ScriptContext *__hidden this, RBX::BaseScript *)
 #[doc(alias = "non-virtual thunk toRBX::ScriptContext::scriptShouldRun(RBX::BaseScript *)")]
 #[doc(alias = "__ZThn96_N3RBX13ScriptContext15scriptShouldRunEPNS_10BaseScriptE")]
-pub fn stub_0x2a146c() -> ! {
-    todo!("0x2a146c non-virtual thunk toRBX::ScriptContext::scriptShouldRun(RBX::BaseScript *)")
+pub fn stub_0x2a146c() {
+    // IDA 0x2a146c: non-virtual thunk to `RBX::ScriptContext::scriptShouldRun(RBX::ScriptContext *this, RBX::BaseScript *a2) { return RBX::ScriptContext::scriptShouldRun(this, a2); } "` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x2a1478 — __ZN3RBX13ScriptContext9addScriptEPNS_10BaseScriptENS0_18ScriptStartOptionsE

@@ -410,8 +410,9 @@ pub fn stub_0x28e118() -> ! {
 
 // 0x28e128 — __ZThn32_NK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0x28e128() -> ! {
-    todo!("0x28e128 __ZThn32_NK3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE12getClassNameEv")
+pub fn stub_0x28e128() -> &'static str {
+    // IDA 0x28e128: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x28e128 family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "Script"
 }
 
 // 0x28e138 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv
@@ -422,8 +423,9 @@ pub fn stub_0x28e138() -> ! {
 
 // 0x28e160 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv")]
-pub fn stub_0x28e160() -> ! {
-    todo!("0x28e160 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_11sBaseScriptEEE12getClassNameEv")
+pub fn stub_0x28e160() -> &'static str {
+    // IDA 0x28e160: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x28e160 family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "BaseScript"
 }
 
 // 0x28e188 — __ZN3RBX11LocalScriptD1Ev
@@ -462,8 +464,9 @@ pub fn stub_0x28e244() {
 
 // 0x28e24c — __ZThn32_NK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0x28e24c() -> ! {
-    todo!("0x28e24c __ZThn32_NK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE12getClassNameEv")
+pub fn stub_0x28e24c() -> &'static str {
+    // IDA 0x28e24c: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x28e24c family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "LocalScript"
 }
 
 // 0x28e25c — __ZThn36_N3RBX11LocalScriptD1Ev

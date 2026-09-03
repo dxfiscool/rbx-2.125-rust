@@ -344,8 +344,8 @@ pub fn stub_a500c8() -> ! {
 // 0xa50340 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
-pub fn stub_a50340() -> ! {
-    todo!("0xa50340 RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_a50340() {
+    // IDA 0xa50340: non-virtual thunk to `"'RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)con` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xa50350 — __ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIN3RBX10Reflection13DescribedBaseEEEE14construct_funcEPKcPc

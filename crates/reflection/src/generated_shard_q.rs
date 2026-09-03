@@ -7,8 +7,8 @@ use rbx_core::SharedPtr;
 // 0x6d8394 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_9WorkspaceENS_6CameraEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Camera>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_9WorkspaceENS_6CameraEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
-pub fn stub_0x6d8394() -> ! {
-    todo!("0x6d8394 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Camera>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x6d8394() {
+    // IDA 0x6d8394: non-virtual thunk to `RBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Camera>::assignIDREF( int a1, int a2, int a3, int a4, boost:` — this/arg-adjust + tail-call (arg a1 -= 40) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x6d83a0 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_6CameraEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -210,8 +210,8 @@ pub fn stub_0x6d8df8() -> ! {
 // 0x6d8ed8 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_9WorkspaceENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_9WorkspaceENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
-pub fn stub_0x6d8ed8() -> ! {
-    todo!("0x6d8ed8 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x6d8ed8() {
+    // IDA 0x6d8ed8: non-virtual thunk to `RBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Instance>::assignIDREF( int a1, int a2, int a3, int a4, boos` — this/arg-adjust + tail-call (arg a1 -= 40) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x6d8ee0 — __ZNK3RBX10Reflection14PropDescriptorINS_9WorkspaceEPNS_8InstanceEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv

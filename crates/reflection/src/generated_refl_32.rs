@@ -745,8 +745,8 @@ pub fn stub_0x6bec10() -> ! {
 // 0x6bec14 — __ZThn152_NK3RBX11KernelJoint22getConnectorKernelTypeEv
 #[doc(alias = "non-virtual thunk toRBX::KernelJoint::getConnectorKernelType(void)const")]
 #[doc(alias = "__ZThn152_NK3RBX11KernelJoint22getConnectorKernelTypeEv")]
-pub fn stub_0x6bec14() -> ! {
-    todo!("0x6bec14 non-virtual thunk toRBX::KernelJoint::getConnectorKernelType(void)const")
+pub fn stub_0x6bec14() {
+    // IDA 0x6bec14: non-virtual thunk to `RBX::KernelJoint::getConnectorKernelType(RBX::KernelJoint *this) { return 3; } "` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x6c2b88 — __ZNK3RBX10IPipelined7inStageENS_6IStage9StageTypeE

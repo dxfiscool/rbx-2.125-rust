@@ -507,8 +507,9 @@ pub fn stub_0x3103d4() -> ! {
 
 // 0x3103fc — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEE12getClassNameEv")]
-pub fn stub_0x3103fc() -> ! {
-    todo!("0x3103fc __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEE12getClassNameEv")
+pub fn stub_0x3103fc() -> &'static str {
+    // IDA 0x3103fc: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x3103fc family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "ContentFilter"
 }
 
 // 0x310424 — __ZNSt8_Rb_treeISsSt4pairIKSsN3RBX13ContentFilter11ResultEntryEESt10_Select1stIS5_ESt4lessISsESaIS5_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_

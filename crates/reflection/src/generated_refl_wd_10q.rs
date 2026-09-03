@@ -69,15 +69,15 @@ pub fn stub_2cefe0() -> ! {
 // 0x2cefe4 — __ZThn32_N3RBX13AdvLuaDraggerD0Ev
 #[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
 #[doc(alias = "__ZThn32_N3RBX13AdvLuaDraggerD0Ev")]
-pub fn stub_2cefe4() -> ! {
-    todo!("0x2cefe4 non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")
+pub fn stub_2cefe4() {
+    // IDA 0x2cefe4: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2cefec — __ZThn36_N3RBX13AdvLuaDraggerD0Ev
 #[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
 #[doc(alias = "__ZThn36_N3RBX13AdvLuaDraggerD0Ev")]
-pub fn stub_2cefec() -> ! {
-    todo!("0x2cefec non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")
+pub fn stub_2cefec() {
+    // IDA 0x2cefec: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2ceff4 — __ZN3RBX13AdvLuaDraggerD2Ev
@@ -90,15 +90,15 @@ pub fn stub_2ceff4() -> ! {
 // 0x2cf168 — __ZThn32_N3RBX13AdvLuaDraggerD1Ev
 #[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
 #[doc(alias = "__ZThn32_N3RBX13AdvLuaDraggerD1Ev")]
-pub fn stub_2cf168() -> ! {
-    todo!("0x2cf168 non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")
+pub fn stub_2cf168() {
+    // IDA 0x2cf168: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2cf170 — __ZThn36_N3RBX13AdvLuaDraggerD1Ev
 #[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
 #[doc(alias = "__ZThn36_N3RBX13AdvLuaDraggerD1Ev")]
-pub fn stub_2cf170() -> ! {
-    todo!("0x2cf170 non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")
+pub fn stub_2cf170() {
+    // IDA 0x2cf170: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2cf178 — __ZN3RBX13AdvLuaDragger9mouseDownEN5boost10shared_ptrINS_12PartInstanceEEERKN3G3D7Vector3ESt6vectorINS1_8weak_ptrIS3_EESaISB_EE
@@ -187,8 +187,9 @@ pub fn stub_2d07e4() -> ! {
 
 // 0x2d07f4 — __ZThn32_NK3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E12getClassNameEv")]
-pub fn stub_2d07f4() -> ! {
-    todo!("0x2d07f4 __ZThn32_NK3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E12getClassNameEv")
+pub fn stub_2d07f4() -> &'static str {
+    // IDA 0x2d07f4: __ZThn getClassName -- `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x28e128 family) -- the Creator name is the class name. Rust: no vtable/Creator needed.
+    "AdvLuaDragger"
 }
 
 // 0x2d0804 — __ZN3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E7CreatorD1Ev
@@ -350,8 +351,8 @@ pub fn stub_2d1afc() -> ! {
 // 0x2d1b00 — __ZThn36_N3RBX14AdvLuaDragToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::AdvLuaDragTool::~AdvLuaDragTool()")]
 #[doc(alias = "__ZThn36_N3RBX14AdvLuaDragToolD0Ev")]
-pub fn stub_2d1b00() -> ! {
-    todo!("0x2d1b00 non-virtual thunk toRBX::AdvLuaDragTool::~AdvLuaDragTool()")
+pub fn stub_2d1b00() {
+    // IDA 0x2d1b00: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2d1b08 — __ZN3RBX14AdvLuaDragToolD2Ev
@@ -364,8 +365,8 @@ pub fn stub_2d1b08() -> ! {
 // 0x2d1c48 — __ZThn36_N3RBX14AdvLuaDragToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::AdvLuaDragTool::~AdvLuaDragTool()")]
 #[doc(alias = "__ZThn36_N3RBX14AdvLuaDragToolD1Ev")]
-pub fn stub_2d1c48() -> ! {
-    todo!("0x2d1c48 non-virtual thunk toRBX::AdvLuaDragTool::~AdvLuaDragTool()")
+pub fn stub_2d1c48() {
+    // IDA 0x2d1c48: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2d1c50 — __ZN3RBX14AdvLuaDragTool11onMouseDownERKNS_7UIEventE
@@ -545,8 +546,8 @@ pub fn stub_2d45b8() -> ! {
 // 0x2d470c — __ZThn4_N3RBX15AdvMoveToolBase8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::AdvMoveToolBase::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX15AdvMoveToolBase8render2dEPNS_5AdornE")]
-pub fn stub_2d470c() -> ! {
-    todo!("0x2d470c non-virtual thunk toRBX::AdvMoveToolBase::render2d(RBX::Adorn *)")
+pub fn stub_2d470c() {
+    // IDA 0x2d470c: non-virtual thunk to `"'RBX::AdvMoveToolBase::render2d(RBX::Adorn *)"` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x2d4714 — __ZN3RBX15AdvMoveToolBase13render3dAdornEPNS_5AdornE
@@ -559,8 +560,8 @@ pub fn stub_2d4714() -> ! {
 // 0x2d4874 — __ZThn4_N3RBX15AdvMoveToolBase13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX15AdvMoveToolBase13render3dAdornEPNS_5AdornE")]
-pub fn stub_2d4874() -> ! {
-    todo!("0x2d4874 non-virtual thunk toRBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)")
+pub fn stub_2d4874() {
+    // IDA 0x2d4874: non-virtual thunk to `"'RBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)"` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x2d487c — __ZNK3RBX15AdvMoveToolBase13getOverHandleERKNS_7UIEventERN3G3D7Vector3ERNS_8NormalIdE
@@ -594,8 +595,8 @@ pub fn stub_2d4d38() -> ! {
 // 0x2d504c — __ZThn4_N3RBX11AdvMoveTool8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::AdvMoveTool::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX11AdvMoveTool8render2dEPNS_5AdornE")]
-pub fn stub_2d504c() -> ! {
-    todo!("0x2d504c non-virtual thunk toRBX::AdvMoveTool::render2d(RBX::Adorn *)")
+pub fn stub_2d504c() {
+    // IDA 0x2d504c: non-virtual thunk to `"'RBX::AdvMoveTool::render2d(RBX::Adorn *)"` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x2d5054 — __ZN3RBX11shared_fromINS_15AdvMoveToolBaseEEEN5boost10shared_ptrIT_EEPS4_
@@ -670,8 +671,8 @@ pub fn stub_2d5890() -> ! {
 // 0x2d5a28 — __ZThn4_N3RBX13AdvRotateTool8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX13AdvRotateTool8render2dEPNS_5AdornE")]
-pub fn stub_2d5a28() -> ! {
-    todo!("0x2d5a28 non-virtual thunk toRBX::AdvRotateTool::render2d(RBX::Adorn *)")
+pub fn stub_2d5a28() {
+    // IDA 0x2d5a28: non-virtual thunk to `"'RBX::AdvRotateTool::render2d(RBX::Adorn *)"` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x2d5a30 — __ZN3RBX13AdvRotateTool13render3dAdornEPNS_5AdornE
@@ -684,8 +685,8 @@ pub fn stub_2d5a30() -> ! {
 // 0x2d5d98 — __ZThn4_N3RBX13AdvRotateTool13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX13AdvRotateTool13render3dAdornEPNS_5AdornE")]
-pub fn stub_2d5d98() -> ! {
-    todo!("0x2d5d98 non-virtual thunk toRBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)")
+pub fn stub_2d5d98() {
+    // IDA 0x2d5d98: non-virtual thunk to `"'RBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)"` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x2d5da0 — __ZNK3RBX13AdvRotateTool13getOverHandleERKNS_7UIEventERN3G3D7Vector3ERNS_8NormalIdE
@@ -712,15 +713,15 @@ pub fn stub_2d5fd4() -> ! {
 // 0x2d6074 — __ZThn36_N3RBX13AdvRotateToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")]
 #[doc(alias = "__ZThn36_N3RBX13AdvRotateToolD1Ev")]
-pub fn stub_2d6074() -> ! {
-    todo!("0x2d6074 non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")
+pub fn stub_2d6074() {
+    // IDA 0x2d6074: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2d607c — __ZThn36_N3RBX13AdvRotateToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")]
 #[doc(alias = "__ZThn36_N3RBX13AdvRotateToolD0Ev")]
-pub fn stub_2d607c() -> ! {
-    todo!("0x2d607c non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")
+pub fn stub_2d607c() {
+    // IDA 0x2d607c: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2d6120 — __GLOBAL__I_a_81

@@ -41,8 +41,8 @@ pub fn stub_ccf140() -> ! {
 // type: _DWORD __fastcall(Ogre::Light *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::Light::getAnimableDictionaryName(void)const")]
 #[doc(alias = "__ZThn4_NK4Ogre5Light25getAnimableDictionaryNameEv")]
-pub fn stub_ccf14c() -> ! {
-    todo!("0xccf14c non-virtual thunk toOgre::Light::getAnimableDictionaryName(void)const")
+pub fn stub_ccf14c() {
+    // IDA 0xccf14c: non-virtual thunk to `"'Ogre::Light::getAnimableDictionaryName(void)const"` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xccf158 — __ZNK4Ogre5Light28initialiseAnimableDictionaryERSt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
@@ -55,8 +55,8 @@ pub fn stub_ccf158() -> ! {
 // 0xccf684 — __ZThn4_NK4Ogre5Light28initialiseAnimableDictionaryERSt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
 #[doc(alias = "non-virtual thunk toOgre::Light::initialiseAnimableDictionary(std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const")]
 #[doc(alias = "__ZThn4_NK4Ogre5Light28initialiseAnimableDictionaryERSt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE")]
-pub fn stub_ccf684() -> ! {
-    todo!("0xccf684 non-virtual thunk toOgre::Light::initialiseAnimableDictionary(std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const")
+pub fn stub_ccf684() {
+    // IDA 0xccf684: non-virtual thunk to `"'Ogre::Light::initialiseAnimableDictionary(std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xccf690 — __ZN4Ogre5Light19createAnimableValueERKSs
@@ -71,8 +71,8 @@ pub fn stub_ccf690() -> ! {
 // type: _DWORD __fastcall(Ogre::Light *__hidden this, const std::string *)
 #[doc(alias = "non-virtual thunk toOgre::Light::createAnimableValue(std::string const&)")]
 #[doc(alias = "__ZThn4_N4Ogre5Light19createAnimableValueERKSs")]
-pub fn stub_ccf824() -> ! {
-    todo!("0xccf824 non-virtual thunk toOgre::Light::createAnimableValue(std::string const&)")
+pub fn stub_ccf824() {
+    // IDA 0xccf824: non-virtual thunk to `"'Ogre::Light::createAnimableValue(std::string const&)"` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xccf834 — __ZNK4Ogre5Light26getCustomShadowCameraSetupEv

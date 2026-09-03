@@ -575,8 +575,8 @@ pub fn stub_0xd5b814() -> ! {
 // type: char *__fastcall(Ogre::Rectangle2D *this, Ogre::Matrix4 *)
 #[doc(alias = "non-virtual thunk toOgre::Rectangle2D::getWorldTransforms(Ogre::Matrix4 *)const")]
 #[doc(alias = "__ZThn188_NK4Ogre11Rectangle2D18getWorldTransformsEPNS_7Matrix4E")]
-pub fn stub_0xd5b858() -> ! {
-    todo!("0xd5b858 __ZThn188_NK4Ogre11Rectangle2D18getWorldTransformsEPNS_7Matrix4E")
+pub fn stub_0xd5b858() {
+    // IDA 0xd5b858: non-virtual thunk to `Ogre::Rectangle2D::getWorldTransforms( Ogre::Rectangle2D *this, Ogre::Matrix4 *a2) { __int64 v2; // d17 __int64 v3; // d18 __int64 v` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xd5b89c — __ZNK4Ogre11Rectangle2D17getBoundingRadiusEv
@@ -599,8 +599,8 @@ pub fn stub_0xd5b8a0() -> ! {
 // type: _DWORD __fastcall(Ogre::Rectangle2D *__hidden this, const Ogre::Camera *)
 #[doc(alias = "non-virtual thunk toOgre::Rectangle2D::getSquaredViewDepth(Ogre::Camera const*)const")]
 #[doc(alias = "__ZThn188_NK4Ogre11Rectangle2D19getSquaredViewDepthEPKNS_6CameraE")]
-pub fn stub_0xd5b8a4() -> ! {
-    todo!("0xd5b8a4 __ZThn188_NK4Ogre11Rectangle2D19getSquaredViewDepthEPKNS_6CameraE")
+pub fn stub_0xd5b8a4() {
+    // IDA 0xd5b8a4: non-virtual thunk to `Ogre::Rectangle2D::getSquaredViewDepth( Ogre::Rectangle2D *this, const Ogre::Camera *a2) { return 0; } "` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xd5b8a8 — __GLOBAL__I_a_751

@@ -107,8 +107,8 @@ pub fn stub_0x53b298() -> ! {
 // 0x53b2b0 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX5UDim2EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::UDim2)>::slot,boost::function<void ()(RBX::UDim2)>,1,void ()(RBX::UDim2)>::call(RBX::UDim2)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX5UDim2EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")]
-pub fn stub_0x53b2b0() -> ! {
-    todo!("0x53b2b0 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::UDim2)>::slot,boost::function<void ()(RBX::UDim2)>,1,void ()(RBX::UDim2)>::call(RBX::UDim2)")
+pub fn stub_0x53b2b0() {
+    // IDA 0x53b2b0: non-virtual thunk to `rbx::callable<rbx::signals::signal<void ()(RBX::UDim2)>::slot,boost::function<void ()(RBX::UDim2)>,1,void ()(RBX::UDim2)>::call( int a1) { return b` — this/arg-adjust + tail-call (this += 12) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x53b2c8 — __ZNK5boost9function1IvN3RBX5UDim2EEclES2_

@@ -729,8 +729,9 @@ pub fn stub_0x2a7d54() {
 
 // 0x2a7df8 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEE12getClassNameEv")]
-pub fn stub_0x2a7df8() -> ! {
-    todo!("0x2a7df8 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEE12getClassNameEv")
+pub fn stub_0x2a7df8() -> &'static str {
+    // IDA 0x2a7df8: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x2a7df8 family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "RuntimeScriptService"
 }
 
 // 0x2a7e20 — __ZThn36_N3RBX20RuntimeScriptServiceD1Ev
@@ -757,8 +758,9 @@ pub fn stub_0x2a7ed0() -> ! {
 
 // 0x2a7ee0 — __ZThn32_NK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E12getClassNameEv")]
-pub fn stub_0x2a7ee0() -> ! {
-    todo!("0x2a7ee0 __ZThn32_NK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E12getClassNameEv")
+pub fn stub_0x2a7ee0() -> &'static str {
+    // IDA 0x2a7ee0: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x2a7ee0 family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "ScriptContext"
 }
 
 // 0x2a7ef0 — __ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD1Ev
@@ -818,8 +820,9 @@ pub fn stub_0x2a8380() -> ! {
 
 // 0x2a8390 — __ZThn32_NK3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E12getClassNameEv")]
-pub fn stub_0x2a8390() -> ! {
-    todo!("0x2a8390 __ZThn32_NK3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E12getClassNameEv")
+pub fn stub_0x2a8390() -> &'static str {
+    // IDA 0x2a8390: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x2a8390 family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "Scripting"
 }
 
 // 0x2a83a0 — __ZN3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E17static_getCreatorEv

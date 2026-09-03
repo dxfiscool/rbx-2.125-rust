@@ -73,8 +73,8 @@ pub fn stub_0x833d10() -> ! {
 // 0x833e78 — __ZThn96_N3RBX12TweenService11onHeartbeatERKNS_9HeartbeatE
 #[doc(alias = "__ZThn96_N3RBX12TweenService11onHeartbeatERKNS_9HeartbeatE")]
 #[doc(alias = "non-virtual thunk toRBX::TweenService::onHeartbeat(RBX::Heartbeat const&)")]
-pub fn stub_0x833e78() -> ! {
-    todo!("0x833e78")
+pub fn stub_0x833e78() {
+    // IDA 0x833e78: non-virtual thunk to `RBX::TweenService::onHeartbeat( int a1, int a2, int a3, int a4, struct _Unwind_Exception *a5, int a6, ` — this/arg-adjust + tail-call (arg a1 -= 96) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x833e80 — __ZN3RBX12TweenServiceD1Ev
@@ -246,8 +246,8 @@ pub fn stub_0x835498() -> ! {
 // 0x83554c — __ZThn536_N3RBX15NotificationBox11onHeartbeatERKNS_9HeartbeatE
 #[doc(alias = "__ZThn536_N3RBX15NotificationBox11onHeartbeatERKNS_9HeartbeatE")]
 #[doc(alias = "non-virtual thunk toRBX::NotificationBox::onHeartbeat(RBX::Heartbeat const&)")]
-pub fn stub_0x83554c() -> ! {
-    todo!("0x83554c")
+pub fn stub_0x83554c() {
+    // IDA 0x83554c: non-virtual thunk to `RBX::NotificationBox::onHeartbeat(int a1) { return RBX::NotificationBox::onHeartbeat(a1 - 536); } "` — this/arg-adjust + tail-call (arg a1 -= 536) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x835554 — __ZNSt4listIN5boost10shared_ptrIN3RBX18NotificationObjectEEESaIS4_EE6removeERKS4_

@@ -289,16 +289,16 @@ pub fn stub_0x3f9c8() {
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::getMetric(std::string const&)const")]
 #[doc(alias = "__ZThn480_NK10RobloxView9RenderJob9getMetricERKSs")]
-pub fn stub_0x3fa94() -> ! {
-    todo!("0x3fa94 non-virtual thunk toRobloxView::RenderJob::getMetric(std::string const&)const")
+pub fn stub_0x3fa94() {
+    // IDA 0x3fa94: non-virtual thunk to `"'RobloxView::RenderJob::getMetric(std::string const&)const"` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x3faa4 — __ZThn480_NK10RobloxView9RenderJob14getMetricValueERKSs
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::getMetricValue(std::string const&)const")]
 #[doc(alias = "__ZThn480_NK10RobloxView9RenderJob14getMetricValueERKSs")]
-pub fn stub_0x3faa4() -> ! {
-    todo!("0x3faa4 non-virtual thunk toRobloxView::RenderJob::getMetricValue(std::string const&)const")
+pub fn stub_0x3faa4() {
+    // IDA 0x3faa4: non-virtual thunk to `"'RobloxView::RenderJob::getMetricValue(std::string const&)const"` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x3faac — __ZN10RobloxView9RenderJob21scheduleRenderPrepareEPS0_PN3RBX8ViewBaseE

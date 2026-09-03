@@ -68,29 +68,29 @@ pub fn stub_37e16c() -> ! {
 // 0x37e344 — __ZThn32_N21SoundServiceStatsItemD1Ev
 #[doc(alias = "non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")]
 #[doc(alias = "__ZThn32_N21SoundServiceStatsItemD1Ev")]
-pub fn stub_37e344() -> ! {
-    todo!("0x37e344 non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")
+pub fn stub_37e344() {
+    // IDA 0x37e344: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x37e384 — __ZThn32_N21SoundServiceStatsItemD0Ev
 #[doc(alias = "non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")]
 #[doc(alias = "__ZThn32_N21SoundServiceStatsItemD0Ev")]
-pub fn stub_37e384() -> ! {
-    todo!("0x37e384 non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")
+pub fn stub_37e384() {
+    // IDA 0x37e384: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x37e458 — __ZThn36_N21SoundServiceStatsItemD1Ev
 #[doc(alias = "non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")]
 #[doc(alias = "__ZThn36_N21SoundServiceStatsItemD1Ev")]
-pub fn stub_37e458() -> ! {
-    todo!("0x37e458 non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")
+pub fn stub_37e458() {
+    // IDA 0x37e458: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x37e498 — __ZThn36_N21SoundServiceStatsItemD0Ev
 #[doc(alias = "non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")]
 #[doc(alias = "__ZThn36_N21SoundServiceStatsItemD0Ev")]
-pub fn stub_37e498() -> ! {
-    todo!("0x37e498 non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")
+pub fn stub_37e498() {
+    // IDA 0x37e498: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x37e56c — __ZN5boost10shared_ptrI21SoundServiceStatsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_

@@ -772,8 +772,8 @@ pub fn stub_0x5cf59c() -> ! {
 
 // 0x5cf67c — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13ModelInstanceENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::ModelInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x5cf67c() -> ! {
-    todo!("0x5cf67c non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::ModelInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x5cf67c() {
+    // IDA 0x5cf67c: non-virtual thunk to `RBX::Reflection::RefPropDescriptor<RBX::ModelInstance,RBX::PartInstance>::assignIDREF( int a1, int a2, int a3, int a4, ` — this/arg-adjust + tail-call (arg a1 -= 40) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x5cf684 — __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -1210,8 +1210,8 @@ pub fn stub_0x5d3070() -> ! {
 
 // 0x5d3150 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x5d3150() -> ! {
-    todo!("0x5d3150 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x5d3150() {
+    // IDA 0x5d3150: non-virtual thunk to `RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PartInstance>::assignIDREF( int a1, int a2, int a3, int a4, boos` — this/arg-adjust + tail-call (arg a1 -= 40) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x5d3158 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_12PartInstanceEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
@@ -1324,8 +1324,8 @@ pub fn stub_0x5d3768() -> ! {
 
 // 0x5d3848 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x5d3848() -> ! {
-    todo!("0x5d3848 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x5d3848() {
+    // IDA 0x5d3848: non-virtual thunk to `RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::assignIDREF( int a1, int a2, int a3, int a4, boost:` — this/arg-adjust + tail-call (arg a1 -= 40) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x5d3850 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -3474,8 +3474,8 @@ pub fn stub_0x70a830() -> ! {
 // 0x70a910 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_8InstanceES2_E11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Instance,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_8InstanceES2_E11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
-pub fn stub_0x70a910() -> ! {
-    todo!("0x70a910 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Instance,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x70a910() {
+    // IDA 0x70a910: `__ZThn40 ...RefPropDescriptor<Instance,Instance>::assignIDREF` (symbol; decompile unavailable) — same family as decompiled 0x5cf67c (`this -= 40`, forward all args). Rust static dispatch; cutover no-op.
 }
 
 // 0x70a9e0 — __ZNK3RBX10Reflection7Variant3getIN5boost10shared_ptrINS0_13DescribedBaseEEEEET_v

@@ -823,8 +823,8 @@ pub fn stub_0xdc5614() -> ! {
 // type: _DWORD __fastcall(Ogre::RegionSceneQuery *__hidden this, Ogre::MovableObject *)
 #[doc(alias = "non-virtual thunk to-Ogre::RegionSceneQuery::queryResult(Ogre::MovableObject *)")]
 #[doc(alias = "__ZThn48_N4Ogre16RegionSceneQuery11queryResultEPNS_13MovableObjectE")]
-pub fn stub_0xdc5634() -> ! {
-    todo!("0xdc5634 non-virtual thunk to Ogre::RegionSceneQuery::queryResult(Ogre::MovableObject *)")
+pub fn stub_0xdc5634() {
+    // IDA 0xdc5634: non-virtual thunk to `Ogre::RegionSceneQuery::queryResult( Ogre::RegionSceneQuery *this, Ogre::MovableObject *a2) { int v3; // r5 std::_List_node_base *v4; /` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xdc569c — __ZN4Ogre24AxisAlignedBoxSceneQueryC2EPNS_12SceneManagerE

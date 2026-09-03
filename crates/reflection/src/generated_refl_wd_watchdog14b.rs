@@ -519,8 +519,9 @@ pub fn stub_0x34a84c() {
 
 // 0x34a970 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv")]
-pub fn stub_0x34a970() -> ! {
-    todo!("0x34a970 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv")
+pub fn stub_0x34a970() -> &'static str {
+    // IDA 0x34a970: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x34a970 family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "LuaWebService"
 }
 
 // 0x34a998 — __ZThn36_N3RBX13LuaWebServiceD1Ev

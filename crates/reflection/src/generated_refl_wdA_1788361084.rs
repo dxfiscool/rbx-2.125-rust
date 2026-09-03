@@ -25,8 +25,8 @@ pub fn stub_0x368670() -> ! {
 // 0x368688 — __ZThn4_N3rbx8callableINS_7signals6signalIFvddEE4slotEN5boost8functionIS3_EELi2ES3_E4callEdd
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::call(double,double)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvddEE4slotEN5boost8functionIS3_EELi2ES3_E4callEdd")]
-pub fn stub_0x368688() -> ! {
-    todo!("0x368688 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::call(double,double)")
+pub fn stub_0x368688() {
+    // IDA 0x368688: non-virtual thunk to `rbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::call( int a1) { ` — this/arg-adjust + tail-call (this += 12) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x3686a0 — __ZNK5boost9function2IvddEclEdd
@@ -256,8 +256,8 @@ pub fn stub_0x36a714() -> ! {
 // 0x36a71c — __ZThn96_N3RBX25ScriptInformationProvider11onHeartbeatERKNS_9HeartbeatE
 #[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::onHeartbeat(RBX::Heartbeat const&)")]
 #[doc(alias = "__ZThn96_N3RBX25ScriptInformationProvider11onHeartbeatERKNS_9HeartbeatE")]
-pub fn stub_0x36a71c() -> ! {
-    todo!("0x36a71c non-virtual thunk toRBX::ScriptInformationProvider::onHeartbeat(RBX::Heartbeat const&)")
+pub fn stub_0x36a71c() {
+    // IDA 0x36a71c: non-virtual thunk to `RBX::ScriptInformationProvider::onHeartbeat( int a1, int a2, int a3, int a4, int a5, int a6, boos` — this/arg-adjust + tail-call (this += 8) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x36a724 — __ZN3RBX25ScriptInformationProvider18HandleHttpResponseEN5boost8weak_ptrIS0_EENS_14AsyncHttpQueue13RequestResultESsNS1_8functionIFvNS0_13RequestResultEbbfbEEE
@@ -394,8 +394,9 @@ pub fn stub_0x36bda4() {
 
 // 0x36be48 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEE12getClassNameEv")]
-pub fn stub_0x36be48() -> ! {
-    todo!("0x36be48 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEE12getClassNameEv")
+pub fn stub_0x36be48() -> &'static str {
+    // IDA 0x36be48: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x36be48 family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "ScriptInformationProvider"
 }
 
 // 0x36be70 — __ZThn36_N3RBX25ScriptInformationProviderD1Ev

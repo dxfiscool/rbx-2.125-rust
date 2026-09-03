@@ -653,8 +653,9 @@ pub fn stub_0x286910() {
 
 // 0x2869f0 — __ZThn32_NK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0x2869f0() -> ! {
-    todo!("0x2869f0 __ZThn32_NK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE12getClassNameEv")
+pub fn stub_0x2869f0() -> &'static str {
+    // IDA 0x2869f0: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x2869f0 family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "LuaSettings"
 }
 
 // 0x286a00 — __ZThn36_N3RBX11LuaSettingsD1Ev

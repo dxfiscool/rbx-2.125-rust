@@ -56,8 +56,8 @@ pub fn stub_0xb5fed4() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator::StreamJob,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_7Network10Replicator9StreamJobES7_EENSC_5list2INSC_5valueIPSI_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_")]
-pub fn stub_0xb5fef0() -> ! {
-    todo!("0xb5fef0")
+pub fn stub_0xb5fef0() {
+    // IDA 0xb5fef0: non-virtual thunk to `rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replic` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xbb48d8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19MeshContentProviderES6_EEvPKNS_10shared_ptrIT_EEPT0_

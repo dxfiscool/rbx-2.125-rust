@@ -577,8 +577,8 @@ pub fn stub_0x91cc1c() -> ! {
 // 0x91cf0c — __ZThn36_N3RBX14RemoteFunction18processRemoteEventERKNS_10Reflection15EventDescriptorERKSt6vectorINS1_7VariantESaIS6_EERKNS_13SystemAddressE
 #[doc(alias = "non-virtual thunk toRBX::RemoteFunction::processRemoteEvent(RBX::Reflection::EventDescriptor const&,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&,RBX::SystemAddress const&)")]
 #[doc(alias = "__ZThn36_N3RBX14RemoteFunction18processRemoteEventERKNS_10Reflection15EventDescriptorERKSt6vectorINS1_7VariantESaIS6_EERKNS_13SystemAddressE")]
-pub fn stub_0x91cf0c() -> ! {
-    todo!("0x91cf0c __ZThn36_N3RBX14RemoteFunction18processRemoteEventERKNS_10Reflection15EventDescriptorERKSt6vectorINS1_7VariantESaIS6_EERKNS_13SystemAddressE")
+pub fn stub_0x91cf0c() {
+    // IDA 0x91cf0c: non-virtual thunk to `RBX::RemoteFunction::processRemoteEvent( int a1, int a2, int a3, int a4, int a5, int a6, int a7,\` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x91d114 — __ZN3RBX11RemoteEvent18processRemoteEventERKNS_10Reflection15EventDescriptorERKSt6vectorINS1_7VariantESaIS6_EERKNS_13SystemAddressE
@@ -592,8 +592,8 @@ pub fn stub_0x91d114() -> ! {
 // 0x91d2f4 — __ZThn36_N3RBX11RemoteEvent18processRemoteEventERKNS_10Reflection15EventDescriptorERKSt6vectorINS1_7VariantESaIS6_EERKNS_13SystemAddressE
 #[doc(alias = "non-virtual thunk toRBX::RemoteEvent::processRemoteEvent(RBX::Reflection::EventDescriptor const&,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&,RBX::SystemAddress const&)")]
 #[doc(alias = "__ZThn36_N3RBX11RemoteEvent18processRemoteEventERKNS_10Reflection15EventDescriptorERKSt6vectorINS1_7VariantESaIS6_EERKNS_13SystemAddressE")]
-pub fn stub_0x91d2f4() -> ! {
-    todo!("0x91d2f4 __ZThn36_N3RBX11RemoteEvent18processRemoteEventERKNS_10Reflection15EventDescriptorERKSt6vectorINS1_7VariantESaIS6_EERKNS_13SystemAddressE")
+pub fn stub_0x91d2f4() {
+    // IDA 0x91d2f4: non-virtual thunk to `RBX::RemoteEvent::processRemoteEvent( int a1, int a2, int a3, int a4, int a5, struct _Unwind_Exception *a6` — this/arg-adjust + tail-call (arg a1 -= 36) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x91d460 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_14RemoteFunctionEFN5boost10shared_ptrIKNS0_5TupleEEES7_ES7_Li1EED1Ev

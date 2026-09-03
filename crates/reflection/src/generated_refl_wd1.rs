@@ -268,8 +268,8 @@ pub fn stub_0x2e4a5c() -> ! {
 // 0x2e4a70 — __ZThn4_N3RBX10HammerTool13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::HammerTool::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX10HammerTool13render3dAdornEPNS_5AdornE")]
-pub fn stub_0x2e4a70() -> ! {
-    todo!("0x2e4a70 non-virtual thunk toRBX::HammerTool::render3dAdorn(RBX::Adorn *)")
+pub fn stub_0x2e4a70() {
+    // IDA 0x2e4a70: non-virtual thunk to `RBX::HammerTool::render3dAdorn(int a1, int a2) { int result; // r0 result = *(_DWORD *)(a1 + 60); if ( result ) return (*(int (__fastcall **)(i` — this/arg-adjust + tail-call (this += 60) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x2e4a84 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9ExplosionEEEN5boost10shared_ptrIT_EEv
@@ -510,8 +510,9 @@ pub fn stub_0x2e74e0() -> ! {
 
 // 0x2e74f0 — __ZThn32_NK3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E12getClassNameEv")]
-pub fn stub_0x2e74f0() -> ! {
-    todo!("0x2e74f0 __ZThn32_NK3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E12getClassNameEv")
+pub fn stub_0x2e74f0() -> &'static str {
+    // IDA 0x2e74f0: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x2e74f0 family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "LuaDragger"
 }
 
 // 0x2e7500 — __ZN3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E7CreatorD1Ev

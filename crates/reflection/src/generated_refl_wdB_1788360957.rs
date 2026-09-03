@@ -116,8 +116,9 @@ pub fn stub_0x362314() -> ! {
 // 0x362340 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEE12getClassNameEv")]
-pub fn stub_0x362340() -> ! {
-    todo!("0x362340 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_11sRunServiceEEE12getClassNameEv")
+pub fn stub_0x362340() -> &'static str {
+    // IDA 0x362340: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x362340 family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "RunService"
 }
 
 // 0x362368 — __ZN3RBX22AbstractFactoryProductINS_8InstanceEE11getCreatorsEv
@@ -718,8 +719,8 @@ pub fn stub_0x36680c() -> ! {
 // 0x366814 — __ZThn4_N3rbx8callableINS_7signals6signalIFvdEE4slotEN5boost8functionIS3_EELi1ES3_E4callEd
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::call(double)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvdEE4slotEN5boost8functionIS3_EELi1ES3_E4callEd")]
-pub fn stub_0x366814() -> ! {
-    todo!("0x366814 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::call(double)")
+pub fn stub_0x366814() {
+    // IDA 0x366814: non-virtual thunk to `rbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::call( int a1) { return boost::functi` — this/arg-adjust + tail-call (this += 12) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x36681c — __ZNK5boost9function1IvdEclEd

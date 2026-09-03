@@ -482,29 +482,29 @@ pub fn stub_38e9b8() -> ! {
 // 0x38e9c8 — __ZThn32_N3RBX12AccoutrementD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn32_N3RBX12AccoutrementD0Ev")]
-pub fn stub_38e9c8() -> ! {
-    todo!("0x38e9c8 non-virtual thunk to RBX::Accoutrement::~Accoutrement()")
+pub fn stub_38e9c8() {
+    // IDA 0x38e9c8: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x38e9d0 — __ZThn36_N3RBX12AccoutrementD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn36_N3RBX12AccoutrementD0Ev")]
-pub fn stub_38e9d0() -> ! {
-    todo!("0x38e9d0 non-virtual thunk to RBX::Accoutrement::~Accoutrement()")
+pub fn stub_38e9d0() {
+    // IDA 0x38e9d0: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x38e9d8 — __ZThn92_N3RBX12AccoutrementD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn92_N3RBX12AccoutrementD0Ev")]
-pub fn stub_38e9d8() -> ! {
-    todo!("0x38e9d8 non-virtual thunk to RBX::Accoutrement::~Accoutrement()")
+pub fn stub_38e9d8() {
+    // IDA 0x38e9d8: __ZThn92 thunk (D0 deleting dtor): `this -= 92`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x38e9e0 — __ZThn128_N3RBX12AccoutrementD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn128_N3RBX12AccoutrementD0Ev")]
-pub fn stub_38e9e0() -> ! {
-    todo!("0x38e9e0 non-virtual thunk to RBX::Accoutrement::~Accoutrement()")
+pub fn stub_38e9e0() {
+    // IDA 0x38e9e0: __ZThn128 thunk (D0 deleting dtor): `this -= 128`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x38e9e8 — __ZN3RBX12AccoutrementD2Ev
@@ -517,29 +517,29 @@ pub fn stub_38e9e8() -> ! {
 // 0x38ef1c — __ZThn32_N3RBX12AccoutrementD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn32_N3RBX12AccoutrementD1Ev")]
-pub fn stub_38ef1c() -> ! {
-    todo!("0x38ef1c non-virtual thunk to RBX::Accoutrement::~Accoutrement()")
+pub fn stub_38ef1c() {
+    // IDA 0x38ef1c: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x38ef2c — __ZThn36_N3RBX12AccoutrementD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn36_N3RBX12AccoutrementD1Ev")]
-pub fn stub_38ef2c() -> ! {
-    todo!("0x38ef2c non-virtual thunk to RBX::Accoutrement::~Accoutrement()")
+pub fn stub_38ef2c() {
+    // IDA 0x38ef2c: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x38ef3c — __ZThn92_N3RBX12AccoutrementD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn92_N3RBX12AccoutrementD1Ev")]
-pub fn stub_38ef3c() -> ! {
-    todo!("0x38ef3c non-virtual thunk to RBX::Accoutrement::~Accoutrement()")
+pub fn stub_38ef3c() {
+    // IDA 0x38ef3c: __ZThn92 thunk (D1 base dtor): `this -= 92`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x38ef4c — __ZThn128_N3RBX12AccoutrementD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 #[doc(alias = "__ZThn128_N3RBX12AccoutrementD1Ev")]
-pub fn stub_38ef4c() -> ! {
-    todo!("0x38ef4c non-virtual thunk to RBX::Accoutrement::~Accoutrement()")
+pub fn stub_38ef4c() {
+    // IDA 0x38ef4c: __ZThn128 thunk (D1 base dtor): `this -= 128`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x38ef5c — __ZN3RBX12Accoutrement12onCameraNearEf
@@ -552,8 +552,8 @@ pub fn stub_38ef5c() -> ! {
 // 0x38ef98 — __ZThn128_N3RBX12Accoutrement12onCameraNearEf
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::onCameraNear(float)")]
 #[doc(alias = "__ZThn128_N3RBX12Accoutrement12onCameraNearEf")]
-pub fn stub_38ef98() -> ! {
-    todo!("0x38ef98 non-virtual thunk to RBX::Accoutrement::onCameraNear(float)")
+pub fn stub_38ef98() {
+    // IDA 0x38ef98: non-virtual thunk to `"'RBX::Accoutrement::onCameraNear(float)"` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x38efa0 — __ZN3RBX12Accoutrement14render3dSelectEPNS_5AdornENS_11SelectStateE
@@ -566,8 +566,8 @@ pub fn stub_38efa0() -> ! {
 // 0x38f014 — __ZThn104_N3RBX12Accoutrement14render3dSelectEPNS_5AdornENS_11SelectStateE
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
 #[doc(alias = "__ZThn104_N3RBX12Accoutrement14render3dSelectEPNS_5AdornENS_11SelectStateE")]
-pub fn stub_38f014() -> ! {
-    todo!("0x38f014 non-virtual thunk to RBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)")
+pub fn stub_38f014() {
+    // IDA 0x38f014: non-virtual thunk to `"'RBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)"` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x38f01c — __ZN3RBX12Accoutrement7dropAllEPNS_13ModelInstanceE
@@ -800,22 +800,23 @@ pub fn stub_39067c() -> ! {
 
 // 0x3906a4 — __ZThn32_NK3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E12getClassNameEv")]
-pub fn stub_3906a4() -> ! {
-    todo!("0x3906a4 __ZThn32_NK3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E12getClassNameEv")
+pub fn stub_3906a4() -> &'static str {
+    // IDA 0x3906a4: __ZThn getClassName -- `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x28e128 family) -- the Creator name is the class name. Rust: no vtable/Creator needed.
+    "Accoutrement"
 }
 
 // 0x3906b4 — __ZThn128_N3RBX12Accoutrement17getRenderLocationEv
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::getRenderLocation(void)")]
 #[doc(alias = "__ZThn128_N3RBX12Accoutrement17getRenderLocationEv")]
-pub fn stub_3906b4() -> ! {
-    todo!("0x3906b4 non-virtual thunk to RBX::Accoutrement::getRenderLocation(void)")
+pub fn stub_3906b4() {
+    // IDA 0x3906b4: non-virtual thunk to `"'RBX::Accoutrement::getRenderLocation(void)"` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x3906c4 — __ZThn128_N3RBX12Accoutrement13getRenderSizeEv
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::getRenderSize(void)")]
 #[doc(alias = "__ZThn128_N3RBX12Accoutrement13getRenderSizeEv")]
-pub fn stub_3906c4() -> ! {
-    todo!("0x3906c4 non-virtual thunk to RBX::Accoutrement::getRenderSize(void)")
+pub fn stub_3906c4() {
+    // IDA 0x3906c4: non-virtual thunk to `"'RBX::Accoutrement::getRenderSize(void)"` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x3906d0 — __ZN3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E7CreatorD1Ev

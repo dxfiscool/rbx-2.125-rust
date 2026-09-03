@@ -163,8 +163,8 @@ pub fn stub_0xd34870() -> ! {
 
 // 0xd34890 — __ZThn12_N4Ogre19PanelOverlayElement18getRenderOperationERNS_15RenderOperationE
 #[doc(alias = "__ZThn12_N4Ogre19PanelOverlayElement18getRenderOperationERNS_15RenderOperationE")]
-pub fn stub_0xd34890() -> ! {
-    todo!("0xd34890 __ZThn12_N4Ogre19PanelOverlayElement18getRenderOperationERNS_15RenderOperationE")
+pub fn stub_0xd34890() {
+    // IDA 0xd34890: non-virtual thunk to `Ogre::PanelOverlayElement::getRenderOperation(int a1, _QWORD *a2) { __int64 *v2; // r2 __int64 *v3; // r0 __int64 v4; // d18 __int64 v5; // d19 ` — this/arg-adjust + tail-call (this += 480) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xd348b0 — __ZN4Ogre19PanelOverlayElement15setMaterialNameERKSs
@@ -378,15 +378,15 @@ pub fn stub_0xd36e2c() -> ! {
 // 0xd36e30 — __ZThn12_NK4Ogre14OverlayElement19getSquaredViewDepthEPKNS_6CameraE
 // type: unsigned __int32 __fastcall(Ogre::OverlayElement *this, const Ogre::Camera *)
 #[doc(alias = "__ZThn12_NK4Ogre14OverlayElement19getSquaredViewDepthEPKNS_6CameraE")]
-pub fn stub_0xd36e30() -> ! {
-    todo!("0xd36e30 __ZThn12_NK4Ogre14OverlayElement19getSquaredViewDepthEPKNS_6CameraE")
+pub fn stub_0xd36e30() {
+    // IDA 0xd36e30: non-virtual thunk to `Ogre::OverlayElement::getSquaredViewDepth( Ogre::OverlayElement *this, const Ogre::Camera *a2) { float32x2_t v2; // d0 uint32x2_t v3; /` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xd36e50 — __ZThn12_NK4Ogre14OverlayElement9getLightsEv
 // type: int *__fastcall(Ogre::OverlayElement *this)
 #[doc(alias = "__ZThn12_NK4Ogre14OverlayElement9getLightsEv")]
-pub fn stub_0xd36e50() -> ! {
-    todo!("0xd36e50 __ZThn12_NK4Ogre14OverlayElement9getLightsEv")
+pub fn stub_0xd36e50() {
+    // IDA 0xd36e50: non-virtual thunk to `Ogre::OverlayElement::getLights(Ogre::OverlayElement *this) { if ( (`guard variable for` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xd36ecc — __ZNK4Ogre10Renderable15getCastsShadowsEv

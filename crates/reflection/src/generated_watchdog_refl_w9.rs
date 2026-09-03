@@ -575,8 +575,8 @@ pub fn stub_0xc5c4e8() -> ! {
 // type: _DWORD __fastcall(Ogre::BillboardChain *__hidden this, const Ogre::Camera *)
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::getSquaredViewDepth(Ogre::Camera const*)const")]
 #[doc(alias = "__ZThn188_NK4Ogre14BillboardChain19getSquaredViewDepthEPKNS_6CameraE")]
-pub fn stub_0xc5c590() -> ! {
-    todo!("0xc5c590 non-virtual thunk toOgre::BillboardChain::getSquaredViewDepth(Ogre::Camera const*)const")
+pub fn stub_0xc5c590() {
+    // IDA 0xc5c590: non-virtual thunk to `Ogre::BillboardChain::getSquaredViewDepth( Ogre::BillboardChain *this, const Ogre::Camera *a2) { float32x2_t v2; // d0 float32x2_t v3; ` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xc5c638 — __ZNK4Ogre14BillboardChain17getBoundingRadiusEv
@@ -607,8 +607,8 @@ pub fn stub_0xc5c658() -> ! {
 // type: _DWORD __fastcall(Ogre::BillboardChain *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::getMaterial(void)const")]
 #[doc(alias = "__ZThn188_NK4Ogre14BillboardChain11getMaterialEv")]
-pub fn stub_0xc5c660() -> ! {
-    todo!("0xc5c660 non-virtual thunk toOgre::BillboardChain::getMaterial(void)const")
+pub fn stub_0xc5c660() {
+    // IDA 0xc5c660: non-virtual thunk to `Ogre::BillboardChain::getMaterial(Ogre::BillboardChain *this) { return (char *)this + 112; } "` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xc5c664 — __ZN4Ogre14BillboardChain15setMaterialNameERKSsS2_
@@ -645,8 +645,8 @@ pub fn stub_0xc5d138() -> ! {
 // 0xc5d154 — __ZThn188_N4Ogre14BillboardChain18getRenderOperationERNS_15RenderOperationE
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::getRenderOperation(Ogre::RenderOperation &)")]
 #[doc(alias = "__ZThn188_N4Ogre14BillboardChain18getRenderOperationERNS_15RenderOperationE")]
-pub fn stub_0xc5d154() -> ! {
-    todo!("0xc5d154 non-virtual thunk toOgre::BillboardChain::getRenderOperation(Ogre::RenderOperation &)")
+pub fn stub_0xc5d154() {
+    // IDA 0xc5d154: non-virtual thunk to `Ogre::BillboardChain::getRenderOperation(int a1, int a2) { int result; // r0 *(_DWORD *)(a2 + 12) = *(_DWORD *)(a1 + 64); *(_DWORD *)(a2 + 4) = 4; ` — this/arg-adjust + tail-call (this += 64) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xc5d168 — __ZNK4Ogre14BillboardChain18getWorldTransformsEPNS_7Matrix4E
@@ -659,8 +659,8 @@ pub fn stub_0xc5d168() -> ! {
 // 0xc5d1b0 — __ZThn188_NK4Ogre14BillboardChain18getWorldTransformsEPNS_7Matrix4E
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::getWorldTransforms(Ogre::Matrix4 *)const")]
 #[doc(alias = "__ZThn188_NK4Ogre14BillboardChain18getWorldTransformsEPNS_7Matrix4E")]
-pub fn stub_0xc5d1b0() -> ! {
-    todo!("0xc5d1b0 non-virtual thunk toOgre::BillboardChain::getWorldTransforms(Ogre::Matrix4 *)const")
+pub fn stub_0xc5d1b0() {
+    // IDA 0xc5d1b0: non-virtual thunk to `Ogre::BillboardChain::getWorldTransforms(int a1, _QWORD *a2) { __int64 *v3; // r0 __int64 v4; // d16 __int64 v5; // d17 __int64 v6; // d18 __int` — this/arg-adjust + tail-call (arg a1 -= 188) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xc5d1f8 — __ZNK4Ogre14BillboardChain9getLightsEv
@@ -675,8 +675,8 @@ pub fn stub_0xc5d1f8() -> ! {
 // type: int __fastcall(Ogre::BillboardChain *this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::getLights(void)const")]
 #[doc(alias = "__ZThn188_NK4Ogre14BillboardChain9getLightsEv")]
-pub fn stub_0xc5d208() -> ! {
-    todo!("0xc5d208 non-virtual thunk toOgre::BillboardChain::getLights(void)const")
+pub fn stub_0xc5d208() {
+    // IDA 0xc5d208: non-virtual thunk to `Ogre::BillboardChain::getLights(Ogre::BillboardChain *this) { return (*(int (__fastcall **)(char *))(*((_DWORD *)this - 47) + 220))((char *)this - 188); }\` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xc5d218 — __ZN4Ogre14BillboardChain16visitRenderablesEPNS_10Renderable7VisitorEb

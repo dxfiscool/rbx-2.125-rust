@@ -605,8 +605,8 @@ pub fn stub_0xd55bbc() -> ! {
 
 // 0xd55c04 — __ZThn4_N4Ogre24FrameTimeControllerValue12frameStartedERKNS_10FrameEventE
 #[doc(alias = "__ZThn4_N4Ogre24FrameTimeControllerValue12frameStartedERKNS_10FrameEventE")]
-pub fn stub_0xd55c04() -> ! {
-    todo!("0xd55c04 __ZThn4_N4Ogre24FrameTimeControllerValue12frameStartedERKNS_10FrameEventE")
+pub fn stub_0xd55c04() {
+    // IDA 0xd55c04: non-virtual thunk to `Ogre::FrameTimeControllerValue::frameStarted(float *a1, int a2) { float32x2_t v2; // d0 float32x2_t v3; // d1 v2.f32[0] = a1[4]; if ( v2.f32[0] =` — this/arg-adjust + tail-call (this += 3) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xd55c4c — __ZN4Ogre24FrameTimeControllerValue10frameEndedERKNS_10FrameEventE
@@ -618,8 +618,8 @@ pub fn stub_0xd55c4c() -> ! {
 
 // 0xd55c50 — __ZThn4_N4Ogre24FrameTimeControllerValue10frameEndedERKNS_10FrameEventE
 #[doc(alias = "__ZThn4_N4Ogre24FrameTimeControllerValue10frameEndedERKNS_10FrameEventE")]
-pub fn stub_0xd55c50() -> ! {
-    todo!("0xd55c50 __ZThn4_N4Ogre24FrameTimeControllerValue10frameEndedERKNS_10FrameEventE")
+pub fn stub_0xd55c50() {
+    // IDA 0xd55c50: non-virtual thunk to `Ogre::FrameTimeControllerValue::frameEnded() { return 1; } "` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xd55c54 — __ZNK4Ogre24FrameTimeControllerValue8getValueEv

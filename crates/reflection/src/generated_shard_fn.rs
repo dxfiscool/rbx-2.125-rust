@@ -19,8 +19,8 @@ pub fn stub_3e3a8() -> ! {
 // 0x3e528 — __ZThn20_N5boost16exception_detail14bad_exception_D0Ev
 // type: void __fastcall(boost::exception_detail::bad_exception_ *__hidden this)
 #[doc(alias = "__ZThn20_N5boost16exception_detail14bad_exception_D0Ev")]
-pub fn stub_3e528() -> ! {
-    todo!("0x3e528 non-virtual thunk toboost::exception_detail::bad_exception_::~bad_exception_()")
+pub fn stub_3e528() {
+    // IDA 0x3e528: __ZThn20 thunk (D0 deleting dtor): `this -= 20`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3e558 — __ZN5boost10shared_ptrIKNS_16exception_detail10clone_baseEEC2INS1_10clone_implINS1_14bad_exception_EEEEEPT_
@@ -83,8 +83,8 @@ pub fn stub_3e900() -> ! {
 // 0x3ea80 — __ZThn20_N5boost16exception_detail10bad_alloc_D0Ev
 // type: void __fastcall(boost::exception_detail::bad_alloc_ *__hidden this)
 #[doc(alias = "__ZThn20_N5boost16exception_detail10bad_alloc_D0Ev")]
-pub fn stub_3ea80() -> ! {
-    todo!("0x3ea80 non-virtual thunk toboost::exception_detail::bad_alloc_::~bad_alloc_()")
+pub fn stub_3ea80() {
+    // IDA 0x3ea80: __ZThn20 thunk (D0 deleting dtor): `this -= 20`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3eab0 — __ZN5boost10shared_ptrIKNS_16exception_detail10clone_baseEEC2INS1_10clone_implINS1_10bad_alloc_EEEEEPT_
@@ -269,29 +269,29 @@ pub fn stub_3f700() -> ! {
 // 0x3f904 — __ZThn480_N10RobloxView9RenderJobD1Ev
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "__ZThn480_N10RobloxView9RenderJobD1Ev")]
-pub fn stub_3f904() -> ! {
-    todo!("0x3f904 non-virtual thunk toRobloxView::RenderJob::~RenderJob()")
+pub fn stub_3f904() {
+    // IDA 0x3f904: __ZThn480 thunk (D1 base dtor): `this -= 480`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3f9c8 — __ZThn480_N10RobloxView9RenderJobD0Ev
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "__ZThn480_N10RobloxView9RenderJobD0Ev")]
-pub fn stub_3f9c8() -> ! {
-    todo!("0x3f9c8 non-virtual thunk toRobloxView::RenderJob::~RenderJob()")
+pub fn stub_3f9c8() {
+    // IDA 0x3f9c8: __ZThn480 thunk (D0 deleting dtor): `this -= 480`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3fa94 — __ZThn480_NK10RobloxView9RenderJob9getMetricERKSs
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "__ZThn480_NK10RobloxView9RenderJob9getMetricERKSs")]
-pub fn stub_3fa94() -> ! {
-    todo!("0x3fa94 non-virtual thunk toRobloxView::RenderJob::getMetric(std::string const&)const")
+pub fn stub_3fa94() {
+    // IDA 0x3fa94: non-virtual thunk to `"'RobloxView::RenderJob::getMetric(std::string const&)const"` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x3faa4 — __ZThn480_NK10RobloxView9RenderJob14getMetricValueERKSs
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "__ZThn480_NK10RobloxView9RenderJob14getMetricValueERKSs")]
-pub fn stub_3faa4() -> ! {
-    todo!("0x3faa4 non-virtual thunk toRobloxView::RenderJob::getMetricValue(std::string const&)const")
+pub fn stub_3faa4() {
+    // IDA 0x3faa4: non-virtual thunk to `"'RobloxView::RenderJob::getMetricValue(std::string const&)const"` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x3faac — __ZN10RobloxView9RenderJob21scheduleRenderPrepareEPS0_PN3RBX8ViewBaseE
@@ -342,14 +342,14 @@ pub fn stub_3fd38() -> ! {
 
 // 0x3fd60 — __ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED1Ev
 #[doc(alias = "__ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED1Ev")]
-pub fn stub_3fd60() -> ! {
-    todo!("0x3fd60 non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
+pub fn stub_3fd60() {
+    // IDA 0x3fd60: __ZThn4 thunk (D1 base dtor): `this -= 4`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3fd88 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED1Ev
 #[doc(alias = "__ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED1Ev")]
-pub fn stub_3fd88() -> ! {
-    todo!("0x3fd88 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
+pub fn stub_3fd88() {
+    // IDA 0x3fd88: __ZThn4 thunk (D1 base dtor): `this -= 4`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3fdb8 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv
@@ -362,8 +362,8 @@ pub fn stub_3fdb8() -> ! {
 
 // 0x3fee0 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev
 #[doc(alias = "__ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev")]
-pub fn stub_3fee0() -> ! {
-    todo!("0x3fee0 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
+pub fn stub_3fee0() {
+    // IDA 0x3fee0: __ZThn4 thunk (D0 deleting dtor): `this -= 4`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3ff18 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv
@@ -387,8 +387,8 @@ pub fn stub_3ff60() -> ! {
 
 // 0x3ff90 — __ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED0Ev
 #[doc(alias = "__ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED0Ev")]
-pub fn stub_3ff90() -> ! {
-    todo!("0x3ff90 non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
+pub fn stub_3ff90() {
+    // IDA 0x3ff90: __ZThn4 thunk (D0 deleting dtor): `this -= 4`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3ffc0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEEC1ERKS5_NS5_9clone_tagE

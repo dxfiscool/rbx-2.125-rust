@@ -172,8 +172,8 @@ pub fn stub_0x2f6858() -> ! {
 // 0x2f68c8 — __ZThn4_N3RBX13ArrowToolBase13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::ArrowToolBase::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX13ArrowToolBase13render3dAdornEPNS_5AdornE")]
-pub fn stub_0x2f68c8() -> ! {
-    todo!("0x2f68c8 non-virtual thunk toRBX::ArrowToolBase::render3dAdorn(RBX::Adorn *)")
+pub fn stub_0x2f68c8() {
+    // IDA 0x2f68c8: non-virtual thunk to `RBX::ArrowToolBase::render3dAdorn(RBX::ArrowToolBase *this, RBX::Adorn *a2) { return RBX::ArrowToolBase::renderHoverOver((RBX::ArrowToolBase *)((char *)this` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x2f68d0 — __ZNK3RBX16AdvArrowToolBase13getCursorNameEv
@@ -305,8 +305,8 @@ pub fn stub_0x2f7818() -> ! {
 // 0x2f78d0 — __ZThn4_N3RBX16BoxSelectCommand8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::BoxSelectCommand::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX16BoxSelectCommand8render2dEPNS_5AdornE")]
-pub fn stub_0x2f78d0() -> ! {
-    todo!("0x2f78d0 non-virtual thunk toRBX::BoxSelectCommand::render2d(RBX::Adorn *)")
+pub fn stub_0x2f78d0() {
+    // IDA 0x2f78d0: non-virtual thunk to `RBX::BoxSelectCommand::render2d(RBX::BoxSelectCommand *this, RBX::Adorn *a2) { return RBX::BoxSelectCommand::render2d((RBX::BoxSelectCommand *)((char *)this` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x2f78d8 — __ZNK3RBX9Selection10isSelectedEPKNS_8InstanceE

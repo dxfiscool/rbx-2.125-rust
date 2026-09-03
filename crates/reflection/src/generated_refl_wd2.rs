@@ -158,8 +158,8 @@ pub fn stub_0x2ec558() -> ! {
 // 0x2ec7e4 — __ZThn4_N3RBX18MoveResizeJoinTool13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::MoveResizeJoinTool::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX18MoveResizeJoinTool13render3dAdornEPNS_5AdornE")]
-pub fn stub_0x2ec7e4() -> ! {
-    todo!("0x2ec7e4 non-virtual thunk toRBX::MoveResizeJoinTool::render3dAdorn(RBX::Adorn *)")
+pub fn stub_0x2ec7e4() {
+    // IDA 0x2ec7e4: non-virtual thunk to `RBX::MoveResizeJoinTool::render3dAdorn( RBX::MoveResizeJoinTool *this, RBX::Adorn *a2) { return RBX::MoveResizeJoinTool::render3dAdorn((RB` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x2ec7ec — __ZN3RBX18MoveResizeJoinTool8render2dEPNS_5AdornE
@@ -172,8 +172,8 @@ pub fn stub_0x2ec7ec() -> ! {
 // 0x2ed9d4 — __ZThn4_N3RBX18MoveResizeJoinTool8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::MoveResizeJoinTool::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX18MoveResizeJoinTool8render2dEPNS_5AdornE")]
-pub fn stub_0x2ed9d4() -> ! {
-    todo!("0x2ed9d4 non-virtual thunk toRBX::MoveResizeJoinTool::render2d(RBX::Adorn *)")
+pub fn stub_0x2ed9d4() {
+    // IDA 0x2ed9d4: non-virtual thunk to `RBX::MoveResizeJoinTool::render2d(RBX::MoveResizeJoinTool *this, RBX::Adorn *a2) { return RBX::MoveResizeJoinTool::render2d((RBX::MoveResizeJoinTool *)((cha` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x2ed9dc — __ZN3RBX18MoveResizeJoinTool12onMouseHoverERKNS_7UIEventE
@@ -424,8 +424,8 @@ pub fn stub_0x2efef0() -> ! {
 // 0x2efef4 — __ZThn4_N3RBX11NewNullTool13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::NewNullTool::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX11NewNullTool13render3dAdornEPNS_5AdornE")]
-pub fn stub_0x2efef4() -> ! {
-    todo!("0x2efef4 non-virtual thunk toRBX::NewNullTool::render3dAdorn(RBX::Adorn *)")
+pub fn stub_0x2efef4() {
+    // IDA 0x2efef4: `RBX::NewNullTool::render3dAdorn` — disasm entry is bare `BX LR` (leaf immediate return); the null tool renders nothing. Faithful impl: no-op.
 }
 
 // 0x2efef8 — __ZN3RBX11shared_fromINS_11NewNullToolEEEN5boost10shared_ptrIT_EEPS4_
@@ -499,8 +499,8 @@ pub fn stub_0x2f0410() -> ! {
 // 0x2f0414 — __ZThn4_NK3RBX11NewNullTool19shouldRender3dAdornEv
 #[doc(alias = "non-virtual thunk toRBX::NewNullTool::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZThn4_NK3RBX11NewNullTool19shouldRender3dAdornEv")]
-pub fn stub_0x2f0414() -> ! {
-    todo!("0x2f0414 non-virtual thunk toRBX::NewNullTool::shouldRender3dAdorn(void)const")
+pub fn stub_0x2f0414() {
+    // IDA 0x2f0414: non-virtual thunk to `RBX::NewNullTool::shouldRender3dAdorn(RBX::NewNullTool *this) { return 1; } "` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x2f0418 — __ZN3RBX4Name13callDoDeclareILZNS_12sNewNullToolEEEEvv
@@ -595,8 +595,8 @@ pub fn stub_0x2f12c0() -> ! {
 // 0x2f13d0 — __ZThn4_N3RBX12PartDragTool13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::PartDragTool::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX12PartDragTool13render3dAdornEPNS_5AdornE")]
-pub fn stub_0x2f13d0() -> ! {
-    todo!("0x2f13d0 non-virtual thunk toRBX::PartDragTool::render3dAdorn(RBX::Adorn *)")
+pub fn stub_0x2f13d0() {
+    // IDA 0x2f13d0: non-virtual thunk to `RBX::PartDragTool::render3dAdorn(RBX::PartDragTool *this, RBX::Adorn *a2) { return RBX::PartDragTool::render3dAdorn((RBX::PartDragTool *)((char *)this - 4),` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x2f13d8 — __ZN3RBX12PartDragToolD0Ev

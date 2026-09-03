@@ -58,8 +58,8 @@ pub fn stub_0x93377c() -> ! {
 // 0x933898 — __ZThn4_N3rbx8callableINS_7signals6signalIFviN5boost10shared_ptrIN3RBX8InstanceEEENS4_IKNS5_10Reflection5TupleEEEEE4slotENS3_8functionISC_EELi3ESC_E4callEiS7_SB_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,3,void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::call(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFviN5boost10shared_ptrIN3RBX8InstanceEEENS4_IKNS5_10Reflection5TupleEEEEE4slotENS3_8functionISC_EELi3ESC_E4callEiS7_SB_")]
-pub fn stub_0x933898() -> ! {
-    todo!("0x933898 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,3,void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::call(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")
+pub fn stub_0x933898() {
+    // IDA 0x933898: non-virtual thunk to `rbx::callable<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x9338a0 — __ZNK5boost9function3IviNS_10shared_ptrIN3RBX8InstanceEEENS1_IKNS2_10Reflection5TupleEEEEclEiS4_S8_

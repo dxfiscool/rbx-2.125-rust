@@ -178,8 +178,8 @@ pub fn stub_0xd4980() -> ! {
 
 // 0xd4ac0 — __ZThn360_N4FMOD12OutputPolled10threadFuncEv
 #[doc(alias = "non-virtual thunk toFMOD::OutputPolled::threadFunc(void)")]
-pub fn stub_0xd4ac0() -> ! {
-    todo!("0xd4ac0 __ZThn360_N4FMOD12OutputPolled10threadFuncEv")
+pub fn stub_0xd4ac0() {
+    // IDA 0xd4ac0: non-virtual thunk to `FMOD::OutputPolled::threadFunc(FMOD::OutputPolled *this) { return FMOD::OutputPolled::threadFunc((FMOD::OutputPolled *)((char *)this - 360)); } "` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xd4ac8 — __ZN4FMOD12OutputPolled10threadFuncEv

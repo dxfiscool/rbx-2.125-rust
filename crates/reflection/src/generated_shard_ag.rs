@@ -451,26 +451,26 @@ pub fn stub_869c44() -> ! {
 
 // 0x869ce4 — __ZThn32_N3RBX10Reflection9DescribedINS_9FloorWireELZNS_10sFloorWireEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_10sFloorWireEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9FloorWireELZNS_10sFloorWireEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_10sFloorWireEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_869ce4() -> ! {
-    todo!("0x869ce4 __ZThn32_N3RBX10Reflection9DescribedINS_9FloorWireELZNS_10sFloorWireEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_10sFloorWireEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_869ce4() {
+    // IDA 0x869ce4: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x869cec — __ZThn32_N3RBX10Reflection9DescribedINS_9FloorWireELZNS_10sFloorWireEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_10sFloorWireEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9FloorWireELZNS_10sFloorWireEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_10sFloorWireEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_869cec() -> ! {
-    todo!("0x869cec __ZThn32_N3RBX10Reflection9DescribedINS_9FloorWireELZNS_10sFloorWireEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_10sFloorWireEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_869cec() {
+    // IDA 0x869cec: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x869d90 — __ZThn36_N3RBX10Reflection9DescribedINS_9FloorWireELZNS_10sFloorWireEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_10sFloorWireEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9FloorWireELZNS_10sFloorWireEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_10sFloorWireEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_869d90() -> ! {
-    todo!("0x869d90 __ZThn36_N3RBX10Reflection9DescribedINS_9FloorWireELZNS_10sFloorWireEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_10sFloorWireEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_869d90() {
+    // IDA 0x869d90: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x869d98 — __ZThn36_N3RBX10Reflection9DescribedINS_9FloorWireELZNS_10sFloorWireEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_10sFloorWireEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9FloorWireELZNS_10sFloorWireEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_10sFloorWireEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_869d98() -> ! {
-    todo!("0x869d98 __ZThn36_N3RBX10Reflection9DescribedINS_9FloorWireELZNS_10sFloorWireEENS_14FactoryProductIS2_NS_9GuiBase3dELZNS_10sFloorWireEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_869d98() {
+    // IDA 0x869d98: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x869e3c — __ZN3RBX10Reflection14PropDescriptorINS_9FloorWireEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -700,8 +700,8 @@ pub fn stub_86a8ec() -> ! {
 // 0x86a9cc — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_9FloorWireENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::FloorWire,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_9FloorWireENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
-pub fn stub_86a9cc() -> ! {
-    todo!("0x86a9cc non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::FloorWire,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_86a9cc() {
+    // IDA 0x86a9cc: non-virtual thunk to `"'RBX::Reflection::RefPropDescriptor<RBX::FloorWire,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const"` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x86a9d4 — __ZNK3RBX10Reflection14PropDescriptorINS_9FloorWireEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv

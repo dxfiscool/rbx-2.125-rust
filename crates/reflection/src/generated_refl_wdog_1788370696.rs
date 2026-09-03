@@ -22,8 +22,9 @@ pub fn stub_0x3907c0() {
 
 // 0x390874 — __ZThn32_NK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0x390874() -> ! {
-    todo!("0x390874 __ZThn32_NK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE12getClassNameEv")
+pub fn stub_0x390874() -> &'static str {
+    // IDA 0x390874: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x390874 family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "Hat"
 }
 
 // 0x390884 — __ZThn36_N3RBX3HatD1Ev
@@ -376,8 +377,8 @@ pub fn stub_0x392904() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12AccoutrementES7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_")]
-pub fn stub_0x392920() -> ! {
-    todo!("0x392920 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x392920() {
+    // IDA 0x392920: non-virtual thunk to `rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::share` — this/arg-adjust + tail-call (this += 20) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x39293c — __ZN5boost3_bi5list2INS0_5valueIPN3RBX12AccoutrementEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
@@ -528,8 +529,9 @@ pub fn stub_0x3945d4() {
 
 // 0x394730 — __ZThn32_NK3RBX17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEE12getClassNameEv")]
-pub fn stub_0x394730() -> ! {
-    todo!("0x394730 __ZThn32_NK3RBX17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEE12getClassNameEv")
+pub fn stub_0x394730() -> &'static str {
+    // IDA 0x394730: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x394730 family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "PVAdornment"
 }
 
 // 0x394758 — __ZThn36_N3RBX11PVAdornmentD1Ev
@@ -700,8 +702,9 @@ pub fn stub_0x3971b4() {
 
 // 0x3972ac — __ZThn32_NK3RBX14FactoryProductINS_9AnimationENS_8InstanceELZNS_10sAnimationEES2_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9AnimationENS_8InstanceELZNS_10sAnimationEES2_E12getClassNameEv")]
-pub fn stub_0x3972ac() -> ! {
-    todo!("0x3972ac __ZThn32_NK3RBX14FactoryProductINS_9AnimationENS_8InstanceELZNS_10sAnimationEES2_E12getClassNameEv")
+pub fn stub_0x3972ac() -> &'static str {
+    // IDA 0x3972ac: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x3972ac family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "Animation"
 }
 
 // 0x3972bc — __ZThn36_N3RBX9AnimationD1Ev

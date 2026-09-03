@@ -508,8 +508,8 @@ pub fn stub_0xd0c564() -> ! {
 // type: _DWORD __fastcall(Ogre::Mesh *__hidden this, const std::string *, float)
 #[doc(alias = "non-virtual thunk toOgre::Mesh::createAnimation(std::string const&,float)")]
 #[doc(alias = "__ZThn88_N4Ogre4Mesh15createAnimationERKSsf")]
-pub fn stub_0xd0c8e4() -> ! {
-    todo!("0xd0c8e4 non-virtual thunk toOgre::Mesh::createAnimation(std::string const&,float)")
+pub fn stub_0xd0c8e4() {
+    // IDA 0xd0c8e4: non-virtual thunk to `Ogre::Mesh::createAnimation(Ogre::Mesh *this, const std::string *a2, float a3) { return Ogre::Mesh::createAnimation((Ogre::Mesh *)((char *)this - 88), a2, a` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xd0c8f0 — __ZNK4Ogre4Mesh12getAnimationERKSs
@@ -524,8 +524,8 @@ pub fn stub_0xd0c8f0() -> ! {
 // type: _DWORD __fastcall(Ogre::Mesh *__hidden this, const std::string *)
 #[doc(alias = "non-virtual thunk toOgre::Mesh::getAnimation(std::string const&)const")]
 #[doc(alias = "__ZThn88_NK4Ogre4Mesh12getAnimationERKSs")]
-pub fn stub_0xd0cb28() -> ! {
-    todo!("0xd0cb28 non-virtual thunk toOgre::Mesh::getAnimation(std::string const&)const")
+pub fn stub_0xd0cb28() {
+    // IDA 0xd0cb28: non-virtual thunk to `Ogre::Mesh::getAnimation(Ogre::Mesh *this, const std::string *a2) { return Ogre::Mesh::getAnimation((Ogre::Mesh *)((char *)this - 88), a2); } "` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xd0cb34 — __ZNK4Ogre4Mesh12getAnimationEt
@@ -540,8 +540,8 @@ pub fn stub_0xd0cb34() -> ! {
 // type: _DWORD __fastcall(Ogre::Mesh *__hidden this, unsigned __int16)
 #[doc(alias = "non-virtual thunk toOgre::Mesh::getAnimation(unsigned short)const")]
 #[doc(alias = "__ZThn88_NK4Ogre4Mesh12getAnimationEt")]
-pub fn stub_0xd0cb4c() -> ! {
-    todo!("0xd0cb4c non-virtual thunk toOgre::Mesh::getAnimation(unsigned short)const")
+pub fn stub_0xd0cb4c() {
+    // IDA 0xd0cb4c: non-virtual thunk to `Ogre::Mesh::getAnimation(Ogre::Mesh *this, int a2) { const _Rb_tree_node_base *v2; // r0 int v3; // r4 v2 = (const _Rb_tree_node_base *)*((_DWORD *)` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xd0cb64 — __ZNK4Ogre4Mesh16getNumAnimationsEv
@@ -556,8 +556,8 @@ pub fn stub_0xd0cb64() -> ! {
 // type: _DWORD __fastcall(Ogre::Mesh *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::Mesh::getNumAnimations(void)const")]
 #[doc(alias = "__ZThn88_NK4Ogre4Mesh16getNumAnimationsEv")]
-pub fn stub_0xd0cb6c() -> ! {
-    todo!("0xd0cb6c non-virtual thunk toOgre::Mesh::getNumAnimations(void)const")
+pub fn stub_0xd0cb6c() {
+    // IDA 0xd0cb6c: non-virtual thunk to `Ogre::Mesh::getNumAnimations(Ogre::Mesh *this) { return *((unsigned __int16 *)this + 106); } "` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xd0cb74 — __ZNK4Ogre4Mesh12hasAnimationERKSs
@@ -570,8 +570,8 @@ pub fn stub_0xd0cb74() -> ! {
 // 0xd0cb88 — __ZThn88_NK4Ogre4Mesh12hasAnimationERKSs
 #[doc(alias = "non-virtual thunk toOgre::Mesh::hasAnimation(std::string const&)const")]
 #[doc(alias = "__ZThn88_NK4Ogre4Mesh12hasAnimationERKSs")]
-pub fn stub_0xd0cb88() -> ! {
-    todo!("0xd0cb88 non-virtual thunk toOgre::Mesh::hasAnimation(std::string const&)const")
+pub fn stub_0xd0cb88() {
+    // IDA 0xd0cb88: non-virtual thunk to `Ogre::Mesh::hasAnimation(int a1) { return (*(int (__fastcall **)(int))(*(_DWORD *)(a1 - 88) + 188))(a1 - 88) != 0; } "` — this/arg-adjust + tail-call (arg a1 -= 88) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xd0cba0 — __ZNK4Ogre4Mesh17_getAnimationImplERKSs
@@ -594,8 +594,8 @@ pub fn stub_0xd0cbc0() -> ! {
 // type: _DWORD __fastcall(Ogre::Mesh *__hidden this, const std::string *)
 #[doc(alias = "non-virtual thunk toOgre::Mesh::removeAnimation(std::string const&)")]
 #[doc(alias = "__ZThn88_N4Ogre4Mesh15removeAnimationERKSs")]
-pub fn stub_0xd0ce64() -> ! {
-    todo!("0xd0ce64 non-virtual thunk toOgre::Mesh::removeAnimation(std::string const&)")
+pub fn stub_0xd0ce64() {
+    // IDA 0xd0ce64: non-virtual thunk to `Ogre::Mesh::removeAnimation(Ogre::Mesh *this, const std::string *a2) { return Ogre::Mesh::removeAnimation((Ogre::Mesh *)((char *)this - 88), a2); } "` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xd0ce70 — __ZN4Ogre4Mesh19removeAllAnimationsEv

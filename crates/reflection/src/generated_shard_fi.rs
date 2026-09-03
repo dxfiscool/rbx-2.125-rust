@@ -172,8 +172,8 @@ pub fn stub_0x85d5b4() -> ! {
 // 0x85d694 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_19CustomEventReceiverENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::CustomEventReceiver,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_19CustomEventReceiverENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
-pub fn stub_0x85d694() -> ! {
-    todo!("0x85d694")
+pub fn stub_0x85d694() {
+    // IDA 0x85d694: non-virtual thunk to `RBX::Reflection::RefPropDescriptor<RBX::CustomEventReceiver,RBX::Instance>::assignIDREF( int a1, int a2, int a3, int a4, ` — this/arg-adjust + tail-call (arg a1 -= 40) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x85d69c — __ZNK3RBX10Reflection14PropDescriptorINS_19CustomEventReceiverEPNS_8InstanceEE10GetSetImplIMS2_KFKS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -473,8 +473,8 @@ pub fn stub_0x860708() -> ! {
 // 0x8607e8 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_12TextureTrailENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::TextureTrail,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_12TextureTrailENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
-pub fn stub_0x8607e8() -> ! {
-    todo!("0x8607e8")
+pub fn stub_0x8607e8() {
+    // IDA 0x8607e8: non-virtual thunk to `RBX::Reflection::RefPropDescriptor<RBX::TextureTrail,RBX::PartInstance>::assignIDREF( int a1, int a2, int a3, int a4, ` — this/arg-adjust + tail-call (arg a1 -= 40) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x8607f0 — __ZNK3RBX10Reflection14PropDescriptorINS_12TextureTrailEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv

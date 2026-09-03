@@ -261,8 +261,9 @@ pub fn stub_0x3bc6d8() -> ! {
 
 // 0x3bc6dc — __ZThn32_NK3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEE12getClassNameEv")]
-pub fn stub_0x3bc6dc() -> ! {
-    todo!("0x3bc6dc")
+pub fn stub_0x3bc6dc() -> &'static str {
+    // IDA 0x3bc6dc: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x3bc6dc family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "FormFactorPart"
 }
 
 // 0x3bca1c — __ZN3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEED1Ev
@@ -303,8 +304,9 @@ pub fn stub_0x3bcba4() -> ! {
 // 0x3bcbb4 — __ZThn32_NK3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0x3bcbb4() -> ! {
-    todo!("0x3bcbb4")
+pub fn stub_0x3bcbb4() -> &'static str {
+    // IDA 0x3bcbb4: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x3bcbb4 family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "BasicPartInstance"
 }
 
 // 0x3bcedc — __ZN3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEED1Ev
@@ -521,8 +523,9 @@ pub fn stub_0x3bf284() {
 
 // 0x3bf328 — __ZThn32_NK3RBX17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEE12getClassNameEv")]
-pub fn stub_0x3bf328() -> ! {
-    todo!("0x3bf328")
+pub fn stub_0x3bf328() -> &'static str {
+    // IDA 0x3bf328: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x3bf328 family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "BevelMesh"
 }
 
 // 0x3bf350 — __ZThn36_N3RBX9BevelMeshD1Ev
@@ -717,8 +720,8 @@ pub fn stub_0x3c0474() -> ! {
 // type: int __fastcall(int result)
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::onHeartbeat(RBX::Heartbeat const&)")]
 #[doc(alias = "__ZThn168_N3RBX12BillboardGui11onHeartbeatERKNS_9HeartbeatE")]
-pub fn stub_0x3c048c() -> ! {
-    todo!("0x3c048c")
+pub fn stub_0x3c048c() {
+    // IDA 0x3c048c: non-virtual thunk to `RBX::BillboardGui::onHeartbeat(int result) { if ( *(_BYTE *)(result + 44) ) return (*(int (__fastcall **)(int, int, _DWORD))(*(_DWORD *)(result - 168) ` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x3c04a8 — __ZNK3RBX12BillboardGui25shouldRender3dSortedAdornEv
@@ -741,8 +744,8 @@ pub fn stub_0x3c057c() -> ! {
 // type: bool __fastcall(RBX::BillboardGui *this)
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::shouldRender3dSortedAdorn(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX12BillboardGui25shouldRender3dSortedAdornEv")]
-pub fn stub_0x3c066c() -> ! {
-    todo!("0x3c066c")
+pub fn stub_0x3c066c() {
+    // IDA 0x3c066c: non-virtual thunk to `RBX::BillboardGui::shouldRender3dSortedAdorn(RBX::BillboardGui *this) { return RBX::BillboardGui::shouldRender3dSortedAdorn((RBX::BillboardGui *)((char *)th` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x3c0678 — __ZNK3RBX12BillboardGui13getModelAdornEv
@@ -773,8 +776,8 @@ pub fn stub_0x3c0850() -> ! {
 // type: void __fastcall(RBX::BillboardGui *this, int)
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::render3dSortedPosition(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX12BillboardGui22render3dSortedPositionEv")]
-pub fn stub_0x3c0a28() -> ! {
-    todo!("0x3c0a28")
+pub fn stub_0x3c0a28() {
+    // IDA 0x3c0a28: non-virtual thunk to `RBX::BillboardGui::render3dSortedPosition(RBX::BillboardGui *this, int a2) { RBX::BillboardGui::render3dSortedPosition(this, a2 - 96); } "` — this/arg-adjust + tail-call (arg a2 -= 96) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x3c0a34 — __ZN3RBX12BillboardGui19render3dSortedAdornEPNS_5AdornE
@@ -789,8 +792,8 @@ pub fn stub_0x3c0a34() -> ! {
 // type: void __fastcall(RBX::BillboardGui *this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::render3dSortedAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn96_N3RBX12BillboardGui19render3dSortedAdornEPNS_5AdornE")]
-pub fn stub_0x3c0e90() -> ! {
-    todo!("0x3c0e90")
+pub fn stub_0x3c0e90() {
+    // IDA 0x3c0e90: non-virtual thunk to `RBX::BillboardGui::render3dSortedAdorn(RBX::BillboardGui *this, RBX::Adorn *a2) { RBX::BillboardGui::render3dSortedAdorn((RBX::BillboardGui *)((char *)this ` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x3c0e98 — __ZN3RBX12BillboardGui7processERKNS_8GuiEventE
@@ -805,8 +808,8 @@ pub fn stub_0x3c0e98() -> ! {
 // type: unsigned int __fastcall(_QWORD *, int, _DWORD *, int)
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::process(RBX::GuiEvent const&)")]
 #[doc(alias = "__ZThn92_N3RBX12BillboardGui7processERKNS_8GuiEventE")]
-pub fn stub_0x3c0f34() -> ! {
-    todo!("0x3c0f34")
+pub fn stub_0x3c0f34() {
+    // IDA 0x3c0f34: non-virtual thunk to `RBX::BillboardGui::process(_QWORD *a1, int a2, _DWORD *a3, int a4) { return RBX::BillboardGui::process(a1, a2 - 92, a3, a4); } "` — this/arg-adjust + tail-call (arg a2 -= 92) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x3c0f40 — __ZN3RBX12BillboardGui17onAncestorChangedERKNS_15AncestorChangedE

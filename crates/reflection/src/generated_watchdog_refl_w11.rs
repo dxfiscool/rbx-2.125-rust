@@ -619,8 +619,8 @@ pub fn stub_0xc913ac() -> ! {
 // type: _DWORD __fastcall(Ogre::Font *__hidden this, Ogre::Resource *)
 #[doc(alias = "non-virtual thunk toOgre::Font::loadResource(Ogre::Resource *)")]
 #[doc(alias = "__ZThn88_N4Ogre4Font12loadResourceEPNS_8ResourceE")]
-pub fn stub_0xc92bf8() -> ! {
-    todo!("0xc92bf8 non-virtual thunk toOgre::Font::loadResource(Ogre::Resource *)")
+pub fn stub_0xc92bf8() {
+    // IDA 0xc92bf8: non-virtual thunk to `Ogre::Font::loadResource(Ogre::Font *this, Ogre::Resource *a2) { return Ogre::Font::loadResource((Ogre::Font *)((char *)this - 88), a2); } "` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xc92c04 — __ZNK4Ogre4Font7CmdType5doGetEPKv

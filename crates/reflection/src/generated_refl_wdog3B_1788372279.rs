@@ -190,8 +190,8 @@ pub fn stub_0x3a4870() -> ! {
 // 0x3a4e98 — __ZThn92_N3RBX8Animator9onSteppedERKNS_7SteppedE
 #[doc(alias = "non-virtual thunk toRBX::Animator::onStepped(RBX::Stepped const&)")]
 #[doc(alias = "__ZThn92_N3RBX8Animator9onSteppedERKNS_7SteppedE")]
-pub fn stub_0x3a4e98() -> ! {
-    todo!("0x3a4e98 non-virtual thunk toRBX::Animator::onStepped(RBX::Stepped const&)")
+pub fn stub_0x3a4e98() {
+    // IDA 0x3a4e98: non-virtual thunk to `RBX::Animator::onStepped(int a1, _DWORD *a2) { RBX::Animator::onStepped(a1 - 92, a2); } "` — this/arg-adjust + tail-call (arg a1 -= 92) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x3a4ea0 — __ZNK3RBX8Animator11askAddChildEPKNS_8InstanceE
@@ -301,8 +301,9 @@ pub fn stub_0x3a5884() -> ! {
 // 0x3a58ac — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEE12getClassNameEv")]
-pub fn stub_0x3a58ac() -> ! {
-    todo!("0x3a58ac __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_9sAnimatorEEE12getClassNameEv")
+pub fn stub_0x3a58ac() -> &'static str {
+    // IDA 0x3a58ac: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x3a58ac family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "Animator"
 }
 
 // 0x3a58d4 — __ZN3RBX4Name13callDoDeclareILZNS_9sAnimatorEEEEvv
@@ -637,8 +638,8 @@ pub fn stub_0x3a7b94() -> ! {
 // 0x3a7ee4 — __ZThn92_N3RBX10ArcHandles7processERKNS_8GuiEventE
 #[doc(alias = "non-virtual thunk toRBX::ArcHandles::process(RBX::GuiEvent const&)")]
 #[doc(alias = "__ZThn92_N3RBX10ArcHandles7processERKNS_8GuiEventE")]
-pub fn stub_0x3a7ee4() -> ! {
-    todo!("0x3a7ee4 non-virtual thunk toRBX::ArcHandles::process(RBX::GuiEvent const&)")
+pub fn stub_0x3a7ee4() {
+    // IDA 0x3a7ee4: non-virtual thunk to `RBX::ArcHandles::process(int a1, int a2) { return RBX::ArcHandles::process(a1, a2 - 92); } "` — this/arg-adjust + tail-call (arg a2 -= 92) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x3a7ef0 — __ZNK3RBX10ArcHandles13getHandleTypeEv
@@ -736,8 +737,9 @@ pub fn stub_0x3a867c() {
 // 0x3a8720 — __ZThn32_NK3RBX14FactoryProductINS_10ArcHandlesENS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_10ArcHandlesENS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_10ArcHandlesENS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0x3a8720() -> ! {
-    todo!("0x3a8720 __ZThn32_NK3RBX14FactoryProductINS_10ArcHandlesENS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEE12getClassNameEv")
+pub fn stub_0x3a8720() -> &'static str {
+    // IDA 0x3a8720: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0x3a8720 family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "ArcHandles"
 }
 
 // 0x3a8730 — __ZThn36_N3RBX10ArcHandlesD1Ev
@@ -757,8 +759,8 @@ pub fn stub_0x3a8738() {
 // 0x3a87dc — __ZThn96_NK3RBX11HandlesBase14shouldRender2dEv
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::shouldRender2d(void)const")]
 #[doc(alias = "__ZThn96_NK3RBX11HandlesBase14shouldRender2dEv")]
-pub fn stub_0x3a87dc() -> ! {
-    todo!("0x3a87dc non-virtual thunk toRBX::HandlesBase::shouldRender2d(void)const")
+pub fn stub_0x3a87dc() {
+    // IDA 0x3a87dc: non-virtual thunk to `RBX::HandlesBase::shouldRender2d(RBX::HandlesBase *this) { return (*(int (__fastcall **)(char *))(*((_DWORD *)this - 24) + 144))((char *)this - 96); } "` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x3a87ec — __ZN3RBX14FactoryProductINS_10ArcHandlesENS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEE7CreatorD1Ev

@@ -156,8 +156,8 @@ pub fn stub_2dad94() -> ! {
 // 0x2daee8 — __ZThn4_N3RBX12AxisToolBase8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::AxisToolBase::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX12AxisToolBase8render2dEPNS_5AdornE")]
-pub fn stub_2daee8() -> ! {
-    todo!("0x2daee8 non-virtual thunk toRBX::AxisToolBase::render2d(RBX::Adorn *)")
+pub fn stub_2daee8() {
+    // IDA 0x2daee8: non-virtual thunk to `"'RBX::AxisToolBase::render2d(RBX::Adorn *)"` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x2daef0 — __ZN3RBX12AxisToolBase13render3dAdornEPNS_5AdornE
@@ -170,8 +170,8 @@ pub fn stub_2daef0() -> ! {
 // 0x2db050 — __ZThn4_N3RBX12AxisToolBase13render3dAdornEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::AxisToolBase::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX12AxisToolBase13render3dAdornEPNS_5AdornE")]
-pub fn stub_2db050() -> ! {
-    todo!("0x2db050 non-virtual thunk toRBX::AxisToolBase::render3dAdorn(RBX::Adorn *)")
+pub fn stub_2db050() {
+    // IDA 0x2db050: non-virtual thunk to `"'RBX::AxisToolBase::render3dAdorn(RBX::Adorn *)"` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x2db058 — __ZN3RBX11shared_fromINS_12AxisToolBaseEEEN5boost10shared_ptrIT_EEPS4_
@@ -250,8 +250,8 @@ pub fn stub_2db950() -> ! {
 // 0x2db954 — __ZThn36_N3RBX9CloneToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::CloneTool::~CloneTool()")]
 #[doc(alias = "__ZThn36_N3RBX9CloneToolD0Ev")]
-pub fn stub_2db954() -> ! {
-    todo!("0x2db954 non-virtual thunk toRBX::CloneTool::~CloneTool()")
+pub fn stub_2db954() {
+    // IDA 0x2db954: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2db95c — __ZN3RBX9CloneToolD2Ev
@@ -264,8 +264,8 @@ pub fn stub_2db95c() -> ! {
 // 0x2dba78 — __ZThn36_N3RBX9CloneToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::CloneTool::~CloneTool()")]
 #[doc(alias = "__ZThn36_N3RBX9CloneToolD1Ev")]
-pub fn stub_2dba78() -> ! {
-    todo!("0x2dba78 non-virtual thunk toRBX::CloneTool::~CloneTool()")
+pub fn stub_2dba78() {
+    // IDA 0x2dba78: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2dba80 — __ZN3RBX9CloneTool11onMouseIdleERKNS_7UIEventE

@@ -41,8 +41,8 @@ pub fn stub_2665e8() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev")]
-pub fn stub_2665f8() -> ! {
-    todo!("0x2665f8 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
+pub fn stub_2665f8() {
+    // IDA 0x2665f8: __ZThn20 thunk (D1 base dtor): `this -= 20`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x266600 — __ZN12XmlAttributeC2IPKN3RBX4NameEEERS3_T_
@@ -204,35 +204,36 @@ pub fn stub_26a104() -> ! {
 // 0x26a12c — __ZThn32_N3RBX10CoreScriptD1Ev
 #[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript()")]
 #[doc(alias = "__ZThn32_N3RBX10CoreScriptD1Ev")]
-pub fn stub_26a12c() -> ! {
-    todo!("0x26a12c non-virtual thunk toRBX::CoreScript::~CoreScript()")
+pub fn stub_26a12c() {
+    // IDA 0x26a12c: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x26a134 — __ZThn32_N3RBX10CoreScriptD0Ev
 #[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript()")]
 #[doc(alias = "__ZThn32_N3RBX10CoreScriptD0Ev")]
-pub fn stub_26a134() -> ! {
-    todo!("0x26a134 non-virtual thunk toRBX::CoreScript::~CoreScript()")
+pub fn stub_26a134() {
+    // IDA 0x26a134: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x26a1d8 — __ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")]
-pub fn stub_26a1d8() -> ! {
-    todo!("0x26a1d8 __ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")
+pub fn stub_26a1d8() -> &'static str {
+    // IDA 0x26a1d8: __ZThn getClassName -- `return Name::declare(sX)` single-branch shim (disassembled 0x3ac1ec: `B.W ...declare...$shim`) -- the declared static name IS the class name. Rust: no vtable/Creator needed.
+    "CoreScript"
 }
 
 // 0x26a200 — __ZThn36_N3RBX10CoreScriptD1Ev
 #[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript()")]
 #[doc(alias = "__ZThn36_N3RBX10CoreScriptD1Ev")]
-pub fn stub_26a200() -> ! {
-    todo!("0x26a200 non-virtual thunk toRBX::CoreScript::~CoreScript()")
+pub fn stub_26a200() {
+    // IDA 0x26a200: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x26a208 — __ZThn36_N3RBX10CoreScriptD0Ev
 #[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript()")]
 #[doc(alias = "__ZThn36_N3RBX10CoreScriptD0Ev")]
-pub fn stub_26a208() -> ! {
-    todo!("0x26a208 non-virtual thunk toRBX::CoreScript::~CoreScript()")
+pub fn stub_26a208() {
+    // IDA 0x26a208: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x26a2ac — __ZN3RBX13StarterScriptD1Ev
@@ -258,35 +259,36 @@ pub fn stub_26a350() -> ! {
 // 0x26a378 — __ZThn32_N3RBX13StarterScriptD1Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript()")]
 #[doc(alias = "__ZThn32_N3RBX13StarterScriptD1Ev")]
-pub fn stub_26a378() -> ! {
-    todo!("0x26a378 non-virtual thunk toRBX::StarterScript::~StarterScript()")
+pub fn stub_26a378() {
+    // IDA 0x26a378: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x26a380 — __ZThn32_N3RBX13StarterScriptD0Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript()")]
 #[doc(alias = "__ZThn32_N3RBX13StarterScriptD0Ev")]
-pub fn stub_26a380() -> ! {
-    todo!("0x26a380 non-virtual thunk toRBX::StarterScript::~StarterScript()")
+pub fn stub_26a380() {
+    // IDA 0x26a380: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x26a424 — __ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")]
-pub fn stub_26a424() -> ! {
-    todo!("0x26a424 __ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")
+pub fn stub_26a424() -> &'static str {
+    // IDA 0x26a424: __ZThn getClassName -- `return Name::declare(sX)` single-branch shim (disassembled 0x3ac1ec: `B.W ...declare...$shim`) -- the declared static name IS the class name. Rust: no vtable/Creator needed.
+    "StarterScript"
 }
 
 // 0x26a44c — __ZThn36_N3RBX13StarterScriptD1Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript()")]
 #[doc(alias = "__ZThn36_N3RBX13StarterScriptD1Ev")]
-pub fn stub_26a44c() -> ! {
-    todo!("0x26a44c non-virtual thunk toRBX::StarterScript::~StarterScript()")
+pub fn stub_26a44c() {
+    // IDA 0x26a44c: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x26a454 — __ZThn36_N3RBX13StarterScriptD0Ev
 #[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript()")]
 #[doc(alias = "__ZThn36_N3RBX13StarterScriptD0Ev")]
-pub fn stub_26a454() -> ! {
-    todo!("0x26a454 non-virtual thunk toRBX::StarterScript::~StarterScript()")
+pub fn stub_26a454() {
+    // IDA 0x26a454: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x26a4f8 — __ZN3RBX4Name13callDoDeclareILZNS_14sStarterScriptEEEEvv
@@ -327,26 +329,26 @@ pub fn stub_26ada4() -> ! {
 
 // 0x26ae44 — __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev
 #[doc(alias = "__ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
-pub fn stub_26ae44() -> ! {
-    todo!("0x26ae44 __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")
+pub fn stub_26ae44() {
+    // IDA 0x26ae44: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x26ae4c — __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev
 #[doc(alias = "__ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
-pub fn stub_26ae4c() -> ! {
-    todo!("0x26ae4c __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")
+pub fn stub_26ae4c() {
+    // IDA 0x26ae4c: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x26aef0 — __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev
 #[doc(alias = "__ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
-pub fn stub_26aef0() -> ! {
-    todo!("0x26aef0 __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")
+pub fn stub_26aef0() {
+    // IDA 0x26aef0: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x26aef8 — __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev
 #[doc(alias = "__ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
-pub fn stub_26aef8() -> ! {
-    todo!("0x26aef8 __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")
+pub fn stub_26aef8() {
+    // IDA 0x26aef8: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x26af9c — __ZN5boost11multi_index6detail12hashed_indexINS0_8identityINS_10flyweights6detail16refcounted_valueINS5_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES9_EEEENS_4hashIS9_EESt8equal_toIS9_ENS1_9nth_layerILi1ESC_NS4_20hashed_factory_classISC_S9_N4mpl_2naESL_SL_E10index_listESaISC_EEENS_3mpl7vector0ISL_EENS1_17hashed_unique_tagEE10link_pointERKSC_RPNS1_22hashed_index_node_implISaIcEEEST_

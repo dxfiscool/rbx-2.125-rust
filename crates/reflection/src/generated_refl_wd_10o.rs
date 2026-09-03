@@ -559,35 +559,36 @@ pub fn stub_2c75a8() -> ! {
 // 0x2c767c — __ZThn32_N3RBX12LuaStatsItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX12LuaStatsItemD1Ev")]
-pub fn stub_2c767c() -> ! {
-    todo!("0x2c767c non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")
+pub fn stub_2c767c() {
+    // IDA 0x2c767c: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c76bc — __ZThn32_N3RBX12LuaStatsItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX12LuaStatsItemD0Ev")]
-pub fn stub_2c76bc() -> ! {
-    todo!("0x2c76bc non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")
+pub fn stub_2c76bc() {
+    // IDA 0x2c76bc: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2c7790 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_5Stats10sStatsItemEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_5Stats10sStatsItemEEE12getClassNameEv")]
-pub fn stub_2c7790() -> ! {
-    todo!("0x2c7790 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_5Stats10sStatsItemEEE12getClassNameEv")
+pub fn stub_2c7790() -> &'static str {
+    // IDA 0x2c7790: __ZThn getClassName -- `return Name::declare(sX)` single-branch shim (disassembled 0x3ac1ec: `B.W ...declare...$shim`) -- the declared static name IS the class name. Rust: no vtable/Creator needed.
+    "StatsItem"
 }
 
 // 0x2c7794 — __ZThn36_N3RBX12LuaStatsItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX12LuaStatsItemD1Ev")]
-pub fn stub_2c7794() -> ! {
-    todo!("0x2c7794 non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")
+pub fn stub_2c7794() {
+    // IDA 0x2c7794: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c77d4 — __ZThn36_N3RBX12LuaStatsItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX12LuaStatsItemD0Ev")]
-pub fn stub_2c77d4() -> ! {
-    todo!("0x2c77d4 non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")
+pub fn stub_2c77d4() {
+    // IDA 0x2c77d4: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2c78a8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tImNS_4_mfi4cmf0ImN3RBX13ScriptContextEEENS3_5list1INS3_5valueIPS8_EEEEEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE
@@ -617,8 +618,8 @@ pub fn stub_2c790c() -> ! {
 // 0x2c7928 — __ZThn32_N3RBX5Stats4ItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::Item::~Item()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats4ItemD1Ev")]
-pub fn stub_2c7928() -> ! {
-    todo!("0x2c7928 non-virtual thunk toRBX::Stats::Item::~Item()")
+pub fn stub_2c7928() {
+    // IDA 0x2c7928: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c7a20 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats14TypedStatsItemIiEENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
@@ -662,15 +663,15 @@ pub fn stub_2c7c90() -> ! {
 // 0x2c7df0 — __ZThn36_N3RBX5Stats14TypedStatsItemIbED1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats14TypedStatsItemIbED1Ev")]
-pub fn stub_2c7df0() -> ! {
-    todo!("0x2c7df0 non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")
+pub fn stub_2c7df0() {
+    // IDA 0x2c7df0: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2c7f38 — __ZThn36_N3RBX5Stats14TypedStatsItemIbED0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats14TypedStatsItemIbED0Ev")]
-pub fn stub_2c7f38() -> ! {
-    todo!("0x2c7f38 non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")
+pub fn stub_2c7f38() {
+    // IDA 0x2c7f38: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2c8094 — __ZN5boost10shared_ptrIN3RBX5Stats14TypedStatsItemIbEEEC2IS4_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_

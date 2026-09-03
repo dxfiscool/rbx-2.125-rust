@@ -972,8 +972,8 @@ pub fn stub_0x613d80() -> ! {
 
 // 0x613da0 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf2IvNS3_9ScreenGuiES7_PNS3_9GuiButtonEEENSC_5list3INSC_5valueIPSG_EENSB_3argILi1EEENSL_ISI_EEEEEELi1ES8_E4callES7_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScreenGui,RBX::Reflection::PropertyDescriptor const*,RBX::GuiButton *>,boost::_bi::list3<boost::_bi::value<RBX::ScreenGui*>,boost::arg<1>,boost::_bi::value<RBX::GuiButton *>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x613da0() -> ! {
-    todo!("0x613da0 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScreenGui,RBX::Reflection::PropertyDescriptor const*,RBX::GuiButton *>,boost::_bi::list3<boost::_bi::value<RBX::ScreenGui*>,boost::arg<1>,boost::_bi::value<RBX::GuiButton *>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x613da0() {
+    // IDA 0x613da0: non-virtual thunk to `rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScreenGui,RBX::` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x613dc0 — __ZN5boost3_bi5list3INS0_5valueIPN3RBX9ScreenGuiEEENS_3argILi1EEENS2_IPNS3_9GuiButtonEEEEclINS_4_mfi3mf2IvS4_PKNS3_10Reflection18PropertyDescriptorESA_EENS0_5list1IRSJ_EEEEvNS0_4typeIvEERT_RT0_i
@@ -1386,8 +1386,8 @@ pub fn stub_0x623544() -> ! {
 
 // 0x623624 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SelectionPartLassoENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x623624() -> ! {
-    todo!("0x623624 non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x623624() {
+    // IDA 0x623624: non-virtual thunk to `RBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::assignIDREF( int a1, int a2, int a3, int a4,\` — this/arg-adjust + tail-call (arg a1 -= 40) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x62362c — __ZNK3RBX10Reflection14PropDescriptorINS_18SelectionPartLassoEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -1500,8 +1500,8 @@ pub fn stub_0x623fd8() -> ! {
 
 // 0x6240b8 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x6240b8() -> ! {
-    todo!("0x6240b8 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x6240b8() {
+    // IDA 0x6240b8: non-virtual thunk to `RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::assignIDREF( int a1, int a2, int a3, int a4, ` — this/arg-adjust + tail-call (arg a1 -= 40) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x6240c0 — __ZNK3RBX10Reflection14PropDescriptorINS_14SelectionLassoEPNS_8HumanoidEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -1806,8 +1806,8 @@ pub fn stub_0x62fd78() -> ! {
 
 // 0x62fe58 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x62fe58() -> ! {
-    todo!("0x62fe58 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x62fe58() {
+    // IDA 0x62fe58: non-virtual thunk to `RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF( int a1, int a2, int a3, int a4, ` — this/arg-adjust + tail-call (arg a1 -= 40) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x62fe60 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_8HumanoidEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
@@ -1944,8 +1944,8 @@ pub fn stub_0x63061c() -> ! {
 
 // 0x6306fc — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x6306fc() -> ! {
-    todo!("0x6306fc non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x6306fc() {
+    // IDA 0x6306fc: non-virtual thunk to `RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF( int a1) { return RBX::Reflection::RefPropDescri` — this/arg-adjust + tail-call (arg a1 -= 40) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x630874 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_20SkateboardControllerEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
@@ -3759,8 +3759,8 @@ pub fn stub_0xa4c4e0() -> ! {
 
 // 0xa50340 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_7Network7PlayersENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0xa50340() -> ! {
-    todo!("0xa50340 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0xa50340() {
+    // IDA 0xa50340: non-virtual thunk to `RBX::Reflection::RefPropDescriptor<RBX::Network::Players,RBX::Instance>::assignIDREF( int a1, int a2, _DWORD *a3) { RBX::Reflecti` — this/arg-adjust + tail-call (arg a1 -= 40) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xa50350 — __ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIN3RBX10Reflection13DescribedBaseEEEE14construct_funcEPKcPc
@@ -3831,8 +3831,8 @@ pub fn stub_0xaa4cb0() -> ! {
 
 // 0xaa4cc0 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvRNSB_8weak_ptrINS3_7Network6PlayerEEEPKNS3_15ServiceProviderEENSC_5list2INSC_5valueISH_EENSP_ISL_EEEEEELi1ES8_E4callES7_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(Weak<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<Weak<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0xaa4cc0() -> ! {
-    todo!("0xaa4cc0 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0xaa4cc0() {
+    // IDA 0xaa4cc0: non-virtual thunk to `rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Pla` — this/arg-adjust + tail-call (this += 12) (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xaa4cd0 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvRNSB_8weak_ptrINS3_7Network6PlayerEEEPKNS3_15ServiceProviderEENSC_5list2INSC_5valueISH_EENSP_ISL_EEEEEELi1ES8_ED2Ev

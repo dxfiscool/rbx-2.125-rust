@@ -57,8 +57,8 @@ pub fn stub_70a830() -> ! {
 // 0x70a910 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_8InstanceES2_E11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Instance,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_8InstanceES2_E11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
-pub fn stub_70a910() -> ! {
-    todo!("0x70a910 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Instance,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_70a910() {
+    // IDA 0x70a910: non-virtual thunk to `"'RBX::Reflection::RefPropDescriptor<RBX::Instance,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const"` (IDA demangle) -- this/arg-adjust + tail-call. Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0x70a9e0 — __ZNK3RBX10Reflection7Variant3getIN5boost10shared_ptrINS0_13DescribedBaseEEEEET_v

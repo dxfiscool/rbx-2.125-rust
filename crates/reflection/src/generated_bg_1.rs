@@ -655,8 +655,9 @@ pub fn stub_0xb8e8() {
 // 0xb900 — __ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0xb900() -> ! {
-    todo!("0xb900 __ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")
+pub fn stub_0xb900() -> &'static str {
+    // IDA 0xb900: __ZThn getClassName — `Creator = static_getCreator(); return Creator::getClassName_shim(Creator)` (decompiled 0xb900 family; e.g. 0x28e128). The Creator name is the class name. Rust: no vtable/Creator needed.
+    "CRenderSettingsItem"
 }
 
 // 0xb910 — __ZThn36_N19CRenderSettingsItemD1Ev

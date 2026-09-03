@@ -575,8 +575,8 @@ pub fn stub_0xb40414() -> ! {
 
 // 0xb40430 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_7Network19InstancePacketCache15CachedBitStreamES7_EENSC_5list2INSC_5valueINSB_10shared_ptrISI_EEEENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0xb40430() -> ! {
-    todo!("0xb40430 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0xb40430() {
+    // IDA 0xb40430: non-virtual thunk to `rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Instan` — this/arg-adjust + tail-call (decompiled). Rust uses static dispatch; no thunk needed. Target unmodeled: cutover no-op.
 }
 
 // 0xb4044c — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_7Network19InstancePacketCache15CachedBitStreamES7_EENSC_5list2INSC_5valueINSB_10shared_ptrISI_EEEENSB_3argILi1EEEEEEELi1ES8_ED2Ev
