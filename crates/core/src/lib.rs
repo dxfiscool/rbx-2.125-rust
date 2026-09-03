@@ -611,3 +611,4 @@ pub mod generated_watchdog_gap_w13a;
 pub mod generated_watchdog_core_w13a;
 pub mod generated_watchdog_core2_w13a;
 pub mod generated_watchdog_core_w15b;
+pub mod generated_watchdog_core_w15a;
