@@ -856,6 +856,46 @@ pub fn read_rotation(stream: &mut BitStream, out: &mut [f32; 4]) {
     }
 }
 
+/// `RBX::Network::Compressor::writeCompressed` (IDA 0x989738): the input
+/// runs through `boost::iostreams::basic_gzip_compressor` and lands on the
+/// wire framed as `operator<<(size)` + raw `Write(bytes)`.
+///
+/// FIDELITY: the gzip transform itself (like the `StringCompressor` Huffman
+/// table) stays engine-side — no gzip crate may enter this crate's
+/// dependency closure — so the payload passes through framed but
+/// uncompressed. The framing (big-endian size + raw bytes) and length are
+/// exact, and the pair round-trips.
+///
+/// The original returns uninitialized stack (`v53->__sig`); this returns
+/// the framed payload length instead.
+pub fn write_compressed(stream: &mut BitStream, data: &[u8]) -> u32 {
+    // IDA 0x989738 tail: `operator<<(size)` then `Write(data, size)`.
+    stream.write_u32(data.len() as u32);
+    for byte in data {
+        stream.write_u8(*byte);
+    }
+    data.len() as u32
+}
+
+/// `RBX::Network::Compressor::readCompressed` (IDA 0x98a0e0):
+/// `operator>><uint>(size)`, raw `Read(size)` bytes, then
+/// `basic_gzip_decompressor` into the out string. Panics mirror the
+/// original's throws on short reads. See [`write_compressed`] for the
+/// payload caveat; returns the payload length like the original's chain
+/// result slot.
+pub fn read_compressed(stream: &mut BitStream, out: &mut Vec<u8>) -> u32 {
+    // IDA 0x98a0e0: size first, then the raw byte block.
+    let len = stream
+        .read_u32()
+        .expect("Compressor::readCompressed: failed to read length");
+    out.clear();
+    out.reserve(len as usize);
+    for _ in 0..len {
+        out.push(stream.read_u8().expect("Compressor::readCompressed: truncated"));
+    }
+    len
+}
+
 /// One assembly's physics payload for [`PhysicsSender::write_assembly`].
 /// The original pulls these out of `Assembly::getConstAssemblyPrimitive`
 /// (IDA 0x9c2962) and `Primitive::getPV` (IDA 0x9c296c); the caller supplies
@@ -1177,6 +1217,21 @@ mod tests {
         for (a, b) in [100.0, -100.0, 0.0].iter().zip(out.iter()) {
             assert!((a - b).abs() < 0.2, "{a} vs {b}");
         }
+    }
+
+    #[test]
+    fn compressed_framing_roundtrip() {
+        // IDA 0x989738/0x98a0e0: `operator<<(size)` + raw bytes; the gzip
+        // transform itself stays engine-side, so the framed payload
+        // round-trips byte-identical.
+        let data = b"hello replication";
+        let mut s = BitStream::new();
+        let n = write_compressed(&mut s, data);
+        assert_eq!(n as usize, data.len());
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        let mut out = Vec::new();
+        assert_eq!(read_compressed(&mut r, &mut out), data.len() as u32);
+        assert_eq!(out, data);
     }
 
     #[test]

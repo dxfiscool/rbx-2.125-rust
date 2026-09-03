@@ -259,7 +259,7 @@ impl BitStream {
     /// to big-endian, then the core below. `WriteCompressed<unsigned long
     /// long>` shares the core with a wider buffer.
     pub fn write_compressed_u32(&mut self, value: u32) {
-        Self::write_compressed_bytes(self, &value.to_be_bytes());
+        self.write_compressed_raw(&value.to_be_bytes());
     }
 
     /// Core `WriteCompressed(src, nbits, rightAligned = 1)` (IDA 0xa55c9c)
@@ -267,20 +267,20 @@ impl BitStream {
     /// trailing zero byte (at most `len - 1`), then `Write0` and the
     /// remaining head bytes — except a lone trailing byte under `0x10`,
     /// which is `Write1` plus its low 4 bits.
-    fn write_compressed_bytes(stream: &mut BitStream, bytes: &[u8]) {
+    pub fn write_compressed_raw(&mut self, bytes: &[u8]) {
         let mut len = bytes.len();
         while len > 1 && bytes[len - 1] == 0 {
-            stream.write_bit(true);
+            self.write_bit(true);
             len -= 1;
         }
         let head = &bytes[..len];
         if len == 1 && head[0] < 0x10 {
-            stream.write_bit(true);
-            stream.write_bits(u32::from(head[0]), 4);
+            self.write_bit(true);
+            self.write_bits(u32::from(head[0]), 4);
         } else {
-            stream.write_bit(false);
+            self.write_bit(false);
             for &b in head {
-                stream.write_u8(b);
+                self.write_u8(b);
             }
         }
     }
@@ -292,28 +292,55 @@ impl BitStream {
     /// body read; this consumes nothing on failure, like [`BitStream::read_bits`].
     pub fn read_compressed_u32(&mut self) -> Option<u32> {
         let mut buf = [0u8; 4];
-        let mut len = 4usize;
+        if !self.read_compressed_raw(&mut buf) {
+            return None;
+        }
+        Some(u32::from_be_bytes(buf))
+    }
+
+    pub fn read_compressed_raw(&mut self, out: &mut [u8]) -> bool {
+        if out.is_empty() {
+            return true;
+        }
+        let mut len = out.len();
         loop {
             // IDA 0xa55d2c: single-byte tail — `Read1` selects 4 vs 8 bits.
             if len == 1 {
-                if self.read_bit()? {
-                    buf[0] = self.read_bits(4)? as u8;
+                let Some(flag) = self.read_bit() else {
+                    return false;
+                };
+                if flag {
+                    let Some(nib) = self.read_bits(4) else {
+                        return false;
+                    };
+                    out[0] = nib as u8;
                 } else {
-                    buf[0] = self.read_u8()?;
+                    let Some(byte) = self.read_u8() else {
+                        return false;
+                    };
+                    out[0] = byte;
                 }
-                break;
+                return true;
             }
             // IDA 0xa55d2c: `Read1` elides a trailing zero byte, `Read0`
             // ends the prefix and the head bytes follow.
-            if !self.read_bit()? {
-                for b in buf.iter_mut().take(len) {
-                    *b = self.read_u8()?;
+            let Some(flag) = self.read_bit() else {
+                return false;
+            };
+            if !flag {
+                for b in out.iter_mut().take(len) {
+                    let Some(byte) = self.read_u8() else {
+                        return false;
+                    };
+                    *b = byte;
                 }
-                break;
+                return true;
             }
+            // IDA 0xa55d2c: `__b[v9] = v10` — the elided byte reads back as
+            // zero (0 for `rightAligned`).
+            out[len - 1] = 0;
             len -= 1;
         }
-        Some(u32::from_be_bytes(buf))
     }
 
     /// `RakNet::BitStream::WriteVector<float>` / `ReadVector<float>`.

@@ -396,16 +396,18 @@ pub fn stub_0xa55c58() -> ! {
 // type: unsigned int __fastcall(RakNet::BitStream *this, const unsigned __int8 *, unsigned int, int)
 #[doc(alias = "__ZN6RakNet9BitStream15WriteCompressedEPKhjb")]
 #[doc(alias = "RakNet::BitStream::WriteCompressed(unsigned char const*,unsigned int,bool)")]
-pub fn stub_0xa55c9c() -> ! {
-    todo!("0xa55c9c __ZN6RakNet9BitStream15WriteCompressedEPKhjb")
+pub fn stub_0xa55c9c(stream: &mut crate::bitstream::BitStream, data: &[u8]) {
+    // IDA 0xa55c9c: core `WriteCompressed(src, nbits, rightAligned = 1)` — `Write1` per trailing zero byte, then the head.
+    stream.write_compressed_raw(data);
 }
 
 // 0xa55d2c — __ZN6RakNet9BitStream14ReadCompressedEPhjb
 // type: int __fastcall(RakNet::BitStream *this, unsigned __int8 *__b, unsigned int, int)
 #[doc(alias = "__ZN6RakNet9BitStream14ReadCompressedEPhjb")]
 #[doc(alias = "RakNet::BitStream::ReadCompressed(unsigned char *,unsigned int,bool)")]
-pub fn stub_0xa55d2c() -> ! {
-    todo!("0xa55d2c __ZN6RakNet9BitStream14ReadCompressedEPhjb")
+pub fn stub_0xa55d2c(stream: &mut crate::bitstream::BitStream, out: &mut [u8]) -> bool {
+    // IDA 0xa55d2c: core `ReadCompressed` — elided zero bytes read back as zero; `false` on short reads.
+    stream.read_compressed_raw(out)
 }
 
 // 0xa55e08 — __ZNK6RakNet9BitStream24GetNumberOfBitsAllocatedEv

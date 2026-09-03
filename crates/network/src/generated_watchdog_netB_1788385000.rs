@@ -704,24 +704,34 @@ pub fn stub_989268() -> ! {
 // type: __int32 __fastcall(RBX::Network::Compressor *this, RakNet::BitStream *, const char *, int)
 #[doc(alias = "RBX::Network::Compressor::writeCompressed(RakNet::BitStream &,char const*,unsigned int)")]
 #[doc(alias = "__ZN3RBX7Network10Compressor15writeCompressedERN6RakNet9BitStreamEPKcj")]
-pub fn stub_989738() -> ! {
-    todo!("0x989738 __ZN3RBX7Network10Compressor15writeCompressedERN6RakNet9BitStreamEPKcj")
+pub fn stub_989738(stream: &mut crate::bitstream::BitStream, data: &[u8]) -> u32 {
+    // IDA 0x989738: gzip via `basic_gzip_compressor`, framed as `operator<<(size)` + raw `Write(bytes)` (payload passes through; see `write_compressed`).
+    crate::physics::write_compressed(stream, data)
 }
 
 // 0x98a0e0 — __ZN3RBX7Network10Compressor14readCompressedERN6RakNet9BitStreamERSs
 // type: int __fastcall(RBX::Network::Compressor *this, RakNet::BitStream *, std::string *)
 #[doc(alias = "RBX::Network::Compressor::readCompressed(RakNet::BitStream &,std::string &)")]
 #[doc(alias = "__ZN3RBX7Network10Compressor14readCompressedERN6RakNet9BitStreamERSs")]
-pub fn stub_98a0e0() -> ! {
-    todo!("0x98a0e0 __ZN3RBX7Network10Compressor14readCompressedERN6RakNet9BitStreamERSs")
+pub fn stub_98a0e0(stream: &mut crate::bitstream::BitStream, out: &mut Vec<u8>) -> u32 {
+    // IDA 0x98a0e0: `operator>><uint>(size)`, raw `Read(size)`, then `basic_gzip_decompressor` (see `read_compressed`).
+    crate::physics::read_compressed(stream, out)
 }
 
 // 0x98ae20 — __ZN3RBX7Network16CustomSerializer13writeNormQuatEbRKfS3_S3_S3_RN6RakNet9BitStreamE
 // type: unsigned int __fastcall(RBX::Network::CustomSerializer *this, float *, float *, float *, const float *, RakNet::BitStream *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::CustomSerializer::writeNormQuat(bool,float const&,float const&,float const&,float const&,RakNet::BitStream &)")]
 #[doc(alias = "__ZN3RBX7Network16CustomSerializer13writeNormQuatEbRKfS3_S3_S3_RN6RakNet9BitStreamE")]
-pub fn stub_98ae20() -> ! {
-    todo!("0x98ae20 __ZN3RBX7Network16CustomSerializer13writeNormQuatEbRKfS3_S3_S3_RN6RakNet9BitStreamE")
+pub fn stub_98ae20(
+    heavy: bool,
+    w: f32,
+    x: f32,
+    y: f32,
+    z: f32,
+    stream: &mut crate::bitstream::BitStream,
+) {
+    // IDA 0x98ae20: heavy flag + w sign, then per-component sign + biased magnitude (8 bits over 255 heavy, 16 over 32767).
+    crate::custom_serializer::write_norm_quat(heavy, w, x, y, z, stream);
 }
 
 // 0x98b2a8 — __ZN3RBX7Network16CustomSerializer12readNormQuatERfS2_S2_S2_RN6RakNet9BitStreamE

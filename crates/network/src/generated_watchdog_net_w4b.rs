@@ -518,16 +518,18 @@ pub fn stub_f61d94() -> ! {
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
 #[doc(alias = "bool RakNet::BitStream::ReadCompressed<unsigned int>(unsigned int &)")]
 #[doc(alias = "j___ZN6RakNet9BitStream14ReadCompressedIjEEbRT_")]
-pub fn stub_f61da4() -> ! {
-    todo!("0xf61da4 j___ZN6RakNet9BitStream14ReadCompressedIjEEbRT_")
+pub fn stub_f61da4(stream: &mut crate::bitstream::BitStream) -> Option<u32> {
+    // Thunk (IDA 0xf61da4): tail-jumps to `ReadCompressed<unsigned int>` (0xa7bac8).
+    stream.read_compressed_u32()
 }
 
 // 0xf61db4 — j___ZN6RakNet9BitStream15WriteCompressedIjEEvRKT_
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
 #[doc(alias = "void RakNet::BitStream::WriteCompressed<unsigned int>(unsigned int const&)")]
 #[doc(alias = "j___ZN6RakNet9BitStream15WriteCompressedIjEEvRKT_")]
-pub fn stub_f61db4() -> ! {
-    todo!("0xf61db4 j___ZN6RakNet9BitStream15WriteCompressedIjEEvRKT_")
+pub fn stub_f61db4(stream: &mut crate::bitstream::BitStream, value: u32) {
+    // Thunk (IDA 0xf61db4): tail-jumps to `WriteCompressed<unsigned int>` (0xa7b9b4).
+    stream.write_compressed_u32(value);
 }
 
 // 0xf61dc4 — j___ZN14DataStructures10MemoryPoolIN6RakNet6PacketEE7ReleaseEPS2_PKcj

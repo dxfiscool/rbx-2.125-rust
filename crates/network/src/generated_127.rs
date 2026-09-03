@@ -316,15 +316,17 @@ pub fn stub_989268(stream: &mut crate::bitstream::BitStream, out: &mut [f32; 3])
 // 0x989738 — __ZN3RBX7Network10Compressor15writeCompressedERN6RakNet9BitStreamEPKcj
 // type: __int32 __fastcall(RBX::Network::Compressor *this, RakNet::BitStream *, const char *, int)
 #[doc(alias = "RBX::Network::Compressor::writeCompressed(RakNet::BitStream &,char const*,unsigned int)")]
-pub fn stub_989738() -> ! {
-    todo!("0x989738 __ZN3RBX7Network10Compressor15writeCompressedERN6RakNet9BitStreamEPKcj")
+pub fn stub_989738(stream: &mut crate::bitstream::BitStream, data: &[u8]) -> u32 {
+    // IDA 0x989738: gzip via `basic_gzip_compressor`, framed as `operator<<(size)` + raw `Write(bytes)` (payload passes through; see `write_compressed`).
+    crate::physics::write_compressed(stream, data)
 }
 
 // 0x98a0e0 — __ZN3RBX7Network10Compressor14readCompressedERN6RakNet9BitStreamERSs
 // type: int __fastcall(RBX::Network::Compressor *this, RakNet::BitStream *, std::string *)
 #[doc(alias = "RBX::Network::Compressor::readCompressed(RakNet::BitStream &,std::string &)")]
-pub fn stub_98a0e0() -> ! {
-    todo!("0x98a0e0 __ZN3RBX7Network10Compressor14readCompressedERN6RakNet9BitStreamERSs")
+pub fn stub_98a0e0(stream: &mut crate::bitstream::BitStream, out: &mut Vec<u8>) -> u32 {
+    // IDA 0x98a0e0: `operator>><uint>(size)`, raw `Read(size)`, then `basic_gzip_decompressor` (see `read_compressed`).
+    crate::physics::read_compressed(stream, out)
 }
 
 // 0x98a7e0 — __ZN6RakNet9BitStream13WriteNormQuatIfEEvT_S2_S2_S2_
