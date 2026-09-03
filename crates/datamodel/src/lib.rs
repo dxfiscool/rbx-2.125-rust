@@ -699,3 +699,4 @@ pub mod generated_watchdog_datamodel_w15d3;
 pub mod generated_watchdog_dm_a;
 
 pub mod generated_watchdog_dm_b;
+pub mod generated_watchdog_dm_c;
