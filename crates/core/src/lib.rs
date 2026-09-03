@@ -628,3 +628,4 @@ pub mod generated_core_bg30;
 pub mod generated_watchdog_core_wdA;
 
 pub mod generated_watchdog_core_wda;
+pub mod generated_watchdog_core_wdO;
