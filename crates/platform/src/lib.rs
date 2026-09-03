@@ -445,3 +445,4 @@ pub mod generated_watchdog_platform_w15d3;
 pub mod generated_plat_globaldedup_110;
 pub mod generated_plat_globaldedup_111;
 pub mod generated_plat_globaldedup_112;
+pub mod generated_plat_globaldedup_113;

@@ -12,7 +12,7 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func0")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func0Ev")]
-pub fn stub_1e02080() -> ! {
+pub fn stub_0x1e02080() -> ! {
     todo!("0x1e02080 RBX::Audio::WatchdogW15d2_Func0")
 }
 
@@ -20,7 +20,7 @@ pub fn stub_1e02080() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play1")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play1Ev")]
-pub fn stub_1e02090() -> ! {
+pub fn stub_0x1e02090() -> ! {
     todo!("0x1e02090 RBX::Sound::WatchdogW15d2_Play1")
 }
 
@@ -28,7 +28,7 @@ pub fn stub_1e02090() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update2")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update2Ev")]
-pub fn stub_1e020a0() -> ! {
+pub fn stub_0x1e020a0() -> ! {
     todo!("0x1e020a0 FMOD::System::WatchdogW15d2_Update2")
 }
 
@@ -36,7 +36,7 @@ pub fn stub_1e020a0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init3")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init3Ev")]
-pub fn stub_1e020b0() -> ! {
+pub fn stub_0x1e020b0() -> ! {
     todo!("0x1e020b0 RBX::AudioDevice::WatchdogW15d2_Init3")
 }
 
@@ -44,7 +44,7 @@ pub fn stub_1e020b0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func4")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func4Ev")]
-pub fn stub_1e020c0() -> ! {
+pub fn stub_0x1e020c0() -> ! {
     todo!("0x1e020c0 RBX::Audio::WatchdogW15d2_Func4")
 }
 
@@ -52,7 +52,7 @@ pub fn stub_1e020c0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play5")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play5Ev")]
-pub fn stub_1e020d0() -> ! {
+pub fn stub_0x1e020d0() -> ! {
     todo!("0x1e020d0 RBX::Sound::WatchdogW15d2_Play5")
 }
 
@@ -60,7 +60,7 @@ pub fn stub_1e020d0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update6")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update6Ev")]
-pub fn stub_1e020e0() -> ! {
+pub fn stub_0x1e020e0() -> ! {
     todo!("0x1e020e0 FMOD::System::WatchdogW15d2_Update6")
 }
 
@@ -68,7 +68,7 @@ pub fn stub_1e020e0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init7")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init7Ev")]
-pub fn stub_1e020f0() -> ! {
+pub fn stub_0x1e020f0() -> ! {
     todo!("0x1e020f0 RBX::AudioDevice::WatchdogW15d2_Init7")
 }
 
@@ -76,7 +76,7 @@ pub fn stub_1e020f0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func8")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func8Ev")]
-pub fn stub_1e02100() -> ! {
+pub fn stub_0x1e02100() -> ! {
     todo!("0x1e02100 RBX::Audio::WatchdogW15d2_Func8")
 }
 
@@ -84,7 +84,7 @@ pub fn stub_1e02100() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play9")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play9Ev")]
-pub fn stub_1e02110() -> ! {
+pub fn stub_0x1e02110() -> ! {
     todo!("0x1e02110 RBX::Sound::WatchdogW15d2_Play9")
 }
 
@@ -92,7 +92,7 @@ pub fn stub_1e02110() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update10")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update10Ev")]
-pub fn stub_1e02120() -> ! {
+pub fn stub_0x1e02120() -> ! {
     todo!("0x1e02120 FMOD::System::WatchdogW15d2_Update10")
 }
 
@@ -100,7 +100,7 @@ pub fn stub_1e02120() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init11")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init11Ev")]
-pub fn stub_1e02130() -> ! {
+pub fn stub_0x1e02130() -> ! {
     todo!("0x1e02130 RBX::AudioDevice::WatchdogW15d2_Init11")
 }
 
@@ -108,7 +108,7 @@ pub fn stub_1e02130() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func12")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func12Ev")]
-pub fn stub_1e02140() -> ! {
+pub fn stub_0x1e02140() -> ! {
     todo!("0x1e02140 RBX::Audio::WatchdogW15d2_Func12")
 }
 
@@ -116,7 +116,7 @@ pub fn stub_1e02140() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play13")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play13Ev")]
-pub fn stub_1e02150() -> ! {
+pub fn stub_0x1e02150() -> ! {
     todo!("0x1e02150 RBX::Sound::WatchdogW15d2_Play13")
 }
 
@@ -124,7 +124,7 @@ pub fn stub_1e02150() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update14")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update14Ev")]
-pub fn stub_1e02160() -> ! {
+pub fn stub_0x1e02160() -> ! {
     todo!("0x1e02160 FMOD::System::WatchdogW15d2_Update14")
 }
 
@@ -132,7 +132,7 @@ pub fn stub_1e02160() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init15")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init15Ev")]
-pub fn stub_1e02170() -> ! {
+pub fn stub_0x1e02170() -> ! {
     todo!("0x1e02170 RBX::AudioDevice::WatchdogW15d2_Init15")
 }
 
@@ -140,7 +140,7 @@ pub fn stub_1e02170() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func16")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func16Ev")]
-pub fn stub_1e02180() -> ! {
+pub fn stub_0x1e02180() -> ! {
     todo!("0x1e02180 RBX::Audio::WatchdogW15d2_Func16")
 }
 
@@ -148,7 +148,7 @@ pub fn stub_1e02180() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play17")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play17Ev")]
-pub fn stub_1e02190() -> ! {
+pub fn stub_0x1e02190() -> ! {
     todo!("0x1e02190 RBX::Sound::WatchdogW15d2_Play17")
 }
 
@@ -156,7 +156,7 @@ pub fn stub_1e02190() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update18")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update18Ev")]
-pub fn stub_1e021a0() -> ! {
+pub fn stub_0x1e021a0() -> ! {
     todo!("0x1e021a0 FMOD::System::WatchdogW15d2_Update18")
 }
 
@@ -164,7 +164,7 @@ pub fn stub_1e021a0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init19")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init19Ev")]
-pub fn stub_1e021b0() -> ! {
+pub fn stub_0x1e021b0() -> ! {
     todo!("0x1e021b0 RBX::AudioDevice::WatchdogW15d2_Init19")
 }
 
@@ -172,7 +172,7 @@ pub fn stub_1e021b0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func20")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func20Ev")]
-pub fn stub_1e021c0() -> ! {
+pub fn stub_0x1e021c0() -> ! {
     todo!("0x1e021c0 RBX::Audio::WatchdogW15d2_Func20")
 }
 
@@ -180,7 +180,7 @@ pub fn stub_1e021c0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play21")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play21Ev")]
-pub fn stub_1e021d0() -> ! {
+pub fn stub_0x1e021d0() -> ! {
     todo!("0x1e021d0 RBX::Sound::WatchdogW15d2_Play21")
 }
 
@@ -188,7 +188,7 @@ pub fn stub_1e021d0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update22")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update22Ev")]
-pub fn stub_1e021e0() -> ! {
+pub fn stub_0x1e021e0() -> ! {
     todo!("0x1e021e0 FMOD::System::WatchdogW15d2_Update22")
 }
 
@@ -196,7 +196,7 @@ pub fn stub_1e021e0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init23")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init23Ev")]
-pub fn stub_1e021f0() -> ! {
+pub fn stub_0x1e021f0() -> ! {
     todo!("0x1e021f0 RBX::AudioDevice::WatchdogW15d2_Init23")
 }
 
@@ -204,7 +204,7 @@ pub fn stub_1e021f0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func24")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func24Ev")]
-pub fn stub_1e02200() -> ! {
+pub fn stub_0x1e02200() -> ! {
     todo!("0x1e02200 RBX::Audio::WatchdogW15d2_Func24")
 }
 
@@ -212,7 +212,7 @@ pub fn stub_1e02200() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play25")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play25Ev")]
-pub fn stub_1e02210() -> ! {
+pub fn stub_0x1e02210() -> ! {
     todo!("0x1e02210 RBX::Sound::WatchdogW15d2_Play25")
 }
 
@@ -220,7 +220,7 @@ pub fn stub_1e02210() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update26")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update26Ev")]
-pub fn stub_1e02220() -> ! {
+pub fn stub_0x1e02220() -> ! {
     todo!("0x1e02220 FMOD::System::WatchdogW15d2_Update26")
 }
 
@@ -228,7 +228,7 @@ pub fn stub_1e02220() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init27")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init27Ev")]
-pub fn stub_1e02230() -> ! {
+pub fn stub_0x1e02230() -> ! {
     todo!("0x1e02230 RBX::AudioDevice::WatchdogW15d2_Init27")
 }
 
@@ -236,7 +236,7 @@ pub fn stub_1e02230() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func28")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func28Ev")]
-pub fn stub_1e02240() -> ! {
+pub fn stub_0x1e02240() -> ! {
     todo!("0x1e02240 RBX::Audio::WatchdogW15d2_Func28")
 }
 
@@ -244,7 +244,7 @@ pub fn stub_1e02240() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play29")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play29Ev")]
-pub fn stub_1e02250() -> ! {
+pub fn stub_0x1e02250() -> ! {
     todo!("0x1e02250 RBX::Sound::WatchdogW15d2_Play29")
 }
 
@@ -252,7 +252,7 @@ pub fn stub_1e02250() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update30")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update30Ev")]
-pub fn stub_1e02260() -> ! {
+pub fn stub_0x1e02260() -> ! {
     todo!("0x1e02260 FMOD::System::WatchdogW15d2_Update30")
 }
 
@@ -260,7 +260,7 @@ pub fn stub_1e02260() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init31")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init31Ev")]
-pub fn stub_1e02270() -> ! {
+pub fn stub_0x1e02270() -> ! {
     todo!("0x1e02270 RBX::AudioDevice::WatchdogW15d2_Init31")
 }
 
@@ -268,7 +268,7 @@ pub fn stub_1e02270() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func32")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func32Ev")]
-pub fn stub_1e02280() -> ! {
+pub fn stub_0x1e02280() -> ! {
     todo!("0x1e02280 RBX::Audio::WatchdogW15d2_Func32")
 }
 
@@ -276,7 +276,7 @@ pub fn stub_1e02280() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play33")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play33Ev")]
-pub fn stub_1e02290() -> ! {
+pub fn stub_0x1e02290() -> ! {
     todo!("0x1e02290 RBX::Sound::WatchdogW15d2_Play33")
 }
 
@@ -284,7 +284,7 @@ pub fn stub_1e02290() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update34")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update34Ev")]
-pub fn stub_1e022a0() -> ! {
+pub fn stub_0x1e022a0() -> ! {
     todo!("0x1e022a0 FMOD::System::WatchdogW15d2_Update34")
 }
 
@@ -292,7 +292,7 @@ pub fn stub_1e022a0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init35")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init35Ev")]
-pub fn stub_1e022b0() -> ! {
+pub fn stub_0x1e022b0() -> ! {
     todo!("0x1e022b0 RBX::AudioDevice::WatchdogW15d2_Init35")
 }
 
@@ -300,7 +300,7 @@ pub fn stub_1e022b0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func36")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func36Ev")]
-pub fn stub_1e022c0() -> ! {
+pub fn stub_0x1e022c0() -> ! {
     todo!("0x1e022c0 RBX::Audio::WatchdogW15d2_Func36")
 }
 
@@ -308,7 +308,7 @@ pub fn stub_1e022c0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play37")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play37Ev")]
-pub fn stub_1e022d0() -> ! {
+pub fn stub_0x1e022d0() -> ! {
     todo!("0x1e022d0 RBX::Sound::WatchdogW15d2_Play37")
 }
 
@@ -316,7 +316,7 @@ pub fn stub_1e022d0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update38")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update38Ev")]
-pub fn stub_1e022e0() -> ! {
+pub fn stub_0x1e022e0() -> ! {
     todo!("0x1e022e0 FMOD::System::WatchdogW15d2_Update38")
 }
 
@@ -324,7 +324,7 @@ pub fn stub_1e022e0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init39")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init39Ev")]
-pub fn stub_1e022f0() -> ! {
+pub fn stub_0x1e022f0() -> ! {
     todo!("0x1e022f0 RBX::AudioDevice::WatchdogW15d2_Init39")
 }
 
@@ -332,7 +332,7 @@ pub fn stub_1e022f0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func40")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func40Ev")]
-pub fn stub_1e02300() -> ! {
+pub fn stub_0x1e02300() -> ! {
     todo!("0x1e02300 RBX::Audio::WatchdogW15d2_Func40")
 }
 
@@ -340,7 +340,7 @@ pub fn stub_1e02300() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play41")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play41Ev")]
-pub fn stub_1e02310() -> ! {
+pub fn stub_0x1e02310() -> ! {
     todo!("0x1e02310 RBX::Sound::WatchdogW15d2_Play41")
 }
 
@@ -348,7 +348,7 @@ pub fn stub_1e02310() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update42")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update42Ev")]
-pub fn stub_1e02320() -> ! {
+pub fn stub_0x1e02320() -> ! {
     todo!("0x1e02320 FMOD::System::WatchdogW15d2_Update42")
 }
 
@@ -356,7 +356,7 @@ pub fn stub_1e02320() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init43")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init43Ev")]
-pub fn stub_1e02330() -> ! {
+pub fn stub_0x1e02330() -> ! {
     todo!("0x1e02330 RBX::AudioDevice::WatchdogW15d2_Init43")
 }
 
@@ -364,7 +364,7 @@ pub fn stub_1e02330() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func44")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func44Ev")]
-pub fn stub_1e02340() -> ! {
+pub fn stub_0x1e02340() -> ! {
     todo!("0x1e02340 RBX::Audio::WatchdogW15d2_Func44")
 }
 
@@ -372,7 +372,7 @@ pub fn stub_1e02340() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play45")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play45Ev")]
-pub fn stub_1e02350() -> ! {
+pub fn stub_0x1e02350() -> ! {
     todo!("0x1e02350 RBX::Sound::WatchdogW15d2_Play45")
 }
 
@@ -380,7 +380,7 @@ pub fn stub_1e02350() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update46")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update46Ev")]
-pub fn stub_1e02360() -> ! {
+pub fn stub_0x1e02360() -> ! {
     todo!("0x1e02360 FMOD::System::WatchdogW15d2_Update46")
 }
 
@@ -388,7 +388,7 @@ pub fn stub_1e02360() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init47")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init47Ev")]
-pub fn stub_1e02370() -> ! {
+pub fn stub_0x1e02370() -> ! {
     todo!("0x1e02370 RBX::AudioDevice::WatchdogW15d2_Init47")
 }
 
@@ -396,7 +396,7 @@ pub fn stub_1e02370() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func48")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func48Ev")]
-pub fn stub_1e02380() -> ! {
+pub fn stub_0x1e02380() -> ! {
     todo!("0x1e02380 RBX::Audio::WatchdogW15d2_Func48")
 }
 
@@ -404,7 +404,7 @@ pub fn stub_1e02380() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play49")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play49Ev")]
-pub fn stub_1e02390() -> ! {
+pub fn stub_0x1e02390() -> ! {
     todo!("0x1e02390 RBX::Sound::WatchdogW15d2_Play49")
 }
 
@@ -412,7 +412,7 @@ pub fn stub_1e02390() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update50")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update50Ev")]
-pub fn stub_1e023a0() -> ! {
+pub fn stub_0x1e023a0() -> ! {
     todo!("0x1e023a0 FMOD::System::WatchdogW15d2_Update50")
 }
 
@@ -420,7 +420,7 @@ pub fn stub_1e023a0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init51")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init51Ev")]
-pub fn stub_1e023b0() -> ! {
+pub fn stub_0x1e023b0() -> ! {
     todo!("0x1e023b0 RBX::AudioDevice::WatchdogW15d2_Init51")
 }
 
@@ -428,7 +428,7 @@ pub fn stub_1e023b0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func52")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func52Ev")]
-pub fn stub_1e023c0() -> ! {
+pub fn stub_0x1e023c0() -> ! {
     todo!("0x1e023c0 RBX::Audio::WatchdogW15d2_Func52")
 }
 
@@ -436,7 +436,7 @@ pub fn stub_1e023c0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play53")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play53Ev")]
-pub fn stub_1e023d0() -> ! {
+pub fn stub_0x1e023d0() -> ! {
     todo!("0x1e023d0 RBX::Sound::WatchdogW15d2_Play53")
 }
 
@@ -444,7 +444,7 @@ pub fn stub_1e023d0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update54")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update54Ev")]
-pub fn stub_1e023e0() -> ! {
+pub fn stub_0x1e023e0() -> ! {
     todo!("0x1e023e0 FMOD::System::WatchdogW15d2_Update54")
 }
 
@@ -452,7 +452,7 @@ pub fn stub_1e023e0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init55")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init55Ev")]
-pub fn stub_1e023f0() -> ! {
+pub fn stub_0x1e023f0() -> ! {
     todo!("0x1e023f0 RBX::AudioDevice::WatchdogW15d2_Init55")
 }
 
@@ -460,7 +460,7 @@ pub fn stub_1e023f0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func56")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func56Ev")]
-pub fn stub_1e02400() -> ! {
+pub fn stub_0x1e02400() -> ! {
     todo!("0x1e02400 RBX::Audio::WatchdogW15d2_Func56")
 }
 
@@ -468,7 +468,7 @@ pub fn stub_1e02400() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play57")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play57Ev")]
-pub fn stub_1e02410() -> ! {
+pub fn stub_0x1e02410() -> ! {
     todo!("0x1e02410 RBX::Sound::WatchdogW15d2_Play57")
 }
 
@@ -476,7 +476,7 @@ pub fn stub_1e02410() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update58")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update58Ev")]
-pub fn stub_1e02420() -> ! {
+pub fn stub_0x1e02420() -> ! {
     todo!("0x1e02420 FMOD::System::WatchdogW15d2_Update58")
 }
 
@@ -484,7 +484,7 @@ pub fn stub_1e02420() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init59")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init59Ev")]
-pub fn stub_1e02430() -> ! {
+pub fn stub_0x1e02430() -> ! {
     todo!("0x1e02430 RBX::AudioDevice::WatchdogW15d2_Init59")
 }
 
@@ -492,7 +492,7 @@ pub fn stub_1e02430() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func60")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func60Ev")]
-pub fn stub_1e02440() -> ! {
+pub fn stub_0x1e02440() -> ! {
     todo!("0x1e02440 RBX::Audio::WatchdogW15d2_Func60")
 }
 
@@ -500,7 +500,7 @@ pub fn stub_1e02440() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play61")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play61Ev")]
-pub fn stub_1e02450() -> ! {
+pub fn stub_0x1e02450() -> ! {
     todo!("0x1e02450 RBX::Sound::WatchdogW15d2_Play61")
 }
 
@@ -508,7 +508,7 @@ pub fn stub_1e02450() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update62")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update62Ev")]
-pub fn stub_1e02460() -> ! {
+pub fn stub_0x1e02460() -> ! {
     todo!("0x1e02460 FMOD::System::WatchdogW15d2_Update62")
 }
 
@@ -516,7 +516,7 @@ pub fn stub_1e02460() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init63")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init63Ev")]
-pub fn stub_1e02470() -> ! {
+pub fn stub_0x1e02470() -> ! {
     todo!("0x1e02470 RBX::AudioDevice::WatchdogW15d2_Init63")
 }
 
@@ -524,7 +524,7 @@ pub fn stub_1e02470() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func64")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func64Ev")]
-pub fn stub_1e02480() -> ! {
+pub fn stub_0x1e02480() -> ! {
     todo!("0x1e02480 RBX::Audio::WatchdogW15d2_Func64")
 }
 
@@ -532,7 +532,7 @@ pub fn stub_1e02480() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play65")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play65Ev")]
-pub fn stub_1e02490() -> ! {
+pub fn stub_0x1e02490() -> ! {
     todo!("0x1e02490 RBX::Sound::WatchdogW15d2_Play65")
 }
 
@@ -540,7 +540,7 @@ pub fn stub_1e02490() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update66")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update66Ev")]
-pub fn stub_1e024a0() -> ! {
+pub fn stub_0x1e024a0() -> ! {
     todo!("0x1e024a0 FMOD::System::WatchdogW15d2_Update66")
 }
 
@@ -548,7 +548,7 @@ pub fn stub_1e024a0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init67")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init67Ev")]
-pub fn stub_1e024b0() -> ! {
+pub fn stub_0x1e024b0() -> ! {
     todo!("0x1e024b0 RBX::AudioDevice::WatchdogW15d2_Init67")
 }
 
@@ -556,7 +556,7 @@ pub fn stub_1e024b0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func68")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func68Ev")]
-pub fn stub_1e024c0() -> ! {
+pub fn stub_0x1e024c0() -> ! {
     todo!("0x1e024c0 RBX::Audio::WatchdogW15d2_Func68")
 }
 
@@ -564,7 +564,7 @@ pub fn stub_1e024c0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play69")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play69Ev")]
-pub fn stub_1e024d0() -> ! {
+pub fn stub_0x1e024d0() -> ! {
     todo!("0x1e024d0 RBX::Sound::WatchdogW15d2_Play69")
 }
 
@@ -572,7 +572,7 @@ pub fn stub_1e024d0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update70")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update70Ev")]
-pub fn stub_1e024e0() -> ! {
+pub fn stub_0x1e024e0() -> ! {
     todo!("0x1e024e0 FMOD::System::WatchdogW15d2_Update70")
 }
 
@@ -580,7 +580,7 @@ pub fn stub_1e024e0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init71")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init71Ev")]
-pub fn stub_1e024f0() -> ! {
+pub fn stub_0x1e024f0() -> ! {
     todo!("0x1e024f0 RBX::AudioDevice::WatchdogW15d2_Init71")
 }
 
@@ -588,7 +588,7 @@ pub fn stub_1e024f0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func72")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func72Ev")]
-pub fn stub_1e02500() -> ! {
+pub fn stub_0x1e02500() -> ! {
     todo!("0x1e02500 RBX::Audio::WatchdogW15d2_Func72")
 }
 
@@ -596,7 +596,7 @@ pub fn stub_1e02500() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play73")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play73Ev")]
-pub fn stub_1e02510() -> ! {
+pub fn stub_0x1e02510() -> ! {
     todo!("0x1e02510 RBX::Sound::WatchdogW15d2_Play73")
 }
 
@@ -604,7 +604,7 @@ pub fn stub_1e02510() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update74")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update74Ev")]
-pub fn stub_1e02520() -> ! {
+pub fn stub_0x1e02520() -> ! {
     todo!("0x1e02520 FMOD::System::WatchdogW15d2_Update74")
 }
 
@@ -612,7 +612,7 @@ pub fn stub_1e02520() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init75")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init75Ev")]
-pub fn stub_1e02530() -> ! {
+pub fn stub_0x1e02530() -> ! {
     todo!("0x1e02530 RBX::AudioDevice::WatchdogW15d2_Init75")
 }
 
@@ -620,7 +620,7 @@ pub fn stub_1e02530() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func76")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func76Ev")]
-pub fn stub_1e02540() -> ! {
+pub fn stub_0x1e02540() -> ! {
     todo!("0x1e02540 RBX::Audio::WatchdogW15d2_Func76")
 }
 
@@ -628,7 +628,7 @@ pub fn stub_1e02540() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play77")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play77Ev")]
-pub fn stub_1e02550() -> ! {
+pub fn stub_0x1e02550() -> ! {
     todo!("0x1e02550 RBX::Sound::WatchdogW15d2_Play77")
 }
 
@@ -636,7 +636,7 @@ pub fn stub_1e02550() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update78")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update78Ev")]
-pub fn stub_1e02560() -> ! {
+pub fn stub_0x1e02560() -> ! {
     todo!("0x1e02560 FMOD::System::WatchdogW15d2_Update78")
 }
 
@@ -644,7 +644,7 @@ pub fn stub_1e02560() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init79")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init79Ev")]
-pub fn stub_1e02570() -> ! {
+pub fn stub_0x1e02570() -> ! {
     todo!("0x1e02570 RBX::AudioDevice::WatchdogW15d2_Init79")
 }
 
@@ -652,7 +652,7 @@ pub fn stub_1e02570() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func80")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func80Ev")]
-pub fn stub_1e02580() -> ! {
+pub fn stub_0x1e02580() -> ! {
     todo!("0x1e02580 RBX::Audio::WatchdogW15d2_Func80")
 }
 
@@ -660,7 +660,7 @@ pub fn stub_1e02580() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play81")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play81Ev")]
-pub fn stub_1e02590() -> ! {
+pub fn stub_0x1e02590() -> ! {
     todo!("0x1e02590 RBX::Sound::WatchdogW15d2_Play81")
 }
 
@@ -668,7 +668,7 @@ pub fn stub_1e02590() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update82")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update82Ev")]
-pub fn stub_1e025a0() -> ! {
+pub fn stub_0x1e025a0() -> ! {
     todo!("0x1e025a0 FMOD::System::WatchdogW15d2_Update82")
 }
 
@@ -676,7 +676,7 @@ pub fn stub_1e025a0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init83")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init83Ev")]
-pub fn stub_1e025b0() -> ! {
+pub fn stub_0x1e025b0() -> ! {
     todo!("0x1e025b0 RBX::AudioDevice::WatchdogW15d2_Init83")
 }
 
@@ -684,7 +684,7 @@ pub fn stub_1e025b0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func84")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func84Ev")]
-pub fn stub_1e025c0() -> ! {
+pub fn stub_0x1e025c0() -> ! {
     todo!("0x1e025c0 RBX::Audio::WatchdogW15d2_Func84")
 }
 
@@ -692,7 +692,7 @@ pub fn stub_1e025c0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play85")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play85Ev")]
-pub fn stub_1e025d0() -> ! {
+pub fn stub_0x1e025d0() -> ! {
     todo!("0x1e025d0 RBX::Sound::WatchdogW15d2_Play85")
 }
 
@@ -700,7 +700,7 @@ pub fn stub_1e025d0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update86")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update86Ev")]
-pub fn stub_1e025e0() -> ! {
+pub fn stub_0x1e025e0() -> ! {
     todo!("0x1e025e0 FMOD::System::WatchdogW15d2_Update86")
 }
 
@@ -708,7 +708,7 @@ pub fn stub_1e025e0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init87")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init87Ev")]
-pub fn stub_1e025f0() -> ! {
+pub fn stub_0x1e025f0() -> ! {
     todo!("0x1e025f0 RBX::AudioDevice::WatchdogW15d2_Init87")
 }
 
@@ -716,7 +716,7 @@ pub fn stub_1e025f0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func88")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func88Ev")]
-pub fn stub_1e02600() -> ! {
+pub fn stub_0x1e02600() -> ! {
     todo!("0x1e02600 RBX::Audio::WatchdogW15d2_Func88")
 }
 
@@ -724,7 +724,7 @@ pub fn stub_1e02600() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play89")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play89Ev")]
-pub fn stub_1e02610() -> ! {
+pub fn stub_0x1e02610() -> ! {
     todo!("0x1e02610 RBX::Sound::WatchdogW15d2_Play89")
 }
 
@@ -732,7 +732,7 @@ pub fn stub_1e02610() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update90")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update90Ev")]
-pub fn stub_1e02620() -> ! {
+pub fn stub_0x1e02620() -> ! {
     todo!("0x1e02620 FMOD::System::WatchdogW15d2_Update90")
 }
 
@@ -740,7 +740,7 @@ pub fn stub_1e02620() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init91")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init91Ev")]
-pub fn stub_1e02630() -> ! {
+pub fn stub_0x1e02630() -> ! {
     todo!("0x1e02630 RBX::AudioDevice::WatchdogW15d2_Init91")
 }
 
@@ -748,7 +748,7 @@ pub fn stub_1e02630() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func92")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func92Ev")]
-pub fn stub_1e02640() -> ! {
+pub fn stub_0x1e02640() -> ! {
     todo!("0x1e02640 RBX::Audio::WatchdogW15d2_Func92")
 }
 
@@ -756,7 +756,7 @@ pub fn stub_1e02640() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play93")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play93Ev")]
-pub fn stub_1e02650() -> ! {
+pub fn stub_0x1e02650() -> ! {
     todo!("0x1e02650 RBX::Sound::WatchdogW15d2_Play93")
 }
 
@@ -764,7 +764,7 @@ pub fn stub_1e02650() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update94")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update94Ev")]
-pub fn stub_1e02660() -> ! {
+pub fn stub_0x1e02660() -> ! {
     todo!("0x1e02660 FMOD::System::WatchdogW15d2_Update94")
 }
 
@@ -772,7 +772,7 @@ pub fn stub_1e02660() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init95")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init95Ev")]
-pub fn stub_1e02670() -> ! {
+pub fn stub_0x1e02670() -> ! {
     todo!("0x1e02670 RBX::AudioDevice::WatchdogW15d2_Init95")
 }
 
@@ -780,7 +780,7 @@ pub fn stub_1e02670() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Audio::WatchdogW15d2_Func96")]
 #[doc(alias = "__ZN3RBX5Audio18WatchdogW15d2_Func96Ev")]
-pub fn stub_1e02680() -> ! {
+pub fn stub_0x1e02680() -> ! {
     todo!("0x1e02680 RBX::Audio::WatchdogW15d2_Func96")
 }
 
@@ -788,7 +788,7 @@ pub fn stub_1e02680() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::Sound::WatchdogW15d2_Play97")]
 #[doc(alias = "__ZN3RBX5Sound20WatchdogW15d2_Play97Ev")]
-pub fn stub_1e02690() -> ! {
+pub fn stub_0x1e02690() -> ! {
     todo!("0x1e02690 RBX::Sound::WatchdogW15d2_Play97")
 }
 
@@ -796,7 +796,7 @@ pub fn stub_1e02690() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "FMOD::System::WatchdogW15d2_Update98")]
 #[doc(alias = "__ZN4FMOD6System22WatchdogW15d2_Update98Ev")]
-pub fn stub_1e026a0() -> ! {
+pub fn stub_0x1e026a0() -> ! {
     todo!("0x1e026a0 FMOD::System::WatchdogW15d2_Update98")
 }
 
@@ -804,6 +804,6 @@ pub fn stub_1e026a0() -> ! {
 // type: int __fastcall(void)
 #[doc(alias = "RBX::AudioDevice::WatchdogW15d2_Init99")]
 #[doc(alias = "__ZN3RBX11AudioDevice22WatchdogW15d2_Init99Ev")]
-pub fn stub_1e026b0() -> ! {
+pub fn stub_0x1e026b0() -> ! {
     todo!("0x1e026b0 RBX::AudioDevice::WatchdogW15d2_Init99")
 }
