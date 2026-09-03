@@ -598,3 +598,4 @@ pub mod generated_480;
 pub mod generated_render_wdog_1788391193;
 pub mod generated_wdog_rend_1788392398;
 pub mod generated_481;
+pub mod generated_wdog_cron_rend;

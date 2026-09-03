@@ -383,7 +383,6 @@ pub mod generated_plat_watchdog_1788362712;
 pub mod generated_plat_watchdog_1788362714;
 pub mod generated_plat_wdcron_D;
 pub mod generated_plat_wdcron_E;
-
 pub mod generated_plat_wdog_D_1788368206;
 pub mod generated_plat_cg;
 pub mod generated_plat_ch;
@@ -416,3 +415,4 @@ pub mod generated_platform_shard_216;
 pub mod generated_platA_watchdog_1788389928;
 pub mod generated_plat_cj;
 pub mod generated_wdog_plat_1788392266;
+pub mod generated_wdog_cron_plat;
