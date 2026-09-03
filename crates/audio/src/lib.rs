@@ -141,11 +141,93 @@ pub mod generated_watchdog_audio_w4;
 pub mod generated_watchdog_audio_w4b;
 pub mod generated_watchdog_audio_w6;
 pub mod generated_228;
+// FMOD profile-cluster model (IDA 0x686a4..0x69280, fmod_profile*.cpp).
+// Field order mirrors the 32-bit ARM target; link words are host-sized raw
+// pointers so the intrusive lists actually link on the host.
+pub const FMOD_OK: i32 = 0;
+// IDA 0x68824 / 0x690e4: MemPool::alloc failure returns 44 (FMOD_ERR_MEMORY).
+pub const FMOD_ERR_MEMORY: i32 = 44;
+
+// IDA off_11CD410 / off_11CD424 / off_11CD438 / off_11CD44C: image-relative
+// vtables installed by the C2 ctors below; 0 here = unlinked host model.
+const VTABLE_PROFILE_CPU: u32 = 0;
+const VTABLE_PROFILE_DSP: u32 = 0;
+const VTABLE_PROFILE_MODULE: u32 = 0;
+const VTABLE_PROFILE: u32 = 0;
+
+/// Intrusive doubly-linked node (two words, e.g. ProfileModule +4/+8).
+#[repr(C)]
+pub struct ModuleLink {
+    pub next: *mut ModuleLink,
+    pub prev: *mut ModuleLink,
+}
+
+/// FMOD::ProfileModule — 24 bytes (IDA 0x691c8).
+#[repr(C)]
+pub struct ProfileModule {
+    pub vtable: u32,
+    pub link: ModuleLink,
+    pub u12: u32,
+    pub u16: u32,
+    pub u20: u32,
+}
+
+/// FMOD::ProfileCpu — 24 bytes, base plus own vtable (IDA 0x68794).
+#[repr(C)]
+pub struct ProfileCpu {
+    pub base: ProfileModule,
+}
+
+/// FMOD::ProfileDsp — 52 bytes (IDA 0x69028). The heap buffers behind +24/+32
+/// are Vecs here; cursor/end (+36/+40) are offsets into packet_space.
+pub struct ProfileDsp {
+    pub base: ProfileModule,
+    pub node_space: Vec<u32>,
+    pub node_capacity: u32,
+    pub packet_space: Vec<u8>,
+    pub packet_cursor: usize,
+    pub packet_end: usize,
+    pub reserved: u32,
+    pub packet_grow: u32,
+}
+
+/// FMOD::Profile — 48 bytes (IDA 0x6914c). Word +4 is never written by the
+/// ctor (garbage preserved); word +40 defaults to 50 (max clients).
+#[repr(C)]
+pub struct Profile {
+    pub vtable: u32,
+    pub u4: u32,
+    pub listen_socket: u32,
+    pub client_list: ModuleLink,
+    pub u20: u32,
+    pub module_list: ModuleLink,
+    pub u32_field: u32,
+    pub critical_section: u32,
+    pub max_clients: u32,
+    pub last_tick_ms: u32,
+}
+
+/// RBX::Soundscape::SoundService view — only the ambient-reverb word at +0x94
+/// is modelled (IDA 0x376fb8: LDR.W R0,[R0,#0x94]).
+#[repr(C)]
+pub struct SoundServiceView {
+    pad: [u8; 0x94],
+    pub ambient_reverb: i32,
+}
+
+/// RBX::Soundscape::SoundChannel view — only the play-count word at +0x80
+/// is modelled (IDA 0x37706c: LDR.W R0,[R0,#0x80]).
+#[repr(C)]
+pub struct SoundChannelView {
+    pad: [u8; 0x80],
+    pub play_count: i32,
+}
 
 // 0x686a4 — __ZN4FMOD10ProfileCpu4initEv
 #[doc(alias = "FMOD::ProfileCpu::init(void)")]
-pub fn stub_686a4() -> ! {
-    todo!("0x686a4 FMOD::ProfileCpu::init(void)")
+pub fn stub_686a4(_cpu: &mut ProfileCpu) -> i32 {
+    // IDA 0x686a4: no-op init, returns FMOD_OK (0x686a8).
+    FMOD_OK
 }
 
 // 0x686ac — __ZN4FMOD10ProfileCpu6updateEPNS_7SystemIEj
@@ -156,20 +238,26 @@ pub fn stub_686ac() -> ! {
 
 // 0x68758 — __ZN4FMOD10ProfileCpu7releaseEv
 #[doc(alias = "FMOD::ProfileCpu::release(void)")]
-pub fn stub_68758() -> ! {
-    todo!("0x68758 FMOD::ProfileCpu::release(void)")
+pub fn stub_68758(_cpu: Box<ProfileCpu>) -> i32 {
+    // IDA 0x68758: MemPool::free(this, fmod_profile_cpu.cpp:73); return 0 (0x68788).
+    // Box drop frees the block; the pool header itself is out of scope.
+    FMOD_OK
 }
 
 // 0x68794 — __ZN4FMOD10ProfileCpuC2Ev
 #[doc(alias = "FMOD::ProfileCpu::ProfileCpu(void)")]
-pub fn stub_68794() -> ! {
-    todo!("0x68794 FMOD::ProfileCpu::ProfileCpu(void)")
+pub fn stub_68794(cpu: &mut ProfileCpu) -> &mut ProfileCpu {
+    // IDA 0x68794: base C2 (0x687a0), then installs the ProfileCpu vtable (0x687b0).
+    stub_691c8(&mut cpu.base);
+    cpu.base.vtable = VTABLE_PROFILE_CPU;
+    cpu
 }
 
 // 0x687bc — __ZN4FMOD10ProfileCpuC1Ev
 #[doc(alias = "FMOD::ProfileCpu::ProfileCpu(void)")]
-pub fn stub_687bc() -> ! {
-    todo!("0x687bc FMOD::ProfileCpu::ProfileCpu(void)")
+pub fn stub_687bc(cpu: &mut ProfileCpu) -> &mut ProfileCpu {
+    // IDA 0x687bc: thunk tail-calling C2.
+    stub_68794(cpu)
 }
 
 // 0x687c0 — __ZN4FMOD22FMOD_ProfileCpu_CreateEv
@@ -210,26 +298,59 @@ pub fn stub_68b68() -> ! {
 
 // 0x68dfc — __ZN4FMOD10ProfileDsp7releaseEv
 #[doc(alias = "FMOD::ProfileDsp::release(void)")]
-pub fn stub_68dfc() -> ! {
-    todo!("0x68dfc FMOD::ProfileDsp::release(void)")
+pub fn stub_68dfc(_dsp: Box<ProfileDsp>) -> i32 {
+    // IDA 0x68dfc: free node_space (:104), zero it (:108); free packet_space
+    // (:110), zero cursor views (:116-...); free this (:116); return 0 (0x68ea0).
+    // Vec fields drop with the box, covering all three frees.
+    FMOD_OK
 }
 
 // 0x68ebc — __ZN4FMOD10ProfileDsp4initEv
 #[doc(alias = "FMOD::ProfileDsp::init(void)")]
-pub fn stub_68ebc() -> ! {
-    todo!("0x68ebc FMOD::ProfileDsp::init(void)")
+pub fn stub_68ebc(dsp: &mut ProfileDsp) -> i32 {
+    // IDA 0x68ebc: alloc 4 * node_capacity node words (:81); calloc
+    // 61 * packet_grow + 17 packet bytes (:86); 44 if either fails (0x69004).
+    // On success cursor = base, end = base + 17 (0x68f64/0x68f6c).
+    let mut nodes = Vec::new();
+    if nodes.try_reserve(dsp.node_capacity as usize).is_err() {
+        return FMOD_ERR_MEMORY;
+    }
+    nodes.resize(dsp.node_capacity as usize, 0);
+    let mut packet = Vec::new();
+    if packet.try_reserve(61 * dsp.packet_grow as usize + 17).is_err() {
+        return FMOD_ERR_MEMORY;
+    }
+    packet.resize(61 * dsp.packet_grow as usize + 17, 0);
+    dsp.node_space = nodes;
+    dsp.packet_space = packet;
+    dsp.packet_cursor = 0;
+    dsp.packet_end = 17;
+    FMOD_OK
 }
 
 // 0x69028 — __ZN4FMOD10ProfileDspC2Ev
 #[doc(alias = "FMOD::ProfileDsp::ProfileDsp(void)")]
-pub fn stub_69028() -> ! {
-    todo!("0x69028 FMOD::ProfileDsp::ProfileDsp(void)")
+pub fn stub_69028(dsp: &mut ProfileDsp) -> &mut ProfileDsp {
+    // IDA 0x69028: base C2 (0x69034); node_capacity = 32 (0x69040); installs
+    // the ProfileDsp vtable (0x6904c); zeroes buffer views (0x69054-0x69064);
+    // packet_grow = 300 (0x6906c).
+    stub_691c8(&mut dsp.base);
+    dsp.base.vtable = VTABLE_PROFILE_DSP;
+    dsp.node_space = Vec::new();
+    dsp.node_capacity = 32;
+    dsp.packet_space = Vec::new();
+    dsp.packet_cursor = 0;
+    dsp.packet_end = 0;
+    dsp.reserved = 0;
+    dsp.packet_grow = 300;
+    dsp
 }
 
 // 0x69078 — __ZN4FMOD10ProfileDspC1Ev
 #[doc(alias = "FMOD::ProfileDsp::ProfileDsp(void)")]
-pub fn stub_69078() -> ! {
-    todo!("0x69078 FMOD::ProfileDsp::ProfileDsp(void)")
+pub fn stub_69078(dsp: &mut ProfileDsp) -> &mut ProfileDsp {
+    // IDA 0x69078: thunk tail-calling C2.
+    stub_69028(dsp)
 }
 
 // 0x6907c — __ZN4FMOD22FMOD_ProfileDsp_CreateEv
@@ -240,44 +361,78 @@ pub fn stub_6907c() -> ! {
 
 // 0x6914c — __ZN4FMOD7ProfileC2Ev
 #[doc(alias = "FMOD::Profile::Profile(void)")]
-pub fn stub_6914c() -> ! {
-    todo!("0x6914c FMOD::Profile::Profile(void)")
+pub fn stub_6914c(profile: &mut Profile) -> &mut Profile {
+    // IDA 0x6914c: installs the Profile vtable (0x6915c); self-links the
+    // client list (0x69164/0x69168) and module list (0x69170/0x69174); zeroes
+    // +20/+32/+8/+36/+44 (0x6917c/0x69180/0x69184/0x69188/0x69190); +40 = 50
+    // max clients (0x6918c). Word +4 is never written (garbage preserved).
+    profile.vtable = VTABLE_PROFILE;
+    profile.client_list.next = &mut profile.client_list;
+    profile.client_list.prev = &mut profile.client_list;
+    profile.module_list.next = &mut profile.module_list;
+    profile.module_list.prev = &mut profile.module_list;
+    profile.u20 = 0;
+    profile.u32_field = 0;
+    profile.listen_socket = 0;
+    profile.critical_section = 0;
+    profile.max_clients = 50;
+    profile.last_tick_ms = 0;
+    profile
 }
 
 // 0x6919c — __ZN4FMOD7ProfileC1Ev
 #[doc(alias = "FMOD::Profile::Profile(void)")]
-pub fn stub_6919c() -> ! {
-    todo!("0x6919c FMOD::Profile::Profile(void)")
+pub fn stub_6919c(profile: &mut Profile) -> &mut Profile {
+    // IDA 0x6919c: thunk tail-calling C2.
+    stub_6914c(profile)
 }
 
 // 0x691a0 — __ZN4FMOD7Profile14registerModuleEPNS_13ProfileModuleE
 #[doc(alias = "FMOD::Profile::registerModule(FMOD::ProfileModule *)")]
-pub fn stub_691a0() -> ! {
-    todo!("0x691a0 FMOD::Profile::registerModule(FMOD::ProfileModule *)")
+pub fn stub_691a0(profile: &mut Profile, module: &mut ProfileModule) -> i32 {
+    // IDA 0x691a0: intrusive tail-insert of the module link into the profile
+    // module list: prev = head.prev (0x691a8); head.prev = &link (0x691b0);
+    // next = &head (0x691b4); old-tail.next = &link (0x691c0); return 0.
+    module.link.prev = profile.module_list.prev;
+    module.link.next = &mut profile.module_list;
+    profile.module_list.prev = &mut module.link;
+    unsafe { (*module.link.prev).next = &mut module.link };
+    FMOD_OK
 }
 
 // 0x691c8 — __ZN4FMOD13ProfileModuleC2Ev
 #[doc(alias = "FMOD::ProfileModule::ProfileModule(void)")]
-pub fn stub_691c8() -> ! {
-    todo!("0x691c8 FMOD::ProfileModule::ProfileModule(void)")
+pub fn stub_691c8(module: &mut ProfileModule) -> &mut ProfileModule {
+    // IDA 0x691c8: self-links +4/+8 (0x691cc/0x691d0); zeroes +12/+16/+20
+    // (0x691e4/0x691ec/0x691f0); installs the ProfileModule vtable (0x691e8).
+    module.link.next = &mut module.link;
+    module.link.prev = &mut module.link;
+    module.u12 = 0;
+    module.u16 = 0;
+    module.u20 = 0;
+    module.vtable = VTABLE_PROFILE_MODULE;
+    module
 }
 
 // 0x691fc — __ZN4FMOD13ProfileModule4initEv
 #[doc(alias = "FMOD::ProfileModule::init(void)")]
-pub fn stub_691fc() -> ! {
-    todo!("0x691fc FMOD::ProfileModule::init(void)")
+pub fn stub_691fc(_module: &mut ProfileModule) -> i32 {
+    // IDA 0x691fc: base no-op init, returns FMOD_OK (0x69200).
+    FMOD_OK
 }
 
 // 0x69204 — __ZN4FMOD13ProfileModule7releaseEv
 #[doc(alias = "FMOD::ProfileModule::release(void)")]
-pub fn stub_69204() -> ! {
-    todo!("0x69204 FMOD::ProfileModule::release(void)")
+pub fn stub_69204(_module: &mut ProfileModule) -> i32 {
+    // IDA 0x69204: base no-op release, returns FMOD_OK (0x69208).
+    FMOD_OK
 }
 
 // 0x6920c — __ZN4FMOD13ProfileModule6updateEPNS_7SystemIEj
 #[doc(alias = "FMOD::ProfileModule::update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_6920c() -> ! {
-    todo!("0x6920c FMOD::ProfileModule::update(FMOD::SystemI *,unsigned int)")
+pub fn stub_6920c() -> i32 {
+    // IDA 0x6920c: base no-op update, returns FMOD_OK (0x69210).
+    FMOD_OK
 }
 
 // 0x69214 — __ZN4FMOD13ProfileClientC2Ev
@@ -13642,8 +13797,9 @@ pub fn stub_376f90() -> ! {
 
 // 0x376fb8 — __ZNK3RBX10Soundscape12SoundService16getAmbientReverbEv
 #[doc(alias = "RBX::Soundscape::SoundService::getAmbientReverb(void)const")]
-pub fn stub_376fb8() -> ! {
-    todo!("0x376fb8 RBX::Soundscape::SoundService::getAmbientReverb(void)const")
+pub fn stub_376fb8(service: &SoundServiceView) -> i32 {
+    // IDA 0x376fb8: LDR.W R0,[R0,#0x94]; returns the ambient-reverb word.
+    service.ambient_reverb
 }
 
 // 0x376fc0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEED1Ev
@@ -13680,8 +13836,9 @@ pub fn stub_377048() -> ! {
 
 // 0x37706c — __ZNK3RBX10Soundscape12SoundChannel12getPlayCountEv
 #[doc(alias = "RBX::Soundscape::SoundChannel::getPlayCount(void)const")]
-pub fn stub_37706c() -> ! {
-    todo!("0x37706c RBX::Soundscape::SoundChannel::getPlayCount(void)const")
+pub fn stub_37706c(channel: &SoundChannelView) -> i32 {
+    // IDA 0x37706c: LDR.W R0,[R0,#0x80]; returns the play-count word.
+    channel.play_count
 }
 
 // 0x377074 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEiED1Ev
