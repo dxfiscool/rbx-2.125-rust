@@ -161,6 +161,70 @@ pub struct XmlAttribute {
     pub alloc_state: u32,
     pub pair: XmlNameValuePair,
 }
+/// Rust model of `RBX::Guid::Data::operator<` (IDA `0x322b10`): lexicographic
+/// comparison of the two words (first word, tie-broken by `+4`).
+pub fn guid_data_less(a: &GuidData, b: &GuidData) -> bool {
+    (a.lo, a.hi) < (b.lo, b.hi)
+}
+
+/// Rust model of `std::_Rb_tree<Guid::Data, pair<const Guid::Data, Instance*>,
+/// ...>` — the guid→instance map at `GuidRegistry + 8` (IDA `0x705088`).
+/// Keys are unique, so ordering only matters for `equal_range` bounds and the
+/// tree collapses into a `HashMap` (same entry type as `GuidRegistry::map`).
+pub type GuidTree = HashMap<GuidData, *const Instance>;
+
+/// Rust model of a `std::_Rb_tree_iterator` over the guid map (IDA `0x7050b0`):
+/// the key at the cursor, `None` for the end iterator.
+pub type GuidIter = Option<GuidData>;
+
+/// Operation selector for `boost::detail::function::functor_manager::manage`
+/// (IDA `0x705780`/`0x706298` discriminants: 0 clone, 1 move, 2 destroy,
+/// 3 check-type, 4 get-type).
+#[derive(Clone, Copy, PartialEq, Eq)]
+pub enum FunctorOp {
+    Clone,
+    Move,
+    Destroy,
+    CheckType,
+    GetType,
+}
+
+/// Rust model of `boost::_bi::bind_t<bool, bool (*)(Instance*, Instance*),
+/// list2<value<Instance*>, arg<1>>>` (IDA `0x705780`): bound target + predicate.
+/// The 8-byte `function_buffer` holds exactly these two words (disasm
+/// `LDRD/STRD` at `0x705794`).
+#[derive(Clone, Copy)]
+pub struct BindPredicate {
+    pub target: *const Instance,
+    pub func: fn(*const Instance, *const Instance) -> bool,
+}
+
+/// Mangled type name `strcmp`ed by the check path (disasm `0x7057aa`-`0x7057ba`).
+pub const BIND_PREDICATE_TYPE_NAME: &str =
+    "N5boost3_bi6bind_tIbPFbPN3RBX8InstanceES4_ENS0_5list2INS0_5valueIS4_EENS_3argILi1EEEEEEE";
+
+/// Rust model of a `bool (*)(RBX::Instance *)` functor buffer (IDA `0x706298`).
+#[derive(Clone, Copy)]
+pub struct BoolPredicate {
+    pub func: fn(*const Instance) -> bool,
+}
+
+/// Mangled type name `strcmp`ed by the check path (disasm `0x7062d2`-`0x7062e2`).
+pub const BOOL_PREDICATE_TYPE_NAME: &str = "PFbPN3RBX8InstanceEE";
+
+/// Rust model of an `rbx::signals::signal<...>::slot` link walked by `next`
+/// (IDA `0x7057f0`): the intrusive `+8` successor becomes `next`;
+/// retain/release become `clone`/`drop`.
+pub struct SlotNode {
+    pub next: Option<SharedPtr<SlotNode>>,
+}
+
+/// Process-wide mutex behind `safe_static_do_get_mutex` (IDA `0x7059a0`).
+static SIGNAL_STATIC_MUTEX: Mutex<()> = Mutex::new(());
+
+/// Global slot-exception handler for the 2-arg Instance signal (IDA `0x705950`
+/// `rbx::signals::slot_exception_handler`); owned by other translation units.
+pub static SLOT_EXCEPTION_HANDLER: Mutex<Option<fn(&str)>> = Mutex::new(None);
 
 // 0x703444 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_8InstanceEFN5boost10shared_ptrIS2_EESsES5_Li1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Instance,rbx_core::SharedPtr<RBX::Instance> ()(std::string),rbx_core::SharedPtr<RBX::Instance>,1>::~BoundYieldFuncDesc()")]
@@ -446,23 +510,86 @@ pub fn stub_0x704ee8(registry: *const GuidRegistry, item: *mut GuidItem) {
 }
 // 0x705088 — __ZNSt8_Rb_treeIN3RBX4Guid4DataESt4pairIKS2_PNS0_8InstanceEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE5eraseERS4_
 #[doc(alias = "std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,RBX::Instance *>,std::_Select1st<std::pair<RBX::Guid::Data const,RBX::Instance *>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,RBX::Instance *>>>::erase(RBX::Guid::Data const&)")]
-pub fn stub_0x705088() -> ! {
-    todo!("0x705088 std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,RBX::Instance *>,std::_Select1st<std::pair<RBX::Guid::Data const,RBX::Instance *>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,RBX::Instance *>>>::erase(RBX::Guid::Data const&)")
+pub fn stub_0x705088(tree: *mut GuidTree, key: &GuidData) -> usize {
+    // IDA 0x705088: `equal_range(key)` into a stack pair (disasm `BL equal_range`
+    // at 0x705096), snapshot `size` (`LDR R5,[R4,#0x14]`), `erase(first, last)`
+    // (disasm 0x7050a2), return `old - new` (`SUBS R0,R5,R0`).
+    // SAFETY: `tree` must point to a valid `GuidTree`; `key` must be readable.
+    unsafe {
+        let (first, last) = stub_0x7050b0(tree, key);
+        let old = (*tree).len();
+        stub_0x705110(tree, first, last);
+        old - (*tree).len()
+    }
 }
 // 0x7050b0 — __ZNSt8_Rb_treeIN3RBX4Guid4DataESt4pairIKS2_PNS0_8InstanceEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE11equal_rangeERS4_
 #[doc(alias = "std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,RBX::Instance *>,std::_Select1st<std::pair<RBX::Guid::Data const,RBX::Instance *>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,RBX::Instance *>>>::equal_range(RBX::Guid::Data const&)")]
-pub fn stub_0x7050b0() -> ! {
-    todo!("0x7050b0 std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,RBX::Instance *>,std::_Select1st<std::pair<RBX::Guid::Data const,RBX::Instance *>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,RBX::Instance *>>>::equal_range(RBX::Guid::Data const&)")
+pub fn stub_0x7050b0(tree: *const GuidTree, key: &GuidData) -> (GuidIter, GuidIter) {
+    // IDA 0x7050b0: two descending walks from the root (`+8`): the lower walk
+    // keeps the last node with `!(node < key)` (disasm 0x7050ca-0x7050e4), the
+    // upper walk keeps the last node with `key < node` (disasm 0x7050e8-0x705102),
+    // both via `Guid::Data::operator<` (IDA 0x322b10, see `guid_data_less`).
+    // Keys are unique so the range holds at most `key` itself; linear scans
+    // find the same lower/upper bounds.
+    // SAFETY: `tree` must point to a valid `GuidTree`; `key` must be readable.
+    unsafe {
+        let mut lower: GuidIter = None;
+        let mut upper: GuidIter = None;
+        for k in (*tree).keys() {
+            if !guid_data_less(k, key) && lower.is_none_or(|l| guid_data_less(k, &l)) {
+                lower = Some(*k);
+            }
+            if guid_data_less(key, k) && upper.is_none_or(|u| guid_data_less(&u, k)) {
+                upper = Some(*k);
+            }
+        }
+        (lower, upper)
+    }
 }
 // 0x705110 — __ZNSt8_Rb_treeIN3RBX4Guid4DataESt4pairIKS2_PNS0_8InstanceEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE5eraseESt17_Rb_tree_iteratorIS7_ESF_
 #[doc(alias = "std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,RBX::Instance *>,std::_Select1st<std::pair<RBX::Guid::Data const,RBX::Instance *>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,RBX::Instance *>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Guid::Data const,RBX::Instance *>>,std::_Rb_tree_iterator<std::pair<RBX::Guid::Data const,RBX::Instance *>>)")]
-pub fn stub_0x705110() -> ! {
-    todo!("0x705110 std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,RBX::Instance *>,std::_Select1st<std::pair<RBX::Guid::Data const,RBX::Instance *>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,RBX::Instance *>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Guid::Data const,RBX::Instance *>>,std::_Rb_tree_iterator<std::pair<RBX::Guid::Data const,RBX::Instance *>>)")
+pub fn stub_0x705110(tree: *mut GuidTree, first: GuidIter, last: GuidIter) {
+    // IDA 0x705110: `first == begin && last == end` (disasm 0x705124-0x70512a)
+    // takes the `_M_erase(root)` + header-reset path (disasm 0x705154-0x705168);
+    // else loop `increment; rebalance_for_erase; operator delete; size--`
+    // (disasm 0x705130-0x705150). C++03 returns `void` here; the decompiler's
+    // trailing value is a leftover register. The fast path and the loop agree
+    // on observable state, so one bounded-removal loop covers both (equal
+    // bounds erase nothing, matching the original's `(end, end)` no-op);
+    // per-node `operator delete` is allocator reclaim.
+    // SAFETY: `tree` must point to a valid `GuidTree`.
+    unsafe {
+        if first == last {
+            return;
+        }
+        let doomed: Vec<GuidData> = (*tree)
+            .keys()
+            .copied()
+            .filter(|k| {
+                first.is_none_or(|f| !guid_data_less(k, &f))
+                    && last.is_none_or(|l| guid_data_less(k, &l))
+            })
+            .collect();
+        for k in doomed {
+            (*tree).remove(&k);
+        }
+    }
 }
 // 0x705170 — __ZNSt8_Rb_treeIN3RBX4Guid4DataESt4pairIKS2_PNS0_8InstanceEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
 #[doc(alias = "std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,RBX::Instance *>,std::_Select1st<std::pair<RBX::Guid::Data const,RBX::Instance *>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,RBX::Instance *>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Guid::Data const,RBX::Instance *>> *)")]
-pub fn stub_0x705170() -> ! {
-    todo!("0x705170 std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,RBX::Instance *>,std::_Select1st<std::pair<RBX::Guid::Data const,RBX::Instance *>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,RBX::Instance *>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Guid::Data const,RBX::Instance *>> *)")
+pub fn stub_0x705170(tree: *mut GuidTree, node: GuidIter) {
+    // IDA 0x705170: null node returns at once (`CMP R5,#0; POPEQ`, disasm
+    // 0x705176-0x70517c); else post-order `_M_erase(left at +12)`, take right
+    // at `+8`, `operator delete(node)`, continue with right (disasm
+    // 0x70517e-0x705192). The flat `HashMap` model has no child links or
+    // manual nodes: destroying one node is removing its entry, and the
+    // per-node `operator delete` is allocator reclaim.
+    // SAFETY: `tree` must point to a valid `GuidTree`.
+    unsafe {
+        if let Some(k) = node {
+            (*tree).remove(&k);
+        }
+    }
 }
 // 0x7053f8 — __ZN3RBX22AbstractFactoryProductINS_8InstanceEED1Ev
 #[doc(alias = "RBX::AbstractFactoryProduct<RBX::Instance>::~AbstractFactoryProduct()")]
@@ -483,50 +610,119 @@ pub fn stub_0x7053fc(this: *mut AbstractFactoryProduct) {
 // 0x70566c — __ZN5boost3_bi5list2INS_3argILi1EEENS0_5valueIPiEEEclIPFvNS_10shared_ptrIN3RBX8InstanceEEES5_ENS0_5list1IRKSC_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list2<boost::arg<1>,boost::_bi::value<int *>>::operator()<void (*)(rbx_core::SharedPtr<RBX::Instance>,int *),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::Instance>,int *) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")]
 // was: void boost::_bi::list2<boost::arg<1>,boost::_bi::value<int *>>::operator()<void (*)(boost::shared_ptr<RBX::Instance>,int *),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::Instance>,int *) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)
-pub fn stub_0x70566c() -> ! {
-    todo!("0x70566c void boost::_bi::list2<boost::arg<1>,boost::_bi::value<int *>>::operator()<void (*)(rbx_core::SharedPtr<RBX::Instance>,int *),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::Instance>,int *) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")
+pub fn stub_0x70566c(
+    func: fn(SharedPtr<Instance>, *mut i32),
+    bound: *mut i32,
+    arg: &SharedPtr<Instance>,
+) {
+    // IDA 0x70566c: `shared_count` copy of the incoming `list1` arg
+    // (`BL shared_count::shared_count`, disasm 0x70569e), call
+    // `f(retained, *value<int*>)` (decomp `v13(&pi, *a1)`), then `release` on
+    // scope exit — with SjLj unwind tables. `clone` + call + end-of-scope drop
+    // is the same pair; a panic unwinds through the caller instead.
+    func(arg.clone(), bound);
 }
 // 0x705780 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIbPFbPN3RBX8InstanceES7_ENS3_5list2INS3_5valueIS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<bool,bool (*)(RBX::Instance *,RBX::Instance *),boost::_bi::list2<boost::_bi::value<RBX::Instance *>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<bool,bool (*)(RBX::Instance *,RBX::Instance *),boost::_bi::list2<boost::_bi::value<RBX::Instance *>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x705780() -> ! {
-    todo!("0x705780 boost::detail::function::functor_manager<boost::_bi::bind_t<bool,bool (*)(RBX::Instance *,RBX::Instance *),boost::_bi::list2<boost::_bi::value<RBX::Instance *>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x705780(src: &BindPredicate, dst: &mut BindPredicate, op: FunctorOp) -> bool {
+    // IDA 0x705780 (disasm): clone/move (0/1) copy the 8-byte buffer when the
+    // destination is set (`LDRD/STRD`, 0x705794-0x705798) — move leaves the
+    // source stale, with no zeroing. destroy (2) is a bare return: the bind
+    // owns nothing. check (3) `strcmp`s the stored name
+    // (`BIND_PREDICATE_TYPE_NAME`, 0x7057aa-0x7057ba) and keeps the buffer on
+    // match, else zeroes it — a mismatch is unreachable in this single-type
+    // model. get (4) stores the `typeinfo` pointer + zero half — the compiler
+    // owns types here. Returns whether `dst` holds a live functor afterwards.
+    match op {
+        FunctorOp::Clone | FunctorOp::Move => {
+            *dst = *src;
+            true
+        }
+        FunctorOp::Destroy => false,
+        FunctorOp::CheckType => {
+            *dst = *src;
+            true
+        }
+        FunctorOp::GetType => true,
+    }
 }
 // 0x7057e0 — __ZN5boost6detail8function21function_obj_invoker1INS_3_bi6bind_tIbPFbPN3RBX8InstanceES7_ENS3_5list2INS3_5valueIS7_EENS_3argILi1EEEEEEEbS7_E6invokeERNS1_15function_bufferES7_
 #[doc(alias = "boost::detail::function::function_obj_invoker1<boost::_bi::bind_t<bool,bool (*)(RBX::Instance *,RBX::Instance *),boost::_bi::list2<boost::_bi::value<RBX::Instance *>,boost::arg<1>>>,bool,RBX::Instance *>::invoke(boost::detail::function::function_buffer &,RBX::Instance *)")]
 // was: boost::detail::function::function_obj_invoker1<boost::_bi::bind_t<bool,bool (*)(RBX::Instance *,RBX::Instance *),boost::_bi::list2<boost::_bi::value<RBX::Instance *>,boost::arg<1>>>,bool,RBX::Instance *>::invoke(boost::detail::function::function_buffer &,RBX::Instance *)
-pub fn stub_0x7057e0() -> ! {
-    todo!("0x7057e0 boost::detail::function::function_obj_invoker1<boost::_bi::bind_t<bool,bool (*)(RBX::Instance *,RBX::Instance *),boost::_bi::list2<boost::_bi::value<RBX::Instance *>,boost::arg<1>>>,bool,RBX::Instance *>::invoke(boost::detail::function::function_buffer &,RBX::Instance *)")
+pub fn stub_0x7057e0(bound: &BindPredicate, arg: *const Instance) -> bool {
+    // IDA 0x7057e0: `LDRD R2,R3,[R0]` loads the fn ptr + bound
+    // `value<Instance*>` from the buffer, `BLX R2` with the `Instance*` arg.
+    (bound.func)(bound.target, arg)
 }
 // 0x7057f0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES6_EE4nextERNS2_13intrusive_ptrINS8_4slotEEE
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot> &)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot> &)
-pub fn stub_0x7057f0() -> ! {
-    todo!("0x7057f0 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot> &)")
+pub fn stub_0x7057f0(
+    head: &Option<SharedPtr<SlotNode>>,
+    cursor: &mut Option<SharedPtr<SlotNode>>,
+) -> bool {
+    // IDA 0x7057f0: add_ref the incoming cursor (disasm 0x705840-0x70584a);
+    // `call_once` static init + `safe_static_do_get_mutex` (0x70584e-0x705876);
+    // lock; live cursor → `operator=(*cursor + 8)` (0x70588a-0x705898), empty
+    // cursor → `operator=(head)` (0x70589e-0x7058a4); unlock; release the old
+    // ref; return non-null (0x7058d6-0x7058f2). Clone-then-assign +
+    // end-of-scope drop is the same retain/release pairing.
+    let _guard = stub_0x7059a0().lock();
+    *cursor = match cursor.as_ref() {
+        Some(node) => node.next.clone(),
+        None => head.clone(),
+    };
+    cursor.is_some()
 }
 // 0x705950 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES6_EE8on_errorERSt9exception
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::on_error(std::exception &)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::on_error(std::exception &)
-pub fn stub_0x705950() -> ! {
-    todo!("0x705950 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::on_error(std::exception &)")
+pub fn stub_0x705950(err: &str) {
+    // IDA 0x705950: null handler → return the handler slot untouched; set
+    // handler → `function1::operator()(exc)` after the `dummy::nonnull` check
+    // (disasm 0x705968-0x705972). `err` carries `std::exception::what()`.
+    if let Some(handler) = *SLOT_EXCEPTION_HANDLER.lock() {
+        handler(err);
+    }
 }
 // 0x705978 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEES7_EE4slotEEaSERKSB_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot> const&)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot> const&)
-pub fn stub_0x705978() -> ! {
-    todo!("0x705978 boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot> const&)")
+pub fn stub_0x705978(
+    dst: *mut Option<SharedPtr<SlotNode>>,
+    src: &Option<SharedPtr<SlotNode>>,
+) {
+    // IDA 0x705978: add_ref(src) (disasm 0x705980-0x705986), store over `dst`,
+    // release(old) (0x70598e-0x705992). Clone-then-assign is the same order
+    // and is self-assignment safe via the temporary.
+    // SAFETY: `dst` must be writable; `src` must be readable.
+    unsafe {
+        *dst = src.clone();
+    }
 }
 // 0x7059a0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES6_EE24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::safe_static_do_get_mutex(void)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::safe_static_do_get_mutex(void)
-pub fn stub_0x7059a0() -> ! {
-    todo!("0x7059a0 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::safe_static_do_get_mutex(void)")
+pub fn stub_0x7059a0() -> &'static Mutex<()> {
+    // IDA 0x7059a0: guard-checked once-init (`__cxa_guard_acquire`, disasm
+    // 0x7059fa-0x705a00), `operator new(0x2c)` + `mutex::mutex` (disasm
+    // 0x705a08-0x705a16), `__cxa_guard_release`. A `static` with `const` init
+    // is the same once-init; the 0x2c-byte pthread object lives inside `Mutex`.
+    &SIGNAL_STATIC_MUTEX
 }
 // 0x705a98 — __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEES6_ET_SC_SC_RKT0_St26random_access_iterator_tag
 #[doc(alias = "__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> *,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> std::__find<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> *,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,rbx_core::SharedPtr<RBX::Instance>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> *,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> *,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,rbx_core::SharedPtr<RBX::Instance> const&,std::random_access_iterator_tag)")]
 // was: __gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> std::__find<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::shared_ptr<RBX::Instance>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::shared_ptr<RBX::Instance> const&,std::random_access_iterator_tag)
-pub fn stub_0x705a98() -> ! {
-    todo!("0x705a98 __gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> *,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> std::__find<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> *,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,rbx_core::SharedPtr<RBX::Instance>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> *,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> *,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,rbx_core::SharedPtr<RBX::Instance> const&,std::random_access_iterator_tag)")
+pub fn stub_0x705a98(haystack: &[SharedPtr<Instance>], needle: &SharedPtr<Instance>) -> usize {
+    // IDA 0x705a98: 4-wide unrolled scan (`ASR#5`, stride 0x20 = four 8-byte
+    // shared_ptrs, disasm 0x705aa8-0x705ada) comparing px words, then a
+    // 3/2/1-element tail (disasm 0x705adc-0x705b22); returns `last` on miss.
+    // `position` is the same search; the unrolling is codegen.
+    haystack
+        .iter()
+        .position(|item| SharedPtr::ptr_eq(item, needle))
+        .unwrap_or(haystack.len())
 }
 // 0x705b28 — __ZN5boost10shared_ptrISt6vectorINS0_IN3RBX8InstanceEEESaIS4_EEEaSERKS7_
 #[doc(alias = "rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>::operator=(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> const&)")]
@@ -557,8 +753,22 @@ pub fn stub_0x705b60(dst: *mut WeakPtr<Instance>, src: *const SharedPtr<Instance
 // 0x705fd0 — __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS3_IKNS4_10Reflection13DescribedBaseEEEET_SH_SH_RKT0_St26random_access_iterator_tag
 #[doc(alias = "__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> std::__find<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,rbx_core::SharedPtr<RBX::Reflection::DescribedBase const>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,rbx_core::SharedPtr<RBX::Reflection::DescribedBase const> const&,std::random_access_iterator_tag)")]
 // was: __gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> std::__find<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::shared_ptr<RBX::Reflection::DescribedBase const>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::shared_ptr<RBX::Reflection::DescribedBase const> const&,std::random_access_iterator_tag)
-pub fn stub_0x705fd0() -> ! {
-    todo!("0x705fd0 __gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> std::__find<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,rbx_core::SharedPtr<RBX::Reflection::DescribedBase const>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,rbx_core::SharedPtr<RBX::Reflection::DescribedBase const> const&,std::random_access_iterator_tag)")
+pub fn stub_0x705fd0(haystack: &[SharedPtr<Instance>], needle: *const Instance) -> usize {
+    // IDA 0x705fd0: same 4-wide scan, but each element is adjusted to its
+    // `DescribedBase` subobject (`+36`, `ADDNE #0x24`; null stays null, disasm
+    // 0x705fe4-0x705fec) before comparing with the `DescribedBase const*` key.
+    // Each `Instance` owns exactly one such subobject, so the key is already
+    // the owner's identity in this model; null elements are unrepresentable
+    // (`SharedPtr`), so a null key matches nothing.
+    // SAFETY: `needle` must be null or carry the `DescribedBase` identity of a
+    // live `Instance` (i.e. its address in this model).
+    if needle.is_null() {
+        return haystack.len();
+    }
+    haystack
+        .iter()
+        .position(|item| SharedPtr::as_ptr(item) == needle)
+        .unwrap_or(haystack.len())
 }
 // 0x706094 — __ZN12XmlAttributeC2IN3RBX14InstanceHandleEEERKNS1_4NameET_
 #[doc(alias = "XmlAttribute::XmlAttribute<RBX::InstanceHandle>(RBX::Name const&,RBX::InstanceHandle)")]
@@ -592,8 +802,28 @@ pub fn stub_0x706198(this: *mut XmlNameValuePair, name: u32, handle: &SharedPtr<
 // 0x706298 — __ZN5boost6detail8function15functor_managerIPFbPN3RBX8InstanceEEE6manageERKNS1_15function_bufferERS9_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<bool (*)(RBX::Instance *)>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: boost::detail::function::functor_manager<bool (*)(RBX::Instance *)>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x706298() -> ! {
-    todo!("0x706298 boost::detail::function::functor_manager<bool (*)(RBX::Instance *)>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x706298(src: &BoolPredicate, dst: &mut BoolPredicate, op: FunctorOp) -> bool {
+    // IDA 0x706298 (disasm): clone (0) copies the word (`LDR/STR`, 0x7062ae);
+    // move (1) copies then zeroes the source (0x7062c8-0x7062ce) — unobservable
+    // here since the source is dead after a move; destroy (2) is a bare return
+    // (0x7062ee): the fn ptr owns nothing. check (3) `strcmp`s the stored name
+    // (`BOOL_PREDICATE_TYPE_NAME`, 0x7062d2-0x7062e2) and keeps the buffer on
+    // match, else zeroes it — a mismatch is unreachable in this single-type
+    // model. get (default/4) stores the `typeinfo` pointer + zero half
+    // (0x7062b4-0x7062c4) — the compiler owns types here. Returns whether
+    // `dst` holds a live functor afterwards.
+    match op {
+        FunctorOp::Clone | FunctorOp::Move => {
+            *dst = *src;
+            true
+        }
+        FunctorOp::Destroy => false,
+        FunctorOp::CheckType => {
+            *dst = *src;
+            true
+        }
+        FunctorOp::GetType => true,
+    }
 }
 // 0x7062f8 — __ZN5boost20dynamic_pointer_castIN3RBX8InstanceENS1_6ObjectEEENS_10shared_ptrIT_EERKNS4_IT0_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance> boost::dynamic_pointer_cast<RBX::Instance,RBX::Object>(rbx_core::SharedPtr<RBX::Object> const&)")]
