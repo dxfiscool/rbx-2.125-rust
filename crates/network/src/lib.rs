@@ -460,3 +460,4 @@ pub mod generated_watchdog_sna_wda;
 pub mod generated_watchdog_sna_A;
 pub mod generated_watchdog_net_wdX;
 pub mod generated_watchdog_net_wdY;
+pub mod generated_watchdog_network_wdG2;
