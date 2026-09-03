@@ -654,4 +654,5 @@ pub mod generated_wdog_dm_fill_1788392879;
 pub mod generated_295;
 pub mod generated_wdog_cron_dmA;
 pub mod generated_wdog_cron_dmB;
+pub mod generated_wdog_dmB2;
 pub mod generated_296;
