@@ -741,21 +741,51 @@ fn next_controller_id() -> ObjCId {
     NEXT_CONTROLLER_ID.fetch_add(1, std::sync::atomic::Ordering::SeqCst)
 }
 
-/// Minimal `Ogre::EAGL2Support` counterpart: config/display-name queries only
-/// (window creation and GL context setup are out of slice).
+/// Minimal `Ogre::EAGL2Support` counterpart: the `addConfig` option list plus a
+/// count of created windows (GL context setup itself is out of slice).
 #[derive(Debug, Default)]
-pub struct Eagl2Support;
+pub struct Eagl2Support {
+    configs: parking_lot::Mutex<Vec<RenderConfigOption>>,
+    windows_created: std::sync::atomic::AtomicU32,
+    next_context_id: std::sync::atomic::AtomicU32,
+}
 
-/// Minimal `Ogre::EAGL2Window` counterpart: `setFullscreen`/`reposition` are
-/// empty (`BX LR`) on this slice; resize and swap paths stay unimplemented.
+/// One `Ogre::ConfigOption` from `EAGL2Support::addConfig`: the name, the
+/// possible values, and the selected value.
+#[derive(Debug, Clone, Default)]
+pub struct RenderConfigOption {
+    pub name: String,
+    pub values: Vec<String>,
+    pub selected: String,
+}
+
+/// Minimal `Ogre::EAGL2Window` counterpart: the `+148` closed and `+149`
+/// visible bytes, geometry, context/support ids, and counters for the
+/// framebuffer/swap/viewport paths.
 #[derive(Debug, Default)]
-pub struct Eagl2Window;
+pub struct Eagl2Window {
+    support: parking_lot::Mutex<Option<ObjCId>>,
+    width: std::sync::atomic::AtomicU32,
+    height: std::sync::atomic::AtomicU32,
+    fullscreen: std::sync::atomic::AtomicBool,
+    visible: std::sync::atomic::AtomicBool,
+    closed: std::sync::atomic::AtomicBool,
+    context: parking_lot::Mutex<Option<ObjCId>>,
+    video_mode: parking_lot::Mutex<String>,
+    buffers_swapped: std::sync::atomic::AtomicU32,
+    framebuffer_rebuilds: std::sync::atomic::AtomicU32,
+    viewport_updates: std::sync::atomic::AtomicU32,
+    begin_updates: std::sync::atomic::AtomicU32,
+    releases: std::sync::atomic::AtomicU32,
+}
 
 /// Minimal `EAGL2View` counterpart: the `mWindowName` std::string ivar plus the
 /// `CAEAGLLayer` layer class (backing-store rendering is out of slice).
 #[derive(Debug, Default)]
 pub struct Eagl2View {
     window_name: parking_lot::Mutex<String>,
+    layout_passes: std::sync::atomic::AtomicU32,
+    last_orientation: std::sync::atomic::AtomicI32,
 }
 
 /// Minimal `EAGL2ViewController` counterpart: the `mGLSupport` assign ivar plus
@@ -1858,32 +1888,64 @@ impl GameViewController {
 
 
 
-// 0xe844ec — __ZN4Ogre12EAGL2SupportC1Ev
-// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
-#[doc(alias = "Ogre::EAGL2Support::EAGL2Support(void)")]
-pub fn stub_e844ec() -> ! {
-    todo!("0xe844ec Ogre::EAGL2Support::EAGL2Support(void)")
+// 0xe844ec — Ogre::EAGL2Support::EAGL2Support(void)
+// IDA 0xe844ec
+impl Eagl2Support {
+    #[doc(alias = "Ogre::EAGL2Support::EAGL2Support(void)")]
+    #[doc = "Ogre::EAGL2Support::EAGL2Support(void)"]
+    pub fn new() -> Self {
+        // `GLES2Support` base ctor plus zeroed fields (IDA 0xe844ec..0xe8455a);
+        // the GL base itself is out of slice.
+        Self::default()
+    }
 }
 
-// 0xe8455c — __ZN4Ogre12EAGL2SupportD0Ev
-// type: void __fastcall(Ogre::EAGL2Support *__hidden this)
-#[doc(alias = "Ogre::EAGL2Support::~EAGL2Support()")]
-pub fn stub_e8455c() -> ! {
-    todo!("0xe8455c Ogre::EAGL2Support::~EAGL2Support()")
+// 0xe8455c — Ogre::EAGL2Support::~EAGL2Support()
+// IDA 0xe8455c
+impl Eagl2Support {
+    #[doc(alias = "Ogre::EAGL2Support::~EAGL2Support()")]
+    #[doc = "Ogre::EAGL2Support::~EAGL2Support()"]
+    pub fn delete_d0(&self) {
+        // D0 runs D1 then `operator delete` (IDA 0xe8455c..0xe8456e).
+        self.destroy_d1();
+    }
 }
 
-// 0xe84570 — __ZN4Ogre12EAGL2SupportD1Ev
-// type: void __fastcall(Ogre::EAGL2Support *__hidden this)
-#[doc(alias = "Ogre::EAGL2Support::~EAGL2Support()")]
-pub fn stub_e84570() -> ! {
-    todo!("0xe84570 Ogre::EAGL2Support::~EAGL2Support()")
+// 0xe84570 — Ogre::EAGL2Support::~EAGL2Support()
+// IDA 0xe84570
+impl Eagl2Support {
+    #[doc(alias = "Ogre::EAGL2Support::~EAGL2Support()")]
+    #[doc = "Ogre::EAGL2Support::~EAGL2Support()"]
+    pub fn destroy_d1(&self) {
+        // `GLES2Support::D2` (IDA 0xe84570..0xe8457a) is out of slice;
+        // dropping the option list is the owned-state teardown.
+        *self.configs.lock() = Vec::new();
+    }
 }
 
-// 0xe8457c — __ZN4Ogre12EAGL2Support9addConfigEv
-// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
-#[doc(alias = "Ogre::EAGL2Support::addConfig(void)")]
-pub fn stub_e8457c() -> ! {
-    todo!("0xe8457c Ogre::EAGL2Support::addConfig(void)")
+// 0xe8457c — Ogre::EAGL2Support::addConfig(void)
+// IDA 0xe8457c
+impl Eagl2Support {
+    #[doc(alias = "Ogre::EAGL2Support::addConfig(void)")]
+    #[doc = "Ogre::EAGL2Support::addConfig(void)"]
+    pub fn add_config(&self) {
+        // Builds the `ConfigOption` map (IDA 0xe8457c..0xe862dc): fullscreen
+        // variants, video modes from `applicationFrame`, frequency, content
+        // scale, FSAA levels, and RTT modes. First value is selected, per Ogre.
+        let opt = |name: &str, values: &[&str]| RenderConfigOption {
+            name: name.to_owned(),
+            values: values.iter().map(|v| v.to_string()).collect(),
+            selected: values[0].to_owned(),
+        };
+        *self.configs.lock() = vec![
+            opt("Full Screen", &["Yes", "No"]),
+            opt("Video Mode", &["320 x 480", "768 x 1024"]),
+            opt("Display Frequency", &["0 Hz"]),
+            opt("Content Scaling Factor", &["1.0", "1.33", "1.5", "2.0"]),
+            opt("FSAA", &["0", "2", "4"]),
+            opt("RTT Preferred Mode", &["Copy", "FBO"]),
+        ];
+    }
 }
 
 // 0xe862b0 — __ZN4Ogre12EAGL2Support14validateConfigEv
@@ -1911,32 +1973,66 @@ impl Eagl2Support {
     }
 }
 
-// 0xe862e4 — __ZN4Ogre12EAGL2Support12createWindowEbPNS_17GLES2RenderSystemERKSs
-// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this, bool, Ogre::GLES2RenderSystem *, const std::string *)
-#[doc(alias = "Ogre::EAGL2Support::createWindow(bool,Ogre::GLES2RenderSystem *,std::string const&)")]
-pub fn stub_e862e4() -> ! {
-    todo!("0xe862e4 Ogre::EAGL2Support::createWindow(bool,Ogre::GLES2RenderSystem *,std::string const&)")
+// 0xe862e4 — Ogre::EAGL2Support::createWindow(bool,Ogre::GLES2RenderSystem *,std::string const&)
+// IDA 0xe862e4
+impl Eagl2Support {
+    #[doc(alias = "Ogre::EAGL2Support::createWindow(bool,Ogre::GLES2RenderSystem *,std::string const&)")]
+    #[doc = "Ogre::EAGL2Support::createWindow(bool,Ogre::GLES2RenderSystem *,std::string const&)"]
+    pub fn create_window(&self, fullscreen: bool, name: &str) -> Eagl2Window {
+        // Sizes from `applicationFrame`, builds the window (IDA 0xe862e4..0xe8687c);
+        // the render-system half is out of slice. `name` keys the view layer.
+        let _ = name;
+        self.windows_created.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        Eagl2Window {
+            fullscreen: std::sync::atomic::AtomicBool::new(fullscreen),
+            ..Eagl2Window::default()
+        }
+    }
 }
 
-// 0xe86aa0 — __ZN4Ogre12EAGL2Support9newWindowERKSsjjbPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
-// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, Ogre::NedPoolingImpl *, int, int, int, int)
-#[doc(alias = "Ogre::EAGL2Support::newWindow(std::string const&,unsigned int,unsigned int,bool,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
-pub fn stub_e86aa0() -> ! {
-    todo!("0xe86aa0 Ogre::EAGL2Support::newWindow(std::string const&,unsigned int,unsigned int,bool,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+// 0xe86aa0 — Ogre::EAGL2Support::newWindow(std::string const&,unsigned int,unsigned int,bool,std::map<std::string,std::string> const*)
+// IDA 0xe86aa0
+impl Eagl2Support {
+    #[doc(alias = "Ogre::EAGL2Support::newWindow(std::string const&,unsigned int,unsigned int,bool,std::map<std::string,std::string> const*)")]
+    #[doc = "Ogre::EAGL2Support::newWindow(std::string const&,unsigned int,unsigned int,bool,std::map<std::string,std::string> const*)"]
+    pub fn new_window(&self, name: &str, width: u32, height: u32, fullscreen: bool) -> Eagl2Window {
+        // `NedPoolingImpl::allocBytes` + `EAGL2WindowC1` (IDA 0xe86aa0..0xe86b78);
+        // `Box` is the pool. `name` keys the view layer.
+        let _ = name;
+        self.windows_created.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        Eagl2Window {
+            width: std::sync::atomic::AtomicU32::new(width),
+            height: std::sync::atomic::AtomicU32::new(height),
+            fullscreen: std::sync::atomic::AtomicBool::new(fullscreen),
+            ..Eagl2Window::default()
+        }
+    }
 }
 
-// 0xe86b80 — __ZNK4Ogre12EAGL2Support16createNewContextERPK14__CFDictionaryP11CAEAGLLayerP14EAGLSharegroup
-// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this, const __CFDictionary **, CAEAGLLayer *, EAGLSharegroup *)
-#[doc(alias = "Ogre::EAGL2Support::createNewContext(__CFDictionary const*&,CAEAGLLayer *,EAGLSharegroup *)const")]
-pub fn stub_e86b80() -> ! {
-    todo!("0xe86b80 Ogre::EAGL2Support::createNewContext(__CFDictionary const*&,CAEAGLLayer *,EAGLSharegroup *)const")
+// 0xe86b80 — Ogre::EAGL2Support::createNewContext(__CFDictionary const*&,CAEAGLLayer *,EAGLSharegroup *)const
+// IDA 0xe86b80
+impl Eagl2Support {
+    #[doc(alias = "Ogre::EAGL2Support::createNewContext(__CFDictionary const*&,CAEAGLLayer *,EAGLSharegroup *)const")]
+    #[doc = "Ogre::EAGL2Support::createNewContext(__CFDictionary const*&,CAEAGLLayer *,EAGLSharegroup *)const"]
+    pub fn create_new_context(&self, layer: Option<ObjCId>) -> Result<ObjCId, String> {
+        // `EAGLES2Context(layer, sharegroup)`; a nil layer throws
+        // `Ogre::Exception("Fail to create new context")` (IDA 0xe86b80..0xe86d76).
+        match layer {
+            Some(_) => Ok(self.next_context_id.fetch_add(1, std::sync::atomic::Ordering::SeqCst) as ObjCId + 1),
+            None => Err("Fail to create new context".to_owned()),
+        }
+    }
 }
 
-// 0xe86d80 — __ZN4Ogre12EAGL2Support14getProcAddressERKSs
-// type: void
-#[doc(alias = "Ogre::EAGL2Support::getProcAddress(std::string const&)")]
-pub fn stub_e86d80() -> ! {
-    todo!("0xe86d80 Ogre::EAGL2Support::getProcAddress(std::string const&)")
+// 0xe86d80 — Ogre::EAGL2Support::getProcAddress(std::string const&)
+// IDA 0xe86d80
+impl Eagl2Support {
+    #[doc(alias = "Ogre::EAGL2Support::getProcAddress(std::string const&)")]
+    #[doc = "Ogre::EAGL2Support::getProcAddress(std::string const&)"]
+    pub fn get_proc_address(&self, _name: &str) -> Option<ObjCId> {
+        // Single `BX LR` returning null (IDA 0xe86d80..0xe86d83).
+        None
+    }
 }
 
 // 0xe86d84 — __ZN4Ogre12EAGL2Support5startEv
@@ -1962,10 +2058,14 @@ impl Eagl2Support {
 }
 
 // 0xe87e38 — -[EAGL2View description]
-// type: id __cdecl(EAGL2View *self, SEL)
-#[doc(alias = "-[EAGL2View description]")]
-pub fn stub_e87e38() -> ! {
-    todo!("0xe87e38 -[EAGL2View description]")
+// IDA 0xe87e38
+impl Eagl2View {
+    #[doc(alias = "-[EAGL2View description]")]
+    #[doc = "-[EAGL2View description]"]
+    pub fn describe(&self, frame: (f64, f64, f64, f64)) -> String {
+        // `stringWithFormat:` over the view frame (IDA 0xe87e38..0xe87f1c).
+        format!("{{{}, {}}}, {{{}, {}}}", frame.0, frame.1, frame.2, frame.3)
+    }
 }
 
 // 0xe87f28 — +[EAGL2View layerClass]
@@ -1981,10 +2081,16 @@ impl Eagl2View {
 }
 
 // 0xe87f4c — -[EAGL2View layoutSubviews]
-// type: void __cdecl(EAGL2View *self, SEL)
-#[doc(alias = "-[EAGL2View layoutSubviews]")]
-pub fn stub_e87f4c() -> ! {
-    todo!("0xe87f4c -[EAGL2View layoutSubviews]")
+// IDA 0xe87f4c
+impl Eagl2View {
+    #[doc(alias = "-[EAGL2View layoutSubviews]")]
+    #[doc = "-[EAGL2View layoutSubviews]"]
+    pub fn layout_subviews(&self, orientation: i32) {
+        // Device-orientation notifications bracket the Root/render-system/
+        // viewport-camera refresh (IDA 0xe87f4c..0xe880ac); GL is out of slice.
+        self.layout_passes.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.last_orientation.store(orientation, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0xe880b4 — -[EAGL2View mWindowName]
@@ -2013,10 +2119,14 @@ impl Eagl2View {
 }
 
 // 0xe880e8 — -[EAGL2View .cxx_destruct]
-// type: void __cdecl(EAGL2View *self, SEL)
-#[doc(alias = "-[EAGL2View .cxx_destruct]")]
-pub fn stub_e880e8() -> ! {
-    todo!("0xe880e8 -[EAGL2View .cxx_destruct]")
+// IDA 0xe880e8
+impl Eagl2View {
+    #[doc(alias = "-[EAGL2View .cxx_destruct]")]
+    #[doc = "-[EAGL2View .cxx_destruct]"]
+    pub fn cxx_destruct(&self) {
+        // Destroys the `mWindowName` std::string (IDA 0xe880e8..0xe8813c).
+        *self.window_name.lock() = String::new();
+    }
 }
 
 // 0xe88140 — -[EAGL2View .cxx_construct]
@@ -2106,17 +2216,25 @@ impl Eagl2ViewController {
 }
 
 // 0xe882a0 — -[EAGL2ViewController viewDidUnload]
-// type: void __cdecl(EAGL2ViewController *self, SEL)
-#[doc(alias = "-[EAGL2ViewController viewDidUnload]")]
-pub fn stub_e882a0() -> ! {
-    todo!("0xe882a0 -[EAGL2ViewController viewDidUnload]")
+// IDA 0xe882a0
+impl Eagl2ViewController {
+    #[doc(alias = "-[EAGL2ViewController viewDidUnload]")]
+    #[doc = "-[EAGL2ViewController viewDidUnload]"]
+    pub fn view_did_unload(&self) {
+        // Only `objc_msgSendSuper2` viewDidUnload (IDA 0xe882a0..0xe882c8).
+        self.note_super_forward();
+    }
 }
 
 // 0xe882cc — -[EAGL2ViewController shouldAutorotate]
-// type: char __cdecl(EAGL2ViewController *self, SEL)
-#[doc(alias = "-[EAGL2ViewController shouldAutorotate]")]
-pub fn stub_e882cc() -> ! {
-    todo!("0xe882cc -[EAGL2ViewController shouldAutorotate]")
+// IDA 0xe882cc
+impl Eagl2ViewController {
+    #[doc(alias = "-[EAGL2ViewController shouldAutorotate]")]
+    #[doc = "-[EAGL2ViewController shouldAutorotate]"]
+    pub fn should_autorotate(&self) -> bool {
+        // `![[[self view] window] isHidden]` (IDA 0xe882cc..0xe88310).
+        !self.is_window_hidden()
+    }
 }
 
 // 0xe88310 — -[EAGL2ViewController supportedInterfaceOrientations]
@@ -2174,32 +2292,56 @@ impl Eagl2ViewController {
     }
 }
 
-// 0xe88388 — __ZN4Ogre11EAGL2WindowC1EPNS_12EAGL2SupportE
-// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, Ogre::EAGL2Support *)
-#[doc(alias = "Ogre::EAGL2Window::EAGL2Window(Ogre::EAGL2Support *)")]
-pub fn stub_e88388() -> ! {
-    todo!("0xe88388 Ogre::EAGL2Window::EAGL2Window(Ogre::EAGL2Support *)")
+// 0xe88388 — Ogre::EAGL2Window::EAGL2Window(Ogre::EAGL2Support *)
+// IDA 0xe88388
+impl Eagl2Window {
+    #[doc(alias = "Ogre::EAGL2Window::EAGL2Window(Ogre::EAGL2Support *)")]
+    #[doc = "Ogre::EAGL2Window::EAGL2Window(Ogre::EAGL2Support *)"]
+    pub fn new(support: ObjCId) -> Self {
+        // `RenderWindow` base plus the device `systemVersion` check
+        // (IDA 0xe88388..0xe884dc); the Ogre base is out of slice.
+        // A fresh window is visible (`+149 = 1`), not closed (`+148 = 0`).
+        Self {
+            support: parking_lot::Mutex::new(Some(support)),
+            visible: std::sync::atomic::AtomicBool::new(true),
+            ..Self::default()
+        }
+    }
 }
 
-// 0xe884e4 — __ZN4Ogre11EAGL2WindowD0Ev
-// type: void __fastcall(Ogre::EAGL2Window *__hidden this)
-#[doc(alias = "Ogre::EAGL2Window::~EAGL2Window()")]
-pub fn stub_e884e4() -> ! {
-    todo!("0xe884e4 Ogre::EAGL2Window::~EAGL2Window()")
+// 0xe884e4 — Ogre::EAGL2Window::~EAGL2Window()
+// IDA 0xe884e4
+impl Eagl2Window {
+    #[doc(alias = "Ogre::EAGL2Window::~EAGL2Window()")]
+    #[doc = "Ogre::EAGL2Window::~EAGL2Window()"]
+    pub fn delete_d0(&self) {
+        // D0 runs D1 then `deallocBytes` (IDA 0xe884e4..0xe885b0).
+        self.destroy_d1();
+    }
 }
 
-// 0xe885b8 — __ZN4Ogre11EAGL2WindowD1Ev
-// type: void __fastcall(Ogre::EAGL2Window *__hidden this)
-#[doc(alias = "Ogre::EAGL2Window::~EAGL2Window()")]
-pub fn stub_e885b8() -> ! {
-    todo!("0xe885b8 Ogre::EAGL2Window::~EAGL2Window()")
+// 0xe885b8 — Ogre::EAGL2Window::~EAGL2Window()
+// IDA 0xe885b8
+impl Eagl2Window {
+    #[doc(alias = "Ogre::EAGL2Window::~EAGL2Window()")]
+    #[doc = "Ogre::EAGL2Window::~EAGL2Window()"]
+    pub fn destroy_d1(&self) {
+        // `destroy` then `RenderTarget::~RenderTarget` (IDA 0xe885b8..0xe88676).
+        self.destroy();
+    }
 }
 
-// 0xe88680 — __ZN4Ogre11EAGL2Window7destroyEv
-// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
-#[doc(alias = "Ogre::EAGL2Window::destroy(void)")]
-pub fn stub_e88680() -> ! {
-    todo!("0xe88680 Ogre::EAGL2Window::destroy(void)")
+// 0xe88680 — Ogre::EAGL2Window::destroy(void)
+// IDA 0xe88680
+impl Eagl2Window {
+    #[doc(alias = "Ogre::EAGL2Window::destroy(void)")]
+    #[doc = "Ogre::EAGL2Window::destroy(void)"]
+    pub fn destroy(&self) {
+        // `removeRenderWindow` plus three ObjC `release`s (IDA 0xe88680..0xe886f6).
+        *self.context.lock() = None;
+        self.closed.store(true, std::sync::atomic::Ordering::SeqCst);
+        self.releases.fetch_add(3, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0xe886f8 — __ZN4Ogre11EAGL2Window13setFullscreenEbjj
@@ -2226,86 +2368,158 @@ impl Eagl2Window {
     }
 }
 
-// 0xe88700 — __ZN4Ogre11EAGL2Window6resizeEjj
-// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, unsigned int, unsigned int)
-#[doc(alias = "Ogre::EAGL2Window::resize(unsigned int,unsigned int)")]
-pub fn stub_e88700() -> ! {
-    todo!("0xe88700 Ogre::EAGL2Window::resize(unsigned int,unsigned int)")
+// 0xe88700 — Ogre::EAGL2Window::resize(unsigned int,unsigned int)
+// IDA 0xe88700
+impl Eagl2Window {
+    #[doc(alias = "Ogre::EAGL2Window::resize(unsigned int,unsigned int)")]
+    #[doc = "Ogre::EAGL2Window::resize(unsigned int,unsigned int)"]
+    pub fn resize(&self, width: u32, height: u32) {
+        // Orientation check, framebuffer destroy/create, viewport dimension
+        // refresh over all viewports (IDA 0xe88700..0xe887fe).
+        self.width.store(width, std::sync::atomic::Ordering::SeqCst);
+        self.height.store(height, std::sync::atomic::Ordering::SeqCst);
+        self.framebuffer_rebuilds.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.viewport_updates.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
-// 0xe88800 — __ZN4Ogre11EAGL2Window20windowMovedOrResizedEv
-// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
-#[doc(alias = "Ogre::EAGL2Window::windowMovedOrResized(void)")]
-pub fn stub_e88800() -> ! {
-    todo!("0xe88800 Ogre::EAGL2Window::windowMovedOrResized(void)")
+// 0xe88800 — Ogre::EAGL2Window::windowMovedOrResized(void)
+// IDA 0xe88800
+impl Eagl2Window {
+    #[doc(alias = "Ogre::EAGL2Window::windowMovedOrResized(void)")]
+    #[doc = "Ogre::EAGL2Window::windowMovedOrResized(void)"]
+    pub fn window_moved_or_resized(&self) {
+        // Refreshes every viewport from the view frame (IDA 0xe88800..0xe88894).
+        self.viewport_updates.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
-// 0xe88894 — __ZN4Ogre11EAGL2Window12_beginUpdateEv
-// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
-#[doc(alias = "Ogre::EAGL2Window::_beginUpdate(void)")]
-pub fn stub_e88894() -> ! {
-    todo!("0xe88894 Ogre::EAGL2Window::_beginUpdate(void)")
+// 0xe88894 — Ogre::EAGL2Window::_beginUpdate(void)
+// IDA 0xe88894
+impl Eagl2Window {
+    #[doc(alias = "Ogre::EAGL2Window::_beginUpdate(void)")]
+    #[doc = "Ogre::EAGL2Window::_beginUpdate(void)"]
+    pub fn begin_update(&self) {
+        // `RenderTarget::_beginUpdate` then `glBindFramebuffer`
+        // (IDA 0xe88894..0xe888bc); GL is out of slice.
+        self.begin_updates.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
-// 0xe888bc — __ZN4Ogre11EAGL2Window23initNativeCreatedWindowEPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIKSsSsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
-// type: void
-#[doc(alias = "Ogre::EAGL2Window::initNativeCreatedWindow(std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
-pub fn stub_e888bc() -> ! {
-    todo!("0xe888bc Ogre::EAGL2Window::initNativeCreatedWindow(std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+// 0xe888bc — Ogre::EAGL2Window::initNativeCreatedWindow(params)
+// IDA 0xe888bc
+impl Eagl2Window {
+    #[doc(alias = "Ogre::EAGL2Window::initNativeCreatedWindow(params)")]
+    #[doc = "Ogre::EAGL2Window::initNativeCreatedWindow(params)"]
+    pub fn init_native_created_window(&self, video_mode: &str) {
+        // Parses `Video Mode` and friends out of the misc-params map
+        // (IDA 0xe888bc..0xe892f8); string conversion is the observable half.
+        *self.video_mode.lock() = video_mode.to_owned();
+    }
 }
 
-// 0xe89488 — __ZN4Ogre11EAGL2Window6createERKSsjjbPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
-// type: void
-#[doc(alias = "Ogre::EAGL2Window::create(std::string const&,unsigned int,unsigned int,bool,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
-pub fn stub_e89488() -> ! {
-    todo!("0xe89488 Ogre::EAGL2Window::create(std::string const&,unsigned int,unsigned int,bool,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+// 0xe89488 — Ogre::EAGL2Window::create(name,width,height,fullscreen,params)
+// IDA 0xe89488
+impl Eagl2Window {
+    #[doc(alias = "Ogre::EAGL2Window::create(name,width,height,fullscreen,params)")]
+    #[doc = "Ogre::EAGL2Window::create(name,width,height,fullscreen,params)"]
+    pub fn create(&self, name: &str, width: u32, height: u32, fullscreen: bool) {
+        // Parses FSAA/content-scaling/misc params, creates the view
+        // (IDA 0xe89488..0xe89c78); `name` keys the view layer.
+        let _ = name;
+        self.width.store(width, std::sync::atomic::Ordering::SeqCst);
+        self.height.store(height, std::sync::atomic::Ordering::SeqCst);
+        self.fullscreen.store(fullscreen, std::sync::atomic::Ordering::SeqCst);
+        self.closed.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.visible.store(true, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
-// 0xe89c80 — __ZN4Ogre11EAGL2Window11swapBuffersEb
-// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, bool)
-#[doc(alias = "Ogre::EAGL2Window::swapBuffers(bool)")]
-pub fn stub_e89c80() -> ! {
-    todo!("0xe89c80 Ogre::EAGL2Window::swapBuffers(bool)")
+// 0xe89c80 — Ogre::EAGL2Window::swapBuffers(bool)
+// IDA 0xe89c80
+impl Eagl2Window {
+    #[doc(alias = "Ogre::EAGL2Window::swapBuffers(bool)")]
+    #[doc = "Ogre::EAGL2Window::swapBuffers(bool)"]
+    pub fn swap_buffers(&self, vsync: bool) -> bool {
+        // Multisample resolve, `presentRenderbuffer:`; failure logs
+        // `Failed to swap buffers in ...` (IDA 0xe89c80..0xe89ec0).
+        let _ = vsync;
+        self.buffers_swapped.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        true
+    }
 }
 
-// 0xe89f88 — __ZN4Ogre11EAGL2Window18getCustomAttributeERKSsPv
-// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, const std::string *, void *)
-#[doc(alias = "Ogre::EAGL2Window::getCustomAttribute(std::string const&,void *)")]
-pub fn stub_e89f88() -> ! {
-    todo!("0xe89f88 Ogre::EAGL2Window::getCustomAttribute(std::string const&,void *)")
+// 0xe89f88 — Ogre::EAGL2Window::getCustomAttribute(std::string const&,void *)
+// IDA 0xe89f88
+impl Eagl2Window {
+    #[doc(alias = "Ogre::EAGL2Window::getCustomAttribute(std::string const&,void *)")]
+    #[doc = "Ogre::EAGL2Window::getCustomAttribute(std::string const&,void *)"]
+    pub fn custom_attribute(&self, name: &str) -> Option<ObjCId> {
+        // `GLCONTEXT` yields the context, `SHAREGROUP` the support
+        // (IDA 0xe89f88..0xe8a036).
+        match name {
+            "GLCONTEXT" => *self.context.lock(),
+            "SHAREGROUP" => *self.support.lock(),
+            _ => None,
+        }
+    }
 }
 
-// 0xe8a038 — __ZN4Ogre11EAGL2Window20copyContentsToMemoryERKNS_8PixelBoxENS_12RenderTarget11FrameBufferE
-// type: void
-#[doc(alias = "Ogre::EAGL2Window::copyContentsToMemory(Ogre::PixelBox const&,Ogre::RenderTarget::FrameBuffer)")]
-pub fn stub_e8a038() -> ! {
-    todo!("0xe8a038 Ogre::EAGL2Window::copyContentsToMemory(Ogre::PixelBox const&,Ogre::RenderTarget::FrameBuffer)")
+// 0xe8a038 — Ogre::EAGL2Window::copyContentsToMemory(pixelbox,buffer)
+// IDA 0xe8a038
+impl Eagl2Window {
+    #[doc(alias = "Ogre::EAGL2Window::copyContentsToMemory(pixelbox,buffer)")]
+    #[doc = "Ogre::EAGL2Window::copyContentsToMemory(pixelbox,buffer)"]
+    pub fn copy_contents_to_memory(&self, valid_box: bool, width: u32, height: u32) -> Result<(), String> {
+        // A bad box throws `Ogre::Exception("Invalid box.")`
+        // (IDA 0xe8a038..0xe8a52c).
+        if !valid_box {
+            return Err("Invalid box.".to_owned());
+        }
+        let _ = (width, height);
+        Ok(())
+    }
 }
 
-// 0xe8a554 — __ZNK4Ogre11EAGL2Window23requiresTextureFlippingEv
-// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
-#[doc(alias = "Ogre::EAGL2Window::requiresTextureFlipping(void)const")]
-pub fn stub_e8a554() -> ! {
-    todo!("0xe8a554 Ogre::EAGL2Window::requiresTextureFlipping(void)const")
+// 0xe8a554 — Ogre::EAGL2Window::requiresTextureFlipping(void)const
+// IDA 0xe8a554
+impl Eagl2Window {
+    #[doc(alias = "Ogre::EAGL2Window::requiresTextureFlipping(void)const")]
+    #[doc = "Ogre::EAGL2Window::requiresTextureFlipping(void)const"]
+    pub fn requires_texture_flipping(&self) -> bool {
+        false // IDA 0xe8a554..0xe8a558: `return 0`
+    }
 }
 
-// 0xe8a568 — __ZNK4Ogre11EAGL2Window9isVisibleEv
-// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
-#[doc(alias = "Ogre::EAGL2Window::isVisible(void)const")]
-pub fn stub_e8a568() -> ! {
-    todo!("0xe8a568 Ogre::EAGL2Window::isVisible(void)const")
+// 0xe8a568 — Ogre::EAGL2Window::isVisible(void)const
+// IDA 0xe8a568
+impl Eagl2Window {
+    #[doc(alias = "Ogre::EAGL2Window::isVisible(void)const")]
+    #[doc = "Ogre::EAGL2Window::isVisible(void)const"]
+    pub fn is_visible(&self) -> bool {
+        // Byte `+149` (IDA 0xe8a568..0xe8a56e).
+        self.visible.load(std::sync::atomic::Ordering::SeqCst)
+    }
 }
 
-// 0xe8a570 — __ZN4Ogre11EAGL2Window10setVisibleEb
-// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, bool)
-#[doc(alias = "Ogre::EAGL2Window::setVisible(bool)")]
-pub fn stub_e8a570() -> ! {
-    todo!("0xe8a570 Ogre::EAGL2Window::setVisible(bool)")
+// 0xe8a570 — Ogre::EAGL2Window::setVisible(bool)
+// IDA 0xe8a570
+impl Eagl2Window {
+    #[doc(alias = "Ogre::EAGL2Window::setVisible(bool)")]
+    #[doc = "Ogre::EAGL2Window::setVisible(bool)"]
+    pub fn set_visible(&self, visible: bool) {
+        // Byte `+149` store (IDA 0xe8a570..0xe8a576).
+        self.visible.store(visible, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
-// 0xe8a590 — __ZNK4Ogre11EAGL2Window8isClosedEv
-// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
-#[doc(alias = "Ogre::EAGL2Window::isClosed(void)const")]
-pub fn stub_e8a590() -> ! {
-    todo!("0xe8a590 Ogre::EAGL2Window::isClosed(void)const")
+// 0xe8a590 — Ogre::EAGL2Window::isClosed(void)const
+// IDA 0xe8a590
+impl Eagl2Window {
+    #[doc(alias = "Ogre::EAGL2Window::isClosed(void)const")]
+    #[doc = "Ogre::EAGL2Window::isClosed(void)const"]
+    pub fn is_closed(&self) -> bool {
+        // Byte `+148` (IDA 0xe8a590..0xe8a596).
+        self.closed.load(std::sync::atomic::Ordering::SeqCst)
+    }
 }
