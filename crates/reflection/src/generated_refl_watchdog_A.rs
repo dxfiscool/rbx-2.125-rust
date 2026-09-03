@@ -254,15 +254,17 @@ pub fn stub_0xa1b350() {
 // 0xa2133c — __ZN3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE7addPairES4_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::addPair(RBX::Network::Players::ChatOption,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE7addPairES4_PKc")]
-pub fn stub_0xa2133c() -> ! {
-    todo!("0xa2133c RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::addPair(RBX::Network::Players::ChatOption,char const*)")
+pub fn stub_0xa2133c(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xa2133c: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xa21bb4 — __ZN3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE7addPairES4_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::addPair(RBX::Network::Players::PlayerChatType,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE7addPairES4_PKc")]
-pub fn stub_0xa21bb4() -> ! {
-    todo!("0xa21bb4 RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::addPair(RBX::Network::Players::PlayerChatType,char const*)")
+pub fn stub_0xa21bb4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xa21bb4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xa22504 — __ZN3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEED1Ev

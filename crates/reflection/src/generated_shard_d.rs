@@ -102,8 +102,9 @@ pub fn stub_0x640f18() -> ! {
 
 // 0x64154c — __ZN3RBX10Reflection8EnumDescINS_12SpecialShape8MeshTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SpecialShape::MeshType>::addPair(RBX::SpecialShape::MeshType,char const*)")]
-pub fn stub_0x64154c() -> ! {
-    todo!("0x64154c RBX::Reflection::EnumDesc<RBX::SpecialShape::MeshType>::addPair(RBX::SpecialShape::MeshType,char const*)")
+pub fn stub_0x64154c(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x64154c: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x6418b4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12SpecialShapeENS2_8MeshTypeEED1Ev
@@ -240,8 +241,10 @@ pub fn stub_0x644710() -> ! {
 
 // 0x644744 — __ZNK3RBX10Reflection8EnumDescINS_12SpecialShape8MeshTypeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SpecialShape::MeshType>::convertToIndex(RBX::SpecialShape::MeshType)const")]
-pub fn stub_0x644744() -> ! {
-    todo!("0x644744 RBX::Reflection::EnumDesc<RBX::SpecialShape::MeshType>::convertToIndex(RBX::SpecialShape::MeshType)const")
+pub fn stub_0x644744(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0x644744: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0x6447b4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12SpecialShapeENS2_8MeshTypeEE11setIntValueEPNS0_13DescribedBaseEi

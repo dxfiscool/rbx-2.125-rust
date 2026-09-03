@@ -200,8 +200,9 @@ pub fn stub_0xf25b44() -> ! {
 // 0xf25b54 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::addPair(RBX::CRenderSettings::ShadowMode,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE7addPairES3_PKc")]
-pub fn stub_0xf25b54() -> ! {
-    todo!("0xf25b54")
+pub fn stub_0xf25b54(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf25b54: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf25b64 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED2Ev
@@ -214,15 +215,17 @@ pub fn stub_0xf25b64() {
 // 0xf25b74 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::addPair(RBX::CRenderSettings::GraphicsMode,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE7addPairES3_PKc")]
-pub fn stub_0xf25b74() -> ! {
-    todo!("0xf25b74")
+pub fn stub_0xf25b74(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf25b74: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf25b84 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE9addLegacyEiPKcS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::addLegacy(int,char const*,RBX::CRenderSettings::GraphicsMode)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE9addLegacyEiPKcS3_")]
-pub fn stub_0xf25b84() -> ! {
-    todo!("0xf25b84")
+pub fn stub_0xf25b84(desc: &mut crate::enum_desc::EnumDesc, legacy_index: usize, name: &str, value: i32) {
+    // IDA 0xf25b84: EnumDesc<T>::addLegacy -- grow legacy vector, map legacy name->value (decompiled 0x47cd20, model 0xa208). Delegates to the shared model.
+    desc.add_legacy(legacy_index, name, value)
 }
 
 // 0xf25b94 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED2Ev
@@ -235,8 +238,9 @@ pub fn stub_0xf25b94() {
 // 0xf25ba4 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::addPair(RBX::CRenderSettings::QualityLevel,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE7addPairES3_PKc")]
-pub fn stub_0xf25ba4() -> ! {
-    todo!("0xf25ba4")
+pub fn stub_0xf25ba4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf25ba4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf25bb4 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED2Ev
@@ -249,8 +253,9 @@ pub fn stub_0xf25bb4() {
 // 0xf25bc4 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::addPair(RBX::CRenderSettings::AntialiasingMode,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE7addPairES3_PKc")]
-pub fn stub_0xf25bc4() -> ! {
-    todo!("0xf25bc4")
+pub fn stub_0xf25bc4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf25bc4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf25bd4 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED2Ev
@@ -263,8 +268,9 @@ pub fn stub_0xf25bd4() {
 // 0xf25be4 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::addPair(RBX::CRenderSettings::ResolutionPreset,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE7addPairES3_PKc")]
-pub fn stub_0xf25be4() -> ! {
-    todo!("0xf25be4")
+pub fn stub_0xf25be4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf25be4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf25bf4 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED2Ev
@@ -277,8 +283,9 @@ pub fn stub_0xf25bf4() {
 // 0xf25c04 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::addPair(RBX::CRenderSettings::FrameRateManagerMode,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE7addPairES3_PKc")]
-pub fn stub_0xf25c04() -> ! {
-    todo!("0xf25c04")
+pub fn stub_0xf25c04(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf25c04: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf25c14 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED2Ev
@@ -291,8 +298,9 @@ pub fn stub_0xf25c14() {
 // 0xf25c24 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::addPair(RBX::CRenderSettings::AASamples,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE7addPairES3_PKc")]
-pub fn stub_0xf25c24() -> ! {
-    todo!("0xf25c24")
+pub fn stub_0xf25c24(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf25c24: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf25c34 — j___ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED2Ev
@@ -446,8 +454,10 @@ pub fn stub_0xf25f64() -> ! {
 // 0xf25f74 — j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToIndex(RBX::CRenderSettings::ShadowMode)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToIndexES3_")]
-pub fn stub_0xf25f74() -> ! {
-    todo!("0xf25f74")
+pub fn stub_0xf25f74(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf25f74: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf25f84 — j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToValueERKNS_4NameERS3_
@@ -474,8 +484,10 @@ pub fn stub_0xf25fa4() -> ! {
 // 0xf25fb4 — j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToIndex(RBX::CRenderSettings::GraphicsMode)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToIndexES3_")]
-pub fn stub_0xf25fb4() -> ! {
-    todo!("0xf25fb4")
+pub fn stub_0xf25fb4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf25fb4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf25fc4 — j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToValueERKNS_4NameERS3_
@@ -502,8 +514,10 @@ pub fn stub_0xf25fe4() -> ! {
 // 0xf25ff4 — j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToIndex(RBX::CRenderSettings::QualityLevel)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToIndexES3_")]
-pub fn stub_0xf25ff4() -> ! {
-    todo!("0xf25ff4")
+pub fn stub_0xf25ff4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf25ff4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf26004 — j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToValueERKNS_4NameERS3_
@@ -530,8 +544,10 @@ pub fn stub_0xf26024() -> ! {
 // 0xf26034 — j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToIndex(RBX::CRenderSettings::AntialiasingMode)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToIndexES3_")]
-pub fn stub_0xf26034() -> ! {
-    todo!("0xf26034")
+pub fn stub_0xf26034(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf26034: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf26044 — j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToValueERKNS_4NameERS3_
@@ -558,8 +574,10 @@ pub fn stub_0xf26064() -> ! {
 // 0xf26074 — j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToIndex(RBX::CRenderSettings::ResolutionPreset)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToIndexES3_")]
-pub fn stub_0xf26074() -> ! {
-    todo!("0xf26074")
+pub fn stub_0xf26074(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf26074: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf26084 — j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToValueERKNS_4NameERS3_
@@ -586,8 +604,10 @@ pub fn stub_0xf260a4() -> ! {
 // 0xf260b4 — j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToIndex(RBX::CRenderSettings::FrameRateManagerMode)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToIndexES3_")]
-pub fn stub_0xf260b4() -> ! {
-    todo!("0xf260b4")
+pub fn stub_0xf260b4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf260b4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf260c4 — j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToValueERKNS_4NameERS3_
@@ -614,8 +634,10 @@ pub fn stub_0xf260e4() -> ! {
 // 0xf260f4 — j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToIndex(RBX::CRenderSettings::AASamples)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToIndexES3_")]
-pub fn stub_0xf260f4() -> ! {
-    todo!("0xf260f4")
+pub fn stub_0xf260f4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf260f4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf26104 — j___ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToValueERKNS_4NameERS3_

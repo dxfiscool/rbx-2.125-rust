@@ -624,8 +624,10 @@ pub fn stub_0x5fa478() -> ! {
 
 // 0x5fa4ac — __ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToIndex(RBX::EThrottle::EThrottleType)const")]
-pub fn stub_0x5fa4ac() -> ! {
-    todo!("0x5fa4ac RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToIndex(RBX::EThrottle::EThrottleType)const")
+pub fn stub_0x5fa4ac(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0x5fa4ac: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0x5fa51c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PhysicsSettingsENS_9EThrottle13EThrottleTypeEE11setIntValueEPNS0_13DescribedBaseEi
@@ -798,8 +800,10 @@ pub fn stub_0x60a9c4() -> ! {
 
 // 0x60a9f8 — __ZNK3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::convertToIndex(RBX::PyramidInstance::NumSidesEnum)const")]
-pub fn stub_0x60a9f8() -> ! {
-    todo!("0x60a9f8 RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::convertToIndex(RBX::PyramidInstance::NumSidesEnum)const")
+pub fn stub_0x60a9f8(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0x60a9f8: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0x60aa68 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15PyramidInstanceENS2_12NumSidesEnumEE11setIntValueEPNS0_13DescribedBaseEi
@@ -1674,8 +1678,9 @@ pub fn stub_0x629754() {
 
 // 0x629794 — __ZN3RBX10Reflection8EnumDescINS_18SkateboardPlatform9MoveStateEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState>::addPair(RBX::SkateboardPlatform::MoveState,char const*)")]
-pub fn stub_0x629794() -> ! {
-    todo!("0x629794 RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState>::addPair(RBX::SkateboardPlatform::MoveState,char const*)")
+pub fn stub_0x629794(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x629794: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x62b180 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18SkateboardPlatformES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -3250,8 +3255,10 @@ pub fn stub_0x66cf80() -> ! {
 
 // 0x66d04c — __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToIndex(RBX::TextService::YAlignment)const")]
-pub fn stub_0x66d04c() -> ! {
-    todo!("0x66d04c RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToIndex(RBX::TextService::YAlignment)const")
+pub fn stub_0x66d04c(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0x66d04c: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0x66d0bc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE11setIntValueEPNS0_13DescribedBaseEi
@@ -3472,8 +3479,10 @@ pub fn stub_0x66e204() -> ! {
 
 // 0x66e2d0 — __ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::convertToIndex(RBX::TextService::XAlignment)const")]
-pub fn stub_0x66e2d0() -> ! {
-    todo!("0x66e2d0 RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::convertToIndex(RBX::TextService::XAlignment)const")
+pub fn stub_0x66e2d0(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0x66e2d0: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0x66e340 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE11setIntValueEPNS0_13DescribedBaseEi

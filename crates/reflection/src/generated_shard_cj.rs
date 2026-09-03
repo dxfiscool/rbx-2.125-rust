@@ -396,22 +396,25 @@ pub fn stub_f4d934() -> ! {
 // 0xf4ebd4 — j___ZN3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::LegacyController::InputType>::addPair(RBX::LegacyController::InputType,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEE7addPairES3_PKc")]
-pub fn stub_f4ebd4() -> ! {
-    todo!("0xf4ebd4 RBX::Reflection::EnumDesc<RBX::LegacyController::InputType>::addPair(RBX::LegacyController::InputType,char const*)")
+pub fn stub_f4ebd4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf4ebd4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf4ef14 — j___ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Joint::JointType>::addPair(RBX::Joint::JointType,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE7addPairES3_PKc")]
-pub fn stub_f4ef14() -> ! {
-    todo!("0xf4ef14 RBX::Reflection::EnumDesc<RBX::Joint::JointType>::addPair(RBX::Joint::JointType,char const*)")
+pub fn stub_f4ef14(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf4ef14: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf4f0b4 — j___ZN3RBX10Reflection8EnumDescINS_11SurfaceTypeEE7addPairES2_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SurfaceType>::addPair(RBX::SurfaceType,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11SurfaceTypeEE7addPairES2_PKc")]
-pub fn stub_f4f0b4() -> ! {
-    todo!("0xf4f0b4 RBX::Reflection::EnumDesc<RBX::SurfaceType>::addPair(RBX::SurfaceType,char const*)")
+pub fn stub_f4f0b4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf4f0b4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf50354 — j___ZN3RBX10Reflection11Call0HelperINS_9Scripting14ScriptDebuggerEMS3_FN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS7_EEEEEvESG_E4callEPS3_SI_RS7_

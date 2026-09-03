@@ -107,8 +107,10 @@ pub fn stub_f48d54() -> ! {
 // 0xf48d64 — j___ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::convertToIndex(RBX::TextService::XAlignment)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE14convertToIndexES3_")]
-pub fn stub_f48d64() -> ! {
-    todo!("0xf48d64 RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::convertToIndex(RBX::TextService::XAlignment)const")
+pub fn stub_f48d64(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf48d64: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf48d74 — j___ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE14convertToValueERKNS_4NameERS3_
@@ -135,8 +137,10 @@ pub fn stub_f48d94() -> ! {
 // 0xf48da4 — j___ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToIndex(RBX::TextService::YAlignment)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToIndexES3_")]
-pub fn stub_f48da4() -> ! {
-    todo!("0xf48da4 RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToIndex(RBX::TextService::YAlignment)const")
+pub fn stub_f48da4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf48da4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf48db4 — j___ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToValueERKNS_4NameERS3_
@@ -163,8 +167,10 @@ pub fn stub_f48dd4() -> ! {
 // 0xf48de4 — j___ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToIndex(RBX::TextService::Font)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToIndexES3_")]
-pub fn stub_f48de4() -> ! {
-    todo!("0xf48de4 RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToIndex(RBX::TextService::Font)const")
+pub fn stub_f48de4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf48de4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf48df4 — j___ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToValueERKNS_4NameERS3_
@@ -191,8 +197,10 @@ pub fn stub_f48e14() -> ! {
 // 0xf48e24 — j___ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToIndex(RBX::TextService::FontSize)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE14convertToIndexES3_")]
-pub fn stub_f48e24() -> ! {
-    todo!("0xf48e24 RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToIndex(RBX::TextService::FontSize)const")
+pub fn stub_f48e24(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf48e24: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf48e34 — j___ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE14convertToValueERKNS_4NameERS3_
@@ -562,8 +570,9 @@ pub fn stub_f49754() -> ! {
 // 0xf49764 — j___ZN3RBX10Reflection8EnumDescINS_10Controller6ButtonEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Controller::Button>::addPair(RBX::Controller::Button,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_10Controller6ButtonEE7addPairES3_PKc")]
-pub fn stub_f49764() -> ! {
-    todo!("0xf49764 RBX::Reflection::EnumDesc<RBX::Controller::Button>::addPair(RBX::Controller::Button,char const*)")
+pub fn stub_f49764(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf49764: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf49774 — j___ZN3RBX10Reflection8EnumDescINS_10Controller6ButtonEED2Ev

@@ -492,8 +492,9 @@ pub fn stub_f2d484() {
 // 0xf2d7a4 — j___ZN3RBX10Reflection8EnumDescINS_6Action10ActionTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Action::ActionType>::addPair(RBX::Action::ActionType,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_6Action10ActionTypeEE7addPairES3_PKc")]
-pub fn stub_f2d7a4() -> ! {
-    todo!("0xf2d7a4 RBX::Reflection::EnumDesc<RBX::Action::ActionType>::addPair(RBX::Action::ActionType,char const*)")
+pub fn stub_f2d7a4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf2d7a4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf2d854 — j___ZN3RBX10Reflection7Variant14genericConvertINS_11AnimationIdEEERT_v
@@ -534,8 +535,9 @@ pub fn stub_f2dd54() -> ! {
 // 0xf2dd64 — j___ZN3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEE7addPairES4_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::addPair(G3D::Vector3::Axis,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEE7addPairES4_PKc")]
-pub fn stub_f2dd64() -> ! {
-    todo!("0xf2dd64 RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::addPair(G3D::Vector3::Axis,char const*)")
+pub fn stub_f2dd64(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf2dd64: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf2dff4 — j___ZN3RBX10Reflection11Call1HelperINS_13ContentFilterEMS2_FvSsESsvE4callEPS2_S4_RNS0_7VariantERKSs
@@ -576,8 +578,9 @@ pub fn stub_f2e034() -> ! {
 // 0xf2e834 — j___ZN3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEE7addPairES2_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeywordFilterType>::addPair(RBX::KeywordFilterType,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEE7addPairES2_PKc")]
-pub fn stub_f2e834() -> ! {
-    todo!("0xf2e834 RBX::Reflection::EnumDesc<RBX::KeywordFilterType>::addPair(RBX::KeywordFilterType,char const*)")
+pub fn stub_f2e834(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf2e834: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf2e914 — j___ZN3RBX13LuaWebService10checkCacheIN5boost10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEEEEbRKSsNS2_8functionIFvT_EEENSD_IFvSsEEE

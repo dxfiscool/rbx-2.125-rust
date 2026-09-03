@@ -276,8 +276,9 @@ pub fn stub_0x692ecc() {
 
 // 0x692ef0 — __ZN3RBX10Reflection8EnumDescINS_10Controller6ButtonEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Controller::Button>::addPair(RBX::Controller::Button,char const*)")]
-pub fn stub_0x692ef0() -> ! {
-    todo!("0x692ef0 RBX::Reflection::EnumDesc<RBX::Controller::Button>::addPair(RBX::Controller::Button,char const*)")
+pub fn stub_0x692ef0(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x692ef0: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x693250 — __ZN3RBX10Reflection7Variant14genericConvertINS_10Controller6ButtonEEERT_v

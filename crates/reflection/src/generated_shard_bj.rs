@@ -16,8 +16,9 @@ pub fn stub_f28ba4() -> ! {
 // 0xf28bb4 — j___ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::addPair(RBX::HttpService::HttpContentType,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEE7addPairES3_PKc")]
-pub fn stub_f28bb4() -> ! {
-    todo!("0xf28bb4 RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::addPair(RBX::HttpService::HttpContentType,char const*)")
+pub fn stub_f28bb4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf28bb4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf28bc4 — j___ZN3RBX10Reflection9ArgHelper6getArgIN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKNS3_10scoped_ptrISJ_EEPNS3_10disable_ifINS3_7is_sameISJ_NS4_IKNS0_5TupleEEEEEvE4typeE
@@ -107,8 +108,10 @@ pub fn stub_f28ea4() -> ! {
 // 0xf28eb4 — j___ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE14convertToIndexES2_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NormalId>::convertToIndex(RBX::NormalId)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE14convertToIndexES2_")]
-pub fn stub_f28eb4() -> ! {
-    todo!("0xf28eb4 RBX::Reflection::EnumDesc<RBX::NormalId>::convertToIndex(RBX::NormalId)const")
+pub fn stub_f28eb4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf28eb4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf28ee4 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10PointLightES6_EEvPKNS_10shared_ptrIT_EEPT0_

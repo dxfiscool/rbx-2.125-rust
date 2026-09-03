@@ -226,8 +226,9 @@ pub fn stub_f33d04() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CharacterMesh::BodyPart>::addPair(RBX::CharacterMesh::BodyPart,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13CharacterMesh8BodyPartEE7addPairES3_PKc")]
-pub fn stub_f33d14() -> ! {
-    todo!("0xf33d14 RBX::Reflection::EnumDesc<RBX::CharacterMesh::BodyPart>::addPair(RBX::CharacterMesh::BodyPart,char const*)")
+pub fn stub_f33d14(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf33d14: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf33d24 — j___ZN3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EEC2INS_13CharacterMeshEEEPKcS7_MT_iNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -250,8 +251,10 @@ pub fn stub_f33dc4() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CharacterMesh::BodyPart>::convertToIndex(RBX::CharacterMesh::BodyPart)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_13CharacterMesh8BodyPartEE14convertToIndexES3_")]
-pub fn stub_f33dd4() -> ! {
-    todo!("0xf33dd4 RBX::Reflection::EnumDesc<RBX::CharacterMesh::BodyPart>::convertToIndex(RBX::CharacterMesh::BodyPart)const")
+pub fn stub_f33dd4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf33dd4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf33df4 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13CharacterMeshES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -274,8 +277,9 @@ pub fn stub_f33ef4() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::ChatService::ChatColor>::addPair(RBX::ChatService::ChatColor,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11ChatService9ChatColorEE7addPairES3_PKc")]
-pub fn stub_f33f04() -> ! {
-    todo!("0xf33f04 RBX::Reflection::EnumDesc<RBX::ChatService::ChatColor>::addPair(RBX::ChatService::ChatColor,char const*)")
+pub fn stub_f33f04(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf33f04: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf33f14 — j___ZN3RBX10Reflection9ArgHelper6getArgINS_11ChatService9ChatColorELi3EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE

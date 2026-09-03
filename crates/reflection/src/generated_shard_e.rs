@@ -480,8 +480,10 @@ pub fn stub_0x659c6c() -> ! {
 
 // 0x659cc8 — __ZNK3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::LegacyController::InputType>::convertToIndex(RBX::LegacyController::InputType)const")]
-pub fn stub_0x659cc8() -> ! {
-    todo!("0x659cc8 RBX::Reflection::EnumDesc<RBX::LegacyController::InputType>::convertToIndex(RBX::LegacyController::InputType)const")
+pub fn stub_0x659cc8(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0x659cc8: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0x659d40 — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE2ENS_16LegacyController9InputTypeEMNS_12PartInstanceEKFS3_S1_EMS4_FvS1_S3_EE8getValueEPKNS_10Reflection13DescribedBaseE
@@ -588,8 +590,10 @@ pub fn stub_0x65a4e8() -> ! {
 
 // 0x65a544 — __ZNK3RBX10Reflection8EnumDescINS_11SurfaceTypeEE14convertToIndexES2_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SurfaceType>::convertToIndex(RBX::SurfaceType)const")]
-pub fn stub_0x65a544() -> ! {
-    todo!("0x65a544 RBX::Reflection::EnumDesc<RBX::SurfaceType>::convertToIndex(RBX::SurfaceType)const")
+pub fn stub_0x65a544(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0x65a544: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0x65a5bc — __ZNK3RBX13SurfaceGetSetILNS_8NormalIdE2ENS_11SurfaceTypeEMNS_12PartInstanceEKFS2_S1_EMS3_FvS1_S2_EE8getValueEPKNS_10Reflection13DescribedBaseE

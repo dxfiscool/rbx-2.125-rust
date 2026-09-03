@@ -470,8 +470,9 @@ pub fn stub_0xf4c8c4() -> ! {
 
 // 0xf4c8d4 — j___ZN3RBX10Reflection8EnumDescINS_8NormalIdEE7addPairES2_PKc
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_8NormalIdEE7addPairES2_PKc")]
-pub fn stub_0xf4c8d4() -> ! {
-    todo!("0xf4c8d4 j___ZN3RBX10Reflection8EnumDescINS_8NormalIdEE7addPairES2_PKc")
+pub fn stub_0xf4c8d4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf4c8d4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf4c8e4 — j___ZN3RBX10Reflection8EnumDescINS_8NormalIdEED2Ev

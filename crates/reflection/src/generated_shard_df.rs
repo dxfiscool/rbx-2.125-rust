@@ -403,8 +403,9 @@ pub fn stub_431b00() {
 // 0x431b48 — __ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::addPair(RBX::DataModel::CreatorType,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE7addPairES3_PKc")]
-pub fn stub_431b48() -> ! {
-    todo!("0x431b48 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::addPair(RBX::DataModel::CreatorType,char const*)")
+pub fn stub_431b48(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x431b48: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x431ea8 — __ZN3RBX10Reflection7Variant14genericConvertINS_9DataModel11CreatorTypeEEERT_v
@@ -417,8 +418,9 @@ pub fn stub_431ea8() -> ! {
 // 0x432094 — __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::addPair(RBX::DataModel::Genre,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEE7addPairES3_PKc")]
-pub fn stub_432094() -> ! {
-    todo!("0x432094 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::addPair(RBX::DataModel::Genre,char const*)")
+pub fn stub_432094(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x432094: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x4323f4 — __ZN3RBX10Reflection7Variant14genericConvertINS_9DataModel5GenreEEERT_v
@@ -431,8 +433,9 @@ pub fn stub_4323f4() -> ! {
 // 0x4325e0 — __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::addPair(RBX::DataModel::GearGenreSetting,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE7addPairES3_PKc")]
-pub fn stub_4325e0() -> ! {
-    todo!("0x4325e0 RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::addPair(RBX::DataModel::GearGenreSetting,char const*)")
+pub fn stub_4325e0(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x4325e0: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x432940 — __ZN3RBX10Reflection7Variant14genericConvertINS_9DataModel16GearGenreSettingEEERT_v
@@ -445,8 +448,9 @@ pub fn stub_432940() -> ! {
 // 0x432b2c — __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::addPair(RBX::DataModel::GearType,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE7addPairES3_PKc")]
-pub fn stub_432b2c() -> ! {
-    todo!("0x432b2c RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::addPair(RBX::DataModel::GearType,char const*)")
+pub fn stub_432b2c(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x432b2c: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x432e8c — __ZN3RBX10Reflection7Variant14genericConvertINS_9DataModel8GearTypeEEERT_v
@@ -459,8 +463,9 @@ pub fn stub_432e8c() -> ! {
 // 0x433078 — __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::addPair(RBX::Instance::SaveFilter,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE7addPairES3_PKc")]
-pub fn stub_433078() -> ! {
-    todo!("0x433078 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::addPair(RBX::Instance::SaveFilter,char const*)")
+pub fn stub_433078(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x433078: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x4333d8 — __ZN3RBX10Reflection7Variant14genericConvertINS_8Instance10SaveFilterEEERT_v

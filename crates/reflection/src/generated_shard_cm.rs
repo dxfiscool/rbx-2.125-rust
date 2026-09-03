@@ -282,15 +282,17 @@ pub fn stub_f55ee4() -> ! {
 // 0xf55ef4 — j___ZN3RBX10Reflection8EnumDescINS_13FriendService12FriendStatusEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::FriendService::FriendStatus>::addPair(RBX::FriendService::FriendStatus,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13FriendService12FriendStatusEE7addPairES3_PKc")]
-pub fn stub_f55ef4() -> ! {
-    todo!("0xf55ef4 RBX::Reflection::EnumDesc<RBX::FriendService::FriendStatus>::addPair(RBX::FriendService::FriendStatus,char const*)")
+pub fn stub_f55ef4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf55ef4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf55f04 — j___ZN3RBX10Reflection8EnumDescINS_13FriendService15FriendEventTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::FriendService::FriendEventType>::addPair(RBX::FriendService::FriendEventType,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13FriendService15FriendEventTypeEE7addPairES3_PKc")]
-pub fn stub_f55f04() -> ! {
-    todo!("0xf55f04 RBX::Reflection::EnumDesc<RBX::FriendService::FriendEventType>::addPair(RBX::FriendService::FriendEventType,char const*)")
+pub fn stub_f55f04(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf55f04: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf55f14 — j___ZN3RBX10Reflection9EventDescINS_13FriendServiceEFviiNS2_12FriendStatusEEN3rbx13remote_signalIS4_EEMS2_S7_EC2ES8_PKcSB_SB_SB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -583,15 +585,17 @@ pub fn stub_f56914() -> ! {
 // 0xf56924 — j___ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::addPair(RBX::GameBasicSettings::ControlMode,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEE7addPairES3_PKc")]
-pub fn stub_f56924() -> ! {
-    todo!("0xf56924 RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::addPair(RBX::GameBasicSettings::ControlMode,char const*)")
+pub fn stub_f56924(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf56924: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf56934 — j___ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::addPair(RBX::GameBasicSettings::RenderQualitySetting,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEE7addPairES3_PKc")]
-pub fn stub_f56934() -> ! {
-    todo!("0xf56934 RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::addPair(RBX::GameBasicSettings::RenderQualitySetting,char const*)")
+pub fn stub_f56934(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf56934: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf56944 — j___ZN3RBX10Reflection9EventDescINS_17GameBasicSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -625,15 +629,19 @@ pub fn stub_f569e4() -> ! {
 // 0xf569f4 — j___ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::convertToIndex(RBX::GameBasicSettings::ControlMode)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEE14convertToIndexES3_")]
-pub fn stub_f569f4() -> ! {
-    todo!("0xf569f4 RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::convertToIndex(RBX::GameBasicSettings::ControlMode)const")
+pub fn stub_f569f4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf569f4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf56a04 — j___ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::convertToIndex(RBX::GameBasicSettings::RenderQualitySetting)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEE14convertToIndexES3_")]
-pub fn stub_f56a04() -> ! {
-    todo!("0xf56a04 RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::convertToIndex(RBX::GameBasicSettings::RenderQualitySetting)const")
+pub fn stub_f56a04(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf56a04: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf56be4 — j___ZN3RBX10Reflection11Call0HelperINS_18RenderHooksServiceEMS2_FdvEdE4callEPS2_S4_RNS0_7VariantE

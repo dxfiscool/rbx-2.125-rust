@@ -4,14 +4,18 @@
 
 // 0xf24d90 — __ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEE14convertToIndexES3_$shim
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEE14convertToIndexES3_$shim")]
-pub fn stub_f24d90() -> ! {
-    todo!("0xf24d90 __ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEE14convertToIndexES3_$shim")
+pub fn stub_f24d90(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf24d90: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf24d9c — __ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEE14convertToIndexES3_$shim
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEE14convertToIndexES3_$shim")]
-pub fn stub_f24d9c() -> ! {
-    todo!("0xf24d9c __ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEE14convertToIndexES3_$shim")
+pub fn stub_f24d9c(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf24d9c: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf24db4 — __ZN3RBX10Reflection11Call0HelperINS_18RenderHooksServiceEMS2_FdvEdE4callEPS2_S4_RNS0_7VariantE$shim

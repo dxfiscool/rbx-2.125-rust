@@ -37,29 +37,33 @@ pub fn stub_f3f9b4() -> ! {
 // 0xf3f9c4 — j___ZN3RBX10Reflection8EnumDescINS_9GuiButton5StyleEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiButton::Style>::addPair(RBX::GuiButton::Style,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9GuiButton5StyleEE7addPairES3_PKc")]
-pub fn stub_f3f9c4() -> ! {
-    todo!("0xf3f9c4 RBX::Reflection::EnumDesc<RBX::GuiButton::Style>::addPair(RBX::GuiButton::Style,char const*)")
+pub fn stub_f3f9c4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf3f9c4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf3f9d4 — j___ZN3RBX10Reflection8EnumDescINS_9GuiObject11TweenStatusEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::TweenStatus>::addPair(RBX::GuiObject::TweenStatus,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9GuiObject11TweenStatusEE7addPairES3_PKc")]
-pub fn stub_f3f9d4() -> ! {
-    todo!("0xf3f9d4 RBX::Reflection::EnumDesc<RBX::GuiObject::TweenStatus>::addPair(RBX::GuiObject::TweenStatus,char const*)")
+pub fn stub_f3f9d4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf3f9d4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf3f9e4 — j___ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingStyle>::addPair(RBX::GuiObject::TweenEasingStyle,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEE7addPairES3_PKc")]
-pub fn stub_f3f9e4() -> ! {
-    todo!("0xf3f9e4 RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingStyle>::addPair(RBX::GuiObject::TweenEasingStyle,char const*)")
+pub fn stub_f3f9e4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf3f9e4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf3f9f4 — j___ZN3RBX10Reflection8EnumDescINS_9GuiObject20TweenEasingDirectionEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingDirection>::addPair(RBX::GuiObject::TweenEasingDirection,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9GuiObject20TweenEasingDirectionEE7addPairES3_PKc")]
-pub fn stub_f3f9f4() -> ! {
-    todo!("0xf3f9f4 RBX::Reflection::EnumDesc<RBX::GuiObject::TweenEasingDirection>::addPair(RBX::GuiObject::TweenEasingDirection,char const*)")
+pub fn stub_f3f9f4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf3f9f4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf3fa04 — j___ZN3RBX10Reflection9ArgHelper6getArgINS_3Lua15WeakFunctionRefELi6EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
@@ -310,15 +314,19 @@ pub fn stub_f40294() -> ! {
 // 0xf402a4 — j___ZNK3RBX10Reflection8EnumDescINS_9GuiButton5StyleEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiButton::Style>::convertToIndex(RBX::GuiButton::Style)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_9GuiButton5StyleEE14convertToIndexES3_")]
-pub fn stub_f402a4() -> ! {
-    todo!("0xf402a4 RBX::Reflection::EnumDesc<RBX::GuiButton::Style>::convertToIndex(RBX::GuiButton::Style)const")
+pub fn stub_f402a4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf402a4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf402b4 — j___ZNK3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::SizeConstraint>::convertToIndex(RBX::GuiObject::SizeConstraint)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEE14convertToIndexES3_")]
-pub fn stub_f402b4() -> ! {
-    todo!("0xf402b4 RBX::Reflection::EnumDesc<RBX::GuiObject::SizeConstraint>::convertToIndex(RBX::GuiObject::SizeConstraint)const")
+pub fn stub_f402b4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf402b4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf402e4 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12TweenServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -534,8 +542,9 @@ pub fn stub_f40814() -> ! {
 // 0xf40824 — j___ZN3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiService::SpecialKey>::addPair(RBX::GuiService::SpecialKey,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEE7addPairES3_PKc")]
-pub fn stub_f40824() -> ! {
-    todo!("0xf40824 RBX::Reflection::EnumDesc<RBX::GuiService::SpecialKey>::addPair(RBX::GuiService::SpecialKey,char const*)")
+pub fn stub_f40824(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf40824: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf40834 — j___ZN3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEED2Ev
@@ -548,8 +557,9 @@ pub fn stub_f40834() {
 // 0xf40844 — j___ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiService::CenterDialogType>::addPair(RBX::GuiService::CenterDialogType,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEE7addPairES3_PKc")]
-pub fn stub_f40844() -> ! {
-    todo!("0xf40844 RBX::Reflection::EnumDesc<RBX::GuiService::CenterDialogType>::addPair(RBX::GuiService::CenterDialogType,char const*)")
+pub fn stub_f40844(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf40844: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf40854 — j___ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEED2Ev

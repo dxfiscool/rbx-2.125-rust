@@ -111,8 +111,9 @@ pub fn stub_0xf41ff4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::addPair(RBX::HopperBin::BinType,char const*)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::addPair(RBX::HopperBin::BinType,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEE7addPairES3_PKc")]
-pub fn stub_0xf42004() -> ! {
-    todo!("0xf42004")
+pub fn stub_0xf42004(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf42004: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf42014 — j___ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEE9addLegacyEiPKcS3_
@@ -120,8 +121,9 @@ pub fn stub_0xf42004() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::addLegacy(int,char const*,RBX::HopperBin::BinType)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::addLegacy(int,char const*,RBX::HopperBin::BinType)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEE9addLegacyEiPKcS3_")]
-pub fn stub_0xf42014() -> ! {
-    todo!("0xf42014")
+pub fn stub_0xf42014(desc: &mut crate::enum_desc::EnumDesc, legacy_index: usize, name: &str, value: i32) {
+    // IDA 0xf42014: EnumDesc<T>::addLegacy -- grow legacy vector, map legacy name->value (decompiled 0x47cd20, model 0xa208). Delegates to the shared model.
+    desc.add_legacy(legacy_index, name, value)
 }
 
 // 0xf42024 — j___ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_9HopperBinEEEPKcS7_MT_bMS8_FvRKNS0_18PropertyDescriptorEENSA_10AttributesENS_8Security11PermissionsE
@@ -147,8 +149,10 @@ pub fn stub_0xf421e4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::convertToIndex(RBX::HopperBin::BinType)const
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::HopperBin::BinType>::convertToIndex(RBX::HopperBin::BinType)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEE14convertToIndexES3_")]
-pub fn stub_0xf421f4() -> ! {
-    todo!("0xf421f4")
+pub fn stub_0xf421f4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf421f4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf42224 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9HopperBinES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -723,8 +727,9 @@ pub fn stub_0xf43b14() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::addPair(RBX::KeyframeSequence::Priority,char const*)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::addPair(RBX::KeyframeSequence::Priority,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE7addPairES3_PKc")]
-pub fn stub_0xf43b24() -> ! {
-    todo!("0xf43b24")
+pub fn stub_0xf43b24(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf43b24: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf43bd4 — j___ZNK3RBX10Reflection18EnumPropDescriptorINS_16KeyframeSequenceENS2_8PriorityEE11setIntValueEPNS0_13DescribedBaseEi
@@ -741,8 +746,10 @@ pub fn stub_0xf43bd4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::convertToIndex(RBX::KeyframeSequence::Priority)const
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::convertToIndex(RBX::KeyframeSequence::Priority)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE14convertToIndexES3_")]
-pub fn stub_0xf43be4() -> ! {
-    todo!("0xf43be4")
+pub fn stub_0xf43be4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf43be4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf44244 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_16KeyframeSequenceES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -759,8 +766,9 @@ pub fn stub_0xf44244() {
 // demangled: RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::addPair(RBX::Legacy::SurfaceConstraint,char const*)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::addPair(RBX::Legacy::SurfaceConstraint,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEE7addPairES3_PKc")]
-pub fn stub_0xf443b4() -> ! {
-    todo!("0xf443b4")
+pub fn stub_0xf443b4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf443b4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf44464 — j___ZN3RBX10Reflection11Call0HelperINS_8LightingEMS2_FN3G3D7Vector3EvES4_E4callEPS2_S6_RNS0_7VariantE

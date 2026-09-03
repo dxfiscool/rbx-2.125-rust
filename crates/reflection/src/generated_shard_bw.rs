@@ -689,22 +689,25 @@ pub fn stub_f3df74() -> ! {
 // 0xf3df84 — j___ZN3RBX10Reflection8EnumDescINS_7Feature5InOutEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::InOut>::addPair(RBX::Feature::InOut,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_7Feature5InOutEE7addPairES3_PKc")]
-pub fn stub_f3df84() -> ! {
-    todo!("0xf3df84 RBX::Reflection::EnumDesc<RBX::Feature::InOut>::addPair(RBX::Feature::InOut,char const*)")
+pub fn stub_f3df84(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf3df84: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf3df94 — j___ZN3RBX10Reflection8EnumDescINS_7Feature9LeftRightEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::LeftRight>::addPair(RBX::Feature::LeftRight,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_7Feature9LeftRightEE7addPairES3_PKc")]
-pub fn stub_f3df94() -> ! {
-    todo!("0xf3df94 RBX::Reflection::EnumDesc<RBX::Feature::LeftRight>::addPair(RBX::Feature::LeftRight,char const*)")
+pub fn stub_f3df94(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf3df94: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf3dfa4 — j___ZN3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::addPair(RBX::Feature::TopBottom,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE7addPairES3_PKc")]
-pub fn stub_f3dfa4() -> ! {
-    todo!("0xf3dfa4 RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::addPair(RBX::Feature::TopBottom,char const*)")
+pub fn stub_f3dfa4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf3dfa4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf3e144 — j___ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE

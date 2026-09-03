@@ -296,15 +296,17 @@ pub fn stub_83d1f8() -> ! {
 // 0x83dbd8 — __ZN3RBX10Reflection8EnumDescINS_13FriendService12FriendStatusEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::FriendService::FriendStatus>::addPair(RBX::FriendService::FriendStatus,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13FriendService12FriendStatusEE7addPairES3_PKc")]
-pub fn stub_83dbd8() -> ! {
-    todo!("0x83dbd8 RBX::Reflection::EnumDesc<RBX::FriendService::FriendStatus>::addPair(RBX::FriendService::FriendStatus,char const*)")
+pub fn stub_83dbd8(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x83dbd8: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x83df38 — __ZN3RBX10Reflection8EnumDescINS_13FriendService15FriendEventTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::FriendService::FriendEventType>::addPair(RBX::FriendService::FriendEventType,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13FriendService15FriendEventTypeEE7addPairES3_PKc")]
-pub fn stub_83df38() -> ! {
-    todo!("0x83df38 RBX::Reflection::EnumDesc<RBX::FriendService::FriendEventType>::addPair(RBX::FriendService::FriendEventType,char const*)")
+pub fn stub_83df38(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x83df38: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x83ee94 — __ZN3RBX10Reflection19RemoteEventDescImplILi3ENS_13FriendServiceEFviiNS2_12FriendStatusEEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceEiiS3_

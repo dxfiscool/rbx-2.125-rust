@@ -355,15 +355,17 @@ pub fn stub_0x84a140() {
 // 0x84a164 — __ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::addPair(RBX::GameBasicSettings::ControlMode,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEE7addPairES3_PKc")]
-pub fn stub_0x84a164() -> ! {
-    todo!("0x84a164 RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::addPair(RBX::GameBasicSettings::ControlMode,char const*)")
+pub fn stub_0x84a164(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x84a164: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x84a4c4 — __ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::addPair(RBX::GameBasicSettings::RenderQualitySetting,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEE7addPairES3_PKc")]
-pub fn stub_0x84a4c4() -> ! {
-    todo!("0x84a4c4 RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::addPair(RBX::GameBasicSettings::RenderQualitySetting,char const*)")
+pub fn stub_0x84a4c4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x84a4c4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x84b91c — __ZN3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev

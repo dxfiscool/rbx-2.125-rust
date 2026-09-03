@@ -385,8 +385,9 @@ pub fn stub_9e10f4() -> ! {
 // 0x9e2160 — __ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::addPair(RBX::Network::FilterResult,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEE7addPairES3_PKc")]
-pub fn stub_9e2160() -> ! {
-    todo!("0x9e2160 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::addPair(RBX::Network::FilterResult,char const*)")
+pub fn stub_9e2160(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x9e2160: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x9e2688 — __ZN3RBX10Reflection7Variant14genericConvertINS_7Network12FilterResultEEERT_v

@@ -576,15 +576,19 @@ pub fn stub_f326b4() -> ! {
 // 0xf326c4 — j___ZNK3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::convertToIndex(RBX::PartInstance::FormFactor)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEE14convertToIndexES3_")]
-pub fn stub_f326c4() -> ! {
-    todo!("0xf326c4 RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::convertToIndex(RBX::PartInstance::FormFactor)const")
+pub fn stub_f326c4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf326c4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf326d4 — j___ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToIndex(RBX::BasicPartInstance::LegacyPartType)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE14convertToIndexES3_")]
-pub fn stub_f326d4() -> ! {
-    todo!("0xf326d4 RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToIndex(RBX::BasicPartInstance::LegacyPartType)const")
+pub fn stub_f326d4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf326d4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf326e4 — j___ZN3RBX10Reflection14PropDescriptorINS_9BevelMeshEfEC2IMS2_KFKfvEMS2_FvfEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE

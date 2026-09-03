@@ -332,26 +332,30 @@ pub fn stub_0xf5f994() -> ! {
 
 // 0xf5f9a4 — j___ZN3RBX10Reflection8EnumDescI14PacketPriorityE7addPairES2_PKc
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescI14PacketPriorityE7addPairES2_PKc")]
-pub fn stub_0xf5f9a4() -> ! {
-    todo!("0xf5f9a4 j___ZN3RBX10Reflection8EnumDescI14PacketPriorityE7addPairES2_PKc")
+pub fn stub_0xf5f9a4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf5f9a4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf5f9b4 — j___ZN3RBX10Reflection8EnumDescI17PacketReliabilityE7addPairES2_PKc
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescI17PacketReliabilityE7addPairES2_PKc")]
-pub fn stub_0xf5f9b4() -> ! {
-    todo!("0xf5f9b4 j___ZN3RBX10Reflection8EnumDescI17PacketReliabilityE7addPairES2_PKc")
+pub fn stub_0xf5f9b4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf5f9b4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf5f9c4 — j___ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE7addPairES3_PKc
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE7addPairES3_PKc")]
-pub fn stub_0xf5f9c4() -> ! {
-    todo!("0xf5f9c4 j___ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE7addPairES3_PKc")
+pub fn stub_0xf5f9c4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf5f9c4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf5f9d4 — j___ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE7addPairES3_PKc
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE7addPairES3_PKc")]
-pub fn stub_0xf5f9d4() -> ! {
-    todo!("0xf5f9d4 j___ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE7addPairES3_PKc")
+pub fn stub_0xf5f9d4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf5f9d4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf5f9e4 — j___ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_15NetworkSettingsEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -452,8 +456,9 @@ pub fn stub_0xf600b4() -> ! {
 
 // 0xf600c4 — j___ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEE7addPairES3_PKc
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEE7addPairES3_PKc")]
-pub fn stub_0xf600c4() -> ! {
-    todo!("0xf600c4 j___ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEE7addPairES3_PKc")
+pub fn stub_0xf600c4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf600c4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf600d4 — j___ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEED2Ev

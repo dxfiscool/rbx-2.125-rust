@@ -284,8 +284,9 @@ pub fn stub_8ae6f0() -> ! {
 
 // 0x8b1c10 — __ZN3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::UserInputService::SwipeDirection>::addPair(RBX::UserInputService::SwipeDirection,char const*)")]
-pub fn stub_8b1c10() -> ! {
-    todo!("0x8b1c10 RBX::Reflection::EnumDesc<RBX::UserInputService::SwipeDirection>::addPair(RBX::UserInputService::SwipeDirection,char const*)")
+pub fn stub_8b1c10(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x8b1c10: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x8b1f70 — __ZN3RBX10Reflection14PropDescriptorINS_16UserInputServiceEbED1Ev

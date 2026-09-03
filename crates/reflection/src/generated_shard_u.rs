@@ -115,8 +115,9 @@ pub fn stub_7304b8() -> ! {
 // 0x730774 — __ZN3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::LegacyController::InputType>::addPair(RBX::LegacyController::InputType,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEE7addPairES3_PKc")]
-pub fn stub_730774() -> ! {
-    todo!("0x730774 RBX::Reflection::EnumDesc<RBX::LegacyController::InputType>::addPair(RBX::LegacyController::InputType,char const*)")
+pub fn stub_730774(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x730774: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x736f30 — __ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEEC1Ev
@@ -136,8 +137,9 @@ pub fn stub_736f34() -> ! {
 // 0x73904c — __ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Joint::JointType>::addPair(RBX::Joint::JointType,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE7addPairES3_PKc")]
-pub fn stub_73904c() -> ! {
-    todo!("0x73904c RBX::Reflection::EnumDesc<RBX::Joint::JointType>::addPair(RBX::Joint::JointType,char const*)")
+pub fn stub_73904c(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x73904c: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x73b500 — __ZN3RBX10Reflection8EnumDescINS_11SurfaceTypeEEC1Ev
@@ -157,8 +159,9 @@ pub fn stub_73b504() -> ! {
 // 0x73b7ec — __ZN3RBX10Reflection8EnumDescINS_11SurfaceTypeEE7addPairES2_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SurfaceType>::addPair(RBX::SurfaceType,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11SurfaceTypeEE7addPairES2_PKc")]
-pub fn stub_73b7ec() -> ! {
-    todo!("0x73b7ec RBX::Reflection::EnumDesc<RBX::SurfaceType>::addPair(RBX::SurfaceType,char const*)")
+pub fn stub_73b7ec(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x73b7ec: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x7695c8 — __ZN3RBX9Scripting14ScriptDebugger8setLocalESsNS_10Reflection7VariantEi

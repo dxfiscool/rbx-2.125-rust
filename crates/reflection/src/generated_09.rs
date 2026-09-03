@@ -12,8 +12,9 @@ pub fn stub_0x5fccec() {
 
 // 0x5fcd10 — __ZN3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::addPair(RBX::StarterGuiService::CoreGuiType,char const*)")]
-pub fn stub_0x5fcd10() -> ! {
-    todo!("0x5fcd10 RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::addPair(RBX::StarterGuiService::CoreGuiType,char const*)")
+pub fn stub_0x5fcd10(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x5fcd10: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x5fd070 — __ZN3RBX10Reflection7Variant14genericConvertINS_17StarterGuiService11CoreGuiTypeEEERT_v
@@ -600,8 +601,10 @@ pub fn stub_0x6088b8() -> ! {
 
 // 0x6088ec — __ZNK3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::convertToIndex(RBX::PrismInstance::NumSidesEnum)const")]
-pub fn stub_0x6088ec() -> ! {
-    todo!("0x6088ec RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::convertToIndex(RBX::PrismInstance::NumSidesEnum)const")
+pub fn stub_0x6088ec(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0x6088ec: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0x60895c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13PrismInstanceENS2_12NumSidesEnumEE11setIntValueEPNS0_13DescribedBaseEi

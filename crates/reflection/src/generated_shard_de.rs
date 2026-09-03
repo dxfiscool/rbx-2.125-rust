@@ -110,8 +110,9 @@ pub fn stub_3e8f2c() {
 
 // 0x3e8f50 — __ZN3RBX10Reflection8EnumDescINS_13CharacterMesh8BodyPartEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CharacterMesh::BodyPart>::addPair(RBX::CharacterMesh::BodyPart,char const*)")]
-pub fn stub_3e8f50() -> ! {
-    todo!("0x3e8f50 __ZN3RBX10Reflection8EnumDescINS_13CharacterMesh8BodyPartEE7addPairES3_PKc")
+pub fn stub_3e8f50(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x3e8f50: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x3e995c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13CharacterMeshES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -266,8 +267,10 @@ pub fn stub_3eb330() -> ! {
 
 // 0x3eb364 — __ZNK3RBX10Reflection8EnumDescINS_13CharacterMesh8BodyPartEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CharacterMesh::BodyPart>::convertToIndex(RBX::CharacterMesh::BodyPart)const")]
-pub fn stub_3eb364() -> ! {
-    todo!("0x3eb364 __ZNK3RBX10Reflection8EnumDescINS_13CharacterMesh8BodyPartEE14convertToIndexES3_")
+pub fn stub_3eb364(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0x3eb364: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0x3eb3d4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13CharacterMeshENS2_8BodyPartEE11setIntValueEPNS0_13DescribedBaseEi
@@ -314,8 +317,9 @@ pub fn stub_3ec400() {
 
 // 0x3ec424 — __ZN3RBX10Reflection8EnumDescINS_11ChatService9ChatColorEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::ChatService::ChatColor>::addPair(RBX::ChatService::ChatColor,char const*)")]
-pub fn stub_3ec424() -> ! {
-    todo!("0x3ec424 __ZN3RBX10Reflection8EnumDescINS_11ChatService9ChatColorEE7addPairES3_PKc")
+pub fn stub_3ec424(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x3ec424: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x3ec784 — __ZN3RBX10Reflection7Variant14genericConvertINS_11ChatService9ChatColorEEERT_v

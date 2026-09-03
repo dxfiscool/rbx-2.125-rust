@@ -10,8 +10,10 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToIndexES3_$shim")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToIndexES3_$shim")]
-pub fn stub_0xf23500() -> ! {
-    todo!("0xf23500 __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToIndexES3_$shim")
+pub fn stub_0xf23500(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf23500: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf2350c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10YAlignmentEEEE14doGetSingletonEv$shim
@@ -34,8 +36,10 @@ pub fn stub_0xf23518() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE14convertToIndexES3_$shim")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE14convertToIndexES3_$shim")]
-pub fn stub_0xf23524() -> ! {
-    todo!("0xf23524 __ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE14convertToIndexES3_$shim")
+pub fn stub_0xf23524(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf23524: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf23530 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10XAlignmentEEEE14doGetSingletonEv$shim
@@ -58,8 +62,10 @@ pub fn stub_0xf2353c() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToIndexES3_$shim")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToIndexES3_$shim")]
-pub fn stub_0xf23548() -> ! {
-    todo!("0xf23548 __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToIndexES3_$shim")
+pub fn stub_0xf23548(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf23548: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf23554 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService4FontEEEE14doGetSingletonEv$shim
@@ -82,8 +88,10 @@ pub fn stub_0xf23560() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE14convertToIndexES3_$shim")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE14convertToIndexES3_$shim")]
-pub fn stub_0xf2356c() -> ! {
-    todo!("0xf2356c __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE14convertToIndexES3_$shim")
+pub fn stub_0xf2356c(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf2356c: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf23578 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService8FontSizeEEEE14doGetSingletonEv$shim
@@ -523,16 +531,20 @@ pub fn stub_0xf24d84() -> ! {
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEE14convertToIndexES3_$shim")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEE14convertToIndexES3_$shim")]
-pub fn stub_0xf24d90() -> ! {
-    todo!("0xf24d90 __ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEE14convertToIndexES3_$shim")
+pub fn stub_0xf24d90(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf24d90: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf24d9c — __ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEE14convertToIndexES3_$shim
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEE14convertToIndexES3_$shim")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEE14convertToIndexES3_$shim")]
-pub fn stub_0xf24d9c() -> ! {
-    todo!("0xf24d9c __ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEE14convertToIndexES3_$shim")
+pub fn stub_0xf24d9c(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf24d9c: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf24db4 — __ZN3RBX10Reflection11Call0HelperINS_18RenderHooksServiceEMS2_FdvEdE4callEPS2_S4_RNS0_7VariantE$shim

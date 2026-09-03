@@ -423,29 +423,33 @@ pub fn stub_9b22e0() -> ! {
 // 0x9b2bdc — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::addPair(RBX::NetworkSettings::PhysicsSendMethod,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE7addPairES3_PKc")]
-pub fn stub_9b2bdc() -> ! {
-    todo!("0x9b2bdc RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::addPair(RBX::NetworkSettings::PhysicsSendMethod,char const*)")
+pub fn stub_9b2bdc(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x9b2bdc: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x9b3104 — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::addPair(RBX::NetworkSettings::PhysicsReceiveMethod,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE7addPairES3_PKc")]
-pub fn stub_9b3104() -> ! {
-    todo!("0x9b3104 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::addPair(RBX::NetworkSettings::PhysicsReceiveMethod,char const*)")
+pub fn stub_9b3104(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x9b3104: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x9b362c — __ZN3RBX10Reflection8EnumDescI17PacketReliabilityE7addPairES2_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<PacketReliability>::addPair(PacketReliability,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescI17PacketReliabilityE7addPairES2_PKc")]
-pub fn stub_9b362c() -> ! {
-    todo!("0x9b362c RBX::Reflection::EnumDesc<PacketReliability>::addPair(PacketReliability,char const*)")
+pub fn stub_9b362c(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x9b362c: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x9b3b54 — __ZN3RBX10Reflection8EnumDescI14PacketPriorityE7addPairES2_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<PacketPriority>::addPair(PacketPriority,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescI14PacketPriorityE7addPairES2_PKc")]
-pub fn stub_9b3b54() -> ! {
-    todo!("0x9b3b54 RBX::Reflection::EnumDesc<PacketPriority>::addPair(PacketPriority,char const*)")
+pub fn stub_9b3b54(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x9b3b54: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x9b4084 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfED1Ev

@@ -188,8 +188,10 @@ pub fn stub_0xf41ee4() -> ! {
 
 // 0xf41ef4 — j___ZNK3RBX10Reflection8EnumDescINS_7Handles11VisualStyleEE14convertToIndexES3_
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_7Handles11VisualStyleEE14convertToIndexES3_")]
-pub fn stub_0xf41ef4() -> ! {
-    todo!("0xf41ef4 j___ZNK3RBX10Reflection8EnumDescINS_7Handles11VisualStyleEE14convertToIndexES3_")
+pub fn stub_0xf41ef4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf41ef4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf41f14 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7HandlesES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -350,8 +352,9 @@ pub fn stub_0xf44d54() -> ! {
 
 // 0xf44d84 — j___ZN3RBX10Reflection8EnumDescINS_8MaterialEE7addPairES2_PKc
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_8MaterialEE7addPairES2_PKc")]
-pub fn stub_0xf44d84() -> ! {
-    todo!("0xf44d84 j___ZN3RBX10Reflection8EnumDescINS_8MaterialEE7addPairES2_PKc")
+pub fn stub_0xf44d84(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf44d84: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf44d94 — j___ZN3RBX10Reflection8EnumDescINS_8MaterialEED2Ev
@@ -476,8 +479,10 @@ pub fn stub_0xf45894() -> ! {
 
 // 0xf458a4 — j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE14convertToIndexES2_
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE14convertToIndexES2_")]
-pub fn stub_0xf458a4() -> ! {
-    todo!("0xf458a4 j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE14convertToIndexES2_")
+pub fn stub_0xf458a4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf458a4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf458b4 — j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE14convertToValueERKNS_4NameERS2_
@@ -578,8 +583,10 @@ pub fn stub_0xf45df4() -> ! {
 
 // 0xf45e04 — j___ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE14convertToIndexES3_
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE14convertToIndexES3_")]
-pub fn stub_0xf45e04() -> ! {
-    todo!("0xf45e04 j___ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE14convertToIndexES3_")
+pub fn stub_0xf45e04(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf45e04: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf45ea4 — j___ZN3RBX10Reflection14PropDescriptorINS_17StarterGuiServiceEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE

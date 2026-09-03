@@ -240,15 +240,17 @@ pub fn stub_0xf5b364() -> ! {
 // 0xf5b5c4 — j___ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEE7addPairES3_PKc
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEE7addPairES3_PKc")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::addPair(RBX::InputObject::UserInputType,char const*)")]
-pub fn stub_0xf5b5c4() -> ! {
-    todo!("0xf5b5c4 j___ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEE7addPairES3_PKc")
+pub fn stub_0xf5b5c4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf5b5c4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf5b5d4 — j___ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEE7addPairES3_PKc
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEE7addPairES3_PKc")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::addPair(RBX::InputObject::UserInputState,char const*)")]
-pub fn stub_0xf5b5d4() -> ! {
-    todo!("0xf5b5d4 j___ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEE7addPairES3_PKc")
+pub fn stub_0xf5b5d4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf5b5d4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf5b944 — j___ZNSt6vectorIPKN3RBX10Reflection15ClassDescriptorESaIS4_EE6resizeEmS4_
@@ -646,8 +648,9 @@ pub fn stub_0xf5c674() -> ! {
 // 0xf5c684 — j___ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEE7addPairES3_PKc
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEE7addPairES3_PKc")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::addPair(RBX::AssetService::AccessType,char const*)")]
-pub fn stub_0xf5c684() -> ! {
-    todo!("0xf5c684 j___ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEE7addPairES3_PKc")
+pub fn stub_0xf5c684(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf5c684: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf5c694 — j___ZN3RBX10Reflection9ArgHelper6getArgIN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEELi3EEET_RNS0_18FunctionDescriptor9ArgumentsERKNS3_10scoped_ptrISB_EEPNS3_10disable_ifINS3_7is_sameISB_NS4_IKNS0_5TupleEEEEEvE4typeE

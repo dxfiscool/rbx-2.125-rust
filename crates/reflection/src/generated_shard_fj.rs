@@ -291,8 +291,9 @@ pub fn stub_0x86b8a8() -> ! {
 // 0x86f874 — __ZN3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::addPair(RBX::Voxel::CellMaterial,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEE7addPairES3_PKc")]
-pub fn stub_0x86f874() -> ! {
-    todo!("0x86f874")
+pub fn stub_0x86f874(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x86f874: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x86fbd4 — __ZN3RBX10Reflection7Variant14genericConvertINS_5Voxel12CellMaterialEEERT_v
@@ -305,8 +306,9 @@ pub fn stub_0x86fbd4() -> ! {
 // 0x86fdc0 — __ZN3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::addPair(RBX::Voxel::CellBlock,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEE7addPairES3_PKc")]
-pub fn stub_0x86fdc0() -> ! {
-    todo!("0x86fdc0")
+pub fn stub_0x86fdc0(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x86fdc0: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x870120 — __ZN3RBX10Reflection7Variant14genericConvertINS_5Voxel9CellBlockEEERT_v
@@ -319,8 +321,9 @@ pub fn stub_0x870120() -> ! {
 // 0x87030c — __ZN3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::addPair(RBX::Voxel::CellOrientation,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEE7addPairES3_PKc")]
-pub fn stub_0x87030c() -> ! {
-    todo!("0x87030c")
+pub fn stub_0x87030c(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x87030c: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x87066c — __ZN3RBX10Reflection7Variant14genericConvertINS_5Voxel15CellOrientationEEERT_v
@@ -333,8 +336,9 @@ pub fn stub_0x87066c() -> ! {
 // 0x870858 — __ZN3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::addPair(RBX::Voxel::WaterCellForce,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEE7addPairES3_PKc")]
-pub fn stub_0x870858() -> ! {
-    todo!("0x870858")
+pub fn stub_0x870858(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x870858: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x870bb8 — __ZN3RBX10Reflection7Variant14genericConvertINS_5Voxel14WaterCellForceEEERT_v
@@ -347,8 +351,9 @@ pub fn stub_0x870bb8() -> ! {
 // 0x870da4 — __ZN3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::addPair(RBX::Voxel::WaterCellDirection,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEE7addPairES3_PKc")]
-pub fn stub_0x870da4() -> ! {
-    todo!("0x870da4")
+pub fn stub_0x870da4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x870da4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x871104 — __ZN3RBX10Reflection7Variant14genericConvertINS_5Voxel18WaterCellDirectionEEERT_v

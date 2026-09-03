@@ -381,8 +381,9 @@ pub fn stub_0x892aa8() {
 // 0x892acc — __ZN3RBX10Reflection8EnumDescINS_21PersonalServerService13PrivilegeTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PersonalServerService::PrivilegeType>::addPair(RBX::PersonalServerService::PrivilegeType,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_21PersonalServerService13PrivilegeTypeEE7addPairES3_PKc")]
-pub fn stub_0x892acc() -> ! {
-    todo!("0x892acc")
+pub fn stub_0x892acc(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x892acc: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x893e88 — __ZN3RBX10Reflection14PropDescriptorINS_21PersonalServerServiceESsEC2IMS2_KFSsvEMS2_FvSsEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -836,8 +837,9 @@ pub fn stub_0x8ae6f0() -> ! {
 // 0x8b1c10 — __ZN3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::UserInputService::SwipeDirection>::addPair(RBX::UserInputService::SwipeDirection,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEE7addPairES3_PKc")]
-pub fn stub_0x8b1c10() -> ! {
-    todo!("0x8b1c10")
+pub fn stub_0x8b1c10(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x8b1c10: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x8b1f70 — __ZN3RBX10Reflection14PropDescriptorINS_16UserInputServiceEbED1Ev

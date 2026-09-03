@@ -346,15 +346,19 @@ pub fn stub_0xf326b4() -> ! {
 // 0xf326c4 — j___ZNK3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::convertToIndex(RBX::PartInstance::FormFactor)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEE14convertToIndexES3_")]
-pub fn stub_0xf326c4() -> ! {
-    todo!("0xf326c4")
+pub fn stub_0xf326c4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf326c4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf326d4 — j___ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::convertToIndex(RBX::BasicPartInstance::LegacyPartType)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE14convertToIndexES3_")]
-pub fn stub_0xf326d4() -> ! {
-    todo!("0xf326d4")
+pub fn stub_0xf326d4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf326d4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf326e4 — j___ZN3RBX10Reflection14PropDescriptorINS_9BevelMeshEfEC2IMS2_KFKfvEMS2_FvfEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -542,8 +546,9 @@ pub fn stub_0xf32974() -> ! {
 // 0xf32984 — j___ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::addPair(RBX::Camera::CameraMode,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE7addPairES3_PKc")]
-pub fn stub_0xf32984() -> ! {
-    todo!("0xf32984")
+pub fn stub_0xf32984(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf32984: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf32994 — j___ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEED2Ev
@@ -556,8 +561,9 @@ pub fn stub_0xf32994() {
 // 0xf329a4 — j___ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::addPair(RBX::Camera::CameraType,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE7addPairES3_PKc")]
-pub fn stub_0xf329a4() -> ! {
-    todo!("0xf329a4")
+pub fn stub_0xf329a4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf329a4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf329b4 — j___ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEED2Ev
@@ -570,8 +576,9 @@ pub fn stub_0xf329b4() {
 // 0xf329c4 — j___ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::addPair(RBX::Camera::CameraPanMode,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE7addPairES3_PKc")]
-pub fn stub_0xf329c4() -> ! {
-    todo!("0xf329c4")
+pub fn stub_0xf329c4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf329c4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf329d4 — j___ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEED2Ev
@@ -696,8 +703,10 @@ pub fn stub_0xf32c44() -> ! {
 // 0xf32c54 — j___ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::convertToIndex(RBX::Camera::CameraType)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE14convertToIndexES3_")]
-pub fn stub_0xf32c54() -> ! {
-    todo!("0xf32c54")
+pub fn stub_0xf32c54(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf32c54: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf32c64 — j___ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE14convertToValueERKNS_4NameERS3_
@@ -808,8 +817,9 @@ pub fn stub_0xf33014() -> ! {
 // 0xf33024 — j___ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::addPair(RBX::ChangeHistoryService::RuntimeUndoBehavior,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEE7addPairES3_PKc")]
-pub fn stub_0xf33024() -> ! {
-    todo!("0xf33024")
+pub fn stub_0xf33024(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf33024: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf33034 — j___ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEED2Ev

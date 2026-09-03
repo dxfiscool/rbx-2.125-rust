@@ -58,8 +58,9 @@ pub fn stub_f47b04() -> ! {
 // 0xf47b14 — j___ZN3RBX10Reflection8EnumDescINS_12SpecialShape8MeshTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SpecialShape::MeshType>::addPair(RBX::SpecialShape::MeshType,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_12SpecialShape8MeshTypeEE7addPairES3_PKc")]
-pub fn stub_f47b14() -> ! {
-    todo!("0xf47b14 RBX::Reflection::EnumDesc<RBX::SpecialShape::MeshType>::addPair(RBX::SpecialShape::MeshType,char const*)")
+pub fn stub_f47b14(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf47b14: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf47c14 — j___ZNK3RBX10Reflection18EnumPropDescriptorINS_12SpecialShapeENS2_8MeshTypeEE11setIntValueEPNS0_13DescribedBaseEi
@@ -72,8 +73,10 @@ pub fn stub_f47c14() -> ! {
 // 0xf47c24 — j___ZNK3RBX10Reflection8EnumDescINS_12SpecialShape8MeshTypeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SpecialShape::MeshType>::convertToIndex(RBX::SpecialShape::MeshType)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_12SpecialShape8MeshTypeEE14convertToIndexES3_")]
-pub fn stub_f47c24() -> ! {
-    todo!("0xf47c24 RBX::Reflection::EnumDesc<RBX::SpecialShape::MeshType>::convertToIndex(RBX::SpecialShape::MeshType)const")
+pub fn stub_f47c24(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf47c24: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf47c54 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12SpecialShapeES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -534,15 +537,19 @@ pub fn stub_f48644() -> ! {
 // 0xf48674 — j___ZNK3RBX10Reflection8EnumDescINS_11SurfaceTypeEE14convertToIndexES2_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SurfaceType>::convertToIndex(RBX::SurfaceType)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_11SurfaceTypeEE14convertToIndexES2_")]
-pub fn stub_f48674() -> ! {
-    todo!("0xf48674 RBX::Reflection::EnumDesc<RBX::SurfaceType>::convertToIndex(RBX::SurfaceType)const")
+pub fn stub_f48674(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf48674: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf48684 — j___ZNK3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::LegacyController::InputType>::convertToIndex(RBX::LegacyController::InputType)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEE14convertToIndexES3_")]
-pub fn stub_f48684() -> ! {
-    todo!("0xf48684 RBX::Reflection::EnumDesc<RBX::LegacyController::InputType>::convertToIndex(RBX::LegacyController::InputType)const")
+pub fn stub_f48684(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf48684: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf48694 — j___ZN3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE

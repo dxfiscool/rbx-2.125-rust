@@ -77,8 +77,9 @@ pub fn stub_0x6f74d0() -> ! {
 // 0x6f7630 — __ZN3RBX10Reflection8EnumDescINS_8NormalIdEE7addPairES2_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NormalId>::addPair(RBX::NormalId,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_8NormalIdEE7addPairES2_PKc")]
-pub fn stub_0x6f7630() -> ! {
-    todo!("0x6f7630 RBX::Reflection::EnumDesc<RBX::NormalId>::addPair(RBX::NormalId,char const*)")
+pub fn stub_0x6f7630(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x6f7630: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x6f7990 — __ZN3RBX10Reflection7Variant14genericConvertINS_8NormalIdEEERT_v

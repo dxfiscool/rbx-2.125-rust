@@ -379,8 +379,9 @@ pub fn stub_8cd360() {
 // 0x8cd384 — __ZN3RBX10Reflection8EnumDescINS_18MarketplaceService12CurrencyTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::MarketplaceService::CurrencyType>::addPair(RBX::MarketplaceService::CurrencyType,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_18MarketplaceService12CurrencyTypeEE7addPairES3_PKc")]
-pub fn stub_8cd384() -> ! {
-    todo!("0x8cd384 RBX::Reflection::EnumDesc<RBX::MarketplaceService::CurrencyType>::addPair(RBX::MarketplaceService::CurrencyType,char const*)")
+pub fn stub_8cd384(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x8cd384: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x8cd6e4 — __ZN3RBX10Reflection7Variant14genericConvertINS_18MarketplaceService12CurrencyTypeEEERT_v

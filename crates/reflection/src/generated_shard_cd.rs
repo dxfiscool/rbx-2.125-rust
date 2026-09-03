@@ -331,8 +331,9 @@ pub fn stub_f44d54() -> ! {
 // 0xf44d64 — j___ZN3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::addPair(RBX::PartInstance::FormFactor,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEE7addPairES3_PKc")]
-pub fn stub_f44d64() -> ! {
-    todo!("0xf44d64 RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::addPair(RBX::PartInstance::FormFactor,char const*)")
+pub fn stub_f44d64(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf44d64: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf44d74 — j___ZN3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEED2Ev
@@ -345,8 +346,9 @@ pub fn stub_f44d74() {
 // 0xf44d84 — j___ZN3RBX10Reflection8EnumDescINS_8MaterialEE7addPairES2_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Material>::addPair(RBX::Material,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_8MaterialEE7addPairES2_PKc")]
-pub fn stub_f44d84() -> ! {
-    todo!("0xf44d84 RBX::Reflection::EnumDesc<RBX::Material>::addPair(RBX::Material,char const*)")
+pub fn stub_f44d84(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf44d84: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf44d94 — j___ZN3RBX10Reflection8EnumDescINS_8MaterialEED2Ev
@@ -527,8 +529,10 @@ pub fn stub_f45894() -> ! {
 // 0xf458a4 — j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE14convertToIndexES2_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Material>::convertToIndex(RBX::Material)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE14convertToIndexES2_")]
-pub fn stub_f458a4() -> ! {
-    todo!("0xf458a4 RBX::Reflection::EnumDesc<RBX::Material>::convertToIndex(RBX::Material)const")
+pub fn stub_f458a4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf458a4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf458b4 — j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE14convertToValueERKNS_4NameERS2_
@@ -653,8 +657,10 @@ pub fn stub_f45df4() -> ! {
 // 0xf45e04 — j___ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToIndex(RBX::EThrottle::EThrottleType)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE14convertToIndexES3_")]
-pub fn stub_f45e04() -> ! {
-    todo!("0xf45e04 RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToIndex(RBX::EThrottle::EThrottleType)const")
+pub fn stub_f45e04(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf45e04: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf45e44 — j___ZN3RBX10Reflection11Call1HelperINS_17StarterGuiServiceEMS2_FbNS2_11CoreGuiTypeEES3_bE4callEPS2_S5_RNS0_7VariantERKS3_

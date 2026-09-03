@@ -409,8 +409,10 @@ pub fn stub_0xf22120() -> ! {
 // 0xf22144 — __ZNK3RBX10Reflection8EnumDescINS_9GuiButton5StyleEE14convertToIndexES3_$shim
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_9GuiButton5StyleEE14convertToIndexES3_$shim")]
-pub fn stub_0xf22144() -> ! {
-    todo!("0xf22144")
+pub fn stub_0xf22144(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf22144: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf22168 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKiSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
@@ -437,8 +439,10 @@ pub fn stub_0xf2221c() -> ! {
 // 0xf22228 — __ZNK3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEE14convertToIndexES3_$shim
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEE14convertToIndexES3_$shim")]
-pub fn stub_0xf22228() -> ! {
-    todo!("0xf22228")
+pub fn stub_0xf22228(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf22228: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf22258 — __ZN3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEED2Ev$shim
@@ -542,8 +546,10 @@ pub fn stub_0xf2257c() -> ! {
 // 0xf22594 — __ZNK3RBX10Reflection8EnumDescINS_7Handles11VisualStyleEE14convertToIndexES3_$shim
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Handles11VisualStyleEE14convertToIndexES3_$shim")]
-pub fn stub_0xf22594() -> ! {
-    todo!("0xf22594")
+pub fn stub_0xf22594(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf22594: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf225a0 — __ZN3RBX10Reflection19RemoteEventDescImplILi0ENS_9HopperBinEFvvEN3rbx13remote_signalIS3_EEE14replicateEventEPNS0_11EventSourceE$shim
@@ -556,8 +562,10 @@ pub fn stub_0xf225a0() -> ! {
 // 0xf22624 — __ZNK3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEE14convertToIndexES3_$shim
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEE14convertToIndexES3_$shim")]
-pub fn stub_0xf22624() -> ! {
-    todo!("0xf22624")
+pub fn stub_0xf22624(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf22624: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf226e4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8functionIFvN3RBX10Reflection7VariantEEEENS_10shared_ptrIKSt6vectorIS8_SaIS8_EEEEENS3_5list2INS3_5valueISA_EENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSR_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
@@ -598,8 +606,10 @@ pub fn stub_0xf229e4() -> ! {
 // 0xf22a5c — __ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE14convertToIndexES3_$shim
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE14convertToIndexES3_$shim")]
-pub fn stub_0xf22a5c() -> ! {
-    todo!("0xf22a5c")
+pub fn stub_0xf22a5c(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf22a5c: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf22a68 — __ZN3RBX10Reflection11Call0HelperINS_16KeyframeSequenceEMS2_FN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvESB_E4callEPS2_SD_RNS0_7VariantE$shim
@@ -696,8 +706,10 @@ pub fn stub_0xf22d14() -> ! {
 // 0xf22d20 — __ZNK3RBX10Reflection8EnumDescINS_8MaterialEE14convertToIndexES2_$shim
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_8MaterialEE14convertToIndexES2_$shim")]
-pub fn stub_0xf22d20() -> ! {
-    todo!("0xf22d20")
+pub fn stub_0xf22d20(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf22d20: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf22d2c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8MaterialEEEE14doGetSingletonEv$shim
@@ -731,8 +743,10 @@ pub fn stub_0xf22d50() -> ! {
 // 0xf22df8 — __ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE14convertToIndexES3_$shim
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE14convertToIndexES3_$shim")]
-pub fn stub_0xf22df8() -> ! {
-    todo!("0xf22df8")
+pub fn stub_0xf22df8(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf22df8: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf22f00 — __ZN3RBX10Reflection11Call0HelperINS_4PoseEMS2_FN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvESB_E4callEPS2_SD_RNS0_7VariantE$shim
@@ -745,15 +759,19 @@ pub fn stub_0xf22f00() -> ! {
 // 0xf22f0c — __ZNK3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEE14convertToIndexES3_$shim
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEE14convertToIndexES3_$shim")]
-pub fn stub_0xf22f0c() -> ! {
-    todo!("0xf22f0c")
+pub fn stub_0xf22f0c(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf22f0c: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf22f24 — __ZNK3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEE14convertToIndexES3_$shim
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEE14convertToIndexES3_$shim")]
-pub fn stub_0xf22f24() -> ! {
-    todo!("0xf22f24")
+pub fn stub_0xf22f24(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf22f24: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf2305c — __ZN3RBX10Reflection11Call0HelperINS_9SelectionEMS2_FN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvESB_E4callEPS2_SD_RNS0_7VariantE$shim
@@ -773,15 +791,19 @@ pub fn stub_0xf231e8() -> ! {
 // 0xf2320c — __ZNK3RBX10Reflection8EnumDescINS_18SkateboardPlatform9MoveStateEE14convertToIndexES3_$shim
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_18SkateboardPlatform9MoveStateEE14convertToIndexES3_$shim")]
-pub fn stub_0xf2320c() -> ! {
-    todo!("0xf2320c")
+pub fn stub_0xf2320c(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf2320c: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf2332c — __ZNK3RBX10Reflection8EnumDescINS_12SpecialShape8MeshTypeEE14convertToIndexES3_$shim
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_12SpecialShape8MeshTypeEE14convertToIndexES3_$shim")]
-pub fn stub_0xf2332c() -> ! {
-    todo!("0xf2332c")
+pub fn stub_0xf2332c(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf2332c: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf233e0 — __ZN3RBX10Reflection11Call0HelperINS_5Stats4ItemEMS3_FdvEdE4callEPS3_S5_RNS0_7VariantE$shim
@@ -801,15 +823,19 @@ pub fn stub_0xf233ec() -> ! {
 // 0xf23404 — __ZNK3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEE14convertToIndexES3_$shim
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEE14convertToIndexES3_$shim")]
-pub fn stub_0xf23404() -> ! {
-    todo!("0xf23404")
+pub fn stub_0xf23404(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf23404: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf23410 — __ZNK3RBX10Reflection8EnumDescINS_11SurfaceTypeEE14convertToIndexES2_$shim
 // type: int()
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11SurfaceTypeEE14convertToIndexES2_$shim")]
-pub fn stub_0xf23410() -> ! {
-    todo!("0xf23410")
+pub fn stub_0xf23410(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf23410: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf23470 — __ZN3RBX10Reflection11Call0HelperINS_5TeamsEMS2_FN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvESB_E4callEPS2_SD_RNS0_7VariantE$shim

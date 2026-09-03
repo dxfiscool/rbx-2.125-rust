@@ -63,8 +63,10 @@ pub fn stub_84e144() -> ! {
 // 0x84e178 — __ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::convertToIndex(RBX::GameBasicSettings::RenderQualitySetting)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings20RenderQualitySettingEE14convertToIndexES3_")]
-pub fn stub_84e178() -> ! {
-    todo!("0x84e178 RBX::Reflection::EnumDesc<RBX::GameBasicSettings::RenderQualitySetting>::convertToIndex(RBX::GameBasicSettings::RenderQualitySetting)const")
+pub fn stub_84e178(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0x84e178: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0x84e1e8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_20RenderQualitySettingEE11setIntValueEPNS0_13DescribedBaseEi
@@ -406,8 +408,10 @@ pub fn stub_84f1c4() -> ! {
 // 0x84f1f8 — __ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::convertToIndex(RBX::GameBasicSettings::ControlMode)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_17GameBasicSettings11ControlModeEE14convertToIndexES3_")]
-pub fn stub_84f1f8() -> ! {
-    todo!("0x84f1f8 RBX::Reflection::EnumDesc<RBX::GameBasicSettings::ControlMode>::convertToIndex(RBX::GameBasicSettings::ControlMode)const")
+pub fn stub_84f1f8(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0x84f1f8: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0x84f268 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_17GameBasicSettingsENS2_11ControlModeEE11setIntValueEPNS0_13DescribedBaseEi

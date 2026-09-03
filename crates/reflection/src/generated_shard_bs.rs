@@ -379,8 +379,9 @@ pub fn stub_f38e54() -> ! {
 // 0xf38e84 — j___ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::addPair(RBX::DataModelArbiter::ConcurrencyModel,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEE7addPairES3_PKc")]
-pub fn stub_f38e84() -> ! {
-    todo!("0xf38e84 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::addPair(RBX::DataModelArbiter::ConcurrencyModel,char const*)")
+pub fn stub_f38e84(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf38e84: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf38e94 — j___ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEED2Ev
@@ -442,8 +443,9 @@ pub fn stub_f39044() -> ! {
 // 0xf39054 — j___ZN3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::addPair(RBX::DataModelMesh::LODType,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEE7addPairES3_PKc")]
-pub fn stub_f39054() -> ! {
-    todo!("0xf39054 RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::addPair(RBX::DataModelMesh::LODType,char const*)")
+pub fn stub_f39054(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf39054: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf39074 — j___ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE11setIntValueEPNS0_13DescribedBaseEi
@@ -456,8 +458,10 @@ pub fn stub_f39074() -> ! {
 // 0xf39084 — j___ZNK3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::convertToIndex(RBX::DataModelMesh::LODType)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEE14convertToIndexES3_")]
-pub fn stub_f39084() -> ! {
-    todo!("0xf39084 RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::convertToIndex(RBX::DataModelMesh::LODType)const")
+pub fn stub_f39084(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf39084: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf39134 — j___ZN3RBX10Reflection11Call2HelperINS_13DebrisServiceEMS2_FvN5boost10shared_ptrINS_8InstanceEEEdES6_dvE4callEPS2_S8_RNS0_7VariantERKS6_RKd
@@ -727,8 +731,9 @@ pub fn stub_f394f4() -> ! {
 // 0xf39504 — j___ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::addPair(RBX::DebugSettings::ErrorReporting,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE7addPairES3_PKc")]
-pub fn stub_f39504() -> ! {
-    todo!("0xf39504 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::addPair(RBX::DebugSettings::ErrorReporting,char const*)")
+pub fn stub_f39504(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf39504: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf39514 — j___ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEED2Ev
@@ -741,8 +746,9 @@ pub fn stub_f39514() {
 // 0xf39524 — j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::addPair(RBX::TaskScheduler::PriorityMethod,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE7addPairES3_PKc")]
-pub fn stub_f39524() -> ! {
-    todo!("0xf39524 RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::addPair(RBX::TaskScheduler::PriorityMethod,char const*)")
+pub fn stub_f39524(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf39524: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf39534 — j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEED2Ev

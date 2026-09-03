@@ -168,8 +168,9 @@ pub fn stub_912ba4() {
 // 0x912be4 — __ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::addPair(RBX::AssetService::AccessType,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEE7addPairES3_PKc")]
-pub fn stub_912be4() -> ! {
-    todo!("0x912be4 RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::addPair(RBX::AssetService::AccessType,char const*)")
+pub fn stub_912be4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x912be4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x912f44 — __ZN3RBX10Reflection7Variant14genericConvertINS_12AssetService10AccessTypeEEERT_v

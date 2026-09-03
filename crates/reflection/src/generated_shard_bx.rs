@@ -37,22 +37,28 @@ pub fn stub_f3e184() -> ! {
 // 0xf3e194 — j___ZNK3RBX10Reflection8EnumDescINS_7Feature5InOutEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::InOut>::convertToIndex(RBX::Feature::InOut)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_7Feature5InOutEE14convertToIndexES3_")]
-pub fn stub_f3e194() -> ! {
-    todo!("0xf3e194 RBX::Reflection::EnumDesc<RBX::Feature::InOut>::convertToIndex(RBX::Feature::InOut)const")
+pub fn stub_f3e194(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf3e194: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf3e1a4 — j___ZNK3RBX10Reflection8EnumDescINS_7Feature9LeftRightEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::LeftRight>::convertToIndex(RBX::Feature::LeftRight)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_7Feature9LeftRightEE14convertToIndexES3_")]
-pub fn stub_f3e1a4() -> ! {
-    todo!("0xf3e1a4 RBX::Reflection::EnumDesc<RBX::Feature::LeftRight>::convertToIndex(RBX::Feature::LeftRight)const")
+pub fn stub_f3e1a4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf3e1a4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf3e1b4 — j___ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::convertToIndex(RBX::Feature::TopBottom)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE14convertToIndexES3_")]
-pub fn stub_f3e1b4() -> ! {
-    todo!("0xf3e1b4 RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::convertToIndex(RBX::Feature::TopBottom)const")
+pub fn stub_f3e1b4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf3e1b4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf3e1f4 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12MotorFeatureES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -177,8 +183,9 @@ pub fn stub_f3e844() -> ! {
 // 0xf3e854 — j___ZN3RBX10Reflection8EnumDescINS_5Frame5StyleEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Frame::Style>::addPair(RBX::Frame::Style,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_5Frame5StyleEE7addPairES3_PKc")]
-pub fn stub_f3e854() -> ! {
-    todo!("0xf3e854 RBX::Reflection::EnumDesc<RBX::Frame::Style>::addPair(RBX::Frame::Style,char const*)")
+pub fn stub_f3e854(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf3e854: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf3e864 — j___ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE11setIntValueEPNS0_13DescribedBaseEi
@@ -191,8 +198,10 @@ pub fn stub_f3e864() -> ! {
 // 0xf3e874 — j___ZNK3RBX10Reflection8EnumDescINS_5Frame5StyleEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Frame::Style>::convertToIndex(RBX::Frame::Style)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_5Frame5StyleEE14convertToIndexES3_")]
-pub fn stub_f3e874() -> ! {
-    todo!("0xf3e874 RBX::Reflection::EnumDesc<RBX::Frame::Style>::convertToIndex(RBX::Frame::Style)const")
+pub fn stub_f3e874(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf3e874: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf3ec44 — j___ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -212,15 +221,17 @@ pub fn stub_f3ec54() -> ! {
 // 0xf3ec64 — j___ZN3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality>::addPair(RBX::GameSettings::VideoQuality,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEE7addPairES3_PKc")]
-pub fn stub_f3ec64() -> ! {
-    todo!("0xf3ec64 RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality>::addPair(RBX::GameSettings::VideoQuality,char const*)")
+pub fn stub_f3ec64(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf3ec64: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf3ec74 — j___ZN3RBX10Reflection8EnumDescINS_12GameSettings13UploadSettingEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::addPair(RBX::GameSettings::UploadSetting,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_12GameSettings13UploadSettingEE7addPairES3_PKc")]
-pub fn stub_f3ec74() -> ! {
-    todo!("0xf3ec74 RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::addPair(RBX::GameSettings::UploadSetting,char const*)")
+pub fn stub_f3ec74(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf3ec74: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf3ec84 — j___ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_12GameSettingsEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -268,15 +279,19 @@ pub fn stub_f3ed14() -> ! {
 // 0xf3ed24 — j___ZNK3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality>::convertToIndex(RBX::GameSettings::VideoQuality)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEE14convertToIndexES3_")]
-pub fn stub_f3ed24() -> ! {
-    todo!("0xf3ed24 RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality>::convertToIndex(RBX::GameSettings::VideoQuality)const")
+pub fn stub_f3ed24(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf3ed24: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf3ed34 — j___ZNK3RBX10Reflection8EnumDescINS_12GameSettings13UploadSettingEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::convertToIndex(RBX::GameSettings::UploadSetting)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_12GameSettings13UploadSettingEE14convertToIndexES3_")]
-pub fn stub_f3ed34() -> ! {
-    todo!("0xf3ed34 RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::convertToIndex(RBX::GameSettings::UploadSetting)const")
+pub fn stub_f3ed34(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf3ed34: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf3efa4 — j___ZN3RBX10Reflection11Call0HelperINS_22GlobalAdvancedSettingsEMS2_FN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEvESI_E4callEPS2_SK_RS7_

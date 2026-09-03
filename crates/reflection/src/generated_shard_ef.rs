@@ -495,44 +495,58 @@ pub fn stub_f1f090() -> ! {
 
 // 0xf1f09c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToIndexES3_$shim
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToIndexES3_$shim")]
-pub fn stub_f1f09c() -> ! {
-    todo!("0xf1f09c __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToIndexES3_$shim")
+pub fn stub_f1f09c(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf1f09c: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf1f0a8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToIndexES3_$shim
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToIndexES3_$shim")]
-pub fn stub_f1f0a8() -> ! {
-    todo!("0xf1f0a8 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToIndexES3_$shim")
+pub fn stub_f1f0a8(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf1f0a8: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf1f0b4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToIndexES3_$shim
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToIndexES3_$shim")]
-pub fn stub_f1f0b4() -> ! {
-    todo!("0xf1f0b4 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToIndexES3_$shim")
+pub fn stub_f1f0b4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf1f0b4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf1f0c0 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToIndexES3_$shim
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToIndexES3_$shim")]
-pub fn stub_f1f0c0() -> ! {
-    todo!("0xf1f0c0 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToIndexES3_$shim")
+pub fn stub_f1f0c0(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf1f0c0: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf1f0cc — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToIndexES3_$shim
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToIndexES3_$shim")]
-pub fn stub_f1f0cc() -> ! {
-    todo!("0xf1f0cc __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToIndexES3_$shim")
+pub fn stub_f1f0cc(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf1f0cc: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf1f0d8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToIndexES3_$shim
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToIndexES3_$shim")]
-pub fn stub_f1f0d8() -> ! {
-    todo!("0xf1f0d8 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToIndexES3_$shim")
+pub fn stub_f1f0d8(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf1f0d8: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf1f0e4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToIndexES3_$shim
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToIndexES3_$shim")]
-pub fn stub_f1f0e4() -> ! {
-    todo!("0xf1f0e4 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToIndexES3_$shim")
+pub fn stub_f1f0e4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf1f0e4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf1f144 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15CRenderSettings10ShadowModeEEEE14doGetSingletonEv$shim
@@ -591,8 +605,10 @@ pub fn stub_f1f390() -> ! {
 
 // 0xf1f4c8 — __ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE14convertToIndexES2_$shim
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE14convertToIndexES2_$shim")]
-pub fn stub_f1f4c8() -> ! {
-    todo!("0xf1f4c8 __ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE14convertToIndexES2_$shim")
+pub fn stub_f1f4c8(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf1f4c8: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf1f4ec — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18FunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim

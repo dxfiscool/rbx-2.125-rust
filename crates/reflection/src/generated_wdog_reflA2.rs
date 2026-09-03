@@ -165,8 +165,9 @@ pub fn stub_0xf4d7f4() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEE7addPairES3_PKc")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::LegacyController::InputType>::addPair(RBX::LegacyController::InputType,char const*)")]
-pub fn stub_0xf4ebd4() -> ! {
-    todo!("0xf4ebd4")
+pub fn stub_0xf4ebd4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf4ebd4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf4ef14 — j___ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE7addPairES3_PKc
@@ -174,8 +175,9 @@ pub fn stub_0xf4ebd4() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEE7addPairES3_PKc")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Joint::JointType>::addPair(RBX::Joint::JointType,char const*)")]
-pub fn stub_0xf4ef14() -> ! {
-    todo!("0xf4ef14")
+pub fn stub_0xf4ef14(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf4ef14: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf4f0b4 — j___ZN3RBX10Reflection8EnumDescINS_11SurfaceTypeEE7addPairES2_PKc
@@ -183,8 +185,9 @@ pub fn stub_0xf4ef14() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11SurfaceTypeEE7addPairES2_PKc")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SurfaceType>::addPair(RBX::SurfaceType,char const*)")]
-pub fn stub_0xf4f0b4() -> ! {
-    todo!("0xf4f0b4")
+pub fn stub_0xf4f0b4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf4f0b4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf505e4 — j___ZN3RBX10Reflection9ArgHelper6getArgINS0_7VariantELi2EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS4_EEPNS8_10disable_ifINS8_7is_sameIS4_NS8_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
@@ -588,8 +591,9 @@ pub fn stub_0xf53484() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE7addPairES3_PKc")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::addPair(RBX::TextService::XAlignment,char const*)")]
-pub fn stub_0xf53494() -> ! {
-    todo!("0xf53494")
+pub fn stub_0xf53494(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf53494: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf534a4 — j___ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE7addPairES3_PKc
@@ -597,8 +601,9 @@ pub fn stub_0xf53494() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE7addPairES3_PKc")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::addPair(RBX::TextService::YAlignment,char const*)")]
-pub fn stub_0xf534a4() -> ! {
-    todo!("0xf534a4")
+pub fn stub_0xf534a4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf534a4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf534b4 — j___ZN3RBX10Reflection8EnumDescINS_11TextService4FontEE7addPairES3_PKc
@@ -606,8 +611,9 @@ pub fn stub_0xf534a4() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11TextService4FontEE7addPairES3_PKc")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::addPair(RBX::TextService::Font,char const*)")]
-pub fn stub_0xf534b4() -> ! {
-    todo!("0xf534b4")
+pub fn stub_0xf534b4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf534b4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf534c4 — j___ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE7addPairES3_PKc
@@ -615,8 +621,9 @@ pub fn stub_0xf534b4() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE7addPairES3_PKc")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::addPair(RBX::TextService::FontSize,char const*)")]
-pub fn stub_0xf534c4() -> ! {
-    todo!("0xf534c4")
+pub fn stub_0xf534c4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf534c4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf53fe4 — j___ZN3RBX10Reflection11Call1HelperINS_15ContentProviderEMS2_FvNS_9ContentIdEES3_vE4callEPS2_S5_RNS0_7VariantERKS3_
@@ -882,8 +889,9 @@ pub fn stub_0xf54a34() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEE7addPairES3_PKc")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::addPair(RBX::FunctionalTest::Result,char const*)")]
-pub fn stub_0xf54a94() -> ! {
-    todo!("0xf54a94")
+pub fn stub_0xf54a94(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf54a94: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf54ac4 — j___ZN3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EEC2INS_11TestServiceEEEPKcS7_MT_SsNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -1112,8 +1120,9 @@ pub fn stub_0xf55ee4() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13FriendService12FriendStatusEE7addPairES3_PKc")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::FriendService::FriendStatus>::addPair(RBX::FriendService::FriendStatus,char const*)")]
-pub fn stub_0xf55ef4() -> ! {
-    todo!("0xf55ef4")
+pub fn stub_0xf55ef4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf55ef4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf55f04 — j___ZN3RBX10Reflection8EnumDescINS_13FriendService15FriendEventTypeEE7addPairES3_PKc
@@ -1122,8 +1131,9 @@ pub fn stub_0xf55ef4() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13FriendService15FriendEventTypeEE7addPairES3_PKc")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::FriendService::FriendEventType>::addPair(RBX::FriendService::FriendEventType,char const*)")]
-pub fn stub_0xf55f04() -> ! {
-    todo!("0xf55f04")
+pub fn stub_0xf55f04(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf55f04: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf55f14 — j___ZN3RBX10Reflection9EventDescINS_13FriendServiceEFviiNS2_12FriendStatusEEN3rbx13remote_signalIS4_EEMS2_S7_EC2ES8_PKcSB_SB_SB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE

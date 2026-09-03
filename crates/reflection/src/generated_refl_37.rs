@@ -32,14 +32,18 @@ pub fn stub_0xf40294() -> ! {
 
 // 0xf402a4 — j___ZNK3RBX10Reflection8EnumDescINS_9GuiButton5StyleEE14convertToIndexES3_
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_9GuiButton5StyleEE14convertToIndexES3_")]
-pub fn stub_0xf402a4() -> ! {
-    todo!("0xf402a4 j___ZNK3RBX10Reflection8EnumDescINS_9GuiButton5StyleEE14convertToIndexES3_")
+pub fn stub_0xf402a4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf402a4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf402b4 — j___ZNK3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEE14convertToIndexES3_
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEE14convertToIndexES3_")]
-pub fn stub_0xf402b4() -> ! {
-    todo!("0xf402b4 j___ZNK3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEE14convertToIndexES3_")
+pub fn stub_0xf402b4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf402b4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf402e4 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12TweenServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -158,8 +162,9 @@ pub fn stub_0xf40814() -> ! {
 
 // 0xf40824 — j___ZN3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEE7addPairES3_PKc
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEE7addPairES3_PKc")]
-pub fn stub_0xf40824() -> ! {
-    todo!("0xf40824 j___ZN3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEE7addPairES3_PKc")
+pub fn stub_0xf40824(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf40824: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf40834 — j___ZN3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEED2Ev
@@ -170,8 +175,9 @@ pub fn stub_0xf40834() {
 
 // 0xf40844 — j___ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEE7addPairES3_PKc
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEE7addPairES3_PKc")]
-pub fn stub_0xf40844() -> ! {
-    todo!("0xf40844 j___ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEE7addPairES3_PKc")
+pub fn stub_0xf40844(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf40844: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf40854 — j___ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEED2Ev

@@ -96,8 +96,10 @@ pub fn stub_0x6339f8() -> ! {
 
 // 0x633a2c — __ZNK3RBX10Reflection8EnumDescINS_18SkateboardPlatform9MoveStateEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState>::convertToIndex(RBX::SkateboardPlatform::MoveState)const")]
-pub fn stub_0x633a2c() -> ! {
-    todo!("0x633a2c RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState>::convertToIndex(RBX::SkateboardPlatform::MoveState)const")
+pub fn stub_0x633a2c(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0x633a2c: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0x633a9c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE11setIntValueEPNS0_13DescribedBaseEi
@@ -450,8 +452,9 @@ pub fn stub_0x63a240() {
 
 // 0x63a280 — __ZN3RBX10Reflection8EnumDescINS_13SocialService9StuffTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::addPair(RBX::SocialService::StuffType,char const*)")]
-pub fn stub_0x63a280() -> ! {
-    todo!("0x63a280 RBX::Reflection::EnumDesc<RBX::SocialService::StuffType>::addPair(RBX::SocialService::StuffType,char const*)")
+pub fn stub_0x63a280(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x63a280: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x63b910 — __ZN3RBX10Reflection13BoundFuncDescINS_13SocialServiceEFvSsELi1EEC2EMS2_FvSsEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE

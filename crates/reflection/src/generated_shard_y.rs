@@ -381,15 +381,17 @@ pub fn stub_7be7e8() -> ! {
 // 0x7bec1c — __ZN3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion>::addPair(RBX::Humanoid::NameOcclusion,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE7addPairES3_PKc")]
-pub fn stub_7bec1c() -> ! {
-    todo!("0x7bec1c RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion>::addPair(RBX::Humanoid::NameOcclusion,char const*)")
+pub fn stub_7bec1c(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x7bec1c: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x7bef7c — __ZN3RBX10Reflection8EnumDescINS_8Humanoid6StatusEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::Status>::addPair(RBX::Humanoid::Status,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_8Humanoid6StatusEE7addPairES3_PKc")]
-pub fn stub_7bef7c() -> ! {
-    todo!("0x7bef7c RBX::Reflection::EnumDesc<RBX::Humanoid::Status>::addPair(RBX::Humanoid::Status,char const*)")
+pub fn stub_7bef7c(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x7bef7c: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x7bf2dc — __ZN3RBX10Reflection7Variant14genericConvertINS_8Humanoid6StatusEEERT_v
@@ -647,8 +649,10 @@ pub fn stub_7c4524() -> ! {
 // 0x7c4558 — __ZNK3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion>::convertToIndex(RBX::Humanoid::NameOcclusion)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEE14convertToIndexES3_")]
-pub fn stub_7c4558() -> ! {
-    todo!("0x7c4558 RBX::Reflection::EnumDesc<RBX::Humanoid::NameOcclusion>::convertToIndex(RBX::Humanoid::NameOcclusion)const")
+pub fn stub_7c4558(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0x7c4558: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0x7c45c8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_8HumanoidENS2_13NameOcclusionEE11setIntValueEPNS0_13DescribedBaseEi

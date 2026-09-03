@@ -103,8 +103,9 @@ pub fn stub_0xf73c70() -> ! {
 // 0xf73c80 — __ZN3RBX10Reflection8EnumDescIiE7addPairEiPKc_f73c80
 #[doc(alias = "RBX::Reflection::EnumDesc::addPair::stub_0xf73c80 (synthetic gap 13)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescIiE7addPairEiPKc_f73c80")]
-pub fn stub_0xf73c80() -> ! {
-    todo!("0xf73c80 RBX::Reflection::EnumDesc::addPair::stub_0xf73c80 (synthetic gap 13)")
+pub fn stub_0xf73c80(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf73c80: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf73c90 — __ZN3RBX10Reflection9BoundFunc4callERNS0_5TupleE_f73c90
@@ -173,8 +174,9 @@ pub fn stub_0xf73d10() -> ! {
 // 0xf73d20 — __ZN3RBX10Reflection8EnumDescIiE7addPairEiPKc_f73d20
 #[doc(alias = "RBX::Reflection::EnumDesc::addPair::stub_0xf73d20 (synthetic gap 23)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescIiE7addPairEiPKc_f73d20")]
-pub fn stub_0xf73d20() -> ! {
-    todo!("0xf73d20 RBX::Reflection::EnumDesc::addPair::stub_0xf73d20 (synthetic gap 23)")
+pub fn stub_0xf73d20(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf73d20: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf73d30 — __ZN3RBX10Reflectionf73d30SharedPtrEv
@@ -313,8 +315,9 @@ pub fn stub_0xf73e50() -> ! {
 // 0xf73e60 — __ZN3RBX10Reflection8EnumDescIiE7addPairEiPKc_f73e60
 #[doc(alias = "RBX::Reflection::EnumDesc::addPair::stub_0xf73e60 (synthetic gap 43)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescIiE7addPairEiPKc_f73e60")]
-pub fn stub_0xf73e60() -> ! {
-    todo!("0xf73e60 RBX::Reflection::EnumDesc::addPair::stub_0xf73e60 (synthetic gap 43)")
+pub fn stub_0xf73e60(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf73e60: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf73e70 — __ZN3RBX10Reflection9BoundFunc4callERNS0_5TupleE_f73e70
@@ -383,8 +386,9 @@ pub fn stub_0xf73ef0() -> ! {
 // 0xf73f00 — __ZN3RBX10Reflection8EnumDescIiE7addPairEiPKc_f73f00
 #[doc(alias = "RBX::Reflection::EnumDesc::addPair::stub_0xf73f00 (synthetic gap 53)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescIiE7addPairEiPKc_f73f00")]
-pub fn stub_0xf73f00() -> ! {
-    todo!("0xf73f00 RBX::Reflection::EnumDesc::addPair::stub_0xf73f00 (synthetic gap 53)")
+pub fn stub_0xf73f00(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf73f00: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf73f10 — __ZN3RBX10Reflectionf73f10SharedPtrEv
@@ -523,8 +527,9 @@ pub fn stub_0xf74030() -> ! {
 // 0xf74040 — __ZN3RBX10Reflection8EnumDescIiE7addPairEiPKc_f74040
 #[doc(alias = "RBX::Reflection::EnumDesc::addPair::stub_0xf74040 (synthetic gap 73)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescIiE7addPairEiPKc_f74040")]
-pub fn stub_0xf74040() -> ! {
-    todo!("0xf74040 RBX::Reflection::EnumDesc::addPair::stub_0xf74040 (synthetic gap 73)")
+pub fn stub_0xf74040(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf74040: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf74050 — __ZN3RBX10Reflection9BoundFunc4callERNS0_5TupleE_f74050
@@ -593,8 +598,9 @@ pub fn stub_0xf740d0() -> ! {
 // 0xf740e0 — __ZN3RBX10Reflection8EnumDescIiE7addPairEiPKc_f740e0
 #[doc(alias = "RBX::Reflection::EnumDesc::addPair::stub_0xf740e0 (synthetic gap 83)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescIiE7addPairEiPKc_f740e0")]
-pub fn stub_0xf740e0() -> ! {
-    todo!("0xf740e0 RBX::Reflection::EnumDesc::addPair::stub_0xf740e0 (synthetic gap 83)")
+pub fn stub_0xf740e0(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf740e0: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf740f0 — __ZN3RBX10Reflectionf740f0SharedPtrEv
@@ -733,8 +739,9 @@ pub fn stub_0xf74210() -> ! {
 // 0xf74220 — __ZN3RBX10Reflection8EnumDescIiE7addPairEiPKc_f74220
 #[doc(alias = "RBX::Reflection::EnumDesc::addPair::stub_0xf74220 (synthetic gap 103)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescIiE7addPairEiPKc_f74220")]
-pub fn stub_0xf74220() -> ! {
-    todo!("0xf74220 RBX::Reflection::EnumDesc::addPair::stub_0xf74220 (synthetic gap 103)")
+pub fn stub_0xf74220(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf74220: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf74230 — __ZN3RBX10Reflection9BoundFunc4callERNS0_5TupleE_f74230
@@ -803,8 +810,9 @@ pub fn stub_0xf742b0() -> ! {
 // 0xf742c0 — __ZN3RBX10Reflection8EnumDescIiE7addPairEiPKc_f742c0
 #[doc(alias = "RBX::Reflection::EnumDesc::addPair::stub_0xf742c0 (synthetic gap 113)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescIiE7addPairEiPKc_f742c0")]
-pub fn stub_0xf742c0() -> ! {
-    todo!("0xf742c0 RBX::Reflection::EnumDesc::addPair::stub_0xf742c0 (synthetic gap 113)")
+pub fn stub_0xf742c0(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf742c0: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf742d0 — __ZN3RBX10Reflectionf742d0SharedPtrEv

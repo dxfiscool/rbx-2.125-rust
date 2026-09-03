@@ -360,8 +360,9 @@ pub fn stub_0xf394f4() -> ! {
 // 0xf39504 — j___ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::addPair(RBX::DebugSettings::ErrorReporting,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE7addPairES3_PKc")]
-pub fn stub_0xf39504() -> ! {
-    todo!("0xf39504")
+pub fn stub_0xf39504(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf39504: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf39514 — j___ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEED2Ev
@@ -374,8 +375,9 @@ pub fn stub_0xf39514() {
 // 0xf39524 — j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::addPair(RBX::TaskScheduler::PriorityMethod,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE7addPairES3_PKc")]
-pub fn stub_0xf39524() -> ! {
-    todo!("0xf39524")
+pub fn stub_0xf39524(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf39524: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf39534 — j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEED2Ev
@@ -388,15 +390,17 @@ pub fn stub_0xf39534() {
 // 0xf39544 — j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::addPair(RBX::TaskScheduler::ThreadPoolConfig,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE7addPairES3_PKc")]
-pub fn stub_0xf39544() -> ! {
-    todo!("0xf39544")
+pub fn stub_0xf39544(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf39544: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf39554 — j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE9addLegacyEiPKcS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::addLegacy(int,char const*,RBX::TaskScheduler::ThreadPoolConfig)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE9addLegacyEiPKcS3_")]
-pub fn stub_0xf39554() -> ! {
-    todo!("0xf39554")
+pub fn stub_0xf39554(desc: &mut crate::enum_desc::EnumDesc, legacy_index: usize, name: &str, value: i32) {
+    // IDA 0xf39554: EnumDesc<T>::addLegacy -- grow legacy vector, map legacy name->value (decompiled 0x47cd20, model 0xa208). Delegates to the shared model.
+    desc.add_legacy(legacy_index, name, value)
 }
 
 // 0xf39564 — j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEED2Ev
@@ -409,8 +413,9 @@ pub fn stub_0xf39564() {
 // 0xf39574 — j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE7addPairES4_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::addPair(RBX::TaskScheduler::Job::SleepAdjustMethod,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE7addPairES4_PKc")]
-pub fn stub_0xf39574() -> ! {
-    todo!("0xf39574")
+pub fn stub_0xf39574(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf39574: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf39584 — j___ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEED2Ev
@@ -423,8 +428,9 @@ pub fn stub_0xf39584() {
 // 0xf39594 — j___ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::addPair(RBX::Time::SampleMethod,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE7addPairES3_PKc")]
-pub fn stub_0xf39594() -> ! {
-    todo!("0xf39594")
+pub fn stub_0xf39594(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf39594: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf395a4 — j___ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEED2Ev
@@ -437,8 +443,9 @@ pub fn stub_0xf395a4() {
 // 0xf395b4 — j___ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::addPair(RBX::EThrottle::EThrottleType,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE7addPairES3_PKc")]
-pub fn stub_0xf395b4() -> ! {
-    todo!("0xf395b4")
+pub fn stub_0xf395b4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf395b4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf395c4 — j___ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEED2Ev
@@ -563,8 +570,10 @@ pub fn stub_0xf39a14() -> ! {
 // 0xf39a24 — j___ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToIndex(RBX::DebugSettings::ErrorReporting)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE14convertToIndexES3_")]
-pub fn stub_0xf39a24() -> ! {
-    todo!("0xf39a24")
+pub fn stub_0xf39a24(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf39a24: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf39a34 — j___ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE14convertToValueERKNS_4NameERS3_
@@ -591,8 +600,10 @@ pub fn stub_0xf39a54() -> ! {
 // 0xf39a64 — j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::convertToIndex(RBX::TaskScheduler::PriorityMethod)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE14convertToIndexES3_")]
-pub fn stub_0xf39a64() -> ! {
-    todo!("0xf39a64")
+pub fn stub_0xf39a64(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf39a64: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf39a74 — j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE14convertToValueERKNS_4NameERS3_
@@ -619,8 +630,10 @@ pub fn stub_0xf39a94() -> ! {
 // 0xf39aa4 — j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::convertToIndex(RBX::TaskScheduler::ThreadPoolConfig)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE14convertToIndexES3_")]
-pub fn stub_0xf39aa4() -> ! {
-    todo!("0xf39aa4")
+pub fn stub_0xf39aa4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf39aa4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf39ab4 — j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE14convertToValueERKNS_4NameERS3_
@@ -647,8 +660,10 @@ pub fn stub_0xf39ad4() -> ! {
 // 0xf39ae4 — j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE14convertToIndexES4_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::convertToIndex(RBX::TaskScheduler::Job::SleepAdjustMethod)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE14convertToIndexES4_")]
-pub fn stub_0xf39ae4() -> ! {
-    todo!("0xf39ae4")
+pub fn stub_0xf39ae4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf39ae4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf39af4 — j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE14convertToValueERKNS_4NameERS4_
@@ -675,8 +690,10 @@ pub fn stub_0xf39b44() -> ! {
 // 0xf39b54 — j___ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::convertToIndex(RBX::Time::SampleMethod)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE14convertToIndexES3_")]
-pub fn stub_0xf39b54() -> ! {
-    todo!("0xf39b54")
+pub fn stub_0xf39b54(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf39b54: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf39b64 — j___ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE14convertToValueERKNS_4NameERS3_
@@ -808,15 +825,17 @@ pub fn stub_0xf3a2e4() -> ! {
 // 0xf3a314 — j___ZN3RBX10Reflection8EnumDescINS_10DialogRoot10DialogToneEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone>::addPair(RBX::DialogRoot::DialogTone,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_10DialogRoot10DialogToneEE7addPairES3_PKc")]
-pub fn stub_0xf3a314() -> ! {
-    todo!("0xf3a314")
+pub fn stub_0xf3a314(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf3a314: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf3a324 — j___ZN3RBX10Reflection8EnumDescINS_10DialogRoot13DialogPurposeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogPurpose>::addPair(RBX::DialogRoot::DialogPurpose,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_10DialogRoot13DialogPurposeEE7addPairES3_PKc")]
-pub fn stub_0xf3a324() -> ! {
-    todo!("0xf3a324")
+pub fn stub_0xf3a324(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf3a324: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf3a3f4 — j___ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEE11setIntValueEPNS0_13DescribedBaseEi
@@ -836,14 +855,18 @@ pub fn stub_0xf3a404() -> ! {
 // 0xf3a414 — j___ZNK3RBX10Reflection8EnumDescINS_10DialogRoot10DialogToneEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone>::convertToIndex(RBX::DialogRoot::DialogTone)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_10DialogRoot10DialogToneEE14convertToIndexES3_")]
-pub fn stub_0xf3a414() -> ! {
-    todo!("0xf3a414")
+pub fn stub_0xf3a414(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf3a414: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf3a424 — j___ZNK3RBX10Reflection8EnumDescINS_10DialogRoot13DialogPurposeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogPurpose>::convertToIndex(RBX::DialogRoot::DialogPurpose)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_10DialogRoot13DialogPurposeEE14convertToIndexES3_")]
-pub fn stub_0xf3a424() -> ! {
-    todo!("0xf3a424")
+pub fn stub_0xf3a424(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf3a424: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 

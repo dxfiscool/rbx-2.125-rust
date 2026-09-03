@@ -368,32 +368,37 @@ pub fn stub_0xf57634() -> ! {
 
 // 0xf57644 — j___ZN3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEE7addPairES3_PKc
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEE7addPairES3_PKc")]
-pub fn stub_0xf57644() -> ! {
-    todo!("0xf57644 j___ZN3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEE7addPairES3_PKc")
+pub fn stub_0xf57644(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf57644: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf57654 — j___ZN3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEE7addPairES3_PKc
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEE7addPairES3_PKc")]
-pub fn stub_0xf57654() -> ! {
-    todo!("0xf57654 j___ZN3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEE7addPairES3_PKc")
+pub fn stub_0xf57654(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf57654: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf57664 — j___ZN3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEE7addPairES3_PKc
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEE7addPairES3_PKc")]
-pub fn stub_0xf57664() -> ! {
-    todo!("0xf57664 j___ZN3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEE7addPairES3_PKc")
+pub fn stub_0xf57664(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf57664: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf57674 — j___ZN3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEE7addPairES3_PKc
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEE7addPairES3_PKc")]
-pub fn stub_0xf57674() -> ! {
-    todo!("0xf57674 j___ZN3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEE7addPairES3_PKc")
+pub fn stub_0xf57674(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf57674: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf57684 — j___ZN3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEE7addPairES3_PKc
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEE7addPairES3_PKc")]
-pub fn stub_0xf57684() -> ! {
-    todo!("0xf57684 j___ZN3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEE7addPairES3_PKc")
+pub fn stub_0xf57684(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf57684: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf57694 — j___ZN3RBX10Reflection9ArgHelper6getArgIN3G3D7Vector3ELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
@@ -584,8 +589,9 @@ pub fn stub_0xf58804() -> ! {
 
 // 0xf58834 — j___ZN3RBX10Reflection8EnumDescINS_21PersonalServerService13PrivilegeTypeEE7addPairES3_PKc
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_21PersonalServerService13PrivilegeTypeEE7addPairES3_PKc")]
-pub fn stub_0xf58834() -> ! {
-    todo!("0xf58834 j___ZN3RBX10Reflection8EnumDescINS_21PersonalServerService13PrivilegeTypeEE7addPairES3_PKc")
+pub fn stub_0xf58834(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf58834: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf58a14 — j___ZN3RBX10Reflection4TypeC2INS_6CellIDEEEPKcPT_

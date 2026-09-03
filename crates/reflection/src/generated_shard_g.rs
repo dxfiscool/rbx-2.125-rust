@@ -234,8 +234,10 @@ pub fn stub_0x66faf4() -> ! {
 
 // 0x66fbc0 — __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToIndex(RBX::TextService::Font)const")]
-pub fn stub_0x66fbc0() -> ! {
-    todo!("0x66fbc0 RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToIndex(RBX::TextService::Font)const")
+pub fn stub_0x66fbc0(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0x66fbc0: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0x66fc30 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService4FontEE11setIntValueEPNS0_13DescribedBaseEi
@@ -456,8 +458,10 @@ pub fn stub_0x670d78() -> ! {
 
 // 0x670e44 — __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToIndex(RBX::TextService::FontSize)const")]
-pub fn stub_0x670e44() -> ! {
-    todo!("0x670e44 RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToIndex(RBX::TextService::FontSize)const")
+pub fn stub_0x670e44(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0x670e44: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0x670eb4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE11setIntValueEPNS0_13DescribedBaseEi

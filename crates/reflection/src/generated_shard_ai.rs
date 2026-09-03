@@ -608,8 +608,9 @@ pub fn stub_892aa8() {
 // 0x892acc — __ZN3RBX10Reflection8EnumDescINS_21PersonalServerService13PrivilegeTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PersonalServerService::PrivilegeType>::addPair(RBX::PersonalServerService::PrivilegeType,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_21PersonalServerService13PrivilegeTypeEE7addPairES3_PKc")]
-pub fn stub_892acc() -> ! {
-    todo!("0x892acc RBX::Reflection::EnumDesc<RBX::PersonalServerService::PrivilegeType>::addPair(RBX::PersonalServerService::PrivilegeType,char const*)")
+pub fn stub_892acc(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x892acc: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x89379c — __ZN3RBX10Reflection9DescribedINS_21PersonalServerServiceELZNS_22sPersonalServerServiceEENS_17NonFactoryProductINS_8InstanceELZNS_22sPersonalServerServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev

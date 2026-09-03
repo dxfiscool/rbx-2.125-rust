@@ -99,8 +99,9 @@ pub fn stub_0xf59144() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEE7addPairES3_PKc")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::UserInputService::SwipeDirection>::addPair(RBX::UserInputService::SwipeDirection,char const*)")]
-pub fn stub_0xf59154() -> ! {
-    todo!("0xf59154")
+pub fn stub_0xf59154(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf59154: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf59164 — j___ZN3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEED2Ev
@@ -652,8 +653,9 @@ pub fn stub_0xf5a554() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_18MarketplaceService12CurrencyTypeEE7addPairES3_PKc")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::MarketplaceService::CurrencyType>::addPair(RBX::MarketplaceService::CurrencyType,char const*)")]
-pub fn stub_0xf5a564() -> ! {
-    todo!("0xf5a564")
+pub fn stub_0xf5a564(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf5a564: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf5a574 — j___ZN3RBX10Reflection8EnumDescINS_18MarketplaceService12CurrencyTypeEED2Ev

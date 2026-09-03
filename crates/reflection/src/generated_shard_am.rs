@@ -799,15 +799,17 @@ pub fn stub_8eb284() -> ! {
 // 0x8eb4d8 — __ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::addPair(RBX::InputObject::UserInputType,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEE7addPairES3_PKc")]
-pub fn stub_8eb4d8() -> ! {
-    todo!("0x8eb4d8 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::addPair(RBX::InputObject::UserInputType,char const*)")
+pub fn stub_8eb4d8(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x8eb4d8: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x8eb838 — __ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::addPair(RBX::InputObject::UserInputState,char const*)")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEE7addPairES3_PKc")]
-pub fn stub_8eb838() -> ! {
-    todo!("0x8eb838 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::addPair(RBX::InputObject::UserInputState,char const*)")
+pub fn stub_8eb838(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0x8eb838: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0x8f3c4c — __ZN3RBX18readPropertyValuesERNS_17MemoryInputStreamERKNS_10Reflection18PropertyDescriptorERKSt6vectorIPNS_8InstanceESaIS8_EERKS6_IN5boost10shared_ptrIS7_EESaISF_EE

@@ -23,8 +23,9 @@ pub fn stub_f35af4() -> ! {
 // 0xf35b04 — j___ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::addPair(RBX::Instance::SaveFilter,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE7addPairES3_PKc")]
-pub fn stub_f35b04() -> ! {
-    todo!("0xf35b04 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::addPair(RBX::Instance::SaveFilter,char const*)")
+pub fn stub_f35b04(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf35b04: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf35b14 — j___ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEED2Ev
@@ -37,8 +38,9 @@ pub fn stub_f35b14() {
 // 0xf35b24 — j___ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::addPair(RBX::DataModel::CreatorType,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE7addPairES3_PKc")]
-pub fn stub_f35b24() -> ! {
-    todo!("0xf35b24 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::addPair(RBX::DataModel::CreatorType,char const*)")
+pub fn stub_f35b24(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf35b24: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf35b34 — j___ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEED2Ev
@@ -51,8 +53,9 @@ pub fn stub_f35b34() {
 // 0xf35b44 — j___ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::addPair(RBX::DataModel::GearGenreSetting,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE7addPairES3_PKc")]
-pub fn stub_f35b44() -> ! {
-    todo!("0xf35b44 RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::addPair(RBX::DataModel::GearGenreSetting,char const*)")
+pub fn stub_f35b44(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf35b44: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf35b54 — j___ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED2Ev
@@ -65,8 +68,9 @@ pub fn stub_f35b54() {
 // 0xf35b64 — j___ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::addPair(RBX::DataModel::Genre,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEE7addPairES3_PKc")]
-pub fn stub_f35b64() -> ! {
-    todo!("0xf35b64 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::addPair(RBX::DataModel::Genre,char const*)")
+pub fn stub_f35b64(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf35b64: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf35b74 — j___ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED2Ev
@@ -79,8 +83,9 @@ pub fn stub_f35b74() {
 // 0xf35b84 — j___ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::addPair(RBX::DataModel::GearType,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE7addPairES3_PKc")]
-pub fn stub_f35b84() -> ! {
-    todo!("0xf35b84 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::addPair(RBX::DataModel::GearType,char const*)")
+pub fn stub_f35b84(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf35b84: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf35b94 — j___ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED2Ev
@@ -604,8 +609,10 @@ pub fn stub_f37de4() -> ! {
 // 0xf37df4 — j___ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToIndex(RBX::DataModel::CreatorType)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE14convertToIndexES3_")]
-pub fn stub_f37df4() -> ! {
-    todo!("0xf37df4 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToIndex(RBX::DataModel::CreatorType)const")
+pub fn stub_f37df4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf37df4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf37e04 — j___ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE14convertToValueERKNS_4NameERS3_
@@ -632,8 +639,10 @@ pub fn stub_f37e24() -> ! {
 // 0xf37e34 — j___ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToIndex(RBX::DataModel::GearGenreSetting)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE14convertToIndexES3_")]
-pub fn stub_f37e34() -> ! {
-    todo!("0xf37e34 RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToIndex(RBX::DataModel::GearGenreSetting)const")
+pub fn stub_f37e34(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf37e34: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf37e44 — j___ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE14convertToValueERKNS_4NameERS3_
@@ -660,8 +669,10 @@ pub fn stub_f37e64() -> ! {
 // 0xf37e74 — j___ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToIndex(RBX::DataModel::Genre)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE14convertToIndexES3_")]
-pub fn stub_f37e74() -> ! {
-    todo!("0xf37e74 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToIndex(RBX::DataModel::Genre)const")
+pub fn stub_f37e74(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf37e74: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf37e84 — j___ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE14convertToValueERKNS_4NameERS3_

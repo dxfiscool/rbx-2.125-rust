@@ -191,8 +191,10 @@ pub fn stub_25e73c() -> ! {
 // 0x25e770 — __ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE14convertToIndexES2_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NormalId>::convertToIndex(RBX::NormalId)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE14convertToIndexES2_")]
-pub fn stub_25e770() -> ! {
-    todo!("0x25e770 RBX::Reflection::EnumDesc<RBX::NormalId>::convertToIndex(RBX::NormalId)const")
+pub fn stub_25e770(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0x25e770: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0x25e7e0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE11setIntValueEPNS0_13DescribedBaseEi

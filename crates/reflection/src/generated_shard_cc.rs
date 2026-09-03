@@ -380,8 +380,9 @@ pub fn stub_f43b14() -> ! {
 // 0xf43b24 — j___ZN3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::addPair(RBX::KeyframeSequence::Priority,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE7addPairES3_PKc")]
-pub fn stub_f43b24() -> ! {
-    todo!("0xf43b24 RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::addPair(RBX::KeyframeSequence::Priority,char const*)")
+pub fn stub_f43b24(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf43b24: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf43bd4 — j___ZNK3RBX10Reflection18EnumPropDescriptorINS_16KeyframeSequenceENS2_8PriorityEE11setIntValueEPNS0_13DescribedBaseEi
@@ -394,8 +395,10 @@ pub fn stub_f43bd4() -> ! {
 // 0xf43be4 — j___ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::convertToIndex(RBX::KeyframeSequence::Priority)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_16KeyframeSequence8PriorityEE14convertToIndexES3_")]
-pub fn stub_f43be4() -> ! {
-    todo!("0xf43be4 RBX::Reflection::EnumDesc<RBX::KeyframeSequence::Priority>::convertToIndex(RBX::KeyframeSequence::Priority)const")
+pub fn stub_f43be4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
+    // IDA 0xf43be4: EnumDesc<T>::convertToIndex -- ReleaseAssert(value>=0) (enumconverter.h:350), return value_ordinals[value] or -1 (decompiled 0x4a5fb8).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0xf43ec4 — j___ZN3RBX10Reflection11Call1HelperINS_24KeyframeSequenceProviderEMS2_FN5boost10shared_ptrINS_8InstanceEEENS_9ContentIdEES7_S6_E4callEPS2_S9_RNS0_7VariantERKS7_
@@ -450,8 +453,9 @@ pub fn stub_f44244() {
 // 0xf443b4 — j___ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::addPair(RBX::Legacy::SurfaceConstraint,char const*)")]
 #[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEE7addPairES3_PKc")]
-pub fn stub_f443b4() -> ! {
-    todo!("0xf443b4 RBX::Reflection::EnumDesc<RBX::Legacy::SurfaceConstraint>::addPair(RBX::Legacy::SurfaceConstraint,char const*)")
+pub fn stub_f443b4(desc: &mut crate::enum_desc::EnumDesc, value: i32, name: &str) {
+    // IDA 0xf443b4: EnumDesc<T>::addPair -- ReleaseAssert(value<=2304), push Item, grow tables (decompiled 0x9b48/0x64154c). Delegates to the shared model.
+    desc.add_pair(value, name)
 }
 
 // 0xf44464 — j___ZN3RBX10Reflection11Call0HelperINS_8LightingEMS2_FN3G3D7Vector3EvES4_E4callEPS2_S6_RNS0_7VariantE
