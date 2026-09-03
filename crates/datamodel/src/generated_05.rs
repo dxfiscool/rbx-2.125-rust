@@ -23,6 +23,14 @@ pub struct Instance {
     pub name: InstanceName,
     /// Original flag byte at name store `+ 0x16`.
     pub roblox_locked: bool,
+    /// Class name behind the instance vtable's `classDescriptor` slot
+    /// (read as `*(this + 12)` words at e.g. IDA `0x70376e`); drives the
+    /// `ClassDescriptor::isA` checks until a hierarchy model exists.
+    pub class_name: &'static str,
+    /// Owned children (`RBX::Instance` child list); backs
+    /// `visitDescendants` (IDA `0x70430c`) and the `ServiceProvider::find`
+    /// scan (IDA `0x7039cc`).
+    pub children: Vec<SharedPtr<Instance>>,
     /// Lazily allocated block from `RBX::Instance::onDemandWrite` (IDA `0x7010ac`).
     pub write: Option<Box<InstanceWrite>>,
     /// Embedded `boost::enable_shared_from_this` weak owner at `this + 40`
@@ -225,12 +233,112 @@ static SIGNAL_STATIC_MUTEX: Mutex<()> = Mutex::new(());
 /// Global slot-exception handler for the 2-arg Instance signal (IDA `0x705950`
 /// `rbx::signals::slot_exception_handler`); owned by other translation units.
 pub static SLOT_EXCEPTION_HANDLER: Mutex<Option<fn(&str)>> = Mutex::new(None);
+/// Rust model of one `SignatureDescriptor::Item` in an `EventDesc` /
+/// `BoundYieldFuncDesc` signature list (IDA `0x70347a`, `0x7034f4`): the
+/// `std::list` node + allocator reclaim collapse into a `Vec` entry holding
+/// the reflected type name.
+pub struct SignatureItem {
+    pub type_name: &'static str,
+}
+/// Rust model of
+/// `RBX::Reflection::BoundYieldFuncDesc<RBX::Instance, SharedPtr<Instance>(std::string), SharedPtr<Instance>, 1>`
+/// (IDA `0x703444`): signature list at `+8`, bound `scoped_ptr<std::string>`
+/// at `+12`.
+pub struct BoundYieldFuncDesc {
+    pub items: Vec<SignatureItem>,
+    pub bound: Option<String>,
+}
+/// Rust model of `RBX::Reflection::RefPropDescriptor<RBX::Instance, RBX::Instance>`
+/// (IDA `0x703498`): the conditionally-deleted heap payload at `+11`
+/// (`if (v2) operator delete(v2)`); vtable resets are compiler-managed here.
+pub struct RefPropDescriptor {
+    pub owned: Option<Box<RefPropExtra>>,
+}
+/// Opaque heap payload owned by `RefPropDescriptor`.
+pub struct RefPropExtra {
+    pub words: [u32; 8],
+}
+/// Shared payload behind the `RBX::Reflection::EventDesc<RBX::Instance, ...>`
+/// family (IDA `0x7034d8`/`0x703520`/`0x703544` D1, `0x7064c0`/`0x707d18` D0,
+/// `0x70633c`/`0x707b28` C2): signature list at `+8` plus the connected
+/// generic slots. The original inserts each slot into the *source's* member
+/// signal (`*(desc + 40) + (source - 36)`, IDA `0x706738`/`0x7080d6`); with no
+/// member-signal table yet the connections live on the descriptor, which
+/// preserves the observable connect/fire/disconnectAll behavior.
+pub struct EventDescPayload {
+    pub name: String,
+    pub permissions: u32,
+    pub attributes: u32,
+    pub items: Vec<SignatureItem>,
+    pub connections: Mutex<Vec<SharedPtr<GenericSlotWrapper>>>,
+}
+/// Rust model of `RBX::Reflection::GenericSlotWrapper` (IDA `0x708378`): the
+/// marshalled script callback behind `connectGeneric`. Native handlers stand
+/// in for the Lua frames until the script bridge exists.
+pub struct GenericSlotWrapper {
+    pub on_prop: Option<fn(*const PropertyDescriptor)>,
+    pub on_pair: Option<fn(&SharedPtr<Instance>, &SharedPtr<Instance>)>,
+}
+/// Rust model of `RBX::Reflection::PropertyDescriptor` (IDA `0x706742`): only
+/// pointer identity / name cross the `fireEvent` boundary here.
+pub struct PropertyDescriptor {
+    pub name: &'static str,
+}
+/// Rust model of `RBX::Reflection::Variant` values crossing `fireEvent`
+/// (IDA `0x706742`, `0x707f20`): the 1-arg event carries a property
+/// descriptor, the 2-arg event carries two retained instances.
+pub enum Variant {
+    Property(*const PropertyDescriptor),
+    Instance(SharedPtr<Instance>),
+}
+/// Rust model of `RBX::Instance::SaveFilter` (IDA `0x703748` discriminants:
+/// `1` takes the service-exclusion chain, `0` the workspace chain, any other
+/// value allows the write outright at `0x703804`-`0x703808`).
+#[derive(Clone, Copy, PartialEq, Eq)]
+pub struct SaveFilter(pub u32);
+/// Rust model of `RBX::CreatorRole` (IDA `0x703568` `a3`, matched against the
+/// creator entry's role word).
+#[derive(Clone, Copy, PartialEq, Eq)]
+pub struct CreatorRole(pub u32);
+/// Rust model of one `AbstractFactoryProduct<Instance>` creator entry (IDA
+/// `0x703568`): name-sorted table node at `unk_1221848` with the role word at
+/// `+4`. The table starts empty and fills as products register; lookup miss
+/// takes the original `*out = 0` path.
+pub struct CreatorEntry {
+    pub name: &'static str,
+    pub role: u32,
+    pub create: fn() -> SharedPtr<Instance>,
+}
+/// Creator table behind `AbstractFactoryProduct<Instance>::getCreators`
+/// (IDA `0x70358a`); kept sorted by name for the binary search below.
+pub static CREATOR_TABLE: Mutex<Vec<CreatorEntry>> = Mutex::new(Vec::new());
+/// Rust model of `boost::_bi::bind_t<void, mf2 execute2 on GenericSlotWrapper>`
+/// (IDA `0x70825c`): retained wrapper (the `shared_count` copy at bind time)
+/// plus late-bound instance args.
+#[derive(Clone)]
+pub struct BindWrapper2 {
+    pub target: SharedPtr<GenericSlotWrapper>,
+}
+/// `ClassDescriptor::isA` (IDA `0x703782` and siblings): walks the descriptor
+/// base chain in the original; with no hierarchy modelled yet only exact
+/// class-name matches report true.
+pub fn instance_is_a(this: *const Instance, class: &'static str) -> bool {
+    // SAFETY: `this` must point to a valid `Instance`.
+    unsafe { (*this).class_name == class }
+}
 
 // 0x703444 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_8InstanceEFN5boost10shared_ptrIS2_EESsES5_Li1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Instance,rbx_core::SharedPtr<RBX::Instance> ()(std::string),rbx_core::SharedPtr<RBX::Instance>,1>::~BoundYieldFuncDesc()")]
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::Instance,boost::shared_ptr<RBX::Instance> ()(std::string),boost::shared_ptr<RBX::Instance>,1>::~BoundYieldFuncDesc()
-pub fn stub_0x703444() -> ! {
-    todo!("0x703444 RBX::Reflection::BoundYieldFuncDesc<RBX::Instance,rbx_core::SharedPtr<RBX::Instance> ()(std::string),rbx_core::SharedPtr<RBX::Instance>,1>::~BoundYieldFuncDesc()")
+pub fn stub_0x703444(this: *mut BoundYieldFuncDesc) {
+    // IDA 0x703444: vtable reset (compiler-managed here),
+    // `scoped_ptr<string>::~scoped_ptr(a1 + 12)`, then the base
+    // `SignatureDescriptor` D1 (`_M_clear(a1 + 8)`); the D1 keeps storage.
+    // SAFETY: `this` must point to a valid `BoundYieldFuncDesc`.
+    unsafe {
+        (*this).bound = None;
+        (*this).items.clear();
+    }
 }
 // 0x703484 — __ZNK3RBX8Instance7getNameEv
 #[doc(alias = "RBX::Instance::getName(void)const")]
@@ -255,8 +363,13 @@ pub fn stub_0x703490() -> ! {
 }
 // 0x703498 — __ZN3RBX10Reflection17RefPropDescriptorINS_8InstanceES2_ED1Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Instance,RBX::Instance>::~RefPropDescriptor()")]
-pub fn stub_0x703498() -> ! {
-    todo!("0x703498 RBX::Reflection::RefPropDescriptor<RBX::Instance,RBX::Instance>::~RefPropDescriptor()")
+pub fn stub_0x703498(this: *mut RefPropDescriptor) {
+    // IDA 0x703498: two vtable resets (compiler-managed here), then the
+    // conditional `operator delete` of the heap word at `+11`.
+    // SAFETY: `this` must point to a valid `RefPropDescriptor`.
+    unsafe {
+        (*this).owned = None;
+    }
 }
 // 0x7034c4 — __ZNK3RBX8Instance15getRobloxLockedEv
 #[doc(alias = "RBX::Instance::getRobloxLocked(void)const")]
@@ -275,8 +388,13 @@ pub fn stub_0x7034cc(this: *mut Instance) -> *mut Signal<SharedPtr<Instance>> {
 // 0x7034d8 — __ZN3RBX10Reflection9EventDescINS_8InstanceEFvN5boost10shared_ptrIS2_EEEN3rbx6signalIS6_EEMS2_FRS9_vEED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Instance,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>& (RBX::Instance::*)(void)>::~EventDesc()")]
 // was: RBX::Reflection::EventDesc<RBX::Instance,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>& (RBX::Instance::*)(void)>::~EventDesc()
-pub fn stub_0x7034d8() -> ! {
-    todo!("0x7034d8 RBX::Reflection::EventDesc<RBX::Instance,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>& (RBX::Instance::*)(void)>::~EventDesc()")
+pub fn stub_0x7034d8(this: *mut EventDescPayload) {
+    // IDA 0x7034d8: vtable reset (compiler-managed here) +
+    // `_M_clear(a1 + 8)`; the D1 keeps storage (cf. D0 at 0x7064c0).
+    // SAFETY: `this` must point to a valid `EventDescPayload`.
+    unsafe {
+        (*this).items.clear();
+    }
 }
 // 0x7034fc — __ZN3RBX8Instance29getOrCreateChildRemovedSignalEv
 #[doc(alias = "RBX::Instance::getOrCreateChildRemovedSignal(void)")]
@@ -302,29 +420,118 @@ pub fn stub_0x703514(this: *mut Instance) -> *mut Signal<SharedPtr<Instance>> {
 // 0x703520 — __ZN3RBX10Reflection9EventDescINS_8InstanceEFvN5boost10shared_ptrIS2_EES5_EN3rbx6signalIS6_EEMS2_S9_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Instance,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::Instance::*>::~EventDesc()")]
 // was: RBX::Reflection::EventDesc<RBX::Instance,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::Instance::*>::~EventDesc()
-pub fn stub_0x703520() -> ! {
-    todo!("0x703520 RBX::Reflection::EventDesc<RBX::Instance,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::Instance::*>::~EventDesc()")
+pub fn stub_0x703520(this: *mut EventDescPayload) {
+    // IDA 0x703520: same shape as 0x7034d8 (2-arg `EventDesc` D1): vtable
+    // reset + `_M_clear(a1 + 8)`, storage kept.
+    // SAFETY: `this` must point to a valid `EventDescPayload`.
+    unsafe {
+        (*this).items.clear();
+    }
 }
 // 0x703544 — __ZN3RBX10Reflection9EventDescINS_8InstanceEFvPKNS0_18PropertyDescriptorEEN3rbx6signalIS6_EEMS2_S9_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Instance,void ()(RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)> RBX::Instance::*>::~EventDesc()")]
-pub fn stub_0x703544() -> ! {
-    todo!("0x703544 RBX::Reflection::EventDesc<RBX::Instance,void ()(RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)> RBX::Instance::*>::~EventDesc()")
+pub fn stub_0x703544(this: *mut EventDescPayload) {
+    // IDA 0x703544: same shape as 0x7034d8 (property-descriptor `EventDesc`
+    // D1): vtable reset + `_M_clear(a1 + 8)`, storage kept.
+    // SAFETY: `this` must point to a valid `EventDescPayload`.
+    unsafe {
+        (*this).items.clear();
+    }
 }
 // 0x703568 — __ZN3RBX22AbstractFactoryProductINS_8InstanceEE6createERKNS_4NameENS_11CreatorRoleE
 #[doc(alias = "RBX::AbstractFactoryProduct<RBX::Instance>::create(RBX::Name const&,RBX::CreatorRole)")]
-pub fn stub_0x703568() -> ! {
-    todo!("0x703568 RBX::AbstractFactoryProduct<RBX::Instance>::create(RBX::Name const&,RBX::CreatorRole)")
+pub fn stub_0x703568(out: *mut Option<SharedPtr<Instance>>, name: &str, role: CreatorRole) -> bool {
+    // IDA 0x703568: `getCreators` (table init, collapses into `CREATOR_TABLE`),
+    // binary search of the name-sorted table (`v14[4] >= a2`, disasm
+    // 0x7035d2-0x7035de), exact-name + role match, then the creator's
+    // `shared_ptr` factory call; miss writes `*a1 = 0` and returns.
+    // SAFETY: `out` must be writable.
+    unsafe {
+        let table = CREATOR_TABLE.lock();
+        let found = table
+            .binary_search_by(|e| e.name.cmp(&name))
+            .ok()
+            .filter(|&i| table[i].role == role.0)
+            .map(|i| (table[i].create)());
+        core::ptr::write(out, found);
+        (*out).is_some()
+    }
 }
 // 0x703748 — __ZN10Serializer13canWriteChildEN5boost10shared_ptrIN3RBX8InstanceEEENS3_10SaveFilterE
 #[doc(alias = "Serializer::canWriteChild(rbx_core::SharedPtr<RBX::Instance>,RBX::Instance::SaveFilter)")]
 // was: Serializer::canWriteChild(boost::shared_ptr<RBX::Instance>,RBX::Instance::SaveFilter)
-pub fn stub_0x703748() -> ! {
-    todo!("0x703748 Serializer::canWriteChild(rbx_core::SharedPtr<RBX::Instance>,RBX::Instance::SaveFilter)")
+pub fn stub_0x703748(child: &SharedPtr<Instance>, filter: SaveFilter) -> bool {
+    // IDA 0x703748: `roblox_locked` gate (`*(name_store + 0x17)`, disasm
+    // 0x703752-0x703758) fails everything; `filter == 1` (disasm 0x70375c)
+    // walks the service chain — StarterGui, StarterPack, ServerScript,
+    // Workspace, Lighting, ServerStorage — hitting any `isA` returns true,
+    // else the shared tail (disasm 0x7037ea-0x703802) returns the
+    // ReplicatedStorage `isA` (the `R5 != 0x24` word there is just the
+    // non-null `shared_ptr`, always true for a borrow); any other nonzero
+    // filter allows outright (disasm 0x703804-0x703808); filter `0` walks the
+    // Workspace/Lighting/ServerStorage chain into the same tail.
+    // SAFETY: `SharedPtr` deref is valid by construction.
+    let this: *const Instance = SharedPtr::as_ptr(child);
+    unsafe {
+        if !(*this).roblox_locked {
+            return false;
+        }
+        if filter == SaveFilter(1) {
+            for class in [
+                "StarterGuiService",
+                "StarterPackService",
+                "ServerScriptService",
+                "Workspace",
+                "Lighting",
+                "ServerStorage",
+            ] {
+                if instance_is_a(this, class) {
+                    return true;
+                }
+            }
+            return instance_is_a(this, "ReplicatedStorage");
+        }
+        if filter != SaveFilter(0) {
+            return true;
+        }
+        for class in ["Workspace", "Lighting", "ServerStorage"] {
+            if instance_is_a(this, class) {
+                return true;
+            }
+        }
+        instance_is_a(this, "ReplicatedStorage")
+    }
 }
 // 0x7039cc — __ZN3RBX15ServiceProvider4findINS_13ScriptServiceEEEPT_PKNS_8InstanceE
 #[doc(alias = "RBX::ScriptService * RBX::ServiceProvider::find<RBX::ScriptService>(RBX::Instance const*)")]
-pub fn stub_0x7039cc() -> ! {
-    todo!("0x7039cc RBX::ScriptService * RBX::ServiceProvider::find<RBX::ScriptService>(RBX::Instance const*)")
+pub fn stub_0x7039cc(instance: *const Instance) -> *const Instance {
+    // IDA 0x7039cc: `findServiceProvider(instance)` (disasm 0x7039d0), null
+    // yields `0` (disasm 0x7039d8); else `find<ScriptService>()` inside that
+    // provider (tail `B.W shim` at 0x7039e0). No provider marker is modelled
+    // yet, so the provider is the tree root and the lookup is a pre-order
+    // scan of its subtree for the `ScriptService` class; miss returns null
+    // on the same path as the original's `return 0`.
+    // SAFETY: `instance` must be null or point to a valid `Instance` whose
+    // whole ancestry/subtree outlives the call.
+    unsafe {
+        let mut root = instance;
+        while !root.is_null() && !(*root).parent.is_null() {
+            root = (*root).parent;
+        }
+        if root.is_null() {
+            return core::ptr::null();
+        }
+        let mut stack = vec![root];
+        while let Some(cur) = stack.pop() {
+            if instance_is_a(cur, "ScriptService") {
+                return cur;
+            }
+            for child in (*cur).children.iter().rev() {
+                stack.push(SharedPtr::as_ptr(child));
+            }
+        }
+        core::ptr::null()
+    }
 }
 // 0x7039e4 — __ZN3RBX9weak_fromINS_8InstanceEEEN5boost8weak_ptrIT_EEPS4_
 #[doc(alias = "rbx_core::WeakPtr<RBX::Instance> RBX::weak_from<RBX::Instance>(RBX::Instance*)")]
@@ -445,8 +652,30 @@ pub fn stub_0x704228(this: *mut Instance, child: &SharedPtr<Instance>) {
 // 0x70430c — __ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvPFvNS2_10shared_ptrIS0_EEPiENS3_5list2INS2_3argILi1EEENS3_5valueIS7_EEEEEEEEvRKT_
 #[doc(alias = "void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,int *),boost::_bi::list2<boost::arg<1>,boost::_bi::value<int *>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,int *),boost::_bi::list2<boost::arg<1>,boost::_bi::value<int *>>> const&)const")]
 // was: void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,int *),boost::_bi::list2<boost::arg<1>,boost::_bi::value<int *>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,int *),boost::_bi::list2<boost::arg<1>,boost::_bi::value<int *>>> const&)const
-pub fn stub_0x70430c() -> ! {
-    todo!("0x70430c void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,int *),boost::_bi::list2<boost::arg<1>,boost::_bi::value<int *>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,int *),boost::_bi::list2<boost::arg<1>,boost::_bi::value<int *>>> const&)const")
+pub fn stub_0x70430c(
+    this: *const Instance,
+    func: fn(SharedPtr<Instance>, *mut i32),
+    counter: *mut i32,
+) {
+    // IDA 0x70430c: retains the `list2` binder's bound `int *` (the
+    // `shared_count` copy at `a1 + 14`), snapshots the child vector, then
+    // applies `func(child, counter)` to every descendant; the recursion over
+    // nested child vectors collapses into one explicit pre-order stack, and
+    // each per-child `shared_ptr` copy/release pair is a clone/drop.
+    // SAFETY: `this` must point to a valid `Instance` whose subtree outlives
+    // the call; `counter` must be writable.
+    unsafe {
+        let mut stack: Vec<SharedPtr<Instance>> = (*this).children.clone();
+        stack.reverse();
+        while let Some(child) = stack.pop() {
+            let nested: Vec<SharedPtr<Instance>> =
+                (*SharedPtr::as_ptr(&child)).children.clone();
+            for grand in nested.into_iter().rev() {
+                stack.push(grand);
+            }
+            func(child, counter);
+        }
+    }
 }
 // 0x704414 — __ZN3RBX8GuidItemINS_8InstanceEEC2Ev
 #[doc(alias = "RBX::GuidItem<RBX::Instance>::GuidItem(void)")]
@@ -477,14 +706,36 @@ pub fn stub_0x7045b0(this: *mut GuidItem) {
 // 0x704748 — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS2_3_bi6bind_tIvNS2_4_mfi3mf0IvS5_EENSD_5list1INS2_3argILi1EEEEEEEET0_T_SO_SN_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Instance>,boost::_bi::list1<boost::arg<1>>> std::for_each<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Instance>,boost::_bi::list1<boost::arg<1>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Instance>,boost::_bi::list1<boost::arg<1>>>)")]
 // was: boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Instance>,boost::_bi::list1<boost::arg<1>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Instance>,boost::_bi::list1<boost::arg<1>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Instance>,boost::_bi::list1<boost::arg<1>>>)
-pub fn stub_0x704748() -> ! {
-    todo!("0x704748 boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Instance>,boost::_bi::list1<boost::arg<1>>> std::for_each<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Instance>,boost::_bi::list1<boost::arg<1>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Instance>,boost::_bi::list1<boost::arg<1>>>)")
+pub fn stub_0x704748(
+    items: &[SharedPtr<Instance>],
+    func: fn(&SharedPtr<Instance>),
+) -> fn(&SharedPtr<Instance>) {
+    // IDA 0x704748: `for (i = first; i != last; i += 2)` over the
+    // `shared_ptr` vector applying the `mf0` binder; the `(a5 & 1)` branch is
+    // the virtual-thunk alternative, which collapses into the direct call
+    // here. Returns the functor copy (`*a1 = a4`, disasm 0x704784).
+    for item in items {
+        func(item);
+    }
+    func
 }
 // 0x704794 — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPKPN3RBX10Reflection15EventDescriptorESt6vectorIS5_SaIS5_EEEEN5boost3_bi6bind_tIvNSC_4_mfi4cmf1IvS4_PNS3_11EventSourceEEENSD_5list2INSC_3argILi1EEENSD_5valueIPNS2_8InstanceEEEEEEEET0_T_SU_ST_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::cmf1<void,RBX::Reflection::EventDescriptor,RBX::Reflection::EventSource *>,boost::_bi::list2<boost::arg<1>,boost::_bi::value<RBX::Instance *>>> std::for_each<__gnu_cxx::__normal_iterator<RBX::Reflection::EventDescriptor * const*,std::vector<RBX::Reflection::EventDescriptor *,std::allocator<RBX::Reflection::EventDescriptor *>>>,boost::_bi::bind_t<void,boost::_mfi::cmf1<void,RBX::Reflection::EventDescriptor,RBX::Reflection::EventSource *>,boost::_bi::list2<boost::arg<1>,boost::_bi::value<RBX::Instance *>>>>(__gnu_cxx::__normal_iterator<RBX::Reflection::EventDescriptor * const*,std::vector<RBX::Reflection::EventDescriptor *,std::allocator<RBX::Reflection::EventDescriptor *>>>,__gnu_cxx::__normal_iterator<RBX::Reflection::EventDescriptor * const*,std::vector<RBX::Reflection::EventDescriptor *,std::allocator<RBX::Reflection::EventDescriptor *>>>,boost::_bi::bind_t<void,boost::_mfi::cmf1<void,RBX::Reflection::EventDescriptor,RBX::Reflection::EventSource *>,boost::_bi::list2<boost::arg<1>,boost::_bi::value<RBX::Instance *>>>)")]
 // was: boost::_bi::bind_t<void,boost::_mfi::cmf1<void,RBX::Reflection::EventDescriptor,RBX::Reflection::EventSource *>,boost::_bi::list2<boost::arg<1>,boost::_bi::value<RBX::Instance *>>> std::for_each<__gnu_cxx::__normal_iterator<RBX::Reflection::EventDescriptor * const*,std::vector<RBX::Reflection::EventDescriptor *,std::allocator<RBX::Reflection::EventDescriptor *>>>,boost::_bi::bind_t<void,boost::_mfi::cmf1<void,RBX::Reflection::EventDescriptor,RBX::Reflection::EventSource *>,boost::_bi::list2<boost::arg<1>,boost::_bi::value<RBX::Instance *>>>>(__gnu_cxx::__normal_iterator<RBX::Reflection::EventDescriptor * const*,std::vector<RBX::Reflection::EventDescriptor *,std::allocator<RBX::Reflection::EventDescriptor *>>>,__gnu_cxx::__normal_iterator<RBX::Reflection::EventDescriptor * const*,std::vector<RBX::Reflection::EventDescriptor *,std::allocator<RBX::Reflection::EventDescriptor *>>>,boost::_bi::bind_t<void,boost::_mfi::cmf1<void,RBX::Reflection::EventDescriptor,RBX::Reflection::EventSource *>,boost::_bi::list2<boost::arg<1>,boost::_bi::value<RBX::Instance *>>>)
-pub fn stub_0x704794() -> ! {
-    todo!("0x704794 boost::_bi::bind_t<void,boost::_mfi::cmf1<void,RBX::Reflection::EventDescriptor,RBX::Reflection::EventSource *>,boost::_bi::list2<boost::arg<1>,boost::_bi::value<RBX::Instance *>>> std::for_each<__gnu_cxx::__normal_iterator<RBX::Reflection::EventDescriptor * const*,std::vector<RBX::Reflection::EventDescriptor *,std::allocator<RBX::Reflection::EventDescriptor *>>>,boost::_bi::bind_t<void,boost::_mfi::cmf1<void,RBX::Reflection::EventDescriptor,RBX::Reflection::EventSource *>,boost::_bi::list2<boost::arg<1>,boost::_bi::value<RBX::Instance *>>>>(__gnu_cxx::__normal_iterator<RBX::Reflection::EventDescriptor * const*,std::vector<RBX::Reflection::EventDescriptor *,std::allocator<RBX::Reflection::EventDescriptor *>>>,__gnu_cxx::__normal_iterator<RBX::Reflection::EventDescriptor * const*,std::vector<RBX::Reflection::EventDescriptor *,std::allocator<RBX::Reflection::EventDescriptor *>>>,boost::_bi::bind_t<void,boost::_mfi::cmf1<void,RBX::Reflection::EventDescriptor,RBX::Reflection::EventSource *>,boost::_bi::list2<boost::arg<1>,boost::_bi::value<RBX::Instance *>>>)")
+pub fn stub_0x704794(
+    items: &[*const EventDescPayload],
+    source: *const Instance,
+    func: fn(*const EventDescPayload, *const Instance),
+) -> fn(*const EventDescPayload, *const Instance) {
+    // IDA 0x704794: empty-range early-out (disasm 0x7047a8), then per
+    // `EventDescriptor *` the `cmf1` binder call with the bound `Instance *`
+    // adjusted to its `EventSource *` (`a6 ? a6 + 36 : a6`, disasm
+    // 0x7047ae-0x7047b4 — the +36 member offset collapses since the source
+    // pointer itself is threaded through here). Returns the functor copy.
+    for &item in items {
+        func(item, source);
+    }
+    func
 }
 // 0x704b68 — __ZN3RBX8Instance25PropertyChangedSignalDataD1Ev
 #[doc(alias = "RBX::Instance::PropertyChangedSignalData::~PropertyChangedSignalData()")]
@@ -833,77 +1084,217 @@ pub fn stub_0x7062f8() -> ! {
 }
 // 0x70633c — __ZN3RBX10Reflection9EventDescINS_8InstanceEFvPKNS0_18PropertyDescriptorEEN3rbx6signalIS6_EEMS2_S9_EC2ESA_PKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Instance,void ()(RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)> RBX::Instance::*>::EventDesc(rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)> RBX::Instance::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x70633c() -> ! {
-    todo!("0x70633c RBX::Reflection::EventDesc<RBX::Instance,void ()(RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)> RBX::Instance::*>::EventDesc(rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)> RBX::Instance::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x70633c(
+    this: *mut EventDescPayload,
+    name: &str,
+    permissions: u32,
+    attributes: u32,
+) {
+    // IDA 0x70633c: `Described<Instance>::classDescriptor()` (static, no
+    // state — collapses), `EventDescriptor::EventDescriptor(a1, ...)` (base
+    // init), then one signature item for the `PropertyDescriptor const *`
+    // arg (the single `Type` lookup + `_M_insert`, cf. the two-item 0x707b28).
+    // SAFETY: `this` must point to valid uninitialized `EventDescPayload` storage.
+    unsafe {
+        core::ptr::write(
+            this,
+            EventDescPayload {
+                name: name.to_string(),
+                permissions,
+                attributes,
+                items: vec![SignatureItem { type_name: "PropertyDescriptor const*" }],
+                connections: Mutex::new(Vec::new()),
+            },
+        );
+    }
 }
 // 0x7064c0 — __ZN3RBX10Reflection9EventDescINS_8InstanceEFvPKNS0_18PropertyDescriptorEEN3rbx6signalIS6_EEMS2_S9_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Instance,void ()(RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)> RBX::Instance::*>::~EventDesc()")]
-pub fn stub_0x7064c0() -> ! {
-    todo!("0x7064c0 RBX::Reflection::EventDesc<RBX::Instance,void ()(RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)> RBX::Instance::*>::~EventDesc()")
+pub fn stub_0x7064c0(this: *mut EventDescPayload) {
+    // IDA 0x7064c0: D0 — the D1 body (`*a1 = EventDescriptor vtable`,
+    // `_M_clear(a1 + 8)`, disasm 0x7064fe-0x706524) plus `operator delete(a1)`
+    // (disasm 0x70652a). Reclaiming the box runs the field drops (the clear)
+    // and frees storage (the delete) together.
+    // SAFETY: `this` must be a live box pointer that is never used again.
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 // 0x706574 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_8InstanceEFvPKNS0_18PropertyDescriptorEEN3rbx6signalIS6_EEMS2_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::Instance,void ()(RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)> RBX::Instance::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: RBX::Reflection::EventDescImpl<1,RBX::Instance,void ()(RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)> RBX::Instance::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
-pub fn stub_0x706574() -> ! {
-    todo!("0x706574 RBX::Reflection::EventDescImpl<1,RBX::Instance,void ()(RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)> RBX::Instance::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x706574(desc: *const EventDescPayload, slot: &SharedPtr<GenericSlotWrapper>) {
+    // IDA 0x706574: retains the wrapper `shared_ptr` (`shared_count` copy at
+    // `a4 + 4`, disasm 0x7065a0) and inserts the new slot into the source's
+    // member signal (`*(a1 + 40) + (a2 - 36)`); the member-signal addressing
+    // collapses into the payload-side connection list (see
+    // `EventDescPayload`), so connect is a retained clone + push.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    unsafe {
+        (*desc).connections.lock().push(slot.clone());
+    }
 }
 // 0x7066c8 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_8InstanceEFvPKNS0_18PropertyDescriptorEEN3rbx6signalIS6_EEMS2_S9_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISF_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::Instance,void ()(RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)> RBX::Instance::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
-pub fn stub_0x7066c8() -> ! {
-    todo!("0x7066c8 RBX::Reflection::EventDescImpl<1,RBX::Instance,void ()(RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)> RBX::Instance::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0x7066c8(desc: *const EventDescPayload, args: &[Variant]) {
+    // IDA 0x7066c8: `ReleaseAssert(args.size() == 1)` (Event.h:320, disasm
+    // 0x7066e2-0x70672c), `any_cast<PropertyDescriptor const*>(args[0])`
+    // (disasm 0x706742), then `signal_with_args<1>::operator()(signal, desc)`
+    // (disasm 0x706738-0x706742) — each connected wrapper's `execute1` runs
+    // with the cast descriptor.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`; any
+    // `Variant::Property` pointer must stay valid through dispatch.
+    assert!(args.len() == 1, "0x7066c8: args.size() == 1");
+    let prop = match &args[0] {
+        Variant::Property(p) => *p,
+        _ => panic!("0x7066c8: any_cast<PropertyDescriptor const*> failed"),
+    };
+    unsafe {
+        let slots = (*desc).connections.lock().clone();
+        for slot in slots.iter() {
+            if let Some(cb) = slot.on_prop {
+                cb(prop);
+            }
+        }
+    }
 }
 // 0x706754 — __ZNK3RBX10Reflection13EventDescBaseINS_8InstanceEFvPKNS0_18PropertyDescriptorEEN3rbx6signalIS6_EEMS2_S9_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Instance,void ()(RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)> RBX::Instance::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
-pub fn stub_0x706754() -> ! {
-    todo!("0x706754 RBX::Reflection::EventDescBase<RBX::Instance,void ()(RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(RBX::Reflection::PropertyDescriptor const*)> RBX::Instance::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_0x706754(desc: *const EventDescPayload) {
+    // IDA 0x706754: `source ? source - 36 : 0` (disasm 0x706754-0x70675a)
+    // selects the member signal at `*(a1 + 40) + v10`, then
+    // `signal::disconnectAll` on it; the addressing collapses into the
+    // payload-side list, so this clears the connections.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    unsafe {
+        (*desc).connections.lock().clear();
+    }
 }
 // 0x707b28 — __ZN3RBX10Reflection9EventDescINS_8InstanceEFvN5boost10shared_ptrIS2_EES5_EN3rbx6signalIS6_EEMS2_S9_EC2ESA_PKcSD_SD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Instance,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::Instance::*>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::Instance::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::EventDesc<RBX::Instance,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::Instance::*>::EventDesc(rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::Instance::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x707b28() -> ! {
-    todo!("0x707b28 RBX::Reflection::EventDesc<RBX::Instance,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::Instance::*>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::Instance::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x707b28(
+    this: *mut EventDescPayload,
+    name: &str,
+    permissions: u32,
+    attributes: u32,
+) {
+    // IDA 0x707b28: same ctor shape as 0x70633c for the 2-`shared_ptr`
+    // `EventDesc`: `classDescriptor()` (collapses), base
+    // `EventDescriptor::EventDescriptor`, then two signature items (the two
+    // `Type` lookups + `_M_insert` pair).
+    // SAFETY: `this` must point to valid uninitialized `EventDescPayload` storage.
+    unsafe {
+        core::ptr::write(
+            this,
+            EventDescPayload {
+                name: name.to_string(),
+                permissions,
+                attributes,
+                items: vec![
+                    SignatureItem { type_name: "SharedPtr<Instance>" },
+                    SignatureItem { type_name: "SharedPtr<Instance>" },
+                ],
+                connections: Mutex::new(Vec::new()),
+            },
+        );
+    }
 }
 // 0x707d18 — __ZN3RBX10Reflection9EventDescINS_8InstanceEFvN5boost10shared_ptrIS2_EES5_EN3rbx6signalIS6_EEMS2_S9_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Instance,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::Instance::*>::~EventDesc()")]
 // was: RBX::Reflection::EventDesc<RBX::Instance,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::Instance::*>::~EventDesc()
-pub fn stub_0x707d18() -> ! {
-    todo!("0x707d18 RBX::Reflection::EventDesc<RBX::Instance,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::Instance::*>::~EventDesc()")
+pub fn stub_0x707d18(this: *mut EventDescPayload) {
+    // IDA 0x707d18: D0 — D1 body (`*a1` vtable reset + `_M_clear`,
+    // disasm 0x707d56-0x707d7c) plus `operator delete` (disasm 0x707d82);
+    // the box reclaim is both.
+    // SAFETY: `this` must be a live box pointer that is never used again.
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 // 0x707dcc — __ZNK3RBX10Reflection13EventDescImplILi2ENS_8InstanceEFvN5boost10shared_ptrIS2_EES5_EN3rbx6signalIS6_EEMS2_S9_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::Instance,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::Instance::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: RBX::Reflection::EventDescImpl<2,RBX::Instance,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::Instance::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
-pub fn stub_0x707dcc() -> ! {
-    todo!("0x707dcc RBX::Reflection::EventDescImpl<2,RBX::Instance,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::Instance::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x707dcc(desc: *const EventDescPayload, slot: &SharedPtr<GenericSlotWrapper>) {
+    // IDA 0x707dcc: 2-arg twin of 0x706574 — retain the wrapper
+    // (`shared_count` copy) and insert into the member signal; collapses to
+    // a retained clone + push onto the payload-side list.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    unsafe {
+        (*desc).connections.lock().push(slot.clone());
+    }
 }
 // 0x707f20 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_8InstanceEFvN5boost10shared_ptrIS2_EES5_EN3rbx6signalIS6_EEMS2_S9_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISF_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::Instance,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::Instance::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 // was: RBX::Reflection::EventDescImpl<2,RBX::Instance,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::Instance::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const
-pub fn stub_0x707f20() -> ! {
-    todo!("0x707f20 RBX::Reflection::EventDescImpl<2,RBX::Instance,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::Instance::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0x707f20(desc: *const EventDescPayload, args: &[Variant]) {
+    // IDA 0x707f20: 2-arg twin of 0x7066c8 — assert `args.size() == 2`,
+    // `any_cast` both `shared_ptr<Instance>` args (the two `shared_count`
+    // copies at `[bp-9Ch]`/`[bp-94h]` are retains), then
+    // `signal_with_args<2>::operator()` fans out to each connected
+    // wrapper's `execute2`.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    assert!(args.len() == 2, "0x707f20: args.size() == 2");
+    let (a, b) = match (&args[0], &args[1]) {
+        (Variant::Instance(a), Variant::Instance(b)) => (a.clone(), b.clone()),
+        _ => panic!("0x707f20: any_cast<shared_ptr<Instance>> failed"),
+    };
+    unsafe {
+        let slots = (*desc).connections.lock().clone();
+        for slot in slots.iter() {
+            stub_0x708378(slot, &a, &b);
+        }
+    }
 }
 // 0x7080d0 — __ZNK3RBX10Reflection13EventDescBaseINS_8InstanceEFvN5boost10shared_ptrIS2_EES5_EN3rbx6signalIS6_EEMS2_S9_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Instance,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::Instance::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
 // was: RBX::Reflection::EventDescBase<RBX::Instance,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::Instance::*>::disconnectAll(RBX::Reflection::EventSource *)const
-pub fn stub_0x7080d0() -> ! {
-    todo!("0x7080d0 RBX::Reflection::EventDescBase<RBX::Instance,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::Instance::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_0x7080d0(desc: *const EventDescPayload) {
+    // IDA 0x7080d0: 2-arg twin of 0x706754 — `source ? source - 36 : 0`
+    // (disasm 0x7080d0-0x7080d6) into `*(a1 + 40) + v2`, then
+    // `signal::disconnectAll`; collapses to clearing the payload-side list.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    unsafe {
+        (*desc).connections.lock().clear();
+    }
 }
 // 0x7080e4 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES6_EE13disconnectAllEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::disconnectAll(void)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::disconnectAll(void)
-pub fn stub_0x7080e4() -> ! {
-    todo!("0x7080e4 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::disconnectAll(void)")
+pub fn stub_0x7080e4(sig: *mut Signal<(SharedPtr<Instance>, SharedPtr<Instance>)>) {
+    // IDA 0x7080e4: mutex acquisition (`safe_static` guard dance) then every
+    // slot unlinked and released; `Signal::disconnect_all` holds the same
+    // lock and drops the same slot list.
+    // SAFETY: `sig` must point to a valid `Signal`.
+    unsafe {
+        (*sig).disconnect_all();
+    }
 }
 // 0x70825c — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS1_8InstanceEEES8_NS4_IS3_EENS_3argILi1EEENSA_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISF_T0_T1_T2_EENSD_9list_av_3IT3_T4_T5_E4typeEEEMSI_FSF_SJ_SK_ESN_SO_SP_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list_av_3<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")]
 // was: boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)
-pub fn stub_0x70825c() -> ! {
-    todo!("0x70825c boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list_av_3<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")
+pub fn stub_0x70825c(target: &SharedPtr<GenericSlotWrapper>) -> BindWrapper2 {
+    // IDA 0x70825c: `boost::bind(execute2-mf2, wrapper, _1, _2)` — the
+    // wrapper `shared_ptr` is retained into the `bind_t` object (the
+    // `shared_count` copy) while `_1`/`_2` stay late-bound; the `list_av_3`
+    // storage collapses into the retained target.
+    BindWrapper2 { target: target.clone() }
 }
 // 0x708378 — __ZN3RBX10Reflection18GenericSlotWrapper8execute2IN5boost10shared_ptrINS_8InstanceEEES6_EEvRKT_RKT0_
 #[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute2<rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>(rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: void RBX::Reflection::GenericSlotWrapper::execute2<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>(boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_0x708378() -> ! {
-    todo!("0x708378 void RBX::Reflection::GenericSlotWrapper::execute2<rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>(rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Instance> const&)")
+pub fn stub_0x708378(
+    wrapper: &SharedPtr<GenericSlotWrapper>,
+    a: &SharedPtr<Instance>,
+    b: &SharedPtr<Instance>,
+) {
+    // IDA 0x708378: `GenericSlotWrapper::execute2` unpacks the marshalled
+    // 2-arg functor from the wrapper (`a1` + slots) and invokes it with the
+    // two retained `shared_ptr` args; the Lua frame underneath is the
+    // `on_pair` handler until the script bridge exists.
+    if let Some(cb) = wrapper.on_pair {
+        cb(a, b);
+    }
 }
 // 0x7084e0 — __ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEES4_E5clearEv
 #[doc(alias = "boost::function2<void,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>::clear(void)")]
