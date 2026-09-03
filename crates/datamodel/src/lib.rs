@@ -725,3 +725,4 @@ pub mod generated_watchdog_dm_wdM;
 pub mod generated_watchdog_dm_wdN;
 pub mod generated_watchdog_dm_wdD;
 pub mod generated_watchdog_dm_wdN2;
+pub mod generated_watchdog_dm_wdP;

@@ -470,3 +470,4 @@ pub mod generated_watchdog_plat_wdJ;
 pub mod generated_watchdog_plat_wdC;
 pub mod generated_watchdog_plat_wdB;
 pub mod generated_watchdog_plat_wdB2;
+pub mod generated_watchdog_plat_wdK;
