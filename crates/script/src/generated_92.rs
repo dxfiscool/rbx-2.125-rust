@@ -15,20 +15,66 @@ use std::sync::atomic::{AtomicU32, Ordering};
 // luaL_checknumber / luaL_checkinteger / lua_pushnumber / lua_pushinteger /
 // lua_gettop (disasm BLs, e.g. 0x82b668 + 0x82b67a in math_cos). The full
 // lua_State layout is out of scope here; extend this model when later impls
-// need strings, tables, or closures.
+// need strings, tables, or closures. The lstate/lstring fns below are that
+// extension: `raw` holds the true-C-layout state words (lua_State/global view).
+// The binary is 32-bit ARM, so every offset below names a 4-byte word addressed
+// here by word index (byte_offset / 4). Slots are host-sized (usize) so pointers
+// round-trip on 64-bit hosts; u32 data is zero-extended and packed bytes go
+// through lb/sb (little-endian, matching armv7 and x86_64). Sized to cover the
+// largest L offset used (0x13C in f_luaopen, IDA 0x82e1bc).
 pub struct LuaState {
     stack: Vec<f64>,
     total_bytes: usize,
+    raw: [usize; 80],
 }
 
 impl LuaState {
     pub fn new() -> Self {
-        LuaState { stack: Vec::new(), total_bytes: 0 }
+        LuaState { stack: Vec::new(), total_bytes: 0, raw: [0; 80] }
     }
     pub fn total_bytes(&self) -> usize {
         self.total_bytes
     }
+    // Base of the true-layout words (the `L` the raw fns below manipulate).
+    fn raw_base(&mut self) -> *mut usize {
+        self.raw.as_mut_ptr()
+    }
 }
+
+// C-word load/store by word index over host-sized slots (see `raw` above).
+unsafe fn lw(base: *mut usize, w: usize) -> usize {
+    *base.add(w)
+}
+unsafe fn sw(base: *mut usize, w: usize, v: usize) {
+    *base.add(w) = v;
+}
+// Little-endian byte lane of a word slot, addressed by C byte offset.
+unsafe fn lb(base: *mut usize, off: usize) -> u8 {
+    ((*base.add(off / 4) >> ((off % 4) * 8)) & 0xff) as u8
+}
+unsafe fn sb(base: *mut usize, off: usize, v: u8) {
+    let slot = base.add(off / 4);
+    let shift = (off % 4) * 8;
+    *slot = (*slot & !(0xffusize << shift)) | ((v as usize) << shift);
+}
+// Allocator sized in C words (4 bytes each). IDA sizes below are quoted in C
+// bytes with the word count beside each call; frees pass 0 and return null,
+// matching stub_0x82bc54.
+unsafe fn mm(
+    l: *mut LuaState,
+    block: *mut usize,
+    old_words: usize,
+    new_words: usize,
+) -> *mut usize {
+    const WORD: usize = std::mem::size_of::<usize>();
+    stub_0x82bc54(l, block as *mut u8, old_words * WORD, new_words * WORD) as *mut usize
+}
+// Host address bytes per C-model byte. Blocks are indexed in C words (1 C word
+// = 1 host slot), so a C span of N bytes covers 2 host address bytes: every
+// raw C byte constant used in *address* arithmetic is scaled by CB below
+// (0xA8 * CB and the like). Word indices, slot strides (.add(3) per TValue)
+// and mm() word counts need no scaling.
+const CB: usize = 2;
 
 // Process-wide C `rand`/`srand` stand-in for math_random/math_randomseed
 // (IDA 0x82b938/0x82ba48). The original links the platform libc generator;
@@ -701,6 +747,210 @@ pub unsafe fn stub_0x82be14(s: *const u8, out: *mut f64) -> bool {
     lua_skip_spaces(tail).is_empty()
 }
 
+// ---- True-layout helpers (lstate/lstring/ltable/ldo) ----
+// The fns below mirror out-of-shard EAs needed by this shard's stubs. Each
+// keeps its IDA address in the comment; the EA's own skeleton (in lua.rs or a
+// later generated_* shard) stays todo until its batch wires it up.
+//
+// Word discipline: every block below is indexed in C words (byte_offset / 4)
+// over host-sized slots (see `LuaState::raw`); mm() sizes are word counts.
+// Byte lanes (headers, tags, string bytes) go through lb/sb, little-endian.
+
+// IDA 0x10040f0 `__ZL10dummynode_`: 28 zero bytes (read back over MCP).
+// Tables with no hash part point here instead of allocating.
+static DUMMY_NODE: [usize; 7] = [0; 7];
+
+// IDA 0x11f2b9c `__ZZ9luaT_initP9lua_StateE14luaT_eventname`: 17 tag-method
+// names (read back over MCP; the standard Lua 5.1 set).
+const LUA_T_EVENTNAMES: [&str; 17] = [
+    "__index", "__newindex", "__gc", "__mode", "__eq", "__add", "__sub", "__mul", "__div",
+    "__mod", "__pow", "__unm", "__len", "__lt", "__le", "__concat", "__call",
+];
+// IDA 0x11f2938 `_luaX_tokens`: 21 reserved words (read back over MCP).
+const LUA_X_TOKENS: [&str; 21] = [
+    "and", "break", "do", "else", "elseif", "end", "false", "for", "function", "if", "in",
+    "local", "nil", "not", "or", "repeat", "return", "then", "true", "until", "while",
+];
+
+// IDA 0x82a1dc — luaC_link(lua_State *,GCObject *,unsigned char)
+// Prepend obj to the GC root list at global+28 and stamp tt/marked color.
+#[allow(non_snake_case)]
+unsafe fn luaC_link(l: *mut LuaState, obj: *mut usize, tt: u8) -> u8 {
+    let g = lw((&mut *l).raw_base(), 0x10 / 4) as *mut usize; // IDA 0x82a1dc LDR global
+    sw(obj, 0, lw(g, 28 / 4)); // IDA 0x82a1e0: obj->next = g->rootgc
+    sw(g, 28 / 4, obj as usize); // IDA 0x82a1e2
+    let marked = lb(g, 20) & 3; // IDA 0x82a1e6 current white bits
+    sb(obj, 5, marked); // IDA 0x82a1ea
+    sb(obj, 4, tt); // IDA 0x82a1ec
+    marked
+}
+
+// IDA 0x828740 — luaD_reallocstack(lua_State *,int)
+// Regrow the value stack to `newsize` slots (realsize newsize+1+EXTRA_STACK),
+// relocating top/base, open upvalues and every CallInfo. Disasm 0x82874c..0x828806.
+#[allow(non_snake_case)]
+unsafe fn luaD_reallocstack(l: *mut LuaState, newsize: i32) {
+    let base = (&mut *l).raw_base();
+    let old = lw(base, 0x20 / 4) as *mut usize; // IDA 0x82874c L->stack
+    let realsize = newsize + 6; // IDA 0x82874e: newsize + 1 + EXTRA_STACK
+    if (newsize as u32).wrapping_add(7) > 0x1555_5555 {
+        // IDA 0x828752..0x82875e: (newsize + 7) > MAX_INT/12-ish.
+        stub_0x82bc90(l);
+    }
+    // IDA 0x828760..0x828772: realloc(L, old, 12*size, 12*realsize); slots are
+    // 12 C-bytes = 3 words.
+    let size = lw(base, 0x2C / 4);
+    let stack = mm(l, old, size * 3, realsize as usize * 3);
+    sw(base, 0x2C / 4, realsize as usize); // IDA 0x828782 stacksize
+    sw(base, 0x1C / 4, stack.add(newsize as usize * 3) as usize); // IDA 0x828786..0x82878a stack_last = stack + one slot per count
+    sw(base, 0x20 / 4, stack as usize); // IDA 0x82878c L->stack
+    // IDA 0x82878e..0x828798: top = stack + ((top - old) & ~3). The mask is in
+    // the binary (BIC #3); pointers here are 4-aligned so it is neutral.
+    sw(base, 0x08 / 4, (stack as usize).wrapping_add(lw(base, 0x08 / 4).wrapping_sub(old as usize) & !3));
+    // IDA 0x82879a..0x8287c0: relocate every open upvalue's v (+8), via next (+0).
+    let mut up = lw(base, 0x60 / 4) as *mut usize; // L->openupval
+    while !up.is_null() {
+        sw(up, 2, (stack as usize).wrapping_add(lw(up, 2).wrapping_sub(old as usize) & !3));
+        up = lw(up, 0) as *mut usize;
+    }
+    // IDA 0x8287c2..0x8287f8: relocate each CallInfo's top(+8)/func(+0)/base(+4).
+    let ci_end = lw(base, 0x14 / 4) as *mut usize; // L->ci
+    let mut ci = lw(base, 0x28 / 4) as *mut usize; // base_ci
+    while (ci as usize) <= (ci_end as usize) {
+        // IDA 0x8287f6 BLS
+        for w in [2usize, 0, 1] {
+            sw(ci, w, (stack as usize).wrapping_add(lw(ci, w).wrapping_sub(old as usize) & !3));
+        }
+        ci = ci.add(6); // IDA 0x8287f4 sizeof(CallInfo) = 24B = 6 words
+    }
+    // IDA 0x8287fa..0x828806: L->base (+0x0C).
+    sw(base, 0x0C / 4, (stack as usize).wrapping_add(lw(base, 0x0C / 4).wrapping_sub(old as usize) & !3));
+}
+
+// IDA 0x828864 — luaD_growstack(lua_State *,int)
+// Disasm is 7 insns (verified byte-level over MCP): if size < n, grow to
+// n + size (0x82886a..0x82886c), then control falls through into a second
+// reallocstack(2 * size) call (0x828870..0x828872).
+// BUG: stock Lua 5.1 returns after the first call (if/else); this binary
+// double-grows on the n > size path (and the callee clobbers the R2 the
+// second size is derived from, so its exact argument is codegen fallout).
+// Preserved as written; the path is unreachable from luaD_checkstack with
+// sane sizes, which is why it shipped. Panics stand in for luaM_toobig below.
+#[allow(non_snake_case)]
+unsafe fn luaD_growstack(l: *mut LuaState, n: i32) {
+    let size = lw((&mut *l).raw_base(), 0x2C / 4) as i32; // IDA 0x828864 stacksize
+    if size < n {
+        // IDA 0x828866 CMP / 0x828868 ITT LT (signed).
+        luaD_reallocstack(l, n + size); // IDA 0x82886a..0x82886c
+    }
+    luaD_reallocstack(l, size * 2); // IDA 0x828870..0x828872
+}
+
+// IDA 0x8307c4 — setarrayvector(lua_State *,Table *,int)
+// Resize the array part to `size` slots, nil-ing (tag only, as stock
+// setnilvalue does) the grown tail. Disasm 0x8307c6..0x830822.
+unsafe fn setarrayvector(l: *mut LuaState, t: *mut usize, size: i32) {
+    if (size as u32).wrapping_add(1) > 0x1555_5555 {
+        // IDA 0x8307c6..0x8307d8: (size + 1) > MAX_INT/12-ish.
+        stub_0x82bc90(l);
+    }
+    // IDA 0x8307da..0x8307f0: realloc(L, array, 12*old, 12*size).
+    let old = lw(t, 0x20 / 4);
+    let array = mm(l, lw(t, 0x10 / 4) as *mut usize, old * 3, size as usize * 3);
+    sw(t, 0x10 / 4, array as usize); // IDA 0x830804
+    if (old as i32) < size {
+        // IDA 0x830806..0x830820: tag-nil slots [old, size).
+        for k in old..size as usize {
+            sw(array.add(k * 3), 2, 0); // +8 tag lane of slot k
+        }
+    }
+    sw(t, 0x20 / 4, size as usize); // IDA 0x830822 sizearray
+}
+
+// IDA 0x830828 — setnodevector(lua_State *,Table *,int)
+// Size the hash part to 2^ceil(log2(size)) nodes (28 C-bytes = 7 words each),
+// or DUMMY_NODE when empty. luaO_log2 is stub_0x82bda0 above; panics stand in
+// for luaG_runerror/luaM_toobig. Disasm 0x830830..0x8308c4.
+unsafe fn setnodevector(l: *mut LuaState, t: *mut usize, size: i32) {
+    if size == 0 {
+        // IDA 0x830834..0x83083e + 0x83088e: node = &dummynode_, lsize 0,
+        // lastfree = node.
+        sw(t, 0x14 / 4, DUMMY_NODE.as_ptr() as usize);
+        sb(t, 8, 0);
+        sw(t, 0x18 / 4, DUMMY_NODE.as_ptr() as usize);
+        return;
+    }
+    let lsize = stub_0x82bda0((size as u32).wrapping_sub(1)) + 1; // IDA 0x83083a..0x83083e
+    if lsize >= 27 {
+        // IDA 0x830842..0x830854 luaG_runerror(L, "table overflow").
+        panic!("table overflow");
+    }
+    let nn = 1u32 << lsize; // IDA 0x83085e
+    if nn.wrapping_add(1) > 0x0924_9249 {
+        // IDA 0x830862..0x830894.
+        stub_0x82bc90(l);
+    }
+    let node = mm(l, std::ptr::null_mut(), 0, nn as usize * 7); // IDA 0x83086c..0x830878
+    sw(t, 0x14 / 4, node as usize); // IDA 0x830898
+    // IDA 0x83089e..0x8308b6: per node, next(+24) = NULL, key tag(+20) = nil,
+    // value tag(+8) = nil (compiler-unrolled addressing, same three lanes).
+    for k in 0..nn as usize {
+        let n = node.add(k * 7);
+        sw(n, 6, 0);
+        sb(n, 20, 0);
+        sb(n, 8, 0);
+    }
+    sb(t, 8, lsize as u8); // IDA 0x8308bc lsizenode
+    sw(t, 0x18 / 4, (node as usize).wrapping_add(nn as usize * 28 * CB)); // IDA 0x8308b8..0x8308c0 lastfree
+}
+
+// IDA 0x830768 — luaH_new(lua_State *,int,int)
+// Second arg sizes the array part, third the node part (disasm passes a2 to
+// setarrayvector, a3 to setnodevector; f_luaopen's (0, 2) grows hash only).
+// Disasm 0x830782..0x8307c2.
+#[allow(non_snake_case)]
+unsafe fn luaH_new(l: *mut LuaState, array_hint: i32, node_hint: i32) -> *mut usize {
+    let t = mm(l, std::ptr::null_mut(), 0, 9); // IDA 0x830782: 36B Table
+    luaC_link(l, t, 5); // IDA 0x83078a tt=5 (LUA_TTABLE)
+    sw(t, 3, 0); // IDA 0x830798 +12
+    sb(t, 6, 0xff); // IDA 0x83079c flags = -1
+    sw(t, 4, 0); // IDA 0x83079e +16 array
+    sw(t, 8, 0); // IDA 0x8307a2 +32 sizearray
+    sb(t, 8, 0); // IDA 0x8307a6 +8 lsizenode
+    sb(t, 7, 0); // IDA 0x8307a8 +7
+    sw(t, 5, DUMMY_NODE.as_ptr() as usize); // IDA 0x8307aa +20 node
+    setarrayvector(l, t, array_hint); // IDA 0x8307ae
+    setnodevector(l, t, node_hint); // IDA 0x8307b8
+    t // IDA 0x8307c2
+}
+
+// IDA 0x831800 — luaT_init(lua_State *)
+// Intern the 17 tag-method names into global tmname[i], then fix each so the
+// GC never collects them. `strlen == len` (no interior NULs). Decompile loop
+// at 0x831812..0x831848.
+#[allow(non_snake_case)]
+unsafe fn luaT_init(l: *mut LuaState) {
+    let g = lw((&mut *l).raw_base(), 0x10 / 4) as *mut usize;
+    for (i, name) in LUA_T_EVENTNAMES.iter().enumerate() {
+        let ts = stub_0x82eb98(l, name.as_ptr(), name.len()); // IDA 0x83181c..0x831830
+        sw(g, (168 + 4 * i) / 4, ts as usize); // IDA 0x831836..0x83183e
+        sb(ts, 5, lb(ts, 5) | 0x20); // IDA 0x831848 luaS_fix
+    }
+}
+
+// IDA 0x82a808 — luaX_init(lua_State *)
+// Intern the 21 reserved words, fix each, and stamp the 1-based reserved id
+// (stock `ts->reserved = i + 1`; 0 means "not reserved"). Decompile loop at
+// 0x82a81a..0x82a83c.
+#[allow(non_snake_case)]
+unsafe fn luaX_init(l: *mut LuaState) {
+    for (i, tok) in LUA_X_TOKENS.iter().enumerate() {
+        let ts = stub_0x82eb98(l, tok.as_ptr(), tok.len()); // IDA 0x82a824..0x82a82e
+        sb(ts, 5, lb(ts, 5) | 0x20); // IDA 0x82a83c luaS_fix
+        sb(ts, 6, (i + 1) as u8);
+    }
+}
+
 // 0x82bea0 — __Z17luaO_pushvfstringP9lua_StatePKcPv
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "luaO_pushvfstring(lua_State *,char const*,void *)")]
@@ -711,8 +961,25 @@ pub fn stub_0x82bea0() -> ! {
 // 0x82c064 — __ZL7pushstrP9lua_StatePKc
 // type: int __fastcall(int, char *__s)
 #[doc(alias = "pushstr(lua_State *,char const*)")]
-pub fn stub_0x82c064() -> ! {
-    todo!("0x82c064 __ZL7pushstrP9lua_StatePKc")
+// IDA 0x82c064: intern `s`, push the TString (tag 4) at the stack top, grow
+// when a slot or less is free, and return the new top. Returns the raw top
+// word pointer (the binary leaves top+12 in R0, IDA 0x82c098..0x82c09c).
+// Disasm: 0x82c06e top; 0x82c070 strlen; 0x82c07a newlstr; 0x82c07e/0x82c082
+// slot store; 0x82c084..0x82c092 grow check; 0x82c098 top += 12.
+pub unsafe fn stub_0x82c064(l: *mut LuaState, s: *const u8) -> *mut usize {
+    let base = (&mut *l).raw_base();
+    let mut top = lw(base, 0x08 / 4) as *mut usize; // IDA 0x82c06e L->top
+    let ts = stub_0x82eb98(l, s, c_strlen(s)); // IDA 0x82c070 + 0x82c07a
+    sw(top, 0, ts as usize); // IDA 0x82c07e
+    sw(top, 2, 4); // IDA 0x82c080..0x82c082 tt = LUA_TSTRING
+    // IDA 0x82c084..0x82c08c: grow unless strictly more than one slot is free.
+    if lw(base, 0x1C / 4).wrapping_sub(top as usize) <= 12 * CB {
+        luaD_growstack(l, 1); // IDA 0x82c08e..0x82c092
+        top = lw(base, 0x08 / 4) as *mut usize; // IDA 0x82c096 reload
+    }
+    let top = top.add(3); // IDA 0x82c098: one 12-byte TValue slot
+    sw(base, 0x08 / 4, top as usize); // IDA 0x82c09a
+    top
 }
 
 // 0x82c0a0 — __Z16luaO_pushfstringP9lua_StatePKcz
@@ -795,16 +1062,78 @@ pub fn stub_0x82c334() -> ! {
 
 // 0x82df78 — __Z14luaE_newthreadP9lua_State
 #[doc(alias = "luaE_newthread(lua_State *)")]
-pub fn stub_0x82df78() -> ! {
-    todo!("0x82df78 __Z14luaE_newthreadP9lua_State")
+// IDA 0x82df78: allocate a 152-byte thread (38 words), link it as LUA_TTHREAD,
+// share the global state, blank the fields, init its stacks, and copy the
+// parent's hook words. Returns the thread (R8 = base + 0x28, IDA 0x82dff8).
+// Disasm: 0x82df80..0x82df8a alloc; 0x82df90..0x82df9a link; 0x82df9e..0x82dfd4
+// field stores; 0x82dfd6 stack_init; 0x82dfda..0x82dff6 hook copies.
+pub unsafe fn stub_0x82df78(l: *mut LuaState) -> *mut usize {
+    let base = (&mut *l).raw_base();
+    let g = lw(base, 0x10 / 4);
+    let raw = mm(l, std::ptr::null_mut(), 0, 38); // IDA 0x82df84: 0x98 = 152B
+    let th = raw.add(10); // IDA 0x82df90: thread = base + 0x28
+    luaC_link(l, th, 8); // IDA 0x82df94..0x82df9a tt=8 (LUA_TTHREAD)
+    sw(th, 0x10 / 4, g); // IDA 0x82df9e..0x82dfa2 l_G (offsets below are th-relative)
+    sw(raw, 0x48 / 4, 0); // IDA 0x82dfa6 top (+0x20)
+    sw(raw, 0x54 / 4, 0); // IDA 0x82dfa8 stacksize (+0x2C)
+    sw(raw, 0x90 / 4, 0); // IDA 0x82dfaa (+0x68)
+    sw(raw, 0x6C / 4, 0); // IDA 0x82dfae (+0x44)
+    sb(raw, 0x60, 0); // IDA 0x82dfb0 (+0x38)
+    sw(raw, 0x64 / 4, 0); // IDA 0x82dfb4 (+0x3C)
+    sb(raw, 0x61, 1); // IDA 0x82dfb6 (+0x39)
+    sw(raw, 0x68 / 4, 0); // IDA 0x82dfbc (+0x40)
+    sw(raw, 0x88 / 4, 0); // IDA 0x82dfbe (+0x60)
+    sb(raw, 0x2E, 0); // IDA 0x82dfc2 (+0x06)
+    sw(raw, 0x3C / 4, 0); // IDA 0x82dfc6 ci (+0x14)
+    sw(raw, 0x50 / 4, 0); // IDA 0x82dfc8 base_ci (+0x28)
+    sw(raw, 0x40 / 4, 0); // IDA 0x82dfca (+0x18)
+    sw(raw, 0x94 / 4, 0); // IDA 0x82dfcc (+0x6C)
+    sw(raw, 0x78 / 4, 0); // IDA 0x82dfd0 (+0x50)
+    sw(raw, 0x5C / 4, 0); // IDA 0x82dfd2 (+0x34)
+    sw(raw, 0x58 / 4, 0); // IDA 0x82dfd4 (+0x30)
+    // IDA 0x82dfd6 stack_init(L1, L): the binary passes the incoming R1 (the
+    // new block, whose +0x10 already holds the shared global above) as the
+    // allocator anchor; only that word and the shared total_bytes matter, so
+    // the parent L is equivalent here.
+    stub_0x82e000(th, l);
+    sw(th, 0x74 / 4, lw(base, 0x4C / 4)); // IDA 0x82dfda..0x82dfde
+    sw(th, 0x70 / 4, lw(base, 0x48 / 4)); // IDA 0x82dfe0 hook
+    sw(th, 0x78 / 4, lw(base, 0x50 / 4)); // IDA 0x82dfe2..0x82dfe4
+    sb(th, 0x60, lb(base, 0x38)); // IDA 0x82dfe6..0x82dfea
+    sw(th, 0x64 / 4, lw(base, 0x3C / 4)); // IDA 0x82dfee..0x82dff0
+    sw(th, 0x6C / 4, lw(base, 0x44 / 4)); // IDA 0x82dff2..0x82dff4
+    sw(th, 0x68 / 4, lw(base, 0x3C / 4)); // IDA 0x82dff6
+    th // IDA 0x82dff8
 }
 
 // 0x82e000 — __ZL10stack_initP9lua_StateS0_
 #[doc(alias = "stack_init(lua_State *,lua_State *)")]
-pub fn stub_0x82e000() -> ! {
-    todo!("0x82e000 __ZL10stack_initP9lua_StateS0_")
+// IDA 0x82e000: allocate the CallInfo (8 x 24B) and value-stack
+// ((40 + 5) x 12B) vectors and lay out ci/top/base/stack_last, pushing one nil
+// (tag lane only, as stock setnilvalue does). Matches stock Lua 5.1 stack_init
+// (BASIC_CI_SIZE 8, BASIC_STACK_SIZE 40, EXTRA_STACK 5, LUA_MINSTACK 20).
+// Returns nothing meaningful (stock void; the binary leaks top+240 in R0 and
+// both callers ignore it). Disasm 0x82e006..0x82e058.
+pub unsafe fn stub_0x82e000(thread: *mut usize, l: *mut LuaState) {
+    let ci = mm(l, std::ptr::null_mut(), 0, 48); // IDA 0x82e00c: 0xC0 = 192B
+    sw(thread, 0x28 / 4, ci as usize); // IDA 0x82e016 base_ci
+    sw(thread, 0x14 / 4, ci as usize); // IDA 0x82e01a ci
+    sw(thread, 0x30 / 4, 8); // IDA 0x82e01e size_ci
+    sw(thread, 0x24 / 4, (ci as usize).wrapping_add(0xA8 * CB)); // IDA 0x82e01c..0x82e022 end_ci
+    let stack = mm(l, std::ptr::null_mut(), 0, 135); // IDA 0x82e028: 0x21C = 540B
+    sw(thread, 0x20 / 4, stack as usize); // IDA 0x82e032 L->stack
+    sw(thread, 0x2C / 4, 45); // IDA 0x82e034 stacksize
+    sw(thread, 0x08 / 4, stack as usize); // IDA 0x82e03a top
+    sw(thread, 0x1C / 4, (stack as usize).wrapping_add(0x1D4 * CB)); // IDA 0x82e036..0x82e03c stack_last
+    sw(ci, 1, stack as usize); // IDA 0x82e03e..0x82e040 ci->func = top
+    // IDA 0x82e042..0x82e04a: top += one slot, nil its tag lane.
+    let top = stack.add(3);
+    sw(thread, 0x08 / 4, top as usize);
+    sb(stack, 8, 0);
+    sw(ci, 0, top as usize); // IDA 0x82e04c..0x82e04e ci->base
+    sw(thread, 0x0C / 4, top as usize); // IDA 0x82e050 L->base
+    sw(ci, 2, (top as usize).wrapping_add(0xF0 * CB)); // IDA 0x82e052..0x82e058 ci->top
 }
-
 // 0x82e05c — __Z15luaE_freethreadP9lua_StateS0_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "luaE_freethread(lua_State *,lua_State *)")]
@@ -814,8 +1143,15 @@ pub fn stub_0x82e05c() -> ! {
 
 // 0x82e094 — __ZL9freestackP9lua_StateS0_
 #[doc(alias = "freestack(lua_State *,lua_State *)")]
-pub fn stub_0x82e094() -> ! {
-    todo!("0x82e094 __ZL9freestackP9lua_StateS0_")
+// IDA 0x82e094: release both vectors stack_init allocated: the CallInfo array
+// (24 C-bytes = 6 words per slot) and the value stack (12 C-bytes = 3 words
+// per slot). Returns the second free's null, which the binary leaves in R0
+// (disasm 0x82e0ae..0x82e0bc, two luaM_realloc_ frees).
+pub unsafe fn stub_0x82e094(l: *mut LuaState, thread: *mut usize) -> *mut usize {
+    // IDA 0x82e09a..0x82e0aa: realloc(L, base_ci, 24*size_ci, 0).
+    mm(l, lw(thread, 0x28 / 4) as *mut usize, lw(thread, 0x30 / 4) * 6, 0);
+    // IDA 0x82e0ae..0x82e0bc: realloc(L, stack, 12*size_stack, 0).
+    mm(l, lw(thread, 0x20 / 4) as *mut usize, lw(thread, 0x2C / 4) * 3, 0)
 }
 
 // 0x82e0c4 — __Z12lua_newstatePFPvS_S_mmES_
@@ -827,8 +1163,31 @@ pub fn stub_0x82e0c4() -> ! {
 
 // 0x82e1e4 — __ZL9f_luaopenP9lua_StatePv
 #[doc(alias = "f_luaopen(lua_State *,void *)")]
-pub fn stub_0x82e1e4() -> ! {
-    todo!("0x82e1e4 __ZL9f_luaopenP9lua_StatePv")
+// IDA 0x82e1e4: open a state already backed by 388 C-bytes: init the stacks,
+// create the globals and registry tables (array 0, node 2), size the string
+// table, intern tag-methods/reserved words, pin the "not enough memory" string
+// and seed GCthreshold = 4 * estimate. Stock Lua 5.1 f_luaopen discards the
+// fixed string's pointer (it stays reachable via the string table), so no
+// store follows the mark below. Returns nothing (stock void; callers ignore R0).
+// Disasm 0x82e1ee..0x82e24c.
+pub unsafe fn stub_0x82e1e4(l: *mut LuaState) {
+    let base = (&mut *l).raw_base();
+    stub_0x82e000(base, l); // IDA 0x82e1ee..0x82e1f4 stack_init(L, L)
+    let gt = luaH_new(l, 0, 2); // IDA 0x82e1f8..0x82e1fe
+    sw(base, 0x48 / 4, gt as usize); // IDA 0x82e204 globals table
+    sw(base, 0x50 / 4, 5); // IDA 0x82e206 tt = LUA_TTABLE
+    let g = lw(base, 0x10 / 4) as *mut usize; // IDA 0x82e1f0 + 0x82e20e global
+    let reg = luaH_new(l, 0, 2); // IDA 0x82e208..0x82e210
+    sw(g, 0x5C / 4, reg as usize); // IDA 0x82e214 registry
+    sw(g, 0x64 / 4, 5); // IDA 0x82e21a
+    stub_0x82eaf4(l, 32); // IDA 0x82e216..0x82e21c MINSTRTABSIZE
+    luaT_init(l); // IDA 0x82e220..0x82e222
+    luaX_init(l); // IDA 0x82e226..0x82e228
+    // IDA 0x82e22c..0x82e244: fix("not enough memory", 17).
+    let memerr = stub_0x82eb98(l, b"not enough memory".as_ptr(), 17);
+    sb(memerr, 5, lb(memerr, 5) | 0x20);
+    // IDA 0x82e246..0x82e24c: GCthreshold (+0x40) = 4 * estimate (+0x44).
+    sw(g, 0x40 / 4, lw(g, 0x44 / 4).wrapping_mul(4));
 }
 
 // 0x82e258 — __ZL11close_stateP9lua_State
@@ -851,23 +1210,161 @@ pub fn stub_0x82e304() -> ! {
 
 // 0x82eaf4 — __Z11luaS_resizeP9lua_Statei
 #[doc(alias = "luaS_resize(lua_State *,int)")]
-pub fn stub_0x82eaf4() -> ! {
-    todo!("0x82eaf4 __Z11luaS_resizeP9lua_Statei")
+// IDA 0x82eaf4: regrow the string-table hash to `new_size` buckets and rehash
+// every interned string into it, freeing the old vector. Skips entirely while
+// the GC-state byte at global+0x15 is 2 (sweep-strings phase). Panics stand in
+// for luaM_toobig. Returns nothing (stock void; the binary leaks R0 and the
+// caller ignores it). Disasm 0x82eb00..0x82eb8e.
+pub unsafe fn stub_0x82eaf4(l: *mut LuaState, new_size: i32) {
+    let g = lw((&mut *l).raw_base(), 0x10 / 4) as *mut usize;
+    if lb(g, 0x15) == 2 {
+        // IDA 0x82eb00..0x82eb08.
+        return;
+    }
+    if ((new_size as u32).wrapping_add(1) >> 30) != 0 {
+        // IDA 0x82eb0a..0x82eb14: (new_size + 1) overflows 2^30 words.
+        stub_0x82bc90(l);
+    }
+    // IDA 0x82eb16..0x82eb20: new vector of new_size bucket words.
+    let new_hash = mm(l, std::ptr::null_mut(), 0, new_size as usize);
+    if new_size >= 1 {
+        // IDA 0x82eb32..0x82eb40 memset(new, 0, 4 * new_size).
+        std::ptr::write_bytes(new_hash, 0, new_size as usize);
+    }
+    // IDA 0x82eb44..0x82eb7c: rehash each old bucket chain by h & (new_size - 1).
+    let old_size = lw(g, 0x08 / 4);
+    let old_hash = lw(g, 0) as *mut usize;
+    if old_size >= 1 {
+        let mask = (new_size as u32).wrapping_sub(1);
+        for i in 0..old_size {
+            let mut node = lw(old_hash.add(i), 0) as *mut usize;
+            while !node.is_null() {
+                let next = lw(node, 0) as *mut usize;
+                let slot = new_hash.add((lw(node, 0x08 / 4) as u32 & mask) as usize); // +8 hash
+                sw(node, 0, lw(slot, 0));
+                sw(slot, 0, node as usize);
+                node = next;
+            }
+        }
+    }
+    // IDA 0x82eb7e..0x82eb86: free the old vector (nsize 0).
+    mm(l, old_hash, old_size, 0);
+    sw(g, 0x08 / 4, new_size as usize); // IDA 0x82eb8a strt.size
+    sw(g, 0, new_hash as usize); // IDA 0x82eb8e strt.hash
+}
+
+// Byte-compare of an interned string body (TString bytes at +0x10) against a
+// C buffer. Only the zero/nonzero distinction is used (IDA 0x82ebfa CMP/BNE),
+// like libc memcmp.
+unsafe fn tstr_body_eq(ts: *mut usize, s: *const u8, len: usize) -> bool {
+    for i in 0..len {
+        if lb(ts, 0x10 + i) != *s.add(i) {
+            return false;
+        }
+    }
+    true
 }
 
 // 0x82eb98 — __Z12luaS_newlstrP9lua_StatePKcm
 // type: int __fastcall(int, void *__s1, size_t __n)
 #[doc(alias = "luaS_newlstr(lua_State *,char const*,unsigned long)")]
-pub fn stub_0x82eb98() -> ! {
-    todo!("0x82eb98 __Z12luaS_newlstrP9lua_StatePKcm")
+// IDA 0x82eb98: intern a string: hash it (Lua 5.1 mix, kept in u32 so hashes
+// match the device), return the existing node on (length, body) equality
+// (refreshing dead-color bits), else allocate len + 17 C-bytes, copy + NUL it,
+// bucket-link it and grow the table while overfull. Callers guarantee a
+// non-empty table (as in C, where lmod(h, 0) would fault). Panics stand in for
+// luaM_toobig. Returns the TString block. Disasm 0x82eba0..0x82ec9e.
+pub unsafe fn stub_0x82eb98(l: *mut LuaState, s: *const u8, len: usize) -> *mut usize {
+    // IDA 0x82eba0..0x82ebcc: h = len; step = (len >> 5) + 1, mixed over
+    // str[l1 - 1] while (l1 -= step) >= step.
+    let mut h: u32 = len as u32;
+    let step = (len >> 5) + 1;
+    if step <= len {
+        let mut l1 = len;
+        loop {
+            h ^= (*s.add(l1 - 1) as u32)
+                .wrapping_add(h.wrapping_shl(5))
+                .wrapping_add(h >> 2);
+            l1 -= step;
+            if l1 < step {
+                break;
+            }
+        }
+    }
+    let g = lw((&mut *l).raw_base(), 0x10 / 4) as *mut usize;
+    let size = lw(g, 0x08 / 4) as u32;
+    let mask = size.wrapping_sub(1);
+    // IDA 0x82ebce..0x82ebfc: walk the h & mask bucket.
+    let hash = lw(g, 0) as *mut usize;
+    let mut node = lw(hash.add((h & mask) as usize), 0) as *mut usize;
+    loop {
+        if node.is_null() {
+            break; // IDA 0x82ebe6 -> alloc path
+        }
+        // IDA 0x82ebe8..0x82ebf6: length + memcmp.
+        if lw(node, 0x0C / 4) == len && tstr_body_eq(node, s, len) {
+            // IDA 0x82ebfe..0x82ec14: clear dead-color bits (x ^ 3 when set).
+            let marked = lb(node, 5);
+            if marked & !lb(g, 0x14) & 3 != 0 {
+                sb(node, 5, marked ^ 3);
+            }
+            return node; // IDA 0x82ec14
+        }
+        node = lw(node, 0) as *mut usize; // IDA 0x82ebe4 next
+    }
+    // IDA 0x82ec16..0x82ec22: len + 1 + 0x12 must not carry past 32 bits.
+    if (len as u64) + 1 + 0x12 > u32::MAX as u64 {
+        stub_0x82bc90(l);
+    }
+    let ts = mm(l, std::ptr::null_mut(), 0, (len + 17 + 3) / 4); // IDA 0x82ec26..0x82ec34
+    sw(ts, 0x08 / 4, h as usize); // IDA 0x82ec3c hash
+    sw(ts, 0x0C / 4, len); // IDA 0x82ec40 length
+    sb(ts, 5, lb(g, 0x14) & 3); // IDA 0x82ec44..0x82ec4e marked color
+    sb(ts, 4, 4); // IDA 0x82ec50..0x82ec52 tt = LUA_TSTRING
+    for i in 0..len {
+        sb(ts, 0x10 + i, *s.add(i)); // IDA 0x82ec54..0x82ec5c memcpy
+    }
+    sb(ts, 6, 0); // IDA 0x82ec58 reserved
+    sb(ts, 0x10 + len, 0); // IDA 0x82ec60..0x82ec64 NUL
+    // IDA 0x82ec68..0x82ec84: bucket-link, bump nuse, double while overfull.
+    let slot = hash.add((h & mask) as usize);
+    sw(ts, 0, lw(slot, 0));
+    sw(slot, 0, ts as usize);
+    let nuse = lw(g, 0x04 / 4) + 1;
+    sw(g, 0x04 / 4, nuse);
+    if nuse as u32 > size && size <= 0x3FFF_FFFE {
+        // IDA 0x82ec86..0x82ec94 guards; 0x82ec96..0x82ec9a resize(size * 2).
+        stub_0x82eaf4(l, (size * 2) as i32);
+    }
+    ts // IDA 0x82ec9e
 }
 
 // 0x82eca8 — __Z13luaS_newudataP9lua_StatemP5Table
 #[doc(alias = "luaS_newudata(lua_State *,unsigned long,Table *)")]
-pub fn stub_0x82eca8() -> ! {
-    todo!("0x82eca8 __Z13luaS_newudataP9lua_StatemP5Table")
+// IDA 0x82eca8: allocate a userdata block (size + 24 header C-bytes), stamp
+// tt = 7 with the current marked color, and link it into the global +0x68
+// list. Panics stand in for luaM_toobig. Returns the block.
+// Disasm 0x82ecb4..0x82ed00.
+pub unsafe fn stub_0x82eca8(l: *mut LuaState, size: u32, env: *mut usize) -> *mut usize {
+    if size >= 0xFFFF_FFE6 {
+        // IDA 0x82ecb4 CMN R5, #0x1A / 0x82ecba..0x82ecbe BLCS toobig.
+        stub_0x82bc90(l);
+    }
+    let u = mm(l, std::ptr::null_mut(), 0, (size as usize + 24 + 3) / 4); // IDA 0x82ecc2..0x82ecd0
+    let g = lw((&mut *l).raw_base(), 0x10 / 4) as *mut usize; // IDA 0x82ecd4
+    sb(u, 5, lb(g, 0x14) & 3); // IDA 0x82ecd6..0x82ecdc marked color
+    sb(u, 4, 7); // IDA 0x82ecde..0x82ece0 tt = LUA_TUSERDATA
+    sw(u, 2, 0); // IDA 0x82ece2..0x82ece4 +8
+    sw(u, 3, env as usize); // IDA 0x82ece8 +0xC metatable/env
+    sw(u, 4, size as usize); // IDA 0x82ecea +0x10 len
+    sb(u, 0x14, 1); // IDA 0x82ecec
+    // IDA 0x82ecee..0x82ecfa: push to the list anchored at [global+0x68]
+    // (two levels: the anchor cell's word 0 is the head).
+    let anchor = lw(g, 0x68 / 4) as *mut usize;
+    sw(u, 0, lw(anchor, 0));
+    sw(anchor, 0, u as usize);
+    u // IDA 0x82ed00
 }
-
 // 0x82edcc — __Z14luaopen_stringP9lua_State
 #[doc(alias = "luaopen_string(lua_State *)")]
 pub fn stub_0x82edcc() -> ! {
@@ -906,8 +1403,11 @@ pub fn stub_0x82f080() -> ! {
 
 // 0x82f4b4 — __ZL11gfind_nodefP9lua_State
 #[doc(alias = "gfind_nodef(lua_State *)")]
-pub fn stub_0x82f4b4() -> ! {
-    todo!("0x82f4b4 __ZL11gfind_nodefP9lua_State")
+// IDA 0x82f4b4: the removed `string.gfind` entry, kept only to report its
+// rename. Disasm is a bare luaL_error call (0x82f4b6..0x82f4c2); noreturn in
+// the original (longjmp), so a panic plays that role here, as elsewhere.
+pub unsafe fn stub_0x82f4b4(_l: *mut LuaState) -> ! {
+    panic!("'string.gfind' was renamed to 'string.gmatch'");
 }
 
 // 0x82f4c8 — __ZL6gmatchP9lua_State
@@ -1270,6 +1770,231 @@ mod lua_aux_tests {
                 lua_pushinteger(&mut l as *mut LuaState, 1);
             }
             stub_0x82b938(&mut l as *mut LuaState);
+        }
+    }
+}
+
+#[cfg(test)]
+mod state_tests {
+    use super::*;
+
+    const WS: usize = std::mem::size_of::<usize>();
+    // Global-state scratch: covers the largest global offset used (tmname[16]
+    // at +232 in luaT_init, IDA 0x831836..0x83183e).
+    fn blank_global() -> [usize; 64] {
+        [0; 64]
+    }
+    fn state_with_global(g: &mut [usize; 64]) -> LuaState {
+        let mut l = LuaState::new();
+        l.raw[0x10 / 4] = g.as_mut_ptr() as usize; // +0x10 l_G
+        l
+    }
+    // Scratch thread block with stacks laid out, for stack-word consumers.
+    // Returns (words, ci, stack) with words kept alive by the caller.
+    unsafe fn laid_out_thread(l: *mut LuaState, words: &mut [usize; 16]) -> (*mut usize, *mut usize) {
+        stub_0x82e000(words.as_mut_ptr(), l);
+        (lw(words.as_mut_ptr(), 10) as *mut usize, lw(words.as_mut_ptr(), 8) as *mut usize)
+    }
+
+    #[test]
+    #[should_panic(expected = "renamed to 'string.gmatch'")]
+    fn gfind_reports_rename() {
+        unsafe {
+            let mut l = LuaState::new();
+            stub_0x82f4b4(&mut l as *mut LuaState);
+        }
+    }
+
+    #[test]
+    fn stack_init_lays_out_vectors() {
+        unsafe {
+            let mut l = LuaState::new();
+            let mut th = [0usize; 16];
+            let (ci, stack) = laid_out_thread(&mut l as *mut LuaState, &mut th);
+            assert!(!ci.is_null() && !stack.is_null());
+            // IDA 0x82e016..0x82e022: 8 CallInfos, end = base + 7 * 24B.
+            assert_eq!(th[0x28 / 4], ci as usize);
+            assert_eq!(th[0x14 / 4], ci as usize);
+            assert_eq!(th[0x30 / 4], 8);
+            assert_eq!(th[0x24 / 4], (ci as usize).wrapping_add(0xA8 * CB));
+            // IDA 0x82e032..0x82e03c: 45 stack slots, last = stack + 468B.
+            assert_eq!(th[0x20 / 4], stack as usize);
+            assert_eq!(th[0x2C / 4], 45);
+            assert_eq!(th[0x1C / 4], (stack as usize).wrapping_add(0x1D4 * CB));
+            // IDA 0x82e03e..0x82e058: func = stack, one nil pushed, base/top set.
+            let top = th[0x08 / 4];
+            assert_eq!(top, (stack as usize).wrapping_add(12 * CB));
+            assert_eq!(lw(ci, 1), stack as usize);
+            assert_eq!(lb(stack, 8), 0);
+            assert_eq!(lw(ci, 0), top);
+            assert_eq!(th[0x0C / 4], top);
+            assert_eq!(lw(ci, 2), top.wrapping_add(0xF0 * CB));
+            // Allocator saw both vectors in host words.
+            assert_eq!(l.total_bytes(), (48 + 135) * WS);
+            // freestack releases both: IDA 0x82e094 frees 24*size_ci + 12*size.
+            stub_0x82e094(&mut l as *mut LuaState, th.as_mut_ptr());
+            assert_eq!(l.total_bytes(), 0);
+        }
+    }
+
+    #[test]
+    fn growstack_doubles_and_preserves_top() {
+        unsafe {
+            let mut g = blank_global();
+            let mut l = state_with_global(&mut g);
+            let mut th = [0usize; 16];
+            let (_ci, stack) = laid_out_thread(&mut l as *mut LuaState, &mut th);
+            // Point L's own words at the laid-out stack (pushstr's view of L).
+            l.raw[0x20 / 4] = stack as usize;
+            l.raw[0x2C / 4] = th[0x2C / 4];
+            l.raw[0x08 / 4] = th[0x08 / 4];
+            l.raw[0x0C / 4] = th[0x0C / 4];
+            l.raw[0x1C / 4] = th[0x1C / 4];
+            l.raw[0x28 / 4] = th[0x28 / 4];
+            l.raw[0x14 / 4] = th[0x14 / 4];
+            let top_off = th[0x08 / 4].wrapping_sub(stack as usize);
+            luaD_growstack(&mut l as *mut LuaState, 1);
+            // IDA 0x828870 path: single reallocstack(2 * 45) -> realsize 96.
+            assert_eq!(l.raw[0x2C / 4], 96);
+            let stack2 = l.raw[0x20 / 4];
+            assert_eq!(l.raw[0x08 / 4].wrapping_sub(stack2), top_off);
+            assert_eq!(l.total_bytes(), (48 + 288) * WS);
+        }
+    }
+
+    #[test]
+    fn resize_rehashes_and_newlstr_interns() {
+        unsafe {
+            let mut g = blank_global();
+            let mut l = state_with_global(&mut g);
+            stub_0x82eaf4(&mut l as *mut LuaState, 32);
+            assert_eq!(g[0x08 / 4], 32);
+            assert_ne!(g[0], 0);
+            assert_eq!(l.total_bytes(), 32 * WS);
+            let c = |s: &str| (s.as_ptr(), s.len());
+            let (p, n) = c("hello");
+            let a = stub_0x82eb98(&mut l as *mut LuaState, p, n);
+            let b = stub_0x82eb98(&mut l as *mut LuaState, p, n);
+            assert_eq!(a, b, "interned strings dedupe");
+            assert_eq!(g[0x04 / 4], 1);
+            let (q, m) = c("world");
+            let d = stub_0x82eb98(&mut l as *mut LuaState, q, m);
+            assert_ne!(d, a);
+            assert_eq!(g[0x04 / 4], 2);
+            // Header: tag, length, hash lane, body bytes, NUL.
+            assert_eq!(lb(a, 4), 4);
+            assert_eq!(lw(a, 3), 5);
+            for (i, &ch) in b"hello".iter().enumerate() {
+                assert_eq!(lb(a, 0x10 + i), ch);
+            }
+            assert_eq!(lb(a, 0x10 + 5), 0);
+            assert_eq!(l.total_bytes(), (32 + 6 + 6) * WS);
+        }
+    }
+
+    #[test]
+    fn newthread_shares_global_and_copies_hooks() {
+        unsafe {
+            let mut g = blank_global();
+            let mut l = state_with_global(&mut g);
+            l.raw[0x48 / 4] = 0x1111;
+            l.raw[0x4C / 4] = 0x2222;
+            l.raw[0x50 / 4] = 0x3333;
+            l.raw[0x38 / 4] = 0x44;
+            l.raw[0x3C / 4] = 0x5555;
+            l.raw[0x44 / 4] = 0x6666;
+            let th = stub_0x82df78(&mut l as *mut LuaState);
+            assert_eq!(lw(th, 0x10 / 4), g.as_mut_ptr() as usize);
+            assert_eq!(lw(th, 0x74 / 4), 0x2222);
+            assert_eq!(lw(th, 0x70 / 4), 0x1111);
+            assert_eq!(lw(th, 0x78 / 4), 0x3333);
+            assert_eq!(lb(th, 0x60), 0x44);
+            assert_eq!(lw(th, 0x64 / 4), 0x5555);
+            assert_eq!(lw(th, 0x6C / 4), 0x6666);
+            assert_eq!(lw(th, 0x68 / 4), 0x5555);
+            assert_eq!(lb(th, 0x39), 1);
+            assert_ne!(lw(th, 0x28 / 4), 0); // base_ci allocated by stack_init
+            assert_eq!(l.total_bytes(), (38 + 48 + 135) * WS);
+        }
+    }
+
+    #[test]
+    fn newudata_stamps_and_links() {
+        unsafe {
+            let mut g = blank_global();
+            let mut l = state_with_global(&mut g);
+            let env = 0x1234 as *mut usize;
+            // List anchored at [global+0x68] (IDA 0x82ecee..0x82ecfa).
+            let mut anchor = [0usize; 1];
+            g[0x68 / 4] = anchor.as_mut_ptr() as usize;
+            let u = stub_0x82eca8(&mut l as *mut LuaState, 16, env);
+            assert_eq!(lb(u, 4), 7);
+            assert_eq!(lb(u, 5) & 3, 0);
+            assert_eq!(lw(u, 2), 0);
+            assert_eq!(lw(u, 3), env as usize);
+            assert_eq!(lw(u, 4), 16);
+            assert_eq!(lb(u, 0x14), 1);
+            assert_eq!(lw(u, 0), 0);
+            assert_eq!(anchor[0], u as usize);
+            let v = stub_0x82eca8(&mut l as *mut LuaState, 8, std::ptr::null_mut());
+            assert_eq!(lw(v, 0), u as usize);
+            assert_eq!(anchor[0], v as usize);
+            assert_eq!(l.total_bytes(), (10 + 8) * WS);
+        }
+    }
+
+    #[test]
+    #[should_panic(expected = "block too big")]
+    fn newudata_rejects_huge() {
+        unsafe {
+            let mut g = blank_global();
+            let mut l = state_with_global(&mut g);
+            stub_0x82eca8(&mut l as *mut LuaState, 0xFFFF_FFE6, std::ptr::null_mut());
+        }
+    }
+
+    #[test]
+    fn pushstr_pushes_tagged_slot() {
+        unsafe {
+            let mut g = blank_global();
+            let mut l = state_with_global(&mut g);
+            stub_0x82eaf4(&mut l as *mut LuaState, 32);
+            let mut th = [0usize; 16];
+            let (_ci, _stack) = laid_out_thread(&mut l as *mut LuaState, &mut th);
+            for w in [0x20usize, 0x2C, 0x08, 0x0C, 0x1C, 0x28, 0x14] {
+                l.raw[w / 4] = th[w / 4];
+            }
+            let before = l.raw[0x08 / 4];
+            let top = stub_0x82c064(&mut l as *mut LuaState, b"hi\0".as_ptr());
+            assert_eq!(top as usize, before.wrapping_add(12 * CB));
+            assert_eq!(l.raw[0x08 / 4], top as usize);
+            let slot = (top as usize).wrapping_sub(12 * CB) as *mut usize;
+            assert_eq!(lw(slot, 2), 4);
+            let ts = lw(slot, 0) as *mut usize;
+            assert_eq!(lb(ts, 4), 4);
+            assert_eq!(stub_0x82eb98(&mut l as *mut LuaState, b"hi".as_ptr(), 2), ts);
+        }
+    }
+
+    #[test]
+    fn f_luaopen_builds_state() {
+        unsafe {
+            let mut g = blank_global();
+            g[0x44 / 4] = 100; // estimate
+            let mut l = state_with_global(&mut g);
+            stub_0x82e1e4(&mut l as *mut LuaState);
+            assert_ne!(l.raw[0x48 / 4], 0); // globals table
+            assert_eq!(l.raw[0x50 / 4], 5);
+            assert_ne!(g[0x5C / 4], 0); // registry
+            assert_eq!(g[0x64 / 4], 5);
+            assert_eq!(g[0x40 / 4], 400); // threshold = 4 * estimate
+            // 17 + 21 + 1 strings overfill 32 buckets -> doubled to 64.
+            assert_eq!(g[0x08 / 4], 64);
+            assert_eq!(g[0x04 / 4], 39);
+            // The pinned message resolves to the interned node.
+            let again = stub_0x82eb98(&mut l as *mut LuaState, b"not enough memory".as_ptr(), 17);
+            assert_eq!(lb(again, 5) & 0x20, 0x20);
+            assert!(l.total_bytes() > 0);
         }
     }
 }
