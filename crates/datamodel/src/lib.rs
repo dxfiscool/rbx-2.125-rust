@@ -709,3 +709,4 @@ pub mod generated_watchdog_dm_wdb;
 pub mod generated_watchdog_dm_wda;
 pub mod generated_watchdog_dm_wdc;
 pub mod generated_watchdog_dm_wdZ;
+pub mod generated_watchdog_dm_wdZB;
