@@ -446,3 +446,4 @@ pub mod generated_watchdog_net_w11;
 pub mod generated_watchdog_net_w12;
 pub mod generated_watchdog_network_w12b;
 pub mod generated_watchdog_network_w13a;
+pub mod generated_network_next115;
