@@ -465,3 +465,4 @@ pub mod generated_watchdog_net_wdH;
 pub mod generated_watchdog_net_wdI;
 pub mod generated_watchdog_net_wdJ;
 pub mod generated_watchdog_net_wdK;
+pub mod generated_watchdog_net_wdL;
