@@ -652,3 +652,5 @@ pub mod generated_506;
 pub mod generated_507;
 pub mod generated_watchdog_rend_wdA;
 pub mod generated_watchdog_rend_wdB;
+pub mod generated_watchdog_rend_wdb;
+pub mod generated_watchdog_rend_wda;
