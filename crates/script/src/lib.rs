@@ -346,3 +346,4 @@ pub mod generated_wdog_script2;
 pub mod generated_script_wdog3_1788396356;
 pub mod generated_wdog_script3;
 pub mod generated_watchdog_script_w6;
+pub mod generated_watchdog_script_w8;
