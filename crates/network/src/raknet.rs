@@ -8422,14 +8422,16 @@ pub fn stub_9a10c4() -> ! {
 
 // 0x9a19f8 — __ZN3RBX7Network18ReceiverDictionaryISsE10setDefaultERSs
 #[doc(alias = "RBX::Network::ReceiverDictionary<std::string>::setDefault(std::string &)")]
-pub fn stub_9a19f8() -> ! {
-    todo!("0x9a19f8 RBX::Network::ReceiverDictionary<std::string>::setDefault(std::string &)")
+pub fn stub_9a19f8(out: &mut String) {
+    // IDA 0x9a19f8: `_M_mutate` erasing the whole string.
+    crate::string_dictionary::ReceiverDictionary::set_default(out);
 }
 
 // 0x9a1a0c — __ZN3RBX7Network24ReceiverStringDictionary5learnEhRKSs
 #[doc(alias = "RBX::Network::ReceiverStringDictionary::learn(unsigned char,std::string const&)")]
-pub fn stub_9a1a0c() -> ! {
-    todo!("0x9a1a0c RBX::Network::ReceiverStringDictionary::learn(unsigned char,std::string const&)")
+pub fn stub_9a1a0c(dict: &mut crate::string_dictionary::ReceiverStringDictionary, slot: u8, s: &str) {
+    // IDA 0x9a1a0c: `assign(this + 4 * slot, s)` plus the validated `"a" + s + "s"` hash.
+    dict.learn(slot, s);
 }
 
 // 0x9a1d80 — __ZN3RBX7Network24ReceiverStringDictionary3getEhRSs

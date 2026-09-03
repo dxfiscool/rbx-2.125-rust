@@ -199,36 +199,54 @@ pub fn stub_9a10c4() -> ! {
 // 0x9a1930 — __ZN3RBX7Network16SenderDictionaryIPKNS_4NameEE4sendERN6RakNet9BitStreamES4_
 // type: unsigned int __fastcall(int, RakNet::BitStream *this, int)
 #[doc(alias = "RBX::Network::SenderDictionary<RBX::Name const*>::send(RakNet::BitStream &,RBX::Name const*)")]
-pub fn stub_9a1930() -> ! {
-    todo!("0x9a1930 __ZN3RBX7Network16SenderDictionaryIPKNS_4NameEE4sendERN6RakNet9BitStreamES4_")
+pub fn stub_9a1930(
+    dict: &mut crate::string_dictionary::NameSenderDictionary,
+    stream: &mut crate::bitstream::BitStream,
+    id: usize,
+    text: &str,
+) {
+    // IDA 0x9a1930..0x9a19ca: emplace-or-recall into the Name-keyed map with the `next % 127 + 1` rotation.
+    dict.send(stream, id, text);
 }
 
 // 0x9a19f8 — __ZN3RBX7Network18ReceiverDictionaryISsE10setDefaultERSs
 // type: int __fastcall(std::string *)
 #[doc(alias = "RBX::Network::ReceiverDictionary<std::string>::setDefault(std::string &)")]
-pub fn stub_9a19f8() -> ! {
-    todo!("0x9a19f8 __ZN3RBX7Network18ReceiverDictionaryISsE10setDefaultERSs")
+pub fn stub_9a19f8(out: &mut String) {
+    // IDA 0x9a19f8: `_M_mutate` erasing the whole string.
+    crate::string_dictionary::ReceiverDictionary::set_default(out);
 }
 
 // 0x9a1a0c — __ZN3RBX7Network24ReceiverStringDictionary5learnEhRKSs
 // type: void __fastcall(RBX::Network::ReceiverStringDictionary *this, int, const std::string *)
 #[doc(alias = "RBX::Network::ReceiverStringDictionary::learn(unsigned char,std::string const&)")]
-pub fn stub_9a1a0c() -> ! {
-    todo!("0x9a1a0c __ZN3RBX7Network24ReceiverStringDictionary5learnEhRKSs")
+pub fn stub_9a1a0c(dict: &mut crate::string_dictionary::ReceiverStringDictionary, slot: u8, s: &str) {
+    // IDA 0x9a1a0c: `assign(this + 4 * slot, s)` plus the validated `"a" + s + "s"` hash.
+    dict.learn(slot, s);
 }
 
 // 0x9a1d80 — __ZN3RBX7Network24ReceiverStringDictionary3getEhRSs
 // type: int __fastcall(RBX::Network::ReceiverStringDictionary *this, int, std::string *)
 #[doc(alias = "RBX::Network::ReceiverStringDictionary::get(unsigned char,std::string &)")]
-pub fn stub_9a1d80() -> ! {
-    todo!("0x9a1d80 __ZN3RBX7Network24ReceiverStringDictionary3getEhRSs")
+pub fn stub_9a1d80(
+    dict: &crate::string_dictionary::ReceiverStringDictionary,
+    slot: u8,
+    out: &mut String,
+) -> bool {
+    // IDA 0x9a1d80: recall the slot, then the hash check — mismatch clears `out` and returns false.
+    dict.get(slot, out)
 }
 
 // 0x9a2160 — __ZN3RBX7Network22SharedStringDictionary15serializeStringERKSsRN6RakNet9BitStreamE
 // type: int __fastcall(RBX::Network::SharedStringDictionary *this, const std::string *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::SharedStringDictionary::serializeString(std::string const&,RakNet::BitStream &)")]
-pub fn stub_9a2160() -> ! {
-    todo!("0x9a2160 __ZN3RBX7Network22SharedStringDictionary15serializeStringERKSsRN6RakNet9BitStreamE")
+pub fn stub_9a2160(
+    dict: &mut crate::string_dictionary::SharedStringDictionary,
+    s: &str,
+    stream: &mut crate::bitstream::BitStream,
+) {
+    // IDA 0x9a2160: tail-calls `SenderDictionary<std::string>::send`.
+    dict.serialize_string(s, stream);
 }
 
 // 0x9a2170 — __ZN3RBX7Network22SharedStringDictionary15serializeStringERKNS_10Reflection13ConstPropertyERN6RakNet9BitStreamE
@@ -241,8 +259,13 @@ pub fn stub_9a2170() -> ! {
 // 0x9a2294 — __ZN3RBX7Network22SharedStringDictionary17deserializeStringERSsRN6RakNet9BitStreamE
 // type: int __fastcall(RBX::Network::SharedStringDictionary *this, std::string *, RakNet::BitStream *)
 #[doc(alias = "RBX::Network::SharedStringDictionary::deserializeString(std::string &,RakNet::BitStream &)")]
-pub fn stub_9a2294() -> ! {
-    todo!("0x9a2294 __ZN3RBX7Network22SharedStringDictionary17deserializeStringERSsRN6RakNet9BitStreamE")
+pub fn stub_9a2294(
+    dict: &mut crate::string_dictionary::SharedStringDictionary,
+    out: &mut String,
+    stream: &mut crate::bitstream::BitStream,
+) -> bool {
+    // IDA 0x9a2294: tail-calls `ReceiverStringDictionary::receive` on the +540 sub-object.
+    dict.deserialize_string(out, stream)
 }
 
 // 0x9a22a8 — __ZN3RBX7Network22SharedStringDictionary17deserializeStringERNS_10Reflection8PropertyERN6RakNet9BitStreamE

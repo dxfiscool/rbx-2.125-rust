@@ -476,3 +476,4 @@ pub mod item;
 pub mod physics;
 pub mod server;
 pub mod string_dictionary;
+pub mod id_serializer;
