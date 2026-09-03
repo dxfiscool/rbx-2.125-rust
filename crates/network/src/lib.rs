@@ -466,3 +466,4 @@ pub mod generated_watchdog_net_wdI;
 pub mod generated_watchdog_net_wdJ;
 pub mod generated_watchdog_net_wdK;
 pub mod generated_watchdog_net_wdL;
+pub mod generated_watchdog_net_wdM;
