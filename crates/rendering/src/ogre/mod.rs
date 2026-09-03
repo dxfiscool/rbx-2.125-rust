@@ -31299,10 +31299,43 @@ pub enum PolygonMode {
     #[default]
     Solid = 3,
 }
+/// was: `Ogre::FogMode` (FOG_NONE..FOG_LINEAR).
+#[doc(alias = "Ogre::FogMode")]
+#[repr(u32)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum FogMode {
+    #[default]
+    None = 0,
+    Exp = 1,
+    Exp2 = 2,
+    Linear = 3,
+}
+
+/// was: `Ogre::ColourValue` — four packed floats (r, g, b, a).
+#[doc(alias = "Ogre::ColourValue")]
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, PartialEq)]
+pub struct ColourValue {
+    pub r: f32,
+    pub g: f32,
+    pub b: f32,
+    pub a: f32,
+}
+
+/// was: `Ogre::Light::LightTypes` (LT_POINT..LT_SPOTLIGHT).
+#[doc(alias = "Ogre::Light::LightTypes")]
+#[repr(u32)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum LightTypes {
+    #[default]
+    Point = 0,
+    Directional = 1,
+    Spot = 2,
+}
 
 /// was: `Ogre::Pass` — render-state block for one pass of a technique.
 /// Models only the field window observed in the implemented leaves
-/// (byte offsets 0x60..0xc0); the rest of the C++ object is opaque.
+/// (byte offsets 0x60..0xe4 with holes); the rest of the C++ object is opaque.
 #[doc(alias = "Ogre::Pass")]
 #[repr(C)]
 #[derive(Clone, Debug)]
@@ -31329,7 +31362,12 @@ pub struct Pass {
     _opaque_0x7f: [u8; 0x01],
     /// +0x80 depth compare function.
     pub depth_function: CompareFunction,
-    _opaque_0x84: [u8; 0x0C],
+    /// +0x84 constant depth bias.
+    pub depth_bias_constant: f32,
+    /// +0x88 slope-scale depth bias.
+    pub depth_bias_slope_scale: f32,
+    /// +0x8c per-iteration depth bias offset.
+    pub iteration_depth_bias: f32,
     /// +0x90 colour write enable.
     pub colour_write_enabled: bool,
     _opaque_0x91: [u8; 0x03],
@@ -31354,16 +31392,36 @@ pub struct Pass {
     pub max_simultaneous_lights: u16,
     /// +0xa8 start light index.
     pub start_light: u16,
-    _opaque_0xaa: [u8; 0x02],
+    /// +0xaa iterate once per light.
+    pub iterate_per_light: bool,
+    _opaque_0xab: [u8; 0x01],
     /// +0xac light count per iteration.
     pub light_count_per_iteration: u16,
-    _opaque_0xae: [u8; 0x06],
+    /// +0xae run only for a single light type.
+    pub run_only_for_one_light_type: bool,
+    _opaque_0xaf: [u8; 0x01],
+    /// +0xb0 the single light type when running for one type.
+    pub only_light_type: LightTypes,
     /// +0xb4 light mask.
     pub light_mask: u32,
     /// +0xb8 shading mode.
     pub shading_mode: ShadeOptions,
     /// +0xbc polygon mode.
     pub polygon_mode: PolygonMode,
+    _opaque_0xc0: [u8; 0x02],
+    /// +0xc2 scene fog override.
+    pub fog_override: bool,
+    _opaque_0xc3: [u8; 0x01],
+    /// +0xc4 fog mode.
+    pub fog_mode: FogMode,
+    /// +0xc8 fog colour.
+    pub fog_colour: ColourValue,
+    /// +0xd8 linear fog start.
+    pub fog_start: f32,
+    /// +0xdc linear fog end.
+    pub fog_end: f32,
+    /// +0xe0 exponential fog density.
+    pub fog_density: f32,
 }
 impl Default for Pass {
     fn default() -> Self {
@@ -31381,7 +31439,9 @@ impl Default for Pass {
             depth_write_enabled: false,
             _opaque_0x7f: [0; 0x01],
             depth_function: CompareFunction::default(),
-            _opaque_0x84: [0; 0x0C],
+            depth_bias_constant: 0.0,
+            depth_bias_slope_scale: 0.0,
+            iteration_depth_bias: 0.0,
             colour_write_enabled: false,
             _opaque_0x91: [0; 0x03],
             alpha_reject_function: CompareFunction::default(),
@@ -31395,12 +31455,23 @@ impl Default for Pass {
             _opaque_0xa5: [0; 0x01],
             max_simultaneous_lights: 0,
             start_light: 0,
-            _opaque_0xaa: [0; 0x02],
+            iterate_per_light: false,
+            _opaque_0xab: [0; 0x01],
             light_count_per_iteration: 0,
-            _opaque_0xae: [0; 0x06],
+            run_only_for_one_light_type: false,
+            _opaque_0xaf: [0; 0x01],
+            only_light_type: LightTypes::default(),
             light_mask: 0,
             shading_mode: ShadeOptions::default(),
             polygon_mode: PolygonMode::default(),
+            _opaque_0xc0: [0; 0x02],
+            fog_override: false,
+            _opaque_0xc3: [0; 0x01],
+            fog_mode: FogMode::default(),
+            fog_colour: ColourValue::default(),
+            fog_start: 0.0,
+            fog_end: 0.0,
+            fog_density: 0.0,
         }
     }
 }
@@ -31591,11 +31662,87 @@ impl Pass {
     pub fn manual_culling_mode(&self) -> ManualCullingMode {
         self.manual_culling_mode
     }
+    // IDA 0xd4bf7c: STRB.W R1,[R0,#0xAA]; STRB.W R2,[R0,#0xAE]; STR.W R3,[R0,#0xB0]; BX LR.
+    // Original returns `this` in R0; semantically a void setter.
+    pub fn set_iterate_per_light(&mut self, iterate: bool, run_only_for_one_type: bool, only_type: LightTypes) {
+        self.iterate_per_light = iterate;
+        self.run_only_for_one_light_type = run_only_for_one_type;
+        self.only_light_type = only_type;
+    }
+    // IDA 0xd4bfbc: STRB.W R1,[R0,#0xC2]; CMP R1,#1 / BXNE LR; STR.W R2,[R0,#0xC4];
+    // VST1 colour,[R0,#0xC8]; VSTR start,[R0,#0xD8]; VSTR end,[R0,#0xDC]; VSTR density,[R0,#0xE0]; BX LR.
+    // The mode/colour/range stores only happen for override == 1 (bool; identical to `if`).
+    // Original returns `this` in R0; semantically a void setter.
+    pub fn set_fog(
+        &mut self,
+        override_scene: bool,
+        mode: FogMode,
+        colour: &ColourValue,
+        exp_density: f32,
+        linear_start: f32,
+        linear_end: f32,
+    ) {
+        self.fog_override = override_scene;
+        if override_scene {
+            self.fog_mode = mode;
+            self.fog_colour = *colour;
+            self.fog_start = linear_start;
+            self.fog_end = linear_end;
+            self.fog_density = exp_density;
+        }
+    }
+    // IDA 0xd4bff0: LDRB.W R0,[R0,#0xC2]; BX LR.
+    pub fn fog_override(&self) -> bool {
+        self.fog_override
+    }
+    // IDA 0xd4bff8: LDR.W R0,[R0,#0xC4]; BX LR.
+    pub fn fog_mode(&self) -> FogMode {
+        self.fog_mode
+    }
+    // IDA 0xd4c000: ADDS R0,#0xC8; BX LR.
+    pub fn fog_colour(&self) -> &ColourValue {
+        &self.fog_colour
+    }
+    // IDA 0xd4c004: LDR.W R0,[R0,#0xD8]; BX LR.
+    pub fn fog_start(&self) -> f32 {
+        self.fog_start
+    }
+    // IDA 0xd4c00c: LDR.W R0,[R0,#0xDC]; BX LR.
+    pub fn fog_end(&self) -> f32 {
+        self.fog_end
+    }
+    // IDA 0xd4c014: LDR.W R0,[R0,#0xE0]; BX LR.
+    pub fn fog_density(&self) -> f32 {
+        self.fog_density
+    }
+    // IDA 0xd4c01c: MOV R3,R2; MOV R2,R1; STRD.W R2,R3,[R0,#0x84]; BX LR.
+    // Original returns `this` in R0; semantically a void setter.
+    pub fn set_depth_bias(&mut self, constant: f32, slope_scale: f32) {
+        self.depth_bias_constant = constant;
+        self.depth_bias_slope_scale = slope_scale;
+    }
+    // IDA 0xd4c028: LDR.W R0,[R0,#0x84]; BX LR.
+    pub fn depth_bias_constant(&self) -> f32 {
+        self.depth_bias_constant
+    }
+    // IDA 0xd4c030: LDR.W R0,[R0,#0x88]; BX LR.
+    pub fn depth_bias_slope_scale(&self) -> f32 {
+        self.depth_bias_slope_scale
+    }
+    // IDA 0xd4c038: STR.W R1,[R0,#0x8C]; BX LR.
+    // Original returns `this` in R0; semantically a void setter.
+    pub fn set_iteration_depth_bias(&mut self, bias: f32) {
+        self.iteration_depth_bias = bias;
+    }
+    // IDA 0xd4c040: LDR.W R0,[R0,#0x8C]; BX LR.
+    pub fn iteration_depth_bias(&self) -> f32 {
+        self.iteration_depth_bias
+    }
 }
 
 #[cfg(test)]
 mod pass_tests {
-    use super::{CompareFunction, CullingMode, ManualCullingMode, Pass, PolygonMode, SceneBlendFactor, SceneBlendOperation, ShadeOptions};
+    use super::{ColourValue, CompareFunction, CullingMode, FogMode, LightTypes, ManualCullingMode, Pass, PolygonMode, SceneBlendFactor, SceneBlendOperation, ShadeOptions};
 
     #[test]
     fn blend_operation_setters_clear_and_set_separate_flag() {
@@ -31694,5 +31841,37 @@ mod pass_tests {
         assert_eq!(p.light_mask(), 0x00ff_0001);
         assert_eq!(p.shading_mode(), ShadeOptions::Phong);
         assert_eq!(p.polygon_mode(), PolygonMode::Wireframe);
+    }
+
+    #[test]
+    fn fog_override_gates_mode_colour_and_range() {
+        let mut p = Pass::default();
+        let colour = ColourValue { r: 0.1, g: 0.2, b: 0.3, a: 1.0 };
+        // override == false stores only the flag (CMP R1,#1 / BXNE LR).
+        p.set_fog(false, FogMode::Linear, &colour, 0.5, 10.0, 100.0);
+        assert!(!p.fog_override());
+        assert_eq!(p.fog_mode(), FogMode::None);
+        assert_eq!(p.fog_start(), 0.0);
+        p.set_fog(true, FogMode::Linear, &colour, 0.5, 10.0, 100.0);
+        assert!(p.fog_override());
+        assert_eq!(p.fog_mode(), FogMode::Linear);
+        assert_eq!(p.fog_colour(), &colour);
+        assert_eq!(p.fog_start(), 10.0);
+        assert_eq!(p.fog_end(), 100.0);
+        assert_eq!(p.fog_density(), 0.5);
+    }
+
+    #[test]
+    fn depth_bias_and_iterate_per_light_round_trip() {
+        let mut p = Pass::default();
+        p.set_depth_bias(2.0, 0.5);
+        p.set_iteration_depth_bias(1.25);
+        p.set_iterate_per_light(true, true, LightTypes::Spot);
+        assert_eq!(p.depth_bias_constant(), 2.0);
+        assert_eq!(p.depth_bias_slope_scale(), 0.5);
+        assert_eq!(p.iteration_depth_bias(), 1.25);
+        assert!(p.iterate_per_light);
+        assert!(p.run_only_for_one_light_type);
+        assert_eq!(p.only_light_type, LightTypes::Spot);
     }
 }

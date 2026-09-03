@@ -6,7 +6,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
-use crate::ogre::{CompareFunction, CullingMode, ManualCullingMode, Pass, PolygonMode, SceneBlendOperation, ShadeOptions};
+use crate::ogre::{ColourValue, CompareFunction, CullingMode, FogMode, LightTypes, ManualCullingMode, Pass, PolygonMode, SceneBlendOperation, ShadeOptions};
 
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
@@ -315,8 +315,8 @@ pub fn stub_0xd4bf74(pass: &Pass) -> u16 {
 #[doc(alias = "Ogre::Pass::setIteratePerLight(bool,bool,Ogre::Light::LightTypes)")]
 #[doc(alias = "__ZN4Ogre4Pass18setIteratePerLightEbbNS_5Light10LightTypesE")]
 // was: Ogre::Pass::setIteratePerLight(bool,bool,Ogre::Light::LightTypes)
-pub fn stub_0xd4bf7c() -> ! {
-    todo!("0xd4bf7c Ogre::Pass::setIteratePerLight(bool,bool,Ogre::Light::LightTypes)")
+pub fn stub_0xd4bf7c(pass: &mut Pass, iterate: bool, run_only_for_one_type: bool, only_type: LightTypes) {
+    pass.set_iterate_per_light(iterate, run_only_for_one_type, only_type) // IDA 0xd4bf7c: STRB.W R1,[R0,#0xAA]; STRB.W R2,[R0,#0xAE]; STR.W R3,[R0,#0xB0]
 }
 
 // 0xd4bf8c — __ZN4Ogre4Pass14setShadingModeENS_12ShadeOptionsE
@@ -376,8 +376,8 @@ pub fn stub_0xd4bfb4(pass: &Pass) -> ManualCullingMode {
 #[doc(alias = "Ogre::Pass::setFog(bool,Ogre::FogMode,Ogre::ColourValue const&,float,float,float)")]
 #[doc(alias = "__ZN4Ogre4Pass6setFogEbNS_7FogModeERKNS_11ColourValueEfff")]
 // was: Ogre::Pass::setFog(bool,Ogre::FogMode,Ogre::ColourValue const&,float,float,float)
-pub fn stub_0xd4bfbc() -> ! {
-    todo!("0xd4bfbc Ogre::Pass::setFog(bool,Ogre::FogMode,Ogre::ColourValue const&,float,float,float)")
+pub fn stub_0xd4bfbc(pass: &mut Pass, override_scene: bool, mode: FogMode, colour: &ColourValue, exp_density: f32, linear_start: f32, linear_end: f32) {
+    pass.set_fog(override_scene, mode, colour, exp_density, linear_start, linear_end) // IDA 0xd4bfbc: STRB.W R1,[R0,#0xC2]; CMP R1,#1 / BXNE LR; STR.W R2,[R0,#0xC4]; VST1 colour,[R0,#0xC8]; VSTR start,[R0,#0xD8]; VSTR end,[R0,#0xDC]; VSTR density,[R0,#0xE0]
 }
 
 // 0xd4bff0 — __ZNK4Ogre4Pass14getFogOverrideEv
@@ -385,8 +385,8 @@ pub fn stub_0xd4bfbc() -> ! {
 #[doc(alias = "Ogre::Pass::getFogOverride(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass14getFogOverrideEv")]
 // was: Ogre::Pass::getFogOverride(void)const
-pub fn stub_0xd4bff0() -> ! {
-    todo!("0xd4bff0 Ogre::Pass::getFogOverride(void)const")
+pub fn stub_0xd4bff0(pass: &Pass) -> bool {
+    pass.fog_override() // IDA 0xd4bff0: LDRB.W R0,[R0,#0xC2]
 }
 
 // 0xd4bff8 — __ZNK4Ogre4Pass10getFogModeEv
@@ -394,8 +394,8 @@ pub fn stub_0xd4bff0() -> ! {
 #[doc(alias = "Ogre::Pass::getFogMode(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass10getFogModeEv")]
 // was: Ogre::Pass::getFogMode(void)const
-pub fn stub_0xd4bff8() -> ! {
-    todo!("0xd4bff8 Ogre::Pass::getFogMode(void)const")
+pub fn stub_0xd4bff8(pass: &Pass) -> FogMode {
+    pass.fog_mode() // IDA 0xd4bff8: LDR.W R0,[R0,#0xC4]
 }
 
 // 0xd4c000 — __ZNK4Ogre4Pass12getFogColourEv
@@ -403,8 +403,8 @@ pub fn stub_0xd4bff8() -> ! {
 #[doc(alias = "Ogre::Pass::getFogColour(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass12getFogColourEv")]
 // was: Ogre::Pass::getFogColour(void)const
-pub fn stub_0xd4c000() -> ! {
-    todo!("0xd4c000 Ogre::Pass::getFogColour(void)const")
+pub fn stub_0xd4c000(pass: &Pass) -> &ColourValue {
+    pass.fog_colour() // IDA 0xd4c000: ADDS R0,#0xC8
 }
 
 // 0xd4c004 — __ZNK4Ogre4Pass11getFogStartEv
@@ -412,8 +412,8 @@ pub fn stub_0xd4c000() -> ! {
 #[doc(alias = "Ogre::Pass::getFogStart(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass11getFogStartEv")]
 // was: Ogre::Pass::getFogStart(void)const
-pub fn stub_0xd4c004() -> ! {
-    todo!("0xd4c004 Ogre::Pass::getFogStart(void)const")
+pub fn stub_0xd4c004(pass: &Pass) -> f32 {
+    pass.fog_start() // IDA 0xd4c004: LDR.W R0,[R0,#0xD8]
 }
 
 // 0xd4c00c — __ZNK4Ogre4Pass9getFogEndEv
@@ -421,8 +421,8 @@ pub fn stub_0xd4c004() -> ! {
 #[doc(alias = "Ogre::Pass::getFogEnd(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass9getFogEndEv")]
 // was: Ogre::Pass::getFogEnd(void)const
-pub fn stub_0xd4c00c() -> ! {
-    todo!("0xd4c00c Ogre::Pass::getFogEnd(void)const")
+pub fn stub_0xd4c00c(pass: &Pass) -> f32 {
+    pass.fog_end() // IDA 0xd4c00c: LDR.W R0,[R0,#0xDC]
 }
 
 // 0xd4c014 — __ZNK4Ogre4Pass13getFogDensityEv
@@ -430,8 +430,8 @@ pub fn stub_0xd4c00c() -> ! {
 #[doc(alias = "Ogre::Pass::getFogDensity(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass13getFogDensityEv")]
 // was: Ogre::Pass::getFogDensity(void)const
-pub fn stub_0xd4c014() -> ! {
-    todo!("0xd4c014 Ogre::Pass::getFogDensity(void)const")
+pub fn stub_0xd4c014(pass: &Pass) -> f32 {
+    pass.fog_density() // IDA 0xd4c014: LDR.W R0,[R0,#0xE0]
 }
 
 // 0xd4c01c — __ZN4Ogre4Pass12setDepthBiasEff
@@ -439,8 +439,8 @@ pub fn stub_0xd4c014() -> ! {
 #[doc(alias = "Ogre::Pass::setDepthBias(float,float)")]
 #[doc(alias = "__ZN4Ogre4Pass12setDepthBiasEff")]
 // was: Ogre::Pass::setDepthBias(float,float)
-pub fn stub_0xd4c01c() -> ! {
-    todo!("0xd4c01c Ogre::Pass::setDepthBias(float,float)")
+pub fn stub_0xd4c01c(pass: &mut Pass, constant: f32, slope_scale: f32) {
+    pass.set_depth_bias(constant, slope_scale) // IDA 0xd4c01c: MOV R3,R2; MOV R2,R1; STRD.W R2,R3,[R0,#0x84]
 }
 
 // 0xd4c028 — __ZNK4Ogre4Pass20getDepthBiasConstantEv
@@ -448,8 +448,8 @@ pub fn stub_0xd4c01c() -> ! {
 #[doc(alias = "Ogre::Pass::getDepthBiasConstant(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass20getDepthBiasConstantEv")]
 // was: Ogre::Pass::getDepthBiasConstant(void)const
-pub fn stub_0xd4c028() -> ! {
-    todo!("0xd4c028 Ogre::Pass::getDepthBiasConstant(void)const")
+pub fn stub_0xd4c028(pass: &Pass) -> f32 {
+    pass.depth_bias_constant() // IDA 0xd4c028: LDR.W R0,[R0,#0x84]
 }
 
 // 0xd4c030 — __ZNK4Ogre4Pass22getDepthBiasSlopeScaleEv
@@ -457,8 +457,8 @@ pub fn stub_0xd4c028() -> ! {
 #[doc(alias = "Ogre::Pass::getDepthBiasSlopeScale(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass22getDepthBiasSlopeScaleEv")]
 // was: Ogre::Pass::getDepthBiasSlopeScale(void)const
-pub fn stub_0xd4c030() -> ! {
-    todo!("0xd4c030 Ogre::Pass::getDepthBiasSlopeScale(void)const")
+pub fn stub_0xd4c030(pass: &Pass) -> f32 {
+    pass.depth_bias_slope_scale() // IDA 0xd4c030: LDR.W R0,[R0,#0x88]
 }
 
 // 0xd4c038 — __ZN4Ogre4Pass21setIterationDepthBiasEf
@@ -466,8 +466,8 @@ pub fn stub_0xd4c030() -> ! {
 #[doc(alias = "Ogre::Pass::setIterationDepthBias(float)")]
 #[doc(alias = "__ZN4Ogre4Pass21setIterationDepthBiasEf")]
 // was: Ogre::Pass::setIterationDepthBias(float)
-pub fn stub_0xd4c038() -> ! {
-    todo!("0xd4c038 Ogre::Pass::setIterationDepthBias(float)")
+pub fn stub_0xd4c038(pass: &mut Pass, bias: f32) {
+    pass.set_iteration_depth_bias(bias) // IDA 0xd4c038: STR.W R1,[R0,#0x8C]
 }
 
 // 0xd4c040 — __ZNK4Ogre4Pass21getIterationDepthBiasEv
@@ -475,8 +475,8 @@ pub fn stub_0xd4c038() -> ! {
 #[doc(alias = "Ogre::Pass::getIterationDepthBias(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass21getIterationDepthBiasEv")]
 // was: Ogre::Pass::getIterationDepthBias(void)const
-pub fn stub_0xd4c040() -> ! {
-    todo!("0xd4c040 Ogre::Pass::getIterationDepthBias(void)const")
+pub fn stub_0xd4c040(pass: &Pass) -> f32 {
+    pass.iteration_depth_bias() // IDA 0xd4c040: LDR.W R0,[R0,#0x8C]
 }
 
 // 0xd4c048 — __ZN4Ogre4Pass6_splitEt
