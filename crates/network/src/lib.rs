@@ -449,3 +449,4 @@ pub mod generated_watchdog_network_w13a;
 pub mod generated_network_next115;
 pub mod generated_watchdog_network_w14b;
 pub mod generated_watchdog_network_w15;
+pub mod generated_watchdog_network_w15b;
