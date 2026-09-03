@@ -284,6 +284,41 @@ impl GameViewController {
     }
 }
 
+/// Minimal `Ogre::EAGL2Support` counterpart: config/display-name queries only
+/// (window creation and GL context setup are out of slice).
+#[derive(Debug, Default)]
+pub struct Eagl2Support;
+
+/// Minimal `Ogre::EAGL2Window` counterpart: `setFullscreen`/`reposition` are
+/// empty (`BX LR`) on this slice; resize and swap paths stay unimplemented.
+#[derive(Debug, Default)]
+pub struct Eagl2Window;
+
+/// Minimal `EAGL2View` counterpart: the `mWindowName` std::string ivar plus the
+/// `CAEAGLLayer` layer class (backing-store rendering is out of slice).
+#[derive(Debug, Default)]
+pub struct Eagl2View {
+    window_name: parking_lot::Mutex<String>,
+}
+
+/// Minimal `EAGL2ViewController` counterpart: the `mGLSupport` assign ivar plus
+/// a count of the UIKit super-sends (`init`, `loadView`, ...) that are out of slice.
+#[derive(Debug, Default)]
+pub struct Eagl2ViewController {
+    gl_support: parking_lot::Mutex<ObjCId>,
+    super_forwards: std::sync::atomic::AtomicU32,
+}
+
+impl Eagl2ViewController {
+    pub fn super_forward_count(&self) -> u32 {
+        self.super_forwards.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    fn note_super_forward(&self) {
+        self.super_forwards
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+}
+
 /// `-[PlaceLauncher startGame:controller:request:presentGameAutomatically:]` request (IDA 0x1a42a).
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct StartGameRequest {
@@ -1493,16 +1528,27 @@ pub fn stub_e8457c() -> ! {
 
 // 0xe862b0 — __ZN4Ogre12EAGL2Support14validateConfigEv
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
-#[doc(alias = "Ogre::EAGL2Support::validateConfig(void)")]
-pub fn stub_e862b0() -> ! {
-    todo!("0xe862b0 Ogre::EAGL2Support::validateConfig(void)")
+// IDA 0xe862b0
+impl Eagl2Support {
+    #[doc(alias = "Ogre::EAGL2Support::validateConfig(void)")]
+    #[doc = "Ogre::EAGL2Support::validateConfig(void)"]
+    pub fn validate_config(&self) -> String {
+        // Copy-constructs the return from `Ogre::StringUtil::BLANK`
+        // (IDA 0xe862be..0xe862c0), which is the empty string.
+        String::new() // IDA 0xe862c4
+    }
 }
 
 // 0xe862c8 — __ZN4Ogre12EAGL2Support14getDisplayNameEv
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
-#[doc(alias = "Ogre::EAGL2Support::getDisplayName(void)")]
-pub fn stub_e862c8() -> ! {
-    todo!("0xe862c8 Ogre::EAGL2Support::getDisplayName(void)")
+// IDA 0xe862c8
+impl Eagl2Support {
+    #[doc(alias = "Ogre::EAGL2Support::getDisplayName(void)")]
+    #[doc = "Ogre::EAGL2Support::getDisplayName(void)"]
+    pub fn get_display_name(&self) -> String {
+        // Builds the return from the `aTodo` literal (IDA 0xe862ce..0xe862da).
+        "todo".to_owned() // IDA 0xe862e0
+    }
 }
 
 // 0xe862e4 — __ZN4Ogre12EAGL2Support12createWindowEbPNS_17GLES2RenderSystemERKSs
@@ -1535,16 +1581,24 @@ pub fn stub_e86d80() -> ! {
 
 // 0xe86d84 — __ZN4Ogre12EAGL2Support5startEv
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
-#[doc(alias = "Ogre::EAGL2Support::start(void)")]
-pub fn stub_e86d84() -> ! {
-    todo!("0xe86d84 Ogre::EAGL2Support::start(void)")
+// IDA 0xe86d84
+impl Eagl2Support {
+    #[doc(alias = "Ogre::EAGL2Support::start(void)")]
+    #[doc = "Ogre::EAGL2Support::start(void)"]
+    pub fn start(&self) {
+        // Single `BX LR` (IDA 0xe86d84): empty body, nothing to start on this slice.
+    }
 }
 
 // 0xe86d88 — __ZN4Ogre12EAGL2Support4stopEv
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
-#[doc(alias = "Ogre::EAGL2Support::stop(void)")]
-pub fn stub_e86d88() -> ! {
-    todo!("0xe86d88 Ogre::EAGL2Support::stop(void)")
+// IDA 0xe86d88
+impl Eagl2Support {
+    #[doc(alias = "Ogre::EAGL2Support::stop(void)")]
+    #[doc = "Ogre::EAGL2Support::stop(void)"]
+    pub fn stop(&self) {
+        // Single `BX LR` (IDA 0xe86d88): empty body, nothing to stop on this slice.
+    }
 }
 
 // 0xe87e38 — -[EAGL2View description]
@@ -1556,9 +1610,14 @@ pub fn stub_e87e38() -> ! {
 
 // 0xe87f28 — +[EAGL2View layerClass]
 // type: Class __cdecl(id, SEL)
-#[doc(alias = "+[EAGL2View layerClass]")]
-pub fn stub_e87f28() -> ! {
-    todo!("0xe87f28 +[EAGL2View layerClass]")
+// IDA 0xe87f28
+impl Eagl2View {
+    #[doc(alias = "+[EAGL2View layerClass]")]
+    #[doc = "+[EAGL2View layerClass]"]
+    pub fn layer_class() -> &'static str {
+        // +[CAEAGLLayer class] via objc_msgSend (IDA 0xe87f44..0xe87f48).
+        "CAEAGLLayer" // IDA 0xe87f48
+    }
 }
 
 // 0xe87f4c — -[EAGL2View layoutSubviews]
@@ -1570,16 +1629,27 @@ pub fn stub_e87f4c() -> ! {
 
 // 0xe880b4 — -[EAGL2View mWindowName]
 // type: basic_string<char, std::char_traits<char>, std::allocator<char> > __cdecl(EAGL2View *self, SEL)
-#[doc(alias = "-[EAGL2View mWindowName]")]
-pub fn stub_e880b4() -> ! {
-    todo!("0xe880b4 -[EAGL2View mWindowName]")
+// IDA 0xe880b4
+impl Eagl2View {
+    #[doc(alias = "-[EAGL2View mWindowName]")]
+    #[doc = "-[EAGL2View mWindowName]"]
+    pub fn m_window_name(&self) -> String {
+        // Copy-constructs the return from the `mWindowName` ivar
+        // (IDA 0xe880c4..0xe880ca).
+        self.window_name.lock().clone() // IDA 0xe880ca
+    }
 }
 
 // 0xe880cc — -[EAGL2View setMWindowName:]
 // type: void __cdecl(EAGL2View *self, SEL, basic_string<char, std::char_traits<char>, std::allocator<char> >)
-#[doc(alias = "-[EAGL2View setMWindowName:]")]
-pub fn stub_e880cc() -> ! {
-    todo!("0xe880cc -[EAGL2View setMWindowName:]")
+// IDA 0xe880cc
+impl Eagl2View {
+    #[doc(alias = "-[EAGL2View setMWindowName:]")]
+    #[doc = "-[EAGL2View setMWindowName:]"]
+    pub fn set_m_window_name(&self, name: &str) {
+        // `std::string::assign` over the `mWindowName` ivar (IDA 0xe880e0).
+        *self.window_name.lock() = name.to_owned(); // IDA 0xe880e4
+    }
 }
 
 // 0xe880e8 — -[EAGL2View .cxx_destruct]
@@ -1591,51 +1661,88 @@ pub fn stub_e880e8() -> ! {
 
 // 0xe88140 — -[EAGL2View .cxx_construct]
 // type: id __cdecl(EAGL2View *self, SEL)
-#[doc(alias = "-[EAGL2View .cxx_construct]")]
-pub fn stub_e88140() -> ! {
-    todo!("0xe88140 -[EAGL2View .cxx_construct]")
+// IDA 0xe88140
+impl Eagl2View {
+    #[doc(alias = "-[EAGL2View .cxx_construct]")]
+    #[doc = "-[EAGL2View .cxx_construct]"]
+    pub fn new() -> Self {
+        // Points `mWindowName` at the shared empty rep (IDA 0xe88158..0xe8815a):
+        // exactly `String::new()`, which `Default` already gives it.
+        Self::default()
+    }
 }
 
 // 0xe88194 — -[EAGL2ViewController init]
 // type: EAGL2ViewController *__cdecl(EAGL2ViewController *self, SEL)
-#[doc(alias = "-[EAGL2ViewController init]")]
-pub fn stub_e88194() -> ! {
-    todo!("0xe88194 -[EAGL2ViewController init]")
+// IDA 0xe88194
+impl Eagl2ViewController {
+    #[doc(alias = "-[EAGL2ViewController init]")]
+    #[doc = "-[EAGL2ViewController init]"]
+    pub fn init() -> Self {
+        // Only `objc_msgSendSuper2` init (IDA 0xe881b8): UIKit init is out of slice.
+        Self::default()
+    }
 }
 
 // 0xe881c0 — -[EAGL2ViewController initWithNibName:bundle:]
 // type: EAGL2ViewController *__cdecl(EAGL2ViewController *self, SEL, id, id)
-#[doc(alias = "-[EAGL2ViewController initWithNibName:bundle:]")]
-pub fn stub_e881c0() -> ! {
-    todo!("0xe881c0 -[EAGL2ViewController initWithNibName:bundle:]")
+// IDA 0xe881c0
+impl Eagl2ViewController {
+    #[doc(alias = "-[EAGL2ViewController initWithNibName:bundle:]")]
+    #[doc = "-[EAGL2ViewController initWithNibName:bundle:]"]
+    pub fn init_with_nib_name(nib_name: Option<ObjCId>, bundle: Option<ObjCId>) -> Self {
+        // Forwards both ids to super (IDA 0xe881ec); UIKit init is out of slice.
+        let _ = (nib_name, bundle);
+        Self::default()
+    }
 }
 
 // 0xe881f0 — -[EAGL2ViewController dealloc]
 // type: void __cdecl(EAGL2ViewController *self, SEL)
-#[doc(alias = "-[EAGL2ViewController dealloc]")]
-pub fn stub_e881f0() -> ! {
-    todo!("0xe881f0 -[EAGL2ViewController dealloc]")
+// IDA 0xe881f0
+impl Eagl2ViewController {
+    #[doc(alias = "-[EAGL2ViewController dealloc]")]
+    #[doc = "-[EAGL2ViewController dealloc]"]
+    pub fn dealloc(self) {
+        // Only `objc_msgSendSuper2` dealloc (IDA 0xe88214): super runs as self drops here.
+    }
 }
 
 // 0xe8821c — -[EAGL2ViewController didReceiveMemoryWarning]
 // type: void __cdecl(EAGL2ViewController *self, SEL)
-#[doc(alias = "-[EAGL2ViewController didReceiveMemoryWarning]")]
-pub fn stub_e8821c() -> ! {
-    todo!("0xe8821c -[EAGL2ViewController didReceiveMemoryWarning]")
+// IDA 0xe8821c
+impl Eagl2ViewController {
+    #[doc(alias = "-[EAGL2ViewController didReceiveMemoryWarning]")]
+    #[doc = "-[EAGL2ViewController didReceiveMemoryWarning]"]
+    pub fn did_receive_memory_warning(&self) {
+        // `objc_msgSendSuper2` didReceiveMemoryWarning (IDA 0xe88240);
+        // UIKit internals are out of slice.
+        self.note_super_forward();
+    }
 }
 
 // 0xe88248 — -[EAGL2ViewController loadView]
 // type: void __cdecl(EAGL2ViewController *self, SEL)
-#[doc(alias = "-[EAGL2ViewController loadView]")]
-pub fn stub_e88248() -> ! {
-    todo!("0xe88248 -[EAGL2ViewController loadView]")
+// IDA 0xe88248
+impl Eagl2ViewController {
+    #[doc(alias = "-[EAGL2ViewController loadView]")]
+    #[doc = "-[EAGL2ViewController loadView]"]
+    pub fn load_view(&self) {
+        // `objc_msgSendSuper2` loadView (IDA 0xe8826c); UIKit internals are out of slice.
+        self.note_super_forward();
+    }
 }
 
 // 0xe88274 — -[EAGL2ViewController viewDidLoad]
 // type: void __cdecl(EAGL2ViewController *self, SEL)
-#[doc(alias = "-[EAGL2ViewController viewDidLoad]")]
-pub fn stub_e88274() -> ! {
-    todo!("0xe88274 -[EAGL2ViewController viewDidLoad]")
+// IDA 0xe88274
+impl Eagl2ViewController {
+    #[doc(alias = "-[EAGL2ViewController viewDidLoad]")]
+    #[doc = "-[EAGL2ViewController viewDidLoad]"]
+    pub fn view_did_load(&self) {
+        // `objc_msgSendSuper2` viewDidLoad (IDA 0xe88298); UIKit internals are out of slice.
+        self.note_super_forward();
+    }
 }
 
 // 0xe882a0 — -[EAGL2ViewController viewDidUnload]
@@ -1654,30 +1761,57 @@ pub fn stub_e882cc() -> ! {
 
 // 0xe88310 — -[EAGL2ViewController supportedInterfaceOrientations]
 // type: unsigned int __cdecl(EAGL2ViewController *self, SEL)
-#[doc(alias = "-[EAGL2ViewController supportedInterfaceOrientations]")]
-pub fn stub_e88310() -> ! {
-    todo!("0xe88310 -[EAGL2ViewController supportedInterfaceOrientations]")
+// IDA 0xe88310
+impl Eagl2ViewController {
+    #[doc(alias = "-[EAGL2ViewController supportedInterfaceOrientations]")]
+    #[doc = "-[EAGL2ViewController supportedInterfaceOrientations]"]
+    pub fn supported_interface_orientations(&self) -> u32 {
+        // MOVS R0, #0x18: landscape-left | landscape-right mask. // IDA 0xe88312
+        UI_INTERFACE_ORIENTATION_MASK_LANDSCAPE
+    }
 }
 
 // 0xe88314 — -[EAGL2ViewController shouldAutorotateToInterfaceOrientation:]
 // type: char __cdecl(EAGL2ViewController *self, SEL, int)
-#[doc(alias = "-[EAGL2ViewController shouldAutorotateToInterfaceOrientation:]")]
-pub fn stub_e88314() -> ! {
-    todo!("0xe88314 -[EAGL2ViewController shouldAutorotateToInterfaceOrientation:]")
+// IDA 0xe88314
+impl Eagl2ViewController {
+    #[doc(alias = "-[EAGL2ViewController shouldAutorotateToInterfaceOrientation:]")]
+    #[doc = "-[EAGL2ViewController shouldAutorotateToInterfaceOrientation:]"]
+    pub fn should_autorotate_to_interface_orientation(&self, orientation: i32) -> bool {
+        // MOVS R0,#1; CMP R2,#4; BXEQ when landscape-right. // IDA 0xe88314
+        if orientation == UI_INTERFACE_ORIENTATION_LANDSCAPE_RIGHT { // IDA 0xe88318
+            return true; // IDA 0xe8831a
+        }
+        orientation == UI_INTERFACE_ORIENTATION_LANDSCAPE_LEFT // IDA 0xe88322
+    }
 }
 
 // 0xe88328 — -[EAGL2ViewController mGLSupport]
 // type: EAGL2Support *__cdecl(EAGL2ViewController *self, SEL)
-#[doc(alias = "-[EAGL2ViewController mGLSupport]")]
-pub fn stub_e88328() -> ! {
-    todo!("0xe88328 -[EAGL2ViewController mGLSupport]")
+// IDA 0xe88328
+impl Eagl2ViewController {
+    #[doc(alias = "-[EAGL2ViewController mGLSupport]")]
+    #[doc = "-[EAGL2ViewController mGLSupport]"]
+    pub fn m_gl_support(&self) -> ObjCId {
+        // Assign-ivar load plus the DMB ISH barrier (IDA 0xe88334..0xe88336).
+        let support = *self.gl_support.lock();
+        std::sync::atomic::fence(std::sync::atomic::Ordering::SeqCst); // IDA 0xe88336
+        support // IDA 0xe8833a
+    }
 }
 
 // 0xe8833c — -[EAGL2ViewController setMGLSupport:]
 // type: void __cdecl(EAGL2ViewController *self, SEL, EAGL2Support *)
-#[doc(alias = "-[EAGL2ViewController setMGLSupport:]")]
-pub fn stub_e8833c() -> ! {
-    todo!("0xe8833c -[EAGL2ViewController setMGLSupport:]")
+// IDA 0xe8833c
+impl Eagl2ViewController {
+    #[doc(alias = "-[EAGL2ViewController setMGLSupport:]")]
+    #[doc = "-[EAGL2ViewController setMGLSupport:]"]
+    pub fn set_m_gl_support(&self, support: ObjCId) {
+        // Assign-ivar store fenced both sides by DMB ISH (IDA 0xe88344..0xe8834e).
+        std::sync::atomic::fence(std::sync::atomic::Ordering::SeqCst); // IDA 0xe88344
+        *self.gl_support.lock() = support; // IDA 0xe8834c
+        std::sync::atomic::fence(std::sync::atomic::Ordering::SeqCst); // IDA 0xe8834e
+    }
 }
 
 // 0xe88388 — __ZN4Ogre11EAGL2WindowC1EPNS_12EAGL2SupportE
@@ -1710,16 +1844,26 @@ pub fn stub_e88680() -> ! {
 
 // 0xe886f8 — __ZN4Ogre11EAGL2Window13setFullscreenEbjj
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, bool, unsigned int, unsigned int)
-#[doc(alias = "Ogre::EAGL2Window::setFullscreen(bool,unsigned int,unsigned int)")]
-pub fn stub_e886f8() -> ! {
-    todo!("0xe886f8 Ogre::EAGL2Window::setFullscreen(bool,unsigned int,unsigned int)")
+// IDA 0xe886f8
+impl Eagl2Window {
+    #[doc(alias = "Ogre::EAGL2Window::setFullscreen(bool,unsigned int,unsigned int)")]
+    #[doc = "Ogre::EAGL2Window::setFullscreen(bool,unsigned int,unsigned int)"]
+    pub fn set_fullscreen(&self, fullscreen: bool, width: u32, height: u32) {
+        // Single `BX LR` (IDA 0xe886f8): no-op on this slice.
+        let _ = (fullscreen, width, height);
+    }
 }
 
 // 0xe886fc — __ZN4Ogre11EAGL2Window10repositionEii
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, int, int)
-#[doc(alias = "Ogre::EAGL2Window::reposition(int,int)")]
-pub fn stub_e886fc() -> ! {
-    todo!("0xe886fc Ogre::EAGL2Window::reposition(int,int)")
+// IDA 0xe886fc
+impl Eagl2Window {
+    #[doc(alias = "Ogre::EAGL2Window::reposition(int,int)")]
+    #[doc = "Ogre::EAGL2Window::reposition(int,int)"]
+    pub fn reposition(&self, x: i32, y: i32) {
+        // Single `BX LR` (IDA 0xe886fc): no-op on this slice.
+        let _ = (x, y);
+    }
 }
 
 // 0xe88700 — __ZN4Ogre11EAGL2Window6resizeEjj
