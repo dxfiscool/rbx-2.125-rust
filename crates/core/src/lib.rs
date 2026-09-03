@@ -538,6 +538,7 @@ pub mod generated_core_wdog7H_eq;
 pub mod generated_core_bg5;
 pub mod generated_core_bg6;
 pub mod generated_core_bg7;
+pub mod generated_core_bg8;
 pub mod generated_core_shard_ol;
 pub mod generated_core_shard_om;
 pub mod generated_core_wd_watchdog23;
