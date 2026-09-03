@@ -6,7 +6,7 @@
 
 use rbx_core::SharedPtr;
 use rbx_core::shared_ptr::{ControlBlockPd, CreatableInstanceDeleter, shared_ptr_from_raw};
-use crate::generated_05::{FunctorOp, Instance};
+use crate::generated_05::{FunctorOp, Instance, instance_is_a};
 use parking_lot::Mutex;
 
 /// Rust model of `CRenderSettingsItem` (IDA `0xef04`): field layout unmodeled;
@@ -67,6 +67,31 @@ pub struct ObjcInstanceBind {
     pub func: fn(*mut (), *mut (), &SharedPtr<Instance>),
     pub target: *mut (),
     pub selector: *mut (),
+}
+
+/// Rust model of `RBX::HttpService` (IDA `0x258688`): same opaque shape.
+#[derive(Default)]
+pub struct HttpService {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Light` (IDA `0x25bc38`): same opaque shape; parent of
+/// the `SpotLight`/`PointLight` models below (subclass relations unmodeled).
+#[derive(Default)]
+pub struct Light {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::SpotLight` (IDA `0x25c4d0`): same opaque shape.
+#[derive(Default)]
+pub struct SpotLight {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::PointLight` (IDA `0x25ce80`): same opaque shape.
+#[derive(Default)]
+pub struct PointLight {
+    _opaque: (),
 }
 
 /// Pool header behind
@@ -572,183 +597,267 @@ pub fn stub_0x3e1e8() -> *mut OnDemandInstancePool {
 // 0x258688 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_11HttpServiceEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::HttpService> RBX::Creatable<RBX::Instance>::create<RBX::HttpService>(void)")]
 // was: boost::shared_ptr<RBX::HttpService> RBX::Creatable<RBX::Instance>::create<RBX::HttpService>(void)
-pub fn stub_0x258688() -> ! {
-    todo!("0x258688 boost::shared_ptr<RBX::HttpService> RBX::Creatable<RBX::Instance>::create<RBX::HttpService>(void)")
+pub fn stub_0x258688() -> SharedPtr<HttpService> {
+    // IDA 0x258688: `operator new(0x70)` (disasm 0x2586a6-0x2586a8; 112 bytes)
+    // + default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(HttpService::default())
 }
 
 // 0x258738 — __ZN5boost10shared_ptrIN3RBX11HttpServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::HttpService>::shared_ptr<RBX::HttpService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::HttpService>::shared_ptr<RBX::HttpService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x258738() -> ! {
-    todo!("0x258738 boost::shared_ptr<RBX::HttpService>::shared_ptr<RBX::HttpService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x258738(ptr: *mut HttpService, _deleter: CreatableInstanceDeleter) -> SharedPtr<HttpService> {
+    // IDA 0x258738: store px + `shared_count` ctor + null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(HttpService::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x2588e8 — __ZN5boost6detail12shared_countC2IPN3RBX11HttpServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x2588e8() -> ! {
-    todo!("0x2588e8 boost::detail::shared_count::shared_count<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x2588e8(ptr: *mut HttpService, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<HttpService, CreatableInstanceDeleter> {
+    // IDA 0x2588e8: block-new shape, same as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x2589f0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x2589f0() -> ! {
-    todo!("0x2589f0 boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2589f0(_block: *mut ControlBlockPd<HttpService, CreatableInstanceDeleter>) {
+    // IDA 0x2589f0: `BX LR` — empty, same as 0xf198.
 }
 
 // 0x2589f4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x2589f4() -> ! {
-    todo!("0x2589f4 boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2589f4(block: *mut ControlBlockPd<HttpService, CreatableInstanceDeleter>) {
+    // IDA 0x2589f4: D0 storage release only (`B.W` delete shape, cf. 0x31bf0).
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x2589f8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x2589f8() -> ! {
-    todo!("0x2589f8 boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x2589f8(block: *mut ControlBlockPd<HttpService, CreatableInstanceDeleter>) {
+    // IDA 0x2589f8: `predelete` (disasm 0x258a00), null early-out (disasm
+    // 0x258a04-0x258a08), deleter virtual-delete (disasm 0x258a0a+); same
+    // shape as 0xf19c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
 }
 
 // 0x258a18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x258a18() -> ! {
-    todo!("0x258a18 boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x258a18(block: *const ControlBlockPd<HttpService, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x258a18: deleter-name `strcmp` (disasm 0x258a22-0x258a28), `this +
+    // 0x10` on hit (disasm 0x258a1c); same shape as 0xf1bc.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x258a30 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x258a30() -> ! {
-    todo!("0x258a30 boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x258a30(block: *const ControlBlockPd<HttpService, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x258a30: unconditional `this + 0x10`; same as 0xf1d4.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x25bc38 — __ZNK3RBX5Light12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::Light::askSetParent(RBX::Instance const*)const")]
 // was: RBX::Light::askSetParent(RBX::Instance const*)const
-pub fn stub_0x25bc38() -> ! {
-    todo!("0x25bc38 RBX::Light::askSetParent(RBX::Instance const*)const")
+pub fn stub_0x25bc38(_this: *const Light, parent: *const Instance) -> bool {
+    // IDA 0x25bc38: null parent returns `0` (disasm 0x25bc3c-0x25bc42); else
+    // the parent class descriptor (`*(parent + 0x30)`, disasm 0x25bc44) is
+    // checked with `PartInstance::classDescriptor` +
+    // `ClassDescriptor::isA` (disasm 0x25bc46-0x25bc5c, returned unnegated):
+    // a `Light` parents only under a `PartInstance`. The `Light` receiver is
+    // unused by the check.
+    // SAFETY: `parent` must be null or point to a valid `Instance`.
+    if parent.is_null() {
+        return false;
+    }
+    instance_is_a(parent, "PartInstance")
 }
 
 // 0x25bc60 — __ZNK3RBX5Light11askAddChildEPKNS_8InstanceE
 #[doc(alias = "RBX::Light::askAddChild(RBX::Instance const*)const")]
 // was: RBX::Light::askAddChild(RBX::Instance const*)const
-pub fn stub_0x25bc60() -> ! {
-    todo!("0x25bc60 RBX::Light::askAddChild(RBX::Instance const*)const")
+pub fn stub_0x25bc60(_this: *const Light, _child: *const Instance) -> bool {
+    // IDA 0x25bc60: `MOVS R0,#1` (disasm 0x25bc62) — a `Light` accepts any child.
+    true
 }
 
 // 0x25c4d0 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9SpotLightEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::SpotLight> RBX::Creatable<RBX::Instance>::create<RBX::SpotLight>(void)")]
 // was: boost::shared_ptr<RBX::SpotLight> RBX::Creatable<RBX::Instance>::create<RBX::SpotLight>(void)
-pub fn stub_0x25c4d0() -> ! {
-    todo!("0x25c4d0 boost::shared_ptr<RBX::SpotLight> RBX::Creatable<RBX::Instance>::create<RBX::SpotLight>(void)")
+pub fn stub_0x25c4d0() -> SharedPtr<SpotLight> {
+    // IDA 0x25c4d0: `operator new(0x80)` (disasm 0x25c4ee-0x25c4f0; 128 bytes)
+    // + default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(SpotLight::default())
 }
 
 // 0x25c580 — __ZN5boost10shared_ptrIN3RBX9SpotLightEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::SpotLight>::shared_ptr<RBX::SpotLight,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::SpotLight>::shared_ptr<RBX::SpotLight,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x25c580() -> ! {
-    todo!("0x25c580 boost::shared_ptr<RBX::SpotLight>::shared_ptr<RBX::SpotLight,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x25c580(ptr: *mut SpotLight, _deleter: CreatableInstanceDeleter) -> SharedPtr<SpotLight> {
+    // IDA 0x25c580: store px + `shared_count` ctor + null-skip; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(SpotLight::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x25c730 — __ZN5boost6detail12shared_countC2IPN3RBX9SpotLightENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x25c730() -> ! {
-    todo!("0x25c730 boost::detail::shared_count::shared_count<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x25c730(ptr: *mut SpotLight, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<SpotLight, CreatableInstanceDeleter> {
+    // IDA 0x25c730: block-new shape, same as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x25c838 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SpotLightENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x25c838() -> ! {
-    todo!("0x25c838 boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x25c838(_block: *mut ControlBlockPd<SpotLight, CreatableInstanceDeleter>) {
+    // IDA 0x25c838: `BX LR` — empty, same as 0xf198.
 }
 
 // 0x25c83c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SpotLightENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x25c83c() -> ! {
-    todo!("0x25c83c boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x25c83c(block: *mut ControlBlockPd<SpotLight, CreatableInstanceDeleter>) {
+    // IDA 0x25c83c: D0 storage release only (`B.W` delete shape, cf. 0x31bf0).
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x25c840 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SpotLightENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x25c840() -> ! {
-    todo!("0x25c840 boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x25c840(block: *mut ControlBlockPd<SpotLight, CreatableInstanceDeleter>) {
+    // IDA 0x25c840: `predelete` (disasm 0x25c848), null early-out (disasm
+    // 0x25c84c-0x25c850), deleter virtual-delete (disasm 0x25c852+); same
+    // shape as 0xf19c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
 }
 
 // 0x25c860 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SpotLightENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x25c860() -> ! {
-    todo!("0x25c860 boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x25c860(block: *const ControlBlockPd<SpotLight, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x25c860: deleter-name `strcmp` (disasm 0x25c86a-0x25c86c), `this +
+    // 0x10` on hit (disasm 0x25c864); same shape as 0xf1bc.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x25c878 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SpotLightENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x25c878() -> ! {
-    todo!("0x25c878 boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x25c878(block: *const ControlBlockPd<SpotLight, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x25c878: unconditional `this + 0x10`; same as 0xf1d4.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x25ce80 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10PointLightEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::PointLight> RBX::Creatable<RBX::Instance>::create<RBX::PointLight>(void)")]
 // was: boost::shared_ptr<RBX::PointLight> RBX::Creatable<RBX::Instance>::create<RBX::PointLight>(void)
-pub fn stub_0x25ce80() -> ! {
-    todo!("0x25ce80 boost::shared_ptr<RBX::PointLight> RBX::Creatable<RBX::Instance>::create<RBX::PointLight>(void)")
+pub fn stub_0x25ce80() -> SharedPtr<PointLight> {
+    // IDA 0x25ce80: `operator new(0x78)` (disasm 0x25ce9e-0x25cea0; 120 bytes)
+    // + default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(PointLight::default())
 }
 
 // 0x25cf30 — __ZN5boost10shared_ptrIN3RBX10PointLightEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::PointLight>::shared_ptr<RBX::PointLight,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::PointLight>::shared_ptr<RBX::PointLight,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x25cf30() -> ! {
-    todo!("0x25cf30 boost::shared_ptr<RBX::PointLight>::shared_ptr<RBX::PointLight,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x25cf30(ptr: *mut PointLight, _deleter: CreatableInstanceDeleter) -> SharedPtr<PointLight> {
+    // IDA 0x25cf30: store px + `shared_count` ctor + null-skip; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(PointLight::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x25d0e0 — __ZN5boost6detail12shared_countC2IPN3RBX10PointLightENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x25d0e0() -> ! {
-    todo!("0x25d0e0 boost::detail::shared_count::shared_count<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x25d0e0(ptr: *mut PointLight, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<PointLight, CreatableInstanceDeleter> {
+    // IDA 0x25d0e0: block-new shape, same as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x25d1e8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10PointLightENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x25d1e8() -> ! {
-    todo!("0x25d1e8 boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x25d1e8(_block: *mut ControlBlockPd<PointLight, CreatableInstanceDeleter>) {
+    // IDA 0x25d1e8: `BX LR` — empty, same as 0xf198.
 }
 
 // 0x25d1ec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10PointLightENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x25d1ec() -> ! {
-    todo!("0x25d1ec boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x25d1ec(block: *mut ControlBlockPd<PointLight, CreatableInstanceDeleter>) {
+    // IDA 0x25d1ec: D0 storage release only (`B.W` delete shape, cf. 0x31bf0).
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x25d1f0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10PointLightENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x25d1f0() -> ! {
-    todo!("0x25d1f0 boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x25d1f0(block: *mut ControlBlockPd<PointLight, CreatableInstanceDeleter>) {
+    // IDA 0x25d1f0: `predelete` (disasm 0x25d1f8), null early-out (disasm
+    // 0x25d1fc-0x25d200), deleter virtual-delete (disasm 0x25d202+); same
+    // shape as 0xf19c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
 }
 
 // 0x25d210 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10PointLightENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x25d210() -> ! {
-    todo!("0x25d210 boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x25d210(block: *const ControlBlockPd<PointLight, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x25d210: deleter-name `strcmp` (disasm 0x25d21a-0x25d21c), `this +
+    // 0x10` on hit (disasm 0x25d214); same shape as 0xf1bc.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x25d228 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10PointLightENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x25d228() -> ! {
-    todo!("0x25d228 boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x25d228(block: *const ControlBlockPd<PointLight, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x25d228: unconditional `this + 0x10`; same as 0xf1d4.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x26c350 — __ZN5boost10shared_ptrIN3RBX10Reflection13DescribedBaseEEaSINS1_8InstanceEEERS4_RKNS0_IT_EE
