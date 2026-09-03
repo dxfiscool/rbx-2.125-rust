@@ -625,3 +625,6 @@ pub mod generated_watchdog_core_wdB;
 pub mod generated_watchdog_core_wdB2;
 pub mod generated_watchdog_core_wd4;
 pub mod generated_watchdog_core_wdA;
+pub mod generated_watchdog_core_wdb;
+
+pub mod generated_watchdog_core_wda;
