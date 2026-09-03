@@ -7,6 +7,74 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use rbx_core::signal::Signal;
+
+/// Rust model of the `RBX::Instance` header fields read by this shard's leaves.
+/// The original C++ object is larger; only the slots used below are modelled,
+/// with original offsets noted per accessor.
+pub struct Instance {
+    /// Original `*(this + 13)` (byte `0x34`); unretained, hence "dangerous".
+    pub parent: *const Instance,
+    /// Original name store at `*(this + 17)` (byte `0x44`).
+    pub name: InstanceName,
+    /// Original flag byte at name store `+ 0x16`.
+    pub roblox_locked: bool,
+    /// Lazily allocated block from `RBX::Instance::onDemandWrite` (IDA `0x7010ac`).
+    pub write: Option<Box<InstanceWrite>>,
+}
+
+/// Embedded name store. Original `getName` returns `*(this + 17) + 24`
+/// (IDA `0x703484`), i.e. the address of the name within the store.
+#[derive(Default)]
+pub struct InstanceName {
+    pub text: String,
+}
+
+/// Lazily allocated signal block from `RBX::Instance::onDemandWrite`.
+/// Original byte offsets from the block base: `+4` child-added, `+8`
+/// child-removed, `+12` descendant-added, `+16` descendant-removing.
+#[derive(Default)]
+pub struct InstanceWrite {
+    pub child_added: Signal<SharedPtr<Instance>>,
+    pub child_removed: Signal<SharedPtr<Instance>>,
+    pub descendant_added: Signal<SharedPtr<Instance>>,
+    pub descendant_removing: Signal<SharedPtr<Instance>>,
+}
+
+/// Rust model of `RBX::Instance::onDemandWrite` (IDA `0x7010ac`).
+/// Returns the live write block, allocating it on first use. The original
+/// builds the block through a vtable factory and asserts via `FLog::Asserts`
+/// when that yields null; allocation cannot fail here, so that path is
+/// unreachable.
+/// # Safety
+/// `this` must point to a valid `Instance`.
+unsafe fn on_demand_write(this: *mut Instance) -> *mut InstanceWrite {
+    let inst = &mut *this;
+    if inst.write.is_none() {
+        inst.write = Some(Box::default());
+    }
+    inst.write.as_deref_mut().unwrap() as *mut InstanceWrite
+}
+
+/// Destructor payload for the child-removed signal slot.
+/// Original holds one retained `shared_ptr` at `this + 8` (IDA `0x703da4`).
+pub struct ChildRemovedSignalData {
+    pub slot: Option<SharedPtr<Instance>>,
+}
+
+/// Destructor payload for the child-added signal slot.
+/// Original holds one retained `shared_ptr` at `this + 8` (IDA `0x703eac`).
+pub struct ChildAddedSignalData {
+    pub slot: Option<SharedPtr<Instance>>,
+}
+
+/// Destructor payload for the ancestry-changed signal.
+/// Original holds two retained `shared_ptr`s, released `+16` first then `+8`
+/// (IDA `0x703ed0`).
+pub struct AncestryChangedSignalData {
+    pub slot_hi: Option<SharedPtr<Instance>>,
+    pub slot_lo: Option<SharedPtr<Instance>>,
+}
 
 // 0x703444 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_8InstanceEFN5boost10shared_ptrIS2_EESsES5_Li1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Instance,rbx_core::SharedPtr<RBX::Instance> ()(std::string),rbx_core::SharedPtr<RBX::Instance>,1>::~BoundYieldFuncDesc()")]
@@ -16,13 +84,19 @@ pub fn stub_0x703444() -> ! {
 }
 // 0x703484 — __ZNK3RBX8Instance7getNameEv
 #[doc(alias = "RBX::Instance::getName(void)const")]
-pub fn stub_0x703484() -> ! {
-    todo!("0x703484 RBX::Instance::getName(void)const")
+pub fn stub_0x703484(this: *const Instance) -> *const InstanceName {
+    // IDA 0x703484: LDR R0,[R0,#0x44]; ADDS R0,#0x18; BX LR.
+    // Returns the address of the embedded name: `*(this + 17) + 24`.
+    // SAFETY: `this` must point to a valid `Instance`.
+    unsafe { core::ptr::addr_of!((*this).name) }
 }
 // 0x70348c — __ZNK3RBX8Instance18getParentDangerousEv
 #[doc(alias = "RBX::Instance::getParentDangerous(void)const")]
-pub fn stub_0x70348c() -> ! {
-    todo!("0x70348c RBX::Instance::getParentDangerous(void)const")
+pub fn stub_0x70348c(this: *const Instance) -> *const Instance {
+    // IDA 0x70348c: LDR R0,[R0,#0x34]; BX LR.
+    // Unretained parent pointer: `*(this + 13)`.
+    // SAFETY: `this` must point to a valid `Instance`.
+    unsafe { (*this).parent }
 }
 // 0x703490 — __ZN3RBX8Instance9setParentEPS0_
 #[doc(alias = "RBX::Instance::setParent(RBX::Instance*)")]
@@ -36,13 +110,17 @@ pub fn stub_0x703498() -> ! {
 }
 // 0x7034c4 — __ZNK3RBX8Instance15getRobloxLockedEv
 #[doc(alias = "RBX::Instance::getRobloxLocked(void)const")]
-pub fn stub_0x7034c4() -> ! {
-    todo!("0x7034c4 RBX::Instance::getRobloxLocked(void)const")
+pub fn stub_0x7034c4(this: *const Instance) -> bool {
+    // IDA 0x7034c4: LDR R0,[R0,#0x44]; LDRB R0,[R0,#0x16]; BX LR.
+    // SAFETY: `this` must point to a valid `Instance`.
+    unsafe { (*this).roblox_locked }
 }
 // 0x7034cc — __ZN3RBX8Instance27getOrCreateChildAddedSignalEv
 #[doc(alias = "RBX::Instance::getOrCreateChildAddedSignal(void)")]
-pub fn stub_0x7034cc() -> ! {
-    todo!("0x7034cc RBX::Instance::getOrCreateChildAddedSignal(void)")
+pub fn stub_0x7034cc(this: *mut Instance) -> *mut Signal<SharedPtr<Instance>> {
+    // IDA 0x7034cc: onDemandWrite(this) + 4.
+    // SAFETY: `this` must point to a valid `Instance` outliving the result.
+    unsafe { &mut (*on_demand_write(this)).child_added }
 }
 // 0x7034d8 — __ZN3RBX10Reflection9EventDescINS_8InstanceEFvN5boost10shared_ptrIS2_EEEN3rbx6signalIS6_EEMS2_FRS9_vEED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Instance,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>& (RBX::Instance::*)(void)>::~EventDesc()")]
@@ -52,18 +130,24 @@ pub fn stub_0x7034d8() -> ! {
 }
 // 0x7034fc — __ZN3RBX8Instance29getOrCreateChildRemovedSignalEv
 #[doc(alias = "RBX::Instance::getOrCreateChildRemovedSignal(void)")]
-pub fn stub_0x7034fc() -> ! {
-    todo!("0x7034fc RBX::Instance::getOrCreateChildRemovedSignal(void)")
+pub fn stub_0x7034fc(this: *mut Instance) -> *mut Signal<SharedPtr<Instance>> {
+    // IDA 0x7034fc: onDemandWrite(this) + 8.
+    // SAFETY: `this` must point to a valid `Instance` outliving the result.
+    unsafe { &mut (*on_demand_write(this)).child_removed }
 }
 // 0x703508 — __ZN3RBX8Instance32getOrCreateDescendantAddedSignalEv
 #[doc(alias = "RBX::Instance::getOrCreateDescendantAddedSignal(void)")]
-pub fn stub_0x703508() -> ! {
-    todo!("0x703508 RBX::Instance::getOrCreateDescendantAddedSignal(void)")
+pub fn stub_0x703508(this: *mut Instance) -> *mut Signal<SharedPtr<Instance>> {
+    // IDA 0x703508: onDemandWrite(this) + 12.
+    // SAFETY: `this` must point to a valid `Instance` outliving the result.
+    unsafe { &mut (*on_demand_write(this)).descendant_added }
 }
 // 0x703514 — __ZN3RBX8Instance35getOrCreateDescendantRemovingSignalEv
 #[doc(alias = "RBX::Instance::getOrCreateDescendantRemovingSignal(void)")]
-pub fn stub_0x703514() -> ! {
-    todo!("0x703514 RBX::Instance::getOrCreateDescendantRemovingSignal(void)")
+pub fn stub_0x703514(this: *mut Instance) -> *mut Signal<SharedPtr<Instance>> {
+    // IDA 0x703514: onDemandWrite(this) + 16.
+    // SAFETY: `this` must point to a valid `Instance` outliving the result.
+    unsafe { &mut (*on_demand_write(this)).descendant_removing }
 }
 // 0x703520 — __ZN3RBX10Reflection9EventDescINS_8InstanceEFvN5boost10shared_ptrIS2_EES5_EN3rbx6signalIS6_EEMS2_S9_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Instance,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::Instance::*>::~EventDesc()")]
@@ -101,29 +185,67 @@ pub fn stub_0x7039e4() -> ! {
 // 0x703cc0 — __ZN3RBX8Instance18childRemovedSignalERN5boost10shared_ptrIS0_EE
 #[doc(alias = "RBX::Instance::childRemovedSignal(rbx_core::SharedPtr<RBX::Instance> &)")]
 // was: RBX::Instance::childRemovedSignal(boost::shared_ptr<RBX::Instance> &)
-pub fn stub_0x703cc0() -> ! {
-    todo!("0x703cc0 RBX::Instance::childRemovedSignal(rbx_core::SharedPtr<RBX::Instance> &)")
+pub fn stub_0x703cc0(this: *mut Instance, child: &SharedPtr<Instance>) {
+    // IDA 0x703cc0: if (*(a1 + 19)) emit onDemandWrite(a1) + 8 with a cloned
+    // shared_ptr, then release the clone.
+    // SAFETY: `this` must point to a valid `Instance`.
+    unsafe {
+        if (*this).write.is_some() {
+            let block = on_demand_write(this);
+            // `clone` + end-of-scope drop mirrors the original `shared_count`
+            // copy + `sp_counted_base::release`.
+            (*block).child_removed.fire(child.clone());
+        }
+    }
 }
 // 0x703da4 — __ZN3RBX8Instance22ChildRemovedSignalDataD1Ev
 #[doc(alias = "RBX::Instance::ChildRemovedSignalData::~ChildRemovedSignalData()")]
-pub fn stub_0x703da4() -> ! {
-    todo!("0x703da4 RBX::Instance::ChildRemovedSignalData::~ChildRemovedSignalData()")
+pub fn stub_0x703da4(this: *mut ChildRemovedSignalData) {
+    // IDA 0x703da4: reset vtable, then release the retained ref at this + 8.
+    // Rust drops the Arc here, which is the same release; the vtable is
+    // compiler-managed.
+    // SAFETY: `this` must point to a valid `ChildRemovedSignalData`.
+    unsafe {
+        (*this).slot = None;
+    }
 }
 // 0x703dc8 — __ZN3RBX8Instance16childAddedSignalERN5boost10shared_ptrIS0_EE
 #[doc(alias = "RBX::Instance::childAddedSignal(rbx_core::SharedPtr<RBX::Instance> &)")]
 // was: RBX::Instance::childAddedSignal(boost::shared_ptr<RBX::Instance> &)
-pub fn stub_0x703dc8() -> ! {
-    todo!("0x703dc8 RBX::Instance::childAddedSignal(rbx_core::SharedPtr<RBX::Instance> &)")
+pub fn stub_0x703dc8(this: *mut Instance, child: &SharedPtr<Instance>) {
+    // IDA 0x703dc8: if (*(a1 + 19)) emit onDemandWrite(a1) + 4 with a cloned
+    // shared_ptr, then release the clone.
+    // SAFETY: `this` must point to a valid `Instance`.
+    unsafe {
+        if (*this).write.is_some() {
+            let block = on_demand_write(this);
+            // `clone` + end-of-scope drop mirrors the original `shared_count`
+            // copy + `sp_counted_base::release`.
+            (*block).child_added.fire(child.clone());
+        }
+    }
 }
 // 0x703eac — __ZN3RBX8Instance20ChildAddedSignalDataD1Ev
 #[doc(alias = "RBX::Instance::ChildAddedSignalData::~ChildAddedSignalData()")]
-pub fn stub_0x703eac() -> ! {
-    todo!("0x703eac RBX::Instance::ChildAddedSignalData::~ChildAddedSignalData()")
+pub fn stub_0x703eac(this: *mut ChildAddedSignalData) {
+    // IDA 0x703eac: reset vtable, then release the retained ref at this + 8.
+    // Rust drops the Arc here, which is the same release; the vtable is
+    // compiler-managed.
+    // SAFETY: `this` must point to a valid `ChildAddedSignalData`.
+    unsafe {
+        (*this).slot = None;
+    }
 }
 // 0x703ed0 — __ZN3RBX8Instance25AncestryChangedSignalDataD1Ev
 #[doc(alias = "RBX::Instance::AncestryChangedSignalData::~AncestryChangedSignalData()")]
-pub fn stub_0x703ed0() -> ! {
-    todo!("0x703ed0 RBX::Instance::AncestryChangedSignalData::~AncestryChangedSignalData()")
+pub fn stub_0x703ed0(this: *mut AncestryChangedSignalData) {
+    // IDA 0x703ed0: reset vtable, release *(this + 4), then *(this + 2).
+    // Rust drops each Arc in the same order; the vtable is compiler-managed.
+    // SAFETY: `this` must point to a valid `AncestryChangedSignalData`.
+    unsafe {
+        (*this).slot_hi = None;
+        (*this).slot_lo = None;
+    }
 }
 // 0x703fb0 — __ZN3rbx7signals16signal_with_argsILi2EFvN5boost10shared_ptrIN3RBX8InstanceEEES6_EEclES6_S6_
 #[doc(alias = "rbx::signals::signal_with_args<2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::operator()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")]
@@ -134,8 +256,18 @@ pub fn stub_0x703fb0() -> ! {
 // 0x704228 — __ZN3RBX8Instance24descendantRemovingSignalERKN5boost10shared_ptrIS0_EE
 #[doc(alias = "RBX::Instance::descendantRemovingSignal(rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: RBX::Instance::descendantRemovingSignal(boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_0x704228() -> ! {
-    todo!("0x704228 RBX::Instance::descendantRemovingSignal(rbx_core::SharedPtr<RBX::Instance> const&)")
+pub fn stub_0x704228(this: *mut Instance, child: &SharedPtr<Instance>) {
+    // IDA 0x704228: if (*(a1 + 19)) emit onDemandWrite(a1) + 16 with a cloned
+    // shared_ptr, then release the clone.
+    // SAFETY: `this` must point to a valid `Instance`.
+    unsafe {
+        if (*this).write.is_some() {
+            let block = on_demand_write(this);
+            // `clone` + end-of-scope drop mirrors the original `shared_count`
+            // copy + `sp_counted_base::release`.
+            (*block).descendant_removing.fire(child.clone());
+        }
+    }
 }
 // 0x70430c — __ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvPFvNS2_10shared_ptrIS0_EEPiENS3_5list2INS2_3argILi1EEENS3_5valueIS7_EEEEEEEEvRKT_
 #[doc(alias = "void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,int *),boost::_bi::list2<boost::arg<1>,boost::_bi::value<int *>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,int *),boost::_bi::list2<boost::arg<1>,boost::_bi::value<int *>>> const&)const")]
