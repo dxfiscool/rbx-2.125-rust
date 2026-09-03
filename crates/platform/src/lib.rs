@@ -466,6 +466,7 @@ pub mod generated_watchdog_plat_wdF;
 pub mod generated_watchdog_plat_wdG;
 pub mod generated_watchdog_plat_wdH;
 pub mod generated_watchdog_plat_wdI;
+pub mod generated_watchdog_plat_wdJ;
 pub mod generated_watchdog_plat_wdC;
 pub mod generated_watchdog_plat_wdB;
 pub mod generated_watchdog_plat_wdB2;
