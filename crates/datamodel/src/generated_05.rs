@@ -7,7 +7,11 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use rbx_core::WeakPtr;
 use rbx_core::signal::Signal;
+use parking_lot::Mutex;
+use std::collections::HashMap;
+use std::sync::atomic::{AtomicU32, Ordering};
 
 /// Rust model of the `RBX::Instance` header fields read by this shard's leaves.
 /// The original C++ object is larger; only the slots used below are modelled,
@@ -21,6 +25,9 @@ pub struct Instance {
     pub roblox_locked: bool,
     /// Lazily allocated block from `RBX::Instance::onDemandWrite` (IDA `0x7010ac`).
     pub write: Option<Box<InstanceWrite>>,
+    /// Embedded `boost::enable_shared_from_this` weak owner at `this + 40`
+    /// (IDA `0x7039e4` reads px at `+40`, pi at `+44`).
+    pub weak_owner: WeakPtr<Instance>,
 }
 
 /// Embedded name store. Original `getName` returns `*(this + 17) + 24`
@@ -74,6 +81,85 @@ pub struct ChildAddedSignalData {
 pub struct AncestryChangedSignalData {
     pub slot_hi: Option<SharedPtr<Instance>>,
     pub slot_lo: Option<SharedPtr<Instance>>,
+}
+
+/// Rust model of `RBX::Guid::Data` (the 8 bytes at `GuidItem + 12`).
+#[derive(Clone, Copy, PartialEq, Eq, Hash, Default)]
+pub struct GuidData {
+    pub lo: u32,
+    pub hi: u32,
+}
+
+/// Sequence counter for `GuidData::new`.
+static GUID_SEQ: AtomicU32 = AtomicU32::new(0);
+
+impl GuidData {
+    /// Rust model of `RBX::Guid::Guid(void)` (IDA `0x32281c`, via disasm):
+    /// `lo` copies the init-once process seed word, `hi` is the
+    /// `RbxInterlockedIncrementAcquire` sequence.
+    pub fn new() -> Self {
+        Self {
+            lo: std::process::id(),
+            hi: GUID_SEQ.fetch_add(1, Ordering::Acquire).wrapping_add(1),
+        }
+    }
+}
+
+/// Rust model of `RBX::GuidItem<RBX::Instance>::Registry`: the guid→instance
+/// map at `+8` guarded by the mutex at `+32` (IDA `0x704ee8`).
+pub struct GuidRegistry {
+    pub map: Mutex<HashMap<GuidData, *const Instance>>,
+}
+
+/// Rust model of `RBX::GuidItem<RBX::Instance>` (IDA `0x704414`): registry link
+/// at `+4` (raw) / `+8` (retained), guid at `+12`.
+pub struct GuidItem {
+    pub registry: Option<SharedPtr<GuidRegistry>>,
+    pub guid: GuidData,
+}
+
+/// Rust model of `RBX::Instance::PropertyChangedSignalData` (IDA `0x704b68`):
+/// D1 emits no code (`BX LR`), so there is nothing to drop; any payload is
+/// trivially droppable.
+pub struct PropertyChangedSignalData;
+
+/// Rust model of `RBX::AbstractFactoryProduct<RBX::Instance>` (IDA `0x7053f8`):
+/// D1 emits no code (`BX LR`); the deleting dtor only frees.
+pub struct AbstractFactoryProduct;
+
+/// Event carried by the combined child-added/removed signal. `kind` is `0`
+/// for child-added and `1` for child-removed: IDA `0x7001d6` passes `0` with
+/// the added-data vtable, IDA `0x70013e` passes `1` with the removed-data
+/// vtable.
+#[derive(Clone)]
+pub struct CombinedEvent {
+    pub kind: u32,
+    pub child: SharedPtr<Instance>,
+}
+
+/// Rust model of `rbx::signals::signal_with_args<2, ...>` at `Instance + 80`
+/// (IDA `0x703fb0`): slot iteration with per-slot retained arg copies
+/// collapses into `Signal::fire`.
+#[derive(Default)]
+pub struct CombinedSignal {
+    pub slots: Signal<CombinedEvent>,
+}
+
+/// was: `RBX::InstanceHandle` (a `shared_ptr`-like retained handle).
+pub type InstanceHandle = SharedPtr<Instance>;
+
+/// Rust model of `XmlNameValuePair` for an `InstanceHandle` (IDA `0x706198`):
+/// packed name word at `+0`, retained handle box at `+8`.
+pub struct XmlNameValuePair {
+    pub packed: u64,
+    pub handle: SharedPtr<Instance>,
+}
+
+/// Rust model of `XmlAttribute<RBX::InstanceHandle>` (IDA `0x706094`):
+/// allocator state at `+0` (always `0`), name/value pair at `+4`.
+pub struct XmlAttribute {
+    pub alloc_state: u32,
+    pub pair: XmlNameValuePair,
 }
 
 // 0x703444 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_8InstanceEFN5boost10shared_ptrIS2_EESsES5_Li1EED1Ev
@@ -179,8 +265,23 @@ pub fn stub_0x7039cc() -> ! {
 // 0x7039e4 — __ZN3RBX9weak_fromINS_8InstanceEEEN5boost8weak_ptrIT_EEPS4_
 #[doc(alias = "rbx_core::WeakPtr<RBX::Instance> RBX::weak_from<RBX::Instance>(RBX::Instance*)")]
 // was: boost::weak_ptr<RBX::Instance> RBX::weak_from<RBX::Instance>(RBX::Instance*)
-pub fn stub_0x7039e4() -> ! {
-    todo!("0x7039e4 boost::weak_ptr<RBX::Instance> RBX::weak_from<RBX::Instance>(RBX::Instance*)")
+pub fn stub_0x7039e4(out: *mut WeakPtr<Instance>, this: *const Instance) {
+    // IDA 0x7039e4: null `this` yields an empty weak; otherwise the embedded
+    // `enable_shared_from_this` weak (`this + 40`, px adjusted by `-36` for
+    // multiple inheritance, which collapses here) is copied with a locked
+    // `weak_add_ref` (`Weak::clone`). A dead (never-owned or expired) owner
+    // throws `boost::bad_weak_ptr`, mapped to a panic.
+    // SAFETY: `out` must be writable; `this` must be null or valid.
+    unsafe {
+        let weak = match this.as_ref() {
+            None => WeakPtr::new(),
+            Some(inst) => inst.weak_owner.clone(),
+        };
+        if !this.is_null() && weak.upgrade().is_none() {
+            panic!("0x7039e4 RBX::weak_from<RBX::Instance>: bad_weak_ptr");
+        }
+        core::ptr::write(out, weak);
+    }
 }
 // 0x703cc0 — __ZN3RBX8Instance18childRemovedSignalERN5boost10shared_ptrIS0_EE
 #[doc(alias = "RBX::Instance::childRemovedSignal(rbx_core::SharedPtr<RBX::Instance> &)")]
@@ -250,8 +351,16 @@ pub fn stub_0x703ed0(this: *mut AncestryChangedSignalData) {
 // 0x703fb0 — __ZN3rbx7signals16signal_with_argsILi2EFvN5boost10shared_ptrIN3RBX8InstanceEEES6_EEclES6_S6_
 #[doc(alias = "rbx::signals::signal_with_args<2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::operator()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: rbx::signals::signal_with_args<2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::operator()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x703fb0() -> ! {
-    todo!("0x703fb0 rbx::signals::signal_with_args<2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::operator()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")
+pub fn stub_0x703fb0(this: *mut CombinedSignal, kind: u32, child: &SharedPtr<Instance>) {
+    // IDA 0x703fb0: no-op when the slot list is empty (`*a1 == 0`); else an
+    // `FLog::SignalPrints` log line, then `next()` walks each live slot and
+    // calls it with retained arg copies. The log, per-slot retain/release
+    // pairs, and slot-call unwind tables collapse into `Signal::fire`, which
+    // already skips dead/empty slot lists.
+    // SAFETY: `this` must point to a valid `CombinedSignal`.
+    unsafe {
+        (*this).slots.fire(CombinedEvent { kind, child: child.clone() });
+    }
 }
 // 0x704228 — __ZN3RBX8Instance24descendantRemovingSignalERKN5boost10shared_ptrIS0_EE
 #[doc(alias = "RBX::Instance::descendantRemovingSignal(rbx_core::SharedPtr<RBX::Instance> const&)")]
@@ -277,13 +386,29 @@ pub fn stub_0x70430c() -> ! {
 }
 // 0x704414 — __ZN3RBX8GuidItemINS_8InstanceEEC2Ev
 #[doc(alias = "RBX::GuidItem<RBX::Instance>::GuidItem(void)")]
-pub fn stub_0x704414() -> ! {
-    todo!("0x704414 RBX::GuidItem<RBX::Instance>::GuidItem(void)")
+pub fn stub_0x704414(this: *mut GuidItem) -> *mut GuidItem {
+    // IDA 0x704414: vtable store (compiler-managed here), zero `+4`/`+8`,
+    // then `RBX::Guid::Guid(this + 12)` (disasm `BL __ZN3RBX4GuidC1Ev`).
+    // SAFETY: `this` must point to valid uninitialized `GuidItem` storage.
+    unsafe {
+        core::ptr::write(this, GuidItem { registry: None, guid: GuidData::new() });
+        this
+    }
 }
 // 0x7045b0 — __ZN3RBX8GuidItemINS_8InstanceEED2Ev
 #[doc(alias = "RBX::GuidItem<RBX::Instance>::~GuidItem()")]
-pub fn stub_0x7045b0() -> ! {
-    todo!("0x7045b0 RBX::GuidItem<RBX::Instance>::~GuidItem()")
+pub fn stub_0x7045b0(this: *mut GuidItem) {
+    // IDA 0x7045b0: vtable reset (compiler-managed here); when the registry
+    // link at `+4` is set, `Registry::unregister` runs and clears `+4`/`+8`,
+    // so the trailing `+8` release is dead — the `Arc` drop inside
+    // `unregister` is that same release.
+    // SAFETY: `this` must point to a valid `GuidItem`.
+    unsafe {
+        let registry = (*this).registry.clone();
+        if let Some(registry) = registry {
+            stub_0x704ee8(SharedPtr::as_ptr(&registry), this);
+        }
+    }
 }
 // 0x704748 — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS2_3_bi6bind_tIvNS2_4_mfi3mf0IvS5_EENSD_5list1INS2_3argILi1EEEEEEEET0_T_SO_SN_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Instance>,boost::_bi::list1<boost::arg<1>>> std::for_each<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Instance>,boost::_bi::list1<boost::arg<1>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Instance>,boost::_bi::list1<boost::arg<1>>>)")]
@@ -299,13 +424,25 @@ pub fn stub_0x704794() -> ! {
 }
 // 0x704b68 — __ZN3RBX8Instance25PropertyChangedSignalDataD1Ev
 #[doc(alias = "RBX::Instance::PropertyChangedSignalData::~PropertyChangedSignalData()")]
-pub fn stub_0x704b68() -> ! {
-    todo!("0x704b68 RBX::Instance::PropertyChangedSignalData::~PropertyChangedSignalData()")
+pub fn stub_0x704b68(_this: *mut PropertyChangedSignalData) {
+    // IDA 0x704b68: `BX LR` — empty.
 }
 // 0x704ee8 — __ZN3RBX8GuidItemINS_8InstanceEE8Registry10unregisterEPS2_
 #[doc(alias = "RBX::GuidItem<RBX::Instance>::Registry::unregister(RBX::GuidItem<RBX::Instance>*)")]
-pub fn stub_0x704ee8() -> ! {
-    todo!("0x704ee8 RBX::GuidItem<RBX::Instance>::Registry::unregister(RBX::GuidItem<RBX::Instance>*)")
+pub fn stub_0x704ee8(registry: *const GuidRegistry, item: *mut GuidItem) {
+    // IDA 0x704ee8: `ReleaseAssert(item->registry.get() == this)` (Guid.h:144,
+    // gated by `FLog::Asserts`, hence `debug_assert`); lock the `+32` mutex;
+    // `_Rb_tree::erase(+8, guid)`; `ReleaseAssert(num == 1)` (Guid.h:150);
+    // unlock; clear `+4` and release `+8`. `HashMap::remove` under the lock is
+    // the same erase, and clearing the `Option` is the same release.
+    // SAFETY: `registry` must be valid; `item` must be valid and mutable.
+    unsafe {
+        let item = &mut *item;
+        debug_assert!(item.registry.as_ref().is_some_and(|r| SharedPtr::as_ptr(r) == registry));
+        let removed = (*registry).map.lock().remove(&item.guid);
+        debug_assert!(removed.is_some());
+        item.registry = None;
+    }
 }
 // 0x705088 — __ZNSt8_Rb_treeIN3RBX4Guid4DataESt4pairIKS2_PNS0_8InstanceEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE5eraseERS4_
 #[doc(alias = "std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,RBX::Instance *>,std::_Select1st<std::pair<RBX::Guid::Data const,RBX::Instance *>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,RBX::Instance *>>>::erase(RBX::Guid::Data const&)")]
@@ -329,13 +466,19 @@ pub fn stub_0x705170() -> ! {
 }
 // 0x7053f8 — __ZN3RBX22AbstractFactoryProductINS_8InstanceEED1Ev
 #[doc(alias = "RBX::AbstractFactoryProduct<RBX::Instance>::~AbstractFactoryProduct()")]
-pub fn stub_0x7053f8() -> ! {
-    todo!("0x7053f8 RBX::AbstractFactoryProduct<RBX::Instance>::~AbstractFactoryProduct()")
+pub fn stub_0x7053f8(_this: *mut AbstractFactoryProduct) {
+    // IDA 0x7053f8: `BX LR` — empty.
 }
 // 0x7053fc — __ZN3RBX22AbstractFactoryProductINS_8InstanceEED0Ev
 #[doc(alias = "RBX::AbstractFactoryProduct<RBX::Instance>::~AbstractFactoryProduct()")]
-pub fn stub_0x7053fc() -> ! {
-    todo!("0x7053fc RBX::AbstractFactoryProduct<RBX::Instance>::~AbstractFactoryProduct()")
+pub fn stub_0x7053fc(this: *mut AbstractFactoryProduct) {
+    // IDA 0x7053fc: the deleting dtor is a bare `B.W __ZdlPv$shim` (D1 is
+    // empty, so nothing runs before `operator delete`). Reclaiming the box
+    // frees the same global-heap allocation; there is no `Drop` to run.
+    // SAFETY: `this` must be a live box-allocated `AbstractFactoryProduct`.
+    unsafe {
+        drop(Box::from_raw(this));
+    }
 }
 // 0x70566c — __ZN5boost3_bi5list2INS_3argILi1EEENS0_5valueIPiEEEclIPFvNS_10shared_ptrIN3RBX8InstanceEEES5_ENS0_5list1IRKSC_EEEEvNS0_4typeIvEERT_RT0_i
 #[doc(alias = "void boost::_bi::list2<boost::arg<1>,boost::_bi::value<int *>>::operator()<void (*)(rbx_core::SharedPtr<RBX::Instance>,int *),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::Instance>,int *) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")]
@@ -388,14 +531,28 @@ pub fn stub_0x705a98() -> ! {
 // 0x705b28 — __ZN5boost10shared_ptrISt6vectorINS0_IN3RBX8InstanceEEESaIS4_EEEaSERKS7_
 #[doc(alias = "rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>::operator=(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> const&)")]
 // was: boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>::operator=(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> const&)
-pub fn stub_0x705b28() -> ! {
-    todo!("0x705b28 rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>::operator=(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> const&)")
+pub fn stub_0x705b28(
+    this: *mut SharedPtr<Vec<SharedPtr<Instance>>>,
+    other: *const SharedPtr<Vec<SharedPtr<Instance>>>,
+) -> *mut SharedPtr<Vec<SharedPtr<Instance>>> {
+    // IDA 0x705b28: retain `other`, copy px/pi over `this`, release the old
+    // control block. `Arc` clone-then-assign is the same ordering.
+    // SAFETY: `this` must be writable and `other` readable; both valid.
+    unsafe {
+        *this = (*other).clone();
+        this
+    }
 }
 // 0x705b60 — __ZN5boost8weak_ptrIN3RBX8InstanceEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
 #[doc(alias = "rbx_core::WeakPtr<RBX::Instance>::weak_ptr<RBX::Instance>(rbx_core::SharedPtr<RBX::Instance> const&,boost::detail::sp_enable_if_convertible<RBX::Instance,RBX::Instance>::type)")]
 // was: boost::weak_ptr<RBX::Instance>::weak_ptr<RBX::Instance>(boost::shared_ptr<RBX::Instance> const&,boost::detail::sp_enable_if_convertible<RBX::Instance,RBX::Instance>::type)
-pub fn stub_0x705b60() -> ! {
-    todo!("0x705b60 boost::weak_ptr<RBX::Instance>::weak_ptr<RBX::Instance>(rbx_core::SharedPtr<RBX::Instance> const&,boost::detail::sp_enable_if_convertible<RBX::Instance,RBX::Instance>::type)")
+pub fn stub_0x705b60(dst: *mut WeakPtr<Instance>, src: *const SharedPtr<Instance>) {
+    // IDA 0x705b60 (`weak_ptr(shared_ptr const&)`): copy px/pi, then
+    // `weak_add_ref` under the spinlock pool. `Arc::downgrade` is the same.
+    // SAFETY: `dst` must be writable `WeakPtr` storage; `src` a valid `SharedPtr`.
+    unsafe {
+        core::ptr::write(dst, SharedPtr::downgrade(&*src));
+    }
 }
 // 0x705fd0 — __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS3_IKNS4_10Reflection13DescribedBaseEEEET_SH_SH_RKT0_St26random_access_iterator_tag
 #[doc(alias = "__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> std::__find<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,rbx_core::SharedPtr<RBX::Reflection::DescribedBase const>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,rbx_core::SharedPtr<RBX::Reflection::DescribedBase const> const&,std::random_access_iterator_tag)")]
@@ -406,13 +563,31 @@ pub fn stub_0x705fd0() -> ! {
 // 0x706094 — __ZN12XmlAttributeC2IN3RBX14InstanceHandleEEERKNS1_4NameET_
 #[doc(alias = "XmlAttribute::XmlAttribute<RBX::InstanceHandle>(RBX::Name const&,RBX::InstanceHandle)")]
 // was: XmlAttribute::XmlAttribute<RBX::InstanceHandle>(RBX::Name const&,RBX::InstanceHandle)
-pub fn stub_0x706094() -> ! {
-    todo!("0x706094 XmlAttribute::XmlAttribute<RBX::InstanceHandle>(RBX::Name const&,RBX::InstanceHandle)")
+pub fn stub_0x706094(this: *mut XmlAttribute, name: u32, handle: &SharedPtr<Instance>) -> *mut XmlAttribute {
+    // IDA 0x706094: `*a1 = 0`; `XmlNameValuePair(a1 + 1, name, handle)`;
+    // `RBX::Allocator<XmlAttribute>::Allocator` is empty. `name` is the
+    // 32-bit `RBX::Name` id (`unsigned int` at IDA 0x7061bc).
+    // SAFETY: `this` must point to valid uninitialized `XmlAttribute` storage.
+    unsafe {
+        core::ptr::addr_of_mut!((*this).alloc_state).write(0);
+        stub_0x706198(core::ptr::addr_of_mut!((*this).pair), name, handle);
+        this
+    }
 }
 // 0x706198 — __ZN16XmlNameValuePairC2ERKN3RBX4NameENS0_14InstanceHandleE
 #[doc(alias = "XmlNameValuePair::XmlNameValuePair(RBX::Name const&,RBX::InstanceHandle)")]
-pub fn stub_0x706198() -> ! {
-    todo!("0x706198 XmlNameValuePair::XmlNameValuePair(RBX::Name const&,RBX::InstanceHandle)")
+pub fn stub_0x706198(this: *mut XmlNameValuePair, name: u32, handle: &SharedPtr<Instance>) -> *mut XmlNameValuePair {
+    // IDA 0x706198: `*(u64 *)a1 = name | 0x800000000`; the handle is cloned
+    // into a fresh 8-byte box stored at `a1 + 8` (the box only carries the
+    // retained control block; the `Arc` clone is that same retain).
+    // SAFETY: `this` must point to valid uninitialized `XmlNameValuePair` storage.
+    unsafe {
+        core::ptr::write(
+            this,
+            XmlNameValuePair { packed: u64::from(name) | 0x8_0000_0000, handle: handle.clone() },
+        );
+        this
+    }
 }
 // 0x706298 — __ZN5boost6detail8function15functor_managerIPFbPN3RBX8InstanceEEE6manageERKNS1_15function_bufferERS9_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<bool (*)(RBX::Instance *)>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
