@@ -1,0 +1,609 @@
+// Auto-generated skeletons for rbx-datamodel — from ida/export.json
+// Filter: RBX::Instance|DataModel|Workspace|RBX::Part|RBX::Model|Humanoid|RBX::Game; EA-sorted asc, NOT stubbed in any crate
+// Source: ida/export.json (85545 funcs, base 0x4000)
+// Batch: 100 stubs | range 0xf236e0..0xf53304 | union remainder after batch: 25
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; stripped from alias
+
+#![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
+
+use rbx_core::SharedPtr;
+
+// 0xf236e0 — __ZNK3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7Creator12getClassNameEv$shim
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7Creator12getClassNameEv$shim")]
+pub fn stub_0xf236e0() -> ! {
+    todo!("0xf236e0 __ZNK3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7Creator12getClassNameEv$shim")
+}
+
+// 0xf236f8 — __ZN3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7CreatorD2Ev$shim
+#[doc(alias = "__ZN3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7CreatorD2Ev$shim")]
+pub fn stub_0xf236f8() -> ! {
+    todo!("0xf236f8 __ZN3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7CreatorD2Ev$shim")
+}
+
+// 0xf2461c — __ZN3RBX13ModelInstance28findConstFirstModifierOfTypeINS_8HumanoidEEEPKT_PKNS_8InstanceE$shim
+#[doc(alias = "__ZN3RBX13ModelInstance28findConstFirstModifierOfTypeINS_8HumanoidEEEPKT_PKNS_8InstanceE$shim")]
+pub fn stub_0xf2461c() -> ! {
+    todo!("0xf2461c __ZN3RBX13ModelInstance28findConstFirstModifierOfTypeINS_8HumanoidEEEPKT_PKNS_8InstanceE$shim")
+}
+
+// 0xf24628 — __ZNK3RBX13ModelInstance28findConstFirstModifierOfTypeINS_8HumanoidEEEPKT_v$shim
+#[doc(alias = "__ZNK3RBX13ModelInstance28findConstFirstModifierOfTypeINS_8HumanoidEEEPKT_v$shim")]
+pub fn stub_0xf24628() -> ! {
+    todo!("0xf24628 __ZNK3RBX13ModelInstance28findConstFirstModifierOfTypeINS_8HumanoidEEEPKT_v$shim")
+}
+
+// 0xf2464c — __ZNK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7Creator12getClassNameEv$shim
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7Creator12getClassNameEv$shim")]
+pub fn stub_0xf2464c() -> ! {
+    todo!("0xf2464c __ZNK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7Creator12getClassNameEv$shim")
+}
+
+// 0xf24658 — __ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorD2Ev$shim
+#[doc(alias = "__ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorD2Ev$shim")]
+pub fn stub_0xf24658() -> ! {
+    todo!("0xf24658 __ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorD2Ev$shim")
+}
+
+// 0xf267a4 — j___ZN5boost10shared_ptrIN3RBX4GameEEC1INS1_16SecurePlayerGameEEEPT_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX4GameEEC1INS1_16SecurePlayerGameEEEPT_")]
+pub fn stub_0xf267a4() -> ! {
+    todo!("0xf267a4 j___ZN5boost10shared_ptrIN3RBX4GameEEC1INS1_16SecurePlayerGameEEEPT_")
+}
+
+// 0xf267f4 — j___ZN5boost3_bi5list2INS0_5valueIPKcEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEC2ES5_SA_
+#[doc(alias = "j___ZN5boost3_bi5list2INS0_5valueIPKcEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEC2ES5_SA_")]
+pub fn stub_0xf267f4() -> ! {
+    todo!("0xf267f4 j___ZN5boost3_bi5list2INS0_5valueIPKcEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEC2ES5_SA_")
+}
+
+// 0xf26804 — j___ZN5boost3_bi5list2INS0_5valueIPKcEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEclIPFvRKSsS9_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
+#[doc(alias = "j___ZN5boost3_bi5list2INS0_5valueIPKcEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEclIPFvRKSsS9_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")]
+pub fn stub_0xf26804() -> ! {
+    todo!("0xf26804 j___ZN5boost3_bi5list2INS0_5valueIPKcEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEclIPFvRKSsS9_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")
+}
+
+// 0xf26814 — j___ZN5boost3_bi5list2INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEC2ES3_S8_
+#[doc(alias = "j___ZN5boost3_bi5list2INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEC2ES3_S8_")]
+pub fn stub_0xf26814() -> ! {
+    todo!("0xf26814 j___ZN5boost3_bi5list2INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEC2ES3_S8_")
+}
+
+// 0xf26824 — j___ZN5boost3_bi5list2INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEclIPFviS7_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
+#[doc(alias = "j___ZN5boost3_bi5list2INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEclIPFviS7_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")]
+pub fn stub_0xf26824() -> ! {
+    todo!("0xf26824 j___ZN5boost3_bi5list2INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEclIPFviS7_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")
+}
+
+// 0xf26874 — j___ZN5boost3_bi5list3INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_I15JoinGameRequestEEEC2ES3_S8_SA_
+#[doc(alias = "j___ZN5boost3_bi5list3INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_I15JoinGameRequestEEEC2ES3_S8_SA_")]
+pub fn stub_0xf26874() -> ! {
+    todo!("0xf26874 j___ZN5boost3_bi5list3INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_I15JoinGameRequestEEEC2ES3_S8_SA_")
+}
+
+// 0xf26884 — j___ZN5boost3_bi5list3INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_I15JoinGameRequestEEEclIPFviS7_S9_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
+#[doc(alias = "j___ZN5boost3_bi5list3INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_I15JoinGameRequestEEEclIPFviS7_S9_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")]
+pub fn stub_0xf26884() -> ! {
+    todo!("0xf26884 j___ZN5boost3_bi5list3INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_I15JoinGameRequestEEEclIPFviS7_S9_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")
+}
+
+// 0xf26894 — j___ZN5boost3_bi5list3INS0_5valueIiEENS2_IPKcEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEC2ES3_S6_SB_
+#[doc(alias = "j___ZN5boost3_bi5list3INS0_5valueIiEENS2_IPKcEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEC2ES3_S6_SB_")]
+pub fn stub_0xf26894() -> ! {
+    todo!("0xf26894 j___ZN5boost3_bi5list3INS0_5valueIiEENS2_IPKcEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEC2ES3_S6_SB_")
+}
+
+// 0xf268a4 — j___ZN5boost3_bi5list3INS0_5valueIiEENS2_IPKcEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEclIPFviRKSsSA_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
+#[doc(alias = "j___ZN5boost3_bi5list3INS0_5valueIiEENS2_IPKcEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEclIPFviRKSsSA_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")]
+pub fn stub_0xf268a4() -> ! {
+    todo!("0xf268a4 j___ZN5boost3_bi5list3INS0_5valueIiEENS2_IPKcEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEclIPFviRKSsSA_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")
+}
+
+// 0xf26934 — j___ZN5boost3_bi8storage3INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_I15JoinGameRequestEEEC2ES3_S8_SA_
+#[doc(alias = "j___ZN5boost3_bi8storage3INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_I15JoinGameRequestEEEC2ES3_S8_SA_")]
+pub fn stub_0xf26934() -> ! {
+    todo!("0xf26934 j___ZN5boost3_bi8storage3INS0_5valueIiEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_I15JoinGameRequestEEEC2ES3_S8_SA_")
+}
+
+// 0xf269a4 — j___ZN5boost4bindIvRKSsNS_10shared_ptrIN3RBX4GameEEEPKcS6_EENS_3_bi6bind_tIT_PFSB_T0_T1_ENS9_9list_av_2IT2_T3_E4typeEEESF_SH_SI_
+#[doc(alias = "j___ZN5boost4bindIvRKSsNS_10shared_ptrIN3RBX4GameEEEPKcS6_EENS_3_bi6bind_tIT_PFSB_T0_T1_ENS9_9list_av_2IT2_T3_E4typeEEESF_SH_SI_")]
+pub fn stub_0xf269a4() -> ! {
+    todo!("0xf269a4 j___ZN5boost4bindIvRKSsNS_10shared_ptrIN3RBX4GameEEEPKcS6_EENS_3_bi6bind_tIT_PFSB_T0_T1_ENS9_9list_av_2IT2_T3_E4typeEEESF_SH_SI_")
+}
+
+// 0xf269c4 — j___ZN5boost4bindIviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestiS4_S5_EENS_3_bi6bind_tIT_PFS8_T0_T1_T2_ENS6_9list_av_3IT3_T4_T5_E4typeEEESD_SF_SG_SH_
+#[doc(alias = "j___ZN5boost4bindIviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestiS4_S5_EENS_3_bi6bind_tIT_PFS8_T0_T1_T2_ENS6_9list_av_3IT3_T4_T5_E4typeEEESD_SF_SG_SH_")]
+pub fn stub_0xf269c4() -> ! {
+    todo!("0xf269c4 j___ZN5boost4bindIviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestiS4_S5_EENS_3_bi6bind_tIT_PFS8_T0_T1_T2_ENS6_9list_av_3IT3_T4_T5_E4typeEEESD_SF_SG_SH_")
+}
+
+// 0xf269d4 — j___ZN5boost4bindIviNS_10shared_ptrIN3RBX4GameEEEiS4_EENS_3_bi6bind_tIT_PFS7_T0_T1_ENS5_9list_av_2IT2_T3_E4typeEEESB_SD_SE_
+#[doc(alias = "j___ZN5boost4bindIviNS_10shared_ptrIN3RBX4GameEEEiS4_EENS_3_bi6bind_tIT_PFS7_T0_T1_ENS5_9list_av_2IT2_T3_E4typeEEESB_SD_SE_")]
+pub fn stub_0xf269d4() -> ! {
+    todo!("0xf269d4 j___ZN5boost4bindIviNS_10shared_ptrIN3RBX4GameEEEiS4_EENS_3_bi6bind_tIT_PFS7_T0_T1_ENS5_9list_av_2IT2_T3_E4typeEEESB_SD_SE_")
+}
+
+// 0xf269e4 — j___ZN5boost4bindIviRKSsNS_10shared_ptrIN3RBX4GameEEEiPKcS6_EENS_3_bi6bind_tIT_PFSB_T0_T1_T2_ENS9_9list_av_3IT3_T4_T5_E4typeEEESG_SI_SJ_SK_
+#[doc(alias = "j___ZN5boost4bindIviRKSsNS_10shared_ptrIN3RBX4GameEEEiPKcS6_EENS_3_bi6bind_tIT_PFSB_T0_T1_T2_ENS9_9list_av_3IT3_T4_T5_E4typeEEESG_SI_SJ_SK_")]
+pub fn stub_0xf269e4() -> ! {
+    todo!("0xf269e4 j___ZN5boost4bindIviRKSsNS_10shared_ptrIN3RBX4GameEEEiPKcS6_EENS_3_bi6bind_tIT_PFSB_T0_T1_T2_ENS9_9list_av_3IT3_T4_T5_E4typeEEESG_SI_SJ_SK_")
+}
+
+// 0xf26a94 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIPKcEENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+#[doc(alias = "j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIPKcEENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
+pub fn stub_0xf26a94() -> ! {
+    todo!("0xf26a94 j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIPKcEENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+}
+
+// 0xf26aa4 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS3_5list3INS3_5valueIiEENSD_IS8_EENSD_IS9_EEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+#[doc(alias = "j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS3_5list3INS3_5valueIiEENSD_IS8_EENSD_IS9_EEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
+pub fn stub_0xf26aa4() -> ! {
+    todo!("0xf26aa4 j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS3_5list3INS3_5valueIiEENSD_IS8_EENSD_IS9_EEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+}
+
+// 0xf26ab4 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIiEENSC_IS8_EEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+#[doc(alias = "j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIiEENSC_IS8_EEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
+pub fn stub_0xf26ab4() -> ! {
+    todo!("0xf26ab4 j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIiEENSC_IS8_EEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+}
+
+// 0xf26ac4 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list3INS3_5valueIiEENSE_IPKcEENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+#[doc(alias = "j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list3INS3_5valueIiEENSE_IPKcEENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
+pub fn stub_0xf26ac4() -> ! {
+    todo!("0xf26ac4 j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list3INS3_5valueIiEENSE_IPKcEENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+}
+
+// 0xf26b44 — j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIPKcEENSE_ISA_EEEEEEEEvT_
+#[doc(alias = "j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIPKcEENSE_ISA_EEEEEEEEvT_")]
+pub fn stub_0xf26b44() -> ! {
+    todo!("0xf26b44 j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIPKcEENSE_ISA_EEEEEEEEvT_")
+}
+
+// 0xf26b54 — j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS3_5list3INS3_5valueIiEENSD_IS8_EENSD_IS9_EEEEEEEEvT_
+#[doc(alias = "j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS3_5list3INS3_5valueIiEENSD_IS8_EENSD_IS9_EEEEEEEEvT_")]
+pub fn stub_0xf26b54() -> ! {
+    todo!("0xf26b54 j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS3_5list3INS3_5valueIiEENSD_IS8_EENSD_IS9_EEEEEEEEvT_")
+}
+
+// 0xf26b64 — j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIiEENSC_IS8_EEEEEEEEvT_
+#[doc(alias = "j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIiEENSC_IS8_EEEEEEEEvT_")]
+pub fn stub_0xf26b64() -> ! {
+    todo!("0xf26b64 j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIiEENSC_IS8_EEEEEEEEvT_")
+}
+
+// 0xf26b74 — j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list3INS3_5valueIiEENSE_IPKcEENSE_ISA_EEEEEEEEvT_
+#[doc(alias = "j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list3INS3_5valueIiEENSE_IPKcEENSE_ISA_EEEEEEEEvT_")]
+pub fn stub_0xf26b74() -> ! {
+    todo!("0xf26b74 j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS3_5list3INS3_5valueIiEENSE_IPKcEENSE_ISA_EEEEEEEEvT_")
+}
+
+// 0xf26d04 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIPKcEENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferE
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIPKcEENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferE")]
+pub fn stub_0xf26d04() -> ! {
+    todo!("0xf26d04 j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIPKcEENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferE")
+}
+
+// 0xf26d14 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIPKcEENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIPKcEENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
+pub fn stub_0xf26d14() -> ! {
+    todo!("0xf26d14 j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvRKSsNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIPKcEENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
+
+// 0xf26d24 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS5_5list3INS5_5valueIiEENSF_ISA_EENSF_ISB_EEEEEEEEbT_RNS1_15function_bufferE
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS5_5list3INS5_5valueIiEENSF_ISA_EENSF_ISB_EEEEEEEEbT_RNS1_15function_bufferE")]
+pub fn stub_0xf26d24() -> ! {
+    todo!("0xf26d24 j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS5_5list3INS5_5valueIiEENSF_ISA_EENSF_ISB_EEEEEEEEbT_RNS1_15function_bufferE")
+}
+
+// 0xf26d34 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS5_5list3INS5_5valueIiEENSF_ISA_EENSF_ISB_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS5_5list3INS5_5valueIiEENSF_ISA_EENSF_ISB_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
+pub fn stub_0xf26d34() -> ! {
+    todo!("0xf26d34 j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEE15JoinGameRequestENS5_5list3INS5_5valueIiEENSF_ISA_EENSF_ISB_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
+
+// 0xf26d44 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIiEENSE_ISA_EEEEEEEEbT_RNS1_15function_bufferE
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIiEENSE_ISA_EEEEEEEEbT_RNS1_15function_bufferE")]
+pub fn stub_0xf26d44() -> ! {
+    todo!("0xf26d44 j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIiEENSE_ISA_EEEEEEEEbT_RNS1_15function_bufferE")
+}
+
+// 0xf26d54 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIiEENSE_ISA_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIiEENSE_ISA_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
+pub fn stub_0xf26d54() -> ! {
+    todo!("0xf26d54 j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIiEENSE_ISA_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
+
+// 0xf26d64 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS5_5list3INS5_5valueIiEENSG_IPKcEENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferE
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS5_5list3INS5_5valueIiEENSG_IPKcEENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferE")]
+pub fn stub_0xf26d64() -> ! {
+    todo!("0xf26d64 j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS5_5list3INS5_5valueIiEENSG_IPKcEENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferE")
+}
+
+// 0xf26d74 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS5_5list3INS5_5valueIiEENSG_IPKcEENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS5_5list3INS5_5valueIiEENSG_IPKcEENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
+pub fn stub_0xf26d74() -> ! {
+    todo!("0xf26d74 j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFviRKSsNS_10shared_ptrIN3RBX4GameEEEENS5_5list3INS5_5valueIiEENSG_IPKcEENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
+
+// 0xf26fd4 — j___ZN5boost10shared_ptrIN3RBX4GameEEaSERKS3_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX4GameEEaSERKS3_")]
+pub fn stub_0xf26fd4() -> ! {
+    todo!("0xf26fd4 j___ZN5boost10shared_ptrIN3RBX4GameEEaSERKS3_")
+}
+
+// 0xf35294 — j___ZN5boost6detail12shared_countC2IPN3RBX8GameToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IPN3RBX8GameToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")]
+pub fn stub_0xf35294() -> ! {
+    todo!("0xf35294 j___ZN5boost6detail12shared_countC2IPN3RBX8GameToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+// 0xf35424 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8GameToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8GameToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
+pub fn stub_0xf35424() -> ! {
+    todo!("0xf35424 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8GameToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf3c494 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_12GameSettings12VideoQualityEEERS3_RKT_
+#[doc(alias = "j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_12GameSettings12VideoQualityEEERS3_RKT_")]
+pub fn stub_0xf3c494() -> ! {
+    todo!("0xf3c494 j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_12GameSettings12VideoQualityEEERS3_RKT_")
+}
+
+// 0xf3c4a4 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_12GameSettings13UploadSettingEEERS3_RKT_
+#[doc(alias = "j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_12GameSettings13UploadSettingEEERS3_RKT_")]
+pub fn stub_0xf3c4a4() -> ! {
+    todo!("0xf3c4a4 j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_12GameSettings13UploadSettingEEERS3_RKT_")
+}
+
+// 0xf3c574 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_17GameBasicSettings11ControlModeEEERS3_RKT_
+#[doc(alias = "j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_17GameBasicSettings11ControlModeEEERS3_RKT_")]
+pub fn stub_0xf3c574() -> ! {
+    todo!("0xf3c574 j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_17GameBasicSettings11ControlModeEEERS3_RKT_")
+}
+
+// 0xf3c584 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_17GameBasicSettings20RenderQualitySettingEEERS3_RKT_
+#[doc(alias = "j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_17GameBasicSettings20RenderQualitySettingEEERS3_RKT_")]
+pub fn stub_0xf3c584() -> ! {
+    todo!("0xf3c584 j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_17GameBasicSettings20RenderQualitySettingEEERS3_RKT_")
+}
+
+// 0xf3c7e4 — j___ZN3rbx14implementation12typed_holderIN3RBX12GameSettings12VideoQualityEE9singletonEv
+#[doc(alias = "j___ZN3rbx14implementation12typed_holderIN3RBX12GameSettings12VideoQualityEE9singletonEv")]
+pub fn stub_0xf3c7e4() -> ! {
+    todo!("0xf3c7e4 j___ZN3rbx14implementation12typed_holderIN3RBX12GameSettings12VideoQualityEE9singletonEv")
+}
+
+// 0xf3c7f4 — j___ZN3rbx14implementation12typed_holderIN3RBX12GameSettings13UploadSettingEE9singletonEv
+#[doc(alias = "j___ZN3rbx14implementation12typed_holderIN3RBX12GameSettings13UploadSettingEE9singletonEv")]
+pub fn stub_0xf3c7f4() -> ! {
+    todo!("0xf3c7f4 j___ZN3rbx14implementation12typed_holderIN3RBX12GameSettings13UploadSettingEE9singletonEv")
+}
+
+// 0xf3c8c4 — j___ZN3rbx14implementation12typed_holderIN3RBX17GameBasicSettings11ControlModeEE9singletonEv
+#[doc(alias = "j___ZN3rbx14implementation12typed_holderIN3RBX17GameBasicSettings11ControlModeEE9singletonEv")]
+pub fn stub_0xf3c8c4() -> ! {
+    todo!("0xf3c8c4 j___ZN3rbx14implementation12typed_holderIN3RBX17GameBasicSettings11ControlModeEE9singletonEv")
+}
+
+// 0xf3c8d4 — j___ZN3rbx14implementation12typed_holderIN3RBX17GameBasicSettings20RenderQualitySettingEE9singletonEv
+#[doc(alias = "j___ZN3rbx14implementation12typed_holderIN3RBX17GameBasicSettings20RenderQualitySettingEE9singletonEv")]
+pub fn stub_0xf3c8d4() -> ! {
+    todo!("0xf3c8d4 j___ZN3rbx14implementation12typed_holderIN3RBX17GameBasicSettings20RenderQualitySettingEE9singletonEv")
+}
+
+// 0xf3cba4 — j___ZN3rbx8any_castIRKN3RBX12GameSettings12VideoQualityENS1_7Region3EEET_RNS_13placement_anyIT0_EE
+#[doc(alias = "j___ZN3rbx8any_castIRKN3RBX12GameSettings12VideoQualityENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
+pub fn stub_0xf3cba4() -> ! {
+    todo!("0xf3cba4 j___ZN3rbx8any_castIRKN3RBX12GameSettings12VideoQualityENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+}
+
+// 0xf3cbb4 — j___ZN3rbx8any_castIRKN3RBX12GameSettings13UploadSettingENS1_7Region3EEET_RNS_13placement_anyIT0_EE
+#[doc(alias = "j___ZN3rbx8any_castIRKN3RBX12GameSettings13UploadSettingENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
+pub fn stub_0xf3cbb4() -> ! {
+    todo!("0xf3cbb4 j___ZN3rbx8any_castIRKN3RBX12GameSettings13UploadSettingENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+}
+
+// 0xf3cc84 — j___ZN3rbx8any_castIRKN3RBX17GameBasicSettings11ControlModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
+#[doc(alias = "j___ZN3rbx8any_castIRKN3RBX17GameBasicSettings11ControlModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
+pub fn stub_0xf3cc84() -> ! {
+    todo!("0xf3cc84 j___ZN3rbx8any_castIRKN3RBX17GameBasicSettings11ControlModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+}
+
+// 0xf3cc94 — j___ZN3rbx8any_castIRKN3RBX17GameBasicSettings20RenderQualitySettingENS1_7Region3EEET_RNS_13placement_anyIT0_EE
+#[doc(alias = "j___ZN3rbx8any_castIRKN3RBX17GameBasicSettings20RenderQualitySettingENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
+pub fn stub_0xf3cc94() -> ! {
+    todo!("0xf3cc94 j___ZN3rbx8any_castIRKN3RBX17GameBasicSettings20RenderQualitySettingENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+}
+
+// 0xf3dc54 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings12VideoQualityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings12VideoQualityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
+pub fn stub_0xf3dc54() -> ! {
+    todo!("0xf3dc54 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings12VideoQualityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+}
+
+// 0xf3dc64 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings13UploadSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings13UploadSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
+pub fn stub_0xf3dc64() -> ! {
+    todo!("0xf3dc64 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings13UploadSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+}
+
+// 0xf3dd34 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_17GameBasicSettings11ControlModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_17GameBasicSettings11ControlModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
+pub fn stub_0xf3dd34() -> ! {
+    todo!("0xf3dd34 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_17GameBasicSettings11ControlModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+}
+
+// 0xf3dd44 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_17GameBasicSettings20RenderQualitySettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_17GameBasicSettings20RenderQualitySettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
+pub fn stub_0xf3dd44() -> ! {
+    todo!("0xf3dd44 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_17GameBasicSettings20RenderQualitySettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+}
+
+// 0xf3eb14 — j___ZN5boost3_bi5list2INS0_5valueIPN3RBX4GameEEENS2_ISsEEEC2ES6_S7_
+#[doc(alias = "j___ZN5boost3_bi5list2INS0_5valueIPN3RBX4GameEEENS2_ISsEEEC2ES6_S7_")]
+pub fn stub_0xf3eb14() -> ! {
+    todo!("0xf3eb14 j___ZN5boost3_bi5list2INS0_5valueIPN3RBX4GameEEENS2_ISsEEEC2ES6_S7_")
+}
+
+// 0xf3eb34 — j___ZN5boost4bindIvN3RBX4GameERKSsPS2_SsEENS_3_bi6bind_tIT_NS_4_mfi3mf1IS8_T0_T1_EENS6_9list_av_2IT2_T3_E4typeEEEMSB_FS8_SC_ESF_SG_
+#[doc(alias = "j___ZN5boost4bindIvN3RBX4GameERKSsPS2_SsEENS_3_bi6bind_tIT_NS_4_mfi3mf1IS8_T0_T1_EENS6_9list_av_2IT2_T3_E4typeEEEMSB_FS8_SC_ESF_SG_")]
+pub fn stub_0xf3eb34() -> ! {
+    todo!("0xf3eb34 j___ZN5boost4bindIvN3RBX4GameERKSsPS2_SsEENS_3_bi6bind_tIT_NS_4_mfi3mf1IS8_T0_T1_EENS6_9list_av_2IT2_T3_E4typeEEEMSB_FS8_SC_ESF_SG_")
+}
+
+// 0xf3eb84 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4GameERKSsEENS3_5list2INS3_5valueIPS8_EENSD_ISsEEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+#[doc(alias = "j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4GameERKSsEENS3_5list2INS3_5valueIPS8_EENSD_ISsEEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
+pub fn stub_0xf3eb84() -> ! {
+    todo!("0xf3eb84 j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4GameERKSsEENS3_5list2INS3_5valueIPS8_EENSD_ISsEEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+}
+
+// 0xf3ecc4 — j___ZN3RBX12GameSettingsD1Ev
+#[doc(alias = "j___ZN3RBX12GameSettingsD1Ev")]
+pub fn stub_0xf3ecc4() -> ! {
+    todo!("0xf3ecc4 j___ZN3RBX12GameSettingsD1Ev")
+}
+
+// 0xf3ed44 — j___ZNSt12_Vector_baseIN3RBX12GameSettings12VideoQualityESaIS2_EE11_M_allocateEm
+#[doc(alias = "j___ZNSt12_Vector_baseIN3RBX12GameSettings12VideoQualityESaIS2_EE11_M_allocateEm")]
+pub fn stub_0xf3ed44() -> ! {
+    todo!("0xf3ed44 j___ZNSt12_Vector_baseIN3RBX12GameSettings12VideoQualityESaIS2_EE11_M_allocateEm")
+}
+
+// 0xf3ed54 — j___ZNSt12_Vector_baseIN3RBX12GameSettings13UploadSettingESaIS2_EE11_M_allocateEm
+#[doc(alias = "j___ZNSt12_Vector_baseIN3RBX12GameSettings13UploadSettingESaIS2_EE11_M_allocateEm")]
+pub fn stub_0xf3ed54() -> ! {
+    todo!("0xf3ed54 j___ZNSt12_Vector_baseIN3RBX12GameSettings13UploadSettingESaIS2_EE11_M_allocateEm")
+}
+
+// 0xf3ed64 — j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX12GameSettings12VideoQualityES6_EET0_T_S8_S7_
+#[doc(alias = "j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX12GameSettings12VideoQualityES6_EET0_T_S8_S7_")]
+pub fn stub_0xf3ed64() -> ! {
+    todo!("0xf3ed64 j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX12GameSettings12VideoQualityES6_EET0_T_S8_S7_")
+}
+
+// 0xf3ed74 — j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX12GameSettings13UploadSettingES6_EET0_T_S8_S7_
+#[doc(alias = "j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX12GameSettings13UploadSettingES6_EET0_T_S8_S7_")]
+pub fn stub_0xf3ed74() -> ! {
+    todo!("0xf3ed74 j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX12GameSettings13UploadSettingES6_EET0_T_S8_S7_")
+}
+
+// 0xf3ed84 — j___ZNSt3mapIPKN3RBX4NameENS0_12GameSettings12VideoQualityESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
+#[doc(alias = "j___ZNSt3mapIPKN3RBX4NameENS0_12GameSettings12VideoQualityESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")]
+pub fn stub_0xf3ed84() -> ! {
+    todo!("0xf3ed84 j___ZNSt3mapIPKN3RBX4NameENS0_12GameSettings12VideoQualityESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")
+}
+
+// 0xf3ed94 — j___ZNSt3mapIPKN3RBX4NameENS0_12GameSettings13UploadSettingESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
+#[doc(alias = "j___ZNSt3mapIPKN3RBX4NameENS0_12GameSettings13UploadSettingESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")]
+pub fn stub_0xf3ed94() -> ! {
+    todo!("0xf3ed94 j___ZNSt3mapIPKN3RBX4NameENS0_12GameSettings13UploadSettingESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")
+}
+
+// 0xf3eda4 — j___ZNSt6vectorIN3RBX12GameSettings12VideoQualityESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+#[doc(alias = "j___ZNSt6vectorIN3RBX12GameSettings12VideoQualityESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
+pub fn stub_0xf3eda4() -> ! {
+    todo!("0xf3eda4 j___ZNSt6vectorIN3RBX12GameSettings12VideoQualityESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")
+}
+
+// 0xf3edb4 — j___ZNSt6vectorIN3RBX12GameSettings12VideoQualityESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
+#[doc(alias = "j___ZNSt6vectorIN3RBX12GameSettings12VideoQualityESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")]
+pub fn stub_0xf3edb4() -> ! {
+    todo!("0xf3edb4 j___ZNSt6vectorIN3RBX12GameSettings12VideoQualityESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")
+}
+
+// 0xf3edc4 — j___ZNSt6vectorIN3RBX12GameSettings12VideoQualityESaIS2_EE6resizeEmS2_
+#[doc(alias = "j___ZNSt6vectorIN3RBX12GameSettings12VideoQualityESaIS2_EE6resizeEmS2_")]
+pub fn stub_0xf3edc4() -> ! {
+    todo!("0xf3edc4 j___ZNSt6vectorIN3RBX12GameSettings12VideoQualityESaIS2_EE6resizeEmS2_")
+}
+
+// 0xf3edd4 — j___ZNSt6vectorIN3RBX12GameSettings12VideoQualityESaIS2_EE9push_backERKS2_
+#[doc(alias = "j___ZNSt6vectorIN3RBX12GameSettings12VideoQualityESaIS2_EE9push_backERKS2_")]
+pub fn stub_0xf3edd4() -> ! {
+    todo!("0xf3edd4 j___ZNSt6vectorIN3RBX12GameSettings12VideoQualityESaIS2_EE9push_backERKS2_")
+}
+
+// 0xf3ede4 — j___ZNSt6vectorIN3RBX12GameSettings13UploadSettingESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+#[doc(alias = "j___ZNSt6vectorIN3RBX12GameSettings13UploadSettingESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
+pub fn stub_0xf3ede4() -> ! {
+    todo!("0xf3ede4 j___ZNSt6vectorIN3RBX12GameSettings13UploadSettingESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")
+}
+
+// 0xf3edf4 — j___ZNSt6vectorIN3RBX12GameSettings13UploadSettingESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
+#[doc(alias = "j___ZNSt6vectorIN3RBX12GameSettings13UploadSettingESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")]
+pub fn stub_0xf3edf4() -> ! {
+    todo!("0xf3edf4 j___ZNSt6vectorIN3RBX12GameSettings13UploadSettingESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")
+}
+
+// 0xf3ee04 — j___ZNSt6vectorIN3RBX12GameSettings13UploadSettingESaIS2_EE6resizeEmS2_
+#[doc(alias = "j___ZNSt6vectorIN3RBX12GameSettings13UploadSettingESaIS2_EE6resizeEmS2_")]
+pub fn stub_0xf3ee04() -> ! {
+    todo!("0xf3ee04 j___ZNSt6vectorIN3RBX12GameSettings13UploadSettingESaIS2_EE6resizeEmS2_")
+}
+
+// 0xf3ee14 — j___ZNSt6vectorIN3RBX12GameSettings13UploadSettingESaIS2_EE9push_backERKS2_
+#[doc(alias = "j___ZNSt6vectorIN3RBX12GameSettings13UploadSettingESaIS2_EE9push_backERKS2_")]
+pub fn stub_0xf3ee14() -> ! {
+    todo!("0xf3ee14 j___ZNSt6vectorIN3RBX12GameSettings13UploadSettingESaIS2_EE9push_backERKS2_")
+}
+
+// 0xf3ee24 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings12VideoQualityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings12VideoQualityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")]
+pub fn stub_0xf3ee24() -> ! {
+    todo!("0xf3ee24 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings12VideoQualityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")
+}
+
+// 0xf3ee34 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings12VideoQualityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings12VideoQualityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")]
+pub fn stub_0xf3ee34() -> ! {
+    todo!("0xf3ee34 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings12VideoQualityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")
+}
+
+// 0xf3ee44 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings12VideoQualityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings12VideoQualityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")]
+pub fn stub_0xf3ee44() -> ! {
+    todo!("0xf3ee44 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings12VideoQualityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")
+}
+
+// 0xf3ee54 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings13UploadSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings13UploadSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")]
+pub fn stub_0xf3ee54() -> ! {
+    todo!("0xf3ee54 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings13UploadSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")
+}
+
+// 0xf3ee64 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings13UploadSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings13UploadSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")]
+pub fn stub_0xf3ee64() -> ! {
+    todo!("0xf3ee64 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings13UploadSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")
+}
+
+// 0xf3ee74 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings13UploadSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings13UploadSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")]
+pub fn stub_0xf3ee74() -> ! {
+    todo!("0xf3ee74 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings13UploadSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")
+}
+
+// 0xf49884 — j___ZN3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE17static_getCreatorEv
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE17static_getCreatorEv")]
+pub fn stub_0xf49884() -> ! {
+    todo!("0xf49884 j___ZN3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE17static_getCreatorEv")
+}
+
+// 0xf49894 — j___ZN3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7CreatorC2Ev
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_0xf49894() -> ! {
+    todo!("0xf49894 j___ZN3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0xf498a4 — j___ZN3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7CreatorD2Ev
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_0xf498a4() -> ! {
+    todo!("0xf498a4 j___ZN3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0xf49cd4 — j___ZNK3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7Creator12getClassNameEv
+#[doc(alias = "j___ZNK3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7Creator12getClassNameEv")]
+pub fn stub_0xf49cd4() -> ! {
+    todo!("0xf49cd4 j___ZNK3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7Creator12getClassNameEv")
+}
+
+// 0xf521d4 — j___ZN5boost10shared_ptrIN3RBX8ChatLineEEC2INS1_12GameChatLineEEEPT_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX8ChatLineEEC2INS1_12GameChatLineEEEPT_")]
+pub fn stub_0xf521d4() -> ! {
+    todo!("0xf521d4 j___ZN5boost10shared_ptrIN3RBX8ChatLineEEC2INS1_12GameChatLineEEEPT_")
+}
+
+// 0xf52304 — j___ZN5boost6detail12shared_countC2IN3RBX12GameChatLineEEEPT_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IN3RBX12GameChatLineEEEPT_")]
+pub fn stub_0xf52304() -> ! {
+    todo!("0xf52304 j___ZN5boost6detail12shared_countC2IN3RBX12GameChatLineEEEPT_")
+}
+
+// 0xf52aa4 — j___ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E17static_getCreatorEv
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E17static_getCreatorEv")]
+pub fn stub_0xf52aa4() -> ! {
+    todo!("0xf52aa4 j___ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E17static_getCreatorEv")
+}
+
+// 0xf52ab4 — j___ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorC2Ev
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorC2Ev")]
+pub fn stub_0xf52ab4() -> ! {
+    todo!("0xf52ab4 j___ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorC2Ev")
+}
+
+// 0xf52ac4 — j___ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorD2Ev
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorD2Ev")]
+pub fn stub_0xf52ac4() -> ! {
+    todo!("0xf52ac4 j___ZN3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7CreatorD2Ev")
+}
+
+// 0xf52d24 — j___ZN5boost10shared_ptrIN3RBX5HUMAN13HumanoidStateEEC2IS3_EEPT_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX5HUMAN13HumanoidStateEEC2IS3_EEPT_")]
+pub fn stub_0xf52d24() -> ! {
+    todo!("0xf52d24 j___ZN5boost10shared_ptrIN3RBX5HUMAN13HumanoidStateEEC2IS3_EEPT_")
+}
+
+// 0xf52e34 — j___ZN5boost6detail12shared_countC2IN3RBX5HUMAN13HumanoidStateEEEPT_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IN3RBX5HUMAN13HumanoidStateEEEPT_")]
+pub fn stub_0xf52e34() -> ! {
+    todo!("0xf52e34 j___ZN5boost6detail12shared_countC2IN3RBX5HUMAN13HumanoidStateEEEPT_")
+}
+
+// 0xf52eb4 — j___ZN5boost8functionIFvN3RBX8Humanoid6StatusEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS1_10Reflection18GenericSlotWrapperERKS3_EENS7_5list2INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
+#[doc(alias = "j___ZN5boost8functionIFvN3RBX8Humanoid6StatusEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS1_10Reflection18GenericSlotWrapperERKS3_EENS7_5list2INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_0xf52eb4() -> ! {
+    todo!("0xf52eb4 j___ZN5boost8functionIFvN3RBX8Humanoid6StatusEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS1_10Reflection18GenericSlotWrapperERKS3_EENS7_5list2INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf52f04 — j___ZN5boost9function1IvN3RBX8Humanoid6StatusEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS1_10Reflection18GenericSlotWrapperERKS3_EENS6_5list2INS6_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
+#[doc(alias = "j___ZN5boost9function1IvN3RBX8Humanoid6StatusEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS1_10Reflection18GenericSlotWrapperERKS3_EENS6_5list2INS6_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_0xf52f04() -> ! {
+    todo!("0xf52f04 j___ZN5boost9function1IvN3RBX8Humanoid6StatusEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS1_10Reflection18GenericSlotWrapperERKS3_EENS6_5list2INS6_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf52fa4 — j___ZNK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7Creator12getClassNameEv
+#[doc(alias = "j___ZNK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7Creator12getClassNameEv")]
+pub fn stub_0xf52fa4() -> ! {
+    todo!("0xf52fa4 j___ZNK3RBX14FactoryProductINS_8HumanoidENS_8InstanceELZNS_9sHumanoidEES2_E7Creator12getClassNameEv")
+}
+
+// 0xf53294 — j___ZN3rbx7signals6signalIFvbEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX5HUMAN13HumanoidStateEbEENS6_5list2INS6_5valueIPSC_EENS5_3argILi1EEEEEEEEENS0_10connectionERKT_
+#[doc(alias = "j___ZN3rbx7signals6signalIFvbEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX5HUMAN13HumanoidStateEbEENS6_5list2INS6_5valueIPSC_EENS5_3argILi1EEEEEEEEENS0_10connectionERKT_")]
+pub fn stub_0xf53294() -> ! {
+    todo!("0xf53294 j___ZN3rbx7signals6signalIFvbEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX5HUMAN13HumanoidStateEbEENS6_5list2INS6_5valueIPSC_EENS5_3argILi1EEEEEEEEENS0_10connectionERKT_")
+}
+
+// 0xf532a4 — j___ZN5boost3_bi5list2INS0_5valueIPN3RBX5HUMAN13HumanoidStateEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS5_bEENS0_5list1IRbEEEEvNS0_4typeIvEERT_RT0_i
+#[doc(alias = "j___ZN5boost3_bi5list2INS0_5valueIPN3RBX5HUMAN13HumanoidStateEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS5_bEENS0_5list1IRbEEEEvNS0_4typeIvEERT_RT0_i")]
+pub fn stub_0xf532a4() -> ! {
+    todo!("0xf532a4 j___ZN5boost3_bi5list2INS0_5valueIPN3RBX5HUMAN13HumanoidStateEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS5_bEENS0_5list1IRbEEEEvNS0_4typeIvEERT_RT0_i")
+}
+
+// 0xf532c4 — j___ZNK3RBX5HUMAN13HumanoidState10usesLadderEv
+#[doc(alias = "j___ZNK3RBX5HUMAN13HumanoidState10usesLadderEv")]
+pub fn stub_0xf532c4() -> ! {
+    todo!("0xf532c4 j___ZNK3RBX5HUMAN13HumanoidState10usesLadderEv")
+}
+
+// 0xf532d4 — j___ZNK3RBX5HUMAN13HumanoidState19getFloorTouchNormalEv
+#[doc(alias = "j___ZNK3RBX5HUMAN13HumanoidState19getFloorTouchNormalEv")]
+pub fn stub_0xf532d4() -> ! {
+    todo!("0xf532d4 j___ZNK3RBX5HUMAN13HumanoidState19getFloorTouchNormalEv")
+}
+
+// 0xf532e4 — j___ZNK3RBX5HUMAN13HumanoidState21unitializedFloorTouchEv
+#[doc(alias = "j___ZNK3RBX5HUMAN13HumanoidState21unitializedFloorTouchEv")]
+pub fn stub_0xf532e4() -> ! {
+    todo!("0xf532e4 j___ZNK3RBX5HUMAN13HumanoidState21unitializedFloorTouchEv")
+}
+
+// 0xf532f4 — j___ZNK3RBX5HUMAN13HumanoidState31getFloorHumanoidLocationInWorldEv
+#[doc(alias = "j___ZNK3RBX5HUMAN13HumanoidState31getFloorHumanoidLocationInWorldEv")]
+pub fn stub_0xf532f4() -> ! {
+    todo!("0xf532f4 j___ZNK3RBX5HUMAN13HumanoidState31getFloorHumanoidLocationInWorldEv")
+}
+
+// 0xf53304 — j___ZNK3RBX5HUMAN13HumanoidState9usesFloorEv
+#[doc(alias = "j___ZNK3RBX5HUMAN13HumanoidState9usesFloorEv")]
+pub fn stub_0xf53304() -> ! {
+    todo!("0xf53304 j___ZNK3RBX5HUMAN13HumanoidState9usesFloorEv")
+}
