@@ -12,6 +12,13 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: unsigned int __fastcall(RBX::Network::PhysicsSender *this, RakNet::BitStream *, const RBX::Assembly *)
 #[doc(alias = "RBX::Network::PhysicsSender::writeAssembly(RakNet::BitStream &,RBX::Assembly const*)")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender13writeAssemblyERN6RakNet9BitStreamEPKNS_8AssemblyE")]
-pub fn stub_9c2950() -> ! {
-    todo!("0x9c2950 __ZN3RBX7Network13PhysicsSender13writeAssemblyERN6RakNet9BitStreamEPKNS_8AssemblyE")
+pub fn stub_9c2950(
+    sender: &mut crate::physics::PhysicsSender,
+    stream: &mut crate::bitstream::BitStream,
+    packet: &crate::physics::AssemblyPacket<'_>,
+) {
+    // IDA 0x9c2962..0x9c29bc: the original resolves the assembly primitive
+    // (`getConstAssemblyPrimitive`), its PV (`getPV`), and the +124 flags
+    // nibble; the caller passes them as `packet`.
+    sender.write_assembly(stream, packet);
 }

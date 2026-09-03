@@ -153,6 +153,90 @@ pub fn write_vector(heavy: bool, x: f32, y: f32, z: f32, stream: &mut BitStream)
         stream.write_bit(z > 0.0);
     }
 }
+/// `RBX::Network::CustomSerializer::writeNormQuat(bool,float const & x4,
+/// RakNet::BitStream &)` (IDA 0x98ae20).
+///
+/// `heavy` arrives in the `this` slot (fastcall bool, IDA 0x98ae42). The
+/// call site passes the quaternion w first (IDA 0x988b84..0x988ba2), so the
+/// order is `(w, x, y, z)`: w keeps only its sign bit, x/y/z each get a
+/// sign bit plus a biased magnitude — 8 bits scaled by 255 in heavy mode,
+/// 16 bits scaled by 32767 otherwise. Magnitudes are truncated
+/// (`vcvt.s32.f32`); the biases reuse [`SHORT_COMPONENT_BIAS`] /
+/// [`FULL_COMPONENT_BIAS`].
+pub fn write_norm_quat(heavy: bool, w: f32, x: f32, y: f32, z: f32, stream: &mut BitStream) {
+    // IDA 0x98ae42..0x98ae4a: `this == 1 -> Write1 else Write0`.
+    stream.write_bit(heavy);
+    // IDA 0x98ae5c..0x98ae64: w sign only; w is rebuilt by sqrt on read.
+    stream.write_bit(!(w >= 0.0));
+    let (bias, scale) = if heavy {
+        // IDA 0x98ae70..0x98ae78: bits 1132396544 == 255.0.
+        (SHORT_COMPONENT_BIAS, 255.0f32)
+    } else {
+        // Full-mode scale bits 1191181824 == 32767.0.
+        (FULL_COMPONENT_BIAS, 32767.0f32)
+    };
+    // IDA 0x98ae88..0x98afae: sign bit, then
+    // `(int)((bias + min(1, |c|)) * scale)` in 8 or 16 bits.
+    let mut component = |c: f32| {
+        stream.write_bit(!(c >= 0.0));
+        let q = ((bias + c.abs().min(1.0)) * scale) as u32;
+        if heavy {
+            stream.write_bits(q, 8);
+        } else {
+            stream.write_u16(q as u16);
+        }
+    };
+    component(x);
+    component(y);
+    component(z);
+}
+
+/// `RBX::Network::CustomSerializer::readNormQuat(float &,float &,float &,
+/// float &,RakNet::BitStream &)` (IDA 0x98b2a8).
+///
+/// The `this` receiver is the w out-param; the remaining outs are
+/// `(x, y, z)`. Bit order is the heavy flag, the w sign, then per
+/// component a sign bit and the biased magnitude (8 bits over 255.0 in
+/// heavy mode, 16 bits over 32767.0 otherwise). Short reads leave that
+/// out-param untouched and fall through to the final `return 1` (IDA
+/// 0x98b342/0x98b3d2/0x98b460), so this has no failure return.
+pub fn read_norm_quat(
+    stream: &mut BitStream,
+    w: &mut f32,
+    x: &mut f32,
+    y: &mut f32,
+    z: &mut f32,
+) {
+    // IDA 0x98b2bc..0x98b2e0: heavy flag; IDA 0x98b2e6..0x98b308: w sign.
+    let heavy = stream.read_bit().unwrap_or(false);
+    let w_sign = stream.read_bit().unwrap_or(false);
+    // Read biases are the exact negations of the write ones (heavy bits
+    // -1157595007 == -SHORT_COMPONENT_BIAS, light bits -1224736640 ==
+    // -FULL_COMPONENT_BIAS).
+    let component = |stream: &mut BitStream, out: &mut f32| {
+        // IDA 0x98b30c..0x98b328 / 0x98b39a..0x98b3b6 / 0x98b428..0x98b444.
+        let sign = stream.read_bit().unwrap_or(false);
+        if heavy {
+            // IDA 0x98b332..0x98b382: `raw / 255.0 + bias`.
+            if let Some(raw) = stream.read_bits(8) {
+                *out = raw as f32 / 255.0 - SHORT_COMPONENT_BIAS;
+            }
+        // IDA 0x98b35c..0x98b382: `raw / 32767.0 + bias`.
+        } else if let Some(raw) = stream.read_u16() {
+            *out = f32::from(raw) / 32767.0 - FULL_COMPONENT_BIAS;
+        }
+        // IDA 0x98b38a..0x98b392 and twins.
+        if sign {
+            *out = -*out;
+        }
+    };
+    component(stream, x);
+    component(stream, y);
+    component(stream, z);
+    // IDA 0x98b4b8..0x98b4fa: w rebuilt from the unit constraint.
+    let w_mag = (1.0 - *x * *x - *y * *y - *z * *z).max(0.0).sqrt();
+    *w = if w_sign { -w_mag } else { w_mag };
+}
 
 #[cfg(test)]
 mod tests {
@@ -184,5 +268,42 @@ mod tests {
         let mut r = BitStream::from_bytes(&[]);
         let mut out = [0.0; 3];
         assert!(!read_vector(&mut r, &mut out));
+    }
+    #[test]
+    fn norm_quat_heavy_roundtrip() {
+        let mut s = BitStream::new();
+        write_norm_quat(true, 0.9, 0.3, -0.2, 0.25, &mut s);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        let (mut w, mut x, mut y, mut z) = (0.0, 0.0, 0.0, 0.0);
+        read_norm_quat(&mut r, &mut w, &mut x, &mut y, &mut z);
+        // 8-bit grid over the biased range plus the bias roundtrip.
+        assert!((x - 0.3).abs() < 0.01, "x={x}");
+        assert!((y + 0.2).abs() < 0.01, "y={y}");
+        assert!((z - 0.25).abs() < 0.01, "z={z}");
+        assert!(w > 0.0, "w={w}");
+    }
+
+    #[test]
+    fn norm_quat_light_roundtrip_negative_w() {
+        let mut s = BitStream::new();
+        write_norm_quat(false, -0.8, 0.4, 0.3, -0.316_227_77, &mut s);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        let (mut w, mut x, mut y, mut z) = (1.0, 0.0, 0.0, 0.0);
+        read_norm_quat(&mut r, &mut w, &mut x, &mut y, &mut z);
+        assert!((x - 0.4).abs() < 0.005, "x={x}");
+        assert!((y - 0.3).abs() < 0.005, "y={y}");
+        assert!((z + 0.316_227_77).abs() < 0.005, "z={z}");
+        assert!(w < 0.0, "w={w}");
+    }
+
+    #[test]
+    fn norm_quat_short_read_keeps_outs() {
+        // Empty stream: every read misses, outs untouched except the
+        // rebuilt w (sqrt of the stale constraint), final `return 1`.
+        let mut r = BitStream::from_bytes(&[]);
+        let (mut w, mut x, mut y, mut z) = (1.0, 0.0, 0.0, 0.0);
+        read_norm_quat(&mut r, &mut w, &mut x, &mut y, &mut z);
+        assert_eq!((x, y, z), (0.0, 0.0, 0.0));
+        assert_eq!(w, 1.0);
     }
 }

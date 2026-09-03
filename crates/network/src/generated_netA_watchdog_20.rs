@@ -12,6 +12,19 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: void __fastcall(RBX::Network::ErrorCompPhysicsSender *this, RakNet::BitStream *, const RBX::Assembly *)
 #[doc(alias = "RBX::Network::ErrorCompPhysicsSender::writeAssembly(RakNet::BitStream &,RBX::Assembly const*)")]
 #[doc(alias = "__ZN3RBX7Network22ErrorCompPhysicsSender13writeAssemblyERN6RakNet9BitStreamEPKNS_8AssemblyE")]
-pub fn stub_9a88ec() -> ! {
-    todo!("0x9a88ec __ZN3RBX7Network22ErrorCompPhysicsSender13writeAssemblyERN6RakNet9BitStreamEPKNS_8AssemblyE")
+pub fn stub_9a88ec(
+    sender: &mut crate::physics::ErrorCompSender,
+    base: &mut crate::physics::PhysicsSender,
+    stream: &mut crate::bitstream::BitStream,
+    key: u32,
+    packet: &crate::physics::AssemblyPacket<'_>,
+    fingerprint: u64,
+) {
+    // IDA 0x9a8918..0x9a8ac4: with a cache (this + 47) a fresh
+    // `fetchIfUpToDate` (IDA 0x9a8924, +196 flag) replays cached bytes and
+    // returns; a miss runs the base `writeAssembly` inside a bit-cursor
+    // snapshot (IDA 0x9a8964..0x9a896e) and records it via `update` (IDA
+    // 0x9a8974). Without a cache the base write runs directly (IDA
+    // 0x9a8ac4). `fingerprint` summarizes the live assembly engine-side.
+    sender.write_assembly(base, stream, key, packet, fingerprint);
 }

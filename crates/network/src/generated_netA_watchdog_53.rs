@@ -12,6 +12,9 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: void __fastcall(RBX::Network::PhysicsSender::Job *__hidden this)
 #[doc(alias = "RBX::Network::PhysicsSender::Job::~Job()")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender3JobD1Ev")]
-pub fn stub_9c6168() -> ! {
-    todo!("0x9c6168 __ZN3RBX7Network13PhysicsSender3JobD1Ev")
+pub fn stub_9c6168(_job: crate::physics::SendJob) {
+    // IDA 0x9c6168..0x9c616c (D1): tail-calls D2 (IDA 0x9c6568). `SendJob`
+    // is stateless, so dropping `job` covers the vtable reset, the
+    // weak-ref release at +123, the shared-count dtor at +484, and the
+    // base `Job` dtor with no fields to release.
 }

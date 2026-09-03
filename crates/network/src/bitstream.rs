@@ -150,6 +150,47 @@ impl BitStream {
     pub fn read_vector3(&mut self) -> Option<[f32; 3]> {
         Some([self.read_f32()?, self.read_f32()?, self.read_f32()?])
     }
+    /// `RakNet::BitStream::WriteNormQuat<float>` (IDA 0x98a7e0): one sign
+    /// bit each for w, x, y, z, then `u16(|x| * 65535)` magnitudes for x, y
+    /// and z; w is rebuilt from the unit constraint on read.
+    pub fn write_norm_quat(&mut self, w: f32, x: f32, y: f32, z: f32) {
+        // IDA 0x98a812..0x98a85c: `>= 0.0 -> Write0 else Write1`, spelled as
+        // `!(v >= 0.0)` so NaN takes the Write1 arm exactly like the original.
+        self.write_bit(!(w >= 0.0));
+        self.write_bit(!(x >= 0.0));
+        self.write_bit(!(y >= 0.0));
+        self.write_bit(!(z >= 0.0));
+        // IDA 0x98a87a..0x98a8d2: `(int)(fabs(c) * 65535.0)`, truncated.
+        self.write_u16((x.abs() * 65535.0) as u16);
+        self.write_u16((y.abs() * 65535.0) as u16);
+        self.write_u16((z.abs() * 65535.0) as u16);
+    }
+
+    /// `RakNet::BitStream::ReadNormQuat<float>` (IDA 0x98b0e8). Short sign
+    /// reads behave as clear bits without consuming; a short magnitude read
+    /// fails the call without touching the outs. Returns `[w, x, y, z]`.
+    pub fn read_norm_quat(&mut self) -> Option<[f32; 4]> {
+        // IDA 0x98b0f6..0x98b196: four sign bits, defaulting to clear.
+        let w_sign = self.read_bit().unwrap_or(false);
+        let x_sign = self.read_bit().unwrap_or(false);
+        let y_sign = self.read_bit().unwrap_or(false);
+        let z_sign = self.read_bit().unwrap_or(false);
+        // IDA 0x98b1a0..0x98b1bc: a `Read<unsigned short>` failure returns 0.
+        // Magnitudes are double-divided by 65535 before narrowing (IDA
+        // 0x98b1d8..0x98b208).
+        let x = (f64::from(self.read_u16()?) / 65535.0) as f32;
+        let y = (f64::from(self.read_u16()?) / 65535.0) as f32;
+        let z = (f64::from(self.read_u16()?) / 65535.0) as f32;
+        // IDA 0x98b214..0x98b24a: apply the sign bits.
+        let x = if x_sign { -x } else { x };
+        let y = if y_sign { -y } else { y };
+        let z = if z_sign { -z } else { z };
+        // IDA 0x98b250..0x98b292: `w = sqrt(max(0, 1-x^2-y^2-z^2))`,
+        // negated by the first sign bit.
+        let w_mag = (1.0 - x * x - y * y - z * z).max(0.0).sqrt();
+        let w = if w_sign { -w_mag } else { w_mag };
+        Some([w, x, y, z])
+    }
 
     /// `RBX::operator<<(RakNet::BitStream &,std::string const&)` framing
     /// (IDA 0x95e9f4): u32 length + payload, rejecting `len >= 0x30D41`.
@@ -207,10 +248,38 @@ mod tests {
     }
 
     #[test]
-    fn string_framing_roundtrip() {
+    fn norm_quat_roundtrip_unit() {
+        // Identity-ish quaternion with positive w.
         let mut s = BitStream::new();
-        s.write_string("hello");
+        s.write_norm_quat(0.968_245_8, 0.144_337_57, 0.144_337_57, 0.144_337_57);
         let mut r = BitStream::from_bytes(&s.into_bytes());
-        assert_eq!(r.read_string(), "hello");
+        let [w, x, y, z] = r.read_norm_quat().expect("norm quat");
+        // u16 magnitude grid: each of x, y, z lands within one step.
+        assert!((x - 0.144_337_57).abs() < 1.0 / 65535.0 + 1e-6);
+        assert!((y - 0.144_337_57).abs() < 1.0 / 65535.0 + 1e-6);
+        assert!((z - 0.144_337_57).abs() < 1.0 / 65535.0 + 1e-6);
+        // w is rebuilt from the unit constraint, non-negative here.
+        assert!((w - (1.0 - x * x - y * y - z * z).max(0.0).sqrt()).abs() < 1e-6);
+        assert!(w >= 0.0);
+    }
+
+    #[test]
+    fn norm_quat_sign_bits_survive() {
+        let mut s = BitStream::new();
+        s.write_norm_quat(0.5, -0.5, -0.5, 0.5);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        let [w, x, y, z] = r.read_norm_quat().expect("norm quat");
+        assert!(x < 0.0 && y < 0.0 && z > 0.0 && w > 0.0);
+    }
+
+    #[test]
+    fn norm_quat_short_magnitude_fails_clean() {
+        // Four sign bits plus one u16: drop the last magnitude byte.
+        let mut s = BitStream::new();
+        s.write_norm_quat(1.0, 0.0, 0.0, 0.0);
+        let mut bytes = s.into_bytes();
+        bytes.truncate(bytes.len() - 1);
+        let mut r = BitStream::from_bytes(&bytes);
+        assert!(r.read_norm_quat().is_none());
     }
 }

@@ -12,6 +12,9 @@ const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 // type: void __fastcall(RBX::Network::PhysicsSender::TouchJob *__hidden this)
 #[doc(alias = "RBX::Network::PhysicsSender::TouchJob::~TouchJob()")]
 #[doc(alias = "__ZN3RBX7Network13PhysicsSender8TouchJobD0Ev")]
-pub fn stub_9c583c() -> ! {
-    todo!("0x9c583c __ZN3RBX7Network13PhysicsSender8TouchJobD0Ev")
+pub fn stub_9c583c(job: crate::physics::TouchJob) {
+    // IDA 0x9c583c..0x9c5892 (D0): runs D2 (IDA 0x9c5e38), then `operator
+    // delete`. Taking `job` by value moves ownership here; Rust frees the
+    // box on return, covering both steps (`TouchJob` is stateless).
+    crate::generated_netA_watchdog_52::stub_9c5e38(job);
 }

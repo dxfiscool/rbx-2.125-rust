@@ -13,12 +13,13 @@
 
 #![allow(dead_code)]
 
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 use std::f32::consts::{PI, TAU};
 
 use super::bitstream::BitStream;
 use super::custom_serializer::{
-    allow_physics_packet_compression, heavy_compression_enabled, read_vector, write_vector,
+    allow_physics_packet_compression, heavy_compression_enabled, read_norm_quat, read_vector,
+    write_norm_quat, write_vector,
 };
 
 /// `RBX::segSizeRadians()` (IDA 0x356e34): `2*pi/256` cached in
@@ -764,6 +765,395 @@ impl PhysicsSender {
         self.temp_motor_angles = scratch;
     }
 }
+/// Normalize a quaternion exactly like `Compressor::writeRotation` does
+/// (IDA 0x988b02..0x988b58): `inv = 1 / sqrt(x^2+y^2+z^2+w^2)`, each
+/// component scaled. There is no zero guard; a zero input propagates
+/// INF/NaN per IEEE, matching the `VDIV`/`VMUL` sequence.
+pub fn normalize_quat(q: [f32; 4]) -> [f32; 4] {
+    let len = (q[0] * q[0] + q[1] * q[1] + q[2] * q[2] + q[3] * q[3]).sqrt();
+    let inv = 1.0 / len;
+    [q[0] * inv, q[1] * inv, q[2] * inv, q[3] * inv]
+}
+
+/// `RBX::Network::Compressor::writeRotation(RakNet::BitStream &,
+/// G3D::Matrix3 const&, CompressionType)` (IDA 0x988ad8).
+///
+/// The caller passes the primitive quaternion (`Quaternion::Quaternion`
+/// of the rotation matrix, IDA 0x988afa); the matrix conversion itself
+/// stays engine-side.
+pub fn write_rotation(stream: &mut BitStream, quat: [f32; 4], compression: CompressionType) {
+    // IDA 0x988aec..0x988af2: the requested tag goes out first, verbatim.
+    stream.write_bits(compression as u32, 2);
+    let [x, y, z, w] = normalize_quat(quat);
+    match compression {
+        // IDA 0x988b60..0x988ba6: Quantized honors the packet-compression
+        // switch (IDA 0x988b7c).
+        CompressionType::Quantized => {
+            if allow_physics_packet_compression() {
+                write_norm_quat(heavy_compression_enabled(), w, x, y, z, stream);
+            } else {
+                stream.write_norm_quat(w, x, y, z);
+            }
+        }
+        // IDA 0x988b62..0x988b7a: Vector always uses the RakNet packing.
+        CompressionType::Vector => stream.write_norm_quat(w, x, y, z),
+        // IDA 0x988baa..0x988bcc: Raw writes w first, then x, y, z.
+        CompressionType::Raw => {
+            stream.write_f32(w);
+            stream.write_f32(x);
+            stream.write_f32(y);
+            stream.write_f32(z);
+        }
+    }
+    // NOTE: an out-of-range tag writes its low 2 bits above, then hits
+    // `ReleaseAssert("0", Compressor.cpp:56)` (IDA 0x988bee..0x988c3c);
+    // `CompressionType` cannot spell such a tag, so that arm has no
+    // reachable counterpart here.
+}
+/// `RBX::Network::Compressor::readRotation(RakNet::BitStream &,
+/// G3D::Matrix3 &)` (IDA 0x988e14), reduced to the quaternion: the trailing
+/// `Quaternion::toRotationMatrix` (IDA 0x98901c) stays engine-side.
+/// Short reads throw `std::runtime_error` in the original, mirrored here as
+/// panics, matching [`read_translation`].
+pub fn read_rotation(stream: &mut BitStream, out: &mut [f32; 4]) {
+    // IDA 0x988e48..0x988e56: w defaults to 1.0 (identity), x/y/z to 0.
+    *out = [1.0, 0.0, 0.0, 0.0];
+    match read_compression_type(stream) {
+        CompressionType::Quantized => {
+            if allow_physics_packet_compression() {
+                let (mut w, mut x, mut y, mut z) = (out[0], out[1], out[2], out[3]);
+                read_norm_quat(stream, &mut w, &mut x, &mut y, &mut z);
+                *out = [w, x, y, z];
+            } else if let Some(q) = stream.read_norm_quat() {
+                *out = q;
+            } else {
+                panic!("Failed to read Quaternion");
+            }
+        }
+        // IDA 0x988e9a..0x988ef8.
+        CompressionType::Vector => {
+            if let Some(q) = stream.read_norm_quat() {
+                *out = q;
+            } else {
+                panic!("Failed to read Quaternion");
+            }
+        }
+        // IDA 0x988f2c..0x988f4a: four raw floats w, x, y, z, no check.
+        CompressionType::Raw => {
+            if let Some(v) = stream.read_f32() {
+                out[0] = v;
+            }
+            if let Some(v) = stream.read_f32() {
+                out[1] = v;
+            }
+            if let Some(v) = stream.read_f32() {
+                out[2] = v;
+            }
+            if let Some(v) = stream.read_f32() {
+                out[3] = v;
+            }
+        }
+    }
+}
+
+/// One assembly's physics payload for [`PhysicsSender::write_assembly`].
+/// The original pulls these out of `Assembly::getConstAssemblyPrimitive`
+/// (IDA 0x9c2962) and `Primitive::getPV` (IDA 0x9c296c); the caller supplies
+/// them directly.
+#[derive(Clone, Debug)]
+pub struct AssemblyPacket<'a> {
+    /// `PV + 36`: position vector (IDA 0x9c2974).
+    pub translation: [f32; 3],
+    /// Rotation as the primitive quaternion (IDA 0x988afa).
+    pub rotation: [f32; 4],
+    /// `PV + 48`: velocity (IDA 0x9c298a).
+    pub velocity: Velocity,
+    /// `Assembly::getPhysics` slice written by `writeMotorAngles`
+    /// (IDA 0x9c2994).
+    pub motor_frames: &'a [CompactCFrame],
+    /// Low nibble of the byte at primitive + 124 (IDA 0x9c29ac).
+    pub flags_nibble: u8,
+}
+
+impl PhysicsSender {
+    /// `RBX::Network::PhysicsSender::writeAssembly` (IDA 0x9c2950):
+    /// translation, rotation, velocity, motor angles, then the 4-bit
+    /// flags nibble.
+    pub fn write_assembly(&mut self, stream: &mut BitStream, packet: &AssemblyPacket<'_>) {
+        // IDA 0x9c2974: `writeTranslation` with the sender's compression
+        // member at +16.
+        write_translation(stream, packet.translation, self.translation_compression);
+        // IDA 0x9c297e.
+        write_rotation(stream, packet.rotation, self.translation_compression);
+        // IDA 0x9c298a.
+        self.write_velocity(stream, &packet.velocity);
+        // IDA 0x9c2994.
+        self.write_motor_angles(stream, packet.motor_frames);
+        // IDA 0x9c29ac..0x9c29bc: `WriteBits(nibble & 0xF, 4)`.
+        stream.write_bits((packet.flags_nibble & 0xF) as u32, 4);
+    }
+}
+
+/// `RBX::Network::PhysicsPacketCache` entry keyed by assembly: the
+/// fingerprint of the last packet written for it.
+#[derive(Clone, Debug, Default)]
+pub struct PhysicsPacketCache {
+    fingerprints: HashMap<u32, u64>,
+}
+
+impl PhysicsPacketCache {
+    /// `RBX::Network::PhysicsPacketCache::fetchIfUpToDate` (IDA 0x9a8924):
+    /// a hit replays the cached bytes into the stream and skips the write.
+    pub fn fetch_if_up_to_date(&self, key: u32, fingerprint: u64) -> bool {
+        self.fingerprints.get(&key) == Some(&fingerprint)
+    }
+
+    /// `RBX::Network::PhysicsPacketCache::update` (IDA 0x9a8974): records
+    /// the bytes just written. The original reports allocation failure to
+    /// its caller (IDA 0x9a8998..0x9a8aae, `ReleaseAssert("0", ...:311)`);
+    /// insertion cannot fail here, so this is infallible.
+    pub fn update(&mut self, key: u32, fingerprint: u64) {
+        self.fingerprints.insert(key, fingerprint);
+    }
+}
+
+/// `RBX::Network::ErrorCompPhysicsSender` (IDA 0x9a88ec): a
+/// [`PhysicsSender`] plus the packet cache at +47 and the flag byte at
+/// +196.
+#[derive(Clone, Debug, Default)]
+pub struct ErrorCompSender {
+    pub cache: Option<PhysicsPacketCache>,
+}
+
+impl ErrorCompSender {
+    /// `RBX::Network::ErrorCompPhysicsSender::writeAssembly` (IDA 0x9a88ec).
+    /// `fingerprint` summarizes the packet the base write would emit; the
+    /// caller (engine) derives it from the live assembly. On a cache hit
+    /// the cached bytes stand (IDA 0x9a8918..0x9a8962); on a miss the base
+    /// [`PhysicsSender::write_assembly`] runs inside a bit-cursor snapshot
+    /// (IDA 0x9a8964..0x9a896e) and the cache records the result (IDA
+    /// 0x9a8974). With no cache the base write runs directly (IDA
+    /// 0x9a8ac4).
+    pub fn write_assembly(
+        &mut self,
+        sender: &mut PhysicsSender,
+        stream: &mut BitStream,
+        key: u32,
+        packet: &AssemblyPacket<'_>,
+        fingerprint: u64,
+    ) {
+        let Some(cache) = self.cache.as_mut() else {
+            sender.write_assembly(stream, packet);
+            return;
+        };
+        if cache.fetch_if_up_to_date(key, fingerprint) {
+            return;
+        }
+        let start = stream.bits_written();
+        sender.write_assembly(stream, packet);
+        let _len = stream.bits_written() - start;
+        cache.update(key, fingerprint);
+    }
+}
+/// One `receiveMechanismCFrames` iteration payload (IDA 0x9bb4ec): the
+/// translation plus the rotation quaternion read for a fresh part. Applying
+/// it (`PartInstance::setPhysics` + `addInterpolationSample`, IDA
+/// 0x9bb6c4..0x9bb6d4) stays engine-side.
+#[derive(Clone, Copy, Debug, Default, PartialEq)]
+pub struct CFrameSample {
+    pub translation: [f32; 3],
+    pub rotation: [f32; 4],
+}
+
+impl PhysicsReceiver {
+    /// Freshness gate in `receiveMechanismCFrames` (IDA 0x9bb582..0x9bb594)
+    /// and `DirectPhysicsReceiver::receivePacket` (IDA 0x9a3b1a..0x9a3b2a):
+    /// the 64-bit stamp at part +164 is fresh when older than `now`.
+    pub fn cframe_is_fresh(stamp_lo: u32, stamp_hi: u32, now_lo: u32, now_hi: u32) -> bool {
+        stamp_hi < now_hi || (stamp_hi == now_hi && stamp_lo <= now_lo)
+    }
+
+    /// Read one `receiveMechanismCFrames` sample (IDA 0x9bb698..0x9bb6b4):
+    /// `Compressor::readTranslation` then `readRotation`. The caller loops
+    /// this until `receivePart` fails (IDA 0x9bb568), drops stale parts
+    /// (see [`PhysicsReceiver::cframe_is_fresh`], IDA 0x9bb594..0x9bb682),
+    /// and applies fresh samples engine-side.
+    pub fn read_cframe_sample(&self, stream: &mut BitStream) -> CFrameSample {
+        let mut sample = CFrameSample::default();
+        read_translation(stream, &mut sample.translation);
+        let mut rotation = [1.0, 0.0, 0.0, 0.0];
+        read_rotation(stream, &mut rotation);
+        sample.rotation = rotation;
+        sample
+    }
+}
+
+/// One `MechanismItem` for [`PhysicsReceiver::set_physics_batch`]: the
+/// part id (`None` skips, IDA 0x9be6c0), the replicator filter verdict
+/// (IDA 0x9be6d8), the `primitive->getWorld()` assert input (IDA
+/// 0x9be724..0x9be770), and the assembly-root/grounded gates (IDA
+/// 0x9be770..0x9be78e).
+#[derive(Clone, Debug)]
+pub struct MechanismItemSample<'a> {
+    pub part: Option<u32>,
+    pub name: &'a str,
+    pub filtered: bool,
+    pub has_world: bool,
+    pub assembly_root: bool,
+    pub grounded: bool,
+}
+
+/// An applied `setPhysics` item: the part plus the byte stored at
+/// assembly +57 — the item +28 flag when this is the first item, else 0
+/// (IDA 0x9be8ce..0x9be8dc). Interpolation-vs-direct `PartInstance` writes
+/// (IDA 0x9be8e8..0x9be908, gated on item +29) stay engine-side.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct AppliedItem {
+    pub part: u32,
+    pub root_flag: bool,
+}
+
+impl PhysicsReceiver {
+    /// `RBX::Network::PhysicsReceiver::setPhysics` (IDA 0x9be624) over a
+    /// caller-provided item slice: null parts are skipped, filtered or
+    /// grounded or non-root parts only log (gated on the receiver's
+    /// [`PhysicsReceiver::verbose_logging`], IDA
+    /// 0x9be6e0/0x9be79a/0x9be7e0), and ungrounded root parts apply via
+    /// `Assembly::setPhysics` (IDA 0x9be8c8).
+    pub fn set_physics_batch(
+        &self,
+        items: &[MechanismItemSample<'_>],
+        first_flag_28: bool,
+    ) -> Vec<AppliedItem> {
+        let mut applied = Vec::new();
+        for (index, item) in items.iter().enumerate() {
+            // IDA 0x9be6c0.
+            let Some(part) = item.part else { continue };
+            // IDA 0x9be6d8..0x9be6e6.
+            if item.filtered {
+                if self.verbose_logging {
+                    eprintln!("filterPhysics {}", item.name); // IDA 0x9be716
+                }
+                continue;
+            }
+            // IDA 0x9be724..0x9be770: `primitive->getWorld()`.
+            debug_assert!(item.has_world, "primitive->getWorld()");
+            // IDA 0x9be770.
+            if !item.assembly_root {
+                if self.verbose_logging {
+                    eprintln!("!isAssemblyRootPrimitive {}", item.name); // IDA 0x9be816
+                }
+                continue;
+            }
+            // IDA 0x9be78e.
+            if item.grounded {
+                if self.verbose_logging {
+                    eprintln!("computeIsGrounded {}", item.name); // IDA 0x9be7d0
+                }
+                continue;
+            }
+            // IDA 0x9be8c8..0x9be8dc.
+            applied.push(AppliedItem {
+                part,
+                root_flag: index == 0 && first_flag_28,
+            });
+        }
+        applied
+    }
+}
+/// `RBX::IndexedTree` nesting reduced to owned children for the
+/// `PhysicsSender` bind visitors (IDA 0x9c35a0..0x9c3850).
+#[derive(Clone, Debug, Default)]
+pub struct AssemblyTree {
+    pub id: u32,
+    pub children: Vec<AssemblyTree>,
+}
+
+impl AssemblyTree {
+    /// `RBX::IndexedTree::visitConstMeAndChildren<Assembly, ...>`
+    /// (IDA 0x9c35a0): invoke the bind on self (the `a3 & 1` thunk select,
+    /// IDA 0x9c35c6..0x9c35d2, is a `boost::bind` dispatch detail with no
+    /// Rust counterpart), then recurse into each child. The
+    /// `indexOf(array[n]) == n` invariant (IDA 0x9c35fa..0x9c360a,
+    /// `IndexArray.h:103`) holds by construction for owned children and is
+    /// re-checked.
+    pub fn visit_const_me_and_children(&self, visit: &mut dyn FnMut(&AssemblyTree)) {
+        visit(self);
+        for (n, child) in self.children.iter().enumerate() {
+            debug_assert_eq!(
+                self.children
+                    .iter()
+                    .position(|c| core::ptr::eq(c, child)),
+                Some(n),
+                "indexOf(array[n]) == n"
+            );
+            child.visit_const_me_and_children(visit);
+        }
+    }
+}
+
+/// `RBX::Mechanism` nesting for `visitPrimitivesImpl` (IDA 0x9c3664): the
+/// assembly primitive plus child mechanisms.
+#[derive(Clone, Debug, Default)]
+pub struct MechanismTree {
+    pub primitive: u32,
+    pub children: Vec<MechanismTree>,
+}
+
+impl MechanismTree {
+    /// `RBX::Mechanism::visitPrimitivesImpl<...>` (IDA 0x9c3664): assert
+    /// the assembly primitive (`p`, `Assembly.h:203`, IDA
+    /// 0x9c368c..0x9c36d2), visit it through the assembly step (IDA
+    /// 0x9c36d4), then recurse into each child mechanism (IDA 0x9c3760)
+    /// with the same index invariant as above (IDA 0x9c3702..0x9c3712).
+    pub fn visit_primitives(&self, visit: &mut dyn FnMut(u32)) {
+        debug_assert_ne!(self.primitive, 0, "p Assembly.h:203");
+        visit(self.primitive);
+        for (n, child) in self.children.iter().enumerate() {
+            debug_assert_eq!(
+                self.children
+                    .iter()
+                    .position(|c| core::ptr::eq(c, child)),
+                Some(n),
+                "indexOf(array[n]) == n"
+            );
+            child.visit_primitives(visit);
+        }
+    }
+}
+
+/// `RBX::Assembly` primitive nesting for `visitPrimitivesImpl` (IDA
+/// 0x9c3778): each node invokes the bind on its own primitive, then
+/// recurses into children that are not assembly roots
+/// (`isAssemblyRootPrimitive`, IDA 0x9c3824).
+#[derive(Clone, Debug, Default)]
+pub struct PrimitiveNode {
+    pub id: u32,
+    pub is_assembly_root: bool,
+    pub children: Vec<PrimitiveNode>,
+}
+
+impl PrimitiveNode {
+    /// `RBX::Assembly::visitPrimitivesImpl<...>` (IDA 0x9c3778).
+    pub fn visit_primitives(&self, visit: &mut dyn FnMut(u32)) {
+        // IDA 0x9c3794..0x9c37a6: bind/this dispatch, then invoke.
+        visit(self.id);
+        for (n, child) in self.children.iter().enumerate() {
+            // IDA 0x9c37d6..0x9c3812: `indexOf(array[n]) == n`.
+            debug_assert_eq!(
+                self.children
+                    .iter()
+                    .position(|c| core::ptr::eq(c, child)),
+                Some(n),
+                "indexOf(array[n]) == n"
+            );
+            // IDA 0x9c3824..0x9c383a.
+            if !child.is_assembly_root {
+                child.visit_primitives(visit);
+            }
+        }
+    }
+}
 
 #[cfg(test)]
 mod tests {
@@ -838,6 +1228,49 @@ mod tests {
         receiver.read_motor_angles(&mut r, &mut out);
         assert_eq!(out.len(), 2);
         assert!((out[0].translation[0] - 1.0).abs() < 0.2);
+    }
+    #[test]
+    fn rotation_raw_roundtrip() {
+        let mut s = BitStream::new();
+        write_rotation(&mut s, [0.0, 0.0, 0.0, 1.0], CompressionType::Raw);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        let mut out = [0.0; 4];
+        read_rotation(&mut r, &mut out);
+        assert_eq!(out, [1.0, 0.0, 0.0, 0.0]);
+    }
+    #[test]
+    fn rotation_vector_roundtrip() {
+        // The Vector tag selects the RakNet packing on both sides without
+        // consulting the packet-compression switch (IDA 0x988b62/0x988e9a).
+        let mut s = BitStream::new();
+        write_rotation(&mut s, [0.5, 0.5, 0.5, 0.5], CompressionType::Vector);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        let mut out = [0.0; 4];
+        read_rotation(&mut r, &mut out);
+        // RakNet u16 grid: x/y/z within one step, w rebuilt positive.
+        for (got, want) in out[1..].iter().zip([0.5, 0.5, 0.5]) {
+            assert!((got - want).abs() < 1.0 / 65535.0 + 1e-6, "{got} vs {want}");
+        }
+        assert!(out[0] > 0.0);
+    }
+
+    #[test]
+    fn rotation_quantized_custom_roundtrip() {
+        crate::custom_serializer::set_allow_physics_packet_compression(true);
+        crate::custom_serializer::set_heavy_compression_enabled(true);
+        let mut s = BitStream::new();
+        write_rotation(&mut s, [0.0, 0.0, 0.0, 1.0], CompressionType::Quantized);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        let mut out = [0.0; 4];
+        read_rotation(&mut r, &mut out);
+        assert!(out[1].abs() < 0.01 && out[2].abs() < 0.01 && out[3].abs() < 0.01);
+        assert!((out[0] - 1.0).abs() < 0.01);
+    }
+
+    #[test]
+    fn normalize_quat_scales_to_unit() {
+        let q = normalize_quat([2.0, 0.0, 0.0, 0.0]);
+        assert_eq!(q, [1.0, 0.0, 0.0, 0.0]);
     }
 }
 
@@ -930,5 +1363,197 @@ mod sender_tests {
         assert!(!can_send_packet(&draining));
         assert!(can_send_packet(&open_gate()));
         assert!(!can_send_packet(&SendGate::default()));
+    }
+    #[test]
+    fn write_assembly_roundtrip_tagged() {
+        crate::custom_serializer::set_allow_physics_packet_compression(true);
+        crate::custom_serializer::set_heavy_compression_enabled(true);
+        let mut sender = PhysicsSender::new();
+        sender.translation_compression = CompressionType::Quantized;
+        let packet = AssemblyPacket {
+            translation: [10.0, -20.0, 30.0],
+            rotation: [0.0, 0.0, 0.0, 1.0],
+            velocity: Velocity::ZERO,
+            motor_frames: &[],
+            flags_nibble: 0xA,
+        };
+        let mut s = BitStream::new();
+        sender.write_assembly(&mut s, &packet);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        // Translation tag + value first (IDA 0x9c2974).
+        let mut t = [0.0; 3];
+        read_translation(&mut r, &mut t);
+        assert!((t[0] - 10.0).abs() < 0.2 && (t[1] + 20.0).abs() < 0.2);
+        // Rotation, empty velocity (no packet compression), no motors,
+        // then the nibble (IDA 0x9c297e..0x9c29bc).
+        let mut q = [0.0; 4];
+        read_rotation(&mut r, &mut q);
+        assert!((q[0] - 1.0).abs() < 0.01);
+        assert_eq!(r.read_u8(), Some(0));
+        assert_eq!(r.read_bits(4), Some(0xA));
+        // 89 bits written into 12 bytes; the 7 pad bits read back zero.
+        assert_eq!(r.read_bits(7), Some(0));
+        assert_eq!(r.bits_remaining(), 0);
+    }
+
+    #[test]
+    fn error_comp_hit_skips_write() {
+        let mut sender = PhysicsSender::new();
+        sender.translation_compression = CompressionType::Raw;
+        let packet = AssemblyPacket {
+            translation: [1.0, 2.0, 3.0],
+            rotation: [0.0, 0.0, 0.0, 1.0],
+            velocity: Velocity::ZERO,
+            motor_frames: &[],
+            flags_nibble: 0,
+        };
+        let mut ec = ErrorCompSender {
+            cache: Some(PhysicsPacketCache::default()),
+        };
+        let mut s = BitStream::new();
+        ec.write_assembly(&mut sender, &mut s, 7, &packet, 0xABCD);
+        let after_miss = s.bits_written();
+        assert!(after_miss > 0);
+        // Same fingerprint: hit, stream untouched (IDA 0x9a8918..0x9a8962).
+        ec.write_assembly(&mut sender, &mut s, 7, &packet, 0xABCD);
+        assert_eq!(s.bits_written(), after_miss);
+        // New fingerprint: miss, appends again.
+        ec.write_assembly(&mut sender, &mut s, 7, &packet, 0x1234);
+        assert_eq!(s.bits_written(), after_miss * 2);
+        // No cache: straight base write (IDA 0x9a8ac4).
+        let mut bare = ErrorCompSender { cache: None };
+        let mut s2 = BitStream::new();
+        bare.write_assembly(&mut sender, &mut s2, 7, &packet, 0xABCD);
+        assert_eq!(s2.bits_written(), after_miss);
+    }
+
+    #[test]
+    fn cframe_freshness_gate() {
+        assert!(PhysicsReceiver::cframe_is_fresh(5, 9, 6, 9));
+        assert!(PhysicsReceiver::cframe_is_fresh(6, 9, 6, 9));
+        assert!(!PhysicsReceiver::cframe_is_fresh(7, 9, 6, 9));
+        assert!(PhysicsReceiver::cframe_is_fresh(0xFFFF_FFFF, 8, 0, 9));
+        assert!(!PhysicsReceiver::cframe_is_fresh(0, 10, 0, 9));
+    }
+
+    #[test]
+    fn set_physics_batch_applies_roots_only() {
+        let receiver = PhysicsReceiver {
+            compression_enabled: false,
+            packet_compression_allowed: false,
+            verbose_logging: false,
+        };
+        let items = [
+            MechanismItemSample {
+                part: None,
+                name: "null",
+                filtered: false,
+                has_world: true,
+                assembly_root: true,
+                grounded: false,
+            },
+            MechanismItemSample {
+                part: Some(11),
+                name: "filtered",
+                filtered: true,
+                has_world: true,
+                assembly_root: true,
+                grounded: false,
+            },
+            MechanismItemSample {
+                part: Some(22),
+                name: "root",
+                filtered: false,
+                has_world: true,
+                assembly_root: true,
+                grounded: false,
+            },
+            MechanismItemSample {
+                part: Some(33),
+                name: "grounded",
+                filtered: false,
+                has_world: true,
+                assembly_root: true,
+                grounded: true,
+            },
+            MechanismItemSample {
+                part: Some(44),
+                name: "child",
+                filtered: false,
+                has_world: true,
+                assembly_root: false,
+                grounded: false,
+            },
+        ];
+        let applied = receiver.set_physics_batch(&items, true);
+        // Only the ungrounded root applies; it is not first, so no flag.
+        assert_eq!(
+            applied,
+            vec![AppliedItem {
+                part: 22,
+                root_flag: false
+            }]
+        );
+        let first = receiver.set_physics_batch(&items[2..3], true);
+        assert_eq!(
+            first,
+            vec![AppliedItem {
+                part: 22,
+                root_flag: true
+            }]
+        );
+    }
+
+    #[test]
+    fn visitors_walk_preorder_skipping_roots() {
+        let tree = AssemblyTree {
+            id: 1,
+            children: vec![
+                AssemblyTree {
+                    id: 2,
+                    children: vec![],
+                },
+                AssemblyTree {
+                    id: 3,
+                    children: vec![AssemblyTree {
+                        id: 4,
+                        children: vec![],
+                    }],
+                },
+            ],
+        };
+        let mut order = Vec::new();
+        tree.visit_const_me_and_children(&mut |n: &AssemblyTree| order.push(n.id));
+        assert_eq!(order, vec![1, 2, 3, 4]);
+        let mech = MechanismTree {
+            primitive: 10,
+            children: vec![MechanismTree {
+                primitive: 20,
+                children: vec![],
+            }],
+        };
+        let mut seen = Vec::new();
+        mech.visit_primitives(&mut |p| seen.push(p));
+        assert_eq!(seen, vec![10, 20]);
+        let prim = PrimitiveNode {
+            id: 100,
+            is_assembly_root: true,
+            children: vec![
+                PrimitiveNode {
+                    id: 200,
+                    is_assembly_root: true,
+                    children: vec![],
+                },
+                PrimitiveNode {
+                    id: 300,
+                    is_assembly_root: false,
+                    children: vec![],
+                },
+            ],
+        };
+        let mut visited = Vec::new();
+        prim.visit_primitives(&mut |p| visited.push(p));
+        // Roots are not recursed into (IDA 0x9c3824).
+        assert_eq!(visited, vec![100, 300]);
     }
 }
