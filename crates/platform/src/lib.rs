@@ -428,4 +428,5 @@ pub mod generated_watchdog_plat_w8;
 pub mod generated_watchdog_plat_w9;
 pub mod generated_watchdog_plat_w10;
 pub mod generated_watchdog_plat_w11;
+pub mod generated_watchdog_plat_w12;
 pub mod generated_plat_globaldedup_105;
