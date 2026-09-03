@@ -356,3 +356,4 @@ pub mod generated_script_delta;
 pub mod generated_watchdog_script_w14b;
 pub mod generated_watchdog_script_w15b;
 pub mod generated_watchdog_script_w15d;
+pub mod generated_watchdog_script_w15d2;
