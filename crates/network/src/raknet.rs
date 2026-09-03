@@ -1084,85 +1084,145 @@ pub fn stub_99f9b8() -> ! {
 // 0x9a1930 — __ZN3RBX7Network16SenderDictionaryIPKNS_4NameEE4sendERN6RakNet9BitStreamES4_
 #[doc(alias = "RBX::Network::SenderDictionary<RBX::Name const*>::send(RakNet::BitStream &,RBX::Name const*)")]
 // was: RBX::Network::SenderDictionary<RBX::Name const*>::send(RakNet::BitStream &,RBX::Name const*)
-pub fn stub_9a1930() -> ! {
-    todo!("0x9a1930 RBX::Network::SenderDictionary<RBX::Name const*>::send(RakNet::BitStream &,RBX::Name const*)")
+pub fn stub_9a1930(
+    dict: &mut crate::string_dictionary::NameSenderDictionary,
+    stream: &mut crate::bitstream::BitStream,
+    id: usize,
+    text: &str,
+) {
+    // IDA 0x9a1930..0x9a19ca: emplace-or-recall into the Name-keyed map with the `next % 127 + 1` rotation.
+    dict.send(stream, id, text);
 }
 
 // 0x9a2160 — __ZN3RBX7Network22SharedStringDictionary15serializeStringERKSsRN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::SharedStringDictionary::serializeString(std::string const&,RakNet::BitStream &)")]
 // was: RBX::Network::SharedStringDictionary::serializeString(std::string const&,RakNet::BitStream &)
-pub fn stub_9a2160() -> ! {
-    todo!("0x9a2160 RBX::Network::SharedStringDictionary::serializeString(std::string const&,RakNet::BitStream &)")
+pub fn stub_9a2160(
+    dict: &mut crate::string_dictionary::SharedStringDictionary,
+    s: &str,
+    stream: &mut crate::bitstream::BitStream,
+) {
+    // IDA 0x9a2160: tail-calls `SenderDictionary<std::string>::send`.
+    dict.serialize_string(s, stream);
 }
 
 // 0x9a2170 — __ZN3RBX7Network22SharedStringDictionary15serializeStringERKNS_10Reflection13ConstPropertyERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::SharedStringDictionary::serializeString(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)")]
 // was: RBX::Network::SharedStringDictionary::serializeString(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)
-pub fn stub_9a2170() -> ! {
-    todo!("0x9a2170 RBX::Network::SharedStringDictionary::serializeString(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)")
+pub fn stub_9a2170(
+    dict: &mut crate::string_dictionary::SharedStringDictionary,
+    value: &str,
+    stream: &mut crate::bitstream::BitStream,
+) {
+    // IDA 0x9a2170: the ConstProperty virtual at vtable +40 reads the string (engine-side); `value` is that string.
+    dict.serialize_property_string(value, stream);
 }
 
 // 0x9a2294 — __ZN3RBX7Network22SharedStringDictionary17deserializeStringERSsRN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::SharedStringDictionary::deserializeString(std::string &,RakNet::BitStream &)")]
 // was: RBX::Network::SharedStringDictionary::deserializeString(std::string &,RakNet::BitStream &)
-pub fn stub_9a2294() -> ! {
-    todo!("0x9a2294 RBX::Network::SharedStringDictionary::deserializeString(std::string &,RakNet::BitStream &)")
+pub fn stub_9a2294(
+    dict: &mut crate::string_dictionary::SharedStringDictionary,
+    out: &mut String,
+    stream: &mut crate::bitstream::BitStream,
+) -> bool {
+    // IDA 0x9a2294: tail-calls `ReceiverStringDictionary::receive` on the +540 sub-object.
+    dict.deserialize_string(out, stream)
 }
 
 // 0x9a22a8 — __ZN3RBX7Network22SharedStringDictionary17deserializeStringERNS_10Reflection8PropertyERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::SharedStringDictionary::deserializeString(RBX::Reflection::Property &,RakNet::BitStream &)")]
 // was: RBX::Network::SharedStringDictionary::deserializeString(RBX::Reflection::Property &,RakNet::BitStream &)
-pub fn stub_9a22a8() -> ! {
-    todo!("0x9a22a8 RBX::Network::SharedStringDictionary::deserializeString(RBX::Reflection::Property &,RakNet::BitStream &)")
+pub fn stub_9a22a8(
+    dict: &mut crate::string_dictionary::SharedStringDictionary,
+    stream: &mut crate::bitstream::BitStream,
+) -> String {
+    // IDA 0x9a22a8: `receive` on the +540 sub-object (verdict ignored), then the Property virtual at vtable +44 (engine-side).
+    dict.deserialize_property_string(stream)
 }
 
 // 0x9a2514 — __ZN3RBX7Network31SharedStringProtectedDictionary15serializeStringERKSsRN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::SharedStringProtectedDictionary::serializeString(std::string const&,RakNet::BitStream &)")]
 // was: RBX::Network::SharedStringProtectedDictionary::serializeString(std::string const&,RakNet::BitStream &)
-pub fn stub_9a2514() -> ! {
-    todo!("0x9a2514 RBX::Network::SharedStringProtectedDictionary::serializeString(std::string const&,RakNet::BitStream &)")
+pub fn stub_9a2514(
+    dict: &mut crate::string_dictionary::SharedStringProtectedDictionary,
+    s: &str,
+    stream: &mut crate::bitstream::BitStream,
+) {
+    // IDA 0x9a2514: tail-calls `SenderDictionary<std::string>::send`.
+    dict.serialize_string(s, stream);
 }
 
 // 0x9a2524 — __ZN3RBX7Network31SharedStringProtectedDictionary15serializeStringERKNS_10Reflection13ConstPropertyERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::SharedStringProtectedDictionary::serializeString(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)")]
 // was: RBX::Network::SharedStringProtectedDictionary::serializeString(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)
-pub fn stub_9a2524() -> ! {
-    todo!("0x9a2524 RBX::Network::SharedStringProtectedDictionary::serializeString(RBX::Reflection::ConstProperty const&,RakNet::BitStream &)")
+pub fn stub_9a2524(
+    dict: &mut crate::string_dictionary::SharedStringProtectedDictionary,
+    value: &str,
+    stream: &mut crate::bitstream::BitStream,
+) {
+    // IDA 0x9a2524: the ConstProperty virtual at vtable +40 reads the string (engine-side); `value` is that string.
+    dict.serialize_property_string(value, stream);
 }
 
 // 0x9a2648 — __ZN3RBX7Network31SharedStringProtectedDictionary17deserializeStringERSsRN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::SharedStringProtectedDictionary::deserializeString(std::string &,RakNet::BitStream &)")]
 // was: RBX::Network::SharedStringProtectedDictionary::deserializeString(std::string &,RakNet::BitStream &)
-pub fn stub_9a2648() -> ! {
-    todo!("0x9a2648 RBX::Network::SharedStringProtectedDictionary::deserializeString(std::string &,RakNet::BitStream &)")
+pub fn stub_9a2648(
+    dict: &mut crate::string_dictionary::SharedStringProtectedDictionary,
+    out: &mut String,
+    stream: &mut crate::bitstream::BitStream,
+) -> bool {
+    // IDA 0x9a2648: tail-calls `ReceiverStringDictionary::receive` on the +540 sub-object.
+    dict.deserialize_string(out, stream)
 }
 
 // 0x9a265c — __ZN3RBX7Network31SharedStringProtectedDictionary17deserializeStringERNS_10Reflection8PropertyERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::SharedStringProtectedDictionary::deserializeString(RBX::Reflection::Property &,RakNet::BitStream &)")]
 // was: RBX::Network::SharedStringProtectedDictionary::deserializeString(RBX::Reflection::Property &,RakNet::BitStream &)
-pub fn stub_9a265c() -> ! {
-    todo!("0x9a265c RBX::Network::SharedStringProtectedDictionary::deserializeString(RBX::Reflection::Property &,RakNet::BitStream &)")
+pub fn stub_9a265c(
+    dict: &mut crate::string_dictionary::SharedStringProtectedDictionary,
+    out: &mut String,
+    stream: &mut crate::bitstream::BitStream,
+) -> bool {
+    // IDA 0x9a265c: `v11 = receive(...); if (v11 && prop) setter(+44, engine-side)`; returns the `receive` verdict.
+    dict.deserialize_property_string(out, stream)
 }
 
 // 0x9a2790 — __ZN3RBX7Network16SenderDictionaryISsE4sendERN6RakNet9BitStreamERKSs
 #[doc(alias = "RBX::Network::SenderDictionary<std::string>::send(RakNet::BitStream &,std::string const&)")]
 // was: RBX::Network::SenderDictionary<std::string>::send(RakNet::BitStream &,std::string const&)
-pub fn stub_9a2790() -> ! {
-    todo!("0x9a2790 RBX::Network::SenderDictionary<std::string>::send(RakNet::BitStream &,std::string const&)")
+pub fn stub_9a2790(
+    dict: &mut crate::string_dictionary::SenderDictionary,
+    stream: &mut crate::bitstream::BitStream,
+    s: &str,
+) {
+    // IDA 0x9a2790: empty → one zero byte; known → recall code; fresh → `slot | 0x80` + string, `next = next % 127 + 1`.
+    dict.send(stream, s);
 }
 
 // 0x9a2990 — __ZN3RBX7Network18ReceiverDictionaryISsE7receiveERN6RakNet9BitStreamERSs
 #[doc(alias = "RBX::Network::ReceiverDictionary<std::string>::receive(RakNet::BitStream &,std::string &)")]
 // was: RBX::Network::ReceiverDictionary<std::string>::receive(RakNet::BitStream &,std::string &)
-pub fn stub_9a2990() -> ! {
-    todo!("0x9a2990 RBX::Network::ReceiverDictionary<std::string>::receive(RakNet::BitStream &,std::string &)")
+pub fn stub_9a2990(
+    dict: &mut crate::string_dictionary::ReceiverDictionary,
+    stream: &mut crate::bitstream::BitStream,
+    out: &mut String,
+) -> bool {
+    // IDA 0x9a2990: code byte 0 clears, `< 0x80` recalls, else fresh string follows and is published to `slot & 0x7F`; always true.
+    dict.receive(stream, out)
 }
 
 // 0x9a29f4 — __ZN3RBX7Network24ReceiverStringDictionary7receiveISsEEbRN6RakNet9BitStreamERT_
 #[doc(alias = "bool RBX::Network::ReceiverStringDictionary::receive<std::string>(RakNet::BitStream &,std::string &)")]
 // was: bool RBX::Network::ReceiverStringDictionary::receive<std::string>(RakNet::BitStream &,std::string &)
-pub fn stub_9a29f4() -> ! {
-    todo!("0x9a29f4 bool RBX::Network::ReceiverStringDictionary::receive<std::string>(RakNet::BitStream &,std::string &)")
+pub fn stub_9a29f4(
+    dict: &mut crate::string_dictionary::ReceiverStringDictionary,
+    stream: &mut crate::bitstream::BitStream,
+    out: &mut String,
+) -> bool {
+    // IDA 0x9a29f4: same wire protocol as `ReceiverDictionary::receive` (IDA 0x9a2990); delegates.
+    dict.receive(stream, out)
 }
 
 // 0x9a3918 — __ZN3RBX7Network21DirectPhysicsReceiver13receivePacketERN6RakNet9BitStreamEyPNS0_15ReplicatorStats20PhysicsReceiverStatsE
@@ -8436,14 +8496,20 @@ pub fn stub_9a1a0c(dict: &mut crate::string_dictionary::ReceiverStringDictionary
 
 // 0x9a1d80 — __ZN3RBX7Network24ReceiverStringDictionary3getEhRSs
 #[doc(alias = "RBX::Network::ReceiverStringDictionary::get(unsigned char,std::string &)")]
-pub fn stub_9a1d80() -> ! {
-    todo!("0x9a1d80 RBX::Network::ReceiverStringDictionary::get(unsigned char,std::string &)")
+pub fn stub_9a1d80(
+    dict: &crate::string_dictionary::ReceiverStringDictionary,
+    slot: u8,
+    out: &mut String,
+) -> bool {
+    // IDA 0x9a1d80: recall the slot, then the hash check — mismatch clears `out` and returns false.
+    dict.get(slot, out)
 }
 
 // 0x9a23d4 — __ZN3RBX7Network31SharedStringProtectedDictionaryC1Eb
 #[doc(alias = "RBX::Network::SharedStringProtectedDictionary::SharedStringProtectedDictionary(bool)")]
-pub fn stub_9a23d4() -> ! {
-    todo!("0x9a23d4 RBX::Network::SharedStringProtectedDictionary::SharedStringProtectedDictionary(bool)")
+pub fn stub_9a23d4(protect: bool) -> crate::string_dictionary::SharedStringProtectedDictionary {
+    // IDA 0x9a23d4: zero the sender slots, null the +1052 hash-table pointer, `*(this + 1056) = protect`.
+    crate::string_dictionary::SharedStringProtectedDictionary::new(protect)
 }
 
 // 0x9a4660 — __ZN3RBX7Network22ErrorCompPhysicsSenderC1ERNS0_10ReplicatorE

@@ -146,7 +146,23 @@ impl SharedStringDictionary {
     pub fn deserialize_string(&mut self, out: &mut String, stream: &mut BitStream) -> bool {
         self.receiver.receive(stream, out) // IDA 0x9a22a6
     }
+    /// `serializeString(ConstProperty)` (IDA 0x9a2170): the property virtual
+    /// at vtable +40 reads the string (engine-side); `value` is that string
+    /// and goes out via `SenderDictionary<std::string>::send` unchanged.
+    pub fn serialize_property_string(&mut self, value: &str, stream: &mut BitStream) {
+        self.sender.send(stream, value); // IDA 0x9a2170
+    }
+
+    /// `deserializeString(Property)` (IDA 0x9a22a8): `receive` on the +540
+    /// sub-object (its verdict ignored), then the property virtual at
+    /// vtable +44 (engine-side). Returns the wire string; the caller applies it.
+    pub fn deserialize_property_string(&mut self, stream: &mut BitStream) -> String {
+        let mut out = String::new();
+        self.receiver.receive(stream, &mut out); // IDA 0x9a22a8
+        out
+    }
 }
+
 
 /// `RBX::Network::SenderDictionary<RBX::Name const*>`: the `std::string`
 /// sender keyed by `Name` identity instead of string contents.
@@ -321,19 +337,26 @@ impl ReceiverStringDictionary {
     }
 }
 
-/// `RBX::Network::SharedStringProtectedDictionary`: sender inline, receiver
-/// at +540 (IDA 0x9a265a).
+/// `RBX::Network::SharedStringProtectedDictionary` (IDA 0x9a23d4): sender
+/// inline, a `ReceiverStringDictionary` at +540 (its hash table pointer at
+/// +1052 starts null, its validation flag at +1056 takes the ctor arg), and
+/// the sender slots zeroed (IDA 0x9a23d4 `memset` pair, `+134 = 1`).
 #[derive(Clone, Debug, Default)]
 pub struct SharedStringProtectedDictionary {
     pub sender: SenderDictionary,
-    pub receiver: ReceiverDictionary,
+    pub receiver: ReceiverStringDictionary,
 }
 
 impl SharedStringProtectedDictionary {
-    pub fn new() -> Self {
+    /// `SharedStringProtectedDictionary(bool)` (IDA 0x9a23d4): the flag
+    /// enables hash validation on the +540 receiver.
+    pub fn new(protect: bool) -> Self {
+        let mut receiver = ReceiverStringDictionary::new();
+        // IDA 0x9a23d4: `*(this + 1056) = a2`.
+        receiver.set_hash_validation(protect);
         Self {
             sender: SenderDictionary::new(),
-            receiver: ReceiverDictionary::new(),
+            receiver,
         }
     }
 
@@ -347,6 +370,21 @@ impl SharedStringProtectedDictionary {
     /// `ReceiverStringDictionary::receive` on the +540 sub-object.
     pub fn deserialize_string(&mut self, out: &mut String, stream: &mut BitStream) -> bool {
         self.receiver.receive(stream, out) // IDA 0x9a265a
+    }
+
+    /// `serializeString(ConstProperty)` (IDA 0x9a2524): like
+    /// [`SharedStringDictionary::serialize_property_string`] — the property
+    /// virtual at vtable +40 reads the string engine-side.
+    pub fn serialize_property_string(&mut self, value: &str, stream: &mut BitStream) {
+        self.sender.send(stream, value); // IDA 0x9a2524
+    }
+
+    /// `deserializeString(Property)` (IDA 0x9a265c): `receive` on the +540
+    /// sub-object; the `false` arm skips the vtable +44 setter (engine-side)
+    /// and returns 0, otherwise the setter runs and it returns 1.
+    pub fn deserialize_property_string(&mut self, out: &mut String, stream: &mut BitStream) -> bool {
+        // IDA 0x9a265c: `v11 = 0; if (receive(...)) { v11 = 1; if (prop) setter(...); }`.
+        self.receiver.receive(stream, out)
     }
 }
 
@@ -417,14 +455,39 @@ mod name_dict_tests {
 
     #[test]
     fn protected_dict_roundtrip() {
-        let mut tx = SharedStringProtectedDictionary::new();
-        let mut rx = SharedStringProtectedDictionary::new();
+        // IDA 0x9a23d4: the ctor flag arms hash validation for the +540
+        // receiver's `learn`/`get` paths; the plain `receive` framing is
+        // unaffected, so both peers agree here regardless.
+        let mut tx = SharedStringProtectedDictionary::new(true);
+        let mut rx = SharedStringProtectedDictionary::new(true);
         let mut s = BitStream::new();
         tx.serialize_string("secret", &mut s);
         let mut r = BitStream::from_bytes(&s.into_bytes());
         let mut out = String::new();
         assert!(rx.deserialize_string(&mut out, &mut r));
         assert_eq!(out, "secret");
+    }
+
+    #[test]
+    fn protected_property_strings_roundtrip() {
+        let mut tx = SharedStringProtectedDictionary::new(false);
+        let mut rx = SharedStringProtectedDictionary::new(false);
+        let mut s = BitStream::new();
+        // IDA 0x9a2524: the ConstProperty value goes out via `send`.
+        tx.serialize_property_string("Name", &mut s);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        // IDA 0x9a265c: `receive` verdict passes the value through.
+        let mut out = String::new();
+        assert!(rx.deserialize_property_string(&mut out, &mut r));
+        assert_eq!(out, "Name");
+        // The Shared pair behaves the same without the verdict (IDA
+        // 0x9a2170 / 0x9a22a8).
+        let mut tx = SharedStringDictionary::new();
+        let mut s = BitStream::new();
+        tx.serialize_property_string("Hi", &mut s);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        let mut rx = SharedStringDictionary::new();
+        assert_eq!(rx.deserialize_property_string(&mut r), "Hi");
     }
 
     #[test]
