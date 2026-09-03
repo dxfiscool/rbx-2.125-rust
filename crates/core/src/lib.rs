@@ -623,7 +623,7 @@ pub mod generated_watchdog_core_wd2;
 pub mod generated_watchdog_core_wd3;
 pub mod generated_watchdog_core_wdB;
 pub mod generated_watchdog_core_wdB2;
-pub mod generated_watchdog_core_wd4;
+pub mod generated_core_bg30;
 pub mod generated_watchdog_core_wdA;
 pub mod generated_watchdog_core_wdb;
 
