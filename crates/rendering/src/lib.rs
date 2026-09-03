@@ -669,3 +669,5 @@ pub mod generated_watchdog_rend_wdL;
 pub mod generated_watchdog_rend_wdM;
 pub mod generated_watchdog_rend_wdN;
 pub mod generated_watchdog_rend_wdO;
+pub mod generated_watchdog_rend_wdB2;
+pub mod generated_watchdog_rend_wdC;
