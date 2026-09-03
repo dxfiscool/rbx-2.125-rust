@@ -378,3 +378,4 @@ pub mod generated_refl_47;
 pub mod generated_watchdog_refl_wdB2;
 pub mod generated_refl_48;
 pub mod generated_watchdog_refl_wdb;
+pub mod generated_watchdog_refl_wda;
