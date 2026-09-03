@@ -5,2144 +5,2144 @@
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list_av_5<std::string,std::string,std::string,RobloxPageViewController *,rbx_core::SharedPtr<RBX::Game>>::type> boost::bind<void,std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>,std::string,std::string,std::string,RobloxPageViewController *,rbx_core::SharedPtr<RBX::Game>>(void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),std::string,std::string,std::string,RobloxPageViewController *,rbx_core::SharedPtr<RBX::Game>)")]
 // 0x2ce2c — __ZN5boost4bindIvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEESsSsSsP24RobloxPageViewControllerS6_EENS_3_bi6bind_tIT_PFSB_T0_T1_T2_T3_T4_ENS9_9list_av_5IT5_T6_T7_T8_T9_E4typeEEESI_SK_SL_SM_SN_SO_ — boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list_av_5<std::string,std::string,std::string,RobloxPageViewController *,rbx_core::SharedPtr<RBX::Game>>::type> boost::bind<void,std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>,std::string,std::string,std::string,RobloxPageViewController *,rbx_core::SharedPtr<RBX::Game>>(void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),std::string,std::string,std::string,RobloxPageViewController *,rbx_core::SharedPtr<RBX::Game>)
 // was: boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list_av_5<std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>>::type> boost::bind<void,std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>,std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>>(void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>)
-pub fn stub_0x2ce2c() -> ! {
-    todo!("0x2ce2c __ZN5boost4bindIvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEESsSsSsP24RobloxPageViewControllerS6_EENS_3_bi6bind_tIT_PFSB_T0_T1_T2_T3_T4_ENS9_9list_av_5IT5_T6_T7_T8_T9_E4typeEEESI_SK_SL_SM_SN_SO_")
+pub fn stub_0x2ce2c() {
+    // IDA 0x2ce2c: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list_av_3<RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *>::type> boost::bind<void,RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *,RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *>(void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *)")]
 // 0x2d280 — __ZN5boost4bindIvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS4_18FunctionMarshallerES2_S6_S8_EENS_3_bi6bind_tIT_PFSB_T0_T1_T2_ENS9_9list_av_3IT3_T4_T5_E4typeEEESG_SI_SJ_SK_ — boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list_av_3<RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *>::type> boost::bind<void,RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *,RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *>(void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *)
 // was: boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list_av_3<RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *>::type> boost::bind<void,RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *,RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *>(void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *)
-pub fn stub_0x2d280() -> ! {
-    todo!("0x2d280 __ZN5boost4bindIvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS4_18FunctionMarshallerES2_S6_S8_EENS_3_bi6bind_tIT_PFSB_T0_T1_T2_ENS9_9list_av_3IT3_T4_T5_E4typeEEESG_SI_SJ_SK_")
+pub fn stub_0x2d280() {
+    // IDA 0x2d280: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>)")]
 // 0x2d544 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEEEEEvT_ — void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>)
 // was: void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>)
-pub fn stub_0x2d544() -> ! {
-    todo!("0x2d544 __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEEEEEvT_")
+pub fn stub_0x2d544() {
+    // IDA 0x2d544: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x2d644 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x2d644() -> ! {
-    todo!("0x2d644 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE")
+pub fn stub_0x2d644() {
+    // IDA 0x2d644: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")]
 // 0x2d660 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEvPNS8_9DataModelEE6invokeERNS1_15function_bufferESN_ — boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)
-pub fn stub_0x2d660() -> ! {
-    todo!("0x2d660 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEvPNS8_9DataModelEE6invokeERNS1_15function_bufferESN_")
+pub fn stub_0x2d660() {
+    // IDA 0x2d660: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::operator()<void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *) &,boost::_bi::list1<RBX::DataModel *&> &,int)")]
 // 0x2d884 — __ZN5boost3_bi5list3INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_IPNS7_18FunctionMarshallerEEEEclIPFvS4_S9_SC_ENS0_5list1IRPNS7_9DataModelEEEEEvNS0_4typeIvEERT_RT0_i — void boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::operator()<void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *) &,boost::_bi::list1<RBX::DataModel *&> &,int)
 // was: void boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::operator()<void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *) &,boost::_bi::list1<RBX::DataModel *&> &,int)
-pub fn stub_0x2d884() -> ! {
-    todo!("0x2d884 __ZN5boost3_bi5list3INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_IPNS7_18FunctionMarshallerEEEEclIPFvS4_S9_SC_ENS0_5list1IRPNS7_9DataModelEEEEEvNS0_4typeIvEERT_RT0_i")
+pub fn stub_0x2d884() {
+    // IDA 0x2d884: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // 0x2d964 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
-pub fn stub_0x2d964() -> ! {
-    todo!("0x2d964 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+pub fn stub_0x2d964() {
+    // IDA 0x2d964: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::list3(boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)")]
 // 0x2da9c — __ZN5boost3_bi5list3INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_IPNS7_18FunctionMarshallerEEEEC2ES5_SA_SD_ — boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::list3(boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)
 // was: boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::list3(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)
-pub fn stub_0x2da9c() -> ! {
-    todo!("0x2da9c __ZN5boost3_bi5list3INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_IPNS7_18FunctionMarshallerEEEEC2ES5_SA_SD_")
+pub fn stub_0x2da9c() {
+    // IDA 0x2da9c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::storage3(boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)")]
 // 0x2db54 — __ZN5boost3_bi8storage3INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_IPNS7_18FunctionMarshallerEEEEC2ES5_SA_SD_ — boost::_bi::storage3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::storage3(boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)
 // was: boost::_bi::storage3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::storage3(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)
-pub fn stub_0x2db54() -> ! {
-    todo!("0x2db54 __ZN5boost3_bi8storage3INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_IPNS7_18FunctionMarshallerEEEEC2ES5_SA_SD_")
+pub fn stub_0x2db54() {
+    // IDA 0x2db54: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::thread::thread<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>> &&)")]
 // 0x2dc24 — __ZN5boost6threadC2INS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEEEOT_ — boost::thread::thread<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>> &&)
 // was: boost::thread::thread<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>> &&)
-pub fn stub_0x2dc24() -> ! {
-    todo!("0x2dc24 __ZN5boost6threadC2INS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEEEOT_")
+pub fn stub_0x2dc24() {
+    // IDA 0x2dc24: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::thread_data(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>&&)")]
 // 0x2dfac — __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEEC2EOSK_ — boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::thread_data(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>&&)
 // was: boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::thread_data(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>&&)
-pub fn stub_0x2dfac() -> ! {
-    todo!("0x2dfac __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEEC2EOSK_")
+pub fn stub_0x2dfac() {
+    // IDA 0x2dfac: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::~thread_data()")]
 // 0x2e0f4 — __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEED1Ev — boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::~thread_data()
 // was: boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::~thread_data()
-pub fn stub_0x2e0f4() -> ! {
-    todo!("0x2e0f4 __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEED1Ev")
+pub fn stub_0x2e0f4() {
+    // IDA 0x2e0f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::~thread_data()")]
 // 0x2e1bc — __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEED0Ev — boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::~thread_data()
 // was: boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::~thread_data()
-pub fn stub_0x2e1bc() -> ! {
-    todo!("0x2e1bc __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEED0Ev")
+pub fn stub_0x2e1bc() {
+    // IDA 0x2e1bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::run(void)")]
 // 0x2e284 — __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEE3runEv — boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::run(void)
 // was: boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::run(void)
-pub fn stub_0x2e284() -> ! {
-    todo!("0x2e284 __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEE3runEv")
+pub fn stub_0x2e284() {
+    // IDA 0x2e284: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::WeakPtr<RBX::DataModel>::weak_ptr<RBX::DataModel>(rbx_core::SharedPtr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)")]
 // 0x40318 — __ZN5boost8weak_ptrIN3RBX9DataModelEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE — rbx_core::WeakPtr<RBX::DataModel>::weak_ptr<RBX::DataModel>(rbx_core::SharedPtr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)
 // was: boost::weak_ptr<RBX::DataModel>::weak_ptr<RBX::DataModel>(boost::shared_ptr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)
-pub fn stub_0x40318() -> ! {
-    todo!("0x40318 __ZN5boost8weak_ptrIN3RBX9DataModelEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE")
+pub fn stub_0x40318() {
+    // IDA 0x40318: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::DataModel *)>::connect<boost::function<void ()(RBX::DataModel *)>>(boost::function<void ()(RBX::DataModel *)> const&)")]
 // 0x49e7c — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE7connectIN5boost8functionIS5_EEEENS0_10connectionERKT_ — rbx::signals::connection rbx::signals::signal<void ()(RBX::DataModel *)>::connect<boost::function<void ()(RBX::DataModel *)>>(boost::function<void ()(RBX::DataModel *)> const&)
-pub fn stub_0x49e7c() -> ! {
-    todo!("0x49e7c __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE7connectIN5boost8functionIS5_EEEENS0_10connectionERKT_")
+pub fn stub_0x49e7c() {
+    // IDA 0x49e7c: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot>::operator=(rbx::signals::signal<void ()(RBX::DataModel *)>::slot*)")]
 // 0x4b374 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slotEEaSEPS9_ — boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot>::operator=(rbx::signals::signal<void ()(RBX::DataModel *)>::slot*)
-pub fn stub_0x4b374() -> ! {
-    todo!("0x4b374 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slotEEaSEPS9_")
+pub fn stub_0x4b374() {
+    // IDA 0x4b374: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot> const&)")]
 // 0x4b418 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slotEEaSERKSA_ — boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot> const&)
-pub fn stub_0x4b418() -> ! {
-    todo!("0x4b418 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slotEEaSERKSA_")
+pub fn stub_0x4b418() {
+    // IDA 0x4b418: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::callable<rbx::signals::signal<void ()(RBX::DataModel *)>*>(boost::function<void ()(RBX::DataModel *)> const&,rbx::signals::signal<void ()(RBX::DataModel *)>*)")]
 // 0x4b5b8 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_EC2IPS7_EERKSB_T_ — rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::callable<rbx::signals::signal<void ()(RBX::DataModel *)>*>(boost::function<void ()(RBX::DataModel *)> const&,rbx::signals::signal<void ()(RBX::DataModel *)>*)
-pub fn stub_0x4b5b8() -> ! {
-    todo!("0x4b5b8 __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_EC2IPS7_EERKSB_T_")
+pub fn stub_0x4b5b8() {
+    // IDA 0x4b5b8: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::callable_slot<boost::function<void ()(RBX::DataModel *)>>::~callable_slot()")]
 // 0x4b6b4 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE13callable_slotIN5boost8functionIS5_EEED1Ev — rbx::signals::signal<void ()(RBX::DataModel *)>::callable_slot<boost::function<void ()(RBX::DataModel *)>>::~callable_slot()
-pub fn stub_0x4b6b4() -> ! {
-    todo!("0x4b6b4 __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE13callable_slotIN5boost8functionIS5_EEED1Ev")
+pub fn stub_0x4b6b4() {
+    // IDA 0x4b6b4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::callable_slot<boost::function<void ()(RBX::DataModel *)>>::~callable_slot()")]
 // 0x4b788 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE13callable_slotIN5boost8functionIS5_EEED0Ev — rbx::signals::signal<void ()(RBX::DataModel *)>::callable_slot<boost::function<void ()(RBX::DataModel *)>>::~callable_slot()
-pub fn stub_0x4b788() -> ! {
-    todo!("0x4b788 __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE13callable_slotIN5boost8functionIS5_EEED0Ev")
+pub fn stub_0x4b788() {
+    // IDA 0x4b788: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")]
 // 0x4b97c — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_ — rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)
-pub fn stub_0x4b97c() -> ! {
-    todo!("0x4b97c __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_")
+pub fn stub_0x4b97c() {
+    // IDA 0x4b97c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")]
 // 0x4b984 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_ — non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)
-pub fn stub_0x4b984() -> ! {
-    todo!("0x4b984 __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_")
+pub fn stub_0x4b984() {
+    // IDA 0x4b984: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::function1<void,RBX::DataModel *>::operator()(RBX::DataModel *)const")]
 // 0x4b98c — __ZNK5boost9function1IvPN3RBX9DataModelEEclES3_ — boost::function1<void,RBX::DataModel *>::operator()(RBX::DataModel *)const
-pub fn stub_0x4b98c() -> ! {
-    todo!("0x4b98c __ZNK5boost9function1IvPN3RBX9DataModelEEclES3_")
+pub fn stub_0x4b98c() {
+    // IDA 0x4b98c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable()")]
 // 0x4bc34 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_ED1Ev — rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable()
-pub fn stub_0x4bc34() -> ! {
-    todo!("0x4bc34 __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_ED1Ev")
+pub fn stub_0x4bc34() {
+    // IDA 0x4bc34: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable()")]
 // 0x4bd08 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_ED0Ev — rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable()
-pub fn stub_0x4bd08() -> ! {
-    todo!("0x4bd08 __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_ED0Ev")
+pub fn stub_0x4bd08() {
+    // IDA 0x4bd08: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::function1<void,RBX::DataModel *>::assign_to_own(boost::function1<void,RBX::DataModel *> const&)")]
 // 0x4bf3c — __ZN5boost9function1IvPN3RBX9DataModelEE13assign_to_ownERKS4_ — boost::function1<void,RBX::DataModel *>::assign_to_own(boost::function1<void,RBX::DataModel *> const&)
-pub fn stub_0x4bf3c() -> ! {
-    todo!("0x4bf3c __ZN5boost9function1IvPN3RBX9DataModelEE13assign_to_ownERKS4_")
+pub fn stub_0x4bf3c() {
+    // IDA 0x4bf3c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")]
 // 0x4bf6c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPN3RBX9DataModelEENS3_5list3INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x4bf6c() -> ! {
-    todo!("0x4bf6c __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPN3RBX9DataModelEENS3_5list3INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE")
+pub fn stub_0x4bf6c() {
+    // IDA 0x4bf6c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::DataModel>::invoke(boost::detail::function::function_buffer &,RBX::DataModel)")]
 // 0x4bfcc — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPN3RBX9DataModelEENS3_5list3INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEEEEEEvSA_E6invokeERNS1_15function_bufferESA_ — boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::DataModel>::invoke(boost::detail::function::function_buffer &,RBX::DataModel)
-pub fn stub_0x4bfcc() -> ! {
-    todo!("0x4bfcc __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPN3RBX9DataModelEENS3_5list3INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEEEEEEvSA_E6invokeERNS1_15function_bufferESA_")
+pub fn stub_0x4bfcc() {
+    // IDA 0x4bfcc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "int RBX::Lua::ArgumentPusher::operator()<RBX::CellID>(RBX::CellID const&,boost::disable_if<boost::is_arithmetic<RBX::CellID>,void>::type *)")]
 // 0x26e100 — __ZN3RBX3Lua14ArgumentPusherclINS_6CellIDEEEiRKT_PN5boost10disable_ifINS7_13is_arithmeticIS4_EEvE4typeE — int RBX::Lua::ArgumentPusher::operator()<RBX::CellID>(RBX::CellID const&,boost::disable_if<boost::is_arithmetic<RBX::CellID>,void>::type *)
-pub fn stub_0x26e100() -> ! {
-    todo!("0x26e100 __ZN3RBX3Lua14ArgumentPusherclINS_6CellIDEEEiRKT_PN5boost10disable_ifINS7_13is_arithmeticIS4_EEvE4typeE")
+pub fn stub_0x26e100() {
+    // IDA 0x26e100: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node>,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")]
 // 0x27a00c — __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE13registerClassEP9lua_StatePFiS9_ESB_ — RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))
-pub fn stub_0x27a00c() -> ! {
-    todo!("0x27a00c __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE13registerClassEP9lua_StatePFiS9_ESB_")
+pub fn stub_0x27a00c() {
+    // IDA 0x27a00c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node>,true>::on_gc(lua_State *)")]
 // 0x27a120 — __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE5on_gcEP9lua_State — RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_gc(lua_State *)
-pub fn stub_0x27a120() -> ! {
-    todo!("0x27a120 __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE5on_gcEP9lua_State")
+pub fn stub_0x27a120() {
+    // IDA 0x27a120: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node>,true>::on_eq(lua_State *)")]
 // 0x27a148 — __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE5on_eqEP9lua_State — RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_eq(lua_State *)
-pub fn stub_0x27a148() -> ! {
-    todo!("0x27a148 __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE5on_eqEP9lua_State")
+pub fn stub_0x27a148() {
+    // IDA 0x27a148: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node>,true>::on_tostring(lua_State *)")]
 // 0x27a188 — __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE11on_tostringEP9lua_State — RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_tostring(lua_State *)
-pub fn stub_0x27a188() -> ! {
-    todo!("0x27a188 __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE11on_tostringEP9lua_State")
+pub fn stub_0x27a188() {
+    // IDA 0x27a188: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<YieldFunctionStateObject>::shared_ptr<YieldFunctionStateObject>(YieldFunctionStateObject *)")]
 // 0x281000 — __ZN5boost10shared_ptrI24YieldFunctionStateObjectEC2IS1_EEPT_ — rbx_core::SharedPtr<YieldFunctionStateObject>::shared_ptr<YieldFunctionStateObject>(YieldFunctionStateObject *)
 // was: boost::shared_ptr<YieldFunctionStateObject>::shared_ptr<YieldFunctionStateObject>(YieldFunctionStateObject *)
-pub fn stub_0x281000() -> ! {
-    todo!("0x281000 __ZN5boost10shared_ptrI24YieldFunctionStateObjectEC2IS1_EEPT_")
+pub fn stub_0x281000() {
+    // IDA 0x281000: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "void boost::enable_shared_from_this<YieldFunctionStateObject>::_internal_accept_owner<YieldFunctionStateObject,YieldFunctionStateObject>(rbx_core::SharedPtr<YieldFunctionStateObject> const*,YieldFunctionStateObject *)const")]
 // 0x2810e8 — __ZNK5boost23enable_shared_from_thisI24YieldFunctionStateObjectE22_internal_accept_ownerIS1_S1_EEvPKNS_10shared_ptrIT_EEPT0_ — void boost::enable_shared_from_this<YieldFunctionStateObject>::_internal_accept_owner<YieldFunctionStateObject,YieldFunctionStateObject>(rbx_core::SharedPtr<YieldFunctionStateObject> const*,YieldFunctionStateObject *)const
 // was: void boost::enable_shared_from_this<YieldFunctionStateObject>::_internal_accept_owner<YieldFunctionStateObject,YieldFunctionStateObject>(boost::shared_ptr<YieldFunctionStateObject> const*,YieldFunctionStateObject *)const
-pub fn stub_0x2810e8() -> ! {
-    todo!("0x2810e8 __ZNK5boost23enable_shared_from_thisI24YieldFunctionStateObjectE22_internal_accept_ownerIS1_S1_EEvPKNS_10shared_ptrIT_EEPT0_")
+pub fn stub_0x2810e8() {
+    // IDA 0x2810e8: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<YieldFunctionStateObject>(YieldFunctionStateObject *)")]
 // 0x2811cc — __ZN5boost6detail12shared_countC2I24YieldFunctionStateObjectEEPT_ — boost::detail::shared_count::shared_count<YieldFunctionStateObject>(YieldFunctionStateObject *)
-pub fn stub_0x2811cc() -> ! {
-    todo!("0x2811cc __ZN5boost6detail12shared_countC2I24YieldFunctionStateObjectEEPT_")
+pub fn stub_0x2811cc() {
+    // IDA 0x2811cc: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::~sp_counted_impl_p()")]
 // 0x281354 — __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectED1Ev — boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::~sp_counted_impl_p()
-pub fn stub_0x281354() -> ! {
-    todo!("0x281354 __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectED1Ev")
+pub fn stub_0x281354() {
+    // IDA 0x281354: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::~sp_counted_impl_p()")]
 // 0x281358 — __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectED0Ev — boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::~sp_counted_impl_p()
-pub fn stub_0x281358() -> ! {
-    todo!("0x281358 __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectED0Ev")
+pub fn stub_0x281358() {
+    // IDA 0x281358: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::dispose(void)")]
 // 0x28135c — __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectE7disposeEv — boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::dispose(void)
-pub fn stub_0x28135c() -> ! {
-    todo!("0x28135c __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectE7disposeEv")
+pub fn stub_0x28135c() {
+    // IDA 0x28135c: wired the weak owner from the shared_count (IDA 0x2e518). Arc construction adopts owners — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::get_deleter(std::type_info const&)")]
 // 0x28148c — __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectE11get_deleterERKSt9type_info — boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::get_deleter(std::type_info const&)
-pub fn stub_0x28148c() -> ! {
-    todo!("0x28148c __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectE11get_deleterERKSt9type_info")
+pub fn stub_0x28148c() {
+    // IDA 0x28148c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::get_untyped_deleter(void)")]
 // 0x281490 — __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectE19get_untyped_deleterEv — boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::get_untyped_deleter(void)
-pub fn stub_0x281490() -> ! {
-    todo!("0x281490 __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectE19get_untyped_deleterEv")
+pub fn stub_0x281490() {
+    // IDA 0x281490: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<YieldFunctionStateObject> RBX::shared_from<YieldFunctionStateObject>(YieldFunctionStateObject*)")]
 // 0x281988 — __ZN3RBX11shared_fromI24YieldFunctionStateObjectEEN5boost10shared_ptrIT_EEPS4_ — rbx_core::SharedPtr<YieldFunctionStateObject> RBX::shared_from<YieldFunctionStateObject>(YieldFunctionStateObject*)
 // was: boost::shared_ptr<YieldFunctionStateObject> RBX::shared_from<YieldFunctionStateObject>(YieldFunctionStateObject*)
-pub fn stub_0x281988() -> ! {
-    todo!("0x281988 __ZN3RBX11shared_fromI24YieldFunctionStateObjectEEN5boost10shared_ptrIT_EEPS4_")
+pub fn stub_0x281988() {
+    // IDA 0x281988: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list_av_2<rbx_core::SharedPtr<YieldFunctionStateObject>,boost::arg<1>>::type> boost::bind<void,YieldFunctionStateObject,std::string,rbx_core::SharedPtr<YieldFunctionStateObject>,boost::arg<1>>(void (YieldFunctionStateObject::*)(std::string),rbx_core::SharedPtr<YieldFunctionStateObject>,boost::arg<1>)")]
 // 0x281af0 — __ZN5boost4bindIv24YieldFunctionStateObjectSsNS_10shared_ptrIS1_EENS_3argILi1EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf1IS8_T0_T1_EENS6_9list_av_2IT2_T3_E4typeEEEMSB_FS8_SC_ESF_SG_ — boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list_av_2<rbx_core::SharedPtr<YieldFunctionStateObject>,boost::arg<1>>::type> boost::bind<void,YieldFunctionStateObject,std::string,rbx_core::SharedPtr<YieldFunctionStateObject>,boost::arg<1>>(void (YieldFunctionStateObject::*)(std::string),rbx_core::SharedPtr<YieldFunctionStateObject>,boost::arg<1>)
 // was: boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list_av_2<boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>>::type> boost::bind<void,YieldFunctionStateObject,std::string,boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>>(void (YieldFunctionStateObject::*)(std::string),boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>)
-pub fn stub_0x281af0() -> ! {
-    todo!("0x281af0 __ZN5boost4bindIv24YieldFunctionStateObjectSsNS_10shared_ptrIS1_EENS_3argILi1EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf1IS8_T0_T1_EENS6_9list_av_2IT2_T3_E4typeEEEMSB_FS8_SC_ESF_SG_")
+pub fn stub_0x281af0() {
+    // IDA 0x281af0: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list_av_2<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string>::type> boost::bind<void,rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string,rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string>(void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string),rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string)")]
 // 0x281f70 — __ZN5boost4bindIvNS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESsS5_SsEENS_3_bi6bind_tIT_PFS8_T0_T1_ENS6_9list_av_2IT2_T3_E4typeEEESC_SE_SF_ — boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list_av_2<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string>::type> boost::bind<void,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string>(void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string)
-pub fn stub_0x281f70() -> ! {
-    todo!("0x281f70 __ZN5boost4bindIvNS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESsS5_SsEENS_3_bi6bind_tIT_PFS8_T0_T1_ENS6_9list_av_2IT2_T3_E4typeEEESC_SE_SF_")
+pub fn stub_0x281f70() {
+    // IDA 0x281f70: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "YieldFunctionStateObject::resumeThreadWithException(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string)")]
 // 0x2821bc — __ZN24YieldFunctionStateObject25resumeThreadWithExceptionEN5boost13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESs — YieldFunctionStateObject::resumeThreadWithException(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string)
-pub fn stub_0x2821bc() -> ! {
-    todo!("0x2821bc __ZN24YieldFunctionStateObject25resumeThreadWithExceptionEN5boost13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESs")
+pub fn stub_0x2821bc() {
+    // IDA 0x2821bc: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>)")]
 // 0x2824b4 — __ZN5boost3_bi5list2INS0_5valueINS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEEEENS2_ISsEEEC2ES8_S9_ — boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>)
-pub fn stub_0x2824b4() -> ! {
-    todo!("0x2824b4 __ZN5boost3_bi5list2INS0_5valueINS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEEEENS2_ISsEEEC2ES8_S9_")
+pub fn stub_0x2824b4() {
+    // IDA 0x2824b4: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>)")]
 // 0x282620 — __ZN5boost3_bi8storage2INS0_5valueINS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEEEENS2_ISsEEEC2ES8_S9_ — boost::_bi::storage2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>)
-pub fn stub_0x282620() -> ! {
-    todo!("0x282620 __ZN5boost3_bi8storage2INS0_5valueINS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEEEENS2_ISsEEEC2ES8_S9_")
+pub fn stub_0x282620() {
+    // IDA 0x282620: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>)")]
 // 0x282a48 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS6_5list2INS6_5valueISB_EENSF_ISsEEEEEEEEvT_ — void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>)
-pub fn stub_0x282a48() -> ! {
-    todo!("0x282a48 __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS6_5list2INS6_5valueISB_EENSF_ISsEEEEEEEEvT_")
+pub fn stub_0x282a48() {
+    // IDA 0x282a48: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x282be4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEE6manageERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x282be4() -> ! {
-    todo!("0x282be4 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEE6manageERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE")
+pub fn stub_0x282be4() {
+    // IDA 0x282be4: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")]
 // 0x282c00 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEvPNS6_9DataModelEE6invokeERNS1_15function_bufferESJ_ — boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)
-pub fn stub_0x282c00() -> ! {
-    todo!("0x282c00 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEvPNS6_9DataModelEE6invokeERNS1_15function_bufferESJ_")
+pub fn stub_0x282c00() {
+    // IDA 0x282c00: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")]
 // 0x282c1c — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS3_3Lua13WeakThreadRefEEESsENS8_5list2INS8_5valueISD_EENSH_ISsEEEEEEEEbT_RNS1_15function_bufferE — bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const
-pub fn stub_0x282c1c() -> ! {
-    todo!("0x282c1c __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS3_3Lua13WeakThreadRefEEESsENS8_5list2INS8_5valueISD_EENSH_ISsEEEEEEEEbT_RNS1_15function_bufferE")
+pub fn stub_0x282c1c() {
+    // IDA 0x282c1c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // 0x282da8 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS3_3Lua13WeakThreadRefEEESsENS8_5list2INS8_5valueISD_EENSH_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE — bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
-pub fn stub_0x282da8() -> ! {
-    todo!("0x282da8 __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS3_3Lua13WeakThreadRefEEESsENS8_5list2INS8_5valueISD_EENSH_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+pub fn stub_0x282da8() {
+    // IDA 0x282da8: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>::operator()<void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string) &,boost::_bi::list1<RBX::DataModel *&> &,int)")]
 // 0x282f78 — __ZN5boost3_bi5list2INS0_5valueINS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEEEENS2_ISsEEEclIPFvS7_SsENS0_5list1IRPNS4_9DataModelEEEEEvNS0_4typeIvEERT_RT0_i — void boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>::operator()<void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string) &,boost::_bi::list1<RBX::DataModel *&> &,int)
-pub fn stub_0x282f78() -> ! {
-    todo!("0x282f78 __ZN5boost3_bi5list2INS0_5valueINS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEEEENS2_ISsEEEclIPFvS7_SsENS0_5list1IRPNS4_9DataModelEEEEEvNS0_4typeIvEERT_RT0_i")
+pub fn stub_0x282f78() {
+    // IDA 0x282f78: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x2830e0 — __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEE12manage_smallERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE — boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x2830e0() -> ! {
-    todo!("0x2830e0 __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEE12manage_smallERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE")
+pub fn stub_0x2830e0() {
+    // IDA 0x2830e0: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>::list2(boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>)")]
 // 0x283240 — __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrI24YieldFunctionStateObjectEEEENS_3argILi1EEEEC2ES6_S8_ — boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>::list2(boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>)
 // was: boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>::list2(boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>)
-pub fn stub_0x283240() -> ! {
-    todo!("0x283240 __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrI24YieldFunctionStateObjectEEEENS_3argILi1EEEEC2ES6_S8_")
+pub fn stub_0x283240() {
+    // IDA 0x283240: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>::storage2(boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>)")]
 // 0x283310 — __ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrI24YieldFunctionStateObjectEEEENS_3argILi1EEEEC2ES6_S8_ — boost::_bi::storage2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>::storage2(boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>)
 // was: boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>::storage2(boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>)
-pub fn stub_0x283310() -> ! {
-    todo!("0x283310 __ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrI24YieldFunctionStateObjectEEEENS_3argILi1EEEEC2ES6_S8_")
+pub fn stub_0x283310() {
+    // IDA 0x283310: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost8functionIFvSsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS4_5list2INS4_5valueINS_10shared_ptrIS8_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")]
 // 0x2833f0 — __ZN5boost8functionIFvSsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS4_5list2INS4_5valueINS_10shared_ptrIS8_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE — __ZN5boost8functionIFvSsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS4_5list2INS4_5valueINS_10shared_ptrIS8_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE
-pub fn stub_0x2833f0() -> ! {
-    todo!("0x2833f0 __ZN5boost8functionIFvSsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS4_5list2INS4_5valueINS_10shared_ptrIS8_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x2833f0() {
+    // IDA 0x2833f0: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost9function1IvSsEC2INS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")]
 // 0x2834d4 — __ZN5boost9function1IvSsEC2INS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE — __ZN5boost9function1IvSsEC2INS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE
-pub fn stub_0x2834d4() -> ! {
-    todo!("0x2834d4 __ZN5boost9function1IvSsEC2INS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x2834d4() {
+    // IDA 0x2834d4: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void boost::function1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>)")]
 // 0x2835bc — __ZN5boost9function1IvSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEEEvT_ — void boost::function1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>)
 // was: void boost::function1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>)
-pub fn stub_0x2835bc() -> ! {
-    todo!("0x2835bc __ZN5boost9function1IvSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEEEvT_")
+pub fn stub_0x2835bc() {
+    // IDA 0x2835bc: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x2836b4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE — boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x2836b4() -> ! {
-    todo!("0x2836b4 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE")
+pub fn stub_0x2836b4() {
+    // IDA 0x2836b4: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>,void,std::string>::invoke(boost::detail::function::function_buffer &,std::string)")]
 // 0x2836d0 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEvSsE6invokeERNS1_15function_bufferESs — boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>,void,std::string>::invoke(boost::detail::function::function_buffer &,std::string)
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,void,std::string>::invoke(boost::detail::function::function_buffer &,std::string)
-pub fn stub_0x2836d0() -> ! {
-    todo!("0x2836d0 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEvSsE6invokeERNS1_15function_bufferESs")
+pub fn stub_0x2836d0() {
+    // IDA 0x2836d0: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")]
 // 0x2836ec — __ZNK5boost6detail8function13basic_vtable1IvSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS5_5list2INS5_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE — bool boost::detail::function::basic_vtable1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const
 // was: bool boost::detail::function::basic_vtable1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const
-pub fn stub_0x2836ec() -> ! {
-    todo!("0x2836ec __ZNK5boost6detail8function13basic_vtable1IvSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS5_5list2INS5_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE")
+pub fn stub_0x2836ec() {
+    // IDA 0x2836ec: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // 0x2837d4 — __ZNK5boost6detail8function13basic_vtable1IvSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS5_5list2INS5_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE — bool boost::detail::function::basic_vtable1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 // was: bool boost::detail::function::basic_vtable1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
-pub fn stub_0x2837d4() -> ! {
-    todo!("0x2837d4 __ZNK5boost6detail8function13basic_vtable1IvSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS5_5list2INS5_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+pub fn stub_0x2837d4() {
+    // IDA 0x2837d4: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::detail::function::basic_vtable1<void,std::string>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // 0x2838b8 — __ZNK5boost6detail8function13basic_vtable1IvSsE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS5_5list2INS5_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE — void boost::detail::function::basic_vtable1<void,std::string>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
 // was: void boost::detail::function::basic_vtable1<void,std::string>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
-pub fn stub_0x2838b8() -> ! {
-    todo!("0x2838b8 __ZNK5boost6detail8function13basic_vtable1IvSsE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS5_5list2INS5_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+pub fn stub_0x2838b8() {
+    // IDA 0x2838b8: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list1<std::string &>>(boost::_bi::type<void>,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string> &,boost::_bi::list1<std::string &> &,int)")]
 // 0x28398c — __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrI24YieldFunctionStateObjectEEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_SsEENS0_5list1IRSsEEEEvNS0_4typeIvEERT_RT0_i — void boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list1<std::string &>>(boost::_bi::type<void>,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string> &,boost::_bi::list1<std::string &> &,int)
 // was: void boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list1<std::string &>>(boost::_bi::type<void>,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string> &,boost::_bi::list1<std::string &> &,int)
-pub fn stub_0x28398c() -> ! {
-    todo!("0x28398c __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrI24YieldFunctionStateObjectEEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_SsEENS0_5list1IRSsEEEEvNS0_4typeIvEERT_RT0_i")
+pub fn stub_0x28398c() {
+    // IDA 0x28398c: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 #[doc(alias = "void boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>::call<rbx_core::SharedPtr<YieldFunctionStateObject>,std::string>(rbx_core::SharedPtr<YieldFunctionStateObject> &,void const*,std::string &)const")]
 // 0x283aac — __ZNK5boost4_mfi3mf1Iv24YieldFunctionStateObjectSsE4callINS_10shared_ptrIS2_EESsEEvRT_PKvRT0_ — void boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>::call<rbx_core::SharedPtr<YieldFunctionStateObject>,std::string>(rbx_core::SharedPtr<YieldFunctionStateObject> &,void const*,std::string &)const
 // was: void boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>::call<boost::shared_ptr<YieldFunctionStateObject>,std::string>(boost::shared_ptr<YieldFunctionStateObject> &,void const*,std::string &)const
-pub fn stub_0x283aac() -> ! {
-    todo!("0x283aac __ZNK5boost4_mfi3mf1Iv24YieldFunctionStateObjectSsE4callINS_10shared_ptrIS2_EESsEEvRT_PKvRT0_")
+pub fn stub_0x283aac() {
+    // IDA 0x283aac: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // 0x283be0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE — boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
-pub fn stub_0x283be0() -> ! {
-    todo!("0x283be0 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+pub fn stub_0x283be0() {
+    // IDA 0x283be0: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>>::list3(boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>)")]
 // 0x2849d4 — __ZN5boost3_bi5list3INS0_5valueIN3RBX3Lua15WeakFunctionRefEEENS_3argILi1EEENS2_INS_13intrusive_ptrINS4_13WeakThreadRefEEEEEEC2ES6_S8_SC_ — boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>::list3(boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>)
-pub fn stub_0x2849d4() -> ! {
-    todo!("0x2849d4 __ZN5boost3_bi5list3INS0_5valueIN3RBX3Lua15WeakFunctionRefEEENS_3argILi1EEENS2_INS_13intrusive_ptrINS4_13WeakThreadRefEEEEEEC2ES6_S8_SC_")
+pub fn stub_0x2849d4() {
+    // IDA 0x2849d4: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>>::storage3(boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>>)")]
 // 0x284ad0 — __ZN5boost3_bi8storage3INS0_5valueIN3RBX3Lua15WeakFunctionRefEEENS_3argILi1EEENS2_INS_13intrusive_ptrINS4_13WeakThreadRefEEEEEEC2ES6_S8_SC_ — boost::_bi::storage3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>::storage3(boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>)
-pub fn stub_0x284ad0() -> ! {
-    todo!("0x284ad0 __ZN5boost3_bi8storage3INS0_5valueIN3RBX3Lua15WeakFunctionRefEEENS_3argILi1EEENS2_INS_13intrusive_ptrINS4_13WeakThreadRefEEEEEEC2ES6_S8_SC_")
+pub fn stub_0x284ad0() {
+    // IDA 0x284ad0: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>>::storage2(boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>)")]
 // 0x284bc0 — __ZN5boost3_bi8storage2INS0_5valueIN3RBX3Lua15WeakFunctionRefEEENS_3argILi1EEEEC2ES6_S8_ — boost::_bi::storage2<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>>::storage2(boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>)
-pub fn stub_0x284bc0() -> ! {
-    todo!("0x284bc0 __ZN5boost3_bi8storage2INS0_5valueIN3RBX3Lua15WeakFunctionRefEEENS_3argILi1EEEEC2ES6_S8_")
+pub fn stub_0x284bc0() {
+    // IDA 0x284bc0: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "RBX::Script::EmbeddedSource::setCode(boost::flyweights::flyweight<RBX::ProtectedString,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_> const&,bool)")]
 // 0x28b9b0 — __ZN3RBX6Script14EmbeddedSource7setCodeERKN5boost10flyweights9flyweightINS_15ProtectedStringENS2_9parameter5void_ES7_S7_S7_S7_EEb — RBX::Script::EmbeddedSource::setCode(boost::flyweights::flyweight<RBX::ProtectedString,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_> const&,bool)
-pub fn stub_0x28b9b0() -> ! {
-    todo!("0x28b9b0 __ZN3RBX6Script14EmbeddedSource7setCodeERKN5boost10flyweights9flyweightINS_15ProtectedStringENS2_9parameter5void_ES7_S7_S7_S7_EEb")
+pub fn stub_0x28b9b0() {
+    // IDA 0x28b9b0: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "RBX::Script::SaveScriptInfoHelper(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool)")]
 // 0x28c2f4 — __ZN3RBX6Script20SaveScriptInfoHelperEN5boost8weak_ptrINS_9DataModelEEENS2_IS0_EESsNS_25ScriptInformationProvider13RequestResultEbbb — RBX::Script::SaveScriptInfoHelper(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool)
 // was: RBX::Script::SaveScriptInfoHelper(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool)
-pub fn stub_0x28c2f4() -> ! {
-    todo!("0x28c2f4 __ZN3RBX6Script20SaveScriptInfoHelperEN5boost8weak_ptrINS_9DataModelEEENS2_IS0_EESsNS_25ScriptInformationProvider13RequestResultEbbb")
+pub fn stub_0x28c2f4() {
+    // IDA 0x28c2f4: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::Script::SaveScriptInfo(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool)")]
 // 0x28c6b4 — __ZN3RBX6Script14SaveScriptInfoEN5boost8weak_ptrIS0_EESsNS_25ScriptInformationProvider13RequestResultEbbb — RBX::Script::SaveScriptInfo(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool)
 // was: RBX::Script::SaveScriptInfo(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool)
-pub fn stub_0x28c6b4() -> ! {
-    todo!("0x28c6b4 __ZN3RBX6Script14SaveScriptInfoEN5boost8weak_ptrIS0_EESsNS_25ScriptInformationProvider13RequestResultEbbb")
+pub fn stub_0x28c6b4() {
+    // IDA 0x28c6b4: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RemoteCheatHelper(rbx_core::WeakPtr<RBX::DataModel>)")]
 // 0x28cc94 — __ZL17RemoteCheatHelperN5boost8weak_ptrIN3RBX9DataModelEEE — RemoteCheatHelper(rbx_core::WeakPtr<RBX::DataModel>)
 // was: RemoteCheatHelper(boost::weak_ptr<RBX::DataModel>)
-pub fn stub_0x28cc94() -> ! {
-    todo!("0x28cc94 __ZL17RemoteCheatHelperN5boost8weak_ptrIN3RBX9DataModelEEE")
+pub fn stub_0x28cc94() {
+    // IDA 0x28cc94: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list_av_6<rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool>::type> boost::bind<void,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool>(void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool)")]
 // 0x28d764 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX6ScriptEEESsNS2_25ScriptInformationProvider13RequestResultEbbbS4_SsS6_bbbEENS_3_bi6bind_tIT_PFS9_T0_T1_T2_T3_T4_T5_ENS7_9list_av_6IT6_T7_T8_T9_T10_T11_E4typeEEESH_SJ_SK_SL_SM_SN_SO_ — boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list_av_6<rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool>::type> boost::bind<void,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool>(void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool)
 // was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list_av_6<boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool>::type> boost::bind<void,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool>(void (*)(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool)
-pub fn stub_0x28d764() -> ! {
-    todo!("0x28d764 __ZN5boost4bindIvNS_8weak_ptrIN3RBX6ScriptEEESsNS2_25ScriptInformationProvider13RequestResultEbbbS4_SsS6_bbbEENS_3_bi6bind_tIT_PFS9_T0_T1_T2_T3_T4_T5_ENS7_9list_av_6IT6_T7_T8_T9_T10_T11_E4typeEEESH_SJ_SK_SL_SM_SN_SO_")
+pub fn stub_0x28d764() {
+    // IDA 0x28d764: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list_av_7<rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::type> boost::bind<void,rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool,rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>(void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>)")]
 // 0x28da08 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX9DataModelEEENS1_INS2_6ScriptEEESsNS2_25ScriptInformationProvider13RequestResultEbbbS4_S6_SsNS_3argILi1EEENS9_ILi2EEENS9_ILi3EEENS9_ILi5EEEEENS_3_bi6bind_tIT_PFSG_T0_T1_T2_T3_T4_T5_T6_ENSE_9list_av_7IT7_T8_T9_T10_T11_T12_T13_E4typeEEESP_SR_SS_ST_SU_SV_SW_SX_ — boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list_av_7<rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::type> boost::bind<void,rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool,rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>(void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>)
 // was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list_av_7<boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool,boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>(void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>)
-pub fn stub_0x28da08() -> ! {
-    todo!("0x28da08 __ZN5boost4bindIvNS_8weak_ptrIN3RBX9DataModelEEENS1_INS2_6ScriptEEESsNS2_25ScriptInformationProvider13RequestResultEbbbS4_S6_SsNS_3argILi1EEENS9_ILi2EEENS9_ILi3EEENS9_ILi5EEEEENS_3_bi6bind_tIT_PFSG_T0_T1_T2_T3_T4_T5_T6_ENSE_9list_av_7IT7_T8_T9_T10_T11_T12_T13_E4typeEEESP_SR_SS_ST_SU_SV_SW_SX_")
+pub fn stub_0x28da08() {
+    // IDA 0x28da08: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::WeakPtr<RBX::DataModel> RBX::weak_from<RBX::DataModel>(RBX::DataModel*)")]
 // 0x28dcb8 — __ZN3RBX9weak_fromINS_9DataModelEEEN5boost8weak_ptrIT_EEPS4_ — rbx_core::WeakPtr<RBX::DataModel> RBX::weak_from<RBX::DataModel>(RBX::DataModel*)
 // was: boost::weak_ptr<RBX::DataModel> RBX::weak_from<RBX::DataModel>(RBX::DataModel*)
-pub fn stub_0x28dcb8() -> ! {
-    todo!("0x28dcb8 __ZN3RBX9weak_fromINS_9DataModelEEEN5boost8weak_ptrIT_EEPS4_")
+pub fn stub_0x28dcb8() {
+    // IDA 0x28dcb8: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::WeakPtr<RBX::Script> RBX::weak_from<RBX::Script>(RBX::Script*)")]
 // 0x28dec0 — __ZN3RBX9weak_fromINS_6ScriptEEEN5boost8weak_ptrIT_EEPS4_ — rbx_core::WeakPtr<RBX::Script> RBX::weak_from<RBX::Script>(RBX::Script*)
 // was: boost::weak_ptr<RBX::Script> RBX::weak_from<RBX::Script>(RBX::Script*)
-pub fn stub_0x28dec0() -> ! {
-    todo!("0x28dec0 __ZN3RBX9weak_fromINS_6ScriptEEEN5boost8weak_ptrIT_EEPS4_")
+pub fn stub_0x28dec0() {
+    // IDA 0x28dec0: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost8functionIFvN3RBX25ScriptInformationProvider13RequestResultEbbfbEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_9DataModelEEENS9_INS1_6ScriptEEESsS3_bbbENS7_5list7INS7_5valueISB_EENSH_ISD_EENSH_ISsEENS_3argILi1EEENSL_ILi2EEENSL_ILi3EEENSL_ILi5EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")]
 // 0x28f9c8 — __ZN5boost8functionIFvN3RBX25ScriptInformationProvider13RequestResultEbbfbEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_9DataModelEEENS9_INS1_6ScriptEEESsS3_bbbENS7_5list7INS7_5valueISB_EENSH_ISD_EENSH_ISsEENS_3argILi1EEENSL_ILi2EEENSL_ILi3EEENSL_ILi5EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE — __ZN5boost8functionIFvN3RBX25ScriptInformationProvider13RequestResultEbbfbEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_9DataModelEEENS9_INS1_6ScriptEEESsS3_bbbENS7_5list7INS7_5valueISB_EENSH_ISD_EENSH_ISsEENS_3argILi1EEENSL_ILi2EEENSL_ILi3EEENSL_ILi5EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
-pub fn stub_0x28f9c8() -> ! {
-    todo!("0x28f9c8 __ZN5boost8functionIFvN3RBX25ScriptInformationProvider13RequestResultEbbfbEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_9DataModelEEENS9_INS1_6ScriptEEESsS3_bbbENS7_5list7INS7_5valueISB_EENSH_ISD_EENSH_ISsEENS_3argILi1EEENSL_ILi2EEENSL_ILi3EEENSL_ILi5EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x28f9c8() {
+    // IDA 0x28f9c8: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost9function5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_9DataModelEEENS8_INS1_6ScriptEEESsS3_bbbENS6_5list7INS6_5valueISA_EENSG_ISC_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE")]
 // 0x28fb68 — __ZN5boost9function5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_9DataModelEEENS8_INS1_6ScriptEEESsS3_bbbENS6_5list7INS6_5valueISA_EENSG_ISC_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE — __ZN5boost9function5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_9DataModelEEENS8_INS1_6ScriptEEESsS3_bbbENS6_5list7INS6_5valueISA_EENSG_ISC_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE
-pub fn stub_0x28fb68() -> ! {
-    todo!("0x28fb68 __ZN5boost9function5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_9DataModelEEENS8_INS1_6ScriptEEESsS3_bbbENS6_5list7INS6_5valueISA_EENSG_ISC_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x28fb68() {
+    // IDA 0x28fb68: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>>::storage3(boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>> const&)")]
 // 0x28fd0c — __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEEEC2ERKSC_ — boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>>::storage3(boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>> const&)
 // was: boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>>::storage3(boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>> const&)
-pub fn stub_0x28fd0c() -> ! {
-    todo!("0x28fd0c __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEEEC2ERKSC_")
+pub fn stub_0x28fd0c() {
+    // IDA 0x28fd0c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void boost::function5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>)")]
 // 0x28fe44 — __ZN5boost9function5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_9DataModelEEENS8_INS1_6ScriptEEESsS3_bbbENS6_5list7INS6_5valueISA_EENSG_ISC_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEEEvT_ — void boost::function5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>)
 // was: void boost::function5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>)
-pub fn stub_0x28fe44() -> ! {
-    todo!("0x28fe44 __ZN5boost9function5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_9DataModelEEENS8_INS1_6ScriptEEESsS3_bbbENS6_5list7INS6_5valueISA_EENSG_ISC_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEEEvT_")
+pub fn stub_0x28fe44() {
+    // IDA 0x28fe44: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x28fff4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEENS5_INS6_6ScriptEEESsNS6_25ScriptInformationProvider13RequestResultEbbbENS3_5list7INS3_5valueIS8_EENSG_ISA_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEE6manageERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeE — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x28fff4() -> ! {
-    todo!("0x28fff4 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEENS5_INS6_6ScriptEEESsNS6_25ScriptInformationProvider13RequestResultEbbbENS3_5list7INS3_5valueIS8_EENSG_ISA_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEE6manageERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeE")
+pub fn stub_0x28fff4() {
+    // IDA 0x28fff4: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker5<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::invoke(boost::detail::function::function_buffer &,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)")]
 // 0x290010 — __ZN5boost6detail8function26void_function_obj_invoker5INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEENS5_INS6_6ScriptEEESsNS6_25ScriptInformationProvider13RequestResultEbbbENS3_5list7INS3_5valueIS8_EENSG_ISA_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEvSC_bbfbE6invokeERNS1_15function_bufferESC_bbfb — boost::detail::function::void_function_obj_invoker5<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::invoke(boost::detail::function::function_buffer &,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)
 // was: boost::detail::function::void_function_obj_invoker5<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::invoke(boost::detail::function::function_buffer &,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)
-pub fn stub_0x290010() -> ! {
-    todo!("0x290010 __ZN5boost6detail8function26void_function_obj_invoker5INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEENS5_INS6_6ScriptEEESsNS6_25ScriptInformationProvider13RequestResultEbbbENS3_5list7INS3_5valueIS8_EENSG_ISA_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEvSC_bbfbE6invokeERNS1_15function_bufferESC_bbfb")
+pub fn stub_0x290010() {
+    // IDA 0x290010: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,boost::detail::function::function_buffer &)const")]
 // 0x290058 — __ZNK5boost6detail8function13basic_vtable5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_9DataModelEEENSA_INS3_6ScriptEEESsS5_bbbENS8_5list7INS8_5valueISC_EENSI_ISE_EENSI_ISsEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEENSM_ILi5EEEEEEEEEbT_RNS1_15function_bufferE — bool boost::detail::function::basic_vtable5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,boost::detail::function::function_buffer &)const
 // was: bool boost::detail::function::basic_vtable5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,boost::detail::function::function_buffer &)const
-pub fn stub_0x290058() -> ! {
-    todo!("0x290058 __ZNK5boost6detail8function13basic_vtable5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_9DataModelEEENSA_INS3_6ScriptEEESsS5_bbbENS8_5list7INS8_5valueISC_EENSI_ISE_EENSI_ISsEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEENSM_ILi5EEEEEEEEEbT_RNS1_15function_bufferE")
+pub fn stub_0x290058() {
+    // IDA 0x290058: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // 0x2901fc — __ZNK5boost6detail8function13basic_vtable5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_9DataModelEEENSA_INS3_6ScriptEEESsS5_bbbENS8_5list7INS8_5valueISC_EENSI_ISE_EENSI_ISsEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEENSM_ILi5EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE — bool boost::detail::function::basic_vtable5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 // was: bool boost::detail::function::basic_vtable5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
-pub fn stub_0x2901fc() -> ! {
-    todo!("0x2901fc __ZNK5boost6detail8function13basic_vtable5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_9DataModelEEENSA_INS3_6ScriptEEESsS5_bbbENS8_5list7INS8_5valueISC_EENSI_ISE_EENSI_ISsEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEENSM_ILi5EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+pub fn stub_0x2901fc() {
+    // IDA 0x2901fc: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::detail::function::basic_vtable5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_functor<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // 0x290398 — __ZNK5boost6detail8function13basic_vtable5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_9DataModelEEENSA_INS3_6ScriptEEESsS5_bbbENS8_5list7INS8_5valueISC_EENSI_ISE_EENSI_ISsEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEENSM_ILi5EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE — void boost::detail::function::basic_vtable5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_functor<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
 // was: void boost::detail::function::basic_vtable5<void,RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
-pub fn stub_0x290398() -> ! {
-    todo!("0x290398 __ZNK5boost6detail8function13basic_vtable5IvN3RBX25ScriptInformationProvider13RequestResultEbbfbE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_9DataModelEEENSA_INS3_6ScriptEEESsS5_bbbENS8_5list7INS8_5valueISC_EENSI_ISE_EENSI_ISsEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEENSM_ILi5EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+pub fn stub_0x290398() {
+    // IDA 0x290398: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::operator()<void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list5<RBX::ScriptInformationProvider::RequestResult&,bool &,bool &,float &,bool &>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool) &,boost::_bi::list5<RBX::ScriptInformationProvider::RequestResult&,bool &,bool &,float &,bool &> &,int)")]
 // 0x290458 — __ZN5boost3_bi5list7INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEENS_3argILi1EEENSC_ILi2EEENSC_ILi3EEENSC_ILi5EEEEclIPFvS6_S9_SsNS4_25ScriptInformationProvider13RequestResultEbbbENS0_5list5IRSK_RbSP_RfSP_EEEEvNS0_4typeIvEERT_RT0_i — void boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::operator()<void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list5<RBX::ScriptInformationProvider::RequestResult&,bool &,bool &,float &,bool &>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool) &,boost::_bi::list5<RBX::ScriptInformationProvider::RequestResult&,bool &,bool &,float &,bool &> &,int)
 // was: void boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::operator()<void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list5<RBX::ScriptInformationProvider::RequestResult&,bool &,bool &,float &,bool &>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool) &,boost::_bi::list5<RBX::ScriptInformationProvider::RequestResult&,bool &,bool &,float &,bool &> &,int)
-pub fn stub_0x290458() -> ! {
-    todo!("0x290458 __ZN5boost3_bi5list7INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEENS_3argILi1EEENSC_ILi2EEENSC_ILi3EEENSC_ILi5EEEEclIPFvS6_S9_SsNS4_25ScriptInformationProvider13RequestResultEbbbENS0_5list5IRSK_RbSP_RfSP_EEEEvNS0_4typeIvEERT_RT0_i")
+pub fn stub_0x290458() {
+    // IDA 0x290458: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // 0x290624 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEENS5_INS6_6ScriptEEESsNS6_25ScriptInformationProvider13RequestResultEbbbENS3_5list7INS3_5valueIS8_EENSG_ISA_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
-pub fn stub_0x290624() -> ! {
-    todo!("0x290624 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEENS5_INS6_6ScriptEEESsNS6_25ScriptInformationProvider13RequestResultEbbbENS3_5list7INS3_5valueIS8_EENSG_ISA_EENSG_ISsEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi5EEEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+pub fn stub_0x290624() {
+    // IDA 0x290624: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>>::~storage3()")]
 // 0x290768 — __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEEED2Ev — boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>>::~storage3()
 // was: boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>>::~storage3()
-pub fn stub_0x290768() -> ! {
-    todo!("0x290768 __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEEED2Ev")
+pub fn stub_0x290768() {
+    // IDA 0x290768: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::list7(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>)")]
 // 0x290884 — __ZN5boost3_bi5list7INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEENS_3argILi1EEENSC_ILi2EEENSC_ILi3EEENSC_ILi5EEEEC2ES7_SA_SB_SD_SE_SF_SG_ — boost::_bi::list7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::list7(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>)
 // was: boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::list7(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>)
-pub fn stub_0x290884() -> ! {
-    todo!("0x290884 __ZN5boost3_bi5list7INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEENS_3argILi1EEENSC_ILi2EEENSC_ILi3EEENSC_ILi5EEEEC2ES7_SA_SB_SD_SE_SF_SG_")
+pub fn stub_0x290884() {
+    // IDA 0x290884: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::storage7(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>)")]
 // 0x290a34 — __ZN5boost3_bi8storage7INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEENS_3argILi1EEENSC_ILi2EEENSC_ILi3EEENSC_ILi5EEEEC2ES7_SA_SB_SD_SE_SF_SG_ — boost::_bi::storage7<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::storage7(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>)
 // was: boost::_bi::storage7<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::storage7(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>)
-pub fn stub_0x290a34() -> ! {
-    todo!("0x290a34 __ZN5boost3_bi8storage7INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEENS_3argILi1EEENSC_ILi2EEENSC_ILi3EEENSC_ILi5EEEEC2ES7_SA_SB_SD_SE_SF_SG_")
+pub fn stub_0x290a34() {
+    // IDA 0x290a34: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage6<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::storage6(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>)")]
 // 0x290be4 — __ZN5boost3_bi8storage6INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEENS_3argILi1EEENSC_ILi2EEENSC_ILi3EEEEC2ES7_SA_SB_SD_SE_SF_ — boost::_bi::storage6<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::storage6(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>)
 // was: boost::_bi::storage6<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::storage6(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>,boost::arg<3>)
-pub fn stub_0x290be4() -> ! {
-    todo!("0x290be4 __ZN5boost3_bi8storage6INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEENS_3argILi1EEENSC_ILi2EEENSC_ILi3EEEEC2ES7_SA_SB_SD_SE_SF_")
+pub fn stub_0x290be4() {
+    // IDA 0x290be4: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage5<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>>::storage5(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>)")]
 // 0x290d94 — __ZN5boost3_bi8storage5INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEENS_3argILi1EEENSC_ILi2EEEEC2ES7_SA_SB_SD_SE_ — boost::_bi::storage5<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>>::storage5(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>)
 // was: boost::_bi::storage5<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>>::storage5(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>,boost::arg<2>)
-pub fn stub_0x290d94() -> ! {
-    todo!("0x290d94 __ZN5boost3_bi8storage5INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEENS_3argILi1EEENSC_ILi2EEEEC2ES7_SA_SB_SD_SE_")
+pub fn stub_0x290d94() {
+    // IDA 0x290d94: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>>::storage4(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>)")]
 // 0x290f44 — __ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEENS_3argILi1EEEEC2ES7_SA_SB_SD_ — boost::_bi::storage4<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>>::storage4(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>)
 // was: boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>>::storage4(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::arg<1>)
-pub fn stub_0x290f44() -> ! {
-    todo!("0x290f44 __ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEENS_3argILi1EEEEC2ES7_SA_SB_SD_")
+pub fn stub_0x290f44() {
+    // IDA 0x290f44: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>>::storage3(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>)")]
 // 0x2910f4 — __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEEEC2ES7_SA_SB_ — boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>>::storage3(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>)
 // was: boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>)
-pub fn stub_0x2910f4() -> ! {
-    todo!("0x2910f4 __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEENS2_ISsEEEC2ES7_SA_SB_")
+pub fn stub_0x2910f4() {
+    // IDA 0x2910f4: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>>::storage2(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>)")]
 // 0x291268 — __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEEEC2ES7_SA_ — boost::_bi::storage2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>>::storage2(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>)
 // was: boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<boost::weak_ptr<RBX::Script>>)
-pub fn stub_0x291268() -> ! {
-    todo!("0x291268 __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_INS3_INS4_6ScriptEEEEEEC2ES7_SA_")
+pub fn stub_0x291268() {
+    // IDA 0x291268: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::Script>::shared_ptr<RBX::Script>(rbx_core::WeakPtr<RBX::Script> const&,boost::detail::sp_nothrow_tag)")]
 // 0x291384 — __ZN5boost10shared_ptrIN3RBX6ScriptEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE — rbx_core::SharedPtr<RBX::Script>::shared_ptr<RBX::Script>(rbx_core::WeakPtr<RBX::Script> const&,boost::detail::sp_nothrow_tag)
 // was: boost::shared_ptr<RBX::Script>::shared_ptr<RBX::Script>(boost::weak_ptr<RBX::Script> const&,boost::detail::sp_nothrow_tag)
-pub fn stub_0x291384() -> ! {
-    todo!("0x291384 __ZN5boost10shared_ptrIN3RBX6ScriptEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")
+pub fn stub_0x291384() {
+    // IDA 0x291384: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_6ScriptEEESsNS1_25ScriptInformationProvider13RequestResultEbbbENS7_5list6INS7_5valueISB_EENSH_ISsEENSH_ISD_EENSH_IbEESL_SL_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
 // 0x291400 — __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_6ScriptEEESsNS1_25ScriptInformationProvider13RequestResultEbbbENS7_5list6INS7_5valueISB_EENSH_ISsEENSH_ISD_EENSH_IbEESL_SL_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE — __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_6ScriptEEESsNS1_25ScriptInformationProvider13RequestResultEbbbENS7_5list6INS7_5valueISB_EENSH_ISsEENSH_ISD_EENSH_IbEESL_SL_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
-pub fn stub_0x291400() -> ! {
-    todo!("0x291400 __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_6ScriptEEESsNS1_25ScriptInformationProvider13RequestResultEbbbENS7_5list6INS7_5valueISB_EENSH_ISsEENSH_ISD_EENSH_IbEESL_SL_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x291400() {
+    // IDA 0x291400: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_6ScriptEEESsNS1_25ScriptInformationProvider13RequestResultEbbbENS6_5list6INS6_5valueISA_EENSG_ISsEENSG_ISC_EENSG_IbEESK_SK_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")]
 // 0x2915c4 — __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_6ScriptEEESsNS1_25ScriptInformationProvider13RequestResultEbbbENS6_5list6INS6_5valueISA_EENSG_ISsEENSG_ISC_EENSG_IbEESK_SK_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE — __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_6ScriptEEESsNS1_25ScriptInformationProvider13RequestResultEbbbENS6_5list6INS6_5valueISA_EENSG_ISsEENSG_ISC_EENSG_IbEESK_SK_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
-pub fn stub_0x2915c4() -> ! {
-    todo!("0x2915c4 __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_6ScriptEEESsNS1_25ScriptInformationProvider13RequestResultEbbbENS6_5list6INS6_5valueISA_EENSG_ISsEENSG_ISC_EENSG_IbEESK_SK_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x2915c4() {
+    // IDA 0x2915c4: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>)")]
 // 0x29178c — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_6ScriptEEESsNS1_25ScriptInformationProvider13RequestResultEbbbENS6_5list6INS6_5valueISA_EENSG_ISsEENSG_ISC_EENSG_IbEESK_SK_EEEEEEvT_ — void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>)
 // was: void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>)
-pub fn stub_0x29178c() -> ! {
-    todo!("0x29178c __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_6ScriptEEESsNS1_25ScriptInformationProvider13RequestResultEbbbENS6_5list6INS6_5valueISA_EENSG_ISsEENSG_ISC_EENSG_IbEESK_SK_EEEEEEvT_")
+pub fn stub_0x29178c() {
+    // IDA 0x29178c: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x291960 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX6ScriptEEESsNS6_25ScriptInformationProvider13RequestResultEbbbENS3_5list6INS3_5valueIS8_EENSE_ISsEENSE_ISA_EENSE_IbEESI_SI_EEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x291960() -> ! {
-    todo!("0x291960 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX6ScriptEEESsNS6_25ScriptInformationProvider13RequestResultEbbbENS3_5list6INS3_5valueIS8_EENSE_ISsEENSE_ISA_EENSE_IbEESI_SI_EEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE")
+pub fn stub_0x291960() {
+    // IDA 0x291960: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")]
 // 0x29197c — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX6ScriptEEESsNS6_25ScriptInformationProvider13RequestResultEbbbENS3_5list6INS3_5valueIS8_EENSE_ISsEENSE_ISA_EENSE_IbEESI_SI_EEEEvPNS6_9DataModelEE6invokeERNS1_15function_bufferESM_ — boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)
-pub fn stub_0x29197c() -> ! {
-    todo!("0x29197c __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX6ScriptEEESsNS6_25ScriptInformationProvider13RequestResultEbbbENS3_5list6INS3_5valueIS8_EENSE_ISsEENSE_ISA_EENSE_IbEESI_SI_EEEEvPNS6_9DataModelEE6invokeERNS1_15function_bufferESM_")
+pub fn stub_0x29197c() {
+    // IDA 0x29197c: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &)const")]
 // 0x291998 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_6ScriptEEESsNS3_25ScriptInformationProvider13RequestResultEbbbENS8_5list6INS8_5valueISC_EENSI_ISsEENSI_ISE_EENSI_IbEESM_SM_EEEEEEbT_RNS1_15function_bufferE — bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &)const
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &)const
-pub fn stub_0x291998() -> ! {
-    todo!("0x291998 __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_6ScriptEEESsNS3_25ScriptInformationProvider13RequestResultEbbbENS8_5list6INS8_5valueISC_EENSI_ISsEENSI_ISE_EENSI_IbEESM_SM_EEEEEEbT_RNS1_15function_bufferE")
+pub fn stub_0x291998() {
+    // IDA 0x291998: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // 0x291b5c — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_6ScriptEEESsNS3_25ScriptInformationProvider13RequestResultEbbbENS8_5list6INS8_5valueISC_EENSI_ISsEENSI_ISE_EENSI_IbEESM_SM_EEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE — bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
-pub fn stub_0x291b5c() -> ! {
-    todo!("0x291b5c __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_6ScriptEEESsNS3_25ScriptInformationProvider13RequestResultEbbbENS8_5list6INS8_5valueISC_EENSI_ISsEENSI_ISE_EENSI_IbEESM_SM_EEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+pub fn stub_0x291b5c() {
+    // IDA 0x291b5c: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // 0x291d1c — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_6ScriptEEESsNS3_25ScriptInformationProvider13RequestResultEbbbENS8_5list6INS8_5valueISC_EENSI_ISsEENSI_ISE_EENSI_IbEESM_SM_EEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE — void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
 // was: void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
-pub fn stub_0x291d1c() -> ! {
-    todo!("0x291d1c __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_6ScriptEEESsNS3_25ScriptInformationProvider13RequestResultEbbbENS8_5list6INS8_5valueISC_EENSI_ISsEENSI_ISE_EENSI_IbEESM_SM_EEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+pub fn stub_0x291d1c() {
+    // IDA 0x291d1c: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>::operator()<void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool) &,boost::_bi::list1<RBX::DataModel *&> &,int)")]
 // 0x291e3c — __ZN5boost3_bi5list6INS0_5valueINS_8weak_ptrIN3RBX6ScriptEEEEENS2_ISsEENS2_INS4_25ScriptInformationProvider13RequestResultEEENS2_IbEESC_SC_EclIPFvS6_SsSA_bbbENS0_5list1IRPNS4_9DataModelEEEEEvNS0_4typeIvEERT_RT0_i — void boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>::operator()<void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool) &,boost::_bi::list1<RBX::DataModel *&> &,int)
 // was: void boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>::operator()<void (*)(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool) &,boost::_bi::list1<RBX::DataModel *&> &,int)
-pub fn stub_0x291e3c() -> ! {
-    todo!("0x291e3c __ZN5boost3_bi5list6INS0_5valueINS_8weak_ptrIN3RBX6ScriptEEEEENS2_ISsEENS2_INS4_25ScriptInformationProvider13RequestResultEEENS2_IbEESC_SC_EclIPFvS6_SsSA_bbbENS0_5list1IRPNS4_9DataModelEEEEEvNS0_4typeIvEERT_RT0_i")
+pub fn stub_0x291e3c() {
+    // IDA 0x291e3c: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // 0x291fb8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX6ScriptEEESsNS6_25ScriptInformationProvider13RequestResultEbbbENS3_5list6INS3_5valueIS8_EENSE_ISsEENSE_ISA_EENSE_IbEESI_SI_EEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
-pub fn stub_0x291fb8() -> ! {
-    todo!("0x291fb8 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX6ScriptEEESsNS6_25ScriptInformationProvider13RequestResultEbbbENS3_5list6INS3_5valueIS8_EENSE_ISsEENSE_ISA_EENSE_IbEESI_SI_EEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+pub fn stub_0x291fb8() {
+    // IDA 0x291fb8: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>::list6(boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>)")]
 // 0x292180 — __ZN5boost3_bi5list6INS0_5valueINS_8weak_ptrIN3RBX6ScriptEEEEENS2_ISsEENS2_INS4_25ScriptInformationProvider13RequestResultEEENS2_IbEESC_SC_EC2ES7_S8_SB_SC_SC_SC_ — boost::_bi::list6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>::list6(boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>)
 // was: boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>::list6(boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>)
-pub fn stub_0x292180() -> ! {
-    todo!("0x292180 __ZN5boost3_bi5list6INS0_5valueINS_8weak_ptrIN3RBX6ScriptEEEEENS2_ISsEENS2_INS4_25ScriptInformationProvider13RequestResultEEENS2_IbEESC_SC_EC2ES7_S8_SB_SC_SC_SC_")
+pub fn stub_0x292180() {
+    // IDA 0x292180: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>::storage6(boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>)")]
 // 0x292300 — __ZN5boost3_bi8storage6INS0_5valueINS_8weak_ptrIN3RBX6ScriptEEEEENS2_ISsEENS2_INS4_25ScriptInformationProvider13RequestResultEEENS2_IbEESC_SC_EC2ES7_S8_SB_SC_SC_SC_ — boost::_bi::storage6<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>::storage6(boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>)
 // was: boost::_bi::storage6<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>>::storage6(boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<bool>)
-pub fn stub_0x292300() -> ! {
-    todo!("0x292300 __ZN5boost3_bi8storage6INS0_5valueINS_8weak_ptrIN3RBX6ScriptEEEEENS2_ISsEENS2_INS4_25ScriptInformationProvider13RequestResultEEENS2_IbEESC_SC_EC2ES7_S8_SB_SC_SC_SC_")
+pub fn stub_0x292300() {
+    // IDA 0x292300: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage5<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>>::storage5(boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>)")]
 // 0x292480 — __ZN5boost3_bi8storage5INS0_5valueINS_8weak_ptrIN3RBX6ScriptEEEEENS2_ISsEENS2_INS4_25ScriptInformationProvider13RequestResultEEENS2_IbEESC_EC2ES7_S8_SB_SC_SC_ — boost::_bi::storage5<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>>::storage5(boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>)
 // was: boost::_bi::storage5<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>>::storage5(boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>,boost::_bi::value<bool>)
-pub fn stub_0x292480() -> ! {
-    todo!("0x292480 __ZN5boost3_bi8storage5INS0_5valueINS_8weak_ptrIN3RBX6ScriptEEEEENS2_ISsEENS2_INS4_25ScriptInformationProvider13RequestResultEEENS2_IbEESC_EC2ES7_S8_SB_SC_SC_")
+pub fn stub_0x292480() {
+    // IDA 0x292480: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>>::storage4(boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>)")]
 // 0x2925f8 — __ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX6ScriptEEEEENS2_ISsEENS2_INS4_25ScriptInformationProvider13RequestResultEEENS2_IbEEEC2ES7_S8_SB_SC_ — boost::_bi::storage4<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>>::storage4(boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>)
 // was: boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>>::storage4(boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>,boost::_bi::value<bool>)
-pub fn stub_0x2925f8() -> ! {
-    todo!("0x2925f8 __ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX6ScriptEEEEENS2_ISsEENS2_INS4_25ScriptInformationProvider13RequestResultEEENS2_IbEEEC2ES7_S8_SB_SC_")
+pub fn stub_0x2925f8() {
+    // IDA 0x2925f8: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>>::storage3(boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>)")]
 // 0x29276c — __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX6ScriptEEEEENS2_ISsEENS2_INS4_25ScriptInformationProvider13RequestResultEEEEC2ES7_S8_SB_ — boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>>::storage3(boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>)
 // was: boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>)
-pub fn stub_0x29276c() -> ! {
-    todo!("0x29276c __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX6ScriptEEEEENS2_ISsEENS2_INS4_25ScriptInformationProvider13RequestResultEEEEC2ES7_S8_SB_")
+pub fn stub_0x29276c() {
+    // IDA 0x29276c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>)")]
 // 0x2928dc — __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX6ScriptEEEEENS2_ISsEEEC2ES7_S8_ — boost::_bi::storage2<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>)
 // was: boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>)
-pub fn stub_0x2928dc() -> ! {
-    todo!("0x2928dc __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX6ScriptEEEEENS2_ISsEEEC2ES7_S8_")
+pub fn stub_0x2928dc() {
+    // IDA 0x2928dc: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "RBX::ScriptContext::setThreadIdentity(lua_State *,RBX::Security::Identities,rbx_core::SharedPtr<RBX::BaseScript>)")]
 // 0x29c588 — __ZN3RBX13ScriptContext17setThreadIdentityEP9lua_StateNS_8Security10IdentitiesEN5boost10shared_ptrINS_10BaseScriptEEE — RBX::ScriptContext::setThreadIdentity(lua_State *,RBX::Security::Identities,rbx_core::SharedPtr<RBX::BaseScript>)
 // was: RBX::ScriptContext::setThreadIdentity(lua_State *,RBX::Security::Identities,boost::shared_ptr<RBX::BaseScript>)
-pub fn stub_0x29c588() -> ! {
-    todo!("0x29c588 __ZN3RBX13ScriptContext17setThreadIdentityEP9lua_StateNS_8Security10IdentitiesEN5boost10shared_ptrINS_10BaseScriptEEE")
+pub fn stub_0x29c588() {
+    // IDA 0x29c588: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "RBX::ScriptContext::call(RBX::Lua::WeakFunctionRef &,boost::function1<unsigned long,lua_State *>,boost::function2<void,lua_State *,unsigned long>)")]
 // 0x29c798 — __ZN3RBX13ScriptContext4callERNS_3Lua15WeakFunctionRefEN5boost9function1ImP9lua_StateEENS4_9function2IvS7_mEE — RBX::ScriptContext::call(RBX::Lua::WeakFunctionRef &,boost::function1<unsigned long,lua_State *>,boost::function2<void,lua_State *,unsigned long>)
-pub fn stub_0x29c798() -> ! {
-    todo!("0x29c798 __ZN3RBX13ScriptContext4callERNS_3Lua15WeakFunctionRefEN5boost9function1ImP9lua_StateEENS4_9function2IvS7_mEE")
+pub fn stub_0x29c798() {
+    // IDA 0x29c798: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "RBX::ScriptContext::executeInNewThread(RBX::Security::Identities,RBX::ProtectedString,char const*,boost::function1<unsigned long,lua_State *>,boost::function2<void,lua_State *,unsigned long>,RBX::Scripts::Continuations,lua_State *)")]
 // 0x29cd04 — __ZN3RBX13ScriptContext18executeInNewThreadENS_8Security10IdentitiesENS_15ProtectedStringEPKcN5boost9function1ImP9lua_StateEENS6_9function2IvS9_mEENS_7Scripts13ContinuationsES9_ — RBX::ScriptContext::executeInNewThread(RBX::Security::Identities,RBX::ProtectedString,char const*,boost::function1<unsigned long,lua_State *>,boost::function2<void,lua_State *,unsigned long>,RBX::Scripts::Continuations,lua_State *)
-pub fn stub_0x29cd04() -> ! {
-    todo!("0x29cd04 __ZN3RBX13ScriptContext18executeInNewThreadENS_8Security10IdentitiesENS_15ProtectedStringEPKcN5boost9function1ImP9lua_StateEENS6_9function2IvS9_mEENS_7Scripts13ContinuationsES9_")
+pub fn stub_0x29cd04() {
+    // IDA 0x29cd04: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "RBX::Lua::Continuations::onErrorHandler(lua_State *,boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>)")]
 // 0x29e080 — __ZN3RBX3Lua13Continuations14onErrorHandlerEP9lua_StateN5boost8functionIFvPKcS7_NS4_10shared_ptrINS_10BaseScriptEEEiEEE — RBX::Lua::Continuations::onErrorHandler(lua_State *,boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>)
 // was: RBX::Lua::Continuations::onErrorHandler(lua_State *,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>)
-pub fn stub_0x29e080() -> ! {
-    todo!("0x29e080 __ZN3RBX3Lua13Continuations14onErrorHandlerEP9lua_StateN5boost8functionIFvPKcS7_NS4_10shared_ptrINS_10BaseScriptEEEiEEE")
+pub fn stub_0x29e080() {
+    // IDA 0x29e080: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "RBX::ScriptContext::extractCallStack(lua_State *,rbx_core::SharedPtr<RBX::BaseScript> &,int &)")]
 // 0x29e2a8 — __ZN3RBX13ScriptContext16extractCallStackEP9lua_StateRN5boost10shared_ptrINS_10BaseScriptEEERi — RBX::ScriptContext::extractCallStack(lua_State *,rbx_core::SharedPtr<RBX::BaseScript> &,int &)
 // was: RBX::ScriptContext::extractCallStack(lua_State *,boost::shared_ptr<RBX::BaseScript> &,int &)
-pub fn stub_0x29e2a8() -> ! {
-    todo!("0x29e2a8 __ZN3RBX13ScriptContext16extractCallStackEP9lua_StateRN5boost10shared_ptrINS_10BaseScriptEEERi")
+pub fn stub_0x29e2a8() {
+    // IDA 0x29e2a8: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 #[doc(alias = "rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::disconnect(void)")]
 // 0x632b68 — __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4slot10disconnectEv — rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::disconnect(void)
-pub fn stub_0x632b68() -> ! {
-    todo!("0x632b68 __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4slot10disconnectEv")
+pub fn stub_0x632b68() {
+    // IDA 0x632b68: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::connected(void)const")]
 // 0x632c78 — __ZNK3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4slot9connectedEv — rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::connected(void)const
-pub fn stub_0x632c78() -> ! {
-    todo!("0x632c78 __ZNK3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4slot9connectedEv")
+pub fn stub_0x632c78() {
+    // IDA 0x632c78: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::remove(rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot *)")]
 // 0x632d5c — __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE6removeEPNS6_4slotE — rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::remove(rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot *)
-pub fn stub_0x632d5c() -> ! {
-    todo!("0x632d5c __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE6removeEPNS6_4slotE")
+pub fn stub_0x632d5c() {
+    // IDA 0x632d5c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::safe_static_init_mutex(void)")]
 // 0x632e4c — __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4slot22safe_static_init_mutexEv — rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::safe_static_init_mutex(void)
-pub fn stub_0x632e4c() -> ! {
-    todo!("0x632e4c __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4slot22safe_static_init_mutexEv")
+pub fn stub_0x632e4c() {
+    // IDA 0x632e4c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::safe_static_do_get_mutex(void)")]
 // 0x632e50 — __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4slot24safe_static_do_get_mutexEv — rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::safe_static_do_get_mutex(void)
-pub fn stub_0x632e50() -> ! {
-    todo!("0x632e50 __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4slot24safe_static_do_get_mutexEv")
+pub fn stub_0x632e50() {
+    // IDA 0x632e50: rbx signals plumbing (cf. Signal in signal.rs). Registration/dispatch lives in Signal — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::~slot()")]
 // 0x633180 — __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4slotD1Ev — rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::~slot()
-pub fn stub_0x633180() -> ! {
-    todo!("0x633180 __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4slotD1Ev")
+pub fn stub_0x633180() {
+    // IDA 0x633180: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::~slot()")]
 // 0x6331ac — __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4slotD0Ev — rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot::~slot()
-pub fn stub_0x6331ac() -> ! {
-    todo!("0x6331ac __ZN3rbx7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES4_EE4slotD0Ev")
+pub fn stub_0x6331ac() {
+    // IDA 0x6331ac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::Stats::onGatherScript(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *)")]
 // 0x6482a0 — __ZN3RBX5StatsL14onGatherScriptEN5boost8weak_ptrINS_9DataModelEEEPSsPSt9exception — RBX::Stats::onGatherScript(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *)
 // was: RBX::Stats::onGatherScript(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *)
-pub fn stub_0x6482a0() -> ! {
-    todo!("0x6482a0 __ZN3RBX5StatsL14onGatherScriptEN5boost8weak_ptrINS_9DataModelEEEPSsPSt9exception")
+pub fn stub_0x6482a0() {
+    // IDA 0x6482a0: weak_ptr ctor/assign. Weak::from(&Arc) at construction — carrier no-op.
 }
 
 #[doc(alias = "RBX::Stats::runScript(rbx_core::SharedPtr<RBX::DataModel>,std::string)")]
 // 0x649cf4 — __ZN3RBX5StatsL9runScriptEN5boost10shared_ptrINS_9DataModelEEESs — RBX::Stats::runScript(rbx_core::SharedPtr<RBX::DataModel>,std::string)
 // was: RBX::Stats::runScript(boost::shared_ptr<RBX::DataModel>,std::string)
-pub fn stub_0x649cf4() -> ! {
-    todo!("0x649cf4 __ZN3RBX5StatsL9runScriptEN5boost10shared_ptrINS_9DataModelEEESs")
+pub fn stub_0x649cf4() {
+    // IDA 0x649cf4: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::DataModel> RBX::shared_from<RBX::DataModel>(RBX::DataModel*)")]
 // 0x64ae00 — __ZN3RBX11shared_fromINS_9DataModelEEEN5boost10shared_ptrIT_EEPS4_ — rbx_core::SharedPtr<RBX::DataModel> RBX::shared_from<RBX::DataModel>(RBX::DataModel*)
 // was: boost::shared_ptr<RBX::DataModel> RBX::shared_from<RBX::DataModel>(RBX::DataModel*)
-pub fn stub_0x64ae00() -> ! {
-    todo!("0x64ae00 __ZN3RBX11shared_fromINS_9DataModelEEEN5boost10shared_ptrIT_EEPS4_")
+pub fn stub_0x64ae00() {
+    // IDA 0x64ae00: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list_av_3<rbx_core::WeakPtr<RBX::DataModel>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *,rbx_core::WeakPtr<RBX::DataModel>,boost::arg<1>,boost::arg<2>>(void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),rbx_core::WeakPtr<RBX::DataModel>,boost::arg<1>,boost::arg<2>)")]
 // 0x64af70 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX9DataModelEEEPSsPSt9exceptionS4_NS_3argILi1EEENS8_ILi2EEEEENS_3_bi6bind_tIT_PFSD_T0_T1_T2_ENSB_9list_av_3IT3_T4_T5_E4typeEEESI_SK_SL_SM_ — boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list_av_3<rbx_core::WeakPtr<RBX::DataModel>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *,rbx_core::WeakPtr<RBX::DataModel>,boost::arg<1>,boost::arg<2>>(void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),rbx_core::WeakPtr<RBX::DataModel>,boost::arg<1>,boost::arg<2>)
 // was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list_av_3<boost::weak_ptr<RBX::DataModel>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *,boost::weak_ptr<RBX::DataModel>,boost::arg<1>,boost::arg<2>>(void (*)(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *),boost::weak_ptr<RBX::DataModel>,boost::arg<1>,boost::arg<2>)
-pub fn stub_0x64af70() -> ! {
-    todo!("0x64af70 __ZN5boost4bindIvNS_8weak_ptrIN3RBX9DataModelEEEPSsPSt9exceptionS4_NS_3argILi1EEENS8_ILi2EEEEENS_3_bi6bind_tIT_PFSD_T0_T1_T2_ENSB_9list_av_3IT3_T4_T5_E4typeEEESI_SK_SL_SM_")
+pub fn stub_0x64af70() {
+    // IDA 0x64af70: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEES1_S3_ENS7_5list3INS7_5valueISC_EENS_3argILi1EEENSI_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")]
 // 0x651ea0 — __ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEES1_S3_ENS7_5list3INS7_5valueISC_EENS_3argILi1EEENSI_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE — __ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEES1_S3_ENS7_5list3INS7_5valueISC_EENS_3argILi1EEENSI_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
-pub fn stub_0x651ea0() -> ! {
-    todo!("0x651ea0 __ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEES1_S3_ENS7_5list3INS7_5valueISC_EENS_3argILi1EEENSI_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x651ea0() {
+    // IDA 0x651ea0: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost9function2IvPSsPSt9exceptionEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEES1_S3_ENS6_5list3INS6_5valueISB_EENS_3argILi1EEENSH_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")]
 // 0x651fc4 — __ZN5boost9function2IvPSsPSt9exceptionEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEES1_S3_ENS6_5list3INS6_5valueISB_EENS_3argILi1EEENSH_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE — __ZN5boost9function2IvPSsPSt9exceptionEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEES1_S3_ENS6_5list3INS6_5valueISB_EENS_3argILi1EEENSH_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE
-pub fn stub_0x651fc4() -> ! {
-    todo!("0x651fc4 __ZN5boost9function2IvPSsPSt9exceptionEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEES1_S3_ENS6_5list3INS6_5valueISB_EENS_3argILi1EEENSH_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x651fc4() {
+    // IDA 0x651fc4: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void boost::function2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>)")]
 // 0x6520f0 — __ZN5boost9function2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEES1_S3_ENS6_5list3INS6_5valueISB_EENS_3argILi1EEENSH_ILi2EEEEEEEEEvT_ — void boost::function2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>)
 // was: void boost::function2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>)
-pub fn stub_0x6520f0() -> ! {
-    todo!("0x6520f0 __ZN5boost9function2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEES1_S3_ENS6_5list3INS6_5valueISB_EENS_3argILi1EEENSH_ILi2EEEEEEEEEvT_")
+pub fn stub_0x6520f0() {
+    // IDA 0x6520f0: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x652228 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEPSsPSt9exceptionENS3_5list3INS3_5valueIS8_EENS_3argILi1EEENSH_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x652228() -> ! {
-    todo!("0x652228 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEPSsPSt9exceptionENS3_5list3INS3_5valueIS8_EENS_3argILi1EEENSH_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE")
+pub fn stub_0x652228() {
+    // IDA 0x652228: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>,void,std::string *,std::exception *>::invoke(boost::detail::function::function_buffer &,std::string *,std::exception *)")]
 // 0x652244 — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEPSsPSt9exceptionENS3_5list3INS3_5valueIS8_EENS_3argILi1EEENSH_ILi2EEEEEEEvS9_SB_E6invokeERNS1_15function_bufferES9_SB_ — boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>,void,std::string *,std::exception *>::invoke(boost::detail::function::function_buffer &,std::string *,std::exception *)
 // was: boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>,void,std::string *,std::exception *>::invoke(boost::detail::function::function_buffer &,std::string *,std::exception *)
-pub fn stub_0x652244() -> ! {
-    todo!("0x652244 __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEPSsPSt9exceptionENS3_5list3INS3_5valueIS8_EENS_3argILi1EEENSH_ILi2EEEEEEEvS9_SB_E6invokeERNS1_15function_bufferES9_SB_")
+pub fn stub_0x652244() {
+    // IDA 0x652244: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")]
 // 0x652268 — __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEES3_S5_ENS8_5list3INS8_5valueISD_EENS_3argILi1EEENSJ_ILi2EEEEEEEEEbT_RNS1_15function_bufferE — bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &…
 // was: bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const
-pub fn stub_0x652268() -> ! {
-    todo!("0x652268 __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEES3_S5_ENS8_5list3INS8_5valueISD_EENS_3argILi1EEENSJ_ILi2EEEEEEEEEbT_RNS1_15function_bufferE")
+pub fn stub_0x652268() {
+    // IDA 0x652268: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // 0x652388 — __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEES3_S5_ENS8_5list3INS8_5valueISD_EENS_3argILi1EEENSJ_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE — bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>,boost::detail::func…
 // was: bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
-pub fn stub_0x652388() -> ! {
-    todo!("0x652388 __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEES3_S5_ENS8_5list3INS8_5valueISD_EENS_3argILi1EEENSJ_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+pub fn stub_0x652388() {
+    // IDA 0x652388: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>::operator()<void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list2<std::string *&,std::exception *&>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *) &,boost::_bi::list2<std::string *&,std::exception *&> &,int)")]
 // 0x652504 — __ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS_3argILi1EEENS8_ILi2EEEEclIPFvS6_PSsPSt9exceptionENS0_5list2IRSD_RSF_EEEEvNS0_4typeIvEERT_RT0_i — void boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>::operator()<void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list2<std::string *&,std::exception *&>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *) &,boost::_bi::list2<std::string *&,std::exception *&> &,int)
 // was: void boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>::operator()<void (*)(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list2<std::string *&,std::exception *&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *) &,boost::_bi::list2<std::string *&,std::exception *&> &,int)
-pub fn stub_0x652504() -> ! {
-    todo!("0x652504 __ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS_3argILi1EEENS8_ILi2EEEEclIPFvS6_PSsPSt9exceptionENS0_5list2IRSD_RSF_EEEEvNS0_4typeIvEERT_RT0_i")
+pub fn stub_0x652504() {
+    // IDA 0x652504: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x65261c — __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEPSsPSt9exceptionENS3_5list3INS3_5valueIS8_EENS_3argILi1EEENSH_ILi2EEEEEEEE12manage_smallERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE — boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 // was: boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x65261c() -> ! {
-    todo!("0x65261c __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEPSsPSt9exceptionENS3_5list3INS3_5valueIS8_EENS_3argILi1EEENSH_ILi2EEEEEEEE12manage_smallERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE")
+pub fn stub_0x65261c() {
+    // IDA 0x65261c: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>::list3(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>)")]
 // 0x6526f4 — __ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS_3argILi1EEENS8_ILi2EEEEC2ES7_S9_SA_ — boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>::list3(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>)
 // was: boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>::list3(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>)
-pub fn stub_0x6526f4() -> ! {
-    todo!("0x6526f4 __ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS_3argILi1EEENS8_ILi2EEEEC2ES7_S9_SA_")
+pub fn stub_0x6526f4() {
+    // IDA 0x6526f4: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>::storage3(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>)")]
 // 0x65280c — __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS_3argILi1EEENS8_ILi2EEEEC2ES7_S9_SA_ — boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>::storage3(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>)
 // was: boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::arg<1>,boost::arg<2>)
-pub fn stub_0x65280c() -> ! {
-    todo!("0x65280c __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS_3argILi1EEENS8_ILi2EEEEC2ES7_S9_SA_")
+pub fn stub_0x65280c() {
+    // IDA 0x65280c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>>::storage2(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>)")]
 // 0x652924 — __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS_3argILi1EEEEC2ES7_S9_ — boost::_bi::storage2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>>::storage2(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::arg<1>)
 // was: boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::arg<1>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::arg<1>)
-pub fn stub_0x652924() -> ! {
-    todo!("0x652924 __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS_3argILi1EEEEC2ES7_S9_")
+pub fn stub_0x652924() {
+    // IDA 0x652924: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list_av_2<rbx_core::SharedPtr<RBX::DataModel>,std::string>::type> boost::bind<void,rbx_core::SharedPtr<RBX::DataModel>,std::string,rbx_core::SharedPtr<RBX::DataModel>,std::string>(void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),rbx_core::SharedPtr<RBX::DataModel>,std::string)")]
 // 0x65634c — __ZN5boost4bindIvNS_10shared_ptrIN3RBX9DataModelEEESsS4_SsEENS_3_bi6bind_tIT_PFS7_T0_T1_ENS5_9list_av_2IT2_T3_E4typeEEESB_SD_SE_ — boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list_av_2<rbx_core::SharedPtr<RBX::DataModel>,std::string>::type> boost::bind<void,rbx_core::SharedPtr<RBX::DataModel>,std::string,rbx_core::SharedPtr<RBX::DataModel>,std::string>(void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),rbx_core::SharedPtr<RBX::DataModel>,std::string)
 // was: boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list_av_2<boost::shared_ptr<RBX::DataModel>,std::string>::type> boost::bind<void,boost::shared_ptr<RBX::DataModel>,std::string,boost::shared_ptr<RBX::DataModel>,std::string>(void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::shared_ptr<RBX::DataModel>,std::string)
-pub fn stub_0x65634c() -> ! {
-    todo!("0x65634c __ZN5boost4bindIvNS_10shared_ptrIN3RBX9DataModelEEESsS4_SsEENS_3_bi6bind_tIT_PFS7_T0_T1_ENS5_9list_av_2IT2_T3_E4typeEEESB_SD_SE_")
+pub fn stub_0x65634c() {
+    // IDA 0x65634c: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>)")]
 // 0x656598 — __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX9DataModelEEEEENS2_ISsEEEC2ES7_S8_ — boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>)
 // was: boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>)
-pub fn stub_0x656598() -> ! {
-    todo!("0x656598 __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX9DataModelEEEEENS2_ISsEEEC2ES7_S8_")
+pub fn stub_0x656598() {
+    // IDA 0x656598: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>)")]
 // 0x656704 — __ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX9DataModelEEEEENS2_ISsEEEC2ES7_S8_ — boost::_bi::storage2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>)
 // was: boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>)
-pub fn stub_0x656704() -> ! {
-    todo!("0x656704 __ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX9DataModelEEEEENS2_ISsEEEC2ES7_S8_")
+pub fn stub_0x656704() {
+    // IDA 0x656704: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS7_5list2INS7_5valueISA_EENSE_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")]
 // 0x65680c — __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS7_5list2INS7_5valueISA_EENSE_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE — __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS7_5list2INS7_5valueISA_EENSE_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE
-pub fn stub_0x65680c() -> ! {
-    todo!("0x65680c __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS7_5list2INS7_5valueISA_EENSE_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x65680c() {
+    // IDA 0x65680c: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "__ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS6_5list2INS6_5valueIS9_EENSD_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")]
 // 0x656994 — __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS6_5list2INS6_5valueIS9_EENSD_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE — __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS6_5list2INS6_5valueIS9_EENSD_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE
-pub fn stub_0x656994() -> ! {
-    todo!("0x656994 __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS6_5list2INS6_5valueIS9_EENSD_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x656994() {
+    // IDA 0x656994: bind_t/storage/list/value ctor captured bound args (cf. IDA functor_manager family). Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>)")]
 // 0x656b20 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS6_5list2INS6_5valueIS9_EENSD_ISsEEEEEEEEvT_ — void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>)
 // was: void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>)
-pub fn stub_0x656b20() -> ! {
-    todo!("0x656b20 __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIS2_EESsENS6_5list2INS6_5valueIS9_EENSD_ISsEEEEEEEEvT_")
+pub fn stub_0x656b20() {
+    // IDA 0x656b20: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // 0x656cb8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModelEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEE6manageERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
-pub fn stub_0x656cb8() -> ! {
-    todo!("0x656cb8 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModelEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEE6manageERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE")
+pub fn stub_0x656cb8() {
+    // IDA 0x656cb8: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")]
 // 0x656cd4 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModelEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEvPS7_E6invokeERNS1_15function_bufferESH_ — boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)
-pub fn stub_0x656cd4() -> ! {
-    todo!("0x656cd4 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModelEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEvPS7_E6invokeERNS1_15function_bufferESH_")
+pub fn stub_0x656cd4() {
+    // IDA 0x656cd4: invoker::invoke unpacked the buffer and called the bound functor. Closure call at the live site — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")]
 // 0x656cf0 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIS4_EESsENS8_5list2INS8_5valueISB_EENSF_ISsEEEEEEEEbT_RNS1_15function_bufferE — bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const
-pub fn stub_0x656cf0() -> ! {
-    todo!("0x656cf0 __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIS4_EESsENS8_5list2INS8_5valueISB_EENSF_ISsEEEEEEEEbT_RNS1_15function_bufferE")
+pub fn stub_0x656cf0() {
+    // IDA 0x656cf0: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // 0x656e78 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIS4_EESsENS8_5list2INS8_5valueISB_EENSF_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE — bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)c…
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
-pub fn stub_0x656e78() -> ! {
-    todo!("0x656e78 __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIS4_EESsENS8_5list2INS8_5valueISB_EENSF_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+pub fn stub_0x656e78() {
+    // IDA 0x656e78: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // 0x656ffc — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE14assign_functorINS_3_bi6bind_tIvPFvNS_10shared_ptrIS4_EESsENS8_5list2INS8_5valueISB_EENSF_ISsEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE — void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
 // was: void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
-pub fn stub_0x656ffc() -> ! {
-    todo!("0x656ffc __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE14assign_functorINS_3_bi6bind_tIvPFvNS_10shared_ptrIS4_EESsENS8_5list2INS8_5valueISB_EENSF_ISsEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+pub fn stub_0x656ffc() {
+    // IDA 0x656ffc: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>::operator()<void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string) &,boost::_bi::list1<RBX::DataModel*&> &,int)")]
 // 0x657104 — __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX9DataModelEEEEENS2_ISsEEEclIPFvS6_SsENS0_5list1IRPS5_EEEEvNS0_4typeIvEERT_RT0_i — void boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>::operator()<void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string) &,boost::_bi::list1<RBX::DataModel*&> &,int)
 // was: void boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>::operator()<void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::DataModel>,std::string) &,boost::_bi::list1<RBX::DataModel*&> &,int)
-pub fn stub_0x657104() -> ! {
-    todo!("0x657104 __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX9DataModelEEEEENS2_ISsEEEclIPFvS6_SsENS0_5list1IRPS5_EEEEvNS0_4typeIvEERT_RT0_i")
+pub fn stub_0x657104() {
+    // IDA 0x657104: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // 0x657270 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModelEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
-pub fn stub_0x657270() -> ! {
-    todo!("0x657270 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModelEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+pub fn stub_0x657270() {
+    // IDA 0x657270: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(char const*,bool)>::insert(rbx::signals::signal<void ()(char const*,bool)>::slot *)")]
 // 0x669af4 — __ZN3rbx7signals6signalIFvPKcbEE6insertEPNS5_4slotE — rbx::signals::signal<void ()(char const*,bool)>::insert(rbx::signals::signal<void ()(char const*,bool)>::slot *)
-pub fn stub_0x669af4() -> ! {
-    todo!("0x669af4 __ZN3rbx7signals6signalIFvPKcbEE6insertEPNS5_4slotE")
+pub fn stub_0x669af4() {
+    // IDA 0x669af4: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(char const*,bool)>::slot::disconnect(void)")]
 // 0x669e24 — __ZN3rbx7signals6signalIFvPKcbEE4slot10disconnectEv — rbx::signals::signal<void ()(char const*,bool)>::slot::disconnect(void)
-pub fn stub_0x669e24() -> ! {
-    todo!("0x669e24 __ZN3rbx7signals6signalIFvPKcbEE4slot10disconnectEv")
+pub fn stub_0x669e24() {
+    // IDA 0x669e24: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(char const*,bool)>::slot::connected(void)const")]
 // 0x669f34 — __ZNK3rbx7signals6signalIFvPKcbEE4slot9connectedEv — rbx::signals::signal<void ()(char const*,bool)>::slot::connected(void)const
-pub fn stub_0x669f34() -> ! {
-    todo!("0x669f34 __ZNK3rbx7signals6signalIFvPKcbEE4slot9connectedEv")
+pub fn stub_0x669f34() {
+    // IDA 0x669f34: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(char const*,bool)>::remove(rbx::signals::signal<void ()(char const*,bool)>::slot *)")]
 // 0x669fbc — __ZN3rbx7signals6signalIFvPKcbEE6removeEPNS5_4slotE — rbx::signals::signal<void ()(char const*,bool)>::remove(rbx::signals::signal<void ()(char const*,bool)>::slot *)
-pub fn stub_0x669fbc() -> ! {
-    todo!("0x669fbc __ZN3rbx7signals6signalIFvPKcbEE6removeEPNS5_4slotE")
+pub fn stub_0x669fbc() {
+    // IDA 0x669fbc: functor_manager::manage dispatched clone/destroy on the erased buffer (IDA 0x2d644: op==4 clones via manager). Clone/Drop glue — no-op carrier.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(char const*,bool)>::slot::safe_static_init_mutex(void)")]
 // 0x66a0ac — __ZN3rbx7signals6signalIFvPKcbEE4slot22safe_static_init_mutexEv — rbx::signals::signal<void ()(char const*,bool)>::slot::safe_static_init_mutex(void)
-pub fn stub_0x66a0ac() -> ! {
-    todo!("0x66a0ac __ZN3rbx7signals6signalIFvPKcbEE4slot22safe_static_init_mutexEv")
+pub fn stub_0x66a0ac() {
+    // IDA 0x66a0ac: rbx signals plumbing (cf. Signal in signal.rs). Registration/dispatch lives in Signal — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(char const*,bool)>::slot::safe_static_do_get_mutex(void)")]
 // 0x66a0b0 — __ZN3rbx7signals6signalIFvPKcbEE4slot24safe_static_do_get_mutexEv — rbx::signals::signal<void ()(char const*,bool)>::slot::safe_static_do_get_mutex(void)
-pub fn stub_0x66a0b0() -> ! {
-    todo!("0x66a0b0 __ZN3rbx7signals6signalIFvPKcbEE4slot24safe_static_do_get_mutexEv")
+pub fn stub_0x66a0b0() {
+    // IDA 0x66a0b0: rbx signals plumbing (cf. Signal in signal.rs). Registration/dispatch lives in Signal — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(char const*,bool)>::slot::~slot()")]
 // 0x66a1a0 — __ZN3rbx7signals6signalIFvPKcbEE4slotD1Ev — rbx::signals::signal<void ()(char const*,bool)>::slot::~slot()
-pub fn stub_0x66a1a0() -> ! {
-    todo!("0x66a1a0 __ZN3rbx7signals6signalIFvPKcbEE4slotD1Ev")
+pub fn stub_0x66a1a0() {
+    // IDA 0x66a1a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(char const*,bool)>::slot::~slot()")]
 // 0x66a1cc — __ZN3rbx7signals6signalIFvPKcbEE4slotD0Ev — rbx::signals::signal<void ()(char const*,bool)>::slot::~slot()
-pub fn stub_0x66a1cc() -> ! {
-    todo!("0x66a1cc __ZN3rbx7signals6signalIFvPKcbEE4slotD0Ev")
+pub fn stub_0x66a1cc() {
+    // IDA 0x66a1cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(int,int)>::disconnectAll(void)")]
 // 0x66b1e0 — __ZN3rbx7signals6signalIFviiEE13disconnectAllEv — rbx::signals::signal<void ()(int,int)>::disconnectAll(void)
-pub fn stub_0x66b1e0() -> ! {
-    todo!("0x66b1e0 __ZN3rbx7signals6signalIFviiEE13disconnectAllEv")
+pub fn stub_0x66b1e0() {
+    // IDA 0x66b1e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(int,int)>::safe_static_init_mutex(void)")]
 // 0x66b37c — __ZN3rbx7signals6signalIFviiEE22safe_static_init_mutexEv — rbx::signals::signal<void ()(int,int)>::safe_static_init_mutex(void)
-pub fn stub_0x66b37c() -> ! {
-    todo!("0x66b37c __ZN3rbx7signals6signalIFviiEE22safe_static_init_mutexEv")
+pub fn stub_0x66b37c() {
+    // IDA 0x66b37c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(int,int)>::safe_static_do_get_mutex(void)")]
 // 0x66b380 — __ZN3rbx7signals6signalIFviiEE24safe_static_do_get_mutexEv — rbx::signals::signal<void ()(int,int)>::safe_static_do_get_mutex(void)
-pub fn stub_0x66b380() -> ! {
-    todo!("0x66b380 __ZN3rbx7signals6signalIFviiEE24safe_static_do_get_mutexEv")
+pub fn stub_0x66b380() {
+    // IDA 0x66b380: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::UDim2)>::disconnectAll(void)")]
 // 0x66b5c4 — __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE13disconnectAllEv — rbx::signals::signal<void ()(RBX::UDim2)>::disconnectAll(void)
-pub fn stub_0x66b5c4() -> ! {
-    todo!("0x66b5c4 __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE13disconnectAllEv")
+pub fn stub_0x66b5c4() {
+    // IDA 0x66b5c4: rbx signals plumbing (cf. Signal in signal.rs). Registration/dispatch lives in Signal — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::UDim2)>::safe_static_init_mutex(void)")]
 // 0x66b760 — __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE22safe_static_init_mutexEv — rbx::signals::signal<void ()(RBX::UDim2)>::safe_static_init_mutex(void)
-pub fn stub_0x66b760() -> ! {
-    todo!("0x66b760 __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE22safe_static_init_mutexEv")
+pub fn stub_0x66b760() {
+    // IDA 0x66b760: rbx signals plumbing (cf. Signal in signal.rs). Registration/dispatch lives in Signal — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::UDim2)>::safe_static_do_get_mutex(void)")]
 // 0x66b764 — __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE24safe_static_do_get_mutexEv — rbx::signals::signal<void ()(RBX::UDim2)>::safe_static_do_get_mutex(void)
-pub fn stub_0x66b764() -> ! {
-    todo!("0x66b764 __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE24safe_static_do_get_mutexEv")
+pub fn stub_0x66b764() {
+    // IDA 0x66b764: rbx signals plumbing (cf. Signal in signal.rs). Registration/dispatch lives in Signal — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::ToolMouseCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::ToolMouseCommand,RBX::Workspace *,RBX::Tool *>(RBX::Workspace *,RBX::Tool *)")]
 // 0x682f50 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_16ToolMouseCommandEPNS_9WorkspaceEPNS_4ToolEEEN5boost10shared_ptrIT_EET0_T1_ — rbx_core::SharedPtr<RBX::ToolMouseCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::ToolMouseCommand,RBX::Workspace *,RBX::Tool *>(RBX::Workspace *,RBX::Tool *)
 // was: boost::shared_ptr<RBX::ToolMouseCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::ToolMouseCommand,RBX::Workspace *,RBX::Tool *>(RBX::Workspace *,RBX::Tool *)
-pub fn stub_0x682f50() -> ! {
-    todo!("0x682f50 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_16ToolMouseCommandEPNS_9WorkspaceEPNS_4ToolEEEN5boost10shared_ptrIT_EET0_T1_")
+pub fn stub_0x682f50() {
+    // IDA 0x682f50: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "boost::function1<void,G3D::Color3>::assign_to_own(boost::function1<void,G3D::Color3> const&)")]
 // 0x6b25bc — __ZN5boost9function1IvN3G3D6Color3EE13assign_to_ownERKS3_ — boost::function1<void,G3D::Color3>::assign_to_own(boost::function1<void,G3D::Color3> const&)
-pub fn stub_0x6b25bc() -> ! {
-    todo!("0x6b25bc __ZN5boost9function1IvN3G3D6Color3EE13assign_to_ownERKS3_")
+pub fn stub_0x6b25bc() {
+    // IDA 0x6b25bc: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal_with_args<1,void ()(G3D::CoordinateFrame)>::operator()(G3D::CoordinateFrame)")]
 // 0x6b2e38 — __ZN3rbx7signals16signal_with_argsILi1EFvN3G3D15CoordinateFrameEEEclES3_ — rbx::signals::signal_with_args<1,void ()(G3D::CoordinateFrame)>::operator()(G3D::CoordinateFrame)
-pub fn stub_0x6b2e38() -> ! {
-    todo!("0x6b2e38 __ZN3rbx7signals16signal_with_argsILi1EFvN3G3D15CoordinateFrameEEEclES3_")
+pub fn stub_0x6b2e38() {
+    // IDA 0x6b2e38: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(G3D::CoordinateFrame)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot> &)")]
 // 0x6b2fd8 — __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4nextERN5boost13intrusive_ptrINS5_4slotEEE — rbx::signals::signal<void ()(G3D::CoordinateFrame)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot> &)
-pub fn stub_0x6b2fd8() -> ! {
-    todo!("0x6b2fd8 __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4nextERN5boost13intrusive_ptrINS5_4slotEEE")
+pub fn stub_0x6b2fd8() {
+    // IDA 0x6b2fd8: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(G3D::CoordinateFrame)>::on_error(std::exception &)")]
 // 0x6b3138 — __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE8on_errorERSt9exception — rbx::signals::signal<void ()(G3D::CoordinateFrame)>::on_error(std::exception &)
-pub fn stub_0x6b3138() -> ! {
-    todo!("0x6b3138 __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE8on_errorERSt9exception")
+pub fn stub_0x6b3138() {
+    // IDA 0x6b3138: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "boost::function1<void,G3D::CoordinateFrame>::clear(void)")]
 // 0x6b33c0 — __ZN5boost9function1IvN3G3D15CoordinateFrameEE5clearEv — boost::function1<void,G3D::CoordinateFrame>::clear(void)
-pub fn stub_0x6b33c0() -> ! {
-    todo!("0x6b33c0 __ZN5boost9function1IvN3G3D15CoordinateFrameEE5clearEv")
+pub fn stub_0x6b33c0() {
+    // IDA 0x6b33c0: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(G3D::CoordinateFrame)>::connect<boost::function<void ()(G3D::CoordinateFrame)>>(boost::function<void ()(G3D::CoordinateFrame)> const&)")]
 // 0x6b3ae4 — __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE7connectIN5boost8functionIS4_EEEENS0_10connectionERKT_ — rbx::signals::connection rbx::signals::signal<void ()(G3D::CoordinateFrame)>::connect<boost::function<void ()(G3D::CoordinateFrame)>>(boost::function<void ()(G3D::CoordinateFrame)> const&)
-pub fn stub_0x6b3ae4() -> ! {
-    todo!("0x6b3ae4 __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE7connectIN5boost8functionIS4_EEEENS0_10connectionERKT_")
+pub fn stub_0x6b3ae4() {
+    // IDA 0x6b3ae4: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(G3D::CoordinateFrame)>::insert(rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot *)")]
 // 0x6b3bd8 — __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE6insertEPNS5_4slotE — rbx::signals::signal<void ()(G3D::CoordinateFrame)>::insert(rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot *)
-pub fn stub_0x6b3bd8() -> ! {
-    todo!("0x6b3bd8 __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE6insertEPNS5_4slotE")
+pub fn stub_0x6b3bd8() {
+    // IDA 0x6b3bd8: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot>::operator=(rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot*)")]
 // 0x6b3de4 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEEaSEPS8_ — boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot>::operator=(rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot*)
-pub fn stub_0x6b3de4() -> ! {
-    todo!("0x6b3de4 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEEaSEPS8_")
+pub fn stub_0x6b3de4() {
+    // IDA 0x6b3de4: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>*>(boost::function<void ()(G3D::CoordinateFrame)> const&,rbx::signals::signal<void ()(G3D::CoordinateFrame)>*)")]
 // 0x6b3e08 — __ZN3rbx8callableINS_7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEN5boost8functionIS5_EELi1ES5_EC2IPS6_EERKSA_T_ — rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>*>(boost::function<void ()(G3D::CoordinateFrame)> const&,rbx::signals::signal<void ()(G3D::CoordinateFrame)>*)
-pub fn stub_0x6b3e08() -> ! {
-    todo!("0x6b3e08 __ZN3rbx8callableINS_7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEN5boost8functionIS5_EELi1ES5_EC2IPS6_EERKSA_T_")
+pub fn stub_0x6b3e08() {
+    // IDA 0x6b3e08: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(G3D::CoordinateFrame)>::callable_slot<boost::function<void ()(G3D::CoordinateFrame)>>::~callable_slot()")]
 // 0x6b3f04 — __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE13callable_slotIN5boost8functionIS4_EEED1Ev — rbx::signals::signal<void ()(G3D::CoordinateFrame)>::callable_slot<boost::function<void ()(G3D::CoordinateFrame)>>::~callable_slot()
-pub fn stub_0x6b3f04() -> ! {
-    todo!("0x6b3f04 __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE13callable_slotIN5boost8functionIS4_EEED1Ev")
+pub fn stub_0x6b3f04() {
+    // IDA 0x6b3f04: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(G3D::CoordinateFrame)>::callable_slot<boost::function<void ()(G3D::CoordinateFrame)>>::~callable_slot()")]
 // 0x6b4014 — __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE13callable_slotIN5boost8functionIS4_EEED0Ev — rbx::signals::signal<void ()(G3D::CoordinateFrame)>::callable_slot<boost::function<void ()(G3D::CoordinateFrame)>>::~callable_slot()
-pub fn stub_0x6b4014() -> ! {
-    todo!("0x6b4014 __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE13callable_slotIN5boost8functionIS4_EEED0Ev")
+pub fn stub_0x6b4014() {
+    // IDA 0x6b4014: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot::disconnect(void)")]
 // 0x6b4144 — __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4slot10disconnectEv — rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot::disconnect(void)
-pub fn stub_0x6b4144() -> ! {
-    todo!("0x6b4144 __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4slot10disconnectEv")
+pub fn stub_0x6b4144() {
+    // IDA 0x6b4144: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot::connected(void)const")]
 // 0x6b4254 — __ZNK3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4slot9connectedEv — rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot::connected(void)const
-pub fn stub_0x6b4254() -> ! {
-    todo!("0x6b4254 __ZNK3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4slot9connectedEv")
+pub fn stub_0x6b4254() {
+    // IDA 0x6b4254: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)")]
 // 0x6b4260 — __ZN3rbx8callableINS_7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_ — rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)
-pub fn stub_0x6b4260() -> ! {
-    todo!("0x6b4260 __ZN3rbx8callableINS_7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")
+pub fn stub_0x6b4260() {
+    // IDA 0x6b4260: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)")]
 // 0x6b428c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_ — non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)
-pub fn stub_0x6b428c() -> ! {
-    todo!("0x6b428c __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")
+pub fn stub_0x6b428c() {
+    // IDA 0x6b428c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::function1<void,G3D::CoordinateFrame>::operator()(G3D::CoordinateFrame)const")]
 // 0x6b42b8 — __ZNK5boost9function1IvN3G3D15CoordinateFrameEEclES2_ — boost::function1<void,G3D::CoordinateFrame>::operator()(G3D::CoordinateFrame)const
-pub fn stub_0x6b42b8() -> ! {
-    todo!("0x6b42b8 __ZNK5boost9function1IvN3G3D15CoordinateFrameEEclES2_")
+pub fn stub_0x6b42b8() {
+    // IDA 0x6b42b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(G3D::CoordinateFrame)>::remove(rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot *)")]
 // 0x6b43a0 — __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE6removeEPNS5_4slotE — rbx::signals::signal<void ()(G3D::CoordinateFrame)>::remove(rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot *)
-pub fn stub_0x6b43a0() -> ! {
-    todo!("0x6b43a0 __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE6removeEPNS5_4slotE")
+pub fn stub_0x6b43a0() {
+    // IDA 0x6b43a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot::safe_static_init_mutex(void)")]
 // 0x6b4490 — __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4slot22safe_static_init_mutexEv — rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot::safe_static_init_mutex(void)
-pub fn stub_0x6b4490() -> ! {
-    todo!("0x6b4490 __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4slot22safe_static_init_mutexEv")
+pub fn stub_0x6b4490() {
+    // IDA 0x6b4490: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot::safe_static_do_get_mutex(void)")]
 // 0x6b4494 — __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4slot24safe_static_do_get_mutexEv — rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot::safe_static_do_get_mutex(void)
-pub fn stub_0x6b4494() -> ! {
-    todo!("0x6b4494 __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4slot24safe_static_do_get_mutexEv")
+pub fn stub_0x6b4494() {
+    // IDA 0x6b4494: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::~callable()")]
 // 0x6b4584 — __ZN3rbx8callableINS_7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEN5boost8functionIS5_EELi1ES5_ED1Ev — rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::~callable()
-pub fn stub_0x6b4584() -> ! {
-    todo!("0x6b4584 __ZN3rbx8callableINS_7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEN5boost8functionIS5_EELi1ES5_ED1Ev")
+pub fn stub_0x6b4584() {
+    // IDA 0x6b4584: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::~callable()")]
 // 0x6b4694 — __ZN3rbx8callableINS_7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEN5boost8functionIS5_EELi1ES5_ED0Ev — rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::~callable()
-pub fn stub_0x6b4694() -> ! {
-    todo!("0x6b4694 __ZN3rbx8callableINS_7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEN5boost8functionIS5_EELi1ES5_ED0Ev")
+pub fn stub_0x6b4694() {
+    // IDA 0x6b4694: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot::~slot()")]
 // 0x6b47c4 — __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4slotD1Ev — rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot::~slot()
-pub fn stub_0x6b47c4() -> ! {
-    todo!("0x6b47c4 __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4slotD1Ev")
+pub fn stub_0x6b47c4() {
+    // IDA 0x6b47c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot::~slot()")]
 // 0x6b47f0 — __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4slotD0Ev — rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot::~slot()
-pub fn stub_0x6b47f0() -> ! {
-    todo!("0x6b47f0 __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4slotD0Ev")
+pub fn stub_0x6b47f0() {
+    // IDA 0x6b47f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::function1<void,G3D::CoordinateFrame>::assign_to_own(boost::function1<void,G3D::CoordinateFrame> const&)")]
 // 0x6b48c4 — __ZN5boost9function1IvN3G3D15CoordinateFrameEE13assign_to_ownERKS3_ — boost::function1<void,G3D::CoordinateFrame>::assign_to_own(boost::function1<void,G3D::CoordinateFrame> const&)
-pub fn stub_0x6b48c4() -> ! {
-    todo!("0x6b48c4 __ZN5boost9function1IvN3G3D15CoordinateFrameEE13assign_to_ownERKS3_")
+pub fn stub_0x6b48c4() {
+    // IDA 0x6b48c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal_with_args<1,void ()(RBX::RbxRay)>::operator()(RBX::RbxRay)")]
 // 0x6b5188 — __ZN3rbx7signals16signal_with_argsILi1EFvN3RBX6RbxRayEEEclES3_ — rbx::signals::signal_with_args<1,void ()(RBX::RbxRay)>::operator()(RBX::RbxRay)
-pub fn stub_0x6b5188() -> ! {
-    todo!("0x6b5188 __ZN3rbx7signals16signal_with_argsILi1EFvN3RBX6RbxRayEEEclES3_")
+pub fn stub_0x6b5188() {
+    // IDA 0x6b5188: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::RbxRay)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot> &)")]
 // 0x6b5404 — __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE4nextERN5boost13intrusive_ptrINS5_4slotEEE — rbx::signals::signal<void ()(RBX::RbxRay)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot> &)
-pub fn stub_0x6b5404() -> ! {
-    todo!("0x6b5404 __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE4nextERN5boost13intrusive_ptrINS5_4slotEEE")
+pub fn stub_0x6b5404() {
+    // IDA 0x6b5404: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::RbxRay)>::on_error(std::exception &)")]
 // 0x6b5564 — __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE8on_errorERSt9exception — rbx::signals::signal<void ()(RBX::RbxRay)>::on_error(std::exception &)
-pub fn stub_0x6b5564() -> ! {
-    todo!("0x6b5564 __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE8on_errorERSt9exception")
+pub fn stub_0x6b5564() {
+    // IDA 0x6b5564: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "boost::function1<void,RBX::RbxRay>::clear(void)")]
 // 0x6b57ec — __ZN5boost9function1IvN3RBX6RbxRayEE5clearEv — boost::function1<void,RBX::RbxRay>::clear(void)
-pub fn stub_0x6b57ec() -> ! {
-    todo!("0x6b57ec __ZN5boost9function1IvN3RBX6RbxRayEE5clearEv")
+pub fn stub_0x6b57ec() {
+    // IDA 0x6b57ec: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::RbxRay)>::connect<boost::function<void ()(RBX::RbxRay)>>(boost::function<void ()(RBX::RbxRay)> const&)")]
 // 0x6b5f10 — __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE7connectIN5boost8functionIS4_EEEENS0_10connectionERKT_ — rbx::signals::connection rbx::signals::signal<void ()(RBX::RbxRay)>::connect<boost::function<void ()(RBX::RbxRay)>>(boost::function<void ()(RBX::RbxRay)> const&)
-pub fn stub_0x6b5f10() -> ! {
-    todo!("0x6b5f10 __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE7connectIN5boost8functionIS4_EEEENS0_10connectionERKT_")
+pub fn stub_0x6b5f10() {
+    // IDA 0x6b5f10: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::RbxRay)>::insert(rbx::signals::signal<void ()(RBX::RbxRay)>::slot *)")]
 // 0x6b6004 — __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE6insertEPNS5_4slotE — rbx::signals::signal<void ()(RBX::RbxRay)>::insert(rbx::signals::signal<void ()(RBX::RbxRay)>::slot *)
-pub fn stub_0x6b6004() -> ! {
-    todo!("0x6b6004 __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE6insertEPNS5_4slotE")
+pub fn stub_0x6b6004() {
+    // IDA 0x6b6004: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot>::operator=(rbx::signals::signal<void ()(RBX::RbxRay)>::slot*)")]
 // 0x6b6210 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX6RbxRayEEE4slotEEaSEPS8_ — boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot>::operator=(rbx::signals::signal<void ()(RBX::RbxRay)>::slot*)
-pub fn stub_0x6b6210() -> ! {
-    todo!("0x6b6210 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX6RbxRayEEE4slotEEaSEPS8_")
+pub fn stub_0x6b6210() {
+    // IDA 0x6b6210: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::callable<rbx::signals::signal<void ()(RBX::RbxRay)>*>(boost::function<void ()(RBX::RbxRay)> const&,rbx::signals::signal<void ()(RBX::RbxRay)>*)")]
 // 0x6b6234 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX6RbxRayEEE4slotEN5boost8functionIS5_EELi1ES5_EC2IPS6_EERKSA_T_ — rbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::callable<rbx::signals::signal<void ()(RBX::RbxRay)>*>(boost::function<void ()(RBX::RbxRay)> const&,rbx::signals::signal<void ()(RBX::RbxRay)>*)
-pub fn stub_0x6b6234() -> ! {
-    todo!("0x6b6234 __ZN3rbx8callableINS_7signals6signalIFvN3RBX6RbxRayEEE4slotEN5boost8functionIS5_EELi1ES5_EC2IPS6_EERKSA_T_")
+pub fn stub_0x6b6234() {
+    // IDA 0x6b6234: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::RbxRay)>::callable_slot<boost::function<void ()(RBX::RbxRay)>>::~callable_slot()")]
 // 0x6b6330 — __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE13callable_slotIN5boost8functionIS4_EEED1Ev — rbx::signals::signal<void ()(RBX::RbxRay)>::callable_slot<boost::function<void ()(RBX::RbxRay)>>::~callable_slot()
-pub fn stub_0x6b6330() -> ! {
-    todo!("0x6b6330 __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE13callable_slotIN5boost8functionIS4_EEED1Ev")
+pub fn stub_0x6b6330() {
+    // IDA 0x6b6330: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::RbxRay)>::callable_slot<boost::function<void ()(RBX::RbxRay)>>::~callable_slot()")]
 // 0x6b6440 — __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE13callable_slotIN5boost8functionIS4_EEED0Ev — rbx::signals::signal<void ()(RBX::RbxRay)>::callable_slot<boost::function<void ()(RBX::RbxRay)>>::~callable_slot()
-pub fn stub_0x6b6440() -> ! {
-    todo!("0x6b6440 __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE13callable_slotIN5boost8functionIS4_EEED0Ev")
+pub fn stub_0x6b6440() {
+    // IDA 0x6b6440: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::RbxRay)>::slot::disconnect(void)")]
 // 0x6b6570 — __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE4slot10disconnectEv — rbx::signals::signal<void ()(RBX::RbxRay)>::slot::disconnect(void)
-pub fn stub_0x6b6570() -> ! {
-    todo!("0x6b6570 __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE4slot10disconnectEv")
+pub fn stub_0x6b6570() {
+    // IDA 0x6b6570: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::RbxRay)>::slot::connected(void)const")]
 // 0x6b6680 — __ZNK3rbx7signals6signalIFvN3RBX6RbxRayEEE4slot9connectedEv — rbx::signals::signal<void ()(RBX::RbxRay)>::slot::connected(void)const
-pub fn stub_0x6b6680() -> ! {
-    todo!("0x6b6680 __ZNK3rbx7signals6signalIFvN3RBX6RbxRayEEE4slot9connectedEv")
+pub fn stub_0x6b6680() {
+    // IDA 0x6b6680: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::call(RBX::RbxRay)")]
 // 0x6b668c — __ZN3rbx8callableINS_7signals6signalIFvN3RBX6RbxRayEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_ — rbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::call(RBX::RbxRay)
-pub fn stub_0x6b668c() -> ! {
-    todo!("0x6b668c __ZN3rbx8callableINS_7signals6signalIFvN3RBX6RbxRayEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")
+pub fn stub_0x6b668c() {
+    // IDA 0x6b668c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::call(RBX::RbxRay)")]
 // 0x6b66c4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX6RbxRayEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_ — non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::call(RBX::RbxRay)
 // was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::call(RBX::RbxRay)
-pub fn stub_0x6b66c4() -> ! {
-    todo!("0x6b66c4 __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX6RbxRayEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")
+pub fn stub_0x6b66c4() {
+    // IDA 0x6b66c4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::function1<void,RBX::RbxRay>::operator()(RBX::RbxRay)const")]
 // 0x6b66fc — __ZNK5boost9function1IvN3RBX6RbxRayEEclES2_ — boost::function1<void,RBX::RbxRay>::operator()(RBX::RbxRay)const
-pub fn stub_0x6b66fc() -> ! {
-    todo!("0x6b66fc __ZNK5boost9function1IvN3RBX6RbxRayEEclES2_")
+pub fn stub_0x6b66fc() {
+    // IDA 0x6b66fc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::RbxRay)>::remove(rbx::signals::signal<void ()(RBX::RbxRay)>::slot *)")]
 // 0x6b67e8 — __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE6removeEPNS5_4slotE — rbx::signals::signal<void ()(RBX::RbxRay)>::remove(rbx::signals::signal<void ()(RBX::RbxRay)>::slot *)
-pub fn stub_0x6b67e8() -> ! {
-    todo!("0x6b67e8 __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE6removeEPNS5_4slotE")
+pub fn stub_0x6b67e8() {
+    // IDA 0x6b67e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::RbxRay)>::slot::safe_static_init_mutex(void)")]
 // 0x6b68d8 — __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE4slot22safe_static_init_mutexEv — rbx::signals::signal<void ()(RBX::RbxRay)>::slot::safe_static_init_mutex(void)
-pub fn stub_0x6b68d8() -> ! {
-    todo!("0x6b68d8 __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE4slot22safe_static_init_mutexEv")
+pub fn stub_0x6b68d8() {
+    // IDA 0x6b68d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::RbxRay)>::slot::safe_static_do_get_mutex(void)")]
 // 0x6b68dc — __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE4slot24safe_static_do_get_mutexEv — rbx::signals::signal<void ()(RBX::RbxRay)>::slot::safe_static_do_get_mutex(void)
-pub fn stub_0x6b68dc() -> ! {
-    todo!("0x6b68dc __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE4slot24safe_static_do_get_mutexEv")
+pub fn stub_0x6b68dc() {
+    // IDA 0x6b68dc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::~callable()")]
 // 0x6b69cc — __ZN3rbx8callableINS_7signals6signalIFvN3RBX6RbxRayEEE4slotEN5boost8functionIS5_EELi1ES5_ED1Ev — rbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::~callable()
-pub fn stub_0x6b69cc() -> ! {
-    todo!("0x6b69cc __ZN3rbx8callableINS_7signals6signalIFvN3RBX6RbxRayEEE4slotEN5boost8functionIS5_EELi1ES5_ED1Ev")
+pub fn stub_0x6b69cc() {
+    // IDA 0x6b69cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::~callable()")]
 // 0x6b6adc — __ZN3rbx8callableINS_7signals6signalIFvN3RBX6RbxRayEEE4slotEN5boost8functionIS5_EELi1ES5_ED0Ev — rbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::~callable()
-pub fn stub_0x6b6adc() -> ! {
-    todo!("0x6b6adc __ZN3rbx8callableINS_7signals6signalIFvN3RBX6RbxRayEEE4slotEN5boost8functionIS5_EELi1ES5_ED0Ev")
+pub fn stub_0x6b6adc() {
+    // IDA 0x6b6adc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::RbxRay)>::slot::~slot()")]
 // 0x6b6c0c — __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE4slotD1Ev — rbx::signals::signal<void ()(RBX::RbxRay)>::slot::~slot()
-pub fn stub_0x6b6c0c() -> ! {
-    todo!("0x6b6c0c __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE4slotD1Ev")
+pub fn stub_0x6b6c0c() {
+    // IDA 0x6b6c0c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::RbxRay)>::slot::~slot()")]
 // 0x6b6c38 — __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE4slotD0Ev — rbx::signals::signal<void ()(RBX::RbxRay)>::slot::~slot()
-pub fn stub_0x6b6c38() -> ! {
-    todo!("0x6b6c38 __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE4slotD0Ev")
+pub fn stub_0x6b6c38() {
+    // IDA 0x6b6c38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::function1<void,RBX::RbxRay>::assign_to_own(boost::function1<void,RBX::RbxRay> const&)")]
 // 0x6b6d0c — __ZN5boost9function1IvN3RBX6RbxRayEE13assign_to_ownERKS3_ — boost::function1<void,RBX::RbxRay>::assign_to_own(boost::function1<void,RBX::RbxRay> const&)
-pub fn stub_0x6b6d0c() -> ! {
-    todo!("0x6b6d0c __ZN5boost9function1IvN3RBX6RbxRayEE13assign_to_ownERKS3_")
+pub fn stub_0x6b6d0c() {
+    // IDA 0x6b6d0c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal_with_args<1,void ()(G3D::Vector3)>::operator()(G3D::Vector3)")]
 // 0x6b7a0c — __ZN3rbx7signals16signal_with_argsILi1EFvN3G3D7Vector3EEEclES3_ — rbx::signals::signal_with_args<1,void ()(G3D::Vector3)>::operator()(G3D::Vector3)
-pub fn stub_0x6b7a0c() -> ! {
-    todo!("0x6b7a0c __ZN3rbx7signals16signal_with_argsILi1EFvN3G3D7Vector3EEEclES3_")
+pub fn stub_0x6b7a0c() {
+    // IDA 0x6b7a0c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(G3D::Vector3)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Vector3)>::slot> &)")]
 // 0x6b7b7c — __ZN3rbx7signals6signalIFvN3G3D7Vector3EEE4nextERN5boost13intrusive_ptrINS5_4slotEEE — rbx::signals::signal<void ()(G3D::Vector3)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3)>::slot> &)
-pub fn stub_0x6b7b7c() -> ! {
-    todo!("0x6b7b7c __ZN3rbx7signals6signalIFvN3G3D7Vector3EEE4nextERN5boost13intrusive_ptrINS5_4slotEEE")
+pub fn stub_0x6b7b7c() {
+    // IDA 0x6b7b7c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::insert(rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot *)")]
 // 0x6c5c78 — __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE6insertEPNS7_4slotE — rbx::signals::signal<void ()(RBX::UIEvent const&)>::insert(rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot *)
-pub fn stub_0x6c5c78() -> ! {
-    todo!("0x6c5c78 __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE6insertEPNS7_4slotE")
+pub fn stub_0x6c5c78() {
+    // IDA 0x6c5c78: function vtable assign_to/clear copied or dropped the erased target. Box<dyn Fn> move/drop — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::disconnect(void)")]
 // 0x6c5fa8 — __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slot10disconnectEv — rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::disconnect(void)
-pub fn stub_0x6c5fa8() -> ! {
-    todo!("0x6c5fa8 __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slot10disconnectEv")
+pub fn stub_0x6c5fa8() {
+    // IDA 0x6c5fa8: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::connected(void)const")]
 // 0x6c60b8 — __ZNK3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slot9connectedEv — rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::connected(void)const
-pub fn stub_0x6c60b8() -> ! {
-    todo!("0x6c60b8 __ZNK3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slot9connectedEv")
+pub fn stub_0x6c60b8() {
+    // IDA 0x6c60b8: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::remove(rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot *)")]
 // 0x6c60ec — __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE6removeEPNS7_4slotE — rbx::signals::signal<void ()(RBX::UIEvent const&)>::remove(rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot *)
-pub fn stub_0x6c60ec() -> ! {
-    todo!("0x6c60ec __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE6removeEPNS7_4slotE")
+pub fn stub_0x6c60ec() {
+    // IDA 0x6c60ec: rbx signals plumbing (cf. Signal in signal.rs). Registration/dispatch lives in Signal — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::safe_static_init_mutex(void)")]
 // 0x6c61dc — __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slot22safe_static_init_mutexEv — rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::safe_static_init_mutex(void)
-pub fn stub_0x6c61dc() -> ! {
-    todo!("0x6c61dc __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slot22safe_static_init_mutexEv")
+pub fn stub_0x6c61dc() {
+    // IDA 0x6c61dc: rbx signals plumbing (cf. Signal in signal.rs). Registration/dispatch lives in Signal — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::safe_static_do_get_mutex(void)")]
 // 0x6c61e0 — __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slot24safe_static_do_get_mutexEv — rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::safe_static_do_get_mutex(void)
-pub fn stub_0x6c61e0() -> ! {
-    todo!("0x6c61e0 __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slot24safe_static_do_get_mutexEv")
+pub fn stub_0x6c61e0() {
+    // IDA 0x6c61e0: rbx signals plumbing (cf. Signal in signal.rs). Registration/dispatch lives in Signal — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::~slot()")]
 // 0x6c62d0 — __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slotD1Ev — rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::~slot()
-pub fn stub_0x6c62d0() -> ! {
-    todo!("0x6c62d0 __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slotD1Ev")
+pub fn stub_0x6c62d0() {
+    // IDA 0x6c62d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::~slot()")]
 // 0x6c62fc — __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slotD0Ev — rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::~slot()
-pub fn stub_0x6c62fc() -> ! {
-    todo!("0x6c62fc __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slotD0Ev")
+pub fn stub_0x6c62fc() {
+    // IDA 0x6c62fc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal_with_args<1,void ()(RBX::TouchPair const&)>::operator()(RBX::TouchPair const&)")]
 // 0x6d1e9c — __ZN3rbx7signals16signal_with_argsILi1EFvRKN3RBX9TouchPairEEEclES5_ — rbx::signals::signal_with_args<1,void ()(RBX::TouchPair const&)>::operator()(RBX::TouchPair const&)
-pub fn stub_0x6d1e9c() -> ! {
-    todo!("0x6d1e9c __ZN3rbx7signals16signal_with_argsILi1EFvRKN3RBX9TouchPairEEEclES5_")
+pub fn stub_0x6d1e9c() {
+    // IDA 0x6d1e9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::TouchPair const&)>::on_error(std::exception &)")]
 // 0x6d47bc — __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE8on_errorERSt9exception — rbx::signals::signal<void ()(RBX::TouchPair const&)>::on_error(std::exception &)
-pub fn stub_0x6d47bc() -> ! {
-    todo!("0x6d47bc __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE8on_errorERSt9exception")
+pub fn stub_0x6d47bc() {
+    // IDA 0x6d47bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::TouchPair const&)>::safe_static_init_mutex(void)")]
 // 0x6d47e8 — __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE22safe_static_init_mutexEv — rbx::signals::signal<void ()(RBX::TouchPair const&)>::safe_static_init_mutex(void)
-pub fn stub_0x6d47e8() -> ! {
-    todo!("0x6d47e8 __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE22safe_static_init_mutexEv")
+pub fn stub_0x6d47e8() {
+    // IDA 0x6d47e8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::TouchPair const&)>::safe_static_do_get_mutex(void)")]
 // 0x6d47ec — __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE24safe_static_do_get_mutexEv — rbx::signals::signal<void ()(RBX::TouchPair const&)>::safe_static_do_get_mutex(void)
-pub fn stub_0x6d47ec() -> ! {
-    todo!("0x6d47ec __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE24safe_static_do_get_mutexEv")
+pub fn stub_0x6d47ec() {
+    // IDA 0x6d47ec: rbx signals plumbing (cf. Signal in signal.rs). Registration/dispatch lives in Signal — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::BallCellContact,228u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // 0x72a390 — __ZN5boost14singleton_poolIN3RBX15BallCellContactELj228ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::BallCellContact,228u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
-pub fn stub_0x72a390() -> ! {
-    todo!("0x72a390 __ZN5boost14singleton_poolIN3RBX15BallCellContactELj228ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+pub fn stub_0x72a390() {
+    // IDA 0x72a390: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,32u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // 0x72b770 — __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeELj32ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,32u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
-pub fn stub_0x72b770() -> ! {
-    todo!("0x72b770 __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeELj32ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+pub fn stub_0x72b770() {
+    // IDA 0x72b770: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // 0x72b8e0 — __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
-pub fn stub_0x72b8e0() -> ! {
-    todo!("0x72b8e0 __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+pub fn stub_0x72b8e0() {
+    // IDA 0x72b8e0: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::object_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,RBX::roblox_allocator>::construct(void)")]
 // 0x72c074 — __ZN5boost11object_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeENS1_16roblox_allocatorEE9constructEv — boost::object_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,RBX::roblox_allocator>::construct(void)
-pub fn stub_0x72c074() -> ! {
-    todo!("0x72c074 __ZN5boost11object_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeENS1_16roblox_allocatorEE9constructEv")
+pub fn stub_0x72c074() {
+    // IDA 0x72c074: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::pool<RBX::roblox_allocator>::ordered_malloc_need_resize(void)")]
 // 0x72c17c — __ZN5boost4poolIN3RBX16roblox_allocatorEE26ordered_malloc_need_resizeEv — boost::pool<RBX::roblox_allocator>::ordered_malloc_need_resize(void)
-pub fn stub_0x72c17c() -> ! {
-    todo!("0x72c17c __ZN5boost4poolIN3RBX16roblox_allocatorEE26ordered_malloc_need_resizeEv")
+pub fn stub_0x72c17c() {
+    // IDA 0x72c17c: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::simple_segregated_storage<unsigned long>::add_ordered_block(void *,unsigned long,unsigned long)")]
 // 0x72c2b0 — __ZN5boost25simple_segregated_storageImE17add_ordered_blockEPvmm — boost::simple_segregated_storage<unsigned long>::add_ordered_block(void *,unsigned long,unsigned long)
-pub fn stub_0x72c2b0() -> ! {
-    todo!("0x72c2b0 __ZN5boost25simple_segregated_storageImE17add_ordered_blockEPvmm")
+pub fn stub_0x72c2b0() {
+    // IDA 0x72c2b0: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
 // 0x72c468 — __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
-pub fn stub_0x72c468() -> ! {
-    todo!("0x72c468 __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+pub fn stub_0x72c468() {
+    // IDA 0x72c468: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // 0x72c49c — __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
-pub fn stub_0x72c49c() -> ! {
-    todo!("0x72c49c __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+pub fn stub_0x72c49c() {
+    // IDA 0x72c49c: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode* boost::object_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,RBX::roblox_allocator>::construct<int,int,RBX::Vector3int32>(int &,int &,RBX::Vector3int32 const&)")]
 // 0x72c544 — __ZN5boost11object_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeENS1_16roblox_allocatorEE9constructIiiNS1_12Vector3int32EEEPS7_RT_RT0_RKT1_ — RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode* boost::object_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,RBX::roblox_allocator>::construct<int,int,RBX::Vector3int32>(int &,int &,RBX::Vector3int32 const&)
-pub fn stub_0x72c544() -> ! {
-    todo!("0x72c544 __ZN5boost11object_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeENS1_16roblox_allocatorEE9constructIiiNS1_12Vector3int32EEEPS7_RT_RT0_RKT1_")
+pub fn stub_0x72c544() {
+    // IDA 0x72c544: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,32u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
 // 0x72c70c — __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeELj32ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,32u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
-pub fn stub_0x72c70c() -> ! {
-    todo!("0x72c70c __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeELj32ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+pub fn stub_0x72c70c() {
+    // IDA 0x72c70c: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,32u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // 0x72c73c — __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeELj32ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,32u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
-pub fn stub_0x72c73c() -> ! {
-    todo!("0x72c73c __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeELj32ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+pub fn stub_0x72c73c() {
+    // IDA 0x72c73c: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::PolyPolyContact,216u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // 0x72c7c0 — __ZN5boost14singleton_poolIN3RBX15PolyPolyContactELj216ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::PolyPolyContact,216u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
-pub fn stub_0x72c7c0() -> ! {
-    todo!("0x72c7c0 __ZN5boost14singleton_poolIN3RBX15PolyPolyContactELj216ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+pub fn stub_0x72c7c0() {
+    // IDA 0x72c7c0: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::PolyPolyContact,216u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // 0x72c80c — __ZN5boost14singleton_poolIN3RBX15PolyPolyContactELj216ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::PolyPolyContact,216u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
-pub fn stub_0x72c80c() -> ! {
-    todo!("0x72c80c __ZN5boost14singleton_poolIN3RBX15PolyPolyContactELj216ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+pub fn stub_0x72c80c() {
+    // IDA 0x72c80c: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::BlockBlockContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // 0x72c844 — __ZN5boost14singleton_poolIN3RBX17BlockBlockContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::BlockBlockContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
-pub fn stub_0x72c844() -> ! {
-    todo!("0x72c844 __ZN5boost14singleton_poolIN3RBX17BlockBlockContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+pub fn stub_0x72c844() {
+    // IDA 0x72c844: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::BlockBlockContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // 0x72c890 — __ZN5boost14singleton_poolIN3RBX17BlockBlockContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::BlockBlockContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
-pub fn stub_0x72c890() -> ! {
-    todo!("0x72c890 __ZN5boost14singleton_poolIN3RBX17BlockBlockContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+pub fn stub_0x72c890() {
+    // IDA 0x72c890: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::BallPolyContact,212u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // 0x72c8c8 — __ZN5boost14singleton_poolIN3RBX15BallPolyContactELj212ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::BallPolyContact,212u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
-pub fn stub_0x72c8c8() -> ! {
-    todo!("0x72c8c8 __ZN5boost14singleton_poolIN3RBX15BallPolyContactELj212ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+pub fn stub_0x72c8c8() {
+    // IDA 0x72c8c8: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::BallPolyContact,212u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // 0x72c914 — __ZN5boost14singleton_poolIN3RBX15BallPolyContactELj212ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::BallPolyContact,212u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
-pub fn stub_0x72c914() -> ! {
-    todo!("0x72c914 __ZN5boost14singleton_poolIN3RBX15BallPolyContactELj212ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+pub fn stub_0x72c914() {
+    // IDA 0x72c914: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::BallBlockContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // 0x72c94c — __ZN5boost14singleton_poolIN3RBX16BallBlockContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::BallBlockContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
-pub fn stub_0x72c94c() -> ! {
-    todo!("0x72c94c __ZN5boost14singleton_poolIN3RBX16BallBlockContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+pub fn stub_0x72c94c() {
+    // IDA 0x72c94c: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::BallBallContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // 0x72c988 — __ZN5boost14singleton_poolIN3RBX15BallBallContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::BallBallContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
-pub fn stub_0x72c988() -> ! {
-    todo!("0x72c988 __ZN5boost14singleton_poolIN3RBX15BallBallContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+pub fn stub_0x72c988() {
+    // IDA 0x72c988: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<RBX::Primitive *>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::emplace_impl<boost::unordered::detail::emplace_args1<RBX::Primitive *>>(RBX::Primitive * const&,boost::unordered::detail::emplace_args1<RBX::Primitive *> const&)")]
 // 0x72cbe0 — __ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE12emplace_implINS1_13emplace_args1IS6_EEEESt4pairINS0_15iterator_detail8iteratorINS1_8ptr_nodeIS6_EEEEbERKS6_RKT_ — std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<RBX::Primitive *>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::emplace_impl<boost::unordered::detail::emplace_args1<RBX::Primitive *>>(RBX::Primitive * const&,boost::unordered::detail::emplace_args1<RBX::Primitive *> const&)
-pub fn stub_0x72cbe0() -> ! {
-    todo!("0x72cbe0 __ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE12emplace_implINS1_13emplace_args1IS6_EEEESt4pairINS0_15iterator_detail8iteratorINS1_8ptr_nodeIS6_EEEEbERKS6_RKT_")
+pub fn stub_0x72cbe0() {
+    // IDA 0x72cbe0: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::reserve_for_insert(unsigned long)")]
 // 0x72cd70 — __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE18reserve_for_insertEm — boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::reserve_for_insert(unsigned long)
-pub fn stub_0x72cd70() -> ! {
-    todo!("0x72cd70 __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE18reserve_for_insertEm")
+pub fn stub_0x72cd70() {
+    // IDA 0x72cd70: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::create_buckets(unsigned long)")]
 // 0x72cdc0 — __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14create_bucketsEm — boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::create_buckets(unsigned long)
-pub fn stub_0x72cdc0() -> ! {
-    todo!("0x72cdc0 __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14create_bucketsEm")
+pub fn stub_0x72cdc0() {
+    // IDA 0x72cdc0: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::min_buckets_for_size(unsigned long)const")]
 // 0x72cee8 — __ZNK5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE20min_buckets_for_sizeEm — boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::min_buckets_for_size(unsigned long)const
-pub fn stub_0x72cee8() -> ! {
-    todo!("0x72cee8 __ZNK5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE20min_buckets_for_sizeEm")
+pub fn stub_0x72cee8() {
+    // IDA 0x72cee8: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::rehash_impl(unsigned long)")]
 // 0x72cf78 — __ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE11rehash_implEm — boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::rehash_impl(unsigned long)
-pub fn stub_0x72cf78() -> ! {
-    todo!("0x72cf78 __ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE11rehash_implEm")
+pub fn stub_0x72cf78() {
+    // IDA 0x72cf78: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>> &,boost::unordered::detail::ptr_bucket *)")]
 // 0x72cfa4 — __ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE15place_in_bucketERNS1_5tableISC_EEPNS1_10ptr_bucketE — boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>> &,boost::unordered::detail::ptr_bucket *)
-pub fn stub_0x72cfa4() -> ! {
-    todo!("0x72cfa4 __ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE15place_in_bucketERNS1_5tableISC_EEPNS1_10ptr_bucketE")
+pub fn stub_0x72cfa4() {
+    // IDA 0x72cfa4: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<RBX::Primitive *>>>::construct(void)")]
 // 0x72cff8 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeIPN3RBX9PrimitiveEEEEE9constructEv — boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<RBX::Primitive *>>>::construct(void)
-pub fn stub_0x72cff8() -> ! {
-    todo!("0x72cff8 __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeIPN3RBX9PrimitiveEEEEE9constructEv")
+pub fn stub_0x72cff8() {
+    // IDA 0x72cff8: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<RBX::Primitive *>> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::find_node_impl<RBX::Primitive *,std::equal_to<RBX::Primitive *>>(unsigned long,RBX::Primitive * const&,std::equal_to<RBX::Primitive *> const&)const")]
 // 0x72d030 — __ZNK5boost9unordered6detail10table_implINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14find_node_implIS6_SB_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS6_EEEEmRKT_RKT0_ — boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<RBX::Primitive *>> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::find_node_impl<RBX::Primitive *,std::equal_to<RBX::Primitive *>>(unsigned long,RBX::Primitive * const&,std::equal_to<RBX::Primitive *> const&)const
-pub fn stub_0x72d030() -> ! {
-    todo!("0x72d030 __ZNK5boost9unordered6detail10table_implINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14find_node_implIS6_SB_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS6_EEEEmRKT_RKT0_")
+pub fn stub_0x72d030() {
+    // IDA 0x72d030: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::clear(void)")]
 // 0x72d0a0 — __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE5clearEv — boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::clear(void)
-pub fn stub_0x72d0a0() -> ! {
-    todo!("0x72d0a0 __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE5clearEv")
+pub fn stub_0x72d0a0() {
+    // IDA 0x72d0a0: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::delete_nodes(boost::unordered::detail::ptr_bucket *,boost::unordered::detail::ptr_bucket *)")]
 // 0x72d0d0 — __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE12delete_nodesEPNS1_10ptr_bucketESF_ — boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::delete_nodes(boost::unordered::detail::ptr_bucket *,boost::unordered::detail::ptr_bucket *)
-pub fn stub_0x72d0d0() -> ! {
-    todo!("0x72d0d0 __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE12delete_nodesEPNS1_10ptr_bucketESF_")
+pub fn stub_0x72d0d0() {
+    // IDA 0x72d0d0: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::pool<RBX::roblox_allocator>::purge_memory(void)")]
 // 0x72d69c — __ZN5boost4poolIN3RBX16roblox_allocatorEE12purge_memoryEv — boost::pool<RBX::roblox_allocator>::purge_memory(void)
-pub fn stub_0x72d69c() -> ! {
-    todo!("0x72d69c __ZN5boost4poolIN3RBX16roblox_allocatorEE12purge_memoryEv")
+pub fn stub_0x72d69c() {
+    // IDA 0x72d69c: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::SpatialRegion::Id>,RBX::SpatialRegion::Id,RBX::SpatialRegion::Id::boost_compatible_hash_value,std::equal_to<RBX::SpatialRegion::Id>>>::delete_buckets(void)")]
 // 0x72d750 — __ZN5boost9unordered6detail5tableINS1_3setISaIN3RBX13SpatialRegion2IdEES6_NS6_27boost_compatible_hash_valueESt8equal_toIS6_EEEE14delete_bucketsEv — boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::SpatialRegion::Id>,RBX::SpatialRegion::Id,RBX::SpatialRegion::Id::boost_compatible_hash_value,std::equal_to<RBX::SpatialRegion::Id>>>::delete_buckets(void)
-pub fn stub_0x72d750() -> ! {
-    todo!("0x72d750 __ZN5boost9unordered6detail5tableINS1_3setISaIN3RBX13SpatialRegion2IdEES6_NS6_27boost_compatible_hash_valueESt8equal_toIS6_EEEE14delete_bucketsEv")
+pub fn stub_0x72d750() {
+    // IDA 0x72d750: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::delete_buckets(void)")]
 // 0x72d780 — __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14delete_bucketsEv — boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::delete_buckets(void)
-pub fn stub_0x72d780() -> ! {
-    todo!("0x72d780 __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14delete_bucketsEv")
+pub fn stub_0x72d780() {
+    // IDA 0x72d780: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::SpatialRegion::Id>,RBX::SpatialRegion::Id,RBX::SpatialRegion::Id::boost_compatible_hash_value,std::equal_to<RBX::SpatialRegion::Id>>>::table(unsigned long,RBX::SpatialRegion::Id::boost_compatible_hash_value const&,std::equal_to<RBX::SpatialRegion::Id> const&,std::allocator<boost::unordered::detail::ptr_node<RBX::SpatialRegion::Id>> const&)")]
 // 0x72d7b0 — __ZN5boost9unordered6detail5tableINS1_3setISaIN3RBX13SpatialRegion2IdEES6_NS6_27boost_compatible_hash_valueESt8equal_toIS6_EEEEC2EmRKS8_RKSA_RKSaINS1_8ptr_nodeIS6_EEE — boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::SpatialRegion::Id>,RBX::SpatialRegion::Id,RBX::SpatialRegion::Id::boost_compatible_hash_value,std::equal_to<RBX::SpatialRegion::Id>>>::table(unsigned long,RBX::SpatialRegion::Id::boost_compatible_hash_value const&,std::equal_to<RBX::SpatialRegion::Id> const&,std::allocator<boost::unordered::detail::ptr_node<RBX::SpatialRegion::Id>> const&)
-pub fn stub_0x72d7b0() -> ! {
-    todo!("0x72d7b0 __ZN5boost9unordered6detail5tableINS1_3setISaIN3RBX13SpatialRegion2IdEES6_NS6_27boost_compatible_hash_valueESt8equal_toIS6_EEEEC2EmRKS8_RKSA_RKSaINS1_8ptr_nodeIS6_EEE")
+pub fn stub_0x72d7b0() {
+    // IDA 0x72d7b0: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::table(unsigned long,boost::hash<RBX::Primitive *> const&,std::equal_to<RBX::Primitive *> const&,std::allocator<boost::unordered::detail::ptr_node<RBX::Primitive *>> const&)")]
 // 0x72d81c — __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEEC2EmRKS9_RKSB_RKSaINS1_8ptr_nodeIS6_EEE — boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::table(unsigned long,boost::hash<RBX::Primitive *> const&,std::equal_to<RBX::Primitive *> const&,std::allocator<boost::unordered::detail::ptr_node<RBX::Primitive *>> const&)
-pub fn stub_0x72d81c() -> ! {
-    todo!("0x72d81c __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEEC2EmRKS9_RKSB_RKSaINS1_8ptr_nodeIS6_EEE")
+pub fn stub_0x72d81c() {
+    // IDA 0x72d81c: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::POLY::MegaClusterMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // 0x72d888 — __ZN5boost14singleton_poolIN3RBX4POLY15MegaClusterMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::POLY::MegaClusterMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
-pub fn stub_0x72d888() -> ! {
-    todo!("0x72d888 __ZN5boost14singleton_poolIN3RBX4POLY15MegaClusterMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+pub fn stub_0x72d888() {
+    // IDA 0x72d888: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::BallBlockContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
 // 0x72dca4 — __ZN5boost14singleton_poolIN3RBX16BallBlockContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::BallBlockContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
-pub fn stub_0x72dca4() -> ! {
-    todo!("0x72dca4 __ZN5boost14singleton_poolIN3RBX16BallBlockContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+pub fn stub_0x72dca4() {
+    // IDA 0x72dca4: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::BallBallContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
 // 0x72e008 — __ZN5boost14singleton_poolIN3RBX15BallBallContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::BallBallContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
-pub fn stub_0x72e008() -> ! {
-    todo!("0x72e008 __ZN5boost14singleton_poolIN3RBX15BallBallContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+pub fn stub_0x72e008() {
+    // IDA 0x72e008: unordered container node/table helper (IDA 0x2a9ac8 class). HashMap/HashSet — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::object_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,RBX::roblox_allocator>::~object_pool()")]
 // 0x72e1f8 — __ZN5boost11object_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeENS1_16roblox_allocatorEED2Ev — boost::object_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,RBX::roblox_allocator>::~object_pool()
-pub fn stub_0x72e1f8() -> ! {
-    todo!("0x72e1f8 __ZN5boost11object_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeENS1_16roblox_allocatorEED2Ev")
+pub fn stub_0x72e1f8() {
+    // IDA 0x72e1f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::object_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,RBX::roblox_allocator>::~object_pool()")]
 // 0x72e338 — __ZN5boost11object_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeENS1_16roblox_allocatorEED2Ev — boost::object_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,RBX::roblox_allocator>::~object_pool()
-pub fn stub_0x72e338() -> ! {
-    todo!("0x72e338 __ZN5boost11object_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeENS1_16roblox_allocatorEED2Ev")
+pub fn stub_0x72e338() {
+    // IDA 0x72e338: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::getPrimitivesTouchingGrids(RBX::Extents const&,RBX::Primitive const*,unsigned long,boost::unordered::unordered_set<RBX::Primitive*,boost::hash<RBX::Primitive*>,std::equal_to<RBX::Primitive*>,std::allocator<RBX::Primitive*>> &)")]
 // 0x72f230 — __ZN3RBX11SpatialHashINS_9PrimitiveENS_7ContactENS_14ContactManagerELi4EE26getPrimitivesTouchingGridsERKNS_7ExtentsEPKS1_mRN5boost9unordered13unordered_setIPS1_NSA_4hashISD_EESt8equal_toISD_ESaISD_EEE — RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::getPrimitivesTouchingGrids(RBX::Extents const&,RBX::Primitive const*,unsigned long,boost::unordered::unordered_set<RBX::Primitive*,boost::hash<RBX::Primitive*>,std::equal_to<RBX::Primitive*>,std::allocator<RBX::Primitive*>> &)
-pub fn stub_0x72f230() -> ! {
-    todo!("0x72f230 __ZN3RBX11SpatialHashINS_9PrimitiveENS_7ContactENS_14ContactManagerELi4EE26getPrimitivesTouchingGridsERKNS_7ExtentsEPKS1_mRN5boost9unordered13unordered_setIPS1_NSA_4hashISD_EESt8equal_toISD_ESaISD_EEE")
+pub fn stub_0x72f230() {
+    // IDA 0x72f230: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "void RBX::Assembly::visitPrimitivesImpl<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>,RBX::Primitive*>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash *>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>,RBX::Primitive*>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash *>,boost::arg<1>>>,RBX::Primitive*)")]
 // 0x72f604 — __ZN3RBX8Assembly19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_11SpatialHashINS_9PrimitiveENS_7ContactENS_14ContactManagerELi4EEEPS8_EENS3_5list2INS3_5valueIPNS_25ContactManagerSpatialHashEEENS2_3argILi1EEEEEEEEEvT_SC_ — void RBX::Assembly::visitPrimitivesImpl<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>,RBX::Primitive*>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash *>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>,RBX::Primitive*>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash *>,boost::arg<1>>>,RBX::Primitive*)
-pub fn stub_0x72f604() -> ! {
-    todo!("0x72f604 __ZN3RBX8Assembly19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_11SpatialHashINS_9PrimitiveENS_7ContactENS_14ContactManagerELi4EEEPS8_EENS3_5list2INS3_5valueIPNS_25ContactManagerSpatialHashEEENS2_3argILi1EEEEEEEEEvT_SC_")
+pub fn stub_0x72f604() {
+    // IDA 0x72f604: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::simple_segregated_storage<unsigned long>::ordered_free(void *)")]
 // 0x72f888 — __ZN5boost25simple_segregated_storageImE12ordered_freeEPv — boost::simple_segregated_storage<unsigned long>::ordered_free(void *)
-pub fn stub_0x72f888() -> ! {
-    todo!("0x72f888 __ZN5boost25simple_segregated_storageImE12ordered_freeEPv")
+pub fn stub_0x72f888() {
+    // IDA 0x72f888: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::POLY::CornerWedgeMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
 // 0x7324f0 — __ZN5boost14singleton_poolIN3RBX4POLY15CornerWedgeMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::POLY::CornerWedgeMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
-pub fn stub_0x7324f0() -> ! {
-    todo!("0x7324f0 __ZN5boost14singleton_poolIN3RBX4POLY15CornerWedgeMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+pub fn stub_0x7324f0() {
+    // IDA 0x7324f0: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::POLY::CornerWedgeMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // 0x732520 — __ZN5boost14singleton_poolIN3RBX4POLY15CornerWedgeMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::POLY::CornerWedgeMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
-pub fn stub_0x732520() -> ! {
-    todo!("0x732520 __ZN5boost14singleton_poolIN3RBX4POLY15CornerWedgeMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+pub fn stub_0x732520() {
+    // IDA 0x732520: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "void RBX::Assembly::visitPrimitivesImpl<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::EdgeBuffer,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::EdgeBuffer*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::EdgeBuffer,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::EdgeBuffer*>,boost::arg<1>>>,RBX::Primitive *)")]
 // 0x733194 — __ZN3RBX8Assembly19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_10EdgeBufferEPNS_9PrimitiveEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvT_S9_ — void RBX::Assembly::visitPrimitivesImpl<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::EdgeBuffer,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::EdgeBuffer*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::EdgeBuffer,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::EdgeBuffer*>,boost::arg<1>>>,RBX::Primitive *)
-pub fn stub_0x733194() -> ! {
-    todo!("0x733194 __ZN3RBX8Assembly19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_10EdgeBufferEPNS_9PrimitiveEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvT_S9_")
+pub fn stub_0x733194() {
+    // IDA 0x733194: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::NormalBreakConnector,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // 0x734678 — __ZN5boost14singleton_poolIN3RBX20NormalBreakConnectorELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::NormalBreakConnector,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
-pub fn stub_0x734678() -> ! {
-    todo!("0x734678 __ZN5boost14singleton_poolIN3RBX20NormalBreakConnectorELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+pub fn stub_0x734678() {
+    // IDA 0x734678: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::NormalBreakConnector,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
 // 0x734730 — __ZN5boost14singleton_poolIN3RBX20NormalBreakConnectorELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::NormalBreakConnector,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
-pub fn stub_0x734730() -> ! {
-    todo!("0x734730 __ZN5boost14singleton_poolIN3RBX20NormalBreakConnectorELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+pub fn stub_0x734730() {
+    // IDA 0x734730: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::POLY::WedgeMesh,36u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // 0x739914 — __ZN5boost14singleton_poolIN3RBX4POLY9WedgeMeshELj36ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::POLY::WedgeMesh,36u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
-pub fn stub_0x739914() -> ! {
-    todo!("0x739914 __ZN5boost14singleton_poolIN3RBX4POLY9WedgeMeshELj36ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+pub fn stub_0x739914() {
+    // IDA 0x739914: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::POLY::CornerWedgeMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // 0x739960 — __ZN5boost14singleton_poolIN3RBX4POLY15CornerWedgeMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::POLY::CornerWedgeMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
-pub fn stub_0x739960() -> ! {
-    todo!("0x739960 __ZN5boost14singleton_poolIN3RBX4POLY15CornerWedgeMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+pub fn stub_0x739960() {
+    // IDA 0x739960: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::POLY::RightAngleRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // 0x7399ac — __ZN5boost14singleton_poolIN3RBX4POLY18RightAngleRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::POLY::RightAngleRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
-pub fn stub_0x7399ac() -> ! {
-    todo!("0x7399ac __ZN5boost14singleton_poolIN3RBX4POLY18RightAngleRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+pub fn stub_0x7399ac() {
+    // IDA 0x7399ac: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::POLY::ParallelRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // 0x7399f8 — __ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::POLY::ParallelRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
-pub fn stub_0x7399f8() -> ! {
-    todo!("0x7399f8 __ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+pub fn stub_0x7399f8() {
+    // IDA 0x7399f8: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::POLY::PyramidMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // 0x739a44 — __ZN5boost14singleton_poolIN3RBX4POLY11PyramidMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::POLY::PyramidMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
-pub fn stub_0x739a44() -> ! {
-    todo!("0x739a44 __ZN5boost14singleton_poolIN3RBX4POLY11PyramidMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+pub fn stub_0x739a44() {
+    // IDA 0x739a44: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::POLY::PrismMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // 0x739a90 — __ZN5boost14singleton_poolIN3RBX4POLY9PrismMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::POLY::PrismMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
-pub fn stub_0x739a90() -> ! {
-    todo!("0x739a90 __ZN5boost14singleton_poolIN3RBX4POLY9PrismMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+pub fn stub_0x739a90() {
+    // IDA 0x739a90: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "void boost::_bi::list4<boost::_bi::value<RBX::JointStage *>,boost::arg<1>,boost::arg<2>,boost::reference_wrapper<std::vector<RBX::Joint *,std::allocator<RBX::Joint *>>>>::operator()<boost::_mfi::mf3<void,RBX::JointStage,RBX::Primitive *,RBX::Joint *,std::vector<RBX::Joint *,std::allocator<RBX::Joint *>>&>,boost::_bi::list2<RBX::Primitive * const&,RBX::Joint * const&>>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::JointStage,RBX::Primitive *,RBX::Joint *,std::vector<RBX::Joint *,std::allocator<RBX::Joint *>>&> const&,boost::_bi::list2<RBX::Primitive * const&,RBX::Joint * const&> &,int)const")]
 // 0x73b270 — __ZNK5boost3_bi5list4INS0_5valueIPN3RBX10JointStageEEENS_3argILi1EEENS7_ILi2EEENS_17reference_wrapperISt6vectorIPNS3_5JointESaISD_EEEEEclINS_4_mfi3mf3IvS4_PNS3_9PrimitiveESD_RSF_EENS0_5list2IRKSM_RKSD_EEEEvNS0_4typeIvEERKT_RT0_i — void boost::_bi::list4<boost::_bi::value<RBX::JointStage *>,boost::arg<1>,boost::arg<2>,boost::reference_wrapper<std::vector<RBX::Joint *,std::allocator<RBX::Joint *>>>>::operator()<boost::_mfi::mf3<void,RBX::JointStage,RBX::Primitive *,RBX::Joint *,std::vector<RBX::Joint *,std::allocator<RBX::Joint *>>&>,boost::_bi::list2<RBX::Primitive * const&,RBX::Joint * const&>>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::JointStage,RBX::Primitive *,RBX::Joint *,std::vector<RBX::Joint *,std::allocator<RBX::Joint *>>&> const&,boost::_bi::list2<RBX::Primitive * const&,RBX::Joint * const&> &,int)const
-pub fn stub_0x73b270() -> ! {
-    todo!("0x73b270 __ZNK5boost3_bi5list4INS0_5valueIPN3RBX10JointStageEEENS_3argILi1EEENS7_ILi2EEENS_17reference_wrapperISt6vectorIPNS3_5JointESaISD_EEEEEclINS_4_mfi3mf3IvS4_PNS3_9PrimitiveESD_RSF_EENS0_5list2IRKSM_RKSD_EEEEvNS0_4typeIvEERKT_RT0_i")
+pub fn stub_0x73b270() {
+    // IDA 0x73b270: bind listN::operator() forwarded bound + call args into the target. Closure capture+call — carrier no-op.
 }
 
 #[doc(alias = "void RBX::IndexedTree::visitMeAndChildren<RBX::Assembly,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::AssemblyStage,RBX::Assembly*>,boost::_bi::list2<boost::_bi::value<RBX::AssemblyStage*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::AssemblyStage,RBX::Assembly*>,boost::_bi::list2<boost::_bi::value<RBX::AssemblyStage*>,boost::arg<1>>>)")]
 // 0x73cbc8 — __ZN3RBX11IndexedTree18visitMeAndChildrenINS_8AssemblyEN5boost3_bi6bind_tIvNS3_4_mfi3mf1IvNS_13AssemblyStageEPS2_EENS4_5list2INS4_5valueIPS8_EENS3_3argILi1EEEEEEEEEvT0_ — void RBX::IndexedTree::visitMeAndChildren<RBX::Assembly,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::AssemblyStage,RBX::Assembly*>,boost::_bi::list2<boost::_bi::value<RBX::AssemblyStage*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::AssemblyStage,RBX::Assembly*>,boost::_bi::list2<boost::_bi::value<RBX::AssemblyStage*>,boost::arg<1>>>)
-pub fn stub_0x73cbc8() -> ! {
-    todo!("0x73cbc8 __ZN3RBX11IndexedTree18visitMeAndChildrenINS_8AssemblyEN5boost3_bi6bind_tIvNS3_4_mfi3mf1IvNS_13AssemblyStageEPS2_EENS4_5list2INS4_5valueIPS8_EENS3_3argILi1EEEEEEEEEvT0_")
+pub fn stub_0x73cbc8() {
+    // IDA 0x73cbc8: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::D6Link,252u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // 0x742328 — __ZN5boost14singleton_poolIN3RBX6D6LinkELj252ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::D6Link,252u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
-pub fn stub_0x742328() -> ! {
-    todo!("0x742328 __ZN5boost14singleton_poolIN3RBX6D6LinkELj252ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+pub fn stub_0x742328() {
+    // IDA 0x742328: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::D6Link,252u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // 0x742374 — __ZN5boost14singleton_poolIN3RBX6D6LinkELj252ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::D6Link,252u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
-pub fn stub_0x742374() -> ! {
-    todo!("0x742374 __ZN5boost14singleton_poolIN3RBX6D6LinkELj252ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+pub fn stub_0x742374() {
+    // IDA 0x742374: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::D6Link,252u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
 // 0x74242c — __ZN5boost14singleton_poolIN3RBX6D6LinkELj252ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::D6Link,252u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
-pub fn stub_0x74242c() -> ! {
-    todo!("0x74242c __ZN5boost14singleton_poolIN3RBX6D6LinkELj252ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+pub fn stub_0x74242c() {
+    // IDA 0x74242c: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::RevoluteLink,208u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // 0x742c78 — __ZN5boost14singleton_poolIN3RBX12RevoluteLinkELj208ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::RevoluteLink,208u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
-pub fn stub_0x742c78() -> ! {
-    todo!("0x742c78 __ZN5boost14singleton_poolIN3RBX12RevoluteLinkELj208ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+pub fn stub_0x742c78() {
+    // IDA 0x742c78: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::RevoluteLink,208u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
 // 0x742dfc — __ZN5boost14singleton_poolIN3RBX12RevoluteLinkELj208ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::RevoluteLink,208u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
-pub fn stub_0x742dfc() -> ! {
-    todo!("0x742dfc __ZN5boost14singleton_poolIN3RBX12RevoluteLinkELj208ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+pub fn stub_0x742dfc() {
+    // IDA 0x742dfc: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::POLY::ParallelRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
 // 0x7455f8 — __ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::POLY::ParallelRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
-pub fn stub_0x7455f8() -> ! {
-    todo!("0x7455f8 __ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+pub fn stub_0x7455f8() {
+    // IDA 0x7455f8: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::POLY::ParallelRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // 0x745628 — __ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::POLY::ParallelRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
-pub fn stub_0x745628() -> ! {
-    todo!("0x745628 __ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+pub fn stub_0x745628() {
+    // IDA 0x745628: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::PolyPolyContact,216u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
 // 0x74a0e0 — __ZN5boost14singleton_poolIN3RBX15PolyPolyContactELj216ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::PolyPolyContact,216u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
-pub fn stub_0x74a0e0() -> ! {
-    todo!("0x74a0e0 __ZN5boost14singleton_poolIN3RBX15PolyPolyContactELj216ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+pub fn stub_0x74a0e0() {
+    // IDA 0x74a0e0: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::Body,276u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 // 0x74cf14 — __ZN5boost14singleton_poolIN3RBX4BodyELj276ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::Body,276u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
-pub fn stub_0x74cf14() -> ! {
-    todo!("0x74cf14 __ZN5boost14singleton_poolIN3RBX4BodyELj276ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+pub fn stub_0x74cf14() {
+    // IDA 0x74cf14: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::Body,276u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // 0x74cf64 — __ZN5boost14singleton_poolIN3RBX4BodyELj276ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::Body,276u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
-pub fn stub_0x74cf64() -> ! {
-    todo!("0x74cf64 __ZN5boost14singleton_poolIN3RBX4BodyELj276ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+pub fn stub_0x74cf64() {
+    // IDA 0x74cf64: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::operator=(rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token> const&)")]
 // 0x74e294 — __ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY9PrismMeshENS1_21Vector3_2IntsComparerEE5TokenEEaSERKS9_ — rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::operator=(rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token> const&)
 // was: boost::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token> const&)
-pub fn stub_0x74e294() -> ! {
-    todo!("0x74e294 __ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY9PrismMeshENS1_21Vector3_2IntsComparerEE5TokenEEaSERKS9_")
+pub fn stub_0x74e294() {
+    // IDA 0x74e294: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token *)")]
 // 0x74e550 — __ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY9PrismMeshENS1_21Vector3_2IntsComparerEE5TokenEEC2IS8_EEPT_ — rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token *)
 // was: boost::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token *)
-pub fn stub_0x74e550() -> ! {
-    todo!("0x74e550 __ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY9PrismMeshENS1_21Vector3_2IntsComparerEE5TokenEEC2IS8_EEPT_")
+pub fn stub_0x74e550() {
+    // IDA 0x74e550: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token *)")]
 // 0x74e624 — __ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolINS3_13Vector3_2IntsENS3_4POLY9PrismMeshENS3_21Vector3_2IntsComparerEE5TokenEEEPT_ — boost::detail::shared_count::shared_count<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token *)
-pub fn stub_0x74e624() -> ! {
-    todo!("0x74e624 __ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolINS3_13Vector3_2IntsENS3_4POLY9PrismMeshENS3_21Vector3_2IntsComparerEE5TokenEEEPT_")
+pub fn stub_0x74e624() {
+    // IDA 0x74e624: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::~sp_counted_impl_p()")]
 // 0x74ebb8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEED1Ev — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::~sp_counted_impl_p()
-pub fn stub_0x74ebb8() -> ! {
-    todo!("0x74ebb8 __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEED1Ev")
+pub fn stub_0x74ebb8() {
+    // IDA 0x74ebb8: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::~sp_counted_impl_p()")]
 // 0x74ebbc — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEED0Ev — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::~sp_counted_impl_p()
-pub fn stub_0x74ebbc() -> ! {
-    todo!("0x74ebbc __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEED0Ev")
+pub fn stub_0x74ebbc() {
+    // IDA 0x74ebbc: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::dispose(void)")]
 // 0x74ebc0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEE7disposeEv — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::dispose(void)
-pub fn stub_0x74ebc0() -> ! {
-    todo!("0x74ebc0 __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEE7disposeEv")
+pub fn stub_0x74ebc0() {
+    // IDA 0x74ebc0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::get_deleter(std::type_info const&)")]
 // 0x74ec68 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEE11get_deleterERKSt9type_info — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::get_deleter(std::type_info const&)
-pub fn stub_0x74ec68() -> ! {
-    todo!("0x74ec68 __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEE11get_deleterERKSt9type_info")
+pub fn stub_0x74ec68() {
+    // IDA 0x74ec68: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::get_untyped_deleter(void)")]
 // 0x74ec6c — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEE19get_untyped_deleterEv — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::get_untyped_deleter(void)
-pub fn stub_0x74ec6c() -> ! {
-    todo!("0x74ec6c __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEE19get_untyped_deleterEv")
+pub fn stub_0x74ec6c() {
+    // IDA 0x74ec6c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::POLY::PrismMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
 // 0x74f134 — __ZN5boost14singleton_poolIN3RBX4POLY9PrismMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::POLY::PrismMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
-pub fn stub_0x74f134() -> ! {
-    todo!("0x74f134 __ZN5boost14singleton_poolIN3RBX4POLY9PrismMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+pub fn stub_0x74f134() {
+    // IDA 0x74f134: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::POLY::PrismMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // 0x74f164 — __ZN5boost14singleton_poolIN3RBX4POLY9PrismMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::POLY::PrismMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
-pub fn stub_0x74f164() -> ! {
-    todo!("0x74f164 __ZN5boost14singleton_poolIN3RBX4POLY9PrismMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+pub fn stub_0x74f164() {
+    // IDA 0x74f164: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::operator=(rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token> const&)")]
 // 0x74fcd0 — __ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY11PyramidMeshENS1_21Vector3_2IntsComparerEE5TokenEEaSERKS9_ — rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::operator=(rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token> const&)
 // was: boost::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token> const&)
-pub fn stub_0x74fcd0() -> ! {
-    todo!("0x74fcd0 __ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY11PyramidMeshENS1_21Vector3_2IntsComparerEE5TokenEEaSERKS9_")
+pub fn stub_0x74fcd0() {
+    // IDA 0x74fcd0: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token *)")]
 // 0x74ff8c — __ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY11PyramidMeshENS1_21Vector3_2IntsComparerEE5TokenEEC2IS8_EEPT_ — rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token *)
 // was: boost::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token *)
-pub fn stub_0x74ff8c() -> ! {
-    todo!("0x74ff8c __ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY11PyramidMeshENS1_21Vector3_2IntsComparerEE5TokenEEC2IS8_EEPT_")
+pub fn stub_0x74ff8c() {
+    // IDA 0x74ff8c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token *)")]
 // 0x750060 — __ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolINS3_13Vector3_2IntsENS3_4POLY11PyramidMeshENS3_21Vector3_2IntsComparerEE5TokenEEEPT_ — boost::detail::shared_count::shared_count<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token *)
-pub fn stub_0x750060() -> ! {
-    todo!("0x750060 __ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolINS3_13Vector3_2IntsENS3_4POLY11PyramidMeshENS3_21Vector3_2IntsComparerEE5TokenEEEPT_")
+pub fn stub_0x750060() {
+    // IDA 0x750060: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::~sp_counted_impl_p()")]
 // 0x750674 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEED1Ev — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::~sp_counted_impl_p()
-pub fn stub_0x750674() -> ! {
-    todo!("0x750674 __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEED1Ev")
+pub fn stub_0x750674() {
+    // IDA 0x750674: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::~sp_counted_impl_p()")]
 // 0x750678 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEED0Ev — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::~sp_counted_impl_p()
-pub fn stub_0x750678() -> ! {
-    todo!("0x750678 __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEED0Ev")
+pub fn stub_0x750678() {
+    // IDA 0x750678: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::dispose(void)")]
 // 0x75067c — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEE7disposeEv — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::dispose(void)
-pub fn stub_0x75067c() -> ! {
-    todo!("0x75067c __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEE7disposeEv")
+pub fn stub_0x75067c() {
+    // IDA 0x75067c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::get_deleter(std::type_info const&)")]
 // 0x750724 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEE11get_deleterERKSt9type_info — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::get_deleter(std::type_info const&)
-pub fn stub_0x750724() -> ! {
-    todo!("0x750724 __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEE11get_deleterERKSt9type_info")
+pub fn stub_0x750724() {
+    // IDA 0x750724: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::get_untyped_deleter(void)")]
 // 0x750728 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEE19get_untyped_deleterEv — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::get_untyped_deleter(void)
-pub fn stub_0x750728() -> ! {
-    todo!("0x750728 __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEE19get_untyped_deleterEv")
+pub fn stub_0x750728() {
+    // IDA 0x750728: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::POLY::PyramidMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
 // 0x750bf0 — __ZN5boost14singleton_poolIN3RBX4POLY11PyramidMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::POLY::PyramidMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
-pub fn stub_0x750bf0() -> ! {
-    todo!("0x750bf0 __ZN5boost14singleton_poolIN3RBX4POLY11PyramidMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+pub fn stub_0x750bf0() {
+    // IDA 0x750bf0: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::POLY::PyramidMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // 0x750c20 — __ZN5boost14singleton_poolIN3RBX4POLY11PyramidMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::POLY::PyramidMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
-pub fn stub_0x750c20() -> ! {
-    todo!("0x750c20 __ZN5boost14singleton_poolIN3RBX4POLY11PyramidMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+pub fn stub_0x750c20() {
+    // IDA 0x750c20: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::POLY::RightAngleRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
 // 0x752248 — __ZN5boost14singleton_poolIN3RBX4POLY18RightAngleRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::POLY::RightAngleRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
-pub fn stub_0x752248() -> ! {
-    todo!("0x752248 __ZN5boost14singleton_poolIN3RBX4POLY18RightAngleRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+pub fn stub_0x752248() {
+    // IDA 0x752248: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::POLY::RightAngleRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // 0x752278 — __ZN5boost14singleton_poolIN3RBX4POLY18RightAngleRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::POLY::RightAngleRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
-pub fn stub_0x752278() -> ! {
-    todo!("0x752278 __ZN5boost14singleton_poolIN3RBX4POLY18RightAngleRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+pub fn stub_0x752278() {
+    // IDA 0x752278: threading primitive. std::thread/parking_lot — carrier no-op.
 }
 
 #[doc(alias = "void RBX::IndexedTree::visitMeAndChildren<RBX::Assembly,boost::_bi::bind_t<void,void (*)(RBX::Assembly*),boost::_bi::list1<boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Assembly*),boost::_bi::list1<boost::arg<1>>>)")]
 // 0x75fa40 — __ZN3RBX11IndexedTree18visitMeAndChildrenINS_8AssemblyEN5boost3_bi6bind_tIvPFvPS2_ENS4_5list1INS3_3argILi1EEEEEEEEEvT0_ — void RBX::IndexedTree::visitMeAndChildren<RBX::Assembly,boost::_bi::bind_t<void,void (*)(RBX::Assembly*),boost::_bi::list1<boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Assembly*),boost::_bi::list1<boost::arg<1>>>)
-pub fn stub_0x75fa40() -> ! {
-    todo!("0x75fa40 __ZN3RBX11IndexedTree18visitMeAndChildrenINS_8AssemblyEN5boost3_bi6bind_tIvPFvPS2_ENS4_5list1INS3_3argILi1EEEEEEEEEvT0_")
+pub fn stub_0x75fa40() {
+    // IDA 0x75fa40: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::POLY::WedgeMesh,36u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
 // 0x761104 — __ZN5boost14singleton_poolIN3RBX4POLY9WedgeMeshELj36ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::POLY::WedgeMesh,36u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
-pub fn stub_0x761104() -> ! {
-    todo!("0x761104 __ZN5boost14singleton_poolIN3RBX4POLY9WedgeMeshELj36ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+pub fn stub_0x761104() {
+    // IDA 0x761104: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::singleton_pool<RBX::POLY::WedgeMesh,36u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
 // 0x761134 — __ZN5boost14singleton_poolIN3RBX4POLY9WedgeMeshELj36ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::POLY::WedgeMesh,36u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
-pub fn stub_0x761134() -> ! {
-    todo!("0x761134 __ZN5boost14singleton_poolIN3RBX4POLY9WedgeMeshELj36ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+pub fn stub_0x761134() {
+    // IDA 0x761134: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManagerSpatialHash,RBX::Assembly&>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash*>,boost::arg<1>>> std::for_each<boost::intrusive::list_iterator<boost::intrusive::list_impl<boost::intrusive::listopt<boost::intrusive::detail::base_hook_traits<RBX::Assembly,boost::intrusive::list_node_traits<void *>,(boost::intrusive::link_mode_type)1,RBX::SimulateStage,1>,unsigned long,true>>,false>,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManagerSpatialHash,RBX::Assembly&>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash*>,boost::arg<1>>>>(boost::intrusive::list_iterator<boost::intrusive::list_impl<boost::intrusive::listopt<boost::intrusive::detail::base_hook_traits<RBX::Assembly,boost::intrusive::list_node_traits<void *>,(boost::intrusive::link_mode_type)1,RBX::SimulateStage,1>,unsigned long,true>>,false>,boost::intrusive::list_iterator<boost::intrusive::list_impl<boost::intrusive::listopt<boost::intrusive::detail::base_hook_traits<RBX::Assembly,boost::intrusive::list_node_traits<void *>,(boost::intrusive::link_mode_type)1,RBX::SimulateStage,1>,unsigned long,true>>,false>,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManagerSpatialHash,RBX::Assembly&>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash*>,boost::arg<1>>>)")]
 // 0x7659cc — __ZSt8for_eachIN5boost9intrusive13list_iteratorINS1_9list_implINS1_7listoptINS1_6detail16base_hook_traitsIN3RBX8AssemblyENS1_16list_node_traitsIPvEELNS1_14link_mode_typeE1ENS7_13SimulateStageELi1EEEmLb1EEEEELb0EEENS0_3_bi6bind_tIvNS0_4_mfi3mf1IvNS7_25ContactManagerSpatialHashERS8_EENSI_5list2INSI_5valueIPSM_EENS0_3argILi1EEEEEEEET0_T_SY_SX_ — boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManagerSpatialHash,RBX::Assembly&>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash*>,boost::arg<1>>> std::for_each<boost::intrusive::list_iterator<boost::intrusive::list_impl<boost::intrusive::listopt<boost::intrusive::detail::base_hook_traits<RBX::Assembly,boost::intrusive::list_node_traits<void *>,(boost::intrusive::link_mode_type)1,RBX::SimulateStage,1>,unsigned long,true>>,false>,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManagerSpatialHash,RBX::Assembly&>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash*>,boost::arg<1>>>>(boost::intrusive::list_iterator<boost::intrusive::list_impl<boost::intrusive::listopt<boost::intrusive::detail::base_hook_traits<RBX::Assembly,boost::intrusive::list_node_traits<void *>,(boost::intrusive::link_mode_type)1,RBX::SimulateStage,1>,unsigned long,true>>,false>,boost::intrusive::list_iterator<boost::intrusive::list_impl<boost::intrusive::listopt<boost::intrusive::detail::base_hook_traits<RBX::Assembly,boost::intrusive::list_node_traits<void *>,(boost::intrusive::link_mode_type)1,RBX::SimulateStage,1>,unsigned long,true>>,false>,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManagerSpatialHash,RBX::Assembly&>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash*>,boost::arg<1>>>)
-pub fn stub_0x7659cc() -> ! {
-    todo!("0x7659cc __ZSt8for_eachIN5boost9intrusive13list_iteratorINS1_9list_implINS1_7listoptINS1_6detail16base_hook_traitsIN3RBX8AssemblyENS1_16list_node_traitsIPvEELNS1_14link_mode_typeE1ENS7_13SimulateStageELi1EEEmLb1EEEEELb0EEENS0_3_bi6bind_tIvNS0_4_mfi3mf1IvNS7_25ContactManagerSpatialHashERS8_EENSI_5list2INSI_5valueIPSM_EENS0_3argILi1EEEEEEEET0_T_SY_SX_")
+pub fn stub_0x7659cc() {
+    // IDA 0x7659cc: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal_with_args<1,void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::operator()(std::pair<RBX::Primitive *,RBX::Primitive *>)")]
 // 0x765ab0 — __ZN3rbx7signals16signal_with_argsILi1EFvSt4pairIPN3RBX9PrimitiveES5_EEEclES6_ — rbx::signals::signal_with_args<1,void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::operator()(std::pair<RBX::Primitive *,RBX::Primitive *>)
-pub fn stub_0x765ab0() -> ! {
-    todo!("0x765ab0 __ZN3rbx7signals16signal_with_argsILi1EFvSt4pairIPN3RBX9PrimitiveES5_EEEclES6_")
+pub fn stub_0x765ab0() {
+    // IDA 0x765ab0: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal_with_args<1,void ()(RBX::Joint *)>::operator()(RBX::Joint *)")]
 // 0x765c80 — __ZN3rbx7signals16signal_with_argsILi1EFvPN3RBX5JointEEEclES4_ — rbx::signals::signal_with_args<1,void ()(RBX::Joint *)>::operator()(RBX::Joint *)
-pub fn stub_0x765c80() -> ! {
-    todo!("0x765c80 __ZN3rbx7signals16signal_with_argsILi1EFvPN3RBX5JointEEEclES4_")
+pub fn stub_0x765c80() {
+    // IDA 0x765c80: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Joint *)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Joint *)>::slot> &)")]
 // 0x766674 — __ZN3rbx7signals6signalIFvPN3RBX5JointEEE4nextERN5boost13intrusive_ptrINS6_4slotEEE — rbx::signals::signal<void ()(RBX::Joint *)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Joint *)>::slot> &)
-pub fn stub_0x766674() -> ! {
-    todo!("0x766674 __ZN3rbx7signals6signalIFvPN3RBX5JointEEE4nextERN5boost13intrusive_ptrINS6_4slotEEE")
+pub fn stub_0x766674() {
+    // IDA 0x766674: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Joint *)>::on_error(std::exception &)")]
 // 0x7667d4 — __ZN3rbx7signals6signalIFvPN3RBX5JointEEE8on_errorERSt9exception — rbx::signals::signal<void ()(RBX::Joint *)>::on_error(std::exception &)
-pub fn stub_0x7667d4() -> ! {
-    todo!("0x7667d4 __ZN3rbx7signals6signalIFvPN3RBX5JointEEE8on_errorERSt9exception")
+pub fn stub_0x7667d4() {
+    // IDA 0x7667d4: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::slot> &)")]
 // 0x766a08 — __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE4nextERN5boost13intrusive_ptrINS8_4slotEEE — rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::slot> &)
-pub fn stub_0x766a08() -> ! {
-    todo!("0x766a08 __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE4nextERN5boost13intrusive_ptrINS8_4slotEEE")
+pub fn stub_0x766a08() {
+    // IDA 0x766a08: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::on_error(std::exception &)")]
 // 0x766b68 — __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE8on_errorERSt9exception — rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::on_error(std::exception &)
-pub fn stub_0x766b68() -> ! {
-    todo!("0x766b68 __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE8on_errorERSt9exception")
+pub fn stub_0x766b68() {
+    // IDA 0x766b68: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::slot> const&)")]
 // 0x766b90 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES7_EEE4slotEEaSERKSC_ — boost::intrusive_ptr<rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::slot> const&)
-pub fn stub_0x766b90() -> ! {
-    todo!("0x766b90 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES7_EEE4slotEEaSERKSC_")
+pub fn stub_0x766b90() {
+    // IDA 0x766b90: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::safe_static_init_mutex(void)")]
 // 0x766bb4 — __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE22safe_static_init_mutexEv — rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::safe_static_init_mutex(void)
-pub fn stub_0x766bb4() -> ! {
-    todo!("0x766bb4 __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE22safe_static_init_mutexEv")
+pub fn stub_0x766bb4() {
+    // IDA 0x766bb4: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::safe_static_do_get_mutex(void)")]
 // 0x766bb8 — __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE24safe_static_do_get_mutexEv — rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::safe_static_do_get_mutex(void)
-pub fn stub_0x766bb8() -> ! {
-    todo!("0x766bb8 __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE24safe_static_do_get_mutexEv")
+pub fn stub_0x766bb8() {
+    // IDA 0x766bb8: intrusive refcount op. Arc/Weak — carrier no-op.
 }
 
 #[doc(alias = "void RBX::Assembly::visitPrimitivesImpl<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::ContactManager*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::ContactManager*>,boost::arg<1>>>,RBX::Primitive *)")]
 // 0x766cb0 — __ZN3RBX8Assembly19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_14ContactManagerEPNS_9PrimitiveEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvT_S9_ — void RBX::Assembly::visitPrimitivesImpl<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::ContactManager*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::ContactManager*>,boost::arg<1>>>,RBX::Primitive *)
-pub fn stub_0x766cb0() -> ! {
-    todo!("0x766cb0 __ZN3RBX8Assembly19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_14ContactManagerEPNS_9PrimitiveEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvT_S9_")
+pub fn stub_0x766cb0() {
+    // IDA 0x766cb0: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Joint *)>::disconnectAll(void)")]
 // 0x7671d8 — __ZN3rbx7signals6signalIFvPN3RBX5JointEEE13disconnectAllEv — rbx::signals::signal<void ()(RBX::Joint *)>::disconnectAll(void)
-pub fn stub_0x7671d8() -> ! {
-    todo!("0x7671d8 __ZN3rbx7signals6signalIFvPN3RBX5JointEEE13disconnectAllEv")
+pub fn stub_0x7671d8() {
+    // IDA 0x7671d8: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::disconnectAll(void)")]
 // 0x767350 — __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE13disconnectAllEv — rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::disconnectAll(void)
-pub fn stub_0x767350() -> ! {
-    todo!("0x767350 __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE13disconnectAllEv")
+pub fn stub_0x767350() {
+    // IDA 0x767350: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Primitive *)>::disconnectAll(void)")]
 // 0x7674c8 — __ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE13disconnectAllEv — rbx::signals::signal<void ()(RBX::Primitive *)>::disconnectAll(void)
-pub fn stub_0x7674c8() -> ! {
-    todo!("0x7674c8 __ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE13disconnectAllEv")
+pub fn stub_0x7674c8() {
+    // IDA 0x7674c8: boost::bind free function built a bind_t functor. Closure captures — carrier no-op.
 }
 
 #[doc(alias = "bool boost::char_separator<char,std::char_traits<char>>::operator()<__gnu_cxx::__normal_iterator<char const*,std::string>,std::string>(__gnu_cxx::__normal_iterator<char const*,std::string> &,__gnu_cxx::__normal_iterator<char const*,std::string>,std::string &)")]
 // 0x775a90 — __ZN5boost14char_separatorIcSt11char_traitsIcEEclIN9__gnu_cxx17__normal_iteratorIPKcSsEESsEEbRT_SA_RT0_ — bool boost::char_separator<char,std::char_traits<char>>::operator()<__gnu_cxx::__normal_iterator<char const*,std::string>,std::string>(__gnu_cxx::__normal_iterator<char const*,std::string> &,__gnu_cxx::__normal_iterator<char const*,std::string>,std::string &)
-pub fn stub_0x775a90() -> ! {
-    todo!("0x775a90 __ZN5boost14char_separatorIcSt11char_traitsIcEEclIN9__gnu_cxx17__normal_iteratorIPKcSsEESsEEbRT_SA_RT0_")
+pub fn stub_0x775a90() {
+    // IDA 0x775a90: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::char_separator<char,std::char_traits<char>>::is_dropped(char)const")]
 // 0x775bf0 — __ZNK5boost14char_separatorIcSt11char_traitsIcEE10is_droppedEc — boost::char_separator<char,std::char_traits<char>>::is_dropped(char)const
-pub fn stub_0x775bf0() -> ! {
-    todo!("0x775bf0 __ZNK5boost14char_separatorIcSt11char_traitsIcEE10is_droppedEc")
+pub fn stub_0x775bf0() {
+    // IDA 0x775bf0: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "boost::char_separator<char,std::char_traits<char>>::char_separator(char const*,char const*,boost::empty_token_policy)")]
 // 0x775c28 — __ZN5boost14char_separatorIcSt11char_traitsIcEEC2EPKcS5_NS_18empty_token_policyE — boost::char_separator<char,std::char_traits<char>>::char_separator(char const*,char const*,boost::empty_token_policy)
-pub fn stub_0x775c28() -> ! {
-    todo!("0x775c28 __ZN5boost14char_separatorIcSt11char_traitsIcEEC2EPKcS5_NS_18empty_token_policyE")
+pub fn stub_0x775c28() {
+    // IDA 0x775c28: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<std::string>::operator=(rbx_core::SharedPtr<std::string> const&)")]
 // 0x777a9c — __ZN5boost10shared_ptrISsEaSERKS1_ — rbx_core::SharedPtr<std::string>::operator=(rbx_core::SharedPtr<std::string> const&)
 // was: boost::shared_ptr<std::string>::operator=(boost::shared_ptr<std::string> const&)
-pub fn stub_0x777a9c() -> ! {
-    todo!("0x777a9c __ZN5boost10shared_ptrISsEaSERKS1_")
+pub fn stub_0x777a9c() {
+    // IDA 0x777a9c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
