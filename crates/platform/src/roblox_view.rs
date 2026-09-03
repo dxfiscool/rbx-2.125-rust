@@ -7,7 +7,7 @@
 
 use std::sync::atomic::{AtomicBool, AtomicU32, Ordering};
 
-use rbx_core::SharedPtr;
+pub use rbx_core::SharedPtr;
 
 /// ObjC `id` (nullable object pointer); `None`/`NIL_ID` is `nil` (no host runtime here).
 pub type ObjCId = usize;
@@ -54,6 +54,12 @@ impl MainViewState {
             roblox_view: parking_lot::Mutex::new(None),
         }
     }
+}
+
+/// Wraps an opaque game id into a `SharedPtr` (`boost::shared_ptr<RBX::Game>`
+/// construction from a held pointer; the live game lives out of slice).
+pub fn wrap_game(id: u32) -> SharedPtr<GameHandle> {
+    SharedPtr::new(GameHandle { id })
 }
 
 /// `PlaceLauncher::rbxView` ivar plus the `RobloxMemoryManager` free-memory

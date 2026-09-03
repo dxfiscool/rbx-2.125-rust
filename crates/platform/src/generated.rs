@@ -6,6 +6,27 @@
 
 use rbx_core::SharedPtr;
 
+/// Shared harness instances backing this file's `stub_0xADDR` delegates.
+/// Canonical behavior lives in `crate::roblox_view` (IDA-grounded); these
+/// delegates exist because the skeleton duplicated those EAs into this file.
+static PLACE_SLOT: std::sync::LazyLock<crate::roblox_view::PlaceLauncherViewSlot> =
+    std::sync::LazyLock::new(crate::roblox_view::PlaceLauncherViewSlot::new);
+static MAIN: std::sync::LazyLock<crate::roblox_view::MainViewState> =
+    std::sync::LazyLock::new(|| crate::roblox_view::MainViewState::new(true, Vec::new()));
+static VIEW: std::sync::LazyLock<crate::roblox_view::RobloxView> =
+    std::sync::LazyLock::new(crate::roblox_view::RobloxView::default);
+static REGISTRY: std::sync::LazyLock<crate::roblox_view::ViewSignalRegistry> =
+    std::sync::LazyLock::new(crate::roblox_view::ViewSignalRegistry::new);
+static RENDER_JOB: std::sync::LazyLock<crate::roblox_view::RenderJob> =
+    std::sync::LazyLock::new(|| crate::roblox_view::RenderJob::new(0, 0, None));
+static VU_JOB: std::sync::LazyLock<crate::roblox_view::ViewUpdateJob> =
+    std::sync::LazyLock::new(|| crate::roblox_view::ViewUpdateJob::new(0, 0));
+static RENDER_SLOT: std::sync::LazyLock<
+    parking_lot::Mutex<Option<SharedPtr<crate::roblox_view::RenderJob>>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(None));
+static VU_SLOT: std::sync::LazyLock<
+    parking_lot::Mutex<Option<SharedPtr<crate::roblox_view::ViewUpdateJob>>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(None));
 // 0x1d390 — -[HomeViewController btnPlaceLauncher]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController btnPlaceLauncher]")]
@@ -306,8 +327,9 @@ pub fn stub_2a99c() -> ! {
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
 // was: finishTeleport(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *)
 #[doc(alias = "finishTeleport(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *)")]
-pub fn stub_2aba4() -> ! {
-    todo!("0x2aba4 finishTeleport(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *)")
+pub fn stub_2aba4() -> bool {
+    // delegate of crate::roblox_view (IDA 0x2aba4)
+    crate::roblox_view::finish_teleport(&VIEW, &MAIN, &crate::roblox_view::wrap_game(0))
 }
 
 // 0x2ae44 — -[PlaceLauncher isCurrentlyPlayingGame]
@@ -362,224 +384,254 @@ pub fn stub_2b724() -> ! {
 // 0x2b754 — __ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE
 // was: finishTeleportHelper(RobloxView *,boost::shared_ptr<RBX::Game>)
 #[doc(alias = "finishTeleportHelper(RobloxView *,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_2b754() -> ! {
-    todo!("0x2b754 finishTeleportHelper(RobloxView *,boost::shared_ptr<RBX::Game>)")
+pub fn stub_2b754() -> bool {
+    // delegate of crate::roblox_view (IDA 0x2b754)
+    crate::roblox_view::finish_teleport_helper(&VIEW, &MAIN, &crate::roblox_view::wrap_game(0))
 }
 
 // 0x2b980 — ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke
 // was: ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke
 #[doc(alias = "____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke")]
-pub fn stub_2b980() -> ! {
-    todo!("0x2b980 ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke")
+pub fn stub_2b980() -> crate::roblox_view::ViewRect {
+    // delegate of crate::roblox_view (IDA 0x2b980)
+    crate::roblox_view::finish_teleport_animation_frame(None)
 }
 
 // 0x2ba14 — ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke428
 // was: ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke428
 #[doc(alias = "____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke428")]
-pub fn stub_2ba14() -> ! {
-    todo!("0x2ba14 ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke428")
+pub fn stub_2ba14() -> bool {
+    // delegate of crate::roblox_view (IDA 0x2ba14)
+    crate::roblox_view::finish_teleport_completion_clips_to_bounds()
 }
 
 // 0x2d280 — __ZN5boost4bindIvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS4_18FunctionMarshallerES2_S6_S8_EENS_3_bi6bind_tIT_PFSB_T0_T1_T2_ENS9_9list_av_3IT3_T4_T5_E4typeEEESG_SI_SJ_SK_
 // was: boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list_av_3<RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *>::type> boost::bind<void,RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *,RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *>(void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *)
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list_av_3<RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *>::type> boost::bind<void,RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *,RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *>(void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *)")]
-pub fn stub_2d280() -> ! {
-    todo!("0x2d280 boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list_av_3<RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *>::type> boost::bind<void,RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *,RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *>(void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *)")
+pub fn stub_2d280() -> crate::roblox_view::FinishTeleportMarshalledArgs {
+    // delegate of crate::roblox_view (IDA 0x2d280)
+    crate::roblox_view::bind_finish_teleport(0, 0, 0)
 }
 
 // 0x2d370 — __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS7_5list3INS7_5valueISA_EENSJ_ISD_EENSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, boost::detail::sp_counted_base *, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 // was: __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS7_5list3INS7_5valueISA_EENSJ_ISD_EENSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "__ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS7_5list3INS7_5valueISA_EENSJ_ISD_EENSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_2d370() -> ! {
-    todo!("0x2d370 __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS7_5list3INS7_5valueISA_EENSJ_ISD_EENSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")
+pub fn stub_2d370() -> crate::roblox_view::DatamodelCallback {
+    // delegate of crate::roblox_view (IDA 0x2d370)
+    crate::roblox_view::wrap_finish_teleport_callback(crate::roblox_view::FinishTeleportMarshalledArgs::default())
 }
 
 // 0x2d458 — __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, struct _Unwind_Exception *lpuexcpt, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 // was: __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "__ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_2d458() -> ! {
-    todo!("0x2d458 __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")
+pub fn stub_2d458() -> crate::roblox_view::DatamodelCallback {
+    // delegate of crate::roblox_view (IDA 0x2d458)
+    crate::roblox_view::wrap_finish_teleport_callback1(crate::roblox_view::FinishTeleportMarshalledArgs::default())
 }
 
 // 0x2d544 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEEEEEvT_
 // type: int __fastcall(int, boost::detail::sp_counted_base *, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 // was: void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>)
 #[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>)")]
-pub fn stub_2d544() -> ! {
-    todo!("0x2d544 void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>)")
+pub fn stub_2d544() {
+    // delegate of crate::roblox_view (IDA 0x2d544)
+    { let mut slot = None; crate::roblox_view::assign_finish_teleport_callback(&mut slot, crate::roblox_view::FinishTeleportMarshalledArgs::default()); }
 }
 
 // 0x2d644 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_2d644() -> ! {
-    todo!("0x2d644 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_2d644() -> bool {
+    // delegate of crate::roblox_view (IDA 0x2d644)
+    { let mut slot = None; crate::roblox_view::manage_finish_teleport_fn(crate::roblox_view::FunctorOp::Clone, &mut slot) }
 }
 
 // 0x2d660 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEvPNS8_9DataModelEE6invokeERNS1_15function_bufferESN_
 // type: int __fastcall(int, int)
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")]
-pub fn stub_2d660() -> ! {
-    todo!("0x2d660 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")
+pub fn stub_2d660() -> bool {
+    // delegate of crate::roblox_view (IDA 0x2d660)
+    crate::roblox_view::invoke_finish_teleport_fn(&VIEW, &MAIN, &crate::roblox_view::FinishTeleportMarshalledArgs::default())
 }
 
 // 0x2d67c — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS3_4GameEEEPNS3_18FunctionMarshallerEENS8_5list3INS8_5valueISB_EENSK_ISE_EENSK_ISG_EEEEEEEEbT_RNS1_15function_bufferE
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,boost::detail::function::function_buffer &)const
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,boost::detail::function::function_buffer &)const")]
-pub fn stub_2d67c() -> ! {
-    todo!("0x2d67c bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_2d67c() -> bool {
+    // delegate of crate::roblox_view (IDA 0x2d67c)
+    { let mut slot = None; crate::roblox_view::vtable_assign_finish_teleport_fn(&mut slot, crate::roblox_view::FinishTeleportMarshalledArgs::default()) }
 }
 
 // 0x2d768 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS3_4GameEEEPNS3_18FunctionMarshallerEENS8_5list3INS8_5valueISB_EENSK_ISE_EENSK_ISG_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 #[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_2d768() -> ! {
-    todo!("0x2d768 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_2d768() -> bool {
+    // delegate of crate::roblox_view (IDA 0x2d768)
+    { let mut slot = None; crate::roblox_view::vtable_assign_tagged_finish_teleport_fn(&mut slot, crate::roblox_view::FinishTeleportMarshalledArgs::default()) }
 }
 
 // 0x2d884 — __ZN5boost3_bi5list3INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_IPNS7_18FunctionMarshallerEEEEclIPFvS4_S9_SC_ENS0_5list1IRPNS7_9DataModelEEEEEvNS0_4typeIvEERT_RT0_i
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: void boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::operator()<void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *) &,boost::_bi::list1<RBX::DataModel *&> &,int)
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::operator()<void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *) &,boost::_bi::list1<RBX::DataModel *&> &,int)")]
-pub fn stub_2d884() -> ! {
-    todo!("0x2d884 void boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::operator()<void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *) &,boost::_bi::list1<RBX::DataModel *&> &,int)")
+pub fn stub_2d884() -> bool {
+    // delegate of crate::roblox_view (IDA 0x2d884)
+    crate::roblox_view::apply_finish_teleport_list(&VIEW, &MAIN, &crate::roblox_view::FinishTeleportMarshalledArgs::default())
 }
 
 // 0x2d964 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_2d964() -> ! {
-    todo!("0x2d964 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_2d964() -> bool {
+    // delegate of crate::roblox_view (IDA 0x2d964)
+    { let mut slot = None; crate::roblox_view::manager_small_finish_teleport_fn(crate::roblox_view::FunctorOp::Clone, &mut slot) }
 }
 
 // 0x2da9c — __ZN5boost3_bi5list3INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_IPNS7_18FunctionMarshallerEEEEC2ES5_SA_SD_
 // was: boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::list3(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::list3(boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)")]
-pub fn stub_2da9c() -> ! {
-    todo!("0x2da9c boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::list3(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)")
+pub fn stub_2da9c() -> crate::roblox_view::FinishTeleportMarshalledArgs {
+    // delegate of crate::roblox_view (IDA 0x2da9c)
+    crate::roblox_view::build_finish_teleport_list(0, 0, 0)
 }
 
 // 0x2db54 — __ZN5boost3_bi8storage3INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_IPNS7_18FunctionMarshallerEEEEC2ES5_SA_SD_
 // was: boost::_bi::storage3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::storage3(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::storage3(boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)")]
-pub fn stub_2db54() -> ! {
-    todo!("0x2db54 boost::_bi::storage3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::storage3(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)")
+pub fn stub_2db54() -> crate::roblox_view::FinishTeleportMarshalledArgs {
+    // delegate of crate::roblox_view (IDA 0x2db54)
+    crate::roblox_view::build_finish_teleport_storage(0, 0, 0)
 }
 
 // 0x312d0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewaPN3RBX18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSD_IaEENSD_IS9_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_312d0() -> ! {
-    todo!("0x312d0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_312d0() -> bool {
+    // delegate of crate::roblox_view (IDA 0x312d0)
+    { let mut slot = None; crate::roblox_view::manage_init_control_fn(crate::roblox_view::FunctorOp::Clone, &mut slot) }
 }
 
 // 0x31348 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP10RobloxViewaPN3RBX18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSD_IaEENSD_IS9_EEEEEEvPNS7_9DataModelEE6invokeERNS1_15function_bufferESK_
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>,boost::_bi::value<RBX::FunctionMarshaller *>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>,boost::_bi::value<RBX::FunctionMarshaller *>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")]
-pub fn stub_31348() -> ! {
-    todo!("0x31348 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>,boost::_bi::value<RBX::FunctionMarshaller *>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")
+pub fn stub_31348() -> crate::roblox_view::ControlInitOutcome {
+    // delegate of crate::roblox_view (IDA 0x31348)
+    crate::roblox_view::invoke_init_control_fn(&VIEW, &MAIN, false, &crate::roblox_view::InitControlArgs::default())
 }
 
 // 0x327d4 — __ZN5boost4bindIvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEES2_S6_EENS_3_bi6bind_tIT_PFS9_T0_T1_ENS7_9list_av_2IT2_T3_E4typeEEESD_SF_SG_
 // was: boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list_av_2<RobloxView *,boost::shared_ptr<RBX::Game>>::type> boost::bind<void,RobloxView *,boost::shared_ptr<RBX::Game>,RobloxView *,boost::shared_ptr<RBX::Game>>(void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),RobloxView *,boost::shared_ptr<RBX::Game>)
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list_av_2<RobloxView *,rbx_core::SharedPtr<RBX::Game>>::type> boost::bind<void,RobloxView *,rbx_core::SharedPtr<RBX::Game>,RobloxView *,rbx_core::SharedPtr<RBX::Game>>(void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),RobloxView *,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_327d4() -> ! {
-    todo!("0x327d4 boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list_av_2<RobloxView *,boost::shared_ptr<RBX::Game>>::type> boost::bind<void,RobloxView *,boost::shared_ptr<RBX::Game>,RobloxView *,boost::shared_ptr<RBX::Game>>(void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),RobloxView *,boost::shared_ptr<RBX::Game>)")
+pub fn stub_327d4() -> crate::roblox_view::FinishTeleportArgs {
+    // delegate of crate::roblox_view (IDA 0x327d4)
+    crate::roblox_view::bind_finish_teleport_helper(0, 0)
 }
 
 // 0x328bc — __ZN5boost3_bi5list2INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEC2ES5_SA_
 // was: boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::list2(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>)
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>::list2(boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>)")]
-pub fn stub_328bc() -> ! {
-    todo!("0x328bc boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::list2(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>)")
+pub fn stub_328bc() -> crate::roblox_view::FinishTeleportArgs {
+    // delegate of crate::roblox_view (IDA 0x328bc)
+    crate::roblox_view::build_finish_teleport_helper_list(0, 0)
 }
 
 // 0x32984 — __ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS4_5list2INS4_5valueIS7_EENSF_ISB_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: __ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS4_5list2INS4_5valueIS7_EENSF_ISB_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "__ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS4_5list2INS4_5valueIS7_EENSF_ISB_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_32984() -> ! {
-    todo!("0x32984 __ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS4_5list2INS4_5valueIS7_EENSF_ISB_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE")
+pub fn stub_32984() -> crate::roblox_view::VoidCallback {
+    // delegate of crate::roblox_view (IDA 0x32984)
+    crate::roblox_view::wrap_finish_teleport_helper_callback(crate::roblox_view::FinishTeleportArgs::default())
 }
 
 // 0x32a68 — __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "__ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_32a68() -> ! {
-    todo!("0x32a68 __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")
+pub fn stub_32a68() -> crate::roblox_view::VoidCallback {
+    // delegate of crate::roblox_view (IDA 0x32a68)
+    crate::roblox_view::wrap_finish_teleport_helper_callback0(crate::roblox_view::FinishTeleportArgs::default())
 }
 
 // 0x32b50 — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEEEvT_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>)
 #[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>)")]
-pub fn stub_32b50() -> ! {
-    todo!("0x32b50 void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>)")
+pub fn stub_32b50() {
+    // delegate of crate::roblox_view (IDA 0x32b50)
+    { let mut slot = None; crate::roblox_view::assign_finish_teleport_helper_callback(&mut slot, crate::roblox_view::FinishTeleportArgs::default()); }
 }
 
 // 0x32c48 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_32c48() -> ! {
-    todo!("0x32c48 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_32c48() -> bool {
+    // delegate of crate::roblox_view (IDA 0x32c48)
+    { let mut slot = None; crate::roblox_view::manage_finish_teleport_helper_fn(crate::roblox_view::FunctorOp::Clone, &mut slot) }
 }
 
 // 0x32c64 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEvE6invokeERNS1_15function_bufferE
 // was: boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>,void>::invoke(boost::detail::function::function_buffer &)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_32c64() -> ! {
-    todo!("0x32c64 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_32c64() -> bool {
+    // delegate of crate::roblox_view (IDA 0x32c64)
+    crate::roblox_view::invoke_finish_teleport_helper_fn(&VIEW, &MAIN, &crate::roblox_view::FinishTeleportArgs::default())
 }
 
 // 0x32c78 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIS8_EENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferE
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>,boost::detail::function::function_buffer &)const
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>,boost::detail::function::function_buffer &)const")]
-pub fn stub_32c78() -> ! {
-    todo!("0x32c78 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_32c78() -> bool {
+    // delegate of crate::roblox_view (IDA 0x32c78)
+    { let mut slot = None; crate::roblox_view::vtable_assign_finish_teleport_helper_fn(&mut slot, crate::roblox_view::FinishTeleportArgs::default()) }
 }
 
 // 0x32d60 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIS8_EENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_32d60() -> ! {
-    todo!("0x32d60 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_32d60() -> bool {
+    // delegate of crate::roblox_view (IDA 0x32d60)
+    { let mut slot = None; crate::roblox_view::vtable_assign_tagged_finish_teleport_helper_fn(&mut slot, crate::roblox_view::FinishTeleportArgs::default()) }
 }
 
 // 0x32e74 — __ZN5boost3_bi5list2INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEclIPFvS4_S9_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: void boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::operator()<void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>) &,boost::_bi::list0 &,int)
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>::operator()<void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>) &,boost::_bi::list0 &,int)")]
-pub fn stub_32e74() -> ! {
-    todo!("0x32e74 void boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::operator()<void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>) &,boost::_bi::list0 &,int)")
+pub fn stub_32e74() -> bool {
+    // delegate of crate::roblox_view (IDA 0x32e74)
+    crate::roblox_view::apply_finish_teleport_helper_list(&VIEW, &MAIN, &crate::roblox_view::FinishTeleportArgs::default())
 }
 
 // 0x32f4c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_32f4c() -> ! {
-    todo!("0x32f4c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_32f4c() -> bool {
+    // delegate of crate::roblox_view (IDA 0x32f4c)
+    { let mut slot = None; crate::roblox_view::manager_small_finish_teleport_helper_fn(crate::roblox_view::FunctorOp::Clone, &mut slot) }
 }
 
 // 0x33470 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewaENS3_5list2INS3_5valueIS6_EENSA_IaEEEEEEE6manageERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeE
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_33470() -> ! {
-    todo!("0x33470 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_33470() -> bool {
+    // delegate of crate::roblox_view (IDA 0x33470)
+    { let mut slot = None; crate::roblox_view::manage_init_control_pair(crate::roblox_view::FunctorOp::Clone, &mut slot) }
 }
 
 // 0x334d0 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvP10RobloxViewaENS3_5list2INS3_5valueIS6_EENSA_IaEEEEEEvE6invokeERNS1_15function_bufferE
 // was: boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>>>,void>::invoke(boost::detail::function::function_buffer &)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_334d0() -> ! {
-    todo!("0x334d0 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_334d0() -> crate::roblox_view::ControlInitOutcome {
+    // delegate of crate::roblox_view (IDA 0x334d0)
+    crate::roblox_view::invoke_init_control_pair(&VIEW, &MAIN, false, &crate::roblox_view::InitControlPair::default())
 }
 
 // 0x33924 — __ZN5boost4bindIvP13PlaceLauncherSsSsSsS2_SsSsSsEENS_3_bi6bind_tIT_PFS5_T0_T1_T2_T3_ENS3_9list_av_4IT4_T5_T6_T7_E4typeEEESB_SD_SE_SF_SG_
@@ -702,31 +754,35 @@ pub fn stub_35438() -> ! {
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, boost::detail::sp_counted_base *, int, void *, char, int, int, int, int)
 // was: RobloxView::completeViewPrep(boost::shared_ptr<RBX::Game>)
 #[doc(alias = "RobloxView::completeViewPrep(rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_37b3c() -> ! {
-    todo!("0x37b3c RobloxView::completeViewPrep(boost::shared_ptr<RBX::Game>)")
+pub fn stub_37b3c() {
+    // delegate of crate::roblox_view (IDA 0x37b3c)
+    VIEW.complete_view_prep(crate::roblox_view::wrap_game(0));
 }
 
 // 0x380a4 — __ZN10RobloxView13bindWorkspaceEN5boost10shared_ptrIN3RBX8ViewBaseEEENS1_INS2_9DataModelEEENS1_INS2_16OverlayDataModelEEE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, int, int, int)
 // was: RobloxView::bindWorkspace(boost::shared_ptr<RBX::ViewBase>,boost::shared_ptr<RBX::DataModel>,boost::shared_ptr<RBX::OverlayDataModel>)
 #[doc(alias = "RobloxView::bindWorkspace(rbx_core::SharedPtr<RBX::ViewBase>,rbx_core::SharedPtr<RBX::DataModel>,rbx_core::SharedPtr<RBX::OverlayDataModel>)")]
-pub fn stub_380a4() -> ! {
-    todo!("0x380a4 RobloxView::bindWorkspace(boost::shared_ptr<RBX::ViewBase>,boost::shared_ptr<RBX::DataModel>,boost::shared_ptr<RBX::OverlayDataModel>)")
+pub fn stub_380a4() {
+    // delegate of crate::roblox_view (IDA 0x380a4)
+    VIEW.bind_workspace(0, 0, 0);
 }
 
 // 0x39674 — __ZN10RobloxView11create_viewEN5boost10shared_ptrIN3RBX4GameEEEjjSsSsSs
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, std::string *, std::string *)
 // was: RobloxView::create_view(boost::shared_ptr<RBX::Game>,unsigned int,unsigned int,std::string,std::string,std::string)
 #[doc(alias = "RobloxView::create_view(rbx_core::SharedPtr<RBX::Game>,unsigned int,unsigned int,std::string,std::string,std::string)")]
-pub fn stub_39674() -> ! {
-    todo!("0x39674 RobloxView::create_view(boost::shared_ptr<RBX::Game>,unsigned int,unsigned int,std::string,std::string,std::string)")
+pub fn stub_39674() -> crate::roblox_view::SharedPtr<crate::roblox_view::RobloxView> {
+    // delegate of crate::roblox_view (IDA 0x39674)
+    crate::roblox_view::create_view(0, 0, 0, "", "", "")
 }
 
 // 0x39d7c — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEE5resetEv
 // was: boost::shared_ptr<RobloxView::RenderJob>::reset(void)
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::reset(void)")]
-pub fn stub_39d7c() -> ! {
-    todo!("0x39d7c boost::shared_ptr<RobloxView::RenderJob>::reset(void)")
+pub fn stub_39d7c() {
+    // delegate of crate::roblox_view (IDA 0x39d7c)
+    crate::roblox_view::reset_render_job_slot(&mut RENDER_SLOT.lock());
 }
 
 // — batch 2: next 100 stubs (0x1b3d0-0x201a8) — HomeViewController + Login segue —
@@ -1452,270 +1508,313 @@ pub fn stub_33920() -> ! {
 
 // 0x39e10 — __ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEE5resetEv
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::reset(void)")]
-pub fn stub_39e10() -> ! {
-    todo!("0x39e10 boost::shared_ptr<RobloxView::ViewUpdateJob>::reset(void)")
+pub fn stub_39e10() {
+    // delegate of crate::roblox_view (IDA 0x39e10)
+    crate::roblox_view::reset_view_update_job_slot(&mut VU_SLOT.lock());
 }
 
 // 0x39ea8 — __ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEEaSEOS3_
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::operator=(rbx_core::SharedPtr<RobloxView::ViewUpdateJob>&&)")]
-pub fn stub_39ea8() -> ! {
-    todo!("0x39ea8 boost::shared_ptr<RobloxView::ViewUpdateJob>::operator=(boost::shared_ptr<RobloxView::ViewUpdateJob>&&)")
+pub fn stub_39ea8() {
+    // delegate of crate::roblox_view (IDA 0x39ea8)
+    crate::roblox_view::move_assign_view_update_job_slot(&mut VU_SLOT.lock(), crate::roblox_view::wrap_view_update_job(crate::roblox_view::ViewUpdateJob::new(0, 0)));
 }
 
 // 0x39f4c — __ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEEC1IS2_EEPT_
 // type: int __fastcall(int, void *, int, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")]
-pub fn stub_39f4c() -> ! {
-    todo!("0x39f4c boost::shared_ptr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")
+pub fn stub_39f4c() -> crate::roblox_view::SharedPtr<crate::roblox_view::ViewUpdateJob> {
+    // delegate of crate::roblox_view (IDA 0x39f4c)
+    crate::roblox_view::wrap_view_update_job(crate::roblox_view::ViewUpdateJob::new(0, 0))
 }
 
 // 0x3a030 — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEEaSEOS3_
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::operator=(rbx_core::SharedPtr<RobloxView::RenderJob>&&)")]
-pub fn stub_3a030() -> ! {
-    todo!("0x3a030 boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)")
+pub fn stub_3a030() {
+    // delegate of crate::roblox_view (IDA 0x3a030)
+    crate::roblox_view::move_assign_render_job_slot(&mut RENDER_SLOT.lock(), crate::roblox_view::wrap_render_job(crate::roblox_view::RenderJob::new(0, 0, None)));
 }
 
 // 0x3a0d4 — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEEC1IS2_EEPT_
 // type: int __fastcall(int, void *, int, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
-pub fn stub_3a0d4() -> ! {
-    todo!("0x3a0d4 boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")
+pub fn stub_3a0d4() -> crate::roblox_view::SharedPtr<crate::roblox_view::RenderJob> {
+    // delegate of crate::roblox_view (IDA 0x3a0d4)
+    crate::roblox_view::wrap_render_job(crate::roblox_view::RenderJob::new(0, 0, None))
 }
 
 // 0x3a278 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE7connectIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_
 // type: int(void)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>> const&)")]
-pub fn stub_3a278() -> ! {
-    todo!("0x3a278 rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>> const&)")
+pub fn stub_3a278() -> u64 {
+    // delegate of crate::roblox_view (IDA 0x3a278)
+    REGISTRY.connect_place_id_slot(Box::new(|_: crate::roblox_view::ObjCId| {}))
 }
 
 // 0x3a390 — __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEEENS0_10connectionERKT_
 // type: int(void)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>> const&)")]
-pub fn stub_3a390() -> ! {
-    todo!("0x3a390 rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>> const&)")
+pub fn stub_3a390() -> u64 {
+    // delegate of crate::roblox_view (IDA 0x3a390)
+    REGISTRY.connect_void_slot(Box::new(|| {}))
 }
 
 // 0x3cdb8 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")]
-pub fn stub_3cdb8() -> ! {
-    todo!("0x3cdb8 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")
+pub fn stub_3cdb8() {
+    // delegate of crate::roblox_view (IDA 0x3cdb8)
+    REGISTRY.drop_void_slot_d1(0);
 }
 
 // 0x3ce64 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")]
-pub fn stub_3ce64() -> ! {
-    todo!("0x3ce64 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")
+pub fn stub_3ce64() {
+    // delegate of crate::roblox_view (IDA 0x3ce64)
+    REGISTRY.drop_void_slot_d0(0);
 }
 
 // 0x3cf18 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_E4callEv
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")]
-pub fn stub_3cf18() -> ! {
-    todo!("0x3cf18 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")
+pub fn stub_3cf18() -> bool {
+    // delegate of crate::roblox_view (IDA 0x3cf18)
+    REGISTRY.call_void_slot(0)
 }
 
 // 0x3cf20 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_E4callEv
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")]
-pub fn stub_3cf20() -> ! {
-    todo!("0x3cf20 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")
+pub fn stub_3cf20() -> bool {
+    // delegate of crate::roblox_view (IDA 0x3cf20)
+    REGISTRY.thunk_call_void_slot(0)
 }
 
 // 0x3cf28 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0Iv10RobloxViewEENS0_5list1INS0_5valueIPS4_EEEEEclEv
 // type: int(void)
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>::operator()(void)")]
-pub fn stub_3cf28() -> ! {
-    todo!("0x3cf28 boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>::operator()(void)")
+pub fn stub_3cf28() -> bool {
+    // delegate of crate::roblox_view (IDA 0x3cf28)
+    REGISTRY.invoke_void_bind(0)
 }
 
 // 0x3d0e4 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()")]
-pub fn stub_3d0e4() -> ! {
-    todo!("0x3d0e4 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()")
+pub fn stub_3d0e4() {
+    // delegate of crate::roblox_view (IDA 0x3d0e4)
+    REGISTRY.drop_void_callable_d1(0);
 }
 
 // 0x3d190 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()")]
-pub fn stub_3d190() -> ! {
-    todo!("0x3d190 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()")
+pub fn stub_3d190() {
+    // delegate of crate::roblox_view (IDA 0x3d190)
+    REGISTRY.drop_void_callable_d0(0);
 }
 
 // 0x3d6a8 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_3d6a8() -> ! {
-    todo!("0x3d6a8 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_3d6a8() {
+    // delegate of crate::roblox_view (IDA 0x3d6a8)
+    REGISTRY.drop_desc_slot_d1(0);
 }
 
 // 0x3d754 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_3d754() -> ! {
-    todo!("0x3d754 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_3d754() {
+    // delegate of crate::roblox_view (IDA 0x3d754)
+    REGISTRY.drop_desc_slot_d0(0);
 }
 
 // 0x3d808 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_3d808() -> ! {
-    todo!("0x3d808 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_3d808() -> bool {
+    // delegate of crate::roblox_view (IDA 0x3d808)
+    REGISTRY.call_desc_slot(0, 0)
 }
 
 // 0x3d81c — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_3d81c() -> ! {
-    todo!("0x3d81c non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_3d81c() -> bool {
+    // delegate of crate::roblox_view (IDA 0x3d81c)
+    REGISTRY.thunk_call_desc_slot(0, 0)
 }
 
 // 0x3d830 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1Iv10RobloxViewPKN3RBX10Reflection18PropertyDescriptorEEENS0_5list2INS0_5valueIPS4_EENS_3argILi1EEEEEEclIS9_EEvRT_
 // type: int(void)
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>::operator()<RBX::Reflection::PropertyDescriptor const*>(RBX::Reflection::PropertyDescriptor const* &)")]
-pub fn stub_3d830() -> ! {
-    todo!("0x3d830 void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>::operator()<RBX::Reflection::PropertyDescriptor const*>(RBX::Reflection::PropertyDescriptor const* &)")
+pub fn stub_3d830() -> bool {
+    // delegate of crate::roblox_view (IDA 0x3d830)
+    REGISTRY.invoke_desc_bind(0, 0)
 }
 
 // 0x3d9f0 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
-pub fn stub_3d9f0() -> ! {
-    todo!("0x3d9f0 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_3d9f0() {
+    // delegate of crate::roblox_view (IDA 0x3d9f0)
+    REGISTRY.drop_desc_callable_d1(0);
 }
 
 // 0x3da9c — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
-pub fn stub_3da9c() -> ! {
-    todo!("0x3da9c rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_3da9c() {
+    // delegate of crate::roblox_view (IDA 0x3da9c)
+    REGISTRY.drop_desc_callable_d0(0);
 }
 
 // 0x3dc60 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerIN10RobloxView9RenderJobES7_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(rbx_core::SharedPtr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const")]
-pub fn stub_3dc60() -> ! {
-    todo!("0x3dc60 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(boost::shared_ptr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const")
+pub fn stub_3dc60() {
+    // delegate of crate::roblox_view (IDA 0x3dc60)
+    crate::roblox_view::accept_render_job_owner();
 }
 
 // 0x3dd34 — __ZN5boost6detail12shared_countC2IN10RobloxView9RenderJobEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
-pub fn stub_3dd34() -> ! {
-    todo!("0x3dd34 boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)")
+pub fn stub_3dd34() -> crate::roblox_view::SharedPtr<crate::roblox_view::RenderJob> {
+    // delegate of crate::roblox_view (IDA 0x3dd34)
+    crate::roblox_view::alloc_render_job_control_block(crate::roblox_view::RenderJob::new(0, 0, None))
 }
 
 // 0x3de28 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")]
-pub fn stub_3de28() -> ! {
-    todo!("0x3de28 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")
+pub fn stub_3de28() {
+    // delegate of crate::roblox_view (IDA 0x3de28)
+    crate::roblox_view::drop_render_job_control_block_d1(crate::roblox_view::wrap_render_job(crate::roblox_view::RenderJob::new(0, 0, None)));
 }
 
 // 0x3de2c — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")]
-pub fn stub_3de2c() -> ! {
-    todo!("0x3de2c boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")
+pub fn stub_3de2c() {
+    // delegate of crate::roblox_view (IDA 0x3de2c)
+    crate::roblox_view::drop_render_job_control_block_d0(crate::roblox_view::wrap_render_job(crate::roblox_view::RenderJob::new(0, 0, None)));
 }
 
 // 0x3de30 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::dispose(void)")]
-pub fn stub_3de30() -> ! {
-    todo!("0x3de30 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::dispose(void)")
+pub fn stub_3de30() {
+    // delegate of crate::roblox_view (IDA 0x3de30)
+    crate::roblox_view::dispose_render_job(crate::roblox_view::wrap_render_job(crate::roblox_view::RenderJob::new(0, 0, None)));
 }
 
 // 0x3de40 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_deleter(std::type_info const&)")]
-pub fn stub_3de40() -> ! {
-    todo!("0x3de40 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_deleter(std::type_info const&)")
+pub fn stub_3de40() -> Option<crate::roblox_view::ObjCId> {
+    // delegate of crate::roblox_view (IDA 0x3de40)
+    crate::roblox_view::render_job_deleter()
 }
 
 // 0x3de44 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_untyped_deleter(void)")]
-pub fn stub_3de44() -> ! {
-    todo!("0x3de44 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_untyped_deleter(void)")
+pub fn stub_3de44() -> Option<crate::roblox_view::ObjCId> {
+    // delegate of crate::roblox_view (IDA 0x3de44)
+    crate::roblox_view::render_job_untyped_deleter()
 }
 
 // 0x3de48 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerIN10RobloxView13ViewUpdateJobES7_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::ViewUpdateJob,RobloxView::ViewUpdateJob>(rbx_core::SharedPtr<RobloxView::ViewUpdateJob> const*,RobloxView::ViewUpdateJob *)const")]
-pub fn stub_3de48() -> ! {
-    todo!("0x3de48 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::ViewUpdateJob,RobloxView::ViewUpdateJob>(boost::shared_ptr<RobloxView::ViewUpdateJob> const*,RobloxView::ViewUpdateJob *)const")
+pub fn stub_3de48() {
+    // delegate of crate::roblox_view (IDA 0x3de48)
+    crate::roblox_view::accept_view_update_job_owner();
 }
 
 // 0x3df1c — __ZN5boost6detail12shared_countC2IN10RobloxView13ViewUpdateJobEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")]
-pub fn stub_3df1c() -> ! {
-    todo!("0x3df1c boost::detail::shared_count::shared_count<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")
+pub fn stub_3df1c() -> crate::roblox_view::SharedPtr<crate::roblox_view::ViewUpdateJob> {
+    // delegate of crate::roblox_view (IDA 0x3df1c)
+    crate::roblox_view::alloc_view_update_job_control_block(crate::roblox_view::ViewUpdateJob::new(0, 0))
 }
 
 // 0x3e010 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p()")]
-pub fn stub_3e010() -> ! {
-    todo!("0x3e010 boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p()")
+pub fn stub_3e010() {
+    // delegate of crate::roblox_view (IDA 0x3e010)
+    crate::roblox_view::drop_view_update_job_control_block_d1(crate::roblox_view::wrap_view_update_job(crate::roblox_view::ViewUpdateJob::new(0, 0)));
 }
 
 // 0x3e014 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p()")]
-pub fn stub_3e014() -> ! {
-    todo!("0x3e014 boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p()")
+pub fn stub_3e014() {
+    // delegate of crate::roblox_view (IDA 0x3e014)
+    crate::roblox_view::drop_view_update_job_control_block_d0(crate::roblox_view::wrap_view_update_job(crate::roblox_view::ViewUpdateJob::new(0, 0)));
 }
 
 // 0x3e018 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::dispose(void)")]
-pub fn stub_3e018() -> ! {
-    todo!("0x3e018 boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::dispose(void)")
+pub fn stub_3e018() {
+    // delegate of crate::roblox_view (IDA 0x3e018)
+    crate::roblox_view::dispose_view_update_job(crate::roblox_view::wrap_view_update_job(crate::roblox_view::ViewUpdateJob::new(0, 0)));
 }
 
 // 0x3e028 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_deleter(std::type_info const&)")]
-pub fn stub_3e028() -> ! {
-    todo!("0x3e028 boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_deleter(std::type_info const&)")
+pub fn stub_3e028() -> Option<crate::roblox_view::ObjCId> {
+    // delegate of crate::roblox_view (IDA 0x3e028)
+    crate::roblox_view::view_update_job_deleter()
 }
 
 // 0x3e02c — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_untyped_deleter(void)")]
-pub fn stub_3e02c() -> ! {
-    todo!("0x3e02c boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_untyped_deleter(void)")
+pub fn stub_3e02c() -> Option<crate::roblox_view::ObjCId> {
+    // delegate of crate::roblox_view (IDA 0x3e02c)
+    crate::roblox_view::view_update_job_untyped_deleter()
 }
 
 // 0x3ecf0 — __ZN10RobloxView9RenderJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerEN5boost10shared_ptrINS1_9DataModelEEE
 // type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, RBX::TaskScheduler::Job *, int, int, int, int)
 #[doc(alias = "RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,rbx_core::SharedPtr<RBX::DataModel>)")]
-pub fn stub_3ecf0() -> ! {
-    todo!("0x3ecf0 RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,boost::shared_ptr<RBX::DataModel>)")
+pub fn stub_3ecf0() -> crate::roblox_view::RenderJob {
+    // delegate of crate::roblox_view (IDA 0x3ecf0)
+    crate::roblox_view::RenderJob::new(0, 0, None)
 }
 
 // 0x40160 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEE6manageERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_40160() -> ! {
-    todo!("0x40160 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_40160() -> bool {
+    // delegate of crate::roblox_view (IDA 0x40160)
+    { let mut slot = None; crate::roblox_view::manage_render_perform_closure(crate::roblox_view::FunctorOp::Clone, &mut slot) }
 }
 
 // 0x401dc — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_401dc() -> ! {
-    todo!("0x401dc boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_401dc() -> bool {
+    // delegate of crate::roblox_view (IDA 0x401dc)
+    crate::roblox_view::invoke_render_perform_closure(&None)
 }
 
 // 0x401f0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_401f0() -> ! {
-    todo!("0x401f0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_401f0() -> bool {
+    // delegate of crate::roblox_view (IDA 0x401f0)
+    { let mut slot = None; crate::roblox_view::manage_metric_forward_closure(crate::roblox_view::FunctorOp::Clone, &mut slot) }
 }
 
 // 0x40270 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_40270() -> ! {
-    todo!("0x40270 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_40270() -> bool {
+    // delegate of crate::roblox_view (IDA 0x40270)
+    crate::roblox_view::invoke_metric_forward_closure(&RENDER_JOB, &None, 0)
 }
 
 // 0x4027c — __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 // type: int(void)
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)")]
-pub fn stub_4027c() -> ! {
-    todo!("0x4027c void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)")
+pub fn stub_4027c() -> bool {
+    // delegate of crate::roblox_view (IDA 0x4027c)
+    crate::roblox_view::apply_metric_forward_list(&RENDER_JOB, &None, 0)
 }
 
 // 0x402a8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_402a8() -> ! {
-    todo!("0x402a8 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_402a8() -> bool {
+    // delegate of crate::roblox_view (IDA 0x402a8)
+    { let mut slot = None; crate::roblox_view::manage_render_prepare_closure(crate::roblox_view::FunctorOp::Clone, &mut slot) }
 }
 
 // 0x40308 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_40308() -> ! {
-    todo!("0x40308 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_40308() -> bool {
+    // delegate of crate::roblox_view (IDA 0x40308)
+    crate::roblox_view::invoke_render_prepare_closure(&None)
 }
 
 // 0x471c0 — -[ControlComponent findControlView]
@@ -2125,15 +2224,17 @@ pub fn stub_4eac8() -> ! {
 // 0x51f80 — -[MainViewController setRobloxView:]
 // type: void __cdecl(MainViewController *self, SEL, RobloxView *)
 #[doc(alias = "-[MainViewController setRobloxView:]")]
-pub fn stub_51f80() -> ! {
-    todo!("0x51f80 -[MainViewController setRobloxView:]")
+pub fn stub_51f80() {
+    // delegate of crate::roblox_view (IDA 0x51f80)
+    MAIN.set_roblox_view(SharedPtr::new(crate::roblox_view::RobloxView::new_with_strings(0, 0, "", "", "")));
 }
 
 // 0x51f90 — -[MainViewController getRobloxView]
 // type: RobloxView *__cdecl(MainViewController *self, SEL)
 #[doc(alias = "-[MainViewController getRobloxView]")]
-pub fn stub_51f90() -> ! {
-    todo!("0x51f90 -[MainViewController getRobloxView]")
+pub fn stub_51f90() -> Option<crate::roblox_view::SharedPtr<crate::roblox_view::RobloxView>> {
+    // delegate of crate::roblox_view (IDA 0x51f90)
+    MAIN.roblox_view()
 }
 
 // 0xe844ec — __ZN4Ogre12EAGL2SupportC1Ev
@@ -2429,15 +2530,17 @@ pub fn stub_e8a590() -> ! {
 // 0xf1f1c8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
 // was: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
-pub fn stub_f1f1c8() -> ! {
-    todo!("0xf1f1c8 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+pub fn stub_f1f1c8() -> bool {
+    // delegate of crate::roblox_view (IDA 0xf1f1c8)
+    { let mut slot = None; crate::roblox_view::shim_manage_finish_teleport_fn(crate::roblox_view::FunctorOp::Clone, &mut slot) }
 }
 
 // 0xf1f270 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
 // was: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
-pub fn stub_f1f270() -> ! {
-    todo!("0xf1f270 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+pub fn stub_f1f270() -> bool {
+    // delegate of crate::roblox_view (IDA 0xf1f270)
+    { let mut slot = None; crate::roblox_view::shim_manage_finish_teleport_helper_fn(crate::roblox_view::FunctorOp::Clone, &mut slot) }
 }
 
 // 0xf1f27c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEE7managerERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
@@ -2450,53 +2553,60 @@ pub fn stub_f1f27c() -> ! {
 // 0xf1f2f4 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0Iv10RobloxViewEENS0_5list1INS0_5valueIPS4_EEEEEclEv$shim
 // was: __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0Iv10RobloxViewEENS0_5list1INS0_5valueIPS4_EEEEEclEv$shim
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf0Iv10RobloxViewEENS0_5list1INS0_5valueIPS4_EEEEEclEv$shim")]
-pub fn stub_f1f2f4() -> ! {
-    todo!("0xf1f2f4 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0Iv10RobloxViewEENS0_5list1INS0_5valueIPS4_EEEEEclEv$shim")
+pub fn stub_f1f2f4() -> bool {
+    // delegate of crate::roblox_view (IDA 0xf1f2f4)
+    crate::roblox_view::shim_invoke_void_bind(&REGISTRY, 0)
 }
 
 // 0xf1f348 — __ZNK10RobloxView9RenderJob14getMetricValueERKSs$shim
 #[doc(alias = "__ZNK10RobloxView9RenderJob14getMetricValueERKSs$shim")]
-pub fn stub_f1f348() -> ! {
-    todo!("0xf1f348 __ZNK10RobloxView9RenderJob14getMetricValueERKSs$shim")
+pub fn stub_f1f348() -> f64 {
+    // delegate of crate::roblox_view (IDA 0xf1f348)
+    RENDER_JOB.metric_value("Render FPS")
 }
 
 // 0xf1f360 — __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i$shim
 // was: __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i$shim
 #[doc(alias = "__ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i$shim")]
-pub fn stub_f1f360() -> ! {
-    todo!("0xf1f360 __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i$shim")
+pub fn stub_f1f360() -> bool {
+    // delegate of crate::roblox_view (IDA 0xf1f360)
+    crate::roblox_view::shim_apply_metric_forward_list(&RENDER_JOB, &None, 0)
 }
 
 // 0xf267d4 — j___ZN5boost3_bi5list2INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEC2ES5_SA_
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int)
 // was: boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::list2(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>)
 #[doc(alias = "boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>::list2(boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>)")]
-pub fn stub_f267d4() -> ! {
-    todo!("0xf267d4 boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::list2(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>)")
+pub fn stub_f267d4() -> crate::roblox_view::FinishTeleportArgs {
+    // delegate of crate::roblox_view (IDA 0xf267d4)
+    crate::roblox_view::jump_build_finish_teleport_args(0, 0)
 }
 
 // 0xf267e4 — j___ZN5boost3_bi5list2INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEclIPFvS4_S9_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: void boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::operator()<void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>) &,boost::_bi::list0 &,int)
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>::operator()<void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>) &,boost::_bi::list0 &,int)")]
-pub fn stub_f267e4() -> ! {
-    todo!("0xf267e4 void boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::operator()<void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>) &,boost::_bi::list0 &,int)")
+pub fn stub_f267e4() -> bool {
+    // delegate of crate::roblox_view (IDA 0xf267e4)
+    crate::roblox_view::jump_apply_finish_teleport_args(&VIEW, &MAIN, &crate::roblox_view::FinishTeleportArgs::default())
 }
 
 // 0xf26834 — j___ZN5boost3_bi5list3INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_IPNS7_18FunctionMarshallerEEEEC2ES5_SA_SD_
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int)
 // was: boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::list3(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::list3(boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)")]
-pub fn stub_f26834() -> ! {
-    todo!("0xf26834 boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::list3(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)")
+pub fn stub_f26834() -> crate::roblox_view::FinishTeleportMarshalledArgs {
+    // delegate of crate::roblox_view (IDA 0xf26834)
+    crate::roblox_view::jump_build_finish_teleport_marshalled_args(0, 0, 0)
 }
 
 // 0xf26844 — j___ZN5boost3_bi5list3INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_IPNS7_18FunctionMarshallerEEEEclIPFvS4_S9_SC_ENS0_5list1IRPNS7_9DataModelEEEEEvNS0_4typeIvEERT_RT0_i
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: void boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::operator()<void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *) &,boost::_bi::list1<RBX::DataModel *&> &,int)
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::operator()<void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *) &,boost::_bi::list1<RBX::DataModel *&> &,int)")]
-pub fn stub_f26844() -> ! {
-    todo!("0xf26844 void boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::operator()<void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *) &,boost::_bi::list1<RBX::DataModel *&> &,int)")
+pub fn stub_f26844() -> bool {
+    // delegate of crate::roblox_view (IDA 0xf26844)
+    crate::roblox_view::jump_apply_finish_teleport_marshalled_args(&VIEW, &MAIN, &crate::roblox_view::FinishTeleportMarshalledArgs::default())
 }
 
 // 0xf268b4 — j___ZN5boost3_bi5list4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EC2ES5_S6_S6_S6_
@@ -2517,8 +2627,9 @@ pub fn stub_f268c4() -> ! {
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int)
 // was: boost::_bi::storage3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::storage3(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::storage3(boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)")]
-pub fn stub_f26904() -> ! {
-    todo!("0xf26904 boost::_bi::storage3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::storage3(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)")
+pub fn stub_f26904() -> crate::roblox_view::FinishTeleportMarshalledArgs {
+    // delegate of crate::roblox_view (IDA 0xf26904)
+    crate::roblox_view::jump_build_finish_teleport_storage(0, 0, 0)
 }
 
 // 0xf26914 — j___ZN5boost3_bi8storage3INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_EC2ES5_S6_S6_
@@ -2970,15 +3081,17 @@ pub fn stub_1a5bc() -> ! {
 // 0x25440 — -[PlaceLauncher deleteRobloxView]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher deleteRobloxView]")]
-pub fn stub_25440() -> ! {
-    todo!("0x25440 -[PlaceLauncher deleteRobloxView]")
+pub fn stub_25440() {
+    // delegate of crate::roblox_view (IDA 0x25440)
+    PLACE_SLOT.delete_roblox_view();
 }
 
 // 0x2643c — initControlView(RobloxView *,signed char,RBX::FunctionMarshaller *)
 // type: _DWORD __fastcall(RobloxView *, signed __int8, RBX::FunctionMarshaller *)
 #[doc(alias = "initControlView(RobloxView *,signed char,RBX::FunctionMarshaller *)")]
-pub fn stub_2643c() -> ! {
-    todo!("0x2643c initControlView(RobloxView *,signed char,RBX::FunctionMarshaller *)")
+pub fn stub_2643c() -> crate::roblox_view::ControlInitOutcome {
+    // delegate of crate::roblox_view (IDA 0x2643c)
+    crate::roblox_view::init_control_view(&VIEW, &MAIN, false, false)
 }
 
 // 0x26768 — -[PlaceLauncher presentGameViewController]
@@ -2991,236 +3104,270 @@ pub fn stub_26768() -> ! {
 // 0x2c224 — initControlViewHelper(RobloxView *,signed char)
 // type: _DWORD __fastcall(RobloxView *, signed __int8)
 #[doc(alias = "initControlViewHelper(RobloxView *,signed char)")]
-pub fn stub_2c224() -> ! {
-    todo!("0x2c224 initControlViewHelper(RobloxView *,signed char)")
+pub fn stub_2c224() -> crate::roblox_view::ControlInitOutcome {
+    // delegate of crate::roblox_view (IDA 0x2c224)
+    crate::roblox_view::init_control_view_helper(&VIEW, &MAIN, false, false)
 }
 
 // 0x37068 — RobloxView::requestStopRenderingForBackgroundMode(void)
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::requestStopRenderingForBackgroundMode(void)")]
-pub fn stub_37068() -> ! {
-    todo!("0x37068 RobloxView::requestStopRenderingForBackgroundMode(void)")
+pub fn stub_37068() {
+    // delegate of crate::roblox_view (IDA 0x37068)
+    VIEW.request_stop_rendering_for_background_mode();
 }
 
 // 0x37378 — RobloxView::requestResumeRendering(void)
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::requestResumeRendering(void)")]
-pub fn stub_37378() -> ! {
-    todo!("0x37378 RobloxView::requestResumeRendering(void)")
+pub fn stub_37378() {
+    // delegate of crate::roblox_view (IDA 0x37378)
+    VIEW.request_resume_rendering();
 }
 
 // 0x37628 — RobloxView::RobloxView(unsigned int,unsigned int,std::string,std::string,std::string)
 #[doc(alias = "RobloxView::RobloxView(unsigned int,unsigned int,std::string,std::string,std::string)")]
-pub fn stub_37628() -> ! {
-    todo!("0x37628 RobloxView::RobloxView(unsigned int,unsigned int,std::string,std::string,std::string)")
+pub fn stub_37628() -> crate::roblox_view::RobloxView {
+    // delegate of crate::roblox_view (IDA 0x37628)
+    crate::roblox_view::RobloxView::new_with_strings(0, 0, "", "", "")
 }
 
 // 0x380a0 — RobloxView::onPlaceIDChanged(RBX::Reflection::PropertyDescriptor const*)
 // type: _DWORD __fastcall(RobloxView *__hidden this, const PropertyDescriptor *)
 #[doc(alias = "RobloxView::onPlaceIDChanged(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_380a0() -> ! {
-    todo!("0x380a0 RobloxView::onPlaceIDChanged(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_380a0() {
+    // delegate of crate::roblox_view (IDA 0x380a0)
+    VIEW.on_place_id_changed();
 }
 
 // 0x382b0 — RobloxView::defineConcurrencyRules(void)
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::defineConcurrencyRules(void)")]
-pub fn stub_382b0() -> ! {
-    todo!("0x382b0 RobloxView::defineConcurrencyRules(void)")
+pub fn stub_382b0() -> bool {
+    // delegate of crate::roblox_view (IDA 0x382b0)
+    VIEW.define_concurrency_rules()
 }
 
 // 0x386d0 — RobloxView::restartDataModel(void)
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::restartDataModel(void)")]
-pub fn stub_386d0() -> ! {
-    todo!("0x386d0 RobloxView::restartDataModel(void)")
+pub fn stub_386d0() {
+    // delegate of crate::roblox_view (IDA 0x386d0)
+    VIEW.restart_data_model();
 }
 
 // 0x38720 — RobloxView::newGameDidStart(void)
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::newGameDidStart(void)")]
-pub fn stub_38720() -> ! {
-    todo!("0x38720 RobloxView::newGameDidStart(void)")
+pub fn stub_38720() {
+    // delegate of crate::roblox_view (IDA 0x38720)
+    VIEW.new_game_did_start();
 }
 
 // 0x38770 — ____ZN10RobloxView18doRestartDataModelEv_block_invoke
 // type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "____ZN10RobloxView18doRestartDataModelEv_block_invoke")]
-pub fn stub_38770() -> ! {
-    todo!("0x38770 ____ZN10RobloxView18doRestartDataModelEv_block_invoke")
+pub fn stub_38770() {
+    // delegate of crate::roblox_view (IDA 0x38770)
+    VIEW.do_restart_data_model();
 }
 
 // 0x38cd0 — RobloxView::setupNewDataModel(void)
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::setupNewDataModel(void)")]
-pub fn stub_38cd0() -> ! {
-    todo!("0x38cd0 RobloxView::setupNewDataModel(void)")
+pub fn stub_38cd0() {
+    // delegate of crate::roblox_view (IDA 0x38cd0)
+    VIEW.setup_new_data_model(0);
 }
 
 // 0x39018 — ____ZN10RobloxView15newGameDidStartEv_block_invoke
 #[doc(alias = "____ZN10RobloxView15newGameDidStartEv_block_invoke")]
-pub fn stub_39018() -> ! {
-    todo!("0x39018 ____ZN10RobloxView15newGameDidStartEv_block_invoke")
+pub fn stub_39018() {
+    // delegate of crate::roblox_view (IDA 0x39018)
+    VIEW.new_game_did_start_block();
 }
 
 // 0x39020 — RobloxView::~RobloxView()
 // type: void __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::~RobloxView()")]
-pub fn stub_39020() -> ! {
-    todo!("0x39020 RobloxView::~RobloxView()")
+pub fn stub_39020() {
+    // delegate of crate::roblox_view (IDA 0x39020)
+    VIEW.delete_dtor();
 }
 
 // 0x39024 — RobloxView::~RobloxView()
 // type: void __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::~RobloxView()")]
-pub fn stub_39024() -> ! {
-    todo!("0x39024 RobloxView::~RobloxView()")
+pub fn stub_39024() {
+    // delegate of crate::roblox_view (IDA 0x39024)
+    VIEW.complete_dtor();
 }
 
 // 0x3ee80 — RobloxView::RenderJob::~RenderJob()
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "RobloxView::RenderJob::~RenderJob()")]
-pub fn stub_3ee80() -> ! {
-    todo!("0x3ee80 RobloxView::RenderJob::~RenderJob()")
+pub fn stub_3ee80() {
+    // delegate of crate::roblox_view (IDA 0x3ee80)
+    RENDER_JOB.destroy_d1();
 }
 
 // 0x3ef40 — RobloxView::RenderJob::~RenderJob()
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "RobloxView::RenderJob::~RenderJob()")]
-pub fn stub_3ef40() -> ! {
-    todo!("0x3ef40 RobloxView::RenderJob::~RenderJob()")
+pub fn stub_3ef40() {
+    // delegate of crate::roblox_view (IDA 0x3ef40)
+    RENDER_JOB.delete_d0();
 }
 
 // 0x3f008 — RobloxView::RenderJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::RenderJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_3f008() -> ! {
-    todo!("0x3f008 RobloxView::RenderJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_3f008() -> f64 {
+    // delegate of crate::roblox_view (IDA 0x3f008)
+    RENDER_JOB.sleep_time_secs(true)
 }
 
 // 0x3f058 — RobloxView::RenderJob::error(RBX::TaskScheduler::Job::Stats const&)
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::RenderJob::error(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_3f058() -> ! {
-    todo!("0x3f058 RobloxView::RenderJob::error(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_3f058() {
+    // delegate of crate::roblox_view (IDA 0x3f058)
+    RENDER_JOB.record_error(true, 0.0);
 }
 
 // 0x3f094 — RobloxView::RenderJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::RenderJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_3f094() -> ! {
-    todo!("0x3f094 RobloxView::RenderJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_3f094() -> bool {
+    // delegate of crate::roblox_view (IDA 0x3f094)
+    RENDER_JOB.step_data_model_job()
 }
 
 // 0x3f598 — RobloxView::RenderJob::getMetricValue(std::string const&)const
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "RobloxView::RenderJob::getMetricValue(std::string const&)const")]
-pub fn stub_3f598() -> ! {
-    todo!("0x3f598 RobloxView::RenderJob::getMetricValue(std::string const&)const")
+pub fn stub_3f598() -> f64 {
+    // delegate of crate::roblox_view (IDA 0x3f598)
+    RENDER_JOB.metric_value("Render FPS")
 }
 
 // 0x3f700 — RobloxView::RenderJob::getMetric(std::string const&)const
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "RobloxView::RenderJob::getMetric(std::string const&)const")]
-pub fn stub_3f700() -> ! {
-    todo!("0x3f700 RobloxView::RenderJob::getMetric(std::string const&)const")
+pub fn stub_3f700() -> String {
+    // delegate of crate::roblox_view (IDA 0x3f700)
+    RENDER_JOB.metric_text("")
 }
 
 // 0x3f904 — non-virtual thunk toRobloxView::RenderJob::~RenderJob()
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
-pub fn stub_3f904() -> ! {
-    todo!("0x3f904 non-virtual thunk toRobloxView::RenderJob::~RenderJob()")
+pub fn stub_3f904() {
+    // delegate of crate::roblox_view (IDA 0x3f904)
+    RENDER_JOB.thunk_destroy_d1();
 }
 
 // 0x3f9c8 — non-virtual thunk toRobloxView::RenderJob::~RenderJob()
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
-pub fn stub_3f9c8() -> ! {
-    todo!("0x3f9c8 non-virtual thunk toRobloxView::RenderJob::~RenderJob()")
+pub fn stub_3f9c8() {
+    // delegate of crate::roblox_view (IDA 0x3f9c8)
+    RENDER_JOB.thunk_delete_d0();
 }
 
 // 0x3fa94 — non-virtual thunk toRobloxView::RenderJob::getMetric(std::string const&)const
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::getMetric(std::string const&)const")]
-pub fn stub_3fa94() -> ! {
-    todo!("0x3fa94 non-virtual thunk toRobloxView::RenderJob::getMetric(std::string const&)const")
+pub fn stub_3fa94() -> String {
+    // delegate of crate::roblox_view (IDA 0x3fa94)
+    RENDER_JOB.thunk_metric_text("")
 }
 
 // 0x3faa4 — non-virtual thunk toRobloxView::RenderJob::getMetricValue(std::string const&)const
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::getMetricValue(std::string const&)const")]
-pub fn stub_3faa4() -> ! {
-    todo!("0x3faa4 non-virtual thunk toRobloxView::RenderJob::getMetricValue(std::string const&)const")
+pub fn stub_3faa4() -> f64 {
+    // delegate of crate::roblox_view (IDA 0x3faa4)
+    RENDER_JOB.thunk_metric_value("Render FPS")
 }
 
 // 0x3faac — RobloxView::RenderJob::scheduleRenderPrepare(RobloxView::RenderJob*,RBX::ViewBase *)
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, RenderJob *, ViewBase *)
 #[doc(alias = "RobloxView::RenderJob::scheduleRenderPrepare(RobloxView::RenderJob*,RBX::ViewBase *)")]
-pub fn stub_3faac() -> ! {
-    todo!("0x3faac RobloxView::RenderJob::scheduleRenderPrepare(RobloxView::RenderJob*,RBX::ViewBase *)")
+pub fn stub_3faac() -> bool {
+    // delegate of crate::roblox_view (IDA 0x3faac)
+    RENDER_JOB.schedule_render_prepare()
 }
 
 // 0x3fac4 — RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, RobloxView::RenderJob *, RBX::ViewBase *, double)
 #[doc(alias = "RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)")]
-pub fn stub_3fac4() -> ! {
-    todo!("0x3fac4 RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)")
+pub fn stub_3fac4() -> bool {
+    // delegate of crate::roblox_view (IDA 0x3fac4)
+    RENDER_JOB.schedule_render_perform(true, 0.0)
 }
 
 // 0x3fb9c — RobloxView::RenderJob::wake(void)
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "RobloxView::RenderJob::wake(void)")]
-pub fn stub_3fb9c() -> ! {
-    todo!("0x3fb9c RobloxView::RenderJob::wake(void)")
+pub fn stub_3fb9c() -> bool {
+    // delegate of crate::roblox_view (IDA 0x3fb9c)
+    RENDER_JOB.wake()
 }
 
 // 0x403f0 — RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, RBX::ViewBase *, struct _Unwind_Exception *lpuexcpt)
 #[doc(alias = "RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)")]
-pub fn stub_403f0() -> ! {
-    todo!("0x403f0 RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)")
+pub fn stub_403f0() -> crate::roblox_view::ViewUpdateJob {
+    // delegate of crate::roblox_view (IDA 0x403f0)
+    crate::roblox_view::ViewUpdateJob::new(0, 0)
 }
 
 // 0x404f0 — RobloxView::ViewUpdateJob::~ViewUpdateJob()
 // type: void __fastcall(RobloxView::ViewUpdateJob *__hidden this)
 #[doc(alias = "RobloxView::ViewUpdateJob::~ViewUpdateJob()")]
-pub fn stub_404f0() -> ! {
-    todo!("0x404f0 RobloxView::ViewUpdateJob::~ViewUpdateJob()")
+pub fn stub_404f0() {
+    // delegate of crate::roblox_view (IDA 0x404f0)
+    VU_JOB.destroy_d1();
 }
 
 // 0x4059c — RobloxView::ViewUpdateJob::~ViewUpdateJob()
 // type: void __fastcall(RobloxView::ViewUpdateJob *__hidden this)
 #[doc(alias = "RobloxView::ViewUpdateJob::~ViewUpdateJob()")]
-pub fn stub_4059c() -> ! {
-    todo!("0x4059c RobloxView::ViewUpdateJob::~ViewUpdateJob()")
+pub fn stub_4059c() {
+    // delegate of crate::roblox_view (IDA 0x4059c)
+    VU_JOB.delete_d0();
 }
 
 // 0x40650 — RobloxView::ViewUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::ViewUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_40650() -> ! {
-    todo!("0x40650 RobloxView::ViewUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_40650() -> f64 {
+    // delegate of crate::roblox_view (IDA 0x40650)
+    VU_JOB.sleep_time_secs()
 }
 
 // 0x40680 — RobloxView::ViewUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::ViewUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_40680() -> ! {
-    todo!("0x40680 RobloxView::ViewUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_40680() {
+    // delegate of crate::roblox_view (IDA 0x40680)
+    VU_JOB.record_error(0.0);
 }
 
 // 0x406a8 — RobloxView::ViewUpdateJob::getPriorityFactor(void)
 // type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this)
 #[doc(alias = "RobloxView::ViewUpdateJob::getPriorityFactor(void)")]
-pub fn stub_406a8() -> ! {
-    todo!("0x406a8 RobloxView::ViewUpdateJob::getPriorityFactor(void)")
+pub fn stub_406a8() -> f64 {
+    // delegate of crate::roblox_view (IDA 0x406a8)
+    VU_JOB.priority_factor()
 }
 
 // 0x406b4 — RobloxView::ViewUpdateJob::step(RBX::TaskScheduler::Job::Stats const&)
 #[doc(alias = "RobloxView::ViewUpdateJob::step(RBX::TaskScheduler::Job::Stats const&)")]
-pub fn stub_406b4() -> ! {
-    todo!("0x406b4 RobloxView::ViewUpdateJob::step(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_406b4() -> bool {
+    // delegate of crate::roblox_view (IDA 0x406b4)
+    VU_JOB.step()
 }
 
 // 0x4d70c — -[GameViewController initWithNibName:bundle:]
@@ -3352,29 +3499,33 @@ pub fn stub_e88140() -> ! {
 // 0xf26da4 — RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)
 // type: int __fastcall(RobloxView::ViewUpdateJob *this, RBX::ViewBase *, struct _Unwind_Exception *lpuexcpt)
 #[doc(alias = "RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)")]
-pub fn stub_f26da4() -> ! {
-    todo!("0xf26da4 RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)")
+pub fn stub_f26da4() -> crate::roblox_view::ViewUpdateJob {
+    // delegate of crate::roblox_view (IDA 0xf26da4)
+    crate::roblox_view::jump_new_view_update_job(0, 0)
 }
 
 // 0xf26db4 — RobloxView::RenderJob::wake(void)
 // type: int __fastcall(RobloxView::RenderJob *this)
 #[doc(alias = "RobloxView::RenderJob::wake(void)")]
-pub fn stub_f26db4() -> ! {
-    todo!("0xf26db4 RobloxView::RenderJob::wake(void)")
+pub fn stub_f26db4() -> bool {
+    // delegate of crate::roblox_view (IDA 0xf26db4)
+    crate::roblox_view::jump_wake_render_job(&RENDER_JOB)
 }
 
 // 0xf27264 — RobloxView::RenderJob::getMetricValue(std::string const&)const
 // type: int __fastcall(RobloxView::RenderJob *this, const std::string *)
 #[doc(alias = "RobloxView::RenderJob::getMetricValue(std::string const&)const")]
-pub fn stub_f27264() -> ! {
-    todo!("0xf27264 RobloxView::RenderJob::getMetricValue(std::string const&)const")
+pub fn stub_f27264() -> f64 {
+    // delegate of crate::roblox_view (IDA 0xf27264)
+    crate::roblox_view::jump_metric_value(&RENDER_JOB, "Render FPS")
 }
 
 // 0xf27274 — RobloxView::RenderJob::getMetric(std::string const&)const
 // type: int __fastcall(RobloxView::RenderJob *this, const std::string *)
 #[doc(alias = "RobloxView::RenderJob::getMetric(std::string const&)const")]
-pub fn stub_f27274() -> ! {
-    todo!("0xf27274 RobloxView::RenderJob::getMetric(std::string const&)const")
+pub fn stub_f27274() -> String {
+    // delegate of crate::roblox_view (IDA 0xf27274)
+    crate::roblox_view::jump_metric_text(&RENDER_JOB, "")
 }
 
 // 0x1a970 — -[DebugSettingsViewController initWithCoder:]
