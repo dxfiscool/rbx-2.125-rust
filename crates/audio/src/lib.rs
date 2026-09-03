@@ -2245,8 +2245,194 @@ impl AsyncOs for NullAsyncOs {
 }
 // 0x6d600 — _FMOD_vorbis_synthesis_blockin
 #[doc(alias = "_FMOD_vorbis_synthesis_blockin")]
-pub fn stub_6d600() -> ! {
-    todo!("0x6d600 _FMOD_vorbis_synthesis_blockin")
+pub unsafe fn stub_6d600(os: &impl VorbisCodecOs, v: *mut VorbisDspState, vb: *mut VorbisBlock) -> i32 {
+    // IDA 0x6d600 (Xiph block.c vorbis_synthesis_blockin): stitch one decoded
+    // block into the dsp overlap buffer. Null block, or pcm_current past a
+    // live pcm_returned, is OV_EINVAL (-131). The sequence check resets
+    // granulepos/backend-sequence to -1 on a break, then dsp sequence takes
+    // the block's. The overlap shape follows (lW, W): large/large uses the
+    // long-window key (backend word 1), the other three the short key (word
+    // 0); small/large also copies the middle section straight. The copy
+    // section (shared loop-back at 0x6d930) moves the block's second half
+    // after thisCenter. Then centerW flips (0 <-> n1), pcm_returned/current
+    // advance, and the granulepos/sequence tail runs; eofflag latches. Past
+    // the -131 guard the return is always 0.
+    fn round4(x: i32) -> i32 {
+        (if x < 0 { x + 3 } else { x }) >> 2
+    }
+    // Word-pair lanes in _w12_15/_w16_23 sit at 4-aligned host offsets, so
+    // the ARM ldrd/strd pairs are mirrored by composing i64s from words.
+    fn pair_get(hi: i32, lo: i32) -> i64 {
+        ((hi as i64) << 32) | (lo as u32 as i64)
+    }
+    let backend = (*v).backend_state as *mut VorbisBackendState;
+    let vi = (*v).vi;
+    // vi word 7 is a 4-aligned pointer slot on ARM; read it unaligned.
+    let cs = (vi.add(28) as *const *const i32).read_unaligned() as *mut i32;
+    let hs = *cs.add(712);
+    if vb.is_null() {
+        return -131;
+    }
+    let returned = (*v).pcm_returned;
+    if (*v).pcm_current > returned && returned != -1 {
+        return -131;
+    }
+    (*v).l_w = (*v).w;
+    let w = (*vb).w;
+    (*v).w = w;
+    (*v).n_w = -1;
+    // Sequence-break check (dsp words 14/15 vs block sequence): on a break
+    // granulepos (words 12/13) and the backend sequence go to -1.
+    let dsp_seq = pair_get((*v)._w12_15[3], (*v)._w12_15[2]);
+    if dsp_seq == -1 || dsp_seq.wrapping_add(1) != (*vb).sequence {
+        (*v)._w12_15[0] = -1;
+        (*v)._w12_15[1] = -1;
+        (*backend).seq_gran = -1;
+    }
+    (*v)._w12_15[2] = (*vb).sequence as i32;
+    (*v)._w12_15[3] = ((*vb).sequence >> 32) as i32;
+    if !(*vb).pcm.is_null() {
+        let n = *cs.add(w as usize) >> (hs + 1);
+        let n0 = *cs >> (hs + 1);
+        let n1 = *cs.add(1) >> (hs + 1);
+        // Bit-consumption accumulators (dsp words 16..23, four i64 lanes).
+        let mut lane = 0usize;
+        for &delta in &[(*vb).glue_bits, (*vb).time_bits, (*vb).floor_bits, (*vb).res_bits] {
+            let cur = pair_get((*v)._w16_23[2 * lane + 1] as i32, (*v)._w16_23[2 * lane] as i32);
+            let next = cur.wrapping_add(delta as i64);
+            (*v)._w16_23[2 * lane] = next as u32;
+            (*v)._w16_23[2 * lane + 1] = (next >> 32) as u32;
+            lane += 1;
+        }
+        let (this_c, prev_c) = if (*v).center_w != 0 { (n1, 0) } else { (0, n1) };
+        let l_w = (*v).l_w;
+        let channels = *(vi.add(4) as *const i32);
+        let mut i = 0i32;
+        while i < channels {
+            let dp = *(*v).pcm.add(i as usize);
+            let bp = *(*vb).pcm.add(i as usize);
+            if l_w != 0 {
+                if w != 0 {
+                    // Large/large: long window both sides.
+                    let win = os.window_get((*backend).mdct_log1 - hs);
+                    let mut j = 0i32;
+                    while j < n1 {
+                        let d = dp.add((prev_c + j) as usize);
+                        *d = *d * *win.add((n1 - 1 - j) as usize)
+                            + *bp.add(j as usize) * *win.add(j as usize);
+                        j += 1;
+                    }
+                } else {
+                    // Large/small: short window, centered in the long span.
+                    let win = os.window_get((*backend).mdct_log0 - hs);
+                    let base = prev_c + n1 / 2 - n0 / 2;
+                    let mut j = 0i32;
+                    while j < n0 {
+                        let d = dp.add((base + j) as usize);
+                        *d = *d * *win.add((n0 - 1 - j) as usize)
+                            + *bp.add(j as usize) * *win.add(j as usize);
+                        j += 1;
+                    }
+                }
+            } else if w != 0 {
+                // Small/large: short window, then the middle section straight.
+                let win = os.window_get((*backend).mdct_log0 - hs);
+                let off = n1 / 2 - n0 / 2;
+                let mut j = 0i32;
+                while j < n0 {
+                    let d = dp.add((prev_c + j) as usize);
+                    *d = *d * *win.add((n0 - 1 - j) as usize)
+                        + *bp.add((off + j) as usize) * *win.add(j as usize);
+                    j += 1;
+                }
+                j = n0;
+                let end = n1 / 2 + n0 / 2;
+                while j < end {
+                    *dp.add((prev_c + j) as usize) = *bp.add((off + j) as usize);
+                    j += 1;
+                }
+            } else {
+                // Small/small: short window both sides.
+                let win = os.window_get((*backend).mdct_log0 - hs);
+                let mut j = 0i32;
+                while j < n0 {
+                    let d = dp.add((prev_c + j) as usize);
+                    *d = *d * *win.add((n0 - 1 - j) as usize)
+                        + *bp.add(j as usize) * *win.add(j as usize);
+                    j += 1;
+                }
+            }
+            // Copy section: block's second half lands after thisCenter.
+            let mut j = 0i32;
+            while j < n {
+                *dp.add((this_c + j) as usize) = *bp.add((n + j) as usize);
+                j += 1;
+            }
+            i += 1;
+        }
+        if (*v).center_w != 0 {
+            (*v).center_w = 0;
+        } else {
+            (*v).center_w = n1;
+        }
+        if (*v).pcm_returned == -1 {
+            (*v).pcm_returned = this_c;
+            (*v).pcm_current = this_c;
+        } else {
+            (*v).pcm_returned = prev_c;
+            (*v).pcm_current =
+                prev_c + ((*cs.add(l_w as usize) / 4 + round4(*cs.add(w as usize))) >> hs);
+        }
+    }
+    // Granulepos/sequence tail. The backend sequence accumulates the block
+    // advance; dsp granulepos tracks it unless the block carries its own.
+    // Shifts are the low word of a 64-bit logical shift (values stay
+    // non-negative past the guards, so a wrapping host shift matches).
+    let adv = (*cs.add((*v).l_w as usize) / 4 + round4(*cs.add((*v).w as usize))) as i64;
+    let mut bseq = (*backend).seq_gran;
+    if bseq != -1 {
+        bseq = bseq.wrapping_add(adv);
+        (*backend).seq_gran = bseq;
+    } else {
+        (*backend).seq_gran = 0;
+    }
+    let gran = pair_get((*v)._w12_15[1], (*v)._w12_15[0]);
+    if gran != -1 {
+        let new_gran = gran.wrapping_add(adv);
+        (*v)._w12_15[0] = new_gran as i32;
+        (*v)._w12_15[1] = (new_gran >> 32) as i32;
+        let bgran = (*vb).granulepos;
+        if bgran != -1 && new_gran != bgran {
+            if new_gran > bgran {
+                let diff = new_gran.wrapping_sub(bgran);
+                if diff != 0 && (*vb).eofflag != 0 {
+                    (*v).pcm_current -= ((diff as u64).wrapping_shr(hs as u32)) as i32;
+                }
+            }
+            (*v)._w12_15[0] = bgran as i32;
+            (*v)._w12_15[1] = (bgran >> 32) as i32;
+        }
+    } else {
+        let bgran = (*vb).granulepos;
+        if bgran != -1 {
+            (*v)._w12_15[0] = bgran as i32;
+            (*v)._w12_15[1] = (bgran >> 32) as i32;
+            let bseq2 = (*backend).seq_gran;
+            if bseq2 > bgran {
+                let q = (((bseq2 - bgran) as u64).wrapping_shr(hs as u32)) as i32;
+                if (*vb).eofflag != 0 {
+                    (*v).pcm_current -= q;
+                } else {
+                    let r = (*v).pcm_returned.wrapping_add(q);
+                    (*v).pcm_returned = if r > (*v).pcm_current { (*v).pcm_current } else { r };
+                }
+            }
+        }
+    }
+    if (*vb).eofflag != 0 {
+        (*v).eofflag = 1;
+    }
+    0
 }
 
 // 0x6dee8 — __FMOD_vorbis_block_alloc
@@ -16052,8 +16238,9 @@ pub unsafe fn stub_6d5c8_wd054(v: *mut VorbisDspState, n: i32) -> i32 {
 
 // 0x6d600 — _FMOD_vorbis_synthesis_blockin
 #[doc(alias = "_FMOD_vorbis_synthesis_blockin")]
-pub fn stub_6d600_wd055() -> ! {
-    todo!("0x6d600 _FMOD_vorbis_synthesis_blockin")
+pub unsafe fn stub_6d600_wd055(os: &impl VorbisCodecOs, v: *mut VorbisDspState, vb: *mut VorbisBlock) -> i32 {
+    // Watchdog copy of IDA 0x6d600; see stub_6d600.
+    stub_6d600(os, v, vb)
 }
 
 // 0x6dee8 — __FMOD_vorbis_block_alloc
@@ -16079,14 +16266,16 @@ pub unsafe fn stub_6e044_wd058(vb: *mut VorbisBlock, vd: *mut VorbisDspState) ->
 
 // 0x6e078 — _FMOD_vorbis_dsp_clear
 #[doc(alias = "_FMOD_vorbis_dsp_clear")]
-pub fn stub_6e078_wd059() -> ! {
-    todo!("0x6e078 _FMOD_vorbis_dsp_clear")
+pub unsafe fn stub_6e078_wd059(os: &mut impl VorbisCodecOs, dsp: *mut VorbisDspState) -> *mut VorbisDspState {
+    // Watchdog copy of IDA 0x6e078; see stub_6e078.
+    stub_6e078(os, dsp)
 }
 
 // 0x6e2c4 — _FMOD_vorbis_synthesis_init
 #[doc(alias = "_FMOD_vorbis_synthesis_init")]
-pub fn stub_6e2c4_wd060() -> ! {
-    todo!("0x6e2c4 _FMOD_vorbis_synthesis_init")
+pub unsafe fn stub_6e2c4_wd060(os: &mut impl VorbisCodecOs, dsp: *mut VorbisDspState, vi: *mut u8) -> i32 {
+    // Watchdog copy of IDA 0x6e2c4; see stub_6e2c4.
+    stub_6e2c4(os, dsp, vi)
 }
 
 // 0x6e6c0 — _FMOD_vorbis_block_clear
@@ -16209,8 +16398,13 @@ pub unsafe fn stub_701fc_wd072(
 
 // 0x70458 — _FMOD_Channel_GetUserData
 #[doc(alias = "_FMOD_Channel_GetUserData")]
-pub fn stub_70458_wd073() -> ! {
-    todo!("0x70458 _FMOD_Channel_GetUserData")
+pub unsafe fn stub_70458_wd073(
+    ch: *const u8,
+    out: *mut *mut u8,
+    get_user_data: impl FnOnce(*const u8, *mut *mut u8) -> i32,
+) -> i32 {
+    // Watchdog copy of IDA 0x70458; see stub_70458.
+    stub_70458(ch, out, get_user_data)
 }
 
 // 0x70474 — _FMOD_System_Create
@@ -16219,16 +16413,15 @@ pub fn stub_70474_wd074() -> ! {
     todo!("0x70474 _FMOD_System_Create")
 }
 
-// 0x705cc — _FMOD_Memory_GetStats
-#[doc(alias = "_FMOD_Memory_GetStats")]
 pub fn stub_705cc_wd075() -> ! {
     todo!("0x705cc _FMOD_Memory_GetStats")
 }
 
 // 0x7069c — __ZN4FMOD11AsyncThread7releaseEv
 #[doc(alias = "FMOD::AsyncThread::release(void)")]
-pub fn stub_7069c_wd076() -> ! {
-    todo!("0x7069c FMOD::AsyncThread::release(void)")
+pub unsafe fn stub_7069c_wd076(t: *mut AsyncThread) -> i32 {
+    // Watchdog copy of IDA 0x7069c; see stub_7069c.
+    stub_7069c(t)
 }
 
 // 0x706b4 — __ZN4FMOD11AsyncThread10threadFuncEv
@@ -16237,40 +16430,51 @@ pub fn stub_706b4_wd077() -> ! {
     todo!("0x706b4 FMOD::AsyncThread::threadFunc(void)")
 }
 
-// 0x70ab0 — __ZN4FMOD15asyncThreadFuncEPv
-#[doc(alias = "FMOD::asyncThreadFunc(void *)")]
 pub fn stub_70ab0_wd078() -> ! {
     todo!("0x70ab0 FMOD::asyncThreadFunc(void *)")
 }
 
 // 0x70ab4 — __ZN4FMOD11AsyncThread13reallyReleaseEv
 #[doc(alias = "FMOD::AsyncThread::reallyRelease(void)")]
-pub fn stub_70ab4_wd079() -> ! {
-    todo!("0x70ab4 FMOD::AsyncThread::reallyRelease(void)")
+pub unsafe fn stub_70ab4_wd079(t: *mut AsyncThread, os: &mut impl AsyncOs) -> i32 {
+    // Watchdog copy of IDA 0x70ab4; see stub_70ab4.
+    stub_70ab4(t, os)
 }
-
 // 0x70bbc — __ZN4FMOD11AsyncThread4initEbPNS_7SystemIE
 #[doc(alias = "FMOD::AsyncThread::init(bool,FMOD::SystemI *)")]
-pub fn stub_70bbc_wd080() -> ! {
-    todo!("0x70bbc FMOD::AsyncThread::init(bool,FMOD::SystemI *)")
+pub unsafe fn stub_70bbc_wd080(
+    reg: &mut AsyncRegistry,
+    global_lock: *mut u8,
+    t: *mut AsyncThread,
+    blocking: bool,
+    sys: *mut u8,
+    os: &mut impl AsyncOs,
+) -> i32 {
+    // Watchdog copy of IDA 0x70bbc; see stub_70bbc.
+    stub_70bbc(reg, global_lock, t, blocking, sys, os)
 }
-
 // 0x70c98 — __ZN4FMOD11AsyncThreadC2Ev
 #[doc(alias = "FMOD::AsyncThread::AsyncThread(void)")]
-pub fn stub_70c98_wd081() -> ! {
-    todo!("0x70c98 FMOD::AsyncThread::AsyncThread(void)")
+pub unsafe fn stub_70c98_wd081(t: *mut AsyncThread, os: &mut impl AsyncOs) -> i32 {
+    // Watchdog copy of IDA 0x70c98; see stub_70c98.
+    stub_70c98(t, os)
 }
-
 // 0x70cec — __ZN4FMOD11AsyncThreadC1Ev
 #[doc(alias = "FMOD::AsyncThread::AsyncThread(void)")]
-pub fn stub_70cec_wd082() -> ! {
-    todo!("0x70cec FMOD::AsyncThread::AsyncThread(void)")
+pub unsafe fn stub_70cec_wd082(t: *mut AsyncThread, os: &mut impl AsyncOs) -> i32 {
+    // Watchdog copy of IDA 0x70cec; see stub_70cec.
+    stub_70cec(t, os)
 }
-
 // 0x70cf0 — __ZN4FMOD11AsyncThread14getAsyncThreadEPNS_6SoundIE
 #[doc(alias = "FMOD::AsyncThread::getAsyncThread(FMOD::SoundI *)")]
-pub fn stub_70cf0_wd083() -> ! {
-    todo!("0x70cf0 FMOD::AsyncThread::getAsyncThread(FMOD::SoundI *)")
+pub unsafe fn stub_70cf0_wd083(
+    reg: &mut AsyncRegistry,
+    global_lock: *mut u8,
+    owner: *mut AsyncSoundView,
+    os: &mut impl AsyncOs,
+) -> i32 {
+    // Watchdog copy of IDA 0x70cf0; see stub_70cf0.
+    stub_70cf0(reg, global_lock, owner, os)
 }
 
 // 0x70ddc — __ZN4FMOD11AsyncThread8shutDownEv
