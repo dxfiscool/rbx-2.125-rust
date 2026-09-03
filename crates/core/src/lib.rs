@@ -29,6 +29,7 @@ pub mod generated_core_g;
 pub mod intrusive;
 pub mod signal;
 pub mod task_scheduler;
+pub mod worker;
 /// Re-export for `use rbx_core::SharedPtr`
 pub use parking_lot::{Mutex as PLMutex, RwLock};
 pub mod boost_core_l;
@@ -625,15 +626,5 @@ pub mod generated_watchdog_core_wdB;
 pub mod generated_watchdog_core_wdB2;
 pub mod generated_core_bg30;
 pub mod generated_watchdog_core_wdA;
-pub mod generated_watchdog_core_wdb;
 
 pub mod generated_watchdog_core_wda;
-pub mod generated_watchdog_core_wdE;
-pub mod generated_watchdog_core_wdF;
-pub mod generated_watchdog_core_wdG2;
-pub mod generated_watchdog_core_wdH;
-pub mod generated_watchdog_core_wdI;
-pub mod generated_watchdog_core_wdK;
-pub mod generated_watchdog_core_wdJ;
-pub mod generated_watchdog_core_wdL;
-pub mod generated_watchdog_core_wdM;
