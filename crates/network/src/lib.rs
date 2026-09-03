@@ -468,3 +468,4 @@ pub mod generated_watchdog_net_wdK;
 pub mod generated_watchdog_net_wdL;
 pub mod generated_watchdog_net_wdM;
 pub mod generated_watchdog_net_wdN;
+pub mod generated_watchdog_net_wdC;
