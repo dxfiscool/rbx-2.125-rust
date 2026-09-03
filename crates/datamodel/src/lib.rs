@@ -683,3 +683,4 @@ pub mod generated_watchdog_datamodel2_w12b;
 pub mod generated_watchdog_datamodel_w13a;
 pub mod generated_306;
 pub mod generated_307;
+pub mod generated_308;
