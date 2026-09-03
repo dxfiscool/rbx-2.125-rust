@@ -114,6 +114,39 @@ pub struct ScriptInformationProvider {
     _opaque: (),
 }
 
+/// Rust model of `RBX::Scripting::DebuggerWatch` (IDA `0x2a8210`): same shape.
+#[derive(Default)]
+pub struct DebuggerWatch {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Scripting::ScriptDebugger` (IDA `0x2a8d70`): same shape.
+#[derive(Default)]
+pub struct ScriptDebugger {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::ContentId` (IDA `0x2a6674`): the `create<T, ContentId>`
+/// argument; identity collapses into the id string until the asset system lands.
+#[derive(Default, Clone)]
+pub struct ContentId {
+    pub id: String,
+}
+
+/// Rust model of `RBX::StarterScript` (IDA `0x2a6674`): the `ContentId`
+/// construction argument is stored (the `new T(contentId)` call); all else
+/// unmodeled.
+pub struct StarterScript {
+    _opaque: (),
+    pub content_id: Option<ContentId>,
+}
+
+impl Default for StarterScript {
+    fn default() -> Self {
+        Self { _opaque: (), content_id: None }
+    }
+}
+
 /// Pool header behind
 /// `boost::singleton_pool<RBX::OnDemandInstance, 20, ...>` (IDA `0x3e1e8`):
 /// the mutex plus the seven header words (`dword_123426C`.. = 0, 0, 0, 20,
@@ -1621,8 +1654,12 @@ pub fn stub_0x2a6324() -> ! {
 // 0x2a6674 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13StarterScriptENS_9ContentIdEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::StarterScript> RBX::Creatable<RBX::Instance>::create<RBX::StarterScript,RBX::ContentId>(RBX::ContentId)")]
 // was: boost::shared_ptr<RBX::StarterScript> RBX::Creatable<RBX::Instance>::create<RBX::StarterScript,RBX::ContentId>(RBX::ContentId)
-pub fn stub_0x2a6674() -> ! {
-    todo!("0x2a6674 boost::shared_ptr<RBX::StarterScript> RBX::Creatable<RBX::Instance>::create<RBX::StarterScript,RBX::ContentId>(RBX::ContentId)")
+pub fn stub_0x2a6674(content: ContentId) -> SharedPtr<StarterScript> {
+    // IDA 0x2a6674: `operator new(0x84)` (disasm 0x2a6692-0x2a6696; 132 bytes)
+    // + `StarterScript(contentId)` ctor (the `R4 = R1` arg spill at disasm
+    // 0x2a6694 threads the id into construction) + adoption. The stored
+    // `content_id` is that threaded argument; the rest collapses as 0xef04.
+    SharedPtr::new(StarterScript { _opaque: (), content_id: Some(content) })
 }
 
 // 0x2a6728 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13ScriptContextEEERS3_RKNS0_IT_EE
@@ -1663,64 +1700,90 @@ pub fn stub_0x2a7c60() -> ! {
 // 0x2a8210 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9Scripting13DebuggerWatchEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::Scripting::DebuggerWatch> RBX::Creatable<RBX::Instance>::create<RBX::Scripting::DebuggerWatch>(void)")]
 // was: boost::shared_ptr<RBX::Scripting::DebuggerWatch> RBX::Creatable<RBX::Instance>::create<RBX::Scripting::DebuggerWatch>(void)
-pub fn stub_0x2a8210() -> ! {
-    todo!("0x2a8210 boost::shared_ptr<RBX::Scripting::DebuggerWatch> RBX::Creatable<RBX::Instance>::create<RBX::Scripting::DebuggerWatch>(void)")
+pub fn stub_0x2a8210() -> SharedPtr<DebuggerWatch> {
+    // IDA 0x2a8210: `operator new(0x60)` (disasm 0x2a822e-0x2a8230; 96 bytes)
+    // + default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(DebuggerWatch::default())
 }
 
 // 0x2a8610 — __ZN5boost10shared_ptrIN3RBX9Scripting13DebuggerWatchEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Scripting::DebuggerWatch>::shared_ptr<RBX::Scripting::DebuggerWatch,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::Scripting::DebuggerWatch>::shared_ptr<RBX::Scripting::DebuggerWatch,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x2a8610() -> ! {
-    todo!("0x2a8610 boost::shared_ptr<RBX::Scripting::DebuggerWatch>::shared_ptr<RBX::Scripting::DebuggerWatch,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x2a8610(ptr: *mut DebuggerWatch, _deleter: CreatableInstanceDeleter) -> SharedPtr<DebuggerWatch> {
+    // IDA 0x2a8610: store px + `shared_count` ctor + null-skip; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(DebuggerWatch::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x2a87c4 — __ZN5boost6detail12shared_countC2IPN3RBX9Scripting13DebuggerWatchENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x2a87c4() -> ! {
-    todo!("0x2a87c4 boost::detail::shared_count::shared_count<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x2a87c4(ptr: *mut DebuggerWatch, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<DebuggerWatch, CreatableInstanceDeleter> {
+    // IDA 0x2a87c4: block-new shape, same as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x2a88cc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting13DebuggerWatchENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x2a88cc() -> ! {
-    todo!("0x2a88cc boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2a88cc(_block: *mut ControlBlockPd<DebuggerWatch, CreatableInstanceDeleter>) {
+    // IDA 0x2a88cc: `BX LR` — empty, same as 0xf198.
 }
 
 // 0x2a88d0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting13DebuggerWatchENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x2a88d0() -> ! {
-    todo!("0x2a88d0 boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2a88d0(block: *mut ControlBlockPd<DebuggerWatch, CreatableInstanceDeleter>) {
+    // IDA 0x2a88d0: D0 storage release only (`B.W` delete shape, cf. 0x31bf0).
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x2a88d4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting13DebuggerWatchENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x2a88d4() -> ! {
-    todo!("0x2a88d4 boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x2a88d4(block: *mut ControlBlockPd<DebuggerWatch, CreatableInstanceDeleter>) {
+    // IDA 0x2a88d4: `predelete` (disasm 0x2a88dc), null early-out (disasm
+    // 0x2a88e0-0x2a88e4), deleter virtual-delete (disasm 0x2a88e6-0x2a88f0);
+    // same shape as 0xf19c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
 }
 
 // 0x2a88f4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting13DebuggerWatchENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x2a88f4() -> ! {
-    todo!("0x2a88f4 boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x2a88f4(block: *const ControlBlockPd<DebuggerWatch, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x2a88f4: deleter-name `strcmp` (disasm 0x2a88fe-0x2a8906), `this +
+    // 0x10` on hit (disasm 0x2a88f8); same shape as 0xf1bc.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x2a890c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting13DebuggerWatchENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x2a890c() -> ! {
-    todo!("0x2a890c boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x2a890c(block: *const ControlBlockPd<DebuggerWatch, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x2a890c: unconditional `this + 0x10`; same as 0xf1d4.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x2a8d70 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9Scripting14ScriptDebuggerEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::Scripting::ScriptDebugger> RBX::Creatable<RBX::Instance>::create<RBX::Scripting::ScriptDebugger>(void)")]
 // was: boost::shared_ptr<RBX::Scripting::ScriptDebugger> RBX::Creatable<RBX::Instance>::create<RBX::Scripting::ScriptDebugger>(void)
-pub fn stub_0x2a8d70() -> ! {
-    todo!("0x2a8d70 boost::shared_ptr<RBX::Scripting::ScriptDebugger> RBX::Creatable<RBX::Instance>::create<RBX::Scripting::ScriptDebugger>(void)")
+pub fn stub_0x2a8d70() -> SharedPtr<ScriptDebugger> {
+    // IDA 0x2a8d70: `operator new(0xf8)` (disasm 0x2a8d8e-0x2a8d90; 248 bytes)
+    // + default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(ScriptDebugger::default())
 }
 
 // 0x2a9830 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13disconnectAllEv
@@ -1747,50 +1810,70 @@ pub fn stub_0x2a99d0() -> ! {
 // 0x2a9e50 — __ZN5boost10shared_ptrIN3RBX9Scripting14ScriptDebuggerEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Scripting::ScriptDebugger>::shared_ptr<RBX::Scripting::ScriptDebugger,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::Scripting::ScriptDebugger>::shared_ptr<RBX::Scripting::ScriptDebugger,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x2a9e50() -> ! {
-    todo!("0x2a9e50 boost::shared_ptr<RBX::Scripting::ScriptDebugger>::shared_ptr<RBX::Scripting::ScriptDebugger,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x2a9e50(ptr: *mut ScriptDebugger, _deleter: CreatableInstanceDeleter) -> SharedPtr<ScriptDebugger> {
+    // IDA 0x2a9e50: store px + `shared_count` ctor + null-skip; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(ScriptDebugger::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x2aa004 — __ZN5boost6detail12shared_countC2IPN3RBX9Scripting14ScriptDebuggerENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x2aa004() -> ! {
-    todo!("0x2aa004 boost::detail::shared_count::shared_count<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x2aa004(ptr: *mut ScriptDebugger, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<ScriptDebugger, CreatableInstanceDeleter> {
+    // IDA 0x2aa004: block-new shape, same as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x2aa10c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting14ScriptDebuggerENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x2aa10c() -> ! {
-    todo!("0x2aa10c boost::detail::sp_counted_impl_pd<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2aa10c(_block: *mut ControlBlockPd<ScriptDebugger, CreatableInstanceDeleter>) {
+    // IDA 0x2aa10c: `BX LR` — empty, same as 0xf198.
 }
 
 // 0x2aa110 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting14ScriptDebuggerENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x2aa110() -> ! {
-    todo!("0x2aa110 boost::detail::sp_counted_impl_pd<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2aa110(block: *mut ControlBlockPd<ScriptDebugger, CreatableInstanceDeleter>) {
+    // IDA 0x2aa110: D0 storage release only (`B.W` delete shape, cf. 0x31bf0).
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x2aa114 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting14ScriptDebuggerENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x2aa114() -> ! {
-    todo!("0x2aa114 boost::detail::sp_counted_impl_pd<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x2aa114(block: *mut ControlBlockPd<ScriptDebugger, CreatableInstanceDeleter>) {
+    // IDA 0x2aa114: `predelete` + null early-out + deleter virtual-delete;
+    // same shape as 0xf19c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
 }
 
 // 0x2aa134 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting14ScriptDebuggerENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x2aa134() -> ! {
-    todo!("0x2aa134 boost::detail::sp_counted_impl_pd<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x2aa134(block: *const ControlBlockPd<ScriptDebugger, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x2aa134: deleter-name `strcmp`, `this + 0x10` on hit; same shape as 0xf1bc.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x2aa14c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting14ScriptDebuggerENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x2aa14c() -> ! {
-    todo!("0x2aa14c boost::detail::sp_counted_impl_pd<RBX::Scripting::ScriptDebugger *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x2aa14c(block: *const ControlBlockPd<ScriptDebugger, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x2aa14c: unconditional `this + 0x10`; same as 0xf1d4.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x2aa518 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_11LocalScriptEEEN5boost10shared_ptrIT_EEv
@@ -2026,50 +2109,71 @@ pub fn stub_0x2af724() -> ! {
 // 0x2af728 — __ZN5boost10shared_ptrIN3RBX13StarterScriptEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::StarterScript>::shared_ptr<RBX::StarterScript,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::StarterScript>::shared_ptr<RBX::StarterScript,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x2af728() -> ! {
-    todo!("0x2af728 boost::shared_ptr<RBX::StarterScript>::shared_ptr<RBX::StarterScript,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x2af728(ptr: *mut StarterScript, _deleter: CreatableInstanceDeleter) -> SharedPtr<StarterScript> {
+    // IDA 0x2af728: store px + `shared_count` ctor + null-skip; same shape as 0xefb4.
+    // A null px collapses to a content-less handle.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(StarterScript::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x2af8dc — __ZN5boost6detail12shared_countC2IPN3RBX13StarterScriptENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x2af8dc() -> ! {
-    todo!("0x2af8dc boost::detail::shared_count::shared_count<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x2af8dc(ptr: *mut StarterScript, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<StarterScript, CreatableInstanceDeleter> {
+    // IDA 0x2af8dc: block-new shape, same as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x2af9e4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13StarterScriptENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x2af9e4() -> ! {
-    todo!("0x2af9e4 boost::detail::sp_counted_impl_pd<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2af9e4(_block: *mut ControlBlockPd<StarterScript, CreatableInstanceDeleter>) {
+    // IDA 0x2af9e4: `BX LR` — empty, same as 0xf198.
 }
 
 // 0x2af9e8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13StarterScriptENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x2af9e8() -> ! {
-    todo!("0x2af9e8 boost::detail::sp_counted_impl_pd<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2af9e8(block: *mut ControlBlockPd<StarterScript, CreatableInstanceDeleter>) {
+    // IDA 0x2af9e8: D0 storage release only (`B.W` delete shape, cf. 0x31bf0).
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x2af9ec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13StarterScriptENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x2af9ec() -> ! {
-    todo!("0x2af9ec boost::detail::sp_counted_impl_pd<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x2af9ec(block: *mut ControlBlockPd<StarterScript, CreatableInstanceDeleter>) {
+    // IDA 0x2af9ec: `predelete` + null early-out + deleter virtual-delete;
+    // same shape as 0xf19c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
 }
 
 // 0x2afa0c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13StarterScriptENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x2afa0c() -> ! {
-    todo!("0x2afa0c boost::detail::sp_counted_impl_pd<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x2afa0c(block: *const ControlBlockPd<StarterScript, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x2afa0c: deleter-name `strcmp`, `this + 0x10` on hit; same shape as 0xf1bc.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x2afa24 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13StarterScriptENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x2afa24() -> ! {
-    todo!("0x2afa24 boost::detail::sp_counted_impl_pd<RBX::StarterScript *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x2afa24(block: *const ControlBlockPd<StarterScript, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x2afa24: unconditional `this + 0x10`; same as 0xf1d4.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x2b07d0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10RunServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
