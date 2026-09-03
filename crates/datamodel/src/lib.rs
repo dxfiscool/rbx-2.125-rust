@@ -711,3 +711,5 @@ pub mod generated_watchdog_dm_wdc;
 pub mod generated_watchdog_dm_wdZ;
 pub mod generated_watchdog_dm_wdZB;
 pub mod generated_watchdog_datamodel_wdG2;
+pub mod generated_watchdog_dm_wdF;
+pub mod generated_watchdog_dm_wdE;
