@@ -453,3 +453,4 @@ pub mod generated_watchdog_network_w15b;
 pub mod generated_network_watchdog_w15d;
 pub mod generated_watchdog_net_a;
 pub mod generated_watchdog_net_b;
+pub mod generated_watchdog_net_wd2;
