@@ -282,13 +282,13 @@ pub struct XmlNameValuePair {
     pub packed: u64,
     pub handle: SharedPtr<Instance>,
 }
-
 /// Rust model of `XmlAttribute<RBX::InstanceHandle>` (IDA `0x706094`):
 /// allocator state at `+0` (always `0`), name/value pair at `+4`.
 pub struct XmlAttribute {
     pub alloc_state: u32,
     pub pair: XmlNameValuePair,
 }
+
 /// Rust model of `RBX::Guid::Data::operator<` (IDA `0x322b10`): lexicographic
 /// comparison of the two words (first word, tie-broken by `+4`).
 pub fn guid_data_less(a: &GuidData, b: &GuidData) -> bool {
@@ -398,6 +398,10 @@ pub struct EventDescPayload {
     /// `connectGeneric` (IDA `0x709b88`) and `disconnectAll` (IDA `0x709e50`)
     /// resolve through the `+40` member pointer.
     pub single: Signal<SharedPtr<Instance>>,
+    /// Direct-connect member signal for the 3-arg `(string, string, Instance)`
+    /// `ScriptContext` family (IDA `0x2b8c9c` fire, `0x2b8f38` disconnect):
+    /// same `+40` member-pointer pattern as `single`.
+    pub triple: Signal<(String, String, SharedPtr<Instance>)>,
 }
 /// Rust model of `RBX::Reflection::GenericSlotWrapper` (IDA `0x708378`): the
 /// marshalled script callback behind `connectGeneric`. Native handlers stand
@@ -406,6 +410,7 @@ pub struct GenericSlotWrapper {
     pub on_prop: Option<fn(*const PropertyDescriptor)>,
     pub on_pair: Option<fn(&SharedPtr<Instance>, &SharedPtr<Instance>)>,
     pub on_single: Option<fn(&SharedPtr<Instance>)>,
+    pub on_triple: Option<fn(&str, &str, &SharedPtr<Instance>)>,
 }
 /// Rust model of `RBX::Reflection::PropertyDescriptor` (IDA `0x706742`): only
 /// pointer identity / name cross the `fireEvent` boundary here.
@@ -418,6 +423,7 @@ pub struct PropertyDescriptor {
 pub enum Variant {
     Property(*const PropertyDescriptor),
     Instance(SharedPtr<Instance>),
+    Text(String),
 }
 /// Rust model of `RBX::Instance::SaveFilter` (IDA `0x703748` discriminants:
 /// `1` takes the service-exclusion chain, `0` the workspace chain, any other
@@ -1276,6 +1282,7 @@ pub fn stub_0x70633c(
                 items: vec![SignatureItem { type_name: "PropertyDescriptor const*" }],
                 connections: Mutex::new(Vec::new()),
                 single: Signal::new(),
+                triple: Signal::new(),
             },
         );
     }
@@ -1369,6 +1376,7 @@ pub fn stub_0x707b28(
                 ],
                 connections: Mutex::new(Vec::new()),
                 single: Signal::new(),
+                triple: Signal::new(),
             },
         );
     }
@@ -1828,6 +1836,7 @@ pub fn stub_0x709944(
                 items: vec![SignatureItem { type_name: "SharedPtr<Instance>" }],
                 connections: Mutex::new(Vec::new()),
                 single: Signal::new(),
+                triple: Signal::new(),
             },
         );
     }
