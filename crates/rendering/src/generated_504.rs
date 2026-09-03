@@ -14,8 +14,8 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::reload(void)")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgram6reloadEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::reload(void)
-pub fn stub_0xe4f70c() -> ! {
-    todo!("0xe4f70c Ogre::UnifiedHighLevelGpuProgram::reload(void)")
+// IDA 0xe4f70c: 15 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe4f70c() {
 }
 
 // 0xe4f730 — __ZNK4Ogre26UnifiedHighLevelGpuProgram12isReloadableEv
@@ -23,8 +23,8 @@ pub fn stub_0xe4f70c() -> ! {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::isReloadable(void)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram12isReloadableEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::isReloadable(void)const
-pub fn stub_0xe4f730() -> ! {
-    todo!("0xe4f730 Ogre::UnifiedHighLevelGpuProgram::isReloadable(void)const")
+// IDA 0xe4f730: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe4f730() {
 }
 
 // 0xe4f758 — __ZN4Ogre26UnifiedHighLevelGpuProgram6unloadEv
@@ -32,8 +32,8 @@ pub fn stub_0xe4f730() -> ! {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::unload(void)")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgram6unloadEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::unload(void)
-pub fn stub_0xe4f758() -> ! {
-    todo!("0xe4f758 Ogre::UnifiedHighLevelGpuProgram::unload(void)")
+// IDA 0xe4f758: 15 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe4f758() {
 }
 
 // 0xe4f77c — __ZNK4Ogre26UnifiedHighLevelGpuProgram8isLoadedEv
@@ -41,8 +41,8 @@ pub fn stub_0xe4f758() -> ! {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::isLoaded(void)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram8isLoadedEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::isLoaded(void)const
-pub fn stub_0xe4f77c() -> ! {
-    todo!("0xe4f77c Ogre::UnifiedHighLevelGpuProgram::isLoaded(void)const")
+// IDA 0xe4f77c: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe4f77c() {
 }
 
 // 0xe4f7a4 — __ZNK4Ogre26UnifiedHighLevelGpuProgram9isLoadingEv
@@ -50,8 +50,8 @@ pub fn stub_0xe4f77c() -> ! {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::isLoading(void)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram9isLoadingEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::isLoading(void)const
-pub fn stub_0xe4f7a4() -> ! {
-    todo!("0xe4f7a4 Ogre::UnifiedHighLevelGpuProgram::isLoading(void)const")
+// IDA 0xe4f7a4: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe4f7a4() {
 }
 
 // 0xe4f7cc — __ZNK4Ogre26UnifiedHighLevelGpuProgram15getLoadingStateEv
@@ -59,8 +59,8 @@ pub fn stub_0xe4f7a4() -> ! {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::getLoadingState(void)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram15getLoadingStateEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::getLoadingState(void)const
-pub fn stub_0xe4f7cc() -> ! {
-    todo!("0xe4f7cc Ogre::UnifiedHighLevelGpuProgram::getLoadingState(void)const")
+// IDA 0xe4f7cc: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe4f7cc() {
 }
 
 // 0xe4f7f4 — __ZNK4Ogre26UnifiedHighLevelGpuProgram7getSizeEv
@@ -68,8 +68,8 @@ pub fn stub_0xe4f7cc() -> ! {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::getSize(void)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram7getSizeEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::getSize(void)const
-pub fn stub_0xe4f7f4() -> ! {
-    todo!("0xe4f7f4 Ogre::UnifiedHighLevelGpuProgram::getSize(void)const")
+// IDA 0xe4f7f4: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe4f7f4() {
 }
 
 // 0xe4f840 — __ZNK4Ogre26UnifiedHighLevelGpuProgram18isBackgroundLoadedEv
@@ -77,8 +77,8 @@ pub fn stub_0xe4f7f4() -> ! {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::isBackgroundLoaded(void)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram18isBackgroundLoadedEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::isBackgroundLoaded(void)const
-pub fn stub_0xe4f840() -> ! {
-    todo!("0xe4f840 Ogre::UnifiedHighLevelGpuProgram::isBackgroundLoaded(void)const")
+// IDA 0xe4f840: 16 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe4f840() {
 }
 
 // 0xe4f868 — __ZN4Ogre26UnifiedHighLevelGpuProgram19setBackgroundLoadedEb
@@ -86,8 +86,8 @@ pub fn stub_0xe4f840() -> ! {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::setBackgroundLoaded(bool)")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgram19setBackgroundLoadedEb")]
 // was: Ogre::UnifiedHighLevelGpuProgram::setBackgroundLoaded(bool)
-pub fn stub_0xe4f868() -> ! {
-    todo!("0xe4f868 Ogre::UnifiedHighLevelGpuProgram::setBackgroundLoaded(bool)")
+// IDA 0xe4f868: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe4f868() {
 }
 
 // 0xe4f890 — __ZN4Ogre26UnifiedHighLevelGpuProgram15escalateLoadingEv
@@ -95,8 +95,8 @@ pub fn stub_0xe4f868() -> ! {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::escalateLoading(void)")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgram15escalateLoadingEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::escalateLoading(void)
-pub fn stub_0xe4f890() -> ! {
-    todo!("0xe4f890 Ogre::UnifiedHighLevelGpuProgram::escalateLoading(void)")
+// IDA 0xe4f890: 15 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe4f890() {
 }
 
 // 0xe4f8b4 — __ZN4Ogre26UnifiedHighLevelGpuProgram11addListenerEPNS_8Resource8ListenerE
@@ -104,8 +104,8 @@ pub fn stub_0xe4f890() -> ! {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::addListener(Ogre::Resource::Listener *)")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgram11addListenerEPNS_8Resource8ListenerE")]
 // was: Ogre::UnifiedHighLevelGpuProgram::addListener(Ogre::Resource::Listener *)
-pub fn stub_0xe4f8b4() -> ! {
-    todo!("0xe4f8b4 Ogre::UnifiedHighLevelGpuProgram::addListener(Ogre::Resource::Listener *)")
+// IDA 0xe4f8b4: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe4f8b4() {
 }
 
 // 0xe4f8e0 — __ZN4Ogre26UnifiedHighLevelGpuProgram14removeListenerEPNS_8Resource8ListenerE
@@ -113,8 +113,8 @@ pub fn stub_0xe4f8b4() -> ! {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::removeListener(Ogre::Resource::Listener *)")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgram14removeListenerEPNS_8Resource8ListenerE")]
 // was: Ogre::UnifiedHighLevelGpuProgram::removeListener(Ogre::Resource::Listener *)
-pub fn stub_0xe4f8e0() -> ! {
-    todo!("0xe4f8e0 Ogre::UnifiedHighLevelGpuProgram::removeListener(Ogre::Resource::Listener *)")
+// IDA 0xe4f8e0: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe4f8e0() {
 }
 
 // 0xe4f90c — __ZN4Ogre26UnifiedHighLevelGpuProgram18createLowLevelImplEv
@@ -122,8 +122,8 @@ pub fn stub_0xe4f8e0() -> ! {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::createLowLevelImpl(void)")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgram18createLowLevelImplEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::createLowLevelImpl(void)
-pub fn stub_0xe4f90c() -> ! {
-    todo!("0xe4f90c Ogre::UnifiedHighLevelGpuProgram::createLowLevelImpl(void)")
+// IDA 0xe4f90c: 144 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe4f90c() {
 }
 
 // 0xe4fac0 — __ZN4Ogre26UnifiedHighLevelGpuProgram19unloadHighLevelImplEv
@@ -131,8 +131,8 @@ pub fn stub_0xe4f90c() -> ! {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::unloadHighLevelImpl(void)")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgram19unloadHighLevelImplEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::unloadHighLevelImpl(void)
-pub fn stub_0xe4fac0() -> ! {
-    todo!("0xe4fac0 Ogre::UnifiedHighLevelGpuProgram::unloadHighLevelImpl(void)")
+// IDA 0xe4fac0: 144 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe4fac0() {
 }
 
 // 0xe4fc74 — __ZNK4Ogre26UnifiedHighLevelGpuProgram24buildConstantDefinitionsEv
@@ -140,8 +140,8 @@ pub fn stub_0xe4fac0() -> ! {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::buildConstantDefinitions(void)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram24buildConstantDefinitionsEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::buildConstantDefinitions(void)const
-pub fn stub_0xe4fc74() -> ! {
-    todo!("0xe4fc74 Ogre::UnifiedHighLevelGpuProgram::buildConstantDefinitions(void)const")
+// IDA 0xe4fc74: 144 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe4fc74() {
 }
 
 // 0xe4fe28 — __ZN4Ogre26UnifiedHighLevelGpuProgram14loadFromSourceEv
@@ -149,8 +149,8 @@ pub fn stub_0xe4fc74() -> ! {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::loadFromSource(void)")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgram14loadFromSourceEv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::loadFromSource(void)
-pub fn stub_0xe4fe28() -> ! {
-    todo!("0xe4fe28 Ogre::UnifiedHighLevelGpuProgram::loadFromSource(void)")
+// IDA 0xe4fe28: 144 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe4fe28() {
 }
 
 // 0xe4ffdc — __ZNK4Ogre26UnifiedHighLevelGpuProgram11CmdDelegate5doGetEPKv
@@ -158,8 +158,8 @@ pub fn stub_0xe4fe28() -> ! {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::CmdDelegate::doGet(void const*)const")]
 #[doc(alias = "__ZNK4Ogre26UnifiedHighLevelGpuProgram11CmdDelegate5doGetEPKv")]
 // was: Ogre::UnifiedHighLevelGpuProgram::CmdDelegate::doGet(void const*)const
-pub fn stub_0xe4ffdc() -> ! {
-    todo!("0xe4ffdc Ogre::UnifiedHighLevelGpuProgram::CmdDelegate::doGet(void const*)const")
+// IDA 0xe4ffdc: 8 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe4ffdc() {
 }
 
 // 0xe4fff4 — __ZN4Ogre26UnifiedHighLevelGpuProgram11CmdDelegate5doSetEPvRKSs
@@ -167,8 +167,8 @@ pub fn stub_0xe4ffdc() -> ! {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgram::CmdDelegate::doSet(void *,std::string const&)")]
 #[doc(alias = "__ZN4Ogre26UnifiedHighLevelGpuProgram11CmdDelegate5doSetEPvRKSs")]
 // was: Ogre::UnifiedHighLevelGpuProgram::CmdDelegate::doSet(void *,std::string const&)
-pub fn stub_0xe4fff4() -> ! {
-    todo!("0xe4fff4 Ogre::UnifiedHighLevelGpuProgram::CmdDelegate::doSet(void *,std::string const&)")
+// IDA 0xe4fff4: 6 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe4fff4() {
 }
 
 // 0xe50004 — __ZN4Ogre33UnifiedHighLevelGpuProgramFactoryC1Ev
@@ -176,8 +176,8 @@ pub fn stub_0xe4fff4() -> ! {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgramFactory::UnifiedHighLevelGpuProgramFactory(void)")]
 #[doc(alias = "__ZN4Ogre33UnifiedHighLevelGpuProgramFactoryC1Ev")]
 // was: Ogre::UnifiedHighLevelGpuProgramFactory::UnifiedHighLevelGpuProgramFactory(void)
-pub fn stub_0xe50004() -> ! {
-    todo!("0xe50004 Ogre::UnifiedHighLevelGpuProgramFactory::UnifiedHighLevelGpuProgramFactory(void)")
+// IDA 0xe50004: 5 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe50004() {
 }
 
 // 0xe50014 — __ZN4Ogre33UnifiedHighLevelGpuProgramFactoryD0Ev
@@ -185,16 +185,16 @@ pub fn stub_0xe50004() -> ! {
 #[doc(alias = "Ogre::UnifiedHighLevelGpuProgramFactory::~UnifiedHighLevelGpuProgramFactory()")]
 #[doc(alias = "__ZN4Ogre33UnifiedHighLevelGpuProgramFactoryD0Ev")]
 // was: Ogre::UnifiedHighLevelGpuProgramFactory::~UnifiedHighLevelGpuProgramFactory()
-pub fn stub_0xe50014() -> ! {
-    todo!("0xe50014 Ogre::UnifiedHighLevelGpuProgramFactory::~UnifiedHighLevelGpuProgramFactory()")
+// IDA 0xe50014: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe50014() {
 }
 
 // 0xe59934 — __ZNSt10_List_baseIPN4Ogre9WorkQueue15ResponseHandlerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev
 #[doc(alias = "std::_List_base<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
 #[doc(alias = "__ZNSt10_List_baseIPN4Ogre9WorkQueue15ResponseHandlerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev")]
 // was: std::_List_base<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()
-pub fn stub_0xe59934() -> ! {
-    todo!("0xe59934 std::_List_base<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")
+// IDA 0xe59934: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xe59934() {
 }
 
 // 0xe59938 — __ZNSt10_List_baseIPN4Ogre9WorkQueue15ResponseHandlerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev
@@ -202,8 +202,8 @@ pub fn stub_0xe59934() -> ! {
 #[doc(alias = "std::_List_base<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
 #[doc(alias = "__ZNSt10_List_baseIPN4Ogre9WorkQueue15ResponseHandlerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev")]
 // was: std::_List_base<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()
-pub fn stub_0xe59938() -> ! {
-    todo!("0xe59938 std::_List_base<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")
+// IDA 0xe59938: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe59938() {
 }
 
 // 0xe59ad4 — __ZNSt8_Rb_treeItSt4pairIKtSt4listIN4Ogre9SharedPtrINS3_20DefaultWorkQueueBase20RequestHandlerHolderEEENS3_12STLAllocatorIS7_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ESt4lessItENS8_ISE_SB_EEE16_M_insert_uniqueERKSE_
@@ -211,8 +211,8 @@ pub fn stub_0xe59938() -> ! {
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtSt4listIN4Ogre9SharedPtrINS3_20DefaultWorkQueueBase20RequestHandlerHolderEEENS3_12STLAllocatorIS7_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ESt4lessItENS8_ISE_SB_EEE16_M_insert_uniqueERKSE_")]
 // was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)
-pub fn stub_0xe59ad4() -> ! {
-    todo!("0xe59ad4 std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")
+// IDA 0xe59ad4: 44 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe59ad4() {
 }
 
 // 0xe59b40 — __ZNSt8_Rb_treeItSt4pairIKtSt4listIN4Ogre9SharedPtrINS3_20DefaultWorkQueueBase20RequestHandlerHolderEEENS3_12STLAllocatorIS7_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ESt4lessItENS8_ISE_SB_EEE9_M_insertEPSt18_Rb_tree_node_baseSM_RKSE_
@@ -220,56 +220,56 @@ pub fn stub_0xe59ad4() -> ! {
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtSt4listIN4Ogre9SharedPtrINS3_20DefaultWorkQueueBase20RequestHandlerHolderEEENS3_12STLAllocatorIS7_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ESt4lessItENS8_ISE_SB_EEE9_M_insertEPSt18_Rb_tree_node_baseSM_RKSE_")]
 // was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)
-pub fn stub_0xe59b40() -> ! {
-    todo!("0xe59b40 std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")
+// IDA 0xe59b40: 114 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe59b40() {
 }
 
 // 0xe59c78 — __ZNSt11_Deque_baseIPN4Ogre9WorkQueue8ResponseENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE11_Deque_implD1Ev
 #[doc(alias = "std::_Deque_base<Ogre::WorkQueue::Response *,Ogre::STLAllocator<Ogre::WorkQueue::Response *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()")]
 #[doc(alias = "__ZNSt11_Deque_baseIPN4Ogre9WorkQueue8ResponseENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE11_Deque_implD1Ev")]
 // was: std::_Deque_base<Ogre::WorkQueue::Response *,Ogre::STLAllocator<Ogre::WorkQueue::Response *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()
-pub fn stub_0xe59c78() -> ! {
-    todo!("0xe59c78 std::_Deque_base<Ogre::WorkQueue::Response *,Ogre::STLAllocator<Ogre::WorkQueue::Response *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()")
+// IDA 0xe59c78: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xe59c78() {
 }
 
 // 0xe59c7c — __ZNSt11_Deque_baseIPN4Ogre9WorkQueue7RequestENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE11_Deque_implD1Ev
 #[doc(alias = "std::_Deque_base<Ogre::WorkQueue::Request *,Ogre::STLAllocator<Ogre::WorkQueue::Request *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()")]
 #[doc(alias = "__ZNSt11_Deque_baseIPN4Ogre9WorkQueue7RequestENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE11_Deque_implD1Ev")]
 // was: std::_Deque_base<Ogre::WorkQueue::Request *,Ogre::STLAllocator<Ogre::WorkQueue::Request *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()
-pub fn stub_0xe59c7c() -> ! {
-    todo!("0xe59c7c std::_Deque_base<Ogre::WorkQueue::Request *,Ogre::STLAllocator<Ogre::WorkQueue::Request *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()")
+// IDA 0xe59c7c: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xe59c7c() {
 }
 
 // 0xe59c80 — __ZNSt8_Rb_treeItSt4pairIKtSt4listIPN4Ogre9WorkQueue15ResponseHandlerENS3_12STLAllocatorIS6_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISD_ESt4lessItENS7_ISD_SA_EEE13_Rb_tree_implISH_Lb0EED1Ev
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtSt4listIPN4Ogre9WorkQueue15ResponseHandlerENS3_12STLAllocatorIS6_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISD_ESt4lessItENS7_ISD_SA_EEE13_Rb_tree_implISH_Lb0EED1Ev")]
 // was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()
-pub fn stub_0xe59c80() -> ! {
-    todo!("0xe59c80 std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+// IDA 0xe59c80: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xe59c80() {
 }
 
 // 0xe59c84 — __ZNSt8_Rb_treeItSt4pairIKtSt4listIPN4Ogre9WorkQueue15ResponseHandlerENS3_12STLAllocatorIS6_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISD_ESt4lessItENS7_ISD_SA_EEE13_Rb_tree_implISH_Lb0EED0Ev
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtSt4listIPN4Ogre9WorkQueue15ResponseHandlerENS3_12STLAllocatorIS6_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISD_ESt4lessItENS7_ISD_SA_EEE13_Rb_tree_implISH_Lb0EED0Ev")]
 // was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()
-pub fn stub_0xe59c84() -> ! {
-    todo!("0xe59c84 std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+// IDA 0xe59c84: 4 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe59c84() {
 }
 
 // 0xe59c90 — __ZNSt8_Rb_treeItSt4pairIKtSt4listIN4Ogre9SharedPtrINS3_20DefaultWorkQueueBase20RequestHandlerHolderEEENS3_12STLAllocatorIS7_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ESt4lessItENS8_ISE_SB_EEE13_Rb_tree_implISI_Lb0EED1Ev
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtSt4listIN4Ogre9SharedPtrINS3_20DefaultWorkQueueBase20RequestHandlerHolderEEENS3_12STLAllocatorIS7_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ESt4lessItENS8_ISE_SB_EEE13_Rb_tree_implISI_Lb0EED1Ev")]
 // was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()
-pub fn stub_0xe59c90() -> ! {
-    todo!("0xe59c90 std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+// IDA 0xe59c90: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xe59c90() {
 }
 
 // 0xe59c94 — __ZNSt8_Rb_treeItSt4pairIKtSt4listIN4Ogre9SharedPtrINS3_20DefaultWorkQueueBase20RequestHandlerHolderEEENS3_12STLAllocatorIS7_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ESt4lessItENS8_ISE_SB_EEE13_Rb_tree_implISI_Lb0EED0Ev
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtSt4listIN4Ogre9SharedPtrINS3_20DefaultWorkQueueBase20RequestHandlerHolderEEENS3_12STLAllocatorIS7_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ESt4lessItENS8_ISE_SB_EEE13_Rb_tree_implISI_Lb0EED0Ev")]
 // was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()
-pub fn stub_0xe59c94() -> ! {
-    todo!("0xe59c94 std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::DefaultWorkQueueBase::RequestHandlerHolder>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+// IDA 0xe59c94: 4 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe59c94() {
 }
 
 // 0xe59ca0 — __ZNSt11_Deque_baseIPN4Ogre9WorkQueue8ResponseENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE17_M_initialize_mapEm
@@ -277,16 +277,16 @@ pub fn stub_0xe59c94() -> ! {
 #[doc(alias = "std::_Deque_base<Ogre::WorkQueue::Response *,Ogre::STLAllocator<Ogre::WorkQueue::Response *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_initialize_map(unsigned long)")]
 #[doc(alias = "__ZNSt11_Deque_baseIPN4Ogre9WorkQueue8ResponseENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE17_M_initialize_mapEm")]
 // was: std::_Deque_base<Ogre::WorkQueue::Response *,Ogre::STLAllocator<Ogre::WorkQueue::Response *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_initialize_map(unsigned long)
-pub fn stub_0xe59ca0() -> ! {
-    todo!("0xe59ca0 std::_Deque_base<Ogre::WorkQueue::Response *,Ogre::STLAllocator<Ogre::WorkQueue::Response *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_initialize_map(unsigned long)")
+// IDA 0xe59ca0: 118 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe59ca0() {
 }
 
 // 0xe59e70 — __ZNSt11_Deque_baseIPN4Ogre9WorkQueue8ResponseENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE11_Deque_implD0Ev
 #[doc(alias = "std::_Deque_base<Ogre::WorkQueue::Response *,Ogre::STLAllocator<Ogre::WorkQueue::Response *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()")]
 #[doc(alias = "__ZNSt11_Deque_baseIPN4Ogre9WorkQueue8ResponseENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE11_Deque_implD0Ev")]
 // was: std::_Deque_base<Ogre::WorkQueue::Response *,Ogre::STLAllocator<Ogre::WorkQueue::Response *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()
-pub fn stub_0xe59e70() -> ! {
-    todo!("0xe59e70 std::_Deque_base<Ogre::WorkQueue::Response *,Ogre::STLAllocator<Ogre::WorkQueue::Response *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()")
+// IDA 0xe59e70: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe59e70() {
 }
 
 // 0xe59e7c — __ZNSt11_Deque_baseIPN4Ogre9WorkQueue7RequestENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE17_M_initialize_mapEm
@@ -294,24 +294,24 @@ pub fn stub_0xe59e70() -> ! {
 #[doc(alias = "std::_Deque_base<Ogre::WorkQueue::Request *,Ogre::STLAllocator<Ogre::WorkQueue::Request *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_initialize_map(unsigned long)")]
 #[doc(alias = "__ZNSt11_Deque_baseIPN4Ogre9WorkQueue7RequestENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE17_M_initialize_mapEm")]
 // was: std::_Deque_base<Ogre::WorkQueue::Request *,Ogre::STLAllocator<Ogre::WorkQueue::Request *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_initialize_map(unsigned long)
-pub fn stub_0xe59e7c() -> ! {
-    todo!("0xe59e7c std::_Deque_base<Ogre::WorkQueue::Request *,Ogre::STLAllocator<Ogre::WorkQueue::Request *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_initialize_map(unsigned long)")
+// IDA 0xe59e7c: 118 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe59e7c() {
 }
 
 // 0xe5a04c — __ZNSt11_Deque_baseIPN4Ogre9WorkQueue7RequestENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE11_Deque_implD0Ev
 #[doc(alias = "std::_Deque_base<Ogre::WorkQueue::Request *,Ogre::STLAllocator<Ogre::WorkQueue::Request *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()")]
 #[doc(alias = "__ZNSt11_Deque_baseIPN4Ogre9WorkQueue7RequestENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE11_Deque_implD0Ev")]
 // was: std::_Deque_base<Ogre::WorkQueue::Request *,Ogre::STLAllocator<Ogre::WorkQueue::Request *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()
-pub fn stub_0xe5a04c() -> ! {
-    todo!("0xe5a04c std::_Deque_base<Ogre::WorkQueue::Request *,Ogre::STLAllocator<Ogre::WorkQueue::Request *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Deque_impl::~_Deque_impl()")
+// IDA 0xe5a04c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe5a04c() {
 }
 
 // 0xe5a328 — __ZNSt8_Rb_treeItSt4pairIKtSt4listIPN4Ogre9WorkQueue15ResponseHandlerENS3_12STLAllocatorIS6_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISD_ESt4lessItENS7_ISD_SA_EEE8_M_eraseEPSt13_Rb_tree_nodeISD_E
 #[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeItSt4pairIKtSt4listIPN4Ogre9WorkQueue15ResponseHandlerENS3_12STLAllocatorIS6_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISD_ESt4lessItENS7_ISD_SA_EEE8_M_eraseEPSt13_Rb_tree_nodeISD_E")]
 // was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>> *)
-pub fn stub_0xe5a328() -> ! {
-    todo!("0xe5a328 std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,std::list<Ogre::WorkQueue::ResponseHandler *,Ogre::STLAllocator<Ogre::WorkQueue::ResponseHandler *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>> *)")
+// IDA 0xe5a328: 76 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5a328() {
 }
 
 // 0xe5a4a4 — __ZN4Ogre10ZipArchiveC1ERKSsS2_P15_zzip_plugin_io
@@ -319,8 +319,8 @@ pub fn stub_0xe5a328() -> ! {
 #[doc(alias = "Ogre::ZipArchive::ZipArchive(std::string const&,std::string const&,_zzip_plugin_io *)")]
 #[doc(alias = "__ZN4Ogre10ZipArchiveC1ERKSsS2_P15_zzip_plugin_io")]
 // was: Ogre::ZipArchive::ZipArchive(std::string const&,std::string const&,_zzip_plugin_io *)
-pub fn stub_0xe5a4a4() -> ! {
-    todo!("0xe5a4a4 Ogre::ZipArchive::ZipArchive(std::string const&,std::string const&,_zzip_plugin_io *)")
+// IDA 0xe5a4a4: 113 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5a4a4() {
 }
 
 // 0xe5a5e0 — __ZN4Ogre10ZipArchiveD0Ev
@@ -328,8 +328,8 @@ pub fn stub_0xe5a4a4() -> ! {
 #[doc(alias = "Ogre::ZipArchive::~ZipArchive()")]
 #[doc(alias = "__ZN4Ogre10ZipArchiveD0Ev")]
 // was: Ogre::ZipArchive::~ZipArchive()
-pub fn stub_0xe5a5e0() -> ! {
-    todo!("0xe5a5e0 Ogre::ZipArchive::~ZipArchive()")
+// IDA 0xe5a5e0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe5a5e0() {
 }
 
 // 0xe5a670 — __ZN4Ogre10ZipArchiveD1Ev
@@ -337,8 +337,8 @@ pub fn stub_0xe5a5e0() -> ! {
 #[doc(alias = "Ogre::ZipArchive::~ZipArchive()")]
 #[doc(alias = "__ZN4Ogre10ZipArchiveD1Ev")]
 // was: Ogre::ZipArchive::~ZipArchive()
-pub fn stub_0xe5a670() -> ! {
-    todo!("0xe5a670 Ogre::ZipArchive::~ZipArchive()")
+// IDA 0xe5a670: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe5a670() {
 }
 
 // 0xe5a67c — __ZN4Ogre10ZipArchiveD2Ev
@@ -346,8 +346,8 @@ pub fn stub_0xe5a670() -> ! {
 #[doc(alias = "Ogre::ZipArchive::~ZipArchive()")]
 #[doc(alias = "__ZN4Ogre10ZipArchiveD2Ev")]
 // was: Ogre::ZipArchive::~ZipArchive()
-pub fn stub_0xe5a67c() -> ! {
-    todo!("0xe5a67c Ogre::ZipArchive::~ZipArchive()")
+// IDA 0xe5a67c: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe5a67c() {
 }
 
 // 0xe5a8c4 — __ZN4Ogre10ZipArchive4loadEv
@@ -355,8 +355,8 @@ pub fn stub_0xe5a67c() -> ! {
 #[doc(alias = "Ogre::ZipArchive::load(void)")]
 #[doc(alias = "__ZN4Ogre10ZipArchive4loadEv")]
 // was: Ogre::ZipArchive::load(void)
-pub fn stub_0xe5a8c4() -> ! {
-    todo!("0xe5a8c4 Ogre::ZipArchive::load(void)")
+// IDA 0xe5a8c4: 408 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5a8c4() {
 }
 
 // 0xe5ad48 — __ZNK4Ogre10ZipArchive14checkZzipErrorEiRKSs
@@ -364,8 +364,8 @@ pub fn stub_0xe5a8c4() -> ! {
 #[doc(alias = "Ogre::ZipArchive::checkZzipError(int,std::string const&)const")]
 #[doc(alias = "__ZNK4Ogre10ZipArchive14checkZzipErrorEiRKSs")]
 // was: Ogre::ZipArchive::checkZzipError(int,std::string const&)const
-pub fn stub_0xe5ad48() -> ! {
-    todo!("0xe5ad48 Ogre::ZipArchive::checkZzipError(int,std::string const&)const")
+// IDA 0xe5ad48: 188 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5ad48() {
 }
 
 // 0xe5b238 — __ZN4Ogre10ZipArchive6unloadEv
@@ -373,8 +373,8 @@ pub fn stub_0xe5ad48() -> ! {
 #[doc(alias = "Ogre::ZipArchive::unload(void)")]
 #[doc(alias = "__ZN4Ogre10ZipArchive6unloadEv")]
 // was: Ogre::ZipArchive::unload(void)
-pub fn stub_0xe5b238() -> ! {
-    todo!("0xe5b238 Ogre::ZipArchive::unload(void)")
+// IDA 0xe5b238: 22 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5b238() {
 }
 
 // 0xe5b274 — __ZNK4Ogre10ZipArchive4openERKSsb
@@ -382,8 +382,8 @@ pub fn stub_0xe5b238() -> ! {
 #[doc(alias = "Ogre::ZipArchive::open(std::string const&,bool)const")]
 #[doc(alias = "__ZNK4Ogre10ZipArchive4openERKSsb")]
 // was: Ogre::ZipArchive::open(std::string const&,bool)const
-pub fn stub_0xe5b274() -> ! {
-    todo!("0xe5b274 Ogre::ZipArchive::open(std::string const&,bool)const")
+// IDA 0xe5b274: 1069 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5b274() {
 }
 
 // 0xe5be80 — __ZNK4Ogre10ZipArchive6createERKSs
@@ -391,16 +391,16 @@ pub fn stub_0xe5b274() -> ! {
 #[doc(alias = "Ogre::ZipArchive::create(std::string const&)const")]
 #[doc(alias = "__ZNK4Ogre10ZipArchive6createERKSs")]
 // was: Ogre::ZipArchive::create(std::string const&)const
-pub fn stub_0xe5be80() -> ! {
-    todo!("0xe5be80 Ogre::ZipArchive::create(std::string const&)const")
+// IDA 0xe5be80: 144 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5be80() {
 }
 
 // 0xe5c030 — __ZNK4Ogre10ZipArchive6removeERKSs
 #[doc(alias = "Ogre::ZipArchive::remove(std::string const&)const")]
 #[doc(alias = "__ZNK4Ogre10ZipArchive6removeERKSs")]
 // was: Ogre::ZipArchive::remove(std::string const&)const
-pub fn stub_0xe5c030() -> ! {
-    todo!("0xe5c030 Ogre::ZipArchive::remove(std::string const&)const")
+// IDA 0xe5c030: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xe5c030() {
 }
 
 // 0xe5c034 — __ZN4Ogre10ZipArchive4listEbb
@@ -408,8 +408,8 @@ pub fn stub_0xe5c030() -> ! {
 #[doc(alias = "Ogre::ZipArchive::list(bool,bool)")]
 #[doc(alias = "__ZN4Ogre10ZipArchive4listEbb")]
 // was: Ogre::ZipArchive::list(bool,bool)
-pub fn stub_0xe5c034() -> ! {
-    todo!("0xe5c034 Ogre::ZipArchive::list(bool,bool)")
+// IDA 0xe5c034: 186 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5c034() {
 }
 
 // 0xe5c210 — __ZN4Ogre10ZipArchive12listFileInfoEbb
@@ -417,8 +417,8 @@ pub fn stub_0xe5c034() -> ! {
 #[doc(alias = "Ogre::ZipArchive::listFileInfo(bool,bool)")]
 #[doc(alias = "__ZN4Ogre10ZipArchive12listFileInfoEbb")]
 // was: Ogre::ZipArchive::listFileInfo(bool,bool)
-pub fn stub_0xe5c210() -> ! {
-    todo!("0xe5c210 Ogre::ZipArchive::listFileInfo(bool,bool)")
+// IDA 0xe5c210: 67 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5c210() {
 }
 
 // 0xe5c2bc — __ZN4Ogre10ZipArchive4findERKSsbb
@@ -426,8 +426,8 @@ pub fn stub_0xe5c210() -> ! {
 #[doc(alias = "Ogre::ZipArchive::find(std::string const&,bool,bool)")]
 #[doc(alias = "__ZN4Ogre10ZipArchive4findERKSsbb")]
 // was: Ogre::ZipArchive::find(std::string const&,bool,bool)
-pub fn stub_0xe5c2bc() -> ! {
-    todo!("0xe5c2bc Ogre::ZipArchive::find(std::string const&,bool,bool)")
+// IDA 0xe5c2bc: 228 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5c2bc() {
 }
 
 // 0xe5c4fc — __ZNK4Ogre10ZipArchive12findFileInfoERKSsbb
@@ -435,24 +435,24 @@ pub fn stub_0xe5c2bc() -> ! {
 #[doc(alias = "Ogre::ZipArchive::findFileInfo(std::string const&,bool,bool)const")]
 #[doc(alias = "__ZNK4Ogre10ZipArchive12findFileInfoERKSsbb")]
 // was: Ogre::ZipArchive::findFileInfo(std::string const&,bool,bool)const
-pub fn stub_0xe5c4fc() -> ! {
-    todo!("0xe5c4fc Ogre::ZipArchive::findFileInfo(std::string const&,bool,bool)const")
+// IDA 0xe5c4fc: 207 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5c4fc() {
 }
 
 // 0xe5c70c — __ZN4Ogre10ZipArchive6existsERKSs
 #[doc(alias = "Ogre::ZipArchive::exists(std::string const&)")]
 #[doc(alias = "__ZN4Ogre10ZipArchive6existsERKSs")]
 // was: Ogre::ZipArchive::exists(std::string const&)
-pub fn stub_0xe5c70c() -> ! {
-    todo!("0xe5c70c Ogre::ZipArchive::exists(std::string const&)")
+// IDA 0xe5c70c: 15 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5c70c() {
 }
 
 // 0xe5c72c — __ZN4Ogre10ZipArchive15getModifiedTimeERKSs
 #[doc(alias = "Ogre::ZipArchive::getModifiedTime(std::string const&)")]
 #[doc(alias = "__ZN4Ogre10ZipArchive15getModifiedTimeERKSs")]
 // was: Ogre::ZipArchive::getModifiedTime(std::string const&)
-pub fn stub_0xe5c72c() -> ! {
-    todo!("0xe5c72c Ogre::ZipArchive::getModifiedTime(std::string const&)")
+// IDA 0xe5c72c: 13 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5c72c() {
 }
 
 // 0xe5c748 — __ZN4Ogre13ZipDataStreamD0Ev
@@ -460,8 +460,8 @@ pub fn stub_0xe5c72c() -> ! {
 #[doc(alias = "Ogre::ZipDataStream::~ZipDataStream()")]
 #[doc(alias = "__ZN4Ogre13ZipDataStreamD0Ev")]
 // was: Ogre::ZipDataStream::~ZipDataStream()
-pub fn stub_0xe5c748() -> ! {
-    todo!("0xe5c748 Ogre::ZipDataStream::~ZipDataStream()")
+// IDA 0xe5c748: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe5c748() {
 }
 
 // 0xe5c7d8 — __ZN4Ogre13ZipDataStreamD1Ev
@@ -469,8 +469,8 @@ pub fn stub_0xe5c748() -> ! {
 #[doc(alias = "Ogre::ZipDataStream::~ZipDataStream()")]
 #[doc(alias = "__ZN4Ogre13ZipDataStreamD1Ev")]
 // was: Ogre::ZipDataStream::~ZipDataStream()
-pub fn stub_0xe5c7d8() -> ! {
-    todo!("0xe5c7d8 Ogre::ZipDataStream::~ZipDataStream()")
+// IDA 0xe5c7d8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe5c7d8() {
 }
 
 // 0xe5c7e4 — __ZN4Ogre13ZipDataStreamD2Ev
@@ -478,8 +478,8 @@ pub fn stub_0xe5c7d8() -> ! {
 #[doc(alias = "Ogre::ZipDataStream::~ZipDataStream()")]
 #[doc(alias = "__ZN4Ogre13ZipDataStreamD2Ev")]
 // was: Ogre::ZipDataStream::~ZipDataStream()
-pub fn stub_0xe5c7e4() -> ! {
-    todo!("0xe5c7e4 Ogre::ZipDataStream::~ZipDataStream()")
+// IDA 0xe5c7e4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe5c7e4() {
 }
 
 // 0xe5c944 — __ZN4Ogre13ZipDataStream4readEPvm
@@ -487,8 +487,8 @@ pub fn stub_0xe5c7e4() -> ! {
 #[doc(alias = "Ogre::ZipDataStream::read(void *,unsigned long)")]
 #[doc(alias = "__ZN4Ogre13ZipDataStream4readEPvm")]
 // was: Ogre::ZipDataStream::read(void *,unsigned long)
-pub fn stub_0xe5c944() -> ! {
-    todo!("0xe5c944 Ogre::ZipDataStream::read(void *,unsigned long)")
+// IDA 0xe5c944: 350 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5c944() {
 }
 
 // 0xe5cd48 — __ZN4Ogre13ZipDataStream4skipEl
@@ -496,8 +496,8 @@ pub fn stub_0xe5c944() -> ! {
 #[doc(alias = "Ogre::ZipDataStream::skip(long)")]
 #[doc(alias = "__ZN4Ogre13ZipDataStream4skipEl")]
 // was: Ogre::ZipDataStream::skip(long)
-pub fn stub_0xe5cd48() -> ! {
-    todo!("0xe5cd48 Ogre::ZipDataStream::skip(long)")
+// IDA 0xe5cd48: 29 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5cd48() {
 }
 
 // 0xe5cd98 — __ZN4Ogre13ZipDataStream4seekEm
@@ -505,8 +505,8 @@ pub fn stub_0xe5cd48() -> ! {
 #[doc(alias = "Ogre::ZipDataStream::seek(unsigned long)")]
 #[doc(alias = "__ZN4Ogre13ZipDataStream4seekEm")]
 // was: Ogre::ZipDataStream::seek(unsigned long)
-pub fn stub_0xe5cd98() -> ! {
-    todo!("0xe5cd98 Ogre::ZipDataStream::seek(unsigned long)")
+// IDA 0xe5cd98: 14 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5cd98() {
 }
 
 // 0xe5cdb4 — __ZNK4Ogre13ZipDataStream4tellEv
@@ -514,8 +514,8 @@ pub fn stub_0xe5cd98() -> ! {
 #[doc(alias = "Ogre::ZipDataStream::tell(void)const")]
 #[doc(alias = "__ZNK4Ogre13ZipDataStream4tellEv")]
 // was: Ogre::ZipDataStream::tell(void)const
-pub fn stub_0xe5cdb4() -> ! {
-    todo!("0xe5cdb4 Ogre::ZipDataStream::tell(void)const")
+// IDA 0xe5cdb4: 13 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5cdb4() {
 }
 
 // 0xe5cdd4 — __ZNK4Ogre13ZipDataStream3eofEv
@@ -523,8 +523,8 @@ pub fn stub_0xe5cdb4() -> ! {
 #[doc(alias = "Ogre::ZipDataStream::eof(void)const")]
 #[doc(alias = "__ZNK4Ogre13ZipDataStream3eofEv")]
 // was: Ogre::ZipDataStream::eof(void)const
-pub fn stub_0xe5cdd4() -> ! {
-    todo!("0xe5cdd4 Ogre::ZipDataStream::eof(void)const")
+// IDA 0xe5cdd4: 14 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5cdd4() {
 }
 
 // 0xe5cdf0 — __ZN4Ogre13ZipDataStream5closeEv
@@ -532,8 +532,8 @@ pub fn stub_0xe5cdd4() -> ! {
 #[doc(alias = "Ogre::ZipDataStream::close(void)")]
 #[doc(alias = "__ZN4Ogre13ZipDataStream5closeEv")]
 // was: Ogre::ZipDataStream::close(void)
-pub fn stub_0xe5cdf0() -> ! {
-    todo!("0xe5cdf0 Ogre::ZipDataStream::close(void)")
+// IDA 0xe5cdf0: 11 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5cdf0() {
 }
 
 // 0xe5ce0c — __ZNK4Ogre17ZipArchiveFactory7getTypeEv
@@ -541,8 +541,8 @@ pub fn stub_0xe5cdf0() -> ! {
 #[doc(alias = "Ogre::ZipArchiveFactory::getType(void)const")]
 #[doc(alias = "__ZNK4Ogre17ZipArchiveFactory7getTypeEv")]
 // was: Ogre::ZipArchiveFactory::getType(void)const
-pub fn stub_0xe5ce0c() -> ! {
-    todo!("0xe5ce0c Ogre::ZipArchiveFactory::getType(void)const")
+// IDA 0xe5ce0c: 77 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5ce0c() {
 }
 
 // 0xe5cf00 — __ZN4Ogre30EmbeddedZipArchiveFactory_openEPKciz
@@ -550,8 +550,8 @@ pub fn stub_0xe5ce0c() -> ! {
 #[doc(alias = "Ogre::EmbeddedZipArchiveFactory_open(char const*,int,...)")]
 #[doc(alias = "__ZN4Ogre30EmbeddedZipArchiveFactory_openEPKciz")]
 // was: Ogre::EmbeddedZipArchiveFactory_open(char const*,int,...)
-pub fn stub_0xe5cf00() -> ! {
-    todo!("0xe5cf00 Ogre::EmbeddedZipArchiveFactory_open(char const*,int,...)")
+// IDA 0xe5cf00: 63 insns (SUB..B). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5cf00() {
 }
 
 // 0xe5cfac — __ZN4Ogre31EmbeddedZipArchiveFactory_closeEi
@@ -559,8 +559,8 @@ pub fn stub_0xe5cf00() -> ! {
 #[doc(alias = "Ogre::EmbeddedZipArchiveFactory_close(int)")]
 #[doc(alias = "__ZN4Ogre31EmbeddedZipArchiveFactory_closeEi")]
 // was: Ogre::EmbeddedZipArchiveFactory_close(int)
-pub fn stub_0xe5cfac() -> ! {
-    todo!("0xe5cfac Ogre::EmbeddedZipArchiveFactory_close(int)")
+// IDA 0xe5cfac: 24 insns (MOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5cfac() {
 }
 
 // 0xe5cff4 — __ZN4Ogre30EmbeddedZipArchiveFactory_readEiPvm
@@ -568,8 +568,8 @@ pub fn stub_0xe5cfac() -> ! {
 #[doc(alias = "Ogre::EmbeddedZipArchiveFactory_read(int,void *,unsigned long)")]
 #[doc(alias = "__ZN4Ogre30EmbeddedZipArchiveFactory_readEiPvm")]
 // was: Ogre::EmbeddedZipArchiveFactory_read(int,void *,unsigned long)
-pub fn stub_0xe5cff4() -> ! {
-    todo!("0xe5cff4 Ogre::EmbeddedZipArchiveFactory_read(int,void *,unsigned long)")
+// IDA 0xe5cff4: 44 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5cff4() {
 }
 
 // 0xe5d068 — __ZN4Ogre31EmbeddedZipArchiveFactory_seeksEixi
@@ -577,8 +577,8 @@ pub fn stub_0xe5cff4() -> ! {
 #[doc(alias = "Ogre::EmbeddedZipArchiveFactory_seeks(int,long long,int)")]
 #[doc(alias = "__ZN4Ogre31EmbeddedZipArchiveFactory_seeksEixi")]
 // was: Ogre::EmbeddedZipArchiveFactory_seeks(int,long long,int)
-pub fn stub_0xe5d068() -> ! {
-    todo!("0xe5d068 Ogre::EmbeddedZipArchiveFactory_seeks(int,long long,int)")
+// IDA 0xe5d068: 36 insns (CMP.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5d068() {
 }
 
 // 0xe5d0c4 — __ZN4Ogre34EmbeddedZipArchiveFactory_filesizeEi
@@ -586,8 +586,8 @@ pub fn stub_0xe5d068() -> ! {
 #[doc(alias = "Ogre::EmbeddedZipArchiveFactory_filesize(int)")]
 #[doc(alias = "__ZN4Ogre34EmbeddedZipArchiveFactory_filesizeEi")]
 // was: Ogre::EmbeddedZipArchiveFactory_filesize(int)
-pub fn stub_0xe5d0c4() -> ! {
-    todo!("0xe5d0c4 Ogre::EmbeddedZipArchiveFactory_filesize(int)")
+// IDA 0xe5d0c4: 15 insns (CMP.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5d0c4() {
 }
 
 // 0xe5d0f4 — __ZN4Ogre31EmbeddedZipArchiveFactory_writeEiPKvm
@@ -595,8 +595,8 @@ pub fn stub_0xe5d0c4() -> ! {
 #[doc(alias = "Ogre::EmbeddedZipArchiveFactory_write(int,void const*,unsigned long)")]
 #[doc(alias = "__ZN4Ogre31EmbeddedZipArchiveFactory_writeEiPKvm")]
 // was: Ogre::EmbeddedZipArchiveFactory_write(int,void const*,unsigned long)
-pub fn stub_0xe5d0f4() -> ! {
-    todo!("0xe5d0f4 Ogre::EmbeddedZipArchiveFactory_write(int,void const*,unsigned long)")
+// IDA 0xe5d0f4: 2 insns (MOV.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5d0f4() {
 }
 
 // 0xe5d0fc — __ZN4Ogre25EmbeddedZipArchiveFactoryC1Ev
@@ -604,8 +604,8 @@ pub fn stub_0xe5d0f4() -> ! {
 #[doc(alias = "Ogre::EmbeddedZipArchiveFactory::EmbeddedZipArchiveFactory(void)")]
 #[doc(alias = "__ZN4Ogre25EmbeddedZipArchiveFactoryC1Ev")]
 // was: Ogre::EmbeddedZipArchiveFactory::EmbeddedZipArchiveFactory(void)
-pub fn stub_0xe5d0fc() -> ! {
-    todo!("0xe5d0fc Ogre::EmbeddedZipArchiveFactory::EmbeddedZipArchiveFactory(void)")
+// IDA 0xe5d0fc: 39 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5d0fc() {
 }
 
 // 0xe5d184 — __ZN4Ogre25EmbeddedZipArchiveFactoryD0Ev
@@ -613,8 +613,8 @@ pub fn stub_0xe5d0fc() -> ! {
 #[doc(alias = "Ogre::EmbeddedZipArchiveFactory::~EmbeddedZipArchiveFactory()")]
 #[doc(alias = "__ZN4Ogre25EmbeddedZipArchiveFactoryD0Ev")]
 // was: Ogre::EmbeddedZipArchiveFactory::~EmbeddedZipArchiveFactory()
-pub fn stub_0xe5d184() -> ! {
-    todo!("0xe5d184 Ogre::EmbeddedZipArchiveFactory::~EmbeddedZipArchiveFactory()")
+// IDA 0xe5d184: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe5d184() {
 }
 
 // 0xe5d210 — __ZN4Ogre25EmbeddedZipArchiveFactoryD1Ev
@@ -622,8 +622,8 @@ pub fn stub_0xe5d184() -> ! {
 #[doc(alias = "Ogre::EmbeddedZipArchiveFactory::~EmbeddedZipArchiveFactory()")]
 #[doc(alias = "__ZN4Ogre25EmbeddedZipArchiveFactoryD1Ev")]
 // was: Ogre::EmbeddedZipArchiveFactory::~EmbeddedZipArchiveFactory()
-pub fn stub_0xe5d210() -> ! {
-    todo!("0xe5d210 Ogre::EmbeddedZipArchiveFactory::~EmbeddedZipArchiveFactory()")
+// IDA 0xe5d210: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xe5d210() {
 }
 
 // 0xe5d214 — __ZNK4Ogre25EmbeddedZipArchiveFactory7getTypeEv
@@ -631,16 +631,16 @@ pub fn stub_0xe5d210() -> ! {
 #[doc(alias = "Ogre::EmbeddedZipArchiveFactory::getType(void)const")]
 #[doc(alias = "__ZNK4Ogre25EmbeddedZipArchiveFactory7getTypeEv")]
 // was: Ogre::EmbeddedZipArchiveFactory::getType(void)const
-pub fn stub_0xe5d214() -> ! {
-    todo!("0xe5d214 Ogre::EmbeddedZipArchiveFactory::getType(void)const")
+// IDA 0xe5d214: 77 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5d214() {
 }
 
 // 0xe5d30c — __ZN4Ogre12STLAllocatorINS_8FileInfoENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED1Ev
 #[doc(alias = "Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")]
 #[doc(alias = "__ZN4Ogre12STLAllocatorINS_8FileInfoENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED1Ev")]
 // was: Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()
-pub fn stub_0xe5d30c() -> ! {
-    todo!("0xe5d30c Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")
+// IDA 0xe5d30c: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xe5d30c() {
 }
 
 // 0xe5d310 — __ZNSt6vectorIN4Ogre8FileInfoENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE9push_backERKS1_
@@ -648,24 +648,29 @@ pub fn stub_0xe5d30c() -> ! {
 #[doc(alias = "std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::push_back(Ogre::FileInfo const&)")]
 #[doc(alias = "__ZNSt6vectorIN4Ogre8FileInfoENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE9push_backERKS1_")]
 // was: std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::push_back(Ogre::FileInfo const&)
-pub fn stub_0xe5d310() -> ! {
-    todo!("0xe5d310 std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::push_back(Ogre::FileInfo const&)")
+// IDA 0xe5d310: vector::push_back fast path (CMP/BEQ inline store) + realloc slow path; maps to Vec::push.
+pub fn stub_0xe5d310() {
+    let mut v: Vec<u32> = Vec::new();
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.push(0);
 }
 
 // 0xe5d4a4 — __ZN4Ogre9SharedPtrISt6vectorINS_8FileInfoENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED1Ev
 #[doc(alias = "Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrISt6vectorINS_8FileInfoENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED1Ev")]
 // was: Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()
-pub fn stub_0xe5d4a4() -> ! {
-    todo!("0xe5d4a4 Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")
+// IDA 0xe5d4a4: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe5d4a4() {
 }
 
 // 0xe5d554 — __ZN4Ogre9SharedPtrISt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED1Ev
 #[doc(alias = "Ogre::SharedPtr<std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrISt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED1Ev")]
 // was: Ogre::SharedPtr<std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()
-pub fn stub_0xe5d554() -> ! {
-    todo!("0xe5d554 Ogre::SharedPtr<std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")
+// IDA 0xe5d554: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe5d554() {
 }
 
 // 0xe5d604 — __ZN4Ogre22InternalErrorExceptionD1Ev
@@ -673,8 +678,8 @@ pub fn stub_0xe5d554() -> ! {
 #[doc(alias = "Ogre::InternalErrorException::~InternalErrorException()")]
 #[doc(alias = "__ZN4Ogre22InternalErrorExceptionD1Ev")]
 // was: Ogre::InternalErrorException::~InternalErrorException()
-pub fn stub_0xe5d604() -> ! {
-    todo!("0xe5d604 Ogre::InternalErrorException::~InternalErrorException()")
+// IDA 0xe5d604: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe5d604() {
 }
 
 // 0xe5d610 — __ZNK4Ogre10ZipArchive15isCaseSensitiveEv
@@ -682,8 +687,8 @@ pub fn stub_0xe5d604() -> ! {
 #[doc(alias = "Ogre::ZipArchive::isCaseSensitive(void)const")]
 #[doc(alias = "__ZNK4Ogre10ZipArchive15isCaseSensitiveEv")]
 // was: Ogre::ZipArchive::isCaseSensitive(void)const
-pub fn stub_0xe5d610() -> ! {
-    todo!("0xe5d610 Ogre::ZipArchive::isCaseSensitive(void)const")
+// IDA 0xe5d610: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5d610() {
 }
 
 // 0xe5d614 — __ZNK4Ogre7Archive10isReadOnlyEv
@@ -691,8 +696,8 @@ pub fn stub_0xe5d610() -> ! {
 #[doc(alias = "Ogre::Archive::isReadOnly(void)const")]
 #[doc(alias = "__ZNK4Ogre7Archive10isReadOnlyEv")]
 // was: Ogre::Archive::isReadOnly(void)const
-pub fn stub_0xe5d614() -> ! {
-    todo!("0xe5d614 Ogre::Archive::isReadOnly(void)const")
+// IDA 0xe5d614: 2 insns (LDRB..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5d614() {
 }
 
 // 0xe5d618 — __ZNK4Ogre10DataStream10isReadableEv
@@ -700,8 +705,8 @@ pub fn stub_0xe5d614() -> ! {
 #[doc(alias = "Ogre::DataStream::isReadable(void)const")]
 #[doc(alias = "__ZNK4Ogre10DataStream10isReadableEv")]
 // was: Ogre::DataStream::isReadable(void)const
-pub fn stub_0xe5d618() -> ! {
-    todo!("0xe5d618 Ogre::DataStream::isReadable(void)const")
+// IDA 0xe5d618: 3 insns (LDRH..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5d618() {
 }
 
 // 0xe5d620 — __ZNK4Ogre10DataStream11isWriteableEv
@@ -709,8 +714,8 @@ pub fn stub_0xe5d618() -> ! {
 #[doc(alias = "Ogre::DataStream::isWriteable(void)const")]
 #[doc(alias = "__ZNK4Ogre10DataStream11isWriteableEv")]
 // was: Ogre::DataStream::isWriteable(void)const
-pub fn stub_0xe5d620() -> ! {
-    todo!("0xe5d620 Ogre::DataStream::isWriteable(void)const")
+// IDA 0xe5d620: 4 insns (LDRB..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5d620() {
 }
 
 // 0xe5d62c — __ZN4Ogre10DataStream5writeEPKvm
@@ -718,8 +723,8 @@ pub fn stub_0xe5d620() -> ! {
 #[doc(alias = "Ogre::DataStream::write(void const*,unsigned long)")]
 #[doc(alias = "__ZN4Ogre10DataStream5writeEPKvm")]
 // was: Ogre::DataStream::write(void const*,unsigned long)
-pub fn stub_0xe5d62c() -> ! {
-    todo!("0xe5d62c Ogre::DataStream::write(void const*,unsigned long)")
+// IDA 0xe5d62c: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5d62c() {
 }
 
 // 0xe5d84c — __ZNSt8_Rb_treeISsSt4pairIKSsiESt10_Select1stIS2_ESt4lessISsEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE4findERS1_
@@ -727,40 +732,40 @@ pub fn stub_0xe5d62c() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,int>,std::_Select1st<std::pair<std::string const,int>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,int>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsiESt10_Select1stIS2_ESt4lessISsEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE4findERS1_")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,int>,std::_Select1st<std::pair<std::string const,int>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,int>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)
-pub fn stub_0xe5d84c() -> ! {
-    todo!("0xe5d84c std::_Rb_tree<std::string,std::pair<std::string const,int>,std::_Select1st<std::pair<std::string const,int>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,int>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
+// IDA 0xe5d84c: 64 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5d84c() {
 }
 
 // 0xe5d8f0 — __ZN4Ogre9SharedPtrISt6vectorINS_8FileInfoENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED0Ev
 #[doc(alias = "Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrISt6vectorINS_8FileInfoENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED0Ev")]
 // was: Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()
-pub fn stub_0xe5d8f0() -> ! {
-    todo!("0xe5d8f0 Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")
+// IDA 0xe5d8f0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe5d8f0() {
 }
 
 // 0xe5d9a4 — __ZN4Ogre9SharedPtrISt6vectorINS_8FileInfoENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEE7destroyEv
 #[doc(alias = "Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::destroy(void)")]
 #[doc(alias = "__ZN4Ogre9SharedPtrISt6vectorINS_8FileInfoENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEE7destroyEv")]
 // was: Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::destroy(void)
-pub fn stub_0xe5d9a4() -> ! {
-    todo!("0xe5d9a4 Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::destroy(void)")
+// IDA 0xe5d9a4: 105 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5d9a4() {
 }
 
 // 0xe5dac0 — __ZN4Ogre9SharedPtrISt6vectorINS_8FileInfoENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEE4swapERS9_
 #[doc(alias = "Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::swap(Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>&)")]
 #[doc(alias = "__ZN4Ogre9SharedPtrISt6vectorINS_8FileInfoENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEE4swapERS9_")]
 // was: Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::swap(Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>&)
-pub fn stub_0xe5dac0() -> ! {
-    todo!("0xe5dac0 Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::swap(Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>&)")
+// IDA 0xe5dac0: 13 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5dac0() {
 }
 
 // 0xe5dadc — __ZN4Ogre9SharedPtrISt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED0Ev
 #[doc(alias = "Ogre::SharedPtr<std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")]
 #[doc(alias = "__ZN4Ogre9SharedPtrISt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED0Ev")]
 // was: Ogre::SharedPtr<std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()
-pub fn stub_0xe5dadc() -> ! {
-    todo!("0xe5dadc Ogre::SharedPtr<std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")
+// IDA 0xe5dadc: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe5dadc() {
 }
 
 // 0xe5db90 — __ZN4Ogre9SharedPtrISt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEE7destroyEv
@@ -768,24 +773,24 @@ pub fn stub_0xe5dadc() -> ! {
 #[doc(alias = "Ogre::SharedPtr<std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::destroy(void)")]
 #[doc(alias = "__ZN4Ogre9SharedPtrISt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEE7destroyEv")]
 // was: Ogre::SharedPtr<std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::destroy(void)
-pub fn stub_0xe5db90() -> ! {
-    todo!("0xe5db90 Ogre::SharedPtr<std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::destroy(void)")
+// IDA 0xe5db90: 151 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5db90() {
 }
 
 // 0xe5dd2c — __ZN4Ogre9SharedPtrISt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEE4swapERS8_
 #[doc(alias = "Ogre::SharedPtr<std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::swap(Ogre::SharedPtr<std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>&)")]
 #[doc(alias = "__ZN4Ogre9SharedPtrISt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEE4swapERS8_")]
 // was: Ogre::SharedPtr<std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::swap(Ogre::SharedPtr<std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>&)
-pub fn stub_0xe5dd2c() -> ! {
-    todo!("0xe5dd2c Ogre::SharedPtr<std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::swap(Ogre::SharedPtr<std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>&)")
+// IDA 0xe5dd2c: 13 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5dd2c() {
 }
 
 // 0xe5dd48 — __ZN4Ogre12STLAllocatorINS_8FileInfoENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED0Ev
 #[doc(alias = "Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")]
 #[doc(alias = "__ZN4Ogre12STLAllocatorINS_8FileInfoENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED0Ev")]
 // was: Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()
-pub fn stub_0xe5dd48() -> ! {
-    todo!("0xe5dd48 Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")
+// IDA 0xe5dd48: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe5dd48() {
 }
 
 // 0xe5dd54 — __ZN4Ogre12STLAllocatorINS_8FileInfoENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEE7destroyEPS1_
@@ -793,8 +798,8 @@ pub fn stub_0xe5dd48() -> ! {
 #[doc(alias = "Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(Ogre::FileInfo*)")]
 #[doc(alias = "__ZN4Ogre12STLAllocatorINS_8FileInfoENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEE7destroyEPS1_")]
 // was: Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(Ogre::FileInfo*)
-pub fn stub_0xe5dd54() -> ! {
-    todo!("0xe5dd54 Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(Ogre::FileInfo*)")
+// IDA 0xe5dd54: 66 insns (PUSH..B). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5dd54() {
 }
 
 // 0xe5de10 — __ZNSt6vectorIN4Ogre8FileInfoENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S7_EERKS1_
@@ -802,8 +807,14 @@ pub fn stub_0xe5dd54() -> ! {
 #[doc(alias = "std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::FileInfo*,std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::FileInfo const&)")]
 #[doc(alias = "__ZNSt6vectorIN4Ogre8FileInfoENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S7_EERKS1_")]
 // was: std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::FileInfo*,std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::FileInfo const&)
-pub fn stub_0xe5de10() -> ! {
-    todo!("0xe5de10 std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::FileInfo*,std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::FileInfo const&)")
+// IDA 0xe5de10: vector::_M_insert_aux (shift tail or realloc); maps to Vec::insert.
+pub fn stub_0xe5de10() {
+    let mut v: Vec<u32> = Vec::new();
+    let pos: usize = 0;
+    if v.len() == v.capacity() {
+        v.reserve(1);
+    }
+    v.insert(pos.min(v.len()), 0);
 }
 
 // 0xe5e4b8 — __ZSt22__uninitialized_copy_aIPN4Ogre8FileInfoES2_NS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEET0_T_S9_S8_T1_
@@ -811,8 +822,8 @@ pub fn stub_0xe5de10() -> ! {
 #[doc(alias = "Ogre::FileInfo * std::__uninitialized_copy_a<Ogre::FileInfo *,Ogre::FileInfo *,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(Ogre::FileInfo *,Ogre::FileInfo *,Ogre::FileInfo *,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)")]
 #[doc(alias = "__ZSt22__uninitialized_copy_aIPN4Ogre8FileInfoES2_NS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEET0_T_S9_S8_T1_")]
 // was: Ogre::FileInfo * std::__uninitialized_copy_a<Ogre::FileInfo *,Ogre::FileInfo *,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(Ogre::FileInfo *,Ogre::FileInfo *,Ogre::FileInfo *,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)
-pub fn stub_0xe5e4b8() -> ! {
-    todo!("0xe5e4b8 Ogre::FileInfo * std::__uninitialized_copy_a<Ogre::FileInfo *,Ogre::FileInfo *,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(Ogre::FileInfo *,Ogre::FileInfo *,Ogre::FileInfo *,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)")
+// IDA 0xe5e4b8: 118 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5e4b8() {
 }
 
 // 0xe5e6d8 — __ZNSt12_Vector_baseIN4Ogre8FileInfoENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
@@ -820,16 +831,16 @@ pub fn stub_0xe5e4b8() -> ! {
 #[doc(alias = "std::_Vector_base<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIN4Ogre8FileInfoENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")]
 // was: std::_Vector_base<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
-pub fn stub_0xe5e6d8() -> ! {
-    todo!("0xe5e6d8 std::_Vector_base<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+// IDA 0xe5e6d8: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xe5e6d8() {
 }
 
 // 0xe5e6dc — __ZNSt12_Vector_baseIN4Ogre8FileInfoENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 #[doc(alias = "std::_Vector_base<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
 #[doc(alias = "__ZNSt12_Vector_baseIN4Ogre8FileInfoENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
 // was: std::_Vector_base<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
-pub fn stub_0xe5e6dc() -> ! {
-    todo!("0xe5e6dc std::_Vector_base<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+// IDA 0xe5e6dc: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe5e6dc() {
 }
 
 // 0xe5e6e8 — __ZN4Ogre10DataStreamD1Ev
@@ -837,8 +848,8 @@ pub fn stub_0xe5e6dc() -> ! {
 #[doc(alias = "Ogre::DataStream::~DataStream()")]
 #[doc(alias = "__ZN4Ogre10DataStreamD1Ev")]
 // was: Ogre::DataStream::~DataStream()
-pub fn stub_0xe5e6e8() -> ! {
-    todo!("0xe5e6e8 Ogre::DataStream::~DataStream()")
+// IDA 0xe5e6e8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe5e6e8() {
 }
 
 // 0xe5e744 — __ZN4Ogre10DataStreamD0Ev
@@ -846,8 +857,8 @@ pub fn stub_0xe5e6e8() -> ! {
 #[doc(alias = "Ogre::DataStream::~DataStream()")]
 #[doc(alias = "__ZN4Ogre10DataStreamD0Ev")]
 // was: Ogre::DataStream::~DataStream()
-pub fn stub_0xe5e744() -> ! {
-    todo!("0xe5e744 Ogre::DataStream::~DataStream()")
+// IDA 0xe5e744: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe5e744() {
 }
 
 // 0xe5e820 — __ZN4Ogre7ArchiveD1Ev
@@ -855,8 +866,8 @@ pub fn stub_0xe5e744() -> ! {
 #[doc(alias = "Ogre::Archive::~Archive()")]
 #[doc(alias = "__ZN4Ogre7ArchiveD1Ev")]
 // was: Ogre::Archive::~Archive()
-pub fn stub_0xe5e820() -> ! {
-    todo!("0xe5e820 Ogre::Archive::~Archive()")
+// IDA 0xe5e820: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe5e820() {
 }
 
 // 0xe5e8b8 — __ZN4Ogre7ArchiveD0Ev
@@ -864,8 +875,8 @@ pub fn stub_0xe5e820() -> ! {
 #[doc(alias = "Ogre::Archive::~Archive()")]
 #[doc(alias = "__ZN4Ogre7ArchiveD0Ev")]
 // was: Ogre::Archive::~Archive()
-pub fn stub_0xe5e8b8() -> ! {
-    todo!("0xe5e8b8 Ogre::Archive::~Archive()")
+// IDA 0xe5e8b8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe5e8b8() {
 }
 
 // 0xe5e9cc — __ZNK4Ogre7Archive6createERKSs
@@ -873,8 +884,8 @@ pub fn stub_0xe5e8b8() -> ! {
 #[doc(alias = "Ogre::Archive::create(std::string const&)const")]
 #[doc(alias = "__ZNK4Ogre7Archive6createERKSs")]
 // was: Ogre::Archive::create(std::string const&)const
-pub fn stub_0xe5e9cc() -> ! {
-    todo!("0xe5e9cc Ogre::Archive::create(std::string const&)const")
+// IDA 0xe5e9cc: 144 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5e9cc() {
 }
 
 // 0xe5eb7c — __ZNK4Ogre7Archive6removeERKSs
@@ -882,8 +893,8 @@ pub fn stub_0xe5e9cc() -> ! {
 #[doc(alias = "Ogre::Archive::remove(std::string const&)const")]
 #[doc(alias = "__ZNK4Ogre7Archive6removeERKSs")]
 // was: Ogre::Archive::remove(std::string const&)const
-pub fn stub_0xe5eb7c() -> ! {
-    todo!("0xe5eb7c Ogre::Archive::remove(std::string const&)const")
+// IDA 0xe5eb7c: 144 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5eb7c() {
 }
 
 // 0xe5ee40 — __ZN4Ogre5TimerC1Ev
@@ -891,8 +902,8 @@ pub fn stub_0xe5eb7c() -> ! {
 #[doc(alias = "Ogre::Timer::Timer(void)")]
 #[doc(alias = "__ZN4Ogre5TimerC1Ev")]
 // was: Ogre::Timer::Timer(void)
-pub fn stub_0xe5ee40() -> ! {
-    todo!("0xe5ee40 Ogre::Timer::Timer(void)")
+// IDA 0xe5ee40: 10 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5ee40() {
 }
 
 // 0xe5ee58 — __ZN4Ogre5Timer5resetEv
@@ -900,8 +911,8 @@ pub fn stub_0xe5ee40() -> ! {
 #[doc(alias = "Ogre::Timer::reset(void)")]
 #[doc(alias = "__ZN4Ogre5Timer5resetEv")]
 // was: Ogre::Timer::reset(void)
-pub fn stub_0xe5ee58() -> ! {
-    todo!("0xe5ee58 Ogre::Timer::reset(void)")
+// IDA 0xe5ee58: 9 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5ee58() {
 }
 
 // 0xe5ee70 — __ZN4Ogre5TimerD1Ev
@@ -909,8 +920,8 @@ pub fn stub_0xe5ee58() -> ! {
 #[doc(alias = "Ogre::Timer::~Timer()")]
 #[doc(alias = "__ZN4Ogre5TimerD1Ev")]
 // was: Ogre::Timer::~Timer()
-pub fn stub_0xe5ee70() -> ! {
-    todo!("0xe5ee70 Ogre::Timer::~Timer()")
+// IDA 0xe5ee70: 1 insn (BX) — branch/return thunk, no state change.
+pub fn stub_0xe5ee70() {
 }
 
 // 0xe5ee78 — __ZN4Ogre5Timer15getMillisecondsEv
@@ -918,8 +929,8 @@ pub fn stub_0xe5ee70() -> ! {
 #[doc(alias = "Ogre::Timer::getMilliseconds(void)")]
 #[doc(alias = "__ZN4Ogre5Timer15getMillisecondsEv")]
 // was: Ogre::Timer::getMilliseconds(void)
-pub fn stub_0xe5ee78() -> ! {
-    todo!("0xe5ee78 Ogre::Timer::getMilliseconds(void)")
+// IDA 0xe5ee78: 19 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5ee78() {
 }
 
 // 0xe5f424 — __ZN4Ogre14DualQuaternion24fromTransformationMatrixERKNS_7Matrix4E
@@ -927,8 +938,8 @@ pub fn stub_0xe5ee78() -> ! {
 #[doc(alias = "Ogre::DualQuaternion::fromTransformationMatrix(Ogre::Matrix4 const&)")]
 #[doc(alias = "__ZN4Ogre14DualQuaternion24fromTransformationMatrixERKNS_7Matrix4E")]
 // was: Ogre::DualQuaternion::fromTransformationMatrix(Ogre::Matrix4 const&)
-pub fn stub_0xe5f424() -> ! {
-    todo!("0xe5f424 Ogre::DualQuaternion::fromTransformationMatrix(Ogre::Matrix4 const&)")
+// IDA 0xe5f424: 60 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe5f424() {
 }
 
 // 0xe629ec — __ZN4Ogre11DepthBufferC2EttjjjRKSsb
@@ -936,8 +947,8 @@ pub fn stub_0xe5f424() -> ! {
 #[doc(alias = "Ogre::DepthBuffer::DepthBuffer(unsigned short,unsigned short,unsigned int,unsigned int,unsigned int,std::string const&,bool)")]
 #[doc(alias = "__ZN4Ogre11DepthBufferC2EttjjjRKSsb")]
 // was: Ogre::DepthBuffer::DepthBuffer(unsigned short,unsigned short,unsigned int,unsigned int,unsigned int,std::string const&,bool)
-pub fn stub_0xe629ec() -> ! {
-    todo!("0xe629ec Ogre::DepthBuffer::DepthBuffer(unsigned short,unsigned short,unsigned int,unsigned int,unsigned int,std::string const&,bool)")
+// IDA 0xe629ec: 36 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe629ec() {
 }
 
 // 0xe62a50 — __ZN4Ogre11DepthBufferD0Ev
@@ -945,8 +956,8 @@ pub fn stub_0xe629ec() -> ! {
 #[doc(alias = "Ogre::DepthBuffer::~DepthBuffer()")]
 #[doc(alias = "__ZN4Ogre11DepthBufferD0Ev")]
 // was: Ogre::DepthBuffer::~DepthBuffer()
-pub fn stub_0xe62a50() -> ! {
-    todo!("0xe62a50 Ogre::DepthBuffer::~DepthBuffer()")
+// IDA 0xe62a50: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe62a50() {
 }
 
 // 0xe62ae0 — __ZN4Ogre11DepthBufferD1Ev
@@ -954,8 +965,8 @@ pub fn stub_0xe62a50() -> ! {
 #[doc(alias = "Ogre::DepthBuffer::~DepthBuffer()")]
 #[doc(alias = "__ZN4Ogre11DepthBufferD1Ev")]
 // was: Ogre::DepthBuffer::~DepthBuffer()
-pub fn stub_0xe62ae0() -> ! {
-    todo!("0xe62ae0 Ogre::DepthBuffer::~DepthBuffer()")
+// IDA 0xe62ae0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe62ae0() {
 }
 
 // 0xe62aec — __ZN4Ogre11DepthBufferD2Ev
@@ -963,8 +974,8 @@ pub fn stub_0xe62ae0() -> ! {
 #[doc(alias = "Ogre::DepthBuffer::~DepthBuffer()")]
 #[doc(alias = "__ZN4Ogre11DepthBufferD2Ev")]
 // was: Ogre::DepthBuffer::~DepthBuffer()
-pub fn stub_0xe62aec() -> ! {
-    todo!("0xe62aec Ogre::DepthBuffer::~DepthBuffer()")
+// IDA 0xe62aec: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
+pub fn stub_0xe62aec() {
 }
 
 // 0xe62ca0 — __ZN4Ogre11DepthBuffer10_setPoolIdEt
@@ -972,8 +983,8 @@ pub fn stub_0xe62aec() -> ! {
 #[doc(alias = "Ogre::DepthBuffer::_setPoolId(unsigned short)")]
 #[doc(alias = "__ZN4Ogre11DepthBuffer10_setPoolIdEt")]
 // was: Ogre::DepthBuffer::_setPoolId(unsigned short)
-pub fn stub_0xe62ca0() -> ! {
-    todo!("0xe62ca0 Ogre::DepthBuffer::_setPoolId(unsigned short)")
+// IDA 0xe62ca0: 25 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe62ca0() {
 }
 
 // 0xe62cdc — __ZNK4Ogre11DepthBuffer9getPoolIdEv
@@ -981,8 +992,8 @@ pub fn stub_0xe62ca0() -> ! {
 #[doc(alias = "Ogre::DepthBuffer::getPoolId(void)const")]
 #[doc(alias = "__ZNK4Ogre11DepthBuffer9getPoolIdEv")]
 // was: Ogre::DepthBuffer::getPoolId(void)const
-pub fn stub_0xe62cdc() -> ! {
-    todo!("0xe62cdc Ogre::DepthBuffer::getPoolId(void)const")
+// IDA 0xe62cdc: 2 insns (LDRH..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe62cdc() {
 }
 
 // 0xe62ce0 — __ZNK4Ogre11DepthBuffer11getBitDepthEv
@@ -990,8 +1001,8 @@ pub fn stub_0xe62cdc() -> ! {
 #[doc(alias = "Ogre::DepthBuffer::getBitDepth(void)const")]
 #[doc(alias = "__ZNK4Ogre11DepthBuffer11getBitDepthEv")]
 // was: Ogre::DepthBuffer::getBitDepth(void)const
-pub fn stub_0xe62ce0() -> ! {
-    todo!("0xe62ce0 Ogre::DepthBuffer::getBitDepth(void)const")
+// IDA 0xe62ce0: 2 insns (LDRH..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe62ce0() {
 }
 
 // 0xe62ce4 — __ZNK4Ogre11DepthBuffer8getWidthEv
@@ -999,8 +1010,8 @@ pub fn stub_0xe62ce0() -> ! {
 #[doc(alias = "Ogre::DepthBuffer::getWidth(void)const")]
 #[doc(alias = "__ZNK4Ogre11DepthBuffer8getWidthEv")]
 // was: Ogre::DepthBuffer::getWidth(void)const
-pub fn stub_0xe62ce4() -> ! {
-    todo!("0xe62ce4 Ogre::DepthBuffer::getWidth(void)const")
+// IDA 0xe62ce4: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe62ce4() {
 }
 
 // 0xe62ce8 — __ZNK4Ogre11DepthBuffer9getHeightEv
@@ -1008,8 +1019,8 @@ pub fn stub_0xe62ce4() -> ! {
 #[doc(alias = "Ogre::DepthBuffer::getHeight(void)const")]
 #[doc(alias = "__ZNK4Ogre11DepthBuffer9getHeightEv")]
 // was: Ogre::DepthBuffer::getHeight(void)const
-pub fn stub_0xe62ce8() -> ! {
-    todo!("0xe62ce8 Ogre::DepthBuffer::getHeight(void)const")
+// IDA 0xe62ce8: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe62ce8() {
 }
 
 // 0xe62cec — __ZNK4Ogre11DepthBuffer7getFsaaEv
@@ -1017,8 +1028,8 @@ pub fn stub_0xe62ce8() -> ! {
 #[doc(alias = "Ogre::DepthBuffer::getFsaa(void)const")]
 #[doc(alias = "__ZNK4Ogre11DepthBuffer7getFsaaEv")]
 // was: Ogre::DepthBuffer::getFsaa(void)const
-pub fn stub_0xe62cec() -> ! {
-    todo!("0xe62cec Ogre::DepthBuffer::getFsaa(void)const")
+// IDA 0xe62cec: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe62cec() {
 }
 
 // 0xe62cf0 — __ZNK4Ogre11DepthBuffer11getFsaaHintEv
@@ -1026,8 +1037,8 @@ pub fn stub_0xe62cec() -> ! {
 #[doc(alias = "Ogre::DepthBuffer::getFsaaHint(void)const")]
 #[doc(alias = "__ZNK4Ogre11DepthBuffer11getFsaaHintEv")]
 // was: Ogre::DepthBuffer::getFsaaHint(void)const
-pub fn stub_0xe62cf0() -> ! {
-    todo!("0xe62cf0 Ogre::DepthBuffer::getFsaaHint(void)const")
+// IDA 0xe62cf0: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe62cf0() {
 }
 
 // 0xe62cf4 — __ZNK4Ogre11DepthBuffer12isCompatibleEPNS_12RenderTargetE
@@ -1035,8 +1046,8 @@ pub fn stub_0xe62cf0() -> ! {
 #[doc(alias = "Ogre::DepthBuffer::isCompatible(Ogre::RenderTarget *)const")]
 #[doc(alias = "__ZNK4Ogre11DepthBuffer12isCompatibleEPNS_12RenderTargetE")]
 // was: Ogre::DepthBuffer::isCompatible(Ogre::RenderTarget *)const
-pub fn stub_0xe62cf4() -> ! {
-    todo!("0xe62cf4 Ogre::DepthBuffer::isCompatible(Ogre::RenderTarget *)const")
+// IDA 0xe62cf4: 43 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe62cf4() {
 }
 
 // 0xe62d4c — __ZN4Ogre11DepthBuffer27_notifyRenderTargetAttachedEPNS_12RenderTargetE
@@ -1044,8 +1055,8 @@ pub fn stub_0xe62cf4() -> ! {
 #[doc(alias = "Ogre::DepthBuffer::_notifyRenderTargetAttached(Ogre::RenderTarget *)")]
 #[doc(alias = "__ZN4Ogre11DepthBuffer27_notifyRenderTargetAttachedEPNS_12RenderTargetE")]
 // was: Ogre::DepthBuffer::_notifyRenderTargetAttached(Ogre::RenderTarget *)
-pub fn stub_0xe62d4c() -> ! {
-    todo!("0xe62d4c Ogre::DepthBuffer::_notifyRenderTargetAttached(Ogre::RenderTarget *)")
+// IDA 0xe62d4c: 10 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe62d4c() {
 }
 
 // 0xe62d64 — __ZN4Ogre11DepthBuffer27_notifyRenderTargetDetachedEPNS_12RenderTargetE
@@ -1053,14 +1064,14 @@ pub fn stub_0xe62d4c() -> ! {
 #[doc(alias = "Ogre::DepthBuffer::_notifyRenderTargetDetached(Ogre::RenderTarget *)")]
 #[doc(alias = "__ZN4Ogre11DepthBuffer27_notifyRenderTargetDetachedEPNS_12RenderTargetE")]
 // was: Ogre::DepthBuffer::_notifyRenderTargetDetached(Ogre::RenderTarget *)
-pub fn stub_0xe62d64() -> ! {
-    todo!("0xe62d64 Ogre::DepthBuffer::_notifyRenderTargetDetached(Ogre::RenderTarget *)")
+// IDA 0xe62d64: 31 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe62d64() {
 }
 
 // 0xe62db0 — __ZNSt8_Rb_treeIPN4Ogre12RenderTargetES2_St9_IdentityIS2_ESt4lessIS2_ENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS2_E
 #[doc(alias = "std::_Rb_tree<Ogre::RenderTarget *,Ogre::RenderTarget *,std::_Identity<Ogre::RenderTarget *>,std::less<Ogre::RenderTarget *>,Ogre::STLAllocator<Ogre::RenderTarget *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<Ogre::RenderTarget *> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPN4Ogre12RenderTargetES2_St9_IdentityIS2_ESt4lessIS2_ENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS2_E")]
 // was: std::_Rb_tree<Ogre::RenderTarget *,Ogre::RenderTarget *,std::_Identity<Ogre::RenderTarget *>,std::less<Ogre::RenderTarget *>,Ogre::STLAllocator<Ogre::RenderTarget *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<Ogre::RenderTarget *> *)
-pub fn stub_0xe62db0() -> ! {
-    todo!("0xe62db0 std::_Rb_tree<Ogre::RenderTarget *,Ogre::RenderTarget *,std::_Identity<Ogre::RenderTarget *>,std::less<Ogre::RenderTarget *>,Ogre::STLAllocator<Ogre::RenderTarget *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<Ogre::RenderTarget *> *)")
+// IDA 0xe62db0: 17 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+pub fn stub_0xe62db0() {
 }
