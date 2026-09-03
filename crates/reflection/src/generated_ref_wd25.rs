@@ -73,24 +73,24 @@ pub fn stub_0x3bbc68() -> ! {
 // type: void __fastcall(RBX::FormFactorPart *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
 #[doc(alias = "__ZThn32_N3RBX14FormFactorPartD0Ev")]
-pub fn stub_0x3bbc78() -> ! {
-    todo!("0x3bbc78")
+pub fn stub_0x3bbc78() {
+    // IDA 0x3bbc78: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bbc80 — __ZThn36_N3RBX14FormFactorPartD0Ev
 // type: void __fastcall(RBX::FormFactorPart *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
 #[doc(alias = "__ZThn36_N3RBX14FormFactorPartD0Ev")]
-pub fn stub_0x3bbc80() -> ! {
-    todo!("0x3bbc80")
+pub fn stub_0x3bbc80() {
+    // IDA 0x3bbc80: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bbc88 — __ZThn132_N3RBX14FormFactorPartD0Ev
 // type: void __fastcall(RBX::FormFactorPart *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
 #[doc(alias = "__ZThn132_N3RBX14FormFactorPartD0Ev")]
-pub fn stub_0x3bbc88() -> ! {
-    todo!("0x3bbc88")
+pub fn stub_0x3bbc88() {
+    // IDA 0x3bbc88: __ZThn132 thunk (D0 deleting dtor): `this -= 132`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bbc90 — __ZN3RBX14FormFactorPartD2Ev
@@ -105,24 +105,24 @@ pub fn stub_0x3bbc90() -> ! {
 // type: void __fastcall(RBX::FormFactorPart *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
 #[doc(alias = "__ZThn32_N3RBX14FormFactorPartD1Ev")]
-pub fn stub_0x3bbc98() -> ! {
-    todo!("0x3bbc98")
+pub fn stub_0x3bbc98() {
+    // IDA 0x3bbc98: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bbcac — __ZThn36_N3RBX14FormFactorPartD1Ev
 // type: void __fastcall(RBX::FormFactorPart *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
 #[doc(alias = "__ZThn36_N3RBX14FormFactorPartD1Ev")]
-pub fn stub_0x3bbcac() -> ! {
-    todo!("0x3bbcac")
+pub fn stub_0x3bbcac() {
+    // IDA 0x3bbcac: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bbcc0 — __ZThn132_N3RBX14FormFactorPartD1Ev
 // type: void __fastcall(RBX::FormFactorPart *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
 #[doc(alias = "__ZThn132_N3RBX14FormFactorPartD1Ev")]
-pub fn stub_0x3bbcc0() -> ! {
-    todo!("0x3bbcc0")
+pub fn stub_0x3bbcc0() {
+    // IDA 0x3bbcc0: __ZThn132 thunk (D1 base dtor): `this -= 132`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bbf78 — __ZN3RBX17BasicPartInstanceC1Ev
@@ -161,24 +161,24 @@ pub fn stub_0x3bc104() -> ! {
 // type: void __fastcall(RBX::BasicPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BasicPartInstance::~BasicPartInstance()")]
 #[doc(alias = "__ZThn32_N3RBX17BasicPartInstanceD0Ev")]
-pub fn stub_0x3bc114() -> ! {
-    todo!("0x3bc114")
+pub fn stub_0x3bc114() {
+    // IDA 0x3bc114: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bc11c — __ZThn36_N3RBX17BasicPartInstanceD0Ev
 // type: void __fastcall(RBX::BasicPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BasicPartInstance::~BasicPartInstance()")]
 #[doc(alias = "__ZThn36_N3RBX17BasicPartInstanceD0Ev")]
-pub fn stub_0x3bc11c() -> ! {
-    todo!("0x3bc11c")
+pub fn stub_0x3bc11c() {
+    // IDA 0x3bc11c: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bc124 — __ZThn132_N3RBX17BasicPartInstanceD0Ev
 // type: void __fastcall(RBX::BasicPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BasicPartInstance::~BasicPartInstance()")]
 #[doc(alias = "__ZThn132_N3RBX17BasicPartInstanceD0Ev")]
-pub fn stub_0x3bc124() -> ! {
-    todo!("0x3bc124")
+pub fn stub_0x3bc124() {
+    // IDA 0x3bc124: __ZThn132 thunk (D0 deleting dtor): `this -= 132`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bc12c — __ZN3RBX17BasicPartInstanceD2Ev
@@ -193,24 +193,24 @@ pub fn stub_0x3bc12c() -> ! {
 // type: void __fastcall(RBX::BasicPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BasicPartInstance::~BasicPartInstance()")]
 #[doc(alias = "__ZThn32_N3RBX17BasicPartInstanceD1Ev")]
-pub fn stub_0x3bc134() -> ! {
-    todo!("0x3bc134")
+pub fn stub_0x3bc134() {
+    // IDA 0x3bc134: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bc148 — __ZThn36_N3RBX17BasicPartInstanceD1Ev
 // type: void __fastcall(RBX::BasicPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BasicPartInstance::~BasicPartInstance()")]
 #[doc(alias = "__ZThn36_N3RBX17BasicPartInstanceD1Ev")]
-pub fn stub_0x3bc148() -> ! {
-    todo!("0x3bc148")
+pub fn stub_0x3bc148() {
+    // IDA 0x3bc148: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bc15c — __ZThn132_N3RBX17BasicPartInstanceD1Ev
 // type: void __fastcall(RBX::BasicPartInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BasicPartInstance::~BasicPartInstance()")]
 #[doc(alias = "__ZThn132_N3RBX17BasicPartInstanceD1Ev")]
-pub fn stub_0x3bc15c() -> ! {
-    todo!("0x3bc15c")
+pub fn stub_0x3bc15c() {
+    // IDA 0x3bc15c: __ZThn132 thunk (D1 base dtor): `this -= 132`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bc170 — __ZN3RBX17BasicPartInstance18validateFormFactorERNS_12PartInstance10FormFactorE
@@ -282,15 +282,15 @@ pub fn stub_0x3bca30() -> ! {
 // 0x3bcae0 — __ZThn132_N3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn132_N3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEED1Ev")]
-pub fn stub_0x3bcae0() -> ! {
-    todo!("0x3bcae0")
+pub fn stub_0x3bcae0() {
+    // IDA 0x3bcae0: __ZThn132 thunk (D1 base dtor): `this -= 132`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bcaf4 — __ZThn132_N3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn132_N3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEED0Ev")]
-pub fn stub_0x3bcaf4() -> ! {
-    todo!("0x3bcaf4")
+pub fn stub_0x3bcaf4() {
+    // IDA 0x3bcaf4: __ZThn132 thunk (D0 deleting dtor): `this -= 132`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bcba4 — __ZNK3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEE12getClassNameEv
@@ -324,15 +324,15 @@ pub fn stub_0x3bcef0() -> ! {
 // 0x3bcfa0 — __ZThn132_N3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn132_N3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEED1Ev")]
-pub fn stub_0x3bcfa0() -> ! {
-    todo!("0x3bcfa0")
+pub fn stub_0x3bcfa0() {
+    // IDA 0x3bcfa0: __ZThn132 thunk (D1 base dtor): `this -= 132`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bcfb4 — __ZThn132_N3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "__ZThn132_N3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEED0Ev")]
-pub fn stub_0x3bcfb4() -> ! {
-    todo!("0x3bcfb4")
+pub fn stub_0x3bcfb4() {
+    // IDA 0x3bcfb4: __ZThn132 thunk (D0 deleting dtor): `this -= 132`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bcfbc — __ZN3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEE17static_getCreatorEv
@@ -358,29 +358,29 @@ pub fn stub_0x3bd034() -> ! {
 // 0x3bd114 — __ZThn32_N3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEED1Ev")]
-pub fn stub_0x3bd114() -> ! {
-    todo!("0x3bd114")
+pub fn stub_0x3bd114() {
+    // IDA 0x3bd114: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bd128 — __ZThn36_N3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEED1Ev")]
-pub fn stub_0x3bd128() -> ! {
-    todo!("0x3bd128")
+pub fn stub_0x3bd128() {
+    // IDA 0x3bd128: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bd13c — __ZThn32_N3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEED0Ev")]
-pub fn stub_0x3bd13c() -> ! {
-    todo!("0x3bd13c")
+pub fn stub_0x3bd13c() {
+    // IDA 0x3bd13c: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bd144 — __ZThn36_N3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX14FactoryProductINS_17BasicPartInstanceENS_14FormFactorPartELZNS_10sBasicPartEENS_8InstanceEED0Ev")]
-pub fn stub_0x3bd144() -> ! {
-    todo!("0x3bd144")
+pub fn stub_0x3bd144() {
+    // IDA 0x3bd144: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3be1ac — __ZN3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEEC2Ev
@@ -393,29 +393,29 @@ pub fn stub_0x3be1ac() -> ! {
 // 0x3be3b8 — __ZThn32_N3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEED1Ev")]
-pub fn stub_0x3be3b8() -> ! {
-    todo!("0x3be3b8")
+pub fn stub_0x3be3b8() {
+    // IDA 0x3be3b8: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3be3cc — __ZThn32_N3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEED0Ev")]
-pub fn stub_0x3be3cc() -> ! {
-    todo!("0x3be3cc")
+pub fn stub_0x3be3cc() {
+    // IDA 0x3be3cc: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3be47c — __ZThn36_N3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEED1Ev")]
-pub fn stub_0x3be47c() -> ! {
-    todo!("0x3be47c")
+pub fn stub_0x3be47c() {
+    // IDA 0x3be47c: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3be490 — __ZThn36_N3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX17NonFactoryProductINS_12PartInstanceELZNS_15sFormFactorPartEEED0Ev")]
-pub fn stub_0x3be490() -> ! {
-    todo!("0x3be490")
+pub fn stub_0x3be490() {
+    // IDA 0x3be490: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3beb38 — __GLOBAL__I_a_162
@@ -507,16 +507,16 @@ pub fn stub_0x3bf254() -> ! {
 // type: void __fastcall(RBX::BevelMesh *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BevelMesh::~BevelMesh()")]
 #[doc(alias = "__ZThn32_N3RBX9BevelMeshD1Ev")]
-pub fn stub_0x3bf27c() -> ! {
-    todo!("0x3bf27c")
+pub fn stub_0x3bf27c() {
+    // IDA 0x3bf27c: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bf284 — __ZThn32_N3RBX9BevelMeshD0Ev
 // type: void __fastcall(RBX::BevelMesh *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BevelMesh::~BevelMesh()")]
 #[doc(alias = "__ZThn32_N3RBX9BevelMeshD0Ev")]
-pub fn stub_0x3bf284() -> ! {
-    todo!("0x3bf284")
+pub fn stub_0x3bf284() {
+    // IDA 0x3bf284: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bf328 — __ZThn32_NK3RBX17NonFactoryProductINS_13DataModelMeshELZNS_10sBevelMeshEEE12getClassNameEv
@@ -529,16 +529,16 @@ pub fn stub_0x3bf328() -> ! {
 // type: void __fastcall(RBX::BevelMesh *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BevelMesh::~BevelMesh()")]
 #[doc(alias = "__ZThn36_N3RBX9BevelMeshD1Ev")]
-pub fn stub_0x3bf350() -> ! {
-    todo!("0x3bf350")
+pub fn stub_0x3bf350() {
+    // IDA 0x3bf350: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3bf358 — __ZThn36_N3RBX9BevelMeshD0Ev
 // type: void __fastcall(RBX::BevelMesh *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BevelMesh::~BevelMesh()")]
 #[doc(alias = "__ZThn36_N3RBX9BevelMeshD0Ev")]
-pub fn stub_0x3bf358() -> ! {
-    todo!("0x3bf358")
+pub fn stub_0x3bf358() {
+    // IDA 0x3bf358: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3bf3fc — __ZN3RBX4Name13callDoDeclareILZNS_10sBevelMeshEEEEvv
@@ -915,14 +915,14 @@ pub fn stub_0x3c12b8() -> ! {
 // type: void __fastcall(RBX::BillboardGui *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::~BillboardGui()")]
 #[doc(alias = "__ZThn32_N3RBX12BillboardGuiD1Ev")]
-pub fn stub_0x3c12bc() -> ! {
-    todo!("0x3c12bc")
+pub fn stub_0x3c12bc() {
+    // IDA 0x3c12bc: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3c12c4 — __ZThn32_N3RBX12BillboardGuiD0Ev
 // type: void __fastcall(RBX::BillboardGui *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BillboardGui::~BillboardGui()")]
 #[doc(alias = "__ZThn32_N3RBX12BillboardGuiD0Ev")]
-pub fn stub_0x3c12c4() -> ! {
-    todo!("0x3c12c4")
+pub fn stub_0x3c12c4() {
+    // IDA 0x3c12c4: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }

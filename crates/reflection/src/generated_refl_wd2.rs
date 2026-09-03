@@ -256,15 +256,15 @@ pub fn stub_0x2ee900() -> ! {
 // 0x2ee9f8 — __ZThn36_N3RBX18MoveResizeJoinToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::MoveResizeJoinTool::~MoveResizeJoinTool()")]
 #[doc(alias = "__ZThn36_N3RBX18MoveResizeJoinToolD1Ev")]
-pub fn stub_0x2ee9f8() -> ! {
-    todo!("0x2ee9f8 non-virtual thunk toRBX::MoveResizeJoinTool::~MoveResizeJoinTool()")
+pub fn stub_0x2ee9f8() {
+    // IDA 0x2ee9f8: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2eeadc — __ZThn36_N3RBX18MoveResizeJoinToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::MoveResizeJoinTool::~MoveResizeJoinTool()")]
 #[doc(alias = "__ZThn36_N3RBX18MoveResizeJoinToolD0Ev")]
-pub fn stub_0x2eeadc() -> ! {
-    todo!("0x2eeadc non-virtual thunk toRBX::MoveResizeJoinTool::~MoveResizeJoinTool()")
+pub fn stub_0x2eeadc() {
+    // IDA 0x2eeadc: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2eebd8 — __GLOBAL__I_a_98
@@ -305,8 +305,8 @@ pub fn stub_0x2ef024() -> ! {
 // 0x2ef028 — __ZThn36_N3RBX8NullToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::NullTool::~NullTool()")]
 #[doc(alias = "__ZThn36_N3RBX8NullToolD0Ev")]
-pub fn stub_0x2ef028() -> ! {
-    todo!("0x2ef028 non-virtual thunk toRBX::NullTool::~NullTool()")
+pub fn stub_0x2ef028() {
+    // IDA 0x2ef028: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2ef030 — __ZN3RBX8NullToolD2Ev
@@ -319,8 +319,8 @@ pub fn stub_0x2ef030() -> ! {
 // 0x2ef124 — __ZThn36_N3RBX8NullToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::NullTool::~NullTool()")]
 #[doc(alias = "__ZThn36_N3RBX8NullToolD1Ev")]
-pub fn stub_0x2ef124() -> ! {
-    todo!("0x2ef124 non-virtual thunk toRBX::NullTool::~NullTool()")
+pub fn stub_0x2ef124() {
+    // IDA 0x2ef124: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2ef12c — __ZN3RBX11NewNullToolC1EPNS_9WorkspaceE
@@ -354,15 +354,15 @@ pub fn stub_0x2ef2f4() -> ! {
 // 0x2ef328 — __ZThn36_N3RBX11NewNullToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::NewNullTool::~NewNullTool()")]
 #[doc(alias = "__ZThn36_N3RBX11NewNullToolD0Ev")]
-pub fn stub_0x2ef328() -> ! {
-    todo!("0x2ef328 non-virtual thunk toRBX::NewNullTool::~NewNullTool()")
+pub fn stub_0x2ef328() {
+    // IDA 0x2ef328: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2ef330 — __ZThn36_N3RBX11NewNullToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::NewNullTool::~NewNullTool()")]
 #[doc(alias = "__ZThn36_N3RBX11NewNullToolD1Ev")]
-pub fn stub_0x2ef330() -> ! {
-    todo!("0x2ef330 non-virtual thunk toRBX::NewNullTool::~NewNullTool()")
+pub fn stub_0x2ef330() {
+    // IDA 0x2ef330: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2ef364 — __ZN3RBX11NewNullTool16getIndicatedPartERKNS_7UIEventERKbPPNS_12PartInstanceEPbPN3G3D7Vector3E
@@ -616,8 +616,8 @@ pub fn stub_0x2f1478() -> ! {
 // 0x2f147c — __ZThn36_N3RBX12PartDragToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PartDragTool::~PartDragTool()")]
 #[doc(alias = "__ZThn36_N3RBX12PartDragToolD0Ev")]
-pub fn stub_0x2f147c() -> ! {
-    todo!("0x2f147c non-virtual thunk toRBX::PartDragTool::~PartDragTool()")
+pub fn stub_0x2f147c() {
+    // IDA 0x2f147c: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2f1484 — __ZN3RBX12PartDragToolD2Ev
@@ -630,8 +630,8 @@ pub fn stub_0x2f1484() -> ! {
 // 0x2f15e4 — __ZThn36_N3RBX12PartDragToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PartDragTool::~PartDragTool()")]
 #[doc(alias = "__ZThn36_N3RBX12PartDragToolD1Ev")]
-pub fn stub_0x2f15e4() -> ! {
-    todo!("0x2f15e4 non-virtual thunk toRBX::PartDragTool::~PartDragTool()")
+pub fn stub_0x2f15e4() {
+    // IDA 0x2f15e4: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2f15ec — __ZN3RBX11shared_fromINS_12PartDragToolEEEN5boost10shared_ptrIT_EEPS4_

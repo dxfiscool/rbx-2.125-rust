@@ -410,8 +410,8 @@ pub fn stub_0xcda1c0() -> ! {
 // type: void __fastcall(Ogre::ManualObject *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::ManualObject::~ManualObject()")]
 #[doc(alias = "__ZThn4_N4Ogre12ManualObjectD0Ev")]
-pub fn stub_0xcda1cc() -> ! {
-    todo!("0xcda1cc non-virtual thunk toOgre::ManualObject::~ManualObject()")
+pub fn stub_0xcda1cc() {
+    // IDA 0xcda1cc: __ZThn4 thunk (D0 deleting dtor): `this -= 4`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xcda260 — __ZN4Ogre12ManualObjectD2Ev
@@ -426,8 +426,8 @@ pub fn stub_0xcda260() -> ! {
 // type: void __fastcall(Ogre::ManualObject *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::ManualObject::~ManualObject()")]
 #[doc(alias = "__ZThn4_N4Ogre12ManualObjectD1Ev")]
-pub fn stub_0xcda394() -> ! {
-    todo!("0xcda394 non-virtual thunk toOgre::ManualObject::~ManualObject()")
+pub fn stub_0xcda394() {
+    // IDA 0xcda394: __ZThn4 thunk (D1 base dtor): `this -= 4`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xcda3a0 — __ZN4Ogre12ManualObject5clearEv

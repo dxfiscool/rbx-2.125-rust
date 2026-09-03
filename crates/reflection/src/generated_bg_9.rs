@@ -303,8 +303,8 @@ pub fn stub_0x3c4a0() -> ! {
 // 0x3c4e0 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED1Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED1Ev")]
-pub fn stub_0x3c4e0() -> ! {
-    todo!("0x3c4e0 non-virtual thunk toboost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")
+pub fn stub_0x3c4e0() {
+    // IDA 0x3c4e0: __ZThn20 thunk (D1 base dtor): `this -= 20`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3c528 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev
@@ -332,8 +332,8 @@ pub fn stub_0x3c5b8() -> ! {
 // 0x3c678 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev")]
-pub fn stub_0x3c678() -> ! {
-    todo!("0x3c678 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
+pub fn stub_0x3c678() {
+    // IDA 0x3c678: __ZThn20 thunk (D0 deleting dtor): `this -= 20`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3c680 — __ZN5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev
@@ -385,8 +385,8 @@ pub fn stub_0x3c958() -> ! {
 // 0x3c998 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED1Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED1Ev")]
-pub fn stub_0x3c998() -> ! {
-    todo!("0x3c998 non-virtual thunk toboost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")
+pub fn stub_0x3c998() {
+    // IDA 0x3c998: __ZThn20 thunk (D1 base dtor): `this -= 20`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3c9e0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED1Ev
@@ -414,8 +414,8 @@ pub fn stub_0x3ca70() -> ! {
 // 0x3cb30 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev")]
-pub fn stub_0x3cb30() -> ! {
-    todo!("0x3cb30 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")
+pub fn stub_0x3cb30() {
+    // IDA 0x3cb30: __ZThn20 thunk (D0 deleting dtor): `this -= 20`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3cb38 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE5cloneEv

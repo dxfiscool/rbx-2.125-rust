@@ -640,16 +640,16 @@ pub fn stub_0xb8d0() -> ! {
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 #[doc(alias = "__ZThn32_N19CRenderSettingsItemD1Ev")]
-pub fn stub_0xb8e0() -> ! {
-    todo!("0xb8e0 non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
+pub fn stub_0xb8e0() {
+    // IDA 0xb8e0: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xb8e8 — __ZThn32_N19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 #[doc(alias = "__ZThn32_N19CRenderSettingsItemD0Ev")]
-pub fn stub_0xb8e8() -> ! {
-    todo!("0xb8e8 non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
+pub fn stub_0xb8e8() {
+    // IDA 0xb8e8: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xb900 — __ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
@@ -663,16 +663,16 @@ pub fn stub_0xb900() -> ! {
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 #[doc(alias = "__ZThn36_N19CRenderSettingsItemD1Ev")]
-pub fn stub_0xb910() -> ! {
-    todo!("0xb910 non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
+pub fn stub_0xb910() {
+    // IDA 0xb910: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xb918 — __ZThn36_N19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 #[doc(alias = "__ZThn36_N19CRenderSettingsItemD0Ev")]
-pub fn stub_0xb918() -> ! {
-    todo!("0xb918 non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
+pub fn stub_0xb918() {
+    // IDA 0xb918: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xb930 — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev
@@ -843,29 +843,29 @@ pub fn stub_0xf87c() -> ! {
 // 0xf8c8 — __ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev
 // type: void __fastcall(_QWORD *)
 #[doc(alias = "__ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev")]
-pub fn stub_0xf8c8() -> ! {
-    todo!("0xf8c8 __ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev")
+pub fn stub_0xf8c8() {
+    // IDA 0xf8c8: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf90c — __ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev
 // type: int __fastcall(_QWORD *)
 #[doc(alias = "__ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev")]
-pub fn stub_0xf90c() -> ! {
-    todo!("0xf90c __ZThn32_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev")
+pub fn stub_0xf90c() {
+    // IDA 0xf90c: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xf964 — __ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev")]
-pub fn stub_0xf964() -> ! {
-    todo!("0xf964 __ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED1Ev")
+pub fn stub_0xf964() {
+    // IDA 0xf964: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xf9a8 — __ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev")]
-pub fn stub_0xf9a8() -> ! {
-    todo!("0xf9a8 __ZThn36_N3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEED0Ev")
+pub fn stub_0xf9a8() {
+    // IDA 0xf9a8: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x142b8 — __ZNSt3mapIPKN3RBX4NameENS0_15CRenderSettings16ResolutionPresetESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_

@@ -341,15 +341,15 @@ pub fn stub_0x372500() -> ! {
 // 0x372504 — __ZThn32_N3RBX10Soundscape12SoundServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
 #[doc(alias = "__ZThn32_N3RBX10Soundscape12SoundServiceD0Ev")]
-pub fn stub_0x372504() -> ! {
-    todo!("0x372504 non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")
+pub fn stub_0x372504() {
+    // IDA 0x372504: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x37250c — __ZThn36_N3RBX10Soundscape12SoundServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
 #[doc(alias = "__ZThn36_N3RBX10Soundscape12SoundServiceD0Ev")]
-pub fn stub_0x37250c() -> ! {
-    todo!("0x37250c non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")
+pub fn stub_0x37250c() {
+    // IDA 0x37250c: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x372514 — __ZN3RBX10Soundscape12SoundServiceD2Ev
@@ -362,15 +362,15 @@ pub fn stub_0x372514() -> ! {
 // 0x3728b0 — __ZThn32_N3RBX10Soundscape12SoundServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
 #[doc(alias = "__ZThn32_N3RBX10Soundscape12SoundServiceD1Ev")]
-pub fn stub_0x3728b0() -> ! {
-    todo!("0x3728b0 non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")
+pub fn stub_0x3728b0() {
+    // IDA 0x3728b0: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3728b8 — __ZThn36_N3RBX10Soundscape12SoundServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
 #[doc(alias = "__ZThn36_N3RBX10Soundscape12SoundServiceD1Ev")]
-pub fn stub_0x3728b8() -> ! {
-    todo!("0x3728b8 non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")
+pub fn stub_0x3728b8() {
+    // IDA 0x3728b8: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3728c0 — __ZN3RBX10Soundscape12SoundService9closeFmodEv
@@ -565,15 +565,15 @@ pub fn stub_0x375094() -> ! {
 // 0x375098 — __ZThn32_N3RBX10Soundscape12SoundChannelD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
 #[doc(alias = "__ZThn32_N3RBX10Soundscape12SoundChannelD0Ev")]
-pub fn stub_0x375098() -> ! {
-    todo!("0x375098 non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")
+pub fn stub_0x375098() {
+    // IDA 0x375098: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3750a0 — __ZThn36_N3RBX10Soundscape12SoundChannelD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
 #[doc(alias = "__ZThn36_N3RBX10Soundscape12SoundChannelD0Ev")]
-pub fn stub_0x3750a0() -> ! {
-    todo!("0x3750a0 non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")
+pub fn stub_0x3750a0() {
+    // IDA 0x3750a0: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3750a8 — __ZN3RBX10Soundscape12SoundChannelD2Ev
@@ -586,15 +586,15 @@ pub fn stub_0x3750a8() -> ! {
 // 0x375330 — __ZThn32_N3RBX10Soundscape12SoundChannelD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
 #[doc(alias = "__ZThn32_N3RBX10Soundscape12SoundChannelD1Ev")]
-pub fn stub_0x375330() -> ! {
-    todo!("0x375330 non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")
+pub fn stub_0x375330() {
+    // IDA 0x375330: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x375338 — __ZThn36_N3RBX10Soundscape12SoundChannelD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
 #[doc(alias = "__ZThn36_N3RBX10Soundscape12SoundChannelD1Ev")]
-pub fn stub_0x375338() -> ! {
-    todo!("0x375338 non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")
+pub fn stub_0x375338() {
+    // IDA 0x375338: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x375340 — __ZNK3RBX10Soundscape12SoundService11getCpuStatsERNS1_8CpuStatsE

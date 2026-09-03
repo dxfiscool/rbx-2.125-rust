@@ -830,8 +830,8 @@ pub fn stub_0xe433bc() -> ! {
 // 0xe433c8 — __ZThn12_N4Ogre22TextAreaOverlayElementD0Ev
 #[doc(alias = "non-virtual thunk toOgre::TextAreaOverlayElement::~TextAreaOverlayElement()")]
 #[doc(alias = "__ZThn12_N4Ogre22TextAreaOverlayElementD0Ev")]
-pub fn stub_0xe433c8() -> ! {
-    todo!("0xe433c8 non-virtual thunk toOgre::TextAreaOverlayElement::~TextAreaOverlayElement()")
+pub fn stub_0xe433c8() {
+    // IDA 0xe433c8: __ZThn12 thunk (D0 deleting dtor): `this -= 12`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xe4345c — __ZN4Ogre22TextAreaOverlayElementD2Ev
@@ -844,6 +844,6 @@ pub fn stub_0xe4345c() -> ! {
 // 0xe43594 — __ZThn12_N4Ogre22TextAreaOverlayElementD1Ev
 #[doc(alias = "non-virtual thunk toOgre::TextAreaOverlayElement::~TextAreaOverlayElement()")]
 #[doc(alias = "__ZThn12_N4Ogre22TextAreaOverlayElementD1Ev")]
-pub fn stub_0xe43594() -> ! {
-    todo!("0xe43594 non-virtual thunk toOgre::TextAreaOverlayElement::~TextAreaOverlayElement()")
+pub fn stub_0xe43594() {
+    // IDA 0xe43594: __ZThn12 thunk (D1 base dtor): `this -= 12`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }

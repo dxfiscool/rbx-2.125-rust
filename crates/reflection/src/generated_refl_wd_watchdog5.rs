@@ -376,15 +376,15 @@ pub fn stub_0x30e908() -> ! {
 // 0x30e90c — __ZThn32_N3RBX13ContentFilterD0Ev
 #[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 #[doc(alias = "__ZThn32_N3RBX13ContentFilterD0Ev")]
-pub fn stub_0x30e90c() -> ! {
-    todo!("0x30e90c non-virtual thunk toRBX::ContentFilter::~ContentFilter()")
+pub fn stub_0x30e90c() {
+    // IDA 0x30e90c: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x30e914 — __ZThn36_N3RBX13ContentFilterD0Ev
 #[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 #[doc(alias = "__ZThn36_N3RBX13ContentFilterD0Ev")]
-pub fn stub_0x30e914() -> ! {
-    todo!("0x30e914 non-virtual thunk toRBX::ContentFilter::~ContentFilter()")
+pub fn stub_0x30e914() {
+    // IDA 0x30e914: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x30e91c — __ZN3RBX13ContentFilterD2Ev
@@ -397,15 +397,15 @@ pub fn stub_0x30e91c() -> ! {
 // 0x30e96c — __ZThn32_N3RBX13ContentFilterD1Ev
 #[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 #[doc(alias = "__ZThn32_N3RBX13ContentFilterD1Ev")]
-pub fn stub_0x30e96c() -> ! {
-    todo!("0x30e96c non-virtual thunk toRBX::ContentFilter::~ContentFilter()")
+pub fn stub_0x30e96c() {
+    // IDA 0x30e96c: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x30e974 — __ZThn36_N3RBX13ContentFilterD1Ev
 #[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 #[doc(alias = "__ZThn36_N3RBX13ContentFilterD1Ev")]
-pub fn stub_0x30e974() -> ! {
-    todo!("0x30e974 non-virtual thunk toRBX::ContentFilter::~ContentFilter()")
+pub fn stub_0x30e974() {
+    // IDA 0x30e974: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x30e97c — __ZN3RBX13ContentFilter14truncateStringERSs

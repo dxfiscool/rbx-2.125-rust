@@ -782,15 +782,15 @@ pub fn stub_0xd561ec() -> ! {
 // 0xd561f0 — __ZThn4_N4Ogre24FrameTimeControllerValueD1Ev
 // type: void __fastcall(Ogre::FrameTimeControllerValue *__hidden this)
 #[doc(alias = "__ZThn4_N4Ogre24FrameTimeControllerValueD1Ev")]
-pub fn stub_0xd561f0() -> ! {
-    todo!("0xd561f0 __ZThn4_N4Ogre24FrameTimeControllerValueD1Ev")
+pub fn stub_0xd561f0() {
+    // IDA 0xd561f0: __ZThn4 thunk (D1 base dtor): `this -= 4`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd561f4 — __ZThn4_N4Ogre24FrameTimeControllerValueD0Ev
 // type: void __fastcall(Ogre::FrameTimeControllerValue *__hidden this)
 #[doc(alias = "__ZThn4_N4Ogre24FrameTimeControllerValueD0Ev")]
-pub fn stub_0xd561f4() -> ! {
-    todo!("0xd561f4 __ZThn4_N4Ogre24FrameTimeControllerValueD0Ev")
+pub fn stub_0xd561f4() {
+    // IDA 0xd561f4: __ZThn4 thunk (D0 deleting dtor): `this -= 4`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd56280 — __ZN4Ogre27TextureFrameControllerValueD1Ev

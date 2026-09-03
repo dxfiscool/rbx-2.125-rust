@@ -190,8 +190,8 @@ pub fn stub_0xd4ac8() -> ! {
 
 // 0xd4ff8 — __ZThn360_N4FMOD12OutputPolledD0Ev
 #[doc(alias = "non-virtual thunk toFMOD::OutputPolled::~OutputPolled()")]
-pub fn stub_0xd4ff8() -> ! {
-    todo!("0xd4ff8 __ZThn360_N4FMOD12OutputPolledD0Ev")
+pub fn stub_0xd4ff8() {
+    // IDA 0xd4ff8: __ZThn360 thunk (D0 deleting dtor): `this -= 360`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd5000 — __ZN4FMOD12OutputPolledD0Ev
@@ -202,8 +202,8 @@ pub fn stub_0xd5000() -> ! {
 
 // 0xd5038 — __ZThn360_N4FMOD12OutputPolledD1Ev
 #[doc(alias = "non-virtual thunk toFMOD::OutputPolled::~OutputPolled()")]
-pub fn stub_0xd5038() -> ! {
-    todo!("0xd5038 __ZThn360_N4FMOD12OutputPolledD1Ev")
+pub fn stub_0xd5038() {
+    // IDA 0xd5038: __ZThn360 thunk (D1 base dtor): `this -= 360`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd5040 — __ZN4FMOD12OutputPolledD1Ev

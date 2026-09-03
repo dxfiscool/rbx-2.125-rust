@@ -710,32 +710,32 @@ pub fn stub_0x64c5f0() -> ! {
 // type: void __fastcall(RBX::Stats::TypedPercentItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats16TypedPercentItemD1Ev")]
-pub fn stub_0x64c638() -> ! {
-    todo!("0x64c638")
+pub fn stub_0x64c638() {
+    // IDA 0x64c638: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x64c77c — __ZThn32_N3RBX5Stats16TypedPercentItemD0Ev
 // type: void __fastcall(RBX::Stats::TypedPercentItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats16TypedPercentItemD0Ev")]
-pub fn stub_0x64c77c() -> ! {
-    todo!("0x64c77c")
+pub fn stub_0x64c77c() {
+    // IDA 0x64c77c: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x64c8d4 — __ZThn36_N3RBX5Stats16TypedPercentItemD1Ev
 // type: void __fastcall(RBX::Stats::TypedPercentItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats16TypedPercentItemD1Ev")]
-pub fn stub_0x64c8d4() -> ! {
-    todo!("0x64c8d4")
+pub fn stub_0x64c8d4() {
+    // IDA 0x64c8d4: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x64ca18 — __ZThn36_N3RBX5Stats16TypedPercentItemD0Ev
 // type: void __fastcall(RBX::Stats::TypedPercentItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats16TypedPercentItemD0Ev")]
-pub fn stub_0x64ca18() -> ! {
-    todo!("0x64ca18")
+pub fn stub_0x64ca18() {
+    // IDA 0x64ca18: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x64cb70 — __ZN3RBX5Stats14TypedStatsItemIfED1Ev
@@ -748,15 +748,15 @@ pub fn stub_0x64cb70() -> ! {
 // 0x64ccb8 — __ZThn32_N3RBX5Stats14TypedStatsItemIfED1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemIfED1Ev")]
-pub fn stub_0x64ccb8() -> ! {
-    todo!("0x64ccb8")
+pub fn stub_0x64ccb8() {
+    // IDA 0x64ccb8: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x64ce00 — __ZThn36_N3RBX5Stats14TypedStatsItemIfED0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats14TypedStatsItemIfED0Ev")]
-pub fn stub_0x64ce00() -> ! {
-    todo!("0x64ce00")
+pub fn stub_0x64ce00() {
+    // IDA 0x64ce00: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x64d050 — __ZN3RBX5Stats14TypedStatsItemIfE5derefEPKf
@@ -844,32 +844,32 @@ pub fn stub_0x64d5f8() -> ! {
 // type: void __fastcall(RBX::Stats::TypedMemItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats12TypedMemItemD1Ev")]
-pub fn stub_0x64d614() -> ! {
-    todo!("0x64d614")
+pub fn stub_0x64d614() {
+    // IDA 0x64d614: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x64d758 — __ZThn32_N3RBX5Stats12TypedMemItemD0Ev
 // type: void __fastcall(RBX::Stats::TypedMemItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats12TypedMemItemD0Ev")]
-pub fn stub_0x64d758() -> ! {
-    todo!("0x64d758")
+pub fn stub_0x64d758() {
+    // IDA 0x64d758: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x64d8b0 — __ZThn36_N3RBX5Stats12TypedMemItemD1Ev
 // type: void __fastcall(RBX::Stats::TypedMemItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats12TypedMemItemD1Ev")]
-pub fn stub_0x64d8b0() -> ! {
-    todo!("0x64d8b0")
+pub fn stub_0x64d8b0() {
+    // IDA 0x64d8b0: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x64d9f4 — __ZThn36_N3RBX5Stats12TypedMemItemD0Ev
 // type: void __fastcall(RBX::Stats::TypedMemItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats12TypedMemItemD0Ev")]
-pub fn stub_0x64d9f4() -> ! {
-    todo!("0x64d9f4")
+pub fn stub_0x64d9f4() {
+    // IDA 0x64d9f4: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x64db4c — __ZN3RBX5Stats14TypedStatsItemImED1Ev
@@ -896,30 +896,30 @@ pub fn stub_0x64dde8() -> ! {
 // 0x64de1c — __ZThn32_N3RBX5Stats14TypedStatsItemImED1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemImED1Ev")]
-pub fn stub_0x64de1c() -> ! {
-    todo!("0x64de1c")
+pub fn stub_0x64de1c() {
+    // IDA 0x64de1c: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x64df60 — __ZThn32_N3RBX5Stats14TypedStatsItemImED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemImED0Ev")]
-pub fn stub_0x64df60() -> ! {
-    todo!("0x64df60")
+pub fn stub_0x64df60() {
+    // IDA 0x64df60: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x64e0b8 — __ZThn36_N3RBX5Stats14TypedStatsItemImED1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats14TypedStatsItemImED1Ev")]
-pub fn stub_0x64e0b8() -> ! {
-    todo!("0x64e0b8")
+pub fn stub_0x64e0b8() {
+    // IDA 0x64e0b8: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x64e1fc — __ZThn36_N3RBX5Stats14TypedStatsItemImED0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats14TypedStatsItemImED0Ev")]
-pub fn stub_0x64e1fc() -> ! {
-    todo!("0x64e1fc")
+pub fn stub_0x64e1fc() {
+    // IDA 0x64e1fc: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x64e444 — __ZN3RBX5Stats14TypedStatsItemImE5derefEPKm

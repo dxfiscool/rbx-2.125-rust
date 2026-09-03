@@ -668,8 +668,8 @@ pub fn stub_0xd216fc() -> ! {
 // type: void __fastcall(Ogre::MovableObject *__hidden this)
 #[doc(alias = "non-virtual thunk to Ogre::MovableObject::~MovableObject()")]
 #[doc(alias = "__ZThn4_N4Ogre13MovableObjectD0Ev")]
-pub fn stub_0xd21708() -> ! {
-    todo!("0xd21708 non-virtual thunk toOgre::MovableObject::~MovableObject()")
+pub fn stub_0xd21708() {
+    // IDA 0xd21708: __ZThn4 thunk (D0 deleting dtor): `this -= 4`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd2179c — __ZN4Ogre13MovableObjectD2Ev
@@ -684,8 +684,8 @@ pub fn stub_0xd2179c() -> ! {
 // type: void __fastcall(Ogre::MovableObject *__hidden this)
 #[doc(alias = "non-virtual thunk to Ogre::MovableObject::~MovableObject()")]
 #[doc(alias = "__ZThn4_N4Ogre13MovableObjectD1Ev")]
-pub fn stub_0xd21990() -> ! {
-    todo!("0xd21990 non-virtual thunk toOgre::MovableObject::~MovableObject()")
+pub fn stub_0xd21990() {
+    // IDA 0xd21990: __ZThn4 thunk (D1 base dtor): `this -= 4`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd2199c — __ZN4Ogre13MovableObject15_notifyAttachedEPNS_4NodeEb

@@ -833,27 +833,27 @@ pub fn stub_0x6ded30() -> ! {
 // 0x6ded50 — __ZThn32_N3RBX5Stats14TypedStatsItemIiED1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemIiED1Ev")]
-pub fn stub_0x6ded50() -> ! {
-    todo!("0x6ded50 non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
+pub fn stub_0x6ded50() {
+    // IDA 0x6ded50: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x6dee98 — __ZThn32_N3RBX5Stats14TypedStatsItemIiED0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemIiED0Ev")]
-pub fn stub_0x6dee98() -> ! {
-    todo!("0x6dee98 non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
+pub fn stub_0x6dee98() {
+    // IDA 0x6dee98: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x6deff8 — __ZThn36_N3RBX5Stats14TypedStatsItemIiED1Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats14TypedStatsItemIiED1Ev")]
-pub fn stub_0x6deff8() -> ! {
-    todo!("0x6deff8 non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
+pub fn stub_0x6deff8() {
+    // IDA 0x6deff8: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x6df140 — __ZThn36_N3RBX5Stats14TypedStatsItemIiED0Ev
 #[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX5Stats14TypedStatsItemIiED0Ev")]
-pub fn stub_0x6df140() -> ! {
-    todo!("0x6df140 non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")
+pub fn stub_0x6df140() {
+    // IDA 0x6df140: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }

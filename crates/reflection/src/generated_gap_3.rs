@@ -715,16 +715,16 @@ pub fn stub_0x2a7d20() -> ! {
 // type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
 #[doc(alias = "__ZThn32_N3RBX20RuntimeScriptServiceD1Ev")]
-pub fn stub_0x2a7d4c() -> ! {
-    todo!("0x2a7d4c non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")
+pub fn stub_0x2a7d4c() {
+    // IDA 0x2a7d4c: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2a7d54 — __ZThn32_N3RBX20RuntimeScriptServiceD0Ev
 // type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
 #[doc(alias = "__ZThn32_N3RBX20RuntimeScriptServiceD0Ev")]
-pub fn stub_0x2a7d54() -> ! {
-    todo!("0x2a7d54 non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")
+pub fn stub_0x2a7d54() {
+    // IDA 0x2a7d54: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2a7df8 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEE12getClassNameEv
@@ -737,16 +737,16 @@ pub fn stub_0x2a7df8() -> ! {
 // type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
 #[doc(alias = "__ZThn36_N3RBX20RuntimeScriptServiceD1Ev")]
-pub fn stub_0x2a7e20() -> ! {
-    todo!("0x2a7e20 non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")
+pub fn stub_0x2a7e20() {
+    // IDA 0x2a7e20: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2a7e28 — __ZThn36_N3RBX20RuntimeScriptServiceD0Ev
 // type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
 #[doc(alias = "__ZThn36_N3RBX20RuntimeScriptServiceD0Ev")]
-pub fn stub_0x2a7e28() -> ! {
-    todo!("0x2a7e28 non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")
+pub fn stub_0x2a7e28() {
+    // IDA 0x2a7e28: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2a7ed0 — __ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E12getClassNameEv

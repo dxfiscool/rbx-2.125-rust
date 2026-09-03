@@ -595,15 +595,15 @@ pub fn stub_0x3ac13c() -> ! {
 // 0x3ac140 — __ZThn32_N3RBX11HandlesBaseD1Ev
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 #[doc(alias = "__ZThn32_N3RBX11HandlesBaseD1Ev")]
-pub fn stub_0x3ac140() -> ! {
-    todo!("0x3ac140 non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
+pub fn stub_0x3ac140() {
+    // IDA 0x3ac140: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3ac148 — __ZThn32_N3RBX11HandlesBaseD0Ev
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 #[doc(alias = "__ZThn32_N3RBX11HandlesBaseD0Ev")]
-pub fn stub_0x3ac148() -> ! {
-    todo!("0x3ac148 non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
+pub fn stub_0x3ac148() {
+    // IDA 0x3ac148: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3ac1ec — __ZThn32_NK3RBX17NonFactoryProductINS_13PartAdornmentELZNS_12sHandlesBaseEEE12getClassNameEv
@@ -615,15 +615,15 @@ pub fn stub_0x3ac1ec() -> ! {
 // 0x3ac1f0 — __ZThn36_N3RBX11HandlesBaseD1Ev
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 #[doc(alias = "__ZThn36_N3RBX11HandlesBaseD1Ev")]
-pub fn stub_0x3ac1f0() -> ! {
-    todo!("0x3ac1f0 non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
+pub fn stub_0x3ac1f0() {
+    // IDA 0x3ac1f0: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3ac1f8 — __ZThn36_N3RBX11HandlesBaseD0Ev
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 #[doc(alias = "__ZThn36_N3RBX11HandlesBaseD0Ev")]
-pub fn stub_0x3ac1f8() -> ! {
-    todo!("0x3ac1f8 non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
+pub fn stub_0x3ac1f8() {
+    // IDA 0x3ac1f8: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3ac29c — __ZN3RBX4Name7declareILZNS_12sHandlesBaseEEEERKS0_v
@@ -667,15 +667,15 @@ pub fn stub_0x3ac5b0() -> ! {
 // 0x3ac5b4 — __ZThn32_N3RBX13PartAdornmentD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
 #[doc(alias = "__ZThn32_N3RBX13PartAdornmentD1Ev")]
-pub fn stub_0x3ac5b4() -> ! {
-    todo!("0x3ac5b4 non-virtual thunk toRBX::PartAdornment::~PartAdornment()")
+pub fn stub_0x3ac5b4() {
+    // IDA 0x3ac5b4: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3ac6fc — __ZThn32_N3RBX13PartAdornmentD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
 #[doc(alias = "__ZThn32_N3RBX13PartAdornmentD0Ev")]
-pub fn stub_0x3ac6fc() -> ! {
-    todo!("0x3ac6fc non-virtual thunk toRBX::PartAdornment::~PartAdornment()")
+pub fn stub_0x3ac6fc() {
+    // IDA 0x3ac6fc: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3ac858 — __ZThn32_NK3RBX17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEE12getClassNameEv
@@ -687,15 +687,15 @@ pub fn stub_0x3ac858() -> ! {
 // 0x3ac85c — __ZThn36_N3RBX13PartAdornmentD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
 #[doc(alias = "__ZThn36_N3RBX13PartAdornmentD1Ev")]
-pub fn stub_0x3ac85c() -> ! {
-    todo!("0x3ac85c non-virtual thunk toRBX::PartAdornment::~PartAdornment()")
+pub fn stub_0x3ac85c() {
+    // IDA 0x3ac85c: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3ac9a4 — __ZThn36_N3RBX13PartAdornmentD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
 #[doc(alias = "__ZThn36_N3RBX13PartAdornmentD0Ev")]
-pub fn stub_0x3ac9a4() -> ! {
-    todo!("0x3ac9a4 non-virtual thunk toRBX::PartAdornment::~PartAdornment()")
+pub fn stub_0x3ac9a4() {
+    // IDA 0x3ac9a4: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3acb00 — __ZN3RBX4Name7declareILZNS_14sPartAdornmentEEEERKS0_v

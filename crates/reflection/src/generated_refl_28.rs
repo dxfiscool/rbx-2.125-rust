@@ -724,8 +724,8 @@ pub fn stub_0x24b130() -> ! {
 // 0x24b208 — __ZThn8_N5boost16exception_detail19error_info_injectorISt12length_errorED0Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()")]
 #[doc(alias = "__ZThn8_N5boost16exception_detail19error_info_injectorISt12length_errorED0Ev")]
-pub fn stub_0x24b208() -> ! {
-    todo!("0x24b208 non-virtual thunk toboost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()")
+pub fn stub_0x24b208() {
+    // IDA 0x24b208: __ZThn8 thunk (D0 deleting dtor): `this -= 8`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x24b2c8 — __ZN3RBX13WindowAverageIddE6sampleINS_13FOnBeforeDropEEEvdRT_

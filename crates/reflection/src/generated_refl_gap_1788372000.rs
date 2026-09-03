@@ -243,15 +243,15 @@ pub fn stub_0x39c414() -> ! {
 // 0x39c43c — __ZThn32_N3RBX19AnimationTrackStateD1Ev
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
 #[doc(alias = "__ZThn32_N3RBX19AnimationTrackStateD1Ev")]
-pub fn stub_0x39c43c() -> ! {
-    todo!("0x39c43c non-virtual thunk to RBX::AnimationTrackState::~AnimationTrackState()")
+pub fn stub_0x39c43c() {
+    // IDA 0x39c43c: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x39c444 — __ZThn32_N3RBX19AnimationTrackStateD0Ev
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
 #[doc(alias = "__ZThn32_N3RBX19AnimationTrackStateD0Ev")]
-pub fn stub_0x39c444() -> ! {
-    todo!("0x39c444 non-virtual thunk to RBX::AnimationTrackState::~AnimationTrackState()")
+pub fn stub_0x39c444() {
+    // IDA 0x39c444: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x39c44c — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_20sAnimationTrackStateEEE12getClassNameEv
@@ -263,15 +263,15 @@ pub fn stub_0x39c44c() -> ! {
 // 0x39c474 — __ZThn36_N3RBX19AnimationTrackStateD1Ev
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
 #[doc(alias = "__ZThn36_N3RBX19AnimationTrackStateD1Ev")]
-pub fn stub_0x39c474() -> ! {
-    todo!("0x39c474 non-virtual thunk to RBX::AnimationTrackState::~AnimationTrackState()")
+pub fn stub_0x39c474() {
+    // IDA 0x39c474: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x39c47c — __ZThn36_N3RBX19AnimationTrackStateD0Ev
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
 #[doc(alias = "__ZThn36_N3RBX19AnimationTrackStateD0Ev")]
-pub fn stub_0x39c47c() -> ! {
-    todo!("0x39c47c non-virtual thunk to RBX::AnimationTrackState::~AnimationTrackState()")
+pub fn stub_0x39c47c() {
+    // IDA 0x39c47c: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x39c484 — __ZN3RBX19AnimationTrackStateD2Ev

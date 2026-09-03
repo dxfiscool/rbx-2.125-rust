@@ -516,8 +516,8 @@ pub fn stub_0xc90074() -> ! {
 // type: void __fastcall(Ogre::Font *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::Font::~Font()")]
 #[doc(alias = "__ZThn88_N4Ogre4FontD0Ev")]
-pub fn stub_0xc90080() -> ! {
-    todo!("0xc90080 non-virtual thunk toOgre::Font::~Font()")
+pub fn stub_0xc90080() {
+    // IDA 0xc90080: __ZThn88 thunk (D0 deleting dtor): `this -= 88`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xc90114 — __ZN4Ogre4FontD2Ev
@@ -532,8 +532,8 @@ pub fn stub_0xc90114() -> ! {
 // type: void __fastcall(Ogre::Font *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::Font::~Font()")]
 #[doc(alias = "__ZThn88_N4Ogre4FontD1Ev")]
-pub fn stub_0xc90534() -> ! {
-    todo!("0xc90534 non-virtual thunk toOgre::Font::~Font()")
+pub fn stub_0xc90534() {
+    // IDA 0xc90534: __ZThn88 thunk (D1 base dtor): `this -= 88`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc90540 — __ZN4Ogre4Font7setTypeENS_8FontTypeE

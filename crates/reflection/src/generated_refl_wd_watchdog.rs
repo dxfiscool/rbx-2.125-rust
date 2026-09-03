@@ -242,8 +242,8 @@ pub fn stub_0x2f71d4() -> ! {
 // 0x2f71d8 — __ZThn36_N3RBX16BoxSelectCommandD0Ev
 #[doc(alias = "non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")]
 #[doc(alias = "__ZThn36_N3RBX16BoxSelectCommandD0Ev")]
-pub fn stub_0x2f71d8() -> ! {
-    todo!("0x2f71d8 non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")
+pub fn stub_0x2f71d8() {
+    // IDA 0x2f71d8: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2f71e0 — __ZN3RBX16BoxSelectCommandD2Ev
@@ -256,8 +256,8 @@ pub fn stub_0x2f71e0() -> ! {
 // 0x2f7324 — __ZThn36_N3RBX16BoxSelectCommandD1Ev
 #[doc(alias = "non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")]
 #[doc(alias = "__ZThn36_N3RBX16BoxSelectCommandD1Ev")]
-pub fn stub_0x2f7324() -> ! {
-    todo!("0x2f7324 non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")
+pub fn stub_0x2f7324() {
+    // IDA 0x2f7324: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2f732c — __ZN3RBX16BoxSelectCommand9selectAndERKSt3setIN5boost10shared_ptrINS_8InstanceEEESt4lessIS5_ESaIS5_EE

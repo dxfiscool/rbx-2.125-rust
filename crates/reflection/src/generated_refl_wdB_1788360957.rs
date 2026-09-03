@@ -263,8 +263,8 @@ pub fn stub_0x362f98() -> ! {
 // 0x362fb8 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev")]
-pub fn stub_0x362fb8() -> ! {
-    todo!("0x362fb8 non-virtual thunk toboost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")
+pub fn stub_0x362fb8() {
+    // IDA 0x362fb8: __ZThn20 thunk (D0 deleting dtor): `this -= 20`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x362fd0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEEC1ERKS5_NS5_9clone_tagE
@@ -578,15 +578,15 @@ pub fn stub_0x364e70() -> ! {
 // 0x364f28 — __ZThn4_N5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED1Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED1Ev")]
-pub fn stub_0x364f28() -> ! {
-    todo!("0x364f28 non-virtual thunk toboost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()")
+pub fn stub_0x364f28() {
+    // IDA 0x364f28: __ZThn4 thunk (D1 base dtor): `this -= 4`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x364f30 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED1Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED1Ev")]
-pub fn stub_0x364f30() -> ! {
-    todo!("0x364f30 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")
+pub fn stub_0x364f30() {
+    // IDA 0x364f30: __ZThn4 thunk (D1 base dtor): `this -= 4`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x364f38 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED1Ev
@@ -620,8 +620,8 @@ pub fn stub_0x365018() -> ! {
 // 0x365038 — __ZThn4_N5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED0Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED0Ev")]
-pub fn stub_0x365038() -> ! {
-    todo!("0x365038 non-virtual thunk toboost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()")
+pub fn stub_0x365038() {
+    // IDA 0x365038: __ZThn4 thunk (D0 deleting dtor): `this -= 4`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x365050 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEEC1ERKS6_NS6_9clone_tagE

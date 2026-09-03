@@ -119,8 +119,8 @@ pub fn stub_0xd3432c() -> ! {
 // 0xd343e8 — __ZThn12_N4Ogre19PanelOverlayElementD0Ev
 // type: void __fastcall(Ogre::PanelOverlayElement *__hidden this)
 #[doc(alias = "__ZThn12_N4Ogre19PanelOverlayElementD0Ev")]
-pub fn stub_0xd343e8() -> ! {
-    todo!("0xd343e8 __ZThn12_N4Ogre19PanelOverlayElementD0Ev")
+pub fn stub_0xd343e8() {
+    // IDA 0xd343e8: __ZThn12 thunk (D0 deleting dtor): `this -= 12`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd344b4 — __ZN4Ogre19PanelOverlayElementD2Ev
@@ -134,8 +134,8 @@ pub fn stub_0xd344b4() -> ! {
 // 0xd34570 — __ZThn12_N4Ogre19PanelOverlayElementD1Ev
 // type: void __fastcall(Ogre::PanelOverlayElement *__hidden this)
 #[doc(alias = "__ZThn12_N4Ogre19PanelOverlayElementD1Ev")]
-pub fn stub_0xd34570() -> ! {
-    todo!("0xd34570 __ZThn12_N4Ogre19PanelOverlayElementD1Ev")
+pub fn stub_0xd34570() {
+    // IDA 0xd34570: __ZThn12 thunk (D1 base dtor): `this -= 12`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd3462c — __ZN4Ogre19PanelOverlayElement10initialiseEv

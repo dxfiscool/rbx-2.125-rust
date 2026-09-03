@@ -522,16 +522,16 @@ pub fn stub_0x29bce4() -> ! {
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext()")]
 #[doc(alias = "__ZThn32_N3RBX13ScriptContextD0Ev")]
-pub fn stub_0x29bce8() -> ! {
-    todo!("0x29bce8 non-virtual thunk toRBX::ScriptContext::~ScriptContext()")
+pub fn stub_0x29bce8() {
+    // IDA 0x29bce8: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x29bcf0 — __ZThn36_N3RBX13ScriptContextD0Ev
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext()")]
 #[doc(alias = "__ZThn36_N3RBX13ScriptContextD0Ev")]
-pub fn stub_0x29bcf0() -> ! {
-    todo!("0x29bcf0 non-virtual thunk toRBX::ScriptContext::~ScriptContext()")
+pub fn stub_0x29bcf0() {
+    // IDA 0x29bcf0: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x29bcf8 — __ZN3RBX13ScriptContextD2Ev
@@ -546,16 +546,16 @@ pub fn stub_0x29bcf8() -> ! {
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext()")]
 #[doc(alias = "__ZThn32_N3RBX13ScriptContextD1Ev")]
-pub fn stub_0x29c364() -> ! {
-    todo!("0x29c364 non-virtual thunk toRBX::ScriptContext::~ScriptContext()")
+pub fn stub_0x29c364() {
+    // IDA 0x29c364: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x29c36c — __ZThn36_N3RBX13ScriptContextD1Ev
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext()")]
 #[doc(alias = "__ZThn36_N3RBX13ScriptContextD1Ev")]
-pub fn stub_0x29c36c() -> ! {
-    todo!("0x29c36c non-virtual thunk toRBX::ScriptContext::~ScriptContext()")
+pub fn stub_0x29c36c() {
+    // IDA 0x29c36c: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x29c378 — __ZN3RBX13ScriptContext14onCheckTimeoutEv

@@ -652,16 +652,16 @@ pub fn stub_0x36128c() -> ! {
 // type: void __fastcall(RBX::RunService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 #[doc(alias = "__ZThn32_N3RBX10RunServiceD0Ev")]
-pub fn stub_0x361290() -> ! {
-    todo!("0x361290 non-virtual thunk toRBX::RunService::~RunService()")
+pub fn stub_0x361290() {
+    // IDA 0x361290: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x361298 — __ZThn36_N3RBX10RunServiceD0Ev
 // type: void __fastcall(RBX::RunService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 #[doc(alias = "__ZThn36_N3RBX10RunServiceD0Ev")]
-pub fn stub_0x361298() -> ! {
-    todo!("0x361298 non-virtual thunk toRBX::RunService::~RunService()")
+pub fn stub_0x361298() {
+    // IDA 0x361298: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3612a0 — __ZN3RBX10RunServiceD2Ev
@@ -676,16 +676,16 @@ pub fn stub_0x3612a0() -> ! {
 // type: void __fastcall(RBX::RunService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 #[doc(alias = "__ZThn32_N3RBX10RunServiceD1Ev")]
-pub fn stub_0x3616a8() -> ! {
-    todo!("0x3616a8 non-virtual thunk toRBX::RunService::~RunService()")
+pub fn stub_0x3616a8() {
+    // IDA 0x3616a8: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3616b0 — __ZThn36_N3RBX10RunServiceD1Ev
 // type: void __fastcall(RBX::RunService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 #[doc(alias = "__ZThn36_N3RBX10RunServiceD1Ev")]
-pub fn stub_0x3616b0() -> ! {
-    todo!("0x3616b0 non-virtual thunk toRBX::RunService::~RunService()")
+pub fn stub_0x3616b0() {
+    // IDA 0x3616b0: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3616b8 — __ZN3RBX10RunService13getPhysicsJobEv

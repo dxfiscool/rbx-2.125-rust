@@ -380,26 +380,26 @@ pub fn stub_0x84b920() -> ! {
 
 // 0x84b9c0 — __ZThn32_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x84b9c0() -> ! {
-    todo!("0x84b9c0 __ZThn32_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x84b9c0() {
+    // IDA 0x84b9c0: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x84b9c8 — __ZThn32_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x84b9c8() -> ! {
-    todo!("0x84b9c8 __ZThn32_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x84b9c8() {
+    // IDA 0x84b9c8: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x84ba6c — __ZThn36_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x84ba6c() -> ! {
-    todo!("0x84ba6c __ZThn36_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x84ba6c() {
+    // IDA 0x84ba6c: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x84ba74 — __ZThn36_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x84ba74() -> ! {
-    todo!("0x84ba74 __ZThn36_N3RBX10Reflection9DescribedINS_17GameBasicSettingsELZNS_18sGameBasicSettingsEENS_14FactoryProductIS2_NS_19GlobalBasicSettings4ItemELZNS_18sGameBasicSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x84ba74() {
+    // IDA 0x84ba74: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x84c4f8 — __ZN3RBX10Reflection9EventDescINS_17GameBasicSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE

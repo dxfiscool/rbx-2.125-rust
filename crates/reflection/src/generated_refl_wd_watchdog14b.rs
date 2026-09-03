@@ -506,15 +506,15 @@ pub fn stub_0x34a714() -> ! {
 // 0x34a740 — __ZThn32_N3RBX13LuaWebServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaWebService::~LuaWebService()")]
 #[doc(alias = "__ZThn32_N3RBX13LuaWebServiceD1Ev")]
-pub fn stub_0x34a740() -> ! {
-    todo!("0x34a740 non-virtual thunk toRBX::LuaWebService::~LuaWebService()")
+pub fn stub_0x34a740() {
+    // IDA 0x34a740: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x34a84c — __ZThn32_N3RBX13LuaWebServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaWebService::~LuaWebService()")]
 #[doc(alias = "__ZThn32_N3RBX13LuaWebServiceD0Ev")]
-pub fn stub_0x34a84c() -> ! {
-    todo!("0x34a84c non-virtual thunk toRBX::LuaWebService::~LuaWebService()")
+pub fn stub_0x34a84c() {
+    // IDA 0x34a84c: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x34a970 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sLuaWebServiceEEE12getClassNameEv
@@ -526,15 +526,15 @@ pub fn stub_0x34a970() -> ! {
 // 0x34a998 — __ZThn36_N3RBX13LuaWebServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaWebService::~LuaWebService()")]
 #[doc(alias = "__ZThn36_N3RBX13LuaWebServiceD1Ev")]
-pub fn stub_0x34a998() -> ! {
-    todo!("0x34a998 non-virtual thunk toRBX::LuaWebService::~LuaWebService()")
+pub fn stub_0x34a998() {
+    // IDA 0x34a998: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x34aaa4 — __ZThn36_N3RBX13LuaWebServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaWebService::~LuaWebService()")]
 #[doc(alias = "__ZThn36_N3RBX13LuaWebServiceD0Ev")]
-pub fn stub_0x34aaa4() -> ! {
-    todo!("0x34aaa4 non-virtual thunk toRBX::LuaWebService::~LuaWebService()")
+pub fn stub_0x34aaa4() {
+    // IDA 0x34aaa4: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x34abc8 — __ZN3RBX4Name13callDoDeclareILZNS_14sLuaWebServiceEEEEvv

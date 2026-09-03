@@ -640,15 +640,15 @@ pub fn stub_0x2868bc() -> ! {
 // 0x2868cc — __ZThn32_N3RBX11LuaSettingsD1Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
 #[doc(alias = "__ZThn32_N3RBX11LuaSettingsD1Ev")]
-pub fn stub_0x2868cc() -> ! {
-    todo!("0x2868cc non-virtual thunk toRBX::LuaSettings::~LuaSettings()")
+pub fn stub_0x2868cc() {
+    // IDA 0x2868cc: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x286910 — __ZThn32_N3RBX11LuaSettingsD0Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
 #[doc(alias = "__ZThn32_N3RBX11LuaSettingsD0Ev")]
-pub fn stub_0x286910() -> ! {
-    todo!("0x286910 non-virtual thunk toRBX::LuaSettings::~LuaSettings()")
+pub fn stub_0x286910() {
+    // IDA 0x286910: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2869f0 — __ZThn32_NK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE12getClassNameEv
@@ -660,15 +660,15 @@ pub fn stub_0x2869f0() -> ! {
 // 0x286a00 — __ZThn36_N3RBX11LuaSettingsD1Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
 #[doc(alias = "__ZThn36_N3RBX11LuaSettingsD1Ev")]
-pub fn stub_0x286a00() -> ! {
-    todo!("0x286a00 non-virtual thunk toRBX::LuaSettings::~LuaSettings()")
+pub fn stub_0x286a00() {
+    // IDA 0x286a00: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x286a44 — __ZThn36_N3RBX11LuaSettingsD0Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
 #[doc(alias = "__ZThn36_N3RBX11LuaSettingsD0Ev")]
-pub fn stub_0x286a44() -> ! {
-    todo!("0x286a44 non-virtual thunk toRBX::LuaSettings::~LuaSettings()")
+pub fn stub_0x286a44() {
+    // IDA 0x286a44: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x286b24 — __ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE17static_getCreatorEv
@@ -691,26 +691,26 @@ pub fn stub_0x286bd8() -> ! {
 
 // 0x286cb8 — __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED1Ev
 #[doc(alias = "__ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED1Ev")]
-pub fn stub_0x286cb8() -> ! {
-    todo!("0x286cb8 __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED1Ev")
+pub fn stub_0x286cb8() {
+    // IDA 0x286cb8: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x286cfc — __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED0Ev
 #[doc(alias = "__ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED0Ev")]
-pub fn stub_0x286cfc() -> ! {
-    todo!("0x286cfc __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED0Ev")
+pub fn stub_0x286cfc() {
+    // IDA 0x286cfc: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x286d04 — __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED1Ev
 #[doc(alias = "__ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED1Ev")]
-pub fn stub_0x286d04() -> ! {
-    todo!("0x286d04 __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED1Ev")
+pub fn stub_0x286d04() {
+    // IDA 0x286d04: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x286d48 — __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED0Ev
 #[doc(alias = "__ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED0Ev")]
-pub fn stub_0x286d48() -> ! {
-    todo!("0x286d48 __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED0Ev")
+pub fn stub_0x286d48() {
+    // IDA 0x286d48: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x287738 — __GLOBAL__I_a_69

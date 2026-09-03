@@ -767,8 +767,8 @@ pub fn stub_0xdc52f8() -> ! {
 // type: void __fastcall(Ogre::RegionSceneQuery *__hidden this)
 #[doc(alias = "non-virtual thunk to-Ogre::RegionSceneQuery::~RegionSceneQuery()")]
 #[doc(alias = "__ZThn48_N4Ogre16RegionSceneQueryD0Ev")]
-pub fn stub_0xdc5304() -> ! {
-    todo!("0xdc5304 non-virtual thunk to Ogre::RegionSceneQuery::~RegionSceneQuery()")
+pub fn stub_0xdc5304() {
+    // IDA 0xdc5304: __ZThn48 thunk (D0 deleting dtor): `this -= 48`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xdc5398 — __ZN4Ogre16RegionSceneQueryD2Ev
@@ -783,8 +783,8 @@ pub fn stub_0xdc5398() -> ! {
 // type: void __fastcall(Ogre::RegionSceneQuery *__hidden this)
 #[doc(alias = "non-virtual thunk to-Ogre::RegionSceneQuery::~RegionSceneQuery()")]
 #[doc(alias = "__ZThn48_N4Ogre16RegionSceneQueryD1Ev")]
-pub fn stub_0xdc54ac() -> ! {
-    todo!("0xdc54ac non-virtual thunk to Ogre::RegionSceneQuery::~RegionSceneQuery()")
+pub fn stub_0xdc54ac() {
+    // IDA 0xdc54ac: __ZThn48 thunk (D1 base dtor): `this -= 48`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc54b8 — __ZNK4Ogre16RegionSceneQuery14getLastResultsEv
@@ -855,8 +855,8 @@ pub fn stub_0xdc5810() -> ! {
 // type: void __fastcall(Ogre::AxisAlignedBoxSceneQuery *__hidden this)
 #[doc(alias = "non-virtual thunk to-Ogre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")]
 #[doc(alias = "__ZThn48_N4Ogre24AxisAlignedBoxSceneQueryD0Ev")]
-pub fn stub_0xdc58c4() -> ! {
-    todo!("0xdc58c4 non-virtual thunk to Ogre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")
+pub fn stub_0xdc58c4() {
+    // IDA 0xdc58c4: __ZThn48 thunk (D0 deleting dtor): `this -= 48`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xdc5984 — __ZN4Ogre24AxisAlignedBoxSceneQueryD2Ev
@@ -871,8 +871,8 @@ pub fn stub_0xdc5984() -> ! {
 // type: void __fastcall(Ogre::AxisAlignedBoxSceneQuery *__hidden this)
 #[doc(alias = "non-virtual thunk to-Ogre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")]
 #[doc(alias = "__ZThn48_N4Ogre24AxisAlignedBoxSceneQueryD1Ev")]
-pub fn stub_0xdc5a38() -> ! {
-    todo!("0xdc5a38 non-virtual thunk to Ogre::AxisAlignedBoxSceneQuery::~AxisAlignedBoxSceneQuery()")
+pub fn stub_0xdc5a38() {
+    // IDA 0xdc5a38: __ZThn48 thunk (D1 base dtor): `this -= 48`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc5aec — __ZN4Ogre24AxisAlignedBoxSceneQuery6setBoxERKNS_14AxisAlignedBoxE
@@ -911,8 +911,8 @@ pub fn stub_0xdc5c48() -> ! {
 // type: void __fastcall(Ogre::SphereSceneQuery *__hidden this)
 #[doc(alias = "non-virtual thunk to-Ogre::SphereSceneQuery::~SphereSceneQuery()")]
 #[doc(alias = "__ZThn48_N4Ogre16SphereSceneQueryD0Ev")]
-pub fn stub_0xdc5c54() -> ! {
-    todo!("0xdc5c54 non-virtual thunk to Ogre::SphereSceneQuery::~SphereSceneQuery()")
+pub fn stub_0xdc5c54() {
+    // IDA 0xdc5c54: __ZThn48 thunk (D0 deleting dtor): `this -= 48`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xdc5ce8 — __ZN4Ogre16SphereSceneQueryD2Ev
@@ -927,8 +927,8 @@ pub fn stub_0xdc5ce8() -> ! {
 // type: void __fastcall(Ogre::SphereSceneQuery *__hidden this)
 #[doc(alias = "non-virtual thunk to-Ogre::SphereSceneQuery::~SphereSceneQuery()")]
 #[doc(alias = "__ZThn48_N4Ogre16SphereSceneQueryD1Ev")]
-pub fn stub_0xdc5cf4() -> ! {
-    todo!("0xdc5cf4 non-virtual thunk to Ogre::SphereSceneQuery::~SphereSceneQuery()")
+pub fn stub_0xdc5cf4() {
+    // IDA 0xdc5cf4: __ZThn48 thunk (D1 base dtor): `this -= 48`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xdc5d00 — __ZN4Ogre16SphereSceneQuery9setSphereERKNS_6SphereE

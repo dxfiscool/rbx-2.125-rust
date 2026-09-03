@@ -577,15 +577,15 @@ pub fn stub_0x37c9d8() -> ! {
 // 0x37c9e8 — __ZThn32_N3RBX10StockSoundD1Ev
 #[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
 #[doc(alias = "__ZThn32_N3RBX10StockSoundD1Ev")]
-pub fn stub_0x37c9e8() -> ! {
-    todo!("0x37c9e8 non-virtual thunk toRBX::StockSound::~StockSound()")
+pub fn stub_0x37c9e8() {
+    // IDA 0x37c9e8: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x37c9f0 — __ZThn32_N3RBX10StockSoundD0Ev
 #[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
 #[doc(alias = "__ZThn32_N3RBX10StockSoundD0Ev")]
-pub fn stub_0x37c9f0() -> ! {
-    todo!("0x37c9f0 non-virtual thunk toRBX::StockSound::~StockSound()")
+pub fn stub_0x37c9f0() {
+    // IDA 0x37c9f0: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x37ca94 — __ZThn32_NK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE12getClassNameEv
@@ -597,15 +597,15 @@ pub fn stub_0x37ca94() -> ! {
 // 0x37caa4 — __ZThn36_N3RBX10StockSoundD1Ev
 #[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
 #[doc(alias = "__ZThn36_N3RBX10StockSoundD1Ev")]
-pub fn stub_0x37caa4() -> ! {
-    todo!("0x37caa4 non-virtual thunk toRBX::StockSound::~StockSound()")
+pub fn stub_0x37caa4() {
+    // IDA 0x37caa4: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x37caac — __ZThn36_N3RBX10StockSoundD0Ev
 #[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
 #[doc(alias = "__ZThn36_N3RBX10StockSoundD0Ev")]
-pub fn stub_0x37caac() -> ! {
-    todo!("0x37caac non-virtual thunk toRBX::StockSound::~StockSound()")
+pub fn stub_0x37caac() {
+    // IDA 0x37caac: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x37cb50 — __ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE17static_getCreatorEv

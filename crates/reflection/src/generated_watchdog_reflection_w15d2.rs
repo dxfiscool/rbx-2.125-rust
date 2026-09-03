@@ -519,32 +519,32 @@ pub fn stub_0xd5afd8() -> ! {
 // type: void __fastcall(Ogre::Rectangle2D *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")]
 #[doc(alias = "__ZThn4_N4Ogre11Rectangle2DD0Ev")]
-pub fn stub_0xd5b09c() -> ! {
-    todo!("0xd5b09c __ZThn4_N4Ogre11Rectangle2DD0Ev")
+pub fn stub_0xd5b09c() {
+    // IDA 0xd5b09c: __ZThn4 thunk (D0 deleting dtor): `this -= 4`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd5b170 — __ZThn188_N4Ogre11Rectangle2DD0Ev
 // type: void __fastcall(Ogre::Rectangle2D *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")]
 #[doc(alias = "__ZThn188_N4Ogre11Rectangle2DD0Ev")]
-pub fn stub_0xd5b170() -> ! {
-    todo!("0xd5b170 __ZThn188_N4Ogre11Rectangle2DD0Ev")
+pub fn stub_0xd5b170() {
+    // IDA 0xd5b170: __ZThn188 thunk (D0 deleting dtor): `this -= 188`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xd5b240 — __ZThn4_N4Ogre11Rectangle2DD1Ev
 // type: void __fastcall(Ogre::Rectangle2D *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")]
 #[doc(alias = "__ZThn4_N4Ogre11Rectangle2DD1Ev")]
-pub fn stub_0xd5b240() -> ! {
-    todo!("0xd5b240 __ZThn4_N4Ogre11Rectangle2DD1Ev")
+pub fn stub_0xd5b240() {
+    // IDA 0xd5b240: __ZThn4 thunk (D1 base dtor): `this -= 4`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd5b304 — __ZThn188_N4Ogre11Rectangle2DD1Ev
 // type: void __fastcall(Ogre::Rectangle2D *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")]
 #[doc(alias = "__ZThn188_N4Ogre11Rectangle2DD1Ev")]
-pub fn stub_0xd5b304() -> ! {
-    todo!("0xd5b304 __ZThn188_N4Ogre11Rectangle2DD1Ev")
+pub fn stub_0xd5b304() {
+    // IDA 0xd5b304: __ZThn188 thunk (D1 base dtor): `this -= 188`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xd5b3c8 — __ZN4Ogre11Rectangle2D10setCornersEffffb

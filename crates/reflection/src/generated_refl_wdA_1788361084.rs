@@ -381,15 +381,15 @@ pub fn stub_0x36bd70() -> ! {
 // 0x36bd9c — __ZThn32_N3RBX25ScriptInformationProviderD1Ev
 #[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
 #[doc(alias = "__ZThn32_N3RBX25ScriptInformationProviderD1Ev")]
-pub fn stub_0x36bd9c() -> ! {
-    todo!("0x36bd9c non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")
+pub fn stub_0x36bd9c() {
+    // IDA 0x36bd9c: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x36bda4 — __ZThn32_N3RBX25ScriptInformationProviderD0Ev
 #[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
 #[doc(alias = "__ZThn32_N3RBX25ScriptInformationProviderD0Ev")]
-pub fn stub_0x36bda4() -> ! {
-    todo!("0x36bda4 non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")
+pub fn stub_0x36bda4() {
+    // IDA 0x36bda4: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x36be48 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_26sScriptInformationProviderEEE12getClassNameEv
@@ -401,29 +401,29 @@ pub fn stub_0x36be48() -> ! {
 // 0x36be70 — __ZThn36_N3RBX25ScriptInformationProviderD1Ev
 #[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
 #[doc(alias = "__ZThn36_N3RBX25ScriptInformationProviderD1Ev")]
-pub fn stub_0x36be70() -> ! {
-    todo!("0x36be70 non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")
+pub fn stub_0x36be70() {
+    // IDA 0x36be70: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x36be78 — __ZThn36_N3RBX25ScriptInformationProviderD0Ev
 #[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
 #[doc(alias = "__ZThn36_N3RBX25ScriptInformationProviderD0Ev")]
-pub fn stub_0x36be78() -> ! {
-    todo!("0x36be78 non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")
+pub fn stub_0x36be78() {
+    // IDA 0x36be78: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x36bf20 — __ZThn96_N3RBX25ScriptInformationProviderD1Ev
 #[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
 #[doc(alias = "__ZThn96_N3RBX25ScriptInformationProviderD1Ev")]
-pub fn stub_0x36bf20() -> ! {
-    todo!("0x36bf20 non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")
+pub fn stub_0x36bf20() {
+    // IDA 0x36bf20: __ZThn96 thunk (D1 base dtor): `this -= 96`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x36bf28 — __ZThn96_N3RBX25ScriptInformationProviderD0Ev
 #[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
 #[doc(alias = "__ZThn96_N3RBX25ScriptInformationProviderD0Ev")]
-pub fn stub_0x36bf28() -> ! {
-    todo!("0x36bf28 non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")
+pub fn stub_0x36bf28() {
+    // IDA 0x36bf28: __ZThn96 thunk (D0 deleting dtor): `this -= 96`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x36bfd0 — __ZN3RBX4Name13callDoDeclareILZNS_26sScriptInformationProviderEEEEvv

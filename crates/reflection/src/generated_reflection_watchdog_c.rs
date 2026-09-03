@@ -198,29 +198,29 @@ pub fn stub_0x52e6ac() -> ! {
 // 0x52e6b0 — __ZThn32_N3RBX9GuiButtonD1Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiButton::~GuiButton()")]
 #[doc(alias = "__ZThn32_N3RBX9GuiButtonD1Ev")]
-pub fn stub_0x52e6b0() -> ! {
-    todo!("0x52e6b0 non-virtual thunk toRBX::GuiButton::~GuiButton()")
+pub fn stub_0x52e6b0() {
+    // IDA 0x52e6b0: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x52e6b8 — __ZThn32_N3RBX9GuiButtonD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiButton::~GuiButton()")]
 #[doc(alias = "__ZThn32_N3RBX9GuiButtonD0Ev")]
-pub fn stub_0x52e6b8() -> ! {
-    todo!("0x52e6b8 non-virtual thunk toRBX::GuiButton::~GuiButton()")
+pub fn stub_0x52e6b8() {
+    // IDA 0x52e6b8: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x52e784 — __ZThn36_N3RBX9GuiButtonD1Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiButton::~GuiButton()")]
 #[doc(alias = "__ZThn36_N3RBX9GuiButtonD1Ev")]
-pub fn stub_0x52e784() -> ! {
-    todo!("0x52e784 non-virtual thunk toRBX::GuiButton::~GuiButton()")
+pub fn stub_0x52e784() {
+    // IDA 0x52e784: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x52e78c — __ZThn36_N3RBX9GuiButtonD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiButton::~GuiButton()")]
 #[doc(alias = "__ZThn36_N3RBX9GuiButtonD0Ev")]
-pub fn stub_0x52e78c() -> ! {
-    todo!("0x52e78c non-virtual thunk toRBX::GuiButton::~GuiButton()")
+pub fn stub_0x52e78c() {
+    // IDA 0x52e78c: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x52e830 — __ZN3RBX8GuiLabelD1Ev
@@ -240,29 +240,29 @@ pub fn stub_0x52e834() -> ! {
 // 0x52e8fc — __ZThn32_N3RBX8GuiLabelD1Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
 #[doc(alias = "__ZThn32_N3RBX8GuiLabelD1Ev")]
-pub fn stub_0x52e8fc() -> ! {
-    todo!("0x52e8fc non-virtual thunk toRBX::GuiLabel::~GuiLabel()")
+pub fn stub_0x52e8fc() {
+    // IDA 0x52e8fc: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x52e904 — __ZThn32_N3RBX8GuiLabelD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
 #[doc(alias = "__ZThn32_N3RBX8GuiLabelD0Ev")]
-pub fn stub_0x52e904() -> ! {
-    todo!("0x52e904 non-virtual thunk toRBX::GuiLabel::~GuiLabel()")
+pub fn stub_0x52e904() {
+    // IDA 0x52e904: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x52e9d0 — __ZThn36_N3RBX8GuiLabelD1Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
 #[doc(alias = "__ZThn36_N3RBX8GuiLabelD1Ev")]
-pub fn stub_0x52e9d0() -> ! {
-    todo!("0x52e9d0 non-virtual thunk toRBX::GuiLabel::~GuiLabel()")
+pub fn stub_0x52e9d0() {
+    // IDA 0x52e9d0: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x52e9d8 — __ZThn36_N3RBX8GuiLabelD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiLabel::~GuiLabel()")]
 #[doc(alias = "__ZThn36_N3RBX8GuiLabelD0Ev")]
-pub fn stub_0x52e9d8() -> ! {
-    todo!("0x52e9d8 non-virtual thunk toRBX::GuiLabel::~GuiLabel()")
+pub fn stub_0x52e9d8() {
+    // IDA 0x52e9d8: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x52ee40 — __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSA_9GuiButtonEFviiEEEEENS6_5list1INS6_5valueIPSE_EEEEEEEENS0_10connectionERKT_

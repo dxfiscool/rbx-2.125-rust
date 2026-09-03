@@ -373,29 +373,29 @@ pub fn stub_0x546e70() -> ! {
 // 0x546f38 — __ZThn32_N3RBX10GuiServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 #[doc(alias = "__ZThn32_N3RBX10GuiServiceD1Ev")]
-pub fn stub_0x546f38() -> ! {
-    todo!("0x546f38 non-virtual thunk toRBX::GuiService::~GuiService()")
+pub fn stub_0x546f38() {
+    // IDA 0x546f38: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x546f40 — __ZThn32_N3RBX10GuiServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 #[doc(alias = "__ZThn32_N3RBX10GuiServiceD0Ev")]
-pub fn stub_0x546f40() -> ! {
-    todo!("0x546f40 non-virtual thunk toRBX::GuiService::~GuiService()")
+pub fn stub_0x546f40() {
+    // IDA 0x546f40: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x54700c — __ZThn36_N3RBX10GuiServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 #[doc(alias = "__ZThn36_N3RBX10GuiServiceD1Ev")]
-pub fn stub_0x54700c() -> ! {
-    todo!("0x54700c non-virtual thunk toRBX::GuiService::~GuiService()")
+pub fn stub_0x54700c() {
+    // IDA 0x54700c: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x547014 — __ZThn36_N3RBX10GuiServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
 #[doc(alias = "__ZThn36_N3RBX10GuiServiceD0Ev")]
-pub fn stub_0x547014() -> ! {
-    todo!("0x547014 non-virtual thunk toRBX::GuiService::~GuiService()")
+pub fn stub_0x547014() {
+    // IDA 0x547014: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x5470b8 — __ZN3RBX10GuiServiceD2Ev

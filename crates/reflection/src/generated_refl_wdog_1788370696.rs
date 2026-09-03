@@ -9,15 +9,15 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0x3907ac — __ZThn32_N3RBX3HatD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
 #[doc(alias = "__ZThn32_N3RBX3HatD1Ev")]
-pub fn stub_0x3907ac() -> ! {
-    todo!("0x3907ac non-virtual thunk to RBX::Hat::~Hat()")
+pub fn stub_0x3907ac() {
+    // IDA 0x3907ac: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3907c0 — __ZThn32_N3RBX3HatD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
 #[doc(alias = "__ZThn32_N3RBX3HatD0Ev")]
-pub fn stub_0x3907c0() -> ! {
-    todo!("0x3907c0 non-virtual thunk to RBX::Hat::~Hat()")
+pub fn stub_0x3907c0() {
+    // IDA 0x3907c0: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x390874 — __ZThn32_NK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE12getClassNameEv
@@ -29,43 +29,43 @@ pub fn stub_0x390874() -> ! {
 // 0x390884 — __ZThn36_N3RBX3HatD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
 #[doc(alias = "__ZThn36_N3RBX3HatD1Ev")]
-pub fn stub_0x390884() -> ! {
-    todo!("0x390884 non-virtual thunk to RBX::Hat::~Hat()")
+pub fn stub_0x390884() {
+    // IDA 0x390884: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x390898 — __ZThn36_N3RBX3HatD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
 #[doc(alias = "__ZThn36_N3RBX3HatD0Ev")]
-pub fn stub_0x390898() -> ! {
-    todo!("0x390898 non-virtual thunk to RBX::Hat::~Hat()")
+pub fn stub_0x390898() {
+    // IDA 0x390898: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x39094c — __ZThn92_N3RBX3HatD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
 #[doc(alias = "__ZThn92_N3RBX3HatD1Ev")]
-pub fn stub_0x39094c() -> ! {
-    todo!("0x39094c non-virtual thunk to RBX::Hat::~Hat()")
+pub fn stub_0x39094c() {
+    // IDA 0x39094c: __ZThn92 thunk (D1 base dtor): `this -= 92`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x390960 — __ZThn92_N3RBX3HatD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
 #[doc(alias = "__ZThn92_N3RBX3HatD0Ev")]
-pub fn stub_0x390960() -> ! {
-    todo!("0x390960 non-virtual thunk to RBX::Hat::~Hat()")
+pub fn stub_0x390960() {
+    // IDA 0x390960: __ZThn92 thunk (D0 deleting dtor): `this -= 92`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x390a14 — __ZThn128_N3RBX3HatD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
 #[doc(alias = "__ZThn128_N3RBX3HatD1Ev")]
-pub fn stub_0x390a14() -> ! {
-    todo!("0x390a14 non-virtual thunk to RBX::Hat::~Hat()")
+pub fn stub_0x390a14() {
+    // IDA 0x390a14: __ZThn128 thunk (D1 base dtor): `this -= 128`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x390a28 — __ZThn128_N3RBX3HatD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
 #[doc(alias = "__ZThn128_N3RBX3HatD0Ev")]
-pub fn stub_0x390a28() -> ! {
-    todo!("0x390a28 non-virtual thunk to RBX::Hat::~Hat()")
+pub fn stub_0x390a28() {
+    // IDA 0x390a28: __ZThn128 thunk (D0 deleting dtor): `this -= 128`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x390df4 — __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev
@@ -82,50 +82,50 @@ pub fn stub_0x390e08() -> ! {
 
 // 0x390eb8 — __ZThn128_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev
 #[doc(alias = "__ZThn128_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev")]
-pub fn stub_0x390eb8() -> ! {
-    todo!("0x390eb8 __ZThn128_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev")
+pub fn stub_0x390eb8() {
+    // IDA 0x390eb8: __ZThn128 thunk (D1 base dtor): `this -= 128`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x390ecc — __ZThn128_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev
 #[doc(alias = "__ZThn128_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev")]
-pub fn stub_0x390ecc() -> ! {
-    todo!("0x390ecc __ZThn128_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev")
+pub fn stub_0x390ecc() {
+    // IDA 0x390ecc: __ZThn128 thunk (D0 deleting dtor): `this -= 128`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x390ed4 — __ZThn32_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev
 #[doc(alias = "__ZThn32_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev")]
-pub fn stub_0x390ed4() -> ! {
-    todo!("0x390ed4 __ZThn32_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev")
+pub fn stub_0x390ed4() {
+    // IDA 0x390ed4: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x390edc — __ZThn36_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev
 #[doc(alias = "__ZThn36_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev")]
-pub fn stub_0x390edc() -> ! {
-    todo!("0x390edc __ZThn36_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev")
+pub fn stub_0x390edc() {
+    // IDA 0x390edc: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x390ee4 — __ZThn92_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev
 #[doc(alias = "__ZThn92_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev")]
-pub fn stub_0x390ee4() -> ! {
-    todo!("0x390ee4 __ZThn92_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev")
+pub fn stub_0x390ee4() {
+    // IDA 0x390ee4: __ZThn92 thunk (D0 deleting dtor): `this -= 92`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x390eec — __ZThn32_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev
 #[doc(alias = "__ZThn32_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev")]
-pub fn stub_0x390eec() -> ! {
-    todo!("0x390eec __ZThn32_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev")
+pub fn stub_0x390eec() {
+    // IDA 0x390eec: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x390f00 — __ZThn36_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev
 #[doc(alias = "__ZThn36_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev")]
-pub fn stub_0x390f00() -> ! {
-    todo!("0x390f00 __ZThn36_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev")
+pub fn stub_0x390f00() {
+    // IDA 0x390f00: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x390f14 — __ZThn92_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev
 #[doc(alias = "__ZThn92_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev")]
-pub fn stub_0x390f14() -> ! {
-    todo!("0x390f14 __ZThn92_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev")
+pub fn stub_0x390f14() {
+    // IDA 0x390f14: __ZThn92 thunk (D1 base dtor): `this -= 92`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3913d8 — __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE17static_getCreatorEv
@@ -515,15 +515,15 @@ pub fn stub_0x394464() -> ! {
 // 0x39448c — __ZThn32_N3RBX11PVAdornmentD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PVAdornment::~PVAdornment()")]
 #[doc(alias = "__ZThn32_N3RBX11PVAdornmentD1Ev")]
-pub fn stub_0x39448c() -> ! {
-    todo!("0x39448c non-virtual thunk to RBX::PVAdornment::~PVAdornment()")
+pub fn stub_0x39448c() {
+    // IDA 0x39448c: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3945d4 — __ZThn32_N3RBX11PVAdornmentD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PVAdornment::~PVAdornment()")]
 #[doc(alias = "__ZThn32_N3RBX11PVAdornmentD0Ev")]
-pub fn stub_0x3945d4() -> ! {
-    todo!("0x3945d4 non-virtual thunk to RBX::PVAdornment::~PVAdornment()")
+pub fn stub_0x3945d4() {
+    // IDA 0x3945d4: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x394730 — __ZThn32_NK3RBX17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEE12getClassNameEv
@@ -535,15 +535,15 @@ pub fn stub_0x394730() -> ! {
 // 0x394758 — __ZThn36_N3RBX11PVAdornmentD1Ev
 #[doc(alias = "non-virtual thunk toRBX::PVAdornment::~PVAdornment()")]
 #[doc(alias = "__ZThn36_N3RBX11PVAdornmentD1Ev")]
-pub fn stub_0x394758() -> ! {
-    todo!("0x394758 non-virtual thunk to RBX::PVAdornment::~PVAdornment()")
+pub fn stub_0x394758() {
+    // IDA 0x394758: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3948a0 — __ZThn36_N3RBX11PVAdornmentD0Ev
 #[doc(alias = "non-virtual thunk toRBX::PVAdornment::~PVAdornment()")]
 #[doc(alias = "__ZThn36_N3RBX11PVAdornmentD0Ev")]
-pub fn stub_0x3948a0() -> ! {
-    todo!("0x3948a0 non-virtual thunk to RBX::PVAdornment::~PVAdornment()")
+pub fn stub_0x3948a0() {
+    // IDA 0x3948a0: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3949fc — __ZN3RBX4Name13callDoDeclareILZNS_12sPVAdornmentEEEEvv
@@ -687,15 +687,15 @@ pub fn stub_0x3970c0() -> ! {
 // 0x3970d0 — __ZThn32_N3RBX9AnimationD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Animation::~Animation()")]
 #[doc(alias = "__ZThn32_N3RBX9AnimationD1Ev")]
-pub fn stub_0x3970d0() -> ! {
-    todo!("0x3970d0 non-virtual thunk to RBX::Animation::~Animation()")
+pub fn stub_0x3970d0() {
+    // IDA 0x3970d0: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3971b4 — __ZThn32_N3RBX9AnimationD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Animation::~Animation()")]
 #[doc(alias = "__ZThn32_N3RBX9AnimationD0Ev")]
-pub fn stub_0x3971b4() -> ! {
-    todo!("0x3971b4 non-virtual thunk to RBX::Animation::~Animation()")
+pub fn stub_0x3971b4() {
+    // IDA 0x3971b4: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3972ac — __ZThn32_NK3RBX14FactoryProductINS_9AnimationENS_8InstanceELZNS_10sAnimationEES2_E12getClassNameEv
@@ -707,15 +707,15 @@ pub fn stub_0x3972ac() -> ! {
 // 0x3972bc — __ZThn36_N3RBX9AnimationD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Animation::~Animation()")]
 #[doc(alias = "__ZThn36_N3RBX9AnimationD1Ev")]
-pub fn stub_0x3972bc() -> ! {
-    todo!("0x3972bc non-virtual thunk to RBX::Animation::~Animation()")
+pub fn stub_0x3972bc() {
+    // IDA 0x3972bc: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3973a0 — __ZThn36_N3RBX9AnimationD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Animation::~Animation()")]
 #[doc(alias = "__ZThn36_N3RBX9AnimationD0Ev")]
-pub fn stub_0x3973a0() -> ! {
-    todo!("0x3973a0 non-virtual thunk to RBX::Animation::~Animation()")
+pub fn stub_0x3973a0() {
+    // IDA 0x3973a0: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x397498 — __ZN3RBX14FactoryProductINS_9AnimationENS_8InstanceELZNS_10sAnimationEES2_E17static_getCreatorEv
@@ -806,15 +806,15 @@ pub fn stub_0x398f20() -> ! {
 // 0x398f24 — __ZThn32_N3RBX14AnimationTrackD0Ev
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()")]
 #[doc(alias = "__ZThn32_N3RBX14AnimationTrackD0Ev")]
-pub fn stub_0x398f24() -> ! {
-    todo!("0x398f24 non-virtual thunk to RBX::AnimationTrack::~AnimationTrack()")
+pub fn stub_0x398f24() {
+    // IDA 0x398f24: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x398f2c — __ZThn36_N3RBX14AnimationTrackD0Ev
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()")]
 #[doc(alias = "__ZThn36_N3RBX14AnimationTrackD0Ev")]
-pub fn stub_0x398f2c() -> ! {
-    todo!("0x398f2c non-virtual thunk to RBX::AnimationTrack::~AnimationTrack()")
+pub fn stub_0x398f2c() {
+    // IDA 0x398f2c: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x398f34 — __ZN3RBX14AnimationTrackD2Ev
@@ -827,15 +827,15 @@ pub fn stub_0x398f34() -> ! {
 // 0x3991a8 — __ZThn32_N3RBX14AnimationTrackD1Ev
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()")]
 #[doc(alias = "__ZThn32_N3RBX14AnimationTrackD1Ev")]
-pub fn stub_0x3991a8() -> ! {
-    todo!("0x3991a8 non-virtual thunk to RBX::AnimationTrack::~AnimationTrack()")
+pub fn stub_0x3991a8() {
+    // IDA 0x3991a8: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3991b0 — __ZThn36_N3RBX14AnimationTrackD1Ev
 #[doc(alias = "non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()")]
 #[doc(alias = "__ZThn36_N3RBX14AnimationTrackD1Ev")]
-pub fn stub_0x3991b0() -> ! {
-    todo!("0x3991b0 non-virtual thunk to RBX::AnimationTrack::~AnimationTrack()")
+pub fn stub_0x3991b0() {
+    // IDA 0x3991b0: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x3992dc — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEE12getClassNameEv

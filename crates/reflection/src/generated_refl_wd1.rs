@@ -18,8 +18,8 @@ pub fn stub_0x2e32d4() -> ! {
 // 0x2e32d8 — __ZThn36_N3RBX8GameToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GameTool::~GameTool()")]
 #[doc(alias = "__ZThn36_N3RBX8GameToolD0Ev")]
-pub fn stub_0x2e32d8() -> ! {
-    todo!("0x2e32d8 non-virtual thunk toRBX::GameTool::~GameTool()")
+pub fn stub_0x2e32d8() {
+    // IDA 0x2e32d8: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2e32e0 — __ZN3RBX8GameToolD2Ev
@@ -32,8 +32,8 @@ pub fn stub_0x2e32e0() -> ! {
 // 0x2e33e4 — __ZThn36_N3RBX8GameToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::GameTool::~GameTool()")]
 #[doc(alias = "__ZThn36_N3RBX8GameToolD1Ev")]
-pub fn stub_0x2e33e4() -> ! {
-    todo!("0x2e33e4 non-virtual thunk toRBX::GameTool::~GameTool()")
+pub fn stub_0x2e33e4() {
+    // IDA 0x2e33e4: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e33ec — __ZNK3RBX5NamedINS_12MouseCommandELZNS_9sGameToolEEE7getNameEv
@@ -122,8 +122,8 @@ pub fn stub_0x2e3b48() -> ! {
 // 0x2e3b4c — __ZThn36_N3RBX8GrabToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GrabTool::~GrabTool()")]
 #[doc(alias = "__ZThn36_N3RBX8GrabToolD0Ev")]
-pub fn stub_0x2e3b4c() -> ! {
-    todo!("0x2e3b4c non-virtual thunk toRBX::GrabTool::~GrabTool()")
+pub fn stub_0x2e3b4c() {
+    // IDA 0x2e3b4c: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2e3b54 — __ZN3RBX8GrabToolD2Ev
@@ -136,8 +136,8 @@ pub fn stub_0x2e3b54() -> ! {
 // 0x2e3c58 — __ZThn36_N3RBX8GrabToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::GrabTool::~GrabTool()")]
 #[doc(alias = "__ZThn36_N3RBX8GrabToolD1Ev")]
-pub fn stub_0x2e3c58() -> ! {
-    todo!("0x2e3c58 non-virtual thunk toRBX::GrabTool::~GrabTool()")
+pub fn stub_0x2e3c58() {
+    // IDA 0x2e3c58: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e3c60 — __ZNK3RBX5NamedINS_12MouseCommandELZNS_9sGrabToolEEE7getNameEv
@@ -219,8 +219,8 @@ pub fn stub_0x2e46c4() -> ! {
 // 0x2e46c8 — __ZThn36_N3RBX10HammerToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::HammerTool::~HammerTool()")]
 #[doc(alias = "__ZThn36_N3RBX10HammerToolD0Ev")]
-pub fn stub_0x2e46c8() -> ! {
-    todo!("0x2e46c8 non-virtual thunk toRBX::HammerTool::~HammerTool()")
+pub fn stub_0x2e46c8() {
+    // IDA 0x2e46c8: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2e46d0 — __ZN3RBX10HammerToolD2Ev
@@ -233,8 +233,8 @@ pub fn stub_0x2e46d0() -> ! {
 // 0x2e47ec — __ZThn36_N3RBX10HammerToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::HammerTool::~HammerTool()")]
 #[doc(alias = "__ZThn36_N3RBX10HammerToolD1Ev")]
-pub fn stub_0x2e47ec() -> ! {
-    todo!("0x2e47ec non-virtual thunk toRBX::HammerTool::~HammerTool()")
+pub fn stub_0x2e47ec() {
+    // IDA 0x2e47ec: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e47f4 — __ZN3RBX10HammerTool11onMouseIdleERKNS_7UIEventE
@@ -393,15 +393,15 @@ pub fn stub_0x2e5eb0() -> ! {
 // 0x2e5eb4 — __ZThn32_N3RBX10LuaDraggerD0Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
 #[doc(alias = "__ZThn32_N3RBX10LuaDraggerD0Ev")]
-pub fn stub_0x2e5eb4() -> ! {
-    todo!("0x2e5eb4 non-virtual thunk toRBX::LuaDragger::~LuaDragger()")
+pub fn stub_0x2e5eb4() {
+    // IDA 0x2e5eb4: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2e5ebc — __ZThn36_N3RBX10LuaDraggerD0Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
 #[doc(alias = "__ZThn36_N3RBX10LuaDraggerD0Ev")]
-pub fn stub_0x2e5ebc() -> ! {
-    todo!("0x2e5ebc non-virtual thunk toRBX::LuaDragger::~LuaDragger()")
+pub fn stub_0x2e5ebc() {
+    // IDA 0x2e5ebc: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2e5ec4 — __ZN3RBX10LuaDraggerD2Ev
@@ -414,15 +414,15 @@ pub fn stub_0x2e5ec4() -> ! {
 // 0x2e6060 — __ZThn32_N3RBX10LuaDraggerD1Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
 #[doc(alias = "__ZThn32_N3RBX10LuaDraggerD1Ev")]
-pub fn stub_0x2e6060() -> ! {
-    todo!("0x2e6060 non-virtual thunk toRBX::LuaDragger::~LuaDragger()")
+pub fn stub_0x2e6060() {
+    // IDA 0x2e6060: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e6068 — __ZThn36_N3RBX10LuaDraggerD1Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
 #[doc(alias = "__ZThn36_N3RBX10LuaDraggerD1Ev")]
-pub fn stub_0x2e6068() -> ! {
-    todo!("0x2e6068 non-virtual thunk toRBX::LuaDragger::~LuaDragger()")
+pub fn stub_0x2e6068() {
+    // IDA 0x2e6068: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2e6070 — __ZN3RBX10LuaDragger9mouseDownEN5boost10shared_ptrINS_12PartInstanceEEERKN3G3D7Vector3ESt6vectorINS1_8weak_ptrIS3_EESaISB_EE
@@ -719,8 +719,8 @@ pub fn stub_0x2ea2ac() -> ! {
 // 0x2ea2b0 — __ZThn36_N3RBX11LuaDragToolD0Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")]
 #[doc(alias = "__ZThn36_N3RBX11LuaDragToolD0Ev")]
-pub fn stub_0x2ea2b0() -> ! {
-    todo!("0x2ea2b0 non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")
+pub fn stub_0x2ea2b0() {
+    // IDA 0x2ea2b0: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x2ea2b8 — __ZN3RBX11LuaDragToolD2Ev
@@ -733,8 +733,8 @@ pub fn stub_0x2ea2b8() -> ! {
 // 0x2ea3f8 — __ZThn36_N3RBX11LuaDragToolD1Ev
 #[doc(alias = "non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")]
 #[doc(alias = "__ZThn36_N3RBX11LuaDragToolD1Ev")]
-pub fn stub_0x2ea3f8() -> ! {
-    todo!("0x2ea3f8 non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")
+pub fn stub_0x2ea3f8() {
+    // IDA 0x2ea3f8: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x2ea400 — __ZN3RBX11LuaDragTool11onMouseDownERKNS_7UIEventE

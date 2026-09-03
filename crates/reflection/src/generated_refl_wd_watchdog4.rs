@@ -553,29 +553,29 @@ pub fn stub_0x30277c() -> ! {
 // 0x3027d0 — __ZThn32_N3RBX18HttpQueueStatsItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX18HttpQueueStatsItemD1Ev")]
-pub fn stub_0x3027d0() -> ! {
-    todo!("0x3027d0 non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
+pub fn stub_0x3027d0() {
+    // IDA 0x3027d0: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x302810 — __ZThn32_N3RBX18HttpQueueStatsItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
 #[doc(alias = "__ZThn32_N3RBX18HttpQueueStatsItemD0Ev")]
-pub fn stub_0x302810() -> ! {
-    todo!("0x302810 non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
+pub fn stub_0x302810() {
+    // IDA 0x302810: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3028e8 — __ZThn36_N3RBX18HttpQueueStatsItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX18HttpQueueStatsItemD1Ev")]
-pub fn stub_0x3028e8() -> ! {
-    todo!("0x3028e8 non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
+pub fn stub_0x3028e8() {
+    // IDA 0x3028e8: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x302928 — __ZThn36_N3RBX18HttpQueueStatsItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
 #[doc(alias = "__ZThn36_N3RBX18HttpQueueStatsItemD0Ev")]
-pub fn stub_0x302928() -> ! {
-    todo!("0x302928 non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
+pub fn stub_0x302928() {
+    // IDA 0x302928: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x3029fc — __ZN5boost10shared_ptrIN3RBX18HttpQueueStatsItemEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_

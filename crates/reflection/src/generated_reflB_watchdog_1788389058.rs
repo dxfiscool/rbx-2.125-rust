@@ -97,48 +97,48 @@ pub fn stub_0x833f94() -> ! {
 // type: void __fastcall(RBX::TweenService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX12TweenServiceD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::TweenService::~TweenService()")]
-pub fn stub_0x8340e8() -> ! {
-    todo!("0x8340e8")
+pub fn stub_0x8340e8() {
+    // IDA 0x8340e8: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8341fc — __ZThn32_N3RBX12TweenServiceD0Ev
 // type: void __fastcall(RBX::TweenService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX12TweenServiceD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::TweenService::~TweenService()")]
-pub fn stub_0x8341fc() -> ! {
-    todo!("0x8341fc")
+pub fn stub_0x8341fc() {
+    // IDA 0x8341fc: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x83434c — __ZThn36_N3RBX12TweenServiceD1Ev
 // type: void __fastcall(RBX::TweenService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX12TweenServiceD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::TweenService::~TweenService()")]
-pub fn stub_0x83434c() -> ! {
-    todo!("0x83434c")
+pub fn stub_0x83434c() {
+    // IDA 0x83434c: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x834460 — __ZThn36_N3RBX12TweenServiceD0Ev
 // type: void __fastcall(RBX::TweenService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX12TweenServiceD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::TweenService::~TweenService()")]
-pub fn stub_0x834460() -> ! {
-    todo!("0x834460")
+pub fn stub_0x834460() {
+    // IDA 0x834460: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x834588 — __ZThn96_N3RBX12TweenServiceD1Ev
 // type: void __fastcall(RBX::TweenService *__hidden this)
 #[doc(alias = "__ZThn96_N3RBX12TweenServiceD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::TweenService::~TweenService()")]
-pub fn stub_0x834588() -> ! {
-    todo!("0x834588")
+pub fn stub_0x834588() {
+    // IDA 0x834588: __ZThn96 thunk (D1 base dtor): `this -= 96`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x83469c — __ZThn96_N3RBX12TweenServiceD0Ev
 // type: void __fastcall(RBX::TweenService *__hidden this)
 #[doc(alias = "__ZThn96_N3RBX12TweenServiceD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::TweenService::~TweenService()")]
-pub fn stub_0x83469c() -> ! {
-    todo!("0x83469c")
+pub fn stub_0x83469c() {
+    // IDA 0x83469c: __ZThn96 thunk (D0 deleting dtor): `this -= 96`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8347c4 — __ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEES4_St9_IdentityIS4_ESt4lessIS4_ESaIS4_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS4_E
@@ -279,48 +279,48 @@ pub fn stub_0x8356a4() -> ! {
 // type: void __fastcall(RBX::NotificationBox *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX15NotificationBoxD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::NotificationBox::~NotificationBox()")]
-pub fn stub_0x8357f4() -> ! {
-    todo!("0x8357f4")
+pub fn stub_0x8357f4() {
+    // IDA 0x8357f4: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x835918 — __ZThn32_N3RBX15NotificationBoxD0Ev
 // type: void __fastcall(RBX::NotificationBox *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX15NotificationBoxD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::NotificationBox::~NotificationBox()")]
-pub fn stub_0x835918() -> ! {
-    todo!("0x835918")
+pub fn stub_0x835918() {
+    // IDA 0x835918: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x835a60 — __ZThn36_N3RBX15NotificationBoxD1Ev
 // type: void __fastcall(RBX::NotificationBox *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX15NotificationBoxD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::NotificationBox::~NotificationBox()")]
-pub fn stub_0x835a60() -> ! {
-    todo!("0x835a60")
+pub fn stub_0x835a60() {
+    // IDA 0x835a60: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x835b84 — __ZThn36_N3RBX15NotificationBoxD0Ev
 // type: void __fastcall(RBX::NotificationBox *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX15NotificationBoxD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::NotificationBox::~NotificationBox()")]
-pub fn stub_0x835b84() -> ! {
-    todo!("0x835b84")
+pub fn stub_0x835b84() {
+    // IDA 0x835b84: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x835cbc — __ZThn536_N3RBX15NotificationBoxD1Ev
 // type: void __fastcall(RBX::NotificationBox *__hidden this)
 #[doc(alias = "__ZThn536_N3RBX15NotificationBoxD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::NotificationBox::~NotificationBox()")]
-pub fn stub_0x835cbc() -> ! {
-    todo!("0x835cbc")
+pub fn stub_0x835cbc() {
+    // IDA 0x835cbc: __ZThn536 thunk (D1 base dtor): `this -= 536`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x835de4 — __ZThn536_N3RBX15NotificationBoxD0Ev
 // type: void __fastcall(RBX::NotificationBox *__hidden this)
 #[doc(alias = "__ZThn536_N3RBX15NotificationBoxD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::NotificationBox::~NotificationBox()")]
-pub fn stub_0x835de4() -> ! {
-    todo!("0x835de4")
+pub fn stub_0x835de4() {
+    // IDA 0x835de4: __ZThn536 thunk (D0 deleting dtor): `this -= 536`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x836528 — __ZNSt10_List_baseIN5boost10shared_ptrIN3RBX18NotificationObjectEEESaIS4_EE8_M_clearEv
@@ -437,32 +437,32 @@ pub fn stub_0x8375f4() -> ! {
 // type: void __fastcall(RBX::NotificationObject *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX18NotificationObjectD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::NotificationObject::~NotificationObject()")]
-pub fn stub_0x8376a4() -> ! {
-    todo!("0x8376a4")
+pub fn stub_0x8376a4() {
+    // IDA 0x8376a4: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x8376ac — __ZThn32_N3RBX18NotificationObjectD0Ev
 // type: void __fastcall(RBX::NotificationObject *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX18NotificationObjectD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::NotificationObject::~NotificationObject()")]
-pub fn stub_0x8376ac() -> ! {
-    todo!("0x8376ac")
+pub fn stub_0x8376ac() {
+    // IDA 0x8376ac: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x837760 — __ZThn36_N3RBX18NotificationObjectD1Ev
 // type: void __fastcall(RBX::NotificationObject *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX18NotificationObjectD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::NotificationObject::~NotificationObject()")]
-pub fn stub_0x837760() -> ! {
-    todo!("0x837760")
+pub fn stub_0x837760() {
+    // IDA 0x837760: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x837768 — __ZThn36_N3RBX18NotificationObjectD0Ev
 // type: void __fastcall(RBX::NotificationObject *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX18NotificationObjectD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::NotificationObject::~NotificationObject()")]
-pub fn stub_0x837768() -> ! {
-    todo!("0x837768")
+pub fn stub_0x837768() {
+    // IDA 0x837768: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x8389b8 — __ZN3RBX5FrameD1Ev
@@ -485,32 +485,32 @@ pub fn stub_0x838ab0() -> ! {
 // type: void __fastcall(RBX::Frame *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX5FrameD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Frame::~Frame()")]
-pub fn stub_0x838bc8() -> ! {
-    todo!("0x838bc8")
+pub fn stub_0x838bc8() {
+    // IDA 0x838bc8: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x838cbc — __ZThn32_N3RBX5FrameD0Ev
 // type: void __fastcall(RBX::Frame *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX5FrameD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Frame::~Frame()")]
-pub fn stub_0x838cbc() -> ! {
-    todo!("0x838cbc")
+pub fn stub_0x838cbc() {
+    // IDA 0x838cbc: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x838dd8 — __ZThn36_N3RBX5FrameD1Ev
 // type: void __fastcall(RBX::Frame *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX5FrameD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Frame::~Frame()")]
-pub fn stub_0x838dd8() -> ! {
-    todo!("0x838dd8")
+pub fn stub_0x838dd8() {
+    // IDA 0x838dd8: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x838ecc — __ZThn36_N3RBX5FrameD0Ev
 // type: void __fastcall(RBX::Frame *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX5FrameD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::Frame::~Frame()")]
-pub fn stub_0x838ecc() -> ! {
-    todo!("0x838ecc")
+pub fn stub_0x838ecc() {
+    // IDA 0x838ecc: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x83904c — __ZN3RBX18NotificationObjectD2Ev
@@ -743,32 +743,32 @@ pub fn stub_0x83e29c() -> ! {
 // type: void __fastcall(RBX::FriendService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX13FriendServiceD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::FriendService::~FriendService()")]
-pub fn stub_0x83e34c() -> ! {
-    todo!("0x83e34c")
+pub fn stub_0x83e34c() {
+    // IDA 0x83e34c: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x83e354 — __ZThn32_N3RBX13FriendServiceD0Ev
 // type: void __fastcall(RBX::FriendService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX13FriendServiceD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::FriendService::~FriendService()")]
-pub fn stub_0x83e354() -> ! {
-    todo!("0x83e354")
+pub fn stub_0x83e354() {
+    // IDA 0x83e354: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x83e408 — __ZThn36_N3RBX13FriendServiceD1Ev
 // type: void __fastcall(RBX::FriendService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX13FriendServiceD1Ev")]
 #[doc(alias = "non-virtual thunk toRBX::FriendService::~FriendService()")]
-pub fn stub_0x83e408() -> ! {
-    todo!("0x83e408")
+pub fn stub_0x83e408() {
+    // IDA 0x83e408: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x83e410 — __ZThn36_N3RBX13FriendServiceD0Ev
 // type: void __fastcall(RBX::FriendService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX13FriendServiceD0Ev")]
 #[doc(alias = "non-virtual thunk toRBX::FriendService::~FriendService()")]
-pub fn stub_0x83e410() -> ! {
-    todo!("0x83e410")
+pub fn stub_0x83e410() {
+    // IDA 0x83e410: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x83e4b4 — __ZNSt6vectorIN3RBX13FriendService15FriendEventTypeESaIS2_EE6resizeEmS2_

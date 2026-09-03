@@ -363,16 +363,16 @@ pub fn stub_0xc5a2ac() -> ! {
 // type: void __fastcall(Ogre::BillboardChain *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::~BillboardChain()")]
 #[doc(alias = "__ZThn4_N4Ogre14BillboardChainD0Ev")]
-pub fn stub_0xc5a2b8() -> ! {
-    todo!("0xc5a2b8 non-virtual thunk toOgre::BillboardChain::~BillboardChain()")
+pub fn stub_0xc5a2b8() {
+    // IDA 0xc5a2b8: __ZThn4 thunk (D0 deleting dtor): `this -= 4`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xc5a34c — __ZThn188_N4Ogre14BillboardChainD0Ev
 // type: void __fastcall(Ogre::BillboardChain *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::~BillboardChain()")]
 #[doc(alias = "__ZThn188_N4Ogre14BillboardChainD0Ev")]
-pub fn stub_0xc5a34c() -> ! {
-    todo!("0xc5a34c non-virtual thunk toOgre::BillboardChain::~BillboardChain()")
+pub fn stub_0xc5a34c() {
+    // IDA 0xc5a34c: __ZThn188 thunk (D0 deleting dtor): `this -= 188`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xc5a3e0 — __ZN4Ogre14BillboardChainD2Ev
@@ -387,16 +387,16 @@ pub fn stub_0xc5a3e0() -> ! {
 // type: void __fastcall(Ogre::BillboardChain *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::~BillboardChain()")]
 #[doc(alias = "__ZThn4_N4Ogre14BillboardChainD1Ev")]
-pub fn stub_0xc5a600() -> ! {
-    todo!("0xc5a600 non-virtual thunk toOgre::BillboardChain::~BillboardChain()")
+pub fn stub_0xc5a600() {
+    // IDA 0xc5a600: __ZThn4 thunk (D1 base dtor): `this -= 4`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc5a60c — __ZThn188_N4Ogre14BillboardChainD1Ev
 // type: void __fastcall(Ogre::BillboardChain *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::~BillboardChain()")]
 #[doc(alias = "__ZThn188_N4Ogre14BillboardChainD1Ev")]
-pub fn stub_0xc5a60c() -> ! {
-    todo!("0xc5a60c non-virtual thunk toOgre::BillboardChain::~BillboardChain()")
+pub fn stub_0xc5a60c() {
+    // IDA 0xc5a60c: __ZThn188 thunk (D1 base dtor): `this -= 188`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc5a618 — __ZN4Ogre14BillboardChain20setupChainContainersEv
@@ -780,16 +780,16 @@ pub fn stub_0xc60e50() -> ! {
 // type: void __fastcall(Ogre::BillboardSet *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
 #[doc(alias = "__ZThn4_N4Ogre12BillboardSetD0Ev")]
-pub fn stub_0xc60e5c() -> ! {
-    todo!("0xc60e5c non-virtual thunk toOgre::BillboardSet::~BillboardSet()")
+pub fn stub_0xc60e5c() {
+    // IDA 0xc60e5c: __ZThn4 thunk (D0 deleting dtor): `this -= 4`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xc60ef0 — __ZThn188_N4Ogre12BillboardSetD0Ev
 // type: void __fastcall(Ogre::BillboardSet *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
 #[doc(alias = "__ZThn188_N4Ogre12BillboardSetD0Ev")]
-pub fn stub_0xc60ef0() -> ! {
-    todo!("0xc60ef0 non-virtual thunk toOgre::BillboardSet::~BillboardSet()")
+pub fn stub_0xc60ef0() {
+    // IDA 0xc60ef0: __ZThn188 thunk (D0 deleting dtor): `this -= 188`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xc60f84 — __ZN4Ogre12BillboardSetD2Ev
@@ -804,16 +804,16 @@ pub fn stub_0xc60f84() -> ! {
 // type: void __fastcall(Ogre::BillboardSet *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
 #[doc(alias = "__ZThn4_N4Ogre12BillboardSetD1Ev")]
-pub fn stub_0xc614d8() -> ! {
-    todo!("0xc614d8 non-virtual thunk toOgre::BillboardSet::~BillboardSet()")
+pub fn stub_0xc614d8() {
+    // IDA 0xc614d8: __ZThn4 thunk (D1 base dtor): `this -= 4`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc614e4 — __ZThn188_N4Ogre12BillboardSetD1Ev
 // type: void __fastcall(Ogre::BillboardSet *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
 #[doc(alias = "__ZThn188_N4Ogre12BillboardSetD1Ev")]
-pub fn stub_0xc614e4() -> ! {
-    todo!("0xc614e4 non-virtual thunk toOgre::BillboardSet::~BillboardSet()")
+pub fn stub_0xc614e4() {
+    // IDA 0xc614e4: __ZThn188 thunk (D1 base dtor): `this -= 188`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xc614f0 — __ZN4Ogre12BillboardSet15_destroyBuffersEv

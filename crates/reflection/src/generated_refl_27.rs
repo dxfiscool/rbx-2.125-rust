@@ -38,8 +38,8 @@ pub fn stub_0x23dd30() -> ! {
 // 0x23ddec — __ZThn12_N5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED0Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED0Ev")]
-pub fn stub_0x23ddec() -> ! {
-    todo!("0x23ddec non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
+pub fn stub_0x23ddec() {
+    // IDA 0x23ddec: __ZThn12 thunk (D0 deleting dtor): `this -= 12`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x23dea8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEEC1ERKS6_NS6_9clone_tagE
@@ -367,15 +367,15 @@ pub fn stub_0x241108() -> ! {
 // 0x241214 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_15condition_errorEED1Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::condition_error>::~error_info_injector()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail19error_info_injectorINS_15condition_errorEED1Ev")]
-pub fn stub_0x241214() -> ! {
-    todo!("0x241214 non-virtual thunk toboost::exception_detail::error_info_injector<boost::condition_error>::~error_info_injector()")
+pub fn stub_0x241214() {
+    // IDA 0x241214: __ZThn20 thunk (D1 base dtor): `this -= 20`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x241324 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_15condition_errorEEEED1Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::~clone_impl()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_15condition_errorEEEED1Ev")]
-pub fn stub_0x241324() -> ! {
-    todo!("0x241324 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::~clone_impl()")
+pub fn stub_0x241324() {
+    // IDA 0x241324: __ZThn20 thunk (D1 base dtor): `this -= 20`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x241430 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_15condition_errorEEEE5cloneEv

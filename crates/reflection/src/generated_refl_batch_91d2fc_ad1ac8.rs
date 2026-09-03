@@ -22,26 +22,26 @@ pub fn stub_0x922f90() -> ! {
 
 // 0x923030 — __ZThn32_N3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x923030() -> ! {
-    todo!("0x923030 __ZThn32_N3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x923030() {
+    // IDA 0x923030: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x923038 — __ZThn32_N3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x923038() -> ! {
-    todo!("0x923038 __ZThn32_N3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x923038() {
+    // IDA 0x923038: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9230dc — __ZThn36_N3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x9230dc() -> ! {
-    todo!("0x9230dc __ZThn36_N3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x9230dc() {
+    // IDA 0x9230dc: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9230e4 — __ZThn36_N3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x9230e4() -> ! {
-    todo!("0x9230e4 __ZThn36_N3RBX10Reflection9DescribedINS_11RemoteEventELZNS_12sRemoteEventEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sRemoteEventEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x9230e4() {
+    // IDA 0x9230e4: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x929104 — __ZN3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -58,26 +58,26 @@ pub fn stub_0x929108() -> ! {
 
 // 0x9291a8 — __ZThn32_N3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x9291a8() -> ! {
-    todo!("0x9291a8 __ZThn32_N3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x9291a8() {
+    // IDA 0x9291a8: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9291b0 — __ZThn32_N3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x9291b0() -> ! {
-    todo!("0x9291b0 __ZThn32_N3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x9291b0() {
+    // IDA 0x9291b0: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x929254 — __ZThn36_N3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x929254() -> ! {
-    todo!("0x929254 __ZThn36_N3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x929254() {
+    // IDA 0x929254: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x92925c — __ZThn36_N3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x92925c() -> ! {
-    todo!("0x92925c __ZThn36_N3RBX10Reflection9DescribedINS_14RemoteFunctionELZNS_15sRemoteFunctionEENS_14FactoryProductIS2_NS_8InstanceELZNS_15sRemoteFunctionEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x92925c() {
+    // IDA 0x92925c: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x929d88 — __ZN5boost8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS3_18GenericSlotWrapperERKS6_EENSA_5list2INSA_5valueINS1_ISE_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE
@@ -160,38 +160,38 @@ pub fn stub_0x970cac() -> ! {
 
 // 0x970d4c — __ZThn32_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x970d4c() -> ! {
-    todo!("0x970d4c __ZThn32_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x970d4c() {
+    // IDA 0x970d4c: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x970d58 — __ZThn32_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x970d58() -> ! {
-    todo!("0x970d58 __ZThn32_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x970d58() {
+    // IDA 0x970d58: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x970dfc — __ZThn36_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x970dfc() -> ! {
-    todo!("0x970dfc __ZThn36_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x970dfc() {
+    // IDA 0x970dfc: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x970e08 — __ZThn36_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x970e08() -> ! {
-    todo!("0x970e08 __ZThn36_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x970e08() {
+    // IDA 0x970e08: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x970eac — __ZThn92_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x970eac() -> ! {
-    todo!("0x970eac __ZThn92_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x970eac() {
+    // IDA 0x970eac: __ZThn92 thunk (D1 base dtor): `this -= 92`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x970eb8 — __ZThn92_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x970eb8() -> ! {
-    todo!("0x970eb8 __ZThn92_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x970eb8() {
+    // IDA 0x970eb8: __ZThn92 thunk (D0 deleting dtor): `this -= 92`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9727bc — __ZN5boost8functionIFvSsiSsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKSsRKiSC_EENS4_5list4INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEENSL_ILi2EEENSL_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE
@@ -208,14 +208,14 @@ pub fn stub_0x9813f0() -> ! {
 
 // 0x981400 — __ZThn32_N3RBX10Reflection9DescribedINS_11StringValueELZNS_12sStringValueEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStringValueEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11StringValueELZNS_12sStringValueEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStringValueEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x981400() -> ! {
-    todo!("0x981400 __ZThn32_N3RBX10Reflection9DescribedINS_11StringValueELZNS_12sStringValueEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStringValueEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x981400() {
+    // IDA 0x981400: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9814a8 — __ZThn36_N3RBX10Reflection9DescribedINS_11StringValueELZNS_12sStringValueEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStringValueEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11StringValueELZNS_12sStringValueEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStringValueEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x9814a8() -> ! {
-    todo!("0x9814a8 __ZThn36_N3RBX10Reflection9DescribedINS_11StringValueELZNS_12sStringValueEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStringValueEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x9814a8() {
+    // IDA 0x9814a8: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9ace4c — __ZN3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -232,26 +232,26 @@ pub fn stub_0x9ace58() -> ! {
 
 // 0x9acef8 — __ZThn32_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x9acef8() -> ! {
-    todo!("0x9acef8 __ZThn32_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x9acef8() {
+    // IDA 0x9acef8: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9acf04 — __ZThn32_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x9acf04() -> ! {
-    todo!("0x9acf04 __ZThn32_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x9acf04() {
+    // IDA 0x9acf04: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9acfa8 — __ZThn36_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x9acfa8() -> ! {
-    todo!("0x9acfa8 __ZThn36_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x9acfa8() {
+    // IDA 0x9acfa8: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9acfb4 — __ZThn36_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x9acfb4() -> ! {
-    todo!("0x9acfb4 __ZThn36_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x9acfb4() {
+    // IDA 0x9acfb4: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9b5080 — __ZN3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -268,26 +268,26 @@ pub fn stub_0x9b508c() -> ! {
 
 // 0x9b512c — __ZThn32_N3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x9b512c() -> ! {
-    todo!("0x9b512c __ZThn32_N3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x9b512c() {
+    // IDA 0x9b512c: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9b5138 — __ZThn32_N3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x9b5138() -> ! {
-    todo!("0x9b5138 __ZThn32_N3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x9b5138() {
+    // IDA 0x9b5138: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9b51dc — __ZThn36_N3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x9b51dc() -> ! {
-    todo!("0x9b51dc __ZThn36_N3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x9b51dc() {
+    // IDA 0x9b51dc: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9b51e8 — __ZThn36_N3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x9b51e8() -> ! {
-    todo!("0x9b51e8 __ZThn36_N3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x9b51e8() {
+    // IDA 0x9b51e8: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9ce888 — __ZN3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
@@ -304,38 +304,38 @@ pub fn stub_0x9ce894() -> ! {
 
 // 0x9ce934 — __ZThn32_N3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x9ce934() -> ! {
-    todo!("0x9ce934 __ZThn32_N3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x9ce934() {
+    // IDA 0x9ce934: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9ce940 — __ZThn32_N3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x9ce940() -> ! {
-    todo!("0x9ce940 __ZThn32_N3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x9ce940() {
+    // IDA 0x9ce940: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9ce9e4 — __ZThn36_N3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x9ce9e4() -> ! {
-    todo!("0x9ce9e4 __ZThn36_N3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x9ce9e4() {
+    // IDA 0x9ce9e4: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9ce9f0 — __ZThn36_N3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x9ce9f0() -> ! {
-    todo!("0x9ce9f0 __ZThn36_N3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x9ce9f0() {
+    // IDA 0x9ce9f0: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9cea94 — __ZThn92_N3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x9cea94() -> ! {
-    todo!("0x9cea94 __ZThn92_N3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x9cea94() {
+    // IDA 0x9cea94: __ZThn92 thunk (D1 base dtor): `this -= 92`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9ceaa0 — __ZThn92_N3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x9ceaa0() -> ! {
-    todo!("0x9ceaa0 __ZThn92_N3RBX10Reflection9DescribedINS_7Network6ServerELZNS2_7sServerEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sServerEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x9ceaa0() {
+    // IDA 0x9ceaa0: __ZThn92 thunk (D0 deleting dtor): `this -= 92`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9e7928 — __ZN3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EEC2IN6RakNet13SystemAddressEN5boost10shared_ptrINS2_17ConcurrentRakPeerEEEPNS_15NetworkSettingsEbEET_T0_T1_T2_
@@ -364,50 +364,50 @@ pub fn stub_0x9e83b0() -> ! {
 
 // 0x9e8450 — __ZThn32_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x9e8450() -> ! {
-    todo!("0x9e8450 __ZThn32_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x9e8450() {
+    // IDA 0x9e8450: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9e845c — __ZThn32_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x9e845c() -> ! {
-    todo!("0x9e845c __ZThn32_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x9e845c() {
+    // IDA 0x9e845c: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9e8500 — __ZThn36_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x9e8500() -> ! {
-    todo!("0x9e8500 __ZThn36_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x9e8500() {
+    // IDA 0x9e8500: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9e850c — __ZThn36_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x9e850c() -> ! {
-    todo!("0x9e850c __ZThn36_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x9e850c() {
+    // IDA 0x9e850c: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9e85b0 — __ZThn1180_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn1180_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x9e85b0() -> ! {
-    todo!("0x9e85b0 __ZThn1180_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x9e85b0() {
+    // IDA 0x9e85b0: __ZThn1180 thunk (D1 base dtor): `this -= 1180`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9e85c0 — __ZThn1180_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn1180_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x9e85c0() -> ! {
-    todo!("0x9e85c0 __ZThn1180_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x9e85c0() {
+    // IDA 0x9e85c0: __ZThn1180 thunk (D0 deleting dtor): `this -= 1180`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9e8664 — __ZThn1192_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn1192_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x9e8664() -> ! {
-    todo!("0x9e8664 __ZThn1192_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x9e8664() {
+    // IDA 0x9e8664: __ZThn1192 thunk (D1 base dtor): `this -= 1192`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9e8674 — __ZThn1192_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn1192_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x9e8674() -> ! {
-    todo!("0x9e8674 __ZThn1192_N3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x9e8674() {
+    // IDA 0x9e8674: __ZThn1192 thunk (D0 deleting dtor): `this -= 1192`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0x9edc98 — __ZN5boost8functionIFvibiEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKiRKbSC_EENS4_5list4INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEENSL_ILi2EEENSL_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE
@@ -424,20 +424,20 @@ pub fn stub_0xa245f0() -> ! {
 
 // 0xa24690 — __ZThn32_N3RBX10Reflection9DescribedINS_12CylinderMeshELZNS_13sCylinderMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_13sCylinderMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12CylinderMeshELZNS_13sCylinderMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_13sCylinderMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0xa24690() -> ! {
-    todo!("0xa24690 __ZThn32_N3RBX10Reflection9DescribedINS_12CylinderMeshELZNS_13sCylinderMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_13sCylinderMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0xa24690() {
+    // IDA 0xa24690: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xa246a0 — __ZThn36_N3RBX10Reflection9DescribedINS_12CylinderMeshELZNS_13sCylinderMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_13sCylinderMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_12CylinderMeshELZNS_13sCylinderMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_13sCylinderMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0xa246a0() -> ! {
-    todo!("0xa246a0 __ZThn36_N3RBX10Reflection9DescribedINS_12CylinderMeshELZNS_13sCylinderMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_13sCylinderMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0xa246a0() {
+    // IDA 0xa246a0: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xa24d80 — __ZThn32_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0xa24d80() -> ! {
-    todo!("0xa24d80 __ZThn32_N3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0xa24d80() {
+    // IDA 0xa24d80: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xa3f7c8 — __ZN3RBX10Reflection9DescribedINS_7Network7PlayersELZNS2_8sPlayersEENS_17NonFactoryProductINS_8InstanceELZNS2_8sPlayersEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -454,26 +454,26 @@ pub fn stub_0xa3f7d4() -> ! {
 
 // 0xa3f874 — __ZThn32_N3RBX10Reflection9DescribedINS_7Network7PlayersELZNS2_8sPlayersEENS_17NonFactoryProductINS_8InstanceELZNS2_8sPlayersEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7Network7PlayersELZNS2_8sPlayersEENS_17NonFactoryProductINS_8InstanceELZNS2_8sPlayersEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0xa3f874() -> ! {
-    todo!("0xa3f874 __ZThn32_N3RBX10Reflection9DescribedINS_7Network7PlayersELZNS2_8sPlayersEENS_17NonFactoryProductINS_8InstanceELZNS2_8sPlayersEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0xa3f874() {
+    // IDA 0xa3f874: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xa3f880 — __ZThn32_N3RBX10Reflection9DescribedINS_7Network7PlayersELZNS2_8sPlayersEENS_17NonFactoryProductINS_8InstanceELZNS2_8sPlayersEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7Network7PlayersELZNS2_8sPlayersEENS_17NonFactoryProductINS_8InstanceELZNS2_8sPlayersEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0xa3f880() -> ! {
-    todo!("0xa3f880 __ZThn32_N3RBX10Reflection9DescribedINS_7Network7PlayersELZNS2_8sPlayersEENS_17NonFactoryProductINS_8InstanceELZNS2_8sPlayersEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0xa3f880() {
+    // IDA 0xa3f880: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xa3f924 — __ZThn36_N3RBX10Reflection9DescribedINS_7Network7PlayersELZNS2_8sPlayersEENS_17NonFactoryProductINS_8InstanceELZNS2_8sPlayersEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7Network7PlayersELZNS2_8sPlayersEENS_17NonFactoryProductINS_8InstanceELZNS2_8sPlayersEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0xa3f924() -> ! {
-    todo!("0xa3f924 __ZThn36_N3RBX10Reflection9DescribedINS_7Network7PlayersELZNS2_8sPlayersEENS_17NonFactoryProductINS_8InstanceELZNS2_8sPlayersEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0xa3f924() {
+    // IDA 0xa3f924: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xa3f930 — __ZThn36_N3RBX10Reflection9DescribedINS_7Network7PlayersELZNS2_8sPlayersEENS_17NonFactoryProductINS_8InstanceELZNS2_8sPlayersEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7Network7PlayersELZNS2_8sPlayersEENS_17NonFactoryProductINS_8InstanceELZNS2_8sPlayersEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0xa3f930() -> ! {
-    todo!("0xa3f930 __ZThn36_N3RBX10Reflection9DescribedINS_7Network7PlayersELZNS2_8sPlayersEENS_17NonFactoryProductINS_8InstanceELZNS2_8sPlayersEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0xa3f930() {
+    // IDA 0xa3f930: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xa7edb0 — __ZN3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -532,26 +532,26 @@ pub fn stub_0xaacfdc() -> ! {
 
 // 0xaad07c — __ZThn32_N3RBX10Reflection9DescribedINS_7Network6PlayerELZNS2_7sPlayerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_7sPlayerEES5_EELNS0_15ClassDescriptor13FunctionalityE19ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7Network6PlayerELZNS2_7sPlayerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_7sPlayerEES5_EELNS0_15ClassDescriptor13FunctionalityE19ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0xaad07c() -> ! {
-    todo!("0xaad07c __ZThn32_N3RBX10Reflection9DescribedINS_7Network6PlayerELZNS2_7sPlayerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_7sPlayerEES5_EELNS0_15ClassDescriptor13FunctionalityE19ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0xaad07c() {
+    // IDA 0xaad07c: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xaad088 — __ZThn32_N3RBX10Reflection9DescribedINS_7Network6PlayerELZNS2_7sPlayerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_7sPlayerEES5_EELNS0_15ClassDescriptor13FunctionalityE19ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7Network6PlayerELZNS2_7sPlayerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_7sPlayerEES5_EELNS0_15ClassDescriptor13FunctionalityE19ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0xaad088() -> ! {
-    todo!("0xaad088 __ZThn32_N3RBX10Reflection9DescribedINS_7Network6PlayerELZNS2_7sPlayerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_7sPlayerEES5_EELNS0_15ClassDescriptor13FunctionalityE19ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0xaad088() {
+    // IDA 0xaad088: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xaad12c — __ZThn36_N3RBX10Reflection9DescribedINS_7Network6PlayerELZNS2_7sPlayerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_7sPlayerEES5_EELNS0_15ClassDescriptor13FunctionalityE19ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7Network6PlayerELZNS2_7sPlayerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_7sPlayerEES5_EELNS0_15ClassDescriptor13FunctionalityE19ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0xaad12c() -> ! {
-    todo!("0xaad12c __ZThn36_N3RBX10Reflection9DescribedINS_7Network6PlayerELZNS2_7sPlayerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_7sPlayerEES5_EELNS0_15ClassDescriptor13FunctionalityE19ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0xaad12c() {
+    // IDA 0xaad12c: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xaad138 — __ZThn36_N3RBX10Reflection9DescribedINS_7Network6PlayerELZNS2_7sPlayerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_7sPlayerEES5_EELNS0_15ClassDescriptor13FunctionalityE19ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7Network6PlayerELZNS2_7sPlayerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_7sPlayerEES5_EELNS0_15ClassDescriptor13FunctionalityE19ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0xaad138() -> ! {
-    todo!("0xaad138 __ZThn36_N3RBX10Reflection9DescribedINS_7Network6PlayerELZNS2_7sPlayerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_7sPlayerEES5_EELNS0_15ClassDescriptor13FunctionalityE19ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0xaad138() {
+    // IDA 0xaad138: __ZThn36 thunk (D0 deleting dtor): `this -= 36`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xaafbf0 — __ZN5boost8functionIFvSsN3G3D7Vector3EEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsRKS2_EENS6_5list3INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEENSN_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
@@ -586,18 +586,18 @@ pub fn stub_0xad1978() -> ! {
 
 // 0xad1a18 — __ZThn32_N3RBX10Reflection9DescribedINS_7Network6MarkerELZNS2_7sMarkerEENS_17NonFactoryProductINS_8InstanceELZNS2_7sMarkerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7Network6MarkerELZNS2_7sMarkerEENS_17NonFactoryProductINS_8InstanceELZNS2_7sMarkerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0xad1a18() -> ! {
-    todo!("0xad1a18 __ZThn32_N3RBX10Reflection9DescribedINS_7Network6MarkerELZNS2_7sMarkerEENS_17NonFactoryProductINS_8InstanceELZNS2_7sMarkerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0xad1a18() {
+    // IDA 0xad1a18: __ZThn32 thunk (D1 base dtor): `this -= 32`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0xad1a24 — __ZThn32_N3RBX10Reflection9DescribedINS_7Network6MarkerELZNS2_7sMarkerEENS_17NonFactoryProductINS_8InstanceELZNS2_7sMarkerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7Network6MarkerELZNS2_7sMarkerEENS_17NonFactoryProductINS_8InstanceELZNS2_7sMarkerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0xad1a24() -> ! {
-    todo!("0xad1a24 __ZThn32_N3RBX10Reflection9DescribedINS_7Network6MarkerELZNS2_7sMarkerEENS_17NonFactoryProductINS_8InstanceELZNS2_7sMarkerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0xad1a24() {
+    // IDA 0xad1a24: __ZThn32 thunk (D0 deleting dtor): `this -= 32`, run complete-object dtor, `operator delete` (cf. decompiled 0xfb5c). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
 // 0xad1ac8 — __ZThn36_N3RBX10Reflection9DescribedINS_7Network6MarkerELZNS2_7sMarkerEENS_17NonFactoryProductINS_8InstanceELZNS2_7sMarkerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7Network6MarkerELZNS2_7sMarkerEENS_17NonFactoryProductINS_8InstanceELZNS2_7sMarkerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0xad1ac8() -> ! {
-    todo!("0xad1ac8 __ZThn36_N3RBX10Reflection9DescribedINS_7Network6MarkerELZNS2_7sMarkerEENS_17NonFactoryProductINS_8InstanceELZNS2_7sMarkerEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0xad1ac8() {
+    // IDA 0xad1ac8: __ZThn36 thunk (D1 base dtor): `this -= 36`, run base-object dtor in place (cf. decompiled 0x6d2e50). Rust: Drop glue covers it; no explicit body.
 }
