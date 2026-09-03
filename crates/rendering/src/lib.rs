@@ -599,3 +599,6 @@ pub mod generated_render_wdog_1788391193;
 pub mod generated_wdog_rend_1788392398;
 pub mod generated_481;
 pub mod generated_wdog_cron_rend;
+pub mod generated_wdog_rend2;
+pub mod generated_wdog_rend3;
+pub mod generated_482;
