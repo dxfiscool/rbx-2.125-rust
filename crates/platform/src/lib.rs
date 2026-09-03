@@ -433,3 +433,4 @@ pub mod generated_plat_globaldedup_105;
 pub mod generated_watchdog_platform_w12b;
 pub mod generated_watchdog_platform_w13a;
 pub mod generated_plat_globaldedup_106;
+pub mod generated_plat_globaldedup_107;
