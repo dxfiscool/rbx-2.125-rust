@@ -1,82 +1,105 @@
 // RBX::Reflection generated skeletons from ida/export.json.
 // Batch continues after existing crate-local addresses; source of truth is IDA ea.
+use crate::enum_desc::EnumDesc;
 
 // 0x8e24 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEEC2Ev
+// IDA 0x8e24, vtable off_12213F8
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::EnumDesc(void)")]
-pub fn stub_0x8e24() -> ! {
-    todo!("0x8e24 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::EnumDesc(void)")
+pub fn stub_0x8e24() -> EnumDesc {
+    let mut desc = EnumDesc::new("QualityLevel");
+    desc.add_pair(0, "Automatic");
+    for level in 1..22 {
+        desc.add_pair(level, &format!("Level{level:02}"));
+    }
+    for legacy in 1..22 {
+        desc.legacy_names
+            .insert(format!("Level {legacy:2}"), legacy);
+    }
+    desc
 }
 
 // 0x9100 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEEC2Ev
+// IDA 0x9100, vtable off_1221428
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::EnumDesc(void)")]
-pub fn stub_0x9100() -> ! {
-    todo!(
-        "0x9100 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::EnumDesc(void)"
-    )
+pub fn stub_0x9100() -> EnumDesc {
+    let mut desc = EnumDesc::new("Resolution");
+    const PAIRS: [(i32, &str); 19] = [
+        (0, "Automatic"), (1, "720x526"), (2, "800x600"), (3, "1024x600"),
+        (4, "1024x768"), (5, "1280x720"), (6, "1280x768"), (7, "1152x864"),
+        (8, "1280x800"), (9, "1360x768"), (10, "1280x960"), (11, "1280x1024"),
+        (12, "1440x900"), (13, "1600x900"), (14, "1600x1024"), (15, "1600x1200"),
+        (16, "1680x1050"), (17, "1920x1080"), (18, "1920x1200"),
+    ];
+    for (value, name) in PAIRS {
+        desc.add_pair(value, name);
+    }
+    // IDA 0x9100: "(wide)" aliases only touch the legacy map, not the legacy vector.
+    const WIDE: [(i32, &str); 11] = [
+        (3, "1024x600 (wide)"), (5, "1280x720 (wide)"), (6, "1280x768 (wide)"),
+        (8, "1280x800 (wide)"), (9, "1360x768 (wide)"), (12, "1440x900 (wide)"),
+        (13, "1600x900 (wide)"), (14, "1600x1024 (wide)"), (16, "1680x1050 (wide)"),
+        (17, "1920x1080 (wide)"), (18, "1920x1200 (wide)"),
+    ];
+    for (value, name) in WIDE {
+        desc.legacy_names.insert(name.to_owned(), value);
+    }
+    desc
 }
 
 // 0x9b48 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE7addPairES3_PKc
-#[doc(
-    alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::addPair(RBX::CRenderSettings::AASamples,char const*)"
-)]
-pub fn stub_0x9b48() -> ! {
-    todo!("0x9b48 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::addPair(RBX::CRenderSettings::AASamples,char const*)")
+// IDA 0x9b48
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::addPair(RBX::CRenderSettings::AASamples,char const*)")]
+pub fn stub_0x9b48(desc: &mut EnumDesc, value: i32, name: &str) {
+    desc.add_pair(value, name);
 }
 
 // 0x9ea8 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE7addPairES3_PKc
-#[doc(
-    alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::addPair(RBX::CRenderSettings::GraphicsMode,char const*)"
-)]
-pub fn stub_0x9ea8() -> ! {
-    todo!("0x9ea8 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::addPair(RBX::CRenderSettings::GraphicsMode,char const*)")
+// IDA 0x9ea8
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::addPair(RBX::CRenderSettings::GraphicsMode,char const*)")]
+pub fn stub_0x9ea8(desc: &mut EnumDesc, value: i32, name: &str) {
+    desc.add_pair(value, name);
 }
 
 // 0xa208 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE9addLegacyEiPKcS3_
-#[doc(
-    alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::addLegacy(int,char const*,RBX::CRenderSettings::GraphicsMode)"
-)]
-pub fn stub_0xa208() -> ! {
-    todo!("0xa208 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::addLegacy(int,char const*,RBX::CRenderSettings::GraphicsMode)")
+// IDA 0xa208; original returns the map slot, dropped in the Rust cutover.
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::addLegacy(int,char const*,RBX::CRenderSettings::GraphicsMode)")]
+pub fn stub_0xa208(desc: &mut EnumDesc, legacy_index: usize, name: &str, value: i32) {
+    desc.add_legacy(legacy_index, name, value);
 }
 
 // 0xa25c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE7addPairES3_PKc
-#[doc(
-    alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::addPair(RBX::CRenderSettings::FrameRateManagerMode,char const*)"
-)]
-pub fn stub_0xa25c() -> ! {
-    todo!("0xa25c RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::addPair(RBX::CRenderSettings::FrameRateManagerMode,char const*)")
+// IDA 0xa25c
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::addPair(RBX::CRenderSettings::FrameRateManagerMode,char const*)")]
+pub fn stub_0xa25c(desc: &mut EnumDesc, value: i32, name: &str) {
+    desc.add_pair(value, name);
 }
 
 // 0xa5bc — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE7addPairES3_PKc
-#[doc(
-    alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::addPair(RBX::CRenderSettings::AntialiasingMode,char const*)"
-)]
-pub fn stub_0xa5bc() -> ! {
-    todo!("0xa5bc RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::addPair(RBX::CRenderSettings::AntialiasingMode,char const*)")
+// IDA 0xa5bc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::addPair(RBX::CRenderSettings::AntialiasingMode,char const*)")]
+pub fn stub_0xa5bc(desc: &mut EnumDesc, value: i32, name: &str) {
+    desc.add_pair(value, name);
 }
 
 // 0xa91c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE7addPairES3_PKc
-#[doc(
-    alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::addPair(RBX::CRenderSettings::ShadowMode,char const*)"
-)]
-pub fn stub_0xa91c() -> ! {
-    todo!("0xa91c RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::addPair(RBX::CRenderSettings::ShadowMode,char const*)")
+// IDA 0xa91c
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::addPair(RBX::CRenderSettings::ShadowMode,char const*)")]
+pub fn stub_0xa91c(desc: &mut EnumDesc, value: i32, name: &str) {
+    desc.add_pair(value, name);
 }
 
 // 0xac7c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE7addPairES3_PKc
-#[doc(
-    alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::addPair(RBX::CRenderSettings::QualityLevel,char const*)"
-)]
-pub fn stub_0xac7c() -> ! {
-    todo!("0xac7c RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::addPair(RBX::CRenderSettings::QualityLevel,char const*)")
+// IDA 0xac7c
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::addPair(RBX::CRenderSettings::QualityLevel,char const*)")]
+pub fn stub_0xac7c(desc: &mut EnumDesc, value: i32, name: &str) {
+    desc.add_pair(value, name);
 }
 
 // 0xafdc — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE7addPairES3_PKc
-#[doc(
-    alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::addPair(RBX::CRenderSettings::ResolutionPreset,char const*)"
-)]
-pub fn stub_0xafdc() -> ! {
-    todo!("0xafdc RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::addPair(RBX::CRenderSettings::ResolutionPreset,char const*)")
+// IDA 0xafdc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::addPair(RBX::CRenderSettings::ResolutionPreset,char const*)")]
+pub fn stub_0xafdc(desc: &mut EnumDesc, value: i32, name: &str) {
+    desc.add_pair(value, name);
 }
 
 // 0xb340 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEED1Ev
