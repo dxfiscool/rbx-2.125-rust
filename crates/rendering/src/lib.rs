@@ -617,3 +617,4 @@ pub mod generated_watchdog_rend_w11;
 pub mod generated_488;
 pub mod generated_489;
 pub mod generated_490;
+pub mod generated_491;
