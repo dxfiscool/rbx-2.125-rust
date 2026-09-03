@@ -1,0 +1,609 @@
+// Auto-generated skeletons for rbx-datamodel — from ida/export.json
+// Filter: RBX + Instance|PartInstance|PVInstance|FWInstance|Primitive|Joint|Keyframe|Lighting|Message|Hint|Pose|PlayerGui|ScreenGui|Motor|Snap|Glue|Rotate|Wedge|Tool|Toolbar|Flag|MouseCommand|FactoryProduct|FWFinal|FWDictionnary|OnDemandInstance|FormFactor|DataModel|Workspace|Model|Value|Controller|Adornment|Selection|Gui|Team|Sky|Smoke|Sparkles|Spawn|Mesh (datamodel-adjacent); EA-sorted asc, NOT in /tmp/global_eas.txt
+// Source: ida/export.json (85545 funcs, base 0x4000)
+// Batch: 100 stubs | range 0xf4f024..0xf4fab4 | broad remainder after batch: 248
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; stripped from alias
+
+#![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
+
+use rbx_core::SharedPtr;
+
+// 0xf4f024 — j___ZN3RBX10BiMultiMapIPNS_9PrimitiveEPNS_5JointEE10removePairERKS2_RKS4_
+#[doc(alias = "j___ZN3RBX10BiMultiMapIPNS_9PrimitiveEPNS_5JointEE10removePairERKS2_RKS4_")]
+pub fn stub_0xf4f024() -> ! {
+    todo!("0xf4f024 j___ZN3RBX10BiMultiMapIPNS_9PrimitiveEPNS_5JointEE10removePairERKS2_RKS4_")
+}
+
+// 0xf4f034 — j___ZN3RBX10BiMultiMapIPNS_9PrimitiveEPNS_5JointEE9pairInMapERKS2_RKS4_
+#[doc(alias = "j___ZN3RBX10BiMultiMapIPNS_9PrimitiveEPNS_5JointEE9pairInMapERKS2_RKS4_")]
+pub fn stub_0xf4f034() -> ! {
+    todo!("0xf4f034 j___ZN3RBX10BiMultiMapIPNS_9PrimitiveEPNS_5JointEE9pairInMapERKS2_RKS4_")
+}
+
+// 0xf4f054 — j___ZNSt8_Rb_treeIPN3RBX9PrimitiveES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE11equal_rangeERKS2_
+#[doc(alias = "j___ZNSt8_Rb_treeIPN3RBX9PrimitiveES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE11equal_rangeERKS2_")]
+pub fn stub_0xf4f054() -> ! {
+    todo!("0xf4f054 j___ZNSt8_Rb_treeIPN3RBX9PrimitiveES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE11equal_rangeERKS2_")
+}
+
+// 0xf4f064 — j___ZNSt8_Rb_treeIPN3RBX9PrimitiveES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE5eraseERKS2_
+#[doc(alias = "j___ZNSt8_Rb_treeIPN3RBX9PrimitiveES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE5eraseERKS2_")]
+pub fn stub_0xf4f064() -> ! {
+    todo!("0xf4f064 j___ZNSt8_Rb_treeIPN3RBX9PrimitiveES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE5eraseERKS2_")
+}
+
+// 0xf4f074 — j___ZNSt8_Rb_treeIPN3RBX9PrimitiveES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE5eraseESt17_Rb_tree_iteratorIS2_ESA_
+#[doc(alias = "j___ZNSt8_Rb_treeIPN3RBX9PrimitiveES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE5eraseESt17_Rb_tree_iteratorIS2_ESA_")]
+pub fn stub_0xf4f074() -> ! {
+    todo!("0xf4f074 j___ZNSt8_Rb_treeIPN3RBX9PrimitiveES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE5eraseESt17_Rb_tree_iteratorIS2_ESA_")
+}
+
+// 0xf4f084 — j___ZNSt8_Rb_treeIPN3RBX9PrimitiveESt4pairIKS2_PNS0_5JointEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE15_M_insert_equalERKS7_
+#[doc(alias = "j___ZNSt8_Rb_treeIPN3RBX9PrimitiveESt4pairIKS2_PNS0_5JointEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE15_M_insert_equalERKS7_")]
+pub fn stub_0xf4f084() -> ! {
+    todo!("0xf4f084 j___ZNSt8_Rb_treeIPN3RBX9PrimitiveESt4pairIKS2_PNS0_5JointEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE15_M_insert_equalERKS7_")
+}
+
+// 0xf4f094 — j___ZNSt8_Rb_treeIPN3RBX9PrimitiveESt4pairIKS2_PNS0_5JointEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
+#[doc(alias = "j___ZNSt8_Rb_treeIPN3RBX9PrimitiveESt4pairIKS2_PNS0_5JointEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E")]
+pub fn stub_0xf4f094() -> ! {
+    todo!("0xf4f094 j___ZNSt8_Rb_treeIPN3RBX9PrimitiveESt4pairIKS2_PNS0_5JointEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E")
+}
+
+// 0xf4f0a4 — j___ZNSt8_Rb_treeIPN3RBX9PrimitiveESt4pairIKS2_PNS0_5JointEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE9_M_insertEPSt18_Rb_tree_node_baseSF_RKS7_
+#[doc(alias = "j___ZNSt8_Rb_treeIPN3RBX9PrimitiveESt4pairIKS2_PNS0_5JointEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE9_M_insertEPSt18_Rb_tree_node_baseSF_RKS7_")]
+pub fn stub_0xf4f0a4() -> ! {
+    todo!("0xf4f0a4 j___ZNSt8_Rb_treeIPN3RBX9PrimitiveESt4pairIKS2_PNS0_5JointEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE9_M_insertEPSt18_Rb_tree_node_baseSF_RKS7_")
+}
+
+// 0xf4f384 — j___ZN3RBX6D6Link20setJointOffsetCFrameERKN3G3D15CoordinateFrameE
+#[doc(alias = "j___ZN3RBX6D6Link20setJointOffsetCFrameERKN3G3D15CoordinateFrameE")]
+pub fn stub_0xf4f384() -> ! {
+    todo!("0xf4f384 j___ZN3RBX6D6Link20setJointOffsetCFrameERKN3G3D15CoordinateFrameE")
+}
+
+// 0xf4f454 — j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY16ParallelRampMeshENS_15Vector3ComparerEE10ValueCountC2ERKS2_
+#[doc(alias = "j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY16ParallelRampMeshENS_15Vector3ComparerEE10ValueCountC2ERKS2_")]
+pub fn stub_0xf4f454() -> ! {
+    todo!("0xf4f454 j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY16ParallelRampMeshENS_15Vector3ComparerEE10ValueCountC2ERKS2_")
+}
+
+// 0xf4f464 — j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY16ParallelRampMeshENS_15Vector3ComparerEE10ValueCountD2Ev
+#[doc(alias = "j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY16ParallelRampMeshENS_15Vector3ComparerEE10ValueCountD2Ev")]
+pub fn stub_0xf4f464() -> ! {
+    todo!("0xf4f464 j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY16ParallelRampMeshENS_15Vector3ComparerEE10ValueCountD2Ev")
+}
+
+// 0xf4f474 — j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY16ParallelRampMeshENS_15Vector3ComparerEE11returnTokenERKS2_PNS6_10ValueCountE
+#[doc(alias = "j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY16ParallelRampMeshENS_15Vector3ComparerEE11returnTokenERKS2_PNS6_10ValueCountE")]
+pub fn stub_0xf4f474() -> ! {
+    todo!("0xf4f474 j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY16ParallelRampMeshENS_15Vector3ComparerEE11returnTokenERKS2_PNS6_10ValueCountE")
+}
+
+// 0xf4f484 — j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY16ParallelRampMeshENS_15Vector3ComparerEE29safe_static_do_get_staticDataEv
+#[doc(alias = "j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY16ParallelRampMeshENS_15Vector3ComparerEE29safe_static_do_get_staticDataEv")]
+pub fn stub_0xf4f484() -> ! {
+    todo!("0xf4f484 j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY16ParallelRampMeshENS_15Vector3ComparerEE29safe_static_do_get_staticDataEv")
+}
+
+// 0xf4f494 — j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY16ParallelRampMeshENS_15Vector3ComparerEE8getTokenERKS2_
+#[doc(alias = "j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY16ParallelRampMeshENS_15Vector3ComparerEE8getTokenERKS2_")]
+pub fn stub_0xf4f494() -> ! {
+    todo!("0xf4f494 j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY16ParallelRampMeshENS_15Vector3ComparerEE8getTokenERKS2_")
+}
+
+// 0xf4f4a4 — j___ZN3RBX4POLY16ParallelRampMeshC2ERKN3G3D7Vector3E
+#[doc(alias = "j___ZN3RBX4POLY16ParallelRampMeshC2ERKN3G3D7Vector3E")]
+pub fn stub_0xf4f4a4() -> ! {
+    todo!("0xf4f4a4 j___ZN3RBX4POLY16ParallelRampMeshC2ERKN3G3D7Vector3E")
+}
+
+// 0xf4f4b4 — j___ZN3RBX9AllocatorINS_4POLY16ParallelRampMeshEEC2Ev
+#[doc(alias = "j___ZN3RBX9AllocatorINS_4POLY16ParallelRampMeshEEC2Ev")]
+pub fn stub_0xf4f4b4() -> ! {
+    todo!("0xf4f4b4 j___ZN3RBX9AllocatorINS_4POLY16ParallelRampMeshEEC2Ev")
+}
+
+// 0xf4f4c4 — j___ZN3RBX9AllocatorINS_4POLY16ParallelRampMeshEEdlEPv
+#[doc(alias = "j___ZN3RBX9AllocatorINS_4POLY16ParallelRampMeshEEdlEPv")]
+pub fn stub_0xf4f4c4() -> ! {
+    todo!("0xf4f4c4 j___ZN3RBX9AllocatorINS_4POLY16ParallelRampMeshEEdlEPv")
+}
+
+// 0xf4f4d4 — j___ZN3RBX9AllocatorINS_4POLY16ParallelRampMeshEEnwEm
+#[doc(alias = "j___ZN3RBX9AllocatorINS_4POLY16ParallelRampMeshEEnwEm")]
+pub fn stub_0xf4f4d4() -> ! {
+    todo!("0xf4f4d4 j___ZN3RBX9AllocatorINS_4POLY16ParallelRampMeshEEnwEm")
+}
+
+// 0xf4f4e4 — j___ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY16ParallelRampMeshENS1_15Vector3ComparerEE5TokenEEC2IS9_EEPT_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY16ParallelRampMeshENS1_15Vector3ComparerEE5TokenEEC2IS9_EEPT_")]
+pub fn stub_0xf4f4e4() -> ! {
+    todo!("0xf4f4e4 j___ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY16ParallelRampMeshENS1_15Vector3ComparerEE5TokenEEC2IS9_EEPT_")
+}
+
+// 0xf4f4f4 — j___ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY16ParallelRampMeshENS1_15Vector3ComparerEE5TokenEEaSERKSA_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY16ParallelRampMeshENS1_15Vector3ComparerEE5TokenEEaSERKSA_")]
+pub fn stub_0xf4f4f4() -> ! {
+    todo!("0xf4f4f4 j___ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY16ParallelRampMeshENS1_15Vector3ComparerEE5TokenEEaSERKSA_")
+}
+
+// 0xf4f504 — j___ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv
+#[doc(alias = "j___ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")]
+pub fn stub_0xf4f504() -> ! {
+    todo!("0xf4f504 j___ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+}
+
+// 0xf4f514 — j___ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv
+#[doc(alias = "j___ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")]
+pub fn stub_0xf4f514() -> ! {
+    todo!("0xf4f514 j___ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+// 0xf4f524 — j___ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolIN3G3D7Vector3ENS3_4POLY16ParallelRampMeshENS3_15Vector3ComparerEE5TokenEEEPT_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolIN3G3D7Vector3ENS3_4POLY16ParallelRampMeshENS3_15Vector3ComparerEE5TokenEEEPT_")]
+pub fn stub_0xf4f524() -> ! {
+    todo!("0xf4f524 j___ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolIN3G3D7Vector3ENS3_4POLY16ParallelRampMeshENS3_15Vector3ComparerEE5TokenEEEPT_")
+}
+
+// 0xf4f534 — j___ZNSt3mapIN3G3D7Vector3EPN3RBX12GeometryPoolIS1_NS2_4POLY16ParallelRampMeshENS2_15Vector3ComparerEE10ValueCountES6_SaISt4pairIKS1_S9_EEEixERSB_
+#[doc(alias = "j___ZNSt3mapIN3G3D7Vector3EPN3RBX12GeometryPoolIS1_NS2_4POLY16ParallelRampMeshENS2_15Vector3ComparerEE10ValueCountES6_SaISt4pairIKS1_S9_EEEixERSB_")]
+pub fn stub_0xf4f534() -> ! {
+    todo!("0xf4f534 j___ZNSt3mapIN3G3D7Vector3EPN3RBX12GeometryPoolIS1_NS2_4POLY16ParallelRampMeshENS2_15Vector3ComparerEE10ValueCountES6_SaISt4pairIKS1_S9_EEEixERSB_")
+}
+
+// 0xf4f544 — j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE11lower_boundERS3_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE11lower_boundERS3_")]
+pub fn stub_0xf4f544() -> ! {
+    todo!("0xf4f544 j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE11lower_boundERS3_")
+}
+
+// 0xf4f554 — j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE11upper_boundERS3_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE11upper_boundERS3_")]
+pub fn stub_0xf4f554() -> ! {
+    todo!("0xf4f554 j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE11upper_boundERS3_")
+}
+
+// 0xf4f564 — j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE16_M_insert_uniqueERKSC_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE16_M_insert_uniqueERKSC_")]
+pub fn stub_0xf4f564() -> ! {
+    todo!("0xf4f564 j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE16_M_insert_uniqueERKSC_")
+}
+
+// 0xf4f574 — j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISC_ERKSC_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISC_ERKSC_")]
+pub fn stub_0xf4f574() -> ! {
+    todo!("0xf4f574 j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISC_ERKSC_")
+}
+
+// 0xf4f584 — j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE4findERS3_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE4findERS3_")]
+pub fn stub_0xf4f584() -> ! {
+    todo!("0xf4f584 j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE4findERS3_")
+}
+
+// 0xf4f594 — j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE5eraseERS3_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE5eraseERS3_")]
+pub fn stub_0xf4f594() -> ! {
+    todo!("0xf4f594 j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE5eraseERS3_")
+}
+
+// 0xf4f5a4 — j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE5eraseESt17_Rb_tree_iteratorISC_ESI_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE5eraseESt17_Rb_tree_iteratorISC_ESI_")]
+pub fn stub_0xf4f5a4() -> ! {
+    todo!("0xf4f5a4 j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE5eraseESt17_Rb_tree_iteratorISC_ESI_")
+}
+
+// 0xf4f5b4 — j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE8_M_eraseEPSt13_Rb_tree_nodeISC_E
+#[doc(alias = "j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE8_M_eraseEPSt13_Rb_tree_nodeISC_E")]
+pub fn stub_0xf4f5b4() -> ! {
+    todo!("0xf4f5b4 j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE8_M_eraseEPSt13_Rb_tree_nodeISC_E")
+}
+
+// 0xf4f5c4 — j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE9_M_insertEPSt18_Rb_tree_node_baseSI_RKSC_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE9_M_insertEPSt18_Rb_tree_node_baseSI_RKSC_")]
+pub fn stub_0xf4f5c4() -> ! {
+    todo!("0xf4f5c4 j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE9_M_insertEPSt18_Rb_tree_node_baseSI_RKSC_")
+}
+
+// 0xf4f614 — j___ZN3RBX25BasicSpatialHashPrimitiveD2Ev
+#[doc(alias = "j___ZN3RBX25BasicSpatialHashPrimitiveD2Ev")]
+pub fn stub_0xf4f614() -> ! {
+    todo!("0xf4f614 j___ZN3RBX25BasicSpatialHashPrimitiveD2Ev")
+}
+
+// 0xf4f634 — j___ZN3RBX5Joint19isSpanningTreeJointEPKNS_4EdgeE
+#[doc(alias = "j___ZN3RBX5Joint19isSpanningTreeJointEPKNS_4EdgeE")]
+pub fn stub_0xf4f634() -> ! {
+    todo!("0xf4f634 j___ZN3RBX5Joint19isSpanningTreeJointEPKNS_4EdgeE")
+}
+
+// 0xf4f644 — j___ZN3RBX8EdgeListC2EPNS_9PrimitiveE
+#[doc(alias = "j___ZN3RBX8EdgeListC2EPNS_9PrimitiveE")]
+pub fn stub_0xf4f644() -> ! {
+    todo!("0xf4f644 j___ZN3RBX8EdgeListC2EPNS_9PrimitiveE")
+}
+
+// 0xf4f6b4 — j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE10ValueCountC2ERKS1_
+#[doc(alias = "j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE10ValueCountC2ERKS1_")]
+pub fn stub_0xf4f6b4() -> ! {
+    todo!("0xf4f6b4 j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE10ValueCountC2ERKS1_")
+}
+
+// 0xf4f6c4 — j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE10ValueCountD2Ev
+#[doc(alias = "j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE10ValueCountD2Ev")]
+pub fn stub_0xf4f6c4() -> ! {
+    todo!("0xf4f6c4 j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE10ValueCountD2Ev")
+}
+
+// 0xf4f6d4 — j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE11returnTokenERKS1_PNS5_10ValueCountE
+#[doc(alias = "j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE11returnTokenERKS1_PNS5_10ValueCountE")]
+pub fn stub_0xf4f6d4() -> ! {
+    todo!("0xf4f6d4 j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE11returnTokenERKS1_PNS5_10ValueCountE")
+}
+
+// 0xf4f6e4 — j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE29safe_static_do_get_staticDataEv
+#[doc(alias = "j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE29safe_static_do_get_staticDataEv")]
+pub fn stub_0xf4f6e4() -> ! {
+    todo!("0xf4f6e4 j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE29safe_static_do_get_staticDataEv")
+}
+
+// 0xf4f6f4 — j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE8getTokenERKS1_
+#[doc(alias = "j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE8getTokenERKS1_")]
+pub fn stub_0xf4f6f4() -> ! {
+    todo!("0xf4f6f4 j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE8getTokenERKS1_")
+}
+
+// 0xf4f704 — j___ZN3RBX4POLY9PrismMeshC2ERKNS_13Vector3_2IntsE
+#[doc(alias = "j___ZN3RBX4POLY9PrismMeshC2ERKNS_13Vector3_2IntsE")]
+pub fn stub_0xf4f704() -> ! {
+    todo!("0xf4f704 j___ZN3RBX4POLY9PrismMeshC2ERKNS_13Vector3_2IntsE")
+}
+
+// 0xf4f714 — j___ZN3RBX9AllocatorINS_4POLY9PrismMeshEEC2Ev
+#[doc(alias = "j___ZN3RBX9AllocatorINS_4POLY9PrismMeshEEC2Ev")]
+pub fn stub_0xf4f714() -> ! {
+    todo!("0xf4f714 j___ZN3RBX9AllocatorINS_4POLY9PrismMeshEEC2Ev")
+}
+
+// 0xf4f724 — j___ZN3RBX9AllocatorINS_4POLY9PrismMeshEEdlEPv
+#[doc(alias = "j___ZN3RBX9AllocatorINS_4POLY9PrismMeshEEdlEPv")]
+pub fn stub_0xf4f724() -> ! {
+    todo!("0xf4f724 j___ZN3RBX9AllocatorINS_4POLY9PrismMeshEEdlEPv")
+}
+
+// 0xf4f734 — j___ZN3RBX9AllocatorINS_4POLY9PrismMeshEEnwEm
+#[doc(alias = "j___ZN3RBX9AllocatorINS_4POLY9PrismMeshEEnwEm")]
+pub fn stub_0xf4f734() -> ! {
+    todo!("0xf4f734 j___ZN3RBX9AllocatorINS_4POLY9PrismMeshEEnwEm")
+}
+
+// 0xf4f744 — j___ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY9PrismMeshENS1_21Vector3_2IntsComparerEE5TokenEEC2IS8_EEPT_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY9PrismMeshENS1_21Vector3_2IntsComparerEE5TokenEEC2IS8_EEPT_")]
+pub fn stub_0xf4f744() -> ! {
+    todo!("0xf4f744 j___ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY9PrismMeshENS1_21Vector3_2IntsComparerEE5TokenEEC2IS8_EEPT_")
+}
+
+// 0xf4f754 — j___ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY9PrismMeshENS1_21Vector3_2IntsComparerEE5TokenEEaSERKS9_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY9PrismMeshENS1_21Vector3_2IntsComparerEE5TokenEEaSERKS9_")]
+pub fn stub_0xf4f754() -> ! {
+    todo!("0xf4f754 j___ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY9PrismMeshENS1_21Vector3_2IntsComparerEE5TokenEEaSERKS9_")
+}
+
+// 0xf4f764 — j___ZN5boost14singleton_poolIN3RBX4POLY9PrismMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv
+#[doc(alias = "j___ZN5boost14singleton_poolIN3RBX4POLY9PrismMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")]
+pub fn stub_0xf4f764() -> ! {
+    todo!("0xf4f764 j___ZN5boost14singleton_poolIN3RBX4POLY9PrismMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+}
+
+// 0xf4f774 — j___ZN5boost14singleton_poolIN3RBX4POLY9PrismMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv
+#[doc(alias = "j___ZN5boost14singleton_poolIN3RBX4POLY9PrismMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")]
+pub fn stub_0xf4f774() -> ! {
+    todo!("0xf4f774 j___ZN5boost14singleton_poolIN3RBX4POLY9PrismMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+// 0xf4f784 — j___ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolINS3_13Vector3_2IntsENS3_4POLY9PrismMeshENS3_21Vector3_2IntsComparerEE5TokenEEEPT_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolINS3_13Vector3_2IntsENS3_4POLY9PrismMeshENS3_21Vector3_2IntsComparerEE5TokenEEEPT_")]
+pub fn stub_0xf4f784() -> ! {
+    todo!("0xf4f784 j___ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolINS3_13Vector3_2IntsENS3_4POLY9PrismMeshENS3_21Vector3_2IntsComparerEE5TokenEEEPT_")
+}
+
+// 0xf4f794 — j___ZNSt3mapIN3RBX13Vector3_2IntsEPNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountES5_SaISt4pairIKS1_S8_EEEixERSA_
+#[doc(alias = "j___ZNSt3mapIN3RBX13Vector3_2IntsEPNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountES5_SaISt4pairIKS1_S8_EEEixERSA_")]
+pub fn stub_0xf4f794() -> ! {
+    todo!("0xf4f794 j___ZNSt3mapIN3RBX13Vector3_2IntsEPNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountES5_SaISt4pairIKS1_S8_EEEixERSA_")
+}
+
+// 0xf4f7a4 — j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11lower_boundERS3_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11lower_boundERS3_")]
+pub fn stub_0xf4f7a4() -> ! {
+    todo!("0xf4f7a4 j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11lower_boundERS3_")
+}
+
+// 0xf4f7b4 — j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11upper_boundERS3_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11upper_boundERS3_")]
+pub fn stub_0xf4f7b4() -> ! {
+    todo!("0xf4f7b4 j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11upper_boundERS3_")
+}
+
+// 0xf4f7c4 — j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueERKSB_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueERKSB_")]
+pub fn stub_0xf4f7c4() -> ! {
+    todo!("0xf4f7c4 j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueERKSB_")
+}
+
+// 0xf4f7d4 — j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISB_ERKSB_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISB_ERKSB_")]
+pub fn stub_0xf4f7d4() -> ! {
+    todo!("0xf4f7d4 j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISB_ERKSB_")
+}
+
+// 0xf4f7e4 — j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE4findERS3_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE4findERS3_")]
+pub fn stub_0xf4f7e4() -> ! {
+    todo!("0xf4f7e4 j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE4findERS3_")
+}
+
+// 0xf4f7f4 — j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseERS3_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseERS3_")]
+pub fn stub_0xf4f7f4() -> ! {
+    todo!("0xf4f7f4 j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseERS3_")
+}
+
+// 0xf4f804 — j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseESt17_Rb_tree_iteratorISB_ESH_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseESt17_Rb_tree_iteratorISB_ESH_")]
+pub fn stub_0xf4f804() -> ! {
+    todo!("0xf4f804 j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseESt17_Rb_tree_iteratorISB_ESH_")
+}
+
+// 0xf4f814 — j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE8_M_eraseEPSt13_Rb_tree_nodeISB_E
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE8_M_eraseEPSt13_Rb_tree_nodeISB_E")]
+pub fn stub_0xf4f814() -> ! {
+    todo!("0xf4f814 j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE8_M_eraseEPSt13_Rb_tree_nodeISB_E")
+}
+
+// 0xf4f824 — j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKSB_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKSB_")]
+pub fn stub_0xf4f824() -> ! {
+    todo!("0xf4f824 j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKSB_")
+}
+
+// 0xf4f834 — j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE10ValueCountC2ERKS1_
+#[doc(alias = "j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE10ValueCountC2ERKS1_")]
+pub fn stub_0xf4f834() -> ! {
+    todo!("0xf4f834 j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE10ValueCountC2ERKS1_")
+}
+
+// 0xf4f844 — j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE10ValueCountD2Ev
+#[doc(alias = "j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE10ValueCountD2Ev")]
+pub fn stub_0xf4f844() -> ! {
+    todo!("0xf4f844 j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE10ValueCountD2Ev")
+}
+
+// 0xf4f854 — j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE11returnTokenERKS1_PNS5_10ValueCountE
+#[doc(alias = "j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE11returnTokenERKS1_PNS5_10ValueCountE")]
+pub fn stub_0xf4f854() -> ! {
+    todo!("0xf4f854 j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE11returnTokenERKS1_PNS5_10ValueCountE")
+}
+
+// 0xf4f864 — j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE29safe_static_do_get_staticDataEv
+#[doc(alias = "j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE29safe_static_do_get_staticDataEv")]
+pub fn stub_0xf4f864() -> ! {
+    todo!("0xf4f864 j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE29safe_static_do_get_staticDataEv")
+}
+
+// 0xf4f874 — j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE8getTokenERKS1_
+#[doc(alias = "j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE8getTokenERKS1_")]
+pub fn stub_0xf4f874() -> ! {
+    todo!("0xf4f874 j___ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE8getTokenERKS1_")
+}
+
+// 0xf4f884 — j___ZN3RBX4POLY11PyramidMeshC2ERKNS_13Vector3_2IntsE
+#[doc(alias = "j___ZN3RBX4POLY11PyramidMeshC2ERKNS_13Vector3_2IntsE")]
+pub fn stub_0xf4f884() -> ! {
+    todo!("0xf4f884 j___ZN3RBX4POLY11PyramidMeshC2ERKNS_13Vector3_2IntsE")
+}
+
+// 0xf4f894 — j___ZN3RBX9AllocatorINS_4POLY11PyramidMeshEEC2Ev
+#[doc(alias = "j___ZN3RBX9AllocatorINS_4POLY11PyramidMeshEEC2Ev")]
+pub fn stub_0xf4f894() -> ! {
+    todo!("0xf4f894 j___ZN3RBX9AllocatorINS_4POLY11PyramidMeshEEC2Ev")
+}
+
+// 0xf4f8a4 — j___ZN3RBX9AllocatorINS_4POLY11PyramidMeshEEdlEPv
+#[doc(alias = "j___ZN3RBX9AllocatorINS_4POLY11PyramidMeshEEdlEPv")]
+pub fn stub_0xf4f8a4() -> ! {
+    todo!("0xf4f8a4 j___ZN3RBX9AllocatorINS_4POLY11PyramidMeshEEdlEPv")
+}
+
+// 0xf4f8b4 — j___ZN3RBX9AllocatorINS_4POLY11PyramidMeshEEnwEm
+#[doc(alias = "j___ZN3RBX9AllocatorINS_4POLY11PyramidMeshEEnwEm")]
+pub fn stub_0xf4f8b4() -> ! {
+    todo!("0xf4f8b4 j___ZN3RBX9AllocatorINS_4POLY11PyramidMeshEEnwEm")
+}
+
+// 0xf4f8c4 — j___ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY11PyramidMeshENS1_21Vector3_2IntsComparerEE5TokenEEC2IS8_EEPT_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY11PyramidMeshENS1_21Vector3_2IntsComparerEE5TokenEEC2IS8_EEPT_")]
+pub fn stub_0xf4f8c4() -> ! {
+    todo!("0xf4f8c4 j___ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY11PyramidMeshENS1_21Vector3_2IntsComparerEE5TokenEEC2IS8_EEPT_")
+}
+
+// 0xf4f8d4 — j___ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY11PyramidMeshENS1_21Vector3_2IntsComparerEE5TokenEEaSERKS9_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY11PyramidMeshENS1_21Vector3_2IntsComparerEE5TokenEEaSERKS9_")]
+pub fn stub_0xf4f8d4() -> ! {
+    todo!("0xf4f8d4 j___ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY11PyramidMeshENS1_21Vector3_2IntsComparerEE5TokenEEaSERKS9_")
+}
+
+// 0xf4f8e4 — j___ZN5boost14singleton_poolIN3RBX4POLY11PyramidMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv
+#[doc(alias = "j___ZN5boost14singleton_poolIN3RBX4POLY11PyramidMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")]
+pub fn stub_0xf4f8e4() -> ! {
+    todo!("0xf4f8e4 j___ZN5boost14singleton_poolIN3RBX4POLY11PyramidMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+}
+
+// 0xf4f8f4 — j___ZN5boost14singleton_poolIN3RBX4POLY11PyramidMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv
+#[doc(alias = "j___ZN5boost14singleton_poolIN3RBX4POLY11PyramidMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")]
+pub fn stub_0xf4f8f4() -> ! {
+    todo!("0xf4f8f4 j___ZN5boost14singleton_poolIN3RBX4POLY11PyramidMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+// 0xf4f904 — j___ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolINS3_13Vector3_2IntsENS3_4POLY11PyramidMeshENS3_21Vector3_2IntsComparerEE5TokenEEEPT_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolINS3_13Vector3_2IntsENS3_4POLY11PyramidMeshENS3_21Vector3_2IntsComparerEE5TokenEEEPT_")]
+pub fn stub_0xf4f904() -> ! {
+    todo!("0xf4f904 j___ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolINS3_13Vector3_2IntsENS3_4POLY11PyramidMeshENS3_21Vector3_2IntsComparerEE5TokenEEEPT_")
+}
+
+// 0xf4f924 — j___ZNSt3mapIN3RBX13Vector3_2IntsEPNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountES5_SaISt4pairIKS1_S8_EEEixERSA_
+#[doc(alias = "j___ZNSt3mapIN3RBX13Vector3_2IntsEPNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountES5_SaISt4pairIKS1_S8_EEEixERSA_")]
+pub fn stub_0xf4f924() -> ! {
+    todo!("0xf4f924 j___ZNSt3mapIN3RBX13Vector3_2IntsEPNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountES5_SaISt4pairIKS1_S8_EEEixERSA_")
+}
+
+// 0xf4f934 — j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11lower_boundERS3_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11lower_boundERS3_")]
+pub fn stub_0xf4f934() -> ! {
+    todo!("0xf4f934 j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11lower_boundERS3_")
+}
+
+// 0xf4f944 — j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11upper_boundERS3_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11upper_boundERS3_")]
+pub fn stub_0xf4f944() -> ! {
+    todo!("0xf4f944 j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11upper_boundERS3_")
+}
+
+// 0xf4f954 — j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueERKSB_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueERKSB_")]
+pub fn stub_0xf4f954() -> ! {
+    todo!("0xf4f954 j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueERKSB_")
+}
+
+// 0xf4f964 — j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISB_ERKSB_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISB_ERKSB_")]
+pub fn stub_0xf4f964() -> ! {
+    todo!("0xf4f964 j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISB_ERKSB_")
+}
+
+// 0xf4f974 — j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE4findERS3_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE4findERS3_")]
+pub fn stub_0xf4f974() -> ! {
+    todo!("0xf4f974 j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE4findERS3_")
+}
+
+// 0xf4f984 — j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseERS3_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseERS3_")]
+pub fn stub_0xf4f984() -> ! {
+    todo!("0xf4f984 j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseERS3_")
+}
+
+// 0xf4f994 — j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseESt17_Rb_tree_iteratorISB_ESH_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseESt17_Rb_tree_iteratorISB_ESH_")]
+pub fn stub_0xf4f994() -> ! {
+    todo!("0xf4f994 j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseESt17_Rb_tree_iteratorISB_ESH_")
+}
+
+// 0xf4f9a4 — j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE8_M_eraseEPSt13_Rb_tree_nodeISB_E
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE8_M_eraseEPSt13_Rb_tree_nodeISB_E")]
+pub fn stub_0xf4f9a4() -> ! {
+    todo!("0xf4f9a4 j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE8_M_eraseEPSt13_Rb_tree_nodeISB_E")
+}
+
+// 0xf4f9b4 — j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKSB_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKSB_")]
+pub fn stub_0xf4f9b4() -> ! {
+    todo!("0xf4f9b4 j___ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKSB_")
+}
+
+// 0xf4f9c4 — j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY18RightAngleRampMeshENS_15Vector3ComparerEE10ValueCountC2ERKS2_
+#[doc(alias = "j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY18RightAngleRampMeshENS_15Vector3ComparerEE10ValueCountC2ERKS2_")]
+pub fn stub_0xf4f9c4() -> ! {
+    todo!("0xf4f9c4 j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY18RightAngleRampMeshENS_15Vector3ComparerEE10ValueCountC2ERKS2_")
+}
+
+// 0xf4f9d4 — j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY18RightAngleRampMeshENS_15Vector3ComparerEE10ValueCountD2Ev
+#[doc(alias = "j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY18RightAngleRampMeshENS_15Vector3ComparerEE10ValueCountD2Ev")]
+pub fn stub_0xf4f9d4() -> ! {
+    todo!("0xf4f9d4 j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY18RightAngleRampMeshENS_15Vector3ComparerEE10ValueCountD2Ev")
+}
+
+// 0xf4f9e4 — j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY18RightAngleRampMeshENS_15Vector3ComparerEE11returnTokenERKS2_PNS6_10ValueCountE
+#[doc(alias = "j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY18RightAngleRampMeshENS_15Vector3ComparerEE11returnTokenERKS2_PNS6_10ValueCountE")]
+pub fn stub_0xf4f9e4() -> ! {
+    todo!("0xf4f9e4 j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY18RightAngleRampMeshENS_15Vector3ComparerEE11returnTokenERKS2_PNS6_10ValueCountE")
+}
+
+// 0xf4f9f4 — j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY18RightAngleRampMeshENS_15Vector3ComparerEE29safe_static_do_get_staticDataEv
+#[doc(alias = "j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY18RightAngleRampMeshENS_15Vector3ComparerEE29safe_static_do_get_staticDataEv")]
+pub fn stub_0xf4f9f4() -> ! {
+    todo!("0xf4f9f4 j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY18RightAngleRampMeshENS_15Vector3ComparerEE29safe_static_do_get_staticDataEv")
+}
+
+// 0xf4fa04 — j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY18RightAngleRampMeshENS_15Vector3ComparerEE8getTokenERKS2_
+#[doc(alias = "j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY18RightAngleRampMeshENS_15Vector3ComparerEE8getTokenERKS2_")]
+pub fn stub_0xf4fa04() -> ! {
+    todo!("0xf4fa04 j___ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY18RightAngleRampMeshENS_15Vector3ComparerEE8getTokenERKS2_")
+}
+
+// 0xf4fa14 — j___ZN3RBX4POLY18RightAngleRampMeshC2ERKN3G3D7Vector3E
+#[doc(alias = "j___ZN3RBX4POLY18RightAngleRampMeshC2ERKN3G3D7Vector3E")]
+pub fn stub_0xf4fa14() -> ! {
+    todo!("0xf4fa14 j___ZN3RBX4POLY18RightAngleRampMeshC2ERKN3G3D7Vector3E")
+}
+
+// 0xf4fa24 — j___ZN3RBX9AllocatorINS_4POLY18RightAngleRampMeshEEC2Ev
+#[doc(alias = "j___ZN3RBX9AllocatorINS_4POLY18RightAngleRampMeshEEC2Ev")]
+pub fn stub_0xf4fa24() -> ! {
+    todo!("0xf4fa24 j___ZN3RBX9AllocatorINS_4POLY18RightAngleRampMeshEEC2Ev")
+}
+
+// 0xf4fa34 — j___ZN3RBX9AllocatorINS_4POLY18RightAngleRampMeshEEdlEPv
+#[doc(alias = "j___ZN3RBX9AllocatorINS_4POLY18RightAngleRampMeshEEdlEPv")]
+pub fn stub_0xf4fa34() -> ! {
+    todo!("0xf4fa34 j___ZN3RBX9AllocatorINS_4POLY18RightAngleRampMeshEEdlEPv")
+}
+
+// 0xf4fa44 — j___ZN3RBX9AllocatorINS_4POLY18RightAngleRampMeshEEnwEm
+#[doc(alias = "j___ZN3RBX9AllocatorINS_4POLY18RightAngleRampMeshEEnwEm")]
+pub fn stub_0xf4fa44() -> ! {
+    todo!("0xf4fa44 j___ZN3RBX9AllocatorINS_4POLY18RightAngleRampMeshEEnwEm")
+}
+
+// 0xf4fa54 — j___ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY18RightAngleRampMeshENS1_15Vector3ComparerEE5TokenEEC2IS9_EEPT_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY18RightAngleRampMeshENS1_15Vector3ComparerEE5TokenEEC2IS9_EEPT_")]
+pub fn stub_0xf4fa54() -> ! {
+    todo!("0xf4fa54 j___ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY18RightAngleRampMeshENS1_15Vector3ComparerEE5TokenEEC2IS9_EEPT_")
+}
+
+// 0xf4fa64 — j___ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY18RightAngleRampMeshENS1_15Vector3ComparerEE5TokenEEaSERKSA_
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY18RightAngleRampMeshENS1_15Vector3ComparerEE5TokenEEaSERKSA_")]
+pub fn stub_0xf4fa64() -> ! {
+    todo!("0xf4fa64 j___ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY18RightAngleRampMeshENS1_15Vector3ComparerEE5TokenEEaSERKSA_")
+}
+
+// 0xf4fa74 — j___ZN5boost14singleton_poolIN3RBX4POLY18RightAngleRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv
+#[doc(alias = "j___ZN5boost14singleton_poolIN3RBX4POLY18RightAngleRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")]
+pub fn stub_0xf4fa74() -> ! {
+    todo!("0xf4fa74 j___ZN5boost14singleton_poolIN3RBX4POLY18RightAngleRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+}
+
+// 0xf4fa84 — j___ZN5boost14singleton_poolIN3RBX4POLY18RightAngleRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv
+#[doc(alias = "j___ZN5boost14singleton_poolIN3RBX4POLY18RightAngleRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")]
+pub fn stub_0xf4fa84() -> ! {
+    todo!("0xf4fa84 j___ZN5boost14singleton_poolIN3RBX4POLY18RightAngleRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+// 0xf4fa94 — j___ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolIN3G3D7Vector3ENS3_4POLY18RightAngleRampMeshENS3_15Vector3ComparerEE5TokenEEEPT_
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolIN3G3D7Vector3ENS3_4POLY18RightAngleRampMeshENS3_15Vector3ComparerEE5TokenEEEPT_")]
+pub fn stub_0xf4fa94() -> ! {
+    todo!("0xf4fa94 j___ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolIN3G3D7Vector3ENS3_4POLY18RightAngleRampMeshENS3_15Vector3ComparerEE5TokenEEEPT_")
+}
+
+// 0xf4faa4 — j___ZNSt3mapIN3G3D7Vector3EPN3RBX12GeometryPoolIS1_NS2_4POLY18RightAngleRampMeshENS2_15Vector3ComparerEE10ValueCountES6_SaISt4pairIKS1_S9_EEEixERSB_
+#[doc(alias = "j___ZNSt3mapIN3G3D7Vector3EPN3RBX12GeometryPoolIS1_NS2_4POLY18RightAngleRampMeshENS2_15Vector3ComparerEE10ValueCountES6_SaISt4pairIKS1_S9_EEEixERSB_")]
+pub fn stub_0xf4faa4() -> ! {
+    todo!("0xf4faa4 j___ZNSt3mapIN3G3D7Vector3EPN3RBX12GeometryPoolIS1_NS2_4POLY18RightAngleRampMeshENS2_15Vector3ComparerEE10ValueCountES6_SaISt4pairIKS1_S9_EEEixERSB_")
+}
+
+// 0xf4fab4 — j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY18RightAngleRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE11lower_boundERS3_
+#[doc(alias = "j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY18RightAngleRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE11lower_boundERS3_")]
+pub fn stub_0xf4fab4() -> ! {
+    todo!("0xf4fab4 j___ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY18RightAngleRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE11lower_boundERS3_")
+}
