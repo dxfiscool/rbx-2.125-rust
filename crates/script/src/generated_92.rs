@@ -7,6 +7,9 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use std::alloc::{Layout, alloc, dealloc, realloc};
+use std::ffi::CStr;
+use std::sync::atomic::{AtomicU32, Ordering};
 // Minimal Lua number-stack model covering exactly what the math-lib wrappers
 // below need. IDA shows every one of these fns funneling through
 // luaL_checknumber / luaL_checkinteger / lua_pushnumber / lua_pushinteger /
@@ -15,12 +18,45 @@ use rbx_core::SharedPtr;
 // need strings, tables, or closures.
 pub struct LuaState {
     stack: Vec<f64>,
+    total_bytes: usize,
 }
 
 impl LuaState {
     pub fn new() -> Self {
-        LuaState { stack: Vec::new() }
+        LuaState { stack: Vec::new(), total_bytes: 0 }
     }
+    pub fn total_bytes(&self) -> usize {
+        self.total_bytes
+    }
+}
+
+// Process-wide C `rand`/`srand` stand-in for math_random/math_randomseed
+// (IDA 0x82b938/0x82ba48). The original links the platform libc generator;
+// this models it with the classic ANSI LCG so seeding and the call sequence
+// behave the same shape.
+// BUG: output bits differ from the device libc; only the seeding entry point
+// and the `rand() % 0x7fffffff / 2147483650.0` scaling below are faithful.
+static LUA_RAND_SEED: AtomicU32 = AtomicU32::new(1);
+
+// IDA 0x82b96a: `(double)(rand() % 0x7fffffff) / 2147483650.0`, in [0, 1).
+fn lua_rand01() -> f64 {
+    let next = LUA_RAND_SEED
+        .load(Ordering::Relaxed)
+        .wrapping_mul(1103515245)
+        .wrapping_add(12345)
+        & 0x7fff_ffff;
+    LUA_RAND_SEED.store(next, Ordering::Relaxed);
+    next as f64 / 2147483650.0
+}
+
+// NUL-terminated byte-string length (libc `strlen` stand-in; no libc dep here).
+// IDA 0x82c070 (pushstr), 0x82c0fa/0x82c18c (luaO_chunkid) call into it.
+unsafe fn c_strlen(p: *const u8) -> usize {
+    let mut n = 0usize;
+    while *p.add(n) != 0 {
+        n += 1;
+    }
+    n
 }
 
 // IDA luaL_checknumber(lua_State *, int): 1-based index; the original coerces
@@ -266,14 +302,49 @@ pub unsafe fn stub_0x82b908(l: *mut LuaState) -> i32 {
 
 // 0x82b938 — __ZL11math_randomP9lua_State
 #[doc(alias = "math_random(lua_State *)")]
-pub fn stub_0x82b938() -> ! {
-    todo!("0x82b938 __ZL11math_randomP9lua_State")
+// IDA 0x82b938: r = rand() % 0x7fffffff / 2147483650.0 up front (0x82b96a),
+// then by arg count: (lo, hi) -> lo + floor(r * (1 - lo + hi)); (n) -> floor(r * n) + 1;
+// () -> r; else luaL_error "wrong number of arguments".
+// Disasm: 0x82b96e BL lua_gettop; 0x82b97e/0x82b9c4/0x82b9ca BL luaL_checkinteger;
+// 0x82b986/0x82b9d2 bounds -> luaL_argerror; 0x82ba1c BL lua_pushnumber.
+// Panics stand in for the luaL_argerror/luaL_error longjmps, as elsewhere here.
+pub unsafe fn stub_0x82b938(l: *mut LuaState) -> i32 {
+    let r = lua_rand01();
+    match lua_gettop(l) {
+        2 => {
+            let lo = luaL_checkinteger(l, 1);
+            let hi = luaL_checkinteger(l, 2);
+            if lo > hi {
+                panic!("bad argument #2 to 'random' (interval is empty)");
+            }
+            // BUG: original wraps 32-bit here; inputs near i32::MAX overflow the span.
+            let span = (1i64 - lo as i64 + hi as i64) as f64;
+            lua_pushnumber(l, lo as f64 + (r * span).floor());
+            1
+        }
+        1 => {
+            let n = luaL_checkinteger(l, 1);
+            if n <= 0 {
+                panic!("bad argument #1 to 'random' (interval is empty)");
+            }
+            lua_pushnumber(l, (r * n as f64).floor() + 1.0);
+            1
+        }
+        0 => {
+            lua_pushnumber(l, r);
+            1
+        }
+        _ => panic!("wrong number of arguments"),
+    }
 }
 
 // 0x82ba48 — __ZL15math_randomseedP9lua_State
 #[doc(alias = "math_randomseed(lua_State *)")]
-pub fn stub_0x82ba48() -> ! {
-    todo!("0x82ba48 __ZL15math_randomseedP9lua_State")
+// IDA 0x82ba48: srand(checkinteger(1)), return 0.
+// Disasm: 0x82ba4e BL luaL_checkinteger; 0x82ba52 BLX _srand.
+pub unsafe fn stub_0x82ba48(l: *mut LuaState) -> i32 {
+    LUA_RAND_SEED.store(luaL_checkinteger(l, 1) as u32 & 0x7fff_ffff, Ordering::Relaxed);
+    0
 }
 
 // 0x82ba5c — __ZL9math_sinhP9lua_State
@@ -329,56 +400,305 @@ pub unsafe fn stub_0x82baec(l: *mut LuaState) -> i32 {
 
 // 0x82bbd8 — __Z13luaM_growaux_P9lua_StatePvPimiPKc
 #[doc(alias = "luaM_growaux_(lua_State *,void *,int *,unsigned long,int,char const*)")]
-pub fn stub_0x82bbd8() -> ! {
-    todo!("0x82bbd8 __Z13luaM_growaux_P9lua_StatePvPimiPKc")
+// IDA 0x82bbd8: grow policy then realloc; runerror(what) when size >= limit,
+// runerror("block too big") when (newsize + 1) > MAXSIZE / elem_size.
+// Disasm: 0x82bbe6 LDR size; 0x82bbf6/0x82bc08 limit checks; 0x82bc0e BL luaG_runerror;
+// 0x82bc46 BL luaM_realloc_; 0x82bc4a STR new size.
+// Panics stand in for luaG_runerror (which longjmps through luaD_throw).
+pub unsafe fn stub_0x82bbd8(
+    l: *mut LuaState,
+    block: *mut u8,
+    size: *mut i32,
+    elem_size: usize,
+    limit: i32,
+    what: *const i8,
+) -> *mut u8 {
+    let n = *size;
+    let new_size = if n >= limit / 2 {
+        if n >= limit {
+            let msg = if what.is_null() {
+                String::from("luaM_growaux_ failed")
+            } else {
+                CStr::from_ptr(what).to_string_lossy().into_owned()
+            };
+            panic!("{msg}");
+        }
+        limit
+    } else {
+        // BUG: original does 32-bit `2 * n`; n is tiny in practice.
+        let doubled = 2 * n;
+        if doubled >= 4 { doubled } else { 4 }
+    };
+    // MAXSIZE is 0xfffffffd (matches luaM_toobig below); elem_size == 0 would
+    // divide by zero in the original, so treat it as too big as well.
+    if elem_size == 0
+        || (new_size as usize).saturating_add(1) > 0xffff_fffdusize / elem_size
+    {
+        panic!("memory allocation error: block too big");
+    }
+    let out = stub_0x82bc54(
+        l,
+        block,
+        (*size as usize).wrapping_mul(elem_size),
+        (new_size as usize).wrapping_mul(elem_size),
+    );
+    *size = new_size;
+    out
 }
 
 // 0x82bc54 — __Z13luaM_realloc_P9lua_StatePvmm
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "luaM_realloc_(lua_State *,void *,unsigned long,unsigned long)")]
-pub fn stub_0x82bc54() -> ! {
-    todo!("0x82bc54 __Z13luaM_realloc_P9lua_StatePvmm")
+// IDA 0x82bc54: indirect frealloc call through the global state (L + 16),
+// throw MEMERR on NULL with nonzero request, then totalbytes += nsize - osize.
+// Disasm: 0x82bc60 LDR global; 0x82bc6e BLX frealloc; 0x82bc74/0x82bc7a NULL check
+// -> luaD_throw; 0x82bc86 totalbytes update.
+// Modeled here on std::alloc with unit alignment; total_bytes lives on LuaState.
+// BUG: the original forwards to the embedder's frealloc (usually malloc-like)
+// with its own alignment; layouts here always use align 1, consistently.
+pub unsafe fn stub_0x82bc54(
+    l: *mut LuaState,
+    block: *mut u8,
+    osize: usize,
+    nsize: usize,
+) -> *mut u8 {
+    fn layout_for(size: usize) -> Layout {
+        // Only absurd (near-isize::MAX) sizes fail; report as out-of-memory,
+        // like the luaD_throw(L, LUA_ERRMEM) below.
+        Layout::from_size_align(size, 1).unwrap_or_else(|_| panic!("not enough memory"))
+    }
+    let out = if block.is_null() {
+        if nsize == 0 {
+            std::ptr::null_mut()
+        } else {
+            alloc(layout_for(nsize))
+        }
+    } else if nsize == 0 {
+        dealloc(block, layout_for(osize.max(1)));
+        std::ptr::null_mut()
+    } else {
+        realloc(block, layout_for(osize.max(1)), nsize)
+    };
+    if out.is_null() && nsize != 0 {
+        panic!("not enough memory");
+    }
+    (*l).total_bytes = (*l).total_bytes.wrapping_add(nsize).wrapping_sub(osize);
+    out
 }
 
 // 0x82bc90 — __Z11luaM_toobigP9lua_State
 #[doc(alias = "luaM_toobig(lua_State *)")]
-pub fn stub_0x82bc90() -> ! {
-    todo!("0x82bc90 __Z11luaM_toobigP9lua_State")
+// IDA 0x82bc90: luaG_runerror(L, "memory allocation error: block too big").
+// Noreturn in the original (longjmp); a panic plays that role here.
+pub unsafe fn stub_0x82bc90(_l: *mut LuaState) -> ! {
+    panic!("memory allocation error: block too big");
 }
 
 // 0x82bd70 — __Z11luaO_int2fbj
 // type: _DWORD __fastcall(unsigned int)
 #[doc(alias = "luaO_int2fb(unsigned int)")]
-pub fn stub_0x82bd70() -> ! {
-    todo!("0x82bd70 __Z11luaO_int2fbj")
+// IDA 0x82bd70: float-byte pack: e = 8; while x >= 0x10 { e += 8; x = (x+1)>>1
+// while (x + 1) > 0x1f still held on the PRE-shift value }, then (x - 8) | e
+// for x >= 8, else x. Matches Lua 5.1 luaO_int2fb exactly (table buckets).
+// Disasm: 0x82bd76 ADDS R2, R0, #1 (old x + 1); 0x82bd78 ADDS R1, #8;
+// 0x82bd7a CMP R2, #0x1F; 0x82bd7c LSR R0, R2, #1; 0x82bd80 BHI loop;
+// 0x82bd86 SUBCS/0x82bd88 ORRCS.
+pub fn stub_0x82bd70(mut x: u32) -> u32 {
+    let mut e = 8u32;
+    if x >= 0x10 {
+        loop {
+            e += 8;
+            let more = x + 1 > 0x1f;
+            // BUG: original wraps 32-bit on x + 1 at u32::MAX; x is a size here.
+            x = (x + 1) >> 1;
+            if !more {
+                break;
+            }
+        }
+    }
+    if x >= 8 { (x - 8) | e } else { x }
 }
 
 // 0x82bd8c — __Z11luaO_fb2inti
 // type: _DWORD __fastcall(int)
 #[doc(alias = "luaO_fb2int(int)")]
-pub fn stub_0x82bd8c() -> ! {
-    todo!("0x82bd8c __Z11luaO_fb2inti")
+// IDA 0x82bd8c: inverse float-byte: e = bits 3..7, m = low 3 bits;
+// e == 0 -> x, else ((x & 7) | 8) << (e - 1).
+// Disasm: 0x82bd8c UBFX R1, R0, #3, #5; 0x82bd96 BFI m|8; 0x82bd9c LSL R0, R1 - 1.
+pub fn stub_0x82bd8c(x: i32) -> i32 {
+    let e = (x >> 3) & 0x1f;
+    if e == 0 {
+        x
+    } else {
+        ((x & 7) | 8) << (e - 1)
+    }
 }
 
 // 0x82bda0 — __Z9luaO_log2j
 // type: _DWORD __fastcall(unsigned int)
 #[doc(alias = "luaO_log2(unsigned int)")]
-pub fn stub_0x82bda0() -> ! {
-    todo!("0x82bda0 __Z9luaO_log2j")
+// IDA 0x82bda0: floor(log2(x)) via the static `log_2[256]` byte table at
+// IDA 0x1003f6c (`__ZZ9luaO_log2jE5log_2`, read back over MCP: starts
+// 0,1,2,2,3,3,3,3,4,...). The table holds bit lengths (table[i] ==
+// floor(log2(i)) + 1 for i >= 1, table[0] == 0); values >= 0x100 shed whole
+// bytes into the exponent first, then x < 0x100 indexes the table with
+// bias -1 (so luaO_log2(0) == -1, luaO_log2(1) == 1 - 1 == 0).
+// Disasm: 0x82bdac LSRS R3, R0, #8 / 0x82bdae ADDS R1, #8 per byte while
+// HIWORD(x) != 0; 0x82bdc6 LDRB table[x]; 0x82bdc8 ADD bias.
+const fn build_log2_table() -> [u8; 256] {
+    let mut t = [0u8; 256];
+    let mut i = 1usize;
+    while i < 256 {
+        let mut v = i;
+        let mut e = 0u8;
+        while v > 0 {
+            v >>= 1;
+            e += 1;
+        }
+        t[i] = e;
+        i += 1;
+    }
+    t
+}
+const LOG_2: [u8; 256] = build_log2_table();
+pub fn stub_0x82bda0(mut x: u32) -> i32 {
+    let mut bias: i32 = -1;
+    if x >= 0x100 {
+        loop {
+            let shifted = x >> 8;
+            bias += 8;
+            // HIWORD(x) == 0 (IDA 0x82bdb0) ends the loop on the shifted value.
+            if x & 0xffff_0000 == 0 {
+                x = shifted;
+                break;
+            }
+            x = shifted;
+        }
+    }
+    LOG_2[x as usize] as i32 + bias
 }
 
 // 0x82bdcc — __Z16luaO_rawequalObjPK10lua_TValueS1_
 // type: bool __fastcall(int, int)
 #[doc(alias = "luaO_rawequalObj(lua_TValue const*,lua_TValue const*)")]
-pub fn stub_0x82bdcc() -> ! {
-    todo!("0x82bdcc __Z16luaO_rawequalObjPK10lua_TValueS1_")
+// IDA 0x82bdcc: raw (no-metamethod) TValue equality. Layout from the offsets:
+// value at +0 (8 bytes for a double), type tag at +8. Tag 0 (nil) compares
+// equal; tag 3 (number) compares the doubles; anything else compares the low
+// dword only (pointers/bools live there on 32-bit).
+// Disasm: 0x82bdd2/0x82bdda tag compare; 0x82bde4 TBB switch; 0x82be10 double
+// compare; 0x82bdf8 dword compare.
+#[repr(C)]
+pub struct LuaTValue {
+    pub lo: u32,
+    pub hi: u32,
+    pub tag: i32,
+}
+impl LuaTValue {
+    pub const NIL: i32 = 0;
+    pub const NUMBER: i32 = 3;
+    pub fn number(v: f64) -> Self {
+        let bits = v.to_bits();
+        LuaTValue { lo: bits as u32, hi: (bits >> 32) as u32, tag: Self::NUMBER }
+    }
+    fn as_double(&self) -> f64 {
+        f64::from_bits(((self.hi as u64) << 32) | self.lo as u64)
+    }
+}
+pub fn stub_0x82bdcc(a: *const LuaTValue, b: *const LuaTValue) -> bool {
+    let (x, y) = unsafe { (&*a, &*b) };
+    if x.tag != y.tag {
+        return false;
+    }
+    match x.tag {
+        LuaTValue::NIL => true,
+        LuaTValue::NUMBER => x.as_double() == y.as_double(),
+        // BUG: original compares only the low dword for every other tag;
+        // kept verbatim (high word of e.g. userdata is ignored there too).
+        _ => x.lo == y.lo,
+    }
 }
 
 // 0x82be14 — __Z10luaO_str2dPKcPd
 // type: _DWORD __fastcall(const char *, double *)
 #[doc(alias = "luaO_str2d(char const*,double *)")]
-pub fn stub_0x82be14() -> ! {
-    todo!("0x82be14 __Z10luaO_str2dPKcPd")
+// IDA 0x82be14: `*out = strtod(s, &end)`; if nothing converted -> false.
+// If the stop char is x/X ((c | 0x20) == 'x'), the token is a hex literal and
+// is re-read with strtoul(s, &end, 16). Then trailing whitespace is skipped
+// and the result is `*end == 0`. `*out` is written even on failure.
+// Disasm: 0x82be24 BL strtod; 0x82be38 x-check; 0x82be4c BL strtoul;
+// 0x82be68..0x82be8e isspace skip via `__runetype[c] & 0x4000`.
+// C-locale `isspace` bit (0x4000) used above: space, \t..\r.
+fn lua_isspace(c: u8) -> bool {
+    matches!(c, b' ' | b'\t' | b'\n' | 0x0b | 0x0c | b'\r')
+}
+fn lua_skip_spaces(s: &str) -> &str {
+    s.trim_start_matches([' ', '\t', '\n', '\u{b}', '\u{c}', '\r'])
+}
+// `strtoul(s, NULL, 16)` value plus endptr offset for the hex reparse.
+// Wraps mod 2^32 like the 32-bit `unsigned long`.
+fn parse_hex_u32(text: &str) -> (u32, usize) {
+    let b = text.as_bytes();
+    let mut i = 0;
+    while i < b.len() && lua_isspace(b[i]) {
+        i += 1;
+    }
+    let neg = if i < b.len() && (b[i] == b'+' || b[i] == b'-') {
+        let neg = b[i] == b'-';
+        i += 1;
+        neg
+    } else {
+        false
+    };
+    let mut j = i;
+    if b.get(j) == Some(&b'0') && matches!(b.get(j + 1), Some(b'x') | Some(b'X')) {
+        j += 2;
+    }
+    let digits = j;
+    let mut acc: u32 = 0;
+    while j < b.len() && (b[j] as char).is_ascii_hexdigit() {
+        acc = acc.wrapping_mul(16).wrapping_add((b[j] as char).to_digit(16).unwrap());
+        j += 1;
+    }
+    if j == digits {
+        // No hex digits: "0x" still converts its leading "0" (endptr at 'x'),
+        // anything else converts nothing.
+        if j > i + 1 {
+            return (0, i + 1);
+        }
+        return (0, 0);
+    }
+    (if neg { acc.wrapping_neg() } else { acc }, j)
+}
+pub unsafe fn stub_0x82be14(s: *const u8, out: *mut f64) -> bool {
+    let len = c_strlen(s);
+    let bytes = std::slice::from_raw_parts(s, len);
+    let text = std::str::from_utf8(bytes).unwrap_or("");
+    // strtod skips leading whitespace, then converts greedily: the longest
+    // leading prefix that parses is the conversion.
+    // BUG: Rust rejects hex floats/C99 spellings strtod accepts; the `0x`
+    // reparse below covers the integer-hex case the binary relies on.
+    let rest = lua_skip_spaces(text);
+    let mut consumed = 0usize;
+    let mut end = rest.len();
+    while end > 0 {
+        if rest.is_char_boundary(end) && rest[..end].parse::<f64>().is_ok() {
+            consumed = end;
+            break;
+        }
+        end -= 1;
+    }
+    if consumed == 0 {
+        *out = 0.0;
+        return false;
+    }
+    *out = rest[..consumed].parse().unwrap_or(0.0);
+    let mut tail = &rest[consumed..];
+    if tail.as_bytes().first().map_or(false, |&c| c | 0x20 == b'x') {
+        let (hval, hlen) = parse_hex_u32(text);
+        *out = hval as f64;
+        tail = &text[hlen..];
+    }
+    lua_skip_spaces(tail).is_empty()
 }
 
 // 0x82bea0 — __Z17luaO_pushvfstringP9lua_StatePKcPv
@@ -404,8 +724,66 @@ pub fn stub_0x82c0a0() -> ! {
 // 0x82c0c0 — __Z12luaO_chunkidPcPKcm
 // type: _DWORD __fastcall(char *__dst, const char *__s, size_t __n)
 #[doc(alias = "luaO_chunkid(char *,char const*,unsigned long)")]
-pub fn stub_0x82c0c0() -> ! {
-    todo!("0x82c0c0 __Z12luaO_chunkidPcPKcm")
+// IDA 0x82c0c0: printable chunk id for error messages. '=' strips the marker
+// and copies verbatim; '@' keeps a file path, '...'-prefixing when longer
+// than n - 8; otherwise `[string "..."]` with newline/truncation handling
+// ('...' is dword 0x2e2e2e at 0x82c116/0x82c17e, '"]' is word 0x5d22 at
+// 0x82c194). Return values mirror the C: &dst[n] / dst / suffix pointer.
+// Disasm: 0x82c0cc first-byte switch; 0x82c0da strncpy; 0x82c0fa strlen +
+// 0x82c12e strcat; 0x82c142 strcspn; 0x82c15a..0x82c19a string assembly.
+// Callers always pass LUA_IDSIZE (60) buffers; n bounds the writes.
+pub unsafe fn stub_0x82c0c0(dst: *mut u8, src: *const u8, n: usize) -> *mut u8 {
+    debug_assert!(n >= 17, "luaO_chunkid needs an LUA_IDSIZE-class buffer");
+    let slen = c_strlen(src);
+    let s = std::slice::from_raw_parts(src, slen);
+    match s.first().copied().unwrap_or(0) {
+        b'=' => {
+            let body = &s[1..];
+            let copy = body.len().min(n);
+            std::ptr::copy_nonoverlapping(body.as_ptr(), dst, copy);
+            if copy < n {
+                std::ptr::write_bytes(dst.add(copy), 0, n - copy);
+            }
+            *dst.add(n - 1) = 0;
+            dst.add(n)
+        }
+        b'@' => {
+            let mut path = &s[1..];
+            *dst = 0;
+            let mut prefix = 0usize;
+            if path.len() > n - 8 {
+                // IDA 0x82c116/0x82c120: "..." then the last n - 8 bytes.
+                std::ptr::copy_nonoverlapping(b"...".as_ptr(), dst, 3);
+                prefix = 3;
+                path = &path[path.len() - (n - 8)..];
+            }
+            std::ptr::copy_nonoverlapping(path.as_ptr(), dst.add(prefix), path.len());
+            *dst.add(prefix + path.len()) = 0;
+            dst
+        }
+        _ => {
+            let mut v10 = s.iter().position(|&c| c == b'\n' || c == b'\r').unwrap_or(s.len());
+            let head = b"[string \"";
+            std::ptr::copy_nonoverlapping(head.as_ptr(), dst, head.len());
+            let mut len = head.len();
+            if v10 > n - 17 {
+                v10 = n - 17;
+            }
+            if s.get(v10).copied().unwrap_or(0) != 0 {
+                std::ptr::copy_nonoverlapping(s.as_ptr(), dst.add(len), v10);
+                len += v10;
+                std::ptr::copy_nonoverlapping(b"...".as_ptr(), dst.add(len), 3);
+                len += 3;
+            } else {
+                std::ptr::copy_nonoverlapping(s.as_ptr(), dst.add(len), s.len());
+                len += s.len();
+            }
+            *dst.add(len) = b'"';
+            *dst.add(len + 1) = b']';
+            *dst.add(len + 2) = 0;
+            dst.add(len)
+        }
+    }
 }
 
 // 0x82c334 — __Z11luaY_parserP9lua_StateP3ZioP7MbufferPKc
@@ -666,6 +1044,232 @@ mod math_lib_tests {
             let mut l = state_with(&[0.0]);
             assert_eq!(stub_0x82baec(&mut l as *mut _), 1);
             assert_eq!(last(&l), 0.0);
+        }
+    }
+}
+
+#[cfg(test)]
+mod lua_aux_tests {
+    use super::*;
+
+    fn cstr(bytes: &[u8]) -> Vec<u8> {
+        let mut v = bytes.to_vec();
+        v.push(0);
+        v
+    }
+
+    unsafe fn str2d(s: &str) -> (f64, bool) {
+        let c = cstr(s.as_bytes());
+        let mut out = -1.0;
+        let ok = stub_0x82be14(c.as_ptr(), &mut out as *mut f64);
+        (out, ok)
+    }
+
+    unsafe fn chunkid(src: &str) -> (Vec<u8>, usize) {
+        let c = cstr(src.as_bytes());
+        let mut dst = vec![0xAAu8; 60];
+        let ret = stub_0x82c0c0(dst.as_mut_ptr(), c.as_ptr(), dst.len());
+        let off = ret as usize - dst.as_ptr() as usize;
+        (dst, off)
+    }
+
+    fn cstr_at(buf: &[u8]) -> &[u8] {
+        let end = buf.iter().position(|&c| c == 0).unwrap_or(buf.len());
+        &buf[..end]
+    }
+
+    #[test]
+    fn float_byte_roundtrip_matches_lua51() {
+        assert_eq!(stub_0x82bd70(0), 0);
+        assert_eq!(stub_0x82bd70(7), 7);
+        assert_eq!(stub_0x82bd70(8), 8);
+        assert_eq!(stub_0x82bd70(15), 15);
+        assert_eq!(stub_0x82bd70(16), 16);
+        assert_eq!(stub_0x82bd70(100), 37);
+        assert_eq!(stub_0x82bd8c(0), 0);
+        assert_eq!(stub_0x82bd8c(8), 8);
+        assert_eq!(stub_0x82bd8c(16), 16);
+        assert_eq!(stub_0x82bd8c(37), 104);
+        // Encoded sizes cover the input (Lua table-size use).
+        for x in [1u32, 9, 17, 31, 100, 1000, 65535] {
+            assert!(stub_0x82bd8c(stub_0x82bd70(x) as i32) as u32 >= x);
+        }
+    }
+
+    #[test]
+    fn log2_matches_table() {
+        assert_eq!(stub_0x82bda0(0), -1);
+        assert_eq!(stub_0x82bda0(1), 0);
+        assert_eq!(stub_0x82bda0(2), 1);
+        assert_eq!(stub_0x82bda0(3), 1);
+        assert_eq!(stub_0x82bda0(255), 7);
+        assert_eq!(stub_0x82bda0(256), 8);
+        assert_eq!(stub_0x82bda0(257), 8);
+        assert_eq!(stub_0x82bda0(0x10000), 16);
+        assert_eq!(stub_0x82bda0(0xffff_ffff), 31);
+        // Table holds bit lengths, spot-checked against IDA 0x1003f6c bytes.
+        assert_eq!(&LOG_2[..8], &[0, 1, 2, 2, 3, 3, 3, 3]);
+        for i in 1..256u32 {
+            assert_eq!(LOG_2[i as usize] as u32, 32 - i.leading_zeros());
+        }
+    }
+
+    #[test]
+    fn rawequalobj_tags() {
+        let nil_a = LuaTValue { lo: 0, hi: 0, tag: LuaTValue::NIL };
+        let nil_b = LuaTValue { lo: 9, hi: 9, tag: LuaTValue::NIL };
+        assert!(stub_0x82bdcc(&nil_a, &nil_b));
+        let n1 = LuaTValue::number(1.5);
+        let n2 = LuaTValue::number(1.5);
+        let n3 = LuaTValue::number(2.5);
+        assert!(stub_0x82bdcc(&n1, &n2));
+        assert!(!stub_0x82bdcc(&n1, &n3));
+        assert!(!stub_0x82bdcc(&n1, &nil_a));
+        let p1 = LuaTValue { lo: 0x1234, hi: 0, tag: 4 };
+        let p2 = LuaTValue { lo: 0x1234, hi: 0, tag: 4 };
+        let p3 = LuaTValue { lo: 0x5678, hi: 0, tag: 4 };
+        assert!(stub_0x82bdcc(&p1, &p2));
+        assert!(!stub_0x82bdcc(&p1, &p3));
+        assert!(!stub_0x82bdcc(&p1, &n1));
+    }
+
+    #[test]
+    fn str2d_accepts_and_rejects_like_strtod() {
+        unsafe {
+            assert_eq!(str2d("12"), (12.0, true));
+            assert_eq!(str2d("  3.5  "), (3.5, true));
+            assert_eq!(str2d("1e3"), (1000.0, true));
+            assert_eq!(str2d("0x10"), (16.0, true));
+            assert_eq!(str2d("0Xff"), (255.0, true));
+            let (v, ok) = str2d("12abc");
+            assert_eq!(v, 12.0);
+            assert!(!ok);
+            let (v, ok) = str2d("");
+            assert_eq!(v, 0.0);
+            assert!(!ok);
+            assert!(!str2d("abc").1);
+            assert!(!str2d("1x").1);
+        }
+    }
+
+    #[test]
+    fn chunkid_shapes() {
+        unsafe {
+            // '=' verbatim: copies, NUL-terminates, returns &dst[n].
+            let (buf, off) = chunkid("=hello");
+            assert_eq!(off, 60);
+            assert_eq!(cstr_at(&buf), b"hello");
+            // '@' short path keeps the name.
+            let (buf, off) = chunkid("@game.lua");
+            assert_eq!(off, 0);
+            assert_eq!(cstr_at(&buf), b"game.lua");
+            // '@' long path '...'-prefixes to fit.
+            let long = String::from("@") + &"a".repeat(100);
+            let (buf, off) = chunkid(&long);
+            assert_eq!(off, 0);
+            let id = cstr_at(&buf);
+            assert_eq!(id.len(), 3 + 52);
+            assert_eq!(&id[..3], b"...");
+            // Short source gets the `[string "..."]` wrapper.
+            let (buf, _) = chunkid("print(1)");
+            assert_eq!(cstr_at(&buf), b"[string \"print(1)\"]");
+            // Newline truncates with '...'.
+            let (buf, _) = chunkid("ab\ncd");
+            assert_eq!(cstr_at(&buf), b"[string \"ab...\"]");
+        }
+    }
+
+    #[test]
+    fn random_sequence_is_seeded_and_ranged() {
+        unsafe {
+            let mut l = LuaState::new();
+            lua_pushinteger(&mut l as *mut LuaState, 12345);
+            assert_eq!(stub_0x82ba48(&mut l as *mut LuaState), 0);
+            let mut l = LuaState::new();
+            assert_eq!(stub_0x82b938(&mut l as *mut LuaState), 1);
+            let first = l.stack[0];
+            assert!((0.0..1.0).contains(&first));
+            // Reseed -> same first draw (deterministic LCG).
+            let mut l = LuaState::new();
+            lua_pushinteger(&mut l as *mut LuaState, 12345);
+            stub_0x82ba48(&mut l as *mut LuaState);
+            let mut l = LuaState::new();
+            stub_0x82b938(&mut l as *mut LuaState);
+            assert_eq!(l.stack[0], first);
+            // (n) in 1..=n, (lo, hi) in lo..=hi.
+            for _ in 0..50 {
+                let mut l = LuaState::new();
+                lua_pushinteger(&mut l as *mut LuaState, 6);
+                stub_0x82b938(&mut l as *mut LuaState);
+                assert!((1.0..=6.0).contains(&l.stack[0]));
+                let mut l = LuaState::new();
+                lua_pushinteger(&mut l as *mut LuaState, 10);
+                lua_pushinteger(&mut l as *mut LuaState, 20);
+                stub_0x82b938(&mut l as *mut LuaState);
+                assert!((10.0..=20.0).contains(&l.stack[0]));
+            }
+        }
+    }
+
+    #[test]
+    fn realloc_and_growaux_track_bytes() {
+        unsafe {
+            let mut l = LuaState::new();
+            let l = &mut l as *mut LuaState;
+            let mut size: i32 = 0;
+            // Grow 0 -> 4 u32 slots via the grow policy.
+            let p = stub_0x82bbd8(
+                l,
+                std::ptr::null_mut(),
+                &mut size as *mut i32,
+                4,
+                0x4000_0000,
+                c"test".as_ptr() as *const i8,
+            );
+            assert_eq!(size, 4);
+            assert!(!p.is_null());
+            assert_eq!((*l).total_bytes(), 16);
+            let slots = std::slice::from_raw_parts_mut(p as *mut u32, 4);
+            slots[0] = 0xdead_beef;
+            slots[3] = 42;
+            // Grow 4 -> 8, contents preserved.
+            let p2 = stub_0x82bbd8(
+                l,
+                p,
+                &mut size as *mut i32,
+                4,
+                0x4000_0000,
+                c"test".as_ptr() as *const i8,
+            );
+            assert_eq!(size, 8);
+            let slots = std::slice::from_raw_parts(p2 as *const u32, 8);
+            assert_eq!(slots[0], 0xdead_beef);
+            assert_eq!(slots[3], 42);
+            assert_eq!((*l).total_bytes(), 32);
+            // Freeing returns null and debits the bytes.
+            assert!(stub_0x82bc54(l, p2, 32, 0).is_null());
+            assert_eq!((*l).total_bytes(), 0);
+        }
+    }
+
+    #[test]
+    #[should_panic(expected = "block too big")]
+    fn toobig_panics() {
+        unsafe {
+            let mut l = LuaState::new();
+            stub_0x82bc90(&mut l as *mut LuaState);
+        }
+    }
+
+    #[test]
+    #[should_panic(expected = "wrong number of arguments")]
+    fn random_rejects_three_args() {
+        unsafe {
+            let mut l = LuaState::new();
+            for _ in 0..3 {
+                lua_pushinteger(&mut l as *mut LuaState, 1);
+            }
+            stub_0x82b938(&mut l as *mut LuaState);
         }
     }
 }
