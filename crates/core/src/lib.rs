@@ -592,3 +592,4 @@ pub mod generated_watchdog_gap_w10;
 pub mod generated_watchdog_gap_w11;
 pub mod generated_core_shard_pc;
 pub mod generated_core_gap100;
+pub mod generated_core_bg19;
