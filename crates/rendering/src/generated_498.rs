@@ -6,7 +6,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
-use crate::ogre::{CompareFunction, Pass, SceneBlendOperation};
+use crate::ogre::{CompareFunction, CullingMode, ManualCullingMode, Pass, PolygonMode, SceneBlendOperation, ShadeOptions};
 
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
@@ -189,8 +189,8 @@ pub fn stub_0xd4bf04(pass: &Pass) -> bool {
 #[doc(alias = "Ogre::Pass::setColourWriteEnabled(bool)")]
 #[doc(alias = "__ZN4Ogre4Pass21setColourWriteEnabledEb")]
 // was: Ogre::Pass::setColourWriteEnabled(bool)
-pub fn stub_0xd4bf0c() -> ! {
-    todo!("0xd4bf0c Ogre::Pass::setColourWriteEnabled(bool)")
+pub fn stub_0xd4bf0c(pass: &mut Pass, enabled: bool) {
+    pass.set_colour_write_enabled(enabled) // IDA 0xd4bf0c: STRB.W R1,[R0,#0x90]
 }
 
 // 0xd4bf14 — __ZNK4Ogre4Pass21getColourWriteEnabledEv
@@ -198,8 +198,8 @@ pub fn stub_0xd4bf0c() -> ! {
 #[doc(alias = "Ogre::Pass::getColourWriteEnabled(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass21getColourWriteEnabledEv")]
 // was: Ogre::Pass::getColourWriteEnabled(void)const
-pub fn stub_0xd4bf14() -> ! {
-    todo!("0xd4bf14 Ogre::Pass::getColourWriteEnabled(void)const")
+pub fn stub_0xd4bf14(pass: &Pass) -> bool {
+    pass.colour_write_enabled() // IDA 0xd4bf14: LDRB.W R0,[R0,#0x90]
 }
 
 // 0xd4bf1c — __ZN4Ogre4Pass14setCullingModeENS_11CullingModeE
@@ -207,8 +207,8 @@ pub fn stub_0xd4bf14() -> ! {
 #[doc(alias = "Ogre::Pass::setCullingMode(Ogre::CullingMode)")]
 #[doc(alias = "__ZN4Ogre4Pass14setCullingModeENS_11CullingModeE")]
 // was: Ogre::Pass::setCullingMode(Ogre::CullingMode)
-pub fn stub_0xd4bf1c() -> ! {
-    todo!("0xd4bf1c Ogre::Pass::setCullingMode(Ogre::CullingMode)")
+pub fn stub_0xd4bf1c(pass: &mut Pass, mode: CullingMode) {
+    pass.set_culling_mode(mode) // IDA 0xd4bf1c: STR.W R1,[R0,#0x9C]
 }
 
 // 0xd4bf24 — __ZNK4Ogre4Pass14getCullingModeEv
@@ -216,8 +216,8 @@ pub fn stub_0xd4bf1c() -> ! {
 #[doc(alias = "Ogre::Pass::getCullingMode(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass14getCullingModeEv")]
 // was: Ogre::Pass::getCullingMode(void)const
-pub fn stub_0xd4bf24() -> ! {
-    todo!("0xd4bf24 Ogre::Pass::getCullingMode(void)const")
+pub fn stub_0xd4bf24(pass: &Pass) -> CullingMode {
+    pass.culling_mode() // IDA 0xd4bf24: LDR.W R0,[R0,#0x9C]
 }
 
 // 0xd4bf2c — __ZN4Ogre4Pass18setLightingEnabledEb
@@ -225,8 +225,8 @@ pub fn stub_0xd4bf24() -> ! {
 #[doc(alias = "Ogre::Pass::setLightingEnabled(bool)")]
 #[doc(alias = "__ZN4Ogre4Pass18setLightingEnabledEb")]
 // was: Ogre::Pass::setLightingEnabled(bool)
-pub fn stub_0xd4bf2c() -> ! {
-    todo!("0xd4bf2c Ogre::Pass::setLightingEnabled(bool)")
+pub fn stub_0xd4bf2c(pass: &mut Pass, enabled: bool) {
+    pass.set_lighting_enabled(enabled) // IDA 0xd4bf2c: STRB.W R1,[R0,#0xA4]
 }
 
 // 0xd4bf34 — __ZNK4Ogre4Pass18getLightingEnabledEv
@@ -234,8 +234,8 @@ pub fn stub_0xd4bf2c() -> ! {
 #[doc(alias = "Ogre::Pass::getLightingEnabled(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass18getLightingEnabledEv")]
 // was: Ogre::Pass::getLightingEnabled(void)const
-pub fn stub_0xd4bf34() -> ! {
-    todo!("0xd4bf34 Ogre::Pass::getLightingEnabled(void)const")
+pub fn stub_0xd4bf34(pass: &Pass) -> bool {
+    pass.lighting_enabled() // IDA 0xd4bf34: LDRB.W R0,[R0,#0xA4]
 }
 
 // 0xd4bf3c — __ZN4Ogre4Pass24setMaxSimultaneousLightsEt
@@ -243,8 +243,8 @@ pub fn stub_0xd4bf34() -> ! {
 #[doc(alias = "Ogre::Pass::setMaxSimultaneousLights(unsigned short)")]
 #[doc(alias = "__ZN4Ogre4Pass24setMaxSimultaneousLightsEt")]
 // was: Ogre::Pass::setMaxSimultaneousLights(unsigned short)
-pub fn stub_0xd4bf3c() -> ! {
-    todo!("0xd4bf3c Ogre::Pass::setMaxSimultaneousLights(unsigned short)")
+pub fn stub_0xd4bf3c(pass: &mut Pass, count: u16) {
+    pass.set_max_simultaneous_lights(count) // IDA 0xd4bf3c: STRH.W R1,[R0,#0xA6]
 }
 
 // 0xd4bf44 — __ZNK4Ogre4Pass24getMaxSimultaneousLightsEv
@@ -252,8 +252,8 @@ pub fn stub_0xd4bf3c() -> ! {
 #[doc(alias = "Ogre::Pass::getMaxSimultaneousLights(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass24getMaxSimultaneousLightsEv")]
 // was: Ogre::Pass::getMaxSimultaneousLights(void)const
-pub fn stub_0xd4bf44() -> ! {
-    todo!("0xd4bf44 Ogre::Pass::getMaxSimultaneousLights(void)const")
+pub fn stub_0xd4bf44(pass: &Pass) -> u16 {
+    pass.max_simultaneous_lights() // IDA 0xd4bf44: LDRH.W R0,[R0,#0xA6]
 }
 
 // 0xd4bf4c — __ZN4Ogre4Pass13setStartLightEt
@@ -261,8 +261,8 @@ pub fn stub_0xd4bf44() -> ! {
 #[doc(alias = "Ogre::Pass::setStartLight(unsigned short)")]
 #[doc(alias = "__ZN4Ogre4Pass13setStartLightEt")]
 // was: Ogre::Pass::setStartLight(unsigned short)
-pub fn stub_0xd4bf4c() -> ! {
-    todo!("0xd4bf4c Ogre::Pass::setStartLight(unsigned short)")
+pub fn stub_0xd4bf4c(pass: &mut Pass, index: u16) {
+    pass.set_start_light(index) // IDA 0xd4bf4c: STRH.W R1,[R0,#0xA8]
 }
 
 // 0xd4bf54 — __ZNK4Ogre4Pass13getStartLightEv
@@ -270,8 +270,8 @@ pub fn stub_0xd4bf4c() -> ! {
 #[doc(alias = "Ogre::Pass::getStartLight(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass13getStartLightEv")]
 // was: Ogre::Pass::getStartLight(void)const
-pub fn stub_0xd4bf54() -> ! {
-    todo!("0xd4bf54 Ogre::Pass::getStartLight(void)const")
+pub fn stub_0xd4bf54(pass: &Pass) -> u16 {
+    pass.start_light() // IDA 0xd4bf54: LDRH.W R0,[R0,#0xA8]
 }
 
 // 0xd4bf5c — __ZN4Ogre4Pass12setLightMaskEj
@@ -279,8 +279,8 @@ pub fn stub_0xd4bf54() -> ! {
 #[doc(alias = "Ogre::Pass::setLightMask(unsigned int)")]
 #[doc(alias = "__ZN4Ogre4Pass12setLightMaskEj")]
 // was: Ogre::Pass::setLightMask(unsigned int)
-pub fn stub_0xd4bf5c() -> ! {
-    todo!("0xd4bf5c Ogre::Pass::setLightMask(unsigned int)")
+pub fn stub_0xd4bf5c(pass: &mut Pass, mask: u32) {
+    pass.set_light_mask(mask) // IDA 0xd4bf5c: STR.W R1,[R0,#0xB4]
 }
 
 // 0xd4bf64 — __ZNK4Ogre4Pass12getLightMaskEv
@@ -288,8 +288,8 @@ pub fn stub_0xd4bf5c() -> ! {
 #[doc(alias = "Ogre::Pass::getLightMask(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass12getLightMaskEv")]
 // was: Ogre::Pass::getLightMask(void)const
-pub fn stub_0xd4bf64() -> ! {
-    todo!("0xd4bf64 Ogre::Pass::getLightMask(void)const")
+pub fn stub_0xd4bf64(pass: &Pass) -> u32 {
+    pass.light_mask() // IDA 0xd4bf64: LDR.W R0,[R0,#0xB4]
 }
 
 // 0xd4bf6c — __ZN4Ogre4Pass25setLightCountPerIterationEt
@@ -297,8 +297,8 @@ pub fn stub_0xd4bf64() -> ! {
 #[doc(alias = "Ogre::Pass::setLightCountPerIteration(unsigned short)")]
 #[doc(alias = "__ZN4Ogre4Pass25setLightCountPerIterationEt")]
 // was: Ogre::Pass::setLightCountPerIteration(unsigned short)
-pub fn stub_0xd4bf6c() -> ! {
-    todo!("0xd4bf6c Ogre::Pass::setLightCountPerIteration(unsigned short)")
+pub fn stub_0xd4bf6c(pass: &mut Pass, count: u16) {
+    pass.set_light_count_per_iteration(count) // IDA 0xd4bf6c: STRH.W R1,[R0,#0xAC]
 }
 
 // 0xd4bf74 — __ZNK4Ogre4Pass25getLightCountPerIterationEv
@@ -306,8 +306,8 @@ pub fn stub_0xd4bf6c() -> ! {
 #[doc(alias = "Ogre::Pass::getLightCountPerIteration(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass25getLightCountPerIterationEv")]
 // was: Ogre::Pass::getLightCountPerIteration(void)const
-pub fn stub_0xd4bf74() -> ! {
-    todo!("0xd4bf74 Ogre::Pass::getLightCountPerIteration(void)const")
+pub fn stub_0xd4bf74(pass: &Pass) -> u16 {
+    pass.light_count_per_iteration() // IDA 0xd4bf74: LDRH.W R0,[R0,#0xAC]
 }
 
 // 0xd4bf7c — __ZN4Ogre4Pass18setIteratePerLightEbbNS_5Light10LightTypesE
@@ -323,8 +323,8 @@ pub fn stub_0xd4bf7c() -> ! {
 #[doc(alias = "Ogre::Pass::setShadingMode(Ogre::ShadeOptions)")]
 #[doc(alias = "__ZN4Ogre4Pass14setShadingModeENS_12ShadeOptionsE")]
 // was: Ogre::Pass::setShadingMode(Ogre::ShadeOptions)
-pub fn stub_0xd4bf8c() -> ! {
-    todo!("0xd4bf8c Ogre::Pass::setShadingMode(Ogre::ShadeOptions)")
+pub fn stub_0xd4bf8c(pass: &mut Pass, mode: ShadeOptions) {
+    pass.set_shading_mode(mode) // IDA 0xd4bf8c: STR.W R1,[R0,#0xB8]
 }
 
 // 0xd4bf94 — __ZNK4Ogre4Pass14getShadingModeEv
@@ -332,16 +332,16 @@ pub fn stub_0xd4bf8c() -> ! {
 #[doc(alias = "Ogre::Pass::getShadingMode(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass14getShadingModeEv")]
 // was: Ogre::Pass::getShadingMode(void)const
-pub fn stub_0xd4bf94() -> ! {
-    todo!("0xd4bf94 Ogre::Pass::getShadingMode(void)const")
+pub fn stub_0xd4bf94(pass: &Pass) -> ShadeOptions {
+    pass.shading_mode() // IDA 0xd4bf94: LDR.W R0,[R0,#0xB8]
 }
 
 // 0xd4bf9c — __ZN4Ogre4Pass14setPolygonModeENS_11PolygonModeE
 #[doc(alias = "Ogre::Pass::setPolygonMode(Ogre::PolygonMode)")]
 #[doc(alias = "__ZN4Ogre4Pass14setPolygonModeENS_11PolygonModeE")]
 // was: Ogre::Pass::setPolygonMode(Ogre::PolygonMode)
-pub fn stub_0xd4bf9c() -> ! {
-    todo!("0xd4bf9c Ogre::Pass::setPolygonMode(Ogre::PolygonMode)")
+pub fn stub_0xd4bf9c(pass: &mut Pass, mode: PolygonMode) {
+    pass.set_polygon_mode(mode) // IDA 0xd4bf9c: STR.W R1,[R0,#0xBC]
 }
 
 // 0xd4bfa4 — __ZNK4Ogre4Pass14getPolygonModeEv
@@ -349,8 +349,8 @@ pub fn stub_0xd4bf9c() -> ! {
 #[doc(alias = "Ogre::Pass::getPolygonMode(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass14getPolygonModeEv")]
 // was: Ogre::Pass::getPolygonMode(void)const
-pub fn stub_0xd4bfa4() -> ! {
-    todo!("0xd4bfa4 Ogre::Pass::getPolygonMode(void)const")
+pub fn stub_0xd4bfa4(pass: &Pass) -> PolygonMode {
+    pass.polygon_mode() // IDA 0xd4bfa4: LDR.W R0,[R0,#0xBC]
 }
 
 // 0xd4bfac — __ZN4Ogre4Pass20setManualCullingModeENS_17ManualCullingModeE
@@ -358,8 +358,8 @@ pub fn stub_0xd4bfa4() -> ! {
 #[doc(alias = "Ogre::Pass::setManualCullingMode(Ogre::ManualCullingMode)")]
 #[doc(alias = "__ZN4Ogre4Pass20setManualCullingModeENS_17ManualCullingModeE")]
 // was: Ogre::Pass::setManualCullingMode(Ogre::ManualCullingMode)
-pub fn stub_0xd4bfac() -> ! {
-    todo!("0xd4bfac Ogre::Pass::setManualCullingMode(Ogre::ManualCullingMode)")
+pub fn stub_0xd4bfac(pass: &mut Pass, mode: ManualCullingMode) {
+    pass.set_manual_culling_mode(mode) // IDA 0xd4bfac: STR.W R1,[R0,#0xA0]
 }
 
 // 0xd4bfb4 — __ZNK4Ogre4Pass20getManualCullingModeEv
@@ -367,8 +367,8 @@ pub fn stub_0xd4bfac() -> ! {
 #[doc(alias = "Ogre::Pass::getManualCullingMode(void)const")]
 #[doc(alias = "__ZNK4Ogre4Pass20getManualCullingModeEv")]
 // was: Ogre::Pass::getManualCullingMode(void)const
-pub fn stub_0xd4bfb4() -> ! {
-    todo!("0xd4bfb4 Ogre::Pass::getManualCullingMode(void)const")
+pub fn stub_0xd4bfb4(pass: &Pass) -> ManualCullingMode {
+    pass.manual_culling_mode() // IDA 0xd4bfb4: LDR.W R0,[R0,#0xA0]
 }
 
 // 0xd4bfbc — __ZN4Ogre4Pass6setFogEbNS_7FogModeERKNS_11ColourValueEfff

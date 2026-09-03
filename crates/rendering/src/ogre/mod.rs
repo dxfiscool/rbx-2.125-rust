@@ -31256,9 +31256,53 @@ pub enum CompareFunction {
     Greater = 7,
 }
 
+/// was: `Ogre::CullingMode` (CULL_NONE..CULL_ANTICLOCKWISE).
+#[doc(alias = "Ogre::CullingMode")]
+#[repr(u32)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum CullingMode {
+    #[default]
+    None = 0,
+    Clockwise = 1,
+    Anticlockwise = 2,
+}
+
+/// was: `Ogre::ManualCullingMode` (MANUAL_CULL_NONE..MANUAL_CULL_FRONT).
+#[doc(alias = "Ogre::ManualCullingMode")]
+#[repr(u32)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum ManualCullingMode {
+    #[default]
+    None = 1,
+    Back = 2,
+    Front = 3,
+}
+
+/// was: `Ogre::ShadeOptions` (SO_FLAT..SO_PHONG).
+#[doc(alias = "Ogre::ShadeOptions")]
+#[repr(u32)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum ShadeOptions {
+    Flat = 0,
+    #[default]
+    Gouraud = 1,
+    Phong = 2,
+}
+
+/// was: `Ogre::PolygonMode` (PM_POINTS..PM_SOLID).
+#[doc(alias = "Ogre::PolygonMode")]
+#[repr(u32)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum PolygonMode {
+    Points = 1,
+    Wireframe = 2,
+    #[default]
+    Solid = 3,
+}
+
 /// was: `Ogre::Pass` — render-state block for one pass of a technique.
 /// Models only the field window observed in the implemented leaves
-/// (byte offsets 0x60..0x9c); the rest of the C++ object is opaque.
+/// (byte offsets 0x60..0xc0); the rest of the C++ object is opaque.
 #[doc(alias = "Ogre::Pass")]
 #[repr(C)]
 #[derive(Clone, Debug)]
@@ -31285,7 +31329,10 @@ pub struct Pass {
     _opaque_0x7f: [u8; 0x01],
     /// +0x80 depth compare function.
     pub depth_function: CompareFunction,
-    _opaque_0x84: [u8; 0x10],
+    _opaque_0x84: [u8; 0x0C],
+    /// +0x90 colour write enable.
+    pub colour_write_enabled: bool,
+    _opaque_0x91: [u8; 0x03],
     /// +0x94 alpha reject function.
     pub alpha_reject_function: CompareFunction,
     /// +0x98 alpha reject threshold value.
@@ -31296,6 +31343,27 @@ pub struct Pass {
     pub transparent_sorting_enabled: bool,
     /// +0x9b transparent sorting forced.
     pub transparent_sorting_forced: bool,
+    /// +0x9c culling mode.
+    pub culling_mode: CullingMode,
+    /// +0xa0 manual culling mode.
+    pub manual_culling_mode: ManualCullingMode,
+    /// +0xa4 lighting enable.
+    pub lighting_enabled: bool,
+    _opaque_0xa5: [u8; 0x01],
+    /// +0xa6 max simultaneous lights.
+    pub max_simultaneous_lights: u16,
+    /// +0xa8 start light index.
+    pub start_light: u16,
+    _opaque_0xaa: [u8; 0x02],
+    /// +0xac light count per iteration.
+    pub light_count_per_iteration: u16,
+    _opaque_0xae: [u8; 0x06],
+    /// +0xb4 light mask.
+    pub light_mask: u32,
+    /// +0xb8 shading mode.
+    pub shading_mode: ShadeOptions,
+    /// +0xbc polygon mode.
+    pub polygon_mode: PolygonMode,
 }
 impl Default for Pass {
     fn default() -> Self {
@@ -31313,12 +31381,26 @@ impl Default for Pass {
             depth_write_enabled: false,
             _opaque_0x7f: [0; 0x01],
             depth_function: CompareFunction::default(),
-            _opaque_0x84: [0; 0x10],
+            _opaque_0x84: [0; 0x0C],
+            colour_write_enabled: false,
+            _opaque_0x91: [0; 0x03],
             alpha_reject_function: CompareFunction::default(),
             alpha_reject_value: 0,
             alpha_to_coverage_enabled: false,
             transparent_sorting_enabled: false,
             transparent_sorting_forced: false,
+            culling_mode: CullingMode::default(),
+            manual_culling_mode: ManualCullingMode::default(),
+            lighting_enabled: false,
+            _opaque_0xa5: [0; 0x01],
+            max_simultaneous_lights: 0,
+            start_light: 0,
+            _opaque_0xaa: [0; 0x02],
+            light_count_per_iteration: 0,
+            _opaque_0xae: [0; 0x06],
+            light_mask: 0,
+            shading_mode: ShadeOptions::default(),
+            polygon_mode: PolygonMode::default(),
         }
     }
 }
@@ -31429,11 +31511,91 @@ impl Pass {
     pub fn transparent_sorting_forced(&self) -> bool {
         self.transparent_sorting_forced
     }
+    // IDA 0xd4bf0c: STRB.W R1,[R0,#0x90]; BX LR.
+    pub fn set_colour_write_enabled(&mut self, enabled: bool) {
+        self.colour_write_enabled = enabled;
+    }
+    // IDA 0xd4bf14: LDRB.W R0,[R0,#0x90]; BX LR.
+    pub fn colour_write_enabled(&self) -> bool {
+        self.colour_write_enabled
+    }
+    // IDA 0xd4bf1c: STR.W R1,[R0,#0x9C]; BX LR.
+    pub fn set_culling_mode(&mut self, mode: CullingMode) {
+        self.culling_mode = mode;
+    }
+    // IDA 0xd4bf24: LDR.W R0,[R0,#0x9C]; BX LR.
+    pub fn culling_mode(&self) -> CullingMode {
+        self.culling_mode
+    }
+    // IDA 0xd4bf2c: STRB.W R1,[R0,#0xA4]; BX LR.
+    pub fn set_lighting_enabled(&mut self, enabled: bool) {
+        self.lighting_enabled = enabled;
+    }
+    // IDA 0xd4bf34: LDRB.W R0,[R0,#0xA4]; BX LR.
+    pub fn lighting_enabled(&self) -> bool {
+        self.lighting_enabled
+    }
+    // IDA 0xd4bf3c: STRH.W R1,[R0,#0xA6]; BX LR.
+    pub fn set_max_simultaneous_lights(&mut self, count: u16) {
+        self.max_simultaneous_lights = count;
+    }
+    // IDA 0xd4bf44: LDRH.W R0,[R0,#0xA6]; BX LR.
+    pub fn max_simultaneous_lights(&self) -> u16 {
+        self.max_simultaneous_lights
+    }
+    // IDA 0xd4bf4c: STRH.W R1,[R0,#0xA8]; BX LR.
+    pub fn set_start_light(&mut self, index: u16) {
+        self.start_light = index;
+    }
+    // IDA 0xd4bf54: LDRH.W R0,[R0,#0xA8]; BX LR.
+    pub fn start_light(&self) -> u16 {
+        self.start_light
+    }
+    // IDA 0xd4bf5c: STR.W R1,[R0,#0xB4]; BX LR.
+    pub fn set_light_mask(&mut self, mask: u32) {
+        self.light_mask = mask;
+    }
+    // IDA 0xd4bf64: LDR.W R0,[R0,#0xB4]; BX LR.
+    pub fn light_mask(&self) -> u32 {
+        self.light_mask
+    }
+    // IDA 0xd4bf6c: STRH.W R1,[R0,#0xAC]; BX LR.
+    pub fn set_light_count_per_iteration(&mut self, count: u16) {
+        self.light_count_per_iteration = count;
+    }
+    // IDA 0xd4bf74: LDRH.W R0,[R0,#0xAC]; BX LR.
+    pub fn light_count_per_iteration(&self) -> u16 {
+        self.light_count_per_iteration
+    }
+    // IDA 0xd4bf8c: STR.W R1,[R0,#0xB8]; BX LR.
+    pub fn set_shading_mode(&mut self, mode: ShadeOptions) {
+        self.shading_mode = mode;
+    }
+    // IDA 0xd4bf94: LDR.W R0,[R0,#0xB8]; BX LR.
+    pub fn shading_mode(&self) -> ShadeOptions {
+        self.shading_mode
+    }
+    // IDA 0xd4bf9c: STR.W R1,[R0,#0xBC]; BX LR.
+    pub fn set_polygon_mode(&mut self, mode: PolygonMode) {
+        self.polygon_mode = mode;
+    }
+    // IDA 0xd4bfa4: LDR.W R0,[R0,#0xBC]; BX LR.
+    pub fn polygon_mode(&self) -> PolygonMode {
+        self.polygon_mode
+    }
+    // IDA 0xd4bfac: STR.W R1,[R0,#0xA0]; BX LR.
+    pub fn set_manual_culling_mode(&mut self, mode: ManualCullingMode) {
+        self.manual_culling_mode = mode;
+    }
+    // IDA 0xd4bfb4: LDR.W R0,[R0,#0xA0]; BX LR.
+    pub fn manual_culling_mode(&self) -> ManualCullingMode {
+        self.manual_culling_mode
+    }
 }
 
 #[cfg(test)]
 mod pass_tests {
-    use super::{CompareFunction, Pass, SceneBlendFactor, SceneBlendOperation};
+    use super::{CompareFunction, CullingMode, ManualCullingMode, Pass, PolygonMode, SceneBlendFactor, SceneBlendOperation, ShadeOptions};
 
     #[test]
     fn blend_operation_setters_clear_and_set_separate_flag() {
@@ -31507,5 +31669,30 @@ mod pass_tests {
             p.source_blend_factor = src;
             assert!(!p.is_transparent(), "src {src:?} should be opaque");
         }
+    }
+
+    #[test]
+    fn colour_lighting_and_raster_state_round_trips() {
+        let mut p = Pass::default();
+        p.set_colour_write_enabled(false);
+        p.set_culling_mode(CullingMode::Anticlockwise);
+        p.set_manual_culling_mode(ManualCullingMode::Back);
+        p.set_lighting_enabled(true);
+        p.set_max_simultaneous_lights(8);
+        p.set_start_light(2);
+        p.set_light_count_per_iteration(4);
+        p.set_light_mask(0x00ff_0001);
+        p.set_shading_mode(ShadeOptions::Phong);
+        p.set_polygon_mode(PolygonMode::Wireframe);
+        assert!(!p.colour_write_enabled());
+        assert_eq!(p.culling_mode(), CullingMode::Anticlockwise);
+        assert_eq!(p.manual_culling_mode(), ManualCullingMode::Back);
+        assert!(p.lighting_enabled());
+        assert_eq!(p.max_simultaneous_lights(), 8);
+        assert_eq!(p.start_light(), 2);
+        assert_eq!(p.light_count_per_iteration(), 4);
+        assert_eq!(p.light_mask(), 0x00ff_0001);
+        assert_eq!(p.shading_mode(), ShadeOptions::Phong);
+        assert_eq!(p.polygon_mode(), PolygonMode::Wireframe);
     }
 }
