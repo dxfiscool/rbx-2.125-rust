@@ -434,3 +434,4 @@ pub mod generated_wdog_net3;
 pub mod generated_network_next108;
 pub mod generated_network_next109;
 pub mod generated_network_next110;
+pub mod generated_network_next111;
