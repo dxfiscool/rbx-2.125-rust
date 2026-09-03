@@ -1,851 +1,850 @@
 // Auto-generated skeletons for rbx-datamodel — from ida/export.json
-// Filter: global gap filler EA-sorted asc next 120 uncovered not yet in any crates/*/src (synthetic beyond max 0xf6fb4c, global 85545/85545 covered)
+// Filter: Instance/DataModel/Workspace/Part EA-sorted asc first 120 uncovered (broad: substring + RBX::, strict RBX::Instance/DataModel/Workspace/Part yielded 0)
 // Source: ida/export.json (85545 funcs, base 0x4000)
-// Batch: 120 stubs | range 0xf74c90..0xf75400 | synthetic EA-sorted asc 0x10 step global gap filler exhausted
-// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr;  and  stripped from alias where needed
-// Shard: watchdog_dm_w1 EA-sorted asc next 120 synthetic after 0xf74c80 (previous max synthetic)
+// Batch: 120 stubs | range 0xc1c0dc..0xf4bdf4 | EA-sorted asc broad Instance/DataModel/Workspace/Part + RBX::
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
-// 0xf74c90 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74c90E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74c90::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74c90E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74c90() -> ! {
-    todo!("0xf74c90 RBX::DataModel::WatchdogDmW1::Synthetic_f74c90::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xc1c0dc — __ZN3RBX9LightGrid23setNonFixedPartsEnabledEb
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::LightGrid::setNonFixedPartsEnabled(bool) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "__ZN3RBX9LightGrid23setNonFixedPartsEnabledEb")]
+pub fn stub_0xc1c0dc() -> ! {
+    todo!("0xc1c0dc RBX::DataModel::WatchdogDmW1::RBX::LightGrid::setNonFixedPartsEnabled(bool) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74ca0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74ca0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74ca0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74ca0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74ca0() -> ! {
-    todo!("0xf74ca0 RBX::DataModel::WatchdogDmW1::Synthetic_f74ca0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xead9ac — __ZN3RBX16FrameRateManager19CountParticleQuotasEi
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::FrameRateManager::CountParticleQuotas(int) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "__ZN3RBX16FrameRateManager19CountParticleQuotasEi")]
+pub fn stub_0xead9ac() -> ! {
+    todo!("0xead9ac RBX::DataModel::WatchdogDmW1::RBX::FrameRateManager::CountParticleQuotas(int) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74cb0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74cb0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74cb0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74cb0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74cb0() -> ! {
-    todo!("0xf74cb0 RBX::DataModel::WatchdogDmW1::Synthetic_f74cb0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xeada68 — __ZN3RBX16FrameRateManager25GetParticleThrottleFactorEv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::FrameRateManager::GetParticleThrottleFactor(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "__ZN3RBX16FrameRateManager25GetParticleThrottleFactorEv")]
+pub fn stub_0xeada68() -> ! {
+    todo!("0xeada68 RBX::DataModel::WatchdogDmW1::RBX::FrameRateManager::GetParticleThrottleFactor(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74cc0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74cc0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74cc0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74cc0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74cc0() -> ! {
-    todo!("0xf74cc0 RBX::DataModel::WatchdogDmW1::Synthetic_f74cc0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf27064 — j___ZN5boost14singleton_poolIN3RBX16OnDemandInstanceELj20ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::boost::singleton_pool<RBX::OnDemandInstance,20u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN5boost14singleton_poolIN3RBX16OnDemandInstanceELj20ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")]
+pub fn stub_0xf27064() -> ! {
+    todo!("0xf27064 RBX::DataModel::WatchdogDmW1::boost::singleton_pool<RBX::OnDemandInstance,20u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74cd0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74cd0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74cd0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74cd0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74cd0() -> ! {
-    todo!("0xf74cd0 RBX::DataModel::WatchdogDmW1::Synthetic_f74cd0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf2d594 — j___ZN3RBX11MegaDragger12getMousePartEv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::MegaDragger::getMousePart(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX11MegaDragger12getMousePartEv")]
+pub fn stub_0xf2d594() -> ! {
+    todo!("0xf2d594 RBX::DataModel::WatchdogDmW1::RBX::MegaDragger::getMousePart(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74ce0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74ce0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74ce0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74ce0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74ce0() -> ! {
-    todo!("0xf74ce0 RBX::DataModel::WatchdogDmW1::Synthetic_f74ce0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf2e6f4 — j___ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE7connectIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_17HeartbeatInstanceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEEENS0_10connectionERKT_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx::signals::connection rbx::signals::signal<void ()(RBX::Heartbeat const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>> const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE7connectIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_17HeartbeatInstanceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEEENS0_10connectionERKT_")]
+pub fn stub_0xf2e6f4() -> ! {
+    todo!("0xf2e6f4 RBX::DataModel::WatchdogDmW1::rbx::signals::connection rbx::signals::signal<void ()(RBX::Heartbeat const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>> const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74cf0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74cf0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74cf0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74cf0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74cf0() -> ! {
-    todo!("0xf74cf0 RBX::DataModel::WatchdogDmW1::Synthetic_f74cf0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf2e704 — j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX17HeartbeatInstanceERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>::operator()<RBX::Heartbeat>(RBX::Heartbeat const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX17HeartbeatInstanceERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_")]
+pub fn stub_0xf2e704() -> ! {
+    todo!("0xf2e704 RBX::DataModel::WatchdogDmW1::void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>::operator()<RBX::Heartbeat>(RBX::Heartbeat const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74d00 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d00E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74d00::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d00E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74d00() -> ! {
-    todo!("0xf74d00 RBX::DataModel::WatchdogDmW1::Synthetic_f74d00::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf2fde4 — j___ZN3RBX17HeartbeatInstanceD2Ev
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::HeartbeatInstance::~HeartbeatInstance() [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX17HeartbeatInstanceD2Ev")]
+pub fn stub_0xf2fde4() -> ! {
+    todo!("0xf2fde4 RBX::DataModel::WatchdogDmW1::RBX::HeartbeatInstance::~HeartbeatInstance() [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74d10 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d10E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74d10::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d10E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74d10() -> ! {
-    todo!("0xf74d10 RBX::DataModel::WatchdogDmW1::Synthetic_f74d10::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf312e4 — j___ZN3RBX11shared_fromINS_10PVInstanceEEEN5boost10shared_ptrIT_EEPS4_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::PVInstance> RBX::shared_from<RBX::PVInstance>(RBX::PVInstance*)")]
+#[doc(alias = "j___ZN3RBX11shared_fromINS_10PVInstanceEEEN5boost10shared_ptrIT_EEPS4_")]
+pub fn stub_0xf312e4() -> ! {
+    todo!("0xf312e4 RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::PVInstance> RBX::shared_from<RBX::PVInstance>(RBX::PVInstance*)")
 }
 
-// 0xf74d20 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d20E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74d20::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d20E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74d20() -> ! {
-    todo!("0xf74d20 RBX::DataModel::WatchdogDmW1::Synthetic_f74d20::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf31304 — j___ZN5boost10shared_ptrIN3RBX10PVInstanceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::PVInstance>::shared_ptr<RBX::PVInstance>(rbx_core::Weak<RBX::PVInstance> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX10PVInstanceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")]
+pub fn stub_0xf31304() -> ! {
+    todo!("0xf31304 RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::PVInstance>::shared_ptr<RBX::PVInstance>(rbx_core::Weak<RBX::PVInstance> const&,boost::detail::sp_nothrow_tag)")
 }
 
-// 0xf74d30 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d30E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74d30::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d30E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74d30() -> ! {
-    todo!("0xf74d30 RBX::DataModel::WatchdogDmW1::Synthetic_f74d30::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf330f4 — j___ZN3RBX20ChangeHistoryService4Item14addClusterDataINS_19MegaClusterInstanceEEEvPKT_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::void RBX::ChangeHistoryService::Item::addClusterData<RBX::MegaClusterInstance>(RBX::MegaClusterInstance const*) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX20ChangeHistoryService4Item14addClusterDataINS_19MegaClusterInstanceEEEvPKT_")]
+pub fn stub_0xf330f4() -> ! {
+    todo!("0xf330f4 RBX::DataModel::WatchdogDmW1::void RBX::ChangeHistoryService::Item::addClusterData<RBX::MegaClusterInstance>(RBX::MegaClusterInstance const*) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74d40 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d40E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74d40::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d40E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74d40() -> ! {
-    todo!("0xf74d40 RBX::DataModel::WatchdogDmW1::Synthetic_f74d40::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf33284 — j___ZN5boost10shared_ptrIN3RBX19MegaClusterInstanceEEaSERKS3_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::MegaClusterInstance>::operator=(rbx_core::SharedPtr<RBX::MegaClusterInstance> const&)")]
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX19MegaClusterInstanceEEaSERKS3_")]
+pub fn stub_0xf33284() -> ! {
+    todo!("0xf33284 RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::MegaClusterInstance>::operator=(rbx_core::SharedPtr<RBX::MegaClusterInstance> const&)")
 }
 
-// 0xf74d50 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d50E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74d50::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d50E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74d50() -> ! {
-    todo!("0xf74d50 RBX::DataModel::WatchdogDmW1::Synthetic_f74d50::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf33e04 — j___ZNSt12_Vector_baseIN3RBX13CharacterMesh8BodyPartESaIS2_EE11_M_allocateEm
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Vector_base<RBX::CharacterMesh::BodyPart,std::allocator<RBX::CharacterMesh::BodyPart>>::_M_allocate(unsigned long) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt12_Vector_baseIN3RBX13CharacterMesh8BodyPartESaIS2_EE11_M_allocateEm")]
+pub fn stub_0xf33e04() -> ! {
+    todo!("0xf33e04 RBX::DataModel::WatchdogDmW1::std::_Vector_base<RBX::CharacterMesh::BodyPart,std::allocator<RBX::CharacterMesh::BodyPart>>::_M_allocate(unsigned long) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74d60 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d60E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74d60::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d60E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74d60() -> ! {
-    todo!("0xf74d60 RBX::DataModel::WatchdogDmW1::Synthetic_f74d60::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf33e14 — j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX13CharacterMesh8BodyPartES6_EET0_T_S8_S7_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::CharacterMesh::BodyPart * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CharacterMesh::BodyPart *,RBX::CharacterMesh::BodyPart *>(RBX::CharacterMesh::BodyPart *,RBX::CharacterMesh::BodyPart *,RBX::CharacterMesh::BodyPart *) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX13CharacterMesh8BodyPartES6_EET0_T_S8_S7_")]
+pub fn stub_0xf33e14() -> ! {
+    todo!("0xf33e14 RBX::DataModel::WatchdogDmW1::RBX::CharacterMesh::BodyPart * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::CharacterMesh::BodyPart *,RBX::CharacterMesh::BodyPart *>(RBX::CharacterMesh::BodyPart *,RBX::CharacterMesh::BodyPart *,RBX::CharacterMesh::BodyPart *) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74d70 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d70E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74d70::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d70E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74d70() -> ! {
-    todo!("0xf74d70 RBX::DataModel::WatchdogDmW1::Synthetic_f74d70::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf33e24 — j___ZNSt3mapIPKN3RBX4NameENS0_13CharacterMesh8BodyPartESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::map<RBX::Name const*,RBX::CharacterMesh::BodyPart,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>>::operator[](RBX::Name const* const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt3mapIPKN3RBX4NameENS0_13CharacterMesh8BodyPartESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")]
+pub fn stub_0xf33e24() -> ! {
+    todo!("0xf33e24 RBX::DataModel::WatchdogDmW1::std::map<RBX::Name const*,RBX::CharacterMesh::BodyPart,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>>::operator[](RBX::Name const* const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74d80 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d80E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74d80::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d80E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74d80() -> ! {
-    todo!("0xf74d80 RBX::DataModel::WatchdogDmW1::Synthetic_f74d80::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf33e34 — j___ZNSt6vectorIN3RBX13CharacterMesh8BodyPartESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::vector<RBX::CharacterMesh::BodyPart,std::allocator<RBX::CharacterMesh::BodyPart>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CharacterMesh::BodyPart*,std::vector<RBX::CharacterMesh::BodyPart,std::allocator<RBX::CharacterMesh::BodyPart>>>,RBX::CharacterMesh::BodyPart const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX13CharacterMesh8BodyPartESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
+pub fn stub_0xf33e34() -> ! {
+    todo!("0xf33e34 RBX::DataModel::WatchdogDmW1::std::vector<RBX::CharacterMesh::BodyPart,std::allocator<RBX::CharacterMesh::BodyPart>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::CharacterMesh::BodyPart*,std::vector<RBX::CharacterMesh::BodyPart,std::allocator<RBX::CharacterMesh::BodyPart>>>,RBX::CharacterMesh::BodyPart const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74d90 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d90E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74d90::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74d90E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74d90() -> ! {
-    todo!("0xf74d90 RBX::DataModel::WatchdogDmW1::Synthetic_f74d90::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf33e44 — j___ZNSt6vectorIN3RBX13CharacterMesh8BodyPartESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::vector<RBX::CharacterMesh::BodyPart,std::allocator<RBX::CharacterMesh::BodyPart>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CharacterMesh::BodyPart*,std::vector<RBX::CharacterMesh::BodyPart,std::allocator<RBX::CharacterMesh::BodyPart>>>,unsigned long,RBX::CharacterMesh::BodyPart const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX13CharacterMesh8BodyPartESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")]
+pub fn stub_0xf33e44() -> ! {
+    todo!("0xf33e44 RBX::DataModel::WatchdogDmW1::std::vector<RBX::CharacterMesh::BodyPart,std::allocator<RBX::CharacterMesh::BodyPart>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::CharacterMesh::BodyPart*,std::vector<RBX::CharacterMesh::BodyPart,std::allocator<RBX::CharacterMesh::BodyPart>>>,unsigned long,RBX::CharacterMesh::BodyPart const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74da0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74da0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74da0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74da0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74da0() -> ! {
-    todo!("0xf74da0 RBX::DataModel::WatchdogDmW1::Synthetic_f74da0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf33e54 — j___ZNSt6vectorIN3RBX13CharacterMesh8BodyPartESaIS2_EE6resizeEmS2_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::vector<RBX::CharacterMesh::BodyPart,std::allocator<RBX::CharacterMesh::BodyPart>>::resize(unsigned long,RBX::CharacterMesh::BodyPart) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX13CharacterMesh8BodyPartESaIS2_EE6resizeEmS2_")]
+pub fn stub_0xf33e54() -> ! {
+    todo!("0xf33e54 RBX::DataModel::WatchdogDmW1::std::vector<RBX::CharacterMesh::BodyPart,std::allocator<RBX::CharacterMesh::BodyPart>>::resize(unsigned long,RBX::CharacterMesh::BodyPart) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74db0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74db0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74db0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74db0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74db0() -> ! {
-    todo!("0xf74db0 RBX::DataModel::WatchdogDmW1::Synthetic_f74db0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf33e64 — j___ZNSt6vectorIN3RBX13CharacterMesh8BodyPartESaIS2_EE9push_backERKS2_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::vector<RBX::CharacterMesh::BodyPart,std::allocator<RBX::CharacterMesh::BodyPart>>::push_back(RBX::CharacterMesh::BodyPart const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX13CharacterMesh8BodyPartESaIS2_EE9push_backERKS2_")]
+pub fn stub_0xf33e64() -> ! {
+    todo!("0xf33e64 RBX::DataModel::WatchdogDmW1::std::vector<RBX::CharacterMesh::BodyPart,std::allocator<RBX::CharacterMesh::BodyPart>>::push_back(RBX::CharacterMesh::BodyPart const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74dc0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74dc0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74dc0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74dc0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74dc0() -> ! {
-    todo!("0xf74dc0 RBX::DataModel::WatchdogDmW1::Synthetic_f74dc0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf33e74 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13CharacterMesh8BodyPartEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart> const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13CharacterMesh8BodyPartEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")]
+pub fn stub_0xf33e74() -> ! {
+    todo!("0xf33e74 RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart> const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74dd0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74dd0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74dd0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74dd0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74dd0() -> ! {
-    todo!("0xf74dd0 RBX::DataModel::WatchdogDmW1::Synthetic_f74dd0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf33e84 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13CharacterMesh8BodyPartEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>,std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart> const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13CharacterMesh8BodyPartEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")]
+pub fn stub_0xf33e84() -> ! {
+    todo!("0xf33e84 RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>,std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart> const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74de0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74de0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74de0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74de0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74de0() -> ! {
-    todo!("0xf74de0 RBX::DataModel::WatchdogDmW1::Synthetic_f74de0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf33e94 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13CharacterMesh8BodyPartEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart> const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13CharacterMesh8BodyPartEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")]
+pub fn stub_0xf33e94() -> ! {
+    todo!("0xf33e94 RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart> const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74df0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74df0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74df0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74df0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74df0() -> ! {
-    todo!("0xf74df0 RBX::DataModel::WatchdogDmW1::Synthetic_f74df0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf34364 — j___ZN3RBX11shared_fromINS_17FilteredSelectionINS_10PVInstanceEEEEEN5boost10shared_ptrIT_EEPS6_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::FilteredSelection<RBX::PVInstance>> RBX::shared_from<RBX::FilteredSelection<RBX::PVInstance>>(RBX::FilteredSelection<RBX::PVInstance>*)")]
+#[doc(alias = "j___ZN3RBX11shared_fromINS_17FilteredSelectionINS_10PVInstanceEEEEEN5boost10shared_ptrIT_EEPS6_")]
+pub fn stub_0xf34364() -> ! {
+    todo!("0xf34364 RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::FilteredSelection<RBX::PVInstance>> RBX::shared_from<RBX::FilteredSelection<RBX::PVInstance>>(RBX::FilteredSelection<RBX::PVInstance>*)")
 }
 
-// 0xf74e00 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e00E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74e00::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e00E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74e00() -> ! {
-    todo!("0xf74e00 RBX::DataModel::WatchdogDmW1::Synthetic_f74e00::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf34394 — j___ZN3RBX15ServiceProvider15doGetClassIndexINS_17FilteredSelectionINS_10PVInstanceEEEEEmv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::FilteredSelection<RBX::PVInstance>>(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX15ServiceProvider15doGetClassIndexINS_17FilteredSelectionINS_10PVInstanceEEEEEmv")]
+pub fn stub_0xf34394() -> ! {
+    todo!("0xf34394 RBX::DataModel::WatchdogDmW1::unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::FilteredSelection<RBX::PVInstance>>(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74e10 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e10E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74e10::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e10E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74e10() -> ! {
-    todo!("0xf74e10 RBX::DataModel::WatchdogDmW1::Synthetic_f74e10::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf343d4 — j___ZN3RBX17FilteredSelectionINS_10PVInstanceEE12getSelectionEv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::FilteredSelection<RBX::PVInstance>::getSelection(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX17FilteredSelectionINS_10PVInstanceEE12getSelectionEv")]
+pub fn stub_0xf343d4() -> ! {
+    todo!("0xf343d4 RBX::DataModel::WatchdogDmW1::RBX::FilteredSelection<RBX::PVInstance>::getSelection(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74e20 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e20E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74e20::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e20E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74e20() -> ! {
-    todo!("0xf74e20 RBX::DataModel::WatchdogDmW1::Synthetic_f74e20::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf343e4 — j___ZN3RBX17FilteredSelectionINS_10PVInstanceEE18onSelectionChangedERKNS_16SelectionChangedE
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::FilteredSelection<RBX::PVInstance>::onSelectionChanged(RBX::SelectionChanged const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX17FilteredSelectionINS_10PVInstanceEE18onSelectionChangedERKNS_16SelectionChangedE")]
+pub fn stub_0xf343e4() -> ! {
+    todo!("0xf343e4 RBX::DataModel::WatchdogDmW1::RBX::FilteredSelection<RBX::PVInstance>::onSelectionChanged(RBX::SelectionChanged const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74e30 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e30E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74e30::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e30E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74e30() -> ! {
-    todo!("0xf74e30 RBX::DataModel::WatchdogDmW1::Synthetic_f74e30::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf343f4 — j___ZN3RBX17FilteredSelectionINS_10PVInstanceEEC2Ev
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::FilteredSelection<RBX::PVInstance>::FilteredSelection(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX17FilteredSelectionINS_10PVInstanceEEC2Ev")]
+pub fn stub_0xf343f4() -> ! {
+    todo!("0xf343f4 RBX::DataModel::WatchdogDmW1::RBX::FilteredSelection<RBX::PVInstance>::FilteredSelection(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74e40 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e40E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74e40::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e40E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74e40() -> ! {
-    todo!("0xf74e40 RBX::DataModel::WatchdogDmW1::Synthetic_f74e40::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf34404 — j___ZN3RBX17FilteredSelectionINS_10PVInstanceEED0Ev
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection() [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX17FilteredSelectionINS_10PVInstanceEED0Ev")]
+pub fn stub_0xf34404() -> ! {
+    todo!("0xf34404 RBX::DataModel::WatchdogDmW1::RBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection() [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74e50 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e50E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74e50::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e50E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74e50() -> ! {
-    todo!("0xf74e50 RBX::DataModel::WatchdogDmW1::Synthetic_f74e50::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf34414 — j___ZN3RBX17FilteredSelectionINS_10PVInstanceEED2Ev
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection() [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX17FilteredSelectionINS_10PVInstanceEED2Ev")]
+pub fn stub_0xf34414() -> ! {
+    todo!("0xf34414 RBX::DataModel::WatchdogDmW1::RBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection() [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74e60 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e60E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74e60::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e60E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74e60() -> ! {
-    todo!("0xf74e60 RBX::DataModel::WatchdogDmW1::Synthetic_f74e60::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf345c4 — j___ZN5boost10shared_ptrIN3RBX17FilteredSelectionINS1_10PVInstanceEEEEaSERKS5_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::FilteredSelection<RBX::PVInstance>>::operator=(rbx_core::SharedPtr<RBX::FilteredSelection<RBX::PVInstance>> const&)")]
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX17FilteredSelectionINS1_10PVInstanceEEEEaSERKS5_")]
+pub fn stub_0xf345c4() -> ! {
+    todo!("0xf345c4 RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::FilteredSelection<RBX::PVInstance>>::operator=(rbx_core::SharedPtr<RBX::FilteredSelection<RBX::PVInstance>> const&)")
 }
 
-// 0xf74e70 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e70E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74e70::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e70E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74e70() -> ! {
-    todo!("0xf74e70 RBX::DataModel::WatchdogDmW1::Synthetic_f74e70::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a5f4 — j___ZNSt12_Vector_baseIN3RBX13PrismInstance12NumSidesEnumESaIS2_EE11_M_allocateEm
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Vector_base<RBX::PrismInstance::NumSidesEnum,std::allocator<RBX::PrismInstance::NumSidesEnum>>::_M_allocate(unsigned long) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt12_Vector_baseIN3RBX13PrismInstance12NumSidesEnumESaIS2_EE11_M_allocateEm")]
+pub fn stub_0xf3a5f4() -> ! {
+    todo!("0xf3a5f4 RBX::DataModel::WatchdogDmW1::std::_Vector_base<RBX::PrismInstance::NumSidesEnum,std::allocator<RBX::PrismInstance::NumSidesEnum>>::_M_allocate(unsigned long) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74e80 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e80E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74e80::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e80E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74e80() -> ! {
-    todo!("0xf74e80 RBX::DataModel::WatchdogDmW1::Synthetic_f74e80::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a604 — j___ZNSt12_Vector_baseIN3RBX15PyramidInstance12NumSidesEnumESaIS2_EE11_M_allocateEm
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Vector_base<RBX::PyramidInstance::NumSidesEnum,std::allocator<RBX::PyramidInstance::NumSidesEnum>>::_M_allocate(unsigned long) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt12_Vector_baseIN3RBX15PyramidInstance12NumSidesEnumESaIS2_EE11_M_allocateEm")]
+pub fn stub_0xf3a604() -> ! {
+    todo!("0xf3a604 RBX::DataModel::WatchdogDmW1::std::_Vector_base<RBX::PyramidInstance::NumSidesEnum,std::allocator<RBX::PyramidInstance::NumSidesEnum>>::_M_allocate(unsigned long) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74e90 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e90E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74e90::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74e90E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74e90() -> ! {
-    todo!("0xf74e90 RBX::DataModel::WatchdogDmW1::Synthetic_f74e90::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a624 — j___ZNSt12_Vector_baseIN3RBX20ExtrudedPartInstance16VisualTrussStyleESaIS2_EE11_M_allocateEm
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Vector_base<RBX::ExtrudedPartInstance::VisualTrussStyle,std::allocator<RBX::ExtrudedPartInstance::VisualTrussStyle>>::_M_allocate(unsigned long) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt12_Vector_baseIN3RBX20ExtrudedPartInstance16VisualTrussStyleESaIS2_EE11_M_allocateEm")]
+pub fn stub_0xf3a624() -> ! {
+    todo!("0xf3a624 RBX::DataModel::WatchdogDmW1::std::_Vector_base<RBX::ExtrudedPartInstance::VisualTrussStyle,std::allocator<RBX::ExtrudedPartInstance::VisualTrussStyle>>::_M_allocate(unsigned long) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74ea0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74ea0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74ea0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74ea0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74ea0() -> ! {
-    todo!("0xf74ea0 RBX::DataModel::WatchdogDmW1::Synthetic_f74ea0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a654 — j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX13PrismInstance12NumSidesEnumES6_EET0_T_S8_S7_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::PrismInstance::NumSidesEnum * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::PrismInstance::NumSidesEnum *,RBX::PrismInstance::NumSidesEnum *>(RBX::PrismInstance::NumSidesEnum *,RBX::PrismInstance::NumSidesEnum *,RBX::PrismInstance::NumSidesEnum *) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX13PrismInstance12NumSidesEnumES6_EET0_T_S8_S7_")]
+pub fn stub_0xf3a654() -> ! {
+    todo!("0xf3a654 RBX::DataModel::WatchdogDmW1::RBX::PrismInstance::NumSidesEnum * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::PrismInstance::NumSidesEnum *,RBX::PrismInstance::NumSidesEnum *>(RBX::PrismInstance::NumSidesEnum *,RBX::PrismInstance::NumSidesEnum *,RBX::PrismInstance::NumSidesEnum *) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74eb0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74eb0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74eb0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74eb0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74eb0() -> ! {
-    todo!("0xf74eb0 RBX::DataModel::WatchdogDmW1::Synthetic_f74eb0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a664 — j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX15PyramidInstance12NumSidesEnumES6_EET0_T_S8_S7_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::PyramidInstance::NumSidesEnum * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::PyramidInstance::NumSidesEnum *,RBX::PyramidInstance::NumSidesEnum *>(RBX::PyramidInstance::NumSidesEnum *,RBX::PyramidInstance::NumSidesEnum *,RBX::PyramidInstance::NumSidesEnum *) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX15PyramidInstance12NumSidesEnumES6_EET0_T_S8_S7_")]
+pub fn stub_0xf3a664() -> ! {
+    todo!("0xf3a664 RBX::DataModel::WatchdogDmW1::RBX::PyramidInstance::NumSidesEnum * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::PyramidInstance::NumSidesEnum *,RBX::PyramidInstance::NumSidesEnum *>(RBX::PyramidInstance::NumSidesEnum *,RBX::PyramidInstance::NumSidesEnum *,RBX::PyramidInstance::NumSidesEnum *) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74ec0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74ec0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74ec0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74ec0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74ec0() -> ! {
-    todo!("0xf74ec0 RBX::DataModel::WatchdogDmW1::Synthetic_f74ec0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a684 — j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX20ExtrudedPartInstance16VisualTrussStyleES6_EET0_T_S8_S7_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::ExtrudedPartInstance::VisualTrussStyle * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::ExtrudedPartInstance::VisualTrussStyle *,RBX::ExtrudedPartInstance::VisualTrussStyle *>(RBX::ExtrudedPartInstance::VisualTrussStyle *,RBX::ExtrudedPartInstance::VisualTrussStyle *,RBX::ExtrudedPartInstance::VisualTrussStyle *) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX20ExtrudedPartInstance16VisualTrussStyleES6_EET0_T_S8_S7_")]
+pub fn stub_0xf3a684() -> ! {
+    todo!("0xf3a684 RBX::DataModel::WatchdogDmW1::RBX::ExtrudedPartInstance::VisualTrussStyle * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::ExtrudedPartInstance::VisualTrussStyle *,RBX::ExtrudedPartInstance::VisualTrussStyle *>(RBX::ExtrudedPartInstance::VisualTrussStyle *,RBX::ExtrudedPartInstance::VisualTrussStyle *,RBX::ExtrudedPartInstance::VisualTrussStyle *) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74ed0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74ed0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74ed0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74ed0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74ed0() -> ! {
-    todo!("0xf74ed0 RBX::DataModel::WatchdogDmW1::Synthetic_f74ed0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a6b4 — j___ZNSt3mapIPKN3RBX4NameENS0_13PrismInstance12NumSidesEnumESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::map<RBX::Name const*,RBX::PrismInstance::NumSidesEnum,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>>::operator[](RBX::Name const* const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt3mapIPKN3RBX4NameENS0_13PrismInstance12NumSidesEnumESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")]
+pub fn stub_0xf3a6b4() -> ! {
+    todo!("0xf3a6b4 RBX::DataModel::WatchdogDmW1::std::map<RBX::Name const*,RBX::PrismInstance::NumSidesEnum,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>>::operator[](RBX::Name const* const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74ee0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74ee0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74ee0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74ee0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74ee0() -> ! {
-    todo!("0xf74ee0 RBX::DataModel::WatchdogDmW1::Synthetic_f74ee0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a6c4 — j___ZNSt3mapIPKN3RBX4NameENS0_15PyramidInstance12NumSidesEnumESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::map<RBX::Name const*,RBX::PyramidInstance::NumSidesEnum,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>>::operator[](RBX::Name const* const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt3mapIPKN3RBX4NameENS0_15PyramidInstance12NumSidesEnumESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")]
+pub fn stub_0xf3a6c4() -> ! {
+    todo!("0xf3a6c4 RBX::DataModel::WatchdogDmW1::std::map<RBX::Name const*,RBX::PyramidInstance::NumSidesEnum,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>>::operator[](RBX::Name const* const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74ef0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74ef0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74ef0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74ef0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74ef0() -> ! {
-    todo!("0xf74ef0 RBX::DataModel::WatchdogDmW1::Synthetic_f74ef0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a6e4 — j___ZNSt3mapIPKN3RBX4NameENS0_20ExtrudedPartInstance16VisualTrussStyleESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::map<RBX::Name const*,RBX::ExtrudedPartInstance::VisualTrussStyle,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>>::operator[](RBX::Name const* const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt3mapIPKN3RBX4NameENS0_20ExtrudedPartInstance16VisualTrussStyleESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")]
+pub fn stub_0xf3a6e4() -> ! {
+    todo!("0xf3a6e4 RBX::DataModel::WatchdogDmW1::std::map<RBX::Name const*,RBX::ExtrudedPartInstance::VisualTrussStyle,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>>::operator[](RBX::Name const* const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74f00 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f00E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74f00::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f00E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74f00() -> ! {
-    todo!("0xf74f00 RBX::DataModel::WatchdogDmW1::Synthetic_f74f00::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a714 — j___ZNSt6vectorIN3RBX13PrismInstance12NumSidesEnumESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::vector<RBX::PrismInstance::NumSidesEnum,std::allocator<RBX::PrismInstance::NumSidesEnum>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::PrismInstance::NumSidesEnum*,std::vector<RBX::PrismInstance::NumSidesEnum,std::allocator<RBX::PrismInstance::NumSidesEnum>>>,RBX::PrismInstance::NumSidesEnum const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX13PrismInstance12NumSidesEnumESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
+pub fn stub_0xf3a714() -> ! {
+    todo!("0xf3a714 RBX::DataModel::WatchdogDmW1::std::vector<RBX::PrismInstance::NumSidesEnum,std::allocator<RBX::PrismInstance::NumSidesEnum>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::PrismInstance::NumSidesEnum*,std::vector<RBX::PrismInstance::NumSidesEnum,std::allocator<RBX::PrismInstance::NumSidesEnum>>>,RBX::PrismInstance::NumSidesEnum const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74f10 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f10E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74f10::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f10E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74f10() -> ! {
-    todo!("0xf74f10 RBX::DataModel::WatchdogDmW1::Synthetic_f74f10::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a724 — j___ZNSt6vectorIN3RBX13PrismInstance12NumSidesEnumESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::vector<RBX::PrismInstance::NumSidesEnum,std::allocator<RBX::PrismInstance::NumSidesEnum>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::PrismInstance::NumSidesEnum*,std::vector<RBX::PrismInstance::NumSidesEnum,std::allocator<RBX::PrismInstance::NumSidesEnum>>>,unsigned long,RBX::PrismInstance::NumSidesEnum const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX13PrismInstance12NumSidesEnumESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")]
+pub fn stub_0xf3a724() -> ! {
+    todo!("0xf3a724 RBX::DataModel::WatchdogDmW1::std::vector<RBX::PrismInstance::NumSidesEnum,std::allocator<RBX::PrismInstance::NumSidesEnum>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::PrismInstance::NumSidesEnum*,std::vector<RBX::PrismInstance::NumSidesEnum,std::allocator<RBX::PrismInstance::NumSidesEnum>>>,unsigned long,RBX::PrismInstance::NumSidesEnum const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74f20 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f20E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74f20::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f20E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74f20() -> ! {
-    todo!("0xf74f20 RBX::DataModel::WatchdogDmW1::Synthetic_f74f20::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a734 — j___ZNSt6vectorIN3RBX13PrismInstance12NumSidesEnumESaIS2_EE6resizeEmS2_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::vector<RBX::PrismInstance::NumSidesEnum,std::allocator<RBX::PrismInstance::NumSidesEnum>>::resize(unsigned long,RBX::PrismInstance::NumSidesEnum) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX13PrismInstance12NumSidesEnumESaIS2_EE6resizeEmS2_")]
+pub fn stub_0xf3a734() -> ! {
+    todo!("0xf3a734 RBX::DataModel::WatchdogDmW1::std::vector<RBX::PrismInstance::NumSidesEnum,std::allocator<RBX::PrismInstance::NumSidesEnum>>::resize(unsigned long,RBX::PrismInstance::NumSidesEnum) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74f30 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f30E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74f30::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f30E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74f30() -> ! {
-    todo!("0xf74f30 RBX::DataModel::WatchdogDmW1::Synthetic_f74f30::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a744 — j___ZNSt6vectorIN3RBX13PrismInstance12NumSidesEnumESaIS2_EE9push_backERKS2_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::vector<RBX::PrismInstance::NumSidesEnum,std::allocator<RBX::PrismInstance::NumSidesEnum>>::push_back(RBX::PrismInstance::NumSidesEnum const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX13PrismInstance12NumSidesEnumESaIS2_EE9push_backERKS2_")]
+pub fn stub_0xf3a744() -> ! {
+    todo!("0xf3a744 RBX::DataModel::WatchdogDmW1::std::vector<RBX::PrismInstance::NumSidesEnum,std::allocator<RBX::PrismInstance::NumSidesEnum>>::push_back(RBX::PrismInstance::NumSidesEnum const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74f40 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f40E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74f40::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f40E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74f40() -> ! {
-    todo!("0xf74f40 RBX::DataModel::WatchdogDmW1::Synthetic_f74f40::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a754 — j___ZNSt6vectorIN3RBX15PyramidInstance12NumSidesEnumESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::vector<RBX::PyramidInstance::NumSidesEnum,std::allocator<RBX::PyramidInstance::NumSidesEnum>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::PyramidInstance::NumSidesEnum*,std::vector<RBX::PyramidInstance::NumSidesEnum,std::allocator<RBX::PyramidInstance::NumSidesEnum>>>,RBX::PyramidInstance::NumSidesEnum const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX15PyramidInstance12NumSidesEnumESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
+pub fn stub_0xf3a754() -> ! {
+    todo!("0xf3a754 RBX::DataModel::WatchdogDmW1::std::vector<RBX::PyramidInstance::NumSidesEnum,std::allocator<RBX::PyramidInstance::NumSidesEnum>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::PyramidInstance::NumSidesEnum*,std::vector<RBX::PyramidInstance::NumSidesEnum,std::allocator<RBX::PyramidInstance::NumSidesEnum>>>,RBX::PyramidInstance::NumSidesEnum const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74f50 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f50E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74f50::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f50E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74f50() -> ! {
-    todo!("0xf74f50 RBX::DataModel::WatchdogDmW1::Synthetic_f74f50::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a764 — j___ZNSt6vectorIN3RBX15PyramidInstance12NumSidesEnumESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::vector<RBX::PyramidInstance::NumSidesEnum,std::allocator<RBX::PyramidInstance::NumSidesEnum>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::PyramidInstance::NumSidesEnum*,std::vector<RBX::PyramidInstance::NumSidesEnum,std::allocator<RBX::PyramidInstance::NumSidesEnum>>>,unsigned long,RBX::PyramidInstance::NumSidesEnum const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX15PyramidInstance12NumSidesEnumESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")]
+pub fn stub_0xf3a764() -> ! {
+    todo!("0xf3a764 RBX::DataModel::WatchdogDmW1::std::vector<RBX::PyramidInstance::NumSidesEnum,std::allocator<RBX::PyramidInstance::NumSidesEnum>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::PyramidInstance::NumSidesEnum*,std::vector<RBX::PyramidInstance::NumSidesEnum,std::allocator<RBX::PyramidInstance::NumSidesEnum>>>,unsigned long,RBX::PyramidInstance::NumSidesEnum const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74f60 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f60E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74f60::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f60E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74f60() -> ! {
-    todo!("0xf74f60 RBX::DataModel::WatchdogDmW1::Synthetic_f74f60::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a774 — j___ZNSt6vectorIN3RBX15PyramidInstance12NumSidesEnumESaIS2_EE6resizeEmS2_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::vector<RBX::PyramidInstance::NumSidesEnum,std::allocator<RBX::PyramidInstance::NumSidesEnum>>::resize(unsigned long,RBX::PyramidInstance::NumSidesEnum) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX15PyramidInstance12NumSidesEnumESaIS2_EE6resizeEmS2_")]
+pub fn stub_0xf3a774() -> ! {
+    todo!("0xf3a774 RBX::DataModel::WatchdogDmW1::std::vector<RBX::PyramidInstance::NumSidesEnum,std::allocator<RBX::PyramidInstance::NumSidesEnum>>::resize(unsigned long,RBX::PyramidInstance::NumSidesEnum) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74f70 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f70E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74f70::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f70E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74f70() -> ! {
-    todo!("0xf74f70 RBX::DataModel::WatchdogDmW1::Synthetic_f74f70::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a784 — j___ZNSt6vectorIN3RBX15PyramidInstance12NumSidesEnumESaIS2_EE9push_backERKS2_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::vector<RBX::PyramidInstance::NumSidesEnum,std::allocator<RBX::PyramidInstance::NumSidesEnum>>::push_back(RBX::PyramidInstance::NumSidesEnum const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX15PyramidInstance12NumSidesEnumESaIS2_EE9push_backERKS2_")]
+pub fn stub_0xf3a784() -> ! {
+    todo!("0xf3a784 RBX::DataModel::WatchdogDmW1::std::vector<RBX::PyramidInstance::NumSidesEnum,std::allocator<RBX::PyramidInstance::NumSidesEnum>>::push_back(RBX::PyramidInstance::NumSidesEnum const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74f80 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f80E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74f80::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f80E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74f80() -> ! {
-    todo!("0xf74f80 RBX::DataModel::WatchdogDmW1::Synthetic_f74f80::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a7d4 — j___ZNSt6vectorIN3RBX20ExtrudedPartInstance16VisualTrussStyleESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::vector<RBX::ExtrudedPartInstance::VisualTrussStyle,std::allocator<RBX::ExtrudedPartInstance::VisualTrussStyle>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::ExtrudedPartInstance::VisualTrussStyle*,std::vector<RBX::ExtrudedPartInstance::VisualTrussStyle,std::allocator<RBX::ExtrudedPartInstance::VisualTrussStyle>>>,RBX::ExtrudedPartInstance::VisualTrussStyle const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX20ExtrudedPartInstance16VisualTrussStyleESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
+pub fn stub_0xf3a7d4() -> ! {
+    todo!("0xf3a7d4 RBX::DataModel::WatchdogDmW1::std::vector<RBX::ExtrudedPartInstance::VisualTrussStyle,std::allocator<RBX::ExtrudedPartInstance::VisualTrussStyle>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::ExtrudedPartInstance::VisualTrussStyle*,std::vector<RBX::ExtrudedPartInstance::VisualTrussStyle,std::allocator<RBX::ExtrudedPartInstance::VisualTrussStyle>>>,RBX::ExtrudedPartInstance::VisualTrussStyle const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74f90 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f90E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74f90::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74f90E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74f90() -> ! {
-    todo!("0xf74f90 RBX::DataModel::WatchdogDmW1::Synthetic_f74f90::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a7e4 — j___ZNSt6vectorIN3RBX20ExtrudedPartInstance16VisualTrussStyleESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::vector<RBX::ExtrudedPartInstance::VisualTrussStyle,std::allocator<RBX::ExtrudedPartInstance::VisualTrussStyle>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::ExtrudedPartInstance::VisualTrussStyle*,std::vector<RBX::ExtrudedPartInstance::VisualTrussStyle,std::allocator<RBX::ExtrudedPartInstance::VisualTrussStyle>>>,unsigned long,RBX::ExtrudedPartInstance::VisualTrussStyle const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX20ExtrudedPartInstance16VisualTrussStyleESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")]
+pub fn stub_0xf3a7e4() -> ! {
+    todo!("0xf3a7e4 RBX::DataModel::WatchdogDmW1::std::vector<RBX::ExtrudedPartInstance::VisualTrussStyle,std::allocator<RBX::ExtrudedPartInstance::VisualTrussStyle>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::ExtrudedPartInstance::VisualTrussStyle*,std::vector<RBX::ExtrudedPartInstance::VisualTrussStyle,std::allocator<RBX::ExtrudedPartInstance::VisualTrussStyle>>>,unsigned long,RBX::ExtrudedPartInstance::VisualTrussStyle const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74fa0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74fa0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74fa0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74fa0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74fa0() -> ! {
-    todo!("0xf74fa0 RBX::DataModel::WatchdogDmW1::Synthetic_f74fa0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a7f4 — j___ZNSt6vectorIN3RBX20ExtrudedPartInstance16VisualTrussStyleESaIS2_EE6resizeEmS2_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::vector<RBX::ExtrudedPartInstance::VisualTrussStyle,std::allocator<RBX::ExtrudedPartInstance::VisualTrussStyle>>::resize(unsigned long,RBX::ExtrudedPartInstance::VisualTrussStyle) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX20ExtrudedPartInstance16VisualTrussStyleESaIS2_EE6resizeEmS2_")]
+pub fn stub_0xf3a7f4() -> ! {
+    todo!("0xf3a7f4 RBX::DataModel::WatchdogDmW1::std::vector<RBX::ExtrudedPartInstance::VisualTrussStyle,std::allocator<RBX::ExtrudedPartInstance::VisualTrussStyle>>::resize(unsigned long,RBX::ExtrudedPartInstance::VisualTrussStyle) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74fb0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74fb0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74fb0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74fb0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74fb0() -> ! {
-    todo!("0xf74fb0 RBX::DataModel::WatchdogDmW1::Synthetic_f74fb0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a804 — j___ZNSt6vectorIN3RBX20ExtrudedPartInstance16VisualTrussStyleESaIS2_EE9push_backERKS2_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::vector<RBX::ExtrudedPartInstance::VisualTrussStyle,std::allocator<RBX::ExtrudedPartInstance::VisualTrussStyle>>::push_back(RBX::ExtrudedPartInstance::VisualTrussStyle const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX20ExtrudedPartInstance16VisualTrussStyleESaIS2_EE9push_backERKS2_")]
+pub fn stub_0xf3a804() -> ! {
+    todo!("0xf3a804 RBX::DataModel::WatchdogDmW1::std::vector<RBX::ExtrudedPartInstance::VisualTrussStyle,std::allocator<RBX::ExtrudedPartInstance::VisualTrussStyle>>::push_back(RBX::ExtrudedPartInstance::VisualTrussStyle const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74fc0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74fc0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74fc0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74fc0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74fc0() -> ! {
-    todo!("0xf74fc0 RBX::DataModel::WatchdogDmW1::Synthetic_f74fc0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a894 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13PrismInstance12NumSidesEnumEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum> const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13PrismInstance12NumSidesEnumEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")]
+pub fn stub_0xf3a894() -> ! {
+    todo!("0xf3a894 RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum> const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74fd0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74fd0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74fd0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74fd0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74fd0() -> ! {
-    todo!("0xf74fd0 RBX::DataModel::WatchdogDmW1::Synthetic_f74fd0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a8a4 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13PrismInstance12NumSidesEnumEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>,std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum> const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13PrismInstance12NumSidesEnumEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")]
+pub fn stub_0xf3a8a4() -> ! {
+    todo!("0xf3a8a4 RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>,std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum> const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74fe0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74fe0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74fe0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74fe0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74fe0() -> ! {
-    todo!("0xf74fe0 RBX::DataModel::WatchdogDmW1::Synthetic_f74fe0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a8b4 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13PrismInstance12NumSidesEnumEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum> const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13PrismInstance12NumSidesEnumEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")]
+pub fn stub_0xf3a8b4() -> ! {
+    todo!("0xf3a8b4 RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum> const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf74ff0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74ff0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f74ff0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f74ff0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf74ff0() -> ! {
-    todo!("0xf74ff0 RBX::DataModel::WatchdogDmW1::Synthetic_f74ff0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a8c4 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15PyramidInstance12NumSidesEnumEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum> const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15PyramidInstance12NumSidesEnumEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")]
+pub fn stub_0xf3a8c4() -> ! {
+    todo!("0xf3a8c4 RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum> const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75000 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75000E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75000::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75000E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75000() -> ! {
-    todo!("0xf75000 RBX::DataModel::WatchdogDmW1::Synthetic_f75000::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a8d4 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15PyramidInstance12NumSidesEnumEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>,std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum> const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15PyramidInstance12NumSidesEnumEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")]
+pub fn stub_0xf3a8d4() -> ! {
+    todo!("0xf3a8d4 RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>,std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum> const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75010 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75010E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75010::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75010E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75010() -> ! {
-    todo!("0xf75010 RBX::DataModel::WatchdogDmW1::Synthetic_f75010::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a8e4 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15PyramidInstance12NumSidesEnumEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum> const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15PyramidInstance12NumSidesEnumEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")]
+pub fn stub_0xf3a8e4() -> ! {
+    todo!("0xf3a8e4 RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum> const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75020 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75020E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75020::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75020E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75020() -> ! {
-    todo!("0xf75020 RBX::DataModel::WatchdogDmW1::Synthetic_f75020::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a924 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_20ExtrudedPartInstance16VisualTrussStyleEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle> const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_20ExtrudedPartInstance16VisualTrussStyleEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")]
+pub fn stub_0xf3a924() -> ! {
+    todo!("0xf3a924 RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle> const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75030 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75030E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75030::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75030E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75030() -> ! {
-    todo!("0xf75030 RBX::DataModel::WatchdogDmW1::Synthetic_f75030::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a934 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_20ExtrudedPartInstance16VisualTrussStyleEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>,std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle> const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_20ExtrudedPartInstance16VisualTrussStyleEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")]
+pub fn stub_0xf3a934() -> ! {
+    todo!("0xf3a934 RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>,std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle> const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75040 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75040E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75040::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75040E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75040() -> ! {
-    todo!("0xf75040 RBX::DataModel::WatchdogDmW1::Synthetic_f75040::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3a944 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_20ExtrudedPartInstance16VisualTrussStyleEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle> const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_20ExtrudedPartInstance16VisualTrussStyleEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")]
+pub fn stub_0xf3a944() -> ! {
+    todo!("0xf3a944 RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle> const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75050 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75050E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75050::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75050E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75050() -> ! {
-    todo!("0xf75050 RBX::DataModel::WatchdogDmW1::Synthetic_f75050::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3c4c4 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_13CharacterMesh8BodyPartEEERS3_RKT_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CharacterMesh::BodyPart>(RBX::CharacterMesh::BodyPart const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_13CharacterMesh8BodyPartEEERS3_RKT_")]
+pub fn stub_0xf3c4c4() -> ! {
+    todo!("0xf3c4c4 RBX::DataModel::WatchdogDmW1::rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CharacterMesh::BodyPart>(RBX::CharacterMesh::BodyPart const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75060 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75060E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75060::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75060E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75060() -> ! {
-    todo!("0xf75060 RBX::DataModel::WatchdogDmW1::Synthetic_f75060::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3c504 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_13PrismInstance12NumSidesEnumEEERS3_RKT_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::PrismInstance::NumSidesEnum>(RBX::PrismInstance::NumSidesEnum const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_13PrismInstance12NumSidesEnumEEERS3_RKT_")]
+pub fn stub_0xf3c504() -> ! {
+    todo!("0xf3c504 RBX::DataModel::WatchdogDmW1::rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::PrismInstance::NumSidesEnum>(RBX::PrismInstance::NumSidesEnum const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75070 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75070E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75070::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75070E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75070() -> ! {
-    todo!("0xf75070 RBX::DataModel::WatchdogDmW1::Synthetic_f75070::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3c534 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15PyramidInstance12NumSidesEnumEEERS3_RKT_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::PyramidInstance::NumSidesEnum>(RBX::PyramidInstance::NumSidesEnum const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15PyramidInstance12NumSidesEnumEEERS3_RKT_")]
+pub fn stub_0xf3c534() -> ! {
+    todo!("0xf3c534 RBX::DataModel::WatchdogDmW1::rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::PyramidInstance::NumSidesEnum>(RBX::PyramidInstance::NumSidesEnum const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75080 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75080E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75080::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75080E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75080() -> ! {
-    todo!("0xf75080 RBX::DataModel::WatchdogDmW1::Synthetic_f75080::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3c5c4 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_20ExtrudedPartInstance16VisualTrussStyleEEERS3_RKT_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::ExtrudedPartInstance::VisualTrussStyle>(RBX::ExtrudedPartInstance::VisualTrussStyle const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_20ExtrudedPartInstance16VisualTrussStyleEEERS3_RKT_")]
+pub fn stub_0xf3c5c4() -> ! {
+    todo!("0xf3c5c4 RBX::DataModel::WatchdogDmW1::rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::ExtrudedPartInstance::VisualTrussStyle>(RBX::ExtrudedPartInstance::VisualTrussStyle const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75090 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75090E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75090::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75090E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75090() -> ! {
-    todo!("0xf75090 RBX::DataModel::WatchdogDmW1::Synthetic_f75090::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3c814 — j___ZN3rbx14implementation12typed_holderIN3RBX13CharacterMesh8BodyPartEE9singletonEv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx::implementation::typed_holder<RBX::CharacterMesh::BodyPart>::singleton(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3rbx14implementation12typed_holderIN3RBX13CharacterMesh8BodyPartEE9singletonEv")]
+pub fn stub_0xf3c814() -> ! {
+    todo!("0xf3c814 RBX::DataModel::WatchdogDmW1::rbx::implementation::typed_holder<RBX::CharacterMesh::BodyPart>::singleton(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf750a0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f750a0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f750a0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f750a0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf750a0() -> ! {
-    todo!("0xf750a0 RBX::DataModel::WatchdogDmW1::Synthetic_f750a0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3c854 — j___ZN3rbx14implementation12typed_holderIN3RBX13PrismInstance12NumSidesEnumEE9singletonEv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx::implementation::typed_holder<RBX::PrismInstance::NumSidesEnum>::singleton(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3rbx14implementation12typed_holderIN3RBX13PrismInstance12NumSidesEnumEE9singletonEv")]
+pub fn stub_0xf3c854() -> ! {
+    todo!("0xf3c854 RBX::DataModel::WatchdogDmW1::rbx::implementation::typed_holder<RBX::PrismInstance::NumSidesEnum>::singleton(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf750b0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f750b0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f750b0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f750b0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf750b0() -> ! {
-    todo!("0xf750b0 RBX::DataModel::WatchdogDmW1::Synthetic_f750b0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3c884 — j___ZN3rbx14implementation12typed_holderIN3RBX15PyramidInstance12NumSidesEnumEE9singletonEv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx::implementation::typed_holder<RBX::PyramidInstance::NumSidesEnum>::singleton(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3rbx14implementation12typed_holderIN3RBX15PyramidInstance12NumSidesEnumEE9singletonEv")]
+pub fn stub_0xf3c884() -> ! {
+    todo!("0xf3c884 RBX::DataModel::WatchdogDmW1::rbx::implementation::typed_holder<RBX::PyramidInstance::NumSidesEnum>::singleton(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf750c0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f750c0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f750c0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f750c0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf750c0() -> ! {
-    todo!("0xf750c0 RBX::DataModel::WatchdogDmW1::Synthetic_f750c0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3c914 — j___ZN3rbx14implementation12typed_holderIN3RBX20ExtrudedPartInstance16VisualTrussStyleEE9singletonEv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx::implementation::typed_holder<RBX::ExtrudedPartInstance::VisualTrussStyle>::singleton(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3rbx14implementation12typed_holderIN3RBX20ExtrudedPartInstance16VisualTrussStyleEE9singletonEv")]
+pub fn stub_0xf3c914() -> ! {
+    todo!("0xf3c914 RBX::DataModel::WatchdogDmW1::rbx::implementation::typed_holder<RBX::ExtrudedPartInstance::VisualTrussStyle>::singleton(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf750d0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f750d0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f750d0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f750d0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf750d0() -> ! {
-    todo!("0xf750d0 RBX::DataModel::WatchdogDmW1::Synthetic_f750d0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3cbd4 — j___ZN3rbx8any_castIRKN3RBX13CharacterMesh8BodyPartENS1_7Region3EEET_RNS_13placement_anyIT0_EE
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::CharacterMesh::BodyPart const& rbx::any_cast<RBX::CharacterMesh::BodyPart const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3rbx8any_castIRKN3RBX13CharacterMesh8BodyPartENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
+pub fn stub_0xf3cbd4() -> ! {
+    todo!("0xf3cbd4 RBX::DataModel::WatchdogDmW1::RBX::CharacterMesh::BodyPart const& rbx::any_cast<RBX::CharacterMesh::BodyPart const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf750e0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f750e0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f750e0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f750e0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf750e0() -> ! {
-    todo!("0xf750e0 RBX::DataModel::WatchdogDmW1::Synthetic_f750e0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3cc14 — j___ZN3rbx8any_castIRKN3RBX13PrismInstance12NumSidesEnumENS1_7Region3EEET_RNS_13placement_anyIT0_EE
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::PrismInstance::NumSidesEnum const& rbx::any_cast<RBX::PrismInstance::NumSidesEnum const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3rbx8any_castIRKN3RBX13PrismInstance12NumSidesEnumENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
+pub fn stub_0xf3cc14() -> ! {
+    todo!("0xf3cc14 RBX::DataModel::WatchdogDmW1::RBX::PrismInstance::NumSidesEnum const& rbx::any_cast<RBX::PrismInstance::NumSidesEnum const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf750f0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f750f0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f750f0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f750f0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf750f0() -> ! {
-    todo!("0xf750f0 RBX::DataModel::WatchdogDmW1::Synthetic_f750f0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3cc44 — j___ZN3rbx8any_castIRKN3RBX15PyramidInstance12NumSidesEnumENS1_7Region3EEET_RNS_13placement_anyIT0_EE
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::PyramidInstance::NumSidesEnum const& rbx::any_cast<RBX::PyramidInstance::NumSidesEnum const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3rbx8any_castIRKN3RBX15PyramidInstance12NumSidesEnumENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
+pub fn stub_0xf3cc44() -> ! {
+    todo!("0xf3cc44 RBX::DataModel::WatchdogDmW1::RBX::PyramidInstance::NumSidesEnum const& rbx::any_cast<RBX::PyramidInstance::NumSidesEnum const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75100 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75100E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75100::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75100E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75100() -> ! {
-    todo!("0xf75100 RBX::DataModel::WatchdogDmW1::Synthetic_f75100::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3ccd4 — j___ZN3rbx8any_castIRKN3RBX20ExtrudedPartInstance16VisualTrussStyleENS1_7Region3EEET_RNS_13placement_anyIT0_EE
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::ExtrudedPartInstance::VisualTrussStyle const& rbx::any_cast<RBX::ExtrudedPartInstance::VisualTrussStyle const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3rbx8any_castIRKN3RBX20ExtrudedPartInstance16VisualTrussStyleENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
+pub fn stub_0xf3ccd4() -> ! {
+    todo!("0xf3ccd4 RBX::DataModel::WatchdogDmW1::RBX::ExtrudedPartInstance::VisualTrussStyle const& rbx::any_cast<RBX::ExtrudedPartInstance::VisualTrussStyle const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75110 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75110E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75110::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75110E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75110() -> ! {
-    todo!("0xf75110 RBX::DataModel::WatchdogDmW1::Synthetic_f75110::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3dc84 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13CharacterMesh8BodyPartEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>> *) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13CharacterMesh8BodyPartEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
+pub fn stub_0xf3dc84() -> ! {
+    todo!("0xf3dc84 RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>,std::_Select1st<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::CharacterMesh::BodyPart>> *) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75120 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75120E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75120::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75120E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75120() -> ! {
-    todo!("0xf75120 RBX::DataModel::WatchdogDmW1::Synthetic_f75120::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3dcc4 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13PrismInstance12NumSidesEnumEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>> *) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13PrismInstance12NumSidesEnumEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
+pub fn stub_0xf3dcc4() -> ! {
+    todo!("0xf3dcc4 RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::PrismInstance::NumSidesEnum>> *) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75130 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75130E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75130::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75130E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75130() -> ! {
-    todo!("0xf75130 RBX::DataModel::WatchdogDmW1::Synthetic_f75130::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3dcf4 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15PyramidInstance12NumSidesEnumEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>> *) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15PyramidInstance12NumSidesEnumEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
+pub fn stub_0xf3dcf4() -> ! {
+    todo!("0xf3dcf4 RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>,std::_Select1st<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::PyramidInstance::NumSidesEnum>> *) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75140 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75140E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75140::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75140E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75140() -> ! {
-    todo!("0xf75140 RBX::DataModel::WatchdogDmW1::Synthetic_f75140::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3dd74 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_20ExtrudedPartInstance16VisualTrussStyleEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>> *) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_20ExtrudedPartInstance16VisualTrussStyleEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
+pub fn stub_0xf3dd74() -> ! {
+    todo!("0xf3dd74 RBX::DataModel::WatchdogDmW1::std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>,std::_Select1st<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::ExtrudedPartInstance::VisualTrussStyle>> *) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75150 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75150E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75150::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75150E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75150() -> ! {
-    todo!("0xf75150 RBX::DataModel::WatchdogDmW1::Synthetic_f75150::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf3e954 — j___ZN3RBX15ScopedSingletonINS_15ProfanityFilterEE11getInstanceEv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::ScopedSingleton<RBX::ProfanityFilter>::getInstance(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX15ScopedSingletonINS_15ProfanityFilterEE11getInstanceEv")]
+pub fn stub_0xf3e954() -> ! {
+    todo!("0xf3e954 RBX::DataModel::WatchdogDmW1::RBX::ScopedSingleton<RBX::ProfanityFilter>::getInstance(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75160 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75160E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75160::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75160E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75160() -> ! {
-    todo!("0xf75160 RBX::DataModel::WatchdogDmW1::Synthetic_f75160::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf43174 — j___ZN3RBX13JointInstanceC2Ev
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::JointInstance::JointInstance(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX13JointInstanceC2Ev")]
+pub fn stub_0xf43174() -> ! {
+    todo!("0xf43174 RBX::DataModel::WatchdogDmW1::RBX::JointInstance::JointInstance(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75170 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75170E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75170::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75170E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75170() -> ! {
-    todo!("0xf75170 RBX::DataModel::WatchdogDmW1::Synthetic_f75170::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf437c4 — j___ZN5boost10shared_ptrIN3RBX10PVInstanceEEaSERKS3_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::PVInstance>::operator=(rbx_core::SharedPtr<RBX::PVInstance> const&)")]
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX10PVInstanceEEaSERKS3_")]
+pub fn stub_0xf437c4() -> ! {
+    todo!("0xf437c4 RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::PVInstance>::operator=(rbx_core::SharedPtr<RBX::PVInstance> const&)")
 }
 
-// 0xf75180 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75180E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75180::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75180E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75180() -> ! {
-    todo!("0xf75180 RBX::DataModel::WatchdogDmW1::Synthetic_f75180::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf437d4 — j___ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_4GlueEEERS3_RKNS0_IT_EE
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::Glue>(rbx_core::SharedPtr<RBX::Glue> const&)")]
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_4GlueEEERS3_RKNS0_IT_EE")]
+pub fn stub_0xf437d4() -> ! {
+    todo!("0xf437d4 RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::Glue>(rbx_core::SharedPtr<RBX::Glue> const&)")
 }
 
-// 0xf75190 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75190E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75190::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75190E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75190() -> ! {
-    todo!("0xf75190 RBX::DataModel::WatchdogDmW1::Synthetic_f75190::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf437e4 — j___ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_4SnapEEERS3_RKNS0_IT_EE
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::Snap>(rbx_core::SharedPtr<RBX::Snap> const&)")]
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_4SnapEEERS3_RKNS0_IT_EE")]
+pub fn stub_0xf437e4() -> ! {
+    todo!("0xf437e4 RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::Snap>(rbx_core::SharedPtr<RBX::Snap> const&)")
 }
 
-// 0xf751a0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f751a0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f751a0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f751a0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf751a0() -> ! {
-    todo!("0xf751a0 RBX::DataModel::WatchdogDmW1::Synthetic_f751a0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf437f4 — j___ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_4WeldEEERS3_RKNS0_IT_EE
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::Weld>(rbx_core::SharedPtr<RBX::Weld> const&)")]
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_4WeldEEERS3_RKNS0_IT_EE")]
+pub fn stub_0xf437f4() -> ! {
+    todo!("0xf437f4 RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::Weld>(rbx_core::SharedPtr<RBX::Weld> const&)")
 }
 
-// 0xf751b0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f751b0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f751b0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f751b0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf751b0() -> ! {
-    todo!("0xf751b0 RBX::DataModel::WatchdogDmW1::Synthetic_f751b0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf43804 — j___ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_6RotateEEERS3_RKNS0_IT_EE
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::Rotate>(rbx_core::SharedPtr<RBX::Rotate> const&)")]
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_6RotateEEERS3_RKNS0_IT_EE")]
+pub fn stub_0xf43804() -> ! {
+    todo!("0xf43804 RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::Rotate>(rbx_core::SharedPtr<RBX::Rotate> const&)")
 }
 
-// 0xf751c0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f751c0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f751c0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f751c0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf751c0() -> ! {
-    todo!("0xf751c0 RBX::DataModel::WatchdogDmW1::Synthetic_f751c0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf43814 — j___ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_7RotatePEEERS3_RKNS0_IT_EE
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::RotateP>(rbx_core::SharedPtr<RBX::RotateP> const&)")]
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_7RotatePEEERS3_RKNS0_IT_EE")]
+pub fn stub_0xf43814() -> ! {
+    todo!("0xf43814 RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::RotateP>(rbx_core::SharedPtr<RBX::RotateP> const&)")
 }
 
-// 0xf751d0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f751d0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f751d0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f751d0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf751d0() -> ! {
-    todo!("0xf751d0 RBX::DataModel::WatchdogDmW1::Synthetic_f751d0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf43824 — j___ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_7RotateVEEERS3_RKNS0_IT_EE
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::RotateV>(rbx_core::SharedPtr<RBX::RotateV> const&)")]
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_7RotateVEEERS3_RKNS0_IT_EE")]
+pub fn stub_0xf43824() -> ! {
+    todo!("0xf43824 RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::RotateV>(rbx_core::SharedPtr<RBX::RotateV> const&)")
 }
 
-// 0xf751e0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f751e0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f751e0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f751e0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf751e0() -> ! {
-    todo!("0xf751e0 RBX::DataModel::WatchdogDmW1::Synthetic_f751e0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf44b34 — j___ZN3RBX10FWInstanceD2Ev
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::FWInstance::~FWInstance() [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX10FWInstanceD2Ev")]
+pub fn stub_0xf44b34() -> ! {
+    todo!("0xf44b34 RBX::DataModel::WatchdogDmW1::RBX::FWInstance::~FWInstance() [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf751f0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f751f0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f751f0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f751f0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf751f0() -> ! {
-    todo!("0xf751f0 RBX::DataModel::WatchdogDmW1::Synthetic_f751f0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf44eb4 — j___ZN3RBX11shared_fromINS_14FWPartInstanceEEEN5boost10shared_ptrIT_EEPS4_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::FWPartInstance> RBX::shared_from<RBX::FWPartInstance>(RBX::FWPartInstance*)")]
+#[doc(alias = "j___ZN3RBX11shared_fromINS_14FWPartInstanceEEEN5boost10shared_ptrIT_EEPS4_")]
+pub fn stub_0xf44eb4() -> ! {
+    todo!("0xf44eb4 RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::FWPartInstance> RBX::shared_from<RBX::FWPartInstance>(RBX::FWPartInstance*)")
 }
 
-// 0xf75200 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75200E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75200::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75200E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75200() -> ! {
-    todo!("0xf75200 RBX::DataModel::WatchdogDmW1::Synthetic_f75200::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf44f44 — j___ZN3RBX13FWDictionnaryINS_14FWPartInstanceEE17registerFlyweightEPNS_5FWRefE
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::FWDictionnary<RBX::FWPartInstance>::registerFlyweight(RBX::FWRef *) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX13FWDictionnaryINS_14FWPartInstanceEE17registerFlyweightEPNS_5FWRefE")]
+pub fn stub_0xf44f44() -> ! {
+    todo!("0xf44f44 RBX::DataModel::WatchdogDmW1::RBX::FWDictionnary<RBX::FWPartInstance>::registerFlyweight(RBX::FWRef *) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75210 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75210E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75210::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75210E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75210() -> ! {
-    todo!("0xf75210 RBX::DataModel::WatchdogDmW1::Synthetic_f75210::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf44f54 — j___ZN3RBX14FWPartInstancedlEPv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::FWPartInstance::operator delete(void *) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX14FWPartInstancedlEPv")]
+pub fn stub_0xf44f54() -> ! {
+    todo!("0xf44f54 RBX::DataModel::WatchdogDmW1::RBX::FWPartInstance::operator delete(void *) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75220 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75220E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75220::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75220E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75220() -> ! {
-    todo!("0xf75220 RBX::DataModel::WatchdogDmW1::Synthetic_f75220::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf44f74 — j___ZN3RBX16OnDemandInstanceC2Ev
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::OnDemandInstance::OnDemandInstance(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX16OnDemandInstanceC2Ev")]
+pub fn stub_0xf44f74() -> ! {
+    todo!("0xf44f74 RBX::DataModel::WatchdogDmW1::RBX::OnDemandInstance::OnDemandInstance(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75230 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75230E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75230::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75230E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75230() -> ! {
-    todo!("0xf75230 RBX::DataModel::WatchdogDmW1::Synthetic_f75230::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf44f84 — j___ZN3RBX16OnDemandInstanceD2Ev
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::OnDemandInstance::~OnDemandInstance() [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX16OnDemandInstanceD2Ev")]
+pub fn stub_0xf44f84() -> ! {
+    todo!("0xf44f84 RBX::DataModel::WatchdogDmW1::RBX::OnDemandInstance::~OnDemandInstance() [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75240 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75240E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75240::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75240E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75240() -> ! {
-    todo!("0xf75240 RBX::DataModel::WatchdogDmW1::Synthetic_f75240::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf44fb4 — j___ZN3RBX18OnDemandPVInstanceC2Ev
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::OnDemandPVInstance::OnDemandPVInstance(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX18OnDemandPVInstanceC2Ev")]
+pub fn stub_0xf44fb4() -> ! {
+    todo!("0xf44fb4 RBX::DataModel::WatchdogDmW1::RBX::OnDemandPVInstance::OnDemandPVInstance(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75250 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75250E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75250::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75250E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75250() -> ! {
-    todo!("0xf75250 RBX::DataModel::WatchdogDmW1::Synthetic_f75250::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf44fc4 — j___ZN3RBX18OnDemandPVInstancedlEPv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::OnDemandPVInstance::operator delete(void *) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX18OnDemandPVInstancedlEPv")]
+pub fn stub_0xf44fc4() -> ! {
+    todo!("0xf44fc4 RBX::DataModel::WatchdogDmW1::RBX::OnDemandPVInstance::operator delete(void *) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75260 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75260E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75260::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75260E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75260() -> ! {
-    todo!("0xf75260 RBX::DataModel::WatchdogDmW1::Synthetic_f75260::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf45024 — j___ZN3RBX6FWBase4initINS_14FWPartInstanceEEEPT_S4_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::FWPartInstance * RBX::FWBase::init<RBX::FWPartInstance>(RBX::FWPartInstance *) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX6FWBase4initINS_14FWPartInstanceEEEPT_S4_")]
+pub fn stub_0xf45024() -> ! {
+    todo!("0xf45024 RBX::DataModel::WatchdogDmW1::RBX::FWPartInstance * RBX::FWBase::init<RBX::FWPartInstance>(RBX::FWPartInstance *) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75270 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75270E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75270::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75270E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75270() -> ! {
-    todo!("0xf75270 RBX::DataModel::WatchdogDmW1::Synthetic_f75270::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf45044 — j___ZN3RBX7FWFinalINS_14FWPartInstanceEED2Ev
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::FWFinal<RBX::FWPartInstance>::~FWFinal() [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX7FWFinalINS_14FWPartInstanceEED2Ev")]
+pub fn stub_0xf45044() -> ! {
+    todo!("0xf45044 RBX::DataModel::WatchdogDmW1::RBX::FWFinal<RBX::FWPartInstance>::~FWFinal() [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75280 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75280E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75280::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75280E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75280() -> ! {
-    todo!("0xf75280 RBX::DataModel::WatchdogDmW1::Synthetic_f75280::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf45114 — j___ZN3RBX9AllocatorINS_10FWInstanceEEdlEPv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::Allocator<RBX::FWInstance>::operator delete(void *) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX9AllocatorINS_10FWInstanceEEdlEPv")]
+pub fn stub_0xf45114() -> ! {
+    todo!("0xf45114 RBX::DataModel::WatchdogDmW1::RBX::Allocator<RBX::FWInstance>::operator delete(void *) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75290 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75290E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75290::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75290E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75290() -> ! {
-    todo!("0xf75290 RBX::DataModel::WatchdogDmW1::Synthetic_f75290::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf45144 — j___ZN3RBX9AllocatorINS_14FWPartInstanceEEC2Ev
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::Allocator<RBX::FWPartInstance>::Allocator(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX9AllocatorINS_14FWPartInstanceEEC2Ev")]
+pub fn stub_0xf45144() -> ! {
+    todo!("0xf45144 RBX::DataModel::WatchdogDmW1::RBX::Allocator<RBX::FWPartInstance>::Allocator(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf752a0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f752a0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f752a0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f752a0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf752a0() -> ! {
-    todo!("0xf752a0 RBX::DataModel::WatchdogDmW1::Synthetic_f752a0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf45154 — j___ZN3RBX9AllocatorINS_14FWPartInstanceEEnwEm
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::Allocator<RBX::FWPartInstance>::operator new(unsigned long) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX9AllocatorINS_14FWPartInstanceEEnwEm")]
+pub fn stub_0xf45154() -> ! {
+    todo!("0xf45154 RBX::DataModel::WatchdogDmW1::RBX::Allocator<RBX::FWPartInstance>::operator new(unsigned long) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf752b0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f752b0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f752b0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f752b0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf752b0() -> ! {
-    todo!("0xf752b0 RBX::DataModel::WatchdogDmW1::Synthetic_f752b0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf45164 — j___ZN3RBX9AllocatorINS_18OnDemandPVInstanceEEC2Ev
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::Allocator<RBX::OnDemandPVInstance>::Allocator(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX9AllocatorINS_18OnDemandPVInstanceEEC2Ev")]
+pub fn stub_0xf45164() -> ! {
+    todo!("0xf45164 RBX::DataModel::WatchdogDmW1::RBX::Allocator<RBX::OnDemandPVInstance>::Allocator(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf752c0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f752c0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f752c0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f752c0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf752c0() -> ! {
-    todo!("0xf752c0 RBX::DataModel::WatchdogDmW1::Synthetic_f752c0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf45464 — j___ZN5boost10shared_ptrIN3RBX6FWBaseEEaSINS1_14FWPartInstanceEEERS3_RKNS0_IT_EE
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::FWBase>& rbx_core::SharedPtr<RBX::FWBase>::operator=<RBX::FWPartInstance>(rbx_core::SharedPtr<RBX::FWPartInstance> const&)")]
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX6FWBaseEEaSINS1_14FWPartInstanceEEERS3_RKNS0_IT_EE")]
+pub fn stub_0xf45464() -> ! {
+    todo!("0xf45464 RBX::DataModel::WatchdogDmW1::rbx_core::SharedPtr<RBX::FWBase>& rbx_core::SharedPtr<RBX::FWBase>::operator=<RBX::FWPartInstance>(rbx_core::SharedPtr<RBX::FWPartInstance> const&)")
 }
 
-// 0xf752d0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f752d0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f752d0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f752d0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf752d0() -> ! {
-    todo!("0xf752d0 RBX::DataModel::WatchdogDmW1::Synthetic_f752d0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf454b4 — j___ZN5boost14singleton_poolIN3RBX10FWInstanceELj28ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::boost::singleton_pool<RBX::FWInstance,28u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN5boost14singleton_poolIN3RBX10FWInstanceELj28ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")]
+pub fn stub_0xf454b4() -> ! {
+    todo!("0xf454b4 RBX::DataModel::WatchdogDmW1::boost::singleton_pool<RBX::FWInstance,28u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf752e0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f752e0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f752e0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f752e0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf752e0() -> ! {
-    todo!("0xf752e0 RBX::DataModel::WatchdogDmW1::Synthetic_f752e0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf454f4 — j___ZN5boost14singleton_poolIN3RBX14FWPartInstanceELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::boost::singleton_pool<RBX::FWPartInstance,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN5boost14singleton_poolIN3RBX14FWPartInstanceELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")]
+pub fn stub_0xf454f4() -> ! {
+    todo!("0xf454f4 RBX::DataModel::WatchdogDmW1::boost::singleton_pool<RBX::FWPartInstance,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf752f0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f752f0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f752f0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f752f0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf752f0() -> ! {
-    todo!("0xf752f0 RBX::DataModel::WatchdogDmW1::Synthetic_f752f0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf45504 — j___ZN5boost14singleton_poolIN3RBX14FWPartInstanceELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::boost::singleton_pool<RBX::FWPartInstance,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN5boost14singleton_poolIN3RBX14FWPartInstanceELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")]
+pub fn stub_0xf45504() -> ! {
+    todo!("0xf45504 RBX::DataModel::WatchdogDmW1::boost::singleton_pool<RBX::FWPartInstance,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75300 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75300E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75300::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75300E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75300() -> ! {
-    todo!("0xf75300 RBX::DataModel::WatchdogDmW1::Synthetic_f75300::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf45554 — j___ZN5boost14singleton_poolIN3RBX18OnDemandPVInstanceELj24ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::boost::singleton_pool<RBX::OnDemandPVInstance,24u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN5boost14singleton_poolIN3RBX18OnDemandPVInstanceELj24ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")]
+pub fn stub_0xf45554() -> ! {
+    todo!("0xf45554 RBX::DataModel::WatchdogDmW1::boost::singleton_pool<RBX::OnDemandPVInstance,24u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75310 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75310E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75310::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75310E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75310() -> ! {
-    todo!("0xf75310 RBX::DataModel::WatchdogDmW1::Synthetic_f75310::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf45564 — j___ZN5boost14singleton_poolIN3RBX18OnDemandPVInstanceELj24ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::boost::singleton_pool<RBX::OnDemandPVInstance,24u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN5boost14singleton_poolIN3RBX18OnDemandPVInstanceELj24ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")]
+pub fn stub_0xf45564() -> ! {
+    todo!("0xf45564 RBX::DataModel::WatchdogDmW1::boost::singleton_pool<RBX::OnDemandPVInstance,24u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75320 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75320E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75320::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75320E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75320() -> ! {
-    todo!("0xf75320 RBX::DataModel::WatchdogDmW1::Synthetic_f75320::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf45724 — j___ZN5boost9unordered6detail10table_implINS1_3setISaIN3RBX7DumbPtrINS4_14FWPartInstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE11rehash_implEm
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::DumbPtr<RBX::FWPartInstance>>,RBX::DumbPtr<RBX::FWPartInstance>,boost::hash<RBX::DumbPtr<RBX::FWPartInstance>>,std::equal_to<RBX::DumbPtr<RBX::FWPartInstance>>>>::rehash_impl(unsigned long) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN5boost9unordered6detail10table_implINS1_3setISaIN3RBX7DumbPtrINS4_14FWPartInstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE11rehash_implEm")]
+pub fn stub_0xf45724() -> ! {
+    todo!("0xf45724 RBX::DataModel::WatchdogDmW1::boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::DumbPtr<RBX::FWPartInstance>>,RBX::DumbPtr<RBX::FWPartInstance>,boost::hash<RBX::DumbPtr<RBX::FWPartInstance>>,std::equal_to<RBX::DumbPtr<RBX::FWPartInstance>>>>::rehash_impl(unsigned long) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75330 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75330E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75330::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75330E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75330() -> ! {
-    todo!("0xf75330 RBX::DataModel::WatchdogDmW1::Synthetic_f75330::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf45734 — j___ZN5boost9unordered6detail10table_implINS1_3setISaIN3RBX7DumbPtrINS4_14FWPartInstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE12emplace_implINS1_13emplace_args1IS7_EEEESt4pairINS0_15iterator_detail8iteratorINS1_8ptr_nodeIS7_EEEEbERKS7_RKT_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<RBX::DumbPtr<RBX::FWPartInstance>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::DumbPtr<RBX::FWPartInstance>>,RBX::DumbPtr<RBX::FWPartInstance>,boost::hash<RBX::DumbPtr<RBX::FWPartInstance>>,std::equal_to<RBX::DumbPtr<RBX::FWPartInstance>>>>::emplace_impl<boost::unordered::detail::emplace_args1<RBX::DumbPtr<RBX::FWPartInstance>>>(RBX::DumbPtr<RBX::FWPartInstance> const&,boost::unordered::detail::emplace_args1<RBX::DumbPtr<RBX::FWPartInstance>> const&) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN5boost9unordered6detail10table_implINS1_3setISaIN3RBX7DumbPtrINS4_14FWPartInstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE12emplace_implINS1_13emplace_args1IS7_EEEESt4pairINS0_15iterator_detail8iteratorINS1_8ptr_nodeIS7_EEEEbERKS7_RKT_")]
+pub fn stub_0xf45734() -> ! {
+    todo!("0xf45734 RBX::DataModel::WatchdogDmW1::std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<RBX::DumbPtr<RBX::FWPartInstance>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::DumbPtr<RBX::FWPartInstance>>,RBX::DumbPtr<RBX::FWPartInstance>,boost::hash<RBX::DumbPtr<RBX::FWPartInstance>>,std::equal_to<RBX::DumbPtr<RBX::FWPartInstance>>>>::emplace_impl<boost::unordered::detail::emplace_args1<RBX::DumbPtr<RBX::FWPartInstance>>>(RBX::DumbPtr<RBX::FWPartInstance> const&,boost::unordered::detail::emplace_args1<RBX::DumbPtr<RBX::FWPartInstance>> const&) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75340 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75340E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75340::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75340E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75340() -> ! {
-    todo!("0xf75340 RBX::DataModel::WatchdogDmW1::Synthetic_f75340::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf45744 — j___ZN5boost9unordered6detail10table_implINS1_3setISaIN3RBX7DumbPtrINS4_14FWPartInstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE15place_in_bucketERNS1_5tableISD_EEPNS1_10ptr_bucketE
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::DumbPtr<RBX::FWPartInstance>>,RBX::DumbPtr<RBX::FWPartInstance>,boost::hash<RBX::DumbPtr<RBX::FWPartInstance>>,std::equal_to<RBX::DumbPtr<RBX::FWPartInstance>>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::DumbPtr<RBX::FWPartInstance>>,RBX::DumbPtr<RBX::FWPartInstance>,boost::hash<RBX::DumbPtr<RBX::FWPartInstance>>,std::equal_to<RBX::DumbPtr<RBX::FWPartInstance>>>> &,boost::unordered::detail::ptr_bucket *) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN5boost9unordered6detail10table_implINS1_3setISaIN3RBX7DumbPtrINS4_14FWPartInstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE15place_in_bucketERNS1_5tableISD_EEPNS1_10ptr_bucketE")]
+pub fn stub_0xf45744() -> ! {
+    todo!("0xf45744 RBX::DataModel::WatchdogDmW1::boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::DumbPtr<RBX::FWPartInstance>>,RBX::DumbPtr<RBX::FWPartInstance>,boost::hash<RBX::DumbPtr<RBX::FWPartInstance>>,std::equal_to<RBX::DumbPtr<RBX::FWPartInstance>>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::DumbPtr<RBX::FWPartInstance>>,RBX::DumbPtr<RBX::FWPartInstance>,boost::hash<RBX::DumbPtr<RBX::FWPartInstance>>,std::equal_to<RBX::DumbPtr<RBX::FWPartInstance>>>> &,boost::unordered::detail::ptr_bucket *) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75350 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75350E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75350::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75350E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75350() -> ! {
-    todo!("0xf75350 RBX::DataModel::WatchdogDmW1::Synthetic_f75350::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf45794 — j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeIN3RBX7DumbPtrINS4_14FWPartInstanceEEEEEEE9constructEv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<RBX::DumbPtr<RBX::FWPartInstance>>>>::construct(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeIN3RBX7DumbPtrINS4_14FWPartInstanceEEEEEEE9constructEv")]
+pub fn stub_0xf45794() -> ! {
+    todo!("0xf45794 RBX::DataModel::WatchdogDmW1::boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<RBX::DumbPtr<RBX::FWPartInstance>>>>::construct(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75360 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75360E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75360::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75360E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75360() -> ! {
-    todo!("0xf75360 RBX::DataModel::WatchdogDmW1::Synthetic_f75360::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf457c4 — j___ZN5boost9unordered6detail5tableINS1_3setISaIN3RBX7DumbPtrINS4_14FWPartInstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::DumbPtr<RBX::FWPartInstance>>,RBX::DumbPtr<RBX::FWPartInstance>,boost::hash<RBX::DumbPtr<RBX::FWPartInstance>>,std::equal_to<RBX::DumbPtr<RBX::FWPartInstance>>>>::create_buckets(unsigned long) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3setISaIN3RBX7DumbPtrINS4_14FWPartInstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm")]
+pub fn stub_0xf457c4() -> ! {
+    todo!("0xf457c4 RBX::DataModel::WatchdogDmW1::boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::DumbPtr<RBX::FWPartInstance>>,RBX::DumbPtr<RBX::FWPartInstance>,boost::hash<RBX::DumbPtr<RBX::FWPartInstance>>,std::equal_to<RBX::DumbPtr<RBX::FWPartInstance>>>>::create_buckets(unsigned long) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75370 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75370E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75370::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75370E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75370() -> ! {
-    todo!("0xf75370 RBX::DataModel::WatchdogDmW1::Synthetic_f75370::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf45a14 — j___ZNK5boost9unordered6detail10table_implINS1_3setISaIN3RBX7DumbPtrINS4_14FWPartInstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14find_node_implIS7_SC_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS7_EEEEmRKT_RKT0_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<RBX::DumbPtr<RBX::FWPartInstance>>> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::DumbPtr<RBX::FWPartInstance>>,RBX::DumbPtr<RBX::FWPartInstance>,boost::hash<RBX::DumbPtr<RBX::FWPartInstance>>,std::equal_to<RBX::DumbPtr<RBX::FWPartInstance>>>>::find_node_impl<RBX::DumbPtr<RBX::FWPartInstance>,std::equal_to<RBX::DumbPtr<RBX::FWPartInstance>>>(unsigned long,RBX::DumbPtr<RBX::FWPartInstance> const&,std::equal_to<RBX::DumbPtr<RBX::FWPartInstance>> const&)const [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNK5boost9unordered6detail10table_implINS1_3setISaIN3RBX7DumbPtrINS4_14FWPartInstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14find_node_implIS7_SC_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS7_EEEEmRKT_RKT0_")]
+pub fn stub_0xf45a14() -> ! {
+    todo!("0xf45a14 RBX::DataModel::WatchdogDmW1::boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<RBX::DumbPtr<RBX::FWPartInstance>>> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::DumbPtr<RBX::FWPartInstance>>,RBX::DumbPtr<RBX::FWPartInstance>,boost::hash<RBX::DumbPtr<RBX::FWPartInstance>>,std::equal_to<RBX::DumbPtr<RBX::FWPartInstance>>>>::find_node_impl<RBX::DumbPtr<RBX::FWPartInstance>,std::equal_to<RBX::DumbPtr<RBX::FWPartInstance>>>(unsigned long,RBX::DumbPtr<RBX::FWPartInstance> const&,std::equal_to<RBX::DumbPtr<RBX::FWPartInstance>> const&)const [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75380 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75380E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75380::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75380E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75380() -> ! {
-    todo!("0xf75380 RBX::DataModel::WatchdogDmW1::Synthetic_f75380::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf45a34 — j___ZNK5boost9unordered6detail5tableINS1_3setISaIN3RBX7DumbPtrINS4_14FWPartInstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE20min_buckets_for_sizeEm
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::DumbPtr<RBX::FWPartInstance>>,RBX::DumbPtr<RBX::FWPartInstance>,boost::hash<RBX::DumbPtr<RBX::FWPartInstance>>,std::equal_to<RBX::DumbPtr<RBX::FWPartInstance>>>>::min_buckets_for_size(unsigned long)const [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNK5boost9unordered6detail5tableINS1_3setISaIN3RBX7DumbPtrINS4_14FWPartInstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE20min_buckets_for_sizeEm")]
+pub fn stub_0xf45a34() -> ! {
+    todo!("0xf45a34 RBX::DataModel::WatchdogDmW1::boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::DumbPtr<RBX::FWPartInstance>>,RBX::DumbPtr<RBX::FWPartInstance>,boost::hash<RBX::DumbPtr<RBX::FWPartInstance>>,std::equal_to<RBX::DumbPtr<RBX::FWPartInstance>>>>::min_buckets_for_size(unsigned long)const [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75390 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75390E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75390::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75390E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75390() -> ! {
-    todo!("0xf75390 RBX::DataModel::WatchdogDmW1::Synthetic_f75390::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf46564 — j___ZN3RBX6FWBase4initINS_12FWPVInstanceEEEPT_S4_
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::FWPVInstance * RBX::FWBase::init<RBX::FWPVInstance>(RBX::FWPVInstance *) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX6FWBase4initINS_12FWPVInstanceEEEPT_S4_")]
+pub fn stub_0xf46564() -> ! {
+    todo!("0xf46564 RBX::DataModel::WatchdogDmW1::RBX::FWPVInstance * RBX::FWBase::init<RBX::FWPVInstance>(RBX::FWPVInstance *) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf753a0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f753a0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f753a0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f753a0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf753a0() -> ! {
-    todo!("0xf753a0 RBX::DataModel::WatchdogDmW1::Synthetic_f753a0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf46574 — j___ZN3RBX7FWFinalINS_12FWPVInstanceEED2Ev
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::FWFinal<RBX::FWPVInstance>::~FWFinal() [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX7FWFinalINS_12FWPVInstanceEED2Ev")]
+pub fn stub_0xf46574() -> ! {
+    todo!("0xf46574 RBX::DataModel::WatchdogDmW1::RBX::FWFinal<RBX::FWPVInstance>::~FWFinal() [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf753b0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f753b0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f753b0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f753b0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf753b0() -> ! {
-    todo!("0xf753b0 RBX::DataModel::WatchdogDmW1::Synthetic_f753b0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf46594 — j___ZNK3RBX10PVInstance20isTopLevelPVInstanceEv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::PVInstance::isTopLevelPVInstance(void)const [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZNK3RBX10PVInstance20isTopLevelPVInstanceEv")]
+pub fn stub_0xf46594() -> ! {
+    todo!("0xf46594 RBX::DataModel::WatchdogDmW1::RBX::PVInstance::isTopLevelPVInstance(void)const [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf753c0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f753c0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f753c0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f753c0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf753c0() -> ! {
-    todo!("0xf753c0 RBX::DataModel::WatchdogDmW1::Synthetic_f753c0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf46dc4 — j___ZN3RBX18SelectionPartLassoD1Ev
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::SelectionPartLasso::~SelectionPartLasso() [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX18SelectionPartLassoD1Ev")]
+pub fn stub_0xf46dc4() -> ! {
+    todo!("0xf46dc4 RBX::DataModel::WatchdogDmW1::RBX::SelectionPartLasso::~SelectionPartLasso() [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf753d0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f753d0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f753d0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f753d0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf753d0() -> ! {
-    todo!("0xf753d0 RBX::DataModel::WatchdogDmW1::Synthetic_f753d0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf4b604 — j___ZN3RBX10PVInstance15getLegacyOffsetEv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::PVInstance::getLegacyOffset(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX10PVInstance15getLegacyOffsetEv")]
+pub fn stub_0xf4b604() -> ! {
+    todo!("0xf4b604 RBX::DataModel::WatchdogDmW1::RBX::PVInstance::getLegacyOffset(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf753e0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f753e0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f753e0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f753e0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf753e0() -> ! {
-    todo!("0xf753e0 RBX::DataModel::WatchdogDmW1::Synthetic_f753e0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf4bb64 — j___ZN3RBX9AllocatorINS_18OnDemandPVInstanceEEnwEm
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::RBX::Allocator<RBX::OnDemandPVInstance>::operator new(unsigned long) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN3RBX9AllocatorINS_18OnDemandPVInstanceEEnwEm")]
+pub fn stub_0xf4bb64() -> ! {
+    todo!("0xf4bb64 RBX::DataModel::WatchdogDmW1::RBX::Allocator<RBX::OnDemandPVInstance>::operator new(unsigned long) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf753f0 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f753f0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f753f0::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f753f0E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf753f0() -> ! {
-    todo!("0xf753f0 RBX::DataModel::WatchdogDmW1::Synthetic_f753f0::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf4bde4 — j___ZN5boost14singleton_poolIN3RBX16OnDemandInstanceELj20ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::boost::singleton_pool<RBX::OnDemandInstance,20u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN5boost14singleton_poolIN3RBX16OnDemandInstanceELj20ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")]
+pub fn stub_0xf4bde4() -> ! {
+    todo!("0xf4bde4 RBX::DataModel::WatchdogDmW1::boost::singleton_pool<RBX::OnDemandInstance,20u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
 
-// 0xf75400 — __ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75400E3getEN8rbx_core9SharedPtrINS_8InstanceEEE
-#[doc(alias = "RBX::DataModel::WatchdogDmW1::Synthetic_f75400::get(rbx_core::SharedPtr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX9DataModel12WatchdogDmW114Synthetic_f75400E3getEN8rbx_core9SharedPtrINS_8InstanceEEE")]
-pub fn stub_0xf75400() -> ! {
-    todo!("0xf75400 RBX::DataModel::WatchdogDmW1::Synthetic_f75400::get(rbx_core::SharedPtr<RBX::Instance>)")
+// 0xf4bdf4 — j___ZN5boost14singleton_poolIN3RBX18OnDemandPVInstanceELj24ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv
+#[doc(alias = "RBX::DataModel::WatchdogDmW1::boost::singleton_pool<RBX::OnDemandPVInstance,24u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void) [rbx_core::SharedPtr<RBX::Instance>]")]
+#[doc(alias = "j___ZN5boost14singleton_poolIN3RBX18OnDemandPVInstanceELj24ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")]
+pub fn stub_0xf4bdf4() -> ! {
+    todo!("0xf4bdf4 RBX::DataModel::WatchdogDmW1::boost::singleton_pool<RBX::OnDemandPVInstance,24u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void) [rbx_core::SharedPtr<RBX::Instance>]")
 }
