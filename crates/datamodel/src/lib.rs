@@ -684,3 +684,4 @@ pub mod generated_watchdog_datamodel_w13a;
 pub mod generated_306;
 pub mod generated_307;
 pub mod generated_308;
+pub mod generated_datamodel_delta_a;
