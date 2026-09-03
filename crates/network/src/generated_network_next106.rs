@@ -528,15 +528,17 @@ pub fn stub_a77b3c() -> ! {
 // 0xa77d60 — __ZN6RakNet9BitStream5WriteINS_8uint24_tEEEvRKT_
 // type: void __fastcall(RakNet::BitStream *this, _BYTE *, int, int, int)
 #[doc(alias = "void RakNet::BitStream::Write<RakNet::uint24_t>(RakNet::uint24_t const&)")]
-pub fn stub_a77d60() -> ! {
-    todo!("0xa77d60 void RakNet::BitStream::Write<RakNet::uint24_t>(RakNet::uint24_t const&)")
+pub fn stub_a77d60(stream: &mut crate::bitstream::BitStream, value: u32) {
+    // IDA 0xa77d60: align-up, then the low 3 bytes in host order — no `ReverseBytes` on this path.
+    stream.write_uint24(value);
 }
 
 // 0xa77ea4 — __ZN6RakNet9BitStream4ReadINS_8uint24_tEEEbRT_
 // type: int __fastcall(_DWORD *, _BYTE *)
 #[doc(alias = "bool RakNet::BitStream::Read<RakNet::uint24_t>(RakNet::uint24_t &)")]
-pub fn stub_a77ea4() -> ! {
-    todo!("0xa77ea4 bool RakNet::BitStream::Read<RakNet::uint24_t>(RakNet::uint24_t &)")
+pub fn stub_a77ea4(stream: &mut crate::bitstream::BitStream) -> Option<u32> {
+    // IDA 0xa77ea4: align-up (consumed even on failure), 24-bit bounds check, then 3 bytes little-endian.
+    stream.read_uint24()
 }
 
 // 0xa77ff4 — __ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE10PushSeriesERKyRKS3_PKcj

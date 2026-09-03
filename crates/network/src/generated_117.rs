@@ -365,109 +365,123 @@ pub fn stub_9628c4(keys: &[u32]) -> crate::id_serializer::DescriptorSender {
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
 #[doc(alias = "__ZN6RakNet9BitStream5WriteIiEEvRKT_")]
 #[doc(alias = "void RakNet::BitStream::Write<int>(int const&)")]
-pub fn stub_962a24() -> ! {
-    todo!("0x962a24 void RakNet::BitStream::Write<int>(int const&)")
+pub fn stub_962a24(stream: &mut crate::bitstream::BitStream, value: i32) {
+    // IDA 0x962a24: `ReverseBytes` (host is LE, `IsNetworkOrder` is 0) then `WriteBits(..., 32, 1)` — big-endian.
+    stream.write_i32(value);
 }
 
 // 0x962b38 — __ZN6RakNet9BitStream4ReadIlEEbRT_
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
 #[doc(alias = "__ZN6RakNet9BitStream4ReadIlEEbRT_")]
 #[doc(alias = "bool RakNet::BitStream::Read<long>(long &)")]
-pub fn stub_962b38() -> ! {
-    todo!("0x962b38 bool RakNet::BitStream::Read<long>(long &)")
+pub fn stub_962b38(stream: &mut crate::bitstream::BitStream) -> Option<i32> {
+    // IDA 0x962b38: `ReadBits(..., 32, 1)` into a scratch buffer, then `ReverseBytes` back (armv7 `long` is 4 bytes).
+    stream.read_i32()
 }
 
 // 0x962c60 — __ZN6RakNet9BitStream5WriteIyEEvRKT_
 // type: int __fastcall(RakNet::BitStream *, RakNet::BitStream *, int, unsigned int)
 #[doc(alias = "__ZN6RakNet9BitStream5WriteIyEEvRKT_")]
 #[doc(alias = "void RakNet::BitStream::Write<unsigned long long>(unsigned long long const&)")]
-pub fn stub_962c60() -> ! {
-    todo!("0x962c60 void RakNet::BitStream::Write<unsigned long long>(unsigned long long const&)")
+pub fn stub_962c60(stream: &mut crate::bitstream::BitStream, value: u64) {
+    // IDA 0x962c60: same `ReverseBytes` + `WriteBits(..., 64, 1)` shape as `Write<int>`.
+    stream.write_u64(value);
 }
 
 // 0x962d98 — __ZN6RakNet9BitStream4ReadIyEEbRT_
 #[doc(alias = "__ZN6RakNet9BitStream4ReadIyEEbRT_")]
 #[doc(alias = "bool RakNet::BitStream::Read<unsigned long long>(unsigned long long &)")]
-pub fn stub_962d98() -> ! {
-    todo!("0x962d98 bool RakNet::BitStream::Read<unsigned long long>(unsigned long long &)")
+pub fn stub_962d98(stream: &mut crate::bitstream::BitStream) -> Option<u64> {
+    // IDA 0x962d98: `ReadBits(..., 64, 1)` + `ReverseBytes` back to host order.
+    stream.read_u64()
 }
 
 // 0x962ee4 — __ZN6RakNet9BitStream5WriteIlEEvRKT_
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
 #[doc(alias = "__ZN6RakNet9BitStream5WriteIlEEvRKT_")]
 #[doc(alias = "void RakNet::BitStream::Write<long>(long const&)")]
-pub fn stub_962ee4() -> ! {
-    todo!("0x962ee4 void RakNet::BitStream::Write<long>(long const&)")
+pub fn stub_962ee4(stream: &mut crate::bitstream::BitStream, value: i32) {
+    // IDA 0x962ee4: armv7 `long` is 4 bytes — identical bytes to `Write<int>` (0x962a24).
+    stream.write_i32(value);
 }
 
 // 0x962ff8 — __ZN6RakNet9BitStream4ReadIiEEbRT_
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
 #[doc(alias = "__ZN6RakNet9BitStream4ReadIiEEbRT_")]
 #[doc(alias = "bool RakNet::BitStream::Read<int>(int &)")]
-pub fn stub_962ff8() -> ! {
-    todo!("0x962ff8 bool RakNet::BitStream::Read<int>(int &)")
+pub fn stub_962ff8(stream: &mut crate::bitstream::BitStream) -> Option<i32> {
+    // IDA 0x962ff8: `ReadBits(..., 32, 1)` + `ReverseBytes` (see `Read<long>`, 0x962b38).
+    stream.read_i32()
 }
 
 // 0x963120 — __ZN6RakNet9BitStream5WriteIjEEvRKT_
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
 #[doc(alias = "__ZN6RakNet9BitStream5WriteIjEEvRKT_")]
 #[doc(alias = "void RakNet::BitStream::Write<unsigned int>(unsigned int const&)")]
-pub fn stub_963120() -> ! {
-    todo!("0x963120 void RakNet::BitStream::Write<unsigned int>(unsigned int const&)")
+pub fn stub_963120(stream: &mut crate::bitstream::BitStream, value: u32) {
+    // IDA 0x963120: `ReverseBytes` + `WriteBits(..., 32, 1)` — big-endian.
+    stream.write_u32(value);
 }
 
 // 0x963234 — __ZN6RakNet9BitStream4ReadIjEEbRT_
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
 #[doc(alias = "__ZN6RakNet9BitStream4ReadIjEEbRT_")]
 #[doc(alias = "bool RakNet::BitStream::Read<unsigned int>(unsigned int &)")]
-pub fn stub_963234() -> ! {
-    todo!("0x963234 bool RakNet::BitStream::Read<unsigned int>(unsigned int &)")
+pub fn stub_963234(stream: &mut crate::bitstream::BitStream) -> Option<u32> {
+    // IDA 0x963234: `ReadBits(..., 32, 1)` + `ReverseBytes` back to host order.
+    stream.read_u32()
 }
 
 // 0x96335c — __ZN6RakNet9BitStream5WriteImEEvRKT_
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
 #[doc(alias = "__ZN6RakNet9BitStream5WriteImEEvRKT_")]
 #[doc(alias = "void RakNet::BitStream::Write<unsigned long>(unsigned long const&)")]
-pub fn stub_96335c() -> ! {
-    todo!("0x96335c void RakNet::BitStream::Write<unsigned long>(unsigned long const&)")
+pub fn stub_96335c(stream: &mut crate::bitstream::BitStream, value: u32) {
+    // IDA 0x96335c: armv7 `unsigned long` is 4 bytes — identical bytes to `Write<unsigned int>` (0x963120).
+    stream.write_u32(value);
 }
 
 // 0x963470 — __ZN6RakNet9BitStream4ReadImEEbRT_
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
 #[doc(alias = "__ZN6RakNet9BitStream4ReadImEEbRT_")]
 #[doc(alias = "bool RakNet::BitStream::Read<unsigned long>(unsigned long &)")]
-pub fn stub_963470() -> ! {
-    todo!("0x963470 bool RakNet::BitStream::Read<unsigned long>(unsigned long &)")
+pub fn stub_963470(stream: &mut crate::bitstream::BitStream) -> Option<u32> {
+    // IDA 0x963470: armv7 `unsigned long` is 4 bytes — identical bytes to `Read<unsigned int>` (0x963234).
+    stream.read_u32()
 }
 
 // 0x963598 — __ZN6RakNet9BitStream5WriteIdEEvRKT_
 #[doc(alias = "__ZN6RakNet9BitStream5WriteIdEEvRKT_")]
 #[doc(alias = "void RakNet::BitStream::Write<double>(double const&)")]
-pub fn stub_963598() -> ! {
-    todo!("0x963598 void RakNet::BitStream::Write<double>(double const&)")
+pub fn stub_963598(stream: &mut crate::bitstream::BitStream, value: f64) {
+    // IDA 0x963598: `ReverseBytes` + `WriteBits(..., 64, 1)` over the `f64` bits.
+    stream.write_f64(value);
 }
 
 // 0x9636d0 — __ZN6RakNet9BitStream4ReadIdEEbRT_
 #[doc(alias = "__ZN6RakNet9BitStream4ReadIdEEbRT_")]
 #[doc(alias = "bool RakNet::BitStream::Read<double>(double &)")]
-pub fn stub_9636d0() -> ! {
-    todo!("0x9636d0 bool RakNet::BitStream::Read<double>(double &)")
+pub fn stub_9636d0(stream: &mut crate::bitstream::BitStream) -> Option<f64> {
+    // IDA 0x9636d0: `ReadBits(..., 64, 1)` + `ReverseBytes` back to host order.
+    stream.read_f64()
 }
 
 // 0x96381c — __ZN6RakNet9BitStream5WriteIsEEvRKT_
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
 #[doc(alias = "__ZN6RakNet9BitStream5WriteIsEEvRKT_")]
 #[doc(alias = "void RakNet::BitStream::Write<short>(short const&)")]
-pub fn stub_96381c() -> ! {
-    todo!("0x96381c void RakNet::BitStream::Write<short>(short const&)")
+pub fn stub_96381c(stream: &mut crate::bitstream::BitStream, value: i16) {
+    // IDA 0x96381c: `ReverseBytes` + `WriteBits(..., 16, 1)` — big-endian.
+    stream.write_i16(value);
 }
 
 // 0x963930 — __ZN6RakNet9BitStream4ReadIsEEbRT_
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
 #[doc(alias = "__ZN6RakNet9BitStream4ReadIsEEbRT_")]
 #[doc(alias = "bool RakNet::BitStream::Read<short>(short &)")]
-pub fn stub_963930() -> ! {
-    todo!("0x963930 bool RakNet::BitStream::Read<short>(short &)")
+pub fn stub_963930(stream: &mut crate::bitstream::BitStream) -> Option<i16> {
+    // IDA 0x963930: `ReadBits(..., 16, 1)` + `ReverseBytes` back to host order.
+    stream.read_i16()
 }
 
 // 0x9645f8 — __ZNSt3mapIN3RBX4Guid4DataESt6vectorINS0_7Network12IdSerializer8WaitItemESaIS6_EESt4lessIS2_ESaISt4pairIKS2_S8_EEEixERSC_

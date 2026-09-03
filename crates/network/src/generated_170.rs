@@ -483,16 +483,18 @@ pub fn stub_a77b3c() -> ! {
 // demangled: void RakNet::BitStream::Write<RakNet::uint24_t>(RakNet::uint24_t const&)
 // type: void __fastcall(RakNet::BitStream *this, _BYTE *, int, int, int)
 #[doc(alias = "void RakNet::BitStream::Write<RakNet::uint24_t>(RakNet::uint24_t const&)")]
-pub fn stub_a77d60() -> ! {
-    todo!("0xa77d60 void RakNet::BitStream::Write<RakNet::uint24_t>(RakNet::uint24_t const&)")
+pub fn stub_a77d60(stream: &mut crate::bitstream::BitStream, value: u32) {
+    // IDA 0xa77d60: align-up, then the low 3 bytes in host order — no `ReverseBytes` on this path.
+    stream.write_uint24(value);
 }
 
 // 0xa77ea4 — __ZN6RakNet9BitStream4ReadINS_8uint24_tEEEbRT_
 // demangled: bool RakNet::BitStream::Read<RakNet::uint24_t>(RakNet::uint24_t &)
 // type: int __fastcall(_DWORD *, _BYTE *)
 #[doc(alias = "bool RakNet::BitStream::Read<RakNet::uint24_t>(RakNet::uint24_t &)")]
-pub fn stub_a77ea4() -> ! {
-    todo!("0xa77ea4 bool RakNet::BitStream::Read<RakNet::uint24_t>(RakNet::uint24_t &)")
+pub fn stub_a77ea4(stream: &mut crate::bitstream::BitStream) -> Option<u32> {
+    // IDA 0xa77ea4: align-up (consumed even on failure), 24-bit bounds check, then 3 bytes little-endian.
+    stream.read_uint24()
 }
 
 // 0xa77ff4 — __ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE10PushSeriesERKyRKS3_PKcj
@@ -827,16 +829,18 @@ pub fn stub_a7b854() -> ! {
 // demangled: void RakNet::BitStream::WriteCompressed<unsigned int>(unsigned int const&)
 // type: void __fastcall(RakNet::BitStream *, unsigned __int8 *, int, unsigned int, __guard *, int, int, int, int)
 #[doc(alias = "void RakNet::BitStream::WriteCompressed<unsigned int>(unsigned int const&)")]
-pub fn stub_a7b9b4() -> ! {
-    todo!("0xa7b9b4 void RakNet::BitStream::WriteCompressed<unsigned int>(unsigned int const&)")
+pub fn stub_a7b9b4(stream: &mut crate::bitstream::BitStream, value: u32) {
+    // IDA 0xa7b9b4: `ReverseBytes` to big-endian, then `WriteCompressed(..., 32, 1)` (IDA 0xa55c9c).
+    stream.write_compressed_u32(value);
 }
 
 // 0xa7bac8 — __ZN6RakNet9BitStream14ReadCompressedIjEEbRT_
 // demangled: bool RakNet::BitStream::ReadCompressed<unsigned int>(unsigned int &)
 // type: int __fastcall(RakNet::BitStream *, unsigned __int8 *, int, int, __guard *, int, int, int, int)
 #[doc(alias = "bool RakNet::BitStream::ReadCompressed<unsigned int>(unsigned int &)")]
-pub fn stub_a7bac8() -> ! {
-    todo!("0xa7bac8 bool RakNet::BitStream::ReadCompressed<unsigned int>(unsigned int &)")
+pub fn stub_a7bac8(stream: &mut crate::bitstream::BitStream) -> Option<u32> {
+    // IDA 0xa7bac8: `ReadCompressed(..., 32, 1)` (IDA 0xa55d2c), then `ReverseBytes` back to host order.
+    stream.read_compressed_u32()
 }
 
 // 0xa7bbf0 — __ZN14DataStructures4ListINS_3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S8_EEE7MapNodeEE6InsertERKSA_jPKcj
