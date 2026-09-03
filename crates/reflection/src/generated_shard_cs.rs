@@ -640,15 +640,15 @@ pub fn stub_f5d834() -> ! {
 // 0xf5d884 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11RemoteEventES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RemoteEvent,RBX::RemoteEvent>(rbx_core::SharedPtr<RBX::RemoteEvent> const*,RBX::RemoteEvent *)const")]
 #[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11RemoteEventES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_f5d884() -> ! {
-    todo!("0xf5d884 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RemoteEvent,RBX::RemoteEvent>(boost::shared_ptr<RBX::RemoteEvent> const*,RBX::RemoteEvent *)const")
+pub fn stub_f5d884() {
+    // IDA 0xf5d884: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner -- if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0xf5d894 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14RemoteFunctionES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RemoteFunction,RBX::RemoteFunction>(rbx_core::SharedPtr<RBX::RemoteFunction> const*,RBX::RemoteFunction *)const")]
 #[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14RemoteFunctionES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_f5d894() -> ! {
-    todo!("0xf5d894 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RemoteFunction,RBX::RemoteFunction>(boost::shared_ptr<RBX::RemoteFunction> const*,RBX::RemoteFunction *)const")
+pub fn stub_f5d894() {
+    // IDA 0xf5d894: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner -- if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0xf5d8a4 — j___ZNK5boost4_mfi3mf1IvN3RBX13LatchedSignalIN3rbx13remote_signalEFvNS_10shared_ptrIKNS2_10Reflection5TupleEEEEEESA_EclEPSC_SA_

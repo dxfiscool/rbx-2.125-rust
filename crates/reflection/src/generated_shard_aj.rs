@@ -388,16 +388,16 @@ pub fn stub_8b3634() {
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ClickDetector,RBX::ClickDetector>(boost::shared_ptr<RBX::ClickDetector> const*,RBX::ClickDetector *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ClickDetector,RBX::ClickDetector>(rbx_core::SharedPtr<RBX::ClickDetector> const*,RBX::ClickDetector *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13ClickDetectorES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_8b3bd0() -> ! {
-    todo!("0x8b3bd0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ClickDetector,RBX::ClickDetector>(rbx_core::SharedPtr<RBX::ClickDetector> const*,RBX::ClickDetector *)const")
+pub fn stub_8b3bd0() {
+    // IDA 0x8b3bd0: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner -- if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x8b6a30 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_16UserInputServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::UserInputService,RBX::UserInputService>(boost::shared_ptr<RBX::UserInputService> const*,RBX::UserInputService *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::UserInputService,RBX::UserInputService>(rbx_core::SharedPtr<RBX::UserInputService> const*,RBX::UserInputService *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_16UserInputServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_8b6a30() -> ! {
-    todo!("0x8b6a30 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::UserInputService,RBX::UserInputService>(rbx_core::SharedPtr<RBX::UserInputService> const*,RBX::UserInputService *)const")
+pub fn stub_8b6a30() {
+    // IDA 0x8b6a30: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner -- if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x8bbf98 — __ZN3RBX10Reflection9EventDescINS_16UserInputServiceEFvNS_11InputObjectEEN3rbx6signalIS4_EEMS2_S7_EC2ES8_PKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE

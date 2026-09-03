@@ -385,16 +385,16 @@ pub fn stub_f62b44() -> ! {
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PlayerMouse,RBX::PlayerMouse>(boost::shared_ptr<RBX::PlayerMouse> const*,RBX::PlayerMouse *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PlayerMouse,RBX::PlayerMouse>(rbx_core::SharedPtr<RBX::PlayerMouse> const*,RBX::PlayerMouse *)const")]
 #[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11PlayerMouseES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_f62ba4() -> ! {
-    todo!("0xf62ba4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PlayerMouse,RBX::PlayerMouse>(rbx_core::SharedPtr<RBX::PlayerMouse> const*,RBX::PlayerMouse *)const")
+pub fn stub_f62ba4() {
+    // IDA 0xf62ba4: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner -- if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0xf62bb4 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_8BackpackES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Backpack,RBX::Backpack>(boost::shared_ptr<RBX::Backpack> const*,RBX::Backpack *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Backpack,RBX::Backpack>(rbx_core::SharedPtr<RBX::Backpack> const*,RBX::Backpack *)const")]
 #[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_8BackpackES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_f62bb4() -> ! {
-    todo!("0xf62bb4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Backpack,RBX::Backpack>(rbx_core::SharedPtr<RBX::Backpack> const*,RBX::Backpack *)const")
+pub fn stub_f62bb4() {
+    // IDA 0xf62bb4: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner -- if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0xf62c14 — j___ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS7_EEEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS5_7Network6PlayerEEESG_ENSJ_5list2INSJ_5valueISO_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
@@ -463,8 +463,8 @@ pub fn stub_f62ee4() -> ! {
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::PeerStatsItem,RBX::Network::PeerStatsItem>(boost::shared_ptr<RBX::Network::PeerStatsItem> const*,RBX::Network::PeerStatsItem *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::PeerStatsItem,RBX::Network::PeerStatsItem>(rbx_core::SharedPtr<RBX::Network::PeerStatsItem> const*,RBX::Network::PeerStatsItem *)const")]
 #[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network13PeerStatsItemES7_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_f62f64() -> ! {
-    todo!("0xf62f64 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::PeerStatsItem,RBX::Network::PeerStatsItem>(rbx_core::SharedPtr<RBX::Network::PeerStatsItem> const*,RBX::Network::PeerStatsItem *)const")
+pub fn stub_f62f64() {
+    // IDA 0xf62f64: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner -- if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0xf63104 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFN5boost10shared_ptrINS_8InstanceEEEvELi0EEC1EMS3_FS7_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE

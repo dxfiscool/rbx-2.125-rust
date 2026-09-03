@@ -132,8 +132,8 @@ pub fn stub_f5aef4() -> ! {
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18MarketplaceServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_f5af34() -> ! {
-    todo!("0xf5af34 j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18MarketplaceServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+pub fn stub_f5af34() {
+    // IDA 0xf5af34: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner -- if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0xf5af44 — j___ZNK5boost4_mfi3mf3IvN3RBX18MarketplaceServiceESsNS_8functionIFvNS_10shared_ptrIKNS_9unordered13unordered_mapISsNS2_10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS9_EEEEEEEEENS4_IFvSsEEEEclEPS3_SsSM_SO_
@@ -556,8 +556,8 @@ pub fn stub_f5c2b4() -> ! {
 // 0xf5c344 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15ContentProviderES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15ContentProviderES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_f5c344() -> ! {
-    todo!("0xf5c344 j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15ContentProviderES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+pub fn stub_f5c344() {
+    // IDA 0xf5c344: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner -- if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0xf5c384 — j___ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tINS5_11unspecifiedENS_8functionIFvN3RBX10Reflection7VariantEEEENS5_5list1INS5_5valueISB_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE

@@ -308,32 +308,32 @@ pub fn stub_980698() -> ! {
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedStatsItem<float>,RBX::Stats::TypedStatsItem<float>>(boost::shared_ptr<RBX::Stats::TypedStatsItem<float>> const*,RBX::Stats::TypedStatsItem<float> *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedStatsItem<float>,RBX::Stats::TypedStatsItem<float>>(rbx_core::SharedPtr<RBX::Stats::TypedStatsItem<float>> const*,RBX::Stats::TypedStatsItem<float> *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats14TypedStatsItemIfEES8_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_985d30() -> ! {
-    todo!("0x985d30 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedStatsItem<float>,RBX::Stats::TypedStatsItem<float>>(rbx_core::SharedPtr<RBX::Stats::TypedStatsItem<float>> const*,RBX::Stats::TypedStatsItem<float> *)const")
+pub fn stub_985d30() {
+    // IDA 0x985d30: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner -- if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x986828 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats14TypedStatsItemIyEES8_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedStatsItem<unsigned long long>,RBX::Stats::TypedStatsItem<unsigned long long>>(boost::shared_ptr<RBX::Stats::TypedStatsItem<unsigned long long>> const*,RBX::Stats::TypedStatsItem<unsigned long long> *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedStatsItem<unsigned long long>,RBX::Stats::TypedStatsItem<unsigned long long>>(rbx_core::SharedPtr<RBX::Stats::TypedStatsItem<unsigned long long>> const*,RBX::Stats::TypedStatsItem<unsigned long long> *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats14TypedStatsItemIyEES8_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_986828() -> ! {
-    todo!("0x986828 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedStatsItem<unsigned long long>,RBX::Stats::TypedStatsItem<unsigned long long>>(rbx_core::SharedPtr<RBX::Stats::TypedStatsItem<unsigned long long>> const*,RBX::Stats::TypedStatsItem<unsigned long long> *)const")
+pub fn stub_986828() {
+    // IDA 0x986828: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner -- if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x986b40 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network16ClientReplicator15ClientStatsItemES8_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator::ClientStatsItem,RBX::Network::ClientReplicator::ClientStatsItem>(boost::shared_ptr<RBX::Network::ClientReplicator::ClientStatsItem> const*,RBX::Network::ClientReplicator::ClientStatsItem *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator::ClientStatsItem,RBX::Network::ClientReplicator::ClientStatsItem>(rbx_core::SharedPtr<RBX::Network::ClientReplicator::ClientStatsItem> const*,RBX::Network::ClientReplicator::ClientStatsItem *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network16ClientReplicator15ClientStatsItemES8_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_986b40() -> ! {
-    todo!("0x986b40 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator::ClientStatsItem,RBX::Network::ClientReplicator::ClientStatsItem>(rbx_core::SharedPtr<RBX::Network::ClientReplicator::ClientStatsItem> const*,RBX::Network::ClientReplicator::ClientStatsItem *)const")
+pub fn stub_986b40() {
+    // IDA 0x986b40: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner -- if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x9985a8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15NetworkSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::NetworkSettings,RBX::NetworkSettings>(boost::shared_ptr<RBX::NetworkSettings> const*,RBX::NetworkSettings *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::NetworkSettings,RBX::NetworkSettings>(rbx_core::SharedPtr<RBX::NetworkSettings> const*,RBX::NetworkSettings *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15NetworkSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_9985a8() -> ! {
-    todo!("0x9985a8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::NetworkSettings,RBX::NetworkSettings>(rbx_core::SharedPtr<RBX::NetworkSettings> const*,RBX::NetworkSettings *)const")
+pub fn stub_9985a8() {
+    // IDA 0x9985a8: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner -- if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x9a2170 — __ZN3RBX7Network22SharedStringDictionary15serializeStringERKNS_10Reflection13ConstPropertyERN6RakNet9BitStreamE
