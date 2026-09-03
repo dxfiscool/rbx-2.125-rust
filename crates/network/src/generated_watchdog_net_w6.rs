@@ -1,7 +1,7 @@
-//! network generated_watchdog_net_w6 — 100 stubs EA-sorted asc gap filler not yet in crates/network/src after 0x3d140c (RakNet|Network|Replicator|Http|Web|SystemAddress 6362 filtered complete, gap filler)
-//! Source: ida/export.json (85545 funcs, base 0x4000) EA-sorted asc next 100 not in network after 0x3d140c | rbx_core::SharedPtr not boost
-//! Range 0x3d1440..0x3d8318 | EA-sorted asc distinct gap filler
-//! Batch: 100 stubs | // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR mangled")
+//! network generated_watchdog_net_w6 — 120 stubs EA-sorted asc global dedup (Network|RakNet|Replicat filtered)
+//! Source: ida/export.json (85545 funcs, base 0x4000) EA-sorted asc 120 not in global_eas (Network|RakNet|Replication|Replicator) | rbx_core::SharedPtr not boost
+//! Range 0xf49434..0xf62a04 | EA-sorted asc distinct
+//! Batch: 120 stubs | // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR mangled")
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -11,792 +11,958 @@ const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
 
-// 0x3d1440 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEE12getEnumValueEPKNS0_13DescribedBaseE
-// type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Camera,RBX::Camera::CameraType>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-#[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEE12getEnumValueEPKNS0_13DescribedBaseE")]
-pub fn stub_3d1440() -> ! {
-    todo!("0x3d1440 __ZNK3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEE12getEnumValueEPKNS0_13DescribedBaseE")
+// 0xf49434 — j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4ToolENS_8weak_ptrINS8_7Network6PlayerEEEEENS4_5list2INS4_5valueIPS9_EENSG_ISD_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4ToolENS_8weak_ptrINS8_7Network6PlayerEEEEENS4_5list2INS4_5valueIPS9_EENSG_ISD_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")]
+#[doc(alias = "j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4ToolENS_8weak_ptrINS8_7Network6PlayerEEEEENS4_5list2INS4_5valueIPS9_EENSG_ISD_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_0xf49434() -> ! {
+    todo!("0xf49434 j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4ToolENS_8weak_ptrINS8_7Network6PlayerEEEEENS4_5list2INS4_5valueIPS9_EENSG_ISD_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")
 }
 
-// 0x3d1448 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEE12setEnumValueEPNS0_13DescribedBaseEi
-// type: int __fastcall(int, int, int)
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Camera,RBX::Camera::CameraType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-#[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEE12setEnumValueEPNS0_13DescribedBaseEi")]
-pub fn stub_3d1448() -> ! {
-    todo!("0x3d1448 __ZNK3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEE12setEnumValueEPNS0_13DescribedBaseEi")
+// 0xf49454 — j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4ToolENS_8weak_ptrINS7_7Network6PlayerEEEEENS3_5list2INS3_5valueIPS8_EENSF_ISC_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4ToolENS_8weak_ptrINS7_7Network6PlayerEEEEENS3_5list2INS3_5valueIPS8_EENSF_ISC_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")]
+#[doc(alias = "j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4ToolENS_8weak_ptrINS7_7Network6PlayerEEEEENS3_5list2INS3_5valueIPS8_EENSF_ISC_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_0xf49454() -> ! {
+    todo!("0xf49454 j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4ToolENS_8weak_ptrINS7_7Network6PlayerEEEEENS3_5list2INS3_5valueIPS8_EENSF_ISC_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")
 }
 
-// 0x3d1494 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEE11getEnumItemEPKNS0_13DescribedBaseE
-// type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Camera,RBX::Camera::CameraType>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-#[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEE11getEnumItemEPKNS0_13DescribedBaseE")]
-pub fn stub_3d1494() -> ! {
-    todo!("0x3d1494 __ZNK3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEE11getEnumItemEPKNS0_13DescribedBaseE")
+// 0xf5bc94 — j___ZN3RBX17NonFactoryProductINS_8InstanceELZNS_7Network8sPlayersEEE15isNullClassNameEv
+#[doc(alias = "j___ZN3RBX17NonFactoryProductINS_8InstanceELZNS_7Network8sPlayersEEE15isNullClassNameEv")]
+#[doc(alias = "j___ZN3RBX17NonFactoryProductINS_8InstanceELZNS_7Network8sPlayersEEE15isNullClassNameEv")]
+pub fn stub_0xf5bc94() -> ! {
+    todo!("0xf5bc94 j___ZN3RBX17NonFactoryProductINS_8InstanceELZNS_7Network8sPlayersEEE15isNullClassNameEv")
 }
 
-// 0x3d14b4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
-// type: int __fastcall(int, int, int)
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Camera,RBX::Camera::CameraType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-#[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
-pub fn stub_3d14b4() -> ! {
-    todo!("0x3d14b4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")
+// 0xf5bce4 — j___ZN3RBX4Name7declareILZNS_7Network8sPlayersEEEERKS0_v
+#[doc(alias = "j___ZN3RBX4Name7declareILZNS_7Network8sPlayersEEEERKS0_v")]
+#[doc(alias = "j___ZN3RBX4Name7declareILZNS_7Network8sPlayersEEEERKS0_v")]
+pub fn stub_0xf5bce4() -> ! {
+    todo!("0xf5bce4 j___ZN3RBX4Name7declareILZNS_7Network8sPlayersEEEERKS0_v")
 }
 
-// 0x3d14e8 — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE14convertToIndexES3_
+// 0xf5bd14 — j___ZN3RBX4Name9doDeclareILZNS_7Network8sPlayersEEEERKS0_v
+// type: int(void)
+#[doc(alias = "j___ZN3RBX4Name9doDeclareILZNS_7Network8sPlayersEEEERKS0_v")]
+#[doc(alias = "j___ZN3RBX4Name9doDeclareILZNS_7Network8sPlayersEEEERKS0_v")]
+pub fn stub_0xf5bd14() -> ! {
+    todo!("0xf5bd14 j___ZN3RBX4Name9doDeclareILZNS_7Network8sPlayersEEEERKS0_v")
+}
+
+// 0xf612e4 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENSF_ISsEESJ_NSF_ISC_EEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// type: int(void)
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+#[doc(alias = "j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENSF_ISsEESJ_NSF_ISC_EEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
+pub fn stub_0xf612e4() -> ! {
+    todo!("0xf612e4 j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENSF_ISsEESJ_NSF_ISC_EEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+}
+
+// 0xf61364 — j___ZN5boost9function0IN3RBX13worker_thread11work_resultEE9assign_toINS_3_bi6bind_tIS3_PFS3_NS_10shared_ptrINS1_7Network13AbuseReporter4dataEEESsENS6_5list2INS6_5valueISC_EENSG_ISsEEEEEEEEvT_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "void boost::function0<RBX::worker_thread::work_result>::assign_to<boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>>>)")]
+#[doc(alias = "j___ZN5boost9function0IN3RBX13worker_thread11work_resultEE9assign_toINS_3_bi6bind_tIS3_PFS3_NS_10shared_ptrINS1_7Network13AbuseReporter4dataEEESsENS6_5list2INS6_5valueISC_EENSG_ISsEEEEEEEEvT_")]
+pub fn stub_0xf61364() -> ! {
+    todo!("0xf61364 j___ZN5boost9function0IN3RBX13worker_thread11work_resultEE9assign_toINS_3_bi6bind_tIS3_PFS3_NS_10shared_ptrINS1_7Network13AbuseReporter4dataEEESsENS6_5list2INS6_5valueISC_EENSG_ISsEEEEEEEEvT_")
+}
+
+// 0xf61374 — j___ZN5boost9function0IN3RBX13worker_thread11work_resultEEC2INS_3_bi6bind_tIS3_PFS3_NS_10shared_ptrINS1_7Network13AbuseReporter4dataEEESsENS6_5list2INS6_5valueISC_EENSG_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
+#[doc(alias = "j___ZN5boost9function0IN3RBX13worker_thread11work_resultEEC2INS_3_bi6bind_tIS3_PFS3_NS_10shared_ptrINS1_7Network13AbuseReporter4dataEEESsENS6_5list2INS6_5valueISC_EENSG_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")]
+#[doc(alias = "j___ZN5boost9function0IN3RBX13worker_thread11work_resultEEC2INS_3_bi6bind_tIS3_PFS3_NS_10shared_ptrINS1_7Network13AbuseReporter4dataEEESsENS6_5list2INS6_5valueISC_EENSG_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_0xf61374() -> ! {
+    todo!("0xf61374 j___ZN5boost9function0IN3RBX13worker_thread11work_resultEEC2INS_3_bi6bind_tIS3_PFS3_NS_10shared_ptrINS1_7Network13AbuseReporter4dataEEESsENS6_5list2INS6_5valueISC_EENSG_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf61384 — j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENSF_ISsEESJ_NSF_ISC_EEEEEEEEvT_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>)")]
+#[doc(alias = "j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENSF_ISsEESJ_NSF_ISC_EEEEEEEEvT_")]
+pub fn stub_0xf61384() -> ! {
+    todo!("0xf61384 j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENSF_ISsEESJ_NSF_ISC_EEEEEEEEvT_")
+}
+
+// 0xf61484 — j___ZN9__gnu_cxx13new_allocatorIN3RBX7Network11AbuseReportEE7destroyEPS3_
+#[doc(alias = "__gnu_cxx::new_allocator<RBX::Network::AbuseReport>::destroy(RBX::Network::AbuseReport*)")]
+#[doc(alias = "j___ZN9__gnu_cxx13new_allocatorIN3RBX7Network11AbuseReportEE7destroyEPS3_")]
+pub fn stub_0xf61484() -> ! {
+    todo!("0xf61484 j___ZN9__gnu_cxx13new_allocatorIN3RBX7Network11AbuseReportEE7destroyEPS3_")
+}
+
+// 0xf61694 — j___ZNK5boost4_mfi3mf2IvN3RBX7Network11AbuseReportENS_10shared_ptrINS3_6PlayerEEERKNS3_11ChatMessageEEclERS4_S7_SA_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
+#[doc(alias = "boost::_mfi::mf2<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&>::operator()(RBX::Network::AbuseReport&,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&)const")]
+#[doc(alias = "j___ZNK5boost4_mfi3mf2IvN3RBX7Network11AbuseReportENS_10shared_ptrINS3_6PlayerEEERKNS3_11ChatMessageEEclERS4_S7_SA_")]
+pub fn stub_0xf61694() -> ! {
+    todo!("0xf61694 j___ZNK5boost4_mfi3mf2IvN3RBX7Network11AbuseReportENS_10shared_ptrINS3_6PlayerEEERKNS3_11ChatMessageEEclERS4_S7_SA_")
+}
+
+// 0xf616a4 — j___ZNK5boost4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEE4callINS_10shared_ptrIS4_EESsSsS7_EEvRT_PKvRT0_RT1_RT2_
+// type: int __fastcall(_DWORD)
+#[doc(alias = "void boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>::call<boost::shared_ptr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>(boost::shared_ptr<RBX::Network::Players> &,void const*,std::string &,std::string &,RakNet::Packet * &)const")]
+#[doc(alias = "j___ZNK5boost4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEE4callINS_10shared_ptrIS4_EESsSsS7_EEvRT_PKvRT0_RT1_RT2_")]
+pub fn stub_0xf616a4() -> ! {
+    todo!("0xf616a4 j___ZNK5boost4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEE4callINS_10shared_ptrIS4_EESsSsS7_EEvRT_PKvRT0_RT1_RT2_")
+}
+
+// 0xf616b4 — j___ZNK5boost4_mfi3mf3IvN3RBX7Network7PlayersEbNS_8weak_ptrINS3_6PlayerEEEiEclEPS4_bS7_i
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "boost::_mfi::mf3<void,RBX::Network::Players,bool,boost::weak_ptr<RBX::Network::Player>,int>::operator()(RBX::Network::Players*,bool,boost::weak_ptr<RBX::Network::Player>,int)const")]
+#[doc(alias = "j___ZNK5boost4_mfi3mf3IvN3RBX7Network7PlayersEbNS_8weak_ptrINS3_6PlayerEEEiEclEPS4_bS7_i")]
+pub fn stub_0xf616b4() -> ! {
+    todo!("0xf616b4 j___ZNK5boost4_mfi3mf3IvN3RBX7Network7PlayersEbNS_8weak_ptrINS3_6PlayerEEEiEclEPS4_bS7_i")
+}
+
+// 0xf616c4 — j___ZNK5boost4_mfi3mf4IvN3RBX7Network7PlayersEiSsSsSsEclEPS4_iSsSsSs
+// type: int __fastcall(int, int, int, int, int, std::string *)
+#[doc(alias = "boost::_mfi::mf4<void,RBX::Network::Players,int,std::string,std::string,std::string>::operator()(RBX::Network::Players*,int,std::string,std::string,std::string)const")]
+#[doc(alias = "j___ZNK5boost4_mfi3mf4IvN3RBX7Network7PlayersEiSsSsSsEclEPS4_iSsSsSs")]
+pub fn stub_0xf616c4() -> ! {
+    todo!("0xf616c4 j___ZNK5boost4_mfi3mf4IvN3RBX7Network7PlayersEiSsSsSsEclEPS4_iSsSsSs")
+}
+
+// 0xf616d4 — j___ZNK5boost6detail8function13basic_vtable0IN3RBX13worker_thread11work_resultEE9assign_toINS_3_bi6bind_tIS5_PFS5_NS_10shared_ptrINS3_7Network13AbuseReporter4dataEEESsENS8_5list2INS8_5valueISE_EENSI_ISsEEEEEEEEbT_RNS1_15function_bufferE
+// type: int(void)
+#[doc(alias = "bool boost::detail::function::basic_vtable0<RBX::worker_thread::work_result>::assign_to<boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")]
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IN3RBX13worker_thread11work_resultEE9assign_toINS_3_bi6bind_tIS5_PFS5_NS_10shared_ptrINS3_7Network13AbuseReporter4dataEEESsENS8_5list2INS8_5valueISE_EENSI_ISsEEEEEEEEbT_RNS1_15function_bufferE")]
+pub fn stub_0xf616d4() -> ! {
+    todo!("0xf616d4 j___ZNK5boost6detail8function13basic_vtable0IN3RBX13worker_thread11work_resultEE9assign_toINS_3_bi6bind_tIS5_PFS5_NS_10shared_ptrINS3_7Network13AbuseReporter4dataEEESsENS8_5list2INS8_5valueISE_EENSI_ISsEEEEEEEEbT_RNS1_15function_bufferE")
+}
+
+// 0xf616e4 — j___ZNK5boost6detail8function13basic_vtable0IN3RBX13worker_thread11work_resultEE9assign_toINS_3_bi6bind_tIS5_PFS5_NS_10shared_ptrINS3_7Network13AbuseReporter4dataEEESsENS8_5list2INS8_5valueISE_EENSI_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "bool boost::detail::function::basic_vtable0<RBX::worker_thread::work_result>::assign_to<boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::AbuseReporter::data>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IN3RBX13worker_thread11work_resultEE9assign_toINS_3_bi6bind_tIS5_PFS5_NS_10shared_ptrINS3_7Network13AbuseReporter4dataEEESsENS8_5list2INS8_5valueISE_EENSI_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
+pub fn stub_0xf616e4() -> ! {
+    todo!("0xf616e4 j___ZNK5boost6detail8function13basic_vtable0IN3RBX13worker_thread11work_resultEE9assign_toINS_3_bi6bind_tIS5_PFS5_NS_10shared_ptrINS3_7Network13AbuseReporter4dataEEESsENS8_5list2INS8_5valueISE_EENSI_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
+
+// 0xf616f4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS5_5list4INS5_5valueINS_10shared_ptrISB_EEEENSH_ISsEESL_NSH_ISE_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// type: int(void)
+#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS5_5list4INS5_5valueINS_10shared_ptrISB_EEEENSH_ISsEESL_NSH_ISE_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
+pub fn stub_0xf616f4() -> ! {
+    todo!("0xf616f4 j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS5_5list4INS5_5valueINS_10shared_ptrISB_EEEENSH_ISsEESL_NSH_ISE_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
+
+// 0xf617c4 — j___ZNSt11_Deque_baseIN3RBX7Network11AbuseReportESaIS2_EE17_M_initialize_mapEm
+// type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, void *, int)
+#[doc(alias = "std::_Deque_base<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::_M_initialize_map(unsigned long)")]
+#[doc(alias = "j___ZNSt11_Deque_baseIN3RBX7Network11AbuseReportESaIS2_EE17_M_initialize_mapEm")]
+pub fn stub_0xf617c4() -> ! {
+    todo!("0xf617c4 j___ZNSt11_Deque_baseIN3RBX7Network11AbuseReportESaIS2_EE17_M_initialize_mapEm")
+}
+
+// 0xf617f4 — j___ZNSt4listIN3RBX7Network11AbuseReport7MessageESaIS3_EE14_M_create_nodeERKS3_
+// type: int __fastcall(int, int, int, int, void *, int, int, int, void *, int)
+#[doc(alias = "std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>>::_M_create_node(RBX::Network::AbuseReport::Message const&)")]
+#[doc(alias = "j___ZNSt4listIN3RBX7Network11AbuseReport7MessageESaIS3_EE14_M_create_nodeERKS3_")]
+pub fn stub_0xf617f4() -> ! {
+    todo!("0xf617f4 j___ZNSt4listIN3RBX7Network11AbuseReport7MessageESaIS3_EE14_M_create_nodeERKS3_")
+}
+
+// 0xf61804 — j___ZNSt4listIN3RBX7Network11AbuseReport7MessageESaIS3_EE6insertISt20_List_const_iteratorIS3_EEEvSt14_List_iteratorIS3_ET_SB_
+// type: int __fastcall(int, int, int, int)
+#[doc(alias = "void std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>>::insert<std::_List_const_iterator<RBX::Network::AbuseReport::Message>>(std::_List_iterator<RBX::Network::AbuseReport::Message>,std::_List_const_iterator<RBX::Network::AbuseReport::Message>,std::_List_const_iterator<RBX::Network::AbuseReport::Message>)")]
+#[doc(alias = "j___ZNSt4listIN3RBX7Network11AbuseReport7MessageESaIS3_EE6insertISt20_List_const_iteratorIS3_EEEvSt14_List_iteratorIS3_ET_SB_")]
+pub fn stub_0xf61804() -> ! {
+    todo!("0xf61804 j___ZNSt4listIN3RBX7Network11AbuseReport7MessageESaIS3_EE6insertISt20_List_const_iteratorIS3_EEEvSt14_List_iteratorIS3_ET_SB_")
+}
+
+// 0xf61814 — j___ZNSt4listIN3RBX7Network11AbuseReport7MessageESaIS3_EEC2ERKS5_
+// type: int __fastcall(int, int, int, int, char, int, int, int, int)
+#[doc(alias = "std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>>::list(std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>> const&)")]
+#[doc(alias = "j___ZNSt4listIN3RBX7Network11AbuseReport7MessageESaIS3_EEC2ERKS5_")]
+pub fn stub_0xf61814() -> ! {
+    todo!("0xf61814 j___ZNSt4listIN3RBX7Network11AbuseReport7MessageESaIS3_EEC2ERKS5_")
+}
+
+// 0xf61824 — j___ZNSt4listIN3RBX7Network11AbuseReport7MessageESaIS3_EEaSERKS5_
 // type: int __fastcall(int, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::convertToIndex(RBX::Camera::CameraType)const")]
-#[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE14convertToIndexES3_")]
-pub fn stub_3d14e8() -> ! {
-    todo!("0x3d14e8 __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE14convertToIndexES3_")
+#[doc(alias = "std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>>::operator=(std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>> const&)")]
+#[doc(alias = "j___ZNSt4listIN3RBX7Network11AbuseReport7MessageESaIS3_EEaSERKS5_")]
+pub fn stub_0xf61824() -> ! {
+    todo!("0xf61824 j___ZNSt4listIN3RBX7Network11AbuseReport7MessageESaIS3_EEaSERKS5_")
 }
 
-// 0x3d1558 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEE11setIntValueEPNS0_13DescribedBaseEi
-// type: int __fastcall(int, int, int)
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Camera,RBX::Camera::CameraType>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-#[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_3d1558() -> ! {
-    todo!("0x3d1558 __ZNK3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEE11setIntValueEPNS0_13DescribedBaseEi")
+// 0xf61844 — j___ZNSt5dequeIN3RBX7Network11AbuseReportESaIS2_EE16_M_push_back_auxERKS2_
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, char, char, int, int, int, int, int, void *, int)
+#[doc(alias = "std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::_M_push_back_aux(RBX::Network::AbuseReport const&)")]
+#[doc(alias = "j___ZNSt5dequeIN3RBX7Network11AbuseReportESaIS2_EE16_M_push_back_auxERKS2_")]
+pub fn stub_0xf61844() -> ! {
+    todo!("0xf61844 j___ZNSt5dequeIN3RBX7Network11AbuseReportESaIS2_EE16_M_push_back_auxERKS2_")
 }
 
-// 0x3d1598 — __ZNK3RBX10Reflection14PropDescriptorINS_6CameraENS2_10CameraTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
-// type: int()
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,RBX::Camera::CameraType>::GetSetImpl<RBX::Camera::CameraType (RBX::Camera::*)(void)const,void (RBX::Camera::*)(RBX::Camera::CameraType)>::isReadOnly(void)const")]
-#[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_6CameraENS2_10CameraTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_3d1598() -> ! {
-    todo!("0x3d1598 __ZNK3RBX10Reflection14PropDescriptorINS_6CameraENS2_10CameraTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+// 0xf61854 — j___ZNSt5dequeIN3RBX7Network11AbuseReportESaIS2_EE17_M_reallocate_mapEmb
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::_M_reallocate_map(unsigned long,bool)")]
+#[doc(alias = "j___ZNSt5dequeIN3RBX7Network11AbuseReportESaIS2_EE17_M_reallocate_mapEmb")]
+pub fn stub_0xf61854() -> ! {
+    todo!("0xf61854 j___ZNSt5dequeIN3RBX7Network11AbuseReportESaIS2_EE17_M_reallocate_mapEmb")
 }
 
-// 0x3d159c — __ZNK3RBX10Reflection14PropDescriptorINS_6CameraENS2_10CameraTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
-// type: int()
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,RBX::Camera::CameraType>::GetSetImpl<RBX::Camera::CameraType (RBX::Camera::*)(void)const,void (RBX::Camera::*)(RBX::Camera::CameraType)>::isWriteOnly(void)const")]
-#[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_6CameraENS2_10CameraTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_3d159c() -> ! {
-    todo!("0x3d159c __ZNK3RBX10Reflection14PropDescriptorINS_6CameraENS2_10CameraTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+// 0xf61864 — j___ZNSt5dequeIN3RBX7Network11AbuseReportESaIS2_EE19_M_destroy_data_auxESt15_Deque_iteratorIS2_RS2_PS2_ES8_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::_M_destroy_data_aux(std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*>)")]
+#[doc(alias = "j___ZNSt5dequeIN3RBX7Network11AbuseReportESaIS2_EE19_M_destroy_data_auxESt15_Deque_iteratorIS2_RS2_PS2_ES8_")]
+pub fn stub_0xf61864() -> ! {
+    todo!("0xf61864 j___ZNSt5dequeIN3RBX7Network11AbuseReportESaIS2_EE19_M_destroy_data_auxESt15_Deque_iteratorIS2_RS2_PS2_ES8_")
 }
 
-// 0x3d15a0 — __ZNK3RBX10Reflection14PropDescriptorINS_6CameraENS2_10CameraTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
+// 0xf61874 — j___ZNSt5dequeIN3RBX7Network11AbuseReportESaIS2_EEC2ERKS4_
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt)
+#[doc(alias = "std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::deque(std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>> const&)")]
+#[doc(alias = "j___ZNSt5dequeIN3RBX7Network11AbuseReportESaIS2_EEC2ERKS4_")]
+pub fn stub_0xf61874() -> ! {
+    todo!("0xf61874 j___ZNSt5dequeIN3RBX7Network11AbuseReportESaIS2_EEC2ERKS4_")
+}
+
+// 0xf61884 — j___ZNSt5dequeIN3RBX7Network11AbuseReportESaIS2_EED2Ev
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt)
+#[doc(alias = "std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::~deque()")]
+#[doc(alias = "j___ZNSt5dequeIN3RBX7Network11AbuseReportESaIS2_EED2Ev")]
+pub fn stub_0xf61884() -> ! {
+    todo!("0xf61884 j___ZNSt5dequeIN3RBX7Network11AbuseReportESaIS2_EED2Ev")
+}
+
+// 0xf61894 — j___ZNSt6vectorIN3RBX7Network7Players10ChatOptionESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
+// type: int __fastcall(_DWORD)
+#[doc(alias = "std::vector<RBX::Network::Players::ChatOption,std::allocator<RBX::Network::Players::ChatOption>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::Players::ChatOption*,std::vector<RBX::Network::Players::ChatOption,std::allocator<RBX::Network::Players::ChatOption>>>,RBX::Network::Players::ChatOption const&)")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX7Network7Players10ChatOptionESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_")]
+pub fn stub_0xf61894() -> ! {
+    todo!("0xf61894 j___ZNSt6vectorIN3RBX7Network7Players10ChatOptionESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_")
+}
+
+// 0xf618a4 — j___ZNSt6vectorIN3RBX7Network7Players10ChatOptionESaIS3_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EEmRKS3_
+// type: int __fastcall(_DWORD)
+#[doc(alias = "std::vector<RBX::Network::Players::ChatOption,std::allocator<RBX::Network::Players::ChatOption>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Network::Players::ChatOption*,std::vector<RBX::Network::Players::ChatOption,std::allocator<RBX::Network::Players::ChatOption>>>,unsigned long,RBX::Network::Players::ChatOption const&)")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX7Network7Players10ChatOptionESaIS3_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EEmRKS3_")]
+pub fn stub_0xf618a4() -> ! {
+    todo!("0xf618a4 j___ZNSt6vectorIN3RBX7Network7Players10ChatOptionESaIS3_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EEmRKS3_")
+}
+
+// 0xf618b4 — j___ZNSt6vectorIN3RBX7Network7Players14PlayerChatTypeESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
+// type: int __fastcall(_DWORD)
+#[doc(alias = "std::vector<RBX::Network::Players::PlayerChatType,std::allocator<RBX::Network::Players::PlayerChatType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::Players::PlayerChatType*,std::vector<RBX::Network::Players::PlayerChatType,std::allocator<RBX::Network::Players::PlayerChatType>>>,RBX::Network::Players::PlayerChatType const&)")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX7Network7Players14PlayerChatTypeESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_")]
+pub fn stub_0xf618b4() -> ! {
+    todo!("0xf618b4 j___ZNSt6vectorIN3RBX7Network7Players14PlayerChatTypeESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_")
+}
+
+// 0xf618c4 — j___ZNSt6vectorIN3RBX7Network7Players14PlayerChatTypeESaIS3_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EEmRKS3_
+// type: int __fastcall(_DWORD)
+#[doc(alias = "std::vector<RBX::Network::Players::PlayerChatType,std::allocator<RBX::Network::Players::PlayerChatType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Network::Players::PlayerChatType*,std::vector<RBX::Network::Players::PlayerChatType,std::allocator<RBX::Network::Players::PlayerChatType>>>,unsigned long,RBX::Network::Players::PlayerChatType const&)")]
+#[doc(alias = "j___ZNSt6vectorIN3RBX7Network7Players14PlayerChatTypeESaIS3_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EEmRKS3_")]
+pub fn stub_0xf618c4() -> ! {
+    todo!("0xf618c4 j___ZNSt6vectorIN3RBX7Network7Players14PlayerChatTypeESaIS3_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EEmRKS3_")
+}
+
+// 0xf61924 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players10ChatOptionEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueERKS9_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption> const&)")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players10ChatOptionEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueERKS9_")]
+pub fn stub_0xf61924() -> ! {
+    todo!("0xf61924 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players10ChatOptionEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueERKS9_")
+}
+
+// 0xf61934 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players10ChatOptionEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
+// type: int __fastcall(int, _Rb_tree_node_base *)
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption>>,std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption> const&)")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players10ChatOptionEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_")]
+pub fn stub_0xf61934() -> ! {
+    todo!("0xf61934 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players10ChatOptionEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_")
+}
+
+// 0xf61944 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players10ChatOptionEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Network::Players::ChatOption>> *)")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players10ChatOptionEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E")]
+pub fn stub_0xf61944() -> ! {
+    todo!("0xf61944 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players10ChatOptionEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E")
+}
+
+// 0xf61954 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players14PlayerChatTypeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueERKS9_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType> const&)")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players14PlayerChatTypeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueERKS9_")]
+pub fn stub_0xf61954() -> ! {
+    todo!("0xf61954 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players14PlayerChatTypeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueERKS9_")
+}
+
+// 0xf61964 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players14PlayerChatTypeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
+// type: int __fastcall(int, _Rb_tree_node_base *)
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType>>,std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType> const&)")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players14PlayerChatTypeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_")]
+pub fn stub_0xf61964() -> ! {
+    todo!("0xf61964 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players14PlayerChatTypeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_")
+}
+
+// 0xf61974 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players14PlayerChatTypeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Network::Players::PlayerChatType>> *)")]
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players14PlayerChatTypeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E")]
+pub fn stub_0xf61974() -> ! {
+    todo!("0xf61974 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network7Players14PlayerChatTypeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E")
+}
+
+// 0xf61a24 — j___ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN3RBX7Network11AbuseReportERKS3_PS4_ES0_IS3_RS3_PS3_EET0_T_SC_SB_St12__false_type
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, char, int, int, int, int, int, void *, int)
+#[doc(alias = "std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*> std::__uninitialized_copy_aux<std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport const&,RBX::Network::AbuseReport const*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*>>(std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport const&,RBX::Network::AbuseReport const*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport const&,RBX::Network::AbuseReport const*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*>,std::__false_type)")]
+#[doc(alias = "j___ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN3RBX7Network11AbuseReportERKS3_PS4_ES0_IS3_RS3_PS3_EET0_T_SC_SB_St12__false_type")]
+pub fn stub_0xf61a24() -> ! {
+    todo!("0xf61a24 j___ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN3RBX7Network11AbuseReportERKS3_PS4_ES0_IS3_RS3_PS3_EET0_T_SC_SB_St12__false_type")
+}
+
+// 0xf61a34 — j___ZSt8for_eachISt20_List_const_iteratorIN3RBX7Network11ChatMessageEEN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvNS2_11AbuseReportENS5_10shared_ptrINS2_6PlayerEEERKS3_EENS6_5list3INS5_17reference_wrapperISA_EENS6_5valueISD_EENS5_3argILi1EEEEEEEET0_T_SR_SQ_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, int, int, int, int, int, int, int, int)
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&>,boost::_bi::list3<boost::reference_wrapper<RBX::Network::AbuseReport>,boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::arg<1>>> std::for_each<std::_List_const_iterator<RBX::Network::ChatMessage>,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&>,boost::_bi::list3<boost::reference_wrapper<RBX::Network::AbuseReport>,boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::arg<1>>>>(std::_List_const_iterator<RBX::Network::ChatMessage>,std::_List_const_iterator<RBX::Network::ChatMessage>,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&>,boost::_bi::list3<boost::reference_wrapper<RBX::Network::AbuseReport>,boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::arg<1>>>)")]
+#[doc(alias = "j___ZSt8for_eachISt20_List_const_iteratorIN3RBX7Network11ChatMessageEEN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvNS2_11AbuseReportENS5_10shared_ptrINS2_6PlayerEEERKS3_EENS6_5list3INS5_17reference_wrapperISA_EENS6_5valueISD_EENS5_3argILi1EEEEEEEET0_T_SR_SQ_")]
+pub fn stub_0xf61a34() -> ! {
+    todo!("0xf61a34 j___ZSt8for_eachISt20_List_const_iteratorIN3RBX7Network11ChatMessageEEN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvNS2_11AbuseReportENS5_10shared_ptrINS2_6PlayerEEERKS3_EENS6_5list3INS5_17reference_wrapperISA_EENS6_5valueISD_EENS5_3argILi1EEEEEEEET0_T_SR_SQ_")
+}
+
+// 0xf61a54 — j___ZN14DataStructures10MemoryPoolIN6RakNet17RemoteSystemIndexEE7ReleaseEPS2_PKcj
+// type: int __fastcall(int, int, void *, char *)
+#[doc(alias = "DataStructures::MemoryPool<RakNet::RemoteSystemIndex>::Release(RakNet::RemoteSystemIndex*,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures10MemoryPoolIN6RakNet17RemoteSystemIndexEE7ReleaseEPS2_PKcj")]
+pub fn stub_0xf61a54() -> ! {
+    todo!("0xf61a54 j___ZN14DataStructures10MemoryPoolIN6RakNet17RemoteSystemIndexEE7ReleaseEPS2_PKcj")
+}
+
+// 0xf61a64 — j___ZN14DataStructures10MemoryPoolIN6RakNet17RemoteSystemIndexEE8AllocateEPKcj
+// type: int __fastcall(int, unsigned int, char *)
+#[doc(alias = "DataStructures::MemoryPool<RakNet::RemoteSystemIndex>::Allocate(char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures10MemoryPoolIN6RakNet17RemoteSystemIndexEE8AllocateEPKcj")]
+pub fn stub_0xf61a64() -> ! {
+    todo!("0xf61a64 j___ZN14DataStructures10MemoryPoolIN6RakNet17RemoteSystemIndexEE8AllocateEPKcj")
+}
+
+// 0xf61a74 — j___ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer14RecvFromStructEE7ReleaseEPS3_PKcj
+// type: int __fastcall(int, int, void *, char *)
+#[doc(alias = "DataStructures::MemoryPool<RakNet::RakPeer::RecvFromStruct>::Release(RakNet::RakPeer::RecvFromStruct*,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer14RecvFromStructEE7ReleaseEPS3_PKcj")]
+pub fn stub_0xf61a74() -> ! {
+    todo!("0xf61a74 j___ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer14RecvFromStructEE7ReleaseEPS3_PKcj")
+}
+
+// 0xf61a84 — j___ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer14RecvFromStructEE8AllocateEPKcj
+// type: int __fastcall(int, unsigned int, char *)
+#[doc(alias = "DataStructures::MemoryPool<RakNet::RakPeer::RecvFromStruct>::Allocate(char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer14RecvFromStructEE8AllocateEPKcj")]
+pub fn stub_0xf61a84() -> ! {
+    todo!("0xf61a84 j___ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer14RecvFromStructEE8AllocateEPKcj")
+}
+
+// 0xf61a94 — j___ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE7ReleaseEPS3_PKcj
+// type: int __fastcall(int, int, void *, char *)
+#[doc(alias = "DataStructures::MemoryPool<RakNet::RakPeer::SocketQueryOutput>::Release(RakNet::RakPeer::SocketQueryOutput*,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE7ReleaseEPS3_PKcj")]
+pub fn stub_0xf61a94() -> ! {
+    todo!("0xf61a94 j___ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE7ReleaseEPS3_PKcj")
+}
+
+// 0xf61aa4 — j___ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE8AllocateEPKcj
+// type: int __fastcall(int, unsigned int, char *)
+#[doc(alias = "DataStructures::MemoryPool<RakNet::RakPeer::SocketQueryOutput>::Allocate(char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE8AllocateEPKcj")]
+pub fn stub_0xf61aa4() -> ! {
+    todo!("0xf61aa4 j___ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE8AllocateEPKcj")
+}
+
+// 0xf61ab4 — j___ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE7ReleaseEPS3_PKcj
+// type: int __fastcall(int, int, void *, char *)
+#[doc(alias = "DataStructures::MemoryPool<RakNet::RakPeer::BufferedCommandStruct>::Release(RakNet::RakPeer::BufferedCommandStruct*,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE7ReleaseEPS3_PKcj")]
+pub fn stub_0xf61ab4() -> ! {
+    todo!("0xf61ab4 j___ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE7ReleaseEPS3_PKcj")
+}
+
+// 0xf61ac4 — j___ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE8AllocateEPKcj
+// type: int __fastcall(int, unsigned int, char *)
+#[doc(alias = "DataStructures::MemoryPool<RakNet::RakPeer::BufferedCommandStruct>::Allocate(char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE8AllocateEPKcj")]
+pub fn stub_0xf61ac4() -> ! {
+    todo!("0xf61ac4 j___ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE8AllocateEPKcj")
+}
+
+// 0xf61ad4 — j___ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer14RecvFromStructEE5ClearEPKcj
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::RecvFromStruct>::Clear(char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer14RecvFromStructEE5ClearEPKcj")]
+pub fn stub_0xf61ad4() -> ! {
+    todo!("0xf61ad4 j___ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer14RecvFromStructEE5ClearEPKcj")
+}
+
+// 0xf61ae4 — j___ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer14RecvFromStructEED2Ev
+// type: int __fastcall(_DWORD)
+#[doc(alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::RecvFromStruct>::~ThreadsafeAllocatingQueue()")]
+#[doc(alias = "j___ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer14RecvFromStructEED2Ev")]
+pub fn stub_0xf61ae4() -> ! {
+    todo!("0xf61ae4 j___ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer14RecvFromStructEED2Ev")
+}
+
+// 0xf61af4 — j___ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer17SocketQueryOutputEE5ClearEPKcj
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::SocketQueryOutput>::Clear(char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer17SocketQueryOutputEE5ClearEPKcj")]
+pub fn stub_0xf61af4() -> ! {
+    todo!("0xf61af4 j___ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer17SocketQueryOutputEE5ClearEPKcj")
+}
+
+// 0xf61b04 — j___ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer17SocketQueryOutputEED2Ev
+// type: int __fastcall(_DWORD)
+#[doc(alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::SocketQueryOutput>::~ThreadsafeAllocatingQueue()")]
+#[doc(alias = "j___ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer17SocketQueryOutputEED2Ev")]
+pub fn stub_0xf61b04() -> ! {
+    todo!("0xf61b04 j___ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer17SocketQueryOutputEED2Ev")
+}
+
+// 0xf61b14 — j___ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer21BufferedCommandStructEE5ClearEPKcj
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::BufferedCommandStruct>::Clear(char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer21BufferedCommandStructEE5ClearEPKcj")]
+pub fn stub_0xf61b14() -> ! {
+    todo!("0xf61b14 j___ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer21BufferedCommandStructEE5ClearEPKcj")
+}
+
+// 0xf61b24 — j___ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer21BufferedCommandStructEED2Ev
+// type: int __fastcall(_DWORD)
+#[doc(alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::BufferedCommandStruct>::~ThreadsafeAllocatingQueue()")]
+#[doc(alias = "j___ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer21BufferedCommandStructEED2Ev")]
+pub fn stub_0xf61b24() -> ! {
+    todo!("0xf61b24 j___ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer21BufferedCommandStructEED2Ev")
+}
+
+// 0xf61b34 — j___ZN14DataStructures4ListIN6RakNet10RakNetGUIDEE6InsertERKS2_PKcj
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int)
+#[doc(alias = "DataStructures::List<RakNet::RakNetGUID>::Insert(RakNet::RakNetGUID const&,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures4ListIN6RakNet10RakNetGUIDEE6InsertERKS2_PKcj")]
+pub fn stub_0xf61b34() -> ! {
+    todo!("0xf61b34 j___ZN14DataStructures4ListIN6RakNet10RakNetGUIDEE6InsertERKS2_PKcj")
+}
+
+// 0xf61b44 — j___ZN14DataStructures4ListIN6RakNet13SystemAddressEE6InsertERKS2_PKcj
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int)
+#[doc(alias = "DataStructures::List<RakNet::SystemAddress>::Insert(RakNet::SystemAddress const&,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures4ListIN6RakNet13SystemAddressEE6InsertERKS2_PKcj")]
+pub fn stub_0xf61b44() -> ! {
+    todo!("0xf61b44 j___ZN14DataStructures4ListIN6RakNet13SystemAddressEE6InsertERKS2_PKcj")
+}
+
+// 0xf61b54 — j___ZN14DataStructures4ListIN6RakNet14RakNetSmartPtrINS1_12RakNetSocketEEEE6InsertERKS4_PKcj
+// type: int __fastcall(RakNet::RakNetSocket *, int, int, int, int, int, int, int, int, void *, int, int, int)
+#[doc(alias = "DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>::Insert(RakNet::RakNetSmartPtr<RakNet::RakNetSocket> const&,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures4ListIN6RakNet14RakNetSmartPtrINS1_12RakNetSocketEEEE6InsertERKS4_PKcj")]
+pub fn stub_0xf61b54() -> ! {
+    todo!("0xf61b54 j___ZN14DataStructures4ListIN6RakNet14RakNetSmartPtrINS1_12RakNetSocketEEEE6InsertERKS4_PKcj")
+}
+
+// 0xf61b64 — j___ZN14DataStructures4ListIN6RakNet14RakNetSmartPtrINS1_12RakNetSocketEEEEaSERKS5_
+// type: int __fastcall(void *, int, int, int, int, void *, int, int, int)
+#[doc(alias = "DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>::operator=(DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>> const&)")]
+#[doc(alias = "j___ZN14DataStructures4ListIN6RakNet14RakNetSmartPtrINS1_12RakNetSocketEEEEaSERKS5_")]
+pub fn stub_0xf61b64() -> ! {
+    todo!("0xf61b64 j___ZN14DataStructures4ListIN6RakNet14RakNetSmartPtrINS1_12RakNetSocketEEEEaSERKS5_")
+}
+
+// 0xf61b74 — j___ZN14DataStructures4ListIN6RakNet9RakStringEE6InsertERKS2_PKcj
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int, int, int, int)
+#[doc(alias = "DataStructures::List<RakNet::RakString>::Insert(RakNet::RakString const&,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures4ListIN6RakNet9RakStringEE6InsertERKS2_PKcj")]
+pub fn stub_0xf61b74() -> ! {
+    todo!("0xf61b74 j___ZN14DataStructures4ListIN6RakNet9RakStringEE6InsertERKS2_PKcj")
+}
+
+// 0xf61b84 — j___ZN14DataStructures5QueueIPN6RakNet6PacketEE10PushAtHeadERKS3_jPKcj
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "DataStructures::Queue<RakNet::Packet *>::PushAtHead(RakNet::Packet * const&,unsigned int,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures5QueueIPN6RakNet6PacketEE10PushAtHeadERKS3_jPKcj")]
+pub fn stub_0xf61b84() -> ! {
+    todo!("0xf61b84 j___ZN14DataStructures5QueueIPN6RakNet6PacketEE10PushAtHeadERKS3_jPKcj")
+}
+
+// 0xf61b94 — j___ZN14DataStructures5QueueIPN6RakNet7RakPeer14RecvFromStructEE4PushERKS4_PKcj
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "DataStructures::Queue<RakNet::RakPeer::RecvFromStruct *>::Push(RakNet::RakPeer::RecvFromStruct * const&,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures5QueueIPN6RakNet7RakPeer14RecvFromStructEE4PushERKS4_PKcj")]
+pub fn stub_0xf61b94() -> ! {
+    todo!("0xf61b94 j___ZN14DataStructures5QueueIPN6RakNet7RakPeer14RecvFromStructEE4PushERKS4_PKcj")
+}
+
+// 0xf61ba4 — j___ZN14DataStructures5QueueIPN6RakNet7RakPeer17SocketQueryOutputEE4PushERKS4_PKcj
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "DataStructures::Queue<RakNet::RakPeer::SocketQueryOutput *>::Push(RakNet::RakPeer::SocketQueryOutput * const&,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures5QueueIPN6RakNet7RakPeer17SocketQueryOutputEE4PushERKS4_PKcj")]
+pub fn stub_0xf61ba4() -> ! {
+    todo!("0xf61ba4 j___ZN14DataStructures5QueueIPN6RakNet7RakPeer17SocketQueryOutputEE4PushERKS4_PKcj")
+}
+
+// 0xf61bb4 — j___ZN14DataStructures5QueueIPN6RakNet7RakPeer21BufferedCommandStructEE4PushERKS4_PKcj
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "DataStructures::Queue<RakNet::RakPeer::BufferedCommandStruct *>::Push(RakNet::RakPeer::BufferedCommandStruct * const&,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures5QueueIPN6RakNet7RakPeer21BufferedCommandStructEE4PushERKS4_PKcj")]
+pub fn stub_0xf61bb4() -> ! {
+    todo!("0xf61bb4 j___ZN14DataStructures5QueueIPN6RakNet7RakPeer21BufferedCommandStructEE4PushERKS4_PKcj")
+}
+
+// 0xf61bc4 — j___ZN14DataStructures5QueueIPN6RakNet7RakPeer25RequestedConnectionStructEE4PushERKS4_PKcj
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "DataStructures::Queue<RakNet::RakPeer::RequestedConnectionStruct *>::Push(RakNet::RakPeer::RequestedConnectionStruct * const&,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures5QueueIPN6RakNet7RakPeer25RequestedConnectionStructEE4PushERKS4_PKcj")]
+pub fn stub_0xf61bc4() -> ! {
+    todo!("0xf61bc4 j___ZN14DataStructures5QueueIPN6RakNet7RakPeer25RequestedConnectionStructEE4PushERKS4_PKcj")
+}
+
+// 0xf61bd4 — j___ZN6RakNet15OP_DELETE_ARRAYINS_14RakNetSmartPtrINS_12RakNetSocketEEEEEvPT_PKcj
+// type: int __fastcall(int, int, int, int, int, void *, int, int, void *, RakNet::RakNetSocket *, int, int, int, int)
+#[doc(alias = "void RakNet::OP_DELETE_ARRAY<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>(RakNet::RakNetSmartPtr<RakNet::RakNetSocket> *,char const*,unsigned int)")]
+#[doc(alias = "j___ZN6RakNet15OP_DELETE_ARRAYINS_14RakNetSmartPtrINS_12RakNetSocketEEEEEvPT_PKcj")]
+pub fn stub_0xf61bd4() -> ! {
+    todo!("0xf61bd4 j___ZN6RakNet15OP_DELETE_ARRAYINS_14RakNetSmartPtrINS_12RakNetSocketEEEEEvPT_PKcj")
+}
+
+// 0xf61be4 — j___ZN6RakNet7RakPeer18RemoteSystemStructC2Ev
+// type: _DWORD __fastcall(RakNet::RakPeer::RemoteSystemStruct *__hidden this)
+#[doc(alias = "RakNet::RakPeer::RemoteSystemStruct::RemoteSystemStruct(void)")]
+#[doc(alias = "j___ZN6RakNet7RakPeer18RemoteSystemStructC2Ev")]
+pub fn stub_0xf61be4() -> ! {
+    todo!("0xf61be4 j___ZN6RakNet7RakPeer18RemoteSystemStructC2Ev")
+}
+
+// 0xf61bf4 — j___ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE7ReleaseEPS2_PKcj
+// type: int __fastcall(int, int, void *, char *)
+#[doc(alias = "DataStructures::MemoryPool<RakNet::InternalPacket>::Release(RakNet::InternalPacket*,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE7ReleaseEPS2_PKcj")]
+pub fn stub_0xf61bf4() -> ! {
+    todo!("0xf61bf4 j___ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE7ReleaseEPS2_PKcj")
+}
+
+// 0xf61c04 — j___ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE8AllocateEPKcj
+// type: int __fastcall(int, unsigned int, char *)
+#[doc(alias = "DataStructures::MemoryPool<RakNet::InternalPacket>::Allocate(char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE8AllocateEPKcj")]
+pub fn stub_0xf61c04() -> ! {
+    todo!("0xf61c04 j___ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE8AllocateEPKcj")
+}
+
+// 0xf61c14 — j___ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE7ReleaseEPS3_PKcj
+// type: int __fastcall(int, int, void *, char *)
+#[doc(alias = "DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Release(RakNet::ReliabilityLayer::MessageNumberNode*,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE7ReleaseEPS3_PKcj")]
+pub fn stub_0xf61c14() -> ! {
+    todo!("0xf61c14 j___ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE7ReleaseEPS3_PKcj")
+}
+
+// 0xf61c24 — j___ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE8AllocateEPKcj
+// type: int __fastcall(int, unsigned int, char *)
+#[doc(alias = "DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Allocate(char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE8AllocateEPKcj")]
+pub fn stub_0xf61c24() -> ! {
+    todo!("0xf61c24 j___ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE8AllocateEPKcj")
+}
+
+// 0xf61c34 — j___ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE7ReleaseEPS2_PKcj
+// type: int __fastcall(int, int, void *, char *)
+#[doc(alias = "DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Release(RakNet::InternalPacketRefCountedData*,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE7ReleaseEPS2_PKcj")]
+pub fn stub_0xf61c34() -> ! {
+    todo!("0xf61c34 j___ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE7ReleaseEPS2_PKcj")
+}
+
+// 0xf61c44 — j___ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE8AllocateEPKcj
+// type: int __fastcall(int, unsigned int, char *)
+#[doc(alias = "DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Allocate(char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE8AllocateEPKcj")]
+pub fn stub_0xf61c44() -> ! {
+    todo!("0xf61c44 j___ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE8AllocateEPKcj")
+}
+
+// 0xf61c54 — j___ZN14DataStructures11OrderedListItPN6RakNet18SplitPacketChannelEXadL_ZNS1_22SplitPacketChannelCompERKtRKS3_EEE6InsertES5_S7_bPKcjPFiS5_S7_E
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "DataStructures::OrderedList<unsigned short,RakNet::SplitPacketChannel *,&RakNet::SplitPacketChannelComp>::Insert(unsigned short const&,RakNet::SplitPacketChannel * const&,bool,char const*,unsigned int,int (*)(unsigned short const&,RakNet::SplitPacketChannel * const&))")]
+#[doc(alias = "j___ZN14DataStructures11OrderedListItPN6RakNet18SplitPacketChannelEXadL_ZNS1_22SplitPacketChannelCompERKtRKS3_EEE6InsertES5_S7_bPKcjPFiS5_S7_E")]
+pub fn stub_0xf61c54() -> ! {
+    todo!("0xf61c54 j___ZN14DataStructures11OrderedListItPN6RakNet18SplitPacketChannelEXadL_ZNS1_22SplitPacketChannelCompERKtRKS3_EEE6InsertES5_S7_bPKcjPFiS5_S7_E")
+}
+
+// 0xf61c64 — j___ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE10PushSeriesERKyRKS3_PKcj
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::PushSeries(unsigned long long const&,RakNet::InternalPacket * const&,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE10PushSeriesERKyRKS3_PKcj")]
+pub fn stub_0xf61c64() -> ! {
+    todo!("0xf61c64 j___ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE10PushSeriesERKyRKS3_PKcj")
+}
+
+// 0xf61c74 — j___ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE3PopEj
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::Pop(unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE3PopEj")]
+pub fn stub_0xf61c74() -> ! {
+    todo!("0xf61c74 j___ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE3PopEj")
+}
+
+// 0xf61c84 — j___ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE4PushERKyRKS3_PKcj
+#[doc(alias = "DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::Push(unsigned long long const&,RakNet::InternalPacket * const&,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE4PushERKyRKS3_PKcj")]
+pub fn stub_0xf61c84() -> ! {
+    todo!("0xf61c84 j___ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE4PushERKyRKS3_PKcj")
+}
+
+// 0xf61c94 — j___ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_PKcj
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert(DataStructures::RangeNode<RakNet::uint24_t> const&,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_PKcj")]
+pub fn stub_0xf61c94() -> ! {
+    todo!("0xf61c94 j___ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_PKcj")
+}
+
+// 0xf61ca4 — j___ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_jPKcj
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert(DataStructures::RangeNode<RakNet::uint24_t> const&,unsigned int,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_jPKcj")]
+pub fn stub_0xf61ca4() -> ! {
+    todo!("0xf61ca4 j___ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_jPKcj")
+}
+
+// 0xf61cb4 — j___ZN14DataStructures4ListIPN6RakNet18SplitPacketChannelEE6InsertERKS3_jPKcj
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "DataStructures::List<RakNet::SplitPacketChannel *>::Insert(RakNet::SplitPacketChannel * const&,unsigned int,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures4ListIPN6RakNet18SplitPacketChannelEE6InsertERKS3_jPKcj")]
+pub fn stub_0xf61cb4() -> ! {
+    todo!("0xf61cb4 j___ZN14DataStructures4ListIPN6RakNet18SplitPacketChannelEE6InsertERKS3_jPKcj")
+}
+
+// 0xf61cc4 — j___ZN14DataStructures5QueueIN6RakNet10BPSTracker13TimeAndValue2EE4PushERKS3_PKcj
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "DataStructures::Queue<RakNet::BPSTracker::TimeAndValue2>::Push(RakNet::BPSTracker::TimeAndValue2 const&,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures5QueueIN6RakNet10BPSTracker13TimeAndValue2EE4PushERKS3_PKcj")]
+pub fn stub_0xf61cc4() -> ! {
+    todo!("0xf61cc4 j___ZN14DataStructures5QueueIN6RakNet10BPSTracker13TimeAndValue2EE4PushERKS3_PKcj")
+}
+
+// 0xf61cd4 — j___ZN14DataStructures5QueueIN6RakNet16ReliabilityLayer19DatagramHistoryNodeEE4PushERKS3_PKcj
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "DataStructures::Queue<RakNet::ReliabilityLayer::DatagramHistoryNode>::Push(RakNet::ReliabilityLayer::DatagramHistoryNode const&,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures5QueueIN6RakNet16ReliabilityLayer19DatagramHistoryNodeEE4PushERKS3_PKcj")]
+pub fn stub_0xf61cd4() -> ! {
+    todo!("0xf61cd4 j___ZN14DataStructures5QueueIN6RakNet16ReliabilityLayer19DatagramHistoryNodeEE4PushERKS3_PKcj")
+}
+
+// 0xf61ce4 — j___ZN14DataStructures5QueueIPN6RakNet14InternalPacketEE4PushERKS3_PKcj
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "DataStructures::Queue<RakNet::InternalPacket *>::Push(RakNet::InternalPacket * const&,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures5QueueIPN6RakNet14InternalPacketEE4PushERKS3_PKcj")]
+pub fn stub_0xf61ce4() -> ! {
+    todo!("0xf61ce4 j___ZN14DataStructures5QueueIPN6RakNet14InternalPacketEE4PushERKS3_PKcj")
+}
+
+// 0xf61d14 — j___ZN14DataStructures9RangeListIN6RakNet8uint24_tEE11DeserializeEPNS1_9BitStreamE
 // type: int __fastcall(int, int)
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,RBX::Camera::CameraType>::GetSetImpl<RBX::Camera::CameraType (RBX::Camera::*)(void)const,void (RBX::Camera::*)(RBX::Camera::CameraType)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-#[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_6CameraENS2_10CameraTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_3d15a0() -> ! {
-    todo!("0x3d15a0 __ZNK3RBX10Reflection14PropDescriptorINS_6CameraENS2_10CameraTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")
+#[doc(alias = "DataStructures::RangeList<RakNet::uint24_t>::Deserialize(RakNet::BitStream *)")]
+#[doc(alias = "j___ZN14DataStructures9RangeListIN6RakNet8uint24_tEE11DeserializeEPNS1_9BitStreamE")]
+pub fn stub_0xf61d14() -> ! {
+    todo!("0xf61d14 j___ZN14DataStructures9RangeListIN6RakNet8uint24_tEE11DeserializeEPNS1_9BitStreamE")
 }
-
-// 0x3d15c0 — __ZNK3RBX10Reflection14PropDescriptorINS_6CameraENS2_10CameraTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
-// type: int __fastcall(int, int, _DWORD *)
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,RBX::Camera::CameraType>::GetSetImpl<RBX::Camera::CameraType (RBX::Camera::*)(void)const,void (RBX::Camera::*)(RBX::Camera::CameraType)>::setValue(RBX::Reflection::DescribedBase *,RBX::Camera::CameraType const&)const")]
-#[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_6CameraENS2_10CameraTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")]
-pub fn stub_3d15c0() -> ! {
-    todo!("0x3d15c0 __ZNK3RBX10Reflection14PropDescriptorINS_6CameraENS2_10CameraTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")
+
+// 0xf61d24 — j___ZN14DataStructures9RangeListIN6RakNet8uint24_tEE6InsertES2_
+// type: int __fastcall(int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "DataStructures::RangeList<RakNet::uint24_t>::Insert(RakNet::uint24_t)")]
+#[doc(alias = "j___ZN14DataStructures9RangeListIN6RakNet8uint24_tEE6InsertES2_")]
+pub fn stub_0xf61d24() -> ! {
+    todo!("0xf61d24 j___ZN14DataStructures9RangeListIN6RakNet8uint24_tEE6InsertES2_")
 }
-
-// 0x3d15e4 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Camera10CameraTypeEEEE13initSingletonEv
-#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Camera::CameraType> const>::initSingleton(void)")]
-#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Camera10CameraTypeEEEE13initSingletonEv")]
-pub fn stub_3d15e4() -> ! {
-    todo!("0x3d15e4 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Camera10CameraTypeEEEE13initSingletonEv")
+
+// 0xf61d34 — j___ZN14DataStructures9RangeListIN6RakNet8uint24_tEE9SerializeEPNS1_9BitStreamEjb
+// type: int __fastcall(int, int, int, int)
+#[doc(alias = "DataStructures::RangeList<RakNet::uint24_t>::Serialize(RakNet::BitStream *,unsigned int,bool)")]
+#[doc(alias = "j___ZN14DataStructures9RangeListIN6RakNet8uint24_tEE9SerializeEPNS1_9BitStreamEjb")]
+pub fn stub_0xf61d34() -> ! {
+    todo!("0xf61d34 j___ZN14DataStructures9RangeListIN6RakNet8uint24_tEE9SerializeEPNS1_9BitStreamEjb")
 }
-
-// 0x3d15e8 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Camera10CameraTypeEEEE14doGetSingletonEv
-// type: void *()
-#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Camera::CameraType> const>::doGetSingleton(void)")]
-#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Camera10CameraTypeEEEE14doGetSingletonEv")]
-pub fn stub_3d15e8() -> ! {
-    todo!("0x3d15e8 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Camera10CameraTypeEEEE14doGetSingletonEv")
-}
-
-// 0x3d16d8 — __ZN3RBX6CameraD2Ev
-// type: void __fastcall(RBX::Camera *this, int, int, int)
-#[doc(alias = "RBX::Camera::~Camera()")]
-#[doc(alias = "__ZN3RBX6CameraD2Ev")]
-pub fn stub_3d16d8() -> ! {
-    todo!("0x3d16d8 __ZN3RBX6CameraD2Ev")
-}
-
-// 0x3d1900 — __ZN3G3D5ArrayINS_5PlaneELi10ELm32EEaSERKS2_
-// type: int *__fastcall(int *, int *)
-#[doc(alias = "G3D::Array<G3D::Plane,10,32ul>::operator=(G3D::Array<G3D::Plane,10,32ul> const&)")]
-#[doc(alias = "__ZN3G3D5ArrayINS_5PlaneELi10ELm32EEaSERKS2_")]
-pub fn stub_3d1900() -> ! {
-    todo!("0x3d1900 __ZN3G3D5ArrayINS_5PlaneELi10ELm32EEaSERKS2_")
-}
-
-// 0x3d194c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_6Camera13CameraPanModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
-// type: void __fastcall(int, _DWORD *)
-#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Camera::CameraPanMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Camera::CameraPanMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Camera::CameraPanMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Camera::CameraPanMode>> *)")]
-#[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_6Camera13CameraPanModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_3d194c() -> ! {
-    todo!("0x3d194c __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_6Camera13CameraPanModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
-}
-
-// 0x3d1974 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_6Camera10CameraModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
-// type: void __fastcall(int, _DWORD *)
-#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Camera::CameraMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Camera::CameraMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Camera::CameraMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Camera::CameraMode>> *)")]
-#[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_6Camera10CameraModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_3d1974() -> ! {
-    todo!("0x3d1974 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_6Camera10CameraModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
-}
-
-// 0x3d199c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_6Camera10CameraTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
-// type: void __fastcall(int, _DWORD *)
-#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Camera::CameraType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Camera::CameraType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Camera::CameraType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Camera::CameraType>> *)")]
-#[doc(alias = "__ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_6Camera10CameraTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_3d199c() -> ! {
-    todo!("0x3d199c __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_6Camera10CameraTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
-}
-
-// 0x3d19c4 — __GLOBAL__I_a_166
-#[doc(alias = "__GLOBAL__I_a_166")]
-pub fn stub_3d19c4() -> ! {
-    todo!("0x3d19c4 __GLOBAL__I_a_166")
-}
-
-// 0x3d22c0 — __ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEEC1Ev
-// type: int()
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::EnumDesc(void)")]
-#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEEC1Ev")]
-pub fn stub_3d22c0() -> ! {
-    todo!("0x3d22c0 __ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEEC1Ev")
-}
-
-// 0x3d22c4 — __ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEEC2Ev
-// type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::EnumDesc(void)")]
-#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEEC2Ev")]
-pub fn stub_3d22c4() -> ! {
-    todo!("0x3d22c4 __ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEEC2Ev")
-}
-
-// 0x3d249c — __ZN3RBX20ChangeHistoryService10setEnabledEb
-// type: RBX::ChangeHistoryService *__fastcall(RBX::ChangeHistoryService *this, int)
-#[doc(alias = "RBX::ChangeHistoryService::setEnabled(bool)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService10setEnabledEb")]
-pub fn stub_3d249c() -> ! {
-    todo!("0x3d249c __ZN3RBX20ChangeHistoryService10setEnabledEb")
-}
-
-// 0x3d24b8 — __ZN3RBX20ChangeHistoryService17resetBaseWaypointEv
-// type: int __fastcall(RBX::ChangeHistoryService *this)
-#[doc(alias = "RBX::ChangeHistoryService::resetBaseWaypoint(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService17resetBaseWaypointEv")]
-pub fn stub_3d24b8() -> ! {
-    todo!("0x3d24b8 __ZN3RBX20ChangeHistoryService17resetBaseWaypointEv")
-}
-
-// 0x3d250c — __ZN3RBX20ChangeHistoryService4playEv
-// type: void __fastcall(RBX::ChangeHistoryService *this)
-#[doc(alias = "RBX::ChangeHistoryService::play(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService4playEv")]
-pub fn stub_3d250c() -> ! {
-    todo!("0x3d250c __ZN3RBX20ChangeHistoryService4playEv")
-}
-
-// 0x3d28cc — __ZN3RBX20ChangeHistoryService6unplayEv
-// type: void __fastcall(RBX::ChangeHistoryService *this)
-#[doc(alias = "RBX::ChangeHistoryService::unplay(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService6unplayEv")]
-pub fn stub_3d28cc() -> ! {
-    todo!("0x3d28cc __ZN3RBX20ChangeHistoryService6unplayEv")
-}
-
-// 0x3d2c28 — __ZN3RBX20ChangeHistoryService10canUnplay2Ev
-// type: void __fastcall(RBX::ChangeHistoryService *this, RBX::ChangeHistoryService *)
-#[doc(alias = "RBX::ChangeHistoryService::canUnplay2(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService10canUnplay2Ev")]
-pub fn stub_3d2c28() -> ! {
-    todo!("0x3d2c28 __ZN3RBX20ChangeHistoryService10canUnplay2Ev")
-}
-
-// 0x3d2ea0 — __ZN3RBX20ChangeHistoryService8canPlay2Ev
-// type: void __fastcall(RBX::ChangeHistoryService *this, int)
-#[doc(alias = "RBX::ChangeHistoryService::canPlay2(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService8canPlay2Ev")]
-pub fn stub_3d2ea0() -> ! {
-    todo!("0x3d2ea0 __ZN3RBX20ChangeHistoryService8canPlay2Ev")
-}
-
-// 0x3d3120 — __ZN3RBX20ChangeHistoryService4Item12unplayDeleteEv
-// type: void __fastcall(RBX::Instance **this, int, int, int)
-#[doc(alias = "RBX::ChangeHistoryService::Item::unplayDelete(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService4Item12unplayDeleteEv")]
-pub fn stub_3d3120() -> ! {
-    todo!("0x3d3120 __ZN3RBX20ChangeHistoryService4Item12unplayDeleteEv")
-}
-
-// 0x3d3328 — __ZN3RBX20ChangeHistoryService4Item14unplayPropertyERKSt4pairIPKNS_10Reflection18PropertyDescriptorENS3_7VariantEE
-// type: int __fastcall(RBX::Instance **, void **)
-#[doc(alias = "RBX::ChangeHistoryService::Item::unplayProperty(std::pair<RBX::Reflection::PropertyDescriptor const*,RBX::Reflection::Variant> const&)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService4Item14unplayPropertyERKSt4pairIPKNS_10Reflection18PropertyDescriptorENS3_7VariantEE")]
-pub fn stub_3d3328() -> ! {
-    todo!("0x3d3328 __ZN3RBX20ChangeHistoryService4Item14unplayPropertyERKSt4pairIPKNS_10Reflection18PropertyDescriptorENS3_7VariantEE")
-}
-
-// 0x3d3518 — __ZN3RBX20ChangeHistoryService4Item17unplayClusterDataERKSt4pairIjSt6vectorIjSaIjEEE
-// type: _DWORD *__fastcall(RBX::Instance **, unsigned int *)
-#[doc(alias = "RBX::ChangeHistoryService::Item::unplayClusterData(std::pair<unsigned int,std::vector<unsigned int,std::allocator<unsigned int>>> const&)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService4Item17unplayClusterDataERKSt4pairIjSt6vectorIjSaIjEEE")]
-pub fn stub_3d3518() -> ! {
-    todo!("0x3d3518 __ZN3RBX20ChangeHistoryService4Item17unplayClusterDataERKSt4pairIjSt6vectorIjSaIjEEE")
-}
-
-// 0x3d362c — __ZN3RBX20ChangeHistoryService7setCellERKN3G3D12Vector3int16ES4_NS_5Voxel4CellENS5_12CellMaterialE
-// type: int __fastcall(int)
-#[doc(alias = "RBX::ChangeHistoryService::setCell(G3D::Vector3int16 const&,G3D::Vector3int16 const&,RBX::Voxel::Cell,RBX::Voxel::CellMaterial)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService7setCellERKN3G3D12Vector3int16ES4_NS_5Voxel4CellENS5_12CellMaterialE")]
-pub fn stub_3d362c() -> ! {
-    todo!("0x3d362c __ZN3RBX20ChangeHistoryService7setCellERKN3G3D12Vector3int16ES4_NS_5Voxel4CellENS5_12CellMaterialE")
-}
-
-// 0x3d367c — __ZN3RBX20ChangeHistoryServiceC1Ev
-// type: int __fastcall(RBX::ChangeHistoryService *this)
-#[doc(alias = "RBX::ChangeHistoryService::ChangeHistoryService(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryServiceC1Ev")]
-pub fn stub_3d367c() -> ! {
-    todo!("0x3d367c __ZN3RBX20ChangeHistoryServiceC1Ev")
-}
-
-// 0x3d3680 — __ZN3RBX20ChangeHistoryServiceC2Ev
-// type: __guard *__fastcall(RBX::ChangeHistoryService *this)
-#[doc(alias = "RBX::ChangeHistoryService::ChangeHistoryService(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryServiceC2Ev")]
-pub fn stub_3d3680() -> ! {
-    todo!("0x3d3680 __ZN3RBX20ChangeHistoryServiceC2Ev")
-}
-
-// 0x3d39cc — __ZN3RBX20ChangeHistoryServiceD0Ev
-// type: void __fastcall(RBX::ChangeHistoryService *__hidden this)
-#[doc(alias = "RBX::ChangeHistoryService::~ChangeHistoryService()")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryServiceD0Ev")]
-pub fn stub_3d39cc() -> ! {
-    todo!("0x3d39cc __ZN3RBX20ChangeHistoryServiceD0Ev")
-}
-
-// 0x3d3a6c — __ZN3RBX20ChangeHistoryServiceD1Ev
-// type: void __fastcall(RBX::ChangeHistoryService *__hidden this)
-#[doc(alias = "RBX::ChangeHistoryService::~ChangeHistoryService()")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryServiceD1Ev")]
-pub fn stub_3d3a6c() -> ! {
-    todo!("0x3d3a6c __ZN3RBX20ChangeHistoryServiceD1Ev")
-}
-
-// 0x3d3a70 — __ZThn32_N3RBX20ChangeHistoryServiceD0Ev
-// type: void __fastcall(RBX::ChangeHistoryService *__hidden this)
-#[doc(alias = "__ZThn32_N3RBX20ChangeHistoryServiceD0Ev")]
-pub fn stub_3d3a70() -> ! {
-    todo!("0x3d3a70 __ZThn32_N3RBX20ChangeHistoryServiceD0Ev")
-}
-
-// 0x3d3a78 — __ZThn36_N3RBX20ChangeHistoryServiceD0Ev
-// type: void __fastcall(RBX::ChangeHistoryService *__hidden this)
-#[doc(alias = "__ZThn36_N3RBX20ChangeHistoryServiceD0Ev")]
-pub fn stub_3d3a78() -> ! {
-    todo!("0x3d3a78 __ZThn36_N3RBX20ChangeHistoryServiceD0Ev")
-}
-
-// 0x3d3a80 — __ZN3RBX20ChangeHistoryServiceD2Ev
-// type: void __fastcall(RBX::ChangeHistoryService *this, int, int, int)
-#[doc(alias = "RBX::ChangeHistoryService::~ChangeHistoryService()")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryServiceD2Ev")]
-pub fn stub_3d3a80() -> ! {
-    todo!("0x3d3a80 __ZN3RBX20ChangeHistoryServiceD2Ev")
-}
-
-// 0x3d3f08 — __ZThn32_N3RBX20ChangeHistoryServiceD1Ev
-// type: void __fastcall(RBX::ChangeHistoryService *this, int, int, int)
-#[doc(alias = "__ZThn32_N3RBX20ChangeHistoryServiceD1Ev")]
-pub fn stub_3d3f08() -> ! {
-    todo!("0x3d3f08 __ZThn32_N3RBX20ChangeHistoryServiceD1Ev")
-}
-
-// 0x3d3f10 — __ZThn36_N3RBX20ChangeHistoryServiceD1Ev
-// type: void __fastcall(RBX::ChangeHistoryService *this, int, int, int)
-#[doc(alias = "__ZThn36_N3RBX20ChangeHistoryServiceD1Ev")]
-pub fn stub_3d3f10() -> ! {
-    todo!("0x3d3f10 __ZThn36_N3RBX20ChangeHistoryServiceD1Ev")
-}
-
-// 0x3d3f18 — __ZN3RBX20ChangeHistoryService6attachEv
-// type: void __fastcall(RBX::ChangeHistoryService *this)
-#[doc(alias = "RBX::ChangeHistoryService::attach(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService6attachEv")]
-pub fn stub_3d3f18() -> ! {
-    todo!("0x3d3f18 __ZN3RBX20ChangeHistoryService6attachEv")
-}
-
-// 0x3d429c — __ZN3RBX20ChangeHistoryService7dettachEv
-// type: int __fastcall(RBX::ChangeHistoryService *this)
-#[doc(alias = "RBX::ChangeHistoryService::dettach(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService7dettachEv")]
-pub fn stub_3d429c() -> ! {
-    todo!("0x3d429c __ZN3RBX20ChangeHistoryService7dettachEv")
-}
-
-// 0x3d434c — __ZNK3RBX20ChangeHistoryService17getUnplayWaypointERSsi
-// type: int __fastcall(RBX::ChangeHistoryService *this, std::string *, int)
-#[doc(alias = "RBX::ChangeHistoryService::getUnplayWaypoint(std::string &,int)const")]
-#[doc(alias = "__ZNK3RBX20ChangeHistoryService17getUnplayWaypointERSsi")]
-pub fn stub_3d434c() -> ! {
-    todo!("0x3d434c __ZNK3RBX20ChangeHistoryService17getUnplayWaypointERSsi")
-}
-
-// 0x3d43a4 — __ZN3RBX20ChangeHistoryService15requestWaypointEPKcPKNS_8InstanceE
-// type: RBX::ChangeHistoryService *__fastcall(RBX::ChangeHistoryService *this, const char *, const RBX::Instance *)
-#[doc(alias = "RBX::ChangeHistoryService::requestWaypoint(char const*,RBX::Instance const*)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService15requestWaypointEPKcPKNS_8InstanceE")]
-pub fn stub_3d43a4() -> ! {
-    todo!("0x3d43a4 __ZN3RBX20ChangeHistoryService15requestWaypointEPKcPKNS_8InstanceE")
-}
-
-// 0x3d43c0 — __ZN3RBX20ChangeHistoryService15requestWaypointEPKc
-// type: int __fastcall(RBX::ChangeHistoryService *this, const char *)
-#[doc(alias = "RBX::ChangeHistoryService::requestWaypoint(char const*)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService15requestWaypointEPKc")]
-pub fn stub_3d43c0() -> ! {
-    todo!("0x3d43c0 __ZN3RBX20ChangeHistoryService15requestWaypointEPKc")
-}
-
-// 0x3d43e0 — __ZN3RBX20ChangeHistoryService11setWaypointEPKc
-// type: void __fastcall(RBX::ChangeHistoryService *this, char *)
-#[doc(alias = "RBX::ChangeHistoryService::setWaypoint(char const*)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService11setWaypointEPKc")]
-pub fn stub_3d43e0() -> ! {
-    todo!("0x3d43e0 __ZN3RBX20ChangeHistoryService11setWaypointEPKc")
-}
-
-// 0x3d45f0 — __ZN3RBX20ChangeHistoryService22mergeFirstTwoWaypointsEv
-// type: void __fastcall(RBX::ChangeHistoryService *this)
-#[doc(alias = "RBX::ChangeHistoryService::mergeFirstTwoWaypoints(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService22mergeFirstTwoWaypointsEv")]
-pub fn stub_3d45f0() -> ! {
-    todo!("0x3d45f0 __ZN3RBX20ChangeHistoryService22mergeFirstTwoWaypointsEv")
-}
-
-// 0x3d4700 — __ZN3RBX20ChangeHistoryService26reportMissedPhysicsChangesEN5boost10shared_ptrINS_8InstanceEEE
-// type: void __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
-#[doc(alias = "RBX::ChangeHistoryService::reportMissedPhysicsChanges(boost::shared_ptr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService26reportMissedPhysicsChangesEN5boost10shared_ptrINS_8InstanceEEE")]
-pub fn stub_3d4700() -> ! {
-    todo!("0x3d4700 __ZN3RBX20ChangeHistoryService26reportMissedPhysicsChangesEN5boost10shared_ptrINS_8InstanceEEE")
-}
-
-// 0x3d4de0 — __ZN3RBX20ChangeHistoryService15computeDataSizeEv
-// type: int __fastcall(RBX::ChangeHistoryService *this)
-#[doc(alias = "RBX::ChangeHistoryService::computeDataSize(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService15computeDataSizeEv")]
-pub fn stub_3d4de0() -> ! {
-    todo!("0x3d4de0 __ZN3RBX20ChangeHistoryService15computeDataSizeEv")
-}
-
-// 0x3d4e30 — __ZN3RBX20ChangeHistoryService13trimWaypointsEv
-// type: int __fastcall(RBX::ChangeHistoryService *this)
-#[doc(alias = "RBX::ChangeHistoryService::trimWaypoints(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService13trimWaypointsEv")]
-pub fn stub_3d4e30() -> ! {
-    todo!("0x3d4e30 __ZN3RBX20ChangeHistoryService13trimWaypointsEv")
-}
-
-// 0x3d4f20 — __ZN3RBX20ChangeHistoryService20checkSettingWaypointEv
-// type: int __fastcall(RBX::ChangeHistoryService *this)
-#[doc(alias = "RBX::ChangeHistoryService::checkSettingWaypoint(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService20checkSettingWaypointEv")]
-pub fn stub_3d4f20() -> ! {
-    todo!("0x3d4f20 __ZN3RBX20ChangeHistoryService20checkSettingWaypointEv")
-}
-
-// 0x3d4fc4 — __ZN3RBX20ChangeHistoryService14clearWaypointsEv
-// type: void __fastcall(RBX::ChangeHistoryService *this)
-#[doc(alias = "RBX::ChangeHistoryService::clearWaypoints(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService14clearWaypointsEv")]
-pub fn stub_3d4fc4() -> ! {
-    todo!("0x3d4fc4 __ZN3RBX20ChangeHistoryService14clearWaypointsEv")
-}
-
-// 0x3d511c — __ZN3RBX20ChangeHistoryService17onServiceProviderEPNS_15ServiceProviderES2_
-// type: void __fastcall(boost::detail::sp_counted_base **this, RBX::ServiceProvider *, RBX::ServiceProvider *, int)
-#[doc(alias = "RBX::ChangeHistoryService::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService17onServiceProviderEPNS_15ServiceProviderES2_")]
-pub fn stub_3d511c() -> ! {
-    todo!("0x3d511c __ZN3RBX20ChangeHistoryService17onServiceProviderEPNS_15ServiceProviderES2_")
-}
-
-// 0x3d5358 — __ZN3RBX20ChangeHistoryService15onRunTransitionENS_13RunTransitionE
-// type: int __fastcall(int, int, int)
-#[doc(alias = "RBX::ChangeHistoryService::onRunTransition(RBX::RunTransition)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService15onRunTransitionENS_13RunTransitionE")]
-pub fn stub_3d5358() -> ! {
-    todo!("0x3d5358 __ZN3RBX20ChangeHistoryService15onRunTransitionENS_13RunTransitionE")
-}
-
-// 0x3d5444 — __ZN3RBX20ChangeHistoryService11onItemAddedEN5boost10shared_ptrINS_8InstanceEEE
-// type: void __fastcall(int, int)
-#[doc(alias = "RBX::ChangeHistoryService::onItemAdded(boost::shared_ptr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService11onItemAddedEN5boost10shared_ptrINS_8InstanceEEE")]
-pub fn stub_3d5444() -> ! {
-    todo!("0x3d5444 __ZN3RBX20ChangeHistoryService11onItemAddedEN5boost10shared_ptrINS_8InstanceEEE")
-}
-
-// 0x3d576c — __ZN3RBX20ChangeHistoryService12isRecordableEPNS_8InstanceE
-// type: int __fastcall(__guard *this, RBX::Instance *, int, int)
-#[doc(alias = "RBX::ChangeHistoryService::isRecordable(RBX::Instance *)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService12isRecordableEPNS_8InstanceE")]
-pub fn stub_3d576c() -> ! {
-    todo!("0x3d576c __ZN3RBX20ChangeHistoryService12isRecordableEPNS_8InstanceE")
-}
-
-// 0x3d582c — __ZN3RBX20ChangeHistoryService18terrainCellChangedERKNS_5Voxel14CellChangeInfoE
-// type: void __fastcall(int, __int16 *, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "RBX::ChangeHistoryService::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService18terrainCellChangedERKNS_5Voxel14CellChangeInfoE")]
-pub fn stub_3d582c() -> ! {
-    todo!("0x3d582c __ZN3RBX20ChangeHistoryService18terrainCellChangedERKNS_5Voxel14CellChangeInfoE")
-}
-
-// 0x3d59b8 — __ZThn96_N3RBX20ChangeHistoryService18terrainCellChangedERKNS_5Voxel14CellChangeInfoE
-// type: void __fastcall(int, __int16 *, int, int, int, int, int, struct _Unwind_Exception *, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "__ZThn96_N3RBX20ChangeHistoryService18terrainCellChangedERKNS_5Voxel14CellChangeInfoE")]
-pub fn stub_3d59b8() -> ! {
-    todo!("0x3d59b8 __ZThn96_N3RBX20ChangeHistoryService18terrainCellChangedERKNS_5Voxel14CellChangeInfoE")
-}
-
-// 0x3d59c0 — __ZN3RBX20ChangeHistoryService13onItemRemovedEN5boost10shared_ptrINS_8InstanceEEE
-// type: void __fastcall(int, shared_count *, int, int)
-#[doc(alias = "RBX::ChangeHistoryService::onItemRemoved(boost::shared_ptr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService13onItemRemovedEN5boost10shared_ptrINS_8InstanceEEE")]
-pub fn stub_3d59c0() -> ! {
-    todo!("0x3d59c0 __ZN3RBX20ChangeHistoryService13onItemRemovedEN5boost10shared_ptrINS_8InstanceEEE")
-}
-
-// 0x3d5dbc — __ZN3RBX20ChangeHistoryService13onItemChangedEN5boost10shared_ptrINS_8InstanceEEEPKNS_10Reflection18PropertyDescriptorE
-// type: void __fastcall(int, int, void *, int)
-#[doc(alias = "RBX::ChangeHistoryService::onItemChanged(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService13onItemChangedEN5boost10shared_ptrINS_8InstanceEEEPKNS_10Reflection18PropertyDescriptorE")]
-pub fn stub_3d5dbc() -> ! {
-    todo!("0x3d5dbc __ZN3RBX20ChangeHistoryService13onItemChangedEN5boost10shared_ptrINS_8InstanceEEEPKNS_10Reflection18PropertyDescriptorE")
-}
-
-// 0x3d5fc0 — __ZN3RBX20ChangeHistoryService8Waypoint4playEv
-// type: void __fastcall(RBX::ChangeHistoryService::Waypoint **this)
-#[doc(alias = "RBX::ChangeHistoryService::Waypoint::play(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService8Waypoint4playEv")]
-pub fn stub_3d5fc0() -> ! {
-    todo!("0x3d5fc0 __ZN3RBX20ChangeHistoryService8Waypoint4playEv")
-}
-
-// 0x3d60f4 — __ZN3RBX20ChangeHistoryService8Waypoint19selectModifiedPartsEb
-// type: void __fastcall(RBX::ChangeHistoryService::Waypoint *this, RBX::Instance *)
-#[doc(alias = "RBX::ChangeHistoryService::Waypoint::selectModifiedParts(bool)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService8Waypoint19selectModifiedPartsEb")]
-pub fn stub_3d60f4() -> ! {
-    todo!("0x3d60f4 __ZN3RBX20ChangeHistoryService8Waypoint19selectModifiedPartsEb")
-}
-
-// 0x3d63dc — __ZN3RBX20ChangeHistoryService8Waypoint6unplayEv
-// type: void __fastcall(RBX::ChangeHistoryService::Waypoint *this)
-#[doc(alias = "RBX::ChangeHistoryService::Waypoint::unplay(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService8Waypoint6unplayEv")]
-pub fn stub_3d63dc() -> ! {
-    todo!("0x3d63dc __ZN3RBX20ChangeHistoryService8Waypoint6unplayEv")
-}
-
-// 0x3d65c4 — __ZN3RBX20ChangeHistoryService14setRunWaypointEv
-// type: void __fastcall(RBX::ChangeHistoryService *this)
-#[doc(alias = "RBX::ChangeHistoryService::setRunWaypoint(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService14setRunWaypointEv")]
-pub fn stub_3d65c4() -> ! {
-    todo!("0x3d65c4 __ZN3RBX20ChangeHistoryService14setRunWaypointEv")
-}
-
-// 0x3d6770 — __ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEE7addPairES3_PKc
-// type: void __fastcall(_DWORD *, int, const char *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::addPair(RBX::ChangeHistoryService::RuntimeUndoBehavior,char const*)")]
-#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEE7addPairES3_PKc")]
-pub fn stub_3d6770() -> ! {
-    todo!("0x3d6770 __ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEE7addPairES3_PKc")
+
+// 0xf61d44 — j___ZN20DatagramHeaderFormat11DeserializeEPN6RakNet9BitStreamE
+// type: _DWORD __fastcall(DatagramHeaderFormat *__hidden this, RakNet::BitStream *)
+#[doc(alias = "DatagramHeaderFormat::Deserialize(RakNet::BitStream *)")]
+#[doc(alias = "j___ZN20DatagramHeaderFormat11DeserializeEPN6RakNet9BitStreamE")]
+pub fn stub_0xf61d44() -> ! {
+    todo!("0xf61d44 j___ZN20DatagramHeaderFormat11DeserializeEPN6RakNet9BitStreamE")
 }
-
-// 0x3d6ad0 — __ZN3RBX10Reflection13BoundFuncDescINS_20ChangeHistoryServiceEFvbELi1EED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ChangeHistoryService,void ()(bool),1>::~BoundFuncDesc()")]
-#[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_20ChangeHistoryServiceEFvbELi1EED1Ev")]
-pub fn stub_3d6ad0() -> ! {
-    todo!("0x3d6ad0 __ZN3RBX10Reflection13BoundFuncDescINS_20ChangeHistoryServiceEFvbELi1EED1Ev")
+
+// 0xf61d54 — j___ZN20DatagramHeaderFormat9SerializeEPN6RakNet9BitStreamE
+// type: _DWORD __fastcall(DatagramHeaderFormat *__hidden this, RakNet::BitStream *)
+#[doc(alias = "DatagramHeaderFormat::Serialize(RakNet::BitStream *)")]
+#[doc(alias = "j___ZN20DatagramHeaderFormat9SerializeEPN6RakNet9BitStreamE")]
+pub fn stub_0xf61d54() -> ! {
+    todo!("0xf61d54 j___ZN20DatagramHeaderFormat9SerializeEPN6RakNet9BitStreamE")
 }
-
-// 0x3d6b10 — __ZN3RBX20ChangeHistoryService16requestWaypoint2ESs
-// type: int __fastcall(RBX::ChangeHistoryService *, const char **)
-#[doc(alias = "RBX::ChangeHistoryService::requestWaypoint2(std::string)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService16requestWaypoint2ESs")]
-pub fn stub_3d6b10() -> ! {
-    todo!("0x3d6b10 __ZN3RBX20ChangeHistoryService16requestWaypoint2ESs")
+
+// 0xf61d64 — j___ZN6RakNet9BitStream4ReadINS_8uint24_tEEEbRT_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "bool RakNet::BitStream::Read<RakNet::uint24_t>(RakNet::uint24_t &)")]
+#[doc(alias = "j___ZN6RakNet9BitStream4ReadINS_8uint24_tEEEbRT_")]
+pub fn stub_0xf61d64() -> ! {
+    todo!("0xf61d64 j___ZN6RakNet9BitStream4ReadINS_8uint24_tEEEbRT_")
 }
-
-// 0x3d6b18 — __ZN3RBX10Reflection13BoundFuncDescINS_20ChangeHistoryServiceEFvSsELi1EED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ChangeHistoryService,void ()(std::string),1>::~BoundFuncDesc()")]
-#[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_20ChangeHistoryServiceEFvSsELi1EED1Ev")]
-pub fn stub_3d6b18() -> ! {
-    todo!("0x3d6b18 __ZN3RBX10Reflection13BoundFuncDescINS_20ChangeHistoryServiceEFvSsELi1EED1Ev")
+
+// 0xf61d74 — j___ZN6RakNet9BitStream5WriteINS_8uint24_tEEEvRKT_
+// type: int __fastcall(RakNet::BitStream *this, int, int, int, int)
+#[doc(alias = "void RakNet::BitStream::Write<RakNet::uint24_t>(RakNet::uint24_t const&)")]
+#[doc(alias = "j___ZN6RakNet9BitStream5WriteINS_8uint24_tEEEvRKT_")]
+pub fn stub_0xf61d74() -> ! {
+    todo!("0xf61d74 j___ZN6RakNet9BitStream5WriteINS_8uint24_tEEEvRKT_")
 }
-
-// 0x3d6b58 — __ZN3RBX10Reflection13BoundFuncDescINS_20ChangeHistoryServiceEFvvELi0EED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ChangeHistoryService,void ()(void),0>::~BoundFuncDesc()")]
-#[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_20ChangeHistoryServiceEFvvELi0EED1Ev")]
-pub fn stub_3d6b58() -> ! {
-    todo!("0x3d6b58 __ZN3RBX10Reflection13BoundFuncDescINS_20ChangeHistoryServiceEFvvELi0EED1Ev")
+
+// 0xf61d84 — j___ZN14DataStructures3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S7_EEE3SetERKiRKS3_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "DataStructures::Map<int,RakNet::HuffmanEncodingTree *,&int DataStructures::defaultMapKeyComparison<int>>::Set(int const&,RakNet::HuffmanEncodingTree * const&)")]
+#[doc(alias = "j___ZN14DataStructures3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S7_EEE3SetERKiRKS3_")]
+pub fn stub_0xf61d84() -> ! {
+    todo!("0xf61d84 j___ZN14DataStructures3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S7_EEE3SetERKiRKS3_")
 }
-
-// 0x3d6b7c — __ZN3RBX10Reflection13BoundFuncDescINS_20ChangeHistoryServiceEFN5boost10shared_ptrIKNS0_5TupleEEEvELi0EED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ChangeHistoryService,boost::shared_ptr<RBX::Reflection::Tuple const> ()(void),0>::~BoundFuncDesc()")]
-#[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_20ChangeHistoryServiceEFN5boost10shared_ptrIKNS0_5TupleEEEvELi0EED1Ev")]
-pub fn stub_3d6b7c() -> ! {
-    todo!("0x3d6b7c __ZN3RBX10Reflection13BoundFuncDescINS_20ChangeHistoryServiceEFN5boost10shared_ptrIKNS0_5TupleEEEvELi0EED1Ev")
+
+// 0xf61d94 — j___ZN14DataStructures4ListINS_3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S8_EEE7MapNodeEE6InsertERKSA_jPKcj
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "DataStructures::List<DataStructures::Map<int,RakNet::HuffmanEncodingTree *,&int DataStructures::defaultMapKeyComparison<int>>::MapNode>::Insert(DataStructures::Map<int,RakNet::HuffmanEncodingTree *,&int DataStructures::defaultMapKeyComparison<int>>::MapNode const&,unsigned int,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures4ListINS_3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S8_EEE7MapNodeEE6InsertERKSA_jPKcj")]
+pub fn stub_0xf61d94() -> ! {
+    todo!("0xf61d94 j___ZN14DataStructures4ListINS_3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S8_EEE7MapNodeEE6InsertERKSA_jPKcj")
 }
-
-// 0x3d6ba0 — __ZN3RBX20ChangeHistoryService8Waypoint8findItemEPNS_8InstanceE
-// type: char *__fastcall(RBX::ChangeHistoryService::Waypoint *this, RBX::Instance *)
-#[doc(alias = "RBX::ChangeHistoryService::Waypoint::findItem(RBX::Instance *)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService8Waypoint8findItemEPNS_8InstanceE")]
-pub fn stub_3d6ba0() -> ! {
-    todo!("0x3d6ba0 __ZN3RBX20ChangeHistoryService8Waypoint8findItemEPNS_8InstanceE")
+
+// 0xf61da4 — j___ZN6RakNet9BitStream14ReadCompressedIjEEbRT_
+// type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
+#[doc(alias = "bool RakNet::BitStream::ReadCompressed<unsigned int>(unsigned int &)")]
+#[doc(alias = "j___ZN6RakNet9BitStream14ReadCompressedIjEEbRT_")]
+pub fn stub_0xf61da4() -> ! {
+    todo!("0xf61da4 j___ZN6RakNet9BitStream14ReadCompressedIjEEbRT_")
 }
-
-// 0x3d6c14 — __ZN3RBX20ChangeHistoryService4Item4playEv
-// type: void __fastcall(RBX::ChangeHistoryService::Item *this)
-#[doc(alias = "RBX::ChangeHistoryService::Item::play(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService4Item4playEv")]
-pub fn stub_3d6c14() -> ! {
-    todo!("0x3d6c14 __ZN3RBX20ChangeHistoryService4Item4playEv")
+
+// 0xf61db4 — j___ZN6RakNet9BitStream15WriteCompressedIjEEvRKT_
+// type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
+#[doc(alias = "void RakNet::BitStream::WriteCompressed<unsigned int>(unsigned int const&)")]
+#[doc(alias = "j___ZN6RakNet9BitStream15WriteCompressedIjEEvRKT_")]
+pub fn stub_0xf61db4() -> ! {
+    todo!("0xf61db4 j___ZN6RakNet9BitStream15WriteCompressedIjEEvRKT_")
 }
-
-// 0x3d6e7c — __ZSt8for_eachISt17_Rb_tree_iteratorISt4pairIKPKN3RBX10Reflection18PropertyDescriptorENS3_7VariantEEEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS2_20ChangeHistoryService4ItemERKS1_IS6_S8_EEENSC_5list2INSC_5valueIPSH_EENSB_3argILi1EEEEEEEET0_T_SV_SU_
-// type: int __fastcall(int, _Rb_tree_node_base *, _Rb_tree_node_base *, unsigned int, unsigned int, int)
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService::Item,std::pair const&<RBX::Reflection::PropertyDescriptor const*,RBX::Reflection::Variant>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService::Item*>,boost::arg<1>>> std::for_each<std::_Rb_tree_iterator<std::pair<RBX::Reflection::PropertyDescriptor const* const,RBX::Reflection::Variant>>,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService::Item,std::pair const&<RBX::Reflection::PropertyDescriptor const*,RBX::Reflection::Variant>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService::Item*>,boost::arg<1>>>>(std::_Rb_tree_iterator<std::pair<RBX::Reflection::PropertyDescriptor const* const,RBX::Reflection::Variant>>,std::_Rb_tree_iterator<std::pair<RBX::Reflection::PropertyDescriptor const* const,RBX::Reflection::Variant>>,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService::Item,std::pair const&<RBX::Reflection::PropertyDescriptor const*,RBX::Reflection::Variant>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService::Item*>,boost::arg<1>>>)")]
-#[doc(alias = "__ZSt8for_eachISt17_Rb_tree_iteratorISt4pairIKPKN3RBX10Reflection18PropertyDescriptorENS3_7VariantEEEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS2_20ChangeHistoryService4ItemERKS1_IS6_S8_EEENSC_5list2INSC_5valueIPSH_EENSB_3argILi1EEEEEEEET0_T_SV_SU_")]
-pub fn stub_3d6e7c() -> ! {
-    todo!("0x3d6e7c __ZSt8for_eachISt17_Rb_tree_iteratorISt4pairIKPKN3RBX10Reflection18PropertyDescriptorENS3_7VariantEEEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS2_20ChangeHistoryService4ItemERKS1_IS6_S8_EEENSC_5list2INSC_5valueIPSH_EENSB_3argILi1EEEEEEEET0_T_SV_SU_")
+
+// 0xf61dc4 — j___ZN14DataStructures10MemoryPoolIN6RakNet6PacketEE7ReleaseEPS2_PKcj
+// type: int __fastcall(int, int, void *, char *)
+#[doc(alias = "DataStructures::MemoryPool<RakNet::Packet>::Release(RakNet::Packet*,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures10MemoryPoolIN6RakNet6PacketEE7ReleaseEPS2_PKcj")]
+pub fn stub_0xf61dc4() -> ! {
+    todo!("0xf61dc4 j___ZN14DataStructures10MemoryPoolIN6RakNet6PacketEE7ReleaseEPS2_PKcj")
 }
-
-// 0x3d6ed8 — __ZN3RBX20ChangeHistoryService4Item5applyERKSt4pairIPKNS_10Reflection18PropertyDescriptorENS3_7VariantEE
-// type: int __fastcall(int, void **)
-#[doc(alias = "RBX::ChangeHistoryService::Item::apply(std::pair<RBX::Reflection::PropertyDescriptor const*,RBX::Reflection::Variant> const&)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService4Item5applyERKSt4pairIPKNS_10Reflection18PropertyDescriptorENS3_7VariantEE")]
-pub fn stub_3d6ed8() -> ! {
-    todo!("0x3d6ed8 __ZN3RBX20ChangeHistoryService4Item5applyERKSt4pairIPKNS_10Reflection18PropertyDescriptorENS3_7VariantEE")
+
+// 0xf61dd4 — j___ZN14DataStructures10MemoryPoolIN6RakNet6PacketEE8AllocateEPKcj
+// type: int __fastcall(int, unsigned int, char *)
+#[doc(alias = "DataStructures::MemoryPool<RakNet::Packet>::Allocate(char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures10MemoryPoolIN6RakNet6PacketEE8AllocateEPKcj")]
+pub fn stub_0xf61dd4() -> ! {
+    todo!("0xf61dd4 j___ZN14DataStructures10MemoryPoolIN6RakNet6PacketEE8AllocateEPKcj")
 }
 
-// 0x3d6f18 — __ZN3RBX20ChangeHistoryService4Item11getCellDataEjjRj
-// type: int __fastcall(RBX::ChangeHistoryService::Item *this, unsigned int, unsigned __int16, unsigned int *)
-#[doc(alias = "RBX::ChangeHistoryService::Item::getCellData(unsigned int,unsigned int,unsigned int &)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService4Item11getCellDataEjjRj")]
-pub fn stub_3d6f18() -> ! {
-    todo!("0x3d6f18 __ZN3RBX20ChangeHistoryService4Item11getCellDataEjjRj")
+// 0xf61de4 — j___ZN14DataStructures5QueueIPN6RakNet6PacketEE4PushERKS3_PKcj
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "DataStructures::Queue<RakNet::Packet *>::Push(RakNet::Packet * const&,char const*,unsigned int)")]
+#[doc(alias = "j___ZN14DataStructures5QueueIPN6RakNet6PacketEE4PushERKS3_PKcj")]
+pub fn stub_0xf61de4() -> ! {
+    todo!("0xf61de4 j___ZN14DataStructures5QueueIPN6RakNet6PacketEE4PushERKS3_PKcj")
 }
 
-// 0x3d6fc4 — __ZN3RBX15ServiceProvider4findINS_20ChangeHistoryServiceEEEPT_PKNS_8InstanceE
-// type: int __fastcall(RBX::ServiceProvider *, const RBX::Instance *)
-#[doc(alias = "RBX::ChangeHistoryService * RBX::ServiceProvider::find<RBX::ChangeHistoryService>(RBX::Instance const*)")]
-#[doc(alias = "__ZN3RBX15ServiceProvider4findINS_20ChangeHistoryServiceEEEPT_PKNS_8InstanceE")]
-pub fn stub_3d6fc4() -> ! {
-    todo!("0x3d6fc4 __ZN3RBX15ServiceProvider4findINS_20ChangeHistoryServiceEEEPT_PKNS_8InstanceE")
+// 0xf61e04 — j___ZN3RBX11SendPhysics13reportSimJobsINS_7Network23RoundRobinPhysicsSender9JobSenderEEEiRT_RNS_13SimJobTrackerEPKNS_6SimJobEi
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, pthread_mutex_t *, int, int, int, int)
+#[doc(alias = "int RBX::SendPhysics::reportSimJobs<RBX::Network::RoundRobinPhysicsSender::JobSender>(RBX::Network::RoundRobinPhysicsSender::JobSender &,RBX::SimJobTracker &,RBX::SimJob const*,int)")]
+#[doc(alias = "j___ZN3RBX11SendPhysics13reportSimJobsINS_7Network23RoundRobinPhysicsSender9JobSenderEEEiRT_RNS_13SimJobTrackerEPKNS_6SimJobEi")]
+pub fn stub_0xf61e04() -> ! {
+    todo!("0xf61e04 j___ZN3RBX11SendPhysics13reportSimJobsINS_7Network23RoundRobinPhysicsSender9JobSenderEEEiRT_RNS_13SimJobTrackerEPKNS_6SimJobEi")
 }
 
-// 0x3d6fe0 — __ZN3RBX11shared_fromINS_9WorkspaceEEEN5boost10shared_ptrIT_EEPS4_
-// type: void __fastcall(_QWORD *, int)
-#[doc(alias = "boost::shared_ptr<RBX::Workspace> RBX::shared_from<RBX::Workspace>(RBX::Workspace*)")]
-#[doc(alias = "__ZN3RBX11shared_fromINS_9WorkspaceEEEN5boost10shared_ptrIT_EEPS4_")]
-pub fn stub_3d6fe0() -> ! {
-    todo!("0x3d6fe0 __ZN3RBX11shared_fromINS_9WorkspaceEEEN5boost10shared_ptrIT_EEPS4_")
+// 0xf61e14 — j___ZN3RBX7Network23RoundRobinPhysicsSender9JobSender10openPacketEv
+// type: _DWORD __fastcall(RBX::Network::RoundRobinPhysicsSender::JobSender *__hidden this)
+#[doc(alias = "RBX::Network::RoundRobinPhysicsSender::JobSender::openPacket(void)")]
+#[doc(alias = "j___ZN3RBX7Network23RoundRobinPhysicsSender9JobSender10openPacketEv")]
+pub fn stub_0xf61e14() -> ! {
+    todo!("0xf61e14 j___ZN3RBX7Network23RoundRobinPhysicsSender9JobSender10openPacketEv")
 }
 
-// 0x3d7150 — __ZN3RBX20ChangeHistoryService8Waypoint6absorbEPKS1_
-// type: RBX::ChangeHistoryService::Waypoint *__fastcall(RBX::ChangeHistoryService::Waypoint *this, const RBX::ChangeHistoryService::Waypoint *)
-#[doc(alias = "RBX::ChangeHistoryService::Waypoint::absorb(RBX::ChangeHistoryService::Waypoint const*)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService8Waypoint6absorbEPKS1_")]
-pub fn stub_3d7150() -> ! {
-    todo!("0x3d7150 __ZN3RBX20ChangeHistoryService8Waypoint6absorbEPKS1_")
+// 0xf61e24 — j___ZN3RBX7Network23RoundRobinPhysicsSender9JobSender11closePacketEv
+// type: _DWORD __fastcall(RBX::Network::RoundRobinPhysicsSender::JobSender *__hidden this)
+#[doc(alias = "RBX::Network::RoundRobinPhysicsSender::JobSender::closePacket(void)")]
+#[doc(alias = "j___ZN3RBX7Network23RoundRobinPhysicsSender9JobSender11closePacketEv")]
+pub fn stub_0xf61e24() -> ! {
+    todo!("0xf61e24 j___ZN3RBX7Network23RoundRobinPhysicsSender9JobSender11closePacketEv")
 }
 
-// 0x3d7214 — __Z13delete_helperIN3RBX20ChangeHistoryService8WaypointEEvPT_
-// type: void __fastcall(_DWORD *)
-#[doc(alias = "void delete_helper<RBX::ChangeHistoryService::Waypoint>(RBX::ChangeHistoryService::Waypoint *)")]
-#[doc(alias = "__Z13delete_helperIN3RBX20ChangeHistoryService8WaypointEEvPT_")]
-pub fn stub_3d7214() -> ! {
-    todo!("0x3d7214 __Z13delete_helperIN3RBX20ChangeHistoryService8WaypointEEvPT_")
+// 0xf624b4 — j___ZN5boost10shared_ptrIN3RBX7Network6PlayerEEaSERKS4_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "boost::shared_ptr<RBX::Network::Player>::operator=(boost::shared_ptr<RBX::Network::Player> const&)")]
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX7Network6PlayerEEaSERKS4_")]
+pub fn stub_0xf624b4() -> ! {
+    todo!("0xf624b4 j___ZN5boost10shared_ptrIN3RBX7Network6PlayerEEaSERKS4_")
 }
 
-// 0x3d72cc — __ZNSt4listIPN3RBX20ChangeHistoryService8WaypointESaIS3_EE5eraseESt14_List_iteratorIS3_ES7_
-// type: std::_List_node_base *__fastcall(int, std::_List_node_base *this, std::_List_node_base *)
-#[doc(alias = "std::list<RBX::ChangeHistoryService::Waypoint *,std::allocator<RBX::ChangeHistoryService::Waypoint *>>::erase(std::_List_iterator<RBX::ChangeHistoryService::Waypoint *>,std::_List_iterator<RBX::ChangeHistoryService::Waypoint *>)")]
-#[doc(alias = "__ZNSt4listIPN3RBX20ChangeHistoryService8WaypointESaIS3_EE5eraseESt14_List_iteratorIS3_ES7_")]
-pub fn stub_3d72cc() -> ! {
-    todo!("0x3d72cc __ZNSt4listIPN3RBX20ChangeHistoryService8WaypointESaIS3_EE5eraseESt14_List_iteratorIS3_ES7_")
+// 0xf62554 — j___ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX7Network6PlayerEEEEEEC2ES8_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, pthread_mutex_t *, int, int, int, int)
+#[doc(alias = "boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>>::list1(boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>)")]
+#[doc(alias = "j___ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX7Network6PlayerEEEEEEC2ES8_")]
+pub fn stub_0xf62554() -> ! {
+    todo!("0xf62554 j___ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX7Network6PlayerEEEEEEC2ES8_")
 }
 
-// 0x3d72f0 — __ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_20ChangeHistoryServiceENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvRKT_
-// type: void __fastcall(const shared_count *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
-#[doc(alias = "void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>> const&)const")]
-#[doc(alias = "__ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_20ChangeHistoryServiceENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvRKT_")]
-pub fn stub_3d72f0() -> ! {
-    todo!("0x3d72f0 __ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_20ChangeHistoryServiceENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvRKT_")
+// 0xf62574 — j___ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEEEC2ES8_SA_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>::list2(boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>)")]
+#[doc(alias = "j___ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEEEC2ES8_SA_")]
+pub fn stub_0xf62574() -> ! {
+    todo!("0xf62574 j___ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEEEC2ES8_SA_")
 }
 
-// 0x3d73f8 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_20ChangeHistoryServiceES6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEEENS0_10connectionERKT_
-// type: int __fastcall(int *, int, __int64 *)
-#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>> const&)")]
-#[doc(alias = "__ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_20ChangeHistoryServiceES6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEEENS0_10connectionERKT_")]
-pub fn stub_3d73f8() -> ! {
-    todo!("0x3d73f8 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_20ChangeHistoryServiceES6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEEENS0_10connectionERKT_")
+// 0xf625c4 — j___ZN5boost3_bi5list3INS0_5valueINS_10shared_ptrIN3RBX7Network6PlayerEEEEENS2_IbEENS2_IPKcEEEC2ES8_S9_SC_
+// type: int __fastcall(int, int, int, pthread_mutex_t *, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int)
+#[doc(alias = "boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::_bi::value<bool>,boost::_bi::value<char const*>>::list3(boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::_bi::value<bool>,boost::_bi::value<char const*>)")]
+#[doc(alias = "j___ZN5boost3_bi5list3INS0_5valueINS_10shared_ptrIN3RBX7Network6PlayerEEEEENS2_IbEENS2_IPKcEEEC2ES8_S9_SC_")]
+pub fn stub_0xf625c4() -> ! {
+    todo!("0xf625c4 j___ZN5boost3_bi5list3INS0_5valueINS_10shared_ptrIN3RBX7Network6PlayerEEEEENS2_IbEENS2_IPKcEEEC2ES8_S9_SC_")
 }
 
-// 0x3d746c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf2IvNS4_20ChangeHistoryServiceES6_SA_EENSE_5list3INSE_5valueIPSI_EENS2_3argILi1EEENSO_ILi2EEEEEEEEENS0_10connectionERKT_
-// type: int __fastcall(int *, int, __int64 *)
-#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>> const&)")]
-#[doc(alias = "__ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf2IvNS4_20ChangeHistoryServiceES6_SA_EENSE_5list3INSE_5valueIPSI_EENS2_3argILi1EEENSO_ILi2EEEEEEEEENS0_10connectionERKT_")]
-pub fn stub_3d746c() -> ! {
-    todo!("0x3d746c __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf2IvNS4_20ChangeHistoryServiceES6_SA_EENSE_5list3INSE_5valueIPSI_EENS2_3argILi1EEENSO_ILi2EEEEEEEEENS0_10connectionERKT_")
+// 0xf625d4 — j___ZN5boost3_bi5list3INS0_5valueINS_10shared_ptrIN3RBX7Network6PlayerEEEEENS2_IbEENS2_IPKcEEEclINS_4_mfi3mf2IvS6_bSsEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::_bi::value<bool>,boost::_bi::value<char const*>>::operator()<boost::_mfi::mf2<void,RBX::Network::Player,bool,std::string>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::Network::Player,bool,std::string> &,boost::_bi::list0 &,int)")]
+#[doc(alias = "j___ZN5boost3_bi5list3INS0_5valueINS_10shared_ptrIN3RBX7Network6PlayerEEEEENS2_IbEENS2_IPKcEEEclINS_4_mfi3mf2IvS6_bSsEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")]
+pub fn stub_0xf625d4() -> ! {
+    todo!("0xf625d4 j___ZN5boost3_bi5list3INS0_5valueINS_10shared_ptrIN3RBX7Network6PlayerEEEEENS2_IbEENS2_IPKcEEEclINS_4_mfi3mf2IvS6_bSsEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")
 }
 
-// 0x3d74e4 — __ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE7connectIN5boost3_bi6bind_tIvNS7_4_mfi3mf1IvNS2_20ChangeHistoryServiceES3_EENS8_5list2INS8_5valueIPSC_EENS7_3argILi1EEEEEEEEENS0_10connectionERKT_
-// type: int __fastcall(int *, int, __int64 *)
-#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::RunTransition)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>> const&)")]
-#[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE7connectIN5boost3_bi6bind_tIvNS7_4_mfi3mf1IvNS2_20ChangeHistoryServiceES3_EENS8_5list2INS8_5valueIPSC_EENS7_3argILi1EEEEEEEEENS0_10connectionERKT_")]
-pub fn stub_3d74e4() -> ! {
-    todo!("0x3d74e4 __ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE7connectIN5boost3_bi6bind_tIvNS7_4_mfi3mf1IvNS2_20ChangeHistoryServiceES3_EENS8_5list2INS8_5valueIPSC_EENS7_3argILi1EEEEEEEEENS0_10connectionERKT_")
+// 0xf625e4 — j___ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS2_IbEEEC2ES8_SA_SB_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::_bi::value<bool>>::list3(boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::_bi::value<bool>)")]
+#[doc(alias = "j___ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS2_IbEEEC2ES8_SA_SB_")]
+pub fn stub_0xf625e4() -> ! {
+    todo!("0xf625e4 j___ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS2_IbEEEC2ES8_SA_SB_")
 }
 
-// 0x3d7558 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSI22ChangeHistoryStatsItemEERS3_RKNS0_IT_EE
-// type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<ChangeHistoryStatsItem>(boost::shared_ptr<ChangeHistoryStatsItem> const&)")]
-#[doc(alias = "__ZN5boost10shared_ptrIN3RBX8InstanceEEaSI22ChangeHistoryStatsItemEERS3_RKNS0_IT_EE")]
-pub fn stub_3d7558() -> ! {
-    todo!("0x3d7558 __ZN5boost10shared_ptrIN3RBX8InstanceEEaSI22ChangeHistoryStatsItemEERS3_RKNS0_IT_EE")
+// 0xf62654 — j___ZN5boost3_bi5list6INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS9_ILi2EEENS2_ISsEENS2_IbEENS2_IdEEEC2ES8_SA_SB_SC_SD_SE_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>::list6(boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>)")]
+#[doc(alias = "j___ZN5boost3_bi5list6INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS9_ILi2EEENS2_ISsEENS2_IbEENS2_IdEEEC2ES8_SA_SB_SC_SD_SE_")]
+pub fn stub_0xf62654() -> ! {
+    todo!("0xf62654 j___ZN5boost3_bi5list6INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS9_ILi2EEENS2_ISsEENS2_IbEENS2_IdEEEC2ES8_SA_SB_SC_SD_SE_")
 }
 
-// 0x3d758c — __ZN22ChangeHistoryStatsItem6createERN3RBX20ChangeHistoryServiceE
-// type: void __fastcall(ChangeHistoryStatsItem *this, RBX::ChangeHistoryService *)
-#[doc(alias = "ChangeHistoryStatsItem::create(RBX::ChangeHistoryService &)")]
-#[doc(alias = "__ZN22ChangeHistoryStatsItem6createERN3RBX20ChangeHistoryServiceE")]
-pub fn stub_3d758c() -> ! {
-    todo!("0x3d758c __ZN22ChangeHistoryStatsItem6createERN3RBX20ChangeHistoryServiceE")
+// 0xf62694 — j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX7Network6PlayerEEEEENS2_IbEEEC2ES8_S9_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, pthread_mutex_t *, int, int, int, int)
+#[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::_bi::value<bool>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::_bi::value<bool>)")]
+#[doc(alias = "j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX7Network6PlayerEEEEENS2_IbEEEC2ES8_S9_")]
+pub fn stub_0xf62694() -> ! {
+    todo!("0xf62694 j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX7Network6PlayerEEEEENS2_IbEEEC2ES8_S9_")
 }
 
-// 0x3d76f0 — __ZN3RBX20ChangeHistoryService8Waypoint7getItemEN5boost10shared_ptrINS_8InstanceEEE
-// type: _DWORD *__fastcall(_DWORD *, const shared_count *, int, int, char, int, boost::detail::sp_counted_base *, int, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int)
-#[doc(alias = "RBX::ChangeHistoryService::Waypoint::getItem(boost::shared_ptr<RBX::Instance>)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService8Waypoint7getItemEN5boost10shared_ptrINS_8InstanceEEE")]
-pub fn stub_3d76f0() -> ! {
-    todo!("0x3d76f0 __ZN3RBX20ChangeHistoryService8Waypoint7getItemEN5boost10shared_ptrINS_8InstanceEEE")
+// 0xf626b4 — j___ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEEEC2ES8_SA_
+// type: int __fastcall(int, int, int, int, int, pthread_mutex_t *, int, int, int, int)
+#[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>)")]
+#[doc(alias = "j___ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEEEC2ES8_SA_")]
+pub fn stub_0xf626b4() -> ! {
+    todo!("0xf626b4 j___ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEEEC2ES8_SA_")
 }
 
-// 0x3d79c4 — __ZN3RBX20ChangeHistoryService4Item12recordCreateEv
-// type: void __fastcall(RBX::ChangeHistoryService::Item *this)
-#[doc(alias = "RBX::ChangeHistoryService::Item::recordCreate(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService4Item12recordCreateEv")]
-pub fn stub_3d79c4() -> ! {
-    todo!("0x3d79c4 __ZN3RBX20ChangeHistoryService4Item12recordCreateEv")
+// 0xf626c4 — j___ZN5boost3_bi8storage2INS0_5valueISsEENS2_INS_8weak_ptrIN3RBX7Network6PlayerEEEEEEC2ES3_S9_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "boost::_bi::storage2<boost::_bi::value<std::string>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>>::storage2(boost::_bi::value<std::string>,boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>)")]
+#[doc(alias = "j___ZN5boost3_bi8storage2INS0_5valueISsEENS2_INS_8weak_ptrIN3RBX7Network6PlayerEEEEEEC2ES3_S9_")]
+pub fn stub_0xf626c4() -> ! {
+    todo!("0xf626c4 j___ZN5boost3_bi8storage2INS0_5valueISsEENS2_INS_8weak_ptrIN3RBX7Network6PlayerEEEEEEC2ES3_S9_")
 }
 
-// 0x3d7b2c — __ZN5boost10shared_ptrIN3RBX19MegaClusterInstanceEEaSERKS3_
-// type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::MegaClusterInstance>::operator=(boost::shared_ptr<RBX::MegaClusterInstance> const&)")]
-#[doc(alias = "__ZN5boost10shared_ptrIN3RBX19MegaClusterInstanceEEaSERKS3_")]
-pub fn stub_3d7b2c() -> ! {
-    todo!("0x3d7b2c __ZN5boost10shared_ptrIN3RBX19MegaClusterInstanceEEaSERKS3_")
+// 0xf626d4 — j___ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS2_IbEEEC2ES8_SA_SB_
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int)
+#[doc(alias = "boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::_bi::value<bool>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::_bi::value<bool>)")]
+#[doc(alias = "j___ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS2_IbEEEC2ES8_SA_SB_")]
+pub fn stub_0xf626d4() -> ! {
+    todo!("0xf626d4 j___ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS2_IbEEEC2ES8_SA_SB_")
 }
 
-// 0x3d7b64 — __ZN3RBX20ChangeHistoryService4Item18addClusterDataFastEPKNS_5Voxel4GridE
-// type: const RBX::Voxel::Grid *__fastcall(RBX::ChangeHistoryService::Item *this, const RBX::Voxel::Grid *)
-#[doc(alias = "RBX::ChangeHistoryService::Item::addClusterDataFast(RBX::Voxel::Grid const*)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService4Item18addClusterDataFastEPKNS_5Voxel4GridE")]
-pub fn stub_3d7b64() -> ! {
-    todo!("0x3d7b64 __ZN3RBX20ChangeHistoryService4Item18addClusterDataFastEPKNS_5Voxel4GridE")
+// 0xf626e4 — j___ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS9_ILi2EEEEC2ES8_SA_SB_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>)")]
+#[doc(alias = "j___ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS9_ILi2EEEEC2ES8_SA_SB_")]
+pub fn stub_0xf626e4() -> ! {
+    todo!("0xf626e4 j___ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS9_ILi2EEEEC2ES8_SA_SB_")
 }
 
-// 0x3d7df0 — __ZN3RBX20ChangeHistoryService4Item14addClusterDataINS_19MegaClusterInstanceEEEvPKT_
-// type: RBX::MegaClusterInstance *__fastcall(int, RBX::MegaClusterInstance *this)
-#[doc(alias = "void RBX::ChangeHistoryService::Item::addClusterData<RBX::MegaClusterInstance>(RBX::MegaClusterInstance const*)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService4Item14addClusterDataINS_19MegaClusterInstanceEEEvPKT_")]
-pub fn stub_3d7df0() -> ! {
-    todo!("0x3d7df0 __ZN3RBX20ChangeHistoryService4Item14addClusterDataINS_19MegaClusterInstanceEEEvPKT_")
+// 0xf62714 — j___ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS9_ILi2EEENS2_ISsEEEC2ES8_SA_SB_SC_
+// type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int)
+#[doc(alias = "boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>>::storage4(boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>)")]
+#[doc(alias = "j___ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS9_ILi2EEENS2_ISsEEEC2ES8_SA_SB_SC_")]
+pub fn stub_0xf62714() -> ! {
+    todo!("0xf62714 j___ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS9_ILi2EEENS2_ISsEEEC2ES8_SA_SB_SC_")
 }
 
-// 0x3d7f90 — __ZN3RBX20ChangeHistoryService4Item14recordPropertyEPKNS_10Reflection18PropertyDescriptorE
-// type: void __fastcall(RBX::ChangeHistoryService::Item *this, const RBX::Reflection::PropertyDescriptor *)
-#[doc(alias = "RBX::ChangeHistoryService::Item::recordProperty(RBX::Reflection::PropertyDescriptor const*)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService4Item14recordPropertyEPKNS_10Reflection18PropertyDescriptorE")]
-pub fn stub_3d7f90() -> ! {
-    todo!("0x3d7f90 __ZN3RBX20ChangeHistoryService4Item14recordPropertyEPKNS_10Reflection18PropertyDescriptorE")
+// 0xf62754 — j___ZN5boost3_bi8storage5INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS9_ILi2EEENS2_ISsEENS2_IbEEEC2ES8_SA_SB_SC_SD_
+// type: int __fastcall(int, int, int, int)
+#[doc(alias = "boost::_bi::storage5<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::storage5(boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>)")]
+#[doc(alias = "j___ZN5boost3_bi8storage5INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS9_ILi2EEENS2_ISsEENS2_IbEEEC2ES8_SA_SB_SC_SD_")]
+pub fn stub_0xf62754() -> ! {
+    todo!("0xf62754 j___ZN5boost3_bi8storage5INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS9_ILi2EEENS2_ISsEENS2_IbEEEC2ES8_SA_SB_SC_SD_")
 }
 
-// 0x3d8108 — __ZN3RBX20ChangeHistoryService4Item12recordDeleteEv
-// type: int __fastcall(RBX::ChangeHistoryService::Item *this)
-#[doc(alias = "RBX::ChangeHistoryService::Item::recordDelete(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService4Item12recordDeleteEv")]
-pub fn stub_3d8108() -> ! {
-    todo!("0x3d8108 __ZN3RBX20ChangeHistoryService4Item12recordDeleteEv")
+// 0xf62764 — j___ZN5boost3_bi8storage6INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS9_ILi2EEENS2_ISsEENS2_IbEENS2_IdEEEC2ES8_SA_SB_SC_SD_SE_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "boost::_bi::storage6<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>>::storage6(boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<double>)")]
+#[doc(alias = "j___ZN5boost3_bi8storage6INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS9_ILi2EEENS2_ISsEENS2_IbEENS2_IdEEEC2ES8_SA_SB_SC_SD_SE_")]
+pub fn stub_0xf62764() -> ! {
+    todo!("0xf62764 j___ZN5boost3_bi8storage6INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS_3argILi1EEENS9_ILi2EEENS2_ISsEENS2_IbEENS2_IdEEEC2ES8_SA_SB_SC_SD_SE_")
 }
 
-// 0x3d8144 — __ZN3RBX20ChangeHistoryService4Item6unplayEv
-// type: void __fastcall(RBX::ChangeHistoryService::Item *this, int, int, int)
-#[doc(alias = "RBX::ChangeHistoryService::Item::unplay(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService4Item6unplayEv")]
-pub fn stub_3d8144() -> ! {
-    todo!("0x3d8144 __ZN3RBX20ChangeHistoryService4Item6unplayEv")
+// 0xf627b4 — j___ZN5boost4bindIvN3RBX7Network6PlayerENS_10shared_ptrIS3_EEEENS_3_bi6bind_tIT_NS_4_mfi3mf0IS8_T0_EENS6_9list_av_1IT1_E4typeEEEMSB_FS8_vESE_
+// type: int __fastcall(pthread_mutex_t *, int, int)
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Player>,boost::_bi::list_av_1<boost::shared_ptr<RBX::Network::Player>>::type> boost::bind<void,RBX::Network::Player,boost::shared_ptr<RBX::Network::Player>>(void (RBX::Network::Player::*)(void),boost::shared_ptr<RBX::Network::Player>)")]
+#[doc(alias = "j___ZN5boost4bindIvN3RBX7Network6PlayerENS_10shared_ptrIS3_EEEENS_3_bi6bind_tIT_NS_4_mfi3mf0IS8_T0_EENS6_9list_av_1IT1_E4typeEEEMSB_FS8_vESE_")]
+pub fn stub_0xf627b4() -> ! {
+    todo!("0xf627b4 j___ZN5boost4bindIvN3RBX7Network6PlayerENS_10shared_ptrIS3_EEEENS_3_bi6bind_tIT_NS_4_mfi3mf0IS8_T0_EENS6_9list_av_1IT1_E4typeEEEMSB_FS8_vESE_")
 }
 
-// 0x3d8168 — __ZN3RBX20ChangeHistoryService4Item13unplay_CFrameEv
-// type: int __fastcall(RBX::Instance **this)
-#[doc(alias = "RBX::ChangeHistoryService::Item::unplay_CFrame(void)")]
-#[doc(alias = "__ZN3RBX20ChangeHistoryService4Item13unplay_CFrameEv")]
-pub fn stub_3d8168() -> ! {
-    todo!("0x3d8168 __ZN3RBX20ChangeHistoryService4Item13unplay_CFrameEv")
+// 0xf627c4 — j___ZN5boost4bindIvN3RBX7Network6PlayerEbSsNS_10shared_ptrIS3_EEbPKcEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISA_T0_T1_T2_EENS8_9list_av_3IT3_T4_T5_E4typeEEEMSD_FSA_SE_SF_ESI_SJ_SK_
+// type: int __fastcall(int, int, int, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int)
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Player,bool,std::string>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Network::Player>,bool,char const*>::type> boost::bind<void,RBX::Network::Player,bool,std::string,boost::shared_ptr<RBX::Network::Player>,bool,char const*>(void (RBX::Network::Player::*)(bool,std::string),boost::shared_ptr<RBX::Network::Player>,bool,char const*)")]
+#[doc(alias = "j___ZN5boost4bindIvN3RBX7Network6PlayerEbSsNS_10shared_ptrIS3_EEbPKcEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISA_T0_T1_T2_EENS8_9list_av_3IT3_T4_T5_E4typeEEEMSD_FSA_SE_SF_ESI_SJ_SK_")]
+pub fn stub_0xf627c4() -> ! {
+    todo!("0xf627c4 j___ZN5boost4bindIvN3RBX7Network6PlayerEbSsNS_10shared_ptrIS3_EEbPKcEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISA_T0_T1_T2_EENS8_9list_av_3IT3_T4_T5_E4typeEEEMSD_FSA_SE_SF_ESI_SJ_SK_")
 }
 
-// 0x3d82b0 — __ZN3RBX15ServiceProvider6createINS_9SelectionEEEPT_PKNS_8InstanceE
-// type: int __fastcall(RBX::ServiceProvider *, const RBX::Instance *)
-#[doc(alias = "RBX::Selection * RBX::ServiceProvider::create<RBX::Selection>(RBX::Instance const*)")]
-#[doc(alias = "__ZN3RBX15ServiceProvider6createINS_9SelectionEEEPT_PKNS_8InstanceE")]
-pub fn stub_3d82b0() -> ! {
-    todo!("0x3d82b0 __ZN3RBX15ServiceProvider6createINS_9SelectionEEEPT_PKNS_8InstanceE")
+// 0xf62854 — j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network19PersistentDataStoreES4_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::PersistentDataStore,RBX::Network::PersistentDataStore>(boost::shared_ptr<RBX::Network::PersistentDataStore> *,RBX::Network::PersistentDataStore *,boost::detail::shared_count &)")]
+#[doc(alias = "j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network19PersistentDataStoreES4_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_0xf62854() -> ! {
+    todo!("0xf62854 j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network19PersistentDataStoreES4_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
 }
 
-// 0x3d82c8 — __ZN3RBX9Selection12setSelectionISt14_List_iteratorIN5boost10shared_ptrINS_8InstanceEEEEEEvT_S8_
-// type: int __fastcall(RBX::Selection *, int *, int *)
-#[doc(alias = "void RBX::Selection::setSelection<std::_List_iterator<boost::shared_ptr<RBX::Instance>>>(std::_List_iterator<boost::shared_ptr<RBX::Instance>>,std::_List_iterator<boost::shared_ptr<RBX::Instance>>)")]
-#[doc(alias = "__ZN3RBX9Selection12setSelectionISt14_List_iteratorIN5boost10shared_ptrINS_8InstanceEEEEEEvT_S8_")]
-pub fn stub_3d82c8() -> ! {
-    todo!("0x3d82c8 __ZN3RBX9Selection12setSelectionISt14_List_iteratorIN5boost10shared_ptrINS_8InstanceEEEEEEvT_S8_")
+// 0xf62884 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX7Network6PlayerEEENS3_5list1INS3_5valueINS_10shared_ptrIS9_EEEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Player>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+#[doc(alias = "j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX7Network6PlayerEEENS3_5list1INS3_5valueINS_10shared_ptrIS9_EEEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
+pub fn stub_0xf62884() -> ! {
+    todo!("0xf62884 j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX7Network6PlayerEEENS3_5list1INS3_5valueINS_10shared_ptrIS9_EEEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
 }
 
-// 0x3d82e8 — __ZNK3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E12getClassNameEv
-// type: int()
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E12getClassNameEv")]
-pub fn stub_3d82e8() -> ! {
-    todo!("0x3d82e8 __ZNK3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E12getClassNameEv")
+// 0xf628c4 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX7Network6PlayerEbSsEENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENSC_IbEENSC_IPKcEEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Player,bool,std::string>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::_bi::value<bool>,boost::_bi::value<char const*>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+#[doc(alias = "j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX7Network6PlayerEbSsEENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENSC_IbEENSC_IPKcEEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
+pub fn stub_0xf628c4() -> ! {
+    todo!("0xf628c4 j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX7Network6PlayerEbSsEENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENSC_IbEENSC_IPKcEEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
 }
 
-// 0x3d82fc — __ZThn32_NK3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E12getClassNameEv
-// type: int()
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E12getClassNameEv")]
-pub fn stub_3d82fc() -> ! {
-    todo!("0x3d82fc __ZThn32_NK3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E12getClassNameEv")
+// 0xf629f4 — j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvRNS_8weak_ptrIN3RBX7Network6PlayerEEEPKNS7_15ServiceProviderEENS4_5list2INS4_5valueISA_EENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvRNS_8weak_ptrIN3RBX7Network6PlayerEEEPKNS7_15ServiceProviderEENS4_5list2INS4_5valueISA_EENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")]
+#[doc(alias = "j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvRNS_8weak_ptrIN3RBX7Network6PlayerEEEPKNS7_15ServiceProviderEENS4_5list2INS4_5valueISA_EENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_0xf629f4() -> ! {
+    todo!("0xf629f4 j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvRNS_8weak_ptrIN3RBX7Network6PlayerEEEPKNS7_15ServiceProviderEENS4_5list2INS4_5valueISA_EENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")
 }
 
-// 0x3d8310 — __ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEED1Ev
-// type: int()
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::~EnumDesc()")]
-#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEED1Ev")]
-pub fn stub_3d8310() -> ! {
-    todo!("0x3d8310 __ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEED1Ev")
+// 0xf62a04 — j___ZN5boost8functionIFvvEEaSINS_3_bi6bind_tIvPFvRNS_8weak_ptrIN3RBX7Network6PlayerEEEPKNS7_15ServiceProviderEENS4_5list2INS4_5valueISA_EENSI_ISE_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS2_E4typeESO_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "j___ZN5boost8functionIFvvEEaSINS_3_bi6bind_tIvPFvRNS_8weak_ptrIN3RBX7Network6PlayerEEEPKNS7_15ServiceProviderEENS4_5list2INS4_5valueISA_EENSI_ISE_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS2_E4typeESO_")]
+#[doc(alias = "j___ZN5boost8functionIFvvEEaSINS_3_bi6bind_tIvPFvRNS_8weak_ptrIN3RBX7Network6PlayerEEEPKNS7_15ServiceProviderEENS4_5list2INS4_5valueISA_EENSI_ISE_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS2_E4typeESO_")]
+pub fn stub_0xf62a04() -> ! {
+    todo!("0xf62a04 j___ZN5boost8functionIFvvEEaSINS_3_bi6bind_tIvPFvRNS_8weak_ptrIN3RBX7Network6PlayerEEEPKNS7_15ServiceProviderEENS4_5list2INS4_5valueISA_EENSI_ISE_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS2_E4typeESO_")
 }
 
-// 0x3d8318 — __ZNK3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEE15convertToStringEmRSs
-// type: int __fastcall(int, unsigned int, std::string *, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::convertToString(unsigned long,std::string &)const")]
-#[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEE15convertToStringEmRSs")]
-pub fn stub_3d8318() -> ! {
-    todo!("0x3d8318 __ZNK3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEE15convertToStringEmRSs")
-}
