@@ -601,6 +601,7 @@ pub mod generated_core_bg24;
 pub mod generated_core_bg25;
 pub mod generated_core_bg26;
 pub mod generated_core_bg27;
+pub mod generated_core_bg28;
 pub mod generated_core2_delta;
 pub mod generated_core_delta;
 pub mod generated_watchdog_core_w12;
