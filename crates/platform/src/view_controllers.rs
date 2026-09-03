@@ -5,6 +5,244 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+// Shared iOS-bridge model for the GameViewController / AppDelegate leaves below.
+// ObjC `id` (nullable object pointer) has no host runtime here; `None` is `nil`.
+pub type ObjCId = usize;
+pub const NIL_ID: ObjCId = 0;
+
+/// Landscape orientations from `UIInterfaceOrientation` (original compares raw ints).
+pub const UI_INTERFACE_ORIENTATION_LANDSCAPE_LEFT: i32 = 3;
+pub const UI_INTERFACE_ORIENTATION_LANDSCAPE_RIGHT: i32 = 4;
+// 0x4db08 returns 0x18: landscape-left | landscape-right mask.
+pub const UI_INTERFACE_ORIENTATION_MASK_LANDSCAPE: u32 = 24;
+
+/// RAII handle mirroring `rbx::signals::scoped_connection` plus its weak slot.
+/// `disconnect` maps to `rbx::signals::connection::disconnect`; clearing the
+/// slot maps to the conditional `weak_release` (this slot owns the last weak ref).
+#[derive(Debug, Default)]
+pub struct ScopedConnection {
+    connected: bool,
+    has_weak_slot: bool,
+}
+
+impl ScopedConnection {
+    pub fn new() -> Self {
+        // A freshly constructed scoped_connection is live; `.cxx_construct`
+        // zeroes the weak slot, so it starts empty (cf. IDA 0x1a5ca).
+        Self { connected: true, has_weak_slot: false }
+    }
+    pub fn disconnect(&mut self) {
+        self.connected = false;
+    }
+    pub fn reset_weak_slot(&mut self) {
+        self.has_weak_slot = false;
+    }
+    pub fn is_connected(&self) -> bool {
+        self.connected
+    }
+    pub fn has_weak_slot(&self) -> bool {
+        self.has_weak_slot
+    }
+}
+
+/// Process-wide `NSNotificationCenter` counterpart (`+[NSNotificationCenter defaultCenter]`).
+/// Observers are tracked by pointer identity, matching `removeObserver:` semantics.
+#[derive(Debug, Default)]
+pub struct NotificationCenter {
+    observers: parking_lot::Mutex<Vec<ObjCId>>,
+}
+
+impl NotificationCenter {
+    pub fn default_center() -> &'static Self {
+        static CENTER: std::sync::LazyLock<NotificationCenter> =
+            std::sync::LazyLock::new(NotificationCenter::default);
+        &CENTER
+    }
+    pub fn add_observer(&self, observer: ObjCId) {
+        self.observers.lock().push(observer);
+    }
+    pub fn remove_observer(&self, observer: ObjCId) {
+        self.observers.lock().retain(|&o| o != observer);
+    }
+    pub fn observer_count(&self) -> usize {
+        self.observers.lock().len()
+    }
+}
+
+/// Minimal `GameView` counterpart: owns the subview list `getControlView` enumerates
+/// and counts layout passes for `layoutSubviews` (UIKit internals are out of slice).
+#[derive(Debug, Default)]
+pub struct GameView {
+    subviews: parking_lot::Mutex<Vec<ObjCId>>,
+    layout_passes: std::sync::atomic::AtomicU32,
+}
+
+impl GameView {
+    pub fn new() -> Self {
+        Self::default()
+    }
+    pub fn add_subview(&self, view: ObjCId) {
+        self.subviews.lock().push(view);
+    }
+    pub fn first_subview(&self) -> Option<ObjCId> {
+        self.subviews.lock().first().copied()
+    }
+    pub fn layout_subviews(&self) {
+        self.layout_passes
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn layout_passes(&self) -> u32 {
+        self.layout_passes.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+
+/// Minimal `UIWebView` counterpart: detach models `removeFromSuperview`,
+/// drop models `release`.
+#[derive(Debug, Default)]
+pub struct WebView {
+    superview: parking_lot::Mutex<ObjCId>,
+}
+
+impl WebView {
+    pub fn new(superview: ObjCId) -> Self {
+        Self { superview: parking_lot::Mutex::new(superview) }
+    }
+    pub fn remove_from_superview(&self) {
+        *self.superview.lock() = NIL_ID;
+    }
+    pub fn superview(&self) -> ObjCId {
+        *self.superview.lock()
+    }
+}
+
+/// Minimal `UIApplication` counterpart for `setStatusBarHidden:`.
+#[derive(Debug, Default)]
+pub struct UiApplication {
+    status_bar_hidden: std::sync::atomic::AtomicBool,
+}
+
+impl UiApplication {
+    pub fn shared_application() -> &'static Self {
+        static APP: std::sync::LazyLock<UiApplication> =
+            std::sync::LazyLock::new(UiApplication::default);
+        &APP
+    }
+    pub fn set_status_bar_hidden(&self, hidden: bool) {
+        self.status_bar_hidden
+            .store(hidden, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn is_status_bar_hidden(&self) -> bool {
+        self.status_bar_hidden.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+
+/// Minimal `PlaceLauncher` counterpart behind `+[PlaceLauncher sharedInstance]`.
+#[derive(Debug, Default)]
+pub struct PlaceLauncher {
+    view_enabled: std::sync::atomic::AtomicBool,
+}
+
+impl PlaceLauncher {
+    pub fn shared_instance() -> &'static Self {
+        static LAUNCHER: std::sync::LazyLock<PlaceLauncher> = std::sync::LazyLock::new(|| PlaceLauncher {
+            view_enabled: std::sync::atomic::AtomicBool::new(true),
+        });
+        &LAUNCHER
+    }
+    pub fn disable_view_because_going_to_background(&self) {
+        self.view_enabled.store(false, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn is_view_enabled(&self) -> bool {
+        self.view_enabled.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+
+/// `EAGLViewController` base (composition models the ObjC superclass).
+/// Tracks appearance plus the base-level memory-warning count; the subclass
+/// overrides below forward to these exactly like the `objc_super` sends.
+#[derive(Debug, Default)]
+pub struct EaglViewController {
+    appearing: std::sync::atomic::AtomicBool,
+    appeared: std::sync::atomic::AtomicBool,
+    memory_warnings: std::sync::atomic::AtomicU32,
+}
+
+impl EaglViewController {
+    pub fn new() -> Self {
+        Self::default()
+    }
+    pub fn view_will_appear(&self, _animated: bool) {
+        self.appearing.store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn view_did_appear(&self, _animated: bool) {
+        self.appearing.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.appeared.store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn did_receive_memory_warning(&self) {
+        self.memory_warnings
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn is_appearing(&self) -> bool {
+        self.appearing.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn did_appear(&self) -> bool {
+        self.appeared.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn memory_warning_count(&self) -> u32 {
+        self.memory_warnings.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+
+/// `AppDelegate` ivars: atomic `bgTask`, retained `_window`, C++ `messageOutConnection`.
+#[derive(Debug, Default)]
+pub struct AppDelegate {
+    bg_task: std::sync::atomic::AtomicU32,
+    window: parking_lot::Mutex<Option<ObjCId>>,
+    message_out_connection: parking_lot::Mutex<ScopedConnection>,
+}
+
+impl AppDelegate {
+    pub fn new() -> Self {
+        let this = Self {
+            message_out_connection: parking_lot::Mutex::new(ScopedConnection::new()),
+            ..Self::default()
+        };
+        this.cxx_construct();
+        this
+    }
+    fn objc_id(&self) -> ObjCId {
+        self as *const Self as ObjCId
+    }
+}
+
+/// `GameViewController` ivars over the `EAGLViewController` base.
+#[derive(Debug, Default)]
+pub struct GameViewController {
+    base: EaglViewController,
+    game_view: GameView,
+    external_web_view: parking_lot::Mutex<Option<WebView>>,
+}
+
+impl GameViewController {
+    pub fn new() -> Self {
+        Self::default()
+    }
+    fn objc_id(&self) -> ObjCId {
+        self as *const Self as ObjCId
+    }
+    pub fn base(&self) -> &EaglViewController {
+        &self.base
+    }
+    pub fn game_view(&self) -> &GameView {
+        &self.game_view
+    }
+    pub fn set_external_web_view(&self, view: Option<WebView>) {
+        *self.external_web_view.lock() = view;
+    }
+    pub fn has_external_web_view(&self) -> bool {
+        self.external_web_view.lock().is_some()
+    }
+}
 
 // 0x19228 — -[AppDelegate init]
 // type: AppDelegate *__cdecl(AppDelegate *self, SEL)
@@ -43,9 +281,17 @@ pub fn stub_19514() -> ! {
 
 // 0x195a0 — -[AppDelegate applicationWillResignActive:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
-#[doc(alias = "-[AppDelegate applicationWillResignActive:]")]
-pub fn stub_195a0() -> ! {
-    todo!("0x195a0 -[AppDelegate applicationWillResignActive:]")
+// IDA 0x195a0
+impl AppDelegate {
+    #[doc(alias = "-[AppDelegate applicationWillResignActive:]")]
+    #[doc = "-[AppDelegate applicationWillResignActive:]"]
+    pub fn application_will_resign_active(&self) {
+        // RBX::StandardOut::printf has no host counterpart here; stderr keeps the begin/end trace.
+        eprintln!("AppDelegate applicationWillResignActive begin"); // IDA 0x19600
+        // +[PlaceLauncher sharedInstance] disableViewBecauseGoingToBackground
+        PlaceLauncher::shared_instance().disable_view_because_going_to_background(); // IDA 0x19640
+        eprintln!("AppDelegate applicationWillResignActive end"); // IDA 0x1965e
+    }
 }
 
 // 0x196e4 — -[AppDelegate applicationDidEnterBackground:]
@@ -113,44 +359,81 @@ pub fn stub_1a234() -> ! {
 
 // 0x1a494 — -[AppDelegate bgTask]
 // type: unsigned int __cdecl(AppDelegate *self, SEL)
-#[doc(alias = "-[AppDelegate bgTask]")]
-pub fn stub_1a494() -> ! {
-    todo!("0x1a494 -[AppDelegate bgTask]")
+// IDA 0x1a494
+impl AppDelegate {
+    #[doc(alias = "-[AppDelegate bgTask]")]
+    #[doc = "-[AppDelegate bgTask]"]
+    pub fn bg_task(&self) -> u32 {
+        // LDR bgTask ivar + DMB ISH (0x1a4a2): acquire-to-seq fence maps to SeqCst.
+        self.bg_task.load(std::sync::atomic::Ordering::SeqCst) // IDA 0x1a4a0
+    }
 }
 
 // 0x1a4a8 — -[AppDelegate setBgTask:]
 // type: void __cdecl(AppDelegate *self, SEL, unsigned int)
-#[doc(alias = "-[AppDelegate setBgTask:]")]
-pub fn stub_1a4a8() -> ! {
-    todo!("0x1a4a8 -[AppDelegate setBgTask:]")
+// IDA 0x1a4a8
+impl AppDelegate {
+    #[doc(alias = "-[AppDelegate setBgTask:]")]
+    #[doc = "-[AppDelegate setBgTask:]"]
+    pub fn set_bg_task(&self, task: u32) {
+        // DMB ISH both before (0x1a4b0) and after (0x1a4ba) the STR: SeqCst store.
+        self.bg_task.store(task, std::sync::atomic::Ordering::SeqCst) // IDA 0x1a4b8
+    }
 }
 
 // 0x1a4c0 — -[AppDelegate window]
 // type: UIWindow *__cdecl(AppDelegate *self, SEL)
-#[doc(alias = "-[AppDelegate window]")]
-pub fn stub_1a4c0() -> ! {
-    todo!("0x1a4c0 -[AppDelegate window]")
+// IDA 0x1a4c0
+impl AppDelegate {
+    #[doc(alias = "-[AppDelegate window]")]
+    #[doc = "-[AppDelegate window]"]
+    pub fn window(&self) -> Option<ObjCId> {
+        *self.window.lock() // IDA 0x1a4ce: return self->_window
+    }
 }
 
 // 0x1a4d0 — -[AppDelegate setWindow:]
 // type: void __cdecl(AppDelegate *self, SEL, id)
-#[doc(alias = "-[AppDelegate setWindow:]")]
-pub fn stub_1a4d0() -> ! {
-    todo!("0x1a4d0 -[AppDelegate setWindow:]")
+// IDA 0x1a4d0
+impl AppDelegate {
+    #[doc(alias = "-[AppDelegate setWindow:]")]
+    #[doc = "-[AppDelegate setWindow:]"]
+    pub fn set_window(&self, window: Option<ObjCId>) {
+        // objc_setProperty(self, _cmd, _window, new, atomic=0, copy=0):
+        // nonatomic retain-and-store; dropping the old handle models `release`.
+        *self.window.lock() = window; // IDA 0x1a4ec
+    }
 }
 
 // 0x1a4f4 — -[AppDelegate .cxx_destruct]
 // type: void __cdecl(AppDelegate *self, SEL)
-#[doc(alias = "-[AppDelegate .cxx_destruct]")]
-pub fn stub_1a4f4() -> ! {
-    todo!("0x1a4f4 -[AppDelegate .cxx_destruct]")
+// IDA 0x1a4f4
+impl AppDelegate {
+    #[doc(alias = "-[AppDelegate .cxx_destruct]")]
+    #[doc = "-[AppDelegate .cxx_destruct]"]
+    pub fn cxx_destruct(&self) {
+        let mut connection = self.message_out_connection.lock();
+        // rbx::signals::connection::disconnect(&messageOutConnection)
+        connection.disconnect(); // IDA 0x1a552
+        // if (con.weak_slot.p_) intrusive_ptr_weak_release(...): this slot owns
+        // the last weak ref, so clearing it performs the release.
+        if connection.has_weak_slot() { // IDA 0x1a558
+            connection.reset_weak_slot(); // IDA 0x1a560
+        }
+    }
 }
 
 // 0x1a5bc — -[AppDelegate .cxx_construct]
 // type: id __cdecl(AppDelegate *self, SEL)
-#[doc(alias = "-[AppDelegate .cxx_construct]")]
-pub fn stub_1a5bc() -> ! {
-    todo!("0x1a5bc -[AppDelegate .cxx_construct]")
+// IDA 0x1a5bc
+impl AppDelegate {
+    #[doc(alias = "-[AppDelegate .cxx_construct]")]
+    #[doc = "-[AppDelegate .cxx_construct]"]
+    pub fn cxx_construct(&self) {
+        // self->messageOutConnection.con.weak_slot.p_ = 0; return self.
+        // The `new()` constructor returns Self instead of the ObjC `id`.
+        self.message_out_connection.lock().reset_weak_slot(); // IDA 0x1a5ca
+    }
 }
 
 // 0x26768 — -[PlaceLauncher presentGameViewController]
@@ -169,23 +452,48 @@ pub fn stub_4d70c() -> ! {
 
 // 0x4d8cc — -[GameViewController dealloc]
 // type: void __cdecl(GameViewController *self, SEL)
-#[doc(alias = "-[GameViewController dealloc]")]
-pub fn stub_4d8cc() -> ! {
-    todo!("0x4d8cc -[GameViewController dealloc]")
+// IDA 0x4d8cc
+impl GameViewController {
+    #[doc(alias = "-[GameViewController dealloc]")]
+    #[doc = "-[GameViewController dealloc]"]
+    pub fn dealloc(self) {
+        let me = self.objc_id();
+        // if (externalWebView) { [removeFromSuperview]; [release]; }
+        if let Some(web) = self.external_web_view.lock().take() { // IDA 0x4d8e2
+            web.remove_from_superview(); // IDA 0x4d8f0
+            drop(web); // IDA 0x4d902
+        }
+        // [[NSNotificationCenter defaultCenter] removeObserver:self]
+        NotificationCenter::default_center().remove_observer(me); // IDA 0x4d930
+        // -[GameView release] + [super dealloc]: game_view and base drop with self.
+        // IDA 0x4d94e, IDA 0x4d970
+    }
 }
 
 // 0x4d978 — -[GameViewController viewWillAppear:]
 // type: void __cdecl(GameViewController *self, SEL, char)
-#[doc(alias = "-[GameViewController viewWillAppear:]")]
-pub fn stub_4d978() -> ! {
-    todo!("0x4d978 -[GameViewController viewWillAppear:]")
+// IDA 0x4d978
+impl GameViewController {
+    #[doc(alias = "-[GameViewController viewWillAppear:]")]
+    #[doc = "-[GameViewController viewWillAppear:]"]
+    pub fn view_will_appear(&self, animated: bool) {
+        // [super viewWillAppear:animated]
+        self.base.view_will_appear(animated); // IDA 0x4d99c
+        // [[UIApplication sharedApplication] setStatusBarHidden:YES]
+        UiApplication::shared_application().set_status_bar_hidden(true); // IDA 0x4d9ca
+    }
 }
 
 // 0x4d9d4 — -[GameViewController viewDidAppear:]
 // type: void __cdecl(GameViewController *self, SEL, char)
-#[doc(alias = "-[GameViewController viewDidAppear:]")]
-pub fn stub_4d9d4() -> ! {
-    todo!("0x4d9d4 -[GameViewController viewDidAppear:]")
+// IDA 0x4d9d4
+impl GameViewController {
+    #[doc(alias = "-[GameViewController viewDidAppear:]")]
+    #[doc = "-[GameViewController viewDidAppear:]"]
+    pub fn view_did_appear(&self, animated: bool) {
+        // [super viewDidAppear:animated]; nothing else. // IDA 0x4d9f8
+        self.base.view_did_appear(animated);
+    }
 }
 
 // 0x4da00 — -[GameViewController viewDidLoad]
@@ -197,44 +505,77 @@ pub fn stub_4da00() -> ! {
 
 // 0x4dab8 — -[GameViewController didReceiveMemoryWarning]
 // type: void __cdecl(GameViewController *self, SEL)
-#[doc(alias = "-[GameViewController didReceiveMemoryWarning]")]
-pub fn stub_4dab8() -> ! {
-    todo!("0x4dab8 -[GameViewController didReceiveMemoryWarning]")
+// IDA 0x4dab8
+impl GameViewController {
+    #[doc(alias = "-[GameViewController didReceiveMemoryWarning]")]
+    #[doc = "-[GameViewController didReceiveMemoryWarning]"]
+    pub fn did_receive_memory_warning(&self) {
+        // [super didReceiveMemoryWarning]; nothing else. // IDA 0x4dadc
+        self.base.did_receive_memory_warning();
+    }
 }
 
 // 0x4dae4 — -[GameViewController resizeGameView]
 // type: void __cdecl(GameViewController *self, SEL)
-#[doc(alias = "-[GameViewController resizeGameView]")]
-pub fn stub_4dae4() -> ! {
-    todo!("0x4dae4 -[GameViewController resizeGameView]")
+// IDA 0x4dae4
+impl GameViewController {
+    #[doc(alias = "-[GameViewController resizeGameView]")]
+    #[doc = "-[GameViewController resizeGameView]"]
+    pub fn resize_game_view(&self) {
+        // [gameView layoutSubviews]; tail-called via objc_msgSend. // IDA 0x4dafe
+        self.game_view.layout_subviews();
+    }
 }
 
 // 0x4db04 — -[GameViewController shouldAutorotate]
 // type: char __cdecl(GameViewController *self, SEL)
-#[doc(alias = "-[GameViewController shouldAutorotate]")]
-pub fn stub_4db04() -> ! {
-    todo!("0x4db04 -[GameViewController shouldAutorotate]")
+// IDA 0x4db04
+impl GameViewController {
+    #[doc(alias = "-[GameViewController shouldAutorotate]")]
+    #[doc = "-[GameViewController shouldAutorotate]"]
+    pub fn should_autorotate(&self) -> bool {
+        true // IDA 0x4db06: MOVS R0, #1 (BOOL YES)
+    }
 }
 
 // 0x4db08 — -[GameViewController supportedInterfaceOrientations]
 // type: unsigned int __cdecl(GameViewController *self, SEL)
-#[doc(alias = "-[GameViewController supportedInterfaceOrientations]")]
-pub fn stub_4db08() -> ! {
-    todo!("0x4db08 -[GameViewController supportedInterfaceOrientations]")
+// IDA 0x4db08
+impl GameViewController {
+    #[doc(alias = "-[GameViewController supportedInterfaceOrientations]")]
+    #[doc = "-[GameViewController supportedInterfaceOrientations]"]
+    pub fn supported_interface_orientations(&self) -> u32 {
+        // MOVS R0, #0x18: landscape-left | landscape-right mask. // IDA 0x4db0a
+        UI_INTERFACE_ORIENTATION_MASK_LANDSCAPE
+    }
 }
 
 // 0x4db0c — -[GameViewController shouldAutorotateToInterfaceOrientation:]
 // type: char __cdecl(GameViewController *self, SEL, int)
-#[doc(alias = "-[GameViewController shouldAutorotateToInterfaceOrientation:]")]
-pub fn stub_4db0c() -> ! {
-    todo!("0x4db0c -[GameViewController shouldAutorotateToInterfaceOrientation:]")
+// IDA 0x4db0c
+impl GameViewController {
+    #[doc(alias = "-[GameViewController shouldAutorotateToInterfaceOrientation:]")]
+    #[doc = "-[GameViewController shouldAutorotateToInterfaceOrientation:]"]
+    pub fn should_autorotate_to_interface_orientation(&self, orientation: i32) -> bool {
+        // MOVS R0,#1; CMP R2,#4; BXEQ when landscape-right. // IDA 0x4db0c
+        if orientation == UI_INTERFACE_ORIENTATION_LANDSCAPE_RIGHT { // IDA 0x4db10
+            return true; // IDA 0x4db12
+        }
+        orientation == UI_INTERFACE_ORIENTATION_LANDSCAPE_LEFT // IDA 0x4db1a
+    }
 }
 
 // 0x4db20 — -[GameViewController getControlView]
 // type: id __cdecl(GameViewController *self, SEL)
-#[doc(alias = "-[GameViewController getControlView]")]
-pub fn stub_4db20() -> ! {
-    todo!("0x4db20 -[GameViewController getControlView]")
+// IDA 0x4db20
+impl GameViewController {
+    #[doc(alias = "-[GameViewController getControlView]")]
+    #[doc = "-[GameViewController getControlView]"]
+    pub fn get_control_view(&self) -> Option<ObjCId> {
+        // Fast-enumerates gameView.subviews and returns the first object,
+        // nil when the list is empty. IDA 0x4db62, IDA 0x4db88, IDA 0x4db80
+        self.game_view.first_subview()
+    }
 }
 
 // 0x4db9c — -[GameViewController webView:shouldStartLoadWithRequest:navigationType:]
