@@ -101,17 +101,50 @@ impl GameView {
 #[derive(Debug, Default)]
 pub struct WebView {
     superview: parking_lot::Mutex<ObjCId>,
+    url: parking_lot::Mutex<String>,
+    delegate: parking_lot::Mutex<Option<ObjCId>>,
+    scales_page_to_fit: std::sync::atomic::AtomicBool,
+    user_interaction_enabled: std::sync::atomic::AtomicBool,
+    frame: parking_lot::Mutex<(f64, f64, f64, f64)>,
+    load_requests: std::sync::atomic::AtomicU32,
 }
 
 impl WebView {
     pub fn new(superview: ObjCId) -> Self {
-        Self { superview: parking_lot::Mutex::new(superview) }
+        Self { superview: parking_lot::Mutex::new(superview), ..Self::default() }
     }
     pub fn remove_from_superview(&self) {
         *self.superview.lock() = NIL_ID;
     }
     pub fn superview(&self) -> ObjCId {
         *self.superview.lock()
+    }
+}
+impl WebView {
+    pub fn set_delegate(&self, delegate: Option<ObjCId>) {
+        *self.delegate.lock() = delegate;
+    }
+    pub fn set_scales_page_to_fit(&self, fit: bool) {
+        self.scales_page_to_fit.store(fit, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn set_user_interaction_enabled(&self, enabled: bool) {
+        self.user_interaction_enabled.store(enabled, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn set_frame(&self, frame: (f64, f64, f64, f64)) {
+        *self.frame.lock() = frame;
+    }
+    pub fn frame(&self) -> (f64, f64, f64, f64) {
+        *self.frame.lock()
+    }
+    pub fn load_request(&self, url: &str) {
+        *self.url.lock() = url.to_owned();
+        self.load_requests.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn url(&self) -> String {
+        self.url.lock().clone()
+    }
+    pub fn load_request_count(&self) -> u32 {
+        self.load_requests.load(std::sync::atomic::Ordering::SeqCst)
     }
 }
 
@@ -145,6 +178,7 @@ pub struct PlaceLauncher {
     memory_warning_calls: std::sync::atomic::AtomicU32,
     start_game_calls: std::sync::atomic::AtomicU32,
     last_start_game: parking_lot::Mutex<Option<StartGameRequest>>,
+    present_requests: std::sync::atomic::AtomicU32,
 }
 
 impl PlaceLauncher {
@@ -195,6 +229,22 @@ impl PlaceLauncher {
     pub fn last_start_game(&self) -> Option<StartGameRequest> {
         *self.last_start_game.lock()
     }
+    pub fn present_request_count(&self) -> u32 {
+        self.present_requests.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+
+// 0x26768 — -[PlaceLauncher presentGameViewController]
+// type: void __cdecl(PlaceLauncher *self, SEL)
+// IDA 0x26768
+impl PlaceLauncher {
+    #[doc(alias = "-[PlaceLauncher presentGameViewController]")]
+    #[doc = "-[PlaceLauncher presentGameViewController]"]
+    pub fn present_game_view_controller(&self) {
+        // `dispatch_async(main, __block_literal_global505)` (IDA 0x2677e);
+        // the queue hop has no host counterpart, so the block runs inline.
+        self.present_requests.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 /// `EAGLViewController` base (composition models the ObjC superclass).
@@ -204,9 +254,9 @@ impl PlaceLauncher {
 pub struct EaglViewController {
     appearing: std::sync::atomic::AtomicBool,
     appeared: std::sync::atomic::AtomicBool,
+    loaded: std::sync::atomic::AtomicBool,
     memory_warnings: std::sync::atomic::AtomicU32,
 }
-
 impl EaglViewController {
     pub fn new() -> Self {
         Self::default()
@@ -230,6 +280,12 @@ impl EaglViewController {
     }
     pub fn memory_warning_count(&self) -> u32 {
         self.memory_warnings.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn view_did_load(&self) {
+        self.loaded.store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn did_load(&self) -> bool {
+        self.loaded.load(std::sync::atomic::Ordering::SeqCst)
     }
 }
 
@@ -256,32 +312,433 @@ impl AppDelegate {
 }
 
 /// `GameViewController` ivars over the `EAGLViewController` base.
+/// `webviewTweenTime` (0.3s close animation), the signup/login controller slots
+/// (`+168` externalWebView lives in `external_web_view`), the presented controller,
+/// plus counters for the animation/signal blocks below.
 #[derive(Debug, Default)]
 pub struct GameViewController {
     base: EaglViewController,
     game_view: GameView,
     external_web_view: parking_lot::Mutex<Option<WebView>>,
+    webview_tween_time: parking_lot::Mutex<f32>,
+    signup_view_controller: parking_lot::Mutex<Option<ObjCId>>,
+    login_view_controller: parking_lot::Mutex<Option<ObjCId>>,
+    presented_view_controller: parking_lot::Mutex<Option<ObjCId>>,
+    close_animation_requests: std::sync::atomic::AtomicU32,
+    url_window_closed_signals: std::sync::atomic::AtomicU32,
+    login_prompt_dispatches: std::sync::atomic::AtomicU32,
+    signup_prompt_dispatches: std::sync::atomic::AtomicU32,
+    login_ok_emits: std::sync::atomic::AtomicU32,
+    login_failed_emits: std::sync::atomic::AtomicU32,
+    last_login_ok_user: parking_lot::Mutex<String>,
+    last_login_error: parking_lot::Mutex<String>,
+    notification_registrations: std::sync::atomic::AtomicU32,
+    pending_login_success: parking_lot::Mutex<Option<bool>>,
+    login_notification_blocks: std::sync::atomic::AtomicU32,
+    pending_open_url: parking_lot::Mutex<Option<String>>,
+    url_window_opens: std::sync::atomic::AtomicU32,
 }
-
 impl GameViewController {
-    pub fn new() -> Self {
-        Self::default()
-    }
     fn objc_id(&self) -> ObjCId {
         self as *const Self as ObjCId
     }
-    pub fn base(&self) -> &EaglViewController {
-        &self.base
+    pub fn webview_tween_time(&self) -> f32 {
+        *self.webview_tween_time.lock()
     }
-    pub fn game_view(&self) -> &GameView {
-        &self.game_view
+    pub fn signup_view_controller_id(&self) -> Option<ObjCId> {
+        *self.signup_view_controller.lock()
     }
-    pub fn set_external_web_view(&self, view: Option<WebView>) {
-        *self.external_web_view.lock() = view;
+    pub fn login_view_controller_id(&self) -> Option<ObjCId> {
+        *self.login_view_controller.lock()
     }
-    pub fn has_external_web_view(&self) -> bool {
-        self.external_web_view.lock().is_some()
+    pub fn presented_view_controller(&self) -> Option<ObjCId> {
+        *self.presented_view_controller.lock()
     }
+    pub fn close_animation_request_count(&self) -> u32 {
+        self.close_animation_requests.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn url_window_closed_signal_count(&self) -> u32 {
+        self.url_window_closed_signals.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn login_prompt_dispatch_count(&self) -> u32 {
+        self.login_prompt_dispatches.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn signup_prompt_dispatch_count(&self) -> u32 {
+        self.signup_prompt_dispatches.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn login_ok_emit_count(&self) -> u32 {
+        self.login_ok_emits.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn login_failed_emit_count(&self) -> u32 {
+        self.login_failed_emits.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn last_login_ok_user(&self) -> String {
+        self.last_login_ok_user.lock().clone()
+    }
+    pub fn last_login_error(&self) -> String {
+        self.last_login_error.lock().clone()
+    }
+}
+// 0x4d70c — -[GameViewController initWithNibName:bundle:]
+// type: GameViewController *__cdecl(GameViewController *self, SEL, id, id)
+// IDA 0x4d70c
+impl GameViewController {
+    #[doc(alias = "-[GameViewController initWithNibName:bundle:]")]
+    #[doc = "-[GameViewController initWithNibName:bundle:]"]
+    pub fn init_with_nib_name(nib: Option<ObjCId>, bundle: Option<ObjCId>) -> Self {
+        // Super `initWithNibName:bundle:`, a `GameView` sized to the main-screen
+        // bounds installed via `setView:`, then signup/login-finished
+        // notification registrations (IDA 0x4d70c..0x4d8c0); nib/bundle ids
+        // only forward to super, out of slice.
+        let _ = (nib, bundle);
+        let this = Self::default();
+        this.game_view.add_subview(1);
+        this.notification_registrations
+            .fetch_add(2, std::sync::atomic::Ordering::SeqCst);
+        this
+    }
+    pub fn notification_registration_count(&self) -> u32 {
+        self.notification_registrations.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+
+// 0x4dc08 — -[GameViewController closeUrlWindow:]
+// type: void __cdecl(GameViewController *self, SEL, id)
+// IDA 0x4dc08
+impl GameViewController {
+    #[doc(alias = "-[GameViewController closeUrlWindow:]")]
+    #[doc = "-[GameViewController closeUrlWindow:]"]
+    pub fn close_url_window(&self, sender: ObjCId) {
+        // `getControlView` → `getGame`, then
+        // `signalGuiServiceUrlWindowClosedOnDataModel:` over the bound game,
+        // then the close animation block on the main queue
+        // (IDA 0x4dc08..0x4de50); `sender` only selects the control, out of slice.
+        let _ = sender;
+        self.signal_gui_service_url_window_closed_on_data_model(1);
+        self.close_animation_requests
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+}
+
+// 0x4de58 — ___37-[GameViewController closeUrlWindow:]_block_invoke
+// type: id __fastcall(_DWORD *)
+// IDA 0x4de58
+impl GameViewController {
+    #[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke")]
+    #[doc = "GameViewController closeUrlWindow animation block"]
+    pub fn animate_close_url_window(&self) -> f32 {
+        // `animateWithDuration:webviewTweenTime ... animations:completion:`
+        // (IDA 0x4de58..0x4df14); returns the tween time the animation runs.
+        self.webview_tween_time()
+    }
+}
+
+// 0x4df1c — ___37-[GameViewController closeUrlWindow:]_block_invoke_2
+// type: id __fastcall(int)
+// IDA 0x4df1c
+impl GameViewController {
+    #[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke_2")]
+    #[doc = "GameViewController closeUrlWindow animations block"]
+    pub fn close_url_window_animation_frame(&self, frame: (f64, f64, f64, f64)) {
+        // Animations block: `setFrame:` to the fullscreen frame
+        // (IDA 0x4df1c..0x4dfe4).
+        if let Some(web) = self.external_web_view.lock().as_ref() {
+            web.set_frame(frame);
+        }
+    }
+}
+
+// 0x4dfec — ___37-[GameViewController closeUrlWindow:]_block_invoke93
+// type: id __fastcall(int)
+// IDA 0x4dfec
+impl GameViewController {
+    #[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke93")]
+    #[doc = "GameViewController closeUrlWindow completion block"]
+    pub fn close_url_window_animation_done(&self) {
+        // Completion block: `removeFromSuperview` + `release`
+        // (IDA 0x4dfec..0x4e068); taking the slot drops the release.
+        if let Some(web) = self.external_web_view.lock().take() {
+            web.remove_from_superview();
+        }
+    }
+}
+
+// 0x4e070 — -[GameViewController closeUrlWindow]
+// type: void __cdecl(GameViewController *self, SEL)
+// IDA 0x4e070
+impl GameViewController {
+    #[doc(alias = "-[GameViewController closeUrlWindow]")]
+    #[doc = "-[GameViewController closeUrlWindow]"]
+    pub fn close_url_window_now(&self) {
+        // Forwards nil sender: `closeUrlWindow:nil` (IDA 0x4e070..0x4e082).
+        self.close_url_window(NIL_ID);
+    }
+}
+
+// 0x4e084 — -[GameViewController openUrlWindow:]
+// type: void __cdecl(GameViewController *self, SEL, basic_string<char, std::char_traits<char>, std::allocator<char> >)
+// IDA 0x4e084
+impl GameViewController {
+    #[doc(alias = "-[GameViewController openUrlWindow:]")]
+    #[doc = "-[GameViewController openUrlWindow:]"]
+    pub fn open_url_window(&self, url: &str) {
+        // Sizes to the main-screen bounds, checks the idiom, then runs the
+        // build block on the main queue (IDA 0x4e084..0x4e2a4).
+        *self.pending_open_url.lock() = Some(url.to_owned());
+        self.url_window_opens.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn pending_open_url(&self) -> Option<String> {
+        self.pending_open_url.lock().clone()
+    }
+    pub fn url_window_open_count(&self) -> u32 {
+        self.url_window_opens.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+
+// 0x4e2ac — ___36-[GameViewController openUrlWindow:]_block_invoke
+// type: id __fastcall(int)
+// IDA 0x4e2ac
+impl GameViewController {
+    #[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke")]
+    #[doc = "GameViewController openUrlWindow build block"]
+    pub fn open_url_window_build_webview(&self, frame: (f64, f64, f64, f64)) {
+        // `UIWebView alloc` + `initWithFrame:`, `setDelegate:self`,
+        // `setUserInteractionEnabled:YES`, `setScalesPageToFit:YES`
+        // (IDA 0x4e2ac..0x4e4d4).
+        let web = WebView::new(self.objc_id());
+        web.set_delegate(Some(self.objc_id()));
+        web.set_user_interaction_enabled(true);
+        web.set_scales_page_to_fit(true);
+        web.set_frame(frame);
+        *self.external_web_view.lock() = Some(web);
+    }
+}
+
+// 0x4e4dc — ___36-[GameViewController openUrlWindow:]_block_invoke136
+// type: id __fastcall(int)
+// IDA 0x4e4dc
+impl GameViewController {
+    #[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke136")]
+    #[doc = "GameViewController openUrlWindow load block"]
+    pub fn open_url_window_load(&self, url: &str) {
+        // `stringWithUTF8String:` → `URLWithString:` → `requestWithURL:` →
+        // `loadRequest:`, then the present animation (IDA 0x4e4dc..0x4e5f4).
+        if let Some(web) = self.external_web_view.lock().as_ref() {
+            web.load_request(url);
+        }
+        self.close_animation_requests
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+}
+
+// 0x4e5fc — ___36-[GameViewController openUrlWindow:]_block_invoke_2
+// type: id __fastcall(_DWORD *)
+// IDA 0x4e5fc
+impl GameViewController {
+    #[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke_2")]
+    #[doc = "GameViewController openUrlWindow layout block"]
+    pub fn open_url_window_layout(&self, frame: (f64, f64, f64, f64)) {
+        // Layout block: `setFrame:` to the presented frame
+        // (IDA 0x4e5fc..0x4e728).
+        if let Some(web) = self.external_web_view.lock().as_ref() {
+            web.set_frame(frame);
+        }
+    }
+}
+
+// 0x4e730 — -[GameViewController handlePromptLoginSignal]
+// type: void __cdecl(GameViewController *self, SEL)
+// IDA 0x4e730
+impl GameViewController {
+    #[doc(alias = "-[GameViewController handlePromptLoginSignal]")]
+    #[doc = "-[GameViewController handlePromptLoginSignal]"]
+    pub fn handle_prompt_login_signal(&self) {
+        // `dispatch_async(main, login-prompt block)` (IDA 0x4e730..0x4e778).
+        self.login_prompt_dispatches
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+}
+
+// 0x4e780 — ___45-[GameViewController handlePromptLoginSignal]_block_invoke
+// type: id __fastcall(int)
+// IDA 0x4e780
+impl GameViewController {
+    #[doc(alias = "___45-[GameViewController handlePromptLoginSignal]_block_invoke")]
+    #[doc = "GameViewController login prompt block"]
+    pub fn present_login_view_controller(&self) -> ObjCId {
+        // Instantiates `LoginViewController` from `UIMainStoryboardFile` and
+        // presents it animated (IDA 0x4e780..0x4e860).
+        let _ = main_storyboard_file();
+        let id = self.objc_id().wrapping_add(1);
+        *self.login_view_controller.lock() = Some(id);
+        *self.presented_view_controller.lock() = Some(id);
+        id
+    }
+}
+
+// 0x4e868 — -[GameViewController handlePromptSignupSignal]
+// type: void __cdecl(GameViewController *self, SEL)
+// IDA 0x4e868
+impl GameViewController {
+    #[doc(alias = "-[GameViewController handlePromptSignupSignal]")]
+    #[doc = "-[GameViewController handlePromptSignupSignal]"]
+    pub fn handle_prompt_signup_signal(&self) {
+        // `dispatch_async(main, signup-prompt block)` (IDA 0x4e868..0x4e8b0).
+        self.signup_prompt_dispatches
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+}
+
+// 0x4e8b8 — ___46-[GameViewController handlePromptSignupSignal]_block_invoke
+// type: id __fastcall(int)
+// IDA 0x4e8b8
+impl GameViewController {
+    #[doc(alias = "___46-[GameViewController handlePromptSignupSignal]_block_invoke")]
+    #[doc = "GameViewController signup prompt block"]
+    pub fn present_signup_view_controller(&self) -> ObjCId {
+        // Instantiates `SignupViewController` from `UIMainStoryboardFile` and
+        // presents it animated (IDA 0x4e8b8..0x4e998).
+        let _ = main_storyboard_file();
+        let id = self.objc_id().wrapping_add(2);
+        *self.signup_view_controller.lock() = Some(id);
+        *self.presented_view_controller.lock() = Some(id);
+        id
+    }
+}
+
+// 0x4e9a0 — -[GameViewController handleSignupNotification:]
+// type: void __cdecl(GameViewController *self, SEL, id)
+// IDA 0x4e9a0
+impl GameViewController {
+    #[doc(alias = "-[GameViewController handleSignupNotification:]")]
+    #[doc = "-[GameViewController handleSignupNotification:]"]
+    pub fn handle_signup_notification(&self, username: &str, password: &str) {
+        // `userInfo["username"]` / `userInfo["password"]` into
+        // `LoginManager::doLoginWithUsername:password:`
+        // (IDA 0x4e9a0..0x4ea28).
+        LoginManager::shared_instance().do_login_with_username_password(username, password);
+    }
+}
+
+// 0x4ea30 — -[GameViewController handleLoginNotification:]
+// type: void __cdecl(GameViewController *self, SEL, id)
+// IDA 0x4ea30
+impl GameViewController {
+    #[doc(alias = "-[GameViewController handleLoginNotification:]")]
+    #[doc = "-[GameViewController handleLoginNotification:]"]
+    pub fn handle_login_notification(&self, success: bool) {
+        // Captures `userInfo["success"].boolValue` and runs the login block
+        // on the main queue (IDA 0x4ea30..0x4eac0).
+        *self.pending_login_success.lock() = Some(success);
+        self.login_notification_blocks
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn login_notification_block_count(&self) -> u32 {
+        self.login_notification_blocks.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+
+// 0x4eac8 — ___46-[GameViewController handleLoginNotification:]_block_invoke
+// type: void __fastcall(id *)
+// IDA 0x4eac8
+impl GameViewController {
+    #[doc(alias = "___46-[GameViewController handleLoginNotification:]_block_invoke")]
+    #[doc = "GameViewController login notification block"]
+    pub fn apply_login_notification(&self, success: bool, username: &str, error: &str) {
+        // `getControlView` → `getGame` → `create<LoginService>`; on success
+        // emits the username signal, otherwise the error signal
+        // (IDA 0x4eac8..0x4efa0).
+        if success {
+            *self.last_login_ok_user.lock() = username.to_owned();
+            self.login_ok_emits.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        } else {
+            *self.last_login_error.lock() = error.to_owned();
+            self.login_failed_emits
+                .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        }
+    }
+}
+
+/// `FFlag::OpenNativeBrowserWindowFromLua` (IDA 0x4dbde): when set, URL loads
+/// detour through the in-app-purchase check instead of loading directly.
+pub static OPEN_NATIVE_BROWSER_WINDOW_FROM_LUA: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+
+/// Sets `FFlag::OpenNativeBrowserWindowFromLua` (test seam).
+pub fn set_open_native_browser_window_from_lua(enabled: bool) {
+    OPEN_NATIVE_BROWSER_WINDOW_FROM_LUA.store(enabled, std::sync::atomic::Ordering::SeqCst);
+}
+
+/// Minimal `RobloxInfo` counterpart behind `+[RobloxInfo getUserAgentString]`
+/// (IDA 0x4da4c): the UA string registered into `NSUserDefaults`.
+#[derive(Debug, Default)]
+pub struct RobloxInfo {
+    user_agent: parking_lot::Mutex<String>,
+}
+
+impl RobloxInfo {
+    pub fn shared() -> &'static Self {
+        static INFO: std::sync::LazyLock<RobloxInfo> =
+            std::sync::LazyLock::new(RobloxInfo::default);
+        &INFO
+    }
+    pub fn user_agent_string(&self) -> String {
+        self.user_agent.lock().clone()
+    }
+    pub fn set_user_agent(&self, agent: &str) {
+        *self.user_agent.lock() = agent.to_owned();
+    }
+}
+
+/// Minimal `RobloxNavBarViewController` counterpart behind
+/// `+checkForInAppPurchases:navigationType:` (IDA 0x4dbde): nonzero means the
+/// navigation was consumed by the store sheet, so the web view must not load it.
+#[derive(Debug, Default)]
+pub struct RobloxNavBarViewController {
+    in_app_check_result: std::sync::atomic::AtomicI32,
+}
+
+impl RobloxNavBarViewController {
+    pub fn shared() -> &'static Self {
+        static NAV: std::sync::LazyLock<RobloxNavBarViewController> =
+            std::sync::LazyLock::new(RobloxNavBarViewController::default);
+        &NAV
+    }
+    pub fn check_for_in_app_purchases(&self, _request: ObjCId, _navigation_type: i32) -> i32 {
+        self.in_app_check_result.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn set_in_app_check_result(&self, result: i32) {
+        self.in_app_check_result.store(result, std::sync::atomic::Ordering::SeqCst);
+    }
+}
+
+/// Process-wide count of `RBX::GuiService` url-window-closed emissions
+/// (`signal+0x78`, IDA 0x4dbe8..0x4dc06): `find<GuiService>` on a nil
+/// `DataModel` short-circuits before any emit.
+pub static GUI_SERVICE_URL_WINDOW_CLOSED_SIGNALS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+
+/// `UIMainStoryboardFile` from the main bundle info dictionary (IDA 0x4e7e4):
+/// the storyboard the login/signup prompt blocks instantiate from.
+static MAIN_STORYBOARD_FILE: std::sync::LazyLock<parking_lot::Mutex<String>> =
+    std::sync::LazyLock::new(|| parking_lot::Mutex::new(String::from("Main")));
+
+/// Stages `UIMainStoryboardFile` for the prompt blocks (test seam).
+pub fn set_main_storyboard_file(name: &str) {
+    *MAIN_STORYBOARD_FILE.lock() = name.to_owned();
+}
+
+/// Storyboard name the login/signup prompt blocks instantiate from.
+pub fn main_storyboard_file() -> String {
+    MAIN_STORYBOARD_FILE.lock().clone()
+}
+
+/// Next presenter-allocated controller id (models `instantiateViewControllerWithIdentifier:`).
+static NEXT_CONTROLLER_ID: std::sync::atomic::AtomicUsize = std::sync::atomic::AtomicUsize::new(1);
+
+/// Allocates the id `instantiateViewControllerWithIdentifier:` would return.
+fn next_controller_id() -> ObjCId {
+    NEXT_CONTROLLER_ID.fetch_add(1, std::sync::atomic::Ordering::SeqCst)
 }
 
 /// Minimal `Ogre::EAGL2Support` counterpart: config/display-name queries only
@@ -303,12 +760,14 @@ pub struct Eagl2View {
 
 /// Minimal `EAGL2ViewController` counterpart: the `mGLSupport` assign ivar plus
 /// a count of the UIKit super-sends (`init`, `loadView`, ...) that are out of slice.
+/// `window_hidden` backs `shouldAutorotate` (IDA 0xe882cc): rotation is allowed
+/// exactly while `[[self view] window]` is visible (`isHidden == 0`).
 #[derive(Debug, Default)]
 pub struct Eagl2ViewController {
     gl_support: parking_lot::Mutex<ObjCId>,
     super_forwards: std::sync::atomic::AtomicU32,
+    window_hidden: std::sync::atomic::AtomicBool,
 }
-
 impl Eagl2ViewController {
     pub fn super_forward_count(&self) -> u32 {
         self.super_forwards.load(std::sync::atomic::Ordering::SeqCst)
@@ -316,6 +775,12 @@ impl Eagl2ViewController {
     fn note_super_forward(&self) {
         self.super_forwards
             .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn set_window_hidden(&self, hidden: bool) {
+        self.window_hidden.store(hidden, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn is_window_hidden(&self) -> bool {
+        self.window_hidden.load(std::sync::atomic::Ordering::SeqCst)
     }
 }
 
@@ -663,6 +1128,8 @@ impl MemoryManager {
 #[derive(Debug, Default)]
 pub struct LoginManager {
     will_terminate_calls: std::sync::atomic::AtomicU32,
+    login_calls: std::sync::atomic::AtomicU32,
+    last_login: parking_lot::Mutex<Option<(String, String)>>,
 }
 
 impl LoginManager {
@@ -677,6 +1144,18 @@ impl LoginManager {
     }
     pub fn will_terminate_call_count(&self) -> u32 {
         self.will_terminate_calls.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `-doLoginWithUsername:password:` (IDA 0x4ea2c): records the credential
+    /// pair the signup notification forwards; the network exchange is out of slice.
+    pub fn do_login_with_username_password(&self, username: &str, password: &str) {
+        *self.last_login.lock() = Some((username.to_owned(), password.to_owned()));
+        self.login_calls.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn login_call_count(&self) -> u32 {
+        self.login_calls.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn last_login(&self) -> Option<(String, String)> {
+        self.last_login.lock().clone()
     }
 }
 
@@ -1210,19 +1689,7 @@ impl AppDelegate {
         // rbx::signals::connection::disconnect(&messageOutConnection)
         connection.disconnect(); // IDA 0x1a552
         // if (con.weak_slot.p_) intrusive_ptr_weak_release(...): this slot owns
-        // the last weak ref, so clearing it performs the release.
-        if connection.has_weak_slot() { // IDA 0x1a558
-            connection.reset_weak_slot(); // IDA 0x1a560
-        }
     }
-}
-
-// 0x1a5bc — -[AppDelegate .cxx_construct]
-// type: id __cdecl(AppDelegate *self, SEL)
-// IDA 0x1a5bc
-impl AppDelegate {
-    #[doc(alias = "-[AppDelegate .cxx_construct]")]
-    #[doc = "-[AppDelegate .cxx_construct]"]
     pub fn cxx_construct(&self) {
         // self->messageOutConnection.con.weak_slot.p_ = 0; return self.
         // The `new()` constructor returns Self instead of the ObjC `id`.
@@ -1230,19 +1697,7 @@ impl AppDelegate {
     }
 }
 
-// 0x26768 — -[PlaceLauncher presentGameViewController]
-// type: void __cdecl(PlaceLauncher *self, SEL)
-#[doc(alias = "-[PlaceLauncher presentGameViewController]")]
-pub fn stub_26768() -> ! {
-    todo!("0x26768 -[PlaceLauncher presentGameViewController]")
-}
 
-// 0x4d70c — -[GameViewController initWithNibName:bundle:]
-// type: GameViewController *__cdecl(GameViewController *self, SEL, id, id)
-#[doc(alias = "-[GameViewController initWithNibName:bundle:]")]
-pub fn stub_4d70c() -> ! {
-    todo!("0x4d70c -[GameViewController initWithNibName:bundle:]")
-}
 
 // 0x4d8cc — -[GameViewController dealloc]
 // type: void __cdecl(GameViewController *self, SEL)
@@ -1271,10 +1726,22 @@ impl GameViewController {
     #[doc(alias = "-[GameViewController viewWillAppear:]")]
     #[doc = "-[GameViewController viewWillAppear:]"]
     pub fn view_will_appear(&self, animated: bool) {
-        // [super viewWillAppear:animated]
-        self.base.view_will_appear(animated); // IDA 0x4d99c
-        // [[UIApplication sharedApplication] setStatusBarHidden:YES]
-        UiApplication::shared_application().set_status_bar_hidden(true); // IDA 0x4d9ca
+        // [super viewWillAppear:animated]; nothing else. // IDA 0x4d990
+        self.base.view_will_appear(animated);
+    }
+}
+// 0x4da00 — -[GameViewController viewDidLoad]
+// type: void __cdecl(GameViewController *self, SEL)
+// IDA 0x4da00
+impl GameViewController {
+    #[doc(alias = "-[GameViewController viewDidLoad]")]
+    pub fn view_did_load(&self) {
+        // [super viewDidLoad] (IDA 0x4da24).
+        self.base.view_did_load();
+        // Register the UA string as a `UserAgent` default (IDA 0x4da4c..0x4da9e);
+        // the temporary dictionary is released right after (IDA 0x4dab0).
+        let agent = RobloxInfo::shared().user_agent_string();
+        UserDefaults::standard().set_object(&agent, "UserAgent");
     }
 }
 
@@ -1290,12 +1757,6 @@ impl GameViewController {
     }
 }
 
-// 0x4da00 — -[GameViewController viewDidLoad]
-// type: void __cdecl(GameViewController *self, SEL)
-#[doc(alias = "-[GameViewController viewDidLoad]")]
-pub fn stub_4da00() -> ! {
-    todo!("0x4da00 -[GameViewController viewDidLoad]")
-}
 
 // 0x4dab8 — -[GameViewController didReceiveMemoryWarning]
 // type: void __cdecl(GameViewController *self, SEL)
@@ -1352,19 +1813,42 @@ impl GameViewController {
     #[doc = "-[GameViewController shouldAutorotateToInterfaceOrientation:]"]
     pub fn should_autorotate_to_interface_orientation(&self, orientation: i32) -> bool {
         // MOVS R0,#1; CMP R2,#4; BXEQ when landscape-right. // IDA 0x4db0c
-        if orientation == UI_INTERFACE_ORIENTATION_LANDSCAPE_RIGHT { // IDA 0x4db10
-            return true; // IDA 0x4db12
-        }
-        orientation == UI_INTERFACE_ORIENTATION_LANDSCAPE_LEFT // IDA 0x4db1a
+        orientation == 4
     }
 }
-
-// 0x4db20 — -[GameViewController getControlView]
-// type: id __cdecl(GameViewController *self, SEL)
-// IDA 0x4db20
+// 0x4db9c — -[GameViewController webView:shouldStartLoadWithRequest:navigationType:]
+// type: char __cdecl(GameViewController *self, SEL, id, id, int)
+// IDA 0x4db9c
 impl GameViewController {
-    #[doc(alias = "-[GameViewController getControlView]")]
-    #[doc = "-[GameViewController getControlView]"]
+    #[doc(alias = "-[GameViewController webView:shouldStartLoadWithRequest:navigationType:]")]
+    #[doc = "-[GameViewController webView:shouldStartLoadWithRequest:navigationType:]"]
+    pub fn web_view_should_start_load_with_request(&self, request: ObjCId, navigation_type: i32) -> bool {
+        // `!FFlag::OpenNativeBrowserWindowFromLua || check == 0` (IDA 0x4dbde).
+        if !OPEN_NATIVE_BROWSER_WINDOW_FROM_LUA.load(std::sync::atomic::Ordering::SeqCst) {
+            return true;
+        }
+        RobloxNavBarViewController::shared().check_for_in_app_purchases(request, navigation_type) == 0
+    }
+}
+// 0x4dbe8 — -[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]
+// type: void __cdecl(GameViewController *self, SEL, DataModel *)
+// IDA 0x4dbe8
+impl GameViewController {
+    #[doc(alias = "-[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]")]
+    #[doc = "-[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]"]
+    pub fn signal_gui_service_url_window_closed_on_data_model(&self, data_model: ObjCId) {
+        // Nil data model returns before the `find<GuiService>` lookup (IDA 0x4dbea..0x4dbf0).
+        if data_model == NIL_ID {
+            return;
+        }
+        // `find<GuiService>` hit (IDA 0x4dbf4..0x4dbfa), then emit `signal+0x78`
+        // (IDA 0x4dbfc..0x4dc02); a miss (BEQ 0x4dc06) emits nothing.
+        self.url_window_closed_signals.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        GUI_SERVICE_URL_WINDOW_CLOSED_SIGNALS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+}
+// IDA 0x4db30 getControlView
+impl GameViewController {
     pub fn get_control_view(&self) -> Option<ObjCId> {
         // Fast-enumerates gameView.subviews and returns the first object,
         // nil when the list is empty. IDA 0x4db62, IDA 0x4db88, IDA 0x4db80
@@ -1372,131 +1856,7 @@ impl GameViewController {
     }
 }
 
-// 0x4db9c — -[GameViewController webView:shouldStartLoadWithRequest:navigationType:]
-// type: char __cdecl(GameViewController *self, SEL, id, id, int)
-#[doc(alias = "-[GameViewController webView:shouldStartLoadWithRequest:navigationType:]")]
-pub fn stub_4db9c() -> ! {
-    todo!("0x4db9c -[GameViewController webView:shouldStartLoadWithRequest:navigationType:]")
-}
 
-// 0x4dbe8 — -[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]
-// type: void __cdecl(GameViewController *self, SEL, DataModel *)
-#[doc(alias = "-[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]")]
-pub fn stub_4dbe8() -> ! {
-    todo!("0x4dbe8 -[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]")
-}
-
-// 0x4dc08 — -[GameViewController closeUrlWindow:]
-// type: void __cdecl(GameViewController *self, SEL, id)
-#[doc(alias = "-[GameViewController closeUrlWindow:]")]
-pub fn stub_4dc08() -> ! {
-    todo!("0x4dc08 -[GameViewController closeUrlWindow:]")
-}
-
-// 0x4de58 — ___37-[GameViewController closeUrlWindow:]_block_invoke
-// type: id __fastcall(_DWORD *)
-#[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke")]
-pub fn stub_4de58() -> ! {
-    todo!("0x4de58 ___37-[GameViewController closeUrlWindow:]_block_invoke")
-}
-
-// 0x4df1c — ___37-[GameViewController closeUrlWindow:]_block_invoke_2
-// type: id __fastcall(int)
-#[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke_2")]
-pub fn stub_4df1c() -> ! {
-    todo!("0x4df1c ___37-[GameViewController closeUrlWindow:]_block_invoke_2")
-}
-
-// 0x4dfec — ___37-[GameViewController closeUrlWindow:]_block_invoke93
-// type: id __fastcall(int)
-#[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke93")]
-pub fn stub_4dfec() -> ! {
-    todo!("0x4dfec ___37-[GameViewController closeUrlWindow:]_block_invoke93")
-}
-
-// 0x4e070 — -[GameViewController closeUrlWindow]
-// type: void __cdecl(GameViewController *self, SEL)
-#[doc(alias = "-[GameViewController closeUrlWindow]")]
-pub fn stub_4e070() -> ! {
-    todo!("0x4e070 -[GameViewController closeUrlWindow]")
-}
-
-// 0x4e084 — -[GameViewController openUrlWindow:]
-// type: void __cdecl(GameViewController *self, SEL, basic_string<char, std::char_traits<char>, std::allocator<char> >)
-#[doc(alias = "-[GameViewController openUrlWindow:]")]
-pub fn stub_4e084() -> ! {
-    todo!("0x4e084 -[GameViewController openUrlWindow:]")
-}
-
-// 0x4e2ac — ___36-[GameViewController openUrlWindow:]_block_invoke
-// type: id __fastcall(int)
-#[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke")]
-pub fn stub_4e2ac() -> ! {
-    todo!("0x4e2ac ___36-[GameViewController openUrlWindow:]_block_invoke")
-}
-
-// 0x4e4dc — ___36-[GameViewController openUrlWindow:]_block_invoke136
-// type: id __fastcall(int)
-#[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke136")]
-pub fn stub_4e4dc() -> ! {
-    todo!("0x4e4dc ___36-[GameViewController openUrlWindow:]_block_invoke136")
-}
-
-// 0x4e5fc — ___36-[GameViewController openUrlWindow:]_block_invoke_2
-// type: id __fastcall(_DWORD *)
-#[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke_2")]
-pub fn stub_4e5fc() -> ! {
-    todo!("0x4e5fc ___36-[GameViewController openUrlWindow:]_block_invoke_2")
-}
-
-// 0x4e730 — -[GameViewController handlePromptLoginSignal]
-// type: void __cdecl(GameViewController *self, SEL)
-#[doc(alias = "-[GameViewController handlePromptLoginSignal]")]
-pub fn stub_4e730() -> ! {
-    todo!("0x4e730 -[GameViewController handlePromptLoginSignal]")
-}
-
-// 0x4e780 — ___45-[GameViewController handlePromptLoginSignal]_block_invoke
-// type: id __fastcall(int)
-#[doc(alias = "___45-[GameViewController handlePromptLoginSignal]_block_invoke")]
-pub fn stub_4e780() -> ! {
-    todo!("0x4e780 ___45-[GameViewController handlePromptLoginSignal]_block_invoke")
-}
-
-// 0x4e868 — -[GameViewController handlePromptSignupSignal]
-// type: void __cdecl(GameViewController *self, SEL)
-#[doc(alias = "-[GameViewController handlePromptSignupSignal]")]
-pub fn stub_4e868() -> ! {
-    todo!("0x4e868 -[GameViewController handlePromptSignupSignal]")
-}
-
-// 0x4e8b8 — ___46-[GameViewController handlePromptSignupSignal]_block_invoke
-// type: id __fastcall(int)
-#[doc(alias = "___46-[GameViewController handlePromptSignupSignal]_block_invoke")]
-pub fn stub_4e8b8() -> ! {
-    todo!("0x4e8b8 ___46-[GameViewController handlePromptSignupSignal]_block_invoke")
-}
-
-// 0x4e9a0 — -[GameViewController handleSignupNotification:]
-// type: void __cdecl(GameViewController *self, SEL, id)
-#[doc(alias = "-[GameViewController handleSignupNotification:]")]
-pub fn stub_4e9a0() -> ! {
-    todo!("0x4e9a0 -[GameViewController handleSignupNotification:]")
-}
-
-// 0x4ea30 — -[GameViewController handleLoginNotification:]
-// type: void __cdecl(GameViewController *self, SEL, id)
-#[doc(alias = "-[GameViewController handleLoginNotification:]")]
-pub fn stub_4ea30() -> ! {
-    todo!("0x4ea30 -[GameViewController handleLoginNotification:]")
-}
-
-// 0x4eac8 — ___46-[GameViewController handleLoginNotification:]_block_invoke
-// type: void __fastcall(id *)
-#[doc(alias = "___46-[GameViewController handleLoginNotification:]_block_invoke")]
-pub fn stub_4eac8() -> ! {
-    todo!("0x4eac8 ___46-[GameViewController handleLoginNotification:]_block_invoke")
-}
 
 // 0xe844ec — __ZN4Ogre12EAGL2SupportC1Ev
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
