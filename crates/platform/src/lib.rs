@@ -418,3 +418,4 @@ pub mod generated_wdog_plat_1788392266;
 pub mod generated_wdog_cron_plat;
 pub mod generated_wdog_cron_plat2;
 pub mod generated_plat_globaldedup_100;
+pub mod generated_plat_globaldedup_101;
