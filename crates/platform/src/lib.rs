@@ -441,6 +441,7 @@ pub mod generated_watchdog_platform_w15;
 pub mod generated_watchdog_platform_w15b;
 pub mod generated_watchdog_platform_w15d;
 pub mod generated_watchdog_platform_w15d2;
+pub mod generated_watchdog_platform_w15d3;
 pub mod generated_plat_globaldedup_110;
 pub mod generated_plat_globaldedup_111;
 pub mod generated_plat_globaldedup_112;

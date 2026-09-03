@@ -55,7 +55,7 @@ pub fn stub_62c97c() -> ! {
 }
 
 // 0x62c998 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12PlatformImplINS5_17BasicPartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
-// #[doc(alias = "`non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")] // SKIPPED: doc alias with apostrophe rejected by rustc
+// #[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")] // SKIPPED: doc alias with apostrophe rejected by rustc
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12PlatformImplINS5_17BasicPartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_")]
 pub fn stub_62c998() -> ! {
     todo!("0x62c998 __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12PlatformImplINS5_17BasicPartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_")
@@ -289,28 +289,28 @@ pub fn stub_62e324() -> ! {
 }
 
 // 0x62e514 — __ZThn32_N3RBX12PlatformImplINS_17BasicPartInstanceEED1Ev
-// #[doc(alias = "`non-virtual thunk to'RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")] // SKIPPED: doc alias with apostrophe rejected by rustc
+// #[doc(alias = "`non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")] // SKIPPED: doc alias with apostrophe rejected by rustc
 #[doc(alias = "__ZThn32_N3RBX12PlatformImplINS_17BasicPartInstanceEED1Ev")]
 pub fn stub_62e514() -> ! {
     todo!("0x62e514 __ZThn32_N3RBX12PlatformImplINS_17BasicPartInstanceEED1Ev")
 }
 
 // 0x62e528 — __ZThn32_N3RBX12PlatformImplINS_17BasicPartInstanceEED0Ev
-// #[doc(alias = "`non-virtual thunk to'RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")] // SKIPPED: doc alias with apostrophe rejected by rustc
+// #[doc(alias = "`non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")] // SKIPPED: doc alias with apostrophe rejected by rustc
 #[doc(alias = "__ZThn32_N3RBX12PlatformImplINS_17BasicPartInstanceEED0Ev")]
 pub fn stub_62e528() -> ! {
     todo!("0x62e528 __ZThn32_N3RBX12PlatformImplINS_17BasicPartInstanceEED0Ev")
 }
 
 // 0x62e5d8 — __ZThn36_N3RBX12PlatformImplINS_17BasicPartInstanceEED1Ev
-// #[doc(alias = "`non-virtual thunk to'RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")] // SKIPPED: doc alias with apostrophe rejected by rustc
+// #[doc(alias = "`non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")] // SKIPPED: doc alias with apostrophe rejected by rustc
 #[doc(alias = "__ZThn36_N3RBX12PlatformImplINS_17BasicPartInstanceEED1Ev")]
 pub fn stub_62e5d8() -> ! {
     todo!("0x62e5d8 __ZThn36_N3RBX12PlatformImplINS_17BasicPartInstanceEED1Ev")
 }
 
 // 0x62e5ec — __ZThn36_N3RBX12PlatformImplINS_17BasicPartInstanceEED0Ev
-// #[doc(alias = "`non-virtual thunk to'RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")] // SKIPPED: doc alias with apostrophe rejected by rustc
+// #[doc(alias = "`non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")] // SKIPPED: doc alias with apostrophe rejected by rustc
 #[doc(alias = "__ZThn36_N3RBX12PlatformImplINS_17BasicPartInstanceEED0Ev")]
 pub fn stub_62e5ec() -> ! {
     todo!("0x62e5ec __ZThn36_N3RBX12PlatformImplINS_17BasicPartInstanceEED0Ev")
@@ -387,14 +387,14 @@ pub fn stub_62eda8() -> ! {
 }
 
 // 0x62efd0 — __ZThn32_N3RBX13ActionStationINS_17BasicPartInstanceEED1Ev
-// #[doc(alias = "`non-virtual thunk to'RBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()")] // SKIPPED: doc alias with apostrophe rejected by rustc
+// #[doc(alias = "`non-virtual thunk toRBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()")] // SKIPPED: doc alias with apostrophe rejected by rustc
 #[doc(alias = "__ZThn32_N3RBX13ActionStationINS_17BasicPartInstanceEED1Ev")]
 pub fn stub_62efd0() -> ! {
     todo!("0x62efd0 __ZThn32_N3RBX13ActionStationINS_17BasicPartInstanceEED1Ev")
 }
 
 // 0x62efe4 — __ZThn32_N3RBX13ActionStationINS_17BasicPartInstanceEED0Ev
-// #[doc(alias = "`non-virtual thunk to'RBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()")] // SKIPPED: doc alias with apostrophe rejected by rustc
+// #[doc(alias = "`non-virtual thunk toRBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()")] // SKIPPED: doc alias with apostrophe rejected by rustc
 #[doc(alias = "__ZThn32_N3RBX13ActionStationINS_17BasicPartInstanceEED0Ev")]
 pub fn stub_62efe4() -> ! {
     todo!("0x62efe4 __ZThn32_N3RBX13ActionStationINS_17BasicPartInstanceEED0Ev")
@@ -402,14 +402,14 @@ pub fn stub_62efe4() -> ! {
 
 // 0x62efec — __ZThn36_N3RBX13ActionStationINS_17BasicPartInstanceEED1Ev
 // type: void __fastcall(int)
-// #[doc(alias = "`non-virtual thunk to'RBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()")] // SKIPPED: doc alias with apostrophe rejected by rustc
+// #[doc(alias = "`non-virtual thunk toRBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()")] // SKIPPED: doc alias with apostrophe rejected by rustc
 #[doc(alias = "__ZThn36_N3RBX13ActionStationINS_17BasicPartInstanceEED1Ev")]
 pub fn stub_62efec() -> ! {
     todo!("0x62efec __ZThn36_N3RBX13ActionStationINS_17BasicPartInstanceEED1Ev")
 }
 
 // 0x62f000 — __ZThn36_N3RBX13ActionStationINS_17BasicPartInstanceEED0Ev
-// #[doc(alias = "`non-virtual thunk to'RBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()")] // SKIPPED: doc alias with apostrophe rejected by rustc
+// #[doc(alias = "`non-virtual thunk toRBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()")] // SKIPPED: doc alias with apostrophe rejected by rustc
 #[doc(alias = "__ZThn36_N3RBX13ActionStationINS_17BasicPartInstanceEED0Ev")]
 pub fn stub_62f000() -> ! {
     todo!("0x62f000 __ZThn36_N3RBX13ActionStationINS_17BasicPartInstanceEED0Ev")
@@ -633,7 +633,7 @@ pub fn stub_62fd78() -> ! {
 }
 
 // 0x62fe58 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-// #[doc(alias = "`non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")] // SKIPPED: doc alias with apostrophe rejected by rustc
+// #[doc(alias = "`non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")] // SKIPPED: doc alias with apostrophe rejected by rustc
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 pub fn stub_62fe58() -> ! {
     todo!("0x62fe58 __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")
@@ -805,7 +805,7 @@ pub fn stub_63061c() -> ! {
 
 // 0x6306fc — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 // type: int __fastcall(int)
-// #[doc(alias = "`non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")] // SKIPPED: doc alias with apostrophe rejected by rustc
+// #[doc(alias = "`non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")] // SKIPPED: doc alias with apostrophe rejected by rustc
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 pub fn stub_6306fc() -> ! {
     todo!("0x6306fc __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")
