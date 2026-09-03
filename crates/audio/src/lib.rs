@@ -15075,3 +15075,4 @@ pub mod generated_audio_watchdog_w15d2;
 pub mod generated_watchdog_audio_a;
 pub mod generated_watchdog_audio_wd2;
 pub mod generated_audio_skeleton_60;
+pub mod generated_watchdog_audio_wdA;
