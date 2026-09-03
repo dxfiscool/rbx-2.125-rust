@@ -15053,3 +15053,5 @@ pub mod generated_audioA_watchdog_59;
 pub mod generated_audioA_watchdog_60;
 pub mod generated_audio_wdog_1788391020;
 pub mod generated_wdog_audio_1788392264;
+pub mod generated_wdog_audio2;
+pub mod generated_wdog_audio3;
