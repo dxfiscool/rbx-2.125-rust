@@ -114,6 +114,55 @@ pub struct ScriptInformationProvider {
     _opaque: (),
 }
 
+/// Rust model of `RBX::Stats::StatsService` (IDA `0x2b0e50`): same shape; only
+/// create/ctor/D0 exist in this file (partial cluster).
+#[derive(Default)]
+pub struct StatsService {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::ContentProvider` (IDA `0x2b1828`): same shape; no
+/// `shared_ptr` ctor in this file (partial cluster).
+#[derive(Default)]
+pub struct ContentProvider {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::ScriptContext` (IDA `0x2b5b30`): field layout unmodeled;
+/// the 3-arg `(Instance, string, string)` signal slots below retain it.
+#[derive(Default)]
+pub struct ScriptContext {
+    _opaque: (),
+}
+
+/// Slot callback behind the `(SharedPtr<Instance>, string, string)` signal
+/// family (IDA `0x2b5d4c`): the `mf3` member call on `ScriptContext`
+/// collapses into the plain handler.
+pub type TripleFunc = fn(&SharedPtr<ScriptContext>, &SharedPtr<Instance>, &str, &str);
+
+/// Rust model of the function object behind the triple signal slots (IDA
+/// `0x2b5b30`): the retained target (the `value<ScriptContext*>` word is kept
+/// alive, cf. the wrapper retains) plus the `mf3` handler.
+#[derive(Clone, Default)]
+pub struct TripleFunction {
+    pub target: Option<SharedPtr<ScriptContext>>,
+    pub func: Option<TripleFunc>,
+}
+
+/// Rust model of an `rbx::signals::signal<void ()(SharedPtr<Instance>,
+/// string, string)>::slot` link (IDA `0x2b57e0` insert): the intrusive
+/// successor becomes `next`; retain/release become `clone`/`drop`. Link
+/// mutation goes through `*mut` under the same exclusive-access contract as
+/// the D1/D0 fns (the original guards it with the signal mutex).
+pub struct TripleSlotNode {
+    pub next: Option<SharedPtr<TripleSlotNode>>,
+    pub func: TripleFunction,
+}
+
+/// Process-wide mutex behind the triple-signal slot guards (IDA `0x2b5a38`,
+/// `0x2b61f4`); twin of `SIGNAL_STATIC_MUTEX`.
+static TRIPLE_SLOT_STATIC_MUTEX: Mutex<()> = Mutex::new(());
+
 /// Rust model of `RBX::Scripting::DebuggerWatch` (IDA `0x2a8210`): same shape.
 #[derive(Default)]
 pub struct DebuggerWatch {
@@ -2179,15 +2228,23 @@ pub fn stub_0x2afa24(block: *const ControlBlockPd<StarterScript, CreatableInstan
 // 0x2b07d0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10RunServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x2b07d0() -> ! {
-    todo!("0x2b07d0 boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2b07d0(block: *mut ControlBlockPd<RunService, CreatableInstanceDeleter>) {
+    // IDA 0x2b07d0: `B.W __ZdlPv$shim` — D0 storage release only (RunService
+    // D1/D0/dispose/get/untyped live at 0x3b108-0x3b148; this out-of-order D0
+    // twin matches 0x31bf0).
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x2b0e50 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_5Stats12StatsServiceEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::Stats::StatsService> RBX::Creatable<RBX::Instance>::create<RBX::Stats::StatsService>(void)")]
 // was: boost::shared_ptr<RBX::Stats::StatsService> RBX::Creatable<RBX::Instance>::create<RBX::Stats::StatsService>(void)
-pub fn stub_0x2b0e50() -> ! {
-    todo!("0x2b0e50 boost::shared_ptr<RBX::Stats::StatsService> RBX::Creatable<RBX::Instance>::create<RBX::Stats::StatsService>(void)")
+pub fn stub_0x2b0e50() -> SharedPtr<StatsService> {
+    // IDA 0x2b0e50: `operator new(0x8c)` (disasm 0x2b0e6e-0x2b0e70; 140 bytes)
+    // + default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(StatsService::default())
 }
 
 // 0x2b0f00 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_5Stats12StatsServiceEEERS3_RKNS0_IT_EE
@@ -2200,22 +2257,33 @@ pub fn stub_0x2b0f00() -> ! {
 // 0x2b1220 — __ZN5boost10shared_ptrIN3RBX5Stats12StatsServiceEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Stats::StatsService>::shared_ptr<RBX::Stats::StatsService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::StatsService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::Stats::StatsService>::shared_ptr<RBX::Stats::StatsService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::StatsService *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x2b1220() -> ! {
-    todo!("0x2b1220 boost::shared_ptr<RBX::Stats::StatsService>::shared_ptr<RBX::Stats::StatsService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::StatsService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x2b1220(ptr: *mut StatsService, _deleter: CreatableInstanceDeleter) -> SharedPtr<StatsService> {
+    // IDA 0x2b1220: store px + `shared_count` ctor + null-skip; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(StatsService::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x2b13d8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats12StatsServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Stats::StatsService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Stats::StatsService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x2b13d8() -> ! {
-    todo!("0x2b13d8 boost::detail::sp_counted_impl_pd<RBX::Stats::StatsService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2b13d8(block: *mut ControlBlockPd<StatsService, CreatableInstanceDeleter>) {
+    // IDA 0x2b13d8: `B.W __ZdlPv$shim` — D0 storage release only, same as 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x2b1828 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_15ContentProviderEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::ContentProvider> RBX::Creatable<RBX::Instance>::create<RBX::ContentProvider>(void)")]
 // was: boost::shared_ptr<RBX::ContentProvider> RBX::Creatable<RBX::Instance>::create<RBX::ContentProvider>(void)
-pub fn stub_0x2b1828() -> ! {
-    todo!("0x2b1828 boost::shared_ptr<RBX::ContentProvider> RBX::Creatable<RBX::Instance>::create<RBX::ContentProvider>(void)")
+pub fn stub_0x2b1828() -> SharedPtr<ContentProvider> {
+    // IDA 0x2b1828: `operator new(0x88)` (disasm 0x2b1846-0x2b1848; 136 bytes)
+    // + default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(ContentProvider::default())
 }
 
 // 0x2b18d8 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_15ContentProviderEEERS3_RKNS0_IT_EE
@@ -2228,127 +2296,211 @@ pub fn stub_0x2b18d8() -> ! {
 // 0x2b1920 — __ZN5boost6detail12shared_countC2IPN3RBX15ContentProviderENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::ContentProvider *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ContentProvider *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::ContentProvider *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ContentProvider *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x2b1920() -> ! {
-    todo!("0x2b1920 boost::detail::shared_count::shared_count<RBX::ContentProvider *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ContentProvider *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x2b1920(ptr: *mut ContentProvider, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<ContentProvider, CreatableInstanceDeleter> {
+    // IDA 0x2b1920: block-new shape, same as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x2b1a28 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15ContentProviderENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ContentProvider *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::ContentProvider *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x2b1a28() -> ! {
-    todo!("0x2b1a28 boost::detail::sp_counted_impl_pd<RBX::ContentProvider *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x2b1a28(_block: *mut ControlBlockPd<ContentProvider, CreatableInstanceDeleter>) {
+    // IDA 0x2b1a28: `BX LR` — empty, same as 0xf198.
 }
 
 // 0x2b1a30 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15ContentProviderENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ContentProvider *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::ContentProvider *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x2b1a30() -> ! {
-    todo!("0x2b1a30 boost::detail::sp_counted_impl_pd<RBX::ContentProvider *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x2b1a30(block: *mut ControlBlockPd<ContentProvider, CreatableInstanceDeleter>) {
+    // IDA 0x2b1a30: `predelete` (disasm 0x2b1a38), null early-out (disasm
+    // 0x2b1a3c-0x2b1a40), deleter virtual-delete (disasm 0x2b1a42+); same
+    // shape as 0xf19c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe {
+        (*block).dispose_with(|_| {});
+    }
 }
 
 // 0x2b1a50 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15ContentProviderENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ContentProvider *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::ContentProvider *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x2b1a50() -> ! {
-    todo!("0x2b1a50 boost::detail::sp_counted_impl_pd<RBX::ContentProvider *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x2b1a50(block: *const ControlBlockPd<ContentProvider, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x2b1a50: deleter-name `strcmp`, `this + 0x10` on hit; same shape as 0xf1bc.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x2b1a68 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15ContentProviderENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ContentProvider *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::ContentProvider *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x2b1a68() -> ! {
-    todo!("0x2b1a68 boost::detail::sp_counted_impl_pd<RBX::ContentProvider *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x2b1a68(block: *const ControlBlockPd<ContentProvider, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x2b1a68: unconditional `this + 0x10`; same as 0xf1d4.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x2b4c64 — __ZN5boost10shared_ptrIKSt6vectorINS0_IN3RBX8InstanceEEESaIS4_EEEC2IS6_EEPT_
 #[doc(alias = "rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>::shared_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> *)")]
 // was: boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> *)
-pub fn stub_0x2b4c64() -> ! {
-    todo!("0x2b4c64 boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> *)")
+pub fn stub_0x2b4c64(vec: Vec<SharedPtr<Instance>>) -> SharedPtr<Vec<SharedPtr<Instance>>> {
+    // IDA 0x2b4c64: converting ctor from `shared_ptr<vector<...>>` — adopts
+    // the vector under a fresh 0x10 control block (same adopt shape as the
+    // Creatable ctors); const-qualification collapses (same layout).
+    SharedPtr::new(vec)
 }
 
 // 0x2b4d38 — __ZN5boost6detail12shared_countC2ISt6vectorINS_10shared_ptrIN3RBX8InstanceEEESaIS7_EEEEPT_
 #[doc(alias = "boost::detail::shared_count::shared_count<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> *)")]
 // was: boost::detail::shared_count::shared_count<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> *)
-pub fn stub_0x2b4d38() -> ! {
-    todo!("0x2b4d38 boost::detail::shared_count::shared_count<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> *)")
+pub fn stub_0x2b4d38(vec: Vec<SharedPtr<Instance>>) -> SharedPtr<Vec<SharedPtr<Instance>>> {
+    // IDA 0x2b4d38: `*a1 = 0; new 0x10; use = 1; weak = 1; vtable; px = a2`
+    // (disasm 0x2b4d64-0x2b4dac) — the explicit block-init behind every
+    // `shared_count` ctor; Arc adoption is the same single-owner take.
+    SharedPtr::new(vec)
 }
 
 // 0x2b4e48 — __ZNSt6vectorIN5boost10shared_ptrIN3RBX8InstanceEEESaIS4_EEC2ERKS6_
 #[doc(alias = "std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>::vector(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const&)")]
 // was: std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>::vector(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&)
-pub fn stub_0x2b4e48() -> ! {
-    todo!("0x2b4e48 std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>::vector(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&)")
+pub fn stub_0x2b4e48(src: &[SharedPtr<Instance>]) -> Vec<SharedPtr<Instance>> {
+    // IDA 0x2b4e48: `_Vector_base` sized init (disasm 0x2b4e74) + per-element
+    // `shared_ptr` copy loop (disasm 0x2b4e78-0x2b4f04); the clones are the
+    // per-element retains.
+    src.to_vec()
 }
 
 // 0x2b57e0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE6insertEPNS8_4slotE
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::insert(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot *)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::insert(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot *)
-pub fn stub_0x2b57e0() -> ! {
-    todo!("0x2b57e0 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::insert(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot *)")
+pub fn stub_0x2b57e0(head: *mut Option<SharedPtr<TripleSlotNode>>, slot: *mut TripleSlotNode) {
+    // IDA 0x2b57e0: mutex acquisition over the signal (prologue through disasm
+    // 0x2b57fe) then the intrusive link of the slot. The signal list itself is
+    // unmodeled, so the head is an explicit out-param; push-front order is
+    // unobservable without a fire path. Link mutation uses the `*mut`
+    // exclusive-access contract (cf. the D1/D0 fns).
+    // SAFETY: `head` must be writable; `slot` must be a live box pointer with
+    // no concurrent/shared mutation; the node must stay alive while linked.
+    unsafe {
+        let guard = TRIPLE_SLOT_STATIC_MUTEX.lock();
+        let owned = SharedPtr::from_raw(slot);
+        let linked = owned.clone();
+        core::mem::forget(owned);
+        (*slot).next = (*head).clone();
+        *head = Some(linked);
+        drop(guard);
+    }
 }
 
 // 0x2b59ec — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEESsS7_EE4slotEEaSEPSA_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot>::operator=(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot*)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot>::operator=(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot*)
-pub fn stub_0x2b59ec() -> ! {
-    todo!("0x2b59ec boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot>::operator=(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot*)")
+pub fn stub_0x2b59ec(dst: *mut Option<SharedPtr<TripleSlotNode>>, src: Option<SharedPtr<TripleSlotNode>>) {
+    // IDA 0x2b59ec: move-assign variant (`aSEPSA_`, pointer `src`): add_ref,
+    // store, release-old — same order as 0x705978. Taking `src` by value is
+    // the move.
+    // SAFETY: `dst` must be writable.
+    unsafe {
+        *dst = src;
+    }
 }
 
 // 0x2b5a10 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEESsS7_EE4slotEEaSERKSB_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot> const&)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot> const&)
-pub fn stub_0x2b5a10() -> ! {
-    todo!("0x2b5a10 boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot> const&)")
+pub fn stub_0x2b5a10(dst: *mut Option<SharedPtr<TripleSlotNode>>, src: &Option<SharedPtr<TripleSlotNode>>) {
+    // IDA 0x2b5a10: copy-assign variant (`aSERKSB_`, `src` reference): same
+    // add_ref/store/release order as 0x705978; clone-then-assign is
+    // self-assignment safe via the temporary.
+    // SAFETY: `dst` must be writable; `src` must be readable.
+    unsafe {
+        *dst = src.clone();
+    }
 }
 
 // 0x2b5a34 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::safe_static_init_mutex(void)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::safe_static_init_mutex(void)
-pub fn stub_0x2b5a34() -> ! {
-    todo!("0x2b5a34 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::safe_static_init_mutex(void)")
+pub fn stub_0x2b5a34() -> &'static Mutex<()> {
+    // IDA 0x2b5a34: thunk into `safe_static_do_get_mutex` (IDA 0x2b5a38) —
+    // same shape as 0x7094e0.
+    stub_0x2b5a38()
 }
 
 // 0x2b5a38 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::safe_static_do_get_mutex(void)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::safe_static_do_get_mutex(void)
-pub fn stub_0x2b5a38() -> ! {
-    todo!("0x2b5a38 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::safe_static_do_get_mutex(void)")
+pub fn stub_0x2b5a38() -> &'static Mutex<()> {
+    // IDA 0x2b5a38: guard-checked once-init + mutex construction (prologue
+    // through disasm 0x2b5a54); a `static` with const init is the same
+    // once-init. Twin of 0x7059a0/0x7094e4.
+    &TRIPLE_SLOT_STATIC_MUTEX
 }
 
 // 0x2b5b30 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf3IvNS4_13ScriptContextES6_SsS6_EENSA_5list4INSA_5valueIPSE_EENS2_3argILi1EEENSK_ILi2EEENSK_ILi3EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()
-pub fn stub_0x2b5b30() -> ! {
-    todo!("0x2b5b30 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()")
+pub fn stub_0x2b5b30(slot: *mut TripleSlotNode) {
+    // IDA 0x2b5b30: `callable_slot` D1 — vtable resets (compiler-managed,
+    // disasm 0x2b5b34-0x2b5b3e) + function clear + link release; storage kept.
+    // Same body as 0x708e20.
+    // SAFETY: `slot` must point to a valid `TripleSlotNode`.
+    unsafe {
+        (*slot).func = TripleFunction::default();
+        (*slot).next = None;
+    }
 }
 
 // 0x2b5b5c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf3IvNS4_13ScriptContextES6_SsS6_EENSA_5list4INSA_5valueIPSE_EENS2_3argILi1EEENSK_ILi2EEENSK_ILi3EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()
-pub fn stub_0x2b5b5c() -> ! {
-    todo!("0x2b5b5c rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::~callable_slot()")
+pub fn stub_0x2b5b5c(slot: *mut TripleSlotNode) {
+    // IDA 0x2b5b5c: `callable_slot` D0 — the D1 body plus `operator delete`
+    // (prologue through disasm 0x2b5b72); the box reclaim runs the field
+    // drops and frees together. Same shape as 0x708f30.
+    // SAFETY: `slot` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(slot));
+    }
 }
 
 // 0x2b5c30 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4slot10disconnectEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::disconnect(void)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::disconnect(void)
-pub fn stub_0x2b5c30() -> ! {
-    todo!("0x2b5c30 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::disconnect(void)")
+pub fn stub_0x2b5c30(slot: *mut TripleSlotNode) {
+    // IDA 0x2b5c30: mutex-guarded unlink of the slot (prologue from disasm
+    // 0x2b5c30); here clearing the callback and the successor is the unlink,
+    // and the static lock is the same guard. Same shape as the 0x709060
+    // disconnect (which expires its connection instead).
+    // SAFETY: `slot` must point to a valid `TripleSlotNode` with no
+    // concurrent/shared mutation.
+    unsafe {
+        let _guard = TRIPLE_SLOT_STATIC_MUTEX.lock();
+        (*slot).func = TripleFunction::default();
+        (*slot).next = None;
+    }
 }
 
 // 0x2b5d40 — __ZNK3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4slot9connectedEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::connected(void)const")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::connected(void)const
-pub fn stub_0x2b5d40() -> ! {
-    todo!("0x2b5d40 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::connected(void)const")
+pub fn stub_0x2b5d40(slot: *const TripleSlotNode) -> bool {
+    // IDA 0x2b5d40: `*(a1 + 12) != 0` (disasm 0x2b5d40-0x2b5d48) — the
+    // intrusive link word; same as 0x709170.
+    // SAFETY: `slot` must point to a valid `TripleSlotNode`.
+    unsafe { (*slot).next.is_some() }
 }
 
 // 0x2b5d4c — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf3IvNS5_13ScriptContextES7_SsS7_EENSB_5list4INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEENSL_ILi3EEEEEEELi3ES8_E4callES7_SsS7_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x2b5d4c() -> ! {
-    todo!("0x2b5d4c rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x2b5d4c(slot: &TripleSlotNode, instance: &SharedPtr<Instance>, first: &str, second: &str) {
+    // IDA 0x2b5d4c: spills the three args (disasm 0x2b5d4c-0x2b5d5c) then the
+    // bound `mf3` call (disasm 0x2b5d5e); the `shared_ptr` retains collapse
+    // into clones. Same shape as 0x70917c.
+    if let (Some(target), Some(func)) = (&slot.func.target, &slot.func.func) {
+        func(&target.clone(), &instance.clone(), first, second);
+    }
 }
 
 // 0x2b5d68 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf3IvNS5_13ScriptContextES7_SsS7_EENSB_5list4INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEENSL_ILi3EEEEEEELi3ES8_E4callES7_SsS7_
@@ -2375,15 +2527,33 @@ pub fn stub_0x2b5f3c() -> ! {
 // 0x2b6104 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE6removeEPNS8_4slotE
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::remove(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot *)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::remove(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot *)
-pub fn stub_0x2b6104() -> ! {
-    todo!("0x2b6104 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::remove(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot *)")
+pub fn stub_0x2b6104(head: *mut Option<SharedPtr<TripleSlotNode>>, slot: *const TripleSlotNode) {
+    // IDA 0x2b6104: `ReleaseAssert(!intrusive_ptr_expired(item))`
+    // (signal.h:261, `FLog::Asserts` load at disasm 0x2b6108-0x2b611a) plus
+    // the log line, then unlink of the item. Membership in the head chain
+    // stands in for non-expiry; unlinking by identity is the removal.
+    // SAFETY: `head` must be writable; `slot` must be a node of that chain.
+    unsafe {
+        let mut cursor = head;
+        while let Some(node) = (*cursor).clone() {
+            if SharedPtr::as_ptr(&node) == slot {
+                *cursor = (*node).next.clone();
+                return;
+            }
+            let node_ptr = SharedPtr::as_ptr(&node) as *mut TripleSlotNode;
+            cursor = &mut (*node_ptr).next;
+        }
+        debug_assert!(false, "0x2b6104: intrusive_ptr_expired");
+    }
 }
 
 // 0x2b61f4 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4slot22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot::safe_static_init_mutex(void)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::safe_static_init_mutex(void)
-pub fn stub_0x2b61f4() -> ! {
-    todo!("0x2b61f4 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::slot::safe_static_init_mutex(void)")
+pub fn stub_0x2b61f4() -> &'static Mutex<()> {
+    // IDA 0x2b61f4: slot-level `safe_static_init_mutex` thunk — same shape as
+    // 0x7094e0; one process-wide guard covers the family.
+    stub_0x2b5a38()
 }
 
 // 0x2b61f8 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE4slot24safe_static_do_get_mutexEv
