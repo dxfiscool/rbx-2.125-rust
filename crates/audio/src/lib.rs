@@ -287,6 +287,63 @@ pub struct SoundChannelView {
     pub play_count: i32,
 }
 
+/// Outcome of FMOD_OS_Net_Accept for Profile::update (IDA 0x69e6c): a nonzero
+/// accept code means "no pending connection" and skips silently. Success
+/// yields the new socket, whose client still needs its 420-byte block — kept
+/// as an explicit variant so the FMOD_ERR_MEMORY path (0x69f5c-0x69f60) stays
+/// representable on hosts with a fallible allocator.
+pub enum ProfileAccept<N> {
+    None,
+    Pending { socket: i32, net: N },
+    AllocFailed,
+}
+
+/// Host OS seam for the Profile cluster (IDA 0x69c20/0x69d50/0x69e0c/0x69a78).
+/// FMOD_OS_Net_* / CriticalSection / Time_GetMs live outside the image; each
+/// method cites its call site. N is the per-client socket object backing
+/// ClientNet reads/writes; nets[i] serves clients[i].
+pub trait ProfileOs<N> {
+    fn net_init(&mut self) -> i32;
+    fn net_listen(&mut self, port: u16, sock_out: &mut u32) -> i32;
+    fn crit_create(&mut self, crit_out: &mut u32) -> i32;
+    fn now_ms(&mut self, out: &mut u32) -> i32;
+    fn enter_crit(&mut self, crit: u32);
+    fn leave_crit(&mut self, crit: u32);
+    fn accept(&mut self, listen_sock: u32) -> ProfileAccept<N>;
+    fn close(&mut self, socket: i32);
+    fn free_crit(&mut self, crit: u32);
+    fn net_shutdown(&mut self);
+}
+
+/// Host-owned Profile plus its intrusive-list members (IDA 0x69a78/0x69e0c).
+/// The vectors are authoritative on the host; the raw ModuleLink words are
+/// kept consistent on insert/remove to mirror the target's lists.
+pub struct ProfileLive<N> {
+    pub profile: Profile,
+    pub clients: Vec<Box<ProfileClient>>,
+    pub nets: Vec<N>,
+    pub modules: Vec<Box<ProfileModule>>,
+}
+
+/// Host sink for MemoryTracker::add (IDA 0x69910): the original passes
+/// (tracker, 0, 0x10000, size); only the size varies per call site.
+pub trait MemTracker {
+    fn add(&mut self, bytes: u32);
+}
+
+/// Module-singleton presence sampled by Profile::getMemoryUsedImpl
+/// (IDA 0x69910). dword_130F4AC is the ProfileDsp slot (0x69970);
+/// dword_130F4A8 is the ProfileCpu slot (cf. 0x687c0); dword_130F4A4 and
+/// dword_130F4A0 are the remaining 0x18-byte module singletons — presumably
+/// the codec/channel slots, which have no implemented creates yet.
+pub struct ProfileMemExtra<'a> {
+    pub crit_size: u32,
+    pub dsp: Option<&'a ProfileDsp>,
+    pub mod_a8: bool,
+    pub mod_a4: bool,
+    pub mod_a0: bool,
+}
+
 // 0x686a4 — __ZN4FMOD10ProfileCpu4initEv
 #[doc(alias = "FMOD::ProfileCpu::init(void)")]
 pub fn stub_686a4(_cpu: &mut ProfileCpu) -> i32 {
@@ -990,68 +1047,437 @@ pub fn stub_69634(client: &mut ProfileClient, packet: &[u8], net: &mut impl Clie
 
 // 0x69820 — __ZN4FMOD13ProfileClient7releaseEv
 #[doc(alias = "FMOD::ProfileClient::release(void)")]
-pub fn stub_69820() -> ! {
-    todo!("0x69820 FMOD::ProfileClient::release(void)")
+pub fn stub_69820(client: Box<ProfileClient>, close: impl FnOnce(i32)) -> i32 {
+    // IDA 0x69820: Net_Close(socket at +16, 0x69830 — its code is ignored);
+    // MemPool::free the 0x4000 send buffer (0x69834-0x6985c);
+    // MemPool::free the client (0x69880); return 0 (0x69888). The Box drop
+    // frees the buffer and the object together.
+    close(client.socket);
+    drop(client);
+    FMOD_OK
 }
 
 // 0x6989c — __ZN4FMOD13ProfileClient4initEPv
 #[doc(alias = "FMOD::ProfileClient::init(void *)")]
-pub fn stub_6989c() -> ! {
-    todo!("0x6989c FMOD::ProfileClient::init(void *)")
+pub fn stub_6989c(client: &mut ProfileClient, socket: i32) -> i32 {
+    // IDA 0x6989c: capacity word +32 = 0x4000 (0x698b8); MemPool::alloc 0x4000
+    // bytes (0x698c8-0x698e0, FMOD_ERR_MEMORY when null at 0x698f4); on
+    // success end = cursor = base (0x698ec/0x698f0) and socket = arg
+    // (0x698f8); return 0 (0x698fc). Host: offsets stand in for the
+    // base-relative pointers, so empty is end == cursor == 0.
+    client.send_capacity = 0x4000;
+    let mut buf = Vec::new();
+    if buf.try_reserve_exact(0x4000).is_err() {
+        return FMOD_ERR_MEMORY;
+    }
+    buf.resize(0x4000, 0);
+    client.send_buf = buf;
+    client.send_end = 0;
+    client.send_cursor = 0;
+    client.socket = socket;
+    FMOD_OK
 }
 
 // 0x69910 — __ZN4FMOD7Profile17getMemoryUsedImplEPNS_13MemoryTrackerE
 #[doc(alias = "FMOD::Profile::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_69910() -> ! {
-    todo!("0x69910 FMOD::Profile::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+pub fn stub_69910(
+    profile: &Profile,
+    extra: &ProfileMemExtra<'_>,
+    sink: &mut impl MemTracker,
+) -> i32 {
+    // IDA 0x69910: add 0x30 for the Profile itself (0x69930); the critical
+    // section size when the crit word is set (0x69934-0x69958); 0x34 for a
+    // live dsp object (0x69984), plus 4 * node_capacity when its node space
+    // is present (0x69990-0x699b0) and 61 * packet_grow + 17 when its packet
+    // space is present (0x699bc-0x699ec); 0x18 per set module singleton
+    // (0x69a04-0x69a60); return 0 (0x69a68).
+    sink.add(0x30);
+    if profile.critical_section != 0 {
+        sink.add(extra.crit_size);
+    }
+    if let Some(dsp) = extra.dsp {
+        sink.add(0x34);
+        if !dsp.node_space.is_empty() {
+            sink.add(4 * dsp.node_capacity);
+        }
+        if !dsp.packet_space.is_empty() {
+            sink.add(61 * dsp.packet_grow + 17);
+        }
+    }
+    for present in [extra.mod_a8, extra.mod_a4, extra.mod_a0] {
+        if present {
+            sink.add(0x18);
+        }
+    }
+    FMOD_OK
 }
 
 // 0x69a78 — __ZN4FMOD7Profile7releaseEv
 #[doc(alias = "FMOD::Profile::release(void)")]
-pub fn stub_69a78() -> ! {
-    todo!("0x69a78 FMOD::Profile::release(void)")
+pub fn stub_69a78<N>(
+    live: &mut ProfileLive<N>,
+    os: &mut impl ProfileOs<N>,
+    mut release_module: impl FnMut(usize, &mut ProfileModule) -> i32,
+    mut clear_singleton: impl FnMut(usize),
+) -> i32 {
+    // IDA 0x69a78: Net_Close the listen socket (0x69a88-0x69a94 — code
+    // ignored); unlink (0x69aa8-0x69ac4), zero +8 (0x69acc) and release every
+    // client, aborting with its code (0x69ad0-0x69adc); unlink (0x69b00-0x69b30)
+    // and vtable-release every module, aborting with its code (0x69b38-0x69b40);
+    // clear whichever of dword_130F4A4/A0/A8/AC matches the module
+    // (0x69b58-0x69b88); free the crit section when set (0x69b98-0x69ba8);
+    // Net_Shutdown (0x69bac); MemPool::free(this) (0x69bd0 — the Box drops in
+    // the FMOD_Profile_Release caller); return 0.
+    // BUG-compat note: on a module-release failure the original has already
+    // unlinked (and leaks) the module; here it stays in the vector.
+    os.close(live.profile.listen_socket as i32);
+    while !live.clients.is_empty() {
+        let mut client = live.clients.remove(0);
+        live.nets.remove(0);
+        unsafe {
+            let link = &mut client.link as *mut ModuleLink;
+            (*(*link).prev).next = (*link).next;
+            (*(*link).next).prev = (*link).prev;
+            (*link).next = link;
+            (*link).prev = link;
+        }
+        client.u8_field = 0;
+        let rc = stub_69820(client, |s| os.close(s));
+        if rc != FMOD_OK {
+            return rc;
+        }
+    }
+    let mut index = 0;
+    while !live.modules.is_empty() {
+        let mut module = live.modules.remove(0);
+        unsafe {
+            let link = &mut module.link as *mut ModuleLink;
+            (*(*link).prev).next = (*link).next;
+            (*(*link).next).prev = (*link).prev;
+            (*link).next = link;
+            (*link).prev = link;
+        }
+        let addr = &*module as *const ProfileModule as usize;
+        let rc = release_module(index, &mut module);
+        if rc != FMOD_OK {
+            return rc;
+        }
+        clear_singleton(addr);
+        index += 1;
+    }
+    if live.profile.critical_section != 0 {
+        os.free_crit(live.profile.critical_section);
+    }
+    os.net_shutdown();
+    FMOD_OK
 }
 
 // 0x69be8 — __ZN4FMOD20FMOD_Profile_ReleaseEv
 #[doc(alias = "FMOD::FMOD_Profile_Release(void)")]
-pub fn stub_69be8() -> ! {
-    todo!("0x69be8 FMOD::FMOD_Profile_Release(void)")
+pub fn stub_69be8<N>(
+    slot: &mut Option<Box<ProfileLive<N>>>,
+    os: &mut impl ProfileOs<N>,
+    release_module: impl FnMut(usize, &mut ProfileModule) -> i32,
+    clear_singleton: impl FnMut(usize),
+) -> i32 {
+    // IDA 0x69be8: null dword_130F49C returns 0 (0x69bfc-0x69c04); else
+    // Profile::release (0x69c08), clear the global regardless (0x69c14) and
+    // return release's code. The Box drop is the MemPool::free at 0x69bd0.
+    let Some(mut live) = slot.take() else {
+        return FMOD_OK;
+    };
+    stub_69a78(&mut live, os, release_module, clear_singleton)
 }
 
 // 0x69c20 — __ZN4FMOD7Profile4initEt
 #[doc(alias = "FMOD::Profile::init(unsigned short)")]
-pub fn stub_69c20() -> ! {
-    todo!("0x69c20 FMOD::Profile::init(unsigned short)")
+pub fn stub_69c20<N>(profile: &mut Profile, port: u16, os: &mut impl ProfileOs<N>) -> i32 {
+    // IDA 0x69c20: zero port defaults to 9264 (0x69c38-0x69c3c); Net_Init
+    // (0x69c44, code returned at 0x69c48); Net_Listen into +8
+    // (0x69c50-0x69c60); CriticalSection_Create into +36 (0x69c64-0x69c74);
+    // Time_GetMs into +44 (0x69c78-0x69c90). Any failure after Net_Init runs
+    // Net_Shutdown before returning the code (0x69c7c).
+    let port = if port != 0 { port } else { 9264 };
+    let rc = os.net_init();
+    if rc != FMOD_OK {
+        return rc;
+    }
+    let rc = os.net_listen(port, &mut profile.listen_socket);
+    if rc != FMOD_OK {
+        os.net_shutdown();
+        return rc;
+    }
+    let rc = os.crit_create(&mut profile.critical_section);
+    if rc != FMOD_OK {
+        os.net_shutdown();
+        return rc;
+    }
+    let rc = os.now_ms(&mut profile.last_tick_ms);
+    if rc != FMOD_OK {
+        os.net_shutdown();
+        return rc;
+    }
+    FMOD_OK
 }
 
 // 0x69c9c — __ZN4FMOD19FMOD_Profile_CreateEt
 #[doc(alias = "FMOD::FMOD_Profile_Create(unsigned short)")]
-pub fn stub_69c9c() -> ! {
-    todo!("0x69c9c FMOD::FMOD_Profile_Create(unsigned short)")
+pub fn stub_69c9c<N>(
+    slot: &mut Option<Box<ProfileLive<N>>>,
+    port: u16,
+    os: &mut impl ProfileOs<N>,
+    release_module: impl FnMut(usize, &mut ProfileModule) -> i32,
+    clear_singleton: impl FnMut(usize),
+) -> i32 {
+    // IDA 0x69c9c: set dword_130F49C → 0 when present (0x69cc4);
+    // MemPool::alloc 48 bytes (0x69cd0-0x69ce8, FMOD_ERR_MEMORY when null at
+    // 0x69d08 — unrepresentable for Box, as in stub_687c0/6907c); C2
+    // (0x69cf4); install the global (0x69cf8); init (0x69d18) whose failure
+    // releases and clears the global (0x69d38-0x69d40); return init's code.
+    // (The first word arrives in R0: the demangled prototype's port.)
+    if slot.is_some() {
+        return FMOD_OK;
+    }
+    let mut live = Box::new(ProfileLive {
+        profile: Profile {
+            vtable: 0,
+            u4: 0,
+            listen_socket: 0,
+            client_list: ModuleLink {
+                next: core::ptr::null_mut(),
+                prev: core::ptr::null_mut(),
+            },
+            u20: 0,
+            module_list: ModuleLink {
+                next: core::ptr::null_mut(),
+                prev: core::ptr::null_mut(),
+            },
+            u32_field: 0,
+            critical_section: 0,
+            max_clients: 0,
+            last_tick_ms: 0,
+        },
+        clients: Vec::new(),
+        nets: Vec::new(),
+        modules: Vec::new(),
+    });
+    stub_6919c(&mut live.profile);
+    *slot = Some(live);
+    let rc = stub_69c20(&mut slot.as_mut().unwrap().profile, port, os);
+    if rc != FMOD_OK {
+        let mut live = slot.take().unwrap();
+        let _ = stub_69a78(&mut live, os, release_module, clear_singleton);
+        return rc;
+    }
+    FMOD_OK
 }
 
 // 0x69d50 — __ZN4FMOD7Profile9addPacketEPNS_19ProfilePacketHeaderE
 #[doc(alias = "FMOD::Profile::addPacket(FMOD::ProfilePacketHeader *)")]
-pub fn stub_69d50() -> ! {
-    todo!("0x69d50 FMOD::Profile::addPacket(FMOD::ProfilePacketHeader *)")
+pub fn stub_69d50<N>(live: &mut ProfileLive<N>, packet: &mut [u8], os: &mut impl ProfileOs<N>) -> i32
+where
+    N: ClientNet,
+{
+    // IDA 0x69d50: enter the +36 crit section (0x69d60-0x69d70); GetMs
+    // (0x69d7c) whose code is returned after leaving on failure (0x69d80);
+    // stamp header.time = now - last_tick (0x69d84-0x69d90); walk the client
+    // list — wantsData (0x69dd0) then addPacket (0x69de4) — aborting with its
+    // code on failure (0x69dec-0x69df0); leave (0x69df4) and return it.
+    // Short headers fault in the original; they are dropped here.
+    let crit = live.profile.critical_section;
+    os.enter_crit(crit);
+    let mut now = 0u32;
+    let rc = os.now_ms(&mut now);
+    if rc != FMOD_OK {
+        os.leave_crit(crit);
+        return rc;
+    }
+    let Some(stamp) = packet.get_mut(4..8) else {
+        os.leave_crit(crit);
+        return FMOD_OK;
+    };
+    stamp.copy_from_slice(&now.wrapping_sub(live.profile.last_tick_ms).to_le_bytes());
+    for i in 0..live.clients.len() {
+        if !stub_69358(&live.clients[i], packet) {
+            continue;
+        }
+        let rc = stub_69634(&mut live.clients[i], packet, &mut live.nets[i]);
+        if rc != FMOD_OK {
+            os.leave_crit(crit);
+            return rc;
+        }
+    }
+    os.leave_crit(crit);
+    FMOD_OK
 }
 
 // 0x69e0c — __ZN4FMOD7Profile6updateEPNS_7SystemIEj
 #[doc(alias = "FMOD::Profile::update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_69e0c() -> ! {
-    todo!("0x69e0c FMOD::Profile::update(FMOD::SystemI *,unsigned int)")
+pub fn stub_69e0c<N>(
+    live: &mut ProfileLive<N>,
+    tick_ms: u32,
+    os: &mut impl ProfileOs<N>,
+    mut module_update: impl FnMut(usize, &mut ProfileModule) -> i32,
+) -> i32
+where
+    N: ClientNet,
+{
+    // IDA 0x69e0c: accumulate the tick into +44 (0x69e30-0x69e38); totals at
+    // or below 0x31 ms return 0 (0x69e3c-0x69e50). Else reset the accumulator
+    // (0x69e5c) and accept a client (0x69e6c): 420-byte alloc (0x69f54,
+    // FMOD_ERR_MEMORY on failure at 0x69f5c-0x69f60 — unrepresentable for
+    // Box, see ProfileAccept::AllocFailed), C2 (0x69f64), init(socket) whose
+    // code is returned unlinked on failure (0x69f74-0x69f78, leaking the
+    // block in the original), else tail-link under crit (0x69f80-0x69fa4).
+    // Each module: a zero interval always runs, else the tick accumulates
+    // into +20 and skips until it exceeds the +16 interval (0x69e7c-0x69e94);
+    // update via vtable+8 whose code is returned on failure (0x69eac-0x69eb0)
+    // and the accumulator resets (0x69eb4). Under crit every client updates
+    // with the pre-reset tick (0x69ee8-0x69f08), aborting with its code after
+    // leaving (0x69f1c-0x69f28); dead (flags & 1) clients unlink and release
+    // under the same abort discipline (0x69fac-0x69ffc); leave (0x6a008).
+    // (The SystemI* argument passes straight through to the module updates
+    // on the host, so no param carries it here.)
+    let tick = live.profile.last_tick_ms.wrapping_add(tick_ms);
+    live.profile.last_tick_ms = tick;
+    if tick <= 0x31 {
+        return FMOD_OK;
+    }
+    live.profile.last_tick_ms = 0;
+    match os.accept(live.profile.listen_socket) {
+        ProfileAccept::None => {}
+        ProfileAccept::AllocFailed => return FMOD_ERR_MEMORY,
+        ProfileAccept::Pending { socket, net } => {
+            let mut client = Box::new(ProfileClient {
+                link: ModuleLink {
+                    next: core::ptr::null_mut(),
+                    prev: core::ptr::null_mut(),
+                },
+                u8_field: 0,
+                flags: 0,
+                socket: 0,
+                send_buf: Vec::new(),
+                send_end: 0,
+                send_cursor: 0,
+                send_capacity: 0,
+                requests: [ClientDataReq {
+                    ty_a: 0xFF,
+                    ty_b: 0,
+                    pad: [0; 2],
+                    interval: 0,
+                    last: 0,
+                }; 32],
+            });
+            stub_69280(&mut client);
+            let rc = stub_6989c(&mut client, socket);
+            if rc != FMOD_OK {
+                return rc;
+            }
+            let crit = live.profile.critical_section;
+            os.enter_crit(crit);
+            unsafe {
+                let link = &mut client.link as *mut ModuleLink;
+                (*link).prev = live.profile.client_list.prev;
+                (*link).next = &mut live.profile.client_list as *mut ModuleLink;
+                live.profile.client_list.prev = link;
+                (*(*link).prev).next = link;
+            }
+            live.clients.push(client);
+            live.nets.push(net);
+            os.leave_crit(crit);
+        }
+    }
+    for (i, module) in live.modules.iter_mut().enumerate() {
+        if module.u16 != 0 {
+            module.u20 = module.u20.wrapping_add(tick);
+            if module.u20 <= module.u16 as u32 {
+                continue;
+            }
+        }
+        let rc = module_update(i, module);
+        if rc != FMOD_OK {
+            return rc;
+        }
+        module.u20 = 0;
+    }
+    let crit = live.profile.critical_section;
+    os.enter_crit(crit);
+    for i in 0..live.clients.len() {
+        let rc = stub_695dc(&mut live.clients[i], &mut live.nets[i]);
+        if rc != FMOD_OK {
+            os.leave_crit(crit);
+            return rc;
+        }
+    }
+    let mut i = 0;
+    while i < live.clients.len() {
+        if live.clients[i].flags & 1 == 0 {
+            i += 1;
+            continue;
+        }
+        let mut dead = live.clients.remove(i);
+        live.nets.remove(i);
+        unsafe {
+            let link = &mut dead.link as *mut ModuleLink;
+            (*(*link).prev).next = (*link).next;
+            (*(*link).next).prev = (*link).prev;
+            (*link).next = link;
+            (*link).prev = link;
+        }
+        dead.u8_field = 0;
+        // Release always returns 0 (Net_Close's code is ignored at 0x69830),
+        // so the 0x69ff8 abort is dead — no check, matching the trace.
+        let _ = stub_69820(dead, |s| os.close(s));
+    }
+    os.leave_crit(crit);
+    FMOD_OK
 }
 
 // 0x6a018 — __ZN4FMOD19FMOD_Profile_UpdateEPNS_7SystemIEj
 #[doc(alias = "FMOD::FMOD_Profile_Update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_6a018() -> ! {
-    todo!("0x6a018 FMOD::FMOD_Profile_Update(FMOD::SystemI *,unsigned int)")
+pub fn stub_6a018<N>(
+    slot: &mut Option<Box<ProfileLive<N>>>,
+    tick_ms: u32,
+    os: &mut impl ProfileOs<N>,
+    module_update: impl FnMut(usize, &mut ProfileModule) -> i32,
+) -> i32
+where
+    N: ClientNet,
+{
+    // IDA 0x6a018: null dword_130F49C returns 81 (0x6a034-0x6a040); else
+    // Profile::update (0x6a03c).
+    let Some(live) = slot.as_mut() else {
+        return 81;
+    };
+    stub_69e0c(live, tick_ms, os, module_update)
 }
 
 // 0x6a04c — __ZN4FMOD7Profile13getMemoryUsedEPNS_13MemoryTrackerE
 #[doc(alias = "FMOD::Profile::getMemoryUsed(FMOD::MemoryTracker *)")]
-pub fn stub_6a04c() -> ! {
-    todo!("0x6a04c FMOD::Profile::getMemoryUsed(FMOD::MemoryTracker *)")
+pub fn stub_6a04c(profile: &mut Profile, flag: bool, run_impl: impl FnOnce() -> i32) -> i32 {
+    // IDA 0x6a04c: the second word doubles as a cache flag (0x6a054-0x6a05c;
+    // the demangled MemoryTracker* is never dereferenced as a pointer here).
+    // Nonzero: return 0 when the counted byte at +4 is set (0x6a060-0x6a06c),
+    // else run the Impl vfunc (0x6a070-0x6a078) and set the byte on success
+    // (0x6a07c-0x6a084). Zero: always run Impl (0x6a08c-0x6a094) and clear the
+    // byte on success (0x6a098-0x6a09c). Only the low byte of the +4 word is
+    // touched (LDRB/STRB); the upper bytes are preserved.
+    if flag {
+        if profile.u4 & 0xFF != 0 {
+            return FMOD_OK;
+        }
+        let rc = run_impl();
+        if rc == FMOD_OK {
+            profile.u4 |= 1;
+        }
+        rc
+    } else {
+        let rc = run_impl();
+        if rc == FMOD_OK {
+            profile.u4 &= !0xFF;
+        }
+        rc
+    }
 }
 
 // 0x6d26c — _FMOD_oggpack_look
@@ -16143,5 +16569,440 @@ mod profile_cluster_tests {
         assert_eq!(stub_6907c(&mut dsp_slot, &mut profile), FMOD_OK);
         assert!(dsp_slot.is_some());
         assert_eq!(stub_6907c(&mut dsp_slot, &mut profile), FMOD_OK);
+    }
+
+    struct FakeOs {
+        init: VecDeque<i32>,
+        listen: VecDeque<i32>,
+        crit_create: VecDeque<i32>,
+        now: VecDeque<Result<u32, i32>>,
+        accepts: VecDeque<ProfileAccept<ScriptNet>>,
+        events: Vec<String>,
+        closed: Vec<i32>,
+    }
+
+    impl FakeOs {
+        fn ok() -> Self {
+            FakeOs {
+                init: VecDeque::from([FMOD_OK]),
+                listen: VecDeque::from([FMOD_OK]),
+                crit_create: VecDeque::from([FMOD_OK]),
+                now: VecDeque::from([Ok(1000)]),
+                accepts: VecDeque::new(),
+                events: Vec::new(),
+                closed: Vec::new(),
+            }
+        }
+    }
+
+    impl ProfileOs<ScriptNet> for FakeOs {
+        fn net_init(&mut self) -> i32 {
+            self.init.pop_front().unwrap_or(FMOD_OK)
+        }
+        fn net_listen(&mut self, port: u16, sock_out: &mut u32) -> i32 {
+            let rc = self.listen.pop_front().unwrap_or(FMOD_OK);
+            if rc == FMOD_OK {
+                *sock_out = 0x1000 + port as u32;
+            }
+            rc
+        }
+        fn crit_create(&mut self, crit_out: &mut u32) -> i32 {
+            let rc = self.crit_create.pop_front().unwrap_or(FMOD_OK);
+            if rc == FMOD_OK {
+                *crit_out = 0x77;
+            }
+            rc
+        }
+        fn now_ms(&mut self, out: &mut u32) -> i32 {
+            match self.now.pop_front().unwrap_or(Ok(1000)) {
+                Ok(t) => {
+                    *out = t;
+                    FMOD_OK
+                }
+                Err(code) => code,
+            }
+        }
+        fn enter_crit(&mut self, crit: u32) {
+            self.events.push(format!("enter:{crit:#x}"));
+        }
+        fn leave_crit(&mut self, crit: u32) {
+            self.events.push(format!("leave:{crit:#x}"));
+        }
+        fn accept(&mut self, _listen: u32) -> ProfileAccept<ScriptNet> {
+            self.accepts.pop_front().unwrap_or(ProfileAccept::None)
+        }
+        fn close(&mut self, socket: i32) {
+            self.closed.push(socket);
+        }
+        fn free_crit(&mut self, crit: u32) {
+            self.events.push(format!("free:{crit:#x}"));
+        }
+        fn net_shutdown(&mut self) {
+            self.events.push("shutdown".to_string());
+        }
+    }
+
+    fn fresh_live() -> Box<ProfileLive<ScriptNet>> {
+        let mut live = Box::new(ProfileLive {
+            profile: Profile {
+                vtable: 0,
+                u4: 0,
+                listen_socket: 9,
+                client_list: ModuleLink {
+                    next: core::ptr::null_mut(),
+                    prev: core::ptr::null_mut(),
+                },
+                u20: 0,
+                module_list: ModuleLink {
+                    next: core::ptr::null_mut(),
+                    prev: core::ptr::null_mut(),
+                },
+                u32_field: 0,
+                critical_section: 0x77,
+                max_clients: 0,
+                last_tick_ms: 0,
+            },
+            clients: Vec::new(),
+            nets: Vec::new(),
+            modules: Vec::new(),
+        });
+        stub_6914c(&mut live.profile);
+        live.profile.listen_socket = 9;
+        live.profile.critical_section = 0x77;
+        live
+    }
+
+    fn link_client_tail(profile: &mut Profile, client: &mut Box<ProfileClient>) {
+        unsafe {
+            let link = &mut client.link as *mut ModuleLink;
+            (*link).prev = profile.client_list.prev;
+            (*link).next = &mut profile.client_list as *mut ModuleLink;
+            profile.client_list.prev = link;
+            (*(*link).prev).next = link;
+        }
+    }
+
+    fn push_client(live: &mut ProfileLive<ScriptNet>, socket: i32) {
+        let mut client = fresh_client();
+        assert_eq!(stub_6989c(&mut client, socket), FMOD_OK);
+        link_client_tail(&mut live.profile, &mut client);
+        live.clients.push(client);
+        live.nets.push(ScriptNet::new());
+    }
+
+    fn push_module(live: &mut ProfileLive<ScriptNet>, interval: u32) -> usize {
+        let mut module = Box::new(zeroed_module());
+        module.u16 = interval;
+        stub_691a0(&mut live.profile, &mut module);
+        let addr = &*module as *const ProfileModule as usize;
+        live.modules.push(module);
+        addr
+    }
+
+    #[test]
+    fn client_init_and_release() {
+        let mut client = fresh_client();
+        assert_eq!(stub_6989c(&mut client, 42), FMOD_OK);
+        assert_eq!(client.send_capacity, 0x4000);
+        assert_eq!(client.send_buf.len(), 0x4000);
+        assert_eq!((client.send_end, client.send_cursor), (0, 0));
+        assert_eq!(client.socket, 42);
+        let mut closed = Vec::new();
+        assert_eq!(
+            stub_69820(client, |s: i32| closed.push(s)),
+            FMOD_OK
+        );
+        assert_eq!(closed, vec![42]);
+        // Close runs even for the pre-init -1 socket, as in the original.
+        let client = fresh_client();
+        assert_eq!(stub_69820(client, |s: i32| closed.push(s)), FMOD_OK);
+        assert_eq!(closed, vec![42, -1]);
+    }
+
+    #[test]
+    fn profile_mem_used_sizes() {
+        let live = fresh_live();
+        let mut dsp = fresh_dsp();
+        let mut sizes = Vec::new();
+        struct Rec<'a>(&'a mut Vec<u32>);
+        impl MemTracker for Rec<'_> {
+            fn add(&mut self, bytes: u32) {
+                self.0.push(bytes);
+            }
+        }
+        let extra = ProfileMemExtra {
+            crit_size: 28,
+            dsp: None,
+            mod_a8: false,
+            mod_a4: false,
+            mod_a0: false,
+        };
+        assert_eq!(stub_69910(&live.profile, &extra, &mut Rec(&mut sizes)), FMOD_OK);
+        assert_eq!(sizes, vec![0x30, 28]);
+        // Dsp without buffers adds only its own 0x34.
+        dsp.node_space.clear();
+        dsp.packet_space.clear();
+        let extra = ProfileMemExtra {
+            crit_size: 28,
+            dsp: Some(&dsp),
+            mod_a8: true,
+            mod_a4: true,
+            mod_a0: true,
+        };
+        sizes.clear();
+        assert_eq!(stub_69910(&live.profile, &extra, &mut Rec(&mut sizes)), FMOD_OK);
+        assert_eq!(sizes, vec![0x30, 28, 0x34, 0x18, 0x18, 0x18]);
+        // Buffers present: 4 * capacity and 61 * grow + 17.
+        sizes.clear();
+        let extra = ProfileMemExtra {
+            crit_size: 28,
+            dsp: Some(&fresh_dsp()),
+            mod_a8: false,
+            mod_a4: false,
+            mod_a0: false,
+        };
+        assert_eq!(stub_69910(&live.profile, &extra, &mut Rec(&mut sizes)), FMOD_OK);
+        assert_eq!(sizes, vec![0x30, 28, 0x34, 4 * 32, 61 * 300 + 17]);
+    }
+
+    #[test]
+    fn mem_used_cache_wrapper() {
+        let mut live = fresh_live();
+        let mut runs = 0;
+        // Cached path with the byte set short-circuits.
+        live.profile.u4 = 0xAB00_0001;
+        assert_eq!(stub_6a04c(&mut live.profile, true, || panic!("must not run")), FMOD_OK);
+        // Uncached path always runs and clears only the low byte.
+        assert_eq!(
+            stub_6a04c(&mut live.profile, false, || {
+                runs += 1;
+                FMOD_OK
+            }),
+            FMOD_OK
+        );
+        assert_eq!(runs, 1);
+        assert_eq!(live.profile.u4, 0xAB00_0000);
+        // Cached path runs once, then short-circuits; errors never set.
+        assert_eq!(
+            stub_6a04c(&mut live.profile, true, || {
+                runs += 1;
+                12
+            }),
+            12
+        );
+        assert_eq!(runs, 2);
+        assert_eq!(live.profile.u4 & 0xFF, 0);
+        assert_eq!(
+            stub_6a04c(&mut live.profile, true, || {
+                runs += 1;
+                FMOD_OK
+            }),
+            FMOD_OK
+        );
+        assert_eq!(runs, 3);
+        assert_eq!(live.profile.u4 & 0xFF, 1);
+        assert_eq!(stub_6a04c(&mut live.profile, true, || panic!("cached")), FMOD_OK);
+        assert_eq!(runs, 3);
+    }
+
+    #[test]
+    fn profile_init_ports_and_shutdown() {
+        let mut live = fresh_live();
+        let mut os = FakeOs::ok();
+        assert_eq!(stub_69c20(&mut live.profile, 0, &mut os), FMOD_OK);
+        assert_eq!(live.profile.listen_socket, 0x1000 + 9264);
+        assert_eq!(live.profile.critical_section, 0x77);
+        assert_eq!(live.profile.last_tick_ms, 1000);
+        assert!(!os.events.contains(&"shutdown".to_string()));
+        // Each stage fails with its code and shuts the net down.
+        // Net_Init failure returns directly with no shutdown (0x69c48); every
+        // later stage shuts the net down (0x69c7c).
+        let mut os = FakeOs::ok();
+        os.init = VecDeque::from([7]);
+        assert_eq!(stub_69c20(&mut live.profile, 5, &mut os), 7);
+        assert!(!os.events.contains(&"shutdown".to_string()));
+        let mut os = FakeOs::ok();
+        os.listen = VecDeque::from([8]);
+        assert_eq!(stub_69c20(&mut live.profile, 5, &mut os), 8);
+        let mut os = FakeOs::ok();
+        os.crit_create = VecDeque::from([9]);
+        assert_eq!(stub_69c20(&mut live.profile, 5, &mut os), 9);
+        let mut os = FakeOs::ok();
+        os.now = VecDeque::from([Err(10)]);
+        assert_eq!(stub_69c20(&mut live.profile, 5, &mut os), 10);
+    }
+
+    #[test]
+    fn profile_create_guards_and_cleans() {
+        let mut slot: Option<Box<ProfileLive<ScriptNet>>> = None;
+        let mut os = FakeOs::ok();
+        assert_eq!(
+            stub_69c9c(&mut slot, 0, &mut os, |_, _| FMOD_OK, |_| {}),
+            FMOD_OK
+        );
+        assert!(slot.is_some());
+        assert_eq!(slot.as_ref().unwrap().profile.max_clients, 50);
+        // Set global short-circuits, as at 0x69cc4.
+        assert_eq!(
+            stub_69c9c(&mut slot, 0, &mut os, |_, _| FMOD_OK, |_| {}),
+            FMOD_OK
+        );
+        // Init failure releases and clears the global.
+        let mut slot: Option<Box<ProfileLive<ScriptNet>>> = None;
+        let mut os = FakeOs::ok();
+        os.listen = VecDeque::from([3]);
+        assert_eq!(
+            stub_69c9c(&mut slot, 0, &mut os, |_, _| FMOD_OK, |_| {}),
+            3
+        );
+        assert!(slot.is_none());
+        assert!(os.events.contains(&"shutdown".to_string()));
+    }
+
+    #[test]
+    fn profile_add_packet_stamps_and_fans_out() {
+        let mut live = fresh_live();
+        live.profile.last_tick_ms = 900;
+        push_client(&mut live, 1);
+        push_client(&mut live, 2);
+        stub_69284(&mut live.clients[0], 2, 0, 10);
+        let mut packet = sub_packet(20, 0xFFFF, 2, 0, 0);
+        let mut os = FakeOs::ok();
+        os.now = VecDeque::from([Ok(950)]);
+        assert_eq!(stub_69d50(&mut live, &mut packet, &mut os), FMOD_OK);
+        assert_eq!(&packet[4..8], &50u32.to_le_bytes());
+        assert_eq!(live.clients[0].send_end, 20);
+        assert_eq!(live.clients[1].send_end, 0);
+        assert_eq!(live.clients[0].requests[0].last, 50);
+        assert_eq!(os.events, vec!["enter:0x77", "leave:0x77"]);
+        // GetMs failure leaves and returns the code without touching packets.
+        let mut os = FakeOs::ok();
+        os.now = VecDeque::from([Err(6)]);
+        assert_eq!(stub_69d50(&mut live, &mut packet, &mut os), 6);
+        assert_eq!(os.events, vec!["enter:0x77", "leave:0x77"]);
+    }
+
+    #[test]
+    fn profile_update_gates_accepts_and_sweeps() {
+        let mut live = fresh_live();
+        let mut os = FakeOs::ok();
+        // Below-threshold ticks only accumulate.
+        assert_eq!(stub_69e0c(&mut live, 10, &mut os, |_, _| panic!("no run")), FMOD_OK);
+        assert_eq!(stub_69e0c(&mut live, 0x20, &mut os, |_, _| panic!("no run")), FMOD_OK);
+        assert_eq!(live.profile.last_tick_ms, 0x2A);
+        // Crossing the 0x31 ms budget accepts the pending client and links it.
+        os.accepts.push_back(ProfileAccept::Pending {
+            socket: 51,
+            net: ScriptNet::new(),
+        });
+        assert_eq!(stub_69e0c(&mut live, 0x20, &mut os, |_, _| FMOD_OK), FMOD_OK);
+        assert_eq!(live.profile.last_tick_ms, 0);
+        assert_eq!(live.clients.len(), 1);
+        assert_eq!(live.clients[0].socket, 51);
+        assert_eq!(live.clients[0].send_capacity, 0x4000);
+        // One enter/leave pair for the accept-link, one for the client phase.
+        assert_eq!(
+            os.events,
+            vec!["enter:0x77", "leave:0x77", "enter:0x77", "leave:0x77"]
+        );
+        // A dead client is swept: unlinked, closed, released.
+        live.clients[0].flags |= 1;
+        assert_eq!(stub_69e0c(&mut live, 0x40, &mut os, |_, _| FMOD_OK), FMOD_OK);
+        assert!(live.clients.is_empty());
+        assert!(live.nets.is_empty());
+        assert_eq!(os.closed, vec![51]);
+        // Alloc failure surfaces FMOD_ERR_MEMORY.
+        let mut os = FakeOs::ok();
+        os.accepts.push_back(ProfileAccept::AllocFailed);
+        assert_eq!(stub_69e0c(&mut live, 0x40, &mut os, |_, _| panic!("no run")), 44);
+    }
+
+    #[test]
+    fn profile_update_module_intervals() {
+        let mut live = fresh_live();
+        for interval in [0u32, 100] {
+            let mut module = Box::new(zeroed_module());
+            module.u16 = interval;
+            live.modules.push(module);
+        }
+        let mut os = FakeOs::ok();
+        let mut ran = Vec::new();
+        assert_eq!(
+            stub_69e0c(
+                &mut live,
+                0x40,
+                &mut os,
+                |i, m: &mut ProfileModule| {
+                    ran.push(i);
+                    assert_eq!(m.u20, if i == 0 { 0 } else { 0x40 });
+                    FMOD_OK
+                }
+            ),
+            FMOD_OK
+        );
+        // Interval-0 always runs; interval-100 banks the tick and skips.
+        assert_eq!(ran, vec![0]);
+        assert_eq!(live.modules[1].u20, 0x40);
+        // A failing module aborts with its code.
+        assert_eq!(
+            stub_69e0c(&mut live, 0x40, &mut os, |_, _| 13),
+            13
+        );
+    }
+
+    #[test]
+    fn profile_release_drains_and_clears() {
+        let mut live = fresh_live();
+        push_client(&mut live, 7);
+        let addr = push_module(&mut live, 0);
+        let mut os = FakeOs::ok();
+        let mut cleared = Vec::new();
+        let mut released = Vec::new();
+        assert_eq!(
+            stub_69a78(
+                &mut live,
+                &mut os,
+                |i, m: &mut ProfileModule| {
+                    released.push(i);
+                    assert_eq!(m as *mut ProfileModule as usize, addr);
+                    FMOD_OK
+                },
+                |a| cleared.push(a)
+            ),
+            FMOD_OK
+        );
+        assert!(live.clients.is_empty());
+        assert!(live.modules.is_empty());
+        assert_eq!(cleared, vec![addr]);
+        assert_eq!(released, vec![0]);
+        assert_eq!(os.closed, vec![9, 7]);
+        assert!(os.events.contains(&"free:0x77".to_string()));
+        assert!(os.events.contains(&"shutdown".to_string()));
+    }
+
+    #[test]
+    fn fmod_profile_release_and_update_globals() {
+        let mut slot: Option<Box<ProfileLive<ScriptNet>>> = None;
+        let mut os = FakeOs::ok();
+        // Null globals: release → 0, update → 81.
+        assert_eq!(stub_69be8(&mut slot, &mut os, |_, _| FMOD_OK, |_| {}), FMOD_OK);
+        assert_eq!(stub_6a018(&mut slot, 0x40, &mut os, |_, _| panic!("no run")), 81);
+        // Live global updates and releases through the slot.
+        assert_eq!(
+            stub_69c9c(&mut slot, 0, &mut os, |_, _| FMOD_OK, |_| {}),
+            FMOD_OK
+        );
+        assert_eq!(
+            stub_6a018(&mut slot, 10, &mut os, |_, _| panic!("gated")),
+            FMOD_OK
+        );
+        // The created tick (1000) already exceeds the budget, so the update
+        // runs the full path and resets the accumulator.
+        assert_eq!(slot.as_ref().unwrap().profile.last_tick_ms, 0);
+        assert_eq!(
+            stub_69be8(&mut slot, &mut os, |_, _| FMOD_OK, |_| {}),
+            FMOD_OK
+        );
+        assert!(slot.is_none());
     }
 }
