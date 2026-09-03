@@ -703,6 +703,9 @@ pub fn stub_f5aee4() -> ! {
 // 0xf5aef4 — j___ZNK3RBX10Reflection8EnumDescINS_18MarketplaceService12CurrencyTypeEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::MarketplaceService::CurrencyType>::convertToString(RBX::MarketplaceService::CurrencyType const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_18MarketplaceService12CurrencyTypeEE15convertToStringERKS3_")]
-pub fn stub_f5aef4() -> ! {
-    todo!("0xf5aef4 RBX::Reflection::EnumDesc<RBX::MarketplaceService::CurrencyType>::convertToString(RBX::MarketplaceService::CurrencyType const&)const")
+pub fn stub_f5aef4(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf5aef4: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }

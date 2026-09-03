@@ -430,15 +430,24 @@ pub fn stub_0x6fae88() {
 // 0x6faf4c — __ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE15convertToStringEmRSs
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NormalId>::convertToString(unsigned long,std::string &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE15convertToStringEmRSs")]
-pub fn stub_0x6faf4c() -> ! {
-    todo!("0x6faf4c RBX::Reflection::EnumDesc<RBX::NormalId>::convertToString(unsigned long,std::string &)const")
+pub fn stub_0x6faf4c(desc: &crate::enum_desc::EnumDesc, index: usize, out: &mut String) -> bool {
+    // IDA 0x6faf4c: EnumDesc<T>::convertToString(index, string&) -- if index < items.size(): out = items[index].name, return true; else return false, out untouched (decompiled 0x957bd4).
+    if let Some(item) = desc.items.get(index) {
+        *out = item.name.clone();
+        true
+    } else {
+        false
+    }
 }
 
 // 0x6fb09c — __ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE13convertToItemERKS2_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NormalId>::convertToItem(RBX::NormalId const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE13convertToItemERKS2_")]
-pub fn stub_0x6fb09c() -> ! {
-    todo!("0x6fb09c RBX::Reflection::EnumDesc<RBX::NormalId>::convertToItem(RBX::NormalId const&)const")
+pub fn stub_0x6fb09c(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0x6fb09c: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0x6fb168 — __ZN3RBX10Reflection8EnumDescINS_8NormalIdEED2Ev

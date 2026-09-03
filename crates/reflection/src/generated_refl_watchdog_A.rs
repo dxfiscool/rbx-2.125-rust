@@ -284,29 +284,39 @@ pub fn stub_0xa22510() {
 // 0xa225b0 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::lookup(char const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE6lookupEPKc")]
-pub fn stub_0xa225b0() -> ! {
-    todo!("0xa225b0 RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::lookup(char const*)const")
+pub fn stub_0xa225b0(desc: &crate::enum_desc::EnumDesc, name: &str) -> usize {
+    // IDA 0xa225b0: EnumDesc<T>::lookup(char const*) -- Name::lookup intern, search name_to_value then legacy_names; hit: return convertToItem(value); miss: return 0 (decompiled 0x957a18).
+    desc.lookup_value(name).and_then(|v| usize::try_from(v).ok()).and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xa22640 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE6lookupERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::lookup(RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE6lookupERKNS0_7VariantE")]
-pub fn stub_0xa22640() -> ! {
-    todo!("0xa22640 RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_0xa22640(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xa22640: EnumDesc<T>::lookup(Variant) -- rbx::any_cast<T> the payload, then convertToItem (decompiled 0xb97c). Variant is unmodeled in this crate; the caller passes the already-cast enum value, and this is convertToItem exactly.
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xa22744 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE14convertToValueEmRNS0_7VariantE")]
-pub fn stub_0xa22744() -> ! {
-    todo!("0xa22744 RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_0xa22744() {
+    // IDA 0xa22744: EnumDesc<T>::convertToValue(index, Variant&) -- writes the converted value into a Variant out-param; Variant is unmodeled in this crate: cutover no-op. See the (desc, name, &mut i32) sibling for the lookup semantics.
 }
 
 // 0xa22804 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE15convertToStringEmRSs
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::convertToString(unsigned long,std::string &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE15convertToStringEmRSs")]
-pub fn stub_0xa22804() -> ! {
-    todo!("0xa22804 RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::convertToString(unsigned long,std::string &)const")
+pub fn stub_0xa22804(desc: &crate::enum_desc::EnumDesc, index: usize, out: &mut String) -> bool {
+    // IDA 0xa22804: EnumDesc<T>::convertToString(index, string&) -- if index < items.size(): out = items[index].name, return true; else return false, out untouched (decompiled 0x957bd4).
+    if let Some(item) = desc.items.get(index) {
+        *out = item.name.clone();
+        true
+    } else {
+        false
+    }
 }
 
 // 0xa22948 — __ZN3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEED1Ev
@@ -326,43 +336,59 @@ pub fn stub_0xa22954() {
 // 0xa229f4 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::lookup(char const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE6lookupEPKc")]
-pub fn stub_0xa229f4() -> ! {
-    todo!("0xa229f4 RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::lookup(char const*)const")
+pub fn stub_0xa229f4(desc: &crate::enum_desc::EnumDesc, name: &str) -> usize {
+    // IDA 0xa229f4: EnumDesc<T>::lookup(char const*) -- Name::lookup intern, search name_to_value then legacy_names; hit: return convertToItem(value); miss: return 0 (decompiled 0x957a18).
+    desc.lookup_value(name).and_then(|v| usize::try_from(v).ok()).and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xa22a84 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE6lookupERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::lookup(RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE6lookupERKNS0_7VariantE")]
-pub fn stub_0xa22a84() -> ! {
-    todo!("0xa22a84 RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_0xa22a84(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xa22a84: EnumDesc<T>::lookup(Variant) -- rbx::any_cast<T> the payload, then convertToItem (decompiled 0xb97c). Variant is unmodeled in this crate; the caller passes the already-cast enum value, and this is convertToItem exactly.
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xa22b88 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE14convertToValueEmRNS0_7VariantE")]
-pub fn stub_0xa22b88() -> ! {
-    todo!("0xa22b88 RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_0xa22b88() {
+    // IDA 0xa22b88: EnumDesc<T>::convertToValue(index, Variant&) -- writes the converted value into a Variant out-param; Variant is unmodeled in this crate: cutover no-op. See the (desc, name, &mut i32) sibling for the lookup semantics.
 }
 
 // 0xa22c48 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE15convertToStringEmRSs
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::convertToString(unsigned long,std::string &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE15convertToStringEmRSs")]
-pub fn stub_0xa22c48() -> ! {
-    todo!("0xa22c48 RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::convertToString(unsigned long,std::string &)const")
+pub fn stub_0xa22c48(desc: &crate::enum_desc::EnumDesc, index: usize, out: &mut String) -> bool {
+    // IDA 0xa22c48: EnumDesc<T>::convertToString(index, string&) -- if index < items.size(): out = items[index].name, return true; else return false, out untouched (decompiled 0x957bd4).
+    if let Some(item) = desc.items.get(index) {
+        *out = item.name.clone();
+        true
+    } else {
+        false
+    }
 }
 
 // 0xa22d8c — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE15convertToStringERKS4_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::convertToString(RBX::Network::Players::PlayerChatType const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE15convertToStringERKS4_")]
-pub fn stub_0xa22d8c() -> ! {
-    todo!("0xa22d8c RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::convertToString(RBX::Network::Players::PlayerChatType const&)const")
+pub fn stub_0xa22d8c(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xa22d8c: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xa22f3c — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE13convertToItemERKS4_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::convertToItem(RBX::Network::Players::PlayerChatType const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEE13convertToItemERKS4_")]
-pub fn stub_0xa22f3c() -> ! {
-    todo!("0xa22f3c RBX::Reflection::EnumDesc<RBX::Network::Players::PlayerChatType>::convertToItem(RBX::Network::Players::PlayerChatType const&)const")
+pub fn stub_0xa22f3c(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xa22f3c: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xa23008 — __ZN3RBX10Reflection8EnumDescINS_7Network7Players14PlayerChatTypeEED2Ev
@@ -375,15 +401,21 @@ pub fn stub_0xa23008() {
 // 0xa23284 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE15convertToStringERKS4_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::convertToString(RBX::Network::Players::ChatOption const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE15convertToStringERKS4_")]
-pub fn stub_0xa23284() -> ! {
-    todo!("0xa23284 RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::convertToString(RBX::Network::Players::ChatOption const&)const")
+pub fn stub_0xa23284(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xa23284: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xa23434 — __ZNK3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE13convertToItemERKS4_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::convertToItem(RBX::Network::Players::ChatOption const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEE13convertToItemERKS4_")]
-pub fn stub_0xa23434() -> ! {
-    todo!("0xa23434 RBX::Reflection::EnumDesc<RBX::Network::Players::ChatOption>::convertToItem(RBX::Network::Players::ChatOption const&)const")
+pub fn stub_0xa23434(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xa23434: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xa23500 — __ZN3RBX10Reflection8EnumDescINS_7Network7Players10ChatOptionEED2Ev

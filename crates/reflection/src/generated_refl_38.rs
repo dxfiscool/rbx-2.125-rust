@@ -473,8 +473,11 @@ pub fn stub_0xf456e4() -> ! {
 
 // 0xf45894 — j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE13convertToItemERKS2_
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE13convertToItemERKS2_")]
-pub fn stub_0xf45894() -> ! {
-    todo!("0xf45894 j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE13convertToItemERKS2_")
+pub fn stub_0xf45894(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf45894: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf458a4 — j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE14convertToIndexES2_
@@ -487,26 +490,40 @@ pub fn stub_0xf458a4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 
 // 0xf458b4 — j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE14convertToValueERKNS_4NameERS2_
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE14convertToValueERKNS_4NameERS2_")]
-pub fn stub_0xf458b4() -> ! {
-    todo!("0xf458b4 j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE14convertToValueERKNS_4NameERS2_")
+pub fn stub_0xf458b4(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0xf458b4: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0xf458c4 — j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE15convertToStringERKS2_
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE15convertToStringERKS2_")]
-pub fn stub_0xf458c4() -> ! {
-    todo!("0xf458c4 j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE15convertToStringERKS2_")
+pub fn stub_0xf458c4(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf458c4: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf458d4 — j___ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE14convertToValueERKNS_4NameERS2_
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE14convertToValueERKNS_4NameERS2_")]
-pub fn stub_0xf458d4() -> ! {
-    todo!("0xf458d4 j___ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE14convertToValueERKNS_4NameERS2_")
+pub fn stub_0xf458d4(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0xf458d4: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0xf458e4 — j___ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE15convertToStringERKS2_
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE15convertToStringERKS2_")]
-pub fn stub_0xf458e4() -> ! {
-    todo!("0xf458e4 j___ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE15convertToStringERKS2_")
+pub fn stub_0xf458e4(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf458e4: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf459b4 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_16TouchTransmitterES6_EEvPKNS_10shared_ptrIT_EEPT0_

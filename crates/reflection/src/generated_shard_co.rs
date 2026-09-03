@@ -674,22 +674,32 @@ pub fn stub_f59e44() -> ! {
 // 0xf59e64 — j___ZNK3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::UserInputService::SwipeDirection>::convertToItem(RBX::UserInputService::SwipeDirection const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEE13convertToItemERKS3_")]
-pub fn stub_f59e64() -> ! {
-    todo!("0xf59e64 RBX::Reflection::EnumDesc<RBX::UserInputService::SwipeDirection>::convertToItem(RBX::UserInputService::SwipeDirection const&)const")
+pub fn stub_f59e64(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf59e64: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf59e74 — j___ZNK3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::UserInputService::SwipeDirection>::convertToValue(RBX::Name const&,RBX::UserInputService::SwipeDirection&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEE14convertToValueERKNS_4NameERS3_")]
-pub fn stub_f59e74() -> ! {
-    todo!("0xf59e74 RBX::Reflection::EnumDesc<RBX::UserInputService::SwipeDirection>::convertToValue(RBX::Name const&,RBX::UserInputService::SwipeDirection&)const")
+pub fn stub_f59e74(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0xf59e74: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0xf59e84 — j___ZNK3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::UserInputService::SwipeDirection>::convertToString(RBX::UserInputService::SwipeDirection const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_16UserInputService14SwipeDirectionEE15convertToStringERKS3_")]
-pub fn stub_f59e84() -> ! {
-    todo!("0xf59e84 RBX::Reflection::EnumDesc<RBX::UserInputService::SwipeDirection>::convertToString(RBX::UserInputService::SwipeDirection const&)const")
+pub fn stub_f59e84(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf59e84: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf59eb4 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13ClickDetectorES6_EEvPKNS_10shared_ptrIT_EEPT0_

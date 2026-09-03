@@ -289,8 +289,11 @@ pub fn stub_0x693250() -> ! {
 
 // 0x6938f0 — __ZNK3RBX10Reflection8EnumDescINS_10Controller6ButtonEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Controller::Button>::convertToString(RBX::Controller::Button const&)const")]
-pub fn stub_0x6938f0() -> ! {
-    todo!("0x6938f0 RBX::Reflection::EnumDesc<RBX::Controller::Button>::convertToString(RBX::Controller::Button const&)const")
+pub fn stub_0x6938f0(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0x6938f0: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0x69519c — __ZN3RBX10Reflection8EnumDescINS_10Controller6ButtonEED1Ev
@@ -307,38 +310,55 @@ pub fn stub_0x6951a0() {
 
 // 0x695240 — __ZNK3RBX10Reflection8EnumDescINS_10Controller6ButtonEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Controller::Button>::lookup(char const*)const")]
-pub fn stub_0x695240() -> ! {
-    todo!("0x695240 RBX::Reflection::EnumDesc<RBX::Controller::Button>::lookup(char const*)const")
+pub fn stub_0x695240(desc: &crate::enum_desc::EnumDesc, name: &str) -> usize {
+    // IDA 0x695240: EnumDesc<T>::lookup(char const*) -- Name::lookup intern, search name_to_value then legacy_names; hit: return convertToItem(value); miss: return 0 (decompiled 0x957a18).
+    desc.lookup_value(name).and_then(|v| usize::try_from(v).ok()).and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0x695270 — __ZNK3RBX10Reflection8EnumDescINS_10Controller6ButtonEE6lookupERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Controller::Button>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_0x695270() -> ! {
-    todo!("0x695270 RBX::Reflection::EnumDesc<RBX::Controller::Button>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_0x695270(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0x695270: EnumDesc<T>::lookup(Variant) -- rbx::any_cast<T> the payload, then convertToItem (decompiled 0xb97c). Variant is unmodeled in this crate; the caller passes the already-cast enum value, and this is convertToItem exactly.
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0x695290 — __ZNK3RBX10Reflection8EnumDescINS_10Controller6ButtonEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Controller::Button>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_0x695290() -> ! {
-    todo!("0x695290 RBX::Reflection::EnumDesc<RBX::Controller::Button>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_0x695290() {
+    // IDA 0x695290: EnumDesc<T>::convertToValue(index, Variant&) -- writes the converted value into a Variant out-param; Variant is unmodeled in this crate: cutover no-op. See the (desc, name, &mut i32) sibling for the lookup semantics.
 }
 
 // 0x6952c4 — __ZNK3RBX10Reflection8EnumDescINS_10Controller6ButtonEE15convertToStringEmRSs
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Controller::Button>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_0x6952c4() -> ! {
-    todo!("0x6952c4 RBX::Reflection::EnumDesc<RBX::Controller::Button>::convertToString(unsigned long,std::string &)const")
+pub fn stub_0x6952c4(desc: &crate::enum_desc::EnumDesc, index: usize, out: &mut String) -> bool {
+    // IDA 0x6952c4: EnumDesc<T>::convertToString(index, string&) -- if index < items.size(): out = items[index].name, return true; else return false, out untouched (decompiled 0x957bd4).
+    if let Some(item) = desc.items.get(index) {
+        *out = item.name.clone();
+        true
+    } else {
+        false
+    }
 }
 
 // 0x695720 — __ZNK3RBX10Reflection8EnumDescINS_10Controller6ButtonEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Controller::Button>::convertToItem(RBX::Controller::Button const&)const")]
-pub fn stub_0x695720() -> ! {
-    todo!("0x695720 RBX::Reflection::EnumDesc<RBX::Controller::Button>::convertToItem(RBX::Controller::Button const&)const")
+pub fn stub_0x695720(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0x695720: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0x6958dc — __ZNK3RBX10Reflection8EnumDescINS_10Controller6ButtonEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Controller::Button>::convertToValue(RBX::Name const&,RBX::Controller::Button&)const")]
-pub fn stub_0x6958dc() -> ! {
-    todo!("0x6958dc RBX::Reflection::EnumDesc<RBX::Controller::Button>::convertToValue(RBX::Name const&,RBX::Controller::Button&)const")
+pub fn stub_0x6958dc(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0x6958dc: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0x695958 — __ZN3RBX10Reflection8EnumDescINS_10Controller6ButtonEED2Ev

@@ -200,8 +200,11 @@ pub fn stub_f39a04() -> ! {
 // 0xf39a14 — j___ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToItem(RBX::DebugSettings::ErrorReporting const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE13convertToItemERKS3_")]
-pub fn stub_f39a14() -> ! {
-    todo!("0xf39a14 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToItem(RBX::DebugSettings::ErrorReporting const&)const")
+pub fn stub_f39a14(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf39a14: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf39a24 — j___ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE14convertToIndexES3_
@@ -216,22 +219,32 @@ pub fn stub_f39a24(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 // 0xf39a34 — j___ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToValue(RBX::Name const&,RBX::DebugSettings::ErrorReporting&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE14convertToValueERKNS_4NameERS3_")]
-pub fn stub_f39a34() -> ! {
-    todo!("0xf39a34 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToValue(RBX::Name const&,RBX::DebugSettings::ErrorReporting&)const")
+pub fn stub_f39a34(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0xf39a34: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0xf39a44 — j___ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToString(RBX::DebugSettings::ErrorReporting const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE15convertToStringERKS3_")]
-pub fn stub_f39a44() -> ! {
-    todo!("0xf39a44 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToString(RBX::DebugSettings::ErrorReporting const&)const")
+pub fn stub_f39a44(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf39a44: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf39a54 — j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::convertToItem(RBX::TaskScheduler::PriorityMethod const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE13convertToItemERKS3_")]
-pub fn stub_f39a54() -> ! {
-    todo!("0xf39a54 RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::convertToItem(RBX::TaskScheduler::PriorityMethod const&)const")
+pub fn stub_f39a54(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf39a54: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf39a64 — j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE14convertToIndexES3_
@@ -246,22 +259,32 @@ pub fn stub_f39a64(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 // 0xf39a74 — j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::convertToValue(RBX::Name const&,RBX::TaskScheduler::PriorityMethod&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE14convertToValueERKNS_4NameERS3_")]
-pub fn stub_f39a74() -> ! {
-    todo!("0xf39a74 RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::convertToValue(RBX::Name const&,RBX::TaskScheduler::PriorityMethod&)const")
+pub fn stub_f39a74(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0xf39a74: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0xf39a84 — j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::convertToString(RBX::TaskScheduler::PriorityMethod const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE15convertToStringERKS3_")]
-pub fn stub_f39a84() -> ! {
-    todo!("0xf39a84 RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::convertToString(RBX::TaskScheduler::PriorityMethod const&)const")
+pub fn stub_f39a84(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf39a84: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf39a94 — j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::convertToItem(RBX::TaskScheduler::ThreadPoolConfig const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE13convertToItemERKS3_")]
-pub fn stub_f39a94() -> ! {
-    todo!("0xf39a94 RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::convertToItem(RBX::TaskScheduler::ThreadPoolConfig const&)const")
+pub fn stub_f39a94(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf39a94: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf39aa4 — j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE14convertToIndexES3_
@@ -276,22 +299,32 @@ pub fn stub_f39aa4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 // 0xf39ab4 — j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::convertToValue(RBX::Name const&,RBX::TaskScheduler::ThreadPoolConfig&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE14convertToValueERKNS_4NameERS3_")]
-pub fn stub_f39ab4() -> ! {
-    todo!("0xf39ab4 RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::convertToValue(RBX::Name const&,RBX::TaskScheduler::ThreadPoolConfig&)const")
+pub fn stub_f39ab4(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0xf39ab4: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0xf39ac4 — j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::convertToString(RBX::TaskScheduler::ThreadPoolConfig const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE15convertToStringERKS3_")]
-pub fn stub_f39ac4() -> ! {
-    todo!("0xf39ac4 RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::convertToString(RBX::TaskScheduler::ThreadPoolConfig const&)const")
+pub fn stub_f39ac4(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf39ac4: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf39ad4 — j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE13convertToItemERKS4_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::convertToItem(RBX::TaskScheduler::Job::SleepAdjustMethod const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE13convertToItemERKS4_")]
-pub fn stub_f39ad4() -> ! {
-    todo!("0xf39ad4 RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::convertToItem(RBX::TaskScheduler::Job::SleepAdjustMethod const&)const")
+pub fn stub_f39ad4(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf39ad4: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf39ae4 — j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE14convertToIndexES4_
@@ -306,15 +339,22 @@ pub fn stub_f39ae4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 // 0xf39af4 — j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE14convertToValueERKNS_4NameERS4_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::convertToValue(RBX::Name const&,RBX::TaskScheduler::Job::SleepAdjustMethod&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE14convertToValueERKNS_4NameERS4_")]
-pub fn stub_f39af4() -> ! {
-    todo!("0xf39af4 RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::convertToValue(RBX::Name const&,RBX::TaskScheduler::Job::SleepAdjustMethod&)const")
+pub fn stub_f39af4(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0xf39af4: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0xf39b04 — j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE15convertToStringERKS4_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::convertToString(RBX::TaskScheduler::Job::SleepAdjustMethod const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE15convertToStringERKS4_")]
-pub fn stub_f39b04() -> ! {
-    todo!("0xf39b04 RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::convertToString(RBX::TaskScheduler::Job::SleepAdjustMethod const&)const")
+pub fn stub_f39b04(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf39b04: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf39b14 — j___ZNK3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEE14convertToIndexES3_
@@ -329,22 +369,32 @@ pub fn stub_f39b14(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 // 0xf39b24 — j___ZNK3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToValue(RBX::Name const&,RBX::DataModelArbiter::ConcurrencyModel&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEE14convertToValueERKNS_4NameERS3_")]
-pub fn stub_f39b24() -> ! {
-    todo!("0xf39b24 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToValue(RBX::Name const&,RBX::DataModelArbiter::ConcurrencyModel&)const")
+pub fn stub_f39b24(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0xf39b24: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0xf39b34 — j___ZNK3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToString(RBX::DataModelArbiter::ConcurrencyModel const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEE15convertToStringERKS3_")]
-pub fn stub_f39b34() -> ! {
-    todo!("0xf39b34 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToString(RBX::DataModelArbiter::ConcurrencyModel const&)const")
+pub fn stub_f39b34(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf39b34: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf39b44 — j___ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::convertToItem(RBX::Time::SampleMethod const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE13convertToItemERKS3_")]
-pub fn stub_f39b44() -> ! {
-    todo!("0xf39b44 RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::convertToItem(RBX::Time::SampleMethod const&)const")
+pub fn stub_f39b44(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf39b44: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf39b54 — j___ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE14convertToIndexES3_
@@ -359,36 +409,53 @@ pub fn stub_f39b54(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 // 0xf39b64 — j___ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::convertToValue(RBX::Name const&,RBX::Time::SampleMethod&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE14convertToValueERKNS_4NameERS3_")]
-pub fn stub_f39b64() -> ! {
-    todo!("0xf39b64 RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::convertToValue(RBX::Name const&,RBX::Time::SampleMethod&)const")
+pub fn stub_f39b64(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0xf39b64: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0xf39b74 — j___ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::convertToString(RBX::Time::SampleMethod const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE15convertToStringERKS3_")]
-pub fn stub_f39b74() -> ! {
-    todo!("0xf39b74 RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::convertToString(RBX::Time::SampleMethod const&)const")
+pub fn stub_f39b74(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf39b74: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf39b84 — j___ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToItem(RBX::EThrottle::EThrottleType const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE13convertToItemERKS3_")]
-pub fn stub_f39b84() -> ! {
-    todo!("0xf39b84 RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToItem(RBX::EThrottle::EThrottleType const&)const")
+pub fn stub_f39b84(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf39b84: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf39b94 — j___ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToValue(RBX::Name const&,RBX::EThrottle::EThrottleType&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE14convertToValueERKNS_4NameERS3_")]
-pub fn stub_f39b94() -> ! {
-    todo!("0xf39b94 RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToValue(RBX::Name const&,RBX::EThrottle::EThrottleType&)const")
+pub fn stub_f39b94(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0xf39b94: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0xf39ba4 — j___ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToString(RBX::EThrottle::EThrottleType const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE15convertToStringERKS3_")]
-pub fn stub_f39ba4() -> ! {
-    todo!("0xf39ba4 RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToString(RBX::EThrottle::EThrottleType const&)const")
+pub fn stub_f39ba4(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf39ba4: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf3a024 — j___ZN3RBX10Reflection14PropDescriptorINS_5DecalENS_9TextureIdEEC2IMS2_KFRKS3_vEMS2_FvS3_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -738,8 +805,11 @@ pub fn stub_f3acb4() -> ! {
 // 0xf3acc4 — j___ZNK3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::convertToItem(RBX::Explosion::ExplosionType const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEE13convertToItemERKS3_")]
-pub fn stub_f3acc4() -> ! {
-    todo!("0xf3acc4 RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::convertToItem(RBX::Explosion::ExplosionType const&)const")
+pub fn stub_f3acc4(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf3acc4: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf3acd4 — j___ZNK3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEE14convertToIndexES3_

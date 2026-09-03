@@ -325,99 +325,141 @@ pub fn stub_f5e3e4() {
 // 0xf5e404 — j___ZNK3RBX10Reflection8EnumDescI14PacketPriorityE13convertToItemERKS2_
 #[doc(alias = "RBX::Reflection::EnumDesc<PacketPriority>::convertToItem(PacketPriority const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescI14PacketPriorityE13convertToItemERKS2_")]
-pub fn stub_f5e404() -> ! {
-    todo!("0xf5e404 RBX::Reflection::EnumDesc<PacketPriority>::convertToItem(PacketPriority const&)const")
+pub fn stub_f5e404(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf5e404: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf5e414 — j___ZNK3RBX10Reflection8EnumDescI14PacketPriorityE15convertToStringERKS2_
 #[doc(alias = "RBX::Reflection::EnumDesc<PacketPriority>::convertToString(PacketPriority const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescI14PacketPriorityE15convertToStringERKS2_")]
-pub fn stub_f5e414() -> ! {
-    todo!("0xf5e414 RBX::Reflection::EnumDesc<PacketPriority>::convertToString(PacketPriority const&)const")
+pub fn stub_f5e414(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf5e414: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf5e424 — j___ZNK3RBX10Reflection8EnumDescI17PacketReliabilityE13convertToItemERKS2_
 #[doc(alias = "RBX::Reflection::EnumDesc<PacketReliability>::convertToItem(PacketReliability const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescI17PacketReliabilityE13convertToItemERKS2_")]
-pub fn stub_f5e424() -> ! {
-    todo!("0xf5e424 RBX::Reflection::EnumDesc<PacketReliability>::convertToItem(PacketReliability const&)const")
+pub fn stub_f5e424(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf5e424: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf5e434 — j___ZNK3RBX10Reflection8EnumDescI17PacketReliabilityE15convertToStringERKS2_
 #[doc(alias = "RBX::Reflection::EnumDesc<PacketReliability>::convertToString(PacketReliability const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescI17PacketReliabilityE15convertToStringERKS2_")]
-pub fn stub_f5e434() -> ! {
-    todo!("0xf5e434 RBX::Reflection::EnumDesc<PacketReliability>::convertToString(PacketReliability const&)const")
+pub fn stub_f5e434(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf5e434: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf5e444 — j___ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToItem(RBX::NetworkSettings::PhysicsSendMethod const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE13convertToItemERKS3_")]
-pub fn stub_f5e444() -> ! {
-    todo!("0xf5e444 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToItem(RBX::NetworkSettings::PhysicsSendMethod const&)const")
+pub fn stub_f5e444(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf5e444: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf5e454 — j___ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToString(RBX::NetworkSettings::PhysicsSendMethod const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE15convertToStringERKS3_")]
-pub fn stub_f5e454() -> ! {
-    todo!("0xf5e454 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToString(RBX::NetworkSettings::PhysicsSendMethod const&)const")
+pub fn stub_f5e454(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf5e454: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf5e464 — j___ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::convertToItem(RBX::NetworkSettings::PhysicsReceiveMethod const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE13convertToItemERKS3_")]
-pub fn stub_f5e464() -> ! {
-    todo!("0xf5e464 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::convertToItem(RBX::NetworkSettings::PhysicsReceiveMethod const&)const")
+pub fn stub_f5e464(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf5e464: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf5e474 — j___ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::convertToString(RBX::NetworkSettings::PhysicsReceiveMethod const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE15convertToStringERKS3_")]
-pub fn stub_f5e474() -> ! {
-    todo!("0xf5e474 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::convertToString(RBX::NetworkSettings::PhysicsReceiveMethod const&)const")
+pub fn stub_f5e474(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf5e474: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf5e484 — j___ZNK3RBX10Reflection8EnumDescINS_7Network12FilterResultEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToItem(RBX::Network::FilterResult const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_7Network12FilterResultEE13convertToItemERKS3_")]
-pub fn stub_f5e484() -> ! {
-    todo!("0xf5e484 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToItem(RBX::Network::FilterResult const&)const")
+pub fn stub_f5e484(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf5e484: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf5e494 — j___ZNK3RBX10Reflection8EnumDescINS_7Network12FilterResultEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToString(RBX::Network::FilterResult const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_7Network12FilterResultEE15convertToStringERKS3_")]
-pub fn stub_f5e494() -> ! {
-    todo!("0xf5e494 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToString(RBX::Network::FilterResult const&)const")
+pub fn stub_f5e494(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf5e494: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf5e4a4 — j___ZNK3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEE13convertToItemERKS4_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::convertToItem(RBX::Network::Player::MembershipType const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEE13convertToItemERKS4_")]
-pub fn stub_f5e4a4() -> ! {
-    todo!("0xf5e4a4 RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::convertToItem(RBX::Network::Player::MembershipType const&)const")
+pub fn stub_f5e4a4(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf5e4a4: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf5e4b4 — j___ZNK3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEE15convertToStringERKS4_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::convertToString(RBX::Network::Player::MembershipType const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEE15convertToStringERKS4_")]
-pub fn stub_f5e4b4() -> ! {
-    todo!("0xf5e4b4 RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::convertToString(RBX::Network::Player::MembershipType const&)const")
+pub fn stub_f5e4b4(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf5e4b4: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf5e4c4 — j___ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE13convertToItemERKS4_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToItem(RBX::Network::Player::ChatMode const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE13convertToItemERKS4_")]
-pub fn stub_f5e4c4() -> ! {
-    todo!("0xf5e4c4 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToItem(RBX::Network::Player::ChatMode const&)const")
+pub fn stub_f5e4c4(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf5e4c4: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf5e4d4 — j___ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE15convertToStringERKS4_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToString(RBX::Network::Player::ChatMode const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE15convertToStringERKS4_")]
-pub fn stub_f5e4d4() -> ! {
-    todo!("0xf5e4d4 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToString(RBX::Network::Player::ChatMode const&)const")
+pub fn stub_f5e4d4(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf5e4d4: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf5e544 — j___ZN3RBX10Reflection8Property8setValueINS_10BrickColorEEEvRKT_

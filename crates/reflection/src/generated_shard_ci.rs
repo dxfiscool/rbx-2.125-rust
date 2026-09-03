@@ -520,8 +520,11 @@ pub fn stub_f4ccb4() -> ! {
 // 0xf4ccc4 — j___ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE13convertToItemERKS2_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NormalId>::convertToItem(RBX::NormalId const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE13convertToItemERKS2_")]
-pub fn stub_f4ccc4() -> ! {
-    todo!("0xf4ccc4 RBX::Reflection::EnumDesc<RBX::NormalId>::convertToItem(RBX::NormalId const&)const")
+pub fn stub_f4ccc4(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf4ccc4: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf4cd84 — j___ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPKN3RBX10Reflection7VariantESt6vectorIS4_SaIS4_EEEEN5boost3_bi6bind_tIvPFvS4_NSB_10shared_ptrIS7_INSE_INS2_8InstanceEEESaISG_EEEEENSC_5list2INSB_3argILi1EEENSC_5valueISJ_EEEEEEET0_T_SU_ST_

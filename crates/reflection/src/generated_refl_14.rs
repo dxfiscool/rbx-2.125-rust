@@ -8,23 +8,32 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0x95ba30 — __ZNK3RBX10Reflection8EnumDescI14PacketPriorityE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<PacketPriority>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescI14PacketPriorityE14convertToValueEmRNS0_7VariantE")]
-pub fn stub_0x95ba30() -> ! {
-    todo!("0x95ba30 RBX::Reflection::EnumDesc<PacketPriority>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_0x95ba30() {
+    // IDA 0x95ba30: EnumDesc<T>::convertToValue(index, Variant&) -- writes the converted value into a Variant out-param; Variant is unmodeled in this crate: cutover no-op. See the (desc, name, &mut i32) sibling for the lookup semantics.
 }
 
 // 0x95ba58 — __ZNK3RBX10Reflection8EnumDescI14PacketPriorityE15convertToStringEmRSs
 #[doc(alias = "RBX::Reflection::EnumDesc<PacketPriority>::convertToString(unsigned long,std::string &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescI14PacketPriorityE15convertToStringEmRSs")]
-pub fn stub_0x95ba58() -> ! {
-    todo!("0x95ba58 RBX::Reflection::EnumDesc<PacketPriority>::convertToString(unsigned long,std::string &)const")
+pub fn stub_0x95ba58(desc: &crate::enum_desc::EnumDesc, index: usize, out: &mut String) -> bool {
+    // IDA 0x95ba58: EnumDesc<T>::convertToString(index, string&) -- if index < items.size(): out = items[index].name, return true; else return false, out untouched (decompiled 0x957bd4).
+    if let Some(item) = desc.items.get(index) {
+        *out = item.name.clone();
+        true
+    } else {
+        false
+    }
 }
 
 // 0x95bb9c — __ZNK3RBX10Reflection8EnumDescI14PacketPriorityE15convertToStringERKS2_
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<PacketPriority>::convertToString(PacketPriority const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescI14PacketPriorityE15convertToStringERKS2_")]
-pub fn stub_0x95bb9c() -> ! {
-    todo!("0x95bb9c RBX::Reflection::EnumDesc<PacketPriority>::convertToString(PacketPriority const&)const")
+pub fn stub_0x95bb9c(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0x95bb9c: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0x95bd3c — __ZN3RBX10Reflection7VariantaSI14PacketPriorityEERS1_RKT_
@@ -38,8 +47,11 @@ pub fn stub_0x95bd3c() -> ! {
 // 0x95bf00 — __ZNK3RBX10Reflection8EnumDescI14PacketPriorityE13convertToItemERKS2_
 #[doc(alias = "RBX::Reflection::EnumDesc<PacketPriority>::convertToItem(PacketPriority const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescI14PacketPriorityE13convertToItemERKS2_")]
-pub fn stub_0x95bf00() -> ! {
-    todo!("0x95bf00 RBX::Reflection::EnumDesc<PacketPriority>::convertToItem(PacketPriority const&)const")
+pub fn stub_0x95bf00(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0x95bf00: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0x95d5d0 — __ZN3RBX7Network13serializeEnumEPKNS_10Reflection14EnumDescriptorERKNS1_7VariantERN6RakNet9BitStreamE

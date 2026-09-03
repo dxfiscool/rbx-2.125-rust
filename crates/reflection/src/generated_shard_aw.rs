@@ -505,15 +505,21 @@ pub fn stub_9e5ce0() {
 // 0x9e5cf0 — __ZNK3RBX10Reflection8EnumDescINS_7Network12FilterResultEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Network12FilterResultEE14convertToValueEmRNS0_7VariantE")]
-pub fn stub_9e5cf0() -> ! {
-    todo!("0x9e5cf0 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_9e5cf0() {
+    // IDA 0x9e5cf0: EnumDesc<T>::convertToValue(index, Variant&) -- writes the converted value into a Variant out-param; Variant is unmodeled in this crate: cutover no-op. See the (desc, name, &mut i32) sibling for the lookup semantics.
 }
 
 // 0x9e5db0 — __ZNK3RBX10Reflection8EnumDescINS_7Network12FilterResultEE15convertToStringEmRSs
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToString(unsigned long,std::string &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Network12FilterResultEE15convertToStringEmRSs")]
-pub fn stub_9e5db0() -> ! {
-    todo!("0x9e5db0 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToString(unsigned long,std::string &)const")
+pub fn stub_9e5db0(desc: &crate::enum_desc::EnumDesc, index: usize, out: &mut String) -> bool {
+    // IDA 0x9e5db0: EnumDesc<T>::convertToString(index, string&) -- if index < items.size(): out = items[index].name, return true; else return false, out untouched (decompiled 0x957bd4).
+    if let Some(item) = desc.items.get(index) {
+        *out = item.name.clone();
+        true
+    } else {
+        false
+    }
 }
 
 // 0x9e5f00 — __ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEED2Ev

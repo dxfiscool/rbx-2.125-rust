@@ -501,29 +501,42 @@ pub fn stub_f45854() -> ! {
 // 0xf45864 — j___ZNK3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::convertToItem(RBX::PartInstance::FormFactor const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEE13convertToItemERKS3_")]
-pub fn stub_f45864() -> ! {
-    todo!("0xf45864 RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::convertToItem(RBX::PartInstance::FormFactor const&)const")
+pub fn stub_f45864(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf45864: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf45874 — j___ZNK3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::convertToValue(RBX::Name const&,RBX::PartInstance::FormFactor&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEE14convertToValueERKNS_4NameERS3_")]
-pub fn stub_f45874() -> ! {
-    todo!("0xf45874 RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::convertToValue(RBX::Name const&,RBX::PartInstance::FormFactor&)const")
+pub fn stub_f45874(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0xf45874: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0xf45884 — j___ZNK3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::convertToString(RBX::PartInstance::FormFactor const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_12PartInstance10FormFactorEE15convertToStringERKS3_")]
-pub fn stub_f45884() -> ! {
-    todo!("0xf45884 RBX::Reflection::EnumDesc<RBX::PartInstance::FormFactor>::convertToString(RBX::PartInstance::FormFactor const&)const")
+pub fn stub_f45884(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf45884: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf45894 — j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE13convertToItemERKS2_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Material>::convertToItem(RBX::Material const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE13convertToItemERKS2_")]
-pub fn stub_f45894() -> ! {
-    todo!("0xf45894 RBX::Reflection::EnumDesc<RBX::Material>::convertToItem(RBX::Material const&)const")
+pub fn stub_f45894(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf45894: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf458a4 — j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE14convertToIndexES2_
@@ -538,29 +551,43 @@ pub fn stub_f458a4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 // 0xf458b4 — j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE14convertToValueERKNS_4NameERS2_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Material>::convertToValue(RBX::Name const&,RBX::Material&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE14convertToValueERKNS_4NameERS2_")]
-pub fn stub_f458b4() -> ! {
-    todo!("0xf458b4 RBX::Reflection::EnumDesc<RBX::Material>::convertToValue(RBX::Name const&,RBX::Material&)const")
+pub fn stub_f458b4(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0xf458b4: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0xf458c4 — j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE15convertToStringERKS2_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Material>::convertToString(RBX::Material const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_8MaterialEE15convertToStringERKS2_")]
-pub fn stub_f458c4() -> ! {
-    todo!("0xf458c4 RBX::Reflection::EnumDesc<RBX::Material>::convertToString(RBX::Material const&)const")
+pub fn stub_f458c4(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf458c4: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf458d4 — j___ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE14convertToValueERKNS_4NameERS2_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NormalId>::convertToValue(RBX::Name const&,RBX::NormalId&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE14convertToValueERKNS_4NameERS2_")]
-pub fn stub_f458d4() -> ! {
-    todo!("0xf458d4 RBX::Reflection::EnumDesc<RBX::NormalId>::convertToValue(RBX::Name const&,RBX::NormalId&)const")
+pub fn stub_f458d4(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0xf458d4: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0xf458e4 — j___ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE15convertToStringERKS2_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NormalId>::convertToString(RBX::NormalId const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE15convertToStringERKS2_")]
-pub fn stub_f458e4() -> ! {
-    todo!("0xf458e4 RBX::Reflection::EnumDesc<RBX::NormalId>::convertToString(RBX::NormalId const&)const")
+pub fn stub_f458e4(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf458e4: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf459b4 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_16TouchTransmitterES6_EEvPKNS_10shared_ptrIT_EEPT0_

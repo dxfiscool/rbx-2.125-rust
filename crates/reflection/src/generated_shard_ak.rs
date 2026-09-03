@@ -429,29 +429,36 @@ pub fn stub_8ce378() {
 // 0x8ce418 — __ZNK3RBX10Reflection8EnumDescINS_18MarketplaceService12CurrencyTypeEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::MarketplaceService::CurrencyType>::lookup(char const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_18MarketplaceService12CurrencyTypeEE6lookupEPKc")]
-pub fn stub_8ce418() -> ! {
-    todo!("0x8ce418 RBX::Reflection::EnumDesc<RBX::MarketplaceService::CurrencyType>::lookup(char const*)const")
+pub fn stub_8ce418(desc: &crate::enum_desc::EnumDesc, name: &str) -> usize {
+    // IDA 0x8ce418: EnumDesc<T>::lookup(char const*) -- Name::lookup intern, search name_to_value then legacy_names; hit: return convertToItem(value); miss: return 0 (decompiled 0x957a18).
+    desc.lookup_value(name).and_then(|v| usize::try_from(v).ok()).and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0x8ce448 — __ZNK3RBX10Reflection8EnumDescINS_18MarketplaceService12CurrencyTypeEE6lookupERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::MarketplaceService::CurrencyType>::lookup(RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_18MarketplaceService12CurrencyTypeEE6lookupERKNS0_7VariantE")]
-pub fn stub_8ce448() -> ! {
-    todo!("0x8ce448 RBX::Reflection::EnumDesc<RBX::MarketplaceService::CurrencyType>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_8ce448(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0x8ce448: EnumDesc<T>::lookup(Variant) -- rbx::any_cast<T> the payload, then convertToItem (decompiled 0xb97c). Variant is unmodeled in this crate; the caller passes the already-cast enum value, and this is convertToItem exactly.
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0x8ce468 — __ZNK3RBX10Reflection8EnumDescINS_18MarketplaceService12CurrencyTypeEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::MarketplaceService::CurrencyType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_18MarketplaceService12CurrencyTypeEE14convertToValueEmRNS0_7VariantE")]
-pub fn stub_8ce468() -> ! {
-    todo!("0x8ce468 RBX::Reflection::EnumDesc<RBX::MarketplaceService::CurrencyType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_8ce468() {
+    // IDA 0x8ce468: EnumDesc<T>::convertToValue(index, Variant&) -- writes the converted value into a Variant out-param; Variant is unmodeled in this crate: cutover no-op. See the (desc, name, &mut i32) sibling for the lookup semantics.
 }
 
 // 0x8ce958 — __ZNK3RBX10Reflection8EnumDescINS_18MarketplaceService12CurrencyTypeEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::MarketplaceService::CurrencyType>::convertToString(RBX::MarketplaceService::CurrencyType const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_18MarketplaceService12CurrencyTypeEE15convertToStringERKS3_")]
-pub fn stub_8ce958() -> ! {
-    todo!("0x8ce958 RBX::Reflection::EnumDesc<RBX::MarketplaceService::CurrencyType>::convertToString(RBX::MarketplaceService::CurrencyType const&)const")
+pub fn stub_8ce958(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0x8ce958: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0x8cecb0 — __ZN3RBX10Reflection8EnumDescINS_18MarketplaceService12CurrencyTypeEED2Ev

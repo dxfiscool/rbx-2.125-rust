@@ -222,14 +222,21 @@ pub fn stub_0x66fa44() -> ! {
 
 // 0x66fa78 — __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToValue(RBX::Name const&,RBX::TextService::Font&)const")]
-pub fn stub_0x66fa78() -> ! {
-    todo!("0x66fa78 RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToValue(RBX::Name const&,RBX::TextService::Font&)const")
+pub fn stub_0x66fa78(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0x66fa78: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0x66faf4 — __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToItem(RBX::TextService::Font const&)const")]
-pub fn stub_0x66faf4() -> ! {
-    todo!("0x66faf4 RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToItem(RBX::TextService::Font const&)const")
+pub fn stub_0x66faf4(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0x66faf4: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0x66fbc0 — __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToIndexES3_
@@ -248,8 +255,11 @@ pub fn stub_0x66fc30() -> ! {
 
 // 0x66fc70 — __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToString(RBX::TextService::Font const&)const")]
-pub fn stub_0x66fc70() -> ! {
-    todo!("0x66fc70 RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToString(RBX::TextService::Font const&)const")
+pub fn stub_0x66fc70(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0x66fc70: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0x66fe10 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -308,26 +318,36 @@ pub fn stub_0x670134() {
 
 // 0x6701d4 — __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::lookup(char const*)const")]
-pub fn stub_0x6701d4() -> ! {
-    todo!("0x6701d4 RBX::Reflection::EnumDesc<RBX::TextService::Font>::lookup(char const*)const")
+pub fn stub_0x6701d4(desc: &crate::enum_desc::EnumDesc, name: &str) -> usize {
+    // IDA 0x6701d4: EnumDesc<T>::lookup(char const*) -- Name::lookup intern, search name_to_value then legacy_names; hit: return convertToItem(value); miss: return 0 (decompiled 0x957a18).
+    desc.lookup_value(name).and_then(|v| usize::try_from(v).ok()).and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0x670204 — __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE6lookupERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_0x670204() -> ! {
-    todo!("0x670204 RBX::Reflection::EnumDesc<RBX::TextService::Font>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_0x670204(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0x670204: EnumDesc<T>::lookup(Variant) -- rbx::any_cast<T> the payload, then convertToItem (decompiled 0xb97c). Variant is unmodeled in this crate; the caller passes the already-cast enum value, and this is convertToItem exactly.
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0x670224 — __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_0x670224() -> ! {
-    todo!("0x670224 RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_0x670224() {
+    // IDA 0x670224: EnumDesc<T>::convertToValue(index, Variant&) -- writes the converted value into a Variant out-param; Variant is unmodeled in this crate: cutover no-op. See the (desc, name, &mut i32) sibling for the lookup semantics.
 }
 
 // 0x670258 — __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE15convertToStringEmRSs
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_0x670258() -> ! {
-    todo!("0x670258 RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToString(unsigned long,std::string &)const")
+pub fn stub_0x670258(desc: &crate::enum_desc::EnumDesc, index: usize, out: &mut String) -> bool {
+    // IDA 0x670258: EnumDesc<T>::convertToString(index, string&) -- if index < items.size(): out = items[index].name, return true; else return false, out untouched (decompiled 0x957bd4).
+    if let Some(item) = desc.items.get(index) {
+        *out = item.name.clone();
+        true
+    } else {
+        false
+    }
 }
 
 // 0x670580 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -446,14 +466,21 @@ pub fn stub_0x670cc8() -> ! {
 
 // 0x670cfc — __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE14convertToValueERKNS_4NameERS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToValue(RBX::Name const&,RBX::TextService::FontSize&)const")]
-pub fn stub_0x670cfc() -> ! {
-    todo!("0x670cfc RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToValue(RBX::Name const&,RBX::TextService::FontSize&)const")
+pub fn stub_0x670cfc(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0x670cfc: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0x670d78 — __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToItem(RBX::TextService::FontSize const&)const")]
-pub fn stub_0x670d78() -> ! {
-    todo!("0x670d78 RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToItem(RBX::TextService::FontSize const&)const")
+pub fn stub_0x670d78(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0x670d78: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0x670e44 — __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE14convertToIndexES3_
@@ -472,8 +499,11 @@ pub fn stub_0x670eb4() -> ! {
 
 // 0x670ef4 — __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToString(RBX::TextService::FontSize const&)const")]
-pub fn stub_0x670ef4() -> ! {
-    todo!("0x670ef4 RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToString(RBX::TextService::FontSize const&)const")
+pub fn stub_0x670ef4(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0x670ef4: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0x671094 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -532,26 +562,36 @@ pub fn stub_0x6713b8() {
 
 // 0x671458 — __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::lookup(char const*)const")]
-pub fn stub_0x671458() -> ! {
-    todo!("0x671458 RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::lookup(char const*)const")
+pub fn stub_0x671458(desc: &crate::enum_desc::EnumDesc, name: &str) -> usize {
+    // IDA 0x671458: EnumDesc<T>::lookup(char const*) -- Name::lookup intern, search name_to_value then legacy_names; hit: return convertToItem(value); miss: return 0 (decompiled 0x957a18).
+    desc.lookup_value(name).and_then(|v| usize::try_from(v).ok()).and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0x671488 — __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE6lookupERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_0x671488() -> ! {
-    todo!("0x671488 RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_0x671488(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0x671488: EnumDesc<T>::lookup(Variant) -- rbx::any_cast<T> the payload, then convertToItem (decompiled 0xb97c). Variant is unmodeled in this crate; the caller passes the already-cast enum value, and this is convertToItem exactly.
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0x6714a8 — __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_0x6714a8() -> ! {
-    todo!("0x6714a8 RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_0x6714a8() {
+    // IDA 0x6714a8: EnumDesc<T>::convertToValue(index, Variant&) -- writes the converted value into a Variant out-param; Variant is unmodeled in this crate: cutover no-op. See the (desc, name, &mut i32) sibling for the lookup semantics.
 }
 
 // 0x6714dc — __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE15convertToStringEmRSs
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_0x6714dc() -> ! {
-    todo!("0x6714dc RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToString(unsigned long,std::string &)const")
+pub fn stub_0x6714dc(desc: &crate::enum_desc::EnumDesc, index: usize, out: &mut String) -> bool {
+    // IDA 0x6714dc: EnumDesc<T>::convertToString(index, string&) -- if index < items.size(): out = items[index].name, return true; else return false, out untouched (decompiled 0x957bd4).
+    if let Some(item) = desc.items.get(index) {
+        *out = item.name.clone();
+        true
+    } else {
+        false
+    }
 }
 
 // 0x671804 — __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxESsEC2IMNS_12GuiTextMixinEKFSsvEMS2_FvSsEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE

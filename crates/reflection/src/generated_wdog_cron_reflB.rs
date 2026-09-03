@@ -492,8 +492,11 @@ pub fn stub_0xf48d44() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::convertToItem(RBX::TextService::XAlignment const&)const
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE13convertToItemERKS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::convertToItem(RBX::TextService::XAlignment const&)const")]
-pub fn stub_0xf48d54() -> ! {
-    todo!("0xf48d54")
+pub fn stub_0xf48d54(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf48d54: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf48d64 — j___ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE14convertToIndexES3_
@@ -510,8 +513,12 @@ pub fn stub_0xf48d64(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::convertToValue(RBX::Name const&,RBX::TextService::XAlignment&)const
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE14convertToValueERKNS_4NameERS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::convertToValue(RBX::Name const&,RBX::TextService::XAlignment&)const")]
-pub fn stub_0xf48d74() -> ! {
-    todo!("0xf48d74")
+pub fn stub_0xf48d74(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0xf48d74: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0xf48d84 — j___ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE15convertToStringERKS3_
@@ -519,8 +526,11 @@ pub fn stub_0xf48d74() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::convertToString(RBX::TextService::XAlignment const&)const
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE15convertToStringERKS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::convertToString(RBX::TextService::XAlignment const&)const")]
-pub fn stub_0xf48d84() -> ! {
-    todo!("0xf48d84")
+pub fn stub_0xf48d84(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf48d84: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf48d94 — j___ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE13convertToItemERKS3_
@@ -528,8 +538,11 @@ pub fn stub_0xf48d84() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToItem(RBX::TextService::YAlignment const&)const
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE13convertToItemERKS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToItem(RBX::TextService::YAlignment const&)const")]
-pub fn stub_0xf48d94() -> ! {
-    todo!("0xf48d94")
+pub fn stub_0xf48d94(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf48d94: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf48da4 — j___ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToIndexES3_
@@ -548,8 +561,12 @@ pub fn stub_0xf48da4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToValue(RBX::Name const&,RBX::TextService::YAlignment&)const
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToValueERKNS_4NameERS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToValue(RBX::Name const&,RBX::TextService::YAlignment&)const")]
-pub fn stub_0xf48db4() -> ! {
-    todo!("0xf48db4")
+pub fn stub_0xf48db4(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0xf48db4: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0xf48dc4 — j___ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE15convertToStringERKS3_
@@ -557,8 +574,11 @@ pub fn stub_0xf48db4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToString(RBX::TextService::YAlignment const&)const
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE15convertToStringERKS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToString(RBX::TextService::YAlignment const&)const")]
-pub fn stub_0xf48dc4() -> ! {
-    todo!("0xf48dc4")
+pub fn stub_0xf48dc4(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf48dc4: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf48dd4 — j___ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE13convertToItemERKS3_
@@ -566,8 +586,11 @@ pub fn stub_0xf48dc4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToItem(RBX::TextService::Font const&)const
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE13convertToItemERKS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToItem(RBX::TextService::Font const&)const")]
-pub fn stub_0xf48dd4() -> ! {
-    todo!("0xf48dd4")
+pub fn stub_0xf48dd4(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf48dd4: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf48de4 — j___ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToIndexES3_
@@ -585,8 +608,12 @@ pub fn stub_0xf48de4(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToValue(RBX::Name const&,RBX::TextService::Font&)const
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToValueERKNS_4NameERS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToValue(RBX::Name const&,RBX::TextService::Font&)const")]
-pub fn stub_0xf48df4() -> ! {
-    todo!("0xf48df4")
+pub fn stub_0xf48df4(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0xf48df4: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0xf48e04 — j___ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE15convertToStringERKS3_
@@ -594,8 +621,11 @@ pub fn stub_0xf48df4() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToString(RBX::TextService::Font const&)const
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE15convertToStringERKS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToString(RBX::TextService::Font const&)const")]
-pub fn stub_0xf48e04() -> ! {
-    todo!("0xf48e04")
+pub fn stub_0xf48e04(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf48e04: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf48e14 — j___ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE13convertToItemERKS3_
@@ -603,8 +633,11 @@ pub fn stub_0xf48e04() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToItem(RBX::TextService::FontSize const&)const
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE13convertToItemERKS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToItem(RBX::TextService::FontSize const&)const")]
-pub fn stub_0xf48e14() -> ! {
-    todo!("0xf48e14")
+pub fn stub_0xf48e14(desc: &crate::enum_desc::EnumDesc, value: i32) -> usize {
+    // IDA 0xf48e14: EnumDesc<T>::convertToItem(value) -- ReleaseAssert(value>=0) (:273), ReleaseAssert(value<enumToItem.size()) (:274); return items_by_value[value] or 0 (decompiled 0x95807c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:273");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:274");
+    usize::try_from(value).ok().and_then(|s| desc.items_by_value.get(s).copied().flatten()).unwrap_or(0)
 }
 
 // 0xf48e24 — j___ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE14convertToIndexES3_
@@ -622,8 +655,12 @@ pub fn stub_0xf48e24(desc: &crate::enum_desc::EnumDesc, value: i32) -> i32 {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToValue(RBX::Name const&,RBX::TextService::FontSize&)const
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE14convertToValueERKNS_4NameERS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToValue(RBX::Name const&,RBX::TextService::FontSize&)const")]
-pub fn stub_0xf48e34() -> ! {
-    todo!("0xf48e34")
+pub fn stub_0xf48e34(desc: &crate::enum_desc::EnumDesc, name: &str, out: &mut i32) -> bool {
+    // IDA 0xf48e34: EnumDesc<T>::convertToValue(Name, T&) -- search name_to_value then legacy_names; hit: *out = value, return true; miss: return false, out untouched (decompiled 0xcc34). Name interning is elided: the model keys owned strings.
+    match desc.lookup_value(name) {
+        Some(v) => { *out = v; true }
+        None => false,
+    }
 }
 
 // 0xf48e44 — j___ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE15convertToStringERKS3_
@@ -631,8 +668,11 @@ pub fn stub_0xf48e34() -> ! {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToString(RBX::TextService::FontSize const&)const
 #[doc(alias = "j___ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE15convertToStringERKS3_")]
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToString(RBX::TextService::FontSize const&)const")]
-pub fn stub_0xf48e44() -> ! {
-    todo!("0xf48e44")
+pub fn stub_0xf48e44(desc: &crate::enum_desc::EnumDesc, value: i32) -> String {
+    // IDA 0xf48e44: EnumDesc<T>::convertToString(value) -- ReleaseAssert(value>=0) (:262), ReleaseAssert(value<enumToItem.size()) (:263); out of range yields "" (decompiled 0xc76c).
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:262");
+    assert!((value as usize) < desc.len(), "(size_t)value<enumToItem.size() ../App/include/reflection/enumconverter.h:263");
+    desc.lookup_name(value).unwrap_or("").to_owned()
 }
 
 // 0xf48e84 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7TextBoxES6_EEvPKNS_10shared_ptrIT_EEPT0_
