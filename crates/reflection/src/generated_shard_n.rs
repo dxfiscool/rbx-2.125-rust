@@ -654,14 +654,14 @@ pub fn stub_0x6be570() -> ! {
 
 // 0x6bfbe8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11VehicleSeatES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::VehicleSeat,RBX::VehicleSeat>(rbx_core::SharedPtr<RBX::VehicleSeat> const*,RBX::VehicleSeat *)const")]
-pub fn stub_0x6bfbe8() -> ! {
-    todo!("0x6bfbe8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::VehicleSeat,RBX::VehicleSeat>(boost::shared_ptr<RBX::VehicleSeat> const*,RBX::VehicleSeat *)const")
+pub fn stub_0x6bfbe8() {
+    // IDA 0x6bfbe8: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x6c0dcc — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4WeldES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Weld,RBX::Weld>(rbx_core::SharedPtr<RBX::Weld> const*,RBX::Weld *)const")]
-pub fn stub_0x6c0dcc() -> ! {
-    todo!("0x6c0dcc void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Weld,RBX::Weld>(boost::shared_ptr<RBX::Weld> const*,RBX::Weld *)const")
+pub fn stub_0x6c0dcc() {
+    // IDA 0x6c0dcc: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x6c2324 — __ZN3RBX10Reflection14PropDescriptorINS_11VehicleSeatEiEC2IMS2_KFivEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE

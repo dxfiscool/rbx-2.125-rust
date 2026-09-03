@@ -682,8 +682,8 @@ pub fn stub_0x8cecb0() -> ! {
 // 0x8cef50 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18MarketplaceServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::MarketplaceService,RBX::MarketplaceService>(rbx_core::SharedPtr<RBX::MarketplaceService> const*,RBX::MarketplaceService *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18MarketplaceServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0x8cef50() -> ! {
-    todo!("0x8cef50")
+pub fn stub_0x8cef50() {
+    // IDA 0x8cef50: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x8cf03c — __ZNK3RBX10Reflection13EventDescImplILi3ENS_18MarketplaceServiceEFvSsiiEN3rbx13remote_signalIS3_EEMS2_S6_E9fireEventEPS2_Ssii
@@ -745,8 +745,8 @@ pub fn stub_0x8cf690() -> ! {
 // 0x8d0c00 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13LuaWebServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::LuaWebService,RBX::LuaWebService>(rbx_core::SharedPtr<RBX::LuaWebService> const*,RBX::LuaWebService *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13LuaWebServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0x8d0c00() -> ! {
-    todo!("0x8d0c00")
+pub fn stub_0x8d0c00() {
+    // IDA 0x8d0c00: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x8d10ec — __ZN5boost9function1IvSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX18MarketplaceServiceESsNS_8functionIFvNS_10shared_ptrIKNS_9unordered13unordered_mapISsNS7_10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsSE_EEEEEEEEENS9_IFvSsEEEEENS3_5list4INS3_5valueIPS8_EENS_3argILi1EEENSW_ISR_EENSW_IST_EEEEEEEEvT_

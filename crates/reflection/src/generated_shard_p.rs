@@ -161,8 +161,8 @@ pub fn stub_0x6c49c0() -> ! {
 // 0x6c56a8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11VirtualUserES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::VirtualUser,RBX::VirtualUser>(rbx_core::SharedPtr<RBX::VirtualUser> const*,RBX::VirtualUser *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11VirtualUserES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0x6c56a8() -> ! {
-    todo!("0x6c56a8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::VirtualUser,RBX::VirtualUser>(boost::shared_ptr<RBX::VirtualUser> const*,RBX::VirtualUser *)const")
+pub fn stub_0x6c56a8() {
+    // IDA 0x6c56a8: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x6c68c0 — __ZN3RBX10Reflection13BoundFuncDescINS_11VirtualUserEFvSsELi1EEC2EMS2_FvSsEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -539,8 +539,8 @@ pub fn stub_0x6d1334() -> ! {
 // 0x6d6114 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19MegaClusterInstanceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::MegaClusterInstance,RBX::MegaClusterInstance>(rbx_core::SharedPtr<RBX::MegaClusterInstance> const*,RBX::MegaClusterInstance *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19MegaClusterInstanceES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0x6d6114() -> ! {
-    todo!("0x6d6114 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::MegaClusterInstance,RBX::MegaClusterInstance>(boost::shared_ptr<RBX::MegaClusterInstance> const*,RBX::MegaClusterInstance *)const")
+pub fn stub_0x6d6114() {
+    // IDA 0x6d6114: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x6d78cc — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFivELi0EEC2EMS2_FivEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE

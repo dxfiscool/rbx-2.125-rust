@@ -819,8 +819,8 @@ pub fn stub_0x804b74() -> ! {
 // 0x805690 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14FunctionalTestES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FunctionalTest,RBX::FunctionalTest>(rbx_core::SharedPtr<RBX::FunctionalTest> const*,RBX::FunctionalTest *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14FunctionalTestES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0x805690() -> ! {
-    todo!("0x805690 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FunctionalTest,RBX::FunctionalTest>(rbx_core::SharedPtr<RBX::FunctionalTest> const*,RBX::FunctionalTest *)const")
+pub fn stub_0x805690() {
+    // IDA 0x805690: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x80896c — __ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_11TestServiceEiEENS9_5list2INS9_5valueINS1_ISD_EEEENSG_IiEEEEEEEEvT_

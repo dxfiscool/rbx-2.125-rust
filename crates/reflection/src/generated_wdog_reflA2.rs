@@ -427,8 +427,8 @@ pub fn stub_0xf51854() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10ImageLabelES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ImageLabel,RBX::ImageLabel>(boost::shared_ptr<RBX::ImageLabel> const*,RBX::ImageLabel *)const")]
-pub fn stub_0xf523f4() -> ! {
-    todo!("0xf523f4")
+pub fn stub_0xf523f4() {
+    // IDA 0xf523f4: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0xf52404 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11Scale9FrameES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -436,8 +436,8 @@ pub fn stub_0xf523f4() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11Scale9FrameES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Scale9Frame,RBX::Scale9Frame>(boost::shared_ptr<RBX::Scale9Frame> const*,RBX::Scale9Frame *)const")]
-pub fn stub_0xf52404() -> ! {
-    todo!("0xf52404")
+pub fn stub_0xf52404() {
+    // IDA 0xf52404: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0xf52414 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12BillboardGuiES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -445,8 +445,8 @@ pub fn stub_0xf52404() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12BillboardGuiES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BillboardGui,RBX::BillboardGui>(boost::shared_ptr<RBX::BillboardGui> const*,RBX::BillboardGui *)const")]
-pub fn stub_0xf52414() -> ! {
-    todo!("0xf52414")
+pub fn stub_0xf52414() {
+    // IDA 0xf52414: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0xf52e04 — j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKfEENS0_5list2INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEEEEEclIfEEvRT_
@@ -494,8 +494,8 @@ pub fn stub_0xf52f34() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14StatusInstanceES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StatusInstance,RBX::StatusInstance>(boost::shared_ptr<RBX::StatusInstance> const*,RBX::StatusInstance *)const")]
-pub fn stub_0xf53014() -> ! {
-    todo!("0xf53014")
+pub fn stub_0xf53014() {
+    // IDA 0xf53014: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0xf53034 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Motor6DES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -503,8 +503,8 @@ pub fn stub_0xf53014() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Motor6DES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Motor6D,RBX::Motor6D>(boost::shared_ptr<RBX::Motor6D> const*,RBX::Motor6D *)const")]
-pub fn stub_0xf53034() -> ! {
-    todo!("0xf53034")
+pub fn stub_0xf53034() {
+    // IDA 0xf53034: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0xf53044 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_8AnimatorES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -512,8 +512,8 @@ pub fn stub_0xf53034() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_8AnimatorES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Animator,RBX::Animator>(boost::shared_ptr<RBX::Animator> const*,RBX::Animator *)const")]
-pub fn stub_0xf53044() -> ! {
-    todo!("0xf53044")
+pub fn stub_0xf53044() {
+    // IDA 0xf53044: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0xf530a4 — j___ZNK5boost6detail8function13basic_vtable1IvfE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKfEENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
@@ -993,8 +993,8 @@ pub fn stub_0xf55174() -> ! {
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14FunctionalTestES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FunctionalTest,RBX::FunctionalTest>(boost::shared_ptr<RBX::FunctionalTest> const*,RBX::FunctionalTest *)const")]
-pub fn stub_0xf55264() -> ! {
-    todo!("0xf55264")
+pub fn stub_0xf55264() {
+    // IDA 0xf55264: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0xf552e4 — j___ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS4_11TestServiceEiEENSB_5list2INSB_5valueINS3_ISF_EEEENSI_IiEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE

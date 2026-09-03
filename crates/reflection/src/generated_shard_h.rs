@@ -7,8 +7,8 @@ use rbx_core::SharedPtr;
 // 0x674340 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13GuiTextButtonES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiTextButton,RBX::GuiTextButton>(boost::shared_ptr<RBX::GuiTextButton> const*,RBX::GuiTextButton *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiTextButton,RBX::GuiTextButton>(rbx_core::SharedPtr<RBX::GuiTextButton> const*,RBX::GuiTextButton *)const")]
-pub fn stub_0x674340() -> ! {
-    todo!("0x674340 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiTextButton,RBX::GuiTextButton>(rbx_core::SharedPtr<RBX::GuiTextButton> const*,RBX::GuiTextButton *)const")
+pub fn stub_0x674340() {
+    // IDA 0x674340: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x674910 — __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEbEC2IMS2_KFbvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE

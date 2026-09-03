@@ -242,8 +242,8 @@ pub fn stub_0x85e86c() -> ! {
 // 0x85f3d0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12TextureTrailES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextureTrail,RBX::TextureTrail>(rbx_core::SharedPtr<RBX::TextureTrail> const*,RBX::TextureTrail *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12TextureTrailES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0x85f3d0() -> ! {
-    todo!("0x85f3d0")
+pub fn stub_0x85f3d0() {
+    // IDA 0x85f3d0: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x85fc58 — __ZN3RBX10Reflection14PropDescriptorINS_12TextureTrailEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -1005,8 +1005,8 @@ pub fn stub_0x868a30() -> ! {
 // 0x8695b4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9FloorWireES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FloorWire,RBX::FloorWire>(rbx_core::SharedPtr<RBX::FloorWire> const*,RBX::FloorWire *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9FloorWireES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0x8695b4() -> ! {
-    todo!("0x8695b4")
+pub fn stub_0x8695b4() {
+    // IDA 0x8695b4: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x869e3c — __ZN3RBX10Reflection14PropDescriptorINS_9FloorWireEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE

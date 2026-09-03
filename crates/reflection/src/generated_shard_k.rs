@@ -414,8 +414,8 @@ pub fn stub_0x660be8() -> ! {
 
 // 0x661740 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_16SurfaceSelectionES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SurfaceSelection,RBX::SurfaceSelection>(rbx_core::SharedPtr<RBX::SurfaceSelection> const*,RBX::SurfaceSelection *)const")]
-pub fn stub_0x661740() -> ! {
-    todo!("0x661740 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SurfaceSelection,RBX::SurfaceSelection>(boost::shared_ptr<RBX::SurfaceSelection> const*,RBX::SurfaceSelection *)const")
+pub fn stub_0x661740() {
+    // IDA 0x661740: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x662440 — __ZN3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE

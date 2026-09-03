@@ -203,14 +203,14 @@ pub fn stub_0xb20be4() -> ! {
 
 // 0xb25c18 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11TestServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TestService,RBX::TestService>(rbx_core::SharedPtr<RBX::TestService> const*,RBX::TestService *)const")]
-pub fn stub_0xb25c18() -> ! {
-    todo!("0xb25c18 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TestService,RBX::TestService>(rbx_core::SharedPtr<RBX::TestService> const*,RBX::TestService *)const")
+pub fn stub_0xb25c18() {
+    // IDA 0xb25c18: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0xb278e0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12BadgeServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BadgeService,RBX::BadgeService>(rbx_core::SharedPtr<RBX::BadgeService> const*,RBX::BadgeService *)const")]
-pub fn stub_0xb278e0() -> ! {
-    todo!("0xb278e0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BadgeService,RBX::BadgeService>(rbx_core::SharedPtr<RBX::BadgeService> const*,RBX::BadgeService *)const")
+pub fn stub_0xb278e0() {
+    // IDA 0xb278e0: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0xb2cb04 — __ZN5boost9unordered13unordered_mapIN3RBX10Reflection13ConstPropertyENS_9intrusive13list_iteratorINS5_9list_implINS5_7listoptINS5_6detail16base_hook_traitsINS2_7Network4ItemENS5_16list_node_traitsIPvEELNS5_14link_mode_typeE1ENSB_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS4_EESt8equal_toIS4_ENS_19fast_pool_allocatorIS4_NS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEEEC2EmRKSN_RKSP_RKST_

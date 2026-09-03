@@ -210,8 +210,8 @@ pub fn stub_0x63586c() -> ! {
 
 // 0x63621c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_3SkyES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Sky,RBX::Sky>(rbx_core::SharedPtr<RBX::Sky> const*,RBX::Sky *)const")]
-pub fn stub_0x63621c() -> ! {
-    todo!("0x63621c void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Sky,RBX::Sky>(boost::shared_ptr<RBX::Sky> const*,RBX::Sky *)const")
+pub fn stub_0x63621c() {
+    // IDA 0x63621c: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x6368d0 — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_3SkyEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -324,8 +324,8 @@ pub fn stub_0x637898() -> ! {
 
 // 0x637d08 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5SmokeES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Smoke,RBX::Smoke>(rbx_core::SharedPtr<RBX::Smoke> const*,RBX::Smoke *)const")]
-pub fn stub_0x637d08() -> ! {
-    todo!("0x637d08 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Smoke,RBX::Smoke>(boost::shared_ptr<RBX::Smoke> const*,RBX::Smoke *)const")
+pub fn stub_0x637d08() {
+    // IDA 0x637d08: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x6386d0 — __ZN3RBX10Reflection14PropDescriptorINS_5SmokeEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -576,14 +576,14 @@ pub fn stub_0x63e2ac() -> ! {
 
 // 0x63ef38 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13SpawnLocationES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpawnLocation,RBX::SpawnLocation>(rbx_core::SharedPtr<RBX::SpawnLocation> const*,RBX::SpawnLocation *)const")]
-pub fn stub_0x63ef38() -> ! {
-    todo!("0x63ef38 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpawnLocation,RBX::SpawnLocation>(boost::shared_ptr<RBX::SpawnLocation> const*,RBX::SpawnLocation *)const")
+pub fn stub_0x63ef38() {
+    // IDA 0x63ef38: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x63fba4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14SpawnerServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpawnerService,RBX::SpawnerService>(rbx_core::SharedPtr<RBX::SpawnerService> const*,RBX::SpawnerService *)const")]
-pub fn stub_0x63fba4() -> ! {
-    todo!("0x63fba4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpawnerService,RBX::SpawnerService>(boost::shared_ptr<RBX::SpawnerService> const*,RBX::SpawnerService *)const")
+pub fn stub_0x63fba4() {
+    // IDA 0x63fba4: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x64036c — __ZN3RBX10Reflection14PropDescriptorINS_13SpawnLocationENS_10BrickColorEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE

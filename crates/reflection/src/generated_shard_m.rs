@@ -349,22 +349,22 @@ pub fn stub_0x695958() -> ! {
 // 0x696518 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17VehicleControllerES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::VehicleController,RBX::VehicleController>(boost::shared_ptr<RBX::VehicleController> const*,RBX::VehicleController *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::VehicleController,RBX::VehicleController>(rbx_core::SharedPtr<RBX::VehicleController> const*,RBX::VehicleController *)const")]
-pub fn stub_0x696518() -> ! {
-    todo!("0x696518 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::VehicleController,RBX::VehicleController>(rbx_core::SharedPtr<RBX::VehicleController> const*,RBX::VehicleController *)const")
+pub fn stub_0x696518() {
+    // IDA 0x696518: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x696ca0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18HumanoidControllerES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::HumanoidController,RBX::HumanoidController>(boost::shared_ptr<RBX::HumanoidController> const*,RBX::HumanoidController *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::HumanoidController,RBX::HumanoidController>(rbx_core::SharedPtr<RBX::HumanoidController> const*,RBX::HumanoidController *)const")]
-pub fn stub_0x696ca0() -> ! {
-    todo!("0x696ca0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::HumanoidController,RBX::HumanoidController>(rbx_core::SharedPtr<RBX::HumanoidController> const*,RBX::HumanoidController *)const")
+pub fn stub_0x696ca0() {
+    // IDA 0x696ca0: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x697560 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17GameBasicSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GameBasicSettings,RBX::GameBasicSettings>(boost::shared_ptr<RBX::GameBasicSettings> const*,RBX::GameBasicSettings *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GameBasicSettings,RBX::GameBasicSettings>(rbx_core::SharedPtr<RBX::GameBasicSettings> const*,RBX::GameBasicSettings *)const")]
-pub fn stub_0x697560() -> ! {
-    todo!("0x697560 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GameBasicSettings,RBX::GameBasicSettings>(rbx_core::SharedPtr<RBX::GameBasicSettings> const*,RBX::GameBasicSettings *)const")
+pub fn stub_0x697560() {
+    // IDA 0x697560: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x697f7c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10Controller6ButtonEEEE13initSingletonEv
@@ -382,8 +382,8 @@ pub fn stub_0x697f80() -> ! {
 // 0x698138 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19ButtonBindingWidgetES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ButtonBindingWidget,RBX::ButtonBindingWidget>(boost::shared_ptr<RBX::ButtonBindingWidget> const*,RBX::ButtonBindingWidget *)const
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ButtonBindingWidget,RBX::ButtonBindingWidget>(rbx_core::SharedPtr<RBX::ButtonBindingWidget> const*,RBX::ButtonBindingWidget *)const")]
-pub fn stub_0x698138() -> ! {
-    todo!("0x698138 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ButtonBindingWidget,RBX::ButtonBindingWidget>(rbx_core::SharedPtr<RBX::ButtonBindingWidget> const*,RBX::ButtonBindingWidget *)const")
+pub fn stub_0x698138() {
+    // IDA 0x698138: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x69a12c — __ZN3RBX10Reflection9EventDescINS_10ControllerEFvNS2_6ButtonEEN3rbx6signalIS4_EEMS2_S7_EC2ES8_PKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE

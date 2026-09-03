@@ -714,15 +714,15 @@ pub fn stub_0x91e690() -> ! {
 // 0x91ef7c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11RemoteEventES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RemoteEvent,RBX::RemoteEvent>(rbx_core::SharedPtr<RBX::RemoteEvent> const*,RBX::RemoteEvent *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11RemoteEventES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0x91ef7c() -> ! {
-    todo!("0x91ef7c __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11RemoteEventES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+pub fn stub_0x91ef7c() {
+    // IDA 0x91ef7c: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x91f92c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14RemoteFunctionES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RemoteFunction,RBX::RemoteFunction>(rbx_core::SharedPtr<RBX::RemoteFunction> const*,RBX::RemoteFunction *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14RemoteFunctionES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-pub fn stub_0x91f92c() -> ! {
-    todo!("0x91f92c __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14RemoteFunctionES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+pub fn stub_0x91f92c() {
+    // IDA 0x91f92c: boost::enable_shared_from_this<DescribedBase>::_internal_accept_owner — if weak expired, store owner ptr + `weak_count::operator=` (decompiled 0x4a2ae8). Rust: `rbx_core::SharedPtr`/`Weak` covers it; no explicit body.
 }
 
 // 0x91fefc — __ZN3RBX13LatchedSignalIN3rbx13remote_signalEFvN5boost10shared_ptrIKNS_10Reflection5TupleEEEEE5fire1IS8_EEvT_
