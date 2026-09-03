@@ -126,7 +126,6 @@ pub fn stub_c9b5d8() -> ! {
 // 0xc9b638 — __ZThn188_NK4Ogre7Frustum19getSquaredViewDepthEPKNS_6CameraE — `non-virtual thunk to'Ogre::Frustum::getSquaredViewDepth(Ogre::Camera const*)const
 // type: _DWORD __fastcall(Ogre::Frustum *__hidden this, const Ogre::Camera *)
 #[doc(alias = "__ZThn188_NK4Ogre7Frustum19getSquaredViewDepthEPKNS_6CameraE")]
-#[doc(alias = "`non-virtual thunk to'Ogre::Frustum::getSquaredViewDepth(Ogre::Camera const*)const")]
 pub fn stub_c9b638() -> ! {
     todo!("0xc9b638 __ZThn188_NK4Ogre7Frustum19getSquaredViewDepthEPKNS_6CameraE")
 }
@@ -173,7 +172,6 @@ pub fn stub_ccb084() -> ! {
 // 0xccb0cc — __ZThn188_NK4Ogre17InstancedGeometry14GeometryBucket19getSquaredViewDepthEPKNS_6CameraE — `non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::getSquaredViewDepth(Ogre::Camera const*)const
 // type: _DWORD __fastcall(Ogre::InstancedGeometry::GeometryBucket *__hidden this, const Ogre::Camera *)
 #[doc(alias = "__ZThn188_NK4Ogre17InstancedGeometry14GeometryBucket19getSquaredViewDepthEPKNS_6CameraE")]
-#[doc(alias = "`non-virtual thunk to'Ogre::InstancedGeometry::GeometryBucket::getSquaredViewDepth(Ogre::Camera const*)const")]
 pub fn stub_ccb0cc() -> ! {
     todo!("0xccb0cc __ZThn188_NK4Ogre17InstancedGeometry14GeometryBucket19getSquaredViewDepthEPKNS_6CameraE")
 }
@@ -277,7 +275,6 @@ pub fn stub_d36d84() -> ! {
 // 0xd36e30 — __ZThn12_NK4Ogre14OverlayElement19getSquaredViewDepthEPKNS_6CameraE — `non-virtual thunk to'Ogre::OverlayElement::getSquaredViewDepth(Ogre::Camera const*)const
 // type: unsigned __int32 __fastcall(Ogre::OverlayElement *this, const Ogre::Camera *)
 #[doc(alias = "__ZThn12_NK4Ogre14OverlayElement19getSquaredViewDepthEPKNS_6CameraE")]
-#[doc(alias = "`non-virtual thunk to'Ogre::OverlayElement::getSquaredViewDepth(Ogre::Camera const*)const")]
 pub fn stub_d36e30() -> ! {
     todo!("0xd36e30 __ZThn12_NK4Ogre14OverlayElement19getSquaredViewDepthEPKNS_6CameraE")
 }
@@ -293,7 +290,6 @@ pub fn stub_d5b8a0() -> ! {
 // 0xd5b8a4 — __ZThn188_NK4Ogre11Rectangle2D19getSquaredViewDepthEPKNS_6CameraE — `non-virtual thunk to'Ogre::Rectangle2D::getSquaredViewDepth(Ogre::Camera const*)const
 // type: _DWORD __fastcall(Ogre::Rectangle2D *__hidden this, const Ogre::Camera *)
 #[doc(alias = "__ZThn188_NK4Ogre11Rectangle2D19getSquaredViewDepthEPKNS_6CameraE")]
-#[doc(alias = "`non-virtual thunk to'Ogre::Rectangle2D::getSquaredViewDepth(Ogre::Camera const*)const")]
 pub fn stub_d5b8a4() -> ! {
     todo!("0xd5b8a4 __ZThn188_NK4Ogre11Rectangle2D19getSquaredViewDepthEPKNS_6CameraE")
 }
@@ -900,7 +896,6 @@ pub fn stub_e5623c() -> ! {
 // 0xe562e4 — __ZThn188_NK4Ogre15WireBoundingBox19getSquaredViewDepthEPKNS_6CameraE — `non-virtual thunk to'Ogre::WireBoundingBox::getSquaredViewDepth(Ogre::Camera const*)const
 // type: _DWORD __fastcall(Ogre::WireBoundingBox *__hidden this, const Ogre::Camera *)
 #[doc(alias = "__ZThn188_NK4Ogre15WireBoundingBox19getSquaredViewDepthEPKNS_6CameraE")]
-#[doc(alias = "`non-virtual thunk to'Ogre::WireBoundingBox::getSquaredViewDepth(Ogre::Camera const*)const")]
 pub fn stub_e562e4() -> ! {
     todo!("0xe562e4 __ZThn188_NK4Ogre15WireBoundingBox19getSquaredViewDepthEPKNS_6CameraE")
 }
