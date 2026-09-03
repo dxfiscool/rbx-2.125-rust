@@ -694,3 +694,5 @@ pub mod generated_310;
 pub mod generated_watchdog_datamodel_w15c;
 pub mod generated_watchdog_datamodel_w15d;
 pub mod generated_watchdog_datamodel_w15d2;
+pub mod generated_watchdog_datamodel_w15d4;
+pub mod generated_watchdog_datamodel_w15d3;
