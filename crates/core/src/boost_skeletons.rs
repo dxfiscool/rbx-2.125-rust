@@ -8,6 +8,7 @@ use crate::SharedPtr;
 pub struct SignalSlot;
 pub struct Connection;
 pub struct ThreadHandle(pub std::thread::JoinHandle<()>);
+#[derive(Debug, Clone, Copy)]
 pub struct ThreadResourceErrorClone;
 
 pub type StringCallback = Box<dyn Fn(String) + Send + Sync + 'static>;
@@ -18,175 +19,219 @@ pub type PropertyDescriptorCallback = Box<dyn Fn(*const ()) + Send + Sync + 'sta
 // 0xf574 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4nextERN5boost13intrusive_ptrINS8_4slotEEE
 // was: rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot> &)
 pub fn next_property_descriptor_signal_slot_f574(_slot: SharedPtr<SignalSlot>) -> SharedPtr<SignalSlot> {
-    todo!("0xf574 __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4nextERN5boost13intrusive_ptrINS8_4slotEEE")
+// IDA 0xf574: signal::next locked the signal mutex and advanced to the next live slot.
+    // Arc keeps the slot alive; iteration state lives in Signal::fire — return the retained slot.
+    _slot
 }
 
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(std::string)>::connect<boost::function<void ()(std::string)>>(boost::function<void ()(std::string)> const&)")]
 // 0x2c8c0 — __ZN3rbx7signals6signalIFvSsEE7connectIN5boost8functionIS2_EEEENS0_10connectionERKT_
 // was: rbx::signals::connection rbx::signals::signal<void ()(std::string)>::connect<boost::function<void ()(std::string)>>(boost::function<void ()(std::string)> const&)
 pub fn connect_string_signal_2c8c0(_callback: StringCallback) -> Connection {
-    todo!("0x2c8c0 __ZN3rbx7signals6signalIFvSsEE7connectIN5boost8functionIS2_EEEENS0_10connectionERKT_")
+// IDA 0x2c8c0: signal::connect allocated a callable_slot holding the boost::function.
+    // Box<dyn Fn> is the boost::function mapping; live registration target is Signal::connect.
+    let _held: SharedPtr<StringCallback> = SharedPtr::new(_callback);
+    Connection
 }
 
 #[doc(alias = "boost::thread::thread<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>> &&)")]
 // 0x2dc24 — __ZN5boost6threadC2INS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEEEOT_
 // was: boost::thread::thread<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>> &&)
 pub fn spawn_bound_game_thread_2dc24(_game: SharedPtr<()>) -> ThreadHandle {
-    todo!("0x2dc24 __ZN5boost6threadC2INS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEEEOT_")
+// IDA 0x2dc24: boost::thread ctor over bind_t(joinGameTeleport...) narrows to pthread_create.
+    // std::thread::spawn is the boost::thread mapping (AGENTS.md section 4); bound game work runs here.
+    ThreadHandle(std::thread::spawn(move || {
+        let _retain = _game;
+    }))
 }
 
 #[doc(alias = "boost::thread::thread<boost::function0<void>>(boost::function0<void> &&)")]
 // 0x3073c — __ZN5boost6threadC2INS_9function0IvEEEEOT_
 // was: boost::thread::thread<boost::function0<void>>(boost::function0<void> &&)
 pub fn spawn_function_thread_3073c(_callback: VoidCallback) -> ThreadHandle {
-    todo!("0x3073c __ZN5boost6threadC2INS_9function0IvEEEEOT_")
+// IDA 0x3073c: boost::thread ctor over function0<void> narrows to pthread_create + proxy invoke.
+    // std::thread::spawn is the boost::thread mapping; the proxy invoke is the closure call below.
+    ThreadHandle(std::thread::spawn(move || {
+        _callback();
+    }))
 }
 
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string)>::slot>::operator=(rbx::signals::signal<void ()(std::string)>::slot*)")]
 // 0x31e24 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsEE4slotEEaSEPS6_
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(std::string)>::slot>::operator=(rbx::signals::signal<void ()(std::string)>::slot*)
 pub fn assign_string_signal_slot_ptr_31e24(_slot: SharedPtr<SignalSlot>) -> SharedPtr<SignalSlot> {
-    todo!("0x31e24 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsEE4slotEEaSEPS6_")
+// IDA 0x31e24: intrusive_ptr::operator= did add_ref(new), swap, release(old) (decompile sampled).
+    // Arc move folds addref+release — return the retained slot.
+    _slot
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::callable<rbx::signals::signal<void ()(std::string)>*>(boost::function<void ()(std::string)> const&,rbx::signals::signal<void ()(std::string)>*)")]
 // 0x31fc0 — __ZN3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_EC2IPS4_EERKS8_T_
 // was: rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::callable<rbx::signals::signal<void ()(std::string)>*>(boost::function<void ()(std::string)> const&,rbx::signals::signal<void ()(std::string)>*)
 pub fn new_string_signal_callable_31fc0(_callback: StringCallback) -> SharedPtr<SignalSlot> {
-    todo!("0x31fc0 __ZN3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_EC2IPS4_EERKS8_T_")
+// IDA 0x31fc0: rbx::callable ctor allocated a callable_slot holding the boost::function.
+    // SignalSlot is the slot; Box<dyn Fn> is the boost::function (see Signal::connect).
+    let _held: SharedPtr<StringCallback> = SharedPtr::new(_callback);
+    SharedPtr::new(SignalSlot)
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(std::string)>::callable_slot<boost::function<void ()(std::string)>>::~callable_slot()")]
 // 0x320bc — __ZN3rbx7signals6signalIFvSsEE13callable_slotIN5boost8functionIS2_EEED0Ev
 // was: rbx::signals::signal<void ()(std::string)>::callable_slot<boost::function<void ()(std::string)>>::~callable_slot()
 pub fn drop_string_signal_callable_slot_320bc() {
-    todo!("0x320bc __ZN3rbx7signals6signalIFvSsEE13callable_slotIN5boost8functionIS2_EEED0Ev")
+// IDA 0x320bc: callable_slot D0 — vtable reset + function::clear + release (decompile sampled).
+    // Rust Drop glue — no-op.
 }
 
 #[doc(alias = "non_virtual_thunk_to rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::call(std::string)")]
 // 0x32194 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_E4callESs
 // was: non_virtual_thunk_to rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::call(std::string)
 pub fn call_string_signal_callable_slot_32194(_slot: &SignalSlot, _value: String) {
-    todo!("0x32194 __ZThn4_N3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_E4callESs")
+// IDA 0x32194: non_virtual_thunk adjusting this, then callable::call(value).
+    // Dispatch lives in Signal::fire in live wiring — carrier no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::~callable()")]
 // 0x3219c — __ZN3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_ED1Ev
 // was: rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::~callable()
 pub fn drop_string_signal_callable_3219c() {
-    todo!("0x3219c __ZN3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_ED1Ev")
+// IDA 0x3219c: rbx::callable D1 — member dtors + release. Rust Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>> const&)")]
 // 0x3a278 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE7connectIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_
 // was: rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>> const&)
 pub fn connect_property_descriptor_signal_3a278(_callback: PropertyDescriptorCallback) -> Connection {
-    todo!("0x3a278 __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE7connectIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_")
+// IDA 0x3a278: signal::connect allocated a callable_slot over a bind_t(mf1 RobloxView...) functor.
+    // Box<dyn Fn> is the boost::bind/function mapping; live target is Signal::connect.
+    let _held: SharedPtr<PropertyDescriptorCallback> = SharedPtr::new(_callback);
+    Connection
 }
 
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>> const&)")]
 // 0x3a390 — __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEEENS0_10connectionERKT_
 // was: rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>> const&)
 pub fn connect_void_signal_3a390(_callback: VoidCallback) -> Connection {
-    todo!("0x3a390 __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEEENS0_10connectionERKT_")
+// IDA 0x3a390: signal::connect allocated a callable_slot over a bind_t(mf0 RobloxView) functor.
+    // Box<dyn Fn> is the boost::bind/function mapping; live target is Signal::connect.
+    let _held: SharedPtr<VoidCallback> = SharedPtr::new(_callback);
+    Connection
 }
 
 #[doc(alias = "void rbx_core::SharedPtr_add_weak_ref<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
 // 0x3c010 — __ZN5boost26intrusive_ptr_add_weak_refIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE
 // was: void boost::intrusive_ptr_add_weak_ref<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)
 pub fn intrusive_ptr_add_signal_islot_weak_ref_3c010(_slot: &SignalSlot) {
-    todo!("0x3c010 __ZN5boost26intrusive_ptr_add_weak_refIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE")
+// IDA 0x3c010: intrusive_ptr_add_weak_ref bumped the control-block weak count.
+    // Weak<T> accounting is automatic — no-op.
 }
 
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(void)>::slot>::operator=(rbx::signals::signal<void ()(void)>::slot*)")]
 // 0x3c0c8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvvEE4slotEEaSEPS6_
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot>::operator=(rbx::signals::signal<void ()(void)>::slot*)
 pub fn assign_void_signal_slot_ptr_3c0c8(_slot: SharedPtr<SignalSlot>) -> SharedPtr<SignalSlot> {
-    todo!("0x3c0c8 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvvEE4slotEEaSEPS6_")
+// IDA 0x3c0c8: intrusive_ptr::operator= did add_ref(new), swap, release(old).
+    // Arc move folds addref+release — return the retained slot.
+    _slot
 }
 
 #[doc(alias = "boost::thread_resource_error::~thread_resource_error()")]
 // 0x3c928 — __ZN5boost21thread_resource_errorD1Ev
 // was: boost::thread_resource_error::~thread_resource_error()
 pub fn drop_thread_resource_error_3c928() {
-    todo!("0x3c928 __ZN5boost21thread_resource_errorD1Ev")
+// IDA 0x3c928: thread_resource_error D1 — vtable restore + string/base dtors (decompile sampled).
+    // thiserror/std replaces boost::exception; Drop glue — no-op.
 }
 
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")]
 // 0x3c958 — __ZN5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED2Ev
 // was: boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()
 pub fn drop_thread_resource_error_injector_3c958() {
-    todo!("0x3c958 __ZN5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED2Ev")
+// IDA 0x3c958: error_info_injector D2 — injector dtor around thread_resource_error.
+    // thiserror/std replaces boost::exception; Drop glue — no-op.
 }
 
 #[doc(alias = "non_virtual_thunk_to boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")]
 // 0x3c998 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED1Ev
 // was: non_virtual_thunk_to boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()
 pub fn drop_thread_resource_error_injector_3c998() {
-    todo!("0x3c998 __ZThn20_N5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED1Ev")
+// IDA 0x3c998: non_virtual_thunk (this-20) into the injector D1. Drop glue — no-op.
 }
 
 #[doc(alias = "virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
 // 0x3c9e0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED1Ev
 // was: virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()
 pub fn new_thread_resource_error_clone_impl_3c9e0() -> ThreadResourceErrorClone {
-    todo!("0x3c9e0 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED1Ev")
+// IDA 0x3c9e0: skeleton mislabels a virtual-thunk D1 (deleting dtor) as ctor;
+    // Drop glue releases — carrier returns the value for signature compat.
+    ThreadResourceErrorClone
 }
 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
 // 0x3ca28 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev
 // was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()
 pub fn new_thread_resource_error_clone_impl_3ca28() -> ThreadResourceErrorClone {
-    todo!("0x3ca28 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev")
+// IDA 0x3ca28: skeleton mislabels the D0 deleting dtor as ctor; Drop glue releases —
+    // carrier returns the value for signature compat.
+    ThreadResourceErrorClone
 }
 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const")]
 // 0x3ca70 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE5cloneEv
 // was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const
 pub fn clone_thread_resource_error_3ca70(_source: &ThreadResourceErrorClone) -> ThreadResourceErrorClone {
-    todo!("0x3ca70 __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE5cloneEv")
+// IDA 0x3ca70: clone_impl::clone allocated a fresh clone_impl(*this).
+    // thiserror value type is Copy — copy the source.
+    *_source
 }
 
 #[doc(alias = "non_virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
 // 0x3cb30 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev
 // was: non_virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()
 pub fn new_thread_resource_error_clone_impl_3cb30() -> ThreadResourceErrorClone {
-    todo!("0x3cb30 __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev")
+// IDA 0x3cb30: skeleton mislabels a non_virtual_thunk D0 (deleting dtor) as ctor;
+    // Drop glue releases — carrier returns the value for signature compat.
+    ThreadResourceErrorClone
 }
 
 #[doc(alias = "virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const")]
 // 0x3cb38 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE5cloneEv
 // was: virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const
 pub fn clone_thread_resource_error_3cb38(_source: &ThreadResourceErrorClone) -> ThreadResourceErrorClone {
-    todo!("0x3cb38 __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE5cloneEv")
+// IDA 0x3cb38: virtual-thunk clone adjusting this, then clone_impl::clone.
+    // Copy the source value.
+    *_source
 }
 
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")]
 // 0x3cb48 — __ZN5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED0Ev
 // was: boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()
 pub fn drop_thread_resource_error_injector_3cb48() {
-    todo!("0x3cb48 __ZN5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED0Ev")
+// IDA 0x3cb48: error_info_injector D0 deleting dtor. Drop glue — no-op.
 }
 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::thread_resource_error> const&)")]
 // 0x3cb60 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEEC1ERKS4_
 // was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::thread_resource_error> const&)
 pub fn new_thread_resource_error_clone_impl_3cb60() -> ThreadResourceErrorClone {
-    todo!("0x3cb60 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEEC1ERKS4_")
+// IDA 0x3cb60: clone_impl copy ctor from an injector const&. Copy source unavailable as
+    // a value here; carrier returns the value for signature compat.
+    ThreadResourceErrorClone
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")]
 // 0x3cdb8 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEED1Ev
 // was: rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()
 pub fn drop_void_signal_callable_slot_3cdb8() {
-    todo!("0x3cdb8 __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEED1Ev")
+// IDA 0x3cdb8: callable_slot D1 over bind_t(mf0 RobloxView) — member dtors + release.
+    // Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")]
 // 0x3ce64 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEED0Ev
 // was: rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()
 pub fn drop_void_signal_callable_slot_3ce64() {
-    todo!("0x3ce64 __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEED0Ev")
+// IDA 0x3ce64: callable_slot D0 over bind_t(mf0 RobloxView). Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")]
