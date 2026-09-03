@@ -93,6 +93,15 @@ pub fn invoke_ret3<R, A, B, C>(slot: &mut dyn FnMut(A, B, C) -> R, a: A, b: B, c
     slot(a, b, c)
 }
 
+/// `basic_vtableN<Sig>::assign_to<F>` (IDA 0x684260 / 0x9f26bc): installs
+/// the functor into the slot — refcount bumps plus the functor-word copy
+/// into the buffer stay engine-side — and returns 1. Small-object binds
+/// always fit, so the verdict is constantly `true`; the functor itself
+/// arrives as an already-composed Rust closure.
+pub fn assign_to<T>(slot: &mut Option<Box<T>>, functor: T) -> bool {
+    *slot = Some(Box::new(functor));
+    true
+    }
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -108,6 +117,7 @@ mod tests {
 
     #[test]
     fn invokers_call_through() {
+
         let mut log = Vec::new();
         invoke0(&mut || log.push(0));
         invoke1(&mut |a: i32| log.push(a), 1);
@@ -133,4 +143,15 @@ mod tests {
         assert_eq!(manage_small(FunctorOp::GetTag, "bind_t"), ManageOutcome::Tag("bind_t"));
         assert_eq!(invoke_ret1(&mut *slot, 9), "players:a:b:9");
     }
+    #[test]
+    fn assign_installs_and_reports_fit() {
+        // IDA 0x684260/0x9f26bc: functor words land in the buffer, `return 1`.
+        fn inc(a: i32) -> i32 {
+            a + 1
+        }
+        let mut slot: Option<Box<fn(i32) -> i32>> = None;
+        assert!(assign_to(&mut slot, inc as fn(i32) -> i32));
+        assert_eq!(slot.as_mut().map(|f| f(41)), Some(42));
+    }
 }
+
