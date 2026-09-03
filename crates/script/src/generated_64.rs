@@ -243,7 +243,7 @@ pub fn stub_0x288c5c() -> ! {
 // 0x288d98 — __ZN3RBX10Reflection19TGenericSlotWrapperINS_3Lua14WaitScriptSlotEED0Ev
 // type: void()
 // was: void()
-#[doc(alias = "RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>::~TGenericSlotWrapper()")]
+#[doc(alias = "RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>::~TGenericSlotWrapper() [0x288d98]")]
 pub fn stub_0x288d98() -> ! {
     todo!("0x288d98 __ZN3RBX10Reflection19TGenericSlotWrapperINS_3Lua14WaitScriptSlotEED0Ev")
 }
@@ -291,7 +291,7 @@ pub fn stub_0x289540() -> ! {
 // 0x28956c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Reflection19TGenericSlotWrapperINS2_3Lua14WaitScriptSlotEEEN3rbx6detail13sp_ms_deleterIS7_EEED0Ev
 // type: void()
 // was: void()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>::~sp_counted_impl_pd() [0x28956c]")]
 pub fn stub_0x28956c() -> ! {
     todo!("0x28956c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Reflection19TGenericSlotWrapperINS2_3Lua14WaitScriptSlotEEEN3rbx6detail13sp_ms_deleterIS7_EEED0Ev")
 }
@@ -347,7 +347,7 @@ pub fn stub_0x289850() -> ! {
 // 0x2899b0 — __ZN3RBX10Reflection19TGenericSlotWrapperINS_3Lua18FunctionScriptSlotEED0Ev
 // type: void()
 // was: void()
-#[doc(alias = "RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>::~TGenericSlotWrapper()")]
+#[doc(alias = "RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>::~TGenericSlotWrapper() [0x2899b0]")]
 pub fn stub_0x2899b0() -> ! {
     todo!("0x2899b0 __ZN3RBX10Reflection19TGenericSlotWrapperINS_3Lua18FunctionScriptSlotEED0Ev")
 }
@@ -395,7 +395,7 @@ pub fn stub_0x28a7ac() -> ! {
 // 0x28a7d8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Reflection19TGenericSlotWrapperINS2_3Lua18FunctionScriptSlotEEEN3rbx6detail13sp_ms_deleterIS7_EEED0Ev
 // type: void()
 // was: void()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>::~sp_counted_impl_pd() [0x28a7d8]")]
 pub fn stub_0x28a7d8() -> ! {
     todo!("0x28a7d8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Reflection19TGenericSlotWrapperINS2_3Lua18FunctionScriptSlotEEEN3rbx6detail13sp_ms_deleterIS7_EEED0Ev")
 }
@@ -515,7 +515,7 @@ pub fn stub_0x28badc() -> ! {
 // 0x28bae0 — __ZN3RBX11LocalScriptC2Ev
 // type: _DWORD __fastcall(RBX::LocalScript *__hidden this)
 // was: _DWORD __fastcall(RBX::LocalScript *__hidden this)
-#[doc(alias = "RBX::LocalScript::LocalScript(void)")]
+#[doc(alias = "RBX::LocalScript::LocalScript(void) [0x28bae0]")]
 pub fn stub_0x28bae0() -> ! {
     todo!("0x28bae0 __ZN3RBX11LocalScriptC2Ev")
 }
@@ -531,7 +531,7 @@ pub fn stub_0x28bcd4() -> ! {
 // 0x28bd74 — __ZN3RBX10BaseScriptD1Ev
 // type: void __fastcall(RBX::BaseScript *__hidden this)
 // was: void __fastcall(RBX::BaseScript *__hidden this)
-#[doc(alias = "RBX::BaseScript::~BaseScript()")]
+#[doc(alias = "RBX::BaseScript::~BaseScript() [0x28bd74]")]
 pub fn stub_0x28bd74() -> ! {
     todo!("0x28bd74 __ZN3RBX10BaseScriptD1Ev")
 }
@@ -547,7 +547,7 @@ pub fn stub_0x28bd78() -> ! {
 // 0x28bd80 — __ZThn36_N3RBX10BaseScriptD0Ev
 // type: void __fastcall(RBX::BaseScript *__hidden this)
 // was: void __fastcall(RBX::BaseScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BaseScript::~BaseScript()")]
+#[doc(alias = "non-virtual thunk toRBX::BaseScript::~BaseScript() [0x28bd80]")]
 pub fn stub_0x28bd80() -> ! {
     todo!("0x28bd80 __ZThn36_N3RBX10BaseScriptD0Ev")
 }
@@ -555,7 +555,7 @@ pub fn stub_0x28bd80() -> ! {
 // 0x28bd88 — __ZN3RBX10BaseScriptD2Ev
 // type: void __fastcall(RBX::BaseScript *__hidden this)
 // was: void __fastcall(RBX::BaseScript *__hidden this)
-#[doc(alias = "RBX::BaseScript::~BaseScript()")]
+#[doc(alias = "RBX::BaseScript::~BaseScript() [0x28bd88]")]
 pub fn stub_0x28bd88() -> ! {
     todo!("0x28bd88 __ZN3RBX10BaseScriptD2Ev")
 }
@@ -563,7 +563,7 @@ pub fn stub_0x28bd88() -> ! {
 // 0x28bf98 — __ZThn32_N3RBX10BaseScriptD1Ev
 // type: void __fastcall(RBX::BaseScript *__hidden this)
 // was: void __fastcall(RBX::BaseScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BaseScript::~BaseScript()")]
+#[doc(alias = "non-virtual thunk toRBX::BaseScript::~BaseScript() [0x28bf98]")]
 pub fn stub_0x28bf98() -> ! {
     todo!("0x28bf98 __ZThn32_N3RBX10BaseScriptD1Ev")
 }
@@ -571,7 +571,7 @@ pub fn stub_0x28bf98() -> ! {
 // 0x28bfa0 — __ZThn36_N3RBX10BaseScriptD1Ev
 // type: void __fastcall(RBX::BaseScript *__hidden this)
 // was: void __fastcall(RBX::BaseScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BaseScript::~BaseScript()")]
+#[doc(alias = "non-virtual thunk toRBX::BaseScript::~BaseScript() [0x28bfa0]")]
 pub fn stub_0x28bfa0() -> ! {
     todo!("0x28bfa0 __ZThn36_N3RBX10BaseScriptD1Ev")
 }
@@ -587,7 +587,7 @@ pub fn stub_0x28bfa8() -> ! {
 // 0x28c048 — __ZN3RBX6ScriptD1Ev
 // type: void __fastcall(RBX::Script *__hidden this)
 // was: void __fastcall(RBX::Script *__hidden this)
-#[doc(alias = "RBX::Script::~Script()")]
+#[doc(alias = "RBX::Script::~Script() [0x28c048]")]
 pub fn stub_0x28c048() -> ! {
     todo!("0x28c048 __ZN3RBX6ScriptD1Ev")
 }
@@ -603,7 +603,7 @@ pub fn stub_0x28c04c() -> ! {
 // 0x28c054 — __ZThn36_N3RBX6ScriptD0Ev
 // type: void __fastcall(RBX::Script *__hidden this)
 // was: void __fastcall(RBX::Script *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Script::~Script()")]
+#[doc(alias = "non-virtual thunk toRBX::Script::~Script() [0x28c054]")]
 pub fn stub_0x28c054() -> ! {
     todo!("0x28c054 __ZThn36_N3RBX6ScriptD0Ev")
 }
@@ -611,7 +611,7 @@ pub fn stub_0x28c054() -> ! {
 // 0x28c05c — __ZN3RBX6ScriptD2Ev
 // type: void __fastcall(pthread_mutex_t *this)
 // was: void __fastcall(pthread_mutex_t *this)
-#[doc(alias = "RBX::Script::~Script()")]
+#[doc(alias = "RBX::Script::~Script() [0x28c05c]")]
 pub fn stub_0x28c05c() -> ! {
     todo!("0x28c05c __ZN3RBX6ScriptD2Ev")
 }
@@ -619,7 +619,7 @@ pub fn stub_0x28c05c() -> ! {
 // 0x28c1c8 — __ZThn32_N3RBX6ScriptD1Ev
 // type: void __fastcall(RBX::Script *__hidden this)
 // was: void __fastcall(RBX::Script *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Script::~Script()")]
+#[doc(alias = "non-virtual thunk toRBX::Script::~Script() [0x28c1c8]")]
 pub fn stub_0x28c1c8() -> ! {
     todo!("0x28c1c8 __ZThn32_N3RBX6ScriptD1Ev")
 }
@@ -627,7 +627,7 @@ pub fn stub_0x28c1c8() -> ! {
 // 0x28c1d0 — __ZThn36_N3RBX6ScriptD1Ev
 // type: void __fastcall(RBX::Script *__hidden this)
 // was: void __fastcall(RBX::Script *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Script::~Script()")]
+#[doc(alias = "non-virtual thunk toRBX::Script::~Script() [0x28c1d0]")]
 pub fn stub_0x28c1d0() -> ! {
     todo!("0x28c1d0 __ZThn36_N3RBX6ScriptD1Ev")
 }

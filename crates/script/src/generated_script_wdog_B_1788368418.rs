@@ -244,7 +244,7 @@ pub fn stub_0x57da48() -> ! {
 }
 
 // 0x57db5c — __ZN3RBX10Reflection14PropDescriptorINS_14GuiImageButtonENS_9TextureIdEED0Ev
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiImageButton,RBX::TextureId>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiImageButton,RBX::TextureId>::~PropDescriptor() [0x57db5c]")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_14GuiImageButtonENS_9TextureIdEED0Ev")]
 pub fn stub_0x57db5c() -> ! {
     todo!("0x57db5c __ZN3RBX10Reflection14PropDescriptorINS_14GuiImageButtonENS_9TextureIdEED0Ev")
@@ -329,7 +329,7 @@ pub fn stub_0x57f578() -> ! {
 }
 
 // 0x57f69c — __ZN3RBX10Reflection14PropDescriptorINS_10ImageLabelENS_9TextureIdEED0Ev
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ImageLabel,RBX::TextureId>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ImageLabel,RBX::TextureId>::~PropDescriptor() [0x57f69c]")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_10ImageLabelENS_9TextureIdEED0Ev")]
 pub fn stub_0x57f69c() -> ! {
     todo!("0x57f69c __ZN3RBX10Reflection14PropDescriptorINS_10ImageLabelENS_9TextureIdEED0Ev")
@@ -385,7 +385,7 @@ pub fn stub_0x57fec0() -> ! {
 }
 
 // 0x57fee4 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_9TextureIdEED0Ev
-#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::~TypedPropertyDescriptor()")]
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::~TypedPropertyDescriptor() [0x57fee4]")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorINS_9TextureIdEED0Ev")]
 pub fn stub_0x57fee4() -> ! {
     todo!("0x57fee4 __ZN3RBX10Reflection23TypedPropertyDescriptorINS_9TextureIdEED0Ev")

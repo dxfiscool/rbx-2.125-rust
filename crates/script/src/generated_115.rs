@@ -35,7 +35,7 @@ pub fn stub_0x2b71c0() -> ! {
 }
 
 // 0x2b71c4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX17WaitingScriptsJobEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::WaitingScriptsJob>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::WaitingScriptsJob>::~sp_counted_impl_p() [0x2b71c4]")]
 pub fn stub_0x2b71c4() -> ! {
     todo!("0x2b71c4 boost::detail::sp_counted_impl_p<RBX::WaitingScriptsJob>::~sp_counted_impl_p()")
 }
@@ -115,7 +115,7 @@ pub fn stub_0x2b8610() -> ! {
 
 // 0x2c04b0 — __ZN3RBX20RuntimeScriptServiceD2Ev
 // type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
-#[doc(alias = "RBX::RuntimeScriptService::~RuntimeScriptService()")]
+#[doc(alias = "RBX::RuntimeScriptService::~RuntimeScriptService() [0x2c04b0]")]
 pub fn stub_0x2c04b0() -> ! {
     todo!("0x2c04b0 RBX::RuntimeScriptService::~RuntimeScriptService()")
 }
@@ -193,18 +193,6 @@ pub fn stub_0x2c154c() -> ! {
     todo!("0x2c154c LuaProfiler::StringCache::Function::operator<(LuaProfiler::StringCache::Function const&)const")
 }
 
-// 0x2c190c — __ZN5boost13intrusive_ptrIN3RBX3Lua6detail13LiveThreadRefEEaSERKS5_
-#[doc(alias = "rbx_core::SharedPtr<RBX::Lua::detail::LiveThreadRef>::operator=(rbx_core::SharedPtr<RBX::Lua::detail::LiveThreadRef> const&)")]
-pub fn stub_0x2c190c() -> ! {
-    todo!("0x2c190c boost::intrusive_ptr<RBX::Lua::detail::LiveThreadRef>::operator=(boost::intrusive_ptr<RBX::Lua::detail::LiveThreadRef> const&)")
-}
-
-// 0x2c1930 — __ZN5boost21intrusive_ptr_releaseIN3RBX3Lua6detail13LiveThreadRefEiLi0EEEvPKN3rbx26quick_intrusive_ptr_targetIT_T0_XT1_EEE
-#[doc(alias = "void rbx_core::SharedPtr_release<RBX::Lua::detail::LiveThreadRef,int,0>(rbx::quick_intrusive_ptr_target<RBX::Lua::detail::LiveThreadRef,int,0> const*)")]
-pub fn stub_0x2c1930() -> ! {
-    todo!("0x2c1930 void boost::intrusive_ptr_release<RBX::Lua::detail::LiveThreadRef,int,0>(rbx::quick_intrusive_ptr_target<RBX::Lua::detail::LiveThreadRef,int,0> const*)")
-}
-
 // 0x2c1bac — __ZN3RBX12LuaStatsItemC2EPNS_13ScriptContextE
 // type: _DWORD __fastcall(RBX::LuaStatsItem *__hidden this, RBX::ScriptContext *)
 #[doc(alias = "RBX::LuaStatsItem::LuaStatsItem(RBX::ScriptContext *)")]
@@ -272,13 +260,6 @@ pub fn stub_0x2c382c() -> ! {
     todo!("0x2c382c std::_Deque_iterator<RBX::ScriptContext::WaitingThread,RBX::ScriptContext::WaitingThread&,RBX::ScriptContext::WaitingThread*> std::__uninitialized_copy_aux<std::_Deque_iterator<RBX::ScriptContext::WaitingThread,RBX::ScriptContext::WaitingThread const&,RBX::ScriptContext::WaitingThread const*>,std::_Deque_iterator<RBX::ScriptContext::WaitingThread,RBX::ScriptContext::WaitingThread&,RBX::ScriptContext::WaitingThread*>>(std::_Deque_iterator<RBX::ScriptContext::WaitingThread,RBX::ScriptContext::WaitingThread const&,RBX::ScriptContext::WaitingThread const*>,std::_Deque_iterator<RBX::ScriptContext::WaitingThread,RBX::ScriptContext::WaitingThread const&,RBX::ScriptContext::WaitingThread const*>,std::_Deque_iterator<RBX::ScriptContext::WaitingThread,RBX::ScriptContext::WaitingThread&,RBX::ScriptContext::WaitingThread*>,std::__false_type)")
 }
 
-// 0x2c3fb0 — __ZN3RBX17WaitingScriptsJobC2EN5boost10shared_ptrINS_13ScriptContextEEE
-// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, RBX::TaskScheduler::Job *, int, int, int, int)
-#[doc(alias = "RBX::WaitingScriptsJob::WaitingScriptsJob(rbx_core::SharedPtr<RBX::ScriptContext>)")]
-pub fn stub_0x2c3fb0() -> ! {
-    todo!("0x2c3fb0 RBX::WaitingScriptsJob::WaitingScriptsJob(boost::shared_ptr<RBX::ScriptContext>)")
-}
-
 // 0x2c4130 — __ZN3RBX17WaitingScriptsJobD1Ev
 // type: void __fastcall(RBX::WaitingScriptsJob *__hidden this)
 #[doc(alias = "RBX::WaitingScriptsJob::~WaitingScriptsJob()")]
@@ -288,7 +269,7 @@ pub fn stub_0x2c4130() -> ! {
 
 // 0x2c4200 — __ZN3RBX17WaitingScriptsJobD0Ev
 // type: void __fastcall(RBX::WaitingScriptsJob *__hidden this)
-#[doc(alias = "RBX::WaitingScriptsJob::~WaitingScriptsJob()")]
+#[doc(alias = "RBX::WaitingScriptsJob::~WaitingScriptsJob() [0x2c4200]")]
 pub fn stub_0x2c4200() -> ! {
     todo!("0x2c4200 RBX::WaitingScriptsJob::~WaitingScriptsJob()")
 }
@@ -313,19 +294,6 @@ pub fn stub_0x2c433c() -> ! {
     todo!("0x2c433c RBX::WaitingScriptsJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")
 }
 
-// 0x2c44c0 — __ZN5boost10shared_ptrIN3RBX13ScriptContextEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
-#[doc(alias = "rbx_core::SharedPtr<RBX::ScriptContext>::shared_ptr<RBX::ScriptContext>(Weak<RBX::ScriptContext> const&,boost::detail::sp_nothrow_tag)")]
-pub fn stub_0x2c44c0() -> ! {
-    todo!("0x2c44c0 boost::shared_ptr<RBX::ScriptContext>::shared_ptr<RBX::ScriptContext>(boost::weak_ptr<RBX::ScriptContext> const&,boost::detail::sp_nothrow_tag)")
-}
-
-// 0x2c453c — __ZN3RBX5GcJobC2EN5boost10shared_ptrINS_13ScriptContextEEE
-// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, RBX::TaskScheduler::Job *, int, int, int, int)
-#[doc(alias = "RBX::GcJob::GcJob(rbx_core::SharedPtr<RBX::ScriptContext>)")]
-pub fn stub_0x2c453c() -> ! {
-    todo!("0x2c453c RBX::GcJob::GcJob(boost::shared_ptr<RBX::ScriptContext>)")
-}
-
 // 0x2c4a50 — __ZNSt8_Rb_treeIN11LuaProfiler11StringCache8FunctionESt4pairIKS2_SsESt10_Select1stIS5_ESt4lessIS2_ESaIS5_EE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
 #[doc(alias = "std::_Rb_tree<LuaProfiler::StringCache::Function,std::pair<LuaProfiler::StringCache::Function const,std::string>,std::_Select1st<std::pair<LuaProfiler::StringCache::Function const,std::string>>,std::less<LuaProfiler::StringCache::Function>,std::allocator<std::pair<LuaProfiler::StringCache::Function const,std::string>>>::_M_erase(std::_Rb_tree_node<std::pair<LuaProfiler::StringCache::Function const,std::string>> *)")]
 pub fn stub_0x2c4a50() -> ! {
@@ -341,7 +309,7 @@ pub fn stub_0x2c5440() -> ! {
 
 // 0x2c5444 — __ZN3RBX3Lua15YieldingThreadsC2EPNS_13ScriptContextE
 // type: _DWORD __fastcall(RBX::Lua::YieldingThreads *__hidden this, RBX::ScriptContext *)
-#[doc(alias = "RBX::Lua::YieldingThreads::YieldingThreads(RBX::ScriptContext *)")]
+#[doc(alias = "RBX::Lua::YieldingThreads::YieldingThreads(RBX::ScriptContext *) [0x2c5444]")]
 pub fn stub_0x2c5444() -> ! {
     todo!("0x2c5444 RBX::Lua::YieldingThreads::YieldingThreads(RBX::ScriptContext *)")
 }
@@ -378,13 +346,6 @@ pub fn stub_0x2c5994() -> ! {
     todo!("0x2c5994 RBX::Lua::Bridge<rbx::signals::connection,true>::on_tostring(rbx::signals::connection const&,lua_State *)")
 }
 
-// 0x2c59b0 — __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE11on_tostringERKS6_P9lua_State
-// type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node>,true>::on_tostring(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node> const&,lua_State *)")]
-pub fn stub_0x2c59b0() -> ! {
-    todo!("0x2c59b0 RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_tostring(boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node> const&,lua_State *)")
-}
-
 // 0x2c5a08 — __ZNSt14priority_queueIN3RBX3Lua15YieldingThreads13WaitingThreadESt6vectorIS3_SaIS3_EESt4lessIS3_EE4pushERKS3_
 #[doc(alias = "std::priority_queue<RBX::Lua::YieldingThreads::WaitingThread,std::vector<RBX::Lua::YieldingThreads::WaitingThread,std::allocator<RBX::Lua::YieldingThreads::WaitingThread>>,std::less<RBX::Lua::YieldingThreads::WaitingThread>>::push(RBX::Lua::YieldingThreads::WaitingThread const&)")]
 pub fn stub_0x2c5a08() -> ! {
@@ -414,12 +375,6 @@ pub fn stub_0x2c5cac() -> ! {
 #[doc(alias = "void std::__push_heap<__gnu_cxx::__normal_iterator<RBX::Lua::YieldingThreads::WaitingThread *,std::vector<RBX::Lua::YieldingThreads::WaitingThread,std::allocator<RBX::Lua::YieldingThreads::WaitingThread>>>,int,RBX::Lua::YieldingThreads::WaitingThread,std::less<RBX::Lua::YieldingThreads::WaitingThread>>(__gnu_cxx::__normal_iterator<RBX::Lua::YieldingThreads::WaitingThread *,std::vector<RBX::Lua::YieldingThreads::WaitingThread,std::allocator<RBX::Lua::YieldingThreads::WaitingThread>>>,int,int,RBX::Lua::YieldingThreads::WaitingThread,std::less<RBX::Lua::YieldingThreads::WaitingThread>)")]
 pub fn stub_0x2c5e44() -> ! {
     todo!("0x2c5e44 void std::__push_heap<__gnu_cxx::__normal_iterator<RBX::Lua::YieldingThreads::WaitingThread *,std::vector<RBX::Lua::YieldingThreads::WaitingThread,std::allocator<RBX::Lua::YieldingThreads::WaitingThread>>>,int,RBX::Lua::YieldingThreads::WaitingThread,std::less<RBX::Lua::YieldingThreads::WaitingThread>>(__gnu_cxx::__normal_iterator<RBX::Lua::YieldingThreads::WaitingThread *,std::vector<RBX::Lua::YieldingThreads::WaitingThread,std::allocator<RBX::Lua::YieldingThreads::WaitingThread>>>,int,int,RBX::Lua::YieldingThreads::WaitingThread,std::less<RBX::Lua::YieldingThreads::WaitingThread>)")
-}
-
-// 0x2c5ec8 — __ZN5boost13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEaSERKS4_
-#[doc(alias = "rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>::operator=(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef> const&)")]
-pub fn stub_0x2c5ec8() -> ! {
-    todo!("0x2c5ec8 boost::intrusive_ptr<RBX::Lua::WeakThreadRef>::operator=(boost::intrusive_ptr<RBX::Lua::WeakThreadRef> const&)")
 }
 
 // 0x2c5ef0 — __ZNSt6vectorIN3RBX3Lua15YieldingThreads13WaitingThreadESaIS3_EE9push_backERKS3_
@@ -487,7 +442,7 @@ pub fn stub_0x2c6a74() -> ! {
 
 // 0x2c6a78 — __ZN3RBX11ScriptStatsC2Ev
 // type: _DWORD __fastcall(RBX::ScriptStats *__hidden this)
-#[doc(alias = "RBX::ScriptStats::ScriptStats(void)")]
+#[doc(alias = "RBX::ScriptStats::ScriptStats(void) [0x2c6a78]")]
 pub fn stub_0x2c6a78() -> ! {
     todo!("0x2c6a78 RBX::ScriptStats::ScriptStats(void)")
 }
@@ -543,7 +498,7 @@ pub fn stub_0x2c756c() -> ! {
 
 // 0x2c75a8 — __ZN3RBX12LuaStatsItemD0Ev
 // type: void __fastcall(RBX::LuaStatsItem *__hidden this)
-#[doc(alias = "RBX::LuaStatsItem::~LuaStatsItem()")]
+#[doc(alias = "RBX::LuaStatsItem::~LuaStatsItem() [0x2c75a8]")]
 pub fn stub_0x2c75a8() -> ! {
     todo!("0x2c75a8 RBX::LuaStatsItem::~LuaStatsItem()")
 }
@@ -557,21 +512,21 @@ pub fn stub_0x2c767c() -> ! {
 
 // 0x2c76bc — __ZThn32_N3RBX12LuaStatsItemD0Ev
 // type: void __fastcall(RBX::LuaStatsItem *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem() [0x2c76bc]")]
 pub fn stub_0x2c76bc() -> ! {
     todo!("0x2c76bc non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")
 }
 
 // 0x2c7794 — __ZThn36_N3RBX12LuaStatsItemD1Ev
 // type: void __fastcall(RBX::LuaStatsItem *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem() [0x2c7794]")]
 pub fn stub_0x2c7794() -> ! {
     todo!("0x2c7794 non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")
 }
 
 // 0x2c77d4 — __ZThn36_N3RBX12LuaStatsItemD0Ev
 // type: void __fastcall(RBX::LuaStatsItem *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem() [0x2c77d4]")]
 pub fn stub_0x2c77d4() -> ! {
     todo!("0x2c77d4 non-virtual thunk toRBX::LuaStatsItem::~LuaStatsItem()")
 }
@@ -648,7 +603,7 @@ pub fn stub_0x2c94ac() -> ! {
 }
 
 // 0x2c94b0 — __ZN3RBX3Lua13WeakThreadRefC2EP9lua_State
-#[doc(alias = "RBX::Lua::WeakThreadRef::WeakThreadRef(lua_State *)")]
+#[doc(alias = "RBX::Lua::WeakThreadRef::WeakThreadRef(lua_State *) [0x2c94b0]")]
 pub fn stub_0x2c94b0() -> ! {
     todo!("0x2c94b0 RBX::Lua::WeakThreadRef::WeakThreadRef(lua_State *)")
 }

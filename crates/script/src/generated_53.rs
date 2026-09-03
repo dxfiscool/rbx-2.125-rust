@@ -125,7 +125,7 @@ pub fn stub_0x4fa3f8() -> ! {
 }
 
 // 0x4fa5ac — __ZN3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEED0Ev
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::~EnumPropDescriptor()")]
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::~EnumPropDescriptor() [0x4fa5ac]")]
 pub fn stub_0x4fa5ac() -> ! {
     todo!("0x4fa5ac RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::~EnumPropDescriptor()")
 }
@@ -284,7 +284,7 @@ pub fn stub_0x4faee8() -> ! {
 
 // 0x4faeec — __ZN3RBX16SecurePlayerGameC2EPNS_4VerbEPKcb
 // type: _DWORD __fastcall(RBX::SecurePlayerGame *__hidden this, RBX::Verb *, const char *, bool)
-#[doc(alias = "RBX::SecurePlayerGame::SecurePlayerGame(RBX::Verb *,char const*,bool)")]
+#[doc(alias = "RBX::SecurePlayerGame::SecurePlayerGame(RBX::Verb *,char const*,bool) [0x4faeec]")]
 pub fn stub_0x4faeec() -> ! {
     todo!("0x4faeec RBX::SecurePlayerGame::SecurePlayerGame(RBX::Verb *,char const*,bool)")
 }
@@ -312,7 +312,7 @@ pub fn stub_0x4fba28() -> ! {
 
 // 0x4fba2c — __ZN3RBX19UnsecuredStudioGameC2EPNS_4VerbEPKcb
 // type: _DWORD __fastcall(RBX::UnsecuredStudioGame *__hidden this, RBX::Verb *, const char *, bool)
-#[doc(alias = "RBX::UnsecuredStudioGame::UnsecuredStudioGame(RBX::Verb *,char const*,bool)")]
+#[doc(alias = "RBX::UnsecuredStudioGame::UnsecuredStudioGame(RBX::Verb *,char const*,bool) [0x4fba2c]")]
 pub fn stub_0x4fba2c() -> ! {
     todo!("0x4fba2c RBX::UnsecuredStudioGame::UnsecuredStudioGame(RBX::Verb *,char const*,bool)")
 }
@@ -340,14 +340,14 @@ pub fn stub_0x4fc0c8() -> ! {
 
 // 0x4fc348 — __ZN3RBX4GameD0Ev
 // type: void __fastcall(RBX::Game *__hidden this)
-#[doc(alias = "RBX::Game::~Game()")]
+#[doc(alias = "RBX::Game::~Game() [0x4fc348]")]
 pub fn stub_0x4fc348() -> ! {
     todo!("0x4fc348 RBX::Game::~Game()")
 }
 
 // 0x4fc3e8 — __ZN3RBX4GameD1Ev
 // type: void __fastcall(RBX::Game *__hidden this)
-#[doc(alias = "RBX::Game::~Game()")]
+#[doc(alias = "RBX::Game::~Game() [0x4fc3e8]")]
 pub fn stub_0x4fc3e8() -> ! {
     todo!("0x4fc3e8 RBX::Game::~Game()")
 }
@@ -480,7 +480,7 @@ pub fn stub_0x4fd304() -> ! {
 
 // 0x4fd308 — __ZN3RBX16SecurePlayerGameD0Ev
 // type: void __fastcall(RBX::SecurePlayerGame *__hidden this)
-#[doc(alias = "RBX::SecurePlayerGame::~SecurePlayerGame()")]
+#[doc(alias = "RBX::SecurePlayerGame::~SecurePlayerGame() [0x4fd308]")]
 pub fn stub_0x4fd308() -> ! {
     todo!("0x4fd308 RBX::SecurePlayerGame::~SecurePlayerGame()")
 }
@@ -494,7 +494,7 @@ pub fn stub_0x4fd3a8() -> ! {
 
 // 0x4fd3ac — __ZN3RBX19UnsecuredStudioGameD0Ev
 // type: void __fastcall(RBX::UnsecuredStudioGame *__hidden this)
-#[doc(alias = "RBX::UnsecuredStudioGame::~UnsecuredStudioGame()")]
+#[doc(alias = "RBX::UnsecuredStudioGame::~UnsecuredStudioGame() [0x4fd3ac]")]
 pub fn stub_0x4fd3ac() -> ! {
     todo!("0x4fd3ac RBX::UnsecuredStudioGame::~UnsecuredStudioGame()")
 }
@@ -619,7 +619,7 @@ pub fn stub_0x4fec88() -> ! {
 }
 
 // 0x4fec8c — __ZN5boost6detail17sp_counted_impl_pIN3RBX11CommonVerbsEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::CommonVerbs>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::CommonVerbs>::~sp_counted_impl_p() [0x4fec8c]")]
 pub fn stub_0x4fec8c() -> ! {
     todo!("0x4fec8c boost::detail::sp_counted_impl_p<RBX::CommonVerbs>::~sp_counted_impl_p()")
 }

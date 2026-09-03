@@ -241,7 +241,7 @@ pub fn stub_0xceee4() -> ! {
 
 // 0xcef08 — __ZN4FMOD12ChannelMusicD1Ev
 // type: void __fastcall(FMOD::ChannelMusic *__hidden this)
-#[doc(alias = "FMOD::ChannelMusic::~ChannelMusic()")]
+#[doc(alias = "FMOD::ChannelMusic::~ChannelMusic() [0xcef08]")]
 pub fn stub_0xcef08() -> ! {
     todo!("0xcef08 FMOD::ChannelMusic::~ChannelMusic()")
 }
@@ -615,7 +615,7 @@ pub fn stub_0xd1718() -> ! {
 
 // 0xd17f0 — __ZN4FMOD6OutputC1Ev
 // type: _DWORD __fastcall(FMOD::Output *__hidden this)
-#[doc(alias = "FMOD::Output::Output(void)")]
+#[doc(alias = "FMOD::Output::Output(void) [0xd17f0]")]
 pub fn stub_0xd17f0() -> ! {
     todo!("0xd17f0 FMOD::Output::Output(void)")
 }
@@ -966,7 +966,7 @@ pub fn stub_0xd3e4c() -> ! {
 
 // 0xd3e8c — __ZN4FMOD14OutputEmulatedC1Ev
 // type: _DWORD __fastcall(FMOD::OutputEmulated *__hidden this)
-#[doc(alias = "FMOD::OutputEmulated::OutputEmulated(void)")]
+#[doc(alias = "FMOD::OutputEmulated::OutputEmulated(void) [0xd3e8c]")]
 pub fn stub_0xd3e8c() -> ! {
     todo!("0xd3e8c FMOD::OutputEmulated::OutputEmulated(void)")
 }

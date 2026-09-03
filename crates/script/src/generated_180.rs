@@ -453,7 +453,7 @@ pub fn stub_0x101c64() -> ! {
 
 // 0x101c68 — __ZN4FMOD13MemoryTrackerC1Ev
 // type: _DWORD __fastcall(FMOD::MemoryTracker *__hidden this)
-#[doc(alias = "FMOD::MemoryTracker::MemoryTracker(void)")]
+#[doc(alias = "FMOD::MemoryTracker::MemoryTracker(void) [0x101c68]")]
 #[doc(alias = "__ZN4FMOD13MemoryTrackerC1Ev")]
 pub fn stub_0x101c68() -> ! {
     todo!("0x101c68 FMOD::MemoryTracker::MemoryTracker(void)")
@@ -493,7 +493,7 @@ pub fn stub_0x101e4c() -> ! {
 
 // 0x101e74 — __ZN4FMOD14ProfileChannelC1Ev
 // type: _DWORD __fastcall(FMOD::ProfileChannel *__hidden this)
-#[doc(alias = "FMOD::ProfileChannel::ProfileChannel(void)")]
+#[doc(alias = "FMOD::ProfileChannel::ProfileChannel(void) [0x101e74]")]
 #[doc(alias = "__ZN4FMOD14ProfileChannelC1Ev")]
 pub fn stub_0x101e74() -> ! {
     todo!("0x101e74 FMOD::ProfileChannel::ProfileChannel(void)")
@@ -548,7 +548,7 @@ pub fn stub_0x10207c() -> ! {
 
 // 0x1020a4 — __ZN4FMOD12ProfileCodecC1Ev
 // type: _DWORD __fastcall(FMOD::ProfileCodec *__hidden this)
-#[doc(alias = "FMOD::ProfileCodec::ProfileCodec(void)")]
+#[doc(alias = "FMOD::ProfileCodec::ProfileCodec(void) [0x1020a4]")]
 #[doc(alias = "__ZN4FMOD12ProfileCodecC1Ev")]
 pub fn stub_0x1020a4() -> ! {
     todo!("0x1020a4 FMOD::ProfileCodec::ProfileCodec(void)")

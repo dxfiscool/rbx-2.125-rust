@@ -719,7 +719,7 @@ pub fn stub_0x3cdc00() -> ! {
 // 0x3cdd10 — __ZN3rbx7signals6signalIFvbEE13callable_slotIN5boost8functionIS2_EEED0Ev
 // type: void __fastcall(_DWORD *)
 // was: void __fastcall(_DWORD *)
-#[doc(alias = "rbx::signals::signal<void ()(bool)>::callable_slot<boost::function<void ()(bool)>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(bool)>::callable_slot<boost::function<void ()(bool)>>::~callable_slot() [0x3cdd10]")]
 pub fn stub_0x3cdd10() -> ! {
     todo!("0x3cdd10 __ZN3rbx7signals6signalIFvbEE13callable_slotIN5boost8functionIS2_EEED0Ev")
 }
@@ -743,7 +743,7 @@ pub fn stub_0x3cdf30() -> ! {
 // 0x3ce040 — __ZN3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost8functionIS3_EELi1ES3_ED0Ev
 // type: void __fastcall(_DWORD *)
 // was: void __fastcall(_DWORD *)
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::function<void ()(bool)>,1,void ()(bool)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::function<void ()(bool)>,1,void ()(bool)>::~callable() [0x3ce040]")]
 pub fn stub_0x3ce040() -> ! {
     todo!("0x3ce040 __ZN3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost8functionIS3_EELi1ES3_ED0Ev")
 }
@@ -759,7 +759,7 @@ pub fn stub_0x3ce170() -> ! {
 // 0x3d16d8 — __ZN3RBX6CameraD2Ev
 // type: void __fastcall(RBX::Camera *this, int, int, int)
 // was: void __fastcall(RBX::Camera *this, int, int, int)
-#[doc(alias = "RBX::Camera::~Camera()")]
+#[doc(alias = "RBX::Camera::~Camera() [0x3d16d8]")]
 pub fn stub_0x3d16d8() -> ! {
     todo!("0x3d16d8 __ZN3RBX6CameraD2Ev")
 }
@@ -885,7 +885,7 @@ pub fn stub_0x3d367c() -> ! {
 // 0x3d3680 — __ZN3RBX20ChangeHistoryServiceC2Ev
 // type: __guard *__fastcall(RBX::ChangeHistoryService *this)
 // was: __guard *__fastcall(RBX::ChangeHistoryService *this)
-#[doc(alias = "RBX::ChangeHistoryService::ChangeHistoryService(void)")]
+#[doc(alias = "RBX::ChangeHistoryService::ChangeHistoryService(void) [0x3d3680]")]
 pub fn stub_0x3d3680() -> ! {
     todo!("0x3d3680 __ZN3RBX20ChangeHistoryServiceC2Ev")
 }
@@ -901,7 +901,7 @@ pub fn stub_0x3d39cc() -> ! {
 // 0x3d3a6c — __ZN3RBX20ChangeHistoryServiceD1Ev
 // type: void __fastcall(RBX::ChangeHistoryService *__hidden this)
 // was: void __fastcall(RBX::ChangeHistoryService *__hidden this)
-#[doc(alias = "RBX::ChangeHistoryService::~ChangeHistoryService()")]
+#[doc(alias = "RBX::ChangeHistoryService::~ChangeHistoryService() [0x3d3a6c]")]
 pub fn stub_0x3d3a6c() -> ! {
     todo!("0x3d3a6c __ZN3RBX20ChangeHistoryServiceD1Ev")
 }
@@ -917,7 +917,7 @@ pub fn stub_0x3d3a70() -> ! {
 // 0x3d3a78 — __ZThn36_N3RBX20ChangeHistoryServiceD0Ev
 // type: void __fastcall(RBX::ChangeHistoryService *__hidden this)
 // was: void __fastcall(RBX::ChangeHistoryService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")]
+#[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService() [0x3d3a78]")]
 pub fn stub_0x3d3a78() -> ! {
     todo!("0x3d3a78 __ZThn36_N3RBX20ChangeHistoryServiceD0Ev")
 }
@@ -925,7 +925,7 @@ pub fn stub_0x3d3a78() -> ! {
 // 0x3d3a80 — __ZN3RBX20ChangeHistoryServiceD2Ev
 // type: void __fastcall(RBX::ChangeHistoryService *this, int, int, int)
 // was: void __fastcall(RBX::ChangeHistoryService *this, int, int, int)
-#[doc(alias = "RBX::ChangeHistoryService::~ChangeHistoryService()")]
+#[doc(alias = "RBX::ChangeHistoryService::~ChangeHistoryService() [0x3d3a80]")]
 pub fn stub_0x3d3a80() -> ! {
     todo!("0x3d3a80 __ZN3RBX20ChangeHistoryServiceD2Ev")
 }
@@ -933,7 +933,7 @@ pub fn stub_0x3d3a80() -> ! {
 // 0x3d3f08 — __ZThn32_N3RBX20ChangeHistoryServiceD1Ev
 // type: void __fastcall(RBX::ChangeHistoryService *this, int, int, int)
 // was: void __fastcall(RBX::ChangeHistoryService *this, int, int, int)
-#[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")]
+#[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService() [0x3d3f08]")]
 pub fn stub_0x3d3f08() -> ! {
     todo!("0x3d3f08 __ZThn32_N3RBX20ChangeHistoryServiceD1Ev")
 }
@@ -941,7 +941,7 @@ pub fn stub_0x3d3f08() -> ! {
 // 0x3d3f10 — __ZThn36_N3RBX20ChangeHistoryServiceD1Ev
 // type: void __fastcall(RBX::ChangeHistoryService *this, int, int, int)
 // was: void __fastcall(RBX::ChangeHistoryService *this, int, int, int)
-#[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")]
+#[doc(alias = "non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService() [0x3d3f10]")]
 pub fn stub_0x3d3f10() -> ! {
     todo!("0x3d3f10 __ZThn36_N3RBX20ChangeHistoryServiceD1Ev")
 }

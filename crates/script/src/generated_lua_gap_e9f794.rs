@@ -44,7 +44,7 @@ pub fn stub_0xe9f7d4() -> ! {
 
 // 0xe9f7d8 — __ZN4Ogre26ColourInterpolatorAffector15CmdColourAdjustD0Ev
 // type: void __fastcall(Ogre::ColourInterpolatorAffector::CmdColourAdjust *__hidden this)
-#[doc(alias = "Ogre::ColourInterpolatorAffector::CmdColourAdjust::~CmdColourAdjust()")]
+#[doc(alias = "Ogre::ColourInterpolatorAffector::CmdColourAdjust::~CmdColourAdjust() [0xe9f7d8]")]
 #[doc(alias = "__ZN4Ogre26ColourInterpolatorAffector15CmdColourAdjustD0Ev")]
 pub fn stub_0xe9f7d8() -> ! {
     todo!("0xe9f7d8 Ogre::ColourInterpolatorAffector::CmdColourAdjust::~CmdColourAdjust()")
@@ -52,7 +52,7 @@ pub fn stub_0xe9f7d8() -> ! {
 
 // 0xe9f7e4 — __ZN4Ogre26ColourInterpolatorAffector13CmdTimeAdjustD0Ev
 // type: void __fastcall(Ogre::ColourInterpolatorAffector::CmdTimeAdjust *__hidden this)
-#[doc(alias = "Ogre::ColourInterpolatorAffector::CmdTimeAdjust::~CmdTimeAdjust()")]
+#[doc(alias = "Ogre::ColourInterpolatorAffector::CmdTimeAdjust::~CmdTimeAdjust() [0xe9f7e4]")]
 #[doc(alias = "__ZN4Ogre26ColourInterpolatorAffector13CmdTimeAdjustD0Ev")]
 pub fn stub_0xe9f7e4() -> ! {
     todo!("0xe9f7e4 Ogre::ColourInterpolatorAffector::CmdTimeAdjust::~CmdTimeAdjust()")
@@ -68,7 +68,7 @@ pub fn stub_0xe9f7f0() -> ! {
 
 // 0xe9f7fc — __ZN4Ogre26ColourInterpolatorAffectorD0Ev
 // type: void __fastcall(Ogre::ColourInterpolatorAffector *__hidden this)
-#[doc(alias = "Ogre::ColourInterpolatorAffector::~ColourInterpolatorAffector()")]
+#[doc(alias = "Ogre::ColourInterpolatorAffector::~ColourInterpolatorAffector() [0xe9f7fc]")]
 #[doc(alias = "__ZN4Ogre26ColourInterpolatorAffectorD0Ev")]
 pub fn stub_0xe9f7fc() -> ! {
     todo!("0xe9f7fc Ogre::ColourInterpolatorAffector::~ColourInterpolatorAffector()")
@@ -84,7 +84,7 @@ pub fn stub_0xe9f934() -> ! {
 
 // 0xe9f940 — __ZN4Ogre15CylinderEmitterC2EPNS_14ParticleSystemE
 // type: _DWORD __fastcall(Ogre::CylinderEmitter *__hidden this, Ogre::ParticleSystem *)
-#[doc(alias = "Ogre::CylinderEmitter::CylinderEmitter(Ogre::ParticleSystem *)")]
+#[doc(alias = "Ogre::CylinderEmitter::CylinderEmitter(Ogre::ParticleSystem *) [0xe9f940]")]
 #[doc(alias = "__ZN4Ogre15CylinderEmitterC2EPNS_14ParticleSystemE")]
 pub fn stub_0xe9f940() -> ! {
     todo!("0xe9f940 Ogre::CylinderEmitter::CylinderEmitter(Ogre::ParticleSystem *)")
@@ -108,7 +108,7 @@ pub fn stub_0xe9fbac() -> ! {
 
 // 0xe9fbb8 — __ZN4Ogre15CylinderEmitterD0Ev
 // type: void __fastcall(Ogre::CylinderEmitter *__hidden this)
-#[doc(alias = "Ogre::CylinderEmitter::~CylinderEmitter()")]
+#[doc(alias = "Ogre::CylinderEmitter::~CylinderEmitter() [0xe9fbb8]")]
 #[doc(alias = "__ZN4Ogre15CylinderEmitterD0Ev")]
 pub fn stub_0xe9fbb8() -> ! {
     todo!("0xe9fbb8 Ogre::CylinderEmitter::~CylinderEmitter()")
@@ -124,7 +124,7 @@ pub fn stub_0xe9fc7c() -> ! {
 
 // 0xe9fc88 — __ZN4Ogre22DeflectorPlaneAffectorC2EPNS_14ParticleSystemE
 // type: _DWORD __fastcall(Ogre::DeflectorPlaneAffector *__hidden this, Ogre::ParticleSystem *)
-#[doc(alias = "Ogre::DeflectorPlaneAffector::DeflectorPlaneAffector(Ogre::ParticleSystem *)")]
+#[doc(alias = "Ogre::DeflectorPlaneAffector::DeflectorPlaneAffector(Ogre::ParticleSystem *) [0xe9fc88]")]
 #[doc(alias = "__ZN4Ogre22DeflectorPlaneAffectorC2EPNS_14ParticleSystemE")]
 pub fn stub_0xe9fc88() -> ! {
     todo!("0xe9fc88 Ogre::DeflectorPlaneAffector::DeflectorPlaneAffector(Ogre::ParticleSystem *)")
@@ -212,7 +212,7 @@ pub fn stub_0xea0884() -> ! {
 
 // 0xea0888 — __ZN4Ogre22DeflectorPlaneAffector13CmdPlanePointD0Ev
 // type: void __fastcall(Ogre::DeflectorPlaneAffector::CmdPlanePoint *__hidden this)
-#[doc(alias = "Ogre::DeflectorPlaneAffector::CmdPlanePoint::~CmdPlanePoint()")]
+#[doc(alias = "Ogre::DeflectorPlaneAffector::CmdPlanePoint::~CmdPlanePoint() [0xea0888]")]
 #[doc(alias = "__ZN4Ogre22DeflectorPlaneAffector13CmdPlanePointD0Ev")]
 pub fn stub_0xea0888() -> ! {
     todo!("0xea0888 Ogre::DeflectorPlaneAffector::CmdPlanePoint::~CmdPlanePoint()")
@@ -220,7 +220,7 @@ pub fn stub_0xea0888() -> ! {
 
 // 0xea0894 — __ZN4Ogre22DeflectorPlaneAffector14CmdPlaneNormalD0Ev
 // type: void __fastcall(Ogre::DeflectorPlaneAffector::CmdPlaneNormal *__hidden this)
-#[doc(alias = "Ogre::DeflectorPlaneAffector::CmdPlaneNormal::~CmdPlaneNormal()")]
+#[doc(alias = "Ogre::DeflectorPlaneAffector::CmdPlaneNormal::~CmdPlaneNormal() [0xea0894]")]
 #[doc(alias = "__ZN4Ogre22DeflectorPlaneAffector14CmdPlaneNormalD0Ev")]
 pub fn stub_0xea0894() -> ! {
     todo!("0xea0894 Ogre::DeflectorPlaneAffector::CmdPlaneNormal::~CmdPlaneNormal()")
@@ -228,7 +228,7 @@ pub fn stub_0xea0894() -> ! {
 
 // 0xea08a0 — __ZN4Ogre22DeflectorPlaneAffector9CmdBounceD0Ev
 // type: void __fastcall(Ogre::DeflectorPlaneAffector::CmdBounce *__hidden this)
-#[doc(alias = "Ogre::DeflectorPlaneAffector::CmdBounce::~CmdBounce()")]
+#[doc(alias = "Ogre::DeflectorPlaneAffector::CmdBounce::~CmdBounce() [0xea08a0]")]
 #[doc(alias = "__ZN4Ogre22DeflectorPlaneAffector9CmdBounceD0Ev")]
 pub fn stub_0xea08a0() -> ! {
     todo!("0xea08a0 Ogre::DeflectorPlaneAffector::CmdBounce::~CmdBounce()")
@@ -244,7 +244,7 @@ pub fn stub_0xea08ac() -> ! {
 
 // 0xea08b8 — __ZN4Ogre22DeflectorPlaneAffectorD0Ev
 // type: void __fastcall(Ogre::DeflectorPlaneAffector *__hidden this)
-#[doc(alias = "Ogre::DeflectorPlaneAffector::~DeflectorPlaneAffector()")]
+#[doc(alias = "Ogre::DeflectorPlaneAffector::~DeflectorPlaneAffector() [0xea08b8]")]
 #[doc(alias = "__ZN4Ogre22DeflectorPlaneAffectorD0Ev")]
 pub fn stub_0xea08b8() -> ! {
     todo!("0xea08b8 Ogre::DeflectorPlaneAffector::~DeflectorPlaneAffector()")
@@ -260,7 +260,7 @@ pub fn stub_0xea09d0() -> ! {
 
 // 0xea09dc — __ZN4Ogre27DirectionRandomiserAffectorC2EPNS_14ParticleSystemE
 // type: _DWORD __fastcall(Ogre::DirectionRandomiserAffector *__hidden this, Ogre::ParticleSystem *)
-#[doc(alias = "Ogre::DirectionRandomiserAffector::DirectionRandomiserAffector(Ogre::ParticleSystem *)")]
+#[doc(alias = "Ogre::DirectionRandomiserAffector::DirectionRandomiserAffector(Ogre::ParticleSystem *) [0xea09dc]")]
 #[doc(alias = "__ZN4Ogre27DirectionRandomiserAffectorC2EPNS_14ParticleSystemE")]
 pub fn stub_0xea09dc() -> ! {
     todo!("0xea09dc Ogre::DirectionRandomiserAffector::DirectionRandomiserAffector(Ogre::ParticleSystem *)")
@@ -348,7 +348,7 @@ pub fn stub_0xea14d4() -> ! {
 
 // 0xea14d8 — __ZN4Ogre27DirectionRandomiserAffector13CmdRandomnessD0Ev
 // type: void __fastcall(Ogre::DirectionRandomiserAffector::CmdRandomness *__hidden this)
-#[doc(alias = "Ogre::DirectionRandomiserAffector::CmdRandomness::~CmdRandomness()")]
+#[doc(alias = "Ogre::DirectionRandomiserAffector::CmdRandomness::~CmdRandomness() [0xea14d8]")]
 #[doc(alias = "__ZN4Ogre27DirectionRandomiserAffector13CmdRandomnessD0Ev")]
 pub fn stub_0xea14d8() -> ! {
     todo!("0xea14d8 Ogre::DirectionRandomiserAffector::CmdRandomness::~CmdRandomness()")
@@ -356,7 +356,7 @@ pub fn stub_0xea14d8() -> ! {
 
 // 0xea14e4 — __ZN4Ogre27DirectionRandomiserAffector8CmdScopeD0Ev
 // type: void __fastcall(Ogre::DirectionRandomiserAffector::CmdScope *__hidden this)
-#[doc(alias = "Ogre::DirectionRandomiserAffector::CmdScope::~CmdScope()")]
+#[doc(alias = "Ogre::DirectionRandomiserAffector::CmdScope::~CmdScope() [0xea14e4]")]
 #[doc(alias = "__ZN4Ogre27DirectionRandomiserAffector8CmdScopeD0Ev")]
 pub fn stub_0xea14e4() -> ! {
     todo!("0xea14e4 Ogre::DirectionRandomiserAffector::CmdScope::~CmdScope()")
@@ -364,7 +364,7 @@ pub fn stub_0xea14e4() -> ! {
 
 // 0xea14f0 — __ZN4Ogre27DirectionRandomiserAffector15CmdKeepVelocityD0Ev
 // type: void __fastcall(Ogre::DirectionRandomiserAffector::CmdKeepVelocity *__hidden this)
-#[doc(alias = "Ogre::DirectionRandomiserAffector::CmdKeepVelocity::~CmdKeepVelocity()")]
+#[doc(alias = "Ogre::DirectionRandomiserAffector::CmdKeepVelocity::~CmdKeepVelocity() [0xea14f0]")]
 #[doc(alias = "__ZN4Ogre27DirectionRandomiserAffector15CmdKeepVelocityD0Ev")]
 pub fn stub_0xea14f0() -> ! {
     todo!("0xea14f0 Ogre::DirectionRandomiserAffector::CmdKeepVelocity::~CmdKeepVelocity()")
@@ -380,7 +380,7 @@ pub fn stub_0xea14fc() -> ! {
 
 // 0xea1508 — __ZN4Ogre27DirectionRandomiserAffectorD0Ev
 // type: void __fastcall(Ogre::DirectionRandomiserAffector *__hidden this)
-#[doc(alias = "Ogre::DirectionRandomiserAffector::~DirectionRandomiserAffector()")]
+#[doc(alias = "Ogre::DirectionRandomiserAffector::~DirectionRandomiserAffector() [0xea1508]")]
 #[doc(alias = "__ZN4Ogre27DirectionRandomiserAffectorD0Ev")]
 pub fn stub_0xea1508() -> ! {
     todo!("0xea1508 Ogre::DirectionRandomiserAffector::~DirectionRandomiserAffector()")
@@ -396,7 +396,7 @@ pub fn stub_0xea161c() -> ! {
 
 // 0xea1628 — __ZN4Ogre16EllipsoidEmitterC2EPNS_14ParticleSystemE
 // type: _DWORD __fastcall(Ogre::EllipsoidEmitter *__hidden this, Ogre::ParticleSystem *)
-#[doc(alias = "Ogre::EllipsoidEmitter::EllipsoidEmitter(Ogre::ParticleSystem *)")]
+#[doc(alias = "Ogre::EllipsoidEmitter::EllipsoidEmitter(Ogre::ParticleSystem *) [0xea1628]")]
 #[doc(alias = "__ZN4Ogre16EllipsoidEmitterC2EPNS_14ParticleSystemE")]
 pub fn stub_0xea1628() -> ! {
     todo!("0xea1628 Ogre::EllipsoidEmitter::EllipsoidEmitter(Ogre::ParticleSystem *)")
@@ -420,7 +420,7 @@ pub fn stub_0xea18ac() -> ! {
 
 // 0xea18b8 — __ZN4Ogre16EllipsoidEmitterD0Ev
 // type: void __fastcall(Ogre::EllipsoidEmitter *__hidden this)
-#[doc(alias = "Ogre::EllipsoidEmitter::~EllipsoidEmitter()")]
+#[doc(alias = "Ogre::EllipsoidEmitter::~EllipsoidEmitter() [0xea18b8]")]
 #[doc(alias = "__ZN4Ogre16EllipsoidEmitterD0Ev")]
 pub fn stub_0xea18b8() -> ! {
     todo!("0xea18b8 Ogre::EllipsoidEmitter::~EllipsoidEmitter()")
@@ -436,7 +436,7 @@ pub fn stub_0xea197c() -> ! {
 
 // 0xea1988 — __ZN4Ogre22HollowEllipsoidEmitterC2EPNS_14ParticleSystemE
 // type: _DWORD __fastcall(Ogre::HollowEllipsoidEmitter *__hidden this, Ogre::ParticleSystem *)
-#[doc(alias = "Ogre::HollowEllipsoidEmitter::HollowEllipsoidEmitter(Ogre::ParticleSystem *)")]
+#[doc(alias = "Ogre::HollowEllipsoidEmitter::HollowEllipsoidEmitter(Ogre::ParticleSystem *) [0xea1988]")]
 #[doc(alias = "__ZN4Ogre22HollowEllipsoidEmitterC2EPNS_14ParticleSystemE")]
 pub fn stub_0xea1988() -> ! {
     todo!("0xea1988 Ogre::HollowEllipsoidEmitter::HollowEllipsoidEmitter(Ogre::ParticleSystem *)")
@@ -524,7 +524,7 @@ pub fn stub_0xea2548() -> ! {
 
 // 0xea254c — __ZN4Ogre22HollowEllipsoidEmitter9CmdInnerXD0Ev
 // type: void __fastcall(Ogre::HollowEllipsoidEmitter::CmdInnerX *__hidden this)
-#[doc(alias = "Ogre::HollowEllipsoidEmitter::CmdInnerX::~CmdInnerX()")]
+#[doc(alias = "Ogre::HollowEllipsoidEmitter::CmdInnerX::~CmdInnerX() [0xea254c]")]
 #[doc(alias = "__ZN4Ogre22HollowEllipsoidEmitter9CmdInnerXD0Ev")]
 pub fn stub_0xea254c() -> ! {
     todo!("0xea254c Ogre::HollowEllipsoidEmitter::CmdInnerX::~CmdInnerX()")
@@ -532,7 +532,7 @@ pub fn stub_0xea254c() -> ! {
 
 // 0xea2558 — __ZN4Ogre22HollowEllipsoidEmitter9CmdInnerYD0Ev
 // type: void __fastcall(Ogre::HollowEllipsoidEmitter::CmdInnerY *__hidden this)
-#[doc(alias = "Ogre::HollowEllipsoidEmitter::CmdInnerY::~CmdInnerY()")]
+#[doc(alias = "Ogre::HollowEllipsoidEmitter::CmdInnerY::~CmdInnerY() [0xea2558]")]
 #[doc(alias = "__ZN4Ogre22HollowEllipsoidEmitter9CmdInnerYD0Ev")]
 pub fn stub_0xea2558() -> ! {
     todo!("0xea2558 Ogre::HollowEllipsoidEmitter::CmdInnerY::~CmdInnerY()")
@@ -540,7 +540,7 @@ pub fn stub_0xea2558() -> ! {
 
 // 0xea2564 — __ZN4Ogre22HollowEllipsoidEmitter9CmdInnerZD0Ev
 // type: void __fastcall(Ogre::HollowEllipsoidEmitter::CmdInnerZ *__hidden this)
-#[doc(alias = "Ogre::HollowEllipsoidEmitter::CmdInnerZ::~CmdInnerZ()")]
+#[doc(alias = "Ogre::HollowEllipsoidEmitter::CmdInnerZ::~CmdInnerZ() [0xea2564]")]
 #[doc(alias = "__ZN4Ogre22HollowEllipsoidEmitter9CmdInnerZD0Ev")]
 pub fn stub_0xea2564() -> ! {
     todo!("0xea2564 Ogre::HollowEllipsoidEmitter::CmdInnerZ::~CmdInnerZ()")
@@ -556,7 +556,7 @@ pub fn stub_0xea2570() -> ! {
 
 // 0xea257c — __ZN4Ogre22HollowEllipsoidEmitterD0Ev
 // type: void __fastcall(Ogre::HollowEllipsoidEmitter *__hidden this)
-#[doc(alias = "Ogre::HollowEllipsoidEmitter::~HollowEllipsoidEmitter()")]
+#[doc(alias = "Ogre::HollowEllipsoidEmitter::~HollowEllipsoidEmitter() [0xea257c]")]
 #[doc(alias = "__ZN4Ogre22HollowEllipsoidEmitterD0Ev")]
 pub fn stub_0xea257c() -> ! {
     todo!("0xea257c Ogre::HollowEllipsoidEmitter::~HollowEllipsoidEmitter()")
@@ -572,7 +572,7 @@ pub fn stub_0xea2690() -> ! {
 
 // 0xea269c — __ZN4Ogre19LinearForceAffectorC2EPNS_14ParticleSystemE
 // type: _DWORD __fastcall(Ogre::LinearForceAffector *__hidden this, Ogre::ParticleSystem *)
-#[doc(alias = "Ogre::LinearForceAffector::LinearForceAffector(Ogre::ParticleSystem *)")]
+#[doc(alias = "Ogre::LinearForceAffector::LinearForceAffector(Ogre::ParticleSystem *) [0xea269c]")]
 #[doc(alias = "__ZN4Ogre19LinearForceAffectorC2EPNS_14ParticleSystemE")]
 pub fn stub_0xea269c() -> ! {
     todo!("0xea269c Ogre::LinearForceAffector::LinearForceAffector(Ogre::ParticleSystem *)")
@@ -636,7 +636,7 @@ pub fn stub_0xea2f88() -> ! {
 
 // 0xea2f8c — __ZN4Ogre19LinearForceAffector14CmdForceVectorD0Ev
 // type: void __fastcall(Ogre::LinearForceAffector::CmdForceVector *__hidden this)
-#[doc(alias = "Ogre::LinearForceAffector::CmdForceVector::~CmdForceVector()")]
+#[doc(alias = "Ogre::LinearForceAffector::CmdForceVector::~CmdForceVector() [0xea2f8c]")]
 #[doc(alias = "__ZN4Ogre19LinearForceAffector14CmdForceVectorD0Ev")]
 pub fn stub_0xea2f8c() -> ! {
     todo!("0xea2f8c Ogre::LinearForceAffector::CmdForceVector::~CmdForceVector()")
@@ -644,7 +644,7 @@ pub fn stub_0xea2f8c() -> ! {
 
 // 0xea2f98 — __ZN4Ogre19LinearForceAffector11CmdForceAppD0Ev
 // type: void __fastcall(Ogre::LinearForceAffector::CmdForceApp *__hidden this)
-#[doc(alias = "Ogre::LinearForceAffector::CmdForceApp::~CmdForceApp()")]
+#[doc(alias = "Ogre::LinearForceAffector::CmdForceApp::~CmdForceApp() [0xea2f98]")]
 #[doc(alias = "__ZN4Ogre19LinearForceAffector11CmdForceAppD0Ev")]
 pub fn stub_0xea2f98() -> ! {
     todo!("0xea2f98 Ogre::LinearForceAffector::CmdForceApp::~CmdForceApp()")
@@ -660,7 +660,7 @@ pub fn stub_0xea2fa4() -> ! {
 
 // 0xea2fb0 — __ZN4Ogre19LinearForceAffectorD0Ev
 // type: void __fastcall(Ogre::LinearForceAffector *__hidden this)
-#[doc(alias = "Ogre::LinearForceAffector::~LinearForceAffector()")]
+#[doc(alias = "Ogre::LinearForceAffector::~LinearForceAffector() [0xea2fb0]")]
 #[doc(alias = "__ZN4Ogre19LinearForceAffectorD0Ev")]
 pub fn stub_0xea2fb0() -> ! {
     todo!("0xea2fb0 Ogre::LinearForceAffector::~LinearForceAffector()")
@@ -724,7 +724,7 @@ pub fn stub_0xea3938() -> ! {
 
 // 0xea3944 — __ZN4Ogre29DeflectorPlaneAffectorFactoryD0Ev
 // type: void __fastcall(Ogre::DeflectorPlaneAffectorFactory *__hidden this)
-#[doc(alias = "Ogre::DeflectorPlaneAffectorFactory::~DeflectorPlaneAffectorFactory()")]
+#[doc(alias = "Ogre::DeflectorPlaneAffectorFactory::~DeflectorPlaneAffectorFactory() [0xea3944]")]
 #[doc(alias = "__ZN4Ogre29DeflectorPlaneAffectorFactoryD0Ev")]
 pub fn stub_0xea3944() -> ! {
     todo!("0xea3944 Ogre::DeflectorPlaneAffectorFactory::~DeflectorPlaneAffectorFactory()")
@@ -756,7 +756,7 @@ pub fn stub_0xea3ae4() -> ! {
 
 // 0xea3af0 — __ZN4Ogre34DirectionRandomiserAffectorFactoryD0Ev
 // type: void __fastcall(Ogre::DirectionRandomiserAffectorFactory *__hidden this)
-#[doc(alias = "Ogre::DirectionRandomiserAffectorFactory::~DirectionRandomiserAffectorFactory()")]
+#[doc(alias = "Ogre::DirectionRandomiserAffectorFactory::~DirectionRandomiserAffectorFactory() [0xea3af0]")]
 #[doc(alias = "__ZN4Ogre34DirectionRandomiserAffectorFactoryD0Ev")]
 pub fn stub_0xea3af0() -> ! {
     todo!("0xea3af0 Ogre::DirectionRandomiserAffectorFactory::~DirectionRandomiserAffectorFactory()")
@@ -788,7 +788,7 @@ pub fn stub_0xea3c90() -> ! {
 
 // 0xea3c9c — __ZN4Ogre23RotationAffectorFactoryD0Ev
 // type: void __fastcall(Ogre::RotationAffectorFactory *__hidden this)
-#[doc(alias = "Ogre::RotationAffectorFactory::~RotationAffectorFactory()")]
+#[doc(alias = "Ogre::RotationAffectorFactory::~RotationAffectorFactory() [0xea3c9c]")]
 #[doc(alias = "__ZN4Ogre23RotationAffectorFactoryD0Ev")]
 pub fn stub_0xea3c9c() -> ! {
     todo!("0xea3c9c Ogre::RotationAffectorFactory::~RotationAffectorFactory()")

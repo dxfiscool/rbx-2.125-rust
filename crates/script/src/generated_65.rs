@@ -131,7 +131,7 @@ pub fn stub_0x28e188() -> ! {
 // 0x28e18c — __ZN3RBX11LocalScriptD0Ev
 // type: void __fastcall(RBX::LocalScript *__hidden this)
 // was: void __fastcall(RBX::LocalScript *__hidden this)
-#[doc(alias = "RBX::LocalScript::~LocalScript()")]
+#[doc(alias = "RBX::LocalScript::~LocalScript() [0x28e18c]")]
 pub fn stub_0x28e18c() -> ! {
     todo!("0x28e18c __ZN3RBX11LocalScriptD0Ev")
 }
@@ -153,7 +153,7 @@ pub fn stub_0x28e23c() -> ! {
 // 0x28e244 — __ZThn32_N3RBX11LocalScriptD0Ev
 // type: void __fastcall(RBX::LocalScript *__hidden this)
 // was: void __fastcall(RBX::LocalScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LocalScript::~LocalScript()")]
+#[doc(alias = "non-virtual thunk toRBX::LocalScript::~LocalScript() [0x28e244]")]
 pub fn stub_0x28e244() -> ! {
     todo!("0x28e244 __ZThn32_N3RBX11LocalScriptD0Ev")
 }
@@ -167,7 +167,7 @@ pub fn stub_0x28e24c() -> ! {
 // 0x28e25c — __ZThn36_N3RBX11LocalScriptD1Ev
 // type: void __fastcall(RBX::LocalScript *__hidden this)
 // was: void __fastcall(RBX::LocalScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LocalScript::~LocalScript()")]
+#[doc(alias = "non-virtual thunk toRBX::LocalScript::~LocalScript() [0x28e25c]")]
 pub fn stub_0x28e25c() -> ! {
     todo!("0x28e25c __ZThn36_N3RBX11LocalScriptD1Ev")
 }
@@ -175,7 +175,7 @@ pub fn stub_0x28e25c() -> ! {
 // 0x28e264 — __ZThn36_N3RBX11LocalScriptD0Ev
 // type: void __fastcall(RBX::LocalScript *__hidden this)
 // was: void __fastcall(RBX::LocalScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LocalScript::~LocalScript()")]
+#[doc(alias = "non-virtual thunk toRBX::LocalScript::~LocalScript() [0x28e264]")]
 pub fn stub_0x28e264() -> ! {
     todo!("0x28e264 __ZThn36_N3RBX11LocalScriptD0Ev")
 }
@@ -255,7 +255,7 @@ pub fn stub_0x28e998() -> ! {
 }
 
 // 0x28e99c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6ScriptENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Script *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Script *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x28e99c]")]
 pub fn stub_0x28e99c() -> ! {
     todo!("0x28e99c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6ScriptENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
 }
@@ -423,7 +423,7 @@ pub fn stub_0x28f8e4() -> ! {
 }
 
 // 0x28f8e8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20RuntimeScriptServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RuntimeScriptService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RuntimeScriptService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x28f8e8]")]
 pub fn stub_0x28f8e8() -> ! {
     todo!("0x28f8e8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20RuntimeScriptServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
 }

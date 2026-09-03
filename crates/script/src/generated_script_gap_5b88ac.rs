@@ -161,7 +161,7 @@ pub fn stub_0x5b8efc() -> ! {
 }
 
 // 0x5b9010 — __ZN3RBX10Reflection14PropDescriptorINS_16KeyframeSequenceEbED0Ev
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::KeyframeSequence,bool>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::KeyframeSequence,bool>::~PropDescriptor() [0x5b9010]")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_16KeyframeSequenceEbED0Ev")]
 pub fn stub_0x5b9010() -> ! {
     todo!("0x5b9010 RBX::Reflection::PropDescriptor<RBX::KeyframeSequence,bool>::~PropDescriptor()")
@@ -211,7 +211,7 @@ pub fn stub_0x5b9224() -> ! {
 }
 
 // 0x5b9254 — __ZN3RBX10Reflection13BoundFuncDescINS_16KeyframeSequenceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::KeyframeSequence,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::KeyframeSequence,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc() [0x5b9254]")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_16KeyframeSequenceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev")]
 pub fn stub_0x5b9254() -> ! {
     todo!("0x5b9254 RBX::Reflection::BoundFuncDesc<RBX::KeyframeSequence,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
@@ -241,7 +241,7 @@ pub fn stub_0x5b953c() -> ! {
 }
 
 // 0x5b9640 — __ZN3RBX10Reflection13BoundFuncDescINS_16KeyframeSequenceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED0Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::KeyframeSequence,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::KeyframeSequence,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc() [0x5b9640]")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_16KeyframeSequenceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED0Ev")]
 pub fn stub_0x5b9640() -> ! {
     todo!("0x5b9640 RBX::Reflection::BoundFuncDesc<RBX::KeyframeSequence,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()")
@@ -293,7 +293,7 @@ pub fn stub_0x5ba44c() -> ! {
 
 // 0x5ba450 — __ZN3RBX24KeyframeSequenceProviderC2Ev
 // type: _DWORD __fastcall(RBX::KeyframeSequenceProvider *__hidden this)
-#[doc(alias = "RBX::KeyframeSequenceProvider::KeyframeSequenceProvider(void)")]
+#[doc(alias = "RBX::KeyframeSequenceProvider::KeyframeSequenceProvider(void) [0x5ba450]")]
 #[doc(alias = "__ZN3RBX24KeyframeSequenceProviderC2Ev")]
 pub fn stub_0x5ba450() -> ! {
     todo!("0x5ba450 RBX::KeyframeSequenceProvider::KeyframeSequenceProvider(void)")
@@ -423,7 +423,7 @@ pub fn stub_0x5bc33c() -> ! {
 
 // 0x5bc480 — __ZN3RBX24KeyframeSequenceProviderD0Ev
 // type: void __fastcall(RBX::KeyframeSequenceProvider *__hidden this)
-#[doc(alias = "RBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")]
+#[doc(alias = "RBX::KeyframeSequenceProvider::~KeyframeSequenceProvider() [0x5bc480]")]
 #[doc(alias = "__ZN3RBX24KeyframeSequenceProviderD0Ev")]
 pub fn stub_0x5bc480() -> ! {
     todo!("0x5bc480 RBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")
@@ -439,7 +439,7 @@ pub fn stub_0x5bc604() -> ! {
 
 // 0x5bc748 — __ZThn32_N3RBX24KeyframeSequenceProviderD0Ev
 // type: void __fastcall(RBX::KeyframeSequenceProvider *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::KeyframeSequenceProvider::~KeyframeSequenceProvider() [0x5bc748]")]
 #[doc(alias = "__ZThn32_N3RBX24KeyframeSequenceProviderD0Ev")]
 pub fn stub_0x5bc748() -> ! {
     todo!("0x5bc748 non-virtual thunk to RBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")
@@ -447,7 +447,7 @@ pub fn stub_0x5bc748() -> ! {
 
 // 0x5bc8c8 — __ZThn36_N3RBX24KeyframeSequenceProviderD1Ev
 // type: void __fastcall(RBX::KeyframeSequenceProvider *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::KeyframeSequenceProvider::~KeyframeSequenceProvider() [0x5bc8c8]")]
 #[doc(alias = "__ZThn36_N3RBX24KeyframeSequenceProviderD1Ev")]
 pub fn stub_0x5bc8c8() -> ! {
     todo!("0x5bc8c8 non-virtual thunk to RBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")
@@ -455,7 +455,7 @@ pub fn stub_0x5bc8c8() -> ! {
 
 // 0x5bca0c — __ZThn36_N3RBX24KeyframeSequenceProviderD0Ev
 // type: void __fastcall(RBX::KeyframeSequenceProvider *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::KeyframeSequenceProvider::~KeyframeSequenceProvider() [0x5bca0c]")]
 #[doc(alias = "__ZThn36_N3RBX24KeyframeSequenceProviderD0Ev")]
 pub fn stub_0x5bca0c() -> ! {
     todo!("0x5bca0c non-virtual thunk to RBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")
@@ -650,16 +650,14 @@ pub fn stub_0x5bdb18() -> ! {
 
 // 0x5bdc30 — __ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEC2INS_3_bi6bind_tIvPFvS3_S4_NS_8weak_ptrINS1_24KeyframeSequenceProviderEEENSD_INS1_16KeyframeSequenceEEEENSB_5list4INS_3argILi1EEENSL_ILi2EEENSB_5valueISF_EENSO_ISH_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "__ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEC2INS_3_bi6bind_tIvPFvS3_S4_NS_8weak_ptrINS1_24KeyframeSequenceProviderEEENSD_INS1_16KeyframeSequenceEEEENSB_5list4INS_3argILi1EEENSL_ILi2EEENSB_5valueISF_EENSO_ISH_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE")]
-#[doc(alias = "__ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEC2INS_3_bi6bind_tIvPFvS3_S4_NS_8weak_ptrINS1_24KeyframeSequenceProviderEEENSD_INS1_16KeyframeSequenceEEEENSB_5list4INS_3argILi1EEENSL_ILi2EEENSB_5valueISF_EENSO_ISH_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE")]
+#[doc(alias = "__ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEC2INS_3_bi6bind_tIvPFvS3_S4_NS_8weak_ptrINS1_24KeyframeSequenceProviderEEENSD_INS1_16KeyframeSequenceEEEENSB_5list4INS_3argILi1EEENSL_ILi2EEENSB_5valueISF_EENSO_ISH_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE [0x5bdc30]")]
 pub fn stub_0x5bdc30() -> ! {
     todo!("0x5bdc30 __ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEEC2INS_3_bi6bind_tIvPFvS3_S4_NS_8weak_ptrINS1_24KeyframeSequenceProviderEEENSD_INS1_16KeyframeSequenceEEEENSB_5list4INS_3argILi1EEENSL_ILi2EEENSB_5valueISF_EENSO_ISH_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIST_EE5valueEEE5valueEiE4typeE")
 }
 
 // 0x5bdd90 — __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEC2INS_3_bi6bind_tIvPFvS3_S4_NS_8weak_ptrINS1_24KeyframeSequenceProviderEEENSC_INS1_16KeyframeSequenceEEEENSA_5list4INS_3argILi1EEENSK_ILi2EEENSA_5valueISE_EENSN_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
 // type: int __fastcall(int, struct _Unwind_Exception *lpuexcpt, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "__ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEC2INS_3_bi6bind_tIvPFvS3_S4_NS_8weak_ptrINS1_24KeyframeSequenceProviderEEENSC_INS1_16KeyframeSequenceEEEENSA_5list4INS_3argILi1EEENSK_ILi2EEENSA_5valueISE_EENSN_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")]
-#[doc(alias = "__ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEC2INS_3_bi6bind_tIvPFvS3_S4_NS_8weak_ptrINS1_24KeyframeSequenceProviderEEENSC_INS1_16KeyframeSequenceEEEENSA_5list4INS_3argILi1EEENSK_ILi2EEENSA_5valueISE_EENSN_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")]
+#[doc(alias = "__ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEC2INS_3_bi6bind_tIvPFvS3_S4_NS_8weak_ptrINS1_24KeyframeSequenceProviderEEENSC_INS1_16KeyframeSequenceEEEENSA_5list4INS_3argILi1EEENSK_ILi2EEENSA_5valueISE_EENSN_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE [0x5bdd90]")]
 pub fn stub_0x5bdd90() -> ! {
     todo!("0x5bdd90 __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEEC2INS_3_bi6bind_tIvPFvS3_S4_NS_8weak_ptrINS1_24KeyframeSequenceProviderEEENSC_INS1_16KeyframeSequenceEEEENSA_5list4INS_3argILi1EEENSK_ILi2EEENSA_5valueISE_EENSN_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")
 }
@@ -781,7 +779,7 @@ pub fn stub_0x5becb0() -> ! {
 }
 
 // 0x5becb4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16KeyframeSequenceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::KeyframeSequence *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::KeyframeSequence *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x5becb4]")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX16KeyframeSequenceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
 pub fn stub_0x5becb4() -> ! {
     todo!("0x5becb4 boost::detail::sp_counted_impl_pd<RBX::KeyframeSequence *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
@@ -908,7 +906,7 @@ pub fn stub_0x5bf888() -> ! {
 }
 
 // 0x5bf8b8 — __ZN3RBX10Reflection13BoundFuncDescINS_24KeyframeSequenceProviderEFN5boost10shared_ptrINS_8InstanceEEENS_9ContentIdEELi1EED0Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::KeyframeSequenceProvider,boost::shared_ptr<RBX::Instance> ()(RBX::ContentId),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::KeyframeSequenceProvider,boost::shared_ptr<RBX::Instance> ()(RBX::ContentId),1>::~BoundFuncDesc() [0x5bf8b8]")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_24KeyframeSequenceProviderEFN5boost10shared_ptrINS_8InstanceEEENS_9ContentIdEELi1EED0Ev")]
 pub fn stub_0x5bf8b8() -> ! {
     todo!("0x5bf8b8 RBX::Reflection::BoundFuncDesc<RBX::KeyframeSequenceProvider,boost::shared_ptr<RBX::Instance> ()(RBX::ContentId),1>::~BoundFuncDesc()")

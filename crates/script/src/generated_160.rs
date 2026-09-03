@@ -115,7 +115,7 @@ pub fn stub_0x781f0() -> ! {
 
 // 0x7826c — __ZN4FMOD13ChannelStreamC1Ev
 // type: _DWORD *__fastcall(FMOD::ChannelStream *this)
-#[doc(alias = "FMOD::ChannelStream::ChannelStream(void)")]
+#[doc(alias = "FMOD::ChannelStream::ChannelStream(void) [0x7826c]")]
 pub fn stub_0x7826c() -> ! {
     todo!("0x7826c __ZN4FMOD13ChannelStreamC1Ev")
 }
@@ -171,7 +171,7 @@ pub fn stub_0x78fc4() -> ! {
 
 // 0x78fe8 — __ZN4FMOD13ChannelStreamD1Ev
 // type: void __fastcall(FMOD::ChannelStream *__hidden this)
-#[doc(alias = "FMOD::ChannelStream::~ChannelStream()")]
+#[doc(alias = "FMOD::ChannelStream::~ChannelStream() [0x78fe8]")]
 pub fn stub_0x78fe8() -> ! {
     todo!("0x78fe8 __ZN4FMOD13ChannelStreamD1Ev")
 }
@@ -325,7 +325,7 @@ pub fn stub_0x79dd4() -> ! {
 
 // 0x79e84 — __ZN4FMOD8ChannelIC1EiPNS_7SystemIE
 // type: int __fastcall(FMOD::ChannelI *, int, int)
-#[doc(alias = "FMOD::ChannelI::ChannelI(int,FMOD::SystemI *)")]
+#[doc(alias = "FMOD::ChannelI::ChannelI(int,FMOD::SystemI *) [0x79e84]")]
 pub fn stub_0x79e84() -> ! {
     todo!("0x79e84 __ZN4FMOD8ChannelIC1EiPNS_7SystemIE")
 }
@@ -339,7 +339,7 @@ pub fn stub_0x79e88() -> ! {
 
 // 0x79ef0 — __ZN4FMOD8ChannelIC1Ev
 // type: int __fastcall(FMOD::ChannelI *this)
-#[doc(alias = "FMOD::ChannelI::ChannelI(void)")]
+#[doc(alias = "FMOD::ChannelI::ChannelI(void) [0x79ef0]")]
 pub fn stub_0x79ef0() -> ! {
     todo!("0x79ef0 __ZN4FMOD8ChannelIC1Ev")
 }
@@ -759,7 +759,7 @@ pub fn stub_0x7f4f8() -> ! {
 
 // 0x7f514 — __ZN4FMOD11ChannelPoolC1Ev
 // type: _DWORD *__fastcall(_DWORD *this)
-#[doc(alias = "FMOD::ChannelPool::ChannelPool(void)")]
+#[doc(alias = "FMOD::ChannelPool::ChannelPool(void) [0x7f514]")]
 pub fn stub_0x7f514() -> ! {
     todo!("0x7f514 __ZN4FMOD11ChannelPoolC1Ev")
 }

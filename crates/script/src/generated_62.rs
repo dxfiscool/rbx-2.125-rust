@@ -78,7 +78,7 @@ pub fn stub_0x64e7b4() -> ! {
 
 // 0x64e7f0 — __ZN13ProfilingItemD0Ev
 // type: void __fastcall(ProfilingItem *__hidden this)
-#[doc(alias = "ProfilingItem::~ProfilingItem()")]
+#[doc(alias = "ProfilingItem::~ProfilingItem() [0x64e7f0]")]
 pub fn stub_0x64e7f0() -> ! {
     todo!("0x64e7f0 ProfilingItem::~ProfilingItem()")
 }
@@ -105,7 +105,7 @@ pub fn stub_0x64eb20() -> ! {
 
 // 0x64eb5c — __ZThn32_N13ProfilingItemD0Ev
 // type: void __fastcall(ProfilingItem *__hidden this)
-#[doc(alias = "non-virtual thunk toProfilingItem::~ProfilingItem()")]
+#[doc(alias = "non-virtual thunk toProfilingItem::~ProfilingItem() [0x64eb5c]")]
 pub fn stub_0x64eb5c() -> ! {
     todo!("0x64eb5c non-virtual thunk toProfilingItem::~ProfilingItem()")
 }
@@ -118,14 +118,14 @@ pub fn stub_0x64ec30() -> ! {
 
 // 0x64ec58 — __ZThn36_N13ProfilingItemD1Ev
 // type: void __fastcall(ProfilingItem *__hidden this)
-#[doc(alias = "non-virtual thunk toProfilingItem::~ProfilingItem()")]
+#[doc(alias = "non-virtual thunk toProfilingItem::~ProfilingItem() [0x64ec58]")]
 pub fn stub_0x64ec58() -> ! {
     todo!("0x64ec58 non-virtual thunk toProfilingItem::~ProfilingItem()")
 }
 
 // 0x64ec94 — __ZThn36_N13ProfilingItemD0Ev
 // type: void __fastcall(ProfilingItem *__hidden this)
-#[doc(alias = "non-virtual thunk toProfilingItem::~ProfilingItem()")]
+#[doc(alias = "non-virtual thunk toProfilingItem::~ProfilingItem() [0x64ec94]")]
 pub fn stub_0x64ec94() -> ! {
     todo!("0x64ec94 non-virtual thunk toProfilingItem::~ProfilingItem()")
 }
@@ -187,7 +187,7 @@ pub fn stub_0x64f474() -> ! {
 
 // 0x64f4b0 — __ZN24RunningAverageItemDoubleD0Ev
 // type: void __fastcall(RunningAverageItemDouble *__hidden this)
-#[doc(alias = "RunningAverageItemDouble::~RunningAverageItemDouble()")]
+#[doc(alias = "RunningAverageItemDouble::~RunningAverageItemDouble() [0x64f4b0]")]
 pub fn stub_0x64f4b0() -> ! {
     todo!("0x64f4b0 RunningAverageItemDouble::~RunningAverageItemDouble()")
 }
@@ -213,7 +213,7 @@ pub fn stub_0x64f718() -> ! {
 
 // 0x64f754 — __ZThn32_N24RunningAverageItemDoubleD0Ev
 // type: void __fastcall(RunningAverageItemDouble *__hidden this)
-#[doc(alias = "non-virtual thunk toRunningAverageItemDouble::~RunningAverageItemDouble()")]
+#[doc(alias = "non-virtual thunk toRunningAverageItemDouble::~RunningAverageItemDouble() [0x64f754]")]
 pub fn stub_0x64f754() -> ! {
     todo!("0x64f754 non-virtual thunk toRunningAverageItemDouble::~RunningAverageItemDouble()")
 }
@@ -226,14 +226,14 @@ pub fn stub_0x64f828() -> ! {
 
 // 0x64f850 — __ZThn36_N24RunningAverageItemDoubleD1Ev
 // type: void __fastcall(RunningAverageItemDouble *__hidden this)
-#[doc(alias = "non-virtual thunk toRunningAverageItemDouble::~RunningAverageItemDouble()")]
+#[doc(alias = "non-virtual thunk toRunningAverageItemDouble::~RunningAverageItemDouble() [0x64f850]")]
 pub fn stub_0x64f850() -> ! {
     todo!("0x64f850 non-virtual thunk toRunningAverageItemDouble::~RunningAverageItemDouble()")
 }
 
 // 0x64f88c — __ZThn36_N24RunningAverageItemDoubleD0Ev
 // type: void __fastcall(RunningAverageItemDouble *__hidden this)
-#[doc(alias = "non-virtual thunk toRunningAverageItemDouble::~RunningAverageItemDouble()")]
+#[doc(alias = "non-virtual thunk toRunningAverageItemDouble::~RunningAverageItemDouble() [0x64f88c]")]
 pub fn stub_0x64f88c() -> ! {
     todo!("0x64f88c non-virtual thunk toRunningAverageItemDouble::~RunningAverageItemDouble()")
 }
@@ -295,7 +295,7 @@ pub fn stub_0x65006c() -> ! {
 
 // 0x6500a8 — __ZN21RunningAverageItemIntD0Ev
 // type: void __fastcall(RunningAverageItemInt *__hidden this)
-#[doc(alias = "RunningAverageItemInt::~RunningAverageItemInt()")]
+#[doc(alias = "RunningAverageItemInt::~RunningAverageItemInt() [0x6500a8]")]
 pub fn stub_0x6500a8() -> ! {
     todo!("0x6500a8 RunningAverageItemInt::~RunningAverageItemInt()")
 }
@@ -321,7 +321,7 @@ pub fn stub_0x650310() -> ! {
 
 // 0x65034c — __ZThn32_N21RunningAverageItemIntD0Ev
 // type: void __fastcall(RunningAverageItemInt *__hidden this)
-#[doc(alias = "non-virtual thunk toRunningAverageItemInt::~RunningAverageItemInt()")]
+#[doc(alias = "non-virtual thunk toRunningAverageItemInt::~RunningAverageItemInt() [0x65034c]")]
 pub fn stub_0x65034c() -> ! {
     todo!("0x65034c non-virtual thunk toRunningAverageItemInt::~RunningAverageItemInt()")
 }
@@ -334,14 +334,14 @@ pub fn stub_0x650420() -> ! {
 
 // 0x650448 — __ZThn36_N21RunningAverageItemIntD1Ev
 // type: void __fastcall(RunningAverageItemInt *__hidden this)
-#[doc(alias = "non-virtual thunk toRunningAverageItemInt::~RunningAverageItemInt()")]
+#[doc(alias = "non-virtual thunk toRunningAverageItemInt::~RunningAverageItemInt() [0x650448]")]
 pub fn stub_0x650448() -> ! {
     todo!("0x650448 non-virtual thunk toRunningAverageItemInt::~RunningAverageItemInt()")
 }
 
 // 0x650484 — __ZThn36_N21RunningAverageItemIntD0Ev
 // type: void __fastcall(RunningAverageItemInt *__hidden this)
-#[doc(alias = "non-virtual thunk toRunningAverageItemInt::~RunningAverageItemInt()")]
+#[doc(alias = "non-virtual thunk toRunningAverageItemInt::~RunningAverageItemInt() [0x650484]")]
 pub fn stub_0x650484() -> ! {
     todo!("0x650484 non-virtual thunk toRunningAverageItemInt::~RunningAverageItemInt()")
 }
@@ -404,7 +404,7 @@ pub fn stub_0x650c64() -> ! {
 
 // 0x650ca0 — __ZN26TotalCountTimeIntervalItemD0Ev
 // type: void __fastcall(TotalCountTimeIntervalItem *__hidden this)
-#[doc(alias = "TotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")]
+#[doc(alias = "TotalCountTimeIntervalItem::~TotalCountTimeIntervalItem() [0x650ca0]")]
 pub fn stub_0x650ca0() -> ! {
     todo!("0x650ca0 TotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")
 }
@@ -431,7 +431,7 @@ pub fn stub_0x650ee8() -> ! {
 
 // 0x650f24 — __ZThn32_N26TotalCountTimeIntervalItemD0Ev
 // type: void __fastcall(TotalCountTimeIntervalItem *__hidden this)
-#[doc(alias = "non-virtual thunk toTotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")]
+#[doc(alias = "non-virtual thunk toTotalCountTimeIntervalItem::~TotalCountTimeIntervalItem() [0x650f24]")]
 pub fn stub_0x650f24() -> ! {
     todo!("0x650f24 non-virtual thunk toTotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")
 }
@@ -444,14 +444,14 @@ pub fn stub_0x650ff8() -> ! {
 
 // 0x651020 — __ZThn36_N26TotalCountTimeIntervalItemD1Ev
 // type: void __fastcall(TotalCountTimeIntervalItem *__hidden this)
-#[doc(alias = "non-virtual thunk toTotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")]
+#[doc(alias = "non-virtual thunk toTotalCountTimeIntervalItem::~TotalCountTimeIntervalItem() [0x651020]")]
 pub fn stub_0x651020() -> ! {
     todo!("0x651020 non-virtual thunk toTotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")
 }
 
 // 0x65105c — __ZThn36_N26TotalCountTimeIntervalItemD0Ev
 // type: void __fastcall(TotalCountTimeIntervalItem *__hidden this)
-#[doc(alias = "non-virtual thunk toTotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")]
+#[doc(alias = "non-virtual thunk toTotalCountTimeIntervalItem::~TotalCountTimeIntervalItem() [0x65105c]")]
 pub fn stub_0x65105c() -> ! {
     todo!("0x65105c non-virtual thunk toTotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")
 }

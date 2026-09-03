@@ -235,7 +235,7 @@ pub fn stub_0x55e870() -> ! {
 }
 
 // 0x55e974 — __ZN3RBX10Reflection13BoundFuncDescINS_12BodyVelocityEFN3G3D7Vector3EvELi0EED0Ev — RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::~BoundFuncDesc()
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::~BoundFuncDesc() [0x55e974]")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_12BodyVelocityEFN3G3D7Vector3EvELi0EED0Ev")]
 pub fn stub_0x55e974() -> ! {
     todo!("0x55e974 __ZN3RBX10Reflection13BoundFuncDescINS_12BodyVelocityEFN3G3D7Vector3EvELi0EED0Ev")
@@ -326,7 +326,7 @@ pub fn stub_0x55ee6c() -> ! {
 }
 
 // 0x55f3e4 — __ZN3RBX10Reflection15RemoteEventDescINS_12BodyPositionEFvvEN3rbx13remote_signalIS3_EEED0Ev — RBX::Reflection::RemoteEventDesc<RBX::BodyPosition,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()
-#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::BodyPosition,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")]
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::BodyPosition,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc() [0x55f3e4]")]
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_12BodyPositionEFvvEN3rbx13remote_signalIS3_EEED0Ev")]
 pub fn stub_0x55f3e4() -> ! {
     todo!("0x55f3e4 __ZN3RBX10Reflection15RemoteEventDescINS_12BodyPositionEFvvEN3rbx13remote_signalIS3_EEED0Ev")
@@ -375,7 +375,7 @@ pub fn stub_0x55f754() -> ! {
 }
 
 // 0x55f858 — __ZN3RBX10Reflection13BoundFuncDescINS_12BodyPositionEFN3G3D7Vector3EvELi0EED0Ev — RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::~BoundFuncDesc()
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::~BoundFuncDesc() [0x55f858]")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_12BodyPositionEFN3G3D7Vector3EvELi0EED0Ev")]
 pub fn stub_0x55f858() -> ! {
     todo!("0x55f858 __ZN3RBX10Reflection13BoundFuncDescINS_12BodyPositionEFN3G3D7Vector3EvELi0EED0Ev")
@@ -578,7 +578,7 @@ pub fn stub_0x560ad8() -> ! {
 }
 
 // 0x561050 — __ZN3RBX10Reflection15RemoteEventDescINS_6RocketEFvvEN3rbx13remote_signalIS3_EEED0Ev — RBX::Reflection::RemoteEventDesc<RBX::Rocket,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()
-#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Rocket,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")]
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Rocket,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc() [0x561050]")]
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_6RocketEFvvEN3rbx13remote_signalIS3_EEED0Ev")]
 pub fn stub_0x561050() -> ! {
     todo!("0x561050 __ZN3RBX10Reflection15RemoteEventDescINS_6RocketEFvvEN3rbx13remote_signalIS3_EEED0Ev")
@@ -627,7 +627,7 @@ pub fn stub_0x5613c0() -> ! {
 }
 
 // 0x5614c4 — __ZN3RBX10Reflection13BoundFuncDescINS_6RocketEFvvELi0EED0Ev — RBX::Reflection::BoundFuncDesc<RBX::Rocket,void ()(void),0>::~BoundFuncDesc()
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Rocket,void ()(void),0>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Rocket,void ()(void),0>::~BoundFuncDesc() [0x5614c4]")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_6RocketEFvvELi0EED0Ev")]
 pub fn stub_0x5614c4() -> ! {
     todo!("0x5614c4 __ZN3RBX10Reflection13BoundFuncDescINS_6RocketEFvvELi0EED0Ev")
@@ -767,7 +767,7 @@ pub fn stub_0x561efc() -> ! {
 }
 
 // 0x561fa0 — __ZN3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEED0Ev — RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::~RefPropDescriptor()
-#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::~RefPropDescriptor()")]
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::~RefPropDescriptor() [0x561fa0]")]
 #[doc(alias = "__ZN3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEED0Ev")]
 pub fn stub_0x561fa0() -> ! {
     todo!("0x561fa0 __ZN3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEED0Ev")

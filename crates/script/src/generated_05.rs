@@ -532,7 +532,7 @@ pub fn stub_0xf6b504() -> ! {
 
 // 0xf6b514 — __ZNSt11logic_errorD2Ev
 // type: void __cdecl(std::logic_error *__hidden this)
-#[doc(alias = "std::logic_error::~logic_error()")]
+#[doc(alias = "std::logic_error::~logic_error() [0xf6b514]")]
 pub fn stub_0xf6b514() -> ! {
     todo!("0xf6b514 std::logic_error::~logic_error()")
 }
@@ -592,7 +592,7 @@ pub fn stub_0xf6b594() -> ! {
 
 // 0xf6b5a4 — __ZNSt13runtime_errorC2ERKSs
 // type: _DWORD __fastcall(std::runtime_error *__hidden this, const std::string *)
-#[doc(alias = "std::runtime_error::runtime_error(std::string const&)")]
+#[doc(alias = "std::runtime_error::runtime_error(std::string const&) [0xf6b5a4]")]
 pub fn stub_0xf6b5a4() -> ! {
     todo!("0xf6b5a4 std::runtime_error::runtime_error(std::string const&)")
 }
@@ -606,7 +606,7 @@ pub fn stub_0xf6b5b4() -> ! {
 
 // 0xf6b5c4 — __ZNSt13runtime_errorD2Ev
 // type: void __cdecl(std::runtime_error *__hidden this)
-#[doc(alias = "std::runtime_error::~runtime_error()")]
+#[doc(alias = "std::runtime_error::~runtime_error() [0xf6b5c4]")]
 pub fn stub_0xf6b5c4() -> ! {
     todo!("0xf6b5c4 std::runtime_error::~runtime_error()")
 }
@@ -639,7 +639,7 @@ pub fn stub_0xf6b604() -> ! {
 }
 
 // 0xf6b614 — __ZNSt14basic_ifstreamIcSt11char_traitsIcEED2Ev
-#[doc(alias = "std::basic_ifstream<char,std::char_traits<char>>::~basic_ifstream()")]
+#[doc(alias = "std::basic_ifstream<char,std::char_traits<char>>::~basic_ifstream() [0xf6b614]")]
 pub fn stub_0xf6b614() -> ! {
     todo!("0xf6b614 std::basic_ifstream<char,std::char_traits<char>>::~basic_ifstream()")
 }

@@ -171,7 +171,7 @@ pub fn stub_0x1064a0() -> ! {
 
 // 0x1064cc — __ZN4FMOD17HistoryBufferPoolC1Ev
 // type: _DWORD __fastcall(FMOD::HistoryBufferPool *__hidden this)
-#[doc(alias = "FMOD::HistoryBufferPool::HistoryBufferPool(void)")]
+#[doc(alias = "FMOD::HistoryBufferPool::HistoryBufferPool(void) [0x1064cc]")]
 #[doc(alias = "__ZN4FMOD17HistoryBufferPoolC1Ev")]
 pub fn stub_0x1064cc() -> ! {
     todo!("0x1064cc FMOD::HistoryBufferPool::HistoryBufferPool(void)")

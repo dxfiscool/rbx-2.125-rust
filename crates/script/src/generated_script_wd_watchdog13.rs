@@ -122,7 +122,7 @@ pub fn stub_0x610d4c() -> ! {
 
 // 0x610e94 — __ZN3RBX9ScreenGuiD0Ev — RBX::ScreenGui::~ScreenGui()
 // type: void __fastcall(RBX::ScreenGui *__hidden this)
-#[doc(alias = "RBX::ScreenGui::~ScreenGui()")]
+#[doc(alias = "RBX::ScreenGui::~ScreenGui() [0x610e94]")]
 #[doc(alias = "__ZN3RBX9ScreenGuiD0Ev")]
 pub fn stub_0x610e94() -> ! {
     todo!("0x610e94 __ZN3RBX9ScreenGuiD0Ev")
@@ -146,7 +146,7 @@ pub fn stub_0x610f54() -> ! {
 
 // 0x611098 — __ZThn32_N3RBX9ScreenGuiD0Ev — non-virtual thunk toRBX::ScreenGui::~ScreenGui()
 // type: void __fastcall(RBX::ScreenGui *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui()")]
+#[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui() [0x611098]")]
 #[doc(alias = "__ZThn32_N3RBX9ScreenGuiD0Ev")]
 pub fn stub_0x611098() -> ! {
     todo!("0x611098 __ZThn32_N3RBX9ScreenGuiD0Ev")
@@ -154,7 +154,7 @@ pub fn stub_0x611098() -> ! {
 
 // 0x611200 — __ZThn36_N3RBX9ScreenGuiD1Ev — non-virtual thunk toRBX::ScreenGui::~ScreenGui()
 // type: void __fastcall(RBX::ScreenGui *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui()")]
+#[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui() [0x611200]")]
 #[doc(alias = "__ZThn36_N3RBX9ScreenGuiD1Ev")]
 pub fn stub_0x611200() -> ! {
     todo!("0x611200 __ZThn36_N3RBX9ScreenGuiD1Ev")
@@ -162,7 +162,7 @@ pub fn stub_0x611200() -> ! {
 
 // 0x611344 — __ZThn36_N3RBX9ScreenGuiD0Ev — non-virtual thunk toRBX::ScreenGui::~ScreenGui()
 // type: void __fastcall(RBX::ScreenGui *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui()")]
+#[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui() [0x611344]")]
 #[doc(alias = "__ZThn36_N3RBX9ScreenGuiD0Ev")]
 pub fn stub_0x611344() -> ! {
     todo!("0x611344 __ZThn36_N3RBX9ScreenGuiD0Ev")
@@ -178,7 +178,7 @@ pub fn stub_0x61149c() -> ! {
 
 // 0x6114a4 — __ZThn168_N3RBX9ScreenGuiD1Ev — non-virtual thunk toRBX::ScreenGui::~ScreenGui()
 // type: void __fastcall(RBX::ScreenGui *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui()")]
+#[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui() [0x6114a4]")]
 #[doc(alias = "__ZThn168_N3RBX9ScreenGuiD1Ev")]
 pub fn stub_0x6114a4() -> ! {
     todo!("0x6114a4 __ZThn168_N3RBX9ScreenGuiD1Ev")
@@ -186,7 +186,7 @@ pub fn stub_0x6114a4() -> ! {
 
 // 0x6115e8 — __ZThn168_N3RBX9ScreenGuiD0Ev — non-virtual thunk toRBX::ScreenGui::~ScreenGui()
 // type: void __fastcall(RBX::ScreenGui *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui()")]
+#[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui() [0x6115e8]")]
 #[doc(alias = "__ZThn168_N3RBX9ScreenGuiD0Ev")]
 pub fn stub_0x6115e8() -> ! {
     todo!("0x6115e8 __ZThn168_N3RBX9ScreenGuiD0Ev")
@@ -202,7 +202,7 @@ pub fn stub_0x611748() -> ! {
 
 // 0x611890 — __ZN3RBX7GuiMainD0Ev — RBX::GuiMain::~GuiMain()
 // type: void __fastcall(RBX::GuiMain *__hidden this)
-#[doc(alias = "RBX::GuiMain::~GuiMain()")]
+#[doc(alias = "RBX::GuiMain::~GuiMain() [0x611890]")]
 #[doc(alias = "__ZN3RBX7GuiMainD0Ev")]
 pub fn stub_0x611890() -> ! {
     todo!("0x611890 __ZN3RBX7GuiMainD0Ev")
@@ -218,7 +218,7 @@ pub fn stub_0x611940() -> ! {
 
 // 0x611a84 — __ZThn32_N3RBX7GuiMainD0Ev — non-virtual thunk toRBX::GuiMain::~GuiMain()
 // type: void __fastcall(RBX::GuiMain *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain() [0x611a84]")]
 #[doc(alias = "__ZThn32_N3RBX7GuiMainD0Ev")]
 pub fn stub_0x611a84() -> ! {
     todo!("0x611a84 __ZThn32_N3RBX7GuiMainD0Ev")
@@ -226,7 +226,7 @@ pub fn stub_0x611a84() -> ! {
 
 // 0x611bec — __ZThn36_N3RBX7GuiMainD1Ev — non-virtual thunk toRBX::GuiMain::~GuiMain()
 // type: void __fastcall(RBX::GuiMain *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain() [0x611bec]")]
 #[doc(alias = "__ZThn36_N3RBX7GuiMainD1Ev")]
 pub fn stub_0x611bec() -> ! {
     todo!("0x611bec __ZThn36_N3RBX7GuiMainD1Ev")
@@ -234,7 +234,7 @@ pub fn stub_0x611bec() -> ! {
 
 // 0x611d30 — __ZThn36_N3RBX7GuiMainD0Ev — non-virtual thunk toRBX::GuiMain::~GuiMain()
 // type: void __fastcall(RBX::GuiMain *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain() [0x611d30]")]
 #[doc(alias = "__ZThn36_N3RBX7GuiMainD0Ev")]
 pub fn stub_0x611d30() -> ! {
     todo!("0x611d30 __ZThn36_N3RBX7GuiMainD0Ev")
@@ -242,7 +242,7 @@ pub fn stub_0x611d30() -> ! {
 
 // 0x611e88 — __ZThn168_N3RBX7GuiMainD1Ev — non-virtual thunk toRBX::GuiMain::~GuiMain()
 // type: void __fastcall(RBX::GuiMain *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain() [0x611e88]")]
 #[doc(alias = "__ZThn168_N3RBX7GuiMainD1Ev")]
 pub fn stub_0x611e88() -> ! {
     todo!("0x611e88 __ZThn168_N3RBX7GuiMainD1Ev")
@@ -250,7 +250,7 @@ pub fn stub_0x611e88() -> ! {
 
 // 0x611fcc — __ZThn168_N3RBX7GuiMainD0Ev — non-virtual thunk toRBX::GuiMain::~GuiMain()
 // type: void __fastcall(RBX::GuiMain *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiMain::~GuiMain() [0x611fcc]")]
 #[doc(alias = "__ZThn168_N3RBX7GuiMainD0Ev")]
 pub fn stub_0x611fcc() -> ! {
     todo!("0x611fcc __ZThn168_N3RBX7GuiMainD0Ev")
@@ -290,7 +290,7 @@ pub fn stub_0x615ac0() -> ! {
 
 // 0x615b70 — __ZN3RBX4SeatD1Ev — RBX::Seat::~Seat()
 // type: void __fastcall(RBX::Seat *__hidden this)
-#[doc(alias = "RBX::Seat::~Seat()")]
+#[doc(alias = "RBX::Seat::~Seat() [0x615b70]")]
 #[doc(alias = "__ZN3RBX4SeatD1Ev")]
 pub fn stub_0x615b70() -> ! {
     todo!("0x615b70 __ZN3RBX4SeatD1Ev")
@@ -306,7 +306,7 @@ pub fn stub_0x615b80() -> ! {
 
 // 0x615b88 — __ZThn36_N3RBX4SeatD0Ev — non-virtual thunk toRBX::Seat::~Seat()
 // type: void __fastcall(RBX::Seat *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Seat::~Seat()")]
+#[doc(alias = "non-virtual thunk toRBX::Seat::~Seat() [0x615b88]")]
 #[doc(alias = "__ZThn36_N3RBX4SeatD0Ev")]
 pub fn stub_0x615b88() -> ! {
     todo!("0x615b88 __ZThn36_N3RBX4SeatD0Ev")
@@ -314,7 +314,7 @@ pub fn stub_0x615b88() -> ! {
 
 // 0x615b90 — __ZThn132_N3RBX4SeatD0Ev — non-virtual thunk toRBX::Seat::~Seat()
 // type: void __fastcall(RBX::Seat *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Seat::~Seat()")]
+#[doc(alias = "non-virtual thunk toRBX::Seat::~Seat() [0x615b90]")]
 #[doc(alias = "__ZThn132_N3RBX4SeatD0Ev")]
 pub fn stub_0x615b90() -> ! {
     todo!("0x615b90 __ZThn132_N3RBX4SeatD0Ev")
@@ -322,7 +322,7 @@ pub fn stub_0x615b90() -> ! {
 
 // 0x615b98 — __ZThn32_N3RBX4SeatD1Ev — non-virtual thunk toRBX::Seat::~Seat()
 // type: void __fastcall(RBX::Seat *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Seat::~Seat()")]
+#[doc(alias = "non-virtual thunk toRBX::Seat::~Seat() [0x615b98]")]
 #[doc(alias = "__ZThn32_N3RBX4SeatD1Ev")]
 pub fn stub_0x615b98() -> ! {
     todo!("0x615b98 __ZThn32_N3RBX4SeatD1Ev")
@@ -330,7 +330,7 @@ pub fn stub_0x615b98() -> ! {
 
 // 0x615bac — __ZThn36_N3RBX4SeatD1Ev — non-virtual thunk toRBX::Seat::~Seat()
 // type: void __fastcall(RBX::Seat *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Seat::~Seat()")]
+#[doc(alias = "non-virtual thunk toRBX::Seat::~Seat() [0x615bac]")]
 #[doc(alias = "__ZThn36_N3RBX4SeatD1Ev")]
 pub fn stub_0x615bac() -> ! {
     todo!("0x615bac __ZThn36_N3RBX4SeatD1Ev")
@@ -338,7 +338,7 @@ pub fn stub_0x615bac() -> ! {
 
 // 0x615bc0 — __ZThn132_N3RBX4SeatD1Ev — non-virtual thunk toRBX::Seat::~Seat()
 // type: void __fastcall(RBX::Seat *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Seat::~Seat()")]
+#[doc(alias = "non-virtual thunk toRBX::Seat::~Seat() [0x615bc0]")]
 #[doc(alias = "__ZThn132_N3RBX4SeatD1Ev")]
 pub fn stub_0x615bc0() -> ! {
     todo!("0x615bc0 __ZThn132_N3RBX4SeatD1Ev")
@@ -398,7 +398,7 @@ pub fn stub_0x618c98() -> ! {
 
 // 0x618c9c — __ZN3RBX9SelectionC2Ev — RBX::Selection::Selection(void)
 // type: _DWORD __fastcall(RBX::Selection *__hidden this)
-#[doc(alias = "RBX::Selection::Selection(void)")]
+#[doc(alias = "RBX::Selection::Selection(void) [0x618c9c]")]
 #[doc(alias = "__ZN3RBX9SelectionC2Ev")]
 pub fn stub_0x618c9c() -> ! {
     todo!("0x618c9c __ZN3RBX9SelectionC2Ev")
@@ -414,7 +414,7 @@ pub fn stub_0x619088() -> ! {
 
 // 0x619128 — __ZN3RBX9SelectionD1Ev — RBX::Selection::~Selection()
 // type: void __fastcall(RBX::Selection *__hidden this)
-#[doc(alias = "RBX::Selection::~Selection()")]
+#[doc(alias = "RBX::Selection::~Selection() [0x619128]")]
 #[doc(alias = "__ZN3RBX9SelectionD1Ev")]
 pub fn stub_0x619128() -> ! {
     todo!("0x619128 __ZN3RBX9SelectionD1Ev")
@@ -430,7 +430,7 @@ pub fn stub_0x61912c() -> ! {
 
 // 0x619134 — __ZThn36_N3RBX9SelectionD0Ev — non-virtual thunk toRBX::Selection::~Selection()
 // type: void __fastcall(RBX::Selection *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Selection::~Selection()")]
+#[doc(alias = "non-virtual thunk toRBX::Selection::~Selection() [0x619134]")]
 #[doc(alias = "__ZThn36_N3RBX9SelectionD0Ev")]
 pub fn stub_0x619134() -> ! {
     todo!("0x619134 __ZThn36_N3RBX9SelectionD0Ev")
@@ -438,7 +438,7 @@ pub fn stub_0x619134() -> ! {
 
 // 0x61913c — __ZN3RBX9SelectionD2Ev — RBX::Selection::~Selection()
 // type: void __fastcall(RBX::Selection *__hidden this)
-#[doc(alias = "RBX::Selection::~Selection()")]
+#[doc(alias = "RBX::Selection::~Selection() [0x61913c]")]
 #[doc(alias = "__ZN3RBX9SelectionD2Ev")]
 pub fn stub_0x61913c() -> ! {
     todo!("0x61913c __ZN3RBX9SelectionD2Ev")
@@ -446,7 +446,7 @@ pub fn stub_0x61913c() -> ! {
 
 // 0x619444 — __ZThn32_N3RBX9SelectionD1Ev — non-virtual thunk toRBX::Selection::~Selection()
 // type: void __fastcall(RBX::Selection *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Selection::~Selection()")]
+#[doc(alias = "non-virtual thunk toRBX::Selection::~Selection() [0x619444]")]
 #[doc(alias = "__ZThn32_N3RBX9SelectionD1Ev")]
 pub fn stub_0x619444() -> ! {
     todo!("0x619444 __ZThn32_N3RBX9SelectionD1Ev")
@@ -454,7 +454,7 @@ pub fn stub_0x619444() -> ! {
 
 // 0x61944c — __ZThn36_N3RBX9SelectionD1Ev — non-virtual thunk toRBX::Selection::~Selection()
 // type: void __fastcall(RBX::Selection *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Selection::~Selection()")]
+#[doc(alias = "non-virtual thunk toRBX::Selection::~Selection() [0x61944c]")]
 #[doc(alias = "__ZThn36_N3RBX9SelectionD1Ev")]
 pub fn stub_0x61944c() -> ! {
     todo!("0x61944c __ZThn36_N3RBX9SelectionD1Ev")
@@ -614,7 +614,7 @@ pub fn stub_0x61b454() -> ! {
 }
 
 // 0x61b480 — __ZN3rbx7signals6signalIFvRKN3RBX16SelectionChangedEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_9SelectionES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEED0Ev — rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Selection,RBX::SelectionChanged const&>,boost::_bi::list2<boost::_bi::value<RBX::Selection*>,boost::arg<1>>>>::~callable_slot()
-#[doc(alias = "rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Selection,RBX::SelectionChanged const&>,boost::_bi::list2<boost::_bi::value<RBX::Selection*>,boost::arg<1>>>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Selection,RBX::SelectionChanged const&>,boost::_bi::list2<boost::_bi::value<RBX::Selection*>,boost::arg<1>>>>::~callable_slot() [0x61b480]")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvRKN3RBX16SelectionChangedEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_9SelectionES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEED0Ev")]
 pub fn stub_0x61b480() -> ! {
     todo!("0x61b480 __ZN3rbx7signals6signalIFvRKN3RBX16SelectionChangedEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_9SelectionES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEED0Ev")
@@ -687,7 +687,7 @@ pub fn stub_0x61b87c() -> ! {
 }
 
 // 0x61b8a8 — __ZN3rbx7signals6signalIFvRKN3RBX16SelectionChangedEEE4slotD0Ev — rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot::~slot()
-#[doc(alias = "rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot::~slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot::~slot() [0x61b8a8]")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvRKN3RBX16SelectionChangedEEE4slotD0Ev")]
 pub fn stub_0x61b8a8() -> ! {
     todo!("0x61b8a8 __ZN3rbx7signals6signalIFvRKN3RBX16SelectionChangedEEE4slotD0Ev")
@@ -701,7 +701,7 @@ pub fn stub_0x61b97c() -> ! {
 }
 
 // 0x61b9a8 — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX16SelectionChangedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_9SelectionES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_ED0Ev — rbx::callable<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Selection,RBX::SelectionChanged const&>,boost::_bi::list2<boost::_bi::value<RBX::Selection*>,boost::arg<1>>>,1,void ()(RBX::SelectionChanged const&)>::~callable()
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Selection,RBX::SelectionChanged const&>,boost::_bi::list2<boost::_bi::value<RBX::Selection*>,boost::arg<1>>>,1,void ()(RBX::SelectionChanged const&)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Selection,RBX::SelectionChanged const&>,boost::_bi::list2<boost::_bi::value<RBX::Selection*>,boost::arg<1>>>,1,void ()(RBX::SelectionChanged const&)>::~callable() [0x61b9a8]")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvRKN3RBX16SelectionChangedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_9SelectionES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_ED0Ev")]
 pub fn stub_0x61b9a8() -> ! {
     todo!("0x61b9a8 __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX16SelectionChangedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_9SelectionES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_ED0Ev")
@@ -749,7 +749,7 @@ pub fn stub_0x61d0bc() -> ! {
 
 // 0x61d204 — __ZN3RBX12SelectionBoxD0Ev — RBX::SelectionBox::~SelectionBox()
 // type: void __fastcall(RBX::SelectionBox *__hidden this)
-#[doc(alias = "RBX::SelectionBox::~SelectionBox()")]
+#[doc(alias = "RBX::SelectionBox::~SelectionBox() [0x61d204]")]
 #[doc(alias = "__ZN3RBX12SelectionBoxD0Ev")]
 pub fn stub_0x61d204() -> ! {
     todo!("0x61d204 __ZN3RBX12SelectionBoxD0Ev")
@@ -771,7 +771,7 @@ pub fn stub_0x61d2b8() -> ! {
 
 // 0x61d400 — __ZThn32_N3RBX12SelectionBoxD0Ev — non-virtual thunk toRBX::SelectionBox::~SelectionBox()
 // type: void __fastcall(RBX::SelectionBox *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SelectionBox::~SelectionBox()")]
+#[doc(alias = "non-virtual thunk toRBX::SelectionBox::~SelectionBox() [0x61d400]")]
 #[doc(alias = "__ZThn32_N3RBX12SelectionBoxD0Ev")]
 pub fn stub_0x61d400() -> ! {
     todo!("0x61d400 __ZThn32_N3RBX12SelectionBoxD0Ev")
@@ -785,7 +785,7 @@ pub fn stub_0x61d55c() -> ! {
 
 // 0x61d56c — __ZThn36_N3RBX12SelectionBoxD1Ev — non-virtual thunk toRBX::SelectionBox::~SelectionBox()
 // type: void __fastcall(RBX::SelectionBox *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SelectionBox::~SelectionBox()")]
+#[doc(alias = "non-virtual thunk toRBX::SelectionBox::~SelectionBox() [0x61d56c]")]
 #[doc(alias = "__ZThn36_N3RBX12SelectionBoxD1Ev")]
 pub fn stub_0x61d56c() -> ! {
     todo!("0x61d56c __ZThn36_N3RBX12SelectionBoxD1Ev")
@@ -793,7 +793,7 @@ pub fn stub_0x61d56c() -> ! {
 
 // 0x61d6b4 — __ZThn36_N3RBX12SelectionBoxD0Ev — non-virtual thunk toRBX::SelectionBox::~SelectionBox()
 // type: void __fastcall(RBX::SelectionBox *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SelectionBox::~SelectionBox()")]
+#[doc(alias = "non-virtual thunk toRBX::SelectionBox::~SelectionBox() [0x61d6b4]")]
 #[doc(alias = "__ZThn36_N3RBX12SelectionBoxD0Ev")]
 pub fn stub_0x61d6b4() -> ! {
     todo!("0x61d6b4 __ZThn36_N3RBX12SelectionBoxD0Ev")

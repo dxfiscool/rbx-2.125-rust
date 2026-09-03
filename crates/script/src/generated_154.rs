@@ -88,7 +88,7 @@ pub fn stub_0x35bfe8() -> ! {
 
 // 0x35bfec — __ZN3RBX4Name7NameMapD2Ev
 // type: void __fastcall(RBX::Name::NameMap *__hidden this)
-#[doc(alias = "RBX::Name::NameMap::~NameMap()")]
+#[doc(alias = "RBX::Name::NameMap::~NameMap() [0x35bfec]")]
 pub fn stub_0x35bfec() -> ! {
     todo!("0x35bfec __ZN3RBX4Name7NameMapD2Ev")
 }
@@ -444,7 +444,7 @@ pub fn stub_0x35df60() -> ! {
 
 // 0x35df64 — __ZN3RBX9Profiling4MarkC2ERNS0_12CodeProfilerEbb
 // type: _DWORD __fastcall(RBX::Profiling::Mark *__hidden this, RBX::Profiling::CodeProfiler *, bool, bool)
-#[doc(alias = "RBX::Profiling::Mark::Mark(RBX::Profiling::CodeProfiler &,bool,bool)")]
+#[doc(alias = "RBX::Profiling::Mark::Mark(RBX::Profiling::CodeProfiler &,bool,bool) [0x35df64]")]
 pub fn stub_0x35df64() -> ! {
     todo!("0x35df64 __ZN3RBX9Profiling4MarkC2ERNS0_12CodeProfilerEbb")
 }
@@ -458,7 +458,7 @@ pub fn stub_0x35dfcc() -> ! {
 
 // 0x35dfd0 — __ZN3RBX9Profiling4MarkD2Ev
 // type: void __fastcall(RBX::Profiling::Mark *__hidden this)
-#[doc(alias = "RBX::Profiling::Mark::~Mark()")]
+#[doc(alias = "RBX::Profiling::Mark::~Mark() [0x35dfd0]")]
 pub fn stub_0x35dfd0() -> ! {
     todo!("0x35dfd0 __ZN3RBX9Profiling4MarkD2Ev")
 }
@@ -472,7 +472,7 @@ pub fn stub_0x35e03c() -> ! {
 
 // 0x35e060 — __ZN3RBX9Profiling8ProfilerD0Ev
 // type: void __fastcall(RBX::Profiling::Profiler *__hidden this)
-#[doc(alias = "RBX::Profiling::Profiler::~Profiler()")]
+#[doc(alias = "RBX::Profiling::Profiler::~Profiler() [0x35e060]")]
 pub fn stub_0x35e060() -> ! {
     todo!("0x35e060 __ZN3RBX9Profiling8ProfilerD0Ev")
 }
@@ -486,7 +486,7 @@ pub fn stub_0x35e08c() -> ! {
 
 // 0x35e0b0 — __ZN3RBX9Profiling12CodeProfilerD0Ev
 // type: void __fastcall(RBX::Profiling::CodeProfiler *__hidden this)
-#[doc(alias = "RBX::Profiling::CodeProfiler::~CodeProfiler()")]
+#[doc(alias = "RBX::Profiling::CodeProfiler::~CodeProfiler() [0x35e0b0]")]
 pub fn stub_0x35e0b0() -> ! {
     todo!("0x35e0b0 __ZN3RBX9Profiling12CodeProfilerD0Ev")
 }
@@ -512,7 +512,7 @@ pub fn stub_0x35e2c8() -> ! {
 
 // 0x35e2cc — __ZN3RBX15ProtectedStringC2Ev
 // type: _DWORD __fastcall(RBX::ProtectedString *__hidden this)
-#[doc(alias = "RBX::ProtectedString::ProtectedString(void)")]
+#[doc(alias = "RBX::ProtectedString::ProtectedString(void) [0x35e2cc]")]
 pub fn stub_0x35e2cc() -> ! {
     todo!("0x35e2cc __ZN3RBX15ProtectedStringC2Ev")
 }
@@ -526,7 +526,7 @@ pub fn stub_0x35e458() -> ! {
 
 // 0x35e45c — __ZN3RBX15ProtectedStringC2ERKS0_
 // type: _DWORD __fastcall(RBX::ProtectedString *__hidden this, const RBX::ProtectedString *)
-#[doc(alias = "RBX::ProtectedString::ProtectedString(RBX::ProtectedString const&)")]
+#[doc(alias = "RBX::ProtectedString::ProtectedString(RBX::ProtectedString const&) [0x35e45c]")]
 pub fn stub_0x35e45c() -> ! {
     todo!("0x35e45c __ZN3RBX15ProtectedStringC2ERKS0_")
 }

@@ -70,7 +70,7 @@ pub fn stub_0xf6b714() -> ! {
 }
 
 // 0xf6b724 — __ZNSt18basic_stringstreamIcSt11char_traitsIcESaIcEED2Ev
-#[doc(alias = "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>::~basic_stringstream()")]
+#[doc(alias = "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>::~basic_stringstream() [0xf6b724]")]
 pub fn stub_0xf6b724() -> ! {
     todo!("0xf6b724 std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>::~basic_stringstream()")
 }
@@ -98,7 +98,7 @@ pub fn stub_0xf6b754() -> ! {
 
 // 0xf6b764 — __ZNSt19basic_istringstreamIcSt11char_traitsIcESaIcEED2Ev
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>::~basic_istringstream()")]
+#[doc(alias = "std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>::~basic_istringstream() [0xf6b764]")]
 pub fn stub_0xf6b764() -> ! {
     todo!("0xf6b764 std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>::~basic_istringstream()")
 }
@@ -209,7 +209,7 @@ pub fn stub_0xf6b854() -> ! {
 
 // 0xf6b864 — __ZNSt8ios_base7failureC2ERKSs
 // type: _DWORD __fastcall(std::ios_base::failure *__hidden this, const std::string *)
-#[doc(alias = "std::ios_base::failure::failure(std::string const&)")]
+#[doc(alias = "std::ios_base::failure::failure(std::string const&) [0xf6b864]")]
 pub fn stub_0xf6b864() -> ! {
     todo!("0xf6b864 std::ios_base::failure::failure(std::string const&)")
 }
@@ -223,7 +223,7 @@ pub fn stub_0xf6b874() -> ! {
 
 // 0xf6b884 — __ZNSt8ios_base7failureD2Ev
 // type: void __fastcall(std::ios_base::failure *__hidden this)
-#[doc(alias = "std::ios_base::failure::~failure()")]
+#[doc(alias = "std::ios_base::failure::~failure() [0xf6b884]")]
 pub fn stub_0xf6b884() -> ! {
     todo!("0xf6b884 std::ios_base::failure::~failure()")
 }
@@ -251,7 +251,7 @@ pub fn stub_0xf6b8b4() -> ! {
 
 // 0xf6b8c4 — __ZNSt9bad_allocD2Ev
 // type: void __cdecl(std::bad_alloc *__hidden this)
-#[doc(alias = "std::bad_alloc::~bad_alloc()")]
+#[doc(alias = "std::bad_alloc::~bad_alloc() [0xf6b8c4]")]
 pub fn stub_0xf6b8c4() -> ! {
     todo!("0xf6b8c4 std::bad_alloc::~bad_alloc()")
 }

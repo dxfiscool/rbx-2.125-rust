@@ -1089,7 +1089,7 @@ pub fn stub_0xe9e54() -> ! {
 
 // 0xea4ac — __ZN4FMOD7SystemIC1Ev
 // type: _DWORD __fastcall(FMOD::SystemI *__hidden this)
-#[doc(alias = "FMOD::SystemI::SystemI(void)")]
+#[doc(alias = "FMOD::SystemI::SystemI(void) [0xea4ac]")]
 #[doc(alias = "__ZN4FMOD7SystemIC1Ev")]
 pub fn stub_0xea4ac() -> ! {
     todo!("0xea4ac FMOD::SystemI::SystemI(void)")
@@ -1121,7 +1121,7 @@ pub fn stub_0xedce8() -> ! {
 
 // 0xedd54 — __ZN4FMOD7SystemID1Ev
 // type: void __fastcall(FMOD::SystemI *__hidden this)
-#[doc(alias = "FMOD::SystemI::~SystemI()")]
+#[doc(alias = "FMOD::SystemI::~SystemI() [0xedd54]")]
 #[doc(alias = "__ZN4FMOD7SystemID1Ev")]
 pub fn stub_0xedd54() -> ! {
     todo!("0xedd54 FMOD::SystemI::~SystemI()")
@@ -1145,7 +1145,7 @@ pub fn stub_0xeddc0() -> ! {
 
 // 0xeddfc — __ZN4FMOD6ThreadC1Ev
 // type: _DWORD __fastcall(FMOD::Thread *__hidden this)
-#[doc(alias = "FMOD::Thread::Thread(void)")]
+#[doc(alias = "FMOD::Thread::Thread(void) [0xeddfc]")]
 #[doc(alias = "__ZN4FMOD6ThreadC1Ev")]
 pub fn stub_0xeddfc() -> ! {
     todo!("0xeddfc FMOD::Thread::Thread(void)")

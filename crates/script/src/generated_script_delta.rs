@@ -40,7 +40,7 @@ pub fn stub_0xd0dcec() -> ! {
 }
 
 // 0xd0dcf0 — __ZNSt8_Rb_treeIfSt4pairIKfSt17_Rb_tree_iteratorIS0_IKmN4Ogre22VertexBoneAssignment_sEEEESt10_Select1stIS8_ESt4lessIfENS4_12STLAllocatorIS8_NS4_22CategorisedAllocPolicyILNS4_14MemoryCategoryE0EEEEEE13_Rb_tree_implISC_Lb0EED0Ev
-#[doc(alias = "std::_Rb_tree<float,std::pair<float const,std::_Rb_tree_iterator<std::pair<unsigned long const,Ogre::VertexBoneAssignment_s>>>,std::_Select1st<std::pair<float const,std::_Rb_tree_iterator<std::pair<unsigned long const,Ogre::VertexBoneAssignment_s>>>>,std::less<float>,Ogre::STLAllocator<std::pair<float const,std::_Rb_tree_iterator<std::pair<unsigned long const,Ogre::VertexBoneAssignment_s>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<float>,false>::~_Rb_tree_impl()")]
+#[doc(alias = "std::_Rb_tree<float,std::pair<float const,std::_Rb_tree_iterator<std::pair<unsigned long const,Ogre::VertexBoneAssignment_s>>>,std::_Select1st<std::pair<float const,std::_Rb_tree_iterator<std::pair<unsigned long const,Ogre::VertexBoneAssignment_s>>>>,std::less<float>,Ogre::STLAllocator<std::pair<float const,std::_Rb_tree_iterator<std::pair<unsigned long const,Ogre::VertexBoneAssignment_s>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<float>,false>::~_Rb_tree_impl() [0xd0dcf0]")]
 #[doc(alias = "__ZNSt8_Rb_treeIfSt4pairIKfSt17_Rb_tree_iteratorIS0_IKmN4Ogre22VertexBoneAssignment_sEEEESt10_Select1stIS8_ESt4lessIfENS4_12STLAllocatorIS8_NS4_22CategorisedAllocPolicyILNS4_14MemoryCategoryE0EEEEEE13_Rb_tree_implISC_Lb0EED0Ev")]
 pub fn stub_0xd0dcf0() -> ! {
     todo!("0xd0dcf0 std::_Rb_tree<float,std::pair<float const,std::_Rb_tree_iterator<std::pair<unsigned long const,Ogre::VertexBoneAssignment_s>>>,std::_Select1st<std::pair<float const,std::_Rb_tree_iterator<std::pair<unsigned long const,Ogre::VertexBoneAssignment_s>>>>,std::less<float>,Ogre::STLAllocator<std::pair<float const,std::_Rb_tree_iterator<std::pair<unsigned long const,Ogre::VertexBoneAssignment_s>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<float>,false>::~_Rb_tree_impl()")
@@ -114,7 +114,7 @@ pub fn stub_0xd0ec28() -> ! {
 
 // 0xd0ec34 — __ZNSt12_Vector_baseIPN4Ogre4PoseENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 // type: void __fastcall(void *)
-#[doc(alias = "std::_Vector_base<Ogre::Pose *,Ogre::STLAllocator<Ogre::Pose *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(alias = "std::_Vector_base<Ogre::Pose *,Ogre::STLAllocator<Ogre::Pose *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl() [0xd0ec34]")]
 #[doc(alias = "__ZNSt12_Vector_baseIPN4Ogre4PoseENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
 pub fn stub_0xd0ec34() -> ! {
     todo!("0xd0ec34 std::_Vector_base<Ogre::Pose *,Ogre::STLAllocator<Ogre::Pose *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
@@ -128,7 +128,7 @@ pub fn stub_0xd0ec40() -> ! {
 }
 
 // 0xd0ec48 — __ZNSt12_Vector_baseIN4Ogre12MeshLodUsageENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(alias = "std::_Vector_base<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl() [0xd0ec48]")]
 #[doc(alias = "__ZNSt12_Vector_baseIN4Ogre12MeshLodUsageENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
 pub fn stub_0xd0ec48() -> ! {
     todo!("0xd0ec48 std::_Vector_base<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
@@ -142,14 +142,14 @@ pub fn stub_0xd0ec54() -> ! {
 }
 
 // 0xd0ec58 — __ZNSt8_Rb_treeImSt4pairIKmN4Ogre22VertexBoneAssignment_sEESt10_Select1stIS4_ESt4lessImENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED0Ev
-#[doc(alias = "std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::VertexBoneAssignment_s>,std::_Select1st<std::pair<unsigned long const,Ogre::VertexBoneAssignment_s>>,std::less<unsigned long>,Ogre::STLAllocator<std::pair<unsigned long const,Ogre::VertexBoneAssignment_s>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned long>,false>::~_Rb_tree_impl()")]
+#[doc(alias = "std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::VertexBoneAssignment_s>,std::_Select1st<std::pair<unsigned long const,Ogre::VertexBoneAssignment_s>>,std::less<unsigned long>,Ogre::STLAllocator<std::pair<unsigned long const,Ogre::VertexBoneAssignment_s>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned long>,false>::~_Rb_tree_impl() [0xd0ec58]")]
 #[doc(alias = "__ZNSt8_Rb_treeImSt4pairIKmN4Ogre22VertexBoneAssignment_sEESt10_Select1stIS4_ESt4lessImENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED0Ev")]
 pub fn stub_0xd0ec58() -> ! {
     todo!("0xd0ec58 std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::VertexBoneAssignment_s>,std::_Select1st<std::pair<unsigned long const,Ogre::VertexBoneAssignment_s>>,std::less<unsigned long>,Ogre::STLAllocator<std::pair<unsigned long const,Ogre::VertexBoneAssignment_s>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned long>,false>::~_Rb_tree_impl()")
 }
 
 // 0xd0ec64 — __ZNSt12_Vector_baseIPN4Ogre7SubMeshENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::SubMesh *,Ogre::STLAllocator<Ogre::SubMesh *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(alias = "std::_Vector_base<Ogre::SubMesh *,Ogre::STLAllocator<Ogre::SubMesh *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl() [0xd0ec64]")]
 #[doc(alias = "__ZNSt12_Vector_baseIPN4Ogre7SubMeshENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
 pub fn stub_0xd0ec64() -> ! {
     todo!("0xd0ec64 std::_Vector_base<Ogre::SubMesh *,Ogre::STLAllocator<Ogre::SubMesh *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
@@ -199,7 +199,7 @@ pub fn stub_0xd0ee20() -> ! {
 }
 
 // 0xd0ef10 — __ZN4Ogre9SharedPtrINS_20HardwareVertexBufferEED0Ev
-#[doc(alias = "Ogre::SharedPtr<Ogre::HardwareVertexBuffer>::~SharedPtr()")]
+#[doc(alias = "Ogre::SharedPtr<Ogre::HardwareVertexBuffer>::~SharedPtr() [0xd0ef10]")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_20HardwareVertexBufferEED0Ev")]
 pub fn stub_0xd0ef10() -> ! {
     todo!("0xd0ef10 Ogre::SharedPtr<Ogre::HardwareVertexBuffer>::~SharedPtr()")
@@ -275,7 +275,7 @@ pub fn stub_0xd0f840() -> ! {
 }
 
 // 0xd0f930 — __ZN4Ogre9SharedPtrINS_8SkeletonEED0Ev
-#[doc(alias = "Ogre::SharedPtr<Ogre::Skeleton>::~SharedPtr()")]
+#[doc(alias = "Ogre::SharedPtr<Ogre::Skeleton>::~SharedPtr() [0xd0f930]")]
 #[doc(alias = "__ZN4Ogre9SharedPtrINS_8SkeletonEED0Ev")]
 pub fn stub_0xd0f930() -> ! {
     todo!("0xd0f930 Ogre::SharedPtr<Ogre::Skeleton>::~SharedPtr()")
@@ -339,7 +339,7 @@ pub fn stub_0xd0fe68() -> ! {
 
 // 0xd0fef8 — __ZN4Ogre11MeshManagerD1Ev
 // type: void __fastcall(Ogre::MeshManager *__hidden this)
-#[doc(alias = "Ogre::MeshManager::~MeshManager()")]
+#[doc(alias = "Ogre::MeshManager::~MeshManager() [0xd0fef8]")]
 #[doc(alias = "__ZN4Ogre11MeshManagerD1Ev")]
 pub fn stub_0xd0fef8() -> ! {
     todo!("0xd0fef8 Ogre::MeshManager::~MeshManager()")
@@ -355,7 +355,7 @@ pub fn stub_0xd0ff04() -> ! {
 
 // 0xd0ff98 — __ZN4Ogre11MeshManagerD2Ev
 // type: void __fastcall(Ogre::MeshManager *__hidden this)
-#[doc(alias = "Ogre::MeshManager::~MeshManager()")]
+#[doc(alias = "Ogre::MeshManager::~MeshManager() [0xd0ff98]")]
 #[doc(alias = "__ZN4Ogre11MeshManagerD2Ev")]
 pub fn stub_0xd0ff98() -> ! {
     todo!("0xd0ff98 Ogre::MeshManager::~MeshManager()")
@@ -363,7 +363,7 @@ pub fn stub_0xd0ff98() -> ! {
 
 // 0xd100a8 — __ZThn152_N4Ogre11MeshManagerD1Ev
 // type: void __fastcall(Ogre::MeshManager *__hidden this)
-#[doc(alias = "non-virtual thunk toOgre::MeshManager::~MeshManager()")]
+#[doc(alias = "non-virtual thunk toOgre::MeshManager::~MeshManager() [0xd100a8]")]
 #[doc(alias = "__ZThn152_N4Ogre11MeshManagerD1Ev")]
 pub fn stub_0xd100a8() -> ! {
     todo!("0xd100a8 non-virtual thunk toOgre::MeshManager::~MeshManager()")
@@ -574,7 +574,7 @@ pub fn stub_0xd147cc() -> ! {
 }
 
 // 0xd147d0 — __ZNSt8_Rb_treeIPN4Ogre8ResourceESt4pairIKS2_NS0_11MeshManager15MeshBuildParamsEESt10_Select1stIS7_ESt4lessIS2_ENS0_12STLAllocatorIS7_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_Rb_tree_implISB_Lb0EED0Ev
-#[doc(alias = "std::_Rb_tree<Ogre::Resource *,std::pair<Ogre::Resource * const,Ogre::MeshManager::MeshBuildParams>,std::_Select1st<std::pair<Ogre::Resource * const,Ogre::MeshManager::MeshBuildParams>>,std::less<Ogre::Resource *>,Ogre::STLAllocator<std::pair<Ogre::Resource * const,Ogre::MeshManager::MeshBuildParams>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Resource *>,false>::~_Rb_tree_impl()")]
+#[doc(alias = "std::_Rb_tree<Ogre::Resource *,std::pair<Ogre::Resource * const,Ogre::MeshManager::MeshBuildParams>,std::_Select1st<std::pair<Ogre::Resource * const,Ogre::MeshManager::MeshBuildParams>>,std::less<Ogre::Resource *>,Ogre::STLAllocator<std::pair<Ogre::Resource * const,Ogre::MeshManager::MeshBuildParams>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Resource *>,false>::~_Rb_tree_impl() [0xd147d0]")]
 #[doc(alias = "__ZNSt8_Rb_treeIPN4Ogre8ResourceESt4pairIKS2_NS0_11MeshManager15MeshBuildParamsEESt10_Select1stIS7_ESt4lessIS2_ENS0_12STLAllocatorIS7_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_Rb_tree_implISB_Lb0EED0Ev")]
 pub fn stub_0xd147d0() -> ! {
     todo!("0xd147d0 std::_Rb_tree<Ogre::Resource *,std::pair<Ogre::Resource * const,Ogre::MeshManager::MeshBuildParams>,std::_Select1st<std::pair<Ogre::Resource * const,Ogre::MeshManager::MeshBuildParams>>,std::less<Ogre::Resource *>,Ogre::STLAllocator<std::pair<Ogre::Resource * const,Ogre::MeshManager::MeshBuildParams>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Resource *>,false>::~_Rb_tree_impl()")
@@ -641,7 +641,7 @@ pub fn stub_0xd14e6c() -> ! {
 
 // 0xd14e78 — __ZN4Ogre14MeshSerializerC2Ev
 // type: _DWORD __fastcall(Ogre::MeshSerializer *__hidden this)
-#[doc(alias = "Ogre::MeshSerializer::MeshSerializer(void)")]
+#[doc(alias = "Ogre::MeshSerializer::MeshSerializer(void) [0xd14e78]")]
 #[doc(alias = "__ZN4Ogre14MeshSerializerC2Ev")]
 pub fn stub_0xd14e78() -> ! {
     todo!("0xd14e78 Ogre::MeshSerializer::MeshSerializer(void)")
@@ -657,7 +657,7 @@ pub fn stub_0xd15800() -> ! {
 
 // 0xd15890 — __ZN4Ogre14MeshSerializerD1Ev
 // type: void __fastcall(Ogre::MeshSerializer *__hidden this)
-#[doc(alias = "Ogre::MeshSerializer::~MeshSerializer()")]
+#[doc(alias = "Ogre::MeshSerializer::~MeshSerializer() [0xd15890]")]
 #[doc(alias = "__ZN4Ogre14MeshSerializerD1Ev")]
 pub fn stub_0xd15890() -> ! {
     todo!("0xd15890 Ogre::MeshSerializer::~MeshSerializer()")
@@ -665,7 +665,7 @@ pub fn stub_0xd15890() -> ! {
 
 // 0xd1589c — __ZN4Ogre14MeshSerializerD2Ev
 // type: void __fastcall(Ogre::MeshSerializer *__hidden this)
-#[doc(alias = "Ogre::MeshSerializer::~MeshSerializer()")]
+#[doc(alias = "Ogre::MeshSerializer::~MeshSerializer() [0xd1589c]")]
 #[doc(alias = "__ZN4Ogre14MeshSerializerD2Ev")]
 pub fn stub_0xd1589c() -> ! {
     todo!("0xd1589c Ogre::MeshSerializer::~MeshSerializer()")
@@ -695,7 +695,7 @@ pub fn stub_0xd16484() -> ! {
 
 // 0xd16488 — __ZNSt12_Vector_baseIPN4Ogre14MeshSerializer15MeshVersionDataENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 // type: void __fastcall(void *)
-#[doc(alias = "std::_Vector_base<Ogre::MeshSerializer::MeshVersionData *,Ogre::STLAllocator<Ogre::MeshSerializer::MeshVersionData *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(alias = "std::_Vector_base<Ogre::MeshSerializer::MeshVersionData *,Ogre::STLAllocator<Ogre::MeshSerializer::MeshVersionData *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl() [0xd16488]")]
 #[doc(alias = "__ZNSt12_Vector_baseIPN4Ogre14MeshSerializer15MeshVersionDataENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")]
 pub fn stub_0xd16488() -> ! {
     todo!("0xd16488 std::_Vector_base<Ogre::MeshSerializer::MeshVersionData *,Ogre::STLAllocator<Ogre::MeshSerializer::MeshVersionData *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
@@ -719,7 +719,7 @@ pub fn stub_0xd1658c() -> ! {
 
 // 0xd1661c — __ZN4Ogre18MeshSerializerImplD1Ev
 // type: void __fastcall(Ogre::MeshSerializerImpl *__hidden this)
-#[doc(alias = "Ogre::MeshSerializerImpl::~MeshSerializerImpl()")]
+#[doc(alias = "Ogre::MeshSerializerImpl::~MeshSerializerImpl() [0xd1661c]")]
 #[doc(alias = "__ZN4Ogre18MeshSerializerImplD1Ev")]
 pub fn stub_0xd1661c() -> ! {
     todo!("0xd1661c Ogre::MeshSerializerImpl::~MeshSerializerImpl()")

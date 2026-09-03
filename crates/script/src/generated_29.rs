@@ -107,7 +107,7 @@ pub fn stub_0x237348() -> ! {
 // 0x237354 — __ZN5boost12_GLOBAL__N_126externally_launched_threadD0Ev
 // type: void __fastcall(boost::_anonymous_namespace_::externally_launched_thread *__hidden this)
 // was: void __fastcall(boost::_anonymous_namespace_::externally_launched_thread *__hidden this)
-#[doc(alias = "boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")]
+#[doc(alias = "boost::anonymous namespace::externally_launched_thread::~externally_launched_thread() [0x237354]")]
 pub fn stub_0x237354() -> ! {
     todo!("0x237354 __ZN5boost12_GLOBAL__N_126externally_launched_threadD0Ev")
 }
@@ -185,7 +185,7 @@ pub fn stub_0x237b40() -> ! {
 
 // 0x237b44 — __ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEED0Ev
 // type: void __fastcall(void *)
-#[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::~sp_counted_impl_p() [0x237b44]")]
 pub fn stub_0x237b44() -> ! {
     todo!("0x237b44 __ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEED0Ev")
 }
@@ -335,7 +335,7 @@ pub fn stub_0x239cc8() -> ! {
 
 // 0x239e90 — __ZN5boost10filesystem16filesystem_errorD0Ev
 // type: void __fastcall(std::runtime_error *this)
-#[doc(alias = "boost::filesystem::filesystem_error::~filesystem_error()")]
+#[doc(alias = "boost::filesystem::filesystem_error::~filesystem_error() [0x239e90]")]
 pub fn stub_0x239e90() -> ! {
     todo!("0x239e90 __ZN5boost10filesystem16filesystem_errorD0Ev")
 }
@@ -365,7 +365,7 @@ pub fn stub_0x23a2bc() -> ! {
 
 // 0x23a2c0 — __ZN5boost6detail17sp_counted_impl_pINS_10filesystem16filesystem_error5m_impEED0Ev
 // type: void __fastcall(void *)
-#[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::filesystem_error::m_imp>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::filesystem::filesystem_error::m_imp>::~sp_counted_impl_p() [0x23a2c0]")]
 pub fn stub_0x23a2c0() -> ! {
     todo!("0x23a2c0 __ZN5boost6detail17sp_counted_impl_pINS_10filesystem16filesystem_error5m_impEED0Ev")
 }
@@ -557,7 +557,7 @@ pub fn stub_0x23b4ac() -> ! {
 // 0x23b4b8 — __ZN5boost10filesystem6detail18utf8_codecvt_facetD0Ev
 // type: void __fastcall(boost::filesystem::detail::utf8_codecvt_facet *__hidden this)
 // was: void __fastcall(boost::filesystem::detail::utf8_codecvt_facet *__hidden this)
-#[doc(alias = "boost::filesystem::detail::utf8_codecvt_facet::~utf8_codecvt_facet()")]
+#[doc(alias = "boost::filesystem::detail::utf8_codecvt_facet::~utf8_codecvt_facet() [0x23b4b8]")]
 pub fn stub_0x23b4b8() -> ! {
     todo!("0x23b4b8 __ZN5boost10filesystem6detail18utf8_codecvt_facetD0Ev")
 }
@@ -712,7 +712,7 @@ pub fn stub_0x23d390() -> ! {
 // 0x23d39c — __ZN5boost9iostreams10zlib_errorD0Ev
 // type: void __fastcall(boost::iostreams::zlib_error *__hidden this)
 // was: void __fastcall(boost::iostreams::zlib_error *__hidden this)
-#[doc(alias = "boost::iostreams::zlib_error::~zlib_error()")]
+#[doc(alias = "boost::iostreams::zlib_error::~zlib_error() [0x23d39c]")]
 pub fn stub_0x23d39c() -> ! {
     todo!("0x23d39c __ZN5boost9iostreams10zlib_errorD0Ev")
 }
@@ -754,7 +754,7 @@ pub fn stub_0x23d690() -> ! {
 
 // 0x23d75c — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
 // type: void __fastcall(std::ios_base::failure *)
-#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl() [0x23d75c]")]
 pub fn stub_0x23d75c() -> ! {
     todo!("0x23d75c __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev")
 }
@@ -775,7 +775,7 @@ pub fn stub_0x23d8d4() -> ! {
 
 // 0x23d984 — __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl() [0x23d984]")]
 pub fn stub_0x23d984() -> ! {
     todo!("0x23d984 __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev")
 }
@@ -796,7 +796,7 @@ pub fn stub_0x23db04() -> ! {
 
 // 0x23db14 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl() [0x23db14]")]
 pub fn stub_0x23db14() -> ! {
     todo!("0x23db14 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev")
 }
@@ -810,14 +810,14 @@ pub fn stub_0x23dbe8() -> ! {
 
 // 0x23dd30 — __ZN5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED0Ev
 // type: void __fastcall(std::ios_base::failure *)
-#[doc(alias = "boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
+#[doc(alias = "boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector() [0x23dd30]")]
 pub fn stub_0x23dd30() -> ! {
     todo!("0x23dd30 __ZN5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED0Ev")
 }
 
 // 0x23ddec — __ZThn12_N5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector() [0x23ddec]")]
 pub fn stub_0x23ddec() -> ! {
     todo!("0x23ddec __ZThn12_N5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED0Ev")
 }

@@ -140,7 +140,7 @@ pub fn stub_0x4f68b8() -> ! {
 }
 
 // 0x4f68bc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16FlagStandServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FlagStandService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FlagStandService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x4f68bc]")]
 pub fn stub_0x4f68bc() -> ! {
     todo!("0x4f68bc boost::detail::sp_counted_impl_pd<RBX::FlagStandService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
 }
@@ -272,7 +272,7 @@ pub fn stub_0x4f6f10() -> ! {
 }
 
 // 0x4f7094 — __ZN3RBX10Reflection9EventDescINS_9FlagStandEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED0Ev
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::FlagStand,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::FlagStand::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::FlagStand,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::FlagStand::*>::~EventDesc() [0x4f7094]")]
 pub fn stub_0x4f7094() -> ! {
     todo!("0x4f7094 RBX::Reflection::EventDesc<RBX::FlagStand,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::FlagStand::*>::~EventDesc()")
 }
@@ -304,7 +304,7 @@ pub fn stub_0x4f7410() -> ! {
 }
 
 // 0x4f7524 — __ZN3RBX10Reflection14PropDescriptorINS_9FlagStandENS_10BrickColorEED0Ev
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FlagStand,RBX::BrickColor>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FlagStand,RBX::BrickColor>::~PropDescriptor() [0x4f7524]")]
 pub fn stub_0x4f7524() -> ! {
     todo!("0x4f7524 RBX::Reflection::PropDescriptor<RBX::FlagStand,RBX::BrickColor>::~PropDescriptor()")
 }
@@ -335,7 +335,7 @@ pub fn stub_0x4f7580() -> ! {
 
 // 0x4f75a4 — __ZN3RBX9FlagStandD2Ev
 // type: void __fastcall(RBX::FlagStand *__hidden this)
-#[doc(alias = "RBX::FlagStand::~FlagStand()")]
+#[doc(alias = "RBX::FlagStand::~FlagStand() [0x4f75a4]")]
 pub fn stub_0x4f75a4() -> ! {
     todo!("0x4f75a4 RBX::FlagStand::~FlagStand()")
 }
@@ -355,7 +355,7 @@ pub fn stub_0x4f7c58() -> ! {
 
 // 0x4f7c5c — __ZN3RBX10ForceFieldC2Ev
 // type: _DWORD __fastcall(RBX::ForceField *__hidden this)
-#[doc(alias = "RBX::ForceField::ForceField(void)")]
+#[doc(alias = "RBX::ForceField::ForceField(void) [0x4f7c5c]")]
 pub fn stub_0x4f7c5c() -> ! {
     todo!("0x4f7c5c RBX::ForceField::ForceField(void)")
 }
@@ -418,7 +418,7 @@ pub fn stub_0x4f8780() -> ! {
 
 // 0x4f8784 — __ZN3RBX10ForceFieldD0Ev
 // type: void __fastcall(RBX::ForceField *__hidden this)
-#[doc(alias = "RBX::ForceField::~ForceField()")]
+#[doc(alias = "RBX::ForceField::~ForceField() [0x4f8784]")]
 pub fn stub_0x4f8784() -> ! {
     todo!("0x4f8784 RBX::ForceField::~ForceField()")
 }
@@ -445,7 +445,7 @@ pub fn stub_0x4f8838() -> ! {
 
 // 0x4f8840 — __ZThn32_N3RBX10ForceFieldD0Ev
 // type: void __fastcall(RBX::ForceField *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
+#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField() [0x4f8840]")]
 pub fn stub_0x4f8840() -> ! {
     todo!("0x4f8840 non-virtual thunk toRBX::ForceField::~ForceField()")
 }
@@ -458,14 +458,14 @@ pub fn stub_0x4f8848() -> ! {
 
 // 0x4f8858 — __ZThn36_N3RBX10ForceFieldD1Ev
 // type: void __fastcall(RBX::ForceField *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
+#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField() [0x4f8858]")]
 pub fn stub_0x4f8858() -> ! {
     todo!("0x4f8858 non-virtual thunk toRBX::ForceField::~ForceField()")
 }
 
 // 0x4f8860 — __ZThn36_N3RBX10ForceFieldD0Ev
 // type: void __fastcall(RBX::ForceField *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
+#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField() [0x4f8860]")]
 pub fn stub_0x4f8860() -> ! {
     todo!("0x4f8860 non-virtual thunk toRBX::ForceField::~ForceField()")
 }
@@ -479,14 +479,14 @@ pub fn stub_0x4f8868() -> ! {
 
 // 0x4f886c — __ZThn116_N3RBX10ForceFieldD1Ev
 // type: void __fastcall(RBX::ForceField *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
+#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField() [0x4f886c]")]
 pub fn stub_0x4f886c() -> ! {
     todo!("0x4f886c non-virtual thunk toRBX::ForceField::~ForceField()")
 }
 
 // 0x4f8874 — __ZThn116_N3RBX10ForceFieldD0Ev
 // type: void __fastcall(RBX::ForceField *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
+#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField() [0x4f8874]")]
 pub fn stub_0x4f8874() -> ! {
     todo!("0x4f8874 non-virtual thunk toRBX::ForceField::~ForceField()")
 }
@@ -572,7 +572,7 @@ pub fn stub_0x4f8c44() -> ! {
 
 // 0x4f8ce8 — __ZN3RBX10ForceFieldD2Ev
 // type: void __fastcall(RBX::ForceField *__hidden this)
-#[doc(alias = "RBX::ForceField::~ForceField()")]
+#[doc(alias = "RBX::ForceField::~ForceField() [0x4f8ce8]")]
 pub fn stub_0x4f8ce8() -> ! {
     todo!("0x4f8ce8 RBX::ForceField::~ForceField()")
 }
@@ -597,7 +597,7 @@ pub fn stub_0x4f910c() -> ! {
 }
 
 // 0x4f9110 — __ZN3RBX10Reflection8EnumDescINS_5Frame5StyleEEC2Ev
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Frame::Style>::EnumDesc(void)")]
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Frame::Style>::EnumDesc(void) [0x4f9110]")]
 pub fn stub_0x4f9110() -> ! {
     todo!("0x4f9110 RBX::Reflection::EnumDesc<RBX::Frame::Style>::EnumDesc(void)")
 }
@@ -611,7 +611,7 @@ pub fn stub_0x4f932c() -> ! {
 
 // 0x4f9330 — __ZN3RBX5FrameC2Ev
 // type: _DWORD __fastcall(RBX::Frame *__hidden this)
-#[doc(alias = "RBX::Frame::Frame(void)")]
+#[doc(alias = "RBX::Frame::Frame(void) [0x4f9330]")]
 pub fn stub_0x4f9330() -> ! {
     todo!("0x4f9330 RBX::Frame::Frame(void)")
 }

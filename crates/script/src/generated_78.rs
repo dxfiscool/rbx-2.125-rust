@@ -10,790 +10,690 @@ use rbx_core::SharedPtr;
 
 // 0x26990 — __ZL22joinGameWithJoinScriptRKSsN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "joinGameWithJoinScript(std::string const&,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_26990() -> ! {
+pub fn stub_0x26990() -> ! {
     todo!("0x26990 __ZL22joinGameWithJoinScriptRKSsN5boost10shared_ptrIN3RBX4GameEEE")
 }
 
-
 // 0x2ba54 — __ZL16executeUrlScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
 #[doc(alias = "executeUrlScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
-pub fn stub_2ba54() -> ! {
+pub fn stub_0x2ba54() -> ! {
     todo!("0x2ba54 __ZL16executeUrlScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs")
 }
 
-
 // 0x2bdb0 — __ZL19executeSignedScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
 #[doc(alias = "executeSignedScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
-pub fn stub_2bdb0() -> ! {
+pub fn stub_0x2bdb0() -> ! {
     todo!("0x2bdb0 __ZL19executeSignedScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs")
 }
 
-
 // 0x2bf74 — __ZL13executeScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
 #[doc(alias = "executeScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
-pub fn stub_2bf74() -> ! {
+pub fn stub_0x2bf74() -> ! {
     todo!("0x2bf74 __ZL13executeScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs")
 }
-
 
 // 0x32768 — __ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv
 // type: int(void)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv")]
-pub fn stub_32768() -> ! {
+pub fn stub_0x32768() -> ! {
     todo!("0x32768 __ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv")
 }
-
 
 // 0x66b1c — -[AppController runJoinScriptWithUrl:]
 // type: void __cdecl(AppController *self, SEL, id)
 #[doc(alias = "-[AppController runJoinScriptWithUrl:]")]
-pub fn stub_66b1c() -> ! {
+pub fn stub_0x66b1c() -> ! {
     todo!("0x66b1c -[AppController runJoinScriptWithUrl:]")
 }
-
 
 // 0x268cb8 — __ZN3RBX10CoreScriptC1ERKNS_9ContentIdE
 // type: int __fastcall(RBX::CoreScript *this, const RBX::ContentId *)
 #[doc(alias = "RBX::CoreScript::CoreScript(RBX::ContentId const&)")]
-pub fn stub_268cb8() -> ! {
+pub fn stub_0x268cb8() -> ! {
     todo!("0x268cb8 __ZN3RBX10CoreScriptC1ERKNS_9ContentIdE")
 }
 
-
 // 0x268cbc — __ZN3RBX10CoreScriptC2ERKNS_9ContentIdE
 // type: RBX::BaseScript *__fastcall(RBX::CoreScript *this, __guard *)
-#[doc(alias = "RBX::CoreScript::CoreScript(RBX::ContentId const&)")]
-pub fn stub_268cbc() -> ! {
+#[doc(alias = "RBX::CoreScript::CoreScript(RBX::ContentId const&) [0x268cbc]")]
+pub fn stub_0x268cbc() -> ! {
     todo!("0x268cbc __ZN3RBX10CoreScriptC2ERKNS_9ContentIdE")
 }
-
 
 // 0x268eec — __ZN3RBX10CoreScript17onServiceProviderEPNS_15ServiceProviderES2_
 // type: int __fastcall(RBX::CoreScript *this, RBX::ServiceProvider *, RBX::ServiceProvider *, int)
 #[doc(alias = "RBX::CoreScript::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
-pub fn stub_268eec() -> ! {
+pub fn stub_0x268eec() -> ! {
     todo!("0x268eec __ZN3RBX10CoreScript17onServiceProviderEPNS_15ServiceProviderES2_")
 }
-
 
 // 0x268ffc — __ZN3RBX10CoreScript11requestCodeEPNS_25ScriptInformationProviderE
 // type: int __fastcall(RBX::BaseScript *, RBX::Instance *, int)
 #[doc(alias = "RBX::CoreScript::requestCode(RBX::ScriptInformationProvider *)")]
-pub fn stub_268ffc() -> ! {
+pub fn stub_0x268ffc() -> ! {
     todo!("0x268ffc __ZN3RBX10CoreScript11requestCodeEPNS_25ScriptInformationProviderE")
 }
-
 
 // 0x26973c — __ZN3RBX10CoreScript19extraErrorReportingEP9lua_State
 // type: int __fastcall(RBX::DataModel *, int)
 #[doc(alias = "RBX::CoreScript::extraErrorReporting(lua_State *)")]
-pub fn stub_26973c() -> ! {
+pub fn stub_0x26973c() -> ! {
     todo!("0x26973c __ZN3RBX10CoreScript19extraErrorReportingEP9lua_State")
 }
-
 
 // 0x269da0 — __ZN3RBX13StarterScriptC1ERKNS_9ContentIdE
 // type: int __fastcall(RBX::StarterScript *this, const RBX::ContentId *)
 #[doc(alias = "RBX::StarterScript::StarterScript(RBX::ContentId const&)")]
-pub fn stub_269da0() -> ! {
+pub fn stub_0x269da0() -> ! {
     todo!("0x269da0 __ZN3RBX13StarterScriptC1ERKNS_9ContentIdE")
 }
 
-
 // 0x269da4 — __ZN3RBX13StarterScriptC2ERKNS_9ContentIdE
 // type: RBX::BaseScript *__fastcall(RBX::StarterScript *this, const RBX::ContentId *)
-#[doc(alias = "RBX::StarterScript::StarterScript(RBX::ContentId const&)")]
-pub fn stub_269da4() -> ! {
+#[doc(alias = "RBX::StarterScript::StarterScript(RBX::ContentId const&) [0x269da4]")]
+pub fn stub_0x269da4() -> ! {
     todo!("0x269da4 __ZN3RBX13StarterScriptC2ERKNS_9ContentIdE")
 }
-
 
 // 0x26a060 — __ZN3RBX10CoreScriptD1Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "RBX::CoreScript::~CoreScript()")]
-pub fn stub_26a060() -> ! {
+pub fn stub_0x26a060() -> ! {
     todo!("0x26a060 __ZN3RBX10CoreScriptD1Ev")
 }
 
-
 // 0x26a064 — __ZN3RBX10CoreScriptD0Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
-#[doc(alias = "RBX::CoreScript::~CoreScript()")]
-pub fn stub_26a064() -> ! {
+#[doc(alias = "RBX::CoreScript::~CoreScript() [0x26a064]")]
+pub fn stub_0x26a064() -> ! {
     todo!("0x26a064 __ZN3RBX10CoreScriptD0Ev")
 }
 
-
 // 0x26a104 — __ZNK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")]
-pub fn stub_26a104() -> ! {
+pub fn stub_0x26a104() -> ! {
     todo!("0x26a104 __ZNK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")
 }
-
 
 // 0x26a12c — __ZThn32_N3RBX10CoreScriptD1Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript()")]
-pub fn stub_26a12c() -> ! {
+pub fn stub_0x26a12c() -> ! {
     todo!("0x26a12c __ZThn32_N3RBX10CoreScriptD1Ev")
 }
 
-
 // 0x26a134 — __ZThn32_N3RBX10CoreScriptD0Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript()")]
-pub fn stub_26a134() -> ! {
+#[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript() [0x26a134]")]
+pub fn stub_0x26a134() -> ! {
     todo!("0x26a134 __ZThn32_N3RBX10CoreScriptD0Ev")
 }
 
-
 // 0x26a1d8 — __ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")]
-pub fn stub_26a1d8() -> ! {
+pub fn stub_0x26a1d8() -> ! {
     todo!("0x26a1d8 __ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")
 }
 
-
 // 0x26a200 — __ZThn36_N3RBX10CoreScriptD1Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript()")]
-pub fn stub_26a200() -> ! {
+#[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript() [0x26a200]")]
+pub fn stub_0x26a200() -> ! {
     todo!("0x26a200 __ZThn36_N3RBX10CoreScriptD1Ev")
 }
 
-
 // 0x26a208 — __ZThn36_N3RBX10CoreScriptD0Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript()")]
-pub fn stub_26a208() -> ! {
+#[doc(alias = "non-virtual thunk toRBX::CoreScript::~CoreScript() [0x26a208]")]
+pub fn stub_0x26a208() -> ! {
     todo!("0x26a208 __ZThn36_N3RBX10CoreScriptD0Ev")
 }
-
 
 // 0x26a2ac — __ZN3RBX13StarterScriptD1Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "RBX::StarterScript::~StarterScript()")]
-pub fn stub_26a2ac() -> ! {
+pub fn stub_0x26a2ac() -> ! {
     todo!("0x26a2ac __ZN3RBX13StarterScriptD1Ev")
 }
 
-
 // 0x26a2b0 — __ZN3RBX13StarterScriptD0Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
-#[doc(alias = "RBX::StarterScript::~StarterScript()")]
-pub fn stub_26a2b0() -> ! {
+#[doc(alias = "RBX::StarterScript::~StarterScript() [0x26a2b0]")]
+pub fn stub_0x26a2b0() -> ! {
     todo!("0x26a2b0 __ZN3RBX13StarterScriptD0Ev")
 }
 
-
 // 0x26a350 — __ZNK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")]
-pub fn stub_26a350() -> ! {
+pub fn stub_0x26a350() -> ! {
     todo!("0x26a350 __ZNK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")
 }
-
 
 // 0x26a378 — __ZThn32_N3RBX13StarterScriptD1Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript()")]
-pub fn stub_26a378() -> ! {
+pub fn stub_0x26a378() -> ! {
     todo!("0x26a378 __ZThn32_N3RBX13StarterScriptD1Ev")
 }
 
-
 // 0x26a380 — __ZThn32_N3RBX13StarterScriptD0Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript()")]
-pub fn stub_26a380() -> ! {
+#[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript() [0x26a380]")]
+pub fn stub_0x26a380() -> ! {
     todo!("0x26a380 __ZThn32_N3RBX13StarterScriptD0Ev")
 }
 
-
 // 0x26a424 — __ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")]
-pub fn stub_26a424() -> ! {
+pub fn stub_0x26a424() -> ! {
     todo!("0x26a424 __ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")
 }
 
-
 // 0x26a44c — __ZThn36_N3RBX13StarterScriptD1Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript()")]
-pub fn stub_26a44c() -> ! {
+#[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript() [0x26a44c]")]
+pub fn stub_0x26a44c() -> ! {
     todo!("0x26a44c __ZThn36_N3RBX13StarterScriptD1Ev")
 }
 
-
 // 0x26a454 — __ZThn36_N3RBX13StarterScriptD0Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript()")]
-pub fn stub_26a454() -> ! {
+#[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript() [0x26a454]")]
+pub fn stub_0x26a454() -> ! {
     todo!("0x26a454 __ZThn36_N3RBX13StarterScriptD0Ev")
 }
 
-
 // 0x26a4f8 — __ZN3RBX4Name13callDoDeclareILZNS_14sStarterScriptEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sStarterScriptEEEEvv")]
-pub fn stub_26a4f8() -> ! {
+pub fn stub_0x26a4f8() -> ! {
     todo!("0x26a4f8 __ZN3RBX4Name13callDoDeclareILZNS_14sStarterScriptEEEEvv")
 }
-
 
 // 0x26a4fc — __ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v")]
-pub fn stub_26a4fc() -> ! {
+pub fn stub_0x26a4fc() -> ! {
     todo!("0x26a4fc __ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v")
 }
 
-
 // 0x26a5dc — __ZN3RBX4Name13callDoDeclareILZNS_11sCoreScriptEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_11sCoreScriptEEEEvv")]
-pub fn stub_26a5dc() -> ! {
+pub fn stub_0x26a5dc() -> ! {
     todo!("0x26a5dc __ZN3RBX4Name13callDoDeclareILZNS_11sCoreScriptEEEEvv")
 }
-
 
 // 0x26a5e0 — __ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v")]
-pub fn stub_26a5e0() -> ! {
+pub fn stub_0x26a5e0() -> ! {
     todo!("0x26a5e0 __ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v")
 }
-
 
 // 0x26ada0 — __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
-pub fn stub_26ada0() -> ! {
+pub fn stub_0x26ada0() -> ! {
     todo!("0x26ada0 __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")
 }
-
 
 // 0x26ada4 — __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
-pub fn stub_26ada4() -> ! {
+pub fn stub_0x26ada4() -> ! {
     todo!("0x26ada4 __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")
 }
-
 
 // 0x26ae44 — __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
-pub fn stub_26ae44() -> ! {
+pub fn stub_0x26ae44() -> ! {
     todo!("0x26ae44 __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")
 }
-
 
 // 0x26ae4c — __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
-pub fn stub_26ae4c() -> ! {
+pub fn stub_0x26ae4c() -> ! {
     todo!("0x26ae4c __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")
 }
-
 
 // 0x26aef0 — __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
-pub fn stub_26aef0() -> ! {
+pub fn stub_0x26aef0() -> ! {
     todo!("0x26aef0 __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")
 }
-
 
 // 0x26aef8 — __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
-pub fn stub_26aef8() -> ! {
+pub fn stub_0x26aef8() -> ! {
     todo!("0x26aef8 __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")
 }
-
 
 // 0x26aff4 — __ZN3RBX10BaseScript19extraErrorReportingEP9lua_State
 // type: void()
 #[doc(alias = "RBX::BaseScript::extraErrorReporting(lua_State *)")]
-pub fn stub_26aff4() -> ! {
+pub fn stub_0x26aff4() -> ! {
     todo!("0x26aff4 __ZN3RBX10BaseScript19extraErrorReportingEP9lua_State")
 }
-
 
 // 0x26b464 — __ZNK3RBX3Lua12LuaArguments9getStringEiRSs
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, std::string *)
 #[doc(alias = "RBX::Lua::LuaArguments::getString(int,std::string &)const")]
-pub fn stub_26b464() -> ! {
+pub fn stub_0x26b464() -> ! {
     todo!("0x26b464 __ZNK3RBX3Lua12LuaArguments9getStringEiRSs")
 }
-
 
 // 0x26b4ac — __ZNK3RBX3Lua12LuaArguments15getVector3int16EiRN3G3D12Vector3int16E
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, G3D::Vector3int16 *)
 #[doc(alias = "RBX::Lua::LuaArguments::getVector3int16(int,G3D::Vector3int16 &)const")]
-pub fn stub_26b4ac() -> ! {
+pub fn stub_0x26b4ac() -> ! {
     todo!("0x26b4ac __ZNK3RBX3Lua12LuaArguments15getVector3int16EiRN3G3D12Vector3int16E")
 }
-
 
 // 0x26b4d8 — __ZNK3RBX3Lua12LuaArguments15getRegion3int16EiRNS_12Region3int16E
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, RBX::Region3int16 *)
 #[doc(alias = "RBX::Lua::LuaArguments::getRegion3int16(int,RBX::Region3int16 &)const")]
-pub fn stub_26b4d8() -> ! {
+pub fn stub_0x26b4d8() -> ! {
     todo!("0x26b4d8 __ZNK3RBX3Lua12LuaArguments15getRegion3int16EiRNS_12Region3int16E")
 }
-
 
 // 0x26b504 — __ZNK3RBX3Lua12LuaArguments10getVector3EiRN3G3D7Vector3E
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, G3D::Vector3 *)
 #[doc(alias = "RBX::Lua::LuaArguments::getVector3(int,G3D::Vector3 &)const")]
-pub fn stub_26b504() -> ! {
+pub fn stub_0x26b504() -> ! {
     todo!("0x26b504 __ZNK3RBX3Lua12LuaArguments10getVector3EiRN3G3D7Vector3E")
 }
-
 
 // 0x26b530 — __ZNK3RBX3Lua12LuaArguments10getRegion3EiRNS_7Region3E
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, RBX::Region3 *)
 #[doc(alias = "RBX::Lua::LuaArguments::getRegion3(int,RBX::Region3 &)const")]
-pub fn stub_26b530() -> ! {
+pub fn stub_0x26b530() -> ! {
     todo!("0x26b530 __ZNK3RBX3Lua12LuaArguments10getRegion3EiRNS_7Region3E")
 }
-
 
 // 0x26b660 — __ZNK3RBX3Lua12LuaArguments9getDoubleEiRd
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, double *)
 #[doc(alias = "RBX::Lua::LuaArguments::getDouble(int,double &)const")]
-pub fn stub_26b660() -> ! {
+pub fn stub_0x26b660() -> ! {
     todo!("0x26b660 __ZNK3RBX3Lua12LuaArguments9getDoubleEiRd")
 }
-
 
 // 0x26b6a0 — __ZNK3RBX3Lua12LuaArguments7getBoolEiRb
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, bool *)
 #[doc(alias = "RBX::Lua::LuaArguments::getBool(int,bool &)const")]
-pub fn stub_26b6a0() -> ! {
+pub fn stub_0x26b6a0() -> ! {
     todo!("0x26b6a0 __ZNK3RBX3Lua12LuaArguments7getBoolEiRb")
 }
-
 
 // 0x26c140 — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE8getValueIS3_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector3int16,true>::getValue<G3D::Vector3int16>(lua_State *,unsigned int,G3D::Vector3int16 &)")]
-pub fn stub_26c140() -> ! {
+pub fn stub_0x26c140() -> ! {
     todo!("0x26c140 __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE8getValueIS3_EEbP9lua_StatejRT_")
 }
-
 
 // 0x26c1b8 — __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE8getValueIS2_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Region3int16,true>::getValue<RBX::Region3int16>(lua_State *,unsigned int,RBX::Region3int16 &)")]
-pub fn stub_26c1b8() -> ! {
+pub fn stub_0x26c1b8() -> ! {
     todo!("0x26c1b8 __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE8getValueIS2_EEbP9lua_StatejRT_")
 }
-
 
 // 0x26c230 — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE8getValueIS3_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector3,true>::getValue<G3D::Vector3>(lua_State *,unsigned int,G3D::Vector3 &)")]
-pub fn stub_26c230() -> ! {
+pub fn stub_0x26c230() -> ! {
     todo!("0x26c230 __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE8getValueIS3_EEbP9lua_StatejRT_")
 }
-
 
 // 0x26c2ac — __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE8getValueIS2_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Region3,true>::getValue<RBX::Region3>(lua_State *,unsigned int,RBX::Region3 &)")]
-pub fn stub_26c2ac() -> ! {
+pub fn stub_0x26c2ac() -> ! {
     todo!("0x26c2ac __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE8getValueIS2_EEbP9lua_StatejRT_")
 }
-
 
 // 0x26dc28 — __ZNK3RBX3Lua12LuaArguments4sizeEv
 // type: int __fastcall(RBX::Lua::LuaArguments *this)
 #[doc(alias = "RBX::Lua::LuaArguments::size(void)const")]
-pub fn stub_26dc28() -> ! {
+pub fn stub_0x26dc28() -> ! {
     todo!("0x26dc28 __ZNK3RBX3Lua12LuaArguments4sizeEv")
 }
-
 
 // 0x26dca8 — __ZNK3RBX3Lua12LuaArguments7getLongEiRl
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, int *)
 #[doc(alias = "RBX::Lua::LuaArguments::getLong(int,long &)const")]
-pub fn stub_26dca8() -> ! {
+pub fn stub_0x26dca8() -> ! {
     todo!("0x26dca8 __ZNK3RBX3Lua12LuaArguments7getLongEiRl")
 }
-
 
 // 0x26dce4 — __ZN3RBX3Lua14ArgumentPusherclERKN5boost10shared_ptrINS_8InstanceEEE
 // type: int __fastcall(int *, int)
 #[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<RBX::Instance> const&)")]
-pub fn stub_26dce4() -> ! {
+pub fn stub_0x26dce4() -> ! {
     todo!("0x26dce4 __ZN3RBX3Lua14ArgumentPusherclERKN5boost10shared_ptrINS_8InstanceEEE")
 }
-
 
 // 0x26df08 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt6vectorINS3_INS_8InstanceEEESaIS6_EEEE
 // type: int __fastcall(_DWORD *, _DWORD *)
 #[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>)")]
-pub fn stub_26df08() -> ! {
+pub fn stub_0x26df08() -> ! {
     todo!("0x26df08 __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt6vectorINS3_INS_8InstanceEEESaIS6_EEEE")
 }
-
 
 // 0x26e1d8 — __ZN3RBX3Lua6BridgeINS_11InputObjectELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_
 // type: _DWORD *__fastcall(int, _DWORD *)
 #[doc(alias = "RBX::InputObject* RBX::Lua::Bridge<RBX::InputObject,true>::pushNewObject<RBX::InputObject>(lua_State *,RBX::InputObject)")]
-pub fn stub_26e1d8() -> ! {
+pub fn stub_0x26e1d8() -> ! {
     todo!("0x26e1d8 __ZN3RBX3Lua6BridgeINS_11InputObjectELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_")
 }
-
 
 // 0x26e408 — __ZN3RBX3Lua6BridgeINS_6CellIDELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::CellID* RBX::Lua::Bridge<RBX::CellID,true>::pushNewObject<RBX::CellID>(lua_State *,RBX::CellID)")]
-pub fn stub_26e408() -> ! {
+pub fn stub_0x26e408() -> ! {
     todo!("0x26e408 __ZN3RBX3Lua6BridgeINS_6CellIDELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_")
 }
-
 
 // 0x26e738 — __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_
 // type: int __fastcall(int, __int64 *)
 #[doc(alias = "RBX::Region3int16* RBX::Lua::Bridge<RBX::Region3int16,true>::pushNewObject<RBX::Region3int16>(lua_State *,RBX::Region3int16)")]
-pub fn stub_26e738() -> ! {
+pub fn stub_0x26e738() -> ! {
     todo!("0x26e738 __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_")
 }
-
 
 // 0x26e870 — __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_
 // type: G3D::Matrix3 *__fastcall(int, int)
 #[doc(alias = "RBX::Region3* RBX::Lua::Bridge<RBX::Region3,true>::pushNewObject<RBX::Region3>(lua_State *,RBX::Region3)")]
-pub fn stub_26e870() -> ! {
+pub fn stub_0x26e870() -> ! {
     todo!("0x26e870 __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_")
 }
-
 
 // 0x26e9c0 — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_
 // type: _DWORD *__fastcall(int, int)
 #[doc(alias = "G3D::Vector2int16* RBX::Lua::Bridge<G3D::Vector2int16,true>::pushNewObject<G3D::Vector2int16>(lua_State *,G3D::Vector2int16)")]
-pub fn stub_26e9c0() -> ! {
+pub fn stub_0x26e9c0() -> ! {
     todo!("0x26e9c0 __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_")
 }
-
 
 // 0x26eaf0 — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_
 // type: int __fastcall(int, int, __int16)
 #[doc(alias = "G3D::Vector3int16* RBX::Lua::Bridge<G3D::Vector3int16,true>::pushNewObject<G3D::Vector3int16>(lua_State *,G3D::Vector3int16)")]
-pub fn stub_26eaf0() -> ! {
+pub fn stub_0x26eaf0() -> ! {
     todo!("0x26eaf0 __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_")
 }
-
 
 // 0x26ef04 — __ZN3RBX3Lua12LuaArguments9pushArrayIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrINS_8InstanceEEESt6vectorIS8_SaIS8_EEEEEEiT_SF_P9lua_State
 // type: int __fastcall(char ****, char ****, int)
 #[doc(alias = "int RBX::Lua::LuaArguments::pushArray<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,lua_State *)")]
-pub fn stub_26ef04() -> ! {
+pub fn stub_0x26ef04() -> ! {
     todo!("0x26ef04 __ZN3RBX3Lua12LuaArguments9pushArrayIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrINS_8InstanceEEESt6vectorIS8_SaIS8_EEEEEEiT_SF_P9lua_State")
 }
-
 
 // 0x26f280 — __ZN3rbx8any_castIRKN3RBX3Lua15WeakFunctionRefENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: _DWORD **__fastcall(_DWORD **)
 #[doc(alias = "RBX::Lua::WeakFunctionRef const& rbx::any_cast<RBX::Lua::WeakFunctionRef const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_26f280() -> ! {
+pub fn stub_0x26f280() -> ! {
     todo!("0x26f280 __ZN3rbx8any_castIRKN3RBX3Lua15WeakFunctionRefENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
 }
-
 
 // 0x26faf8 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_3Lua15WeakFunctionRefEEERS3_RKT_
 // type: int **__fastcall(int **, const RBX::Lua::WeakFunctionRef *)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::Lua::WeakFunctionRef>(RBX::Lua::WeakFunctionRef const&)")]
-pub fn stub_26faf8() -> ! {
+pub fn stub_0x26faf8() -> ! {
     todo!("0x26faf8 __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_3Lua15WeakFunctionRefEEERS3_RKT_")
 }
-
 
 // 0x26fb50 — __ZN3rbx14implementation12typed_holderIN3RBX3Lua15WeakFunctionRefEE14construct_funcEPKcPc
 // type: const RBX::Lua::WeakFunctionRef *__fastcall(const RBX::Lua::WeakFunctionRef *result, RBX::Lua::WeakFunctionRef *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Lua::WeakFunctionRef>::construct_func(char const*,char *)")]
-pub fn stub_26fb50() -> ! {
+pub fn stub_0x26fb50() -> ! {
     todo!("0x26fb50 __ZN3rbx14implementation12typed_holderIN3RBX3Lua15WeakFunctionRefEE14construct_funcEPKcPc")
 }
-
 
 // 0x26fb60 — __ZN3rbx14implementation12typed_holderIN3RBX3Lua15WeakFunctionRefEE13destruct_funcEPc
 // type: int __fastcall(int)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Lua::WeakFunctionRef>::destruct_func(char *)")]
-pub fn stub_26fb60() -> ! {
+pub fn stub_0x26fb60() -> ! {
     todo!("0x26fb60 __ZN3rbx14implementation12typed_holderIN3RBX3Lua15WeakFunctionRefEE13destruct_funcEPc")
 }
-
 
 // 0x270210 — __ZN3RBX3Lua17safe_lua_tostringEP9lua_Statei
 // type: const char *__fastcall(int, int)
 #[doc(alias = "RBX::Lua::safe_lua_tostring(lua_State *,int)")]
-pub fn stub_270210() -> ! {
+pub fn stub_0x270210() -> ! {
     todo!("0x270210 __ZN3RBX3Lua17safe_lua_tostringEP9lua_Statei")
 }
-
 
 // 0x270230 — __ZN3RBX3Lua22throwable_lua_tostringEP9lua_Statei
 // type: const char *__fastcall(int, int)
 #[doc(alias = "RBX::Lua::throwable_lua_tostring(lua_State *,int)")]
-pub fn stub_270230() -> ! {
+pub fn stub_0x270230() -> ! {
     todo!("0x270230 __ZN3RBX3Lua22throwable_lua_tostringEP9lua_Statei")
 }
-
 
 // 0x270448 — __ZN3RBX3Lua11lua_tofloatEP9lua_Statei
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Lua::lua_tofloat(lua_State *,int)")]
-pub fn stub_270448() -> ! {
+pub fn stub_0x270448() -> ! {
     todo!("0x270448 __ZN3RBX3Lua11lua_tofloatEP9lua_Statei")
 }
-
 
 // 0x2704e0 — __ZN3RBX3Lua12Color3Bridge9newColor3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Color3Bridge::newColor3(lua_State *)")]
-pub fn stub_2704e0() -> ! {
+pub fn stub_0x2704e0() -> ! {
     todo!("0x2704e0 __ZN3RBX3Lua12Color3Bridge9newColor3EP9lua_State")
 }
-
 
 // 0x270594 — __ZN3RBX3Lua12Color3Bridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Color3Bridge::registerClassLibrary(lua_State *)")]
-pub fn stub_270594() -> ! {
+pub fn stub_0x270594() -> ! {
     todo!("0x270594 __ZN3RBX3Lua12Color3Bridge20registerClassLibraryEP9lua_State")
 }
-
 
 // 0x2705d0 — __ZN3RBX3Lua12Color3Bridge10pushColor3EP9lua_StateRKN3G3D6Color3E
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "RBX::Lua::Color3Bridge::pushColor3(lua_State *,G3D::Color3 const&)")]
-pub fn stub_2705d0() -> ! {
+pub fn stub_0x2705d0() -> ! {
     todo!("0x2705d0 __ZN3RBX3Lua12Color3Bridge10pushColor3EP9lua_StateRKN3G3D6Color3E")
 }
-
 
 // 0x2705ec — __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE8on_indexERKS3_PKcP9lua_State
 // type: int __fastcall(float *, char *__s1, int)
 #[doc(alias = "RBX::Lua::Bridge<G3D::Color3,true>::on_index(G3D::Color3 const&,char const*,lua_State *)")]
-pub fn stub_2705ec() -> ! {
+pub fn stub_0x2705ec() -> ! {
     todo!("0x2705ec __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE8on_indexERKS3_PKcP9lua_State")
 }
-
 
 // 0x270724 — __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE11on_newindexERS3_PKcP9lua_State
 // type: void __fastcall __noreturn(int, const char *)
 #[doc(alias = "RBX::Lua::Bridge<G3D::Color3,true>::on_newindex(G3D::Color3&,char const*,lua_State *)")]
-pub fn stub_270724() -> ! {
+pub fn stub_0x270724() -> ! {
     todo!("0x270724 __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE11on_newindexERS3_PKcP9lua_State")
 }
-
 
 // 0x2707dc — __ZN3RBX3Lua12RbxRayBridge9newRbxRayEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::RbxRayBridge::newRbxRay(lua_State *)")]
-pub fn stub_2707dc() -> ! {
+pub fn stub_0x2707dc() -> ! {
     todo!("0x2707dc __ZN3RBX3Lua12RbxRayBridge9newRbxRayEP9lua_State")
 }
-
 
 // 0x2708b0 — __ZN3RBX3Lua12RbxRayBridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::RbxRayBridge::registerClassLibrary(lua_State *)")]
-pub fn stub_2708b0() -> ! {
+pub fn stub_0x2708b0() -> ! {
     todo!("0x2708b0 __ZN3RBX3Lua12RbxRayBridge20registerClassLibraryEP9lua_State")
 }
-
 
 // 0x2708ec — __ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE8on_indexERKS2_PKcP9lua_State
 // type: int __fastcall(int, char *__s1, int)
 #[doc(alias = "RBX::Lua::Bridge<RBX::RbxRay,true>::on_index(RBX::RbxRay const&,char const*,lua_State *)")]
-pub fn stub_2708ec() -> ! {
+pub fn stub_0x2708ec() -> ! {
     todo!("0x2708ec __ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE8on_indexERKS2_PKcP9lua_State")
 }
-
 
 // 0x270afc — __ZN3RBX3LuaL19closestPointVector3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::closestPointVector3(lua_State *)")]
-pub fn stub_270afc() -> ! {
+pub fn stub_0x270afc() -> ! {
     todo!("0x270afc __ZN3RBX3LuaL19closestPointVector3EP9lua_State")
 }
-
 
 // 0x270b48 — __ZN3RBX3LuaL15distanceVector3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::distanceVector3(lua_State *)")]
-pub fn stub_270b48() -> ! {
+pub fn stub_0x270b48() -> ! {
     todo!("0x270b48 __ZN3RBX3LuaL15distanceVector3EP9lua_State")
 }
-
 
 // 0x270b98 — __ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE11on_newindexERS2_PKcP9lua_State
 // type: void __fastcall __noreturn(int, const char *)
 #[doc(alias = "RBX::Lua::Bridge<RBX::RbxRay,true>::on_newindex(RBX::RbxRay&,char const*,lua_State *)")]
-pub fn stub_270b98() -> ! {
+pub fn stub_0x270b98() -> ! {
     todo!("0x270b98 __ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE11on_newindexERS2_PKcP9lua_State")
 }
-
 
 // 0x270c50 — __ZN3RBX3Lua13Region3Bridge10newRegion3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Region3Bridge::newRegion3(lua_State *)")]
-pub fn stub_270c50() -> ! {
+pub fn stub_0x270c50() -> ! {
     todo!("0x270c50 __ZN3RBX3Lua13Region3Bridge10newRegion3EP9lua_State")
 }
-
 
 // 0x270d50 — __ZN3RBX3Lua13Region3Bridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Region3Bridge::registerClassLibrary(lua_State *)")]
-pub fn stub_270d50() -> ! {
+pub fn stub_0x270d50() -> ! {
     todo!("0x270d50 __ZN3RBX3Lua13Region3Bridge20registerClassLibraryEP9lua_State")
 }
-
 
 // 0x270d8c — __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE8on_indexERKS2_PKcP9lua_State
 // type: int __fastcall(int, char *__s1, int)
 #[doc(alias = "RBX::Lua::Bridge<RBX::Region3,true>::on_index(RBX::Region3 const&,char const*,lua_State *)")]
-pub fn stub_270d8c() -> ! {
+pub fn stub_0x270d8c() -> ! {
     todo!("0x270d8c __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE8on_indexERKS2_PKcP9lua_State")
 }
-
 
 // 0x270ec8 — __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE11on_newindexERS2_PKcP9lua_State
 // type: void __fastcall __noreturn(int, const char *)
 #[doc(alias = "RBX::Lua::Bridge<RBX::Region3,true>::on_newindex(RBX::Region3&,char const*,lua_State *)")]
-pub fn stub_270ec8() -> ! {
+pub fn stub_0x270ec8() -> ! {
     todo!("0x270ec8 __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE11on_newindexERS2_PKcP9lua_State")
 }
-
 
 // 0x270f80 — __ZN3RBX3Lua18Region3int16Bridge15newRegion3int16EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Region3int16Bridge::newRegion3int16(lua_State *)")]
-pub fn stub_270f80() -> ! {
+pub fn stub_0x270f80() -> ! {
     todo!("0x270f80 __ZN3RBX3Lua18Region3int16Bridge15newRegion3int16EP9lua_State")
 }
-
 
 // 0x271064 — __ZN3RBX3Lua18Region3int16Bridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Region3int16Bridge::registerClassLibrary(lua_State *)")]
-pub fn stub_271064() -> ! {
+pub fn stub_0x271064() -> ! {
     todo!("0x271064 __ZN3RBX3Lua18Region3int16Bridge20registerClassLibraryEP9lua_State")
 }
-
 
 // 0x2710a0 — __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE8on_indexERKS2_PKcP9lua_State
 // type: int __fastcall(int, char *__s1, int)
 #[doc(alias = "RBX::Lua::Bridge<RBX::Region3int16,true>::on_index(RBX::Region3int16 const&,char const*,lua_State *)")]
-pub fn stub_2710a0() -> ! {
+pub fn stub_0x2710a0() -> ! {
     todo!("0x2710a0 __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE8on_indexERKS2_PKcP9lua_State")
 }
-
 
 // 0x2711d4 — __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE11on_newindexERS2_PKcP9lua_State
 // type: void __fastcall __noreturn(int, const char *)
 #[doc(alias = "RBX::Lua::Bridge<RBX::Region3int16,true>::on_newindex(RBX::Region3int16&,char const*,lua_State *)")]
-pub fn stub_2711d4() -> ! {
+pub fn stub_0x2711d4() -> ! {
     todo!("0x2711d4 __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE11on_newindexERS2_PKcP9lua_State")
 }
-
 
 // 0x27128c — __ZN3RBX3Lua13Vector3Bridge10newVector3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::newVector3(lua_State *)")]
-pub fn stub_27128c() -> ! {
+pub fn stub_0x27128c() -> ! {
     todo!("0x27128c __ZN3RBX3Lua13Vector3Bridge10newVector3EP9lua_State")
 }
-
 
 // 0x271340 — __ZN3RBX3Lua13Vector3Bridge22newVector3FromNormalIdEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::newVector3FromNormalId(lua_State *)")]
-pub fn stub_271340() -> ! {
+pub fn stub_0x271340() -> ! {
     todo!("0x271340 __ZN3RBX3Lua13Vector3Bridge22newVector3FromNormalIdEP9lua_State")
 }
-
 
 // 0x2714a0 — __ZN3RBX3Lua13Vector3Bridge18newVector3FromAxisEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::newVector3FromAxis(lua_State *)")]
-pub fn stub_2714a0() -> ! {
+pub fn stub_0x2714a0() -> ! {
     todo!("0x2714a0 __ZN3RBX3Lua13Vector3Bridge18newVector3FromAxisEP9lua_State")
 }
-
 
 // 0x271604 — __ZN3RBX3Lua13Vector3Bridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::registerClassLibrary(lua_State *)")]
-pub fn stub_271604() -> ! {
+pub fn stub_0x271604() -> ! {
     todo!("0x271604 __ZN3RBX3Lua13Vector3Bridge20registerClassLibraryEP9lua_State")
 }
-
 
 // 0x271640 — __ZN3RBX3Lua13Vector3Bridge6on_addEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::on_add(lua_State *)")]
-pub fn stub_271640() -> ! {
+pub fn stub_0x271640() -> ! {
     todo!("0x271640 __ZN3RBX3Lua13Vector3Bridge6on_addEP9lua_State")
 }
-
 
 // 0x2716a0 — __ZN3RBX3Lua13Vector3Bridge6on_subEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::on_sub(lua_State *)")]
-pub fn stub_2716a0() -> ! {
+pub fn stub_0x2716a0() -> ! {
     todo!("0x2716a0 __ZN3RBX3Lua13Vector3Bridge6on_subEP9lua_State")
 }
-
 
 // 0x271700 — __ZN3RBX3Lua13Vector3Bridge6on_mulEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::on_mul(lua_State *)")]
-pub fn stub_271700() -> ! {
+pub fn stub_0x271700() -> ! {
     todo!("0x271700 __ZN3RBX3Lua13Vector3Bridge6on_mulEP9lua_State")
 }
-
 
 // 0x271804 — __ZN3RBX3Lua13Vector3Bridge6on_divEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::on_div(lua_State *)")]
-pub fn stub_271804() -> ! {
+pub fn stub_0x271804() -> ! {
     todo!("0x271804 __ZN3RBX3Lua13Vector3Bridge6on_divEP9lua_State")
 }
-
 
 // 0x27191c — __ZN3RBX3Lua13Vector3Bridge6on_unmEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Vector3Bridge::on_unm(lua_State *)")]
-pub fn stub_27191c() -> ! {
+pub fn stub_0x27191c() -> ! {
     todo!("0x27191c __ZN3RBX3Lua13Vector3Bridge6on_unmEP9lua_State")
 }
-
 
 // 0x271954 — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE8on_indexERKS3_PKcP9lua_State
 // type: int __fastcall(__int32 *, char *__s1, int)
 #[doc(alias = "RBX::Lua::Bridge<G3D::Vector3,true>::on_index(G3D::Vector3 const&,char const*,lua_State *)")]
-pub fn stub_271954() -> ! {
+pub fn stub_0x271954() -> ! {
     todo!("0x271954 __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE8on_indexERKS3_PKcP9lua_State")
 }
-
 
 // 0x271c4c — __ZN3RBX3LuaL11lerpVector3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::lerpVector3(lua_State *)")]
-pub fn stub_271c4c() -> ! {
+pub fn stub_0x271c4c() -> ! {
     todo!("0x271c4c __ZN3RBX3LuaL11lerpVector3EP9lua_State")
 }
-
 
 // 0x271cd0 — __ZN3RBX3LuaL12crossVector3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::crossVector3(lua_State *)")]
-pub fn stub_271cd0() -> ! {
+pub fn stub_0x271cd0() -> ! {
     todo!("0x271cd0 __ZN3RBX3LuaL12crossVector3EP9lua_State")
 }
-

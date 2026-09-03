@@ -52,7 +52,7 @@ pub fn stub_0x451398() -> ! {
 
 // 0x45139c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14PhysicsServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PhysicsService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PhysicsService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x45139c]")]
 pub fn stub_0x45139c() -> ! {
     todo!("0x45139c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14PhysicsServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
 }
@@ -122,7 +122,7 @@ pub fn stub_0x451b98() -> ! {
 
 // 0x451b9c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17CollectionServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CollectionService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CollectionService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x451b9c]")]
 pub fn stub_0x451b9c() -> ! {
     todo!("0x451b9c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17CollectionServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
 }
@@ -213,7 +213,7 @@ pub fn stub_0x452348() -> ! {
 
 // 0x452374 — __ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE13callable_slotIN5boost3_bi6bind_tIvNS7_4_mfi3mf1IvNS2_9DataModelES3_EENS8_5list2INS8_5valueIPSC_EENS7_3argILi1EEEEEEEED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "rbx::signals::signal<void ()(RBX::RunTransition)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::DataModel,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::DataModel*>,boost::arg<1>>>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::RunTransition)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::DataModel,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::DataModel*>,boost::arg<1>>>>::~callable_slot() [0x452374]")]
 pub fn stub_0x452374() -> ! {
     todo!("0x452374 __ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE13callable_slotIN5boost3_bi6bind_tIvNS7_4_mfi3mf1IvNS2_9DataModelES3_EENS8_5list2INS8_5valueIPSC_EENS7_3argILi1EEEEEEEED0Ev")
 }
@@ -248,7 +248,7 @@ pub fn stub_0x4527ac() -> ! {
 
 // 0x4527d8 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX13RunTransitionEEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS3_9DataModelES4_EENS9_5list2INS9_5valueIPSD_EENS8_3argILi1EEEEEEELi1ES5_ED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::RunTransition)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::DataModel,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::DataModel*>,boost::arg<1>>>,1,void ()(RBX::RunTransition)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::RunTransition)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::DataModel,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::DataModel*>,boost::arg<1>>>,1,void ()(RBX::RunTransition)>::~callable() [0x4527d8]")]
 pub fn stub_0x4527d8() -> ! {
     todo!("0x4527d8 __ZN3rbx8callableINS_7signals6signalIFvN3RBX13RunTransitionEEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS3_9DataModelES4_EENS9_5list2INS9_5valueIPSD_EENS8_3argILi1EEEEEEELi1ES5_ED0Ev")
 }
@@ -290,7 +290,7 @@ pub fn stub_0x452cbc() -> ! {
 
 // 0x452cc0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x452cc0]")]
 pub fn stub_0x452cc0() -> ! {
     todo!("0x452cc0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
 }
@@ -451,7 +451,7 @@ pub fn stub_0x45427c() -> ! {
 }
 
 // 0x454280 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9PlayerHUDENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PlayerHUD *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PlayerHUD *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x454280]")]
 pub fn stub_0x454280() -> ! {
     todo!("0x454280 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9PlayerHUDENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
 }
@@ -552,7 +552,7 @@ pub fn stub_0x4549dc() -> ! {
 }
 
 // 0x4549e0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13LocalBackpackENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LocalBackpack *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LocalBackpack *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x4549e0]")]
 pub fn stub_0x4549e0() -> ! {
     todo!("0x4549e0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13LocalBackpackENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
 }
@@ -616,7 +616,7 @@ pub fn stub_0x454e60() -> ! {
 }
 
 // 0x454e64 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18MarketplaceServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MarketplaceService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MarketplaceService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x454e64]")]
 pub fn stub_0x454e64() -> ! {
     todo!("0x454e64 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18MarketplaceServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
 }

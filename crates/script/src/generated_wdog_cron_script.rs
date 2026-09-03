@@ -51,7 +51,7 @@ pub fn stub_0x9965e0() -> ! {
 
 // 0x9965ec — __ZN5boost9iostreams6detail18indirect_streambufINS0_21basic_gzip_compressorISaIcEEESt11char_traitsIcES4_NS0_5inputEED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "boost::iostreams::detail::indirect_streambuf<boost::iostreams::basic_gzip_compressor<std::allocator<char>>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::~indirect_streambuf()")]
+#[doc(alias = "boost::iostreams::detail::indirect_streambuf<boost::iostreams::basic_gzip_compressor<std::allocator<char>>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::~indirect_streambuf() [0x9965ec]")]
 #[doc(alias = "__ZN5boost9iostreams6detail18indirect_streambufINS0_21basic_gzip_compressorISaIcEEESt11char_traitsIcES4_NS0_5inputEED0Ev")]
 pub fn stub_0x9965ec() -> ! {
     todo!("0x9965ec boost::iostreams::detail::indirect_streambuf<boost::iostreams::basic_gzip_compressor<std::allocator<char>>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::~indirect_streambuf()")
@@ -107,7 +107,7 @@ pub fn stub_0x996ee0() -> ! {
 
 // 0x996eec — __ZN5boost9iostreams19filtering_streambufINS0_5inputEcSt11char_traitsIcESaIcENS0_7public_EED0Ev
 // type: void __fastcall(void *)
-#[doc(alias = "boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_streambuf()")]
+#[doc(alias = "boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_streambuf() [0x996eec]")]
 #[doc(alias = "__ZN5boost9iostreams19filtering_streambufINS0_5inputEcSt11char_traitsIcESaIcENS0_7public_EED0Ev")]
 pub fn stub_0x996eec() -> ! {
     todo!("0x996eec boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_streambuf()")
@@ -179,7 +179,7 @@ pub fn stub_0x997978() -> ! {
 
 // 0x997ad4 — __ZThn32_N5boost9iostreams19filtering_streambufINS0_5inputEcSt11char_traitsIcESaIcENS0_7public_EED0Ev
 // type: void __fastcall(int)
-#[doc(alias = "non-virtual thunk toboost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_streambuf()")]
+#[doc(alias = "non-virtual thunk toboost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_streambuf() [0x997ad4]")]
 #[doc(alias = "__ZThn32_N5boost9iostreams19filtering_streambufINS0_5inputEcSt11char_traitsIcESaIcENS0_7public_EED0Ev")]
 pub fn stub_0x997ad4() -> ! {
     todo!("0x997ad4 non-virtual thunk toboost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_streambuf()")
@@ -219,7 +219,7 @@ pub fn stub_0x997be8() -> ! {
 
 // 0x997cd0 — __ZN5boost9iostreams6detail8chainbufINS0_5chainINS0_5inputEcSt11char_traitsIcESaIcEEES4_NS0_7public_EED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "boost::iostreams::detail::chainbuf<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::input,boost::iostreams::public_>::~chainbuf()")]
+#[doc(alias = "boost::iostreams::detail::chainbuf<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::input,boost::iostreams::public_>::~chainbuf() [0x997cd0]")]
 #[doc(alias = "__ZN5boost9iostreams6detail8chainbufINS0_5chainINS0_5inputEcSt11char_traitsIcESaIcEEES4_NS0_7public_EED0Ev")]
 pub fn stub_0x997cd0() -> ! {
     todo!("0x997cd0 boost::iostreams::detail::chainbuf<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::input,boost::iostreams::public_>::~chainbuf()")
@@ -235,7 +235,7 @@ pub fn stub_0x997dc0() -> ! {
 
 // 0x997ea8 — __ZThn32_N5boost9iostreams6detail8chainbufINS0_5chainINS0_5inputEcSt11char_traitsIcESaIcEEES4_NS0_7public_EED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "non-virtual thunk toboost::iostreams::detail::chainbuf<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::input,boost::iostreams::public_>::~chainbuf()")]
+#[doc(alias = "non-virtual thunk toboost::iostreams::detail::chainbuf<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::input,boost::iostreams::public_>::~chainbuf() [0x997ea8]")]
 #[doc(alias = "__ZThn32_N5boost9iostreams6detail8chainbufINS0_5chainINS0_5inputEcSt11char_traitsIcESaIcEEES4_NS0_7public_EED0Ev")]
 pub fn stub_0x997ea8() -> ! {
     todo!("0x997ea8 non-virtual thunk toboost::iostreams::detail::chainbuf<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::input,boost::iostreams::public_>::~chainbuf()")
@@ -267,7 +267,7 @@ pub fn stub_0x9982a8() -> ! {
 
 // 0x9982ac — __ZN5boost6detail17sp_counted_impl_pINS_9iostreams6detail10chain_baseINS2_5chainINS2_5inputEcSt11char_traitsIcESaIcEEEcS8_S9_S6_E10chain_implEED0Ev
 // type: void __fastcall(void *)
-#[doc(alias = "boost::detail::sp_counted_impl_p<boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl>::~sp_counted_impl_p() [0x9982ac]")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_9iostreams6detail10chain_baseINS2_5chainINS2_5inputEcSt11char_traitsIcESaIcEEEcS8_S9_S6_E10chain_implEED0Ev")]
 pub fn stub_0x9982ac() -> ! {
     todo!("0x9982ac boost::detail::sp_counted_impl_p<boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl>::~sp_counted_impl_p()")
@@ -363,7 +363,7 @@ pub fn stub_0x9aa250() -> ! {
 
 // 0x9aa378 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
-#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl() [0x9aa378]")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEED0Ev")]
 pub fn stub_0x9aa378() -> ! {
     todo!("0x9aa378 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")
@@ -427,7 +427,7 @@ pub fn stub_0x9e2054() -> ! {
 
 // 0x9e6a30 — __ZN5boost17bad_function_callC1Ev
 // type: std::runtime_error *__fastcall(std::runtime_error *this)
-#[doc(alias = "boost::bad_function_call::bad_function_call(void)")]
+#[doc(alias = "boost::bad_function_call::bad_function_call(void) [0x9e6a30]")]
 #[doc(alias = "__ZN5boost17bad_function_callC1Ev")]
 pub fn stub_0x9e6a30() -> ! {
     todo!("0x9e6a30 boost::bad_function_call::bad_function_call(void)")
@@ -571,7 +571,7 @@ pub fn stub_0xa18bc0() -> ! {
 
 // 0xa1ad98 — __ZNSt11range_errorD1Ev
 // type: void __cdecl(std::range_error *__hidden this)
-#[doc(alias = "std::range_error::~range_error()")]
+#[doc(alias = "std::range_error::~range_error() [0xa1ad98]")]
 #[doc(alias = "__ZNSt11range_errorD1Ev")]
 pub fn stub_0xa1ad98() -> ! {
     todo!("0xa1ad98 std::range_error::~range_error()")
@@ -579,7 +579,7 @@ pub fn stub_0xa1ad98() -> ! {
 
 // 0xa1ada8 — __ZNSt14overflow_errorD2Ev
 // type: void __cdecl(std::overflow_error *__hidden this)
-#[doc(alias = "std::overflow_error::~overflow_error()")]
+#[doc(alias = "std::overflow_error::~overflow_error() [0xa1ada8]")]
 #[doc(alias = "__ZNSt14overflow_errorD2Ev")]
 pub fn stub_0xa1ada8() -> ! {
     todo!("0xa1ada8 std::overflow_error::~overflow_error()")
@@ -939,7 +939,7 @@ pub fn stub_0xa5d8f0() -> ! {
 
 // 0xa5d990 — __ZN6RakNet7RakPeerD1Ev
 // type: void __fastcall(RakNet::RakPeer *__hidden this)
-#[doc(alias = "RakNet::RakPeer::~RakPeer()")]
+#[doc(alias = "RakNet::RakPeer::~RakPeer() [0xa5d990]")]
 #[doc(alias = "__ZN6RakNet7RakPeerD1Ev")]
 pub fn stub_0xa5d990() -> ! {
     todo!("0xa5d990 RakNet::RakPeer::~RakPeer()")
@@ -947,7 +947,7 @@ pub fn stub_0xa5d990() -> ! {
 
 // 0xa5d99c — __ZN6RakNet7RakPeerD2Ev
 // type: void __fastcall(RakNet::RakPeer *__hidden this)
-#[doc(alias = "RakNet::RakPeer::~RakPeer()")]
+#[doc(alias = "RakNet::RakPeer::~RakPeer() [0xa5d99c]")]
 #[doc(alias = "__ZN6RakNet7RakPeerD2Ev")]
 pub fn stub_0xa5d99c() -> ! {
     todo!("0xa5d99c RakNet::RakPeer::~RakPeer()")

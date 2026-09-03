@@ -22,7 +22,7 @@ pub fn stub_0x2e89f0() -> ! {
 }
 
 // 0x2e8af4 — __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvvELi0EED0Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(void),0>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(void),0>::~BoundFuncDesc() [0x2e8af4]")]
 pub fn stub_0x2e8af4() -> ! {
     todo!("0x2e8af4 __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvvELi0EED0Ev")
 }
@@ -47,7 +47,7 @@ pub fn stub_0x2e8d44() -> ! {
 }
 
 // 0x2e8d74 — __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvNS_6RbxRayEELi1EED0Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(RBX::RbxRay),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(RBX::RbxRay),1>::~BoundFuncDesc() [0x2e8d74]")]
 pub fn stub_0x2e8d74() -> ! {
     todo!("0x2e8d74 __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvNS_6RbxRayEELi1EED0Ev")
 }
@@ -72,7 +72,7 @@ pub fn stub_0x2e9144() -> ! {
 
 // 0x2e91ac — __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EED0Ev
 // type: int __fastcall(int, int, int, int, int)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),3>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),3>::~BoundFuncDesc() [0x2e91ac]")]
 pub fn stub_0x2e91ac() -> ! {
     todo!("0x2e91ac __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EED0Ev")
 }
@@ -93,7 +93,7 @@ pub fn stub_0x2e9388() -> ! {
 
 // 0x2e998c — __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EED2Ev
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, void *, int, int, int, int)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),3>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>),3>::~BoundFuncDesc() [0x2e998c]")]
 pub fn stub_0x2e998c() -> ! {
     todo!("0x2e998c __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EED2Ev")
 }
@@ -114,7 +114,7 @@ pub fn stub_0x2e9f80() -> ! {
 
 // 0x2e9f84 — __ZN3RBX11LuaDragToolC2EPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIN5boost8weak_ptrIS1_EESaISA_EEPNS_9WorkspaceENS8_10shared_ptrINS_8InstanceEEE
 // type: int __fastcall(int, int, int, int, Workspace *, int, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, RBX::MouseCommand *, int, int, int, int)
-#[doc(alias = "RBX::LuaDragTool::LuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<Weak<RBX::PartInstance>,std::allocator<Weak<RBX::PartInstance>>> const&,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>)")]
+#[doc(alias = "RBX::LuaDragTool::LuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<Weak<RBX::PartInstance>,std::allocator<Weak<RBX::PartInstance>>> const&,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>) [0x2e9f84]")]
 pub fn stub_0x2e9f84() -> ! {
     todo!("0x2e9f84 __ZN3RBX11LuaDragToolC2EPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIN5boost8weak_ptrIS1_EESaISA_EEPNS_9WorkspaceENS8_10shared_ptrINS_8InstanceEEE")
 }
@@ -128,7 +128,7 @@ pub fn stub_0x2ea20c() -> ! {
 
 // 0x2ea2ac — __ZN3RBX11LuaDragToolD1Ev
 // type: void __fastcall(RBX::LuaDragTool *__hidden this)
-#[doc(alias = "RBX::LuaDragTool::~LuaDragTool()")]
+#[doc(alias = "RBX::LuaDragTool::~LuaDragTool() [0x2ea2ac]")]
 pub fn stub_0x2ea2ac() -> ! {
     todo!("0x2ea2ac __ZN3RBX11LuaDragToolD1Ev")
 }
@@ -142,14 +142,14 @@ pub fn stub_0x2ea2b0() -> ! {
 
 // 0x2ea2b8 — __ZN3RBX11LuaDragToolD2Ev
 // type: void __fastcall(RBX::LuaDragTool *__hidden this)
-#[doc(alias = "RBX::LuaDragTool::~LuaDragTool()")]
+#[doc(alias = "RBX::LuaDragTool::~LuaDragTool() [0x2ea2b8]")]
 pub fn stub_0x2ea2b8() -> ! {
     todo!("0x2ea2b8 __ZN3RBX11LuaDragToolD2Ev")
 }
 
 // 0x2ea3f8 — __ZThn36_N3RBX11LuaDragToolD1Ev
 // type: void __fastcall(RBX::LuaDragTool *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LuaDragTool::~LuaDragTool()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaDragTool::~LuaDragTool() [0x2ea3f8]")]
 pub fn stub_0x2ea3f8() -> ! {
     todo!("0x2ea3f8 __ZThn36_N3RBX11LuaDragToolD1Ev")
 }
@@ -240,7 +240,7 @@ pub fn stub_0x345ed0() -> ! {
 
 // 0x345ed4 — __ZN3RBX13LuaWebServiceC2Ev
 // type: _DWORD __fastcall(RBX::LuaWebService *__hidden this)
-#[doc(alias = "RBX::LuaWebService::LuaWebService(void)")]
+#[doc(alias = "RBX::LuaWebService::LuaWebService(void) [0x345ed4]")]
 pub fn stub_0x345ed4() -> ! {
     todo!("0x345ed4 __ZN3RBX13LuaWebServiceC2Ev")
 }
@@ -430,7 +430,7 @@ pub fn stub_0x34a4dc() -> ! {
 
 // 0x34a5ec — __ZN3RBX13LuaWebServiceD0Ev
 // type: void __fastcall(RBX::LuaWebService *__hidden this)
-#[doc(alias = "RBX::LuaWebService::~LuaWebService()")]
+#[doc(alias = "RBX::LuaWebService::~LuaWebService() [0x34a5ec]")]
 pub fn stub_0x34a5ec() -> ! {
     todo!("0x34a5ec __ZN3RBX13LuaWebServiceD0Ev")
 }
@@ -450,7 +450,7 @@ pub fn stub_0x34a740() -> ! {
 
 // 0x34a84c — __ZThn32_N3RBX13LuaWebServiceD0Ev
 // type: void __fastcall(RBX::LuaWebService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LuaWebService::~LuaWebService()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaWebService::~LuaWebService() [0x34a84c]")]
 pub fn stub_0x34a84c() -> ! {
     todo!("0x34a84c __ZThn32_N3RBX13LuaWebServiceD0Ev")
 }
@@ -463,14 +463,14 @@ pub fn stub_0x34a970() -> ! {
 
 // 0x34a998 — __ZThn36_N3RBX13LuaWebServiceD1Ev
 // type: void __fastcall(RBX::LuaWebService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LuaWebService::~LuaWebService()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaWebService::~LuaWebService() [0x34a998]")]
 pub fn stub_0x34a998() -> ! {
     todo!("0x34a998 __ZThn36_N3RBX13LuaWebServiceD1Ev")
 }
 
 // 0x34aaa4 — __ZThn36_N3RBX13LuaWebServiceD0Ev
 // type: void __fastcall(RBX::LuaWebService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LuaWebService::~LuaWebService()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaWebService::~LuaWebService() [0x34aaa4]")]
 pub fn stub_0x34aaa4() -> ! {
     todo!("0x34aaa4 __ZThn36_N3RBX13LuaWebServiceD0Ev")
 }
@@ -650,4 +650,3 @@ pub fn stub_0x34c754() -> ! {
 pub fn stub_0x34c8ac() -> ! {
     todo!("0x34c8ac __ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX13LuaWebServiceEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFviEEEEEEC2ERKSF_")
 }
-

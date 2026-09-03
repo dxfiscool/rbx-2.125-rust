@@ -185,7 +185,7 @@ pub fn stub_0x71698() -> ! {
 
 // 0x716e4 — __ZN4FMOD15ChannelEmulatedC1Ev
 // type: int __fastcall(FMOD::ChannelEmulated *this)
-#[doc(alias = "FMOD::ChannelEmulated::ChannelEmulated(void)")]
+#[doc(alias = "FMOD::ChannelEmulated::ChannelEmulated(void) [0x716e4]")]
 pub fn stub_0x716e4() -> ! {
     todo!("0x716e4 __ZN4FMOD15ChannelEmulatedC1Ev")
 }
@@ -206,7 +206,7 @@ pub fn stub_0x71818() -> ! {
 
 // 0x7183c — __ZN4FMOD15ChannelEmulatedD1Ev
 // type: void __fastcall(FMOD::ChannelEmulated *__hidden this)
-#[doc(alias = "FMOD::ChannelEmulated::~ChannelEmulated()")]
+#[doc(alias = "FMOD::ChannelEmulated::~ChannelEmulated() [0x7183c]")]
 pub fn stub_0x7183c() -> ! {
     todo!("0x7183c __ZN4FMOD15ChannelEmulatedD1Ev")
 }
@@ -472,7 +472,7 @@ pub fn stub_0x72a04() -> ! {
 
 // 0x72a28 — __ZN4FMOD11ChannelRealD1Ev
 // type: void __fastcall(FMOD::ChannelReal *__hidden this)
-#[doc(alias = "FMOD::ChannelReal::~ChannelReal()")]
+#[doc(alias = "FMOD::ChannelReal::~ChannelReal() [0x72a28]")]
 pub fn stub_0x72a28() -> ! {
     todo!("0x72a28 __ZN4FMOD11ChannelRealD1Ev")
 }
@@ -507,7 +507,7 @@ pub fn stub_0x73de4() -> ! {
 
 // 0x73e08 — __ZN4FMOD19ChannelRealManual3DD1Ev
 // type: void __fastcall(FMOD::ChannelRealManual3D *__hidden this)
-#[doc(alias = "FMOD::ChannelRealManual3D::~ChannelRealManual3D()")]
+#[doc(alias = "FMOD::ChannelRealManual3D::~ChannelRealManual3D() [0x73e08]")]
 pub fn stub_0x73e08() -> ! {
     todo!("0x73e08 __ZN4FMOD19ChannelRealManual3DD1Ev")
 }
@@ -675,7 +675,7 @@ pub fn stub_0x759c0() -> ! {
 
 // 0x75a44 — __ZN4FMOD15ChannelSoftwareC1Ev
 // type: int __fastcall(FMOD::ChannelSoftware *this)
-#[doc(alias = "FMOD::ChannelSoftware::ChannelSoftware(void)")]
+#[doc(alias = "FMOD::ChannelSoftware::ChannelSoftware(void) [0x75a44]")]
 pub fn stub_0x75a44() -> ! {
     todo!("0x75a44 __ZN4FMOD15ChannelSoftwareC1Ev")
 }
@@ -766,7 +766,7 @@ pub fn stub_0x773c4() -> ! {
 
 // 0x773f0 — __ZN4FMOD15ChannelSoftwareD0Ev
 // type: void __fastcall(FMOD::ChannelSoftware *__hidden this)
-#[doc(alias = "FMOD::ChannelSoftware::~ChannelSoftware()")]
+#[doc(alias = "FMOD::ChannelSoftware::~ChannelSoftware() [0x773f0]")]
 pub fn stub_0x773f0() -> ! {
     todo!("0x773f0 __ZN4FMOD15ChannelSoftwareD0Ev")
 }

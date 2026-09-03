@@ -39,7 +39,7 @@ pub fn stub_0x23b548() -> ! { todo!("0x23b548 anonymous namespace::generic_error
 
 // 0x23b54c — __ZN12_GLOBAL__N_122generic_error_categoryD0Ev
 // type: void __fastcall(_anonymous_namespace_::generic_error_category *__hidden this)
-#[doc(alias = "anonymous namespace::generic_error_category::~generic_error_category()")]
+#[doc(alias = "anonymous namespace::generic_error_category::~generic_error_category() [0x23b54c]")]
 pub fn stub_0x23b54c() -> ! { todo!("0x23b54c anonymous namespace::generic_error_category::~generic_error_category()") }
 
 // 0x23b558 — __ZNK12_GLOBAL__N_122generic_error_category4nameEv
@@ -54,7 +54,7 @@ pub fn stub_0x23b564() -> ! { todo!("0x23b564 anonymous namespace::generic_error
 
 // 0x23b7cc — __ZN12_GLOBAL__N_121system_error_categoryD0Ev
 // type: void __fastcall(_anonymous_namespace_::system_error_category *__hidden this)
-#[doc(alias = "anonymous namespace::system_error_category::~system_error_category()")]
+#[doc(alias = "anonymous namespace::system_error_category::~system_error_category() [0x23b7cc]")]
 pub fn stub_0x23b7cc() -> ! { todo!("0x23b7cc anonymous namespace::system_error_category::~system_error_category()") }
 
 // 0x23b7d8 — __ZNK12_GLOBAL__N_121system_error_category4nameEv
@@ -184,7 +184,7 @@ pub fn stub_0x248ba0() -> ! { todo!("0x248ba0 boost::detail::sp_counted_impl_pd<
 
 // 0x248ba4 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrIPN3RBX13TaskScheduler3JobEE11delete_dataENS0_14do_heap_deleteIS8_EEED0Ev
 // type: void __fastcall(void *)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::TaskScheduler::Job *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::TaskScheduler::Job *>::delete_data>>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::TaskScheduler::Job *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::TaskScheduler::Job *>::delete_data>>::~sp_counted_impl_pd() [0x248ba4]")]
 pub fn stub_0x248ba4() -> ! { todo!("0x248ba4 boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::TaskScheduler::Job *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::TaskScheduler::Job *>::delete_data>>::~sp_counted_impl_pd()") }
 
 // 0x248bb0 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrIPN3RBX13TaskScheduler3JobEE11delete_dataENS0_14do_heap_deleteIS8_EEE7disposeEv
@@ -254,12 +254,12 @@ pub fn stub_0x249920() -> ! { todo!("0x249920 RBX::TaskScheduler::Job::~Job()") 
 
 // 0x2499c0 — __ZN3RBX13TaskScheduler3JobD1Ev
 // type: void __fastcall(RBX::TaskScheduler::Job *__hidden this)
-#[doc(alias = "RBX::TaskScheduler::Job::~Job()")]
+#[doc(alias = "RBX::TaskScheduler::Job::~Job() [0x2499c0]")]
 pub fn stub_0x2499c0() -> ! { todo!("0x2499c0 RBX::TaskScheduler::Job::~Job()") }
 
 // 0x2499cc — __ZN3RBX13TaskScheduler3JobD2Ev
 // type: void __fastcall(RBX::TaskScheduler::Job *this, int, int)
-#[doc(alias = "RBX::TaskScheduler::Job::~Job()")]
+#[doc(alias = "RBX::TaskScheduler::Job::~Job() [0x2499cc]")]
 pub fn stub_0x2499cc() -> ! { todo!("0x2499cc RBX::TaskScheduler::Job::~Job()") }
 
 // 0x24a1f8 — __ZN3RBX13TaskScheduler3Job20computeStandardErrorERKNS1_5StatsEd
@@ -394,7 +394,7 @@ pub fn stub_0x24b6c8() -> ! { todo!("0x24b6c8 boost::detail::sp_counted_impl_p<b
 
 // 0x24b6cc — __ZN5boost6detail17sp_counted_impl_pINS_15circular_bufferIdSaIdEEEED0Ev
 // type: void __fastcall(void *)
-#[doc(alias = "boost::detail::sp_counted_impl_p<boost::circular_buffer<double,std::allocator<double>>>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::circular_buffer<double,std::allocator<double>>>::~sp_counted_impl_p() [0x24b6cc]")]
 pub fn stub_0x24b6cc() -> ! { todo!("0x24b6cc boost::detail::sp_counted_impl_p<boost::circular_buffer<double,std::allocator<double>>>::~sp_counted_impl_p()") }
 
 // 0x24b6d8 — __ZN5boost6detail17sp_counted_impl_pINS_15circular_bufferIdSaIdEEEE7disposeEv
@@ -573,7 +573,7 @@ pub fn stub_0x24efe0() -> ! { todo!("0x24efe0 boost::circular_buffer<double,std:
 
 // 0x24f0d8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED1Ev
 // type: std::logic_error *__fastcall(std::logic_error *, int, int, int, void *, int)
-#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl() [0x24f0d8]")]
 pub fn stub_0x24f0d8() -> ! { todo!("0x24f0d8 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()") }
 
 // 0x24f190 — __ZN5boost16exception_detail19error_info_injectorISt12length_errorED1Ev
@@ -662,7 +662,7 @@ pub fn stub_0x2503f4() -> ! { todo!("0x2503f4 boost::detail::sp_counted_impl_p<R
 
 // 0x2503f8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13TaskScheduler6ThreadEED0Ev
 // type: void __fastcall(void *)
-#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::TaskScheduler::Thread>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::TaskScheduler::Thread>::~sp_counted_impl_p() [0x2503f8]")]
 pub fn stub_0x2503f8() -> ! { todo!("0x2503f8 boost::detail::sp_counted_impl_p<RBX::TaskScheduler::Thread>::~sp_counted_impl_p()") }
 
 // 0x250404 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13TaskScheduler6ThreadEE7disposeEv
@@ -732,7 +732,7 @@ pub fn stub_0x250cb8() -> ! { todo!("0x250cb8 virtual thunk toboost::exception_d
 
 // 0x250d80 — __ZN5boost16exception_detail19error_info_injectorISt13runtime_errorED0Ev
 // type: void __fastcall(std::runtime_error *, int, int, int, void *, int)
-#[doc(alias = "boost::exception_detail::error_info_injector<std::runtime_error>::~error_info_injector()")]
+#[doc(alias = "boost::exception_detail::error_info_injector<std::runtime_error>::~error_info_injector() [0x250d80]")]
 pub fn stub_0x250d80() -> ! { todo!("0x250d80 boost::exception_detail::error_info_injector<std::runtime_error>::~error_info_injector()") }
 
 // 0x250e40 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorISt13runtime_errorEEEC1ERKS5_NS5_9clone_tagE

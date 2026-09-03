@@ -63,7 +63,7 @@ pub fn stub_0x6bcb84() -> ! {
 
 // 0x6bcc30 — __ZN3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
-#[doc(alias = "RBX::VehicleSeat::~VehicleSeat()")]
+#[doc(alias = "RBX::VehicleSeat::~VehicleSeat() [0x6bcc30]")]
 #[doc(alias = "__ZN3RBX11VehicleSeatD1Ev")]
 pub fn stub_0x6bcc30() -> ! {
     todo!("0x6bcc30")
@@ -79,7 +79,7 @@ pub fn stub_0x6bcc40() -> ! {
 
 // 0x6bcc48 — __ZThn36_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
+#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcc48]")]
 #[doc(alias = "__ZThn36_N3RBX11VehicleSeatD0Ev")]
 pub fn stub_0x6bcc48() -> ! {
     todo!("0x6bcc48")
@@ -87,7 +87,7 @@ pub fn stub_0x6bcc48() -> ! {
 
 // 0x6bcc50 — __ZThn132_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
+#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcc50]")]
 #[doc(alias = "__ZThn132_N3RBX11VehicleSeatD0Ev")]
 pub fn stub_0x6bcc50() -> ! {
     todo!("0x6bcc50")
@@ -95,7 +95,7 @@ pub fn stub_0x6bcc50() -> ! {
 
 // 0x6bcc58 — __ZThn348_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
+#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcc58]")]
 #[doc(alias = "__ZThn348_N3RBX11VehicleSeatD0Ev")]
 pub fn stub_0x6bcc58() -> ! {
     todo!("0x6bcc58")
@@ -103,7 +103,7 @@ pub fn stub_0x6bcc58() -> ! {
 
 // 0x6bcc60 — __ZThn380_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
+#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcc60]")]
 #[doc(alias = "__ZThn380_N3RBX11VehicleSeatD0Ev")]
 pub fn stub_0x6bcc60() -> ! {
     todo!("0x6bcc60")
@@ -111,7 +111,7 @@ pub fn stub_0x6bcc60() -> ! {
 
 // 0x6bcc68 — __ZThn500_N3RBX11VehicleSeatD0Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
+#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcc68]")]
 #[doc(alias = "__ZThn500_N3RBX11VehicleSeatD0Ev")]
 pub fn stub_0x6bcc68() -> ! {
     todo!("0x6bcc68")
@@ -119,7 +119,7 @@ pub fn stub_0x6bcc68() -> ! {
 
 // 0x6bcc70 — __ZN3RBX11VehicleSeatD2Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
-#[doc(alias = "RBX::VehicleSeat::~VehicleSeat()")]
+#[doc(alias = "RBX::VehicleSeat::~VehicleSeat() [0x6bcc70]")]
 #[doc(alias = "__ZN3RBX11VehicleSeatD2Ev")]
 pub fn stub_0x6bcc70() -> ! {
     todo!("0x6bcc70")
@@ -127,7 +127,7 @@ pub fn stub_0x6bcc70() -> ! {
 
 // 0x6bcfa0 — __ZThn32_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
+#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcfa0]")]
 #[doc(alias = "__ZThn32_N3RBX11VehicleSeatD1Ev")]
 pub fn stub_0x6bcfa0() -> ! {
     todo!("0x6bcfa0")
@@ -135,7 +135,7 @@ pub fn stub_0x6bcfa0() -> ! {
 
 // 0x6bcfb0 — __ZThn36_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
+#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcfb0]")]
 #[doc(alias = "__ZThn36_N3RBX11VehicleSeatD1Ev")]
 pub fn stub_0x6bcfb0() -> ! {
     todo!("0x6bcfb0")
@@ -143,7 +143,7 @@ pub fn stub_0x6bcfb0() -> ! {
 
 // 0x6bcfc0 — __ZThn132_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
+#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcfc0]")]
 #[doc(alias = "__ZThn132_N3RBX11VehicleSeatD1Ev")]
 pub fn stub_0x6bcfc0() -> ! {
     todo!("0x6bcfc0")
@@ -151,7 +151,7 @@ pub fn stub_0x6bcfc0() -> ! {
 
 // 0x6bcfd0 — __ZThn348_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
+#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcfd0]")]
 #[doc(alias = "__ZThn348_N3RBX11VehicleSeatD1Ev")]
 pub fn stub_0x6bcfd0() -> ! {
     todo!("0x6bcfd0")
@@ -159,7 +159,7 @@ pub fn stub_0x6bcfd0() -> ! {
 
 // 0x6bcfe4 — __ZThn380_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
+#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcfe4]")]
 #[doc(alias = "__ZThn380_N3RBX11VehicleSeatD1Ev")]
 pub fn stub_0x6bcfe4() -> ! {
     todo!("0x6bcfe4")
@@ -167,7 +167,7 @@ pub fn stub_0x6bcfe4() -> ! {
 
 // 0x6bcff8 — __ZThn500_N3RBX11VehicleSeatD1Ev
 // type: void __fastcall(RBX::VehicleSeat *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat()")]
+#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::~VehicleSeat() [0x6bcff8]")]
 #[doc(alias = "__ZThn500_N3RBX11VehicleSeatD1Ev")]
 pub fn stub_0x6bcff8() -> ! {
     todo!("0x6bcff8")
@@ -855,7 +855,7 @@ pub fn stub_0x6dd378() -> ! {
 
 // 0x6dd380 — __ZThn36_N3RBX16AdvArrowToolBaseD0Ev
 // type: void __fastcall(RBX::AdvArrowToolBase *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::AdvArrowToolBase::~AdvArrowToolBase()")]
+#[doc(alias = "non-virtual thunk toRBX::AdvArrowToolBase::~AdvArrowToolBase() [0x6dd380]")]
 #[doc(alias = "__ZThn36_N3RBX16AdvArrowToolBaseD0Ev")]
 pub fn stub_0x6dd380() -> ! {
     todo!("0x6dd380")
@@ -871,7 +871,7 @@ pub fn stub_0x6dd388() -> ! {
 
 // 0x6dd38c — __ZN3RBX13ArrowToolBaseD0Ev
 // type: void __fastcall(RBX::ArrowToolBase *__hidden this)
-#[doc(alias = "RBX::ArrowToolBase::~ArrowToolBase()")]
+#[doc(alias = "RBX::ArrowToolBase::~ArrowToolBase() [0x6dd38c]")]
 #[doc(alias = "__ZN3RBX13ArrowToolBaseD0Ev")]
 pub fn stub_0x6dd38c() -> ! {
     todo!("0x6dd38c")

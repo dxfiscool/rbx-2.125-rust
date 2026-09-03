@@ -52,7 +52,7 @@ pub fn stub_0xbb5020() -> ! {
 }
 
 // 0xbb507c — __ZN4Ogre20ShaderScriptListenerD0Ev — Ogre::ShaderScriptListener::~ShaderScriptListener()
-#[doc(alias = "Ogre::ShaderScriptListener::~ShaderScriptListener()")]
+#[doc(alias = "Ogre::ShaderScriptListener::~ShaderScriptListener() [0xbb507c]")]
 #[doc(alias = "__ZN4Ogre20ShaderScriptListenerD0Ev")]
 pub fn stub_0xbb507c() -> ! {
     todo!("0xbb507c __ZN4Ogre20ShaderScriptListenerD0Ev")
@@ -829,7 +829,7 @@ pub fn stub_0xd018d4() -> ! {
 }
 
 // 0xd018d8 — __ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE13_Rb_tree_implISC_Lb0EED0Ev — std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl() [0xd018d8]")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE13_Rb_tree_implISC_Lb0EED0Ev")]
 pub fn stub_0xd018d8() -> ! {
     todo!("0xd018d8 __ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE13_Rb_tree_implISC_Lb0EED0Ev")

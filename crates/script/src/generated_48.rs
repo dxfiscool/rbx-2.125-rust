@@ -529,7 +529,7 @@ pub fn stub_0x4e5138() -> ! {
 
 // 0x4e51d8 — __ZN3RBX7FeatureD1Ev
 // type: void __fastcall(RBX::Feature *__hidden this)
-#[doc(alias = "RBX::Feature::~Feature()")]
+#[doc(alias = "RBX::Feature::~Feature() [0x4e51d8]")]
 pub fn stub_0x4e51d8() -> ! {
     todo!("0x4e51d8 RBX::Feature::~Feature()")
 }
@@ -543,28 +543,28 @@ pub fn stub_0x4e51dc() -> ! {
 
 // 0x4e51e4 — __ZThn36_N3RBX7FeatureD0Ev
 // type: void __fastcall(RBX::Feature *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Feature::~Feature()")]
+#[doc(alias = "non-virtual thunk toRBX::Feature::~Feature() [0x4e51e4]")]
 pub fn stub_0x4e51e4() -> ! {
     todo!("0x4e51e4 non-virtual thunk toRBX::Feature::~Feature()")
 }
 
 // 0x4e51ec — __ZN3RBX7FeatureD2Ev
 // type: void __fastcall(RBX::Feature *__hidden this)
-#[doc(alias = "RBX::Feature::~Feature()")]
+#[doc(alias = "RBX::Feature::~Feature() [0x4e51ec]")]
 pub fn stub_0x4e51ec() -> ! {
     todo!("0x4e51ec RBX::Feature::~Feature()")
 }
 
 // 0x4e52a8 — __ZThn32_N3RBX7FeatureD1Ev
 // type: void __fastcall(RBX::Feature *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Feature::~Feature()")]
+#[doc(alias = "non-virtual thunk toRBX::Feature::~Feature() [0x4e52a8]")]
 pub fn stub_0x4e52a8() -> ! {
     todo!("0x4e52a8 non-virtual thunk toRBX::Feature::~Feature()")
 }
 
 // 0x4e52b0 — __ZThn36_N3RBX7FeatureD1Ev
 // type: void __fastcall(RBX::Feature *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Feature::~Feature()")]
+#[doc(alias = "non-virtual thunk toRBX::Feature::~Feature() [0x4e52b0]")]
 pub fn stub_0x4e52b0() -> ! {
     todo!("0x4e52b0 non-virtual thunk toRBX::Feature::~Feature()")
 }
@@ -653,7 +653,7 @@ pub fn stub_0x4e5f1c() -> ! {
 
 // 0x4e5fbc — __ZN3RBX13VelocityMotorD1Ev
 // type: void __fastcall(RBX::VelocityMotor *__hidden this)
-#[doc(alias = "RBX::VelocityMotor::~VelocityMotor()")]
+#[doc(alias = "RBX::VelocityMotor::~VelocityMotor() [0x4e5fbc]")]
 pub fn stub_0x4e5fbc() -> ! {
     todo!("0x4e5fbc RBX::VelocityMotor::~VelocityMotor()")
 }
@@ -667,7 +667,7 @@ pub fn stub_0x4e5fc0() -> ! {
 
 // 0x4e5fc8 — __ZThn36_N3RBX13VelocityMotorD0Ev
 // type: void __fastcall(RBX::VelocityMotor *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::VelocityMotor::~VelocityMotor()")]
+#[doc(alias = "non-virtual thunk toRBX::VelocityMotor::~VelocityMotor() [0x4e5fc8]")]
 pub fn stub_0x4e5fc8() -> ! {
     todo!("0x4e5fc8 non-virtual thunk toRBX::VelocityMotor::~VelocityMotor()")
 }

@@ -743,7 +743,7 @@ pub fn stub_0x285c30() -> ! {
 // 0x285c34 — __ZN3RBX12LuaAllocatorC2Eb
 // type: RBX::LuaAllocator *__fastcall(RBX::LuaAllocator *this, int)
 // was: RBX::LuaAllocator *__fastcall(RBX::LuaAllocator *this, int)
-#[doc(alias = "RBX::LuaAllocator::LuaAllocator(bool)")]
+#[doc(alias = "RBX::LuaAllocator::LuaAllocator(bool) [0x285c34]")]
 pub fn stub_0x285c34() -> ! {
     todo!("0x285c34 __ZN3RBX12LuaAllocatorC2Eb")
 }
@@ -759,7 +759,7 @@ pub fn stub_0x285d3c() -> ! {
 // 0x285d40 — __ZN3RBX12LuaAllocatorD2Ev
 // type: void __fastcall(RBX::LuaAllocator *__hidden this)
 // was: void __fastcall(RBX::LuaAllocator *__hidden this)
-#[doc(alias = "RBX::LuaAllocator::~LuaAllocator()")]
+#[doc(alias = "RBX::LuaAllocator::~LuaAllocator() [0x285d40]")]
 pub fn stub_0x285d40() -> ! {
     todo!("0x285d40 __ZN3RBX12LuaAllocatorD2Ev")
 }
@@ -815,7 +815,7 @@ pub fn stub_0x286330() -> ! {
 // 0x286334 — __ZN3RBX11LuaSettingsC2Ev
 // type: _DWORD __fastcall(RBX::LuaSettings *__hidden this)
 // was: _DWORD __fastcall(RBX::LuaSettings *__hidden this)
-#[doc(alias = "RBX::LuaSettings::LuaSettings(void)")]
+#[doc(alias = "RBX::LuaSettings::LuaSettings(void) [0x286334]")]
 pub fn stub_0x286334() -> ! {
     todo!("0x286334 __ZN3RBX11LuaSettingsC2Ev")
 }
@@ -837,7 +837,7 @@ pub fn stub_0x28679c() -> ! {
 // 0x2867dc — __ZN3RBX11LuaSettingsD0Ev
 // type: void __fastcall(RBX::LuaSettings *__hidden this)
 // was: void __fastcall(RBX::LuaSettings *__hidden this)
-#[doc(alias = "RBX::LuaSettings::~LuaSettings()")]
+#[doc(alias = "RBX::LuaSettings::~LuaSettings() [0x2867dc]")]
 pub fn stub_0x2867dc() -> ! {
     todo!("0x2867dc __ZN3RBX11LuaSettingsD0Ev")
 }
@@ -859,7 +859,7 @@ pub fn stub_0x2868cc() -> ! {
 // 0x286910 — __ZThn32_N3RBX11LuaSettingsD0Ev
 // type: void __fastcall(RBX::LuaSettings *__hidden this)
 // was: void __fastcall(RBX::LuaSettings *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings() [0x286910]")]
 pub fn stub_0x286910() -> ! {
     todo!("0x286910 __ZThn32_N3RBX11LuaSettingsD0Ev")
 }
@@ -873,7 +873,7 @@ pub fn stub_0x2869f0() -> ! {
 // 0x286a00 — __ZThn36_N3RBX11LuaSettingsD1Ev
 // type: void __fastcall(RBX::LuaSettings *__hidden this)
 // was: void __fastcall(RBX::LuaSettings *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings() [0x286a00]")]
 pub fn stub_0x286a00() -> ! {
     todo!("0x286a00 __ZThn36_N3RBX11LuaSettingsD1Ev")
 }
@@ -881,7 +881,7 @@ pub fn stub_0x286a00() -> ! {
 // 0x286a44 — __ZThn36_N3RBX11LuaSettingsD0Ev
 // type: void __fastcall(RBX::LuaSettings *__hidden this)
 // was: void __fastcall(RBX::LuaSettings *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings() [0x286a44]")]
 pub fn stub_0x286a44() -> ! {
     todo!("0x286a44 __ZThn36_N3RBX11LuaSettingsD0Ev")
 }

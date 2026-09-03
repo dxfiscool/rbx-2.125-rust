@@ -472,14 +472,14 @@ pub fn stub_0x87a47c() -> ! {
 
 // 0x87a51c — __ZN3RBX11CellContactD1Ev
 // type: void __fastcall(RBX::CellContact *__hidden this)
-#[doc(alias = "RBX::CellContact::~CellContact()")]
+#[doc(alias = "RBX::CellContact::~CellContact() [0x87a51c]")]
 pub fn stub_0x87a51c() -> ! {
     todo!("0x87a51c __ZN3RBX11CellContactD1Ev")
 }
 
 // 0x87a520 — __ZN3RBX11CellContactD2Ev
 // type: void __fastcall(RBX::CellContact *__hidden this)
-#[doc(alias = "RBX::CellContact::~CellContact()")]
+#[doc(alias = "RBX::CellContact::~CellContact() [0x87a520]")]
 pub fn stub_0x87a520() -> ! {
     todo!("0x87a520 __ZN3RBX11CellContactD2Ev")
 }
@@ -626,7 +626,7 @@ pub fn stub_0x87fc58() -> ! {
 
 // 0x87fc7c — __ZN3RBX15MegaClusterPolyD0Ev
 // type: void __fastcall(RBX::MegaClusterPoly *__hidden this)
-#[doc(alias = "RBX::MegaClusterPoly::~MegaClusterPoly()")]
+#[doc(alias = "RBX::MegaClusterPoly::~MegaClusterPoly() [0x87fc7c]")]
 pub fn stub_0x87fc7c() -> ! {
     todo!("0x87fc7c __ZN3RBX15MegaClusterPolyD0Ev")
 }
@@ -677,14 +677,14 @@ pub fn stub_0x881898() -> ! {
 
 // 0x88194c — __ZN3RBX15PolyCellContactD1Ev
 // type: void __fastcall(RBX::PolyCellContact *__hidden this)
-#[doc(alias = "RBX::PolyCellContact::~PolyCellContact()")]
+#[doc(alias = "RBX::PolyCellContact::~PolyCellContact() [0x88194c]")]
 pub fn stub_0x88194c() -> ! {
     todo!("0x88194c __ZN3RBX15PolyCellContactD1Ev")
 }
 
 // 0x881950 — __ZN3RBX15PolyCellContactD2Ev
 // type: void __fastcall(RBX::PolyCellContact *__hidden this)
-#[doc(alias = "RBX::PolyCellContact::~PolyCellContact()")]
+#[doc(alias = "RBX::PolyCellContact::~PolyCellContact() [0x881950]")]
 pub fn stub_0x881950() -> ! {
     todo!("0x881950 __ZN3RBX15PolyCellContactD2Ev")
 }

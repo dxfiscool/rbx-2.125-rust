@@ -20,7 +20,7 @@ pub fn stub_0x74e430() -> ! {
 
 // 0x74e454 — __ZN3RBX9PrismPolyD0Ev
 // type: void __fastcall(RBX::PrismPoly *__hidden this)
-#[doc(alias = "RBX::PrismPoly::~PrismPoly()")]
+#[doc(alias = "RBX::PrismPoly::~PrismPoly() [0x74e454]")]
 #[doc(alias = "__ZN3RBX9PrismPolyD0Ev")]
 pub fn stub_0x74e454() -> ! {
     todo!("0x74e454 __ZN3RBX9PrismPolyD0Ev")
@@ -260,7 +260,7 @@ pub fn stub_0x74fe6c() -> ! {
 
 // 0x74fe90 — __ZN3RBX11PyramidPolyD0Ev
 // type: void __fastcall(RBX::PyramidPoly *__hidden this)
-#[doc(alias = "RBX::PyramidPoly::~PyramidPoly()")]
+#[doc(alias = "RBX::PyramidPoly::~PyramidPoly() [0x74fe90]")]
 #[doc(alias = "__ZN3RBX11PyramidPolyD0Ev")]
 pub fn stub_0x74fe90() -> ! {
     todo!("0x74fe90 __ZN3RBX11PyramidPolyD0Ev")
@@ -466,7 +466,7 @@ pub fn stub_0x751398() -> ! {
 
 // 0x7513bc — __ZN3RBX18RightAngleRampPolyD0Ev
 // type: void __fastcall(RBX::RightAngleRampPoly *__hidden this)
-#[doc(alias = "RBX::RightAngleRampPoly::~RightAngleRampPoly()")]
+#[doc(alias = "RBX::RightAngleRampPoly::~RightAngleRampPoly() [0x7513bc]")]
 #[doc(alias = "__ZN3RBX18RightAngleRampPolyD0Ev")]
 pub fn stub_0x7513bc() -> ! {
     todo!("0x7513bc __ZN3RBX18RightAngleRampPolyD0Ev")
@@ -543,7 +543,7 @@ pub fn stub_0x752be0() -> ! {
 
 // 0x752c04 — __ZN3RBX11RotateJointC2Ev
 // type: _DWORD __fastcall(RBX::RotateJoint *__hidden this)
-#[doc(alias = "RBX::RotateJoint::RotateJoint(void)")]
+#[doc(alias = "RBX::RotateJoint::RotateJoint(void) [0x752c04]")]
 #[doc(alias = "__ZN3RBX11RotateJointC2Ev")]
 pub fn stub_0x752c04() -> ! {
     todo!("0x752c04 __ZN3RBX11RotateJointC2Ev")
@@ -559,7 +559,7 @@ pub fn stub_0x752c28() -> ! {
 
 // 0x752cc8 — __ZN3RBX11RotateJointD1Ev
 // type: void __fastcall(RBX::RotateJoint *__hidden this)
-#[doc(alias = "RBX::RotateJoint::~RotateJoint()")]
+#[doc(alias = "RBX::RotateJoint::~RotateJoint() [0x752cc8]")]
 #[doc(alias = "__ZN3RBX11RotateJointD1Ev")]
 pub fn stub_0x752cc8() -> ! {
     todo!("0x752cc8 __ZN3RBX11RotateJointD1Ev")
@@ -575,7 +575,7 @@ pub fn stub_0x752ccc() -> ! {
 
 // 0x752cd4 — __ZThn32_N3RBX11RotateJointD1Ev
 // type: void __fastcall(RBX::RotateJoint *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::RotateJoint::~RotateJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::RotateJoint::~RotateJoint() [0x752cd4]")]
 #[doc(alias = "__ZThn32_N3RBX11RotateJointD1Ev")]
 pub fn stub_0x752cd4() -> ! {
     todo!("0x752cd4 __ZThn32_N3RBX11RotateJointD1Ev")
@@ -639,7 +639,7 @@ pub fn stub_0x753c00() -> ! {
 
 // 0x753ca0 — __ZN3RBX18DynamicRotateJointD1Ev
 // type: void __fastcall(RBX::DynamicRotateJoint *__hidden this)
-#[doc(alias = "RBX::DynamicRotateJoint::~DynamicRotateJoint()")]
+#[doc(alias = "RBX::DynamicRotateJoint::~DynamicRotateJoint() [0x753ca0]")]
 #[doc(alias = "__ZN3RBX18DynamicRotateJointD1Ev")]
 pub fn stub_0x753ca0() -> ! {
     todo!("0x753ca0 __ZN3RBX18DynamicRotateJointD1Ev")
@@ -655,7 +655,7 @@ pub fn stub_0x753ca4() -> ! {
 
 // 0x753cac — __ZN3RBX18DynamicRotateJointD2Ev
 // type: void __fastcall(RBX::DynamicRotateJoint *__hidden this)
-#[doc(alias = "RBX::DynamicRotateJoint::~DynamicRotateJoint()")]
+#[doc(alias = "RBX::DynamicRotateJoint::~DynamicRotateJoint() [0x753cac]")]
 #[doc(alias = "__ZN3RBX18DynamicRotateJointD2Ev")]
 pub fn stub_0x753cac() -> ! {
     todo!("0x753cac __ZN3RBX18DynamicRotateJointD2Ev")
@@ -663,7 +663,7 @@ pub fn stub_0x753cac() -> ! {
 
 // 0x753dd4 — __ZThn32_N3RBX18DynamicRotateJointD1Ev
 // type: void __fastcall(RBX::DynamicRotateJoint *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::DynamicRotateJoint::~DynamicRotateJoint()")]
+#[doc(alias = "non-virtual thunk toRBX::DynamicRotateJoint::~DynamicRotateJoint() [0x753dd4]")]
 #[doc(alias = "__ZThn32_N3RBX18DynamicRotateJointD1Ev")]
 pub fn stub_0x753dd4() -> ! {
     todo!("0x753dd4 __ZThn32_N3RBX18DynamicRotateJointD1Ev")

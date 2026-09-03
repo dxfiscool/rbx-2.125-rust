@@ -37,7 +37,7 @@ pub fn stub_0x39020() -> ! {
 
 // 0x39024 — __ZN10RobloxViewD2Ev
 // type: void __fastcall(RobloxView *__hidden this)
-#[doc(alias = "RobloxView::~RobloxView()")]
+#[doc(alias = "RobloxView::~RobloxView() [0x39024]")]
 pub fn stub_0x39024() -> ! {
     todo!("0x39024 RobloxView::~RobloxView()")
 }
@@ -65,7 +65,7 @@ pub fn stub_0x39be0() -> ! {
 
 // 0x39bf8 — __ZNSt12domain_errorD2Ev
 // type: void __cdecl(std::domain_error *__hidden this)
-#[doc(alias = "std::domain_error::~domain_error()")]
+#[doc(alias = "std::domain_error::~domain_error() [0x39bf8]")]
 pub fn stub_0x39bf8() -> ! {
     todo!("0x39bf8 std::domain_error::~domain_error()")
 }
@@ -100,7 +100,7 @@ pub fn stub_0x39c28() -> ! {
 
 // 0x39c40 — __ZNSt11range_errorD2Ev
 // type: void __cdecl(std::range_error *__hidden this)
-#[doc(alias = "std::range_error::~range_error()")]
+#[doc(alias = "std::range_error::~range_error() [0x39c40]")]
 pub fn stub_0x39c40() -> ! {
     todo!("0x39c40 std::range_error::~range_error()")
 }
@@ -121,7 +121,7 @@ pub fn stub_0x39c50() -> ! {
 
 // 0x39c68 — __ZNSt15underflow_errorD2Ev
 // type: void __cdecl(std::underflow_error *__hidden this)
-#[doc(alias = "std::underflow_error::~underflow_error()")]
+#[doc(alias = "std::underflow_error::~underflow_error() [0x39c68]")]
 pub fn stub_0x39c68() -> ! {
     todo!("0x39c68 std::underflow_error::~underflow_error()")
 }
@@ -289,7 +289,7 @@ pub fn stub_0x3b008() -> ! {
 }
 
 // 0x3b108 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10RunServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x3b108]")]
 pub fn stub_0x3b108() -> ! {
     todo!("0x3b108 boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
 }
@@ -442,7 +442,7 @@ pub fn stub_0x3cdb8() -> ! {
 }
 
 // 0x3ce64 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEED0Ev
-#[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot() [0x3ce64]")]
 pub fn stub_0x3ce64() -> ! {
     todo!("0x3ce64 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")
 }
@@ -493,7 +493,7 @@ pub fn stub_0x3d0e4() -> ! {
 }
 
 // 0x3d190 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_ED0Ev
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable() [0x3d190]")]
 pub fn stub_0x3d190() -> ! {
     todo!("0x3d190 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()")
 }
@@ -531,7 +531,7 @@ pub fn stub_0x3de28() -> ! {
 }
 
 // 0x3de2c — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p() [0x3de2c]")]
 pub fn stub_0x3de2c() -> ! {
     todo!("0x3de2c boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")
 }
@@ -574,7 +574,7 @@ pub fn stub_0x3e010() -> ! {
 }
 
 // 0x3e014 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p() [0x3e014]")]
 pub fn stub_0x3e014() -> ! {
     todo!("0x3e014 boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p()")
 }
@@ -637,14 +637,14 @@ pub fn stub_0x3ec30() -> ! {
 }
 
 // 0x3ec34 — __ZN5boost10scoped_ptrIN4Ogre10LogManagerEED2Ev
-#[doc(alias = "boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr()")]
+#[doc(alias = "boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr() [0x3ec34]")]
 pub fn stub_0x3ec34() -> ! {
     todo!("0x3ec34 boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr()")
 }
 
 // 0x3eccc — __ZN17QuitEventListenerD0Ev
 // type: void __fastcall(QuitEventListener *__hidden this)
-#[doc(alias = "QuitEventListener::~QuitEventListener()")]
+#[doc(alias = "QuitEventListener::~QuitEventListener() [0x3eccc]")]
 pub fn stub_0x3eccc() -> ! {
     todo!("0x3eccc QuitEventListener::~QuitEventListener()")
 }
@@ -700,7 +700,7 @@ pub fn stub_0x3ee80() -> ! {
 
 // 0x3ef40 — __ZN10RobloxView9RenderJobD0Ev
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
-#[doc(alias = "RobloxView::RenderJob::~RenderJob()")]
+#[doc(alias = "RobloxView::RenderJob::~RenderJob() [0x3ef40]")]
 pub fn stub_0x3ef40() -> ! {
     todo!("0x3ef40 RobloxView::RenderJob::~RenderJob()")
 }
@@ -756,7 +756,7 @@ pub fn stub_0x3f904() -> ! {
 
 // 0x3f9c8 — __ZThn480_N10RobloxView9RenderJobD0Ev
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
-#[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
+#[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob() [0x3f9c8]")]
 pub fn stub_0x3f9c8() -> ! {
     todo!("0x3f9c8 non-virtual thunk toRobloxView::RenderJob::~RenderJob()")
 }
@@ -861,7 +861,7 @@ pub fn stub_0x404f0() -> ! {
 
 // 0x4059c — __ZN10RobloxView13ViewUpdateJobD0Ev
 // type: void __fastcall(RobloxView::ViewUpdateJob *__hidden this)
-#[doc(alias = "RobloxView::ViewUpdateJob::~ViewUpdateJob()")]
+#[doc(alias = "RobloxView::ViewUpdateJob::~ViewUpdateJob() [0x4059c]")]
 pub fn stub_0x4059c() -> ! {
     todo!("0x4059c RobloxView::ViewUpdateJob::~ViewUpdateJob()")
 }

@@ -267,7 +267,7 @@ pub fn stub_0x281354() -> ! {
 // 0x281358 — __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectED0Ev
 // type: int __fastcall(int)
 // was: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::~sp_counted_impl_p() [0x281358]")]
 pub fn stub_0x281358() -> ! {
     todo!("0x281358 __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectED0Ev")
 }

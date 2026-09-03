@@ -409,7 +409,7 @@ pub fn stub_0x370cc8() -> ! {
 
 // 0x370cf8 — __ZN3RBX10Reflection13BoundFuncDescINS_25ScriptInformationProviderEFvSsELi1EED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptInformationProvider,void ()(std::string),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptInformationProvider,void ()(std::string),1>::~BoundFuncDesc() [0x370cf8]")]
 pub fn stub_0x370cf8() -> ! {
     todo!("0x370cf8 __ZN3RBX10Reflection13BoundFuncDescINS_25ScriptInformationProviderEFvSsELi1EED0Ev")
 }
@@ -612,7 +612,7 @@ pub fn stub_0x443838() -> ! {
 
 // 0x44383c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19ServerScriptServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ServerScriptService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ServerScriptService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x44383c]")]
 pub fn stub_0x44383c() -> ! {
     todo!("0x44383c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX19ServerScriptServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
 }
@@ -738,7 +738,7 @@ pub fn stub_0x44918c() -> ! {
 
 // 0x449270 — __ZN3RBX13ScriptServiceD0Ev
 // type: void __fastcall(RBX::ScriptService *__hidden this)
-#[doc(alias = "RBX::ScriptService::~ScriptService()")]
+#[doc(alias = "RBX::ScriptService::~ScriptService() [0x449270]")]
 pub fn stub_0x449270() -> ! {
     todo!("0x449270 __ZN3RBX13ScriptServiceD0Ev")
 }
@@ -759,7 +759,7 @@ pub fn stub_0x44936c() -> ! {
 
 // 0x449450 — __ZThn32_N3RBX13ScriptServiceD0Ev
 // type: void __fastcall(RBX::ScriptService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScriptService::~ScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptService::~ScriptService() [0x449450]")]
 pub fn stub_0x449450() -> ! {
     todo!("0x449450 __ZThn32_N3RBX13ScriptServiceD0Ev")
 }
@@ -773,14 +773,14 @@ pub fn stub_0x449548() -> ! {
 
 // 0x44954c — __ZThn36_N3RBX13ScriptServiceD1Ev
 // type: void __fastcall(RBX::ScriptService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScriptService::~ScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptService::~ScriptService() [0x44954c]")]
 pub fn stub_0x44954c() -> ! {
     todo!("0x44954c __ZThn36_N3RBX13ScriptServiceD1Ev")
 }
 
 // 0x449630 — __ZThn36_N3RBX13ScriptServiceD0Ev
 // type: void __fastcall(RBX::ScriptService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScriptService::~ScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptService::~ScriptService() [0x449630]")]
 pub fn stub_0x449630() -> ! {
     todo!("0x449630 __ZThn36_N3RBX13ScriptServiceD0Ev")
 }

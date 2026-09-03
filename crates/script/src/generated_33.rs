@@ -11,7 +11,7 @@ use rbx_core::SharedPtr;
 // 0x3b1228 — __ZN3RBX8BackpackD0Ev
 // type: void __fastcall(RBX::Backpack *__hidden this)
 // was: void __fastcall(RBX::Backpack *__hidden this)
-#[doc(alias = "RBX::Backpack::~Backpack()")]
+#[doc(alias = "RBX::Backpack::~Backpack() [0x3b1228]")]
 pub fn stub_0x3b1228() -> ! {
     todo!("0x3b1228 __ZN3RBX8BackpackD0Ev")
 }
@@ -35,7 +35,7 @@ pub fn stub_0x3b12d8() -> ! {
 // 0x3b12e0 — __ZThn32_N3RBX8BackpackD0Ev
 // type: void __fastcall(RBX::Backpack *__hidden this)
 // was: void __fastcall(RBX::Backpack *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack()")]
+#[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack() [0x3b12e0]")]
 pub fn stub_0x3b12e0() -> ! {
     todo!("0x3b12e0 __ZThn32_N3RBX8BackpackD0Ev")
 }
@@ -51,7 +51,7 @@ pub fn stub_0x3b1384() -> ! {
 // 0x3b1394 — __ZThn36_N3RBX8BackpackD1Ev
 // type: void __fastcall(RBX::Backpack *__hidden this)
 // was: void __fastcall(RBX::Backpack *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack()")]
+#[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack() [0x3b1394]")]
 pub fn stub_0x3b1394() -> ! {
     todo!("0x3b1394 __ZThn36_N3RBX8BackpackD1Ev")
 }
@@ -59,7 +59,7 @@ pub fn stub_0x3b1394() -> ! {
 // 0x3b139c — __ZThn36_N3RBX8BackpackD0Ev
 // type: void __fastcall(RBX::Backpack *__hidden this)
 // was: void __fastcall(RBX::Backpack *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack()")]
+#[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack() [0x3b139c]")]
 pub fn stub_0x3b139c() -> ! {
     todo!("0x3b139c __ZThn36_N3RBX8BackpackD0Ev")
 }
@@ -191,7 +191,7 @@ pub fn stub_0x3b3f04() -> ! {
 // 0x3b3f08 — __ZN3RBX12BadgeServiceC2Ev
 // type: RBX::Instance *__fastcall(RBX::BadgeService *this)
 // was: RBX::Instance *__fastcall(RBX::BadgeService *this)
-#[doc(alias = "RBX::BadgeService::BadgeService(void)")]
+#[doc(alias = "RBX::BadgeService::BadgeService(void) [0x3b3f08]")]
 pub fn stub_0x3b3f08() -> ! {
     todo!("0x3b3f08 __ZN3RBX12BadgeServiceC2Ev")
 }
@@ -239,7 +239,7 @@ pub fn stub_0x3b5dd4() -> ! {
 // 0x3b5dd8 — __ZN3RBX12BadgeServiceD0Ev
 // type: void __fastcall(RBX::BadgeService *__hidden this)
 // was: void __fastcall(RBX::BadgeService *__hidden this)
-#[doc(alias = "RBX::BadgeService::~BadgeService()")]
+#[doc(alias = "RBX::BadgeService::~BadgeService() [0x3b5dd8]")]
 pub fn stub_0x3b5dd8() -> ! {
     todo!("0x3b5dd8 __ZN3RBX12BadgeServiceD0Ev")
 }
@@ -263,7 +263,7 @@ pub fn stub_0x3b5e88() -> ! {
 // 0x3b5e90 — __ZThn32_N3RBX12BadgeServiceD0Ev
 // type: void __fastcall(RBX::BadgeService *__hidden this)
 // was: void __fastcall(RBX::BadgeService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BadgeService::~BadgeService()")]
+#[doc(alias = "non-virtual thunk toRBX::BadgeService::~BadgeService() [0x3b5e90]")]
 pub fn stub_0x3b5e90() -> ! {
     todo!("0x3b5e90 __ZThn32_N3RBX12BadgeServiceD0Ev")
 }
@@ -279,7 +279,7 @@ pub fn stub_0x3b5e98() -> ! {
 // 0x3b5ea8 — __ZThn36_N3RBX12BadgeServiceD1Ev
 // type: void __fastcall(RBX::BadgeService *__hidden this)
 // was: void __fastcall(RBX::BadgeService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BadgeService::~BadgeService()")]
+#[doc(alias = "non-virtual thunk toRBX::BadgeService::~BadgeService() [0x3b5ea8]")]
 pub fn stub_0x3b5ea8() -> ! {
     todo!("0x3b5ea8 __ZThn36_N3RBX12BadgeServiceD1Ev")
 }
@@ -287,7 +287,7 @@ pub fn stub_0x3b5ea8() -> ! {
 // 0x3b5eb0 — __ZThn36_N3RBX12BadgeServiceD0Ev
 // type: void __fastcall(RBX::BadgeService *__hidden this)
 // was: void __fastcall(RBX::BadgeService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BadgeService::~BadgeService()")]
+#[doc(alias = "non-virtual thunk toRBX::BadgeService::~BadgeService() [0x3b5eb0]")]
 pub fn stub_0x3b5eb0() -> ! {
     todo!("0x3b5eb0 __ZThn36_N3RBX12BadgeServiceD0Ev")
 }
@@ -295,7 +295,7 @@ pub fn stub_0x3b5eb0() -> ! {
 // 0x3b5eb8 — __ZN3RBX12BadgeServiceD2Ev
 // type: void __fastcall(RBX::BadgeService *this, int, int, int)
 // was: void __fastcall(RBX::BadgeService *this, int, int, int)
-#[doc(alias = "RBX::BadgeService::~BadgeService()")]
+#[doc(alias = "RBX::BadgeService::~BadgeService() [0x3b5eb8]")]
 pub fn stub_0x3b5eb8() -> ! {
     todo!("0x3b5eb8 __ZN3RBX12BadgeServiceD2Ev")
 }
@@ -437,7 +437,7 @@ pub fn stub_0x3bbbb8() -> ! {
 // 0x3bbc68 — __ZN3RBX14FormFactorPartD1Ev
 // type: void __fastcall(RBX::FormFactorPart *__hidden this)
 // was: void __fastcall(RBX::FormFactorPart *__hidden this)
-#[doc(alias = "RBX::FormFactorPart::~FormFactorPart()")]
+#[doc(alias = "RBX::FormFactorPart::~FormFactorPart() [0x3bbc68]")]
 pub fn stub_0x3bbc68() -> ! {
     todo!("0x3bbc68 __ZN3RBX14FormFactorPartD1Ev")
 }
@@ -453,7 +453,7 @@ pub fn stub_0x3bbc78() -> ! {
 // 0x3bbc80 — __ZThn36_N3RBX14FormFactorPartD0Ev
 // type: void __fastcall(RBX::FormFactorPart *__hidden this)
 // was: void __fastcall(RBX::FormFactorPart *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
+#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart() [0x3bbc80]")]
 pub fn stub_0x3bbc80() -> ! {
     todo!("0x3bbc80 __ZThn36_N3RBX14FormFactorPartD0Ev")
 }
@@ -461,7 +461,7 @@ pub fn stub_0x3bbc80() -> ! {
 // 0x3bbc88 — __ZThn132_N3RBX14FormFactorPartD0Ev
 // type: void __fastcall(RBX::FormFactorPart *__hidden this)
 // was: void __fastcall(RBX::FormFactorPart *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
+#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart() [0x3bbc88]")]
 pub fn stub_0x3bbc88() -> ! {
     todo!("0x3bbc88 __ZThn132_N3RBX14FormFactorPartD0Ev")
 }
@@ -469,7 +469,7 @@ pub fn stub_0x3bbc88() -> ! {
 // 0x3bbc90 — __ZN3RBX14FormFactorPartD2Ev
 // type: void __fastcall(RBX::FormFactorPart *__hidden this)
 // was: void __fastcall(RBX::FormFactorPart *__hidden this)
-#[doc(alias = "RBX::FormFactorPart::~FormFactorPart()")]
+#[doc(alias = "RBX::FormFactorPart::~FormFactorPart() [0x3bbc90]")]
 pub fn stub_0x3bbc90() -> ! {
     todo!("0x3bbc90 __ZN3RBX14FormFactorPartD2Ev")
 }
@@ -477,7 +477,7 @@ pub fn stub_0x3bbc90() -> ! {
 // 0x3bbc98 — __ZThn32_N3RBX14FormFactorPartD1Ev
 // type: void __fastcall(RBX::FormFactorPart *__hidden this)
 // was: void __fastcall(RBX::FormFactorPart *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
+#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart() [0x3bbc98]")]
 pub fn stub_0x3bbc98() -> ! {
     todo!("0x3bbc98 __ZThn32_N3RBX14FormFactorPartD1Ev")
 }
@@ -485,7 +485,7 @@ pub fn stub_0x3bbc98() -> ! {
 // 0x3bbcac — __ZThn36_N3RBX14FormFactorPartD1Ev
 // type: void __fastcall(RBX::FormFactorPart *__hidden this)
 // was: void __fastcall(RBX::FormFactorPart *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
+#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart() [0x3bbcac]")]
 pub fn stub_0x3bbcac() -> ! {
     todo!("0x3bbcac __ZThn36_N3RBX14FormFactorPartD1Ev")
 }
@@ -493,7 +493,7 @@ pub fn stub_0x3bbcac() -> ! {
 // 0x3bbcc0 — __ZThn132_N3RBX14FormFactorPartD1Ev
 // type: void __fastcall(RBX::FormFactorPart *__hidden this)
 // was: void __fastcall(RBX::FormFactorPart *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
+#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart() [0x3bbcc0]")]
 pub fn stub_0x3bbcc0() -> ! {
     todo!("0x3bbcc0 __ZThn132_N3RBX14FormFactorPartD1Ev")
 }
@@ -777,7 +777,7 @@ pub fn stub_0x3bf1b0() -> ! {
 // 0x3bf1b4 — __ZN3RBX9BevelMeshD0Ev
 // type: void __fastcall(RBX::BevelMesh *__hidden this)
 // was: void __fastcall(RBX::BevelMesh *__hidden this)
-#[doc(alias = "RBX::BevelMesh::~BevelMesh()")]
+#[doc(alias = "RBX::BevelMesh::~BevelMesh() [0x3bf1b4]")]
 pub fn stub_0x3bf1b4() -> ! {
     todo!("0x3bf1b4 __ZN3RBX9BevelMeshD0Ev")
 }

@@ -52,7 +52,7 @@ pub fn stub_0x2d0dd8() -> ! {
 }
 
 // 0x2d0ddc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13AdvLuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x2d0ddc]")]
 pub fn stub_0x2d0ddc() -> ! {
     todo!("0x2d0ddc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13AdvLuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
 }
@@ -144,7 +144,7 @@ pub fn stub_0x2d17c4() -> ! {
 
 // 0x2d17c8 — __ZN3RBX14AdvLuaDragToolC2EPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIN5boost8weak_ptrIS1_EESaISA_EEPNS_9WorkspaceENS8_10shared_ptrINS_8InstanceEEE
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, std::string *, int, int, int, int)
-#[doc(alias = "RBX::AdvLuaDragTool::AdvLuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<Weak<RBX::PartInstance>,std::allocator<Weak<RBX::PartInstance>>> const&,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>)")]
+#[doc(alias = "RBX::AdvLuaDragTool::AdvLuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<Weak<RBX::PartInstance>,std::allocator<Weak<RBX::PartInstance>>> const&,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>) [0x2d17c8]")]
 pub fn stub_0x2d17c8() -> ! {
     todo!("0x2d17c8 __ZN3RBX14AdvLuaDragToolC2EPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIN5boost8weak_ptrIS1_EESaISA_EEPNS_9WorkspaceENS8_10shared_ptrINS_8InstanceEEE")
 }
@@ -158,7 +158,7 @@ pub fn stub_0x2d1a5c() -> ! {
 
 // 0x2d1afc — __ZN3RBX14AdvLuaDragToolD1Ev
 // type: void __fastcall(RBX::AdvLuaDragTool *__hidden this)
-#[doc(alias = "RBX::AdvLuaDragTool::~AdvLuaDragTool()")]
+#[doc(alias = "RBX::AdvLuaDragTool::~AdvLuaDragTool() [0x2d1afc]")]
 pub fn stub_0x2d1afc() -> ! {
     todo!("0x2d1afc __ZN3RBX14AdvLuaDragToolD1Ev")
 }
@@ -172,14 +172,14 @@ pub fn stub_0x2d1b00() -> ! {
 
 // 0x2d1b08 — __ZN3RBX14AdvLuaDragToolD2Ev
 // type: void __fastcall(RBX::AdvLuaDragTool *__hidden this)
-#[doc(alias = "RBX::AdvLuaDragTool::~AdvLuaDragTool()")]
+#[doc(alias = "RBX::AdvLuaDragTool::~AdvLuaDragTool() [0x2d1b08]")]
 pub fn stub_0x2d1b08() -> ! {
     todo!("0x2d1b08 __ZN3RBX14AdvLuaDragToolD2Ev")
 }
 
 // 0x2d1c48 — __ZThn36_N3RBX14AdvLuaDragToolD1Ev
 // type: void __fastcall(RBX::AdvLuaDragTool *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::AdvLuaDragTool::~AdvLuaDragTool()")]
+#[doc(alias = "non-virtual thunk toRBX::AdvLuaDragTool::~AdvLuaDragTool() [0x2d1c48]")]
 pub fn stub_0x2d1c48() -> ! {
     todo!("0x2d1c48 __ZThn36_N3RBX14AdvLuaDragToolD1Ev")
 }
@@ -299,7 +299,7 @@ pub fn stub_0x2e0c90() -> ! {
 
 // 0x2e0c94 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd() [0x2e0c94]")]
 pub fn stub_0x2e0c94() -> ! {
     todo!("0x2e0c94 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11LuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
 }
@@ -369,7 +369,7 @@ pub fn stub_0x2e5e10() -> ! {
 
 // 0x2e5eb0 — __ZN3RBX10LuaDraggerD1Ev
 // type: void __fastcall(RBX::LuaDragger *__hidden this)
-#[doc(alias = "RBX::LuaDragger::~LuaDragger()")]
+#[doc(alias = "RBX::LuaDragger::~LuaDragger() [0x2e5eb0]")]
 pub fn stub_0x2e5eb0() -> ! {
     todo!("0x2e5eb0 __ZN3RBX10LuaDraggerD1Ev")
 }
@@ -383,28 +383,28 @@ pub fn stub_0x2e5eb4() -> ! {
 
 // 0x2e5ebc — __ZThn36_N3RBX10LuaDraggerD0Ev
 // type: void __fastcall(RBX::LuaDragger *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaDragger::~LuaDragger() [0x2e5ebc]")]
 pub fn stub_0x2e5ebc() -> ! {
     todo!("0x2e5ebc __ZThn36_N3RBX10LuaDraggerD0Ev")
 }
 
 // 0x2e5ec4 — __ZN3RBX10LuaDraggerD2Ev
 // type: void __fastcall(RBX::LuaDragger *__hidden this)
-#[doc(alias = "RBX::LuaDragger::~LuaDragger()")]
+#[doc(alias = "RBX::LuaDragger::~LuaDragger() [0x2e5ec4]")]
 pub fn stub_0x2e5ec4() -> ! {
     todo!("0x2e5ec4 __ZN3RBX10LuaDraggerD2Ev")
 }
 
 // 0x2e6060 — __ZThn32_N3RBX10LuaDraggerD1Ev
 // type: void __fastcall(RBX::LuaDragger *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaDragger::~LuaDragger() [0x2e6060]")]
 pub fn stub_0x2e6060() -> ! {
     todo!("0x2e6060 __ZThn32_N3RBX10LuaDraggerD1Ev")
 }
 
 // 0x2e6068 — __ZThn36_N3RBX10LuaDraggerD1Ev
 // type: void __fastcall(RBX::LuaDragger *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LuaDragger::~LuaDragger()")]
+#[doc(alias = "non-virtual thunk toRBX::LuaDragger::~LuaDragger() [0x2e6068]")]
 pub fn stub_0x2e6068() -> ! {
     todo!("0x2e6068 __ZThn36_N3RBX10LuaDraggerD1Ev")
 }
@@ -551,7 +551,7 @@ pub fn stub_0x2e7ad4() -> ! {
 }
 
 // 0x2e7ad8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x2e7ad8]")]
 pub fn stub_0x2e7ad8() -> ! {
     todo!("0x2e7ad8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10LuaDraggerENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
 }
@@ -649,7 +649,7 @@ pub fn stub_0x2e86d4() -> ! {
 }
 
 // 0x2e8704 — __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN3G3D7Vector34AxisEELi1EED0Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(G3D::Vector3::Axis),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(G3D::Vector3::Axis),1>::~BoundFuncDesc() [0x2e8704]")]
 pub fn stub_0x2e8704() -> ! {
     todo!("0x2e8704 __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN3G3D7Vector34AxisEELi1EED0Ev")
 }

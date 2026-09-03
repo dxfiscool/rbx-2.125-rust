@@ -91,7 +91,7 @@ pub fn stub_0x71c3f0() -> ! {
 
 // 0x71c3f4 — __ZN3RBX5BlockD0Ev
 // type: void __fastcall(RBX::Block *__hidden this)
-#[doc(alias = "RBX::Block::~Block()")]
+#[doc(alias = "RBX::Block::~Block() [0x71c3f4]")]
 #[doc(alias = "__ZN3RBX5BlockD0Ev")]
 pub fn stub_0x71c3f4() -> ! {
     todo!("0x71c3f4 __ZN3RBX5BlockD0Ev")
@@ -242,7 +242,7 @@ pub fn stub_0x71e294() -> ! {
 
 // 0x71e3bc — __ZN3RBX5BlockD2Ev
 // type: void __fastcall(RBX::Block *__hidden this)
-#[doc(alias = "RBX::Block::~Block()")]
+#[doc(alias = "RBX::Block::~Block() [0x71e3bc]")]
 #[doc(alias = "__ZN3RBX5BlockD2Ev")]
 pub fn stub_0x71e3bc() -> ! {
     todo!("0x71e3bc __ZN3RBX5BlockD2Ev")
@@ -258,7 +258,7 @@ pub fn stub_0x71e5cc() -> ! {
 
 // 0x71e5d0 — __ZN3RBX10CleanStageC2EPNS_6IStageEPNS_5WorldE
 // type: _DWORD __fastcall(RBX::CleanStage *__hidden this, RBX::IStage *, RBX::World *)
-#[doc(alias = "RBX::CleanStage::CleanStage(RBX::IStage *,RBX::World *)")]
+#[doc(alias = "RBX::CleanStage::CleanStage(RBX::IStage *,RBX::World *) [0x71e5d0]")]
 #[doc(alias = "__ZN3RBX10CleanStageC2EPNS_6IStageEPNS_5WorldE")]
 pub fn stub_0x71e5d0() -> ! {
     todo!("0x71e5d0 __ZN3RBX10CleanStageC2EPNS_6IStageEPNS_5WorldE")
@@ -330,7 +330,7 @@ pub fn stub_0x71ea28() -> ! {
 
 // 0x71ea4c — __ZN3RBX10CleanStageD0Ev
 // type: void __fastcall(RBX::CleanStage *__hidden this)
-#[doc(alias = "RBX::CleanStage::~CleanStage()")]
+#[doc(alias = "RBX::CleanStage::~CleanStage() [0x71ea4c]")]
 #[doc(alias = "__ZN3RBX10CleanStageD0Ev")]
 pub fn stub_0x71ea4c() -> ! {
     todo!("0x71ea4c __ZN3RBX10CleanStageD0Ev")
@@ -362,7 +362,7 @@ pub fn stub_0x71ebec() -> ! {
 
 // 0x71ec8c — __ZN3RBX5ClumpD1Ev
 // type: void __fastcall(RBX::Clump *__hidden this)
-#[doc(alias = "RBX::Clump::~Clump()")]
+#[doc(alias = "RBX::Clump::~Clump() [0x71ec8c]")]
 #[doc(alias = "__ZN3RBX5ClumpD1Ev")]
 pub fn stub_0x71ec8c() -> ! {
     todo!("0x71ec8c __ZN3RBX5ClumpD1Ev")
@@ -490,7 +490,7 @@ pub fn stub_0x71f6fc() -> ! {
 
 // 0x71f79c — __ZN3RBX7ContactD1Ev
 // type: void __fastcall(RBX::Contact *__hidden this)
-#[doc(alias = "RBX::Contact::~Contact()")]
+#[doc(alias = "RBX::Contact::~Contact() [0x71f79c]")]
 #[doc(alias = "__ZN3RBX7ContactD1Ev")]
 pub fn stub_0x71f79c() -> ! {
     todo!("0x71f79c __ZN3RBX7ContactD1Ev")
@@ -498,7 +498,7 @@ pub fn stub_0x71f79c() -> ! {
 
 // 0x71f7a0 — __ZN3RBX7ContactD2Ev
 // type: void __fastcall(RBX::Contact *__hidden this)
-#[doc(alias = "RBX::Contact::~Contact()")]
+#[doc(alias = "RBX::Contact::~Contact() [0x71f7a0]")]
 #[doc(alias = "__ZN3RBX7ContactD2Ev")]
 pub fn stub_0x71f7a0() -> ! {
     todo!("0x71f7a0 __ZN3RBX7ContactD2Ev")

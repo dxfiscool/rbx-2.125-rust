@@ -97,7 +97,7 @@ pub fn stub_0x301d98() -> ! {
 }
 
 // 0x301ea0 — __ZN5boost6detail18sp_counted_impl_pdIPSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS7_EEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>::~sp_counted_impl_pd() [0x301ea0]")]
 pub fn stub_0x301ea0() -> ! {
     todo!("0x301ea0 boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>::~sp_counted_impl_pd()")
 }
@@ -178,7 +178,7 @@ pub fn stub_0x30266c() -> ! {
 
 // 0x3026a8 — __ZN3RBX18HttpQueueStatsItemD0Ev
 // type: void __fastcall(RBX::HttpQueueStatsItem *__hidden this)
-#[doc(alias = "RBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
+#[doc(alias = "RBX::HttpQueueStatsItem::~HttpQueueStatsItem() [0x3026a8]")]
 pub fn stub_0x3026a8() -> ! {
     todo!("0x3026a8 RBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
 }
@@ -199,21 +199,21 @@ pub fn stub_0x3027d0() -> ! {
 
 // 0x302810 — __ZThn32_N3RBX18HttpQueueStatsItemD0Ev
 // type: void __fastcall(RBX::HttpQueueStatsItem *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem() [0x302810]")]
 pub fn stub_0x302810() -> ! {
     todo!("0x302810 non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
 }
 
 // 0x3028e8 — __ZThn36_N3RBX18HttpQueueStatsItemD1Ev
 // type: void __fastcall(RBX::HttpQueueStatsItem *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem() [0x3028e8]")]
 pub fn stub_0x3028e8() -> ! {
     todo!("0x3028e8 non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
 }
 
 // 0x302928 — __ZThn36_N3RBX18HttpQueueStatsItemD0Ev
 // type: void __fastcall(RBX::HttpQueueStatsItem *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem() [0x302928]")]
 pub fn stub_0x302928() -> ! {
     todo!("0x302928 non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
 }
@@ -245,7 +245,7 @@ pub fn stub_0x302cb4() -> ! {
 }
 
 // 0x302cb8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18HttpQueueStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x302cb8]")]
 pub fn stub_0x302cb8() -> ! {
     todo!("0x302cb8 boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
 }
@@ -317,7 +317,7 @@ pub fn stub_0x303124() -> ! {
 }
 
 // 0x303128 — __ZN3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEEC2Ev
-#[doc(alias = "RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::EnumDesc(void)")]
+#[doc(alias = "RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::EnumDesc(void) [0x303128]")]
 pub fn stub_0x303128() -> ! {
     todo!("0x303128 RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::EnumDesc(void)")
 }
@@ -393,7 +393,7 @@ pub fn stub_0x3600a4() -> ! {
 }
 
 // 0x360150 — __ZN3RBX10Reflection5TTypeINS_15ProtectedStringEED0Ev
-#[doc(alias = "RBX::Reflection::TType<RBX::ProtectedString>::~TType()")]
+#[doc(alias = "RBX::Reflection::TType<RBX::ProtectedString>::~TType() [0x360150]")]
 pub fn stub_0x360150() -> ! {
     todo!("0x360150 RBX::Reflection::TType<RBX::ProtectedString>::~TType()")
 }
@@ -418,7 +418,7 @@ pub fn stub_0x3602bc() -> ! {
 }
 
 // 0x3602c0 — __ZN3RBX10QuaternionC2ERKN3G3D7Matrix3E
-#[doc(alias = "RBX::Quaternion::Quaternion(G3D::Matrix3 const&)")]
+#[doc(alias = "RBX::Quaternion::Quaternion(G3D::Matrix3 const&) [0x3602c0]")]
 pub fn stub_0x3602c0() -> ! {
     todo!("0x3602c0 RBX::Quaternion::Quaternion(G3D::Matrix3 const&)")
 }
@@ -464,7 +464,7 @@ pub fn stub_0x36082c() -> ! {
 
 // 0x360830 — __ZN3RBX10RunServiceC2Ev
 // type: _DWORD __fastcall(RBX::RunService *__hidden this)
-#[doc(alias = "RBX::RunService::RunService(void)")]
+#[doc(alias = "RBX::RunService::RunService(void) [0x360830]")]
 pub fn stub_0x360830() -> ! {
     todo!("0x360830 RBX::RunService::RunService(void)")
 }
@@ -492,7 +492,7 @@ pub fn stub_0x3611ec() -> ! {
 
 // 0x36128c — __ZN3RBX10RunServiceD1Ev
 // type: void __fastcall(RBX::RunService *__hidden this)
-#[doc(alias = "RBX::RunService::~RunService()")]
+#[doc(alias = "RBX::RunService::~RunService() [0x36128c]")]
 pub fn stub_0x36128c() -> ! {
     todo!("0x36128c RBX::RunService::~RunService()")
 }
@@ -506,28 +506,28 @@ pub fn stub_0x361290() -> ! {
 
 // 0x361298 — __ZThn36_N3RBX10RunServiceD0Ev
 // type: void __fastcall(RBX::RunService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
+#[doc(alias = "non-virtual thunk toRBX::RunService::~RunService() [0x361298]")]
 pub fn stub_0x361298() -> ! {
     todo!("0x361298 non-virtual thunk toRBX::RunService::~RunService()")
 }
 
 // 0x3612a0 — __ZN3RBX10RunServiceD2Ev
 // type: void __fastcall(RBX::RunService *__hidden this)
-#[doc(alias = "RBX::RunService::~RunService()")]
+#[doc(alias = "RBX::RunService::~RunService() [0x3612a0]")]
 pub fn stub_0x3612a0() -> ! {
     todo!("0x3612a0 RBX::RunService::~RunService()")
 }
 
 // 0x3616a8 — __ZThn32_N3RBX10RunServiceD1Ev
 // type: void __fastcall(RBX::RunService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
+#[doc(alias = "non-virtual thunk toRBX::RunService::~RunService() [0x3616a8]")]
 pub fn stub_0x3616a8() -> ! {
     todo!("0x3616a8 non-virtual thunk toRBX::RunService::~RunService()")
 }
 
 // 0x3616b0 — __ZThn36_N3RBX10RunServiceD1Ev
 // type: void __fastcall(RBX::RunService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
+#[doc(alias = "non-virtual thunk toRBX::RunService::~RunService() [0x3616b0]")]
 pub fn stub_0x3616b0() -> ! {
     todo!("0x3616b0 non-virtual thunk toRBX::RunService::~RunService()")
 }
@@ -828,7 +828,7 @@ pub fn stub_0x362aa8() -> ! {
 }
 
 // 0x362ab0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED0Ev
-#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl() [0x362ab0]")]
 pub fn stub_0x362ab0() -> ! {
     todo!("0x362ab0 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")
 }

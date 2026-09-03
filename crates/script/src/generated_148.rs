@@ -63,7 +63,7 @@ pub fn stub_0x293d00() -> ! {
 }
 
 // 0x293d24 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_9ContentIdEED0Ev
-#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::~TypedPropertyDescriptor()")]
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::~TypedPropertyDescriptor() [0x293d24]")]
 pub fn stub_0x293d24() -> ! {
     todo!("0x293d24 __ZN3RBX10Reflection23TypedPropertyDescriptorINS_9ContentIdEED0Ev")
 }
@@ -117,7 +117,7 @@ pub fn stub_0x294930() -> ! {
 }
 
 // 0x294954 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_15ProtectedStringEED0Ev
-#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::~TypedPropertyDescriptor()")]
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::~TypedPropertyDescriptor() [0x294954]")]
 pub fn stub_0x294954() -> ! {
     todo!("0x294954 __ZN3RBX10Reflection23TypedPropertyDescriptorINS_15ProtectedStringEED0Ev")
 }

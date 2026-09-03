@@ -21,7 +21,7 @@ pub fn stub_0x5478d4() -> ! {
 }
 
 // 0x547950 — __ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEED2Ev — RBX::Reflection::EnumDesc<RBX::GuiService::CenterDialogType>::~EnumDesc()
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiService::CenterDialogType>::~EnumDesc()")]
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiService::CenterDialogType>::~EnumDesc() [0x547950]")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEED2Ev")]
 pub fn stub_0x547950() -> ! {
     todo!("0x547950 __ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEED2Ev")
@@ -86,7 +86,7 @@ pub fn stub_0x547f4c() -> ! {
 }
 
 // 0x547fc8 — __ZN3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEED2Ev — RBX::Reflection::EnumDesc<RBX::GuiService::SpecialKey>::~EnumDesc()
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiService::SpecialKey>::~EnumDesc()")]
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiService::SpecialKey>::~EnumDesc() [0x547fc8]")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEED2Ev")]
 pub fn stub_0x547fc8() -> ! {
     todo!("0x547fc8 __ZN3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEED2Ev")
@@ -144,7 +144,7 @@ pub fn stub_0x549204() -> ! {
 }
 
 // 0x549208 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18NotificationObjectENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev — boost::detail::sp_counted_impl_pd<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x549208]")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX18NotificationObjectENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
 pub fn stub_0x549208() -> ! {
     todo!("0x549208 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18NotificationObjectENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
@@ -514,7 +514,7 @@ pub fn stub_0x54bb2c() -> ! {
 }
 
 // 0x54bc34 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14CoreGuiServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev — boost::detail::sp_counted_impl_pd<RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x54bc34]")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX14CoreGuiServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")]
 pub fn stub_0x54bc34() -> ! {
     todo!("0x54bc34 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14CoreGuiServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")

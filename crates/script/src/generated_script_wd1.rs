@@ -204,8 +204,7 @@ pub fn stub_0x520ce0() -> ! {
 
 // 0x520d18 — __ZN3RBX26GlobalAdvancedSettingsItemINS_15PhysicsSettingsELZNS_16sPhysicsSettingsEEE9singletonEv — __ZN3RBX26GlobalAdvancedSettingsItemINS_15PhysicsSettingsELZNS_16sPhysicsSettingsEEE9singletonEv
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, boost::mutex *, char, int, int, int, int, int, int)
-#[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_15PhysicsSettingsELZNS_16sPhysicsSettingsEEE9singletonEv")]
-#[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_15PhysicsSettingsELZNS_16sPhysicsSettingsEEE9singletonEv")]
+#[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_15PhysicsSettingsELZNS_16sPhysicsSettingsEEE9singletonEv [0x520d18]")]
 pub fn stub_0x520d18() -> ! {
     todo!("0x520d18 __ZN3RBX26GlobalAdvancedSettingsItemINS_15PhysicsSettingsELZNS_16sPhysicsSettingsEEE9singletonEv")
 }
@@ -297,15 +296,14 @@ pub fn stub_0x521964() -> ! {
 
 // 0x521ac4 — __ZN3RBX18CustomStatsGuiJSOND0Ev — RBX::CustomStatsGuiJSON::~CustomStatsGuiJSON()
 // type: void __fastcall(RBX::CustomStatsGuiJSON *__hidden this)
-#[doc(alias = "RBX::CustomStatsGuiJSON::~CustomStatsGuiJSON()")]
+#[doc(alias = "RBX::CustomStatsGuiJSON::~CustomStatsGuiJSON() [0x521ac4]")]
 #[doc(alias = "__ZN3RBX18CustomStatsGuiJSOND0Ev")]
 pub fn stub_0x521ac4() -> ! {
     todo!("0x521ac4 __ZN3RBX18CustomStatsGuiJSOND0Ev")
 }
 
 // 0x521aec — __ZN3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7CreatorD1Ev — __ZN3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7CreatorD1Ev
-#[doc(alias = "__ZN3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7CreatorD1Ev")]
-#[doc(alias = "__ZN3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7CreatorD1Ev")]
+#[doc(alias = "__ZN3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7CreatorD1Ev [0x521aec]")]
 pub fn stub_0x521aec() -> ! {
     todo!("0x521aec __ZN3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE7CreatorD1Ev")
 }
@@ -347,7 +345,7 @@ pub fn stub_0x521df0() -> ! {
 }
 
 // 0x521df4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15EquationDisplayENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev — boost::detail::sp_counted_impl_pd<RBX::EquationDisplay *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::EquationDisplay *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::EquationDisplay *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x521df4]")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX15EquationDisplayENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
 pub fn stub_0x521df4() -> ! {
     todo!("0x521df4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15EquationDisplayENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
@@ -404,7 +402,7 @@ pub fn stub_0x5220ec() -> ! {
 }
 
 // 0x5220f0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TextDisplayENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev — boost::detail::sp_counted_impl_pd<RBX::TextDisplay *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TextDisplay *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::TextDisplay *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x5220f0]")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TextDisplayENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
 pub fn stub_0x5220f0() -> ! {
     todo!("0x5220f0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11TextDisplayENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
@@ -519,7 +517,7 @@ pub fn stub_0x522408() -> ! {
 
 // 0x522500 — __ZN3RBX18UnifiedImageWidgetD0Ev — RBX::UnifiedImageWidget::~UnifiedImageWidget()
 // type: void __fastcall(RBX::UnifiedImageWidget *__hidden this)
-#[doc(alias = "RBX::UnifiedImageWidget::~UnifiedImageWidget()")]
+#[doc(alias = "RBX::UnifiedImageWidget::~UnifiedImageWidget() [0x522500]")]
 #[doc(alias = "__ZN3RBX18UnifiedImageWidgetD0Ev")]
 pub fn stub_0x522500() -> ! {
     todo!("0x522500 __ZN3RBX18UnifiedImageWidgetD0Ev")
@@ -535,7 +533,7 @@ pub fn stub_0x522608() -> ! {
 
 // 0x5226fc — __ZThn32_N3RBX18UnifiedImageWidgetD0Ev — non-virtual thunk toRBX::UnifiedImageWidget::~UnifiedImageWidget()
 // type: void __fastcall(RBX::UnifiedImageWidget *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::UnifiedImageWidget::~UnifiedImageWidget()")]
+#[doc(alias = "non-virtual thunk toRBX::UnifiedImageWidget::~UnifiedImageWidget() [0x5226fc]")]
 #[doc(alias = "__ZThn32_N3RBX18UnifiedImageWidgetD0Ev")]
 pub fn stub_0x5226fc() -> ! {
     todo!("0x5226fc __ZThn32_N3RBX18UnifiedImageWidgetD0Ev")
@@ -543,7 +541,7 @@ pub fn stub_0x5226fc() -> ! {
 
 // 0x522808 — __ZThn36_N3RBX18UnifiedImageWidgetD1Ev — non-virtual thunk toRBX::UnifiedImageWidget::~UnifiedImageWidget()
 // type: void __fastcall(RBX::UnifiedImageWidget *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::UnifiedImageWidget::~UnifiedImageWidget()")]
+#[doc(alias = "non-virtual thunk toRBX::UnifiedImageWidget::~UnifiedImageWidget() [0x522808]")]
 #[doc(alias = "__ZThn36_N3RBX18UnifiedImageWidgetD1Ev")]
 pub fn stub_0x522808() -> ! {
     todo!("0x522808 __ZThn36_N3RBX18UnifiedImageWidgetD1Ev")
@@ -551,7 +549,7 @@ pub fn stub_0x522808() -> ! {
 
 // 0x5228fc — __ZThn36_N3RBX18UnifiedImageWidgetD0Ev — non-virtual thunk toRBX::UnifiedImageWidget::~UnifiedImageWidget()
 // type: void __fastcall(RBX::UnifiedImageWidget *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::UnifiedImageWidget::~UnifiedImageWidget()")]
+#[doc(alias = "non-virtual thunk toRBX::UnifiedImageWidget::~UnifiedImageWidget() [0x5228fc]")]
 #[doc(alias = "__ZThn36_N3RBX18UnifiedImageWidgetD0Ev")]
 pub fn stub_0x5228fc() -> ! {
     todo!("0x5228fc __ZThn36_N3RBX18UnifiedImageWidgetD0Ev")
@@ -583,7 +581,7 @@ pub fn stub_0x522de8() -> ! {
 
 // 0x522dec — __ZN3RBX13UnifiedWidgetD0Ev — RBX::UnifiedWidget::~UnifiedWidget()
 // type: void __fastcall(RBX::UnifiedWidget *__hidden this)
-#[doc(alias = "RBX::UnifiedWidget::~UnifiedWidget()")]
+#[doc(alias = "RBX::UnifiedWidget::~UnifiedWidget() [0x522dec]")]
 #[doc(alias = "__ZN3RBX13UnifiedWidgetD0Ev")]
 pub fn stub_0x522dec() -> ! {
     todo!("0x522dec __ZN3RBX13UnifiedWidgetD0Ev")
@@ -606,7 +604,7 @@ pub fn stub_0x522e98() -> ! {
 
 // 0x522ea0 — __ZThn32_N3RBX13UnifiedWidgetD0Ev — non-virtual thunk toRBX::UnifiedWidget::~UnifiedWidget()
 // type: void __fastcall(RBX::UnifiedWidget *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::UnifiedWidget::~UnifiedWidget()")]
+#[doc(alias = "non-virtual thunk toRBX::UnifiedWidget::~UnifiedWidget() [0x522ea0]")]
 #[doc(alias = "__ZThn32_N3RBX13UnifiedWidgetD0Ev")]
 pub fn stub_0x522ea0() -> ! {
     todo!("0x522ea0 __ZThn32_N3RBX13UnifiedWidgetD0Ev")
@@ -614,7 +612,7 @@ pub fn stub_0x522ea0() -> ! {
 
 // 0x522f44 — __ZThn36_N3RBX13UnifiedWidgetD1Ev — non-virtual thunk toRBX::UnifiedWidget::~UnifiedWidget()
 // type: void __fastcall(RBX::UnifiedWidget *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::UnifiedWidget::~UnifiedWidget()")]
+#[doc(alias = "non-virtual thunk toRBX::UnifiedWidget::~UnifiedWidget() [0x522f44]")]
 #[doc(alias = "__ZThn36_N3RBX13UnifiedWidgetD1Ev")]
 pub fn stub_0x522f44() -> ! {
     todo!("0x522f44 __ZThn36_N3RBX13UnifiedWidgetD1Ev")
@@ -622,7 +620,7 @@ pub fn stub_0x522f44() -> ! {
 
 // 0x522f4c — __ZThn36_N3RBX13UnifiedWidgetD0Ev — non-virtual thunk toRBX::UnifiedWidget::~UnifiedWidget()
 // type: void __fastcall(RBX::UnifiedWidget *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::UnifiedWidget::~UnifiedWidget()")]
+#[doc(alias = "non-virtual thunk toRBX::UnifiedWidget::~UnifiedWidget() [0x522f4c]")]
 #[doc(alias = "__ZThn36_N3RBX13UnifiedWidgetD0Ev")]
 pub fn stub_0x522f4c() -> ! {
     todo!("0x522f4c __ZThn36_N3RBX13UnifiedWidgetD0Ev")
@@ -658,7 +656,7 @@ pub fn stub_0x5232a8() -> ! {
 }
 
 // 0x5232ac — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ChatButtonENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev — boost::detail::sp_counted_impl_pd<RBX::ChatButton *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ChatButton *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ChatButton *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x5232ac]")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ChatButtonENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
 pub fn stub_0x5232ac() -> ! {
     todo!("0x5232ac __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ChatButtonENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
@@ -715,7 +713,7 @@ pub fn stub_0x5235a4() -> ! {
 }
 
 // 0x5235a8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ChatWidgetENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev — boost::detail::sp_counted_impl_pd<RBX::ChatWidget *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ChatWidget *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ChatWidget *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x5235a8]")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ChatWidgetENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
 pub fn stub_0x5235a8() -> ! {
     todo!("0x5235a8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ChatWidgetENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
@@ -772,7 +770,7 @@ pub fn stub_0x5238a0() -> ! {
 }
 
 // 0x5238a4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ChatOutputENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev — boost::detail::sp_counted_impl_pd<RBX::ChatOutput *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ChatOutput *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ChatOutput *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x5238a4]")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ChatOutputENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
 pub fn stub_0x5238a4() -> ! {
     todo!("0x5238a4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ChatOutputENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
@@ -848,7 +846,7 @@ pub fn stub_0x523ad0() -> ! {
 
 // 0x523ad4 — __ZN3RBX10TopMenuBarD0Ev — RBX::TopMenuBar::~TopMenuBar()
 // type: void __fastcall(RBX::TopMenuBar *__hidden this)
-#[doc(alias = "RBX::TopMenuBar::~TopMenuBar()")]
+#[doc(alias = "RBX::TopMenuBar::~TopMenuBar() [0x523ad4]")]
 #[doc(alias = "__ZN3RBX10TopMenuBarD0Ev")]
 pub fn stub_0x523ad4() -> ! {
     todo!("0x523ad4 __ZN3RBX10TopMenuBarD0Ev")
@@ -864,7 +862,7 @@ pub fn stub_0x523b74() -> ! {
 
 // 0x523b7c — __ZThn32_N3RBX10TopMenuBarD0Ev — non-virtual thunk toRBX::TopMenuBar::~TopMenuBar()
 // type: void __fastcall(RBX::TopMenuBar *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::TopMenuBar::~TopMenuBar()")]
+#[doc(alias = "non-virtual thunk toRBX::TopMenuBar::~TopMenuBar() [0x523b7c]")]
 #[doc(alias = "__ZThn32_N3RBX10TopMenuBarD0Ev")]
 pub fn stub_0x523b7c() -> ! {
     todo!("0x523b7c __ZThn32_N3RBX10TopMenuBarD0Ev")
@@ -872,7 +870,7 @@ pub fn stub_0x523b7c() -> ! {
 
 // 0x523c20 — __ZThn36_N3RBX10TopMenuBarD1Ev — non-virtual thunk toRBX::TopMenuBar::~TopMenuBar()
 // type: void __fastcall(RBX::TopMenuBar *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::TopMenuBar::~TopMenuBar()")]
+#[doc(alias = "non-virtual thunk toRBX::TopMenuBar::~TopMenuBar() [0x523c20]")]
 #[doc(alias = "__ZThn36_N3RBX10TopMenuBarD1Ev")]
 pub fn stub_0x523c20() -> ! {
     todo!("0x523c20 __ZThn36_N3RBX10TopMenuBarD1Ev")
@@ -880,7 +878,7 @@ pub fn stub_0x523c20() -> ! {
 
 // 0x523c28 — __ZThn36_N3RBX10TopMenuBarD0Ev — non-virtual thunk toRBX::TopMenuBar::~TopMenuBar()
 // type: void __fastcall(RBX::TopMenuBar *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::TopMenuBar::~TopMenuBar()")]
+#[doc(alias = "non-virtual thunk toRBX::TopMenuBar::~TopMenuBar() [0x523c28]")]
 #[doc(alias = "__ZThn36_N3RBX10TopMenuBarD0Ev")]
 pub fn stub_0x523c28() -> ! {
     todo!("0x523c28 __ZThn36_N3RBX10TopMenuBarD0Ev")

@@ -268,7 +268,7 @@ pub fn stub_0x5ad0c8() -> ! {
 
 // 0x5ad0cc — __ZN3RBX13JointsServiceD0Ev
 // type: void __fastcall(RBX::JointsService *__hidden this)
-#[doc(alias = "RBX::JointsService::~JointsService()")]
+#[doc(alias = "RBX::JointsService::~JointsService() [0x5ad0cc]")]
 #[doc(alias = "__ZN3RBX13JointsServiceD0Ev")]
 pub fn stub_0x5ad0cc() -> ! {
     todo!("0x5ad0cc RBX::JointsService::~JointsService()")
@@ -299,7 +299,7 @@ pub fn stub_0x5ad1d0() -> ! {
 
 // 0x5ad1d8 — __ZThn32_N3RBX13JointsServiceD0Ev
 // type: void __fastcall(RBX::JointsService *__hidden this)
-#[doc(alias = "_non-virtual thunk to_RBX::JointsService::~JointsService()")]
+#[doc(alias = "_non-virtual thunk to_RBX::JointsService::~JointsService() [0x5ad1d8]")]
 #[doc(alias = "__ZThn32_N3RBX13JointsServiceD0Ev")]
 // was: `non-virtual thunk to'RBX::JointsService::~JointsService()
 pub fn stub_0x5ad1d8() -> ! {
@@ -314,7 +314,7 @@ pub fn stub_0x5ad27c() -> ! {
 
 // 0x5ad2a4 — __ZThn36_N3RBX13JointsServiceD1Ev
 // type: void __fastcall(RBX::JointsService *__hidden this)
-#[doc(alias = "_non-virtual thunk to_RBX::JointsService::~JointsService()")]
+#[doc(alias = "_non-virtual thunk to_RBX::JointsService::~JointsService() [0x5ad2a4]")]
 #[doc(alias = "__ZThn36_N3RBX13JointsServiceD1Ev")]
 // was: `non-virtual thunk to'RBX::JointsService::~JointsService()
 pub fn stub_0x5ad2a4() -> ! {
@@ -323,7 +323,7 @@ pub fn stub_0x5ad2a4() -> ! {
 
 // 0x5ad2ac — __ZThn36_N3RBX13JointsServiceD0Ev
 // type: void __fastcall(RBX::JointsService *__hidden this)
-#[doc(alias = "_non-virtual thunk to_RBX::JointsService::~JointsService()")]
+#[doc(alias = "_non-virtual thunk to_RBX::JointsService::~JointsService() [0x5ad2ac]")]
 #[doc(alias = "__ZThn36_N3RBX13JointsServiceD0Ev")]
 // was: `non-virtual thunk to'RBX::JointsService::~JointsService()
 pub fn stub_0x5ad2ac() -> ! {
@@ -429,7 +429,7 @@ pub fn stub_0x5ad960() -> ! {
 }
 
 // 0x5ad964 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7RotateVENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RotateV *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RotateV *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x5ad964]")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX7RotateVENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
 pub fn stub_0x5ad964() -> ! {
     todo!("0x5ad964 boost::detail::sp_counted_impl_pd<RBX::RotateV *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
@@ -542,7 +542,7 @@ pub fn stub_0x5ae2ac() -> ! {
 }
 
 // 0x5ae2b0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7RotatePENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RotateP *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RotateP *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x5ae2b0]")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX7RotatePENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
 pub fn stub_0x5ae2b0() -> ! {
     todo!("0x5ae2b0 boost::detail::sp_counted_impl_pd<RBX::RotateP *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
@@ -665,7 +665,7 @@ pub fn stub_0x5aebf8() -> ! {
 
 // 0x5aebfc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX6RotateENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Rotate *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Rotate *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x5aebfc]")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX6RotateENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
 pub fn stub_0x5aebfc() -> ! {
     todo!("0x5aebfc boost::detail::sp_counted_impl_pd<RBX::Rotate *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
@@ -788,7 +788,7 @@ pub fn stub_0x5af544() -> ! {
 
 // 0x5af548 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4GlueENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Glue *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Glue *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x5af548]")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX4GlueENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
 pub fn stub_0x5af548() -> ! {
     todo!("0x5af548 boost::detail::sp_counted_impl_pd<RBX::Glue *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
@@ -912,7 +912,7 @@ pub fn stub_0x5afe90() -> ! {
 
 // 0x5afe94 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SnapENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Snap *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Snap *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x5afe94]")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SnapENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
 pub fn stub_0x5afe94() -> ! {
     todo!("0x5afe94 boost::detail::sp_counted_impl_pd<RBX::Snap *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")

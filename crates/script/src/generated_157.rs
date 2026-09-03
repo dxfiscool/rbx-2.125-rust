@@ -540,7 +540,7 @@ pub fn stub_0x68794() -> ! {
 
 // 0x687bc — __ZN4FMOD10ProfileCpuC1Ev
 // type: int __fastcall(FMOD::ProfileCpu *this)
-#[doc(alias = "FMOD::ProfileCpu::ProfileCpu(void)")]
+#[doc(alias = "FMOD::ProfileCpu::ProfileCpu(void) [0x687bc]")]
 pub fn stub_0x687bc() -> ! {
     todo!("0x687bc __ZN4FMOD10ProfileCpuC1Ev")
 }
@@ -610,7 +610,7 @@ pub fn stub_0x69028() -> ! {
 
 // 0x69078 — __ZN4FMOD10ProfileDspC1Ev
 // type: int __fastcall(FMOD::ProfileDsp *this)
-#[doc(alias = "FMOD::ProfileDsp::ProfileDsp(void)")]
+#[doc(alias = "FMOD::ProfileDsp::ProfileDsp(void) [0x69078]")]
 pub fn stub_0x69078() -> ! {
     todo!("0x69078 __ZN4FMOD10ProfileDspC1Ev")
 }
@@ -631,7 +631,7 @@ pub fn stub_0x6914c() -> ! {
 
 // 0x6919c — __ZN4FMOD7ProfileC1Ev
 // type: _DWORD *__fastcall(_DWORD *this)
-#[doc(alias = "FMOD::Profile::Profile(void)")]
+#[doc(alias = "FMOD::Profile::Profile(void) [0x6919c]")]
 pub fn stub_0x6919c() -> ! {
     todo!("0x6919c __ZN4FMOD7ProfileC1Ev")
 }
@@ -680,7 +680,7 @@ pub fn stub_0x69214() -> ! {
 
 // 0x69280 — __ZN4FMOD13ProfileClientC1Ev
 // type: char *__fastcall(FMOD::ProfileClient *this)
-#[doc(alias = "FMOD::ProfileClient::ProfileClient(void)")]
+#[doc(alias = "FMOD::ProfileClient::ProfileClient(void) [0x69280]")]
 pub fn stub_0x69280() -> ! {
     todo!("0x69280 __ZN4FMOD13ProfileClientC1Ev")
 }

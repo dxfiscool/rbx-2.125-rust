@@ -76,7 +76,7 @@ pub fn stub_0x54cde4() -> ! {
 }
 
 // 0x54cef8 — __ZN3RBX10Reflection14PropDescriptorINS_10GuiServiceEbED0Ev — RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::~PropDescriptor()
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::~PropDescriptor() [0x54cef8]")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_10GuiServiceEbED0Ev")]
 pub fn stub_0x54cef8() -> ! {
     todo!("0x54cef8 __ZN3RBX10Reflection14PropDescriptorINS_10GuiServiceEbED0Ev")
@@ -125,7 +125,7 @@ pub fn stub_0x54d1e4() -> ! {
 }
 
 // 0x54d264 — __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFviiiiELi4EED0Ev — RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(int,int,int,int),4>::~BoundFuncDesc()
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(int,int,int,int),4>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(int,int,int,int),4>::~BoundFuncDesc() [0x54d264]")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFviiiiELi4EED0Ev")]
 pub fn stub_0x54d264() -> ! {
     todo!("0x54d264 __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFviiiiELi4EED0Ev")
@@ -202,7 +202,7 @@ pub fn stub_0x54ef28() -> ! {
 }
 
 // 0x54f354 — __ZN3RBX10Reflection9EventDescINS_10GuiServiceEFvvEN3rbx6signalIS3_EEMS2_S6_ED0Ev — RBX::Reflection::EventDesc<RBX::GuiService,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::GuiService::*>::~EventDesc()
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::GuiService,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::GuiService::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::GuiService,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::GuiService::*>::~EventDesc() [0x54f354]")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_10GuiServiceEFvvEN3rbx6signalIS3_EEMS2_S6_ED0Ev")]
 pub fn stub_0x54f354() -> ! {
     todo!("0x54f354 __ZN3RBX10Reflection9EventDescINS_10GuiServiceEFvvEN3rbx6signalIS3_EEMS2_S6_ED0Ev")
@@ -244,7 +244,7 @@ pub fn stub_0x54f80c() -> ! {
 }
 
 // 0x54f83c — __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvNS2_10SpecialKeyEELi1EED0Ev — RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(RBX::GuiService::SpecialKey),1>::~BoundFuncDesc()
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(RBX::GuiService::SpecialKey),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(RBX::GuiService::SpecialKey),1>::~BoundFuncDesc() [0x54f83c]")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvNS2_10SpecialKeyEELi1EED0Ev")]
 pub fn stub_0x54f83c() -> ! {
     todo!("0x54f83c __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvNS2_10SpecialKeyEELi1EED0Ev")
@@ -286,7 +286,7 @@ pub fn stub_0x54fca0() -> ! {
 }
 
 // 0x54fcd0 — __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvSsELi1EED0Ev — RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(std::string),1>::~BoundFuncDesc()
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(std::string),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(std::string),1>::~BoundFuncDesc() [0x54fcd0]")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvSsELi1EED0Ev")]
 pub fn stub_0x54fcd0() -> ! {
     todo!("0x54fcd0 __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvSsELi1EED0Ev")
@@ -314,7 +314,7 @@ pub fn stub_0x550008() -> ! {
 }
 
 // 0x5501f8 — __ZN3RBX10Reflection9EventDescINS_10GuiServiceEFvNS2_10SpecialKeyESsEN3rbx6signalIS4_EEMS2_S7_ED0Ev — RBX::Reflection::EventDesc<RBX::GuiService,void ()(RBX::GuiService::SpecialKey,std::string),rbx::signal<void ()(RBX::GuiService::SpecialKey,std::string)>,rbx::signal<void ()(RBX::GuiService::SpecialKey,std::string)> RBX::GuiService::*>::~EventDesc()
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::GuiService,void ()(RBX::GuiService::SpecialKey,std::string),rbx::signal<void ()(RBX::GuiService::SpecialKey,std::string)>,rbx::signal<void ()(RBX::GuiService::SpecialKey,std::string)> RBX::GuiService::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::GuiService,void ()(RBX::GuiService::SpecialKey,std::string),rbx::signal<void ()(RBX::GuiService::SpecialKey,std::string)>,rbx::signal<void ()(RBX::GuiService::SpecialKey,std::string)> RBX::GuiService::*>::~EventDesc() [0x5501f8]")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_10GuiServiceEFvNS2_10SpecialKeyESsEN3rbx6signalIS4_EEMS2_S7_ED0Ev")]
 pub fn stub_0x5501f8() -> ! {
     todo!("0x5501f8 __ZN3RBX10Reflection9EventDescINS_10GuiServiceEFvNS2_10SpecialKeyESsEN3rbx6signalIS4_EEMS2_S7_ED0Ev")
@@ -370,15 +370,13 @@ pub fn stub_0x5509c8() -> ! {
 }
 
 // 0x5509f4 — __ZN5boost8functionIFvN3RBX10GuiService10SpecialKeyESsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS1_10Reflection18GenericSlotWrapperERKS3_RKSsEENS7_5list3INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEENSN_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE — __ZN5boost8functionIFvN3RBX10GuiService10SpecialKeyESsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS1_10Reflection18GenericSlotWrapperERKS3_RKSsEENS7_5list3INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEENSN_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
-#[doc(alias = "__ZN5boost8functionIFvN3RBX10GuiService10SpecialKeyESsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS1_10Reflection18GenericSlotWrapperERKS3_RKSsEENS7_5list3INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEENSN_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")]
-#[doc(alias = "__ZN5boost8functionIFvN3RBX10GuiService10SpecialKeyESsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS1_10Reflection18GenericSlotWrapperERKS3_RKSsEENS7_5list3INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEENSN_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")]
+#[doc(alias = "__ZN5boost8functionIFvN3RBX10GuiService10SpecialKeyESsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS1_10Reflection18GenericSlotWrapperERKS3_RKSsEENS7_5list3INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEENSN_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE [0x5509f4]")]
 pub fn stub_0x5509f4() -> ! {
     todo!("0x5509f4 __ZN5boost8functionIFvN3RBX10GuiService10SpecialKeyESsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS1_10Reflection18GenericSlotWrapperERKS3_RKSsEENS7_5list3INS7_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEENSN_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")
 }
 
 // 0x550ad8 — __ZN5boost9function2IvN3RBX10GuiService10SpecialKeyESsEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS1_10Reflection18GenericSlotWrapperERKS3_RKSsEENS6_5list3INS6_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE — __ZN5boost9function2IvN3RBX10GuiService10SpecialKeyESsEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS1_10Reflection18GenericSlotWrapperERKS3_RKSsEENS6_5list3INS6_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE
-#[doc(alias = "__ZN5boost9function2IvN3RBX10GuiService10SpecialKeyESsEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS1_10Reflection18GenericSlotWrapperERKS3_RKSsEENS6_5list3INS6_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE")]
-#[doc(alias = "__ZN5boost9function2IvN3RBX10GuiService10SpecialKeyESsEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS1_10Reflection18GenericSlotWrapperERKS3_RKSsEENS6_5list3INS6_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE")]
+#[doc(alias = "__ZN5boost9function2IvN3RBX10GuiService10SpecialKeyESsEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS1_10Reflection18GenericSlotWrapperERKS3_RKSsEENS6_5list3INS6_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE [0x550ad8]")]
 pub fn stub_0x550ad8() -> ! {
     todo!("0x550ad8 __ZN5boost9function2IvN3RBX10GuiService10SpecialKeyESsEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS1_10Reflection18GenericSlotWrapperERKS3_RKSsEENS6_5list3INS6_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE")
 }
@@ -475,7 +473,7 @@ pub fn stub_0x55151c() -> ! {
 }
 
 // 0x55162c — __ZN3rbx7signals6signalIFvN3RBX10GuiService10SpecialKeyESsEE13callable_slotIN5boost8functionIS5_EEED0Ev — rbx::signals::signal<void ()(RBX::GuiService::SpecialKey,std::string)>::callable_slot<boost::function<void ()(RBX::GuiService::SpecialKey,std::string)>>::~callable_slot()
-#[doc(alias = "rbx::signals::signal<void ()(RBX::GuiService::SpecialKey,std::string)>::callable_slot<boost::function<void ()(RBX::GuiService::SpecialKey,std::string)>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::GuiService::SpecialKey,std::string)>::callable_slot<boost::function<void ()(RBX::GuiService::SpecialKey,std::string)>>::~callable_slot() [0x55162c]")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX10GuiService10SpecialKeyESsEE13callable_slotIN5boost8functionIS5_EEED0Ev")]
 pub fn stub_0x55162c() -> ! {
     todo!("0x55162c __ZN3rbx7signals6signalIFvN3RBX10GuiService10SpecialKeyESsEE13callable_slotIN5boost8functionIS5_EEED0Ev")
@@ -545,7 +543,7 @@ pub fn stub_0x551cdc() -> ! {
 }
 
 // 0x551dec — __ZN3rbx8callableINS_7signals6signalIFvN3RBX10GuiService10SpecialKeyESsEE4slotEN5boost8functionIS6_EELi2ES6_ED0Ev — rbx::callable<rbx::signals::signal<void ()(RBX::GuiService::SpecialKey,std::string)>::slot,boost::function<void ()(RBX::GuiService::SpecialKey,std::string)>,2,void ()(RBX::GuiService::SpecialKey,std::string)>::~callable()
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::GuiService::SpecialKey,std::string)>::slot,boost::function<void ()(RBX::GuiService::SpecialKey,std::string)>,2,void ()(RBX::GuiService::SpecialKey,std::string)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::GuiService::SpecialKey,std::string)>::slot,boost::function<void ()(RBX::GuiService::SpecialKey,std::string)>,2,void ()(RBX::GuiService::SpecialKey,std::string)>::~callable() [0x551dec]")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN3RBX10GuiService10SpecialKeyESsEE4slotEN5boost8functionIS6_EELi2ES6_ED0Ev")]
 pub fn stub_0x551dec() -> ! {
     todo!("0x551dec __ZN3rbx8callableINS_7signals6signalIFvN3RBX10GuiService10SpecialKeyESsEE4slotEN5boost8functionIS6_EELi2ES6_ED0Ev")
@@ -559,7 +557,7 @@ pub fn stub_0x551f1c() -> ! {
 }
 
 // 0x551f48 — __ZN3rbx7signals6signalIFvN3RBX10GuiService10SpecialKeyESsEE4slotD0Ev — rbx::signals::signal<void ()(RBX::GuiService::SpecialKey,std::string)>::slot::~slot()
-#[doc(alias = "rbx::signals::signal<void ()(RBX::GuiService::SpecialKey,std::string)>::slot::~slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::GuiService::SpecialKey,std::string)>::slot::~slot() [0x551f48]")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX10GuiService10SpecialKeyESsEE4slotD0Ev")]
 pub fn stub_0x551f48() -> ! {
     todo!("0x551f48 __ZN3rbx7signals6signalIFvN3RBX10GuiService10SpecialKeyESsEE4slotD0Ev")
@@ -580,7 +578,7 @@ pub fn stub_0x55204c() -> ! {
 }
 
 // 0x55223c — __ZN3RBX10Reflection9EventDescINS_10GuiServiceEFvSsSsEN3rbx6signalIS3_EEMS2_S6_ED0Ev — RBX::Reflection::EventDesc<RBX::GuiService,void ()(std::string,std::string),rbx::signal<void ()(std::string,std::string)>,rbx::signal<void ()(std::string,std::string)> RBX::GuiService::*>::~EventDesc()
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::GuiService,void ()(std::string,std::string),rbx::signal<void ()(std::string,std::string)>,rbx::signal<void ()(std::string,std::string)> RBX::GuiService::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::GuiService,void ()(std::string,std::string),rbx::signal<void ()(std::string,std::string)>,rbx::signal<void ()(std::string,std::string)> RBX::GuiService::*>::~EventDesc() [0x55223c]")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_10GuiServiceEFvSsSsEN3rbx6signalIS3_EEMS2_S6_ED0Ev")]
 pub fn stub_0x55223c() -> ! {
     todo!("0x55223c __ZN3RBX10Reflection9EventDescINS_10GuiServiceEFvSsSsEN3rbx6signalIS3_EEMS2_S6_ED0Ev")
@@ -636,15 +634,13 @@ pub fn stub_0x552a90() -> ! {
 }
 
 // 0x552abc — __ZN5boost8functionIFvSsSsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSC_EENS4_5list3INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEENSJ_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE — __ZN5boost8functionIFvSsSsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSC_EENS4_5list3INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEENSJ_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
-#[doc(alias = "__ZN5boost8functionIFvSsSsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSC_EENS4_5list3INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEENSJ_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
-#[doc(alias = "__ZN5boost8functionIFvSsSsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSC_EENS4_5list3INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEENSJ_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
+#[doc(alias = "__ZN5boost8functionIFvSsSsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSC_EENS4_5list3INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEENSJ_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE [0x552abc]")]
 pub fn stub_0x552abc() -> ! {
     todo!("0x552abc __ZN5boost8functionIFvSsSsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSC_EENS4_5list3INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEENSJ_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")
 }
 
 // 0x552ba0 — __ZN5boost9function2IvSsSsEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE — __ZN5boost9function2IvSsSsEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
-#[doc(alias = "__ZN5boost9function2IvSsSsEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")]
-#[doc(alias = "__ZN5boost9function2IvSsSsEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")]
+#[doc(alias = "__ZN5boost9function2IvSsSsEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE [0x552ba0]")]
 pub fn stub_0x552ba0() -> ! {
     todo!("0x552ba0 __ZN5boost9function2IvSsSsEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")
 }

@@ -42,7 +42,7 @@ pub fn stub_0x323de8() -> ! {
 
 // 0x323dec — __ZN3RBX8IndexBoxC2ERKN3G3D7Vector3ES4_
 // type: _DWORD __fastcall(RBX::IndexBox *__hidden this, const G3D::Vector3 *, Vector3 *)
-#[doc(alias = "RBX::IndexBox::IndexBox(G3D::Vector3 const&,G3D::Vector3 const&)")]
+#[doc(alias = "RBX::IndexBox::IndexBox(G3D::Vector3 const&,G3D::Vector3 const&) [0x323dec]")]
 pub fn stub_0x323dec() -> ! {
     todo!("0x323dec __ZN3RBX8IndexBoxC2ERKN3G3D7Vector3ES4_")
 }
@@ -63,7 +63,7 @@ pub fn stub_0x323fd8() -> ! {
 
 // 0x323fdc — __ZN3RBX8IndexBoxD0Ev
 // type: void __fastcall(RBX::IndexBox *__hidden this)
-#[doc(alias = "RBX::IndexBox::~IndexBox()")]
+#[doc(alias = "RBX::IndexBox::~IndexBox() [0x323fdc]")]
 pub fn stub_0x323fdc() -> ! {
     todo!("0x323fdc __ZN3RBX8IndexBoxD0Ev")
 }
@@ -90,14 +90,14 @@ pub fn stub_0x32403c() -> ! {
 
 // 0x3240dc — __ZN3RBX11IndexedMeshD1Ev
 // type: void __fastcall(RBX::IndexedMesh *__hidden this)
-#[doc(alias = "RBX::IndexedMesh::~IndexedMesh()")]
+#[doc(alias = "RBX::IndexedMesh::~IndexedMesh() [0x3240dc]")]
 pub fn stub_0x3240dc() -> ! {
     todo!("0x3240dc __ZN3RBX11IndexedMeshD1Ev")
 }
 
 // 0x3240e0 — __ZN3RBX11IndexedMeshD2Ev
 // type: void __fastcall(RBX::IndexedMesh *__hidden this)
-#[doc(alias = "RBX::IndexedMesh::~IndexedMesh()")]
+#[doc(alias = "RBX::IndexedMesh::~IndexedMesh() [0x3240e0]")]
 pub fn stub_0x3240e0() -> ! {
     todo!("0x3240e0 __ZN3RBX11IndexedMeshD2Ev")
 }
@@ -214,14 +214,14 @@ pub fn stub_0x324800() -> ! {
 
 // 0x3248a0 — __ZN3RBX11IndexedTreeD1Ev
 // type: void __fastcall(RBX::IndexedTree *__hidden this)
-#[doc(alias = "RBX::IndexedTree::~IndexedTree()")]
+#[doc(alias = "RBX::IndexedTree::~IndexedTree() [0x3248a0]")]
 pub fn stub_0x3248a0() -> ! {
     todo!("0x3248a0 __ZN3RBX11IndexedTreeD1Ev")
 }
 
 // 0x3248a4 — __ZN3RBX11IndexedTreeD2Ev
 // type: void __fastcall(RBX::IndexedTree *__hidden this)
-#[doc(alias = "RBX::IndexedTree::~IndexedTree()")]
+#[doc(alias = "RBX::IndexedTree::~IndexedTree() [0x3248a4]")]
 pub fn stub_0x3248a4() -> ! {
     todo!("0x3248a4 __ZN3RBX11IndexedTreeD2Ev")
 }
@@ -357,7 +357,7 @@ pub fn stub_0x326378() -> ! {
 }
 
 // 0x32637c — __ZN3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEEC2Ev
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeywordFilterType>::EnumDesc(void)")]
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::KeywordFilterType>::EnumDesc(void) [0x32637c]")]
 pub fn stub_0x32637c() -> ! {
     todo!("0x32637c __ZN3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEEC2Ev")
 }
@@ -445,7 +445,7 @@ pub fn stub_0x326e54() -> ! {
 
 // 0x326e58 — __ZN3RBX18LegacyContentTableC2Ev
 // type: _DWORD __fastcall(RBX::LegacyContentTable *__hidden this)
-#[doc(alias = "RBX::LegacyContentTable::LegacyContentTable(void)")]
+#[doc(alias = "RBX::LegacyContentTable::LegacyContentTable(void) [0x326e58]")]
 pub fn stub_0x326e58() -> ! {
     todo!("0x326e58 __ZN3RBX18LegacyContentTableC2Ev")
 }

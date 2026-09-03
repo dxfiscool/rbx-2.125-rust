@@ -60,7 +60,7 @@ pub fn stub_0x259838() -> ! { todo!("0x259838 RBX::Reflection::BoundFuncDesc<RBX
 
 // 0x259868 — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEELi1EED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::~BoundFuncDesc() [0x259868]")]
 pub fn stub_0x259868() -> ! { todo!("0x259868 RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::~BoundFuncDesc()") }
 
 // 0x259a6c — __ZN3RBX10Reflection11Call1HelperINS_11HttpServiceEMS2_FSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEESI_SsE4callEPS2_SK_RS7_RKSI_
@@ -75,7 +75,7 @@ pub fn stub_0x259f34() -> ! { todo!("0x259f34 RBX::Reflection::BoundFuncDesc<RBX
 
 // 0x259f64 — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::~BoundFuncDesc() [0x259f64]")]
 pub fn stub_0x259f64() -> ! { todo!("0x259f64 RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::~BoundFuncDesc()") }
 
 // 0x25a170 — __ZN3RBX10Reflection11Call1HelperINS_11HttpServiceEMS2_FN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsESsSI_E4callEPS2_SK_RS7_RSD_
@@ -144,7 +144,7 @@ pub fn stub_0x25baa8() -> ! { todo!("0x25baa8 RBX::Light::~Light()") }
 
 // 0x25bb48 — __ZN3RBX5LightD1Ev
 // type: void __fastcall(RBX::Light *__hidden this)
-#[doc(alias = "RBX::Light::~Light()")]
+#[doc(alias = "RBX::Light::~Light() [0x25bb48]")]
 pub fn stub_0x25bb48() -> ! { todo!("0x25bb48 RBX::Light::~Light()") }
 
 // 0x25bb4c — __ZThn32_N3RBX5LightD0Ev
@@ -154,32 +154,32 @@ pub fn stub_0x25bb4c() -> ! { todo!("0x25bb4c non-virtual thunk toRBX::Light::~L
 
 // 0x25bb54 — __ZThn36_N3RBX5LightD0Ev
 // type: void __fastcall(RBX::Light *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
+#[doc(alias = "non-virtual thunk toRBX::Light::~Light() [0x25bb54]")]
 pub fn stub_0x25bb54() -> ! { todo!("0x25bb54 non-virtual thunk toRBX::Light::~Light()") }
 
 // 0x25bb5c — __ZThn92_N3RBX5LightD0Ev
 // type: void __fastcall(RBX::Light *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
+#[doc(alias = "non-virtual thunk toRBX::Light::~Light() [0x25bb5c]")]
 pub fn stub_0x25bb5c() -> ! { todo!("0x25bb5c non-virtual thunk toRBX::Light::~Light()") }
 
 // 0x25bb64 — __ZN3RBX5LightD2Ev
 // type: void __fastcall(RBX::Light *__hidden this)
-#[doc(alias = "RBX::Light::~Light()")]
+#[doc(alias = "RBX::Light::~Light() [0x25bb64]")]
 pub fn stub_0x25bb64() -> ! { todo!("0x25bb64 RBX::Light::~Light()") }
 
 // 0x25bc20 — __ZThn32_N3RBX5LightD1Ev
 // type: void __fastcall(RBX::Light *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
+#[doc(alias = "non-virtual thunk toRBX::Light::~Light() [0x25bc20]")]
 pub fn stub_0x25bc20() -> ! { todo!("0x25bc20 non-virtual thunk toRBX::Light::~Light()") }
 
 // 0x25bc28 — __ZThn36_N3RBX5LightD1Ev
 // type: void __fastcall(RBX::Light *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
+#[doc(alias = "non-virtual thunk toRBX::Light::~Light() [0x25bc28]")]
 pub fn stub_0x25bc28() -> ! { todo!("0x25bc28 non-virtual thunk toRBX::Light::~Light()") }
 
 // 0x25bc30 — __ZThn92_N3RBX5LightD1Ev
 // type: void __fastcall(RBX::Light *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
+#[doc(alias = "non-virtual thunk toRBX::Light::~Light() [0x25bc30]")]
 pub fn stub_0x25bc30() -> ! { todo!("0x25bc30 non-virtual thunk toRBX::Light::~Light()") }
 
 // 0x25bc38 — __ZNK3RBX5Light12askSetParentEPKNS_8InstanceE
@@ -204,7 +204,7 @@ pub fn stub_0x25bdb8() -> ! { todo!("0x25bdb8 RBX::PointLight::~PointLight()") }
 
 // 0x25be58 — __ZN3RBX10PointLightD1Ev
 // type: void __fastcall(RBX::PointLight *__hidden this)
-#[doc(alias = "RBX::PointLight::~PointLight()")]
+#[doc(alias = "RBX::PointLight::~PointLight() [0x25be58]")]
 pub fn stub_0x25be58() -> ! { todo!("0x25be58 RBX::PointLight::~PointLight()") }
 
 // 0x25be5c — __ZThn32_N3RBX10PointLightD0Ev
@@ -214,27 +214,27 @@ pub fn stub_0x25be5c() -> ! { todo!("0x25be5c non-virtual thunk toRBX::PointLigh
 
 // 0x25be64 — __ZThn36_N3RBX10PointLightD0Ev
 // type: void __fastcall(RBX::PointLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
+#[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight() [0x25be64]")]
 pub fn stub_0x25be64() -> ! { todo!("0x25be64 non-virtual thunk toRBX::PointLight::~PointLight()") }
 
 // 0x25be6c — __ZThn92_N3RBX10PointLightD0Ev
 // type: void __fastcall(RBX::PointLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
+#[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight() [0x25be6c]")]
 pub fn stub_0x25be6c() -> ! { todo!("0x25be6c non-virtual thunk toRBX::PointLight::~PointLight()") }
 
 // 0x25be74 — __ZThn32_N3RBX10PointLightD1Ev
 // type: void __fastcall(RBX::PointLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
+#[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight() [0x25be74]")]
 pub fn stub_0x25be74() -> ! { todo!("0x25be74 non-virtual thunk toRBX::PointLight::~PointLight()") }
 
 // 0x25be7c — __ZThn36_N3RBX10PointLightD1Ev
 // type: void __fastcall(RBX::PointLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
+#[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight() [0x25be7c]")]
 pub fn stub_0x25be7c() -> ! { todo!("0x25be7c non-virtual thunk toRBX::PointLight::~PointLight()") }
 
 // 0x25be84 — __ZThn92_N3RBX10PointLightD1Ev
 // type: void __fastcall(RBX::PointLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
+#[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight() [0x25be84]")]
 pub fn stub_0x25be84() -> ! { todo!("0x25be84 non-virtual thunk toRBX::PointLight::~PointLight()") }
 
 // 0x25be8c — __ZN3RBX9SpotLightC2Ev
@@ -249,7 +249,7 @@ pub fn stub_0x25bff0() -> ! { todo!("0x25bff0 RBX::SpotLight::~SpotLight()") }
 
 // 0x25c090 — __ZN3RBX9SpotLightD1Ev
 // type: void __fastcall(RBX::SpotLight *__hidden this)
-#[doc(alias = "RBX::SpotLight::~SpotLight()")]
+#[doc(alias = "RBX::SpotLight::~SpotLight() [0x25c090]")]
 pub fn stub_0x25c090() -> ! { todo!("0x25c090 RBX::SpotLight::~SpotLight()") }
 
 // 0x25c094 — __ZThn32_N3RBX9SpotLightD0Ev
@@ -259,27 +259,27 @@ pub fn stub_0x25c094() -> ! { todo!("0x25c094 non-virtual thunk toRBX::SpotLight
 
 // 0x25c09c — __ZThn36_N3RBX9SpotLightD0Ev
 // type: void __fastcall(RBX::SpotLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
+#[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight() [0x25c09c]")]
 pub fn stub_0x25c09c() -> ! { todo!("0x25c09c non-virtual thunk toRBX::SpotLight::~SpotLight()") }
 
 // 0x25c0a4 — __ZThn92_N3RBX9SpotLightD0Ev
 // type: void __fastcall(RBX::SpotLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
+#[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight() [0x25c0a4]")]
 pub fn stub_0x25c0a4() -> ! { todo!("0x25c0a4 non-virtual thunk toRBX::SpotLight::~SpotLight()") }
 
 // 0x25c0ac — __ZThn32_N3RBX9SpotLightD1Ev
 // type: void __fastcall(RBX::SpotLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
+#[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight() [0x25c0ac]")]
 pub fn stub_0x25c0ac() -> ! { todo!("0x25c0ac non-virtual thunk toRBX::SpotLight::~SpotLight()") }
 
 // 0x25c0b4 — __ZThn36_N3RBX9SpotLightD1Ev
 // type: void __fastcall(RBX::SpotLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
+#[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight() [0x25c0b4]")]
 pub fn stub_0x25c0b4() -> ! { todo!("0x25c0b4 non-virtual thunk toRBX::SpotLight::~SpotLight()") }
 
 // 0x25c0bc — __ZThn92_N3RBX9SpotLightD1Ev
 // type: void __fastcall(RBX::SpotLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
+#[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight() [0x25c0bc]")]
 pub fn stub_0x25c0bc() -> ! { todo!("0x25c0bc non-virtual thunk toRBX::SpotLight::~SpotLight()") }
 
 // 0x25c0c4 — __ZNK3RBX5Light10getEnabledEv
@@ -401,7 +401,7 @@ pub fn stub_0x25c838() -> ! { todo!("0x25c838 boost::detail::sp_counted_impl_pd<
 
 // 0x25c83c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SpotLightENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x25c83c]")]
 pub fn stub_0x25c83c() -> ! { todo!("0x25c83c boost::detail::sp_counted_impl_pd<RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()") }
 
 // 0x25c840 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9SpotLightENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
@@ -479,7 +479,7 @@ pub fn stub_0x25d1e8() -> ! { todo!("0x25d1e8 boost::detail::sp_counted_impl_pd<
 
 // 0x25d1ec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10PointLightENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x25d1ec]")]
 pub fn stub_0x25d1ec() -> ! { todo!("0x25d1ec boost::detail::sp_counted_impl_pd<RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()") }
 
 // 0x25d1f0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10PointLightENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
@@ -538,7 +538,7 @@ pub fn stub_0x2b00b0() -> ! { todo!("0x2b00b0 rbx::signals::signal<void ()(RBX::
 pub fn stub_0x2b01a0() -> ! { todo!("0x2b01a0 rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot::~slot()") }
 
 // 0x2b01cc — __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE4slotD0Ev
-#[doc(alias = "rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot::~slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot::~slot() [0x2b01cc]")]
 pub fn stub_0x2b01cc() -> ! { todo!("0x2b01cc rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot::~slot()") }
 
 // 0x2b03a0 — __ZNK3RBX15ServiceProvider6createINS_10RunServiceEEEPT_v
@@ -672,7 +672,7 @@ pub fn stub_0x2b3f54() -> ! { todo!("0x2b3f54 boost::function1<void,rbx_core::Sh
 pub fn stub_0x2b40a8() -> ! { todo!("0x2b40a8 __ZN5boost6threadC2INS_9function0IvEEEET_NS_12disable_if_cIXsr5boost13thread_detail14is_convertibleIRS4_NS_6detail13thread_move_tIS4_EEEE5valueEPNS0_5dummyEE4typeE") }
 
 // 0x2b41f0 — __ZN5boost6detail11thread_dataINS_9function0IvEEED0Ev
-#[doc(alias = "boost::detail::thread_data<boost::function0<void>>::~thread_data()")]
+#[doc(alias = "boost::detail::thread_data<boost::function0<void>>::~thread_data() [0x2b41f0]")]
 pub fn stub_0x2b41f0() -> ! { todo!("0x2b41f0 boost::detail::thread_data<boost::function0<void>>::~thread_data()") }
 
 // 0x2b42d0 — __ZN5boost6detail11thread_dataINS_9function0IvEEE3runEv
@@ -699,7 +699,7 @@ pub fn stub_0x2b43b0() -> ! { todo!("0x2b43b0 boost::condition_variable::~condit
 pub fn stub_0x2b43d8() -> ! { todo!("0x2b43d8 boost::detail::shared_count::shared_count<boost::detail::thread_data<boost::function0<void>>>(boost::detail::thread_data<boost::function0<void>> *)") }
 
 // 0x2b44d0 — __ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_9function0IvEEEEED1Ev
-#[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data<boost::function0<void>>>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data<boost::function0<void>>>::~sp_counted_impl_p() [0x2b44d0]")]
 pub fn stub_0x2b44d0() -> ! { todo!("0x2b44d0 boost::detail::sp_counted_impl_p<boost::detail::thread_data<boost::function0<void>>>::~sp_counted_impl_p()") }
 
 // 0x2b44d8 — __ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_9function0IvEEEEE7disposeEv

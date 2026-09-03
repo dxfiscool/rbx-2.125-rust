@@ -43,13 +43,6 @@ pub fn stub_0x770764() -> ! {
     todo!("0x770764 RBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")
 }
 
-// 0x770804 — __ZN3RBX9Scripting18DebuggerBreakpointD1Ev
-// type: void __fastcall(RBX::Scripting::DebuggerBreakpoint *__hidden this)
-#[doc(alias = "RBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")]
-pub fn stub_0x770804() -> ! {
-    todo!("0x770804 RBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")
-}
-
 // 0x770808 — __ZThn32_N3RBX9Scripting18DebuggerBreakpointD0Ev
 // type: void __fastcall(RBX::Scripting::DebuggerBreakpoint *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")]
@@ -59,28 +52,21 @@ pub fn stub_0x770808() -> ! {
 
 // 0x770810 — __ZThn36_N3RBX9Scripting18DebuggerBreakpointD0Ev
 // type: void __fastcall(RBX::Scripting::DebuggerBreakpoint *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")]
+#[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint() [0x770810]")]
 pub fn stub_0x770810() -> ! {
     todo!("0x770810 non-virtual thunk toRBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")
 }
 
-// 0x770818 — __ZN3RBX9Scripting18DebuggerBreakpointD2Ev
-// type: void __fastcall(RBX::Scripting::DebuggerBreakpoint *__hidden this)
-#[doc(alias = "RBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")]
-pub fn stub_0x770818() -> ! {
-    todo!("0x770818 RBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")
-}
-
 // 0x7708fc — __ZThn32_N3RBX9Scripting18DebuggerBreakpointD1Ev
 // type: void __fastcall(RBX::Scripting::DebuggerBreakpoint *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")]
+#[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint() [0x7708fc]")]
 pub fn stub_0x7708fc() -> ! {
     todo!("0x7708fc non-virtual thunk toRBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")
 }
 
 // 0x770904 — __ZThn36_N3RBX9Scripting18DebuggerBreakpointD1Ev
 // type: void __fastcall(RBX::Scripting::DebuggerBreakpoint *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")]
+#[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint() [0x770904]")]
 pub fn stub_0x770904() -> ! {
     todo!("0x770904 non-virtual thunk toRBX::Scripting::DebuggerBreakpoint::~DebuggerBreakpoint()")
 }
@@ -180,7 +166,7 @@ pub fn stub_0x774288() -> ! {
 
 // 0x77436c — __ZN3RBX9Scripting13DebuggerWatchD0Ev
 // type: void __fastcall(RBX::Scripting::DebuggerWatch *__hidden this)
-#[doc(alias = "RBX::Scripting::DebuggerWatch::~DebuggerWatch()")]
+#[doc(alias = "RBX::Scripting::DebuggerWatch::~DebuggerWatch() [0x77436c]")]
 pub fn stub_0x77436c() -> ! {
     todo!("0x77436c RBX::Scripting::DebuggerWatch::~DebuggerWatch()")
 }
@@ -194,21 +180,21 @@ pub fn stub_0x774584() -> ! {
 
 // 0x774664 — __ZThn32_N3RBX9Scripting13DebuggerWatchD0Ev
 // type: void __fastcall(RBX::Scripting::DebuggerWatch *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch()")]
+#[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch() [0x774664]")]
 pub fn stub_0x774664() -> ! {
     todo!("0x774664 non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch()")
 }
 
 // 0x77475c — __ZThn36_N3RBX9Scripting13DebuggerWatchD1Ev
 // type: void __fastcall(RBX::Scripting::DebuggerWatch *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch()")]
+#[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch() [0x77475c]")]
 pub fn stub_0x77475c() -> ! {
     todo!("0x77475c non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch()")
 }
 
 // 0x77483c — __ZThn36_N3RBX9Scripting13DebuggerWatchD0Ev
 // type: void __fastcall(RBX::Scripting::DebuggerWatch *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch()")]
+#[doc(alias = "non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch() [0x77483c]")]
 pub fn stub_0x77483c() -> ! {
     todo!("0x77483c non-virtual thunk toRBX::Scripting::DebuggerWatch::~DebuggerWatch()")
 }
@@ -479,12 +465,6 @@ pub fn stub_0x77ae54() -> ! {
     todo!("0x77ae54 rbx::signals::signal<void ()(lua_State *)>::slot::~slot()")
 }
 
-// 0x77ae80 — __ZN3rbx7signals6signalIFvP9lua_StateEE4slotD0Ev
-#[doc(alias = "rbx::signals::signal<void ()(lua_State *)>::slot::~slot()")]
-pub fn stub_0x77ae80() -> ! {
-    todo!("0x77ae80 rbx::signals::signal<void ()(lua_State *)>::slot::~slot()")
-}
-
 // 0x786c5c — __ZN3RBX9Scripting14ScriptDebugger18StepOverBreakpointD1Ev
 // type: void __fastcall(RBX::Scripting::ScriptDebugger::StepOverBreakpoint *__hidden this)
 #[doc(alias = "RBX::Scripting::ScriptDebugger::StepOverBreakpoint::~StepOverBreakpoint()")]
@@ -494,7 +474,7 @@ pub fn stub_0x786c5c() -> ! {
 
 // 0x786c60 — __ZN3RBX9Scripting14ScriptDebugger18StepOverBreakpointD0Ev
 // type: void __fastcall(RBX::Scripting::ScriptDebugger::StepOverBreakpoint *__hidden this)
-#[doc(alias = "RBX::Scripting::ScriptDebugger::StepOverBreakpoint::~StepOverBreakpoint()")]
+#[doc(alias = "RBX::Scripting::ScriptDebugger::StepOverBreakpoint::~StepOverBreakpoint() [0x786c60]")]
 pub fn stub_0x786c60() -> ! {
     todo!("0x786c60 RBX::Scripting::ScriptDebugger::StepOverBreakpoint::~StepOverBreakpoint()")
 }
@@ -514,7 +494,7 @@ pub fn stub_0x786d28() -> ! {
 
 // 0x786d2c — __ZN3RBX9Scripting14ScriptDebugger17StepOutBreakpointD0Ev
 // type: void __fastcall(RBX::Scripting::ScriptDebugger::StepOutBreakpoint *__hidden this)
-#[doc(alias = "RBX::Scripting::ScriptDebugger::StepOutBreakpoint::~StepOutBreakpoint()")]
+#[doc(alias = "RBX::Scripting::ScriptDebugger::StepOutBreakpoint::~StepOutBreakpoint() [0x786d2c]")]
 pub fn stub_0x786d2c() -> ! {
     todo!("0x786d2c RBX::Scripting::ScriptDebugger::StepOutBreakpoint::~StepOutBreakpoint()")
 }
@@ -534,7 +514,7 @@ pub fn stub_0x786e24() -> ! {
 
 // 0x786e28 — __ZN3RBX9Scripting14ScriptDebugger16StepInBreakpointD0Ev
 // type: void __fastcall(RBX::Scripting::ScriptDebugger::StepInBreakpoint *__hidden this)
-#[doc(alias = "RBX::Scripting::ScriptDebugger::StepInBreakpoint::~StepInBreakpoint()")]
+#[doc(alias = "RBX::Scripting::ScriptDebugger::StepInBreakpoint::~StepInBreakpoint() [0x786e28]")]
 pub fn stub_0x786e28() -> ! {
     todo!("0x786e28 RBX::Scripting::ScriptDebugger::StepInBreakpoint::~StepInBreakpoint()")
 }
@@ -713,7 +693,7 @@ pub fn stub_0x813020() -> ! {
 
 // 0x81316c — __ZN3RBX13ScriptContext18ScriptStartOptions14LuaSyntaxErrorD0Ev
 // type: void __fastcall(RBX::ScriptContext::ScriptStartOptions::LuaSyntaxError *__hidden this)
-#[doc(alias = "RBX::ScriptContext::ScriptStartOptions::LuaSyntaxError::~LuaSyntaxError()")]
+#[doc(alias = "RBX::ScriptContext::ScriptStartOptions::LuaSyntaxError::~LuaSyntaxError() [0x81316c]")]
 pub fn stub_0x81316c() -> ! {
     todo!("0x81316c RBX::ScriptContext::ScriptStartOptions::LuaSyntaxError::~LuaSyntaxError()")
 }

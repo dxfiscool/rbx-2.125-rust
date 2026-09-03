@@ -41,7 +41,7 @@ pub fn stub_0x5535d8() -> ! {
 }
 
 // 0x5536e8 — __ZN3rbx7signals6signalIFvSsSsEE13callable_slotIN5boost8functionIS2_EEED0Ev — rbx::signals::signal<void ()(std::string,std::string)>::callable_slot<boost::function<void ()(std::string,std::string)>>::~callable_slot()
-#[doc(alias = "rbx::signals::signal<void ()(std::string,std::string)>::callable_slot<boost::function<void ()(std::string,std::string)>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(std::string,std::string)>::callable_slot<boost::function<void ()(std::string,std::string)>>::~callable_slot() [0x5536e8]")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsSsEE13callable_slotIN5boost8functionIS2_EEED0Ev")]
 pub fn stub_0x5536e8() -> ! {
     todo!("0x5536e8 __ZN3rbx7signals6signalIFvSsSsEE13callable_slotIN5boost8functionIS2_EEED0Ev")
@@ -111,7 +111,7 @@ pub fn stub_0x553ea0() -> ! {
 }
 
 // 0x553fb0 — __ZN3rbx8callableINS_7signals6signalIFvSsSsEE4slotEN5boost8functionIS3_EELi2ES3_ED0Ev — rbx::callable<rbx::signals::signal<void ()(std::string,std::string)>::slot,boost::function<void ()(std::string,std::string)>,2,void ()(std::string,std::string)>::~callable()
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,std::string)>::slot,boost::function<void ()(std::string,std::string)>,2,void ()(std::string,std::string)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,std::string)>::slot,boost::function<void ()(std::string,std::string)>,2,void ()(std::string,std::string)>::~callable() [0x553fb0]")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvSsSsEE4slotEN5boost8functionIS3_EELi2ES3_ED0Ev")]
 pub fn stub_0x553fb0() -> ! {
     todo!("0x553fb0 __ZN3rbx8callableINS_7signals6signalIFvSsSsEE4slotEN5boost8functionIS3_EELi2ES3_ED0Ev")
@@ -125,7 +125,7 @@ pub fn stub_0x5540e0() -> ! {
 }
 
 // 0x55410c — __ZN3rbx7signals6signalIFvSsSsEE4slotD0Ev — rbx::signals::signal<void ()(std::string,std::string)>::slot::~slot()
-#[doc(alias = "rbx::signals::signal<void ()(std::string,std::string)>::slot::~slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(std::string,std::string)>::slot::~slot() [0x55410c]")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsSsEE4slotD0Ev")]
 pub fn stub_0x55410c() -> ! {
     todo!("0x55410c __ZN3rbx7signals6signalIFvSsSsEE4slotD0Ev")
@@ -181,7 +181,7 @@ pub fn stub_0x554468() -> ! {
 }
 
 // 0x554574 — __ZN3RBX10Reflection14PropDescriptorINS_10GuiServiceEdED0Ev — RBX::Reflection::PropDescriptor<RBX::GuiService,double>::~PropDescriptor()
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,double>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,double>::~PropDescriptor() [0x554574]")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_10GuiServiceEdED0Ev")]
 pub fn stub_0x554574() -> ! {
     todo!("0x554574 __ZN3RBX10Reflection14PropDescriptorINS_10GuiServiceEdED0Ev")

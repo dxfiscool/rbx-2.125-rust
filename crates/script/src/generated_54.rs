@@ -52,7 +52,7 @@ pub fn stub_0x4ff568() -> ! {
 }
 
 // 0x4ff56c — __ZN5boost6detail17sp_counted_impl_pIN3RBX15ProfanityFilterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ProfanityFilter>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ProfanityFilter>::~sp_counted_impl_p() [0x4ff56c]")]
 pub fn stub_0x4ff56c() -> ! {
     todo!("0x4ff56c boost::detail::sp_counted_impl_p<RBX::ProfanityFilter>::~sp_counted_impl_p()")
 }
@@ -133,7 +133,7 @@ pub fn stub_0x4ff9dc() -> ! {
 
 // 0x4ff9e0 — __ZN3RBX8NullVerbD0Ev
 // type: void __fastcall(RBX::NullVerb *__hidden this)
-#[doc(alias = "RBX::NullVerb::~NullVerb()")]
+#[doc(alias = "RBX::NullVerb::~NullVerb() [0x4ff9e0]")]
 pub fn stub_0x4ff9e0() -> ! {
     todo!("0x4ff9e0 RBX::NullVerb::~NullVerb()")
 }
@@ -199,7 +199,7 @@ pub fn stub_0x500c0c() -> ! {
 
 // 0x500c10 — __ZN3RBX12GameSettingsC2Ev
 // type: _DWORD __fastcall(RBX::GameSettings *__hidden this)
-#[doc(alias = "RBX::GameSettings::GameSettings(void)")]
+#[doc(alias = "RBX::GameSettings::GameSettings(void) [0x500c10]")]
 pub fn stub_0x500c10() -> ! {
     todo!("0x500c10 RBX::GameSettings::GameSettings(void)")
 }
@@ -233,7 +233,7 @@ pub fn stub_0x501878() -> ! {
 
 // 0x501a00 — __ZN3RBX12GameSettingsD0Ev
 // type: void __fastcall(RBX::GameSettings *__hidden this)
-#[doc(alias = "RBX::GameSettings::~GameSettings()")]
+#[doc(alias = "RBX::GameSettings::~GameSettings() [0x501a00]")]
 pub fn stub_0x501a00() -> ! {
     todo!("0x501a00 RBX::GameSettings::~GameSettings()")
 }
@@ -253,7 +253,7 @@ pub fn stub_0x501ab0() -> ! {
 
 // 0x501c34 — __ZThn32_N3RBX12GameSettingsD0Ev
 // type: void __fastcall(RBX::GameSettings *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings() [0x501c34]")]
 pub fn stub_0x501c34() -> ! {
     todo!("0x501c34 non-virtual thunk toRBX::GameSettings::~GameSettings()")
 }
@@ -266,14 +266,14 @@ pub fn stub_0x501dd0() -> ! {
 
 // 0x501de0 — __ZThn36_N3RBX12GameSettingsD1Ev
 // type: void __fastcall(RBX::GameSettings *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings() [0x501de0]")]
 pub fn stub_0x501de0() -> ! {
     todo!("0x501de0 non-virtual thunk toRBX::GameSettings::~GameSettings()")
 }
 
 // 0x501f64 — __ZThn36_N3RBX12GameSettingsD0Ev
 // type: void __fastcall(RBX::GameSettings *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings()")]
+#[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings() [0x501f64]")]
 pub fn stub_0x501f64() -> ! {
     todo!("0x501f64 non-virtual thunk toRBX::GameSettings::~GameSettings()")
 }
@@ -494,7 +494,7 @@ pub fn stub_0x505018() -> ! {
 
 // 0x50501c — __ZN3RBX15GeometryServiceC2Ev
 // type: _DWORD __fastcall(RBX::GeometryService *__hidden this)
-#[doc(alias = "RBX::GeometryService::GeometryService(void)")]
+#[doc(alias = "RBX::GeometryService::GeometryService(void) [0x50501c]")]
 pub fn stub_0x50501c() -> ! {
     todo!("0x50501c RBX::GeometryService::GeometryService(void)")
 }
@@ -522,7 +522,7 @@ pub fn stub_0x505e64() -> ! {
 
 // 0x505f48 — __ZN3RBX15GeometryServiceD0Ev
 // type: void __fastcall(RBX::GeometryService *__hidden this)
-#[doc(alias = "RBX::GeometryService::~GeometryService()")]
+#[doc(alias = "RBX::GeometryService::~GeometryService() [0x505f48]")]
 pub fn stub_0x505f48() -> ! {
     todo!("0x505f48 RBX::GeometryService::~GeometryService()")
 }
@@ -542,7 +542,7 @@ pub fn stub_0x506068() -> ! {
 
 // 0x506148 — __ZThn32_N3RBX15GeometryServiceD0Ev
 // type: void __fastcall(RBX::GeometryService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService()")]
+#[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService() [0x506148]")]
 pub fn stub_0x506148() -> ! {
     todo!("0x506148 non-virtual thunk toRBX::GeometryService::~GeometryService()")
 }
@@ -555,14 +555,14 @@ pub fn stub_0x506240() -> ! {
 
 // 0x506268 — __ZThn36_N3RBX15GeometryServiceD1Ev
 // type: void __fastcall(RBX::GeometryService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService()")]
+#[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService() [0x506268]")]
 pub fn stub_0x506268() -> ! {
     todo!("0x506268 non-virtual thunk toRBX::GeometryService::~GeometryService()")
 }
 
 // 0x506348 — __ZThn36_N3RBX15GeometryServiceD0Ev
 // type: void __fastcall(RBX::GeometryService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService()")]
+#[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService() [0x506348]")]
 pub fn stub_0x506348() -> ! {
     todo!("0x506348 non-virtual thunk toRBX::GeometryService::~GeometryService()")
 }

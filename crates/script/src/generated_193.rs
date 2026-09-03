@@ -33,13 +33,6 @@ pub fn stub_0x817ef4() -> ! {
     todo!("0x817ef4 RBX::LibraryService::LibraryService(RBX::ScriptContext *)")
 }
 
-// 0x817ef8 — __ZN3RBX14LibraryServiceC2EPNS_13ScriptContextE
-// type: _DWORD __fastcall(RBX::LibraryService *__hidden this, RBX::ScriptContext *)
-#[doc(alias = "RBX::LibraryService::LibraryService(RBX::ScriptContext *)")]
-pub fn stub_0x817ef8() -> ! {
-    todo!("0x817ef8 RBX::LibraryService::LibraryService(RBX::ScriptContext *)")
-}
-
 // 0x818730 — __ZN3RBX14LibraryService18ContentReadyHelperEN5boost8weak_ptrINS_13ScriptContextEEESsSsNS_14AsyncHttpQueue13RequestResultEPSiNS1_10shared_ptrIKSsEE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::LibraryService::ContentReadyHelper(rbx_core::WeakPtr<RBX::ScriptContext>,std::string,std::string,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>)")]
@@ -417,7 +410,7 @@ pub fn stub_0x8d0ce8() -> ! {
 
 // 0x8d0df0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13LuaWebServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // type: void()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaWebService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaWebService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x8d0df0]")]
 pub fn stub_0x8d0df0() -> ! {
     todo!("0x8d0df0 boost::detail::sp_counted_impl_pd<RBX::LuaWebService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
 }
@@ -550,7 +543,7 @@ pub fn stub_0x8e8d24() -> ! {
 
 // 0x8e8d50 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_13ScriptServiceES6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>>::~callable_slot() [0x8e8d50]")]
 pub fn stub_0x8e8d50() -> ! {
     todo!("0x8e8d50 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>>::~callable_slot()")
 }
@@ -606,7 +599,7 @@ pub fn stub_0x8e9440() -> ! {
 
 // 0x8e9444 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13ScriptService4InfoEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ScriptService::Info>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ScriptService::Info>::~sp_counted_impl_p() [0x8e9444]")]
 pub fn stub_0x8e9444() -> ! {
     todo!("0x8e9444 boost::detail::sp_counted_impl_p<RBX::ScriptService::Info>::~sp_counted_impl_p()")
 }
@@ -693,7 +686,7 @@ pub fn stub_0x90e500() -> ! {
 
 // 0x90e504 — __ZN3RBX19ServerScriptServiceC2Ev
 // type: _DWORD __fastcall(RBX::ServerScriptService *__hidden this)
-#[doc(alias = "RBX::ServerScriptService::ServerScriptService(void)")]
+#[doc(alias = "RBX::ServerScriptService::ServerScriptService(void) [0x90e504]")]
 pub fn stub_0x90e504() -> ! {
     todo!("0x90e504 RBX::ServerScriptService::ServerScriptService(void)")
 }
@@ -721,7 +714,7 @@ pub fn stub_0x90e83c() -> ! {
 
 // 0x90e840 — __ZN3RBX19ServerScriptServiceD0Ev
 // type: void __fastcall(RBX::ServerScriptService *__hidden this)
-#[doc(alias = "RBX::ServerScriptService::~ServerScriptService()")]
+#[doc(alias = "RBX::ServerScriptService::~ServerScriptService() [0x90e840]")]
 pub fn stub_0x90e840() -> ! {
     todo!("0x90e840 RBX::ServerScriptService::~ServerScriptService()")
 }
@@ -741,7 +734,7 @@ pub fn stub_0x90e914() -> ! {
 
 // 0x90e91c — __ZThn32_N3RBX19ServerScriptServiceD0Ev
 // type: void __fastcall(RBX::ServerScriptService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ServerScriptService::~ServerScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::ServerScriptService::~ServerScriptService() [0x90e91c]")]
 pub fn stub_0x90e91c() -> ! {
     todo!("0x90e91c non-virtual thunk toRBX::ServerScriptService::~ServerScriptService()")
 }
@@ -754,14 +747,14 @@ pub fn stub_0x90e9c0() -> ! {
 
 // 0x90e9d0 — __ZThn36_N3RBX19ServerScriptServiceD1Ev
 // type: void __fastcall(RBX::ServerScriptService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ServerScriptService::~ServerScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::ServerScriptService::~ServerScriptService() [0x90e9d0]")]
 pub fn stub_0x90e9d0() -> ! {
     todo!("0x90e9d0 non-virtual thunk toRBX::ServerScriptService::~ServerScriptService()")
 }
 
 // 0x90e9d8 — __ZThn36_N3RBX19ServerScriptServiceD0Ev
 // type: void __fastcall(RBX::ServerScriptService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ServerScriptService::~ServerScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::ServerScriptService::~ServerScriptService() [0x90e9d8]")]
 pub fn stub_0x90e9d8() -> ! {
     todo!("0x90e9d8 non-virtual thunk toRBX::ServerScriptService::~ServerScriptService()")
 }

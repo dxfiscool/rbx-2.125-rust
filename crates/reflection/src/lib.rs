@@ -388,3 +388,4 @@ pub mod generated_watchdog_refl_wdH;
 pub mod generated_watchdog_refl_wdJ;
 pub mod generated_watchdog_refl_wdI;
 pub mod generated_watchdog_refl_wdK;
+pub mod generated_watchdog_refl_wdL;

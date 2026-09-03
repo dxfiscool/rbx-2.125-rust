@@ -545,7 +545,7 @@ pub fn stub_0x35a3fc() -> ! {
 
 // 0x35a448 — __ZN3G3D4LineD0Ev
 // type: void __fastcall(G3D::Line *__hidden this)
-#[doc(alias = "G3D::Line::~Line()")]
+#[doc(alias = "G3D::Line::~Line() [0x35a448]")]
 pub fn stub_0x35a448() -> ! {
     todo!("0x35a448 __ZN3G3D4LineD0Ev")
 }
@@ -572,7 +572,7 @@ pub fn stub_0x35a6f4() -> ! {
 
 // 0x35a718 — __ZN3RBX13MD5HasherImplD0Ev
 // type: void __fastcall(RBX::MD5HasherImpl *__hidden this)
-#[doc(alias = "RBX::MD5HasherImpl::~MD5HasherImpl()")]
+#[doc(alias = "RBX::MD5HasherImpl::~MD5HasherImpl() [0x35a718]")]
 pub fn stub_0x35a718() -> ! {
     todo!("0x35a718 __ZN3RBX13MD5HasherImplD0Ev")
 }

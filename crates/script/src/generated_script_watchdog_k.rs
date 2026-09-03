@@ -9,7 +9,7 @@
 use rbx_core::SharedPtr;
 
 // 0x4591d0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9DataModelENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DataModel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DataModel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x4591d0]")]
 pub fn stub_0x4591d0() -> ! {
     todo!("0x4591d0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9DataModelENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
 }
@@ -60,7 +60,7 @@ pub fn stub_0x4594d4() -> ! {
 }
 
 // 0x4594d8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10GenericJobEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::DataModel::GenericJob>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::DataModel::GenericJob>::~sp_counted_impl_p() [0x4594d8]")]
 pub fn stub_0x4594d8() -> ! {
     todo!("0x4594d8 __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10GenericJobEED0Ev")
 }
@@ -135,7 +135,7 @@ pub fn stub_0x459f08() -> ! {
 }
 
 // 0x459f0c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5VisitENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Visit *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Visit *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x459f0c]")]
 pub fn stub_0x459f0c() -> ! {
     todo!("0x459f0c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5VisitENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
 }
@@ -659,7 +659,7 @@ pub fn stub_0x45c82c() -> ! {
 }
 
 // 0x45c878 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvSsSsELi2EED0Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::~BoundFuncDesc() [0x45c878]")]
 pub fn stub_0x45c878() -> ! {
     todo!("0x45c878 __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvSsSsELi2EED0Ev")
 }

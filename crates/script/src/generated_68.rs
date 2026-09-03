@@ -309,7 +309,7 @@ pub fn stub_0x2a7c7c() -> ! {
 
 // 0x2a7c80 — __ZN3RBX20RuntimeScriptServiceD0Ev
 // type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
-#[doc(alias = "RBX::RuntimeScriptService::~RuntimeScriptService()")]
+#[doc(alias = "RBX::RuntimeScriptService::~RuntimeScriptService() [0x2a7c80]")]
 pub fn stub_0x2a7c80() -> ! {
     todo!("0x2a7c80 __ZN3RBX20RuntimeScriptServiceD0Ev")
 }
@@ -329,7 +329,7 @@ pub fn stub_0x2a7d4c() -> ! {
 
 // 0x2a7d54 — __ZThn32_N3RBX20RuntimeScriptServiceD0Ev
 // type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService() [0x2a7d54]")]
 pub fn stub_0x2a7d54() -> ! {
     todo!("0x2a7d54 __ZThn32_N3RBX20RuntimeScriptServiceD0Ev")
 }
@@ -342,14 +342,14 @@ pub fn stub_0x2a7df8() -> ! {
 
 // 0x2a7e20 — __ZThn36_N3RBX20RuntimeScriptServiceD1Ev
 // type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService() [0x2a7e20]")]
 pub fn stub_0x2a7e20() -> ! {
     todo!("0x2a7e20 __ZThn36_N3RBX20RuntimeScriptServiceD1Ev")
 }
 
 // 0x2a7e28 — __ZThn36_N3RBX20RuntimeScriptServiceD0Ev
 // type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService() [0x2a7e28]")]
 pub fn stub_0x2a7e28() -> ! {
     todo!("0x2a7e28 __ZThn36_N3RBX20RuntimeScriptServiceD0Ev")
 }
@@ -488,7 +488,7 @@ pub fn stub_0x2a88cc() -> ! {
 }
 
 // 0x2a88d0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting13DebuggerWatchENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x2a88d0]")]
 pub fn stub_0x2a88d0() -> ! {
     todo!("0x2a88d0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting13DebuggerWatchENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
 }

@@ -65,7 +65,7 @@ pub fn stub_0x3e3530() -> ! {
 
 // 0x3e3534 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10BodyColorsENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x3e3534]")]
 pub fn stub_0x3e3534() -> ! {
     todo!("0x3e3534 boost::detail::sp_counted_impl_pd<RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
 }
@@ -128,7 +128,7 @@ pub fn stub_0x3e3ee0() -> ! {
 
 // 0x3e3ee4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4SkinENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x3e3ee4]")]
 pub fn stub_0x3e3ee4() -> ! {
     todo!("0x3e3ee4 boost::detail::sp_counted_impl_pd<RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
 }
@@ -191,7 +191,7 @@ pub fn stub_0x3e4974() -> ! {
 
 // 0x3e4978 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12ShirtGraphicENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ShirtGraphic *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ShirtGraphic *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x3e4978]")]
 pub fn stub_0x3e4978() -> ! {
     todo!("0x3e4978 boost::detail::sp_counted_impl_pd<RBX::ShirtGraphic *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
 }
@@ -254,7 +254,7 @@ pub fn stub_0x3e529c() -> ! {
 
 // 0x3e52a0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5PantsENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Pants *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Pants *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x3e52a0]")]
 pub fn stub_0x3e52a0() -> ! {
     todo!("0x3e52a0 boost::detail::sp_counted_impl_pd<RBX::Pants *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
 }
@@ -317,7 +317,7 @@ pub fn stub_0x3e5a6c() -> ! {
 
 // 0x3e5a70 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5ShirtENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Shirt *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Shirt *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x3e5a70]")]
 pub fn stub_0x3e5a70() -> ! {
     todo!("0x3e5a70 boost::detail::sp_counted_impl_pd<RBX::Shirt *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
 }

@@ -155,7 +155,7 @@ pub fn stub_0x2d5fd0() -> ! { todo!("0x2d5fd0 RBX::AdvRotateTool::~AdvRotateTool
 
 // 0x2d5fd4 — __ZN3RBX13AdvRotateToolD0Ev
 // type: void __fastcall(RBX::AdvRotateTool *__hidden this)
-#[doc(alias = "RBX::AdvRotateTool::~AdvRotateTool()")]
+#[doc(alias = "RBX::AdvRotateTool::~AdvRotateTool() [0x2d5fd4]")]
 pub fn stub_0x2d5fd4() -> ! { todo!("0x2d5fd4 RBX::AdvRotateTool::~AdvRotateTool()") }
 
 // 0x2d6074 — __ZThn36_N3RBX13AdvRotateToolD1Ev
@@ -165,7 +165,7 @@ pub fn stub_0x2d6074() -> ! { todo!("0x2d6074 non-virtual thunk toRBX::AdvRotate
 
 // 0x2d607c — __ZThn36_N3RBX13AdvRotateToolD0Ev
 // type: void __fastcall(RBX::AdvRotateTool *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")]
+#[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool() [0x2d607c]")]
 pub fn stub_0x2d607c() -> ! { todo!("0x2d607c non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()") }
 
 // 0x2d6390 — __ZN3RBX13AdvRunDragger8SnapInfo20updateSurfaceFromHitEv
@@ -190,7 +190,7 @@ pub fn stub_0x2d68d8() -> ! { todo!("0x2d68d8 RBX::AdvRunDragger::AdvRunDragger(
 
 // 0x2d68dc — __ZN3RBX13AdvRunDraggerC2Ev
 // type: _DWORD __fastcall(RBX::AdvRunDragger *__hidden this)
-#[doc(alias = "RBX::AdvRunDragger::AdvRunDragger(void)")]
+#[doc(alias = "RBX::AdvRunDragger::AdvRunDragger(void) [0x2d68dc]")]
 pub fn stub_0x2d68dc() -> ! { todo!("0x2d68dc RBX::AdvRunDragger::AdvRunDragger(void)") }
 
 // 0x2d6ac8 — __ZN3RBX13AdvRunDraggerD1Ev
@@ -200,7 +200,7 @@ pub fn stub_0x2d6ac8() -> ! { todo!("0x2d6ac8 RBX::AdvRunDragger::~AdvRunDragger
 
 // 0x2d6acc — __ZN3RBX13AdvRunDraggerD2Ev
 // type: void __fastcall(RBX::AdvRunDragger *__hidden this)
-#[doc(alias = "RBX::AdvRunDragger::~AdvRunDragger()")]
+#[doc(alias = "RBX::AdvRunDragger::~AdvRunDragger() [0x2d6acc]")]
 pub fn stub_0x2d6acc() -> ! { todo!("0x2d6acc RBX::AdvRunDragger::~AdvRunDragger()") }
 
 // 0x2d6c30 — __ZN3RBX13AdvRunDragger20snapInfoFromSnapPartEv
@@ -367,7 +367,7 @@ pub fn stub_0x2db7a4() -> ! { todo!("0x2db7a4 RBX::CloneTool::CloneTool(RBX::Wor
 
 // 0x2db7a8 — __ZN3RBX9CloneToolC2EPNS_9WorkspaceE
 // type: _DWORD __fastcall(RBX::CloneTool *__hidden this, RBX::Workspace *)
-#[doc(alias = "RBX::CloneTool::CloneTool(RBX::Workspace *)")]
+#[doc(alias = "RBX::CloneTool::CloneTool(RBX::Workspace *) [0x2db7a8]")]
 pub fn stub_0x2db7a8() -> ! { todo!("0x2db7a8 RBX::CloneTool::CloneTool(RBX::Workspace *)") }
 
 // 0x2db8b0 — __ZN3RBX9CloneToolD0Ev
@@ -377,7 +377,7 @@ pub fn stub_0x2db8b0() -> ! { todo!("0x2db8b0 RBX::CloneTool::~CloneTool()") }
 
 // 0x2db950 — __ZN3RBX9CloneToolD1Ev
 // type: void __fastcall(RBX::CloneTool *__hidden this)
-#[doc(alias = "RBX::CloneTool::~CloneTool()")]
+#[doc(alias = "RBX::CloneTool::~CloneTool() [0x2db950]")]
 pub fn stub_0x2db950() -> ! { todo!("0x2db950 RBX::CloneTool::~CloneTool()") }
 
 // 0x2db954 — __ZThn36_N3RBX9CloneToolD0Ev
@@ -387,12 +387,12 @@ pub fn stub_0x2db954() -> ! { todo!("0x2db954 non-virtual thunk toRBX::CloneTool
 
 // 0x2db95c — __ZN3RBX9CloneToolD2Ev
 // type: void __fastcall(RBX::CloneTool *__hidden this)
-#[doc(alias = "RBX::CloneTool::~CloneTool()")]
+#[doc(alias = "RBX::CloneTool::~CloneTool() [0x2db95c]")]
 pub fn stub_0x2db95c() -> ! { todo!("0x2db95c RBX::CloneTool::~CloneTool()") }
 
 // 0x2dba78 — __ZThn36_N3RBX9CloneToolD1Ev
 // type: void __fastcall(RBX::CloneTool *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::CloneTool::~CloneTool()")]
+#[doc(alias = "non-virtual thunk toRBX::CloneTool::~CloneTool() [0x2dba78]")]
 pub fn stub_0x2dba78() -> ! { todo!("0x2dba78 non-virtual thunk toRBX::CloneTool::~CloneTool()") }
 
 // 0x2dba80 — __ZN3RBX9CloneTool11onMouseIdleERKNS_7UIEventE
@@ -443,7 +443,7 @@ pub fn stub_0x2dc228() -> ! { todo!("0x2dc228 boost::detail::shared_count::share
 pub fn stub_0x2dc320() -> ! { todo!("0x2dc320 boost::detail::sp_counted_impl_pd<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()") }
 
 // 0x2dc324 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12PartDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd() [0x2dc324]")]
 pub fn stub_0x2dc324() -> ! { todo!("0x2dc324 boost::detail::sp_counted_impl_pd<RBX::PartDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()") }
 
 // 0x2dc328 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12PartDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
@@ -624,7 +624,7 @@ pub fn stub_0x2e2f2c() -> ! { todo!("0x2e2f2c RBX::GameTool::GameTool(RBX::Works
 
 // 0x2e2f30 — __ZN3RBX8GameToolC2EPNS_9WorkspaceE
 // type: RBX::GameTool *__fastcall(RBX::GameTool *this, Workspace *)
-#[doc(alias = "RBX::GameTool::GameTool(RBX::Workspace *)")]
+#[doc(alias = "RBX::GameTool::GameTool(RBX::Workspace *) [0x2e2f30]")]
 pub fn stub_0x2e2f30() -> ! { todo!("0x2e2f30 RBX::GameTool::GameTool(RBX::Workspace *)") }
 
 // 0x2e3044 — __ZN3RBX8GameTool11onMouseIdleERKNS_7UIEventE
@@ -654,7 +654,7 @@ pub fn stub_0x2e3234() -> ! { todo!("0x2e3234 RBX::GameTool::~GameTool()") }
 
 // 0x2e32d4 — __ZN3RBX8GameToolD1Ev
 // type: void __fastcall(RBX::GameTool *__hidden this)
-#[doc(alias = "RBX::GameTool::~GameTool()")]
+#[doc(alias = "RBX::GameTool::~GameTool() [0x2e32d4]")]
 pub fn stub_0x2e32d4() -> ! { todo!("0x2e32d4 RBX::GameTool::~GameTool()") }
 
 // 0x2e32d8 — __ZThn36_N3RBX8GameToolD0Ev
@@ -664,12 +664,12 @@ pub fn stub_0x2e32d8() -> ! { todo!("0x2e32d8 non-virtual thunk toRBX::GameTool:
 
 // 0x2e32e0 — __ZN3RBX8GameToolD2Ev
 // type: void __fastcall(RBX::GameTool *this, int, int, const void *)
-#[doc(alias = "RBX::GameTool::~GameTool()")]
+#[doc(alias = "RBX::GameTool::~GameTool() [0x2e32e0]")]
 pub fn stub_0x2e32e0() -> ! { todo!("0x2e32e0 RBX::GameTool::~GameTool()") }
 
 // 0x2e33e4 — __ZThn36_N3RBX8GameToolD1Ev
 // type: void __fastcall(RBX::GameTool *this, int, int, const void *)
-#[doc(alias = "non-virtual thunk toRBX::GameTool::~GameTool()")]
+#[doc(alias = "non-virtual thunk toRBX::GameTool::~GameTool() [0x2e33e4]")]
 pub fn stub_0x2e33e4() -> ! { todo!("0x2e33e4 non-virtual thunk toRBX::GameTool::~GameTool()") }
 
 // 0x2e3414 — __ZNK3RBX8GameTool8isStickyEv
@@ -694,7 +694,7 @@ pub fn stub_0x2e37c4() -> ! { todo!("0x2e37c4 RBX::GrabTool::GrabTool(RBX::Works
 
 // 0x2e37c8 — __ZN3RBX8GrabToolC2EPNS_9WorkspaceE
 // type: _DWORD __fastcall(RBX::GrabTool *__hidden this, RBX::Workspace *)
-#[doc(alias = "RBX::GrabTool::GrabTool(RBX::Workspace *)")]
+#[doc(alias = "RBX::GrabTool::GrabTool(RBX::Workspace *) [0x2e37c8]")]
 pub fn stub_0x2e37c8() -> ! { todo!("0x2e37c8 RBX::GrabTool::GrabTool(RBX::Workspace *)") }
 
 // 0x2e38e8 — __ZN3RBX8GrabTool11onMouseIdleERKNS_7UIEventE
@@ -719,7 +719,7 @@ pub fn stub_0x2e3aa8() -> ! { todo!("0x2e3aa8 RBX::GrabTool::~GrabTool()") }
 
 // 0x2e3b48 — __ZN3RBX8GrabToolD1Ev
 // type: void __fastcall(RBX::GrabTool *__hidden this)
-#[doc(alias = "RBX::GrabTool::~GrabTool()")]
+#[doc(alias = "RBX::GrabTool::~GrabTool() [0x2e3b48]")]
 pub fn stub_0x2e3b48() -> ! { todo!("0x2e3b48 RBX::GrabTool::~GrabTool()") }
 
 // 0x2e3b4c — __ZThn36_N3RBX8GrabToolD0Ev
@@ -729,12 +729,12 @@ pub fn stub_0x2e3b4c() -> ! { todo!("0x2e3b4c non-virtual thunk toRBX::GrabTool:
 
 // 0x2e3b54 — __ZN3RBX8GrabToolD2Ev
 // type: void __fastcall(RBX::GrabTool *__hidden this)
-#[doc(alias = "RBX::GrabTool::~GrabTool()")]
+#[doc(alias = "RBX::GrabTool::~GrabTool() [0x2e3b54]")]
 pub fn stub_0x2e3b54() -> ! { todo!("0x2e3b54 RBX::GrabTool::~GrabTool()") }
 
 // 0x2e3c58 — __ZThn36_N3RBX8GrabToolD1Ev
 // type: void __fastcall(RBX::GrabTool *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::GrabTool::~GrabTool()")]
+#[doc(alias = "non-virtual thunk toRBX::GrabTool::~GrabTool() [0x2e3c58]")]
 pub fn stub_0x2e3c58() -> ! { todo!("0x2e3c58 non-virtual thunk toRBX::GrabTool::~GrabTool()") }
 
 // 0x2e3c88 — __ZNK3RBX8GrabTool8isStickyEv

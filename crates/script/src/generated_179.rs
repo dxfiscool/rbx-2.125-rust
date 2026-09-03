@@ -42,7 +42,7 @@ pub fn stub_0xee144() -> ! {
 
 // 0xee168 — __ZN4FMOD6ThreadD1Ev
 // type: void __fastcall(FMOD::Thread *__hidden this)
-#[doc(alias = "FMOD::Thread::~Thread()")]
+#[doc(alias = "FMOD::Thread::~Thread() [0xee168]")]
 #[doc(alias = "__ZN4FMOD6ThreadD1Ev")]
 pub fn stub_0xee168() -> ! {
     todo!("0xee168 FMOD::Thread::~Thread()")
@@ -58,7 +58,7 @@ pub fn stub_0xee180() -> ! {
 
 // 0xee1b0 — __ZN4FMOD9TimeStampC1Ev
 // type: _DWORD __fastcall(FMOD::TimeStamp *__hidden this)
-#[doc(alias = "FMOD::TimeStamp::TimeStamp(void)")]
+#[doc(alias = "FMOD::TimeStamp::TimeStamp(void) [0xee1b0]")]
 #[doc(alias = "__ZN4FMOD9TimeStampC1Ev")]
 pub fn stub_0xee1b0() -> ! {
     todo!("0xee1b0 FMOD::TimeStamp::TimeStamp(void)")
@@ -581,7 +581,7 @@ pub fn stub_0xf509c() -> ! {
 
 // 0xf53f0 — __ZN8revmodelC1Ev
 // type: revmodel *__fastcall(revmodel *__hidden this)
-#[doc(alias = "revmodel::revmodel(void)")]
+#[doc(alias = "revmodel::revmodel(void) [0xf53f0]")]
 #[doc(alias = "__ZN8revmodelC1Ev")]
 pub fn stub_0xf53f0() -> ! {
     todo!("0xf53f0 revmodel::revmodel(void)")

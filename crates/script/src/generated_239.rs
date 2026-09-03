@@ -89,7 +89,7 @@ pub fn stub_0x496d48() -> ! {
 
 // 0x496d4c — __ZN3RBX10DialogRootD0Ev
 // type: void __fastcall(RBX::DialogRoot *__hidden this)
-#[doc(alias = "RBX::DialogRoot::~DialogRoot()")]
+#[doc(alias = "RBX::DialogRoot::~DialogRoot() [0x496d4c]")]
 pub fn stub_0x496d4c() -> ! {
     todo!("0x496d4c RBX::DialogRoot::~DialogRoot()")
 }
@@ -103,21 +103,21 @@ pub fn stub_0x496dfc() -> ! {
 
 // 0x496e04 — __ZThn32_N3RBX10DialogRootD0Ev
 // type: void __fastcall(RBX::DialogRoot *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::DialogRoot::~DialogRoot()")]
+#[doc(alias = "non-virtual thunk toRBX::DialogRoot::~DialogRoot() [0x496e04]")]
 pub fn stub_0x496e04() -> ! {
     todo!("0x496e04 non-virtual thunk toRBX::DialogRoot::~DialogRoot()")
 }
 
 // 0x496eb8 — __ZThn36_N3RBX10DialogRootD1Ev
 // type: void __fastcall(RBX::DialogRoot *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::DialogRoot::~DialogRoot()")]
+#[doc(alias = "non-virtual thunk toRBX::DialogRoot::~DialogRoot() [0x496eb8]")]
 pub fn stub_0x496eb8() -> ! {
     todo!("0x496eb8 non-virtual thunk toRBX::DialogRoot::~DialogRoot()")
 }
 
 // 0x496ec0 — __ZThn36_N3RBX10DialogRootD0Ev
 // type: void __fastcall(RBX::DialogRoot *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::DialogRoot::~DialogRoot()")]
+#[doc(alias = "non-virtual thunk toRBX::DialogRoot::~DialogRoot() [0x496ec0]")]
 pub fn stub_0x496ec0() -> ! {
     todo!("0x496ec0 non-virtual thunk toRBX::DialogRoot::~DialogRoot()")
 }
@@ -154,7 +154,7 @@ pub fn stub_0x497538() -> ! {
 }
 
 // 0x49753c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10DialogRootENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x49753c]")]
 pub fn stub_0x49753c() -> ! {
     todo!("0x49753c boost::detail::sp_counted_impl_pd<RBX::DialogRoot *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
 }
@@ -305,7 +305,7 @@ pub fn stub_0x49825c() -> ! {
 }
 
 // 0x4988dc — __ZN3RBX10Reflection15RemoteEventDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx13remote_signalIS7_EEED0Ev
-#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>>::~RemoteEventDesc()")]
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>>::~RemoteEventDesc() [0x4988dc]")]
 pub fn stub_0x4988dc() -> ! {
     todo!("0x4988dc RBX::Reflection::RemoteEventDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>>::~RemoteEventDesc()")
 }
@@ -355,7 +355,7 @@ pub fn stub_0x498ec8() -> ! {
 }
 
 // 0x498eec — __ZN3RBX10Reflection9EventDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx13remote_signalIS7_EEMS2_SA_ED0Ev
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::DialogRoot::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::DialogRoot::*>::~EventDesc() [0x498eec]")]
 pub fn stub_0x498eec() -> ! {
     todo!("0x498eec RBX::Reflection::EventDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::DialogRoot::*>::~EventDesc()")
 }
@@ -373,7 +373,7 @@ pub fn stub_0x499170() -> ! {
 }
 
 // 0x4991bc — __ZN3RBX10Reflection13BoundFuncDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_ELi2EED0Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc() [0x4991bc]")]
 pub fn stub_0x4991bc() -> ! {
     todo!("0x4991bc RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")
 }
@@ -400,7 +400,7 @@ pub fn stub_0x499540() -> ! {
 }
 
 // 0x499654 — __ZN3RBX10Reflection14PropDescriptorINS_10DialogRootEbED0Ev
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,bool>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,bool>::~PropDescriptor() [0x499654]")]
 pub fn stub_0x499654() -> ! {
     todo!("0x499654 RBX::Reflection::PropDescriptor<RBX::DialogRoot,bool>::~PropDescriptor()")
 }
@@ -438,7 +438,7 @@ pub fn stub_0x4996d0() -> ! {
 }
 
 // 0x4997e4 — __ZN3RBX10Reflection14PropDescriptorINS_10DialogRootEfED0Ev
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,float>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,float>::~PropDescriptor() [0x4997e4]")]
 pub fn stub_0x4997e4() -> ! {
     todo!("0x4997e4 RBX::Reflection::PropDescriptor<RBX::DialogRoot,float>::~PropDescriptor()")
 }
@@ -475,7 +475,7 @@ pub fn stub_0x49985c() -> ! {
 }
 
 // 0x499a10 — __ZN3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEED0Ev
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::~EnumPropDescriptor()")]
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::~EnumPropDescriptor() [0x499a10]")]
 pub fn stub_0x499a10() -> ! {
     todo!("0x499a10 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::~EnumPropDescriptor()")
 }
@@ -630,7 +630,7 @@ pub fn stub_0x49a0d4() -> ! {
 }
 
 // 0x49a288 — __ZN3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEED0Ev
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::~EnumPropDescriptor()")]
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::~EnumPropDescriptor() [0x49a288]")]
 pub fn stub_0x49a288() -> ! {
     todo!("0x49a288 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::~EnumPropDescriptor()")
 }

@@ -73,7 +73,7 @@ pub fn stub_0x48db88() -> ! {
 
 // 0x48db8c — __ZN8DummyJobD0Ev
 // type: void __fastcall(DummyJob *__hidden this)
-#[doc(alias = "DummyJob::~DummyJob()")]
+#[doc(alias = "DummyJob::~DummyJob() [0x48db8c]")]
 pub fn stub_0x48db8c() -> ! {
     todo!("0x48db8c DummyJob::~DummyJob()")
 }
@@ -441,7 +441,7 @@ pub fn stub_0x49874c() -> ! {
 
 // 0x49ac00 — __ZN3RBX10DialogRootD2Ev
 // type: void __fastcall(RBX::DialogRoot *__hidden this)
-#[doc(alias = "RBX::DialogRoot::~DialogRoot()")]
+#[doc(alias = "RBX::DialogRoot::~DialogRoot() [0x49ac00]")]
 pub fn stub_0x49ac00() -> ! {
     todo!("0x49ac00 RBX::DialogRoot::~DialogRoot()")
 }
@@ -468,14 +468,14 @@ pub fn stub_0x49b3f0() -> ! {
 
 // 0x49b3f4 — __ZN3RBX6EffectD1Ev
 // type: void __fastcall(RBX::Effect *__hidden this)
-#[doc(alias = "RBX::Effect::~Effect()")]
+#[doc(alias = "RBX::Effect::~Effect() [0x49b3f4]")]
 pub fn stub_0x49b3f4() -> ! {
     todo!("0x49b3f4 RBX::Effect::~Effect()")
 }
 
 // 0x49b3f8 — __ZN3RBX6EffectD2Ev
 // type: void __fastcall(RBX::Effect *__hidden this)
-#[doc(alias = "RBX::Effect::~Effect()")]
+#[doc(alias = "RBX::Effect::~Effect() [0x49b3f8]")]
 pub fn stub_0x49b3f8() -> ! {
     todo!("0x49b3f8 RBX::Effect::~Effect()")
 }
@@ -654,7 +654,7 @@ pub fn stub_0x49f7ec() -> ! {
 
 // 0x49f7f0 — __ZN3RBX9ExplosionC2Ev
 // type: _DWORD __fastcall(RBX::Explosion *__hidden this)
-#[doc(alias = "RBX::Explosion::Explosion(void)")]
+#[doc(alias = "RBX::Explosion::Explosion(void) [0x49f7f0]")]
 pub fn stub_0x49f7f0() -> ! {
     todo!("0x49f7f0 RBX::Explosion::Explosion(void)")
 }
@@ -668,8 +668,7 @@ pub fn stub_0x49fbe4() -> ! {
 
 // 0x49fc84 — __ZN3RBX9ExplosionD1Ev
 // type: void __fastcall(RBX::Explosion *__hidden this)
-#[doc(alias = "RBX::Explosion::~Explosion()")]
+#[doc(alias = "RBX::Explosion::~Explosion() [0x49fc84]")]
 pub fn stub_0x49fc84() -> ! {
     todo!("0x49fc84 RBX::Explosion::~Explosion()")
 }
-

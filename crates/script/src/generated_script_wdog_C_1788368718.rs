@@ -253,14 +253,14 @@ pub fn stub_0x591640() -> ! {
 }
 
 // 0x591664 — __ZN3RBX10Reflection9EventDescINS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED0Ev
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::InsertService,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::InsertService::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::InsertService,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::InsertService::*>::~EventDesc() [0x591664]")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED0Ev")]
 pub fn stub_0x591664() -> ! {
     todo!("0x591664 __ZN3RBX10Reflection9EventDescINS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED0Ev")
 }
 
 // 0x591718 — __ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsiiEN3rbx13remote_signalIS3_EEED0Ev
-#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,int,int),rbx::remote_signal<void ()(std::string,int,int)>>::~RemoteEventDesc()")]
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,int,int),rbx::remote_signal<void ()(std::string,int,int)>>::~RemoteEventDesc() [0x591718]")]
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsiiEN3rbx13remote_signalIS3_EEED0Ev")]
 pub fn stub_0x591718() -> ! {
     todo!("0x591718 __ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsiiEN3rbx13remote_signalIS3_EEED0Ev")
@@ -372,7 +372,7 @@ pub fn stub_0x59220c() -> ! {
 
 // 0x59231c — __ZN3rbx7signals6signalIFvSsiiEE13callable_slotIN5boost8functionIS2_EEED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "rbx::signals::signal<void ()(std::string,int,int)>::callable_slot<boost::function<void ()(std::string,int,int)>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(std::string,int,int)>::callable_slot<boost::function<void ()(std::string,int,int)>>::~callable_slot() [0x59231c]")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsiiEE13callable_slotIN5boost8functionIS2_EEED0Ev")]
 pub fn stub_0x59231c() -> ! {
     todo!("0x59231c __ZN3rbx7signals6signalIFvSsiiEE13callable_slotIN5boost8functionIS2_EEED0Ev")
@@ -401,7 +401,7 @@ pub fn stub_0x5925b0() -> ! {
 }
 
 // 0x5926c0 — __ZN3rbx8callableINS_7signals6signalIFvSsiiEE4slotEN5boost8functionIS3_EELi3ES3_ED0Ev
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,int,int)>::slot,boost::function<void ()(std::string,int,int)>,3,void ()(std::string,int,int)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,int,int)>::slot,boost::function<void ()(std::string,int,int)>,3,void ()(std::string,int,int)>::~callable() [0x5926c0]")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvSsiiEE4slotEN5boost8functionIS3_EELi3ES3_ED0Ev")]
 pub fn stub_0x5926c0() -> ! {
     todo!("0x5926c0 __ZN3rbx8callableINS_7signals6signalIFvSsiiEE4slotEN5boost8functionIS3_EELi3ES3_ED0Ev")
@@ -430,14 +430,14 @@ pub fn stub_0x592a7c() -> ! {
 }
 
 // 0x592aa0 — __ZN3RBX10Reflection9EventDescINS_13InsertServiceEFvSsiiEN3rbx13remote_signalIS3_EEMS2_S6_ED0Ev
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::InsertService,void ()(std::string,int,int),rbx::remote_signal<void ()(std::string,int,int)>,rbx::remote_signal<void ()(std::string,int,int)> RBX::InsertService::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::InsertService,void ()(std::string,int,int),rbx::remote_signal<void ()(std::string,int,int)>,rbx::remote_signal<void ()(std::string,int,int)> RBX::InsertService::*>::~EventDesc() [0x592aa0]")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_13InsertServiceEFvSsiiEN3rbx13remote_signalIS3_EEMS2_S6_ED0Ev")]
 pub fn stub_0x592aa0() -> ! {
     todo!("0x592aa0 __ZN3RBX10Reflection9EventDescINS_13InsertServiceEFvSsiiEN3rbx13remote_signalIS3_EEMS2_S6_ED0Ev")
 }
 
 // 0x592b54 — __ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsNS_9ContentIdEEN3rbx13remote_signalIS4_EEED0Ev
-#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,RBX::ContentId),rbx::remote_signal<void ()(std::string,RBX::ContentId)>>::~RemoteEventDesc()")]
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,RBX::ContentId),rbx::remote_signal<void ()(std::string,RBX::ContentId)>>::~RemoteEventDesc() [0x592b54]")]
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsNS_9ContentIdEEN3rbx13remote_signalIS4_EEED0Ev")]
 pub fn stub_0x592b54() -> ! {
     todo!("0x592b54 __ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsNS_9ContentIdEEN3rbx13remote_signalIS4_EEED0Ev")
@@ -632,7 +632,7 @@ pub fn stub_0x594130() -> ! {
 }
 
 // 0x594240 — __ZN3rbx7signals6signalIFvSsN3RBX9ContentIdEEE13callable_slotIN5boost8functionIS4_EEED0Ev
-#[doc(alias = "rbx::signals::signal<void ()(std::string,RBX::ContentId)>::callable_slot<boost::function<void ()(std::string,RBX::ContentId)>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(std::string,RBX::ContentId)>::callable_slot<boost::function<void ()(std::string,RBX::ContentId)>>::~callable_slot() [0x594240]")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsN3RBX9ContentIdEEE13callable_slotIN5boost8functionIS4_EEED0Ev")]
 pub fn stub_0x594240() -> ! {
     todo!("0x594240 __ZN3rbx7signals6signalIFvSsN3RBX9ContentIdEEE13callable_slotIN5boost8functionIS4_EEED0Ev")
@@ -670,7 +670,7 @@ pub fn stub_0x594708() -> ! {
 }
 
 // 0x594818 — __ZN3rbx8callableINS_7signals6signalIFvSsN3RBX9ContentIdEEE4slotEN5boost8functionIS5_EELi2ES5_ED0Ev
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot,boost::function<void ()(std::string,RBX::ContentId)>,2,void ()(std::string,RBX::ContentId)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot,boost::function<void ()(std::string,RBX::ContentId)>,2,void ()(std::string,RBX::ContentId)>::~callable() [0x594818]")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvSsN3RBX9ContentIdEEE4slotEN5boost8functionIS5_EELi2ES5_ED0Ev")]
 pub fn stub_0x594818() -> ! {
     todo!("0x594818 __ZN3rbx8callableINS_7signals6signalIFvSsN3RBX9ContentIdEEE4slotEN5boost8functionIS5_EELi2ES5_ED0Ev")
@@ -699,7 +699,7 @@ pub fn stub_0x594b68() -> ! {
 }
 
 // 0x594b8c — __ZN3RBX10Reflection9EventDescINS_13InsertServiceEFvSsNS_9ContentIdEEN3rbx13remote_signalIS4_EEMS2_S7_ED0Ev
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::InsertService,void ()(std::string,RBX::ContentId),rbx::remote_signal<void ()(std::string,RBX::ContentId)>,rbx::remote_signal<void ()(std::string,RBX::ContentId)> RBX::InsertService::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::InsertService,void ()(std::string,RBX::ContentId),rbx::remote_signal<void ()(std::string,RBX::ContentId)>,rbx::remote_signal<void ()(std::string,RBX::ContentId)> RBX::InsertService::*>::~EventDesc() [0x594b8c]")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_13InsertServiceEFvSsNS_9ContentIdEEN3rbx13remote_signalIS4_EEMS2_S7_ED0Ev")]
 pub fn stub_0x594b8c() -> ! {
     todo!("0x594b8c __ZN3RBX10Reflection9EventDescINS_13InsertServiceEFvSsNS_9ContentIdEEN3rbx13remote_signalIS4_EEMS2_S7_ED0Ev")
@@ -707,7 +707,7 @@ pub fn stub_0x594b8c() -> ! {
 
 // 0x594c40 — __ZN3RBX13InsertServiceD2Ev
 // type: void __fastcall(RBX::InsertService *__hidden this)
-#[doc(alias = "RBX::InsertService::~InsertService()")]
+#[doc(alias = "RBX::InsertService::~InsertService() [0x594c40]")]
 #[doc(alias = "__ZN3RBX13InsertServiceD2Ev")]
 pub fn stub_0x594c40() -> ! {
     todo!("0x594c40 __ZN3RBX13InsertServiceD2Ev")

@@ -70,7 +70,7 @@ pub fn stub_0x2c2008() -> ! { todo!("0x2c2008 non-virtual thunk toRBX::Stats::It
 
 // 0x2c2048 — __ZThn36_N3RBX5Stats4ItemD0Ev
 // type: void __fastcall(RBX::Stats::Item *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Stats::Item::~Item()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::Item::~Item() [0x2c2048]")]
 pub fn stub_0x2c2048() -> ! { todo!("0x2c2048 non-virtual thunk toRBX::Stats::Item::~Item()") }
 
 // 0x2c2120 — __ZN3RBX10Reflection9DescribedINS_5Stats4ItemELZNS2_10sStatsItemEENS_17NonFactoryProductINS_8InstanceELZNS2_10sStatsItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
@@ -170,7 +170,7 @@ pub fn stub_0x2c46d0() -> ! { todo!("0x2c46d0 RBX::GcJob::~GcJob()") }
 
 // 0x2c47a0 — __ZN3RBX5GcJobD0Ev
 // type: void __fastcall(RBX::GcJob *__hidden this)
-#[doc(alias = "RBX::GcJob::~GcJob()")]
+#[doc(alias = "RBX::GcJob::~GcJob() [0x2c47a0]")]
 pub fn stub_0x2c47a0() -> ! { todo!("0x2c47a0 RBX::GcJob::~GcJob()") }
 
 // 0x2c4884 — __ZN3RBX5GcJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE
@@ -209,7 +209,7 @@ pub fn stub_0x2c73b8() -> ! { todo!("0x2c73b8 RBX::Stats::Item* RBX::Stats::Item
 
 // 0x2c7928 — __ZThn32_N3RBX5Stats4ItemD1Ev
 // type: void __fastcall(RBX::Stats::Item *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Stats::Item::~Item()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::Item::~Item() [0x2c7928]")]
 pub fn stub_0x2c7928() -> ! { todo!("0x2c7928 non-virtual thunk toRBX::Stats::Item::~Item()") }
 
 // 0x2c7968 — __ZN3RBX10Reflection9DescribedINS_5Stats4ItemELZNS2_10sStatsItemEENS_17NonFactoryProductINS_8InstanceELZNS2_10sStatsItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -241,7 +241,7 @@ pub fn stub_0x2c7a3c() -> ! { todo!("0x2c7a3c rbx_core::SharedPtr<RBX::Stats::Ty
 pub fn stub_0x2c7b48() -> ! { todo!("0x2c7b48 RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()") }
 
 // 0x2c7c90 — __ZN3RBX5Stats14TypedStatsItemIbED0Ev
-#[doc(alias = "RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
+#[doc(alias = "RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem() [0x2c7c90]")]
 pub fn stub_0x2c7c90() -> ! { todo!("0x2c7c90 RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()") }
 
 // 0x2c7df0 — __ZThn36_N3RBX5Stats14TypedStatsItemIbED1Ev
@@ -249,7 +249,7 @@ pub fn stub_0x2c7c90() -> ! { todo!("0x2c7c90 RBX::Stats::TypedStatsItem<bool>::
 pub fn stub_0x2c7df0() -> ! { todo!("0x2c7df0 non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()") }
 
 // 0x2c7f38 — __ZThn36_N3RBX5Stats14TypedStatsItemIbED0Ev
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem() [0x2c7f38]")]
 pub fn stub_0x2c7f38() -> ! { todo!("0x2c7f38 non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()") }
 
 // 0x2c8094 — __ZN5boost10shared_ptrIN3RBX5Stats14TypedStatsItemIbEEEC2IS4_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -303,7 +303,7 @@ pub fn stub_0x2c8968() -> ! { todo!("0x2c8968 boost::detail::shared_count::share
 pub fn stub_0x2c8a54() -> ! { todo!("0x2c8a54 boost::detail::sp_counted_impl_p<RBX::InvocationMeter<2>>::~sp_counted_impl_p()") }
 
 // 0x2c8a58 — __ZN5boost6detail17sp_counted_impl_pIN3RBX15InvocationMeterILi2EEEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::InvocationMeter<2>>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::InvocationMeter<2>>::~sp_counted_impl_p() [0x2c8a58]")]
 pub fn stub_0x2c8a58() -> ! { todo!("0x2c8a58 boost::detail::sp_counted_impl_p<RBX::InvocationMeter<2>>::~sp_counted_impl_p()") }
 
 // 0x2c8a5c — __ZN5boost6detail17sp_counted_impl_pIN3RBX15InvocationMeterILi2EEEE7disposeEv
@@ -332,7 +332,7 @@ pub fn stub_0x2c8b44() -> ! { todo!("0x2c8b44 boost::detail::shared_count::share
 pub fn stub_0x2c8c30() -> ! { todo!("0x2c8c30 boost::detail::sp_counted_impl_p<RBX::ActivityMeter<2>>::~sp_counted_impl_p()") }
 
 // 0x2c8c34 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13ActivityMeterILi2EEEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ActivityMeter<2>>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ActivityMeter<2>>::~sp_counted_impl_p() [0x2c8c34]")]
 pub fn stub_0x2c8c34() -> ! { todo!("0x2c8c34 boost::detail::sp_counted_impl_p<RBX::ActivityMeter<2>>::~sp_counted_impl_p()") }
 
 // 0x2c8c38 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13ActivityMeterILi2EEEE7disposeEv
@@ -392,7 +392,7 @@ pub fn stub_0x2cbe50() -> ! { todo!("0x2cbe50 RBX::Reflection::TType<rbx_core::S
 pub fn stub_0x2cbf08() -> ! { todo!("0x2cbf08 RBX::Reflection::Type::Type<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>(char const*,rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>> *)") }
 
 // 0x2cbfb4 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrINS2_8functionIFNS3_IKNS0_5TupleEEES7_EEEEEED0Ev
-#[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>::~TType()")]
+#[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>::~TType() [0x2cbfb4]")]
 pub fn stub_0x2cbfb4() -> ! { todo!("0x2cbfb4 RBX::Reflection::TType<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>::~TType()") }
 
 // 0x2cdd74 — __ZNK5boost9function1INS_10shared_ptrIKN3RBX10Reflection5TupleEEES6_EclES6_

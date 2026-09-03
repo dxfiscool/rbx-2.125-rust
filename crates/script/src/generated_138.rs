@@ -58,7 +58,7 @@ pub fn stub_0x2c9ee8() -> ! {
 
 // 0x2c9eec — __ZN3RBX3Lua13WeakThreadRef4NodeD2Ev
 // type: void __fastcall(RBX::Lua::WeakThreadRef::Node *__hidden this)
-#[doc(alias = "RBX::Lua::WeakThreadRef::Node::~Node()")]
+#[doc(alias = "RBX::Lua::WeakThreadRef::Node::~Node() [0x2c9eec]")]
 pub fn stub_0x2c9eec() -> ! {
     todo!("0x2c9eec __ZN3RBX3Lua13WeakThreadRef4NodeD2Ev")
 }
@@ -95,7 +95,7 @@ pub fn stub_0x2ca11c() -> ! {
 }
 
 // 0x2ca120 — __ZN3RBX3Lua15WeakFunctionRefC2EP9lua_Statei
-#[doc(alias = "RBX::Lua::WeakFunctionRef::WeakFunctionRef(lua_State *,int)")]
+#[doc(alias = "RBX::Lua::WeakFunctionRef::WeakFunctionRef(lua_State *,int) [0x2ca120]")]
 pub fn stub_0x2ca120() -> ! {
     todo!("0x2ca120 __ZN3RBX3Lua15WeakFunctionRefC2EP9lua_Statei")
 }
@@ -175,14 +175,14 @@ pub fn stub_0x2cad6c() -> ! {
 
 // 0x2cae0c — __ZN3RBX3Lua15WeakFunctionRefD1Ev
 // type: void __fastcall(RBX::Lua::WeakFunctionRef *__hidden this)
-#[doc(alias = "RBX::Lua::WeakFunctionRef::~WeakFunctionRef()")]
+#[doc(alias = "RBX::Lua::WeakFunctionRef::~WeakFunctionRef() [0x2cae0c]")]
 pub fn stub_0x2cae0c() -> ! {
     todo!("0x2cae0c __ZN3RBX3Lua15WeakFunctionRefD1Ev")
 }
 
 // 0x2cae10 — __ZN3RBX3Lua15WeakFunctionRefD2Ev
 // type: void __fastcall(RBX::Lua::WeakFunctionRef *__hidden this)
-#[doc(alias = "RBX::Lua::WeakFunctionRef::~WeakFunctionRef()")]
+#[doc(alias = "RBX::Lua::WeakFunctionRef::~WeakFunctionRef() [0x2cae10]")]
 pub fn stub_0x2cae10() -> ! {
     todo!("0x2cae10 __ZN3RBX3Lua15WeakFunctionRefD2Ev")
 }
@@ -203,13 +203,13 @@ pub fn stub_0x2caf98() -> ! {
 
 // 0x2caf9c — __ZN3RBX3Lua15WeakFunctionRefC2ERKS1_
 // type: _DWORD __fastcall(RBX::Lua::WeakFunctionRef *__hidden this, const RBX::Lua::WeakFunctionRef *)
-#[doc(alias = "RBX::Lua::WeakFunctionRef::WeakFunctionRef(RBX::Lua::WeakFunctionRef const&)")]
+#[doc(alias = "RBX::Lua::WeakFunctionRef::WeakFunctionRef(RBX::Lua::WeakFunctionRef const&) [0x2caf9c]")]
 pub fn stub_0x2caf9c() -> ! {
     todo!("0x2caf9c __ZN3RBX3Lua15WeakFunctionRefC2ERKS1_")
 }
 
 // 0x2cb0fc — __ZN3RBX3Lua6detail13LiveThreadRefC2EP9lua_State
-#[doc(alias = "RBX::Lua::detail::LiveThreadRef::LiveThreadRef(lua_State *)")]
+#[doc(alias = "RBX::Lua::detail::LiveThreadRef::LiveThreadRef(lua_State *) [0x2cb0fc]")]
 pub fn stub_0x2cb0fc() -> ! {
     todo!("0x2cb0fc __ZN3RBX3Lua6detail13LiveThreadRefC2EP9lua_State")
 }
@@ -223,7 +223,7 @@ pub fn stub_0x2cb2ec() -> ! {
 
 // 0x2cb2f0 — __ZN3RBX3Lua6detail13LiveThreadRefD2Ev
 // type: void __fastcall(RBX::Lua::detail::LiveThreadRef *__hidden this)
-#[doc(alias = "RBX::Lua::detail::LiveThreadRef::~LiveThreadRef()")]
+#[doc(alias = "RBX::Lua::detail::LiveThreadRef::~LiveThreadRef() [0x2cb2f0]")]
 pub fn stub_0x2cb2f0() -> ! {
     todo!("0x2cb2f0 __ZN3RBX3Lua6detail13LiveThreadRefD2Ev")
 }
@@ -305,7 +305,7 @@ pub fn stub_0x2cbe58() -> ! {
 }
 
 // 0x2cbf04 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS0_5TupleEEENS4_IFvPNS_3Lua12IAsyncResultEEEEEEEEEED0Ev
-#[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>>::~TType()")]
+#[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>>::~TType() [0x2cbf04]")]
 pub fn stub_0x2cbf04() -> ! {
     todo!("0x2cbf04 __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS0_5TupleEEENS4_IFvPNS_3Lua12IAsyncResultEEEEEEEEEED0Ev")
 }
@@ -323,7 +323,7 @@ pub fn stub_0x2cc020() -> ! {
 }
 
 // 0x2cc0c8 — __ZN3RBX10Reflection5TTypeINS_3Lua15WeakFunctionRefEED0Ev
-#[doc(alias = "RBX::Reflection::TType<RBX::Lua::WeakFunctionRef>::~TType()")]
+#[doc(alias = "RBX::Reflection::TType<RBX::Lua::WeakFunctionRef>::~TType() [0x2cc0c8]")]
 pub fn stub_0x2cc0c8() -> ! {
     todo!("0x2cc0c8 __ZN3RBX10Reflection5TTypeINS_3Lua15WeakFunctionRefEED0Ev")
 }
@@ -491,7 +491,7 @@ pub fn stub_0x2ceaa8() -> ! {
 }
 
 // 0x2ceaac — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AdvLuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd() [0x2ceaac]")]
 pub fn stub_0x2ceaac() -> ! {
     todo!("0x2ceaac __ZN5boost6detail18sp_counted_impl_pdIPN3RBX14AdvLuaDragToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
 }
@@ -530,7 +530,7 @@ pub fn stub_0x2cef40() -> ! {
 
 // 0x2cefe0 — __ZN3RBX13AdvLuaDraggerD1Ev
 // type: void __fastcall(RBX::AdvLuaDragger *__hidden this)
-#[doc(alias = "RBX::AdvLuaDragger::~AdvLuaDragger()")]
+#[doc(alias = "RBX::AdvLuaDragger::~AdvLuaDragger() [0x2cefe0]")]
 pub fn stub_0x2cefe0() -> ! {
     todo!("0x2cefe0 __ZN3RBX13AdvLuaDraggerD1Ev")
 }
@@ -544,28 +544,28 @@ pub fn stub_0x2cefe4() -> ! {
 
 // 0x2cefec — __ZThn36_N3RBX13AdvLuaDraggerD0Ev
 // type: void __fastcall(RBX::AdvLuaDragger *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
+#[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger() [0x2cefec]")]
 pub fn stub_0x2cefec() -> ! {
     todo!("0x2cefec __ZThn36_N3RBX13AdvLuaDraggerD0Ev")
 }
 
 // 0x2ceff4 — __ZN3RBX13AdvLuaDraggerD2Ev
 // type: void __fastcall(RBX::AdvLuaDragger *__hidden this)
-#[doc(alias = "RBX::AdvLuaDragger::~AdvLuaDragger()")]
+#[doc(alias = "RBX::AdvLuaDragger::~AdvLuaDragger() [0x2ceff4]")]
 pub fn stub_0x2ceff4() -> ! {
     todo!("0x2ceff4 __ZN3RBX13AdvLuaDraggerD2Ev")
 }
 
 // 0x2cf168 — __ZThn32_N3RBX13AdvLuaDraggerD1Ev
 // type: void __fastcall(RBX::AdvLuaDragger *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
+#[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger() [0x2cf168]")]
 pub fn stub_0x2cf168() -> ! {
     todo!("0x2cf168 __ZThn32_N3RBX13AdvLuaDraggerD1Ev")
 }
 
 // 0x2cf170 — __ZThn36_N3RBX13AdvLuaDraggerD1Ev
 // type: void __fastcall(RBX::AdvLuaDragger *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger()")]
+#[doc(alias = "non-virtual thunk toRBX::AdvLuaDragger::~AdvLuaDragger() [0x2cf170]")]
 pub fn stub_0x2cf170() -> ! {
     todo!("0x2cf170 __ZThn36_N3RBX13AdvLuaDraggerD1Ev")
 }

@@ -10,7 +10,7 @@ use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
 // 0x31bf0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x31bf0]")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX12LoginServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
 pub fn stub_0x31bf0() -> ! {
     todo!("0x31bf0 boost::detail::sp_counted_impl_pd<RBX::LoginService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
@@ -380,7 +380,7 @@ pub fn stub_0x33548() -> ! {
 
 // 0x3354c — __ZN10TeleporterD0Ev
 // type: void __fastcall(Teleporter *__hidden this)
-#[doc(alias = "Teleporter::~Teleporter()")]
+#[doc(alias = "Teleporter::~Teleporter() [0x3354c]")]
 #[doc(alias = "__ZN10TeleporterD0Ev")]
 pub fn stub_0x3354c() -> ! {
     todo!("0x3354c Teleporter::~Teleporter()")

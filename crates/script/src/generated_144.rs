@@ -10,7 +10,7 @@ use rbx_core::SharedPtr;
 
 // 0x25e1a8 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEED0Ev
 // type: int __fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::~EnumPropDescriptor()")]
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::~EnumPropDescriptor() [0x25e1a8]")]
 pub fn stub_0x25e1a8() -> ! {
     todo!("0x25e1a8 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::~EnumPropDescriptor()")
 }
@@ -185,7 +185,7 @@ pub fn stub_0x25e86c() -> ! {
 
 // 0x25e980 — __ZN3RBX10Reflection14PropDescriptorINS_9SpotLightEfED0Ev
 // type: int __fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::~PropDescriptor() [0x25e980]")]
 pub fn stub_0x25e980() -> ! {
     todo!("0x25e980 RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::~PropDescriptor()")
 }
@@ -227,7 +227,7 @@ pub fn stub_0x25e9f8() -> ! {
 
 // 0x25eb0c — __ZN3RBX10Reflection14PropDescriptorINS_10PointLightEfED0Ev
 // type: int __fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::~PropDescriptor() [0x25eb0c]")]
 pub fn stub_0x25eb0c() -> ! {
     todo!("0x25eb0c RBX::Reflection::PropDescriptor<RBX::PointLight,float>::~PropDescriptor()")
 }
@@ -269,7 +269,7 @@ pub fn stub_0x25eb84() -> ! {
 
 // 0x25ec98 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEfED0Ev
 // type: int __fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::~PropDescriptor() [0x25ec98]")]
 pub fn stub_0x25ec98() -> ! {
     todo!("0x25ec98 RBX::Reflection::PropDescriptor<RBX::Light,float>::~PropDescriptor()")
 }
@@ -311,7 +311,7 @@ pub fn stub_0x25ed10() -> ! {
 
 // 0x25ee24 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EED0Ev
 // type: int __fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::~PropDescriptor() [0x25ee24]")]
 pub fn stub_0x25ee24() -> ! {
     todo!("0x25ee24 RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::~PropDescriptor()")
 }
@@ -353,7 +353,7 @@ pub fn stub_0x25eebc() -> ! {
 
 // 0x25efd0 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEbED0Ev
 // type: int __fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::~PropDescriptor() [0x25efd0]")]
 pub fn stub_0x25efd0() -> ! {
     todo!("0x25efd0 RBX::Reflection::PropDescriptor<RBX::Light,bool>::~PropDescriptor()")
 }
@@ -520,7 +520,7 @@ pub fn stub_0x25ff60() -> ! {
 
 // 0x25ff70 — __ZN5boost16exception_detail10clone_implINS0_14bad_exception_EED0Ev
 // type: int __fastcall(boost::exception_detail::bad_exception_ *)
-#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl() [0x25ff70]")]
 pub fn stub_0x25ff70() -> ! {
     todo!("0x25ff70 boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
 }
@@ -666,7 +666,7 @@ pub fn stub_0x260f70() -> ! {
 
 // 0x260f78 — __ZN3RBX10Reflection16MemberDescriptorD0Ev
 // type: void __fastcall(RBX::Reflection::MemberDescriptor *__hidden this)
-#[doc(alias = "RBX::Reflection::MemberDescriptor::~MemberDescriptor()")]
+#[doc(alias = "RBX::Reflection::MemberDescriptor::~MemberDescriptor() [0x260f78]")]
 pub fn stub_0x260f78() -> ! {
     todo!("0x260f78 RBX::Reflection::MemberDescriptor::~MemberDescriptor()")
 }

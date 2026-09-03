@@ -26,7 +26,7 @@ pub fn stub_0x63c578() -> ! {
 
 // 0x63c580 — __ZThn32_N3RBX8SparklesD0Ev
 // type: void __fastcall(RBX::Sparkles *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles()")]
+#[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles() [0x63c580]")]
 #[doc(alias = "__ZThn32_N3RBX8SparklesD0Ev")]
 pub fn stub_0x63c580() -> ! {
     todo!("0x63c580 __ZThn32_N3RBX8SparklesD0Ev")
@@ -40,7 +40,7 @@ pub fn stub_0x63c588() -> ! {
 
 // 0x63c598 — __ZThn36_N3RBX8SparklesD1Ev
 // type: void __fastcall(RBX::Sparkles *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles()")]
+#[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles() [0x63c598]")]
 #[doc(alias = "__ZThn36_N3RBX8SparklesD1Ev")]
 pub fn stub_0x63c598() -> ! {
     todo!("0x63c598 __ZThn36_N3RBX8SparklesD1Ev")
@@ -48,7 +48,7 @@ pub fn stub_0x63c598() -> ! {
 
 // 0x63c5a0 — __ZThn36_N3RBX8SparklesD0Ev
 // type: void __fastcall(RBX::Sparkles *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles()")]
+#[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles() [0x63c5a0]")]
 #[doc(alias = "__ZThn36_N3RBX8SparklesD0Ev")]
 pub fn stub_0x63c5a0() -> ! {
     todo!("0x63c5a0 __ZThn36_N3RBX8SparklesD0Ev")
@@ -56,7 +56,7 @@ pub fn stub_0x63c5a0() -> ! {
 
 // 0x63c5a8 — __ZThn92_N3RBX8SparklesD1Ev
 // type: void __fastcall(RBX::Sparkles *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles()")]
+#[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles() [0x63c5a8]")]
 #[doc(alias = "__ZThn92_N3RBX8SparklesD1Ev")]
 pub fn stub_0x63c5a8() -> ! {
     todo!("0x63c5a8 __ZThn92_N3RBX8SparklesD1Ev")
@@ -64,7 +64,7 @@ pub fn stub_0x63c5a8() -> ! {
 
 // 0x63c5b0 — __ZThn92_N3RBX8SparklesD0Ev
 // type: void __fastcall(RBX::Sparkles *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles()")]
+#[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles() [0x63c5b0]")]
 #[doc(alias = "__ZThn92_N3RBX8SparklesD0Ev")]
 pub fn stub_0x63c5b0() -> ! {
     todo!("0x63c5b0 __ZThn92_N3RBX8SparklesD0Ev")
@@ -118,7 +118,7 @@ pub fn stub_0x63d500() -> ! {
 
 // 0x63d5ac — __ZN3RBX13SpawnLocationD1Ev
 // type: void __fastcall(RBX::SpawnLocation *__hidden this)
-#[doc(alias = "RBX::SpawnLocation::~SpawnLocation()")]
+#[doc(alias = "RBX::SpawnLocation::~SpawnLocation() [0x63d5ac]")]
 #[doc(alias = "__ZN3RBX13SpawnLocationD1Ev")]
 pub fn stub_0x63d5ac() -> ! {
     todo!("0x63d5ac __ZN3RBX13SpawnLocationD1Ev")
@@ -134,7 +134,7 @@ pub fn stub_0x63d5bc() -> ! {
 
 // 0x63d5c4 — __ZThn36_N3RBX13SpawnLocationD0Ev
 // type: void __fastcall(RBX::SpawnLocation *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")]
+#[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation() [0x63d5c4]")]
 #[doc(alias = "__ZThn36_N3RBX13SpawnLocationD0Ev")]
 pub fn stub_0x63d5c4() -> ! {
     todo!("0x63d5c4 __ZThn36_N3RBX13SpawnLocationD0Ev")
@@ -142,7 +142,7 @@ pub fn stub_0x63d5c4() -> ! {
 
 // 0x63d5cc — __ZThn132_N3RBX13SpawnLocationD0Ev
 // type: void __fastcall(RBX::SpawnLocation *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")]
+#[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation() [0x63d5cc]")]
 #[doc(alias = "__ZThn132_N3RBX13SpawnLocationD0Ev")]
 pub fn stub_0x63d5cc() -> ! {
     todo!("0x63d5cc __ZThn132_N3RBX13SpawnLocationD0Ev")
@@ -150,7 +150,7 @@ pub fn stub_0x63d5cc() -> ! {
 
 // 0x63d5d4 — __ZN3RBX13SpawnLocationD2Ev
 // type: void __fastcall(RBX::SpawnLocation *__hidden this)
-#[doc(alias = "RBX::SpawnLocation::~SpawnLocation()")]
+#[doc(alias = "RBX::SpawnLocation::~SpawnLocation() [0x63d5d4]")]
 #[doc(alias = "__ZN3RBX13SpawnLocationD2Ev")]
 pub fn stub_0x63d5d4() -> ! {
     todo!("0x63d5d4 __ZN3RBX13SpawnLocationD2Ev")
@@ -158,7 +158,7 @@ pub fn stub_0x63d5d4() -> ! {
 
 // 0x63d788 — __ZThn32_N3RBX13SpawnLocationD1Ev
 // type: void __fastcall(RBX::SpawnLocation *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")]
+#[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation() [0x63d788]")]
 #[doc(alias = "__ZThn32_N3RBX13SpawnLocationD1Ev")]
 pub fn stub_0x63d788() -> ! {
     todo!("0x63d788 __ZThn32_N3RBX13SpawnLocationD1Ev")
@@ -166,7 +166,7 @@ pub fn stub_0x63d788() -> ! {
 
 // 0x63d798 — __ZThn36_N3RBX13SpawnLocationD1Ev
 // type: void __fastcall(RBX::SpawnLocation *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")]
+#[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation() [0x63d798]")]
 #[doc(alias = "__ZThn36_N3RBX13SpawnLocationD1Ev")]
 pub fn stub_0x63d798() -> ! {
     todo!("0x63d798 __ZThn36_N3RBX13SpawnLocationD1Ev")
@@ -174,7 +174,7 @@ pub fn stub_0x63d798() -> ! {
 
 // 0x63d7a8 — __ZThn132_N3RBX13SpawnLocationD1Ev
 // type: void __fastcall(RBX::SpawnLocation *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")]
+#[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation() [0x63d7a8]")]
 #[doc(alias = "__ZThn132_N3RBX13SpawnLocationD1Ev")]
 pub fn stub_0x63d7a8() -> ! {
     todo!("0x63d7a8 __ZThn132_N3RBX13SpawnLocationD1Ev")
@@ -206,7 +206,7 @@ pub fn stub_0x63ddd8() -> ! {
 
 // 0x63de78 — __ZN3RBX14SpawnerServiceD1Ev
 // type: void __fastcall(RBX::SpawnerService *__hidden this)
-#[doc(alias = "RBX::SpawnerService::~SpawnerService()")]
+#[doc(alias = "RBX::SpawnerService::~SpawnerService() [0x63de78]")]
 #[doc(alias = "__ZN3RBX14SpawnerServiceD1Ev")]
 pub fn stub_0x63de78() -> ! {
     todo!("0x63de78 __ZN3RBX14SpawnerServiceD1Ev")
@@ -222,7 +222,7 @@ pub fn stub_0x63de7c() -> ! {
 
 // 0x63de84 — __ZThn36_N3RBX14SpawnerServiceD0Ev
 // type: void __fastcall(RBX::SpawnerService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpawnerService::~SpawnerService()")]
+#[doc(alias = "non-virtual thunk toRBX::SpawnerService::~SpawnerService() [0x63de84]")]
 #[doc(alias = "__ZThn36_N3RBX14SpawnerServiceD0Ev")]
 pub fn stub_0x63de84() -> ! {
     todo!("0x63de84 __ZThn36_N3RBX14SpawnerServiceD0Ev")
@@ -230,7 +230,7 @@ pub fn stub_0x63de84() -> ! {
 
 // 0x63de8c — __ZN3RBX14SpawnerServiceD2Ev
 // type: void __fastcall(RBX::SpawnerService *__hidden this)
-#[doc(alias = "RBX::SpawnerService::~SpawnerService()")]
+#[doc(alias = "RBX::SpawnerService::~SpawnerService() [0x63de8c]")]
 #[doc(alias = "__ZN3RBX14SpawnerServiceD2Ev")]
 pub fn stub_0x63de8c() -> ! {
     todo!("0x63de8c __ZN3RBX14SpawnerServiceD2Ev")
@@ -238,7 +238,7 @@ pub fn stub_0x63de8c() -> ! {
 
 // 0x63ded4 — __ZThn32_N3RBX14SpawnerServiceD1Ev
 // type: void __fastcall(RBX::SpawnerService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpawnerService::~SpawnerService()")]
+#[doc(alias = "non-virtual thunk toRBX::SpawnerService::~SpawnerService() [0x63ded4]")]
 #[doc(alias = "__ZThn32_N3RBX14SpawnerServiceD1Ev")]
 pub fn stub_0x63ded4() -> ! {
     todo!("0x63ded4 __ZThn32_N3RBX14SpawnerServiceD1Ev")
@@ -246,7 +246,7 @@ pub fn stub_0x63ded4() -> ! {
 
 // 0x63dedc — __ZThn36_N3RBX14SpawnerServiceD1Ev
 // type: void __fastcall(RBX::SpawnerService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpawnerService::~SpawnerService()")]
+#[doc(alias = "non-virtual thunk toRBX::SpawnerService::~SpawnerService() [0x63dedc]")]
 #[doc(alias = "__ZThn36_N3RBX14SpawnerServiceD1Ev")]
 pub fn stub_0x63dedc() -> ! {
     todo!("0x63dedc __ZThn36_N3RBX14SpawnerServiceD1Ev")
@@ -452,7 +452,7 @@ pub fn stub_0x6418d8() -> ! {
 
 // 0x6419e0 — __ZN3RBX12SpecialShapeD0Ev
 // type: void __fastcall(RBX::SpecialShape *__hidden this)
-#[doc(alias = "RBX::SpecialShape::~SpecialShape()")]
+#[doc(alias = "RBX::SpecialShape::~SpecialShape() [0x6419e0]")]
 #[doc(alias = "__ZN3RBX12SpecialShapeD0Ev")]
 pub fn stub_0x6419e0() -> ! {
     todo!("0x6419e0 __ZN3RBX12SpecialShapeD0Ev")
@@ -474,7 +474,7 @@ pub fn stub_0x641b08() -> ! {
 
 // 0x641c10 — __ZThn32_N3RBX12SpecialShapeD0Ev
 // type: void __fastcall(RBX::SpecialShape *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpecialShape::~SpecialShape()")]
+#[doc(alias = "non-virtual thunk toRBX::SpecialShape::~SpecialShape() [0x641c10]")]
 #[doc(alias = "__ZThn32_N3RBX12SpecialShapeD0Ev")]
 pub fn stub_0x641c10() -> ! {
     todo!("0x641c10 __ZThn32_N3RBX12SpecialShapeD0Ev")
@@ -488,7 +488,7 @@ pub fn stub_0x641d2c() -> ! {
 
 // 0x641d3c — __ZThn36_N3RBX12SpecialShapeD1Ev
 // type: void __fastcall(RBX::SpecialShape *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpecialShape::~SpecialShape()")]
+#[doc(alias = "non-virtual thunk toRBX::SpecialShape::~SpecialShape() [0x641d3c]")]
 #[doc(alias = "__ZThn36_N3RBX12SpecialShapeD1Ev")]
 pub fn stub_0x641d3c() -> ! {
     todo!("0x641d3c __ZThn36_N3RBX12SpecialShapeD1Ev")
@@ -496,7 +496,7 @@ pub fn stub_0x641d3c() -> ! {
 
 // 0x641e44 — __ZThn36_N3RBX12SpecialShapeD0Ev
 // type: void __fastcall(RBX::SpecialShape *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpecialShape::~SpecialShape()")]
+#[doc(alias = "non-virtual thunk toRBX::SpecialShape::~SpecialShape() [0x641e44]")]
 #[doc(alias = "__ZThn36_N3RBX12SpecialShapeD0Ev")]
 pub fn stub_0x641e44() -> ! {
     todo!("0x641e44 __ZThn36_N3RBX12SpecialShapeD0Ev")
@@ -552,7 +552,7 @@ pub fn stub_0x6438cc() -> ! {
 
 // 0x6439d4 — __ZN3RBX8FileMeshD0Ev
 // type: void __fastcall(RBX::FileMesh *__hidden this)
-#[doc(alias = "RBX::FileMesh::~FileMesh()")]
+#[doc(alias = "RBX::FileMesh::~FileMesh() [0x6439d4]")]
 #[doc(alias = "__ZN3RBX8FileMeshD0Ev")]
 pub fn stub_0x6439d4() -> ! {
     todo!("0x6439d4 __ZN3RBX8FileMeshD0Ev")
@@ -568,7 +568,7 @@ pub fn stub_0x643afc() -> ! {
 
 // 0x643c04 — __ZThn32_N3RBX8FileMeshD0Ev
 // type: void __fastcall(RBX::FileMesh *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::FileMesh::~FileMesh()")]
+#[doc(alias = "non-virtual thunk toRBX::FileMesh::~FileMesh() [0x643c04]")]
 #[doc(alias = "__ZThn32_N3RBX8FileMeshD0Ev")]
 pub fn stub_0x643c04() -> ! {
     todo!("0x643c04 __ZThn32_N3RBX8FileMeshD0Ev")
@@ -576,7 +576,7 @@ pub fn stub_0x643c04() -> ! {
 
 // 0x643d30 — __ZThn36_N3RBX8FileMeshD1Ev
 // type: void __fastcall(RBX::FileMesh *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::FileMesh::~FileMesh()")]
+#[doc(alias = "non-virtual thunk toRBX::FileMesh::~FileMesh() [0x643d30]")]
 #[doc(alias = "__ZThn36_N3RBX8FileMeshD1Ev")]
 pub fn stub_0x643d30() -> ! {
     todo!("0x643d30 __ZThn36_N3RBX8FileMeshD1Ev")
@@ -584,7 +584,7 @@ pub fn stub_0x643d30() -> ! {
 
 // 0x643e38 — __ZThn36_N3RBX8FileMeshD0Ev
 // type: void __fastcall(RBX::FileMesh *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::FileMesh::~FileMesh()")]
+#[doc(alias = "non-virtual thunk toRBX::FileMesh::~FileMesh() [0x643e38]")]
 #[doc(alias = "__ZThn36_N3RBX8FileMeshD0Ev")]
 pub fn stub_0x643e38() -> ! {
     todo!("0x643e38 __ZThn36_N3RBX8FileMeshD0Ev")

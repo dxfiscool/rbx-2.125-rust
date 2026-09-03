@@ -40,7 +40,7 @@ pub fn stub_0x251550() -> ! { todo!("0x251550 boost::exception_detail::clone_imp
 
 // 0x25160c — __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian16bad_day_of_monthEEEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
-#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>>::~clone_impl() [0x25160c]")]
 pub fn stub_0x25160c() -> ! { todo!("0x25160c non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>>::~clone_impl()") }
 
 // 0x2516c8 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian16bad_day_of_monthEEEE5cloneEv
@@ -55,17 +55,17 @@ pub fn stub_0x25178c() -> ! { todo!("0x25178c virtual thunk toboost::exception_d
 
 // 0x25179c — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian16bad_day_of_monthEEEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
-#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>>::~clone_impl()")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>>::~clone_impl() [0x25179c]")]
 pub fn stub_0x25179c() -> ! { todo!("0x25179c virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>>::~clone_impl()") }
 
 // 0x251870 — __ZN5boost16exception_detail19error_info_injectorINS_9gregorian16bad_day_of_monthEED0Ev
 // type: void __fastcall(std::logic_error *, int, int, int, void *, int)
-#[doc(alias = "boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>::~error_info_injector()")]
+#[doc(alias = "boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>::~error_info_injector() [0x251870]")]
 pub fn stub_0x251870() -> ! { todo!("0x251870 boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>::~error_info_injector()") }
 
 // 0x25192c — __ZThn8_N5boost16exception_detail19error_info_injectorINS_9gregorian16bad_day_of_monthEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
-#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>::~error_info_injector()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>::~error_info_injector() [0x25192c]")]
 pub fn stub_0x25192c() -> ! { todo!("0x25192c non-virtual thunk toboost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>::~error_info_injector()") }
 
 // 0x2519e8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian16bad_day_of_monthEEEEC1ERKS6_NS6_9clone_tagE
@@ -125,7 +125,7 @@ pub fn stub_0x252320() -> ! { todo!("0x252320 virtual thunk toboost::exception_d
 
 // 0x2523ec — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEED0Ev
 // type: void __fastcall(std::logic_error *, int, int, int, void *, int)
-#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::~clone_impl()")]
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::~clone_impl() [0x2523ec]")]
 pub fn stub_0x2523ec() -> ! { todo!("0x2523ec boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::~clone_impl()") }
 
 // 0x2524a8 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEE5cloneEv
@@ -150,7 +150,7 @@ pub fn stub_0x2526e0() -> ! { todo!("0x2526e0 boost::exception_detail::clone_imp
 
 // 0x252820 — __ZN5boost16exception_detail19error_info_injectorINS_9gregorian9bad_monthEED0Ev
 // type: void __fastcall(std::logic_error *, int, int, int, void *, int)
-#[doc(alias = "boost::exception_detail::error_info_injector<boost::gregorian::bad_month>::~error_info_injector()")]
+#[doc(alias = "boost::exception_detail::error_info_injector<boost::gregorian::bad_month>::~error_info_injector() [0x252820]")]
 pub fn stub_0x252820() -> ! { todo!("0x252820 boost::exception_detail::error_info_injector<boost::gregorian::bad_month>::~error_info_injector()") }
 
 // 0x2528e0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEEC1ERKS6_NS6_9clone_tagE
@@ -205,7 +205,7 @@ pub fn stub_0x253000() -> ! { todo!("0x253000 boost::exception_detail::clone_imp
 
 // 0x2530bc — __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
-#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl() [0x2530bc]")]
 pub fn stub_0x2530bc() -> ! { todo!("0x2530bc non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()") }
 
 // 0x253178 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEE5cloneEv
@@ -220,17 +220,17 @@ pub fn stub_0x25323c() -> ! { todo!("0x25323c virtual thunk toboost::exception_d
 
 // 0x25324c — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
-#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl() [0x25324c]")]
 pub fn stub_0x25324c() -> ! { todo!("0x25324c virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::~clone_impl()") }
 
 // 0x253320 — __ZN5boost16exception_detail19error_info_injectorINS_9gregorian8bad_yearEED0Ev
 // type: void __fastcall(std::logic_error *, int, int, int, void *, int)
-#[doc(alias = "boost::exception_detail::error_info_injector<boost::gregorian::bad_year>::~error_info_injector()")]
+#[doc(alias = "boost::exception_detail::error_info_injector<boost::gregorian::bad_year>::~error_info_injector() [0x253320]")]
 pub fn stub_0x253320() -> ! { todo!("0x253320 boost::exception_detail::error_info_injector<boost::gregorian::bad_year>::~error_info_injector()") }
 
 // 0x2533dc — __ZThn8_N5boost16exception_detail19error_info_injectorINS_9gregorian8bad_yearEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
-#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::gregorian::bad_year>::~error_info_injector()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::gregorian::bad_year>::~error_info_injector() [0x2533dc]")]
 pub fn stub_0x2533dc() -> ! { todo!("0x2533dc non-virtual thunk toboost::exception_detail::error_info_injector<boost::gregorian::bad_year>::~error_info_injector()") }
 
 // 0x253498 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEEC1ERKS6_NS6_9clone_tagE
@@ -544,7 +544,7 @@ pub fn stub_0x256ef8() -> ! { todo!("0x256ef8 RBX::Reflection::EnumDesc<RBX::Htt
 
 // 0x256efc — __ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEEC2Ev
 // type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::EnumDesc(void)")]
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::EnumDesc(void) [0x256efc]")]
 pub fn stub_0x256efc() -> ! { todo!("0x256efc RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::EnumDesc(void)") }
 
 // 0x2570c0 — __ZN3RBX15StringConverterINS_11HttpService15HttpContentTypeEE14convertToValueERKSsRS2_
@@ -609,7 +609,7 @@ pub fn stub_0x2580ac() -> ! { todo!("0x2580ac RBX::HttpService::~HttpService()")
 
 // 0x2580b0 — __ZN3RBX11HttpServiceD0Ev
 // type: void __fastcall(RBX::HttpService *__hidden this)
-#[doc(alias = "RBX::HttpService::~HttpService()")]
+#[doc(alias = "RBX::HttpService::~HttpService() [0x2580b0]")]
 pub fn stub_0x2580b0() -> ! { todo!("0x2580b0 RBX::HttpService::~HttpService()") }
 
 // 0x258150 — __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv
@@ -624,7 +624,7 @@ pub fn stub_0x258160() -> ! { todo!("0x258160 non-virtual thunk toRBX::HttpServi
 
 // 0x258168 — __ZThn32_N3RBX11HttpServiceD0Ev
 // type: void __fastcall(RBX::HttpService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::HttpService::~HttpService()")]
+#[doc(alias = "non-virtual thunk toRBX::HttpService::~HttpService() [0x258168]")]
 pub fn stub_0x258168() -> ! { todo!("0x258168 non-virtual thunk toRBX::HttpService::~HttpService()") }
 
 // 0x25820c — __ZThn32_NK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv
@@ -634,12 +634,12 @@ pub fn stub_0x25820c() -> ! { todo!("0x25820c __ZThn32_NK3RBX14FactoryProductINS
 
 // 0x25821c — __ZThn36_N3RBX11HttpServiceD1Ev
 // type: void __fastcall(RBX::HttpService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::HttpService::~HttpService()")]
+#[doc(alias = "non-virtual thunk toRBX::HttpService::~HttpService() [0x25821c]")]
 pub fn stub_0x25821c() -> ! { todo!("0x25821c non-virtual thunk toRBX::HttpService::~HttpService()") }
 
 // 0x258224 — __ZThn36_N3RBX11HttpServiceD0Ev
 // type: void __fastcall(RBX::HttpService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::HttpService::~HttpService()")]
+#[doc(alias = "non-virtual thunk toRBX::HttpService::~HttpService() [0x258224]")]
 pub fn stub_0x258224() -> ! { todo!("0x258224 non-virtual thunk toRBX::HttpService::~HttpService()") }
 
 // 0x2582c8 — __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E17static_getCreatorEv
@@ -697,7 +697,7 @@ pub fn stub_0x2589f0() -> ! { todo!("0x2589f0 boost::detail::sp_counted_impl_pd<
 
 // 0x2589f4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x2589f4]")]
 pub fn stub_0x2589f4() -> ! { todo!("0x2589f4 boost::detail::sp_counted_impl_pd<RBX::HttpService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()") }
 
 // 0x2589f8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11HttpServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv

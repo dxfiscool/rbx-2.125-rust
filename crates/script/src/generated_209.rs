@@ -54,7 +54,7 @@ pub fn stub_0x363e70() -> ! {
 }
 
 // 0x363e74 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13HeartbeatTaskEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::HeartbeatTask>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::HeartbeatTask>::~sp_counted_impl_p() [0x363e74]")]
 pub fn stub_0x363e74() -> ! {
     todo!("0x363e74 boost::detail::sp_counted_impl_p<RBX::HeartbeatTask>::~sp_counted_impl_p()")
 }
@@ -124,7 +124,7 @@ pub fn stub_0x364260() -> ! {
 }
 
 // 0x364264 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10PhysicsJobEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::PhysicsJob>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::PhysicsJob>::~sp_counted_impl_p() [0x364264]")]
 pub fn stub_0x364264() -> ! {
     todo!("0x364264 boost::detail::sp_counted_impl_p<RBX::PhysicsJob>::~sp_counted_impl_p()")
 }
@@ -211,7 +211,7 @@ pub fn stub_0x3646d0() -> ! {
 }
 
 // 0x3647d4 — __ZN3RBX10Reflection13BoundFuncDescINS_10RunServiceEFvvELi0EED0Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::RunService,void ()(void),0>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::RunService,void ()(void),0>::~BoundFuncDesc() [0x3647d4]")]
 pub fn stub_0x3647d4() -> ! {
     todo!("0x3647d4 RBX::Reflection::BoundFuncDesc<RBX::RunService,void ()(void),0>::~BoundFuncDesc()")
 }
@@ -230,7 +230,7 @@ pub fn stub_0x3648ac() -> ! {
 }
 
 // 0x364a30 — __ZN3RBX10Reflection9EventDescINS_10RunServiceEFvdEN3rbx6signalIS3_EEMS2_S6_ED0Ev
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::RunService,void ()(double),rbx::signal<void ()(double)>,rbx::signal<void ()(double)> RBX::RunService::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::RunService,void ()(double),rbx::signal<void ()(double)>,rbx::signal<void ()(double)> RBX::RunService::*>::~EventDesc() [0x364a30]")]
 pub fn stub_0x364a30() -> ! {
     todo!("0x364a30 RBX::Reflection::EventDesc<RBX::RunService,void ()(double),rbx::signal<void ()(double)>,rbx::signal<void ()(double)> RBX::RunService::*>::~EventDesc()")
 }
@@ -314,13 +314,13 @@ pub fn stub_0x365008() -> ! {
 }
 
 // 0x365018 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorIN3rbx22bad_placement_any_castEEEED0Ev
-#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl() [0x365018]")]
 pub fn stub_0x365018() -> ! {
     todo!("0x365018 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>>::~clone_impl()")
 }
 
 // 0x365038 — __ZThn4_N5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED0Ev
-#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector() [0x365038]")]
 pub fn stub_0x365038() -> ! {
     todo!("0x365038 non-virtual thunk toboost::exception_detail::error_info_injector<rbx::bad_placement_any_cast>::~error_info_injector()")
 }
@@ -488,7 +488,7 @@ pub fn stub_0x3664b0() -> ! {
 }
 
 // 0x3665c0 — __ZN3rbx7signals6signalIFvdEE13callable_slotIN5boost8functionIS2_EEED0Ev
-#[doc(alias = "rbx::signals::signal<void ()(double)>::callable_slot<boost::function<void ()(double)>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(double)>::callable_slot<boost::function<void ()(double)>>::~callable_slot() [0x3665c0]")]
 pub fn stub_0x3665c0() -> ! {
     todo!("0x3665c0 rbx::signals::signal<void ()(double)>::callable_slot<boost::function<void ()(double)>>::~callable_slot()")
 }
@@ -550,7 +550,7 @@ pub fn stub_0x366ad0() -> ! {
 }
 
 // 0x366be0 — __ZN3rbx8callableINS_7signals6signalIFvdEE4slotEN5boost8functionIS3_EELi1ES3_ED0Ev
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::~callable() [0x366be0]")]
 pub fn stub_0x366be0() -> ! {
     todo!("0x366be0 rbx::callable<rbx::signals::signal<void ()(double)>::slot,boost::function<void ()(double)>,1,void ()(double)>::~callable()")
 }
@@ -562,7 +562,7 @@ pub fn stub_0x366d10() -> ! {
 }
 
 // 0x366d3c — __ZN3rbx7signals6signalIFvdEE4slotD0Ev
-#[doc(alias = "rbx::signals::signal<void ()(double)>::slot::~slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(double)>::slot::~slot() [0x366d3c]")]
 pub fn stub_0x366d3c() -> ! {
     todo!("0x366d3c rbx::signals::signal<void ()(double)>::slot::~slot()")
 }
@@ -575,7 +575,7 @@ pub fn stub_0x366e10() -> ! {
 
 // 0x366e40 — __ZN3RBX10Reflection15EventDescriptorD0Ev
 // type: void __fastcall(RBX::Reflection::EventDescriptor *__hidden this)
-#[doc(alias = "RBX::Reflection::EventDescriptor::~EventDescriptor()")]
+#[doc(alias = "RBX::Reflection::EventDescriptor::~EventDescriptor() [0x366e40]")]
 pub fn stub_0x366e40() -> ! {
     todo!("0x366e40 RBX::Reflection::EventDescriptor::~EventDescriptor()")
 }
@@ -588,7 +588,7 @@ pub fn stub_0x366ef4() -> ! {
 
 // 0x3670e4 — __ZN3RBX10Reflection9EventDescINS_10RunServiceEFvddEN3rbx6signalIS3_EEMS2_S6_ED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::RunService,void ()(double,double),rbx::signal<void ()(double,double)>,rbx::signal<void ()(double,double)> RBX::RunService::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::RunService,void ()(double,double),rbx::signal<void ()(double,double)>,rbx::signal<void ()(double,double)> RBX::RunService::*>::~EventDesc() [0x3670e4]")]
 pub fn stub_0x3670e4() -> ! {
     todo!("0x3670e4 RBX::Reflection::EventDesc<RBX::RunService,void ()(double,double),rbx::signal<void ()(double,double)>,rbx::signal<void ()(double,double)> RBX::RunService::*>::~EventDesc()")
 }
@@ -740,7 +740,7 @@ pub fn stub_0x368314() -> ! {
 
 // 0x368424 — __ZN3rbx7signals6signalIFvddEE13callable_slotIN5boost8functionIS2_EEED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "rbx::signals::signal<void ()(double,double)>::callable_slot<boost::function<void ()(double,double)>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(double,double)>::callable_slot<boost::function<void ()(double,double)>>::~callable_slot() [0x368424]")]
 pub fn stub_0x368424() -> ! {
     todo!("0x368424 rbx::signals::signal<void ()(double,double)>::callable_slot<boost::function<void ()(double,double)>>::~callable_slot()")
 }
@@ -801,7 +801,7 @@ pub fn stub_0x36895c() -> ! {
 }
 
 // 0x368a6c — __ZN3rbx8callableINS_7signals6signalIFvddEE4slotEN5boost8functionIS3_EELi2ES3_ED0Ev
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::~callable() [0x368a6c]")]
 pub fn stub_0x368a6c() -> ! {
     todo!("0x368a6c rbx::callable<rbx::signals::signal<void ()(double,double)>::slot,boost::function<void ()(double,double)>,2,void ()(double,double)>::~callable()")
 }
@@ -814,7 +814,7 @@ pub fn stub_0x368b9c() -> ! {
 
 // 0x368bc8 — __ZN3rbx7signals6signalIFvddEE4slotD0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "rbx::signals::signal<void ()(double,double)>::slot::~slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(double,double)>::slot::~slot() [0x368bc8]")]
 pub fn stub_0x368bc8() -> ! {
     todo!("0x368bc8 rbx::signals::signal<void ()(double,double)>::slot::~slot()")
 }
@@ -872,7 +872,7 @@ pub fn stub_0x3692bc() -> ! {
 
 // 0x3693b8 — __ZN3RBX13HeartbeatTaskD0Ev
 // type: void __fastcall(RBX::HeartbeatTask *__hidden this)
-#[doc(alias = "RBX::HeartbeatTask::~HeartbeatTask()")]
+#[doc(alias = "RBX::HeartbeatTask::~HeartbeatTask() [0x3693b8]")]
 pub fn stub_0x3693b8() -> ! {
     todo!("0x3693b8 RBX::HeartbeatTask::~HeartbeatTask()")
 }
@@ -927,7 +927,7 @@ pub fn stub_0x3698b8() -> ! {
 
 // 0x369988 — __ZN3RBX10PhysicsJobD0Ev
 // type: void __fastcall(RBX::PhysicsJob *__hidden this)
-#[doc(alias = "RBX::PhysicsJob::~PhysicsJob()")]
+#[doc(alias = "RBX::PhysicsJob::~PhysicsJob() [0x369988]")]
 pub fn stub_0x369988() -> ! {
     todo!("0x369988 RBX::PhysicsJob::~PhysicsJob()")
 }

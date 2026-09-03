@@ -750,7 +750,7 @@ pub fn stub_0x2e4518() -> ! {
 
 // 0x2e451c — __ZN3RBX10HammerToolC2EPNS_9WorkspaceE
 // type: _DWORD __fastcall(RBX::HammerTool *__hidden this, RBX::Workspace *)
-#[doc(alias = "RBX::HammerTool::HammerTool(RBX::Workspace *)")]
+#[doc(alias = "RBX::HammerTool::HammerTool(RBX::Workspace *) [0x2e451c]")]
 pub fn stub_0x2e451c() -> ! {
     todo!("0x2e451c RBX::HammerTool::HammerTool(RBX::Workspace *)")
 }
@@ -764,7 +764,7 @@ pub fn stub_0x2e4624() -> ! {
 
 // 0x2e46c4 — __ZN3RBX10HammerToolD1Ev
 // type: void __fastcall(RBX::HammerTool *__hidden this)
-#[doc(alias = "RBX::HammerTool::~HammerTool()")]
+#[doc(alias = "RBX::HammerTool::~HammerTool() [0x2e46c4]")]
 pub fn stub_0x2e46c4() -> ! {
     todo!("0x2e46c4 RBX::HammerTool::~HammerTool()")
 }
@@ -778,14 +778,14 @@ pub fn stub_0x2e46c8() -> ! {
 
 // 0x2e46d0 — __ZN3RBX10HammerToolD2Ev
 // type: void __fastcall(RBX::HammerTool *__hidden this)
-#[doc(alias = "RBX::HammerTool::~HammerTool()")]
+#[doc(alias = "RBX::HammerTool::~HammerTool() [0x2e46d0]")]
 pub fn stub_0x2e46d0() -> ! {
     todo!("0x2e46d0 RBX::HammerTool::~HammerTool()")
 }
 
 // 0x2e47ec — __ZThn36_N3RBX10HammerToolD1Ev
 // type: void __fastcall(RBX::HammerTool *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::HammerTool::~HammerTool()")]
+#[doc(alias = "non-virtual thunk toRBX::HammerTool::~HammerTool() [0x2e47ec]")]
 pub fn stub_0x2e47ec() -> ! {
     todo!("0x2e47ec non-virtual thunk toRBX::HammerTool::~HammerTool()")
 }

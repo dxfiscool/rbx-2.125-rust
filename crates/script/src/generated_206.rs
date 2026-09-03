@@ -76,7 +76,7 @@ pub fn stub_0x2eaea0() -> ! {
 }
 
 // 0x2eaea4 — __ZN3RBX11MegaDraggerC2EPNS_12PartInstanceERKSt6vectorIPNS_10PVInstanceESaIS5_EEPNS_12RootInstanceENS_4DRAG8JoinTypeE
-#[doc(alias = "RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)")]
+#[doc(alias = "RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>> const&,RBX::RootInstance *,RBX::DRAG::JoinType) [0x2eaea4]")]
 pub fn stub_0x2eaea4() -> ! {
     todo!("0x2eaea4 RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)")
 }
@@ -90,7 +90,7 @@ pub fn stub_0x2eafd4() -> ! {
 
 // 0x2eafd8 — __ZN3RBX11MegaDraggerC2EPNS_12PartInstanceERKSt6vectorIN5boost8weak_ptrIS1_EESaIS6_EEPNS_12RootInstanceENS_4DRAG8JoinTypeE
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
-#[doc(alias = "RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<rbx_core::Weak<RBX::PartInstance>,std::allocator<rbx_core::Weak<RBX::PartInstance>>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)")]
+#[doc(alias = "RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<rbx_core::Weak<RBX::PartInstance>,std::allocator<rbx_core::Weak<RBX::PartInstance>>> const&,RBX::RootInstance *,RBX::DRAG::JoinType) [0x2eafd8]")]
 pub fn stub_0x2eafd8() -> ! {
     todo!("0x2eafd8 RBX::MegaDragger::MegaDragger(RBX::PartInstance *,std::vector<rbx_core::Weak<RBX::PartInstance>,std::allocator<rbx_core::Weak<RBX::PartInstance>>> const&,RBX::RootInstance *,RBX::DRAG::JoinType)")
 }
@@ -104,7 +104,7 @@ pub fn stub_0x2eb0e8() -> ! {
 
 // 0x2eb0ec — __ZN3RBX11MegaDraggerD2Ev
 // type: void __fastcall(RBX::MegaDragger *__hidden this)
-#[doc(alias = "RBX::MegaDragger::~MegaDragger()")]
+#[doc(alias = "RBX::MegaDragger::~MegaDragger() [0x2eb0ec]")]
 pub fn stub_0x2eb0ec() -> ! {
     todo!("0x2eb0ec RBX::MegaDragger::~MegaDragger()")
 }
@@ -277,7 +277,7 @@ pub fn stub_0x2ee818() -> ! {
 
 // 0x2ee900 — __ZN3RBX18MoveResizeJoinToolD0Ev
 // type: void __fastcall(RBX::MoveResizeJoinTool *__hidden this)
-#[doc(alias = "RBX::MoveResizeJoinTool::~MoveResizeJoinTool()")]
+#[doc(alias = "RBX::MoveResizeJoinTool::~MoveResizeJoinTool() [0x2ee900]")]
 pub fn stub_0x2ee900() -> ! {
     todo!("0x2ee900 RBX::MoveResizeJoinTool::~MoveResizeJoinTool()")
 }
@@ -291,7 +291,7 @@ pub fn stub_0x2ee9f8() -> ! {
 
 // 0x2eeadc — __ZThn36_N3RBX18MoveResizeJoinToolD0Ev
 // type: void __fastcall(RBX::MoveResizeJoinTool *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::MoveResizeJoinTool::~MoveResizeJoinTool()")]
+#[doc(alias = "non-virtual thunk toRBX::MoveResizeJoinTool::~MoveResizeJoinTool() [0x2eeadc]")]
 pub fn stub_0x2eeadc() -> ! {
     todo!("0x2eeadc non-virtual thunk toRBX::MoveResizeJoinTool::~MoveResizeJoinTool()")
 }
@@ -311,7 +311,7 @@ pub fn stub_0x2eee88() -> ! {
 
 // 0x2eee8c — __ZN3RBX8NullToolC2EPNS_9WorkspaceE
 // type: _DWORD __fastcall(RBX::NullTool *__hidden this, RBX::Workspace *)
-#[doc(alias = "RBX::NullTool::NullTool(RBX::Workspace *)")]
+#[doc(alias = "RBX::NullTool::NullTool(RBX::Workspace *) [0x2eee8c]")]
 pub fn stub_0x2eee8c() -> ! {
     todo!("0x2eee8c RBX::NullTool::NullTool(RBX::Workspace *)")
 }
@@ -325,7 +325,7 @@ pub fn stub_0x2eef84() -> ! {
 
 // 0x2ef024 — __ZN3RBX8NullToolD1Ev
 // type: void __fastcall(RBX::NullTool *__hidden this)
-#[doc(alias = "RBX::NullTool::~NullTool()")]
+#[doc(alias = "RBX::NullTool::~NullTool() [0x2ef024]")]
 pub fn stub_0x2ef024() -> ! {
     todo!("0x2ef024 RBX::NullTool::~NullTool()")
 }
@@ -339,14 +339,14 @@ pub fn stub_0x2ef028() -> ! {
 
 // 0x2ef030 — __ZN3RBX8NullToolD2Ev
 // type: void __fastcall(RBX::NullTool *__hidden this)
-#[doc(alias = "RBX::NullTool::~NullTool()")]
+#[doc(alias = "RBX::NullTool::~NullTool() [0x2ef030]")]
 pub fn stub_0x2ef030() -> ! {
     todo!("0x2ef030 RBX::NullTool::~NullTool()")
 }
 
 // 0x2ef124 — __ZThn36_N3RBX8NullToolD1Ev
 // type: void __fastcall(RBX::NullTool *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::NullTool::~NullTool()")]
+#[doc(alias = "non-virtual thunk toRBX::NullTool::~NullTool() [0x2ef124]")]
 pub fn stub_0x2ef124() -> ! {
     todo!("0x2ef124 non-virtual thunk toRBX::NullTool::~NullTool()")
 }
@@ -360,7 +360,7 @@ pub fn stub_0x2ef12c() -> ! {
 
 // 0x2ef130 — __ZN3RBX11NewNullToolC2EPNS_9WorkspaceE
 // type: _DWORD __fastcall(RBX::NewNullTool *__hidden this, RBX::Workspace *)
-#[doc(alias = "RBX::NewNullTool::NewNullTool(RBX::Workspace *)")]
+#[doc(alias = "RBX::NewNullTool::NewNullTool(RBX::Workspace *) [0x2ef130]")]
 pub fn stub_0x2ef130() -> ! {
     todo!("0x2ef130 RBX::NewNullTool::NewNullTool(RBX::Workspace *)")
 }
@@ -374,7 +374,7 @@ pub fn stub_0x2ef22c() -> ! {
 
 // 0x2ef2f4 — __ZN3RBX11NewNullToolD1Ev
 // type: void __fastcall(RBX::NewNullTool *__hidden this)
-#[doc(alias = "RBX::NewNullTool::~NewNullTool()")]
+#[doc(alias = "RBX::NewNullTool::~NewNullTool() [0x2ef2f4]")]
 pub fn stub_0x2ef2f4() -> ! {
     todo!("0x2ef2f4 RBX::NewNullTool::~NewNullTool()")
 }
@@ -388,7 +388,7 @@ pub fn stub_0x2ef328() -> ! {
 
 // 0x2ef330 — __ZThn36_N3RBX11NewNullToolD1Ev
 // type: void __fastcall(RBX::NewNullTool *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::NewNullTool::~NewNullTool()")]
+#[doc(alias = "non-virtual thunk toRBX::NewNullTool::~NewNullTool() [0x2ef330]")]
 pub fn stub_0x2ef330() -> ! {
     todo!("0x2ef330 non-virtual thunk toRBX::NewNullTool::~NewNullTool()")
 }
@@ -560,7 +560,7 @@ pub fn stub_0x2f0948() -> ! {
 
 // 0x2f094c — __ZN3RBX12PartDragToolC2EPNS_12PartInstanceERKN3G3D7Vector3EPNS_9WorkspaceEN5boost10shared_ptrINS_8InstanceEEE
 // type: int __fastcall(int, int, int, Workspace *, struct _Unwind_Exception *lpuexcpt, int, void *, int, int, RBX::MouseCommand *, int, int, void *, void *, int, int, int, int)
-#[doc(alias = "RBX::PartDragTool::PartDragTool(RBX::PartInstance *,G3D::Vector3 const&,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>)")]
+#[doc(alias = "RBX::PartDragTool::PartDragTool(RBX::PartInstance *,G3D::Vector3 const&,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>) [0x2f094c]")]
 pub fn stub_0x2f094c() -> ! {
     todo!("0x2f094c RBX::PartDragTool::PartDragTool(RBX::PartInstance *,G3D::Vector3 const&,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>)")
 }
@@ -630,7 +630,7 @@ pub fn stub_0x2f13d8() -> ! {
 
 // 0x2f1478 — __ZN3RBX12PartDragToolD1Ev
 // type: void __fastcall(RBX::PartDragTool *__hidden this)
-#[doc(alias = "RBX::PartDragTool::~PartDragTool()")]
+#[doc(alias = "RBX::PartDragTool::~PartDragTool() [0x2f1478]")]
 pub fn stub_0x2f1478() -> ! {
     todo!("0x2f1478 RBX::PartDragTool::~PartDragTool()")
 }
@@ -644,14 +644,14 @@ pub fn stub_0x2f147c() -> ! {
 
 // 0x2f1484 — __ZN3RBX12PartDragToolD2Ev
 // type: void __fastcall(RBX::PartDragTool *__hidden this)
-#[doc(alias = "RBX::PartDragTool::~PartDragTool()")]
+#[doc(alias = "RBX::PartDragTool::~PartDragTool() [0x2f1484]")]
 pub fn stub_0x2f1484() -> ! {
     todo!("0x2f1484 RBX::PartDragTool::~PartDragTool()")
 }
 
 // 0x2f15e4 — __ZThn36_N3RBX12PartDragToolD1Ev
 // type: void __fastcall(RBX::PartDragTool *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::PartDragTool::~PartDragTool()")]
+#[doc(alias = "non-virtual thunk toRBX::PartDragTool::~PartDragTool() [0x2f15e4]")]
 pub fn stub_0x2f15e4() -> ! {
     todo!("0x2f15e4 non-virtual thunk toRBX::PartDragTool::~PartDragTool()")
 }
@@ -744,7 +744,7 @@ pub fn stub_0x2f23f0() -> ! {
 
 // 0x2f23f4 — __ZN3RBX10RunDraggerC2Ev
 // type: _DWORD __fastcall(RBX::RunDragger *__hidden this)
-#[doc(alias = "RBX::RunDragger::RunDragger(void)")]
+#[doc(alias = "RBX::RunDragger::RunDragger(void) [0x2f23f4]")]
 pub fn stub_0x2f23f4() -> ! {
     todo!("0x2f23f4 RBX::RunDragger::RunDragger(void)")
 }
@@ -758,7 +758,7 @@ pub fn stub_0x2f25ac() -> ! {
 
 // 0x2f25b0 — __ZN3RBX10RunDraggerD2Ev
 // type: void __fastcall(RBX::RunDragger *__hidden this)
-#[doc(alias = "RBX::RunDragger::~RunDragger()")]
+#[doc(alias = "RBX::RunDragger::~RunDragger() [0x2f25b0]")]
 pub fn stub_0x2f25b0() -> ! {
     todo!("0x2f25b0 RBX::RunDragger::~RunDragger()")
 }
@@ -1023,7 +1023,7 @@ pub fn stub_0x2f7134() -> ! {
 
 // 0x2f71d4 — __ZN3RBX16BoxSelectCommandD1Ev
 // type: void __fastcall(RBX::BoxSelectCommand *__hidden this)
-#[doc(alias = "RBX::BoxSelectCommand::~BoxSelectCommand()")]
+#[doc(alias = "RBX::BoxSelectCommand::~BoxSelectCommand() [0x2f71d4]")]
 pub fn stub_0x2f71d4() -> ! {
     todo!("0x2f71d4 RBX::BoxSelectCommand::~BoxSelectCommand()")
 }

@@ -17,14 +17,14 @@ pub fn stub_0x2f71d8() -> ! {
 
 // 0x2f71e0 — __ZN3RBX16BoxSelectCommandD2Ev
 // type: void __fastcall(RBX::BoxSelectCommand *__hidden this)
-#[doc(alias = "RBX::BoxSelectCommand::~BoxSelectCommand()")]
+#[doc(alias = "RBX::BoxSelectCommand::~BoxSelectCommand() [0x2f71e0]")]
 pub fn stub_0x2f71e0() -> ! {
     todo!("0x2f71e0 RBX::BoxSelectCommand::~BoxSelectCommand()")
 }
 
 // 0x2f7324 — __ZThn36_N3RBX16BoxSelectCommandD1Ev
 // type: void __fastcall(RBX::BoxSelectCommand *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")]
+#[doc(alias = "non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand() [0x2f7324]")]
 pub fn stub_0x2f7324() -> ! {
     todo!("0x2f7324 non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")
 }
@@ -228,7 +228,7 @@ pub fn stub_0x2f88c8() -> ! {
 }
 
 // 0x2f88cc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX16BoxSelectCommandENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd() [0x2f88cc]")]
 pub fn stub_0x2f88cc() -> ! {
     todo!("0x2f88cc boost::detail::sp_counted_impl_pd<RBX::BoxSelectCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
 }
@@ -295,7 +295,7 @@ pub fn stub_0x2f8f04() -> ! {
 }
 
 // 0x2f8f08 — __ZN3RBX10Reflection8EnumDescINS_6Action10ActionTypeEEC2Ev
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Action::ActionType>::EnumDesc(void)")]
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Action::ActionType>::EnumDesc(void) [0x2f8f08]")]
 pub fn stub_0x2f8f08() -> ! {
     todo!("0x2f8f08 RBX::Reflection::EnumDesc<RBX::Action::ActionType>::EnumDesc(void)")
 }
@@ -521,14 +521,14 @@ pub fn stub_0x2faf68() -> ! {
 
 // 0x2fb008 — __ZN3RBX14AsyncHttpQueueD1Ev
 // type: void __fastcall(RBX::AsyncHttpQueue *__hidden this)
-#[doc(alias = "RBX::AsyncHttpQueue::~AsyncHttpQueue()")]
+#[doc(alias = "RBX::AsyncHttpQueue::~AsyncHttpQueue() [0x2fb008]")]
 pub fn stub_0x2fb008() -> ! {
     todo!("0x2fb008 RBX::AsyncHttpQueue::~AsyncHttpQueue()")
 }
 
 // 0x2fb00c — __ZN3RBX14AsyncHttpQueueD2Ev
 // type: void __fastcall(RBX::AsyncHttpQueue *__hidden this)
-#[doc(alias = "RBX::AsyncHttpQueue::~AsyncHttpQueue()")]
+#[doc(alias = "RBX::AsyncHttpQueue::~AsyncHttpQueue() [0x2fb00c]")]
 pub fn stub_0x2fb00c() -> ! {
     todo!("0x2fb00c RBX::AsyncHttpQueue::~AsyncHttpQueue()")
 }
@@ -841,7 +841,7 @@ pub fn stub_0x2ffd34() -> ! {
 }
 
 // 0x2ffd38 — __ZN5boost6detail17sp_counted_impl_pIN3RBX4HttpEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Http>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Http>::~sp_counted_impl_p() [0x2ffd38]")]
 pub fn stub_0x2ffd38() -> ! {
     todo!("0x2ffd38 boost::detail::sp_counted_impl_p<RBX::Http>::~sp_counted_impl_p()")
 }

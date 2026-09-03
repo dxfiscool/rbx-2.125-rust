@@ -367,14 +367,14 @@ pub fn stub_0x432b0() -> ! {
 
 // 0x432b4 — __ZN18iOSSettingsServiceD0Ev
 // type: void __fastcall(iOSSettingsService *__hidden this)
-#[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
+#[doc(alias = "iOSSettingsService::~iOSSettingsService() [0x432b4]")]
 pub fn stub_0x432b4() -> ! {
     todo!("0x432b4 iOSSettingsService::~iOSSettingsService()")
 }
 
 // 0x432c8 — __ZN18iOSSettingsServiceD2Ev
 // type: void __fastcall(iOSSettingsService *__hidden this)
-#[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
+#[doc(alias = "iOSSettingsService::~iOSSettingsService() [0x432c8]")]
 pub fn stub_0x432c8() -> ! {
     todo!("0x432c8 iOSSettingsService::~iOSSettingsService()")
 }
@@ -388,7 +388,7 @@ pub fn stub_0x43314() -> ! {
 
 // 0x43338 — __ZN10SimpleJSOND0Ev
 // type: void __fastcall(SimpleJSON *__hidden this)
-#[doc(alias = "SimpleJSON::~SimpleJSON()")]
+#[doc(alias = "SimpleJSON::~SimpleJSON() [0x43338]")]
 pub fn stub_0x43338() -> ! {
     todo!("0x43338 SimpleJSON::~SimpleJSON()")
 }
@@ -457,7 +457,7 @@ pub fn stub_0x43c74() -> ! {
 
 // 0x43c78 — __ZN3RBX18FunctionMarshaller10StaticDataD2Ev
 // type: void __fastcall(RBX::FunctionMarshaller::StaticData *__hidden this)
-#[doc(alias = "RBX::FunctionMarshaller::StaticData::~StaticData()")]
+#[doc(alias = "RBX::FunctionMarshaller::StaticData::~StaticData() [0x43c78]")]
 pub fn stub_0x43c78() -> ! {
     todo!("0x43c78 RBX::FunctionMarshaller::StaticData::~StaticData()")
 }

@@ -296,88 +296,11 @@ pub fn stub_0x47a54c() -> ! {
     todo!("0x47a54c __GLOBAL__I_a_181")
 }
 
-// 0x47e0e8 — __ZNK3RBX21TaskSchedulerSettings13schedulerRateEv
-// type: _DWORD __fastcall(RBX::TaskSchedulerSettings *__hidden this)
-#[doc(alias = "__ZNK3RBX21TaskSchedulerSettings13schedulerRateEv")]
-pub fn stub_0x47e0e8() -> ! {
-    todo!("0x47e0e8 __ZNK3RBX21TaskSchedulerSettings13schedulerRateEv")
-}
-
-// 0x47e0fc — __ZNK3RBX21TaskSchedulerSettings27schedulerDutyCyclePerThreadEv
-// type: _DWORD __fastcall(RBX::TaskSchedulerSettings *__hidden this)
-#[doc(alias = "__ZNK3RBX21TaskSchedulerSettings27schedulerDutyCyclePerThreadEv")]
-pub fn stub_0x47e0fc() -> ! {
-    todo!("0x47e0fc __ZNK3RBX21TaskSchedulerSettings27schedulerDutyCyclePerThreadEv")
-}
-
-// 0x47e25c — __ZNK3RBX21TaskSchedulerSettings17getPriorityMethodEv
-// type: _DWORD __fastcall(RBX::TaskSchedulerSettings *__hidden this)
-#[doc(alias = "__ZNK3RBX21TaskSchedulerSettings17getPriorityMethodEv")]
-pub fn stub_0x47e25c() -> ! {
-    todo!("0x47e25c __ZNK3RBX21TaskSchedulerSettings17getPriorityMethodEv")
-}
-
-// 0x47e290 — __ZNK3RBX21TaskSchedulerSettings20getSleepAdjustMethodEv
-// type: _DWORD __fastcall(RBX::TaskSchedulerSettings *__hidden this)
-#[doc(alias = "__ZNK3RBX21TaskSchedulerSettings20getSleepAdjustMethodEv")]
-pub fn stub_0x47e290() -> ! {
-    todo!("0x47e290 __ZNK3RBX21TaskSchedulerSettings20getSleepAdjustMethodEv")
-}
-
-// 0x47e2c4 — __ZNK3RBX21TaskSchedulerSettings19getConcurrencyModelEv
-// type: _DWORD __fastcall(RBX::TaskSchedulerSettings *__hidden this)
-#[doc(alias = "__ZNK3RBX21TaskSchedulerSettings19getConcurrencyModelEv")]
-pub fn stub_0x47e2c4() -> ! {
-    todo!("0x47e2c4 __ZNK3RBX21TaskSchedulerSettings19getConcurrencyModelEv")
-}
-
-// 0x47e2f8 — __ZNK3RBX21TaskSchedulerSettings21getIsArbiterThrottledEv
-// type: _DWORD __fastcall(RBX::TaskSchedulerSettings *__hidden this)
-#[doc(alias = "__ZNK3RBX21TaskSchedulerSettings21getIsArbiterThrottledEv")]
-pub fn stub_0x47e2f8() -> ! {
-    todo!("0x47e2f8 __ZNK3RBX21TaskSchedulerSettings21getIsArbiterThrottledEv")
-}
-
-// 0x47e32c — __ZNK3RBX21TaskSchedulerSettings24getThrottledJobSleepTimeEv
-// type: _DWORD __fastcall(RBX::TaskSchedulerSettings *__hidden this)
-#[doc(alias = "__ZNK3RBX21TaskSchedulerSettings24getThrottledJobSleepTimeEv")]
-pub fn stub_0x47e32c() -> ! {
-    todo!("0x47e32c __ZNK3RBX21TaskSchedulerSettings24getThrottledJobSleepTimeEv")
-}
-
 // 0x47e654 — __ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEEC2Ev
 // type: int(void)
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEEC2Ev")]
 pub fn stub_0x47e654() -> ! {
     todo!("0x47e654 __ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEEC2Ev")
-}
-
-// 0x47e8c8 — __ZN12DummyArbiter11arbiterNameEv
-// type: _DWORD __fastcall(DummyArbiter *__hidden this)
-#[doc(alias = "__ZN12DummyArbiter11arbiterNameEv")]
-pub fn stub_0x47e8c8() -> ! {
-    todo!("0x47e8c8 __ZN12DummyArbiter11arbiterNameEv")
-}
-
-// 0x47e8e4 — __ZN12DummyArbiter11isThrottledEv
-// type: _DWORD __fastcall(DummyArbiter *__hidden this)
-#[doc(alias = "__ZN12DummyArbiter11isThrottledEv")]
-pub fn stub_0x47e8e4() -> ! {
-    todo!("0x47e8e4 __ZN12DummyArbiter11isThrottledEv")
-}
-
-// 0x47e8e8 — __ZN3RBX13TaskScheduler7Arbiter7preStepEPNS0_3JobE
-// type: _DWORD __fastcall(RBX::TaskScheduler::Arbiter *__hidden this, RBX::TaskScheduler::Job *)
-#[doc(alias = "__ZN3RBX13TaskScheduler7Arbiter7preStepEPNS0_3JobE")]
-pub fn stub_0x47e8e8() -> ! {
-    todo!("0x47e8e8 __ZN3RBX13TaskScheduler7Arbiter7preStepEPNS0_3JobE")
-}
-
-// 0x47e900 — __ZN3RBX13TaskScheduler7Arbiter8postStepEPNS0_3JobE
-// type: _DWORD __fastcall(RBX::TaskScheduler::Arbiter *__hidden this, RBX::TaskScheduler::Job *)
-#[doc(alias = "__ZN3RBX13TaskScheduler7Arbiter8postStepEPNS0_3JobE")]
-pub fn stub_0x47e900() -> ! {
-    todo!("0x47e900 __ZN3RBX13TaskScheduler7Arbiter8postStepEPNS0_3JobE")
 }
 
 // 0x47e918 — __ZN3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE7CreatorD1Ev
@@ -390,20 +313,6 @@ pub fn stub_0x47e918() -> ! {
 #[doc(alias = "__ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorD1Ev")]
 pub fn stub_0x47e920() -> ! {
     todo!("0x47e920 __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorD1Ev")
-}
-
-// 0x47fb88 — __ZN3RBX21TaskSchedulerSettingsD1Ev
-// type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
-#[doc(alias = "__ZN3RBX21TaskSchedulerSettingsD1Ev")]
-pub fn stub_0x47fb88() -> ! {
-    todo!("0x47fb88 __ZN3RBX21TaskSchedulerSettingsD1Ev")
-}
-
-// 0x47fbc8 — __ZN3RBX21TaskSchedulerSettingsD0Ev
-// type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
-#[doc(alias = "__ZN3RBX21TaskSchedulerSettingsD0Ev")]
-pub fn stub_0x47fbc8() -> ! {
-    todo!("0x47fbc8 __ZN3RBX21TaskSchedulerSettingsD0Ev")
 }
 
 // 0x47fca8 — __ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE12getClassNameEv
@@ -457,72 +366,6 @@ pub fn stub_0x47ff10() -> ! {
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_22sTaskSchedulerSettingsEEEERKS0_v")]
 pub fn stub_0x47ff88() -> ! {
     todo!("0x47ff88 __ZN3RBX4Name9doDeclareILZNS_22sTaskSchedulerSettingsEEEERKS0_v")
-}
-
-// 0x48030c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_4Time12SampleMethodEEERS3_RKT_
-// type: int(void)
-#[doc(alias = "__ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_4Time12SampleMethodEEERS3_RKT_")]
-pub fn stub_0x48030c() -> ! {
-    todo!("0x48030c __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_4Time12SampleMethodEEERS3_RKT_")
-}
-
-// 0x48035c — __ZN3rbx14implementation12typed_holderIN3RBX4Time12SampleMethodEE9singletonEv
-// type: int(void)
-#[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX4Time12SampleMethodEE9singletonEv")]
-pub fn stub_0x48035c() -> ! {
-    todo!("0x48035c __ZN3rbx14implementation12typed_holderIN3RBX4Time12SampleMethodEE9singletonEv")
-}
-
-// 0x4803c8 — __ZN3rbx14implementation12typed_holderIN3RBX4Time12SampleMethodEE14construct_funcEPKcPc
-#[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX4Time12SampleMethodEE14construct_funcEPKcPc")]
-pub fn stub_0x4803c8() -> ! {
-    todo!("0x4803c8 __ZN3rbx14implementation12typed_holderIN3RBX4Time12SampleMethodEE14construct_funcEPKcPc")
-}
-
-// 0x4803d4 — __ZN3rbx14implementation12typed_holderIN3RBX4Time12SampleMethodEE13destruct_funcEPc
-#[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX4Time12SampleMethodEE13destruct_funcEPc")]
-pub fn stub_0x4803d4() -> ! {
-    todo!("0x4803d4 __ZN3rbx14implementation12typed_holderIN3RBX4Time12SampleMethodEE13destruct_funcEPc")
-}
-
-// 0x4804a4 — __ZN3rbx8any_castIRKN3RBX4Time12SampleMethodENS1_7Region3EEET_RNS_13placement_anyIT0_EE
-// type: int(void)
-#[doc(alias = "__ZN3rbx8any_castIRKN3RBX4Time12SampleMethodENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
-pub fn stub_0x4804a4() -> ! {
-    todo!("0x4804a4 __ZN3rbx8any_castIRKN3RBX4Time12SampleMethodENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
-}
-
-// 0x480988 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9EThrottle13EThrottleTypeEEERS3_RKT_
-// type: int(void)
-#[doc(alias = "__ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9EThrottle13EThrottleTypeEEERS3_RKT_")]
-pub fn stub_0x480988() -> ! {
-    todo!("0x480988 __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9EThrottle13EThrottleTypeEEERS3_RKT_")
-}
-
-// 0x4809d8 — __ZN3rbx14implementation12typed_holderIN3RBX9EThrottle13EThrottleTypeEE9singletonEv
-// type: int(void)
-#[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9EThrottle13EThrottleTypeEE9singletonEv")]
-pub fn stub_0x4809d8() -> ! {
-    todo!("0x4809d8 __ZN3rbx14implementation12typed_holderIN3RBX9EThrottle13EThrottleTypeEE9singletonEv")
-}
-
-// 0x480a44 — __ZN3rbx14implementation12typed_holderIN3RBX9EThrottle13EThrottleTypeEE14construct_funcEPKcPc
-#[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9EThrottle13EThrottleTypeEE14construct_funcEPKcPc")]
-pub fn stub_0x480a44() -> ! {
-    todo!("0x480a44 __ZN3rbx14implementation12typed_holderIN3RBX9EThrottle13EThrottleTypeEE14construct_funcEPKcPc")
-}
-
-// 0x480a50 — __ZN3rbx14implementation12typed_holderIN3RBX9EThrottle13EThrottleTypeEE13destruct_funcEPc
-#[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9EThrottle13EThrottleTypeEE13destruct_funcEPc")]
-pub fn stub_0x480a50() -> ! {
-    todo!("0x480a50 __ZN3rbx14implementation12typed_holderIN3RBX9EThrottle13EThrottleTypeEE13destruct_funcEPc")
-}
-
-// 0x480b20 — __ZN3rbx8any_castIRKN3RBX9EThrottle13EThrottleTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
-// type: int(void)
-#[doc(alias = "__ZN3rbx8any_castIRKN3RBX9EThrottle13EThrottleTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
-pub fn stub_0x480b20() -> ! {
-    todo!("0x480b20 __ZN3rbx8any_castIRKN3RBX9EThrottle13EThrottleTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
 }
 
 // 0x481678 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_13TaskScheduler3Job17SleepAdjustMethodEEERS3_RKT_

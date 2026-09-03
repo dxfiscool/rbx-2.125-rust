@@ -279,7 +279,7 @@ pub fn stub_0xa7092c() -> ! {
 
 // 0xa70938 — __ZN6RakNet16ReliabilityLayerC2Ev
 // type: RakNet::ReliabilityLayer *__fastcall(RakNet::ReliabilityLayer *this)
-#[doc(alias = "RakNet::ReliabilityLayer::ReliabilityLayer(void)")]
+#[doc(alias = "RakNet::ReliabilityLayer::ReliabilityLayer(void) [0xa70938]")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayerC2Ev")]
 pub fn stub_0xa70938() -> ! {
     todo!("0xa70938")
@@ -303,7 +303,7 @@ pub fn stub_0xa715f8() -> ! {
 
 // 0xa71604 — __ZN6RakNet16ReliabilityLayerD2Ev
 // type: void __fastcall(RakNet::ReliabilityLayer *__hidden this)
-#[doc(alias = "RakNet::ReliabilityLayer::~ReliabilityLayer()")]
+#[doc(alias = "RakNet::ReliabilityLayer::~ReliabilityLayer() [0xa71604]")]
 #[doc(alias = "__ZN6RakNet16ReliabilityLayerD2Ev")]
 pub fn stub_0xa71604() -> ! {
     todo!("0xa71604")

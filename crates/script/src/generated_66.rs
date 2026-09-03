@@ -153,7 +153,7 @@ pub fn stub_0x292fd8() -> ! {
 }
 
 // 0x2930dc — __ZN3RBX10Reflection13BoundFuncDescINS_6ScriptEFSsvELi0EED0Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Script,std::string ()(void),0>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Script,std::string ()(void),0>::~BoundFuncDesc() [0x2930dc]")]
 pub fn stub_0x2930dc() -> ! {
     todo!("0x2930dc __ZN3RBX10Reflection13BoundFuncDescINS_6ScriptEFSsvELi0EED0Ev")
 }
@@ -179,7 +179,7 @@ pub fn stub_0x2932f0() -> ! {
 }
 
 // 0x293404 — __ZN3RBX10Reflection14PropDescriptorINS_10BaseScriptEbED0Ev
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::~PropDescriptor() [0x293404]")]
 pub fn stub_0x293404() -> ! {
     todo!("0x293404 __ZN3RBX10Reflection14PropDescriptorINS_10BaseScriptEbED0Ev")
 }
@@ -217,7 +217,7 @@ pub fn stub_0x293480() -> ! {
 }
 
 // 0x2936b8 — __ZN3RBX10Reflection14PropDescriptorINS_10BaseScriptENS_9ContentIdEED0Ev
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::~PropDescriptor() [0x2936b8]")]
 pub fn stub_0x2936b8() -> ! {
     todo!("0x2936b8 __ZN3RBX10Reflection14PropDescriptorINS_10BaseScriptENS_9ContentIdEED0Ev")
 }
@@ -255,7 +255,7 @@ pub fn stub_0x293db0() -> ! {
 }
 
 // 0x293fe8 — __ZN3RBX10Reflection14PropDescriptorINS_6ScriptENS_15ProtectedStringEED0Ev
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::~PropDescriptor() [0x293fe8]")]
 pub fn stub_0x293fe8() -> ! {
     todo!("0x293fe8 __ZN3RBX10Reflection14PropDescriptorINS_6ScriptENS_15ProtectedStringEED0Ev")
 }
@@ -621,7 +621,7 @@ pub fn stub_0x29bc44() -> ! {
 // 0x29bce4 — __ZN3RBX13ScriptContextD1Ev
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
 // was: void __fastcall(RBX::ScriptContext *__hidden this)
-#[doc(alias = "RBX::ScriptContext::~ScriptContext()")]
+#[doc(alias = "RBX::ScriptContext::~ScriptContext() [0x29bce4]")]
 pub fn stub_0x29bce4() -> ! {
     todo!("0x29bce4 __ZN3RBX13ScriptContextD1Ev")
 }
@@ -637,7 +637,7 @@ pub fn stub_0x29bce8() -> ! {
 // 0x29bcf0 — __ZThn36_N3RBX13ScriptContextD0Ev
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
 // was: void __fastcall(RBX::ScriptContext *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext() [0x29bcf0]")]
 pub fn stub_0x29bcf0() -> ! {
     todo!("0x29bcf0 __ZThn36_N3RBX13ScriptContextD0Ev")
 }
@@ -645,7 +645,7 @@ pub fn stub_0x29bcf0() -> ! {
 // 0x29bcf8 — __ZN3RBX13ScriptContextD2Ev
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
 // was: void __fastcall(RBX::ScriptContext *__hidden this)
-#[doc(alias = "RBX::ScriptContext::~ScriptContext()")]
+#[doc(alias = "RBX::ScriptContext::~ScriptContext() [0x29bcf8]")]
 pub fn stub_0x29bcf8() -> ! {
     todo!("0x29bcf8 __ZN3RBX13ScriptContextD2Ev")
 }
@@ -653,7 +653,7 @@ pub fn stub_0x29bcf8() -> ! {
 // 0x29c364 — __ZThn32_N3RBX13ScriptContextD1Ev
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
 // was: void __fastcall(RBX::ScriptContext *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext() [0x29c364]")]
 pub fn stub_0x29c364() -> ! {
     todo!("0x29c364 __ZThn32_N3RBX13ScriptContextD1Ev")
 }
@@ -661,7 +661,7 @@ pub fn stub_0x29c364() -> ! {
 // 0x29c36c — __ZThn36_N3RBX13ScriptContextD1Ev
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
 // was: void __fastcall(RBX::ScriptContext *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext() [0x29c36c]")]
 pub fn stub_0x29c36c() -> ! {
     todo!("0x29c36c __ZThn36_N3RBX13ScriptContextD1Ev")
 }

@@ -23,7 +23,7 @@ pub fn stub_0x6948e8() -> ! {
 
 // 0x6949d4 — __ZThn32_N3RBX17VehicleControllerD0Ev
 // type: void __fastcall(RBX::VehicleController *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::VehicleController::~VehicleController()")]
+#[doc(alias = "non-virtual thunk toRBX::VehicleController::~VehicleController() [0x6949d4]")]
 pub fn stub_0x6949d4() -> ! {
     todo!("0x6949d4 __ZThn32_N3RBX17VehicleControllerD0Ev")
 }
@@ -36,28 +36,28 @@ pub fn stub_0x694ad8() -> ! {
 
 // 0x694ae8 — __ZThn36_N3RBX17VehicleControllerD1Ev
 // type: void __fastcall(RBX::VehicleController *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::VehicleController::~VehicleController()")]
+#[doc(alias = "non-virtual thunk toRBX::VehicleController::~VehicleController() [0x694ae8]")]
 pub fn stub_0x694ae8() -> ! {
     todo!("0x694ae8 __ZThn36_N3RBX17VehicleControllerD1Ev")
 }
 
 // 0x694bd4 — __ZThn36_N3RBX17VehicleControllerD0Ev
 // type: void __fastcall(RBX::VehicleController *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::VehicleController::~VehicleController()")]
+#[doc(alias = "non-virtual thunk toRBX::VehicleController::~VehicleController() [0x694bd4]")]
 pub fn stub_0x694bd4() -> ! {
     todo!("0x694bd4 __ZThn36_N3RBX17VehicleControllerD0Ev")
 }
 
 // 0x694cd8 — __ZThn92_N3RBX17VehicleControllerD1Ev
 // type: void __fastcall(RBX::VehicleController *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::VehicleController::~VehicleController()")]
+#[doc(alias = "non-virtual thunk toRBX::VehicleController::~VehicleController() [0x694cd8]")]
 pub fn stub_0x694cd8() -> ! {
     todo!("0x694cd8 __ZThn92_N3RBX17VehicleControllerD1Ev")
 }
 
 // 0x694dc4 — __ZThn92_N3RBX17VehicleControllerD0Ev
 // type: void __fastcall(RBX::VehicleController *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::VehicleController::~VehicleController()")]
+#[doc(alias = "non-virtual thunk toRBX::VehicleController::~VehicleController() [0x694dc4]")]
 pub fn stub_0x694dc4() -> ! {
     todo!("0x694dc4 __ZThn92_N3RBX17VehicleControllerD0Ev")
 }
@@ -71,7 +71,7 @@ pub fn stub_0x694ec8() -> ! {
 
 // 0x694ecc — __ZN3RBX18HumanoidControllerD0Ev
 // type: void __fastcall(RBX::HumanoidController *__hidden this)
-#[doc(alias = "RBX::HumanoidController::~HumanoidController()")]
+#[doc(alias = "RBX::HumanoidController::~HumanoidController() [0x694ecc]")]
 pub fn stub_0x694ecc() -> ! {
     todo!("0x694ecc __ZN3RBX18HumanoidControllerD0Ev")
 }
@@ -91,7 +91,7 @@ pub fn stub_0x694f7c() -> ! {
 
 // 0x694f84 — __ZThn32_N3RBX18HumanoidControllerD0Ev
 // type: void __fastcall(RBX::HumanoidController *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::HumanoidController::~HumanoidController()")]
+#[doc(alias = "non-virtual thunk toRBX::HumanoidController::~HumanoidController() [0x694f84]")]
 pub fn stub_0x694f84() -> ! {
     todo!("0x694f84 __ZThn32_N3RBX18HumanoidControllerD0Ev")
 }
@@ -104,28 +104,28 @@ pub fn stub_0x695028() -> ! {
 
 // 0x695038 — __ZThn36_N3RBX18HumanoidControllerD1Ev
 // type: void __fastcall(RBX::HumanoidController *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::HumanoidController::~HumanoidController()")]
+#[doc(alias = "non-virtual thunk toRBX::HumanoidController::~HumanoidController() [0x695038]")]
 pub fn stub_0x695038() -> ! {
     todo!("0x695038 __ZThn36_N3RBX18HumanoidControllerD1Ev")
 }
 
 // 0x695040 — __ZThn36_N3RBX18HumanoidControllerD0Ev
 // type: void __fastcall(RBX::HumanoidController *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::HumanoidController::~HumanoidController()")]
+#[doc(alias = "non-virtual thunk toRBX::HumanoidController::~HumanoidController() [0x695040]")]
 pub fn stub_0x695040() -> ! {
     todo!("0x695040 __ZThn36_N3RBX18HumanoidControllerD0Ev")
 }
 
 // 0x6950e4 — __ZThn92_N3RBX18HumanoidControllerD1Ev
 // type: void __fastcall(RBX::HumanoidController *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::HumanoidController::~HumanoidController()")]
+#[doc(alias = "non-virtual thunk toRBX::HumanoidController::~HumanoidController() [0x6950e4]")]
 pub fn stub_0x6950e4() -> ! {
     todo!("0x6950e4 __ZThn92_N3RBX18HumanoidControllerD1Ev")
 }
 
 // 0x6950ec — __ZThn92_N3RBX18HumanoidControllerD0Ev
 // type: void __fastcall(RBX::HumanoidController *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::HumanoidController::~HumanoidController()")]
+#[doc(alias = "non-virtual thunk toRBX::HumanoidController::~HumanoidController() [0x6950ec]")]
 pub fn stub_0x6950ec() -> ! {
     todo!("0x6950ec __ZThn92_N3RBX18HumanoidControllerD0Ev")
 }
@@ -151,7 +151,7 @@ pub fn stub_0x695408() -> ! {
 
 // 0x69540c — __ZN3RBX17ControllerServiceD0Ev
 // type: void __fastcall(RBX::ControllerService *__hidden this)
-#[doc(alias = "RBX::ControllerService::~ControllerService()")]
+#[doc(alias = "RBX::ControllerService::~ControllerService() [0x69540c]")]
 pub fn stub_0x69540c() -> ! {
     todo!("0x69540c __ZN3RBX17ControllerServiceD0Ev")
 }
@@ -171,7 +171,7 @@ pub fn stub_0x6954d4() -> ! {
 
 // 0x6954dc — __ZThn32_N3RBX17ControllerServiceD0Ev
 // type: void __fastcall(RBX::ControllerService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ControllerService::~ControllerService()")]
+#[doc(alias = "non-virtual thunk toRBX::ControllerService::~ControllerService() [0x6954dc]")]
 pub fn stub_0x6954dc() -> ! {
     todo!("0x6954dc __ZThn32_N3RBX17ControllerServiceD0Ev")
 }
@@ -184,14 +184,14 @@ pub fn stub_0x695580() -> ! {
 
 // 0x6955a8 — __ZThn36_N3RBX17ControllerServiceD1Ev
 // type: void __fastcall(RBX::ControllerService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ControllerService::~ControllerService()")]
+#[doc(alias = "non-virtual thunk toRBX::ControllerService::~ControllerService() [0x6955a8]")]
 pub fn stub_0x6955a8() -> ! {
     todo!("0x6955a8 __ZThn36_N3RBX17ControllerServiceD1Ev")
 }
 
 // 0x6955b0 — __ZThn36_N3RBX17ControllerServiceD0Ev
 // type: void __fastcall(RBX::ControllerService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ControllerService::~ControllerService()")]
+#[doc(alias = "non-virtual thunk toRBX::ControllerService::~ControllerService() [0x6955b0]")]
 pub fn stub_0x6955b0() -> ! {
     todo!("0x6955b0 __ZThn36_N3RBX17ControllerServiceD0Ev")
 }

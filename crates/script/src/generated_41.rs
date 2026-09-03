@@ -84,7 +84,7 @@ pub fn stub_0x4082b0() -> ! {
 
 // 0x408518 — __ZN3RBX9TToolVerbINS_8FillToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
-#[doc(alias = "RBX::TToolVerb<RBX::FillTool,RBX::RunStateVerb>::~TToolVerb()")]
+#[doc(alias = "RBX::TToolVerb<RBX::FillTool,RBX::RunStateVerb>::~TToolVerb() [0x408518]")]
 pub fn stub_0x408518() -> ! {
     todo!("0x408518 RBX::TToolVerb<RBX::FillTool,RBX::RunStateVerb>::~TToolVerb()")
 }
@@ -153,7 +153,7 @@ pub fn stub_0x408cb0() -> ! {
 
 // 0x408f18 — __ZN3RBX9TToolVerbINS_8LockToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
-#[doc(alias = "RBX::TToolVerb<RBX::LockTool,RBX::RunStateVerb>::~TToolVerb()")]
+#[doc(alias = "RBX::TToolVerb<RBX::LockTool,RBX::RunStateVerb>::~TToolVerb() [0x408f18]")]
 pub fn stub_0x408f18() -> ! {
     todo!("0x408f18 RBX::TToolVerb<RBX::LockTool,RBX::RunStateVerb>::~TToolVerb()")
 }
@@ -215,7 +215,7 @@ pub fn stub_0x4097fc() -> ! {
 
 // 0x409a64 — __ZN3RBX9TToolVerbINS_10AnchorToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
-#[doc(alias = "RBX::TToolVerb<RBX::AnchorTool,RBX::RunStateVerb>::~TToolVerb()")]
+#[doc(alias = "RBX::TToolVerb<RBX::AnchorTool,RBX::RunStateVerb>::~TToolVerb() [0x409a64]")]
 pub fn stub_0x409a64() -> ! {
     todo!("0x409a64 RBX::TToolVerb<RBX::AnchorTool,RBX::RunStateVerb>::~TToolVerb()")
 }
@@ -277,7 +277,7 @@ pub fn stub_0x40a350() -> ! {
 
 // 0x40a5b8 — __ZN3RBX9TToolVerbINS_20SmoothNoOutlinesToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
-#[doc(alias = "RBX::TToolVerb<RBX::SmoothNoOutlinesTool,RBX::RunStateVerb>::~TToolVerb()")]
+#[doc(alias = "RBX::TToolVerb<RBX::SmoothNoOutlinesTool,RBX::RunStateVerb>::~TToolVerb() [0x40a5b8]")]
 pub fn stub_0x40a5b8() -> ! {
     todo!("0x40a5b8 RBX::TToolVerb<RBX::SmoothNoOutlinesTool,RBX::RunStateVerb>::~TToolVerb()")
 }
@@ -346,7 +346,7 @@ pub fn stub_0x40ad50() -> ! {
 
 // 0x40afb8 — __ZN3RBX9TToolVerbINS_18OscillateMotorToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
-#[doc(alias = "RBX::TToolVerb<RBX::OscillateMotorTool,RBX::RunStateVerb>::~TToolVerb()")]
+#[doc(alias = "RBX::TToolVerb<RBX::OscillateMotorTool,RBX::RunStateVerb>::~TToolVerb() [0x40afb8]")]
 pub fn stub_0x40afb8() -> ! {
     todo!("0x40afb8 RBX::TToolVerb<RBX::OscillateMotorTool,RBX::RunStateVerb>::~TToolVerb()")
 }
@@ -408,7 +408,7 @@ pub fn stub_0x40b688() -> ! {
 
 // 0x40b8f0 — __ZN3RBX9TToolVerbINS_13LeftMotorToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
-#[doc(alias = "RBX::TToolVerb<RBX::LeftMotorTool,RBX::RunStateVerb>::~TToolVerb()")]
+#[doc(alias = "RBX::TToolVerb<RBX::LeftMotorTool,RBX::RunStateVerb>::~TToolVerb() [0x40b8f0]")]
 pub fn stub_0x40b8f0() -> ! {
     todo!("0x40b8f0 RBX::TToolVerb<RBX::LeftMotorTool,RBX::RunStateVerb>::~TToolVerb()")
 }
@@ -470,7 +470,7 @@ pub fn stub_0x40bfc0() -> ! {
 
 // 0x40c228 — __ZN3RBX9TToolVerbINS_14RightMotorToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
-#[doc(alias = "RBX::TToolVerb<RBX::RightMotorTool,RBX::RunStateVerb>::~TToolVerb()")]
+#[doc(alias = "RBX::TToolVerb<RBX::RightMotorTool,RBX::RunStateVerb>::~TToolVerb() [0x40c228]")]
 pub fn stub_0x40c228() -> ! {
     todo!("0x40c228 RBX::TToolVerb<RBX::RightMotorTool,RBX::RunStateVerb>::~TToolVerb()")
 }
@@ -539,7 +539,7 @@ pub fn stub_0x40c9c0() -> ! {
 
 // 0x40cc28 — __ZN3RBX9TToolVerbINS_9HingeToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
-#[doc(alias = "RBX::TToolVerb<RBX::HingeTool,RBX::RunStateVerb>::~TToolVerb()")]
+#[doc(alias = "RBX::TToolVerb<RBX::HingeTool,RBX::RunStateVerb>::~TToolVerb() [0x40cc28]")]
 pub fn stub_0x40cc28() -> ! {
     todo!("0x40cc28 RBX::TToolVerb<RBX::HingeTool,RBX::RunStateVerb>::~TToolVerb()")
 }
@@ -608,7 +608,7 @@ pub fn stub_0x40d3c0() -> ! {
 
 // 0x40d628 — __ZN3RBX9TToolVerbINS_13UniversalToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
-#[doc(alias = "RBX::TToolVerb<RBX::UniversalTool,RBX::RunStateVerb>::~TToolVerb()")]
+#[doc(alias = "RBX::TToolVerb<RBX::UniversalTool,RBX::RunStateVerb>::~TToolVerb() [0x40d628]")]
 pub fn stub_0x40d628() -> ! {
     todo!("0x40d628 RBX::TToolVerb<RBX::UniversalTool,RBX::RunStateVerb>::~TToolVerb()")
 }
@@ -677,7 +677,7 @@ pub fn stub_0x40ddc0() -> ! {
 
 // 0x40e028 — __ZN3RBX9TToolVerbINS_9InletToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
-#[doc(alias = "RBX::TToolVerb<RBX::InletTool,RBX::RunStateVerb>::~TToolVerb()")]
+#[doc(alias = "RBX::TToolVerb<RBX::InletTool,RBX::RunStateVerb>::~TToolVerb() [0x40e028]")]
 pub fn stub_0x40e028() -> ! {
     todo!("0x40e028 RBX::TToolVerb<RBX::InletTool,RBX::RunStateVerb>::~TToolVerb()")
 }

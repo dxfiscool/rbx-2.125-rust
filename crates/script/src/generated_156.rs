@@ -75,7 +75,7 @@ pub fn stub_0x36a44c() -> ! {
 
 // 0x36a450 — __ZN3RBX25ScriptInformationProviderC2Ev
 // type: RBX::Instance *__fastcall(RBX::ScriptInformationProvider *this)
-#[doc(alias = "RBX::ScriptInformationProvider::ScriptInformationProvider(void)")]
+#[doc(alias = "RBX::ScriptInformationProvider::ScriptInformationProvider(void) [0x36a450]")]
 pub fn stub_0x36a450() -> ! {
     todo!("0x36a450 __ZN3RBX25ScriptInformationProviderC2Ev")
 }
@@ -180,7 +180,7 @@ pub fn stub_0x36bcbc() -> ! {
 
 // 0x36bcc0 — __ZN3RBX25ScriptInformationProviderD0Ev
 // type: void __fastcall(RBX::ScriptInformationProvider *__hidden this)
-#[doc(alias = "RBX::ScriptInformationProvider::~ScriptInformationProvider()")]
+#[doc(alias = "RBX::ScriptInformationProvider::~ScriptInformationProvider() [0x36bcc0]")]
 pub fn stub_0x36bcc0() -> ! {
     todo!("0x36bcc0 __ZN3RBX25ScriptInformationProviderD0Ev")
 }
@@ -207,7 +207,7 @@ pub fn stub_0x36bd9c() -> ! {
 
 // 0x36bda4 — __ZThn32_N3RBX25ScriptInformationProviderD0Ev
 // type: void __fastcall(RBX::ScriptInformationProvider *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider() [0x36bda4]")]
 pub fn stub_0x36bda4() -> ! {
     todo!("0x36bda4 __ZThn32_N3RBX25ScriptInformationProviderD0Ev")
 }
@@ -220,28 +220,28 @@ pub fn stub_0x36be48() -> ! {
 
 // 0x36be70 — __ZThn36_N3RBX25ScriptInformationProviderD1Ev
 // type: void __fastcall(RBX::ScriptInformationProvider *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider() [0x36be70]")]
 pub fn stub_0x36be70() -> ! {
     todo!("0x36be70 __ZThn36_N3RBX25ScriptInformationProviderD1Ev")
 }
 
 // 0x36be78 — __ZThn36_N3RBX25ScriptInformationProviderD0Ev
 // type: void __fastcall(RBX::ScriptInformationProvider *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider() [0x36be78]")]
 pub fn stub_0x36be78() -> ! {
     todo!("0x36be78 __ZThn36_N3RBX25ScriptInformationProviderD0Ev")
 }
 
 // 0x36bf20 — __ZThn96_N3RBX25ScriptInformationProviderD1Ev
 // type: void __fastcall(RBX::ScriptInformationProvider *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider() [0x36bf20]")]
 pub fn stub_0x36bf20() -> ! {
     todo!("0x36bf20 __ZThn96_N3RBX25ScriptInformationProviderD1Ev")
 }
 
 // 0x36bf28 — __ZThn96_N3RBX25ScriptInformationProviderD0Ev
 // type: void __fastcall(RBX::ScriptInformationProvider *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptInformationProvider::~ScriptInformationProvider() [0x36bf28]")]
 pub fn stub_0x36bf28() -> ! {
     todo!("0x36bf28 __ZThn96_N3RBX25ScriptInformationProviderD0Ev")
 }
@@ -443,7 +443,7 @@ pub fn stub_0x36f110() -> ! {
 
 // 0x36f114 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_25ScriptInformationProvider16CachedScriptInfoELb0EEEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>::~sp_counted_impl_p() [0x36f114]")]
 pub fn stub_0x36f114() -> ! {
     todo!("0x36f114 __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_25ScriptInformationProvider16CachedScriptInfoELb0EEEED0Ev")
 }
@@ -478,7 +478,7 @@ pub fn stub_0x36f284() -> ! {
 
 // 0x36f38c — __ZN3RBX14AsyncHttpCacheINS_25ScriptInformationProvider16CachedScriptInfoELb0EED0Ev
 // type: void __fastcall(int)
-#[doc(alias = "RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>::~AsyncHttpCache()")]
+#[doc(alias = "RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>::~AsyncHttpCache() [0x36f38c]")]
 pub fn stub_0x36f38c() -> ! {
     todo!("0x36f38c __ZN3RBX14AsyncHttpCacheINS_25ScriptInformationProvider16CachedScriptInfoELb0EED0Ev")
 }
@@ -667,7 +667,7 @@ pub fn stub_0x370530() -> ! {
 
 // 0x371070 — __ZN3RBX25ScriptInformationProviderD2Ev
 // type: void __fastcall(RBX::ScriptInformationProvider *__hidden this)
-#[doc(alias = "RBX::ScriptInformationProvider::~ScriptInformationProvider()")]
+#[doc(alias = "RBX::ScriptInformationProvider::~ScriptInformationProvider() [0x371070]")]
 pub fn stub_0x371070() -> ! {
     todo!("0x371070 __ZN3RBX25ScriptInformationProviderD2Ev")
 }

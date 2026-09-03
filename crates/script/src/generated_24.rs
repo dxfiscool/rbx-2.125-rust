@@ -330,21 +330,21 @@ pub fn stub_0x84e0() -> ! {
 
 // 0x9b2c — __ZNSt12length_errorD1Ev
 // type: void __cdecl(std::length_error *__hidden this)
-#[doc(alias = "std::length_error::~length_error()")]
+#[doc(alias = "std::length_error::~length_error() [0x9b2c]")]
 pub fn stub_0x9b2c() -> ! {
     todo!("0x9b2c __ZNSt12length_errorD1Ev")
 }
 
 // 0x9b30 — __ZNSt12out_of_rangeD0Ev
 // type: void __cdecl(std::out_of_range *__hidden this)
-#[doc(alias = "std::out_of_range::~out_of_range()")]
+#[doc(alias = "std::out_of_range::~out_of_range() [0x9b30]")]
 pub fn stub_0x9b30() -> ! {
     todo!("0x9b30 __ZNSt12out_of_rangeD0Ev")
 }
 
 // 0x9b44 — __ZNSt12out_of_rangeD2Ev
 // type: void __cdecl(std::out_of_range *__hidden this)
-#[doc(alias = "std::out_of_range::~out_of_range()")]
+#[doc(alias = "std::out_of_range::~out_of_range() [0x9b44]")]
 pub fn stub_0x9b44() -> ! {
     todo!("0x9b44 __ZNSt12out_of_rangeD2Ev")
 }

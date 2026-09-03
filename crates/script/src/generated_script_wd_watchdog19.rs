@@ -22,7 +22,7 @@ pub fn stub_0xc564() -> ! {
 
 // 0xc568 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED0Ev — RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()
 // type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()")]
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc() [0xc568]")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED0Ev")]
 pub fn stub_0xc568() -> ! {
     todo!("0xc568 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED0Ev")
@@ -85,7 +85,7 @@ pub fn stub_0xcc34() -> ! {
 
 // 0xccb0 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED2Ev — RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()")]
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc() [0xccb0]")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED2Ev")]
 pub fn stub_0xccb0() -> ! {
     todo!("0xccb0 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED2Ev")
@@ -117,7 +117,7 @@ pub fn stub_0xd174() -> ! {
 
 // 0xd1f0 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED2Ev — RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::~EnumDesc()
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::~EnumDesc()")]
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::~EnumDesc() [0xd1f0]")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED2Ev")]
 pub fn stub_0xd1f0() -> ! {
     todo!("0xd1f0 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED2Ev")
@@ -149,7 +149,7 @@ pub fn stub_0xd6b4() -> ! {
 
 // 0xd730 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED2Ev — RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::~EnumDesc()
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::~EnumDesc()")]
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::~EnumDesc() [0xd730]")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED2Ev")]
 pub fn stub_0xd730() -> ! {
     todo!("0xd730 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED2Ev")
@@ -181,7 +181,7 @@ pub fn stub_0xdbf4() -> ! {
 
 // 0xdc70 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED2Ev — RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::~EnumDesc()
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::~EnumDesc()")]
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::~EnumDesc() [0xdc70]")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED2Ev")]
 pub fn stub_0xdc70() -> ! {
     todo!("0xdc70 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED2Ev")
@@ -213,7 +213,7 @@ pub fn stub_0xe134() -> ! {
 
 // 0xe1b0 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED2Ev — RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")]
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc() [0xe1b0]")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED2Ev")]
 pub fn stub_0xe1b0() -> ! {
     todo!("0xe1b0 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED2Ev")
@@ -245,7 +245,7 @@ pub fn stub_0xe674() -> ! {
 
 // 0xe6f0 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED2Ev — RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::~EnumDesc()
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::~EnumDesc()")]
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::~EnumDesc() [0xe6f0]")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED2Ev")]
 pub fn stub_0xe6f0() -> ! {
     todo!("0xe6f0 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED2Ev")
@@ -277,7 +277,7 @@ pub fn stub_0xebb4() -> ! {
 
 // 0xec30 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED2Ev — RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::~EnumDesc()
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::~EnumDesc()")]
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::~EnumDesc() [0xec30]")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED2Ev")]
 pub fn stub_0xec30() -> ! {
     todo!("0xec30 __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED2Ev")
@@ -338,7 +338,7 @@ pub fn stub_0xf098() -> ! {
 
 // 0xf198 — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED1Ev — boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 // type: void()
-#[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0xf198]")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED1Ev")]
 pub fn stub_0xf198() -> ! {
     todo!("0xf198 __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED1Ev")
@@ -536,7 +536,7 @@ pub fn stub_0xfb74() -> ! {
 
 // 0xfc88 — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiED0Ev — RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::~PropDescriptor()
 // type: int __fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::~PropDescriptor() [0xfc88]")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiED0Ev")]
 pub fn stub_0xfc88() -> ! {
     todo!("0xfc88 __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiED0Ev")
@@ -584,7 +584,7 @@ pub fn stub_0xfd0c() -> ! {
 
 // 0xfe04 — __ZN3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EED0Ev — RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int ()(void),0>::~BoundFuncDesc()
 // type: int __fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int ()(void),0>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int ()(void),0>::~BoundFuncDesc() [0xfe04]")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EED0Ev")]
 pub fn stub_0xfe04() -> ! {
     todo!("0xfe04 __ZN3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EED0Ev")

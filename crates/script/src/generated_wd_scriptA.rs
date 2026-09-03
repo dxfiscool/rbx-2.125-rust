@@ -30,7 +30,7 @@ pub fn stub_0x7d49b4() -> ! {
 // 0x7d49b8 — __ZN3RBX5HUMAN12RunningSlaveD0Ev
 // type: void __fastcall(RBX::HUMAN::RunningSlave *__hidden this)
 #[doc(alias = "__ZN3RBX5HUMAN12RunningSlaveD0Ev")]
-#[doc(alias = "RBX::HUMAN::RunningSlave::~RunningSlave()")]
+#[doc(alias = "RBX::HUMAN::RunningSlave::~RunningSlave() [0x7d49b8]")]
 pub fn stub_0x7d49b8() -> ! {
     todo!("0x7d49b8 __ZN3RBX5HUMAN12RunningSlaveD0Ev")
 }
@@ -46,7 +46,7 @@ pub fn stub_0x7d4a58() -> ! {
 // 0x7d4a60 — __ZThn4_N3RBX5HUMAN12RunningSlaveD0Ev
 // type: void __fastcall(RBX::HUMAN::RunningSlave *__hidden this)
 #[doc(alias = "__ZThn4_N3RBX5HUMAN12RunningSlaveD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::HUMAN::RunningSlave::~RunningSlave()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::RunningSlave::~RunningSlave() [0x7d4a60]")]
 pub fn stub_0x7d4a60() -> ! {
     todo!("0x7d4a60 __ZThn4_N3RBX5HUMAN12RunningSlaveD0Ev")
 }
@@ -62,7 +62,7 @@ pub fn stub_0x7d4b2c() -> ! {
 // 0x7d4b30 — __ZN3RBX5HUMAN6LandedD0Ev
 // type: void __fastcall(RBX::HUMAN::Landed *__hidden this)
 #[doc(alias = "__ZN3RBX5HUMAN6LandedD0Ev")]
-#[doc(alias = "RBX::HUMAN::Landed::~Landed()")]
+#[doc(alias = "RBX::HUMAN::Landed::~Landed() [0x7d4b30]")]
 pub fn stub_0x7d4b30() -> ! {
     todo!("0x7d4b30 __ZN3RBX5HUMAN6LandedD0Ev")
 }
@@ -86,7 +86,7 @@ pub fn stub_0x7d4bd4() -> ! {
 // 0x7d4bdc — __ZThn4_N3RBX5HUMAN6LandedD0Ev
 // type: void __fastcall(RBX::HUMAN::Landed *__hidden this)
 #[doc(alias = "__ZThn4_N3RBX5HUMAN6LandedD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::HUMAN::Landed::~Landed()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::Landed::~Landed() [0x7d4bdc]")]
 pub fn stub_0x7d4bdc() -> ! {
     todo!("0x7d4bdc __ZThn4_N3RBX5HUMAN6LandedD0Ev")
 }
@@ -158,7 +158,7 @@ pub fn stub_0x7d625c() -> ! {
 // 0x7d6260 — __ZN3RBX5HUMAN11RunningBaseD0Ev
 // type: void __fastcall(RBX::HUMAN::RunningBase *__hidden this)
 #[doc(alias = "__ZN3RBX5HUMAN11RunningBaseD0Ev")]
-#[doc(alias = "RBX::HUMAN::RunningBase::~RunningBase()")]
+#[doc(alias = "RBX::HUMAN::RunningBase::~RunningBase() [0x7d6260]")]
 pub fn stub_0x7d6260() -> ! {
     todo!("0x7d6260 __ZN3RBX5HUMAN11RunningBaseD0Ev")
 }
@@ -174,7 +174,7 @@ pub fn stub_0x7d6300() -> ! {
 // 0x7d6308 — __ZThn4_N3RBX5HUMAN11RunningBaseD0Ev
 // type: void __fastcall(RBX::HUMAN::RunningBase *__hidden this)
 #[doc(alias = "__ZThn4_N3RBX5HUMAN11RunningBaseD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::HUMAN::RunningBase::~RunningBase()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::RunningBase::~RunningBase() [0x7d6308]")]
 pub fn stub_0x7d6308() -> ! {
     todo!("0x7d6308 __ZThn4_N3RBX5HUMAN11RunningBaseD0Ev")
 }
@@ -189,7 +189,7 @@ pub fn stub_0x7d6684() -> ! {
 // 0x7d6688 — __ZN3RBX5HUMAN16RunningNoPhysicsC2EPNS_8HumanoidENS0_9StateTypeE
 // type: int __fastcall(int, int, int, int, int, int)
 #[doc(alias = "__ZN3RBX5HUMAN16RunningNoPhysicsC2EPNS_8HumanoidENS0_9StateTypeE")]
-#[doc(alias = "RBX::HUMAN::RunningNoPhysics::RunningNoPhysics(RBX::Humanoid *,RBX::HUMAN::StateType)")]
+#[doc(alias = "RBX::HUMAN::RunningNoPhysics::RunningNoPhysics(RBX::Humanoid *,RBX::HUMAN::StateType) [0x7d6688]")]
 pub fn stub_0x7d6688() -> ! {
     todo!("0x7d6688 __ZN3RBX5HUMAN16RunningNoPhysicsC2EPNS_8HumanoidENS0_9StateTypeE")
 }
@@ -221,7 +221,7 @@ pub fn stub_0x7d6790() -> ! {
 // 0x7d6794 — __ZN3RBX5HUMAN16RunningNoPhysicsD0Ev
 // type: void __fastcall(RBX::HUMAN::RunningNoPhysics *__hidden this)
 #[doc(alias = "__ZN3RBX5HUMAN16RunningNoPhysicsD0Ev")]
-#[doc(alias = "RBX::HUMAN::RunningNoPhysics::~RunningNoPhysics()")]
+#[doc(alias = "RBX::HUMAN::RunningNoPhysics::~RunningNoPhysics() [0x7d6794]")]
 pub fn stub_0x7d6794() -> ! {
     todo!("0x7d6794 __ZN3RBX5HUMAN16RunningNoPhysicsD0Ev")
 }
@@ -245,7 +245,7 @@ pub fn stub_0x7d6838() -> ! {
 // 0x7d6840 — __ZThn4_N3RBX5HUMAN16RunningNoPhysicsD0Ev
 // type: void __fastcall(RBX::HUMAN::RunningNoPhysics *__hidden this)
 #[doc(alias = "__ZThn4_N3RBX5HUMAN16RunningNoPhysicsD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::HUMAN::RunningNoPhysics::~RunningNoPhysics()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::RunningNoPhysics::~RunningNoPhysics() [0x7d6840]")]
 pub fn stub_0x7d6840() -> ! {
     todo!("0x7d6840 __ZThn4_N3RBX5HUMAN16RunningNoPhysicsD0Ev")
 }
@@ -259,7 +259,7 @@ pub fn stub_0x7d6c04() -> ! {
 
 // 0x7d6c08 — __ZN3RBX5HUMAN6SeatedC2EPNS_8HumanoidENS0_9StateTypeE
 #[doc(alias = "__ZN3RBX5HUMAN6SeatedC2EPNS_8HumanoidENS0_9StateTypeE")]
-#[doc(alias = "RBX::HUMAN::Seated::Seated(RBX::Humanoid *,RBX::HUMAN::StateType)")]
+#[doc(alias = "RBX::HUMAN::Seated::Seated(RBX::Humanoid *,RBX::HUMAN::StateType) [0x7d6c08]")]
 pub fn stub_0x7d6c08() -> ! {
     todo!("0x7d6c08 __ZN3RBX5HUMAN6SeatedC2EPNS_8HumanoidENS0_9StateTypeE")
 }
@@ -275,7 +275,7 @@ pub fn stub_0x7d6cdc() -> ! {
 // 0x7d6d7c — __ZN3RBX5HUMAN6SeatedD1Ev
 // type: void __fastcall(RBX::HUMAN::Seated *__hidden this)
 #[doc(alias = "__ZN3RBX5HUMAN6SeatedD1Ev")]
-#[doc(alias = "RBX::HUMAN::Seated::~Seated()")]
+#[doc(alias = "RBX::HUMAN::Seated::~Seated() [0x7d6d7c]")]
 pub fn stub_0x7d6d7c() -> ! {
     todo!("0x7d6d7c __ZN3RBX5HUMAN6SeatedD1Ev")
 }
@@ -291,7 +291,7 @@ pub fn stub_0x7d6d80() -> ! {
 // 0x7d6d88 — __ZN3RBX5HUMAN6SeatedD2Ev
 // type: void __fastcall(RBX::HUMAN::Seated *__hidden this)
 #[doc(alias = "__ZN3RBX5HUMAN6SeatedD2Ev")]
-#[doc(alias = "RBX::HUMAN::Seated::~Seated()")]
+#[doc(alias = "RBX::HUMAN::Seated::~Seated() [0x7d6d88]")]
 pub fn stub_0x7d6d88() -> ! {
     todo!("0x7d6d88 __ZN3RBX5HUMAN6SeatedD2Ev")
 }
@@ -299,7 +299,7 @@ pub fn stub_0x7d6d88() -> ! {
 // 0x7d6e7c — __ZThn4_N3RBX5HUMAN6SeatedD1Ev
 // type: void __fastcall(RBX::HUMAN::Seated *__hidden this)
 #[doc(alias = "__ZThn4_N3RBX5HUMAN6SeatedD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::HUMAN::Seated::~Seated()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::Seated::~Seated() [0x7d6e7c]")]
 pub fn stub_0x7d6e7c() -> ! {
     todo!("0x7d6e7c __ZThn4_N3RBX5HUMAN6SeatedD1Ev")
 }
@@ -313,7 +313,7 @@ pub fn stub_0x7d6e84() -> ! {
 
 // 0x7d6e88 — __ZN3RBX5HUMAN16PlatformStandingC2EPNS_8HumanoidENS0_9StateTypeE
 #[doc(alias = "__ZN3RBX5HUMAN16PlatformStandingC2EPNS_8HumanoidENS0_9StateTypeE")]
-#[doc(alias = "RBX::HUMAN::PlatformStanding::PlatformStanding(RBX::Humanoid *,RBX::HUMAN::StateType)")]
+#[doc(alias = "RBX::HUMAN::PlatformStanding::PlatformStanding(RBX::Humanoid *,RBX::HUMAN::StateType) [0x7d6e88]")]
 pub fn stub_0x7d6e88() -> ! {
     todo!("0x7d6e88 __ZN3RBX5HUMAN16PlatformStandingC2EPNS_8HumanoidENS0_9StateTypeE")
 }
@@ -345,7 +345,7 @@ pub fn stub_0x7e5298() -> ! {
 // 0x7e53d8 — __ZN3RBX18ContentProviderJobD0Ev
 // type: void __fastcall(RBX::ContentProviderJob *__hidden this)
 #[doc(alias = "__ZN3RBX18ContentProviderJobD0Ev")]
-#[doc(alias = "RBX::ContentProviderJob::~ContentProviderJob()")]
+#[doc(alias = "RBX::ContentProviderJob::~ContentProviderJob() [0x7e53d8]")]
 pub fn stub_0x7e53d8() -> ! {
     todo!("0x7e53d8 __ZN3RBX18ContentProviderJobD0Ev")
 }
@@ -528,7 +528,7 @@ pub fn stub_0x7e76f4() -> ! {
 // 0x7e76f8 — __ZN3RBX22TextureContentProviderC2Ev
 // type: RBX::Instance *__fastcall(RBX::TextureContentProvider *this, int, int, int)
 #[doc(alias = "__ZN3RBX22TextureContentProviderC2Ev")]
-#[doc(alias = "RBX::TextureContentProvider::TextureContentProvider(void)")]
+#[doc(alias = "RBX::TextureContentProvider::TextureContentProvider(void) [0x7e76f8]")]
 pub fn stub_0x7e76f8() -> ! {
     todo!("0x7e76f8 __ZN3RBX22TextureContentProviderC2Ev")
 }
@@ -592,7 +592,7 @@ pub fn stub_0x7e7fe8() -> ! {
 // 0x7e7fec — __ZN3RBX22TextureContentProviderD0Ev
 // type: void __fastcall(RBX::TextureContentProvider *__hidden this)
 #[doc(alias = "__ZN3RBX22TextureContentProviderD0Ev")]
-#[doc(alias = "RBX::TextureContentProvider::~TextureContentProvider()")]
+#[doc(alias = "RBX::TextureContentProvider::~TextureContentProvider() [0x7e7fec]")]
 pub fn stub_0x7e7fec() -> ! {
     todo!("0x7e7fec __ZN3RBX22TextureContentProviderD0Ev")
 }
@@ -608,7 +608,7 @@ pub fn stub_0x7e80b4() -> ! {
 // 0x7e80bc — __ZThn32_N3RBX22TextureContentProviderD0Ev
 // type: void __fastcall(RBX::TextureContentProvider *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX22TextureContentProviderD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::TextureContentProvider::~TextureContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::TextureContentProvider::~TextureContentProvider() [0x7e80bc]")]
 pub fn stub_0x7e80bc() -> ! {
     todo!("0x7e80bc __ZThn32_N3RBX22TextureContentProviderD0Ev")
 }
@@ -616,7 +616,7 @@ pub fn stub_0x7e80bc() -> ! {
 // 0x7e80ec — __ZThn36_N3RBX22TextureContentProviderD1Ev
 // type: void __fastcall(RBX::TextureContentProvider *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX22TextureContentProviderD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::TextureContentProvider::~TextureContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::TextureContentProvider::~TextureContentProvider() [0x7e80ec]")]
 pub fn stub_0x7e80ec() -> ! {
     todo!("0x7e80ec __ZThn36_N3RBX22TextureContentProviderD1Ev")
 }
@@ -624,8 +624,7 @@ pub fn stub_0x7e80ec() -> ! {
 // 0x7e80f4 — __ZThn36_N3RBX22TextureContentProviderD0Ev
 // type: void __fastcall(RBX::TextureContentProvider *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX22TextureContentProviderD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::TextureContentProvider::~TextureContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::TextureContentProvider::~TextureContentProvider() [0x7e80f4]")]
 pub fn stub_0x7e80f4() -> ! {
     todo!("0x7e80f4 __ZThn36_N3RBX22TextureContentProviderD0Ev")
 }
-

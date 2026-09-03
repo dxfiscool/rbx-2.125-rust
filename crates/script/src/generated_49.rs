@@ -10,21 +10,21 @@ use rbx_core::SharedPtr;
 
 // 0x4e5fd0 — __ZN3RBX13VelocityMotorD2Ev
 // type: void __fastcall(RBX::VelocityMotor *__hidden this)
-#[doc(alias = "RBX::VelocityMotor::~VelocityMotor()")]
+#[doc(alias = "RBX::VelocityMotor::~VelocityMotor() [0x4e5fd0]")]
 pub fn stub_0x4e5fd0() -> ! {
     todo!("0x4e5fd0 RBX::VelocityMotor::~VelocityMotor()")
 }
 
 // 0x4e6114 — __ZThn32_N3RBX13VelocityMotorD1Ev
 // type: void __fastcall(RBX::VelocityMotor *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::VelocityMotor::~VelocityMotor()")]
+#[doc(alias = "non-virtual thunk toRBX::VelocityMotor::~VelocityMotor() [0x4e6114]")]
 pub fn stub_0x4e6114() -> ! {
     todo!("0x4e6114 non-virtual thunk toRBX::VelocityMotor::~VelocityMotor()")
 }
 
 // 0x4e611c — __ZThn36_N3RBX13VelocityMotorD1Ev
 // type: void __fastcall(RBX::VelocityMotor *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::VelocityMotor::~VelocityMotor()")]
+#[doc(alias = "non-virtual thunk toRBX::VelocityMotor::~VelocityMotor() [0x4e611c]")]
 pub fn stub_0x4e611c() -> ! {
     todo!("0x4e611c non-virtual thunk toRBX::VelocityMotor::~VelocityMotor()")
 }
@@ -150,7 +150,7 @@ pub fn stub_0x4e7194() -> ! {
 
 // 0x4e7198 — __ZN3RBX4HoleD0Ev
 // type: void __fastcall(RBX::Hole *__hidden this)
-#[doc(alias = "RBX::Hole::~Hole()")]
+#[doc(alias = "RBX::Hole::~Hole() [0x4e7198]")]
 pub fn stub_0x4e7198() -> ! {
     todo!("0x4e7198 RBX::Hole::~Hole()")
 }
@@ -177,7 +177,7 @@ pub fn stub_0x4e724c() -> ! {
 
 // 0x4e7254 — __ZThn32_N3RBX4HoleD0Ev
 // type: void __fastcall(RBX::Hole *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Hole::~Hole()")]
+#[doc(alias = "non-virtual thunk toRBX::Hole::~Hole() [0x4e7254]")]
 pub fn stub_0x4e7254() -> ! {
     todo!("0x4e7254 non-virtual thunk toRBX::Hole::~Hole()")
 }
@@ -190,14 +190,14 @@ pub fn stub_0x4e72f8() -> ! {
 
 // 0x4e7308 — __ZThn36_N3RBX4HoleD1Ev
 // type: void __fastcall(RBX::Hole *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Hole::~Hole()")]
+#[doc(alias = "non-virtual thunk toRBX::Hole::~Hole() [0x4e7308]")]
 pub fn stub_0x4e7308() -> ! {
     todo!("0x4e7308 non-virtual thunk toRBX::Hole::~Hole()")
 }
 
 // 0x4e7310 — __ZThn36_N3RBX4HoleD0Ev
 // type: void __fastcall(RBX::Hole *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Hole::~Hole()")]
+#[doc(alias = "non-virtual thunk toRBX::Hole::~Hole() [0x4e7310]")]
 pub fn stub_0x4e7310() -> ! {
     todo!("0x4e7310 non-virtual thunk toRBX::Hole::~Hole()")
 }
@@ -211,7 +211,7 @@ pub fn stub_0x4e73b4() -> ! {
 
 // 0x4e73b8 — __ZN3RBX12MotorFeatureD0Ev
 // type: void __fastcall(RBX::MotorFeature *__hidden this)
-#[doc(alias = "RBX::MotorFeature::~MotorFeature()")]
+#[doc(alias = "RBX::MotorFeature::~MotorFeature() [0x4e73b8]")]
 pub fn stub_0x4e73b8() -> ! {
     todo!("0x4e73b8 RBX::MotorFeature::~MotorFeature()")
 }
@@ -231,7 +231,7 @@ pub fn stub_0x4e7468() -> ! {
 
 // 0x4e7470 — __ZThn32_N3RBX12MotorFeatureD0Ev
 // type: void __fastcall(RBX::MotorFeature *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::MotorFeature::~MotorFeature()")]
+#[doc(alias = "non-virtual thunk toRBX::MotorFeature::~MotorFeature() [0x4e7470]")]
 pub fn stub_0x4e7470() -> ! {
     todo!("0x4e7470 non-virtual thunk toRBX::MotorFeature::~MotorFeature()")
 }
@@ -244,14 +244,14 @@ pub fn stub_0x4e7514() -> ! {
 
 // 0x4e7524 — __ZThn36_N3RBX12MotorFeatureD1Ev
 // type: void __fastcall(RBX::MotorFeature *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::MotorFeature::~MotorFeature()")]
+#[doc(alias = "non-virtual thunk toRBX::MotorFeature::~MotorFeature() [0x4e7524]")]
 pub fn stub_0x4e7524() -> ! {
     todo!("0x4e7524 non-virtual thunk toRBX::MotorFeature::~MotorFeature()")
 }
 
 // 0x4e752c — __ZThn36_N3RBX12MotorFeatureD0Ev
 // type: void __fastcall(RBX::MotorFeature *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::MotorFeature::~MotorFeature()")]
+#[doc(alias = "non-virtual thunk toRBX::MotorFeature::~MotorFeature() [0x4e752c]")]
 pub fn stub_0x4e752c() -> ! {
     todo!("0x4e752c non-virtual thunk toRBX::MotorFeature::~MotorFeature()")
 }
@@ -388,7 +388,7 @@ pub fn stub_0x4e81e0() -> ! {
 }
 
 // 0x4e81e4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MotorFeatureENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x4e81e4]")]
 pub fn stub_0x4e81e4() -> ! {
     todo!("0x4e81e4 boost::detail::sp_counted_impl_pd<RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
 }
@@ -480,7 +480,7 @@ pub fn stub_0x4e8b90() -> ! {
 }
 
 // 0x4e8b94 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX4HoleENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Hole *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Hole *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x4e8b94]")]
 pub fn stub_0x4e8b94() -> ! {
     todo!("0x4e8b94 boost::detail::sp_counted_impl_pd<RBX::Hole *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
 }
@@ -547,7 +547,7 @@ pub fn stub_0x4e9054() -> ! {
 }
 
 // 0x4e9080 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES6_EE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf0IvNS4_13VelocityMotorEEENSA_5list1INSA_5valueIPSE_EEEEEEED0Ev
-#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::VelocityMotor>,boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*>>>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::VelocityMotor>,boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*>>>>::~callable_slot() [0x4e9080]")]
 pub fn stub_0x4e9080() -> ! {
     todo!("0x4e9080 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::VelocityMotor>,boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*>>>>::~callable_slot()")
 }
@@ -571,7 +571,7 @@ pub fn stub_0x4e9184() -> ! {
 }
 
 // 0x4e91b0 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf0IvNS5_13VelocityMotorEEENSB_5list1INSB_5valueIPSF_EEEEEELi2ES8_ED0Ev
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::VelocityMotor>,boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::VelocityMotor>,boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::~callable() [0x4e91b0]")]
 pub fn stub_0x4e91b0() -> ! {
     todo!("0x4e91b0 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::VelocityMotor>,boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~callable()")
 }
@@ -633,7 +633,7 @@ pub fn stub_0x4e9738() -> ! {
 }
 
 // 0x4e973c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13VelocityMotorENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x4e973c]")]
 pub fn stub_0x4e973c() -> ! {
     todo!("0x4e973c boost::detail::sp_counted_impl_pd<RBX::VelocityMotor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
 }

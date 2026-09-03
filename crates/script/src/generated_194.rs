@@ -679,4 +679,3 @@ pub fn stub_0x824818() -> ! {
 pub fn stub_0x8248a0() -> ! {
     todo!("0x8248a0 luaL_unref(lua_State *,int,int)")
 }
-

@@ -293,7 +293,7 @@ pub fn stub_0x1c7738() -> ! {
 
 // 0x1c7988 — __ZN10FIRationalC1Ef
 // type: FIRational *__fastcall(FIRational *__hidden this, float)
-#[doc(alias = "FIRational::FIRational(float)")]
+#[doc(alias = "FIRational::FIRational(float) [0x1c7988]")]
 pub fn stub_0x1c7988() -> ! {
     todo!("0x1c7988 FIRational::FIRational(float)")
 }

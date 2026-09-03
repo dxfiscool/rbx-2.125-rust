@@ -175,7 +175,7 @@ pub fn stub_0x4a7184() -> ! {
 
 // 0x4a7234 — __ZN3RBX20ExtrudedPartInstanceD1Ev
 // type: void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
-#[doc(alias = "RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+#[doc(alias = "RBX::ExtrudedPartInstance::~ExtrudedPartInstance() [0x4a7234]")]
 pub fn stub_0x4a7234() -> ! {
     todo!("0x4a7234 RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
@@ -189,35 +189,35 @@ pub fn stub_0x4a7244() -> ! {
 
 // 0x4a724c — __ZThn36_N3RBX20ExtrudedPartInstanceD0Ev
 // type: void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance() [0x4a724c]")]
 pub fn stub_0x4a724c() -> ! {
     todo!("0x4a724c non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
 
 // 0x4a7254 — __ZThn132_N3RBX20ExtrudedPartInstanceD0Ev
 // type: void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance() [0x4a7254]")]
 pub fn stub_0x4a7254() -> ! {
     todo!("0x4a7254 non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
 
 // 0x4a725c — __ZThn32_N3RBX20ExtrudedPartInstanceD1Ev
 // type: void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance() [0x4a725c]")]
 pub fn stub_0x4a725c() -> ! {
     todo!("0x4a725c non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
 
 // 0x4a7270 — __ZThn36_N3RBX20ExtrudedPartInstanceD1Ev
 // type: void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance() [0x4a7270]")]
 pub fn stub_0x4a7270() -> ! {
     todo!("0x4a7270 non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
 
 // 0x4a7284 — __ZThn132_N3RBX20ExtrudedPartInstanceD1Ev
 // type: void __fastcall(RBX::ExtrudedPartInstance *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance() [0x4a7284]")]
 pub fn stub_0x4a7284() -> ! {
     todo!("0x4a7284 non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
@@ -404,7 +404,7 @@ pub fn stub_0x4a974c() -> ! {
 
 // 0x4a9808 — __ZN3RBX12FaceInstanceD0Ev
 // type: void __fastcall(RBX::FaceInstance *__hidden this)
-#[doc(alias = "RBX::FaceInstance::~FaceInstance()")]
+#[doc(alias = "RBX::FaceInstance::~FaceInstance() [0x4a9808]")]
 pub fn stub_0x4a9808() -> ! {
     todo!("0x4a9808 RBX::FaceInstance::~FaceInstance()")
 }
@@ -418,21 +418,21 @@ pub fn stub_0x4a98d4() -> ! {
 
 // 0x4a998c — __ZThn32_N3RBX12FaceInstanceD0Ev
 // type: void __fastcall(RBX::FaceInstance *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::FaceInstance::~FaceInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::FaceInstance::~FaceInstance() [0x4a998c]")]
 pub fn stub_0x4a998c() -> ! {
     todo!("0x4a998c non-virtual thunk toRBX::FaceInstance::~FaceInstance()")
 }
 
 // 0x4a9a5c — __ZThn36_N3RBX12FaceInstanceD1Ev
 // type: void __fastcall(RBX::FaceInstance *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::FaceInstance::~FaceInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::FaceInstance::~FaceInstance() [0x4a9a5c]")]
 pub fn stub_0x4a9a5c() -> ! {
     todo!("0x4a9a5c non-virtual thunk toRBX::FaceInstance::~FaceInstance()")
 }
 
 // 0x4a9b14 — __ZThn36_N3RBX12FaceInstanceD0Ev
 // type: void __fastcall(RBX::FaceInstance *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::FaceInstance::~FaceInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::FaceInstance::~FaceInstance() [0x4a9b14]")]
 pub fn stub_0x4a9b14() -> ! {
     todo!("0x4a9b14 non-virtual thunk toRBX::FaceInstance::~FaceInstance()")
 }

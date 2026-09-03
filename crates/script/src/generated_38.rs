@@ -18,7 +18,7 @@ pub fn stub_0x3f3970() -> ! {
 
 // 0x3f3a14 — __ZN3RBX17CollectionServiceD2Ev
 // type: void __fastcall(RBX::CollectionService *__hidden this)
-#[doc(alias = "RBX::CollectionService::~CollectionService()")]
+#[doc(alias = "RBX::CollectionService::~CollectionService() [0x3f3a14]")]
 pub fn stub_0x3f3a14() -> ! {
     todo!("0x3f3a14 RBX::CollectionService::~CollectionService()")
 }
@@ -242,14 +242,14 @@ pub fn stub_0x3f9418() -> ! {
 
 // 0x3f94b8 — __ZN3RBX12RunStateVerbD1Ev
 // type: void __fastcall(RBX::RunStateVerb *__hidden this)
-#[doc(alias = "RBX::RunStateVerb::~RunStateVerb()")]
+#[doc(alias = "RBX::RunStateVerb::~RunStateVerb() [0x3f94b8]")]
 pub fn stub_0x3f94b8() -> ! {
     todo!("0x3f94b8 RBX::RunStateVerb::~RunStateVerb()")
 }
 
 // 0x3f94bc — __ZN3RBX12RunStateVerbD2Ev
 // type: void __fastcall(RBX::RunStateVerb *__hidden this)
-#[doc(alias = "RBX::RunStateVerb::~RunStateVerb()")]
+#[doc(alias = "RBX::RunStateVerb::~RunStateVerb() [0x3f94bc]")]
 pub fn stub_0x3f94bc() -> ! {
     todo!("0x3f94bc RBX::RunStateVerb::~RunStateVerb()")
 }
@@ -298,14 +298,14 @@ pub fn stub_0x3f9714() -> ! {
 
 // 0x3f97a8 — __ZN3RBX17EditSelectionVerbD0Ev
 // type: void __fastcall(RBX::EditSelectionVerb *__hidden this)
-#[doc(alias = "RBX::EditSelectionVerb::~EditSelectionVerb()")]
+#[doc(alias = "RBX::EditSelectionVerb::~EditSelectionVerb() [0x3f97a8]")]
 pub fn stub_0x3f97a8() -> ! {
     todo!("0x3f97a8 RBX::EditSelectionVerb::~EditSelectionVerb()")
 }
 
 // 0x3f9848 — __ZN3RBX17EditSelectionVerbD1Ev
 // type: void __fastcall(RBX::EditSelectionVerb *__hidden this)
-#[doc(alias = "RBX::EditSelectionVerb::~EditSelectionVerb()")]
+#[doc(alias = "RBX::EditSelectionVerb::~EditSelectionVerb() [0x3f9848]")]
 pub fn stub_0x3f9848() -> ! {
     todo!("0x3f9848 RBX::EditSelectionVerb::~EditSelectionVerb()")
 }
@@ -549,7 +549,7 @@ pub fn stub_0x3fcdd8() -> ! {
 
 // 0x3fcddc — __ZN3RBX10DeleteBaseD0Ev
 // type: void __fastcall(RBX::DeleteBase *__hidden this)
-#[doc(alias = "RBX::DeleteBase::~DeleteBase()")]
+#[doc(alias = "RBX::DeleteBase::~DeleteBase() [0x3fcddc]")]
 pub fn stub_0x3fcddc() -> ! {
     todo!("0x3fcddc RBX::DeleteBase::~DeleteBase()")
 }
@@ -570,7 +570,7 @@ pub fn stub_0x3fce80() -> ! {
 
 // 0x3fce84 — __ZN3RBX16SelectAllCommandD0Ev
 // type: void __fastcall(RBX::SelectAllCommand *__hidden this)
-#[doc(alias = "RBX::SelectAllCommand::~SelectAllCommand()")]
+#[doc(alias = "RBX::SelectAllCommand::~SelectAllCommand() [0x3fce84]")]
 pub fn stub_0x3fce84() -> ! {
     todo!("0x3fce84 RBX::SelectAllCommand::~SelectAllCommand()")
 }
@@ -584,7 +584,7 @@ pub fn stub_0x3fcf24() -> ! {
 
 // 0x3fcf28 — __ZN3RBX13UnlockAllVerbD0Ev
 // type: void __fastcall(RBX::UnlockAllVerb *__hidden this)
-#[doc(alias = "RBX::UnlockAllVerb::~UnlockAllVerb()")]
+#[doc(alias = "RBX::UnlockAllVerb::~UnlockAllVerb() [0x3fcf28]")]
 pub fn stub_0x3fcf28() -> ! {
     todo!("0x3fcf28 RBX::UnlockAllVerb::~UnlockAllVerb()")
 }
@@ -598,7 +598,7 @@ pub fn stub_0x3fcfc8() -> ! {
 
 // 0x3fd094 — __ZN3RBX10CameraVerbD0Ev
 // type: void __fastcall(RBX::CameraVerb *__hidden this)
-#[doc(alias = "RBX::CameraVerb::~CameraVerb()")]
+#[doc(alias = "RBX::CameraVerb::~CameraVerb() [0x3fd094]")]
 pub fn stub_0x3fd094() -> ! {
     todo!("0x3fd094 RBX::CameraVerb::~CameraVerb()")
 }
@@ -619,7 +619,7 @@ pub fn stub_0x3fd178() -> ! {
 
 // 0x3fd244 — __ZN3RBX19CameraTiltUpCommandD0Ev
 // type: void __fastcall(RBX::CameraTiltUpCommand *__hidden this)
-#[doc(alias = "RBX::CameraTiltUpCommand::~CameraTiltUpCommand()")]
+#[doc(alias = "RBX::CameraTiltUpCommand::~CameraTiltUpCommand() [0x3fd244]")]
 pub fn stub_0x3fd244() -> ! {
     todo!("0x3fd244 RBX::CameraTiltUpCommand::~CameraTiltUpCommand()")
 }
@@ -633,7 +633,7 @@ pub fn stub_0x3fd324() -> ! {
 
 // 0x3fd3f0 — __ZN3RBX21CameraTiltDownCommandD0Ev
 // type: void __fastcall(RBX::CameraTiltDownCommand *__hidden this)
-#[doc(alias = "RBX::CameraTiltDownCommand::~CameraTiltDownCommand()")]
+#[doc(alias = "RBX::CameraTiltDownCommand::~CameraTiltDownCommand() [0x3fd3f0]")]
 pub fn stub_0x3fd3f0() -> ! {
     todo!("0x3fd3f0 RBX::CameraTiltDownCommand::~CameraTiltDownCommand()")
 }
@@ -647,7 +647,7 @@ pub fn stub_0x3fd4d0() -> ! {
 
 // 0x3fd59c — __ZN3RBX20CameraPanLeftCommandD0Ev
 // type: void __fastcall(RBX::CameraPanLeftCommand *__hidden this)
-#[doc(alias = "RBX::CameraPanLeftCommand::~CameraPanLeftCommand()")]
+#[doc(alias = "RBX::CameraPanLeftCommand::~CameraPanLeftCommand() [0x3fd59c]")]
 pub fn stub_0x3fd59c() -> ! {
     todo!("0x3fd59c RBX::CameraPanLeftCommand::~CameraPanLeftCommand()")
 }
@@ -661,7 +661,7 @@ pub fn stub_0x3fd67c() -> ! {
 
 // 0x3fd748 — __ZN3RBX21CameraPanRightCommandD0Ev
 // type: void __fastcall(RBX::CameraPanRightCommand *__hidden this)
-#[doc(alias = "RBX::CameraPanRightCommand::~CameraPanRightCommand()")]
+#[doc(alias = "RBX::CameraPanRightCommand::~CameraPanRightCommand() [0x3fd748]")]
 pub fn stub_0x3fd748() -> ! {
     todo!("0x3fd748 RBX::CameraPanRightCommand::~CameraPanRightCommand()")
 }
@@ -675,7 +675,7 @@ pub fn stub_0x3fd828() -> ! {
 
 // 0x3fd8f4 — __ZN3RBX19CameraZoomInCommandD0Ev
 // type: void __fastcall(RBX::CameraZoomInCommand *__hidden this)
-#[doc(alias = "RBX::CameraZoomInCommand::~CameraZoomInCommand()")]
+#[doc(alias = "RBX::CameraZoomInCommand::~CameraZoomInCommand() [0x3fd8f4]")]
 pub fn stub_0x3fd8f4() -> ! {
     todo!("0x3fd8f4 RBX::CameraZoomInCommand::~CameraZoomInCommand()")
 }
@@ -689,7 +689,7 @@ pub fn stub_0x3fd9d4() -> ! {
 
 // 0x3fdaa0 — __ZN3RBX20CameraZoomOutCommandD0Ev
 // type: void __fastcall(RBX::CameraZoomOutCommand *__hidden this)
-#[doc(alias = "RBX::CameraZoomOutCommand::~CameraZoomOutCommand()")]
+#[doc(alias = "RBX::CameraZoomOutCommand::~CameraZoomOutCommand() [0x3fdaa0]")]
 pub fn stub_0x3fdaa0() -> ! {
     todo!("0x3fdaa0 RBX::CameraZoomOutCommand::~CameraZoomOutCommand()")
 }
@@ -703,7 +703,7 @@ pub fn stub_0x3fdb80() -> ! {
 
 // 0x3fdb84 — __ZN3RBX16BoolPropertyVerbD0Ev
 // type: void __fastcall(RBX::BoolPropertyVerb *__hidden this)
-#[doc(alias = "RBX::BoolPropertyVerb::~BoolPropertyVerb()")]
+#[doc(alias = "RBX::BoolPropertyVerb::~BoolPropertyVerb() [0x3fdb84]")]
 pub fn stub_0x3fdb84() -> ! {
     todo!("0x3fdb84 RBX::BoolPropertyVerb::~BoolPropertyVerb()")
 }

@@ -206,7 +206,7 @@ pub fn stub_0x53a0b0() -> ! {
 }
 
 // 0x53a100 — __ZN3RBX10Reflection15RemoteEventDescINS_9GuiObjectEFvNS_5UDim2EEN3rbx13remote_signalIS4_EEED0Ev — RBX::Reflection::RemoteEventDesc<RBX::GuiObject,void ()(RBX::UDim2),rbx::remote_signal<void ()(RBX::UDim2)>>::~RemoteEventDesc()
-#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::GuiObject,void ()(RBX::UDim2),rbx::remote_signal<void ()(RBX::UDim2)>>::~RemoteEventDesc()")]
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::GuiObject,void ()(RBX::UDim2),rbx::remote_signal<void ()(RBX::UDim2)>>::~RemoteEventDesc() [0x53a100]")]
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_9GuiObjectEFvNS_5UDim2EEN3rbx13remote_signalIS4_EEED0Ev")]
 pub fn stub_0x53a100() -> ! {
     todo!("0x53a100 __ZN3RBX10Reflection15RemoteEventDescINS_9GuiObjectEFvNS_5UDim2EEN3rbx13remote_signalIS4_EEED0Ev")
@@ -375,7 +375,7 @@ pub fn stub_0x53b058() -> ! {
 }
 
 // 0x53b168 — __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE13callable_slotIN5boost8functionIS4_EEED0Ev — rbx::signals::signal<void ()(RBX::UDim2)>::callable_slot<boost::function<void ()(RBX::UDim2)>>::~callable_slot()
-#[doc(alias = "rbx::signals::signal<void ()(RBX::UDim2)>::callable_slot<boost::function<void ()(RBX::UDim2)>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::UDim2)>::callable_slot<boost::function<void ()(RBX::UDim2)>>::~callable_slot() [0x53b168]")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX5UDim2EEE13callable_slotIN5boost8functionIS4_EEED0Ev")]
 pub fn stub_0x53b168() -> ! {
     todo!("0x53b168 __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE13callable_slotIN5boost8functionIS4_EEED0Ev")
@@ -410,7 +410,7 @@ pub fn stub_0x53b398() -> ! {
 }
 
 // 0x53b4a8 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX5UDim2EEE4slotEN5boost8functionIS5_EELi1ES5_ED0Ev — rbx::callable<rbx::signals::signal<void ()(RBX::UDim2)>::slot,boost::function<void ()(RBX::UDim2)>,1,void ()(RBX::UDim2)>::~callable()
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::UDim2)>::slot,boost::function<void ()(RBX::UDim2)>,1,void ()(RBX::UDim2)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::UDim2)>::slot,boost::function<void ()(RBX::UDim2)>,1,void ()(RBX::UDim2)>::~callable() [0x53b4a8]")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN3RBX5UDim2EEE4slotEN5boost8functionIS5_EELi1ES5_ED0Ev")]
 pub fn stub_0x53b4a8() -> ! {
     todo!("0x53b4a8 __ZN3rbx8callableINS_7signals6signalIFvN3RBX5UDim2EEE4slotEN5boost8functionIS5_EELi1ES5_ED0Ev")
@@ -438,14 +438,14 @@ pub fn stub_0x53b78c() -> ! {
 }
 
 // 0x53b7b0 — __ZN3RBX10Reflection9EventDescINS_9GuiObjectEFvNS_5UDim2EEN3rbx13remote_signalIS4_EEMS2_S7_ED0Ev — RBX::Reflection::EventDesc<RBX::GuiObject,void ()(RBX::UDim2),rbx::remote_signal<void ()(RBX::UDim2)>,rbx::remote_signal<void ()(RBX::UDim2)> RBX::GuiObject::*>::~EventDesc()
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::GuiObject,void ()(RBX::UDim2),rbx::remote_signal<void ()(RBX::UDim2)>,rbx::remote_signal<void ()(RBX::UDim2)> RBX::GuiObject::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::GuiObject,void ()(RBX::UDim2),rbx::remote_signal<void ()(RBX::UDim2)>,rbx::remote_signal<void ()(RBX::UDim2)> RBX::GuiObject::*>::~EventDesc() [0x53b7b0]")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_9GuiObjectEFvNS_5UDim2EEN3rbx13remote_signalIS4_EEMS2_S7_ED0Ev")]
 pub fn stub_0x53b7b0() -> ! {
     todo!("0x53b7b0 __ZN3RBX10Reflection9EventDescINS_9GuiObjectEFvNS_5UDim2EEN3rbx13remote_signalIS4_EEMS2_S7_ED0Ev")
 }
 
 // 0x53b864 — __ZN3RBX10Reflection15RemoteEventDescINS_9GuiObjectEFviiEN3rbx13remote_signalIS3_EEED0Ev — RBX::Reflection::RemoteEventDesc<RBX::GuiObject,void ()(int,int),rbx::remote_signal<void ()(int,int)>>::~RemoteEventDesc()
-#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::GuiObject,void ()(int,int),rbx::remote_signal<void ()(int,int)>>::~RemoteEventDesc()")]
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::GuiObject,void ()(int,int),rbx::remote_signal<void ()(int,int)>>::~RemoteEventDesc() [0x53b864]")]
 #[doc(alias = "__ZN3RBX10Reflection15RemoteEventDescINS_9GuiObjectEFviiEN3rbx13remote_signalIS3_EEED0Ev")]
 pub fn stub_0x53b864() -> ! {
     todo!("0x53b864 __ZN3RBX10Reflection15RemoteEventDescINS_9GuiObjectEFviiEN3rbx13remote_signalIS3_EEED0Ev")
@@ -502,7 +502,7 @@ pub fn stub_0x53bd3c() -> ! {
 }
 
 // 0x53bd60 — __ZN3RBX10Reflection9EventDescINS_9GuiObjectEFviiEN3rbx13remote_signalIS3_EEMS2_S6_ED0Ev — RBX::Reflection::EventDesc<RBX::GuiObject,void ()(int,int),rbx::remote_signal<void ()(int,int)>,rbx::remote_signal<void ()(int,int)> RBX::GuiObject::*>::~EventDesc()
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::GuiObject,void ()(int,int),rbx::remote_signal<void ()(int,int)>,rbx::remote_signal<void ()(int,int)> RBX::GuiObject::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::GuiObject,void ()(int,int),rbx::remote_signal<void ()(int,int)>,rbx::remote_signal<void ()(int,int)> RBX::GuiObject::*>::~EventDesc() [0x53bd60]")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_9GuiObjectEFviiEN3rbx13remote_signalIS3_EEMS2_S6_ED0Ev")]
 pub fn stub_0x53bd60() -> ! {
     todo!("0x53bd60 __ZN3RBX10Reflection9EventDescINS_9GuiObjectEFviiEN3rbx13remote_signalIS3_EEMS2_S6_ED0Ev")
@@ -518,7 +518,7 @@ pub fn stub_0x53be14() -> ! {
 
 // 0x53bf28 — __ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectEbED0Ev — RBX::Reflection::PropDescriptor<RBX::GuiObject,bool>::~PropDescriptor()
 // type: int __fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,bool>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,bool>::~PropDescriptor() [0x53bf28]")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectEbED0Ev")]
 pub fn stub_0x53bf28() -> ! {
     todo!("0x53bf28 __ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectEbED0Ev")
@@ -561,7 +561,7 @@ pub fn stub_0x53bfa4() -> ! {
 }
 
 // 0x53c0b8 — __ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectEfED0Ev — RBX::Reflection::PropDescriptor<RBX::GuiObject,float>::~PropDescriptor()
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,float>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,float>::~PropDescriptor() [0x53c0b8]")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectEfED0Ev")]
 pub fn stub_0x53c0b8() -> ! {
     todo!("0x53c0b8 __ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectEfED0Ev")
@@ -604,7 +604,7 @@ pub fn stub_0x53c130() -> ! {
 }
 
 // 0x53c244 — __ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectEN3G3D6Color3EED0Ev — RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::~PropDescriptor()
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::~PropDescriptor() [0x53c244]")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectEN3G3D6Color3EED0Ev")]
 pub fn stub_0x53c244() -> ! {
     todo!("0x53c244 __ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectEN3G3D6Color3EED0Ev")
@@ -647,7 +647,7 @@ pub fn stub_0x53c2dc() -> ! {
 }
 
 // 0x53c3f0 — __ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectENS_10BrickColorEED0Ev — RBX::Reflection::PropDescriptor<RBX::GuiObject,RBX::BrickColor>::~PropDescriptor()
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,RBX::BrickColor>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,RBX::BrickColor>::~PropDescriptor() [0x53c3f0]")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectENS_10BrickColorEED0Ev")]
 pub fn stub_0x53c3f0() -> ! {
     todo!("0x53c3f0 __ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectENS_10BrickColorEED0Ev")
@@ -690,7 +690,7 @@ pub fn stub_0x53c470() -> ! {
 }
 
 // 0x53c624 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9GuiObjectENS2_14SizeConstraintEED0Ev — RBX::Reflection::EnumPropDescriptor<RBX::GuiObject,RBX::GuiObject::SizeConstraint>::~EnumPropDescriptor()
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiObject,RBX::GuiObject::SizeConstraint>::~EnumPropDescriptor()")]
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiObject,RBX::GuiObject::SizeConstraint>::~EnumPropDescriptor() [0x53c624]")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_9GuiObjectENS2_14SizeConstraintEED0Ev")]
 pub fn stub_0x53c624() -> ! {
     todo!("0x53c624 __ZN3RBX10Reflection18EnumPropDescriptorINS_9GuiObjectENS2_14SizeConstraintEED0Ev")
@@ -867,7 +867,7 @@ pub fn stub_0x53cce8() -> ! {
 }
 
 // 0x53cdfc — __ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectEiED0Ev — RBX::Reflection::PropDescriptor<RBX::GuiObject,int>::~PropDescriptor()
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,int>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,int>::~PropDescriptor() [0x53cdfc]")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectEiED0Ev")]
 pub fn stub_0x53cdfc() -> ! {
     todo!("0x53cdfc __ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectEiED0Ev")

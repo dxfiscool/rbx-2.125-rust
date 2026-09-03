@@ -10,7 +10,7 @@ use rbx_core::SharedPtr;
 
 // 0x26113c — __ZN3RBX10Reflection15ClassDescriptorC2Ev
 // type: RBX::Reflection::ClassDescriptor *__fastcall(RBX::Reflection::ClassDescriptor *this)
-#[doc(alias = "RBX::Reflection::ClassDescriptor::ClassDescriptor(void)")]
+#[doc(alias = "RBX::Reflection::ClassDescriptor::ClassDescriptor(void) [0x26113c]")]
 pub fn stub_0x26113c() -> ! {
     todo!("0x26113c RBX::Reflection::ClassDescriptor::ClassDescriptor(void)")
 }
@@ -24,7 +24,7 @@ pub fn stub_0x261300() -> ! {
 
 // 0x26131c — __ZN3RBX10Reflection15ClassDescriptorC2ERS1_PKcNS1_10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, unsigned int, int, int, struct _Unwind_Exception *lpuexcpt, int)
-#[doc(alias = "RBX::Reflection::ClassDescriptor::ClassDescriptor(RBX::Reflection::ClassDescriptor&,char const*,RBX::Reflection::ClassDescriptor::Attributes,RBX::Security::Permissions)")]
+#[doc(alias = "RBX::Reflection::ClassDescriptor::ClassDescriptor(RBX::Reflection::ClassDescriptor&,char const*,RBX::Reflection::ClassDescriptor::Attributes,RBX::Security::Permissions) [0x26131c]")]
 pub fn stub_0x26131c() -> ! {
     todo!("0x26131c RBX::Reflection::ClassDescriptor::ClassDescriptor(RBX::Reflection::ClassDescriptor&,char const*,RBX::Reflection::ClassDescriptor::Attributes,RBX::Security::Permissions)")
 }

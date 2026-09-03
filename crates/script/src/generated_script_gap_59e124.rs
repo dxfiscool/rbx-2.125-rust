@@ -233,7 +233,7 @@ pub fn stub_0x59f6bc() -> ! {
 
 // 0x59f75c — __ZN3RBX13JointInstanceD1Ev
 // type: void __fastcall(RBX::JointInstance *__hidden this)
-#[doc(alias = "RBX::JointInstance::~JointInstance()")]
+#[doc(alias = "RBX::JointInstance::~JointInstance() [0x59f75c]")]
 #[doc(alias = "__ZN3RBX13JointInstanceD1Ev")]
 pub fn stub_0x59f75c() -> ! {
     todo!("0x59f75c RBX::JointInstance::~JointInstance()")
@@ -249,7 +249,7 @@ pub fn stub_0x59f760() -> ! {
 
 // 0x59f768 — __ZThn36_N3RBX13JointInstanceD0Ev
 // type: void __fastcall(RBX::JointInstance *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::JointInstance::~JointInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::JointInstance::~JointInstance() [0x59f768]")]
 #[doc(alias = "__ZThn36_N3RBX13JointInstanceD0Ev")]
 pub fn stub_0x59f768() -> ! {
     todo!("0x59f768 non-virtual thunk toRBX::JointInstance::~JointInstance()")
@@ -257,7 +257,7 @@ pub fn stub_0x59f768() -> ! {
 
 // 0x59f770 — __ZN3RBX13JointInstanceD2Ev
 // type: void __fastcall(RBX::JointInstance *__hidden this)
-#[doc(alias = "RBX::JointInstance::~JointInstance()")]
+#[doc(alias = "RBX::JointInstance::~JointInstance() [0x59f770]")]
 #[doc(alias = "__ZN3RBX13JointInstanceD2Ev")]
 pub fn stub_0x59f770() -> ! {
     todo!("0x59f770 RBX::JointInstance::~JointInstance()")
@@ -265,7 +265,7 @@ pub fn stub_0x59f770() -> ! {
 
 // 0x59fa24 — __ZThn32_N3RBX13JointInstanceD1Ev
 // type: void __fastcall(RBX::JointInstance *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::JointInstance::~JointInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::JointInstance::~JointInstance() [0x59fa24]")]
 #[doc(alias = "__ZThn32_N3RBX13JointInstanceD1Ev")]
 pub fn stub_0x59fa24() -> ! {
     todo!("0x59fa24 non-virtual thunk toRBX::JointInstance::~JointInstance()")
@@ -273,7 +273,7 @@ pub fn stub_0x59fa24() -> ! {
 
 // 0x59fa2c — __ZThn36_N3RBX13JointInstanceD1Ev
 // type: void __fastcall(RBX::JointInstance *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::JointInstance::~JointInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::JointInstance::~JointInstance() [0x59fa2c]")]
 #[doc(alias = "__ZThn36_N3RBX13JointInstanceD1Ev")]
 pub fn stub_0x59fa2c() -> ! {
     todo!("0x59fa2c non-virtual thunk toRBX::JointInstance::~JointInstance()")
@@ -384,7 +384,7 @@ pub fn stub_0x5a0068() -> ! {
 
 // 0x5a006c — __ZN3RBX4SnapC2EPNS_5JointE
 // type: _DWORD __fastcall(RBX::Snap *__hidden this, RBX::Joint *)
-#[doc(alias = "RBX::Snap::Snap(RBX::Joint *)")]
+#[doc(alias = "RBX::Snap::Snap(RBX::Joint *) [0x5a006c]")]
 #[doc(alias = "__ZN3RBX4SnapC2EPNS_5JointE")]
 pub fn stub_0x5a006c() -> ! {
     todo!("0x5a006c RBX::Snap::Snap(RBX::Joint *)")
@@ -400,7 +400,7 @@ pub fn stub_0x5a033c() -> ! {
 
 // 0x5a0340 — __ZN3RBX4SnapC2Ev
 // type: _DWORD __fastcall(RBX::Snap *__hidden this)
-#[doc(alias = "RBX::Snap::Snap(void)")]
+#[doc(alias = "RBX::Snap::Snap(void) [0x5a0340]")]
 #[doc(alias = "__ZN3RBX4SnapC2Ev")]
 pub fn stub_0x5a0340() -> ! {
     todo!("0x5a0340 RBX::Snap::Snap(void)")
@@ -416,7 +416,7 @@ pub fn stub_0x5a0584() -> ! {
 
 // 0x5a0588 — __ZN3RBX4WeldC2EPNS_5JointE
 // type: _DWORD __fastcall(RBX::Weld *__hidden this, RBX::Joint *)
-#[doc(alias = "RBX::Weld::Weld(RBX::Joint *)")]
+#[doc(alias = "RBX::Weld::Weld(RBX::Joint *) [0x5a0588]")]
 #[doc(alias = "__ZN3RBX4WeldC2EPNS_5JointE")]
 pub fn stub_0x5a0588() -> ! {
     todo!("0x5a0588 RBX::Weld::Weld(RBX::Joint *)")
@@ -432,7 +432,7 @@ pub fn stub_0x5a0854() -> ! {
 
 // 0x5a0858 — __ZN3RBX4WeldC2Ev
 // type: _DWORD __fastcall(RBX::Weld *__hidden this)
-#[doc(alias = "RBX::Weld::Weld(void)")]
+#[doc(alias = "RBX::Weld::Weld(void) [0x5a0858]")]
 #[doc(alias = "__ZN3RBX4WeldC2Ev")]
 pub fn stub_0x5a0858() -> ! {
     todo!("0x5a0858 RBX::Weld::Weld(void)")
@@ -561,7 +561,7 @@ pub fn stub_0x5a381c() -> ! {
 
 // 0x5a3820 — __ZN3RBX26ManualSurfaceJointInstanceD0Ev
 // type: void __fastcall(RBX::ManualSurfaceJointInstance *__hidden this)
-#[doc(alias = "RBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")]
+#[doc(alias = "RBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance() [0x5a3820]")]
 #[doc(alias = "__ZN3RBX26ManualSurfaceJointInstanceD0Ev")]
 pub fn stub_0x5a3820() -> ! {
     todo!("0x5a3820 RBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")
@@ -577,7 +577,7 @@ pub fn stub_0x5a38d0() -> ! {
 
 // 0x5a38d8 — __ZThn32_N3RBX26ManualSurfaceJointInstanceD0Ev
 // type: void __fastcall(RBX::ManualSurfaceJointInstance *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance() [0x5a38d8]")]
 #[doc(alias = "__ZThn32_N3RBX26ManualSurfaceJointInstanceD0Ev")]
 pub fn stub_0x5a38d8() -> ! {
     todo!("0x5a38d8 non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")
@@ -585,7 +585,7 @@ pub fn stub_0x5a38d8() -> ! {
 
 // 0x5a398c — __ZThn36_N3RBX26ManualSurfaceJointInstanceD1Ev
 // type: void __fastcall(RBX::ManualSurfaceJointInstance *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance() [0x5a398c]")]
 #[doc(alias = "__ZThn36_N3RBX26ManualSurfaceJointInstanceD1Ev")]
 pub fn stub_0x5a398c() -> ! {
     todo!("0x5a398c non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")
@@ -593,7 +593,7 @@ pub fn stub_0x5a398c() -> ! {
 
 // 0x5a3994 — __ZThn36_N3RBX26ManualSurfaceJointInstanceD0Ev
 // type: void __fastcall(RBX::ManualSurfaceJointInstance *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance() [0x5a3994]")]
 #[doc(alias = "__ZThn36_N3RBX26ManualSurfaceJointInstanceD0Ev")]
 pub fn stub_0x5a3994() -> ! {
     todo!("0x5a3994 non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")
@@ -609,7 +609,7 @@ pub fn stub_0x5a3aec() -> ! {
 
 // 0x5a3bb4 — __ZThn36_N3RBX10ManualWeldD0Ev
 // type: void __fastcall(RBX::ManualWeld *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ManualWeld::~ManualWeld()")]
+#[doc(alias = "non-virtual thunk toRBX::ManualWeld::~ManualWeld() [0x5a3bb4]")]
 #[doc(alias = "__ZThn36_N3RBX10ManualWeldD0Ev")]
 pub fn stub_0x5a3bb4() -> ! {
     todo!("0x5a3bb4 non-virtual thunk toRBX::ManualWeld::~ManualWeld()")
@@ -633,7 +633,7 @@ pub fn stub_0x5a3c5c() -> ! {
 
 // 0x5a3c60 — __ZN3RBX10ManualGlueD0Ev
 // type: void __fastcall(RBX::ManualGlue *__hidden this)
-#[doc(alias = "RBX::ManualGlue::~ManualGlue()")]
+#[doc(alias = "RBX::ManualGlue::~ManualGlue() [0x5a3c60]")]
 #[doc(alias = "__ZN3RBX10ManualGlueD0Ev")]
 pub fn stub_0x5a3c60() -> ! {
     todo!("0x5a3c60 RBX::ManualGlue::~ManualGlue()")
@@ -657,7 +657,7 @@ pub fn stub_0x5a3d14() -> ! {
 
 // 0x5a3d1c — __ZThn32_N3RBX10ManualGlueD0Ev
 // type: void __fastcall(RBX::ManualGlue *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ManualGlue::~ManualGlue()")]
+#[doc(alias = "non-virtual thunk toRBX::ManualGlue::~ManualGlue() [0x5a3d1c]")]
 #[doc(alias = "__ZThn32_N3RBX10ManualGlueD0Ev")]
 pub fn stub_0x5a3d1c() -> ! {
     todo!("0x5a3d1c non-virtual thunk toRBX::ManualGlue::~ManualGlue()")
@@ -665,7 +665,7 @@ pub fn stub_0x5a3d1c() -> ! {
 
 // 0x5a3dd0 — __ZThn36_N3RBX10ManualGlueD1Ev
 // type: void __fastcall(RBX::ManualGlue *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ManualGlue::~ManualGlue()")]
+#[doc(alias = "non-virtual thunk toRBX::ManualGlue::~ManualGlue() [0x5a3dd0]")]
 #[doc(alias = "__ZThn36_N3RBX10ManualGlueD1Ev")]
 pub fn stub_0x5a3dd0() -> ! {
     todo!("0x5a3dd0 non-virtual thunk toRBX::ManualGlue::~ManualGlue()")
@@ -673,7 +673,7 @@ pub fn stub_0x5a3dd0() -> ! {
 
 // 0x5a3dd8 — __ZThn36_N3RBX10ManualGlueD0Ev
 // type: void __fastcall(RBX::ManualGlue *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ManualGlue::~ManualGlue()")]
+#[doc(alias = "non-virtual thunk toRBX::ManualGlue::~ManualGlue() [0x5a3dd8]")]
 #[doc(alias = "__ZThn36_N3RBX10ManualGlueD0Ev")]
 pub fn stub_0x5a3dd8() -> ! {
     todo!("0x5a3dd8 non-virtual thunk toRBX::ManualGlue::~ManualGlue()")
@@ -697,7 +697,7 @@ pub fn stub_0x5a3e80() -> ! {
 
 // 0x5a3e84 — __ZN3RBX7Motor6DD0Ev
 // type: void __fastcall(RBX::Motor6D *__hidden this)
-#[doc(alias = "RBX::Motor6D::~Motor6D()")]
+#[doc(alias = "RBX::Motor6D::~Motor6D() [0x5a3e84]")]
 #[doc(alias = "__ZN3RBX7Motor6DD0Ev")]
 pub fn stub_0x5a3e84() -> ! {
     todo!("0x5a3e84 RBX::Motor6D::~Motor6D()")
@@ -713,7 +713,7 @@ pub fn stub_0x5a3f34() -> ! {
 
 // 0x5a3f3c — __ZThn32_N3RBX7Motor6DD0Ev
 // type: void __fastcall(RBX::Motor6D *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Motor6D::~Motor6D()")]
+#[doc(alias = "non-virtual thunk toRBX::Motor6D::~Motor6D() [0x5a3f3c]")]
 #[doc(alias = "__ZThn32_N3RBX7Motor6DD0Ev")]
 pub fn stub_0x5a3f3c() -> ! {
     todo!("0x5a3f3c non-virtual thunk toRBX::Motor6D::~Motor6D()")
@@ -721,7 +721,7 @@ pub fn stub_0x5a3f3c() -> ! {
 
 // 0x5a3ff0 — __ZThn36_N3RBX7Motor6DD1Ev
 // type: void __fastcall(RBX::Motor6D *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Motor6D::~Motor6D()")]
+#[doc(alias = "non-virtual thunk toRBX::Motor6D::~Motor6D() [0x5a3ff0]")]
 #[doc(alias = "__ZThn36_N3RBX7Motor6DD1Ev")]
 pub fn stub_0x5a3ff0() -> ! {
     todo!("0x5a3ff0 non-virtual thunk toRBX::Motor6D::~Motor6D()")
@@ -729,7 +729,7 @@ pub fn stub_0x5a3ff0() -> ! {
 
 // 0x5a3ff8 — __ZThn36_N3RBX7Motor6DD0Ev
 // type: void __fastcall(RBX::Motor6D *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Motor6D::~Motor6D()")]
+#[doc(alias = "non-virtual thunk toRBX::Motor6D::~Motor6D() [0x5a3ff8]")]
 #[doc(alias = "__ZThn36_N3RBX7Motor6DD0Ev")]
 pub fn stub_0x5a3ff8() -> ! {
     todo!("0x5a3ff8 non-virtual thunk toRBX::Motor6D::~Motor6D()")
@@ -745,7 +745,7 @@ pub fn stub_0x5a40b4() -> ! {
 
 // 0x5a40b8 — __ZN3RBX4SnapD0Ev
 // type: void __fastcall(RBX::Snap *__hidden this)
-#[doc(alias = "RBX::Snap::~Snap()")]
+#[doc(alias = "RBX::Snap::~Snap() [0x5a40b8]")]
 #[doc(alias = "__ZN3RBX4SnapD0Ev")]
 pub fn stub_0x5a40b8() -> ! {
     todo!("0x5a40b8 RBX::Snap::~Snap()")
@@ -761,7 +761,7 @@ pub fn stub_0x5a4168() -> ! {
 
 // 0x5a4170 — __ZThn32_N3RBX4SnapD0Ev
 // type: void __fastcall(RBX::Snap *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Snap::~Snap()")]
+#[doc(alias = "non-virtual thunk toRBX::Snap::~Snap() [0x5a4170]")]
 #[doc(alias = "__ZThn32_N3RBX4SnapD0Ev")]
 pub fn stub_0x5a4170() -> ! {
     todo!("0x5a4170 non-virtual thunk toRBX::Snap::~Snap()")
@@ -769,7 +769,7 @@ pub fn stub_0x5a4170() -> ! {
 
 // 0x5a4224 — __ZThn36_N3RBX4SnapD1Ev
 // type: void __fastcall(RBX::Snap *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Snap::~Snap()")]
+#[doc(alias = "non-virtual thunk toRBX::Snap::~Snap() [0x5a4224]")]
 #[doc(alias = "__ZThn36_N3RBX4SnapD1Ev")]
 pub fn stub_0x5a4224() -> ! {
     todo!("0x5a4224 non-virtual thunk toRBX::Snap::~Snap()")
@@ -777,7 +777,7 @@ pub fn stub_0x5a4224() -> ! {
 
 // 0x5a422c — __ZThn36_N3RBX4SnapD0Ev
 // type: void __fastcall(RBX::Snap *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Snap::~Snap()")]
+#[doc(alias = "non-virtual thunk toRBX::Snap::~Snap() [0x5a422c]")]
 #[doc(alias = "__ZThn36_N3RBX4SnapD0Ev")]
 pub fn stub_0x5a422c() -> ! {
     todo!("0x5a422c non-virtual thunk toRBX::Snap::~Snap()")
@@ -793,7 +793,7 @@ pub fn stub_0x5a42d0() -> ! {
 
 // 0x5a42d4 — __ZN3RBX4GlueD0Ev
 // type: void __fastcall(RBX::Glue *__hidden this)
-#[doc(alias = "RBX::Glue::~Glue()")]
+#[doc(alias = "RBX::Glue::~Glue() [0x5a42d4]")]
 #[doc(alias = "__ZN3RBX4GlueD0Ev")]
 pub fn stub_0x5a42d4() -> ! {
     todo!("0x5a42d4 RBX::Glue::~Glue()")

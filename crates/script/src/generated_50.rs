@@ -328,7 +328,7 @@ pub fn stub_0x4edc88() -> ! {
 
 // 0x4edc8c — __ZN3RBX8FileMeshC2Ev
 // type: _DWORD __fastcall(RBX::FileMesh *__hidden this)
-#[doc(alias = "RBX::FileMesh::FileMesh(void)")]
+#[doc(alias = "RBX::FileMesh::FileMesh(void) [0x4edc8c]")]
 pub fn stub_0x4edc8c() -> ! {
     todo!("0x4edc8c RBX::FileMesh::FileMesh(void)")
 }
@@ -395,7 +395,7 @@ pub fn stub_0x4eef84() -> ! {
 
 // 0x4eef88 — __ZN3RBX20PartByLocalCharacterC2EPNS_8InstanceE
 // type: _DWORD __fastcall(RBX::PartByLocalCharacter *__hidden this, RBX::Instance *)
-#[doc(alias = "RBX::PartByLocalCharacter::PartByLocalCharacter(RBX::Instance *)")]
+#[doc(alias = "RBX::PartByLocalCharacter::PartByLocalCharacter(RBX::Instance *) [0x4eef88]")]
 pub fn stub_0x4eef88() -> ! {
     todo!("0x4eef88 RBX::PartByLocalCharacter::PartByLocalCharacter(RBX::Instance *)")
 }
@@ -421,7 +421,7 @@ pub fn stub_0x4ef18c() -> ! {
 }
 
 // 0x4ef190 — __ZN3RBX17FilterDescendentsC2EN5boost10shared_ptrINS_8InstanceEEE
-#[doc(alias = "RBX::FilterDescendents::FilterDescendents(rbx_core::SharedPtr<RBX::Instance>)")]
+#[doc(alias = "RBX::FilterDescendents::FilterDescendents(rbx_core::SharedPtr<RBX::Instance>) [0x4ef190]")]
 pub fn stub_0x4ef190() -> ! {
     todo!("0x4ef190 RBX::FilterDescendents::FilterDescendents(boost::shared_ptr<RBX::Instance>)")
 }
@@ -494,7 +494,7 @@ pub fn stub_0x4ef424() -> ! {
 
 // 0x4ef428 — __ZN3RBX27FilterInvisibleNonCollidingD0Ev
 // type: void __fastcall(RBX::FilterInvisibleNonColliding *__hidden this)
-#[doc(alias = "RBX::FilterInvisibleNonColliding::~FilterInvisibleNonColliding()")]
+#[doc(alias = "RBX::FilterInvisibleNonColliding::~FilterInvisibleNonColliding() [0x4ef428]")]
 pub fn stub_0x4ef428() -> ! {
     todo!("0x4ef428 RBX::FilterInvisibleNonColliding::~FilterInvisibleNonColliding()")
 }
@@ -508,7 +508,7 @@ pub fn stub_0x4ef42c() -> ! {
 
 // 0x4ef430 — __ZN3RBX21FilterDescendentsListD0Ev
 // type: void __fastcall(RBX::FilterDescendentsList *__hidden this)
-#[doc(alias = "RBX::FilterDescendentsList::~FilterDescendentsList()")]
+#[doc(alias = "RBX::FilterDescendentsList::~FilterDescendentsList() [0x4ef430]")]
 pub fn stub_0x4ef430() -> ! {
     todo!("0x4ef430 RBX::FilterDescendentsList::~FilterDescendentsList()")
 }
@@ -522,7 +522,7 @@ pub fn stub_0x4ef434() -> ! {
 
 // 0x4ef438 — __ZN3RBX24FilterCharacterOcclusionD0Ev
 // type: void __fastcall(RBX::FilterCharacterOcclusion *__hidden this)
-#[doc(alias = "RBX::FilterCharacterOcclusion::~FilterCharacterOcclusion()")]
+#[doc(alias = "RBX::FilterCharacterOcclusion::~FilterCharacterOcclusion() [0x4ef438]")]
 pub fn stub_0x4ef438() -> ! {
     todo!("0x4ef438 RBX::FilterCharacterOcclusion::~FilterCharacterOcclusion()")
 }
@@ -536,7 +536,7 @@ pub fn stub_0x4ef43c() -> ! {
 
 // 0x4ef440 — __ZN3RBX12MergedFilterD0Ev
 // type: void __fastcall(RBX::MergedFilter *__hidden this)
-#[doc(alias = "RBX::MergedFilter::~MergedFilter()")]
+#[doc(alias = "RBX::MergedFilter::~MergedFilter() [0x4ef440]")]
 pub fn stub_0x4ef440() -> ! {
     todo!("0x4ef440 RBX::MergedFilter::~MergedFilter()")
 }
@@ -550,7 +550,7 @@ pub fn stub_0x4ef444() -> ! {
 
 // 0x4ef448 — __ZN3RBX19FilterHumanoidPartsD0Ev
 // type: void __fastcall(RBX::FilterHumanoidParts *__hidden this)
-#[doc(alias = "RBX::FilterHumanoidParts::~FilterHumanoidParts()")]
+#[doc(alias = "RBX::FilterHumanoidParts::~FilterHumanoidParts() [0x4ef448]")]
 pub fn stub_0x4ef448() -> ! {
     todo!("0x4ef448 RBX::FilterHumanoidParts::~FilterHumanoidParts()")
 }
@@ -617,7 +617,7 @@ pub fn stub_0x4efaf4() -> ! {
 
 // 0x4efb94 — __ZN3RBX4FireD1Ev
 // type: void __fastcall(RBX::Fire *__hidden this)
-#[doc(alias = "RBX::Fire::~Fire()")]
+#[doc(alias = "RBX::Fire::~Fire() [0x4efb94]")]
 pub fn stub_0x4efb94() -> ! {
     todo!("0x4efb94 RBX::Fire::~Fire()")
 }
@@ -631,21 +631,21 @@ pub fn stub_0x4efb98() -> ! {
 
 // 0x4efba0 — __ZThn36_N3RBX4FireD0Ev
 // type: void __fastcall(RBX::Fire *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Fire::~Fire()")]
+#[doc(alias = "non-virtual thunk toRBX::Fire::~Fire() [0x4efba0]")]
 pub fn stub_0x4efba0() -> ! {
     todo!("0x4efba0 non-virtual thunk toRBX::Fire::~Fire()")
 }
 
 // 0x4efba8 — __ZThn92_N3RBX4FireD0Ev
 // type: void __fastcall(RBX::Fire *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Fire::~Fire()")]
+#[doc(alias = "non-virtual thunk toRBX::Fire::~Fire() [0x4efba8]")]
 pub fn stub_0x4efba8() -> ! {
     todo!("0x4efba8 non-virtual thunk toRBX::Fire::~Fire()")
 }
 
 // 0x4efbb0 — __ZN3RBX4FireD2Ev
 // type: void __fastcall(RBX::Fire *__hidden this)
-#[doc(alias = "RBX::Fire::~Fire()")]
+#[doc(alias = "RBX::Fire::~Fire() [0x4efbb0]")]
 pub fn stub_0x4efbb0() -> ! {
     todo!("0x4efbb0 RBX::Fire::~Fire()")
 }

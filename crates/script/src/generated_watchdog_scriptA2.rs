@@ -164,7 +164,7 @@ pub fn stub_0x75b4a8() -> ! {
 
 // 0x75b4ac — __ZN3RBX13SpatialFilterC2EPNS_6IStageEPNS_5WorldE
 // type: _DWORD __fastcall(RBX::SpatialFilter *__hidden this, RBX::IStage *, RBX::World *)
-#[doc(alias = "RBX::SpatialFilter::SpatialFilter(RBX::IStage *,RBX::World *)")]
+#[doc(alias = "RBX::SpatialFilter::SpatialFilter(RBX::IStage *,RBX::World *) [0x75b4ac]")]
 #[doc(alias = "__ZN3RBX13SpatialFilterC2EPNS_6IStageEPNS_5WorldE")]
 pub fn stub_0x75b4ac() -> ! {
     todo!("0x75b4ac __ZN3RBX13SpatialFilterC2EPNS_6IStageEPNS_5WorldE")
@@ -180,7 +180,7 @@ pub fn stub_0x75b664() -> ! {
 
 // 0x75b704 — __ZN3RBX13SpatialFilterD1Ev
 // type: void __fastcall(RBX::SpatialFilter *__hidden this)
-#[doc(alias = "RBX::SpatialFilter::~SpatialFilter()")]
+#[doc(alias = "RBX::SpatialFilter::~SpatialFilter() [0x75b704]")]
 #[doc(alias = "__ZN3RBX13SpatialFilterD1Ev")]
 pub fn stub_0x75b704() -> ! {
     todo!("0x75b704 __ZN3RBX13SpatialFilterD1Ev")
@@ -188,7 +188,7 @@ pub fn stub_0x75b704() -> ! {
 
 // 0x75b708 — __ZN3RBX13SpatialFilterD2Ev
 // type: void __fastcall(RBX::SpatialFilter *__hidden this)
-#[doc(alias = "RBX::SpatialFilter::~SpatialFilter()")]
+#[doc(alias = "RBX::SpatialFilter::~SpatialFilter() [0x75b708]")]
 #[doc(alias = "__ZN3RBX13SpatialFilterD2Ev")]
 pub fn stub_0x75b708() -> ! {
     todo!("0x75b708 __ZN3RBX13SpatialFilterD2Ev")
@@ -373,7 +373,7 @@ pub fn stub_0x75cf18() -> ! {
 
 // 0x75cf3c — __ZN3RBX6IStageD0Ev
 // type: void __fastcall(RBX::IStage *__hidden this)
-#[doc(alias = "RBX::IStage::~IStage()")]
+#[doc(alias = "RBX::IStage::~IStage() [0x75cf3c]")]
 #[doc(alias = "__ZN3RBX6IStageD0Ev")]
 pub fn stub_0x75cf3c() -> ! {
     todo!("0x75cf3c __ZN3RBX6IStageD0Ev")
@@ -405,7 +405,7 @@ pub fn stub_0x75d8ec() -> ! {
 
 // 0x75d8f0 — __ZN3RBX15StepJointsStageC2EPNS_6IStageEPNS_5WorldE
 // type: _DWORD __fastcall(RBX::StepJointsStage *__hidden this, RBX::IStage *, RBX::World *)
-#[doc(alias = "RBX::StepJointsStage::StepJointsStage(RBX::IStage *,RBX::World *)")]
+#[doc(alias = "RBX::StepJointsStage::StepJointsStage(RBX::IStage *,RBX::World *) [0x75d8f0]")]
 #[doc(alias = "__ZN3RBX15StepJointsStageC2EPNS_6IStageEPNS_5WorldE")]
 pub fn stub_0x75d8f0() -> ! {
     todo!("0x75d8f0 __ZN3RBX15StepJointsStageC2EPNS_6IStageEPNS_5WorldE")
@@ -421,7 +421,7 @@ pub fn stub_0x75da80() -> ! {
 
 // 0x75db20 — __ZN3RBX15StepJointsStageD1Ev
 // type: void __fastcall(RBX::StepJointsStage *__hidden this)
-#[doc(alias = "RBX::StepJointsStage::~StepJointsStage()")]
+#[doc(alias = "RBX::StepJointsStage::~StepJointsStage() [0x75db20]")]
 #[doc(alias = "__ZN3RBX15StepJointsStageD1Ev")]
 pub fn stub_0x75db20() -> ! {
     todo!("0x75db20 __ZN3RBX15StepJointsStageD1Ev")
@@ -429,7 +429,7 @@ pub fn stub_0x75db20() -> ! {
 
 // 0x75db24 — __ZN3RBX15StepJointsStageD2Ev
 // type: void __fastcall(RBX::StepJointsStage *__hidden this)
-#[doc(alias = "RBX::StepJointsStage::~StepJointsStage()")]
+#[doc(alias = "RBX::StepJointsStage::~StepJointsStage() [0x75db24]")]
 #[doc(alias = "__ZN3RBX15StepJointsStageD2Ev")]
 pub fn stub_0x75db24() -> ! {
     todo!("0x75db24 __ZN3RBX15StepJointsStageD2Ev")
@@ -501,7 +501,7 @@ pub fn stub_0x75e0a0() -> ! {
 
 // 0x75e0a4 — __ZN3RBX9TreeStageC2EPNS_6IStageEPNS_5WorldE
 // type: _DWORD __fastcall(RBX::TreeStage *__hidden this, RBX::IStage *, RBX::World *)
-#[doc(alias = "RBX::TreeStage::TreeStage(RBX::IStage *,RBX::World *)")]
+#[doc(alias = "RBX::TreeStage::TreeStage(RBX::IStage *,RBX::World *) [0x75e0a4]")]
 #[doc(alias = "__ZN3RBX9TreeStageC2EPNS_6IStageEPNS_5WorldE")]
 pub fn stub_0x75e0a4() -> ! {
     todo!("0x75e0a4 __ZN3RBX9TreeStageC2EPNS_6IStageEPNS_5WorldE")
@@ -517,7 +517,7 @@ pub fn stub_0x75e21c() -> ! {
 
 // 0x75e2bc — __ZN3RBX9TreeStageD1Ev
 // type: void __fastcall(RBX::TreeStage *__hidden this)
-#[doc(alias = "RBX::TreeStage::~TreeStage()")]
+#[doc(alias = "RBX::TreeStage::~TreeStage() [0x75e2bc]")]
 #[doc(alias = "__ZN3RBX9TreeStageD1Ev")]
 pub fn stub_0x75e2bc() -> ! {
     todo!("0x75e2bc __ZN3RBX9TreeStageD1Ev")
@@ -525,7 +525,7 @@ pub fn stub_0x75e2bc() -> ! {
 
 // 0x75e2c0 — __ZN3RBX9TreeStageD2Ev
 // type: void __fastcall(RBX::TreeStage *__hidden this)
-#[doc(alias = "RBX::TreeStage::~TreeStage()")]
+#[doc(alias = "RBX::TreeStage::~TreeStage() [0x75e2c0]")]
 #[doc(alias = "__ZN3RBX9TreeStageD2Ev")]
 pub fn stub_0x75e2c0() -> ! {
     todo!("0x75e2c0 __ZN3RBX9TreeStageD2Ev")

@@ -43,7 +43,7 @@ pub fn stub_0x25a540() -> ! {
 // 0x25a5a8 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EED0Ev
 // type: void __fastcall(_DWORD *)
 // was: void __fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::~BoundYieldFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::~BoundYieldFuncDesc() [0x25a5a8]")]
 pub fn stub_0x25a5a8() -> ! {
     todo!("0x25a5a8 __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EED0Ev")
 }
@@ -75,7 +75,7 @@ pub fn stub_0x25acb8() -> ! {
 // 0x25ace8 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EED0Ev
 // type: void __fastcall(_DWORD *)
 // was: void __fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::~BoundYieldFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::~BoundYieldFuncDesc() [0x25ace8]")]
 pub fn stub_0x25ace8() -> ! {
     todo!("0x25ace8 __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EED0Ev")
 }

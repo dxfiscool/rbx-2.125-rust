@@ -27,7 +27,7 @@ pub fn stub_0x23fa10() -> ! {
 // 0x23fa1c — __ZN3RBX13worker_threadC2ERKN5boost9function0INS0_11work_resultEEEPKc
 // type: int __fastcall(int, int *, boost::detail::sp_counted_base *, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, boost::detail::sp_counted_base *, char, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int, int, int, int, int, char, int, boost::detail::sp_counted_base *, int, int, int, int, int, pthread_mutex_t *, int, int, int, int, int, int)
 // was: int __fastcall(int, int *, boost::detail::sp_counted_base *, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, boost::detail::sp_counted_base *, char, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int, int, int, int, int, char, int, boost::detail::sp_counted_base *, int, int, int, int, int, pthread_mutex_t *, int, int, int, int, int, int)
-#[doc(alias = "RBX::worker_thread::worker_thread(boost::function0<RBX::worker_thread::work_result> const&,char const*)")]
+#[doc(alias = "RBX::worker_thread::worker_thread(boost::function0<RBX::worker_thread::work_result> const&,char const*) [0x23fa1c]")]
 pub fn stub_0x23fa1c() -> ! {
     todo!("0x23fa1c __ZN3RBX13worker_threadC2ERKN5boost9function0INS0_11work_resultEEEPKc")
 }
@@ -51,7 +51,7 @@ pub fn stub_0x2400f4() -> ! {
 // 0x240100 — __ZN3RBX13worker_threadD2Ev
 // type: void __fastcall(boost::mutex **this)
 // was: void __fastcall(boost::mutex **this)
-#[doc(alias = "RBX::worker_thread::~worker_thread()")]
+#[doc(alias = "RBX::worker_thread::~worker_thread() [0x240100]")]
 pub fn stub_0x240100() -> ! {
     todo!("0x240100 __ZN3RBX13worker_threadD2Ev")
 }
@@ -121,7 +121,7 @@ pub fn stub_0x241040() -> ! {
 // 0x2410a0 — __ZN5boost15condition_errorD0Ev
 // type: void __fastcall(std::runtime_error *this)
 // was: void __fastcall(std::runtime_error *this)
-#[doc(alias = "boost::condition_error::~condition_error()")]
+#[doc(alias = "boost::condition_error::~condition_error() [0x2410a0]")]
 pub fn stub_0x2410a0() -> ! {
     todo!("0x2410a0 __ZN5boost15condition_errorD0Ev")
 }
@@ -245,7 +245,7 @@ pub fn stub_0x2423c8() -> ! {
 // 0x2423cc — __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEED0Ev
 // type: void __fastcall(void *)
 // was: void __fastcall(void *)
-#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::worker_thread::data>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::worker_thread::data>::~sp_counted_impl_p() [0x2423cc]")]
 pub fn stub_0x2423cc() -> ! {
     todo!("0x2423cc __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEED0Ev")
 }
@@ -333,7 +333,7 @@ pub fn stub_0x242fc0() -> ! {
 // 0x24316c — __ZN5boost19thread_specific_ptrISsED2Ev
 // type: boost::_anonymous_namespace_ *__fastcall(boost::_anonymous_namespace_ *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 // was: boost::_anonymous_namespace_ *__fastcall(boost::_anonymous_namespace_ *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
-#[doc(alias = "boost::thread_specific_ptr<std::string>::~thread_specific_ptr()")]
+#[doc(alias = "boost::thread_specific_ptr<std::string>::~thread_specific_ptr() [0x24316c]")]
 pub fn stub_0x24316c() -> ! {
     todo!("0x24316c __ZN5boost19thread_specific_ptrISsED2Ev")
 }
@@ -349,7 +349,7 @@ pub fn stub_0x243260() -> ! {
 // 0x243264 — __ZN5boost19thread_specific_ptrISsE11delete_dataD0Ev
 // type: void __fastcall(void *)
 // was: void __fastcall(void *)
-#[doc(alias = "boost::thread_specific_ptr<std::string>::delete_data::~delete_data()")]
+#[doc(alias = "boost::thread_specific_ptr<std::string>::delete_data::~delete_data() [0x243264]")]
 pub fn stub_0x243264() -> ! {
     todo!("0x243264 __ZN5boost19thread_specific_ptrISsE11delete_dataD0Ev")
 }
@@ -373,7 +373,7 @@ pub fn stub_0x2432c4() -> ! {
 // 0x2432c8 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEED0Ev
 // type: void __fastcall(void *)
 // was: void __fastcall(void *)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<std::string>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<std::string>::delete_data>>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<std::string>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<std::string>::delete_data>>::~sp_counted_impl_pd() [0x2432c8]")]
 pub fn stub_0x2432c8() -> ! {
     todo!("0x2432c8 __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEED0Ev")
 }
@@ -451,7 +451,7 @@ pub fn stub_0x243830() -> ! {
 // 0x24383c — __ZN3RBX6CEventD2Ev
 // type: void __fastcall(RBX::CEvent *__hidden this)
 // was: void __fastcall(RBX::CEvent *__hidden this)
-#[doc(alias = "RBX::CEvent::~CEvent()")]
+#[doc(alias = "RBX::CEvent::~CEvent() [0x24383c]")]
 pub fn stub_0x24383c() -> ! {
     todo!("0x24383c __ZN3RBX6CEventD2Ev")
 }
@@ -535,7 +535,7 @@ pub fn stub_0x244384() -> ! {
 // 0x244390 — __ZN3RBX6Limits7Counter9ActivatorC2EN5boost10shared_ptrIS1_EE
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, void *, int, int, int, int)
 // was: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, void *, int, int, int, int)
-#[doc(alias = "RBX::Limits::Counter::Activator::Activator(rbx_core::SharedPtr<RBX::Limits::Counter>)")]
+#[doc(alias = "RBX::Limits::Counter::Activator::Activator(rbx_core::SharedPtr<RBX::Limits::Counter>) [0x244390]")]
 pub fn stub_0x244390() -> ! {
     todo!("0x244390 __ZN3RBX6Limits7Counter9ActivatorC2EN5boost10shared_ptrIS1_EE")
 }
@@ -551,7 +551,7 @@ pub fn stub_0x2445fc() -> ! {
 // 0x244608 — __ZN3RBX6Limits7Counter9ActivatorD2Ev
 // type: void __fastcall(RBX::Limits::Counter::Activator *this, int, int, int)
 // was: void __fastcall(RBX::Limits::Counter::Activator *this, int, int, int)
-#[doc(alias = "RBX::Limits::Counter::Activator::~Activator()")]
+#[doc(alias = "RBX::Limits::Counter::Activator::~Activator() [0x244608]")]
 pub fn stub_0x244608() -> ! {
     todo!("0x244608 __ZN3RBX6Limits7Counter9ActivatorD2Ev")
 }
@@ -605,7 +605,7 @@ pub fn stub_0x244bbc() -> ! {
 // 0x244bc0 — __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataD0Ev
 // type: void __fastcall(void *)
 // was: void __fastcall(void *)
-#[doc(alias = "boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data::~delete_data()")]
+#[doc(alias = "boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data::~delete_data() [0x244bc0]")]
 pub fn stub_0x244bc0() -> ! {
     todo!("0x244bc0 __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataD0Ev")
 }
@@ -629,7 +629,7 @@ pub fn stub_0x244c74() -> ! {
 // 0x244c78 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataENS0_14do_heap_deleteIS9_EEED0Ev
 // type: void __fastcall(void *)
 // was: void __fastcall(void *)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data>>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data>>::~sp_counted_impl_pd() [0x244c78]")]
 pub fn stub_0x244c78() -> ! {
     todo!("0x244c78 __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataENS0_14do_heap_deleteIS9_EEED0Ev")
 }
@@ -871,7 +871,7 @@ pub fn stub_0x246308() -> ! {
 // 0x246358 — __ZN3RBX13TaskSchedulerD2Ev
 // type: void __fastcall(RBX::TaskScheduler *this, int, int, const void *)
 // was: void __fastcall(RBX::TaskScheduler *this, int, int, const void *)
-#[doc(alias = "RBX::TaskScheduler::~TaskScheduler()")]
+#[doc(alias = "RBX::TaskScheduler::~TaskScheduler() [0x246358]")]
 pub fn stub_0x246358() -> ! {
     todo!("0x246358 __ZN3RBX13TaskSchedulerD2Ev")
 }
@@ -1053,7 +1053,7 @@ pub fn stub_0x24831c() -> ! {
 // 0x248320 — __ZN5boost6detail17sp_counted_impl_pIN3RBX6CEventEED0Ev
 // type: void __fastcall(void *)
 // was: void __fastcall(void *)
-#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::CEvent>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::CEvent>::~sp_counted_impl_p() [0x248320]")]
 pub fn stub_0x248320() -> ! {
     todo!("0x248320 __ZN5boost6detail17sp_counted_impl_pIN3RBX6CEventEED0Ev")
 }
@@ -1173,7 +1173,7 @@ pub fn stub_0x248b80() -> ! {
 // 0x248b84 — __ZN5boost19thread_specific_ptrIPN3RBX13TaskScheduler3JobEE11delete_dataD0Ev
 // type: void __fastcall(void *)
 // was: void __fastcall(void *)
-#[doc(alias = "boost::thread_specific_ptr<RBX::TaskScheduler::Job *>::delete_data::~delete_data()")]
+#[doc(alias = "boost::thread_specific_ptr<RBX::TaskScheduler::Job *>::delete_data::~delete_data() [0x248b84]")]
 pub fn stub_0x248b84() -> ! {
     todo!("0x248b84 __ZN5boost19thread_specific_ptrIPN3RBX13TaskScheduler3JobEE11delete_dataD0Ev")
 }
@@ -1185,4 +1185,3 @@ pub fn stub_0x248b84() -> ! {
 pub fn stub_0x248b90() -> ! {
     todo!("0x248b90 __ZN5boost19thread_specific_ptrIPN3RBX13TaskScheduler3JobEE11delete_dataclEPv")
 }
-

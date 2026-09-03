@@ -90,7 +90,7 @@ pub fn stub_0x53d0e8() -> ! {
 }
 
 // 0x53d20c — __ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectENS_5UDim2EED0Ev — RBX::Reflection::PropDescriptor<RBX::GuiObject,RBX::UDim2>::~PropDescriptor()
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,RBX::UDim2>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,RBX::UDim2>::~PropDescriptor() [0x53d20c]")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectENS_5UDim2EED0Ev")]
 pub fn stub_0x53d20c() -> ! {
     todo!("0x53d20c __ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectENS_5UDim2EED0Ev")
@@ -146,7 +146,7 @@ pub fn stub_0x53d480() -> ! {
 }
 
 // 0x53d4a4 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_5UDim2EED0Ev — RBX::Reflection::TypedPropertyDescriptor<RBX::UDim2>::~TypedPropertyDescriptor()
-#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::UDim2>::~TypedPropertyDescriptor()")]
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::UDim2>::~TypedPropertyDescriptor() [0x53d4a4]")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorINS_5UDim2EED0Ev")]
 pub fn stub_0x53d4a4() -> ! {
     todo!("0x53d4a4 __ZN3RBX10Reflection23TypedPropertyDescriptorINS_5UDim2EED0Ev")
@@ -279,7 +279,7 @@ pub fn stub_0x53fb08() -> ! {
 }
 
 // 0x53fb5c — __ZN3RBX9GuiButtonD2Ev — RBX::GuiButton::~GuiButton()
-#[doc(alias = "RBX::GuiButton::~GuiButton()")]
+#[doc(alias = "RBX::GuiButton::~GuiButton() [0x53fb5c]")]
 #[doc(alias = "__ZN3RBX9GuiButtonD2Ev")]
 pub fn stub_0x53fb5c() -> ! {
     todo!("0x53fb5c __ZN3RBX9GuiButtonD2Ev")
@@ -419,7 +419,7 @@ pub fn stub_0x543704() -> ! {
 }
 
 // 0x543708 — __ZN3RBX10GuiServiceC2Ev — RBX::GuiService::GuiService(void)
-#[doc(alias = "RBX::GuiService::GuiService(void)")]
+#[doc(alias = "RBX::GuiService::GuiService(void) [0x543708]")]
 #[doc(alias = "__ZN3RBX10GuiServiceC2Ev")]
 pub fn stub_0x543708() -> ! {
     todo!("0x543708 __ZN3RBX10GuiServiceC2Ev")
@@ -657,7 +657,7 @@ pub fn stub_0x546994() -> ! {
 }
 
 // 0x546998 — __ZN3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEED0Ev — RBX::Reflection::EnumDesc<RBX::GuiService::SpecialKey>::~EnumDesc()
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiService::SpecialKey>::~EnumDesc()")]
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiService::SpecialKey>::~EnumDesc() [0x546998]")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEED0Ev")]
 pub fn stub_0x546998() -> ! {
     todo!("0x546998 __ZN3RBX10Reflection8EnumDescINS_10GuiService10SpecialKeyEED0Ev")
@@ -699,7 +699,7 @@ pub fn stub_0x546c00() -> ! {
 }
 
 // 0x546c04 — __ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEED0Ev — RBX::Reflection::EnumDesc<RBX::GuiService::CenterDialogType>::~EnumDesc()
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiService::CenterDialogType>::~EnumDesc()")]
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiService::CenterDialogType>::~EnumDesc() [0x546c04]")]
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEED0Ev")]
 pub fn stub_0x546c04() -> ! {
     todo!("0x546c04 __ZN3RBX10Reflection8EnumDescINS_10GuiService16CenterDialogTypeEED0Ev")
@@ -741,7 +741,7 @@ pub fn stub_0x546e6c() -> ! {
 }
 
 // 0x546e70 — __ZN3RBX10GuiServiceD0Ev — RBX::GuiService::~GuiService()
-#[doc(alias = "RBX::GuiService::~GuiService()")]
+#[doc(alias = "RBX::GuiService::~GuiService() [0x546e70]")]
 #[doc(alias = "__ZN3RBX10GuiServiceD0Ev")]
 pub fn stub_0x546e70() -> ! {
     todo!("0x546e70 __ZN3RBX10GuiServiceD0Ev")
@@ -761,7 +761,7 @@ pub fn stub_0x546f38() -> ! {
 }
 
 // 0x546f40 — __ZThn32_N3RBX10GuiServiceD0Ev — non-virtual thunk toRBX::GuiService::~GuiService()
-#[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService() [0x546f40]")]
 #[doc(alias = "__ZThn32_N3RBX10GuiServiceD0Ev")]
 pub fn stub_0x546f40() -> ! {
     todo!("0x546f40 __ZThn32_N3RBX10GuiServiceD0Ev")
@@ -774,21 +774,21 @@ pub fn stub_0x546fe4() -> ! {
 }
 
 // 0x54700c — __ZThn36_N3RBX10GuiServiceD1Ev — non-virtual thunk toRBX::GuiService::~GuiService()
-#[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService() [0x54700c]")]
 #[doc(alias = "__ZThn36_N3RBX10GuiServiceD1Ev")]
 pub fn stub_0x54700c() -> ! {
     todo!("0x54700c __ZThn36_N3RBX10GuiServiceD1Ev")
 }
 
 // 0x547014 — __ZThn36_N3RBX10GuiServiceD0Ev — non-virtual thunk toRBX::GuiService::~GuiService()
-#[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiService::~GuiService() [0x547014]")]
 #[doc(alias = "__ZThn36_N3RBX10GuiServiceD0Ev")]
 pub fn stub_0x547014() -> ! {
     todo!("0x547014 __ZThn36_N3RBX10GuiServiceD0Ev")
 }
 
 // 0x5470b8 — __ZN3RBX10GuiServiceD2Ev — RBX::GuiService::~GuiService()
-#[doc(alias = "RBX::GuiService::~GuiService()")]
+#[doc(alias = "RBX::GuiService::~GuiService() [0x5470b8]")]
 #[doc(alias = "__ZN3RBX10GuiServiceD2Ev")]
 pub fn stub_0x5470b8() -> ! {
     todo!("0x5470b8 __ZN3RBX10GuiServiceD2Ev")

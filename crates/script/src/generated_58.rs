@@ -74,7 +74,7 @@ pub fn stub_0x5a7f9c() -> ! {
 }
 
 // 0x5a7fa0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5MotorENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x5a7fa0]")]
 pub fn stub_0x5a7fa0() -> ! {
     todo!("0x5a7fa0 boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
 }
@@ -590,7 +590,7 @@ pub fn stub_0x5a9f14() -> ! {
 }
 
 // 0x5a9f44 — __ZN3RBX10Reflection13BoundFuncDescINS_5MotorEFvfELi1EED0Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Motor,void ()(float),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Motor,void ()(float),1>::~BoundFuncDesc() [0x5a9f44]")]
 pub fn stub_0x5a9f44() -> ! {
     todo!("0x5a9f44 RBX::Reflection::BoundFuncDesc<RBX::Motor,void ()(float),1>::~BoundFuncDesc()")
 }
@@ -609,7 +609,7 @@ pub fn stub_0x5aa054() -> ! {
 }
 
 // 0x5aa168 — __ZN3RBX10Reflection14PropDescriptorINS_5MotorEfED0Ev
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Motor,float>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Motor,float>::~PropDescriptor() [0x5aa168]")]
 pub fn stub_0x5aa168() -> ! {
     todo!("0x5aa168 RBX::Reflection::PropDescriptor<RBX::Motor,float>::~PropDescriptor()")
 }

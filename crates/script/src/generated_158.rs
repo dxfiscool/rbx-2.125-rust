@@ -115,7 +115,7 @@ pub fn stub_0x6a0a4() -> ! {
 
 // 0x6a0b0 — __ZN7allpassC1Ev
 // type: void __fastcall(allpass *this)
-#[doc(alias = "allpass::allpass(void)")]
+#[doc(alias = "allpass::allpass(void) [0x6a0b0]")]
 pub fn stub_0x6a0b0() -> ! {
     todo!("0x6a0b0 __ZN7allpassC1Ev")
 }
@@ -626,7 +626,7 @@ pub fn stub_0x6f5ec() -> ! {
 
 // 0x6f600 — __ZN4combC1Ev
 // type: void __fastcall(comb *this)
-#[doc(alias = "comb::comb(void)")]
+#[doc(alias = "comb::comb(void) [0x6f600]")]
 pub fn stub_0x6f600() -> ! {
     todo!("0x6f600 __ZN4combC1Ev")
 }
@@ -801,7 +801,7 @@ pub fn stub_0x70c98() -> ! {
 
 // 0x70cec — __ZN4FMOD11AsyncThreadC1Ev
 // type: int __fastcall(FMOD::AsyncThread *this)
-#[doc(alias = "FMOD::AsyncThread::AsyncThread(void)")]
+#[doc(alias = "FMOD::AsyncThread::AsyncThread(void) [0x70cec]")]
 pub fn stub_0x70cec() -> ! {
     todo!("0x70cec __ZN4FMOD11AsyncThreadC1Ev")
 }

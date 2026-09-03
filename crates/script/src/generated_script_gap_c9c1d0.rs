@@ -364,7 +364,7 @@ pub fn stub_0xc9f05c() -> ! {
 
 // 0xc9f168 — __ZN4Ogre10GpuProgram7CmdTypeD0Ev
 // type: void __fastcall(Ogre::GpuProgram::CmdType *__hidden this)
-#[doc(alias = "Ogre::GpuProgram::CmdType::~CmdType()")]
+#[doc(alias = "Ogre::GpuProgram::CmdType::~CmdType() [0xc9f168]")]
 #[doc(alias = "__ZN4Ogre10GpuProgram7CmdTypeD0Ev")]
 pub fn stub_0xc9f168() -> ! {
     todo!("0xc9f168 Ogre::GpuProgram::CmdType::~CmdType()")
@@ -372,7 +372,7 @@ pub fn stub_0xc9f168() -> ! {
 
 // 0xc9f174 — __ZN4Ogre10GpuProgram9CmdSyntaxD0Ev
 // type: void __fastcall(Ogre::GpuProgram::CmdSyntax *__hidden this)
-#[doc(alias = "Ogre::GpuProgram::CmdSyntax::~CmdSyntax()")]
+#[doc(alias = "Ogre::GpuProgram::CmdSyntax::~CmdSyntax() [0xc9f174]")]
 #[doc(alias = "__ZN4Ogre10GpuProgram9CmdSyntaxD0Ev")]
 pub fn stub_0xc9f174() -> ! {
     todo!("0xc9f174 Ogre::GpuProgram::CmdSyntax::~CmdSyntax()")
@@ -380,7 +380,7 @@ pub fn stub_0xc9f174() -> ! {
 
 // 0xc9f180 — __ZN4Ogre10GpuProgram11CmdSkeletalD0Ev
 // type: void __fastcall(Ogre::GpuProgram::CmdSkeletal *__hidden this)
-#[doc(alias = "Ogre::GpuProgram::CmdSkeletal::~CmdSkeletal()")]
+#[doc(alias = "Ogre::GpuProgram::CmdSkeletal::~CmdSkeletal() [0xc9f180]")]
 #[doc(alias = "__ZN4Ogre10GpuProgram11CmdSkeletalD0Ev")]
 pub fn stub_0xc9f180() -> ! {
     todo!("0xc9f180 Ogre::GpuProgram::CmdSkeletal::~CmdSkeletal()")
@@ -388,7 +388,7 @@ pub fn stub_0xc9f180() -> ! {
 
 // 0xc9f18c — __ZN4Ogre10GpuProgram8CmdMorphD0Ev
 // type: void __fastcall(Ogre::GpuProgram::CmdMorph *__hidden this)
-#[doc(alias = "Ogre::GpuProgram::CmdMorph::~CmdMorph()")]
+#[doc(alias = "Ogre::GpuProgram::CmdMorph::~CmdMorph() [0xc9f18c]")]
 #[doc(alias = "__ZN4Ogre10GpuProgram8CmdMorphD0Ev")]
 pub fn stub_0xc9f18c() -> ! {
     todo!("0xc9f18c Ogre::GpuProgram::CmdMorph::~CmdMorph()")
@@ -396,7 +396,7 @@ pub fn stub_0xc9f18c() -> ! {
 
 // 0xc9f198 — __ZN4Ogre10GpuProgram7CmdPoseD0Ev
 // type: void __fastcall(Ogre::GpuProgram::CmdPose *__hidden this)
-#[doc(alias = "Ogre::GpuProgram::CmdPose::~CmdPose()")]
+#[doc(alias = "Ogre::GpuProgram::CmdPose::~CmdPose() [0xc9f198]")]
 #[doc(alias = "__ZN4Ogre10GpuProgram7CmdPoseD0Ev")]
 pub fn stub_0xc9f198() -> ! {
     todo!("0xc9f198 Ogre::GpuProgram::CmdPose::~CmdPose()")
@@ -404,7 +404,7 @@ pub fn stub_0xc9f198() -> ! {
 
 // 0xc9f1a4 — __ZN4Ogre10GpuProgram6CmdVTFD0Ev
 // type: void __fastcall(Ogre::GpuProgram::CmdVTF *__hidden this)
-#[doc(alias = "Ogre::GpuProgram::CmdVTF::~CmdVTF()")]
+#[doc(alias = "Ogre::GpuProgram::CmdVTF::~CmdVTF() [0xc9f1a4]")]
 #[doc(alias = "__ZN4Ogre10GpuProgram6CmdVTFD0Ev")]
 pub fn stub_0xc9f1a4() -> ! {
     todo!("0xc9f1a4 Ogre::GpuProgram::CmdVTF::~CmdVTF()")
@@ -412,7 +412,7 @@ pub fn stub_0xc9f1a4() -> ! {
 
 // 0xc9f1b0 — __ZN4Ogre10GpuProgram24CmdManualNamedConstsFileD0Ev
 // type: void __fastcall(Ogre::GpuProgram::CmdManualNamedConstsFile *__hidden this)
-#[doc(alias = "Ogre::GpuProgram::CmdManualNamedConstsFile::~CmdManualNamedConstsFile()")]
+#[doc(alias = "Ogre::GpuProgram::CmdManualNamedConstsFile::~CmdManualNamedConstsFile() [0xc9f1b0]")]
 #[doc(alias = "__ZN4Ogre10GpuProgram24CmdManualNamedConstsFileD0Ev")]
 pub fn stub_0xc9f1b0() -> ! {
     todo!("0xc9f1b0 Ogre::GpuProgram::CmdManualNamedConstsFile::~CmdManualNamedConstsFile()")
@@ -420,7 +420,7 @@ pub fn stub_0xc9f1b0() -> ! {
 
 // 0xc9f1bc — __ZN4Ogre10GpuProgram12CmdAdjacencyD0Ev
 // type: void __fastcall(Ogre::GpuProgram::CmdAdjacency *__hidden this)
-#[doc(alias = "Ogre::GpuProgram::CmdAdjacency::~CmdAdjacency()")]
+#[doc(alias = "Ogre::GpuProgram::CmdAdjacency::~CmdAdjacency() [0xc9f1bc]")]
 #[doc(alias = "__ZN4Ogre10GpuProgram12CmdAdjacencyD0Ev")]
 pub fn stub_0xc9f1bc() -> ! {
     todo!("0xc9f1bc Ogre::GpuProgram::CmdAdjacency::~CmdAdjacency()")
@@ -436,7 +436,7 @@ pub fn stub_0xc9f1c8() -> ! {
 
 // 0xc9f1d4 — __ZN4Ogre10GpuProgramD0Ev
 // type: void __fastcall(Ogre::GpuProgram *__hidden this)
-#[doc(alias = "Ogre::GpuProgram::~GpuProgram()")]
+#[doc(alias = "Ogre::GpuProgram::~GpuProgram() [0xc9f1d4]")]
 #[doc(alias = "__ZN4Ogre10GpuProgramD0Ev")]
 pub fn stub_0xc9f1d4() -> ! {
     todo!("0xc9f1d4 Ogre::GpuProgram::~GpuProgram()")
@@ -475,7 +475,7 @@ pub fn stub_0xc9f278() -> ! {
 }
 
 // 0xc9f37c — __ZNSt8_Rb_treeImSt4pairIKmN4Ogre18GpuLogicalIndexUseEESt10_Select1stIS4_ESt4lessImENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED1Ev
-#[doc(alias = "std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,std::_Select1st<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>>,std::less<unsigned long>,Ogre::STLAllocator<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryC")]
+#[doc(alias = "std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,std::_Select1st<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>>,std::less<unsigned long>,Ogre::STLAllocator<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryC [0xc9f37c]")]
 #[doc(alias = "__ZNSt8_Rb_treeImSt4pairIKmN4Ogre18GpuLogicalIndexUseEESt10_Select1stIS4_ESt4lessImENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED1Ev")]
 pub fn stub_0xc9f37c() -> ! {
     todo!("0xc9f37c std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,std::_Select1st<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>>,std::less<unsigned long>,Ogre::STLAllocator")
@@ -483,7 +483,7 @@ pub fn stub_0xc9f37c() -> ! {
 
 // 0xc9f380 — __ZN4Ogre10GpuProgramD2Ev
 // type: void __fastcall(Ogre::GpuProgram *__hidden this)
-#[doc(alias = "Ogre::GpuProgram::~GpuProgram()")]
+#[doc(alias = "Ogre::GpuProgram::~GpuProgram() [0xc9f380]")]
 #[doc(alias = "__ZN4Ogre10GpuProgramD2Ev")]
 pub fn stub_0xc9f380() -> ! {
     todo!("0xc9f380 Ogre::GpuProgram::~GpuProgram()")
@@ -498,21 +498,21 @@ pub fn stub_0xc9f5bc() -> ! {
 
 // 0xc9f5c0 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre21GpuConstantDefinitionEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE7_M_copyEPKSt13_Rb_tree_nodeIS
 // type: int __fastcall(int, int, int, int, Ogre::NedPoolingImpl *, Ogre::NedPoolingImpl *, int, int, void *, int)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCa")]
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCa [0xc9f5c0]")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre21GpuConstantDefinitionEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE7_M_copyEPKSt13_Rb_tree_nodeIS4_EPSG_")]
 pub fn stub_0xc9f5c0() -> ! {
     todo!("0xc9f5c0 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<s")
 }
 
 // 0xc9f7d0 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre21GpuConstantDefinitionEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED0Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCa")]
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCa [0xc9f7d0]")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre21GpuConstantDefinitionEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED0Ev")]
 pub fn stub_0xc9f7d0() -> ! {
     todo!("0xc9f7d0 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<s")
 }
 
 // 0xc9f7dc — __ZNSt8_Rb_treeImSt4pairIKmN4Ogre18GpuLogicalIndexUseEESt10_Select1stIS4_ESt4lessImENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED0Ev
-#[doc(alias = "std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,std::_Select1st<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>>,std::less<unsigned long>,Ogre::STLAllocator<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryC")]
+#[doc(alias = "std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,std::_Select1st<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>>,std::less<unsigned long>,Ogre::STLAllocator<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryC [0xc9f7dc]")]
 #[doc(alias = "__ZNSt8_Rb_treeImSt4pairIKmN4Ogre18GpuLogicalIndexUseEESt10_Select1stIS4_ESt4lessImENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED0Ev")]
 pub fn stub_0xc9f7dc() -> ! {
     todo!("0xc9f7dc std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,std::_Select1st<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>>,std::less<unsigned long>,Ogre::STLAllocator")
@@ -544,7 +544,7 @@ pub fn stub_0xc9fa90() -> ! {
 
 // 0xc9fb6c — __ZN4Ogre17GpuProgramManagerD1Ev
 // type: void __fastcall(Ogre::GpuProgramManager *__hidden this)
-#[doc(alias = "Ogre::GpuProgramManager::~GpuProgramManager()")]
+#[doc(alias = "Ogre::GpuProgramManager::~GpuProgramManager() [0xc9fb6c]")]
 #[doc(alias = "__ZN4Ogre17GpuProgramManagerD1Ev")]
 pub fn stub_0xc9fb6c() -> ! {
     todo!("0xc9fb6c Ogre::GpuProgramManager::~GpuProgramManager()")
@@ -552,7 +552,7 @@ pub fn stub_0xc9fb6c() -> ! {
 
 // 0xc9fc3c — __ZN4Ogre17GpuProgramManagerD2Ev
 // type: void __fastcall(Ogre::GpuProgramManager *__hidden this)
-#[doc(alias = "Ogre::GpuProgramManager::~GpuProgramManager()")]
+#[doc(alias = "Ogre::GpuProgramManager::~GpuProgramManager() [0xc9fc3c]")]
 #[doc(alias = "__ZN4Ogre17GpuProgramManagerD2Ev")]
 pub fn stub_0xc9fc3c() -> ! {
     todo!("0xc9fc3c Ogre::GpuProgramManager::~GpuProgramManager()")
@@ -726,7 +726,7 @@ pub fn stub_0xca3168() -> ! {
 
 // 0xca320c — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uni
 // type: int __fastcall(int)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>")]
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> [0xca320c]")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS6_ERKS6_")]
 pub fn stub_0xca320c() -> ! {
     todo!("0xca320c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std")
@@ -734,7 +734,7 @@ pub fn stub_0xca320c() -> ! {
 
 // 0xca3554 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt1
 // type: int __fastcall(int, int, int, int)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>")]
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> [0xca3554]")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSI_RKS6_")]
 pub fn stub_0xca3554() -> ! {
     todo!("0xca3554 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std")
@@ -742,7 +742,7 @@ pub fn stub_0xca3554() -> ! {
 
 // 0xca35c8 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uni
 // type: int __fastcall(int, int, int)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>")]
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> [0xca35c8]")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS6_")]
 pub fn stub_0xca35c8() -> ! {
     todo!("0xca35c8 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std")
@@ -750,35 +750,35 @@ pub fn stub_0xca35c8() -> ! {
 
 // 0xca36ac — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE14_M_create_nod
 // type: _DWORD *__fastcall(int, const std::string *, int, int, void *, int)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>")]
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> [0xca36ac]")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE14_M_create_nodeERKS6_")]
 pub fn stub_0xca36ac() -> ! {
     todo!("0xca36ac std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std")
 }
 
 // 0xca37c4 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>")]
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> [0xca37c4]")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_")]
 pub fn stub_0xca37c4() -> ! {
     todo!("0xca37c4 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std")
 }
 
 // 0xca3878 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_impl
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>")]
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> [0xca3878]")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implISA_Lb0EED1Ev")]
 pub fn stub_0xca3878() -> ! {
     todo!("0xca3878 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std")
 }
 
 // 0xca387c — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_impl
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>")]
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> [0xca387c]")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implISA_Lb0EED0Ev")]
 pub fn stub_0xca387c() -> ! {
     todo!("0xca387c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std")
 }
 
 // 0xca3888 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>")]
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> [0xca3888]")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS6_E")]
 pub fn stub_0xca3888() -> ! {
     todo!("0xca3888 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std")

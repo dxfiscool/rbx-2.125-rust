@@ -66,7 +66,7 @@ pub fn stub_0x26867c() -> ! {
 
 // 0x268728 — __ZN3RBX10Reflection5TTypeIvED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::TType<void>::~TType()")]
+#[doc(alias = "RBX::Reflection::TType<void>::~TType() [0x268728]")]
 pub fn stub_0x268728() -> ! {
     todo!("0x268728 __ZN3RBX10Reflection5TTypeIvED0Ev")
 }
@@ -80,7 +80,7 @@ pub fn stub_0x26872c() -> ! {
 
 // 0x2687d8 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
+#[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType() [0x2687d8]")]
 pub fn stub_0x2687d8() -> ! {
     todo!("0x2687d8 __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEED0Ev")
 }
@@ -101,7 +101,7 @@ pub fn stub_0x2688b0() -> ! {
 
 // 0x26895c — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS0_7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEEEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
+#[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType() [0x26895c]")]
 pub fn stub_0x26895c() -> ! {
     todo!("0x26895c __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS0_7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEEEED0Ev")
 }
@@ -129,7 +129,7 @@ pub fn stub_0x268b40() -> ! {
 
 // 0x268bec — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS5_EEEEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType()")]
+#[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType() [0x268bec]")]
 pub fn stub_0x268bec() -> ! {
     todo!("0x268bec __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS5_EEEEED0Ev")
 }
@@ -456,7 +456,7 @@ pub fn stub_0x26fdd0() -> ! {
 
 // 0x26fdfc — __ZN5boost6detail18sp_counted_impl_pdIPKSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS8_EEED0Ev
 // type: void __fastcall(_BYTE *, int, int, int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~sp_counted_impl_pd() [0x26fdfc]")]
 pub fn stub_0x26fdfc() -> ! {
     todo!("0x26fdfc __ZN5boost6detail18sp_counted_impl_pdIPKSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS8_EEED0Ev")
 }
@@ -663,7 +663,7 @@ pub fn stub_0x289268() -> ! {
 
 // 0x289284 — __ZN3RBX10Reflection18GenericSlotWrapperD0Ev
 // type: void __fastcall(RBX::Reflection::GenericSlotWrapper *__hidden this)
-#[doc(alias = "RBX::Reflection::GenericSlotWrapper::~GenericSlotWrapper()")]
+#[doc(alias = "RBX::Reflection::GenericSlotWrapper::~GenericSlotWrapper() [0x289284]")]
 pub fn stub_0x289284() -> ! {
     todo!("0x289284 __ZN3RBX10Reflection18GenericSlotWrapperD0Ev")
 }

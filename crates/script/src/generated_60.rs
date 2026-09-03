@@ -308,7 +308,7 @@ pub fn stub_0x5e3488() -> ! {
 
 // 0x5e348c — __ZN3RBX12PartInstance20OnDemandPartInstanceD0Ev
 // type: void __fastcall(RBX::PartInstance::OnDemandPartInstance *__hidden this)
-#[doc(alias = "RBX::PartInstance::OnDemandPartInstance::~OnDemandPartInstance()")]
+#[doc(alias = "RBX::PartInstance::OnDemandPartInstance::~OnDemandPartInstance() [0x5e348c]")]
 pub fn stub_0x5e348c() -> ! {
     todo!("0x5e348c RBX::PartInstance::OnDemandPartInstance::~OnDemandPartInstance()")
 }
@@ -322,7 +322,7 @@ pub fn stub_0x5e3540() -> ! {
 
 // 0x5e3544 — __ZN3RBX14FWPartInstanceD0Ev
 // type: void __fastcall(RBX::FWPartInstance *__hidden this)
-#[doc(alias = "RBX::FWPartInstance::~FWPartInstance()")]
+#[doc(alias = "RBX::FWPartInstance::~FWPartInstance() [0x5e3544]")]
 pub fn stub_0x5e3544() -> ! {
     todo!("0x5e3544 RBX::FWPartInstance::~FWPartInstance()")
 }
@@ -336,7 +336,7 @@ pub fn stub_0x5e35f8() -> ! {
 
 // 0x5e3638 — __ZN3RBX12PartInstance20OnDemandPartInstanceD2Ev
 // type: void __fastcall(RBX::PartInstance::OnDemandPartInstance *__hidden this)
-#[doc(alias = "RBX::PartInstance::OnDemandPartInstance::~OnDemandPartInstance()")]
+#[doc(alias = "RBX::PartInstance::OnDemandPartInstance::~OnDemandPartInstance() [0x5e3638]")]
 pub fn stub_0x5e3638() -> ! {
     todo!("0x5e3638 RBX::PartInstance::OnDemandPartInstance::~OnDemandPartInstance()")
 }
@@ -494,13 +494,13 @@ pub fn stub_0x5e852c() -> ! {
 }
 
 // 0x5e8530 — __ZN3RBX7FWFinalINS_14FWPartInstanceEED0Ev
-#[doc(alias = "RBX::FWFinal<RBX::FWPartInstance>::~FWFinal()")]
+#[doc(alias = "RBX::FWFinal<RBX::FWPartInstance>::~FWFinal() [0x5e8530]")]
 pub fn stub_0x5e8530() -> ! {
     todo!("0x5e8530 RBX::FWFinal<RBX::FWPartInstance>::~FWFinal()")
 }
 
 // 0x5e85e4 — __ZN3RBX7FWFinalINS_14FWPartInstanceEED2Ev
-#[doc(alias = "RBX::FWFinal<RBX::FWPartInstance>::~FWFinal()")]
+#[doc(alias = "RBX::FWFinal<RBX::FWPartInstance>::~FWFinal() [0x5e85e4]")]
 pub fn stub_0x5e85e4() -> ! {
     todo!("0x5e85e4 RBX::FWFinal<RBX::FWPartInstance>::~FWFinal()")
 }
@@ -662,7 +662,7 @@ pub fn stub_0x5f3e68() -> ! {
 
 // 0x5f3f38 — __ZN3RBX10FWInstanceD1Ev
 // type: void __fastcall(RBX::FWInstance *__hidden this)
-#[doc(alias = "RBX::FWInstance::~FWInstance()")]
+#[doc(alias = "RBX::FWInstance::~FWInstance() [0x5f3f38]")]
 pub fn stub_0x5f3f38() -> ! {
     todo!("0x5f3f38 RBX::FWInstance::~FWInstance()")
 }
@@ -683,7 +683,7 @@ pub fn stub_0x5f4020() -> ! {
 
 // 0x5f4024 — __ZN3RBX12FWPVInstanceD0Ev
 // type: void __fastcall(RBX::FWPVInstance *__hidden this)
-#[doc(alias = "RBX::FWPVInstance::~FWPVInstance()")]
+#[doc(alias = "RBX::FWPVInstance::~FWPVInstance() [0x5f4024]")]
 pub fn stub_0x5f4024() -> ! {
     todo!("0x5f4024 RBX::FWPVInstance::~FWPVInstance()")
 }

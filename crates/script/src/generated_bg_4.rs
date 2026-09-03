@@ -31,7 +31,7 @@ pub fn stub_0x555878() -> ! {
 
 // 0x555918 — __ZN3RBX9BodyMoverD1Ev
 // type: void __fastcall(RBX::BodyMover *__hidden this)
-#[doc(alias = "RBX::BodyMover::~BodyMover()")]
+#[doc(alias = "RBX::BodyMover::~BodyMover() [0x555918]")]
 pub fn stub_0x555918() -> ! {
     todo!("0x555918 RBX::BodyMover::~BodyMover()")
 }
@@ -45,70 +45,70 @@ pub fn stub_0x55591c() -> ! {
 
 // 0x555924 — __ZThn36_N3RBX9BodyMoverD0Ev
 // type: void __fastcall(RBX::BodyMover *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyMover::~BodyMover()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyMover::~BodyMover() [0x555924]")]
 pub fn stub_0x555924() -> ! {
     todo!("0x555924 non-virtual thunk toRBX::BodyMover::~BodyMover()")
 }
 
 // 0x55592c — __ZThn92_N3RBX9BodyMoverD0Ev
 // type: void __fastcall(RBX::BodyMover *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyMover::~BodyMover()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyMover::~BodyMover() [0x55592c]")]
 pub fn stub_0x55592c() -> ! {
     todo!("0x55592c non-virtual thunk toRBX::BodyMover::~BodyMover()")
 }
 
 // 0x555934 — __ZThn124_N3RBX9BodyMoverD0Ev
 // type: void __fastcall(RBX::BodyMover *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyMover::~BodyMover()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyMover::~BodyMover() [0x555934]")]
 pub fn stub_0x555934() -> ! {
     todo!("0x555934 non-virtual thunk toRBX::BodyMover::~BodyMover()")
 }
 
 // 0x55593c — __ZThn244_N3RBX9BodyMoverD0Ev
 // type: void __fastcall(RBX::BodyMover *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyMover::~BodyMover()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyMover::~BodyMover() [0x55593c]")]
 pub fn stub_0x55593c() -> ! {
     todo!("0x55593c non-virtual thunk toRBX::BodyMover::~BodyMover()")
 }
 
 // 0x555944 — __ZN3RBX9BodyMoverD2Ev
 // type: void __fastcall(RBX::BodyMover *__hidden this)
-#[doc(alias = "RBX::BodyMover::~BodyMover()")]
+#[doc(alias = "RBX::BodyMover::~BodyMover() [0x555944]")]
 pub fn stub_0x555944() -> ! {
     todo!("0x555944 RBX::BodyMover::~BodyMover()")
 }
 
 // 0x555b68 — __ZThn32_N3RBX9BodyMoverD1Ev
 // type: void __fastcall(RBX::BodyMover *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyMover::~BodyMover()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyMover::~BodyMover() [0x555b68]")]
 pub fn stub_0x555b68() -> ! {
     todo!("0x555b68 non-virtual thunk toRBX::BodyMover::~BodyMover()")
 }
 
 // 0x555b70 — __ZThn36_N3RBX9BodyMoverD1Ev
 // type: void __fastcall(RBX::BodyMover *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyMover::~BodyMover()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyMover::~BodyMover() [0x555b70]")]
 pub fn stub_0x555b70() -> ! {
     todo!("0x555b70 non-virtual thunk toRBX::BodyMover::~BodyMover()")
 }
 
 // 0x555b78 — __ZThn92_N3RBX9BodyMoverD1Ev
 // type: void __fastcall(RBX::BodyMover *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyMover::~BodyMover()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyMover::~BodyMover() [0x555b78]")]
 pub fn stub_0x555b78() -> ! {
     todo!("0x555b78 non-virtual thunk toRBX::BodyMover::~BodyMover()")
 }
 
 // 0x555b80 — __ZThn124_N3RBX9BodyMoverD1Ev
 // type: void __fastcall(RBX::BodyMover *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyMover::~BodyMover()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyMover::~BodyMover() [0x555b80]")]
 pub fn stub_0x555b80() -> ! {
     todo!("0x555b80 non-virtual thunk toRBX::BodyMover::~BodyMover()")
 }
 
 // 0x555b88 — __ZThn244_N3RBX9BodyMoverD1Ev
 // type: void __fastcall(RBX::BodyMover *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyMover::~BodyMover()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyMover::~BodyMover() [0x555b88]")]
 pub fn stub_0x555b88() -> ! {
     todo!("0x555b88 non-virtual thunk toRBX::BodyMover::~BodyMover()")
 }
@@ -206,7 +206,7 @@ pub fn stub_0x556bb0() -> ! {
 
 // 0x556c50 — __ZN3RBX6RocketD1Ev
 // type: void __fastcall(RBX::Rocket *__hidden this)
-#[doc(alias = "RBX::Rocket::~Rocket()")]
+#[doc(alias = "RBX::Rocket::~Rocket() [0x556c50]")]
 pub fn stub_0x556c50() -> ! {
     todo!("0x556c50 RBX::Rocket::~Rocket()")
 }
@@ -220,84 +220,84 @@ pub fn stub_0x556c54() -> ! {
 
 // 0x556c5c — __ZThn36_N3RBX6RocketD0Ev
 // type: void __fastcall(RBX::Rocket *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket()")]
+#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket() [0x556c5c]")]
 pub fn stub_0x556c5c() -> ! {
     todo!("0x556c5c non-virtual thunk toRBX::Rocket::~Rocket()")
 }
 
 // 0x556c64 — __ZThn92_N3RBX6RocketD0Ev
 // type: void __fastcall(RBX::Rocket *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket()")]
+#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket() [0x556c64]")]
 pub fn stub_0x556c64() -> ! {
     todo!("0x556c64 non-virtual thunk toRBX::Rocket::~Rocket()")
 }
 
 // 0x556c6c — __ZThn124_N3RBX6RocketD0Ev
 // type: void __fastcall(RBX::Rocket *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket()")]
+#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket() [0x556c6c]")]
 pub fn stub_0x556c6c() -> ! {
     todo!("0x556c6c non-virtual thunk toRBX::Rocket::~Rocket()")
 }
 
 // 0x556c74 — __ZThn244_N3RBX6RocketD0Ev
 // type: void __fastcall(RBX::Rocket *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket()")]
+#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket() [0x556c74]")]
 pub fn stub_0x556c74() -> ! {
     todo!("0x556c74 non-virtual thunk toRBX::Rocket::~Rocket()")
 }
 
 // 0x556c7c — __ZThn304_N3RBX6RocketD0Ev
 // type: void __fastcall(RBX::Rocket *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket()")]
+#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket() [0x556c7c]")]
 pub fn stub_0x556c7c() -> ! {
     todo!("0x556c7c non-virtual thunk toRBX::Rocket::~Rocket()")
 }
 
 // 0x556c84 — __ZN3RBX6RocketD2Ev
 // type: void __fastcall(RBX::Rocket *__hidden this)
-#[doc(alias = "RBX::Rocket::~Rocket()")]
+#[doc(alias = "RBX::Rocket::~Rocket() [0x556c84]")]
 pub fn stub_0x556c84() -> ! {
     todo!("0x556c84 RBX::Rocket::~Rocket()")
 }
 
 // 0x556e1c — __ZThn32_N3RBX6RocketD1Ev
 // type: void __fastcall(RBX::Rocket *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket()")]
+#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket() [0x556e1c]")]
 pub fn stub_0x556e1c() -> ! {
     todo!("0x556e1c non-virtual thunk toRBX::Rocket::~Rocket()")
 }
 
 // 0x556e24 — __ZThn36_N3RBX6RocketD1Ev
 // type: void __fastcall(RBX::Rocket *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket()")]
+#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket() [0x556e24]")]
 pub fn stub_0x556e24() -> ! {
     todo!("0x556e24 non-virtual thunk toRBX::Rocket::~Rocket()")
 }
 
 // 0x556e2c — __ZThn92_N3RBX6RocketD1Ev
 // type: void __fastcall(RBX::Rocket *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket()")]
+#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket() [0x556e2c]")]
 pub fn stub_0x556e2c() -> ! {
     todo!("0x556e2c non-virtual thunk toRBX::Rocket::~Rocket()")
 }
 
 // 0x556e34 — __ZThn124_N3RBX6RocketD1Ev
 // type: void __fastcall(RBX::Rocket *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket()")]
+#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket() [0x556e34]")]
 pub fn stub_0x556e34() -> ! {
     todo!("0x556e34 non-virtual thunk toRBX::Rocket::~Rocket()")
 }
 
 // 0x556e3c — __ZThn244_N3RBX6RocketD1Ev
 // type: void __fastcall(RBX::Rocket *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket()")]
+#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket() [0x556e3c]")]
 pub fn stub_0x556e3c() -> ! {
     todo!("0x556e3c non-virtual thunk toRBX::Rocket::~Rocket()")
 }
 
 // 0x556e44 — __ZThn304_N3RBX6RocketD1Ev
 // type: void __fastcall(RBX::Rocket *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket()")]
+#[doc(alias = "non-virtual thunk toRBX::Rocket::~Rocket() [0x556e44]")]
 pub fn stub_0x556e44() -> ! {
     todo!("0x556e44 non-virtual thunk toRBX::Rocket::~Rocket()")
 }
@@ -488,7 +488,7 @@ pub fn stub_0x5596b0() -> ! {
 
 // 0x5597e0 — __ZN3RBX12BodyPositionD0Ev
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
-#[doc(alias = "RBX::BodyPosition::~BodyPosition()")]
+#[doc(alias = "RBX::BodyPosition::~BodyPosition() [0x5597e0]")]
 pub fn stub_0x5597e0() -> ! {
     todo!("0x5597e0 RBX::BodyPosition::~BodyPosition()")
 }
@@ -509,35 +509,35 @@ pub fn stub_0x55993c() -> ! {
 
 // 0x559a68 — __ZThn32_N3RBX12BodyPositionD0Ev
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition() [0x559a68]")]
 pub fn stub_0x559a68() -> ! {
     todo!("0x559a68 non-virtual thunk toRBX::BodyPosition::~BodyPosition()")
 }
 
 // 0x559bb8 — __ZThn36_N3RBX12BodyPositionD1Ev
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition() [0x559bb8]")]
 pub fn stub_0x559bb8() -> ! {
     todo!("0x559bb8 non-virtual thunk toRBX::BodyPosition::~BodyPosition()")
 }
 
 // 0x559ce4 — __ZThn36_N3RBX12BodyPositionD0Ev
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition() [0x559ce4]")]
 pub fn stub_0x559ce4() -> ! {
     todo!("0x559ce4 non-virtual thunk toRBX::BodyPosition::~BodyPosition()")
 }
 
 // 0x559e24 — __ZThn92_N3RBX12BodyPositionD1Ev
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition() [0x559e24]")]
 pub fn stub_0x559e24() -> ! {
     todo!("0x559e24 non-virtual thunk toRBX::BodyPosition::~BodyPosition()")
 }
 
 // 0x559f50 — __ZThn92_N3RBX12BodyPositionD0Ev
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition() [0x559f50]")]
 pub fn stub_0x559f50() -> ! {
     todo!("0x559f50 non-virtual thunk toRBX::BodyPosition::~BodyPosition()")
 }
@@ -551,42 +551,42 @@ pub fn stub_0x55a090() -> ! {
 
 // 0x55a094 — __ZThn124_N3RBX12BodyPositionD1Ev
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition() [0x55a094]")]
 pub fn stub_0x55a094() -> ! {
     todo!("0x55a094 non-virtual thunk toRBX::BodyPosition::~BodyPosition()")
 }
 
 // 0x55a1c0 — __ZThn124_N3RBX12BodyPositionD0Ev
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition() [0x55a1c0]")]
 pub fn stub_0x55a1c0() -> ! {
     todo!("0x55a1c0 non-virtual thunk toRBX::BodyPosition::~BodyPosition()")
 }
 
 // 0x55a300 — __ZThn244_N3RBX12BodyPositionD1Ev
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition() [0x55a300]")]
 pub fn stub_0x55a300() -> ! {
     todo!("0x55a300 non-virtual thunk toRBX::BodyPosition::~BodyPosition()")
 }
 
 // 0x55a430 — __ZThn244_N3RBX12BodyPositionD0Ev
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition() [0x55a430]")]
 pub fn stub_0x55a430() -> ! {
     todo!("0x55a430 non-virtual thunk toRBX::BodyPosition::~BodyPosition()")
 }
 
 // 0x55a574 — __ZThn304_N3RBX12BodyPositionD1Ev
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition() [0x55a574]")]
 pub fn stub_0x55a574() -> ! {
     todo!("0x55a574 non-virtual thunk toRBX::BodyPosition::~BodyPosition()")
 }
 
 // 0x55a6a4 — __ZThn304_N3RBX12BodyPositionD0Ev
 // type: void __fastcall(RBX::BodyPosition *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyPosition::~BodyPosition() [0x55a6a4]")]
 pub fn stub_0x55a6a4() -> ! {
     todo!("0x55a6a4 non-virtual thunk toRBX::BodyPosition::~BodyPosition()")
 }
@@ -600,7 +600,7 @@ pub fn stub_0x55a860() -> ! {
 
 // 0x55a864 — __ZN3RBX8BodyGyroD0Ev
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
-#[doc(alias = "RBX::BodyGyro::~BodyGyro()")]
+#[doc(alias = "RBX::BodyGyro::~BodyGyro() [0x55a864]")]
 pub fn stub_0x55a864() -> ! {
     todo!("0x55a864 RBX::BodyGyro::~BodyGyro()")
 }
@@ -614,63 +614,63 @@ pub fn stub_0x55a914() -> ! {
 
 // 0x55a91c — __ZThn32_N3RBX8BodyGyroD0Ev
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro() [0x55a91c]")]
 pub fn stub_0x55a91c() -> ! {
     todo!("0x55a91c non-virtual thunk toRBX::BodyGyro::~BodyGyro()")
 }
 
 // 0x55a9d0 — __ZThn36_N3RBX8BodyGyroD1Ev
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro() [0x55a9d0]")]
 pub fn stub_0x55a9d0() -> ! {
     todo!("0x55a9d0 non-virtual thunk toRBX::BodyGyro::~BodyGyro()")
 }
 
 // 0x55a9d8 — __ZThn36_N3RBX8BodyGyroD0Ev
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro() [0x55a9d8]")]
 pub fn stub_0x55a9d8() -> ! {
     todo!("0x55a9d8 non-virtual thunk toRBX::BodyGyro::~BodyGyro()")
 }
 
 // 0x55aa7c — __ZThn92_N3RBX8BodyGyroD1Ev
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro() [0x55aa7c]")]
 pub fn stub_0x55aa7c() -> ! {
     todo!("0x55aa7c non-virtual thunk toRBX::BodyGyro::~BodyGyro()")
 }
 
 // 0x55aa84 — __ZThn92_N3RBX8BodyGyroD0Ev
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro() [0x55aa84]")]
 pub fn stub_0x55aa84() -> ! {
     todo!("0x55aa84 non-virtual thunk toRBX::BodyGyro::~BodyGyro()")
 }
 
 // 0x55ab28 — __ZThn124_N3RBX8BodyGyroD1Ev
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro() [0x55ab28]")]
 pub fn stub_0x55ab28() -> ! {
     todo!("0x55ab28 non-virtual thunk toRBX::BodyGyro::~BodyGyro()")
 }
 
 // 0x55ab30 — __ZThn124_N3RBX8BodyGyroD0Ev
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro() [0x55ab30]")]
 pub fn stub_0x55ab30() -> ! {
     todo!("0x55ab30 non-virtual thunk toRBX::BodyGyro::~BodyGyro()")
 }
 
 // 0x55abd4 — __ZThn244_N3RBX8BodyGyroD1Ev
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro() [0x55abd4]")]
 pub fn stub_0x55abd4() -> ! {
     todo!("0x55abd4 non-virtual thunk toRBX::BodyGyro::~BodyGyro()")
 }
 
 // 0x55abdc — __ZThn244_N3RBX8BodyGyroD0Ev
 // type: void __fastcall(RBX::BodyGyro *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyGyro::~BodyGyro() [0x55abdc]")]
 pub fn stub_0x55abdc() -> ! {
     todo!("0x55abdc non-virtual thunk toRBX::BodyGyro::~BodyGyro()")
 }
@@ -684,7 +684,7 @@ pub fn stub_0x55ac80() -> ! {
 
 // 0x55ac84 — __ZN3RBX12BodyVelocityD0Ev
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
-#[doc(alias = "RBX::BodyVelocity::~BodyVelocity()")]
+#[doc(alias = "RBX::BodyVelocity::~BodyVelocity() [0x55ac84]")]
 pub fn stub_0x55ac84() -> ! {
     todo!("0x55ac84 RBX::BodyVelocity::~BodyVelocity()")
 }
@@ -698,63 +698,63 @@ pub fn stub_0x55ad34() -> ! {
 
 // 0x55ad3c — __ZThn32_N3RBX12BodyVelocityD0Ev
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity() [0x55ad3c]")]
 pub fn stub_0x55ad3c() -> ! {
     todo!("0x55ad3c non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")
 }
 
 // 0x55adf0 — __ZThn36_N3RBX12BodyVelocityD1Ev
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity() [0x55adf0]")]
 pub fn stub_0x55adf0() -> ! {
     todo!("0x55adf0 non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")
 }
 
 // 0x55adf8 — __ZThn36_N3RBX12BodyVelocityD0Ev
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity() [0x55adf8]")]
 pub fn stub_0x55adf8() -> ! {
     todo!("0x55adf8 non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")
 }
 
 // 0x55ae9c — __ZThn92_N3RBX12BodyVelocityD1Ev
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity() [0x55ae9c]")]
 pub fn stub_0x55ae9c() -> ! {
     todo!("0x55ae9c non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")
 }
 
 // 0x55aea4 — __ZThn92_N3RBX12BodyVelocityD0Ev
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity() [0x55aea4]")]
 pub fn stub_0x55aea4() -> ! {
     todo!("0x55aea4 non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")
 }
 
 // 0x55af48 — __ZThn124_N3RBX12BodyVelocityD1Ev
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity() [0x55af48]")]
 pub fn stub_0x55af48() -> ! {
     todo!("0x55af48 non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")
 }
 
 // 0x55af50 — __ZThn124_N3RBX12BodyVelocityD0Ev
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity() [0x55af50]")]
 pub fn stub_0x55af50() -> ! {
     todo!("0x55af50 non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")
 }
 
 // 0x55aff4 — __ZThn244_N3RBX12BodyVelocityD1Ev
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity() [0x55aff4]")]
 pub fn stub_0x55aff4() -> ! {
     todo!("0x55aff4 non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")
 }
 
 // 0x55affc — __ZThn244_N3RBX12BodyVelocityD0Ev
 // type: void __fastcall(RBX::BodyVelocity *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyVelocity::~BodyVelocity() [0x55affc]")]
 pub fn stub_0x55affc() -> ! {
     todo!("0x55affc non-virtual thunk toRBX::BodyVelocity::~BodyVelocity()")
 }
@@ -768,7 +768,7 @@ pub fn stub_0x55b0a0() -> ! {
 
 // 0x55b0a4 — __ZN3RBX19BodyAngularVelocityD0Ev
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
-#[doc(alias = "RBX::BodyAngularVelocity::~BodyAngularVelocity()")]
+#[doc(alias = "RBX::BodyAngularVelocity::~BodyAngularVelocity() [0x55b0a4]")]
 pub fn stub_0x55b0a4() -> ! {
     todo!("0x55b0a4 RBX::BodyAngularVelocity::~BodyAngularVelocity()")
 }
@@ -782,63 +782,63 @@ pub fn stub_0x55b154() -> ! {
 
 // 0x55b15c — __ZThn32_N3RBX19BodyAngularVelocityD0Ev
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity() [0x55b15c]")]
 pub fn stub_0x55b15c() -> ! {
     todo!("0x55b15c non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")
 }
 
 // 0x55b210 — __ZThn36_N3RBX19BodyAngularVelocityD1Ev
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity() [0x55b210]")]
 pub fn stub_0x55b210() -> ! {
     todo!("0x55b210 non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")
 }
 
 // 0x55b218 — __ZThn36_N3RBX19BodyAngularVelocityD0Ev
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity() [0x55b218]")]
 pub fn stub_0x55b218() -> ! {
     todo!("0x55b218 non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")
 }
 
 // 0x55b2bc — __ZThn92_N3RBX19BodyAngularVelocityD1Ev
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity() [0x55b2bc]")]
 pub fn stub_0x55b2bc() -> ! {
     todo!("0x55b2bc non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")
 }
 
 // 0x55b2c4 — __ZThn92_N3RBX19BodyAngularVelocityD0Ev
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity() [0x55b2c4]")]
 pub fn stub_0x55b2c4() -> ! {
     todo!("0x55b2c4 non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")
 }
 
 // 0x55b368 — __ZThn124_N3RBX19BodyAngularVelocityD1Ev
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity() [0x55b368]")]
 pub fn stub_0x55b368() -> ! {
     todo!("0x55b368 non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")
 }
 
 // 0x55b370 — __ZThn124_N3RBX19BodyAngularVelocityD0Ev
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity() [0x55b370]")]
 pub fn stub_0x55b370() -> ! {
     todo!("0x55b370 non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")
 }
 
 // 0x55b414 — __ZThn244_N3RBX19BodyAngularVelocityD1Ev
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity() [0x55b414]")]
 pub fn stub_0x55b414() -> ! {
     todo!("0x55b414 non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")
 }
 
 // 0x55b41c — __ZThn244_N3RBX19BodyAngularVelocityD0Ev
 // type: void __fastcall(RBX::BodyAngularVelocity *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity() [0x55b41c]")]
 pub fn stub_0x55b41c() -> ! {
     todo!("0x55b41c non-virtual thunk toRBX::BodyAngularVelocity::~BodyAngularVelocity()")
 }

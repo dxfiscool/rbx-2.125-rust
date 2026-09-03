@@ -254,7 +254,7 @@ pub fn stub_0x404518() -> ! {
 
 // 0x40451c — __ZN3RBX9TToolVerbINS_10HammerToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
-#[doc(alias = "RBX::TToolVerb<RBX::HammerTool,RBX::RunStateVerb>::~TToolVerb()")]
+#[doc(alias = "RBX::TToolVerb<RBX::HammerTool,RBX::RunStateVerb>::~TToolVerb() [0x40451c]")]
 pub fn stub_0x40451c() -> ! {
     todo!("0x40451c RBX::TToolVerb<RBX::HammerTool,RBX::RunStateVerb>::~TToolVerb()")
 }
@@ -310,7 +310,7 @@ pub fn stub_0x404b2c() -> ! {
 
 // 0x404b30 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HammerTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HammerTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd() [0x404b30]")]
 pub fn stub_0x404b30() -> ! {
     todo!("0x404b30 boost::detail::sp_counted_impl_pd<RBX::HammerTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
 }
@@ -358,7 +358,7 @@ pub fn stub_0x404ba8() -> ! {
 
 // 0x404e10 — __ZN3RBX9TToolVerbINS_9CloneToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
-#[doc(alias = "RBX::TToolVerb<RBX::CloneTool,RBX::RunStateVerb>::~TToolVerb()")]
+#[doc(alias = "RBX::TToolVerb<RBX::CloneTool,RBX::RunStateVerb>::~TToolVerb() [0x404e10]")]
 pub fn stub_0x404e10() -> ! {
     todo!("0x404e10 RBX::TToolVerb<RBX::CloneTool,RBX::RunStateVerb>::~TToolVerb()")
 }
@@ -414,7 +414,7 @@ pub fn stub_0x405420() -> ! {
 
 // 0x405424 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd() [0x405424]")]
 pub fn stub_0x405424() -> ! {
     todo!("0x405424 boost::detail::sp_counted_impl_pd<RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
 }
@@ -462,7 +462,7 @@ pub fn stub_0x40549c() -> ! {
 
 // 0x405704 — __ZN3RBX9TToolVerbINS_8GrabToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
-#[doc(alias = "RBX::TToolVerb<RBX::GrabTool,RBX::RunStateVerb>::~TToolVerb()")]
+#[doc(alias = "RBX::TToolVerb<RBX::GrabTool,RBX::RunStateVerb>::~TToolVerb() [0x405704]")]
 pub fn stub_0x405704() -> ! {
     todo!("0x405704 RBX::TToolVerb<RBX::GrabTool,RBX::RunStateVerb>::~TToolVerb()")
 }
@@ -518,7 +518,7 @@ pub fn stub_0x405d14() -> ! {
 
 // 0x405d18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd() [0x405d18]")]
 pub fn stub_0x405d18() -> ! {
     todo!("0x405d18 boost::detail::sp_counted_impl_pd<RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
 }
@@ -566,7 +566,7 @@ pub fn stub_0x405d90() -> ! {
 
 // 0x405ff8 — __ZN3RBX9TToolVerbINS_8GameToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
-#[doc(alias = "RBX::TToolVerb<RBX::GameTool,RBX::RunStateVerb>::~TToolVerb()")]
+#[doc(alias = "RBX::TToolVerb<RBX::GameTool,RBX::RunStateVerb>::~TToolVerb() [0x405ff8]")]
 pub fn stub_0x405ff8() -> ! {
     todo!("0x405ff8 RBX::TToolVerb<RBX::GameTool,RBX::RunStateVerb>::~TToolVerb()")
 }
@@ -622,7 +622,7 @@ pub fn stub_0x406608() -> ! {
 
 // 0x40660c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GameTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GameTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd() [0x40660c]")]
 pub fn stub_0x40660c() -> ! {
     todo!("0x40660c boost::detail::sp_counted_impl_pd<RBX::GameTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")
 }
@@ -670,7 +670,7 @@ pub fn stub_0x406684() -> ! {
 
 // 0x4068ec — __ZN3RBX9TToolVerbINS_8NullToolENS_12RunStateVerbEED0Ev
 // type: void __fastcall(RBX::RunStateVerb *)
-#[doc(alias = "RBX::TToolVerb<RBX::NullTool,RBX::RunStateVerb>::~TToolVerb()")]
+#[doc(alias = "RBX::TToolVerb<RBX::NullTool,RBX::RunStateVerb>::~TToolVerb() [0x4068ec]")]
 pub fn stub_0x4068ec() -> ! {
     todo!("0x4068ec RBX::TToolVerb<RBX::NullTool,RBX::RunStateVerb>::~TToolVerb()")
 }

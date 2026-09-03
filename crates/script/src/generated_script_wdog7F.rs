@@ -107,7 +107,7 @@ pub fn stub_0x5b0578() -> ! {
 
 // 0x5b05a4 — __ZN3rbx7signals6signalIFvPN3RBX5JointEEE13callable_slotIN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS2_13JointsServiceES4_EENS9_5list2INS9_5valueIPSD_EENS8_3argILi1EEEEEEEED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "rbx::signals::signal<void ()(RBX::Joint *)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::JointsService,RBX::Joint *>,boost::_bi::list2<boost::_bi::value<RBX::JointsService*>,boost::arg<1>>>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Joint *)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::JointsService,RBX::Joint *>,boost::_bi::list2<boost::_bi::value<RBX::JointsService*>,boost::arg<1>>>>::~callable_slot() [0x5b05a4]")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPN3RBX5JointEEE13callable_slotIN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS2_13JointsServiceES4_EENS9_5list2INS9_5valueIPSD_EENS8_3argILi1EEEEEEEED0Ev")]
 pub fn stub_0x5b05a4() -> ! {
     todo!("0x5b05a4 __ZN3rbx7signals6signalIFvPN3RBX5JointEEE13callable_slotIN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS2_13JointsServiceES4_EENS9_5list2INS9_5valueIPSD_EENS8_3argILi1EEEEEEEED0Ev")
@@ -179,7 +179,7 @@ pub fn stub_0x5b09b8() -> ! {
 }
 
 // 0x5b09e4 — __ZN3rbx7signals6signalIFvPN3RBX5JointEEE4slotD0Ev
-#[doc(alias = "rbx::signals::signal<void ()(RBX::Joint *)>::slot::~slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Joint *)>::slot::~slot() [0x5b09e4]")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPN3RBX5JointEEE4slotD0Ev")]
 pub fn stub_0x5b09e4() -> ! {
     todo!("0x5b09e4 __ZN3rbx7signals6signalIFvPN3RBX5JointEEE4slotD0Ev")
@@ -193,7 +193,7 @@ pub fn stub_0x5b0ab8() -> ! {
 }
 
 // 0x5b0ae4 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX5JointEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_13JointsServiceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEELi1ES6_ED0Ev
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Joint *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::JointsService,RBX::Joint *>,boost::_bi::list2<boost::_bi::value<RBX::JointsService*>,boost::arg<1>>>,1,void ()(RBX::Joint *)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Joint *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::JointsService,RBX::Joint *>,boost::_bi::list2<boost::_bi::value<RBX::JointsService*>,boost::arg<1>>>,1,void ()(RBX::Joint *)>::~callable() [0x5b0ae4]")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvPN3RBX5JointEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_13JointsServiceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEELi1ES6_ED0Ev")]
 pub fn stub_0x5b0ae4() -> ! {
     todo!("0x5b0ae4 __ZN3rbx8callableINS_7signals6signalIFvPN3RBX5JointEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_13JointsServiceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEELi1ES6_ED0Ev")
@@ -232,7 +232,7 @@ pub fn stub_0x5b0db4() -> ! {
 }
 
 // 0x5b0eb8 — __ZN3RBX10Reflection13BoundFuncDescINS_13JointsServiceEFvvELi0EED0Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::JointsService,void ()(void),0>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::JointsService,void ()(void),0>::~BoundFuncDesc() [0x5b0eb8]")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13JointsServiceEFvvELi0EED0Ev")]
 pub fn stub_0x5b0eb8() -> ! {
     todo!("0x5b0eb8 __ZN3RBX10Reflection13BoundFuncDescINS_13JointsServiceEFvvELi0EED0Ev")
@@ -261,7 +261,7 @@ pub fn stub_0x5b1124() -> ! {
 }
 
 // 0x5b1154 — __ZN3RBX10Reflection13BoundFuncDescINS_13JointsServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::JointsService,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::JointsService,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc() [0x5b1154]")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13JointsServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev")]
 pub fn stub_0x5b1154() -> ! {
     todo!("0x5b1154 __ZN3RBX10Reflection13BoundFuncDescINS_13JointsServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev")
@@ -386,7 +386,7 @@ pub fn stub_0x5b28c0() -> ! {
 }
 
 // 0x5b28c4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8KeyframeENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x5b28c4]")]
 #[doc(alias = "__ZN5boost6detail18sp_counted_impl_pdIPN3RBX8KeyframeENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")]
 pub fn stub_0x5b28c4() -> ! {
     todo!("0x5b28c4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8KeyframeENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
@@ -422,7 +422,7 @@ pub fn stub_0x5b2e9c() -> ! {
 }
 
 // 0x5b2fb0 — __ZN3RBX10Reflection14PropDescriptorINS_8KeyframeEfED0Ev
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Keyframe,float>::~PropDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Keyframe,float>::~PropDescriptor() [0x5b2fb0]")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_8KeyframeEfED0Ev")]
 pub fn stub_0x5b2fb0() -> ! {
     todo!("0x5b2fb0 __ZN3RBX10Reflection14PropDescriptorINS_8KeyframeEfED0Ev")
@@ -472,7 +472,7 @@ pub fn stub_0x5b31c0() -> ! {
 }
 
 // 0x5b31f0 — __ZN3RBX10Reflection13BoundFuncDescINS_8KeyframeEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Keyframe,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Keyframe,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc() [0x5b31f0]")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8KeyframeEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev")]
 pub fn stub_0x5b31f0() -> ! {
     todo!("0x5b31f0 __ZN3RBX10Reflection13BoundFuncDescINS_8KeyframeEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev")
@@ -502,7 +502,7 @@ pub fn stub_0x5b34d8() -> ! {
 }
 
 // 0x5b35dc — __ZN3RBX10Reflection13BoundFuncDescINS_8KeyframeEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED0Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Keyframe,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Keyframe,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc() [0x5b35dc]")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_8KeyframeEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED0Ev")]
 pub fn stub_0x5b35dc() -> ! {
     todo!("0x5b35dc __ZN3RBX10Reflection13BoundFuncDescINS_8KeyframeEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED0Ev")
@@ -579,7 +579,7 @@ pub fn stub_0x9828c4() -> ! {
 
 // 0x9828c8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network16ClientReplicator5GCJobEED0Ev
 // type: void __fastcall(void *)
-#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::~sp_counted_impl_p()")]
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::~sp_counted_impl_p() [0x9828c8]")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX7Network16ClientReplicator5GCJobEED0Ev")]
 pub fn stub_0x9828c8() -> ! {
     todo!("0x9828c8 __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network16ClientReplicator5GCJobEED0Ev")
@@ -635,7 +635,7 @@ pub fn stub_0xb632d0() -> ! {
 
 // 0xb632dc — __ZN3RBX7Network16ClientReplicator5GCJobC2ERNS0_10ReplicatorE
 // type: RBX::Network::ClientReplicator::GCJob *__fastcall(RBX::Network::ClientReplicator::GCJob *this, RBX::Network::Replicator *)
-#[doc(alias = "RBX::Network::ClientReplicator::GCJob::GCJob(RBX::Network::Replicator &)")]
+#[doc(alias = "RBX::Network::ClientReplicator::GCJob::GCJob(RBX::Network::Replicator &) [0xb632dc]")]
 #[doc(alias = "__ZN3RBX7Network16ClientReplicator5GCJobC2ERNS0_10ReplicatorE")]
 pub fn stub_0xb632dc() -> ! {
     todo!("0xb632dc __ZN3RBX7Network16ClientReplicator5GCJobC2ERNS0_10ReplicatorE")
@@ -651,7 +651,7 @@ pub fn stub_0xb63630() -> ! {
 
 // 0xb636d0 — __ZN3RBX7Network16ClientReplicator5GCJobD1Ev
 // type: void __fastcall(RBX::Network::ClientReplicator::GCJob *__hidden this)
-#[doc(alias = "RBX::Network::ClientReplicator::GCJob::~GCJob()")]
+#[doc(alias = "RBX::Network::ClientReplicator::GCJob::~GCJob() [0xb636d0]")]
 #[doc(alias = "__ZN3RBX7Network16ClientReplicator5GCJobD1Ev")]
 pub fn stub_0xb636d0() -> ! {
     todo!("0xb636d0 __ZN3RBX7Network16ClientReplicator5GCJobD1Ev")
@@ -659,7 +659,7 @@ pub fn stub_0xb636d0() -> ! {
 
 // 0xb636dc — __ZN3RBX7Network16ClientReplicator5GCJobD2Ev
 // type: void __fastcall(RBX::Network::ClientReplicator::GCJob *this, int, int)
-#[doc(alias = "RBX::Network::ClientReplicator::GCJob::~GCJob()")]
+#[doc(alias = "RBX::Network::ClientReplicator::GCJob::~GCJob() [0xb636dc]")]
 #[doc(alias = "__ZN3RBX7Network16ClientReplicator5GCJobD2Ev")]
 pub fn stub_0xb636dc() -> ! {
     todo!("0xb636dc __ZN3RBX7Network16ClientReplicator5GCJobD2Ev")
@@ -802,7 +802,7 @@ pub fn stub_0xb6845c() -> ! {
 
 // 0xb68460 — __ZN3RBX7Network16ClientReplicator5GCJob19InstanceRemovalItemD0Ev
 // type: void __fastcall(RBX::Network::ClientReplicator::GCJob::InstanceRemovalItem *__hidden this)
-#[doc(alias = "RBX::Network::ClientReplicator::GCJob::InstanceRemovalItem::~InstanceRemovalItem()")]
+#[doc(alias = "RBX::Network::ClientReplicator::GCJob::InstanceRemovalItem::~InstanceRemovalItem() [0xb68460]")]
 #[doc(alias = "__ZN3RBX7Network16ClientReplicator5GCJob19InstanceRemovalItemD0Ev")]
 pub fn stub_0xb68460() -> ! {
     todo!("0xb68460 __ZN3RBX7Network16ClientReplicator5GCJob19InstanceRemovalItemD0Ev")
@@ -826,7 +826,7 @@ pub fn stub_0xb685a8() -> ! {
 
 // 0xb685cc — __ZN3RBX7Network16ClientReplicator5GCJob17RegionRemovalItemD0Ev
 // type: void __fastcall(RBX::Network::ClientReplicator::GCJob::RegionRemovalItem *__hidden this)
-#[doc(alias = "RBX::Network::ClientReplicator::GCJob::RegionRemovalItem::~RegionRemovalItem()")]
+#[doc(alias = "RBX::Network::ClientReplicator::GCJob::RegionRemovalItem::~RegionRemovalItem() [0xb685cc]")]
 #[doc(alias = "__ZN3RBX7Network16ClientReplicator5GCJob17RegionRemovalItemD0Ev")]
 pub fn stub_0xb685cc() -> ! {
     todo!("0xb685cc __ZN3RBX7Network16ClientReplicator5GCJob17RegionRemovalItemD0Ev")
@@ -856,7 +856,7 @@ pub fn stub_0xf280c4() -> ! {
 
 // 0xf5ecf4 — j___ZN5boost10shared_ptrIN3RBX7Network16ClientReplicator5GCJobEE5resetEv
 // type: int __fastcall(_DWORD)
-#[doc(alias = "rbx_core::SharedPtr<RBX::Network::ClientReplicator::GCJob>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::ClientReplicator::GCJob>::reset(void) [0xf5ecf4]")]
 #[doc(alias = "j___ZN5boost10shared_ptrIN3RBX7Network16ClientReplicator5GCJobEE5resetEv")]
 pub fn stub_0xf5ecf4() -> ! {
     todo!("0xf5ecf4 j___ZN5boost10shared_ptrIN3RBX7Network16ClientReplicator5GCJobEE5resetEv")
@@ -864,7 +864,7 @@ pub fn stub_0xf5ecf4() -> ! {
 
 // 0xf5ed44 — j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network16ClientReplicator5GCJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: int __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
-#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(rbx_core::SharedPtr<RBX::Network::ClientReplicator::GCJob> *,RBX::Network::ClientReplicator::GCJob *,boost::detail::shared_count &)")]
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(rbx_core::SharedPtr<RBX::Network::ClientReplicator::GCJob> *,RBX::Network::ClientReplicator::GCJob *,boost::detail::shared_count &) [0xf5ed44]")]
 #[doc(alias = "j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network16ClientReplicator5GCJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
 pub fn stub_0xf5ed44() -> ! {
     todo!("0xf5ed44 j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network16ClientReplicator5GCJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
@@ -872,7 +872,7 @@ pub fn stub_0xf5ed44() -> ! {
 
 // 0xf5edf4 — j___ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network16ClientReplicator5GCJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(rbx_core::SharedPtr<RBX::Network::ClientReplicator::GCJob> const*,RBX::Network::ClientReplicator::GCJob *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(rbx_core::SharedPtr<RBX::Network::ClientReplicator::GCJob> const*,RBX::Network::ClientReplicator::GCJob *)const [0xf5edf4]")]
 #[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network16ClientReplicator5GCJobES8_EEvPKNS_10shared_ptrIT_EEPT0_")]
 pub fn stub_0xf5edf4() -> ! {
     todo!("0xf5edf4 j___ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network16ClientReplicator5GCJobES8_EEvPKNS_10shared_ptrIT_EEPT0_")
@@ -880,7 +880,7 @@ pub fn stub_0xf5edf4() -> ! {
 
 // 0xf64a04 — j___ZNK3RBX8Instance13visitChildrenIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_7Network16ClientReplicator5GCJobENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPS9_EENS2_3argILi1EEEEEEEEEvRKT_
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int)
-#[doc(alias = "void RBX::Instance::visitChildren<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ClientReplicator::GCJob,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::ClientReplicator::GCJob*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ClientReplicator::GCJob,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::ClientReplicator::GCJob*>,boost::arg<1>>> const&)const")]
+#[doc(alias = "void RBX::Instance::visitChildren<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ClientReplicator::GCJob,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::ClientReplicator::GCJob*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ClientReplicator::GCJob,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::ClientReplicator::GCJob*>,boost::arg<1>>> const&)const [0xf64a04]")]
 #[doc(alias = "j___ZNK3RBX8Instance13visitChildrenIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_7Network16ClientReplicator5GCJobENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPS9_EENS2_3argILi1EEEEEEEEEvRKT_")]
 pub fn stub_0xf64a04() -> ! {
     todo!("0xf64a04 j___ZNK3RBX8Instance13visitChildrenIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_7Network16ClientReplicator5GCJobENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPS9_EENS2_3argILi1EEEEEEEEEvRKT_")
@@ -888,7 +888,7 @@ pub fn stub_0xf64a04() -> ! {
 
 // 0xf64a14 — j___ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_7Network16ClientReplicator5GCJob17RegionRemovalItemENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPSA_EENS2_3argILi1EEEEEEEEEvRKT_
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int)
-#[doc(alias = "void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ClientReplicator::GCJob::RegionRemovalItem,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::ClientReplicator::GCJob::RegionRemovalItem*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ClientReplicator::GCJob::RegionRemovalItem,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::ClientReplicator::GCJob::RegionRemovalItem*>,boost::arg<1>>> const&)const")]
+#[doc(alias = "void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ClientReplicator::GCJob::RegionRemovalItem,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::ClientReplicator::GCJob::RegionRemovalItem*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ClientReplicator::GCJob::RegionRemovalItem,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::ClientReplicator::GCJob::RegionRemovalItem*>,boost::arg<1>>> const&)const [0xf64a14]")]
 #[doc(alias = "j___ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_7Network16ClientReplicator5GCJob17RegionRemovalItemENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPSA_EENS2_3argILi1EEEEEEEEEvRKT_")]
 pub fn stub_0xf64a14() -> ! {
     todo!("0xf64a14 j___ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_7Network16ClientReplicator5GCJob17RegionRemovalItemENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPSA_EENS2_3argILi1EEEEEEEEEvRKT_")
@@ -896,7 +896,7 @@ pub fn stub_0xf64a14() -> ! {
 
 // 0xf64a34 — j___ZNK5boost4_mfi3mf1IvN3RBX7Network16ClientReplicator5GCJob17RegionRemovalItemENS_10shared_ptrINS2_8InstanceEEEEclEPS6_S9_
 // type: void __fastcall(char **, int, int *, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "boost::_mfi::mf1<void,RBX::Network::ClientReplicator::GCJob::RegionRemovalItem,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::Network::ClientReplicator::GCJob::RegionRemovalItem*,rbx_core::SharedPtr<RBX::Instance>)const")]
+#[doc(alias = "boost::_mfi::mf1<void,RBX::Network::ClientReplicator::GCJob::RegionRemovalItem,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::Network::ClientReplicator::GCJob::RegionRemovalItem*,rbx_core::SharedPtr<RBX::Instance>)const [0xf64a34]")]
 #[doc(alias = "j___ZNK5boost4_mfi3mf1IvN3RBX7Network16ClientReplicator5GCJob17RegionRemovalItemENS_10shared_ptrINS2_8InstanceEEEEclEPS6_S9_")]
 pub fn stub_0xf64a34() -> ! {
     todo!("0xf64a34 j___ZNK5boost4_mfi3mf1IvN3RBX7Network16ClientReplicator5GCJob17RegionRemovalItemENS_10shared_ptrINS2_8InstanceEEEEclEPS6_S9_")
@@ -904,7 +904,7 @@ pub fn stub_0xf64a34() -> ! {
 
 // 0xf64a44 — j___ZNK5boost4_mfi3mf1IvN3RBX7Network16ClientReplicator5GCJobENS_10shared_ptrINS2_8InstanceEEEEclEPS5_S8_
 // type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "boost::_mfi::mf1<void,RBX::Network::ClientReplicator::GCJob,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::Network::ClientReplicator::GCJob*,rbx_core::SharedPtr<RBX::Instance>)const")]
+#[doc(alias = "boost::_mfi::mf1<void,RBX::Network::ClientReplicator::GCJob,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::Network::ClientReplicator::GCJob*,rbx_core::SharedPtr<RBX::Instance>)const [0xf64a44]")]
 #[doc(alias = "j___ZNK5boost4_mfi3mf1IvN3RBX7Network16ClientReplicator5GCJobENS_10shared_ptrINS2_8InstanceEEEEclEPS5_S8_")]
 pub fn stub_0xf64a44() -> ! {
     todo!("0xf64a44 j___ZNK5boost4_mfi3mf1IvN3RBX7Network16ClientReplicator5GCJobENS_10shared_ptrINS2_8InstanceEEEEclEPS5_S8_")

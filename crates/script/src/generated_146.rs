@@ -59,7 +59,7 @@ pub fn stub_0x265590() -> ! {
 
 // 0x265598 — __ZThn20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED1Ev
 // type: void __fastcall(int)
-#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl() [0x265598]")]
 pub fn stub_0x265598() -> ! {
     todo!("0x265598 __ZThn20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED1Ev")
 }
@@ -115,7 +115,7 @@ pub fn stub_0x265778() -> ! {
 
 // 0x265788 — __ZN5boost16exception_detail10bad_alloc_D0Ev
 // type: void __fastcall(boost::exception_detail::bad_alloc_ *__hidden this)
-#[doc(alias = "boost::exception_detail::bad_alloc_::~bad_alloc_()")]
+#[doc(alias = "boost::exception_detail::bad_alloc_::~bad_alloc_() [0x265788]")]
 pub fn stub_0x265788() -> ! {
     todo!("0x265788 boost::exception_detail::bad_alloc_::~bad_alloc_()")
 }
@@ -184,14 +184,14 @@ pub fn stub_0x265cd4() -> ! {
 
 // 0x265d74 — __ZN3RBX10Reflection14EnumDescriptorD1Ev
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *__hidden this)
-#[doc(alias = "RBX::Reflection::EnumDescriptor::~EnumDescriptor()")]
+#[doc(alias = "RBX::Reflection::EnumDescriptor::~EnumDescriptor() [0x265d74]")]
 pub fn stub_0x265d74() -> ! {
     todo!("0x265d74 RBX::Reflection::EnumDescriptor::~EnumDescriptor()")
 }
 
 // 0x265d78 — __ZN3RBX10Reflection14EnumDescriptorD2Ev
 // type: void __fastcall(RBX::Reflection::EnumDescriptor *__hidden this)
-#[doc(alias = "RBX::Reflection::EnumDescriptor::~EnumDescriptor()")]
+#[doc(alias = "RBX::Reflection::EnumDescriptor::~EnumDescriptor() [0x265d78]")]
 pub fn stub_0x265d78() -> ! {
     todo!("0x265d78 RBX::Reflection::EnumDescriptor::~EnumDescriptor()")
 }
@@ -296,7 +296,7 @@ pub fn stub_0x266500() -> ! {
 
 // 0x266504 — __ZN3RBX10Reflection18PropertyDescriptorD0Ev
 // type: void __fastcall(RBX::Reflection::PropertyDescriptor *__hidden this)
-#[doc(alias = "RBX::Reflection::PropertyDescriptor::~PropertyDescriptor()")]
+#[doc(alias = "RBX::Reflection::PropertyDescriptor::~PropertyDescriptor() [0x266504]")]
 pub fn stub_0x266504() -> ! {
     todo!("0x266504 RBX::Reflection::PropertyDescriptor::~PropertyDescriptor()")
 }
@@ -526,7 +526,7 @@ pub fn stub_0x267290() -> ! {
 
 // 0x26733c — __ZN3RBX10Reflection5TTypeIPKNS0_18PropertyDescriptorEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::TType<RBX::Reflection::PropertyDescriptor const*>::~TType()")]
+#[doc(alias = "RBX::Reflection::TType<RBX::Reflection::PropertyDescriptor const*>::~TType() [0x26733c]")]
 pub fn stub_0x26733c() -> ! {
     todo!("0x26733c RBX::Reflection::TType<RBX::Reflection::PropertyDescriptor const*>::~TType()")
 }
@@ -540,7 +540,7 @@ pub fn stub_0x267340() -> ! {
 
 // 0x267348 — __ZN3RBX10Reflection10DescriptorD0Ev
 // type: void __fastcall(RBX::Reflection::Descriptor *__hidden this)
-#[doc(alias = "RBX::Reflection::Descriptor::~Descriptor()")]
+#[doc(alias = "RBX::Reflection::Descriptor::~Descriptor() [0x267348]")]
 pub fn stub_0x267348() -> ! {
     todo!("0x267348 RBX::Reflection::Descriptor::~Descriptor()")
 }
@@ -672,7 +672,7 @@ pub fn stub_0x26813c() -> ! {
 
 // 0x268140 — __ZN3RBX10Reflection19SignatureDescriptor4ItemC2EPKNS_4NameEPKNS0_4TypeE
 // type: RBX::Reflection::SignatureDescriptor::Item *__fastcall(RBX::Reflection::SignatureDescriptor::Item *this, const RBX::Name *, const RBX::Reflection::Type *)
-#[doc(alias = "RBX::Reflection::SignatureDescriptor::Item::Item(RBX::Name const*,RBX::Reflection::Type const*)")]
+#[doc(alias = "RBX::Reflection::SignatureDescriptor::Item::Item(RBX::Name const*,RBX::Reflection::Type const*) [0x268140]")]
 pub fn stub_0x268140() -> ! {
     todo!("0x268140 RBX::Reflection::SignatureDescriptor::Item::Item(RBX::Name const*,RBX::Reflection::Type const*)")
 }

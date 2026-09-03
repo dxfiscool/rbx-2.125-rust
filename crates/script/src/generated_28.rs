@@ -389,7 +389,7 @@ pub fn stub_0x233664() -> ! {
 
 // 0x233688 — __ZN3OIS15MultiTouchEventD1Ev
 // type: void __fastcall(OIS::MultiTouchEvent *__hidden this)
-#[doc(alias = "OIS::MultiTouchEvent::~MultiTouchEvent()")]
+#[doc(alias = "OIS::MultiTouchEvent::~MultiTouchEvent() [0x233688]")]
 pub fn stub_0x233688() -> ! {
     todo!("0x233688 OIS::MultiTouchEvent::~MultiTouchEvent()")
 }
@@ -661,14 +661,14 @@ pub fn stub_0x2358fc() -> ! {
 
 // 0x235910 — __ZN5boost6detail16thread_data_baseD1Ev
 // type: void __fastcall(boost::detail::thread_data_base *__hidden this)
-#[doc(alias = "boost::detail::thread_data_base::~thread_data_base()")]
+#[doc(alias = "boost::detail::thread_data_base::~thread_data_base() [0x235910]")]
 pub fn stub_0x235910() -> ! {
     todo!("0x235910 boost::detail::thread_data_base::~thread_data_base()")
 }
 
 // 0x23591c — __ZN5boost6detail16thread_data_baseD2Ev
 // type: void __fastcall(boost::detail::thread_data_base *__hidden this)
-#[doc(alias = "boost::detail::thread_data_base::~thread_data_base()")]
+#[doc(alias = "boost::detail::thread_data_base::~thread_data_base() [0x23591c]")]
 pub fn stub_0x23591c() -> ! {
     todo!("0x23591c boost::detail::thread_data_base::~thread_data_base()")
 }
