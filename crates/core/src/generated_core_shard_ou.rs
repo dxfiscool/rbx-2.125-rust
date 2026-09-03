@@ -231,14 +231,14 @@ pub fn stub_0x984350() -> ! {
     todo!("0x984350 __ZN3RBX5Stats14TypedStatsItemIjE6updateEv")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned int>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned int>::~TypedStatsItem()")]
 // 0x9844d0 — __ZThn32_N3RBX5Stats14TypedStatsItemIjED0Ev
 // type: void __fastcall(int)
 pub fn stub_0x9844d0() -> ! {
     todo!("0x9844d0 __ZThn32_N3RBX5Stats14TypedStatsItemIjED0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned int>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned int>::~TypedStatsItem()")]
 // 0x984578 — __ZThn36_N3RBX5Stats14TypedStatsItemIjED0Ev
 // type: void __fastcall(int)
 pub fn stub_0x984578() -> ! {
@@ -259,7 +259,7 @@ pub fn stub_0x9851e0() -> ! {
     todo!("0x9851e0 __ZN3RBX5Stats4Item20createBoundChildItemIfEEPS1_PKcRKT_")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
 // 0x985ad8 — __ZThn36_N3RBX5Stats14TypedStatsItemIfED1Ev
 // type: int __fastcall(int)
 pub fn stub_0x985ad8() -> ! {
@@ -287,7 +287,7 @@ pub fn stub_0x986008() -> ! {
     todo!("0x986008 __ZN3RBX5Stats14TypedStatsItemIdE6updateEv")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
 // 0x986188 — __ZThn36_N3RBX5Stats14TypedStatsItemIdED0Ev
 // type: void __fastcall(int)
 pub fn stub_0x986188() -> ! {
@@ -308,7 +308,7 @@ pub fn stub_0x986260() -> ! {
     todo!("0x986260 __ZN3RBX5Stats14TypedStatsItemIbE6updateEv")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
 // 0x9863e0 — __ZThn32_N3RBX5Stats14TypedStatsItemIbED0Ev
 // type: void __fastcall(int)
 pub fn stub_0x9863e0() -> ! {
@@ -336,14 +336,14 @@ pub fn stub_0x986558() -> ! {
     todo!("0x986558 __ZN3RBX5Stats14TypedStatsItemIyE6updateEv")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long long>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long long>::~TypedStatsItem()")]
 // 0x9866d8 — __ZThn32_N3RBX5Stats14TypedStatsItemIyED0Ev
 // type: void __fastcall(int)
 pub fn stub_0x9866d8() -> ! {
     todo!("0x9866d8 __ZThn32_N3RBX5Stats14TypedStatsItemIyED0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long long>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long long>::~TypedStatsItem()")]
 // 0x986780 — __ZThn36_N3RBX5Stats14TypedStatsItemIyED0Ev
 // type: void __fastcall(int)
 pub fn stub_0x986780() -> ! {
@@ -539,14 +539,14 @@ pub fn stub_0x9ea4d0() -> ! {
     todo!("0x9ea4d0 __ZN3RBX5Stats14TypedStatsItemIjED1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned int>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned int>::~TypedStatsItem()")]
 // 0x9ea4e0 — __ZThn32_N3RBX5Stats14TypedStatsItemIjED1Ev
 // type: int __fastcall(int)
 pub fn stub_0x9ea4e0() -> ! {
     todo!("0x9ea4e0 __ZThn32_N3RBX5Stats14TypedStatsItemIjED1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned int>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned int>::~TypedStatsItem()")]
 // 0x9ea4f0 — __ZThn36_N3RBX5Stats14TypedStatsItemIjED1Ev
 // type: int __fastcall(int)
 pub fn stub_0x9ea4f0() -> ! {
@@ -574,7 +574,7 @@ pub fn stub_0x9eace0() -> ! {
     todo!("0x9eace0 __ZN3RBX5Stats4Item20createBoundChildItemIdEEPS1_PKcRKT_")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
 // 0x9eb338 — __ZThn36_N3RBX5Stats14TypedStatsItemIdED1Ev
 // type: int __fastcall(int)
 pub fn stub_0x9eb338() -> ! {
@@ -588,7 +588,7 @@ pub fn stub_0x9eb348() -> ! {
     todo!("0x9eb348 __ZN3RBX5Stats14TypedStatsItemIdED2Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
 // 0x9eb5b8 — __ZThn32_N3RBX5Stats14TypedStatsItemIbED1Ev
 // type: int __fastcall(int)
 pub fn stub_0x9eb5b8() -> ! {
@@ -609,14 +609,14 @@ pub fn stub_0x9ebaf0() -> ! {
     todo!("0x9ebaf0 __ZN3RBX5Stats14TypedStatsItemIyED1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long long>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long long>::~TypedStatsItem()")]
 // 0x9ebb00 — __ZThn32_N3RBX5Stats14TypedStatsItemIyED1Ev
 // type: int __fastcall(int)
 pub fn stub_0x9ebb00() -> ! {
     todo!("0x9ebb00 __ZThn32_N3RBX5Stats14TypedStatsItemIyED1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long long>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long long>::~TypedStatsItem()")]
 // 0x9ebb10 — __ZThn36_N3RBX5Stats14TypedStatsItemIyED1Ev
 // type: int __fastcall(int)
 pub fn stub_0x9ebb10() -> ! {
@@ -630,7 +630,7 @@ pub fn stub_0x9ebb20() -> ! {
     todo!("0x9ebb20 __ZN3RBX5Stats14TypedStatsItemIyED2Ev")
 }
 
-#[doc(alias = "`anonymous namespace::onCrispEventLogged(rbx_core::SharedPtr<RBX::CrispResponse> const&)")]
+#[doc(alias = "anonymous namespace::onCrispEventLogged(rbx_core::SharedPtr<RBX::CrispResponse> const&)")]
 // 0xa18b90 — __ZN12_GLOBAL__N_118onCrispEventLoggedERKN5boost10shared_ptrIN3RBX13CrispResponseEEE
 // type: int __fastcall(int *, int, int, const std::string *)
 pub fn stub_0xa18b90() -> ! {
@@ -665,14 +665,14 @@ pub fn stub_0xa239f0() -> ! {
     todo!("0xa239f0 __ZNSt3mapIPKN3RBX4NameEPKNS0_8ICreatorESt4lessIS3_ESaISt4pairIKS3_S6_EEE5eraseERSA_")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::CylinderMesh::~CylinderMesh()")]
+#[doc(alias = "non-virtual thunk toRBX::CylinderMesh::~CylinderMesh()")]
 // 0xa24538 — __ZThn32_N3RBX12CylinderMeshD1Ev
 // type: void __fastcall(RBX::CylinderMesh *__hidden this)
 pub fn stub_0xa24538() -> ! {
     todo!("0xa24538 __ZThn32_N3RBX12CylinderMeshD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::CylinderMesh::~CylinderMesh()")]
+#[doc(alias = "non-virtual thunk toRBX::CylinderMesh::~CylinderMesh()")]
 // 0xa24548 — __ZThn36_N3RBX12CylinderMeshD0Ev
 // type: void __fastcall(RBX::CylinderMesh *__hidden this)
 pub fn stub_0xa24548() -> ! {
@@ -686,7 +686,7 @@ pub fn stub_0xa24bc8() -> ! {
     todo!("0xa24bc8 __ZN3RBX9BlockMeshD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::BlockMesh::~BlockMesh()")]
+#[doc(alias = "non-virtual thunk toRBX::BlockMesh::~BlockMesh()")]
 // 0xa24cd8 — __ZThn32_N3RBX9BlockMeshD0Ev
 // type: void __fastcall(RBX::BlockMesh *__hidden this)
 pub fn stub_0xa24cd8() -> ! {

@@ -293,7 +293,7 @@ pub fn stub_bc5864() -> ! {
 }
 
 // 0xbc5868 — __ZThn17800_N4Ogre15RbxSceneManagerD0Ev — `non-virtual thunk to'Ogre::RbxSceneManager::~RbxSceneManager() — void __fastcall(Ogre::RbxSceneManager *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")]
+#[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")]
 #[doc(alias = "__ZThn17800_N4Ogre15RbxSceneManagerD0Ev")]
 pub fn stub_bc5868() -> ! {
     todo!("0xbc5868 __ZThn17800_N4Ogre15RbxSceneManagerD0Ev")
@@ -307,7 +307,7 @@ pub fn stub_bc5924() -> ! {
 }
 
 // 0xbc5fbc — __ZThn17800_N4Ogre15RbxSceneManagerD1Ev — `non-virtual thunk to'Ogre::RbxSceneManager::~RbxSceneManager() — void __fastcall(Ogre::RbxSceneManager *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")]
+#[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")]
 #[doc(alias = "__ZThn17800_N4Ogre15RbxSceneManagerD1Ev")]
 pub fn stub_bc5fbc() -> ! {
     todo!("0xbc5fbc __ZThn17800_N4Ogre15RbxSceneManagerD1Ev")
@@ -468,7 +468,7 @@ pub fn stub_bca050() -> ! {
 }
 
 // 0xbca17c — __ZThn17800_N4Ogre15RbxSceneManager21preRenderTargetUpdateERKNS_17RenderTargetEventE — `non-virtual thunk to'Ogre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&) — 
-#[doc(alias = "`non-virtual thunk toOgre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&)")]
+#[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&)")]
 #[doc(alias = "__ZThn17800_N4Ogre15RbxSceneManager21preRenderTargetUpdateERKNS_17RenderTargetEventE")]
 pub fn stub_bca17c() -> ! {
     todo!("0xbca17c __ZThn17800_N4Ogre15RbxSceneManager21preRenderTargetUpdateERKNS_17RenderTargetEventE")
@@ -482,7 +482,7 @@ pub fn stub_bca188() -> ! {
 }
 
 // 0xbca240 — __ZThn17800_N4Ogre15RbxSceneManager22postRenderTargetUpdateERKNS_17RenderTargetEventE — `non-virtual thunk to'Ogre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&) — 
-#[doc(alias = "`non-virtual thunk toOgre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&)")]
+#[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&)")]
 #[doc(alias = "__ZThn17800_N4Ogre15RbxSceneManager22postRenderTargetUpdateERKNS_17RenderTargetEventE")]
 pub fn stub_bca240() -> ! {
     todo!("0xbca240 __ZThn17800_N4Ogre15RbxSceneManager22postRenderTargetUpdateERKNS_17RenderTargetEventE")
@@ -566,7 +566,7 @@ pub fn stub_bd7264() -> ! {
 }
 
 // 0xbde2d4 — __ZN12_GLOBAL__N_123replaceMaterialTexturesERKyN4Ogre10TexturePtrE — `anonymous namespace'::replaceMaterialTextures(unsigned long long const&,Ogre::TexturePtr) — 
-#[doc(alias = "`anonymous namespace::replaceMaterialTextures(unsigned long long const&,Ogre::TexturePtr)")]
+#[doc(alias = "anonymous namespace::replaceMaterialTextures(unsigned long long const&,Ogre::TexturePtr)")]
 #[doc(alias = "__ZN12_GLOBAL__N_123replaceMaterialTexturesERKyN4Ogre10TexturePtrE")]
 pub fn stub_bde2d4() -> ! {
     todo!("0xbde2d4 __ZN12_GLOBAL__N_123replaceMaterialTexturesERKyN4Ogre10TexturePtrE")

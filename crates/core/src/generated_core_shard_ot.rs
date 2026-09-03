@@ -49,14 +49,14 @@ pub fn stub_0x8a7418() -> ! {
     todo!("0x8a7418 __ZNK3RBX5HUMAN8Swimming12getStateTypeEv")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HUMAN::Swimming::~Swimming()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::Swimming::~Swimming()")]
 // 0x8a741c — __ZThn4_N3RBX5HUMAN8SwimmingD1Ev
 // type: void __fastcall(RBX::HUMAN::Swimming *__hidden this)
 pub fn stub_0x8a741c() -> ! {
     todo!("0x8a741c __ZThn4_N3RBX5HUMAN8SwimmingD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HUMAN::Swimming::~Swimming()")]
+#[doc(alias = "non-virtual thunk toRBX::HUMAN::Swimming::~Swimming()")]
 // 0x8a7424 — __ZThn4_N3RBX5HUMAN8SwimmingD0Ev
 // type: void __fastcall(RBX::HUMAN::Swimming *__hidden this)
 pub fn stub_0x8a7424() -> ! {
@@ -504,35 +504,35 @@ pub fn stub_0x8e19bc() -> ! {
     todo!("0x8e19bc __ZNK3RBX9GuiBase2d26canProcessMeAndDescendantsEv")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::GuiBase2d::~GuiBase2d()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiBase2d::~GuiBase2d()")]
 // 0x8e19c0 — __ZThn32_N3RBX9GuiBase2dD1Ev
 // type: void __fastcall(RBX::GuiBase2d *__hidden this)
 pub fn stub_0x8e19c0() -> ! {
     todo!("0x8e19c0 __ZThn32_N3RBX9GuiBase2dD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::GuiBase2d::~GuiBase2d()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiBase2d::~GuiBase2d()")]
 // 0x8e1a78 — __ZThn32_N3RBX9GuiBase2dD0Ev
 // type: void __fastcall(RBX::GuiBase2d *__hidden this)
 pub fn stub_0x8e1a78() -> ! {
     todo!("0x8e1a78 __ZThn32_N3RBX9GuiBase2dD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::GuiBase2d::~GuiBase2d()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiBase2d::~GuiBase2d()")]
 // 0x8e1b70 — __ZThn36_N3RBX9GuiBase2dD1Ev
 // type: void __fastcall(RBX::GuiBase2d *__hidden this)
 pub fn stub_0x8e1b70() -> ! {
     todo!("0x8e1b70 __ZThn36_N3RBX9GuiBase2dD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::GuiBase2d::~GuiBase2d()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiBase2d::~GuiBase2d()")]
 // 0x8e1c28 — __ZThn36_N3RBX9GuiBase2dD0Ev
 // type: void __fastcall(RBX::GuiBase2d *__hidden this)
 pub fn stub_0x8e1c28() -> ! {
     todo!("0x8e1c28 __ZThn36_N3RBX9GuiBase2dD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::GuiBase::process(RBX::GuiEvent const&)")]
+#[doc(alias = "non-virtual thunk toRBX::GuiBase::process(RBX::GuiEvent const&)")]
 // 0x8e1cf8 — __ZThn92_N3RBX7GuiBase7processERKNS_8GuiEventE
 // type: _QWORD *__fastcall(_QWORD *result)
 pub fn stub_0x8e1cf8() -> ! {
@@ -560,14 +560,14 @@ pub fn stub_0x8e2c3c() -> ! {
     todo!("0x8e2c3c __ZN3RBX17GuiLayerCollectorD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::GuiLayerCollector::~GuiLayerCollector()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiLayerCollector::~GuiLayerCollector()")]
 // 0x8e2c40 — __ZThn32_N3RBX17GuiLayerCollectorD0Ev
 // type: void __fastcall(RBX::GuiLayerCollector *__hidden this)
 pub fn stub_0x8e2c40() -> ! {
     todo!("0x8e2c40 __ZThn32_N3RBX17GuiLayerCollectorD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::GuiLayerCollector::~GuiLayerCollector()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiLayerCollector::~GuiLayerCollector()")]
 // 0x8e2c48 — __ZThn36_N3RBX17GuiLayerCollectorD0Ev
 // type: void __fastcall(RBX::GuiLayerCollector *__hidden this)
 pub fn stub_0x8e2c48() -> ! {
@@ -581,14 +581,14 @@ pub fn stub_0x8e2c50() -> ! {
     todo!("0x8e2c50 __ZN3RBX17GuiLayerCollectorD2Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::GuiLayerCollector::~GuiLayerCollector()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiLayerCollector::~GuiLayerCollector()")]
 // 0x8e2e20 — __ZThn32_N3RBX17GuiLayerCollectorD1Ev
 // type: void __fastcall(RBX::GuiLayerCollector *__hidden this)
 pub fn stub_0x8e2e20() -> ! {
     todo!("0x8e2e20 __ZThn32_N3RBX17GuiLayerCollectorD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::GuiLayerCollector::~GuiLayerCollector()")]
+#[doc(alias = "non-virtual thunk toRBX::GuiLayerCollector::~GuiLayerCollector()")]
 // 0x8e2e28 — __ZThn36_N3RBX17GuiLayerCollectorD1Ev
 // type: void __fastcall(RBX::GuiLayerCollector *__hidden this)
 pub fn stub_0x8e2e28() -> ! {
@@ -609,7 +609,7 @@ pub fn stub_0x8e32c8() -> ! {
     todo!("0x8e32c8 __ZN3RBX17GuiLayerCollector8render2dEPNS_5AdornE")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::GuiLayerCollector::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::GuiLayerCollector::render2d(RBX::Adorn *)")]
 // 0x8e32d4 — __ZThn96_N3RBX17GuiLayerCollector8render2dEPNS_5AdornE
 // type: int __fastcall(RBX::GuiLayerCollector *this, RBX::Adorn *)
 pub fn stub_0x8e32d4() -> ! {
@@ -630,7 +630,7 @@ pub fn stub_0x8e3534() -> ! {
     todo!("0x8e3534 __ZN3RBX17GuiLayerCollector18processDescendantsERKNS_8GuiEventE")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::GuiLayerCollector::process(RBX::GuiEvent const&)")]
+#[doc(alias = "non-virtual thunk toRBX::GuiLayerCollector::process(RBX::GuiEvent const&)")]
 // 0x8e365c — __ZThn92_N3RBX17GuiLayerCollector7processERKNS_8GuiEventE
 // type: unsigned int __fastcall(_DWORD *, int, unsigned int *)
 pub fn stub_0x8e365c() -> ! {

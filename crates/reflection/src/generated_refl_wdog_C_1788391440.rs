@@ -141,14 +141,14 @@ pub fn stub_7bf654() -> ! {
 }
 
 // 0x7bf694 — __ZThn92_NK3RBX8Humanoid22getConnectorKernelTypeEv
-#[doc(alias = "`non-virtual thunk toRBX::Humanoid::getConnectorKernelType(void)const")]
+#[doc(alias = "non-virtual thunk toRBX::Humanoid::getConnectorKernelType(void)const")]
 #[doc(alias = "__ZThn92_NK3RBX8Humanoid22getConnectorKernelTypeEv")]
 pub fn stub_7bf694() -> ! {
     todo!("0x7bf694")
 }
 
 // 0x7bf698 — __ZThn244_NK3RBX8Humanoid22getConnectorKernelTypeEv
-#[doc(alias = "`non-virtual thunk toRBX::Humanoid::getConnectorKernelType(void)const")]
+#[doc(alias = "non-virtual thunk toRBX::Humanoid::getConnectorKernelType(void)const")]
 #[doc(alias = "__ZThn244_NK3RBX8Humanoid22getConnectorKernelTypeEv")]
 pub fn stub_7bf698() -> ! {
     todo!("0x7bf698")
@@ -596,7 +596,7 @@ pub fn stub_842c38() -> ! {
 }
 
 // 0x842c64 — __ZThn4_N3rbx8callableINS_7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf3IvS4_iiS5_EENSA_5list4INSA_5valueIPS4_EENS9_3argILi1EEENSJ_ILi2EEENSJ_ILi3EEEEEEELi3ES6_E4callEiiS5_
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,int,RBX::FriendService::FriendEventType)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::FriendService,int,int,RBX::FriendService::FriendEventType>,boost::_bi::list4<boost::_bi::value<RBX::FriendService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(int,int,RBX::FriendService::FriendEventType)>::call(int,int,RBX::FriendService::FriendEventType)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,int,RBX::FriendService::FriendEventType)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::FriendService,int,int,RBX::FriendService::FriendEventType>,boost::_bi::list4<boost::_bi::value<RBX::FriendService*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(int,int,RBX::FriendService::FriendEventType)>::call(int,int,RBX::FriendService::FriendEventType)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf3IvS4_iiS5_EENSA_5list4INSA_5valueIPS4_EENS9_3argILi1EEENSJ_ILi2EEENSJ_ILi3EEEEEEELi3ES6_E4callEiiS5_")]
 pub fn stub_842c64() -> ! {
     todo!("0x842c64")
@@ -715,7 +715,7 @@ pub fn stub_847924() -> ! {
 }
 
 // 0x84792c — __ZThn4_N3rbx8callableINS_7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEiiS5_
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,int,RBX::FriendService::FriendEventType)>::slot,boost::function<void ()(int,int,RBX::FriendService::FriendEventType)>,3,void ()(int,int,RBX::FriendService::FriendEventType)>::call(int,int,RBX::FriendService::FriendEventType)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,int,RBX::FriendService::FriendEventType)>::slot,boost::function<void ()(int,int,RBX::FriendService::FriendEventType)>,3,void ()(int,int,RBX::FriendService::FriendEventType)>::call(int,int,RBX::FriendService::FriendEventType)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFviiN3RBX13FriendService15FriendEventTypeEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEiiS5_")]
 pub fn stub_84792c() -> ! {
     todo!("0x84792c")

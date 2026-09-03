@@ -99,7 +99,7 @@ pub fn stub_0x996d14() -> ! {
 
 // 0x996ee0 — __ZThn32_N5boost9iostreams19filtering_streambufINS0_5inputEcSt11char_traitsIcESaIcENS0_7public_EED1Ev
 // type: int __fastcall(int)
-#[doc(alias = "`non-virtual thunk toboost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_streambuf()")]
+#[doc(alias = "non-virtual thunk toboost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_streambuf()")]
 #[doc(alias = "__ZThn32_N5boost9iostreams19filtering_streambufINS0_5inputEcSt11char_traitsIcESaIcENS0_7public_EED1Ev")]
 pub fn stub_0x996ee0() -> ! {
     todo!("0x996ee0 `non-virtual thunk to'boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_streambuf()")
@@ -179,7 +179,7 @@ pub fn stub_0x997978() -> ! {
 
 // 0x997ad4 — __ZThn32_N5boost9iostreams19filtering_streambufINS0_5inputEcSt11char_traitsIcESaIcENS0_7public_EED0Ev
 // type: void __fastcall(int)
-#[doc(alias = "`non-virtual thunk toboost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_streambuf()")]
+#[doc(alias = "non-virtual thunk toboost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_streambuf()")]
 #[doc(alias = "__ZThn32_N5boost9iostreams19filtering_streambufINS0_5inputEcSt11char_traitsIcESaIcENS0_7public_EED0Ev")]
 pub fn stub_0x997ad4() -> ! {
     todo!("0x997ad4 `non-virtual thunk to'boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_streambuf()")
@@ -227,7 +227,7 @@ pub fn stub_0x997cd0() -> ! {
 
 // 0x997dc0 — __ZThn32_N5boost9iostreams6detail8chainbufINS0_5chainINS0_5inputEcSt11char_traitsIcESaIcEEES4_NS0_7public_EED1Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "`non-virtual thunk toboost::iostreams::detail::chainbuf<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::input,boost::iostreams::public_>::~chainbuf()")]
+#[doc(alias = "non-virtual thunk toboost::iostreams::detail::chainbuf<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::input,boost::iostreams::public_>::~chainbuf()")]
 #[doc(alias = "__ZThn32_N5boost9iostreams6detail8chainbufINS0_5chainINS0_5inputEcSt11char_traitsIcESaIcEEES4_NS0_7public_EED1Ev")]
 pub fn stub_0x997dc0() -> ! {
     todo!("0x997dc0 `non-virtual thunk to'boost::iostreams::detail::chainbuf<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::input,boost::iostreams::public_>::~chainbuf()")
@@ -235,7 +235,7 @@ pub fn stub_0x997dc0() -> ! {
 
 // 0x997ea8 — __ZThn32_N5boost9iostreams6detail8chainbufINS0_5chainINS0_5inputEcSt11char_traitsIcESaIcEEES4_NS0_7public_EED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "`non-virtual thunk toboost::iostreams::detail::chainbuf<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::input,boost::iostreams::public_>::~chainbuf()")]
+#[doc(alias = "non-virtual thunk toboost::iostreams::detail::chainbuf<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::input,boost::iostreams::public_>::~chainbuf()")]
 #[doc(alias = "__ZThn32_N5boost9iostreams6detail8chainbufINS0_5chainINS0_5inputEcSt11char_traitsIcESaIcEEES4_NS0_7public_EED0Ev")]
 pub fn stub_0x997ea8() -> ! {
     todo!("0x997ea8 `non-virtual thunk to'boost::iostreams::detail::chainbuf<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::input,boost::iostreams::public_>::~chainbuf()")
@@ -339,7 +339,7 @@ pub fn stub_0x9a9348() -> ! {
 
 // 0x9aa0d8 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEED1Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
-#[doc(alias = "`non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEED1Ev")]
 pub fn stub_0x9aa0d8() -> ! {
     todo!("0x9aa0d8 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")
@@ -363,7 +363,7 @@ pub fn stub_0x9aa250() -> ! {
 
 // 0x9aa378 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
-#[doc(alias = "`non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEED0Ev")]
 pub fn stub_0x9aa378() -> ! {
     todo!("0x9aa378 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")
@@ -371,7 +371,7 @@ pub fn stub_0x9aa378() -> ! {
 
 // 0x9aa438 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEE7rethrowEv
 // type: void __fastcall __noreturn(_DWORD *)
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::rethrow(void)const")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::rethrow(void)const")]
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEE7rethrowEv")]
 pub fn stub_0x9aa438() -> ! {
     todo!("0x9aa438 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::rethrow(void)const")
@@ -379,7 +379,7 @@ pub fn stub_0x9aa438() -> ! {
 
 // 0x9aa448 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEED0Ev")]
 pub fn stub_0x9aa448() -> ! {
     todo!("0x9aa448 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")
@@ -387,7 +387,7 @@ pub fn stub_0x9aa448() -> ! {
 
 // 0x9aa520 — __ZThn4_N5boost16exception_detail19error_info_injectorISt9bad_allocED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
-#[doc(alias = "`non-virtual thunk toboost::exception_detail::error_info_injector<std::bad_alloc>::~error_info_injector()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<std::bad_alloc>::~error_info_injector()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail19error_info_injectorISt9bad_allocED0Ev")]
 pub fn stub_0x9aa520() -> ! {
     todo!("0x9aa520 `non-virtual thunk to'boost::exception_detail::error_info_injector<std::bad_alloc>::~error_info_injector()")
@@ -555,7 +555,7 @@ pub fn stub_0x9eeff4() -> ! {
 
 // 0x9ef0cc — __ZThn4_N3rbx8callableINS_7signals6signalIFvibiEE4slotEN5boost8functionIS3_EELi3ES3_E4callEibi
 // type: void __fastcall(int, int, int, int)
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,bool,int)>::slot,boost::function<void ()(int,bool,int)>,3,void ()(int,bool,int)>::call(int,bool,int)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,bool,int)>::slot,boost::function<void ()(int,bool,int)>,3,void ()(int,bool,int)>::call(int,bool,int)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvibiEE4slotEN5boost8functionIS3_EELi3ES3_E4callEibi")]
 pub fn stub_0x9ef0cc() -> ! {
     todo!("0x9ef0cc `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(int,bool,int)>::slot,boost::function<void ()(int,bool,int)>,3,void ()(int,bool,int)>::call(int,bool,int)")

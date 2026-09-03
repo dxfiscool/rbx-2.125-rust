@@ -109,7 +109,7 @@ pub fn stub_0xb13848() -> ! {
 
 // 0xb13858 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io17bad_format_stringEEEE7rethrowEv
 // type: void __fastcall __noreturn(_DWORD *)
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::bad_format_string>>::rethrow(void)const")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::bad_format_string>>::rethrow(void)const")]
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io17bad_format_stringEEEE7rethrowEv")]
 pub fn stub_0xb13858() -> ! {
     todo!("0xb13858 `virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::bad_format_string>>::rethrow(void)const")
@@ -117,7 +117,7 @@ pub fn stub_0xb13858() -> ! {
 
 // 0xb13868 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io17bad_format_stringEEEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::bad_format_string>>::~clone_impl()")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::bad_format_string>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_2io17bad_format_stringEEEED0Ev")]
 pub fn stub_0xb13868() -> ! {
     todo!("0xb13868 `virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::io::bad_format_string>>::~clone_impl()")
@@ -125,7 +125,7 @@ pub fn stub_0xb13868() -> ! {
 
 // 0xb13940 — __ZThn12_N5boost16exception_detail19error_info_injectorINS_2io17bad_format_stringEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
-#[doc(alias = "`non-virtual thunk toboost::exception_detail::error_info_injector<boost::io::bad_format_string>::~error_info_injector()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::io::bad_format_string>::~error_info_injector()")]
 #[doc(alias = "__ZThn12_N5boost16exception_detail19error_info_injectorINS_2io17bad_format_stringEED0Ev")]
 pub fn stub_0xb13940() -> ! {
     todo!("0xb13940 `non-virtual thunk toboost::exception_detail::error_info_injector<boost::io::bad_format_string>::~error_info_injector()")
@@ -173,7 +173,7 @@ pub fn stub_0xb1a548() -> ! {
 
 // 0xb1a600 — __ZThn4_N5boost16exception_detail19error_info_injectorISt9bad_allocED1Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
-#[doc(alias = "`non-virtual thunk toboost::exception_detail::error_info_injector<std::bad_alloc>::~error_info_injector()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<std::bad_alloc>::~error_info_injector()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail19error_info_injectorISt9bad_allocED1Ev")]
 pub fn stub_0xb1a600() -> ! {
     todo!("0xb1a600 `non-virtual thunk toboost::exception_detail::error_info_injector<std::bad_alloc>::~error_info_injector()")
@@ -181,7 +181,7 @@ pub fn stub_0xb1a600() -> ! {
 
 // 0xb1a6b8 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEED1Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEED1Ev")]
 pub fn stub_0xb1a6b8() -> ! {
     todo!("0xb1a6b8 `virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")
@@ -197,7 +197,7 @@ pub fn stub_0xb1a788() -> ! {
 
 // 0xb1a848 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEE5cloneEv
 // type: char *__fastcall(_DWORD *)
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::clone(void)const")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::clone(void)const")]
 #[doc(alias = "__ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEE5cloneEv")]
 pub fn stub_0xb1a848() -> ! {
     todo!("0xb1a848 `virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::clone(void)const")
@@ -341,7 +341,7 @@ pub fn stub_0xb31a84() -> ! {
 
 // 0xb31ba4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsbEE4slotEN5boost8functionIS3_EELi2ES3_E4callESsb
 // type: void __fastcall(int, const std::string *, int)
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,bool)>::slot,boost::function<void ()(std::string,bool)>,2,void ()(std::string,bool)>::call(std::string,bool)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,bool)>::slot,boost::function<void ()(std::string,bool)>,2,void ()(std::string,bool)>::call(std::string,bool)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvSsbEE4slotEN5boost8functionIS3_EELi2ES3_E4callESsb")]
 pub fn stub_0xb31ba4() -> ! {
     todo!("0xb31ba4 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,bool)>::slot,boost::function<void ()(std::string,bool)>,2,void ()(std::string,bool)>::call(std::string,bool)")

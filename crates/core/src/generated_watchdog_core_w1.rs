@@ -184,7 +184,7 @@ pub fn stub_0xc0def0() -> ! {
     todo!("0xc0def0 __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX11MegaClusterEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")
 }
 
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::MegaCluster>,boost::_bi::list1<boost::_bi::value<RBX::MegaCluster*>>>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::MegaCluster>,boost::_bi::list1<boost::_bi::value<RBX::MegaCluster*>>>,0,void ()(void)>::call(void)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX11MegaClusterEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")]
 // 0xc0df08 - __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX11MegaClusterEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
 pub fn stub_0xc0df08() -> ! {
@@ -772,7 +772,7 @@ pub fn stub_0xc2c410() -> ! {
     todo!("0xc2c410 __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEE7rethrowEv")
 }
 
-#[doc(alias = "`non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
 #[doc(alias = "__ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED0Ev")]
 // 0xc2c4c0 - __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED0Ev
 // type: int __fastcall(int, int, int, int, void *, int)
@@ -780,14 +780,14 @@ pub fn stub_0xc2c4c0() -> ! {
     todo!("0xc2c4c0 __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED0Ev")
 }
 
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::rethrow(void)const")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::rethrow(void)const")]
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEE7rethrowEv")]
 // 0xc2c580 - __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEE7rethrowEv
 pub fn stub_0xc2c580() -> ! {
     todo!("0xc2c580 __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEE7rethrowEv")
 }
 
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED0Ev")]
 // 0xc2c590 - __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED0Ev
 // type: int __fastcall(int, int, int, int, void *, int)
@@ -795,7 +795,7 @@ pub fn stub_0xc2c590() -> ! {
     todo!("0xc2c590 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()")]
 #[doc(alias = "__ZThn8_N5boost16exception_detail19error_info_injectorINS_17bad_function_callEED0Ev")]
 // 0xc2c670 - __ZThn8_N5boost16exception_detail19error_info_injectorINS_17bad_function_callEED0Ev
 // type: int __fastcall(int, int, int, int, void *, int)
@@ -832,7 +832,7 @@ pub fn stub_0xc2c8b0() -> ! {
     todo!("0xc2c8b0 __ZN5boost16exception_detail19error_info_injectorINS_10lock_errorEED1Ev")
 }
 
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone(void)const")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone(void)const")]
 #[doc(alias = "__ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE5cloneEv")]
 // 0xc2c9c0 - __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE5cloneEv
 pub fn stub_0xc2c9c0() -> ! {
@@ -878,14 +878,14 @@ pub fn stub_0xc30650() -> ! {
     todo!("0xc30650 __ZN5boost16exception_detail10clone_implINS0_14bad_exception_EEC1ERKS2_")
 }
 
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::rethrow(void)const")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::rethrow(void)const")]
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_14bad_exception_EE7rethrowEv")]
 // 0xc307a0 - __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_14bad_exception_EE7rethrowEv
 pub fn stub_0xc307a0() -> ! {
     todo!("0xc307a0 __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_14bad_exception_EE7rethrowEv")
 }
 
-#[doc(alias = "`virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED0Ev")]
 // 0xc307b0 - __ZTv0_n20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED0Ev
 // type: int __fastcall(int, int, int, int, void *, int)

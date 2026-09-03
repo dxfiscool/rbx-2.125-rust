@@ -708,7 +708,7 @@ pub fn stub_ba8750() -> ! {
 
 // 0xba876c — __ZThn392_N4Ogre20RbxCullableSceneNode19getFastFuzzyExtentsEv
 // type: int __fastcall(Ogre::RbxCullableSceneNode *this, int)
-#[doc(alias = "`non-virtual thunk toOgre::RbxCullableSceneNode::getFastFuzzyExtents(void)")]
+#[doc(alias = "non-virtual thunk toOgre::RbxCullableSceneNode::getFastFuzzyExtents(void)")]
 #[doc(alias = "__ZThn392_N4Ogre20RbxCullableSceneNode19getFastFuzzyExtentsEv")]
 pub fn stub_ba876c() -> ! {
     todo!("0xba876c `non-virtual thunk to'Ogre::RbxCullableSceneNode::getFastFuzzyExtents(void)")
@@ -796,7 +796,7 @@ pub fn stub_ba936c() -> ! {
 
 // 0xba9370 — __ZThn4_N4Ogre9RbxEntityD0Ev
 // type: void __fastcall(Ogre::RbxEntity *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
+#[doc(alias = "non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
 #[doc(alias = "__ZThn4_N4Ogre9RbxEntityD0Ev")]
 pub fn stub_ba9370() -> ! {
     todo!("0xba9370 `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()")
@@ -804,7 +804,7 @@ pub fn stub_ba9370() -> ! {
 
 // 0xba9428 — __ZThn188_N4Ogre9RbxEntityD0Ev
 // type: void __fastcall(Ogre::RbxEntity *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
+#[doc(alias = "non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
 #[doc(alias = "__ZThn188_N4Ogre9RbxEntityD0Ev")]
 pub fn stub_ba9428() -> ! {
     todo!("0xba9428 `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()")
@@ -820,7 +820,7 @@ pub fn stub_ba94e0() -> ! {
 
 // 0xba9694 — __ZThn4_N4Ogre9RbxEntityD1Ev
 // type: void __fastcall(Ogre::RbxEntity *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
+#[doc(alias = "non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
 #[doc(alias = "__ZThn4_N4Ogre9RbxEntityD1Ev")]
 pub fn stub_ba9694() -> ! {
     todo!("0xba9694 `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()")
@@ -828,7 +828,7 @@ pub fn stub_ba9694() -> ! {
 
 // 0xba969c — __ZThn188_N4Ogre9RbxEntityD1Ev
 // type: void __fastcall(Ogre::RbxEntity *__hidden this)
-#[doc(alias = "`non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
+#[doc(alias = "non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
 #[doc(alias = "__ZThn188_N4Ogre9RbxEntityD1Ev")]
 pub fn stub_ba969c() -> ! {
     todo!("0xba969c `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()")

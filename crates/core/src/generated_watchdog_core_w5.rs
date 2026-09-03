@@ -747,7 +747,7 @@ pub fn stub_0xc30a10() -> ! {
     todo!("0xc30a10 __ZNK5boost16exception_detail10clone_implINS0_10bad_alloc_EE7rethrowEv")
 }
 
-#[doc(alias = "`non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
 // 0xc30b20 — __ZThn20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED0Ev
 // type: int __fastcall(int, int, int, int, void *, int)
 pub fn stub_0xc30b20() -> ! {
@@ -784,7 +784,7 @@ pub fn stub_0xc33804() -> ! {
     todo!("0xc33804 __ZN3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX11LightObjectEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb")
 }
 
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::LightObject,bool>,boost::_bi::list2<boost::_bi::value<RBX::LightObject*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::LightObject,bool>,boost::_bi::list2<boost::_bi::value<RBX::LightObject*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")]
 // 0xc3381c — __ZThn4_N3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX11LightObjectEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb
 pub fn stub_0xc3381c() -> ! {
     todo!("0xc3381c __ZThn4_N3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX11LightObjectEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb")
@@ -808,7 +808,7 @@ pub fn stub_0xc33b34() -> ! {
     todo!("0xc33b34 __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX11LightObjectEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")
 }
 
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::LightObject>,boost::_bi::list1<boost::_bi::value<RBX::LightObject*>>>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::LightObject>,boost::_bi::list1<boost::_bi::value<RBX::LightObject*>>>,0,void ()(void)>::call(void)")]
 // 0xc33b4c — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX11LightObjectEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
 pub fn stub_0xc33b4c() -> ! {
     todo!("0xc33b4c __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX11LightObjectEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")

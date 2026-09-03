@@ -350,3 +350,4 @@ pub mod generated_watchdog_script_w8;
 pub mod generated_watchdog_script_w9;
 pub mod generated_watchdog_script_w11;
 pub mod generated_script_gap_c9c1d0;
+pub mod generated_watchdog_script_w12;

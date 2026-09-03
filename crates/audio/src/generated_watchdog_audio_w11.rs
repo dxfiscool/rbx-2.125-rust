@@ -415,7 +415,7 @@ pub fn stub_c99428() -> ! {
 
 // 0xc99434 — __ZThn4_N4Ogre7FrustumD0Ev
 // type: void __fastcall(Ogre::Frustum *__hidden this)
-#[doc(alias = "`non-virtual thunk to'Ogre::Frustum::~Frustum()")]
+#[doc(alias = "non-virtual thunk toOgre::Frustum::~Frustum()")]
 #[doc(alias = "__ZThn4_N4Ogre7FrustumD0Ev")]
 pub fn stub_c99434() -> ! {
     todo!("0xc99434 __ZThn4_N4Ogre7FrustumD0Ev")
@@ -423,7 +423,7 @@ pub fn stub_c99434() -> ! {
 
 // 0xc994c8 — __ZThn188_N4Ogre7FrustumD0Ev
 // type: void __fastcall(Ogre::Frustum *__hidden this)
-#[doc(alias = "`non-virtual thunk to'Ogre::Frustum::~Frustum()")]
+#[doc(alias = "non-virtual thunk toOgre::Frustum::~Frustum()")]
 #[doc(alias = "__ZThn188_N4Ogre7FrustumD0Ev")]
 pub fn stub_c994c8() -> ! {
     todo!("0xc994c8 __ZThn188_N4Ogre7FrustumD0Ev")
@@ -439,7 +439,7 @@ pub fn stub_c9955c() -> ! {
 
 // 0xc996e0 — __ZThn4_N4Ogre7FrustumD1Ev
 // type: void __fastcall(Ogre::Frustum *__hidden this)
-#[doc(alias = "`non-virtual thunk to'Ogre::Frustum::~Frustum()")]
+#[doc(alias = "non-virtual thunk toOgre::Frustum::~Frustum()")]
 #[doc(alias = "__ZThn4_N4Ogre7FrustumD1Ev")]
 pub fn stub_c996e0() -> ! {
     todo!("0xc996e0 __ZThn4_N4Ogre7FrustumD1Ev")
@@ -447,7 +447,7 @@ pub fn stub_c996e0() -> ! {
 
 // 0xc996ec — __ZThn188_N4Ogre7FrustumD1Ev
 // type: void __fastcall(Ogre::Frustum *__hidden this)
-#[doc(alias = "`non-virtual thunk to'Ogre::Frustum::~Frustum()")]
+#[doc(alias = "non-virtual thunk toOgre::Frustum::~Frustum()")]
 #[doc(alias = "__ZThn188_N4Ogre7FrustumD1Ev")]
 pub fn stub_c996ec() -> ! {
     todo!("0xc996ec __ZThn188_N4Ogre7FrustumD1Ev")
@@ -739,7 +739,7 @@ pub fn stub_c9b4cc() -> ! {
 
 // 0xc9b4d4 — __ZThn188_NK4Ogre7Frustum11getMaterialEv
 // type: _DWORD __fastcall(Ogre::Frustum *__hidden this)
-#[doc(alias = "`non-virtual thunk to'Ogre::Frustum::getMaterial(void)const")]
+#[doc(alias = "non-virtual thunk toOgre::Frustum::getMaterial(void)const")]
 #[doc(alias = "__ZThn188_NK4Ogre7Frustum11getMaterialEv")]
 pub fn stub_c9b4d4() -> ! {
     todo!("0xc9b4d4 __ZThn188_NK4Ogre7Frustum11getMaterialEv")
@@ -753,7 +753,7 @@ pub fn stub_c9b4dc() -> ! {
 }
 
 // 0xc9b500 — __ZThn188_N4Ogre7Frustum18getRenderOperationERNS_15RenderOperationE
-#[doc(alias = "`non-virtual thunk to'Ogre::Frustum::getRenderOperation(Ogre::RenderOperation &)")]
+#[doc(alias = "non-virtual thunk toOgre::Frustum::getRenderOperation(Ogre::RenderOperation &)")]
 #[doc(alias = "__ZThn188_N4Ogre7Frustum18getRenderOperationERNS_15RenderOperationE")]
 pub fn stub_c9b500() -> ! {
     todo!("0xc9b500 __ZThn188_N4Ogre7Frustum18getRenderOperationERNS_15RenderOperationE")
@@ -767,7 +767,7 @@ pub fn stub_c9b524() -> ! {
 }
 
 // 0xc9b57c — __ZThn188_NK4Ogre7Frustum18getWorldTransformsEPNS_7Matrix4E
-#[doc(alias = "`non-virtual thunk to'Ogre::Frustum::getWorldTransforms(Ogre::Matrix4 *)const")]
+#[doc(alias = "non-virtual thunk toOgre::Frustum::getWorldTransforms(Ogre::Matrix4 *)const")]
 #[doc(alias = "__ZThn188_NK4Ogre7Frustum18getWorldTransformsEPNS_7Matrix4E")]
 pub fn stub_c9b57c() -> ! {
     todo!("0xc9b57c __ZThn188_NK4Ogre7Frustum18getWorldTransformsEPNS_7Matrix4E")
@@ -775,7 +775,7 @@ pub fn stub_c9b57c() -> ! {
 
 // 0xc9b638 — __ZThn188_NK4Ogre7Frustum19getSquaredViewDepthEPKNS_6CameraE
 // type: _DWORD __fastcall(Ogre::Frustum *__hidden this, const Ogre::Camera *)
-#[doc(alias = "`non-virtual thunk to'Ogre::Frustum::getSquaredViewDepth(Ogre::Camera const*)const")]
+#[doc(alias = "non-virtual thunk toOgre::Frustum::getSquaredViewDepth(Ogre::Camera const*)const")]
 #[doc(alias = "__ZThn188_NK4Ogre7Frustum19getSquaredViewDepthEPKNS_6CameraE")]
 pub fn stub_c9b638() -> ! {
     todo!("0xc9b638 __ZThn188_NK4Ogre7Frustum19getSquaredViewDepthEPKNS_6CameraE")
@@ -791,7 +791,7 @@ pub fn stub_c9b69c() -> ! {
 
 // 0xc9b784 — __ZThn188_NK4Ogre7Frustum9getLightsEv
 // type: _DWORD __fastcall(Ogre::Frustum *__hidden this)
-#[doc(alias = "`non-virtual thunk to'Ogre::Frustum::getLights(void)const")]
+#[doc(alias = "non-virtual thunk toOgre::Frustum::getLights(void)const")]
 #[doc(alias = "__ZThn188_NK4Ogre7Frustum9getLightsEv")]
 pub fn stub_c9b784() -> ! {
     todo!("0xc9b784 __ZThn188_NK4Ogre7Frustum9getLightsEv")
