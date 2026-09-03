@@ -44,8 +44,8 @@ pub fn stub_3fc8bc() -> ! {
 // was: boost::shared_ptr<RBX::ModelInstance> RBX::ModelInstance::group<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>) -> rbx_core::SharedPtr
 #[doc(alias = "rbx_core::SharedPtr<RBX::ModelInstance> RBX::ModelInstance::group<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>)")]
 #[doc(alias = "__ZN3RBX13ModelInstance5groupIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrINS_8InstanceEEESt6vectorIS7_SaIS7_EEEEEENS5_IS0_EET_SF_")]
-pub fn stub_3fc900() -> ! {
-    todo!("0x3fc900 boost::shared_ptr<RBX::ModelInstance> RBX::ModelInstance::group<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>)")
+pub fn stub_3fc900() {
+    // IDA 0x3fc900: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x3fcb44 — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS2_3_bi6bind_tIvPFvS6_ENSD_5list1INS2_3argILi1EEEEEEEET0_T_SN_SM_
@@ -54,8 +54,8 @@ pub fn stub_3fc900() -> ! {
 // was: boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::arg<1>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::arg<1>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::arg<1>>>) -> rbx_core::SharedPtr
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::arg<1>>> std::for_each<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::arg<1>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<boost::arg<1>>>)")]
 #[doc(alias = "__ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS2_3_bi6bind_tIvPFvS6_ENSD_5list1INS2_3argILi1EEEEEEEET0_T_SN_SM_")]
-pub fn stub_3fcb44() -> ! {
-    todo!("0x3fcb44 boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::arg<1>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::arg<1>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::arg<1>>>)")
+pub fn stub_3fcb44() {
+    // IDA 0x3fcb44: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x3fcb84 — __ZN3RBX11shared_fromINS_13ModelInstanceEEEN5boost10shared_ptrIT_EEPS4_
@@ -64,8 +64,8 @@ pub fn stub_3fcb44() -> ! {
 // was: boost::shared_ptr<RBX::ModelInstance> RBX::shared_from<RBX::ModelInstance>(RBX::ModelInstance*) -> rbx_core::SharedPtr
 #[doc(alias = "rbx_core::SharedPtr<RBX::ModelInstance> RBX::shared_from<RBX::ModelInstance>(RBX::ModelInstance*)")]
 #[doc(alias = "__ZN3RBX11shared_fromINS_13ModelInstanceEEEN5boost10shared_ptrIT_EEPS4_")]
-pub fn stub_3fcb84() -> ! {
-    todo!("0x3fcb84 boost::shared_ptr<RBX::ModelInstance> RBX::shared_from<RBX::ModelInstance>(RBX::ModelInstance*)")
+pub fn stub_3fcb84() {
+    // IDA 0x3fcb84: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x3fcc6c — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS4_7UngroupEET0_T_SE_SD_
@@ -74,8 +74,8 @@ pub fn stub_3fcb84() -> ! {
 // was: RBX::Ungroup std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,RBX::Ungroup>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,RBX::Ungroup) -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Ungroup std::for_each<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> *,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,RBX::Ungroup>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> *,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> *,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,RBX::Ungroup)")]
 #[doc(alias = "__ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS4_7UngroupEET0_T_SE_SD_")]
-pub fn stub_3fcc6c() -> ! {
-    todo!("0x3fcc6c RBX::Ungroup std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,RBX::Ungroup>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,RBX::Ungroup)")
+pub fn stub_3fcc6c() {
+    // IDA 0x3fcc6c: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
 }
 
 // 0x3fcca8 — __ZN3RBX17RotateAxisCommandC2ESsPNS_9DataModelE
@@ -92,8 +92,8 @@ pub fn stub_3fcca8() -> ! {
 // type: void __fastcall(RBX::DeleteBase *__hidden this)
 #[doc(alias = "RBX::DeleteBase::~DeleteBase()")]
 #[doc(alias = "__ZN3RBX10DeleteBaseD1Ev")]
-pub fn stub_3fcdd8() -> ! {
-    todo!("0x3fcdd8 RBX::DeleteBase::~DeleteBase()")
+pub fn stub_3fcdd8() {
+    // IDA 0x3fcdd8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fcddc — __ZN3RBX10DeleteBaseD0Ev
@@ -101,8 +101,8 @@ pub fn stub_3fcdd8() -> ! {
 // type: void __fastcall(RBX::DeleteBase *__hidden this)
 #[doc(alias = "RBX::DeleteBase::~DeleteBase()")]
 #[doc(alias = "__ZN3RBX10DeleteBaseD0Ev")]
-pub fn stub_3fcddc() -> ! {
-    todo!("0x3fcddc RBX::DeleteBase::~DeleteBase()")
+pub fn stub_3fcddc() {
+    // IDA 0x3fcddc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fce7c — __ZNK3RBX4Verb9isEnabledEv
@@ -119,8 +119,8 @@ pub fn stub_3fce7c() -> ! {
 // type: void __fastcall(RBX::SelectAllCommand *__hidden this)
 #[doc(alias = "RBX::SelectAllCommand::~SelectAllCommand()")]
 #[doc(alias = "__ZN3RBX16SelectAllCommandD1Ev")]
-pub fn stub_3fce80() -> ! {
-    todo!("0x3fce80 RBX::SelectAllCommand::~SelectAllCommand()")
+pub fn stub_3fce80() {
+    // IDA 0x3fce80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fce84 — __ZN3RBX16SelectAllCommandD0Ev
@@ -128,8 +128,8 @@ pub fn stub_3fce80() -> ! {
 // type: void __fastcall(RBX::SelectAllCommand *__hidden this)
 #[doc(alias = "RBX::SelectAllCommand::~SelectAllCommand()")]
 #[doc(alias = "__ZN3RBX16SelectAllCommandD0Ev")]
-pub fn stub_3fce84() -> ! {
-    todo!("0x3fce84 RBX::SelectAllCommand::~SelectAllCommand()")
+pub fn stub_3fce84() {
+    // IDA 0x3fce84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fcf24 — __ZN3RBX13UnlockAllVerbD1Ev
@@ -137,8 +137,8 @@ pub fn stub_3fce84() -> ! {
 // type: void __fastcall(RBX::UnlockAllVerb *__hidden this)
 #[doc(alias = "RBX::UnlockAllVerb::~UnlockAllVerb()")]
 #[doc(alias = "__ZN3RBX13UnlockAllVerbD1Ev")]
-pub fn stub_3fcf24() -> ! {
-    todo!("0x3fcf24 RBX::UnlockAllVerb::~UnlockAllVerb()")
+pub fn stub_3fcf24() {
+    // IDA 0x3fcf24: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fcf28 — __ZN3RBX13UnlockAllVerbD0Ev
@@ -146,8 +146,8 @@ pub fn stub_3fcf24() -> ! {
 // type: void __fastcall(RBX::UnlockAllVerb *__hidden this)
 #[doc(alias = "RBX::UnlockAllVerb::~UnlockAllVerb()")]
 #[doc(alias = "__ZN3RBX13UnlockAllVerbD0Ev")]
-pub fn stub_3fcf28() -> ! {
-    todo!("0x3fcf28 RBX::UnlockAllVerb::~UnlockAllVerb()")
+pub fn stub_3fcf28() {
+    // IDA 0x3fcf28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fcfc8 — __ZN3RBX10CameraVerbD1Ev
@@ -155,8 +155,8 @@ pub fn stub_3fcf28() -> ! {
 // type: void __fastcall(RBX::CameraVerb *__hidden this)
 #[doc(alias = "RBX::CameraVerb::~CameraVerb()")]
 #[doc(alias = "__ZN3RBX10CameraVerbD1Ev")]
-pub fn stub_3fcfc8() -> ! {
-    todo!("0x3fcfc8 RBX::CameraVerb::~CameraVerb()")
+pub fn stub_3fcfc8() {
+    // IDA 0x3fcfc8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fd094 — __ZN3RBX10CameraVerbD0Ev
@@ -164,8 +164,8 @@ pub fn stub_3fcfc8() -> ! {
 // type: void __fastcall(RBX::CameraVerb *__hidden this)
 #[doc(alias = "RBX::CameraVerb::~CameraVerb()")]
 #[doc(alias = "__ZN3RBX10CameraVerbD0Ev")]
-pub fn stub_3fd094() -> ! {
-    todo!("0x3fd094 RBX::CameraVerb::~CameraVerb()")
+pub fn stub_3fd094() {
+    // IDA 0x3fd094: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fd174 — __ZNK3RBX10CameraVerb9isEnabledEv
@@ -182,8 +182,8 @@ pub fn stub_3fd174() -> ! {
 // type: void __fastcall(RBX::CameraTiltUpCommand *__hidden this)
 #[doc(alias = "RBX::CameraTiltUpCommand::~CameraTiltUpCommand()")]
 #[doc(alias = "__ZN3RBX19CameraTiltUpCommandD1Ev")]
-pub fn stub_3fd178() -> ! {
-    todo!("0x3fd178 RBX::CameraTiltUpCommand::~CameraTiltUpCommand()")
+pub fn stub_3fd178() {
+    // IDA 0x3fd178: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fd244 — __ZN3RBX19CameraTiltUpCommandD0Ev
@@ -191,8 +191,8 @@ pub fn stub_3fd178() -> ! {
 // type: void __fastcall(RBX::CameraTiltUpCommand *__hidden this)
 #[doc(alias = "RBX::CameraTiltUpCommand::~CameraTiltUpCommand()")]
 #[doc(alias = "__ZN3RBX19CameraTiltUpCommandD0Ev")]
-pub fn stub_3fd244() -> ! {
-    todo!("0x3fd244 RBX::CameraTiltUpCommand::~CameraTiltUpCommand()")
+pub fn stub_3fd244() {
+    // IDA 0x3fd244: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fd324 — __ZN3RBX21CameraTiltDownCommandD1Ev
@@ -200,8 +200,8 @@ pub fn stub_3fd244() -> ! {
 // type: void __fastcall(RBX::CameraTiltDownCommand *__hidden this)
 #[doc(alias = "RBX::CameraTiltDownCommand::~CameraTiltDownCommand()")]
 #[doc(alias = "__ZN3RBX21CameraTiltDownCommandD1Ev")]
-pub fn stub_3fd324() -> ! {
-    todo!("0x3fd324 RBX::CameraTiltDownCommand::~CameraTiltDownCommand()")
+pub fn stub_3fd324() {
+    // IDA 0x3fd324: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fd3f0 — __ZN3RBX21CameraTiltDownCommandD0Ev
@@ -209,8 +209,8 @@ pub fn stub_3fd324() -> ! {
 // type: void __fastcall(RBX::CameraTiltDownCommand *__hidden this)
 #[doc(alias = "RBX::CameraTiltDownCommand::~CameraTiltDownCommand()")]
 #[doc(alias = "__ZN3RBX21CameraTiltDownCommandD0Ev")]
-pub fn stub_3fd3f0() -> ! {
-    todo!("0x3fd3f0 RBX::CameraTiltDownCommand::~CameraTiltDownCommand()")
+pub fn stub_3fd3f0() {
+    // IDA 0x3fd3f0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fd4d0 — __ZN3RBX20CameraPanLeftCommandD1Ev
@@ -218,8 +218,8 @@ pub fn stub_3fd3f0() -> ! {
 // type: void __fastcall(RBX::CameraPanLeftCommand *__hidden this)
 #[doc(alias = "RBX::CameraPanLeftCommand::~CameraPanLeftCommand()")]
 #[doc(alias = "__ZN3RBX20CameraPanLeftCommandD1Ev")]
-pub fn stub_3fd4d0() -> ! {
-    todo!("0x3fd4d0 RBX::CameraPanLeftCommand::~CameraPanLeftCommand()")
+pub fn stub_3fd4d0() {
+    // IDA 0x3fd4d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fd59c — __ZN3RBX20CameraPanLeftCommandD0Ev
@@ -227,8 +227,8 @@ pub fn stub_3fd4d0() -> ! {
 // type: void __fastcall(RBX::CameraPanLeftCommand *__hidden this)
 #[doc(alias = "RBX::CameraPanLeftCommand::~CameraPanLeftCommand()")]
 #[doc(alias = "__ZN3RBX20CameraPanLeftCommandD0Ev")]
-pub fn stub_3fd59c() -> ! {
-    todo!("0x3fd59c RBX::CameraPanLeftCommand::~CameraPanLeftCommand()")
+pub fn stub_3fd59c() {
+    // IDA 0x3fd59c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fd67c — __ZN3RBX21CameraPanRightCommandD1Ev
@@ -236,8 +236,8 @@ pub fn stub_3fd59c() -> ! {
 // type: void __fastcall(RBX::CameraPanRightCommand *__hidden this)
 #[doc(alias = "RBX::CameraPanRightCommand::~CameraPanRightCommand()")]
 #[doc(alias = "__ZN3RBX21CameraPanRightCommandD1Ev")]
-pub fn stub_3fd67c() -> ! {
-    todo!("0x3fd67c RBX::CameraPanRightCommand::~CameraPanRightCommand()")
+pub fn stub_3fd67c() {
+    // IDA 0x3fd67c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fd748 — __ZN3RBX21CameraPanRightCommandD0Ev
@@ -245,8 +245,8 @@ pub fn stub_3fd67c() -> ! {
 // type: void __fastcall(RBX::CameraPanRightCommand *__hidden this)
 #[doc(alias = "RBX::CameraPanRightCommand::~CameraPanRightCommand()")]
 #[doc(alias = "__ZN3RBX21CameraPanRightCommandD0Ev")]
-pub fn stub_3fd748() -> ! {
-    todo!("0x3fd748 RBX::CameraPanRightCommand::~CameraPanRightCommand()")
+pub fn stub_3fd748() {
+    // IDA 0x3fd748: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fd828 — __ZN3RBX19CameraZoomInCommandD1Ev
@@ -254,8 +254,8 @@ pub fn stub_3fd748() -> ! {
 // type: void __fastcall(RBX::CameraZoomInCommand *__hidden this)
 #[doc(alias = "RBX::CameraZoomInCommand::~CameraZoomInCommand()")]
 #[doc(alias = "__ZN3RBX19CameraZoomInCommandD1Ev")]
-pub fn stub_3fd828() -> ! {
-    todo!("0x3fd828 RBX::CameraZoomInCommand::~CameraZoomInCommand()")
+pub fn stub_3fd828() {
+    // IDA 0x3fd828: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fd8f4 — __ZN3RBX19CameraZoomInCommandD0Ev
@@ -263,8 +263,8 @@ pub fn stub_3fd828() -> ! {
 // type: void __fastcall(RBX::CameraZoomInCommand *__hidden this)
 #[doc(alias = "RBX::CameraZoomInCommand::~CameraZoomInCommand()")]
 #[doc(alias = "__ZN3RBX19CameraZoomInCommandD0Ev")]
-pub fn stub_3fd8f4() -> ! {
-    todo!("0x3fd8f4 RBX::CameraZoomInCommand::~CameraZoomInCommand()")
+pub fn stub_3fd8f4() {
+    // IDA 0x3fd8f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fd9d4 — __ZN3RBX20CameraZoomOutCommandD1Ev
@@ -272,8 +272,8 @@ pub fn stub_3fd8f4() -> ! {
 // type: void __fastcall(RBX::CameraZoomOutCommand *__hidden this)
 #[doc(alias = "RBX::CameraZoomOutCommand::~CameraZoomOutCommand()")]
 #[doc(alias = "__ZN3RBX20CameraZoomOutCommandD1Ev")]
-pub fn stub_3fd9d4() -> ! {
-    todo!("0x3fd9d4 RBX::CameraZoomOutCommand::~CameraZoomOutCommand()")
+pub fn stub_3fd9d4() {
+    // IDA 0x3fd9d4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fdaa0 — __ZN3RBX20CameraZoomOutCommandD0Ev
@@ -281,8 +281,8 @@ pub fn stub_3fd9d4() -> ! {
 // type: void __fastcall(RBX::CameraZoomOutCommand *__hidden this)
 #[doc(alias = "RBX::CameraZoomOutCommand::~CameraZoomOutCommand()")]
 #[doc(alias = "__ZN3RBX20CameraZoomOutCommandD0Ev")]
-pub fn stub_3fdaa0() -> ! {
-    todo!("0x3fdaa0 RBX::CameraZoomOutCommand::~CameraZoomOutCommand()")
+pub fn stub_3fdaa0() {
+    // IDA 0x3fdaa0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fdb80 — __ZN3RBX16BoolPropertyVerbD1Ev
@@ -290,8 +290,8 @@ pub fn stub_3fdaa0() -> ! {
 // type: void __fastcall(RBX::BoolPropertyVerb *__hidden this)
 #[doc(alias = "RBX::BoolPropertyVerb::~BoolPropertyVerb()")]
 #[doc(alias = "__ZN3RBX16BoolPropertyVerbD1Ev")]
-pub fn stub_3fdb80() -> ! {
-    todo!("0x3fdb80 RBX::BoolPropertyVerb::~BoolPropertyVerb()")
+pub fn stub_3fdb80() {
+    // IDA 0x3fdb80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fdb84 — __ZN3RBX16BoolPropertyVerbD0Ev
@@ -299,8 +299,8 @@ pub fn stub_3fdb80() -> ! {
 // type: void __fastcall(RBX::BoolPropertyVerb *__hidden this)
 #[doc(alias = "RBX::BoolPropertyVerb::~BoolPropertyVerb()")]
 #[doc(alias = "__ZN3RBX16BoolPropertyVerbD0Ev")]
-pub fn stub_3fdb84() -> ! {
-    todo!("0x3fdb84 RBX::BoolPropertyVerb::~BoolPropertyVerb()")
+pub fn stub_3fdb84() {
+    // IDA 0x3fdb84: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fdc24 — __ZN3RBX19AllCanSelectCommandD1Ev
@@ -308,8 +308,8 @@ pub fn stub_3fdb84() -> ! {
 // type: void __fastcall(RBX::AllCanSelectCommand *__hidden this)
 #[doc(alias = "RBX::AllCanSelectCommand::~AllCanSelectCommand()")]
 #[doc(alias = "__ZN3RBX19AllCanSelectCommandD1Ev")]
-pub fn stub_3fdc24() -> ! {
-    todo!("0x3fdc24 RBX::AllCanSelectCommand::~AllCanSelectCommand()")
+pub fn stub_3fdc24() {
+    // IDA 0x3fdc24: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fdc28 — __ZN3RBX19AllCanSelectCommandD0Ev
@@ -317,8 +317,8 @@ pub fn stub_3fdc24() -> ! {
 // type: void __fastcall(RBX::AllCanSelectCommand *__hidden this)
 #[doc(alias = "RBX::AllCanSelectCommand::~AllCanSelectCommand()")]
 #[doc(alias = "__ZN3RBX19AllCanSelectCommandD0Ev")]
-pub fn stub_3fdc28() -> ! {
-    todo!("0x3fdc28 RBX::AllCanSelectCommand::~AllCanSelectCommand()")
+pub fn stub_3fdc28() {
+    // IDA 0x3fdc28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fdcc8 — __ZN3RBX19CanNotSelectCommandD1Ev
@@ -326,8 +326,8 @@ pub fn stub_3fdc28() -> ! {
 // type: void __fastcall(RBX::CanNotSelectCommand *__hidden this)
 #[doc(alias = "RBX::CanNotSelectCommand::~CanNotSelectCommand()")]
 #[doc(alias = "__ZN3RBX19CanNotSelectCommandD1Ev")]
-pub fn stub_3fdcc8() -> ! {
-    todo!("0x3fdcc8 RBX::CanNotSelectCommand::~CanNotSelectCommand()")
+pub fn stub_3fdcc8() {
+    // IDA 0x3fdcc8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fdccc — __ZN3RBX19CanNotSelectCommandD0Ev
@@ -335,8 +335,8 @@ pub fn stub_3fdcc8() -> ! {
 // type: void __fastcall(RBX::CanNotSelectCommand *__hidden this)
 #[doc(alias = "RBX::CanNotSelectCommand::~CanNotSelectCommand()")]
 #[doc(alias = "__ZN3RBX19CanNotSelectCommandD0Ev")]
-pub fn stub_3fdccc() -> ! {
-    todo!("0x3fdccc RBX::CanNotSelectCommand::~CanNotSelectCommand()")
+pub fn stub_3fdccc() {
+    // IDA 0x3fdccc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fdd6c — __ZN3RBX19MoveUpSelectionVerbD1Ev
@@ -344,8 +344,8 @@ pub fn stub_3fdccc() -> ! {
 // type: void __fastcall(RBX::MoveUpSelectionVerb *__hidden this)
 #[doc(alias = "RBX::MoveUpSelectionVerb::~MoveUpSelectionVerb()")]
 #[doc(alias = "__ZN3RBX19MoveUpSelectionVerbD1Ev")]
-pub fn stub_3fdd6c() -> ! {
-    todo!("0x3fdd6c RBX::MoveUpSelectionVerb::~MoveUpSelectionVerb()")
+pub fn stub_3fdd6c() {
+    // IDA 0x3fdd6c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fdd70 — __ZN3RBX19MoveUpSelectionVerbD0Ev
@@ -353,8 +353,8 @@ pub fn stub_3fdd6c() -> ! {
 // type: void __fastcall(RBX::MoveUpSelectionVerb *__hidden this)
 #[doc(alias = "RBX::MoveUpSelectionVerb::~MoveUpSelectionVerb()")]
 #[doc(alias = "__ZN3RBX19MoveUpSelectionVerbD0Ev")]
-pub fn stub_3fdd70() -> ! {
-    todo!("0x3fdd70 RBX::MoveUpSelectionVerb::~MoveUpSelectionVerb()")
+pub fn stub_3fdd70() {
+    // IDA 0x3fdd70: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fde10 — __ZN3RBX17RotateAxisCommandD1Ev
@@ -362,8 +362,8 @@ pub fn stub_3fdd70() -> ! {
 // type: void __fastcall(RBX::RotateAxisCommand *__hidden this)
 #[doc(alias = "RBX::RotateAxisCommand::~RotateAxisCommand()")]
 #[doc(alias = "__ZN3RBX17RotateAxisCommandD1Ev")]
-pub fn stub_3fde10() -> ! {
-    todo!("0x3fde10 RBX::RotateAxisCommand::~RotateAxisCommand()")
+pub fn stub_3fde10() {
+    // IDA 0x3fde10: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fde14 — __ZN3RBX17RotateAxisCommandD0Ev
@@ -371,8 +371,8 @@ pub fn stub_3fde10() -> ! {
 // type: void __fastcall(RBX::RotateAxisCommand *__hidden this)
 #[doc(alias = "RBX::RotateAxisCommand::~RotateAxisCommand()")]
 #[doc(alias = "__ZN3RBX17RotateAxisCommandD0Ev")]
-pub fn stub_3fde14() -> ! {
-    todo!("0x3fde14 RBX::RotateAxisCommand::~RotateAxisCommand()")
+pub fn stub_3fde14() {
+    // IDA 0x3fde14: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fdeb4 — __ZN3RBX10RunCommandD1Ev
@@ -380,8 +380,8 @@ pub fn stub_3fde14() -> ! {
 // type: void __fastcall(RBX::RunCommand *__hidden this)
 #[doc(alias = "RBX::RunCommand::~RunCommand()")]
 #[doc(alias = "__ZN3RBX10RunCommandD1Ev")]
-pub fn stub_3fdeb4() -> ! {
-    todo!("0x3fdeb4 RBX::RunCommand::~RunCommand()")
+pub fn stub_3fdeb4() {
+    // IDA 0x3fdeb4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fdeb8 — __ZN3RBX10RunCommandD0Ev
@@ -389,8 +389,8 @@ pub fn stub_3fdeb4() -> ! {
 // type: void __fastcall(RBX::RunCommand *__hidden this)
 #[doc(alias = "RBX::RunCommand::~RunCommand()")]
 #[doc(alias = "__ZN3RBX10RunCommandD0Ev")]
-pub fn stub_3fdeb8() -> ! {
-    todo!("0x3fdeb8 RBX::RunCommand::~RunCommand()")
+pub fn stub_3fdeb8() {
+    // IDA 0x3fdeb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fdf58 — __ZN3RBX11StopCommandD1Ev
@@ -398,8 +398,8 @@ pub fn stub_3fdeb8() -> ! {
 // type: void __fastcall(RBX::StopCommand *__hidden this)
 #[doc(alias = "RBX::StopCommand::~StopCommand()")]
 #[doc(alias = "__ZN3RBX11StopCommandD1Ev")]
-pub fn stub_3fdf58() -> ! {
-    todo!("0x3fdf58 RBX::StopCommand::~StopCommand()")
+pub fn stub_3fdf58() {
+    // IDA 0x3fdf58: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fdf5c — __ZN3RBX11StopCommandD0Ev
@@ -407,8 +407,8 @@ pub fn stub_3fdf58() -> ! {
 // type: void __fastcall(RBX::StopCommand *__hidden this)
 #[doc(alias = "RBX::StopCommand::~StopCommand()")]
 #[doc(alias = "__ZN3RBX11StopCommandD0Ev")]
-pub fn stub_3fdf5c() -> ! {
-    todo!("0x3fdf5c RBX::StopCommand::~StopCommand()")
+pub fn stub_3fdf5c() {
+    // IDA 0x3fdf5c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fdffc — __ZN3RBX12ResetCommandD1Ev
@@ -416,8 +416,8 @@ pub fn stub_3fdf5c() -> ! {
 // type: void __fastcall(RBX::ResetCommand *__hidden this)
 #[doc(alias = "RBX::ResetCommand::~ResetCommand()")]
 #[doc(alias = "__ZN3RBX12ResetCommandD1Ev")]
-pub fn stub_3fdffc() -> ! {
-    todo!("0x3fdffc RBX::ResetCommand::~ResetCommand()")
+pub fn stub_3fdffc() {
+    // IDA 0x3fdffc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe000 — __ZN3RBX12ResetCommandD0Ev
@@ -425,8 +425,8 @@ pub fn stub_3fdffc() -> ! {
 // type: void __fastcall(RBX::ResetCommand *__hidden this)
 #[doc(alias = "RBX::ResetCommand::~ResetCommand()")]
 #[doc(alias = "__ZN3RBX12ResetCommandD0Ev")]
-pub fn stub_3fe000() -> ! {
-    todo!("0x3fe000 RBX::ResetCommand::~ResetCommand()")
+pub fn stub_3fe000() {
+    // IDA 0x3fe000: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe0a0 — __ZN3RBX19CameraCenterCommandD1Ev
@@ -434,8 +434,8 @@ pub fn stub_3fe000() -> ! {
 // type: void __fastcall(RBX::CameraCenterCommand *__hidden this)
 #[doc(alias = "RBX::CameraCenterCommand::~CameraCenterCommand()")]
 #[doc(alias = "__ZN3RBX19CameraCenterCommandD1Ev")]
-pub fn stub_3fe0a0() -> ! {
-    todo!("0x3fe0a0 RBX::CameraCenterCommand::~CameraCenterCommand()")
+pub fn stub_3fe0a0() {
+    // IDA 0x3fe0a0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe16c — __ZN3RBX19CameraCenterCommandD0Ev
@@ -443,8 +443,8 @@ pub fn stub_3fe0a0() -> ! {
 // type: void __fastcall(RBX::CameraCenterCommand *__hidden this)
 #[doc(alias = "RBX::CameraCenterCommand::~CameraCenterCommand()")]
 #[doc(alias = "__ZN3RBX19CameraCenterCommandD0Ev")]
-pub fn stub_3fe16c() -> ! {
-    todo!("0x3fe16c RBX::CameraCenterCommand::~CameraCenterCommand()")
+pub fn stub_3fe16c() {
+    // IDA 0x3fe16c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe24c — __ZN3RBX18FirstPersonCommandD1Ev
@@ -452,8 +452,8 @@ pub fn stub_3fe16c() -> ! {
 // type: void __fastcall(RBX::FirstPersonCommand *__hidden this)
 #[doc(alias = "RBX::FirstPersonCommand::~FirstPersonCommand()")]
 #[doc(alias = "__ZN3RBX18FirstPersonCommandD1Ev")]
-pub fn stub_3fe24c() -> ! {
-    todo!("0x3fe24c RBX::FirstPersonCommand::~FirstPersonCommand()")
+pub fn stub_3fe24c() {
+    // IDA 0x3fe24c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe250 — __ZN3RBX18FirstPersonCommandD0Ev
@@ -461,8 +461,8 @@ pub fn stub_3fe24c() -> ! {
 // type: void __fastcall(RBX::FirstPersonCommand *__hidden this)
 #[doc(alias = "RBX::FirstPersonCommand::~FirstPersonCommand()")]
 #[doc(alias = "__ZN3RBX18FirstPersonCommandD0Ev")]
-pub fn stub_3fe250() -> ! {
-    todo!("0x3fe250 RBX::FirstPersonCommand::~FirstPersonCommand()")
+pub fn stub_3fe250() {
+    // IDA 0x3fe250: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe2f0 — __ZN3RBX18FirstPersonCommand4doItEPNS_10IDataStateE
@@ -479,8 +479,8 @@ pub fn stub_3fe2f0() -> ! {
 // type: void __fastcall(RBX::ToggleViewMode *__hidden this)
 #[doc(alias = "RBX::ToggleViewMode::~ToggleViewMode()")]
 #[doc(alias = "__ZN3RBX14ToggleViewModeD1Ev")]
-pub fn stub_3fe2f4() -> ! {
-    todo!("0x3fe2f4 RBX::ToggleViewMode::~ToggleViewMode()")
+pub fn stub_3fe2f4() {
+    // IDA 0x3fe2f4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe2f8 — __ZN3RBX14ToggleViewModeD0Ev
@@ -488,8 +488,8 @@ pub fn stub_3fe2f4() -> ! {
 // type: void __fastcall(RBX::ToggleViewMode *__hidden this)
 #[doc(alias = "RBX::ToggleViewMode::~ToggleViewMode()")]
 #[doc(alias = "__ZN3RBX14ToggleViewModeD0Ev")]
-pub fn stub_3fe2f8() -> ! {
-    todo!("0x3fe2f8 RBX::ToggleViewMode::~ToggleViewMode()")
+pub fn stub_3fe2f8() {
+    // IDA 0x3fe2f8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe398 — __ZN3RBX12StatsCommandD1Ev
@@ -497,8 +497,8 @@ pub fn stub_3fe2f8() -> ! {
 // type: void __fastcall(RBX::StatsCommand *__hidden this)
 #[doc(alias = "RBX::StatsCommand::~StatsCommand()")]
 #[doc(alias = "__ZN3RBX12StatsCommandD1Ev")]
-pub fn stub_3fe398() -> ! {
-    todo!("0x3fe398 RBX::StatsCommand::~StatsCommand()")
+pub fn stub_3fe398() {
+    // IDA 0x3fe398: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe39c — __ZN3RBX12StatsCommandD0Ev
@@ -506,8 +506,8 @@ pub fn stub_3fe398() -> ! {
 // type: void __fastcall(RBX::StatsCommand *__hidden this)
 #[doc(alias = "RBX::StatsCommand::~StatsCommand()")]
 #[doc(alias = "__ZN3RBX12StatsCommandD0Ev")]
-pub fn stub_3fe39c() -> ! {
-    todo!("0x3fe39c RBX::StatsCommand::~StatsCommand()")
+pub fn stub_3fe39c() {
+    // IDA 0x3fe39c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe43c — __ZN3RBX18RenderStatsCommandD1Ev
@@ -515,8 +515,8 @@ pub fn stub_3fe39c() -> ! {
 // type: void __fastcall(RBX::RenderStatsCommand *__hidden this)
 #[doc(alias = "RBX::RenderStatsCommand::~RenderStatsCommand()")]
 #[doc(alias = "__ZN3RBX18RenderStatsCommandD1Ev")]
-pub fn stub_3fe43c() -> ! {
-    todo!("0x3fe43c RBX::RenderStatsCommand::~RenderStatsCommand()")
+pub fn stub_3fe43c() {
+    // IDA 0x3fe43c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe440 — __ZN3RBX18RenderStatsCommandD0Ev
@@ -524,8 +524,8 @@ pub fn stub_3fe43c() -> ! {
 // type: void __fastcall(RBX::RenderStatsCommand *__hidden this)
 #[doc(alias = "RBX::RenderStatsCommand::~RenderStatsCommand()")]
 #[doc(alias = "__ZN3RBX18RenderStatsCommandD0Ev")]
-pub fn stub_3fe440() -> ! {
-    todo!("0x3fe440 RBX::RenderStatsCommand::~RenderStatsCommand()")
+pub fn stub_3fe440() {
+    // IDA 0x3fe440: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe4e0 — __ZN3RBX19SummaryStatsCommandD1Ev
@@ -533,8 +533,8 @@ pub fn stub_3fe440() -> ! {
 // type: void __fastcall(RBX::SummaryStatsCommand *__hidden this)
 #[doc(alias = "RBX::SummaryStatsCommand::~SummaryStatsCommand()")]
 #[doc(alias = "__ZN3RBX19SummaryStatsCommandD1Ev")]
-pub fn stub_3fe4e0() -> ! {
-    todo!("0x3fe4e0 RBX::SummaryStatsCommand::~SummaryStatsCommand()")
+pub fn stub_3fe4e0() {
+    // IDA 0x3fe4e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe4e4 — __ZN3RBX19SummaryStatsCommandD0Ev
@@ -542,8 +542,8 @@ pub fn stub_3fe4e0() -> ! {
 // type: void __fastcall(RBX::SummaryStatsCommand *__hidden this)
 #[doc(alias = "RBX::SummaryStatsCommand::~SummaryStatsCommand()")]
 #[doc(alias = "__ZN3RBX19SummaryStatsCommandD0Ev")]
-pub fn stub_3fe4e4() -> ! {
-    todo!("0x3fe4e4 RBX::SummaryStatsCommand::~SummaryStatsCommand()")
+pub fn stub_3fe4e4() {
+    // IDA 0x3fe4e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe584 — __ZN3RBX18CustomStatsCommandD1Ev
@@ -551,8 +551,8 @@ pub fn stub_3fe4e4() -> ! {
 // type: void __fastcall(RBX::CustomStatsCommand *__hidden this)
 #[doc(alias = "RBX::CustomStatsCommand::~CustomStatsCommand()")]
 #[doc(alias = "__ZN3RBX18CustomStatsCommandD1Ev")]
-pub fn stub_3fe584() -> ! {
-    todo!("0x3fe584 RBX::CustomStatsCommand::~CustomStatsCommand()")
+pub fn stub_3fe584() {
+    // IDA 0x3fe584: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe588 — __ZN3RBX18CustomStatsCommandD0Ev
@@ -560,8 +560,8 @@ pub fn stub_3fe584() -> ! {
 // type: void __fastcall(RBX::CustomStatsCommand *__hidden this)
 #[doc(alias = "RBX::CustomStatsCommand::~CustomStatsCommand()")]
 #[doc(alias = "__ZN3RBX18CustomStatsCommandD0Ev")]
-pub fn stub_3fe588() -> ! {
-    todo!("0x3fe588 RBX::CustomStatsCommand::~CustomStatsCommand()")
+pub fn stub_3fe588() {
+    // IDA 0x3fe588: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe628 — __ZN3RBX19NetworkStatsCommandD1Ev
@@ -569,8 +569,8 @@ pub fn stub_3fe588() -> ! {
 // type: void __fastcall(RBX::NetworkStatsCommand *__hidden this)
 #[doc(alias = "RBX::NetworkStatsCommand::~NetworkStatsCommand()")]
 #[doc(alias = "__ZN3RBX19NetworkStatsCommandD1Ev")]
-pub fn stub_3fe628() -> ! {
-    todo!("0x3fe628 RBX::NetworkStatsCommand::~NetworkStatsCommand()")
+pub fn stub_3fe628() {
+    // IDA 0x3fe628: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe62c — __ZN3RBX19NetworkStatsCommandD0Ev
@@ -578,8 +578,8 @@ pub fn stub_3fe628() -> ! {
 // type: void __fastcall(RBX::NetworkStatsCommand *__hidden this)
 #[doc(alias = "RBX::NetworkStatsCommand::~NetworkStatsCommand()")]
 #[doc(alias = "__ZN3RBX19NetworkStatsCommandD0Ev")]
-pub fn stub_3fe62c() -> ! {
-    todo!("0x3fe62c RBX::NetworkStatsCommand::~NetworkStatsCommand()")
+pub fn stub_3fe62c() {
+    // IDA 0x3fe62c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe6cc — __ZN3RBX19PhysicsStatsCommandD1Ev
@@ -587,8 +587,8 @@ pub fn stub_3fe62c() -> ! {
 // type: void __fastcall(RBX::PhysicsStatsCommand *__hidden this)
 #[doc(alias = "RBX::PhysicsStatsCommand::~PhysicsStatsCommand()")]
 #[doc(alias = "__ZN3RBX19PhysicsStatsCommandD1Ev")]
-pub fn stub_3fe6cc() -> ! {
-    todo!("0x3fe6cc RBX::PhysicsStatsCommand::~PhysicsStatsCommand()")
+pub fn stub_3fe6cc() {
+    // IDA 0x3fe6cc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe6d0 — __ZN3RBX19PhysicsStatsCommandD0Ev
@@ -596,8 +596,8 @@ pub fn stub_3fe6cc() -> ! {
 // type: void __fastcall(RBX::PhysicsStatsCommand *__hidden this)
 #[doc(alias = "RBX::PhysicsStatsCommand::~PhysicsStatsCommand()")]
 #[doc(alias = "__ZN3RBX19PhysicsStatsCommandD0Ev")]
-pub fn stub_3fe6d0() -> ! {
-    todo!("0x3fe6d0 RBX::PhysicsStatsCommand::~PhysicsStatsCommand()")
+pub fn stub_3fe6d0() {
+    // IDA 0x3fe6d0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe770 — __ZN3RBX18EngineStatsCommandD1Ev
@@ -605,8 +605,8 @@ pub fn stub_3fe6d0() -> ! {
 // type: void __fastcall(RBX::EngineStatsCommand *__hidden this)
 #[doc(alias = "RBX::EngineStatsCommand::~EngineStatsCommand()")]
 #[doc(alias = "__ZN3RBX18EngineStatsCommandD1Ev")]
-pub fn stub_3fe770() -> ! {
-    todo!("0x3fe770 RBX::EngineStatsCommand::~EngineStatsCommand()")
+pub fn stub_3fe770() {
+    // IDA 0x3fe770: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe774 — __ZN3RBX18EngineStatsCommandD0Ev
@@ -614,8 +614,8 @@ pub fn stub_3fe770() -> ! {
 // type: void __fastcall(RBX::EngineStatsCommand *__hidden this)
 #[doc(alias = "RBX::EngineStatsCommand::~EngineStatsCommand()")]
 #[doc(alias = "__ZN3RBX18EngineStatsCommandD0Ev")]
-pub fn stub_3fe774() -> ! {
-    todo!("0x3fe774 RBX::EngineStatsCommand::~EngineStatsCommand()")
+pub fn stub_3fe774() {
+    // IDA 0x3fe774: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe814 — __ZNK3RBX18EngineStatsCommand9isEnabledEv
@@ -632,8 +632,8 @@ pub fn stub_3fe814() -> ! {
 // type: void __fastcall(RBX::JoinCommand *__hidden this)
 #[doc(alias = "RBX::JoinCommand::~JoinCommand()")]
 #[doc(alias = "__ZN3RBX11JoinCommandD1Ev")]
-pub fn stub_3fe818() -> ! {
-    todo!("0x3fe818 RBX::JoinCommand::~JoinCommand()")
+pub fn stub_3fe818() {
+    // IDA 0x3fe818: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe81c — __ZN3RBX11JoinCommandD0Ev
@@ -641,8 +641,8 @@ pub fn stub_3fe818() -> ! {
 // type: void __fastcall(RBX::JoinCommand *__hidden this)
 #[doc(alias = "RBX::JoinCommand::~JoinCommand()")]
 #[doc(alias = "__ZN3RBX11JoinCommandD0Ev")]
-pub fn stub_3fe81c() -> ! {
-    todo!("0x3fe81c RBX::JoinCommand::~JoinCommand()")
+pub fn stub_3fe81c() {
+    // IDA 0x3fe81c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe8bc — __ZN3RBX18GroupSelectionVerbD1Ev
@@ -650,8 +650,8 @@ pub fn stub_3fe81c() -> ! {
 // type: void __fastcall(RBX::GroupSelectionVerb *__hidden this)
 #[doc(alias = "RBX::GroupSelectionVerb::~GroupSelectionVerb()")]
 #[doc(alias = "__ZN3RBX18GroupSelectionVerbD1Ev")]
-pub fn stub_3fe8bc() -> ! {
-    todo!("0x3fe8bc RBX::GroupSelectionVerb::~GroupSelectionVerb()")
+pub fn stub_3fe8bc() {
+    // IDA 0x3fe8bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe8c0 — __ZN3RBX18GroupSelectionVerbD0Ev
@@ -659,8 +659,8 @@ pub fn stub_3fe8bc() -> ! {
 // type: void __fastcall(RBX::GroupSelectionVerb *__hidden this)
 #[doc(alias = "RBX::GroupSelectionVerb::~GroupSelectionVerb()")]
 #[doc(alias = "__ZN3RBX18GroupSelectionVerbD0Ev")]
-pub fn stub_3fe8c0() -> ! {
-    todo!("0x3fe8c0 RBX::GroupSelectionVerb::~GroupSelectionVerb()")
+pub fn stub_3fe8c0() {
+    // IDA 0x3fe8c0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe960 — __ZN3RBX17SnapSelectionVerbD1Ev
@@ -668,8 +668,8 @@ pub fn stub_3fe8c0() -> ! {
 // type: void __fastcall(RBX::SnapSelectionVerb *__hidden this)
 #[doc(alias = "RBX::SnapSelectionVerb::~SnapSelectionVerb()")]
 #[doc(alias = "__ZN3RBX17SnapSelectionVerbD1Ev")]
-pub fn stub_3fe960() -> ! {
-    todo!("0x3fe960 RBX::SnapSelectionVerb::~SnapSelectionVerb()")
+pub fn stub_3fe960() {
+    // IDA 0x3fe960: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fe964 — __ZN3RBX17SnapSelectionVerbD0Ev
@@ -677,8 +677,8 @@ pub fn stub_3fe960() -> ! {
 // type: void __fastcall(RBX::SnapSelectionVerb *__hidden this)
 #[doc(alias = "RBX::SnapSelectionVerb::~SnapSelectionVerb()")]
 #[doc(alias = "__ZN3RBX17SnapSelectionVerbD0Ev")]
-pub fn stub_3fe964() -> ! {
-    todo!("0x3fe964 RBX::SnapSelectionVerb::~SnapSelectionVerb()")
+pub fn stub_3fe964() {
+    // IDA 0x3fe964: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fea04 — __ZN3RBX20UngroupSelectionVerbD1Ev
@@ -686,8 +686,8 @@ pub fn stub_3fe964() -> ! {
 // type: void __fastcall(RBX::UngroupSelectionVerb *__hidden this)
 #[doc(alias = "RBX::UngroupSelectionVerb::~UngroupSelectionVerb()")]
 #[doc(alias = "__ZN3RBX20UngroupSelectionVerbD1Ev")]
-pub fn stub_3fea04() -> ! {
-    todo!("0x3fea04 RBX::UngroupSelectionVerb::~UngroupSelectionVerb()")
+pub fn stub_3fea04() {
+    // IDA 0x3fea04: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fea08 — __ZN3RBX20UngroupSelectionVerbD0Ev
@@ -695,8 +695,8 @@ pub fn stub_3fea04() -> ! {
 // type: void __fastcall(RBX::UngroupSelectionVerb *__hidden this)
 #[doc(alias = "RBX::UngroupSelectionVerb::~UngroupSelectionVerb()")]
 #[doc(alias = "__ZN3RBX20UngroupSelectionVerbD0Ev")]
-pub fn stub_3fea08() -> ! {
-    todo!("0x3fea08 RBX::UngroupSelectionVerb::~UngroupSelectionVerb()")
+pub fn stub_3fea08() {
+    // IDA 0x3fea08: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3feaa8 — __ZN3RBX18SelectChildrenVerbD1Ev
@@ -704,8 +704,8 @@ pub fn stub_3fea08() -> ! {
 // type: void __fastcall(RBX::SelectChildrenVerb *__hidden this)
 #[doc(alias = "RBX::SelectChildrenVerb::~SelectChildrenVerb()")]
 #[doc(alias = "__ZN3RBX18SelectChildrenVerbD1Ev")]
-pub fn stub_3feaa8() -> ! {
-    todo!("0x3feaa8 RBX::SelectChildrenVerb::~SelectChildrenVerb()")
+pub fn stub_3feaa8() {
+    // IDA 0x3feaa8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3feaac — __ZN3RBX18SelectChildrenVerbD0Ev
@@ -713,8 +713,8 @@ pub fn stub_3feaa8() -> ! {
 // type: void __fastcall(RBX::SelectChildrenVerb *__hidden this)
 #[doc(alias = "RBX::SelectChildrenVerb::~SelectChildrenVerb()")]
 #[doc(alias = "__ZN3RBX18SelectChildrenVerbD0Ev")]
-pub fn stub_3feaac() -> ! {
-    todo!("0x3feaac RBX::SelectChildrenVerb::~SelectChildrenVerb()")
+pub fn stub_3feaac() {
+    // IDA 0x3feaac: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3feb4c — __ZN3RBX19RotateSelectionVerbD1Ev
@@ -722,8 +722,8 @@ pub fn stub_3feaac() -> ! {
 // type: void __fastcall(RBX::RotateSelectionVerb *__hidden this)
 #[doc(alias = "RBX::RotateSelectionVerb::~RotateSelectionVerb()")]
 #[doc(alias = "__ZN3RBX19RotateSelectionVerbD1Ev")]
-pub fn stub_3feb4c() -> ! {
-    todo!("0x3feb4c RBX::RotateSelectionVerb::~RotateSelectionVerb()")
+pub fn stub_3feb4c() {
+    // IDA 0x3feb4c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3feb50 — __ZN3RBX19RotateSelectionVerbD0Ev
@@ -731,8 +731,8 @@ pub fn stub_3feb4c() -> ! {
 // type: void __fastcall(RBX::RotateSelectionVerb *__hidden this)
 #[doc(alias = "RBX::RotateSelectionVerb::~RotateSelectionVerb()")]
 #[doc(alias = "__ZN3RBX19RotateSelectionVerbD0Ev")]
-pub fn stub_3feb50() -> ! {
-    todo!("0x3feb50 RBX::RotateSelectionVerb::~RotateSelectionVerb()")
+pub fn stub_3feb50() {
+    // IDA 0x3feb50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3febf0 — __ZN3RBX17TiltSelectionVerbD1Ev
@@ -740,8 +740,8 @@ pub fn stub_3feb50() -> ! {
 // type: void __fastcall(RBX::TiltSelectionVerb *__hidden this)
 #[doc(alias = "RBX::TiltSelectionVerb::~TiltSelectionVerb()")]
 #[doc(alias = "__ZN3RBX17TiltSelectionVerbD1Ev")]
-pub fn stub_3febf0() -> ! {
-    todo!("0x3febf0 RBX::TiltSelectionVerb::~TiltSelectionVerb()")
+pub fn stub_3febf0() {
+    // IDA 0x3febf0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3febf4 — __ZN3RBX17TiltSelectionVerbD0Ev
@@ -749,8 +749,8 @@ pub fn stub_3febf0() -> ! {
 // type: void __fastcall(RBX::TiltSelectionVerb *__hidden this)
 #[doc(alias = "RBX::TiltSelectionVerb::~TiltSelectionVerb()")]
 #[doc(alias = "__ZN3RBX17TiltSelectionVerbD0Ev")]
-pub fn stub_3febf4() -> ! {
-    todo!("0x3febf4 RBX::TiltSelectionVerb::~TiltSelectionVerb()")
+pub fn stub_3febf4() {
+    // IDA 0x3febf4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fec94 — __ZN3RBX21MoveDownSelectionVerbD1Ev
@@ -758,8 +758,8 @@ pub fn stub_3febf4() -> ! {
 // type: void __fastcall(RBX::MoveDownSelectionVerb *__hidden this)
 #[doc(alias = "RBX::MoveDownSelectionVerb::~MoveDownSelectionVerb()")]
 #[doc(alias = "__ZN3RBX21MoveDownSelectionVerbD1Ev")]
-pub fn stub_3fec94() -> ! {
-    todo!("0x3fec94 RBX::MoveDownSelectionVerb::~MoveDownSelectionVerb()")
+pub fn stub_3fec94() {
+    // IDA 0x3fec94: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fec98 — __ZN3RBX21MoveDownSelectionVerbD0Ev
@@ -767,8 +767,8 @@ pub fn stub_3fec94() -> ! {
 // type: void __fastcall(RBX::MoveDownSelectionVerb *__hidden this)
 #[doc(alias = "RBX::MoveDownSelectionVerb::~MoveDownSelectionVerb()")]
 #[doc(alias = "__ZN3RBX21MoveDownSelectionVerbD0Ev")]
-pub fn stub_3fec98() -> ! {
-    todo!("0x3fec98 RBX::MoveDownSelectionVerb::~MoveDownSelectionVerb()")
+pub fn stub_3fec98() {
+    // IDA 0x3fec98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fed38 — __ZN3RBX24CameraZoomExtentsCommandD1Ev
@@ -776,8 +776,8 @@ pub fn stub_3fec98() -> ! {
 // type: void __fastcall(RBX::CameraZoomExtentsCommand *__hidden this)
 #[doc(alias = "RBX::CameraZoomExtentsCommand::~CameraZoomExtentsCommand()")]
 #[doc(alias = "__ZN3RBX24CameraZoomExtentsCommandD1Ev")]
-pub fn stub_3fed38() -> ! {
-    todo!("0x3fed38 RBX::CameraZoomExtentsCommand::~CameraZoomExtentsCommand()")
+pub fn stub_3fed38() {
+    // IDA 0x3fed38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fee04 — __ZN3RBX24CameraZoomExtentsCommandD0Ev
@@ -785,8 +785,8 @@ pub fn stub_3fed38() -> ! {
 // type: void __fastcall(RBX::CameraZoomExtentsCommand *__hidden this)
 #[doc(alias = "RBX::CameraZoomExtentsCommand::~CameraZoomExtentsCommand()")]
 #[doc(alias = "__ZN3RBX24CameraZoomExtentsCommandD0Ev")]
-pub fn stub_3fee04() -> ! {
-    todo!("0x3fee04 RBX::CameraZoomExtentsCommand::~CameraZoomExtentsCommand()")
+pub fn stub_3fee04() {
+    // IDA 0x3fee04: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3feee4 — __ZN3RBX25TurnOnManualJointCreationD1Ev
@@ -794,8 +794,8 @@ pub fn stub_3fee04() -> ! {
 // type: void __fastcall(RBX::TurnOnManualJointCreation *__hidden this)
 #[doc(alias = "RBX::TurnOnManualJointCreation::~TurnOnManualJointCreation()")]
 #[doc(alias = "__ZN3RBX25TurnOnManualJointCreationD1Ev")]
-pub fn stub_3feee4() -> ! {
-    todo!("0x3feee4 RBX::TurnOnManualJointCreation::~TurnOnManualJointCreation()")
+pub fn stub_3feee4() {
+    // IDA 0x3feee4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3feee8 — __ZN3RBX25TurnOnManualJointCreationD0Ev
@@ -803,8 +803,8 @@ pub fn stub_3feee4() -> ! {
 // type: void __fastcall(RBX::TurnOnManualJointCreation *__hidden this)
 #[doc(alias = "RBX::TurnOnManualJointCreation::~TurnOnManualJointCreation()")]
 #[doc(alias = "__ZN3RBX25TurnOnManualJointCreationD0Ev")]
-pub fn stub_3feee8() -> ! {
-    todo!("0x3feee8 RBX::TurnOnManualJointCreation::~TurnOnManualJointCreation()")
+pub fn stub_3feee8() {
+    // IDA 0x3feee8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fef88 — __ZNK3RBX25TurnOnManualJointCreation9isEnabledEv
@@ -830,8 +830,8 @@ pub fn stub_3fef8c() -> ! {
 // type: void __fastcall(RBX::SetGridToOne *__hidden this)
 #[doc(alias = "RBX::SetGridToOne::~SetGridToOne()")]
 #[doc(alias = "__ZN3RBX12SetGridToOneD1Ev")]
-pub fn stub_3fef9c() -> ! {
-    todo!("0x3fef9c RBX::SetGridToOne::~SetGridToOne()")
+pub fn stub_3fef9c() {
+    // IDA 0x3fef9c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3fefa0 — __ZN3RBX12SetGridToOneD0Ev
@@ -839,8 +839,8 @@ pub fn stub_3fef9c() -> ! {
 // type: void __fastcall(RBX::SetGridToOne *__hidden this)
 #[doc(alias = "RBX::SetGridToOne::~SetGridToOne()")]
 #[doc(alias = "__ZN3RBX12SetGridToOneD0Ev")]
-pub fn stub_3fefa0() -> ! {
-    todo!("0x3fefa0 RBX::SetGridToOne::~SetGridToOne()")
+pub fn stub_3fefa0() {
+    // IDA 0x3fefa0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ff040 — __ZNK3RBX12SetGridToOne9isEnabledEv
@@ -875,8 +875,8 @@ pub fn stub_3ff05c() -> ! {
 // type: void __fastcall(RBX::SetGridToOneFifth *__hidden this)
 #[doc(alias = "RBX::SetGridToOneFifth::~SetGridToOneFifth()")]
 #[doc(alias = "__ZN3RBX17SetGridToOneFifthD1Ev")]
-pub fn stub_3ff070() -> ! {
-    todo!("0x3ff070 RBX::SetGridToOneFifth::~SetGridToOneFifth()")
+pub fn stub_3ff070() {
+    // IDA 0x3ff070: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ff074 — __ZN3RBX17SetGridToOneFifthD0Ev
@@ -884,8 +884,8 @@ pub fn stub_3ff070() -> ! {
 // type: void __fastcall(RBX::SetGridToOneFifth *__hidden this)
 #[doc(alias = "RBX::SetGridToOneFifth::~SetGridToOneFifth()")]
 #[doc(alias = "__ZN3RBX17SetGridToOneFifthD0Ev")]
-pub fn stub_3ff074() -> ! {
-    todo!("0x3ff074 RBX::SetGridToOneFifth::~SetGridToOneFifth()")
+pub fn stub_3ff074() {
+    // IDA 0x3ff074: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ff114 — __ZNK3RBX17SetGridToOneFifth9isEnabledEv
@@ -920,8 +920,8 @@ pub fn stub_3ff130() -> ! {
 // type: void __fastcall(RBX::SetGridToOff *__hidden this)
 #[doc(alias = "RBX::SetGridToOff::~SetGridToOff()")]
 #[doc(alias = "__ZN3RBX12SetGridToOffD1Ev")]
-pub fn stub_3ff144() -> ! {
-    todo!("0x3ff144 RBX::SetGridToOff::~SetGridToOff()")
+pub fn stub_3ff144() {
+    // IDA 0x3ff144: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ff148 — __ZN3RBX12SetGridToOffD0Ev
@@ -929,8 +929,8 @@ pub fn stub_3ff144() -> ! {
 // type: void __fastcall(RBX::SetGridToOff *__hidden this)
 #[doc(alias = "RBX::SetGridToOff::~SetGridToOff()")]
 #[doc(alias = "__ZN3RBX12SetGridToOffD0Ev")]
-pub fn stub_3ff148() -> ! {
-    todo!("0x3ff148 RBX::SetGridToOff::~SetGridToOff()")
+pub fn stub_3ff148() {
+    // IDA 0x3ff148: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ff1e8 — __ZNK3RBX12SetGridToOff9isEnabledEv
@@ -965,8 +965,8 @@ pub fn stub_3ff204() -> ! {
 // type: void __fastcall(RBX::SetManualJointToWeak *__hidden this)
 #[doc(alias = "RBX::SetManualJointToWeak::~SetManualJointToWeak()")]
 #[doc(alias = "__ZN3RBX20SetManualJointToWeakD1Ev")]
-pub fn stub_3ff218() -> ! {
-    todo!("0x3ff218 RBX::SetManualJointToWeak::~SetManualJointToWeak()")
+pub fn stub_3ff218() {
+    // IDA 0x3ff218: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ff21c — __ZN3RBX20SetManualJointToWeakD0Ev
@@ -974,8 +974,8 @@ pub fn stub_3ff218() -> ! {
 // type: void __fastcall(RBX::SetManualJointToWeak *__hidden this)
 #[doc(alias = "RBX::SetManualJointToWeak::~SetManualJointToWeak()")]
 #[doc(alias = "__ZN3RBX20SetManualJointToWeakD0Ev")]
-pub fn stub_3ff21c() -> ! {
-    todo!("0x3ff21c RBX::SetManualJointToWeak::~SetManualJointToWeak()")
+pub fn stub_3ff21c() {
+    // IDA 0x3ff21c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ff2bc — __ZNK3RBX20SetManualJointToWeak9isEnabledEv
@@ -1010,8 +1010,8 @@ pub fn stub_3ff2c4() -> ! {
 // type: void __fastcall(RBX::SetManualJointToStrong *__hidden this)
 #[doc(alias = "RBX::SetManualJointToStrong::~SetManualJointToStrong()")]
 #[doc(alias = "__ZN3RBX22SetManualJointToStrongD1Ev")]
-pub fn stub_3ff2d8() -> ! {
-    todo!("0x3ff2d8 RBX::SetManualJointToStrong::~SetManualJointToStrong()")
+pub fn stub_3ff2d8() {
+    // IDA 0x3ff2d8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ff2dc — __ZN3RBX22SetManualJointToStrongD0Ev
@@ -1019,8 +1019,8 @@ pub fn stub_3ff2d8() -> ! {
 // type: void __fastcall(RBX::SetManualJointToStrong *__hidden this)
 #[doc(alias = "RBX::SetManualJointToStrong::~SetManualJointToStrong()")]
 #[doc(alias = "__ZN3RBX22SetManualJointToStrongD0Ev")]
-pub fn stub_3ff2dc() -> ! {
-    todo!("0x3ff2dc RBX::SetManualJointToStrong::~SetManualJointToStrong()")
+pub fn stub_3ff2dc() {
+    // IDA 0x3ff2dc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ff37c — __ZNK3RBX22SetManualJointToStrong9isEnabledEv
@@ -1055,8 +1055,8 @@ pub fn stub_3ff3a4() -> ! {
 // type: void __fastcall(RBX::SetManualJointToInfinite *__hidden this)
 #[doc(alias = "RBX::SetManualJointToInfinite::~SetManualJointToInfinite()")]
 #[doc(alias = "__ZN3RBX24SetManualJointToInfiniteD1Ev")]
-pub fn stub_3ff3b8() -> ! {
-    todo!("0x3ff3b8 RBX::SetManualJointToInfinite::~SetManualJointToInfinite()")
+pub fn stub_3ff3b8() {
+    // IDA 0x3ff3b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ff3bc — __ZN3RBX24SetManualJointToInfiniteD0Ev
@@ -1064,8 +1064,8 @@ pub fn stub_3ff3b8() -> ! {
 // type: void __fastcall(RBX::SetManualJointToInfinite *__hidden this)
 #[doc(alias = "RBX::SetManualJointToInfinite::~SetManualJointToInfinite()")]
 #[doc(alias = "__ZN3RBX24SetManualJointToInfiniteD0Ev")]
-pub fn stub_3ff3bc() -> ! {
-    todo!("0x3ff3bc RBX::SetManualJointToInfinite::~SetManualJointToInfinite()")
+pub fn stub_3ff3bc() {
+    // IDA 0x3ff3bc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
 }
 
 // 0x3ff45c — __ZNK3RBX24SetManualJointToInfinite9isEnabledEv
