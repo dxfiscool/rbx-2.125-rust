@@ -439,3 +439,4 @@ pub mod generated_platform_delta;
 pub mod generated_plat_globaldedup_109;
 pub mod generated_watchdog_platform_w15;
 pub mod generated_watchdog_platform_w15b;
+pub mod generated_plat_globaldedup_110;

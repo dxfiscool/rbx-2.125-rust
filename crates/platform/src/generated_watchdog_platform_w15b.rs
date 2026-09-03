@@ -77,7 +77,7 @@ pub fn stub_d2a8b4() -> ! {
 // 0xd2a8b8 — __ZThn12_NK4Ogre14OverlayElement11getMaterialEv — `non-virtual thunk to'Ogre::OverlayElement::getMaterial(void)const
 // type: _DWORD __fastcall(Ogre::OverlayElement *__hidden this)
 #[doc(alias = "__ZThn12_NK4Ogre14OverlayElement11getMaterialEv")]
-#[doc(alias = "`non-virtual thunk to'Ogre::OverlayElement::getMaterial(void)const")]
+#[doc(alias = "non-virtual thunk to Ogre::OverlayElement::getMaterial(void)const")]
 pub fn stub_d2a8b8() -> ! {
     todo!("0xd2a8b8 __ZThn12_NK4Ogre14OverlayElement11getMaterialEv")
 }
