@@ -341,3 +341,6 @@ pub mod generated_script_wdog_1788391020;
 pub mod generated_wdog_script_1788392392;
 pub mod generated_wdog_cron_script;
 pub mod generated_wdog_script2;
+
+pub mod generated_script_wdog3_1788396356;
+pub mod generated_wdog_script3;
