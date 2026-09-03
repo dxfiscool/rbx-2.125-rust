@@ -1511,19 +1511,15 @@ pub struct VorbisDspState {
     pub pcm_current: i32,
     pub pcm_returned: i32,
     pub _w06: i32,
+    pub eofflag: i32,
+    pub l_w: i32,
     pub w: i32,
-    pub _w08_0a: [i32; 3],
+    pub n_w: i32,
     pub center_w: i32,
     pub _w12_15: [i32; 4],
     pub _w16_23: [u32; 8],
     pub backend_state: *mut u8,
 }
-//
-///// vorbis_block — 0x68 bytes / 26 words (IDA 0x6dee8..0x6e6c0, block.c).
-///// +0 pcm, +4 opb, +24 lW, +28 W, +32 nW, +36 pcmend, +40 mode,
-///// +44 eofflag, +48 granulepos, +56 sequence, +64 vd, +68 localstore,
-///// +72 localtop, +76 localalloc, +80 totaluse, +84 reap,
-///// +88 glue/time/floor/res_bits.
 #[repr(C)]
 pub struct VorbisBlock {
     pub pcm: *mut *mut f32,
@@ -1930,7 +1926,7 @@ pub unsafe fn stub_6d4b4(v: *mut VorbisDspState) -> i32 {
     let halfrate = *ci.add(712);
     let center = *ci.add(1) >> (halfrate + 1);
     (*v).center_w = center;
-    (*v).w = 0;
+    (*v).eofflag = 0;
     (*v).pcm_current = center >> halfrate;
     (*v).pcm_returned = -1;
     (*v)._w12_15 = [-1; 4];
@@ -1986,6 +1982,267 @@ pub unsafe fn stub_6d5c8(v: *mut VorbisDspState, n: i32) -> i32 {
     }
 }
 
+// Batch-2 models: codec outsiders (window/mdct/floor/residue/book) plus the
+// FMOD async-thread cluster (IDA 0x6d600..0x70cf0). Layouts mirror the
+// 32-bit ARM target word-for-word; host pointers are wide raw pointers at
+// the same word offsets.
+//
+///// vorbis_block_internal view (backend = dsp word 24; IDA 0x6d600/0x6e078/
+///// 0x6e2c4, 36 bytes): words 0/1 are the mdct log sizes doubling as window
+///// cache keys, words 2/3 the mdct states, word 4 a spare ilog, words 5/6
+///// the floor/residue state arrays, words 7/8 the i64 sequence/granulepos.
+#[repr(C)]
+pub struct VorbisBackendState {
+    pub mdct_log0: i32,
+    pub mdct_log1: i32,
+    pub mdct0: *mut *mut u8,
+    pub mdct1: *mut *mut u8,
+    pub _w04: i32,
+    pub floor_states: *mut *mut u8,
+    pub residue_states: *mut *mut u8,
+    pub seq_gran: i64,
+}
+//
+///// Host seam for the vorbis codec outsiders. window/mdct/floor/residue/
+///// book-init live outside the image (static tables, `_FMOD_floor_P`,
+///// `_FMOD_residue_P`, mdct look — e.g. `_FMOD_vorbis_window_get` has no IDA
+///// symbol, confirmed BADADDR); each method cites its call sites. OOM is
+///// null, exactly like FMOD_OggVorbis_*.
+pub trait VorbisCodecOs: VorbisHeap {
+    /// `_FMOD_vorbis_window_get(key)` (IDA 0x6d600): window table for the
+    /// overlap-add; `key` is the backend log word minus halfrate.
+    fn window_get(&self, key: i32) -> *const f32;
+    /// `FMOD_mdct_init` (IDA 0x6e2c4): init the 20-byte state, 0 on success.
+    fn mdct_init(&mut self, state: *mut u8, n: i32, shift: i32) -> i32;
+    /// `FMOD_mdct_clear` (IDA 0x6e078): tear down `*handle`.
+    fn mdct_clear(&mut self, state: *mut u8);
+    /// floor look via `_FMOD_floor_P[ty] + 8` (IDA 0x6e2c4): decode state for
+    /// floor `ty` (codec_setup word 199+i) with info word 263+i, null on OOM.
+    fn floor_look(&mut self, ty: i32, info: i32) -> *mut u8;
+    /// floor free via `_FMOD_floor_P[ty] + 16` (IDA 0x6e078).
+    fn floor_free(&mut self, ty: i32, state: *mut u8);
+    /// residue look (IDA 0x6e2c4): type at codec_setup word 327+i.
+    fn residue_look(&mut self, ty: i32, info: i32) -> *mut u8;
+    /// residue free (IDA 0x6e078).
+    fn residue_free(&mut self, ty: i32, state: *mut u8);
+    /// `FMOD_vorbis_book_init_decode` (IDA 0x6e2c4): decode a codebook into
+    /// its 44-byte slot from the static book, 0 on success.
+    fn book_init_decode(&mut self, book: *mut u8, sbook: *const u8) -> i32;
+    /// `FMOD_vorbis_staticbook_destroy` (IDA 0x6e2c4).
+    fn staticbook_destroy(&mut self, sbook: *mut u8);
+}
+//
+///// Bit-length of `n - 1`, 0 for `n <= 1` — the `_ilog2` body (IDA 0x6d47c):
+///// unrolled first step included, mirrored by the closed form.
+fn ogg_ilog2(n: i32) -> i32 {
+    if n <= 1 {
+        return 0;
+    }
+    32 - (n - 1).leading_zeros() as i32
+}
+//
+///// Null codec outsiders for tests: a heap-backed `VorbisHeap`, zero window
+///// tables, accepting transforms. `window_get` serves a static 8192-zero
+///// table (the largest Vorbis block); short reads stay in bounds.
+pub struct NullOs {
+    pub heap: VecHeap,
+}
+static NULL_WINDOW: [f32; 8192] = [0.0; 8192];
+impl VorbisHeap for NullOs {
+    fn ogg_malloc(&mut self, bytes: usize) -> *mut u8 {
+        self.heap.ogg_malloc(bytes)
+    }
+    fn ogg_calloc(&mut self, n: usize, bytes: usize) -> *mut u8 {
+        self.heap.ogg_calloc(n, bytes)
+    }
+    fn ogg_realloc(&mut self, ptr: *mut u8, bytes: usize) -> *mut u8 {
+        self.heap.ogg_realloc(ptr, bytes)
+    }
+    fn ogg_free(&mut self, ptr: *mut u8) {
+        self.heap.ogg_free(ptr)
+    }
+}
+impl VorbisCodecOs for NullOs {
+    fn window_get(&self, _key: i32) -> *const f32 {
+        NULL_WINDOW.as_ptr()
+    }
+    fn mdct_init(&mut self, _state: *mut u8, _n: i32, _shift: i32) -> i32 {
+        0
+    }
+    fn mdct_clear(&mut self, _state: *mut u8) {}
+    fn floor_look(&mut self, _ty: i32, _info: i32) -> *mut u8 {
+        self.heap.ogg_malloc(4)
+    }
+    fn floor_free(&mut self, _ty: i32, state: *mut u8) {
+        self.heap.ogg_free(state)
+    }
+    fn residue_look(&mut self, _ty: i32, _info: i32) -> *mut u8 {
+        self.heap.ogg_malloc(4)
+    }
+    fn residue_free(&mut self, _ty: i32, state: *mut u8) {
+        self.heap.ogg_free(state)
+    }
+    fn book_init_decode(&mut self, _book: *mut u8, _sbook: *const u8) -> i32 {
+        0
+    }
+    fn staticbook_destroy(&mut self, _sbook: *mut u8) {}
+}
+//
+///// FMOD::AsyncThread — 344 bytes (IDA 0x70c98/0x70ab4/0x70cf0): intrusive
+///// global-list node (+0/+4, w02 at +8), the FMOD::Thread subobject (+12,
+///// OS-owned, 296 bytes), veteran flag (+308), job queue head/tail/count
+///// (+312/+316/+320), the in-place critical section (+324), the blocking
+///// (+328), pad (+329) and done (+330) flags, and the result queue
+///// head/tail/count (+332/+336/+340).
+#[repr(C)]
+pub struct AsyncThread {
+    pub next: *mut AsyncThread,
+    pub prev: *mut AsyncThread,
+    pub w02: u32,
+    pub thread: [u8; 296],
+    pub veteran: u8,
+    pub _pad309_311: [u8; 3],
+    pub job_head: *mut AsyncJobNode,
+    pub job_tail: *mut AsyncJobNode,
+    pub job_count: u32,
+    pub crit: *mut u8,
+    pub blocking: u8,
+    pub _pad329: u8,
+    pub done: u8,
+    pub _pad331: u8,
+    pub res_head: *mut AsyncJobNode,
+    pub res_tail: *mut AsyncJobNode,
+    pub res_count: u32,
+}
+//
+///// Async queue node (IDA 0x70ab4): intrusive next/prev plus a spare word;
+///// freed back to the MemPool on drain.
+#[repr(C)]
+pub struct AsyncJobNode {
+    pub next: *mut AsyncJobNode,
+    pub prev: *mut AsyncJobNode,
+    pub w02: u32,
+}
+//
+///// Sound-side owner view for `getAsyncThread` (IDA 0x70cf0): only the words
+///// the original touches — the system at +248 (word 62) and the job slot at
+///// +272 (word 68), whose +520 word takes the chosen thread.
+#[repr(C)]
+pub struct AsyncSoundView {
+    pub _pad0: [u8; 248],
+    pub system: *mut u8,
+    pub _pad1: [u8; 20],
+    pub job: *mut AsyncJobSlot,
+}
+//
+///// Job slot view: 520 pad bytes, then the thread word (IDA 0x70cf0).
+#[repr(C)]
+pub struct AsyncJobSlot {
+    pub _pad: [u8; 520],
+    pub thread: *mut AsyncThread,
+}
+//
+///// Host registry for the `gAsyncHead` list (IDA 0x70bbc/0x70cf0) plus its
+///// `dword_130F480` lock. The image threads the head *variable* into the
+///// ring (`last.next = &gAsyncHead`); the host keeps a real circular ring
+///// around an owned sentinel instead — no implemented fn walks past the
+///// sentinel, so every observable link operation matches.
+pub struct AsyncRegistry {
+    pub sentinel: Box<AsyncThread>,
+}
+impl AsyncRegistry {
+    pub fn new() -> Self {
+        let mut s: Box<AsyncThread> = unsafe { Box::new(core::mem::zeroed()) };
+        let ptr = &mut *s as *mut AsyncThread;
+        s.next = ptr;
+        s.prev = ptr;
+        Self { sentinel: s }
+    }
+    fn sentinel_ptr(&mut self) -> *mut AsyncThread {
+        &mut *self.sentinel as *mut AsyncThread
+    }
+    /// IDA 0x70cf0 empty check (`gAsyncHead != &gAsyncHead`).
+    pub fn is_empty(&self) -> bool {
+        self.sentinel.next == &*self.sentinel as *const AsyncThread as *mut AsyncThread
+    }
+    pub fn first(&self) -> *mut AsyncThread {
+        self.sentinel.next
+    }
+    /// IDA 0x70bbc tail insert: node.next = sentinel, node.prev = old tail.
+    pub fn insert_tail(&mut self, node: *mut AsyncThread) {
+        unsafe {
+            let s = self.sentinel_ptr();
+            (*node).next = s;
+            (*node).prev = (*s).prev;
+            (*(*s).prev).next = node;
+            (*s).prev = node;
+        }
+    }
+    /// Unlink `node` and isolate it (IDA 0x70ab4 self-unlink half).
+    pub fn unlink(node: *mut AsyncThread) {
+        unsafe {
+            (*(*node).prev).next = (*node).next;
+            (*(*node).next).prev = (*node).prev;
+            (*node).next = node;
+            (*node).prev = node;
+        }
+    }
+}
+//
+///// Spawn constants for `FMOD::Thread::initThread` (IDA 0x70bbc).
+pub const ASYNC_THREAD_NAME: &str = "FMOD thread for FMOD_NONBLOCKING";
+/// IDA 0x70bbc stack reservation.
+pub const ASYNC_THREAD_STACK: u32 = 49152;
+//
+///// Host seam for the async-thread outsiders: the `dword_130F480` global
+///// lock, the MemPool (provenance strings elided), and FMOD::Thread.
+pub trait AsyncOs {
+    fn crit_enter(&mut self, slot: *mut u8);
+    fn crit_leave(&mut self, slot: *mut u8);
+    /// `FMOD_OS_CriticalSection_Create(slot, 0)` (IDA 0x70bbc): create the
+    /// in-place section, 0 on success.
+    fn crit_create(&mut self, slot: *mut u8) -> i32;
+    fn crit_free(&mut self, slot: *mut u8);
+    /// `FMOD::MemPool::alloc` (IDA 0x70cf0): null = OOM (44 path).
+    fn mem_alloc(&mut self, bytes: usize) -> *mut u8;
+    fn mem_free(&mut self, ptr: *mut u8);
+    /// `FMOD::Thread::Thread` sub-ctor (IDA 0x70c98): its return passes
+    /// straight through the AsyncThread ctor.
+    fn thread_ctor(&mut self, thread: *mut u8) -> i32;
+    /// `FMOD::Thread::initThread` (IDA 0x70bbc): fixed call-site constants
+    /// are `ASYNC_THREAD_NAME`, entry `asyncThreadFunc` (0x70ab0), prio 1,
+    /// flags 0, stack `ASYNC_THREAD_STACK`, affinity 1, extra 0.
+    fn thread_init(&mut self, thread: *mut u8, sys: *mut u8) -> i32;
+    /// `FMOD::Thread::closeThread` (IDA 0x70ab4).
+    fn thread_close(&mut self, thread: *mut u8);
+}
+//
+///// Null async outsiders for tests: locks are no-ops, the pool is a
+///// `VecHeap`, threads always start/construct successfully.
+pub struct NullAsyncOs {
+    pub heap: VecHeap,
+}
+impl AsyncOs for NullAsyncOs {
+    fn crit_enter(&mut self, _slot: *mut u8) {}
+    fn crit_leave(&mut self, _slot: *mut u8) {}
+    fn crit_create(&mut self, _slot: *mut u8) -> i32 {
+        0
+    }
+    fn crit_free(&mut self, _slot: *mut u8) {}
+    fn mem_alloc(&mut self, bytes: usize) -> *mut u8 {
+        self.heap.ogg_malloc(bytes)
+    }
+    fn mem_free(&mut self, ptr: *mut u8) {
+        self.heap.ogg_free(ptr)
+    }
+    fn thread_ctor(&mut self, _thread: *mut u8) -> i32 {
+        0
+    }
+    fn thread_init(&mut self, _thread: *mut u8, _sys: *mut u8) -> i32 {
+        0
+    }
+    fn thread_close(&mut self, _thread: *mut u8) {}
+}
 // 0x6d600 — _FMOD_vorbis_synthesis_blockin
 #[doc(alias = "_FMOD_vorbis_synthesis_blockin")]
 pub fn stub_6d600() -> ! {
@@ -2074,14 +2331,215 @@ pub unsafe fn stub_6e044(vb: *mut VorbisBlock, vd: *mut VorbisDspState) -> i32 {
 
 // 0x6e078 — _FMOD_vorbis_dsp_clear
 #[doc(alias = "_FMOD_vorbis_dsp_clear")]
-pub fn stub_6e078() -> ! {
-    todo!("0x6e078 _FMOD_vorbis_dsp_clear")
+pub unsafe fn stub_6e078(os: &mut impl VorbisCodecOs, dsp: *mut VorbisDspState) -> *mut VorbisDspState {
+    // IDA 0x6e078 (Xiph block.c vorbis_dsp_clear): tear down the backend
+    // (mdct pair, floor/residue states via their type tables), the channel
+    // buffers, the pcm arrays and the backend itself, then zero the 100-byte
+    // dsp state. The disasm settles the decompiler's one-arg Free rendering
+    // (cf. 0x6df94): every site passes (ctx, ptr) — e.g. 0x6e0dc frees the
+    // mdct block (`LDR R1,[R1]`) and 0x6e0ec frees its handle. Floor types
+    // live at codec_setup word 199+i with count at word 4 (disasm 0x6e15c:
+    // `[R10+R4,#0x31C]`); residue types at word 327+i, count at word 5
+    // (0x6e1d0: `[R10+R4,#0x51C]`). Null dsp returns null (callers ignore it).
+    let null = core::ptr::null_mut();
+    if dsp.is_null() {
+        return null;
+    }
+    let vi = (*dsp).vi;
+    let backend = (*dsp).backend_state as *mut VorbisBackendState;
+    let cs: *mut i32 = if vi.is_null() {
+        core::ptr::null_mut()
+    } else {
+        *(vi.add(28) as *const *mut i32)
+    };
+    if !backend.is_null() {
+        for slot in [(*backend).mdct0, (*backend).mdct1] {
+            if !slot.is_null() {
+                let block = *slot;
+                os.mdct_clear(block);
+                os.ogg_free(block);
+                os.ogg_free(slot as *mut u8);
+            }
+        }
+        let floors = (*backend).floor_states;
+        if !floors.is_null() {
+            if !cs.is_null() && *cs.add(4) > 0 {
+                let mut i = 0i32;
+                while i < *cs.add(4) {
+                    os.floor_free(*cs.add(199 + i as usize), *floors.add(i as usize));
+                    i += 1;
+                }
+            }
+            os.ogg_free(floors as *mut u8);
+        }
+        let residues = (*backend).residue_states;
+        if !residues.is_null() {
+            if !cs.is_null() && *cs.add(5) > 0 {
+                let mut i = 0i32;
+                while i < *cs.add(5) {
+                    os.residue_free(*cs.add(327 + i as usize), *residues.add(i as usize));
+                    i += 1;
+                }
+            }
+            os.ogg_free(residues as *mut u8);
+        }
+    }
+    let pcm = (*dsp).pcm;
+    if !pcm.is_null() {
+        if !vi.is_null() {
+            let channels = *(vi.add(4) as *const i32);
+            if channels > 0 {
+                let mut i = 0i32;
+                while i < channels {
+                    let ch = *pcm.add(i as usize);
+                    if !ch.is_null() {
+                        os.ogg_free(ch as *mut u8);
+                    }
+                    i += 1;
+                }
+            }
+        }
+        os.ogg_free(pcm as *mut u8);
+        if !(*dsp).pcmret.is_null() {
+            os.ogg_free((*dsp).pcmret as *mut u8);
+        }
+    }
+    if !backend.is_null() {
+        os.ogg_free(backend as *mut u8);
+    }
+    core::ptr::write_bytes(dsp as *mut u8, 0, 0x64);
+    dsp
 }
 
 // 0x6e2c4 — _FMOD_vorbis_synthesis_init
 #[doc(alias = "_FMOD_vorbis_synthesis_init")]
-pub fn stub_6e2c4() -> ! {
-    todo!("0x6e2c4 _FMOD_vorbis_synthesis_init")
+pub unsafe fn stub_6e2c4(os: &mut impl VorbisCodecOs, dsp: *mut VorbisDspState, vi: *mut u8) -> i32 {
+    // IDA 0x6e2c4 (Xiph block.c vorbis_synthesis_init): build the decode
+    // backend (36-byte block: mdct pair, floor/residue state arrays) and the
+    // per-channel pcm buffers. Decoded codebooks are cached into the
+    // codec_setup (word 711) with their static books destroyed — the setup
+    // is mutated, hence `vi` is `*mut`. Any failure tears everything down
+    // via 0x6e078 and returns -139 (null setup returns 1 the same way).
+    let cs = *(vi.add(28) as *const *mut i32);
+    if cs.is_null() {
+        stub_6e078(os, dsp);
+        return 1;
+    }
+    let hs = *cs.add(712);
+    core::ptr::write_bytes(dsp as *mut u8, 0, 0x64);
+    let backend = os.ogg_calloc(1, 36) as *mut VorbisBackendState;
+    (*dsp).backend_state = backend as *mut u8;
+    if backend.is_null() {
+        stub_6e078(os, dsp);
+        return -139;
+    }
+    (*dsp).vi = vi;
+    (*backend)._w04 = ogg_ilog2(*cs.add(2));
+    let h0 = os.ogg_calloc(1, 4) as *mut *mut u8;
+    (*backend).mdct0 = h0;
+    if h0.is_null() {
+        stub_6e078(os, dsp);
+        return -139;
+    }
+    let h1 = os.ogg_calloc(1, 4) as *mut *mut u8;
+    (*backend).mdct1 = h1;
+    if h1.is_null() {
+        stub_6e078(os, dsp);
+        return -139;
+    }
+    let b0 = os.ogg_calloc(1, 20);
+    *h0 = b0;
+    if b0.is_null() {
+        stub_6e078(os, dsp);
+        return -139;
+    }
+    let b1 = os.ogg_calloc(1, 20);
+    *h1 = b1;
+    if b1.is_null()
+        || os.mdct_init(b0, *cs >> hs, hs) != 0
+        || os.mdct_init(b1, *cs.add(1) >> hs, hs) != 0
+    {
+        stub_6e078(os, dsp);
+        return -139;
+    }
+    (*backend).mdct_log0 = ogg_ilog2(*cs) - 6;
+    (*backend).mdct_log1 = ogg_ilog2(*cs.add(1)) - 6;
+    if (*(cs.add(711) as *const *mut u8)).is_null() {
+        let nbooks = *cs.add(6);
+        let slots = os.ogg_calloc(nbooks as usize, 44);
+        *(cs.add(711) as *mut *mut u8) = slots;
+        if slots.is_null() {
+            stub_6e078(os, dsp);
+            return -139;
+        }
+        let mut i = 0i32;
+        while i < nbooks {
+            let sbook = *(cs.add(455 + i as usize) as *const *mut u8);
+            if os.book_init_decode(slots.add((44 * i) as usize), sbook) != 0 {
+                stub_6e078(os, dsp);
+                return -139;
+            }
+            os.staticbook_destroy(sbook);
+            *(cs.add(455 + i as usize) as *mut *mut u8) = core::ptr::null_mut();
+            i += 1;
+        }
+    }
+    (*dsp)._w03 = *cs.add(1);
+    let channels = *(vi.add(4) as *const i32);
+    let pcm = os.ogg_malloc((4 * channels) as usize) as *mut *mut f32;
+    (*dsp).pcm = pcm as *const *mut f32;
+    if pcm.is_null() {
+        stub_6e078(os, dsp);
+        return -139;
+    }
+    let pcmret = os.ogg_malloc((4 * channels) as usize) as *mut *mut f32;
+    (*dsp).pcmret = pcmret;
+    if pcmret.is_null() {
+        stub_6e078(os, dsp);
+        return -139;
+    }
+    let mut i = 0i32;
+    while i < channels {
+        let buf = os.ogg_calloc((*dsp)._w03 as usize, 4) as *mut f32;
+        *pcm.add(i as usize) = buf;
+        if buf.is_null() {
+            stub_6e078(os, dsp);
+            return -139;
+        }
+        i += 1;
+    }
+    (*dsp).l_w = 0;
+    (*dsp).w = 0;
+    let half = *cs.add(1) / 2;
+    (*dsp).center_w = half;
+    (*dsp).pcm_current = half;
+    let floors = os.ogg_calloc(*cs.add(4) as usize, 4) as *mut *mut u8;
+    (*backend).floor_states = floors;
+    if floors.is_null() {
+        stub_6e078(os, dsp);
+        return -139;
+    }
+    let residues = os.ogg_calloc(*cs.add(5) as usize, 4) as *mut *mut u8;
+    (*backend).residue_states = residues;
+    if residues.is_null() {
+        stub_6e078(os, dsp);
+        return -139;
+    }
+    // IDA 0x6e2c4: look results store unchecked (dsp_clear frees them later,
+    // and Free(null) is safe in the seam).
+    let mut i = 0i32;
+    while i < *cs.add(4) {
+        *floors.add(i as usize) = os.floor_look(*cs.add(199 + i as usize), *cs.add(263 + i as usize));
+        i += 1;
+    }
+    let mut i = 0i32;
+    while i < *cs.add(5) {
+        *residues.add(i as usize) =
+            os.residue_look(*cs.add(327 + i as usize), *cs.add(391 + i as usize));
+        i += 1;
+    }
+    stub_6d4b4(dsp);
+    0
 }
 
 // 0x6e6c0 — _FMOD_vorbis_block_clear
@@ -2968,8 +3426,19 @@ pub unsafe fn stub_701fc(
 
 // 0x70458 — _FMOD_Channel_GetUserData
 #[doc(alias = "_FMOD_Channel_GetUserData")]
-pub fn stub_70458() -> ! {
-    todo!("0x70458 _FMOD_Channel_GetUserData")
+pub unsafe fn stub_70458(
+    ch: *const u8,
+    out: *mut *mut u8,
+    get_user_data: impl FnOnce(*const u8, *mut *mut u8) -> i32,
+) -> i32 {
+    // IDA 0x70458 (fmod.cpp FMOD_Channel_GetUserData): null channel is
+    // FMOD_ERR_INVALID_HANDLE (37); otherwise FMOD::Channel::getUserData —
+    // out of this batch's scope, so the caller supplies it (same seam shape
+    // as the OS/host calls elsewhere in this file).
+    if ch.is_null() {
+        return 37;
+    }
+    get_user_data(ch, out)
 }
 
 // 0x70474 — _FMOD_System_Create
@@ -2986,8 +3455,14 @@ pub fn stub_705cc() -> ! {
 
 // 0x7069c — __ZN4FMOD11AsyncThread7releaseEv
 #[doc(alias = "FMOD::AsyncThread::release(void)")]
-pub fn stub_7069c() -> ! {
-    todo!("0x7069c FMOD::AsyncThread::release(void)")
+pub unsafe fn stub_7069c(t: *mut AsyncThread) -> i32 {
+    // IDA 0x7069c (fmod_async.cpp AsyncThread::release): a blocking thread
+    // (byte 328) is marked done (byte 330) so the worker wakes its waiter.
+    // Always 0; the actual teardown happens in 0x70ab4.
+    if (*t).blocking != 0 {
+        (*t).done = 1;
+    }
+    0
 }
 
 // 0x706b4 — __ZN4FMOD11AsyncThread10threadFuncEv
@@ -3004,32 +3479,148 @@ pub fn stub_70ab0() -> ! {
 
 // 0x70ab4 — __ZN4FMOD11AsyncThread13reallyReleaseEv
 #[doc(alias = "FMOD::AsyncThread::reallyRelease(void)")]
-pub fn stub_70ab4() -> ! {
-    todo!("0x70ab4 FMOD::AsyncThread::reallyRelease(void)")
+pub unsafe fn stub_70ab4(t: *mut AsyncThread, os: &mut impl AsyncOs) -> i32 {
+    // IDA 0x70ab4 (fmod_async.cpp AsyncThread::reallyRelease): drain the
+    // result queue node by node (unlink, isolate, MemPool-free), unlink self
+    // from the global ring, clear the veteran flag, close the worker thread,
+    // free the critical section if present, then free self. Always 0.
+    os.crit_enter((*t).crit);
+    let sentinel = &mut (*t).res_head as *mut *mut AsyncJobNode as *mut AsyncJobNode;
+    let mut node = (*t).res_head;
+    while node != sentinel {
+        let next = (*node).next;
+        let prev = (*node).prev;
+        (*prev).next = next;
+        (*node).next = node;
+        (*next).prev = prev;
+        (*node).prev = node;
+        (*node).w02 = 0;
+        os.mem_free(node as *mut u8);
+        node = next;
+    }
+    os.crit_leave((*t).crit);
+    AsyncRegistry::unlink(t);
+    (*t).w02 = 0;
+    (*t).veteran = 0;
+    os.thread_close((*t).thread.as_mut_ptr());
+    if !(*t).crit.is_null() {
+        os.crit_free((*t).crit);
+    }
+    os.mem_free(t as *mut u8);
+    0
 }
 
 // 0x70bbc — __ZN4FMOD11AsyncThread4initEbPNS_7SystemIE
 #[doc(alias = "FMOD::AsyncThread::init(bool,FMOD::SystemI *)")]
-pub fn stub_70bbc() -> ! {
-    todo!("0x70bbc FMOD::AsyncThread::init(bool,FMOD::SystemI *)")
+pub unsafe fn stub_70bbc(
+    reg: &mut AsyncRegistry,
+    global_lock: *mut u8,
+    t: *mut AsyncThread,
+    blocking: bool,
+    sys: *mut u8,
+    os: &mut impl AsyncOs,
+) -> i32 {
+    // IDA 0x70bbc (fmod_async.cpp AsyncThread::init): latch the blocking
+    // flag, create the in-place critical section, spawn the worker thread
+    // (fixed call-site constants documented on `AsyncOs::thread_init`), then
+    // link into the global ring under its lock. Any failure returns its code
+    // with nothing half-linked.
+    (*t).blocking = blocking as u8;
+    let rc = os.crit_create(&mut (*t).crit as *mut *mut u8 as *mut u8);
+    if rc != 0 {
+        return rc;
+    }
+    let rc = os.thread_init((*t).thread.as_mut_ptr(), sys);
+    if rc != 0 {
+        return rc;
+    }
+    (*t).veteran = 1;
+    os.crit_enter(global_lock);
+    reg.insert_tail(t);
+    os.crit_leave(global_lock);
+    0
 }
 
 // 0x70c98 — __ZN4FMOD11AsyncThreadC2Ev
 #[doc(alias = "FMOD::AsyncThread::AsyncThread(void)")]
-pub fn stub_70c98() -> ! {
-    todo!("0x70c98 FMOD::AsyncThread::AsyncThread(void)")
+pub unsafe fn stub_70c98(t: *mut AsyncThread, os: &mut impl AsyncOs) -> i32 {
+    // IDA 0x70c98 (fmod_async.cpp AsyncThread::AsyncThread): self-link the
+    // global node, clear w02, run the Thread sub-ctor at +12, self-link both
+    // queues onto their sentinels (+312/+332), clear the counts, the crit
+    // word and the veteran/done/pad flags. The Thread::Thread return passes
+    // through untouched.
+    (*t).next = t;
+    (*t).prev = t;
+    (*t).w02 = 0;
+    let rc = os.thread_ctor((*t).thread.as_mut_ptr());
+    // IDA 0x70c98: both queue heads are embedded list heads — head and tail
+    // words point at the head field itself (Linux-list style: the head/tail
+    // pair doubles as the sentinel node's next/prev).
+    (*t).job_head = &mut (*t).job_head as *mut *mut AsyncJobNode as *mut AsyncJobNode;
+    (*t).job_tail = &mut (*t).job_head as *mut *mut AsyncJobNode as *mut AsyncJobNode;
+    (*t).job_count = 0;
+    (*t).res_head = &mut (*t).res_head as *mut *mut AsyncJobNode as *mut AsyncJobNode;
+    (*t).res_tail = &mut (*t).res_head as *mut *mut AsyncJobNode as *mut AsyncJobNode;
+    (*t).res_count = 0;
+    (*t).crit = core::ptr::null_mut();
+    (*t).veteran = 0;
+    (*t)._pad329 = 0;
+    (*t).done = 0;
+    rc
 }
 
 // 0x70cec — __ZN4FMOD11AsyncThreadC1Ev
 #[doc(alias = "FMOD::AsyncThread::AsyncThread(void)")]
-pub fn stub_70cec() -> ! {
-    todo!("0x70cec FMOD::AsyncThread::AsyncThread(void)")
+pub unsafe fn stub_70cec(t: *mut AsyncThread, os: &mut impl AsyncOs) -> i32 {
+    // IDA 0x70cec: thunk tail-calling C2.
+    stub_70c98(t, os)
 }
 
 // 0x70cf0 — __ZN4FMOD11AsyncThread14getAsyncThreadEPNS_6SoundIE
 #[doc(alias = "FMOD::AsyncThread::getAsyncThread(FMOD::SoundI *)")]
-pub fn stub_70cf0() -> ! {
-    todo!("0x70cf0 FMOD::AsyncThread::getAsyncThread(FMOD::SoundI *)")
+pub unsafe fn stub_70cf0(
+    reg: &mut AsyncRegistry,
+    global_lock: *mut u8,
+    owner: *mut AsyncSoundView,
+    os: &mut impl AsyncOs,
+) -> i32 {
+    // IDA 0x70cf0 (fmod_async.cpp getAsyncThread): take the head thread when
+    // the ring is non-empty, else alloc (344) + construct + init one. Either
+    // way the chosen thread lands in the owner's +520 slot; a null owner
+    // just reports 0. The adjacent crit enter/leave on the chosen node is a
+    // net no-op but both calls are observable to the OS seam, so both stay.
+    // `a2` (SoundI*) is never read by the original.
+    os.crit_enter(global_lock);
+    let chosen = if !reg.is_empty() {
+        let head = reg.first();
+        os.crit_enter((*head).crit);
+        os.crit_leave((*head).crit);
+        os.crit_leave(global_lock);
+        head
+    } else {
+        os.crit_leave(global_lock);
+        let t = os.mem_alloc(344) as *mut AsyncThread;
+        if t.is_null() {
+            return 44;
+        }
+        stub_70c98(t, os);
+        let sys = if owner.is_null() {
+            core::ptr::null_mut()
+        } else {
+            (*owner).system
+        };
+        let rc = stub_70bbc(reg, global_lock, t, false, sys, os);
+        if rc != 0 {
+            // BUG-compat: the original leaks the constructed thread here.
+            return rc;
+        }
+        t
+    };
+    if owner.is_null() {
+        return 0;
+    }
+    (*(*owner).job).thread = chosen;
+    0
 }
 
 // 0x70ddc — __ZN4FMOD11AsyncThread8shutDownEv
