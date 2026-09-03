@@ -452,3 +452,4 @@ pub mod generated_plat_globaldedup_116;
 pub mod generated_watchdog_plat_a;
 pub mod generated_watchdog_plat_b;
 pub mod generated_watchdog_plat_wd2a;
+pub mod generated_platform_part_a;

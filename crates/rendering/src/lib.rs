@@ -647,3 +647,4 @@ pub mod generated_watchdog_rend_wd2b;
 pub mod generated_503;
 pub mod generated_504;
 pub mod generated_rbx_rendering_part_a;
+pub mod generated_505;
