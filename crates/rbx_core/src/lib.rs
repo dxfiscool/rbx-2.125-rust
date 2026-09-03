@@ -40,3 +40,4 @@ pub mod generated_core_bg11;
 pub mod generated_core_bg12;
 pub mod generated_core_bg13;
 pub mod generated_core_bg14;
+pub mod generated_core_bg15;
