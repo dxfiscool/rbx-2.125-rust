@@ -307,3 +307,4 @@ pub mod generated_script_gap_c9c1d0;
 pub mod generated_watchdog_script_w12;
 pub mod generated_script_delta;
 pub mod generated_lua_gap_e9f794;
+pub mod generated_watchdog_script_wdN;
