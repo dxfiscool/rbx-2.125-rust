@@ -574,3 +574,5 @@ pub mod generated_wdog_coreB2;
 pub mod generated_wdog_cron_coreA;
 pub mod generated_core_bg10;
 pub mod generated_core_shard_ox;
+pub mod generated_core_shard_oy;
+pub mod generated_wdog_coreB3;
