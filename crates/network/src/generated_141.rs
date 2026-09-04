@@ -472,178 +472,235 @@ pub fn stub_11af4(set: impl Fn(i32), value: i32) {
     // IDA 0x11af4: GetSetImpl<ShadowMode>::setValue — same member-setter dispatch as 0x106e8; the setter travels as a closure.
         set(value);}
 
+
+/// AASamples `readValue` core — same template as 0x102cc; int cells go
+/// through the AASamples setIntValue port (0x12520).
+pub fn enum_prop_read_value_aas(desc: &EnumDescModel, value: XmlPropValue, set: impl Fn(i32)) {
+    match value {
+        XmlPropValue::Nil => {}
+        XmlPropValue::Int(i) => {
+            stub_12520(desc, i, &set);
+        }
+        XmlPropValue::Text(s) => {
+            let mut v = 0;
+            if crate::generated_139::stub_cc34(desc, &s, &mut v) {
+                set(v);
+            } else if s.is_empty() {
+                set(0);
+            }
+        }
+        XmlPropValue::Other => {}
+    }
+}
+
 // 0x11b18 — __ZN3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EEC2I19CRenderSettingsItemEEPKcS7_MT_SsNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundProp<CRenderSettingsItem>(char const*,char const*,std::string  CRenderSettingsItem::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_11b18() -> ! {
-    todo!("0x11b18 __ZN3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EEC2I19CRenderSettingsItemEEPKcS7_MT_SsNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_11b18() {
+    // IDA 0x11b18: BoundProp<string> C2 — classDescriptor ensure (0x11b3e), TypedPropertyDescriptor<string> attach (0x11ba0..0x11baa), vtable install (0x11bbe), 0x14 BoundPropGetSet holder with member offset (0x11bcc..0x11c02), attribute bits from impl queries (0x11c12..0x11c38); the descriptor heap lives engine-side — faithful no-op shell.
 }
 
 // 0x11ca8 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::isReadOnly(void)const")]
-pub fn stub_11ca8() -> ! {
-    todo!("0x11ca8 __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE10isReadOnlyEv")
-}
+pub fn stub_11ca8() -> bool {
+    // IDA 0x11ca8: BoundPropGetSet<string>::isReadOnly — returns 0 (0x11caa).
+    false}
 
 // 0x11cac — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::isWriteOnly(void)const")]
-pub fn stub_11cac() -> ! {
-    todo!("0x11cac __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE11isWriteOnlyEv")
-}
+pub fn stub_11cac() -> bool {
+    // IDA 0x11cac: BoundPropGetSet<string>::isWriteOnly — returns 0 (0x11cae).
+    false}
 
 // 0x11cb0 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(std::string *, int, int)
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_11cb0() -> ! {
-    todo!("0x11cb0 __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8getValueEPKNS0_13DescribedBaseE")
-}
+pub fn stub_11cb0(get: impl Fn() -> String) -> String {
+    // IDA 0x11cb0: BoundPropGetSet<string>::getValue — Described-36 adjust when obj != 0 (0x11cb6..0x11cb8), member string copy-out (0x11cc6); the member address travels as a getter closure, the std::string out-param as the return.
+    get()}
 
 // 0x11cc8 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8setValueEPNS0_13DescribedBaseERKSs
 // type: int __fastcall(int, int, std::string *this)
 #[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_11cc8() -> ! {
-    todo!("0x11cc8 __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8setValueEPNS0_13DescribedBaseERKSs")
-}
+pub fn stub_11cc8(current: &mut String, value: String) -> bool {
+    // IDA 0x11cc8: BoundPropGetSet<string>::setValue — member adjust (0x11cd6..0x11ce0), compare (0x11ce6); same returns 0 (0x11d1a), different assigns (0x11cf0) + optional setter-notify (0x11cf4..0x11d12) + raisePropertyChanged (0x11d2a). The host assigns and reports changed; notification folds into emit_prop_changed at the call site.
+    if *current != value {
+        *current = value;
+        true
+    } else {
+        false
+    }}
 
 // 0x11d30 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::EnumPropDescriptor<RBX::CRenderSettings::AASamples (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AASamples)>(char const*,char const*,RBX::CRenderSettings::AASamples (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AASamples),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_11d30() -> ! {
-    todo!("0x11d30 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
-}
+pub fn stub_11d30() {
+    // IDA 0x11d30: EnumPropDescriptor<CRenderSettingsItem,AASamples> C2 — same template as 0xfe84 (classDescriptor ensure, EnumDesc singleton call_once + doGet, PropertyDescriptor attach); the descriptor heap lives engine-side — faithful no-op shell.
+    }
 
 // 0x11ee4 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEED0Ev
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::~EnumPropDescriptor()")]
-pub fn stub_11ee4() -> ! {
-    todo!("0x11ee4 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEED0Ev")
-}
+pub fn stub_11ee4() {
+    // IDA 0x11ee4: EnumPropDescriptor D0 — same template as 0x10038 (vtable reset, impl-holder delete when non-null, operator delete); drops with Rust ownership.
+    }
 
 // 0x11f10 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10isReadOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::isReadOnly(void)const")]
-pub fn stub_11f10() -> ! {
-    todo!("0x11f10 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10isReadOnlyEv")
-}
+pub fn stub_11f10() -> bool {
+    // IDA 0x11f10: EnumPropDescriptor::isReadOnly — same forward-to-impl template as 0x10064; the AASamples impl answers 0.
+        false}
 
 // 0x11f20 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE11isWriteOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::isWriteOnly(void)const")]
-pub fn stub_11f20() -> ! {
-    todo!("0x11f20 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE11isWriteOnlyEv")
-}
+pub fn stub_11f20() -> bool {
+    // IDA 0x11f20: EnumPropDescriptor::isWriteOnly — same forward-to-impl template as 0x10074; the AASamples impl answers 0.
+        false}
 
 // 0x11f30 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE11equalValuesEPKNS0_13DescribedBaseES8_
 // type: bool __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_11f30() -> ! {
-    todo!("0x11f30 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE11equalValuesEPKNS0_13DescribedBaseES8_")
-}
+pub fn stub_11f30(a: i32, b: i32) -> bool {
+    // IDA 0x11f30: EnumPropDescriptor::equalValues — same get-vs-get template as 0x10084; the host compares carried values directly.
+        a == b}
 
 // 0x11f58 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_11f58() -> ! {
-    todo!("0x11f58 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
-}
+pub fn stub_11f58(get: impl Fn() -> i32) -> i32 {
+    // IDA 0x11f58: EnumPropDescriptor::getVariant — same get + int-Variant-wrap template as 0x100ac; the host carries the int.
+        get()}
 
 // 0x11f7c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_11f7c() -> ! {
-    todo!("0x11f7c __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")
-}
+pub fn stub_11f7c(value: i32, set: impl Fn(i32)) {
+    // IDA 0x11f7c: EnumPropDescriptor::setVariant — same any_cast/convert + setter template as 0x100d0; the host carries the int.
+        set(value);}
 
 // 0x120cc — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE9copyValueEPKNS0_13DescribedBaseEPS6_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_120cc() -> ! {
-    todo!("0x120cc __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE9copyValueEPKNS0_13DescribedBaseEPS6_")
-}
+pub fn stub_120cc(get: impl Fn() -> i32, set: impl Fn(i32)) {
+    // IDA 0x120cc: EnumPropDescriptor::copyValue — same get-then-set template as 0x10220.
+        let v = get();
+    set(v);}
 
 // 0x120f0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE14hasStringValueEv
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::hasStringValue(void)const")]
-pub fn stub_120f0() -> ! {
-    todo!("0x120f0 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE14hasStringValueEv")
-}
+pub fn stub_120f0() -> bool {
+    // IDA 0x120f0: EnumPropDescriptor::hasStringValue — same 1-return template as 0x10244.
+        true}
 
 // 0x120f4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_120f4() -> ! {
-    todo!("0x120f4 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE14getStringValueEPKNS0_13DescribedBaseE")
-}
+pub fn stub_120f4(desc: &EnumDescModel, get: impl Fn() -> i32, out: &mut String) {
+    // IDA 0x120f4: EnumPropDescriptor::getStringValue — same get + convertToString template as 0x10248 (disasm: +0x2C/+0x30 loads, get via +8, convertToString call); delegates to the 0xc76c port.
+        crate::generated_139::stub_c76c(desc, get(), out);}
 
 // 0x12118 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_12118() -> ! {
-    todo!("0x12118 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE14setStringValueEPNS0_13DescribedBaseERKSs")
-}
+pub fn stub_12118(desc: &EnumDescModel, name: &str, set: impl Fn(i32)) -> bool {
+    // IDA 0x12118: EnumPropDescriptor::setStringValue — same lookup + convertToValue + set template as 0x1026c/0x105d0; delegates to the 0xcc34 port.
+        let mut v = 0;
+    if crate::generated_139::stub_cc34(desc, name, &mut v) {
+        set(v);
+        true
+    } else {
+        false
+    }}
 
 // 0x12158 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_12158() -> ! {
-    todo!("0x12158 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")
-}
+pub fn stub_12158(get: impl Fn() -> i32) -> (u32, i32) {
+    // IDA 0x12158: EnumPropDescriptor::writeValue — same get + kind-tag-5 template as 0x102ac; the (kind, value) outputs travel as a pair.
+        (5, get())}
 
 // 0x12178 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 // type: int __fastcall(int, int, XmlElement *this)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_12178() -> ! {
-    todo!("0x12178 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
-}
+pub fn stub_12178(desc: &EnumDescModel, value: XmlPropValue, set: impl Fn(i32)) {
+    // IDA 0x12178: EnumPropDescriptor::readValue — same xsi-nil/int/string template as 0x102cc; delegates int cells to the 0x10674 port and string cells to the 0xcc34 port (XmlPropValue carrier is shared from generated_140).
+        enum_prop_read_value_aas(desc, value, set);}
 
 // 0x123b8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_123b8() -> ! {
-    todo!("0x123b8 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE13getIndexValueEPKNS0_13DescribedBaseE")
-}
+pub fn stub_123b8(desc: &EnumDescModel, get: impl Fn() -> i32) -> i32 {
+    // IDA 0x123b8: EnumPropDescriptor::getIndexValue — same get + convertToIndex template as 0x1050c; delegates to the 0x10604 port.
+        stub_124b0(desc, get())}
 
 // 0x123d4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_123d4() -> ! {
-    todo!("0x123d4 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE13setIndexValueEPNS0_13DescribedBaseEm")
-}
+pub fn stub_123d4(desc: &EnumDescModel, index: usize, set: impl Fn(i32)) -> bool {
+    // IDA 0x123d4: EnumPropDescriptor::setIndexValue — same legacy bound-check + set template as 0x10528.
+        if let Some(&v) = desc.legacy.get(index) {
+        set(v);
+        true
+    } else {
+        false
+    }}
 
 // 0x12408 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_12408() -> ! {
-    todo!("0x12408 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE12getEnumValueEPKNS0_13DescribedBaseE")
-}
+pub fn stub_12408(get: impl Fn() -> i32) -> i32 {
+    // IDA 0x12408: EnumPropDescriptor::getEnumValue — same impl-slot get template as 0x1055c.
+        get()}
 
 // 0x12410 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_12410() -> ! {
-    todo!("0x12410 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE12setEnumValueEPNS0_13DescribedBaseEi")
-}
+pub fn stub_12410(desc: &EnumDescModel, value: i32, set: impl Fn(i32)) -> bool {
+    // IDA 0x12410: EnumPropDescriptor::setEnumValue — same find_if + set template as 0x10564; the host searches pairs.
+        if desc.pairs.iter().any(|(v, _)| *v == value) {
+        set(value);
+        true
+    } else {
+        false
+    }}
 
 // 0x1245c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_1245c() -> ! {
-    todo!("0x1245c __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE11getEnumItemEPKNS0_13DescribedBaseE")
-}
+pub fn stub_1245c(desc: &EnumDescModel, get: impl Fn() -> i32) -> i32 {
+    // IDA 0x1245c: EnumPropDescriptor::getEnumItem — same get + convertToItem template as 0x105b0; delegates to the 0xc9d8 port.
+        crate::generated_139::stub_c9d8(desc, get())}
 
 // 0x1247c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_1247c() -> ! {
-    todo!("0x1247c __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")
-}
+pub fn stub_1247c(desc: &EnumDescModel, name: &str, set: impl Fn(i32)) -> bool {
+    // IDA 0x1247c: EnumPropDescriptor::setStringValue — same lookup + convertToValue + set template as 0x1026c/0x105d0; delegates to the 0xcc34 port.
+        let mut v = 0;
+    if crate::generated_139::stub_cc34(desc, name, &mut v) {
+        set(v);
+        true
+    } else {
+        false
+    }}
 
 // 0x124b0 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToIndexES3_
 // type: int(void)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToIndex(RBX::CRenderSettings::AASamples)const")]
-pub fn stub_124b0() -> ! {
-    todo!("0x124b0 __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToIndexES3_")
-}
+pub fn stub_124b0(desc: &EnumDescModel, value: i32) -> i32 {
+    // IDA 0x124b0: EnumDesc<AASamples>::convertToIndex — same assert + index-vector template as 0x10604 (value>=0, enumconverter.h:350); host pairs-position search on dense tables.
+        desc.pairs.iter().position(|(v, _)| *v == value).map(|p| p as i32).unwrap_or(-1)}
 
 // 0x12520 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE11setIntValueEPNS0_13DescribedBaseEi
 // type: int(void)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_12520() -> ! {
-    todo!("0x12520 __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE11setIntValueEPNS0_13DescribedBaseEi")
-}
+pub fn stub_12520(desc: &EnumDescModel, index: i32, set: impl Fn(i32)) -> bool {
+    // IDA 0x12520: EnumPropDescriptor::setIntValue — same table + -1-sentinel + set template as 0x10674.
+        if index >= 0 {
+        if let Some(&(v, _)) = desc.pairs.get(index as usize) {
+            if v != -1 {
+                set(v);
+                return true;
+            }
+        }
+    }
+    false}
 
 // 0x12560 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::GetSetImpl<RBX::CRenderSettings::AASamples (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AASamples)>::isReadOnly(void)const")]
