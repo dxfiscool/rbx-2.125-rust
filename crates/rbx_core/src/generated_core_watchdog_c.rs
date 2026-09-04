@@ -1166,11 +1166,18 @@ pub mod camera_enum {
     /// per-argument descriptor boxes (`a1[12]` for arity 1, `a1[12..14]` for
     /// arity 3 — `[INFERENCE]` contents); `signatures` is the
     /// `SignatureDescriptor::Item` list at `+8` cleared by every dtor.
+    /// `member_*` is the bound member-function-pointer pair at `+40`
+    /// (`__PAIR64__` in the C2); `arg_names`/`arg_types` are the declared
+    /// signature arguments (`SignatureDescriptor::addArgument` entries).
     #[derive(Debug, Default)]
     pub struct BoundFuncDescriptor {
         pub vtable: &'static str,
         pub arg_boxes: Vec<Option<Box<[u8]>>>,
         pub signatures: Vec<String>,
+        pub member_func: usize,
+        pub member_adj: usize,
+        pub arg_names: Vec<String>,
+        pub arg_types: Vec<&'static str>,
     }
 
     impl BoundFuncDescriptor {
@@ -1437,6 +1444,7 @@ pub mod camera_enum {
                 vtable: BOUND_VOID_FLOAT_VTAB,
                 arg_boxes: vec![Some(vec![1u8].into_boxed_slice())],
                 signatures: vec![String::from("float")],
+                ..Default::default()
             };
             BoundFuncDescriptor::destroy(&mut b, Some(BOUND_VOID_FLOAT_VTAB), 1);
             assert_eq!(b.vtable, FUNCTION_DESC_VTAB);
@@ -1773,6 +1781,245 @@ pub mod camera_event {
             let slot = FakeSlot { seen: AtomicBool::new(false) };
             execute1_bool(&slot, true);
             assert!(slot.seen.load(Ordering::SeqCst));
+        }
+    }
+}
+
+/// Batch 7: 10 IDA-grounded ports 0x3ce4dc-0x3cf240 — the `Camera`
+/// `BoundFuncDesc` constructors (member pair + default variants +
+/// `declareSignature`), `declareSignature` bodies, deleting D0s, `execute`
+/// dispatch, and `Call3/Call1Helper::call`. Ports live in `camera_boundfunc`;
+/// descriptor storage reuses `camera_enum::BoundFuncDescriptor` (extended with
+/// the `+40` member pair + declared args).
+/// Conventions: `G3D::CoordinateFrame` = 12xf32 (`Matrix3` + translation);
+/// member-function dispatch reuses the canonical `(adj >> 1)` + virtual-bit
+/// rule; `ArgHelper::getArg` traffic collapses into typed parameters; callee
+/// bodies are hook traits. `[INFERENCE]` marks what the binary does not pin
+/// down; everything else follows the IDA pseudocode branch-for-branch.
+pub mod camera_boundfunc {
+    use super::billboard_prop::resolve_target;
+    use super::camera_enum::BoundFuncDescriptor;
+    use std::ffi::CStr;
+    use std::os::raw::c_char;
+
+    /// was: `G3D::CoordinateFrame` — 48 bytes: `Matrix3` (9xf32) + translation
+    /// (3xf32). IDA 0x3ce94c copies both halves (`Matrix3::Matrix3` + 12-byte tail).
+    #[derive(Debug, Clone, Copy, PartialEq, Default)]
+    #[repr(C)]
+    pub struct CoordinateFrame {
+        pub rot: [f32; 9],
+        pub trans: [f32; 3],
+    }
+
+    fn cstr_name(ptr: *const c_char) -> String {
+        if ptr.is_null() {
+            String::new()
+        } else {
+            unsafe { CStr::from_ptr(ptr).to_string_lossy().into_owned() }
+        }
+    }
+
+    /// Shared `BoundFuncDesc<Camera, ...>::BoundFuncDesc` core (IDA 0x3ce4dc
+    /// arity 3 + 0x3cef84 arity 1 — same template: classDescriptor ensure,
+    /// `FunctionDescriptor` base init, vtable install, `__PAIR64__` member pair
+    /// at `+40`, zeroed arg boxes, per-arg `void`-singleton defaults, then
+    /// `declareSignature` with the caller names).
+    pub unsafe fn construct(
+        slot: *mut BoundFuncDescriptor,
+        vtable: &'static str,
+        member_func: usize,
+        member_adj: usize,
+        ret_type: &'static str,
+        args: &[(&str, &'static str)],
+    ) -> *mut BoundFuncDescriptor {
+        let this = &mut *slot;
+        this.vtable = vtable;
+        this.member_func = member_func;
+        this.member_adj = member_adj;
+        this.arg_boxes = args.iter().map(|_| None).collect();
+        this.arg_names = args.iter().map(|(n, _)| n.to_string()).collect();
+        this.arg_types = std::iter::once(ret_type).chain(args.iter().map(|(_, t)| *t)).collect();
+        this.signatures = args.iter().map(|(n, t)| format!("{}: {}", n, t)).collect();
+        slot
+    }
+
+    /// Shared `declareSignature` core (IDA 0x3ce6f4 arity 3; the 1-arg
+    /// instantiations are the same template with one `addArgument`): sets the
+    /// return type and appends one `name: type` entry per argument.
+    pub unsafe fn declare_signature(
+        desc: *mut BoundFuncDescriptor,
+        ret_type: &'static str,
+        args: &[(*const c_char, &'static str)],
+    ) {
+        let this = &mut *desc;
+        if this.arg_types.is_empty() {
+            this.arg_types.push(ret_type);
+        } else {
+            this.arg_types[0] = ret_type;
+        }
+        for (name_ptr, ty) in args {
+            let name = cstr_name(*name_ptr);
+            this.arg_names.push(name.clone());
+            this.arg_types.push(*ty);
+            this.signatures.push(format!("{}: {}", name, ty));
+        }
+    }
+
+    /// was: bound `void (Camera::*)(CoordinateFrame, CoordinateFrame, float)` —
+    /// the `Call3Helper` callee (IDA 0x3ce94c): member dispatch
+    /// (`this + (adj >> 1)`, virtual branch), 48-byte CF copies, then the call.
+    pub trait FnCameraCf3 {
+        fn call(&self, this: *const u8, a: &CoordinateFrame, b: &CoordinateFrame, c: f32);
+    }
+
+    /// was: bound `bool (Camera::*)(int)` — the `Call1Helper` callee
+    /// (IDA 0x3cf240): member dispatch, `call(this, arg)`, bool out.
+    pub trait FnCameraIntBool {
+        fn call(&self, this: *const u8, arg: i32) -> bool;
+    }
+
+    /// IDA 0x3ce848 `BoundFuncDesc::execute` (arity 3): derived `a2 - 36`,
+    /// member pair from `+40`, three `ArgHelper::getArg`s, `Call3Helper::call`.
+    pub unsafe fn execute_cf3(
+        desc: &BoundFuncDescriptor,
+        obj: *const u8,
+        a: &CoordinateFrame,
+        b: &CoordinateFrame,
+        c: f32,
+        callee: &dyn FnCameraCf3,
+    ) {
+        let derived = if obj.is_null() {
+            obj
+        } else {
+            obj.wrapping_sub(super::billboard_ref::BASE_TO_DERIVED)
+        };
+        let this = (derived as usize).wrapping_add(desc.member_adj >> 1) as *const u8;
+        let _ = unsafe { resolve_target(
+            super::billboard_prop::MemberPtr { func: desc.member_func, adj: desc.member_adj },
+            this,
+        ) };
+        callee.call(this, a, b, c)
+    }
+
+    /// IDA 0x3cf200 `BoundFuncDesc::execute` (arity 1): derived `a2 - 36`,
+    /// member pair from `+40`, `ArgHelper::getArg<int, 1>`, `Call1Helper::call`.
+    pub unsafe fn execute_int_bool(
+        desc: &BoundFuncDescriptor,
+        obj: *const u8,
+        arg: i32,
+        callee: &dyn FnCameraIntBool,
+    ) -> bool {
+        let derived = if obj.is_null() {
+            obj
+        } else {
+            obj.wrapping_sub(super::billboard_ref::BASE_TO_DERIVED)
+        };
+        let this = (derived as usize).wrapping_add(desc.member_adj >> 1) as *const u8;
+        let _ = unsafe { resolve_target(
+            super::billboard_prop::MemberPtr { func: desc.member_func, adj: desc.member_adj },
+            this,
+        ) };
+        callee.call(this, arg)
+    }
+
+    /// IDA 0x3ce94c `Call3Helper::call`: `(adj >> 1)` adjust + virtual branch
+    /// (same member rule), 48-byte CF copies (borrowed here), then the call.
+    /// `this` is already the derived `Camera*` (no DescribedBase bias).
+    pub unsafe fn call_cf3(
+        this: *const u8,
+        member_func: usize,
+        member_adj: usize,
+        a: &CoordinateFrame,
+        b: &CoordinateFrame,
+        c: f32,
+        callee: &dyn FnCameraCf3,
+    ) {
+        let adjusted = (this as usize).wrapping_add(member_adj >> 1) as *const u8;
+        let _ = resolve_target(
+            super::billboard_prop::MemberPtr { func: member_func, adj: member_adj },
+            adjusted,
+        );
+        callee.call(adjusted, a, b, c)
+    }
+
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+        use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
+
+        struct FakeCf3 {
+            calls: AtomicUsize,
+            last_c: AtomicBool,
+        }
+        impl FnCameraCf3 for FakeCf3 {
+            fn call(&self, _: *const u8, a: &CoordinateFrame, b: &CoordinateFrame, c: f32) {
+                assert_eq!(a.rot[0], 1.0);
+                assert_eq!(b.trans[2], 3.0);
+                self.calls.fetch_add(1, Ordering::SeqCst);
+                self.last_c.store(c > 0.0, Ordering::SeqCst);
+            }
+        }
+        struct FakeIntBool;
+        impl FnCameraIntBool for FakeIntBool {
+            fn call(&self, _: *const u8, arg: i32) -> bool {
+                arg != 0
+            }
+        }
+
+        fn cf3_desc() -> BoundFuncDescriptor {
+            BoundFuncDescriptor {
+                vtable: super::super::camera_enum::BOUND_VOID_CF3_VTAB,
+                member_func: 0,
+                member_adj: 0,
+                ..Default::default()
+            }
+        }
+
+        #[test]
+        fn construct_declare_execute_cf3() {
+            let mut slot = BoundFuncDescriptor::default();
+            unsafe {
+                construct(
+                    &mut slot,
+                    super::super::camera_enum::BOUND_VOID_CF3_VTAB,
+                    0x40,
+                    0,
+                    "void",
+                    &[
+                        ("a", "CoordinateFrame"),
+                        ("b", "CoordinateFrame"),
+                        ("c", "float"),
+                    ],
+                );
+            }
+            assert_eq!(slot.vtable, super::super::camera_enum::BOUND_VOID_CF3_VTAB);
+            assert_eq!((slot.member_func, slot.member_adj), (0x40, 0));
+            assert_eq!(slot.signatures.len(), 3);
+            let f = FakeCf3 { calls: AtomicUsize::new(0), last_c: AtomicBool::new(false) };
+            let mut a = CoordinateFrame::default();
+            let mut b = CoordinateFrame::default();
+            a.rot[0] = 1.0;
+            b.trans[2] = 3.0;
+            let mut d = cf3_desc();
+            d.member_func = 0;
+            unsafe {
+                execute_cf3(&d, 0x100 as *const u8, &a, &b, 1.5, &f);
+            }
+            assert_eq!(f.calls.load(Ordering::SeqCst), 1);
+            assert!(f.last_c.load(Ordering::SeqCst));
+        }
+
+        #[test]
+        fn execute_int_bool_roundtrip() {
+            let d = BoundFuncDescriptor {
+                vtable: super::super::camera_enum::BOUND_BOOL_INT_VTAB,
+                ..Default::default()
+            };
+            let f = FakeIntBool;
+            unsafe {
+                assert!(execute_int_bool(&d, 0x100 as *const u8, 7, &f));
+                assert!(!execute_int_bool(&d, std::ptr::null(), 0, &f));
+            }
         }
     }
 }
@@ -3024,71 +3271,154 @@ pub fn stub_3ce4c8(source: *const u8, sig: &dyn camera_event::VoidSignal) {
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(G3D::CoordinateFrame,G3D::CoordinateFrame,float),3>::BoundFuncDesc(void (RBX::Camera::*)(G3D::CoordinateFrame,G3D::CoordinateFrame,float),char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // 0x3ce4dc — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvN3G3D15CoordinateFrameES4_fELi3EEC2EMS2_FvS4_S4_fEPKcSA_SA_SA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, unsigned int, int, int, int, int, int, int, int, int)
-pub fn stub_3ce4dc() -> ! {
-    todo!("0x3ce4dc __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvN3G3D15CoordinateFrameES4_fELi3EEC2EMS2_FvS4_S4_fEPKcSA_SA_SA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+pub unsafe fn stub_3ce4dc(
+    slot: *mut camera_enum::BoundFuncDescriptor,
+    member_func: usize,
+    member_adj: usize,
+    n0: *const std::os::raw::c_char,
+    n1: *const std::os::raw::c_char,
+    n2: *const std::os::raw::c_char,
+) -> *mut camera_enum::BoundFuncDescriptor {
+    // IDA 0x3ce4dc: base init + off_12405E8 + PAIR64 member + void defaults + declare.
+    let a0 = if n0.is_null() { String::new() } else { std::ffi::CStr::from_ptr(n0).to_string_lossy().into_owned() };
+    let a1 = if n1.is_null() { String::new() } else { std::ffi::CStr::from_ptr(n1).to_string_lossy().into_owned() };
+    let a2 = if n2.is_null() { String::new() } else { std::ffi::CStr::from_ptr(n2).to_string_lossy().into_owned() };
+    camera_boundfunc::construct(
+        slot,
+        camera_enum::BOUND_VOID_CF3_VTAB,
+        member_func,
+        member_adj,
+        "void",
+        &[
+            (a0.as_str(), "CoordinateFrame"),
+            (a1.as_str(), "CoordinateFrame"),
+            (a2.as_str(), "float"),
+        ],
+    )
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(G3D::CoordinateFrame,G3D::CoordinateFrame,float),3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
 // 0x3ce6f4 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvN3G3D15CoordinateFrameES4_fELi3EE16declareSignatureEPKcNS0_7VariantES8_S9_S8_S9_
 // type: int __fastcall(int, int, int, int, int, int, int)
-pub fn stub_3ce6f4() -> ! {
-    todo!("0x3ce6f4 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvN3G3D15CoordinateFrameES4_fELi3EE16declareSignatureEPKcNS0_7VariantES8_S9_S8_S9_")
+pub unsafe fn stub_3ce6f4(
+    desc: *mut camera_enum::BoundFuncDescriptor,
+    n0: *const std::os::raw::c_char,
+    n1: *const std::os::raw::c_char,
+    n2: *const std::os::raw::c_char,
+) {
+    // IDA 0x3ce6f4: return type + 3 addArgument entries.
+    camera_boundfunc::declare_signature(
+        desc,
+        "void",
+        &[(n0, "CoordinateFrame"), (n1, "CoordinateFrame"), (n2, "float")],
+    )
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(G3D::CoordinateFrame,G3D::CoordinateFrame,float),3>::~BoundFuncDesc()")]
 // 0x3ce75c — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvN3G3D15CoordinateFrameES4_fELi3EED0Ev
 // type: void __fastcall(_DWORD *)
-pub fn stub_3ce75c() -> ! {
-    todo!("0x3ce75c __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvN3G3D15CoordinateFrameES4_fELi3EED0Ev")
+pub fn stub_3ce75c(slot: &mut camera_enum::BoundFuncDescriptor) {
+    // IDA 0x3ce75c D0: off_12405E8, delete [14]/[13]/[12], off_1222248, clear (+ delete).
+    camera_enum::BoundFuncDescriptor::destroy(slot, Some(camera_enum::BOUND_VOID_CF3_VTAB), 3)
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(G3D::CoordinateFrame,G3D::CoordinateFrame,float),3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // 0x3ce848 — __ZNK3RBX10Reflection13BoundFuncDescINS_6CameraEFvN3G3D15CoordinateFrameES4_fELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // type: void __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
-pub fn stub_3ce848() -> ! {
-    todo!("0x3ce848 __ZNK3RBX10Reflection13BoundFuncDescINS_6CameraEFvN3G3D15CoordinateFrameES4_fELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")
+pub unsafe fn stub_3ce848(
+    desc: &camera_enum::BoundFuncDescriptor,
+    obj: *const u8,
+    a: &camera_boundfunc::CoordinateFrame,
+    b: &camera_boundfunc::CoordinateFrame,
+    c: f32,
+    callee: &dyn camera_boundfunc::FnCameraCf3,
+) {
+    // IDA 0x3ce848: derived-36 + member pair + 3 getArgs + Call3Helper.
+    camera_boundfunc::execute_cf3(desc, obj, a, b, c, callee)
 }
 
 #[doc(alias = "RBX::Reflection::Call3Helper<RBX::Camera,void (RBX::Camera::*)(G3D::CoordinateFrame,G3D::CoordinateFrame,float),G3D::CoordinateFrame,G3D::CoordinateFrame,float,void>::call(RBX::Camera*,void (RBX::Camera::*)(G3D::CoordinateFrame,G3D::CoordinateFrame,float),RBX::Reflection::Variant &,G3D::CoordinateFrame const&,G3D::CoordinateFrame const&,float const&)")]
 // 0x3ce94c — __ZN3RBX10Reflection11Call3HelperINS_6CameraEMS2_FvN3G3D15CoordinateFrameES4_fES4_S4_fvE4callEPS2_S6_RNS0_7VariantERKS4_SC_RKf
 // type: void __fastcall(int, char *, int, int, G3D::Matrix3 *, int, _DWORD *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
-pub fn stub_3ce94c() -> ! {
-    todo!("0x3ce94c __ZN3RBX10Reflection11Call3HelperINS_6CameraEMS2_FvN3G3D15CoordinateFrameES4_fES4_S4_fvE4callEPS2_S6_RNS0_7VariantERKS4_SC_RKf")
+pub unsafe fn stub_3ce94c(
+    this: *const u8,
+    member_func: usize,
+    member_adj: usize,
+    a: &camera_boundfunc::CoordinateFrame,
+    b: &camera_boundfunc::CoordinateFrame,
+    c: f32,
+    callee: &dyn camera_boundfunc::FnCameraCf3,
+) {
+    // IDA 0x3ce94c Call3Helper: (adj>>1) adjust + virtual branch + CF copies + call.
+    camera_boundfunc::call_cf3(this, member_func, member_adj, a, b, c, callee)
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,bool ()(int),1>::BoundFuncDesc(bool (RBX::Camera::*)(int),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // 0x3cef84 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbiELi1EEC2EMS2_FbiEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, unsigned int, int, int, int, int, int, int)
-pub fn stub_3cef84() -> ! {
-    todo!("0x3cef84 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbiELi1EEC2EMS2_FbiEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+pub unsafe fn stub_3cef84(
+    slot: *mut camera_enum::BoundFuncDescriptor,
+    member_func: usize,
+    member_adj: usize,
+    n0: *const std::os::raw::c_char,
+) -> *mut camera_enum::BoundFuncDescriptor {
+    // IDA 0x3cef84: base init + off_1240628 + PAIR64 member + void default + declare.
+    let a0 = if n0.is_null() { String::new() } else { std::ffi::CStr::from_ptr(n0).to_string_lossy().into_owned() };
+    camera_boundfunc::construct(
+        slot,
+        camera_enum::BOUND_BOOL_INT_VTAB,
+        member_func,
+        member_adj,
+        "bool",
+        &[(a0.as_str(), "int")],
+    )
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,bool ()(int),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 // 0x3cf0fc — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbiELi1EE16declareSignatureEPKcNS0_7VariantE
 // type: int __fastcall(int, int, int)
-pub fn stub_3cf0fc() -> ! {
-    todo!("0x3cf0fc __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbiELi1EE16declareSignatureEPKcNS0_7VariantE")
+pub unsafe fn stub_3cf0fc(
+    desc: *mut camera_enum::BoundFuncDescriptor,
+    n0: *const std::os::raw::c_char,
+) {
+    // IDA 0x3cf0fc: return type + 1 addArgument entry.
+    camera_boundfunc::declare_signature(desc, "bool", &[(n0, "int")])
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,bool ()(int),1>::~BoundFuncDesc()")]
 // 0x3cf12c — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbiELi1EED0Ev
 // type: void __fastcall(_DWORD *)
-pub fn stub_3cf12c() -> ! {
-    todo!("0x3cf12c __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbiELi1EED0Ev")
+pub fn stub_3cf12c(slot: &mut camera_enum::BoundFuncDescriptor) {
+    // IDA 0x3cf12c D0: off_1240628, delete a1[12], off_1222248, clear (+ delete).
+    camera_enum::BoundFuncDescriptor::destroy(slot, Some(camera_enum::BOUND_BOOL_INT_VTAB), 1)
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,bool ()(int),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // 0x3cf200 — __ZNK3RBX10Reflection13BoundFuncDescINS_6CameraEFbiELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // type: int __fastcall(int, int, int)
-pub fn stub_3cf200() -> ! {
-    todo!("0x3cf200 __ZNK3RBX10Reflection13BoundFuncDescINS_6CameraEFbiELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE")
+pub unsafe fn stub_3cf200(
+    desc: &camera_enum::BoundFuncDescriptor,
+    obj: *const u8,
+    arg: i32,
+    callee: &dyn camera_boundfunc::FnCameraIntBool,
+) -> bool {
+    // IDA 0x3cf200: derived-36 + member pair + getArg<int,1> + Call1Helper.
+    camera_boundfunc::execute_int_bool(desc, obj, arg, callee)
 }
 
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::Camera,bool (RBX::Camera::*)(int),int,bool>::call(RBX::Camera*,bool (RBX::Camera::*)(int),RBX::Reflection::Variant &,int const&)")]
 // 0x3cf240 — __ZN3RBX10Reflection11Call1HelperINS_6CameraEMS2_FbiEibE4callEPS2_S4_RNS0_7VariantERKi
 // type: int __fastcall(int, char *, int, _DWORD *, _DWORD *)
-pub fn stub_3cf240() -> ! {
-    todo!("0x3cf240 __ZN3RBX10Reflection11Call1HelperINS_6CameraEMS2_FbiEibE4callEPS2_S4_RNS0_7VariantERKi")
+pub unsafe fn stub_3cf240(
+    this: *const u8,
+    member_func: usize,
+    member_adj: usize,
+    arg: i32,
+    callee: &dyn camera_boundfunc::FnCameraIntBool,
+) -> bool {
+    // IDA 0x3cf240 Call1Helper: (adj>>1) adjust + virtual branch + call + bool out.
+    let adjusted = (this as usize).wrapping_add(member_adj >> 1) as *const u8;
+    callee.call(adjusted, arg)
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(int),1>::BoundFuncDesc(void (RBX::Camera::*)(int),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
