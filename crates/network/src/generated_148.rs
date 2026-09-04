@@ -6,165 +6,283 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use std::collections::{BTreeMap, BTreeSet, VecDeque};
+
+/// `boost::tokenizer<boost::char_separator<...>, ...>` (IDA 0xa51310/0xa51b40):
+/// kept/dropped separator sets plus the token list. `end()` is one-past-last.
+#[derive(Clone, Debug, Default)]
+pub struct CharTokenizer {
+    pub kept: String,
+    pub dropped: String,
+    pub tokens: Vec<String>,
+}
+
+/// One `XmlAttribute` node (IDA 0xa52198/0xa524a4): pooled 20-byte node
+/// holding the name id, the value-kind tag (`2` = string), and the value.
+#[derive(Clone, Debug, Default)]
+pub struct XmlAttribute {
+    pub name: u32,
+    pub kind: u32,
+    pub value: String,
+}
+
+/// `RBX::GuiBuilder::Data` (IDA 0xa530f8): string-valued payload; the field
+/// count is engine-side, this keeps the owned strings the pair dtor releases.
+#[derive(Clone, Debug, Default)]
+pub struct GuiBuilderData {
+    pub fields: Vec<String>,
+}
+
+/// One bound argument of a `Players` bound function (IDA 0xa53b04/0xa53c54/0xa53e38):
+/// `SharedPtr<Instance>` becomes the registry id, strings stay strings.
+#[derive(Clone, Debug)]
+pub enum BoundFuncArg {
+    Text(String),
+    Instance(u32),
+}
+
+/// `RBX::Reflection::BoundFuncDesc<RBX::Network::Players, ...>` tear-down state
+/// (IDA 0xa53b04/0xa53c54/0xa53e38): bound-arg holders plus the listener list
+/// at +32 whose nodes are unlinked and freed one by one.
+#[derive(Clone, Debug, Default)]
+pub struct PlayersBoundFuncDesc {
+    pub args: Vec<BoundFuncArg>,
+    pub listeners: Vec<u32>,
+}
+
+/// `CheckSum` (IDA 0xa56c10): RakNet running checksum; `sum` at +0 with the
+/// two multipliers at +2/+4 and the 32-bit accumulator at +8.
+#[derive(Clone, Debug, Default)]
+pub struct CheckSum {
+    pub sum: u16,
+    pub mult_a: u16,
+    pub mult_b: u16,
+    pub total: u32,
+}
 
 // 0xa51310 — __ZNK5boost9tokenizerINS_14char_separatorIcSt11char_traitsIcEEEN9__gnu_cxx17__normal_iteratorIPKcSsEESsE3endEv
 // demangled: boost::tokenizer<boost::char_separator<char,std::char_traits<char>>,__gnu_cxx::__normal_iterator<char const*,std::string>,std::string>::end(void)const
 // type: void __fastcall(struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "boost::tokenizer<boost::char_separator<char,std::char_traits<char>>,__gnu_cxx::__normal_iterator<char const*,std::string>,std::string>::end(void)const")]
-pub fn stub_a51310() -> ! {
-    todo!("0xa51310 boost::tokenizer<boost::char_separator<char,std::char_traits<char>>,__gnu_cxx::__normal_iterator<char const*,std::string>,std::string>::end(void)const")
+pub fn stub_a51310(tokenizer: &CharTokenizer) -> usize {
+ // IDA 0xa51310: builds the end iterator by running the separator once
+ // past the last token; that is one-past-last.
+ tokenizer.tokens.len()
 }
 
 // 0xa514f0 — __ZNSt6vectorISsSaISsEEC2ERKS1_
 // demangled: std::vector<std::string,std::allocator<std::string>>::vector(std::vector<std::string,std::allocator<std::string>> const&)
 // type: _DWORD *__fastcall(_DWORD *, int *)
 #[doc(alias = "std::vector<std::string,std::allocator<std::string>>::vector(std::vector<std::string,std::allocator<std::string>> const&)")]
-pub fn stub_a514f0() -> ! {
-    todo!("0xa514f0 std::vector<std::string,std::allocator<std::string>>::vector(std::vector<std::string,std::allocator<std::string>> const&)")
+pub fn stub_a514f0(src: &[String]) -> Vec<String> {
+ // IDA 0xa514f0: empty init, then grow to the source length (throwing past
+ // max_size 0x40000000) and copy each string; `to_vec` keeps that shape.
+ src.to_vec()
 }
 
 // 0xa516a0 — __ZNSt6vectorISsSaISsEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPSsS1_EERKSs
 // demangled: std::vector<std::string,std::allocator<std::string>>::_M_insert_aux(__gnu_cxx::__normal_iterator<std::string *,std::vector<std::string,std::allocator<std::string>>>,std::string const&)
 // type: void __fastcall(struct _Unwind_Exception **, std::string *, const std::string *)
 #[doc(alias = "std::vector<std::string,std::allocator<std::string>>::_M_insert_aux(__gnu_cxx::__normal_iterator<std::string *,std::vector<std::string,std::allocator<std::string>>>,std::string const&)")]
-pub fn stub_a516a0() -> ! {
-    todo!("0xa516a0 std::vector<std::string,std::allocator<std::string>>::_M_insert_aux(__gnu_cxx::__normal_iterator<std::string *,std::vector<std::string,std::allocator<std::string>>>,std::string const&)")
+pub fn stub_a516a0(vec: &mut Vec<String>, pos: usize, value: String) {
+ // IDA 0xa516a0: with spare capacity shift the tail back, otherwise
+ // reallocate and copy around the new element; `insert` covers both arms.
+ vec.insert(pos, value);
 }
 
 // 0xa51b40 — __ZN5boost14token_iteratorINS_14char_separatorIcSt11char_traitsIcEEEN9__gnu_cxx17__normal_iteratorIPKcSsEESsEC2ES4_S9_S9_
 // demangled: boost::token_iterator<boost::char_separator<char,std::char_traits<char>>,__gnu_cxx::__normal_iterator<char const*,std::string>,std::string>::token_iterator(boost::char_separator<char,std::char_traits<char>>,__gnu_cxx::__normal_iterator<char const*,std::string>,__gnu_cxx::__normal_iterator<char const*,std::string>)
 // type: int __fastcall(int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt)
 #[doc(alias = "boost::token_iterator<boost::char_separator<char,std::char_traits<char>>,__gnu_cxx::__normal_iterator<char const*,std::string>,std::string>::token_iterator(boost::char_separator<char,std::char_traits<char>>,__gnu_cxx::__normal_iterator<char const*,std::string>,__gnu_cxx::__normal_iterator<char const*,std::string>)")]
-pub fn stub_a51b40() -> ! {
-    todo!("0xa51b40 boost::token_iterator<boost::char_separator<char,std::char_traits<char>>,__gnu_cxx::__normal_iterator<char const*,std::string>,std::string>::token_iterator(boost::char_separator<char,std::char_traits<char>>,__gnu_cxx::__normal_iterator<char const*,std::string>,__gnu_cxx::__normal_iterator<char const*,std::string>)")
+pub fn stub_a51b40(kept: &str, dropped: &str, text: &str) -> CharTokenizer {
+ // IDA 0xa51b40: copies both separators, then runs the separator predicate
+ // once when begin != end to find the first token; that is a split.
+ let is_sep = |c: char| kept.contains(c) || dropped.contains(c);
+ let mut tokens = Vec::new();
+ let mut cur = String::new();
+ for c in text.chars() {
+     if is_sep(c) {
+         if !cur.is_empty() || kept.contains(c) {
+             tokens.push(std::mem::take(&mut cur));
+         }
+     } else {
+         cur.push(c);
+     }
+ }
+ if !cur.is_empty() {
+     tokens.push(cur);
+ }
+ CharTokenizer { kept: kept.to_owned(), dropped: dropped.to_owned(), tokens }
 }
 
 // 0xa51d24 — __ZN3RBX7Network11ChatMessageD2Ev
 // demangled: RBX::Network::ChatMessage::~ChatMessage()
 // type: void __fastcall(RBX::Network::ChatMessage *__hidden this)
 #[doc(alias = "RBX::Network::ChatMessage::~ChatMessage()")]
-pub fn stub_a51d24() -> ! {
-    todo!("0xa51d24 RBX::Network::ChatMessage::~ChatMessage()")
+pub fn stub_a51d24(msg: crate::player::ChatMessage) {
+ // IDA 0xa51d24: releases the two strings at +0/+4 and the two shared
+ // owners at +16/+24; the reduced `ChatMessage` drops the same owners.
+ drop(msg);
 }
 
 // 0xa51ee0 — __ZNSt8_Rb_treeIN3RBX4Guid4DataESt4pairIKS2_PNS0_8InstanceEESt10_Select1stIS7_ESt4lessIS2_ESaIS7_EE16_M_insert_uniqueERKS7_
 // demangled: std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,RBX::Instance *>,std::_Select1st<std::pair<RBX::Guid::Data const,RBX::Instance *>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,RBX::Instance *>>>::_M_insert_unique(std::pair<RBX::Guid::Data const,RBX::Instance *> const&)
 // type: int __fastcall(int, _DWORD *, __int64 *)
 #[doc(alias = "std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,RBX::Instance *>,std::_Select1st<std::pair<RBX::Guid::Data const,RBX::Instance *>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,RBX::Instance *>>>::_M_insert_unique(std::pair<RBX::Guid::Data const,RBX::Instance *> const&)")]
-pub fn stub_a51ee0() -> ! {
-    todo!("0xa51ee0 std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,RBX::Instance *>,std::_Select1st<std::pair<RBX::Guid::Data const,RBX::Instance *>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,RBX::Instance *>>>::_M_insert_unique(std::pair<RBX::Guid::Data const,RBX::Instance *> const&)")
+pub fn stub_a51ee0(map: &mut BTreeMap<u128, u32>, key: u128, value: u32) -> bool {
+ // IDA 0xa51ee0: walk to the insertion point, return (it, false) when the
+ // key exists, else allocate the node, rebalance, bump size, return
+ // (it, true). Guid::Data (16 bytes) maps to u128, Instance* to the id;
+ // rebalancing is intrinsic to BTreeMap. Reports the `inserted` half.
+ use std::collections::btree_map::Entry;
+ match map.entry(key) {
+     Entry::Occupied(_) => false,
+     Entry::Vacant(slot) => {
+         slot.insert(value);
+         true
+     }
+ }
 }
 
 // 0xa51fe4 — __ZN3RBX4HttpD2Ev
 // demangled: RBX::Http::~Http()
 // type: void __fastcall(RBX::Http *__hidden this)
 #[doc(alias = "RBX::Http::~Http()")]
-pub fn stub_a51fe4() -> ! {
-    todo!("0xa51fe4 RBX::Http::~Http()")
+pub fn stub_a51fe4(http: crate::http::Http) {
+ // IDA 0xa51fe4: erases the header map at +12, then releases the strings
+ // at +0/+8/+36; see `Http::destroy`.
+ http.destroy();
 }
 
 // 0xa52198 — __ZN10XmlElementD2Ev
 // demangled: XmlElement::~XmlElement()
 // type: void __fastcall(XmlElement *__hidden this)
 #[doc(alias = "XmlElement::~XmlElement()")]
-pub fn stub_a52198() -> ! {
-    todo!("0xa52198 XmlElement::~XmlElement()")
+pub fn stub_a52198(attrs: Vec<XmlAttribute>) {
+ // IDA 0xa52198: walks the attribute list at +28, clears each value, and
+ // returns the nodes to the XmlAttribute singleton pool (pool engine-side);
+ // dropping the vec releases the same values.
+ drop(attrs);
 }
 
 // 0xa524a4 — __ZN10XmlElement12addAttributeISsEEvRKN3RBX4NameET_
 // demangled: void XmlElement::addAttribute<std::string>(RBX::Name const&,std::string)
 // type: void __fastcall(int, int, const std::string *)
 #[doc(alias = "void XmlElement::addAttribute<std::string>(RBX::Name const&,std::string)")]
-pub fn stub_a524a4() -> ! {
-    todo!("0xa524a4 void XmlElement::addAttribute<std::string>(RBX::Name const&,std::string)")
+pub fn stub_a524a4(attrs: &mut Vec<XmlAttribute>, name: u32, value: String) {
+ // IDA 0xa524a4: pool-allocates one 20-byte node, stores the name, the
+ // kind tag 2 (string), and a copy of the value, then links it in.
+ attrs.push(XmlAttribute { name, kind: 2, value });
 }
 
 // 0xa5275c — __ZNSt4listIN3RBX7Network11AbuseReport7MessageESaIS3_EEaSERKS5_
 // demangled: std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>>::operator=(std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>> const&)
 // type: _DWORD *__fastcall(_DWORD *, _DWORD *)
 #[doc(alias = "std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>>::operator=(std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>> const&)")]
-pub fn stub_a5275c() -> ! {
-    todo!("0xa5275c std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>>::operator=(std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>> const&)")
+pub fn stub_a5275c(dst: &mut Vec<crate::player::ChatMessage>, src: &[crate::player::ChatMessage]) {
+ // IDA 0xa5275c: destroys surplus tail nodes, copies over the overlap,
+ // then inserts the remainder; `list` maps to Vec, node surgery elided.
+ dst.clear();
+ dst.extend(src.iter().cloned());
 }
 
 // 0xa52848 — __ZNSt4listIN3RBX7Network11AbuseReport7MessageESaIS3_EE6insertISt20_List_const_iteratorIS3_EEEvSt14_List_iteratorIS3_ET_SB_
 // demangled: void std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>>::insert<std::_List_const_iterator<RBX::Network::AbuseReport::Message>>(std::_List_iterator<RBX::Network::AbuseReport::Message>,std::_List_const_iterator<RBX::Network::AbuseReport::Message>,std::_List_const_iterator<RBX::Network::AbuseReport::Message>)
 // type: void __fastcall(int, std::_List_node_base *, int, int)
 #[doc(alias = "void std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>>::insert<std::_List_const_iterator<RBX::Network::AbuseReport::Message>>(std::_List_iterator<RBX::Network::AbuseReport::Message>,std::_List_const_iterator<RBX::Network::AbuseReport::Message>,std::_List_const_iterator<RBX::Network::AbuseReport::Message>)")]
-pub fn stub_a52848() -> ! {
-    todo!("0xa52848 void std::list<RBX::Network::AbuseReport::Message,std::allocator<RBX::Network::AbuseReport::Message>>::insert<std::_List_const_iterator<RBX::Network::AbuseReport::Message>>(std::_List_iterator<RBX::Network::AbuseReport::Message>,std::_List_const_iterator<RBX::Network::AbuseReport::Message>,std::_List_const_iterator<RBX::Network::AbuseReport::Message>)")
+pub fn stub_a52848(dst: &mut Vec<crate::player::ChatMessage>, pos: usize, src: &[crate::player::ChatMessage]) {
+ // IDA 0xa52848: builds the range in a temp list, splices it in at the
+ // position, then destroys the temp shell; that is a range insert.
+ dst.splice(pos..pos, src.iter().cloned());
 }
 
 // 0xa52ae4 — __ZNSt11_Deque_baseIN3RBX7Network11AbuseReportESaIS2_EE17_M_initialize_mapEm
 // demangled: std::_Deque_base<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::_M_initialize_map(unsigned long)
 // type: void __fastcall(_DWORD *, unsigned int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, void *, int)
 #[doc(alias = "std::_Deque_base<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::_M_initialize_map(unsigned long)")]
-pub fn stub_a52ae4() -> ! {
-    todo!("0xa52ae4 std::_Deque_base<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::_M_initialize_map(unsigned long)")
+pub fn stub_a52ae4(count: usize) -> VecDeque<crate::player::AbuseReport> {
+ // IDA 0xa52ae4: sizes the chunk map for the element count and centers the
+ // start/finish iterators; `with_capacity` keeps the observable shape.
+ VecDeque::with_capacity(count)
 }
 
 // 0xa52cd0 — __ZNSt5dequeIN3RBX7Network11AbuseReportESaIS2_EEC2ERKS4_
 // demangled: std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::deque(std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>> const&)
 // type: int __fastcall(int, _DWORD *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt)
 #[doc(alias = "std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::deque(std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>> const&)")]
-pub fn stub_a52cd0() -> ! {
-    todo!("0xa52cd0 std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>>::deque(std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport>> const&)")
+pub fn stub_a52cd0(src: &VecDeque<crate::player::AbuseReport>) -> VecDeque<crate::player::AbuseReport> {
+ // IDA 0xa52cd0: fresh map, then placement-copy each element chunk by chunk.
+ src.clone()
 }
 
 // 0xa52e28 — __ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN3RBX7Network11AbuseReportERKS3_PS4_ES0_IS3_RS3_PS3_EET0_T_SC_SB_St12__false_type
 // demangled: std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*> std::__uninitialized_copy_aux<std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport const&,RBX::Network::AbuseReport const*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*>>(std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport const&,RBX::Network::AbuseReport const*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport const&,RBX::Network::AbuseReport const*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*>,std::__false_type)
 // type: void __fastcall(_DWORD *, _DWORD *, int, int, struct _Unwind_Exception *lpuexcpt, _DWORD *, char, int, int, int, int, int, void *, int)
 #[doc(alias = "std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*> std::__uninitialized_copy_aux<std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport const&,RBX::Network::AbuseReport const*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*>>(std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport const&,RBX::Network::AbuseReport const*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport const&,RBX::Network::AbuseReport const*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*>,std::__false_type)")]
-pub fn stub_a52e28() -> ! {
-    todo!("0xa52e28 std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*> std::__uninitialized_copy_aux<std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport const&,RBX::Network::AbuseReport const*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*>>(std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport const&,RBX::Network::AbuseReport const*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport const&,RBX::Network::AbuseReport const*>,std::_Deque_iterator<RBX::Network::AbuseReport,RBX::Network::AbuseReport&,RBX::Network::AbuseReport*>,std::__false_type)")
+pub fn stub_a52e28(dst: &mut VecDeque<crate::player::AbuseReport>, src: &VecDeque<crate::player::AbuseReport>) {
+ // IDA 0xa52e28: placement-new copy of the const-iterator range into
+ // uninitialized deque storage; moves cover it, chunk pinning elided.
+ dst.clear();
+ dst.extend(src.iter().cloned());
 }
 
 // 0xa530c8 — __ZNSt8_Rb_treeISsSt4pairIKSsN3RBX10GuiBuilder4DataEESt10_Select1stIS5_ESt4lessISsESaIS5_EE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
 // demangled: std::_Rb_tree<std::string,std::pair<std::string const,RBX::GuiBuilder::Data>,std::_Select1st<std::pair<std::string const,RBX::GuiBuilder::Data>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::GuiBuilder::Data>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,RBX::GuiBuilder::Data>> *)
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,RBX::GuiBuilder::Data>,std::_Select1st<std::pair<std::string const,RBX::GuiBuilder::Data>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::GuiBuilder::Data>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,RBX::GuiBuilder::Data>> *)")]
-pub fn stub_a530c8() -> ! {
-    todo!("0xa530c8 std::_Rb_tree<std::string,std::pair<std::string const,RBX::GuiBuilder::Data>,std::_Select1st<std::pair<std::string const,RBX::GuiBuilder::Data>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::GuiBuilder::Data>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,RBX::GuiBuilder::Data>> *)")
+pub fn stub_a530c8(map: &mut BTreeMap<String, GuiBuilderData>) {
+ // IDA 0xa530c8: post-order walk from the node, destroying each pair and
+ // freeing the node; whole-subtree erase is `clear`.
+ map.clear();
 }
 
 // 0xa530f8 — __ZNSt4pairIKSsN3RBX10GuiBuilder4DataEED2Ev
 // demangled: std::pair<std::string const,RBX::GuiBuilder::Data>::~pair()
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "std::pair<std::string const,RBX::GuiBuilder::Data>::~pair()")]
-pub fn stub_a530f8() -> ! {
-    todo!("0xa530f8 std::pair<std::string const,RBX::GuiBuilder::Data>::~pair()")
+pub fn stub_a530f8(pair: (String, GuiBuilderData)) {
+ // IDA 0xa530f8: releases the key string and each Data string, then the
+ // node storage; dropping the pair releases the same owners.
+ drop(pair);
 }
 
 // 0xa5327c — __ZNSt8_Rb_treeISsSt4pairIKSsN3RBX10GuiBuilder4DataEESt10_Select1stIS5_ESt4lessISsESaIS5_EE7_M_copyEPKSt13_Rb_tree_nodeIS5_EPSD_
 // demangled: std::_Rb_tree<std::string,std::pair<std::string const,RBX::GuiBuilder::Data>,std::_Select1st<std::pair<std::string const,RBX::GuiBuilder::Data>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::GuiBuilder::Data>>>::_M_copy(std::_Rb_tree_node<std::pair<std::string const,RBX::GuiBuilder::Data>> const*,std::_Rb_tree_node<std::pair<std::string const,RBX::GuiBuilder::Data>>*)
 // type: _DWORD *__fastcall(int, _DWORD *, int, int, int, int, int, int, void *, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,RBX::GuiBuilder::Data>,std::_Select1st<std::pair<std::string const,RBX::GuiBuilder::Data>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::GuiBuilder::Data>>>::_M_copy(std::_Rb_tree_node<std::pair<std::string const,RBX::GuiBuilder::Data>> const*,std::_Rb_tree_node<std::pair<std::string const,RBX::GuiBuilder::Data>>*)")]
-pub fn stub_a5327c() -> ! {
-    todo!("0xa5327c std::_Rb_tree<std::string,std::pair<std::string const,RBX::GuiBuilder::Data>,std::_Select1st<std::pair<std::string const,RBX::GuiBuilder::Data>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::GuiBuilder::Data>>>::_M_copy(std::_Rb_tree_node<std::pair<std::string const,RBX::GuiBuilder::Data>> const*,std::_Rb_tree_node<std::pair<std::string const,RBX::GuiBuilder::Data>>*)")
+pub fn stub_a5327c(src: &BTreeMap<String, GuiBuilderData>) -> BTreeMap<String, GuiBuilderData> {
+ // IDA 0xa5327c: recursive deep copy of the subtree, allocating one node
+ // per pair; balancing is intrinsic to BTreeMap.
+ src.clone()
 }
 
 // 0xa533d0 — __ZNSt8_Rb_treeISsSt4pairIKSsN3RBX10GuiBuilder4DataEESt10_Select1stIS5_ESt4lessISsESaIS5_EE14_M_create_nodeERKS5_
 // demangled: std::_Rb_tree<std::string,std::pair<std::string const,RBX::GuiBuilder::Data>,std::_Select1st<std::pair<std::string const,RBX::GuiBuilder::Data>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::GuiBuilder::Data>>>::_M_create_node(std::pair<std::string const,RBX::GuiBuilder::Data> const&)
 // type: _DWORD *__fastcall(int, _DWORD *, int, int, struct _Unwind_Exception *lpuexcpt, char, char, void *, int, int, int, int, void *, int)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,RBX::GuiBuilder::Data>,std::_Select1st<std::pair<std::string const,RBX::GuiBuilder::Data>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::GuiBuilder::Data>>>::_M_create_node(std::pair<std::string const,RBX::GuiBuilder::Data> const&)")]
-pub fn stub_a533d0() -> ! {
-    todo!("0xa533d0 std::_Rb_tree<std::string,std::pair<std::string const,RBX::GuiBuilder::Data>,std::_Select1st<std::pair<std::string const,RBX::GuiBuilder::Data>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::GuiBuilder::Data>>>::_M_create_node(std::pair<std::string const,RBX::GuiBuilder::Data> const&)")
+pub fn stub_a533d0(value: (String, GuiBuilderData)) -> (String, GuiBuilderData) {
+ // IDA 0xa533d0: allocates one node and copy-constructs the pair into it
+ // (with the pool refcount bump); the owned pair is the node payload.
+ value
 }
 
 // 0xa535ac — __ZN3rbx7signals6signalIFvRKN3RBX7Network11ChatMessageEEE13disconnectAllEv
 // demangled: rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::disconnectAll(void)
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::disconnectAll(void)")]
-pub fn stub_a535ac() -> ! {
-    todo!("0xa535ac rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::disconnectAll(void)")
+pub fn stub_a535ac(sig: &mut crate::signal::SlotList) {
+ // IDA 0xa535ac: under the signal mutex, unlinks every slot (at most 11 per
+ // pass, looping until the head is null) and releases the refs.
+ sig.disconnect_all();
 }
 
 // 0xa53764 — __ZN3rbx7signals6signalIFvN3RBX7Network11AbuseReportEEE13disconnectAllEv
 // demangled: rbx::signals::signal<void ()(RBX::Network::AbuseReport)>::disconnectAll(void)
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Network::AbuseReport)>::disconnectAll(void)")]
-pub fn stub_a53764() -> ! {
-    todo!("0xa53764 rbx::signals::signal<void ()(RBX::Network::AbuseReport)>::disconnectAll(void)")
+pub fn stub_a53764(sig: &mut crate::signal::SlotList) {
+ // IDA 0xa53764: same unlink-all loop as 0xa535ac for AbuseReport slots.
+ sig.disconnect_all();
 }
 
 // 0xa5391c — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE13disconnectAllEv
@@ -172,16 +290,20 @@ pub fn stub_a53764() -> ! {
 // type: void __fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::disconnectAll(void)")]
-pub fn stub_a5391c() -> ! {
-    todo!("0xa5391c rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::disconnectAll(void)")
+pub fn stub_a5391c(sig: &mut crate::signal::SlotList) {
+ // IDA 0xa5391c: same unlink-all loop for SystemAddress/BitStream slots;
+ // see `SlotList::disconnect_all`.
+ sig.disconnect_all();
 }
 
 // 0xa53ad4 — __ZNSt8_Rb_treeIiSt4pairIKiSt3setISsSt4lessISsESaISsEEESt10_Select1stIS7_ES3_IiESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
 // demangled: std::_Rb_tree<int,std::pair<int const,std::set<std::string,std::less<std::string>,std::allocator<std::string>>>,std::_Select1st<std::pair<int const,std::set<std::string,std::less<std::string>,std::allocator<std::string>>>>,std::less<int>,std::allocator<std::pair<int const,std::set<std::string,std::less<std::string>,std::allocator<std::string>>>>>::_M_erase(std::_Rb_tree_node<std::pair<int const,std::set<std::string,std::less<std::string>,std::allocator<std::string>>>> *)
 // type: void __fastcall(int, _DWORD *)
 #[doc(alias = "std::_Rb_tree<int,std::pair<int const,std::set<std::string,std::less<std::string>,std::allocator<std::string>>>,std::_Select1st<std::pair<int const,std::set<std::string,std::less<std::string>,std::allocator<std::string>>>>,std::less<int>,std::allocator<std::pair<int const,std::set<std::string,std::less<std::string>,std::allocator<std::string>>>>>::_M_erase(std::_Rb_tree_node<std::pair<int const,std::set<std::string,std::less<std::string>,std::allocator<std::string>>>> *)")]
-pub fn stub_a53ad4() -> ! {
-    todo!("0xa53ad4 std::_Rb_tree<int,std::pair<int const,std::set<std::string,std::less<std::string>,std::allocator<std::string>>>,std::_Select1st<std::pair<int const,std::set<std::string,std::less<std::string>,std::allocator<std::string>>>>,std::less<int>,std::allocator<std::pair<int const,std::set<std::string,std::less<std::string>,std::allocator<std::string>>>>>::_M_erase(std::_Rb_tree_node<std::pair<int const,std::set<std::string,std::less<std::string>,std::allocator<std::string>>>> *)")
+pub fn stub_a53ad4(map: &mut BTreeMap<i32, BTreeSet<String>>) {
+ // IDA 0xa53ad4: post-order walk erasing each inner string set before
+ // freeing the node; whole-subtree erase is `clear`.
+ map.clear();
 }
 
 // 0xa53b04 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFN5boost10shared_ptrINS_8InstanceEEES7_ELi1EED2Ev
@@ -189,8 +311,10 @@ pub fn stub_a53ad4() -> ! {
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
-pub fn stub_a53b04() -> ! {
-    todo!("0xa53b04 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_a53b04(desc: PlayersBoundFuncDesc) {
+ // IDA 0xa53b04: frees the bound Instance holder at +48, then unlinks and
+ // frees each listener node from the list at +32; drop covers both.
+ drop(desc);
 }
 
 // 0xa53c54 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFvN5boost10shared_ptrINS_8InstanceEEESsSsELi3EED2Ev
@@ -198,8 +322,10 @@ pub fn stub_a53b04() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,std::string),3>::~BoundFuncDesc()")]
-pub fn stub_a53c54() -> ! {
-    todo!("0xa53c54 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>,std::string,std::string),3>::~BoundFuncDesc()")
+pub fn stub_a53c54(desc: PlayersBoundFuncDesc) {
+ // IDA 0xa53c54: frees the two bound strings at +56/+52 and the bound
+ // Instance holder at +48, then drains the listener list at +32.
+ drop(desc);
 }
 
 // 0xa53e38 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EED2Ev
@@ -207,8 +333,10 @@ pub fn stub_a53c54() -> ! {
 // type: _DWORD *__fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")]
-pub fn stub_a53e38() -> ! {
-    todo!("0xa53e38 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()")
+pub fn stub_a53e38(desc: PlayersBoundFuncDesc) {
+ // IDA 0xa53e38: frees the bound Instance holder at +52 and the bound
+ // string at +48, then drains the listener list at +32.
+ drop(desc);
 }
 
 // 0xa54018 — __GLOBAL__I_a_510
@@ -563,8 +691,15 @@ pub fn stub_a565f0() -> ! {
 // demangled: CheckSum::Add(unsigned char *,unsigned int)
 // type: unsigned __int16 *__fastcall(unsigned __int16 *this, unsigned __int8 *, unsigned int)
 #[doc(alias = "CheckSum::Add(unsigned char *,unsigned int)")]
-pub fn stub_a56c10() -> ! {
-    todo!("0xa56c10 CheckSum::Add(unsigned char *,unsigned int)")
+pub fn stub_a56c10(sum: &mut CheckSum, data: &[u8]) {
+ // IDA 0xa56c10: per byte `t = b ^ (sum >> 8)`, `total += t`, then
+ // `sum = mult_b + (t + sum) * mult_a` (disasm MLA, halfword ops); the
+ // empty-range early-out is the loop not running.
+ for &b in data {
+     let t = (b ^ (sum.sum >> 8) as u8) as u16;
+     sum.total = sum.total.wrapping_add(t as u32);
+     sum.sum = sum.mult_b.wrapping_add(t.wrapping_add(sum.sum).wrapping_mul(sum.mult_a));
+ }
 }
 
 // 0xa56c4c — __GLOBAL__I_a_512
@@ -639,8 +774,11 @@ pub fn stub_a580f0(tree: &crate::huffman::HuffmanTree, stream: &mut crate::bitst
 // demangled: DataStructures::Queue<HuffmanEncodingTreeNode *>::Push(HuffmanEncodingTreeNode * const&,char const*,unsigned int)
 // type: void __fastcall(int **, int *)
 #[doc(alias = "DataStructures::Queue<HuffmanEncodingTreeNode *>::Push(HuffmanEncodingTreeNode * const&,char const*,unsigned int)")]
-pub fn stub_a58150() -> ! {
-    todo!("0xa58150 DataStructures::Queue<HuffmanEncodingTreeNode *>::Push(HuffmanEncodingTreeNode * const&,char const*,unsigned int)")
+pub fn stub_a58150(queue: &mut VecDeque<u32>, node: u32) {
+ // IDA 0xa58150: circular-buffer push (16-entry first alloc at 0xa581fc,
+ // doubling realloc preserving order at 0xa5819e..0xa581f4); growth is
+ // intrinsic to VecDeque, node identity maps to the registry id.
+ queue.push_back(node);
 }
 
 // 0xa58224 — __GLOBAL__I_a_514
@@ -688,8 +826,29 @@ pub fn stub_a589b8() -> ! {
 // demangled: _Itoa
 // type: _BYTE *__fastcall(int, _BYTE *, int)
 #[doc(alias = "_Itoa")]
-pub fn stub_a58fcc() -> ! {
-    todo!("0xa58fcc _Itoa")
+pub fn stub_a58fcc(value: i32, radix: u32) -> String {
+ // IDA 0xa58fcc: radix outside 2..=16 yields the empty string; otherwise
+ // repeated div/mod digits (negated for the table), a '-' for negative
+ // base-10 values, then an in-place reverse of the digit run.
+ if !(2..=16).contains(&radix) {
+     return String::new();
+ }
+ const DIGITS: &[u8; 16] = b"0123456789abcdef";
+ let mut out: Vec<u8> = Vec::new();
+ let mut v = value;
+ loop {
+     let d = (v % radix as i32).abs() as usize;
+     out.push(DIGITS[d]);
+     v /= radix as i32;
+     if v == 0 {
+         break;
+     }
+ }
+ if value < 0 && radix == 10 {
+     out.push(b'-');
+ }
+ out.reverse();
+ String::from_utf8(out).unwrap_or_default()
 }
 
 // 0xa59064 — __GLOBAL__I_a_516
@@ -769,8 +928,11 @@ pub fn stub_a5a2dc() -> ! {
 // demangled: DefaultOutOfMemoryHandler(char const*,long)
 // type: void __fastcall(const char *, int)
 #[doc(alias = "DefaultOutOfMemoryHandler(char const*,long)")]
-pub fn stub_a5a8fc() -> ! {
-    todo!("0xa5a8fc DefaultOutOfMemoryHandler(char const*,long)")
+pub fn stub_a5a8fc(_file: Option<&str>, _line: i32) {
+ // IDA 0xa5a8fc: empty body, returns immediately.
+ // BUG: the OOM handler ignores the out-of-memory condition instead of
+ // aborting or freeing emergency memory, so allocation failure silently
+ // continues into likely-corrupt state.
 }
 
 // 0xa5a900 — __ZN6RakNet13_RakMalloc_ExEmPKcj
