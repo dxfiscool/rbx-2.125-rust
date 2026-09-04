@@ -22046,8 +22046,12 @@ pub fn stub_0x45db30() -> ! {
 
 // 0x45db58 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelESsE7GetImplIMS2_KFSsvEE8setValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,std::string>::GetImpl<std::string (RBX::DataModel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x45db58() -> ! {
-    todo!("0x45db58 RBX::Reflection::PropDescriptor<RBX::DataModel,std::string>::GetImpl<std::string (RBX::DataModel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x45db58() {
+    // IDA 0x45db58: `__cxa_allocate_exception` + `__cxa_throw` (disasm
+    // 0x45db74-0x45db76) — setting a read-only string property always throws;
+    // the panic preserves the never-returns-normally contract. Same shape as
+    // 0x45ef28.
+    panic!("0x45db58: read-only string property");
 }
 
 // 0x45dc78 — __ZN3RBX10Reflection9EventDescINS_9DataModelEFvvEN3rbx6signalIS3_EEMS2_S6_ED0Ev
@@ -22336,44 +22340,74 @@ pub fn stub_0x45ee4c(value: i32) -> Option<usize> {
 
 // 0x45eebc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_16GearGenreSettingEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x45eebc() -> ! {
-    todo!("0x45eebc RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x45eebc(model: &mut DataModel, index: usize) -> bool {
+    // IDA 0x45eebc: bounds-checks the index (decomp 0x45eec6-0x45eed8), reads
+    // the value (decomp 0x45eeda), skips the `-1` sentinel entries (decomp
+    // 0x45eee4), and sets through the member setter. The setter collapses
+    // into the `gear_genre` field.
+    if let Some((value, _)) = stub_0x45a360().pairs.get(index) {
+        if *value != -1 {
+            model.gear_genre = *value;
+            return true;
+        }
+    }
+    false
 }
 
 // 0x45ef00 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelENS2_16GearGenreSettingEE7GetImplIMS2_KFS3_vEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::GetImpl<RBX::DataModel::GearGenreSetting (RBX::DataModel::*)(void)const>::isReadOnly(void)const")]
-pub fn stub_0x45ef00() -> ! {
-    todo!("0x45ef00 RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::GetImpl<RBX::DataModel::GearGenreSetting (RBX::DataModel::*)(void)const>::isReadOnly(void)const")
+pub fn stub_0x45ef00() -> bool {
+    // IDA 0x45ef00: `MOVS R0, #1; BX LR` — this enum property reads as
+    // read-only.
+    true
 }
 
 // 0x45ef04 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelENS2_16GearGenreSettingEE7GetImplIMS2_KFS3_vEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::GetImpl<RBX::DataModel::GearGenreSetting (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")]
-pub fn stub_0x45ef04() -> ! {
-    todo!("0x45ef04 RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::GetImpl<RBX::DataModel::GearGenreSetting (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_0x45ef04() -> bool {
+    // IDA 0x45ef04: `MOVS R0, #0; BX LR` — this enum property is never
+    // write-only.
+    false
 }
 
 // 0x45ef08 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelENS2_16GearGenreSettingEE7GetImplIMS2_KFS3_vEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::GetImpl<RBX::DataModel::GearGenreSetting (RBX::DataModel::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x45ef08() -> ! {
-    todo!("0x45ef08 RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::GetImpl<RBX::DataModel::GearGenreSetting (RBX::DataModel::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x45ef08(model: &DataModel) -> i32 {
+    // IDA 0x45ef08: `GetImpl<gear-getter>::getValue` invokes the bound member
+    // getter on the instance (same call shape as the decompiled 0x45f874);
+    // the demangle names the `GearGenreSetting` member, so the read collapses
+    // into the `gear_genre` field.
+    model.gear_genre
 }
 
 // 0x45ef28 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelENS2_16GearGenreSettingEE7GetImplIMS2_KFS3_vEE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::GetImpl<RBX::DataModel::GearGenreSetting (RBX::DataModel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::DataModel::GearGenreSetting const&)const")]
-pub fn stub_0x45ef28() -> ! {
-    todo!("0x45ef28 RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::GetImpl<RBX::DataModel::GearGenreSetting (RBX::DataModel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::DataModel::GearGenreSetting const&)const")
+pub fn stub_0x45ef28() {
+    // IDA 0x45ef28: `__cxa_allocate_exception` + `__cxa_throw` (disasm
+    // 0x45ef44-0x45ef46) — setting a read-only enum property always throws;
+    // the panic preserves the never-returns-normally contract.
+    panic!("0x45ef28: read-only GearGenreSetting property");
 }
 
 // 0x45f048 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEEC2IMS2_KFS3_vEiEEPKcS9_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::EnumPropDescriptor<RBX::DataModel::Genre (RBX::DataModel::*)(void)const,int>(char const*,char const*,RBX::DataModel::Genre (RBX::DataModel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x45f048() -> ! {
-    todo!("0x45f048 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::EnumPropDescriptor<RBX::DataModel::Genre (RBX::DataModel::*)(void)const,int>(char const*,char const*,RBX::DataModel::Genre (RBX::DataModel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x45f048() -> DataModelEnumPropDesc {
+    // IDA 0x45f048: `EnumPropDescriptor<DataModel, Genre>::C2` — binds the
+    // enum property into the class descriptor; the binding lands with
+    // reflection, so the model starts empty. Same shape as 0x45e6d0.
+    DataModelEnumPropDesc { _opaque: () }
 }
 
 // 0x45f1f4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::~EnumPropDescriptor()")]
-pub fn stub_0x45f1f4() -> ! {
-    todo!("0x45f1f4 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::~EnumPropDescriptor()")
+pub fn stub_0x45f1f4(_desc: *mut DataModelEnumPropDesc) {
+    // IDA 0x45f1f4: `EnumPropDescriptor<DataModel, Genre>::D0` — vtable
+    // install plus memberwise teardown; dropping the box is the same release.
+    // Twin of 0x45e87c.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x45f220 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEE10isReadOnlyEv
@@ -22390,8 +22424,11 @@ pub fn stub_0x45f230() -> ! {
 
 // 0x45f240 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x45f240() -> ! {
-    todo!("0x45f240 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x45f240(a: &DataModel, b: &DataModel) -> bool {
+    // IDA 0x45f240: reads both values through the desc's member getter and
+    // compares; the getter collapses into the `genre` field this descriptor
+    // binds. Same shape as 0x45e8c8.
+    a.genre == b.genre
 }
 
 // 0x45f268 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -22414,20 +22451,32 @@ pub fn stub_0x45f3d8() -> ! {
 
 // 0x45f3fc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::hasStringValue(void)const")]
-pub fn stub_0x45f3fc() -> ! {
-    todo!("0x45f3fc RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::hasStringValue(void)const")
+pub fn stub_0x45f3fc() -> bool {
+    // IDA 0x45f3fc: enum properties always carry string values. Same shape as
+    // 0x45ea88.
+    true
 }
 
 // 0x45f400 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x45f400() -> ! {
-    todo!("0x45f400 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x45f400(model: &DataModel) -> Option<String> {
+    // IDA 0x45f400: reads the value through the member getter, then converts
+    // to the enum name. Same shape as 0x45ea8c over the `genre` field and the
+    // `Genre` table.
+    stub_0x45a454().pairs.iter().find(|(v, _)| *v == model.genre).map(|(_, text)| text.to_string())
 }
 
 // 0x45f424 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x45f424() -> ! {
-    todo!("0x45f424 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x45f424(model: &mut DataModel, name: &str) -> bool {
+    // IDA 0x45f424: converts via the desc table and sets on hit, false on
+    // miss. Same shape as 0x45eab0 over the `genre` field.
+    if let Some(value) = stub_0x41deac(name) {
+        model.genre = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x45f464 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
@@ -22444,74 +22493,125 @@ pub fn stub_0x45f484() -> ! {
 
 // 0x45f6c4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x45f6c4() -> ! {
-    todo!("0x45f6c4 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x45f6c4(model: &DataModel) -> Option<usize> {
+    // IDA 0x45f6c4: reads the value through the member getter, then the
+    // position search. Same shape as 0x45ed50 over `genre`.
+    let table = stub_0x45a454();
+    table.pairs.iter().position(|(v, _)| *v == model.genre)
 }
 
 // 0x45f6e0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_0x45f6e0() -> ! {
-    todo!("0x45f6e0 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x45f6e0(model: &mut DataModel, index: usize) -> bool {
+    // IDA 0x45f6e0: bounds-checks the index, reads the value, and sets;
+    // out-of-range sets nothing. Same shape as 0x45ed6c over `genre`.
+    if let Some((value, _)) = stub_0x45a454().pairs.get(index) {
+        model.genre = *value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x45f714 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x45f714() -> ! {
-    todo!("0x45f714 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x45f714(model: &DataModel) -> i32 {
+    // IDA 0x45f714: reads the value through the member getter. Same shape as
+    // 0x45eda0 over `genre`.
+    model.genre
 }
 
 // 0x45f71c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x45f71c() -> ! {
-    todo!("0x45f71c RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x45f71c(model: &mut DataModel, value: i32) -> bool {
+    // IDA 0x45f71c: validates the value against the table, sets on hit and
+    // returns true, false on miss. Same shape as 0x45eda8 over `genre`.
+    if stub_0x45a454().pairs.iter().any(|(v, _)| *v == value) {
+        model.genre = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x45f768 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x45f768() -> ! {
-    todo!("0x45f768 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x45f768(model: &DataModel) -> Option<(i32, &'static str)> {
+    // IDA 0x45f768: reads the value through the member getter, then the item
+    // search. Same shape as 0x45edf4 over `genre`.
+    let table = stub_0x45a454();
+    table.pairs.iter().find(|(v, _)| *v == model.genre).copied()
 }
 
 // 0x45f788 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_0x45f788() -> ! {
-    todo!("0x45f788 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x45f788(model: &mut DataModel, name: &str) -> bool {
+    // IDA 0x45f788: converts via the desc table and sets on hit, false on
+    // miss. Same shape as 0x45eab0/0x45ee14 over `genre`.
+    if let Some(value) = stub_0x41deac(name) {
+        model.genre = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x45f7bc — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE14convertToIndexES3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToIndex(RBX::DataModel::Genre)const")]
-pub fn stub_0x45f7bc() -> ! {
-    todo!("0x45f7bc RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToIndex(RBX::DataModel::Genre)const")
+pub fn stub_0x45f7bc(value: i32) -> Option<usize> {
+    // IDA 0x45f7bc: asserts `value>=0`, then the position search. Same shape
+    // as 0x45ee4c over the `Genre` table.
+    debug_assert!(value >= 0, "0x45f7bc: value>=0");
+    stub_0x45a454().pairs.iter().position(|(v, _)| *v == value)
 }
 
 // 0x45f82c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x45f82c() -> ! {
-    todo!("0x45f82c RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x45f82c(model: &mut DataModel, index: usize) -> bool {
+    // IDA 0x45f82c: bounds-checks the index (skipping `-1` sentinel entries
+    // like 0x45eebc), reads the value, and sets. Same shape as 0x45eebc over
+    // `genre`.
+    if let Some((value, _)) = stub_0x45a454().pairs.get(index) {
+        if *value != -1 {
+            model.genre = *value;
+            return true;
+        }
+    }
+    false
 }
 
 // 0x45f86c — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelENS2_5GenreEE7GetImplIMS2_KFS3_vEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::GetImpl<RBX::DataModel::Genre (RBX::DataModel::*)(void)const>::isReadOnly(void)const")]
-pub fn stub_0x45f86c() -> ! {
-    todo!("0x45f86c RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::GetImpl<RBX::DataModel::Genre (RBX::DataModel::*)(void)const>::isReadOnly(void)const")
+pub fn stub_0x45f86c() -> bool {
+    // IDA 0x45f86c: `return 1` (decomp 0x45f86e) — this enum property reads
+    // as read-only.
+    true
 }
 
 // 0x45f870 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelENS2_5GenreEE7GetImplIMS2_KFS3_vEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::GetImpl<RBX::DataModel::Genre (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")]
-pub fn stub_0x45f870() -> ! {
-    todo!("0x45f870 RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::GetImpl<RBX::DataModel::Genre (RBX::DataModel::*)(void)const>::isWriteOnly(void)const")
+pub fn stub_0x45f870() -> bool {
+    // IDA 0x45f870: `MOVS R0, #0; BX LR` (disasm 0x45f870-0x45f872) — this
+    // enum property is never write-only.
+    false
 }
 
 // 0x45f874 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelENS2_5GenreEE7GetImplIMS2_KFS3_vEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::GetImpl<RBX::DataModel::Genre (RBX::DataModel::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x45f874() -> ! {
-    todo!("0x45f874 RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::GetImpl<RBX::DataModel::Genre (RBX::DataModel::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x45f874(model: &DataModel) -> i32 {
+    // IDA 0x45f874: `GetImpl<genre-getter>::getValue` invokes the bound
+    // member getter on the instance (decomp 0x45f878-0x45f880); the demangle
+    // names the `Genre` member, so the read collapses into the `genre` field.
+    model.genre
 }
 
 // 0x45f894 — __ZNK3RBX10Reflection14PropDescriptorINS_9DataModelENS2_5GenreEE7GetImplIMS2_KFS3_vEE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::GetImpl<RBX::DataModel::Genre (RBX::DataModel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::DataModel::Genre const&)const")]
-pub fn stub_0x45f894() -> ! {
-    todo!("0x45f894 RBX::Reflection::PropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::GetImpl<RBX::DataModel::Genre (RBX::DataModel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::DataModel::Genre const&)const")
+pub fn stub_0x45f894() {
+    // IDA 0x45f894: `__noreturn` + `runtime_error` throw (same shape as the
+    // decompiled 0x45ef28 path) — setting a read-only enum property always
+    // throws; the panic preserves the never-returns-normally contract.
+    panic!("0x45f894: read-only Genre property");
 }
 
 // 0x45f9b4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEEC2IMS2_KFS3_vEiEEPKcS9_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
