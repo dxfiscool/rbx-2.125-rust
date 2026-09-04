@@ -1408,11 +1408,14 @@ pub struct DialogRemoteSignal {
 
 /// Rust model of `RBX::Reflection::RemoteEventDesc<DialogRoot, ...>` (IDA
 /// `0x496344`): the scriptable/broadcast flags behind `isScriptable`/
-/// `isBroadcast`.
+/// `isBroadcast`, plus the locally-connected generic slots behind
+/// `connectGeneric` (0x498990) — the replicated member signal itself lands
+/// with the network subsystem.
 #[derive(Default)]
 pub struct DialogRemoteEventDesc {
     pub scriptable: bool,
     pub broadcast: bool,
+    pub connections: Mutex<Vec<SharedPtr<GenericSlotWrapper>>>,
 }
 
 /// Rust model of `RBX::Reflection::BoundFuncDesc<DialogRoot, ...>` (IDA
@@ -1888,11 +1891,13 @@ pub struct Handles {
 
 /// Rust model of `RBX::Reflection::RemoteEventDesc<HopperBin, ...>` (IDA
 /// `0x5736b4`): the scriptable/broadcast flags behind `isScriptable`/
-/// `isBroadcast`. Same treatment as `DialogRemoteEventDesc`.
+/// `isBroadcast`, plus the locally-connected generic slots behind
+/// `connectGeneric` (0x5781e0). Same shape as `DialogRemoteEventDesc`.
 #[derive(Default)]
 pub struct HopperBinRemoteEventDesc {
     pub scriptable: bool,
     pub broadcast: bool,
+    pub connections: Mutex<Vec<SharedPtr<GenericSlotWrapper>>>,
 }
 
 /// Rust model of `RBX::StarterGear` (IDA `0x571b54`): the starter-gear leaf;
@@ -1914,6 +1919,55 @@ pub struct HopperBin {
 /// the input batch.
 #[derive(Default)]
 pub struct ScriptMouseCommand {
+    _opaque: (),
+}
+
+/// Rust model of `rbx::remote_signal<void ()(SharedPtr<Instance>)>` (IDA
+/// `0x5767e8`): the replication half of the hopper-bin event; transport
+/// lands with the network subsystem. Same treatment as `DialogRemoteSignal`.
+#[derive(Default)]
+pub struct HopperBinRemoteSignal {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Reflection::RemoteEventDesc<InsertService, ...>` (IDA
+/// `0x585b24`): the scriptable/broadcast flags behind `isScriptable` (IDA
+/// `0x5906f0`) / `isBroadcast` (IDA `0x5906f8`), plus the locally-connected
+/// generic slots behind `connectGeneric` (IDA `0x59058c`). Same shape as
+/// `DialogRemoteEventDesc`.
+#[derive(Default)]
+pub struct InsertRemoteEventDesc {
+    pub scriptable: bool,
+    pub broadcast: bool,
+    pub connections: Mutex<Vec<SharedPtr<GenericSlotWrapper>>>,
+}
+
+/// Rust model of `RBX::Reflection::BoundYieldFuncDesc<InsertService, ...>`
+/// (IDA `0x585d20`): same storage-only family treatment.
+#[derive(Default)]
+pub struct InsertYieldDesc {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Reflection::BoundFuncDesc<InsertService, ...>` (IDA
+/// `0x585d60`): same storage-only family treatment.
+#[derive(Default)]
+pub struct InsertFuncDesc {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::LuaWebService` (IDA `0x58c788`): the Lua web-service
+/// leaf; members land with the service batch.
+#[derive(Default)]
+pub struct LuaWebService {
+    _opaque: (),
+}
+
+/// Rust model of `rbx::remote_signal<void ()(string, SharedPtr<Instance>)>`
+/// (IDA `0x58ca70`): the replication half of the insert-service event;
+/// transport lands with the network subsystem.
+#[derive(Default)]
+pub struct InsertRemoteSignal {
     _opaque: (),
 }
 
@@ -28452,11 +28506,11 @@ pub fn stub_0x4988dc(_desc: *mut DialogRemoteEventDesc) {
 // 0x498990 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx13remote_signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::DialogRoot,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::DialogRoot::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: RBX::Reflection::EventDescImpl<2,RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::DialogRoot::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
-pub fn stub_0x498990(desc: *const EventDescPayload, slot: &SharedPtr<GenericSlotWrapper>) {
+pub fn stub_0x498990(desc: *const DialogRemoteEventDesc, slot: &SharedPtr<GenericSlotWrapper>) {
     // IDA 0x498990: `EventDescImpl<2, DialogRoot, ...>::connectGeneric` —
     // retain the wrapper and insert into the member signal; same shape as
-    // 0x707dcc.
-    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    // 0x707dcc, over the remote descriptor's local slot list.
+    // SAFETY: `desc` must point to a valid `DialogRemoteEventDesc`.
     unsafe {
         (*desc).connections.lock().push(slot.clone());
     }
@@ -35975,29 +36029,47 @@ pub fn stub_0x576478() -> ! {
 // 0x5767e8 — __ZN3rbx13remote_signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEEC2Ev
 #[doc(alias = "rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::remote_signal(void)")]
 // was: rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>::remote_signal(void)
-pub fn stub_0x5767e8() -> ! {
-    todo!("0x5767e8 rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>::remote_signal(void)")
+pub fn stub_0x5767e8() -> HopperBinRemoteSignal {
+    // IDA 0x5767e8: `remote_signal<...>::C2Ev` — default-constructs the
+    // replication half of the hopper-bin event. Same shape as 0x497ba4.
+    HopperBinRemoteSignal::default()
 }
 
 // 0x577fa8 — __ZN3RBX10Reflection9EventDescINS_9HopperBinEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_EC2ESB_PKcSE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::HopperBin,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::HopperBin::*>::EventDesc(rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::HopperBin::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::EventDesc<RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::EventDesc(rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x577fa8() -> ! {
-    todo!("0x577fa8 RBX::Reflection::EventDesc<RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::EventDesc(rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x577fa8() -> HopperBinRemoteEventDesc {
+    // IDA 0x577fa8: `EventDesc<HopperBin, ...>::C2` — wires the member
+    // event into the class descriptor; the flag words land with the
+    // reflection registry, so the model starts at defaults. Same shape as
+    // 0x498cd8.
+    HopperBinRemoteEventDesc::default()
 }
 
 // 0x57812c — __ZN3RBX10Reflection9EventDescINS_9HopperBinEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::HopperBin,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::HopperBin::*>::~EventDesc()")]
 // was: RBX::Reflection::EventDesc<RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::~EventDesc()
-pub fn stub_0x57812c() -> ! {
-    todo!("0x57812c RBX::Reflection::EventDesc<RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::~EventDesc()")
+pub fn stub_0x57812c(_desc: *mut HopperBinRemoteEventDesc) {
+    // IDA 0x57812c: `EventDesc<HopperBin, ...>::D0` — vtable install plus
+    // memberwise teardown; dropping the box is the same release. Twin of
+    // 0x498eec.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5781e0 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_9HopperBinEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::HopperBin,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::HopperBin::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: RBX::Reflection::EventDescImpl<1,RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
-pub fn stub_0x5781e0() -> ! {
-    todo!("0x5781e0 RBX::Reflection::EventDescImpl<1,RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x5781e0(desc: *const HopperBinRemoteEventDesc, slot: &SharedPtr<GenericSlotWrapper>) {
+    // IDA 0x5781e0: `EventDescImpl<1, HopperBin, ...>::connectGeneric` —
+    // retain the wrapper and insert into the member signal; same shape as
+    // 0x498990, over the remote descriptor's local slot list.
+    // SAFETY: `desc` must point to a valid `HopperBinRemoteEventDesc`.
+    unsafe {
+        (*desc).connections.lock().push(slot.clone());
+    }
 }
 
 // 0x578344 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_9HopperBinEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
@@ -36017,8 +36089,14 @@ pub fn stub_0x5784a4() -> ! {
 // 0x579878 — __ZN3rbx13remote_signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEED2Ev
 #[doc(alias = "rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::~remote_signal()")]
 // was: rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>::~remote_signal()
-pub fn stub_0x579878() -> ! {
-    todo!("0x579878 rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>::~remote_signal()")
+pub fn stub_0x579878(_signal: *mut HopperBinRemoteSignal) {
+    // IDA 0x579878: `remote_signal<...>::D2Ev` — tears down the replication
+    // half; no members carry state, so the memberwise teardown collapses.
+    // Same shape as 0x49ad94.
+    // SAFETY: `_signal` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_signal));
+    }
 }
 
 // 0x57c17c — __ZN3RBX10IEquipable9buildWeldEPNS_12PartInstanceES2_RKN3G3D15CoordinateFrameES6_RKSs
@@ -36031,8 +36109,10 @@ pub fn stub_0x57c17c() -> ! {
 // 0x57d5f8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_14GuiImageButtonEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::GuiImageButton> RBX::Creatable<RBX::Instance>::create<RBX::GuiImageButton>(void)")]
 // was: boost::shared_ptr<RBX::GuiImageButton> RBX::Creatable<RBX::Instance>::create<RBX::GuiImageButton>(void)
-pub fn stub_0x57d5f8() -> ! {
-    todo!("0x57d5f8 boost::shared_ptr<RBX::GuiImageButton> RBX::Creatable<RBX::Instance>::create<RBX::GuiImageButton>(void)")
+pub fn stub_0x57d5f8() -> SharedPtr<GuiImageButton> {
+    // IDA 0x57d5f8: `Creatable::create<GuiImageButton>` — `operator new` +
+    // default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(GuiImageButton::default())
 }
 
 // 0x581250 — __ZN3RBX13InsertService9loadAssetEiN5boost8functionIFvNS1_10shared_ptrINS_8InstanceEEEEEENS2_IFvSsEEE
@@ -36143,22 +36223,37 @@ pub fn stub_0x585a10() -> ! {
 // 0x585b24 — __ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEED1Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>>::~RemoteEventDesc()")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()
-pub fn stub_0x585b24() -> ! {
-    todo!("0x585b24 RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()")
+pub fn stub_0x585b24(_desc: *mut InsertRemoteEventDesc) {
+    // IDA 0x585b24: `RemoteEventDesc<InsertService, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x585d20 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrINS_8InstanceEEEiES6_Li1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,rbx_core::SharedPtr<RBX::Instance> ()(int),rbx_core::SharedPtr<RBX::Instance>,1>::~BoundYieldFuncDesc()")]
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::~BoundYieldFuncDesc()
-pub fn stub_0x585d20() -> ! {
-    todo!("0x585d20 RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::~BoundYieldFuncDesc()")
+pub fn stub_0x585d20(_desc: *mut InsertYieldDesc) {
+    // IDA 0x585d20: `BoundYieldFuncDesc<InsertService, ...>::D1` —
+    // memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x585d60 — __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
-pub fn stub_0x585d60() -> ! {
-    todo!("0x585d60 RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_0x585d60(_desc: *mut InsertFuncDesc) {
+    // IDA 0x585d60: `BoundFuncDesc<InsertService, ...>::D1` — memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x585e6c — __ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEEEEaSERKS6_
@@ -36451,8 +36546,10 @@ pub fn stub_0x58b120() -> ! {
 // 0x58c788 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13LuaWebServiceEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::LuaWebService> RBX::Creatable<RBX::Instance>::create<RBX::LuaWebService>(void)")]
 // was: boost::shared_ptr<RBX::LuaWebService> RBX::Creatable<RBX::Instance>::create<RBX::LuaWebService>(void)
-pub fn stub_0x58c788() -> ! {
-    todo!("0x58c788 boost::shared_ptr<RBX::LuaWebService> RBX::Creatable<RBX::Instance>::create<RBX::LuaWebService>(void)")
+pub fn stub_0x58c788() -> SharedPtr<LuaWebService> {
+    // IDA 0x58c788: `Creatable::create<LuaWebService>` — `operator new` +
+    // default ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(LuaWebService::default())
 }
 
 // 0x58c838 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13LuaWebServiceEEERS3_RKNS0_IT_EE
@@ -36472,29 +36569,44 @@ pub fn stub_0x58c870() -> ! {
 // 0x58ca70 — __ZN3rbx13remote_signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEEC2Ev
 #[doc(alias = "rbx::remote_signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::remote_signal(void)")]
 // was: rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::remote_signal(void)
-pub fn stub_0x58ca70() -> ! {
-    todo!("0x58ca70 rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::remote_signal(void)")
+pub fn stub_0x58ca70() -> InsertRemoteSignal {
+    // IDA 0x58ca70: `remote_signal<string, Instance>::C2Ev` —
+    // default-constructs the replication half of the insert-service event.
+    // Same shape as 0x5767e8.
+    InsertRemoteSignal::default()
 }
 
 // 0x58d1f8 — __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EEC2EMS2_FvS6_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::InsertService::*)(rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::InsertService::*)(boost::shared_ptr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x58d1f8() -> ! {
-    todo!("0x58d1f8 RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::InsertService::*)(boost::shared_ptr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x58d1f8() -> InsertFuncDesc {
+    // IDA 0x58d1f8: `BoundFuncDesc<InsertService, void(Instance)>::C2` over
+    // `(member-fn, names, permissions, attributes)` — binds the member
+    // function into the class descriptor; the binding lands with reflection,
+    // so the model starts at defaults. Same shape as 0x54d564.
+    InsertFuncDesc::default()
 }
 
 // 0x58d390 — __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)
-pub fn stub_0x58d390() -> ! {
-    todo!("0x58d390 RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x58d390(_name: &str, _sig: &[Variant]) {
+    // IDA 0x58d390: `BoundFuncDesc<InsertService, void(Instance)>::
+    // declareSignature` — registers the signature words into the reflection
+    // table. Same shape as 0x54d6e0.
 }
 
 // 0x58d3c0 — __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
-pub fn stub_0x58d3c0() -> ! {
-    todo!("0x58d3c0 RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_0x58d3c0(_desc: *mut InsertFuncDesc) {
+    // IDA 0x58d3c0: `BoundFuncDesc<InsertService, void(Instance)>::D0` —
+    // vtable install plus memberwise teardown; dropping the box is the same
+    // release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x58d4dc — __ZNK3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -36507,29 +36619,47 @@ pub fn stub_0x58d4dc() -> ! {
 // 0x58d5c0 — __ZN3RBX10Reflection11Call1HelperINS_13InsertServiceEMS2_FvN5boost10shared_ptrINS_8InstanceEEEES6_vE4callEPS2_S8_RNS0_7VariantERKS6_
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::InsertService,void (RBX::InsertService::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,void>::call(RBX::InsertService*,void (RBX::InsertService::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: RBX::Reflection::Call1Helper<RBX::InsertService,void (RBX::InsertService::*)(boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,void>::call(RBX::InsertService*,void (RBX::InsertService::*)(boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_0x58d5c0() -> ! {
-    todo!("0x58d5c0 RBX::Reflection::Call1Helper<RBX::InsertService,void (RBX::InsertService::*)(boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,void>::call(RBX::InsertService*,void (RBX::InsertService::*)(boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_0x58d5c0(
+    svc: &InsertService,
+    method: fn(&InsertService, SharedPtr<Instance>),
+    arg: &SharedPtr<Instance>,
+) {
+    // IDA 0x58d5c0 (`Call1Helper<InsertService, void (InsertService::*)
+    // (Instance), ...>::call`, same head shape as 0x54d8fc): invokes the
+    // member function with a retained `Instance` copy.
+    method(svc, arg.clone());
 }
 
 // 0x58d6a8 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrINS_8InstanceEEEiES6_Li1EEC2EMS2_FviNS3_8functionIFvS6_EEENS9_IFvSsEEEEPKcSH_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,rbx_core::SharedPtr<RBX::Instance> ()(int),rbx_core::SharedPtr<RBX::Instance>,1>::BoundYieldFuncDesc(void (RBX::InsertService::*)(int,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::BoundYieldFuncDesc(void (RBX::InsertService::*)(int,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x58d6a8() -> ! {
-    todo!("0x58d6a8 RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::BoundYieldFuncDesc(void (RBX::InsertService::*)(int,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x58d6a8() -> InsertYieldDesc {
+    // IDA 0x58d6a8: `BoundYieldFuncDesc<InsertService, ...>::C2` — binds the
+    // yielding member function into the class descriptor; the binding lands
+    // with reflection, so the model starts at defaults. Same shape as
+    // 0x58d1f8.
+    InsertYieldDesc::default()
 }
 
 // 0x58d820 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrINS_8InstanceEEEiES6_Li1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,rbx_core::SharedPtr<RBX::Instance> ()(int),rbx_core::SharedPtr<RBX::Instance>,1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::declareSignature(char const*,RBX::Reflection::Variant)
-pub fn stub_0x58d820() -> ! {
-    todo!("0x58d820 RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x58d820(_name: &str, _sig: &[Variant]) {
+    // IDA 0x58d820: `BoundYieldFuncDesc<InsertService, ...>::
+    // declareSignature` — registers the signature words into the reflection
+    // table. Same shape as 0x58d390.
 }
 
 // 0x58d850 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrINS_8InstanceEEEiES6_Li1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,rbx_core::SharedPtr<RBX::Instance> ()(int),rbx_core::SharedPtr<RBX::Instance>,1>::~BoundYieldFuncDesc()")]
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::~BoundYieldFuncDesc()
-pub fn stub_0x58d850() -> ! {
-    todo!("0x58d850 RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::~BoundYieldFuncDesc()")
+pub fn stub_0x58d850(_desc: *mut InsertYieldDesc) {
+    // IDA 0x58d850: `BoundYieldFuncDesc<InsertService, ...>::D0` — vtable
+    // install plus memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x58d924 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrINS_8InstanceEEEiES6_Li1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsENS3_8functionIFvNS0_7VariantEEEENSE_IFvSsEEE
@@ -36542,29 +36672,44 @@ pub fn stub_0x58d924() -> ! {
 // 0x5904d8 — __ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEED0Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>>::~RemoteEventDesc()")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()
-pub fn stub_0x5904d8() -> ! {
-    todo!("0x5904d8 RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()")
+pub fn stub_0x5904d8(_desc: *mut InsertRemoteEventDesc) {
+    // IDA 0x5904d8: `RemoteEventDesc<InsertService, ...>::D0` — vtable
+    // install plus memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x59058c — __ZNK3RBX10Reflection13EventDescImplILi2ENS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::InsertService,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::InsertService::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: RBX::Reflection::EventDescImpl<2,RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::InsertService::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
-pub fn stub_0x59058c() -> ! {
-    todo!("0x59058c RBX::Reflection::EventDescImpl<2,RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::InsertService::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x59058c(desc: *const InsertRemoteEventDesc, slot: &SharedPtr<GenericSlotWrapper>) {
+    // IDA 0x59058c: `EventDescImpl<2, InsertService, ...>::connectGeneric` —
+    // retain the wrapper and insert into the member signal; same shape as
+    // 0x5781e0.
+    // SAFETY: `desc` must point to a valid `InsertRemoteEventDesc`.
+    unsafe {
+        (*desc).connections.lock().push(slot.clone());
+    }
 }
 
 // 0x5906f0 — __ZNK3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>>::isScriptable(void)const")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::isScriptable(void)const
-pub fn stub_0x5906f0() -> ! {
-    todo!("0x5906f0 RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::isScriptable(void)const")
+pub fn stub_0x5906f0(desc: &InsertRemoteEventDesc) -> bool {
+    // IDA 0x5906f0: returns the scriptable flag — same flag-word read as
+    // 0x498af4.
+    desc.scriptable
 }
 
 // 0x5906f8 — __ZNK3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE11isBroadcastEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>>::isBroadcast(void)const")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::isBroadcast(void)const
-pub fn stub_0x5906f8() -> ! {
-    todo!("0x5906f8 RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::isBroadcast(void)const")
+pub fn stub_0x5906f8(desc: &InsertRemoteEventDesc) -> bool {
+    // IDA 0x5906f8: returns the broadcast flag — same flag-word read as
+    // 0x498afc.
+    desc.broadcast
 }
 
 // 0x5567bc — __ZN3RBX6Rocket9setTargetEPNS_12PartInstanceE
