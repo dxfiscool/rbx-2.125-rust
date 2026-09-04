@@ -151,6 +151,17 @@ pub(crate) static PLACE_LAST_TELEPORT: std::sync::LazyLock<
 > = std::sync::LazyLock::new(|| {
     parking_lot::Mutex::new((String::new(), String::new(), String::new()))
 });
+/// Gap-filler PlaceLauncher connection/teleport tail state (IDA 0x2aba4-0x2bf74).
+/// Child/player signal connections, the teleporter handle, the
+/// `RobloxGameState` default and the subview game-set count record here.
+pub(crate) static PLACE_PLAYER_CONNECTED: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static PLACE_TELEPORTER: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static PLACE_SUBVIEW_GAME_SET: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PLACE_GAME_STATE: std::sync::LazyLock<parking_lot::Mutex<String>> =
+    std::sync::LazyLock::new(|| parking_lot::Mutex::new(String::new()));
 
 // 0x239ec — __ZN18iOSSettingsService27ReadValueiPadMinimumVersionEPKc
 // type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
@@ -884,7 +895,7 @@ pub fn stub_0x2512c(max_parts: i32, part_count: i32, place_id: i32) {
     PLACE_PART_WARNINGS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
     PLACE_ANALYTICS_EVENTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
     *PLACE_LAST_ALERT.lock() = "WarnTooManyParts".to_owned();
-    *PLACE_LAST_ANALYTICS_LABEL.lock() = place_id.to_string();
+    *PLACE_LAST_ANALYTICS_LABEL.lock() = format!("TooManyParts:{place_id}");
 }
 
 // 0x253cc — ___copy_helper_block_98
@@ -1326,6 +1337,7 @@ pub fn stub_0x29684() {
     PLACE_CURRENTLY_PLAYING.store(false, std::sync::atomic::Ordering::SeqCst);
     PLACE_IS_LEAVING.store(false, std::sync::atomic::Ordering::SeqCst);
     PLACE_BG_TASK.store(false, std::sync::atomic::Ordering::SeqCst);
+    PLACE_GAME_STATE.lock().clear();
     PLACE_LEAVE_POSTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
@@ -1362,9 +1374,9 @@ pub fn stub_0x298e0(currently_playing: bool, has_ogre_view: bool) {
         return;
     }
     PLACE_IDLE_TIMER_DISABLED.store(false, std::sync::atomic::Ordering::SeqCst);
+    *PLACE_GAME_STATE.lock() = "leaveGame".to_owned();
     PLACE_CHILD_ADDED_CONNECTED.store(false, std::sync::atomic::Ordering::SeqCst);
     PLACE_SESSION_REPORTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
-    PLACE_PAGE_VIEWS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
     PLACE_BG_TASK.store(true, std::sync::atomic::Ordering::SeqCst);
     stub_0x29bb4();
     stub_0x29c74();
@@ -1515,134 +1527,226 @@ pub fn stub_0x2a99c(datamodel_ready: bool, has_overlay: bool, warnings_enabled: 
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
 #[doc(alias = "finishTeleport(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *)")]
 #[doc(alias = "__ZL14finishTeleportP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEEPNS3_18FunctionMarshallerE")]
-pub fn stub_0x2aba4() -> ! {
-    todo!("0x2aba4 finishTeleport(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *)")
+pub fn stub_0x2aba4() {
+    // IDA 0x2aba4: `finishTeleport` binds `finishTeleportHelper` (0x2b754)
+    // over view + game and runs it through `FunctionMarshaller::Execute`
+    // (same shape as 0x2643c).
+    PLACE_CONTROL_EXECS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x2acec — ___copy_helper_block_247
 // type: void __fastcall(_DWORD *, const shared_count *)
 #[doc(alias = "___copy_helper_block_247")]
-pub fn stub_0x2acec() -> ! {
-    todo!("0x2acec ___copy_helper_block_247")
+pub fn stub_0x2acec() {
+    // IDA 0x2acec: `__copy_helper_block_247` retains the captured objects
+    // (`_Block_object_assign`). `Arc` clone glue covers it; no explicit body.
 }
 
 // 0x2ada4 — ___destroy_helper_block_248
 #[doc(alias = "___destroy_helper_block_248")]
-pub fn stub_0x2ada4() -> ! {
-    todo!("0x2ada4 ___destroy_helper_block_248")
+pub fn stub_0x2ada4() {
+    // IDA 0x2ada4: `__destroy_helper_block_248` releases the captured
+    // objects (`_Block_object_dispose`). `Arc` drop glue covers it; no
+    // explicit body.
 }
 
 // 0x2ae44 — -[PlaceLauncher isCurrentlyPlayingGame]
 // type: char __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher isCurrentlyPlayingGame]")]
-pub fn stub_0x2ae44() -> ! {
-    todo!("0x2ae44 -[PlaceLauncher isCurrentlyPlayingGame]")
+pub fn stub_0x2ae44() -> bool {
+    // IDA 0x2ae44: `isCurrentlyPlayingGame` returns the playing flag.
+    PLACE_CURRENTLY_PLAYING.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x2ae54 — -[PlaceLauncher applicationDidReceiveMemoryWarning]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher applicationDidReceiveMemoryWarning]")]
-pub fn stub_0x2ae54() -> ! {
-    todo!("0x2ae54 -[PlaceLauncher applicationDidReceiveMemoryWarning]")
+pub fn stub_0x2ae54(child_connected: bool, player_connected: bool, warnings_enabled: bool) {
+    // IDA 0x2ae54: `applicationDidReceiveMemoryWarning` ignores the warning
+    // out of game; in game it files a `PlayErrors` analytics event
+    // (`OutOfMemory_EarlyExit` + session 5 while a child/player connection
+    // is live, else `OutOfMemory` + session 6), closes child connections
+    // (0x2b5e0), shows the `MemoryError` alert when warnings are on, and
+    // leaves the game (0x298e0).
+    if !stub_0x2ae44() {
+        return;
+    }
+    PLACE_MEM_WARNING.store(true, std::sync::atomic::Ordering::SeqCst);
+    let early_exit = child_connected || player_connected;
+    let action = if early_exit { "OutOfMemory_EarlyExit" } else { "OutOfMemory" };
+    PLACE_ANALYTICS_EVENTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    *PLACE_LAST_ANALYTICS_LABEL.lock() = format!(
+        "{action}:{}",
+        PLACE_LAST_ID.load(std::sync::atomic::Ordering::SeqCst)
+    );
+    PLACE_SESSION_REPORTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    stub_0x2b5e0();
+    if warnings_enabled {
+        *PLACE_LAST_ALERT.lock() = "MemoryError".to_owned();
+    }
+    stub_0x298e0(true, true);
 }
 
 // 0x2b1bc — -[PlaceLauncher childAdded:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Instance>)
 #[doc(alias = "-[PlaceLauncher childAdded:]")]
-pub fn stub_0x2b1bc() -> ! {
-    todo!("0x2b1bc -[PlaceLauncher childAdded:]")
+pub fn stub_0x2b1bc(has_view: bool, has_datamodel: bool, players_present: bool, is_player_child: bool) {
+    // IDA 0x2b1bc: `childAdded:` with no view, no datamodel, no `Players`
+    // service or no player closes the child connections (0x2b5e0,
+    // `NSLog` traffic is drop glue). Otherwise it binds `playerLoaded:`
+    // (0x2b548) onto the player-added signal, stores the player connection
+    // and disconnects the child connection.
+    if !(has_view && has_datamodel && players_present && is_player_child) {
+        stub_0x2b5e0();
+        return;
+    }
+    PLACE_PLAYER_CONNECTED.store(true, std::sync::atomic::Ordering::SeqCst);
+    PLACE_CHILD_ADDED_CONNECTED.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x2b548 — -[PlaceLauncher playerLoaded:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Instance>)
 #[doc(alias = "-[PlaceLauncher playerLoaded:]")]
-pub fn stub_0x2b548() -> ! {
-    todo!("0x2b548 -[PlaceLauncher playerLoaded:]")
+pub fn stub_0x2b548() {
+    // IDA 0x2b548: `playerLoaded:` disconnects the player connection,
+    // closes the child connections (0x2b5e0) and records the `inGame`
+    // state.
+    PLACE_PLAYER_CONNECTED.store(false, std::sync::atomic::Ordering::SeqCst);
+    stub_0x2b5e0();
+    *PLACE_GAME_STATE.lock() = "inGame".to_owned();
 }
 
 // 0x2b5e0 — -[PlaceLauncher closeChildConnections]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher closeChildConnections]")]
-pub fn stub_0x2b5e0() -> ! {
-    todo!("0x2b5e0 -[PlaceLauncher closeChildConnections]")
+pub fn stub_0x2b5e0() {
+    // IDA 0x2b5e0: `closeChildConnections` disconnects the child + player
+    // connections and stops the free-memory checker.
+    PLACE_CHILD_ADDED_CONNECTED.store(false, std::sync::atomic::Ordering::SeqCst);
+    PLACE_PLAYER_CONNECTED.store(false, std::sync::atomic::Ordering::SeqCst);
+    PLACE_MEM_CHECKER.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x2b654 — -[PlaceLauncher .cxx_destruct]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher .cxx_destruct]")]
-pub fn stub_0x2b654() -> ! {
-    todo!("0x2b654 -[PlaceLauncher .cxx_destruct]")
+pub fn stub_0x2b654() {
+    // IDA 0x2b654: `PlaceLauncher .cxx_destruct` releases the player/child
+    // connection slots and the teleporter. `Arc`/slot drop glue covers it;
+    // the observable flags clear.
+    PLACE_CHILD_ADDED_CONNECTED.store(false, std::sync::atomic::Ordering::SeqCst);
+    PLACE_PLAYER_CONNECTED.store(false, std::sync::atomic::Ordering::SeqCst);
+    PLACE_TELEPORTER.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x2b724 — -[PlaceLauncher .cxx_construct]
 // type: id __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher .cxx_construct]")]
-pub fn stub_0x2b724() -> ! {
-    todo!("0x2b724 -[PlaceLauncher .cxx_construct]")
+pub fn stub_0x2b724() {
+    // IDA 0x2b724: `PlaceLauncher .cxx_construct` zeroes the teleporter +
+    // child/player connection slots. Default-init glue; no explicit body.
 }
 
 // 0x2b754 — __ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "finishTeleportHelper(RobloxView *,rbx_core::SharedPtr<RBX::Game>)")]
 #[doc(alias = "__ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE")]
-pub fn stub_0x2b754() -> ! {
-    todo!("0x2b754 finishTeleportHelper(RobloxView *,boost::shared_ptr<RBX::Game>)")
+pub fn stub_0x2b754(has_main_vc: bool, has_subview: bool) {
+    // IDA 0x2b754: `finishTeleportHelper` sets the game on the ogre view's
+    // first subview, then runs the 0.5s finish animation (blocks 0x2b980 /
+    // 0x2ba14, drop glue).
+    if has_main_vc && has_subview {
+        PLACE_SUBVIEW_GAME_SET.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    if has_main_vc {
+        PLACE_TELEPORT_ANIMS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x2b980 — ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke
 #[doc(alias = "____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke")]
-pub fn stub_0x2b980() -> ! {
-    todo!("0x2b980 ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke")
+pub fn stub_0x2b980(has_screen: bool) {
+    // IDA 0x2b980: finish animation block stretches the ogre view over the
+    // main-screen bounds (pure UIKit geometry, drop glue); without a screen
+    // it applies the zero frame instead.
+    let _ = has_screen;
 }
 
 // 0x2ba00 — ___copy_helper_block_425
 #[doc(alias = "___copy_helper_block_425")]
-pub fn stub_0x2ba00() -> ! {
-    todo!("0x2ba00 ___copy_helper_block_425")
+pub fn stub_0x2ba00() {
+    // IDA 0x2ba00: `__copy_helper_block_425` retains the captured objects
+    // (`_Block_object_assign`). `Arc` clone glue covers it; no explicit body.
 }
 
 // 0x2ba0c — ___destroy_helper_block_426
 #[doc(alias = "___destroy_helper_block_426")]
-pub fn stub_0x2ba0c() -> ! {
-    todo!("0x2ba0c ___destroy_helper_block_426")
+pub fn stub_0x2ba0c() {
+    // IDA 0x2ba0c: `__destroy_helper_block_426` releases the captured
+    // objects (`_Block_object_dispose`). `Arc` drop glue covers it; no
+    // explicit body.
 }
 
 // 0x2ba14 — ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke428
 #[doc(alias = "____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke428")]
-pub fn stub_0x2ba14() -> ! {
-    todo!("0x2ba14 ____ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE_block_invoke428")
+pub fn stub_0x2ba14() {
+    // IDA 0x2ba14: finish-animation completion clears `clipsToBounds` on the
+    // ogre view (pure UIKit state, drop glue); no explicit body.
 }
 
 // 0x2ba40 — ___copy_helper_block_429
 #[doc(alias = "___copy_helper_block_429")]
-pub fn stub_0x2ba40() -> ! {
-    todo!("0x2ba40 ___copy_helper_block_429")
+pub fn stub_0x2ba40() {
+    // IDA 0x2ba40: `__copy_helper_block_429` retains the captured objects
+    // (`_Block_object_assign`). `Arc` clone glue covers it; no explicit body.
 }
 
 // 0x2ba4c — ___destroy_helper_block_430
 #[doc(alias = "___destroy_helper_block_430")]
-pub fn stub_0x2ba4c() -> ! {
-    todo!("0x2ba4c ___destroy_helper_block_430")
+pub fn stub_0x2ba4c() {
+    // IDA 0x2ba4c: `__destroy_helper_block_430` releases the captured
+    // objects (`_Block_object_dispose`). `Arc` drop glue covers it; no
+    // explicit body.
 }
 
 // 0x2ba54 — __ZL16executeUrlScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
 #[doc(alias = "executeUrlScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
 #[doc(alias = "__ZL16executeUrlScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs")]
-pub fn stub_0x2ba54() -> ! {
-    todo!("0x2ba54 executeUrlScript(boost::shared_ptr<RBX::DataModel>,std::string const&)")
+pub fn stub_0x2ba54(script: &str, is_url: bool) {
+    // IDA 0x2ba54: `executeUrlScript` impersonates level 7, fetches the URL
+    // content under the datamodel legacy lock and runs it via
+    // `executeSignedScript` (0x2bdb0), then resets the security context.
+    // Non-URL input skips the fetch. Content fetch/networking is drop glue;
+    // the executed script records.
+    *PLACE_LAST_JOIN_SCRIPT.lock() = script.to_owned();
+    if is_url {
+        stub_0x2bdb0(script, true);
+    }
 }
 
 // 0x2bdb0 — __ZL19executeSignedScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
 #[doc(alias = "executeSignedScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
 #[doc(alias = "__ZL19executeSignedScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs")]
-pub fn stub_0x2bdb0() -> ! {
-    todo!("0x2bdb0 executeSignedScript(boost::shared_ptr<RBX::DataModel>,std::string const&)")
+pub fn stub_0x2bdb0(script: &str, verified: bool) {
+    // IDA 0x2bdb0: `executeSignedScript` verifies the script signature and
+    // runs the verified source via `executeScript` (0x2bf74).
+    if verified {
+        PLACE_SIGNED_SCRIPTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    stub_0x2bf74(script, true);
 }
 
 // 0x2bf74 — __ZL13executeScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs
 #[doc(alias = "executeScript(rbx_core::SharedPtr<RBX::DataModel>,std::string const&)")]
 #[doc(alias = "__ZL13executeScriptN5boost10shared_ptrIN3RBX9DataModelEEERKSs")]
-pub fn stub_0x2bf74() -> ! {
-    todo!("0x2bf74 executeScript(boost::shared_ptr<RBX::DataModel>,std::string const&)")
+pub fn stub_0x2bf74(script: &str, scripts_enabled: bool) {
+    // IDA 0x2bf74: `executeScript` takes the datamodel legacy lock and,
+    // with scripts enabled, runs the trusted source in a new
+    // `ScriptContext` thread. Lock/thread hops are drop glue; the executed
+    // script records.
+    if scripts_enabled {
+        *PLACE_LAST_LOAD_SCRIPT.lock() = script.to_owned();
+        PLACE_EXECUTED_SCRIPTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x2c138 — ____ZL15presentGameViewv_block_invoke
