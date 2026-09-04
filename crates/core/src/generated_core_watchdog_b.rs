@@ -6,172 +6,598 @@
 use crate::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
+/// Batch: 24 IDA-grounded ports 0x25e9b0-0x25effc — the SpotLight/PointLight/Light
+/// `PropDescriptor<float|Color3|bool>::GetSetImpl` cluster (predicates, member-pointer
+/// getValue/setValue dispatch, descriptor ctor/dtor). Untouched carriers keep stub bodies;
+/// ports live in `prop_binding` under idiomatic names, wired via `stub_25*`.
+/// Conventions: `boost::shared_ptr` -> `crate::SharedPtr` (kept via `_SHARED_PTR` carrier),
+/// member-function-pointer pairs -> `MemberPtr`, throws -> none (all paths total except
+/// null-object misuse, matching the original). `[INFERENCE]` marks what the binary does not
+/// pin down; everything else follows the IDA pseudocode + disassembly branch-for-branch.
+pub mod prop_binding {
+    use std::ffi::CStr;
+    use std::os::raw::c_char;
+
+    /// was: `RBX::Reflection::DescribedBase` -> most-derived bias. Every getValue/setValue
+    /// path computes `v = 0; if (a2) v = a2 - 36` (IDA 0x25e9b4/0x25e9d4/0x25eb40/0x25eb60/
+    /// 0x25eccc/0x25ecec/0x25ee58/0x25ee80/0x25f004/0x25f028 + disasm SUBNE.W R2, R1, #0x24).
+    pub const DESCRIBED_BASE_BIAS: usize = 36;
+
+    /// was: Itanium/ARM member-function-pointer word pair (`+4/+8` getter, `+12/+16` setter
+    /// inside the 0x14-byte `GetSetImpl` box). `func` = direct target, else vtable offset;
+    /// `adj` = `(this_delta << 1) | virtual_bit` (IDA `v4 >> 1`, `v4 & 1`, `TST.W R3, #1`).
+    #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+    pub struct MemberPtr {
+        pub func: usize,
+        pub adj: usize,
+    }
+
+    /// was: `GetSetImpl<Getter, Setter>` heap box (`operator new(0x14u)`, IDA 0x25e9f8:
+    /// `*v23 = &off_...; v23[1] = a4; v23[2] = a5; v23[3] = a6; v23[4] = a7`).
+    #[derive(Debug, Clone, Copy)]
+    pub struct GetSetImpl {
+        pub getter: MemberPtr,
+        pub setter: MemberPtr,
+    }
+
+    /// was: `GetSetImpl` vtables installed by each ctor (`*v23 = &off_...`).
+    pub const POINT_LIGHT_FLOAT_GETSET_VTAB: &str = "off_122F3D8"; // IDA 0x25e9f8
+    pub const LIGHT_FLOAT_GETSET_VTAB: &str = "off_122F458"; // IDA 0x25eb84
+    pub const LIGHT_COLOR3_GETSET_VTAB: &str = "off_122F4E8"; // IDA 0x25ed10
+    pub const LIGHT_BOOL_GETSET_VTAB: &str = "off_122F578"; // IDA 0x25eebc
+    /// was: `PropDescriptor` vtables (`*a1 = &off_...` at each ctor tail).
+    pub const POINT_LIGHT_FLOAT_DESC_VTAB: &str = "off_122F388"; // IDA 0x25e9f8
+    pub const LIGHT_FLOAT_DESC_VTAB: &str = "off_122F408"; // IDA 0x25eb84
+    pub const LIGHT_COLOR3_DESC_VTAB: &str = "off_122F488"; // IDA 0x25ed10
+    pub const LIGHT_BOOL_DESC_VTAB: &str = "off_122F518"; // IDA 0x25eebc
+    /// was: `TypedPropertyDescriptor<T>` vtables restored by each dtor (`*a1 = &off_...`).
+    pub const TYPED_FLOAT_DESC_VTAB: &str = "off_1270A68"; // IDA 0x25eb0c/0x25ec98
+    pub const TYPED_COLOR3_DESC_VTAB: &str = "off_1270988"; // IDA 0x25ee24
+    pub const TYPED_BOOL_DESC_VTAB: &str = "off_1222378"; // IDA 0x25efd0
+
+    /// IDA `v = 0; if (a2) v = a2 - 36` then `this = v + (adj >> 1)`.
+    /// Null stays null-derived (original would fault on the later call too).
+    pub fn resolve_this(obj: *const u8, adj: usize) -> *const u8 {
+        let base = if obj.is_null() {
+            0
+        } else {
+            (obj as usize).wrapping_sub(DESCRIBED_BASE_BIAS)
+        };
+        base.wrapping_add(adj >> 1) as *const u8
+    }
+
+    /// IDA virtual branch (`ITT NE; LDRNE R2, [R0]; LDRNE R1, [R2,R1]` /
+    /// `LDRNE R3, [R1,R3]`): `target = *(vfunc_offset + *adjusted_this)`.
+    /// Non-virtual: the stored address itself (`BX R1` / `BX R3`).
+    pub unsafe fn resolve_target(mp: MemberPtr, this: *const u8) -> usize {
+        if mp.adj & 1 != 0 {
+            let vtable = *(this as *const usize);
+            *((vtable.wrapping_add(mp.func)) as *const usize)
+        } else {
+            mp.func
+        }
+    }
+
+    /// IDA 0x25e9b4/0x25eb40/0x25eccc/0x25f004 float `getValue`: `return v3(v5)`.
+    pub unsafe fn get_f32(imp: &GetSetImpl, obj: *const u8) -> f32 {
+        let this = resolve_this(obj, imp.getter.adj);
+        let target: extern "C" fn(*const u8) -> f32 =
+            std::mem::transmute(resolve_target(imp.getter, this));
+        target(this)
+    }
+
+    /// IDA 0x25e9d4/0x25eb60/0x25ecec/0x25f028 float `setValue`: `v4(v6, *a3)`.
+    /// The callee is `void (T::*)(float)`; the IDA `int` return carries no
+    /// observable output, so the port returns `()`.
+    pub unsafe fn set_f32(imp: &GetSetImpl, obj: *mut u8, value: f32) {
+        let this = resolve_this(obj as *const u8, imp.setter.adj);
+        let target: extern "C" fn(*mut u8, f32) =
+            std::mem::transmute(resolve_target(imp.setter, this));
+        target(this as *mut u8, value)
+    }
+
+    /// IDA 0x25ee58 Color3 `getValue`: `return v4(a1, v6)` — by-value Color3 via
+    /// hidden out-param `a1`. The IDA `int` return is the call artifact; the
+    /// observable output is the `out` write.
+    pub unsafe fn get_color3(out: *mut [f32; 3], imp: &GetSetImpl, obj: *const u8) {
+        let this = resolve_this(obj, imp.getter.adj);
+        let target: extern "C" fn(*mut [f32; 3], *const u8) =
+            std::mem::transmute(resolve_target(imp.getter, this));
+        target(out, this)
+    }
+
+    /// IDA 0x25ee80 Color3 `setValue`: 12-byte stack copy
+    /// (`v8[0] = *a3; v8[1] = a3[1]; v8[2] = a3[2]`) then `v4(v6, v8)`.
+    pub unsafe fn set_color3(imp: &GetSetImpl, obj: *mut u8, value: *const [f32; 3]) {
+        let tmp = *value;
+        let this = resolve_this(obj as *const u8, imp.setter.adj);
+        let target: extern "C" fn(*mut u8, *const [f32; 3]) =
+            std::mem::transmute(resolve_target(imp.setter, this));
+        target(this as *mut u8, &tmp)
+    }
+
+    /// was: `RBX::Reflection::PropDescriptor<T, V>` storage. The owned `Box<GetSetImpl>`
+    /// is the IDA `a1[10]` (`+0x28`) word freed by the dtor (`v2 = a1[10]; if (v2) delete`).
+    /// Trailing words: `[INFERENCE]` `attributes` = ctor args a8..a10 passed through to
+    /// `TypedPropertyDescriptor::init`; `permissions` = a11 (`Security::Permissions`).
+    #[derive(Debug, Default)]
+    pub struct PropDescriptor {
+        pub vtable: &'static str,
+        pub name: String,
+        pub category: String,
+        pub getset: Option<Box<GetSetImpl>>,
+        pub attributes: (u32, u32, u32),
+        pub permissions: u32,
+    }
+
+    impl PropDescriptor {
+        /// IDA 0x25e9f8/0x25eb84/0x25ed10/0x25eebc ctor shape: ensure classDescriptor
+        /// (lazy-static registry init, a process-global sink here), `new GetSetImpl`
+        /// from the (ptr, adj) pairs, `TypedPropertyDescriptor::init` base fields,
+        /// then install the `PropDescriptor` vtable. Returns `slot` (IDA `return a1`).
+        pub unsafe fn construct(
+            slot: *mut PropDescriptor,
+            name: *const c_char,
+            category: *const c_char,
+            getter: MemberPtr,
+            setter: MemberPtr,
+            vtable: &'static str,
+            attr0: u32,
+            attr1: u32,
+            attr2: u32,
+            permissions: u32,
+        ) -> *mut PropDescriptor {
+            let getset = Box::new(GetSetImpl { getter, setter });
+            let this = &mut *slot;
+            this.name = if name.is_null() {
+                String::new()
+            } else {
+                CStr::from_ptr(name).to_string_lossy().into_owned()
+            };
+            this.category = if category.is_null() {
+                String::new()
+            } else {
+                CStr::from_ptr(category).to_string_lossy().into_owned()
+            };
+            this.getset = Some(getset);
+            this.attributes = (attr0, attr1, attr2);
+            this.permissions = permissions;
+            this.vtable = vtable;
+            slot
+        }
+
+        /// IDA 0x25eb0c/0x25ec98/0x25ee24/0x25efd0 deleting-dtor shape:
+        /// restore the `TypedPropertyDescriptor` vtable, delete the owned box.
+        /// IDA also runs `operator delete(a1)`; in Rust the slot stays caller-owned.
+        /// The IDA `int` return is the delete artifact — no observable output.
+        pub unsafe fn destroy(slot: *mut PropDescriptor, base_vtable: &'static str) {
+            let this = &mut *slot;
+            this.vtable = base_vtable;
+            this.getset = None;
+        }
+    }
+
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+        extern "C" fn fake_get(this: *const u8) -> f32 {
+            // Member slot at +36 in the fake derived object (mirrors FakeFloat layout).
+            unsafe { *(this.add(36) as *const f32) }
+        }
+        extern "C" fn fake_set(this: *mut u8, v: f32) {
+            unsafe { *(this.add(36) as *mut f32) = v }
+        }
+        extern "C" fn fake_cget(out: *mut [f32; 3], this: *const u8) {
+            unsafe { *out = *(this.add(36) as *const [f32; 3]) }
+        }
+        extern "C" fn fake_cset(this: *mut u8, v: *const [f32; 3]) {
+            unsafe { *(this.add(36) as *mut [f32; 3]) = *v }
+        }
+
+        #[repr(C)]
+        struct FakeFloat {
+            pad: [u8; 36],
+            val: f32,
+        }
+
+        /// C++-shaped object for the virtual path: vtable slot at +0 (8-aligned),
+        /// member slot at +36 like FakeFloat.
+        #[repr(C)]
+        struct FakeVirtual {
+            vtab: usize,
+            _pad: [u8; 28],
+            val: f32,
+        }
+
+        fn described_of(fake: *const u8) -> *const u8 {
+            fake.wrapping_add(DESCRIBED_BASE_BIAS)
+        }
+
+        fn direct(mp_fn: usize) -> MemberPtr {
+            MemberPtr { func: mp_fn, adj: 0 }
+        }
+
+        #[test]
+        fn float_get_set_roundtrip_direct() {
+            let mut fake = FakeFloat { pad: [0; 36], val: 1.5 };
+            let base = std::ptr::addr_of!(fake) as *const u8;
+            let imp = GetSetImpl { getter: direct(fake_get as usize), setter: direct(fake_set as usize) };
+            unsafe {
+                assert_eq!(get_f32(&imp, described_of(base)), 1.5);
+                set_f32(&imp, described_of(base) as *mut u8, 2.25);
+            }
+            assert_eq!(fake.val, 2.25);
+        }
+
+        #[test]
+        fn float_dispatch_virtual_bit() {
+            let mut fake = FakeVirtual { vtab: 0, _pad: [0; 28], val: 7.0 };
+            let vtable: [usize; 1] = [fake_get as usize];
+            fake.vtab = vtable.as_ptr() as usize;
+            let base = std::ptr::addr_of!(fake) as *const u8;
+            let imp = GetSetImpl {
+                getter: MemberPtr { func: 0, adj: 1 },
+                setter: direct(fake_set as usize),
+            };
+            unsafe {
+                assert_eq!(get_f32(&imp, described_of(base)), 7.0);
+            }
+        }
+
+        #[test]
+        fn resolve_this_null_stays_derived_null() {
+            assert!(resolve_this(std::ptr::null(), 0).is_null());
+        }
+
+        #[test]
+        fn color3_copies_twelve_bytes() {
+            #[repr(C)]
+            struct FakeColor {
+                pad: [u8; 36],
+                col: [f32; 3],
+            }
+            let mut fake = FakeColor { pad: [0; 36], col: [0.1, 0.2, 0.3] };
+            let obj = (std::ptr::addr_of!(fake) as *const u8).wrapping_add(DESCRIBED_BASE_BIAS);
+            let imp = GetSetImpl { getter: direct(fake_cget as usize), setter: direct(fake_cset as usize) };
+            let mut out = [0.0f32; 3];
+            unsafe {
+                get_color3(&mut out, &imp, obj);
+            }
+            assert_eq!(out, [0.1, 0.2, 0.3]);
+            let next = [9.0f32, 8.0, 7.0];
+            unsafe {
+                set_color3(&imp, obj as *mut u8, &next);
+            }
+            assert_eq!(fake.col, next);
+        }
+
+        #[test]
+        fn descriptor_construct_destroy_mirrors_dtor() {
+            let mut slot = PropDescriptor::default();
+            let name = c"brightness".as_ptr();
+            let cat = c"light".as_ptr();
+            unsafe {
+                let back = PropDescriptor::construct(
+                    &mut slot,
+                    name,
+                    cat,
+                    direct(0x1000),
+                    direct(0x2000),
+                    LIGHT_FLOAT_DESC_VTAB,
+                    1,
+                    2,
+                    3,
+                    4,
+                );
+                assert!(std::ptr::eq(back, &slot));
+            }
+            assert_eq!(slot.vtable, LIGHT_FLOAT_DESC_VTAB);
+            assert_eq!(slot.name, "brightness");
+            assert!(slot.getset.is_some());
+            unsafe {
+                PropDescriptor::destroy(&mut slot, TYPED_FLOAT_DESC_VTAB);
+            }
+            assert_eq!(slot.vtable, TYPED_FLOAT_DESC_VTAB);
+            assert!(slot.getset.is_none());
+        }
+    }
+}
+
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::isWriteOnly(void)const")]
 // 0x25e9b0 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
 // type: int()
-pub fn stub_25e9b0() {
-    // IDA 0x25e9b0: script/reflection wiring owned by the script/datamodel crates — carrier no-op in core.
+pub fn stub_25e9b0() -> bool {
+    // IDA 0x25e9b0: MOVS R0, #0; BX LR — read/write-open pair, never write-only.
+    false
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // 0x25e9b4 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
-pub fn stub_25e9b4() {
-    // IDA 0x25e9b4: script/reflection wiring owned by the script/datamodel crates — carrier no-op in core.
+pub unsafe fn stub_25e9b4(imp: *const prop_binding::GetSetImpl, obj: *const u8) -> f32 {
+    // IDA 0x25e9b4: DescribedBase-36, (adj >> 1) adjust, virtual branch, tail-call getter.
+    prop_binding::get_f32(&*imp, obj)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
 // 0x25e9d4 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
 // type: int __fastcall(int, int, _DWORD *)
-pub fn stub_25e9d4() {
-    // IDA 0x25e9d4: script/reflection wiring owned by the script/datamodel crates — carrier no-op in core.
+pub unsafe fn stub_25e9d4(imp: *const prop_binding::GetSetImpl, obj: *mut u8, value: f32) {
+    // IDA 0x25e9d4 (disasm LDR R1, [R2]; BX R3): setter(this, value); void result.
+    prop_binding::set_f32(&*imp, obj, value)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::PropDescriptor<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>(char const*,char const*,float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // 0x25e9f8 — __ZN3RBX10Reflection14PropDescriptorINS_10PointLightEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
-pub fn stub_25e9f8() {
-    // IDA 0x25e9f8: script/reflection wiring owned by the script/datamodel crates — carrier no-op in core.
+pub unsafe fn stub_25e9f8(
+    slot: *mut prop_binding::PropDescriptor,
+    name: *const std::os::raw::c_char,
+    category: *const std::os::raw::c_char,
+    getter_func: usize,
+    getter_adj: usize,
+    setter_func: usize,
+    setter_adj: usize,
+    attr0: u32,
+    attr1: u32,
+    attr2: u32,
+    permissions: u32,
+) -> *mut prop_binding::PropDescriptor {
+    // IDA 0x25e9f8: classDescriptor sink, new GetSetImpl (vtable off_122F3D8),
+    // TypedPropertyDescriptor<float> init, *a1 = &off_122F388, return a1.
+    prop_binding::PropDescriptor::construct(
+        slot,
+        name,
+        category,
+        prop_binding::MemberPtr { func: getter_func, adj: getter_adj },
+        prop_binding::MemberPtr { func: setter_func, adj: setter_adj },
+        prop_binding::POINT_LIGHT_FLOAT_DESC_VTAB,
+        attr0,
+        attr1,
+        attr2,
+        permissions,
+    )
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::~PropDescriptor()")]
 // 0x25eb0c — __ZN3RBX10Reflection14PropDescriptorINS_10PointLightEfED0Ev
 // type: int __fastcall(_DWORD *)
-pub fn stub_25eb0c() {
-    // IDA 0x25eb0c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_25eb0c(slot: *mut prop_binding::PropDescriptor) {
+    // IDA 0x25eb0c (disasm: vtable store, LDR R0, [R4,#0x28], delete-if-nonnull, delete a1):
+    // restore TypedPropertyDescriptor<float> vtable (off_1270A68), drop owned box.
+    // IDA int return is the delete artifact — no observable output.
+    prop_binding::PropDescriptor::destroy(slot, prop_binding::TYPED_FLOAT_DESC_VTAB)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::isReadOnly(void)const")]
 // 0x25eb38 — __ZNK3RBX10Reflection14PropDescriptorINS_10PointLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
 // type: int()
-pub fn stub_25eb38() {
-    // IDA 0x25eb38: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_25eb38() -> bool {
+    // IDA 0x25eb38: return 0 — read/write-open pair, never read-only.
+    false
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::isWriteOnly(void)const")]
 // 0x25eb3c — __ZNK3RBX10Reflection14PropDescriptorINS_10PointLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
 // type: int()
-pub fn stub_25eb3c() {
-    // IDA 0x25eb3c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_25eb3c() -> bool {
+    // IDA 0x25eb3c: return 0 — read/write-open pair, never write-only.
+    false
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // 0x25eb40 — __ZNK3RBX10Reflection14PropDescriptorINS_10PointLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
-pub fn stub_25eb40() {
-    // IDA 0x25eb40: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_25eb40(imp: *const prop_binding::GetSetImpl, obj: *const u8) -> f32 {
+    // IDA 0x25eb40: same dispatch shape as 0x25e9b4.
+    prop_binding::get_f32(&*imp, obj)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
 // 0x25eb60 — __ZNK3RBX10Reflection14PropDescriptorINS_10PointLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
 // type: int __fastcall(int, int, _DWORD *)
-pub fn stub_25eb60() {
-    // IDA 0x25eb60: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_25eb60(imp: *const prop_binding::GetSetImpl, obj: *mut u8, value: f32) {
+    // IDA 0x25eb60: same dispatch shape as 0x25e9d4.
+    prop_binding::set_f32(&*imp, obj, value)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::PropDescriptor<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>(char const*,char const*,float (RBX::Light::*)(void)const,void (RBX::Light::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // 0x25eb84 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
-pub fn stub_25eb84() {
-    // IDA 0x25eb84: script/reflection wiring owned by the script/datamodel crates — carrier no-op in core.
+pub unsafe fn stub_25eb84(
+    slot: *mut prop_binding::PropDescriptor,
+    name: *const std::os::raw::c_char,
+    category: *const std::os::raw::c_char,
+    getter_func: usize,
+    getter_adj: usize,
+    setter_func: usize,
+    setter_adj: usize,
+    attr0: u32,
+    attr1: u32,
+    attr2: u32,
+    permissions: u32,
+) -> *mut prop_binding::PropDescriptor {
+    // IDA 0x25eb84: GetSetImpl vtable off_122F458, descriptor vtable off_122F408.
+    prop_binding::PropDescriptor::construct(
+        slot,
+        name,
+        category,
+        prop_binding::MemberPtr { func: getter_func, adj: getter_adj },
+        prop_binding::MemberPtr { func: setter_func, adj: setter_adj },
+        prop_binding::LIGHT_FLOAT_DESC_VTAB,
+        attr0,
+        attr1,
+        attr2,
+        permissions,
+    )
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::~PropDescriptor()")]
 // 0x25ec98 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEfED0Ev
 // type: int __fastcall(_DWORD *)
-pub fn stub_25ec98() {
-    // IDA 0x25ec98: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_25ec98(slot: *mut prop_binding::PropDescriptor) {
+    // IDA 0x25ec98: *a1 = &off_1270A68; delete a1[10]; delete a1.
+    prop_binding::PropDescriptor::destroy(slot, prop_binding::TYPED_FLOAT_DESC_VTAB)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::isReadOnly(void)const")]
 // 0x25ecc4 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
 // type: int()
-pub fn stub_25ecc4() {
-    // IDA 0x25ecc4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_25ecc4() -> bool {
+    // IDA 0x25ecc4: return 0.
+    false
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::isWriteOnly(void)const")]
 // 0x25ecc8 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
 // type: int()
-pub fn stub_25ecc8() {
-    // IDA 0x25ecc8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_25ecc8() -> bool {
+    // IDA 0x25ecc8: return 0.
+    false
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // 0x25eccc — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
-pub fn stub_25eccc() {
-    // IDA 0x25eccc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_25eccc(imp: *const prop_binding::GetSetImpl, obj: *const u8) -> f32 {
+    // IDA 0x25eccc: same dispatch shape as 0x25e9b4.
+    prop_binding::get_f32(&*imp, obj)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
 // 0x25ecec — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
 // type: int __fastcall(int, int, _DWORD *)
-pub fn stub_25ecec() {
-    // IDA 0x25ecec: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_25ecec(imp: *const prop_binding::GetSetImpl, obj: *mut u8, value: f32) {
+    // IDA 0x25ecec: same dispatch shape as 0x25e9d4.
+    prop_binding::set_f32(&*imp, obj, value)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>(char const*,char const*,G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // 0x25ed10 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
-pub fn stub_25ed10() {
-    // IDA 0x25ed10: script/reflection wiring owned by the script/datamodel crates — carrier no-op in core.
+pub unsafe fn stub_25ed10(
+    slot: *mut prop_binding::PropDescriptor,
+    name: *const std::os::raw::c_char,
+    category: *const std::os::raw::c_char,
+    getter_func: usize,
+    getter_adj: usize,
+    setter_func: usize,
+    setter_adj: usize,
+    attr0: u32,
+    attr1: u32,
+    attr2: u32,
+    permissions: u32,
+) -> *mut prop_binding::PropDescriptor {
+    // IDA 0x25ed10: GetSetImpl vtable off_122F4E8, descriptor vtable off_122F488,
+    // TypedPropertyDescriptor<G3D::Color3> base init.
+    prop_binding::PropDescriptor::construct(
+        slot,
+        name,
+        category,
+        prop_binding::MemberPtr { func: getter_func, adj: getter_adj },
+        prop_binding::MemberPtr { func: setter_func, adj: setter_adj },
+        prop_binding::LIGHT_COLOR3_DESC_VTAB,
+        attr0,
+        attr1,
+        attr2,
+        permissions,
+    )
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::~PropDescriptor()")]
 // 0x25ee24 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EED0Ev
 // type: int __fastcall(_DWORD *)
-pub fn stub_25ee24() {
-    // IDA 0x25ee24: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_25ee24(slot: *mut prop_binding::PropDescriptor) {
+    // IDA 0x25ee24: *a1 = &off_1270988 (TypedPropertyDescriptor<Color3>); delete a1[10]; delete a1.
+    prop_binding::PropDescriptor::destroy(slot, prop_binding::TYPED_COLOR3_DESC_VTAB)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::isReadOnly(void)const")]
 // 0x25ee50 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 // type: int()
-pub fn stub_25ee50() {
-    // IDA 0x25ee50: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_25ee50() -> bool {
+    // IDA 0x25ee50: return 0.
+    false
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::isWriteOnly(void)const")]
 // 0x25ee54 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // type: int()
-pub fn stub_25ee54() {
-    // IDA 0x25ee54: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_25ee54() -> bool {
+    // IDA 0x25ee54: return 0.
+    false
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // 0x25ee58 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int, int)
-pub fn stub_25ee58() {
-    // IDA 0x25ee58: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_25ee58(
+    out: *mut [f32; 3],
+    imp: *const prop_binding::GetSetImpl,
+    obj: *const u8,
+) {
+    // IDA 0x25ee58: (out, impl, obj) arg order; v4(a1, v6) writes Color3 to out.
+    prop_binding::get_color3(out, &*imp, obj)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")]
 // 0x25ee80 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 // type: int __fastcall(int, int, _DWORD *)
-pub fn stub_25ee80() {
-    // IDA 0x25ee80: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_25ee80(
+    imp: *const prop_binding::GetSetImpl,
+    obj: *mut u8,
+    value: *const [f32; 3],
+) {
+    // IDA 0x25ee80: 12-byte stack copy then setter(this, &tmp); void result.
+    prop_binding::set_color3(&*imp, obj, value)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::PropDescriptor<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>(char const*,char const*,bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 // 0x25eebc — __ZN3RBX10Reflection14PropDescriptorINS_5LightEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
-pub fn stub_25eebc() {
-    // IDA 0x25eebc: script/reflection wiring owned by the script/datamodel crates — carrier no-op in core.
+pub unsafe fn stub_25eebc(
+    slot: *mut prop_binding::PropDescriptor,
+    name: *const std::os::raw::c_char,
+    category: *const std::os::raw::c_char,
+    getter_func: usize,
+    getter_adj: usize,
+    setter_func: usize,
+    setter_adj: usize,
+    attr0: u32,
+    attr1: u32,
+    attr2: u32,
+    permissions: u32,
+) -> *mut prop_binding::PropDescriptor {
+    // IDA 0x25eebc: GetSetImpl vtable off_122F578, descriptor vtable off_122F518,
+    // TypedPropertyDescriptor<bool> base init.
+    prop_binding::PropDescriptor::construct(
+        slot,
+        name,
+        category,
+        prop_binding::MemberPtr { func: getter_func, adj: getter_adj },
+        prop_binding::MemberPtr { func: setter_func, adj: setter_adj },
+        prop_binding::LIGHT_BOOL_DESC_VTAB,
+        attr0,
+        attr1,
+        attr2,
+        permissions,
+    )
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::~PropDescriptor()")]
 // 0x25efd0 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEbED0Ev
 // type: int __fastcall(_DWORD *)
-pub fn stub_25efd0() {
-    // IDA 0x25efd0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub unsafe fn stub_25efd0(slot: *mut prop_binding::PropDescriptor) {
+    // IDA 0x25efd0: *a1 = &off_1222378 (TypedPropertyDescriptor<bool>); delete a1[10]; delete a1.
+    prop_binding::PropDescriptor::destroy(slot, prop_binding::TYPED_BOOL_DESC_VTAB)
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::isReadOnly(void)const")]
 // 0x25effc — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
 // type: int()
-pub fn stub_25effc() {
-    // IDA 0x25effc: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_25effc() -> bool {
+    // IDA 0x25effc: return 0.
+    false
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::isWriteOnly(void)const")]
