@@ -4619,15 +4619,18 @@ pub fn stub_1b2e0() -> ! {
 // 0x1b300 — -[DebugSettingsViewController disablesAutomaticKeyboardDismissal]
 // type: char __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController disablesAutomaticKeyboardDismissal]")]
-pub fn stub_1b300() -> ! {
-    todo!("0x1b300 -[DebugSettingsViewController disablesAutomaticKeyboardDismissal]")
+pub fn stub_1b300() -> bool {
+    // IDA 0x1b300: `MOVS R0, #0; BX LR` (0x1b302) — never dismisses.
+    // Verified via IDA decompile.
+    false
 }
 
 // 0x1b304 — -[DebugSettingsViewController .cxx_construct]
 // type: id __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController .cxx_construct]")]
-pub fn stub_1b304() -> ! {
-    todo!("0x1b304 -[DebugSettingsViewController .cxx_construct]")
+pub fn stub_1b304(controller: &crate::generated_176::DebugSettingsViewController) {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1b304)
+    controller.cxx_construct();
 }
 
 // 0x1da5c — +[LoginViewController sharedInstance]
@@ -9661,11 +9664,52 @@ pub fn stub_19218(delegate: crate::view_controllers::ObjCId) {
     crate::view_controllers::Appirater::shared_instance().set_delegate(delegate);
 }
 
+/// Host port of the `CFURLCreateStringByAddingPercentEscapes` call inside
+/// `-[NSString stringWithPercentEscape]` (IDA 0x1da4a): UTF-8
+/// (`0x8000100`), no `charactersToLeaveUnescaped`, escape set
+/// `"\u{FFFC}=,!$&'()*+;@?\n\"<>#\t :/"`. Unreserved bytes
+/// (`[A-Za-z0-9]` plus `-_.~`, none of which the escape set names) pass
+/// through; every other UTF-8 byte becomes an uppercase `%XX` triplet.
+pub fn string_with_percent_escape(input: &str) -> String {
+    const UNRESERVED: &[u8] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_.~";
+    let mut out = String::with_capacity(input.len());
+    for byte in input.bytes() {
+        if UNRESERVED.contains(&byte) {
+            out.push(byte as char);
+        } else {
+            out.push('%');
+            out.push(char::from_digit((byte >> 4) as u32, 16).unwrap_or('0').to_ascii_uppercase());
+            out.push(char::from_digit((byte & 0xF) as u32, 16).unwrap_or('0').to_ascii_uppercase());
+        }
+    }
+    out
+}
+
+#[cfg(test)]
+mod nsstring_tests {
+    use super::*;
+    #[test]
+    fn percent_escape_covers_escape_set() {
+        // Every byte of the IDA 0x1da4a escape set is escaped; unreserved
+        // bytes (including `-_.~`) pass through.
+        assert_eq!(stub_1da08("abcXYZ019-_.~"), "abcXYZ019-_.~");
+        assert_eq!(stub_1da08("a b"), "a%20b");
+        assert_eq!(stub_1da08("a=b&c+d"), "a%3Db%26c%2Bd");
+        assert_eq!(stub_1da08("100%"), "100%25");
+        assert_eq!(stub_1da08("caf\u{e9}"), "caf%C3%A9");
+        assert_eq!(stub_1b300(), false);
+    }
+}
+
 // 0x1da08 — -[NSString stringWithPercentEscape]
 // type: NSString *__cdecl(NSString *self, SEL)
 #[doc(alias = "-[NSString stringWithPercentEscape]")]
-pub fn stub_1da08() -> ! {
-    todo!("0x1da08 -[NSString stringWithPercentEscape]")
+pub fn stub_1da08(input: &str) -> String {
+    // IDA 0x1da08: `mutableCopy` (0x1da1a) + `autorelease` (0x1da2c), then
+    // `CFURLCreateStringByAddingPercentEscapes(NULL, s, NULL,
+    // "\u{FFFC}=,!$&'()*+;@?\n\"<>#\t :/", kCFStringEncodingUTF8)`
+    // (0x1da4a) + `autorelease`. Verified via IDA decompile.
+    string_with_percent_escape(input)
 }
 
 // 0x20468 — -[AboutController initWithCoder:]

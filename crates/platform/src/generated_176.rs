@@ -1186,6 +1186,13 @@ impl DebugSettingsViewController {
         self.animation_runs
             .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
     }
+    #[doc(alias = "-[DebugSettingsViewController .cxx_construct]")]
+    #[doc = "-[DebugSettingsViewController .cxx_construct]"]
+    pub fn cxx_construct(&self) {
+        // IDA 0x1b304: single-block `return self` — no C++ ivar stores
+        // (unlike `AppDelegate`, whose slot zeroing lives at 0x1a5ca).
+        // Host fields initialize in `init_with_coder`; nothing to run here.
+    }
     pub fn window_frame(&self) -> (f64, f64, f64, f64) {
         *self.window_frame.lock()
     }
