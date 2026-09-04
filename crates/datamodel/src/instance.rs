@@ -136,6 +136,35 @@ pub struct PointLight {
     _opaque: (),
 }
 
+/// Rust model of `FactoryProduct<HttpService, ...>::Creator` (IDA `0x258a34`
+/// vtable + `0x2582c8` `creatorPrivate`): stateless singleton; the C++
+/// vtable/`isConstructed` machinery collapses into the process-static instance.
+pub struct HttpServiceCreator {
+    _private: (),
+}
+
+/// Process-static creator behind `static_getCreator` (IDA `0x2582c8` loads
+/// `creatorPrivate` after the `wasConstructed` assert, disasm `0x25832e`-`0x258338`).
+pub static HTTP_SERVICE_CREATOR: HttpServiceCreator = HttpServiceCreator { _private: () };
+
+/// Rust model of `FactoryProduct<SpotLight, ...>::Creator` (IDA `0x25c960`
+/// vtable + `0x25cba4` `creatorPrivate`): same collapse as `HttpServiceCreator`.
+pub struct SpotLightCreator {
+    _private: (),
+}
+
+/// Process-static creator behind `static_getCreator` (IDA `0x25cba4`).
+pub static SPOT_LIGHT_CREATOR: SpotLightCreator = SpotLightCreator { _private: () };
+
+/// Rust model of `FactoryProduct<PointLight, ...>::Creator` (IDA `0x25d310`
+/// vtable + `0x25d554` `creatorPrivate`): same collapse as `HttpServiceCreator`.
+pub struct PointLightCreator {
+    _private: (),
+}
+
+/// Process-static creator behind `static_getCreator` (IDA `0x25d554`).
+pub static POINT_LIGHT_CREATOR: PointLightCreator = PointLightCreator { _private: () };
+
 /// Rust model of `RBX::Script` (IDA `0x28e630`): same opaque shape. The flag
 /// bytes at `+132`/`+134` (`Script::writeXml`, IDA `0x28e0f8`) land with the
 /// write path.
@@ -42496,92 +42525,119 @@ pub fn stub_0x2580a8() {
 // 0x258150 — __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv
-pub fn stub_0x258150() -> ! {
-    todo!("0x258150 __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv")
+pub fn stub_0x258150() -> &'static str {
+    // IDA 0x258150: `creator = static_getCreator()` (BLX 0x258154) then tail-calls
+    // `Creator::getClassName` shim (B.W 0x25815c -> 0x25833c), which returns
+    // `Name::doDeclare<sHttpService>()` — "HttpService".
+    let _creator = stub_0x2582c8();
+    stub_0x25833c()
 }
 
 // 0x25820c — __ZThn32_NK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv")]
 // was: __ZThn32_NK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv
-pub fn stub_0x25820c() -> ! {
-    todo!("0x25820c __ZThn32_NK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv")
+pub fn stub_0x25820c() -> &'static str {
+    // IDA 0x25820c: ZThn32 `getClassName` — disasm byte-identical to 0x258150
+    // (`static_getCreator` + shim tail-call); the `this -= 32` adjust collapses
+    // because `FactoryProduct` is the primary base here.
+    let _creator = stub_0x2582c8();
+    stub_0x25833c()
 }
 
 // 0x2582c8 — __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E17static_getCreatorEv
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E17static_getCreatorEv")]
 // was: __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E17static_getCreatorEv
-pub fn stub_0x2582c8() -> ! {
-    todo!("0x2582c8 __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E17static_getCreatorEv")
+pub fn stub_0x2582c8() -> &'static HttpServiceCreator {
+    // IDA 0x2582c8: `Creator::wasConstructed()` assert (disasm 0x2582d8-0x25832a),
+    // then returns `creatorPrivate` (disasm 0x25832e-0x258338).
+    &HTTP_SERVICE_CREATOR
 }
 
 // 0x25833c — __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator12getClassNameEv
-pub fn stub_0x25833c() -> ! {
-    todo!("0x25833c __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator12getClassNameEv")
+pub fn stub_0x25833c() -> &'static str {
+    // IDA 0x25833c: `wasConstructed` assert (disasm 0x25834c-0x25839c), one-shot
+    // `Name::declare<sHttpService>` via `boost::call_once` (disasm 0x2583a0-0x2583b8),
+    // then tail-calls `Name::doDeclare<sHttpService>()` (B.W 0x2583c0) — "HttpService".
+    "HttpService"
 }
 
 // 0x2584a8 — __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD2Ev")]
 // was: __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD2Ev
-pub fn stub_0x2584a8() -> ! {
-    todo!("0x2584a8 __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD2Ev")
+pub fn stub_0x2584a8() {
+    // IDA 0x2584a8: D2 base-object dtor — vtable reset to the Creator vtable
+    // (disasm 0x2584ca) plus the `wasConstructed` assert plumbing; no members
+    // to drop. Rust Drop glue covers it.
 }
 
 // 0x258544 — __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator6createEv")]
 // was: __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator6createEv
-pub fn stub_0x258544() -> ! {
-    todo!("0x258544 __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7Creator6createEv")
+pub fn stub_0x258544() -> SharedPtr<HttpService> {
+    // IDA 0x258544: `wasConstructed` assert, then
+    // `Creatable::create<HttpService>()` (BLX 0x258606 -> stub_0x258688);
+    // the shared-count copy/release around it is Arc adoption.
+    stub_0x258688()
 }
 
 // 0x258a34 — __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorC2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorC2Ev")]
 // was: __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorC2Ev
-pub fn stub_0x258a34() -> ! {
-    todo!("0x258a34 __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorC2Ev")
+pub fn stub_0x258a34() {
+    // IDA 0x258a34: Creator C2 — vtable install (disasm 0x258a5e), one-shot
+    // `Name::declare<sHttpService>` (disasm 0x258a60), then the `getCreators`
+    // insert of the creator (same shape as 0xf2bc). The process-static
+    // HTTP_SERVICE_CREATOR above is the constructed singleton.
 }
 
 // 0x258c78 — __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x258c78() -> ! {
-    todo!("0x258c78 __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x258c78() {
+    // IDA 0x258c78: `B.W RBX::Instance::~Instance()` — D1 runs the base dtor in
+    // place; Rust Drop glue covers it.
 }
 
 // 0x258c7c — __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x258c7c() -> ! {
-    todo!("0x258c7c __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x258c7c() {
+    // IDA 0x258c7c: `Instance` D2 (BL 0x258ccc) + `operator delete` (0x258cd2);
+    // Arc Drop glue covers both.
 }
 
 // 0x258d1c — __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x258d1c() -> ! {
-    todo!("0x258d1c __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x258d1c() {
+    // IDA 0x258d1c: ZThn32 D1 — `this -= 0x20` (SUBS 0x258d1c) then the Instance D2
+    // in place; the base offset collapses under single inheritance.
 }
 
 // 0x258d24 — __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x258d24() -> ! {
-    todo!("0x258d24 __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x258d24() {
+    // IDA 0x258d24: ZThn32 D0 — `this -= 0x20`, Instance D2, `operator delete`;
+    // Drop glue covers it.
 }
 
 // 0x258dc8 — __ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0x258dc8() -> ! {
-    todo!("0x258dc8 __ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x258dc8() {
+    // IDA 0x258dc8: ZThn36 D1 — `this -= 0x24` (SUBS 0x258dc8) then the Instance D2
+    // in place; same collapse as 0x258d1c.
 }
 
 // 0x258dd0 — __ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0x258dd0() -> ! {
-    todo!("0x258dd0 __ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x258dd0() {
+    // IDA 0x258dd0: ZThn36 D0 — `this -= 0x24`, Instance D2, `operator delete`;
+    // Drop glue covers it.
 }
 
 // 0x25c1d0 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_6sLightEEE12getClassNameEv
@@ -42601,113 +42657,159 @@ pub fn stub_0x25c1f8() -> ! {
 // 0x25c220 — __ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE12getClassNameEv
-pub fn stub_0x25c220() -> ! {
-    todo!("0x25c220 __ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE12getClassNameEv")
+pub fn stub_0x25c220() -> &'static str {
+    // IDA 0x25c220: `creator = static_getCreator()` (BLX 0x25c224) then tail-calls
+    // `Creator::getClassName` shim (B.W 0x25c22c -> 0x25ccb4), which returns
+    // `Name::doDeclare<sPointLight>()` — "PointLight".
+    let _creator = stub_0x25d554();
+    stub_0x25ccb4()
 }
 
 // 0x25c230 — __ZThn32_NK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE12getClassNameEv")]
 // was: __ZThn32_NK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE12getClassNameEv
-pub fn stub_0x25c230() -> ! {
-    todo!("0x25c230 __ZThn32_NK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE12getClassNameEv")
+pub fn stub_0x25c230() -> &'static str {
+    // IDA 0x25c230: ZThn32 `getClassName` — disasm byte-identical to 0x25c220
+    // (`static_getCreator` + shim tail-call); the `this -= 32` adjust collapses
+    // because `FactoryProduct` is the primary base here.
+    let _creator = stub_0x25d554();
+    stub_0x25ccb4()
 }
 
 // 0x25c240 — __ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE12getClassNameEv
-pub fn stub_0x25c240() -> ! {
-    todo!("0x25c240 __ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE12getClassNameEv")
+pub fn stub_0x25c240() -> &'static str {
+    // IDA 0x25c240: `creator = static_getCreator()` (BLX 0x25c244) then tail-calls
+    // `Creator::getClassName` shim (B.W 0x25c24c -> 0x25c304), which returns
+    // `Name::doDeclare<sSpotLight>()` — "SpotLight".
+    let _creator = stub_0x25cba4();
+    stub_0x25c304()
 }
 
 // 0x25c250 — __ZThn32_NK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE12getClassNameEv")]
 // was: __ZThn32_NK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE12getClassNameEv
-pub fn stub_0x25c250() -> ! {
-    todo!("0x25c250 __ZThn32_NK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE12getClassNameEv")
+pub fn stub_0x25c250() -> &'static str {
+    // IDA 0x25c250: ZThn32 `getClassName` — disasm byte-identical to 0x25c240
+    // (`static_getCreator` + shim tail-call); the `this -= 32` adjust collapses
+    // because `FactoryProduct` is the primary base here.
+    let _creator = stub_0x25cba4();
+    stub_0x25c304()
 }
 
 // 0x25c260 — __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorD1Ev")]
 // was: __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorD1Ev
-pub fn stub_0x25c260() -> ! {
-    todo!("0x25c260 __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_0x25c260() {
+    // IDA 0x25c260: `B.W CreatorD2` — PointLight D1 tail-calls D2 (0x25cc18);
+    // the vtable reset is compiler-managed in Rust.
+    stub_0x25cc18();
 }
 
 // 0x25c264 — __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorD1Ev")]
 // was: __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorD1Ev
-pub fn stub_0x25c264() -> ! {
-    todo!("0x25c264 __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_0x25c264() {
+    // IDA 0x25c264: `B.W CreatorD2` — SpotLight D1 tail-calls D2 (0x25c268);
+    // the vtable reset is compiler-managed in Rust.
+    stub_0x25c268();
 }
 
 // 0x25c268 — __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorD2Ev")]
 // was: __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorD2Ev
-pub fn stub_0x25c268() -> ! {
-    todo!("0x25c268 __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_0x25c268() {
+    // IDA 0x25c268: D2 base-object dtor — vtable reset to the Creator vtable
+    // (disasm 0x25c28a) plus the `wasConstructed` assert plumbing; no members
+    // to drop. Rust Drop glue covers it.
 }
 
 // 0x25c304 — __ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7Creator12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7Creator12getClassNameEv
-pub fn stub_0x25c304() -> ! {
-    todo!("0x25c304 __ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_0x25c304() -> &'static str {
+    // IDA 0x25c304: `wasConstructed` assert (disasm 0x25c314-0x25c364), one-shot
+    // `Name::declare<sSpotLight>` via `boost::call_once` (disasm 0x25c368-0x25c380),
+    // then tail-calls `Name::doDeclare<sSpotLight>()` (B.W 0x25c388) — "SpotLight".
+    "SpotLight"
 }
 
 // 0x25c38c — __ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7Creator6createEv")]
 // was: __ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7Creator6createEv
-pub fn stub_0x25c38c() -> ! {
-    todo!("0x25c38c __ZNK3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7Creator6createEv")
+pub fn stub_0x25c38c() -> SharedPtr<SpotLight> {
+    // IDA 0x25c38c: `wasConstructed` assert, then
+    // `Creatable::create<SpotLight>()` (BLX 0x25c44e -> stub_0x25c4d0);
+    // the shared-count copy/release around it is Arc adoption.
+    stub_0x25c4d0()
 }
 
 // 0x25c960 — __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorC2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorC2Ev")]
 // was: __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorC2Ev
-pub fn stub_0x25c960() -> ! {
-    todo!("0x25c960 __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE7CreatorC2Ev")
+pub fn stub_0x25c960() {
+    // IDA 0x25c960: Creator C2 — vtable install, one-shot
+    // `Name::declare<sSpotLight>` (disasm 0x25c98c), then the `getCreators`
+    // insert of the creator (same shape as 0xf2bc/0x258a34). The process-static
+    // SPOT_LIGHT_CREATOR above is the constructed singleton.
 }
 
 // 0x25cba4 — __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE17static_getCreatorEv
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE17static_getCreatorEv")]
 // was: __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE17static_getCreatorEv
-pub fn stub_0x25cba4() -> ! {
-    todo!("0x25cba4 __ZN3RBX14FactoryProductINS_9SpotLightENS_5LightELZNS_10sSpotLightEENS_8InstanceEE17static_getCreatorEv")
+pub fn stub_0x25cba4() -> &'static SpotLightCreator {
+    // IDA 0x25cba4: `Creator::wasConstructed()` assert (disasm 0x25cbb4-0x25cbfc),
+    // then returns `creatorPrivate`; same shape as 0x2582c8.
+    &SPOT_LIGHT_CREATOR
 }
 
 // 0x25cc18 — __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorD2Ev")]
 // was: __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorD2Ev
-pub fn stub_0x25cc18() -> ! {
-    todo!("0x25cc18 __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_0x25cc18() {
+    // IDA 0x25cc18: D2 base-object dtor — vtable reset to the Creator vtable
+    // plus the `wasConstructed` assert plumbing; no members to drop.
+    // Rust Drop glue covers it.
 }
 
 // 0x25ccb4 — __ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7Creator12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7Creator12getClassNameEv
-pub fn stub_0x25ccb4() -> ! {
-    todo!("0x25ccb4 __ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_0x25ccb4() -> &'static str {
+    // IDA 0x25ccb4: `wasConstructed` assert (disasm 0x25ccc4-0x25cd14), one-shot
+    // `Name::declare<sPointLight>` via `boost::call_once` (disasm 0x25cd18-0x25cd30),
+    // then tail-calls `Name::doDeclare<sPointLight>()` (B.W 0x25cd38) — "PointLight".
+    "PointLight"
 }
 
 // 0x25cd3c — __ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7Creator6createEv")]
 // was: __ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7Creator6createEv
-pub fn stub_0x25cd3c() -> ! {
-    todo!("0x25cd3c __ZNK3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7Creator6createEv")
+pub fn stub_0x25cd3c() -> SharedPtr<PointLight> {
+    // IDA 0x25cd3c: `wasConstructed` assert, then
+    // `Creatable::create<PointLight>()` (BLX 0x25cdfe -> stub_0x25ce80);
+    // the shared-count copy/release around it is Arc adoption.
+    stub_0x25ce80()
 }
 
 // 0x25d310 — __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorC2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorC2Ev")]
 // was: __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorC2Ev
-pub fn stub_0x25d310() -> ! {
-    todo!("0x25d310 __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE7CreatorC2Ev")
+pub fn stub_0x25d310() {
+    // IDA 0x25d310: Creator C2 — vtable install, one-shot
+    // `Name::declare<sPointLight>`, then the `getCreators` insert of the creator
+    // (same shape as 0xf2bc/0x258a34). The process-static POINT_LIGHT_CREATOR
+    // above is the constructed singleton.
 }
 
 // 0x25d554 — __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE17static_getCreatorEv
 #[doc(alias = "__ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE17static_getCreatorEv")]
 // was: __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE17static_getCreatorEv
-pub fn stub_0x25d554() -> ! {
-    todo!("0x25d554 __ZN3RBX14FactoryProductINS_10PointLightENS_5LightELZNS_11sPointLightEENS_8InstanceEE17static_getCreatorEv")
+pub fn stub_0x25d554() -> &'static PointLightCreator {
+    // IDA 0x25d554: `Creator::wasConstructed()` assert, then returns
+    // `creatorPrivate`; same shape as 0x2582c8.
+    &POINT_LIGHT_CREATOR
 }
 
 // 0x25d6ac — __ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
