@@ -462,152 +462,152 @@ fn midi_bits_per_sample(fmt: u32) -> Option<u32> {
 
 // 0xf6f600 — sub_F6F600
 #[doc(alias = "sub_F6F600")]
-pub fn stub_f6f600() -> ! {
-    todo!("0xf6f600 sub_F6F600")
+pub fn stub_f6f600() {
+    // IDA 0xf6f600: __stub_helper — LDR R12, =0x4F9C; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f60c — sub_F6F60C
 #[doc(alias = "sub_F6F60C")]
-pub fn stub_f6f60c() -> ! {
-    todo!("0xf6f60c sub_F6F60C")
+pub fn stub_f6f60c() {
+    // IDA 0xf6f60c: __stub_helper — LDR R12, =0x4FAC; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f618 — sub_F6F618
 #[doc(alias = "sub_F6F618")]
-pub fn stub_f6f618() -> ! {
-    todo!("0xf6f618 sub_F6F618")
+pub fn stub_f6f618() {
+    // IDA 0xf6f618: __stub_helper — LDR R12, =0x4FBD; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f624 — sub_F6F624
 #[doc(alias = "sub_F6F624")]
-pub fn stub_f6f624() -> ! {
-    todo!("0xf6f624 sub_F6F624")
+pub fn stub_f6f624() {
+    // IDA 0xf6f624: __stub_helper — LDR R12, =0x4FCC; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f630 — sub_F6F630
 #[doc(alias = "sub_F6F630")]
-pub fn stub_f6f630() -> ! {
-    todo!("0xf6f630 sub_F6F630")
+pub fn stub_f6f630() {
+    // IDA 0xf6f630: __stub_helper — LDR R12, =0x4FE1; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f63c — sub_F6F63C
 #[doc(alias = "sub_F6F63C")]
-pub fn stub_f6f63c() -> ! {
-    todo!("0xf6f63c sub_F6F63C")
+pub fn stub_f6f63c() {
+    // IDA 0xf6f63c: __stub_helper — LDR R12, =0x4FF2; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f648 — sub_F6F648
 #[doc(alias = "sub_F6F648")]
-pub fn stub_f6f648() -> ! {
-    todo!("0xf6f648 sub_F6F648")
+pub fn stub_f6f648() {
+    // IDA 0xf6f648: __stub_helper — LDR R12, =0x5003; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f654 — sub_F6F654
 #[doc(alias = "sub_F6F654")]
-pub fn stub_f6f654() -> ! {
-    todo!("0xf6f654 sub_F6F654")
+pub fn stub_f6f654() {
+    // IDA 0xf6f654: __stub_helper — LDR R12, =0x5014; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f660 — sub_F6F660
 #[doc(alias = "sub_F6F660")]
-pub fn stub_f6f660() -> ! {
-    todo!("0xf6f660 sub_F6F660")
+pub fn stub_f6f660() {
+    // IDA 0xf6f660: __stub_helper — LDR R12, =0x5026; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f66c — sub_F6F66C
 #[doc(alias = "sub_F6F66C")]
-pub fn stub_f6f66c() -> ! {
-    todo!("0xf6f66c sub_F6F66C")
+pub fn stub_f6f66c() {
+    // IDA 0xf6f66c: __stub_helper — LDR R12, =0x5037; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f678 — sub_F6F678
 #[doc(alias = "sub_F6F678")]
-pub fn stub_f6f678() -> ! {
-    todo!("0xf6f678 sub_F6F678")
+pub fn stub_f6f678() {
+    // IDA 0xf6f678: __stub_helper — LDR R12, =0x5049; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f684 — sub_F6F684
 #[doc(alias = "sub_F6F684")]
-pub fn stub_f6f684() -> ! {
-    todo!("0xf6f684 sub_F6F684")
+pub fn stub_f6f684() {
+    // IDA 0xf6f684: __stub_helper — LDR R12, =0x505A; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f690 — sub_F6F690
 #[doc(alias = "sub_F6F690")]
-pub fn stub_f6f690() -> ! {
-    todo!("0xf6f690 sub_F6F690")
+pub fn stub_f6f690() {
+    // IDA 0xf6f690: __stub_helper — LDR R12, =0x506D; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f69c — sub_F6F69C
 #[doc(alias = "sub_F6F69C")]
-pub fn stub_f6f69c() -> ! {
-    todo!("0xf6f69c sub_F6F69C")
+pub fn stub_f6f69c() {
+    // IDA 0xf6f69c: __stub_helper — LDR R12, =0x5082; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f6a8 — sub_F6F6A8
 #[doc(alias = "sub_F6F6A8")]
-pub fn stub_f6f6a8() -> ! {
-    todo!("0xf6f6a8 sub_F6F6A8")
+pub fn stub_f6f6a8() {
+    // IDA 0xf6f6a8: __stub_helper — LDR R12, =0x5094; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f6b4 — sub_F6F6B4
 #[doc(alias = "sub_F6F6B4")]
-pub fn stub_f6f6b4() -> ! {
-    todo!("0xf6f6b4 sub_F6F6B4")
+pub fn stub_f6f6b4() {
+    // IDA 0xf6f6b4: __stub_helper — LDR R12, =0x50A6; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f6c0 — sub_F6F6C0
 #[doc(alias = "sub_F6F6C0")]
-pub fn stub_f6f6c0() -> ! {
-    todo!("0xf6f6c0 sub_F6F6C0")
+pub fn stub_f6f6c0() {
+    // IDA 0xf6f6c0: __stub_helper — LDR R12, =0x50B7; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f6cc — sub_F6F6CC
 #[doc(alias = "sub_F6F6CC")]
-pub fn stub_f6f6cc() -> ! {
-    todo!("0xf6f6cc sub_F6F6CC")
+pub fn stub_f6f6cc() {
+    // IDA 0xf6f6cc: __stub_helper — LDR R12, =0x50CD; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f6d8 — sub_F6F6D8
 #[doc(alias = "sub_F6F6D8")]
-pub fn stub_f6f6d8() -> ! {
-    todo!("0xf6f6d8 sub_F6F6D8")
+pub fn stub_f6f6d8() {
+    // IDA 0xf6f6d8: __stub_helper — LDR R12, =0x50DF; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f6e4 — sub_F6F6E4
 #[doc(alias = "sub_F6F6E4")]
-pub fn stub_f6f6e4() -> ! {
-    todo!("0xf6f6e4 sub_F6F6E4")
+pub fn stub_f6f6e4() {
+    // IDA 0xf6f6e4: __stub_helper — LDR R12, =0x50F1; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f6f0 — sub_F6F6F0
 #[doc(alias = "sub_F6F6F0")]
-pub fn stub_f6f6f0() -> ! {
-    todo!("0xf6f6f0 sub_F6F6F0")
+pub fn stub_f6f6f0() {
+    // IDA 0xf6f6f0: __stub_helper — LDR R12, =0x5103; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f6fc — sub_F6F6FC
 #[doc(alias = "sub_F6F6FC")]
-pub fn stub_f6f6fc() -> ! {
-    todo!("0xf6f6fc sub_F6F6FC")
+pub fn stub_f6f6fc() {
+    // IDA 0xf6f6fc: __stub_helper — LDR R12, =0x5115; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f708 — sub_F6F708
 #[doc(alias = "sub_F6F708")]
-pub fn stub_f6f708() -> ! {
-    todo!("0xf6f708 sub_F6F708")
+pub fn stub_f6f708() {
+    // IDA 0xf6f708: __stub_helper — LDR R12, =0x5127; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f714 — sub_F6F714
 #[doc(alias = "sub_F6F714")]
-pub fn stub_f6f714() -> ! {
-    todo!("0xf6f714 sub_F6F714")
+pub fn stub_f6f714() {
+    // IDA 0xf6f714: __stub_helper — LDR R12, =0x513B; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f720 — sub_F6F720
 #[doc(alias = "sub_F6F720")]
-pub fn stub_f6f720() -> ! {
-    todo!("0xf6f720 sub_F6F720")
+pub fn stub_f6f720() {
+    // IDA 0xf6f720: __stub_helper — LDR R12, =0x514C; B _stub_helpers (dyld lazy-bind resolver, decompile `return _stub_helpers()`). Host: no dyld — no-op carrier.
 }
 
 // 0xf6f72c — sub_F6F72C
