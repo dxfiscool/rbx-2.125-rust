@@ -40590,181 +40590,271 @@ pub fn stub_0x5d5038() -> ! {
     todo!("0x5d5038 RBX::MouseCommand::MouseCommand(RBX::Workspace *)")
 }
 
+/// Rust model of `FactoryProduct<CRenderSettingsItem, ...>::Creator` (IDA
+/// `0xeccc` vtable + `0xf500` `creatorPrivate`): stateless singleton; the C++
+/// vtable/`isConstructed` machinery collapses into the process-static instance.
+pub struct RenderSettingsItemCreator {
+    _private: (),
+}
+
+/// Process-static creator behind `static_getCreator` (IDA `0xf500` loads
+/// `creatorPrivate` after the `wasConstructed` assert, disasm `0xf566`-`0xf570`).
+pub static RENDER_SETTINGS_ITEM_CREATOR: RenderSettingsItemCreator =
+    RenderSettingsItemCreator { _private: () };
+
+/// Rust model of the `Described<CRenderSettingsItem, ...>` class descriptor
+/// (IDA `0xfa00` `describedClassDescriptor` guard-var init): name plus the
+/// `Functionality = 27, Permissions = 0` template args from the mangled name.
+pub struct RenderSettingsClassDescriptor {
+    pub name: &'static str,
+    pub functionality: u32,
+    pub permissions: u32,
+}
+
+/// Class descriptor singleton behind `Described::classDescriptor` (IDA
+/// `0xfa00`); the `__cxa_guard_acquire` once-init (disasm `0xfa5c`) collapses
+/// into static init.
+pub static RENDER_SETTINGS_CLASS_DESCRIPTOR: RenderSettingsClassDescriptor =
+    RenderSettingsClassDescriptor { name: "RenderSettings", functionality: 27, permissions: 0 };
+
+/// Invoker installed by the `function<void(DataModel*)>` ctors (IDA `0x2d370`,
+/// `0x2d458`) for the view/game/marshaller bind: mirrors the
+/// `void_function_obj_invoker1` at IDA `0x2d660`/`stub_0x2d884` — the game is
+/// retained across the call (`shared_count` copy, disasm `0x2d8e6`/`0x2d902`),
+/// then the terminal `fn(view, game, marshaller, dm)` runs. The terminal
+/// callee is the platform `RobloxView` dispatch (out of crate), so the modeled
+/// half is the retain/release around it.
+fn view_game_marshaller_invoke(
+    view: *const (),
+    game: &SharedPtr<()>,
+    marshaller: *const (),
+    dm: *mut crate::data_model::DataModel,
+) {
+    let _retained: SharedPtr<()> = game.clone();
+    let _ = (view, marshaller, dm);
+}
+
 // 0xb8d0 — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
-pub fn stub_0xb8d0() -> ! {
-    todo!("0xb8d0 __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")
+pub fn stub_0xb8d0() -> &'static str {
+    // IDA 0xb8d0: `creator = static_getCreator()` (BLX 0xb8d4) then tail-calls
+    // `Creator::getClassName` shim (B.W 0xb8d8 -> 0xedfc), which returns
+    // `Name::doDeclare<sRenderSettings>()` — the "RenderSettings" literal at
+    // 0x10c4f2e (no "CRenderSettingsItem" string exists in the image).
+    let _creator = stub_0xf500();
+    stub_0xedfc()
 }
-
 // 0xb900 — __ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")]
 // was: __ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
-pub fn stub_0xb900() -> ! {
-    todo!("0xb900 __ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")
+pub fn stub_0xb900() -> &'static str {
+    // IDA 0xb900: ZThn32 `getClassName` — disasm byte-identical to 0xb8d0
+    // (`static_getCreator` + shim tail-call); the `this -= 32` adjust collapses
+    // because `FactoryProduct` is the primary base here.
+    let _creator = stub_0xf500();
+    stub_0xedfc()
 }
-
 // 0xb930 — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev")]
 // was: __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev
-pub fn stub_0xb930() -> ! {
-    todo!("0xb930 __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_0xb930() {
+    // IDA 0xb930: `B.W CreatorD2` — D1 tail-calls D2; the vtable reset is
+    // compiler-managed in Rust.
+    stub_0xeccc();
 }
-
 // 0xeccc — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD2Ev")]
 // was: __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD2Ev
-pub fn stub_0xeccc() -> ! {
-    todo!("0xeccc __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_0xeccc() {
+    // IDA 0xeccc: D2 base-object dtor — vtable reset to the Creator vtable
+    // (disasm 0xed18-0xed1c) plus the `wasConstructed` assert plumbing; no
+    // members to drop. Rust Drop glue covers it.
 }
-
 // 0xedfc — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv
-pub fn stub_0xedfc() -> ! {
-    todo!("0xedfc __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_0xedfc() -> &'static str {
+    // IDA 0xedfc: `wasConstructed` assert (disasm 0xedfe-0xee5c) then
+    // tail-calls `Name::doDeclare<sRenderSettings>()` (B.W 0xee80) — the
+    // "RenderSettings" literal at 0x10c4f2e.
+    "RenderSettings"
 }
-
 // 0xee84 — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv")]
 // was: __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv
-pub fn stub_0xee84() -> ! {
-    todo!("0xee84 __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7Creator6createEv")
+pub fn stub_0xee84() -> SharedPtr<CRenderSettingsItem> {
+    // IDA 0xee84: `wasConstructed` assert, then
+    // `Creatable::create<CRenderSettingsItem>()` (BLX 0xeeee -> stub_0xef04);
+    // the `+0x20` empty-base adjust (disasm 0xeef8) collapses under single
+    // inheritance before the pair is stored.
+    stub_0xef04()
 }
-
 // 0xf2bc — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev")]
 // was: __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev
-pub fn stub_0xf2bc() -> ! {
-    todo!("0xf2bc __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorC2Ev")
+pub fn stub_0xf2bc() {
+    // IDA 0xf2bc: Creator C2 — vtable install (disasm 0xf2f2), one-shot
+    // `Name::declare<sRenderSettings>` (disasm 0xf2f4), then the `getCreators`
+    // binary-search insert of the creator (disasm 0xf316-0xf396, twin of the
+    // CREATOR_TABLE path behind stub_0x703568). The process-static
+    // RENDER_SETTINGS_ITEM_CREATOR above is the constructed singleton.
 }
-
 // 0xf500 — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv
 #[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv")]
 // was: __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv
-pub fn stub_0xf500() -> ! {
-    todo!("0xf500 __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE17static_getCreatorEv")
+pub fn stub_0xf500() -> &'static RenderSettingsItemCreator {
+    // IDA 0xf500: `Creator::wasConstructed()` assert, then returns
+    // `creatorPrivate` (disasm 0xf566-0xf570).
+    &RENDER_SETTINGS_ITEM_CREATOR
 }
-
 // 0xfa00 — __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 #[doc(alias = "__ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
 // was: __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-pub fn stub_0xfa00() -> ! {
-    todo!("0xfa00 __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+pub fn stub_0xfa00() -> &'static RenderSettingsClassDescriptor {
+    // IDA 0xfa00: guard-var once-init (`__cxa_guard_acquire`, disasm 0xfa5c)
+    // building `describedClassDescriptor` off the Instance base descriptor;
+    // collapses into static init.
+    &RENDER_SETTINGS_CLASS_DESCRIPTOR
 }
-
 // 0xfb1c — __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0xfb1c() -> ! {
-    todo!("0xfb1c __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0xfb1c() {
+    // IDA 0xfb1c: `B.W RBX::Instance::~Instance()` — D1 runs the base dtor in
+    // place; Rust Drop glue covers it.
 }
-
 // 0xfb20 — __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0xfb20() -> ! {
-    todo!("0xfb20 __ZN3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0xfb20() {
+    // IDA 0xfb20: `Instance` D2 (BL 0xfb26) + `operator delete` (B.W 0xfb30);
+    // Arc Drop glue covers both.
 }
-
 // 0xfb34 — __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0xfb34() -> ! {
-    todo!("0xfb34 __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0xfb34() {
+    // IDA 0xfb34: ZThn32 D1 — `this -= 0x20` (SUBS 0xfb34) then the Instance D2
+    // in place; the base offset collapses under single inheritance.
 }
-
 // 0xfb3c — __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0xfb3c() -> ! {
-    todo!("0xfb3c __ZThn32_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0xfb3c() {
+    // IDA 0xfb3c: ZThn32 D0 — `this -= 0x20`, Instance D2, `operator delete`;
+    // Drop glue covers it.
 }
-
 // 0xfb54 — __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-pub fn stub_0xfb54() -> ! {
-    todo!("0xfb54 __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0xfb54() {
+    // IDA 0xfb54: ZThn36 D1 — `this -= 0x24` (SUBS 0xfb54) then the Instance D2
+    // in place; same collapse as 0xfb34.
 }
-
 // 0xfb5c — __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
 // was: __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-pub fn stub_0xfb5c() -> ! {
-    todo!("0xfb5c __ZThn36_N3RBX10Reflection9DescribedI19CRenderSettingsItemLZ15sRenderSettingsENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0xfb5c() {
+    // IDA 0xfb5c: ZThn36 D0 — `this -= 0x24`, Instance D2, `operator delete`;
+    // Drop glue covers it.
 }
-
 // 0x2d370 — __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS7_5list3INS7_5valueISA_EENSJ_ISD_EENSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "__ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS7_5list3INS7_5valueISA_EENSJ_ISD_EENSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
 // was: __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS7_5list3INS7_5valueISA_EENSJ_ISD_EENSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
-pub fn stub_0x2d370() -> ! {
-    todo!("0x2d370 __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS7_5list3INS7_5valueISA_EENSJ_ISD_EENSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x2d370(
+    bind: crate::data_model::ViewGameMarshallerBind,
+) -> crate::data_model::DataModelCallback {
+    // IDA 0x2d370: `function<void(DataModel*)>` ctor from the
+    // view/game/marshaller bind — the `shared_count` copy retains the game
+    // (disasm 0x2d3ce-0x2d3d4), then the functor/vtable install, twin of the
+    // `assign_to` at stub_0x2d544. Moving the bind in is the retain.
+    let mut slot = crate::data_model::DataModelCallback::new();
+    crate::data_model::stub_0x2d67c(&mut slot, bind, view_game_marshaller_invoke);
+    slot
 }
-
 // 0x2d458 — __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
 #[doc(alias = "__ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
 // was: __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
-pub fn stub_0x2d458() -> ! {
-    todo!("0x2d458 __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")
+pub fn stub_0x2d458(
+    bind: crate::data_model::ViewGameMarshallerBind,
+) -> crate::data_model::DataModelCallback {
+    // IDA 0x2d458: `function1<void, DataModel*>` ctor — same bind install as
+    // 0x2d370 after clearing the slot (vtable null-store, disasm 0x2d478);
+    // `new()` is the cleared state.
+    let mut slot = crate::data_model::DataModelCallback::new();
+    crate::data_model::stub_0x2d67c(&mut slot, bind, view_game_marshaller_invoke);
+    slot
 }
-
 // 0x31c30 — __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_13sLoginServiceEEE15isNullClassNameEv
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_8InstanceELZNS_13sLoginServiceEEE15isNullClassNameEv")]
 // was: __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_13sLoginServiceEEE15isNullClassNameEv
-pub fn stub_0x31c30() -> ! {
-    todo!("0x31c30 __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_13sLoginServiceEEE15isNullClassNameEv")
+pub fn stub_0x31c30() -> bool {
+    // IDA 0x31c30: `declare(sLoginService)` (disasm 0x31c54) vs `getNullName()`
+    // under the `className().empty() == (sClassName == NULL)` ReleaseAssert;
+    // returns `sClassName == NULL` (disasm 0x31cc4-0x31cca). sLoginService
+    // derefs to "LoginService" (0x11f55fc, non-null) — never the null name.
+    false
 }
-
 // 0x32410 — __ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7Creator12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7Creator12getClassNameEv
-pub fn stub_0x32410() -> ! {
-    todo!("0x32410 __ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_0x32410() -> &'static str {
+    // IDA 0x32410: `wasConstructed` assert then the `doDeclare` tail-call
+    // (same shape as 0xedfc); sTaskSchedulerSettings derefs to "TaskScheduler"
+    // (0x11d9824), the registered class name.
+    "TaskScheduler"
 }
-
 // 0x3247c — __ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7Creator6createEv")]
 // was: __ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7Creator6createEv
-pub fn stub_0x3247c() -> ! {
-    todo!("0x3247c __ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7Creator6createEv")
+pub fn stub_0x3247c() -> SharedPtr<TaskSchedulerSettings> {
+    // IDA 0x3247c: `wasConstructed` assert, then
+    // `Creatable::create<TaskSchedulerSettings>()` (BLX 0x324e6) with the
+    // `+0x20` base adjust (disasm 0x324f0); same default-construct + adoption
+    // collapse as stub_0xef04.
+    SharedPtr::new(TaskSchedulerSettings::default())
 }
-
 // 0x32768 — __ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv
-pub fn stub_0x32768() -> ! {
-    todo!("0x32768 __ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv")
+pub fn stub_0x32768() -> &'static str {
+    // IDA 0x32768: `wasConstructed` assert (disasm 0x3276a-0x327c8) then
+    // tail-calls `Name::declare<sScriptContext>()` (B.W 0x327d0); the name
+    // derefs to "ScriptContext" (0x11d3210).
+    "ScriptContext"
 }
-
 // 0x3a790 — __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorD1Ev")]
 // was: __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorD1Ev
-pub fn stub_0x3a790() -> ! {
-    todo!("0x3a790 __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorD1Ev")
+pub fn stub_0x3a790() {
+    // IDA 0x3a790: `B.W CreatorD2` — D1-to-D2 tail, same shape as 0xb930; the
+    // Camera-creator vtable reset is compiler-managed in Rust.
 }
-
 // 0x3aaa0 — __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorC2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorC2Ev")]
 // was: __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorC2Ev
-pub fn stub_0x3aaa0() -> ! {
-    todo!("0x3aaa0 __ZN3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E7CreatorC2Ev")
+pub fn stub_0x3aaa0() {
+    // IDA 0x3aaa0: Creator C2 — vtable install (disasm 0x3aaca),
+    // `Name::declare<sCamera>` (BLX 0x3aacc), then the `getCreators`
+    // binary-search insert (disasm 0x3aadc-0x3ab0c); same shape as 0xf2bc.
+    // No per-instance state: construction is vtable + declare + registration.
 }
-
 // 0x3bb58 — __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_18sControllerServiceEEE15isNullClassNameEv
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_8InstanceELZNS_18sControllerServiceEEE15isNullClassNameEv")]
 // was: __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_18sControllerServiceEEE15isNullClassNameEv
-pub fn stub_0x3bb58() -> ! {
-    todo!("0x3bb58 __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_18sControllerServiceEEE15isNullClassNameEv")
+pub fn stub_0x3bb58() -> bool {
+    // IDA 0x3bb58: same null-name test as 0x31c30 for sControllerService,
+    // which derefs to "ControllerService" (0x11ec100, non-null).
+    false
 }
-
 // 0x2580a8 — __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD1Ev")]
 // was: __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD1Ev
-pub fn stub_0x2580a8() -> ! {
-    todo!("0x2580a8 __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E7CreatorD1Ev")
+pub fn stub_0x2580a8() {
+    // IDA 0x2580a8: `B.W CreatorD2` — D1-to-D2 tail, same shape as 0xb930; the
+    // HttpService-creator vtable reset is compiler-managed in Rust.
 }
-
 // 0x258150 — __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv")]
 // was: __ZNK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv
