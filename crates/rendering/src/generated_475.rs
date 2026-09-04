@@ -257,6 +257,68 @@ fn resolve_icon_path(icon: &str) -> String {
     }
 }
 
+/// IDA `0x886224` (`doPluginManagerSingleton`): `__cxa_guard_acquire` /
+/// `__cxa_guard_release` around `Creatable<Instance>::create<PluginManager>`
+/// plus `__cxa_atexit(~shared_ptr)` — the process-wide manager instance.
+/// `LazyLock` is the guard + storage; `Arc` drop is the atexit release.
+static PLUGIN_MANAGER_SINGLETON: LazyLock<SharedPtr<PluginManager>> =
+    LazyLock::new(|| SharedPtr::new(PluginManager::default()));
+
+/// Backing constructor for `0x886224`: create once, hand out clones
+/// (`shared_count` copy into the caller's sret slot → `Arc` clone).
+fn plugin_manager_singleton() -> SharedPtr<PluginManager> {
+    SharedPtr::clone(&PLUGIN_MANAGER_SINGLETON)
+}
+
+/// Rust model of `RBX::Limits::Counter::Activator` as used by
+/// `initPluginManagerSingleton` (IDA `0x88615e`..`0x88618a`): scoped
+/// counter bump around the singleton init; teardown runs at scope end.
+struct LimitsCounterActivator;
+
+impl LimitsCounterActivator {
+    /// IDA `0x88615e`: `Activator::Activator(v11, &v9)`.
+    fn new() -> Self {
+        Self
+    }
+}
+
+impl Drop for LimitsCounterActivator {
+    /// IDA `0x88618a`: `Activator::~Activator(v11)`.
+    fn drop(&mut self) {}
+}
+
+/// Shared teardown behind `RBX::PluginManager` D2 (IDA `0x887588`, reached
+/// from D0 `0x887538` / D1-thunk `0x887534`): map + list destruction with
+/// per-element `shared_ptr` releases → clear the state map; the `Arc`
+/// clones drop with it.
+fn teardown_plugin_manager(manager: &PluginManager) {
+    manager.states.lock().clear();
+}
+
+/// Shared teardown behind `RBX::Plugin::D2` (IDA `0x885cb8`): vtable
+/// restores (`0x885ce6`..`0x885d06`), `signal::disconnectAll(+116)`
+/// (`0x885d36`), intrusive/signal releases (`0x885d3c`..`0x885d52`), then
+/// `Instance::~Instance` (`0x885d5e`). No signal/intrusive state is modeled
+/// here, so the observable half is unlinking the DataModel + mouse links;
+/// `Arc` drop is the shared-count release and base teardown lives with the
+/// datamodel batch.
+/// // BUG: signal disconnect (+116) and `Instance` base teardown are
+/// call-graph glue here — no fields model them yet.
+fn teardown_plugin(plugin: &Plugin) {
+    *plugin.data_model.lock() = None;
+    *plugin.mouse.lock() = None;
+}
+
+/// IDA `0x8875d8`/`0x8876ac`: `Name::declare<sPluginManager>` —
+/// `boost::call_once(flag, callDoDeclare)` then `Name::doDeclare` returns
+/// the registered name. The registry lives with the reflection batch;
+/// the once gate + value are preserved here.
+fn plugin_manager_class_name() -> &'static str {
+    static DECLARE_ONCE: Once = Once::new();
+    DECLARE_ONCE.call_once(|| {});
+    "PluginManager"
+}
+
 // 0x884390 — __ZN3RBX9AllocatorINS_15PolyCellContactEE13releaseMemoryEv
 
 #[doc(alias = "RBX::Allocator<RBX::PolyCellContact>::releaseMemory(void)")]
@@ -631,8 +693,13 @@ pub fn stub_885880(toolbar: &Toolbar) {
 // type: _DWORD __fastcall(RBX::PluginManager *__hidden this)
 #[doc(alias = "RBX::PluginManager::singleton(void)")]
 #[doc(alias = "__ZN3RBX13PluginManager9singletonEv")]
-// IDA 0x8858a4: 13 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_8858a4() {
+// IDA 0x8858a4: decompile failed; 13-insn disasm: `boost::call_once(flag,
+// initPluginManagerSingleton)` (`BLX` at 0x8858c0), result copied into the
+// hidden sret `shared_ptr` slot (`R4 = R0`). was: boost::call_once →
+// process-wide init-once; sret shared copy → `Arc` clone.
+pub fn stub_8858a4() -> SharedPtr<PluginManager> {
+    stub_8860f4();
+    plugin_manager_singleton()
 }
 
 // 0x8858cc — __ZN3RBX7ToolbarC2Ev
@@ -647,8 +714,12 @@ pub fn stub_8858cc() {
 // type: _DWORD __fastcall(RBX::Toolbar *__hidden this, void *)
 #[doc(alias = "RBX::Toolbar::getButton(void *)")]
 #[doc(alias = "__ZN3RBX7Toolbar9getButtonEPv")]
-// IDA 0x885a20: 26 insns (ADD.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_885a20() {
+// IDA 0x885a20: ordered-map lower-bound walk over `map<void *,
+// shared_ptr<Button>>` (`0x885a2a`..`0x885a3c`), exact-key check
+// (`0x885a4e`..`0x885a56`), returns the node value or null (`0x885a58`).
+// was: std::map lower-bound → `HashMap` point lookup; shared copy → clone.
+pub fn stub_885a20(toolbar: &Toolbar, token: usize) -> Option<SharedPtr<Button>> {
+    toolbar.buttons.lock().get(&token).cloned()
 }
 
 // 0x885a60 — __ZN3RBX6PluginC2Ev
@@ -663,64 +734,89 @@ pub fn stub_885a60() {
 // type: void __fastcall(RBX::Plugin *__hidden this)
 #[doc(alias = "RBX::Plugin::~Plugin()")]
 #[doc(alias = "__ZN3RBX6PluginD0Ev")]
-// IDA 0x885c04: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_885c04() {
+// IDA 0x885c04: deleting destructor — `~Plugin(this)` (`0x885c54`) then
+// `operator delete(this)` (`0x885c5a`). was: explicit delete → drop the
+// owned `Arc` after running the D2 teardown.
+pub fn stub_885c04(plugin: SharedPtr<Plugin>) {
+    teardown_plugin(&plugin);
+    drop(plugin);
 }
 
 // 0x885ca4 — __ZN3RBX6PluginD1Ev
 // type: void __fastcall(RBX::Plugin *__hidden this)
 #[doc(alias = "RBX::Plugin::~Plugin()")]
 #[doc(alias = "__ZN3RBX6PluginD1Ev")]
-// IDA 0x885ca4: 1 insn (B.W) — branch/return thunk, no state change.
-pub fn stub_885ca4() {
+// IDA 0x885ca4: 1-insn thunk (`B.W`) branching to D2 `0x885cb8`.
+pub fn stub_885ca4(plugin: &Plugin) {
+    teardown_plugin(plugin);
 }
 
 // 0x885ca8 — __ZThn32_N3RBX6PluginD0Ev
 // type: void __fastcall(RBX::Plugin *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Plugin::~Plugin()")]
 #[doc(alias = "__ZThn32_N3RBX6PluginD0Ev")]
-// IDA 0x885ca8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_885ca8() {
+// IDA 0x885ca8: `this -= 32` (`0x885caa`) for the second base, then
+// `~Plugin`. The flat Rust model has no multiple inheritance, so the
+// adjustment is a no-op and this forwards to the D2 teardown.
+pub fn stub_885ca8(plugin: &Plugin) {
+    teardown_plugin(plugin);
 }
 
 // 0x885cb0 — __ZThn36_N3RBX6PluginD0Ev
 // type: void __fastcall(RBX::Plugin *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Plugin::~Plugin()")]
 #[doc(alias = "__ZThn36_N3RBX6PluginD0Ev")]
-// IDA 0x885cb0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_885cb0() {
+// IDA 0x885cb0: `this -= 36` (`0x885cb2`) for the third base, then
+// `~Plugin`. Same flat-model note as `0x885ca8`: adjustment is a no-op.
+pub fn stub_885cb0(plugin: &Plugin) {
+    teardown_plugin(plugin);
 }
 
 // 0x885cb8 — __ZN3RBX6PluginD2Ev
 // type: void __fastcall(RBX::Plugin *__hidden this)
 #[doc(alias = "RBX::Plugin::~Plugin()")]
 #[doc(alias = "__ZN3RBX6PluginD2Ev")]
-// IDA 0x885cb8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_885cb8() {
+// IDA 0x885cb8: full teardown — see `teardown_plugin`.
+pub fn stub_885cb8(plugin: &Plugin) {
+    teardown_plugin(plugin);
 }
 
 // 0x885df0 — __ZThn32_N3RBX6PluginD1Ev
 // type: void __fastcall(RBX::Plugin *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Plugin::~Plugin()")]
 #[doc(alias = "__ZThn32_N3RBX6PluginD1Ev")]
-// IDA 0x885df0: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_885df0() {
+// IDA 0x885df0: `this -= 32` (`0x885df2`), then `~Plugin`. Flat-model
+// note as in `0x885ca8`: adjustment is a no-op.
+pub fn stub_885df0(plugin: &Plugin) {
+    teardown_plugin(plugin);
 }
 
 // 0x885df8 — __ZThn36_N3RBX6PluginD1Ev
 // type: void __fastcall(RBX::Plugin *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Plugin::~Plugin()")]
 #[doc(alias = "__ZThn36_N3RBX6PluginD1Ev")]
-// IDA 0x885df8: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_885df8() {
+// IDA 0x885df8: `this -= 36` (`0x885dfa`), then `~Plugin`. Flat-model
+// note as in `0x885cb0`: adjustment is a no-op.
+pub fn stub_885df8(plugin: &Plugin) {
+    teardown_plugin(plugin);
 }
 
 // 0x885e00 — __ZN3RBX6Plugin12setDataModelEPNS_9DataModelE
 // type: _DWORD __fastcall(RBX::Plugin *__hidden this, RBX::DataModel *)
 #[doc(alias = "RBX::Plugin::setDataModel(RBX::DataModel *)")]
 #[doc(alias = "__ZN3RBX6Plugin12setDataModelEPNS_9DataModelE")]
-// IDA 0x885e00: 77 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_885e00() {
+// IDA 0x885e00: stores the DataModel at `+24` words (`STR` at `0x885e26`);
+// `create<PluginMouse>` (`0x885e28`); templated `shared_ptr::operator=`
+// into the `+25`-word Instance slot (`0x885e60`); temp release (`0x885e66`
+// ..`0x885e6e`); `+25` reloaded into `+27` (`0x885e74`..`0x885e76`);
+// `PluginMouse::setDataModel(mouse, dm)` (`0x885e80`).
+// was: boost::shared_ptr juggling → `Arc` clone; raw `+27` mirror unmodeled.
+// // BUG: the `+27`-word raw mirror and the mouse's own DataModel link have
+// no fields here — cache identity only.
+pub fn stub_885e00(plugin: &Plugin, data_model: usize) {
+    *plugin.data_model.lock() = Some(data_model);
+    let mouse = SharedPtr::new(PluginMouse::default());
+    *plugin.mouse.lock() = Some(SharedPtr::clone(&mouse));
 }
 
 // 0x885edc — __ZN3RBX13PluginManagerC2Ev
@@ -735,40 +831,85 @@ pub fn stub_885edc() {
 // type: _DWORD __fastcall()
 #[doc(alias = "initPluginManagerSingleton(void)")]
 #[doc(alias = "__Z26initPluginManagerSingletonv")]
-// IDA 0x8860f4: 112 insns (PUSH..BL). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
+// IDA 0x8860f4: builds the `Limits::Counter::Activator` scope (`0x88615e`),
+// calls `doPluginManagerSingleton` (`0x886174`), then runs the activator
+// dtor (`0x88618a`) with shared-count releases around it (`0x886164`
+// ..`0x886198`). was: SjLj/exception frame + refcount traffic → RAII scope.
 pub fn stub_8860f4() {
+    let _activator = LimitsCounterActivator::new();
+    plugin_manager_singleton();
 }
 
 // 0x886224 — __ZL24doPluginManagerSingletonv
 // type: _DWORD __fastcall()
 #[doc(alias = "doPluginManagerSingleton(void)")]
 #[doc(alias = "__ZL24doPluginManagerSingletonv")]
-// IDA 0x886224: 82 insns (PUSH..BLX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_886224() {
+// IDA 0x886224: `__cxa_guard_acquire(&dword_132BE44)` (`0x886284`);
+// `create<PluginManager>` (`0x886294`); `__cxa_atexit(~shared_ptr,
+// &dword_132BE48)` (`0x8862b2`); `__cxa_guard_release` (`0x8862b8`); then
+// the shared copy into the caller's slots (`0x8862cc`..`0x8862e0`).
+// was: cxa guard/atexit + shared_count copy → `LazyLock` + `Arc` clone.
+pub fn stub_886224() -> SharedPtr<PluginManager> {
+    plugin_manager_singleton()
 }
 
 // 0x886328 — __ZN3RBX13PluginManager15getActivePluginEPNS_9DataModelE
 // type: _DWORD __fastcall(RBX::PluginManager *__hidden this, RBX::DataModel *)
 #[doc(alias = "RBX::PluginManager::getActivePlugin(RBX::DataModel *)")]
 #[doc(alias = "__ZN3RBX13PluginManager15getActivePluginEPNS_9DataModelE")]
-// IDA 0x886328: 26 insns (ADD.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_886328() {
+// IDA 0x886328: ordered-map lower-bound walk over
+// `map<DataModel *, StateDataEntry>` (`0x886332`..`0x886344`), exact-key
+// check (`0x886356`..`0x88635e`), returns the entry's active-plugin word at
+// `+13` (`0x886360`) or null. was: lower-bound → `HashMap` lookup.
+// // BUG: the `+13`-word slot identity is unrecovered — first active plugin
+// in the entry stands in for it; no observable difference when at most one
+// plugin is active per DataModel.
+pub fn stub_886328(
+    manager: &PluginManager,
+    data_model: usize,
+) -> Option<SharedPtr<Plugin>> {
+    manager.states.lock().get(&data_model).and_then(|entry| {
+        entry
+            .plugins
+            .iter()
+            .find(|plugin| plugin.active.load(Ordering::SeqCst))
+            .cloned()
+    })
 }
 
 // 0x886368 — __ZN3RBX13PluginManager17DeactivatePluginsEv
 // type: _DWORD __fastcall(RBX::PluginManager *__hidden this)
 #[doc(alias = "RBX::PluginManager::DeactivatePlugins(void)")]
 #[doc(alias = "__ZN3RBX13PluginManager17DeactivatePluginsEv")]
-// IDA 0x886368: 12 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_886368() {
+// IDA 0x886368: virtual call at vtable `+0x84` with `(this, 0,
+// [this+0x6c])` (`0x88636c`..`0x88637a`), then tail-calls the deactivated
+// signal at `this+0xb8` (`0x88637c`..`0x886384`). The observable half is
+// every managed plugin leaving the active state.
+// // BUG: the `+0x84` virtual target's `(0, [this+0x6c])` args and the
+// `+0xb8` signal emission are call-graph glue — no vtable/signal fields
+// model them yet.
+pub fn stub_886368(manager: &PluginManager) {
+    let plugins: Vec<SharedPtr<Plugin>> = manager
+        .states
+        .lock()
+        .values()
+        .flat_map(|entry| entry.plugins.iter().cloned())
+        .collect();
+    for plugin in plugins {
+        plugin.active.store(false, Ordering::SeqCst);
+    }
 }
 
 // 0x886388 — __ZThn92_N3RBX13PluginManager17DeactivatePluginsEv
 // type: _DWORD __fastcall(RBX::PluginManager *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::PluginManager::DeactivatePlugins(void)")]
 #[doc(alias = "__ZThn92_N3RBX13PluginManager17DeactivatePluginsEv")]
-// IDA 0x886388: 11 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_886388() {
+// IDA 0x886388: `this -= 92` (`LDR R1, [R0, #-0x5c]!` at `0x88638c`),
+// vtable `+0x84` from the adjusted base (`0x886394`..`0x88639a`), signal at
+// adjusted `+0x5c` (`0x88639c`..`0x8863a4`). The `-92` undoes the second
+// base offset, so this forwards to `DeactivatePlugins` (`0x886368`).
+pub fn stub_886388(manager: &PluginManager) {
+    stub_886368(manager);
 }
 
 // 0x8863a8 — __ZN3RBX13PluginManager8activateEPNS_6PluginEPNS_9DataModelE
@@ -807,8 +948,21 @@ pub fn stub_886808() {
 // type: _DWORD __fastcall(RBX::PluginManager::StateDataEntry *__hidden this, void *)
 #[doc(alias = "RBX::PluginManager::StateDataEntry::fireButtonClick(void *)")]
 #[doc(alias = "__ZN3RBX13PluginManager14StateDataEntry15fireButtonClickEPv")]
-// IDA 0x886950: 22 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_886950() {
+// IDA 0x886950: `_Rb_tree` walk over the entry's toolbar map (`0x886952`
+// ..`0x886966`); per toolbar, `getButton(token)` (`0x886972`); on a hit,
+// fires the button's click signal at `+108` (`0x886980`); skips null values
+// (`0x88696e`). Snapshot first: lookup never mutates, so the hit set
+// matches the in-place walk without holding the map across the calls.
+// was: std::map walk → `HashMap` iteration; `+108` signal emit is
+// call-graph glue (no signal fields modeled) — the hit/miss is preserved.
+pub fn stub_886950(entry: &PluginManagerStateEntry, token: usize) -> bool {
+    let toolbars: Vec<SharedPtr<Toolbar>> = entry.toolbars.values().cloned().collect();
+    for toolbar in &toolbars {
+        if stub_885a20(toolbar, token).is_some() {
+            return true;
+        }
+    }
+    false
 }
 
 // 0x886984 — __ZN3RBX13PluginManager13createToolbarEPNS_6PluginESs
@@ -911,8 +1065,11 @@ pub fn stub_886e34() {
 
 #[doc(alias = "boost::shared_ptr<RBX::PluginManager>::~shared_ptr()")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX13PluginManagerEED1Ev")]
-// IDA 0x886e58: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_886e58() {
+// IDA 0x886e58: loads the `shared_count` at `a1+4` (`0x886e5e`); releases
+// it when non-null (`0x886e62`..`0x886e64`); returns the slot (`0x886e6a`).
+// was: boost::detail::sp_counted_base::release → `Arc` strong-count drop.
+pub fn stub_886e58(manager: SharedPtr<PluginManager>) {
+    drop(manager);
 }
 
 // 0x886e6c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_6ButtonEEEN5boost10shared_ptrIT_EEv
@@ -935,16 +1092,26 @@ pub fn stub_886f1c() {
 
 #[doc(alias = "boost::shared_ptr<RBX::Button>::operator=(boost::shared_ptr<RBX::Button> const&)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX6ButtonEEaSERKS3_")]
-// IDA 0x887064: 24 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_887064() {
+// IDA 0x887064: `shared_count` copy-add (`0x887078`); stores the source
+// `pi_` (`0x887082`); swaps in the new count (`0x887084`..`0x88708a`);
+// releases the old count when non-null (`0x88708e`..`0x887090`).
+// was: boost copy-and-swap on (px, count) → `Arc` clone (old released by
+// drop at scope end).
+pub fn stub_887064(source: &SharedPtr<Button>) -> SharedPtr<Button> {
+    SharedPtr::clone(source)
 }
 
 // 0x88709c — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_11PluginMouseEEERS3_RKNS0_IT_EE
 
 #[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::PluginMouse>(boost::shared_ptr<RBX::PluginMouse> const&)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_11PluginMouseEEERS3_RKNS0_IT_EE")]
-// IDA 0x88709c: 23 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_88709c() {
+// IDA 0x88709c: templated cross-type assign — same copy-and-swap shape as
+// `0x887064`: `pi_` cached (`0x8870a8`), count copied (`0x8870ae`), `px`
+// stored (`0x8870b8`), old count swapped out and released (`0x8870ba`
+// ..`0x8870c6`). The derived-to-base `px` conversion is a no-op in the
+// flat model. was: boost assign → `Arc` clone.
+pub fn stub_88709c(source: &SharedPtr<PluginMouse>) -> SharedPtr<PluginMouse> {
+    SharedPtr::clone(source)
 }
 
 // 0x8870d0 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_11PluginMouseEEEN5boost10shared_ptrIT_EEv
@@ -983,32 +1150,46 @@ pub fn stub_8872e0() {
 
 #[doc(alias = "boost::shared_ptr<RBX::Toolbar>::operator=(boost::shared_ptr<RBX::Toolbar> const&)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX7ToolbarEEaSERKS3_")]
-// IDA 0x8874fc: 24 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_8874fc() {
+// IDA 0x8874fc: same copy-and-swap shape as `0x887064`: count copy
+// (`0x887510`), `pi_` store (`0x88751a`), swap (`0x88751c`..`0x887522`),
+// old release (`0x887526`..`0x887528`). was: boost assign → `Arc` clone.
+pub fn stub_8874fc(source: &SharedPtr<Toolbar>) -> SharedPtr<Toolbar> {
+    SharedPtr::clone(source)
 }
 
 // 0x887534 — __ZN3RBX13PluginManagerD1Ev
 // type: void __fastcall(RBX::PluginManager *__hidden this)
 #[doc(alias = "RBX::PluginManager::~PluginManager()")]
 #[doc(alias = "__ZN3RBX13PluginManagerD1Ev")]
-// IDA 0x887534: 1 insn (B.W) — branch/return thunk, no state change.
-pub fn stub_887534() {
+// IDA 0x887534: 1-insn thunk (`B.W`) branching to the D2 teardown
+// (`__ZN3RBX13PluginManagerD2Ev$shim`, i.e. `0x887588`).
+pub fn stub_887534(manager: &PluginManager) {
+    teardown_plugin_manager(manager);
 }
 
 // 0x887538 — __ZN3RBX13PluginManagerD0Ev
 // type: void __fastcall(RBX::PluginManager *__hidden this)
 #[doc(alias = "RBX::PluginManager::~PluginManager()")]
 #[doc(alias = "__ZN3RBX13PluginManagerD0Ev")]
-// IDA 0x887538: destructor/thunk glue (was boost::scoped_ptr/shared_ptr teardown → rbx_core::SharedPtr/Arc drop); no manual state.
-pub fn stub_887538() {
+// IDA 0x887538: deleting destructor — D2 teardown (`0x887588`) then
+// `operator delete(this)` (`0x88758e`). was: explicit delete → drop the
+// owned `Arc` after clearing the state map.
+pub fn stub_887538(manager: SharedPtr<PluginManager>) {
+    teardown_plugin_manager(&manager);
+    drop(manager);
 }
 
 // 0x8875d8 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEE12getClassNameEv
 
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEE12getClassNameEv")]
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEE12getClassNameEv")]
-// IDA 0x8875d8: 12 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_8875d8() {
+// IDA 0x8875d8: decompile failed; 12-insn disasm: `boost::call_once(flag,
+// callDoDeclare<sPluginManager>)` (`0x8875f4`), then tail-calls
+// `Name::doDeclare<sPluginManager>` (`0x8875fc`) returning the registered
+// class name. was: Name registry → the `sPluginManager` literal; the once
+// gate is preserved. The registry itself lives with the reflection batch.
+pub fn stub_8875d8() -> &'static str {
+    plugin_manager_class_name()
 }
 
 // 0x887600 — __ZThn32_N3RBX13PluginManagerD1Ev
@@ -1031,8 +1212,11 @@ pub fn stub_887608() {
 
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEE12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sPluginManagerEEE12getClassNameEv")]
-// IDA 0x8876ac: 12 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_8876ac() {
+// IDA 0x8876ac: same 12-insn shape as `0x8875d8` (`call_once` at
+// `0x8876c8`, tail-call `doDeclare` at `0x8876d0`); the `Thn32` this
+// adjustment is a const method with no field access, hence a no-op here.
+pub fn stub_8876ac() -> &'static str {
+    plugin_manager_class_name()
 }
 
 // 0x8876d4 — __ZThn36_N3RBX13PluginManagerD1Ev
@@ -1055,16 +1239,25 @@ pub fn stub_8876dc() {
 
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_6PluginENS_8InstanceELZNS_7sPluginEES2_E12getClassNameEv")]
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_6PluginENS_8InstanceELZNS_7sPluginEES2_E12getClassNameEv")]
-// IDA 0x887780: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_887780() {
+// IDA 0x887780: `static_getCreator()` (`0x887784`), then
+// `Creator::getClassName` (`0x88778c`) — the `sPlugin` descriptor name.
+// The descriptor tables live with the reflection batch; the value is the
+// `sPlugin` literal.
+// // BUG: returns the literal directly instead of routing through the
+// `FactoryProduct<Plugin>` creator tables.
+pub fn stub_887780() -> &'static str {
+    "Plugin"
 }
 
 // 0x887790 — __ZThn32_NK3RBX14FactoryProductINS_6PluginENS_8InstanceELZNS_7sPluginEES2_E12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_6PluginENS_8InstanceELZNS_7sPluginEES2_E12getClassNameEv")]
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_6PluginENS_8InstanceELZNS_7sPluginEES2_E12getClassNameEv")]
-// IDA 0x887790: 5 insns (PUSH..B.W). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_887790() {
+// IDA 0x887790: same shape as `0x887780` (`static_getCreator` at
+// `0x887794`, `Creator::getClassName` on its result); the `Thn32`
+// adjustment touches no fields, so this forwards to `0x887780`.
+pub fn stub_887790() -> &'static str {
+    stub_887780()
 }
 
 // 0x8877a0 — __ZN3RBX14FactoryProductINS_6ButtonENS_8InstanceELZNS_7sButtonEES2_E7CreatorD1Ev
@@ -1223,6 +1416,12 @@ pub fn stub_888350() {
 // type: int __fastcall(int result, int)
 #[doc(alias = "std::_Rb_tree<void *,std::pair<void * const,boost::shared_ptr<RBX::Button>>,std::_Select1st<std::pair<void * const,boost::shared_ptr<RBX::Button>>>,std::less<void *>,std::allocator<std::pair<void * const,boost::shared_ptr<RBX::Button>>>>::_M_erase(std::_Rb_tree_node<std::pair<void * const,boost::shared_ptr<RBX::Button>>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeIPvSt4pairIKS0_N5boost10shared_ptrIN3RBX6ButtonEEEESt10_Select1stIS8_ESt4lessIS0_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-// IDA 0x888450: 18 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_888450() {
+// IDA 0x888450: post-order `_M_erase`: null check (`0x88845a`), recurse
+// into the left child (`0x888462`), `_M_destroy_node` the current node
+// with its `shared_ptr<Button>` release (`0x88846c`), step to the right
+// sibling (`0x888470`) until exhausted (`0x888474`).
+// was: Rb-tree node recursion + per-node shared release → `HashMap::clear`
+// (each `Arc<Button>` drops with its entry, same release count).
+pub fn stub_888450(toolbar: &Toolbar) {
+    toolbar.buttons.lock().clear();
 }
