@@ -904,6 +904,41 @@ pub fn push_datagram_history(history: &mut DatagramHistory, aux_a: u32, aux_b: u
     history.slots.push_back(DatagramHistoryNode { message: 0, aux_a, aux_b });
 }
 
+/// `RakNet::ReliabilityLayer::Update` head tick gate (IDA 0xa75552..0xa75614):
+/// the layer stamps every tick (`+3624`). When the clock hasn't advanced past
+/// the last stamp there is nothing to pump and the original returns 1
+/// (0xa75592..0xa75614); otherwise the stamp advances and the send pump runs
+/// engine-side. The `0x186a0` elapsed arm (0xa755b2..0xa755b4) flags ticks
+/// overdue by more than 100k clock units for the full pass.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum UpdateTick {
+    /// Clock stalled: restamped, pump skipped (original returns 1).
+    Idle,
+    /// Clock advanced: pump runs; `overdue` is the `> 100k` arm.
+    Due { overdue: bool },
+}
+
+/// Advance the Update tick stamp (IDA 0xa75552..0xa75614).
+#[must_use]
+pub fn update_tick_gate(last: &mut u64, now: u64) -> UpdateTick {
+    let old = *last;
+    // IDA 0xa75586..0xa75592: `now <= last` restamps and early-outs.
+    if now <= old {
+        *last = now;
+        return UpdateTick::Idle;
+    }
+    // IDA 0xa7559c..0xa755b4: advance the stamp; flag the overdue arm.
+    *last = now;
+    UpdateTick::Due { overdue: (now as u32).wrapping_sub(old as u32) > 0x186a0 }
+}
+
+/// `DataStructures::Queue<RakNet::ReliabilityLayer::DatagramHistoryNode>::Push`
+/// (IDA 0xa78560): append a history node to the back of the queue. The
+/// original grows the ring (16, then 2x); `VecDeque` keeps that edge.
+pub fn push_datagram_history_node(history: &mut DatagramHistory, node: DatagramHistoryNode) {
+    history.slots.push_back(node);
+}
+
 /// `RakNet::ReliabilityLayer::RemovePacketFromResendListAndDeleteOlderReliableSequenced`
 /// (IDA 0xa74514): notify the plugins (`message_number`, `time_ms / 1000`),
 /// then remove the acked packet from its `message_number & 0x1ff` resend

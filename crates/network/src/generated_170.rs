@@ -253,40 +253,72 @@ pub fn stub_a72d5c(layer: &mut crate::reliability::ReliabilityLayer) {
 // demangled: RakNet::ReliabilityLayer::HandleSocketReceiveFromConnectedPlayer(char const*,unsigned int,RakNet::SystemAddress &,DataStructures::List<RakNet::PluginInterface2 *> &,int,int,RakNet::RakNetRandom *,unsigned short,unsigned int,unsigned long long,RakNet::BitStream &)
 // type: int __fastcall(int, unsigned __int8 *, unsigned int, _DWORD *, _DWORD *, int, int, RakNet::RakNetRandom *, RakNet::SystemAddress *, unsigned __int16, unsigned __int64, RakNet::BitStream *)
 #[doc(alias = "RakNet::ReliabilityLayer::HandleSocketReceiveFromConnectedPlayer(char const*,unsigned int,RakNet::SystemAddress &,DataStructures::List<RakNet::PluginInterface2 *> &,int,int,RakNet::RakNetRandom *,unsigned short,unsigned int,unsigned long long,RakNet::BitStream &)")]
-pub fn stub_a72e94() -> ! {
-    todo!("0xa72e94 RakNet::ReliabilityLayer::HandleSocketReceiveFromConnectedPlayer(char const*,unsigned int,RakNet::SystemAddress &,DataStructures::List<RakNet::PluginInterface2 *> &,int,int,RakNet::RakNetRandom *,unsigned short,unsigned int,unsigned long long,RakNet::BitStream &)")
+pub fn stub_a72e94(len: u32, has_buffer: bool, header_valid: bool, range_list_ok: bool, plugin_count: usize, notify_error: &mut dyn FnMut(usize, &'static str)) -> crate::reliability::DatagramVerdict {
+ // IDA 0xa72e94: BPS accounting and the received counters run first
+ // (0xa72ee0..0xa72f1a); short or empty datagrams (0xa72f5c..0xa72fb4), bad headers
+ // (0xa72fec..0xa73382) and failed ACK-range parses (0xa73040..0xa740ea) each run
+ // the per-plugin error hooks and stop. The ACK sweep via
+ // RemovePacketFromResendListAndDeleteOlderReliableSequenced, the congestion
+ // updates, CreateInternalPacketFromBitStream, InsertIntoSplitPacketList and
+ // BuildPacketFromSplitPacketList stay engine-side.
+ crate::reliability::datagram_preamble(len, has_buffer, header_valid, range_list_ok, plugin_count, notify_error)
 }
 
 // 0xa74514 — __ZN6RakNet16ReliabilityLayer57RemovePacketFromResendListAndDeleteOlderReliableSequencedENS_8uint24_tEyRN14DataStructures4ListIPNS_16PluginInterface2EEERKNS_13SystemAddressE
 // demangled: RakNet::ReliabilityLayer::RemovePacketFromResendListAndDeleteOlderReliableSequenced(RakNet::uint24_t,unsigned long long,DataStructures::List<RakNet::PluginInterface2 *> &,RakNet::SystemAddress const&)
 // type: int __fastcall(int, _DWORD *, unsigned __int64, _DWORD *, _DWORD *)
 #[doc(alias = "RakNet::ReliabilityLayer::RemovePacketFromResendListAndDeleteOlderReliableSequenced(RakNet::uint24_t,unsigned long long,DataStructures::List<RakNet::PluginInterface2 *> &,RakNet::SystemAddress const&)")]
-pub fn stub_a74514() -> ! {
-    todo!("0xa74514 RakNet::ReliabilityLayer::RemovePacketFromResendListAndDeleteOlderReliableSequenced(RakNet::uint24_t,unsigned long long,DataStructures::List<RakNet::PluginInterface2 *> &,RakNet::SystemAddress const&)")
+pub fn stub_a74514(
+    resend: &mut [Vec<crate::reliability::InternalPacket>],
+    message_number: u32,
+    time_ms: u32,
+    plugin_count: usize,
+    notify: &mut dyn FnMut(u32, u32),
+    emit: &mut dyn FnMut(Vec<u8>),
+) -> bool {
+ // IDA 0xa74514: plugin ack fan-out, resend-bucket removal, receipt emit.
+ crate::reliability::remove_from_resend_list(resend, message_number, time_ms, plugin_count, notify, emit)
 }
 
 // 0xa74750 — __ZN6RakNet16ReliabilityLayer33CreateInternalPacketFromBitStreamEPNS_9BitStreamEy
 // demangled: RakNet::ReliabilityLayer::CreateInternalPacketFromBitStream(RakNet::BitStream *,unsigned long long)
 // type: int __fastcall(RakNet::ReliabilityLayer *this, RakNet::BitStream *, unsigned __int64)
 #[doc(alias = "RakNet::ReliabilityLayer::CreateInternalPacketFromBitStream(RakNet::BitStream *,unsigned long long)")]
-pub fn stub_a74750() -> ! {
-    todo!("0xa74750 RakNet::ReliabilityLayer::CreateInternalPacketFromBitStream(RakNet::BitStream *,unsigned long long)")
+pub fn stub_a74750(
+    stream: &mut crate::bitstream::BitStream,
+    creation_time: u64,
+) -> Option<crate::reliability::InternalPacket> {
+ // IDA 0xa74750: parse the layered header plus payload; None when short.
+ crate::reliability::create_internal_packet(stream, creation_time)
 }
 
 // 0xa749fc — __ZN6RakNet16ReliabilityLayer25InsertIntoSplitPacketListEPNS_14InternalPacketEy
 // demangled: RakNet::ReliabilityLayer::InsertIntoSplitPacketList(RakNet::InternalPacket *,unsigned long long)
 // type: unsigned int __fastcall(_DWORD *, int, int, int)
 #[doc(alias = "RakNet::ReliabilityLayer::InsertIntoSplitPacketList(RakNet::InternalPacket *,unsigned long long)")]
-pub fn stub_a749fc() -> ! {
-    todo!("0xa749fc RakNet::ReliabilityLayer::InsertIntoSplitPacketList(RakNet::InternalPacket *,unsigned long long)")
+pub fn stub_a749fc(
+    channels: &mut Vec<crate::reliability::SplitPacketChannel>,
+    packet: crate::reliability::InternalPacket,
+    creation_time: u64,
+    progress_interval: u32,
+    emit: &mut dyn FnMut(Vec<u8>),
+) -> usize {
+ // IDA 0xa749fc: find-or-create the split channel, append, maybe progress.
+ crate::reliability::insert_into_split_packet_list(channels, packet, creation_time, progress_interval, emit)
 }
 
 // 0xa74c88 — __ZN6RakNet16ReliabilityLayer30BuildPacketFromSplitPacketListEtyiRNS_13SystemAddressEPNS_12RakNetRandomEtjRNS_9BitStreamE
 // demangled: RakNet::ReliabilityLayer::BuildPacketFromSplitPacketList(unsigned short,unsigned long long,int,RakNet::SystemAddress &,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)
 // type: int __fastcall(RakNet::ReliabilityLayer *this, unsigned int, unsigned __int64, int, RakNet::SystemAddress *, RakNet::RakNetRandom *, RakNet::SystemAddress *, unsigned __int16, RakNet::BitStream *)
 #[doc(alias = "RakNet::ReliabilityLayer::BuildPacketFromSplitPacketList(unsigned short,unsigned long long,int,RakNet::SystemAddress &,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)")]
-pub fn stub_a74c88() -> ! {
-    todo!("0xa74c88 RakNet::ReliabilityLayer::BuildPacketFromSplitPacketList(unsigned short,unsigned long long,int,RakNet::SystemAddress &,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)")
+pub fn stub_a74c88(
+    channels: &mut Vec<crate::reliability::SplitPacketChannel>,
+    split_id: u16,
+    creation_time: u64,
+    acked: &mut dyn FnMut(),
+) -> Option<crate::reliability::InternalPacket> {
+ // IDA 0xa74c88: ack, reassemble, and drop the channel once complete.
+ crate::reliability::build_packet_from_split_list(channels, split_id, creation_time, acked)
 }
 
 // 0xa74d64 — __ZN6RakNet16ReliabilityLayer7ReceiveEPPh
@@ -302,8 +334,15 @@ pub fn stub_a74d64(layer: &mut crate::reliability::ReliabilityLayer) -> Option<V
 // demangled: RakNet::ReliabilityLayer::Send(char *,unsigned int,PacketPriority,PacketReliability,unsigned char,bool,int,unsigned long long,unsigned int)
 // type: int __fastcall(int, const void *, int, unsigned int, unsigned int, unsigned int, int, int, int, int, int)
 #[doc(alias = "RakNet::ReliabilityLayer::Send(char *,unsigned int,PacketPriority,PacketReliability,unsigned char,bool,int,unsigned long long,unsigned int)")]
-pub fn stub_a74dc0() -> ! {
-    todo!("0xa74dc0 RakNet::ReliabilityLayer::Send(char *,unsigned int,PacketPriority,PacketReliability,unsigned char,bool,int,unsigned long long,unsigned int)")
+pub fn stub_a74dc0(
+    priority: u8,
+    channel: u8,
+    reliability: u8,
+    bit_length: u32,
+    mtu: u32,
+) -> Option<(u8, u8, u8, bool)> {
+ // IDA 0xa74dc0: clamps plus the oversize split verdict; queues engine-side.
+ crate::reliability::send_plan(priority, channel, reliability, bit_length, mtu)
 }
 
 // 0xa75100 — __ZN6RakNet16ReliabilityLayer11SplitPacketEPNS_14InternalPacketE
@@ -319,8 +358,10 @@ pub fn stub_a75100(bit_length: u32, mtu: u32, reliability: u8) -> u32 {
 // demangled: RakNet::ReliabilityLayer::Update(int,RakNet::SystemAddress &,int,unsigned long long,unsigned int,DataStructures::List<RakNet::PluginInterface2 *> &,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)
 // type: bool __fastcall(int, RakNet::SocketLayer *, sockaddr *, int, unsigned __int64, int, _DWORD *, RakNet::RakNetRandom *, RakNet::SystemAddress *, unsigned __int16, void **)
 #[doc(alias = "RakNet::ReliabilityLayer::Update(int,RakNet::SystemAddress &,int,unsigned long long,unsigned int,DataStructures::List<RakNet::PluginInterface2 *> &,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)")]
-pub fn stub_a75548() -> ! {
-    todo!("0xa75548 RakNet::ReliabilityLayer::Update(int,RakNet::SystemAddress &,int,unsigned long long,unsigned int,DataStructures::List<RakNet::PluginInterface2 *> &,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)")
+pub fn stub_a75548(last_tick: &mut u64, now: u64) -> crate::reliability::UpdateTick {
+ // IDA 0xa75548: head tick gate (0xa75552..0xa75614); the send pump stays
+ // engine-side.
+ crate::reliability::update_tick_gate(last_tick, now)
 }
 
 // 0xa7641c — __ZN6RakNet16ReliabilityLayer10AckTimeoutEy
@@ -336,8 +377,14 @@ pub fn stub_a7641c(now_ms: u64, sent_ms: u64, timeout_ms: u32) -> bool {
 // demangled: RakNet::ReliabilityLayer::SendACKs(int,RakNet::SystemAddress &,unsigned long long,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)
 // type: int __fastcall(RakNet::ReliabilityLayer *this, RakNet::SocketLayer *, sockaddr *, unsigned __int64, RakNet::RakNetRandom *, RakNet::SystemAddress *, unsigned __int16, void **)
 #[doc(alias = "RakNet::ReliabilityLayer::SendACKs(int,RakNet::SystemAddress &,unsigned long long,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)")]
-pub fn stub_a76468() -> ! {
-    todo!("0xa76468 RakNet::ReliabilityLayer::SendACKs(int,RakNet::SystemAddress &,unsigned long long,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)")
+pub fn stub_a76468(
+    acks_waiting: &mut bool,
+    mtu: u32,
+    build: &mut dyn FnMut(u32) -> Vec<u8>,
+    emit: &mut dyn FnMut(Vec<u8>),
+) {
+ // IDA 0xa76468: datagram per pass inside 8*mtu-72 bits; socket engine-side.
+ crate::reliability::send_acks(acks_waiting, mtu, build, emit)
 }
 
 // 0xa765e0 — __ZN6RakNet16ReliabilityLayer24ResetPacketsAndDatagramsEv
@@ -362,32 +409,41 @@ pub fn stub_a766b8(layer: &mut crate::reliability::ReliabilityLayer, push: &mut 
 // demangled: RakNet::ReliabilityLayer::PushPacket(unsigned long long,RakNet::InternalPacket *,bool)
 // type: void __fastcall(_DWORD *, unsigned __int64, int, char)
 #[doc(alias = "RakNet::ReliabilityLayer::PushPacket(unsigned long long,RakNet::InternalPacket *,bool)")]
-pub fn stub_a76828() -> ! {
-    todo!("0xa76828 RakNet::ReliabilityLayer::PushPacket(unsigned long long,RakNet::InternalPacket *,bool)")
+pub fn stub_a76828(queue: &mut crate::reliability::PacketQueue, packet: crate::reliability::InternalPacket, flag: bool) {
+ // IDA 0xa76828: byte counters plus the queued packet and flag.
+ crate::reliability::push_packet(queue, packet, flag)
 }
 
 // 0xa7696c — __ZN6RakNet16ReliabilityLayer25AddFirstToDatagramHistoryENS_8uint24_tES1_y
 // demangled: RakNet::ReliabilityLayer::AddFirstToDatagramHistory(RakNet::uint24_t,RakNet::uint24_t,unsigned long long)
 // type: _DWORD *__fastcall(int, int, _DWORD *, int, int)
 #[doc(alias = "RakNet::ReliabilityLayer::AddFirstToDatagramHistory(RakNet::uint24_t,RakNet::uint24_t,unsigned long long)")]
-pub fn stub_a7696c() -> ! {
-    todo!("0xa7696c RakNet::ReliabilityLayer::AddFirstToDatagramHistory(RakNet::uint24_t,RakNet::uint24_t,unsigned long long)")
+pub fn stub_a7696c(
+    history: &mut crate::reliability::DatagramHistory,
+    message: u32,
+    aux_a: u32,
+    aux_b: u32,
+) {
+ // IDA 0xa7696c: evict past the cap, alloc the node, push the triple.
+ crate::reliability::add_first_to_datagram_history(history, message, aux_a, aux_b)
 }
 
 // 0xa76a68 — __ZN6RakNet16ReliabilityLayer34WriteToBitStreamFromInternalPacketEPNS_9BitStreamEPKNS_14InternalPacketEy
 // demangled: RakNet::ReliabilityLayer::WriteToBitStreamFromInternalPacket(RakNet::BitStream *,RakNet::InternalPacket const*,unsigned long long)
 // type: int __fastcall(int, RakNet::BitStream *this, int)
 #[doc(alias = "RakNet::ReliabilityLayer::WriteToBitStreamFromInternalPacket(RakNet::BitStream *,RakNet::InternalPacket const*,unsigned long long)")]
-pub fn stub_a76a68() -> ! {
-    todo!("0xa76a68 RakNet::ReliabilityLayer::WriteToBitStreamFromInternalPacket(RakNet::BitStream *,RakNet::InternalPacket const*,unsigned long long)")
+pub fn stub_a76a68(stream: &mut crate::bitstream::BitStream, packet: &crate::reliability::InternalPacket) -> u32 {
+ // IDA 0xa76a68: layered header plus payload into the stream.
+ crate::reliability::write_internal_packet(stream, packet)
 }
 
 // 0xa76b88 — __ZN6RakNet16ReliabilityLayer25AddFirstToDatagramHistoryENS_8uint24_tEy
 // demangled: RakNet::ReliabilityLayer::AddFirstToDatagramHistory(RakNet::uint24_t,unsigned long long)
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "RakNet::ReliabilityLayer::AddFirstToDatagramHistory(RakNet::uint24_t,unsigned long long)")]
-pub fn stub_a76b88() -> ! {
-    todo!("0xa76b88 RakNet::ReliabilityLayer::AddFirstToDatagramHistory(RakNet::uint24_t,unsigned long long)")
+pub fn stub_a76b88(history: &mut crate::reliability::DatagramHistory, aux_a: u32, aux_b: u32) {
+ // IDA 0xa76b88: evict past the cap, then push the zero-message node.
+ crate::reliability::push_datagram_history(history, aux_a, aux_b)
 }
 
 // 0xa76c68 — __ZN6RakNet16ReliabilityLayer21IsOutgoingDataWaitingEv
@@ -430,8 +486,12 @@ pub fn stub_a76c94(layer: &mut crate::reliability::ReliabilityLayer, timeout_ms:
 // demangled: RakNet::ReliabilityLayer::BuildPacketFromSplitPacketList(RakNet::SplitPacketChannel *,unsigned long long)
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "RakNet::ReliabilityLayer::BuildPacketFromSplitPacketList(RakNet::SplitPacketChannel *,unsigned long long)")]
-pub fn stub_a76ca4() -> ! {
-    todo!("0xa76ca4 RakNet::ReliabilityLayer::BuildPacketFromSplitPacketList(RakNet::SplitPacketChannel *,unsigned long long)")
+pub fn stub_a76ca4(
+    channel: crate::reliability::SplitPacketChannel,
+    creation_time: u64,
+) -> crate::reliability::InternalPacket {
+ // IDA 0xa76ca4: copy the first part's header, concat the parts, free all.
+ crate::reliability::build_packet_from_split_channel(&channel, creation_time)
 }
 
 // 0xa76e6c — __ZNK6RakNet16ReliabilityLayer16IsDeadConnectionEv
@@ -472,8 +532,9 @@ pub fn stub_a771e8(stream: &mut crate::bitstream::BitStream) -> Option<crate::re
 // demangled: DataStructures::Queue<RakNet::InternalPacket *>::Push(RakNet::InternalPacket * const&,char const*,unsigned int)
 // type: void __fastcall(int **, int *)
 #[doc(alias = "DataStructures::Queue<RakNet::InternalPacket *>::Push(RakNet::InternalPacket * const&,char const*,unsigned int)")]
-pub fn stub_a772b8() -> ! {
-    todo!("0xa772b8 DataStructures::Queue<RakNet::InternalPacket *>::Push(RakNet::InternalPacket * const&,char const*,unsigned int)")
+pub fn stub_a772b8(queue: &mut std::collections::VecDeque<crate::reliability::InternalPacket>, packet: crate::reliability::InternalPacket) {
+ // IDA 0xa772b8: append a packet to the back of the queue.
+ crate::reliability::internal_packet_queue_push(queue, packet)
 }
 
 // 0xa7738c - __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE6InsertES2_
@@ -487,16 +548,18 @@ pub fn stub_a7738c(list: &mut crate::reliability::RangeList, value: u32) {
 // demangled: DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::Pop(unsigned int)
 // type: int __fastcall(int *, unsigned int)
 #[doc(alias = "DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::Pop(unsigned int)")]
-pub fn stub_a77784() -> ! {
-    todo!("0xa77784 DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::Pop(unsigned int)")
+pub fn stub_a77784(heap: &mut crate::reliability::PacketHeap, index: usize) -> Option<crate::reliability::InternalPacket> {
+ // IDA 0xa77784: move-last-into-hole plus sift-down; None out of range.
+ crate::reliability::heap_pop(heap, index)
 }
 
 // 0xa77950 — __ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE4PushERKyRKS3_PKcj
 // demangled: DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::Push(unsigned long long const&,RakNet::InternalPacket * const&,char const*,unsigned int)
 // type: unsigned int __fastcall(char **, int *, int *)
 #[doc(alias = "DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::Push(unsigned long long const&,RakNet::InternalPacket * const&,char const*,unsigned int)")]
-pub fn stub_a77950() -> ! {
-    todo!("0xa77950 DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::Push(unsigned long long const&,RakNet::InternalPacket * const&,char const*,unsigned int)")
+pub fn stub_a77950(heap: &mut crate::reliability::PacketHeap, key: u64, packet: crate::reliability::InternalPacket) -> usize {
+ // IDA 0xa77950: append, then sift up past greater parents.
+ crate::reliability::heap_push(heap, key, packet)
 }
 
 // 0xa77a84 - __ZN20DatagramHeaderFormat9SerializeEPN6RakNet9BitStreamE
@@ -510,8 +573,14 @@ pub fn stub_a77a84(header: &crate::reliability::DatagramHeader, stream: &mut cra
 // demangled: DataStructures::RangeList<RakNet::uint24_t>::Serialize(RakNet::BitStream *,unsigned int,bool)
 // type: int __fastcall(int *, RakNet::BitStream *, unsigned int, int)
 #[doc(alias = "DataStructures::RangeList<RakNet::uint24_t>::Serialize(RakNet::BitStream *,unsigned int,bool)")]
-pub fn stub_a77b3c() -> ! {
-    todo!("0xa77b3c DataStructures::RangeList<RakNet::uint24_t>::Serialize(RakNet::BitStream *,unsigned int,bool)")
+pub fn stub_a77b3c(
+    list: &mut crate::reliability::RangeList,
+    stream: &mut crate::bitstream::BitStream,
+    max_bits: u32,
+    remove_written: bool,
+) -> u32 {
+ // IDA 0xa77b3c: drain ranges into the stream; drop them when asked.
+ crate::reliability::serialize_range_list(list, stream, max_bits, remove_written)
 }
 
 // 0xa77d60 — __ZN6RakNet9BitStream5WriteINS_8uint24_tEEEvRKT_
@@ -536,96 +605,115 @@ pub fn stub_a77ea4(stream: &mut crate::bitstream::BitStream) -> Option<u32> {
 // demangled: DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::PushSeries(unsigned long long const&,RakNet::InternalPacket * const&,char const*,unsigned int)
 // type: unsigned int __fastcall(int, int *, int *)
 #[doc(alias = "DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::PushSeries(unsigned long long const&,RakNet::InternalPacket * const&,char const*,unsigned int)")]
-pub fn stub_a77ff4() -> ! {
-    todo!("0xa77ff4 DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::PushSeries(unsigned long long const&,RakNet::InternalPacket * const&,char const*,unsigned int)")
+pub fn stub_a77ff4(heap: &mut crate::reliability::PacketHeap, key: u64, packet: crate::reliability::InternalPacket) -> usize {
+ // IDA 0xa77ff4: series appends blindly, else the back-half scan or Push.
+ crate::reliability::heap_push_series(heap, key, packet)
 }
 
 // 0xa781a4 — __ZN14DataStructures11OrderedListItPN6RakNet18SplitPacketChannelEXadL_ZNS1_22SplitPacketChannelCompERKtRKS3_EEE6InsertES5_S7_bPKcjPFiS5_S7_E
 // demangled: DataStructures::OrderedList<unsigned short,RakNet::SplitPacketChannel *,&RakNet::SplitPacketChannelComp>::Insert(unsigned short const&,RakNet::SplitPacketChannel * const&,bool,char const*,unsigned int,int (*)(unsigned short const&,RakNet::SplitPacketChannel * const&))
 // type: unsigned int __fastcall(int **, int, int *, int, int, int, int (__fastcall *)(int, int))
 #[doc(alias = "DataStructures::OrderedList<unsigned short,RakNet::SplitPacketChannel *,&RakNet::SplitPacketChannelComp>::Insert(unsigned short const&,RakNet::SplitPacketChannel * const&,bool,char const*,unsigned int,int (*)(unsigned short const&,RakNet::SplitPacketChannel * const&))")]
-pub fn stub_a781a4() -> ! {
-    todo!("0xa781a4 DataStructures::OrderedList<unsigned short,RakNet::SplitPacketChannel *,&RakNet::SplitPacketChannelComp>::Insert(unsigned short const&,RakNet::SplitPacketChannel * const&,bool,char const*,unsigned int,int (*)(unsigned short const&,RakNet::SplitPacketChannel * const&))")
+pub fn stub_a781a4(
+    channels: &mut Vec<crate::reliability::SplitPacketChannel>,
+    channel: crate::reliability::SplitPacketChannel,
+) -> Option<usize> {
+ // IDA 0xa781a4: binary search by split id; duplicates insert nothing.
+ crate::reliability::split_channel_ordered_insert(channels, channel)
 }
 
 // 0xa7828c — __ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE8AllocateEPKcj
 // demangled: DataStructures::MemoryPool<RakNet::InternalPacket>::Allocate(char const*,unsigned int)
 // type: int __fastcall(_DWORD *, unsigned int, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::InternalPacket>::Allocate(char const*,unsigned int)")]
-pub fn stub_a7828c() -> ! {
-    todo!("0xa7828c DataStructures::MemoryPool<RakNet::InternalPacket>::Allocate(char const*,unsigned int)")
+pub fn stub_a7828c() -> crate::reliability::InternalPacket {
+ // IDA 0xa7828c: pool blocks stay engine-side; hand out a default packet.
+ crate::reliability::internal_packet_allocate()
 }
 
 // 0xa783b4 — __ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE7ReleaseEPS2_PKcj
 // demangled: DataStructures::MemoryPool<RakNet::InternalPacket>::Release(RakNet::InternalPacket*,char const*,unsigned int)
 // type: _DWORD *__fastcall(_DWORD *result, int, void *, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::InternalPacket>::Release(RakNet::InternalPacket*,char const*,unsigned int)")]
-pub fn stub_a783b4() -> ! {
-    todo!("0xa783b4 DataStructures::MemoryPool<RakNet::InternalPacket>::Release(RakNet::InternalPacket*,char const*,unsigned int)")
+pub fn stub_a783b4(packet: crate::reliability::InternalPacket) {
+ // IDA 0xa783b4: return a packet to the pool (drop Rust-side).
+ crate::reliability::internal_packet_release(packet)
 }
 
 // 0xa7848c — __ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE7ReleaseEPS3_PKcj
 // demangled: DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Release(RakNet::ReliabilityLayer::MessageNumberNode*,char const*,unsigned int)
 // type: _DWORD *__fastcall(_DWORD *result, int, void *, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Release(RakNet::ReliabilityLayer::MessageNumberNode*,char const*,unsigned int)")]
-pub fn stub_a7848c() -> ! {
-    todo!("0xa7848c DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Release(RakNet::ReliabilityLayer::MessageNumberNode*,char const*,unsigned int)")
+pub fn stub_a7848c(node: crate::reliability::MessageNumberNode) {
+ // IDA 0xa7848c: return a node to the pool (drop Rust-side).
+ crate::reliability::message_number_node_release(node)
 }
 
 // 0xa78560 — __ZN14DataStructures5QueueIN6RakNet16ReliabilityLayer19DatagramHistoryNodeEE4PushERKS3_PKcj
 // demangled: DataStructures::Queue<RakNet::ReliabilityLayer::DatagramHistoryNode>::Push(RakNet::ReliabilityLayer::DatagramHistoryNode const&,char const*,unsigned int)
 // type: void __fastcall(_DWORD *, __int64 *)
 #[doc(alias = "DataStructures::Queue<RakNet::ReliabilityLayer::DatagramHistoryNode>::Push(RakNet::ReliabilityLayer::DatagramHistoryNode const&,char const*,unsigned int)")]
-pub fn stub_a78560() -> ! {
-    todo!("0xa78560 DataStructures::Queue<RakNet::ReliabilityLayer::DatagramHistoryNode>::Push(RakNet::ReliabilityLayer::DatagramHistoryNode const&,char const*,unsigned int)")
+pub fn stub_a78560(history: &mut crate::reliability::DatagramHistory, node: crate::reliability::DatagramHistoryNode) {
+ // IDA 0xa78560: append a history node to the back of the queue.
+ crate::reliability::push_datagram_history_node(history, node)
 }
 
 // 0xa78670 — __ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE8AllocateEPKcj
 // demangled: DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Allocate(char const*,unsigned int)
 // type: int __fastcall(_DWORD *, unsigned int, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Allocate(char const*,unsigned int)")]
-pub fn stub_a78670() -> ! {
-    todo!("0xa78670 DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Allocate(char const*,unsigned int)")
+pub fn stub_a78670(message_number: u32) -> crate::reliability::MessageNumberNode {
+ // IDA 0xa78670: hand out a node with its message number.
+ crate::reliability::message_number_node_allocate(message_number)
 }
 
 // 0xa7879c — __ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE8AllocateEPKcj
 // demangled: DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Allocate(char const*,unsigned int)
 // type: int __fastcall(_DWORD *, unsigned int, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Allocate(char const*,unsigned int)")]
-pub fn stub_a7879c() -> ! {
-    todo!("0xa7879c DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Allocate(char const*,unsigned int)")
+pub fn stub_a7879c() -> crate::reliability::InternalPacketRefCountedData {
+ // IDA 0xa7879c: hand out refcounted data starting at one reference.
+ crate::reliability::ref_counted_data_allocate()
 }
 
 // 0xa788c8 — __ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE7ReleaseEPS2_PKcj
 // demangled: DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Release(RakNet::InternalPacketRefCountedData*,char const*,unsigned int)
 // type: _DWORD *__fastcall(_DWORD *result, int, void *, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Release(RakNet::InternalPacketRefCountedData*,char const*,unsigned int)")]
-pub fn stub_a788c8() -> ! {
-    todo!("0xa788c8 DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Release(RakNet::InternalPacketRefCountedData*,char const*,unsigned int)")
+pub fn stub_a788c8(data: crate::reliability::InternalPacketRefCountedData) {
+ // IDA 0xa788c8: return refcounted data to the pool (drop Rust-side).
+ crate::reliability::ref_counted_data_release(data)
 }
 
 // 0xa7899c — __ZN14DataStructures4ListIPN6RakNet18SplitPacketChannelEE6InsertERKS3_jPKcj
 // demangled: DataStructures::List<RakNet::SplitPacketChannel *>::Insert(RakNet::SplitPacketChannel * const&,unsigned int,char const*,unsigned int)
 // type: unsigned int __fastcall(int, _DWORD *, int)
 #[doc(alias = "DataStructures::List<RakNet::SplitPacketChannel *>::Insert(RakNet::SplitPacketChannel * const&,unsigned int,char const*,unsigned int)")]
-pub fn stub_a7899c() -> ! {
-    todo!("0xa7899c DataStructures::List<RakNet::SplitPacketChannel *>::Insert(RakNet::SplitPacketChannel * const&,unsigned int,char const*,unsigned int)")
+pub fn stub_a7899c(
+    channels: &mut Vec<crate::reliability::SplitPacketChannel>,
+    channel: crate::reliability::SplitPacketChannel,
+    index: usize,
+) {
+ // IDA 0xa7899c: grow and shift down from the index; Vec keeps that edge.
+ crate::reliability::split_channel_insert_at(channels, channel, index)
 }
 
 // 0xa78a2c — __ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_jPKcj
 // demangled: DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert(DataStructures::RangeNode<RakNet::uint24_t> const&,unsigned int,char const*,unsigned int)
 // type: int __fastcall(_DWORD *, _DWORD *, int)
 #[doc(alias = "DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert(DataStructures::RangeNode<RakNet::uint24_t> const&,unsigned int,char const*,unsigned int)")]
-pub fn stub_a78a2c() -> ! {
-    todo!("0xa78a2c DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert(DataStructures::RangeNode<RakNet::uint24_t> const&,unsigned int,char const*,unsigned int)")
+pub fn stub_a78a2c(list: &mut crate::reliability::RangeList, min: u32, max: u32, index: usize) {
+ // IDA 0xa78a2c: positional insert of a (min, max) node; clamps to the end.
+ crate::reliability::range_node_insert(list, min, max, Some(index))
 }
 
 // 0xa78b08 — __ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_PKcj
 // demangled: DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert(DataStructures::RangeNode<RakNet::uint24_t> const&,char const*,unsigned int)
 // type: int __fastcall(_DWORD *, _DWORD *)
 #[doc(alias = "DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert(DataStructures::RangeNode<RakNet::uint24_t> const&,char const*,unsigned int)")]
-pub fn stub_a78b08() -> ! {
-    todo!("0xa78b08 DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert(DataStructures::RangeNode<RakNet::uint24_t> const&,char const*,unsigned int)")
+pub fn stub_a78b08(list: &mut crate::reliability::RangeList, min: u32, max: u32) {
+ // IDA 0xa78b08: back-append of a (min, max) node.
+ crate::reliability::range_node_insert(list, min, max, None)
 }
 
 // 0xa78bbc - __ZN14DataStructures5QueueIN6RakNet10BPSTracker13TimeAndValue2EE4PushERKS3_PKcj
