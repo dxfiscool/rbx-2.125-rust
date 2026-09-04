@@ -3,6 +3,175 @@
 // Format: // 0xADDR — mangled + #[doc(alias = "RBX::...")] + todo!("0xADDR") using rbx_core::SharedPtr
 #![allow(unused_imports)]
 use rbx_core::SharedPtr;
+/// Cutover value model for this shard: the `RBX::Reflection::Variant`
+/// payloads touched by the descriptors below (float/double/bool/int/string,
+/// `G3D::Vector2/3`, `Vector2int16`, `CoordinateFrame`, enum ids, refs).
+#[derive(Debug, Clone, PartialEq)]
+pub enum Value {
+    Nil,
+    Bool(bool),
+    Int(i32),
+    Float(f32),
+    Double(f64),
+    Text(String),
+    Vector2([f32; 2]),
+    Vector3(Vector3),
+    Vector2i([i16; 2]),
+    CoordinateFrame(CoordinateFrame),
+    EnumValue(i32),
+    Instance(u32),
+    InstanceList(Vec<u32>),
+}
+
+/// `G3D::Vector3` cutover (IDA 0x5f0f70 compares the three lanes directly).
+#[derive(Debug, Clone, Copy, PartialEq, Default)]
+pub struct Vector3 {
+    pub x: f32,
+    pub y: f32,
+    pub z: f32,
+}
+
+/// `G3D::CoordinateFrame` cutover: rotation plus translation (IDA 0x5f32dc
+/// compares the translation lanes then `G3D::Matrix3::operator==`).
+#[derive(Debug, Clone, Copy, PartialEq, Default)]
+pub struct CoordinateFrame {
+    pub rotation: [[f32; 3]; 3],
+    pub translation: Vector3,
+}
+
+impl CoordinateFrame {
+    pub fn identity() -> Self {
+        Self {
+            rotation: [[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0]],
+            translation: Vector3::default(),
+        }
+    }
+}
+
+/// `RBX::Reflection::PropDescriptor<C, T>` bound storage (IDA 0x5f0cec,
+/// 0x5f0e00, 0x5f2b1c): name/category/attributes/permissions plus the live
+/// value. The getter/setter member-pointer pair (and the `DescribedBase`
+/// header strip `a2 - 36` at 0x5f0ca8/0x5f0cc8) collapses into direct field
+/// access; the vtable/`auto_ptr` ownership dance is Drop glue.
+#[derive(Debug, Clone, PartialEq)]
+pub struct Prop<T: Clone + PartialEq + std::fmt::Debug> {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+    pub value: T,
+}
+
+impl<T: Clone + PartialEq + std::fmt::Debug> Prop<T> {
+    pub fn new(name: &str, category: &str, value: T, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+            value,
+        }
+    }
+}
+
+impl Value {
+    /// `RBX::Reflection::Variant::convert<float>` (IDA 0x5f0b96): direct on a
+    /// float payload (`rbx::any_cast`), numeric widening otherwise.
+    pub fn as_float(&self) -> f32 {
+        match self {
+            Value::Float(v) => *v,
+            Value::Int(v) => *v as f32,
+            Value::Double(v) => *v as f32,
+            Value::Bool(v) => *v as i32 as f32,
+            other => panic!("Variant::convert<float> on {other:?} (IDA 0x5f0ae8)"),
+        }
+    }
+
+    /// `RBX::Reflection::Variant::convert<G3D::Vector3>` (IDA 0x5f108a).
+    pub fn as_vector3(&self) -> Vector3 {
+        match self {
+            Value::Vector3(v) => *v,
+            other => panic!("Variant::convert<Vector3> on {other:?} (IDA 0x5f0fd8)"),
+        }
+    }
+
+    /// `RBX::Reflection::Variant::convert<G3D::CoordinateFrame>` (IDA 0x5f340c).
+    pub fn as_coordinate_frame(&self) -> CoordinateFrame {
+        match self {
+            Value::CoordinateFrame(v) => *v,
+            other => panic!("Variant::convert<CoordinateFrame> on {other:?} (IDA 0x5f340c)"),
+        }
+    }
+
+    /// `RBX::Reflection::Variant::convert<double>`.
+    pub fn as_double(&self) -> f64 {
+        match self {
+            Value::Double(v) => *v,
+            Value::Float(v) => *v as f64,
+            Value::Int(v) => *v as f64,
+            other => panic!("Variant::convert<double> on {other:?}"),
+        }
+    }
+
+    /// `RBX::Reflection::Variant::convert<bool>` (IDA 0x5f1810 path).
+    pub fn as_bool(&self) -> bool {
+        match self {
+            Value::Bool(v) => *v,
+            Value::Int(v) => *v != 0,
+            Value::Float(v) => *v != 0.0,
+            other => panic!("Variant::convert<bool> on {other:?}"),
+        }
+    }
+
+    /// `RBX::Reflection::Variant::convert<std::string>`: direct on a text
+    /// payload (`any_cast`), numeric widening otherwise.
+    pub fn as_text(&self) -> String {
+        match self {
+            Value::Text(v) => v.clone(),
+            Value::Int(v) => v.to_string(),
+            Value::Float(v) => v.to_string(),
+            Value::Double(v) => v.to_string(),
+            Value::Bool(v) => v.to_string(),
+            other => panic!("Variant::convert<string> on {other:?}"),
+        }
+    }
+
+    /// `RBX::Reflection::Variant::convert<G3D::Vector2int16>`.
+    pub fn as_vector2i(&self) -> [i16; 2] {
+        match self {
+            Value::Vector2i(v) => *v,
+            other => panic!("Variant::convert<Vector2int16> on {other:?}"),
+        }
+    }
+}
+
+/// `RBX::Reflection::FunctionDescriptor::Arguments` cutover: positional
+/// argument variants; an absent index reads as nil.
+#[derive(Debug, Clone, Default)]
+pub struct Arguments {
+    pub args: Vec<Value>,
+}
+
+/// `RBX::Reflection::FunctionDescriptor::SignatureDescriptor` cutover
+/// (IDA 0x5f15e0): declared return type plus `(name, type)` arguments.
+#[derive(Debug, Clone, Default)]
+pub struct Signature {
+    pub return_type: &'static str,
+    pub args: Vec<(String, &'static str)>,
+}
+
+/// `RBX::Reflection::BoundFuncDesc<C, R, N>` header cutover (IDA 0x5f19c4,
+/// 0x5f1bd0, 0x5f1ddc, 0x5f1434): bound member id, name, declared signature,
+/// permissions and attributes. The member-function pointer pair folds into
+/// `member`; class-descriptor registration collapses into parameters.
+#[derive(Debug, Clone)]
+pub struct BoundFunc {
+    pub name: String,
+    pub member: usize,
+    pub signature: Signature,
+    pub permissions: u32,
+    pub attributes: u32,
+}
 
 // 0x5f0a90 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEfED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::~PropDescriptor()")]
@@ -12,20 +181,27 @@ pub fn stub_0x5f0a90() {
 
 // 0x5f0ac0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIfE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<float>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x5f0ac0() -> ! {
-    todo!("0x5f0ac0 RBX::Reflection::TypedPropertyDescriptor<float>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x5f0ac0(prop: &Prop<f32>) -> Value {
+    // IDA 0x5f0ac0: `getVariant`: `getValue` via slot 8, tag
+    // `Type::getSingleton<float>`, pack with `placement_any::operator=`.
+    Value::Float(prop.value)
 }
 
 // 0x5f0ae8 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIfE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<float>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x5f0ae8() -> ! {
-    todo!("0x5f0ae8 RBX::Reflection::TypedPropertyDescriptor<float>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x5f0ae8(prop: &mut Prop<f32>, value: &Value) {
+    // IDA 0x5f0ae8: `setVariant`: `any_cast<float>` on a float payload,
+    // else `Variant::convert<float>` on a copied variant (0x5f0b6a-0x5f0ba8),
+    // then `setValue` via slot 12.
+    prop.value = value.as_float();
 }
 
 // 0x5f0c40 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIfE9copyValueEPKNS0_13DescribedBaseEPS3_
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<float>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x5f0c40() -> ! {
-    todo!("0x5f0c40 RBX::Reflection::TypedPropertyDescriptor<float>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x5f0c40(dst: &mut Prop<f32>, src: &Prop<f32>) {
+    // IDA 0x5f0c40: `copyValue`: `getValue` into a temp via slot 8, then
+    // `setValue` into the destination via slot 12.
+    dst.value = src.value;
 }
 
 // 0x5f0c78 — __ZN3RBX10Reflection23TypedPropertyDescriptorIfED1Ev
@@ -50,26 +226,55 @@ pub fn stub_0x5f0ca4() -> bool {
 
 // 0x5f0ca8 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetSetImpl<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5f0ca8() -> ! {
-    todo!("0x5f0ca8 RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetSetImpl<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5f0ca8(prop: &Prop<f32>) -> f32 {
+    // IDA 0x5f0ca8: `GetSetImpl::getValue`: strip the `DescribedBase` header
+    // (`a2 - 36`), decode the getter member pointer (`offset >> 1`, virtual
+    // bit `& 1`), invoke it.
+    prop.value
 }
 
 // 0x5f0cc8 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetSetImpl<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
-pub fn stub_0x5f0cc8() -> ! {
-    todo!("0x5f0cc8 RBX::Reflection::PropDescriptor<RBX::PartInstance,float>::GetSetImpl<float (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+pub fn stub_0x5f0cc8(prop: &mut Prop<f32>, value: f32) {
+    // IDA 0x5f0cc8: `GetSetImpl::setValue`: strip the `DescribedBase` header
+    // (`a2 - 36`), decode the setter member pointer (`offset >> 1`, virtual
+    // bit `& 1`), invoke it with the new value.
+    prop.value = value;
 }
 
 // 0x5f0cec — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EEC2IMS2_KFS4_vEMS2_FvRKS4_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::PropDescriptor<G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>(char const*,char const*,G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5f0cec() -> ! {
-    todo!("0x5f0cec RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::PropDescriptor<G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>(char const*,char const*,G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5f0cec(
+    name: &str,
+    category: &str,
+    initial: Vector3,
+    attributes: u32,
+    permissions: u32,
+) -> Prop<Vector3> {
+    // IDA 0x5f0cec: `PropDescriptor<PartInstance, Vector3>` get/set ctor:
+    // fetch the PartInstance class descriptor, `new` the GetSetImpl holding
+    // the getter/setter member pointers (0x5f0d1a-0x5f0d54), forward into
+    // `TypedPropertyDescriptor<Vector3>::TypedPropertyDescriptor`. Rust: the
+    // member-pointer pair folds into the stored value.
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x5f0e00 — __ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector3EEC2ERNS0_15ClassDescriptorEPKcS8_St8auto_ptrINS4_6GetSetEENS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5f0e00() -> ! {
-    todo!("0x5f0e00 RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5f0e00(
+    name: &str,
+    category: &str,
+    initial: Vector3,
+    attributes: u32,
+    permissions: u32,
+) -> Prop<Vector3> {
+    // IDA 0x5f0e00: `TypedPropertyDescriptor<Vector3>` ctor: tag
+    // `Type::getSingleton<Vector3>`, base `PropertyDescriptor` init, vtable
+    // install, take over the `auto_ptr<GetSet>`, then clear the read-only /
+    // write-only attribute bits when the GetSet reports them (0x5f0eaa,
+    // 0x5f0ec6). Rust: the GetSet folds into the stored value; attribute
+    // masking is a no-op on the recorded bits.
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x5f0f24 — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EED0Ev
@@ -92,14 +297,19 @@ pub fn stub_0x5f0f60() {
 
 // 0x5f0f70 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector3EE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5f0f70() -> ! {
-    todo!("0x5f0f70 RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5f0f70(a: &Prop<Vector3>, b: &Prop<Vector3>) -> bool {
+    // IDA 0x5f0f70: `equalValues`: `getValue` both sides via slot 8, compare
+    // lane by lane (`v7[i] == v6[i]`, 0x5f0fa4-0x5f0fcc).
+    a.value == b.value
 }
 
 // 0x5f0fd8 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector3EE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x5f0fd8() -> ! {
-    todo!("0x5f0fd8 RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x5f0fd8(prop: &mut Prop<Vector3>, value: &Value) {
+    // IDA 0x5f0fd8: `setVariant`: `any_cast<Vector3>` on a Vector3 payload
+    // (typeinfo + `"N3G3D7Vector3E"` name check, 0x5f1062), else
+    // `Variant::convert<Vector3>` on a copied variant, then `setValue`.
+    prop.value = value.as_vector3();
 }
 
 // 0x5f1160 — __ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector3EED1Ev
@@ -124,20 +334,34 @@ pub fn stub_0x5f118c() -> bool {
 
 // 0x5f1190 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvRKS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5f1190() -> ! {
-    todo!("0x5f1190 RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5f1190(prop: &Prop<Vector3>) -> Vector3 {
+    // IDA 0x5f1190: `GetSetImpl<Vector3>::getValue`: header strip, getter
+    // member-pointer decode, invoke.
+    prop.value
 }
 
 // 0x5f11b8 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EE10GetSetImplIMS2_KFS4_vEMS2_FvRKS4_EE8setValueEPNS0_13DescribedBaseESA_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
-pub fn stub_0x5f11b8() -> ! {
-    todo!("0x5f11b8 RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::GetSetImpl<G3D::Vector3 (RBX::PartInstance::*)(void)const,void (RBX::PartInstance::*)(G3D::Vector3 const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+pub fn stub_0x5f11b8(prop: &mut Prop<Vector3>, value: Vector3) {
+    // IDA 0x5f11b8: `GetSetImpl<Vector3>::setValue`: header strip, setter
+    // member-pointer decode, invoke with the new value.
+    prop.value = value;
 }
 
 // 0x5f11dc — __ZN3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EEC2IiMS2_FvRKS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::PropDescriptor<int,void (RBX::PartInstance::*)(G3D::Vector3 const&)>(char const*,char const*,int,void (RBX::PartInstance::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5f11dc() -> ! {
-    todo!("0x5f11dc RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::PropDescriptor<int,void (RBX::PartInstance::*)(G3D::Vector3 const&)>(char const*,char const*,int,void (RBX::PartInstance::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5f11dc(
+    name: &str,
+    category: &str,
+    initial: Vector3,
+    attributes: u32,
+    permissions: u32,
+) -> Prop<Vector3> {
+    // IDA 0x5f11dc: `PropDescriptor<PartInstance, Vector3>` write-only ctor
+    // (`int` placeholder getter + setter member pointer): `new` the SetImpl
+    // (0x5f1206-0x5f1232), forward into the `TypedPropertyDescriptor`
+    // ctor. Reads go through `SetImpl::getValue` (0x5f12f0) and throw.
+    Prop::new(name, category, initial, attributes, permissions)
 }
 
 // 0x5f12e8 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EE7SetImplIMS2_FvRKS4_EE10isReadOnlyEv
@@ -154,26 +378,53 @@ pub fn stub_0x5f12ec() {
 
 // 0x5f12f0 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EE7SetImplIMS2_FvRKS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::SetImpl<void (RBX::PartInstance::*)(G3D::Vector3 const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5f12f0() -> ! {
-    todo!("0x5f12f0 RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::SetImpl<void (RBX::PartInstance::*)(G3D::Vector3 const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5f12f0() {
+    // IDA 0x5f12f0: `SetImpl::getValue` (write-only prop): `throw
+    // runtime_error("can't get value")` (0x5f131c-0x5f1400). Rust cutover
+    // panics with the same message.
+    panic!("can't get value (IDA 0x5f12f0)");
 }
 
 // 0x5f1410 — __ZNK3RBX10Reflection14PropDescriptorINS_12PartInstanceEN3G3D7Vector3EE7SetImplIMS2_FvRKS4_EE8setValueEPNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::SetImpl<void (RBX::PartInstance::*)(G3D::Vector3 const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
-pub fn stub_0x5f1410() -> ! {
-    todo!("0x5f1410 RBX::Reflection::PropDescriptor<RBX::PartInstance,G3D::Vector3>::SetImpl<void (RBX::PartInstance::*)(G3D::Vector3 const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+pub fn stub_0x5f1410(prop: &mut Prop<Vector3>, value: Vector3) {
+    // IDA 0x5f1410: `SetImpl::setValue`: header strip, setter member-pointer
+    // decode, invoke with the new value.
+    prop.value = value;
 }
 
 // 0x5f1434 — __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EEC2EMS2_FSB_bEPKcSH_bNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(bool),1>::BoundFuncDesc(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),char const*,char const*,bool,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x5f1434() -> ! {
-    todo!("0x5f1434 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(bool),1>::BoundFuncDesc(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),char const*,char const*,bool,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x5f1434(
+    name: &str,
+    category: &str,
+    member: usize,
+    is_default: bool,
+    permissions: u32,
+    attributes: u32,
+) -> BoundFunc {
+    // IDA 0x5f1434: 1-arg `BoundFuncDesc` ctor: class-descriptor fetch,
+    // `FunctionDescriptor` init, member pair at +40, declared signature via
+    // `declareSignature` (0x5f15e0). `category`/`is_default` ride the
+    // descriptor header; Rust folds them into the name record.
+    let _ = (category, is_default);
+    BoundFunc {
+        name: name.to_owned(),
+        member,
+        signature: Signature { return_type: "InstanceList", args: Vec::new() },
+        permissions,
+        attributes,
+    }
 }
 
 // 0x5f15e0 — __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(bool),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x5f15e0() -> ! {
-    todo!("0x5f15e0 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(bool),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x5f15e0(func: &mut BoundFunc, arg_name: &str) {
+    // IDA 0x5f15e0: `declareSignature`: store the shared-vector return
+    // `Type` at +28, `RBX::Name::declare` the arg name, `getSingleton<bool>`
+    // for it, `SignatureDescriptor::addArgument` (0x5f15ec-0x5f160e).
+    func.signature.return_type = "InstanceList";
+    func.signature.args.push((arg_name.to_owned(), "bool"));
 }
 
 // 0x5f1610 — __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EED0Ev
@@ -184,26 +435,52 @@ pub fn stub_0x5f1610() {
 
 // 0x5f16e4 — __ZNK3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(bool),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x5f16e4() -> ! {
-    todo!("0x5f16e4 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(bool),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x5f16e4(
+    args: &Arguments,
+    call: &dyn Fn(bool) -> Vec<u32>,
+    default: Option<bool>,
+) -> Value {
+    // IDA 0x5f16e4: 1-arg `execute`: `ArgHelper::getArg<bool, 1>` then
+    // `Call1Helper::call` (0x5f1708-0x5f1722).
+    let flag = stub_0x5f1810(args, default);
+    stub_0x5f1724(call, flag)
 }
 
 // 0x5f1724 — __ZN3RBX10Reflection11Call1HelperINS_12PartInstanceEMS2_FN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbEbSB_E4callEPS2_SD_RNS0_7VariantERKb
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::PartInstance,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),bool,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>>::call(RBX::PartInstance*,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),RBX::Reflection::Variant &,bool const&)")]
-pub fn stub_0x5f1724() -> ! {
-    todo!("0x5f1724 RBX::Reflection::Call1Helper<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),bool,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>>::call(RBX::PartInstance*,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),RBX::Reflection::Variant &,bool const&)")
+pub fn stub_0x5f1724(call: &dyn Fn(bool) -> Vec<u32>, arg: bool) -> Value {
+    // IDA 0x5f1724: `Call1Helper::call`: member-pointer decode, invoke with
+    // the bool arg, tag the shared-vector return type, pack with
+    // `placement_any::operator=` (0x5f1798-0x5f17a4).
+    Value::InstanceList(call(arg))
 }
 
 // 0x5f1810 — __ZN3RBX10Reflection9ArgHelper6getArgIbLi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS3_EEPNS7_10disable_ifINS7_7is_sameIS3_NS7_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 #[doc(alias = "bool RBX::Reflection::ArgHelper::getArg<bool,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<bool> const&,boost::disable_if<boost::is_same<bool,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
-pub fn stub_0x5f1810() -> ! {
-    todo!("0x5f1810 bool RBX::Reflection::ArgHelper::getArg<bool,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<bool> const&,boost::disable_if<boost::is_same<bool,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
+pub fn stub_0x5f1810(args: &Arguments, default: Option<bool>) -> bool {
+    // IDA 0x5f1810: `ArgHelper::getArg<bool, 1>`: direct bool fetch, else a
+    // `void`-singleton probe then `Variant::convert<bool>` (0x5f189c-0x5f18c4);
+    // missing/nil without a default throws `runtime_error("Argument %d
+    // missing or nil", 1)` (0x5f1930-0x5f1986). Rust cutover panics.
+    match args.args.first() {
+        Some(Value::Nil) | None => default.unwrap_or_else(|| panic!("Argument 1 missing or nil (IDA 0x5f1810)")),
+        Some(v) => v.as_bool(),
+    }
 }
 
 // 0x5f19c4 — __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFbvELi0EEC2EMS2_FbvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,bool ()(void),0>::BoundFuncDesc(bool (RBX::PartInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x5f19c4() -> ! {
-    todo!("0x5f19c4 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,bool ()(void),0>::BoundFuncDesc(bool (RBX::PartInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x5f19c4(name: &str, member: usize, permissions: u32, attributes: u32) -> BoundFunc {
+    // IDA 0x5f19c4: `BoundFuncDesc<PartInstance, bool>::BoundFuncDesc`:
+    // class-descriptor fetch, `FunctionDescriptor` init, vtable install,
+    // member pair at +40, return type `Type::getSingleton<bool>` at +28.
+    BoundFunc {
+        name: name.to_owned(),
+        member,
+        signature: Signature { return_type: "bool", args: Vec::new() },
+        permissions,
+        attributes,
+    }
 }
 
 // 0x5f1ac8 — __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFbvELi0EED0Ev
@@ -214,20 +491,34 @@ pub fn stub_0x5f1ac8() {
 
 // 0x5f1b7c — __ZNK3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFbvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,bool ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x5f1b7c() -> ! {
-    todo!("0x5f1b7c RBX::Reflection::BoundFuncDesc<RBX::PartInstance,bool ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x5f1b7c(_func: &BoundFunc, call: &dyn Fn() -> bool) -> Value {
+    // IDA 0x5f1b7c: `BoundFuncDesc<bool>::execute` tail-calls
+    // `Call0Helper<bool>::call`.
+    stub_0x5f1ba0(call)
 }
 
 // 0x5f1ba0 — __ZN3RBX10Reflection11Call0HelperINS_12PartInstanceEMS2_FbvEbE4callEPS2_S4_RNS0_7VariantE
 #[doc(alias = "RBX::Reflection::Call0Helper<RBX::PartInstance,bool (RBX::PartInstance::*)(void),bool>::call(RBX::PartInstance*,bool (RBX::PartInstance::*)(void),RBX::Reflection::Variant &)")]
-pub fn stub_0x5f1ba0() -> ! {
-    todo!("0x5f1ba0 RBX::Reflection::Call0Helper<RBX::PartInstance,bool (RBX::PartInstance::*)(void),bool>::call(RBX::PartInstance*,bool (RBX::PartInstance::*)(void),RBX::Reflection::Variant &)")
+pub fn stub_0x5f1ba0(call: &dyn Fn() -> bool) -> Value {
+    // IDA 0x5f1ba0: `Call0Helper<bool>::call`: header strip, member-pointer
+    // decode, invoke, tag `Type::getSingleton<bool>`, pack with
+    // `placement_any::operator=<bool>`.
+    Value::Bool(call())
 }
 
 // 0x5f1bd0 — __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFfvELi0EEC2EMS2_FfvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,float ()(void),0>::BoundFuncDesc(float (RBX::PartInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x5f1bd0() -> ! {
-    todo!("0x5f1bd0 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,float ()(void),0>::BoundFuncDesc(float (RBX::PartInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x5f1bd0(name: &str, member: usize, permissions: u32, attributes: u32) -> BoundFunc {
+    // IDA 0x5f1bd0: `BoundFuncDesc<PartInstance, float>::BoundFuncDesc`:
+    // class-descriptor fetch, `FunctionDescriptor` init, vtable install,
+    // member pair at +40, return type `Type::getSingleton<float>` at +28.
+    BoundFunc {
+        name: name.to_owned(),
+        member,
+        signature: Signature { return_type: "float", args: Vec::new() },
+        permissions,
+        attributes,
+    }
 }
 
 // 0x5f1cd4 — __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFfvELi0EED0Ev
@@ -238,20 +529,34 @@ pub fn stub_0x5f1cd4() {
 
 // 0x5f1d88 — __ZNK3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFfvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,float ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x5f1d88() -> ! {
-    todo!("0x5f1d88 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,float ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x5f1d88(_func: &BoundFunc, call: &dyn Fn() -> f32) -> Value {
+    // IDA 0x5f1d88: `BoundFuncDesc<float>::execute` tail-calls
+    // `Call0Helper<float>::call`.
+    stub_0x5f1dac(call)
 }
 
 // 0x5f1dac — __ZN3RBX10Reflection11Call0HelperINS_12PartInstanceEMS2_FfvEfE4callEPS2_S4_RNS0_7VariantE
 #[doc(alias = "RBX::Reflection::Call0Helper<RBX::PartInstance,float (RBX::PartInstance::*)(void),float>::call(RBX::PartInstance*,float (RBX::PartInstance::*)(void),RBX::Reflection::Variant &)")]
-pub fn stub_0x5f1dac() -> ! {
-    todo!("0x5f1dac RBX::Reflection::Call0Helper<RBX::PartInstance,float (RBX::PartInstance::*)(void),float>::call(RBX::PartInstance*,float (RBX::PartInstance::*)(void),RBX::Reflection::Variant &)")
+pub fn stub_0x5f1dac(call: &dyn Fn() -> f32) -> Value {
+    // IDA 0x5f1dac: `Call0Helper<float>::call`: header strip, member-pointer
+    // decode, invoke, tag `Type::getSingleton<float>`, pack with
+    // `placement_any::operator=<float>`.
+    Value::Float(call())
 }
 
 // 0x5f1ddc — __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,void ()(void),0>::BoundFuncDesc(void (RBX::PartInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x5f1ddc() -> ! {
-    todo!("0x5f1ddc RBX::Reflection::BoundFuncDesc<RBX::PartInstance,void ()(void),0>::BoundFuncDesc(void (RBX::PartInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x5f1ddc(name: &str, member: usize, permissions: u32, attributes: u32) -> BoundFunc {
+    // IDA 0x5f1ddc: `BoundFuncDesc<PartInstance, void>::BoundFuncDesc`:
+    // class-descriptor fetch, `FunctionDescriptor` init, vtable install,
+    // member pair at +40, return type `Type::getSingleton<void>` at +28.
+    BoundFunc {
+        name: name.to_owned(),
+        member,
+        signature: Signature { return_type: "void", args: Vec::new() },
+        permissions,
+        attributes,
+    }
 }
 
 // 0x5f1ee0 — __ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFvvELi0EED0Ev
@@ -262,14 +567,20 @@ pub fn stub_0x5f1ee0() {
 
 // 0x5f1f94 — __ZNK3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x5f1f94() -> ! {
-    todo!("0x5f1f94 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x5f1f94(_func: &BoundFunc, call: &dyn Fn()) {
+    // IDA 0x5f1f94: `BoundFuncDesc<void>::execute`: header strip, decode the
+    // member pair at +40 (`offset >> 1`, virtual bit `& 1`), invoke it; no
+    // return packing for `void`.
+    call();
 }
 
 // 0x5f2180 — __ZNSt6vectorIPKN3RBX10Reflection14EnumDescriptor4ItemESaIS5_EE9push_backERKS5_
 #[doc(alias = "std::vector<RBX::Reflection::EnumDescriptor::Item const*,std::allocator<RBX::Reflection::EnumDescriptor::Item const*>>::push_back(RBX::Reflection::EnumDescriptor::Item const* const&)")]
-pub fn stub_0x5f2180() -> ! {
-    todo!("0x5f2180 std::vector<RBX::Reflection::EnumDescriptor::Item const*,std::allocator<RBX::Reflection::EnumDescriptor::Item const*>>::push_back(RBX::Reflection::EnumDescriptor::Item const* const&)")
+pub fn stub_0x5f2180(items: &mut Vec<crate::enum_desc::EnumItem>, item: crate::enum_desc::EnumItem) {
+    // IDA 0x5f2180: `vector<EnumDescriptor::Item const*>::push_back`: fast
+    // path stores at the finish pointer and bumps it (0x5f2192-0x5f219c),
+    // else `_M_insert_aux` grows. Rust: `Vec::push` covers both.
+    items.push(item);
 }
 
 // 0x5f2558 — __ZN3RBX10Reflection14EnumDescriptor4ItemD1Ev
