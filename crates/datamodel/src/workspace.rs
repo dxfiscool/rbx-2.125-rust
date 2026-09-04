@@ -4,6 +4,10 @@
 
 #![allow(non_snake_case, dead_code, unused_variables)]
 
+use rbx_core::SharedPtr;
+use crate::data_model::DataModel;
+use crate::generated_05::{Instance, instance_is_a};
+
 /// Rust model of `RBX::Workspace`: the scene root behind the studio verbs
 /// and service lookups; members land with the workspace batch.
 #[derive(Default)]
@@ -12,6 +16,85 @@ pub struct Workspace {
     /// Current studio mouse command at `+0x1C8` behind
     /// `getCurrentMouseCommand` (IDA `0x437650`, asserted non-null).
     pub current_command: Option<rbx_core::SharedPtr<crate::instance::MouseCommand>>,
+    /// Game time at words `+69` (`double`) behind `setDistributedGameTime`
+    /// (IDA `0x6ca9b8`).
+    pub distributed_game_time: f64,
+    /// Terrain link at words `+110` behind `getTerrain` (IDA `0x6cb718`);
+    /// unretained, hence dangerous.
+    pub terrain: *const (),
+    /// Current camera at words `+127` behind `getCurrentCameraDangerous`
+    /// (IDA `0x6cb73c`) / `setCurrentCamera` (IDA `0x6cb744`); unretained
+    /// (the retain collapses to the raw store until `Camera` gains a weak
+    /// owner), hence dangerous.
+    pub current_camera: *const (),
+    /// Cached `RunService::smoothFps` factor behind `getRealPhysicsFPS`
+    /// (IDA `0x6cb8c4`).
+    pub smooth_fps: f32,
+    /// Cached `EThrottle::getEnvironmentSpeed` factor behind
+    /// `getRealPhysicsFPS` (IDA `0x6cb8c4`) and `getPhysicsThrottling`
+    /// (IDA `0x6cb8f8`).
+    pub environment_speed: f32,
+    /// Cached kernel body counters summed by `getNumAwakeParts`
+    /// (IDA `0x6cb920`).
+    pub awake: AwakeCounts,
+    /// Content ids queued by `insertContent` (IDA `0x6cae14`); the
+    /// fetch/parse overload lands with the content pipeline.
+    pub inserted_content: Vec<String>,
+}
+
+/// Cached kernel body counters behind `getNumAwakeParts` (IDA `0x6cb920`):
+/// free-fall, contact, joint, real-time-connector, and leaf bodies.
+#[derive(Clone, Copy, Default)]
+pub struct AwakeCounts {
+    pub free_fall: u32,
+    pub contact: u32,
+    pub joint: u32,
+    pub connectors: u32,
+    pub leaf: u32,
+}
+
+/// Rust model of `RBX::Tool` (IDA `0x688b08`): the tool behind
+/// `ToolMouseCommand`; members land with the tool batch.
+#[derive(Default)]
+pub struct Tool {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::ScriptMouseCommand` (IDA `0x614a04`): the workspace
+/// link is threaded through construction (`MOV`-spill into the base
+/// `MouseCommand`, disasm `0x614a24`); all else unmodeled.
+pub struct ScriptMouseCommand {
+    pub workspace: *mut Workspace,
+}
+
+impl Default for ScriptMouseCommand {
+    fn default() -> Self {
+        Self { workspace: core::ptr::null_mut() }
+    }
+}
+
+/// Rust model of `RBX::ToolMouseCommand` (IDA `0x688b08`): the base command,
+/// the unretained tool (retained at `+72` via `shared_from<Tool>` once `Tool`
+/// gains a weak owner), the connection slot at `+80`, and the armed flag at
+/// `+84` (zeroed at disasm `0x688ba2`-`0x688ba6`).
+pub struct ToolMouseCommand {
+    pub base: ScriptMouseCommand,
+    pub tool: *const Tool,
+    /// Whether the `onEvent_ToolUnequipped` connection was made (non-null
+    /// tool at disasm `0x688baa`-`0x688bca`).
+    pub tool_connected: bool,
+    pub active: bool,
+}
+
+impl Default for ToolMouseCommand {
+    fn default() -> Self {
+        Self {
+            base: ScriptMouseCommand::default(),
+            tool: core::ptr::null(),
+            tool_connected: false,
+            active: false,
+        }
+    }
 }
 
 // 196 stubs in this file | batch range 0x380a4..0x710100 (76 existing + 120 new shard B)
@@ -33,15 +116,20 @@ pub fn stub_0x5f6a90() -> ! {
 // 0x614a00 — __ZN3RBX18ScriptMouseCommandC1EPNS_9WorkspaceE
 #[doc(alias = "RBX::ScriptMouseCommand::ScriptMouseCommand(RBX::Workspace *)")]
 // was: RBX::ScriptMouseCommand::ScriptMouseCommand(RBX::Workspace *)
-pub fn stub_0x614a00() -> ! {
-    todo!("0x614a00 RBX::ScriptMouseCommand::ScriptMouseCommand(RBX::Workspace *)")
+pub fn stub_0x614a00(workspace: *mut Workspace) -> ScriptMouseCommand {
+    // IDA 0x614a00 (C1): thunk (`B.W`) to C2 (0x614a04) — the vtable fixup
+    // between the two is compiler-owned.
+    stub_0x614a04(workspace)
 }
 
 // 0x614a04 — __ZN3RBX18ScriptMouseCommandC2EPNS_9WorkspaceE
 #[doc(alias = "RBX::ScriptMouseCommand::ScriptMouseCommand(RBX::Workspace *)")]
 // was: RBX::ScriptMouseCommand::ScriptMouseCommand(RBX::Workspace *)
-pub fn stub_0x614a04() -> ! {
-    todo!("0x614a04 RBX::ScriptMouseCommand::ScriptMouseCommand(RBX::Workspace *)")
+pub fn stub_0x614a04(workspace: *mut Workspace) -> ScriptMouseCommand {
+    // IDA 0x614a04 (C2): base `MouseCommand` ctor threading the workspace
+    // (disasm `0x614a24`), vtable installs (disasm `0x614a38`-`0x614a42`).
+    // The base members land with the command batch; the link is modelled.
+    ScriptMouseCommand { workspace }
 }
 
 // 0x62d050 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_13ModelInstanceEEESA_ENS6_5list2INS6_5valueISA_EESF_EEEEEEvT_
@@ -110,8 +198,20 @@ pub fn stub_0x649cf4() -> ! {
 // 0x64ae00 — __ZN3RBX11shared_fromINS_9DataModelEEEN5boost10shared_ptrIT_EEPS4_
 #[doc(alias = "rbx_core::SharedPtr<RBX::DataModel> RBX::shared_from<RBX::DataModel>(RBX::DataModel*)")]
 // was: boost::shared_ptr<RBX::DataModel> RBX::shared_from<RBX::DataModel>(RBX::DataModel*)
-pub fn stub_0x64ae00() -> ! {
-    todo!("0x64ae00 boost::shared_ptr<RBX::DataModel> RBX::shared_from<RBX::DataModel>(RBX::DataModel*)")
+pub fn stub_0x64ae00(dm: *const DataModel) -> Option<SharedPtr<DataModel>> {
+    // IDA 0x64ae00: null in yields null out (0x64aedc); else locks the
+    // control-block spinlock, asserts the use count is nonzero — expired
+    // throws `bad_weak_ptr` (0x64af02-0x64af1c) — bumps it and returns the
+    // aliased pointer (0x64ae98-0x64aeb8). The bump + alias is
+    // `Weak::upgrade`; the expired path panics (the throw).
+    // SAFETY: `dm` must be null or point to a valid `DataModel` whose
+    // `weak_owner` was installed by a live `SharedPtr`.
+    unsafe {
+        let dm = dm.as_ref()?;
+        dm.weak_owner
+            .upgrade()
+            .or_else(|| panic!("0x64ae00 RBX::shared_from<RBX::DataModel>: bad_weak_ptr"))
+    }
 }
 
 // 0x64af70 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX9DataModelEEEPSsPSt9exceptionS4_NS_3argILi1EEENS8_ILi2EEEEENS_3_bi6bind_tIT_PFSD_T0_T1_T2_ENSB_9list_av_3IT3_T4_T5_E4typeEEESI_SK_SL_SM_
@@ -271,22 +371,39 @@ pub fn stub_0x657270() -> ! {
 // 0x682f50 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_16ToolMouseCommandEPNS_9WorkspaceEPNS_4ToolEEEN5boost10shared_ptrIT_EET0_T1_
 #[doc(alias = "rbx_core::SharedPtr<RBX::ToolMouseCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::ToolMouseCommand,RBX::Workspace *,RBX::Tool *>(RBX::Workspace *,RBX::Tool *)")]
 // was: boost::shared_ptr<RBX::ToolMouseCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::ToolMouseCommand,RBX::Workspace *,RBX::Tool *>(RBX::Workspace *,RBX::Tool *)
-pub fn stub_0x682f50() -> ! {
-    todo!("0x682f50 boost::shared_ptr<RBX::ToolMouseCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::ToolMouseCommand,RBX::Workspace *,RBX::Tool *>(RBX::Workspace *,RBX::Tool *)")
+pub fn stub_0x682f50(workspace: *mut Workspace, tool: *const Tool) -> SharedPtr<ToolMouseCommand> {
+    // IDA 0x682f50: `operator new(0x58)` (0x682f88), `ToolMouseCommand` ctor
+    // (0x682fb0), wrap in `shared_ptr` with `Creatable::Deleter` (0x682fbe).
+    // `SharedPtr::new` owns the allocation; the custom deleter collapses to
+    // `Drop` until the creatable pool is modelled.
+    SharedPtr::new(stub_0x688b08(workspace, tool))
 }
 
 // 0x688b04 — __ZN3RBX16ToolMouseCommandC1EPNS_9WorkspaceEPNS_4ToolE
 #[doc(alias = "RBX::ToolMouseCommand::ToolMouseCommand(RBX::Workspace *,RBX::Tool *)")]
 // was: RBX::ToolMouseCommand::ToolMouseCommand(RBX::Workspace *,RBX::Tool *)
-pub fn stub_0x688b04() -> ! {
-    todo!("0x688b04 RBX::ToolMouseCommand::ToolMouseCommand(RBX::Workspace *,RBX::Tool *)")
+pub fn stub_0x688b04(workspace: *mut Workspace, tool: *const Tool) -> ToolMouseCommand {
+    // IDA 0x688b04 (C1): delegates to C2 (0x688b08); the vtable fixup between
+    // the two is compiler-owned.
+    stub_0x688b08(workspace, tool)
 }
 
 // 0x688b08 — __ZN3RBX16ToolMouseCommandC2EPNS_9WorkspaceEPNS_4ToolE
 #[doc(alias = "RBX::ToolMouseCommand::ToolMouseCommand(RBX::Workspace *,RBX::Tool *)")]
 // was: RBX::ToolMouseCommand::ToolMouseCommand(RBX::Workspace *,RBX::Tool *)
-pub fn stub_0x688b08() -> ! {
-    todo!("0x688b08 RBX::ToolMouseCommand::ToolMouseCommand(RBX::Workspace *,RBX::Tool *)")
+pub fn stub_0x688b08(workspace: *mut Workspace, tool: *const Tool) -> ToolMouseCommand {
+    // IDA 0x688b08 (C2): base `ScriptMouseCommand` ctor (0x688b2c), vtable
+    // installs (0x688b54-0x688b60), `shared_from<Tool>` retain at `+72`
+    // (0x688b8c), connection slot at `+80`, zeroed words (0x688ba2-0x688ba6);
+    // a non-null tool connects `onEvent_ToolUnequipped` (0x688bb6-0x688bca).
+    // The retain and the signal connection land with `Tool`; the wiring
+    // decision is modelled.
+    ToolMouseCommand {
+        base: stub_0x614a04(workspace),
+        tool,
+        tool_connected: !tool.is_null(),
+        active: false,
+    }
 }
 
 // 0x689a5c — __ZN3RBX9ModelToolC2EPNS_9WorkspaceE
@@ -327,36 +444,87 @@ pub fn stub_0x6992a0() -> ! {
 // 0x6ca9b8 — __ZN3RBX9Workspace22setDistributedGameTimeEd
 #[doc(alias = "RBX::Workspace::setDistributedGameTime(double)")]
 // was: RBX::Workspace::setDistributedGameTime(double)
-pub fn stub_0x6ca9b8() -> ! {
-    todo!("0x6ca9b8 RBX::Workspace::setDistributedGameTime(double)")
+pub fn stub_0x6ca9b8(ws: &mut Workspace, t: f64) {
+    // IDA 0x6ca9b8: no-op when `*(this + 69) == a2` (0x6ca9c8); else stores
+    // the double (0x6ca9d4) and `raisePropertyChanged(DistributedGameTime)`
+    // (0x6ca9dc). The fire has no host signal yet, so only the store is
+    // modelled.
+    if ws.distributed_game_time != t {
+        ws.distributed_game_time = t;
+    }
 }
 
 // 0x6cac18 — __ZN3RBX9Workspace15serverIsPresentEPKNS_8InstanceE
 #[doc(alias = "RBX::Workspace::serverIsPresent(RBX::Instance const*)")]
 // was: RBX::Workspace::serverIsPresent(RBX::Instance const*)
-pub fn stub_0x6cac18() -> ! {
-    todo!("0x6cac18 RBX::Workspace::serverIsPresent(RBX::Instance const*)")
+pub fn stub_0x6cac18(_workspace: *const Workspace, _instance: *const Instance) -> bool {
+    // IDA 0x6cac18: tail-calls `Players::serverIsPresent(this, 0, ...)`
+    // (0x6cac22). The `Players` service is unmodeled, and the host runs no
+    // server, so this reports absent.
+    // SAFETY: pointers must be null or valid (unretained, never dereferenced).
+    false
 }
 
 // 0x6cac28 — __ZN3RBX9Workspace18findConstWorkspaceEPKNS_8InstanceE
 #[doc(alias = "RBX::Workspace::findConstWorkspace(RBX::Instance const*)")]
 // was: RBX::Workspace::findConstWorkspace(RBX::Instance const*)
-pub fn stub_0x6cac28() -> ! {
-    todo!("0x6cac28 RBX::Workspace::findConstWorkspace(RBX::Instance const*)")
+pub fn stub_0x6cac28(instance: *const Instance) -> *const Instance {
+    // IDA 0x6cac28: thunk to `ServiceProvider::find<Workspace>` — same body
+    // as 0x6cac2c below.
+    stub_0x6cac2c(instance)
 }
 
 // 0x6cac2c — __ZN3RBX9Workspace13findWorkspaceEPNS_8InstanceE
 #[doc(alias = "RBX::Workspace::findWorkspace(RBX::Instance *)")]
 // was: RBX::Workspace::findWorkspace(RBX::Instance *)
-pub fn stub_0x6cac2c() -> ! {
-    todo!("0x6cac2c RBX::Workspace::findWorkspace(RBX::Instance *)")
+pub fn stub_0x6cac2c(instance: *const Instance) -> *const Instance {
+    // IDA 0x6cac2c: `find<Workspace>(instance)` — root the tree at
+    // `instance`, pre-order scan for the `Workspace` class (cf. the
+    // `ScriptService` scan at IDA `0x7039cc`); miss returns null.
+    // SAFETY: as in 0x7039cc — null or valid, subtree outlives the call.
+    unsafe { find_service_in_tree(instance, "Workspace") }
+}
+/// Shared tree scan behind `findWorkspace`/`findConstWorkspace`: root the
+/// tree, then pre-order scan for `class` (cf. IDA `0x7039cc`).
+/// # Safety
+/// `instance` must be null or point to a valid `Instance` whose whole
+/// ancestry/subtree outlives the call.
+unsafe fn find_service_in_tree(instance: *const Instance, class: &'static str) -> *const Instance {
+    let mut root = instance;
+    while !root.is_null() && !(*root).parent.is_null() {
+        root = (*root).parent;
+    }
+    if root.is_null() {
+        return core::ptr::null();
+    }
+    let mut stack = vec![root];
+    while let Some(cur) = stack.pop() {
+        if instance_is_a(cur, class) {
+            return cur;
+        }
+        for child in (*cur).children.iter().rev() {
+            stack.push(SharedPtr::as_ptr(child));
+        }
+    }
+    core::ptr::null()
 }
 
 // 0x6cac30 — __ZN3RBX9Workspace15findTopInstanceEPNS_8InstanceE
 #[doc(alias = "RBX::Workspace::findTopInstance(RBX::Instance *)")]
 // was: RBX::Workspace::findTopInstance(RBX::Instance *)
-pub fn stub_0x6cac30() -> ! {
-    todo!("0x6cac30 RBX::Workspace::findTopInstance(RBX::Instance *)")
+pub fn stub_0x6cac30(instance: *const Instance) -> *const Instance {
+    // IDA 0x6cac30: asserts the instance sits under a live world/workspace
+    // (0x6cac48-0x6cacda), resolves the workspace (0x6cac98), asserts it
+    // non-null (0x6cac9a-0x6cacda), then returns the top instance. Only the
+    // root walk is modelled; the asserts are debug-only.
+    // SAFETY: `instance` must be null or valid with a valid parent chain.
+    unsafe {
+        let mut top = instance;
+        while !top.is_null() && !(*top).parent.is_null() {
+            top = (*top).parent;
+        }
+        top
+    }
 }
 
 // 0x6cad28 — __ZN3RBX9Workspace21getWorldIfInWorkspaceEPNS_8InstanceE
@@ -383,23 +551,56 @@ pub fn stub_0x6cad68() -> ! {
 // 0x6cad8c — __ZN3RBX9Workspace18contextInWorkspaceEPKNS_8InstanceE
 #[doc(alias = "RBX::Workspace::contextInWorkspace(RBX::Instance const*)")]
 // was: RBX::Workspace::contextInWorkspace(RBX::Instance const*)
-pub fn stub_0x6cad8c() -> ! {
-    todo!("0x6cad8c RBX::Workspace::contextInWorkspace(RBX::Instance const*)")
+pub fn stub_0x6cad8c(context: *const Instance, instance: *const Instance) -> bool {
+    // IDA 0x6cad8c: `find<Workspace>(instance)` (0x6cad96), debug-only
+    // `ReleaseAssert` on the found-vs-context identity (0x6cadb6-0x6cade6),
+    // then walks `context`'s parent chain (`+13` words, the `parent` slot at
+    // IDA `0x6cae02`) for the found workspace, returning nonzero on a hit
+    // (0x6cae02-0x6cae0e). `context` is the `Instance` subobject of the
+    // `Workspace` (single inheritance collapses the adjustment); only the
+    // find + walk is modelled.
+    // SAFETY: both pointers must be null or valid with valid parent chains.
+    unsafe {
+        let found = stub_0x6cac2c(instance);
+        if found.is_null() {
+            return false;
+        }
+        let mut cur = context;
+        while !cur.is_null() {
+            if cur == found {
+                return true;
+            }
+            cur = (*cur).parent;
+        }
+        false
+    }
 }
 
 // 0x6cae14 — __ZN3RBX9Workspace13insertContentENS_9ContentIdE
 #[doc(alias = "RBX::Workspace::insertContent(RBX::ContentId)")]
 // was: RBX::Workspace::insertContent(RBX::ContentId)
-pub fn stub_0x6cae14() -> ! {
-    todo!("0x6cae14 RBX::Workspace::insertContent(RBX::ContentId)")
+pub fn stub_0x6cae14(ws: &mut Workspace, content: &str) {
+    // IDA 0x6cae14: copies the `ContentId` string (0x6cae72-0x6cae7a) and
+    // forwards to the 5-arg `insertContent` overload (0x6cae8c); the string
+    // release (0x6cae9e+) balances the copy. Only the enqueue is modelled;
+    // the fetch/parse overload lands with the content pipeline.
+    ws.inserted_content.push(content.to_string());
 }
 
 // 0x6cb000 — __ZN3RBX9Workspace10makeJointsEN5boost10shared_ptrIKSt6vectorINS2_INS_8InstanceEEESaIS5_EEEE
 #[doc(alias = "RBX::Workspace::makeJoints(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>)")]
 // was: RBX::Workspace::makeJoints(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>)
-pub fn stub_0x6cb000() -> ! {
-    todo!("0x6cb000 RBX::Workspace::makeJoints(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>)")
+pub fn stub_0x6cb000(instances: &[SharedPtr<Instance>]) {
+    // IDA 0x6cb000: `for_each(begin, end, wrapper<true>)` over the instance
+    // vector. Each element builds its joints; the wrapper seam below is where
+    // the per-instance work lands.
+    for inst in instances {
+        joint_wrapper(inst);
+    }
 }
+/// Seam for `RBX::wrapper<true>` applied per element by `makeJoints` (IDA
+/// `0x6cb000`): joint construction lives in the physics crate.
+fn joint_wrapper(_instance: &SharedPtr<Instance>) {}
 
 // 0x6cb014 — __ZN3RBX9Workspace11breakJointsEN5boost10shared_ptrIKSt6vectorINS2_INS_8InstanceEEESaIS5_EEEE
 #[doc(alias = "RBX::Workspace::breakJoints(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>)")]
@@ -439,113 +640,174 @@ pub fn stub_0x6cb58c() -> ! {
 // 0x6cb718 — __ZNK3RBX9Workspace10getTerrainEv
 #[doc(alias = "RBX::Workspace::getTerrain(void)const")]
 // was: RBX::Workspace::getTerrain(void)const
-pub fn stub_0x6cb718() -> ! {
-    todo!("0x6cb718 RBX::Workspace::getTerrain(void)const")
+pub fn stub_0x6cb718(ws: *const Workspace) -> *const () {
+    // IDA 0x6cb718: returns `*(this + 110)` (0x6cb71c), no retain.
+    // SAFETY: `ws` must point to a valid `Workspace`.
+    unsafe { (*ws).terrain }
 }
 
 // 0x6cb720 — __ZN3RBX9Workspace13zoomToExtentsEv
 #[doc(alias = "RBX::Workspace::zoomToExtents(void)")]
 // was: RBX::Workspace::zoomToExtents(void)
-pub fn stub_0x6cb720() -> ! {
-    todo!("0x6cb720 RBX::Workspace::zoomToExtents(void)")
+pub fn stub_0x6cb720(ws: *const Workspace) -> i32 {
+    // IDA 0x6cb720: virtual `getCurrentCamera` (slot `+196`, 0x6cb72e) then
+    // `Camera::zoomExtents` on the result. The camera query lands with the
+    // view batch; the zoom itself is the seam below.
+    // SAFETY: `ws` must point to a valid `Workspace`.
+    unsafe { camera_zoom_extents((*ws).current_camera) }
+}
+/// Seam for `RBX::Camera::zoomExtents` called by `zoomToExtents` (IDA
+/// `0x6cb72e`): the camera subsystem lives outside datamodel.
+fn camera_zoom_extents(_camera: *const ()) -> i32 {
+    0
 }
 
 // 0x6cb73c — __ZNK3RBX9Workspace25getCurrentCameraDangerousEv
 #[doc(alias = "RBX::Workspace::getCurrentCameraDangerous(void)const")]
 // was: RBX::Workspace::getCurrentCameraDangerous(void)const
-pub fn stub_0x6cb73c() -> ! {
-    todo!("0x6cb73c RBX::Workspace::getCurrentCameraDangerous(void)const")
+pub fn stub_0x6cb73c(ws: *const Workspace) -> *const () {
+    // IDA 0x6cb73c: returns `*(this + 127)` (0x6cb740) — "dangerous" because
+    // it is unretained. Callers must not store it past reassignment.
+    // SAFETY: `ws` must point to a valid `Workspace`.
+    unsafe { (*ws).current_camera }
 }
 
 // 0x6cb744 — __ZN3RBX9Workspace16setCurrentCameraEPNS_6CameraE
 #[doc(alias = "RBX::Workspace::setCurrentCamera(RBX::Camera *)")]
 // was: RBX::Workspace::setCurrentCamera(RBX::Camera *)
-pub fn stub_0x6cb744() -> ! {
-    todo!("0x6cb744 RBX::Workspace::setCurrentCamera(RBX::Camera *)")
+pub fn stub_0x6cb744(ws: &mut Workspace, camera: *const ()) {
+    // IDA 0x6cb744: no-op when a server is present (0x6cb7a0) or the camera
+    // is unchanged; else retains via `shared_from<Camera>` + `operator=`
+    // (0x6cb7b6-0x6cb7c2), `raisePropertyChanged(CurrentCamera)` (0x6cb7ec),
+    // and hooks `destroyIfNotCurrent` when non-null (0x6cb7f2-0x6cb800). The
+    // retain collapses to the raw store until `Camera` gains a weak owner;
+    // the destroy hook lands with the camera lifetime work.
+    if stub_0x6cac18(ws, core::ptr::null()) {
+        return;
+    }
+    if ws.current_camera != camera {
+        ws.current_camera = camera;
+    }
 }
 
 // 0x6cb8c4 — __ZN3RBX9Workspace17getRealPhysicsFPSEv
 #[doc(alias = "RBX::Workspace::getRealPhysicsFPS(void)")]
 // was: RBX::Workspace::getRealPhysicsFPS(void)
-pub fn stub_0x6cb8c4() -> ! {
-    todo!("0x6cb8c4 RBX::Workspace::getRealPhysicsFPS(void)")
+pub fn stub_0x6cb8c4(ws: *const Workspace) -> f64 {
+    // IDA 0x6cb8c4: `create<RunService>` (0x6cb8ca), `smoothFps` (0x6cb8d2),
+    // times `EThrottle::getEnvironmentSpeed` (0x6cb8f4). Both services are
+    // unmodeled, so the cached factors are multiplied here; the service calls
+    // land with their crates.
+    // SAFETY: `ws` must point to a valid `Workspace`.
+    unsafe { (*ws).smooth_fps as f64 * (*ws).environment_speed as f64 }
 }
 
 // 0x6cb8f8 — __ZN3RBX9Workspace20getPhysicsThrottlingEv
 #[doc(alias = "RBX::Workspace::getPhysicsThrottling(void)")]
 // was: RBX::Workspace::getPhysicsThrottling(void)
-pub fn stub_0x6cb8f8() -> ! {
-    todo!("0x6cb8f8 RBX::Workspace::getPhysicsThrottling(void)")
+pub fn stub_0x6cb8f8(ws: *const Workspace) -> u32 {
+    // IDA 0x6cb8f8: `(u32)(getEnvironmentSpeed() * 100.0f)` — `1120403456`
+    // is `100.0f` (0x6cb906); `vcvt_s32_f32` truncates (0x6cb91a).
+    // SAFETY: `ws` must point to a valid `Workspace`.
+    unsafe { ((*ws).environment_speed * 100.0) as u32 }
 }
 
 // 0x6cb920 — __ZN3RBX9Workspace16getNumAwakePartsEv
 #[doc(alias = "RBX::Workspace::getNumAwakeParts(void)")]
 // was: RBX::Workspace::getNumAwakeParts(void)
-pub fn stub_0x6cb920() -> ! {
-    todo!("0x6cb920 RBX::Workspace::getNumAwakeParts(void)")
+pub fn stub_0x6cb920(ws: *const Workspace) -> i32 {
+    // IDA 0x6cb920: sums `numFreeFallBodies + numContactBodies +
+    // numJointBodies + numRealTimeConnectors + numLeafBodies` off the world's
+    // kernel (0x6cb932-0x6cb972). The kernel is unmodeled, so the cached
+    // counters are summed; wrapping matches the ARM adds.
+    // SAFETY: `ws` must point to a valid `Workspace`.
+    unsafe {
+        let a = (*ws).awake;
+        a.free_fall
+            .wrapping_add(a.contact)
+            .wrapping_add(a.joint)
+            .wrapping_add(a.connectors)
+            .wrapping_add(a.leaf) as i32
+    }
 }
 
 // 0x6cb974 — __ZN3RBX9WorkspaceC1EPNS_10IDataStateE
 #[doc(alias = "RBX::Workspace::Workspace(RBX::IDataState *)")]
 // was: RBX::Workspace::Workspace(RBX::IDataState *)
-pub fn stub_0x6cb974() -> ! {
-    todo!("0x6cb974 RBX::Workspace::Workspace(RBX::IDataState *)")
+pub fn stub_0x6cb974() -> Workspace {
+    // IDA 0x6cb974: `Workspace::Workspace(IDataState*)` — base `RootInstance`
+    // construction plus member init (verb containers, managers, profiling
+    // connections). Only host-modelled members are initialized here; the
+    // service/manager members land with their batches.
+    Workspace::default()
 }
 
 // 0x6cc0b4 — __ZN3RBX9WorkspaceD0Ev
 #[doc(alias = "RBX::Workspace::~Workspace()")]
 // was: RBX::Workspace::~Workspace()
-pub fn stub_0x6cc0b4() -> ! {
-    todo!("0x6cc0b4 RBX::Workspace::~Workspace()")
+pub fn stub_0x6cc0b4(ws: Workspace) {
+    // IDA 0x6cc0b4 (D0): D1 plus `operator delete` — `drop` of the owned
+    // value is exactly that.
+    stub_0x6cc160(ws);
 }
 
 // 0x6cc160 — __ZN3RBX9WorkspaceD1Ev
 #[doc(alias = "RBX::Workspace::~Workspace()")]
 // was: RBX::Workspace::~Workspace()
-pub fn stub_0x6cc160() -> ! {
-    todo!("0x6cc160 RBX::Workspace::~Workspace()")
+pub fn stub_0x6cc160(ws: Workspace) {
+    // IDA 0x6cc160 (D1 `~Workspace`): runs member destructors; Rust drops
+    // `ws` at scope end — the same sequence.
+    drop(ws);
 }
 
 // 0x6cc170 — __ZThn32_N3RBX9WorkspaceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: non-virtual thunk toRBX::Workspace::~Workspace()
-pub fn stub_0x6cc170() -> ! {
-    todo!("0x6cc170 non-virtual thunk toRBX::Workspace::~Workspace()")
+pub fn stub_0x6cc170(ws: Workspace) {
+    // IDA 0x6cc170: non-virtual thunk — adjusts `this` by -32, then tail-calls
+    // D0. The adjustment addresses a base subobject; it collapses in the host
+    // model (single struct), so this delegates directly.
+    stub_0x6cc0b4(ws);
 }
 
 // 0x6cc178 — __ZThn36_N3RBX9WorkspaceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: non-virtual thunk toRBX::Workspace::~Workspace()
-pub fn stub_0x6cc178() -> ! {
-    todo!("0x6cc178 non-virtual thunk toRBX::Workspace::~Workspace()")
+pub fn stub_0x6cc178(ws: Workspace) {
+    // IDA 0x6cc178: thunk as above with a -36 adjustment; collapses likewise.
+    stub_0x6cc0b4(ws);
 }
 
 // 0x6cc180 — __ZThn120_N3RBX9WorkspaceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: non-virtual thunk toRBX::Workspace::~Workspace()
-pub fn stub_0x6cc180() -> ! {
-    todo!("0x6cc180 non-virtual thunk toRBX::Workspace::~Workspace()")
+pub fn stub_0x6cc180(ws: Workspace) {
+    // IDA 0x6cc180: thunk as above with a -120 adjustment; collapses likewise.
+    stub_0x6cc0b4(ws);
 }
 
 // 0x6cc188 — __ZThn280_N3RBX9WorkspaceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: non-virtual thunk toRBX::Workspace::~Workspace()
-pub fn stub_0x6cc188() -> ! {
-    todo!("0x6cc188 non-virtual thunk toRBX::Workspace::~Workspace()")
+pub fn stub_0x6cc188(ws: Workspace) {
+    // IDA 0x6cc188: thunk as above with a -280 adjustment; collapses likewise.
+    stub_0x6cc0b4(ws);
 }
 
 // 0x6cc190 — __ZThn324_N3RBX9WorkspaceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: non-virtual thunk toRBX::Workspace::~Workspace()
-pub fn stub_0x6cc190() -> ! {
-    todo!("0x6cc190 non-virtual thunk toRBX::Workspace::~Workspace()")
+pub fn stub_0x6cc190(ws: Workspace) {
+    // IDA 0x6cc190: thunk as above with a -324 adjustment; collapses likewise.
+    stub_0x6cc0b4(ws);
 }
 
 // 0x6cc198 — __ZThn356_N3RBX9WorkspaceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: non-virtual thunk toRBX::Workspace::~Workspace()
-pub fn stub_0x6cc198() -> ! {
-    todo!("0x6cc198 non-virtual thunk toRBX::Workspace::~Workspace()")
+pub fn stub_0x6cc198(ws: Workspace) {
+    // IDA 0x6cc198: thunk as above with a -356 adjustment; collapses likewise.
+    stub_0x6cc0b4(ws);
 }
 
 // 0x70a0e4 — __ZN3RBX10Reflection9EventDescINS_8InstanceEFvN5boost10shared_ptrIS2_EEEN3rbx6signalIS6_EEMS2_FRS9_vEEC2ESC_PKcSF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE

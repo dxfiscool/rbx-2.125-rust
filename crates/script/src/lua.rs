@@ -5,8 +5,10 @@
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports)]
 
+use parking_lot::Mutex;
 use rbx_core::SharedPtr;
 use std::collections::HashMap;
+use std::sync::LazyLock;
 
 // ── Hand-written script support (IDA batch 0x267ec..0x2607e0) ────────────────
 // Idiomatic Rust decompilation of the join-script launcher, the
@@ -147,7 +149,7 @@ impl Drop for BoundHttpGetYield {
 
 /// `YieldFunctionDescriptor` (IDA 0x260394): `Descriptor` base + kind tag +
 /// name/owner links, then declared into the class container.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
 pub struct YieldFunctionDescriptor {
     pub name: String,
     pub owner: String,
@@ -171,6 +173,8 @@ pub struct YieldFunctionRegistry {
     pub ordered: Vec<YieldFunctionDescriptor>,
     pub by_name: HashMap<String, usize>,
     pub member_hiding_hook: Option<fn(new: &YieldFunctionDescriptor, old: &YieldFunctionDescriptor)>,
+    /// Parent container chain (`a2[12]` walk in mergeMembers, IDA 0x263128).
+    pub parent: Option<SharedPtr<YieldFunctionRegistry>>,
 }
 
 impl YieldFunctionRegistry {
@@ -195,6 +199,38 @@ impl YieldFunctionRegistry {
             self.by_name.insert(d.name.clone(), i);
         }
         pos
+    }
+}
+
+/// `RBX::CoreScript` (IDA 0x268cb8): `BaseScript` holding the `ContentId`
+/// source plus whether a `ServiceProvider` bound a `ScriptContext` to it
+/// (`onServiceProvider`, IDA 0x268eec).
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct CoreScript {
+    pub source: String,
+    pub service_bound: bool,
+}
+
+impl CoreScript {
+    /// Class name declared via `Name::declare<sCoreScript>` (IDA 0x26a5dc).
+    pub const CLASS_NAME: &'static str = "CoreScript";
+    pub fn new(source: &str) -> Self {
+        Self { source: source.to_owned(), service_bound: false }
+    }
+}
+
+/// `RBX::StarterScript` (IDA 0x269da0): `CoreScript` subclass with the
+/// `sStarterScript` name tag (IDA 0x26a350).
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct StarterScript {
+    pub source: String,
+}
+
+impl StarterScript {
+    /// Class name declared via `Name::declare<sStarterScript>` (IDA 0x26a4f8).
+    pub const CLASS_NAME: &'static str = "StarterScript";
+    pub fn new(source: &str) -> Self {
+        Self { source: source.to_owned() }
     }
 }
 
@@ -574,344 +610,587 @@ pub fn stub_0x2607e0(desc: YieldFunctionDescriptor) {
 // 0x260808 — __ZNSt6vectorIPN3RBX10Reflection23YieldFunctionDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
 // type: int __fastcall(int *, _DWORD *, _DWORD *)
 #[doc(alias = "std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::YieldFunctionDescriptor **,std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>>,RBX::Reflection::YieldFunctionDescriptor * const&)")]
-pub fn stub_0x260808() -> ! {
-    todo!("0x260808 std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::YieldFunctionDescriptor **,std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>>,RBX::Reflection::YieldFunctionDescriptor * const&)")
+pub fn stub_0x260808(items: &mut Vec<YieldFunctionDescriptor>, pos: usize, value: YieldFunctionDescriptor) -> usize {
+    // IDA 0x260808: index = pos - begin (0x260816); spare capacity and
+    // pos == finish → construct in place and bump finish (0x260828..0x260836),
+    // otherwise the grow path _M_insert_aux (0x260822 → stub_0x2635e4).
+    let pos = pos.min(items.len());
+    if pos == items.len() && items.len() < items.capacity() {
+        items.push(value);
+        return pos;
+    }
+    stub_0x2635e4(items, pos, value)
 }
 
 // 0x260840 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10declareSubEPS2_S4_
 // type: int *__fastcall(int *, int, int, const void *)
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::declareSub(RBX::Reflection::YieldFunctionDescriptor*,RBX::Reflection::YieldFunctionDescriptor*)")]
-pub fn stub_0x260840() -> ! {
-    todo!("0x260840 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::declareSub(RBX::Reflection::YieldFunctionDescriptor*,RBX::Reflection::YieldFunctionDescriptor*)")
+pub fn stub_0x260840(registry: &mut YieldFunctionRegistry, desc: YieldFunctionDescriptor, sub: &mut YieldFunctionRegistry) -> usize {
+    // IDA 0x260840: the FLog::Asserts self-declare guard (a3 == a2 → _fail)
+    // cannot trigger under Rust ownership; the descriptor is then declared
+    // into the container and fanned out to the sub-container.
+    let idx = registry.declare(desc.clone());
+    sub.declare(desc);
+    idx
 }
 
 // 0x2609c0 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10staticDataEv
 // type: double *()
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::staticData(void)")]
-pub fn stub_0x2609c0() -> ! {
-    todo!("0x2609c0 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::staticData(void)")
+pub fn stub_0x2609c0() -> &'static Mutex<YieldFunctionRegistry> {
+    // IDA 0x2609c0: function-local `result` + `__cxa_guard_acquire` once-init
+    // (0x2609da) with an `__cxa_atexit` destroyer (0x260a10) → `LazyLock`.
+    static DATA: LazyLock<Mutex<YieldFunctionRegistry>> = LazyLock::new(|| Mutex::new(YieldFunctionRegistry::default()));
+    &DATA
 }
 
 // 0x260a28 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10CollectionD1Ev
 // type: void **__fastcall(void **)
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::Collection::~Collection()")]
-pub fn stub_0x260a28() -> ! {
-    todo!("0x260a28 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::Collection::~Collection()")
+pub fn stub_0x260a28(collection: Vec<YieldFunctionDescriptor>) {
+    // IDA 0x260a28: D1 — frees the heap buffer when non-null
+    // (0x260a2e..0x260a34); `Vec` drop frees it the same way.
+    drop(collection);
 }
 
 // 0x260a40 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_
 // type: char **__fastcall(_DWORD *, char **, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")]
-pub fn stub_0x260a40() -> ! {
-    todo!("0x260a40 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")
+pub fn stub_0x260a40<'a>(map: &'a mut HashMap<String, YieldFunctionDescriptor>, key: &str) -> &'a mut YieldFunctionDescriptor {
+    // IDA 0x260a40: hash the key → find_node_impl (stub_0x263574) → on a miss
+    // node-construct (stub_0x26353c) + place_in_bucket (stub_0x2634e4);
+    // `entry(...).or_insert_with` is the same lookup-or-create.
+    map.entry(key.to_owned()).or_insert_with(|| YieldFunctionDescriptor::new(key, ""))
 }
 
 // 0x261b78 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEEC2EPS3_
 // type: int __fastcall(_DWORD *, int)
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>*)")]
-pub fn stub_0x261b78() -> ! {
-    todo!("0x261b78 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>*)")
+pub fn stub_0x261b78(parent: Option<SharedPtr<YieldFunctionRegistry>>) -> YieldFunctionRegistry {
+    // IDA 0x261b78: C2 — builds the name table (stub_0x2636dc), the ordered
+    // vector, and links the parent container.
+    YieldFunctionRegistry { ordered: Vec::new(), by_name: HashMap::new(), member_hiding_hook: None, parent }
 }
 
 // 0x263108 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE12mergeMembersEPKS3_
 // type: int __fastcall(int result, int *)
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::mergeMembers(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> const*)")]
-pub fn stub_0x263108() -> ! {
-    todo!("0x263108 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::mergeMembers(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> const*)")
+pub fn stub_0x263108(dst: &mut YieldFunctionRegistry, src: &YieldFunctionRegistry) {
+    // IDA 0x263108: for every descriptor in [begin, end) call declare
+    // (0x263118..0x263126), then follow the parent link at +48 (0x263128)
+    // until null (0x26312c).
+    for desc in src.ordered.iter().cloned() {
+        dst.declare(desc);
+    }
+    let mut next = src.parent.clone();
+    while let Some(container) = next {
+        for desc in container.ordered.iter().cloned() {
+            dst.declare(desc);
+        }
+        next = container.parent.clone();
+    }
 }
 
 // 0x263130 — __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_23YieldFunctionDescriptorEEESaIS5_EE9push_backERKS5_
 // type: int __fastcall(int result, _DWORD *)
 #[doc(alias = "std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>::push_back(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> * const&)")]
-pub fn stub_0x263130() -> ! {
-    todo!("0x263130 std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>::push_back(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> * const&)")
+pub fn stub_0x263130(vec: &mut Vec<YieldFunctionRegistry>, container: YieldFunctionRegistry) {
+    // IDA 0x263130: capacity check (0x26313c) → in-place construct (0x263142)
+    // or _M_insert_aux (0x263156 → stub_0x2631ac); `push` covers both.
+    vec.push(container);
 }
 
 // 0x263160 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14delete_bucketsEv
 // type: void __fastcall(int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::delete_buckets(void)")]
-pub fn stub_0x263160() -> ! {
-    todo!("0x263160 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::delete_buckets(void)")
+pub fn stub_0x263160(map: &mut HashMap<String, YieldFunctionDescriptor>) {
+    // IDA 0x263160: unlinks every node (0x263172..0x263198) and frees the
+    // bucket array; `clear` drops the nodes and keeps the allocation.
+    map.clear();
 }
 
 // 0x2631ac — __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_23YieldFunctionDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_
 // type: char *__fastcall(int, char *__src, _DWORD *)
 #[doc(alias = "std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> **,std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>>,RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> * const&)")]
-pub fn stub_0x2631ac() -> ! {
-    todo!("0x2631ac std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> **,std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>>,RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> * const&)")
+pub fn stub_0x2631ac(vec: &mut Vec<YieldFunctionRegistry>, pos: usize, container: YieldFunctionRegistry) -> usize {
+    // IDA 0x2631ac: grow-path insert for the sub-container vector —
+    // reallocate, shift the tail, construct at pos. `Vec::insert` matches.
+    let pos = pos.min(vec.len());
+    vec.insert(pos, container);
+    pos
 }
 
 // 0x26328c — __ZNSt12_Vector_baseIPN3RBX10Reflection25MemberDescriptorContainerINS1_23YieldFunctionDescriptorEEESaIS5_EE11_M_allocateEm
 // type: int __fastcall(int, unsigned int)
 #[doc(alias = "std::_Vector_base<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>::_M_allocate(unsigned long)")]
-pub fn stub_0x26328c() -> ! {
-    todo!("0x26328c std::_Vector_base<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>::_M_allocate(unsigned long)")
+pub fn stub_0x26328c(capacity: usize) -> Vec<YieldFunctionRegistry> {
+    // IDA 0x26328c: _M_allocate(n) → operator new for n sub-container slots;
+    // the reserved `Vec` is the owned buffer.
+    Vec::with_capacity(capacity)
 }
 
 // 0x2632a8 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE14initStaticDataEv
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::initStaticData(void)")]
-pub fn stub_0x2632a8() -> ! {
-    todo!("0x2632a8 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::initStaticData(void)")
+pub fn stub_0x2632a8() -> &'static Mutex<YieldFunctionRegistry> {
+    // IDA 0x2632a8: pure thunk into staticData (0x2609c0).
+    stub_0x2609c0()
 }
 
 // 0x2632ac — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE18reserve_for_insertEm
 // type: unsigned int __fastcall(_DWORD *, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::reserve_for_insert(unsigned long)")]
-pub fn stub_0x2632ac() -> ! {
-    todo!("0x2632ac boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::reserve_for_insert(unsigned long)")
+pub fn stub_0x2632ac(map: &mut HashMap<String, YieldFunctionDescriptor>, additional: usize) {
+    // IDA 0x2632ac: grows the bucket array when size + 1 no longer fits the
+    // load factor → `reserve` keeps the same invariant.
+    map.reserve(additional);
 }
 
 // 0x263300 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm
 // type: void __fastcall(int, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::create_buckets(unsigned long)")]
-pub fn stub_0x263300() -> ! {
-    todo!("0x263300 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::create_buckets(unsigned long)")
+pub fn stub_0x263300(capacity: usize) -> HashMap<String, YieldFunctionDescriptor> {
+    // IDA 0x263300: allocates the bucket array for the requested size;
+    // `with_capacity` is the owned equivalent.
+    HashMap::with_capacity(capacity)
 }
 
 // 0x263428 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE20min_buckets_for_sizeEm
 // type: int __fastcall(int, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::min_buckets_for_size(unsigned long)const")]
-pub fn stub_0x263428() -> ! {
-    todo!("0x263428 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::min_buckets_for_size(unsigned long)const")
+pub fn stub_0x263428(size: usize) -> usize {
+    // IDA 0x263428: walks the prime list for the first bucket count with room
+    // for `size` entries at max load factor; `HashMap` sizes from the
+    // requested capacity the same way, so the hint passes through.
+    size
 }
 
 // 0x2634b8 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm
 // type: int __fastcall(int, unsigned int)
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::rehash_impl(unsigned long)")]
-pub fn stub_0x2634b8() -> ! {
-    todo!("0x2634b8 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::rehash_impl(unsigned long)")
+pub fn stub_0x2634b8(map: &mut HashMap<String, YieldFunctionDescriptor>, buckets: usize) {
+    // IDA 0x2634b8: rehash_impl — reallocates to `buckets` and re-links every
+    // node; reserving total capacity rehashes the table identically.
+    map.reserve(buckets.saturating_sub(map.len()));
 }
 
 // 0x2634e4 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE15place_in_bucketERNS1_5tableISG_EEPNS1_10ptr_bucketE
 // type: _DWORD *__fastcall(int, _DWORD *)
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>> &,boost::unordered::detail::ptr_bucket *)")]
-pub fn stub_0x2634e4() -> ! {
-    todo!("0x2634e4 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>> &,boost::unordered::detail::ptr_bucket *)")
+pub fn stub_0x2634e4(map: &mut HashMap<String, YieldFunctionDescriptor>, key: String, desc: YieldFunctionDescriptor) {
+    // IDA 0x2634e4: links an already-constructed node into its bucket;
+    // insertion places the entry internally, so this folds into `insert`.
+    map.insert(key, desc);
 }
 
 // 0x26353c — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEEEEE9constructEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>>>::construct(void)")]
-pub fn stub_0x26353c() -> ! {
-    todo!("0x26353c boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>>>::construct(void)")
+pub fn stub_0x26353c(map: &mut HashMap<String, YieldFunctionDescriptor>, key: &str, desc: YieldFunctionDescriptor) {
+    // IDA 0x26353c: node_constructor::construct — allocates the node and
+    // copy-constructs the key/value pair; `insert` builds the node inline.
+    map.insert(key.to_owned(), desc);
 }
 
 // 0x263574 — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14find_node_implIS6_SF_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISC_EEEEmRKT_RKT0_
 // type: int __fastcall(_DWORD *, unsigned int, const char **)
 #[doc(alias = "boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::find_node_impl<char const*,RBX::Reflection::StringEqualPredicate>(unsigned long,char const* const&,RBX::Reflection::StringEqualPredicate const&)const")]
-pub fn stub_0x263574() -> ! {
-    todo!("0x263574 boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::find_node_impl<char const*,RBX::Reflection::StringEqualPredicate>(unsigned long,char const* const&,RBX::Reflection::StringEqualPredicate const&)const")
+pub fn stub_0x263574<'a>(map: &'a HashMap<String, YieldFunctionDescriptor>, key: &str) -> Option<&'a YieldFunctionDescriptor> {
+    // IDA 0x263574: find_node_impl — hashes the key and probes the bucket run
+    // with StringEqualPredicate; `get` is the same hashed lookup.
+    map.get(key)
 }
 
 // 0x2635e4 — __ZNSt6vectorIPN3RBX10Reflection23YieldFunctionDescriptorESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
 // type: char *__fastcall(int, char *__src, _DWORD *)
 #[doc(alias = "std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::YieldFunctionDescriptor **,std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>>,RBX::Reflection::YieldFunctionDescriptor * const&)")]
-pub fn stub_0x2635e4() -> ! {
-    todo!("0x2635e4 std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::YieldFunctionDescriptor **,std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>>,RBX::Reflection::YieldFunctionDescriptor * const&)")
+pub fn stub_0x2635e4(items: &mut Vec<YieldFunctionDescriptor>, pos: usize, value: YieldFunctionDescriptor) -> usize {
+    // IDA 0x2635e4: grow-path insert — max_size check (0x263632), reallocate,
+    // move-backward the tail, construct at pos. `Vec::insert` matches.
+    let pos = pos.min(items.len());
+    items.insert(pos, value);
+    pos
 }
 
 // 0x2636c4 — __ZNSt12_Vector_baseIPN3RBX10Reflection23YieldFunctionDescriptorESaIS3_EE11_M_allocateEm
 // type: int __fastcall(int, unsigned int)
 #[doc(alias = "std::_Vector_base<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::_M_allocate(unsigned long)")]
-pub fn stub_0x2636c4() -> ! {
-    todo!("0x2636c4 std::_Vector_base<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::_M_allocate(unsigned long)")
+pub fn stub_0x2636c4(count: usize) -> Vec<YieldFunctionDescriptor> {
+    // IDA 0x2636c4: _M_allocate — bad_alloc at 0x40000000+ elements
+    // (0x2636cc..0x2636ce), else operator new(4 * n). Rust aborts on OOM via
+    // the allocator instead of throwing; same fail-fast behavior.
+    Vec::with_capacity(count)
 }
 
 // 0x2636dc — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEC2EmRKSE_RKSF_RKSaINS1_8ptr_nodeISC_EEE
 // type: int __fastcall(int result, unsigned int)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::table(unsigned long,RBX::Reflection::StringHashPredicate const&,RBX::Reflection::StringEqualPredicate const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>> const&)")]
-pub fn stub_0x2636dc() -> ! {
-    todo!("0x2636dc boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::table(unsigned long,RBX::Reflection::StringHashPredicate const&,RBX::Reflection::StringEqualPredicate const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>> const&)")
+pub fn stub_0x2636dc(buckets: usize) -> HashMap<String, YieldFunctionDescriptor> {
+    // IDA 0x2636dc: table(n, hash, equal, alloc) — binary-searches the prime
+    // list from 38 entries down (0x2636e8..0x263708) for the bucket count;
+    // `with_capacity` rounds through its own sizing for the same `n`.
+    HashMap::with_capacity(buckets)
 }
 
 // 0x268cb8 — __ZN3RBX10CoreScriptC1ERKNS_9ContentIdE
 // type: int __fastcall(RBX::CoreScript *this, const RBX::ContentId *)
 #[doc(alias = "RBX::CoreScript::CoreScript(RBX::ContentId const&)")]
-pub fn stub_0x268cb8() -> ! {
-    todo!("0x268cb8 RBX::CoreScript::CoreScript(RBX::ContentId const&)")
+pub fn stub_0x268cb8(source: &str) -> CoreScript {
+    // IDA 0x268cb8: C1 ctor — thunk into C2 (0x268cbc); `BaseScript` base +
+    // `ContentId` copy. The owned `source` string is the `ContentId` payload.
+    stub_0x268cbc(source)
 }
 
 // 0x268cbc — __ZN3RBX10CoreScriptC2ERKNS_9ContentIdE
 // type: RBX::BaseScript *__fastcall(RBX::CoreScript *this, __guard *)
 #[doc(alias = "RBX::CoreScript::CoreScript(RBX::ContentId const&)")]
-pub fn stub_0x268cbc() -> ! {
-    todo!("0x268cbc RBX::CoreScript::CoreScript(RBX::ContentId const&)")
+pub fn stub_0x268cbc(source: &str) -> CoreScript {
+    // IDA 0x268cbc: C2 ctor — `BaseScript` base-class construct, then the
+    // `ContentId` member copy.
+    CoreScript::new(source)
 }
 
 // 0x268eec — __ZN3RBX10CoreScript17onServiceProviderEPNS_15ServiceProviderES2_
 // type: int __fastcall(RBX::CoreScript *this, RBX::ServiceProvider *, RBX::ServiceProvider *, int)
 #[doc(alias = "RBX::CoreScript::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
-pub fn stub_0x268eec() -> ! {
-    todo!("0x268eec RBX::CoreScript::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
+pub fn stub_0x268eec(script: &mut CoreScript, has_provider: bool, script_context_ready: bool, bind_context: &mut dyn FnMut()) {
+    // IDA 0x268eec: no provider or already-bound (+100 flag, 0x268ef4) →
+    // return; else `ServiceProvider::find<ScriptContext>`, retain it, and
+    // bind. The lookup/bind side effect is the injected `bind_context`.
+    if !has_provider || script.service_bound || !script_context_ready {
+        return;
+    }
+    bind_context();
+    script.service_bound = true;
 }
 
 // 0x268ffc — __ZN3RBX10CoreScript11requestCodeEPNS_25ScriptInformationProviderE
 // type: int __fastcall(RBX::BaseScript *, RBX::Instance *, int)
 #[doc(alias = "RBX::CoreScript::requestCode(RBX::ScriptInformationProvider *)")]
-pub fn stub_0x268ffc() -> ! {
-    todo!("0x268ffc RBX::CoreScript::requestCode(RBX::ScriptInformationProvider *)")
+pub fn stub_0x268ffc(script: &CoreScript, fetch_code: &mut dyn FnMut(&str) -> Option<String>) -> Option<String> {
+    // IDA 0x268ffc: resolves the `ScriptInformationProvider`, pulls the
+    // trusted source for the script's `ContentId`, and returns it for
+    // `executeSignedScript`. `None` = provider had no code (0x268ffc early-outs).
+    fetch_code(&script.source)
 }
 
 // 0x26973c — __ZN3RBX10CoreScript19extraErrorReportingEP9lua_State
 // type: int __fastcall(RBX::DataModel *, int)
 #[doc(alias = "RBX::CoreScript::extraErrorReporting(lua_State *)")]
-pub fn stub_0x26973c() -> ! {
-    todo!("0x26973c RBX::CoreScript::extraErrorReporting(lua_State *)")
+pub fn stub_0x26973c(source: &str, message: &str) -> String {
+    // IDA 0x26973c: appends the failing source snippet to the Lua error
+    // string for the debugger/error report and returns the composed text.
+    format!("{message} [source: {source}]")
 }
 
 // 0x269da0 — __ZN3RBX13StarterScriptC1ERKNS_9ContentIdE
 // type: int __fastcall(RBX::StarterScript *this, const RBX::ContentId *)
 #[doc(alias = "RBX::StarterScript::StarterScript(RBX::ContentId const&)")]
-pub fn stub_0x269da0() -> ! {
-    todo!("0x269da0 RBX::StarterScript::StarterScript(RBX::ContentId const&)")
+pub fn stub_0x269da0(source: &str) -> StarterScript {
+    // IDA 0x269da0: C1 ctor — thunk into C2 (0x269da4).
+    stub_0x269da4(source)
 }
 
 // 0x269da4 — __ZN3RBX13StarterScriptC2ERKNS_9ContentIdE
 // type: RBX::BaseScript *__fastcall(RBX::StarterScript *this, const RBX::ContentId *)
 #[doc(alias = "RBX::StarterScript::StarterScript(RBX::ContentId const&)")]
-pub fn stub_0x269da4() -> ! {
-    todo!("0x269da4 RBX::StarterScript::StarterScript(RBX::ContentId const&)")
+pub fn stub_0x269da4(source: &str) -> StarterScript {
+    // IDA 0x269da4: C2 ctor — `CoreScript` base construct with the
+    // `ContentId`, then the `StarterScript`-specific members.
+    StarterScript::new(source)
 }
 
 // 0x26a060 — __ZN3RBX10CoreScriptD1Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "RBX::CoreScript::~CoreScript()")]
-pub fn stub_0x26a060() -> ! {
-    todo!("0x26a060 RBX::CoreScript::~CoreScript()")
+pub fn stub_0x26a060(script: CoreScript) {
+    // IDA 0x26a060: D1 — thunk into `BaseScript::~BaseScript`; owned fields
+    // drop in declaration order here.
+    drop(script);
 }
 
 // 0x26a064 — __ZN3RBX10CoreScriptD0Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "RBX::CoreScript::~CoreScript()")]
-pub fn stub_0x26a064() -> ! {
-    todo!("0x26a064 RBX::CoreScript::~CoreScript()")
+pub fn stub_0x26a064(script: CoreScript) {
+    // IDA 0x26a064: D0 (deleting) — D1 body plus operator delete; the owned
+    // value drop frees both here.
+    drop(script);
 }
 
 // 0x26a104 — __ZNK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")]
-pub fn stub_0x26a104() -> ! {
-    todo!("0x26a104 __ZNK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")
+pub fn stub_0x26a104() -> &'static str {
+    // IDA 0x26a104: `NonFactoryProduct<BaseScript, sCoreScript>::getClassName`
+    // — `Name::declare<sCoreScript>()` via callDoDeclare (0x26a5dc); the lazy
+    // flag load (0x26a106..0x26a11c) resolves to the same static once.
+    CoreScript::CLASS_NAME
 }
 
 // 0x26a12c — __ZThn32_N3RBX10CoreScriptD1Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "non_virtual_thunk_toRBX::CoreScript::~CoreScript()")]
-pub fn stub_0x26a12c() -> ! {
-    todo!("0x26a12c non_virtual_thunk_toRBX::CoreScript::~CoreScript()")
+pub fn stub_0x26a12c(script: CoreScript) {
+    // IDA 0x26a12c: Thn32 D1 — `this -= 0x20` adjust then
+    // `BaseScript::~BaseScript`; field layout is flat here so plain drop.
+    drop(script);
 }
 
 // 0x26a134 — __ZThn32_N3RBX10CoreScriptD0Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "non_virtual_thunk_toRBX::CoreScript::~CoreScript()")]
-pub fn stub_0x26a134() -> ! {
-    todo!("0x26a134 non_virtual_thunk_toRBX::CoreScript::~CoreScript()")
+pub fn stub_0x26a134(script: CoreScript) {
+    // IDA 0x26a134: Thn32 D0 — `this -= 0x20` adjust, D1 body, operator
+    // delete; owned drop covers both.
+    drop(script);
 }
 
 // 0x26a1d8 — __ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")]
-pub fn stub_0x26a1d8() -> ! {
-    todo!("0x26a1d8 __ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv")
+pub fn stub_0x26a1d8() -> &'static str {
+    // IDA 0x26a1d8: Thn32 getClassName — `this -= 32` adjust then the same
+    // `Name::declare<sCoreScript>` (0x26a1e4..0x26a1f2); identical result.
+    CoreScript::CLASS_NAME
 }
 
 // 0x26a200 — __ZThn36_N3RBX10CoreScriptD1Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "non_virtual_thunk_toRBX::CoreScript::~CoreScript()")]
-pub fn stub_0x26a200() -> ! {
-    todo!("0x26a200 non_virtual_thunk_toRBX::CoreScript::~CoreScript()")
+pub fn stub_0x26a200(script: CoreScript) {
+    // IDA 0x26a200: Thn36 D1 — `this -= 0x24` adjust then
+    // `BaseScript::~BaseScript`; plain drop here.
+    drop(script);
 }
 
 // 0x26a208 — __ZThn36_N3RBX10CoreScriptD0Ev
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 #[doc(alias = "non_virtual_thunk_toRBX::CoreScript::~CoreScript()")]
-pub fn stub_0x26a208() -> ! {
-    todo!("0x26a208 non_virtual_thunk_toRBX::CoreScript::~CoreScript()")
+pub fn stub_0x26a208(script: CoreScript) {
+    // IDA 0x26a208: Thn36 D0 — `this -= 0x24` adjust, D1 body, operator
+    // delete; owned drop covers both.
+    drop(script);
 }
 
 // 0x26a2ac — __ZN3RBX13StarterScriptD1Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "RBX::StarterScript::~StarterScript()")]
-pub fn stub_0x26a2ac() -> ! {
-    todo!("0x26a2ac RBX::StarterScript::~StarterScript()")
+pub fn stub_0x26a2ac(script: StarterScript) {
+    // IDA 0x26a2ac: D1 — tail-calls `BaseScript::~BaseScript`; owned fields
+    // drop in declaration order here.
+    drop(script);
 }
 
 // 0x26a2b0 — __ZN3RBX13StarterScriptD0Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "RBX::StarterScript::~StarterScript()")]
-pub fn stub_0x26a2b0() -> ! {
-    todo!("0x26a2b0 RBX::StarterScript::~StarterScript()")
+pub fn stub_0x26a2b0(script: StarterScript) {
+    // IDA 0x26a2b0: D0 (deleting) — D1 body plus operator delete; the owned
+    // value drop frees both here.
+    drop(script);
 }
 
 // 0x26a350 — __ZNK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")]
-pub fn stub_0x26a350() -> ! {
-    todo!("0x26a350 __ZNK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")
+pub fn stub_0x26a350() -> &'static str {
+    // IDA 0x26a350: `NonFactoryProduct<CoreScript, sStarterScript>::getClassName`
+    // — `Name::declare<sStarterScript>()` via callDoDeclare (0x26a4f8).
+    StarterScript::CLASS_NAME
 }
 
 // 0x26a378 — __ZThn32_N3RBX13StarterScriptD1Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "non_virtual_thunk_toRBX::StarterScript::~StarterScript()")]
-pub fn stub_0x26a378() -> ! {
-    todo!("0x26a378 non_virtual_thunk_toRBX::StarterScript::~StarterScript()")
+pub fn stub_0x26a378(script: StarterScript) {
+    // IDA 0x26a378: Thn32 D1 — `this -= 0x20` adjust then
+    // `BaseScript::~BaseScript`; plain drop here.
+    drop(script);
 }
 
 // 0x26a380 — __ZThn32_N3RBX13StarterScriptD0Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "non_virtual_thunk_toRBX::StarterScript::~StarterScript()")]
-pub fn stub_0x26a380() -> ! {
-    todo!("0x26a380 non_virtual_thunk_toRBX::StarterScript::~StarterScript()")
+pub fn stub_0x26a380(script: StarterScript) {
+    // IDA 0x26a380: Thn32 D0 — `this -= 0x20` adjust, D1 body, operator
+    // delete; owned drop covers both.
+    drop(script);
 }
 
 // 0x26a424 — __ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")]
-pub fn stub_0x26a424() -> ! {
-    todo!("0x26a424 __ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")
+pub fn stub_0x26a424() -> &'static str {
+    // IDA 0x26a424: Thn32 getClassName — `this -= 32` adjust then the same
+    // `Name::declare<sStarterScript>`; identical result.
+    StarterScript::CLASS_NAME
 }
 
 // 0x26a44c — __ZThn36_N3RBX13StarterScriptD1Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "non_virtual_thunk_toRBX::StarterScript::~StarterScript()")]
-pub fn stub_0x26a44c() -> ! {
-    todo!("0x26a44c non_virtual_thunk_toRBX::StarterScript::~StarterScript()")
+pub fn stub_0x26a44c(script: StarterScript) {
+    // IDA 0x26a44c: Thn36 D1 — `this -= 0x24` adjust then
+    // `BaseScript::~BaseScript`; plain drop here.
+    drop(script);
 }
 
 // 0x26a454 — __ZThn36_N3RBX13StarterScriptD0Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "non_virtual_thunk_toRBX::StarterScript::~StarterScript()")]
-pub fn stub_0x26a454() -> ! {
-    todo!("0x26a454 non_virtual_thunk_toRBX::StarterScript::~StarterScript()")
+pub fn stub_0x26a454(script: StarterScript) {
+    // IDA 0x26a454: Thn36 D0 — `this -= 0x24` adjust, D1 body, operator
+    // delete; owned drop covers both.
+    drop(script);
 }
 
 // 0x26a4f8 — __ZN3RBX4Name13callDoDeclareILZNS_14sStarterScriptEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sStarterScriptEEEEvv")]
-pub fn stub_0x26a4f8() -> ! {
-    todo!("0x26a4f8 __ZN3RBX4Name13callDoDeclareILZNS_14sStarterScriptEEEEvv")
+pub fn stub_0x26a4f8() -> &'static str {
+    // IDA 0x26a4f8: `Name::callDoDeclare<sStarterScript>` — one-time
+    // registrar that forwards to doDeclare (0x26a4fc) on first use.
+    stub_0x26a4fc()
 }
 
 // 0x26a4fc — __ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v")]
-pub fn stub_0x26a4fc() -> ! {
-    todo!("0x26a4fc __ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v")
+pub fn stub_0x26a4fc() -> &'static str {
+    // IDA 0x26a4fc: `Name::doDeclare<sStarterScript>` — interns the
+    // `sStarterScript` tag and returns the canonical name.
+    StarterScript::CLASS_NAME
 }
 
 // 0x26a5dc — __ZN3RBX4Name13callDoDeclareILZNS_11sCoreScriptEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_11sCoreScriptEEEEvv")]
-pub fn stub_0x26a5dc() -> ! {
-    todo!("0x26a5dc __ZN3RBX4Name13callDoDeclareILZNS_11sCoreScriptEEEEvv")
+pub fn stub_0x26a5dc() -> &'static str {
+    // IDA 0x26a5dc: `Name::callDoDeclare<sCoreScript>` — one-time registrar
+    // forwarding to doDeclare (0x26a5e0) on first use.
+    stub_0x26a5e0()
 }
 
 // 0x26a5e0 — __ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v")]
-pub fn stub_0x26a5e0() -> ! {
-    todo!("0x26a5e0 __ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v")
+pub fn stub_0x26a5e0() -> &'static str {
+    // IDA 0x26a5e0: `Name::doDeclare<sCoreScript>` — interns the
+    // `sCoreScript` tag and returns the canonical name.
+    CoreScript::CLASS_NAME
 }
 
 // 0x26a6c0 — __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EEC2INS_9ContentIdEEET_
 // type: RBX::BaseScript *__fastcall(RBX::BaseScript *, int *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EEC2INS_9ContentIdEEET_")]
-pub fn stub_0x26a6c0() -> ! {
-    todo!("0x26a6c0 __ZN3RBX10Reflection9DescribedINS_13StarterScriptELZNS_14sStarterScriptEENS_17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EEC2INS_9ContentIdEEET_")
+pub fn stub_0x26a6c0(source: &str) -> StarterScript {
+    // IDA 0x26a6c0: `Described<StarterScript, sStarterScript, ...>::Described<ContentId>`
+    // — descriptor-table init, then the `CoreScript`/`StarterScript` base
+    // construct with the `ContentId`.
+    StarterScript::new(source)
+}
+
+#[cfg(test)]
+mod yield_container_tests {
+    use super::*;
+
+    #[test]
+    fn vector_insert_fast_and_grow_paths_agree() {
+        let mut items = stub_0x2636c4(4);
+        let a = YieldFunctionDescriptor::new("B", "O");
+        let b = YieldFunctionDescriptor::new("A", "O");
+        stub_0x2635e4(&mut items, 0, a);
+        let idx = stub_0x260808(&mut items, 1, b);
+        assert_eq!(idx, 1);
+        assert_eq!(items[1].name, "A");
+        let c = YieldFunctionDescriptor::new("C", "O");
+        stub_0x260808(&mut items, 1, c);
+        let names: Vec<_> = items.iter().map(|d| d.name.as_str()).collect();
+        assert_eq!(names, ["B", "C", "A"]);
+    }
+
+    #[test]
+    fn name_map_lookup_or_create_and_find() {
+        let mut map = stub_0x2636dc(8);
+        stub_0x26353c(&mut map, "Wait", YieldFunctionDescriptor::new("Wait", "T"));
+        assert!(stub_0x263574(&map, "Wait").is_some());
+        assert!(stub_0x263574(&map, "Missing").is_none());
+        stub_0x260a40(&mut map, "Missing").owner = "T".to_owned();
+        assert_eq!(stub_0x263574(&map, "Missing").unwrap().name, "Missing");
+        stub_0x2632ac(&mut map, 16);
+        stub_0x2634b8(&mut map, 32);
+        assert_eq!(stub_0x263428(7), 7);
+        stub_0x2634e4(&mut map, "Extra".to_owned(), YieldFunctionDescriptor::new("Extra", "T"));
+        assert!(stub_0x263574(&map, "Extra").is_some());
+        stub_0x263160(&mut map);
+        assert!(map.is_empty());
+        let empty = stub_0x263300(4);
+        assert!(empty.is_empty());
+    }
+
+    #[test]
+    fn container_declare_sub_merge_and_static() {
+        let mut reg = stub_0x261b78(None);
+        let mut sub = stub_0x261b78(None);
+        let idx = stub_0x260840(&mut reg, YieldFunctionDescriptor::new("Zed", "O"), &mut sub);
+        assert_eq!(reg.ordered[idx].name, "Zed");
+        assert_eq!(sub.ordered.len(), 1);
+        let parent = SharedPtr::new({
+            let mut p = YieldFunctionRegistry::default();
+            p.declare(YieldFunctionDescriptor::new("Parent", "O"));
+            p
+        });
+        let src = YieldFunctionRegistry { ordered: vec![YieldFunctionDescriptor::new("Child", "O")], by_name: HashMap::from([("Child".to_owned(), 0)]), member_hiding_hook: None, parent: Some(parent) };
+        let mut dst = YieldFunctionRegistry::default();
+        stub_0x263108(&mut dst, &src);
+        let names: Vec<_> = dst.ordered.iter().map(|d| d.name.as_str()).collect();
+        assert_eq!(names, ["Child", "Parent"]);
+        let stat = stub_0x2632a8();
+        stat.lock().declare(YieldFunctionDescriptor::new("S", "O"));
+        assert!(stub_0x2609c0().lock().by_name.contains_key("S"));
+    }
+
+    #[test]
+    fn sub_container_vector_push_and_insert() {
+        let mut vec = stub_0x26328c(2);
+        stub_0x263130(&mut vec, YieldFunctionRegistry::default());
+        stub_0x2631ac(&mut vec, 0, YieldFunctionRegistry::default());
+        assert_eq!(vec.len(), 2);
+        stub_0x260a28(vec![YieldFunctionDescriptor::new("D", "O")]);
+    }
+
+    #[test]
+    fn script_class_names_and_lifecycle() {
+        assert_eq!(stub_0x26a104(), "CoreScript");
+        assert_eq!(stub_0x26a1d8(), "CoreScript");
+        assert_eq!(stub_0x26a350(), "StarterScript");
+        assert_eq!(stub_0x26a424(), "StarterScript");
+        assert_eq!(stub_0x26a4f8(), "StarterScript");
+        assert_eq!(stub_0x26a4fc(), "StarterScript");
+        assert_eq!(stub_0x26a5dc(), "CoreScript");
+        assert_eq!(stub_0x26a5e0(), "CoreScript");
+        let core = stub_0x268cb8("content://1");
+        assert_eq!(core.source, "content://1");
+        let starter = stub_0x269da0("content://2");
+        assert_eq!(stub_0x26a6c0("content://3").source, "content://3");
+        let mut bound = stub_0x268cbc("content://4");
+        let mut calls = 0;
+        let mut bind = || calls += 1;
+        stub_0x268eec(&mut bound, false, true, &mut bind);
+        stub_0x268eec(&mut bound, true, false, &mut bind);
+        stub_0x268eec(&mut bound, true, true, &mut bind);
+        stub_0x268eec(&mut bound, true, true, &mut bind);
+        assert!((calls, bound.service_bound) == (1, true));
+        let mut fetch = |src: &str| Some(format!("code:{src}"));
+        assert_eq!(stub_0x268ffc(&bound, &mut fetch).as_deref(), Some("code:content://4"));
+        assert_eq!(stub_0x26973c("src", "err"), "err [source: src]");
+        stub_0x26a060(core);
+        stub_0x26a064(stub_0x268cbc("x"));
+        stub_0x26a12c(stub_0x268cbc("x"));
+        stub_0x26a134(stub_0x268cbc("x"));
+        stub_0x26a200(stub_0x268cbc("x"));
+        stub_0x26a208(stub_0x268cbc("x"));
+        stub_0x26a2ac(starter);
+        stub_0x26a2b0(stub_0x269da4("y"));
+        stub_0x26a378(stub_0x269da4("y"));
+        stub_0x26a380(stub_0x269da4("y"));
+        stub_0x26a44c(stub_0x269da4("y"));
+        stub_0x26a454(stub_0x269da4("y"));
+    }
 }
 
 // 0x26a88c — __ZN3RBX21DescribedNonCreatableINS_13StarterScriptENS_10CoreScriptELZNS_14sStarterScriptEELNS_10Reflection15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev

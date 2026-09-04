@@ -1065,6 +1065,58 @@ impl ErrorCompSender {
         cache.update(key, fingerprint);
     }
 }
+
+/// `RBX::Network::TopNErrorsPhysicsSender` (IDA 0xb20e6c): a
+/// [`PhysicsSender`] variant; the error ranking stays engine-side, so the
+/// crate keeps a stateless marker for the shared-ownership seams below.
+#[derive(Clone, Debug, Default)]
+pub struct TopNErrorsPhysicsSender;
+
+/// `RBX::Network::RoundRobinPhysicsSender` (IDA 0xb21030): a
+/// [`PhysicsSender`] variant; the round-robin cursor stays engine-side.
+#[derive(Clone, Debug, Default)]
+pub struct RoundRobinPhysicsSender;
+
+/// `RBX::Network::ErrorCompPhysicsSender2` (IDA 0xb211f4): a
+/// [`PhysicsSender`] variant; the compensation tables stay engine-side.
+#[derive(Clone, Debug, Default)]
+pub struct ErrorCompPhysicsSender2;
+
+/// `RBX::Network::ErrorCompPhysicsSender` (IDA 0xb213b8): a
+/// [`PhysicsSender`] plus cache/flag state (see [`ErrorCompSender`] for the
+/// write path); the live state stays engine-side here.
+#[derive(Clone, Debug, Default)]
+pub struct ErrorCompPhysicsSender;
+
+/// `sp_pointer_construct<PhysicsSender, T>` (IDA 0xb20e6c/0xb21030/0xb211f4/0xb213b8):
+/// publishes the fresh sender control block (`operator new(0x10)` plus the
+/// `off_12BD858` vtable slot, IDA 0xb20ebc..0xb20eda); `Arc::new` is the
+/// publish here (AGENTS.md §4: `boost::shared_ptr` → `SharedPtr`).
+#[must_use]
+pub fn top_n_errors_physics_sender(
+) -> rbx_core::SharedPtr<TopNErrorsPhysicsSender> {
+    rbx_core::SharedPtr::from(Box::new(TopNErrorsPhysicsSender))
+}
+
+/// `sp_pointer_construct<PhysicsSender, RoundRobinPhysicsSender>` (IDA 0xb21030).
+#[must_use]
+pub fn round_robin_physics_sender(
+) -> rbx_core::SharedPtr<RoundRobinPhysicsSender> {
+    rbx_core::SharedPtr::from(Box::new(RoundRobinPhysicsSender))
+}
+
+/// `sp_pointer_construct<PhysicsSender, ErrorCompPhysicsSender2>` (IDA 0xb211f4).
+#[must_use]
+pub fn error_comp_physics_sender2(
+) -> rbx_core::SharedPtr<ErrorCompPhysicsSender2> {
+    rbx_core::SharedPtr::from(Box::new(ErrorCompPhysicsSender2))
+}
+
+/// `sp_pointer_construct<PhysicsSender, ErrorCompPhysicsSender>` (IDA 0xb213b8).
+#[must_use]
+pub fn error_comp_physics_sender() -> rbx_core::SharedPtr<ErrorCompPhysicsSender> {
+    rbx_core::SharedPtr::from(Box::new(ErrorCompPhysicsSender))
+}
 /// One `receiveMechanismCFrames` iteration payload (IDA 0x9bb4ec): the
 /// translation plus the rotation quaternion read for a fresh part. Applying
 /// it (`PartInstance::setPhysics` + `addInterpolationSample`, IDA

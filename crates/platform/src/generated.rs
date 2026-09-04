@@ -33,6 +33,435 @@ static HOME: std::sync::LazyLock<crate::roblox_view::HomeViewControllerState> =
     std::sync::LazyLock::new(crate::roblox_view::HomeViewControllerState::new);
 static TELEPORTER: std::sync::LazyLock<crate::roblox_view::Teleporter> =
     std::sync::LazyLock::new(crate::roblox_view::Teleporter::new);
+use std::sync::atomic::{AtomicBool, AtomicI32, AtomicU32, Ordering};
+
+/// ControlView / ControlComponent harness backing the `stub_0x471c0..0x49e18`
+/// leaves below (IDA-grounded; see per-stub notes).
+/// `SharedPtr` = `rbx_core::SharedPtr` (`Arc`), never `boost::shared_ptr`;
+/// `boost::bind`/`function` become closures/`Box<dyn Fn>`; `rbx::signals`
+/// connections are `crate::view_controllers::ScopedConnection`.
+/// ObjC `id` is `crate::roblox_view::ObjCId`; `None`/`NIL_ID` is `nil`.
+/// The skeleton erased the ObjC `self`/selector args, so the single hosted
+/// `ControlView` lives here as process-wide state, like the `LAUNCHER`/`HOME`
+/// delegates above.
+type ControlId = crate::roblox_view::ObjCId;
+const NIL_CONTROL: ControlId = crate::roblox_view::NIL_ID;
+/// Host id standing in for the `ControlView`/`ControlComponent` `self`.
+const CONTROL_SELF_ID: ControlId = 1;
+/// `FFlag::NewCameraControls` branch (`cameraMovement` vs `jumpButton`,
+/// `-[JumpButton release]` in `dealloc`); both collapse onto `aux_hidden`.
+static NEW_CAMERA_CONTROLS: AtomicBool = AtomicBool::new(false);
+/// A touch point carried through the `touches*:` leaves (`UITouch` ids
+/// plus `locationInView:` points; the gesture objects have no host counterpart).
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct ControlTouch {
+    pub id: ControlId,
+    pub x: f32,
+    pub y: f32,
+}
+/// One superview link for `findControlView`'s chain walk (IDA 0x471c0):
+/// the first `ControlView`-kind ancestor wins; a non-`UIView` ancestor
+/// stops the walk with `nil`.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+struct ParentLink {
+    id: ControlId,
+    is_control_view: bool,
+    is_uiview: bool,
+}
+/// Minimal `ControlView` counterpart (`Client/iOS/ControlView.*` ivars):
+/// `game` (`shared_ptr<RBX::Game>`), `tapTouch` + begin point, tap/pinch
+/// tuning (`tapSensitivity=0.19`, `tapTouchMoveTolerance=20`,
+/// `pinchZoomDelay=0.08`, `pinchTime=-1.0`, `lastPinchScale`), the three
+/// `rbx::signals::scoped_connection` slots, and observable counters for the
+/// render/input-system steps that stay out of slice.
+#[derive(Debug, Default)]
+pub struct ControlViewState {
+    visible: AtomicBool,
+    container_hidden: AtomicBool,
+    aux_hidden: AtomicBool,
+    game: parking_lot::Mutex<Option<SharedPtr<crate::roblox_view::GameHandle>>>,
+    tap_touch: parking_lot::Mutex<Option<ControlId>>,
+    tap_begin: parking_lot::Mutex<(f32, f32)>,
+    tap_sensitivity: parking_lot::Mutex<f32>,
+    tap_move_tolerance: AtomicI32,
+    pinch_zoom_delay: parking_lot::Mutex<f64>,
+    pinch_time: parking_lot::Mutex<f64>,
+    last_pinch_scale: parking_lot::Mutex<f32>,
+    menu_button: parking_lot::Mutex<Option<ControlId>>,
+    next_id: AtomicU32,
+    game_loaded_con: parking_lot::Mutex<crate::view_controllers::ScopedConnection>,
+    dm_con: parking_lot::Mutex<crate::view_controllers::ScopedConnection>,
+    overlay_con: parking_lot::Mutex<crate::view_controllers::ScopedConnection>,
+    hierarchy: parking_lot::Mutex<(bool, Vec<ParentLink>)>,
+    data_model_present: AtomicBool,
+    user_input_service_present: AtomicBool,
+    setup_runs: AtomicU32,
+    bind_runs: AtomicU32,
+    prop_check_runs: AtomicU32,
+    observer_regs: AtomicU32,
+    recognizers: AtomicU32,
+    input_controls_ready: AtomicBool,
+    menu_builds: AtomicU32,
+    subview_adds: AtomicU32,
+    releases: AtomicU32,
+    mouse_events: AtomicU32,
+    tool_events: AtomicU32,
+    tap_fires: AtomicU32,
+    keyboard_shows: AtomicU32,
+    keyboard_has_text: AtomicBool,
+    zoom_events: AtomicU32,
+    camera_pan_ends: AtomicU32,
+    last_mouse_kind: parking_lot::Mutex<u32>,
+}
+impl ControlViewState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    pub fn set_self_is_control(&self, is_control: bool) {
+        self.hierarchy.lock().0 = is_control;
+    }
+    fn set_superview_chain(&self, chain: Vec<ParentLink>) {
+        self.hierarchy.lock().1 = chain;
+    }
+    fn push_superview(&self, id: ControlId, is_control_view: bool, is_uiview: bool) {
+        self.hierarchy.lock().1.push(ParentLink { id, is_control_view, is_uiview });
+    }
+    pub fn apply_visibility(&self, visible: bool) {
+        self.visible.store(visible, Ordering::SeqCst);
+        self.container_hidden.store(!visible, Ordering::SeqCst);
+        self.aux_hidden.store(!visible, Ordering::SeqCst);
+    }
+    pub fn is_visible(&self) -> bool {
+        self.visible.load(Ordering::SeqCst)
+    }
+    pub fn container_hidden(&self) -> bool {
+        self.container_hidden.load(Ordering::SeqCst)
+    }
+    pub fn aux_hidden(&self) -> bool {
+        self.aux_hidden.load(Ordering::SeqCst)
+    }
+    /// `-[ControlComponent findControlView]` (IDA 0x471c0): `self` when it
+    /// already is a `ControlView`, else the nearest `ControlView`-kind
+    /// superview; a non-`UIView` link (or chain end) yields `nil`.
+    pub fn find_view(&self) -> Option<ControlId> {
+        let (is_control, chain) = &*self.hierarchy.lock();
+        if *is_control {
+            return Some(CONTROL_SELF_ID);
+        }
+        for link in chain.iter() {
+            if link.is_control_view {
+                return Some(link.id);
+            }
+            if !link.is_uiview {
+                return None;
+            }
+        }
+        None
+    }
+    pub fn set_game(&self, game_id: u32) {
+        *self.game.lock() = Some(crate::roblox_view::wrap_game(game_id));
+    }
+    pub fn game(&self) -> Option<SharedPtr<crate::roblox_view::GameHandle>> {
+        self.game.lock().clone()
+    }
+    pub fn clear_game(&self) {
+        *self.game.lock() = None;
+    }
+    pub fn has_game(&self) -> bool {
+        self.game.lock().is_some()
+    }
+    pub fn tap_touch(&self) -> Option<ControlId> {
+        *self.tap_touch.lock()
+    }
+    /// `-[ControlView invalidateTapGesture:]` (IDA 0x48ff8): clears when the
+    /// arg is `nil` or matches the tracked tap.
+    pub fn invalidate_tap(&self, tap: Option<ControlId>) {
+        let tracked = *self.tap_touch.lock();
+        let clear = tap.is_none() || tap == tracked;
+        if clear {
+            *self.tap_touch.lock() = None;
+        }
+    }
+    /// `-[ControlView checkTouchesForTap:withEvent:]` (IDA 0x4908c): when a
+    /// tap is tracked, the matching touch fires `oneFingerSingleTap` (which
+    /// clears the tap) and is returned; anything else yields `nil`.
+    pub fn check_touches_for_tap(&self, touches: &[ControlTouch]) -> Option<ControlId> {
+        let tracked = self.tap_touch()?;
+        if touches.iter().any(|t| t.id == tracked) {
+            self.one_finger_single_tap();
+            return Some(tracked);
+        }
+        None
+    }
+    /// `-[ControlView oneFingerSingleTap]` (IDA 0x49acc): clears the tap,
+    /// runs the two `processToolEvent` passes and the `sendMouseEvent(4)`.
+    /// `UserInputService` internals are out of slice; the passes are counted.
+    pub fn one_finger_single_tap(&self) {
+        if self.tap_touch().is_none() {
+            return;
+        }
+        *self.tap_touch.lock() = None;
+        self.bump(&self.tap_fires);
+        self.tool_events.fetch_add(2, Ordering::SeqCst);
+        self.send_mouse(4, None);
+    }
+    /// `-[ControlView sendMouseEventToGame:withTouch:]` (IDA 0x4918c):
+    /// forwards the event kind over the overlay `DataModel`; counted here.
+    pub fn send_mouse(&self, kind: u32, _touch: Option<ControlId>) {
+        *self.last_mouse_kind.lock() = kind;
+        self.bump(&self.mouse_events);
+    }
+    pub fn last_mouse_kind(&self) -> u32 {
+        *self.last_mouse_kind.lock()
+    }
+    pub fn mouse_event_count(&self) -> u32 {
+        self.mouse_events.load(Ordering::SeqCst)
+    }
+    /// `-[ControlView checkTapTouchMove:]` (IDA 0x497d0): the tracked tap
+    /// whose finger drifted past `tapTouchMoveTolerance` is invalidated.
+    pub fn check_tap_touch_move(&self, touches: &[ControlTouch]) {
+        let tracked = match self.tap_touch() {
+            Some(t) => t,
+            None => return,
+        };
+        let Some(touch) = touches.iter().find(|t| t.id == tracked) else { return };
+        let (bx, by) = *self.tap_begin.lock();
+        let dx = touch.x - bx;
+        let dy = touch.y - by;
+        let tol = self.tap_move_tolerance.load(Ordering::SeqCst) as f32;
+        if dx * dx + dy * dy > tol * tol {
+            self.invalidate_tap(None);
+        }
+    }
+    /// `-[ControlView disconnectEvents]` (IDA 0x4818c): disconnects the
+    /// `gameLoaded` / overlay / datamodel `UserInputService` connections.
+    pub fn disconnect_events(&self) {
+        self.game_loaded_con.lock().disconnect();
+        self.overlay_con.lock().disconnect();
+        self.dm_con.lock().disconnect();
+    }
+    pub fn events_connected(&self) -> bool {
+        self.game_loaded_con.lock().is_connected()
+            || self.overlay_con.lock().is_connected()
+            || self.dm_con.lock().is_connected()
+    }
+    /// `-[ControlView setupEvents]` (IDA 0x47f48): binds `gameLoaded` on the
+    /// game `DataModel` (reconnects the slot; `boost::bind` becomes a
+    /// closure) and counts the run.
+    pub fn setup_events(&self) {
+        *self.game_loaded_con.lock() = crate::view_controllers::ScopedConnection::new();
+        self.bump(&self.setup_runs);
+    }
+    /// `-[ControlView bindToUserInputService:]` (IDA 0x481cc): connects the
+    /// overlay + datamodel `UserInputService` property connections and runs
+    /// the initial property check.
+    pub fn bind_to_user_input_service(&self) {
+        *self.overlay_con.lock() = crate::view_controllers::ScopedConnection::new();
+        *self.dm_con.lock() = crate::view_controllers::ScopedConnection::new();
+        self.user_input_service_present.store(true, Ordering::SeqCst);
+        self.bump(&self.prop_check_runs);
+    }
+    /// `-[ControlView bindUserInputService]` (IDA 0x48604): binds the game
+    /// `DataModel` and the overlay `DataModel` in turn.
+    pub fn bind_user_input_service(&self) {
+        self.bind_to_user_input_service();
+        self.bind_to_user_input_service();
+        self.bump(&self.bind_runs);
+    }
+    /// `-[ControlView isValidUserInputProperty:]` (IDA 0x487d4): a game is
+    /// bound and the descriptor is not the `Parent` property.
+    pub fn is_valid_user_input_property(&self, prop: &str) -> bool {
+        self.has_game() && prop != "Parent"
+    }
+    /// `-[ControlView checkUserInputPropertyChanged:onDataModel:]`
+    /// (IDA 0x48774): looks the `UserInputService` up on the datamodel and
+    /// runs the check when the property is valid.
+    pub fn check_user_input_property(&self, prop: &str) -> bool {
+        if !self.is_valid_user_input_property(prop) {
+            return false;
+        }
+        self.bump(&self.prop_check_runs);
+        self.user_input_service_present.load(Ordering::SeqCst)
+    }
+    /// `-[ControlView dataModelChanged:]` (IDA 0x47afc): a datamodel wires
+    /// events + input controls; `nil` tears the events down.
+    pub fn data_model_changed(&self, has_datamodel: bool) {
+        self.data_model_present.store(has_datamodel, Ordering::SeqCst);
+        if has_datamodel {
+            self.setup_events();
+            self.setup_input_controls();
+        } else {
+            self.disconnect_events();
+        }
+    }
+    /// `-[ControlView setupInputControls]` (IDA 0x48a50): tap/pinch tuning
+    /// defaults plus the camera/movement/jump/menu control bring-up.
+    pub fn setup_input_controls(&self) {
+        *self.tap_sensitivity.lock() = 0.189999998;
+        self.tap_move_tolerance.store(20, Ordering::SeqCst);
+        *self.pinch_zoom_delay.lock() = 0.08;
+        *self.pinch_time.lock() = -1.0;
+        self.input_controls_ready.store(true, Ordering::SeqCst);
+        self.bump(&self.setup_runs);
+    }
+    pub fn input_controls_ready(&self) -> bool {
+        self.input_controls_ready.load(Ordering::SeqCst)
+    }
+    /// `-[ControlView init:withGame:]` (IDA 0x47638): super init, start/leave
+    /// notification observers, pinch recognizers, then `setGame:`.
+    pub fn init_with_game(&self, game_id: u32) -> Option<ControlId> {
+        self.cxx_construct();
+        crate::view_controllers::NotificationCenter::default_center()
+            .add_observer(CONTROL_SELF_ID);
+        self.observer_regs.fetch_add(3, Ordering::SeqCst);
+        self.recognizers.fetch_add(2, Ordering::SeqCst);
+        self.set_game(game_id);
+        self.data_model_changed(true);
+        Some(CONTROL_SELF_ID)
+    }
+    /// `-[ControlView setGame:]` (IDA 0x479f8): stores the game and forwards
+    /// its `DataModel` to `dataModelChanged:`.
+    pub fn set_game_notify(&self, game_id: u32) {
+        self.set_game(game_id);
+        self.data_model_changed(true);
+    }
+    /// `-[ControlView dealloc]` (IDA 0x47904): removes the notification
+    /// observer, releases menu/jump/camera/character/pinch controls
+    /// (`-[JumpButton release]` only without `NewCameraControls`), then
+    /// `[super dealloc]` (drop) — counted here.
+    pub fn dealloc(&self) {
+        crate::view_controllers::NotificationCenter::default_center()
+            .remove_observer(CONTROL_SELF_ID);
+        *self.menu_button.lock() = None;
+        let mut releases = 4;
+        if !NEW_CAMERA_CONTROLS.load(Ordering::SeqCst) {
+            releases += 1;
+        }
+        self.releases.fetch_add(releases, Ordering::SeqCst);
+        self.disconnect_events();
+        self.clear_game();
+    }
+    /// `-[ControlView .cxx_construct]` (IDA 0x49e18): zeroes the frame size,
+    /// tap begin point, game slot and the three connection weak slots.
+    pub fn cxx_construct(&self) {
+        *self.tap_touch.lock() = None;
+        *self.tap_begin.lock() = (0.0, 0.0);
+        self.clear_game();
+        *self.game_loaded_con.lock() = crate::view_controllers::ScopedConnection::new();
+        self.game_loaded_con.lock().disconnect();
+        *self.dm_con.lock() = crate::view_controllers::ScopedConnection::new();
+        self.dm_con.lock().disconnect();
+        *self.overlay_con.lock() = crate::view_controllers::ScopedConnection::new();
+        self.overlay_con.lock().disconnect();
+    }
+    /// `-[ControlView .cxx_destruct]` (IDA 0x49ca0): disconnects the three
+    /// connections (releasing held weak slots) and releases the game.
+    pub fn cxx_destruct(&self) {
+        self.disconnect_events();
+        self.clear_game();
+    }
+    /// `-[ControlView createNativeMenu]` (IDA 0x49018): allocs the
+    /// `MenuButton` with its fixed frame and adds it as a subview.
+    pub fn create_native_menu(&self) {
+        let id = self.next_id.fetch_add(1, Ordering::SeqCst) + 2;
+        *self.menu_button.lock() = Some(id as ControlId);
+        self.bump(&self.menu_builds);
+        self.bump(&self.subview_adds);
+    }
+    pub fn menu_button(&self) -> Option<ControlId> {
+        *self.menu_button.lock()
+    }
+    /// `-[ControlView touchesBegan:withEvent:]` (IDA 0x49314): a lone new
+    /// touch becomes the tap candidate (begin point recorded, delayed
+    /// `invalidateTapGesture:` scheduled via `tapSensitivity`), then every
+    /// touch forwards a mouse event.
+    pub fn touches_began(&self, touches: &[ControlTouch]) {
+        if self.tap_touch().is_none() && touches.len() == 1 {
+            *self.tap_touch.lock() = Some(touches[0].id);
+            *self.tap_begin.lock() = (touches[0].x, touches[0].y);
+        }
+        for _ in touches {
+            self.bump(&self.mouse_events);
+        }
+    }
+    /// `-[ControlView touchesEnded:withEvent:]` (IDA 0x4951c): clears pinch
+    /// timing, fires the tap when the tracked touch lifted, and forwards the
+    /// remaining touches as mouse events.
+    pub fn touches_ended(&self, touches: &[ControlTouch]) {
+        *self.pinch_time.lock() = -1.0;
+        let fired = self.check_touches_for_tap(touches);
+        let mut forwarded = 0;
+        for t in touches {
+            if Some(t.id) != fired {
+                forwarded += 1;
+            }
+        }
+        self.mouse_events.fetch_add(forwarded, Ordering::SeqCst);
+    }
+    /// `-[ControlView touchesMoved:withEvent:]` (IDA 0x49684): tap-drift
+    /// check first, then each touch forwards a move (kind 5) mouse event.
+    pub fn touches_moved(&self, touches: &[ControlTouch]) {
+        self.check_tap_touch_move(touches);
+        for t in touches {
+            self.send_mouse(5, Some(t.id));
+        }
+    }
+    /// `-[ControlView touchesCancelled:withEvent:]` (IDA 0x49920): a
+    /// cancelled tracked tap is dropped without firing.
+    pub fn touches_cancelled(&self, touches: &[ControlTouch]) {
+        let tracked = match self.tap_touch() {
+            Some(t) => t,
+            None => return,
+        };
+        if touches.iter().any(|t| t.id == tracked) {
+            *self.tap_touch.lock() = None;
+        }
+    }
+    /// `-[ControlView twoFingerPinch:]` (IDA 0x499e0): gesture start resets
+    /// `lastPinchScale`; the camera pan ends, the tap is dropped, and a
+    /// nonzero scale delta zooms the camera (`zoomCamera(delta * 10)`).
+    pub fn two_finger_pinch(&self, began: bool, scale: f32) {
+        if began {
+            *self.last_pinch_scale.lock() = 1.0;
+        }
+        self.bump(&self.camera_pan_ends);
+        self.invalidate_tap(None);
+        let last = *self.last_pinch_scale.lock();
+        if scale - last != 0.0 {
+            self.bump(&self.zoom_events);
+        }
+        *self.last_pinch_scale.lock() = scale;
+    }
+    /// `-[ControlView gestureRecognizer:shouldReceiveTouch:]` (IDA 0x49bb4):
+    /// non-pinch recognizers always receive; a pinch landing on the view
+    /// itself or the camera control is throttled by `pinchZoomDelay`
+    /// (`pinchTime == -1.0` arms the timer, else the timer resets and the
+    /// touch is accepted only inside the delay window).
+    pub fn gesture_should_receive(&self, is_pinch: bool, hit_self_or_camera: bool, now: f64) -> bool {
+        if !is_pinch {
+            return true;
+        }
+        if !hit_self_or_camera {
+            return false;
+        }
+        let mut pinch_time = self.pinch_time.lock();
+        if *pinch_time == -1.0 {
+            *pinch_time = now;
+            return true;
+        }
+        let dt = now - *pinch_time;
+        *pinch_time = -1.0;
+        dt <= *self.pinch_zoom_delay.lock()
+    }
+    /// `-[ControlView textBoxFocusGained:]` (IDA 0x47d7c): a focused `TextBox`
+    /// shows the keyboard with its text, otherwise an empty keyboard.
+    pub fn text_box_focus_gained(&self, has_text: bool) {
+        self.keyboard_has_text.store(has_text, Ordering::SeqCst);
+        self.bump(&self.keyboard_shows);
+    }
+}
+static CONTROL_VIEW: std::sync::LazyLock<ControlViewState> =
+    std::sync::LazyLock::new(ControlViewState::default);
 // 0x1d390 — -[HomeViewController btnPlaceLauncher]
 // type: UIButton *__cdecl(HomeViewController *self, SEL)
 #[doc(alias = "-[HomeViewController btnPlaceLauncher]")]
@@ -2095,280 +2524,404 @@ pub fn stub_40308() -> bool {
 // 0x471c0 — -[ControlComponent findControlView]
 // type: id __cdecl(ControlComponent *self, SEL)
 #[doc(alias = "-[ControlComponent findControlView]")]
-pub fn stub_471c0() -> ! {
-    todo!("0x471c0 -[ControlComponent findControlView]")
+pub fn stub_471c0() -> Option<ControlId> {
+    // IDA 0x471c0: self when `isKindOfClass:[ControlView class]` (0x47202),
+    // else walk `superview` (0x47218..0x47264): first ControlView-kind
+    // ancestor wins, a non-UIView link (or chain end) yields nil (0x47226).
+    CONTROL_VIEW.find_view()
 }
 
 // 0x47274 — -[ControlComponent getGameFromControlView]
 // type: Game *__cdecl(ControlComponent *self, SEL)
 #[doc(alias = "-[ControlComponent getGameFromControlView]")]
-pub fn stub_47274() -> ! {
-    todo!("0x47274 -[ControlComponent getGameFromControlView]")
+pub fn stub_47274() -> Option<SharedPtr<crate::roblox_view::GameHandle>> {
+    // IDA 0x47274: `findControlView` (0x472a4); nil yields a null game
+    // (0x472ae..0x472ce), else `-[ControlView getGame]` (0x472e6) with the
+    // shared-count handoff (0x472ec..0x472fa).
+    CONTROL_VIEW.find_view().and_then(|_| CONTROL_VIEW.game())
 }
 
 // 0x47638 — -[ControlView init:withGame:]
 // type: id __cdecl(ControlView *self, SEL, CGRect, shared_ptr<RBX::Game>)
 #[doc(alias = "-[ControlView init:withGame:]")]
-pub fn stub_47638() -> ! {
-    todo!("0x47638 -[ControlView init:withGame:]")
+pub fn stub_47638(game_id: u32) -> Option<ControlId> {
+    // IDA 0x47638: super `-[ControlComponent init]` (0x4767a) must succeed
+    // (0x476a4); start/leave-game notification observers (0x476d6..0x47722),
+    // pinch recognizers, then `setGame:` — modeled by init_with_game.
+    CONTROL_VIEW.init_with_game(game_id)
 }
 
 // 0x47904 — -[ControlView dealloc]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView dealloc]")]
-pub fn stub_47904() -> ! {
-    todo!("0x47904 -[ControlView dealloc]")
+pub fn stub_47904() {
+    // IDA 0x47904: `removeObserver:` on the default center (0x47924..0x47936),
+    // menu release (0x47946..0x47956), jump release unless
+    // `FFlag::NewCameraControls` (0x47968..0x47984), camera/character/pinch
+    // releases (0x479a4..0x479cc), then `[super dealloc]` (0x479ee).
+    CONTROL_VIEW.dealloc();
 }
 
 // 0x479f8 — -[ControlView setGame:]
 // type: void __cdecl(ControlView *self, SEL, shared_ptr<RBX::Game>)
 #[doc(alias = "-[ControlView setGame:]")]
-pub fn stub_479f8() -> ! {
-    todo!("0x479f8 -[ControlView setGame:]")
+pub fn stub_479f8(game_id: u32) {
+    // IDA 0x479f8: `shared_ptr` assign into `game` (0x47a28), then
+    // `dataModelChanged:` over the game's DataModel (0x47a2c..0x47a80).
+    CONTROL_VIEW.set_game_notify(game_id);
 }
 
 // 0x47aec — -[ControlView gotStartLeaveGameNotification:]
 // type: void __cdecl(ControlView *self, SEL, id)
 #[doc(alias = "-[ControlView gotStartLeaveGameNotification:]")]
-pub fn stub_47aec() -> ! {
-    todo!("0x47aec -[ControlView gotStartLeaveGameNotification:]")
+pub fn stub_47aec() {
+    // IDA 0x47aec: tail-calls `disconnectEvents` (0x47af8).
+    CONTROL_VIEW.disconnect_events();
 }
 
 // 0x47afc — -[ControlView dataModelChanged:]
 // type: void __cdecl(ControlView *self, SEL, DataModel *)
 #[doc(alias = "-[ControlView dataModelChanged:]")]
-pub fn stub_47afc() -> ! {
-    todo!("0x47afc -[ControlView dataModelChanged:]")
+pub fn stub_47afc(has_datamodel: bool) {
+    // IDA 0x47afc: non-nil datamodel runs `setupEvents` (0x47b12) +
+    // `setupInputControls` (0x47b1e); nil runs `disconnectEvents` (0x47b2a).
+    CONTROL_VIEW.data_model_changed(has_datamodel);
 }
 
 // 0x47b38 — -[ControlView setControlVisibility:]
 // type: void __cdecl(ControlView *self, SEL, char)
 #[doc(alias = "-[ControlView setControlVisibility:]")]
-pub fn stub_47b38() -> ! {
-    todo!("0x47b38 -[ControlView setControlVisibility:]")
+pub fn stub_47b38(visible: bool) {
+    // IDA 0x47b38: builds the `__36…_block_invoke` stack block (0x47b6c..0x47b84)
+    // and `dispatch_async`s it to the main queue (0x47b88); the queue hop has
+    // no host counterpart, so the block applies inline.
+    CONTROL_VIEW.apply_visibility(visible);
 }
 
 // 0x47b90 — ___36-[ControlView setControlVisibility:]_block_invoke
 #[doc(alias = "___36-[ControlView setControlVisibility:]_block_invoke")]
-pub fn stub_47b90() -> ! {
-    todo!("0x47b90 ___36-[ControlView setControlVisibility:]_block_invoke")
+pub fn stub_47b90(visible: bool) {
+    // IDA 0x47b90: container (`+64`) `setHidden:(visible == 0)` (0x47bc0);
+    // `cameraMovement` (NewCameraControls, 0x47bd4..0x47bde) or `jumpButton`
+    // (0x47bea) `setHidden:(!visible)` (0x47bee..0x47bf6).
+    CONTROL_VIEW.apply_visibility(visible);
 }
 
 // 0x47c18 — -[ControlView showControls]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView showControls]")]
-pub fn stub_47c18() -> ! {
-    todo!("0x47c18 -[ControlView showControls]")
+pub fn stub_47c18() {
+    // IDA 0x47c18: `setControlVisibility:1` (0x47c26).
+    CONTROL_VIEW.apply_visibility(true);
 }
 
 // 0x47c2c — -[ControlView hideControls]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView hideControls]")]
-pub fn stub_47c2c() -> ! {
-    todo!("0x47c2c -[ControlView hideControls]")
+pub fn stub_47c2c() {
+    // IDA 0x47c2c: `setControlVisibility:0` (0x47c3a).
+    CONTROL_VIEW.apply_visibility(false);
 }
 
 // 0x47c40 — -[ControlView postMouseEventProcessedFromOverlay:inputObject:event:]
 // type: void __cdecl(ControlView *self, SEL, bool, void *, UIEvent)
 #[doc(alias = "-[ControlView postMouseEventProcessedFromOverlay:inputObject:event:]")]
-pub fn stub_47c40() -> ! {
-    todo!("0x47c40 -[ControlView postMouseEventProcessedFromOverlay:inputObject:event:]")
+pub fn stub_47c40(processed: bool, has_event: bool) {
+    // IDA 0x47c40: when the overlay did NOT consume the event (`!a3`,
+    // 0x47c90) and a `UIEvent` is present, the game + overlay datamodels
+    // forward it through `UserInputService` (0x47c9e..0x47cbc); the service
+    // internals are out of slice, so the forward is counted with the last
+    // mouse kind (the UIEvent kind itself is not modeled).
+    if !processed && has_event && CONTROL_VIEW.has_game() {
+        let kind = CONTROL_VIEW.last_mouse_kind();
+        CONTROL_VIEW.send_mouse(kind, None);
+    }
 }
 
 // 0x47d48 — -[ControlView postMouseEventProcessed:inputObject:event:]
 // type: void __cdecl(ControlView *self, SEL, bool, void *, UIEvent)
 #[doc(alias = "-[ControlView postMouseEventProcessed:inputObject:event:]")]
-pub fn stub_47d48() -> ! {
-    todo!("0x47d48 -[ControlView postMouseEventProcessed:inputObject:event:]")
+pub fn stub_47d48(processed: bool, input: Option<ControlId>) {
+    // IDA 0x47d48: `a4 && a3 && a4 == tapTouch` (0x47d62) drops the tap via
+    // `invalidateTapGesture:0` (0x47d74).
+    if processed {
+        if let Some(touch) = input {
+            if Some(touch) == CONTROL_VIEW.tap_touch() {
+                CONTROL_VIEW.invalidate_tap(None);
+            }
+        }
+    }
 }
 
 // 0x47d78 — -[ControlView setupLocalPlayerConnections]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView setupLocalPlayerConnections]")]
-pub fn stub_47d78() -> ! {
-    todo!("0x47d78 -[ControlView setupLocalPlayerConnections]")
+pub fn stub_47d78() {
+    // IDA 0x47d78: empty body (returns immediately); no-op.
 }
 
 // 0x47d7c — -[ControlView textBoxFocusGained:]
 // type: void __cdecl(ControlView *self, SEL, shared_ptr<RBX::TextBox>)
 #[doc(alias = "-[ControlView textBoxFocusGained:]")]
-pub fn stub_47d7c() -> ! {
-    todo!("0x47d7c -[ControlView textBoxFocusGained:]")
+pub fn stub_47d7c(has_text: bool) {
+    // IDA 0x47d7c: a live TextBox shows the keyboard with its text
+    // (0x47d9c..0x47e1e); a null one shows an empty keyboard (0x47e6c).
+    CONTROL_VIEW.text_box_focus_gained(has_text);
 }
 
 // 0x47ea4 — -[ControlView getGame]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, ControlView *self, SEL)
 #[doc(alias = "-[ControlView getGame]")]
-pub fn stub_47ea4() -> ! {
-    todo!("0x47ea4 -[ControlView getGame]")
+pub fn stub_47ea4() -> Option<SharedPtr<crate::roblox_view::GameHandle>> {
+    // IDA 0x47ea4: copies the `game` shared_ptr into the return slot
+    // (0x47ee4..0x47f0a, shared-count handoff).
+    CONTROL_VIEW.game()
 }
 
 // 0x47f48 — -[ControlView setupEvents]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView setupEvents]")]
-pub fn stub_47f48() -> ! {
-    todo!("0x47f48 -[ControlView setupEvents]")
+pub fn stub_47f48() {
+    // IDA 0x47f48: binds `gameLoaded` on the game DataModel via
+    // `methodForSelector:` + `boost::bind` into `function0<void>`
+    // (0x47f74..0x47ff6); the bind becomes a closure here.
+    CONTROL_VIEW.setup_events();
 }
 
 // 0x4818c — -[ControlView disconnectEvents]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView disconnectEvents]")]
-pub fn stub_4818c() -> ! {
-    todo!("0x4818c -[ControlView disconnectEvents]")
+pub fn stub_4818c() {
+    // IDA 0x4818c: `connection::disconnect` on `gameLoadedConnection`
+    // (0x481a0), `overlayUserInputPropChangedCon` (0x481b2) and
+    // `dmUserInputPropChangedCon` (0x481c8).
+    CONTROL_VIEW.disconnect_events();
 }
 
 // 0x481cc — -[ControlView bindToUserInputService:]
 // type: void __cdecl(ControlView *self, SEL, shared_ptr<RBX::DataModel>)
 #[doc(alias = "-[ControlView bindToUserInputService:]")]
-pub fn stub_481cc() -> ! {
-    todo!("0x481cc -[ControlView bindToUserInputService:]")
+pub fn stub_481cc(has_datamodel: bool) {
+    // IDA 0x481cc: connects the overlay + datamodel `UserInputService`
+    // property-changed connections and runs the initial property check.
+    // A nil datamodel has no service; the connection slots stay as-is.
+    if has_datamodel {
+        CONTROL_VIEW.bind_to_user_input_service();
+    }
 }
 
 // 0x48604 — -[ControlView bindUserInputService]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView bindUserInputService]")]
-pub fn stub_48604() -> ! {
-    todo!("0x48604 -[ControlView bindUserInputService]")
+pub fn stub_48604() {
+    // IDA 0x48604: `bindToUserInputService:` over the game DataModel
+    // (0x48630..0x48686) and then the overlay DataModel (0x4869a..0x486bc).
+    CONTROL_VIEW.bind_user_input_service();
 }
 
 // 0x48774 — -[ControlView checkUserInputPropertyChanged:onDataModel:]
 // type: char __cdecl(ControlView *self, SEL, const PropertyDescriptor *, shared_ptr<RBX::DataModel>)
 #[doc(alias = "-[ControlView checkUserInputPropertyChanged:onDataModel:]")]
-pub fn stub_48774() -> ! {
-    todo!("0x48774 -[ControlView checkUserInputPropertyChanged:onDataModel:]")
+pub fn stub_48774(prop: &str) -> bool {
+    // IDA 0x48774 (disasm): guards on the game/property (0x4877c..0x48786),
+    // then `ServiceProvider::find<UserInputService>` (0x4878a); the check
+    // only passes for a valid property with a live service.
+    CONTROL_VIEW.check_user_input_property(prop)
 }
 
 // 0x487d4 — -[ControlView isValidUserInputProperty:]
 // type: char __cdecl(ControlView *self, SEL, const PropertyDescriptor *)
 #[doc(alias = "-[ControlView isValidUserInputProperty:]")]
-pub fn stub_487d4() -> ! {
-    todo!("0x487d4 -[ControlView isValidUserInputProperty:]")
+pub fn stub_487d4(prop: &str) -> bool {
+    // IDA 0x487d4: false when the game is null (0x487e8) or the descriptor
+    // is null (0x487ec); else `strcmp(name, "Parent") != 0` (0x48804).
+    CONTROL_VIEW.is_valid_user_input_property(prop)
 }
 
 // 0x4880c — -[ControlView userInputPropertyChangedOnDataModel:]
 // type: void __cdecl(ControlView *self, SEL, const PropertyDescriptor *)
 #[doc(alias = "-[ControlView userInputPropertyChangedOnDataModel:]")]
-pub fn stub_4880c() -> ! {
-    todo!("0x4880c -[ControlView userInputPropertyChangedOnDataModel:]")
+pub fn stub_4880c(prop: &str) {
+    // IDA 0x4880c: gated on `isValidUserInputProperty:` (0x4883a), then
+    // `checkUserInputPropertyChanged:onDataModel:` over the game DataModel
+    // (0x4887c..0x488aa).
+    if CONTROL_VIEW.is_valid_user_input_property(prop) {
+        CONTROL_VIEW.check_user_input_property(prop);
+    }
 }
 
 // 0x48918 — -[ControlView userInputPropertyChangedOnOverlay:]
 // type: void __cdecl(ControlView *self, SEL, const PropertyDescriptor *)
 #[doc(alias = "-[ControlView userInputPropertyChangedOnOverlay:]")]
-pub fn stub_48918() -> ! {
-    todo!("0x48918 -[ControlView userInputPropertyChangedOnOverlay:]")
+pub fn stub_48918(prop: &str) {
+    // IDA 0x48918: gated on `isValidUserInputProperty:` (0x48946), then
+    // `checkUserInputPropertyChanged:onDataModel:` over the overlay
+    // DataModel (0x48988..0x489c4).
+    if CONTROL_VIEW.is_valid_user_input_property(prop) {
+        CONTROL_VIEW.check_user_input_property(prop);
+    }
 }
 
 // 0x48a50 — -[ControlView setupInputControls]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView setupInputControls]")]
-pub fn stub_48a50() -> ! {
-    todo!("0x48a50 -[ControlView setupInputControls]")
+pub fn stub_48a50() {
+    // IDA 0x48a50: `tapSensitivity=0.19` (0x48a8c),
+    // `tapTouchMoveTolerance=20` (0x48aac), `pinchZoomDelay=0.08`
+    // (0x48ac4), `pinchTime=-1.0` (0x48ada), then the camera/movement/
+    // jump/menu control bring-up off the view frame (0x48aea..).
+    CONTROL_VIEW.setup_input_controls();
 }
 
 // 0x48fe8 — -[ControlView gameLoaded]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView gameLoaded]")]
-pub fn stub_48fe8() -> ! {
-    todo!("0x48fe8 -[ControlView gameLoaded]")
+pub fn stub_48fe8() {
+    // IDA 0x48fe8: `showControls` (0x48ff4).
+    CONTROL_VIEW.apply_visibility(true);
 }
 
 // 0x48ff8 — -[ControlView invalidateTapGesture:]
 // type: void __cdecl(ControlView *self, SEL, id)
 #[doc(alias = "-[ControlView invalidateTapGesture:]")]
-pub fn stub_48ff8() -> ! {
-    todo!("0x48ff8 -[ControlView invalidateTapGesture:]")
+pub fn stub_48ff8(tap: Option<ControlId>) {
+    // IDA 0x48ff8: clears `tapTouch` when the arg is nil or matches the
+    // tracked tap (0x48ffc..0x49012).
+    CONTROL_VIEW.invalidate_tap(tap);
 }
 
 // 0x49018 — -[ControlView createNativeMenu]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView createNativeMenu]")]
-pub fn stub_49018() -> ! {
-    todo!("0x49018 -[ControlView createNativeMenu]")
+pub fn stub_49018() {
+    // IDA 0x49018: `+[MenuButton alloc]` (0x49038) + `init:` with the fixed
+    // frame (0x4907c), then `addSubview:` (0x49088).
+    CONTROL_VIEW.create_native_menu();
 }
 
 // 0x4908c — -[ControlView checkTouchesForTap:withEvent:]
 // type: id __cdecl(ControlView *self, SEL, id, id)
 #[doc(alias = "-[ControlView checkTouchesForTap:withEvent:]")]
-pub fn stub_4908c() -> ! {
-    todo!("0x4908c -[ControlView checkTouchesForTap:withEvent:]")
+pub fn stub_4908c(touches: &[ControlTouch]) -> Option<ControlId> {
+    // IDA 0x4908c: nil when no tap is tracked (0x490ba..0x490c2); the tracked
+    // touch in the set is retained (0x4914c), fires `oneFingerSingleTap`
+    // (0x4915e) and is autoreleased back (0x49170); the set walk is an
+    // `NSFastEnumeration` (0x490f0..0x4913a).
+    CONTROL_VIEW.check_touches_for_tap(touches)
 }
 
 // 0x4918c — -[ControlView sendMouseEventToGame:withTouch:]
 // type: void __cdecl(ControlView *self, SEL, UIEvent, id)
 #[doc(alias = "-[ControlView sendMouseEventToGame:withTouch:]")]
-pub fn stub_4918c() -> ! {
-    todo!("0x4918c -[ControlView sendMouseEventToGame:withTouch:]")
+pub fn stub_4918c(kind: u32, touch: Option<ControlId>) {
+    // IDA 0x4918c: reads the game + overlay DataModel (0x491bc..0x491fe)
+    // and forwards the mouse event through `UserInputService`; counted here.
+    CONTROL_VIEW.send_mouse(kind, touch);
 }
 
 // 0x49314 — -[ControlView touchesBegan:withEvent:]
 // type: void __cdecl(ControlView *self, SEL, id, id)
 #[doc(alias = "-[ControlView touchesBegan:withEvent:]")]
-pub fn stub_49314() -> ! {
-    todo!("0x49314 -[ControlView touchesBegan:withEvent:]")
+pub fn stub_49314(touches: &[ControlTouch]) {
+    // IDA 0x49314: a lone touch with no tracked tap becomes the tap
+    // candidate (0x4935e..0x4937c), records `locationInView:` as the begin
+    // point (0x49390..0x493c8) and schedules the delayed
+    // `invalidateTapGesture:` by `tapSensitivity` (0x493d6..0x49402); every
+    // touch then enumerates into mouse events (0x4941c..).
+    CONTROL_VIEW.touches_began(touches);
 }
 
 // 0x4951c — -[ControlView touchesEnded:withEvent:]
 // type: void __cdecl(ControlView *self, SEL, id, id)
 #[doc(alias = "-[ControlView touchesEnded:withEvent:]")]
-pub fn stub_4951c() -> ! {
-    todo!("0x4951c -[ControlView touchesEnded:withEvent:]")
+pub fn stub_4951c(touches: &[ControlTouch]) {
+    // IDA 0x4951c: `pinchTime=-1.0` (0x4955c), `checkTouchesForTap:`
+    // (0x4956c), the lifted tracked tap invalidates (0x49618..0x49620) and
+    // the rest forward `locationInView:` mouse events (0x49610..0x4964a).
+    CONTROL_VIEW.touches_ended(touches);
 }
 
 // 0x49684 — -[ControlView touchesMoved:withEvent:]
 // type: void __cdecl(ControlView *self, SEL, id, id)
 #[doc(alias = "-[ControlView touchesMoved:withEvent:]")]
-pub fn stub_49684() -> ! {
-    todo!("0x49684 -[ControlView touchesMoved:withEvent:]")
+pub fn stub_49684(touches: &[ControlTouch]) {
+    // IDA 0x49684: `checkTapTouchMove:` first (0x496b8), then each touch
+    // forwards a move (kind 5) mouse event (0x496e8..0x49796).
+    CONTROL_VIEW.touches_moved(touches);
 }
 
 // 0x497d0 — -[ControlView checkTapTouchMove:]
 // type: void __cdecl(ControlView *self, SEL, id)
 #[doc(alias = "-[ControlView checkTapTouchMove:]")]
-pub fn stub_497d0() -> ! {
-    todo!("0x497d0 -[ControlView checkTapTouchMove:]")
+pub fn stub_497d0(touches: &[ControlTouch]) {
+    // IDA 0x497d0: finds the tracked tap in the set (0x4984e..0x49854),
+    // diffs `locationInView:` against the begin point (0x49878..0x498c0)
+    // and invalidates past the move tolerance.
+    CONTROL_VIEW.check_tap_touch_move(touches);
 }
 
 // 0x49920 — -[ControlView touchesCancelled:withEvent:]
 // type: void __cdecl(ControlView *self, SEL, id, id)
 #[doc(alias = "-[ControlView touchesCancelled:withEvent:]")]
-pub fn stub_49920() -> ! {
-    todo!("0x49920 -[ControlView touchesCancelled:withEvent:]")
+pub fn stub_49920(touches: &[ControlTouch]) {
+    // IDA 0x49920: a cancelled tracked tap is cleared without firing
+    // (0x499a2..0x499c6); the set walk is an `NSFastEnumeration`.
+    CONTROL_VIEW.touches_cancelled(touches);
 }
 
 // 0x499e0 — -[ControlView twoFingerPinch:]
 // type: void __cdecl(ControlView *self, SEL, id)
 #[doc(alias = "-[ControlView twoFingerPinch:]")]
-pub fn stub_499e0() -> ! {
-    todo!("0x499e0 -[ControlView twoFingerPinch:]")
+pub fn stub_499e0(began: bool, scale: f32) {
+    // IDA 0x499e0: gesture start (`state == 1`) resets `lastPinchScale`
+    // (0x49a0e..0x49a20), the camera pan ends (0x49a3c), the tap drops
+    // (0x49a50) and a nonzero `(scale - last) * 10.0` zooms the camera
+    // (0x49a6c..0x49aac); `lastPinchScale = scale` (0x49ab8).
+    CONTROL_VIEW.two_finger_pinch(began, scale);
 }
 
 // 0x49acc — -[ControlView oneFingerSingleTap]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView oneFingerSingleTap]")]
-pub fn stub_49acc() -> ! {
-    todo!("0x49acc -[ControlView oneFingerSingleTap]")
+pub fn stub_49acc() {
+    // IDA 0x49acc: `UserInputService` for the game datamodel (0x49aea);
+    // the tap point clears `tapTouch` (0x49b36), runs the down/up
+    // `processToolEvent` pair (0x49b48..0x49ba8) and `sendMouseEvent(4)`
+    // (0x49b86..0x49b98).
+    CONTROL_VIEW.one_finger_single_tap();
 }
 
 // 0x49bb4 — -[ControlView gestureRecognizer:shouldReceiveTouch:]
 // type: char __cdecl(ControlView *self, SEL, id, id)
 #[doc(alias = "-[ControlView gestureRecognizer:shouldReceiveTouch:]")]
-pub fn stub_49bb4() -> ! {
-    todo!("0x49bb4 -[ControlView gestureRecognizer:shouldReceiveTouch:]")
+pub fn stub_49bb4(is_pinch: bool, hit_self_or_camera: bool, now: f64) -> bool {
+    // IDA 0x49bb4: non-pinch recognizers always receive (0x49bd2); a pinch
+    // hitting the view itself or the camera control (0x49bee..0x49c2e)
+    // arms `pinchTime = now` when unset (-1.0, 0x49c56..0x49c5c), else the
+    // timer resets to -1.0 and the touch is accepted only inside
+    // `pinchZoomDelay` (0x49c70..0x49c90). `CFAbsoluteTimeGetCurrent` has no
+    // host counterpart, so `now` is caller-provided.
+    CONTROL_VIEW.gesture_should_receive(is_pinch, hit_self_or_camera, now)
 }
 
 // 0x49ca0 — -[ControlView .cxx_destruct]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView .cxx_destruct]")]
-pub fn stub_49ca0() -> ! {
-    todo!("0x49ca0 -[ControlView .cxx_destruct]")
+pub fn stub_49ca0() {
+    // IDA 0x49ca0: disconnects the overlay (0x49d00), datamodel
+    // (0x49d2a) and gameLoaded (0x49d54) connections with weak-slot
+    // releases (0x49d06..0x49d62), then releases the game (0x49d76..0x49d7e).
+    CONTROL_VIEW.cxx_destruct();
 }
 
 // 0x49e18 — -[ControlView .cxx_construct]
 // type: id __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView .cxx_construct]")]
-pub fn stub_49e18() -> ! {
-    todo!("0x49e18 -[ControlView .cxx_construct]")
+pub fn stub_49e18() {
+    // IDA 0x49e18: zeroes `frameSize` (0x49e30..0x49e34),
+    // `tapTouchBeginPos` (0x49e42..0x49e46), the game slot (0x49e54..0x49e58)
+    // and the three connection weak slots (0x49e66..0x49e78).
+    CONTROL_VIEW.cxx_construct();
 }
 
 // 0x4db9c — -[GameViewController webView:shouldStartLoadWithRequest:navigationType:]

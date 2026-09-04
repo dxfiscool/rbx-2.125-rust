@@ -15,211 +15,241 @@ use rbx_core::SharedPtr;
 // 0xc6e6f0 — __ZNK4Ogre13MovableObject16isParentTagPointEv
 #[doc(alias = "Ogre::MovableObject::isParentTagPoint(void)const")]
 // was: Ogre::MovableObject::isParentTagPoint(void)const
-// IDA 0xc6e6f0: 2 insns (LDRB..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e6f0() {
+// IDA 0xc6e6f0: LDRB [R0,#0x18], BX LR — bool field load; recovered: &MovableObject -> bool.
+pub fn stub_c6e6f0(obj: &crate::movable::MovableObject) -> bool {
+    obj.is_parent_tag_point()
 }
 
 // 0xc6e6f4 — __ZN4Ogre13MovableObject20setRenderingDistanceEf
 #[doc(alias = "Ogre::MovableObject::setRenderingDistance(float)")]
 // was: Ogre::MovableObject::setRenderingDistance(float)
-// IDA 0xc6e6f4: 6 insns (VMOV..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e6f4() {
+// IDA 0xc6e6f4: STR [R0,#0x1C] + VMUL.F32 D0,D16,D16 / VSTR [R0,#0x20] — stores distance and cached square; recovered: &mut MovableObject, f32.
+pub fn stub_c6e6f4(obj: &mut crate::movable::MovableObject, distance: f32) {
+    obj.set_rendering_distance(distance)
 }
 
 // 0xc6e708 — __ZNK4Ogre13MovableObject20getRenderingDistanceEv
 #[doc(alias = "Ogre::MovableObject::getRenderingDistance(void)const")]
 // was: Ogre::MovableObject::getRenderingDistance(void)const
-// IDA 0xc6e708: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e708() {
+// IDA 0xc6e708: LDR R0,[R0,#0x1C], BX LR — float field load; recovered: &MovableObject -> f32.
+pub fn stub_c6e708(obj: &crate::movable::MovableObject) -> f32 {
+    obj.rendering_distance()
 }
 
 // 0xc6e70c — __ZN4Ogre13MovableObject24setRenderingMinPixelSizeEf
 #[doc(alias = "Ogre::MovableObject::setRenderingMinPixelSize(float)")]
 // was: Ogre::MovableObject::setRenderingMinPixelSize(float)
-// IDA 0xc6e70c: 2 insns (STR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e70c() {
+// IDA 0xc6e70c: STR R1,[R0,#0x24], BX LR — float field store; recovered: &mut MovableObject, f32.
+pub fn stub_c6e70c(obj: &mut crate::movable::MovableObject, size: f32) {
+    obj.set_rendering_min_pixel_size(size)
 }
 
 // 0xc6e710 — __ZNK4Ogre13MovableObject24getRenderingMinPixelSizeEv
 #[doc(alias = "Ogre::MovableObject::getRenderingMinPixelSize(void)const")]
 // was: Ogre::MovableObject::getRenderingMinPixelSize(void)const
-// IDA 0xc6e710: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e710() {
+// IDA 0xc6e710: LDR R0,[R0,#0x24], BX LR — float field load; recovered: &MovableObject -> f32.
+pub fn stub_c6e710(obj: &crate::movable::MovableObject) -> f32 {
+    obj.rendering_min_pixel_size()
 }
 
 // 0xc6e714 — __ZN4Ogre13MovableObject10setUserAnyERKNS_3AnyE
 #[doc(alias = "Ogre::MovableObject::setUserAny(Ogre::Any const&)")]
 // was: Ogre::MovableObject::setUserAny(Ogre::Any const&)
-// IDA 0xc6e714: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e714() {
+// IDA 0xc6e714: ADDS R0,#0x2C + BL Ogre::UserObjectBindings::setUserAny — delegates to bindings at this+0x2C; recovered: &mut MovableObject, UserAny.
+pub fn stub_c6e714(obj: &mut crate::movable::MovableObject, any: crate::movable::UserAny) {
+    obj.set_user_any(any)
 }
 
 // 0xc6e720 — __ZNK4Ogre13MovableObject10getUserAnyEv
 #[doc(alias = "Ogre::MovableObject::getUserAny(void)const")]
 // was: Ogre::MovableObject::getUserAny(void)const
-// IDA 0xc6e720: 5 insns (PUSH..POP). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e720() {
+// IDA 0xc6e720: ADDS R0,#0x2C + BL Ogre::UserObjectBindings::getUserAny — delegates to bindings at this+0x2C; recovered: &MovableObject -> &UserAny.
+pub fn stub_c6e720(obj: &crate::movable::MovableObject) -> &crate::movable::UserAny {
+    obj.user_any()
 }
 
 // 0xc6e72c — __ZN4Ogre13MovableObject13setQueryFlagsEj
 #[doc(alias = "Ogre::MovableObject::setQueryFlags(unsigned int)")]
 // was: Ogre::MovableObject::setQueryFlags(unsigned int)
-// IDA 0xc6e72c: 2 insns (STR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e72c() {
+// IDA 0xc6e72c: STR R1,[R0,#0x3C], BX LR — u32 field store; recovered: &mut MovableObject, u32.
+pub fn stub_c6e72c(obj: &mut crate::movable::MovableObject, flags: u32) {
+    obj.set_query_flags(flags)
 }
 
 // 0xc6e730 — __ZN4Ogre13MovableObject13addQueryFlagsEj
 #[doc(alias = "Ogre::MovableObject::addQueryFlags(unsigned int)")]
 // was: Ogre::MovableObject::addQueryFlags(unsigned int)
-// IDA 0xc6e730: 4 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e730() {
+// IDA 0xc6e730: LDR R2,[R0,#0x3C] / ORRS R1,R2 / STR — flags |= mask; recovered: &mut MovableObject, u32.
+pub fn stub_c6e730(obj: &mut crate::movable::MovableObject, flags: u32) {
+    obj.add_query_flags(flags)
 }
 
 // 0xc6e738 — __ZN4Ogre13MovableObject16removeQueryFlagsEj
 #[doc(alias = "Ogre::MovableObject::removeQueryFlags(unsigned int)")]
 // was: Ogre::MovableObject::removeQueryFlags(unsigned int)
-// IDA 0xc6e738: 4 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e738() {
+// IDA 0xc6e738: LDR R2,[R0,#0x3C] / BIC.W R1,R2,R1 / STR — flags &= ~mask; recovered: &mut MovableObject, u32.
+pub fn stub_c6e738(obj: &mut crate::movable::MovableObject, flags: u32) {
+    obj.remove_query_flags(flags)
 }
 
 // 0xc6e744 — __ZNK4Ogre13MovableObject13getQueryFlagsEv
 #[doc(alias = "Ogre::MovableObject::getQueryFlags(void)const")]
 // was: Ogre::MovableObject::getQueryFlags(void)const
-// IDA 0xc6e744: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e744() {
+// IDA 0xc6e744: LDR R0,[R0,#0x3C], BX LR — u32 field load; recovered: &MovableObject -> u32.
+pub fn stub_c6e744(obj: &crate::movable::MovableObject) -> u32 {
+    obj.query_flags()
 }
 
 // 0xc6e748 — __ZN4Ogre13MovableObject18setVisibilityFlagsEj
 #[doc(alias = "Ogre::MovableObject::setVisibilityFlags(unsigned int)")]
 // was: Ogre::MovableObject::setVisibilityFlags(unsigned int)
-// IDA 0xc6e748: 2 insns (STR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e748() {
+// IDA 0xc6e748: STR R1,[R0,#0x40], BX LR — u32 field store; recovered: &mut MovableObject, u32.
+pub fn stub_c6e748(obj: &mut crate::movable::MovableObject, flags: u32) {
+    obj.set_visibility_flags(flags)
 }
 
 // 0xc6e74c — __ZN4Ogre13MovableObject18addVisibilityFlagsEj
 #[doc(alias = "Ogre::MovableObject::addVisibilityFlags(unsigned int)")]
 // was: Ogre::MovableObject::addVisibilityFlags(unsigned int)
-// IDA 0xc6e74c: 4 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e74c() {
+// IDA 0xc6e74c: LDR R2,[R0,#0x40] / ORRS R1,R2 / STR — flags |= mask; recovered: &mut MovableObject, u32.
+pub fn stub_c6e74c(obj: &mut crate::movable::MovableObject, flags: u32) {
+    obj.add_visibility_flags(flags)
 }
 
 // 0xc6e754 — __ZN4Ogre13MovableObject21removeVisibilityFlagsEj
 #[doc(alias = "Ogre::MovableObject::removeVisibilityFlags(unsigned int)")]
 // was: Ogre::MovableObject::removeVisibilityFlags(unsigned int)
-// IDA 0xc6e754: 4 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e754() {
+// IDA 0xc6e754: LDR R2,[R0,#0x40] / BIC.W R1,R2,R1 / STR — flags &= ~mask; recovered: &mut MovableObject, u32.
+pub fn stub_c6e754(obj: &mut crate::movable::MovableObject, flags: u32) {
+    obj.remove_visibility_flags(flags)
 }
 
 // 0xc6e760 — __ZNK4Ogre13MovableObject18getVisibilityFlagsEv
 #[doc(alias = "Ogre::MovableObject::getVisibilityFlags(void)const")]
 // was: Ogre::MovableObject::getVisibilityFlags(void)const
-// IDA 0xc6e760: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e760() {
+// IDA 0xc6e760: LDR R0,[R0,#0x40], BX LR — u32 field load; recovered: &MovableObject -> u32.
+pub fn stub_c6e760(obj: &crate::movable::MovableObject) -> u32 {
+    obj.visibility_flags()
 }
 
 // 0xc6e764 — __ZN4Ogre13MovableObject11setListenerEPNS0_8ListenerE
 #[doc(alias = "Ogre::MovableObject::setListener(Ogre::MovableObject::Listener *)")]
 // was: Ogre::MovableObject::setListener(Ogre::MovableObject::Listener *)
-// IDA 0xc6e764: 2 insns (STR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e764() {
+// IDA 0xc6e764: STR.W R1,[R0,#0x98], BX LR — listener pointer store; recovered: &mut MovableObject, Option<usize>.
+pub fn stub_c6e764(obj: &mut crate::movable::MovableObject, listener: Option<usize>) {
+    obj.set_listener(listener)
 }
 
 // 0xc6e76c — __ZNK4Ogre13MovableObject11getListenerEv
 #[doc(alias = "Ogre::MovableObject::getListener(void)const")]
 // was: Ogre::MovableObject::getListener(void)const
-// IDA 0xc6e76c: 2 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e76c() {
+// IDA 0xc6e76c: LDR.W R0,[R0,#0x98], BX LR — listener pointer load; recovered: &MovableObject -> Option<usize>.
+pub fn stub_c6e76c(obj: &crate::movable::MovableObject) -> Option<usize> {
+    obj.listener()
 }
 
 // 0xc6e774 — __ZNK4Ogre13MovableObject12getLightMaskEv
 #[doc(alias = "Ogre::MovableObject::getLightMask(void)const")]
 // was: Ogre::MovableObject::getLightMask(void)const
-// IDA 0xc6e774: 2 insns (LDR.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e774() {
+// IDA 0xc6e774: LDR.W R0,[R0,#0xB8], BX LR — u32 field load; recovered: &MovableObject -> u32.
+pub fn stub_c6e774(obj: &crate::movable::MovableObject) -> u32 {
+    obj.light_mask()
 }
 
 // 0xc6e77c — __ZN4Ogre13MovableObject13_getLightListEv
 #[doc(alias = "Ogre::MovableObject::_getLightList(void)")]
 // was: Ogre::MovableObject::_getLightList(void)
-// IDA 0xc6e77c: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e77c() {
+// IDA 0xc6e77c: ADDS R0,#0x9C, BX LR — returns embedded light-list head pointer; recovered: &MovableObject -> &[u32].
+pub fn stub_c6e77c(obj: &crate::movable::MovableObject) -> &[u32] {
+    obj.light_list()
 }
 
 // 0xc6e780 — __ZN4Ogre13MovableObject22setDebugDisplayEnabledEb
 #[doc(alias = "Ogre::MovableObject::setDebugDisplayEnabled(bool)")]
 // was: Ogre::MovableObject::setDebugDisplayEnabled(bool)
-// IDA 0xc6e780: 2 insns (STRB..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e780() {
+// IDA 0xc6e780: STRB R1,[R0,#0x1A], BX LR — bool field store; recovered: &mut MovableObject, bool.
+pub fn stub_c6e780(obj: &mut crate::movable::MovableObject, enabled: bool) {
+    obj.set_debug_display_enabled(enabled)
 }
 
 // 0xc6e784 — __ZNK4Ogre13MovableObject21isDebugDisplayEnabledEv
 #[doc(alias = "Ogre::MovableObject::isDebugDisplayEnabled(void)const")]
 // was: Ogre::MovableObject::isDebugDisplayEnabled(void)const
-// IDA 0xc6e784: 2 insns (LDRB..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e784() {
+// IDA 0xc6e784: LDRB R0,[R0,#0x1A], BX LR — bool field load; recovered: &MovableObject -> bool.
+pub fn stub_c6e784(obj: &crate::movable::MovableObject) -> bool {
+    obj.is_debug_display_enabled()
 }
 
 // 0xc6e788 — __ZNK4Ogre7Frustum25isCustomViewMatrixEnabledEv
 #[doc(alias = "Ogre::Frustum::isCustomViewMatrixEnabled(void)const")]
 // was: Ogre::Frustum::isCustomViewMatrixEnabled(void)const
-// IDA 0xc6e788: 2 insns (LDRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e788() {
+// IDA 0xc6e788: LDRB.W R0,[R0,#0x291], BX LR — Frustum bool field load; recovered: &Frustum -> bool.
+pub fn stub_c6e788(obj: &crate::movable::Frustum) -> bool {
+    obj.is_custom_view_matrix_enabled()
 }
 
 // 0xc6e790 — __ZNK4Ogre7Frustum31isCustomProjectionMatrixEnabledEv
 #[doc(alias = "Ogre::Frustum::isCustomProjectionMatrixEnabled(void)const")]
 // was: Ogre::Frustum::isCustomProjectionMatrixEnabled(void)const
-// IDA 0xc6e790: 2 insns (LDRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e790() {
+// IDA 0xc6e790: LDRB.W R0,[R0,#0x292], BX LR — Frustum bool field load; recovered: &Frustum -> bool.
+pub fn stub_c6e790(obj: &crate::movable::Frustum) -> bool {
+    obj.is_custom_projection_matrix_enabled()
 }
 
 // 0xc6e798 — __ZNK4Ogre7Frustum11isReflectedEv
 #[doc(alias = "Ogre::Frustum::isReflected(void)const")]
 // was: Ogre::Frustum::isReflected(void)const
-// IDA 0xc6e798: 2 insns (LDRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e798() {
+// IDA 0xc6e798: LDRB.W R0,[R0,#0x374], BX LR — Frustum bool field load; recovered: &Frustum -> bool.
+pub fn stub_c6e798(obj: &crate::movable::Frustum) -> bool {
+    obj.is_reflected()
 }
 
 // 0xc6e7a0 — __ZNK4Ogre7Frustum19getReflectionMatrixEv
 #[doc(alias = "Ogre::Frustum::getReflectionMatrix(void)const")]
 // was: Ogre::Frustum::getReflectionMatrix(void)const
-// IDA 0xc6e7a0: 2 insns (ADD.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e7a0() {
+// IDA 0xc6e7a0: ADD.W R0,R0,#0x378, BX LR — returns embedded Matrix4; recovered: &Frustum -> &[f32; 16].
+pub fn stub_c6e7a0(obj: &crate::movable::Frustum) -> &[f32; 16] {
+    obj.reflection_matrix()
 }
 
 // 0xc6e7a8 — __ZNK4Ogre7Frustum18getReflectionPlaneEv
 #[doc(alias = "Ogre::Frustum::getReflectionPlane(void)const")]
 // was: Ogre::Frustum::getReflectionPlane(void)const
-// IDA 0xc6e7a8: 2 insns (ADD.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e7a8() {
+// IDA 0xc6e7a8: ADD.W R0,R0,#0x3B8, BX LR — returns embedded Plane; recovered: &Frustum -> &[f32; 4].
+pub fn stub_c6e7a8(obj: &crate::movable::Frustum) -> &[f32; 4] {
+    obj.reflection_plane()
 }
 
 // 0xc6e7b0 — __ZNK4Ogre7Frustum28isCustomNearClipPlaneEnabledEv
 #[doc(alias = "Ogre::Frustum::isCustomNearClipPlaneEnabled(void)const")]
 // was: Ogre::Frustum::isCustomNearClipPlaneEnabled(void)const
-// IDA 0xc6e7b0: 2 insns (LDRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e7b0() {
+// IDA 0xc6e7b0: LDRB.W R0,[R0,#0x3DC], BX LR — Frustum bool field load; recovered: &Frustum -> bool.
+pub fn stub_c6e7b0(obj: &crate::movable::Frustum) -> bool {
+    obj.is_custom_near_clip_plane_enabled()
 }
 
 // 0xc6e7b8 — __ZNK4Ogre6Camera11isWindowSetEv
 #[doc(alias = "Ogre::Camera::isWindowSet(void)const")]
 // was: Ogre::Camera::isWindowSet(void)const
-// IDA 0xc6e7b8: 2 insns (LDRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e7b8() {
+// IDA 0xc6e7b8: LDRB.W R0,[R0,#0x4A0], BX LR — Camera bool field load; recovered: &Camera -> bool.
+pub fn stub_c6e7b8(obj: &crate::movable::Camera) -> bool {
+    obj.is_window_set()
 }
 
 // 0xc6e7c0 — __ZN4Ogre6Camera23setUseRenderingDistanceEb
 #[doc(alias = "Ogre::Camera::setUseRenderingDistance(bool)")]
 // was: Ogre::Camera::setUseRenderingDistance(bool)
-// IDA 0xc6e7c0: 2 insns (STRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e7c0() {
+// IDA 0xc6e7c0: STRB.W R1,[R0,#0x4C4], BX LR — Camera bool field store; recovered: &mut Camera, bool.
+pub fn stub_c6e7c0(obj: &mut crate::movable::Camera, use_it: bool) {
+    obj.set_use_rendering_distance(use_it)
 }
 
 // 0xc6e7c8 — __ZNK4Ogre6Camera23getUseRenderingDistanceEv
 #[doc(alias = "Ogre::Camera::getUseRenderingDistance(void)const")]
 // was: Ogre::Camera::getUseRenderingDistance(void)const
-// IDA 0xc6e7c8: 2 insns (LDRB.W..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6e7c8() {
+// IDA 0xc6e7c8: LDRB.W R0,[R0,#0x4C4], BX LR — Camera bool field load; recovered: &Camera -> bool.
+pub fn stub_c6e7c8(obj: &crate::movable::Camera) -> bool {
+    obj.use_rendering_distance()
 }
 
 // 0xc6e7d0 — __ZNK4Ogre14AnimableObject25getAnimableDictionaryNameEv
@@ -248,15 +278,17 @@ pub fn stub_c6e7e4() {
 // 0xc6ea98 — __ZN4Ogre10Renderable9preRenderEPNS_12SceneManagerEPNS_12RenderSystemE
 #[doc(alias = "Ogre::Renderable::preRender(Ogre::SceneManager *,Ogre::RenderSystem *)")]
 // was: Ogre::Renderable::preRender(Ogre::SceneManager *,Ogre::RenderSystem *)
-// IDA 0xc6ea98: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6ea98() {
+// IDA 0xc6ea98: MOVS R0,#1, BX LR — default Renderable::preRender returns true; recovered: &mut Renderable -> bool.
+pub fn stub_c6ea98(obj: &mut crate::movable::Renderable) -> bool {
+    obj.pre_render()
 }
 
 // 0xc6eaa0 — __ZNK4Ogre10Renderable21getNumWorldTransformsEv
 #[doc(alias = "Ogre::Renderable::getNumWorldTransforms(void)const")]
 // was: Ogre::Renderable::getNumWorldTransforms(void)const
-// IDA 0xc6eaa0: 2 insns (MOVS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6eaa0() {
+// IDA 0xc6eaa0: MOVS R0,#1, BX LR — base Renderable has one world transform; recovered: &Renderable -> u16.
+pub fn stub_c6eaa0(obj: &crate::movable::Renderable) -> u16 {
+    obj.num_world_transforms()
 }
 
 // 0xc6eaa8 — __ZNK4Ogre10Renderable25_updateCustomGpuParameterERKNS_20GpuProgramParameters17AutoConstantEntryEPS1_
@@ -278,8 +310,9 @@ pub fn stub_c6eb08() {
 // 0xc6eb18 — __ZNK4Ogre10Renderable19setRenderSystemDataEPNS0_16RenderSystemDataE
 #[doc(alias = "Ogre::Renderable::setRenderSystemData(Ogre::Renderable::RenderSystemData *)const")]
 // was: Ogre::Renderable::setRenderSystemData(Ogre::Renderable::RenderSystemData *)const
-// IDA 0xc6eb18: 2 insns (STR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6eb18() {
+// IDA 0xc6eb18: STR R1,[R0,#0x2C], BX LR — RenderSystemData pointer store (const setter mutates mutable cell); recovered: &mut Renderable, Option<usize>.
+pub fn stub_c6eb18(obj: &mut crate::movable::Renderable, data: Option<usize>) {
+    obj.set_render_system_data(data)
 }
 
 // 0xc6eb1c — __ZNSt6vectorIN4Ogre7Vector4ENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S7_EERKS1_
@@ -371,15 +404,17 @@ pub fn stub_c6f148() {
 // 0xc6f160 — __ZNK4Ogre9Exception9getSourceEv
 #[doc(alias = "Ogre::Exception::getSource(void)const")]
 // was: Ogre::Exception::getSource(void)const
-// IDA 0xc6f160: 2 insns (ADDS..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6f160() {
+// IDA 0xc6f160: ADDS R0,#0x14, BX LR — returns embedded source string; recovered: &OgreException -> &str.
+pub fn stub_c6f160(obj: &crate::movable::OgreException) -> &str {
+    obj.source()
 }
 
 // 0xc6f168 — __ZNK4Ogre9Exception7getLineEv
 #[doc(alias = "Ogre::Exception::getLine(void)const")]
 // was: Ogre::Exception::getLine(void)const
-// IDA 0xc6f168: 2 insns (LDR..BX). // FIDELITY: args/returns pending signature recovery; no-op preserves call-graph shape.
-pub fn stub_c6f168() {
+// IDA 0xc6f168: LDR R0,[R0,#4], BX LR — i32 field load; recovered: &OgreException -> i32.
+pub fn stub_c6f168(obj: &crate::movable::OgreException) -> i32 {
+    obj.line()
 }
 
 // 0xc6f170 — __ZN4Ogre21ItemIdentityExceptionD0Ev

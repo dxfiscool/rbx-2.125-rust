@@ -621,287 +621,350 @@ pub fn stub_b20e68() -> *const () {
 
 // 0xb20e6c — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_23TopNErrorsPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, int, _DWORD **, int, void *, int)
-#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender,RBX::Network::TopNErrorsPhysicsSender>(boost::shared_ptr<RBX::Network::PhysicsSender> *,RBX::Network::TopNErrorsPhysicsSender *,boost::detail::shared_count &)")]
-pub fn stub_b20e6c() -> ! {
-    todo!("0xb20e6c void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender,RBX::Network::TopNErrorsPhysicsSender>(boost::shared_ptr<RBX::Network::PhysicsSender> *,RBX::Network::TopNErrorsPhysicsSender *,boost::detail::shared_count &)")
+pub fn stub_b20e6c() -> SharedPtr<crate::physics::TopNErrorsPhysicsSender> {
+    // IDA 0xb20e6c: publish the fresh sender control block.
+    crate::physics::top_n_errors_physics_sender()
 }
 
 // 0xb21004 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::TopNErrorsPhysicsSender>::~sp_counted_impl_p()")]
-pub fn stub_b21004() -> ! {
-    todo!("0xb21004 boost::detail::sp_counted_impl_p<RBX::Network::TopNErrorsPhysicsSender>::~sp_counted_impl_p()")
+pub fn stub_b21004(sender: SharedPtr<crate::physics::TopNErrorsPhysicsSender>) {
+    // IDA 0xb21004: D1 — dispose; Rust drops.
+    crate::replicator::shared_dict_drop(sender);
 }
 
 // 0xb21008 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::TopNErrorsPhysicsSender>::~sp_counted_impl_p()")]
-pub fn stub_b21008() -> ! {
-    todo!("0xb21008 boost::detail::sp_counted_impl_p<RBX::Network::TopNErrorsPhysicsSender>::~sp_counted_impl_p()")
+pub fn stub_b21008(sender: SharedPtr<crate::physics::TopNErrorsPhysicsSender>) {
+    // IDA 0xb21008: D0 — dispose plus operator delete; Rust drops.
+    crate::replicator::shared_dict_drop(sender);
 }
 
 // 0xb21014 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEE7disposeEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::TopNErrorsPhysicsSender>::dispose(void)")]
-pub fn stub_b21014() -> ! {
-    todo!("0xb21014 boost::detail::sp_counted_impl_p<RBX::Network::TopNErrorsPhysicsSender>::dispose(void)")
+pub fn stub_b21014(sender: SharedPtr<crate::physics::TopNErrorsPhysicsSender>) {
+    // IDA 0xb21014: dispose runs the held destructor; Rust drops.
+    crate::replicator::shared_dict_drop(sender);
 }
 
 // 0xb21028 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEE11get_deleterERKSt9type_info
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::TopNErrorsPhysicsSender>::get_deleter(std::type_info const&)")]
-pub fn stub_b21028() -> ! {
-    todo!("0xb21028 boost::detail::sp_counted_impl_p<RBX::Network::TopNErrorsPhysicsSender>::get_deleter(std::type_info const&)")
+pub fn stub_b21028() -> *const () {
+    // IDA 0xb21028: no custom deleter installed — null.
+    crate::replicator::shared_null_deleter()
 }
 
 // 0xb2102c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23TopNErrorsPhysicsSenderEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::TopNErrorsPhysicsSender>::get_untyped_deleter(void)")]
-pub fn stub_b2102c() -> ! {
-    todo!("0xb2102c boost::detail::sp_counted_impl_p<RBX::Network::TopNErrorsPhysicsSender>::get_untyped_deleter(void)")
+pub fn stub_b2102c() -> *const () {
+    // IDA 0xb2102c: no custom deleter installed — null.
+    crate::replicator::shared_null_deleter()
 }
 
 // 0xb21030 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_23RoundRobinPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, int, _DWORD **, int, void *, int)
 #[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender,RBX::Network::RoundRobinPhysicsSender>(boost::shared_ptr<RBX::Network::PhysicsSender> *,RBX::Network::RoundRobinPhysicsSender *,boost::detail::shared_count &)")]
-pub fn stub_b21030() -> ! {
-    todo!("0xb21030 void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender,RBX::Network::RoundRobinPhysicsSender>(boost::shared_ptr<RBX::Network::PhysicsSender> *,RBX::Network::RoundRobinPhysicsSender *,boost::detail::shared_count &)")
+pub fn stub_b21030() -> SharedPtr<crate::physics::RoundRobinPhysicsSender> {
+    // IDA 0xb21030: publish the fresh sender control block.
+    crate::physics::round_robin_physics_sender()
 }
 
 // 0xb211c8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::RoundRobinPhysicsSender>::~sp_counted_impl_p()")]
-pub fn stub_b211c8() -> ! {
-    todo!("0xb211c8 boost::detail::sp_counted_impl_p<RBX::Network::RoundRobinPhysicsSender>::~sp_counted_impl_p()")
+pub fn stub_b211c8(sender: SharedPtr<crate::physics::RoundRobinPhysicsSender>) {
+    // IDA 0xb211c8: D1 — dispose; Rust drops.
+    crate::replicator::shared_dict_drop(sender);
 }
 
 // 0xb211cc — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::RoundRobinPhysicsSender>::~sp_counted_impl_p()")]
-pub fn stub_b211cc() -> ! {
-    todo!("0xb211cc boost::detail::sp_counted_impl_p<RBX::Network::RoundRobinPhysicsSender>::~sp_counted_impl_p()")
+pub fn stub_b211cc(sender: SharedPtr<crate::physics::RoundRobinPhysicsSender>) {
+    // IDA 0xb211cc: D0 — dispose plus operator delete; Rust drops.
+    crate::replicator::shared_dict_drop(sender);
 }
 
 // 0xb211d8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEE7disposeEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::RoundRobinPhysicsSender>::dispose(void)")]
-pub fn stub_b211d8() -> ! {
-    todo!("0xb211d8 boost::detail::sp_counted_impl_p<RBX::Network::RoundRobinPhysicsSender>::dispose(void)")
+pub fn stub_b211d8(sender: SharedPtr<crate::physics::RoundRobinPhysicsSender>) {
+    // IDA 0xb211d8: dispose runs the held destructor; Rust drops.
+    crate::replicator::shared_dict_drop(sender);
 }
 
 // 0xb211ec — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEE11get_deleterERKSt9type_info
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::RoundRobinPhysicsSender>::get_deleter(std::type_info const&)")]
-pub fn stub_b211ec() -> ! {
-    todo!("0xb211ec boost::detail::sp_counted_impl_p<RBX::Network::RoundRobinPhysicsSender>::get_deleter(std::type_info const&)")
+pub fn stub_b211ec() -> *const () {
+    // IDA 0xb211ec: no custom deleter installed — null.
+    crate::replicator::shared_null_deleter()
 }
 
 // 0xb211f0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23RoundRobinPhysicsSenderEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::RoundRobinPhysicsSender>::get_untyped_deleter(void)")]
-pub fn stub_b211f0() -> ! {
-    todo!("0xb211f0 boost::detail::sp_counted_impl_p<RBX::Network::RoundRobinPhysicsSender>::get_untyped_deleter(void)")
+pub fn stub_b211f0() -> *const () {
+    // IDA 0xb211f0: no custom deleter installed — null.
+    crate::replicator::shared_null_deleter()
 }
 
 // 0xb211f4 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_23ErrorCompPhysicsSender2EEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, int, _DWORD **, int, void *, int)
 #[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender,RBX::Network::ErrorCompPhysicsSender2>(boost::shared_ptr<RBX::Network::PhysicsSender> *,RBX::Network::ErrorCompPhysicsSender2 *,boost::detail::shared_count &)")]
-pub fn stub_b211f4() -> ! {
-    todo!("0xb211f4 void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender,RBX::Network::ErrorCompPhysicsSender2>(boost::shared_ptr<RBX::Network::PhysicsSender> *,RBX::Network::ErrorCompPhysicsSender2 *,boost::detail::shared_count &)")
+pub fn stub_b211f4() -> SharedPtr<crate::physics::ErrorCompPhysicsSender2> {
+    // IDA 0xb211f4: publish the fresh sender control block.
+    crate::physics::error_comp_physics_sender2()
 }
 
 // 0xb2138c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender2>::~sp_counted_impl_p()")]
-pub fn stub_b2138c() -> ! {
-    todo!("0xb2138c boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender2>::~sp_counted_impl_p()")
+pub fn stub_b2138c(sender: SharedPtr<crate::physics::ErrorCompPhysicsSender2>) {
+    // IDA 0xb2138c: D1 — dispose; Rust drops.
+    crate::replicator::shared_dict_drop(sender);
 }
 
 // 0xb21390 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender2>::~sp_counted_impl_p()")]
-pub fn stub_b21390() -> ! {
-    todo!("0xb21390 boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender2>::~sp_counted_impl_p()")
+pub fn stub_b21390(sender: SharedPtr<crate::physics::ErrorCompPhysicsSender2>) {
+    // IDA 0xb21390: D0 — dispose plus operator delete; Rust drops.
+    crate::replicator::shared_dict_drop(sender);
 }
 
 // 0xb2139c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EE7disposeEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender2>::dispose(void)")]
-pub fn stub_b2139c() -> ! {
-    todo!("0xb2139c boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender2>::dispose(void)")
+pub fn stub_b2139c(sender: SharedPtr<crate::physics::ErrorCompPhysicsSender2>) {
+    // IDA 0xb2139c: dispose runs the held destructor; Rust drops.
+    crate::replicator::shared_dict_drop(sender);
 }
 
 // 0xb213b0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EE11get_deleterERKSt9type_info
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender2>::get_deleter(std::type_info const&)")]
-pub fn stub_b213b0() -> ! {
-    todo!("0xb213b0 boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender2>::get_deleter(std::type_info const&)")
+pub fn stub_b213b0() -> *const () {
+    // IDA 0xb213b0: no custom deleter installed — null.
+    crate::replicator::shared_null_deleter()
 }
 
 // 0xb213b4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network23ErrorCompPhysicsSender2EE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender2>::get_untyped_deleter(void)")]
-pub fn stub_b213b4() -> ! {
-    todo!("0xb213b4 boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender2>::get_untyped_deleter(void)")
+pub fn stub_b213b4() -> *const () {
+    // IDA 0xb213b4: no custom deleter installed — null.
+    crate::replicator::shared_null_deleter()
 }
 
 // 0xb213b8 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_22ErrorCompPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, int, _DWORD **, int, void *, int)
 #[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender,RBX::Network::ErrorCompPhysicsSender>(boost::shared_ptr<RBX::Network::PhysicsSender> *,RBX::Network::ErrorCompPhysicsSender *,boost::detail::shared_count &)")]
-pub fn stub_b213b8() -> ! {
-    todo!("0xb213b8 void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender,RBX::Network::ErrorCompPhysicsSender>(boost::shared_ptr<RBX::Network::PhysicsSender> *,RBX::Network::ErrorCompPhysicsSender *,boost::detail::shared_count &)")
+pub fn stub_b213b8() -> SharedPtr<crate::physics::ErrorCompPhysicsSender> {
+    // IDA 0xb213b8: publish the fresh sender control block.
+    crate::physics::error_comp_physics_sender()
 }
 
 // 0xb21550 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEED1Ev
 // type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender>::~sp_counted_impl_p()")]
-pub fn stub_b21550() -> ! {
-    todo!("0xb21550 boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender>::~sp_counted_impl_p()")
+pub fn stub_b21550(sender: SharedPtr<crate::physics::ErrorCompPhysicsSender>) {
+    // IDA 0xb21550: D1 — dispose; Rust drops.
+    crate::replicator::shared_dict_drop(sender);
 }
 
 // 0xb21554 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender>::~sp_counted_impl_p()")]
-pub fn stub_b21554() -> ! {
-    todo!("0xb21554 boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender>::~sp_counted_impl_p()")
+pub fn stub_b21554(sender: SharedPtr<crate::physics::ErrorCompPhysicsSender>) {
+    // IDA 0xb21554: D0 — dispose plus operator delete; Rust drops.
+    crate::replicator::shared_dict_drop(sender);
 }
 
 // 0xb21560 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEE7disposeEv
 // type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender>::dispose(void)")]
-pub fn stub_b21560() -> ! {
-    todo!("0xb21560 boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender>::dispose(void)")
+pub fn stub_b21560(sender: SharedPtr<crate::physics::ErrorCompPhysicsSender>) {
+    // IDA 0xb21560: dispose runs the held destructor; Rust drops.
+    crate::replicator::shared_dict_drop(sender);
 }
 
 // 0xb21574 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEE11get_deleterERKSt9type_info
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender>::get_deleter(std::type_info const&)")]
-pub fn stub_b21574() -> ! {
-    todo!("0xb21574 boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender>::get_deleter(std::type_info const&)")
+pub fn stub_b21574() -> *const () {
+    // IDA 0xb21574: no custom deleter installed — null.
+    crate::replicator::shared_null_deleter()
 }
 
 // 0xb21578 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network22ErrorCompPhysicsSenderEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender>::get_untyped_deleter(void)")]
-pub fn stub_b21578() -> ! {
-    todo!("0xb21578 boost::detail::sp_counted_impl_p<RBX::Network::ErrorCompPhysicsSender>::get_untyped_deleter(void)")
+pub fn stub_b21578() -> *const () {
+    // IDA 0xb21578: no custom deleter installed — null.
+    crate::replicator::shared_null_deleter()
 }
 
 // 0xb21844 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSEPSH_
 // type: int32_t **__fastcall(int32_t **, int32_t *)
 #[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot*)")]
-pub fn stub_b21844() -> ! {
-    todo!("0xb21844 boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot*)")
+pub fn stub_b21844(
+    slot: &mut SharedPtr<crate::replicator::ChatSlot>,
+    next: &SharedPtr<crate::replicator::ChatSlot>,
+) {
+    // IDA 0xb21844: addref the raw slot, store it, release the old slot.
+    crate::replicator::chat_slot_assign(slot, next);
 }
 
 // 0xb218f8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSERKSI_
 // type: int32_t **__fastcall(int32_t **, int32_t **)
 #[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot> const&)")]
-pub fn stub_b218f8() -> ! {
-    todo!("0xb218f8 boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot> const&)")
+pub fn stub_b218f8(
+    slot: &mut SharedPtr<crate::replicator::ChatSlot>,
+    next: &SharedPtr<crate::replicator::ChatSlot>,
+) {
+    // IDA 0xb218f8: same retain-store-release via the const-ref copy.
+    crate::replicator::chat_slot_assign(slot, next);
 }
 
 // 0xb21bec — __ZNK3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slot9connectedEv
 // type: bool __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot::connected(void)const")]
-pub fn stub_b21bec() -> ! {
-    todo!("0xb21bec rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot::connected(void)const")
+pub fn stub_b21bec(slot: &crate::replicator::ChatSlot) -> bool {
+    // IDA 0xb21bec: the +12 signal link is set.
+    crate::replicator::chat_slot_connected(slot)
 }
 
 // 0xb21bf8 — __ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_E4callES6_SC_SE_SE_
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::call(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)")]
-pub fn stub_b21bf8() -> ! {
-    todo!("0xb21bf8 rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::call(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)")
+pub fn stub_b21bf8(
+    call: &crate::replicator::ChatFilterCall,
+    addr: &crate::socket::SystemAddress,
+    text: &str,
+    filtered: &str,
+    invoke: &mut dyn FnMut(&SharedPtr<crate::replicator::Marker>, &crate::socket::SystemAddress, &str, &str),
+) {
+    // IDA 0xb21bf8: vtable dispatch into the bound mf4 with four args.
+    crate::replicator::chat_callable_call(call, addr, text, filtered, invoke);
 }
 
 // 0xb21c28 — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_E4callES6_SC_SE_SE_
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::call(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)")]
-pub fn stub_b21c28() -> ! {
-    todo!("0xb21c28 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::call(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)")
+pub fn stub_b21c28(
+    call: &crate::replicator::ChatFilterCall,
+    addr: &crate::socket::SystemAddress,
+    text: &str,
+    filtered: &str,
+    invoke: &mut dyn FnMut(&SharedPtr<crate::replicator::Marker>, &crate::socket::SystemAddress, &str, &str),
+) {
+    // IDA 0xb21c28: __ZThn4 — this -= 4, tail-call callable::call (0xb21bf8).
+    stub_b21bf8(call, addr, text, filtered, invoke)
 }
 
 // 0xb21c58 — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE6removeEPNSF_4slotE
 // type: int __fastcall(char **, char *, int, int (*)(const char *, ...))
 #[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::remove(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")]
-pub fn stub_b21c58() -> ! {
-    todo!("0xb21c58 rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::remove(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")
+pub fn stub_b21c58(
+    slots: &mut Vec<SharedPtr<crate::replicator::ChatSlot>>,
+    target: &SharedPtr<crate::replicator::ChatSlot>,
+) -> bool {
+    // IDA 0xb21c58: assert live, log the removal, splice the slot out.
+    crate::replicator::chat_signal_remove(slots, target)
 }
 
 // 0xb21d44 — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slot22safe_static_init_mutexEv
 // type: void()
 #[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot::safe_static_init_mutex(void)")]
-pub fn stub_b21d44() -> ! {
-    todo!("0xb21d44 rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot::safe_static_init_mutex(void)")
+pub fn stub_b21d44() {
+    // IDA 0xb21d44: one-time slot mutex construction; Rust statics need none.
+    crate::replicator::chat_slot_mutex_init();
 }
 
 // 0xb21e28 — __ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED2Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::~callable()")]
-pub fn stub_b21e28() -> ! {
-    todo!("0xb21e28 rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::~callable()")
+pub fn stub_b21e28(call: crate::replicator::ChatFilterCall) {
+    // IDA 0xb21e28: D2 — vtable reset, shared_count drop, slot release.
+    crate::replicator::chat_callable_drop(call);
 }
 
 // 0xb21fa4 — __ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::~callable()")]
-pub fn stub_b21fa4() -> ! {
-    todo!("0xb21fa4 rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::~callable()")
+pub fn stub_b21fa4(call: crate::replicator::ChatFilterCall) {
+    // IDA 0xb21fa4: D1 — dispose; Rust drops.
+    crate::replicator::chat_callable_drop(call);
 }
 
 // 0xb21fb0 — __ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED0Ev
 // type: void __fastcall(void *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::~callable()")]
-pub fn stub_b21fb0() -> ! {
-    todo!("0xb21fb0 rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::~callable()")
+pub fn stub_b21fb0(call: crate::replicator::ChatFilterCall) {
+    // IDA 0xb21fb0: D0 — dispose plus operator delete; Rust drops.
+    crate::replicator::chat_callable_drop(call);
 }
 
 // 0xb22064 — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slotD1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot::~slot()")]
-pub fn stub_b22064() -> ! {
-    todo!("0xb22064 rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot::~slot()")
+pub fn stub_b22064(slot: SharedPtr<crate::replicator::ChatSlot>) {
+    // IDA 0xb22064: D1 — vtable reset plus chained slot release.
+    crate::replicator::chat_slot_drop(slot);
 }
 
 // 0xb220c0 — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE4slotD0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot::~slot()")]
-pub fn stub_b220c0() -> ! {
-    todo!("0xb220c0 rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot::~slot()")
+pub fn stub_b220c0(slot: SharedPtr<crate::replicator::ChatSlot>) {
+    // IDA 0xb220c0: D0 — dispose plus operator delete; Rust drops.
+    crate::replicator::chat_slot_drop(slot);
 }
 
 // 0xb221c8 — __ZN5boost3_bi5list5INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEENS9_ILi4EEEEC2ES8_SA_SB_SC_SD_
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int, int *, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::list5(boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>)")]
-pub fn stub_b221c8() -> ! {
-    todo!("0xb221c8 boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::list5(boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>)")
+pub fn stub_b221c8(
+    target: &SharedPtr<crate::replicator::Marker>,
+) -> crate::replicator::ChatFilterCall {
+    // IDA 0xb221c8: retain the owner, capture the four placeholders.
+    crate::replicator::chat_list5(target)
 }
 
 // 0xb22618 — __ZN5boost3_bi8storage4INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEEEC2ES8_SA_SB_SC_
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int, int *, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::storage4(boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>)")]
-pub fn stub_b22618() -> ! {
-    todo!("0xb22618 boost::_bi::storage4<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::storage4(boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>)")
+pub fn stub_b22618(call: &crate::replicator::ChatFilterCall) -> crate::replicator::ChatFilterCall {
+    // IDA 0xb22618: keep the owner plus the first three placeholders.
+    crate::replicator::chat_store4(call)
 }
 
 // 0xb22a68 — __ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEEEC2ES8_SA_
 // type: _DWORD *__fastcall(_DWORD *, unsigned int *, int, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, pthread_mutex_t *, int, int, int, int)
 #[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>)")]
-pub fn stub_b22a68() -> ! {
-    todo!("0xb22a68 boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>)")
+pub fn stub_b22a68(call: &crate::replicator::ChatFilterCall) -> crate::replicator::ChatFilterCall {
+    // IDA 0xb22a68: keep only the owner and the first placeholder.
+    crate::replicator::chat_store2(call)
 }
 
 // 0xb2332c — __ZN3RBX4Name13callDoDeclareILZNS_7Network19sClusterPacketCacheEEEEvv
 // type: void()
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_7Network19sClusterPacketCacheEEEEvv")]
-pub fn stub_b2332c() -> ! {
-    todo!("0xb2332c __ZN3RBX4Name13callDoDeclareILZNS_7Network19sClusterPacketCacheEEEEvv")
+pub fn stub_b2332c(declared: &mut bool) -> bool {
+    // IDA 0xb2332c: one-time Name::declare(&sClusterPacketCache).
+    crate::replicator::declare_cluster_packet_cache(declared)
 }
 
 // 0xb23cd8 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator7PingJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
 #[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::Replicator::PingJob,RBX::Network::Replicator::PingJob>(boost::shared_ptr<RBX::Network::Replicator::PingJob> *,RBX::Network::Replicator::PingJob *,boost::detail::shared_count &)")]
-pub fn stub_b23cd8() -> ! {
-    todo!("0xb23cd8 void boost::detail::sp_pointer_construct<RBX::Network::Replicator::PingJob,RBX::Network::Replicator::PingJob>(boost::shared_ptr<RBX::Network::Replicator::PingJob> *,RBX::Network::Replicator::PingJob *,boost::detail::shared_count &)")
+pub fn stub_b23cd8() -> SharedPtr<crate::replicator::PingJob> {
+    // IDA 0xb23cd8: publish the fresh PingJob control block.
+    crate::replicator::ping_job()
 }

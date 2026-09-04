@@ -306,8 +306,10 @@ pub fn stub_95f168(stream: &mut crate::bitstream::BitStream, v: [f32; 3]) {
 
 // 0x95f2cc — __ZN3RBX7Network15readBrickVectorERN6RakNet9BitStreamERN3G3D7Vector3E
 #[doc(alias = "RBX::Network::readBrickVector(RakNet::BitStream &,G3D::Vector3 &)")]
-pub fn stub_95f2cc() -> ! {
-    todo!("0x95f2cc RBX::Network::readBrickVector(RakNet::BitStream &,G3D::Vector3 &)")
+pub fn stub_95f2cc(stream: &mut crate::bitstream::BitStream) -> [f32; 3] {
+    // IDA 0x95f2cc: quantized-or-float brick vector read; short reads raise
+    // `runtime_error` (mirrored as panics inside `read_brick_vector`).
+    crate::custom_serializer::read_brick_vector(stream)
 }
 
 // 0x95f664 — __ZN3RBXlsERN6RakNet9BitStreamERKN3G3D7Vector2E
@@ -1116,15 +1118,21 @@ pub fn stub_99ca38(stats: &mut std::collections::HashMap<(u32, u16), crate::peer
 // 0x99d890 — __ZN5boost6detail20sp_pointer_constructIN6RakNet16RakPeerInterfaceES3_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 #[doc(alias = "void boost::detail::sp_pointer_construct<RakNet::RakPeerInterface,RakNet::RakPeerInterface>(rbx_core::SharedPtr<RakNet::RakPeerInterface> *,RakNet::RakPeerInterface *,boost::detail::shared_count &)")]
 // was: void boost::detail::sp_pointer_construct<RakNet::RakPeerInterface,RakNet::RakPeerInterface>(boost::shared_ptr<RakNet::RakPeerInterface> *,RakNet::RakPeerInterface *,boost::detail::shared_count &)
-pub fn stub_99d890() -> ! {
-    todo!("0x99d890 void boost::detail::sp_pointer_construct<RakNet::RakPeerInterface,RakNet::RakPeerInterface>(boost::shared_ptr<RakNet::RakPeerInterface> *,RakNet::RakPeerInterface *,boost::detail::shared_count &)")
+pub fn stub_99d890<T>(raw: Box<T>) -> SharedPtr<T> {
+    // IDA 0x99d890: `sp_pointer_construct` builds the control block around
+    // the raw peer pointer; `SharedPtr` (`Arc`) takes ownership the same
+    // way once unboxed.
+    SharedPtr::new(*raw)
 }
 
 // 0x99da28 — __ZN5boost6detail17sp_counted_impl_pIN6RakNet16RakPeerInterfaceEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RakNet::RakPeerInterface>::~sp_counted_impl_p()")]
 // was: boost::detail::sp_counted_impl_p<RakNet::RakPeerInterface>::~sp_counted_impl_p()
-pub fn stub_99da28() -> ! {
-    todo!("0x99da28 boost::detail::sp_counted_impl_p<RakNet::RakPeerInterface>::~sp_counted_impl_p()")
+pub fn stub_99da28<T>(owned: Option<SharedPtr<T>>) {
+    // IDA 0x99da28 (D1): `sp_counted_impl_p` dtor releases the peer; the
+    // weak/strong decrements stay inside `SharedPtr`, dropping here frees
+    // at zero like `dispose` (IDA 0x99da38).
+    drop(owned);
 }
 
 // 0x99da2c — __ZN5boost6detail17sp_counted_impl_pIN6RakNet16RakPeerInterfaceEED0Ev
@@ -1158,57 +1166,101 @@ pub fn stub_99da50() -> ! {
 // 0x99da54 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN6RakNet13SystemAddressENS_8functionIFvRKN3RBX7Network22ConcurrentRakPeerStatsEEEEEES6_SF_NS_4hashIS6_EESt8equal_toIS6_EEEE9erase_keyERS7_
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::erase_key(RakNet::SystemAddress const&)")]
 // was: boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::erase_key(RakNet::SystemAddress const&)
-pub fn stub_99da54() -> ! {
-    todo!("0x99da54 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::erase_key(RakNet::SystemAddress const&)")
+pub fn stub_99da54(
+    map: &mut std::collections::HashMap<(u32, u16), Box<dyn Fn(&crate::peer::ConnectionStats)>>,
+    addr: (u32, u16),
+) -> bool {
+    // IDA 0x99da54: bucket walk (disasm `LDR R0,[R4,#8]` over the table)
+    // erasing the `SystemAddress` node; `bool` reports whether one was
+    // removed. `boost::function<...Stats>` arrives as a boxed closure.
+    map.remove(&addr).is_some()
 }
 
 // 0x99db84 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN6RakNet13SystemAddressEN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob15ConnectionStatsEEES6_SC_NSB_19SystemAddressHasherESt8equal_toIS6_EEEE9erase_keyERS7_
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>,RakNet::SystemAddress,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::SystemAddressHasher,std::equal_to<RakNet::SystemAddress>>>::erase_key(RakNet::SystemAddress const&)")]
 // was: boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>,RakNet::SystemAddress,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::SystemAddressHasher,std::equal_to<RakNet::SystemAddress>>>::erase_key(RakNet::SystemAddress const&)
-pub fn stub_99db84() -> ! {
-    todo!("0x99db84 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>,RakNet::SystemAddress,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::SystemAddressHasher,std::equal_to<RakNet::SystemAddress>>>::erase_key(RakNet::SystemAddress const&)")
+pub fn stub_99db84(
+    map: &mut std::collections::HashMap<(u32, u16), crate::peer::ConnectionStats>,
+    addr: (u32, u16),
+) -> bool {
+    // IDA 0x99db84: same `erase_key` shape over the `ConnectionStats` map
+    // (`removeStats` at IDA 0x999f78 erases both entries under lock; the
+    // lock stays engine-side, the removal lives here).
+    map.remove(&addr).is_some()
 }
 
 // 0x99dd34 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN6RakNet13SystemAddressENS_8functionIFvRKN3RBX7Network22ConcurrentRakPeerStatsEEEEEES6_SF_NS_4hashIS6_EESt8equal_toIS6_EEEEixERS7_
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::operator[](RakNet::SystemAddress const&)")]
 // was: boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::operator[](RakNet::SystemAddress const&)
-pub fn stub_99dd34() -> ! {
-    todo!("0x99dd34 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::operator[](RakNet::SystemAddress const&)")
+pub fn stub_99dd34(
+    map: &mut std::collections::HashMap<(u32, u16), Box<dyn Fn(&crate::peer::ConnectionStats)>>,
+    addr: (u32, u16),
+) -> &mut Box<dyn Fn(&crate::peer::ConnectionStats)> {
+    // IDA 0x99dd34: `operator[]` finds the node or value-inserts a fresh
+    // (empty) callback slot; mirrors `stats_entry` (IDA 0x99c480) for the
+    // function-valued map.
+    map.entry(addr).or_insert_with(|| Box::new(|_| {}))
 }
 
 // 0x99dfc0 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN6RakNet13SystemAddressENS_8functionIFvRKN3RBX7Network22ConcurrentRakPeerStatsEEEEEES6_SF_NS_4hashIS6_EESt8equal_toIS6_EEEE18reserve_for_insertEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::reserve_for_insert(unsigned long)")]
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::reserve_for_insert(unsigned long)
-pub fn stub_99dfc0() -> ! {
-    todo!("0x99dfc0 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::reserve_for_insert(unsigned long)")
+pub fn stub_99dfc0(
+    map: &mut std::collections::HashMap<(u32, u16), Box<dyn Fn(&crate::peer::ConnectionStats)>>,
+    additional: usize,
+) {
+    // IDA 0x99dfc0: `reserve_for_insert` sizes the callback table ahead of
+    // insertion; mirrors `stats_reserve_table` (IDA 0x99c890) for the
+    // function-valued map.
+    map.reserve(additional);
 }
 
 // 0x99e168 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN6RakNet13SystemAddressENS_8functionIFvRKN3RBX7Network22ConcurrentRakPeerStatsEEEEEES6_SF_NS_4hashIS6_EESt8equal_toIS6_EEEE14create_bucketsEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::create_buckets(unsigned long)")]
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::create_buckets(unsigned long)
-pub fn stub_99e168() -> ! {
-    todo!("0x99e168 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::create_buckets(unsigned long)")
+pub fn stub_99e168(
+    map: &mut std::collections::HashMap<(u32, u16), Box<dyn Fn(&crate::peer::ConnectionStats)>>,
+    additional: usize,
+) {
+    // IDA 0x99e168: `create_buckets` allocates the bucket array;
+    // `HashMap` sizes itself, so this is the same reserve (cf. IDA 0x99ca38).
+    map.reserve(additional);
 }
 
 // 0x99e218 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN6RakNet13SystemAddressEN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob15ConnectionStatsEEES6_SC_NSB_19SystemAddressHasherESt8equal_toIS6_EEEE12emplace_implINS1_13emplace_args1ISD_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEbERS7_RKT_
 #[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>,RakNet::SystemAddress,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::SystemAddressHasher,std::equal_to<RakNet::SystemAddress>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>>(RakNet::SystemAddress const&,boost::unordered::detail::emplace_args1<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>> const&)")]
 // was: std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>,RakNet::SystemAddress,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::SystemAddressHasher,std::equal_to<RakNet::SystemAddress>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>>(RakNet::SystemAddress const&,boost::unordered::detail::emplace_args1<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>> const&)
-pub fn stub_99e218() -> ! {
-    todo!("0x99e218 std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>,RakNet::SystemAddress,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::SystemAddressHasher,std::equal_to<RakNet::SystemAddress>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>>(RakNet::SystemAddress const&,boost::unordered::detail::emplace_args1<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>> const&)")
+pub fn stub_99e218(
+    map: &mut std::collections::HashMap<(u32, u16), crate::peer::ConnectionStats>,
+    addr: (u32, u16),
+    stats: crate::peer::ConnectionStats,
+) -> bool {
+    // IDA 0x99e218: `emplace_impl` inserts the address node; `bool`
+    // reports fresh insertion like `HashMap::insert` returning `None`.
+    // (Allocator/node plumbing stays engine-side.)
+    map.insert(addr, stats).is_none()
 }
 
 // 0x99e43c — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKN6RakNet13SystemAddressEN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob15ConnectionStatsEEEEEE20construct_with_valueINS1_13emplace_args1ISD_EEEEvRKT_
 #[doc(alias = "void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>>>::construct_with_value<boost::unordered::detail::emplace_args1<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>>(boost::unordered::detail::emplace_args1<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>> const&)")]
 // was: void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>>>::construct_with_value<boost::unordered::detail::emplace_args1<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>>(boost::unordered::detail::emplace_args1<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>> const&)
-pub fn stub_99e43c() -> ! {
-    todo!("0x99e43c void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>>>::construct_with_value<boost::unordered::detail::emplace_args1<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>>(boost::unordered::detail::emplace_args1<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>> const&)")
+pub fn stub_99e43c() {
+    // IDA 0x99e43c: `node_constructor::construct_with_value`
+    // placement-constructs the map node; allocator-level, engine-side
+    // (cf. `stats_node_construct`, IDA 0x99c6dc).
+    crate::peer::stats_node_construct()
 }
 
 // 0x99e6f8 — __ZNSt4pairIKN6RakNet13SystemAddressEN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob15ConnectionStatsEEC2ERS2_RKS7_
 #[doc(alias = "std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>::pair(RakNet::SystemAddress const&,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats const&)")]
 // was: std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>::pair(RakNet::SystemAddress const&,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats const&)
-pub fn stub_99e6f8() -> ! {
-    todo!("0x99e6f8 std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>::pair(RakNet::SystemAddress const&,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats const&)")
+pub fn stub_99e6f8(
+    addr: (u32, u16),
+    stats: crate::peer::ConnectionStats,
+) -> ((u32, u16), crate::peer::ConnectionStats) {
+    // IDA 0x99e6f8: `pair<const SystemAddress, ConnectionStats>` copy
+    // construction is a plain tuple build in Rust.
+    (addr, stats)
 }
 
 // 0x99e8f8 — __ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobC2EN5boost10shared_ptrIN6RakNet16RakPeerInterfaceEEEPNS_9DataModelE
@@ -1221,29 +1273,44 @@ pub fn stub_99e8f8() -> ! {
 // 0x99f428 — __ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob11updateStatsERSt4pairIKN6RakNet13SystemAddressENS2_15ConnectionStatsEEPNS4_16RakPeerInterfaceE
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::StatsUpdateJob::updateStats(std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats> &,RakNet::RakPeerInterface *)")]
 // was: RBX::Network::ConcurrentRakPeer::StatsUpdateJob::updateStats(std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats> &,RakNet::RakPeerInterface *)
-pub fn stub_99f428() -> ! {
-    todo!("0x99f428 RBX::Network::ConcurrentRakPeer::StatsUpdateJob::updateStats(std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats> &,RakNet::RakPeerInterface *)")
+pub fn stub_99f428(job_active: bool, nested: bool, update: &mut dyn FnMut()) {
+    // IDA 0x99f428: per-entry stats refresh while the update job is live;
+    // same nested gate as `update_stats` (IDA 0x99bb00).
+    crate::peer::update_stats(job_active, nested, update)
 }
 
 // 0x99f5a8 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN6RakNet13SystemAddressENS_8functionIFvRKN3RBX7Network22ConcurrentRakPeerStatsEEEEEES6_SF_NS_4hashIS6_EESt8equal_toIS6_EEEE9find_nodeERS7_
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::find_node(RakNet::SystemAddress const&)const")]
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::find_node(RakNet::SystemAddress const&)const
-pub fn stub_99f5a8() -> ! {
-    todo!("0x99f5a8 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::find_node(RakNet::SystemAddress const&)const")
+pub fn stub_99f5a8<'m>(
+    map: &'m std::collections::HashMap<(u32, u16), Box<dyn Fn(&crate::peer::ConnectionStats)>>,
+    addr: (u32, u16),
+) -> Option<&'m Box<dyn Fn(&crate::peer::ConnectionStats)>> {
+    // IDA 0x99f5a8: const bucket lookup by hashed `SystemAddress`
+    // (disasm hashes the key at `MOV R0,R8`); miss yields null, here `None`.
+    map.get(&addr)
 }
 
 // 0x99f81c — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN6RakNet13SystemAddressEN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob15ConnectionStatsEEES6_SC_NSB_19SystemAddressHasherESt8equal_toIS6_EEEED2Ev
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>,RakNet::SystemAddress,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::SystemAddressHasher,std::equal_to<RakNet::SystemAddress>>>::~table()")]
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>,RakNet::SystemAddress,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::SystemAddressHasher,std::equal_to<RakNet::SystemAddress>>>::~table()
-pub fn stub_99f81c() -> ! {
-    todo!("0x99f81c boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats>>,RakNet::SystemAddress,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::ConnectionStats,RBX::Network::ConcurrentRakPeer::StatsUpdateJob::SystemAddressHasher,std::equal_to<RakNet::SystemAddress>>>::~table()")
+pub fn stub_99f81c(
+    map: &mut std::collections::HashMap<(u32, u16), crate::peer::ConnectionStats>,
+) {
+    // IDA 0x99f81c: `~table` over the stats map walks every node; Rust
+    // drops them the same way via `clear`.
+    map.clear();
 }
 
 // 0x99f938 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN6RakNet13SystemAddressENS_8functionIFvRKN3RBX7Network22ConcurrentRakPeerStatsEEEEEES6_SF_NS_4hashIS6_EESt8equal_toIS6_EEEED2Ev
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::~table()")]
 // was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::~table()
-pub fn stub_99f938() -> ! {
-    todo!("0x99f938 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RakNet::SystemAddress const,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>>>,RakNet::SystemAddress,boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>,boost::hash<RakNet::SystemAddress>,std::equal_to<RakNet::SystemAddress>>>::~table()")
+pub fn stub_99f938(
+    map: &mut std::collections::HashMap<(u32, u16), Box<dyn Fn(&crate::peer::ConnectionStats)>>,
+) {
+    // IDA 0x99f938: `~table` over the callback map; same drop-all shape as
+    // 0x99f81c for the function-valued instantiation.
+    map.clear();
 }
 
 // 0x99f9b8 — __ZN3RBX7Network17ConcurrentRakPeer9PacketJobC2EN5boost10shared_ptrIN6RakNet16RakPeerInterfaceEEEPNS_9DataModelE
@@ -1407,29 +1474,47 @@ pub fn stub_9a3918() -> ! {
 // 0x9a88ec — __ZN3RBX7Network22ErrorCompPhysicsSender13writeAssemblyERN6RakNet9BitStreamEPKNS_8AssemblyE
 #[doc(alias = "RBX::Network::ErrorCompPhysicsSender::writeAssembly(RakNet::BitStream &,RBX::Assembly const*)")]
 // was: RBX::Network::ErrorCompPhysicsSender::writeAssembly(RakNet::BitStream &,RBX::Assembly const*)
-pub fn stub_9a88ec() -> ! {
-    todo!("0x9a88ec RBX::Network::ErrorCompPhysicsSender::writeAssembly(RakNet::BitStream &,RBX::Assembly const*)")
+pub fn stub_9a88ec(
+    sender: &mut crate::physics::ErrorCompSender,
+    base: &mut crate::physics::PhysicsSender,
+    stream: &mut crate::bitstream::BitStream,
+    key: u32,
+    packet: &crate::physics::AssemblyPacket<'_>,
+    fingerprint: u64,
+) {
+    // IDA 0x9a8918..0x9a8ac4: with a cache a fresh `fetchIfUpToDate`
+    // replays cached bytes and returns; a miss runs the base
+    // `writeAssembly` inside a bit-cursor snapshot and records it via
+    // `update`; without a cache the base write runs directly.
+    sender.write_assembly(base, stream, key, packet, fingerprint);
 }
 
 // 0x9a9048 — __ZN5boost10shared_ptrIN6RakNet9BitStreamEE5resetEv
 #[doc(alias = "rbx_core::SharedPtr<RakNet::BitStream>::reset(void)")]
 // was: boost::shared_ptr<RakNet::BitStream>::reset(void)
-pub fn stub_9a9048() -> ! {
-    todo!("0x9a9048 boost::shared_ptr<RakNet::BitStream>::reset(void)")
+pub fn stub_9a9048<T>(slot: &mut Option<SharedPtr<T>>) {
+    // IDA 0x9a9052..0x9a90e0: null the pointer word, drop the old count
+    // block (spinlock-guarded decrements, `dispose` at zero like D1), so
+    // taking the `Option` is the whole effect.
+    let _ = slot.take();
 }
 
 // 0x9add90 — __ZN3RBX7Network4Item13writeItemTypeERN6RakNet9BitStreamENS1_8ItemTypeE
 #[doc(alias = "RBX::Network::Item::writeItemType(RakNet::BitStream &,RBX::Network::Item::ItemType)")]
 // was: RBX::Network::Item::writeItemType(RakNet::BitStream &,RBX::Network::Item::ItemType)
-pub fn stub_9add90() -> ! {
-    todo!("0x9add90 RBX::Network::Item::writeItemType(RakNet::BitStream &,RBX::Network::Item::ItemType)")
+pub fn stub_9add90(stream: &mut crate::bitstream::BitStream, item_type: u8) {
+    // IDA 0x9add9e: `(type - 1) > 2` selects the long form: two zero bits
+    // then the 4-bit value, else the 2-bit short form.
+    crate::item::write_item_type(stream, item_type);
 }
 
 // 0x9addcc — __ZN3RBX7Network4Item12readItemTypeERN6RakNet9BitStreamERNS1_8ItemTypeE
 #[doc(alias = "RBX::Network::Item::readItemType(RakNet::BitStream &,RBX::Network::Item::ItemType &)")]
 // was: RBX::Network::Item::readItemType(RakNet::BitStream &,RBX::Network::Item::ItemType &)
-pub fn stub_9addcc() -> ! {
-    todo!("0x9addcc RBX::Network::Item::readItemType(RakNet::BitStream &,RBX::Network::Item::ItemType &)")
+pub fn stub_9addcc(stream: &mut crate::bitstream::BitStream) -> u8 {
+    // IDA 0x9addd6..0x9addf2: the out-param is zeroed first, then 2 bits
+    // are read; a zero prefix means a 4-bit value follows.
+    crate::item::read_item_type(stream)
 }
 
 // 0x9bb4ec — __ZN3RBX7Network15PhysicsReceiver23receiveMechanismCFramesERN6RakNet9BitStreamEyRKNS_10RemoteTimeE
@@ -1463,8 +1548,14 @@ pub fn stub_9bc804() -> ! {
 // 0x9bcba8 — __ZN3RBX7Network15PhysicsReceiver15readMotorAnglesERN6RakNet9BitStreamERNS_12AssemblyItemE
 #[doc(alias = "RBX::Network::PhysicsReceiver::readMotorAngles(RakNet::BitStream &,RBX::AssemblyItem &)")]
 // was: RBX::Network::PhysicsReceiver::readMotorAngles(RakNet::BitStream &,RBX::AssemblyItem &)
-pub fn stub_9bcba8() -> ! {
-    todo!("0x9bcba8 RBX::Network::PhysicsReceiver::readMotorAngles(RakNet::BitStream &,RBX::AssemblyItem &)")
+pub fn stub_9bcba8(
+    receiver: &crate::physics::PhysicsReceiver,
+    stream: &mut crate::bitstream::BitStream,
+    out: &mut Vec<crate::physics::CompactCFrame>,
+) {
+    // IDA 0x9bcba8: `operator>><uchar>` count (IDA 0x9bcbd0) then per-motor
+    // compact-CFrame decodes appended to the assembly item.
+    receiver.read_motor_angles(stream, out);
 }
 
 // 0x9bce34 — __ZN3RBX7Network15PhysicsReceiver11readTouchesERN6RakNet9BitStreamE
@@ -1477,29 +1568,57 @@ pub fn stub_9bce34() -> ! {
 // 0x9be164 — __ZN3RBX7Network15PhysicsReceiver12readVelocityERN6RakNet9BitStreamERNS_8VelocityE
 #[doc(alias = "RBX::Network::PhysicsReceiver::readVelocity(RakNet::BitStream &,RBX::Velocity &)")]
 // was: RBX::Network::PhysicsReceiver::readVelocity(RakNet::BitStream &,RBX::Velocity &)
-pub fn stub_9be164() -> ! {
-    todo!("0x9be164 RBX::Network::PhysicsReceiver::readVelocity(RakNet::BitStream &,RBX::Velocity &)")
+pub fn stub_9be164(
+    receiver: &crate::physics::PhysicsReceiver,
+    stream: &mut crate::bitstream::BitStream,
+    velocity: &mut crate::physics::Velocity,
+) {
+    // IDA 0x9be164..0x9be2ea: compression gate (+3716 -> +160) selects
+    // `CustomSerializer::readVector` (SFFlag physics compression) or raw
+    // `ReadVector`, else `Velocity::zero()`.
+    receiver.read_velocity(stream, velocity);
 }
 
 // 0x9be2ec — __ZN3RBX7Network15PhysicsReceiver17readCompactCFrameERN6RakNet9BitStreamERNS_13CompactCFrameE
 #[doc(alias = "RBX::Network::PhysicsReceiver::readCompactCFrame(RakNet::BitStream &,RBX::CompactCFrame &)")]
 // was: RBX::Network::PhysicsReceiver::readCompactCFrame(RakNet::BitStream &,RBX::CompactCFrame &)
-pub fn stub_9be2ec() -> ! {
-    todo!("0x9be2ec RBX::Network::PhysicsReceiver::readCompactCFrame(RakNet::BitStream &,RBX::CompactCFrame &)")
+pub fn stub_9be2ec(
+    receiver: &crate::physics::PhysicsReceiver,
+    stream: &mut crate::bitstream::BitStream,
+    frame: &mut crate::physics::CompactCFrame,
+) -> bool {
+    // IDA 0x9be2ec: `ReadBit` fast path (pure-Z rotation from one byte),
+    // else the full axis/angle/translation decode; asserts stay debug-only.
+    receiver.read_compact_cframe(stream, frame);
+    true
 }
 
 // 0x9bebd8 — __ZN3RBX7Network15PhysicsReceiver15receiveRootPartERN5boost10shared_ptrINS_12PartInstanceEEERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::PhysicsReceiver::receiveRootPart(rbx_core::SharedPtr<RBX::PartInstance> &,RakNet::BitStream &)")]
 // was: RBX::Network::PhysicsReceiver::receiveRootPart(boost::shared_ptr<RBX::PartInstance> &,RakNet::BitStream &)
-pub fn stub_9bebd8() -> ! {
-    todo!("0x9bebd8 RBX::Network::PhysicsReceiver::receiveRootPart(boost::shared_ptr<RBX::PartInstance> &,RakNet::BitStream &)")
+pub fn stub_9bebd8(
+    received: bool,
+    part_grounded: bool,
+    distributed_gate: bool,
+    filter_allows: bool,
+    drop_part: &mut dyn FnMut(),
+) -> bool {
+    // IDA 0x9bebd8: `receivePart`, then a received grounded part — or one
+    // failing the distributed filter — has its shared_ptr reset.
+    if received && (part_grounded || (distributed_gate && !filter_allows)) {
+        drop_part();
+    }
+    received
 }
 
 // 0x9bedec — __ZN3RBX7Network16CustomSerializer10readVectorERfS2_S2_RN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::CustomSerializer::readVector(float &,float &,float &,RakNet::BitStream &)")]
 // was: RBX::Network::CustomSerializer::readVector(float &,float &,float &,RakNet::BitStream &)
-pub fn stub_9bedec() -> ! {
-    todo!("0x9bedec RBX::Network::CustomSerializer::readVector(float &,float &,float &,RakNet::BitStream &)")
+pub fn stub_9bedec(stream: &mut crate::bitstream::BitStream, out: &mut [f32; 3]) -> bool {
+    // IDA 0x9bedec: `CustomSerializer::readVector` — short flag, length,
+    // two signed quantized components plus the z sign bit, scaled back by
+    // the length; `false` only when the length itself is unreadable.
+    crate::custom_serializer::read_vector(stream, out)
 }
 
 // 0x9c2504 — __ZN3RBX7Network13PhysicsSender33sendChildPrimitiveCoordinateFrameEPNS_9PrimitiveEPN6RakNet9BitStreamEPNS0_10ReplicatorE
@@ -1920,15 +2039,17 @@ pub fn stub_9e5700(
 // 0x9e5cc0 — __ZN6RakNet16PluginInterface28OnDetachEv
 #[doc(alias = "RakNet::PluginInterface2::OnDetach(void)")]
 // was: RakNet::PluginInterface2::OnDetach(void)
-pub fn stub_9e5cc0() -> ! {
-    todo!("0x9e5cc0 RakNet::PluginInterface2::OnDetach(void)")
+pub fn stub_9e5cc0() {
+    // IDA 0x9e5cc0: `PluginInterface2::OnDetach` base is an empty virtual;
+    // no crate state to tear down.
 }
 
 // 0x9e5cc8 — __ZN6RakNet16PluginInterface216OnPushBackPacketEPKcjNS_13SystemAddressE
 #[doc(alias = "RakNet::PluginInterface2::OnPushBackPacket(char const*,unsigned int,RakNet::SystemAddress)")]
 // was: RakNet::PluginInterface2::OnPushBackPacket(char const*,unsigned int,RakNet::SystemAddress)
-pub fn stub_9e5cc8() -> ! {
-    todo!("0x9e5cc8 RakNet::PluginInterface2::OnPushBackPacket(char const*,unsigned int,RakNet::SystemAddress)")
+pub fn stub_9e5cc8() {
+    // IDA 0x9e5cc8: `PluginInterface2::OnPushBackPacket` base is an empty
+    // virtual; no crate state.
 }
 
 // 0x9e7928 — __ZN3RBX10Reflection9DescribedINS_7Network16ServerReplicatorELZNS2_17sServerReplicatorEENS_17NonFactoryProductINS2_10ReplicatorELZNS2_17sServerReplicatorEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EEC2IN6RakNet13SystemAddressEN5boost10shared_ptrINS2_17ConcurrentRakPeerEEEPNS_15NetworkSettingsEbEET_T0_T1_T2_
@@ -1998,8 +2119,12 @@ pub fn stub_a35488() -> &'static parking_lot::Mutex<()> {
 // 0xa355a0 — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::safe_static_init_mutex(void)")]
 // was: rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::safe_static_init_mutex(void)
-pub fn stub_a355a0() -> ! {
-    todo!("0xa355a0 rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::safe_static_init_mutex(void)")
+static SIGNAL_MUTEX_A355A0: parking_lot::Mutex<()> = parking_lot::Mutex::new(());
+pub fn stub_a355a0() -> &'static parking_lot::Mutex<()> {
+    // IDA 0xa355a0: `safe_static_init_mutex` lazily news the function-local
+    // static mutex once (`__cxa_guard_acquire` at 0xa355fc, `operator new`
+    // at 0xa35610); a Rust `static` has the same once semantics.
+    &SIGNAL_MUTEX_A355A0
 }
 
 // 0xa361b0 — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENSF_ISsEESJ_NSF_ISC_EEEEEEEEvT_

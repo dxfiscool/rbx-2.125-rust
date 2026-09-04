@@ -2254,6 +2254,66 @@ mod next107_tests {
             rbx_core::SharedPtr::from(Box::new(shared));
         shared_dict_drop(owned);
     }
+
+    #[test]
+    fn physics_sender_ownership() {
+        // IDA 0xb20e6c/0xb21030/0xb211f4/0xb213b8 + D1/D0/dispose triplets:
+        // construct then drop each sender variant.
+        shared_dict_drop(crate::physics::top_n_errors_physics_sender());
+        shared_dict_drop(crate::physics::round_robin_physics_sender());
+        shared_dict_drop(crate::physics::error_comp_physics_sender2());
+        shared_dict_drop(crate::physics::error_comp_physics_sender());
+        // IDA 0xb23cd8: PingJob construct then drop.
+        shared_dict_drop(ping_job());
+        assert!(shared_null_deleter().is_null());
+    }
+
+    #[test]
+    fn chat_slot_lifecycle() {
+        // IDA 0xb21844/0xb218f8: assign swaps the retained slot.
+        let first: rbx_core::SharedPtr<ChatSlot> =
+            rbx_core::SharedPtr::from(Box::new(ChatSlot::default()));
+        let second: rbx_core::SharedPtr<ChatSlot> =
+            rbx_core::SharedPtr::from(Box::new(ChatSlot { signal_linked: true }));
+        let mut slot = rbx_core::SharedPtr::clone(&first);
+        chat_slot_assign(&mut slot, &second);
+        assert!(rbx_core::SharedPtr::ptr_eq(&slot, &second));
+        // IDA 0xb21bec: connected reads the +12 signal link.
+        assert!(!chat_slot_connected(&first));
+        assert!(chat_slot_connected(&second));
+        // IDA 0xb21c58: remove splices the slot out exactly once.
+        let mut slots = vec![rbx_core::SharedPtr::clone(&first), rbx_core::SharedPtr::clone(&second)];
+        assert!(chat_signal_remove(&mut slots, &second));
+        assert!(!chat_signal_remove(&mut slots, &second));
+        assert_eq!(slots.len(), 1);
+        // IDA 0xb21d44/0xb21e28/0xb21fa4/0xb21fb0/0xb22064/0xb220c0: no-op init + drops.
+        chat_slot_mutex_init();
+        let target = rbx_core::SharedPtr::from(Box::new(Marker));
+        chat_callable_drop(bind_chat_filter(target));
+        chat_slot_drop(first);
+    }
+
+    #[test]
+    fn chat_bind_tail_chain() {
+        // IDA 0xb221c8/0xb22618/0xb22a68: list5 → storage4 → storage2 retains.
+        let target = rbx_core::SharedPtr::from(Box::new(Marker));
+        let call = chat_list5(&target);
+        assert!(rbx_core::SharedPtr::ptr_eq(&call.target, &target));
+        let narrowed = chat_store4(&call);
+        let narrowest = chat_store2(&narrowed);
+        assert!(rbx_core::SharedPtr::ptr_eq(&narrowest.target, &target));
+        // IDA 0xb21bf8: the callable forwards the four args like the bind call.
+        let mut seen = Vec::new();
+        let addr = crate::socket::SystemAddress::new();
+        chat_callable_call(&narrowest, &addr, "hi", "hi*", &mut |_, _, text, filtered| {
+            seen.push((text.to_owned(), filtered.to_owned()));
+        });
+        assert_eq!(seen, vec![("hi".to_owned(), "hi*".to_owned())]);
+        // IDA 0xb2332c: the declare guard runs exactly once.
+        let mut declared = false;
+        assert!(declare_cluster_packet_cache(&mut declared));
+        assert!(!declare_cluster_packet_cache(&mut declared));
+    }
 }
 
 /// `Replicator::Replicator` init constants (IDA 0xae10b8): the property
@@ -2574,6 +2634,131 @@ pub fn bind_list1_replicator(
     target: &rbx_core::SharedPtr<Marker>,
 ) -> rbx_core::SharedPtr<Marker> {
     rbx_core::SharedPtr::clone(target)
+}
+
+/// `RBX::Network::Replicator::PingJob` (IDA 0xb23cd8): the ping scheduler
+/// job; scheduling stays engine-side, so the crate keeps a stateless
+/// marker for the shared-ownership seam below.
+#[derive(Clone, Debug, Default)]
+pub struct PingJob;
+
+/// `sp_pointer_construct<Replicator::PingJob, Replicator::PingJob>` (IDA
+/// 0xb23cd8): publishes the fresh job control block; `Arc::new` is the
+/// publish here.
+#[must_use]
+pub fn ping_job() -> rbx_core::SharedPtr<PingJob> {
+    rbx_core::SharedPtr::from(Box::new(PingJob))
+}
+
+/// `rbx::signals::signal<...>::slot` for the chat filter (IDA
+/// 0xb21844..0xb220c0): the intrusive refcounting is `Arc` bookkeeping
+/// here; `signal_linked` mirrors the +12 owner link read by `connected`
+/// (IDA 0xb21bf4: `*(_DWORD *)(a1 + 12) != 0`).
+#[derive(Clone, Debug, Default)]
+pub struct ChatSlot {
+    pub signal_linked: bool,
+}
+
+/// `intrusive_ptr<slot>::operator=(slot *)` (IDA 0xb21844) and
+/// `operator=(intrusive_ptr const&)` (IDA 0xb218f8): addref the incoming
+/// slot (with the `c->strong < max() - 10` overflow assert,
+/// intrusive_ptr_target.h:184, IDA 0xb2186c..0xb218b4), store it, then
+/// release the old slot (destroying plus `free` at zero, IDA
+/// 0xb218b8..0xb218ec). The atomic counts are `Arc` bookkeeping here.
+pub fn chat_slot_assign(
+    slot: &mut rbx_core::SharedPtr<ChatSlot>,
+    next: &rbx_core::SharedPtr<ChatSlot>,
+) {
+    *slot = rbx_core::SharedPtr::clone(next);
+}
+
+/// `slot::connected` (IDA 0xb21bec): the +12 signal link is set.
+#[must_use]
+pub fn chat_slot_connected(slot: &ChatSlot) -> bool {
+    slot.signal_linked
+}
+
+/// `callable<slot, bind_t<mf4 sendFilteredChatMessage, ...>>::call` (IDA
+/// 0xb21bf8): resolves the member-function pointer through the vtable slot
+/// (IDA 0xb21bfe..0xb21c1a) and invokes it with the retained target plus
+/// the four call args — the same forward as [`call_chat_filter`].
+pub fn chat_callable_call(
+    call: &ChatFilterCall,
+    addr: &crate::socket::SystemAddress,
+    text: &str,
+    filtered: &str,
+    invoke: &mut dyn FnMut(&rbx_core::SharedPtr<Marker>, &crate::socket::SystemAddress, &str, &str),
+) {
+    call_chat_filter(call, addr, text, filtered, invoke);
+}
+
+/// `signal<...>::remove` (IDA 0xb21c58): asserts the item is not expired
+/// (`!intrusive_ptr_expired`, signal.h:261/284), logs `"Removing item %p
+/// from signal"` behind `FLog::SignalPrints`, then splices the slot out
+/// of the intrusive `+8`-next chain. Returns whether the slot was linked.
+pub fn chat_signal_remove(
+    slots: &mut Vec<rbx_core::SharedPtr<ChatSlot>>,
+    target: &rbx_core::SharedPtr<ChatSlot>,
+) -> bool {
+    if let Some(index) = slots.iter().position(|slot| rbx_core::SharedPtr::ptr_eq(slot, target)) {
+        slots.remove(index);
+        true
+    } else {
+        false
+    }
+}
+
+/// `slot::safe_static_init_mutex` (IDA 0xb21d44): one-time `boost::mutex`
+/// construction behind `__cxa_guard_acquire` with an `atexit` destructor;
+/// Rust statics initialize inline, so there is nothing to do.
+pub fn chat_slot_mutex_init() {}
+
+/// `callable<slot, ...>::~callable` D2/D1/D0 (IDA 0xb21e28/0xb21fa4/0xb21fb0):
+/// resets the slot vtable pair, drops the `shared_count` (the
+/// `shared_count` dtor, IDA 0xb21e94), and releases the intrusive slot
+/// (destroying plus `free` at zero, IDA 0xb21eb4..0xb21ef2). D0
+/// additionally frees the allocation, which a Rust drop does.
+pub fn chat_callable_drop(_call: ChatFilterCall) {}
+
+/// `slot::~slot` D1/D0 (IDA 0xb22064/0xb220c0): resets the vtable pair and
+/// releases the chained `+8` slot the same way. D0 additionally frees the
+/// allocation, which a Rust drop does.
+pub fn chat_slot_drop(_slot: rbx_core::SharedPtr<ChatSlot>) {}
+
+/// `list5<value<shared_ptr<Replicator>>, arg<1..4>>::list5` (IDA 0xb221c8):
+/// retains the bound Replicator owner (the spinlock-pool bumps, IDA
+/// 0xb221fa..0xb222ba) and captures the four call placeholders into the
+/// `storage4` tail (IDA 0xb222ca). The retains are `Arc` bookkeeping here.
+#[must_use]
+pub fn chat_list5(target: &rbx_core::SharedPtr<Marker>) -> ChatFilterCall {
+    bind_chat_filter(rbx_core::SharedPtr::clone(target))
+}
+
+/// `storage4<value<shared_ptr<Replicator>>, arg<1..3>>::storage4` (IDA
+/// 0xb22618): keeps the bound owner plus the first three placeholders.
+#[must_use]
+pub fn chat_store4(call: &ChatFilterCall) -> ChatFilterCall {
+    ChatFilterCall { target: rbx_core::SharedPtr::clone(&call.target) }
+}
+
+/// `storage2<value<shared_ptr<Replicator>>, arg<1>>::storage2` (IDA
+/// 0xb22a68): keeps only the bound owner and the first placeholder.
+#[must_use]
+pub fn chat_store2(call: &ChatFilterCall) -> ChatFilterCall {
+    ChatFilterCall { target: rbx_core::SharedPtr::clone(&call.target) }
+}
+
+/// `RBX::Name::callDoDeclare<sClusterPacketCache>` (IDA 0xb2332c):
+/// one-time `Name::declare(&sClusterPacketCache)` behind the
+/// `__cxa_guard` statics guard (IDA 0xb23384..0xb233b4). Returns whether
+/// this call ran the declaration.
+#[must_use]
+pub fn declare_cluster_packet_cache(declared: &mut bool) -> bool {
+    if *declared {
+        return false;
+    }
+    *declared = true;
+    true
 }
 
 /// `Voxel::Serializer<Grid>::encodeCells` wire widths (IDA

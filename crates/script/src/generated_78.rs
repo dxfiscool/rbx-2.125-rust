@@ -7,6 +7,135 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+// ── IMPL batch (11 stubs 0x26b464..0x26df08) ─────────────────────────────────
+// LuaArguments getters + ArgumentPusher Instance/vector pushers. Grounded from
+// IDA decompile over MCP (this session): every getter computes the absolute
+// index as *(this+72) + n (0x26b474 etc.), bounds-checks against lua_gettop,
+// then dispatches on lua_type (4 = string, 3 = number, 1 = boolean — Lua 5.1
+// tags) or delegates to Bridge<T,true>::getValue for userdata. size() is
+// exactly lua_gettop - 1 (0x26dc34). getLong calls getDouble virtually
+// (vtable+16, 0x26dcc0) then lrint (0x26dcd4).
+// MODEL: BridgeState is the lua_State stack; typed slots stand in for the
+// lua_touserdata + metatable rawequal sequence in Bridge<T,true>::getValue
+// (same convention as generated_20.rs, whose 0x26c92c..0x26d070 family is the
+// grounded reference). lrint uses the default round-half-even mode.
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Vector3 {
+    pub x: f32,
+    pub y: f32,
+    pub z: f32,
+}
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Vector3int16 {
+    pub x: i16,
+    pub y: i16,
+    pub z: i16,
+}
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Region3 {
+    pub min: Vector3,
+    pub max: Vector3,
+}
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Region3int16 {
+    pub min: Vector3int16,
+    pub max: Vector3int16,
+}
+// Minimal lua_State stack: positional args plus the userdata slots the
+// getters read. Lua 5.1 type tags: 0 nil, 1 boolean, 3 number, 4 string,
+// 7 userdata (only userdata kinds below report 7).
+#[derive(Clone, Debug, PartialEq)]
+pub enum BridgeVal {
+    Nil,
+    Bool(bool),
+    Num(f64),
+    Str(Vec<u8>),
+    Vec3(Vector3),
+    Vec3i16(Vector3int16),
+    Region3(Region3),
+    Region3i16(Region3int16),
+    Instance(u64),
+    Table(Vec<BridgeVal>),
+}
+#[derive(Clone, Debug, Default)]
+pub struct BridgeState {
+    stack: Vec<BridgeVal>,
+}
+impl BridgeState {
+    pub fn new() -> Self {
+        BridgeState { stack: Vec::new() }
+    }
+    // IDA lua_gettop (BL at 0x26b47a, 0x26dc34, ...).
+    pub fn gettop(&self) -> i32 {
+        self.stack.len() as i32
+    }
+    // IDA lua_type (BL at 0x26b48a, 0x26b684, 0x26b6c4).
+    pub fn lua_type(&self, idx: i32) -> i32 {
+        match self.slot(idx) {
+            BridgeVal::Nil => 0,
+            BridgeVal::Bool(_) => 1,
+            BridgeVal::Num(_) => 3,
+            BridgeVal::Str(_) => 4,
+            _ => 7,
+        }
+    }
+    pub fn push_instance(&mut self, h: u64) {
+        self.stack.push(BridgeVal::Instance(h));
+    }
+    pub fn push_table(&mut self, elems: Vec<BridgeVal>) {
+        self.stack.push(BridgeVal::Table(elems));
+    }
+    // Bridge<T,true>::getValue readers (IDA 0x26b4d0/0x26b4fc/0x26b528/0x26b554
+    // delegate here): typed-slot match, None on mismatch (false, no raise).
+    pub fn get_vec3(&self, idx: i32) -> Option<Vector3> {
+        match self.slot(idx) {
+            BridgeVal::Vec3(v) => Some(*v),
+            _ => None,
+        }
+    }
+    pub fn get_vec3i16(&self, idx: i32) -> Option<Vector3int16> {
+        match self.slot(idx) {
+            BridgeVal::Vec3i16(v) => Some(*v),
+            _ => None,
+        }
+    }
+    pub fn get_region3(&self, idx: i32) -> Option<Region3> {
+        match self.slot(idx) {
+            BridgeVal::Region3(v) => Some(*v),
+            _ => None,
+        }
+    }
+    pub fn get_region3i16(&self, idx: i32) -> Option<Region3int16> {
+        match self.slot(idx) {
+            BridgeVal::Region3i16(v) => Some(*v),
+            _ => None,
+        }
+    }
+    fn slot(&self, idx: i32) -> &BridgeVal {
+        // Callers pass absolute 1-based indices, as in the originals.
+        &self.stack[(idx - 1) as usize]
+    }
+}
+// RBX::Lua::LuaArguments: base arg offset (this+72) over the Lua stack
+// (this+19). Absolute index is base + n (IDA 0x26b474 `*(this+18) + a2`
+// with this+18 words = byte +72).
+#[derive(Clone, Debug, Default)]
+pub struct LuaArguments {
+    pub base: i32,
+    pub l: BridgeState,
+}
+impl LuaArguments {
+    pub fn new(base: i32) -> Self {
+        LuaArguments { base, l: BridgeState::new() }
+    }
+    pub fn abs(&self, n: i32) -> i32 {
+        self.base + n
+    }
+}
 
 // 0x26990 — __ZL22joinGameWithJoinScriptRKSsN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "joinGameWithJoinScript(std::string const&,rbx_core::SharedPtr<RBX::Game>)")]

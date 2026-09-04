@@ -7,6 +7,129 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use std::collections::{BTreeMap, HashMap, VecDeque};
+use std::ops::Range;
+
+// ── Hand-written ScriptContext/Lua support (IDA batch 0xf2c2b4..0xf2c924) ────
+// `boost::unordered_map` → [`HashMap`], `std::map`/`_Rb_tree` → [`BTreeMap`],
+// `std::deque` → [`VecDeque`], `boost::function`/`bind`/`_mfi` → closures,
+// `boost::shared_ptr` → [`SharedPtr`].
+
+/// `RBX::ScriptContext` handle behind `ServiceProvider::find/create`
+/// (IDA 0xf2c344/0xf2c364).
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct ScriptContextHandle {
+    pub name: String,
+}
+
+impl ScriptContextHandle {
+    pub const CLASS_NAME: &'static str = "ScriptContext";
+    pub fn new(name: &str) -> Self {
+        Self { name: name.to_owned() }
+    }
+}
+
+/// Service table slot holding the `ScriptContext` (IDA 0xf2c344/0xf2c364).
+#[derive(Debug, Default)]
+pub struct ScriptContextRegistry {
+    pub context: Option<SharedPtr<ScriptContextHandle>>,
+}
+
+/// `RBX::ScriptContext::WaitingThread` (IDA 0xf2c6b4): suspended Lua thread
+/// plus its wakeup tick.
+#[derive(Debug, Clone, PartialEq)]
+pub struct WaitingThread {
+    pub thread_id: u64,
+    pub wake_tick: f64,
+}
+
+impl WaitingThread {
+    pub fn new(thread_id: u64, wake_tick: f64) -> Self {
+        Self { thread_id, wake_tick }
+    }
+}
+
+/// `std::deque<WaitingThread>` (IDA 0xf2c7e4).
+#[derive(Debug, Default, Clone)]
+pub struct WaitingThreadQueue {
+    pub threads: VecDeque<WaitingThread>,
+}
+
+impl WaitingThreadQueue {
+    pub fn with_capacity(cap: usize) -> Self {
+        Self { threads: VecDeque::with_capacity(cap) }
+    }
+}
+
+/// `RBX::ScriptContext::ScriptStart` (IDA 0xf2c864): queued script plus its
+/// start options payload.
+#[derive(Debug, Clone, PartialEq)]
+pub struct ScriptStart {
+    pub name: String,
+    pub source: String,
+}
+
+impl ScriptStart {
+    pub fn new(name: &str, source: &str) -> Self {
+        Self { name: name.to_owned(), source: source.to_owned() }
+    }
+}
+
+/// `LuaProfiler::StringCache::Function` map key (IDA 0xf2c2e4).
+#[derive(Debug, Clone, Default, PartialEq, Eq, PartialOrd, Ord, Hash)]
+pub struct ProfilerFunction {
+    pub name: String,
+}
+
+impl ProfilerFunction {
+    pub fn new(name: &str) -> Self {
+        Self { name: name.to_owned() }
+    }
+}
+
+/// `RBX::ScriptContext::ScriptStatInformation` (IDA 0xf2c734).
+#[derive(Debug, Clone, Default, PartialEq)]
+pub struct ScriptStatInfo {
+    pub calls: u64,
+    pub total_time: f64,
+}
+
+/// `RBX::Scripting::DebuggerBreakpoint` table entry (IDA 0xf2c2b4).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct DebuggerBreakpoint {
+    pub id: i32,
+    pub enabled: bool,
+}
+
+/// `boost::unordered` int → breakpoint table (IDA 0xf2c2b4).
+#[derive(Debug, Default)]
+pub struct BreakpointTable {
+    pub map: HashMap<i32, DebuggerBreakpoint>,
+}
+
+/// `RBX::Lua::WeakThreadRef` (IDA 0xf2c454).
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Hash)]
+pub struct WeakThreadRef {
+    pub id: u64,
+}
+
+/// Opaque `lua_State` view (IDA 0xf2c454): only the stack top is modeled.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct LuaStateRef {
+    pub stack_top: i32,
+}
+
+/// `RBX::ScriptContext::ScriptStartOptions` (IDA 0xf2c464).
+#[derive(Debug, Clone, Copy, Default, PartialEq)]
+pub struct ScriptStartOptions {
+    pub timeout_secs: f64,
+}
+
+/// `RBX::Script` entry for the allocator destroy path (IDA 0xf2c2d4).
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct ScriptEntry {
+    pub name: String,
+}
 
 // 0xf2bdf4 — j___ZN5boost6detail12shared_countC2IPN3RBX10CoreScriptENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // type: int __fastcall(int, int, int, int, void *, int)
@@ -179,58 +302,82 @@ pub fn stub_0xf2c244() {
 
 // 0xf2c2b4 — j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKiPN3RBX9Scripting18DebuggerBreakpointEEEiS9_NS_4hashIiEESt8equal_toIiEEEEC2EmRKSD_RKSF_RKSaINS1_8ptr_nodeISA_EEE
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<int const,RBX::Scripting::DebuggerBreakpoint *>>,int,RBX::Scripting::DebuggerBreakpoint *,boost::hash<int>,std::equal_to<int>>>::table(unsigned long,boost::hash<int> const&,std::equal_to<int> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<int const,RBX::Scripting::DebuggerBreakpoint *>>> const&) [0xf2c2b4]")]
-pub fn stub_0xf2c2b4() -> ! {
-    todo!("0xf2c2b4 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<int const,RBX::Scripting::DebuggerBreakpoint *>>,int,RBX::Scripting::DebuggerBreakpoint *,boost::hash<int>,std::equal_to<int>>>::table(unsigned long,boost::hash<int> const&,std::equal_to<int> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<int const,RBX::Scripting::DebuggerBreakpoint *>>> const&)")
+pub fn stub_0xf2c2b4(buckets: usize) -> BreakpointTable {
+    // IDA 0xf2c2b4: table(n, hash, equal, alloc) for int → DebuggerBreakpoint*;
+    // `HashMap::with_capacity` sizes the bucket array for the same `n`.
+    BreakpointTable { map: HashMap::with_capacity(buckets) }
 }
 
 // 0xf2c2d4 — j___ZN9__gnu_cxx13new_allocatorISt4pairIKSsN5boost10shared_ptrIN3RBX6ScriptEEEEE7destroyEPS8_
 #[doc(alias = "__gnu_cxx::new_allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::Script>>>::destroy(std::pair<std::string const,rbx_core::SharedPtr<RBX::Script>>*) [0xf2c2d4]")]
-pub fn stub_0xf2c2d4() -> ! {
-    todo!("0xf2c2d4 __gnu_cxx::new_allocator<std::pair<std::string const,boost::shared_ptr<RBX::Script>>>::destroy(std::pair<std::string const,boost::shared_ptr<RBX::Script>>*)")
+pub fn stub_0xf2c2d4(entry: (String, SharedPtr<ScriptEntry>)) {
+    // IDA 0xf2c2d4: new_allocator<pair<string const, shared_ptr<Script>>>::destroy —
+    // runs the pair dtor (string + shared_ptr release); owned drop matches.
+    drop(entry);
 }
 
 // 0xf2c2e4 — j___ZNK11LuaProfiler11StringCache8FunctionltERKS1_
 #[doc(alias = "LuaProfiler::StringCache::Function::operator<(LuaProfiler::StringCache::Function const&)const [0xf2c2e4]")]
-pub fn stub_0xf2c2e4() -> ! {
-    todo!("0xf2c2e4 LuaProfiler::StringCache::Function::operator<(LuaProfiler::StringCache::Function const&)const")
+pub fn stub_0xf2c2e4(a: &ProfilerFunction, b: &ProfilerFunction) -> bool {
+    // IDA 0xf2c2e4: StringCache::Function::operator< — lexicographic compare
+    // of the cached function name; drives the profiler map ordering.
+    a.name < b.name
 }
 
 // 0xf2c2f4 — j___ZNK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "j___ZNK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_0xf2c2f4() -> ! {
-    todo!("0xf2c2f4 j___ZNK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_0xf2c2f4() -> &'static str {
+    // IDA 0xf2c2f4: FactoryProduct<LocalScript, Script, sLocalScript>::Creator::getClassName —
+    // `Name::declare<sLocalScript>()`.
+    "LocalScript"
 }
 
 // 0xf2c304 — j___ZNK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "j___ZNK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_0xf2c304() -> ! {
-    todo!("0xf2c304 j___ZNK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_0xf2c304() -> &'static str {
+    // IDA 0xf2c304: FactoryProduct<LuaSettings, Item, sLuaSettings>::Creator::getClassName —
+    // `Name::declare<sLuaSettings>()`.
+    "LuaSettings"
 }
 
 // 0xf2c314 — j___ZNK3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7Creator12getClassNameEv
 #[doc(alias = "j___ZNK3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7Creator12getClassNameEv")]
-pub fn stub_0xf2c314() -> ! {
-    todo!("0xf2c314 j___ZNK3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7Creator12getClassNameEv")
+pub fn stub_0xf2c314() -> &'static str {
+    // IDA 0xf2c314: FactoryProduct<DebuggerWatch, sDebuggerWatch>::Creator::getClassName —
+    // `Name::declare<sDebuggerWatch>()`.
+    "DebuggerWatch"
 }
 
 // 0xf2c324 — j___ZNK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7Creator12getClassNameEv
 #[doc(alias = "j___ZNK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7Creator12getClassNameEv")]
-pub fn stub_0xf2c324() -> ! {
-    todo!("0xf2c324 j___ZNK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7Creator12getClassNameEv")
+pub fn stub_0xf2c324() -> &'static str {
+    // IDA 0xf2c324: FactoryProduct<ScriptDebugger, sScriptDebugger>::Creator::getClassName —
+    // `Name::declare<sScriptDebugger>()`.
+    "ScriptDebugger"
 }
 
 // 0xf2c344 — j___ZNK3RBX15ServiceProvider4findINS_13ScriptContextEEEPT_v
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::ScriptContext * RBX::ServiceProvider::find<RBX::ScriptContext>(void)const [0xf2c344]")]
-pub fn stub_0xf2c344() -> ! {
-    todo!("0xf2c344 RBX::ScriptContext * RBX::ServiceProvider::find<RBX::ScriptContext>(void)const")
+pub fn stub_0xf2c344(registry: &ScriptContextRegistry) -> Option<SharedPtr<ScriptContextHandle>> {
+    // IDA 0xf2c344: ServiceProvider::find<ScriptContext> — service-table
+    // lookup; null when the provider holds no ScriptContext yet.
+    registry.context.clone()
 }
 
 // 0xf2c364 — j___ZNK3RBX15ServiceProvider6createINS_13ScriptContextEEEPT_v
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::ScriptContext * RBX::ServiceProvider::create<RBX::ScriptContext>(void)const [0xf2c364]")]
-pub fn stub_0xf2c364() -> ! {
-    todo!("0xf2c364 RBX::ScriptContext * RBX::ServiceProvider::create<RBX::ScriptContext>(void)const")
+pub fn stub_0xf2c364(registry: &mut ScriptContextRegistry, name: &str) -> SharedPtr<ScriptContextHandle> {
+    // IDA 0xf2c364: ServiceProvider::create<ScriptContext> — find-or-create;
+    // an existing context is returned, otherwise one is constructed,
+    // registered, and returned.
+    if let Some(ctx) = registry.context.clone() {
+        return ctx;
+    }
+    let ctx = SharedPtr::new(ScriptContextHandle::new(name));
+    registry.context = Some(ctx.clone());
+    ctx
 }
 
 // 0xf2c384 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10CoreScriptES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -283,26 +430,34 @@ pub fn stub_0xf2c424() -> ! {
 
 // 0xf2c444 — j___ZNK5boost4_mfi3mf1IvN3RBX13ScriptContextENS3_11ScriptStartEEclEPS3_S4_
 #[doc(alias = "boost::_mfi::mf1<void,RBX::ScriptContext,RBX::ScriptContext::ScriptStart>::operator()(RBX::ScriptContext*,RBX::ScriptContext::ScriptStart)const [0xf2c444]")]
-pub fn stub_0xf2c444() -> ! {
-    todo!("0xf2c444 boost::_mfi::mf1<void,RBX::ScriptContext,RBX::ScriptContext::ScriptStart>::operator()(RBX::ScriptContext*,RBX::ScriptContext::ScriptStart)const")
+pub fn stub_0xf2c444(ctx: &ScriptContextHandle, start: &ScriptStart, run: &mut dyn FnMut(&str, &str)) {
+    // IDA 0xf2c444: _mfi::mf1<void, ScriptContext, ScriptStart>::operator() —
+    // applies the bound member to (ctx, start); the closure is the member body.
+    run(&ctx.name, &start.name);
 }
 
 // 0xf2c454 — j___ZNK5boost4_mfi3mf2IvN3RBX13ScriptContextENS2_3Lua13WeakThreadRefEP9lua_StateEclEPS3_S5_S7_
 #[doc(alias = "boost::_mfi::mf2<void,RBX::ScriptContext,RBX::Lua::WeakThreadRef,lua_State *>::operator()(RBX::ScriptContext*,RBX::Lua::WeakThreadRef,lua_State *)const [0xf2c454]")]
-pub fn stub_0xf2c454() -> ! {
-    todo!("0xf2c454 boost::_mfi::mf2<void,RBX::ScriptContext,RBX::Lua::WeakThreadRef,lua_State *>::operator()(RBX::ScriptContext*,RBX::Lua::WeakThreadRef,lua_State *)const")
+pub fn stub_0xf2c454(ctx: &ScriptContextHandle, thread: WeakThreadRef, state: &LuaStateRef, run: &mut dyn FnMut(&str, u64, i32)) {
+    // IDA 0xf2c454: _mfi::mf2<void, ScriptContext, WeakThreadRef, lua_State*>::operator() —
+    // forwards the bound (thread, state) pair; the closure is the member body.
+    run(&ctx.name, thread.id, state.stack_top);
 }
 
 // 0xf2c464 — j___ZNK5boost4_mfi3mf2IvN3RBX13ScriptContextEPNS2_10BaseScriptENS3_18ScriptStartOptionsEEclEPS3_S5_S6_
 #[doc(alias = "boost::_mfi::mf2<void,RBX::ScriptContext,RBX::BaseScript *,RBX::ScriptContext::ScriptStartOptions>::operator()(RBX::ScriptContext*,RBX::BaseScript *,RBX::ScriptContext::ScriptStartOptions)const [0xf2c464]")]
-pub fn stub_0xf2c464() -> ! {
-    todo!("0xf2c464 boost::_mfi::mf2<void,RBX::ScriptContext,RBX::BaseScript *,RBX::ScriptContext::ScriptStartOptions>::operator()(RBX::ScriptContext*,RBX::BaseScript *,RBX::ScriptContext::ScriptStartOptions)const")
+pub fn stub_0xf2c464(ctx: &ScriptContextHandle, script: &str, options: ScriptStartOptions, run: &mut dyn FnMut(&str, &str, f64)) {
+    // IDA 0xf2c464: _mfi::mf2<void, ScriptContext, BaseScript*, ScriptStartOptions>::operator() —
+    // forwards (script, options); the closure is the member body.
+    run(&ctx.name, script, options.timeout_secs);
 }
 
 // 0xf2c474 — j___ZNK5boost4_mfi3mf3IvN3RBX13ScriptContextENS_10shared_ptrINS2_8InstanceEEESsS6_EclEPS3_S6_SsS6_
 #[doc(alias = "boost::_mfi::mf3<void,RBX::ScriptContext,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::ScriptContext*,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)const [0xf2c474]")]
-pub fn stub_0xf2c474() -> ! {
-    todo!("0xf2c474 boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>::operator()(RBX::ScriptContext*,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)const")
+pub fn stub_0xf2c474(ctx: &ScriptContextHandle, instance: &str, text: &str, target: &str, run: &mut dyn FnMut(&str, &str, &str, &str)) {
+    // IDA 0xf2c474: _mfi::mf3<void, ScriptContext, shared_ptr<Instance>, string, shared_ptr<Instance>>::operator() —
+    // forwards the three bound args; the closure is the member body.
+    run(&ctx.name, instance, text, target);
 }
 
 // 0xf2c484 — j___ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS5_5list1INS5_5valueINS_10shared_ptrISA_EEEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
@@ -365,164 +520,244 @@ pub fn stub_0xf2c534() -> ! {
 
 // 0xf2c654 — j___ZNK5boost9function4IvPKcS2_NS_10shared_ptrIN3RBX10BaseScriptEEEiEclES2_S2_S6_i
 #[doc(alias = "boost::function4<void,char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int>::operator()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)const [0xf2c654]")]
-pub fn stub_0xf2c654() -> ! {
-    todo!("0xf2c654 boost::function4<void,char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int>::operator()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)const")
+pub fn stub_0xf2c654(run: &dyn Fn(&str, &str, &str, i32), first: &str, source: &str, script: &str, code: i32) {
+    // IDA 0xf2c654: function4<void, char const*, char const*, shared_ptr<BaseScript>, int>::operator() —
+    // dispatches to the stored target with the four call args; the closure is the target.
+    run(first, source, script, code);
 }
 
 // 0xf2c694 — j___ZNSt11_Deque_baseIN3RBX13ScriptContext13WaitingThreadESaIS2_EE15_M_allocate_mapEm
 #[doc(alias = "std::_Deque_base<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::_M_allocate_map(unsigned long) [0xf2c694]")]
-pub fn stub_0xf2c694() -> ! {
-    todo!("0xf2c694 std::_Deque_base<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::_M_allocate_map(unsigned long)")
+pub fn stub_0xf2c694(map_size: usize) -> WaitingThreadQueue {
+    // IDA 0xf2c694: _Deque_base::_M_allocate_map(n) — allocates the index map;
+    // the reserved deque is the owned buffer.
+    WaitingThreadQueue::with_capacity(map_size)
 }
 
 // 0xf2c6a4 — j___ZNSt11_Deque_baseIN3RBX13ScriptContext13WaitingThreadESaIS2_EE15_M_create_nodesEPPS2_S6_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::_Deque_base<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::_M_create_nodes(RBX::ScriptContext::WaitingThread**,RBX::ScriptContext::WaitingThread**) [0xf2c6a4]")]
-pub fn stub_0xf2c6a4() -> ! {
-    todo!("0xf2c6a4 std::_Deque_base<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::_M_create_nodes(RBX::ScriptContext::WaitingThread**,RBX::ScriptContext::WaitingThread**)")
+pub fn stub_0xf2c6a4(queue: &mut WaitingThreadQueue, additional: usize) {
+    // IDA 0xf2c6a4: _M_create_nodes — allocates node storage for the new range;
+    // `reserve` grows the backing ring the same way.
+    queue.threads.reserve(additional);
 }
 
 // 0xf2c6b4 — j___ZNSt11_Deque_baseIN3RBX13ScriptContext13WaitingThreadESaIS2_EE17_M_initialize_mapEm
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, void *, int)
 #[doc(alias = "std::_Deque_base<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::_M_initialize_map(unsigned long) [0xf2c6b4]")]
-pub fn stub_0xf2c6b4() -> ! {
-    todo!("0xf2c6b4 std::_Deque_base<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::_M_initialize_map(unsigned long)")
+pub fn stub_0xf2c6b4(map_size: usize) -> WaitingThreadQueue {
+    // IDA 0xf2c6b4: _M_initialize_map(n) — allocate_map plus centering the
+    // start/finish iterators; an empty reserved deque has the same shape.
+    WaitingThreadQueue::with_capacity(map_size)
 }
 
 // 0xf2c6c4 — j___ZNSt11_Deque_baseIN3RBX13ScriptContext13WaitingThreadESaIS2_EED2Ev
 #[doc(alias = "std::_Deque_base<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::~_Deque_base() [0xf2c6c4]")]
-pub fn stub_0xf2c6c4() -> ! {
-    todo!("0xf2c6c4 std::_Deque_base<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::~_Deque_base()")
+pub fn stub_0xf2c6c4(queue: WaitingThreadQueue) {
+    // IDA 0xf2c6c4: _Deque_base dtor — destroys elements then frees the map;
+    // owned drop matches.
+    drop(queue);
 }
 
 // 0xf2c6f4 — j___ZNSt12_Vector_baseIN3RBX13ScriptContext11ScriptStartESaIS2_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>::_M_allocate(unsigned long) [0xf2c6f4]")]
-pub fn stub_0xf2c6f4() -> ! {
-    todo!("0xf2c6f4 std::_Vector_base<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>::_M_allocate(unsigned long)")
+pub fn stub_0xf2c6f4(count: usize) -> Vec<ScriptStart> {
+    // IDA 0xf2c6f4: _Vector_base<ScriptStart>::_M_allocate(n) → operator new;
+    // the reserved `Vec` is the owned buffer.
+    Vec::with_capacity(count)
 }
 
 // 0xf2c714 — j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX13ScriptContext11ScriptStartES6_EET0_T_S8_S7_
 #[doc(alias = "RBX::ScriptContext::ScriptStart * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::ScriptContext::ScriptStart *,RBX::ScriptContext::ScriptStart *>(RBX::ScriptContext::ScriptStart *,RBX::ScriptContext::ScriptStart *,RBX::ScriptContext::ScriptStart *) [0xf2c714]")]
-pub fn stub_0xf2c714() -> ! {
-    todo!("0xf2c714 RBX::ScriptContext::ScriptStart * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::ScriptContext::ScriptStart *,RBX::ScriptContext::ScriptStart *>(RBX::ScriptContext::ScriptStart *,RBX::ScriptContext::ScriptStart *,RBX::ScriptContext::ScriptStart *)")
+pub fn stub_0xf2c714(items: &mut Vec<ScriptStart>, src: Range<usize>, dst: usize) {
+    // IDA 0xf2c714: __copy_backward for ScriptStart — shifts the tail up to
+    // make room. `ScriptStart` is not `Copy`, so the range is snapshotted
+    // then spliced back; same overlapping move without a `Copy` bound.
+    let end = src.end.min(items.len());
+    let start = src.start.min(end);
+    let buf: Vec<ScriptStart> = items[start..end].to_vec();
+    let dst = dst.min(items.len());
+    for (i, value) in buf.into_iter().enumerate() {
+        if dst + i < items.len() {
+            items[dst + i] = value;
+        } else {
+            items.push(value);
+        }
+    }
 }
 
 // 0xf2c724 — j___ZNSt3mapIN11LuaProfiler11StringCache8FunctionESsSt4lessIS2_ESaISt4pairIKS2_SsEEEixERS6_
 #[doc(alias = "std::map<LuaProfiler::StringCache::Function,std::string,std::less<LuaProfiler::StringCache::Function>,std::allocator<std::pair<LuaProfiler::StringCache::Function const,std::string>>>::operator[](LuaProfiler::StringCache::Function const&) [0xf2c724]")]
-pub fn stub_0xf2c724() -> ! {
-    todo!("0xf2c724 std::map<LuaProfiler::StringCache::Function,std::string,std::less<LuaProfiler::StringCache::Function>,std::allocator<std::pair<LuaProfiler::StringCache::Function const,std::string>>>::operator[](LuaProfiler::StringCache::Function const&)")
+pub fn stub_0xf2c724<'a>(map: &'a mut BTreeMap<ProfilerFunction, String>, key: &ProfilerFunction) -> &'a mut String {
+    // IDA 0xf2c724: map<Function, string>::operator[] — lower_bound plus
+    // default-string insert on a miss; `entry().or_default()` matches.
+    map.entry(key.clone()).or_default()
 }
 
 // 0xf2c734 — j___ZNSt3mapISsN3RBX13ScriptContext21ScriptStatInformationESt4lessISsESaISt4pairIKSsS2_EEEixERS6_
 #[doc(alias = "std::map<std::string,RBX::ScriptContext::ScriptStatInformation,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::ScriptContext::ScriptStatInformation>>>::operator[](std::string const&) [0xf2c734]")]
-pub fn stub_0xf2c734() -> ! {
-    todo!("0xf2c734 std::map<std::string,RBX::ScriptContext::ScriptStatInformation,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::ScriptContext::ScriptStatInformation>>>::operator[](std::string const&)")
+pub fn stub_0xf2c734<'a>(map: &'a mut HashMap<String, ScriptStatInfo>, key: &str) -> &'a mut ScriptStatInfo {
+    // IDA 0xf2c734: map<string, ScriptStatInformation>::operator[] — same
+    // lookup-or-default pattern over the stat table.
+    map.entry(key.to_owned()).or_default()
 }
 
 // 0xf2c754 — j___ZNSt4pairIKSsN3RBX13ScriptContext21ScriptStatInformationEEC2ERS0_RKS3_
 #[doc(alias = "std::pair<std::string const,RBX::ScriptContext::ScriptStatInformation>::pair(std::string const&,RBX::ScriptContext::ScriptStatInformation const&) [0xf2c754]")]
-pub fn stub_0xf2c754() -> ! {
-    todo!("0xf2c754 std::pair<std::string const,RBX::ScriptContext::ScriptStatInformation>::pair(std::string const&,RBX::ScriptContext::ScriptStatInformation const&)")
+pub fn stub_0xf2c754(name: &str, info: ScriptStatInfo) -> (String, ScriptStatInfo) {
+    // IDA 0xf2c754: pair<string const, ScriptStatInformation>::pair — copies
+    // both members into the new pair.
+    (name.to_owned(), info)
 }
 
 // 0xf2c774 — j___ZNSt5dequeIN3RBX13ScriptContext13WaitingThreadESaIS2_EE16_M_pop_front_auxEv
 #[doc(alias = "std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::_M_pop_front_aux(void) [0xf2c774]")]
-pub fn stub_0xf2c774() -> ! {
-    todo!("0xf2c774 std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::_M_pop_front_aux(void)")
+pub fn stub_0xf2c774(queue: &mut WaitingThreadQueue) -> Option<WaitingThread> {
+    // IDA 0xf2c774: _M_pop_front_aux — destroys the front node and advances;
+    // returns the popped thread for the caller to release.
+    queue.threads.pop_front()
 }
 
 // 0xf2c784 — j___ZNSt5dequeIN3RBX13ScriptContext13WaitingThreadESaIS2_EE16_M_push_back_auxERKS2_
 #[doc(alias = "std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::_M_push_back_aux(RBX::ScriptContext::WaitingThread const&) [0xf2c784]")]
-pub fn stub_0xf2c784() -> ! {
-    todo!("0xf2c784 std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::_M_push_back_aux(RBX::ScriptContext::WaitingThread const&)")
+pub fn stub_0xf2c784(queue: &mut WaitingThreadQueue, thread: WaitingThread) {
+    // IDA 0xf2c784: _M_push_back_aux — allocates a new back node when the last
+    // one is full, then copy-constructs; `push_back` covers both.
+    queue.threads.push_back(thread);
 }
 
 // 0xf2c794 — j___ZNSt5dequeIN3RBX13ScriptContext13WaitingThreadESaIS2_EE17_M_reallocate_mapEmb
 #[doc(alias = "std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::_M_reallocate_map(unsigned long,bool) [0xf2c794]")]
-pub fn stub_0xf2c794() -> ! {
-    todo!("0xf2c794 std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::_M_reallocate_map(unsigned long,bool)")
+pub fn stub_0xf2c794(queue: &mut WaitingThreadQueue, additional: usize, _front: bool) {
+    // IDA 0xf2c794: _M_reallocate_map(n, add_at_front) — grows the map on the
+    // front or back; `reserve` grows the ring either way.
+    queue.threads.reserve(additional);
 }
 
 // 0xf2c7a4 — j___ZNSt5dequeIN3RBX13ScriptContext13WaitingThreadESaIS2_EE19_M_destroy_data_auxESt15_Deque_iteratorIS2_RS2_PS2_ES8_
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::_M_destroy_data_aux(std::_Deque_iterator<RBX::ScriptContext::WaitingThread,RBX::ScriptContext::WaitingThread&,RBX::ScriptContext::WaitingThread*>,std::_Deque_iterator<RBX::ScriptContext::WaitingThread,RBX::ScriptContext::WaitingThread&,RBX::ScriptContext::WaitingThread*>) [0xf2c7a4]")]
-pub fn stub_0xf2c7a4() -> ! {
-    todo!("0xf2c7a4 std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::_M_destroy_data_aux(std::_Deque_iterator<RBX::ScriptContext::WaitingThread,RBX::ScriptContext::WaitingThread&,RBX::ScriptContext::WaitingThread*>,std::_Deque_iterator<RBX::ScriptContext::WaitingThread,RBX::ScriptContext::WaitingThread&,RBX::ScriptContext::WaitingThread*>)")
+pub fn stub_0xf2c7a4(queue: &mut WaitingThreadQueue) {
+    // IDA 0xf2c7a4: _M_destroy_data_aux(first, last) — destroys every node in
+    // the range; `clear` drops all elements.
+    queue.threads.clear();
 }
 
 // 0xf2c7b4 — j___ZNSt5dequeIN3RBX13ScriptContext13WaitingThreadESaIS2_EE22_M_reserve_map_at_backEm
 #[doc(alias = "std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::_M_reserve_map_at_back(unsigned long) [0xf2c7b4]")]
-pub fn stub_0xf2c7b4() -> ! {
-    todo!("0xf2c7b4 std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::_M_reserve_map_at_back(unsigned long)")
+pub fn stub_0xf2c7b4(queue: &mut WaitingThreadQueue, nodes: usize) {
+    // IDA 0xf2c7b4: _M_reserve_map_at_back(n) — ensures `n` free map slots at
+    // the back; `reserve` keeps the same spare capacity.
+    queue.threads.reserve(nodes);
 }
 
 // 0xf2c7c4 — j___ZNSt5dequeIN3RBX13ScriptContext13WaitingThreadESaIS2_EE9pop_frontEv
 #[doc(alias = "std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::pop_front(void) [0xf2c7c4]")]
-pub fn stub_0xf2c7c4() -> ! {
-    todo!("0xf2c7c4 std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::pop_front(void)")
+pub fn stub_0xf2c7c4(queue: &mut WaitingThreadQueue) -> Option<WaitingThread> {
+    // IDA 0xf2c7c4: pop_front — destroys the front element (via
+    // _M_pop_front_aux when crossing a node boundary) and advances.
+    queue.threads.pop_front()
 }
 
 // 0xf2c7d4 — j___ZNSt5dequeIN3RBX13ScriptContext13WaitingThreadESaIS2_EE9push_backERKS2_
 #[doc(alias = "std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::push_back(RBX::ScriptContext::WaitingThread const&) [0xf2c7d4]")]
-pub fn stub_0xf2c7d4() -> ! {
-    todo!("0xf2c7d4 std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::push_back(RBX::ScriptContext::WaitingThread const&)")
+pub fn stub_0xf2c7d4(queue: &mut WaitingThreadQueue, thread: WaitingThread) {
+    // IDA 0xf2c7d4: push_back — in-place construct or _M_push_back_aux
+    // (stub_0xf2c784) on a full back node; `push_back` covers both.
+    queue.threads.push_back(thread);
 }
 
 // 0xf2c7e4 — j___ZNSt5dequeIN3RBX13ScriptContext13WaitingThreadESaIS2_EEC2ERKS4_
 #[doc(alias = "std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::deque(std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>> const&) [0xf2c7e4]")]
-pub fn stub_0xf2c7e4() -> ! {
-    todo!("0xf2c7e4 std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::deque(std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>> const&)")
+pub fn stub_0xf2c7e4(queue: &WaitingThreadQueue) -> WaitingThreadQueue {
+    // IDA 0xf2c7e4: deque copy ctor — _M_initialize_map for the size, then
+    // element-wise copy; `clone` matches.
+    queue.clone()
 }
 
 // 0xf2c7f4 — j___ZNSt5dequeIN3RBX13ScriptContext13WaitingThreadESaIS2_EED2Ev
 #[doc(alias = "std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::~deque() [0xf2c7f4]")]
-pub fn stub_0xf2c7f4() -> ! {
-    todo!("0xf2c7f4 std::deque<RBX::ScriptContext::WaitingThread,std::allocator<RBX::ScriptContext::WaitingThread>>::~deque()")
+pub fn stub_0xf2c7f4(queue: WaitingThreadQueue) {
+    // IDA 0xf2c7f4: ~deque — destroys elements then the _Deque_base map;
+    // owned drop matches.
+    drop(queue);
 }
 
 // 0xf2c814 — j___ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyIPN3RBX13ScriptContext11ScriptStartES6_EET0_T_S8_S7_
 #[doc(alias = "RBX::ScriptContext::ScriptStart * std::__copy<false,std::random_access_iterator_tag>::copy<RBX::ScriptContext::ScriptStart *,RBX::ScriptContext::ScriptStart *>(RBX::ScriptContext::ScriptStart *,RBX::ScriptContext::ScriptStart *,RBX::ScriptContext::ScriptStart *) [0xf2c814]")]
-pub fn stub_0xf2c814() -> ! {
-    todo!("0xf2c814 RBX::ScriptContext::ScriptStart * std::__copy<false,std::random_access_iterator_tag>::copy<RBX::ScriptContext::ScriptStart *,RBX::ScriptContext::ScriptStart *>(RBX::ScriptContext::ScriptStart *,RBX::ScriptContext::ScriptStart *,RBX::ScriptContext::ScriptStart *)")
+pub fn stub_0xf2c814(items: &mut Vec<ScriptStart>, src: Range<usize>, dst: usize) {
+    // IDA 0xf2c814: __copy for ScriptStart — forward copy of the range;
+    // same snapshot-splice as stub_0xf2c714 for the non-`Copy` element type.
+    let end = src.end.min(items.len());
+    let start = src.start.min(end);
+    let buf: Vec<ScriptStart> = items[start..end].to_vec();
+    let dst = dst.min(items.len());
+    for (i, value) in buf.into_iter().enumerate() {
+        if dst + i < items.len() {
+            items[dst + i] = value;
+        } else {
+            items.push(value);
+        }
+    }
 }
 
 // 0xf2c844 — j___ZNSt6vectorIN3RBX13ScriptContext11ScriptStartESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::ScriptContext::ScriptStart*,std::vector<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>>,RBX::ScriptContext::ScriptStart const&) [0xf2c844]")]
-pub fn stub_0xf2c844() -> ! {
-    todo!("0xf2c844 std::vector<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::ScriptContext::ScriptStart*,std::vector<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>>,RBX::ScriptContext::ScriptStart const&)")
+pub fn stub_0xf2c844(items: &mut Vec<ScriptStart>, pos: usize, value: ScriptStart) -> usize {
+    // IDA 0xf2c844: vector<ScriptStart>::_M_insert_aux — grow, shift the
+    // tail, construct at pos. `Vec::insert` matches.
+    let pos = pos.min(items.len());
+    items.insert(pos, value);
+    pos
 }
 
 // 0xf2c854 — j___ZNSt6vectorIN3RBX13ScriptContext11ScriptStartESaIS2_EE5eraseEN9__gnu_cxx17__normal_iteratorIPS2_S4_EE
 #[doc(alias = "std::vector<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>::erase(__gnu_cxx::__normal_iterator<RBX::ScriptContext::ScriptStart*,std::vector<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>>) [0xf2c854]")]
-pub fn stub_0xf2c854() -> ! {
-    todo!("0xf2c854 std::vector<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>::erase(__gnu_cxx::__normal_iterator<RBX::ScriptContext::ScriptStart*,std::vector<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>>)")
+pub fn stub_0xf2c854(items: &mut Vec<ScriptStart>, pos: usize) -> ScriptStart {
+    // IDA 0xf2c854: vector<ScriptStart>::erase — destroys at pos and shifts
+    // the tail down; `remove` returns the erased element (panics on a bad
+    // iterator, matching the C++ precondition).
+    items.remove(pos)
 }
 
 // 0xf2c864 — j___ZNSt6vectorIN3RBX13ScriptContext11ScriptStartESaIS2_EE9push_backERKS2_
 // type: int __fastcall(int, RBX::ScriptContext::ScriptStart *)
 #[doc(alias = "std::vector<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>::push_back(RBX::ScriptContext::ScriptStart const&) [0xf2c864]")]
-pub fn stub_0xf2c864() -> ! {
-    todo!("0xf2c864 std::vector<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>::push_back(RBX::ScriptContext::ScriptStart const&)")
+pub fn stub_0xf2c864(items: &mut Vec<ScriptStart>, value: ScriptStart) {
+    // IDA 0xf2c864: vector<ScriptStart>::push_back — in-place construct or
+    // _M_insert_aux (stub_0xf2c844) when full; `push` covers both.
+    items.push(value);
 }
 
 // 0xf2c874 — j___ZNSt6vectorIN3RBX13ScriptContext11ScriptStartESaIS2_EED2Ev
 #[doc(alias = "std::vector<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>::~vector() [0xf2c874]")]
-pub fn stub_0xf2c874() -> ! {
-    todo!("0xf2c874 std::vector<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>::~vector()")
+pub fn stub_0xf2c874(items: Vec<ScriptStart>) {
+    // IDA 0xf2c874: ~vector<ScriptStart> — destroys elements, frees the
+    // buffer; owned drop matches.
+    drop(items);
 }
 
 // 0xf2c8e4 — j___ZNSt8_Rb_treeIN11LuaProfiler11StringCache8FunctionESt4pairIKS2_SsESt10_Select1stIS5_ESt4lessIS2_ESaIS5_EE14_M_create_nodeERKS5_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "std::_Rb_tree<LuaProfiler::StringCache::Function,std::pair<LuaProfiler::StringCache::Function const,std::string>,std::_Select1st<std::pair<LuaProfiler::StringCache::Function const,std::string>>,std::less<LuaProfiler::StringCache::Function>,std::allocator<std::pair<LuaProfiler::StringCache::Function const,std::string>>>::_M_create_node(std::pair<LuaProfiler::StringCache::Function const,std::string> const&) [0xf2c8e4]")]
-pub fn stub_0xf2c8e4() -> ! {
-    todo!("0xf2c8e4 std::_Rb_tree<LuaProfiler::StringCache::Function,std::pair<LuaProfiler::StringCache::Function const,std::string>,std::_Select1st<std::pair<LuaProfiler::StringCache::Function const,std::string>>,std::less<LuaProfiler::StringCache::Function>,std::allocator<std::pair<LuaProfiler::StringCache::Function const,std::string>>>::_M_create_node(std::pair<LuaProfiler::StringCache::Function const,std::string> const&)")
+pub fn stub_0xf2c8e4(key: ProfilerFunction, value: String) -> (ProfilerFunction, String) {
+    // IDA 0xf2c8e4: _Rb_tree<Function, pair<Function const, string>>::_M_create_node —
+    // allocates the node and copy-constructs the pair.
+    (key, value)
 }
 
 // 0xf2c8f4 — j___ZNSt8_Rb_treeIN11LuaProfiler11StringCache8FunctionESt4pairIKS2_SsESt10_Select1stIS5_ESt4lessIS2_ESaIS5_EE16_M_insert_uniqueERKS5_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "std::_Rb_tree<LuaProfiler::StringCache::Function,std::pair<LuaProfiler::StringCache::Function const,std::string>,std::_Select1st<std::pair<LuaProfiler::StringCache::Function const,std::string>>,std::less<LuaProfiler::StringCache::Function>,std::allocator<std::pair<LuaProfiler::StringCache::Function const,std::string>>>::_M_insert_unique(std::pair<LuaProfiler::StringCache::Function const,std::string> const&) [0xf2c8f4]")]
-pub fn stub_0xf2c8f4() -> ! {
-    todo!("0xf2c8f4 std::_Rb_tree<LuaProfiler::StringCache::Function,std::pair<LuaProfiler::StringCache::Function const,std::string>,std::_Select1st<std::pair<LuaProfiler::StringCache::Function const,std::string>>,std::less<LuaProfiler::StringCache::Function>,std::allocator<std::pair<LuaProfiler::StringCache::Function const,std::string>>>::_M_insert_unique(std::pair<LuaProfiler::StringCache::Function const,std::string> const&)")
+pub fn stub_0xf2c8f4(tree: &mut BTreeMap<ProfilerFunction, String>, key: ProfilerFunction, value: String) -> bool {
+    // IDA 0xf2c8f4: _M_insert_unique(pair) — inserts only when the key is
+    // absent; returns whether insertion happened.
+    if tree.contains_key(&key) {
+        return false;
+    }
+    tree.insert(key, value);
+    true
 }
 
 // 0xf2c904 — j___ZNSt8_Rb_treeIN11LuaProfiler11StringCache8FunctionESt4pairIKS2_SsESt10_Select1stIS5_ESt4lessIS2_ESaIS5_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_
@@ -534,15 +769,19 @@ pub fn stub_0xf2c904() -> ! {
 
 // 0xf2c914 — j___ZNSt8_Rb_treeIN11LuaProfiler11StringCache8FunctionESt4pairIKS2_SsESt10_Select1stIS5_ESt4lessIS2_ESaIS5_EE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
 #[doc(alias = "std::_Rb_tree<LuaProfiler::StringCache::Function,std::pair<LuaProfiler::StringCache::Function const,std::string>,std::_Select1st<std::pair<LuaProfiler::StringCache::Function const,std::string>>,std::less<LuaProfiler::StringCache::Function>,std::allocator<std::pair<LuaProfiler::StringCache::Function const,std::string>>>::_M_erase(std::_Rb_tree_node<std::pair<LuaProfiler::StringCache::Function const,std::string>> *) [0xf2c914]")]
-pub fn stub_0xf2c914() -> ! {
-    todo!("0xf2c914 std::_Rb_tree<LuaProfiler::StringCache::Function,std::pair<LuaProfiler::StringCache::Function const,std::string>,std::_Select1st<std::pair<LuaProfiler::StringCache::Function const,std::string>>,std::less<LuaProfiler::StringCache::Function>,std::allocator<std::pair<LuaProfiler::StringCache::Function const,std::string>>>::_M_erase(std::_Rb_tree_node<std::pair<LuaProfiler::StringCache::Function const,std::string>> *)")
+pub fn stub_0xf2c914(tree: &mut BTreeMap<ProfilerFunction, String>, key: &ProfilerFunction) -> bool {
+    // IDA 0xf2c914: _M_erase(node) — unlinks and frees the node; returns
+    // whether a node was erased.
+    tree.remove(key).is_some()
 }
 
 // 0xf2c924 — j___ZNSt8_Rb_treeIN11LuaProfiler11StringCache8FunctionESt4pairIKS2_SsESt10_Select1stIS5_ESt4lessIS2_ESaIS5_EE9_M_insertEPSt18_Rb_tree_node_baseSD_RKS5_
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "std::_Rb_tree<LuaProfiler::StringCache::Function,std::pair<LuaProfiler::StringCache::Function const,std::string>,std::_Select1st<std::pair<LuaProfiler::StringCache::Function const,std::string>>,std::less<LuaProfiler::StringCache::Function>,std::allocator<std::pair<LuaProfiler::StringCache::Function const,std::string>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<LuaProfiler::StringCache::Function const,std::string> const&) [0xf2c924]")]
-pub fn stub_0xf2c924() -> ! {
-    todo!("0xf2c924 std::_Rb_tree<LuaProfiler::StringCache::Function,std::pair<LuaProfiler::StringCache::Function const,std::string>,std::_Select1st<std::pair<LuaProfiler::StringCache::Function const,std::string>>,std::less<LuaProfiler::StringCache::Function>,std::allocator<std::pair<LuaProfiler::StringCache::Function const,std::string>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<LuaProfiler::StringCache::Function const,std::string> const&)")
+pub fn stub_0xf2c924(tree: &mut BTreeMap<ProfilerFunction, String>, key: ProfilerFunction, value: String) -> Option<String> {
+    // IDA 0xf2c924: _M_insert(hint-node, pair) — links the new node into the
+    // tree; returns the displaced value, if any.
+    tree.insert(key, value)
 }
 
 // 0xf2c934 — j___ZNSt8_Rb_treeIPN3RBX10BaseScriptES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE11equal_rangeERKS2_
@@ -4310,4 +4549,119 @@ pub fn stub_0xf69f54() -> ! {
 #[doc(alias = "Ogre::CreateHighLevelGpuProgramScriptCompilerEvent::~CreateHighLevelGpuProgramScriptCompilerEvent() [0xf69f64]")]
 pub fn stub_0xf69f64() -> ! {
     todo!("0xf69f64 Ogre::CreateHighLevelGpuProgramScriptCompilerEvent::~CreateHighLevelGpuProgramScriptCompilerEvent()")
+}
+
+#[cfg(test)]
+mod script_context_tests {
+    use super::*;
+
+    #[test]
+    fn class_names_match_declare_tags() {
+        assert_eq!(stub_0xf2c2f4(), "LocalScript");
+        assert_eq!(stub_0xf2c304(), "LuaSettings");
+        assert_eq!(stub_0xf2c314(), "DebuggerWatch");
+        assert_eq!(stub_0xf2c324(), "ScriptDebugger");
+    }
+
+    #[test]
+    fn service_registry_finds_and_creates_once() {
+        let mut reg = ScriptContextRegistry::default();
+        assert!(stub_0xf2c344(&reg).is_none());
+        let a = stub_0xf2c364(&mut reg, "game");
+        let b = stub_0xf2c364(&mut reg, "other");
+        assert_eq!(a.name, "game");
+        assert!(SharedPtr::ptr_eq(&a, &b));
+        assert!(stub_0xf2c344(&reg).is_some());
+    }
+
+    #[test]
+    fn breakpoint_table_and_script_entry_drop() {
+        let mut table = stub_0xf2c2b4(8);
+        table.map.insert(7, DebuggerBreakpoint { id: 7, enabled: true });
+        assert!(table.map[&7].enabled);
+        stub_0xf2c2d4(("x".to_owned(), SharedPtr::new(ScriptEntry { name: "x".to_owned() })));
+    }
+
+    #[test]
+    fn profiler_ordering_and_tree_ops() {
+        let f = ProfilerFunction::new("b");
+        let g = ProfilerFunction::new("a");
+        assert!(stub_0xf2c2e4(&g, &f));
+        assert!(!stub_0xf2c2e4(&f, &g));
+        let mut tree = BTreeMap::new();
+        assert!(stub_0xf2c8f4(&mut tree, f.clone(), "body".to_owned()));
+        assert!(!stub_0xf2c8f4(&mut tree, f.clone(), "again".to_owned()));
+        assert_eq!(tree[&f], "body");
+        let (k, v) = stub_0xf2c8e4(g.clone(), "s".to_owned());
+        assert_eq!((k, v.as_str()), (g.clone(), "s"));
+        assert_eq!(stub_0xf2c924(&mut tree, g.clone(), "s".to_owned()), None);
+        assert!(stub_0xf2c914(&mut tree, &f));
+        assert!(!stub_0xf2c914(&mut tree, &f));
+        let mut profane = BTreeMap::new();
+        stub_0xf2c724(&mut profane, &g).push_str("src");
+        assert_eq!(profane[&g], "src");
+    }
+
+    #[test]
+    fn stat_map_and_pair_ctor() {
+        let mut stats = HashMap::new();
+        stub_0xf2c734(&mut stats, "render").calls += 1;
+        stub_0xf2c734(&mut stats, "render").total_time += 0.5;
+        assert_eq!(stats["render"].calls, 1);
+        let (name, info) = stub_0xf2c754("physics", ScriptStatInfo { calls: 2, total_time: 1.0 });
+        assert_eq!((name.as_str(), info.calls), ("physics", 2));
+    }
+
+    #[test]
+    fn waiting_queue_push_pop_copy_clear() {
+        let mut queue = stub_0xf2c6b4(4);
+        stub_0xf2c6a4(&mut queue, 4);
+        stub_0xf2c7d4(&mut queue, WaitingThread::new(1, 10.0));
+        stub_0xf2c784(&mut queue, WaitingThread::new(2, 20.0));
+        let copy = stub_0xf2c7e4(&queue);
+        assert_eq!(copy.threads.len(), 2);
+        assert_eq!(stub_0xf2c774(&mut queue).unwrap().thread_id, 1);
+        assert_eq!(stub_0xf2c7c4(&mut queue).unwrap().thread_id, 2);
+        assert!(stub_0xf2c7c4(&mut queue).is_none());
+        stub_0xf2c7b4(&mut queue, 8);
+        stub_0xf2c794(&mut queue, 8, false);
+        stub_0xf2c7a4(&mut queue);
+        stub_0xf2c694(2);
+        stub_0xf2c6c4(queue);
+        stub_0xf2c7f4(copy);
+    }
+
+    #[test]
+    fn script_start_vec_insert_erase_copy() {
+        let mut items = stub_0xf2c6f4(4);
+        stub_0xf2c864(&mut items, ScriptStart::new("a", "src-a"));
+        stub_0xf2c844(&mut items, 0, ScriptStart::new("b", "src-b"));
+        assert_eq!(items[0].name, "b");
+        stub_0xf2c714(&mut items, 0..1, 1);
+        assert_eq!(items[1].name, "b");
+        stub_0xf2c814(&mut items, 0..1, 1);
+        let erased = stub_0xf2c854(&mut items, 0);
+        assert_eq!(erased.name, "b");
+        stub_0xf2c874(items);
+    }
+
+    #[test]
+    fn member_dispatch_forwards_bound_args() {
+        let ctx = ScriptContextHandle::new("ctx");
+        let start = ScriptStart::new("job", "print(1)");
+        let mut seen = String::new();
+        stub_0xf2c444(&ctx, &start, &mut |c, s| seen = format!("{c}/{s}"));
+        assert_eq!(seen, "ctx/job");
+        stub_0xf2c454(&ctx, WeakThreadRef { id: 9 }, &LuaStateRef { stack_top: 3 }, &mut |c, t, s| seen = format!("{c}/{t}/{s}"));
+        assert_eq!(seen, "ctx/9/3");
+        stub_0xf2c464(&ctx, "base", ScriptStartOptions { timeout_secs: 1.5 }, &mut |c, s, t| seen = format!("{c}/{s}/{t}"));
+        assert_eq!(seen, "ctx/base/1.5");
+        stub_0xf2c474(&ctx, "i", "txt", "t", &mut |c, i, x, t| seen = format!("{c}/{i}/{x}/{t}"));
+        assert_eq!(seen, "ctx/i/txt/t");
+        // IDA 0xf2c654 is `const`: the stored target cannot mutate captures,
+        // so the probe writes through a shared cell like a captured pointer.
+        let probe = std::cell::RefCell::new(String::new());
+        stub_0xf2c654(&|a, b, c, d| *probe.borrow_mut() = format!("{a}/{b}/{c}/{d}"), "a", "b", "c", 4);
+        assert_eq!(*probe.borrow(), "a/b/c/4");
+}
 }
