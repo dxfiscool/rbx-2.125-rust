@@ -991,6 +991,54 @@ pub struct IMetric {
     _opaque: (),
 }
 
+/// Rust model of `RBX::DataModel::GenericJob` (IDA `0x4335e0`): a scheduled
+/// job handle; the scheduler lands with the task subsystem.
+#[derive(Default)]
+pub struct GenericJob {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::GuiRoot` (IDA `0x43388c`): the GUI root; members land
+/// with the GUI batch.
+#[derive(Default)]
+pub struct GuiRoot {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::PlayerHUD` (IDA `0x434398`): the player HUD; members
+/// land with the GUI batch.
+#[derive(Default)]
+pub struct PlayerHUD {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::RunTransition` (IDA `0x434edc`): the run-state
+/// transition tag carried by the transition signal; enumerators unmodeled.
+#[derive(Clone, Copy, Default, PartialEq, Eq)]
+pub struct RunTransition(pub i32);
+
+/// Rust model of `boost::_bi::bind_t<void, mf1<void, DataModel,
+/// RunTransition>>, ...>` (IDA `0x434edc`): the bound model plus the member
+/// handler. Same shape as `ChangeHistoryBind`.
+#[derive(Clone, Copy)]
+pub struct DataModelRunBind {
+    pub func: fn(*const DataModel, RunTransition),
+    pub target: *const DataModel,
+}
+
+/// The bound target travels inside `Signal` closures; sound under the
+/// slot-lifetime contract like `HeartbeatBind`.
+unsafe impl Send for DataModelRunBind {}
+unsafe impl Sync for DataModelRunBind {}
+
+/// Rust model of `RBX::MouseCommand` (IDA `0x437650`): the active studio
+/// mouse command behind `getCurrentMouseCommand`; members land with the
+/// command batch.
+#[derive(Default)]
+pub struct MouseCommand {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::Reflection::BoundFuncDesc<DataModel, ...>` (IDA
 /// `0x431288`): the box is storage-only in every D1 below; one family type
 /// serves all `DataModel` bound descriptors until a member is modeled.
@@ -16700,8 +16748,10 @@ pub fn stub_0x4323f4() -> ! {
 // 0x4325e0 — __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::addPair(RBX::DataModel::GearGenreSetting,char const*)")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::addPair(RBX::DataModel::GearGenreSetting,char const*)
-pub fn stub_0x4325e0() -> ! {
-    todo!("0x4325e0 RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::addPair(RBX::DataModel::GearGenreSetting,char const*)")
+pub fn stub_0x4325e0(desc: &mut EnumDesc, value: i32, name: &'static str) {
+    // IDA 0x4325e0: `EnumDesc<GearGenreSetting>::addPair` — same push shape
+    // as 0x431b48.
+    desc.pairs.push((value, name));
 }
 
 // 0x432940 — __ZN3RBX10Reflection7Variant14genericConvertINS_9DataModel16GearGenreSettingEEERT_v
@@ -16714,8 +16764,10 @@ pub fn stub_0x432940() -> ! {
 // 0x432b2c — __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::addPair(RBX::DataModel::GearType,char const*)")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::addPair(RBX::DataModel::GearType,char const*)
-pub fn stub_0x432b2c() -> ! {
-    todo!("0x432b2c RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::addPair(RBX::DataModel::GearType,char const*)")
+pub fn stub_0x432b2c(desc: &mut EnumDesc, value: i32, name: &'static str) {
+    // IDA 0x432b2c: `EnumDesc<GearType>::addPair` — same push shape as
+    // 0x431b48.
+    desc.pairs.push((value, name));
 }
 
 // 0x432e8c — __ZN3RBX10Reflection7Variant14genericConvertINS_9DataModel8GearTypeEEERT_v
@@ -16728,8 +16780,10 @@ pub fn stub_0x432e8c() -> ! {
 // 0x433078 — __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE7addPairES3_PKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::addPair(RBX::Instance::SaveFilter,char const*)")]
 // was: RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::addPair(RBX::Instance::SaveFilter,char const*)
-pub fn stub_0x433078() -> ! {
-    todo!("0x433078 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::addPair(RBX::Instance::SaveFilter,char const*)")
+pub fn stub_0x433078(desc: &mut EnumDesc, value: i32, name: &'static str) {
+    // IDA 0x433078: `EnumDesc<SaveFilter>::addPair` — same push shape as
+    // 0x431b48.
+    desc.pairs.push((value, name));
 }
 
 // 0x4333d8 — __ZN3RBX10Reflection7Variant14genericConvertINS_8Instance10SaveFilterEEERT_v
@@ -16742,50 +16796,104 @@ pub fn stub_0x4333d8() -> ! {
 // 0x4335c4 — __ZN3RBX15ServiceProvider4findINS_5VisitEEEPT_PKNS_8InstanceE
 #[doc(alias = "RBX::Visit * RBX::ServiceProvider::find<RBX::Visit>(RBX::Instance const*)")]
 // was: RBX::Visit * RBX::ServiceProvider::find<RBX::Visit>(RBX::Instance const*)
-pub fn stub_0x4335c4() -> ! {
-    todo!("0x4335c4 RBX::Visit * RBX::ServiceProvider::find<RBX::Visit>(RBX::Instance const*)")
+pub fn stub_0x4335c4(instance: *const Instance) -> *const Instance {
+    // IDA 0x4335c4: `find<Visit>(instance)` — provider search then class
+    // scan, null on miss. Same root-walk + pre-order shape as 0x3ff614,
+    // matching the `Visit` class.
+    // SAFETY: `instance` must be null or point to a valid `Instance` whose
+    // whole ancestry/subtree outlives the call.
+    unsafe {
+        let mut root = instance;
+        while !root.is_null() && !(*root).parent.is_null() {
+            root = (*root).parent;
+        }
+        if root.is_null() {
+            return core::ptr::null();
+        }
+        let mut stack: Vec<*const Instance> = vec![root];
+        while let Some(node) = stack.pop() {
+            if instance_is_a(node, "Visit") {
+                return node;
+            }
+            let mut children: Vec<*const Instance> = (*node)
+                .children
+                .iter()
+                .map(|child| SharedPtr::as_ptr(child) as *const Instance)
+                .collect();
+            children.reverse();
+            stack.extend(children);
+        }
+        core::ptr::null()
+    }
 }
 
 // 0x4335e0 — __ZN5boost10shared_ptrIN3RBX9DataModel10GenericJobEEaSERKS4_
 #[doc(alias = "rbx_core::SharedPtr<RBX::DataModel::GenericJob>::operator=(rbx_core::SharedPtr<RBX::DataModel::GenericJob> const&)")]
 // was: boost::shared_ptr<RBX::DataModel::GenericJob>::operator=(boost::shared_ptr<RBX::DataModel::GenericJob> const&)
-pub fn stub_0x4335e0() -> ! {
-    todo!("0x4335e0 boost::shared_ptr<RBX::DataModel::GenericJob>::operator=(boost::shared_ptr<RBX::DataModel::GenericJob> const&)")
+pub fn stub_0x4335e0(dst: *mut Option<SharedPtr<GenericJob>>, src: &Option<SharedPtr<GenericJob>>) {
+    // IDA 0x4335e0: same-type `shared_ptr` copy-assign — retain, store,
+    // release-old; clone-then-assign is self-assignment safe. Twin of
+    // 0x402f14.
+    // SAFETY: `dst` must be writable; `src` must be readable.
+    unsafe {
+        *dst = src.clone();
+    }
 }
 
 // 0x433618 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9DataModelEPNS_4VerbEPS4_EEN5boost10shared_ptrIT_EET0_T1_
 #[doc(alias = "rbx_core::SharedPtr<RBX::DataModel> RBX::Creatable<RBX::Instance>::create<RBX::DataModel,RBX::Verb *,RBX::DataModel*>(RBX::Verb *,RBX::DataModel*)")]
 // was: boost::shared_ptr<RBX::DataModel> RBX::Creatable<RBX::Instance>::create<RBX::DataModel,RBX::Verb *,RBX::DataModel*>(RBX::Verb *,RBX::DataModel*)
-pub fn stub_0x433618() -> ! {
-    todo!("0x433618 boost::shared_ptr<RBX::DataModel> RBX::Creatable<RBX::Instance>::create<RBX::DataModel,RBX::Verb *,RBX::DataModel*>(RBX::Verb *,RBX::DataModel*)")
+pub fn stub_0x433618() -> SharedPtr<DataModel> {
+    // IDA 0x433618: `Creatable::create<DataModel>(Verb*, DataModel*)` —
+    // constructs the model; the verb link and the parent-model link of the
+    // C2 (IDA 0x41fd78) land with the verb/service subsystems, so
+    // construction collapses to defaults.
+    SharedPtr::new(DataModel::default())
 }
 
 // 0x4337d0 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9WorkspaceEPNS_9DataModelEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Workspace> RBX::Creatable<RBX::Instance>::create<RBX::Workspace,RBX::DataModel *>(RBX::DataModel *)")]
 // was: boost::shared_ptr<RBX::Workspace> RBX::Creatable<RBX::Instance>::create<RBX::Workspace,RBX::DataModel *>(RBX::DataModel *)
-pub fn stub_0x4337d0() -> ! {
-    todo!("0x4337d0 boost::shared_ptr<RBX::Workspace> RBX::Creatable<RBX::Instance>::create<RBX::Workspace,RBX::DataModel *>(RBX::DataModel *)")
+pub fn stub_0x4337d0() -> SharedPtr<crate::workspace::Workspace> {
+    // IDA 0x4337d0: `Creatable::create<Workspace>(DataModel*)` — constructs
+    // the workspace; the model link lands with model setup, so construction
+    // collapses to defaults.
+    SharedPtr::new(crate::workspace::Workspace::default())
 }
 
 // 0x43388c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_7GuiRootEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::GuiRoot> RBX::Creatable<RBX::Instance>::create<RBX::GuiRoot>(void)")]
 // was: boost::shared_ptr<RBX::GuiRoot> RBX::Creatable<RBX::Instance>::create<RBX::GuiRoot>(void)
-pub fn stub_0x43388c() -> ! {
-    todo!("0x43388c boost::shared_ptr<RBX::GuiRoot> RBX::Creatable<RBX::Instance>::create<RBX::GuiRoot>(void)")
+pub fn stub_0x43388c() -> SharedPtr<GuiRoot> {
+    // IDA 0x43388c: `Creatable::create<GuiRoot>` — `operator new` + default
+    // ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(GuiRoot::default())
 }
 
 // 0x434398 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9PlayerHUDEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::PlayerHUD> RBX::Creatable<RBX::Instance>::create<RBX::PlayerHUD>(void)")]
 // was: boost::shared_ptr<RBX::PlayerHUD> RBX::Creatable<RBX::Instance>::create<RBX::PlayerHUD>(void)
-pub fn stub_0x434398() -> ! {
-    todo!("0x434398 boost::shared_ptr<RBX::PlayerHUD> RBX::Creatable<RBX::Instance>::create<RBX::PlayerHUD>(void)")
+pub fn stub_0x434398() -> SharedPtr<PlayerHUD> {
+    // IDA 0x434398: `Creatable::create<PlayerHUD>` — `operator new` + default
+    // ctor + adoption; same collapse as 0x43388c.
+    SharedPtr::new(PlayerHUD::default())
 }
 
 // 0x434edc — __ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE7connectIN5boost3_bi6bind_tIvNS7_4_mfi3mf1IvNS2_9DataModelES3_EENS8_5list2INS8_5valueIPSC_EENS7_3argILi1EEEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::RunTransition)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::DataModel,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::DataModel*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::DataModel,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::DataModel*>,boost::arg<1>>> const&)")]
 // was: rbx::signals::connection rbx::signals::signal<void ()(RBX::RunTransition)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::DataModel,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::DataModel*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::DataModel,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::DataModel*>,boost::arg<1>>> const&)
-pub fn stub_0x434edc() -> ! {
-    todo!("0x434edc rbx::signals::connection rbx::signals::signal<void ()(RBX::RunTransition)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::DataModel,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::DataModel*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::DataModel,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::DataModel*>,boost::arg<1>>> const&)")
+pub fn stub_0x434edc(sig: &Signal<RunTransition>, bind: &DataModelRunBind) -> TripleConnection {
+    // IDA 0x434edc: `signal::connect<mf1-bind>` over the run-transition
+    // signal with the concrete-closure `Arc`; whole-struct capture keeps the
+    // raw target under the bind's `Send`/`Sync` contract. Same shape as
+    // 0x3d73f8.
+    let retained = *bind;
+    let cb = SharedPtr::new(move |arg: RunTransition| {
+        let bound = retained;
+        (bound.func)(bound.target, arg);
+    });
+    sig.connect(cb.clone());
+    TripleConnection { keep: cb }
 }
 
 // 0x436fa0 — __ZN3rbx22timestamped_safe_queueIN5boost8functionIFvPN3RBX9DataModelEEEEE4pushERKS7_
@@ -16798,29 +16906,78 @@ pub fn stub_0x436fa0() -> ! {
 // 0x437650 — __ZN3RBX9Workspace22getCurrentMouseCommandEv
 #[doc(alias = "RBX::Workspace::getCurrentMouseCommand(void)")]
 // was: RBX::Workspace::getCurrentMouseCommand(void)
-pub fn stub_0x437650() -> ! {
-    todo!("0x437650 RBX::Workspace::getCurrentMouseCommand(void)")
+pub fn stub_0x437650(workspace: &crate::workspace::Workspace) -> SharedPtr<MouseCommand> {
+    // IDA 0x437650: `ReleaseAssert(currentCommand != NULL)` (disasm
+    // 0x437664-0x437690, Workspace.h) on the member at `+0x1C8`, then returns
+    // it; the assert becomes `expect` and the retained return a clone.
+    workspace.current_command.as_ref().expect("0x437650: currentCommand.get()!=NULL").clone()
 }
 
 // 0x4377f8 — __ZNK3RBX8Instance22countDescendantsOfTypeIS0_EEiv
 #[doc(alias = "int RBX::Instance::countDescendantsOfType<RBX::Instance>(void)const")]
 // was: int RBX::Instance::countDescendantsOfType<RBX::Instance>(void)const
-pub fn stub_0x4377f8() -> ! {
-    todo!("0x4377f8 int RBX::Instance::countDescendantsOfType<RBX::Instance>(void)const")
+pub fn stub_0x4377f8(this: *const Instance) -> i32 {
+    // IDA 0x4377f8: counts self when non-null (decomp 0x437862-0x43786a;
+    // `isA(Instance)` holds for every instance) plus the recursive child
+    // counts (decomp 0x437898) — the whole subtree size. No type test can
+    // fail, so the count is exact.
+    // SAFETY: `this` must be null or point to a valid `Instance` whose
+    // subtree outlives the call.
+    unsafe fn count(node: *const Instance) -> i32 {
+        if node.is_null() {
+            return 0;
+        }
+        let mut total = 1;
+        for child in (*node).children.iter() {
+            total += count(SharedPtr::as_ptr(child));
+        }
+        total
+    }
+    unsafe { count(this) }
 }
 
 // 0x437914 — __ZNK3RBX8Instance22countDescendantsOfTypeINS_12PartInstanceEEEiv
 #[doc(alias = "int RBX::Instance::countDescendantsOfType<RBX::PartInstance>(void)const")]
 // was: int RBX::Instance::countDescendantsOfType<RBX::PartInstance>(void)const
-pub fn stub_0x437914() -> ! {
-    todo!("0x437914 int RBX::Instance::countDescendantsOfType<RBX::PartInstance>(void)const")
+pub fn stub_0x437914(this: *const Instance) -> i32 {
+    // IDA 0x437914: `countDescendantsOfType<PartInstance>` — same DFS shape
+    // as 0x4377f8, counting only descendants (and self) passing the
+    // `PartInstance` type test, which collapses into the exact-name check
+    // like every other `isA` in this file.
+    // SAFETY: `this` must be null or point to a valid `Instance` whose
+    // subtree outlives the call.
+    unsafe fn count(node: *const Instance) -> i32 {
+        if node.is_null() {
+            return 0;
+        }
+        let mut total = i32::from(instance_is_a(node, "PartInstance"));
+        for child in (*node).children.iter() {
+            total += count(SharedPtr::as_ptr(child));
+        }
+        total
+    }
+    unsafe { count(this) }
 }
 
 // 0x437a30 — __ZNK3RBX8Instance22countDescendantsOfTypeINS_10BaseScriptEEEiv
 #[doc(alias = "int RBX::Instance::countDescendantsOfType<RBX::BaseScript>(void)const")]
 // was: int RBX::Instance::countDescendantsOfType<RBX::BaseScript>(void)const
-pub fn stub_0x437a30() -> ! {
-    todo!("0x437a30 int RBX::Instance::countDescendantsOfType<RBX::BaseScript>(void)const")
+pub fn stub_0x437a30(this: *const Instance) -> i32 {
+    // IDA 0x437a30: `countDescendantsOfType<BaseScript>` — same DFS shape as
+    // 0x437914 over the `BaseScript` type test.
+    // SAFETY: `this` must be null or point to a valid `Instance` whose
+    // subtree outlives the call.
+    unsafe fn count(node: *const Instance) -> i32 {
+        if node.is_null() {
+            return 0;
+        }
+        let mut total = i32::from(instance_is_a(node, "BaseScript"));
+        for child in (*node).children.iter() {
+            total += count(SharedPtr::as_ptr(child));
+        }
+        total
+    }
+    unsafe { count(this) }
 }
 
 // 0x438048 — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPN5boost10shared_ptrIKN3RBX13TaskScheduler3JobEEESt6vectorIS8_SaIS8_EEEENS2_3_bi6bind_tIvPFvPNS4_9DataModelES8_PSA_INS4_10Reflection7VariantESaISJ_EEENSE_5list3INSE_5valueISH_EENS2_3argILi1EEENSQ_ISM_EEEEEEET0_T_SY_SX_
@@ -16847,29 +17004,51 @@ pub fn stub_0x4380fc() -> ! {
 // 0x4382c8 — __ZN3rbx7signals16signal_with_argsILi2EFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEEclES6_SA_
 #[doc(alias = "rbx::signals::signal_with_args<2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::operator()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)")]
 // was: rbx::signals::signal_with_args<2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::operator()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)
-pub fn stub_0x4382c8() -> ! {
-    todo!("0x4382c8 rbx::signals::signal_with_args<2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::operator()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x4382c8(
+    sig: &Signal<(SharedPtr<Instance>, *const PropertyDescriptor)>,
+    instance: &SharedPtr<Instance>,
+    prop: *const PropertyDescriptor,
+) {
+    // IDA 0x4382c8: `signal_with_args<2>::operator()` over `(Instance,
+    // PropertyDescriptor)` — retains each arg, walks the live slots firing
+    // each item; `Signal::fire` holds the same lock and drops the same
+    // per-item retains into clones. Same shape as 0x3ed48c, one arg fewer.
+    sig.fire((instance.clone(), prop));
 }
 
 // 0x4387f0 — __ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEED1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc()
-pub fn stub_0x4387f0() -> ! {
-    todo!("0x4387f0 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc()")
+pub fn stub_0x4387f0(_desc: *mut EnumDesc) {
+    // IDA 0x4387f0: `EnumDesc<CreatorType>::D1` — table teardown; dropping
+    // the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x4387f4 — __ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEED0Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc()
-pub fn stub_0x4387f4() -> ! {
-    todo!("0x4387f4 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc()")
+pub fn stub_0x4387f4(_desc: *mut EnumDesc) {
+    // IDA 0x4387f4: `EnumDesc<CreatorType>::D0` — vtable install plus table
+    // teardown; dropping the box is the same release. Twin of 0x4387f0.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x438894 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::lookup(char const*)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::lookup(char const*)const
-pub fn stub_0x438894() -> ! {
-    todo!("0x438894 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::lookup(char const*)const")
+pub fn stub_0x438894(desc: &EnumDesc, name: &str) -> Option<i32> {
+    // IDA 0x438894: `Name::lookup` (decomp 0x4388a0) then `convertToValue`
+    // (decomp 0x4388ae); hit converts to the item, miss returns 0 (decomp
+    // 0x4388b0-0x4388c0). The interning collapses into the `&str` key and the
+    // item into its value.
+    desc.pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
 }
 
 // 0x4388c4 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE6lookupERKNS0_7VariantE
@@ -16896,22 +17075,34 @@ pub fn stub_0x438918() -> ! {
 // 0x438a5c — __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()
-pub fn stub_0x438a5c() -> ! {
-    todo!("0x438a5c RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")
+pub fn stub_0x438a5c(_desc: *mut EnumDesc) {
+    // IDA 0x438a5c: `EnumDesc<Genre>::D1` — table teardown; dropping the box
+    // is the same release. Twin of 0x4387f0.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x438a60 — __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED0Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()
-pub fn stub_0x438a60() -> ! {
-    todo!("0x438a60 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")
+pub fn stub_0x438a60(_desc: *mut EnumDesc) {
+    // IDA 0x438a60: `EnumDesc<Genre>::D0` — vtable install plus table
+    // teardown; dropping the box is the same release. Twin of 0x4387f4.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x438b00 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::lookup(char const*)const")]
 // was: RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::lookup(char const*)const
-pub fn stub_0x438b00() -> ! {
-    todo!("0x438b00 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::lookup(char const*)const")
+pub fn stub_0x438b00(desc: &EnumDesc, name: &str) -> Option<i32> {
+    // IDA 0x438b00: `EnumDesc<Genre>::lookup(name)` — same name-search shape
+    // as 0x438894.
+    desc.pairs.iter().find(|(_, text)| *text == name).map(|(value, _)| *value)
 }
 
 // 0x438b30 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE6lookupERKNS0_7VariantE

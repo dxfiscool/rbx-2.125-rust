@@ -9,6 +9,9 @@
 #[derive(Default)]
 pub struct Workspace {
     _opaque: (),
+    /// Current studio mouse command at `+0x1C8` behind
+    /// `getCurrentMouseCommand` (IDA `0x437650`, asserted non-null).
+    pub current_command: Option<rbx_core::SharedPtr<crate::instance::MouseCommand>>,
 }
 
 // 196 stubs in this file | batch range 0x380a4..0x710100 (76 existing + 120 new shard B)
