@@ -339,179 +339,194 @@ pub fn stub_970d58() {
     // IDA 0x970d58: __ZThn32 D0 thunk — this -= 32 (0x970d82), Peer dtor + operator delete (0x970daa..0x970db0). Rust: Arc Drop glue covers it; no explicit body.
 }
 
+/// Host item built by `GlobalAdvancedSettingsItem<NetworkSettings>::C2/singleton`
+/// (IDA 0x9b4218/0x98a8e0): `Instance` base + vtable installs with the
+/// `Described<NetworkSettings>` descriptor ensured; the process-wide `sing`
+/// (GlobalSettings.h:132) parents it under `GlobalAdvancedSettings`.
+#[derive(Debug, Default)]
+pub struct NetworkSettingsItem;
+/// Process-wide `sing` of `GlobalAdvancedSettingsItem<NetworkSettings>` (IDA 0x98a8e0).
+static NETWORK_SETTINGS_SINGLETON: LazyLock<SharedPtr<NetworkSettingsItem>> =
+    LazyLock::new(|| SharedPtr::new(NetworkSettingsItem));
+
+/// `FactoryProduct<NetworkSettings, ...>::Creator` (IDA 0x998898): vtable install
+/// + `Name::declare` + unique insert into the creators registry keyed by name.
+#[derive(Debug, Default)]
+pub struct NetworkSettingsCreator;
+static NETWORK_SETTINGS_CREATOR: LazyLock<NetworkSettingsCreator> =
+    LazyLock::new(|| NetworkSettingsCreator);
+
+/// Declared `RBX::Name` for `RBX::Network::sGuidRegistryService` (IDA 0x9acc54:
+/// `call_once` declare + guard-once doDeclare; binary string "GuidRegistryService").
+static GUID_REGISTRY_SERVICE_NAME: LazyLock<String> =
+    LazyLock::new(|| "GuidRegistryService".to_owned());
+
 // 0x970dfc — __ZThn36_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_970dfc() -> ! {
-    todo!("0x970dfc __ZThn36_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_970dfc() {
+    // IDA 0x970dfc: __ZThn36 D1 thunk — this -= 36, Peer dtor in place. Rust: Drop glue covers it; no explicit body.
 }
-
 // 0x970e08 — __ZThn36_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_970e08() -> ! {
-    todo!("0x970e08 __ZThn36_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_970e08() {
+    // IDA 0x970e08: __ZThn36 D0 thunk — this -= 36, Peer dtor + operator delete. Rust: Arc Drop glue covers it; no explicit body.
 }
-
 // 0x970eac — __ZThn92_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_970eac() -> ! {
-    todo!("0x970eac __ZThn92_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_970eac() {
+    // IDA 0x970eac: __ZThn92 D1 thunk — this -= 92, Peer dtor in place. Rust: Drop glue covers it; no explicit body.
 }
-
 // 0x970eb8 — __ZThn92_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_970eb8() -> ! {
-    todo!("0x970eb8 __ZThn92_N3RBX10Reflection9DescribedINS_7Network6ClientELZNS2_7sClientEENS_14FactoryProductIS3_NS2_4PeerELZNS2_7sClientEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_970eb8() {
+    // IDA 0x970eb8: __ZThn92 D0 thunk — this -= 92, Peer dtor + operator delete. Rust: Arc Drop glue covers it; no explicit body.
 }
-
 // 0x98a8e0 — __ZN3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEE9singletonEv
 // type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, char, int, int, int, RBX::Instance *, int, int, void *, int)
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEE9singletonEv")]
-pub fn stub_98a8e0() -> ! {
-    todo!("0x98a8e0 __ZN3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEE9singletonEv")
+pub fn stub_98a8e0() -> SharedPtr<NetworkSettingsItem> {
+    // IDA 0x98a8e0: double-checked singleton — fast path returns sing (0x98a91c); else locks GlobalAdvancedSettings (0x98aa06..0x98aa16), News + NetworkSettings::NetworkSettings ctor 0xE0 (0x98aa30..0x98aa36), shared adopt + setParentInternal under GlobalAdvancedSettings (0x98aa78..0x98aa8a), s.get()==sing assert (GlobalSettings.h:132, 0x98aa9e..0x98aaea). Rust: LazyLock; mutex/dtor via Arc.
+    SharedPtr::clone(&NETWORK_SETTINGS_SINGLETON)
 }
-
 // 0x998898 — __ZN3RBX14FactoryProductINS_15NetworkSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEE7CreatorC2Ev
 // type: _Rb_tree_node_base *__fastcall(_Rb_tree_node_base *, int, int, int, int, int, int, int, int)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_15NetworkSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_998898() -> ! {
-    todo!("0x998898 __ZN3RBX14FactoryProductINS_15NetworkSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEE7CreatorC2Ev")
+pub fn stub_998898() -> &'static NetworkSettingsCreator {
+    // IDA 0x998898: Creator C2 — vtable install (0x9988d6), Name::declare call_once + doDeclare (0x998904..0x998970), then lower_bound walk and unique insert into the creators registry keyed by name (twin of audio stub_37855c). Host: process-wide LazyLock creator; registry stays engine-side.
+    &NETWORK_SETTINGS_CREATOR
 }
-
 // 0x9acc54 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_7Network20sGuidRegistryServiceEEE12getClassNameEv
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_7Network20sGuidRegistryServiceEEE12getClassNameEv")]
-pub fn stub_9acc54() -> ! {
-    todo!("0x9acc54 __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_7Network20sGuidRegistryServiceEEE12getClassNameEv")
+pub fn stub_9acc54() -> &'static str {
+    // IDA 0x9acc54: boost::call_once declare (0x9acc88) + guard-once doDeclare Name::declare(&sGuidRegistryService) (0x9acccc..0x9accf6), return n (0x9acd24). Host: LazyLock init; binary string "GuidRegistryService".
+    LazyLock::force(&GUID_REGISTRY_SERVICE_NAME);
+    GUID_REGISTRY_SERVICE_NAME.as_str()
 }
-
 // 0x9acd50 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_7Network20sGuidRegistryServiceEEE12getClassNameEv
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_7Network20sGuidRegistryServiceEEE12getClassNameEv")]
-pub fn stub_9acd50() -> ! {
-    todo!("0x9acd50 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_7Network20sGuidRegistryServiceEEE12getClassNameEv")
+pub fn stub_9acd50() -> &'static str {
+    // IDA 0x9acd50: __ZThn32 getClassName thunk — identical call_once + doDeclare body (0x9acd84..0x9ace20); the this skew lives in the caller. Host: no base offset; delegate.
+    stub_9acc54()
 }
-
 // 0x9ace4c — __ZN3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_9ace4c() -> ! {
-    todo!("0x9ace4c __ZN3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_9ace4c() {
+    // IDA 0x9ace4c: D1 complete-object destructor — runs RBX::Instance::~Instance in place (0x9ace50). Rust: Drop glue covers it; no explicit body.
 }
-
 // 0x9ace58 — __ZN3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_9ace58() -> ! {
-    todo!("0x9ace58 __ZN3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_9ace58() {
+    // IDA 0x9ace58: D0 deleting destructor — Instance dtor + operator delete (0x9acea8..0x9aceae). Rust: Arc Drop glue covers it; no explicit body.
 }
-
 // 0x9acef8 — __ZThn32_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_9acef8() -> ! {
-    todo!("0x9acef8 __ZThn32_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_9acef8() {
+    // IDA 0x9acef8: __ZThn32 D1 thunk — this -= 32, Instance dtor in place. Rust: Drop glue covers it; no explicit body.
 }
-
 // 0x9acf04 — __ZThn32_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_9acf04() -> ! {
-    todo!("0x9acf04 __ZThn32_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_9acf04() {
+    // IDA 0x9acf04: __ZThn32 D0 thunk — this -= 32, Instance dtor + operator delete. Rust: Arc Drop glue covers it; no explicit body.
 }
-
 // 0x9acfa8 — __ZThn36_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_9acfa8() -> ! {
-    todo!("0x9acfa8 __ZThn36_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_9acfa8() {
+    // IDA 0x9acfa8: __ZThn36 D1 thunk — this -= 36, Instance dtor in place. Rust: Drop glue covers it; no explicit body.
 }
-
 // 0x9acfb4 — __ZThn36_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_9acfb4() -> ! {
-    todo!("0x9acfb4 __ZThn36_N3RBX10Reflection9DescribedINS_7Network19GuidRegistryServiceELZNS2_20sGuidRegistryServiceEENS_17NonFactoryProductINS_8InstanceELZNS2_20sGuidRegistryServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_9acfb4() {
+    // IDA 0x9acfb4: __ZThn36 D0 thunk — this -= 36, Instance dtor + operator delete. Rust: Arc Drop glue covers it; no explicit body.
 }
-
 // 0x9b4218 — __ZN3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEEC2Ev
 // type: RBX::Instance *__fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEEC2Ev")]
-pub fn stub_9b4218() -> ! {
-    todo!("0x9b4218 __ZN3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEEC2Ev")
+pub fn stub_9b4218() -> NetworkSettingsItem {
+    // IDA 0x9b4218: Item C2 — Instance::Instance base (0x9b423a), four vtable installs (0x9b4278..0x9b428c), guard-once Described<NetworkSettings>::classDescriptor ensure. Host: value construction; parenting/descriptor stay engine-side.
+    NetworkSettingsItem
 }
-
 // 0x9b476c — __ZNK3RBX14FactoryProductINS_15NetworkSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_15NetworkSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_9b476c() -> ! {
-    todo!("0x9b476c __ZNK3RBX14FactoryProductINS_15NetworkSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEE12getClassNameEv")
+pub fn stub_9b476c() -> &'static str {
+    // IDA 0x9b476c: Creator-gated wasConstructed() ReleaseAssert (Object.h:282, 0x9b477c..0x9b47ce), then tail-calls Creator::getClassName (0x9b47d6). Host: delegate to stub_401cec.
+    stub_401cec()
 }
 
 // 0x9b4a3c — __ZThn32_NK3RBX14FactoryProductINS_15NetworkSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEE12getClassNameEv
 // type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_15NetworkSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_9b4a3c() -> ! {
-    todo!("0x9b4a3c __ZThn32_NK3RBX14FactoryProductINS_15NetworkSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEE12getClassNameEv")
+pub fn stub_9b4a3c() -> &'static str {
+    // IDA 0x9b4a3c: __ZThn32 getClassName thunk — same assert + tail-call (0x9b4a4c..0x9b4aa6); the this skew lives in the caller. Host: no base offset; delegate.
+    stub_9b476c()
 }
 
 // 0x9b4d10 — __ZN3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEED1Ev")]
-pub fn stub_9b4d10() -> ! {
-    todo!("0x9b4d10 __ZN3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEED1Ev")
+pub fn stub_9b4d10() {
+    // IDA 0x9b4d10: D1 — vtable resets, clears the sing handle (0x9b4d46), runs Instance dtor (0x9b4d48). Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9b4d50 — __ZN3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEED0Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEED0Ev")]
-pub fn stub_9b4d50() -> ! {
-    todo!("0x9b4d50 __ZN3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEED0Ev")
+pub fn stub_9b4d50() {
+    // IDA 0x9b4d50: D0 — vtable resets, clears sing (0x9b4db8), Instance dtor + operator delete (0x9b4dde..0x9b4de4). Rust: Arc Drop glue covers it; no explicit body.
 }
 
 // 0x9b4e30 — __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEED1Ev
 // type: void __fastcall(_QWORD *)
 #[doc(alias = "__ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEED1Ev")]
-pub fn stub_9b4e30() -> ! {
-    todo!("0x9b4e30 __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEED1Ev")
+pub fn stub_9b4e30() {
+    // IDA 0x9b4e30: __ZThn32 D1 thunk — this -= 32 with vtable resets. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9b4e78 — __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "__ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEED0Ev")]
-pub fn stub_9b4e78() -> ! {
-    todo!("0x9b4e78 __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEED0Ev")
+pub fn stub_9b4e78() {
+    // IDA 0x9b4e78: __ZThn32 D0 thunk — this -= 32, vtable resets, Instance dtor + delete. Rust: Arc Drop glue covers it; no explicit body.
 }
 
 // 0x9b4f58 — __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEED1Ev")]
-pub fn stub_9b4f58() -> ! {
-    todo!("0x9b4f58 __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEED1Ev")
+pub fn stub_9b4f58() {
+    // IDA 0x9b4f58: __ZThn36 D1 thunk — this -= 36 with vtable resets. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9b4fa0 — __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "__ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEED0Ev")]
-pub fn stub_9b4fa0() -> ! {
-    todo!("0x9b4fa0 __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEED0Ev")
+pub fn stub_9b4fa0() {
+    // IDA 0x9b4fa0: __ZThn36 D0 thunk — this -= 36, vtable resets, Instance dtor + delete. Rust: Arc Drop glue covers it; no explicit body.
 }
 
 // 0x9b5080 — __ZN3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_9b5080() -> ! {
-    todo!("0x9b5080 __ZN3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_9b5080() {
+    // IDA 0x9b5080: Described<NetworkSettings> D1 complete-object destructor. Rust: Drop glue covers it; no explicit body.
 }
 
 // 0x9b508c — __ZN3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_9b508c() -> ! {
-    todo!("0x9b508c __ZN3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_9b508c() {
+    // IDA 0x9b508c: Described<NetworkSettings> D0 deleting destructor. Rust: Arc Drop glue covers it; no explicit body.
 }
 
 // 0x9b512c — __ZThn32_N3RBX10Reflection9DescribedINS_15NetworkSettingsELZNS_16sNetworkSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
