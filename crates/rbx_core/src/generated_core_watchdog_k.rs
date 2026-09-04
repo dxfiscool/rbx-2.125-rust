@@ -435,26 +435,59 @@ pub mod render_settings {
         d
     }
 
+    /// Batch 3: was: `FLog::SignalPrints` — gates the `"Signal with 1 arg executed"`
+    /// trace in the 1-arg emit walk (IDA 0xb7ce). Off in this port by default.
+    pub static SIGNAL_PRINTS: AtomicBool = AtomicBool::new(false);
+
+    /// was: a connected `signal::slot` — the `*(v22 + 12)` connected word (IDA 0xb7e6)
+    /// decides whether the functor at `*(v22 + 4)` runs on each emission.
+    pub struct SignalSlot {
+        pub id: u64,
+        pub connected: bool,
+        pub callback: Box<dyn Fn(&'static str) + Send + Sync>,
+    }
+
     /// was: `rbx::signals::signal_with_args<1, void(PropertyDescriptor const*)>` —
     /// the per-item `propertyChanged` signal at +192. `emit` records the property id
-    /// (observable for tests) then notifies listeners in connect order.
-    /// (`[INFERENCE]` — listener storage shape; emission order and change-only
-    /// gating are per the IDA call sites.)
+    /// (observable for tests) then notifies still-connected slots in connect order,
+    /// mirroring the `next()` walk (IDA 0xb80a) + `*(v22 + 12)` guard (0xb7e6).
+    /// (`[INFERENCE]` — listener storage shape; emission order, change-only gating,
+    /// and the connected guard are per the IDA call sites.)
     #[derive(Default)]
     pub struct PropertyChangedSignal {
         pub emitted: Vec<&'static str>,
-        listeners: Vec<Box<dyn Fn(&'static str) + Send + Sync>>,
+        slots: Vec<SignalSlot>,
+        next_id: u64,
     }
 
     impl PropertyChangedSignal {
         pub fn emit(&mut self, prop: &'static str) {
             self.emitted.push(prop);
-            for listener in &self.listeners {
-                listener(prop);
+            for slot in &self.slots {
+                if slot.connected {
+                    (slot.callback)(prop);
+                }
             }
         }
-        pub fn connect(&mut self, f: impl Fn(&'static str) + Send + Sync + 'static) {
-            self.listeners.push(Box::new(f));
+        /// Batch 3: traced emit — IDA 0xb7ce/0xb7e0 fast-log when `SIGNAL_PRINTS`
+        /// is set, then the same walk. The `next()` iterator ref and its terminal
+        /// `intrusive_ptr_release` (0xb80c) are `Arc` drops here.
+        pub fn emit_traced(&mut self, prop: &'static str) {
+            if SIGNAL_PRINTS.load(Ordering::SeqCst) {
+                eprintln!("Signal with 1 arg executed");
+            }
+            self.emit(prop);
+        }
+        pub fn connect(&mut self, f: impl Fn(&'static str) + Send + Sync + 'static) -> u64 {
+            let id = self.next_id;
+            self.next_id += 1;
+            self.slots.push(SignalSlot { id, connected: true, callback: Box::new(f) });
+            id
+        }
+        pub fn disconnect(&mut self, id: u64) {
+            if let Some(slot) = self.slots.iter_mut().find(|s| s.id == id) {
+                slot.connected = false;
+            }
         }
     }
 
@@ -526,6 +559,9 @@ pub mod render_settings {
         pub texture_cache_size: u32,
         /// +164, IDA 0x97c8.
         pub mesh_cache_size: u32,
+        /// Batch 3: +128, IDA 0xb4cc max quality level (`[INFERENCE]` — no writer
+        /// observed in this batch; default 0 until the FRM-side port lands).
+        pub max_quality_level: i32,
         /// Batch 2: +124, IDA 0x9ac8 auto quality level.
         pub auto_quality_level: i32,
         /// Batch 2: +157, IDA 0x9b08 eager bulk execution flag.
@@ -769,6 +805,103 @@ pub mod render_settings {
         pub fn get_aa_samples() -> i32 {
             AA_SAMPLES.load(Ordering::SeqCst)
         }
+        /// Batch 3, IDA 0xb41c `getShadowMode` (subobject +12 -> item+108).
+        pub fn shadow_mode(&self) -> ShadowMode {
+            self.shadow_mode
+        }
+        /// Batch 3, IDA 0xb444 `getAntialiasingMode` (subobject +8 -> item+104).
+        pub fn antialiasing_mode(&self) -> AntialiasingMode {
+            self.antialiasing_mode
+        }
+        /// Batch 3, IDA 0xb46c `getDebugShowBoundingBoxes` (subobject +40 -> item+136).
+        pub fn debug_show_bounding_boxes(&self) -> bool {
+            self.debug_show_bounding_boxes
+        }
+        /// Batch 3, IDA 0xb474 `getAutoQualityLevel` (subobject +28 -> item+124).
+        pub fn auto_quality_level(&self) -> i32 {
+            self.auto_quality_level
+        }
+        /// Batch 3, IDA 0xb49c `getEnableFRM` (subobject +41 -> item+137).
+        pub fn enable_frm(&self) -> bool {
+            self.enable_frm
+        }
+        /// Batch 3, IDA 0xb4a4 `getResolutionPreference` (subobject +24 -> item+120).
+        pub fn resolution_preference(&self) -> ResolutionPreset {
+            self.resolution_preference
+        }
+        /// Batch 3, IDA 0xb4cc `getMaxQualityLevel` (subobject +32 -> item+128).
+        pub fn max_quality_level(&self) -> i32 {
+            self.max_quality_level
+        }
+        /// Batch 3, IDA 0xb4f4 `getTextureCacheSize` (subobject +64 -> item+160).
+        pub fn texture_cache_size(&self) -> u32 {
+            self.texture_cache_size
+        }
+        /// Batch 3, IDA 0xb4f8 `getMeshCacheSize` (subobject +68 -> item+164).
+        pub fn mesh_cache_size(&self) -> u32 {
+            self.mesh_cache_size
+        }
+        /// Batch 3, IDA 0xb8b0 `getEagerBulkExecution` (subobject +61 -> item+157).
+        pub fn eager_bulk_execution(&self) -> bool {
+            self.eager_bulk_execution
+        }
+
+        /// Batch 3: models `CRenderSettingsItem::~CRenderSettingsItem` D2 member
+        /// teardown (reached via the 0xb8b8/0xb8e0 thunks; the full D2 body lives
+        /// outside this batch). Heap members are released in C++ order — name,
+        /// resolution list, change signal — with the vtable restores and base-class
+        /// dtors left to Rust `Drop`. Returns nothing, like the original.
+        pub fn destroy_d2(&mut self) {
+            self.name = String::new();
+            self.resolutions.clear();
+            self.changed.slots.clear();
+        }
+        /// Batch 3, IDA 0xb8b8 D1 — thunk to D2.
+        pub fn destroy_d1(&mut self) {
+            self.destroy_d2();
+        }
+    }
+
+    /// Batch 3: was: `std::vector<G3D::Vector2int16>::push_back` (IDA 0xb740) —
+    /// fast path writes `*a2` at `finish` and bumps it when `finish != end`
+    /// (0xb74c-0xb75c); full storage falls into `_M_insert_aux` (0xb766), which
+    /// grows. `Vec::push` is exactly that split; the `finish == 0` residue of the
+    /// original (`v4 = 0` when begin is null) cannot occur for a valid vector and
+    /// is noted, not modeled.
+    pub fn vector2int16_push_back(list: &mut Vec<(u16, u16)>, x: u16, y: u16) {
+        list.push((x, y));
+    }
+
+    /// Batch 3: was: `GlobalAdvancedSettingsItem<CRenderSettingsItem>` base state —
+    /// `Instance::Instance(a1, 0)` + vtable installs (`off_1221C68/...` then
+    /// `off_1221B98/...` after the classDescriptor call), `registrar++` (0xb5b2),
+    /// byte +92 set (0xb5ba), and `setName("RenderSettings")` (0xb5ec/0xb5f8).
+    /// The singleton throw (0xb688-0xb6b4) becomes a `Result` so the port stays total.
+    #[derive(Debug, Default)]
+    pub struct GlobalAdvancedSettingsBase {
+        /// was: `+92 = 1` (IDA 0xb5ba).
+        pub initialized: bool,
+        /// was: the `setName("RenderSettings")` name (IDA 0xb5f8).
+        pub name: String,
+    }
+
+    /// was: `GlobalAdvancedSettingsItem<...>::singE` guard (IDA 0xb622/0xb626).
+    pub static SINGLETON_CLAIMED: AtomicBool = AtomicBool::new(false);
+
+    /// Batch 3, IDA 0xb4fc base ctor tail — claims the singleton or reports the
+    /// `singleton %s already exists` runtime_error (0xb692) as `Err`.
+    pub fn claim_render_settings_singleton() -> Result<GlobalAdvancedSettingsBase, String> {
+        if SINGLETON_CLAIMED.swap(true, Ordering::SeqCst) {
+            return Err(format!("singleton {} already exists", "RenderSettings"));
+        }
+        Ok(GlobalAdvancedSettingsBase { initialized: true, name: "RenderSettings".to_string() })
+    }
+
+    /// Batch 3, IDA 0xb8d0 `FactoryProduct<...>::getClassName` — hops through
+    /// `static_getCreator` to `Creator::getClassName` (0xb8d4/shim). The hop is
+    /// collapsed; the literal is `[INFERENCE]` from the item type.
+    pub fn render_settings_item_class_name() -> &'static str {
+        "CRenderSettingsItem"
     }
 
     /// Batch 2: was: `RBX::Reflection::{Enum,}PropDescriptor` dtor core —
@@ -804,6 +937,38 @@ pub mod render_settings {
     /// restore `off_12227A8`, free +44.
     pub fn enum_prop_descriptor_quality_level_dtor(b: &mut PropDescriptorBox) {
         b.destroy("off_12227A8");
+    }
+    /// Batch 3, IDA 0xb3f8 `~EnumPropDescriptor<Item, AASamples>` — off_1222658, +44.
+    pub fn enum_prop_descriptor_aa_samples_dtor(b: &mut PropDescriptorBox) {
+        b.destroy("off_1222658");
+    }
+    /// Batch 3, IDA 0xb420 `~EnumPropDescriptor<Item, ShadowMode>` — off_12224C8, +44.
+    pub fn enum_prop_descriptor_shadow_mode_dtor(b: &mut PropDescriptorBox) {
+        b.destroy("off_12224C8");
+    }
+    /// Batch 3, IDA 0xb448 `~EnumPropDescriptor<Item, AntialiasingMode>` — off_1222428, +44.
+    pub fn enum_prop_descriptor_antialiasing_mode_dtor(b: &mut PropDescriptorBox) {
+        b.destroy("off_1222428");
+    }
+    /// Batch 3, IDA 0xb478 `~PropDescriptor<Item, int>` — restore `off_1222178`, free +40.
+    pub fn prop_descriptor_int_dtor(b: &mut PropDescriptorBox) {
+        b.destroy("off_1222178");
+    }
+    /// Batch 3, IDA 0xb4a8 `~EnumPropDescriptor<Item, ResolutionPreset>` — off_1222268, +44.
+    pub fn enum_prop_descriptor_resolution_preset_dtor(b: &mut PropDescriptorBox) {
+        b.destroy("off_1222268");
+    }
+    /// Batch 3: was: `BoundFuncDesc<Item, int(), 0>` box for the 0xb4d0 dtor —
+    /// restores `off_1222248` then `_M_clear`s the signature-item list at +8 (0xb4ec).
+    #[derive(Debug, Default)]
+    pub struct BoundFuncDescBox {
+        pub vtable: &'static str,
+        pub signatures: Vec<String>,
+    }
+    /// Batch 3, IDA 0xb4d0 `~BoundFuncDesc<Item, int(), 0>`.
+    pub fn bound_func_desc_dtor(b: &mut BoundFuncDescBox) {
+        b.vtable = "off_1222248";
+        b.signatures.clear();
     }
     /// Batch 2, IDA 0xb3bc `~PropDescriptor<CRenderSettingsItem, bool>`:
     /// restore `off_1222378`, free +40.
@@ -1240,169 +1405,200 @@ pub fn stub_b3e8() -> i32 {
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::~EnumPropDescriptor()")]
 // 0xb3f8 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_b3f8() -> ! {
-    todo!("0xb3f8 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEED1Ev")
+// IDA 0xb3f8: `~EnumPropDescriptor<Item, AASamples>` — off_1222658, free +44.
+pub fn stub_b3f8(b: &mut render_settings::PropDescriptorBox) {
+    render_settings::enum_prop_descriptor_aa_samples_dtor(b)
 }
 
 #[doc(alias = "RBX::CRenderSettings::getShadowMode(void)const")]
 // 0xb41c — __ZNK3RBX15CRenderSettings13getShadowModeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-pub fn stub_b41c() -> ! {
-    todo!("0xb41c __ZNK3RBX15CRenderSettings13getShadowModeEv")
+// IDA 0xb41c: `getShadowMode` reads item+108 (subobject +12).
+pub fn stub_b41c(item: &render_settings::CRenderSettingsItem) -> render_settings::ShadowMode {
+    item.shadow_mode()
 }
 
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::~EnumPropDescriptor()")]
 // 0xb420 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_b420() -> ! {
-    todo!("0xb420 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEED1Ev")
+// IDA 0xb420: `~EnumPropDescriptor<Item, ShadowMode>` — off_12224C8, free +44.
+pub fn stub_b420(b: &mut render_settings::PropDescriptorBox) {
+    render_settings::enum_prop_descriptor_shadow_mode_dtor(b)
 }
 
 #[doc(alias = "RBX::CRenderSettings::getAntialiasingMode(void)const")]
 // 0xb444 — __ZNK3RBX15CRenderSettings19getAntialiasingModeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-pub fn stub_b444() -> ! {
-    todo!("0xb444 __ZNK3RBX15CRenderSettings19getAntialiasingModeEv")
+// IDA 0xb444: `getAntialiasingMode` reads item+104 (subobject +8).
+pub fn stub_b444(item: &render_settings::CRenderSettingsItem) -> render_settings::AntialiasingMode {
+    item.antialiasing_mode()
 }
 
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::~EnumPropDescriptor()")]
 // 0xb448 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_b448() -> ! {
-    todo!("0xb448 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEED1Ev")
+// IDA 0xb448: `~EnumPropDescriptor<Item, AntialiasingMode>` — off_1222428, free +44.
+pub fn stub_b448(b: &mut render_settings::PropDescriptorBox) {
+    render_settings::enum_prop_descriptor_antialiasing_mode_dtor(b)
 }
 
 #[doc(alias = "RBX::CRenderSettings::getDebugShowBoundingBoxes(void)const")]
 // 0xb46c — __ZNK3RBX15CRenderSettings25getDebugShowBoundingBoxesEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-pub fn stub_b46c() -> ! {
-    todo!("0xb46c __ZNK3RBX15CRenderSettings25getDebugShowBoundingBoxesEv")
+// IDA 0xb46c: `getDebugShowBoundingBoxes` reads byte item+136 (subobject +40).
+pub fn stub_b46c(item: &render_settings::CRenderSettingsItem) -> bool {
+    item.debug_show_bounding_boxes()
 }
 
 #[doc(alias = "RBX::CRenderSettings::getAutoQualityLevel(void)const")]
 // 0xb474 — __ZNK3RBX15CRenderSettings19getAutoQualityLevelEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-pub fn stub_b474() -> ! {
-    todo!("0xb474 __ZNK3RBX15CRenderSettings19getAutoQualityLevelEv")
+// IDA 0xb474: `getAutoQualityLevel` reads item+124 (subobject +28).
+pub fn stub_b474(item: &render_settings::CRenderSettingsItem) -> i32 {
+    item.auto_quality_level()
 }
 
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::~PropDescriptor()")]
 // 0xb478 — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_b478() -> ! {
-    todo!("0xb478 __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiED1Ev")
+// IDA 0xb478: `~PropDescriptor<Item, int>` — off_1222178, free +40.
+pub fn stub_b478(b: &mut render_settings::PropDescriptorBox) {
+    render_settings::prop_descriptor_int_dtor(b)
 }
 
 #[doc(alias = "RBX::CRenderSettings::getEnableFRM(void)const")]
 // 0xb49c — __ZNK3RBX15CRenderSettings12getEnableFRMEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-pub fn stub_b49c() -> ! {
-    todo!("0xb49c __ZNK3RBX15CRenderSettings12getEnableFRMEv")
+// IDA 0xb49c: `getEnableFRM` reads byte item+137 (subobject +41).
+pub fn stub_b49c(item: &render_settings::CRenderSettingsItem) -> bool {
+    item.enable_frm()
 }
 
 #[doc(alias = "RBX::CRenderSettings::getResolutionPreference(void)const")]
 // 0xb4a4 — __ZNK3RBX15CRenderSettings23getResolutionPreferenceEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-pub fn stub_b4a4() -> ! {
-    todo!("0xb4a4 __ZNK3RBX15CRenderSettings23getResolutionPreferenceEv")
+// IDA 0xb4a4: `getResolutionPreference` reads item+120 (subobject +24).
+pub fn stub_b4a4(item: &render_settings::CRenderSettingsItem) -> render_settings::ResolutionPreset {
+    item.resolution_preference()
 }
 
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::~EnumPropDescriptor()")]
 // 0xb4a8 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_b4a8() -> ! {
-    todo!("0xb4a8 __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEED1Ev")
+// IDA 0xb4a8: `~EnumPropDescriptor<Item, ResolutionPreset>` — off_1222268, free +44.
+pub fn stub_b4a8(b: &mut render_settings::PropDescriptorBox) {
+    render_settings::enum_prop_descriptor_resolution_preset_dtor(b)
 }
 
 #[doc(alias = "RBX::CRenderSettings::getMaxQualityLevel(void)")]
 // 0xb4cc — __ZN3RBX15CRenderSettings18getMaxQualityLevelEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-pub fn stub_b4cc() -> ! {
-    todo!("0xb4cc __ZN3RBX15CRenderSettings18getMaxQualityLevelEv")
+// IDA 0xb4cc: `getMaxQualityLevel` reads item+128 (subobject +32).
+pub fn stub_b4cc(item: &render_settings::CRenderSettingsItem) -> i32 {
+    item.max_quality_level()
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int ()(void),0>::~BoundFuncDesc()")]
 // 0xb4d0 — __ZN3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-pub fn stub_b4d0() -> ! {
-    todo!("0xb4d0 __ZN3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EED1Ev")
+// IDA 0xb4d0: `~BoundFuncDesc<Item, int(), 0>` — off_1222248 plus signature-list clear.
+pub fn stub_b4d0(b: &mut render_settings::BoundFuncDescBox) {
+    render_settings::bound_func_desc_dtor(b)
 }
 
 #[doc(alias = "RBX::CRenderSettings::getTextureCacheSize(void)const")]
 // 0xb4f4 — __ZNK3RBX15CRenderSettings19getTextureCacheSizeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-pub fn stub_b4f4() -> ! {
-    todo!("0xb4f4 __ZNK3RBX15CRenderSettings19getTextureCacheSizeEv")
+// IDA 0xb4f4: `getTextureCacheSize` reads item+160 (subobject +64).
+pub fn stub_b4f4(item: &render_settings::CRenderSettingsItem) -> u32 {
+    item.texture_cache_size()
 }
 
 #[doc(alias = "RBX::CRenderSettings::getMeshCacheSize(void)const")]
 // 0xb4f8 — __ZNK3RBX15CRenderSettings16getMeshCacheSizeEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-pub fn stub_b4f8() -> ! {
-    todo!("0xb4f8 __ZNK3RBX15CRenderSettings16getMeshCacheSizeEv")
+// IDA 0xb4f8: `getMeshCacheSize` reads item+164 (subobject +68).
+pub fn stub_b4f8(item: &render_settings::CRenderSettingsItem) -> u32 {
+    item.mesh_cache_size()
 }
 
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEEC2Ev")]
 // 0xb4fc — __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEEC2Ev
 // type: RBX::Instance *__fastcall(RBX::Instance *)
-pub fn stub_b4fc() -> ! {
-    todo!("0xb4fc __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEEC2Ev")
+// IDA 0xb4fc: `GlobalAdvancedSettingsItem` base ctor — Instance base, vtable installs,
+// classDescriptor + registrar, +92 set, name "RenderSettings", singleton claim
+// (the already-exists `runtime_error` throw is `Err`).
+pub fn stub_b4fc() -> Result<render_settings::GlobalAdvancedSettingsBase, String> {
+    render_settings::claim_render_settings_singleton()
 }
 
 #[doc(alias = "std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::push_back(G3D::Vector2int16 const&)")]
 // 0xb740 — __ZNSt6vectorIN3G3D12Vector2int16ESaIS1_EE9push_backERKS1_
 // type: int __fastcall(int result, _DWORD *)
-pub fn stub_b740() -> ! {
-    todo!("0xb740 __ZNSt6vectorIN3G3D12Vector2int16ESaIS1_EE9push_backERKS1_")
+// IDA 0xb740: `vector<Vector2int16>::push_back` — fast write+bump, grow on full.
+pub fn stub_b740(list: &mut Vec<(u16, u16)>, x: u16, y: u16) {
+    render_settings::vector2int16_push_back(list, x, y)
 }
 
 #[doc(alias = "rbx::signals::signal_with_args<1,void ()(RBX::Reflection::PropertyDescriptor const*)>::operator()(RBX::Reflection::PropertyDescriptor const*)")]
 // 0xb76c — __ZN3rbx7signals16signal_with_argsILi1EFvPKN3RBX10Reflection18PropertyDescriptorEEEclES6_
 // type: void __fastcall(_DWORD *, int, int, const void *, int, int, int, int, void *, int)
-pub fn stub_b76c() -> ! {
-    todo!("0xb76c __ZN3rbx7signals16signal_with_argsILi1EFvPKN3RBX10Reflection18PropertyDescriptorEEEclES6_")
+// IDA 0xb76c: 1-arg `signal::operator()` — null-head no-op, SignalPrints trace,
+// connected-slot walk with the emitted property, terminal release. Delegates to
+// the traced emit; per-slot connection state lives on the signal.
+pub fn stub_b76c(sig: &mut render_settings::PropertyChangedSignal, prop: &'static str) {
+    sig.emit_traced(prop)
 }
 
 #[doc(alias = "RBX::CRenderSettings::getEagerBulkExecution(void)const")]
 // 0xb8b0 — __ZNK3RBX15CRenderSettings21getEagerBulkExecutionEv
 // type: int __fastcall(RBX::CRenderSettings *this)
-pub fn stub_b8b0() -> ! {
-    todo!("0xb8b0 __ZNK3RBX15CRenderSettings21getEagerBulkExecutionEv")
+// IDA 0xb8b0: `getEagerBulkExecution` reads byte item+157 (subobject +61).
+pub fn stub_b8b0(item: &render_settings::CRenderSettingsItem) -> bool {
+    item.eager_bulk_execution()
 }
 
 #[doc(alias = "CRenderSettingsItem::~CRenderSettingsItem()")]
 // 0xb8b8 — __ZN19CRenderSettingsItemD1Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
-pub fn stub_b8b8() -> ! {
-    todo!("0xb8b8 __ZN19CRenderSettingsItemD1Ev")
+// IDA 0xb8b8: `~CRenderSettingsItem() D1` — thunk to the D2 member teardown.
+pub fn stub_b8b8(item: &mut render_settings::CRenderSettingsItem) {
+    item.destroy_d1()
 }
 
 #[doc(alias = "CRenderSettingsItem::~CRenderSettingsItem()")]
 // 0xb8bc — __ZN19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
-pub fn stub_b8bc() -> ! {
-    todo!("0xb8bc __ZN19CRenderSettingsItemD0Ev")
+// IDA 0xb8bc: `~CRenderSettingsItem() D0` — D2 teardown plus `operator delete`.
+// Ownership moves in, mirroring the deleting-destructor contract.
+pub fn stub_b8bc(item: Box<render_settings::CRenderSettingsItem>) {
+    let mut item = item;
+    item.destroy_d2();
 }
 
 #[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")]
 // 0xb8d0 — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
 // type: int()
-pub fn stub_b8d0() -> ! {
-    todo!("0xb8d0 __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")
+// IDA 0xb8d0: `FactoryProduct::getClassName` via the static creator hop (collapsed).
+pub fn stub_b8d0() -> &'static str {
+    render_settings::render_settings_item_class_name()
 }
 
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 // 0xb8e0 — __ZThn32_N19CRenderSettingsItemD1Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
-pub fn stub_b8e0() -> ! {
-    todo!("0xb8e0 __ZThn32_N19CRenderSettingsItemD1Ev")
+// IDA 0xb8e0: non-virtual thunk to D1 — incoming `this` biased -32 (subobject vec
+// entry), a no-op in the flat layout; delegates to the D1 teardown.
+pub fn stub_b8e0(item: &mut render_settings::CRenderSettingsItem) {
+    item.destroy_d1()
 }
 
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 // 0xb8e8 — __ZThn32_N19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
-pub fn stub_b8e8() -> ! {
-    todo!("0xb8e8 __ZThn32_N19CRenderSettingsItemD0Ev")
+// IDA 0xb8e8: non-virtual thunk to D0 — same -32 bias, then D2 plus free.
+pub fn stub_b8e8(item: Box<render_settings::CRenderSettingsItem>) {
+    stub_b8bc(item)
 }
 
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")]
