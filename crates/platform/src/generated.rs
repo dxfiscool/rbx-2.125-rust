@@ -4486,57 +4486,78 @@ pub fn stub_f27274() -> String {
 // 0x1a970 — -[DebugSettingsViewController initWithCoder:]
 // type: DebugSettingsViewController *__cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController initWithCoder:]")]
-pub fn stub_1a970() -> ! {
-    todo!("0x1a970 -[DebugSettingsViewController initWithCoder:]")
+pub fn stub_1a970(
+    super_ok: bool,
+    idiom_pad: bool,
+    screen_bounds: Option<(f64, f64, f64, f64)>,
+) -> Option<crate::generated_176::DebugSettingsViewController> {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1a970)
+    crate::generated_176::DebugSettingsViewController::init_with_coder(
+        super_ok,
+        idiom_pad,
+        screen_bounds,
+    )
 }
 
 // 0x1ab20 — -[DebugSettingsViewController dealloc]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController dealloc]")]
-pub fn stub_1ab20() -> ! {
-    todo!("0x1ab20 -[DebugSettingsViewController dealloc]")
+pub fn stub_1ab20(controller: crate::generated_176::DebugSettingsViewController) {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1ab20)
+    controller.dealloc();
 }
 
 // 0x1ab6c — -[DebugSettingsViewController reloadOldData]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController reloadOldData]")]
-pub fn stub_1ab6c() -> ! {
-    todo!("0x1ab6c -[DebugSettingsViewController reloadOldData]")
+pub fn stub_1ab6c(controller: &crate::generated_176::DebugSettingsViewController) {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1ab6c)
+    controller.reload_old_data();
 }
 
 // 0x1ab70 — -[DebugSettingsViewController viewDidLoad]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController viewDidLoad]")]
-pub fn stub_1ab70() -> ! {
-    todo!("0x1ab70 -[DebugSettingsViewController viewDidLoad]")
+pub fn stub_1ab70(controller: &crate::generated_176::DebugSettingsViewController) {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1ab70)
+    controller.view_did_load();
 }
 
 // 0x1abb0 — -[DebugSettingsViewController setDisplayUI]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController setDisplayUI]")]
-pub fn stub_1abb0() -> ! {
-    todo!("0x1abb0 -[DebugSettingsViewController setDisplayUI]")
+pub fn stub_1abb0(
+    controller: &crate::generated_176::DebugSettingsViewController,
+) -> &'static str {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1abb0)
+    controller.set_display_ui()
 }
 
 // 0x1ac80 — -[DebugSettingsViewController displayPickerDoneClicked:]
 // type: void __cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController displayPickerDoneClicked:]")]
-pub fn stub_1ac80() -> ! {
-    todo!("0x1ac80 -[DebugSettingsViewController displayPickerDoneClicked:]")
+pub fn stub_1ac80(
+    controller: &crate::generated_176::DebugSettingsViewController,
+    selected_row: i32,
+) -> &'static str {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1ac80)
+    controller.display_picker_done_clicked(selected_row)
 }
 
 // 0x1ad78 — ___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke")]
-pub fn stub_1ad78() -> ! {
-    todo!("0x1ad78 ___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke")
+pub fn stub_1ad78(controller: &crate::generated_176::DebugSettingsViewController) {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1ad78)
+    controller.display_picker_animation_frame();
 }
 
 // 0x1aed0 — -[DebugSettingsViewController displayTouchUp:]
 // type: void __cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController displayTouchUp:]")]
-pub fn stub_1aed0() -> ! {
-    todo!("0x1aed0 -[DebugSettingsViewController displayTouchUp:]")
+pub fn stub_1aed0(controller: &crate::generated_176::DebugSettingsViewController) {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1aed0)
+    controller.display_touch_up();
 }
 
 // 0x1afa0 — ___46-[DebugSettingsViewController displayTouchUp:]_block_invoke
