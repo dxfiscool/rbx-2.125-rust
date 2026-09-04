@@ -1080,6 +1080,84 @@ pub fn packet_release(_packet: Packet) {}
 pub fn packet_queue_push(queue: &mut std::collections::VecDeque<Packet>, packet: Packet) {
     queue.push_back(packet);
 }
+/// `RakNet::RakPeer::SocketQueryOutput` (IDA 0xa6c7d0): the answering
+/// socket index plus the queried address. Poll results stay engine-side.
+#[derive(Clone, Copy, Debug, Default)]
+pub struct SocketQueryOutput {
+ pub addr: SystemAddress,
+ pub socket_index: u32,
+}
+
+/// `DataStructures::MemoryPool<RakNet::RakPeer::SocketQueryOutput>::Allocate`
+/// (IDA 0xa6c7d0): pool blocks stay engine-side; hand out a default output.
+#[must_use]
+pub fn socket_query_output_allocate() -> SocketQueryOutput {
+    SocketQueryOutput::default()
+}
+
+/// `DataStructures::MemoryPool<RakNet::RakPeer::SocketQueryOutput>::Release`
+/// (IDA 0xa6c8e4): return an output to the pool (drop Rust-side).
+pub fn socket_query_output_release(_output: SocketQueryOutput) {}
+
+/// `RakNet::RakPeer::RecvFromStruct` (IDA 0xa6c9ac): a received datagram
+/// plus its sender. The engine-side buffer details live with the socket.
+#[derive(Clone, Debug, Default)]
+pub struct RecvFrom {
+ pub addr: SystemAddress,
+ pub bytes: Vec<u8>,
+}
+
+/// `DataStructures::MemoryPool<RakNet::RakPeer::RecvFromStruct>::Release`
+/// (IDA 0xa6c9ac): return a receive struct to the pool (drop Rust-side).
+pub fn recv_from_release(_recv: RecvFrom) {}
+
+/// `DataStructures::MemoryPool<RakNet::RakPeer::BufferedCommandStruct>::Allocate`
+/// (IDA 0xa6cdb0): pool blocks stay engine-side; hand out a default command.
+#[must_use]
+pub fn buffered_command_allocate() -> BufferedCommand {
+    BufferedCommand::default()
+}
+
+/// `DataStructures::MemoryPool<RakNet::RakPeer::BufferedCommandStruct>::Release`
+/// (IDA 0xa6ca84): return a command to the pool (drop Rust-side).
+pub fn buffered_command_release(_cmd: BufferedCommand) {}
+
+/// `DataStructures::Queue<RakNet::RakPeer::BufferedCommandStruct *>::Push`
+/// (IDA 0xa6ccdc): append a command to the back of the queue. The original
+/// is a head/tail ring that doubles at 2x; `VecDeque` keeps that edge.
+pub fn buffered_command_queue_push(
+    queue: &mut std::collections::VecDeque<BufferedCommand>,
+    cmd: BufferedCommand,
+) {
+    queue.push_back(cmd);
+}
+
+/// `RakNet::RakNetSmartPtr<RakNet::RakNetSocket>` (IDA 0xa6cb5c): the
+/// refcounted socket stays engine-side; only its descriptor crosses here.
+pub type SocketHandle = u32;
+
+/// `RakNet::OP_DELETE_ARRAY<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>`
+/// (IDA 0xa6cb5c): delete an array of socket smart pointers (drop Rust-side).
+pub fn delete_socket_array(_sockets: Vec<SocketHandle>) {}
+
+/// `DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>::Insert`
+/// (IDA 0xa6d2bc): append a socket to the list. The original doubles
+/// capacity (16, then 2x); `Vec` keeps that edge.
+pub fn socket_list_insert(list: &mut Vec<SocketHandle>, socket: SocketHandle) {
+    list.push(socket);
+}
+
+/// `DataStructures::List<RakNet::RakNetGUID>::Insert` (IDA 0xa6ced8):
+/// append a guid. Guids are bare `u64` (cf. `RakPeer::my_guid`).
+pub fn guid_list_insert(list: &mut Vec<u64>, guid: u64) {
+    list.push(guid);
+}
+
+/// `DataStructures::List<RakNet::SystemAddress>::Insert` (IDA 0xa6d030):
+/// append an address.
+pub fn address_list_insert(list: &mut Vec<SystemAddress>, addr: SystemAddress) {
+    list.push(addr);
+}
 
 /// `RakNet::RakPeer` (IDA 0xa5cb00): sockets, queues, and threads stay
 /// engine-side; the exception list, limits, and password live here.

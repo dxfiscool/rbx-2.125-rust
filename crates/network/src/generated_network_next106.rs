@@ -7,67 +7,65 @@
 
 use rbx_core::SharedPtr;
 
-// 0xa6c7d0 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE8AllocateEPKcj
-// type: int __fastcall(_DWORD *, unsigned int, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::RakPeer::SocketQueryOutput>::Allocate(char const*,unsigned int)")]
-pub fn stub_a6c7d0() -> ! {
-    todo!("0xa6c7d0 DataStructures::MemoryPool<RakNet::RakPeer::SocketQueryOutput>::Allocate(char const*,unsigned int)")
+pub fn stub_a6c7d0() -> crate::socket::SocketQueryOutput {
+ // IDA 0xa6c7d0: pool blocks stay engine-side; hand out a default.
+ crate::socket::socket_query_output_allocate()
 }
 
-// 0xa6c8e4 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE7ReleaseEPS3_PKcj
-// type: _DWORD *__fastcall(_DWORD *result, int, void *, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::RakPeer::SocketQueryOutput>::Release(RakNet::RakPeer::SocketQueryOutput*,char const*,unsigned int)")]
-pub fn stub_a6c8e4() -> ! {
-    todo!("0xa6c8e4 DataStructures::MemoryPool<RakNet::RakPeer::SocketQueryOutput>::Release(RakNet::RakPeer::SocketQueryOutput*,char const*,unsigned int)")
+pub fn stub_a6c8e4(output: crate::socket::SocketQueryOutput) {
+ // IDA 0xa6c8e4: return to the pool; Rust drops it.
+ crate::socket::socket_query_output_release(output)
 }
 
-// 0xa6c9ac — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer14RecvFromStructEE7ReleaseEPS3_PKcj
-// type: _DWORD *__fastcall(_DWORD *result, int, void *, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::RakPeer::RecvFromStruct>::Release(RakNet::RakPeer::RecvFromStruct*,char const*,unsigned int)")]
-pub fn stub_a6c9ac() -> ! {
-    todo!("0xa6c9ac DataStructures::MemoryPool<RakNet::RakPeer::RecvFromStruct>::Release(RakNet::RakPeer::RecvFromStruct*,char const*,unsigned int)")
+pub fn stub_a6c9ac(recv: crate::socket::RecvFrom) {
+ // IDA 0xa6c9ac: return to the pool; Rust drops it.
+ crate::socket::recv_from_release(recv)
 }
 
-// 0xa6ca84 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE7ReleaseEPS3_PKcj
-// type: _DWORD *__fastcall(_DWORD *result, int, void *, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::RakPeer::BufferedCommandStruct>::Release(RakNet::RakPeer::BufferedCommandStruct*,char const*,unsigned int)")]
-pub fn stub_a6ca84() -> ! {
-    todo!("0xa6ca84 DataStructures::MemoryPool<RakNet::RakPeer::BufferedCommandStruct>::Release(RakNet::RakPeer::BufferedCommandStruct*,char const*,unsigned int)")
+pub fn stub_a6ca84(cmd: crate::socket::BufferedCommand) {
+ // IDA 0xa6ca84: return to the pool; Rust drops it.
+ crate::socket::buffered_command_release(cmd)
 }
 
-// 0xa6cb5c — __ZN6RakNet15OP_DELETE_ARRAYINS_14RakNetSmartPtrINS_12RakNetSocketEEEEEvPT_PKcj
-// type: void __fastcall(int, int, int, int, int, void *, int, int, void *, RakNet::RakNetSocket *, int, int, int, int)
 #[doc(alias = "void RakNet::OP_DELETE_ARRAY<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>(RakNet::RakNetSmartPtr<RakNet::RakNetSocket> *,char const*,unsigned int)")]
-pub fn stub_a6cb5c() -> ! {
-    todo!("0xa6cb5c void RakNet::OP_DELETE_ARRAY<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>(RakNet::RakNetSmartPtr<RakNet::RakNetSocket> *,char const*,unsigned int)")
+pub fn stub_a6cb5c(sockets: Vec<crate::socket::SocketHandle>) {
+ // IDA 0xa6cb5c: delete the smart-pointer array; Rust drops it.
+ crate::socket::delete_socket_array(sockets)
 }
 
-// 0xa6ccdc — __ZN14DataStructures5QueueIPN6RakNet7RakPeer21BufferedCommandStructEE4PushERKS4_PKcj
-// type: void __fastcall(int **, int *)
 #[doc(alias = "DataStructures::Queue<RakNet::RakPeer::BufferedCommandStruct *>::Push(RakNet::RakPeer::BufferedCommandStruct * const&,char const*,unsigned int)")]
-pub fn stub_a6ccdc() -> ! {
-    todo!("0xa6ccdc DataStructures::Queue<RakNet::RakPeer::BufferedCommandStruct *>::Push(RakNet::RakPeer::BufferedCommandStruct * const&,char const*,unsigned int)")
+pub fn stub_a6ccdc(
+    queue: &mut std::collections::VecDeque<crate::socket::BufferedCommand>,
+    cmd: crate::socket::BufferedCommand,
+) {
+ // IDA 0xa6ccdc: ring push, doubling at 2x; VecDeque keeps that edge.
+ crate::socket::buffered_command_queue_push(queue, cmd)
 }
 
-// 0xa6cdb0 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE8AllocateEPKcj
-// type: int __fastcall(_DWORD *, unsigned int, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::RakPeer::BufferedCommandStruct>::Allocate(char const*,unsigned int)")]
-pub fn stub_a6cdb0() -> ! {
-    todo!("0xa6cdb0 DataStructures::MemoryPool<RakNet::RakPeer::BufferedCommandStruct>::Allocate(char const*,unsigned int)")
+pub fn stub_a6cdb0() -> crate::socket::BufferedCommand {
+ // IDA 0xa6cdb0: pool blocks stay engine-side; hand out a default.
+ crate::socket::buffered_command_allocate()
 }
 
 // 0xa6ced8 — __ZN14DataStructures4ListIN6RakNet10RakNetGUIDEE6InsertERKS2_PKcj
 // type: void __fastcall(int, __int64 *, int, int, int, void *, int, int, int)
 #[doc(alias = "DataStructures::List<RakNet::RakNetGUID>::Insert(RakNet::RakNetGUID const&,char const*,unsigned int)")]
-pub fn stub_a6ced8() -> ! {
-    todo!("0xa6ced8 DataStructures::List<RakNet::RakNetGUID>::Insert(RakNet::RakNetGUID const&,char const*,unsigned int)")
+pub fn stub_a6ced8(list: &mut Vec<u64>, guid: u64) {
+ // IDA 0xa6ced8: append the guid; capacity doubles (16, then 2x).
+ crate::socket::guid_list_insert(list, guid)
 }
 
 // 0xa6d030 — __ZN14DataStructures4ListIN6RakNet13SystemAddressEE6InsertERKS2_PKcj
 // type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int)
 #[doc(alias = "DataStructures::List<RakNet::SystemAddress>::Insert(RakNet::SystemAddress const&,char const*,unsigned int)")]
-pub fn stub_a6d030() -> ! {
-    todo!("0xa6d030 DataStructures::List<RakNet::SystemAddress>::Insert(RakNet::SystemAddress const&,char const*,unsigned int)")
+pub fn stub_a6d030(list: &mut Vec<crate::socket::SystemAddress>, addr: crate::socket::SystemAddress) {
+ // IDA 0xa6d030: append the address; capacity doubles (16, then 2x).
+ crate::socket::address_list_insert(list, addr)
 }
 
 // 0xa6d194 — __ZN6RakNet7RakPeer18RemoteSystemStructC2Ev
@@ -81,29 +79,33 @@ pub fn stub_a6d194() {
 // 0xa6d2bc — __ZN14DataStructures4ListIN6RakNet14RakNetSmartPtrINS1_12RakNetSocketEEEE6InsertERKS4_PKcj
 // type: void __fastcall(RakNet::RakNetSocket *, _DWORD *, int, int, int, int, int, int, int, void *, int, int, int)
 #[doc(alias = "DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>::Insert(RakNet::RakNetSmartPtr<RakNet::RakNetSocket> const&,char const*,unsigned int)")]
-pub fn stub_a6d2bc() -> ! {
-    todo!("0xa6d2bc DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>::Insert(RakNet::RakNetSmartPtr<RakNet::RakNetSocket> const&,char const*,unsigned int)")
+pub fn stub_a6d2bc(list: &mut Vec<crate::socket::SocketHandle>, socket: crate::socket::SocketHandle) {
+ // IDA 0xa6d2bc: append the socket; capacity doubles (16, then 2x).
+ crate::socket::socket_list_insert(list, socket)
 }
 
 // 0xa6d4c0 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer21BufferedCommandStructEED2Ev
 // type: int *__fastcall(int *)
 #[doc(alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::BufferedCommandStruct>::~ThreadsafeAllocatingQueue()")]
-pub fn stub_a6d4c0() -> ! {
-    todo!("0xa6d4c0 DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::BufferedCommandStruct>::~ThreadsafeAllocatingQueue()")
+pub fn stub_a6d4c0(queue: std::collections::VecDeque<crate::socket::BufferedCommand>) {
+ // IDA 0xa6d4c0: mutexes drop, pool blocks freed, array deleted; Rust drops.
+ drop(queue);
 }
 
 // 0xa6d7a0 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer14RecvFromStructEED2Ev
 // type: int *__fastcall(int *)
 #[doc(alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::RecvFromStruct>::~ThreadsafeAllocatingQueue()")]
-pub fn stub_a6d7a0() -> ! {
-    todo!("0xa6d7a0 DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::RecvFromStruct>::~ThreadsafeAllocatingQueue()")
+pub fn stub_a6d7a0(queue: std::collections::VecDeque<crate::socket::RecvFrom>) {
+ // IDA 0xa6d7a0: mutexes drop, pool blocks freed, array deleted; Rust drops.
+ drop(queue);
 }
 
 // 0xa6da80 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer17SocketQueryOutputEED2Ev
 // type: int *__fastcall(int *)
 #[doc(alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::SocketQueryOutput>::~ThreadsafeAllocatingQueue()")]
-pub fn stub_a6da80() -> ! {
-    todo!("0xa6da80 DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::SocketQueryOutput>::~ThreadsafeAllocatingQueue()")
+pub fn stub_a6da80(queue: std::collections::VecDeque<crate::socket::SocketQueryOutput>) {
+ // IDA 0xa6da80: mutexes drop, pool blocks freed, array deleted; Rust drops.
+ drop(queue);
 }
 
 // 0xa6eaa4 — __ZN6RakNet9RakStringC1Ev
@@ -245,8 +247,9 @@ pub fn stub_a702a4(rng: &mut crate::socket::RakNetRandom) -> u32 {
 // 0xa7090c — __ZN6RakNet22SplitPacketChannelCompERKtRKPNS_18SplitPacketChannelE
 // type: int __fastcall(unsigned __int16 *, int)
 #[doc(alias = "RakNet::SplitPacketChannelComp(unsigned short const&,RakNet::SplitPacketChannel * const&)")]
-pub fn stub_a7090c() -> ! {
-    todo!("0xa7090c RakNet::SplitPacketChannelComp(unsigned short const&,RakNet::SplitPacketChannel * const&)")
+pub fn stub_a7090c(key: u16, channel_id: u16) -> i32 {
+ // IDA 0xa7090c: three-way compare against the channel split id.
+ crate::reliability::split_packet_channel_comp(key, channel_id)
 }
 
 // 0xa7092c — __ZN6RakNet16ReliabilityLayerC1Ev
@@ -339,29 +342,54 @@ pub fn stub_a72e94() -> ! {
 // 0xa74514 — __ZN6RakNet16ReliabilityLayer57RemovePacketFromResendListAndDeleteOlderReliableSequencedENS_8uint24_tEyRN14DataStructures4ListIPNS_16PluginInterface2EEERKNS_13SystemAddressE
 // type: int __fastcall(int, _DWORD *, unsigned __int64, _DWORD *, _DWORD *)
 #[doc(alias = "RakNet::ReliabilityLayer::RemovePacketFromResendListAndDeleteOlderReliableSequenced(RakNet::uint24_t,unsigned long long,DataStructures::List<RakNet::PluginInterface2 *> &,RakNet::SystemAddress const&)")]
-pub fn stub_a74514() -> ! {
-    todo!("0xa74514 RakNet::ReliabilityLayer::RemovePacketFromResendListAndDeleteOlderReliableSequenced(RakNet::uint24_t,unsigned long long,DataStructures::List<RakNet::PluginInterface2 *> &,RakNet::SystemAddress const&)")
+pub fn stub_a74514(
+    resend: &mut [Vec<crate::reliability::InternalPacket>],
+    message_number: u32,
+    time_ms: u32,
+    plugin_count: usize,
+    notify: &mut dyn FnMut(u32, u32),
+    emit: &mut dyn FnMut(Vec<u8>),
+) -> bool {
+ // IDA 0xa74514: plugin ack fan-out, resend-bucket removal, receipt emit.
+ crate::reliability::remove_from_resend_list(resend, message_number, time_ms, plugin_count, notify, emit)
 }
 
 // 0xa74750 — __ZN6RakNet16ReliabilityLayer33CreateInternalPacketFromBitStreamEPNS_9BitStreamEy
 // type: int __fastcall(RakNet::ReliabilityLayer *this, RakNet::BitStream *, unsigned __int64)
 #[doc(alias = "RakNet::ReliabilityLayer::CreateInternalPacketFromBitStream(RakNet::BitStream *,unsigned long long)")]
-pub fn stub_a74750() -> ! {
-    todo!("0xa74750 RakNet::ReliabilityLayer::CreateInternalPacketFromBitStream(RakNet::BitStream *,unsigned long long)")
+pub fn stub_a74750(
+    stream: &mut crate::bitstream::BitStream,
+    creation_time: u64,
+) -> Option<crate::reliability::InternalPacket> {
+ // IDA 0xa74750: parse the layered header plus payload; None when short.
+ crate::reliability::create_internal_packet(stream, creation_time)
 }
 
 // 0xa749fc — __ZN6RakNet16ReliabilityLayer25InsertIntoSplitPacketListEPNS_14InternalPacketEy
 // type: unsigned int __fastcall(_DWORD *, int, int, int)
 #[doc(alias = "RakNet::ReliabilityLayer::InsertIntoSplitPacketList(RakNet::InternalPacket *,unsigned long long)")]
-pub fn stub_a749fc() -> ! {
-    todo!("0xa749fc RakNet::ReliabilityLayer::InsertIntoSplitPacketList(RakNet::InternalPacket *,unsigned long long)")
+pub fn stub_a749fc(
+    channels: &mut Vec<crate::reliability::SplitPacketChannel>,
+    packet: crate::reliability::InternalPacket,
+    creation_time: u64,
+    progress_interval: u32,
+    emit: &mut dyn FnMut(Vec<u8>),
+) -> usize {
+ // IDA 0xa749fc: find-or-create the split channel, append, maybe progress.
+ crate::reliability::insert_into_split_packet_list(channels, packet, creation_time, progress_interval, emit)
 }
 
 // 0xa74c88 — __ZN6RakNet16ReliabilityLayer30BuildPacketFromSplitPacketListEtyiRNS_13SystemAddressEPNS_12RakNetRandomEtjRNS_9BitStreamE
 // type: int __fastcall(RakNet::ReliabilityLayer *this, unsigned int, unsigned __int64, int, RakNet::SystemAddress *, RakNet::RakNetRandom *, RakNet::SystemAddress *, unsigned __int16, RakNet::BitStream *)
 #[doc(alias = "RakNet::ReliabilityLayer::BuildPacketFromSplitPacketList(unsigned short,unsigned long long,int,RakNet::SystemAddress &,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)")]
-pub fn stub_a74c88() -> ! {
-    todo!("0xa74c88 RakNet::ReliabilityLayer::BuildPacketFromSplitPacketList(unsigned short,unsigned long long,int,RakNet::SystemAddress &,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)")
+pub fn stub_a74c88(
+    channels: &mut Vec<crate::reliability::SplitPacketChannel>,
+    split_id: u16,
+    creation_time: u64,
+    acked: &mut dyn FnMut(),
+) -> Option<crate::reliability::InternalPacket> {
+ // IDA 0xa74c88: ack, reassemble, and drop the channel once complete.
+ crate::reliability::build_packet_from_split_list(channels, split_id, creation_time, acked)
 }
 
 // 0xa74d64 — __ZN6RakNet16ReliabilityLayer7ReceiveEPPh
@@ -375,8 +403,15 @@ pub fn stub_a74d64(layer: &mut crate::reliability::ReliabilityLayer) -> Option<V
 // 0xa74dc0 — __ZN6RakNet16ReliabilityLayer4SendEPcj14PacketPriority17PacketReliabilityhbiyj
 // type: int __fastcall(int, const void *, int, unsigned int, unsigned int, unsigned int, int, int, int, int, int)
 #[doc(alias = "RakNet::ReliabilityLayer::Send(char *,unsigned int,PacketPriority,PacketReliability,unsigned char,bool,int,unsigned long long,unsigned int)")]
-pub fn stub_a74dc0() -> ! {
-    todo!("0xa74dc0 RakNet::ReliabilityLayer::Send(char *,unsigned int,PacketPriority,PacketReliability,unsigned char,bool,int,unsigned long long,unsigned int)")
+pub fn stub_a74dc0(
+    priority: u8,
+    channel: u8,
+    reliability: u8,
+    bit_length: u32,
+    mtu: u32,
+) -> Option<(u8, u8, u8, bool)> {
+ // IDA 0xa74dc0: clamps plus the oversize split verdict; queues engine-side.
+ crate::reliability::send_plan(priority, channel, reliability, bit_length, mtu)
 }
 
 // 0xa75100 — __ZN6RakNet16ReliabilityLayer11SplitPacketEPNS_14InternalPacketE
@@ -405,8 +440,14 @@ pub fn stub_a7641c(now_ms: u64, sent_ms: u64, timeout_ms: u32) -> bool {
 // 0xa76468 — __ZN6RakNet16ReliabilityLayer8SendACKsEiRNS_13SystemAddressEyPNS_12RakNetRandomEtjRNS_9BitStreamE
 // type: int __fastcall(RakNet::ReliabilityLayer *this, RakNet::SocketLayer *, sockaddr *, unsigned __int64, RakNet::RakNetRandom *, RakNet::SystemAddress *, unsigned __int16, void **)
 #[doc(alias = "RakNet::ReliabilityLayer::SendACKs(int,RakNet::SystemAddress &,unsigned long long,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)")]
-pub fn stub_a76468() -> ! {
-    todo!("0xa76468 RakNet::ReliabilityLayer::SendACKs(int,RakNet::SystemAddress &,unsigned long long,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)")
+pub fn stub_a76468(
+    acks_waiting: &mut bool,
+    mtu: u32,
+    build: &mut dyn FnMut(u32) -> Vec<u8>,
+    emit: &mut dyn FnMut(Vec<u8>),
+) {
+ // IDA 0xa76468: datagram per pass inside 8*mtu-72 bits; socket engine-side.
+ crate::reliability::send_acks(acks_waiting, mtu, build, emit)
 }
 
 // 0xa765e0 — __ZN6RakNet16ReliabilityLayer24ResetPacketsAndDatagramsEv
@@ -428,29 +469,38 @@ pub fn stub_a766b8(layer: &mut crate::reliability::ReliabilityLayer, push: &mut 
 // 0xa76828 — __ZN6RakNet16ReliabilityLayer10PushPacketEyPNS_14InternalPacketEb
 // type: void __fastcall(_DWORD *, unsigned __int64, int, char)
 #[doc(alias = "RakNet::ReliabilityLayer::PushPacket(unsigned long long,RakNet::InternalPacket *,bool)")]
-pub fn stub_a76828() -> ! {
-    todo!("0xa76828 RakNet::ReliabilityLayer::PushPacket(unsigned long long,RakNet::InternalPacket *,bool)")
+pub fn stub_a76828(queue: &mut crate::reliability::PacketQueue, packet: crate::reliability::InternalPacket, flag: bool) {
+ // IDA 0xa76828: byte counters plus the queued packet and flag.
+ crate::reliability::push_packet(queue, packet, flag)
 }
 
 // 0xa7696c — __ZN6RakNet16ReliabilityLayer25AddFirstToDatagramHistoryENS_8uint24_tES1_y
 // type: _DWORD *__fastcall(int, int, _DWORD *, int, int)
 #[doc(alias = "RakNet::ReliabilityLayer::AddFirstToDatagramHistory(RakNet::uint24_t,RakNet::uint24_t,unsigned long long)")]
-pub fn stub_a7696c() -> ! {
-    todo!("0xa7696c RakNet::ReliabilityLayer::AddFirstToDatagramHistory(RakNet::uint24_t,RakNet::uint24_t,unsigned long long)")
+pub fn stub_a7696c(
+    history: &mut crate::reliability::DatagramHistory,
+    message: u32,
+    aux_a: u32,
+    aux_b: u32,
+) {
+ // IDA 0xa7696c: evict past the cap, alloc the node, push the triple.
+ crate::reliability::add_first_to_datagram_history(history, message, aux_a, aux_b)
 }
 
 // 0xa76a68 — __ZN6RakNet16ReliabilityLayer34WriteToBitStreamFromInternalPacketEPNS_9BitStreamEPKNS_14InternalPacketEy
 // type: int __fastcall(int, RakNet::BitStream *this, int)
 #[doc(alias = "RakNet::ReliabilityLayer::WriteToBitStreamFromInternalPacket(RakNet::BitStream *,RakNet::InternalPacket const*,unsigned long long)")]
-pub fn stub_a76a68() -> ! {
-    todo!("0xa76a68 RakNet::ReliabilityLayer::WriteToBitStreamFromInternalPacket(RakNet::BitStream *,RakNet::InternalPacket const*,unsigned long long)")
+pub fn stub_a76a68(stream: &mut crate::bitstream::BitStream, packet: &crate::reliability::InternalPacket) -> u32 {
+ // IDA 0xa76a68: layered header plus payload into the stream.
+ crate::reliability::write_internal_packet(stream, packet)
 }
 
 // 0xa76b88 — __ZN6RakNet16ReliabilityLayer25AddFirstToDatagramHistoryENS_8uint24_tEy
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "RakNet::ReliabilityLayer::AddFirstToDatagramHistory(RakNet::uint24_t,unsigned long long)")]
-pub fn stub_a76b88() -> ! {
-    todo!("0xa76b88 RakNet::ReliabilityLayer::AddFirstToDatagramHistory(RakNet::uint24_t,unsigned long long)")
+pub fn stub_a76b88(history: &mut crate::reliability::DatagramHistory, aux_a: u32, aux_b: u32) {
+ // IDA 0xa76b88: evict past the cap, then push the zero-message node.
+ crate::reliability::push_datagram_history(history, aux_a, aux_b)
 }
 
 // 0xa76c68 — __ZN6RakNet16ReliabilityLayer21IsOutgoingDataWaitingEv
@@ -488,8 +538,12 @@ pub fn stub_a76c94(layer: &mut crate::reliability::ReliabilityLayer, timeout_ms:
 // 0xa76ca4 — __ZN6RakNet16ReliabilityLayer30BuildPacketFromSplitPacketListEPNS_18SplitPacketChannelEy
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "RakNet::ReliabilityLayer::BuildPacketFromSplitPacketList(RakNet::SplitPacketChannel *,unsigned long long)")]
-pub fn stub_a76ca4() -> ! {
-    todo!("0xa76ca4 RakNet::ReliabilityLayer::BuildPacketFromSplitPacketList(RakNet::SplitPacketChannel *,unsigned long long)")
+pub fn stub_a76ca4(
+    channel: crate::reliability::SplitPacketChannel,
+    creation_time: u64,
+) -> crate::reliability::InternalPacket {
+ // IDA 0xa76ca4: copy the first part's header, concat the parts, free all.
+ crate::reliability::build_packet_from_split_channel(&channel, creation_time)
 }
 
 // 0xa76e6c — __ZNK6RakNet16ReliabilityLayer16IsDeadConnectionEv
@@ -561,8 +615,14 @@ pub fn stub_a77a84(header: &crate::reliability::DatagramHeader, stream: &mut cra
 // 0xa77b3c — __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE9SerializeEPNS1_9BitStreamEjb
 // type: int __fastcall(int *, RakNet::BitStream *, unsigned int, int)
 #[doc(alias = "DataStructures::RangeList<RakNet::uint24_t>::Serialize(RakNet::BitStream *,unsigned int,bool)")]
-pub fn stub_a77b3c() -> ! {
-    todo!("0xa77b3c DataStructures::RangeList<RakNet::uint24_t>::Serialize(RakNet::BitStream *,unsigned int,bool)")
+pub fn stub_a77b3c(
+    list: &mut crate::reliability::RangeList,
+    stream: &mut crate::bitstream::BitStream,
+    max_bits: u32,
+    remove_written: bool,
+) -> u32 {
+ // IDA 0xa77b3c: count plus temp bits out, written ranges dropped on ask.
+ crate::reliability::serialize_range_list(list, stream, max_bits, remove_written)
 }
 
 // 0xa77d60 — __ZN6RakNet9BitStream5WriteINS_8uint24_tEEEvRKT_

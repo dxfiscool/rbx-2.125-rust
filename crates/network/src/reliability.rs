@@ -350,6 +350,590 @@ pub struct BpsSample {
 pub fn push_bps_sample(queue: &mut std::collections::VecDeque<BpsSample>, sample: BpsSample) {
     queue.push_back(sample);
 }
+/// `RakNet::InternalPacket` (IDA 0xa74750/0xa76a68): the layered packet the
+/// reliability pump parses, queues, and serializes. Offsets below are the
+/// `+N` field images from the create/write paths; `message_number` starts
+/// at `0xffffff` (unassigned) and `split_count` 0 means no split header.
+#[derive(Clone, Debug, Default)]
+pub struct InternalPacket {
+    /// +0 `uint24` message number.
+    pub message_number: u32,
+    /// +4 `uint24` ordering index.
+    pub ordering_index: u32,
+    /// +8 `uint24` ordering channel.
+    pub ordering_channel: u32,
+    /// +12 split byte (validated `<= 0x1f`, IDA 0xa748e4).
+    pub split_byte: u8,
+    /// +14 split packet id.
+    pub split_id: u16,
+    /// +16 split packet index (`< split_count`, IDA 0xa748e4).
+    pub split_index: u32,
+    /// +20 split packet count.
+    pub split_count: u32,
+    /// +24 bit length.
+    pub bit_length: u32,
+    /// +28 reliability (wire-mapped: 7->3, 6->2, 5->0, IDA 0xa76a8e).
+    pub reliability: u8,
+    /// +40 creation time.
+    pub creation_time: u64,
+    /// +60 payload bytes.
+    pub data: Vec<u8>,
+    /// +64 shared (refcounted) payload flag.
+    pub shared: bool,
+    /// +72 priority bucket.
+    pub priority: u8,
+    /// +76 receipt field.
+    pub receipt: u32,
+}
+
+/// `DataStructures::MemoryPool<RakNet::InternalPacket>::Allocate` (IDA
+/// 0xa7828c): pool blocks stay engine-side; hand out a default packet.
+#[must_use]
+pub fn internal_packet_allocate() -> InternalPacket {
+    InternalPacket::default()
+}
+
+/// `DataStructures::MemoryPool<RakNet::InternalPacket>::Release` (IDA
+/// 0xa783b4): return a packet to the pool (drop Rust-side).
+pub fn internal_packet_release(_packet: InternalPacket) {}
+
+/// `RakNet::ReliabilityLayer::MessageNumberNode` (IDA 0xa7696c): one
+/// datagram-history entry's message number; links stay engine-side.
+#[derive(Clone, Copy, Debug, Default)]
+pub struct MessageNumberNode {
+    pub message_number: u32,
+}
+
+/// `DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Allocate`
+/// (IDA 0xa78670): hand out a node with its message number.
+#[must_use]
+pub fn message_number_node_allocate(message_number: u32) -> MessageNumberNode {
+    MessageNumberNode { message_number }
+}
+
+/// `DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Release`
+/// (IDA 0xa7848c): return a node to the pool (drop Rust-side).
+pub fn message_number_node_release(_node: MessageNumberNode) {}
+
+/// `RakNet::InternalPacketRefCountedData` (IDA 0xa7879c): shared payload
+/// with its refcount; the bytes stay engine-side.
+#[derive(Clone, Copy, Debug, Default)]
+pub struct InternalPacketRefCountedData {
+    pub refs: u32,
+}
+
+/// `DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Allocate`
+/// (IDA 0xa7879c): hand out refcounted data starting at one reference.
+#[must_use]
+pub fn ref_counted_data_allocate() -> InternalPacketRefCountedData {
+    InternalPacketRefCountedData { refs: 1 }
+}
+
+/// `DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Release`
+/// (IDA 0xa788c8): return refcounted data to the pool (drop Rust-side).
+pub fn ref_counted_data_release(_data: InternalPacketRefCountedData) {}
+
+/// `RakNet::SplitPacketChannel` (IDA 0xa749fc): reassembly slot keyed by
+/// split id, holding the received parts plus the first part's creation
+/// time for the progress report.
+#[derive(Clone, Debug, Default)]
+pub struct SplitPacketChannel {
+    pub split_id: u16,
+    pub packets: Vec<InternalPacket>,
+    pub creation_time: u64,
+}
+
+/// `RakNet::SplitPacketChannelComp` (IDA 0xa7090c): three-way compare of
+/// the search key against the channel's split id (-1 below, 0 equal,
+/// 1 above).
+#[must_use]
+pub fn split_packet_channel_comp(key: u16, channel_id: u16) -> i32 {
+    if key < channel_id {
+        -1
+    } else {
+        i32::from(key != channel_id)
+    }
+}
+
+/// `DataStructures::OrderedList<...SplitPacketChannel...>::Insert` (IDA
+/// 0xa781a4) plus `DataStructures::List<RakNet::SplitPacketChannel *>::Insert`
+/// (IDA 0xa7899c): binary-search by split id, then insert positionally.
+/// A duplicate id returns the existing index without inserting.
+pub fn split_channel_ordered_insert(
+    channels: &mut Vec<SplitPacketChannel>,
+    channel: SplitPacketChannel,
+) -> usize {
+    let mut lo = 0usize;
+    let mut hi = channels.len();
+    while lo < hi {
+        let mid = lo + (hi - lo) / 2;
+        match split_packet_channel_comp(channel.split_id, channels[mid].split_id) {
+            0 => return mid,
+            c if c < 0 => hi = mid,
+            _ => lo = mid + 1,
+        }
+    }
+    channels.insert(lo, channel);
+    lo
+}
+
+/// `RakNet::ReliabilityLayer::InsertIntoSplitPacketList` (IDA 0xa749fc):
+/// find-or-create the channel for the packet's split id, append the part,
+/// and stamp the channel time. When the channel is still incomplete and
+/// the part count hits the progress interval, the `30`-lead progress
+/// payload (`count`, `split_count`, first-part bytes, first-part data;
+/// IDA 0xa74c22) goes to `emit`. Returns the channel index.
+pub fn insert_into_split_packet_list(
+    channels: &mut Vec<SplitPacketChannel>,
+    packet: InternalPacket,
+    creation_time: u64,
+    progress_interval: u32,
+    emit: &mut dyn FnMut(Vec<u8>),
+) -> usize {
+    // IDA 0xa74a5e: binary search, then `OrderedList::Insert`.
+    let index = split_channel_ordered_insert(
+        channels,
+        SplitPacketChannel { split_id: packet.split_id, ..SplitPacketChannel::default() },
+    );
+    let channel = &mut channels[index];
+    // IDA 0xa74b86: stamp the channel time.
+    channel.creation_time = creation_time;
+    // IDA 0xa74b72: append the part.
+    channel.packets.push(packet);
+    // IDA 0xa74b9c: progress report while incomplete, on the interval.
+    if progress_interval != 0 {
+        if let Some(first) = channel.packets.first() {
+            let count = channel.packets.len() as u32;
+            if count != first.split_count && count % progress_interval == 0 {
+                let mut payload = vec![30u8];
+                payload.extend_from_slice(&count.to_le_bytes());
+                payload.extend_from_slice(&first.split_count.to_le_bytes());
+                let first_bytes = ((first.bit_length + 7) >> 3).to_le_bytes();
+                payload.extend_from_slice(&first_bytes);
+                payload.extend_from_slice(&first.data);
+                emit(payload);
+            }
+        }
+    }
+    index
+}
+
+/// `RakNet::ReliabilityLayer::BuildPacketFromSplitPacketList` id arm (IDA
+/// 0xa74c88): binary-search the channel; when its part count reaches the
+/// first part's split count, run the ack callback, reassemble, drop the
+/// channel, and return the packet. `None` while incomplete or missing.
+pub fn build_packet_from_split_list(
+    channels: &mut Vec<SplitPacketChannel>,
+    split_id: u16,
+    creation_time: u64,
+    acked: &mut dyn FnMut(),
+) -> Option<InternalPacket> {
+    // IDA 0xa74cf2: binary search by split id.
+    let mut lo = 0usize;
+    let mut hi = channels.len();
+    while lo < hi {
+        let mid = lo + (hi - lo) / 2;
+        match split_packet_channel_comp(split_id, channels[mid].split_id) {
+            0 => {
+                lo = mid;
+                break;
+            }
+            c if c < 0 => hi = mid,
+            _ => lo = mid + 1,
+        }
+    }
+    let channel = channels.get(lo)?;
+    if split_packet_channel_comp(split_id, channel.split_id) != 0 {
+        return None;
+    }
+    // IDA 0xa74d0e: complete when the part count meets the split count.
+    let complete = channel
+        .packets
+        .first()
+        .is_some_and(|first| channel.packets.len() as u32 == first.split_count);
+    if !complete {
+        return None;
+    }
+    // IDA 0xa74d26: ack, then build and remove the channel.
+    acked();
+    let channel = channels.remove(lo);
+    Some(build_packet_from_split_channel(&channel, creation_time))
+}
+
+/// `RakNet::ReliabilityLayer::BuildPacketFromSplitPacketList` channel arm
+/// (IDA 0xa76ca4): fresh packet copying the first part's header, payload
+/// concatenated part-by-part at `split_index * first-part-bytes`, then the
+/// parts and channel are freed (ownership here takes that edge).
+#[must_use]
+pub fn build_packet_from_split_channel(
+    channel: &SplitPacketChannel,
+    creation_time: u64,
+) -> InternalPacket {
+    let mut packet = InternalPacket::default();
+    packet.message_number = 0xffff_ff;
+    packet.creation_time = creation_time;
+    if let Some(first) = channel.packets.first() {
+        // IDA 0xa76d02: copy the header words off the first part.
+        packet.ordering_index = first.ordering_index;
+        packet.ordering_channel = first.ordering_channel;
+        packet.split_byte = first.split_byte;
+        packet.message_number = first.message_number;
+        packet.reliability = first.reliability;
+        packet.split_id = first.split_id;
+        // IDA 0xa76d34: total bit length is the parts' sum.
+        let total_bits: u32 = channel.packets.iter().map(|part| part.bit_length).sum();
+        packet.bit_length = total_bits;
+        // IDA 0xa76d7e: part bytes land at `split_index * first-part-bytes`.
+        let stride = ((first.bit_length + 7) >> 3) as usize;
+        let total = ((total_bits + 7) >> 3) as usize;
+        let mut data = vec![0u8; total];
+        for part in &channel.packets {
+            let bytes = ((part.bit_length + 7) >> 3) as usize;
+            let at = (part.split_index as usize).saturating_mul(stride).min(total);
+            let len = bytes.min(total.saturating_sub(at)).min(part.data.len());
+            data[at..at + len].copy_from_slice(&part.data[..len]);
+        }
+        packet.data = data;
+    }
+    packet
+}
+
+/// `RakNet::ReliabilityLayer::WriteToBitStreamFromInternalPacket` (IDA
+/// 0xa76a68): align-up, the reliability remap (7->3, 6->2, 5->0, else the
+/// low 3 bits), the split flag, the aligned var16 bit length, the gated
+/// `uint24` fields (message number for reliabilities in mask `0xdc`,
+/// ordering channel for 1/4, ordering index plus split byte for mask
+/// `0x9a`), the split triple when set, then the payload. Returns the bits
+/// written.
+pub fn write_internal_packet(
+    stream: &mut crate::bitstream::BitStream,
+    packet: &InternalPacket,
+) -> u32 {
+    let before = stream.bits_written();
+    // IDA 0xa76a88: align-up before the reliability bits.
+    stream.write_aligned_bytes(&[]);
+    // IDA 0xa76a8e: remap 7->3, 6->2, 5->0.
+    let wire_rel = match packet.reliability {
+        7 => 3,
+        6 => 2,
+        5 => 0,
+        rel => rel & 7,
+    };
+    stream.write_bits(u32::from(wire_rel), 3);
+    // IDA 0xa76ab4: split flag.
+    stream.write_bit(packet.split_count != 0);
+    // IDA 0xa76ad6: align-up, then the bit length.
+    stream.write_aligned_bytes(&[]);
+    stream.write_aligned_var16(packet.bit_length as u16);
+    let rel = packet.reliability;
+    // IDA 0xa76af4: message number for reliabilities in mask 0xdc.
+    if rel <= 7 && (1u32 << rel) & 0xdc != 0 {
+        stream.write_uint24(packet.message_number);
+    }
+    // IDA 0xa76b02: ordering channel for reliabilities 1/4.
+    if rel == 1 || rel == 4 {
+        stream.write_uint24(packet.ordering_channel);
+    }
+    // IDA 0xa76b34: ordering index plus split byte for mask 0x9a.
+    if rel <= 7 && (1u32 << rel) & 0x9a != 0 {
+        stream.write_uint24(packet.ordering_index);
+        stream.write_aligned_var8(packet.split_byte);
+    }
+    // IDA 0xa76b4c: the split triple when set.
+    if packet.split_count != 0 {
+        stream.write_aligned_var32(packet.split_count);
+        stream.write_aligned_var16(packet.split_id);
+        stream.write_aligned_var32(packet.split_index);
+    }
+    // IDA 0xa76b76: payload bytes.
+    let bytes = ((packet.bit_length + 7) >> 3) as usize;
+    let len = bytes.min(packet.data.len());
+    stream.write_aligned_bytes(&packet.data[..len]);
+    (stream.bits_written() - before) as u32
+}
+
+/// `RakNet::ReliabilityLayer::CreateInternalPacketFromBitStream` (IDA
+/// 0xa74750): mirror of [`write_internal_packet`]. `None` when the stream
+/// is short, the reliability is unmapped, the split byte exceeds `0x1f`,
+/// or a split index fails `index < count`. The payload buffer is zeroed
+/// at the tail like the original's `malloc` image (IDA 0xa7491c).
+#[must_use]
+pub fn create_internal_packet(
+    stream: &mut crate::bitstream::BitStream,
+    creation_time: u64,
+) -> Option<InternalPacket> {
+    // IDA 0xa7476c: need 32 bits before touching the pool.
+    if stream.bits_remaining() < 32 {
+        return None;
+    }
+    let mut packet = InternalPacket::default();
+    packet.message_number = 0xffff_ff;
+    packet.creation_time = creation_time;
+    // IDA 0xa747c4: align-up, then the 3-bit reliability.
+    stream.align_read_to_byte();
+    let rel = stream.read_bits(3)? as u8;
+    // IDA 0xa747d2: the split flag bit.
+    let split = stream.read_bit()?;
+    // IDA 0xa74812: align-up, then the var16 bit length.
+    stream.align_read_to_byte();
+    packet.bit_length = u32::from(stream.read_aligned_var16()?);
+    packet.reliability = rel;
+    // IDA 0xa74826: message number unless reliability is 2..=4.
+    if u32::from(rel).wrapping_sub(2) > 2 {
+        packet.message_number = 0xffff_ff;
+    } else {
+        packet.message_number = stream.read_uint24()?;
+    }
+    // IDA 0xa7483c: ordering channel for reliabilities 1/4.
+    if rel == 1 || rel == 4 {
+        packet.ordering_channel = stream.read_uint24()?;
+    }
+    // IDA 0xa7486e: ordering index plus split byte for mask 0x9a.
+    if rel <= 7 && (1u32 << rel) & 0x9a != 0 {
+        packet.ordering_index = stream.read_uint24()?;
+        packet.split_byte = stream.read_aligned_var8()?;
+    }
+    // IDA 0xa74892: the split triple, or the split-byte gate.
+    if split {
+        packet.split_count = stream.read_aligned_var32()?;
+        packet.split_id = stream.read_aligned_var16()?;
+        packet.split_index = stream.read_aligned_var32()?;
+    } else if packet.split_byte != 1 {
+        return None;
+    }
+    // IDA 0xa748e4: payload, split byte, and index validation.
+    if packet.bit_length == 0
+        || rel > 7
+        || packet.split_byte > 0x1f
+        || (split && packet.split_index >= packet.split_count)
+    {
+        return None;
+    }
+    // IDA 0xa7490c: sized payload with a zeroed tail byte.
+    let bytes = ((packet.bit_length + 7) >> 3) as usize;
+    let mut data = vec![0u8; bytes];
+    if !stream.read_aligned_bytes(&mut data) {
+        return None;
+    }
+    packet.data = data;
+    Some(packet)
+}
+
+/// `RakNet::ReliabilityLayer::Send` header half (IDA 0xa74dc0): clamp the
+/// priority (>4 becomes 1), the channel (>0x1f becomes 0), and the
+/// reliability (>7 becomes 2). An empty payload sends nothing. Oversize
+/// payloads (past `mtu - 32` bytes) upgrade unreliable 5->6 / 1->4 / 0->2
+/// and take the split path. Returns the clamped triple plus the split
+/// verdict; ordering assignment, BPS stats, and the resend heap stay
+/// engine-side.
+#[must_use]
+pub fn send_plan(
+    priority: u8,
+    channel: u8,
+    reliability: u8,
+    bit_length: u32,
+    mtu: u32,
+) -> Option<(u8, u8, u8, bool)> {
+    // IDA 0xa74dde: priority clamp.
+    let priority = if priority > 4 { 1 } else { priority };
+    // IDA 0xa74de8: channel clamp.
+    let channel = if channel > 0x1f { 0 } else { channel };
+    // IDA 0xa74df0: reliability clamp.
+    let mut reliability = if reliability > 7 { 2 } else { reliability };
+    // IDA 0xa74dfc: empty payloads return 0.
+    if bit_length == 0 {
+        return None;
+    }
+    let bytes = (bit_length + 7) >> 3;
+    // IDA 0xa74f3c: oversize upgrades plus the split path.
+    if bytes > mtu.saturating_sub(32) {
+        match reliability {
+            5 => reliability = 6,
+            1 | 4 => reliability = 4,
+            0 => reliability = 2,
+            _ => {}
+        }
+        return Some((priority, channel, reliability, true));
+    }
+    Some((priority, channel, reliability, false))
+}
+
+/// `RakNet::ReliabilityLayer::PushPacket` (IDA 0xa76828): account the
+/// aligned payload bytes into both counters, then append the packet and
+/// its flag. The original grows both arrays (16, then 2x); `Vec` keeps
+/// that edge.
+#[derive(Clone, Debug, Default)]
+pub struct PacketQueue {
+    pub packets: Vec<InternalPacket>,
+    pub flags: Vec<bool>,
+    pub bytes_a: u32,
+    pub bytes_b: u32,
+}
+
+/// Append a packet and its flag to the queue (IDA 0xa76828).
+pub fn push_packet(queue: &mut PacketQueue, packet: InternalPacket, flag: bool) {
+    // IDA 0xa7684c: header allowance plus the aligned bit length, in bytes.
+    let bytes = ((56 + ((packet.bit_length + 7) & 0xffff_fff8) + 7) & 0xffff_fff8) >> 3;
+    queue.bytes_a = queue.bytes_a.wrapping_add(bytes);
+    queue.bytes_b = queue.bytes_b.wrapping_add(bytes);
+    queue.packets.push(packet);
+    queue.flags.push(flag);
+}
+
+/// `RakNet::ReliabilityLayer::DatagramHistoryNode` (IDA 0xa7696c): one
+/// history slot — the message number plus two aux words.
+#[derive(Clone, Copy, Debug, Default)]
+pub struct DatagramHistoryNode {
+    pub message: u32,
+    pub aux_a: u32,
+    pub aux_b: u32,
+}
+
+/// Datagram history ring (IDA 0xa7696c/0xa76b88): past `0x200` entries the
+/// oldest slot's message nodes are released (drop Rust-side) and the slot
+/// is recycled.
+#[derive(Clone, Debug, Default)]
+pub struct DatagramHistory {
+    pub slots: std::collections::VecDeque<DatagramHistoryNode>,
+}
+
+/// Evict the oldest slot past the `0x200` cap (IDA 0xa76996).
+fn evict_datagram_history(history: &mut DatagramHistory) {
+    let used = history.slots.len() as u32;
+    if used > 0x200 {
+        history.slots.pop_front();
+    }
+}
+
+/// `RakNet::ReliabilityLayer::AddFirstToDatagramHistory` 3-word arm (IDA
+/// 0xa7696c): evict past the cap, allocate a message-number node, and push
+/// `{message, aux_a, aux_b}`.
+pub fn add_first_to_datagram_history(
+    history: &mut DatagramHistory,
+    message: u32,
+    aux_a: u32,
+    aux_b: u32,
+) {
+    evict_datagram_history(history);
+    let node = message_number_node_allocate(message);
+    history.slots.push_back(DatagramHistoryNode { message: node.message_number, aux_a, aux_b });
+}
+
+/// `RakNet::ReliabilityLayer::AddFirstToDatagramHistory` 2-word arm (IDA
+/// 0xa76b88): evict past the cap, then push a zero-message node.
+pub fn push_datagram_history(history: &mut DatagramHistory, aux_a: u32, aux_b: u32) {
+    evict_datagram_history(history);
+    history.slots.push_back(DatagramHistoryNode { message: 0, aux_a, aux_b });
+}
+
+/// `RakNet::ReliabilityLayer::RemovePacketFromResendListAndDeleteOlderReliableSequenced`
+/// (IDA 0xa74514): notify the plugins (`message_number`, `time_ms / 1000`),
+/// then remove the acked packet from its `message_number & 0x1ff` resend
+/// bucket. Ack-receipt reliabilities (>= 6) additionally emit the `14`-lead
+/// control packet carrying the packet's trailing word (IDA 0xa7464c).
+/// Bandwidth doubles and the resend links stay engine-side. Returns whether
+/// a packet was removed.
+pub fn remove_from_resend_list(
+    resend: &mut [Vec<InternalPacket>],
+    message_number: u32,
+    time_ms: u32,
+    plugin_count: usize,
+    notify: &mut dyn FnMut(u32, u32),
+    emit: &mut dyn FnMut(Vec<u8>),
+) -> bool {
+    // IDA 0xa74526: plugin ack notifications carry seconds.
+    if plugin_count > 0 {
+        notify(message_number, time_ms / 0x3e8);
+    }
+    // IDA 0xa74580: bucket by the low 9 bits of the message number.
+    let bucket = resend.get_mut((message_number & 0x1ff) as usize);
+    let Some(slot) = bucket else {
+        return false;
+    };
+    let Some(at) = slot.iter().position(|packet| packet.message_number == message_number) else {
+        return false;
+    };
+    let packet = slot.remove(at);
+    // IDA 0xa745ec: ack-receipt reliabilities emit the control packet.
+    if packet.reliability >= 6 {
+        let mut control = vec![14u8];
+        control.extend_from_slice(&packet.receipt.to_le_bytes());
+        emit(control);
+    }
+    true
+}
+
+/// `RakNet::ReliabilityLayer::SendACKs` (IDA 0xa76468): while acks wait,
+/// build one datagram per pass inside `8 * mtu - 72` bits (`build`) and
+/// hand it to the socket (`emit`). BPS accounting, the sliding window,
+/// and the actual send stay engine-side.
+pub fn send_acks(
+    acks_waiting: &mut bool,
+    mtu: u32,
+    build: &mut dyn FnMut(u32) -> Vec<u8>,
+    emit: &mut dyn FnMut(Vec<u8>),
+) {
+    // IDA 0xa7648e: nothing to do without waiting acks.
+    while *acks_waiting {
+        // IDA 0xa764a0: range budget inside the datagram.
+        let budget = 8u32.saturating_mul(mtu).saturating_sub(72);
+        let datagram = build(budget);
+        emit(datagram);
+    }
+}
+
+/// `DataStructures::RangeList<RakNet::uint24_t>::Serialize` (IDA 0xa77b3c):
+/// drain up to `max_bits` of ranges (each costs 40 bits single, 72 paired;
+/// the lookahead stops past `max_bits - 81`) into a temp stream, align the
+/// output, write the count plus the temp bits, and drop the written ranges
+/// when `remove_written` is set. Returns the bits written.
+pub fn serialize_range_list(
+    list: &mut RangeList,
+    stream: &mut crate::bitstream::BitStream,
+    max_bits: u32,
+    remove_written: bool,
+) -> u32 {
+    let mut tmp = crate::bitstream::BitStream::new();
+    let mut used = 0u32;
+    let mut count = 0u16;
+    for &(min, max) in &list.ranges {
+        // IDA 0xa77bc8: conservative 81-bit lookahead per range.
+        if used + 81 > max_bits {
+            break;
+        }
+        // IDA 0xa77be2: flag byte, nonzero for a single value.
+        tmp.write_u8(u8::from(min == max));
+        tmp.write_uint24(min);
+        used += 40;
+        if min != max {
+            // IDA 0xa77c2a: paired max.
+            tmp.write_uint24(max);
+            used += 32;
+        }
+        count += 1;
+    }
+    // IDA 0xa77c6e: align the output, then the count and the temp bits.
+    stream.write_aligned_bytes(&[]);
+    let aligned = stream.bits_written();
+    stream.write_u16(count);
+    let bits = tmp.bits_written();
+    stream.write_stream_bits(&mut tmp, bits);
+    // IDA 0xa77c92: drop the written ranges when asked.
+    if remove_written && count > 0 {
+        let drop = (count as usize).min(list.ranges.len());
+        list.ranges.drain(..drop);
+    }
+    (bits + (stream.bits_written() - aligned)) as u32
+}
+
+/// `DataStructures::Queue<RakNet::InternalPacket *>::Push` (IDA 0xa772b8):
+/// append a packet to the back of the queue.
+pub fn internal_packet_queue_push(
+    queue: &mut std::collections::VecDeque<InternalPacket>,
+    packet: InternalPacket,
+) {
+    queue.push_back(packet);
+}
 
 #[cfg(test)]
 mod tests {
@@ -484,5 +1068,168 @@ mod tests {
         let mut queue = std::collections::VecDeque::new();
         push_bps_sample(&mut queue, BpsSample { time_ms: 3, value: 9 });
         assert_eq!(queue.len(), 1);
+    }
+    #[test]
+    fn split_channel_comp_and_insert() {
+        // IDA 0xa7090c: below, equal, above.
+        assert_eq!(split_packet_channel_comp(3, 5), -1);
+        assert_eq!(split_packet_channel_comp(5, 5), 0);
+        assert_eq!(split_packet_channel_comp(7, 5), 1);
+        // IDA 0xa781a4: ordered insert keeps split-id order, dup returns index.
+        let mut channels = Vec::new();
+        let at = split_channel_ordered_insert(
+            &mut channels,
+            SplitPacketChannel { split_id: 9, ..SplitPacketChannel::default() },
+        );
+        assert_eq!(at, 0);
+        let at = split_channel_ordered_insert(
+            &mut channels,
+            SplitPacketChannel { split_id: 3, ..SplitPacketChannel::default() },
+        );
+        assert_eq!(at, 0);
+        let dup = split_channel_ordered_insert(
+            &mut channels,
+            SplitPacketChannel { split_id: 9, ..SplitPacketChannel::default() },
+        );
+        assert_eq!((dup, channels.len()), (1, 2));
+    }
+
+    #[test]
+    fn send_plan_clamps_and_split() {
+        // IDA 0xa74dc0: empty payloads send nothing.
+        assert_eq!(send_plan(1, 0, 2, 0, 512), None);
+        // Priority/channel/reliability clamps.
+        assert_eq!(send_plan(9, 0x40, 9, 64, 512), Some((1, 0, 2, false)));
+        // Oversize upgrades: 5->6, 1->4, 0->2, then the split path.
+        assert_eq!(send_plan(1, 2, 5, 8 * 600, 512).map(|plan| (plan.2, plan.3)), Some((6, true)));
+        assert_eq!(send_plan(1, 2, 1, 8 * 600, 512).map(|plan| (plan.2, plan.3)), Some((4, true)));
+        assert_eq!(send_plan(1, 2, 0, 8 * 600, 512).map(|plan| (plan.2, plan.3)), Some((2, true)));
+        // Small reliable payloads go direct.
+        assert_eq!(send_plan(2, 3, 2, 80, 512), Some((2, 3, 2, false)));
+    }
+
+    #[test]
+    fn internal_packet_write_create_roundtrip() {
+        // IDA 0xa76a68/0xa74750: header, gated fields, and payload survive.
+        let mut packet = InternalPacket::default();
+        packet.message_number = 0x1234;
+        packet.ordering_index = 0x56;
+        packet.ordering_channel = 0x78;
+        packet.split_byte = 1;
+        packet.bit_length = 24;
+        packet.reliability = 3;
+        packet.data = vec![0xaa, 0xbb, 0xcc];
+        let mut stream = crate::bitstream::BitStream::new();
+        assert!(write_internal_packet(&stream, &packet) > 0);
+        let back = create_internal_packet(&mut stream, 7).expect("packet");
+        assert_eq!(
+            (back.message_number, back.ordering_index, back.bit_length, back.reliability),
+            (0x1234, 0x56, 24, 3),
+        );
+        assert_eq!((back.data, back.creation_time), (vec![0xaa, 0xbb, 0xcc], 7));
+        // Short streams and bad split indices fail.
+        let mut short = crate::bitstream::BitStream::new();
+        short.write_u8(0);
+        assert!(create_internal_packet(&mut short, 0).is_none());
+    }
+
+    #[test]
+    fn split_reassembly_flow() {
+        // IDA 0xa749fc/0xa74c88/0xa76ca4: two parts in, one packet out.
+        let mut part_a = InternalPacket::default();
+        part_a.split_id = 11;
+        part_a.split_index = 0;
+        part_a.split_count = 2;
+        part_a.bit_length = 16;
+        part_a.reliability = 2;
+        part_a.message_number = 0x42;
+        part_a.data = vec![1, 2];
+        let mut part_b = part_a.clone();
+        part_b.split_index = 1;
+        part_b.data = vec![3, 4];
+        let mut channels = Vec::new();
+        let mut emitted = 0;
+        insert_into_split_packet_list(&mut channels, part_a, 100, 0, &mut |_| emitted += 1);
+        insert_into_split_packet_list(&mut channels, part_b, 100, 0, &mut |_| emitted += 1);
+        assert_eq!((channels.len(), emitted), (1, 0));
+        let mut acked = 0;
+        let packet =
+            build_packet_from_split_list(&mut channels, 11, 101, &mut || acked += 1)
+                .expect("complete");
+        assert_eq!((acked, packet.data, packet.message_number), (1, vec![1, 2, 3, 4], 0x42));
+        assert!(channels.is_empty());
+        // Missing channels build nothing.
+        assert!(build_packet_from_split_list(&mut channels, 11, 101, &mut || {}).is_none());
+    }
+
+    #[test]
+    fn datagram_history_evicts_and_resend_removes() {
+        // IDA 0xa7696c/0xa76b88: the ring caps at 0x200 plus the fresh push.
+        let mut history = DatagramHistory::default();
+        for i in 0..0x205 {
+            add_first_to_datagram_history(&mut history, i, i + 1, i + 2);
+        }
+        assert_eq!(history.slots.len(), 0x201);
+        push_datagram_history(&mut history, 1, 2);
+        assert_eq!(history.slots.len(), 0x201);
+        assert_eq!(history.slots.back().map(|node| node.message), Some(0));
+        // IDA 0xa74514: bucket removal plus the receipt emit for rel >= 6.
+        let mut resend: Vec<Vec<InternalPacket>> = vec![Vec::new(); 512];
+        let mut gone = InternalPacket::default();
+        gone.message_number = 0x300;
+        gone.reliability = 6;
+        gone.receipt = 0xde_ad;
+        resend[(0x300 & 0x1ff) as usize].push(gone);
+        let mut notified = Vec::new();
+        let mut emitted = Vec::new();
+        let removed = remove_from_resend_list(
+            &mut resend,
+            0x300,
+            2000,
+            1,
+            &mut |msg, secs| notified.push((msg, secs)),
+            &mut |bytes| emitted.push(bytes),
+        );
+        assert!(removed);
+        assert_eq!(notified, vec![(0x300, 2)]);
+        assert_eq!(emitted.len(), 1);
+        assert_eq!((emitted[0][0], emitted[0].len()), (14, 5));
+        assert!(!remove_from_resend_list(&mut resend, 0x300, 2000, 0, &mut |_, _| {}, &mut |_| {}));
+    }
+
+    #[test]
+    fn range_list_serialize_roundtrip() {
+        // IDA 0xa77b3c: count plus temp bits out; written ranges dropped.
+        let mut list = RangeList::default();
+        list.insert_value(7);
+        list.insert_value(9);
+        list.insert_value(12);
+        let mut stream = crate::bitstream::BitStream::new();
+        let bits = serialize_range_list(&mut list, &mut stream, 1 << 20, true);
+        assert!(bits > 0);
+        assert!(list.ranges.is_empty());
+        let back = deserialize_range_list(&mut stream).expect("ranges");
+        assert_eq!(back.ranges, vec![(7, 7), (9, 12)]);
+        // Tight budgets write nothing and keep the ranges.
+        let mut kept = RangeList::default();
+        kept.insert_value(3);
+        let mut thin = crate::bitstream::BitStream::new();
+        serialize_range_list(&mut kept, &mut thin, 10, true);
+        assert_eq!(kept.ranges, vec![(3, 3)]);
+    }
+
+    #[test]
+    fn packet_queue_push_counts() {
+        // IDA 0xa76828: counters plus the queued packet and flag.
+        let mut queue = PacketQueue::default();
+        let mut packet = InternalPacket::default();
+        packet.bit_length = 8;
+        push_packet(&mut queue, packet, true);
+        assert_eq!((queue.packets.len(), queue.flags, queue.bytes_a), (1, vec![true], queue.bytes_b));
+        assert!(queue.bytes_a > 0);
+        // IDA 0xa772b8: plain packet-queue push.
+        let mut plain = std::collections::VecDeque::new();
+        internal_packet_queue_push(&mut plain, InternalPacket::default());
+        assert_eq!(plain.len(), 1);
     }
 }
