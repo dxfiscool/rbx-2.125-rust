@@ -423,6 +423,7 @@ pub struct GenericSlotWrapper {
     pub on_single: Option<fn(&SharedPtr<Instance>)>,
     pub on_triple: Option<fn(&str, &str, &SharedPtr<Instance>)>,
     pub on_triple_isi: Option<fn(&SharedPtr<Instance>, &str, &SharedPtr<Instance>)>,
+    pub on_chat: Option<fn(&SharedPtr<Instance>, &str, super::instance::ChatColor)>,
 }
 /// Rust model of `RBX::Reflection::PropertyDescriptor` (IDA `0x706742`): only
 /// pointer identity / name cross the `fireEvent` boundary here.

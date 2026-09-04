@@ -300,6 +300,68 @@ pub struct CharacterMesh {
     _opaque: (),
 }
 
+/// Rust model of `RBX::ChatService::ChatColor` (IDA `0x3eb850`): the bubble
+/// color tag on a chat message; enumerators unmodeled.
+#[derive(Clone, Copy, Default, PartialEq, Eq)]
+pub struct ChatColor(pub u32);
+
+/// Rust model of `RBX::ChatService` (IDA `0x3eb850`): the `Chatted` member
+/// signal behind `chat`/`fireEvent`; routing lands with the chat subsystem.
+#[derive(Default)]
+pub struct ChatService {
+    pub chatted: Signal<(SharedPtr<Instance>, String, ChatColor)>,
+}
+
+/// Rust model of `boost::function3<void, SharedPtr<Instance>, string,
+/// ChatColor>` holding the `execute3` bind (IDA `0x3ed820`): same collapse as
+/// `PairFunction`, one arg more.
+#[derive(Clone, Default)]
+pub struct ChatFunction3 {
+    pub target: Option<SharedPtr<GenericSlotWrapper>>,
+}
+
+/// Rust model of an `rbx::signals::signal<void ()(SharedPtr<Instance>,
+/// string, ChatColor)>::slot` link (IDA `0x3ed6c0` `next`): the intrusive
+/// successor plus the chat callable.
+pub struct ChatSlotNode {
+    pub next: Option<SharedPtr<ChatSlotNode>>,
+    pub func: ChatFunction3,
+}
+
+/// Rust model of `boost::bind(execute3-mf3, wrapper, _1, _2, _3)` over
+/// `(Instance, string, ChatColor)` (IDA `0x3ee934`): same retained-target
+/// shape as `TripleWrapperBind`.
+#[derive(Clone)]
+pub struct ChatBind3 {
+    pub target: SharedPtr<GenericSlotWrapper>,
+}
+
+/// Rust model of `RBX::Reflection::BoundFuncDesc<ChatService, ...>` (IDA
+/// `0x3ec2e0`): field layout unmodeled; the bound descriptor lands with the
+/// reflection subsystem.
+#[derive(Default)]
+pub struct ChatBoundFuncDesc {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Reflection::RemoteEventDesc<ChatService, ...>` (IDA
+/// `0x3ec400`): the scriptable/broadcast flags behind `isScriptable` (IDA
+/// `0x3ee6e8`, word `+48` bit 0) and `isBroadcast` (IDA `0x3ee6f0`, word `+44`
+/// bit 0).
+#[derive(Default)]
+pub struct ChatRemoteEventDesc {
+    pub scriptable: bool,
+    pub broadcast: bool,
+}
+
+/// Rust model of `rbx::remote_signal<void ()(SharedPtr<Instance>, string,
+/// ChatColor)>` (IDA `0x3ed9c8`): the replication half of the Chatted event;
+/// transport lands with the network subsystem.
+#[derive(Default)]
+pub struct ChatRemoteSignal {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::BillboardGui` (IDA `0x3c0434`): field layout unmodeled;
 /// adornee/player presence lands with the gui subsystem.
 #[derive(Default)]
@@ -10192,36 +10254,49 @@ pub fn stub_0x3e9a44(ptr: *mut CharacterMesh, _deleter: CreatableInstanceDeleter
 // 0x3e9b4c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13CharacterMeshENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x3e9b4c() -> ! {
-    todo!("0x3e9b4c boost::detail::sp_counted_impl_pd<RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x3e9b4c(_block: *mut ControlBlockPd<CharacterMesh, CreatableInstanceDeleter>) {
+    // IDA 0x3e9b4c: `BX LR` — empty; same as 0xf198/0x3e5a6c.
 }
 
 // 0x3e9b50 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13CharacterMeshENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x3e9b50() -> ! {
-    todo!("0x3e9b50 boost::detail::sp_counted_impl_pd<RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x3e9b50(block: *mut ControlBlockPd<CharacterMesh, CreatableInstanceDeleter>) {
+    // IDA 0x3e9b50: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0/0x3e5a70.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x3e9b54 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13CharacterMeshENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x3e9b54() -> ! {
-    todo!("0x3e9b54 boost::detail::sp_counted_impl_pd<RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x3e9b54(_block: *mut ControlBlockPd<CharacterMesh, CreatableInstanceDeleter>) {
+    // IDA 0x3e9b54: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74/0x3e5a74.
 }
 
 // 0x3e9b74 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13CharacterMeshENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x3e9b74() -> ! {
-    todo!("0x3e9b74 boost::detail::sp_counted_impl_pd<RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x3e9b74(block: *const ControlBlockPd<CharacterMesh, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x3e9b74: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454/0x3e5a94.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x3e9b8c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13CharacterMeshENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x3e9b8c() -> ! {
-    todo!("0x3e9b8c boost::detail::sp_counted_impl_pd<RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x3e9b8c(block: *const ControlBlockPd<CharacterMesh, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x3e9b8c: unconditional `this + 0x10`; same as 0x3346c/0x3e5aac.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x3eb850 — __ZN3RBX11ChatService4chatEN5boost10shared_ptrINS_8InstanceEEESsNS0_9ChatColorE
@@ -10234,15 +10309,26 @@ pub fn stub_0x3eb850() -> ! {
 // 0x3ec2e0 — __ZN3RBX10Reflection13BoundFuncDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEELi3EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),3>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),3>::~BoundFuncDesc()
-pub fn stub_0x3ec2e0() -> ! {
-    todo!("0x3ec2e0 RBX::Reflection::BoundFuncDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),3>::~BoundFuncDesc()")
+pub fn stub_0x3ec2e0(_desc: *mut ChatBoundFuncDesc) {
+    // IDA 0x3ec2e0: `BoundFuncDesc<ChatService, ...>` D1 — memberwise teardown
+    // of the bound chat descriptor; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x3ec400 — __ZN3RBX10Reflection15RemoteEventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEED1Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::~RemoteEventDesc()")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::~RemoteEventDesc()
-pub fn stub_0x3ec400() -> ! {
-    todo!("0x3ec400 RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::~RemoteEventDesc()")
+pub fn stub_0x3ec400(_desc: *mut ChatRemoteEventDesc) {
+    // IDA 0x3ec400: `RemoteEventDesc<ChatService, ...>` D1 — memberwise
+    // teardown of the chat remote descriptor; dropping the box is the same
+    // release. Twin of 0x3ec2e0.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x3ec970 — __ZN3RBX10Reflection19RemoteEventDescImplILi3ENS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEE21fireAndReplicateEventEPS2_S6_SsS7_
@@ -10255,8 +10341,17 @@ pub fn stub_0x3ec970() -> ! {
 // 0x3ed188 — __ZNK3RBX10Reflection13EventDescImplILi3ENS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEMS2_SB_E9fireEventEPS2_S6_SsS7_
 #[doc(alias = "RBX::Reflection::EventDescImpl<3,RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::fireEvent(RBX::ChatService*,rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)const")]
 // was: RBX::Reflection::EventDescImpl<3,RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::fireEvent(RBX::ChatService*,boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)const
-pub fn stub_0x3ed188() -> ! {
-    todo!("0x3ed188 RBX::Reflection::EventDescImpl<3,RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::fireEvent(RBX::ChatService*,boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)const")
+pub fn stub_0x3ed188(
+    service: &ChatService,
+    speaker: &SharedPtr<Instance>,
+    message: &str,
+    color: ChatColor,
+) {
+    // IDA 0x3ed188 (`EventDescImpl<3, ChatService, ...>::fireEvent`, demangled
+    // `(ChatService*, Instance, string, ChatColor)`): invokes the member
+    // `signal<void ()(Instance, string, ChatColor)>` — the direct `chatted`
+    // fire with retained args.
+    service.chatted.fire((speaker.clone(), message.to_owned(), color));
 }
 
 // 0x3ed2f8 — __ZN3RBX10Reflection19RemoteEventDescImplILi3ENS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEE14replicateEventEPNS0_11EventSourceES6_SsS7_
@@ -10269,71 +10364,127 @@ pub fn stub_0x3ed2f8() -> ! {
 // 0x3ed48c — __ZN3rbx7signals16signal_with_argsILi3EFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEEclES6_SsS8_
 #[doc(alias = "rbx::signals::signal_with_args<3,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::operator()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")]
 // was: rbx::signals::signal_with_args<3,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::operator()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)
-pub fn stub_0x3ed48c() -> ! {
-    todo!("0x3ed48c rbx::signals::signal_with_args<3,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::operator()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")
+pub fn stub_0x3ed48c(
+    sig: &Signal<(SharedPtr<Instance>, String, ChatColor)>,
+    speaker: &SharedPtr<Instance>,
+    message: &str,
+    color: ChatColor,
+) {
+    // IDA 0x3ed48c: `signal_with_args<3>::operator()` over `(Instance,
+    // string, ChatColor)` — retains each arg, walks the live slots firing
+    // each item; `Signal::fire` holds the same lock and drops the same
+    // per-item retains into clones.
+    sig.fire((speaker.clone(), message.to_owned(), color));
 }
 
 // 0x3ed6c0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE4nextERNS2_13intrusive_ptrINSA_4slotEEE
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot> &)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot> &)
-pub fn stub_0x3ed6c0() -> ! {
-    todo!("0x3ed6c0 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot> &)")
+pub fn stub_0x3ed6c0(slots: &[SharedPtr<ChatSlotNode>], cursor: usize) -> Option<usize> {
+    // IDA 0x3ed6c0: `signal::next` — mutex-guarded advance of the intrusive
+    // cursor to the next live slot; the slot list collapses into a snapshot
+    // slice, so next-live is index + 1 when in range. Twin of 0x2beb34.
+    let next = cursor + 1;
+    if next < slots.len() {
+        Some(next)
+    } else {
+        None
+    }
 }
 
 // 0x3ed820 — __ZN3rbx7signals16signal_with_argsILi3EFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE8fireItemEPNS0_6signalIS9_E4slotES6_SsS8_
 #[doc(alias = "rbx::signals::signal_with_args<3,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::fireItem(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot *,rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")]
 // was: rbx::signals::signal_with_args<3,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::fireItem(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot *,boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)
-pub fn stub_0x3ed820() -> ! {
-    todo!("0x3ed820 rbx::signals::signal_with_args<3,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::fireItem(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot *,boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")
+pub fn stub_0x3ed820(
+    func: &ChatFunction3,
+    speaker: &SharedPtr<Instance>,
+    message: &str,
+    color: ChatColor,
+) {
+    // IDA 0x3ed820: `signal_with_args<3>::fireItem` — retains of the shared
+    // and string args, then the slot callable invocation; releases on scope
+    // exit collapse into clones. The slot callable here is the retained
+    // `execute3` bind, applied via the wrapper's chat handler.
+    if let Some(wrapper) = func.target.as_ref() {
+        stub_0x3eea50(wrapper, speaker, message, color);
+    }
 }
 
 // 0x3ed9a0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE8on_errorERSt9exception
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::on_error(std::exception &)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::on_error(std::exception &)
-pub fn stub_0x3ed9a0() -> ! {
-    todo!("0x3ed9a0 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::on_error(std::exception &)")
+pub fn stub_0x3ed9a0() -> *const Mutex<Option<fn(&str)>> {
+    // IDA 0x3ed9a0: returns `&slot_exception_handler`, the process-wide
+    // slot-exception hook. Twin of 0x2bee54/0x705950.
+    &SLOT_EXCEPTION_HANDLER as *const Mutex<Option<fn(&str)>>
 }
 
 // 0x3ed9c8 — __ZN3rbx13remote_signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS3_11ChatService9ChatColorEEEC2Ev
 #[doc(alias = "rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::remote_signal(void)")]
 // was: rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::remote_signal(void)
-pub fn stub_0x3ed9c8() -> ! {
-    todo!("0x3ed9c8 rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::remote_signal(void)")
+pub fn stub_0x3ed9c8() -> ChatRemoteSignal {
+    // IDA 0x3ed9c8: `remote_signal<...>::C2Ev` — default-constructs the
+    // replication half of the Chatted event; transport state lands with the
+    // network subsystem.
+    ChatRemoteSignal::default()
 }
 
 // 0x3edb24 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE13disconnectAllEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::disconnectAll(void)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::disconnectAll(void)
-pub fn stub_0x3edb24() -> ! {
-    todo!("0x3edb24 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::disconnectAll(void)")
+pub fn stub_0x3edb24(sig: *const Signal<(SharedPtr<Instance>, String, ChatColor)>) {
+    // IDA 0x3edb24: mutex acquisition then every slot unlinked and released;
+    // `Signal::disconnect_all` holds the same lock and drops the same slot
+    // list. Same shape as 0x7080e4.
+    // SAFETY: `sig` must point to a valid `Signal`.
+    unsafe {
+        (*sig).disconnect_all();
+    }
 }
 
 // 0x3ee4d0 — __ZN3RBX10Reflection15RemoteEventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEED0Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::~RemoteEventDesc()")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::~RemoteEventDesc()
-pub fn stub_0x3ee4d0() -> ! {
-    todo!("0x3ee4d0 RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::~RemoteEventDesc()")
+pub fn stub_0x3ee4d0(_desc: *mut ChatRemoteEventDesc) {
+    // IDA 0x3ee4d0: `RemoteEventDesc<ChatService, ...>` D0 — vtable install
+    // plus memberwise teardown; dropping the box is the same release. Twin of
+    // 0x3ec400.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x3ee584 — __ZNK3RBX10Reflection13EventDescImplILi3ENS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEMS2_SB_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<3,RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: RBX::Reflection::EventDescImpl<3,RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
-pub fn stub_0x3ee584() -> ! {
-    todo!("0x3ee584 RBX::Reflection::EventDescImpl<3,RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x3ee584(desc: *const EventDescPayload, slot: &SharedPtr<GenericSlotWrapper>) {
+    // IDA 0x3ee584: `EventDescImpl<3, ChatService, ...>::connectGeneric` —
+    // retain the wrapper and insert into the member signal; collapses to a
+    // retained clone + push onto the payload-side list. Same shape as
+    // 0x707dcc.
+    // SAFETY: `desc` must point to a valid `EventDescPayload`.
+    unsafe {
+        (*desc).connections.lock().push(slot.clone());
+    }
 }
 
 // 0x3ee6e8 — __ZNK3RBX10Reflection15RemoteEventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::isScriptable(void)const")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::isScriptable(void)const
-pub fn stub_0x3ee6e8() -> ! {
-    todo!("0x3ee6e8 RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::isScriptable(void)const")
+pub fn stub_0x3ee6e8(desc: &ChatRemoteEventDesc) -> bool {
+    // IDA 0x3ee6e8: returns word `+48` bit 0 (disasm 0x3ee6ee) — the
+    // scriptable flag.
+    desc.scriptable
 }
 
 // 0x3ee6f0 — __ZNK3RBX10Reflection15RemoteEventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEE11isBroadcastEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::isBroadcast(void)const")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::isBroadcast(void)const
-pub fn stub_0x3ee6f0() -> ! {
-    todo!("0x3ee6f0 RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::isBroadcast(void)const")
+pub fn stub_0x3ee6f0(desc: &ChatRemoteEventDesc) -> bool {
+    // IDA 0x3ee6f0: returns word `+44` bit 0 (disasm 0x3ee6f6) — the
+    // broadcast flag. Twin of 0x3ee6e8.
+    desc.broadcast
 }
 
 // 0x3ee6f8 — __ZNK3RBX10Reflection13EventDescImplILi3ENS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEMS2_SB_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISH_EE
@@ -10360,15 +10511,30 @@ pub fn stub_0x3ee920() -> ! {
 // 0x3ee934 — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS1_8InstanceEEERKSsRKNS1_11ChatService9ChatColorENS4_IS3_EENS_3argILi1EEENSG_ILi2EEENSG_ILi3EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf3ISM_T0_T1_T2_T3_EENSK_9list_av_4IT4_T5_T6_T7_E4typeEEEMSP_FSM_SQ_SR_SS_ESV_SW_SX_SY_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&>,boost::_bi::list_av_4<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>(void (RBX::Reflection::GenericSlotWrapper::*)(rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>)")]
 // was: boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&>,boost::_bi::list_av_4<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>(void (RBX::Reflection::GenericSlotWrapper::*)(boost::shared_ptr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>)
-pub fn stub_0x3ee934() -> ! {
-    todo!("0x3ee934 boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&>,boost::_bi::list_av_4<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>(void (RBX::Reflection::GenericSlotWrapper::*)(boost::shared_ptr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>)")
+pub fn stub_0x3ee934(target: &SharedPtr<GenericSlotWrapper>) -> ChatBind3 {
+    // IDA 0x3ee934: `boost::bind(execute3-mf3, wrapper, _1, _2, _3)` over
+    // `(Instance, string, ChatColor)` — the wrapper `shared_ptr` is retained
+    // into the `bind_t` while the three args stay late-bound. Same shape as
+    // 0x70825c/0x2bee7c.
+    ChatBind3 { target: target.clone() }
 }
 
 // 0x3eea50 — __ZN3RBX10Reflection18GenericSlotWrapper8execute3IN5boost10shared_ptrINS_8InstanceEEESsNS_11ChatService9ChatColorEEEvRKT_RKT0_RKT1_
 #[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute3<rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor>(rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&)")]
 // was: void RBX::Reflection::GenericSlotWrapper::execute3<boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor>(boost::shared_ptr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&)
-pub fn stub_0x3eea50() -> ! {
-    todo!("0x3eea50 void RBX::Reflection::GenericSlotWrapper::execute3<boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor>(boost::shared_ptr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&)")
+pub fn stub_0x3eea50(
+    wrapper: &SharedPtr<GenericSlotWrapper>,
+    speaker: &SharedPtr<Instance>,
+    message: &str,
+    color: ChatColor,
+) {
+    // IDA 0x3eea50: `GenericSlotWrapper::execute3` unpacks the marshalled
+    // 3-arg chat functor and invokes it with the retained speaker, the
+    // message, and the color tag; the Lua frame underneath is the `on_chat`
+    // handler until the script bridge exists. Twin of 0x708378.
+    if let Some(cb) = wrapper.on_chat {
+        cb(speaker, message, color);
+    }
 }
 
 // 0x3eebdc — __ZN5boost9function3IvNS_10shared_ptrIN3RBX8InstanceEEESsNS2_11ChatService9ChatColorEE5clearEv
