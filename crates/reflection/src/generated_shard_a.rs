@@ -6612,10 +6612,69 @@ pub fn stub_0xaadc80() {
     // IDA 0xaadc80: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
+/// `RBX::Reflection::RemoteEventDesc<C, Sig>` cutover (IDA 0xaae1fc): the
+/// local `EventDesc` header plus the `remote_signal` replication link. The
+/// replication transport is unmodeled; local connect/fire/disconnect reuse
+/// the `EventSource*` cutovers.
+#[derive(Debug, Clone)]
+pub struct RemoteEventDesc {
+    pub inner: EventDesc,
+    pub broadcast: bool,
+}
+
+/// Shared `RemoteEventDesc` constructor (the per-event ctor EAs live
+/// outside this shard): header plus the broadcast flag.
+pub fn remote_event_desc(
+    name: &str,
+    category: &str,
+    title: &str,
+    member: usize,
+    args: Vec<(String, &'static str)>,
+    permissions: u32,
+    attributes: u32,
+    broadcast: bool,
+) -> RemoteEventDesc {
+    RemoteEventDesc {
+        inner: EventDesc {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            title: title.to_owned(),
+            member,
+            signature: Signature { return_type: "void", args },
+            permissions,
+            attributes,
+        },
+        broadcast,
+    }
+}
+
+/// `RBX::Reflection::EventSource` for a `(string, Vector3)` signal
+/// (IDA 0xaaeab0/0xaaef58/0xaaf1e4).
+#[derive(Default)]
+pub struct EventSourceStringVector3 {
+    signal: Signal<(String, Vector3)>,
+    holders: parking_lot::Mutex<Vec<(SharedPtr<SlotWrapper>, SharedPtr<dyn Fn((String, Vector3)) + Send + Sync>)>>,
+}
+
+impl EventSourceStringVector3 {
+    pub fn disconnect_all(&self) {
+        self.holders.lock().clear();
+        self.signal.disconnect_all();
+    }
+}
+
+/// typeinfo name for the string/Vector3 `bind_t` (cf. 0x6320c0).
+pub const BIND_STR_VEC3_TYPEINFO: &str = "bind_t<mf2<GenericSlotWrapper,string,Vector3>>";
+
 // 0xaadd5c — __ZNK3RBX10Reflection13EventDescImplILi1ENS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEMS3_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
-pub fn stub_0xaadd5c() -> ! {
-    todo!("0xaadd5c RBX::Reflection::EventDescImpl<1,RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0xaadd5c(src: &EventSource1String, wrapper: SharedPtr<SlotWrapper>) {
+    // IDA 0xaadd5c: `EventDescImpl<1, string>::connectGeneric` for the
+    // remote event (same shape as 0x626770).
+    let w = SharedPtr::clone(&wrapper);
+    let slot = SharedPtr::new(move |text: String| (w.invoke)(&[Value::Text(text)]));
+    src.signal.connect(SharedPtr::clone(&slot));
+    src.holders.lock().push((wrapper, slot));
 }
 
 // 0xaae1f4 — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEE12isScriptableEv
@@ -6626,32 +6685,65 @@ pub fn stub_0xaae1f4() {
 
 // 0xaae1fc — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEE11isBroadcastEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::isBroadcast(void)const")]
-pub fn stub_0xaae1fc() -> ! {
-    todo!("0xaae1fc RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::isBroadcast(void)const")
+pub fn stub_0xaae1fc(desc: &RemoteEventDesc) -> bool {
+    // IDA 0xaae1fc: `RemoteEventDesc::isBroadcast` for the string event:
+    // returns the replication-broadcast flag.
+    desc.broadcast
 }
 
 // 0xaae204 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEMS3_S7_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISD_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
-pub fn stub_0xaae204() -> ! {
-    todo!("0xaae204 RBX::Reflection::EventDescImpl<1,RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0xaae204(src: &EventSource1String, args: &[Value]) {
+    // IDA 0xaae204: `fireEvent` for the string remote event:
+    // `ReleaseAssert(args.size() == 1)` (Event.h:320), unpack, invoke the
+    // member `remote_signal` (same shape as 0x6268c4).
+    assert!(args.len() == 1, "args.size() == 1 include/Reflection/Event.h:320 (IDA 0xaae204)");
+    src.signal.fire(args[0].as_text());
 }
 
 // 0xaae40c — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEE9sendEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
-pub fn stub_0xaae40c() -> ! {
-    todo!("0xaae40c RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0xaae40c(broadcast: bool, src: &EventSource1String, args: &[Value]) {
+    // IDA 0xaae40c: `RemoteEventDesc::sendEvent` for the string event:
+    // replicate when broadcast, then the local `fireEvent` path (same as
+    // 0xaae204). The replication transport is unmodeled.
+    let _ = broadcast;
+    stub_0xaae204(src, args);
 }
 
 // 0xaae424 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEMS3_S7_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
-pub fn stub_0xaae424() -> ! {
-    todo!("0xaae424 RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_0xaae424(src: &EventSource1String) {
+    // IDA 0xaae424: `EventDescBase::disconnectAll` for the string remote
+    // event (same shape as 0x626a68).
+    src.disconnect_all();
 }
 
 // 0xaae600 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEMS3_S7_EC2ES8_PKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::EventDesc(rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0xaae600() -> ! {
-    todo!("0xaae600 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::EventDesc(rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0xaae600(
+    name: &str,
+    category: &str,
+    title: &str,
+    member: usize,
+    arg_name: &str,
+    permissions: u32,
+    attributes: u32,
+) -> EventDesc {
+    // IDA 0xaae600: `EventDesc<Player, void(string)>` ctor (same shape as
+    // 0x626538).
+    EventDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        title: title.to_owned(),
+        member,
+        signature: Signature {
+            return_type: "void",
+            args: vec![(arg_name.to_owned(), "string")],
+        },
+        permissions,
+        attributes,
+    }
 }
 
 // 0xaae8b0 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEMS3_S7_ED1Ev
@@ -6674,8 +6766,15 @@ pub fn stub_0xaae9d4() {
 
 // 0xaaeab0 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEMS3_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>,rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
-pub fn stub_0xaaeab0() -> ! {
-    todo!("0xaaeab0 RBX::Reflection::EventDescImpl<2,RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>,rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0xaaeab0(src: &EventSourceStringVector3, wrapper: SharedPtr<SlotWrapper>) {
+    // IDA 0xaaeab0: `EventDescImpl<2, (string, Vector3)>::connectGeneric`
+    // (same shape as 0x631214).
+    let w = SharedPtr::clone(&wrapper);
+    let slot = SharedPtr::new(move |(text, v): (String, Vector3)| {
+        (w.invoke)(&[Value::Text(text), Value::Vector3(v)]);
+    });
+    src.signal.connect(SharedPtr::clone(&slot));
+    src.holders.lock().push((wrapper, slot));
 }
 
 // 0xaaef48 — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEE12isScriptableEv
@@ -6686,80 +6785,144 @@ pub fn stub_0xaaef48() {
 
 // 0xaaef50 — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEE11isBroadcastEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>>::isBroadcast(void)const")]
-pub fn stub_0xaaef50() -> ! {
-    todo!("0xaaef50 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>>::isBroadcast(void)const")
+pub fn stub_0xaaef50(desc: &RemoteEventDesc) -> bool {
+    // IDA 0xaaef50: `RemoteEventDesc::isBroadcast` for (string, Vector3):
+    // returns the replication-broadcast flag.
+    desc.broadcast
 }
 
 // 0xaaef58 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEMS3_S9_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISF_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>,rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
-pub fn stub_0xaaef58() -> ! {
-    todo!("0xaaef58 RBX::Reflection::EventDescImpl<2,RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>,rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0xaaef58(src: &EventSourceStringVector3, args: &[Value]) {
+    // IDA 0xaaef58: `fireEvent` for the (string, Vector3) remote event:
+    // assert size == 2, unpack both, invoke the member signal.
+    assert!(args.len() == 2, "args.size() == 2 (IDA 0xaaef58)");
+    let text = args[0].as_text();
+    let v = args[1].as_vector3();
+    src.signal.fire((text, v));
 }
 
 // 0xaaf1cc — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEE9sendEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISE_EE
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
-pub fn stub_0xaaf1cc() -> ! {
-    todo!("0xaaf1cc RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0xaaf1cc(broadcast: bool, src: &EventSourceStringVector3, args: &[Value]) {
+    // IDA 0xaaf1cc: `RemoteEventDesc::sendEvent` for (string, Vector3):
+    // replicate when broadcast, then the local `fireEvent` path
+    // (assert + unpack + member-signal invoke, same as 0xaaef58). The
+    // replication transport is unmodeled; the broadcast flag selects it.
+    let _ = broadcast;
+    stub_0xaaef58(src, args);
 }
 
 // 0xaaf1e4 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEMS3_S9_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>,rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
-pub fn stub_0xaaf1e4() -> ! {
-    todo!("0xaaf1e4 RBX::Reflection::EventDescBase<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>,rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_0xaaf1e4(src: &EventSourceStringVector3) {
+    // IDA 0xaaf1e4: `EventDescBase::disconnectAll` for the
+    // (string, Vector3) remote event.
+    src.disconnect_all();
 }
 
 // 0xaaf1fc — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKSsRKN3G3D7Vector3ENS_10shared_ptrIS3_EENS_3argILi1EEENSC_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISH_T0_T1_T2_EENSF_9list_av_3IT3_T4_T5_E4typeEEEMSK_FSH_SL_SM_ESP_SQ_SR_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,G3D::Vector3 const&>,boost::_bi::list_av_3<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,std::string const&,G3D::Vector3 const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(std::string const&,G3D::Vector3 const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")]
-pub fn stub_0xaaf1fc() -> ! {
-    todo!("0xaaf1fc boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,G3D::Vector3 const&>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,std::string const&,G3D::Vector3 const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(std::string const&,G3D::Vector3 const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")
+pub fn stub_0xaaf1fc(wrapper: SharedPtr<SlotWrapper>) -> BoundSlot {
+    // IDA 0xaaf1fc: `bind<mf2<GenericSlotWrapper, string, Vector3>>` (same
+    // shape as 0x4a3fac).
+    BoundSlot { target: wrapper }
 }
 
 // 0xaaf668 — __ZN3RBX10Reflection18GenericSlotWrapper8execute2ISsN3G3D7Vector3EEEvRKT_RKT0_
 #[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute2<std::string,G3D::Vector3>(std::string const&,G3D::Vector3 const&)")]
-pub fn stub_0xaaf668() -> ! {
-    todo!("0xaaf668 void RBX::Reflection::GenericSlotWrapper::execute2<std::string,G3D::Vector3>(std::string const&,G3D::Vector3 const&)")
+pub fn stub_0xaaf668(wrapper: &SlotWrapper, text: &str, v: Vector3) {
+    // IDA 0xaaf668: `execute2<string, Vector3>`: 2-Variant vector, vf
+    // dispatch, teardown (same shape as 0x631c68).
+    (wrapper.invoke)(&[Value::Text(text.to_owned()), Value::Vector3(v)]);
 }
 
 // 0xaaf988 — __ZN5boost3_bi5list3INS0_5valueINS_10shared_ptrIN3RBX10Reflection18GenericSlotWrapperEEEEENS_3argILi1EEENS9_ILi2EEEEC1ES8_SA_SB_
 #[doc(alias = "boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>::list3(boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>)")]
-pub fn stub_0xaaf988() -> ! {
-    todo!("0xaaf988 boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>::list3(boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>)")
+pub fn stub_0xaaf988(wrapper: SharedPtr<SlotWrapper>) -> BoundSlot {
+    // IDA 0xaaf988: `list3<value<wrapper>, arg<1>, arg<2>>::list3` for the
+    // string/Vector3 triple (same shape as 0x4a3fac).
+    BoundSlot { target: wrapper }
 }
 
 // 0xab005c — __ZN5boost9function2IvSsN3G3D7Vector3EE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsRKS2_EENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEEvT_
 #[doc(alias = "void boost::function2<void,std::string,G3D::Vector3>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,G3D::Vector3 const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,G3D::Vector3 const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)")]
-pub fn stub_0xab005c() -> ! {
-    todo!("0xab005c void boost::function2<void,std::string,G3D::Vector3>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,G3D::Vector3 const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,G3D::Vector3 const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)")
+pub fn stub_0xab005c(func: &mut SlotFunction, bound: &BoundSlot) {
+    // IDA 0xab005c: `function2<string, Vector3>::assign_to` (same shape as
+    // 0x4a442c).
+    func.bound = Some(bound.clone());
 }
 
 // 0xab04d4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsRKN3G3D7Vector3EEENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSM_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,G3D::Vector3 const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_0xab04d4() -> ! {
-    todo!("0xab04d4 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,G3D::Vector3 const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0xab04d4(
+    op: GenericFunctorOp,
+    src: &BoundSlot,
+    slot: &mut Option<BoundSlot>,
+) -> Option<&'static str> {
+    // IDA 0xab04d4: `functor_manager<string/Vector3-bind>::manage` (same
+    // shape as 0x4a4524).
+    if op == GenericFunctorOp::GetType {
+        return Some(BIND_STR_VEC3_TYPEINFO);
+    }
+    stub_0xab080c(op, src, slot);
+    None
 }
 
 // 0xab04f8 — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsRKN3G3D7Vector3EEENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSM_ILi2EEEEEEEvSsSD_E6invokeERNS1_15function_bufferESsSD_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,G3D::Vector3 const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,void,std::string,G3D::Vector3>::invoke(boost::detail::function::function_buffer &,std::string,G3D::Vector3)")]
-pub fn stub_0xab04f8() -> ! {
-    todo!("0xab04f8 boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,G3D::Vector3 const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,void,std::string,G3D::Vector3>::invoke(boost::detail::function::function_buffer &,std::string,G3D::Vector3)")
+pub fn stub_0xab04f8(bound: &BoundSlot, text: &str, v: Vector3) {
+    // IDA 0xab04f8: `void_function_obj_invoker2<string, Vector3>::invoke`
+    // (same shape as 0x4a4540).
+    stub_0xaaf668(&bound.target, text, v);
 }
 
 // 0xab0524 — __ZNK5boost6detail8function13basic_vtable2IvSsN3G3D7Vector3EE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsRKS4_EENS7_5list3INS7_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 #[doc(alias = "bool boost::detail::function::basic_vtable2<void,std::string,G3D::Vector3>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,G3D::Vector3 const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,G3D::Vector3 const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_0xab0524() -> ! {
-    todo!("0xab0524 bool boost::detail::function::basic_vtable2<void,std::string,G3D::Vector3>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,G3D::Vector3 const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,G3D::Vector3 const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_0xab0524(func: &mut SlotFunction, bound: &BoundSlot) -> bool {
+    // IDA 0xab0524: `basic_vtable2<string, Vector3>::assign_to` (same shape
+    // as 0x4a4554).
+    func.bound = Some(bound.clone());
+    true
 }
 
 // 0xab080c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsRKN3G3D7Vector3EEENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSM_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,G3D::Vector3 const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_0xab080c() -> ! {
-    todo!("0xab080c boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,G3D::Vector3 const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_0xab080c(op: GenericFunctorOp, src: &BoundSlot, slot: &mut Option<BoundSlot>) -> bool {
+    // IDA 0xab080c: `functor_manager<string/Vector3-bind>::manager` (same
+    // shape as 0x4a4810).
+    generic_manage(op, src, slot)
 }
 
 // 0xab12d4 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEMS3_S9_EC2ESA_PKcSD_SD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>,rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*>::EventDesc(rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0xab12d4() -> ! {
-    todo!("0xab12d4 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>,rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*>::EventDesc(rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0xab12d4(
+    name: &str,
+    category: &str,
+    title: &str,
+    member: usize,
+    arg0_name: &str,
+    arg1_name: &str,
+    permissions: u32,
+    attributes: u32,
+) -> EventDesc {
+    // IDA 0xab12d4: `EventDesc<Player, void(string, Vector3)>` ctor (same
+    // shape as 0x63152c).
+    EventDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        title: title.to_owned(),
+        member,
+        signature: Signature {
+            return_type: "void",
+            args: vec![
+                (arg0_name.to_owned(), "string"),
+                (arg1_name.to_owned(), "Vector3"),
+            ],
+        },
+        permissions,
+        attributes,
+    }
 }
 
 // 0xab1670 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEMS3_S9_ED1Ev
