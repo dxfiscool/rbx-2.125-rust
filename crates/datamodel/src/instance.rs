@@ -2672,11 +2672,13 @@ pub struct ArcHandles {
 }
 
 /// Rust model of `RBX::PartAdornment` (IDA `0x3ac3c8`): the `IAdornable` at
-/// `+96` and the weak at `+34` (torn down by D1) are unmodeled; the
-/// `Instance` base collapses.
+/// `+96` is unmodeled; the adornee link is the `weak_ptr<PartInstance>` at
+/// `+132` re-armed by `setAdornee` (IDA `0x393b34`, disasm
+/// `ADD.W R1, R6, #0x84`); the `Instance` base collapses.
 #[derive(Default)]
 pub struct PartAdornment {
     _opaque: (),
+    pub adornee: WeakPtr<PartInstance>,
 }
 
 /// Rust model of `RBX::Backpack` (IDA `0x3b16ac`): same opaque shape.
@@ -2848,6 +2850,16 @@ pub struct PVRefType {
 /// Once-init singleton storage (IDA `0x395078`-`0x3950be` guard + init
 /// collapse into the const initializer).
 static PV_REF_TYPE: PVRefType = PVRefType { _opaque: () };
+/// Rust model of `RBX::Reflection::RefPropDescriptor<PartAdornment,
+/// PartInstance>` (IDA `0x395fd0` family): the conditionally-deleted heap
+/// payload plus attribute flags. Twin of `PVRefPropDescriptor`; the C2/D1/D0
+/// land with the descriptor-construction batch.
+#[derive(Default)]
+pub struct PartRefPropDescriptor {
+    pub owned: Option<Box<PVRefExtra>>,
+    pub read_only: bool,
+    pub write_only: bool,
+}
 
 /// Rust model of `RBX::Stats::TypedStatsItem<unsigned>` (IDA `0x37dbf4`): the
 /// stored value; only the deleter-query pair exists in this file.
@@ -9306,168 +9318,349 @@ pub fn stub_0x395154(this: *const PVRefPropDescriptor) -> bool {
 // 0x395164 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x395164() -> ! {
-    todo!("0x395164 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x395164(
+    desc: *const PVRefPropDescriptor,
+    a: *const PVAdornment,
+    b: *const PVAdornment,
+) -> bool {
+    // IDA 0x395164: the `+44` getter (disasm 0x39516a-0x395174) applied to
+    // both sides (disasm 0x395176-0x39518a), raw pointer compare.
+    stub_0x395488(desc, a) == stub_0x395488(desc, b)
 }
 
 // 0x39518c — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const
-pub fn stub_0x39518c() -> ! {
-    todo!("0x39518c RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x39518c(desc: *const PVRefPropDescriptor, obj: *const PVAdornment) -> SharedPtr<PVInstance> {
+    // IDA 0x39518c: `+44` getter (decomp 0x3951b0), `shared_from<PVInstance>`
+    // (0x3951b8), `+36` DescribedBase adjust (0x3951d0), then the Variant
+    // type-singleton + value store (0x395216-0x395222). The Variant store
+    // belongs to the reflection Variant domain; the modeled half is getter +
+    // retain, and the `+36` adjust collapses under the typed model. A null
+    // adornee has no weak owner to lock; the original faults in `shared_from`,
+    // mapped to the `bad_weak_ptr` panic like 0x39410c.
+    let raw = stub_0x395488(desc, obj);
+    if raw.is_null() {
+        panic!("0x39518c getVariant<PVAdornment>: bad_weak_ptr");
+    }
+    stub_0x39410c(raw)
 }
 
 // 0x3952a4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const
-pub fn stub_0x3952a4() -> ! {
-    todo!("0x3952a4 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x3952a4(
+    desc: *const PVRefPropDescriptor,
+    obj: *mut PVAdornment,
+    value: Option<SharedPtr<PVInstance>>,
+) {
+    // IDA 0x3952a4: `Variant::get<shared_ptr<DescribedBase>>` (decomp 0x3952c8)
+    // — which may yield a null handle — then vtable `+64` `setRefValue`
+    // (0x395306, released 0x39530a-0x395312). The unbox collapses into the
+    // typed arg; moving `value` in is the retain, drop at return the release.
+    let raw = value.as_ref().map_or(core::ptr::null(), SharedPtr::as_ptr);
+    stub_0x39549c(desc, obj, raw);
 }
 
 // 0x39536c — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const
-pub fn stub_0x39536c() -> ! {
-    todo!("0x39536c RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x39536c(
+    desc: *const PVRefPropDescriptor,
+    src: *const PVAdornment,
+    dst: *mut PVAdornment,
+) {
+    // IDA 0x39536c: getter spill to `v6` (decomp 0x39537e) then the `+12`
+    // setter (0x39538e); the spill retains across the call.
+    let current = stub_0x395488(desc, src);
+    stub_0x39549c(desc, dst, current);
 }
 
 // 0x395390 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const
-pub fn stub_0x395390() -> ! {
-    todo!("0x395390 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x395390(
+    desc: *const PVRefPropDescriptor,
+    obj: *const PVAdornment,
+) -> Option<SharedPtr<PVInstance>> {
+    // IDA 0x395390: getter (decomp 0x3953b4), `+36` adjust with an explicit
+    // null path (0x3953bc-0x3953be), `InstanceHandle` from the retained lock
+    // (0x3953c2), `XmlNameValuePair::setValue` at `a3 + 12` (0x3953fa). The
+    // XML element store is out of domain; the modeled half is getter + lock,
+    // returned for the XML batch — `None` is the null-handle path.
+    let raw = stub_0x395488(desc, obj);
+    if raw.is_null() {
+        return None;
+    }
+    Some(stub_0x39410c(raw))
 }
 
 // 0x395464 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const
-pub fn stub_0x395464() -> ! {
-    todo!("0x395464 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x395464(
+    desc: *const PVRefPropDescriptor,
+    obj: *mut PVAdornment,
+    resolved: Option<SharedPtr<PVInstance>>,
+) {
+    // IDA 0x395464: null element passes null (decomp 0x395470-0x395472), else
+    // `+12` to the value pair, then `IReferenceBinder` vtable `+4` resolve
+    // with the `desc + 40` member pointer. The binder domain is unmodeled; the
+    // modeled half is the resolved-handle store through the member setter.
+    let raw = resolved.as_ref().map_or(core::ptr::null(), SharedPtr::as_ptr);
+    stub_0x395518(desc, obj, raw);
 }
 
 // 0x395488 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11getRefValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x395488() -> ! {
-    todo!("0x395488 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x395488(_desc: *const PVRefPropDescriptor, obj: *const PVAdornment) -> *const PVInstance {
+    // IDA 0x395488: `+44` getter dispatch (disasm 0x39548a-0x395492), then
+    // null ? null : `+36` DescribedBase adjust (disasm 0x395494-0x395498
+    // `CMP`/`ADDNE`). The getter is the adornee field and the `+36` adjust
+    // collapses under the typed model; a null adornee is the null path.
+    // SAFETY: `obj` must point to a valid `PVAdornment`.
+    unsafe { (*obj).adornee }
 }
 
 // 0x39549c — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11setRefValueEPNS0_13DescribedBaseES6_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const
-pub fn stub_0x39549c() -> ! {
-    todo!("0x39549c RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_0x39549c(
+    _desc: *const PVRefPropDescriptor,
+    obj: *mut PVAdornment,
+    value: *const PVInstance,
+) {
+    // IDA 0x39549c: null passes through (decomp 0x3954a6-0x3954a8); non-null
+    // goes through `__dynamic_cast` DescribedBase -> PVInstance (0x3954ca)
+    // with a `bad_cast` throw on failure (0x3954e4-0x395512), then the `+12`
+    // setter (0x3954e0). Model space is already typed, so the cast cannot
+    // fail; the store is `setAdornee` (0x393dd0). `obj` must point to a valid
+    // `PVAdornment`; `value` must be null or live for the handle's lifetime.
+    stub_0x393dd0(obj, value);
 }
 
 // 0x395518 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const
-pub fn stub_0x395518() -> ! {
-    todo!("0x395518 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_0x395518(
+    _desc: *const PVRefPropDescriptor,
+    obj: *mut PVAdornment,
+    value: *const PVInstance,
+) {
+    // IDA 0x395518: raw `-36` DescribedBase strip, no cast check (decomp
+    // 0x39551e-0x395524), then the same `+12` setter (0x395536). Checked vs
+    // unchecked collapses in typed model space; same `setAdornee` store with
+    // the same pointer contract as 0x39549c.
+    stub_0x393dd0(obj, value);
 }
 
 // 0x395538 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
-pub fn stub_0x395538() -> ! {
-    todo!("0x395538 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x395538(
+    desc: *const PVRefPropDescriptor,
+    obj: *mut PVAdornment,
+    value: Option<SharedPtr<PVInstance>>,
+) {
+    // IDA 0x395538: `shared_count` copy (decomp 0x395566, released
+    // 0x3955b6-0x3955be), `pi - 36` DescribedBase strip (0x39559c-0x39559e),
+    // then the `+12` setter (0x3955b2). Moving `value` in is the count copy;
+    // the strip collapses, and the no-cast shape routes to the unsafe setter.
+    let raw = value.as_ref().map_or(core::ptr::null(), SharedPtr::as_ptr);
+    stub_0x395518(desc, obj, raw);
 }
 // 0x395cd4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const
-pub fn stub_0x395cd4() -> ! {
-    todo!("0x395cd4 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x395cd4(_desc: *const PartRefPropDescriptor, obj: *const PartAdornment) -> SharedPtr<PartInstance> {
+    // IDA 0x395cd4: `+44` getter (decomp 0x395cf8), `shared_from<PartInstance>`
+    // (0x395d00), `+36` adjust (0x395d18), Variant type-singleton + value
+    // store (0x395d5e-0x395d6a) — byte-identical shape to 0x39518c. The
+    // Variant store belongs to the reflection Variant domain; the modeled
+    // half is the `+132` weak lock + retain. An empty/expired lock faults the
+    // original in `shared_from`, mapped to `bad_weak_ptr` here.
+    // SAFETY: `obj` must point to a valid `PartAdornment`.
+    unsafe {
+        match (*obj).adornee.upgrade() {
+            Some(owned) => owned,
+            None => panic!("0x395cd4 getVariant<PartAdornment>: bad_weak_ptr"),
+        }
+    }
 }
 
 // 0x395dec — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const
-pub fn stub_0x395dec() -> ! {
-    todo!("0x395dec RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x395dec(
+    desc: *const PartRefPropDescriptor,
+    obj: *mut PartAdornment,
+    value: Option<SharedPtr<PartInstance>>,
+) {
+    // IDA 0x395dec: `Variant::get<shared_ptr<DescribedBase>>` (0x395e10) then
+    // vtable `+64` `setRefValue` (0x395e4e, released 0x395e52-0x395e5a) —
+    // same shape as 0x3952a4. The unbox collapses into the typed arg.
+    stub_0x395fe4(desc, obj, value);
 }
 
 // 0x395eb4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const
-pub fn stub_0x395eb4() -> ! {
-    todo!("0x395eb4 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x395eb4(
+    desc: *const PartRefPropDescriptor,
+    src: *const PartAdornment,
+    dst: *mut PartAdornment,
+) {
+    // IDA 0x395eb4: getter spill (0x395ec6) then `+12` setter (0x395ed6) —
+    // same shape as 0x39536c. The spill retain is the `Option` move.
+    let current = stub_0x395fd0(desc, src);
+    stub_0x395fe4(desc, dst, current);
 }
 
 // 0x395ed8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const
-pub fn stub_0x395ed8() -> ! {
-    todo!("0x395ed8 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x395ed8(
+    desc: *const PartRefPropDescriptor,
+    obj: *const PartAdornment,
+) -> Option<SharedPtr<PartInstance>> {
+    // IDA 0x395ed8: getter (0x395efc), `+36` with explicit null path
+    // (0x395f04-0x395f06), `InstanceHandle` (0x395f0a),
+    // `XmlNameValuePair::setValue` at `a3 + 12` (0x395f42) — same shape as
+    // 0x395390. The XML store is out of domain; `None` is the null-handle path.
+    stub_0x395fd0(desc, obj)
 }
 
 // 0x395fac — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const
-pub fn stub_0x395fac() -> ! {
-    todo!("0x395fac RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x395fac(
+    desc: *const PartRefPropDescriptor,
+    obj: *mut PartAdornment,
+    resolved: Option<SharedPtr<PartInstance>>,
+) {
+    // IDA 0x395fac: null element passes null (0x395fb8-0x395fba), else `+12`,
+    // then `IReferenceBinder` vtable `+4` with the `desc + 40` member pointer
+    // — same shape as 0x395464. The binder is unmodeled; the resolved-handle
+    // store goes through the member setter.
+    stub_0x396060(desc, obj, resolved);
 }
 
 // 0x395fd0 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11getRefValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x395fd0() -> ! {
-    todo!("0x395fd0 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x395fd0(_desc: *const PartRefPropDescriptor, obj: *const PartAdornment) -> Option<SharedPtr<PartInstance>> {
+    // IDA 0x395fd0: the `+44` getter dispatch (decomp 0x395fda) is
+    // `GetSetImpl::getValue` (0x396170); null stays null (0x395fde-0x395fe0,
+    // disasm `CMP`/`ADDNE`) and the `+36` DescribedBase adjust collapses —
+    // `None` is the null path, `Some` the retained `+132` weak lock.
+    stub_0x396170(obj)
 }
 
 // 0x395fe4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11setRefValueEPNS0_13DescribedBaseES6_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const
-pub fn stub_0x395fe4() -> ! {
-    todo!("0x395fe4 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_0x395fe4(
+    _desc: *const PartRefPropDescriptor,
+    obj: *mut PartAdornment,
+    value: Option<SharedPtr<PartInstance>>,
+) {
+    // IDA 0x395fe4: null passes (0x395fee-0x395ff0); non-null
+    // `__dynamic_cast` DescribedBase -> PartInstance (0x396012) with
+    // `bad_cast` throw (0x39602c-0x39605a), then the `+12` setter (0x396028).
+    // The typed `Option` collapses the cast; the store is the `+132` weak
+    // re-arm in `setAdornee` (0x393b34), including its null-clear panic.
+    // `obj` must point to a valid `PartAdornment`.
+    let raw = value.as_ref().map_or(core::ptr::null(), SharedPtr::as_ptr);
+    stub_0x393b34(obj, raw);
 }
 
 // 0x396060 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const
-pub fn stub_0x396060() -> ! {
-    todo!("0x396060 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_0x396060(
+    _desc: *const PartRefPropDescriptor,
+    obj: *mut PartAdornment,
+    value: Option<SharedPtr<PartInstance>>,
+) {
+    // IDA 0x396060: raw `-36` strip, no cast check (decomp 0x39606a-0x39606c),
+    // then the `+12` setter (0x39607e) — same shape as 0x395518. Checked vs
+    // unchecked collapses; same weak re-arm store with the same contract.
+    let raw = value.as_ref().map_or(core::ptr::null(), SharedPtr::as_ptr);
+    stub_0x393b34(obj, raw);
 }
 
 // 0x396080 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 // was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
-pub fn stub_0x396080() -> ! {
-    todo!("0x396080 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x396080(
+    desc: *const PartRefPropDescriptor,
+    obj: *mut PartAdornment,
+    value: Option<SharedPtr<PartInstance>>,
+) {
+    // IDA 0x396080: `shared_count` copy (decomp 0x3960ae, released
+    // 0x3960fe-0x396106), `pi - 36` strip (0x3960e4-0x3960e6), then the `+12`
+    // setter (0x3960fa) — same shape as 0x395538. Moving `value` in is the
+    // count copy; the strip collapses and it routes to the unsafe setter.
+    stub_0x396060(desc, obj, value);
 }
 
 // 0x396160 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 // was: non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
-pub fn stub_0x396160() -> ! {
-    todo!("0x396160 non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x396160(
+    desc: *const PartRefPropDescriptor,
+    obj: *mut PartAdornment,
+    value: Option<SharedPtr<PartInstance>>,
+) {
+    // IDA 0x396160: `Thn40` — `this -= 40` (disasm `SUBS R0, #0x28`) then
+    // tail-calls `assignIDREF` (disasm `B.W`, decomp `a1 - 40`); the base
+    // offset collapses under single inheritance.
+    stub_0x396080(desc, obj, value)
 }
 
 // 0x396168 — __ZNK3RBX10Reflection14PropDescriptorINS_13PartAdornmentEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::isReadOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::isReadOnly(void)const
-pub fn stub_0x396168() -> ! {
-    todo!("0x396168 RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::isReadOnly(void)const")
+pub fn stub_0x396168() -> bool {
+    // IDA 0x396168: `GetSetImpl::isReadOnly` returns `0` (`MOVS R0, #0; BX
+    // LR`, verified disasm) — twin of 0x395620.
+    false
 }
 
 // 0x39616c — __ZNK3RBX10Reflection14PropDescriptorINS_13PartAdornmentEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::isWriteOnly(void)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::isWriteOnly(void)const
-pub fn stub_0x39616c() -> ! {
-    todo!("0x39616c RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::isWriteOnly(void)const")
+pub fn stub_0x39616c() -> bool {
+    // IDA 0x39616c: `GetSetImpl::isWriteOnly` returns `0` (decomp) — twin of
+    // 0x395624.
+    false
 }
 
 // 0x396170 — __ZNK3RBX10Reflection14PropDescriptorINS_13PartAdornmentEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x396170() -> ! {
-    todo!("0x396170 RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x396170(obj: *const PartAdornment) -> Option<SharedPtr<PartInstance>> {
+    // IDA 0x396170: `-36` DescribedBase strip (decomp 0x396174-0x396176),
+    // member-getter fetch at `+4`/`+8` with the virtual encoding (decomp
+    // 0x39617a-0x39618a), tail-call (decomp 0x39618c). The member encoding and
+    // the strip collapse; the getter is the `+132` weak lock, `None` when
+    // empty/expired.
+    // SAFETY: `obj` must point to a valid `PartAdornment`.
+    unsafe { (*obj).adornee.upgrade() }
 }
 
 // 0x396190 — __ZNK3RBX10Reflection14PropDescriptorINS_13PartAdornmentEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PartInstance * const&)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PartInstance * const&)const
-pub fn stub_0x396190() -> ! {
-    todo!("0x396190 RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PartInstance * const&)const")
+pub fn stub_0x396190(obj: *mut PartAdornment, value: Option<SharedPtr<PartInstance>>) {
+    // IDA 0x396190: `-36` strip (decomp 0x396196-0x396198), member-setter
+    // fetch at `+12`/`+16` (decomp 0x39619c-0x3961a4) with the virtual
+    // encoding (decomp 0x3961a8-0x3961ac). The member is `setAdornee`
+    // (0x393b34); encoding + strip collapse, including the null-clear panic.
+    // `obj` must point to a valid `PartAdornment`.
+    let raw = value.as_ref().map_or(core::ptr::null(), SharedPtr::as_ptr);
+    stub_0x393b34(obj, raw);
 }
 
 // 0x3961b4 — __ZN5boost10shared_ptrIN3RBX10PVInstanceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
@@ -11075,8 +11268,14 @@ pub fn stub_0x3d09e4() -> ! {
 // 0x395618 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 // was: non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
-pub fn stub_0x395618() -> ! {
-    todo!("0x395618 non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x395618(
+    desc: *const PVRefPropDescriptor,
+    obj: *mut PVAdornment,
+    value: Option<SharedPtr<PVInstance>>,
+) {
+    // IDA 0x395618: `Thn40` — `this -= 40` (disasm `SUBS R0, #0x28`) then
+    // tail-calls `assignIDREF` 0x395538 (disasm `B.W`, decomp `a1 - 40`).
+    stub_0x395538(desc, obj, value)
 }
 
 // 0x395620 — __ZNK3RBX10Reflection14PropDescriptorINS_11PVAdornmentEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -11100,29 +11299,47 @@ pub fn stub_0x395624() -> bool {
 // 0x395628 — __ZNK3RBX10Reflection14PropDescriptorINS_11PVAdornmentEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const
-pub fn stub_0x395628() -> ! {
-    todo!("0x395628 RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x395628(obj: *const PVAdornment) -> *const PVInstance {
+    // IDA 0x395628: `-36` strip (disasm 0x39562a-0x39562e `CMP`/`SUBNE.W R2,
+    // R1, #0x24`), member-getter fetch at `+4`/`+8` (disasm 0x395632-0x39563a)
+    // with the virtual encoding (disasm 0x39563e-0x395642), tail-call (disasm
+    // 0x395644 `BX R1`). The member encoding and the strip collapse; the
+    // getter is the adornee field.
+    // SAFETY: `obj` must point to a valid `PVAdornment`.
+    unsafe { (*obj).adornee }
 }
 
 // 0x395648 — __ZNK3RBX10Reflection14PropDescriptorINS_11PVAdornmentEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PVInstance * const&)const")]
 // was: RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PVInstance * const&)const
-pub fn stub_0x395648() -> ! {
-    todo!("0x395648 RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PVInstance * const&)const")
+pub fn stub_0x395648(obj: *mut PVAdornment, value: *const PVInstance) {
+    // IDA 0x395648: `-36` strip (disasm 0x39564c-0x395650), member-setter
+    // fetch at `+12`/`+16` (disasm 0x395654-0x39565c) with the virtual
+    // encoding (disasm 0x395660-0x395664), tail-call (disasm 0x395666-0x395668
+    // `BX R3`). The member is `setAdornee` (0x393dd0); encoding + strip
+    // collapse. `obj` must be valid; `value` null or live for the handle.
+    stub_0x393dd0(obj, value);
 }
 
 // 0x39566c — __ZN3RBX10Reflection7RefTypeIPNS_10PVInstanceEED1Ev
 #[doc(alias = "RBX::Reflection::RefType<RBX::PVInstance *>::~RefType()")]
 // was: RBX::Reflection::RefType<RBX::PVInstance *>::~RefType()
-pub fn stub_0x39566c() -> ! {
-    todo!("0x39566c RBX::Reflection::RefType<RBX::PVInstance *>::~RefType()")
+pub fn stub_0x39566c() {
+    // IDA 0x39566c: empty D1 (`BX LR`, verified disasm) — no members to drop;
+    // the vtable reset is compiler-managed.
 }
 
 // 0x395670 — __ZN3RBX10Reflection4TypeC2IPNS_10PVInstanceEEEPKcS6_PT_
 #[doc(alias = "RBX::Reflection::Type::Type<RBX::PVInstance *>(char const*,char const*,RBX::PVInstance * *)")]
 // was: RBX::Reflection::Type::Type<RBX::PVInstance *>(char const*,char const*,RBX::PVInstance * *)
-pub fn stub_0x395670() -> ! {
-    todo!("0x395670 RBX::Reflection::Type::Type<RBX::PVInstance *>(char const*,char const*,RBX::PVInstance * *)")
+pub fn stub_0x395670(_this: *mut PVRefType) {
+    // IDA 0x395670: `Type<PVInstance*>` C2 — `Descriptor` base init (decomp
+    // 0x395686, disasm `BLX DescriptorC2`), vtable + `typeinfo<PVInstance*>`
+    // install (decomp 0x3956a6-0x3956a8), `Name::declare` tag (decomp
+    // 0x3956b0-0x3956ba) with the null-tag `ReleaseAssert` (decomp
+    // 0x3956be-0x3956f4), `addToAllTypes` registry insert (decomp 0x39570c).
+    // All four land with the reflection Descriptor/Name/registry domains;
+    // `PVRefType` models only the singleton identity (cf. 0x39501c).
 }
 
 // 0x39571c — __ZN3RBX10Reflection7RefTypeIPNS_10PVInstanceEED0Ev
@@ -42202,8 +42419,35 @@ pub fn stub_0x392738() -> ! {
 // 0x393b34 — __ZN3RBX13PartAdornment10setAdorneeEPNS_12PartInstanceE
 #[doc(alias = "RBX::PartAdornment::setAdornee(RBX::PartInstance *)")]
 // was: RBX::PartAdornment::setAdornee(RBX::PartInstance *)
-pub fn stub_0x393b34() -> ! {
-    todo!("0x393b34 RBX::PartAdornment::setAdornee(RBX::PartInstance *)")
+pub fn stub_0x393b34(this: *mut PartAdornment, adornee: *const PartInstance) {
+    // IDA 0x393b34: current adornee locked from the `+132` weak via the
+    // nothrow `shared_ptr(weak)` ctor (decomp 0x393b5a, disasm
+    // `ADD.W R1, R6, #0x84`); on change (`v12 != a2`, decomp 0x393b9e),
+    // `shared_from<PartInstance>` on the incoming link (0x393bac) re-arms the
+    // weak (`px` 0x393bb2, `pi` 0x393bc2) and `raisePropertyChanged` fires
+    // (0x393bea). The change signal belongs to the Instance domain; the
+    // modeled half is the compare + weak re-arm.
+    // BUG: clearing a live adornee to null runs `shared_from(null)` in the
+    // original (null weak-owner read at 0x393bac); model space panics with
+    // the `bad_weak_ptr` mapping instead of faulting.
+    // SAFETY: `this` must point to a valid `PartAdornment`; `adornee` must be
+    // null or point into a live `SharedPtr<PartInstance>` for the weak's life.
+    unsafe {
+        let current = (*this).adornee.upgrade();
+        let same = match &current {
+            Some(owned) => SharedPtr::as_ptr(owned) == adornee,
+            None => adornee.is_null(),
+        };
+        if !same {
+            if adornee.is_null() {
+                panic!("0x393b34 setAdornee: bad_weak_ptr");
+            }
+            if (*adornee).weak_owner.upgrade().is_none() {
+                panic!("0x393b34 setAdornee: bad_weak_ptr");
+            }
+            (*this).adornee = (*adornee).weak_owner.clone();
+        }
+    }
 }
 
 // 0x394090 — __ZN3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEED1Ev
