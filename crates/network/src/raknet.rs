@@ -4332,64 +4332,74 @@ pub fn stub_a7a700(port: u16, host: &str) -> bool {
  crate::socket::is_port_in_use(port, host)
 }
 
-// 0xa7a788 — __ZN6RakNet11SocketLayer16SetDoNotFragmentEiii
+// 0xa7a788 - __ZN6RakNet11SocketLayer16SetDoNotFragmentEiii
 #[doc(alias = "RakNet::SocketLayer::SetDoNotFragment(int,int,int)")]
-pub fn stub_a7a788() -> ! {
-    todo!("0xa7a788 RakNet::SocketLayer::SetDoNotFragment(int,int,int)")
+pub fn stub_a7a788() {
+ // IDA 0xa7a788: setsockopt has no std equivalent.
+ crate::socket::set_do_not_fragment();
 }
 
-// 0xa7a78c — __ZN6RakNet11SocketLayer21CreateBoundSocket_OldEtbPKcjj
+// 0xa7a78c - __ZN6RakNet11SocketLayer21CreateBoundSocket_OldEtbPKcjj
 #[doc(alias = "RakNet::SocketLayer::CreateBoundSocket_Old(unsigned short,bool,char const*,unsigned int,unsigned int)")]
-pub fn stub_a7a78c() -> ! {
-    todo!("0xa7a78c RakNet::SocketLayer::CreateBoundSocket_Old(unsigned short,bool,char const*,unsigned int,unsigned int)")
+pub fn stub_a7a78c(port: u16, blocking: bool, host: &str) -> std::io::Result<std::net::UdpSocket> {
+ // IDA 0xa7a78c: old spelling shares the bind path.
+ crate::socket::create_bound_socket_old(port, blocking, host)
 }
 
-// 0xa7a898 — __ZN6RakNet11SocketLayer17CreateBoundSocketEtbPKcjjt
+// 0xa7a898 - __ZN6RakNet11SocketLayer17CreateBoundSocketEtbPKcjjt
 #[doc(alias = "RakNet::SocketLayer::CreateBoundSocket(unsigned short,bool,char const*,unsigned int,unsigned int,unsigned short)")]
-pub fn stub_a7a898() -> ! {
-    todo!("0xa7a898 RakNet::SocketLayer::CreateBoundSocket(unsigned short,bool,char const*,unsigned int,unsigned int,unsigned short)")
+pub fn stub_a7a898(port: u16, blocking: bool, host: &str) -> std::io::Result<std::net::UdpSocket> {
+ // IDA 0xa7a898: bind + blocking flag.
+ crate::socket::create_bound_socket(port, blocking, host)
 }
 
-// 0xa7a8ac — __ZN6RakNet11SocketLayer14DomainNameToIPEPKc
+// 0xa7a8ac - __ZN6RakNet11SocketLayer14DomainNameToIPEPKc
 #[doc(alias = "RakNet::SocketLayer::DomainNameToIP(char const*)")]
-pub fn stub_a7a8ac() -> ! {
-    todo!("0xa7a8ac RakNet::SocketLayer::DomainNameToIP(char const*)")
+pub fn stub_a7a8ac(host: &str) -> Option<String> {
+ // IDA 0xa7a8ac: first resolved IP string.
+ crate::socket::domain_name_to_ip(host)
 }
 
-// 0xa7a8d0 — __ZN6RakNet11SocketLayer16RecvFromBlockingEiPNS_7RakPeerEtjPcPiPNS_13SystemAddressEPy
+// 0xa7a8d0 - __ZN6RakNet11SocketLayer16RecvFromBlockingEiPNS_7RakPeerEtjPcPiPNS_13SystemAddressEPy
 #[doc(alias = "RakNet::SocketLayer::RecvFromBlocking(int,RakNet::RakPeer *,unsigned short,unsigned int,char *,int *,RakNet::SystemAddress *,unsigned long long *)")]
-pub fn stub_a7a8d0() -> ! {
-    todo!("0xa7a8d0 RakNet::SocketLayer::RecvFromBlocking(int,RakNet::RakPeer *,unsigned short,unsigned int,char *,int *,RakNet::SystemAddress *,unsigned long long *)")
+pub fn stub_a7a8d0(socket: &std::net::UdpSocket, buf: &mut [u8], timeout_ms: u32) -> Option<(usize, std::net::SocketAddr)> {
+ // IDA 0xa7a8d0: timed datagram receive.
+ crate::socket::recv_from_blocking(socket, buf, timeout_ms)
 }
 
-// 0xa7a944 — __ZN6RakNet11SocketLayer6SendToEiPKciRNS_13SystemAddressEtjS2_l
+// 0xa7a944 - __ZN6RakNet11SocketLayer6SendToEiPKciRNS_13SystemAddressEtjS2_l
 #[doc(alias = "RakNet::SocketLayer::SendTo(int,char const*,int,RakNet::SystemAddress &,unsigned short,unsigned int,char const*,long)")]
-pub fn stub_a7a944() -> ! {
-    todo!("0xa7a944 RakNet::SocketLayer::SendTo(int,char const*,int,RakNet::SystemAddress &,unsigned short,unsigned int,char const*,long)")
+pub fn stub_a7a944(socket: &std::net::UdpSocket, data: &[u8], addr: std::net::SocketAddr) -> usize {
+ // IDA 0xa7a944: datagram send.
+ crate::socket::send_to(socket, data, addr)
 }
 
-// 0xa7a9ec — __ZN6RakNet11SocketLayer9SendToTTLEiPKciRNS_13SystemAddressEi
+// 0xa7a9ec - __ZN6RakNet11SocketLayer9SendToTTLEiPKciRNS_13SystemAddressEi
 #[doc(alias = "RakNet::SocketLayer::SendToTTL(int,char const*,int,RakNet::SystemAddress &,int)")]
-pub fn stub_a7a9ec() -> ! {
-    todo!("0xa7a9ec RakNet::SocketLayer::SendToTTL(int,char const*,int,RakNet::SystemAddress &,int)")
+pub fn stub_a7a9ec(socket: &std::net::UdpSocket, data: &[u8], addr: std::net::SocketAddr, ttl: u32) -> usize {
+ // IDA 0xa7a9ec: TTL set + send.
+ crate::socket::send_to_ttl(socket, data, addr, ttl)
 }
 
-// 0xa7aae0 — __Z13GetMyIP_LinuxPN6RakNet13SystemAddressE
+// 0xa7aae0 - __Z13GetMyIP_LinuxPN6RakNet13SystemAddressE
 #[doc(alias = "GetMyIP_Linux(RakNet::SystemAddress *)")]
-pub fn stub_a7aae0() -> ! {
-    todo!("0xa7aae0 GetMyIP_Linux(RakNet::SystemAddress *)")
+pub fn stub_a7aae0() -> Option<std::net::IpAddr> {
+ // IDA 0xa7aae0: UDP-connect self lookup.
+ crate::socket::get_my_ip_linux()
 }
 
-// 0xa7abd8 — __ZN6RakNet11SocketLayer7GetMyIPEPNS_13SystemAddressE
+// 0xa7abd8 - __ZN6RakNet11SocketLayer7GetMyIPEPNS_13SystemAddressE
 #[doc(alias = "RakNet::SocketLayer::GetMyIP(RakNet::SystemAddress *)")]
-pub fn stub_a7abd8() -> ! {
-    todo!("0xa7abd8 RakNet::SocketLayer::GetMyIP(RakNet::SystemAddress *)")
+pub fn stub_a7abd8() -> Option<std::net::IpAddr> {
+ // IDA 0xa7abd8: outward-facing lookup.
+ crate::socket::get_my_ip()
 }
 
-// 0xa7abe4 — __ZN6RakNet11SocketLayer16GetSystemAddressEiPNS_13SystemAddressE
+// 0xa7abe4 - __ZN6RakNet11SocketLayer16GetSystemAddressEiPNS_13SystemAddressE
 #[doc(alias = "RakNet::SocketLayer::GetSystemAddress(int,RakNet::SystemAddress *)")]
-pub fn stub_a7abe4() -> ! {
-    todo!("0xa7abe4 RakNet::SocketLayer::GetSystemAddress(int,RakNet::SystemAddress *)")
+pub fn stub_a7abe4(socket: &std::net::UdpSocket) -> Option<std::net::SocketAddr> {
+ // IDA 0xa7abe4: getsockname.
+ crate::socket::get_system_address(socket)
 }
 
 // 0xa7b268 — __ZN6RakNet16StringCompressor12AddReferenceEv

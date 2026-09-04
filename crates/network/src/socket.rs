@@ -1948,3 +1948,138 @@ mod port_tests {
         assert!(!is_port_in_use(port, "127.0.0.1"));
     }
 }
+
+#[cfg(test)]
+mod socket_layer_tests {
+    use super::*;
+
+    #[test]
+    fn bind_send_recv_loopback() {
+        // IDA 0xa7a898/0xa7a944/0xa7a8d0: bound pair exchanges a datagram.
+        let rx = create_bound_socket(0, true, "127.0.0.1").expect("bind rx");
+        let tx = create_bound_socket_old(0, true, "127.0.0.1").expect("bind tx");
+        let addr = get_system_address(&rx).expect("local addr");
+        assert_eq!(send_to(&tx, b"ping", addr), 4);
+        let mut buf = [0u8; 8];
+        let (len, from) = recv_from_blocking(&rx, &mut buf, 2000).expect("recv");
+        assert_eq!((len, &buf[..len]), (4, b"ping".as_slice()));
+        assert_eq!(from.port(), get_system_address(&tx).expect("tx addr").port());
+        // IDA 0xa7a9ec: TTL send reaches the same socket.
+        assert_eq!(send_to_ttl(&tx, b"q", addr, 64), 1);
+        let (len, _) = recv_from_blocking(&rx, &mut buf, 2000).expect("recv ttl");
+        assert_eq!(len, 1);
+    }
+
+    #[test]
+    fn resolve_and_self_lookup() {
+        // IDA 0xa7a8ac: localhost resolves to loopback.
+        let ip = domain_name_to_ip("localhost").expect("resolve");
+        let ip: std::net::IpAddr = ip.parse().expect("ip string");
+        assert!(ip.is_loopback());
+        assert!(domain_name_to_ip("nonexistent.invalid.xyz").is_none());
+        // IDA 0xa7aae0/0xa7abd8: self lookup yields some interface address.
+        assert!(get_my_ip_linux().is_some());
+        assert!(get_my_ip().is_some());
+        // IDA 0xa7a788: fragment-flag stub runs.
+        set_do_not_fragment();
+    }
+}
+
+/// `RakNet::SocketLayer::SetDoNotFragment` (IDA 0xa7a788): sets
+/// `IP_MTU_DISCOVER`/`IP_DONTFRAG` on a raw fd via `setsockopt`, which has
+/// no `std` equivalent; no-op Rust-side.
+pub fn set_do_not_fragment() {}
+
+/// `RakNet::SocketLayer::CreateBoundSocket_Old` (IDA 0xa7a78c): bind a
+/// datagram socket to `host:port`, honouring the blocking flag.
+pub fn create_bound_socket_old(
+    port: u16,
+    blocking: bool,
+    host: &str,
+) -> std::io::Result<std::net::UdpSocket> {
+    // IDA 0xa7a78c: the old spelling shares the bind path; socket options
+    // stay engine-side.
+    create_bound_socket(port, blocking, host)
+}
+
+/// `RakNet::SocketLayer::CreateBoundSocket` (IDA 0xa7a898): bind a
+/// datagram socket to `host:port`, honouring the blocking flag.
+pub fn create_bound_socket(
+    port: u16,
+    blocking: bool,
+    host: &str,
+) -> std::io::Result<std::net::UdpSocket> {
+    let socket = std::net::UdpSocket::bind((host, port))?;
+    socket.set_nonblocking(!blocking)?;
+    Ok(socket)
+}
+
+/// `RakNet::SocketLayer::DomainNameToIP` (IDA 0xa7a8ac): resolve a host to
+/// its first IP string (the original returns a static buffer).
+#[must_use]
+pub fn domain_name_to_ip(host: &str) -> Option<String> {
+    use std::net::ToSocketAddrs;
+    (host, 0).to_socket_addrs().ok()?.next().map(|addr| addr.ip().to_string())
+}
+
+/// `RakNet::SocketLayer::RecvFromBlocking` (IDA 0xa7a8d0): datagram receive
+/// with a read-timeout budget; `None` on timeout or error.
+#[must_use]
+pub fn recv_from_blocking(
+    socket: &std::net::UdpSocket,
+    buf: &mut [u8],
+    timeout_ms: u32,
+) -> Option<(usize, std::net::SocketAddr)> {
+    use std::time::Duration;
+    socket.set_read_timeout(Some(Duration::from_millis(u64::from(timeout_ms)))).ok()?;
+    socket.recv_from(buf).ok()
+}
+
+/// `RakNet::SocketLayer::SendTo` (IDA 0xa7a944): datagram send; sent bytes
+/// (`0` on error, where the original returns the `sendto` result).
+#[must_use]
+pub fn send_to(
+    socket: &std::net::UdpSocket,
+    data: &[u8],
+    addr: std::net::SocketAddr,
+) -> usize {
+    socket.send_to(data, addr).unwrap_or(0)
+}
+
+/// `RakNet::SocketLayer::SendToTTL` (IDA 0xa7a9ec): set the unicast TTL,
+/// then send; sent bytes (`0` on error).
+#[must_use]
+pub fn send_to_ttl(
+    socket: &std::net::UdpSocket,
+    data: &[u8],
+    addr: std::net::SocketAddr,
+    ttl: u32,
+) -> usize {
+    if socket.set_ttl(ttl).is_err() {
+        return 0;
+    }
+    socket.send_to(data, addr).unwrap_or(0)
+}
+
+/// `GetMyIP_Linux` (IDA 0xa7aae0): outward-facing IP via the UDP-connect
+/// trick (no packets sent), portable beyond Linux despite the name.
+#[must_use]
+pub fn get_my_ip_linux() -> Option<std::net::IpAddr> {
+    let socket = std::net::UdpSocket::bind(("0.0.0.0", 0)).ok()?;
+    socket.connect("8.8.8.8:80").ok()?;
+    socket.local_addr().ok().map(|addr| addr.ip())
+}
+
+/// `RakNet::SocketLayer::GetMyIP` (IDA 0xa7abd8): same outward-facing
+/// lookup as [`get_my_ip_linux`].
+#[must_use]
+pub fn get_my_ip() -> Option<std::net::IpAddr> {
+    get_my_ip_linux()
+}
+
+/// `RakNet::SocketLayer::GetSystemAddress` (IDA 0xa7abe4): bound local
+/// address of a socket (`getsockname`).
+#[must_use]
+pub fn get_system_address(socket: &std::net::UdpSocket) -> Option<std::net::SocketAddr> {
+    socket.local_addr().ok()
+}
