@@ -457,6 +457,12 @@ pub struct GenericSlotWrapper {
     /// `PlayerChatted` `fireEvent` fan-out (IDA `0xa4a600`). Native stand-in
     /// for the Lua frame until the script bridge exists.
     pub on_player_chat: Option<fn(u32, &SharedPtr<Instance>, &str, &SharedPtr<Instance>)>,
+    /// `Player` 2-arg `(Instance, FriendStatus)` handler behind
+    /// `GenericSlotWrapper::execute2` (IDA `0xab6724`) and the
+    /// `FriendStatusChanged` `fireEvent` fan-out (IDA `0xab5b48`). The status
+    /// crosses as the raw tag word (`FriendStatus.0`); native stand-in for
+    /// the Lua frame until the script bridge exists.
+    pub on_friend: Option<fn(&SharedPtr<Instance>, u32)>,
 }
 /// Rust model of `RBX::Reflection::PropertyDescriptor` (IDA `0x706742`): only
 /// pointer identity / name cross the `fireEvent` boundary here.
@@ -477,6 +483,10 @@ pub enum Variant {
     ChatType(u32),
     Int(i32),
     Null,
+    /// `FriendStatus` tag word behind the `Player` 2-arg
+    /// `(shared_ptr<Instance>, FriendStatus)` event (IDA `0xab5b48`); the
+    /// enumerant values are unmodeled, as in `ChatType`.
+    Friend(u32),
 }
 /// Rust model of `RBX::Instance::SaveFilter` (IDA `0x703748` discriminants:
 /// `1` takes the service-exclusion chain, `0` the workspace chain, any other
