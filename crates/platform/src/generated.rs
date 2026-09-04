@@ -37,6 +37,10 @@ static GVC: std::sync::LazyLock<crate::view_controllers::GameViewController> =
     std::sync::LazyLock::new(crate::view_controllers::GameViewController::default);
 static DELEGATE: std::sync::LazyLock<crate::view_controllers::AppDelegate> =
     std::sync::LazyLock::new(crate::view_controllers::AppDelegate::default);
+static EAGL_SUPPORT: std::sync::LazyLock<crate::view_controllers::Eagl2Support> =
+    std::sync::LazyLock::new(crate::view_controllers::Eagl2Support::new);
+static EAGL_VC: std::sync::LazyLock<crate::view_controllers::Eagl2ViewController> =
+    std::sync::LazyLock::new(crate::view_controllers::Eagl2ViewController::default);
 use std::sync::atomic::{AtomicBool, AtomicI32, AtomicU32, Ordering};
 
 /// ControlView / ControlComponent harness backing the `stub_0x471c0..0x49e18`
@@ -3090,168 +3094,198 @@ pub fn stub_51f90() -> Option<crate::roblox_view::SharedPtr<crate::roblox_view::
 // 0xe844ec — __ZN4Ogre12EAGL2SupportC1Ev
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
 #[doc(alias = "Ogre::EAGL2Support::EAGL2Support(void)")]
-pub fn stub_e844ec() -> ! {
-    todo!("0xe844ec Ogre::EAGL2Support::EAGL2Support(void)")
+pub fn stub_e844ec() -> crate::view_controllers::Eagl2Support {
+    // delegate of crate::view_controllers::Eagl2Support (IDA 0xe844ec)
+    crate::view_controllers::Eagl2Support::new()
 }
 
 // 0xe8455c — __ZN4Ogre12EAGL2SupportD0Ev
 // type: void __fastcall(Ogre::EAGL2Support *__hidden this)
 #[doc(alias = "Ogre::EAGL2Support::~EAGL2Support()")]
-pub fn stub_e8455c() -> ! {
-    todo!("0xe8455c Ogre::EAGL2Support::~EAGL2Support()")
+pub fn stub_e8455c() {
+    // delegate of crate::view_controllers::Eagl2Support (IDA 0xe8455c)
+    // D0 runs D1 then `operator delete` (IDA 0xe8455c..0xe8456e); the shared
+    // harness stands in for the heap object, so only the D1 half is observable.
+    EAGL_SUPPORT.delete_d0();
 }
 
 // 0xe84570 — __ZN4Ogre12EAGL2SupportD1Ev
 // type: void __fastcall(Ogre::EAGL2Support *__hidden this)
 #[doc(alias = "Ogre::EAGL2Support::~EAGL2Support()")]
-pub fn stub_e84570() -> ! {
-    todo!("0xe84570 Ogre::EAGL2Support::~EAGL2Support()")
+pub fn stub_e84570() {
+    // delegate of crate::view_controllers::Eagl2Support (IDA 0xe84570)
+    EAGL_SUPPORT.destroy_d1();
 }
 
 // 0xe8457c — __ZN4Ogre12EAGL2Support9addConfigEv
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
 #[doc(alias = "Ogre::EAGL2Support::addConfig(void)")]
-pub fn stub_e8457c() -> ! {
-    todo!("0xe8457c Ogre::EAGL2Support::addConfig(void)")
+pub fn stub_e8457c() {
+    // delegate of crate::view_controllers::Eagl2Support (IDA 0xe8457c)
+    EAGL_SUPPORT.add_config();
 }
 
 // 0xe862b0 — __ZN4Ogre12EAGL2Support14validateConfigEv
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
 #[doc(alias = "Ogre::EAGL2Support::validateConfig(void)")]
-pub fn stub_e862b0() -> ! {
-    todo!("0xe862b0 Ogre::EAGL2Support::validateConfig(void)")
+pub fn stub_e862b0() -> String {
+    // delegate of crate::view_controllers::Eagl2Support (IDA 0xe862b0)
+    EAGL_SUPPORT.validate_config()
 }
 
 // 0xe862c8 — __ZN4Ogre12EAGL2Support14getDisplayNameEv
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
 #[doc(alias = "Ogre::EAGL2Support::getDisplayName(void)")]
-pub fn stub_e862c8() -> ! {
-    todo!("0xe862c8 Ogre::EAGL2Support::getDisplayName(void)")
+pub fn stub_e862c8() -> String {
+    // delegate of crate::view_controllers::Eagl2Support (IDA 0xe862c8)
+    EAGL_SUPPORT.get_display_name()
 }
 
 // 0xe862e4 — __ZN4Ogre12EAGL2Support12createWindowEbPNS_17GLES2RenderSystemERKSs
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this, bool, Ogre::GLES2RenderSystem *, const std::string *)
 #[doc(alias = "Ogre::EAGL2Support::createWindow(bool,Ogre::GLES2RenderSystem *,std::string const&)")]
-pub fn stub_e862e4() -> ! {
-    todo!("0xe862e4 Ogre::EAGL2Support::createWindow(bool,Ogre::GLES2RenderSystem *,std::string const&)")
+pub fn stub_e862e4(fullscreen: bool, name: &str) -> crate::view_controllers::Eagl2Window {
+    // delegate of crate::view_controllers::Eagl2Support (IDA 0xe862e4)
+    EAGL_SUPPORT.create_window(fullscreen, name)
 }
 
 // 0xe86aa0 — __ZN4Ogre12EAGL2Support9newWindowERKSsjjbPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, Ogre::NedPoolingImpl *, int, int, int, int)
 #[doc(alias = "Ogre::EAGL2Support::newWindow(std::string const&,unsigned int,unsigned int,bool,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
-pub fn stub_e86aa0() -> ! {
-    todo!("0xe86aa0 Ogre::EAGL2Support::newWindow(std::string const&,unsigned int,unsigned int,bool,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+pub fn stub_e86aa0(name: &str, width: u32, height: u32, fullscreen: bool) -> crate::view_controllers::Eagl2Window {
+    // delegate of crate::view_controllers::Eagl2Support (IDA 0xe86aa0)
+    EAGL_SUPPORT.new_window(name, width, height, fullscreen)
 }
 
 // 0xe86b80 — __ZNK4Ogre12EAGL2Support16createNewContextERPK14__CFDictionaryP11CAEAGLLayerP14EAGLSharegroup
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this, const __CFDictionary **, CAEAGLLayer *, EAGLSharegroup *)
 #[doc(alias = "Ogre::EAGL2Support::createNewContext(__CFDictionary const*&,CAEAGLLayer *,EAGLSharegroup *)const")]
-pub fn stub_e86b80() -> ! {
-    todo!("0xe86b80 Ogre::EAGL2Support::createNewContext(__CFDictionary const*&,CAEAGLLayer *,EAGLSharegroup *)const")
+pub fn stub_e86b80(layer: Option<crate::view_controllers::ObjCId>) -> Result<crate::view_controllers::ObjCId, String> {
+    // delegate of crate::view_controllers::Eagl2Support (IDA 0xe86b80)
+    // IDA throws `Ogre::RenderingAPIException("Fail to create new context")`
+    // for a nil layer; the canonical mapping is the `Err` arm.
+    EAGL_SUPPORT.create_new_context(layer)
 }
 
 // 0xe86d80 — __ZN4Ogre12EAGL2Support14getProcAddressERKSs
 #[doc(alias = "Ogre::EAGL2Support::getProcAddress(std::string const&)")]
-pub fn stub_e86d80() -> ! {
-    todo!("0xe86d80 Ogre::EAGL2Support::getProcAddress(std::string const&)")
+pub fn stub_e86d80(name: &str) -> Option<crate::view_controllers::ObjCId> {
+    // delegate of crate::view_controllers::Eagl2Support (IDA 0xe86d80)
+    EAGL_SUPPORT.get_proc_address(name)
 }
 
 // 0xe86d84 — __ZN4Ogre12EAGL2Support5startEv
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
 #[doc(alias = "Ogre::EAGL2Support::start(void)")]
-pub fn stub_e86d84() -> ! {
-    todo!("0xe86d84 Ogre::EAGL2Support::start(void)")
+pub fn stub_e86d84() {
+    // delegate of crate::view_controllers::Eagl2Support (IDA 0xe86d84)
+    EAGL_SUPPORT.start();
 }
 
 // 0xe86d88 — __ZN4Ogre12EAGL2Support4stopEv
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
 #[doc(alias = "Ogre::EAGL2Support::stop(void)")]
-pub fn stub_e86d88() -> ! {
-    todo!("0xe86d88 Ogre::EAGL2Support::stop(void)")
+pub fn stub_e86d88() {
+    // delegate of crate::view_controllers::Eagl2Support (IDA 0xe86d88)
+    EAGL_SUPPORT.stop();
 }
 
 // 0xe88194 — -[EAGL2ViewController init]
 // type: EAGL2ViewController *__cdecl(EAGL2ViewController *self, SEL)
 #[doc(alias = "-[EAGL2ViewController init]")]
-pub fn stub_e88194() -> ! {
-    todo!("0xe88194 -[EAGL2ViewController init]")
+pub fn stub_e88194() -> crate::view_controllers::Eagl2ViewController {
+    // delegate of crate::view_controllers::Eagl2ViewController (IDA 0xe88194)
+    crate::view_controllers::Eagl2ViewController::init()
 }
 
 // 0xe881c0 — -[EAGL2ViewController initWithNibName:bundle:]
 // type: EAGL2ViewController *__cdecl(EAGL2ViewController *self, SEL, id, id)
 #[doc(alias = "-[EAGL2ViewController initWithNibName:bundle:]")]
-pub fn stub_e881c0() -> ! {
-    todo!("0xe881c0 -[EAGL2ViewController initWithNibName:bundle:]")
+pub fn stub_e881c0(nib_name: Option<crate::view_controllers::ObjCId>, bundle: Option<crate::view_controllers::ObjCId>) -> crate::view_controllers::Eagl2ViewController {
+    // delegate of crate::view_controllers::Eagl2ViewController (IDA 0xe881c0)
+    crate::view_controllers::Eagl2ViewController::init_with_nib_name(nib_name, bundle)
 }
 
 // 0xe881f0 — -[EAGL2ViewController dealloc]
 // type: void __cdecl(EAGL2ViewController *self, SEL)
 #[doc(alias = "-[EAGL2ViewController dealloc]")]
-pub fn stub_e881f0() -> ! {
-    todo!("0xe881f0 -[EAGL2ViewController dealloc]")
+pub fn stub_e881f0() {
+    // delegate of crate::view_controllers::Eagl2ViewController (IDA 0xe881f0)
+    // Super-only dealloc; run it on a fresh init since the shared harness
+    // owns no heap object to free.
+    crate::view_controllers::Eagl2ViewController::init().dealloc();
 }
 
 // 0xe8821c — -[EAGL2ViewController didReceiveMemoryWarning]
 // type: void __cdecl(EAGL2ViewController *self, SEL)
 #[doc(alias = "-[EAGL2ViewController didReceiveMemoryWarning]")]
-pub fn stub_e8821c() -> ! {
-    todo!("0xe8821c -[EAGL2ViewController didReceiveMemoryWarning]")
+pub fn stub_e8821c() {
+    // delegate of crate::view_controllers::Eagl2ViewController (IDA 0xe8821c)
+    EAGL_VC.did_receive_memory_warning();
 }
 
 // 0xe88248 — -[EAGL2ViewController loadView]
 // type: void __cdecl(EAGL2ViewController *self, SEL)
 #[doc(alias = "-[EAGL2ViewController loadView]")]
-pub fn stub_e88248() -> ! {
-    todo!("0xe88248 -[EAGL2ViewController loadView]")
+pub fn stub_e88248() {
+    // delegate of crate::view_controllers::Eagl2ViewController (IDA 0xe88248)
+    EAGL_VC.load_view();
 }
 
 // 0xe88274 — -[EAGL2ViewController viewDidLoad]
 // type: void __cdecl(EAGL2ViewController *self, SEL)
 #[doc(alias = "-[EAGL2ViewController viewDidLoad]")]
-pub fn stub_e88274() -> ! {
-    todo!("0xe88274 -[EAGL2ViewController viewDidLoad]")
+pub fn stub_e88274() {
+    // delegate of crate::view_controllers::Eagl2ViewController (IDA 0xe88274)
+    EAGL_VC.view_did_load();
 }
 
 // 0xe882a0 — -[EAGL2ViewController viewDidUnload]
 // type: void __cdecl(EAGL2ViewController *self, SEL)
 #[doc(alias = "-[EAGL2ViewController viewDidUnload]")]
-pub fn stub_e882a0() -> ! {
-    todo!("0xe882a0 -[EAGL2ViewController viewDidUnload]")
+pub fn stub_e882a0() {
+    // delegate of crate::view_controllers::Eagl2ViewController (IDA 0xe882a0)
+    EAGL_VC.view_did_unload();
 }
 
 // 0xe882cc — -[EAGL2ViewController shouldAutorotate]
 // type: char __cdecl(EAGL2ViewController *self, SEL)
 #[doc(alias = "-[EAGL2ViewController shouldAutorotate]")]
-pub fn stub_e882cc() -> ! {
-    todo!("0xe882cc -[EAGL2ViewController shouldAutorotate]")
+pub fn stub_e882cc() -> bool {
+    // delegate of crate::view_controllers::Eagl2ViewController (IDA 0xe882cc)
+    EAGL_VC.should_autorotate()
 }
 
 // 0xe88310 — -[EAGL2ViewController supportedInterfaceOrientations]
 // type: unsigned int __cdecl(EAGL2ViewController *self, SEL)
 #[doc(alias = "-[EAGL2ViewController supportedInterfaceOrientations]")]
-pub fn stub_e88310() -> ! {
-    todo!("0xe88310 -[EAGL2ViewController supportedInterfaceOrientations]")
+pub fn stub_e88310() -> u32 {
+    // delegate of crate::view_controllers::Eagl2ViewController (IDA 0xe88310)
+    EAGL_VC.supported_interface_orientations()
 }
 
 // 0xe88314 — -[EAGL2ViewController shouldAutorotateToInterfaceOrientation:]
 // type: char __cdecl(EAGL2ViewController *self, SEL, int)
 #[doc(alias = "-[EAGL2ViewController shouldAutorotateToInterfaceOrientation:]")]
-pub fn stub_e88314() -> ! {
-    todo!("0xe88314 -[EAGL2ViewController shouldAutorotateToInterfaceOrientation:]")
+pub fn stub_e88314(orientation: i32) -> bool {
+    // delegate of crate::view_controllers::Eagl2ViewController (IDA 0xe88314)
+    EAGL_VC.should_autorotate_to_interface_orientation(orientation)
 }
 
 // 0xe88328 — -[EAGL2ViewController mGLSupport]
 // type: EAGL2Support *__cdecl(EAGL2ViewController *self, SEL)
 #[doc(alias = "-[EAGL2ViewController mGLSupport]")]
-pub fn stub_e88328() -> ! {
-    todo!("0xe88328 -[EAGL2ViewController mGLSupport]")
+pub fn stub_e88328() -> crate::view_controllers::ObjCId {
+    // delegate of crate::view_controllers::Eagl2ViewController (IDA 0xe88328)
+    EAGL_VC.m_gl_support()
 }
 
 // 0xe8833c — -[EAGL2ViewController setMGLSupport:]
 // type: void __cdecl(EAGL2ViewController *self, SEL, EAGL2Support *)
 #[doc(alias = "-[EAGL2ViewController setMGLSupport:]")]
-pub fn stub_e8833c() -> ! {
-    todo!("0xe8833c -[EAGL2ViewController setMGLSupport:]")
+pub fn stub_e8833c(support: crate::view_controllers::ObjCId) {
+    // delegate of crate::view_controllers::Eagl2ViewController (IDA 0xe8833c)
+    EAGL_VC.set_m_gl_support(support);
 }
 
 // 0xe88388 — __ZN4Ogre11EAGL2WindowC1EPNS_12EAGL2SupportE

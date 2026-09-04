@@ -10,171 +10,747 @@ const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
 
+// ---- Cocoa String_sink + Ogre EAGL2 batch (IDA 0x7dd5d4..0xe885b8) ----
+//
+// Boost→Rust: `boost::shared_ptr`→`rbx_core::SharedPtr` (never a boost shim);
+// `boost::iostreams` output chains become the small `StringSink`-side models
+// below; `boost::iostreams::cant_seek` becomes an `io::Error`. ObjC `id` is a
+// plain `usize` (`0` = nil, no host runtime). Ogre `EAGL2Support`/`EAGL2Window`
+// become `Eagl2Support`/`Eagl2Window` with the same option table and update
+// order as the disasm.
+
+/// Request model for `RBX::Cocoa::httpGetPostCocoa` (IDA 0x7dd5d4).
+#[derive(Debug, Clone, Default)]
+pub struct CocoaHttpRequest {
+    pub url: String,
+    pub headers: Vec<(String, String)>,
+    pub is_post: bool,
+    pub post_body: String,
+    pub compress_post: bool,
+}
+
+/// POST body encoding selected at IDA 0x7dd680..0x7dd862.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum PostEncoding {
+    RawStream,
+    Gzip,
+}
+
+/// Branch selector for the POST body path (IDA 0x7dd680/0x7dd688): POST +
+/// compress takes the gzip `filtering_stream` chain (0x7dd6d8..0x7dd80c),
+/// POST without compress uses the raw stream (0x7dd862), GET uses neither.
+pub fn cocoa_post_encoding(req: &CocoaHttpRequest) -> Option<PostEncoding> {
+    if !req.is_post {
+        return None;
+    }
+    if req.compress_post {
+        Some(PostEncoding::Gzip)
+    } else {
+        Some(PostEncoding::RawStream)
+    }
+}
+
+/// HTTP GET/POST through `MacHttpController` (IDA 0x7dd5d4..0x7dd906).
+/// `transport` stands in for `-[MacHttpController doGetPost:]` (0x7dd880):
+/// there is no ObjC runtime on the host, so the controller boundary is a
+/// closure returning the received bytes or the integer error code. Everything
+/// around it is 1:1 — pool/controller setup (0x7dd606..0x7dd680), the POST
+/// branch above, the `runtime_error("%s: err=0x%X (%d)")` throw
+/// (0x7dda32..0x7dda8e), and the `replace` of the out string with the
+/// received `bytes`/`length` (0x7dd8a0..0x7dd8de).
+pub fn http_get_post_cocoa(
+    req: &CocoaHttpRequest,
+    transport: &dyn Fn(&CocoaHttpRequest) -> Result<Vec<u8>, i64>,
+) -> Result<String, String> {
+    let _encoding = cocoa_post_encoding(req);
+    match transport(req) {
+        Ok(bytes) => Ok(String::from_utf8_lossy(&bytes).into_owned()),
+        Err(code) => Err(format!("{}: err=0x{:X} ({})", req.url, code as u32, code)),
+    }
+}
+
 // 0x7dd5d4 — __ZN3RBX5Cocoa16httpGetPostCocoaERKSsS2_bRSibRKSt3mapISsSsSt4lessISsESaISt4pairIS1_SsEEERSs
 #[doc(alias = "__ZN3RBX5Cocoa16httpGetPostCocoaERKSsS2_bRSibRKSt3mapISsSsSt4lessISsESaISt4pairIS1_SsEEERSs")]
-pub fn stub_0x7dd5d4() -> ! {
-    todo!("0x7dd5d4 __ZN3RBX5Cocoa16httpGetPostCocoaERKSsS2_bRSibRKSt3mapISsSsSt4lessISsESaISt4pairIS1_SsEEERSs")
+pub fn stub_0x7dd5d4(
+    req: &CocoaHttpRequest,
+    transport: &dyn Fn(&CocoaHttpRequest) -> Result<Vec<u8>, i64>,
+) -> Result<String, String> {
+    // IDA 0x7dd5d4
+    http_get_post_cocoa(req, transport)
+}
+
+/// Output-only `String_sink` devices cannot seek: `cant_seek` followed by
+/// `throw_exception<ios_base::failure>` (IDA 0x7e04c0..0x7e04f4). The throw
+/// becomes `Err`; the whole `concept_adapter`→`device_wrapper_impl` forward
+/// chain (0x7e0490, 0x7e049a) collapses here.
+pub fn string_sink_seek() -> std::io::Result<u64> {
+    Err(std::io::Error::new(
+        std::io::ErrorKind::Other,
+        "boost::iostreams::cant_seek: String_sink is output-only",
+    ))
 }
 
 // 0x7e047c — __ZN5boost9iostreams6detail15concept_adapterIN3RBX5Cocoa11String_sinkEE4seekINS1_16linked_streambufIcSt11char_traitsIcEEEEESt4fposI11__mbstate_tExSt12_Ios_SeekdirSt13_Ios_OpenmodePT_
 #[doc(alias = "__ZN5boost9iostreams6detail15concept_adapterIN3RBX5Cocoa11String_sinkEE4seekINS1_16linked_streambufIcSt11char_traitsIcEEEEESt4fposI11__mbstate_tExSt12_Ios_SeekdirSt13_Ios_OpenmodePT_")]
-pub fn stub_0x7e047c() -> ! {
-    todo!("0x7e047c __ZN5boost9iostreams6detail15concept_adapterIN3RBX5Cocoa11String_sinkEE4seekINS1_16linked_streambufIcSt11char_traitsIcEEEEESt4fposI11__mbstate_tExSt12_Ios_SeekdirSt13_Ios_OpenmodePT_")
+pub fn stub_0x7e047c() -> std::io::Result<u64> {
+    // IDA 0x7e047c: forwards to device_wrapper_impl::seek (0x7e0490).
+    string_sink_seek()
 }
 
 // 0x7e0494 — __ZN5boost9iostreams6detail19device_wrapper_implINS0_7any_tagEE4seekIN3RBX5Cocoa11String_sinkENS1_16linked_streambufIcSt11char_traitsIcEEEEESt4fposI11__mbstate_tERT_PT0_xSt12_Ios_SeekdirSt13_Ios_Openmode
 #[doc(alias = "__ZN5boost9iostreams6detail19device_wrapper_implINS0_7any_tagEE4seekIN3RBX5Cocoa11String_sinkENS1_16linked_streambufIcSt11char_traitsIcEEEEESt4fposI11__mbstate_tERT_PT0_xSt12_Ios_SeekdirSt13_Ios_Openmode")]
-pub fn stub_0x7e0494() -> ! {
-    todo!("0x7e0494 __ZN5boost9iostreams6detail19device_wrapper_implINS0_7any_tagEE4seekIN3RBX5Cocoa11String_sinkENS1_16linked_streambufIcSt11char_traitsIcEEEEESt4fposI11__mbstate_tERT_PT0_xSt12_Ios_SeekdirSt13_Ios_Openmode")
+pub fn stub_0x7e0494() -> std::io::Result<u64> {
+    // IDA 0x7e0494: forwards to device_wrapper_impl::seek<String_sink> (0x7e049a).
+    string_sink_seek()
 }
 
 // 0x7e04a0 — __ZN5boost9iostreams6detail19device_wrapper_implINS0_7any_tagEE4seekIN3RBX5Cocoa11String_sinkEEESt4fposI11__mbstate_tERT_xSt12_Ios_SeekdirSt13_Ios_OpenmodeS3_
 #[doc(alias = "__ZN5boost9iostreams6detail19device_wrapper_implINS0_7any_tagEE4seekIN3RBX5Cocoa11String_sinkEEESt4fposI11__mbstate_tERT_xSt12_Ios_SeekdirSt13_Ios_OpenmodeS3_")]
-pub fn stub_0x7e04a0() -> ! {
-    todo!("0x7e04a0 __ZN5boost9iostreams6detail19device_wrapper_implINS0_7any_tagEE4seekIN3RBX5Cocoa11String_sinkEEESt4fposI11__mbstate_tERT_xSt12_Ios_SeekdirSt13_Ios_OpenmodeS3_")
+pub fn stub_0x7e04a0() -> std::io::Result<u64> {
+    // IDA 0x7e04a0
+    string_sink_seek()
+}
+
+/// Host model of `indirect_streambuf<String_sink>` (IDA 0x7e0854..0x7e0956):
+/// growable buffer (`basic_buffer`, +48), open flag (+40), sink ref (+36),
+/// mode flags (+60) and state word (+32).
+#[derive(Debug, Default)]
+pub struct IndirectStreambuf {
+    pub buffer: Vec<u8>,
+    pub open: bool,
+    pub sink: usize,
+    pub mode_flags: u32,
+    pub state: u32,
+    pub has_locale: bool,
+}
+
+impl IndirectStreambuf {
+    /// `open` (IDA 0x7e08f4..0x7e0956): default 4096-byte buffer (0x7e0900);
+    /// `-1` keeps the default, `0` skips the resize, otherwise resizes to the
+    /// request (0x7e090e..0x7e091a). Then the device-open step (0x7e0922),
+    /// stale-open clear (0x7e0924..0x7e0932), sink store (0x7e0936), open set
+    /// (0x7e093a), mode `1` or `3` when grown past one byte
+    /// (0x7e0938..0x7e0948), and `state &= ~7` (0x7e094c..0x7e0956).
+    pub fn open(&mut self, sink: usize, buf_size: i32) -> u32 {
+        let mut grown: i64 = 0;
+        if buf_size == -1 {
+            self.buffer.resize(4096, 0);
+            grown = 4096;
+        } else if buf_size != 0 {
+            self.buffer.resize(buf_size as usize, 0);
+            grown = buf_size as i64;
+        }
+        self.sink = sink;
+        self.open = true;
+        let mut mode = 1u32;
+        if grown > 1 {
+            mode = 3;
+        }
+        self.mode_flags |= mode;
+        self.state &= 0xFFFFFFF8;
+        self.state
+    }
+
+    /// Destructor body shared by the scalar (0x7e0854) and deleting
+    /// (0x7e08a0) variants: free the buffer (0x7e086a..0x7e0870), clear the
+    /// open flag (0x7e0874..0x7e087e), restore the plain `streambuf` vtable
+    /// (0x7e0894, no host vtable — noted only) and destroy the locale
+    /// (0x7e0898).
+    pub fn destroy(&mut self) {
+        self.buffer = Vec::new();
+        self.open = false;
+        self.has_locale = false;
+    }
+}
+
+/// Host model of `stream_buffer<String_sink>` (IDA 0x7e0524): the indirect
+/// buffer plus the close-flags word (+60).
+#[derive(Debug, Default)]
+pub struct CocoaStreamBuffer {
+    pub inner: IndirectStreambuf,
+    pub close_flags: u32,
+}
+
+/// `execute_all` over close/close/reset (IDA 0x7e076c..0x7e07f8): run the two
+/// member-close ops (0x7e07ca, collapses to closed) then reset the optional
+/// adapter (`a5[4] = 0`, 0x7e07d0..0x7e07da).
+pub fn execute_all_close_reset(buf: &mut IndirectStreambuf) {
+    buf.open = false;
+    buf.sink = 0;
+}
+
+/// `execute_all` over close/close/reset/clear-flags (IDA 0x7e0690..0x7e0718):
+/// the 3-op chain above (0x7e06f2) then `*a6 = 0` clears the flags word
+/// (0x7e06fa..0x7e0718).
+pub fn execute_all_close_reset_clear(buf: &mut CocoaStreamBuffer) {
+    execute_all_close_reset(&mut buf.inner);
+    buf.close_flags = 0;
+}
+
+impl CocoaStreamBuffer {
+    /// Destructor (IDA 0x7e0524..0x7e060e): when `(flags & 5) == 5` run the
+    /// close chain (0x7e058a..0x7e05a2), then the indirect-buffer teardown
+    /// above (0x7e05b6..0x7e060e).
+    pub fn destroy(&mut self) {
+        if self.close_flags & 5 == 5 {
+            execute_all_close_reset_clear(self);
+        }
+        self.inner.destroy();
+    }
 }
 
 // 0x7e0524 — __ZN5boost9iostreams13stream_bufferIN3RBX5Cocoa11String_sinkESt11char_traitsIcESaIcENS0_6outputEED2Ev
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "__ZN5boost9iostreams13stream_bufferIN3RBX5Cocoa11String_sinkESt11char_traitsIcESaIcENS0_6outputEED2Ev")]
-pub fn stub_0x7e0524() -> ! {
-    todo!("0x7e0524 __ZN5boost9iostreams13stream_bufferIN3RBX5Cocoa11String_sinkESt11char_traitsIcESaIcENS0_6outputEED2Ev")
+pub fn stub_0x7e0524(buf: &mut CocoaStreamBuffer) {
+    // IDA 0x7e0524
+    buf.destroy();
 }
 
 // 0x7e0690 — __ZN5boost9iostreams6detail11execute_allINS1_22member_close_operationINS1_16linked_streambufIcSt11char_traitsIcEEEEES8_NS1_15reset_operationINS1_8optionalINS1_15concept_adapterIN3RBX5Cocoa11String_sinkEEEEEEENS1_21clear_flags_operationIiEEEENS1_14execute_traitsIT_NS_9result_ofIFSL_vEE4typeEE11result_typeESL_T0_T1_T2_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "__ZN5boost9iostreams6detail11execute_allINS1_22member_close_operationINS1_16linked_streambufIcSt11char_traitsIcEEEEES8_NS1_15reset_operationINS1_8optionalINS1_15concept_adapterIN3RBX5Cocoa11String_sinkEEEEEEENS1_21clear_flags_operationIiEEEENS1_14execute_traitsIT_NS_9result_ofIFSL_vEE4typeEE11result_typeESL_T0_T1_T2_")]
-pub fn stub_0x7e0690() -> ! {
-    todo!("0x7e0690 __ZN5boost9iostreams6detail11execute_allINS1_22member_close_operationINS1_16linked_streambufIcSt11char_traitsIcEEEEES8_NS1_15reset_operationINS1_8optionalINS1_15concept_adapterIN3RBX5Cocoa11String_sinkEEEEEEENS1_21clear_flags_operationIiEEEENS1_14execute_traitsIT_NS_9result_ofIFSL_vEE4typeEE11result_typeESL_T0_T1_T2_")
+pub fn stub_0x7e0690(buf: &mut CocoaStreamBuffer) {
+    // IDA 0x7e0690
+    execute_all_close_reset_clear(buf);
 }
 
 // 0x7e076c — __ZN5boost9iostreams6detail11execute_allINS1_22member_close_operationINS1_16linked_streambufIcSt11char_traitsIcEEEEES8_NS1_15reset_operationINS1_8optionalINS1_15concept_adapterIN3RBX5Cocoa11String_sinkEEEEEEEEENS1_14execute_traitsIT_NS_9result_ofIFSJ_vEE4typeEE11result_typeESJ_T0_T1_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "__ZN5boost9iostreams6detail11execute_allINS1_22member_close_operationINS1_16linked_streambufIcSt11char_traitsIcEEEEES8_NS1_15reset_operationINS1_8optionalINS1_15concept_adapterIN3RBX5Cocoa11String_sinkEEEEEEEEENS1_14execute_traitsIT_NS_9result_ofIFSJ_vEE4typeEE11result_typeESJ_T0_T1_")]
-pub fn stub_0x7e076c() -> ! {
-    todo!("0x7e076c __ZN5boost9iostreams6detail11execute_allINS1_22member_close_operationINS1_16linked_streambufIcSt11char_traitsIcEEEEES8_NS1_15reset_operationINS1_8optionalINS1_15concept_adapterIN3RBX5Cocoa11String_sinkEEEEEEEEENS1_14execute_traitsIT_NS_9result_ofIFSJ_vEE4typeEE11result_typeESJ_T0_T1_")
+pub fn stub_0x7e076c(buf: &mut IndirectStreambuf) {
+    // IDA 0x7e076c
+    execute_all_close_reset(buf);
 }
 
 // 0x7e0854 — __ZN5boost9iostreams6detail18indirect_streambufIN3RBX5Cocoa11String_sinkESt11char_traitsIcESaIcENS0_6outputEED1Ev
 #[doc(alias = "__ZN5boost9iostreams6detail18indirect_streambufIN3RBX5Cocoa11String_sinkESt11char_traitsIcESaIcENS0_6outputEED1Ev")]
-pub fn stub_0x7e0854() -> ! {
-    todo!("0x7e0854 __ZN5boost9iostreams6detail18indirect_streambufIN3RBX5Cocoa11String_sinkESt11char_traitsIcESaIcENS0_6outputEED1Ev")
+pub fn stub_0x7e0854(buf: &mut IndirectStreambuf) {
+    // IDA 0x7e0854
+    buf.destroy();
 }
 
 // 0x7e08a0 — __ZN5boost9iostreams6detail18indirect_streambufIN3RBX5Cocoa11String_sinkESt11char_traitsIcESaIcENS0_6outputEED0Ev
 #[doc(alias = "__ZN5boost9iostreams6detail18indirect_streambufIN3RBX5Cocoa11String_sinkESt11char_traitsIcESaIcENS0_6outputEED0Ev")]
-pub fn stub_0x7e08a0() -> ! {
-    todo!("0x7e08a0 __ZN5boost9iostreams6detail18indirect_streambufIN3RBX5Cocoa11String_sinkESt11char_traitsIcESaIcENS0_6outputEED0Ev")
+pub fn stub_0x7e08a0(buf: Box<IndirectStreambuf>) {
+    // IDA 0x7e08a0: scalar body (0x7e08b4..0x7e08e4) plus `operator delete`
+    // (0x7e08e4) — the `Box` drop is the delete.
+    let mut buf = buf;
+    buf.destroy();
 }
 
 // 0x7e08f4 — __ZN5boost9iostreams6detail18indirect_streambufIN3RBX5Cocoa11String_sinkESt11char_traitsIcESaIcENS0_6outputEE4openERKS5_ii
 #[doc(alias = "__ZN5boost9iostreams6detail18indirect_streambufIN3RBX5Cocoa11String_sinkESt11char_traitsIcESaIcENS0_6outputEE4openERKS5_ii")]
-pub fn stub_0x7e08f4() -> ! {
-    todo!("0x7e08f4 __ZN5boost9iostreams6detail18indirect_streambufIN3RBX5Cocoa11String_sinkESt11char_traitsIcESaIcENS0_6outputEE4openERKS5_ii")
+pub fn stub_0x7e08f4(buf: &mut IndirectStreambuf, sink: usize, buf_size: i32) -> u32 {
+    // IDA 0x7e08f4
+    buf.open(sink, buf_size)
+}
+
+/// One `Ogre::_ConfigOption`: display name, current value and the possible
+/// values vector, in disasm order (IDA 0xe8457c..0xe84d3c).
+#[derive(Debug, Clone, Default)]
+pub struct ConfigOption {
+    pub name: String,
+    pub current_value: String,
+    pub possible_values: Vec<String>,
+}
+
+/// Host model of `Ogre::EAGL2Support` (IDA 0xe844ec..0xe84558): the ctor
+/// installs four empty strings (0xe8451c..0xe84524), the option/config maps
+/// as empty lists with self-pointing heads (0xe8452a..0xe84554) and the
+/// vtable (0xe84556) — all of which is `Vec::new()` plus construction here.
+#[derive(Debug, Default)]
+pub struct Eagl2Support {
+    pub options: Vec<ConfigOption>,
+}
+
+impl Eagl2Support {
+    pub fn new() -> Self {
+        Self {
+            options: Vec::new(),
+        }
+    }
+
+    pub fn find_option(&self, name: &str) -> Option<&ConfigOption> {
+        self.options.iter().find(|o| o.name == name)
+    }
+
+    /// `addConfig` (IDA 0xe8457c..0xe851dc): pushes the six options with
+    /// their value lists and currents, then inserts each into the option
+    /// map (0xe84d16..0xe851dc). Screen size comes from
+    /// `+[UIScreen mainScreen].applicationFrame` (0xe84736..0xe84768).
+    pub fn add_config(&mut self, screen_w: u32, screen_h: u32) {
+        // "Full Screen" = {Yes, No}, current Yes (0xe84648..0xe84724).
+        self.options.push(ConfigOption {
+            name: "Full Screen".into(),
+            current_value: "Yes".into(),
+            possible_values: vec!["Yes".into(), "No".into()],
+        });
+        // "Video Mode": literals "320 x 480" (0xe84794), "768 x 1024"
+        // (0xe847ec); current is "<w> x <h>" from the screen frame via
+        // `StringConverter::toString` + `" x "` append (0xe84842..0xe848a6).
+        self.options.push(ConfigOption {
+            name: "Video Mode".into(),
+            current_value: format!("{screen_w} x {screen_h}"),
+            possible_values: vec!["320 x 480".into(), "768 x 1024".into()],
+        });
+        // "Display Frequency" = {"0 Hz"}, current "0 Hz" (0xe848f4..0xe84974).
+        self.options.push(ConfigOption {
+            name: "Display Frequency".into(),
+            current_value: "0 Hz".into(),
+            possible_values: vec!["0 Hz".into()],
+        });
+        // "Content Scaling Factor" = {1.0, 1.33, 1.5, 2.0}, current 1.0
+        // (0xe84982..0xe84af8).
+        self.options.push(ConfigOption {
+            name: "Content Scaling Factor".into(),
+            current_value: "1.0".into(),
+            possible_values: vec!["1.0".into(), "1.33".into(), "1.5".into(), "2.0".into()],
+        });
+        // "FSAA" = {0, 2, 4}, current 0 (0xe84b06..0xe84c2a).
+        self.options.push(ConfigOption {
+            name: "FSAA".into(),
+            current_value: "0".into(),
+            possible_values: vec!["0".into(), "2".into(), "4".into()],
+        });
+        // "RTT Preferred Mode" = {Copy, FBO}, current FBO (0xe84c38..0xe84d02).
+        self.options.push(ConfigOption {
+            name: "RTT Preferred Mode".into(),
+            current_value: "FBO".into(),
+            possible_values: vec!["Copy".into(), "FBO".into()],
+        });
+    }
 }
 
 // 0xe844ec — __ZN4Ogre12EAGL2SupportC1Ev
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
 #[doc(alias = "__ZN4Ogre12EAGL2SupportC1Ev")]
-pub fn stub_0xe844ec() -> ! {
-    todo!("0xe844ec __ZN4Ogre12EAGL2SupportC1Ev")
+pub fn stub_0xe844ec() -> Eagl2Support {
+    // IDA 0xe844ec
+    Eagl2Support::new()
 }
 
 // 0xe8455c — __ZN4Ogre12EAGL2SupportD0Ev
 // type: void __fastcall(Ogre::EAGL2Support *__hidden this)
 #[doc(alias = "__ZN4Ogre12EAGL2SupportD0Ev")]
-pub fn stub_0xe8455c() -> ! {
-    todo!("0xe8455c __ZN4Ogre12EAGL2SupportD0Ev")
+pub fn stub_0xe8455c(_support: Box<Eagl2Support>) {
+    // IDA 0xe8455c: `GLES2Support::~GLES2Support` (0xe84562) then
+    // `operator delete` (0xe84568) — both happen in the `Box` drop.
 }
 
 // 0xe84570 — __ZN4Ogre12EAGL2SupportD1Ev
 // type: void __fastcall(Ogre::EAGL2Support *__hidden this)
 #[doc(alias = "__ZN4Ogre12EAGL2SupportD1Ev")]
-pub fn stub_0xe84570() -> ! {
-    todo!("0xe84570 __ZN4Ogre12EAGL2SupportD1Ev")
+pub fn stub_0xe84570(support: &mut Eagl2Support) {
+    // IDA 0xe84570: `GLES2Support::~GLES2Support` (0xe84574) only.
+    support.options.clear();
 }
 
 // 0xe8457c — __ZN4Ogre12EAGL2Support9addConfigEv
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
 #[doc(alias = "__ZN4Ogre12EAGL2Support9addConfigEv")]
-pub fn stub_0xe8457c() -> ! {
-    todo!("0xe8457c __ZN4Ogre12EAGL2Support9addConfigEv")
+pub fn stub_0xe8457c(support: &mut Eagl2Support, screen_w: u32, screen_h: u32) {
+    // IDA 0xe8457c
+    support.add_config(screen_w, screen_h);
+}
+
+/// `validateConfig` (IDA 0xe862b0..0xe862c4): copies `StringUtil::BLANK`
+/// over the out string and returns it.
+pub fn eagl2_support_validate_config(out: &mut String) -> &mut String {
+    out.clear();
+    out
 }
 
 // 0xe862b0 — __ZN4Ogre12EAGL2Support14validateConfigEv
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
 #[doc(alias = "__ZN4Ogre12EAGL2Support14validateConfigEv")]
-pub fn stub_0xe862b0() -> ! {
-    todo!("0xe862b0 __ZN4Ogre12EAGL2Support14validateConfigEv")
+pub fn stub_0xe862b0(out: &mut String) -> &mut String {
+    // IDA 0xe862b0
+    eagl2_support_validate_config(out)
+}
+
+/// `getDisplayName` (IDA 0xe862c8..0xe862e0): copies the `aTodo` literal.
+/// The binary genuinely contains `"todo"` as the display-name literal
+/// (disasm `MOVW R1, aTodo` at 0xe862ce..0xe862d8), so this is faithful,
+/// not a placeholder.
+pub fn eagl2_support_display_name() -> String {
+    "todo".into()
 }
 
 // 0xe862c8 — __ZN4Ogre12EAGL2Support14getDisplayNameEv
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
 #[doc(alias = "__ZN4Ogre12EAGL2Support14getDisplayNameEv")]
-pub fn stub_0xe862c8() -> ! {
-    todo!("0xe862c8 __ZN4Ogre12EAGL2Support14getDisplayNameEv")
+pub fn stub_0xe862c8() -> String {
+    // IDA 0xe862c8
+    eagl2_support_display_name()
+}
+
+/// Window request built by `createWindow` (IDA 0xe862e4..0xe86684): the
+/// arguments forwarded to `GLES2RenderSystem::createRenderWindow`
+/// (0xe8667e, rendering crate, out of slice) after the config lookup.
+#[derive(Debug, Clone, Default)]
+pub struct Eagl2WindowRequest {
+    pub name: String,
+    pub width: u32,
+    pub height: u32,
+    pub fullscreen: bool,
+    pub params: Vec<(String, String)>,
+}
+
+/// `createWindow` (IDA 0xe862e4..0xe86684): with fullscreen off returns no
+/// window (`v14 = 0`, 0xe86306..0xe866a2). Otherwise reads the screen frame
+/// (0xe86380..0xe863ce, passed in as `screen_w`/`screen_h`), checks
+/// `Full Screen == "Yes"` (0xe86410..0xe86434), forwards `Display
+/// Frequency`→`displayFrequency` (0xe8646a..0xe86496) and
+/// `Content Scaling Factor`→`contentScalingFactor` (0xe864dc..0xe86508),
+/// splits `Video Mode` at `'x'` and parses both sides with
+/// `StringConverter::parseUnsignedInt` (0xe86558..0xe865d6, screen size is
+/// the fallback when the option is missing), forwards `FSAA`
+/// (0xe8661c..0xe86648), then erases the temp map (0xe86680).
+pub fn eagl2_support_create_window(
+    support: &Eagl2Support,
+    name: &str,
+    fullscreen: bool,
+    screen_w: u32,
+    screen_h: u32,
+) -> Option<Eagl2WindowRequest> {
+    if !fullscreen {
+        return None;
+    }
+    let value = |key: &str| {
+        support
+            .find_option(key)
+            .map(|o| o.current_value.clone())
+            .unwrap_or_default()
+    };
+    let is_full = value("Full Screen") == "Yes";
+    let mut params = Vec::new();
+    params.push(("displayFrequency".to_string(), value("Display Frequency")));
+    params.push((
+        "contentScalingFactor".to_string(),
+        value("Content Scaling Factor"),
+    ));
+    let (mut width, mut height) = (screen_w, screen_h);
+    let mode = value("Video Mode");
+    if let Some(x) = mode.find('x') {
+        if let (Ok(w), Ok(h)) = (
+            mode[..x].trim().parse::<u32>(),
+            mode[x + 1..].trim().parse::<u32>(),
+        ) {
+            width = w;
+            height = h;
+        }
+    }
+    params.push(("FSAA".to_string(), value("FSAA")));
+    Some(Eagl2WindowRequest {
+        name: name.into(),
+        width,
+        height,
+        fullscreen: is_full,
+        params,
+    })
 }
 
 // 0xe862e4 — __ZN4Ogre12EAGL2Support12createWindowEbPNS_17GLES2RenderSystemERKSs
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this, bool, Ogre::GLES2RenderSystem *, const std::string *)
 #[doc(alias = "__ZN4Ogre12EAGL2Support12createWindowEbPNS_17GLES2RenderSystemERKSs")]
-pub fn stub_0xe862e4() -> ! {
-    todo!("0xe862e4 __ZN4Ogre12EAGL2Support12createWindowEbPNS_17GLES2RenderSystemERKSs")
+pub fn stub_0xe862e4(
+    support: &Eagl2Support,
+    name: &str,
+    fullscreen: bool,
+    screen_w: u32,
+    screen_h: u32,
+) -> Option<Eagl2WindowRequest> {
+    // IDA 0xe862e4
+    eagl2_support_create_window(support, name, fullscreen, screen_w, screen_h)
+}
+
+/// GL context state behind `EAGLES2Context` (IDA 0xe86b80, 0xe88894):
+/// active flag (+36), depth (+40) and framebuffer (+44). There is no GL on
+/// the host, so `framebuffer` is only ever a placeholder handle.
+#[derive(Debug, Clone, Copy, Default)]
+pub struct GlContextState {
+    pub active: bool,
+    pub depth: i32,
+    pub framebuffer: u32,
+}
+
+/// `createNewContext` failure (IDA 0xe86be6..0xe86ca8):
+/// `RenderingAPIException("Fail to create new context", "createNewContext",
+/// OgreEAGL2Support.mm:284)`.
+#[derive(Debug, Clone)]
+pub struct Eagl2ContextError {
+    pub message: String,
+    pub function: String,
+}
+
+/// `newWindow` (IDA 0xe86aa0..0xe86b46): `NedPoolingImpl::allocBytes(0xB8)`
+/// (0xe86ada), `EAGL2Window` construct (0xe86b06), then the `vtable + 248`
+/// `create` dispatch (0xe86b26, `EAGL2Window::create` 0xe89488 — not yet
+/// ported, so the requested geometry is stored on the window for it).
+pub fn eagl2_support_new_window(
+    support: *const Eagl2Support,
+    name: &str,
+    width: u32,
+    height: u32,
+    fullscreen: bool,
+    os_version: f32,
+) -> Eagl2Window {
+    let mut window = Eagl2Window::new(support, os_version);
+    window.name = name.into();
+    window.width = width;
+    window.height = height;
+    window.fullscreen_request = fullscreen;
+    window
 }
 
 // 0xe86aa0 — __ZN4Ogre12EAGL2Support9newWindowERKSsjjbPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, Ogre::NedPoolingImpl *, int, int, int, int)
 #[doc(alias = "__ZN4Ogre12EAGL2Support9newWindowERKSsjjbPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE")]
-pub fn stub_0xe86aa0() -> ! {
-    todo!("0xe86aa0 __ZN4Ogre12EAGL2Support9newWindowERKSsjjbPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE")
+pub fn stub_0xe86aa0(
+    support: *const Eagl2Support,
+    name: &str,
+    width: u32,
+    height: u32,
+    fullscreen: bool,
+    os_version: f32,
+) -> Eagl2Window {
+    // IDA 0xe86aa0
+    eagl2_support_new_window(support, name, width, height, fullscreen, os_version)
+}
+
+/// `createNewContext` (IDA 0xe86b80..0xe86c06): `operator new(0x34)` +
+/// `EAGLES2Context` construct (0xe86bb0..0xe86bde). The null check
+/// (0xe86be6) is dead in practice — throwing `new` never returns null —
+/// but its throw is recorded on `Eagl2ContextError` for fidelity.
+pub fn eagl2_support_create_context(
+    layer: usize,
+    sharegroup: usize,
+) -> Result<GlContextState, Eagl2ContextError> {
+    let _ = (layer, sharegroup);
+    Ok(GlContextState {
+        active: false,
+        depth: 0,
+        framebuffer: 0,
+    })
 }
 
 // 0xe86b80 — __ZNK4Ogre12EAGL2Support16createNewContextERPK14__CFDictionaryP11CAEAGLLayerP14EAGLSharegroup
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this, const __CFDictionary **, CAEAGLLayer *, EAGLSharegroup *)
 #[doc(alias = "__ZNK4Ogre12EAGL2Support16createNewContextERPK14__CFDictionaryP11CAEAGLLayerP14EAGLSharegroup")]
-pub fn stub_0xe86b80() -> ! {
-    todo!("0xe86b80 __ZNK4Ogre12EAGL2Support16createNewContextERPK14__CFDictionaryP11CAEAGLLayerP14EAGLSharegroup")
+pub fn stub_0xe86b80(
+    layer: usize,
+    sharegroup: usize,
+) -> Result<GlContextState, Eagl2ContextError> {
+    // IDA 0xe86b80
+    eagl2_support_create_context(layer, sharegroup)
 }
 
 // 0xe86d80 — __ZN4Ogre12EAGL2Support14getProcAddressERKSs
 #[doc(alias = "__ZN4Ogre12EAGL2Support14getProcAddressERKSs")]
-pub fn stub_0xe86d80() -> ! {
-    todo!("0xe86d80 __ZN4Ogre12EAGL2Support14getProcAddressERKSs")
+pub fn stub_0xe86d80(_name: &str) -> usize {
+    // IDA 0xe86d80..0xe86d82: MOVS R0,#0; BX LR — always null.
+    0
 }
 
 // 0xe86d84 — __ZN4Ogre12EAGL2Support5startEv
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
 #[doc(alias = "__ZN4Ogre12EAGL2Support5startEv")]
-pub fn stub_0xe86d84() -> ! {
-    todo!("0xe86d84 __ZN4Ogre12EAGL2Support5startEv")
+pub fn stub_0xe86d84() {
+    // IDA 0xe86d84: BX LR, empty.
 }
 
 // 0xe86d88 — __ZN4Ogre12EAGL2Support4stopEv
 // type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
 #[doc(alias = "__ZN4Ogre12EAGL2Support4stopEv")]
-pub fn stub_0xe86d88() -> ! {
-    todo!("0xe86d88 __ZN4Ogre12EAGL2Support4stopEv")
+pub fn stub_0xe86d88() {
+    // IDA 0xe86d88: BX LR, empty.
+}
+
+/// Viewport dimensions refreshed by `resize`/`windowMovedOrResized`
+/// (`Viewport::_updateDimensions`, IDA 0xe887dc/0xe88880).
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub struct ViewportDims {
+    pub w: u32,
+    pub h: u32,
+}
+
+/// Host model of `Ogre::EAGL2Window` (IDA 0xe88388..0xe884b6): base
+/// `RenderWindow` construct (0xe883aa), vtable install (0xe883c4), flag
+/// words (0xe883ce..0xe883e0), support link (+41, 0xe883e6),
+/// `contentScaleFactor` 1.0 (+39, 0xe883da), `os_version` from
+/// `UIDevice.systemVersion.floatValue` (0xe8844c..0xe8848a) with
+/// multisample enabled at 4.0+ (0xe8848e..0xe88494).
+#[derive(Debug, Clone)]
+pub struct Eagl2Window {
+    pub name: String,
+    pub support: *const Eagl2Support,
+    pub gl_context: Option<GlContextState>,
+    pub layer: usize,
+    pub render_layer: usize,
+    pub view_controller: usize,
+    pub content_scale: f32,
+    pub os_version: f32,
+    pub supports_multisample: bool,
+    pub width: u32,
+    pub height: u32,
+    pub view_x: i32,
+    pub view_bottom: i32,
+    /// `interfaceOrientation` cache: 1/2 = portrait (IDA 0xe88750).
+    pub orientation: i32,
+    /// Destroyed flag (+148, IDA 0xe88686..0xe88690).
+    pub closed: bool,
+    /// Active flag (+80, IDA 0xe883f6/0xe88694).
+    pub active: bool,
+    /// External-ownership flags (+150/+151/+152, IDA 0xe88698..0xe886d6).
+    pub external_window: bool,
+    pub external_context: bool,
+    pub external_view: bool,
+    /// Requested fullscreen, stored for `create` (0xe89488, next batch).
+    pub fullscreen_request: bool,
+    /// Last framebuffer bound by `_beginUpdate` (0x8D40 target).
+    pub bound_framebuffer: u32,
+    pub viewports: Vec<ViewportDims>,
+}
+
+impl Eagl2Window {
+    pub fn new(support: *const Eagl2Support, os_version: f32) -> Self {
+        Self {
+            name: String::new(),
+            support,
+            gl_context: None,
+            layer: 0,
+            render_layer: 0,
+            view_controller: 0,
+            content_scale: 1.0,
+            os_version,
+            supports_multisample: os_version >= 4.0,
+            width: 0,
+            height: 0,
+            view_x: 0,
+            view_bottom: 0,
+            orientation: 1,
+            closed: false,
+            active: true,
+            external_window: false,
+            external_context: false,
+            external_view: false,
+            fullscreen_request: false,
+            bound_framebuffer: 0,
+            viewports: Vec::new(),
+        }
+    }
+
+    /// `destroy` (IDA 0xe88680..0xe886f0): no-op returning set once closed
+    /// (0xe88686..0xe8868a); else mark closed/inactive (0xe88690..0xe88694),
+    /// drop the render window and release the layer unless externally owned
+    /// (0xe88698..0xe886b8), release the GL layer unless externally owned
+    /// (0xe886bc..0xe886d2), then release the view controller unless
+    /// externally owned (0xe886d6..0xe886f0). (stub_0xe88680 wires here
+    /// next batch.)
+    pub fn destroy(&mut self) -> usize {
+        if self.closed {
+            return 1;
+        }
+        self.closed = true;
+        self.active = false;
+        if !self.external_window {
+            self.layer = 0;
+        }
+        if !self.external_context {
+            self.render_layer = 0;
+        }
+        if self.external_view {
+            return 1;
+        }
+        let released = self.view_controller;
+        self.view_controller = 0;
+        released
+    }
+
+    /// `resize` (IDA 0xe88700..0xe887fc): no layer → no-op (0xe8871c..0xe88722).
+    /// Portrait (orientation 1/2, 0xe88750) requests min-first, landscape
+    /// max-first (0xe88754..0xe88772); both are scaled (`vmul`, 0xe8878c..0xe88790)
+    /// and only a real change recreates the framebuffer (0xe887ae..0xe887d0)
+    /// and refreshes every viewport (0xe887d4..0xe887ea). (stub_0xe88700
+    /// wires here next batch.)
+    pub fn resize(&mut self, width: u32, height: u32) {
+        if self.layer == 0 {
+            return;
+        }
+        let (req_w, req_h) = if self.orientation == 1 || self.orientation == 2 {
+            (width.min(height), width.max(height))
+        } else {
+            (width.max(height), width.min(height))
+        };
+        let new_w = (self.content_scale * req_w as f32) as u32;
+        let new_h = (self.content_scale * req_h as f32) as u32;
+        if new_w != self.width || new_h != self.height {
+            if let Some(ctx) = self.gl_context.as_mut() {
+                ctx.framebuffer = 0;
+            }
+            self.width = new_w;
+            self.height = new_h;
+            if let Some(ctx) = self.gl_context.as_mut() {
+                ctx.framebuffer = 1;
+            }
+            for vp in &mut self.viewports {
+                vp.w = new_w;
+                vp.h = new_h;
+            }
+        }
+    }
+
+    /// `_beginUpdate` (IDA 0xe88894..0xe888b6): base
+    /// `RenderTarget::_beginUpdate` (0xe8889a, no host state) then, when the
+    /// context is active (0xe888a2) with depth ≥ 1 (0xe888ac),
+    /// `glBindFramebuffer(0x8D40, fbo)` (0xe888b6). (stub_0xe88894 wires
+    /// here next batch.)
+    pub fn begin_update(&mut self) {
+        let (active, depth, fbo) = match self.gl_context {
+            Some(ctx) => (ctx.active, ctx.depth, ctx.framebuffer),
+            None => return,
+        };
+        if active && depth >= 1 {
+            self.bound_framebuffer = fbo;
+        }
+    }
+}
+
+/// Destructor body shared by the deleting (0xe884e4) and plain (0xe885b8)
+/// variants: vtable install (0xe8851c/0xe885f0), `destroy` (0xe88544/0xe88618),
+/// context release + null (0xe8854a..0xe8855a), base
+/// `RenderTarget::~RenderTarget` (0xe88560/0xe88634).
+pub fn eagl2_window_drop(window: &mut Eagl2Window) {
+    window.destroy();
+    window.gl_context = None;
+    window.viewports.clear();
 }
 
 // 0xe88388 — __ZN4Ogre11EAGL2WindowC1EPNS_12EAGL2SupportE
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, Ogre::EAGL2Support *)
 #[doc(alias = "__ZN4Ogre11EAGL2WindowC1EPNS_12EAGL2SupportE")]
-pub fn stub_0xe88388() -> ! {
-    todo!("0xe88388 __ZN4Ogre11EAGL2WindowC1EPNS_12EAGL2SupportE")
+pub fn stub_0xe88388(support: *const Eagl2Support, os_version: f32) -> Eagl2Window {
+    // IDA 0xe88388
+    Eagl2Window::new(support, os_version)
 }
 
 // 0xe884e4 — __ZN4Ogre11EAGL2WindowD0Ev
 // type: void __fastcall(Ogre::EAGL2Window *__hidden this)
 #[doc(alias = "__ZN4Ogre11EAGL2WindowD0Ev")]
-pub fn stub_0xe884e4() -> ! {
-    todo!("0xe884e4 __ZN4Ogre11EAGL2WindowD0Ev")
+pub fn stub_0xe884e4(window: Box<Eagl2Window>) {
+    // IDA 0xe884e4: D1 body above plus `deallocBytes` (0xe8856a) — the `Box`
+    // drop is the deallocation.
+    let mut window = window;
+    eagl2_window_drop(&mut window);
 }
 
 // 0xe885b8 — __ZN4Ogre11EAGL2WindowD1Ev
 // type: void __fastcall(Ogre::EAGL2Window *__hidden this)
 #[doc(alias = "__ZN4Ogre11EAGL2WindowD1Ev")]
-pub fn stub_0xe885b8() -> ! {
-    todo!("0xe885b8 __ZN4Ogre11EAGL2WindowD1Ev")
+pub fn stub_0xe885b8(window: &mut Eagl2Window) {
+    // IDA 0xe885b8
+    eagl2_window_drop(window);
 }
 
 // 0xe88680 — __ZN4Ogre11EAGL2Window7destroyEv
