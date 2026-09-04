@@ -1554,4 +1554,156 @@ mod tests {
         assert_eq!(find_local_player(true, true, Some(1)), Some(1));
         assert_eq!(find_local_player(true, true, None), None);
     }
+    #[test]
+    fn ancestor_remove_insert_disconnect_gates() {
+        // IDA 0xa14c94/0xa1526c: ancestor Player wins, else list match.
+        assert_eq!(find_ancestor_player(false, true, Some(1), true, Some(2)), None);
+        assert_eq!(find_ancestor_player(true, true, Some(1), true, Some(2)), Some(1));
+        assert_eq!(find_ancestor_player(true, true, Some(1), false, Some(2)), Some(2));
+        assert_eq!(find_ancestor_player(true, true, None, false, None), None);
+        assert_eq!(player_from_character(false, true, Some(1)), None);
+        assert_eq!(player_from_character(true, true, Some(1)), Some(1));
+        assert_eq!(player_from_character(true, true, None), None);
+        // IDA 0xa15560/0xa15700: descendant flag + child removal gates.
+        let log = std::cell::RefCell::new(Vec::new());
+        on_descendant_removing(true, false, true, &mut || log.borrow_mut().push("flag"), &mut || log.borrow_mut().push("base"));
+        on_descendant_removing(true, true, true, &mut || log.borrow_mut().push("flag"), &mut || log.borrow_mut().push("base"));
+        on_child_removing(false, true, false, &mut || log.borrow_mut().push("rm"), &mut || log.borrow_mut().push("a"), &mut || log.borrow_mut().push("b"));
+        on_child_removing(true, true, false, &mut || log.borrow_mut().push("rm"), &mut || log.borrow_mut().push("a"), &mut || log.borrow_mut().push("b"));
+        on_child_removing(true, true, true, &mut || log.borrow_mut().push("rm"), &mut || log.borrow_mut().push("a"), &mut || log.borrow_mut().push("b"));
+        assert_eq!(log.borrow().as_slice(), ["flag", "base", "base", "rm", "a", "b", "rm"]);
+        // IDA 0xa16238/0xa1624c/0xa16648/0xa168dc/0xa16cb0: guarded one-shots.
+        let mut n = 0;
+        report_script_security_error(false, &mut || n += 1);
+        report_script_security_error(true, &mut || n += 1);
+        remote_insert_result_helper(false, &mut || n += 1);
+        remote_insert_result_helper(true, &mut || n += 1);
+        remote_insert_result(true, &mut || n += 1);
+        remote_insert_result(false, &mut || n += 1);
+        remote_insert(&mut || n += 1);
+        kill_player(None, &mut || n += 1);
+        kill_player(Some(3), &mut || n += 1);
+        assert_eq!(n, 5);
+        // IDA 0xa16fa4/0xa172e4: replicator match + server-gated drops.
+        assert_eq!(disconnect_player(false, true), DisconnectAction::Ignore);
+        assert_eq!(
+            disconnect_player(true, false),
+            DisconnectAction::RequestDisconnect { notify_server_shutdown: true }
+        );
+        assert_eq!(
+            disconnect_player(true, true),
+            DisconnectAction::RequestDisconnect { notify_server_shutdown: false }
+        );
+        assert!(!disconnect_player_route(false, true));
+        assert!(!disconnect_player_route(true, false));
+        assert!(disconnect_player_route(true, true));
+    }
+}
+
+/// `Players::findAncestorPlayer` (IDA 0xa14c94): the nearest Player
+/// ancestor wins; otherwise the player whose character matches.
+#[must_use]
+pub fn find_ancestor_player(
+ provider_present: bool,
+ players_present: bool,
+ ancestor: Option<u32>,
+ ancestor_is_player: bool,
+ list_match: Option<u32>,
+) -> Option<u32> {
+ if !(provider_present && players_present) {
+ return None;
+ }
+ if let Some(id) = ancestor {
+ if ancestor_is_player {
+ return Some(id);
+ }
+ }
+ list_match
+}
+
+/// `Players::getPlayerFromCharacter` (IDA 0xa1526c): the player whose
+/// character is `character`, or `None` without provider/Players.
+#[must_use]
+pub fn player_from_character(
+ provider_present: bool,
+ players_present: bool,
+ found: Option<u32>,
+) -> Option<u32> {
+ if !(provider_present && players_present) {
+ return None;
+ }
+ found
+}
+
+/// `Players::onDescendantRemoving` (IDA 0xa15560): a Player descendant
+/// leaving on the server side is flagged before the base handler runs.
+pub fn on_descendant_removing(
+ provider_present: bool,
+ client_present: bool,
+ is_player: bool,
+ set_flag: &mut dyn FnMut(),
+ base: &mut dyn FnMut(),
+) {
+ if provider_present && !client_present && is_player {
+ set_flag();
+ }
+ base();
+}
+
+/// `Players::onChildRemoving` (IDA 0xa15700): a removed Player child is
+/// unregistered; the server side also fires the leaving/left signals.
+pub fn on_child_removing(
+ is_player: bool,
+ provider_present: bool,
+ client_present: bool,
+ remove: &mut dyn FnMut(),
+ fire_leaving: &mut dyn FnMut(),
+ fire_left: &mut dyn FnMut(),
+) {
+ if !is_player {
+ return;
+ }
+ remove();
+ if provider_present && !client_present {
+ fire_leaving();
+ fire_left();
+ }
+}
+
+/// `Players::reportScriptSecurityError` (IDA 0xa16238): resolves the
+/// script-information provider; the report itself stays engine-side.
+pub fn report_script_security_error(provider_present: bool, create: &mut dyn FnMut()) {
+ if provider_present {
+ create();
+ }
+}
+
+/// `Players::remoteInsertResultHelper` (IDA 0xa1624c): forwards the
+/// insert only while the weak Players handle is still alive.
+pub fn remote_insert_result_helper(alive: bool, insert: &mut dyn FnMut()) {
+ if alive {
+ insert();
+ }
+}
+
+/// `Players::remoteInsertResult` (IDA 0xa16648): inserts unless the
+/// model batch was already consumed.
+pub fn remote_insert_result(already_inserted: bool, insert: &mut dyn FnMut()) {
+ if !already_inserted {
+ insert();
+ }
+}
+
+/// `Players::remoteInsert` (IDA 0xa168dc): resolves the insert service
+/// and queues the safe insert; the bind stays engine-side.
+pub fn remote_insert(insert: &mut dyn FnMut()) {
+ insert();
+}
+
+/// `Players::killPlayer` (IDA 0xa16cb0): zeroes the player humanoid's
+/// health. The Humanoid lookup stays engine-side.
+pub fn kill_player(player: Option<u32>, kill: &mut dyn FnMut()) {
+ if player.is_some() {
+ kill();
+ }
 }

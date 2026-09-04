@@ -219,16 +219,18 @@ pub fn stub_a14c6c(
 // demangled: RBX::Network::Players::findAncestorPlayer(RBX::Instance const*)
 // type: void __fastcall(RBX::Network::Players *this, const RBX::Instance *)
 #[doc(alias = "RBX::Network::Players::findAncestorPlayer(RBX::Instance const*)")]
-pub fn stub_a14c94() -> ! {
-    todo!("0xa14c94 RBX::Network::Players::findAncestorPlayer(RBX::Instance const*)")
+pub fn stub_a14c94(provider_present: bool, players_present: bool, ancestor: Option<u32>, ancestor_is_player: bool, list_match: Option<u32>) -> Option<u32> {
+ // IDA 0xa14c94: the nearest Player ancestor wins, else the character match.
+ crate::player::find_ancestor_player(provider_present, players_present, ancestor, ancestor_is_player, list_match)
 }
 
 // 0xa1526c — __ZN3RBX7Network7Players22getPlayerFromCharacterEPNS_8InstanceE
 // demangled: RBX::Network::Players::getPlayerFromCharacter(RBX::Instance *)
 // type: int __fastcall(RBX::Network::Players *this, RBX::Instance *)
 #[doc(alias = "RBX::Network::Players::getPlayerFromCharacter(RBX::Instance *)")]
-pub fn stub_a1526c() -> ! {
-    todo!("0xa1526c RBX::Network::Players::getPlayerFromCharacter(RBX::Instance *)")
+pub fn stub_a1526c(provider_present: bool, players_present: bool, found: Option<u32>) -> Option<u32> {
+ // IDA 0xa1526c: the player whose character matches.
+ crate::player::player_from_character(provider_present, players_present, found)
 }
 
 // 0xa15560 — __ZN3RBX7Network7Players20onDescendantRemovingERKN5boost10shared_ptrINS_8InstanceEEE
@@ -236,23 +238,26 @@ pub fn stub_a1526c() -> ! {
 // type: void __fastcall(RBX::ServiceProvider *, const RBX::Instance *, int, int, int, int, int, int, __guard *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Network::Players::onDescendantRemoving(rbx_core::SharedPtr<RBX::Instance> const&)")]
-pub fn stub_a15560() -> ! {
-    todo!("0xa15560 RBX::Network::Players::onDescendantRemoving(boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_a15560(provider_present: bool, client_present: bool, is_player: bool, set_flag: &mut dyn FnMut(), base: &mut dyn FnMut()) {
+ // IDA 0xa15560: flag Player descendants, then the base handler.
+ crate::player::on_descendant_removing(provider_present, client_present, is_player, set_flag, base)
 }
 
 // 0xa15700 — __ZN3RBX7Network7Players15onChildRemovingEPNS_8InstanceE
 // demangled: RBX::Network::Players::onChildRemoving(RBX::Instance *)
 // type: void __fastcall(RBX::Network::Players *this, RBX::Instance *)
 #[doc(alias = "RBX::Network::Players::onChildRemoving(RBX::Instance *)")]
-pub fn stub_a15700() -> ! {
-    todo!("0xa15700 RBX::Network::Players::onChildRemoving(RBX::Instance *)")
+pub fn stub_a15700(is_player: bool, provider_present: bool, client_present: bool, remove: &mut dyn FnMut(), fire_leaving: &mut dyn FnMut(), fire_left: &mut dyn FnMut()) {
+ // IDA 0xa15700: unregister the Player child; server fires leaving/left.
+ crate::player::on_child_removing(is_player, provider_present, client_present, remove, fire_leaving, fire_left)
 }
 
 // 0xa16238 — __ZN3RBX7Network7Players25reportScriptSecurityErrorEiSsSsSs
 // demangled: RBX::Network::Players::reportScriptSecurityError(int,std::string,std::string,std::string)
 #[doc(alias = "RBX::Network::Players::reportScriptSecurityError(int,std::string,std::string,std::string)")]
-pub fn stub_a16238() -> ! {
-    todo!("0xa16238 RBX::Network::Players::reportScriptSecurityError(int,std::string,std::string,std::string)")
+pub fn stub_a16238(provider_present: bool, create: &mut dyn FnMut()) {
+ // IDA 0xa16238: resolve the script-information provider.
+ crate::player::report_script_security_error(provider_present, create)
 }
 
 // 0xa1624c — __ZN3RBX7Network7Players24remoteInsertResultHelperEN5boost8weak_ptrIS1_EENS2_10shared_ptrINS_8InstanceEEEN3G3D7Vector3E
@@ -260,8 +265,9 @@ pub fn stub_a16238() -> ! {
 // type: void __fastcall(int, int *, int, int, pthread_mutex_t *, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, pthread_mutex_t *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Network::Players::remoteInsertResultHelper(rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3)")]
-pub fn stub_a1624c() -> ! {
-    todo!("0xa1624c RBX::Network::Players::remoteInsertResultHelper(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3)")
+pub fn stub_a1624c(alive: bool, insert: &mut dyn FnMut()) {
+ // IDA 0xa1624c: forward the insert while the weak handle is alive.
+ crate::player::remote_insert_result_helper(alive, insert)
 }
 
 // 0xa16648 — __ZN3RBX7Network7Players18remoteInsertResultEN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3E
@@ -269,40 +275,45 @@ pub fn stub_a1624c() -> ! {
 // type: void __fastcall(int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "RBX::Network::Players::remoteInsertResult(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3)")]
-pub fn stub_a16648() -> ! {
-    todo!("0xa16648 RBX::Network::Players::remoteInsertResult(boost::shared_ptr<RBX::Instance>,G3D::Vector3)")
+pub fn stub_a16648(already_inserted: bool, insert: &mut dyn FnMut()) {
+ // IDA 0xa16648: insert unless the batch was already consumed.
+ crate::player::remote_insert_result(already_inserted, insert)
 }
 
 // 0xa168dc — __ZN3RBX7Network7Players12remoteInsertEiSsN3G3D7Vector3E
 // demangled: RBX::Network::Players::remoteInsert(int,std::string,G3D::Vector3)
 // type: void __fastcall(RBX::ServiceProvider *, const RBX::Instance *, const std::string *, struct _Unwind_Exception *, int, int)
 #[doc(alias = "RBX::Network::Players::remoteInsert(int,std::string,G3D::Vector3)")]
-pub fn stub_a168dc() -> ! {
-    todo!("0xa168dc RBX::Network::Players::remoteInsert(int,std::string,G3D::Vector3)")
+pub fn stub_a168dc(insert: &mut dyn FnMut()) {
+ // IDA 0xa168dc: resolve the insert service and queue the safe insert.
+ crate::player::remote_insert(insert)
 }
 
 // 0xa16cb0 — __ZN3RBX7Network7Players10killPlayerEi
 // demangled: RBX::Network::Players::killPlayer(int)
 // type: void __fastcall(RBX::Network::Players *this, int)
 #[doc(alias = "RBX::Network::Players::killPlayer(int)")]
-pub fn stub_a16cb0() -> ! {
-    todo!("0xa16cb0 RBX::Network::Players::killPlayer(int)")
+pub fn stub_a16cb0(player: Option<u32>, kill: &mut dyn FnMut()) {
+ // IDA 0xa16cb0: zero the player humanoid health.
+ crate::player::kill_player(player, kill)
 }
 
 // 0xa16fa4 — __ZN3RBX7Network7Players16disconnectPlayerERNS_8InstanceEi
 // demangled: RBX::Network::Players::disconnectPlayer(RBX::Instance &,int)
 // type: void __fastcall(RBX::Network::Players *this, RBX::Instance *, int)
 #[doc(alias = "RBX::Network::Players::disconnectPlayer(RBX::Instance &,int)")]
-pub fn stub_a16fa4() -> ! {
-    todo!("0xa16fa4 RBX::Network::Players::disconnectPlayer(RBX::Instance &,int)")
+pub fn stub_a16fa4(replicator_matches: bool, server_present: bool) -> crate::player::DisconnectAction {
+    // IDA 0xa16fa4: matching replicator gets `requestDisconnect`, firing `("server", false)` first when no server is present.
+    crate::player::disconnect_player(replicator_matches, server_present)
 }
 
 // 0xa172e4 — __ZN3RBX7Network7Players16disconnectPlayerEi
 // demangled: RBX::Network::Players::disconnectPlayer(int)
 // type: _DWORD __fastcall(RBX::Network::Players *__hidden this, int)
 #[doc(alias = "RBX::Network::Players::disconnectPlayer(int)")]
-pub fn stub_a172e4() -> ! {
-    todo!("0xa172e4 RBX::Network::Players::disconnectPlayer(int)")
+pub fn stub_a172e4(provider_present: bool, role_present: bool) -> bool {
+    // IDA 0xa172e4: without a provider or a `Server` under it this is a no-op; else routes to `disconnectPlayer`.
+    crate::player::disconnect_player_route(provider_present, role_present)
 }
 
 // 0xa17304 — __ZN3RBX7Network7Players21disconnectPlayerLocalEi
