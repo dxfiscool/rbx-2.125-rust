@@ -102,6 +102,55 @@ pub fn assign_to<T>(slot: &mut Option<Box<T>>, functor: T) -> bool {
     *slot = Some(Box::new(functor));
     true
     }
+
+/// Function-pointer `function_buffer` (IDA 0x957584): one word plus the
+/// published tag.
+#[derive(Clone, Copy, Debug, Default)]
+pub struct FnSlot {
+    pub addr: usize,
+    pub tag: &'static str,
+}
+
+/// `functor_manager<FnPtr>::manage` (IDA 0x957584): the buffer holds one
+/// function-pointer word. Clone copies it, move copies and zeroes the
+/// source, destroy zeroes the destination, `CheckAlign` compares the
+/// stored tag against the expected mangled name (`strcmp`, zeroing on
+/// mismatch), and `GetTag` publishes `&typeid(F)`. Returns classify into
+/// [`ManageOutcome`] (the raw pointer results are engine-side).
+pub fn manage_fn_slot(op: FunctorOp, src: &mut FnSlot, dst: &mut FnSlot, tag: &'static str) -> ManageOutcome {
+    match op {
+        // IDA 0x957584 case 0: `dst[0] = src[0]; return src`.
+        FunctorOp::Clone => {
+            dst.addr = src.addr;
+            ManageOutcome::Manager(ManagerToken)
+        }
+        // IDA 0x957584 case 1: move, then zero the source.
+        FunctorOp::Move => {
+            dst.addr = src.addr;
+            src.addr = 0;
+            ManageOutcome::Manager(ManagerToken)
+        }
+        // IDA 0x957584 case 2 (`LABEL_7`): zero the destination.
+        FunctorOp::Destroy => {
+            dst.addr = 0;
+            ManageOutcome::Manager(ManagerToken)
+        }
+        // IDA 0x957584 case 3: `strcmp` the tag; mismatch zeroes.
+        FunctorOp::CheckAlign => {
+            if dst.tag == tag {
+                ManageOutcome::Tag(dst.tag)
+            } else {
+                dst.addr = 0;
+                ManageOutcome::Manager(ManagerToken)
+            }
+        }
+        // IDA 0x957584 default: `dst[0] = &typeinfo; dst[1] = 0`.
+        FunctorOp::GetTag => {
+            dst.tag = tag;
+            ManageOutcome::Tag(tag)
+        }
+    }
+    }
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -153,5 +202,25 @@ mod tests {
         assert!(assign_to(&mut slot, inc as fn(i32) -> i32));
         assert_eq!(slot.as_mut().map(|f| f(41)), Some(42));
     }
+    #[test]
+    fn fn_slot_manage_arms() {
+        // IDA 0x957584: clone/move/destroy/check/get-tag on one word.
+        let tag = "PFNfb_t";
+        let mut src = FnSlot { addr: 0x1234, tag };
+        let mut dst = FnSlot::default();
+        assert_eq!(manage_fn_slot(FunctorOp::Clone, &mut src, &mut dst, tag), ManageOutcome::Manager(ManagerToken));
+        assert_eq!((src.addr, dst.addr), (0x1234, 0x1234));
+        assert_eq!(manage_fn_slot(FunctorOp::Move, &mut src, &mut dst, tag), ManageOutcome::Manager(ManagerToken));
+        assert_eq!((src.addr, dst.addr), (0, 0x1234));
+        assert_eq!(manage_fn_slot(FunctorOp::Destroy, &mut src, &mut dst, tag), ManageOutcome::Manager(ManagerToken));
+        assert_eq!(dst.addr, 0);
+        dst.tag = tag;
+        assert_eq!(manage_fn_slot(FunctorOp::CheckAlign, &mut src, &mut dst, tag), ManageOutcome::Tag(tag));
+        assert_eq!(manage_fn_slot(FunctorOp::CheckAlign, &mut src, &mut dst, "other"), ManageOutcome::Manager(ManagerToken));
+        assert_eq!(dst.addr, 0);
+        assert_eq!(manage_fn_slot(FunctorOp::GetTag, &mut src, &mut dst, tag), ManageOutcome::Tag(tag));
+        assert_eq!(dst.tag, tag);
+    }
 }
+
 
