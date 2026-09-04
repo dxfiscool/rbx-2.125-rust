@@ -15373,8 +15373,12 @@ pub fn stub_371e5c() -> ! {
 // 0x3723f4 — __ZN3RBX10Soundscape12SoundService16update3DSettingsEv
 // type: FMOD::System *__fastcall(RBX::Soundscape::SoundService *this)
 #[doc(alias = "RBX::Soundscape::SoundService::update3DSettings(void)")]
-pub fn stub_3723f4() -> ! {
-    todo!("0x3723f4 RBX::Soundscape::SoundService::update3DSettings(void)")
+pub fn stub_3723f4(service: &mut crate::generated::SoundService) -> i32 {
+    // IDA 0x3723f4: system = *(this+24) (0x3723fa); null -> return null (host:
+    // FMOD_OK no-op); else checkResultNoThrow(System::set3DSettings(system,
+    // +32/+33/+34 floats)) (0x372406/0x37240e). Host has no FMOD::System, so
+    // the default seam reports FMOD_OK.
+    crate::generated::sound_service_update_3d_settings(service, |_, _, _| crate::FMOD_OK)
 }
 
 // 0x372414 — __ZN3RBX10Soundscape12SoundService19updateAmbientReverbEv
