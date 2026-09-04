@@ -29,9 +29,7 @@ pub fn stub_5cf780() -> ! {
 
 // 0x5cf784 — __ZN3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEEC2IMS2_KFRKS4_vEMS2_FvS8_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::PropDescriptor<G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&)>(char const*,char const*,G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_5cf784() -> ! {
-    todo!("0x5cf784 RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::PropDescriptor<G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&)>(char const*,char const*,G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
-}
+pub use crate::instance::stub_0x5cf784 as stub_5cf784;
 
 // 0x5cf898 — __ZN3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::~PropDescriptor()")]
@@ -41,15 +39,11 @@ pub fn stub_5cf898() -> ! {
 
 // 0x5cf8c4 — __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")]
-pub fn stub_5cf8c4() -> ! {
-    todo!("0x5cf8c4 RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")
-}
+pub use crate::instance::stub_0x5cf8c4 as stub_5cf8c4;
 
 // 0x5cf8c8 — __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")]
-pub fn stub_5cf8c8() -> ! {
-    todo!("0x5cf8c8 RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")
-}
+pub use crate::instance::stub_0x5cf8c8 as stub_5cf8c8;
 
 // 0x5cf8cc — __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ModelInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::ModelInstance::*)(void)const,void (RBX::ModelInstance::*)(G3D::CoordinateFrame const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
@@ -209,15 +203,11 @@ pub fn stub_5d3344() -> ! {
 
 // 0x5d3374 — __ZNK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::isReadOnly(void)const")]
-pub fn stub_5d3374() -> ! {
-    todo!("0x5d3374 RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::isReadOnly(void)const")
-}
+pub use crate::instance::stub_0x5d3374 as stub_5d3374;
 
 // 0x5d3384 — __ZNK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::isWriteOnly(void)const")]
-pub fn stub_5d3384() -> ! {
-    todo!("0x5d3384 RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::isWriteOnly(void)const")
-}
+pub use crate::instance::stub_0x5d3384 as stub_5d3384;
 
 // 0x5d3394 — __ZNK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
@@ -275,21 +265,15 @@ pub fn stub_5d3748() -> ! {
 
 // 0x5d3850 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::isReadOnly(void)const")]
-pub fn stub_5d3850() -> ! {
-    todo!("0x5d3850 RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::isReadOnly(void)const")
-}
+pub use crate::instance::stub_0x5d3850 as stub_5d3850;
 
 // 0x5d3854 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::isWriteOnly(void)const")]
-pub fn stub_5d3854() -> ! {
-    todo!("0x5d3854 RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::isWriteOnly(void)const")
-}
+pub use crate::instance::stub_0x5d3854 as stub_5d3854;
 
 // 0x5d3858 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_5d3858() -> ! {
-    todo!("0x5d3858 RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const")
-}
+pub use crate::instance::stub_0x5d3858 as stub_5d3858;
 
 // 0x5d3878 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PVInstance * const&)const")]
