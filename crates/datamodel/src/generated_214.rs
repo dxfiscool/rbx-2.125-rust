@@ -185,9 +185,7 @@ pub fn stub_0x7c3870() -> ! {
 
 // 0x7c3914 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFN5boost10shared_ptrINS_8InstanceEEES6_ELi1EEC2EMS2_FS6_S6_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::BoundFuncDesc(rbx_core::SharedPtr<RBX::Instance> (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x7c3914() -> ! {
-    todo!("0x7c3914 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::BoundFuncDesc(rbx_core::SharedPtr<RBX::Instance> (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
-}
+pub use crate::generated_b::stub_0x7c3914 as stub_0x7c3914;
 
 // 0x7c3a90 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFN5boost10shared_ptrINS_8InstanceEEES6_ELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
@@ -209,9 +207,7 @@ pub fn stub_0x7c3bc8() -> ! {
 
 // 0x7c3cb0 — __ZN3RBX10Reflection11Call1HelperINS_8HumanoidEMS2_FN5boost10shared_ptrINS_8InstanceEEES6_ES6_S6_E4callEPS2_S8_RNS0_7VariantERKS6_
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::Humanoid,rbx_core::SharedPtr<RBX::Instance> (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>::call(RBX::Humanoid*,rbx_core::SharedPtr<RBX::Instance> (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")]
-pub fn stub_0x7c3cb0() -> ! {
-    todo!("0x7c3cb0 RBX::Reflection::Call1Helper<RBX::Humanoid,rbx_core::SharedPtr<RBX::Instance> (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>::call(RBX::Humanoid*,rbx_core::SharedPtr<RBX::Instance> (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")
-}
+pub use crate::generated_b::stub_0x7c3cb0 as stub_0x7c3cb0;
 
 // 0x7c4654 — __ZN3RBX10Reflection15RemoteEventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEED0Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::~RemoteEventDesc()")]
@@ -227,15 +223,11 @@ pub fn stub_0x7c4708() -> ! {
 
 // 0x7c486c — __ZNK3RBX10Reflection15RemoteEventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::isScriptable(void)const")]
-pub fn stub_0x7c486c() -> ! {
-    todo!("0x7c486c RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::isScriptable(void)const")
-}
+pub use crate::generated_b::stub_0x7c486c as stub_0x7c486c;
 
 // 0x7c4874 — __ZNK3RBX10Reflection15RemoteEventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE11isBroadcastEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::isBroadcast(void)const")]
-pub fn stub_0x7c4874() -> ! {
-    todo!("0x7c4874 RBX::Reflection::RemoteEventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::isBroadcast(void)const")
-}
+pub use crate::generated_b::stub_0x7c4874 as stub_0x7c4874;
 
 // 0x7c487c — __ZNK3RBX10Reflection13EventDescImplILi1ENS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
@@ -257,9 +249,7 @@ pub fn stub_0x7c49ec() -> ! {
 
 // 0x7c4a00 — __ZN3RBX10Reflection9EventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_EC2ESB_PKcSE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*>::EventDesc(rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x7c4a00() -> ! {
-    todo!("0x7c4a00 RBX::Reflection::EventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*>::EventDesc(rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
-}
+pub use crate::generated_b::stub_0x7c4a00 as stub_0x7c4a00;
 
 // 0x7c4b84 — __ZN3RBX10Reflection9EventDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Humanoid::*>::~EventDesc()")]
@@ -275,9 +265,7 @@ pub fn stub_0x7c4ba8() -> ! {
 
 // 0x7c7314 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEELi1EEC2EMS2_FvS6_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x7c7314() -> ! {
-    todo!("0x7c7314 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::Humanoid::*)(rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
-}
+pub use crate::generated_b::stub_0x7c7314 as stub_0x7c7314;
 
 // 0x7c7490 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvN5boost10shared_ptrINS_8InstanceEEEELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
@@ -305,9 +293,7 @@ pub fn stub_0x7c76ac() -> ! {
 
 // 0x7c9e88 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvN3G3D7Vector3EN5boost10shared_ptrINS_8InstanceEEEELi2EEC2EMS2_FvS4_S8_EPKcSE_SE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),2>::BoundFuncDesc(void (RBX::Humanoid::*)(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x7c9e88() -> ! {
-    todo!("0x7c9e88 RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),2>::BoundFuncDesc(void (RBX::Humanoid::*)(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
-}
+pub use crate::generated_b::stub_0x7c9e88 as stub_0x7c9e88;
 
 // 0x7ca054 — __ZN3RBX10Reflection13BoundFuncDescINS_8HumanoidEFvN3G3D7Vector3EN5boost10shared_ptrINS_8InstanceEEEELi2EE16declareSignatureEPKcNS0_7VariantESC_SD_
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Humanoid,void ()(G3D::Vector3,rbx_core::SharedPtr<RBX::Instance>),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
@@ -335,9 +321,7 @@ pub fn stub_0x7ca2bc() -> ! {
 
 // 0x7cb0a4 — __ZN3RBX10Reflection17RefPropDescriptorINS_8HumanoidENS_12PartInstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::RefPropDescriptor<RBX::PartInstance* (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(RBX::PartInstance*)>(char const*,char const*,RBX::PartInstance* (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(RBX::PartInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x7cb0a4() -> ! {
-    todo!("0x7cb0a4 RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::RefPropDescriptor<RBX::PartInstance* (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(RBX::PartInstance*)>(char const*,char const*,RBX::PartInstance* (RBX::Humanoid::*)(void)const,void (RBX::Humanoid::*)(RBX::PartInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
-}
+pub use crate::generated_b::stub_0x7cb0a4 as stub_0x7cb0a4;
 
 // 0x7cb148 — __ZN3RBX10Reflection17RefPropDescriptorINS_8HumanoidENS_12PartInstanceEED0Ev
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::~RefPropDescriptor()")]
@@ -347,15 +331,11 @@ pub fn stub_0x7cb148() -> ! {
 
 // 0x7cb178 — __ZNK3RBX10Reflection17RefPropDescriptorINS_8HumanoidENS_12PartInstanceEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::isReadOnly(void)const")]
-pub fn stub_0x7cb178() -> ! {
-    todo!("0x7cb178 RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::isReadOnly(void)const")
-}
+pub use crate::generated_b::stub_0x7cb178 as stub_0x7cb178;
 
 // 0x7cb188 — __ZNK3RBX10Reflection17RefPropDescriptorINS_8HumanoidENS_12PartInstanceEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::isWriteOnly(void)const")]
-pub fn stub_0x7cb188() -> ! {
-    todo!("0x7cb188 RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::isWriteOnly(void)const")
-}
+pub use crate::generated_b::stub_0x7cb188 as stub_0x7cb188;
 
 // 0x7cb198 — __ZNK3RBX10Reflection17RefPropDescriptorINS_8HumanoidENS_12PartInstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Humanoid,RBX::PartInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
