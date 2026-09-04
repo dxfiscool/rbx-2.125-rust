@@ -1559,15 +1559,27 @@ pub fn stub_9dcc34() -> ! {
 // 0x9dcfb8 — __ZN3RBX7Network16ServerReplicator20readRequestCharacterERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::ServerReplicator::readRequestCharacter(RakNet::BitStream &)")]
 // was: RBX::Network::ServerReplicator::readRequestCharacter(RakNet::BitStream &)
-pub fn stub_9dcfb8() -> ! {
-    todo!("0x9dcfb8 RBX::Network::ServerReplicator::readRequestCharacter(RakNet::BitStream &)")
+pub fn stub_9dcfb8(
+    stream: &mut crate::bitstream::BitStream,
+    instance: Option<u32>,
+    readable_guid: &str,
+    address: &str,
+) -> crate::replicator::CharacterRequest {
+    // IDA 0x9dcfb8: u32 model id + player-name string + instance ref; unresolvable refs throw; feeds `processRequestCharacter`.
+    crate::replicator::read_request_character(stream, instance, readable_guid, address)
 }
 
 // 0x9dd5f8 — __ZN3RBX7Network16ServerReplicator23readPropAcknowledgementERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::ServerReplicator::readPropAcknowledgement(RakNet::BitStream &)")]
 // was: RBX::Network::ServerReplicator::readPropAcknowledgement(RakNet::BitStream &)
-pub fn stub_9dd5f8() -> ! {
-    todo!("0x9dd5f8 RBX::Network::ServerReplicator::readPropAcknowledgement(RakNet::BitStream &)")
+pub fn stub_9dd5f8(
+    resolved: bool,
+    index: i32,
+    instance: Option<u32>,
+    descriptor: u32,
+) -> crate::replicator::PropAckOutcome {
+    // IDA 0x9dd5f8: int index + instance ref; unresolved returns the lookup verdict, else pairs `(descriptor, instance)` for `PropSync`.
+    crate::replicator::prop_ack_outcome(resolved, index, instance, descriptor)
 }
 
 // 0x9e013c — __ZN3RBX7Network16ServerReplicator20writeChangedPropertyEPKNS_8InstanceERKNS_10Reflection18PropertyDescriptorERN6RakNet9BitStreamE
@@ -1601,8 +1613,12 @@ pub fn stub_9e10f4() -> ! {
 // 0x9e2024 — __ZN3RBX7Network16ServerReplicator16serializeSFFlagsERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::ServerReplicator::serializeSFFlags(RakNet::BitStream &)")]
 // was: RBX::Network::ServerReplicator::serializeSFFlags(RakNet::BitStream &)
-pub fn stub_9e2024() -> ! {
-    todo!("0x9e2024 RBX::Network::ServerReplicator::serializeSFFlags(RakNet::BitStream &)")
+pub fn stub_9e2024(
+    stream: &mut crate::bitstream::BitStream,
+    flags: &[crate::replicator::SynchronizedFlag<'_>],
+) {
+    // IDA 0x9e2024: `Write<ushort>(count)` then one `serializeSFFlag` per synchronized flag.
+    crate::replicator::serialize_sf_flags(stream, flags)
 }
 
 // 0x9e5700 — __ZNK3RBX7Network16DescriptorSenderINS_10Reflection18PropertyDescriptorEE4sendERN6RakNet9BitStreamEPKS3_
@@ -11997,8 +12013,9 @@ pub fn stub_9dcbd8() -> ! {
 #[doc(
     alias = "RBX::Network::ServerReplicator::processRequestCharacter(RBX::Instance *,RBX::Guid::Data,unsigned int,std::string)"
 )]
-pub fn stub_9dd6c8() -> ! {
-    todo!("0x9dd6c8 RBX::Network::ServerReplicator::processRequestCharacter(RBX::Instance *,RBX::Guid::Data,unsigned int,std::string)")
+pub fn stub_9dd6c8(remote_present: bool, remote_matches: bool) -> crate::replicator::CharacterProcess {
+    // IDA 0x9dd6c8: null remote logs + throws, mismatched remote logs + throws, else a virtual proceeds.
+    crate::replicator::process_request_character(remote_present, remote_matches)
 }
 
 // 0x9ddef4 — __ZN3RBX7Network16ServerReplicator29filterReceivedChangedPropertyEPNS_8InstanceERKNS_10Reflection18PropertyDescriptorE
@@ -12006,8 +12023,9 @@ pub fn stub_9dd6c8() -> ! {
 #[doc(
     alias = "RBX::Network::ServerReplicator::filterReceivedChangedProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)"
 )]
-pub fn stub_9ddef4() -> ! {
-    todo!("0x9ddef4 RBX::Network::ServerReplicator::filterReceivedChangedProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")
+pub fn stub_9ddef4(prop_sync_accepted: bool, filter: Option<bool>) -> bool {
+    // IDA 0x9ddef4: asserts + `PropSync` short-circuit, else the `NetworkFilter` verdict (absent → accept).
+    crate::replicator::filter_received_changed_property(prop_sync_accepted, filter)
 }
 
 // 0x9dee84 — __ZN3RBX7Network16ServerReplicator20filterReceivedParentEPNS_8InstanceES3_
@@ -12015,8 +12033,9 @@ pub fn stub_9ddef4() -> ! {
 #[doc(
     alias = "RBX::Network::ServerReplicator::filterReceivedParent(RBX::Instance *,RBX::Instance *)"
 )]
-pub fn stub_9dee84() -> ! {
-    todo!("0x9dee84 RBX::Network::ServerReplicator::filterReceivedParent(RBX::Instance *,RBX::Instance *)")
+pub fn stub_9dee84(filter: Option<bool>) -> bool {
+    // IDA 0x9dee84: asserts the instance (debug-only), then the `NetworkFilter::filterParent` verdict (absent → accept).
+    crate::replicator::filter_received_parent(filter)
 }
 
 // 0x9e0004 — __ZN3RBX7Network16ServerReplicator13filterPhysicsEPNS_12PartInstanceE

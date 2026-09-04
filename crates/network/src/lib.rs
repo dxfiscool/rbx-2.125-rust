@@ -480,3 +480,4 @@ pub mod id_serializer;
 pub mod functor;
 pub mod signal;
 pub mod player;
+pub mod replicator;
