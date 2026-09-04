@@ -417,6 +417,66 @@ impl AASamplesEnumDesc {
     }
 }
 
+/// Host carrier for `PropDescriptor<CRenderSettingsItem,AASamples>` GetSetImpl
+/// (IDA 0x12568/0x12594): the same getter/setter pair the AASamples
+/// EnumPropDescriptor keeps at +44.
+pub struct AASamplesPair {
+    pub getter: Option<fn(&AASamplesSettings) -> i32>,
+    pub setter: Option<fn(&mut AASamplesItem, i32)>,
+}
+
+impl AASamplesPair {
+    /// IDA 0x12560 (decompiled `return 0`, 0x12562): a bound getter is never
+    /// read-only.
+    pub fn is_read_only(&self) -> bool {
+        self.getter.is_none()
+    }
+
+    /// IDA 0x12564 (decompiled `return 0`, 0x12566): a bound setter is never
+    /// write-only.
+    pub fn is_write_only(&self) -> bool {
+        self.setter.is_none()
+    }
+}
+
+/// Host carrier for `BoundProp<bool, Mutability::ReadWrite>` (IDA 0x125b8:
+/// same shape as the string BoundProp 0x11b18 — classDescriptor,
+/// `TypedPropertyDescriptor<bool>` ctor, vtable install, BoundPropGetSet
+/// alloc + member-data offset store). The bound bool member travels as the
+/// single flag slot below.
+pub struct BoolBoundProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// CRenderSettingsItem bool slot behind the 0x125b8 bound member.
+#[derive(Default)]
+pub struct BoolBoundItem {
+    pub flag: bool,
+}
+
+/// Host carrier for `PropDescriptor<CRenderSettingsItem,bool>` with the
+/// getter on `CRenderSettings` (IDA 0x127ac: classDescriptor 0x127d4,
+/// GetSetImpl alloc + member-fn stores 0x127da..0x12814,
+/// `TypedPropertyDescriptor<bool>` ctor 0x12852, vtable install 0x12870) —
+/// cf. IntProp above.
+pub struct BoolCProp {
+    pub name: String,
+    pub category: String,
+    pub getter: Option<fn(&BoolCSettings) -> bool>,
+    pub setter: Option<fn(&mut BoolItem, bool)>,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// CRenderSettings bool slot read by the 0x127ac getter.
+#[derive(Default)]
+pub struct BoolCSettings {
+    pub flag: bool,
+}
+
 // 0x106bc — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 pub fn stub_106bc(prop: &ResolutionPresetPair, settings: &ResolutionSettings) -> i32 {
@@ -1678,68 +1738,135 @@ pub fn stub_12520(
 
 // 0x12560 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::GetSetImpl<RBX::CRenderSettings::AASamples (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AASamples)>::isReadOnly(void)const")]
-pub fn stub_12560() -> ! {
-    todo!("0x12560 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::GetSetImpl<RBX::CRenderSettings::AASamples (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AASamples)>::isReadOnly(void)const")
+pub fn stub_12560(pair: &AASamplesPair) -> bool {
+    // IDA 0x12560 (decompiled `return 0`, 0x12562): the enum member pointer
+    // is bound, so never read-only.
+    pair.is_read_only()
 }
 
 // 0x12564 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::GetSetImpl<RBX::CRenderSettings::AASamples (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AASamples)>::isWriteOnly(void)const")]
-pub fn stub_12564() -> ! {
-    todo!("0x12564 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::GetSetImpl<RBX::CRenderSettings::AASamples (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AASamples)>::isWriteOnly(void)const")
+pub fn stub_12564(pair: &AASamplesPair) -> bool {
+    // IDA 0x12564 (decompiled `return 0`, 0x12566): the enum member pointer
+    // is bound, so never write-only.
+    pair.is_write_only()
 }
 
 // 0x12568 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::GetSetImpl<RBX::CRenderSettings::AASamples (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AASamples)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_12568() -> ! {
-    todo!("0x12568 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::GetSetImpl<RBX::CRenderSettings::AASamples (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AASamples)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_12568(pair: &AASamplesPair, settings: &AASamplesSettings) -> i32 {
+    // IDA 0x12568 (decompiled 0x12568..0x12592; disasm null-object split
+    // 0x1256a..0x12582, `a2-36` + 96 adjust 0x12570..0x12578,
+    // virtual/indirect dispatch 0x12584..0x12590, indirect call): resolves
+    // the stored enum getter and calls it. A null getter faults in the
+    // image; the host panics.
+    let get = pair.getter.expect("bound getter at IDA 0x11d30");
+    get(settings)
 }
 
 // 0x12594 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::GetSetImpl<RBX::CRenderSettings::AASamples (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AASamples)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::AASamples const&)const")]
-pub fn stub_12594() -> ! {
-    todo!("0x12594 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::GetSetImpl<RBX::CRenderSettings::AASamples (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::AASamples)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::AASamples const&)const")
+pub fn stub_12594(pair: &AASamplesPair, item: &mut AASamplesItem, value: i32) {
+    // IDA 0x12594 (decompiled 0x12594..0x125b6; disasm `a2-36` adjust
+    // 0x1259a..0x1259c, setter fetch 0x125a0..0x125a8, `>>1`/`&1` dispatch
+    // 0x125a8..0x125ac, indirect call): resolves the stored enum setter and
+    // calls it. A null setter faults; host panics.
+    let set = pair.setter.expect("bound setter at IDA 0x11d30");
+    set(item, value);
 }
 
 // 0x125b8 — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2I19CRenderSettingsItemEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<CRenderSettingsItem>(char const*,char const*,bool CRenderSettingsItem::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_125b8() -> ! {
-    todo!("0x125b8 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<CRenderSettingsItem>(char const*,char const*,bool CRenderSettingsItem::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_125b8(
+    name: &str,
+    category: &str,
+    attributes: u32,
+    permissions: u32,
+) -> BoolBoundProp {
+    // IDA 0x125b8 (same BoundProp shape as 0x11b18 — classDescriptor,
+    // `TypedPropertyDescriptor<bool>` ctor, vtable install, BoundPropGetSet
+    // alloc + member-data offset store): registers the bound bool member.
+    let _ = crate::generated_134::stub_fa00();
+    BoolBoundProp {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x12748 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::isReadOnly(void)const")]
-pub fn stub_12748() -> ! {
-    todo!("0x12748 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::isReadOnly(void)const")
+pub fn stub_12748(prop: &BoolBoundProp) -> bool {
+    // IDA 0x12748 (decompiled `return 0`, 0x1274a): Mutability::1 is
+    // read-write, so never read-only.
+    let _ = prop;
+    false
 }
 
 // 0x1274c — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::isWriteOnly(void)const")]
-pub fn stub_1274c() -> ! {
-    todo!("0x1274c RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::isWriteOnly(void)const")
+pub fn stub_1274c(prop: &BoolBoundProp) -> bool {
+    // IDA 0x1274c (decompiled `return 0`, 0x1274e): same — never write-only.
+    let _ = prop;
+    false
 }
 
 // 0x12750 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_12750() -> ! {
-    todo!("0x12750 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_12750(item: &BoolBoundItem) -> bool {
+    // IDA 0x12750 (decompiled 0x12750..0x12758; disasm member load
+    // `*(offset + obj - 36)` at 0x12758): reads the bound bool member.
+    item.flag
 }
 
 // 0x1275c — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetI19CRenderSettingsItemE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_1275c() -> ! {
-    todo!("0x1275c RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<CRenderSettingsItem>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_1275c(item: &mut BoolBoundItem, value: bool) {
+    // IDA 0x1275c (decompiled 0x1275c..0x127a6; disasm null-object split
+    // 0x12764..0x12766, offset load 0x1276a, compare 0x12774, assign on
+    // change 0x12778, change-callback check + indirect call 0x1277a..0x12798,
+    // `raisePropertyChanged` 0x127a6; equal values return the offset at
+    // 0x12776 with no notification): assigns only on change, then notifies.
+    // The host has no change-callback/signal wired to this slot.
+    if item.flag != value {
+        item.flag = value;
+        // raisePropertyChanged would fire here (0x127a6); no host slot.
+    }
 }
 
 // 0x127ac — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItembEC2IMNS_15CRenderSettingsEKFbvEMS2_FvbEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::PropDescriptor<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>(char const*,char const*,bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_127ac() -> ! {
-    todo!("0x127ac RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::PropDescriptor<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>(char const*,char const*,bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_127ac(
+    name: &str,
+    category: &str,
+    getter: fn(&BoolCSettings) -> bool,
+    setter: fn(&mut BoolItem, bool),
+    attributes: u32,
+    permissions: u32,
+) -> BoolCProp {
+    // IDA 0x127ac (decompiled 0x127ac..0x1288e; disasm classDescriptor
+    // 0x127d4, GetSetImpl alloc + member-fn stores 0x127da..0x12814,
+    // `TypedPropertyDescriptor<bool>` ctor 0x12852, vtable install 0x12870):
+    // registers the bool get/set pair (getter on CRenderSettings) — cf.
+    // IntProp at 0x1089c.
+    let _ = crate::generated_134::stub_fa00();
+    BoolCProp {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        getter: Some(getter),
+        setter: Some(setter),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x128c0 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMNS_15CRenderSettingsEKFbvEMS2_FvbEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>::isReadOnly(void)const")]
-pub fn stub_128c0() -> ! {
-    todo!("0x128c0 RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>::isReadOnly(void)const")
+pub fn stub_128c0(prop: &BoolCProp) -> bool {
+    // IDA 0x128c0 (decompiled `return 0`, 0x128c2): the bool member pointer
+    // is bound at 0x127ac, so never read-only.
+    prop.getter.is_none()
 }
 
 #[cfg(test)]

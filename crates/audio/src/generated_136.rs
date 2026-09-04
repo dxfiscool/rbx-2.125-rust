@@ -12,28 +12,170 @@ const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
 
+use crate::generated_134::{IntCallResult, XmlIntSlot, XmlReadValue};
+
+/// Host carrier for `PropDescriptor<CRenderSettingsItem,bool>` GetSetImpl with
+/// the getter on `CRenderSettings` (IDA 0x128c8/0x128fc) — cf.
+/// `AntialiasingPair` in generated_135.rs.
+pub struct BoolPair {
+    pub getter: Option<fn(&BoolSettings) -> bool>,
+    pub setter: Option<fn(&mut BoolItem, bool)>,
+}
+
+impl BoolPair {
+    /// IDA 0x128c4 (`return 0` shape): a bound getter is never read-only.
+    pub fn is_read_only(&self) -> bool {
+        self.getter.is_none()
+    }
+
+    /// A bound setter is never write-only.
+    pub fn is_write_only(&self) -> bool {
+        self.setter.is_none()
+    }
+}
+
+/// CRenderSettings bool slot read by the bool getter.
+#[derive(Default)]
+pub struct BoolSettings {
+    pub flag: bool,
+}
+
+/// CRenderSettingsItem bool slot written by the bool setter.
+#[derive(Default)]
+pub struct BoolItem {
+    pub flag: bool,
+}
+
+/// Host carrier for `EnumPropDescriptor<CRenderSettingsItem,QualityLevel>`
+/// (IDA 0x12920: same shape as generated_135 0x10a08 — classDescriptor,
+/// enum Singleton init, base ctor, enum desc at +40, GetSetImpl at +44,
+/// fixups at +28).
+pub struct QualityProp {
+    pub name: String,
+    pub category: String,
+    pub getter: Option<fn(&QualitySettings) -> i32>,
+    pub setter: Option<fn(&mut QualityItem, i32)>,
+    pub attributes: u32,
+    pub permissions: u32,
+    pub enum_type: &'static str,
+}
+
+impl QualityProp {
+    /// IDA 0x12b00 (same delegate-to-GetSetImpl shape): slot-0 virtual.
+    pub fn is_read_only(&self) -> bool {
+        self.getter.is_none()
+    }
+
+    /// IDA 0x12b10: slot-1 virtual.
+    pub fn is_write_only(&self) -> bool {
+        self.setter.is_none()
+    }
+}
+
+/// CRenderSettings QualityLevel slot read by the 0x12920 getter.
+#[derive(Default)]
+pub struct QualitySettings {
+    pub level: i32,
+}
+
+/// CRenderSettingsItem QualityLevel slot written by the 0x12920 setter.
+#[derive(Default)]
+pub struct QualityItem {
+    pub level: i32,
+}
+
+/// Host model of `EnumDesc<QualityLevel>` for IDA 0x12b48..0x12d48 (mirrors
+/// `AntialiasingEnumDesc` in generated_135.rs).
+#[derive(Default)]
+pub struct QualityEnumDesc {
+    pub items: Vec<(i32, String)>,
+    pub index_to_value: Vec<i32>,
+}
+
+impl QualityEnumDesc {
+    pub fn add_pair(&mut self, value: i32, name: &str, index: usize) {
+        self.items.push((value, name.to_owned()));
+        if self.index_to_value.len() <= index {
+            self.index_to_value.resize(index + 1, -1);
+        }
+        self.index_to_value[index] = value;
+    }
+
+    pub fn lookup_value(&self, name: &str) -> Option<i32> {
+        self.items.iter().find(|(_, n)| n == name).map(|(v, _)| *v)
+    }
+
+    pub fn value_to_string(&self, value: i32, out: &mut String) -> bool {
+        if let Some((_, name)) = self.items.iter().find(|(v, _)| *v == value) {
+            *out = name.clone();
+            true
+        } else {
+            false
+        }
+    }
+
+    pub fn convert_to_index(&self, value: i32) -> i32 {
+        if value >= 0 && (value as usize) < self.index_to_value.len() {
+            return self.index_to_value[value as usize];
+        }
+        -1
+    }
+}
+
 // 0x128c4 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMNS_15CRenderSettingsEKFbvEMS2_FvbEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>::isWriteOnly(void)const")]
-pub fn stub_128c4() -> ! {
-    todo!("0x128c4 RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_128c4(pair: &BoolPair) -> bool {
+    // IDA 0x128c4 (`return 0` shape, cf. 0x128c0): the bool member pointer
+    // is bound, so never write-only. (isWriteOnly follows isReadOnly at
+    // 0x128c0 in generated_135.rs.)
+    pair.is_write_only()
 }
 
 // 0x128c8 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMNS_15CRenderSettingsEKFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_128c8() -> ! {
-    todo!("0x128c8 RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_128c8(pair: &BoolPair, settings: &BoolSettings) -> bool {
+    // IDA 0x128c8 (decompiled 0x128c8..0x128fa shape, cf. 0x109b8; disasm
+    // null-object split, `a2-36` + 96 adjust, virtual/indirect dispatch,
+    // indirect call): resolves the stored `bool (CRenderSettings::*)() const`
+    // and calls it. A null getter faults in the image; the host panics.
+    let get = pair.getter.expect("bound bool getter");
+    get(settings)
 }
 
 // 0x128fc — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMNS_15CRenderSettingsEKFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_128fc() -> ! {
-    todo!("0x128fc RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_128fc(pair: &BoolPair, item: &mut BoolItem, value: bool) {
+    // IDA 0x128fc (decompiled 0x128fc..0x1291e shape, cf. 0x109e4; disasm
+    // `a2-36` adjust, setter fetch, `>>1`/`&1` dispatch, indirect call):
+    // resolves the stored `void (CRenderSettingsItem::*)(bool)` and calls
+    // it. A null setter faults; host panics.
+    let set = pair.setter.expect("bound bool setter");
+    set(item, value);
 }
 
 // 0x12920 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::EnumPropDescriptor<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>(char const*,char const*,RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_12920() -> ! {
-    todo!("0x12920 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::EnumPropDescriptor<RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel)>(char const*,char const*,RBX::CRenderSettings::QualityLevel (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::QualityLevel),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_12920(
+    name: &str,
+    category: &str,
+    getter: fn(&QualitySettings) -> i32,
+    setter: fn(&mut QualityItem, i32),
+    attributes: u32,
+    permissions: u32,
+) -> QualityProp {
+    // IDA 0x12920 (decompiled 0x12920..0x12acc shape, cf. generated_135
+    // 0x10a08): classDescriptor, QualityLevel EnumDesc Singleton init, base
+    // ctor, enum desc at +40, GetSetImpl at +44, attribute fixups at +28.
+    let _ = crate::generated_134::stub_fa00();
+    QualityProp {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        getter: Some(getter),
+        setter: Some(setter),
+        attributes,
+        permissions,
+        enum_type: "QualityLevel",
+    }
 }
 
 // 0x12ad4 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEED0Ev
@@ -44,62 +186,114 @@ pub fn stub_12ad4() {
 
 // 0x12b00 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::isReadOnly(void)const")]
-pub fn stub_12b00() -> ! {
-    todo!("0x12b00 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::isReadOnly(void)const")
+pub fn stub_12b00(prop: &QualityProp) -> bool {
+    // IDA 0x12b00 (same delegate-to-GetSetImpl shape): slot-0 virtual.
+    prop.is_read_only()
 }
 
 // 0x12b10 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::isWriteOnly(void)const")]
-pub fn stub_12b10() -> ! {
-    todo!("0x12b10 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::isWriteOnly(void)const")
+pub fn stub_12b10(prop: &QualityProp) -> bool {
+    // IDA 0x12b10: slot-1 virtual.
+    prop.is_write_only()
 }
 
 // 0x12b20 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE11equalValuesEPKNS0_13DescribedBaseES8_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_12b20() -> ! {
-    todo!("0x12b20 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_12b20(prop: &QualityProp, a: &QualitySettings, b: &QualitySettings) -> bool {
+    // IDA 0x12b20 (decompiled 0x12b20..0x12b46 shape; disasm getValue
+    // slot-8 calls): compares the +44 GetSetImpl `getValue` of both
+    // described objects.
+    let get = prop.getter.expect("bound getter at IDA 0x12920");
+    get(a) == get(b)
 }
 
 // 0x12b48 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_12b48() -> ! {
-    todo!("0x12b48 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_12b48(prop: &QualityProp, settings: &QualitySettings) -> IntCallResult {
+    // IDA 0x12b48 (decompiled 0x12b48..0x12b6a; disasm getEnumValue slot-68
+    // 0x12b56, `Type::getSingleton<int>()` 0x12b5c, `placement_any<int>`
+    // 0x12b6a): tags the out slot with the int singleton, then stores the
+    // enum value as int.
+    let get = prop.getter.expect("bound getter at IDA 0x12920");
+    IntCallResult {
+        type_name: "int",
+        value: get(settings),
+    }
 }
 
 // 0x12b6c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_12b6c() -> ! {
-    todo!("0x12b6c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_12b6c(prop: &QualityProp, item: &mut QualityItem, value: i32) {
+    // IDA 0x12b6c (decompiled 0x12b6c..0x12d00 shape; disasm
+    // typeinfo-for-int fast path, `Variant::convert<int>` slow path,
+    // `setIntValue` slot-72 call): coerces the variant to int, then stores
+    // it. The caller passes the coerced int.
+    let set = prop.setter.expect("bound setter at IDA 0x12920");
+    set(item, value);
 }
 
 // 0x12cbc — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE9copyValueEPKNS0_13DescribedBaseEPS6_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_12cbc() -> ! {
-    todo!("0x12cbc RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_12cbc(prop: &QualityProp, src: &QualitySettings, dst: &mut QualityItem) {
+    // IDA 0x12cbc (decompiled 0x12cbc..0x12ce0 shape; disasm getValue slot-8,
+    // setValue slot-12): reads the source through the getter, writes it
+    // through the setter.
+    let get = prop.getter.expect("bound getter at IDA 0x12920");
+    let set = prop.setter.expect("bound setter at IDA 0x12920");
+    set(dst, get(src));
 }
 
 // 0x12ce0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::hasStringValue(void)const")]
-pub fn stub_12ce0() -> ! {
-    todo!("0x12ce0 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::hasStringValue(void)const")
+pub fn stub_12ce0() -> bool {
+    // IDA 0x12ce0 (`MOVS R0,#1` shape): enum properties always have a string
+    // value.
+    true
 }
 
 // 0x12ce4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_12ce4() -> ! {
-    todo!("0x12ce4 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_12ce4(prop: &QualityProp, settings: &QualitySettings, out: &mut String) {
+    // IDA 0x12ce4 (decompiled 0x12ce4..0x12d06 shape; disasm enum singleton
+    // fetch, getValue slot-8, void `convertToString`): like generated_135
+    // 0x120f4 this instantiation calls the void (string, value) overload —
+    // asserts + assign-or-empty (host: generated_123 stub_cd4c).
+    let get = prop.getter.expect("bound getter at IDA 0x12920");
+    crate::generated_123::stub_cd4c(get(settings), out);
 }
 
 // 0x12d08 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_12d08() -> ! {
-    todo!("0x12d08 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_12d08(
+    prop: &QualityProp,
+    desc: &QualityEnumDesc,
+    item: &mut QualityItem,
+    name: &str,
+) -> bool {
+    // IDA 0x12d08 (decompiled 0x12d08..0x12d46 shape; disasm enum singleton,
+    // `Name::lookup`, `EnumDesc::convertToValue`, setValue slot-12, return
+    // 1/0). `Name::lookup` interning has no host effect.
+    match desc.lookup_value(name) {
+        Some(value) => {
+            let set = prop.setter.expect("bound setter at IDA 0x12920");
+            set(item, value);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x12d48 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_12d48() -> ! {
-    todo!("0x12d48 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_12d48(prop: &QualityProp, settings: &QualitySettings, out: &mut XmlIntSlot) -> i32 {
+    // IDA 0x12d48 (decompiled 0x12d48..0x12d66 shape; disasm getValue slot-8,
+    // `clearValue`, tag `5` at +16, value at +20, return 5).
+    let get = prop.getter.expect("bound getter at IDA 0x12920");
+    out.value_type = 0; // `clearValue` resets the pair first.
+    out.value_type = 5; // int tag at +16.
+    out.int_value = get(settings); // value at +20.
+    5
 }
 
 // 0x12d68 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
