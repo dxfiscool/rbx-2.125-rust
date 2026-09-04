@@ -70,6 +70,10 @@ pub struct DataModel {
     /// `getIsPersonalServer` (IDA `0x431618`).
     pub personal_server: bool,
 }
+// SAFETY: RBX::DataModel is shared across threads via shared_ptr (IDA 0xf5ea84/0xf5ea94);
+// raw links (network_metric, workspace) are unretained but stable for the owner's lifetime.
+unsafe impl Send for DataModel {}
+unsafe impl Sync for DataModel {}
 
 // 46 stubs in this file | batch range 0xef04..0x28838c.
 // Batch 1 (implemented): 0x179e8..0x4b860 — save/upload entry points, the
