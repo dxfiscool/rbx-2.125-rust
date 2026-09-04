@@ -157,8 +157,9 @@ pub fn stub_a6ef14() -> ! {
 // 0xa6f1ac — __ZN6RakNet9RakString14IPAddressMatchEPKc
 // type: bool __fastcall(RakNet::RakString *this, const char *__s)
 #[doc(alias = "RakNet::RakString::IPAddressMatch(char const*)")]
-pub fn stub_a6f1ac() -> ! {
-    todo!("0xa6f1ac RakNet::RakString::IPAddressMatch(char const*)")
+pub fn stub_a6f1ac(pattern: &str, addr: &str) -> bool {
+ // IDA 0xa6f1ac: prefix walk with star escape.
+ crate::socket::ip_address_match(pattern, addr)
 }
 
 // 0xa6f210 — __ZN6RakNet9RakString17FreeMemoryNoMutexEv

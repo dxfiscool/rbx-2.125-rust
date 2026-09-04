@@ -214,6 +214,48 @@ mod tests {
         RakPeer::update_network_loop();
         RakPeer::recv_from_loop();
     }
+    #[test]
+    fn security_and_password_gates() {
+        // IDA 0xa5efa0/0xa5efa4: hardcoded and empty.
+        let mut peer = RakPeer::new();
+        assert_eq!(peer.initialize_security(), 0);
+        peer.disable_security();
+        // IDA 0xa5efa8/0xa5f08c/0xa5f230/0xa6f1ac: pattern list.
+        assert!(!peer.is_in_security_exception_list("10.0.0.1"));
+        peer.add_to_security_exception_list("10.0.0.*");
+        peer.add_to_security_exception_list("192.168.1.7");
+        assert!(peer.is_in_security_exception_list("10.0.0.1"));
+        assert!(peer.is_in_security_exception_list("192.168.1.7"));
+        assert!(!peer.is_in_security_exception_list("192.168.1.8"));
+        assert!(!peer.is_in_security_exception_list(""));
+        assert!(!peer.is_in_security_exception_list("12345678901234567"));
+        peer.remove_from_security_exception_list(Some("10.0.0.9"));
+        assert!(!peer.is_in_security_exception_list("10.0.0.1"));
+        assert!(peer.is_in_security_exception_list("192.168.1.7"));
+        peer.remove_from_security_exception_list(None);
+        assert!(!peer.is_in_security_exception_list("192.168.1.7"));
+        // IDA 0xa5f28c/0xa5f290/0xa5f294: limits and counts.
+        assert_eq!(peer.maximum_incoming_connections(), 0);
+        peer.set_maximum_incoming_connections(8);
+        assert_eq!(peer.maximum_incoming_connections(), 8);
+        assert_eq!(peer.number_of_connections(&mut || 3), 3);
+        // IDA 0xa5f37c/0xa5f3a4: capped password roundtrip.
+        peer.set_incoming_password(Some(&[1, 2, 3]));
+        let mut len = 10;
+        let mut out = Vec::new();
+        assert_eq!(peer.incoming_password(Some(&mut out), &mut len), 3);
+        assert_eq!((out, len), (vec![1, 2, 3], 3));
+        peer.set_incoming_password(None);
+        assert_eq!(peer.incoming_password(None, &mut len), 0);
+        let big = vec![9u8; 300];
+        peer.set_incoming_password(Some(big.as_slice()));
+        assert_eq!(peer.incoming_password(None, &mut len), 255);
+        // IDA 0xa5fc00: staged shutdown.
+        let order = std::cell::RefCell::new(Vec::new());
+        peer.shutdown(0, &mut || order.borrow_mut().push("n"), &mut || order.borrow_mut().push("d"), &mut || order.borrow_mut().push("c"));
+        peer.shutdown(5, &mut || order.borrow_mut().push("n"), &mut || order.borrow_mut().push("d"), &mut || order.borrow_mut().push("c"));
+        assert_eq!(order.borrow().as_slice(), ["d", "c", "n", "d", "c"]);
+    }
 }
 
 /// `RakNet::UNASSIGNED_RAKNET_GUID` (IDA 0xa5c018).
@@ -554,10 +596,17 @@ pub fn super_fast_hash_incremental(data: &[u8], hash: u32) -> u32 {
  t.wrapping_add(t >> 6)
 }
 
-/// `RakNet::RakPeer` handle (IDA 0xa5cb00): sockets, queues, and threads
-/// stay engine-side; lifecycle and result codes live here.
+/// `RakNet::RakPeer` (IDA 0xa5cb00): sockets, queues, and threads stay
+/// engine-side; the exception list, limits, and password live here.
 #[derive(Clone, Debug, Default)]
-pub struct RakPeer {}
+pub struct RakPeer {
+ /// Security exception patterns at +1400 (IDA 0xa5efa8).
+ pub security_exceptions: Vec<String>,
+ /// Max incoming connections at +16 (IDA 0xa5f28c).
+ pub max_incoming_connections: u16,
+ /// Incoming password bytes at +296, length at +552 (IDA 0xa5f37c).
+ pub incoming_password: Vec<u8>,
+}
 
 impl RakPeer {
  /// `RakPeer::RakPeer` (IDA 0xa5cb00).
@@ -607,4 +656,114 @@ impl RakPeer {
  /// 0xa5ee80): thread entry points; the loops stay engine-side.
  pub fn update_network_loop() {}
  pub fn recv_from_loop() {}
+ /// `RakPeer::InitializeSecurity` (IDA 0xa5efa0): hardcoded `return 0`
+ /// (security is compiled out of this build).
+ pub fn initialize_security(&mut self) -> u32 {
+ 0
+ }
+
+ /// `RakPeer::DisableSecurity` (IDA 0xa5efa4): empty.
+ pub fn disable_security(&mut self) {}
+
+ /// `RakPeer::AddToSecurityExceptionList` (IDA 0xa5efa8): pushes the
+ /// pattern; locking stays engine-side.
+ pub fn add_to_security_exception_list(&mut self, addr: &str) {
+ self.security_exceptions.push(addr.to_owned());
+ }
+
+ /// `RakPeer::RemoveFromSecurityExceptionList` (IDA 0xa5f08c):
+ /// drops every entry matching `addr`, or clears the list for null.
+ pub fn remove_from_security_exception_list(&mut self, addr: Option<&str>) {
+ match addr {
+ Some(a) => self.security_exceptions.retain(|e| !ip_address_match(e, a)),
+ None => self.security_exceptions.clear(),
+ }
+ }
+
+ /// `RakPeer::IsInSecurityExceptionList` (IDA 0xa5f230).
+ #[must_use]
+ pub fn is_in_security_exception_list(&self, addr: &str) -> bool {
+ self.security_exceptions.iter().any(|e| ip_address_match(e, addr))
+ }
+
+ /// `RakPeer::SetMaximumIncomingConnections` (IDA 0xa5f28c).
+ pub fn set_maximum_incoming_connections(&mut self, max: u16) {
+ self.max_incoming_connections = max;
+ }
+
+ /// `RakPeer::GetMaximumIncomingConnections` (IDA 0xa5f290).
+ #[must_use]
+ pub fn maximum_incoming_connections(&self) -> u16 {
+ self.max_incoming_connections
+ }
+
+ /// `RakPeer::NumberOfConnections` (IDA 0xa5f294): the active-system
+ /// enumeration stays engine-side.
+ #[must_use]
+ pub fn number_of_connections(&self, count_actives: &mut dyn FnMut() -> u16) -> u16 {
+ count_actives()
+ }
+
+ /// `RakPeer::SetIncomingPassword` (IDA 0xa5f37c): length capped at
+ /// 255, zeroed for null input.
+ pub fn set_incoming_password(&mut self, data: Option<&[u8]>) {
+ let bytes = data.unwrap_or(&[]);
+ let len = bytes.len().min(255);
+ self.incoming_password = bytes[..len].to_vec();
+ }
+
+ /// `RakPeer::GetIncomingPassword` (IDA 0xa5f3a4): with an output
+ /// buffer, copies up to `*len` bytes and reports the count; without
+ /// one, just reports the stored length. Returns the count either way.
+ pub fn incoming_password(&self, out: Option<&mut Vec<u8>>, len: &mut usize) -> usize {
+ if let Some(dst) = out {
+ let n = (*len).min(self.incoming_password.len());
+ dst.extend_from_slice(&self.incoming_password[..n]);
+ *len = n;
+ } else {
+ *len = self.incoming_password.len();
+ }
+ *len
+ }
+
+ /// `RakPeer::Shutdown` (IDA 0xa5fc00): with a nonzero block duration
+ /// every active system gets a disconnect notice first; then plugins
+ /// detach and every queue, table, and lookup resets engine-side.
+ pub fn shutdown(
+ &mut self,
+ block_ms: u32,
+ notify: &mut dyn FnMut(),
+ detach: &mut dyn FnMut(),
+ clear: &mut dyn FnMut(),
+ ) {
+ if block_ms > 0 {
+ notify();
+ }
+ detach();
+ clear();
+ }
+}
+
+/// `RakNet::RakString::IPAddressMatch` (IDA 0xa6f1ac): walks both
+/// strings while equal; a `*` in the pattern at the first difference
+/// matches the rest (both sides must be non-empty there). Empty or
+/// over-15-char inputs never match.
+#[must_use]
+pub fn ip_address_match(pattern: &str, addr: &str) -> bool {
+ if addr.is_empty() || addr.len() > 0xF {
+ return false;
+ }
+ let (pb, ab) = (pattern.as_bytes(), addr.as_bytes());
+ let mut i = 0;
+ loop {
+ let p = pb.get(i).copied().unwrap_or(0);
+ let a = ab.get(i).copied().unwrap_or(0);
+ if p != a {
+ return p != 0 && a != 0 && p == b'*';
+ }
+ if p == 0 {
+ return true;
+ }
+ i += 1;
+ }
 }

@@ -35,8 +35,9 @@ pub fn stub_a5f8cc() -> ! {
 // demangled: RakNet::RakPeer::Shutdown(unsigned int,unsigned char,PacketPriority)
 // type: int __fastcall(int, unsigned int, char, int)
 #[doc(alias = "RakNet::RakPeer::Shutdown(unsigned int,unsigned char,PacketPriority)")]
-pub fn stub_a5fc00() -> ! {
-    todo!("0xa5fc00 RakNet::RakPeer::Shutdown(unsigned int,unsigned char,PacketPriority)")
+pub fn stub_a5fc00(peer: &mut crate::socket::RakPeer, block_ms: u32, notify: &mut dyn FnMut(), detach: &mut dyn FnMut(), clear: &mut dyn FnMut()) {
+ // IDA 0xa5fc00: notify, detach, reset.
+ peer.shutdown(block_ms, notify, detach, clear)
 }
 
 // 0xa60494 — __ZN6RakNet7RakPeer24NotifyAndFlagForShutdownENS_13SystemAddressEbh14PacketPriority

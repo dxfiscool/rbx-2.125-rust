@@ -757,80 +757,90 @@ pub fn stub_a5ee80() {
 // demangled: RakNet::RakPeer::InitializeSecurity(char const*,char const*,bool)
 // type: int __fastcall(RakNet::RakPeer *this, const char *, const char *, bool)
 #[doc(alias = "RakNet::RakPeer::InitializeSecurity(char const*,char const*,bool)")]
-pub fn stub_a5efa0() -> ! {
-    todo!("0xa5efa0 RakNet::RakPeer::InitializeSecurity(char const*,char const*,bool)")
+pub fn stub_a5efa0(peer: &mut crate::socket::RakPeer) -> u32 {
+ // IDA 0xa5efa0: hardcoded return 0.
+ peer.initialize_security()
 }
 
 // 0xa5efa4 — __ZN6RakNet7RakPeer15DisableSecurityEv
 // demangled: RakNet::RakPeer::DisableSecurity(void)
 // type: void __fastcall(RakNet::RakPeer *this)
 #[doc(alias = "RakNet::RakPeer::DisableSecurity(void)")]
-pub fn stub_a5efa4() -> ! {
-    todo!("0xa5efa4 RakNet::RakPeer::DisableSecurity(void)")
+pub fn stub_a5efa4(peer: &mut crate::socket::RakPeer) {
+ // IDA 0xa5efa4: empty.
+ peer.disable_security()
 }
 
 // 0xa5efa8 — __ZN6RakNet7RakPeer26AddToSecurityExceptionListEPKc
 // demangled: RakNet::RakPeer::AddToSecurityExceptionList(char const*)
 // type: void __fastcall(RakNet::RakPeer *this, const char *)
 #[doc(alias = "RakNet::RakPeer::AddToSecurityExceptionList(char const*)")]
-pub fn stub_a5efa8() -> ! {
-    todo!("0xa5efa8 RakNet::RakPeer::AddToSecurityExceptionList(char const*)")
+pub fn stub_a5efa8(peer: &mut crate::socket::RakPeer, addr: &str) {
+ // IDA 0xa5efa8: push the pattern.
+ peer.add_to_security_exception_list(addr)
 }
 
 // 0xa5f08c — __ZN6RakNet7RakPeer31RemoveFromSecurityExceptionListEPKc
 // demangled: RakNet::RakPeer::RemoveFromSecurityExceptionList(char const*)
 // type: void __fastcall(RakNet::RakPeer *this, const char *)
 #[doc(alias = "RakNet::RakPeer::RemoveFromSecurityExceptionList(char const*)")]
-pub fn stub_a5f08c() -> ! {
-    todo!("0xa5f08c RakNet::RakPeer::RemoveFromSecurityExceptionList(char const*)")
+pub fn stub_a5f08c(peer: &mut crate::socket::RakPeer, addr: Option<&str>) {
+ // IDA 0xa5f08c: drop matches, or clear for null.
+ peer.remove_from_security_exception_list(addr)
 }
 
 // 0xa5f230 — __ZN6RakNet7RakPeer25IsInSecurityExceptionListEPKc
 // demangled: RakNet::RakPeer::IsInSecurityExceptionList(char const*)
 // type: int __fastcall(RakNet::RakPeer *this, const char *)
 #[doc(alias = "RakNet::RakPeer::IsInSecurityExceptionList(char const*)")]
-pub fn stub_a5f230() -> ! {
-    todo!("0xa5f230 RakNet::RakPeer::IsInSecurityExceptionList(char const*)")
+pub fn stub_a5f230(peer: &crate::socket::RakPeer, addr: &str) -> bool {
+ // IDA 0xa5f230: wildcard scan.
+ peer.is_in_security_exception_list(addr)
 }
 
 // 0xa5f28c — __ZN6RakNet7RakPeer29SetMaximumIncomingConnectionsEt
 // demangled: RakNet::RakPeer::SetMaximumIncomingConnections(unsigned short)
 // type: int __fastcall(int this, unsigned __int16)
 #[doc(alias = "RakNet::RakPeer::SetMaximumIncomingConnections(unsigned short)")]
-pub fn stub_a5f28c() -> ! {
-    todo!("0xa5f28c RakNet::RakPeer::SetMaximumIncomingConnections(unsigned short)")
+pub fn stub_a5f28c(peer: &mut crate::socket::RakPeer, max: u16) {
+ // IDA 0xa5f28c: store the limit.
+ peer.set_maximum_incoming_connections(max)
 }
 
 // 0xa5f290 — __ZNK6RakNet7RakPeer29GetMaximumIncomingConnectionsEv
 // demangled: RakNet::RakPeer::GetMaximumIncomingConnections(void)const
 // type: int __fastcall(RakNet::RakPeer *this)
 #[doc(alias = "RakNet::RakPeer::GetMaximumIncomingConnections(void)const")]
-pub fn stub_a5f290() -> ! {
-    todo!("0xa5f290 RakNet::RakPeer::GetMaximumIncomingConnections(void)const")
+pub fn stub_a5f290(peer: &crate::socket::RakPeer) -> u16 {
+ // IDA 0xa5f290: load the limit.
+ peer.maximum_incoming_connections()
 }
 
 // 0xa5f294 — __ZNK6RakNet7RakPeer19NumberOfConnectionsEv
 // demangled: RakNet::RakPeer::NumberOfConnections(void)const
 // type: int __fastcall(RakNet::RakPeer *this)
 #[doc(alias = "RakNet::RakPeer::NumberOfConnections(void)const")]
-pub fn stub_a5f294() -> ! {
-    todo!("0xa5f294 RakNet::RakPeer::NumberOfConnections(void)const")
+pub fn stub_a5f294(peer: &crate::socket::RakPeer, count_actives: &mut dyn FnMut() -> u16) -> u16 {
+ // IDA 0xa5f294: active-system enumeration stays engine-side.
+ peer.number_of_connections(count_actives)
 }
 
 // 0xa5f37c — __ZN6RakNet7RakPeer19SetIncomingPasswordEPKci
 // demangled: RakNet::RakPeer::SetIncomingPassword(char const*,int)
 // type: char *__fastcall(char *this, size_t __n, int)
 #[doc(alias = "RakNet::RakPeer::SetIncomingPassword(char const*,int)")]
-pub fn stub_a5f37c() -> ! {
-    todo!("0xa5f37c RakNet::RakPeer::SetIncomingPassword(char const*,int)")
+pub fn stub_a5f37c(peer: &mut crate::socket::RakPeer, data: Option<&[u8]>) {
+ // IDA 0xa5f37c: capped password store.
+ peer.set_incoming_password(data)
 }
 
 // 0xa5f3a4 — __ZN6RakNet7RakPeer19GetIncomingPasswordEPcPi
 // demangled: RakNet::RakPeer::GetIncomingPassword(char *,int *)
 // type: int __fastcall(int this, char *__dst, int *)
 #[doc(alias = "RakNet::RakPeer::GetIncomingPassword(char *,int *)")]
-pub fn stub_a5f3a4() -> ! {
-    todo!("0xa5f3a4 RakNet::RakPeer::GetIncomingPassword(char *,int *)")
+pub fn stub_a5f3a4(peer: &crate::socket::RakPeer, out: Option<&mut Vec<u8>>, len: &mut usize) -> usize {
+ // IDA 0xa5f3a4: bounded copy plus length report.
+ peer.incoming_password(out, len)
 }
 
 // 0xa5f3d8 — __ZN6RakNet7RakPeer7ConnectEPKctS2_iPNS_9PublicKeyEjjjj
