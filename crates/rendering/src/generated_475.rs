@@ -1,4 +1,4 @@
-//! rendering shard 475 — 100 stubs 0x884390..0x888450 EA-sorted asc next 100 distinct not yet in rendering (Ogre|G3D|Render|Adorn|View|Mesh filtered 17446 total 17445->17446 covered gap filler, rbx_core::SharedPtr not boost, // 0xADDR mangled + #[doc(alias)] sanitized + todo!("0xADDR")) [skeleton batch rendering 475]
+//! rendering shard 475 — 100 stubs 0x884390..0x888450 EA-sorted asc next 100 distinct not yet in rendering (Ogre|G3D|Render|Adorn|View|Mesh filtered 17446 total 17445->17446 covered gap filler, rbx_core::SharedPtr not boost, // 0xADDR mangled + #[doc(alias)] sanitized + implemented per-EA bodies) [implemented batch rendering 475]
 //! Source: ida/export.json (85545 funcs) EA asc gap filler distinct not yet in rendering — next 100 uncovered sorted asc
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 //! Uses rbx_core::SharedPtr (not boost::shared_ptr).
