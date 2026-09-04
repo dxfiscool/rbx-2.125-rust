@@ -1966,6 +1966,29 @@ pub struct Rotate {
     _opaque: (),
 }
 
+/// Rust model of `RBX::Keyframe` (IDA `0x5b1bb0`): the keyframe leaf; poses
+/// attach as children through `setParentInternal`, so no pose list is
+/// modeled here.
+#[derive(Default)]
+pub struct Keyframe {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Reflection::BoundFuncDesc<Keyframe,
+/// SharedPtr<vector<Instance>>()>` (IDA `0x5b1f34`): same storage-only
+/// family treatment as `ChatBoundFuncDesc`.
+#[derive(Default)]
+pub struct KeyframePosesDesc {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Reflection::BoundFuncDesc<Keyframe, void(Instance)>`
+/// (IDA `0x5b1f58`): same storage-only family treatment.
+#[derive(Default)]
+pub struct KeyframeFuncDesc {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::Reflection::BoundFuncDesc<JointsService, ...>` (IDA
 /// `0x5b0f8c`): same storage-only family treatment as `ChatBoundFuncDesc`.
 #[derive(Default)]
@@ -39072,15 +39095,35 @@ pub fn stub_0x5b1354(
 // 0x5b1bb0 — __ZN3RBX8Keyframe7addPoseEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Keyframe::addPose(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Keyframe::addPose(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x5b1bb0() -> ! {
-    todo!("0x5b1bb0 RBX::Keyframe::addPose(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x5b1bb0(keyframe: &SharedPtr<Instance>, pose: &SharedPtr<Instance>) -> bool {
+    // IDA 0x5b1bb0 (`Keyframe::addPose`, decompiled): `setParentInternal(pose,
+    // keyframe, 0)` — poses attach as children. Same shape as 0x703490.
+    // SAFETY: both must point into live `SharedPtr<Instance>` allocations.
+    unsafe {
+        crate::generated_86::stub_6ffc98(
+            rbx_core::SharedPtr::as_ptr(pose) as *mut Instance,
+            rbx_core::SharedPtr::as_ptr(keyframe),
+            false,
+        )
+    }
 }
 
 // 0x5b1bbc — __ZN3RBX8Keyframe10removePoseEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Keyframe::removePose(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::Keyframe::removePose(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x5b1bbc() -> ! {
-    todo!("0x5b1bbc RBX::Keyframe::removePose(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x5b1bbc(keyframe: &SharedPtr<Instance>, pose: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x5b1bbc (`Keyframe::removePose`, decompiled): when the pose's
+    // parent (`+13`, the `parent` word per 0x70348c) is the keyframe,
+    // `setParentInternal(pose, null, 0)` detaches it; the pose crosses back
+    // either way.
+    // SAFETY: both must point into live `SharedPtr<Instance>` allocations.
+    unsafe {
+        let pose_ptr = rbx_core::SharedPtr::as_ptr(pose);
+        if (*pose_ptr).parent == rbx_core::SharedPtr::as_ptr(keyframe) {
+            crate::generated_86::stub_6ffc98(pose_ptr as *mut Instance, core::ptr::null(), false);
+        }
+    }
+    pose.clone()
 }
 
 // 0x5b1e44 — __ZNK3RBX8Keyframe17verifySetAncestorEPKNS_8InstanceES3_
@@ -39093,22 +39136,40 @@ pub fn stub_0x5b1e44() -> ! {
 // 0x5b1f34 — __ZN3RBX10Reflection13BoundFuncDescINS_8KeyframeEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Keyframe,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Keyframe,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()
-pub fn stub_0x5b1f34() -> ! {
-    todo!("0x5b1f34 RBX::Reflection::BoundFuncDesc<RBX::Keyframe,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()")
+pub fn stub_0x5b1f34(_desc: *mut KeyframePosesDesc) {
+    // IDA 0x5b1f34: `BoundFuncDesc<Keyframe, poses-getter>::D1` — memberwise
+    // teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5b1f58 — __ZN3RBX10Reflection13BoundFuncDescINS_8KeyframeEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Keyframe,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Keyframe,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
-pub fn stub_0x5b1f58() -> ! {
-    todo!("0x5b1f58 RBX::Reflection::BoundFuncDesc<RBX::Keyframe,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_0x5b1f58(_desc: *mut KeyframeFuncDesc) {
+    // IDA 0x5b1f58: `BoundFuncDesc<Keyframe, void(Instance)>::D1` —
+    // memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5b2130 — __ZNK3RBX8Keyframe11askAddChildEPKNS_8InstanceE
 #[doc(alias = "RBX::Keyframe::askAddChild(RBX::Instance const*)const")]
 // was: RBX::Keyframe::askAddChild(RBX::Instance const*)const
-pub fn stub_0x5b2130() -> ! {
-    todo!("0x5b2130 RBX::Keyframe::askAddChild(RBX::Instance const*)const")
+pub fn stub_0x5b2130(child: *const Instance) -> bool {
+    // IDA 0x5b2130: null child returns false (disasm 0x5b2134-0x5b2140);
+    // otherwise the child's `classDescriptor` is checked against the `Pose`
+    // described descriptor — a keyframe only takes poses. Same shape as
+    // 0x571b58.
+    // SAFETY: `child` must be null or point to a valid `Instance`.
+    if child.is_null() {
+        return false;
+    }
+    instance_is_a(child, "Pose")
 }
 
 // 0x5b216c — __ZN3RBX8Keyframe12onChildAddedEPNS_8InstanceE
@@ -39128,78 +39189,113 @@ pub fn stub_0x5b2170() -> ! {
 // 0x5b2558 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_8KeyframeEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::Keyframe> RBX::Creatable<RBX::Instance>::create<RBX::Keyframe>(void)")]
 // was: boost::shared_ptr<RBX::Keyframe> RBX::Creatable<RBX::Instance>::create<RBX::Keyframe>(void)
-pub fn stub_0x5b2558() -> ! {
-    todo!("0x5b2558 boost::shared_ptr<RBX::Keyframe> RBX::Creatable<RBX::Instance>::create<RBX::Keyframe>(void)")
+pub fn stub_0x5b2558() -> SharedPtr<Keyframe> {
+    // IDA 0x5b2558: `Creatable::create<Keyframe>` — `operator new` + default
+    // ctor + adoption; same collapse as 0xef04.
+    SharedPtr::new(Keyframe::default())
 }
 
 // 0x5b2608 — __ZN5boost10shared_ptrIN3RBX8KeyframeEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Keyframe>::shared_ptr<RBX::Keyframe,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::Keyframe>::shared_ptr<RBX::Keyframe,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x5b2608() -> ! {
-    todo!("0x5b2608 boost::shared_ptr<RBX::Keyframe>::shared_ptr<RBX::Keyframe,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x5b2608(ptr: *mut Keyframe, _deleter: CreatableInstanceDeleter) -> SharedPtr<Keyframe> {
+    // IDA 0x5b2608: store px, `shared_count` ctor, null-skip of
+    // `accept_owner`; same shape as 0xefb4.
+    // SAFETY: `ptr` must be null or a live model-space pointer owned by the caller.
+    if ptr.is_null() {
+        return SharedPtr::new(Keyframe::default());
+    }
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x5b27b8 — __ZN5boost6detail12shared_countC2IPN3RBX8KeyframeENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::detail::shared_count::shared_count<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter)
-pub fn stub_0x5b27b8() -> ! {
-    todo!("0x5b27b8 boost::detail::shared_count::shared_count<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x5b27b8(ptr: *mut Keyframe, _deleter: CreatableInstanceDeleter) -> ControlBlockPd<Keyframe, CreatableInstanceDeleter> {
+    // IDA 0x5b27b8: `new sp_counted_impl_pd` with use/weak counts at 1; same
+    // block-new shape as 0xf098.
+    // SAFETY: `ptr` must be a live model-space pointer owned by the caller.
+    ControlBlockPd::new(unsafe { Box::from_raw(ptr) }, CreatableInstanceDeleter)
 }
 
 // 0x5b28c0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8KeyframeENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x5b28c0() -> ! {
-    todo!("0x5b28c0 boost::detail::sp_counted_impl_pd<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x5b28c0(_block: *mut ControlBlockPd<Keyframe, CreatableInstanceDeleter>) {
+    // IDA 0x5b28c0: `BX LR` — empty; same as 0xf198.
 }
 
 // 0x5b28c4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8KeyframeENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
-pub fn stub_0x5b28c4() -> ! {
-    todo!("0x5b28c4 boost::detail::sp_counted_impl_pd<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x5b28c4(block: *mut ControlBlockPd<Keyframe, CreatableInstanceDeleter>) {
+    // IDA 0x5b28c4: `B.W __ZdlPv$shim` — D0 storage release only, same as
+    // 0x31bf0.
+    // SAFETY: `block` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(block));
+    }
 }
 
 // 0x5b28c8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8KeyframeENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
-pub fn stub_0x5b28c8() -> ! {
-    todo!("0x5b28c8 boost::detail::sp_counted_impl_pd<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x5b28c8(_block: *mut ControlBlockPd<Keyframe, CreatableInstanceDeleter>) {
+    // IDA 0x5b28c8: `dispose` runs the deleter call plus the owned `delete`
+    // before the release path; under `SharedPtr` the `Arc` drop owns disposal
+    // and the deleter tag carries no state, so the body collapses. Same shape
+    // as 0x3dea74.
 }
 
 // 0x5b28e8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8KeyframeENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
-pub fn stub_0x5b28e8() -> ! {
-    todo!("0x5b28e8 boost::detail::sp_counted_impl_pd<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x5b28e8(block: *const ControlBlockPd<Keyframe, CreatableInstanceDeleter>, type_name: &str) -> Option<CreatableInstanceDeleter> {
+    // IDA 0x5b28e8: deleter-name `strcmp`, `this + 0x10` on hit; same shape as
+    // 0x33454.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_deleter(type_name) }
 }
 
 // 0x5b2900 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8KeyframeENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_pd<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
-pub fn stub_0x5b2900() -> ! {
-    todo!("0x5b2900 boost::detail::sp_counted_impl_pd<RBX::Keyframe *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x5b2900(block: *const ControlBlockPd<Keyframe, CreatableInstanceDeleter>) -> CreatableInstanceDeleter {
+    // IDA 0x5b2900: unconditional `this + 0x10`; same as 0x3346c.
+    // SAFETY: `block` must point to a valid block.
+    unsafe { (*block).get_untyped_deleter() }
 }
 
 // 0x5b3028 — __ZN3RBX10Reflection13BoundFuncDescINS_8KeyframeEFvN5boost10shared_ptrINS_8InstanceEEEELi1EEC2EMS2_FvS6_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Keyframe,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::Keyframe::*)(rbx_core::SharedPtr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Keyframe,void ()(boost::shared_ptr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::Keyframe::*)(boost::shared_ptr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x5b3028() -> ! {
-    todo!("0x5b3028 RBX::Reflection::BoundFuncDesc<RBX::Keyframe,void ()(boost::shared_ptr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::Keyframe::*)(boost::shared_ptr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x5b3028() -> KeyframeFuncDesc {
+    // IDA 0x5b3028: `BoundFuncDesc<Keyframe, void(Instance)>::C2` over
+    // `(member-fn, names, permissions, attributes)` — binds the member
+    // function into the class descriptor; the binding lands with reflection,
+    // so the model starts at defaults. Same shape as 0x5b0f8c.
+    KeyframeFuncDesc::default()
 }
 
 // 0x5b31c0 — __ZN3RBX10Reflection13BoundFuncDescINS_8KeyframeEFvN5boost10shared_ptrINS_8InstanceEEEELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Keyframe,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Keyframe,void ()(boost::shared_ptr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)
-pub fn stub_0x5b31c0() -> ! {
-    todo!("0x5b31c0 RBX::Reflection::BoundFuncDesc<RBX::Keyframe,void ()(boost::shared_ptr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x5b31c0(_name: &str, _sig: &[Variant]) {
+    // IDA 0x5b31c0: `BoundFuncDesc<Keyframe, void(Instance)>::
+    // declareSignature` — registers the signature words into the reflection
+    // table. Same shape as 0x5b1124.
 }
 
 // 0x5b31f0 — __ZN3RBX10Reflection13BoundFuncDescINS_8KeyframeEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Keyframe,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Keyframe,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
-pub fn stub_0x5b31f0() -> ! {
-    todo!("0x5b31f0 RBX::Reflection::BoundFuncDesc<RBX::Keyframe,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+pub fn stub_0x5b31f0(_desc: *mut KeyframeFuncDesc) {
+    // IDA 0x5b31f0: `BoundFuncDesc<Keyframe, void(Instance)>::D0` — vtable
+    // install plus memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5b330c — __ZNK3RBX10Reflection13BoundFuncDescINS_8KeyframeEFvN5boost10shared_ptrINS_8InstanceEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -39212,22 +39308,37 @@ pub fn stub_0x5b330c() -> ! {
 // 0x5b33f0 — __ZN3RBX10Reflection11Call1HelperINS_8KeyframeEMS2_FvN5boost10shared_ptrINS_8InstanceEEEES6_vE4callEPS2_S8_RNS0_7VariantERKS6_
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::Keyframe,void (RBX::Keyframe::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,void>::call(RBX::Keyframe*,void (RBX::Keyframe::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: RBX::Reflection::Call1Helper<RBX::Keyframe,void (RBX::Keyframe::*)(boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,void>::call(RBX::Keyframe*,void (RBX::Keyframe::*)(boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&)
-pub fn stub_0x5b33f0() -> ! {
-    todo!("0x5b33f0 RBX::Reflection::Call1Helper<RBX::Keyframe,void (RBX::Keyframe::*)(boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,void>::call(RBX::Keyframe*,void (RBX::Keyframe::*)(boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_0x5b33f0(
+    frame: &Keyframe,
+    method: fn(&Keyframe, SharedPtr<Instance>),
+    arg: &SharedPtr<Instance>,
+) {
+    // IDA 0x5b33f0 (`Call1Helper<Keyframe, void (Keyframe::*)(Instance),
+    // ...>::call`, same head shape as 0x54d8fc): invokes the member function
+    // with a retained `Instance` copy.
+    method(frame, arg.clone());
 }
 
 // 0x5b34d8 — __ZN3RBX10Reflection13BoundFuncDescINS_8KeyframeEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EEC2EMS2_FSB_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Keyframe,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(void),0>::BoundFuncDesc(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::Keyframe::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Keyframe,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::BoundFuncDesc(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::Keyframe::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_0x5b34d8() -> ! {
-    todo!("0x5b34d8 RBX::Reflection::BoundFuncDesc<RBX::Keyframe,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::BoundFuncDesc(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::Keyframe::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x5b34d8() -> KeyframePosesDesc {
+    // IDA 0x5b34d8: `BoundFuncDesc<Keyframe, poses-getter>::C2` — binds the
+    // member function into the class descriptor; the binding lands with
+    // reflection, so the model starts at defaults. Same shape as 0x5b3028.
+    KeyframePosesDesc::default()
 }
 
 // 0x5b35dc — __ZN3RBX10Reflection13BoundFuncDescINS_8KeyframeEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Keyframe,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::Keyframe,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()
-pub fn stub_0x5b35dc() -> ! {
-    todo!("0x5b35dc RBX::Reflection::BoundFuncDesc<RBX::Keyframe,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()")
+pub fn stub_0x5b35dc(_desc: *mut KeyframePosesDesc) {
+    // IDA 0x5b35dc: `BoundFuncDesc<Keyframe, poses-getter>::D0` — vtable
+    // install plus memberwise teardown; dropping the box is the same release.
+    // SAFETY: `_desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(_desc));
+    }
 }
 
 // 0x5b3690 — __ZNK3RBX10Reflection13BoundFuncDescINS_8KeyframeEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
@@ -39247,15 +39358,33 @@ pub fn stub_0x5b36b4() -> ! {
 // 0x5b3b1c — __ZN3RBX16KeyframeSequence11addKeyframeEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::KeyframeSequence::addKeyframe(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::KeyframeSequence::addKeyframe(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x5b3b1c() -> ! {
-    todo!("0x5b3b1c RBX::KeyframeSequence::addKeyframe(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x5b3b1c(sequence: &SharedPtr<Instance>, keyframe: &SharedPtr<Instance>) -> bool {
+    // IDA 0x5b3b1c (`KeyframeSequence::addKeyframe`, decompiled): same
+    // `setParentInternal(child, parent, 0)` shape as 0x5b1bb0.
+    // SAFETY: both must point into live `SharedPtr<Instance>` allocations.
+    unsafe {
+        crate::generated_86::stub_6ffc98(
+            rbx_core::SharedPtr::as_ptr(keyframe) as *mut Instance,
+            rbx_core::SharedPtr::as_ptr(sequence),
+            false,
+        )
+    }
 }
 
 // 0x5b3b28 — __ZN3RBX16KeyframeSequence14removeKeyframeEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::KeyframeSequence::removeKeyframe(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::KeyframeSequence::removeKeyframe(boost::shared_ptr<RBX::Instance>)
-pub fn stub_0x5b3b28() -> ! {
-    todo!("0x5b3b28 RBX::KeyframeSequence::removeKeyframe(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_0x5b3b28(sequence: &SharedPtr<Instance>, keyframe: &SharedPtr<Instance>) -> SharedPtr<Instance> {
+    // IDA 0x5b3b28 (`KeyframeSequence::removeKeyframe`, decompiled): same
+    // conditional-detach shape as 0x5b1bbc.
+    // SAFETY: both must point into live `SharedPtr<Instance>` allocations.
+    unsafe {
+        let frame_ptr = rbx_core::SharedPtr::as_ptr(keyframe);
+        if (*frame_ptr).parent == rbx_core::SharedPtr::as_ptr(sequence) {
+            crate::generated_86::stub_6ffc98(frame_ptr as *mut Instance, core::ptr::null(), false);
+        }
+    }
+    keyframe.clone()
 }
 
 // 0x5b4174 — __ZN3RBXL9CopyChildEN5boost10shared_ptrINS_8InstanceEEEPS2_
