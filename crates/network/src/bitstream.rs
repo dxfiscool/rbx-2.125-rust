@@ -482,6 +482,15 @@ impl BitStream {
         self.read_bit = self.read_bit.saturating_add(pad).min(self.written_bits);
     }
 
+    /// Advance the read cursor to the next byte boundary, discarding padding.
+    /// Public alias of [`align_read_up`](Self::align_read_up) for callers
+    /// like datagram-header deserialization (IDA 0xa77102), where the
+    /// original aligns mid-stream; `read_aligned_bytes` cannot do this with
+    /// an empty slice (it returns `false` before aligning, IDA 0xa55c58).
+    pub fn align_read_to_byte(&mut self) {
+        self.align_read_up();
+    }
+
     /// `Write<RakNet::uint24_t>` (IDA 0xa77d60): align-up, then the low 3
     /// bytes in host (little-endian) order — no reversal on this path.
     pub fn write_uint24(&mut self, value: u32) {

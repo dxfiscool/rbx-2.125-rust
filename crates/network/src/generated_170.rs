@@ -461,12 +461,11 @@ pub fn stub_a77058(stream: &mut crate::bitstream::BitStream) -> crate::reliabili
  crate::reliability::deserialize_datagram_header(stream)
 }
 
-// 0xa771e8 — __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE11DeserializeEPNS1_9BitStreamE
-// demangled: DataStructures::RangeList<RakNet::uint24_t>::Deserialize(RakNet::BitStream *)
-// type: int __fastcall(_DWORD *, RakNet::BitStream *, int, int)
+// 0xa771e8 - __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE11DeserializeEPNS1_9BitStreamE
 #[doc(alias = "DataStructures::RangeList<RakNet::uint24_t>::Deserialize(RakNet::BitStream *)")]
-pub fn stub_a771e8() -> ! {
-    todo!("0xa771e8 DataStructures::RangeList<RakNet::uint24_t>::Deserialize(RakNet::BitStream *)")
+pub fn stub_a771e8(stream: &mut crate::bitstream::BitStream) -> Option<crate::reliability::RangeList> {
+ // IDA 0xa771e8: count + flag/min/max wire ranges.
+ crate::reliability::deserialize_range_list(stream)
 }
 
 // 0xa772b8 — __ZN14DataStructures5QueueIPN6RakNet14InternalPacketEE4PushERKS3_PKcj
@@ -477,12 +476,11 @@ pub fn stub_a772b8() -> ! {
     todo!("0xa772b8 DataStructures::Queue<RakNet::InternalPacket *>::Push(RakNet::InternalPacket * const&,char const*,unsigned int)")
 }
 
-// 0xa7738c — __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE6InsertES2_
-// demangled: DataStructures::RangeList<RakNet::uint24_t>::Insert(RakNet::uint24_t)
-// type: void __fastcall(int *, unsigned int *, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+// 0xa7738c - __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE6InsertES2_
 #[doc(alias = "DataStructures::RangeList<RakNet::uint24_t>::Insert(RakNet::uint24_t)")]
-pub fn stub_a7738c() -> ! {
-    todo!("0xa7738c DataStructures::RangeList<RakNet::uint24_t>::Insert(RakNet::uint24_t)")
+pub fn stub_a7738c(list: &mut crate::reliability::RangeList, value: u32) {
+ // IDA 0xa7738c: binary search, insert/extend/merge.
+ list.insert_value(value);
 }
 
 // 0xa77784 — __ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE3PopEj
@@ -501,12 +499,11 @@ pub fn stub_a77950() -> ! {
     todo!("0xa77950 DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::Push(unsigned long long const&,RakNet::InternalPacket * const&,char const*,unsigned int)")
 }
 
-// 0xa77a84 — __ZN20DatagramHeaderFormat9SerializeEPN6RakNet9BitStreamE
-// demangled: DatagramHeaderFormat::Serialize(RakNet::BitStream *)
-// type: int __fastcall(DatagramHeaderFormat *this, RakNet::BitStream *)
+// 0xa77a84 - __ZN20DatagramHeaderFormat9SerializeEPN6RakNet9BitStreamE
 #[doc(alias = "DatagramHeaderFormat::Serialize(RakNet::BitStream *)")]
-pub fn stub_a77a84() -> ! {
-    todo!("0xa77a84 DatagramHeaderFormat::Serialize(RakNet::BitStream *)")
+pub fn stub_a77a84(header: &crate::reliability::DatagramHeader, stream: &mut crate::bitstream::BitStream) {
+ // IDA 0xa77a84: mirror of the deserialize arms.
+ crate::reliability::serialize_datagram_header(header, stream);
 }
 
 // 0xa77b3c — __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE9SerializeEPNS1_9BitStreamEjb
@@ -631,100 +628,86 @@ pub fn stub_a78b08() -> ! {
     todo!("0xa78b08 DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert(DataStructures::RangeNode<RakNet::uint24_t> const&,char const*,unsigned int)")
 }
 
-// 0xa78bbc — __ZN14DataStructures5QueueIN6RakNet10BPSTracker13TimeAndValue2EE4PushERKS3_PKcj
-// demangled: DataStructures::Queue<RakNet::BPSTracker::TimeAndValue2>::Push(RakNet::BPSTracker::TimeAndValue2 const&,char const*,unsigned int)
-// type: _QWORD *__fastcall(int *, _QWORD *)
+// 0xa78bbc - __ZN14DataStructures5QueueIN6RakNet10BPSTracker13TimeAndValue2EE4PushERKS3_PKcj
 #[doc(alias = "DataStructures::Queue<RakNet::BPSTracker::TimeAndValue2>::Push(RakNet::BPSTracker::TimeAndValue2 const&,char const*,unsigned int)")]
-pub fn stub_a78bbc() -> ! {
-    todo!("0xa78bbc DataStructures::Queue<RakNet::BPSTracker::TimeAndValue2>::Push(RakNet::BPSTracker::TimeAndValue2 const&,char const*,unsigned int)")
+pub fn stub_a78bbc(queue: &mut std::collections::VecDeque<crate::reliability::BpsSample>, sample: crate::reliability::BpsSample) {
+ // IDA 0xa78bbc: append a throughput sample.
+ crate::reliability::push_bps_sample(queue, sample);
 }
 
-// 0xa79900 — __ZN6RakNet13SignaledEventC1Ev
-// demangled: RakNet::SignaledEvent::SignaledEvent(void)
-// type: RakNet::SignaledEvent *__fastcall(RakNet::SignaledEvent *this)
+// 0xa79900 - __ZN6RakNet13SignaledEventC1Ev
 #[doc(alias = "RakNet::SignaledEvent::SignaledEvent(void)")]
-pub fn stub_a79900() -> ! {
-    todo!("0xa79900 RakNet::SignaledEvent::SignaledEvent(void)")
+pub fn stub_a79900() -> crate::sync_primitives::SignaledEvent {
+ // IDA 0xa79900: default construct.
+ crate::sync_primitives::SignaledEvent::new()
 }
 
-// 0xa79914 — __ZN6RakNet13SignaledEventD1Ev
-// demangled: RakNet::SignaledEvent::~SignaledEvent()
-// type: void __fastcall(RakNet::SignaledEvent *__hidden this)
+// 0xa79914 - __ZN6RakNet13SignaledEventD1Ev
 #[doc(alias = "RakNet::SignaledEvent::~SignaledEvent()")]
-pub fn stub_a79914() -> ! {
-    todo!("0xa79914 RakNet::SignaledEvent::~SignaledEvent()")
+pub fn stub_a79914(_event: crate::sync_primitives::SignaledEvent) {
+ // IDA 0xa79914: dtor drops inline-built handles.
 }
 
-// 0xa79924 — __ZN6RakNet13SignaledEvent9InitEventEv
-// demangled: RakNet::SignaledEvent::InitEvent(void)
-// type: int __fastcall(RakNet::SignaledEvent *this)
+// 0xa79924 - __ZN6RakNet13SignaledEvent9InitEventEv
 #[doc(alias = "RakNet::SignaledEvent::InitEvent(void)")]
-pub fn stub_a79924() -> ! {
-    todo!("0xa79924 RakNet::SignaledEvent::InitEvent(void)")
+pub fn stub_a79924(event: &crate::sync_primitives::SignaledEvent) {
+ // IDA 0xa79924: handles are created inline.
+ event.init_event();
 }
 
-// 0xa79954 — __ZN6RakNet13SignaledEvent10CloseEventEv
-// demangled: RakNet::SignaledEvent::CloseEvent(void)
-// type: int __fastcall(RakNet::SignaledEvent *this)
+// 0xa79954 - __ZN6RakNet13SignaledEvent10CloseEventEv
 #[doc(alias = "RakNet::SignaledEvent::CloseEvent(void)")]
-pub fn stub_a79954() -> ! {
-    todo!("0xa79954 RakNet::SignaledEvent::CloseEvent(void)")
+pub fn stub_a79954(event: &crate::sync_primitives::SignaledEvent) {
+ // IDA 0xa79954: nothing owned.
+ event.close_event();
 }
 
-// 0xa7997c — __ZN6RakNet13SignaledEvent8SetEventEv
-// demangled: RakNet::SignaledEvent::SetEvent(void)
-// type: int __fastcall(pthread_cond_t *this)
+// 0xa7997c - __ZN6RakNet13SignaledEvent8SetEventEv
 #[doc(alias = "RakNet::SignaledEvent::SetEvent(void)")]
-pub fn stub_a7997c() -> ! {
-    todo!("0xa7997c RakNet::SignaledEvent::SetEvent(void)")
+pub fn stub_a7997c(event: &crate::sync_primitives::SignaledEvent) {
+ // IDA 0xa7997c: latch + wake.
+ event.set_event();
 }
 
-// 0xa7999c — __ZN6RakNet13SignaledEvent11WaitOnEventEi
-// demangled: RakNet::SignaledEvent::WaitOnEvent(int)
-// type: int __fastcall(RakNet::SignaledEvent *this, int)
+// 0xa7999c - __ZN6RakNet13SignaledEvent11WaitOnEventEi
 #[doc(alias = "RakNet::SignaledEvent::WaitOnEvent(int)")]
-pub fn stub_a7999c() -> ! {
-    todo!("0xa7999c RakNet::SignaledEvent::WaitOnEvent(int)")
+pub fn stub_a7999c(event: &crate::sync_primitives::SignaledEvent, timeout_ms: i32) -> bool {
+ // IDA 0xa7999c: block up to the timeout for the flag.
+ event.wait_on_event(timeout_ms)
 }
 
-// 0xa7a0b4 — __ZN6RakNet11SimpleMutexC1Ev
-// demangled: RakNet::SimpleMutex::SimpleMutex(void)
-// type: pthread_mutex_t *__fastcall(pthread_mutex_t *this)
+// 0xa7a0b4 - __ZN6RakNet11SimpleMutexC1Ev
 #[doc(alias = "RakNet::SimpleMutex::SimpleMutex(void)")]
-pub fn stub_a7a0b4() -> ! {
-    todo!("0xa7a0b4 RakNet::SimpleMutex::SimpleMutex(void)")
+pub fn stub_a7a0b4() -> crate::sync_primitives::SimpleMutex {
+ // IDA 0xa7a0b4: default construct.
+ crate::sync_primitives::SimpleMutex::new()
 }
 
-// 0xa7a0c4 — __ZN6RakNet11SimpleMutexD1Ev
-// demangled: RakNet::SimpleMutex::~SimpleMutex()
-// type: void __fastcall(pthread_mutex_t *this)
+// 0xa7a0c4 - __ZN6RakNet11SimpleMutexD1Ev
 #[doc(alias = "RakNet::SimpleMutex::~SimpleMutex()")]
-pub fn stub_a7a0c4() -> ! {
-    todo!("0xa7a0c4 RakNet::SimpleMutex::~SimpleMutex()")
+pub fn stub_a7a0c4(_mutex: crate::sync_primitives::SimpleMutex) {
+ // IDA 0xa7a0c4: dtor drops the spin flag.
 }
 
-// 0xa7a0d4 — __ZN6RakNet11SimpleMutex4LockEv
-// demangled: RakNet::SimpleMutex::Lock(void)
-// type: int __fastcall(pthread_mutex_t *this)
+// 0xa7a0d4 - __ZN6RakNet11SimpleMutex4LockEv
 #[doc(alias = "RakNet::SimpleMutex::Lock(void)")]
-pub fn stub_a7a0d4() -> ! {
-    todo!("0xa7a0d4 RakNet::SimpleMutex::Lock(void)")
+pub fn stub_a7a0d4(mutex: &crate::sync_primitives::SimpleMutex) {
+ // IDA 0xa7a0d4: spin until the flag is ours.
+ mutex.lock();
 }
 
-// 0xa7a0e0 — __ZN6RakNet11SimpleMutex6UnlockEv
-// demangled: RakNet::SimpleMutex::Unlock(void)
-// type: int __fastcall(pthread_mutex_t *this)
+// 0xa7a0e0 - __ZN6RakNet11SimpleMutex6UnlockEv
 #[doc(alias = "RakNet::SimpleMutex::Unlock(void)")]
-pub fn stub_a7a0e0() -> ! {
-    todo!("0xa7a0e0 RakNet::SimpleMutex::Unlock(void)")
+pub fn stub_a7a0e0(mutex: &crate::sync_primitives::SimpleMutex) {
+ // IDA 0xa7a0e0: release the flag.
+ mutex.unlock();
 }
 
-// 0xa7a700 — __ZN6RakNet11SocketLayer11IsPortInUseEtPKct
-// demangled: RakNet::SocketLayer::IsPortInUse(unsigned short,char const*,unsigned short)
-// type: int __fastcall(RakNet::SocketLayer *this, const char *, const char *, unsigned __int16)
+// 0xa7a700 - __ZN6RakNet11SocketLayer11IsPortInUseEtPKct
 #[doc(alias = "RakNet::SocketLayer::IsPortInUse(unsigned short,char const*,unsigned short)")]
-pub fn stub_a7a700() -> ! {
-    todo!("0xa7a700 RakNet::SocketLayer::IsPortInUse(unsigned short,char const*,unsigned short)")
+pub fn stub_a7a700(port: u16, host: &str) -> bool {
+ // IDA 0xa7a700: bind-probe; failure means taken.
+ crate::socket::is_port_in_use(port, host)
 }
 
 // 0xa7a788 — __ZN6RakNet11SocketLayer16SetDoNotFragmentEiii

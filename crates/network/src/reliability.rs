@@ -139,10 +139,8 @@ pub fn deserialize_datagram_header(stream: &mut crate::bitstream::BitStream) -> 
     header.flag_8 = stream.read_bit().unwrap_or(false);
     if header.flag_8 {
         header.flag_b = stream.read_bit().unwrap_or(false);
-        // IDA 0xa77102: align-up before the float; the empty-slice call
-        // only advances the cursor, its `false` is discarded.
-        let mut pad: [u8; 0] = [];
-        let _ = stream.read_aligned_bytes(&mut pad);
+        // IDA 0xa77102: align-up before the float.
+        stream.align_read_to_byte();
         header.value = stream.read_f32().unwrap_or(0.0);
     } else {
         header.flag_9 = stream.read_bit().unwrap_or(false);
@@ -195,6 +193,162 @@ pub fn ack_timeout(now_ms: u64, sent_ms: u64, timeout_ms: u32) -> bool {
         return true;
     }
     (neg as u32) > timeout_ms
+}
+/// `DataStructures::RangeList<RakNet::uint24_t>` (IDA 0xa771e8/0xa7738c):
+/// sorted `(min, max)` uint24 ranges with 24-bit wrapping arithmetic.
+/// `List::Insert(node, index, file, line)` (IDA 0xa77486) inserts
+/// positionally; the merge arms shift nodes in place like `Vec::remove`.
+#[derive(Clone, Debug, Default)]
+pub struct RangeList {
+    /// Sorted non-overlapping `(min, max)` pairs, each masked to 24 bits.
+    pub ranges: Vec<(u32, u32)>,
+}
+
+/// 24-bit mask shared by the range arithmetic (IDA 0xa77460).
+pub const UINT24_MASK: u32 = 0xffffff;
+
+impl RangeList {
+    /// `RangeList::Insert` (IDA 0xa7738c): binary-search the minima, then
+    /// insert `(value, value)`, extend an adjacent bound, or merge with a
+    /// neighbour when `value` touches it (all wrapping at 24 bits).
+    /// Values already covered are a no-op.
+    pub fn insert_value(&mut self, value: u32) {
+        let value = value & UINT24_MASK;
+        // IDA 0xa773de: an empty list takes the value as its first range.
+        if self.ranges.is_empty() {
+            self.ranges.push((value, value));
+            return;
+        }
+        let len = self.ranges.len();
+        // Lower bound over the minima (IDA 0xa773f8): first index with
+        // `min > value`, or the exact-match index.
+        let mut lo = 0usize;
+        let mut hi = len;
+        let mut exact = false;
+        while lo < hi {
+            let mid = lo + (hi - lo) / 2;
+            if self.ranges[mid].0 == value {
+                lo = mid;
+                exact = true;
+                break;
+            } else if self.ranges[mid].0 < value {
+                lo = mid + 1;
+            } else {
+                hi = mid;
+            }
+        }
+        if lo == len {
+            // Past the end (IDA 0xa7743e): extend or append the last range.
+            let last = self.ranges[len - 1];
+            let next = (last.1 + 1) & UINT24_MASK;
+            if value == next {
+                self.ranges[len - 1].1 = value;
+            } else if value > next {
+                // Above `max + 1` but past every minimum: append. The
+                // re-search in the original provably lands here too, so its
+                // middle-insert arm is dead code.
+                self.ranges.push((value, value));
+            }
+            // Else inside the last range: no-op.
+            return;
+        }
+        let (mn, mx) = self.ranges[lo];
+        let below = (mn + UINT24_MASK) & UINT24_MASK;
+        if !exact && value < below {
+            // Strictly below `min - 1` (IDA 0xa77466): insert before.
+            self.ranges.insert(lo, (value, value));
+        } else if !exact && value == below {
+            // Touching below (IDA 0xa774e6): extend down, merging the
+            // previous range when it now touches.
+            self.ranges[lo].0 = value;
+            if lo > 0 && (self.ranges[lo - 1].1 + 1) & UINT24_MASK == value {
+                let cur_max = self.ranges[lo].1;
+                self.ranges[lo - 1].1 = cur_max;
+                self.ranges.remove(lo);
+            }
+        } else if value >= mn && value <= mx {
+            // Covered: no-op (IDA 0xa77542 first arm).
+        } else if value == (mx + 1) & UINT24_MASK {
+            // Touching above (IDA 0xa7754c): extend up, merging the next
+            // range when it now touches.
+            self.ranges[lo].1 = value;
+            if lo + 1 < self.ranges.len() && self.ranges[lo + 1].0 == (value + 1) & UINT24_MASK {
+                let nxt = self.ranges.remove(lo + 1);
+                self.ranges[lo].1 = nxt.1;
+            }
+        }
+        // Else above `max + 1` at an exact-match index: no-op.
+    }
+}
+
+/// `RangeList::Deserialize` (IDA 0xa771e8): align-up, a `u16` range count,
+/// then per range a flag byte (nonzero = single value) plus `uint24`
+/// `min` (and `max`, rejected when below `min`). `None` on short reads.
+#[must_use]
+pub fn deserialize_range_list(
+    stream: &mut crate::bitstream::BitStream,
+) -> Option<RangeList> {
+    let mut out = RangeList::default();
+    // IDA 0xa77226: align-up before the count; `read_u16` itself is raw.
+    let mut pad: [u8; 0] = [];
+    let _ = stream.read_aligned_bytes(&mut pad);
+    let count = stream.read_u16()?;
+    for _ in 0..count {
+        let single = stream.read_u8()? != 0;
+        let min = stream.read_uint24()?;
+        if single {
+            out.ranges.push((min, min));
+        } else {
+            let max = stream.read_uint24()?;
+            if max < min {
+                return None;
+            }
+            out.ranges.push((min, max));
+        }
+    }
+    Some(out)
+}
+
+/// `DatagramHeaderFormat::Serialize` (IDA 0xa77a84): mirror of
+/// [`deserialize_datagram_header`]. Note the leading bit is a constant 1,
+/// not `flag_e` (IDA 0xa77a8e).
+pub fn serialize_datagram_header(
+    header: &DatagramHeader,
+    stream: &mut crate::bitstream::BitStream,
+) {
+    stream.write_bit(true);
+    if header.flag_8 {
+        stream.write_bit(true);
+        stream.write_bit(header.flag_b);
+        // IDA 0xa77ad0: align-up; the empty call only moves the cursor.
+        stream.write_aligned_bytes(&[]);
+        stream.write_f32(header.value);
+    } else {
+        stream.write_bit(false);
+        stream.write_bit(header.flag_9);
+        if !header.flag_9 {
+            stream.write_bit(header.flag_a);
+            stream.write_bit(header.flag_c);
+            stream.write_bit(header.flag_d);
+            // IDA 0xa77b2e: align-up; `write_uint24` aligns internally.
+            stream.write_uint24(header.number);
+        }
+    }
+}
+
+/// `DataStructures::Queue<RakNet::BPSTracker::TimeAndValue2>::Push`
+/// (IDA 0xa78bbc): append a throughput sample.
+#[derive(Clone, Copy, Debug, Default)]
+pub struct BpsSample {
+    /// Sample time in ms.
+    pub time_ms: u32,
+    /// Sampled byte count.
+    pub value: u32,
+}
+
+/// Append a throughput sample to the back of the queue (IDA 0xa78bbc).
+pub fn push_bps_sample(queue: &mut std::collections::VecDeque<BpsSample>, sample: BpsSample) {
+    queue.push_back(sample);
 }
 
 #[cfg(test)]
@@ -256,8 +410,79 @@ mod tests {
         let mut stream = crate::bitstream::BitStream::new();
         stream.write_bit(false);
         stream.write_bit(false);
+
         stream.write_bit(true);
         let header = deserialize_datagram_header(&mut stream);
         assert!(!header.flag_e && !header.flag_8 && header.flag_9 && !header.flag_a);
+    }
+
+    #[test]
+    fn range_list_insert_merge() {
+        // IDA 0xa7738c: append, extend, merge, cover.
+        let mut list = RangeList::default();
+        list.insert_value(10);
+        list.insert_value(12);
+        assert_eq!(list.ranges, vec![(10, 10), (12, 12)]);
+        list.insert_value(11);
+        assert_eq!(list.ranges, vec![(10, 12)]);
+        list.insert_value(20);
+        list.insert_value(13);
+        // IDA 0xa77466: 13 lands before (20, 20) and does not reach back
+        // to (10, 12); the original only merges at the insertion index.
+        assert_eq!(list.ranges, vec![(10, 12), (13, 13), (20, 20)]);
+        // IDA 0xa774e6: 19 touches (20, 20) from below.
+        list.insert_value(19);
+        assert_eq!(list.ranges, vec![(10, 12), (13, 13), (19, 20)]);
+        // Bridging merge: 8..=12 extend past the end, 14..=20 append, then
+        // 13 touches (14, 20) from below and absorbs (8, 12) (IDA 0xa774e6).
+        let mut bridge = RangeList::default();
+        for v in 8..=12 {
+            bridge.insert_value(v);
+        }
+        for v in 14..=20 {
+            bridge.insert_value(v);
+        }
+        assert_eq!(bridge.ranges, vec![(8, 12), (14, 20)]);
+        bridge.insert_value(13);
+        assert_eq!(bridge.ranges, vec![(8, 20)]);
+        // Wrap edge: 0 sorts before min 0xffffff, so the original inserts a
+        // second range instead of extending across the edge (IDA 0xa77466).
+        let mut edge = RangeList::default();
+        edge.insert_value(0xff_ffff);
+        edge.insert_value(0);
+        assert_eq!(edge.ranges, vec![(0, 0), (0xff_ffff, 0xff_ffff)]);
+    }
+
+    #[test]
+    fn range_list_and_header_roundtrip() {
+        // IDA 0xa771e8: flag byte selects single vs pair; max < min fails.
+        let mut stream = crate::bitstream::BitStream::new();
+        stream.write_u16(2);
+        stream.write_u8(1);
+        stream.write_uint24(7);
+        stream.write_u8(0);
+        stream.write_uint24(9);
+        stream.write_uint24(12);
+        let list = deserialize_range_list(&mut stream).expect("ranges");
+        assert_eq!(list.ranges, vec![(7, 7), (9, 12)]);
+        let mut bad = crate::bitstream::BitStream::new();
+        bad.write_u16(1);
+        bad.write_u8(0);
+        bad.write_uint24(9);
+        bad.write_uint24(5);
+        assert!(deserialize_range_list(&mut bad).is_none());
+        // IDA 0xa77a84: serialize mirrors the deserialize arms.
+        let mut header = DatagramHeader::default();
+        header.flag_8 = true;
+        header.flag_b = true;
+        header.value = 1.5;
+        let mut out = crate::bitstream::BitStream::new();
+        serialize_datagram_header(&header, &mut out);
+        let back = deserialize_datagram_header(&mut out);
+        assert!(back.flag_e && back.flag_8 && back.flag_b);
+        assert_eq!(back.value, 1.5);
+        let mut queue = std::collections::VecDeque::new();
+        push_bps_sample(&mut queue, BpsSample { time_ms: 3, value: 9 });
+        assert_eq!(queue.len(), 1);
     }
 }

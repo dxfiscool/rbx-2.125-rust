@@ -1925,3 +1925,26 @@ pub fn ip_address_match(pattern: &str, addr: &str) -> bool {
  i += 1;
  }
 }
+
+/// `RakNet::SocketLayer::IsPortInUse` (IDA 0xa7a700): open an `AF_INET`
+/// datagram socket (`socket` at 0xa7a736) and bind it to `host:port`
+/// (`htons` via `REV16` at 0xa7a71a). A failed bind means the port is taken.
+#[must_use]
+pub fn is_port_in_use(port: u16, host: &str) -> bool {
+    std::net::UdpSocket::bind((host, port)).is_err()
+}
+
+#[cfg(test)]
+mod port_tests {
+    use super::*;
+
+    #[test]
+    fn port_probe_agrees_with_bind() {
+        // IDA 0xa7a700: an unbound ephemeral port binds fine, a bound one fails.
+        let socket = std::net::UdpSocket::bind(("127.0.0.1", 0)).expect("ephemeral");
+        let port = socket.local_addr().expect("addr").port();
+        assert!(is_port_in_use(port, "127.0.0.1"));
+        drop(socket);
+        assert!(!is_port_in_use(port, "127.0.0.1"));
+    }
+}
