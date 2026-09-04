@@ -11,16 +11,12 @@ use rbx_core::SharedPtr;
 
 // 0x302cdc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18HttpQueueStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_302cdc() -> ! {
-    todo!("0x302cdc boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
-}
+pub use crate::instance::stub_0x302cdc as stub_302cdc;
 
 // 0x3ef420 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS5_11ChatService9ChatColorEEE4slotENS3_8functionISA_EELi3ESA_EC2IPSB_EERKSE_T_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,3,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>*>(boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> const&,rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>*)")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,3,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>*>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> const&,rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>*)
-pub fn stub_3ef420() -> ! {
-    todo!("0x3ef420 rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,3,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>*>(boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> const&,rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>*)")
-}
+pub use crate::instance::stub_0x3ef420 as stub_3ef420;
 
 // 0x3ef51c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE13callable_slotINS2_8functionIS9_EEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::callable_slot<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::~callable_slot()")]
@@ -81,9 +77,7 @@ pub fn stub_3efcb8() -> ! {
 // 0x3efce8 — __ZN3RBX10Reflection9EventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEMS2_SB_EC2ESC_PKcSF_SF_SF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::EventDesc(rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::EventDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::EventDesc(rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_3efce8() -> ! {
-    todo!("0x3efce8 RBX::Reflection::EventDesc<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::EventDesc(rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
-}
+pub use crate::instance::stub_0x3efce8 as stub_3efce8;
 
 // 0x3eff44 — __ZN3RBX10Reflection9EventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEMS2_SB_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::~EventDesc()")]
@@ -102,9 +96,7 @@ pub fn stub_3eff68() -> ! {
 // 0x3f001c — __ZN3RBX10Reflection13BoundFuncDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEELi3EEC2EMS2_FvS6_SsS7_EPKcSD_SD_SD_S7_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),3>::BoundFuncDesc(void (RBX::ChatService::*)(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),char const*,char const*,char const*,char const*,RBX::ChatService::ChatColor,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),3>::BoundFuncDesc(void (RBX::ChatService::*)(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),char const*,char const*,char const*,char const*,RBX::ChatService::ChatColor,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_3f001c() -> ! {
-    todo!("0x3f001c RBX::Reflection::BoundFuncDesc<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),3>::BoundFuncDesc(void (RBX::ChatService::*)(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),char const*,char const*,char const*,char const*,RBX::ChatService::ChatColor,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
-}
+pub use crate::instance::stub_0x3f001c as stub_3f001c;
 
 // 0x3f0290 — __ZN3RBX10Reflection13BoundFuncDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEELi3EE16declareSignatureEPKcNS0_7VariantESB_SC_SB_SC_
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
@@ -144,9 +136,7 @@ pub fn stub_3f0948() -> ! {
 // 0x3f12e0 — __ZN3RBX13ClickDetector19updateLastHoverPartEN5boost10shared_ptrINS_8InstanceEEEPNS_7Network6PlayerE
 #[doc(alias = "RBX::ClickDetector::updateLastHoverPart(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::Player *)")]
 // was: RBX::ClickDetector::updateLastHoverPart(boost::shared_ptr<RBX::Instance>,RBX::Network::Player *)
-pub fn stub_3f12e0() -> ! {
-    todo!("0x3f12e0 RBX::ClickDetector::updateLastHoverPart(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::Player *)")
-}
+pub use crate::instance::stub_0x3f12e0 as stub_3f12e0;
 
 // 0x3f17f8 — __ZN3RBX10Reflection15RemoteEventDescINS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEED1Ev
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::~RemoteEventDesc()")]
@@ -171,21 +161,15 @@ pub fn stub_3f1850() -> ! {
 
 // 0x3f1b98 — __ZNK3RBX13ClickDetector11askAddChildEPKNS_8InstanceE
 #[doc(alias = "RBX::ClickDetector::askAddChild(RBX::Instance const*)const")]
-pub fn stub_3f1b98() -> ! {
-    todo!("0x3f1b98 RBX::ClickDetector::askAddChild(RBX::Instance const*)const")
-}
+pub use crate::instance::stub_0x3f1b98 as stub_3f1b98;
 
 // 0x3f1b9c — __ZNK3RBX13ClickDetector12askSetParentEPKNS_8InstanceE
 #[doc(alias = "RBX::ClickDetector::askSetParent(RBX::Instance const*)const")]
-pub fn stub_3f1b9c() -> ! {
-    todo!("0x3f1b9c RBX::ClickDetector::askSetParent(RBX::Instance const*)const")
-}
+pub use crate::instance::stub_0x3f1b9c as stub_3f1b9c;
 
 // 0x3f1cac — __ZNK3RBX8Instance25findConstFirstChildOfTypeINS_13ClickDetectorEEEPKT_v
 #[doc(alias = "RBX::ClickDetector const* RBX::Instance::findConstFirstChildOfType<RBX::ClickDetector>(void)const")]
-pub fn stub_3f1cac() -> ! {
-    todo!("0x3f1cac RBX::ClickDetector const* RBX::Instance::findConstFirstChildOfType<RBX::ClickDetector>(void)const")
-}
+pub use crate::instance::stub_0x3f1cac as stub_3f1cac;
 
 // 0x3f1d14 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E9fireEventEPS2_S6_
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ClickDetector::*>::fireEvent(RBX::ClickDetector*,rbx_core::SharedPtr<RBX::Instance>)const")]
@@ -218,16 +202,12 @@ pub fn stub_3f23e4() -> ! {
 // 0x3f2548 — __ZNK3RBX10Reflection15RemoteEventDescINS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE12isScriptableEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::isScriptable(void)const")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>>::isScriptable(void)const
-pub fn stub_3f2548() -> ! {
-    todo!("0x3f2548 RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::isScriptable(void)const")
-}
+pub use crate::instance::stub_0x3f2548 as stub_3f2548;
 
 // 0x3f2550 — __ZNK3RBX10Reflection15RemoteEventDescINS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE11isBroadcastEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::isBroadcast(void)const")]
 // was: RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>>::isBroadcast(void)const
-pub fn stub_3f2550() -> ! {
-    todo!("0x3f2550 RBX::Reflection::RemoteEventDesc<RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::isBroadcast(void)const")
-}
+pub use crate::instance::stub_0x3f2550 as stub_3f2550;
 
 // 0x3f2558 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ClickDetector::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
@@ -253,9 +233,7 @@ pub fn stub_3f26c8() -> ! {
 // 0x3f26dc — __ZN3RBX10Reflection9EventDescINS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_EC2ESB_PKcSE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ClickDetector::*>::EventDesc(rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ClickDetector::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::EventDesc<RBX::ClickDetector,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ClickDetector::*>::EventDesc(rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::ClickDetector::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_3f26dc() -> ! {
-    todo!("0x3f26dc RBX::Reflection::EventDesc<RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ClickDetector::*>::EventDesc(rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ClickDetector::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
-}
+pub use crate::instance::stub_0x3f26dc as stub_3f26dc;
 
 // 0x3f2860 — __ZN3RBX10Reflection9EventDescINS_13ClickDetectorEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::ClickDetector,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::ClickDetector::*>::~EventDesc()")]
@@ -302,9 +280,7 @@ pub fn stub_3f355c() -> ! {
 // 0x3f3580 — __ZNSt3mapISsN5boost10shared_ptrIN3RBX17copy_on_write_ptrISt6vectorINS1_INS2_8InstanceEEESaIS6_EEEEEESt4lessISsESaISt4pairIKSsSA_EEEixERSE_
 #[doc(alias = "std::map<std::string,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>>::operator[](std::string const&)")]
 // was: std::map<std::string,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>>::operator[](std::string const&)
-pub fn stub_3f3580() -> ! {
-    todo!("0x3f3580 std::map<std::string,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>>::operator[](std::string const&)")
-}
+pub use crate::instance::stub_0x3f3580 as stub_3f3580;
 
 // 0x3f379c — __ZN5boost10shared_ptrIN3RBX17copy_on_write_ptrISt6vectorINS0_INS1_8InstanceEEESaIS5_EEEEE5resetIS8_EEvPT_
 #[doc(alias = "void rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::reset<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>(RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> *)")]
@@ -330,16 +306,12 @@ pub fn stub_3f3c38() -> ! {
 // 0x3f3cdc — __ZN5boost10shared_ptrIN3RBX17copy_on_write_ptrISt6vectorINS0_INS1_8InstanceEEESaIS5_EEEEEC2IS8_EEPT_
 #[doc(alias = "rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::shared_ptr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>(RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> *)")]
 // was: boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>(RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> *)
-pub fn stub_3f3cdc() -> ! {
-    todo!("0x3f3cdc rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::shared_ptr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>(RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> *)")
-}
+pub use crate::instance::stub_0x3f3cdc as stub_3f3cdc;
 
 // 0x3f3db0 — __ZN5boost6detail12shared_countC2IN3RBX17copy_on_write_ptrISt6vectorINS_10shared_ptrINS3_8InstanceEEESaIS8_EEEEEEPT_
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>(RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> *)")]
 // was: boost::detail::shared_count::shared_count<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>(RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> *)
-pub fn stub_3f3db0() -> ! {
-    todo!("0x3f3db0 boost::detail::shared_count::shared_count<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>(RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> *)")
-}
+pub use crate::instance::stub_0x3f3db0 as stub_3f3db0;
 
 // 0x3f3ec0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX17copy_on_write_ptrISt6vectorINS_10shared_ptrINS2_8InstanceEEESaIS7_EEEEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::~sp_counted_impl_p()")]
@@ -365,30 +337,22 @@ pub fn stub_3f3ec8() -> ! {
 // 0x3f3f70 — __ZN5boost6detail17sp_counted_impl_pIN3RBX17copy_on_write_ptrISt6vectorINS_10shared_ptrINS2_8InstanceEEESaIS7_EEEEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::get_deleter(std::type_info const&)")]
 // was: boost::detail::sp_counted_impl_p<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::get_deleter(std::type_info const&)
-pub fn stub_3f3f70() -> ! {
-    todo!("0x3f3f70 boost::detail::sp_counted_impl_p<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::get_deleter(std::type_info const&)")
-}
+pub use crate::instance::stub_0x3f3f70 as stub_3f3f70;
 
 // 0x3f3f74 — __ZN5boost6detail17sp_counted_impl_pIN3RBX17copy_on_write_ptrISt6vectorINS_10shared_ptrINS2_8InstanceEEESaIS7_EEEEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::get_untyped_deleter(void)")]
 // was: boost::detail::sp_counted_impl_p<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::get_untyped_deleter(void)
-pub fn stub_3f3f74() -> ! {
-    todo!("0x3f3f74 boost::detail::sp_counted_impl_p<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>::get_untyped_deleter(void)")
-}
+pub use crate::instance::stub_0x3f3f74 as stub_3f3f74;
 
 // 0x3f3f78 — __ZNSt4pairIKSsN5boost10shared_ptrIN3RBX17copy_on_write_ptrISt6vectorINS2_INS3_8InstanceEEESaIS7_EEEEEEEC2ERS0_RKSB_
 #[doc(alias = "std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>::pair(std::string const&,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>> const&)")]
 // was: std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>::pair(std::string const&,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>> const&)
-pub fn stub_3f3f78() -> ! {
-    todo!("0x3f3f78 std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>::pair(std::string const&,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>> const&)")
-}
+pub use crate::instance::stub_0x3f3f78 as stub_3f3f78;
 
 // 0x3f4034 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX17copy_on_write_ptrISt6vectorINS3_INS4_8InstanceEEESaIS8_EEEEEEESt10_Select1stISD_ESt4lessISsESaISD_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISD_ERKSD_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>,std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>> const&)")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>,std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>> const&)
-pub fn stub_3f4034() -> ! {
-    todo!("0x3f4034 std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>,std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>> const&)")
-}
+pub use crate::instance::stub_0x3f4034 as stub_3f4034;
 
 // 0x3f4120 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX17copy_on_write_ptrISt6vectorINS3_INS4_8InstanceEEESaIS8_EEEEEEESt10_Select1stISD_ESt4lessISsESaISD_EE9_M_insertEPSt18_Rb_tree_node_baseSL_RKSD_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>> const&)")]
@@ -400,37 +364,27 @@ pub fn stub_3f4120() -> ! {
 // 0x3f4170 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX17copy_on_write_ptrISt6vectorINS3_INS4_8InstanceEEESaIS8_EEEEEEESt10_Select1stISD_ESt4lessISsESaISD_EE16_M_insert_uniqueERKSD_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>>::_M_insert_unique(std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>> const&)")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>>::_M_insert_unique(std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>> const&)
-pub fn stub_3f4170() -> ! {
-    todo!("0x3f4170 std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>>::_M_insert_unique(std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>> const&)")
-}
+pub use crate::instance::stub_0x3f4170 as stub_3f4170;
 
 // 0x3f41f4 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX17copy_on_write_ptrISt6vectorINS3_INS4_8InstanceEEESaIS8_EEEEEEESt10_Select1stISD_ESt4lessISsESaISD_EE14_M_create_nodeERKSD_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>>::_M_create_node(std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>> const&)")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>>::_M_create_node(std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>> const&)
-pub fn stub_3f41f4() -> ! {
-    todo!("0x3f41f4 std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>>::_M_create_node(std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>> const&)")
-}
+pub use crate::instance::stub_0x3f41f4 as stub_3f41f4;
 
 // 0x3f42fc — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX17copy_on_write_ptrISt6vectorINS3_INS4_8InstanceEEESaIS8_EEEEEEESt10_Select1stISD_ESt4lessISsESaISD_EE11lower_boundERS1_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>>::lower_bound(std::string const&)")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>>::lower_bound(std::string const&)
-pub fn stub_3f42fc() -> ! {
-    todo!("0x3f42fc std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>>::lower_bound(std::string const&)")
-}
+pub use crate::instance::stub_0x3f42fc as stub_3f42fc;
 
 // 0x3f432c — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX17copy_on_write_ptrISt6vectorINS3_INS4_8InstanceEEESaIS8_EEEEEEESt10_Select1stISD_ESt4lessISsESaISD_EE4findERS1_
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>>::find(std::string const&)")]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::copy_on_write_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>>>>::find(std::string const&)
-pub fn stub_3f432c() -> ! {
-    todo!("0x3f432c std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::copy_on_write_ptr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>>>>::find(std::string const&)")
-}
+pub use crate::instance::stub_0x3f432c as stub_3f432c;
 
 // 0x3f4578 — __ZN3RBX10Reflection9EventDescINS_17CollectionServiceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_EC2ESB_PKcSE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::CollectionService,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::CollectionService::*>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::CollectionService::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::EventDesc<RBX::CollectionService,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::CollectionService::*>::EventDesc(rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::CollectionService::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_3f4578() -> ! {
-    todo!("0x3f4578 RBX::Reflection::EventDesc<RBX::CollectionService,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::CollectionService::*>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::CollectionService::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
-}
+pub use crate::instance::stub_0x3f4578 as stub_3f4578;
 
 // 0x3f46fc — __ZN3RBX10Reflection9EventDescINS_17CollectionServiceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::CollectionService,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::CollectionService::*>::~EventDesc()")]
@@ -463,9 +417,7 @@ pub fn stub_3f4a64() -> ! {
 // 0x3f4a78 — __ZN3RBX10Reflection13BoundFuncDescINS_17CollectionServiceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEESsELi1EEC2EMS2_FSB_SsEPKcSH_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::CollectionService,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(std::string),1>::BoundFuncDesc(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::CollectionService::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::CollectionService,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(std::string),1>::BoundFuncDesc(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::CollectionService::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_3f4a78() -> ! {
-    todo!("0x3f4a78 RBX::Reflection::BoundFuncDesc<RBX::CollectionService,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(std::string),1>::BoundFuncDesc(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::CollectionService::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
-}
+pub use crate::instance::stub_0x3f4a78 as stub_3f4a78;
 
 // 0x3f4bf0 — __ZN3RBX10Reflection13BoundFuncDescINS_17CollectionServiceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEESsELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::CollectionService,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
@@ -484,28 +436,20 @@ pub fn stub_3f4c20() -> ! {
 // 0x3f4cec — __ZNK3RBX10Reflection13BoundFuncDescINS_17CollectionServiceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEESsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::CollectionService,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::CollectionService,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
-pub fn stub_3f4cec() -> ! {
-    todo!("0x3f4cec RBX::Reflection::BoundFuncDesc<RBX::CollectionService,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
-}
+pub use crate::instance::stub_0x3f4cec as stub_3f4cec;
 
 // 0x3f4e2c — __ZN3RBX10Reflection11Call1HelperINS_17CollectionServiceEMS2_FN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEESsESsSB_E4callEPS2_SD_RNS0_7VariantERKSs
 #[doc(alias = "RBX::Reflection::Call1Helper<RBX::CollectionService,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::CollectionService::*)(std::string),std::string,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>>::call(RBX::CollectionService*,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::CollectionService::*)(std::string),RBX::Reflection::Variant &,std::string const&)")]
 // was: RBX::Reflection::Call1Helper<RBX::CollectionService,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::CollectionService::*)(std::string),std::string,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>>::call(RBX::CollectionService*,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::CollectionService::*)(std::string),RBX::Reflection::Variant &,std::string const&)
-pub fn stub_3f4e2c() -> ! {
-    todo!("0x3f4e2c RBX::Reflection::Call1Helper<RBX::CollectionService,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::CollectionService::*)(std::string),std::string,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>>::call(RBX::CollectionService*,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::CollectionService::*)(std::string),RBX::Reflection::Variant &,std::string const&)")
-}
+pub use crate::instance::stub_0x3f4e2c as stub_3f4e2c;
 
 // 0x3f5208 — __ZN3RBX16BoolPropertyVerbC2ERKSsPNS_9DataModelEPKc
 #[doc(alias = "RBX::BoolPropertyVerb::BoolPropertyVerb(std::string const&,RBX::DataModel *,char const*)")]
-pub fn stub_3f5208() -> ! {
-    todo!("0x3f5208 RBX::BoolPropertyVerb::BoolPropertyVerb(std::string const&,RBX::DataModel *,char const*)")
-}
+pub use crate::instance::stub_0x3f5208 as stub_3f5208;
 
 // 0x3f5368 — __ZN3RBX17EditSelectionVerbC2ESsPNS_9DataModelE
 #[doc(alias = "RBX::EditSelectionVerb::EditSelectionVerb(std::string,RBX::DataModel *)")]
-pub fn stub_3f5368() -> ! {
-    todo!("0x3f5368 RBX::EditSelectionVerb::EditSelectionVerb(std::string,RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f5368 as stub_3f5368;
 
 // 0x3f559c — __ZN3RBXL15HasTruePropertyEPKcN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::HasTrueProperty(char const*,rbx_core::SharedPtr<RBX::Instance>)")]
@@ -522,21 +466,15 @@ pub fn stub_3f5710() -> ! {
 
 // 0x3f5868 — __ZN3RBX19CameraCenterCommandC1EPNS_9WorkspaceE
 #[doc(alias = "RBX::CameraCenterCommand::CameraCenterCommand(RBX::Workspace *)")]
-pub fn stub_3f5868() -> ! {
-    todo!("0x3f5868 RBX::CameraCenterCommand::CameraCenterCommand(RBX::Workspace *)")
-}
+pub use crate::instance::stub_0x3f5868 as stub_3f5868;
 
 // 0x3f586c — __ZN3RBX19CameraCenterCommandC2EPNS_9WorkspaceE
 #[doc(alias = "RBX::CameraCenterCommand::CameraCenterCommand(RBX::Workspace *)")]
-pub fn stub_3f586c() -> ! {
-    todo!("0x3f586c RBX::CameraCenterCommand::CameraCenterCommand(RBX::Workspace *)")
-}
+pub use crate::instance::stub_0x3f586c as stub_3f586c;
 
 // 0x3f5a4c — __ZN3RBX10CameraVerbC2ESsPNS_9WorkspaceE
 #[doc(alias = "RBX::CameraVerb::CameraVerb(std::string,RBX::Workspace *)")]
-pub fn stub_3f5a4c() -> ! {
-    todo!("0x3f5a4c RBX::CameraVerb::CameraVerb(std::string,RBX::Workspace *)")
-}
+pub use crate::instance::stub_0x3f5a4c as stub_3f5a4c;
 
 // 0x3f604c — __ZN3RBXL15SetCanNotSelectEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::SetCanNotSelect(rbx_core::SharedPtr<RBX::Instance>)")]
@@ -547,129 +485,87 @@ pub fn stub_3f604c() -> ! {
 
 // 0x3f6054 — __ZN3RBX18FirstPersonCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::FirstPersonCommand::FirstPersonCommand(RBX::DataModel *)")]
-pub fn stub_3f6054() -> ! {
-    todo!("0x3f6054 RBX::FirstPersonCommand::FirstPersonCommand(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f6054 as stub_3f6054;
 
 // 0x3f6058 — __ZN3RBX18FirstPersonCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::FirstPersonCommand::FirstPersonCommand(RBX::DataModel *)")]
-pub fn stub_3f6058() -> ! {
-    todo!("0x3f6058 RBX::FirstPersonCommand::FirstPersonCommand(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f6058 as stub_3f6058;
 
 // 0x3f61cc — __ZN3RBX14ToggleViewModeC1EPNS_9DataModelE
 #[doc(alias = "RBX::ToggleViewMode::ToggleViewMode(RBX::DataModel *)")]
-pub fn stub_3f61cc() -> ! {
-    todo!("0x3f61cc RBX::ToggleViewMode::ToggleViewMode(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f61cc as stub_3f61cc;
 
 // 0x3f61d0 — __ZN3RBX14ToggleViewModeC2EPNS_9DataModelE
 #[doc(alias = "RBX::ToggleViewMode::ToggleViewMode(RBX::DataModel *)")]
-pub fn stub_3f61d0() -> ! {
-    todo!("0x3f61d0 RBX::ToggleViewMode::ToggleViewMode(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f61d0 as stub_3f61d0;
 
 // 0x3f637c — __ZN3RBX12StatsCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::StatsCommand::StatsCommand(RBX::DataModel *)")]
-pub fn stub_3f637c() -> ! {
-    todo!("0x3f637c RBX::StatsCommand::StatsCommand(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f637c as stub_3f637c;
 
 // 0x3f6380 — __ZN3RBX12StatsCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::StatsCommand::StatsCommand(RBX::DataModel *)")]
-pub fn stub_3f6380() -> ! {
-    todo!("0x3f6380 RBX::StatsCommand::StatsCommand(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f6380 as stub_3f6380;
 
 // 0x3f6a8c — __ZN3RBX18RenderStatsCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::RenderStatsCommand::RenderStatsCommand(RBX::DataModel *)")]
-pub fn stub_3f6a8c() -> ! {
-    todo!("0x3f6a8c RBX::RenderStatsCommand::RenderStatsCommand(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f6a8c as stub_3f6a8c;
 
 // 0x3f6a90 — __ZN3RBX18RenderStatsCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::RenderStatsCommand::RenderStatsCommand(RBX::DataModel *)")]
-pub fn stub_3f6a90() -> ! {
-    todo!("0x3f6a90 RBX::RenderStatsCommand::RenderStatsCommand(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f6a90 as stub_3f6a90;
 
 // 0x3f71b8 — __ZN3RBX19SummaryStatsCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::SummaryStatsCommand::SummaryStatsCommand(RBX::DataModel *)")]
-pub fn stub_3f71b8() -> ! {
-    todo!("0x3f71b8 RBX::SummaryStatsCommand::SummaryStatsCommand(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f71b8 as stub_3f71b8;
 
 // 0x3f71bc — __ZN3RBX19SummaryStatsCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::SummaryStatsCommand::SummaryStatsCommand(RBX::DataModel *)")]
-pub fn stub_3f71bc() -> ! {
-    todo!("0x3f71bc RBX::SummaryStatsCommand::SummaryStatsCommand(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f71bc as stub_3f71bc;
 
 // 0x3f77d4 — __ZN3RBX18CustomStatsCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::CustomStatsCommand::CustomStatsCommand(RBX::DataModel *)")]
-pub fn stub_3f77d4() -> ! {
-    todo!("0x3f77d4 RBX::CustomStatsCommand::CustomStatsCommand(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f77d4 as stub_3f77d4;
 
 // 0x3f77d8 — __ZN3RBX18CustomStatsCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::CustomStatsCommand::CustomStatsCommand(RBX::DataModel *)")]
-pub fn stub_3f77d8() -> ! {
-    todo!("0x3f77d8 RBX::CustomStatsCommand::CustomStatsCommand(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f77d8 as stub_3f77d8;
 
 // 0x3f7df0 — __ZN3RBX19NetworkStatsCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::NetworkStatsCommand::NetworkStatsCommand(RBX::DataModel *)")]
-pub fn stub_3f7df0() -> ! {
-    todo!("0x3f7df0 RBX::NetworkStatsCommand::NetworkStatsCommand(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f7df0 as stub_3f7df0;
 
 // 0x3f7df4 — __ZN3RBX19NetworkStatsCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::NetworkStatsCommand::NetworkStatsCommand(RBX::DataModel *)")]
-pub fn stub_3f7df4() -> ! {
-    todo!("0x3f7df4 RBX::NetworkStatsCommand::NetworkStatsCommand(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f7df4 as stub_3f7df4;
 
 // 0x3f8570 — __ZN3RBX19PhysicsStatsCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::PhysicsStatsCommand::PhysicsStatsCommand(RBX::DataModel *)")]
-pub fn stub_3f8570() -> ! {
-    todo!("0x3f8570 RBX::PhysicsStatsCommand::PhysicsStatsCommand(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f8570 as stub_3f8570;
 
 // 0x3f8574 — __ZN3RBX19PhysicsStatsCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::PhysicsStatsCommand::PhysicsStatsCommand(RBX::DataModel *)")]
-pub fn stub_3f8574() -> ! {
-    todo!("0x3f8574 RBX::PhysicsStatsCommand::PhysicsStatsCommand(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f8574 as stub_3f8574;
 
 // 0x3f8e6c — __ZN3RBX18EngineStatsCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::EngineStatsCommand::EngineStatsCommand(RBX::DataModel *)")]
-pub fn stub_3f8e6c() -> ! {
-    todo!("0x3f8e6c RBX::EngineStatsCommand::EngineStatsCommand(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f8e6c as stub_3f8e6c;
 
 // 0x3f8e70 — __ZN3RBX18EngineStatsCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::EngineStatsCommand::EngineStatsCommand(RBX::DataModel *)")]
-pub fn stub_3f8e70() -> ! {
-    todo!("0x3f8e70 RBX::EngineStatsCommand::EngineStatsCommand(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f8e70 as stub_3f8e70;
 
 // 0x3f9004 — __ZN3RBX11JoinCommandC1EPNS_9DataModelE
 #[doc(alias = "RBX::JoinCommand::JoinCommand(RBX::DataModel *)")]
-pub fn stub_3f9004() -> ! {
-    todo!("0x3f9004 RBX::JoinCommand::JoinCommand(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f9004 as stub_3f9004;
 
 // 0x3f9008 — __ZN3RBX11JoinCommandC2EPNS_9DataModelE
 #[doc(alias = "RBX::JoinCommand::JoinCommand(RBX::DataModel *)")]
-pub fn stub_3f9008() -> ! {
-    todo!("0x3f9008 RBX::JoinCommand::JoinCommand(RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f9008 as stub_3f9008;
 
 // 0x3f93e4 — __ZN3RBX12RunStateVerbC2ESsPNS_9DataModelE
 #[doc(alias = "RBX::RunStateVerb::RunStateVerb(std::string,RBX::DataModel *)")]
-pub fn stub_3f93e4() -> ! {
-    todo!("0x3f93e4 RBX::RunStateVerb::RunStateVerb(std::string,RBX::DataModel *)")
-}
+pub use crate::instance::stub_0x3f93e4 as stub_3f93e4;
 
 // 0x3f986c — __ZN3RBX18GroupSelectionVerbC1EPNS_9DataModelE
 #[doc(alias = "RBX::GroupSelectionVerb::GroupSelectionVerb(RBX::DataModel *)")]
