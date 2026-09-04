@@ -1554,6 +1554,229 @@ pub mod camera_enum {
     }
 }
 
+/// Batch 6: 8 IDA-grounded ports 0x3cd164-0x3ce4c8 — the `Camera`
+/// `EventDesc<void(bool)>` constructor, both `EventDesc` deleting dtors,
+/// `EventDescImpl<1/0>::fireEvent`, `EventDescBase::disconnectAll` ×2, and
+/// `GenericSlotWrapper::execute1<bool>`. Ports live in `camera_event`.
+/// Conventions: `boost::shared_ptr` -> `crate::SharedPtr` (kept via `_SHARED_PTR`
+/// carrier); `rbx::signals::signal` emit/disconnect -> hook traits (the signal
+/// object lives at `derived + desc.signal_offset`; the host receives it
+/// directly); `std::vector<Variant>` / placement-any traffic collapses into
+/// slices; `__stack_chk_guard` returns carry no observable output.
+/// `[INFERENCE]` marks what the binary does not pin down; everything else
+/// follows the IDA pseudocode branch-for-branch.
+pub mod camera_event {
+    use std::ffi::CStr;
+    use std::os::raw::c_char;
+
+    /// was: `EventDesc<Camera, void(bool)>` vtable (`*a1 = &off_1240418`, IDA 0x3cd164).
+    pub const EVENT_BOOL_VTAB: &str = "off_1240418"; // IDA 0x3cd164
+
+    /// was: `EventDesc<Camera, void(bool)>` storage — the `a1[10]` member-signal
+    /// offset plus the `+8` signature list (one `bool` item, IDA 0x3cd164).
+    #[derive(Debug, Default)]
+    pub struct EventDescBool {
+        pub vtable: &'static str,
+        pub signal_offset: usize,
+        pub name: String,
+        pub signatures: Vec<String>,
+    }
+
+    impl EventDescBool {
+        /// IDA 0x3cd164 ctor shape: classDescriptor ensure (registry sink here),
+        /// `EventDescriptor` base init, `a1[10] = member_offset`,
+        /// `*a1 = &off_1240418`, `Name::declare` + one `bool` signature item.
+        /// Returns `slot` (IDA `return a1`).
+        pub unsafe fn construct(
+            slot: *mut EventDescBool,
+            member_offset: usize,
+            name: *const c_char,
+        ) -> *mut EventDescBool {
+            let this = &mut *slot;
+            this.vtable = EVENT_BOOL_VTAB;
+            this.signal_offset = member_offset;
+            this.name = if name.is_null() {
+                String::new()
+            } else {
+                CStr::from_ptr(name).to_string_lossy().into_owned()
+            };
+            this.signatures = vec![String::from("bool")];
+            slot
+        }
+    }
+
+    /// was: `rbx::signals::signal<void()(bool)>` emit + disconnectAll slots.
+    /// The object is located at `derived + signal_offset` in the binary; the
+    /// host passes it directly.
+    pub trait BoolSignal {
+        fn emit(&self, value: bool);
+        fn disconnect_all(&self);
+    }
+
+    /// was: `rbx::signals::signal<void()(void)>` emit + disconnectAll slots.
+    pub trait VoidSignal {
+        fn emit(&self);
+        fn disconnect_all(&self);
+    }
+
+    /// was: `GenericSlotWrapper` callable — the `(*a1 + 8)(a1, variants)` slot.
+    pub trait BoolSlot {
+        fn call(&self, value: bool);
+    }
+
+    /// IDA 0x3cd4f0 `EventDescImpl<1, Camera, void(bool)>::fireEvent`:
+    /// `args.size() == 1` ReleaseAssert (Reflection/Event.h:320), derived `a2 - 36`,
+    /// `any_cast<bool>(args[0])`, `signal(derived + [40], value)`.
+    pub fn fire_event_bool(
+        desc: &EventDescBool,
+        source: *const u8,
+        args: &[bool],
+        sig: &dyn BoolSignal,
+    ) {
+        assert!(args.len() == 1, "args.size() == 1 file: include/Reflection/Event.h line: 320");
+        let _derived = if source.is_null() {
+            source
+        } else {
+            source.wrapping_sub(super::billboard_ref::BASE_TO_DERIVED)
+        };
+        let _ = (desc.signal_offset, _derived);
+        sig.emit(args[0])
+    }
+
+    /// IDA 0x3ce454 `EventDescImpl<0, Camera, void(void)>::fireEvent`:
+    /// `args.size() == 0` ReleaseAssert (Reflection/Event.h:295), derived `a2 - 36`,
+    /// `signal(derived + [40])`.
+    pub fn fire_event_void(source: *const u8, args: &[()], sig: &dyn VoidSignal) {
+        assert!(args.is_empty(), "args.size() == 0 file: include/Reflection/Event.h line: 295");
+        let _derived = if source.is_null() {
+            source
+        } else {
+            source.wrapping_sub(super::billboard_ref::BASE_TO_DERIVED)
+        };
+        let _ = _derived;
+        sig.emit()
+    }
+
+    /// IDA 0x3cd57c `EventDescBase::disconnectAll` (bool):
+    /// `disconnectAll(*(a1 + 40) + (a2 ? a2 - 36 : 0))`.
+    pub fn disconnect_all_bool(source: *const u8, sig: &dyn BoolSignal) {
+        let _derived = if source.is_null() {
+            source
+        } else {
+            source.wrapping_sub(super::billboard_ref::BASE_TO_DERIVED)
+        };
+        let _ = _derived;
+        sig.disconnect_all()
+    }
+
+    /// IDA 0x3ce4c8 `EventDescBase::disconnectAll` (void): same shape.
+    pub fn disconnect_all_void(source: *const u8, sig: &dyn VoidSignal) {
+        let _derived = if source.is_null() {
+            source
+        } else {
+            source.wrapping_sub(super::billboard_ref::BASE_TO_DERIVED)
+        };
+        let _ = _derived;
+        sig.disconnect_all()
+    }
+
+    /// IDA 0x3cd590 `GenericSlotWrapper::execute1<bool>`: builds the one-element
+    /// `vector<Variant>` (`void` tag + `bool` payload via placement-any), calls
+    /// the `+8` slot, destroys the vector, returns the canary (no observable
+    /// output — the port returns `()`).
+    pub fn execute1_bool(slot: &dyn BoolSlot, value: bool) {
+        slot.call(value)
+    }
+
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+        use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
+
+        struct FakeSig {
+            emitted: AtomicBool,
+            value: AtomicBool,
+            disconnected: AtomicUsize,
+        }
+        impl BoolSignal for FakeSig {
+            fn emit(&self, value: bool) {
+                self.value.store(value, Ordering::SeqCst);
+                self.emitted.store(true, Ordering::SeqCst);
+            }
+            fn disconnect_all(&self) {
+                self.disconnected.fetch_add(1, Ordering::SeqCst);
+            }
+        }
+        struct FakeVoid {
+            emitted: AtomicBool,
+            disconnected: AtomicUsize,
+        }
+        impl VoidSignal for FakeVoid {
+            fn emit(&self) {
+                self.emitted.store(true, Ordering::SeqCst);
+            }
+            fn disconnect_all(&self) {
+                self.disconnected.fetch_add(1, Ordering::SeqCst);
+            }
+        }
+        struct FakeSlot {
+            seen: AtomicBool,
+        }
+        impl BoolSlot for FakeSlot {
+            fn call(&self, value: bool) {
+                self.seen.store(value, Ordering::SeqCst);
+            }
+        }
+
+        #[test]
+        fn bool_event_construct_fire_disconnect() {
+            let mut slot = EventDescBool::default();
+            let name = c"Changed".as_ptr();
+            unsafe {
+                EventDescBool::construct(&mut slot, 40, name);
+            }
+            assert_eq!(slot.vtable, EVENT_BOOL_VTAB);
+            assert_eq!((slot.signal_offset, slot.signatures.len()), (40, 1));
+            let sig = FakeSig {
+                emitted: AtomicBool::new(false),
+                value: AtomicBool::new(false),
+                disconnected: AtomicUsize::new(0),
+            };
+            fire_event_bool(&slot, 0x100 as *const u8, &[true], &sig);
+            assert!(sig.emitted.load(Ordering::SeqCst) && sig.value.load(Ordering::SeqCst));
+            disconnect_all_bool(0x100 as *const u8, &sig);
+            assert_eq!(sig.disconnected.load(Ordering::SeqCst), 1);
+        }
+
+        #[test]
+        #[should_panic(expected = "args.size() == 1")]
+        fn fire_bool_rejects_wrong_arity() {
+            let d = EventDescBool::default();
+            let sig = FakeSig {
+                emitted: AtomicBool::new(false),
+                value: AtomicBool::new(false),
+                disconnected: AtomicUsize::new(0),
+            };
+            fire_event_bool(&d, std::ptr::null(), &[], &sig);
+        }
+
+        #[test]
+        fn void_event_and_slot_wrapper() {
+            let sig = FakeVoid {
+                emitted: AtomicBool::new(false),
+                disconnected: AtomicUsize::new(0),
+            };
+            fire_event_void(0x100 as *const u8, &[], &sig);
+            assert!(sig.emitted.load(Ordering::SeqCst));
+            disconnect_all_void(std::ptr::null(), &sig);
+            assert_eq!(sig.disconnected.load(Ordering::SeqCst), 1);
+            let slot = FakeSlot { seen: AtomicBool::new(false) };
+            execute1_bool(&slot, true);
+            assert!(slot.seen.load(Ordering::SeqCst));
+        }
+    }
+}
+
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,bool>::GetSetImpl<bool (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(bool)>::isReadOnly(void)const")]
 // 0x3c202c — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
 // type: int()
@@ -2728,57 +2951,74 @@ pub unsafe fn stub_3cc0a8(adj: *const u8, t: &dyn camera_enum::InstanceTeardown)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Camera,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Camera::*>::EventDesc(rbx::signal<void ()(bool)> RBX::Camera::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // 0x3cd164 — __ZN3RBX10Reflection9EventDescINS_6CameraEFvbEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: _DWORD *__fastcall(int, int, int, int, int, void *, int)
-pub fn stub_3cd164() -> ! {
-    todo!("0x3cd164 __ZN3RBX10Reflection9EventDescINS_6CameraEFvbEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+pub unsafe fn stub_3cd164(
+    slot: *mut camera_event::EventDescBool,
+    member_offset: usize,
+    name: *const std::os::raw::c_char,
+) -> *mut camera_event::EventDescBool {
+    // IDA 0x3cd164: base init + a1[10] = signal member + off_1240418 + bool signature.
+    camera_event::EventDescBool::construct(slot, member_offset, name)
 }
 
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Camera,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Camera::*>::~EventDesc()")]
 // 0x3cd2e8 — __ZN3RBX10Reflection9EventDescINS_6CameraEFvbEN3rbx6signalIS3_EEMS2_S6_ED0Ev
 // type: void __fastcall(_DWORD *)
-pub fn stub_3cd2e8() -> ! {
-    todo!("0x3cd2e8 __ZN3RBX10Reflection9EventDescINS_6CameraEFvbEN3rbx6signalIS3_EEMS2_S6_ED0Ev")
+pub fn stub_3cd2e8(slot: &mut camera_enum::EventDescriptor) {
+    // IDA 0x3cd2e8 D0: off_122F5A8 restore + list clear (+ delete artifact).
+    camera_enum::EventDescriptor::destroy(slot)
 }
 
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::Camera,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Camera::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 // 0x3cd4f0 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_6CameraEFvbEN3rbx6signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE
 // type: int __fastcall(int, int, _DWORD *)
-pub fn stub_3cd4f0() -> ! {
-    todo!("0x3cd4f0 __ZNK3RBX10Reflection13EventDescImplILi1ENS_6CameraEFvbEN3rbx6signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE")
+pub fn stub_3cd4f0(
+    desc: &camera_event::EventDescBool,
+    source: *const u8,
+    args: &[bool],
+    sig: &dyn camera_event::BoolSignal,
+) {
+    // IDA 0x3cd4f0: args.size()==1 assert, derived-36, signal(derived+[40], arg).
+    camera_event::fire_event_bool(desc, source, args, sig)
 }
 
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Camera,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Camera::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
 // 0x3cd57c — __ZNK3RBX10Reflection13EventDescBaseINS_6CameraEFvbEN3rbx6signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE
 // type: int __fastcall(int, int)
-pub fn stub_3cd57c() -> ! {
-    todo!("0x3cd57c __ZNK3RBX10Reflection13EventDescBaseINS_6CameraEFvbEN3rbx6signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE")
+pub fn stub_3cd57c(source: *const u8, sig: &dyn camera_event::BoolSignal) {
+    // IDA 0x3cd57c: disconnectAll(*([40]) + derived).
+    camera_event::disconnect_all_bool(source, sig)
 }
 
 #[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute1<bool>(bool const&)")]
 // 0x3cd590 — __ZN3RBX10Reflection18GenericSlotWrapper8execute1IbEEvRKT_
 // type: int __fastcall(int, int)
-pub fn stub_3cd590() -> ! {
-    todo!("0x3cd590 __ZN3RBX10Reflection18GenericSlotWrapper8execute1IbEEvRKT_")
+pub fn stub_3cd590(slot: &dyn camera_event::BoolSlot, value: bool) {
+    // IDA 0x3cd590: 1-variant vector through the +8 slot; canary discarded.
+    camera_event::execute1_bool(slot, value)
 }
 
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Camera,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Camera::*>::~EventDesc()")]
 // 0x3ce19c — __ZN3RBX10Reflection9EventDescINS_6CameraEFvvEN3rbx6signalIS3_EEMS2_S6_ED0Ev
 // type: void __fastcall(_DWORD *)
-pub fn stub_3ce19c() -> ! {
-    todo!("0x3ce19c __ZN3RBX10Reflection9EventDescINS_6CameraEFvvEN3rbx6signalIS3_EEMS2_S6_ED0Ev")
+pub fn stub_3ce19c(slot: &mut camera_enum::EventDescriptor) {
+    // IDA 0x3ce19c D0: off_122F5A8 restore + list clear (+ delete artifact).
+    camera_enum::EventDescriptor::destroy(slot)
 }
 
 #[doc(alias = "RBX::Reflection::EventDescImpl<0,RBX::Camera,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Camera::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 // 0x3ce454 — __ZNK3RBX10Reflection13EventDescImplILi0ENS_6CameraEFvvEN3rbx6signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE
 // type: int __fastcall(int, int, _DWORD *)
-pub fn stub_3ce454() -> ! {
-    todo!("0x3ce454 __ZNK3RBX10Reflection13EventDescImplILi0ENS_6CameraEFvvEN3rbx6signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE")
+pub fn stub_3ce454(source: *const u8, args: &[()], sig: &dyn camera_event::VoidSignal) {
+    // IDA 0x3ce454: args.size()==0 assert, derived-36, signal(derived+[40]).
+    camera_event::fire_event_void(source, args, sig)
 }
 
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Camera,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Camera::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
 // 0x3ce4c8 — __ZNK3RBX10Reflection13EventDescBaseINS_6CameraEFvvEN3rbx6signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE
 // type: int __fastcall(int, int)
-pub fn stub_3ce4c8() -> ! {
-    todo!("0x3ce4c8 __ZNK3RBX10Reflection13EventDescBaseINS_6CameraEFvvEN3rbx6signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE")
+pub fn stub_3ce4c8(source: *const u8, sig: &dyn camera_event::VoidSignal) {
+    // IDA 0x3ce4c8: disconnectAll(*([40]) + derived).
+    camera_event::disconnect_all_void(source, sig)
 }
 
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(G3D::CoordinateFrame,G3D::CoordinateFrame,float),3>::BoundFuncDesc(void (RBX::Camera::*)(G3D::CoordinateFrame,G3D::CoordinateFrame,float),char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
