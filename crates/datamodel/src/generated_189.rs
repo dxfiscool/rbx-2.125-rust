@@ -211,6 +211,40 @@ pub fn antialiasing_mode_holder() -> &'static TypedHolder {
 pub fn framerate_manager_mode_holder() -> &'static TypedHolder {
     LazyLock::force(&FRAMERATE_MANAGER_MODE_HOLDER)
 }
+/// Holder identity for `typed_holder<GraphicsMode>::singleton()` (IDA 0xe43c).
+pub const HOLDER_GRAPHICS_MODE: u32 = 6;
+/// Holder identity for `typed_holder<AASamples>::singleton()` (IDA 0xe97c).
+pub const HOLDER_AA_SAMPLES: u32 = 7;
+/// IDA 0xe43c `singleton()::s`, homed here so `generated_190` shares one model.
+static GRAPHICS_MODE_HOLDER: LazyLock<TypedHolder> = LazyLock::new(|| TypedHolder {
+    type_name: "N3RBX15CRenderSettings12GraphicsModeE",
+    token: HOLDER_GRAPHICS_MODE,
+});
+/// IDA 0xe97c `singleton()::s`, homed here so `generated_190` shares one model.
+static AA_SAMPLES_HOLDER: LazyLock<TypedHolder> = LazyLock::new(|| TypedHolder {
+    type_name: "N3RBX15CRenderSettings9AASamplesE",
+    token: HOLDER_AA_SAMPLES,
+});
+/// IDA 0xe43c: `typed_holder<GraphicsMode>::singleton()` (see `stub_0xc95c`
+/// for the init shape).
+pub fn graphics_mode_holder() -> &'static TypedHolder {
+    LazyLock::force(&GRAPHICS_MODE_HOLDER)
+}
+/// IDA 0xe97c: `typed_holder<AASamples>::singleton()` (see `stub_0xc95c`
+/// for the init shape).
+pub fn aa_samples_holder() -> &'static TypedHolder {
+    LazyLock::force(&AA_SAMPLES_HOLDER)
+}
+/// Rust model of `Singleton<EnumDesc<ResolutionPreset>>::doGetSingleton`
+/// (IDA `0xfecc`/`0xff9a` touches): the shared ResolutionPreset table the
+/// `EnumPropDescriptor<CRenderSettingsItem, ResolutionPreset>` suite reads.
+/// Starts empty; the `addPair` impls fill it (cf. `RenderEnumDesc::new`).
+static RESOLUTION_PRESET_ENUM_DESC: LazyLock<RenderEnumDesc> =
+    LazyLock::new(|| RenderEnumDesc::new("ResolutionPreset"));
+/// IDA 0xfecc: `EnumDesc<ResolutionPreset>` singleton accessor.
+pub fn resolution_preset_enum_desc() -> &'static RenderEnumDesc {
+    LazyLock::force(&RESOLUTION_PRESET_ENUM_DESC)
+}
 
 /// IDA 0xb33c..0xb4f8: `RBX::CRenderSettings` slots read by this file's getters.
 /// IDA 0x97d0 constructs the settings subobject at item offset +96
