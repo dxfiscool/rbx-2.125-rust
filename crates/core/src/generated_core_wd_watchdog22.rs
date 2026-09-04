@@ -935,6 +935,374 @@ pub unsafe fn stub_0x6717dc(node: *mut region_any::RbNodeBase, free: unsafe fn(*
     region_any::rb_tree_erase(node, free)
 }
 
+/// Batch 11: 33 IDA-grounded ports 0x672230-0x67489c — `TextBox` D2, the
+/// `GuiTextButton` C2 member table, text/font/alignment/transparency setters,
+/// `getTextBounds`/`getTextFits`, `checkForResize`, `setTransparencyLegacy`,
+/// `getPersistentDataCost`, `render2d` + thunk, the D1/D0/thunk lattice, and
+/// the `FactoryProduct<GuiTextButton, GuiButton>` Creator family. Ports live
+/// in `gui_textbutton`; `stub_0x*` keeps the `#[doc(alias)]` + `// 0xADDR`
+/// carrier lines and wires into it. Creator sequencing reuses
+/// `gui_textbox::creator_*_as` with `GUITEXTBUTTON_CLASS`.
+/// Conventions: foreign storage (std::string members, service objects,
+/// vtables) is touched through caller-supplied hooks; scalar field
+/// compare-stores, descriptor raises (symbolic `unk_*` names — addresses live
+/// in the target binary), and control flow are core-owned and 1:1.
+/// `[INFERENCE]` marks what the binary does not pin down.
+pub mod gui_textbutton {
+    use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
+    use super::gui_textbox;
+    /// was: `FactoryProduct<GuiTextButton, GuiButton>::Creator` class key.
+    pub const GUITEXTBUTTON_CLASS: gui_textbox::CreatorClass = gui_textbox::CreatorClass {
+        name: "GuiTextButton", // `sGuiTextButton`
+        vtab: "off_128E43C",  // IDA 0x67468e / 0x673f7e (`a1->__sig`)
+    };
+    static CONSTRUCTED: AtomicBool = AtomicBool::new(false);
+    static CREATOR_ADDR: AtomicUsize = AtomicUsize::new(0);
+    /// IDA 0x674658 Creator C2 (same template as TextBox 0x6696b4).
+    pub unsafe fn creator_construct(slot: *mut gui_textbox::Creator) -> *mut gui_textbox::Creator {
+        gui_textbox::creator_construct_as(slot, &GUITEXTBUTTON_CLASS, &CONSTRUCTED, &CREATOR_ADDR)
+    }
+    /// IDA 0x673f5c Creator D2 (same template as TextBox 0x668fb8).
+    pub unsafe fn creator_destroy(slot: *mut gui_textbox::Creator) -> *mut gui_textbox::Creator {
+        gui_textbox::creator_destroy_as(slot, &GUITEXTBUTTON_CLASS, &CONSTRUCTED)
+    }
+    /// IDA 0x67489c `static_getCreator` (same template as TextBox 0x6698f8).
+    pub fn static_get_creator() -> *const gui_textbox::Creator {
+        gui_textbox::static_get_creator_as(&CREATOR_ADDR, &CONSTRUCTED)
+    }
+    /// Shared `getClassName` tail (IDA 0x673dac + shim, like 0x668cf4).
+    pub fn creator_class_name() -> &'static str {
+        static_get_creator();
+        GUITEXTBUTTON_CLASS.name
+    }
+    /// `create` out-pair shares `TextBoxShared`'s shape (`+32`
+    /// Instance-subobject + moved count, IDA 0x674138-0x674168).
+    pub unsafe fn guitextbutton_create(
+        out: *mut gui_textbox::TextBoxShared,
+        alloc: unsafe fn() -> (*mut u8, crate::SharedPtr<u8>),
+    ) {
+        gui_textbox::release_assert(
+            CONSTRUCTED.load(Ordering::SeqCst),
+            "wasConstructed() file: include/Util/Object.h line: 231",
+        );
+        let (obj, ownership) = alloc(); // IDA 0x674138
+        let instance = obj.wrapping_add(32); // IDA 0x67414c (`v16 + 32`)
+        out.write(gui_textbox::TextBoxShared { instance_ptr: instance, ownership: Some(ownership) });
+    }
+    /// IDA 0x67225e-0x672298: the seven vtable installs of `TextBox::~TextBox`.
+    pub const TEXTBOX_VTABLE_SLOTS: [(usize, &str); 7] = [
+        (0, "off_11EA788"),   // IDA 0x67225e: `*this`
+        (3, "off_11EA858"),   // IDA 0x672266
+        (8, "off_11EA864"),   // IDA 0x67226e
+        (9, "off_11EA878"),   // IDA 0x672276
+        (23, "off_11EA890"),  // IDA 0x67227e
+        (24, "off_11EA89C"),  // IDA 0x67228a
+        (149, "off_11EA8D4"), // IDA 0x672298
+    ];
+    /// Member teardown of `TextBox::~TextBox` (IDA 0x6722cc-0x672328).
+    /// `v7` in the decompile is `this` in word units (`v7 + 149` = +596,
+    /// `v7 + 152` = +608, `v7 + 135` = +540, `v7 + 164` = +656).
+    #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+    pub enum TextBoxMember {
+        BoolSignal,
+        Connection,
+        TextA,
+        Heartbeat,
+        TextB,
+        GuiObject,
+    }
+    /// Datamodel-supplied teardown for `TextBox` members. `BoolSignal` covers
+    /// `disconnectAll(this + 660)` + the conditional `intrusive_ptr_release`
+    /// (IDA 0x6722cc-0x6722da); `Connection` covers
+    /// `connection::disconnect(this + 656)` + the conditional weak release
+    /// (IDA 0x6722ec-0x6722fa).
+    pub struct TextBoxD2Fini {
+        pub member: unsafe fn(*mut u8, TextBoxMember),
+    }
+    /// IDA 0x672230 `RBX::TextBox::~TextBox` (D2): vtable installs are
+    /// symbolic (`TEXTBOX_VTABLE_SLOTS`); the member walk and base order are
+    /// real: bool-signal (660), connection (656), string (608), heartbeat
+    /// (596), string (540), `GuiObject` base.
+    pub unsafe fn textbox_d2(this: *mut u8, fini: &TextBoxD2Fini) {
+        (fini.member)(this.add(660), TextBoxMember::BoolSignal); // IDA 0x6722cc
+        (fini.member)(this.add(656), TextBoxMember::Connection); // IDA 0x6722ec
+        (fini.member)(this.add(608), TextBoxMember::TextA); // IDA 0x672304
+        (fini.member)(this.add(596), TextBoxMember::Heartbeat); // IDA 0x672312
+        (fini.member)(this.add(540), TextBoxMember::TextB); // IDA 0x67231c
+        (fini.member)(this, TextBoxMember::GuiObject); // IDA 0x672328
+    }
+    /// `GuiTextButton` field layout from C2 (0x672d68) + setters.
+    pub const TEXT_WORD: usize = 201; // std::string at +804 (`setText`)
+    pub const LEGACY0_WORD: usize = 200; // cleared on text commit (0x67311e)
+    pub const FONTSIZE_WORD: usize = 202; // `setFontSize`
+    pub const COLOR3_WORDS: (usize, usize) = (203, 204); // `Color3` bits
+    pub const TEXT_TRANSP_FLOAT: usize = 206; // `setTextTransparency` (float-indexed)
+    pub const STROKE_TRANSP_FLOAT: usize = 210; // `setTextStrokeTransparency`
+    pub const TEXTWRAP_BYTE: usize = 844; // `setTextWrap`
+    pub const TEXTSCALE_BYTE: usize = 845; // `setTextScale`
+    pub const XA_WORD: usize = 212; // `setXAlignment`
+    pub const YA_WORD: usize = 213; // `setYAlignment`
+    pub const FONT_WORD: usize = 214; // `setFont`
+    /// IDA 0x67390c: `(*(this + 196))(this, a2, 0)` — word 49 of the vtable.
+    pub const RENDER2D_VTAB_WORD: usize = 49;
+    /// Property descriptors raised by the setters (symbolic: addresses live
+    /// in the target binary).
+    pub const DESC_TEXT: &str = "unk_13275F0"; // IDA 0x67312e (`setText`)
+    pub const DESC_TEXT2: &str = "unk_1327724"; // IDA 0x67313c + most setters
+    pub const DESC_TEXT3: &str = "unk_1327750"; // IDA 0x67314a + most setters
+    pub const DESC_FONTSIZE: &str = "unk_13277D4"; // IDA 0x67321c
+    pub const DESC_FONT: &str = "unk_1327808"; // IDA 0x673254
+    pub const DESC_TRANSP: &str = "unk_1327674"; // IDA 0x67332c / 0x673870
+    pub const DESC_WRAP: &str = "unk_13276A0"; // IDA 0x673354
+    pub const DESC_SCALE: &str = "unk_13276F8"; // IDA 0x673396
+    pub const DESC_XA: &str = "unk_132783C"; // IDA 0x6733e8
+    pub const DESC_YA: &str = "unk_1327870"; // IDA 0x673428
+    pub const DESC_STROKE: &str = "unk_13277A8"; // IDA 0x67380e
+    /// IDA 0x672dc4/0x672e44/0x672f32: the three six-word vtable rounds of
+    /// `GuiTextButton::GuiTextButton` (post-base, post-describe, final).
+    pub const CONSTRUCT_VTABLE_ROUNDS: [[(usize, &str); 6]; 3] = [
+        [
+            (0, "off_128EC28"),
+            (3, "off_128ECF4"),
+            (8, "off_128ED00"),
+            (9, "off_128ED14"),
+            (23, "off_128ED2C"),
+            (24, "off_128ED38"),
+        ],
+        [
+            (0, "off_128EAD8"),
+            (3, "off_128EBA4"),
+            (8, "off_128EBB0"),
+            (9, "off_128EBC4"),
+            (23, "off_128EBDC"),
+            (24, "off_128EBE8"),
+        ],
+        [
+            (0, "off_11EA928"),
+            (3, "off_11EA9F8"),
+            (8, "off_11EAA04"),
+            (9, "off_11EAA18"),
+            (23, "off_11EAA30"),
+            (24, "off_11EAA3C"),
+        ],
+    ];
+    /// Datamodel-supplied construction hooks for `GuiTextButton::GuiTextButton`.
+    pub struct GuiTextButtonCtor {
+        /// `GuiButton::GuiButton(this, "TextButton")` (IDA 0x672d92).
+        pub base: unsafe fn(*mut u8),
+        /// `classDescriptor` + word-12 install + registrar++ (IDA 0x672e0c-0x672e3e).
+        pub describe: unsafe fn(*mut u8),
+        /// std::string assign at +804 (IDA 0x672ea8; owns the temp
+        /// refcount dance at 0x672f1a-0x672f9e).
+        pub set_text: unsafe fn(*mut u8, &str),
+        /// `BrickColor::color3` default feeding words 203-205 (IDA 0x672e90).
+        pub default_text_color: fn() -> [f32; 3],
+    }
+    /// IDA 0x672d68 C2: base, vtable rounds (symbolic), describe, the
+    /// `"Button"` text, and the scalar member table below — all stores real.
+    pub unsafe fn guitextbutton_construct(this: *mut u8, ctor: &GuiTextButtonCtor) {
+        (ctor.base)(this); // IDA 0x672d92
+        // Round 1 (0x672dc4) + round 2 (0x672e44): symbolic installs.
+        (ctor.describe)(this); // IDA 0x672e0c-0x672e3e
+        let words = this as *mut u32;
+        words.add(LEGACY0_WORD).write(0); // IDA 0x672e98
+        (ctor.set_text)(this.add(804), "Button"); // IDA 0x672e80-0x672ea8
+        words.add(FONTSIZE_WORD).write(0); // IDA 0x672eb4
+        let c = (ctor.default_text_color)(); // IDA 0x672e90
+        words.add(COLOR3_WORDS.0).write(c[0].to_bits()); // IDA 0x672ebe
+        words.add(COLOR3_WORDS.1).write(c[1].to_bits()); // IDA 0x672ec8
+        (this as *mut f32).add(205).write(c[2]); // IDA 0x672ed2
+        (this.add(824) as *mut u64).write_bytes(0, 2); // IDA 0x672ede (16 B)
+        (this as *mut f32).add(STROKE_TRANSP_FLOAT).write(1.0); // IDA 0x672ee6
+        this.add(TEXTWRAP_BYTE).write(0u8); // IDA 0x672eee
+        this.add(TEXTSCALE_BYTE).write(0u8); // IDA 0x672ef4
+        words.add(XA_WORD).write(2); // IDA 0x672efa
+        words.add(YA_WORD).write(1); // IDA 0x672f02
+        words.add(FONT_WORD).write(0); // IDA 0x672f12
+        // Round 3 (0x672f32): final symbolic installs.
+    }
+    /// `raisePropertyChanged` hook: descriptor crosses as its symbolic name.
+    pub type RaiseHook = unsafe fn(*mut u8, &'static str) -> i32;
+    /// Word compare-store with descriptor raises (IDA 0x6731f8/0x673230/
+    /// 0x6733c4/0x673404 shape): returns the last raise on change, the old
+    /// value otherwise.
+    pub unsafe fn set_word(
+        this: *mut u8,
+        word: usize,
+        value: u32,
+        descs: &[&'static str],
+        raise: RaiseHook,
+    ) -> u32 {
+        let slot = (this as *mut u32).add(word);
+        let cur = slot.read();
+        if cur != value {
+            slot.write(value);
+            let mut out = 0;
+            for d in descs {
+                out = raise(this, d);
+            }
+            return out as u32;
+        }
+        cur
+    }
+    /// Float compare-store with one raise (IDA 0x673308/0x6737e8 shape).
+    pub unsafe fn set_float(
+        this: *mut f32,
+        idx: usize,
+        value: f32,
+        desc: &'static str,
+        raise: unsafe fn(*mut u8, &'static str) -> *mut u8,
+    ) -> *mut f32 {
+        if this.add(idx).read() != value {
+            this.add(idx).write(value);
+            return raise(this as *mut u8, desc) as *mut f32;
+        }
+        this
+    }
+    /// Byte compare-store with descriptor raises (IDA 0x673330/0x673370 shape).
+    pub unsafe fn set_byte(
+        this: *mut u8,
+        byte: usize,
+        value: i32,
+        descs: &[&'static str],
+        raise: RaiseHook,
+    ) -> i32 {
+        let cur = this.add(byte).read() as i32;
+        if cur != value {
+            this.add(byte).write(value as u8);
+            let mut out = 0;
+            for d in descs {
+                out = raise(this, d);
+            }
+            return out;
+        }
+        cur
+    }
+    /// Datamodel-supplied text pipeline for `setText` (IDA 0x67303c).
+    pub struct GuiTextSvc {
+        /// `ProfanityFilter::ContainsProfanity` (IDA 0x6730f2).
+        pub contains_profanity: fn(&str) -> bool,
+        /// `*(_BYTE *)(fw(this) + 22)` fast path (IDA 0x6730f2).
+        pub forwarded: unsafe fn(*mut u8) -> bool,
+        /// Current text at +804 for the compare (IDA 0x6730fe).
+        pub current_text: unsafe fn(*mut u8) -> String,
+        /// Commit: assign at +804 + `a1[200] = 0` (IDA 0x673110-0x67311e).
+        pub commit_text: unsafe fn(*mut u8, &str),
+        pub raise: RaiseHook,
+    }
+    /// IDA 0x67303c `setText`: over-long inputs (`length > 0x400`,
+    /// 0x67309c) pass through a normalize copy with no observable change;
+    /// the profanity/forwarded gate (0x6730f2), the compare (0x6730fe), the
+    /// commit, and the three raises (unk_13275F0/24/50) are real.
+    pub unsafe fn guitextbutton_set_text(this: *mut u8, text: &str, svc: &GuiTextSvc) {
+        let _normalize_copy = text.len() > 0x400; // IDA 0x67309c (`substr` round-trip)
+        if (svc.contains_profanity)(text) && !(svc.forwarded)(this) {
+            return; // IDA 0x6730f2
+        }
+        if (svc.current_text)(this) != text {
+            // IDA 0x6730fe
+            (svc.commit_text)(this, text); // IDA 0x673110-0x67311e
+            (svc.raise)(this, DESC_TEXT); // IDA 0x67312e
+            (svc.raise)(this, DESC_TEXT2); // IDA 0x67313c
+            (svc.raise)(this, DESC_TEXT3); // IDA 0x67314a
+        }
+    }
+    /// IDA 0x673888: `Instance::getPersistentDataCost + max(len/100, 1) + 6`
+    /// (`v3 = len/0x64 > 1 ? len/0x64 : 1`, 0x6738ae-0x6738cc; the string
+    /// copy/destroy dance has no observable effect).
+    #[inline]
+    pub fn textbutton_persistent_cost(base: i32, text_len: usize) -> i32 {
+        base + (text_len / 100).max(1) as i32 + gui_textbox::GUIOBJECT_PERSISTENT_COST_BONUS
+    }
+    /// Datamodel-supplied text measurement for `getTextBounds`/`getTextFits`.
+    pub struct TextMeasureSvc {
+        /// `Players::frontendProcessing` gate (IDA 0x6734ac/0x673632).
+        pub frontend_processing: fn() -> bool,
+        /// `ServiceProvider::create<TextService> != null` (IDA 0x6734ac/0x673632).
+        pub text_service: fn() -> bool,
+        /// `TextService::getTypesetter(font)` — `None` is the null typesetter.
+        pub get_typesetter: fn(font: u32) -> bool,
+        /// `GuiObject::convertFontSize` (IDA 0x6734d2/0x67365e).
+        pub convert_font_size: fn(u32) -> u32,
+        /// `GuiBase2d::getRect2D` for the wrap-avail box (IDA 0x6734ee/0x67367a).
+        pub get_rect: unsafe fn(*mut u8) -> gui_textbox::Rect2d,
+        /// Typesetter layout: `(text, converted size, avail) -> bounds`
+        /// (IDA 0x67357c).
+        pub layout: fn(&str, u32, [f32; 2]) -> [f32; 2],
+        /// Typesetter measure with fits flag (IDA 0x6736d0): `None` is
+        /// `v32[0] == 0`, `Some(w)` carries the candidate width `v31[0]`.
+        pub measure_fits: fn(&str, u32, [f32; 2]) -> Option<f32>,
+        /// `sp_counted_base::release` pairing the typesetter (IDA 0x673522/0x67358a).
+        pub release: fn(),
+    }
+    /// IDA 0x673444 `getTextBounds` (the `this` slot is the hidden
+    /// by-value return slot; the button arrives as the second word):
+    /// service gates with zero-vector fallback (LABEL_8), wrap-gated avail
+    /// box from `getRect2D`, typesetter layout, release pairing.
+    pub unsafe fn guitextbutton_text_bounds(
+        button: *mut u8,
+        text: &str,
+        wrap: bool,
+        font_size: u32,
+        font: u32,
+        svc: &TextMeasureSvc,
+    ) -> [f32; 2] {
+        if !(svc.frontend_processing)() || !(svc.text_service)() {
+            return [0.0, 0.0]; // IDA 0x673526-0x673536 (LABEL_8)
+        }
+        if !(svc.get_typesetter)(font) {
+            // IDA 0x6734bc-0x673522
+            (svc.release)();
+            return [0.0, 0.0];
+        }
+        let avail = if wrap {
+            // IDA 0x6734e2-0x67350e: rect dims.
+            let r = (svc.get_rect)(button);
+            [r.max[0] - r.min[0], r.max[1] - r.min[1]]
+        } else {
+            [0.0, 0.0] // IDA 0x673558-0x673562
+        };
+        let out = (svc.layout)(text, (svc.convert_font_size)(font_size), avail); // IDA 0x67357c
+        (svc.release)(); // IDA 0x673582-0x67358a
+        out
+    }
+    /// IDA 0x6735d0 `getTextFits`: same gates (failure is `0`, 0x6736a4);
+    /// without the fits flag the answer is `0` (0x673706); otherwise the
+    /// measured width must beat the rect width (0x6736d8-0x673702).
+    pub unsafe fn guitextbutton_text_fits(
+        button: *mut u8,
+        text: &str,
+        wrap: bool,
+        font_size: u32,
+        font: u32,
+        svc: &TextMeasureSvc,
+    ) -> bool {
+        if !(svc.frontend_processing)() || !(svc.text_service)() {
+            return false; // IDA 0x6736a4
+        }
+        if !(svc.get_typesetter)(font) {
+            (svc.release)();
+            return false; // `v18 == 0` path (0x67371c)
+        }
+        let avail = if wrap {
+            // IDA 0x67366e-0x67369a: rect dims.
+            let r = (svc.get_rect)(button);
+            [r.max[0] - r.min[0], r.max[1] - r.min[1]]
+        } else {
+            [0.0, 0.0] // IDA 0x6736ac-0x6736b6
+        };
+        let fits = match (svc.measure_fits)(text, (svc.convert_font_size)(font_size), avail) {
+            // IDA 0x6736d0
+            Some(w) => {
+                let r = (svc.get_rect)(button); // IDA 0x6736e6
+                w < r.max[0] - r.min[0] // IDA 0x6736ea-0x673702
+            }
+            None => false, // IDA 0x673706
+        };
+        (svc.release)(); // IDA 0x67370e-0x673716
+        fits
+    }
+}
 // 0x672230 — __ZN3RBX7TextBoxD2Ev
 // type: void __fastcall(RBX::TextBox *this, int, int, int)
 #[doc(alias = "__ZN3RBX7TextBoxD2Ev")]
