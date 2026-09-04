@@ -3095,14 +3095,25 @@ pub fn stub_0x630058() {
 
 // 0x63005c — __ZN3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEEC2IMS2_KFPS3_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::RefPropDescriptor<RBX::SkateboardController* (RBX::SkateboardPlatform::*)(void)const,int>(char const*,char const*,RBX::SkateboardController* (RBX::SkateboardPlatform::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x63005c() -> ! {
-    todo!("0x63005c RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::RefPropDescriptor<RBX::SkateboardController* (RBX::SkateboardPlatform::*)(void)const,int>(char const*,char const*,RBX::SkateboardController* (RBX::SkateboardPlatform::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x63005c(
+    name: &str,
+    category: &str,
+    expected: &'static str,
+    attributes: u32,
+    permissions: u32,
+) -> RefProp {
+    // IDA 0x63005c: `RefPropDescriptor<SkateboardPlatform,
+    // SkateboardController>` ctor (same shape as 0x62307c).
+    RefProp::new(name, category, expected, attributes, permissions)
 }
 
 // 0x630100 — __ZN3RBX10Reflection7RefTypeIPNS_20SkateboardControllerEE9singletonEv
 #[doc(alias = "RBX::Reflection::RefType<RBX::SkateboardController *>::singleton(void)")]
-pub fn stub_0x630100() -> ! {
-    todo!("0x630100 RBX::Reflection::RefType<RBX::SkateboardController *>::singleton(void)")
+pub fn stub_0x630100() -> &'static RefType {
+    // IDA 0x630100: `RefType<SkateboardController*>::singleton`:
+    // guard-once construct + return the static (same shape as 0x62f85c).
+    static TYPE: std::sync::LazyLock<RefType> = std::sync::LazyLock::new(|| RefType { target: "SkateboardController" });
+    &TYPE
 }
 
 // 0x6301f8 — __ZN3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEED0Ev
@@ -3125,62 +3136,87 @@ pub fn stub_0x630238() {
 
 // 0x630248 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x630248() -> ! {
-    todo!("0x630248 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x630248(a: &RefProp, b: &RefProp) -> bool {
+    // IDA 0x630248: `equalValues` raw-pointer compare (same shape as
+    // 0x623170).
+    a.target == b.target
 }
 
 // 0x630270 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x630270() -> ! {
-    todo!("0x630270 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x630270(prop: &RefProp) -> Value {
+    // IDA 0x630270: `getVariant` via `shared_from<SkateboardController>`
+    // (same shape as 0x623198).
+    match prop.target {
+        Some(id) => Value::Instance(id),
+        None => Value::Nil,
+    }
 }
 
 // 0x630388 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x630388() -> ! {
-    todo!("0x630388 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x630388(prop: &mut RefProp, value: &Value) {
+    // IDA 0x630388: `setVariant` through the checked entry (same shape as
+    // 0x6232b0).
+    match value {
+        Value::Instance(id) => prop.target = Some(*id),
+        Value::Nil => prop.target = None,
+        other => panic!("Variant::get<shared_ptr<DescribedBase>> on {other:?} (IDA 0x630388)"),
+    }
 }
 
 // 0x630450 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x630450() -> ! {
-    todo!("0x630450 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x630450(dst: &mut RefProp, src: &RefProp) {
+    // IDA 0x630450: `copyValue` (same shape as 0x623378).
+    dst.target = src.target;
 }
 
 // 0x630474 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_0x630474() -> ! {
-    todo!("0x630474 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x630474(prop: &RefProp) -> Option<u32> {
+    // IDA 0x630474: `writeValue` (same shape as 0x62339c).
+    prop.target
 }
 
 // 0x630548 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_0x630548() -> ! {
-    todo!("0x630548 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x630548(prop: &mut RefProp, id: Option<u32>) {
+    // IDA 0x630548: `readValue` (same shape as 0x623470).
+    prop.target = id;
 }
 
 // 0x63056c — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11getRefValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x63056c() -> ! {
-    todo!("0x63056c RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::getRefValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x63056c(prop: &RefProp) -> Option<u32> {
+    // IDA 0x63056c: `getRefValue` (same shape as 0x623494).
+    prop.target
 }
 
 // 0x630580 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11setRefValueEPNS0_13DescribedBaseES6_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
-pub fn stub_0x630580() -> ! {
-    todo!("0x630580 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_0x630580(prop: &mut RefProp, id: Option<u32>, actual: Option<&'static str>) {
+    // IDA 0x630580: `setRefValue` with the
+    // `__dynamic_cast<SkateboardController>` check (same shape as 0x6234a8).
+    match (id, actual) {
+        (None, _) => prop.target = None,
+        (Some(id), Some(t)) if t != prop.expected => panic!("std::bad_cast (IDA 0x630580): {t} is not a {}", prop.expected),
+        (Some(id), _) => prop.target = Some(id),
+    }
 }
 
 // 0x6305fc — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
-pub fn stub_0x6305fc() -> ! {
-    todo!("0x6305fc RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+pub fn stub_0x6305fc(prop: &mut RefProp, id: Option<u32>) {
+    // IDA 0x6305fc: `setRefValueUnsafe` (same shape as 0x623524).
+    prop.target = id;
 }
 
 // 0x63061c — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x63061c() -> ! {
-    todo!("0x63061c RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+pub fn stub_0x63061c(prop: &mut RefProp, id: u32) {
+    // IDA 0x63061c: `assignIDREF` (same shape as 0x623544).
+    prop.target = Some(id);
 }
 
 // 0x6306fc — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
@@ -3203,14 +3239,18 @@ pub fn stub_0x630878() {
 
 // 0x63087c — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_20SkateboardControllerEE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x63087c() -> ! {
-    todo!("0x63087c RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x63087c(prop: &RefProp) -> Option<u32> {
+    // IDA 0x63087c: `GetImpl<SkateboardController*>::getValue`: header
+    // strip, getter member-pointer decode, invoke.
+    prop.target
 }
 
 // 0x63089c — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_20SkateboardControllerEE7GetImplIMS2_KFS4_vEE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::SkateboardController * const&)const")]
-pub fn stub_0x63089c() -> ! {
-    todo!("0x63089c RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::SkateboardController * const&)const")
+pub fn stub_0x63089c() {
+    // IDA 0x63089c: `GetImpl<SkateboardController*>::setValue` (read-only):
+    // `throw runtime_error("can't set value")`.
+    panic!("can't set value (IDA 0x63089c)");
 }
 
 // 0x6309bc — __ZN3RBX10Reflection7RefTypeIPNS_20SkateboardControllerEED1Ev
@@ -3221,8 +3261,13 @@ pub fn stub_0x6309bc() {
 
 // 0x6309c0 — __ZN3RBX10Reflection4TypeC2IPNS_20SkateboardControllerEEEPKcS6_PT_
 #[doc(alias = "RBX::Reflection::Type::Type<RBX::SkateboardController *>(char const*,char const*,RBX::SkateboardController * *)")]
-pub fn stub_0x6309c0() -> ! {
-    todo!("0x6309c0 RBX::Reflection::Type::Type<RBX::SkateboardController *>(char const*,char const*,RBX::SkateboardController * *)")
+pub fn stub_0x6309c0(name: &str, category: &str) -> ClassType {
+    // IDA 0x6309c0: `Type::Type<SkateboardController*>`: `Descriptor` init,
+    // tag declare, non-empty assert (Type.h:77), `addToAllTypes` (same shape
+    // as 0x62ffac).
+    assert!(!name.is_empty(), "!this->tag.empty() include/reflection/Type.h:77 (IDA 0x6309c0)");
+    register_type(name);
+    ClassType { name: name.to_owned(), category: category.to_owned() }
 }
 
 // 0x630a6c — __ZN3RBX10Reflection7RefTypeIPNS_20SkateboardControllerEED0Ev
@@ -3231,10 +3276,129 @@ pub fn stub_0x630a6c() {
     // IDA 0x630a6c: D0 deleting destructor: reset vtables, destroy members, `operator delete` (decompiled 0x396f40 Animation, 0x6d2f2c Described<Workspace>, 0x602e98 BoundFuncDesc). Rust: `Arc` Drop glue covers it; no explicit body.
 }
 
+/// `any_cast<shared_ptr<Instance>>` on a fire arg (IDA 0x630ecc/0x63143a).
+pub fn instance_arg(value: &Value) -> u32 {
+    match value {
+        Value::Instance(id) => *id,
+        other => panic!("any_cast<shared_ptr<Instance>> on {other:?}"),
+    }
+}
+
+/// `any_cast<MoveState>` on a fire arg (IDA 0x631994/0x6319aa).
+pub fn move_state_arg(value: &Value) -> i32 {
+    match value {
+        Value::EnumValue(v) => *v,
+        Value::Int(v) => *v,
+        other => panic!("any_cast<MoveState> on {other:?}"),
+    }
+}
+
+/// `RBX::Reflection::EventSource` for a one-`Instance`
+/// `rbx::signal` (IDA 0x630ca8/0x630dfc/0x630f5c).
+#[derive(Default)]
+pub struct EventSource1Instance {
+    signal: Signal<u32>,
+    holders: parking_lot::Mutex<Vec<(SharedPtr<SlotWrapper>, SharedPtr<dyn Fn(u32) + Send + Sync>)>>,
+}
+
+impl EventSource1Instance {
+    pub fn disconnect_all(&self) {
+        self.holders.lock().clear();
+        self.signal.disconnect_all();
+    }
+}
+
+/// `RBX::Reflection::EventSource` for a two-`Instance`
+/// `rbx::signal` (IDA 0x631214/0x631368/0x631518).
+#[derive(Default)]
+pub struct EventSource2Instance {
+    signal: Signal<(u32, u32)>,
+    holders: parking_lot::Mutex<Vec<(SharedPtr<SlotWrapper>, SharedPtr<dyn Fn((u32, u32)) + Send + Sync>)>>,
+}
+
+impl EventSource2Instance {
+    pub fn disconnect_all(&self) {
+        self.holders.lock().clear();
+        self.signal.disconnect_all();
+    }
+}
+
+/// `RBX::Reflection::EventSource` for a `(MoveState, MoveState)`
+/// `rbx::signal` (IDA 0x6317d0/0x631924/0x6319c0).
+#[derive(Default)]
+pub struct EventSource2MoveState {
+    signal: Signal<(i32, i32)>,
+    holders: parking_lot::Mutex<Vec<(SharedPtr<SlotWrapper>, SharedPtr<dyn Fn((i32, i32)) + Send + Sync>)>>,
+}
+
+impl EventSource2MoveState {
+    pub fn disconnect_all(&self) {
+        self.holders.lock().clear();
+        self.signal.disconnect_all();
+    }
+}
+
+/// `Singleton<EnumDesc<MoveState>>` link for 0x6332b0 (cf. 0x4aaef8):
+/// guard-once table; item pairs register in the singleton C2.
+static MOVE_STATE_DESC: std::sync::LazyLock<crate::enum_desc::EnumDesc> =
+    std::sync::LazyLock::new(|| crate::enum_desc::EnumDesc::new("MoveState"));
+
+/// `boost::_bi::bind_t<mf2<GenericSlotWrapper, MoveState, MoveState>, ...>`
+/// (IDA 0x631b4c, same shape as `BoundExplosionSlot` in descriptor.rs):
+/// the member triple folds into the target.
+#[derive(Clone)]
+pub struct BoundMoveStateSlot {
+    pub target: SharedPtr<SlotWrapper>,
+}
+
+/// `boost::function2<void, MoveState, MoveState>` holding one bound slot
+/// (IDA 0x631fc8, same shape as `ExplosionSlotFunction`).
+#[derive(Default, Clone)]
+pub struct MoveStateSlotFunction {
+    bound: Option<BoundMoveStateSlot>,
+}
+
+/// `boost::detail::function::functor_manager_operation_type` as switched at
+/// 0x6320c0: op 4 is `get_functor_type_tag` (same shape as `FunctorOp`).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum MoveStateFunctorOp {
+    Clone = 0,
+    Move = 1,
+    Destroy = 2,
+    CheckNoCopy = 3,
+    GetType = 4,
+}
+
+/// typeinfo name compared by `manage` case 4 (cf. 0x4a490a).
+pub const MOVE_STATE_BIND_T_TYPEINFO: &str = "bind_t<mf2<GenericSlotWrapper,MoveState,MoveState>>";
+
 // 0x630a70 — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_EC2ESB_PKcSE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x630a70() -> ! {
-    todo!("0x630a70 RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x630a70(
+    name: &str,
+    category: &str,
+    title: &str,
+    member: usize,
+    arg_name: &str,
+    permissions: u32,
+    attributes: u32,
+) -> EventDesc {
+    // IDA 0x630a70: `EventDesc<SkateboardPlatform, void(Instance)>` ctor:
+    // member-signal pointer stored at +40 (`v39[10] = a2`, 0x630aea),
+    // one-item signature with `getSingleton<shared_ptr<Instance>>`
+    // (0x630b14-0x630b42).
+    EventDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        title: title.to_owned(),
+        member,
+        signature: Signature {
+            return_type: "void",
+            args: vec![(arg_name.to_owned(), "Instance")],
+        },
+        permissions,
+        attributes,
+    }
 }
 
 // 0x630bf4 — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED0Ev
@@ -3245,26 +3409,64 @@ pub fn stub_0x630bf4() {
 
 // 0x630ca8 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
-pub fn stub_0x630ca8() -> ! {
-    todo!("0x630ca8 RBX::Reflection::EventDescImpl<1,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x630ca8(src: &EventSource1Instance, wrapper: SharedPtr<SlotWrapper>) {
+    // IDA 0x630ca8: `EventDescImpl<1, Instance>::connectGeneric`:
+    // `signal::connect<function1>` on the member signal, clear the temp
+    // (0x630d34-0x630d5a).
+    let w = SharedPtr::clone(&wrapper);
+    let slot = SharedPtr::new(move |id: u32| (w.invoke)(&[Value::Instance(id)]));
+    src.signal.connect(SharedPtr::clone(&slot));
+    src.holders.lock().push((wrapper, slot));
 }
 
 // 0x630dfc — __ZNK3RBX10Reflection13EventDescImplILi1ENS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
-pub fn stub_0x630dfc() -> ! {
-    todo!("0x630dfc RBX::Reflection::EventDescImpl<1,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0x630dfc(src: &EventSource1Instance, args: &[Value]) {
+    // IDA 0x630dfc: `fireEvent` for the 1-Instance event:
+    // `ReleaseAssert(args.size() == 1)` (Event.h:320), `any_cast<Instance>`
+    // (0x630ecc), `signal_with_args<1>` invoke (0x630eac-0x630ef2).
+    assert!(args.len() == 1, "args.size() == 1 include/Reflection/Event.h:320 (IDA 0x630dfc)");
+    src.signal.fire(instance_arg(&args[0]));
 }
 
 // 0x630f5c — __ZNK3RBX10Reflection13EventDescBaseINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
-pub fn stub_0x630f5c() -> ! {
-    todo!("0x630f5c RBX::Reflection::EventDescBase<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_0x630f5c(src: &EventSource1Instance) {
+    // IDA 0x630f5c: `EventDescBase::disconnectAll` for the 1-Instance
+    // event.
+    src.disconnect_all();
 }
 
 // 0x630f70 — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_EC2ESB_PKcSE_SE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x630f70() -> ! {
-    todo!("0x630f70 RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x630f70(
+    name: &str,
+    category: &str,
+    title: &str,
+    member: usize,
+    arg0_name: &str,
+    arg1_name: &str,
+    permissions: u32,
+    attributes: u32,
+) -> EventDesc {
+    // IDA 0x630f70: `EventDesc<SkateboardPlatform, void(Instance,
+    // Instance)>` ctor: member at +40, two-item signature with
+    // `getSingleton<shared_ptr<Instance>>` types (0x631054-0x63107e).
+    EventDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        title: title.to_owned(),
+        member,
+        signature: Signature {
+            return_type: "void",
+            args: vec![
+                (arg0_name.to_owned(), "Instance"),
+                (arg1_name.to_owned(), "Instance"),
+            ],
+        },
+        permissions,
+        attributes,
+    }
 }
 
 // 0x631160 — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_ED0Ev
@@ -3275,26 +3477,67 @@ pub fn stub_0x631160() {
 
 // 0x631214 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
-pub fn stub_0x631214() -> ! {
-    todo!("0x631214 RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x631214(src: &EventSource2Instance, wrapper: SharedPtr<SlotWrapper>) {
+    // IDA 0x631214: `EventDescImpl<2, Instance>::connectGeneric`:
+    // `signal::connect<function2>` on the member signal, clear the temp
+    // (0x6312a0-0x6312c6).
+    let w = SharedPtr::clone(&wrapper);
+    let slot = SharedPtr::new(move |(a, b): (u32, u32)| {
+        (w.invoke)(&[Value::Instance(a), Value::Instance(b)]);
+    });
+    src.signal.connect(SharedPtr::clone(&slot));
+    src.holders.lock().push((wrapper, slot));
 }
 
 // 0x631368 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
-pub fn stub_0x631368() -> ! {
-    todo!("0x631368 RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0x631368(src: &EventSource2Instance, args: &[Value]) {
+    // IDA 0x631368: `fireEvent` for the 2-Instance event: two
+    // `any_cast<shared_ptr<Instance>>` (+4 at 0x63143a, +72 at 0x63145a —
+    // 68-byte Variant stride), `signal_with_args<2>` invoke.
+    assert!(args.len() == 2, "args.size() == 2 (IDA 0x631368)");
+    let (a, b) = (instance_arg(&args[0]), instance_arg(&args[1]));
+    src.signal.fire((a, b));
 }
 
 // 0x631518 — __ZNK3RBX10Reflection13EventDescBaseINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
-pub fn stub_0x631518() -> ! {
-    todo!("0x631518 RBX::Reflection::EventDescBase<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_0x631518(src: &EventSource2Instance) {
+    // IDA 0x631518: `EventDescBase::disconnectAll` for the 2-Instance
+    // event.
+    src.disconnect_all();
 }
 
 // 0x63152c — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvNS2_9MoveStateES3_EN3rbx6signalIS4_EEMS2_S7_EC2ES8_PKcSB_SB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::EventDesc(rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x63152c() -> ! {
-    todo!("0x63152c RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::EventDesc(rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x63152c(
+    name: &str,
+    category: &str,
+    title: &str,
+    member: usize,
+    arg0_name: &str,
+    arg1_name: &str,
+    permissions: u32,
+    attributes: u32,
+) -> EventDesc {
+    // IDA 0x63152c: `EventDesc<SkateboardPlatform, void(MoveState,
+    // MoveState)>` ctor: member at +40, two-item signature with
+    // `getSingleton<MoveState>` types (0x631610-0x63163a).
+    EventDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        title: title.to_owned(),
+        member,
+        signature: Signature {
+            return_type: "void",
+            args: vec![
+                (arg0_name.to_owned(), "MoveState"),
+                (arg1_name.to_owned(), "MoveState"),
+            ],
+        },
+        permissions,
+        attributes,
+    }
 }
 
 // 0x63171c — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvNS2_9MoveStateES3_EN3rbx6signalIS4_EEMS2_S7_ED0Ev
@@ -3305,86 +3548,164 @@ pub fn stub_0x63171c() {
 
 // 0x6317d0 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_18SkateboardPlatformEFvNS2_9MoveStateES3_EN3rbx6signalIS4_EEMS2_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
-pub fn stub_0x6317d0() -> ! {
-    todo!("0x6317d0 RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0x6317d0(src: &EventSource2MoveState, wrapper: SharedPtr<SlotWrapper>) {
+    // IDA 0x6317d0: `EventDescImpl<2, MoveState>::connectGeneric`:
+    // `signal::connect<function2>` on the member signal, clear the temp
+    // (0x63185c-0x631882, same shape as 0x631214).
+    let w = SharedPtr::clone(&wrapper);
+    let slot = SharedPtr::new(move |(a, b): (i32, i32)| {
+        (w.invoke)(&[Value::EnumValue(a), Value::EnumValue(b)]);
+    });
+    src.signal.connect(SharedPtr::clone(&slot));
+    src.holders.lock().push((wrapper, slot));
 }
 
 // 0x631924 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_18SkateboardPlatformEFvNS2_9MoveStateES3_EN3rbx6signalIS4_EEMS2_S7_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISD_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
-pub fn stub_0x631924() -> ! {
-    todo!("0x631924 RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0x631924(src: &EventSource2MoveState, args: &[Value]) {
+    // IDA 0x631924: `fireEvent` for the MoveState pair:
+    // `ReleaseAssert(args.size() == 2)` (Event.h:349 — 136 bytes = 2 x
+    // 68-byte Variants, 0x631942-0x631984), two `any_cast<MoveState>`
+    // (0x631994/0x6319aa), `signal_with_args<2>` invoke.
+    assert!(args.len() == 2, "args.size() == 2 include/Reflection/Event.h:349 (IDA 0x631924)");
+    let (a, b) = (move_state_arg(&args[0]), move_state_arg(&args[1]));
+    src.signal.fire((a, b));
 }
 
 // 0x6319c0 — __ZNK3RBX10Reflection13EventDescBaseINS_18SkateboardPlatformEFvNS2_9MoveStateES3_EN3rbx6signalIS4_EEMS2_S7_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
-pub fn stub_0x6319c0() -> ! {
-    todo!("0x6319c0 RBX::Reflection::EventDescBase<RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_0x6319c0(src: &EventSource2MoveState) {
+    // IDA 0x6319c0: `EventDescBase::disconnectAll` for the MoveState pair.
+    src.disconnect_all();
 }
 
 // 0x631b4c — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS1_18SkateboardPlatform9MoveStateES7_NS_10shared_ptrIS3_EENS_3argILi1EEENSA_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISF_T0_T1_T2_EENSD_9list_av_3IT3_T4_T5_E4typeEEEMSI_FSF_SJ_SK_ESN_SO_SP_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list_av_3<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")]
-pub fn stub_0x631b4c() -> ! {
-    todo!("0x631b4c boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list_av_3<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")
+pub fn stub_0x631b4c(wrapper: SharedPtr<SlotWrapper>) -> BoundMoveStateSlot {
+    // IDA 0x631b4c: `bind<mf2<GenericSlotWrapper, MoveState, MoveState>>`:
+    // store the member triple plus the bound wrapper and the two
+    // placeholders via `list3` (0x631bb6-0x631bdc, same shape as 0x4a3fac).
+    // The member function is fixed (`execute2`), so the triple folds into
+    // the target.
+    BoundMoveStateSlot { target: wrapper }
 }
 
 // 0x631c68 — __ZN3RBX10Reflection18GenericSlotWrapper8execute2INS_18SkateboardPlatform9MoveStateES4_EEvRKT_RKT0_
 #[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute2<RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>(RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&)")]
-pub fn stub_0x631c68() -> ! {
-    todo!("0x631c68 void RBX::Reflection::GenericSlotWrapper::execute2<RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>(RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&)")
+pub fn stub_0x631c68(wrapper: &SlotWrapper, a: i32, b: i32) {
+    // IDA 0x631c68: `GenericSlotWrapper::execute2<MoveState, MoveState>`:
+    // 2-Variant vector with `MoveState` tags (0x631d00-0x631d2a), vf+8
+    // dispatch (0x631d3a), teardown (0x631d44). Same shape as 0x4a40c8.
+    (wrapper.invoke)(&[Value::EnumValue(a), Value::EnumValue(b)]);
 }
 
 // 0x631fc8 — __ZN5boost9function2IvN3RBX18SkateboardPlatform9MoveStateES3_E9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS1_10Reflection18GenericSlotWrapperERKS3_SD_EENS6_5list3INS6_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEvT_
 #[doc(alias = "void boost::function2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)")]
-pub fn stub_0x631fc8() -> ! {
-    todo!("0x631fc8 void boost::function2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)")
+pub fn stub_0x631fc8(func: &mut MoveStateSlotFunction, bound: &BoundMoveStateSlot) {
+    // IDA 0x631fc8: `function2::assign_to<bind_t>` (0x632050): vtable
+    // assign of the bound triple into the function buffer (same shape as
+    // 0x4a442c).
+    func.bound = Some(bound.clone());
 }
 
 // 0x6320c0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS7_18SkateboardPlatform9MoveStateESD_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSK_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_0x6320c0() -> ! {
-    todo!("0x6320c0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x6320c0(
+    op: MoveStateFunctorOp,
+    src: &BoundMoveStateSlot,
+    slot: &mut Option<BoundMoveStateSlot>,
+) -> Option<&'static str> {
+    // IDA 0x6320c0: `functor_manager<...>::manage`: op 4
+    // (`get_functor_type_tag`) returns the `bind_t` typeinfo (0x6320d6);
+    // anything else delegates to `manager` (0x6320c2, same shape as
+    // 0x4a4524).
+    if op == MoveStateFunctorOp::GetType {
+        return Some(MOVE_STATE_BIND_T_TYPEINFO);
+    }
+    stub_0x6323b0(op, src, slot);
+    None
 }
 
 // 0x6320dc — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS7_18SkateboardPlatform9MoveStateESD_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSK_ILi2EEEEEEEvSB_SB_E6invokeERNS1_15function_bufferESB_SB_
 #[doc(alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::invoke(boost::detail::function::function_buffer &,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)")]
-pub fn stub_0x6320dc() -> ! {
-    todo!("0x6320dc boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::invoke(boost::detail::function::function_buffer &,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)")
+pub fn stub_0x6320dc(bound: &BoundMoveStateSlot, a: i32, b: i32) {
+    // IDA 0x6320dc: `void_function_obj_invoker2::invoke` tail-calls
+    // `bind_t::operator()` (0x6320f2, same shape as 0x4a4540).
+    stub_0x632394(bound, a, b);
 }
 
 // 0x6320f4 — __ZNK5boost6detail8function13basic_vtable2IvN3RBX18SkateboardPlatform9MoveStateES5_E9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS3_10Reflection18GenericSlotWrapperERKS5_SF_EENS8_5list3INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEEbT_RNS1_15function_bufferE
 #[doc(alias = "bool boost::detail::function::basic_vtable2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")]
-pub fn stub_0x6320f4() -> ! {
-    todo!("0x6320f4 bool boost::detail::function::basic_vtable2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")
+pub fn stub_0x6320f4(func: &mut MoveStateSlotFunction, bound: &BoundMoveStateSlot) -> bool {
+    // IDA 0x6320f4: `basic_vtable2::assign_to` const overload (same shape
+    // as 0x4a4554): store a clone, report success.
+    func.bound = Some(bound.clone());
+    true
 }
 
 // 0x6321dc — __ZNK5boost6detail8function13basic_vtable2IvN3RBX18SkateboardPlatform9MoveStateES5_E9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS3_10Reflection18GenericSlotWrapperERKS5_SF_EENS8_5list3INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 #[doc(alias = "bool boost::detail::function::basic_vtable2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
-pub fn stub_0x6321dc() -> ! {
-    todo!("0x6321dc bool boost::detail::function::basic_vtable2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+pub fn stub_0x6321dc(func: &mut MoveStateSlotFunction, bound: &BoundMoveStateSlot) -> bool {
+    // IDA 0x6321dc: `basic_vtable2::assign_to` function-obj-tag overload
+    // (same shape as 0x4a463c): store a clone, report success.
+    func.bound = Some(bound.clone());
+    true
 }
 
 // 0x6322c0 — __ZNK5boost6detail8function13basic_vtable2IvN3RBX18SkateboardPlatform9MoveStateES5_E14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS3_10Reflection18GenericSlotWrapperERKS5_SF_EENS8_5list3INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 #[doc(alias = "void boost::detail::function::basic_vtable2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
-pub fn stub_0x6322c0() -> ! {
-    todo!("0x6322c0 void boost::detail::function::basic_vtable2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+pub fn stub_0x6322c0(bound: &BoundMoveStateSlot) -> Box<BoundMoveStateSlot> {
+    // IDA 0x6322c0: `basic_vtable2::assign_functor` (same shape as
+    // 0x4a4720): heap-copy the bound triple.
+    Box::new(bound.clone())
 }
 
 // 0x632394 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS4_18SkateboardPlatform9MoveStateESA_EENS0_5list3INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEENSH_ILi2EEEEEEclIS8_S8_EEvRT_RT0_
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>(RBX::SkateboardPlatform::MoveState &,RBX::SkateboardPlatform::MoveState &)")]
-pub fn stub_0x632394() -> ! {
-    todo!("0x632394 void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>(RBX::SkateboardPlatform::MoveState &,RBX::SkateboardPlatform::MoveState &)")
+pub fn stub_0x632394(bound: &BoundMoveStateSlot, a: i32, b: i32) {
+    // IDA 0x632394: `bind_t::operator()<MoveState, MoveState>`: run the
+    // member triple — `GenericSlotWrapper::execute2` on the bound wrapper
+    // with the two args (same shape as 0x4a47f4).
+    stub_0x631c68(&bound.target, a, b);
 }
 
 // 0x6323b0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS7_18SkateboardPlatform9MoveStateESD_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSK_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_0x6323b0() -> ! {
-    todo!("0x6323b0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+pub fn stub_0x6323b0(op: MoveStateFunctorOp, src: &BoundMoveStateSlot, slot: &mut Option<BoundMoveStateSlot>) -> bool {
+    // IDA 0x6323b0: `functor_manager<...>::manager` for the MoveState
+    // triple (same shape as 0x4a4810): clone/move/destroy/check on the
+    // bound slot.
+    match op {
+        MoveStateFunctorOp::Clone => {
+            *slot = Some(src.clone());
+            true
+        }
+        MoveStateFunctorOp::Move => {
+            *slot = Some(src.clone());
+            true
+        }
+        MoveStateFunctorOp::Destroy => {
+            *slot = None;
+            true
+        }
+        MoveStateFunctorOp::CheckNoCopy => true,
+        MoveStateFunctorOp::GetType => false,
+    }
 }
 
 // 0x6332b0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEEC2IMS2_KFS3_vEMS2_FvRKS3_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::EnumPropDescriptor<RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&)>(char const*,char const*,RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x6332b0() -> ! {
-    todo!("0x6332b0 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::EnumPropDescriptor<RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&)>(char const*,char const*,RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x6332b0(
+    name: &str,
+    category: &str,
+    initial: i32,
+    attributes: u32,
+    permissions: u32,
+) -> EnumProp {
+    // IDA 0x6332b0: `EnumPropDescriptor<SkateboardPlatform, MoveState>`
+    // ctor: `new` the GetSetImpl, link the `EnumDesc<MoveState>` singleton
+    // (same shape as 0x5f9d30/0x4a5834).
+    EnumProp::new(name, category, initial, MOVE_STATE_DESC.clone(), attributes, permissions)
 }
 
 // 0x633464 — __ZN3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEED0Ev
