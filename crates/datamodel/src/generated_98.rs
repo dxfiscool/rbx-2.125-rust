@@ -124,9 +124,7 @@ pub fn stub_5ad090() -> ! {
 // 0x5cb594 — __ZNK3RBX13ModelInstance23getPrimaryPartSetByUserEv
 #[doc(alias = "RBX::ModelInstance::getPrimaryPartSetByUser(void)const")]
 // was: RBX::ModelInstance::getPrimaryPartSetByUser(void)const
-pub fn stub_5cb594() -> ! {
-    todo!("0x5cb594 RBX::ModelInstance::getPrimaryPartSetByUser(void)const")
-}
+pub use crate::instance::stub_0x5cb594 as stub_5cb594;
 
 // 0x5cb5b8 — __ZN3RBX13ModelInstance23setPrimaryPartSetByUserEPNS_12PartInstanceE
 #[doc(alias = "RBX::ModelInstance::setPrimaryPartSetByUser(RBX::PartInstance *)")]
@@ -187,16 +185,12 @@ pub fn stub_5cbbf8() -> ! {
 // 0x5cbe18 — __ZN3RBX13ModelInstanceC1Ev
 #[doc(alias = "RBX::ModelInstance::ModelInstance(void)")]
 // was: RBX::ModelInstance::ModelInstance(void)
-pub fn stub_5cbe18() -> ! {
-    todo!("0x5cbe18 RBX::ModelInstance::ModelInstance(void)")
-}
+pub use crate::instance::stub_0x5cbe18 as stub_5cbe18;
 
 // 0x5cc128 — __ZN3RBX13ModelInstanceC2Ev
 #[doc(alias = "RBX::ModelInstance::ModelInstance(void)")]
 // was: RBX::ModelInstance::ModelInstance(void)
-pub fn stub_5cc128() -> ! {
-    todo!("0x5cc128 RBX::ModelInstance::ModelInstance(void)")
-}
+pub use crate::instance::stub_0x5cc128 as stub_5cc128;
 
 // 0x5cc458 — __ZN3RBX13ModelInstanceD0Ev
 #[doc(alias = "RBX::ModelInstance::~ModelInstance()")]
@@ -481,9 +475,7 @@ pub fn stub_5cdbcc() -> ! {
 // 0x5ce724 — __ZN3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFvN3G3D7Vector3EELi1EEC2EMS2_FvS4_EPKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,void ()(G3D::Vector3),1>::BoundFuncDesc(void (RBX::ModelInstance::*)(G3D::Vector3),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,void ()(G3D::Vector3),1>::BoundFuncDesc(void (RBX::ModelInstance::*)(G3D::Vector3),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_5ce724() -> ! {
-    todo!("0x5ce724 RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,void ()(G3D::Vector3),1>::BoundFuncDesc(void (RBX::ModelInstance::*)(G3D::Vector3),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
-}
+pub use crate::instance::stub_0x5ce724 as stub_5ce724;
 
 // 0x5ce89c — __ZN3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFvN3G3D7Vector3EELi1EE16declareSignatureEPKcNS0_7VariantE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,void ()(G3D::Vector3),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
@@ -509,9 +501,7 @@ pub fn stub_5ce9a0() -> ! {
 // 0x5ce9e4 — __ZN3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFN3G3D15CoordinateFrameEvELi0EEC2EMS2_FS4_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::CoordinateFrame ()(void),0>::BoundFuncDesc(G3D::CoordinateFrame (RBX::ModelInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::CoordinateFrame ()(void),0>::BoundFuncDesc(G3D::CoordinateFrame (RBX::ModelInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_5ce9e4() -> ! {
-    todo!("0x5ce9e4 RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::CoordinateFrame ()(void),0>::BoundFuncDesc(G3D::CoordinateFrame (RBX::ModelInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
-}
+pub use crate::instance::stub_0x5ce9e4 as stub_5ce9e4;
 
 // 0x5ceae8 — __ZN3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFN3G3D15CoordinateFrameEvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::CoordinateFrame ()(void),0>::~BoundFuncDesc()")]
@@ -537,9 +527,7 @@ pub fn stub_5cebc0() -> ! {
 // 0x5cebf4 — __ZN3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFN3G3D7Vector3EvELi0EEC2EMS2_FS4_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::Vector3 ()(void),0>::BoundFuncDesc(G3D::Vector3 (RBX::ModelInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::Vector3 ()(void),0>::BoundFuncDesc(G3D::Vector3 (RBX::ModelInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
-pub fn stub_5cebf4() -> ! {
-    todo!("0x5cebf4 RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::Vector3 ()(void),0>::BoundFuncDesc(G3D::Vector3 (RBX::ModelInstance::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
-}
+pub use crate::instance::stub_0x5cebf4 as stub_5cebf4;
 
 // 0x5cecf8 — __ZN3RBX10Reflection13BoundFuncDescINS_13ModelInstanceEFN3G3D7Vector3EvELi0EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ModelInstance,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")]
