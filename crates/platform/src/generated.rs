@@ -4563,57 +4563,72 @@ pub fn stub_1aed0(controller: &crate::generated_176::DebugSettingsViewController
 // 0x1afa0 — ___46-[DebugSettingsViewController displayTouchUp:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___46-[DebugSettingsViewController displayTouchUp:]_block_invoke")]
-pub fn stub_1afa0() -> ! {
-    todo!("0x1afa0 ___46-[DebugSettingsViewController displayTouchUp:]_block_invoke")
+pub fn stub_1afa0(controller: &crate::generated_176::DebugSettingsViewController) {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1afa0)
+    controller.display_touch_up_animation_frame();
 }
 
 // 0x1b170 — -[DebugSettingsViewController didReceiveMemoryWarning]
 // type: void __cdecl(DebugSettingsViewController *self, SEL)
 #[doc(alias = "-[DebugSettingsViewController didReceiveMemoryWarning]")]
-pub fn stub_1b170() -> ! {
-    todo!("0x1b170 -[DebugSettingsViewController didReceiveMemoryWarning]")
+pub fn stub_1b170(controller: &crate::generated_176::DebugSettingsViewController) {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1b170)
+    controller.did_receive_memory_warning();
 }
 
 // 0x1b19c — -[DebugSettingsViewController shouldAutorotateToInterfaceOrientation:]
 // type: char __cdecl(DebugSettingsViewController *self, SEL, int)
 #[doc(alias = "-[DebugSettingsViewController shouldAutorotateToInterfaceOrientation:]")]
-pub fn stub_1b19c() -> ! {
-    todo!("0x1b19c -[DebugSettingsViewController shouldAutorotateToInterfaceOrientation:]")
+pub fn stub_1b19c(
+    controller: &crate::generated_176::DebugSettingsViewController,
+    orientation: i32,
+    idiom_pad: Option<bool>,
+) -> bool {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1b19c)
+    controller.should_autorotate_to(orientation, idiom_pad)
 }
 
 // 0x1b224 — -[DebugSettingsViewController viewWillAppear:]
 // type: void __cdecl(DebugSettingsViewController *self, SEL, char)
 #[doc(alias = "-[DebugSettingsViewController viewWillAppear:]")]
-pub fn stub_1b224() -> ! {
-    todo!("0x1b224 -[DebugSettingsViewController viewWillAppear:]")
+pub fn stub_1b224(controller: &crate::generated_176::DebugSettingsViewController, animated: bool) {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1b224)
+    controller.view_will_appear(animated);
 }
 
 // 0x1b2a8 — -[DebugSettingsViewController doneTouchUp:]
 // type: void __cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController doneTouchUp:]")]
-pub fn stub_1b2a8() -> ! {
-    todo!("0x1b2a8 -[DebugSettingsViewController doneTouchUp:]")
+pub fn stub_1b2a8(controller: &crate::generated_176::DebugSettingsViewController) {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1b2a8)
+    controller.done_touch_up();
 }
 
 // 0x1b2bc — -[DebugSettingsViewController numberOfComponentsInPickerView:]
 // type: int __cdecl(DebugSettingsViewController *self, SEL, id)
 #[doc(alias = "-[DebugSettingsViewController numberOfComponentsInPickerView:]")]
-pub fn stub_1b2bc() -> ! {
-    todo!("0x1b2bc -[DebugSettingsViewController numberOfComponentsInPickerView:]")
+pub fn stub_1b2bc(controller: &crate::generated_176::DebugSettingsViewController) -> i32 {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1b2bc)
+    controller.number_of_components()
 }
 
 // 0x1b2c0 — -[DebugSettingsViewController pickerView:numberOfRowsInComponent:]
 // type: int __cdecl(DebugSettingsViewController *self, SEL, id, int)
 #[doc(alias = "-[DebugSettingsViewController pickerView:numberOfRowsInComponent:]")]
-pub fn stub_1b2c0() -> ! {
-    todo!("0x1b2c0 -[DebugSettingsViewController pickerView:numberOfRowsInComponent:]")
+pub fn stub_1b2c0(controller: &crate::generated_176::DebugSettingsViewController) -> usize {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1b2c0)
+    controller.picker_number_of_rows()
 }
 
 // 0x1b2e0 — -[DebugSettingsViewController pickerView:titleForRow:forComponent:]
 // type: id __cdecl(DebugSettingsViewController *self, SEL, id, int, int)
 #[doc(alias = "-[DebugSettingsViewController pickerView:titleForRow:forComponent:]")]
-pub fn stub_1b2e0() -> ! {
-    todo!("0x1b2e0 -[DebugSettingsViewController pickerView:titleForRow:forComponent:]")
+pub fn stub_1b2e0(
+    controller: &crate::generated_176::DebugSettingsViewController,
+    row: usize,
+) -> Option<String> {
+    // delegate of crate::generated_176::DebugSettingsViewController (IDA 0x1b2e0)
+    controller.picker_title_for_row(row)
 }
 
 // 0x1b300 — -[DebugSettingsViewController disablesAutomaticKeyboardDismissal]

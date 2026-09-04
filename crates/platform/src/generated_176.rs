@@ -1081,6 +1081,8 @@ pub struct DebugSettingsViewController {
     debug_display: std::sync::atomic::AtomicI32,
     view_did_load_calls: std::sync::atomic::AtomicU32,
     animation_runs: std::sync::atomic::AtomicU32,
+    presented_bounds: parking_lot::Mutex<Option<(f64, f64, f64, f64)>>,
+    dismiss_calls: std::sync::atomic::AtomicU32,
 }
 impl DebugSettingsViewController {
     #[doc(alias = "-[DebugSettingsViewController initWithCoder:]")]
@@ -1185,6 +1187,86 @@ impl DebugSettingsViewController {
         // IDA 0x1aed0.
         self.animation_runs
             .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    #[doc(alias = "___46-[DebugSettingsViewController displayTouchUp:]_block_invoke")]
+    #[doc = "___46-[DebugSettingsViewController displayTouchUp:]_block_invoke"]
+    pub fn display_touch_up_animation_frame(&self) {
+        // Two-phase `setFrame:` shuffle — superview first (0x1b00c when the
+        // panel view is present, 0x1b04a nil fallback), then the toolbar
+        // (0x1b0e4 present, 0x1b11a nil fallback) — with a nil guard at
+        // every `frame` read (0x1afce, 0x1aff2, 0x1b000, 0x1b05e, 0x1b08e,
+        // 0x1b0be, 0x1b0d8). Pure UIKit geometry; recorded. IDA 0x1afa0.
+        self.animation_runs
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    #[doc(alias = "-[DebugSettingsViewController didReceiveMemoryWarning]")]
+    #[doc = "-[DebugSettingsViewController didReceiveMemoryWarning]"]
+    pub fn did_receive_memory_warning(&self) {
+        // Body is only the super send (0x1b18a..0x1b194). IDA 0x1b170.
+    }
+    #[doc(alias = "-[DebugSettingsViewController shouldAutorotateToInterfaceOrientation:]")]
+    #[doc = "-[DebugSettingsViewController shouldAutorotateToInterfaceOrientation:]"]
+    pub fn should_autorotate_to(&self, orientation: i32, idiom_pad: Option<bool>) -> bool {
+        // `idiom_pad` is `userInterfaceIdiom != 0`; `None` is the legacy
+        // path where the device does not respond to `userInterfaceIdiom`
+        // (0x1b218..0x1b21c: portrait only). A phone allows portrait only
+        // (0x1b1fe..0x1b202). A pad allows portrait (0x1b20a fallthrough)
+        // and anything but 2 (0x1b210..0x1b212 returns 1). IDA 0x1b19c.
+        match idiom_pad {
+            None => orientation == 1,
+            Some(false) => orientation == 1,
+            Some(true) => {
+                if orientation == 1 {
+                    return true;
+                }
+                orientation != 2
+            }
+        }
+    }
+    #[doc(alias = "-[DebugSettingsViewController viewWillAppear:]")]
+    #[doc = "-[DebugSettingsViewController viewWillAppear:]"]
+    pub fn view_will_appear(&self, _animated: bool) {
+        // Super `viewWillAppear:` (0x1b244..0x1b24e), then
+        // `superview.setBounds(window.frame)` (0x1b260..0x1b29c).
+        // IDA 0x1b224.
+        *self.presented_bounds.lock() = Some(*self.window_frame.lock());
+    }
+    #[doc(alias = "-[DebugSettingsViewController doneTouchUp:]")]
+    #[doc = "-[DebugSettingsViewController doneTouchUp:]"]
+    pub fn done_touch_up(&self) {
+        // `dismissViewControllerAnimated:1 completion:0` (0x1b2b8).
+        // IDA 0x1b2a8.
+        self.dismiss_calls
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    #[doc(alias = "-[DebugSettingsViewController numberOfComponentsInPickerView:]")]
+    #[doc = "-[DebugSettingsViewController numberOfComponentsInPickerView:]"]
+    pub fn number_of_components(&self) -> i32 {
+        1 // IDA 0x1b2be: `return 1`.
+    }
+    #[doc(alias = "-[DebugSettingsViewController pickerView:numberOfRowsInComponent:]")]
+    #[doc = "-[DebugSettingsViewController pickerView:numberOfRowsInComponent:]"]
+    pub fn picker_number_of_rows(&self) -> usize {
+        // `-[NSArray count]` on `displayPickerArray` (0x1b2c0). IDA 0x1b2c0.
+        self.display_picker_items.lock().len()
+    }
+    #[doc(alias = "-[DebugSettingsViewController pickerView:titleForRow:forComponent:]")]
+    #[doc = "-[DebugSettingsViewController pickerView:titleForRow:forComponent:]"]
+    pub fn picker_title_for_row(&self, row: usize) -> Option<String> {
+        // `-[NSArray objectAtIndex:]` on `displayPickerArray` (0x1b2e0).
+        // Out of bounds reads as nil. IDA 0x1b2e0.
+        self.display_picker_items.lock().get(row).cloned()
+    }
+    #[doc(alias = "-[DebugSettingsViewController disablesAutomaticKeyboardDismissal]")]
+    #[doc = "-[DebugSettingsViewController disablesAutomaticKeyboardDismissal]"]
+    pub fn disables_automatic_keyboard_dismissal(&self) -> bool {
+        false // IDA 0x1b302: `return 0`.
+    }
+    pub fn presented_bounds(&self) -> Option<(f64, f64, f64, f64)> {
+        *self.presented_bounds.lock()
+    }
+    pub fn dismiss_call_count(&self) -> u32 {
+        self.dismiss_calls.load(std::sync::atomic::Ordering::SeqCst)
     }
     #[doc(alias = "-[DebugSettingsViewController .cxx_construct]")]
     #[doc = "-[DebugSettingsViewController .cxx_construct]"]
