@@ -221,6 +221,76 @@ pub fn deserialize_property_value(stream: &mut BitStream, mut read: impl FnMut(&
     read(stream);
 }
 
+/// Spawn-name packet marker (IDA 0x9dca6c): a leading `143` (`0x8F`) byte
+/// selects the initial-spawn-name parse (`IgnoreBits(8)` + log).
+pub const SPAWN_NAME_BYTE: u8 = 143;
+
+/// `ServerReplicator::OnReceive` verdict (IDA 0x9dca6c): an address
+/// mismatch returns 1 (ignored); the spawn-name packet parses + logs and
+/// returns 0; everything else forwards to `Replicator::OnReceive`
+/// (engine-side).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ReceiveVerdict {
+    Ignored,
+    SpawnName,
+    Forward,
+}
+
+pub fn on_receive(address_matches: bool, first_byte: Option<u8>) -> ReceiveVerdict {
+    // IDA 0x9dca6c: `SystemAddress::operator!=` → 1; `*payload == 143` →
+    // spawn parse → 0; else delegate.
+    if !address_matches {
+        return ReceiveVerdict::Ignored;
+    }
+    if first_byte == Some(SPAWN_NAME_BYTE) {
+        return ReceiveVerdict::SpawnName;
+    }
+    ReceiveVerdict::Forward
+}
+
+/// `ServerReplicator::receiveCluster` (IDA 0x9d86ec): pure tail-call to
+/// `Replicator::receiveCluster` (engine-side); runs the caller-supplied
+/// forward.
+pub fn receive_cluster(forward: impl FnOnce()) {
+    forward();
+}
+
+/// `ServerReplicator::readItem` dispatch (IDA 0x9dcc34): 8 reads a
+/// character request, 9 logs `"Rocky item found"` and throws
+/// `runtime_error("rocky")`, 0xA reads a prop acknowledgement, 0xC reads
+/// an `(int, short)` quota update, 0xE/0xF read region/instance removals,
+/// and anything else falls through to `Replicator::readItem`.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum IncomingItem {
+    RequestCharacter,
+    PropAck,
+    Quota,
+    RegionRemoval,
+    InstanceRemoval,
+    Base(u8),
+}
+
+pub fn read_item_kind(item_type: u8) -> IncomingItem {
+    match item_type {
+        8 => IncomingItem::RequestCharacter,
+        // IDA 0x9dcc34 case 9: log + `throw runtime_error("rocky")`.
+        9 => panic!("rocky"),
+        0xA => IncomingItem::PropAck,
+        0xC => IncomingItem::Quota,
+        0xE => IncomingItem::RegionRemoval,
+        0xF => IncomingItem::InstanceRemoval,
+        other => IncomingItem::Base(other),
+    }
+}
+
+/// The 0xC arm's quota read (IDA 0x9dcc34): `operator>><int>` then
+/// `operator>><short>`, forwarded to `StreamJob::updateClientQuota`.
+pub fn read_quota(stream: &mut BitStream) -> (i32, i16) {
+    let a = stream.read_i32().expect("BitStream >> int failed");
+    let b = stream.read_i16().expect("BitStream >> short failed");
+    (a, b)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -372,5 +442,44 @@ mod tests {
         let mut seen = 0u8;
         deserialize_property_value(&mut r, |st| seen = st.read_u8().expect("byte"));
         assert_eq!(seen, 9);
+    }
+
+    #[test]
+    fn receive_verdicts() {
+        // IDA 0x9dca6c: mismatch ignores, 143 parses the spawn name, else forward.
+        assert_eq!(on_receive(false, None), ReceiveVerdict::Ignored);
+        assert_eq!(on_receive(false, Some(143)), ReceiveVerdict::Ignored);
+        assert_eq!(on_receive(true, Some(143)), ReceiveVerdict::SpawnName);
+        assert_eq!(on_receive(true, Some(0)), ReceiveVerdict::Forward);
+        assert_eq!(on_receive(true, None), ReceiveVerdict::Forward);
+        let mut forwarded = false;
+        receive_cluster(|| forwarded = true);
+        assert!(forwarded);
+    }
+
+    #[test]
+    fn item_dispatch_table() {
+        use IncomingItem::*;
+        assert_eq!(read_item_kind(8), RequestCharacter);
+        assert_eq!(read_item_kind(0xA), PropAck);
+        assert_eq!(read_item_kind(0xC), Quota);
+        assert_eq!(read_item_kind(0xE), RegionRemoval);
+        assert_eq!(read_item_kind(0xF), InstanceRemoval);
+        assert_eq!(read_item_kind(3), Base(3));
+    }
+
+    #[test]
+    #[should_panic(expected = "rocky")]
+    fn rocky_item_throws() {
+        let _ = read_item_kind(9);
+    }
+
+    #[test]
+    fn quota_reads_int_then_short() {
+        let mut s = BitStream::new();
+        s.write_i32(-70000);
+        s.write_i16(1234);
+        let mut r = BitStream::from_bytes(&s.into_bytes());
+        assert_eq!(read_quota(&mut r), (-70000, 1234));
     }
     }

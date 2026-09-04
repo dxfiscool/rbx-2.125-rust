@@ -114,8 +114,9 @@ pub fn stub_9d86dc() -> ! {
 // 0x9d86ec — __ZN3RBX7Network16ServerReplicator14receiveClusterERN6RakNet9BitStreamEPNS_8InstanceE
 // type: void __fastcall(RBX::Network::ServerReplicator *this, RakNet::BitStream *, RBX::Instance *)
 #[doc(alias = "RBX::Network::ServerReplicator::receiveCluster(RakNet::BitStream &,RBX::Instance *)")]
-pub fn stub_9d86ec() -> ! {
-    todo!("0x9d86ec __ZN3RBX7Network16ServerReplicator14receiveClusterERN6RakNet9BitStreamEPNS_8InstanceE")
+pub fn stub_9d86ec(forward: impl FnOnce()) {
+    // IDA 0x9d86ec: pure tail-call to `Replicator::receiveCluster` (engine-side).
+    crate::replicator::receive_cluster(forward);
 }
 
 // 0x9d8700 — __ZN3RBX7Network16ServerReplicator26readPlayerSimulationRegionERNS_7Region213WeightedPointE
@@ -233,8 +234,9 @@ pub fn stub_9dc8e4() -> ! {
 // 0x9dca6c — __ZN3RBX7Network16ServerReplicator9OnReceiveEPN6RakNet6PacketE
 // type: int __fastcall(char *, unsigned int *)
 #[doc(alias = "RBX::Network::ServerReplicator::OnReceive(RakNet::Packet *)")]
-pub fn stub_9dca6c() -> ! {
-    todo!("0x9dca6c __ZN3RBX7Network16ServerReplicator9OnReceiveEPN6RakNet6PacketE")
+pub fn stub_9dca6c(address_matches: bool, first_byte: Option<u8>) -> crate::replicator::ReceiveVerdict {
+    // IDA 0x9dca6c: mismatch → ignored; leading 143 → spawn-name parse; else forward to `Replicator::OnReceive`.
+    crate::replicator::on_receive(address_matches, first_byte)
 }
 
 // 0x9dcbc8 — __ZThn1180_N3RBX7Network16ServerReplicator9OnReceiveEPN6RakNet6PacketE
@@ -254,8 +256,9 @@ pub fn stub_9dcbd8() -> ! {
 // 0x9dcc34 — __ZN3RBX7Network16ServerReplicator8readItemERN6RakNet9BitStreamENS0_4Item8ItemTypeE
 // type: void __fastcall(RBX::Network::Replicator::StreamJob **, RakNet::BitStream *, const char *)
 #[doc(alias = "RBX::Network::ServerReplicator::readItem(RakNet::BitStream &,RBX::Network::Item::ItemType)")]
-pub fn stub_9dcc34() -> ! {
-    todo!("0x9dcc34 __ZN3RBX7Network16ServerReplicator8readItemERN6RakNet9BitStreamENS0_4Item8ItemTypeE")
+pub fn stub_9dcc34(item_type: u8) -> crate::replicator::IncomingItem {
+    // IDA 0x9dcc34: 8 → character request, 9 → throw `"rocky"`, 0xA → prop ack, 0xC → quota, 0xE/0xF → removals, else base.
+    crate::replicator::read_item_kind(item_type)
 }
 
 // 0x9dcfb8 — __ZN3RBX7Network16ServerReplicator20readRequestCharacterERN6RakNet9BitStreamE
