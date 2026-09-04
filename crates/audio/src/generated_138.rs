@@ -1024,100 +1024,304 @@ pub fn stub_1b14c(first_slot: &mut u64, second_slot: &mut u64, third_slot: &mut 
     *third_slot = 0;
 }
 
+/// Audio-crate host for `HomeViewController` (IDA 0x1b3d0..0x1c2bc):
+/// init/dealloc flags, `viewDidLoad` composition state, keyboard/search
+/// slots, localized labels, user-info display, and unload/signup-notification
+/// records. UIKit outlets have no host counterpart. Mirrors the platform
+/// crate `HomeViewController` model (which owns the full controller);
+/// audio cannot depend on platform (AGENTS.md DAG), so the slots these
+/// filler EAs touch live here.
+#[derive(Debug, Default)]
+pub struct AudioHomeViewController {
+    initialized: std::sync::atomic::AtomicBool,
+    webviews_preloaded: std::sync::atomic::AtomicBool,
+    signup_observer_registered: std::sync::atomic::AtomicBool,
+    deallocated: std::sync::atomic::AtomicBool,
+    released_ivar_count: std::sync::atomic::AtomicU32,
+    view_loaded: std::sync::atomic::AtomicBool,
+    debug_views_hidden: std::sync::atomic::AtomicBool,
+    tap_recognizer_installed: std::sync::atomic::AtomicBool,
+    tap_recognizer_enabled: std::sync::atomic::AtomicBool,
+    version_text: parking_lot::Mutex<String>,
+    keyboard_observers_registered: std::sync::atomic::AtomicU32,
+    search_resigns: std::sync::atomic::AtomicU32,
+    localized_keys: parking_lot::Mutex<Vec<&'static str>>,
+    labels_localized: std::sync::atomic::AtomicU32,
+    last_update_refresh: std::sync::atomic::AtomicBool,
+    avatar_highlighted: std::sync::atomic::AtomicBool,
+    user_info_updates: std::sync::atomic::AtomicU32,
+    unloaded_outlets: std::sync::atomic::AtomicU32,
+    unloaded: std::sync::atomic::AtomicBool,
+    last_signup_credentials: parking_lot::Mutex<Option<(String, String)>>,
+    signup_logins: std::sync::atomic::AtomicU32,
+    logged_in_state_shows: std::sync::atomic::AtomicU32,
+}
+
+impl AudioHomeViewController {
+    /// `-[HomeViewController initWithCoder:]` (IDA 0x1b3d0): super init,
+    /// webview preload branch, signup-notification observer. Mirrors the
+    /// platform twin.
+    pub fn init_with_coder(&self) -> bool {
+        use std::sync::atomic::Ordering::SeqCst;
+        self.webviews_preloaded.store(true, SeqCst);
+        self.signup_observer_registered.store(true, SeqCst);
+        self.initialized.store(true, SeqCst);
+        true
+    }
+
+    /// `-[HomeViewController dealloc]` (IDA 0x1b4b0): releases the 30
+    /// retained outlets/ivars (Rust drops cover the stores) then super
+    /// dealloc. Mirrors the platform twin.
+    pub fn dealloc(&self) {
+        use std::sync::atomic::Ordering::SeqCst;
+        self.released_ivar_count.store(30, SeqCst);
+        self.deallocated.store(true, SeqCst);
+    }
+
+    /// `-[HomeViewController viewDidLoad]` (IDA 0x1b75c): hides the debug
+    /// leaves, installs the disabled `dismissKeyboard` tap recognizer,
+    /// localizes labels, refreshes user info, registers the two keyboard
+    /// observers, stamps `CFBundleVersion`. Mirrors the platform twin.
+    pub fn view_did_load(&self, bundle_version: &str) {
+        use std::sync::atomic::Ordering::SeqCst;
+        self.debug_views_hidden.store(true, SeqCst);
+        self.tap_recognizer_installed.store(true, SeqCst);
+        self.tap_recognizer_enabled.store(false, SeqCst);
+        self.localize_and_style_labels();
+        self.update_user_info_display(false);
+        self.keyboard_observers_registered.store(2, SeqCst);
+        *self.version_text.lock() = bundle_version.to_owned();
+        self.view_loaded.store(true, SeqCst);
+    }
+
+    /// `__33-[HomeViewController viewDidLoad]_block_invoke` (IDA 0x1bae4):
+    /// background prefetch — only when `searchUrl.length > 0` does it hop
+    /// back to main for `block_invoke_2`. Mirrors the platform twin.
+    pub fn view_did_load_search_block(&self, search_url_len: usize) -> bool {
+        search_url_len > 0
+    }
+
+    /// `__33-[HomeViewController viewDidLoad]_block_invoke_2` (IDA 0x1bb64):
+    /// `setHidden:NO` on the search field. Mirrors the platform twin.
+    pub fn view_did_load_search_apply(&self) {
+        self.debug_views_hidden
+            .store(false, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// `-[HomeViewController keyboardDidShow:]` / `keyboardDidHide:`
+    /// (IDA 0x1bbb0/0x1bbd0): `tapRecognizer.enabled` YES/NO. Mirrors the
+    /// platform twins.
+    pub fn keyboard_did_show(&self) {
+        self.tap_recognizer_enabled
+            .store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn keyboard_did_hide(&self) {
+        self.tap_recognizer_enabled
+            .store(false, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// `-[HomeViewController dismissKeyboard]` (IDA 0x1bbf0):
+    /// `[_searchTextField resignFirstResponder]`. Mirrors the platform
+    /// twin.
+    pub fn dismiss_keyboard(&self) {
+        self.search_resigns
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// `NSBundle` keys `localizeAndStyleLabels` stamps (IDA 0x1bc48..0x1bf08).
+    pub const LOCALIZED_LABEL_KEYS: [&'static str; 11] = [
+        "GameWord",
+        "CatalogWord",
+        "InventoryWord",
+        "BuildersClubWord",
+        "ProfileWord",
+        "MessagesWord",
+        "CommunityWord",
+        "WelcomeToRoblox",
+        "YouAreCurrentlyLoggedInAs",
+        "SignupButton",
+        "LoginButton",
+    ];
+
+    /// `-[HomeViewController localizeAndStyleLabels]` (IDA 0x1bc10):
+    /// eleven localized stamps; the bundle lookup lives out of slice.
+    /// Mirrors the platform twin.
+    pub fn localize_and_style_labels(&self) {
+        *self.localized_keys.lock() = Self::LOCALIZED_LABEL_KEYS.to_vec();
+        self.labels_localized.store(
+            Self::LOCALIZED_LABEL_KEYS.len() as u32,
+            std::sync::atomic::Ordering::SeqCst,
+        );
+    }
+
+    /// `-[HomeViewController updateUserInfoDisplay:]` (IDA 0x1bf0c): with
+    /// the flag set, `UpdatePlayerInfo` first; Robux/Tix labels, username
+    /// when non-nil, avatar thumbnail (web fetch out of slice — the
+    /// avatar-present branch is recorded). Mirrors the platform twin.
+    pub fn update_user_info_display(&self, refresh: bool) {
+        self.last_update_refresh
+            .store(refresh, std::sync::atomic::Ordering::SeqCst);
+        self.avatar_highlighted
+            .store(false, std::sync::atomic::Ordering::SeqCst);
+        self.user_info_updates
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+
+    /// `-[HomeViewController viewDidUnload]` (IDA 0x1c134): nils the 18
+    /// outlet setters then super `viewDidUnload` (Rust drops cover the
+    /// stores). Mirrors the platform twin.
+    pub fn view_did_unload(&self) {
+        use std::sync::atomic::Ordering::SeqCst;
+        self.unloaded_outlets.store(18, SeqCst);
+        self.unloaded.store(true, SeqCst);
+    }
+
+    /// `-[HomeViewController handleSignupNotification:]` (IDA 0x1c2bc):
+    /// retains the `username`/`password` pair, drives login, shows the
+    /// logged-in state. Mirrors the platform twin.
+    pub fn handle_signup_notification(&self, username: &str, password: &str) {
+        *self.last_signup_credentials.lock() =
+            Some((username.to_owned(), password.to_owned()));
+        self.signup_logins
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        self.logged_in_state_shows
+            .fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+}
+
 // 0x1b3d0 — -[HomeViewController initWithCoder:]
 #[doc(alias = "-[HomeViewController initWithCoder:]")]
-pub fn stub_1b3d0() -> ! {
-    todo!("0x1b3d0 -[HomeViewController initWithCoder:]")
+pub fn stub_1b3d0(controller: &AudioHomeViewController) -> bool {
+    // IDA 0x1b3d0 (`-[HomeViewController initWithCoder:]`): super init,
+    // webview preload, signup observer. Same as the platform 0x1b3d0
+    // anchor.
+    controller.init_with_coder()
 }
 
 // 0x1b4b0 — -[HomeViewController dealloc]
 #[doc(alias = "-[HomeViewController dealloc]")]
-pub fn stub_1b4b0() -> ! {
-    todo!("0x1b4b0 -[HomeViewController dealloc]")
+pub fn stub_1b4b0(controller: &AudioHomeViewController) {
+    // IDA 0x1b4b0 (`-[HomeViewController dealloc]`): releases the 30
+    // retained outlets then super dealloc. Same as the platform 0x1b4b0
+    // anchor.
+    controller.dealloc();
 }
 
 // 0x1b75c — -[HomeViewController viewDidLoad]
 #[doc(alias = "-[HomeViewController viewDidLoad]")]
-pub fn stub_1b75c() -> ! {
-    todo!("0x1b75c -[HomeViewController viewDidLoad]")
+pub fn stub_1b75c(controller: &AudioHomeViewController, bundle_version: &str) {
+    // IDA 0x1b75c (`-[HomeViewController viewDidLoad]`): debug-leaf hides,
+    // tap recognizer, labels, user info, prefetch dispatch, keyboard
+    // observers, version stamp. Same as the platform 0x1b75c anchor.
+    controller.view_did_load(bundle_version);
 }
 
 // 0x1bae4 — ___33-[HomeViewController viewDidLoad]_block_invoke
 #[doc(alias = "___33-[HomeViewController viewDidLoad]_block_invoke")]
-pub fn stub_1bae4() -> ! {
-    todo!("0x1bae4 ___33-[HomeViewController viewDidLoad]_block_invoke")
+pub fn stub_1bae4(controller: &AudioHomeViewController, search_url_len: usize) -> bool {
+    // IDA 0x1bae4 (prefetch block): main-queue hop only when the search
+    // URL is non-empty. Same as the platform 0x1bae4 anchor.
+    controller.view_did_load_search_block(search_url_len)
 }
 
 // 0x1bb64 — ___33-[HomeViewController viewDidLoad]_block_invoke_2
 #[doc(alias = "___33-[HomeViewController viewDidLoad]_block_invoke_2")]
-pub fn stub_1bb64() -> ! {
-    todo!("0x1bb64 ___33-[HomeViewController viewDidLoad]_block_invoke_2")
+pub fn stub_1bb64(controller: &AudioHomeViewController) {
+    // IDA 0x1bb64 (prefetch-apply block): `setHidden:NO` on the search
+    // field. Same as the platform 0x1bb64 anchor.
+    controller.view_did_load_search_apply();
 }
 
 // 0x1bb88 — ___copy_helper_block__1
 #[doc(alias = "___copy_helper_block__1")]
-pub fn stub_1bb88() -> ! {
-    todo!("0x1bb88 ___copy_helper_block__1")
+pub fn stub_1bb88(slot: &mut u64, src: u64) {
+    // IDA 0x1bb88 (disasm one `__Block_object_assign`): retain the
+    // capture. Same shape as 0x18094; `0` is `nil`.
+    *slot = src;
 }
 
 // 0x1bb94 — ___destroy_helper_block__1
 #[doc(alias = "___destroy_helper_block__1")]
-pub fn stub_1bb94() -> ! {
-    todo!("0x1bb94 ___destroy_helper_block__1")
+pub fn stub_1bb94(slot: &mut u64) {
+    // IDA 0x1bb94 (disasm one `__Block_object_dispose`): release the
+    // capture. Same shape as 0x180a0.
+    *slot = 0;
 }
 
 // 0x1bb9c — ___copy_helper_block_80
 #[doc(alias = "___copy_helper_block_80")]
-pub fn stub_1bb9c() -> ! {
-    todo!("0x1bb9c ___copy_helper_block_80")
+pub fn stub_1bb9c(slot: &mut u64, src: u64) {
+    // IDA 0x1bb9c (disasm one `__Block_object_assign`): retain the
+    // capture. Same shape as 0x18094.
+    *slot = src;
 }
 
 // 0x1bba8 — ___destroy_helper_block_81
 #[doc(alias = "___destroy_helper_block_81")]
-pub fn stub_1bba8() -> ! {
-    todo!("0x1bba8 ___destroy_helper_block_81")
+pub fn stub_1bba8(slot: &mut u64) {
+    // IDA 0x1bba8 (disasm one `__Block_object_dispose`): release the
+    // capture. Same shape as 0x180a0.
+    *slot = 0;
 }
 
 // 0x1bbb0 — -[HomeViewController keyboardDidShow:]
 #[doc(alias = "-[HomeViewController keyboardDidShow:]")]
-pub fn stub_1bbb0() -> ! {
-    todo!("0x1bbb0 -[HomeViewController keyboardDidShow:]")
+pub fn stub_1bbb0(controller: &AudioHomeViewController) {
+    // IDA 0x1bbb0 (`-[HomeViewController keyboardDidShow:]`):
+    // `tapRecognizer.enabled = YES`. Same as the platform 0x1bbb0 anchor.
+    controller.keyboard_did_show();
 }
 
 // 0x1bbd0 — -[HomeViewController keyboardDidHide:]
 #[doc(alias = "-[HomeViewController keyboardDidHide:]")]
-pub fn stub_1bbd0() -> ! {
-    todo!("0x1bbd0 -[HomeViewController keyboardDidHide:]")
+pub fn stub_1bbd0(controller: &AudioHomeViewController) {
+    // IDA 0x1bbd0 (`-[HomeViewController keyboardDidHide:]`):
+    // `tapRecognizer.enabled = NO`. Same as the platform 0x1bbd0 anchor.
+    controller.keyboard_did_hide();
 }
 
 // 0x1bbf0 — -[HomeViewController dismissKeyboard]
 #[doc(alias = "-[HomeViewController dismissKeyboard]")]
-pub fn stub_1bbf0() -> ! {
-    todo!("0x1bbf0 -[HomeViewController dismissKeyboard]")
+pub fn stub_1bbf0(controller: &AudioHomeViewController) {
+    // IDA 0x1bbf0 (`-[HomeViewController dismissKeyboard]`):
+    // `[_searchTextField resignFirstResponder]`. Same as the platform
+    // 0x1bbf0 anchor.
+    controller.dismiss_keyboard();
 }
 
 // 0x1bc10 — -[HomeViewController localizeAndStyleLabels]
 #[doc(alias = "-[HomeViewController localizeAndStyleLabels]")]
-pub fn stub_1bc10() -> ! {
-    todo!("0x1bc10 -[HomeViewController localizeAndStyleLabels]")
+pub fn stub_1bc10(controller: &AudioHomeViewController) {
+    // IDA 0x1bc10 (`-[HomeViewController localizeAndStyleLabels]`):
+    // eleven localized stamps. Same as the platform 0x1bc10 anchor.
+    controller.localize_and_style_labels();
 }
 
 // 0x1bf0c — -[HomeViewController updateUserInfoDisplay:]
 #[doc(alias = "-[HomeViewController updateUserInfoDisplay:]")]
-pub fn stub_1bf0c() -> ! {
-    todo!("0x1bf0c -[HomeViewController updateUserInfoDisplay:]")
+pub fn stub_1bf0c(controller: &AudioHomeViewController, refresh: bool) {
+    // IDA 0x1bf0c (`-[HomeViewController updateUserInfoDisplay:]`):
+    // conditional player-info update, Robux/Tix/username labels, avatar.
+    // Same as the platform 0x1bf0c anchor.
+    controller.update_user_info_display(refresh);
 }
 
 // 0x1c134 — -[HomeViewController viewDidUnload]
 #[doc(alias = "-[HomeViewController viewDidUnload]")]
-pub fn stub_1c134() -> ! {
-    todo!("0x1c134 -[HomeViewController viewDidUnload]")
+pub fn stub_1c134(controller: &AudioHomeViewController) {
+    // IDA 0x1c134 (`-[HomeViewController viewDidUnload]`): nils the 18
+    // outlet setters then super `viewDidUnload`. Same as the platform
+    // 0x1c134 anchor.
+    controller.view_did_unload();
 }
 
 // 0x1c2bc — -[HomeViewController handleSignupNotification:]
 #[doc(alias = "-[HomeViewController handleSignupNotification:]")]
-pub fn stub_1c2bc() -> ! {
-    todo!("0x1c2bc -[HomeViewController handleSignupNotification:]")
+pub fn stub_1c2bc(controller: &AudioHomeViewController, username: &str, password: &str) {
+    // IDA 0x1c2bc (`-[HomeViewController handleSignupNotification:]`):
+    // retain credentials, login, show logged-in state. Same as the
+    // platform 0x1c2bc anchor.
+    controller.handle_signup_notification(username, password);
 }
 
 // 0x1c37c — -[HomeViewController logoutTouchUp:]
